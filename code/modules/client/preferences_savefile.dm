@@ -5,7 +5,11 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
+<<<<<<< HEAD
 #define SAVEFILE_VERSION_MAX	36
+=======
+#define SAVEFILE_VERSION_MAX	35
+>>>>>>> c2c6227fc8... Bumps minimum savefile version, fixes some forgotten hotkeys (#52312)
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -63,11 +67,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				if(bind == "quick_equip_suit_storage")
 					newkey = TRUE
 		if(!newkey && !key_bindings["ShiftQ"])
+<<<<<<< HEAD
 			key_bindings["ShiftQ"] = list("quick_equip_suit_storage")
 
 	if(current_version < 36)
 		if(key_bindings["ShiftQ"] == "quick_equip_suit_storage")
 			key_bindings["ShiftQ"] = list("quick_equip_suit_storage")
+=======
+			key_bindings["ShiftQ"] += "quick_equip_suit_storage"
+>>>>>>> c2c6227fc8... Bumps minimum savefile version, fixes some forgotten hotkeys (#52312)
 
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
