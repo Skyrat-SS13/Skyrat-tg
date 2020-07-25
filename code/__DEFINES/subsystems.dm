@@ -142,6 +142,7 @@
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
+<<<<<<< HEAD
 #define FIRE_PRIORITY_PING			10
 #define FIRE_PRIORITY_IDLE_NPC		10
 #define FIRE_PRIORITY_SERVER_MAINT	10
@@ -170,6 +171,38 @@
 #define FIRE_PRIORITY_OVERLAYS		500
 #define FIRE_PRIORITY_EXPLOSIONS	666
 #define FIRE_PRIORITY_INPUT			1000 // This must always always be the max highest priority. Player input must never be lost.
+=======
+#define FIRE_PRIORITY_PING				10
+#define FIRE_PRIORITY_IDLE_NPC			10
+#define FIRE_PRIORITY_SERVER_MAINT		10
+#define FIRE_PRIORITY_RESEARCH			10
+#define FIRE_PRIORITY_VIS				10
+#define FIRE_PRIORITY_GARBAGE			20
+#define FIRE_PRIORITY_WET_FLOORS		30
+#define FIRE_PRIORITY_AIR				30
+#define FIRE_PRIORITY_NPC				30
+#define FIRE_PRIORITY_PROCESS			40
+#define FIRE_PRIORITY_THROWING			40
+#define FIRE_PRIORITY_SPACEDRIFT		50
+#define FIRE_PRIORITY_FIELDS			50
+#define FIRE_PRIOTITY_SMOOTHING			60
+#define FIRE_PRIORITY_NETWORKS			70
+#define FIRE_PRIORITY_OBJ				70
+#define FIRE_PRIORITY_ACID				70
+#define FIRE_PRIOTITY_BURNING			70
+#define FIRE_PRIORITY_DEFAULT			80
+#define FIRE_PRIORITY_PARALLAX			90
+#define FIRE_PRIORITY_MOBS				100
+#define FIRE_PRIORITY_TGUI				110
+#define FIRE_PRIORITY_TICKER			120
+#define FIRE_PRIORITY_ATMOS_ADJACENCY	130
+#define FIRE_PRIORITY_CHAT				140
+#define FIRE_PRIORITY_RUNECHAT			150
+#define FIRE_PRIORITY_OVERLAYS			160
+#define FIRE_PRIORITY_EXPLOSIONS		170
+#define FIRE_PRIORITY_TIMER				180
+#define FIRE_PRIORITY_INPUT				190 // This must always always be the max highest priority. Player input must never be lost.
+>>>>>>> ed019679ba... Ups the timer SS priority (#52405)
 
 // SS runlevels
 
