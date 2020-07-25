@@ -24245,6 +24245,7 @@
 /obj/item/stack/medical/gauze{
 	pixel_x = 8
 	},
+/obj/item/clothing/neck/stethoscope,
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "bfK" = (
@@ -25398,8 +25399,6 @@
 	dir = 1
 	},
 /obj/structure/table/glass,
-/obj/item/stack/sheet/mineral/plasma,
-/obj/item/stack/sheet/mineral/plasma,
 /obj/item/reagent_containers/glass/bottle/epinephrine,
 /obj/machinery/requests_console{
 	department = "Chemistry";
@@ -25410,6 +25409,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/stack/sheet/mineral/plasma,
 /turf/open/floor/plasteel/white,
 /area/medical/pharmacy)
 "bip" = (
@@ -29804,6 +29804,10 @@
 	},
 /obj/structure/cable,
 /obj/item/reagent_containers/glass/bottle/epinephrine,
+/obj/item/reagent_containers/glass/bottle/multiver{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/syringe,
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "bsu" = (
@@ -31080,15 +31084,12 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/item/book/manual/wiki/chemistry{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/book/manual/wiki/plumbing,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/yellow,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/clothing/head/welding,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "bvj" = (
@@ -33261,11 +33262,11 @@
 	pixel_x = -30
 	},
 /obj/item/reagent_containers/chem_pack{
-	pixel_x = 10;
-	pixel_y = 10
+	pixel_x = 1;
+	pixel_y = 1
 	},
 /obj/item/reagent_containers/chem_pack{
-	pixel_x = 10;
+	pixel_x = 7;
 	pixel_y = 10
 	},
 /turf/open/floor/plasteel,
@@ -33807,19 +33808,14 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/medical3,
 /obj/machinery/airalarm{
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/item/clothing/neck/stethoscope,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/storage/belt/medical{
-	pixel_y = 2
-	},
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/medical3,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "bBL" = (
@@ -34321,6 +34317,9 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
+	},
+/obj/item/storage/pill_bottle/mannitol{
+	pixel_y = 10
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/cryo)
@@ -35447,12 +35446,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "bFA" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/blood,
-/obj/item/reagent_containers/blood,
-/obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/blood/random,
 /obj/structure/window/reinforced{
 	dir = 1;
 	layer = 2.9
@@ -35470,6 +35463,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/plasteel/white,
 /area/medical/cryo)
 "bFB" = (
@@ -51045,6 +51039,11 @@
 	pixel_x = 24
 	},
 /obj/structure/cable,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "ddf" = (
@@ -53164,6 +53163,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/clothing/neck/stethoscope,
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "klM" = (
@@ -53345,10 +53345,12 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/item/book/manual/wiki/grenades,
 /obj/item/book/manual/wiki/chemistry{
-	pixel_x = -4;
-	pixel_y = 4
+	pixel_x = 8
+	},
+/obj/item/book/manual/wiki/grenades,
+/obj/item/book/manual/wiki/plumbing{
+	pixel_x = 5
 	},
 /obj/structure/table,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -55818,16 +55820,11 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/medical3,
-/obj/item/clothing/neck/stethoscope,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/storage/belt/medical{
-	pixel_y = 2
-	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27;
 	pixel_y = 1
 	},
+/obj/structure/closet/secure_closet/medical3,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "rMf" = (
@@ -57386,6 +57383,10 @@
 	pixel_y = 30
 	},
 /obj/item/reagent_containers/glass/bottle/epinephrine,
+/obj/item/reagent_containers/glass/bottle/multiver{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/syringe,
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "wom" = (
