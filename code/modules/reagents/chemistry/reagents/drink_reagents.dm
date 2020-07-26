@@ -544,7 +544,7 @@
 /datum/reagent/consumable/pwr_game/on_mob_life(mob/living/carbon/M)
 	M.adjust_bodytemperature(-8 * TEMPERATURE_DAMAGE_COEFFICIENT, M.get_body_temp_normal())
 	if(prob(10))
-		M?.mind.adjust_experience(/datum/skill/gaming, 5)
+		M.mind?.adjust_experience(/datum/skill/gaming, 5)
 	..()
 
 /datum/reagent/consumable/shamblers
@@ -708,28 +708,6 @@
 			M.adjust_nutrition(-2)
 	..()
 	. = 1
-
-/datum/reagent/consumable/chocolatepudding
-	name = "Chocolate Pudding"
-	description = "A great dessert for chocolate lovers."
-	color = "#800000"
-	quality = DRINK_VERYGOOD
-	nutriment_factor = 4 * REAGENTS_METABOLISM
-	taste_description = "sweet chocolate"
-	glass_icon_state = "chocolatepudding"
-	glass_name = "chocolate pudding"
-	glass_desc = "Tasty."
-
-/datum/reagent/consumable/vanillapudding
-	name = "Vanilla Pudding"
-	description = "A great dessert for vanilla lovers."
-	color = "#FAFAD2"
-	quality = DRINK_VERYGOOD
-	nutriment_factor = 4 * REAGENTS_METABOLISM
-	taste_description = "sweet vanilla"
-	glass_icon_state = "vanillapudding"
-	glass_name = "vanilla pudding"
-	glass_desc = "Tasty."
 
 /datum/reagent/consumable/cherryshake
 	name = "Cherry Shake"
@@ -940,11 +918,11 @@
 /datum/reagent/consumable/bungojuice
 	name = "Bungo Juice"
 	color = "#F9E43D"
-	description = "Exotic! You feel like you are on vactation already."
+	description = "Exotic! You feel like you are on vacation already."
 	taste_description = "succulent bungo"
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of bungo juice"
-	glass_desc = "Exotic! You feel like you are on vactation already."
+	glass_desc = "Exotic! You feel like you are on vacation already."
 
 /datum/reagent/consumable/prunomix
 	name = "pruno mixture"
