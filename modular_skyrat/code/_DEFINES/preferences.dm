@@ -1,0 +1,1 @@
+#define VERB_CONSENT			(1<<15) // Skyrat - ERP Mechanic Addition
