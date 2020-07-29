@@ -74,7 +74,11 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/toggleadminhelpsound,
 	/client/proc/respawn_character,
 	/client/proc/discord_id_manipulation,
-	/datum/admins/proc/open_borgopanel
+	/datum/admins/proc/open_borgopanel,
+	//SKYRAT EDIT BEGIN - ADDITIONAL ADMIN VERBS
+	/client/proc/admin_disable_shuttle, /*sk -- disables emergency shuttle*/
+	/client/proc/admin_enable_shuttle /*sk -- enables emergency shuttle*/
+	//SKYRAT EDIT END
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)

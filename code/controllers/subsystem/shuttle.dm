@@ -26,6 +26,13 @@ SUBSYSTEM_DEF(shuttle)
 	var/emergencyCallAmount = 0		//how many times the escape shuttle was called
 	var/emergencyNoEscape
 	var/emergencyNoRecall = FALSE
+
+	//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+	var/adminEmergencyNoRecall = FALSE //so admins can block the recall MODULE: SHUTTLE TOGGLE
+	var/lastMode = SHUTTLE_IDLE //MODULE: SHUTTLE TOGGLE
+	var/lastCallTime = 6000 //MODULE: SHUTTLE TOGGLE
+	//SKYRAT EDIT END
+
 	var/list/hostileEnvironments = list() //Things blocking escape shuttle from leaving
 	var/list/tradeBlockade = list() //Things blocking cargo from leaving.
 	var/supplyBlocked = FALSE
@@ -126,8 +133,11 @@ SUBSYSTEM_DEF(shuttle)
 				break
 
 /datum/controller/subsystem/shuttle/proc/CheckAutoEvac()
-	if(emergencyNoEscape || emergencyNoRecall || !emergency || !SSticker.HasRoundStarted())
+	//SKYRAT EDIT BEGIN - CHANGE
+	//if(emergencyNoEscape || emergencyNoRecall || !emergency || !SSticker.HasRoundStarted()) - SKYRAT EDIT ORIGINAL
+	if(emergencyNoEscape || adminEmergencyNoRecall || emergencyNoRecall || !emergency || !SSticker.HasRoundStarted()) // SKYRAT EDIT - SHUTTLE TOGGLE
 		return
+	//SKYRAT EDIT END
 
 	var/threshold = CONFIG_GET(number/emergency_shuttle_autocall_threshold)
 	if(!threshold)
@@ -153,10 +163,21 @@ SUBSYSTEM_DEF(shuttle)
 			emergency.request(null, set_coefficient = 0.4)
 
 /datum/controller/subsystem/shuttle/proc/block_recall(lockout_timer)
+	//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+	if(adminEmergencyNoRecall)
+		priority_announce("Error!", "Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
+		addtimer(CALLBACK(src, .proc/unblock_recall), lockout_timer)
+		return
+	//SKYRAT EDIT END
 	emergencyNoRecall = TRUE
 	addtimer(CALLBACK(src, .proc/unblock_recall), lockout_timer)
 
 /datum/controller/subsystem/shuttle/proc/unblock_recall()
+	//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+	if(adminEmergencyNoRecall) //MODULE: SHUTTLE TOGGLE
+		priority_announce("Error!", "Emergency Shuttle Uplink Alert", 'sound/misc/announce_dig.ogg')
+		return
+	//SKYRAT EDIT END
 	emergencyNoRecall = FALSE
 
 /datum/controller/subsystem/shuttle/proc/getShuttle(id)
@@ -196,6 +217,11 @@ SUBSYSTEM_DEF(shuttle)
 		if(SHUTTLE_STRANDED)
 			to_chat(user, "<span class='alert'>The emergency shuttle has been disabled by CentCom.</span>")
 			return FALSE
+		//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+		if(SHUTTLE_DISABLED)//MODULE: SHUTTLE TOGGLE
+			to_chat(user, "<span class='alert'>The emergency shuttle has been disabled by CentCom.</span>")
+			return FALSE
+		//SKYRAT EDIT END
 
 	return TRUE
 
@@ -284,8 +310,11 @@ SUBSYSTEM_DEF(shuttle)
 		return 1
 
 /datum/controller/subsystem/shuttle/proc/canRecall()
-	if(!emergency || emergency.mode != SHUTTLE_CALL || emergencyNoRecall || SSticker.mode.name == "meteor")
+	//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - CHANGE
+	//if(!emergency || emergency.mode != SHUTTLE_CALL || emergencyNoRecall || SSticker.mode.name == "meteor") SKYRAT EDIT ORIGINAL
+	if(!emergency || emergency.mode != SHUTTLE_CALL || adminEmergencyNoRecall || emergencyNoRecall || SSticker.mode.name == "meteor")//MODULE: SHUTTLE TOGGLE
 		return
+	//SKYRAT EDIT END
 	var/security_num = seclevel2num(get_security_level())
 	switch(security_num)
 		if(SEC_LEVEL_GREEN)

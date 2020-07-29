@@ -725,6 +725,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Change View Range", "[view]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - REMOVAL(Moved to modular_skyrat randomverbs.dm)
+/*
 /client/proc/admin_call_shuttle()
 
 	set category = "Admin - Events"
@@ -763,6 +765,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-recalled the emergency shuttle.</span>")
 
 	return
+*/
+//SKYRAT EDIT END
 
 /client/proc/everyone_random()
 	set category = "Fun"

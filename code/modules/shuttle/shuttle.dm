@@ -693,12 +693,21 @@
 			return "RCH"
 		if(SHUTTLE_PREARRIVAL)
 			return "LDN"
+		//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+		if(SHUTTLE_DISABLED)
+			return "DIS"
+		//SKYRAT EDIT END
 	return ""
 
 // returns 5-letter timer string, used by status screens and mob status panel
 /obj/docking_port/mobile/proc/getTimerStr()
 	if(mode == SHUTTLE_STRANDED)
 		return "--:--"
+
+	//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+	if(mode == SHUTTLE_DISABLED)
+		return "--:--"
+	//SKYRAT EDIT END
 
 	var/timeleft = timeLeft()
 	if(timeleft > 1 HOURS)
