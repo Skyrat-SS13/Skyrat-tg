@@ -49,13 +49,14 @@ GLOBAL_LIST_INIT(service_positions, list(
 	"Prisoner",
 	"Assistant"))
 
-
+//SKYRAT EDIT BEGIN - ADDITION
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Warden",
 	"Detective",
-	"Security Officer"))
-
+	"Security Officer",
+	"Blueshield")) //Skyrat addition
+//SKYRAT EDIT END
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",
