@@ -1,0 +1,198 @@
+# The modularization handbook - Skyrat style, v0.1
+
+## Introduction
+
+To develop and maintain a separate codebase is a big task, that many have failed and suffered the consequences of, such as outdated, and messy code.  
+It's not necessarily the fault of lack of skill of the people maintaining it, merely the lack of resources and how much continuous effort such an endeavor takes.  
+
+One of the solutions for such, is to base our server on a solid codebase, that is primarily maintained by somebody else, in this case tgstation, and insert our content in a modular fashion, while following the general direction of the upstream, mirroring any changes they do for parity.
+
+Git, as a version control system, is very useful, however it is just a very methodical thing, that follows its many algorithms, that sadly cannot always intelligently resolve certain changes in the code in an unambiguous way, giving us conflicts, that need to be resolved in a manual fashion.  
+
+Due to maintainability being one of the main reasons behind our rebase to another codebase, **this protocol will seriously be enforced.**  
+A well organized, documented and atomized code saves our maintainers a lot of headache, when being reviewed.  
+Don't dump on them the work that you could have done yourself.
+
+This document is meant to be updated and changed, whenever any new exceptions are added onto it. It might be worth it to check, from time to time, whether we didn't define a more unique standardized way of handling some common change.
+
+### The nature of conflicts
+
+For example, let's have an original  
+
+``` byond
+var/something = 1
+```
+
+in the core code, that we decide to change from 1 to 2 on our end,  
+
+```diff
+- var/something = 1
++ var/something = 2 //SKYRAT EDIT
+```
+
+but then our upstream introduces a change in their codebase, changing it from 1 to 4  
+
+```diff
+- var/something = 1
++ var/something = 4
+```
+
+As easy of an example as it is, it results in a relatively simple conflict, in the form of
+
+``` txt
+<<<<<<< HEAD
+var/something = 2 //SKYRAT EDIT
+=======
+var/something = 4
+>>>>>>> upstream-mirror-123132
+```
+
+where we pick the preferable option manually.
+
+### The solution
+
+That is something that cannot and likely shouldn't be resolved automatically, because it might introduce errors and bugs that will be very hard to track down, not to even bring up more complex examples of conflicts, such as ones that involve changes that add, remove and move lines of code all over the place.  
+
+tl;dr it tries its best but ultimately is just a dumb program, therefore, we must ourselves do work to ensure that it can do most of the work, while minimizing the effort spent on manual involvement, in the cases where the conflicts will be inevitable.  
+
+Our answer to this is modularization of the code.
+
+**Modularization** means, that most of the changes and additions we do, will be kept in a separate **`modular_skyrat/`** folder, as independent from the core code as possible, and those which absolutely cannot be modularized, will need to be properly marked by comments, specifying where the changes start, where they end, and which feature they are a part of, but more on that in the next section.  
+
+## The modularization protocol  
+
+### Assets: images, sounds, icons and binaries
+
+Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.  
+
+All assets added by us should be added to the appropriate subfolders of the **`modular_skyrat/`**, creating them if necessary, corresponding to the position where they would go in the core code's folder structure so:
+
+- Icons go into **`modular_skyrat/icons/`**
+  - ***Example:*** You are adding a new uniform for cargo.  
+  You go check where similar clothing in the core code is located.  
+  You find the on-mob sprites in `icons/mob/clothing/under/cargo.dmi`  
+  You find the item sprites in `icons/obj/clothing/under/cargo.dmi`  
+  Therefore your new sprites go into the corresponding modular folders  
+  `modular_skyrat/icons/mob/clothing/under/cargo.dmi` and `modular_skyrat/icons/obj/clothing/under/cargo.dmi`  
+  The next step would only be to point the new item to the new icon  files, through changing the appropriate item's vars, like so:  
+
+    ``` byond
+    icon = 'modular_skyrat/icons/obj/clothing/under/cargo.dmi'
+    worn_icon = 'modular_skyrat/icons/mob/clothing/under/cargo.dmi'
+    ```
+  
+  With likely other vars set to their own appropriate values. Clothing is not the focal point of this guide, so ask around or figure it by yourself.
+
+  - ***Example:*** You're adding a new lavaland mob.  
+  Again, you go check where similar-class mobs are located, let's say
+  `icons/mob/lavaland/lavaland_monsters.dmi`, so yours goes into `modular_skyrat/icons/mob/lavaland/lavaland_monsters.dmi`  
+  And likewise, you touch your modular code up to point to the modular icon file.
+
+- Sounds go into **`modular_skyrat/sound/`** folder, following similar rules as above, but with a little bit more freedom in terms of organization.
+
+- Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
+
+### Fully modular portions of your code
+
+This section will be fairly straightforward, however, I will try to go over the basics and give simple examples, as the guide is aimed at new contributors likewise.
+
+The rule of thumb is that if you don't absolutely have to, you shouldn't make any changes to core codebase files.
+
+In short, most of the modular code will be placed in the subfolders of  **`modular_skyrat/code/`**, with similar rules as with the assets, in terms of correspondence to the main code locations.  
+In this case, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/code/modules`** in their own separate folder, to ensure they're easy to find, manage and maintain.  
+For example, `modular_skyrat/code/modules/xenoarcheaology` containing all the code, tools, items and machinery related to it.
+
+Such modules, unless _very_ simple, **need** to have a `readme.dm` in their folder, containing the following:
+
+- short description of the module
+- list of files changed in the core code, with a short description of the change, and a list of changes in other modular files that are not part of the same module, that were necessary for this module to function properly
+- (optionally) a bit more elaborative documentation for future-proofing the code,  that will be useful further development and maintenance
+- (optionally) credits
+
+Each such feature/content set should be considered a separate module, and each of its files should be marked with an uppercase comment
+**`//SKYRAT MODULE NAME`**, for example **`//SKYRAT MODULE CLONING`**, the name being preferably one word, or in case of multiple, joined with hyphens. In case of a file that contains code from multiple modules, portions of it should usually be clamped between  
+**`//SKYRAT MODULE NAME -- BEGIN`** and **`//SKYRAT MODULE CLONING -- END`** for easy searching of all files related to a specific feature set (why will it come in handy will become more obvious in the next section)
+  
+**Important:**  
+Note, that it is possible to append code in front, or behind a core proc, in a modular fashion, without editing the original proc, through referring the parent proc, using `..()`, in one of the following forms.  And likewise, it is possible to add a new var to an existing datum or obj, without editing the core files.
+
+To keep it simple, let's assume you wanted to make guns spark when shot, for simulating muzzle flash or whatever other reasons, and you want potentially to use it with all kinds of guns.  
+You could start, in a modular file, by adding a var
+
+``` byond
+/obj/item/gun
+    var/muzzle_flash = TRUE
+```
+
+And it will work just fine. Afterwards, let's say you want to check that var and spawn your sparks after firing a shot.  
+Knowing the original proc being called by shooting is  
+
+``` byond
+/obj/item/gun/proc/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
+```
+
+you can define a child proc for it, that will get inserted into the inheritance chain of the related procs (big words, but in simple cases like this, you don't need to worry)
+
+``` byond
+/obj/item/gun/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
+    . = ..() //. is the default return value, we assign what the parent proc returns to it, as we call it before ours
+    if(muzzle_flash)
+        spawn_sparks(src) //For simplicity, I assume you've already made a proc for this
+```
+
+And that wraps the basics of it up.
+
+### Non-modular changes to the core code
+
+Every once in a while, there comes a time, where editing the core files becomes inevitable.
+
+In those cases, we've decided to apply the following convention, with examples:
+
+- **Addition:**
+
+  ``` byond
+  //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - ADDITION
+  var/adminEmergencyNoRecall = FALSE //so admins can block the recall MODULE: SHUTTLE TOGGLE
+  var/lastMode = SHUTTLE_IDLE //MODULE: SHUTTLE-TOGGLE
+  var/lastCallTime = 6000 //MODULE: SHUTTLE-TOGGLE
+  //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - ADDITION
+  ```
+
+- **Removal:**
+
+  ``` byond
+  //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - REMOVAL
+  /*
+  for(var/obj/docking_port/stationary/S in stationary)
+    if(S.id = id)
+      return S
+  */
+  WARNING("couldn't find dock with id: [id]")
+  //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - REMOVAL
+  ```
+
+- **Change:**
+  
+  ``` byond
+  //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - CHANGE
+  //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
+  if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
+      return 1
+  //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - CHANGE
+  ```
+
+## Exceptional cases of modular code
+
+From every rule, there's exceptions, due to many circumstances. Don't think about it too much.
+
+### Defines
+
+Due to the way byond loads files, it has become necessary to make a different folder for handling our modular defines.
+That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them to the existing files, or create those files as necessary.
+
+## Afterword
+
+It might seem like a lot to take in, but if we remain consistent, it will save us a lot of headache in the long run, once we start having to resolve conflicts manually.  
+Thanks to a bit more scrupulous documentation, it will be immediately obvious what changes were done and where and by which features, things will be a lot less ambiguous and messy.
+
+Best of luck in your coding. Remember that the community is there for you, if you ever need help.
