@@ -1,4 +1,4 @@
-//SKYRAT CHANGE - IC spawning system
+//SKYRAT MODULE IC SPAWNING https://github.com/Skyrat-SS13/Skyrat-tg/pull
 
 /mob/dead/observer/CtrlClickOn(mob/user)
 	quickicspawn(user)
