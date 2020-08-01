@@ -173,8 +173,8 @@ In those cases, we've decided to apply the following convention, with examples:
     if(S.id = id)
       return S
   */
-  WARNING("couldn't find dock with id: [id]")
   //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - REMOVAL
+  WARNING("couldn't find dock with id: [id]")
   ```
 
 - **Change:**
@@ -183,8 +183,8 @@ In those cases, we've decided to apply the following convention, with examples:
   //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - CHANGE
   //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
   if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
-      return 1
   //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - CHANGE
+      return 1
   ```
 
 ## Exceptional cases of modular code
