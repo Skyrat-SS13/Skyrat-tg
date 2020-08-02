@@ -256,6 +256,12 @@ From every rule, there's exceptions, due to many circumstances. Don't think abou
 Due to the way byond loads files, it has become necessary to make a different folder for handling our modular defines.
 That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them to the existing files, or create those files as necessary.
 
+## Exemplary PR's
+
+Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
+- https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
+- https://github.com/Skyrat-SS13/Skyrat-tg/pull/111
+
 ## Afterword
 
 It might seem like a lot to take in, but if we remain consistent, it will save us a lot of headache in the long run, once we start having to resolve conflicts manually.
