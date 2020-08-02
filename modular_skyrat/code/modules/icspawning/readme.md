@@ -2,7 +2,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
 
 ## Title: IC Spawning for admins
 
-MODULE IC-SPAWNING
+MODULE REFERENCE: IC-SPAWNING
 
 ### Description:
 
