@@ -1,5 +1,7 @@
 # The modularization handbook - Skyrat style, v0.1
 
+## Failure to follow this guide will result in your PR being denied.
+
 ## Introduction
 
 To develop and maintain a separate codebase is a big task, that many have failed and suffered the consequences of, such as outdated, and messy code.
@@ -209,32 +211,32 @@ In those cases, we've decided to apply the following convention, with examples:
   //SKYRAT EDIT REMOVAL END
   WARNING("couldn't find dock with id: [id]")
   ```
-And for any removals to different files:
-  ```byond
-  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Moved to modular_skyrat/shuttle_toggle/randomverbs.dm)
-  /*
-  /client/proc/admin_call_shuttle()
-  	set category = "Admin - Events"
-	set name = "Call Shuttle"
+	And for any removals to different files:
+	  ```byond
+	  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Moved to modular_skyrat/shuttle_toggle/randomverbs.dm)
+	  /*
+	  /client/proc/admin_call_shuttle()
+		set category = "Admin - Events"
+		set name = "Call Shuttle"
 
-	if(EMERGENCY_AT_LEAST_DOCKED)
+		if(EMERGENCY_AT_LEAST_DOCKED)
+			return
+
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
+		if(confirm != "Yes")
+			return
+
+		SSshuttle.emergency.request()
+		SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		log_admin("[key_name(usr)] admin-called the emergency shuttle.")
+		message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
 		return
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-	if(confirm != "Yes")
-		return
-
-	SSshuttle.emergency.request()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	log_admin("[key_name(usr)] admin-called the emergency shuttle.")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
-	return
-  */
-  //SKYRAT EDIT REMOVAL END
-  ```
+	  */
+	  //SKYRAT EDIT REMOVAL END
+	  ```
 
 - **Change:**
 
