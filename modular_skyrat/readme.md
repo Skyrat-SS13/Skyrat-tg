@@ -190,33 +190,59 @@ In those cases, we've decided to apply the following convention, with examples:
 - **Addition:**
 
   ```byond
-  //SKYRAT EDIT BEGIN - MODULE SHUTTLE_TOGGLE - ADDITION
-  var/adminEmergencyNoRecall = FALSE //so admins can block the recall MODULE: SHUTTLE TOGGLE
-  var/lastMode = SHUTTLE_IDLE //MODULE: SHUTTLE-TOGGLE
-  var/lastCallTime = 6000 //MODULE: SHUTTLE-TOGGLE
-  //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - ADDITION
+  //SKYRAT EDIT ADDITION BEGIN - SHUTTLE_TOGGLE
+  var/adminEmergencyNoRecall = FALS
+  var/lastMode = SHUTTLE_IDLE
+  var/lastCallTime = 6000
+  //SKYRAT EDIT ADDITION END
   ```
 
 - **Removal:**
 
   ```byond
-  //SKYRAT EDIT BEGIN - MODULE SHUTTLE_TOGGLE - REMOVAL
+  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE
   /*
   for(var/obj/docking_port/stationary/S in stationary)
     if(S.id = id)
       return S
   */
-  //SKYRAT EDIT END - MODULE SHUTTLE_TOGGLE - REMOVAL
+  //SKYRAT EDIT REMOVAL END
   WARNING("couldn't find dock with id: [id]")
+  ```
+And for any removals to different files:
+  ```byond
+  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Moved to modular_skyrat/shuttle_toggle/randomverbs.dm)
+  /*
+  /client/proc/admin_call_shuttle()
+  	set category = "Admin - Events"
+	set name = "Call Shuttle"
+
+	if(EMERGENCY_AT_LEAST_DOCKED)
+		return
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
+	if(confirm != "Yes")
+		return
+
+	SSshuttle.emergency.request()
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	log_admin("[key_name(usr)] admin-called the emergency shuttle.")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
+	return
+  */
+  //SKYRAT EDIT REMOVAL END
   ```
 
 - **Change:**
 
   ```byond
-  //SKYRAT EDIT BEGIN - MODULE SHUTTLE_TOGGLE - CHANGE
+  //SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE
   //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
   if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
-  //SKYRAT EDIT END - MODULE SHUTTLE_TOGGLE - CHANGE
+  //SKYRAT EDITCHANGE END
       return 1
   ```
 
