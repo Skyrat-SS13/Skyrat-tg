@@ -124,7 +124,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
 
 ## Title: <!--Title of your addition-->
 
-MODULE <!-- uppercase, underscore_connected name of your module, that you use to mark files-->
+MODULE REFERENCE: <!-- uppercase, underscore_connected name of your module, that you use to mark files-->
 
 ### Description:
 
@@ -212,7 +212,7 @@ In those cases, we've decided to apply the following convention, with examples:
   WARNING("couldn't find dock with id: [id]")
   ```
 	And for any removals to different files:
-	  ```byond
+	 ```byond
 	  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Moved to modular_skyrat/shuttle_toggle/randomverbs.dm)
 	  /*
 	  /client/proc/admin_call_shuttle()
