@@ -1,3 +1,4 @@
+//SKYRAT MODULE IC SPAWNING https://github.com/Skyrat-SS13/Skyrat-tg/pull
 /obj/item/gun/energy/taser/debug
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/debug)
 	w_class = WEIGHT_CLASS_TINY
