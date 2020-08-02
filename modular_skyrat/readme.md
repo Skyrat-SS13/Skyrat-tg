@@ -109,11 +109,44 @@ For example, `modular_skyrat/code/modules/xenoarcheaology` containing all the co
 
 Such modules, unless _very_ simple, **need** to have a `readme.dm` in their folder, containing the following:
 
+- links to the PRs that implemented this module or made any significant changes to it
 - short description of the module
 - list of files changed in the core code, with a short description of the change, and a list of changes in other modular files that are not part of the same module, that were necessary for this module to function properly
 - (optionally) a bit more elaborative documentation for future-proofing the code,  that will be useful further development and maintenance
-- (optionally) credits
-- (optionally, but preferably) links to the PRs that implemented this module or made any significant changes to it
+- credits
+
+***Template:***
+
+``` md
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
+
+## Title: <!--Title of your addition-->
+
+MODULE <!-- uppercase, hyphen-connected name of your module, that you use to mark files-->
+
+### Description:
+
+<!-- Here, try to describe what your PR does, what features it provides and any other directly useful information -->
+
+### TG Proc Changes:
+
+- N/A
+<!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. -->
+
+### Defines:
+
+- N/A
+<!-- If you needed to add any defines, mention the files you added those defines in -->
+
+### Included files that are not contained in this module:
+
+- N/A
+<!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here -->
+
+### Credits:
+
+<!-- Here go the credits to you, dear coder, and in case of collaborative work or ports, credits to the original source of the code -->
+```
 
 Each such feature/content set should be considered a separate module, and each of its files should be marked with an uppercase comment
 **`//SKYRAT MODULE NAME`**, for example **`//SKYRAT MODULE CLONING`**, the name being preferably one word, or in case of multiple, joined with hyphens. In case of a file that contains code from multiple modules, portions of it should usually be clamped between
