@@ -1,6 +1,6 @@
 # The modularization handbook - Skyrat style, v0.1
 
-## Failure to follow this guide will result in your PR being denied.
+### Failure to follow this guide will result in your PR being denied.
 
 ## Introduction
 
@@ -236,7 +236,6 @@ In those cases, we've decided to apply the following convention, with examples:
 		return
 	  */
 	  //SKYRAT EDIT REMOVAL END
-	  ```
 
 - **Change:**
 
