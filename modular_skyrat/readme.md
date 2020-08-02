@@ -63,7 +63,19 @@ Our answer to this is modularization of the code.
 
 ## The modularization protocol
 
+>APPEND PROPOSAL
+
+Always start by thinking of a name of your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
+
+And then you'll want to establish your core folder that you'll be working out of. E.g. `modular_skyrat/modules/yourmodulename`
+
+>APPEND END
+
+>
+
 If your change is not entirely contained within an already modularized feature, pick some previously unused name for it, it will come in handy, as you will be marking the code using it, for example `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY`
+
+>
 
 ### Assets: images, sounds, icons and binaries
 
@@ -86,8 +98,12 @@ All assets added by us should be placed into the same modular folder as your cod
 	```
 
 	This ensures your code is fully modular and will make it easier for future edits.
+	
+- Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
 
 >APPEND END
+
+>
 
 Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
 
@@ -120,6 +136,8 @@ All assets added by us should be added to the appropriate subfolders of the **`m
 - Sounds go into **`modular_skyrat/sound/`** folder, following similar rules as above, but with a little bit more freedom in terms of organization.
 
 - Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
+
+>
 
 ### Fully modular portions of your code
 
