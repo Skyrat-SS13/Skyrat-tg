@@ -158,11 +158,12 @@
 	replacementmode = pickweight(usable_modes)
 
 	switch(SSshuttle.emergency.mode) //Rounds on the verge of ending don't get new antags, they just run out
-		//SKYRAT EDIT BEGIN - CHANGE
+		//SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE
 		//if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT ORIGINAL
-		if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED) //MODULE: SHUTTLE TOGGLE
+		if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
+		//SKYRAT EDIT CHANGE END
 			return 1
-		//SKYRAT EDIT END
+
 		if(SHUTTLE_CALL)
 			if(SSshuttle.emergency.timeLeft(1) < initial(SSshuttle.emergencyCallTime)*0.5)
 				return 1

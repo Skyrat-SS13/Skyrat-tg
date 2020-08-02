@@ -725,7 +725,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Change View Range", "[view]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - REMOVAL(Moved to modular_skyrat randomverbs.dm)
+//SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Moved to modular_skyrat/shuttle_toggle/randomverbs.dm)
 /*
 /client/proc/admin_call_shuttle()
 
@@ -766,7 +766,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	return
 */
-//SKYRAT EDIT END
+//SKYRAT EDIT REMOVAL END
 
 /client/proc/everyone_random()
 	set category = "Fun"

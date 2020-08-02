@@ -57,10 +57,10 @@
 	if(!IS_DOCKED) // shuttle computer only has uses when onstation
 		return
 
-	//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+	//SKYRAT EDIT ADDITION BEGIN - SHUTTLE_TOGGLE
 	if(SSshuttle.emergency.mode == SHUTTLE_DISABLED)
 		return
-	//SKYRAT EDIT END
+	//SKYRAT EDIT ADDITION END
 
 	var/mob/user = usr
 	. = FALSE
@@ -234,10 +234,10 @@
 		SSshuttle.emergencyLastCallLoc = signalOrigin
 	else
 		SSshuttle.emergencyLastCallLoc = null
-	//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - CHANGE
+	//SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE
 	//priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/ai/shuttlecalled.ogg', "Priority") //SKYRAT EDIT ORIGINAL
 	priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.adminEmergencyNoRecall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, 'sound/ai/shuttlecalled.ogg', "Priority")
-	//SKYRAT EDIT END
+	//SKYRAT EDIT CHANGE END
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
 		return
@@ -383,10 +383,10 @@
 		if(SHUTTLE_STRANDED)
 			SSshuttle.checkHostileEnvironment()
 
-		//SKYRAT EDIT BEGIN - SHUTTLE TOGGLE - ADDITION
+		//SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE
 		if(SHUTTLE_DISABLED)
 			SSshuttle.checkHostileEnvironment()
-		//SKYRAT EDIT END
+		//SKYRAT EDIT CHANGE END
 
 		if(SHUTTLE_ESCAPE)
 			if(sound_played && time_left <= HYPERSPACE_END_TIME)
