@@ -1,3 +1,5 @@
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
 #define TIME_LEFT (SSshuttle.emergency.timeLeft())
 #define ENGINES_START_TIME 100
 #define ENGINES_STARTED (SSshuttle.emergency.mode == SHUTTLE_IGNITING)

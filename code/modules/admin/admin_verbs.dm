@@ -1,3 +1,5 @@
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
 //admin verb groups - They can overlap if you so wish. Only one of each verb will exist in the verbs list regardless
 //the procs are cause you can't put the comments in the GLOB var define
 GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())

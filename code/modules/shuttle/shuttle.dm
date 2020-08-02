@@ -1,3 +1,5 @@
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
 //use this define to highlight docking port bounding boxes (ONLY FOR DEBUG USE)
 #ifdef TESTING
 #define DOCKING_PORT_HIGHLIGHT
