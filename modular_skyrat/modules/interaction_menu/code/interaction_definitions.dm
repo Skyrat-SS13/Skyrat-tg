@@ -71,3 +71,4 @@
 	max_distance = 25
 	needs_physical_contact = 1
 	max_distance = 25
+	
