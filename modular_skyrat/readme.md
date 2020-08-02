@@ -192,6 +192,11 @@ MODULE ID: <!-- uppercase, underscore_connected name of your module, that you us
 - N/A
 <!-- If you needed to add any defines, mention the files you added those defines in -->
 
+### Master file additions
+
+- N/A
+<!-- Any master file changes you've made to existing master files or if you've added a new master file. Please mark either as #NEW or #CHANGE -->
+
 ### Included files that are not contained in this module:
 
 - N/A
