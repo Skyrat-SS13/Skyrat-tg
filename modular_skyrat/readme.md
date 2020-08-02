@@ -122,7 +122,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
 
 ## Title: <!--Title of your addition-->
 
-MODULE <!-- uppercase, hyphen-connected name of your module, that you use to mark files-->
+MODULE <!-- uppercase, underscore_connected name of your module, that you use to mark files-->
 
 ### Description:
 
@@ -149,7 +149,7 @@ MODULE <!-- uppercase, hyphen-connected name of your module, that you use to mar
 ```
 
 Each such feature/content set should be considered a separate module, and each of its files should be marked with an uppercase comment
-**`//SKYRAT MODULE NAME`**, for example **`//SKYRAT MODULE CLONING`**, the name being preferably one word, or in case of multiple, joined with hyphens. In case of a file that contains code from multiple modules, portions of it should usually be clamped between
+**`//SKYRAT MODULE NAME`**, for example **`//SKYRAT MODULE CLONING`**, the name being preferably one word, or in case of multiple, joined with underscores. In case of a file that contains code from multiple modules, portions of it should usually be clamped between
 **`//SKYRAT MODULE - CLONING -- BEGIN`** and **`//SKYRAT MODULE - CLONING -- END`** for easy searching of all files related to a specific feature set (why will it come in handy will become more obvious in the next section)
 
 **Important:**
@@ -190,7 +190,7 @@ In those cases, we've decided to apply the following convention, with examples:
 - **Addition:**
 
   ```byond
-  //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - ADDITION
+  //SKYRAT EDIT BEGIN - MODULE SHUTTLE_TOGGLE - ADDITION
   var/adminEmergencyNoRecall = FALSE //so admins can block the recall MODULE: SHUTTLE TOGGLE
   var/lastMode = SHUTTLE_IDLE //MODULE: SHUTTLE-TOGGLE
   var/lastCallTime = 6000 //MODULE: SHUTTLE-TOGGLE
@@ -200,23 +200,23 @@ In those cases, we've decided to apply the following convention, with examples:
 - **Removal:**
 
   ```byond
-  //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - REMOVAL
+  //SKYRAT EDIT BEGIN - MODULE SHUTTLE_TOGGLE - REMOVAL
   /*
   for(var/obj/docking_port/stationary/S in stationary)
     if(S.id = id)
       return S
   */
-  //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - REMOVAL
+  //SKYRAT EDIT END - MODULE SHUTTLE_TOGGLE - REMOVAL
   WARNING("couldn't find dock with id: [id]")
   ```
 
 - **Change:**
 
   ```byond
-  //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - CHANGE
+  //SKYRAT EDIT BEGIN - MODULE SHUTTLE_TOGGLE - CHANGE
   //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
   if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
-  //SKYRAT EDIT END - MODULE SHUTTLE-TOGGLE - CHANGE
+  //SKYRAT EDIT END - MODULE SHUTTLE_TOGGLE - CHANGE
       return 1
   ```
 
