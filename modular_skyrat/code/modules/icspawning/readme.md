@@ -2,6 +2,8 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
 
 ## Title: IC Spawning for admins
 
+MODULE IC-SPAWNING
+
 ### Description:
 
 Adds a control click function to ghosts which allows an admin to spawn the player in via a supply pod or teleportation with effects, also adds a bluespace tech loadout and some bluespace tech
