@@ -19,7 +19,7 @@ This document is meant to be updated and changed, whenever any new exceptions ar
 
 For example, let's have an original
 
-``` byond
+```byond
 var/something = 1
 ```
 
@@ -39,7 +39,7 @@ but then our upstream introduces a change in their codebase, changing it from 1 
 
 As easy of an example as it is, it results in a relatively simple conflict, in the form of
 
-``` byond
+```byond
 <<<<<<< HEAD
 var/something = 2 //SKYRAT EDIT
 =======
@@ -78,7 +78,7 @@ All assets added by us should be added to the appropriate subfolders of the **`m
   `modular_skyrat/icons/mob/clothing/under/cargo.dmi` and `modular_skyrat/icons/obj/clothing/under/cargo.dmi`
   The next step would only be to point the new item to the new icon  files, through changing the appropriate item's vars, in your modular file, like so:
 
-    ``` byond
+    ```byond
     /obj/item/clothing/under/rank/cargo/cargo_superman
       icon = 'modular_skyrat/icons/obj/clothing/under/cargo.dmi'
       icon_state = "cargo_superman"
@@ -117,7 +117,7 @@ Such modules, unless _very_ simple, **need** to have a `readme.dm` in their fold
 
 ***Template:***
 
-``` md
+```md
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
 
 ## Title: <!--Title of your addition-->
@@ -158,7 +158,7 @@ Note, that it is possible to append code in front, or behind a core proc, in a m
 To keep it simple, let's assume you wanted to make guns spark when shot, for simulating muzzle flash or whatever other reasons, and you want potentially to use it with all kinds of guns.
 You could start, in a modular file, by adding a var
 
-``` byond
+```byond
 /obj/item/gun
     var/muzzle_flash = TRUE
 ```
@@ -166,13 +166,13 @@ You could start, in a modular file, by adding a var
 And it will work just fine. Afterwards, let's say you want to check that var and spawn your sparks after firing a shot.
 Knowing the original proc being called by shooting is
 
-``` byond
+```byond
 /obj/item/gun/proc/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
 ```
 
 you can define a child proc for it, that will get inserted into the inheritance chain of the related procs (big words, but in simple cases like this, you don't need to worry)
 
-``` byond
+```byond
 /obj/item/gun/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
     . = ..() //. is the default return value, we assign what the parent proc returns to it, as we call it before ours
     if(muzzle_flash)
@@ -189,7 +189,7 @@ In those cases, we've decided to apply the following convention, with examples:
 
 - **Addition:**
 
-  ``` byond
+  ```byond
   //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - ADDITION
   var/adminEmergencyNoRecall = FALSE //so admins can block the recall MODULE: SHUTTLE TOGGLE
   var/lastMode = SHUTTLE_IDLE //MODULE: SHUTTLE-TOGGLE
@@ -199,7 +199,7 @@ In those cases, we've decided to apply the following convention, with examples:
 
 - **Removal:**
 
-  ``` byond
+  ```byond
   //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - REMOVAL
   /*
   for(var/obj/docking_port/stationary/S in stationary)
@@ -212,7 +212,7 @@ In those cases, we've decided to apply the following convention, with examples:
 
 - **Change:**
 
-  ``` byond
+  ```byond
   //SKYRAT EDIT BEGIN - MODULE SHUTTLE-TOGGLE - CHANGE
   //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
   if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
