@@ -71,11 +71,11 @@ And then you'll want to establish your core folder that you'll be working out of
 
 >APPEND END
 
->
+> ORIGINAL
 
 If your change is not entirely contained within an already modularized feature, pick some previously unused name for it, it will come in handy, as you will be marking the code using it, for example `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY`
 
->
+> ORIGINAL END
 
 ### Assets: images, sounds, icons and binaries
 
@@ -103,7 +103,7 @@ All assets added by us should be placed into the same modular folder as your cod
 
 >APPEND END
 
->
+>ORIGINAL
 
 Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
 
@@ -137,7 +137,7 @@ All assets added by us should be added to the appropriate subfolders of the **`m
 
 - Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
 
->
+>ORIGINAL END
 
 ### Fully modular portions of your code
 
@@ -153,13 +153,13 @@ For example, `modular_skyrat/modules/xenoarcheaology/code` containing all the co
 
 >APPEND END
 
->
+>ORIGINAL
 
 In short, most of the modular code will be placed in the subfolders of  **`modular_skyrat/code/`**, with similar rules as with the assets, in terms of correspondence to the main code locations.
 In case of new content, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/code/modules`** in their own separate folder, to ensure they're easy to find, manage and maintain.
 For example, `modular_skyrat/code/modules/xenoarcheaology` containing all the code, tools, items and machinery related to it.
 
->
+>ORIGINAL END
 
 Such modules, unless _very_ simple, **need** to have a `readme.dm` in their folder, containing the following:
 
