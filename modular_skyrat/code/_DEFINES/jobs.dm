@@ -1,3 +1,0 @@
-#define BLUESHIELD		(1<<15)
-
-#define JOB_DISPLAY_ORDER_BLUESHIELD 34

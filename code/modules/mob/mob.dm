@@ -1,3 +1,5 @@
+//THIS FILE WAS EDITED BY SKYRAT EDIT
+
 /**
   * Delete a mob
   *
@@ -99,10 +101,10 @@
 			if(HUD_LIST_LIST)
 				hud_list[hud] = list()
 			else
-				//SKYRAT EDIT BEGIN - CHANGE
+				//SKYRAT EDIT CHANGE BEGIN - BLUESHIELD
 				//var/image/I = image('icons/mob/hud.dmi', src, "") - SKYRAT EDIT ORIGINAL
-				var/image/I = image('icons/mob/hud.dmi', src, "") && image('modular_skyrat/icons/mob/hud.dmi' , src, "") //SKYRAT EDIT
-				//SKYRAT EDIT END
+				var/image/I = image('icons/mob/hud.dmi', src, "") && image('modular_skyrat/master_files/icons/mob/hud.dmi' , src, "") //SKYRAT EDIT(master file edit in master_files)
+				//SKYRAT EDIT CHANGE END
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
 
