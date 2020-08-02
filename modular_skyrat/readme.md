@@ -67,6 +67,28 @@ If your change is not entirely contained within an already modularized feature, 
 
 ### Assets: images, sounds, icons and binaries
 
+>APPEND PROPOSAL
+
+Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
+
+All assets added by us should be placed into the same modular folder as your code. This means everything is kept inside your module folder, sounds, icons and code files. 
+- ***Example:*** You're adding a new lavaland mob.
+First of all you create your modular folder. E.g. `modular_skyrat/modules/lavalandmob`
+
+And then you'd want to create sub-folders for each component. E.g. `/code` for code and `/sounds` for sound files and `/icons` for any icon files.
+
+After doing this you'd want to change the references within the code.
+```byond
+	/mob/lavaland/newmob
+		icon = 'modular_skyrat/modules/lavalandmob/icons/mob.dmi'
+		icon_state = "dead_1"
+		sound = 'modular_skyrat/modules/lavalandmob/sounds/boom.ogg'
+```
+
+This ensures your code is fully modular and will make it easier for future edits.
+
+>APPEND END
+
 Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
 
 All assets added by us should be added to the appropriate subfolders of the **`modular_skyrat/`**, creating them if necessary, corresponding to the position where they would go in the core code's folder structure so:
@@ -105,9 +127,21 @@ This section will be fairly straightforward, however, I will try to go over the 
 
 The rule of thumb is that if you don't absolutely have to, you shouldn't make any changes to core codebase files.
 
+>APPEND PROPOSAL
+
+In short, most of the modular code will be placed in the subfolders of your main module folder **`modular_skyrat/modules/yourmodule/code/`**, with similar rules as with the assets, in terms of correspondence to the main code locations.
+In case of new content, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/modules/yourmodule/code`** in their own separate folder, to ensure they're easy to find, manage and maintain.
+For example, `modular_skyrat/modules/xenoarcheaology/code` containing all the code, tools, items and machinery related to it.
+
+>APPEND END
+
+>
+
 In short, most of the modular code will be placed in the subfolders of  **`modular_skyrat/code/`**, with similar rules as with the assets, in terms of correspondence to the main code locations.
 In case of new content, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/code/modules`** in their own separate folder, to ensure they're easy to find, manage and maintain.
 For example, `modular_skyrat/code/modules/xenoarcheaology` containing all the code, tools, items and machinery related to it.
+
+>
 
 Such modules, unless _very_ simple, **need** to have a `readme.dm` in their folder, containing the following:
 
@@ -187,7 +221,7 @@ And that wraps the basics of it up.
 
 Every once in a while, there comes a time, where editing the core files becomes inevitable.
 
-If you have changed a core code file please be sure to leave a "//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT" at the top of the file.
+If you have changed a core code file please be sure to leave a `//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT` at the top of the file.
 
 In those cases, we've decided to apply the following convention, with examples:
 
