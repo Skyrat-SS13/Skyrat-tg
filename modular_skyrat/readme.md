@@ -73,19 +73,19 @@ Git doesn't handle conflicts of binary files well at all, therefore changes to c
 
 All assets added by us should be placed into the same modular folder as your code. This means everything is kept inside your module folder, sounds, icons and code files. 
 - ***Example:*** You're adding a new lavaland mob.
-First of all you create your modular folder. E.g. `modular_skyrat/modules/lavalandmob`
+	First of all you create your modular folder. E.g. `modular_skyrat/modules/lavalandmob`
 
-And then you'd want to create sub-folders for each component. E.g. `/code` for code and `/sounds` for sound files and `/icons` for any icon files.
+	And then you'd want to create sub-folders for each component. E.g. `/code` for code and `/sounds` for sound files and `/icons` for any icon files.
 
-After doing this you'd want to change the references within the code.
-```byond
-	/mob/lavaland/newmob
-		icon = 'modular_skyrat/modules/lavalandmob/icons/mob.dmi'
-		icon_state = "dead_1"
-		sound = 'modular_skyrat/modules/lavalandmob/sounds/boom.ogg'
-```
+	After doing this you'd want to change the references within the code.
+	```byond
+		/mob/lavaland/newmob
+			icon = 'modular_skyrat/modules/lavalandmob/icons/mob.dmi'
+			icon_state = "dead_1"
+			sound = 'modular_skyrat/modules/lavalandmob/sounds/boom.ogg'
+	```
 
-This ensures your code is fully modular and will make it easier for future edits.
+	This ensures your code is fully modular and will make it easier for future edits.
 
 >APPEND END
 
