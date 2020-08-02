@@ -76,7 +76,7 @@
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFF", "ethcolor" = "9c3030", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs", "moth_wings" = "Plain", "moth_markings" = "None")
+	var/list/features = list("FFF", "FFF", "FFF")
 	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
 
@@ -140,7 +140,6 @@
 	var/scars_index = 1
 	/// Will the person see accessories not meant for their species to choose from
 	var/show_mismatched_accessories = FALSE
-	var/list/mutant_colors = list("FFF", "FFF", "FFF")
 	var/list/mutant_accessories = list()
 
 /datum/preferences/New(client/C)
@@ -1403,7 +1402,7 @@
 						features["ethcolor"] = GLOB.color_list_ethereal[new_etherealcolor]
 
 
-				if("tail_lizard")
+				/*if("tail_lizard")
 					var/new_tail
 					new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in GLOB.tails_list_lizard
 					if(new_tail)
@@ -1473,7 +1472,7 @@
 					var/new_moth_markings
 					new_moth_markings = input(user, "Choose your character's markings:", "Character Preference") as null|anything in GLOB.moth_markings_list
 					if(new_moth_markings)
-						features["moth_markings"] = new_moth_markings
+						features["moth_markings"] = new_moth_markings*/
 
 				if("s_tone")
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
@@ -1913,12 +1912,14 @@
 		pref_species = new /datum/species/human
 		save_character()
 
-	character.dna.features = features.Copy()
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
+	character.dna.features = features.Copy()
+	character.dna.mutant_bodyparts = mutant_bodyparts.Copy()
+	character.dna.species.mutant_bodyparts = mutant_bodyparts.Copy()
 	character.dna.real_name = character.real_name
 
-	if("tail_lizard" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "tail_lizard"
+	/*if("tail_lizard" in pref_species.default_features)
+		character.dna.species.mutant_bodyparts |= "tail_lizard"*/
 
 	if(icon_updates)
 		character.update_body()

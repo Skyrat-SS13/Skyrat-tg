@@ -1,6 +1,6 @@
 
 	//The mob should have a gender you want before running this proc. Will run fine without H
-/datum/preferences/proc/random_character(gender_override, antag_override = FALSE)
+/*/datum/preferences/proc/random_character(gender_override, antag_override = FALSE) SKYRAT - Moved to modular_skyrat
 	if(randomise[RANDOM_SPECIES])
 		random_species()
 	else if(randomise[RANDOM_NAME])
@@ -42,7 +42,7 @@
 	if(gender in list(MALE, FEMALE))
 		body_type = gender
 	else
-		body_type = pick(MALE, FEMALE)
+		body_type = pick(MALE, FEMALE)*/
 
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
