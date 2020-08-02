@@ -65,7 +65,7 @@ Our answer to this is modularization of the code.
 
 >APPEND PROPOSAL
 
-Always start by thinking of a name of your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
+Always start by thinking of a name for your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
 
 And then you'll want to establish your core folder that you'll be working out of. E.g. `modular_skyrat/modules/yourmodulename`
 
