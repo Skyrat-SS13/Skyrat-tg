@@ -1,6 +1,4 @@
-GLOBAL_LIST_EMPTY(preferences_datums)
-
-/*/datum/preferences Moved to modular_skyrat
+/datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
 	var/path
@@ -140,6 +138,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/scars_list = list("1" = "", "2" = "", "3" = "", "4" = "", "5" = "")
 	/// Which of the 5 persistent scar slots we randomly roll to load for this round, if enabled. Actually rolled in [/datum/preferences/proc/load_character(slot)]
 	var/scars_index = 1
+	/// Will the person see accessories not meant for their species to choose from
+	var/show_mismatched_accessories = FALSE
+	var/list/mutant_colors = list("FFF", "FFF", "FFF")
+	var/list/mutant_accessories = list()
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -380,7 +382,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			//Mutant stuff
 			var/mutant_category = 0
 
-			if("tail_lizard" in pref_species.default_features)
+			/*if("tail_lizard" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -521,7 +523,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				mutant_category++
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
-					mutant_category = 0
+					mutant_category = 0*/
 
 			//Adds a thing to select which phobia because I can't be assed to put that in the quirks window
 			if("Phobia" in all_quirks)
@@ -529,7 +531,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "<a href='?_src_=prefs;preference=phobia;task=input'>[phobia]</a><BR>"
 
-			if(CONFIG_GET(flag/join_with_mutant_humans))
+			/*if(CONFIG_GET(flag/join_with_mutant_humans))
 
 				if("wings" in pref_species.default_features && GLOB.r_wings_list.len >1)
 					if(!mutant_category)
@@ -542,7 +544,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					mutant_category++
 					if(mutant_category >= MAX_MUTANT_ROWS)
 						dat += "</td>"
-						mutant_category = 0
+						mutant_category = 0*/
 
 			if(mutant_category)
 				dat += "</td>"
@@ -1967,4 +1969,4 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z,[namedata["allow_numbers"] ? ",0-9," : ""] -, ' and .</font>")
 			return
 		else
-			custom_names[name_id] = sanitized_name*/
+			custom_names[name_id] = sanitized_name

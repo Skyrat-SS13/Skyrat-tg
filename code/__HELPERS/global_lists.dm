@@ -14,7 +14,7 @@
 	//socks
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, GLOB.socks_list)
 	//bodypart accessories (blizzard intensifies)
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)
+	/*init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, GLOB.body_markings_list)  SKYRAT EDIT - We dont use those in favor for a more modular system
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails_animated/lizard, GLOB.animated_tails_list_lizard)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
@@ -31,7 +31,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.r_wings_list,roundstart = TRUE)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/caps, GLOB.caps_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings, GLOB.moth_wings_list)
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)*/
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))
