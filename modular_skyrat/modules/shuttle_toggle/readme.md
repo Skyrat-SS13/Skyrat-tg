@@ -2,7 +2,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/111
 
 ## Title: Togglable Emergency Shuttle
 
-MODULE REFERENCE: SHUTTLE_TOGGLE
+MODULE ID: SHUTTLE_TOGGLE
 
 ### Description:
 
