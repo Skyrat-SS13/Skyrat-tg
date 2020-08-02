@@ -11,6 +11,7 @@ Adds the blueshield job to the game. It does not however add the blueshield offi
 ### TG Proc Changes:
 
 - code/modules/jobs/jobs.dm > GLOBAL_LIST_INIT(security_positions, list()
+- code/modules/jobs/access.dm > /proc/get_all_accesses()
 
 ### Defines:
 
