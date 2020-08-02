@@ -1,3 +1,5 @@
+//MODULE INTERACTION_MENU
+
 /mob/proc/try_interaction()
 	return
 

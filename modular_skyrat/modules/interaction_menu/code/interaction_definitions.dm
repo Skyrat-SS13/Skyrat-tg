@@ -1,3 +1,5 @@
+//MODULE INTERACTION_MENU
+
 /datum/interaction/handshake
 	command = "handshake"
 	description = "Shake their hand."
@@ -23,7 +25,7 @@
 	description = "Give them a high-five."
 	require_user_mouth = 1
 	simple_message = "USER high fives TARGET!"
-	interaction_sound = 'modular_skyrat/sound/interactions/slap.ogg'
+	interaction_sound = 'modular_skyrat/modules/interaction_menu/sound/slap.ogg'
 	needs_physical_contact = 1
 
 /datum/interaction/headpat

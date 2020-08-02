@@ -1,3 +1,5 @@
+//MODULE INTERACTION_MENU
+
 /mob/living
 	var/refractory_period = 0
 	var/last_interaction_time = 0

@@ -1,3 +1,5 @@
+//MODULE INTERACTION_MENU
+
 /*********************************
 *******Interactions code by HONKERTRON feat TestUnit********
 **Contains a lot ammount of ERP and MEHANOYEBLYA**
