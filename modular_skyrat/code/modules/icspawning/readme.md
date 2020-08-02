@@ -17,10 +17,10 @@ N/A
 
 ### Included files:
 
-./cards_ids.dm
-./observer.dm
-./spell.dm
-./standard.dm
+- ./cards_ids.dm
+- ./observer.dm
+- ./spell.dm
+- ./standard.dm
 
 ### Credits:
 
