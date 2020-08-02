@@ -183,9 +183,11 @@ you can define a child proc for it, that will get inserted into the inheritance 
 
 And that wraps the basics of it up.
 
-### Non-modular changes to the core code
+### Non-modular changes to the core code - IMPORTANT
 
 Every once in a while, there comes a time, where editing the core files becomes inevitable.
+
+If you have changed a core code file please be sure to leave a "//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT" at the top of the file.
 
 In those cases, we've decided to apply the following convention, with examples:
 
