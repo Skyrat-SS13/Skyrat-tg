@@ -14,25 +14,7 @@ Adds an interaction menu to players, the ability to right click and choose from 
 
 ### Defines:
 
-#define INTERACT_ATOM_REQUIRES_ANCHORED 			(1<<0)
-#define INTERACT_ATOM_ATTACK_HAND 					(1<<1)
-#define INTERACT_ATOM_UI_INTERACT 					(1<<2)
-#define INTERACT_ATOM_REQUIRES_DEXTERITY 			(1<<3)
-#define INTERACT_ATOM_IGNORE_INCAPACITATED		 	(1<<4)
-#define INTERACT_ATOM_IGNORE_RESTRAINED 			(1<<5)
-#define INTERACT_ATOM_CHECK_GRAB 					(1<<6)
-#define INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND	(1<<7)
-#define INTERACT_ATOM_NO_FINGERPRINT_INTERACT 		(1<<8)
-
-#define INTERACT_ITEM_ATTACK_HAND_PICKUP (1<<0)
-
-#define INTERACT_MACHINE_OPEN 				(1<<0)
-#define INTERACT_MACHINE_OFFLINE 			(1<<1)
-#define INTERACT_MACHINE_WIRES_IF_OPEN 		(1<<2)
-#define INTERACT_MACHINE_ALLOW_SILICON 		(1<<3)
-#define INTERACT_MACHINE_OPEN_SILICON 		(1<<4)
-#define INTERACT_MACHINE_REQUIRES_SILICON	(1<<5)
-#define INTERACT_MACHINE_SET_MACHINE 		(1<<6)
+- N/A
 
 ### Included files that are not contained in this module:
 
