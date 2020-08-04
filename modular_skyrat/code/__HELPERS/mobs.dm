@@ -25,3 +25,20 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)*/
 	//For now we will always return none for tail_human and ears.
 	return(list("#FFF", "#FFF", "#FFF"))
+
+/proc/accessory_list_of_key_for_species(key, datum/species/S)
+	var/list/accessory_list = list()
+	for(var/name in GLOB.sprite_accessories[key])
+		var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][name]
+		if(SP.recommended_species && !(S.id in SP.recommended_species))
+			continue
+		accessory_list += SP.name
+	if(accessory_list.len == 0) //For some reason we've got no matches. Let's default to the species default
+		accessory_list += S.default_mutant_bodyparts[key]
+	return accessory_list
+
+
+/proc/random_accessory_of_key_for_species(key, datum/species/S)
+	var/list/accessory_list = accessory_list_of_key_for_species(key, S)
+	var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][pick(accessory_list)]
+	return SP

@@ -9,4 +9,5 @@
 	uni_identity = generate_uni_identity()
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
-	//features = random_features()
+	features = species.get_random_features()
+	mutant_bodyparts = species.get_random_mutant_bodyparts(features)

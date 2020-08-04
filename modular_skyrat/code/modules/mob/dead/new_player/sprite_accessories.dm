@@ -8,14 +8,17 @@
 	///You can also put down a a HEX color, to be used instead as the default
 	var/default_color = DEFAULT_PRIMARY
 
+	var/skip_type = /datum/sprite_accessory
+
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/proc/can_show(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return TRUE
 
 /datum/sprite_accessory/proc/get_default_color(var/list/features) //Needs features for the color information
-	if(color_src != USE_ONE_COLOR && color_src != USE_MATRIXED_COLORS) //We're not using a custom color key, return null
-		return null
+	if(color_src != USE_ONE_COLOR && color_src != USE_MATRIXED_COLORS) //We're not using a custom color key, return white
+		message_admins("Default color returning prematurely")
+		return list("#FFF")
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
@@ -32,40 +35,52 @@
 
 	//Someone set up an accessory wrong. Lets do a fallback
 	if(color_src == USE_ONE_COLOR && colors.len != 1)
-		colors = list("#FFF") 
+		colors = list("#FFF")
 	if(color_src == USE_MATRIXED_COLORS && colors.len != 3)
 		colors = list("#FFF", "#FFF", "#FFF")
+	message_admins("Default color returning a list of [colors.len] length, containing [colors[1]] as its first index")
 	return colors
 
 /datum/sprite_accessory/moth_wings
 	key = "moth_wings"
+	skip_type = /datum/sprite_accessory/moth_wings
 
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
+	skip_type = /datum/sprite_accessory/moth_markings
 
 /datum/sprite_accessory/spines
 	key = "spines"
+	skip_type = /datum/sprite_accessory/spines
 
 /datum/sprite_accessory/caps
 	key = "caps"
+	skip_type = /datum/sprite_accessory/caps
 
 /datum/sprite_accessory/frills
 	key = "frills"
+	skip_type = /datum/sprite_accessory/frills
 
 /datum/sprite_accessory/horns
 	key = "horns"
+	skip_type = /datum/sprite_accessory/horns
 
 /datum/sprite_accessory/ears
 	key = "ears"
+	skip_type = /datum/sprite_accessory/ears
 
 /datum/sprite_accessory/snouts
 	key = "snout"
+	skip_type = /datum/sprite_accessory/snouts
 
 /datum/sprite_accessory/tails
 	key = "tail"
+	skip_type = /datum/sprite_accessory/tails
 
 /datum/sprite_accessory/body_markings
 	key = "body_markings"
+	skip_type = /datum/sprite_accessory/body_markings
 
 /datum/sprite_accessory/legs
 	key = "legs"
+	skip_type = /datum/sprite_accessory/legs

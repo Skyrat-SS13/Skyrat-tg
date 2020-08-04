@@ -140,7 +140,8 @@
 	var/scars_index = 1
 	/// Will the person see accessories not meant for their species to choose from
 	var/show_mismatched_accessories = FALSE
-	var/list/mutant_accessories = list()
+	var/list/mutant_bodyparts = list()
+	features = list("#FFF","#FFF","#FFF")
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -380,6 +381,31 @@
 
 			//Mutant stuff
 			var/mutant_category = 0
+
+			for(var/key in mutant_bodyparts)
+				if(!mutant_category)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>[key]</h3>"
+
+				var/acc_name = mutant_bodyparts[key][1]
+				dat += "<a href='?_src_=prefs;key=[key];preference=change_name;task=change_bodypart'>[acc_name]</a>"
+				var/shown_colors = 0
+				var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][acc_name]
+				if(SA.color_src == USE_MATRIXED_COLORS)
+					shown_colors = 3
+				else if (SA.color_src == USE_ONE_COLOR)
+					shown_colors = 1
+				if(shown_colors)
+					var/list/colorlist = mutant_bodyparts[key][2]
+					for(var/i in 1 to shown_colors)
+						dat += "<span style='border: 1px solid #161616; background-color: [colorlist[i]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'>Change</a>"
+				dat += "<BR>"
+
+				mutant_category++
+				if(mutant_category >= MAX_MUTANT_ROWS)
+					dat += "</td>"
+					mutant_category = 0
 
 			/*if("tail_lizard" in pref_species.default_features)
 				if(!mutant_category)
@@ -1182,6 +1208,32 @@
 		return TRUE
 
 	switch(href_list["task"])
+		if("change_bodypart")
+			switch(href_list["preference"])
+				if("change_name")
+					var/key = href_list["key"]
+					if(!mutant_bodyparts[key])
+						return
+					var/new_name 
+					if(show_mismatched_accessories)
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in GLOB.sprite_accessories[key]
+					else
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key,pref_species)
+					if(new_name && mutant_bodyparts[key])
+						mutant_bodyparts[key][1] = new_name
+						validate_color_keys_for_part(key)
+				if("change_color")
+					var/key = href_list["key"]
+					if(!mutant_bodyparts[key])
+						return
+					var/list/colorlist = mutant_bodyparts[key][2]
+					var/index = text2num(href_list["color_index"])
+					if(colorlist.len < index)
+						return
+					var/new_color = input(user, "Choose your character's [key] color:", "Character Preference","colorlist[index]") as color|null
+					if(new_color)
+						colorlist[index] = new_color
+
 		if("random")
 			switch(href_list["preference"])
 				if("name")
@@ -1378,12 +1430,13 @@
 					if(result)
 						var/newtype = GLOB.species_list[result]
 						pref_species = new newtype()
-						//Now that we changed our species, we must verify that the mutant colour is still allowed.
+						/*//Now that we changed our species, we must verify that the mutant colour is still allowed.
 						var/temp_hsv = RGBtoHSV(features["mcolor"])
 						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color
+							features["mcolor"] = pref_species.default_color*/
 						if(randomise[RANDOM_NAME])
 							real_name = pref_species.random_name(gender)
+						validate_species_parts()
 
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null

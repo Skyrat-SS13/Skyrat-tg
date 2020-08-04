@@ -50,6 +50,7 @@
 	GLOB.emote_list = init_emote_list()
 
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
+	make_sprite_accessory_references() //Skyrat edit
 
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.

@@ -43,4 +43,39 @@
 	else
 		body_type = pick(MALE, FEMALE)
 	features = pref_species.get_random_features()
-	mutant_accessories = pref_species.get_random_mutant_bodyparts(features)
+	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
+
+//This proc makes sure that we only have the parts that the species should have, add missing ones, remove extra ones(should any be changed)
+//Also, this handles missing color keys
+/datum/preferences/proc/validate_species_parts()
+	if(!pref_species)
+		return
+
+	//Remove all "extra" accessories
+	for(var/key in mutant_bodyparts)
+		if(!GLOB.sprite_accessories[key]) //That accessory no longer exists, remove it
+			mutant_bodyparts -= key
+			continue
+		if(!pref_species.default_mutant_bodyparts[key])
+			mutant_bodyparts -= key
+			continue
+		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][1]]) //The individual accessory no longer exists
+			mutant_bodyparts[key][1] = pref_species.default_mutant_bodyparts[key]
+		validate_color_keys_for_part(key) //Validate the color count of each accessory that wasnt removed
+
+	//Add any missing accessories
+	for(var/key in pref_species.default_mutant_bodyparts)
+		if(!mutant_bodyparts[key])
+			var/datum/sprite_accessory/SA = random_accessory_of_key_for_species(key, pref_species)
+			var/final_list = list()
+			final_list += SA.name
+			final_list += SA.get_default_color(features)
+			mutant_bodyparts[key] = final_list
+
+/datum/preferences/proc/validate_color_keys_for_part(key)
+	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key]]
+	var/list/colorlist = mutant_bodyparts[key][2]
+	if(SA.color_src == USE_MATRIXED_COLORS && colorlist.len != 3)
+		mutant_bodyparts[key][2] = SA.get_default_color()
+	else if (SA.color_src == USE_ONE_COLOR && colorlist.len != 1)
+		mutant_bodyparts[key][2] = SA.get_default_color()

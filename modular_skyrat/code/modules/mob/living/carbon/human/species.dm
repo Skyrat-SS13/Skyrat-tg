@@ -102,10 +102,7 @@
 		var/layertext = mutant_bodyparts_layertext(layer)
 
 		for(var/bodypart in bodyparts_to_add)
-			message_admins("[bodypart]")
-			message_admins("[bodyparts_to_add[bodypart]]")
 			if(!GLOB.sprite_accessories[bodypart])
-				message_admins("WRONG BODYPART TRIED TO BE RENDERED -> [bodypart]")
 				return
 			var/datum/sprite_accessory/S = GLOB.sprite_accessories[bodypart][bodyparts_to_add[bodypart][MUTANT_INDEX_NAME]]
 			if(!S || S.icon_state == "none")
@@ -179,7 +176,7 @@
 
 /datum/species
 	///This holds 3 lists. Each of the list is possible colors to choose for randomization of a species, first list is primary, second secondary, third tertiary
-	var/list/default_colors = list(list("FFF"), list("FFF"), list("FFF"))
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 
@@ -187,36 +184,45 @@
 	
 
 /datum/species/dullahan
-	//default_features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/human/felinid
-	//default_features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/human
-	//default_features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/moth
-	//default_features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/mush
-	//default_features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/vampire
-	//default_features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/lizard
-	//default_features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
+	default_features = list(list("#FFF"), list("#FFF"), list("#FFF"))
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = "Round", "spines" = "None", "horns" = "None", "frills" = "None", "body_markings" = "None", "legs" = "Digitigrade")
+	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = "Round", "spines" = "None", "horns" = "None", "frills" = "None", "body_markings" = "None")
 
 /datum/species/proc/get_random_features()
-	return
+	var/list/feature_list = list()
+	feature_list += pick(default_features[1])
+	feature_list += pick(default_features[2])
+	feature_list += pick(default_features[3])
+	return feature_list
 
-/datum/species/proc/get_random_mutant_bodyparts(var/list/features) //Needs features to base the colour off of
-	return
+/datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
+	var/list/mutantpart_list = list()
+	for(var/key in default_mutant_bodyparts)
+		var/datum/sprite_accessory/SP = random_accessory_of_key_for_species(key, src)
+		var/list/color_list = SP.get_default_color()
+		mutantpart_list[key] = list(SP.name,color_list)
+	return mutantpart_list
