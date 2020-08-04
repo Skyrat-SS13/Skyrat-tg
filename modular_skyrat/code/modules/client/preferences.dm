@@ -76,7 +76,7 @@
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("FFF", "FFF", "FFF")
+	var/list/features = list("mcolor" = "#FFF", "mcolor2" = "#FFF", "mcolor3" = "#FFF")
 	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
 
@@ -1220,7 +1220,7 @@
 					else
 						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key,pref_species)
 					if(new_name && mutant_bodyparts[key])
-						mutant_bodyparts[key][1] = new_name
+						mutant_bodyparts[key][MUTANT_INDEX_NAME] = new_name
 						validate_color_keys_for_part(key)
 				if("change_color")
 					var/key = href_list["key"]
