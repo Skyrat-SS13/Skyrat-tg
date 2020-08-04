@@ -224,5 +224,8 @@
 	for(var/key in default_mutant_bodyparts)
 		var/datum/sprite_accessory/SP = random_accessory_of_key_for_species(key, src)
 		var/list/color_list = SP.get_default_color()
-		mutantpart_list[key] = list(SP.name,color_list)
+		var/list/final_list = list()
+		final_list[MUTANT_INDEX_NAME] = SP.name
+		final_list[MUTANT_INDEX_COLOR_LIST] = color_list
+
 	return mutantpart_list

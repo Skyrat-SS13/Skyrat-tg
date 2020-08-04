@@ -21,8 +21,8 @@
 #define COLOR_SRC_MATRIXED	4
 
 // Defines for mutant bodyparts indexes
-#define MUTANT_INDEX_NAME		1
-#define MUTANT_INDEX_COLOR_LIST	2
+#define MUTANT_INDEX_NAME		"name"
+#define MUTANT_INDEX_COLOR_LIST	"color"
 
 //Does this need alpha (4th thing) in the color lists? I dont know!! help
 #define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64), list(0.64, 0.64, 0.64), list(0.64, 0.64, 0.64), list(0, 0, 0, 1))

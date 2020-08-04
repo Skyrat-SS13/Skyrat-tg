@@ -605,7 +605,7 @@
 			if(S.fixed_mut_color)
 				species_color = S.fixed_mut_color
 			else
-				species_color = H.dna.features["mcolor"]
+				species_color = H.dna.features[1] //Skyrat change from mcolors to 1 index
 			should_draw_greyscale = TRUE
 		else
 			species_color = ""

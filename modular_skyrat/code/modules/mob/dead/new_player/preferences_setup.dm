@@ -59,8 +59,8 @@
 		if(!pref_species.default_mutant_bodyparts[key])
 			mutant_bodyparts -= key
 			continue
-		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][1]]) //The individual accessory no longer exists
-			mutant_bodyparts[key][1] = pref_species.default_mutant_bodyparts[key]
+		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) //The individual accessory no longer exists
+			mutant_bodyparts[key][MUTANT_INDEX_NAME] = pref_species.default_mutant_bodyparts[key]
 		validate_color_keys_for_part(key) //Validate the color count of each accessory that wasnt removed
 
 	//Add any missing accessories
@@ -68,14 +68,14 @@
 		if(!mutant_bodyparts[key])
 			var/datum/sprite_accessory/SA = random_accessory_of_key_for_species(key, pref_species)
 			var/final_list = list()
-			final_list += SA.name
-			final_list += SA.get_default_color(features)
+			final_list[MUTANT_INDEX_NAME] = SA.name
+			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
 			mutant_bodyparts[key] = final_list
 
 /datum/preferences/proc/validate_color_keys_for_part(key)
-	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key]]
-	var/list/colorlist = mutant_bodyparts[key][2]
+	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+	var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 	if(SA.color_src == USE_MATRIXED_COLORS && colorlist.len != 3)
-		mutant_bodyparts[key][2] = SA.get_default_color()
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color()
 	else if (SA.color_src == USE_ONE_COLOR && colorlist.len != 1)
-		mutant_bodyparts[key][2] = SA.get_default_color()
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color()

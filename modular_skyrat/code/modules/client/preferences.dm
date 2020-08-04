@@ -388,7 +388,7 @@
 
 				dat += "<h3>[key]</h3>"
 
-				var/acc_name = mutant_bodyparts[key][1]
+				var/acc_name = mutant_bodyparts[key][MUTANT_INDEX_NAME]
 				dat += "<a href='?_src_=prefs;key=[key];preference=change_name;task=change_bodypart'>[acc_name]</a>"
 				var/shown_colors = 0
 				var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][acc_name]
@@ -397,9 +397,9 @@
 				else if (SA.color_src == USE_ONE_COLOR)
 					shown_colors = 1
 				if(shown_colors)
-					var/list/colorlist = mutant_bodyparts[key][2]
+					var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 					for(var/i in 1 to shown_colors)
-						dat += "<span style='border: 1px solid #161616; background-color: [colorlist[i]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'>Change</a>"
+						dat += "<span style='border: 1px solid #161616; background-color: [colorlist[i]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'>Set</a>"
 				dat += "<BR>"
 
 				mutant_category++
@@ -1226,7 +1226,7 @@
 					var/key = href_list["key"]
 					if(!mutant_bodyparts[key])
 						return
-					var/list/colorlist = mutant_bodyparts[key][2]
+					var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 					var/index = text2num(href_list["color_index"])
 					if(colorlist.len < index)
 						return

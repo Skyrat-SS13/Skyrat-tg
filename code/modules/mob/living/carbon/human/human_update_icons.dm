@@ -559,8 +559,8 @@ generate/load female uniform sprites matching all previously decided variables
 		. += "-coloured-[skin_tone]"
 	else if(dna.species.fixed_mut_color)
 		. += "-coloured-[dna.species.fixed_mut_color]"
-	else if(dna.features["mcolor"])
-		. += "-coloured-[dna.features["mcolor"]]"
+	else if(MUTCOLORS in dna.species.species_traits) //Skyrat edit
+		. += "-coloured-[dna.features[1]]" //Skyrat edit
 	else
 		. += "-not_coloured"
 
