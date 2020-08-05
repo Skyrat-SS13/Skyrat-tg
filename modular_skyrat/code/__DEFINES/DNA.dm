@@ -26,3 +26,6 @@
 
 //Does this need alpha (4th thing) in the color lists? I dont know!! help
 #define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64), list(0.64, 0.64, 0.64), list(0.64, 0.64, 0.64), list(0, 0, 0, 1))
+
+//Defines for an accessory to be randomed
+#define ACC_RANDOM		"random"

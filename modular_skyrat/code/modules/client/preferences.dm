@@ -387,11 +387,14 @@
 			//Mutant stuff
 			var/mutant_category = 0
 
+			var/list/generic_cache = GLOB.generic_accessories
 			for(var/key in mutant_bodyparts)
+				if(!generic_cache[key]) //This means that we have a mutant bodypart that shouldnt be bundled here (genitals)
+					continue
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>[key]</h3>"
+				dat += "<h3>[generic_cache[key]]</h3>"
 
 				var/acc_name = mutant_bodyparts[key][MUTANT_INDEX_NAME]
 				if(allow_advanced_colors)
@@ -2008,11 +2011,7 @@
 		set_new_species(/datum/species/human)
 		save_character()
 
-	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
-	character.dna.features = features.Copy()
-	character.dna.mutant_bodyparts = mutant_bodyparts.Copy()
-	character.dna.species.mutant_bodyparts = mutant_bodyparts.Copy()
-	character.dna.real_name = character.real_name
+	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 
 	/*if("tail_lizard" in pref_species.default_features)
 		character.dna.species.mutant_bodyparts |= "tail_lizard"*/

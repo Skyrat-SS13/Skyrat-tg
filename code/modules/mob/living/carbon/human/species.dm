@@ -325,7 +325,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
   * * old_species - The species that the carbon used to be before becoming this race, used for regenerating organs.
   * * pref_load - Preferences to be loaded from character setup, loads in preferred mutant things like bodyparts, digilegs, skin color, etc.
   */
-/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+/*/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load) SKYRAT - moved to modular_skyrat
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
 		C.gender = PLURAL
@@ -390,7 +390,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
-	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
+	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)*/
 
 /**
   * Proc called when a carbon is no longer this species.

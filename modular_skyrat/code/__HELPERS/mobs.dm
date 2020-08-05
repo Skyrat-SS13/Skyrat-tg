@@ -33,8 +33,6 @@
 		if(SP.recommended_species && !(S.id in SP.recommended_species))
 			continue
 		accessory_list += SP.name
-	if(accessory_list.len == 0) //For some reason we've got no matches. Let's default to the species default
-		accessory_list += S.default_mutant_bodyparts[key]
 	return accessory_list
 
 

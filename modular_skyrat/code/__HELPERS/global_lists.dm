@@ -7,3 +7,6 @@
 			if(!GLOB.sprite_accessories[P.key])
 				GLOB.sprite_accessories[P.key] = list()
 			GLOB.sprite_accessories[P.key][P.name] = P
+			//TODO: Replace "generic" definitions with something better
+			if(P.generic && !GLOB.generic_accessories[P.key])
+				GLOB.generic_accessories[P.key] = P.generic

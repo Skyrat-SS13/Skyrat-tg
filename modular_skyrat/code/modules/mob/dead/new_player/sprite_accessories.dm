@@ -7,10 +7,16 @@
 	///Which color we default to on acquisition of the accessory (such as switching species, default color for character customization etc)
 	///You can also put down a a HEX color, to be used instead as the default
 	var/default_color = DEFAULT_PRIMARY
+	///Set this to a name, then the accessory will be shown in preferences, if a species can have it. Most accessories have this
+	///Notable things that have it set to FALSE are things that need special setup, such as genitals
+	var/generic
 
 	var/skip_type = /datum/sprite_accessory
 
 	color_src = USE_ONE_COLOR
+	//TODO: Add a factual variable for sprite accessories that shouldn't be imprinted on the species mutant bodyparts, but still stay in DNA
+	//That would be useful for making sure no weird stuff happens with sprite accessories that are associated with organs
+	//Due to the lack of it, possibly making "Empty" mutant bodyparts, if a specie can have it, but the preference is chosen to "None"
 
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return FALSE
@@ -52,10 +58,12 @@
 
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
+	generic = "Moth markings"
 	skip_type = /datum/sprite_accessory/moth_markings
 
 /datum/sprite_accessory/spines
 	key = "spines"
+	generic = "Spines"
 	skip_type = /datum/sprite_accessory/spines
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -65,10 +73,12 @@
 
 /datum/sprite_accessory/caps
 	key = "caps"
+	generic = "Caps"
 	skip_type = /datum/sprite_accessory/caps
 
 /datum/sprite_accessory/frills
 	key = "frills"
+	generic = "Frills"
 	skip_type = /datum/sprite_accessory/frills
 
 /datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -78,6 +88,7 @@
 
 /datum/sprite_accessory/horns
 	key = "horns"
+	generic = "Horns"
 	skip_type = /datum/sprite_accessory/horns
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -87,6 +98,7 @@
 
 /datum/sprite_accessory/ears
 	key = "ears"
+	generic = "Ears"
 	skip_type = /datum/sprite_accessory/ears
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -96,6 +108,7 @@
 
 /datum/sprite_accessory/snouts
 	key = "snout"
+	generic = "Snout"
 	skip_type = /datum/sprite_accessory/snouts
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -105,6 +118,7 @@
 
 /datum/sprite_accessory/tails
 	key = "tail"
+	generic = "Tail"
 	skip_type = /datum/sprite_accessory/tails
 
 /datum/sprite_accessory/tails/lizard
@@ -120,8 +134,11 @@
 
 /datum/sprite_accessory/body_markings
 	key = "body_markings"
+	generic = "Body Markings"
 	skip_type = /datum/sprite_accessory/body_markings
 
 /datum/sprite_accessory/legs
 	key = "legs"
+	generic = "Leg Type"
 	skip_type = /datum/sprite_accessory/legs
+	color_src = null

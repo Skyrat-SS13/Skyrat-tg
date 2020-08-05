@@ -37,7 +37,7 @@
 		eye_color = random_eye_color()
 	if(!pref_species)
 		var/rando_race = pick(GLOB.roundstart_races)
-		pref_species = new rando_race()
+		set_new_species(rando_race)
 	if(gender in list(MALE, FEMALE))
 		body_type = gender
 	else
@@ -89,3 +89,9 @@
 	for(var/key in mutant_bodyparts)
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+
+/datum/preferences/proc/random_species()
+	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
+	set_new_species(random_species_type)
+	if(randomise[RANDOM_NAME])
+		real_name = pref_species.random_name(gender,1)

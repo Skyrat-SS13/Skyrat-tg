@@ -207,7 +207,7 @@
 /datum/species/lizard
 	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = "Round", "spines" = "None", "horns" = "None", "frills" = "None", "body_markings" = "None")
+	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs")
 
 /datum/species/proc/get_random_features()
 	var/list/feature_list = list()
@@ -219,7 +219,11 @@
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
 	for(var/key in default_mutant_bodyparts)
-		var/datum/sprite_accessory/SP = random_accessory_of_key_for_species(key, src)
+		var/datum/sprite_accessory/SP
+		if(default_mutant_bodyparts[key] == ACC_RANDOM)
+			SP = random_accessory_of_key_for_species(key, src)
+		else
+			SP = GLOB.sprite_accessories[key][default_mutant_bodyparts[key]]
 		var/list/color_list = SP.get_default_color(features)
 		var/list/final_list = list()
 		final_list[MUTANT_INDEX_NAME] = SP.name
@@ -227,3 +231,70 @@
 		mutantpart_list[key] = final_list
 
 	return mutantpart_list
+
+/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+	// Drop the items the new species can't wear
+	if((AGENDER in species_traits))
+		C.gender = PLURAL
+	for(var/slot_id in no_equip)
+		var/obj/item/thing = C.get_item_by_slot(slot_id)
+		if(thing && (!thing.species_exception || !is_type_in_list(src,thing.species_exception)))
+			C.dropItemToGround(thing)
+	if(C.hud_used)
+		C.hud_used.update_locked_slots()
+
+	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
+	if(C.dna.species.mutant_bodyparts["legs"] && C.dna.species.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
+		species_traits += DIGITIGRADE
+	if(DIGITIGRADE in species_traits)
+		C.Digitigrade_Leg_Swap(FALSE)
+
+	C.mob_biotypes = inherent_biotypes
+
+	regenerate_organs(C,old_species)
+
+	if(exotic_bloodtype && C.dna.blood_type != exotic_bloodtype)
+		C.dna.blood_type = exotic_bloodtype
+
+	if(old_species.mutanthands)
+		for(var/obj/item/I in C.held_items)
+			if(istype(I, old_species.mutanthands))
+				qdel(I)
+
+	if(mutanthands)
+		// Drop items in hands
+		// If you're lucky enough to have a TRAIT_NODROP item, then it stays.
+		for(var/V in C.held_items)
+			var/obj/item/I = V
+			if(istype(I))
+				C.dropItemToGround(I)
+			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
+				C.put_in_hands(new mutanthands())
+
+	for(var/X in inherent_traits)
+		ADD_TRAIT(C, X, SPECIES_TRAIT)
+
+	if(TRAIT_VIRUSIMMUNE in inherent_traits)
+		for(var/datum/disease/A in C.diseases)
+			A.cure(FALSE)
+
+	if(TRAIT_TOXIMMUNE in inherent_traits)
+		C.setToxLoss(0, TRUE, TRUE)
+
+	if(TRAIT_NOMETABOLISM in inherent_traits)
+		C.reagents.end_metabolization(C, keep_liverless = TRUE)
+
+	if(TRAIT_GENELESS in inherent_traits)
+		C.dna.remove_all_mutations() // Radiation immune mobs can't get mutations normally
+
+	if(inherent_factions)
+		for(var/i in inherent_factions)
+			C.faction += i //Using +=/-= for this in case you also gain the faction from a different source.
+
+	if(flying_species && isnull(fly))
+		fly = new
+		fly.Grant(C)
+
+	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
+
+	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
