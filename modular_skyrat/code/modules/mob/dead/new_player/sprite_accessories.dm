@@ -18,7 +18,7 @@
 /datum/sprite_accessory/proc/get_default_color(var/list/features) //Needs features for the color information
 	if(color_src != USE_ONE_COLOR && color_src != USE_MATRIXED_COLORS) //We're not using a custom color key, return white
 		message_admins("Default color returning prematurely")
-		return list("#ffffff")
+		return list("FFFFFF")
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
@@ -35,9 +35,9 @@
 
 	//Someone set up an accessory wrong. Lets do a fallback
 	if(color_src == USE_ONE_COLOR && colors.len != 1)
-		colors = list("#ffffff")
+		colors = list("FFFFFF")
 	if(color_src == USE_MATRIXED_COLORS && colors.len != 3)
-		colors = list("#ffffff", "#ffffff", "#ffffff")
+		colors = list("FFFFFF", "FFFFFF", "FFFFFF")
 	message_admins("Default color returning a list of [colors.len] length, containing [colors[1]] as its first index")
 	return colors
 
@@ -106,6 +106,12 @@
 /datum/sprite_accessory/tails
 	key = "tail"
 	skip_type = /datum/sprite_accessory/tails
+
+/datum/sprite_accessory/tails/lizard
+	recommended_species = list("lizard", "ashwalker")
+
+/datum/sprite_accessory/tails/human
+	recommended_species = list("human", "felinid")
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))

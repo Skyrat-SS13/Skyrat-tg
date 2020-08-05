@@ -76,6 +76,16 @@
 	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 	var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 	if(SA.color_src == USE_MATRIXED_COLORS && colorlist.len != 3)
-		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color()
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
 	else if (SA.color_src == USE_ONE_COLOR && colorlist.len != 1)
-		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color()
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+
+/datum/preferences/proc/set_new_species(new_species_path)
+	pref_species = new new_species_path()
+	features = pref_species.get_random_features()
+	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
+
+/datum/preferences/proc/reset_colors()
+	for(var/key in mutant_bodyparts)
+		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)

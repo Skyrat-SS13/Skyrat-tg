@@ -122,7 +122,7 @@
 				if(!forced_colour)
 					switch(S.color_src)
 						if(USE_ONE_COLOR)
-							accessory_overlay.color = bodyparts_to_add[bodypart][MUTANT_INDEX_COLOR_LIST][1]
+							accessory_overlay.color = "#"+bodyparts_to_add[bodypart][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
 							var/list/color_list = bodyparts_to_add[bodypart][MUTANT_INDEX_COLOR_LIST]
 							var/list/finished_list = list()
@@ -176,36 +176,36 @@
 
 /datum/species
 	///This holds 3 lists. Each of the list is possible colors to choose for randomization of a species, first list is primary, second secondary, third tertiary
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 
 /datum/species/dullahan
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
 
 /datum/species/human/felinid
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
 
 /datum/species/human
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
 
 /datum/species/moth
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
 
 /datum/species/mush
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
 
 /datum/species/vampire
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
 
 /datum/species/lizard
-	default_features = list(list("#ffffff"), list("#ffffff"), list("#ffffff"))
+	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = "Round", "spines" = "None", "horns" = "None", "frills" = "None", "body_markings" = "None")
 
@@ -220,9 +220,10 @@
 	var/list/mutantpart_list = list()
 	for(var/key in default_mutant_bodyparts)
 		var/datum/sprite_accessory/SP = random_accessory_of_key_for_species(key, src)
-		var/list/color_list = SP.get_default_color()
+		var/list/color_list = SP.get_default_color(features)
 		var/list/final_list = list()
 		final_list[MUTANT_INDEX_NAME] = SP.name
 		final_list[MUTANT_INDEX_COLOR_LIST] = color_list
+		mutantpart_list[key] = final_list
 
 	return mutantpart_list

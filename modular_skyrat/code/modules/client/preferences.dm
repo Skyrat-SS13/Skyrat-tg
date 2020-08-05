@@ -76,7 +76,7 @@
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "#FFF", "mcolor2" = "#FFF", "mcolor3" = "#FFF")
+	var/list/features = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF")
 	var/list/randomise = list(RANDOM_UNDERWEAR = TRUE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = TRUE, RANDOM_SOCKS = TRUE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
 
@@ -140,6 +140,7 @@
 	var/scars_index = 1
 	/// Will the person see accessories not meant for their species to choose from
 	var/show_mismatched_accessories = FALSE
+	var/allow_advanced_colors = FALSE
 	var/list/mutant_bodyparts = list()
 	features = list("#FFF","#FFF","#FFF")
 
@@ -321,17 +322,21 @@
 				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SKIN_TONE]'>[(randomise[RANDOM_SKIN_TONE]) ? "Lock" : "Unlock"]</A>"
 				dat += "<br>"
 
-			var/mutant_colors
-			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
 
-				if(!use_skintones)
-					dat += APPEARANCE_CATEGORY_COLUMN
+			if(!use_skintones)
+				dat += APPEARANCE_CATEGORY_COLUMN
 
-				dat += "<h3>Mutant Color</h3>"
+			dat += "<h3>Primary Color</h3>"
+			dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
 
-				dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
+			dat += "<h3>Secondary Color</h3>"
+			dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a><BR>"
 
-				mutant_colors = TRUE
+			dat += "<h3>Tertiary Color</h3>"
+			dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a><BR>"
+
+			if(allow_advanced_colors)
+				dat += "<BR><a href='?_src_=prefs;preference=reset_all_colors;task=change_bodypart'>Reset accessory colors</a><BR>"
 
 			if(istype(pref_species, /datum/species/ethereal)) //not the best thing to do tbf but I dont know whats better.
 
@@ -345,7 +350,7 @@
 
 			if((EYECOLOR in pref_species.species_traits) && !(NOEYESPRITES in pref_species.species_traits))
 
-				if(!use_skintones && !mutant_colors)
+				if(!use_skintones)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
 				dat += "<h3>Eye Color</h3>"
@@ -353,7 +358,7 @@
 				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_EYE_COLOR]'>[(randomise[RANDOM_EYE_COLOR]) ? "Lock" : "Unlock"]</A>"
 
 				dat += "<br></td>"
-			else if(use_skintones || mutant_colors)
+			else if(use_skintones)
 				dat += "</td>"
 
 			if(HAIR in pref_species.species_traits)
@@ -389,17 +394,20 @@
 				dat += "<h3>[key]</h3>"
 
 				var/acc_name = mutant_bodyparts[key][MUTANT_INDEX_NAME]
+				if(allow_advanced_colors)
+					dat += "<a href='?_src_=prefs;key=[key];preference=reset_color;task=change_bodypart'>R</a>"
 				dat += "<a href='?_src_=prefs;key=[key];preference=change_name;task=change_bodypart'>[acc_name]</a>"
-				var/shown_colors = 0
-				var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][acc_name]
-				if(SA.color_src == USE_MATRIXED_COLORS)
-					shown_colors = 3
-				else if (SA.color_src == USE_ONE_COLOR)
-					shown_colors = 1
-				if(shown_colors)
-					var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-					for(var/i in 1 to shown_colors)
-						dat += "<span style='border: 1px solid #161616; background-color: [colorlist[i]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'>Set</a>"
+				if(allow_advanced_colors)
+					var/shown_colors = 0
+					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][acc_name]
+					if(SA.color_src == USE_MATRIXED_COLORS)
+						shown_colors = 3
+					else if (SA.color_src == USE_ONE_COLOR)
+						shown_colors = 1
+					if(shown_colors)
+						var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
+						for(var/i in 1 to shown_colors)
+							dat += "<span style='border: 1px solid #161616; background-color: ["#[colorlist[i]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'>Set</a>"
 				dat += "<BR>"
 
 				mutant_category++
@@ -1232,7 +1240,15 @@
 						return
 					var/new_color = input(user, "Choose your character's [key] color:", "Character Preference","colorlist[index]") as color|null
 					if(new_color)
-						colorlist[index] = new_color
+						colorlist[index] = sanitize_hexcolor(new_color)
+				if("reset_color")
+					var/key = href_list["key"]
+					if(!mutant_bodyparts[key])
+						return
+					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+				if("reset_all_colors")
+					reset_colors()
 
 		if("random")
 			switch(href_list["preference"])
@@ -1429,17 +1445,16 @@
 
 					if(result)
 						var/newtype = GLOB.species_list[result]
-						pref_species = new newtype()
+						set_new_species(newtype)
 						/*//Now that we changed our species, we must verify that the mutant colour is still allowed.
 						var/temp_hsv = RGBtoHSV(features["mcolor"])
 						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
 							features["mcolor"] = pref_species.default_color*/
 						if(randomise[RANDOM_NAME])
 							real_name = pref_species.random_name(gender)
-						validate_species_parts()
 
 				if("mutant_color")
-					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null
+					var/new_mutantcolor = input(user, "Choose your character's primary color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
@@ -1448,6 +1463,34 @@
 							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 						else
 							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+						if(!allow_advanced_colors)
+							reset_colors()
+
+				if("mutant_color2")
+					var/new_mutantcolor = input(user, "Choose your character's secondary color:", "Character Preference","#"+features["mcolor2"]) as color|null
+					if(new_mutantcolor)
+						var/temp_hsv = RGBtoHSV(new_mutantcolor)
+						if(new_mutantcolor == "#000000")
+							features["mcolor2"] = pref_species.default_color
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
+							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
+						else
+							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+						if(!allow_advanced_colors)
+							reset_colors()
+
+				if("mutant_color3")
+					var/new_mutantcolor = input(user, "Choose your character's tertiary color:", "Character Preference","#"+features["mcolor3"]) as color|null
+					if(new_mutantcolor)
+						var/temp_hsv = RGBtoHSV(new_mutantcolor)
+						if(new_mutantcolor == "#000000")
+							features["mcolor3"] = pref_species.default_color
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
+							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
+						else
+							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+						if(!allow_advanced_colors)
+							reset_colors()
 
 				if("color_ethereal")
 					var/new_etherealcolor = input(user, "Choose your ethereal color", "Character Preference") as null|anything in GLOB.color_list_ethereal
@@ -1962,7 +2005,7 @@
 	chosen_species = pref_species.type
 	if(roundstart_checks && !(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
 		chosen_species = /datum/species/human
-		pref_species = new /datum/species/human
+		set_new_species(/datum/species/human)
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
