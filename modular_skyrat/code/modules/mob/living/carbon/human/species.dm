@@ -132,7 +132,6 @@
 							finished_list += list(0,0,0,255)
 							for(var/index in 1 to finished_list.len)
 								finished_list[index] /= 255
-								message_admins("finished list: [index] [finished_list[index]]")
 							accessory_overlay.color = finished_list
 						if(MUTCOLORS)
 							if(fixed_mut_color)
@@ -177,36 +176,36 @@
 
 /datum/species
 	///This holds 3 lists. Each of the list is possible colors to choose for randomization of a species, first list is primary, second secondary, third tertiary
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 
 /datum/species/dullahan
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/human/felinid
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/human
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/moth
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/mush
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/vampire
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 
 /datum/species/lizard
-	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")
 

@@ -1,6 +1,6 @@
 /datum/dna
 	var/list/mutant_bodyparts = list()
-	features = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF")
+	features = list("mcolor" = "FFF", "mcolor2" = "FFF", "mcolor3" = "FFF")
 
 /datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
 	if(newblood_type)

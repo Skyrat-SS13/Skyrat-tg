@@ -4,6 +4,7 @@
 	generic = "Taur Type"
 	skip_type = /datum/sprite_accessory/taur
 	color_src = USE_MATRIXED_COLORS
+	default_color = DEFAULT_MATRIXED
 	dimension_x = 64
 	center = TRUE
 	var/taur_mode = NONE //Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
@@ -23,11 +24,13 @@
 	taur_mode = STYLE_HOOF_TAURIC
 	alt_taur_mode = STYLE_PAW_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 
 /datum/sprite_accessory/taur/cow/spotted
 	name = "Cow (Spotted)"
 	icon_state = "cow_spotted"
 	color_src = USE_MATRIXED_COLORS
+	default_color = DEFAULT_MATRIXED
 
 /datum/sprite_accessory/taur/deer
 	name = "Deer"
@@ -35,6 +38,7 @@
 	taur_mode = STYLE_HOOF_TAURIC
 	alt_taur_mode = STYLE_PAW_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	extra = TRUE
 
 /datum/sprite_accessory/taur/drake
@@ -42,18 +46,21 @@
 	icon_state = "drake"
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	extra = TRUE
 
 /datum/sprite_accessory/taur/drake/old
 	name = "Drake (Old)"
 	icon_state = "drake_old"
 	color_src = USE_MATRIXED_COLORS
+	default_color = DEFAULT_MATRIXED
 	extra = FALSE
 
 /datum/sprite_accessory/taur/drider
 	name = "Drider"
 	icon_state = "drider"
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	extra = TRUE
 
 /datum/sprite_accessory/taur/eevee
@@ -61,6 +68,7 @@
 	icon_state = "eevee"
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	extra = TRUE
 
 /datum/sprite_accessory/taur/horse
@@ -85,6 +93,7 @@
 	icon_state = "pede"
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	extra = TRUE
 	extra2 = TRUE
 
@@ -93,6 +102,7 @@
 	icon_state = "tentacle"
 	taur_mode = STYLE_SNEK_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	hide_legs = USE_SNEK_CLIP_MASK
 
 /datum/sprite_accessory/taur/canine
@@ -100,6 +110,7 @@
 	icon_state = "canine"
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	extra = TRUE
 
 /datum/sprite_accessory/taur/feline
@@ -107,4 +118,5 @@
 	icon_state = "feline"
 	taur_mode = STYLE_PAW_TAURIC
 	color_src = USE_ONE_COLOR
+	default_color = DEFAULT_PRIMARY
 	extra = TRUE

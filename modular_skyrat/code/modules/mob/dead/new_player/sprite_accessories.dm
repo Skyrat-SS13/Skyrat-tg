@@ -28,8 +28,7 @@
 
 /datum/sprite_accessory/proc/get_default_color(var/list/features) //Needs features for the color information
 	if(color_src != USE_ONE_COLOR && color_src != USE_MATRIXED_COLORS) //We're not using a custom color key, return white
-		message_admins("Default color returning prematurely")
-		return list("FFFFFF")
+		return list("FFF")
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
@@ -41,15 +40,13 @@
 		if(DEFAULT_MATRIXED)
 			colors = list(features["mcolor"], features["mcolor2"], features["mcolor3"])
 		else
-			message_admins("adding default color")
 			colors = default_color
 
 	//Someone set up an accessory wrong. Lets do a fallback
 	if(color_src == USE_ONE_COLOR && colors.len != 1)
-		colors = list("FFFFFF")
+		colors = list("FFF")
 	if(color_src == USE_MATRIXED_COLORS && colors.len != 3)
-		colors = list("FFFFFF", "FFFFFF", "FFFFFF")
-	message_admins("Default color returning a list of [colors.len] length, containing [colors[1]] as its first index")
+		colors = list("FFF", "FFF", "FFF")
 	return colors
 
 /datum/sprite_accessory/moth_wings
