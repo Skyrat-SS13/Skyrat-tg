@@ -14,6 +14,11 @@
 	var/skip_type = /datum/sprite_accessory
 
 	color_src = USE_ONE_COLOR
+
+	var/extra = FALSE
+	var/extra_color_src
+	var/extra2 = FALSE
+	var/extra2_color_src
 	//TODO: Add a factual variable for sprite accessories that shouldn't be imprinted on the species mutant bodyparts, but still stay in DNA
 	//That would be useful for making sure no weird stuff happens with sprite accessories that are associated with organs
 	//Due to the lack of it, possibly making "Empty" mutant bodyparts, if a specie can have it, but the preference is chosen to "None"

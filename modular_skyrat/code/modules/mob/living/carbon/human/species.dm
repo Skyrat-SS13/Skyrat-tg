@@ -129,9 +129,10 @@
 							finished_list += ReadRGB("[color_list[1]]0")
 							finished_list += ReadRGB("[color_list[2]]0")
 							finished_list += ReadRGB("[color_list[3]]0")
+							finished_list += list(0,0,0,255)
 							for(var/index in 1 to finished_list.len)
 								finished_list[index] /= 255
-							finished_list += list(0,0,0,1)
+								message_admins("finished list: [index] [finished_list[index]]")
 							accessory_overlay.color = finished_list
 						if(MUTCOLORS)
 							if(fixed_mut_color)
@@ -207,7 +208,7 @@
 /datum/species/lizard
 	default_features = list(list("FFFFFF"), list("FFFFFF"), list("FFFFFF"))
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs")
+	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")
 
 /datum/species/proc/get_random_features()
 	var/list/feature_list = list()

@@ -66,7 +66,11 @@
 	//Add any missing accessories
 	for(var/key in pref_species.default_mutant_bodyparts)
 		if(!mutant_bodyparts[key])
-			var/datum/sprite_accessory/SA = random_accessory_of_key_for_species(key, pref_species)
+			var/datum/sprite_accessory/SA
+			if(pref_species.default_mutant_bodyparts[key] == ACC_RANDOM)
+				SA = random_accessory_of_key_for_species(key, pref_species)
+			else
+				SA = GLOB.sprite_accessories[key][pref_species.default_mutant_bodyparts[key]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
