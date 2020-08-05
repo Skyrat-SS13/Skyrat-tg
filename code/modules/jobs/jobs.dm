@@ -1,3 +1,4 @@
+//THIS FILE WAS EDITED BY SKYRAT EDIT
 GLOBAL_LIST_INIT(command_positions, list(
 	"Captain",
 	"Head of Personnel",
@@ -49,13 +50,14 @@ GLOBAL_LIST_INIT(service_positions, list(
 	"Prisoner",
 	"Assistant"))
 
-
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Warden",
 	"Detective",
-	"Security Officer"))
-
+	"Security Officer",
+//SKYRAT EDIT ADDITION BEGIN - BLUESHIELD
+	"Blueshield")) //Skyrat addition
+//SKYRAT EDIT ADDITION END
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",
