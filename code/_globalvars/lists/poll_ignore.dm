@@ -21,10 +21,6 @@
 #define POLL_IGNORE_CONTRACTOR_SUPPORT "contractor_support"
 #define POLL_IGNORE_ACADEMY_WIZARD "academy_wizard"
 
-//SKYRAT EDIT BEGIN - ADDITION - CLONING
-#define POLL_IGNORE_DEFECTIVECLONE "defective_clone"
-//SKYRAT EDIT END
-
 
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SENTIENCE_POTION = "Sentience potion",
