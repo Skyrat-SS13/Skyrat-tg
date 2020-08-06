@@ -82,7 +82,7 @@
 	name = "Xenoarchaeology Mining Scanner"
 	desc = "A tool to measure the dug depth of rocks."
 	id = "xenominingscanner"
-	build_path = /obj/item/xenoarch/help/measuring
+	build_path = /obj/item/t_scanner/adv_mining_scanner/xenoarch
 
 //Storage Designs
 

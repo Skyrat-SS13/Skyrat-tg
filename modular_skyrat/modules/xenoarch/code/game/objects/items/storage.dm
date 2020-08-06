@@ -103,7 +103,7 @@
 	new /obj/item/xenoarch/clean/hammer/cm3(src)
 	new /obj/item/xenoarch/clean/hammer/cm2(src)
 	new /obj/item/xenoarch/clean/hammer/cm1(src)
-	new /obj/item/t_scanner/adv_mining_scanner/lesser(src)
+	new /obj/item/t_scanner/adv_mining_scanner/xenoarch(src)
 	new /obj/item/gps(src)
 	return
 
@@ -123,7 +123,7 @@
 	new /obj/item/xenoarch/clean/hammer/cm2(src)
 	new /obj/item/xenoarch/clean/hammer/cm1(src)
 	new /obj/item/pickaxe(src)
-	new /obj/item/t_scanner/adv_mining_scanner/lesser(src)
+	new /obj/item/t_scanner/adv_mining_scanner/xenoarch(src)
 	new /obj/item/gps(src)
 	new /obj/item/storage/belt/xenoarch(src)
 	new /obj/item/storage/bag/strangerock(src)
