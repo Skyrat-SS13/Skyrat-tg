@@ -66,6 +66,12 @@
 	. = ..()
 	adjustBruteLoss(-TRUE_CHANGELING_PASSIVE_HEAL) //Uncomment for passive healing
 
+/mob/living/simple_animal/hostile/true_changeling/AttackingTarget()
+	..()
+	if(prob(5))
+		if(!spam_flag)
+			emote("scream")
+
 /mob/living/simple_animal/hostile/true_changeling/emote(act, m_type=1, message = null, intentional = TRUE)
 	if(stat)
 		return
