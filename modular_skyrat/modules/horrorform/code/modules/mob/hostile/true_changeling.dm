@@ -189,7 +189,9 @@
 		lunch.spawn_gibs()
 		var/dismembered = FALSE
 		for(var/obj/item/bodypart/BP in lunch.bodyparts)
-			if(prob(40) && !dismembered && BP != /obj/item/bodypart/head)
+			if(prob(40) && !dismembered)
+				if(BP == /obj/item/bodypart/head)
+					continue
 				BP.dismember()
 				dismembered = TRUE
 		playsound(lunch, 'sound/effects/splat.ogg', 50, 1)

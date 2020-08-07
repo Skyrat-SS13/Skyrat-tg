@@ -8,7 +8,7 @@
 	button_icon_state = "horror_form"
 	background_icon_state = "bg_changeling"
 	chemical_cost = 75
-	dna_cost = 10 //Tier 4
+	dna_cost = 8 //Tier 4
 	req_dna = 10
 	req_human = 1
 
