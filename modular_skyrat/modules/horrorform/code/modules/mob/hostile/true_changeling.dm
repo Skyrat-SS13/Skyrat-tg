@@ -190,14 +190,13 @@
 		var/dismembered = FALSE
 		for(var/obj/item/bodypart/BP in lunch.bodyparts)
 			if(prob(40) && !dismembered)
-				if(BP == /obj/item/bodypart/head)
+				if(BP.name == "chest" || BP.name == "head")
 					continue
 				BP.dismember()
 				dismembered = TRUE
 		playsound(lunch, 'sound/effects/splat.ogg', 50, 1)
 		playsound(lunch, 'modular_skyrat/master_files/sound/misc/tear.ogg', 50, 1)
-		if(!dismembered)
-			lunch.emote("scream")
+		lunch.emote("scream")
 	if(lunch.nutrition >= NUTRITION_LEVEL_FAT)
 		T.adjustBruteLoss(-100) //Tasty leetle peegy
 	else
