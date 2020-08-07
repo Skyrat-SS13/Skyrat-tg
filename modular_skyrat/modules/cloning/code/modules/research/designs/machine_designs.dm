@@ -4,4 +4,4 @@
 	id = "clonepod"
 	build_path = /obj/item/circuitboard/machine/clonepod
 	category = list("Machine Boards")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE

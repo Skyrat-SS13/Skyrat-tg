@@ -4,4 +4,4 @@
 	id = "clonecontrol"
 	build_path = /obj/item/circuitboard/computer/cloning
 	category = list("Computer Boards")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
