@@ -76,7 +76,10 @@
 /obj/effect/temp_visual/mining_overlay
 	plane = FULLSCREEN_PLANE
 	layer = FLASH_LAYER
-	icon = 'icons/effects/ore_visuals.dmi'
+	//SKYRAT EDIT CHANGE BEGIN - XENOARCH - Required in order for strangerocks to appear on scanner
+	//icon = 'icons/effects/ore_visuals.dmi'
+	icon = 'modular_skyrat/modules/xenoarch/icons/effects/ore_visuals.dmi'
+	//SKYRAT EDIT CHANGE END - XENOARCH
 	appearance_flags = 0 //to avoid having TILE_BOUND in the flags, so that the 480x480 icon states let you see it no matter where you are
 	duration = 35
 	pixel_x = -224
