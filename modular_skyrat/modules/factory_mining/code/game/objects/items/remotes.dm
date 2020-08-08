@@ -5,10 +5,43 @@
 
 /obj/item/factory/remote/build
 	name = "build remote"
-	desc = "A remote used to build factory mining machinery"
+	desc = "A remote used to build factory mining machinery."
 	icon_state = "build"
 	var/build_dir = NORTH
 	var/obj/build_choice = /obj/machinery/conveyor/factory
+
+	var/max_mats = 100
+	var/current_mats = 100
+
+/obj/item/factory/remote/build/Initialize()
+	. = ..()
+	desc = "[initial(src.desc)] There is [current_mats] matunits left."
+
+/obj/item/factory/remote/build/proc/build_cost(num)
+	if(current_mats < num)
+		return FALSE
+	current_mats -= num
+	desc = "[initial(src.desc)] There is [current_mats] matunits left."
+	return TRUE
+
+/obj/item/factory/remote/build/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/stack/ore/iron) || istype(I, /obj/item/stack/sheet/metal))
+		var/obj/item/stack/S = I
+		if(current_mats >= max_mats)
+			return
+		var/left_mats = max_mats - current_mats
+		var/Samount = S.amount
+		if(Samount >= left_mats)
+			S.use(left_mats)
+			current_mats += left_mats
+		else if(Samount < left_mats)
+			S.use(Samount)
+			current_mats += Samount
+		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE, -1)
+		desc = "[initial(src.desc)] There is [current_mats] matunits left."
+		return
+	else
+		return ..()
 
 /obj/item/factory/remote/build/attack_self(mob/user)
 	. = ..()
@@ -125,14 +158,23 @@
 			return
 		if(istype(M, /obj/machinery/conveycrosser))
 			return
-	var/obj/machinery/M = new build_choice(T)
-	M.dir = build_dir
-	if(istype(M, /obj/machinery/conveyor))
-		var/obj/machinery/conveyor/C = M
-		C.update_move_direction()
-	if(istype(M, /obj/machinery/conveycrosser))
-		var/obj/machinery/conveycrosser/C = M
-		C.setup_dir()
+	if(!do_after(user, 5, FALSE))
+		return
+	var/build_price = 0
+	if(istype(build_choice, /obj/machinery/conveyor) || istype(build_choice, /obj/machinery/conveycrosser))
+		build_price = 1
+	else if(istype(build_choice, /obj/machinery/factory ))
+		build_price = 5
+	if(build_cost(build_price))
+		var/obj/machinery/M = new build_choice(T)
+		M.dir = build_dir
+		if(istype(M, /obj/machinery/conveyor))
+			var/obj/machinery/conveyor/C = M
+			C.update_move_direction()
+		if(istype(M, /obj/machinery/conveycrosser))
+			var/obj/machinery/conveycrosser/C = M
+			C.setup_dir()
+		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE, -1)
 
 /obj/item/factory/remote/destroy
 	name = "destroy remote"
@@ -147,6 +189,7 @@
 	var/output_choice = SOUTH
 	var/ore_choice = /obj/item/stack/ore/iron
 	var/sheet_choice = /obj/item/stack/sheet/metal
+	var/orename = "iron"
 
 /obj/item/factory/remote/config/attack_self(mob/user)
 	. = ..()
@@ -213,6 +256,10 @@
 					input_choice = WEST
 				if("North-West")
 					input_choice = NORTHWEST
+			output_choice = null
+			ore_choice = null
+			sheet_choice = null
+			orename = null
 		if("Output Turf")
 			var/choice2 = show_radial_menu(user, src, full_choice, require_near = TRUE, radius = 50, tooltips = TRUE)
 			if(!choice2)
@@ -235,6 +282,10 @@
 					output_choice = WEST
 				if("North-West")
 					output_choice = NORTHWEST
+			input_choice = null
+			ore_choice = null
+			sheet_choice = null
+			orename = null
 		if("Ore Type")
 			var/choice2 = show_radial_menu(user, src, choose_ore, require_near = TRUE, radius = 50, tooltips = TRUE)
 			if(!choice2)
@@ -244,30 +295,42 @@
 				if("Iron")
 					ore_choice = /obj/item/stack/ore/iron
 					sheet_choice = /obj/item/stack/sheet/metal
+					orename = "iron"
 				if("Glass")
 					ore_choice = /obj/item/stack/ore/glass
 					sheet_choice = /obj/item/stack/sheet/glass
+					orename = "sand"
 				if("Silver")
 					ore_choice = /obj/item/stack/ore/silver
 					sheet_choice = /obj/item/stack/sheet/mineral/silver
+					orename = "silver"
 				if("Titanium")
 					ore_choice = /obj/item/stack/ore/titanium
 					sheet_choice = /obj/item/stack/sheet/mineral/titanium
+					orename = "titanium"
 				if("Plasma")
 					ore_choice = /obj/item/stack/ore/plasma
 					sheet_choice = /obj/item/stack/sheet/mineral/plasma
+					orename = "plasma"
 				if("Gold")
 					ore_choice = /obj/item/stack/ore/gold
 					sheet_choice = /obj/item/stack/sheet/mineral/gold
+					orename = "gold"
 				if("Uranium")
 					ore_choice = /obj/item/stack/ore/uranium
 					sheet_choice = /obj/item/stack/sheet/mineral/uranium
+					orename = "uranium"
 				if("Diamond")
 					ore_choice = /obj/item/stack/ore/diamond
 					sheet_choice = /obj/item/stack/sheet/mineral/diamond
+					orename = "diamond"
 				if("Bluespace")
 					ore_choice = /obj/item/stack/ore/bluespace_crystal
 					sheet_choice = /obj/item/stack/sheet/bluespace_crystal
+					orename = "bluespace"
 				if("Bananium")
 					ore_choice = /obj/item/stack/ore/bananium
 					sheet_choice = /obj/item/stack/sheet/mineral/bananium
+					orename = "bananium"
+			input_choice = null
+			output_choice = null

@@ -10,8 +10,8 @@
 	subsystem_type = /datum/controller/subsystem/processing/fastprocess
 
 	light_color = COLOR_WHITE
-	light_power = 1
-	light_range = 1
+	light_power = 5
+	light_range = 2
 
 /obj/machinery/conveyor/factory/process()
 	//get the first 30 items in contents
@@ -29,6 +29,9 @@
 
 /obj/machinery/conveyor/factory/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/factory/remote/destroy))
+		if(!do_after(user, 5, FALSE))
+			return
+		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE, -1)
 		qdel(src)
 
 /obj/machinery/conveyor/factory/update_icon_state()
@@ -118,7 +121,7 @@
 
 /obj/machinery/conveyor/factory/split/filter_r/attackby(obj/item/I, mob/user, params)
 	. = ..()
-	filter_list |= I
+	filter_list |= I.type
 	audible_message("<span class='notice'>[I.name] has been added to the filter.</span>")
 
 /obj/machinery/conveyor/factory/split/filter_r/update_move_direction()
@@ -226,11 +229,14 @@
 	var/enter_dir = NORTH
 
 	light_color = COLOR_WHITE
-	light_power = 1
-	light_range = 1
+	light_power = 5
+	light_range = 2
 
 /obj/machinery/conveycrosser/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/factory/remote/destroy))
+		if(!do_after(user, 5, FALSE))
+			return
+		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE, -1)
 		qdel(src)
 
 /obj/machinery/conveycrosser/proc/setup_dir()
