@@ -1,6 +1,6 @@
 # The modularization handbook - Skyrat style, v0.1
 
-### Failure to follow this guide will result in your PR being denied.
+**Failure to follow this guide will result in your PR being denied.**
 
 ## Introduction
 
@@ -63,19 +63,9 @@ Our answer to this is modularization of the code.
 
 ## The modularization protocol
 
->APPEND PROPOSAL
-
-Always start by thinking of an ID for your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
+Always start by thinking of an ID for your module. E.g. `DNA_FEATURE_WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
 
 And then you'll want to establish your core folder that you'll be working out of which is normally your module ID. E.g. `modular_skyrat/modules/yourmodulename`
-
->APPEND END
-
->
-
-If your change is not entirely contained within an already modularized feature, pick some previously unused name for it, it will come in handy, as you will be marking the code using it, for example `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY`
-
->
 
 ### Assets: images, sounds, icons and binaries
 
@@ -83,22 +73,24 @@ If your change is not entirely contained within an already modularized feature, 
 
 Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
 
-All assets added by us should be placed into the same modular folder as your code. This means everything is kept inside your module folder, sounds, icons and code files. 
+All assets added by us should be placed into the same modular folder as your code. This means everything is kept inside your module folder, sounds, icons and code files.
+
 - ***Example:*** You're adding a new lavaland mob.
-	First of all you create your modular folder. E.g. `modular_skyrat/modules/lavalandmob`
+  First of all you create your modular folder. E.g. `modular_skyrat/modules/lavalandmob`
 
-	And then you'd want to create sub-folders for each component. E.g. `/code` for code and `/sounds` for sound files and `/icons` for any icon files.
+  And then you'd want to create sub-folders for each component. E.g. `/code` for code and `/sounds` for sound files and `/icons` for any icon files.
 
-	After doing this you'd want to change the references within the code.
-	```byond
-		/mob/lavaland/newmob
-			icon = 'modular_skyrat/modules/lavalandmob/icons/mob.dmi'
-			icon_state = "dead_1"
-			sound = 'modular_skyrat/modules/lavalandmob/sounds/boom.ogg'
-	```
+  After doing this you'd want to change the references within the code.
 
-	This ensures your code is fully modular and will make it easier for future edits.
-	
+  ```byond
+    /mob/lavaland/newmob
+      icon = 'modular_skyrat/modules/lavalandmob/icons/mob.dmi'
+      icon_state = "dead_1"
+      sound = 'modular_skyrat/modules/lavalandmob/sounds/boom.ogg'
+  ```
+
+  This ensures your code is fully modular and will make it easier for future edits.
+
 - Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
 
 >APPEND END
@@ -265,31 +257,34 @@ In those cases, we've decided to apply the following convention, with examples:
   //SKYRAT EDIT REMOVAL END
   WARNING("couldn't find dock with id: [id]")
   ```
-	And for any removals to different files:
-	 ```byond
-	  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Moved to modular_skyrat/shuttle_toggle/randomverbs.dm)
-	  /*
-	  /client/proc/admin_call_shuttle()
-		set category = "Admin - Events"
-		set name = "Call Shuttle"
 
-		if(EMERGENCY_AT_LEAST_DOCKED)
-			return
+  And for any removals that are moved to different files:
 
-		if(!check_rights(R_ADMIN))
-			return
+  ```byond
+  //SKYRAT EDIT REMOVAL BEGIN - SHUTTLE_TOGGLE - (Moved to modular_skyrat/shuttle_toggle/randomverbs.dm)
+  /*
+  /client/proc/admin_call_shuttle()
+  set category = "Admin - Events"
+  set name = "Call Shuttle"
 
-		var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-		if(confirm != "Yes")
-			return
+  if(EMERGENCY_AT_LEAST_DOCKED)
+    return
 
-		SSshuttle.emergency.request()
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		log_admin("[key_name(usr)] admin-called the emergency shuttle.")
-		message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
-		return
-	  */
-	  //SKYRAT EDIT REMOVAL END
+  if(!check_rights(R_ADMIN))
+    return
+
+  var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
+  if(confirm != "Yes")
+    return
+
+  SSshuttle.emergency.request()
+  SSblackbox.record_feedback("tally", "admin_verb", 1, "Call Shuttle") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+  log_admin("[key_name(usr)] admin-called the emergency shuttle.")
+  message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-called the emergency shuttle.</span>")
+  return
+  */
+  //SKYRAT EDIT REMOVAL END
+  ```
 
 - **Change:**
 
@@ -313,8 +308,9 @@ That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them t
 ## Exemplary PR's
 
 Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
-- https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
-- https://github.com/Skyrat-SS13/Skyrat-tg/pull/111
+
+- <https://github.com/Skyrat-SS13/Skyrat-tg/pull/104>
+- <https://github.com/Skyrat-SS13/Skyrat-tg/pull/111>
 
 ## Afterword
 
