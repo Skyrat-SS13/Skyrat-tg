@@ -1,3 +1,7 @@
+////////////////////////
+//ID: MODULAR_WEAPONS //
+////////////////////////
+
 ///////////////
 // REVOLVERS //
 ///////////////
@@ -8,7 +12,7 @@
 /obj/item/gun/ballistic/revolver/rifle
 	name = "\improper .38 Revolving Rifle"
 	desc = "A revolving rifle chambered in .38. "
-	icon = 'modular_skyrat/icons/obj/guns/projectile40x32.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "revolving-rifle"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38	//This is just a detective's revolver but it's too big for bags..
 	pixel_x = -4	// It's centred on a 40x32 pixel spritesheet.
@@ -17,15 +21,14 @@
 	slot_flags = ITEM_SLOT_BELT
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	lefthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_left.dmi'
-	righthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_right.dmi'
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	pixel_x = -8
 	inhand_icon_state = "revolving"
 
 /obj/item/gun/ballistic/revolver/rifle/improvised
 	name = "\improper Improvised .38 Revolving Rifle"
 	desc = "A crudely made revolving rifle. It fires .38 rounds. The cylinder doesn't rotate very well."
-	icon = 'modular_skyrat/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "revolving-rifle"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38	//TAs far as improvised weapons go, this is fairly decent, this isn't half bad.
 	fire_delay = 15

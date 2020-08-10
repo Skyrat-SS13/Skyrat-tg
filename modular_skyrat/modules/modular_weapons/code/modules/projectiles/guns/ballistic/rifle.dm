@@ -1,4 +1,8 @@
 ////////////////////////
+//ID: MODULAR_WEAPONS //
+////////////////////////
+
+////////////////////////
 //  IMPROVISED RIFLE  //
 ////////////////////////
 //		There was an improvised rifle on Cit/Skyrat, it's pretty cool so here it is too.
@@ -12,15 +16,15 @@
 /obj/item/gun/ballistic/rifle/irifle
 	name = "Improvised 7.62 Rifle"
 	desc = "An improvised rifle that fires hard-hitting 7.62 bullets."
-	icon = 'modular_skyrat/icons/obj/guns/projectile40x32.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "irifle"
 	inhand_icon_state = "irifle"
 	worn_icon_state = null
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/improvised
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	lefthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_left.dmi'
-	righthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_right.dmi'
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	pixel_x = -8
 	weapon_weight = WEAPON_HEAVY	// It's big.
 
@@ -34,12 +38,12 @@
 /obj/item/gun/ballistic/rifle/ishotgun
 	name = "improvised shotgun"
 	desc = "A break-action 12 gauge shotgun. You need both hands to fire this."
-	icon = 'modular_skyrat/icons/obj/guns/projectile40x32.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "ishotgun"
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	lefthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_left.dmi'
-	righthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_right.dmi'
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	pixel_x = -8
 	inhand_icon_state = "ishotgun"
 	w_class = WEIGHT_CLASS_BULKY
@@ -90,8 +94,8 @@
 		new /obj/item/stack/cable_coil(get_turf(src), 10)
 		slung = 0
 		update_icon()
-		lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
-		righthand_file = 'icons/mob/inhands/weapons/64x_guns_right.dmi'
+		lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
+		righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 
 /obj/item/gun/ballistic/rifle/ishotgun/sawn
 	name = "sawn-off improvised shotgun"
@@ -111,13 +115,13 @@
 /obj/item/gun/ballistic/automatic/cfa_rifle
 	name = "Canta 5.56 Rifle"
 	desc = "An old semi-automatic rifle used in a war long ago. Uses 5.56 bullets in a ten round magazine."
-	icon = 'modular_skyrat/icons/obj/guns/projectile40x32.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "cfa_rifle"
 	inhand_icon_state = "irifle"
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	lefthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_left.dmi'
-	righthand_file = 'modular_skyrat/icons/mob/inhands/weapons/64x_guns_right.dmi'
+	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	worn_icon_state = null
 	mag_type = /obj/item/ammo_box/magazine/cm556
 	fire_delay = 10
@@ -139,7 +143,7 @@
 
 /obj/item/ammo_box/magazine/cm556
 	name = "rifle magazine (5.56mm)"
-	icon = 'modular_skyrat/icons/obj/ammo.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "5.56"
 	ammo_type = /obj/item/ammo_casing/a556
 	caliber = "a556"

@@ -1,3 +1,7 @@
+////////////////////////
+//ID: MODULAR_WEAPONS //
+////////////////////////
+
 ///////////
 //.32 ACP//
 ///////////
@@ -33,7 +37,7 @@
 /obj/item/ammo_box/magazine/smg32
 	name = "smg magazine (.32)"
 	desc = "A .32 magazine with a 30-rnd capacity. An economically friendly but low damage calibre, even low-end autolathes can print .32 bullets."
-	icon = 'modular_skyrat/icons/obj/ammo.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "smg32"
 	ammo_type = /obj/item/ammo_casing/c32
 	caliber = "c32acp"
@@ -65,7 +69,7 @@
 /obj/item/gun/ballistic/automatic/cfa_wildcat
 	name = "\improper CFA Wildcat"
 	desc = "An old SMG, this one is chambered in .32, a very common and dirt-cheap cartridge."
-	icon = 'modular_skyrat/icons/obj/guns/projectile40x32.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "mp5"
 	inhand_icon_state = "arg"
 	selector_switch_icon = TRUE
