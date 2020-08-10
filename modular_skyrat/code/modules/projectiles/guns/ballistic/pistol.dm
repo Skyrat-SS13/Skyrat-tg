@@ -4,7 +4,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_snub
 	name = "CFA Snub"
-	desc = "A compact pistol chambered in 4.6x30mm, Mechanically etched into the slide is 'CFA Mk.II', this is a modern civilian recreation of what used to be a military service sidearm on an alien planet."
+	desc = "A compact pistol chambered in 4.6x30mm, Mechanically etched into the slide is 'Cantalan Federal Arms Mk.II', this is a modern civilian recreation of what used to be a military service sidearm on an alien planet."
 	icon = 'modular_skyrat/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-snub"
 	mag_type = /obj/item/ammo_box/magazine/m46x30
@@ -16,7 +16,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_ruby
 	name = "CFA Ruby"
-	desc = "An old standard issue military sidearm on an alien world. It fires .45 rounds."
+	desc = "An old standard issue military sidearm on an alien world. It fires .45 rounds. It looks old, etched into the slide is 'Cantalan Federal Arms."
 	icon = 'modular_skyrat/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa_ruby"
 	mag_type = /obj/item/ammo_box/magazine/m45
