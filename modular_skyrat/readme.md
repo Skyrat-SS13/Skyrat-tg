@@ -256,7 +256,7 @@ That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them t
 ## Exemplary PR's
 
 Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
-- https://github.com/Skyrat-SS13/Skyrat-tg/pull/104
+- https://github.com/Skyrat-SS13/Skyrat-tg/pull/241
 - https://github.com/Skyrat-SS13/Skyrat-tg/pull/111
 
 ## Afterword
