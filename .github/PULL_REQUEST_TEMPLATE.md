@@ -1,5 +1,5 @@
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
-<!-- You can view Contributing.MD for a detailed description of the pull request process. -->
+<!-- You can view Contributing.MD for a detailed description of the pull request process. If you don't understand anything, contact a maintainer for help. -->
 <!-- Your PR title must be related to the contents of the PR. Completely unrelated and silly titles may result in the PR being closed. -->
 
 ## Documentation of Changes
