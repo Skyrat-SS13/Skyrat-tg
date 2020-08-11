@@ -1,13 +1,16 @@
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
 <!-- You can view Contributing.MD for a detailed description of the pull request process. -->
+<!-- Your PR title must be related to the contents of the PR. Completely unrelated and silly titles may result in the PR being closed. -->
 
-## About The Pull Request
+## Documentation of Changes
 
-<!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
+<!-- Document every change you have made here. Use key-words to make searching for changes conducive. -->
+<!-- Failure to adequately document changes may result in your PR being closed. Mistakes happen, try your best. -->
 
-## Why It's Good For The Game
+## Why did you make this PR; why is it good for the game?
 
-<!-- Please add a short description of why you think these changes would benefit the game. If you can't justify it in words, it might not be worth adding. -->
+<!-- Please explain why you made the Pull Request. We want to know what made you feel that these changes are necessary. -->
+<!-- Please also describe why this benefits the game. If you cannot, then the PR probably isn't good for the game and can be closed at will by maintainers. -->
 
 ## Changelog
 :cl:
@@ -30,4 +33,12 @@ server: something server ops should know
 /:cl:
 
 <!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->
-<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->
+<!-- You can use multiple of the same prefixes; they are solely for icons in-game. Summarise the changes that affect the player here.  -->
+
+## Media
+
+<!-- Place any screenshots, videos or other media sources here, else delete this section. -->
+
+## Acknowledegements
+
+<!-- If you wish to give thanks to anyone, do so here, else delete this section. If you port something, acknowledge it here. -->
