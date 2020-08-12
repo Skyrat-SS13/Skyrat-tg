@@ -878,9 +878,16 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 /client/proc/send_resources()
 #if (PRELOAD_RSC == 0)
 	var/static/next_external_rsc = 0
+<<<<<<< HEAD
 	if(GLOB.external_rsc_urls && GLOB.external_rsc_urls.len)
 		next_external_rsc = WRAP(next_external_rsc+1, 1, GLOB.external_rsc_urls.len+1)
 		preload_rsc = GLOB.external_rsc_urls[next_external_rsc]
+=======
+	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
+	if(length(external_rsc_urls))
+		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		preload_rsc = external_rsc_urls[next_external_rsc]
+>>>>>>> 641b880a8d... Fix cdn rsc (#52886)
 #endif
 	//get the common files
 	getFiles(
