@@ -15,7 +15,7 @@
 	icon_living = "horror"
 	icon_dead = "horror_dead"
 	mob_biotypes = MOB_ORGANIC
-	speed = 2
+	speed = 3
 	a_intent = "harm"
 	stop_automated_movement = 1
 	status_flags = CANPUSH
@@ -28,15 +28,15 @@
 	health = 500
 	healable = 0
 	environment_smash = 1
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	melee_damage_lower = 20
+	melee_damage_upper = 20
 //	see_in_dark = 8
 //	see_invisible = SEE_INVISIBLE_MINIMUM
 	wander = 0
 	attack_verb_continuous = "rips into"
 	attack_verb_simple = "rip into"
 	attack_sound = 'sound/effects/blobattack.ogg'
-	next_move_modifier = 0.7 //Faster attacks
+	next_move_modifier = 0.5 //Faster attacks
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/human = 15) //It's a pretty big dude. Actually killing one is a feat.
 	gold_core_spawnable = 0 //Should stay exclusive to changelings tbh, otherwise makes it much less significant to sight one
 	var/datum/action/innate/turn_to_human
@@ -107,7 +107,7 @@
 						"<span class='userdanger'>We lack the power to maintain this form! We helplessly turn back into a human...</span>")
 		stored_changeling.loc = get_turf(src)
 		mind.transfer_to(stored_changeling)
-		stored_changeling.Paralyze(30 SECONDS) //Make them helpless for 30 seconds
+		stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
 		stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
 		stored_changeling.status_flags &= ~GODMODE
 		qdel(src)
@@ -176,6 +176,10 @@
 		lunch = input(T, "Choose a human to devour.", "Lunch") as null|anything in potential_targets
 	if(!lunch && !ishuman(lunch))
 		return 0
+	if(lunch.getBruteLoss() + lunch.getFireLoss() >= 200) //Overall physical damage, basically
+		T.visible_message("<span class='warning'>[lunch] provides no further nutrients for [T]!</span>", \
+						"<span class='danger'>[lunch] has no more useful flesh for us to consume!!</span>")
+		return 0
 	T.devouring = TRUE
 	T.visible_message("<span class='warning'>[T] begins ripping apart and feasting on [lunch]!</span>", \
 					"<span class='danger'>We begin to feast upon [lunch]...</span>")
@@ -183,26 +187,21 @@
 		T.devouring = FALSE
 		return 0
 	T.devouring = FALSE
-	if(lunch.getBruteLoss() + lunch.getFireLoss() >= 200) //Overall physical damage, basically
-		T.visible_message("<span class='warning'>[lunch] is completely devoured by [T]!</span>", \
-						"<span class='danger'>You completely devour [lunch]!</span>")
-		lunch.gib()
-	else
-		lunch.adjustBruteLoss(60)
-		T.visible_message("<span class='warning'>[T] tears a chunk from [lunch]'s flesh!</span>", \
-						"<span class='danger'>We tear a chunk of flesh from [lunch] and devour it!</span>")
-		lunch << "<span class='userdanger'>[T] takes a huge bite out of you!</span>"
-		lunch.spawn_gibs()
-		var/dismembered = FALSE
-		for(var/obj/item/bodypart/BP in lunch.bodyparts)
-			if(prob(40) && !dismembered)
-				if(BP.name == "chest" || BP.name == "head")
-					continue
-				BP.dismember()
-				dismembered = TRUE
-		playsound(lunch, 'sound/effects/splat.ogg', 50, 1)
-		playsound(lunch, 'modular_skyrat/master_files/sound/misc/tear.ogg', 50, 1)
-		lunch.emote("scream")
+	lunch.adjustBruteLoss(60)
+	T.visible_message("<span class='warning'>[T] tears a chunk from [lunch]'s flesh!</span>", \
+					"<span class='danger'>We tear a chunk of flesh from [lunch] and devour it!</span>")
+	lunch << "<span class='userdanger'>[T] takes a huge bite out of you!</span>"
+	lunch.spawn_gibs()
+	var/dismembered = FALSE
+	for(var/obj/item/bodypart/BP in lunch.bodyparts)
+		if(prob(40) && !dismembered)
+			if(BP.name == "chest" || BP.name == "head")
+				continue
+			BP.dismember()
+			dismembered = TRUE
+	playsound(lunch, 'sound/effects/splat.ogg', 50, 1)
+	playsound(lunch, 'modular_skyrat/master_files/sound/misc/tear.ogg', 50, 1)
+	lunch.emote("scream")
 	if(lunch.nutrition >= NUTRITION_LEVEL_FAT)
 		T.adjustBruteLoss(-100) //Tasty leetle peegy
 	else
