@@ -1005,7 +1005,7 @@
 
 ///Add a spell to the mobs spell list
 /mob/proc/AddSpell(obj/effect/proc_holder/spell/S)
-	mob_spell_list += S
+	LAZYADD(mob_spell_list, S)
 	S.action.Grant(src)
 
 ///Remove a spell from the mobs spell list
@@ -1015,7 +1015,7 @@
 	for(var/X in mob_spell_list)
 		var/obj/effect/proc_holder/spell/S = X
 		if(istype(S, spell))
-			mob_spell_list -= S
+			LAZYREMOVE(mob_spell_list, S)
 			qdel(S)
 
 ///Return any anti magic atom on this mob that matches the magic type
@@ -1080,7 +1080,11 @@
 
 ///Can the mob interact() with an atom?
 /mob/proc/can_interact_with(atom/A)
-	return isAdminGhostAI(src) || Adjacent(A)
+	if(isAdminGhostAI(src) || Adjacent(A))
+		return TRUE
+	var/datum/dna/mob_dna = has_dna()
+	if(mob_dna?.check_mutation(TK) && tkMaxRangeCheck(src, A))
+		return TRUE
 
 ///Can the mob use Topic to interact with machines
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
@@ -1338,11 +1342,11 @@
 	H.open_language_menu(usr)
 
 ///Adjust the nutrition of a mob
-/mob/proc/adjust_nutrition(var/change) //Honestly FUCK the oldcoders for putting nutrition on /mob someone else can move it up because holy hell I'd have to fix SO many typechecks
+/mob/proc/adjust_nutrition(change) //Honestly FUCK the oldcoders for putting nutrition on /mob someone else can move it up because holy hell I'd have to fix SO many typechecks
 	nutrition = max(0, nutrition + change)
 
 ///Force set the mob nutrition
-/mob/proc/set_nutrition(var/change) //Seriously fuck you oldcoders.
+/mob/proc/set_nutrition(change) //Seriously fuck you oldcoders.
 	nutrition = max(0, change)
 
 ///Set the movement type of the mob and update it's movespeed
