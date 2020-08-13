@@ -114,7 +114,6 @@
 				if("Crosser")
 					build_choice = /obj/machinery/conveycrosser
 		if("Machinery")
-			build_dir = NORTH
 			var/choice2 = show_radial_menu(user, src, machinery_choice, require_near = TRUE, tooltips = TRUE)
 			if(!choice2)
 				return

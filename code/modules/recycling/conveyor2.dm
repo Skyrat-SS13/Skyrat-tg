@@ -138,11 +138,11 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	use_power(6)
 	//SKYRAT CHANGE BEGIN - FMINING
 	var/turf/neighbor_turf = get_step(src, movedir)
-    if(neighbor_turf.density)
-        return
-    for(var/obj/structure/neighbor_structure in neighbor_turf)
-        if(neighbor_structure.density)
-            return
+	if(neighbor_turf.density)
+		return
+	for(var/obj/structure/neighbor_structure in neighbor_turf)
+		if(neighbor_structure.density)
+			return
 	//SKYRAT CHANGE END - FMINING
 
 	//get the first 30 items in contents

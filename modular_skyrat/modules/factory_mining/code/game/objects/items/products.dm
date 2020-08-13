@@ -19,23 +19,23 @@
 		if(ore_type != P.ore_type || product_type != P.product_type)
 			return
 	. = ..()
-	update_icon_state()
 	update_product()
+	update_icon_state()
 
 /obj/item/stack/factory/products/change_stack(mob/user, amount)
 	. = ..()
-	update_icon_state()
 	update_product()
+	update_icon_state()
 
 /obj/item/stack/factory/products/AltClick(mob/living/user)
 	. = ..()
-	update_icon_state()
 	update_product()
+	update_icon_state()
 
 /obj/item/stack/factory/products/copy_evidences(obj/item/stack/from)
 	. = ..()
-	update_icon_state()
 	update_product()
+	update_icon_state()
 
 
 /obj/item/stack/factory/products/update_icon_state()

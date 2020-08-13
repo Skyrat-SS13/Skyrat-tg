@@ -61,12 +61,8 @@
 	///the req_item_x should be the actual type of item
 	///the req_item_x_ramount should be the amount required
 	///the req_item_x_camount should be the amount currently
-	var/req_item_1			= null
-	var/req_item_1_ramount	= 0
-	var/req_item_1_camount	= 0
-	var/req_item_2			= null
-	var/req_item_2_ramount	= 0
-	var/req_item_2_camount	= 0
+	var/list/req_item_1 = list()
+	var/list/req_item_2 = list()
 
 	///var that determines if a machine produces credits
 	///only smelters and processors make credits
@@ -283,27 +279,33 @@
 				return
 			switch(choice2)
 				if("Coil")
-					list[coil] = [/obj/item/stack/sheet, 5, 0, /obj/item/stack/factory/products/rod, 5, 0]
+					req_item_1 = list(/obj/item/stack/sheet, 5, 0)
+					req_item_2 = list(/obj/item/stack/factory/products/rod, 5, 0)
 					refined_product = /obj/item/stack/factory/products/coil
 					shorthand_refined = "coil"
 				if("Plate")
-					list[plate] = [/obj/item/stack/sheet, 5, 0, null, 0, 0]
+					req_item_1 = list(/obj/item/stack/sheet, 5, 0)
+					req_item_2 = list()
 					refined_product = /obj/item/stack/factory/products/plate
 					shorthand_refined = "plate"
 				if("Rim")
-					list[rim] = [/obj/item/stack/sheet, 5, 0, /obj/item/stack/factory/products/rod, 5, 0]
+					req_item_1 = list(/obj/item/stack/sheet, 5, 0)
+					req_item_2 = list(/obj/item/stack/factory/products/rod, 5, 0)
 					refined_product = /obj/item/stack/factory/products/rim
 					shorthand_refined = "rim"
 				if("Gear")
-					list[gear] = [/obj/item/stack/factory/products/rod, 5, 0, /obj/item/stack/factory/products/rim, 5, 0]
+					req_item_1 = list(/obj/item/stack/factory/products/rod, 5, 0)
+					req_item_2 = list(/obj/item/stack/factory/products/rim, 5, 0)
 					refined_product = /obj/item/stack/factory/products/gear
 					shorthand_refined = "gear"
 				if("Rod")
-					list[rod] = [/obj/item/stack/sheet, 5, 0, null, 0, 0]
+					req_item_1 = list(/obj/item/stack/sheet, 5, 0)
+					req_item_2 = list()
 					refined_product = /obj/item/stack/factory/products/rod
 					shorthand_refined = "rod"
 				if("Fabric")
-					list[fabric] = [/obj/item/stack/factory/products/coil, 5, 0, /obj/item/stack/factory/products/rod, 5, 0]
+					req_item_1 = list(/obj/item/stack/factory/products/coil, 5, 0)
+					req_item_2 = list(/obj/item/stack/factory/products/rod, 5, 0)
 					refined_product = /obj/item/stack/factory/products/fabric
 					shorthand_refined = "fabric"
 
@@ -400,9 +402,9 @@
 					continue
 			//now, if you made it all the way here, odds are, you are the required material and required item!
 			//this will now make sure you truly are the req item
-			if(istype(S, req_item_1))
+			if(istype(S, req_item_1[1]))
 				//now we add just... add it to the reqitem buffer, since it requires more than just 1 to produce
-				req_item_1_camount += S.amount
+				req_item_1[3] += S.amount
 				//here is one of the upgrades! a chance to not destroy the input.
 				if(prob(100 / destroy_chance))
 					//delete it! We dont want something to be too strong!
@@ -428,9 +430,9 @@
 				if(SS.oretypename != orename)
 					continue
 			//we have gone up to here, is it actually the required item?
-			if(istype(S, req_item_2))
+			if(istype(S, req_item_2[1]))
 				//yep, so add it to the buffer
-				req_item_2_camount += S.amount
+				req_item_2[3] += S.amount
 				//here is an upgrade. a chance to not destroy the input
 				if(prob(100 / destroy_chance))
 					//delete it! We dont want something to be too strong!
@@ -438,25 +440,25 @@
 	//back to this, do we require the first item? (odds are, yes. You know, there are no recipes that are free)
 	if(item1_dependent)
 		//MAKE SURE THERE ISNT A ZERO. There MUST be an item here
-		if(req_item_1_camount == 0)
+		if(req_item_1[3] == 0)
 			return
 	//back to this, do we require a second item? (no for the first tier, yes for the rest)
 	if(item2_dependent)
 		//MAKE SURE THERE ISNT A ZERO. There MUST be an item here
-		if(req_item_2_camount == 0)
+		if(req_item_2[3] == 0)
 			return
 	//now, in the buffer, is both the item1 and item2 satisfied in their contents?
 	//item1 is always used, so ramount should be a certain amount, so we count on the current buffer to be greater or equal to the price
 	//item2 is not always used. so it is set to 0. 0 = 0 last time I checked, so this passes if a recipe only requires one
-	if(req_item_1_camount >= req_item_1_ramount && req_item_2_camount >= req_item_2_ramount)
+	if(req_item_1[3] >= req_item_1[2] && req_item_2[3] >= req_item_2[2])
 		//if its item1 dependent, we need to remove the amount required from the current amount, since current is above or equal to the required
 		if(item1_dependent)
 			//quick math, set req1 current amount to itself minus the required amount
-			req_item_1_camount -= req_item_1_ramount
+			req_item_1[3] -= req_item_1[2]
 		//if its item2 dependent, we need to remove the amount required from the current amount, since current is above or equal to the required
 		if(item2_dependent)
 			//quick math, set req1 current amount to itself minus the required amount
-			req_item_2_camount -= req_item_2_ramount
+			req_item_2[3] -= req_item_2[2]
 		//setting up a var so that we can modify it. we also spawn the item here at the output turf (TO)
 		var/obj/item/stack/factory/products/F = new refined_product(TO)
 		//changing the material type to the type of the machine
