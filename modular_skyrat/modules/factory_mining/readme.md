@@ -10,7 +10,7 @@ Adds Factory Mining. Factory Mining is inspired by Factorio style of gameplay, w
 
 ### TG Proc Changes:
 
-- N/A
+- /obj/machinery/conveyor/process() - (code\modules\recycling\conveyor2.dm)
 
 ### Defines:
 
@@ -26,4 +26,5 @@ Adds Factory Mining. Factory Mining is inspired by Factorio style of gameplay, w
 
 ### Credits:
 
-JJ_Park - Sprite/Code
+JJ_Park - Sprite/Code (Conveyor Sprite / All Code)
+ShadeAware - Sprite (Machine Sprites, Items Sprites)

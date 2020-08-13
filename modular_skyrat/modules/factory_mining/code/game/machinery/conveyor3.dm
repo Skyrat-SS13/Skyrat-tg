@@ -1,4 +1,4 @@
-#define MAX_CONVEYOR_ITEMS_MOVE 30
+#define MAX_CONVEYOR_ITEMS_MOVE 20
 
 /obj/machinery/conveyor/factory
 	icon = 'modular_skyrat/modules/factory_mining/icons/obj/conveyor.dmi'
@@ -7,11 +7,16 @@
 
 	verted = 1
 	processing_flags = START_PROCESSING_ON_INIT
-	subsystem_type = /datum/controller/subsystem/processing/fastprocess
+	subsystem_type = /datum/controller/subsystem/processing
 
 	light_color = COLOR_WHITE
 	light_power = 5
 	light_range = 2
+
+/obj/machinery/conveyor/factory/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Ctrl Click to Rotate.</span>"
+	. += "<span class='notice'>Ctrl Shift Click to Invert.</span>"
 
 /obj/machinery/conveyor/factory/process()
 	//get the first 30 items in contents
@@ -34,11 +39,32 @@
 		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE, -1)
 		qdel(src)
 
-/obj/machinery/conveyor/factory/update_icon_state()
+/obj/machinery/conveyor/factory/CtrlClick(mob/user)
+	. = ..()
 	if(istype(src, /obj/machinery/conveyor/factory/split))
-		icon_state = "splitconveyor[operating * verted]"
-	else if(istype(src, /obj/machinery/conveyor/factory/split/split_t))
+		setDir(turn(dir,-90))
+		update_move_direction()
+		to_chat(user, "<span class='notice'>You rotate [src].</span>")
+	else
+		setDir(turn(dir,-45))
+		update_move_direction()
+		to_chat(user, "<span class='notice'>You rotate [src].</span>")
+
+/obj/machinery/conveyor/factory/CtrlShiftClick(mob/user)
+	. = ..()
+	if(istype(src, /obj/machinery/conveyor/factory/split))
+		return
+	else
+		verted = verted * -1
+		update_move_direction()
+		update_icon_state()
+		to_chat(user, "<span class='notice'>You reverse [src]'s direction.</span>")
+
+/obj/machinery/conveyor/factory/update_icon_state()
+	if(istype(src, /obj/machinery/conveyor/factory/split/split_t))
 		icon_state = "tconveyor"
+	else if(istype(src, /obj/machinery/conveyor/factory/split))
+		icon_state = "splitconveyor[operating * verted]"
 	else
 		icon_state = "conveyor[operating * verted]"
 
