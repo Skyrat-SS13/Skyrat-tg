@@ -77,24 +77,24 @@
 
 /obj/item/stack/factory/products/coil
 	product_type = "coil"
-	product_multiplyer = 14
+	product_multiplyer = 12
 
 /obj/item/stack/factory/products/plate
 	product_type = "plate"
-	product_multiplyer = 7
+	product_multiplyer = 6
 
 /obj/item/stack/factory/products/rim
 	product_type = "rim"
-	product_multiplyer = 14
+	product_multiplyer = 12
 
 /obj/item/stack/factory/products/gear
 	product_type = "gear"
-	product_multiplyer = 24
+	product_multiplyer = 18
 
 /obj/item/stack/factory/products/rod
 	product_type = "rod"
-	product_multiplyer = 7
+	product_multiplyer = 6
 
 /obj/item/stack/factory/products/fabric
 	product_type = "fabric"
-	product_multiplyer = 24
+	product_multiplyer = 18

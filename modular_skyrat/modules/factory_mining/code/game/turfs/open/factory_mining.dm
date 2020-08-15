@@ -28,7 +28,8 @@
 			for(var/dir in GLOB.cardinals)
 				if(prob(spreadingChance))
 					var/turf/T = get_step(src, dir)
-					T.ChangeTurf(src.type)
+					if(istype(T, /turf/open/floor/plating/asteroid/basalt/lava_land_surface/mineral))
+						T.ChangeTurf(src.type)
 	max_mining_allowed = rand(300, 1000)
 
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface/mineral/iron

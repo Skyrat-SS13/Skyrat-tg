@@ -258,6 +258,10 @@
 	light_power = 5
 	light_range = 2
 
+/obj/machinery/conveycrosser/Destroy()
+	linked_crosser.linked_crosser = null
+	. = ..()
+
 /obj/machinery/conveycrosser/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/factory/remote/destroy))
 		if(!do_after(user, 5, FALSE))

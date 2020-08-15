@@ -16,9 +16,6 @@
 	var/output_turf = SOUTH
 
 	///upgrades. get from megafauna hunting
-	///not implemented
-	var/input_efficiency = 2
-	var/current_input = 0
 	///implemented
 	///increases the chance of the miner outputting on process
 	var/output_chance = 1
@@ -41,21 +38,21 @@
 	///processors and smelters have this, not miners
 	var/has_ore_choice = FALSE
 	///the var that checks in the input turf for smelters
-	var/ore_choice = /obj/item/stack/ore/iron
+	var/ore_choice
 	///the var that produces in the output turf for smelters
 	///the var that checks in the input turf for processors
-	var/sheet_choice = /obj/item/stack/sheet/metal
+	var/sheet_choice
 	///multi-use var
 	///used for making icons for products
 	///used for making overlays for smelters and processors
-	var/orename = "iron"
+	var/orename
 
 	///var strictly for the processor; var that determines if a machine produces stuff besides sheets
 	var/has_refined_products = FALSE
 	///var that is set on creating this kind of product
 	///do check within products.dm to see what vars and how it is done
-	var/refined_product = /obj/item/stack/factory/products/coil
-	var/shorthand_refined = "coil"
+	var/refined_product
+	var/shorthand_refined
 
 	///it is entirely possible to have 2 types of items required for a recipe. Ill somehow figure out a better solution!
 	///the req_item_x should be the actual type of item
@@ -148,8 +145,8 @@
 	if(!full_choice)
 		full_choice = list(
 			"North" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "north"),
-			"South" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "south"),
 			"East" 	= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "east"),
+			"South" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "south"),
 			"West" 	= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "west")
 		)
 
@@ -285,7 +282,7 @@
 					shorthand_refined = "coil"
 				if("Plate")
 					req_item_1 = list(/obj/item/stack/sheet, 5, 0)
-					req_item_2 = list()
+					req_item_2 = null
 					refined_product = /obj/item/stack/factory/products/plate
 					shorthand_refined = "plate"
 				if("Rim")
@@ -300,7 +297,7 @@
 					shorthand_refined = "gear"
 				if("Rod")
 					req_item_1 = list(/obj/item/stack/sheet, 5, 0)
-					req_item_2 = list()
+					req_item_2 = null
 					refined_product = /obj/item/stack/factory/products/rod
 					shorthand_refined = "rod"
 				if("Fabric")
@@ -327,13 +324,20 @@
 	//if it doesnt have an input or output, something went wrong
 	if(!has_output || !has_input)
 		return
-	//just to make sure it has an ore choice
+	//just to make sure it has an ore choice, because lord forbid, if it doesnt, something went wrong
 	if(!has_ore_choice)
 		return
 	//this is the input get_step. So it will take the turf to the direction and pull from this
 	var/turf/T = get_step(src, input_turf)
 	//specifically check for ore in the contents of the turf
 	for(var/obj/item/stack/ore/O in T.contents)
+		//if it doesnt have an ore choice, its time to just set it to the first thing it comes across
+		if(!ore_choice)
+			//check the modules/mining/ore_coins.dm in the factory_mining module to see this
+			ore_choice = O.type
+			orename = O.factory_name
+			sheet_choice = O.refined_type
+			update_overlays()
 		//if it isnt the chosen type of the furnace, move on
 		if(!istype(O, ore_choice))
 			continue
@@ -439,38 +443,39 @@
 					qdel(S)
 	//back to this, do we require the first item? (odds are, yes. You know, there are no recipes that are free)
 	if(item1_dependent)
-		//MAKE SURE THERE ISNT A ZERO. There MUST be an item here
-		if(req_item_1[3] == 0)
+		//make sure it is greater than or equal to the amount. if it isnt, return
+		if(req_item_1[3] < req_item_1[2])
 			return
 	//back to this, do we require a second item? (no for the first tier, yes for the rest)
 	if(item2_dependent)
-		//MAKE SURE THERE ISNT A ZERO. There MUST be an item here
-		if(req_item_2[3] == 0)
+		//make sure it is greater than or equal to the amount. if it isnt, return
+		if(req_item_2[3] < req_item_2[2])
 			return
 	//now, in the buffer, is both the item1 and item2 satisfied in their contents?
 	//item1 is always used, so ramount should be a certain amount, so we count on the current buffer to be greater or equal to the price
 	//item2 is not always used. so it is set to 0. 0 = 0 last time I checked, so this passes if a recipe only requires one
-	if(req_item_1[3] >= req_item_1[2] && req_item_2[3] >= req_item_2[2])
-		//if its item1 dependent, we need to remove the amount required from the current amount, since current is above or equal to the required
-		if(item1_dependent)
-			//quick math, set req1 current amount to itself minus the required amount
-			req_item_1[3] -= req_item_1[2]
-		//if its item2 dependent, we need to remove the amount required from the current amount, since current is above or equal to the required
-		if(item2_dependent)
-			//quick math, set req1 current amount to itself minus the required amount
-			req_item_2[3] -= req_item_2[2]
-		//setting up a var so that we can modify it. we also spawn the item here at the output turf (TO)
-		var/obj/item/stack/factory/products/F = new refined_product(TO)
-		//changing the material type to the type of the machine
-		F.ore_type = orename
-		//changing the product type to the type of the machine
-		F.product_type = shorthand_refined
-		//now, check this var out in products.dm. We are updating the name, the icon, and much more with this proc
-		F.update_product()
-		//this is now for the amount of credits produced. Do note it is not selling the product here, just passively making credits if it successfully creates stuff
-		var/obj/item/stack/ore/O = ore_choice
-		//there is an upgrade here.
-		credit_number += O.points * credit_efficiency
+	//if its item1 dependent, we need to remove the amount required from the current amount, since current is above or equal to the required
+	if(item1_dependent)
+		//quick math, set req1 current amount to itself minus the required amount
+		req_item_1[3] -= req_item_1[2]
+	//item1 is always used, so ramount should be a certain amount, so we count on the current buffer to be greater or equal to the price
+	//item2 is not always used. so it is set to 0. 0 = 0 last time I checked, so this passes if a recipe only requires one
+	//if its item2 dependent, we need to remove the amount required from the current amount, since current is above or equal to the required
+	if(item2_dependent)
+		//quick math, set req1 current amount to itself minus the required amount
+		req_item_2[3] -= req_item_2[2]
+	//setting up a var so that we can modify it. we also spawn the item here at the output turf (TO)
+	var/obj/item/stack/factory/products/F = new refined_product(TO)
+	//changing the material type to the type of the machine
+	F.ore_type = orename
+	//changing the product type to the type of the machine
+	F.product_type = shorthand_refined
+	//now, check this var out in products.dm. We are updating the name, the icon, and much more with this proc
+	F.update_product()
+	//this is now for the amount of credits produced. Do note it is not selling the product here, just passively making credits if it successfully creates stuff
+	var/obj/item/stack/ore/O = ore_choice
+	//there is an upgrade here.
+	credit_number += O.points * credit_efficiency
 
 /obj/machinery/factory/miner
 	name = "factory miner"
@@ -488,8 +493,13 @@
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/open/floor/plating/asteroid/basalt/lava_land_surface/mineral))
 		var/turf/open/floor/plating/asteroid/basalt/lava_land_surface/mineral/M = T
+		if(M.max_mining_allowed <= 0)
+			STOP_PROCESSING(SSobj, src)
+			return
 		var/turf/TO = get_step(src, output_turf)
 		var/chosen_ore_spawn = pickweight(M.possible_minerals)
 		if(prob(50 * output_chance))
+			if(prob(100 / destroy_chance))
+				M.max_mining_allowed--
 			var/obj/item/stack/ore/I = new chosen_ore_spawn(TO)
 			I.amount = output_efficiency

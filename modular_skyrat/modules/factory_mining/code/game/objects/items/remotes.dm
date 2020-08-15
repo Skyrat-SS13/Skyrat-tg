@@ -12,6 +12,8 @@
 	var/max_mats = 100
 	var/current_mats = 100
 
+	var/build_dir = NORTH
+
 	var/build_price = 5
 
 /obj/item/factory/remote/build/Initialize()
@@ -47,31 +49,27 @@
 /obj/item/factory/remote/build/attack_self(mob/user)
 	. = ..()
 
-	var/static/list/full_choice
-	if(!full_choice)
-		full_choice = list(
-			"North" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "north"),
-			"South" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "south"),
-			"East" 	= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "east"),
-			"West" 	= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "west"),
-			"North-East" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "northeast"),
-			"North-West" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "northwest"),
-			"South-East" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "southeast"),
-			"South-West" = image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "southwest")
-		)
-
-	var/static/list/building_choice
+	var/list/building_choice
 	if(!building_choice)
 		building_choice = list(
 			"Conveyor Belts"= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "choiceconveyor"),
+			"Direction"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "north"),
 			"Machinery"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "choicemachinery")
 		)
 
-	var/static/list/conveyor_choice
+	var/list/card_choice
+	if(!card_choice)
+		card_choice = list(
+			"North"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "north"),
+			"East"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "east"),
+			"South"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "south"),
+			"West"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/effects/radial.dmi', icon_state = "west")
+		)
+
+	var/list/conveyor_choice
 	if(!conveyor_choice)
 		conveyor_choice = list(
 			"Single Clockwise"			= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/conveyor.dmi', icon_state = "conveyor1"),
-			"Single Counter-Clockwise"	= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/conveyor.dmi', icon_state = "conveyor-1"),
 			"Filter-Left"				= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/conveyor.dmi', icon_state = "splitconveyor1"),
 			"Filter-Right"				= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/conveyor.dmi', icon_state = "splitconveyor-1"),
 			"Split-Left"				= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/conveyor.dmi', icon_state = "splitconveyor1"),
@@ -80,7 +78,7 @@
 			"Crosser"					= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/conveyor.dmi', icon_state = "crossconveyor")
 		)
 
-	var/static/list/machinery_choice
+	var/list/machinery_choice
 	if(!machinery_choice)
 		machinery_choice = list(
 			"Smeltery"	= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/machines.dmi', icon_state = "furnace"),
@@ -99,8 +97,6 @@
 			switch(choice2)
 				if("Single Clockwise")
 					build_choice = /obj/machinery/conveyor/factory
-				if("Single Counter-Clockwise")
-					build_choice = /obj/machinery/conveyor/factory/inverted
 				if("Filter-Left")
 					build_choice = /obj/machinery/conveyor/factory/split/filter_l
 				if("Filter-Right")
@@ -124,6 +120,20 @@
 					build_choice = /obj/machinery/factory/processor
 				if("Miner")
 					build_choice = /obj/machinery/factory/miner
+			build_dir = NORTH
+		if("Direction")
+			var/choice2 = show_radial_menu(user, src, machinery_choice, require_near = TRUE, tooltips = TRUE)
+			if(!choice2)
+				return
+			switch(choice2)
+				if("North")
+					build_dir = NORTH
+				if("East")
+					build_dir = SOUTH
+				if("South")
+					build_dir = EAST
+				if("West")
+					build_dir = WEST
 
 /obj/item/factory/remote/build/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -141,7 +151,7 @@
 		return
 	if(build_cost(build_price))
 		var/obj/machinery/M = new build_choice(T)
-		M.dir = user.dir
+		M.dir = build_dir
 		if(istype(M, /obj/machinery/conveyor))
 			var/obj/machinery/conveyor/C = M
 			C.update_move_direction()
