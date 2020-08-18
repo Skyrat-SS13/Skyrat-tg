@@ -63,7 +63,7 @@
 		return
 	check_timer = world.time + 10 SECONDS
 
-	if(summoner.stat == DEAD)
+	if(summoner?.stat == DEAD)
 		tendril_spawner = FALSE
 		already_summoned = FALSE
 		summoner = null
@@ -74,13 +74,13 @@
 
 	if(summoned_monsters.len < 1)
 		already_summoned = FALSE
+		summoner = null
+		if(tendril_spawner)
+			tendril_spawner = FALSE
+			var/obj/structure/closet/crate/necropolis/spawned_chest =  new /obj/structure/closet/crate/necropolis(source_turf)
+			spawned_chest.PopulateContents()
 
-	if(tendril_spawner && summoned_monsters.len < 1)
-		tendril_spawner = FALSE
-		var/obj/structure/closet/crate/necropolis/spawned_chest =  new /obj/structure/closet/crate/necropolis(source_turf)
-		spawned_chest.PopulateContents()
-
-	if(times_used == 5 && !bdm_spawned)
+	if(times_used >= 5 && !bdm_spawned)
 		bdm_spawned = TRUE
 		new /obj/item/summon_item/miner(source_turf)
 
@@ -93,7 +93,6 @@
 	else if(!already_summoned)
 		for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 			blockers.density = FALSE
-			blockers.icon_state = "matrix_wall"
 		for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 			tiles.icon_state = "matrix_floor"
 
@@ -135,14 +134,10 @@
 						spawned_monster.target = user
 						spawned_monster.parent_altar = src
 						summoned_monsters += spawned_monster
-					summoner = user
-					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "basalt[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "basalt[rand(1,3)]"
-					tendril_spawner = TRUE
 				if("Watcher")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
@@ -150,14 +145,10 @@
 						spawned_monster.target = user
 						spawned_monster.parent_altar = src
 						summoned_monsters += spawned_monster
-					summoner = user
-					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "basalt[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "basalt[rand(1,3)]"
-					tendril_spawner = TRUE
 				if("Goliath")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
@@ -165,14 +156,14 @@
 						spawned_monster.target = user
 						spawned_monster.parent_altar = src
 						summoned_monsters += spawned_monster
-					summoner = user
-					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "basalt[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "basalt[rand(1,3)]"
-					tendril_spawner = TRUE
+			times_used++
+			summoner = user
+			already_summoned = TRUE
+			tendril_spawner = TRUE
 		if("Elite")
 			var/choice2 = input(user, "Which kind of monster?") as null|anything in elite_monster
 			if(!choice2)
@@ -183,11 +174,8 @@
 					spawned_monster.target = user
 					spawned_monster.parent_altar = src
 					summoned_monsters += spawned_monster
-					summoner = user
-					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "necro[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "necro[rand(1,3)]"
 				if("Legionnaire")
@@ -195,11 +183,8 @@
 					spawned_monster.target = user
 					spawned_monster.parent_altar = src
 					summoned_monsters += spawned_monster
-					summoner = user
-					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "boss[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Herald")
@@ -207,11 +192,8 @@
 					spawned_monster.target = user
 					spawned_monster.parent_altar = src
 					summoned_monsters += spawned_monster
-					summoner = user
-					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "boss[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Pandora")
@@ -219,13 +201,12 @@
 					spawned_monster.target = user
 					spawned_monster.parent_altar = src
 					summoned_monsters += spawned_monster
-					summoner = user
-					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "floor"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "floor"
+			summoner = user
+			already_summoned = TRUE
 		if("Megafauna")
 			var/choice2 = input(user, "Which kind of monster?") as null|anything in megafauna_monster
 			if(!choice2)
@@ -239,7 +220,6 @@
 					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "boss[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Hierophant")
@@ -250,7 +230,6 @@
 					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "floor"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "floor"
 				if("Bubblegum")
@@ -261,7 +240,6 @@
 					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "necro[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "necro[rand(1,3)]"
 				if("Ash Drake")
@@ -272,7 +250,6 @@
 					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "basalt[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "basalt[rand(1,3)]"
 				if("Legion")
@@ -283,7 +260,6 @@
 					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "boss[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Colossus")
@@ -294,7 +270,6 @@
 					already_summoned = TRUE
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
-						blockers.icon_state = "boss[rand(1,3)]"
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 

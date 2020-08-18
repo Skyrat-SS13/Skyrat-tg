@@ -8,9 +8,13 @@
 
 /datum/map_template/shelter/New()
 	. = ..()
-	blacklisted_turfs = typecacheof(/turf/closed)
+	//SKYRAT CHANGE START - FMINING
+	//blacklisted_turfs = typecacheof(/turf/closed) ORIGINAL
+	blacklisted_turfs = typecacheof(/turf/closed, /turf/open/indestructible/mining_alter)
 	whitelisted_turfs = list()
-	banned_areas = typecacheof(/area/shuttle)
+	//banned_areas = typecacheof(/area/shuttle) ORIGINAL
+	banned_areas = typecacheof(/area/shuttle, /area/mining_altar)
+	//SKYRAT CHANGE STOP - FMINING
 	banned_objects = list()
 
 /datum/map_template/shelter/proc/check_deploy(turf/deploy_location)
