@@ -11,7 +11,6 @@
 	cell_hit_cost = 600
 	slot_flags = null //you'll have to put it on a belt or whatever
 	force = 11
-	attack_verb = list("prodded", "struck", "\"non-lethalled\"", "silent takedowned") //le deus ex
 	apply_stun_delay = 1 SECONDS //Buff intead of stamina
 	attack_cooldown = 2 SECONDS
 	w_class = WEIGHT_CLASS_SMALL //small but packs a PUNCH.

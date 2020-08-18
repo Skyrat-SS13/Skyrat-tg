@@ -198,10 +198,6 @@
 	icon_state = "engineering"
 	build_path = /obj/machinery/power/port_gen/pacman/super
 
-/obj/item/circuitboard/machine/pacman/mrs
-	name = "MRSPACMAN-type Generator (Machine Board)"
-	build_path = /obj/machinery/power/port_gen/pacman/mrs
-
 /obj/item/circuitboard/machine/power_compressor
 	name = "Power Compressor (Machine Board)"
 	icon_state = "engineering"
@@ -585,6 +581,15 @@
 		/obj/item/stock_parts/card_reader = 1,
 		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/micro_laser = 1
+	)
+
+/obj/item/circuitboard/machine/accounting
+	name = "Account Registration Device (Machine Board)"
+	icon_state = "command"
+	build_path = /obj/machinery/accounting
+	req_components = list(
+		/obj/item/stock_parts/card_reader = 1,
+		/obj/item/stock_parts/scanning_module = 1
 	)
 
 //Medical
