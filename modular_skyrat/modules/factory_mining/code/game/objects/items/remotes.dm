@@ -122,16 +122,16 @@
 					build_choice = /obj/machinery/factory/miner
 			build_dir = NORTH
 		if("Direction")
-			var/choice2 = show_radial_menu(user, src, machinery_choice, require_near = TRUE, tooltips = TRUE)
+			var/choice2 = show_radial_menu(user, src, card_choice, require_near = TRUE, tooltips = TRUE)
 			if(!choice2)
 				return
 			switch(choice2)
 				if("North")
 					build_dir = NORTH
 				if("East")
-					build_dir = SOUTH
-				if("South")
 					build_dir = EAST
+				if("South")
+					build_dir = SOUTH
 				if("West")
 					build_dir = WEST
 
