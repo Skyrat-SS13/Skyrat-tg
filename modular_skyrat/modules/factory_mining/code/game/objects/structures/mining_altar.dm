@@ -156,7 +156,7 @@
 				if("Legion")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
-						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/hivelord/legion/random, dir_turf), 5 SECONDS)
+						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/hivelord/legion/random, dir_turf, user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -164,7 +164,7 @@
 				if("Watcher")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
-						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/random, dir_turf), 5 SECONDS)
+						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/random, dir_turf, user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -172,7 +172,7 @@
 				if("Goliath")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
-						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/goliath/beast/random, dir_turf), 5 SECONDS)
+						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/goliath/beast/random, dir_turf, user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -183,25 +183,25 @@
 				return
 			switch(choice2)
 				if("Broodmother")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/broodmother, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/broodmother, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "necro[rand(1,3)]"
 				if("Legionnaire")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/legionnaire, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/legionnaire, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Herald")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/herald, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/herald, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Pandora")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/pandora, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/pandora, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -212,7 +212,7 @@
 				return
 			switch(choice2)
 				if("Blood-Drunk Miner")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -220,7 +220,7 @@
 					megafauna_spawned = BDM_TIER
 					summoning_item = /obj/item/summon_item/hiero
 				if("Hierophant")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/hierophant, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/hierophant, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -228,7 +228,7 @@
 					megafauna_spawned = HIERO_TIER
 					summoning_item = /obj/item/summon_item/bubble
 				if("Bubblegum")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/bubblegum, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/bubblegum, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -236,7 +236,7 @@
 					megafauna_spawned = BUBBLE_TIER
 					summoning_item = /obj/item/summon_item/drake
 				if("Ash Drake")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/dragon, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/dragon, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -244,7 +244,7 @@
 					megafauna_spawned = DRAKE_TIER
 					summoning_item = /obj/item/summon_item/legion
 				if("Legion")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/legion, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/legion, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -252,7 +252,7 @@
 					megafauna_spawned = LEGION_TIER
 					summoning_item = /obj/item/summon_item/colossus
 				if("Colossus")
-					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/colossus, get_turf(src)), 5 SECONDS)
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/colossus, get_turf(src), user), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -291,7 +291,7 @@
 	if(cooldown_activated)
 		cooldown_activated = FALSE
 
-/obj/structure/mining_altar/proc/spawn_monster(mob/living/simple_animal/hostile/chosen_monster, turf/chosen_turf)
+/obj/structure/mining_altar/proc/spawn_monster(mob/living/simple_animal/hostile/chosen_monster, turf/chosen_turf, mob/user)
 	new chosen_monster(chosen_turf)
 	chosen_monster.parent_altar = src
 	summoned_monsters += chosen_monster
