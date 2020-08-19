@@ -28,6 +28,11 @@
 	if(parent_altar)
 		parent_altar.summoned_monsters -= src
 
+/mob/living/Destroy()
+	. = ..()
+	if(parent_altar)
+		parent_altar.summoned_monsters -= src
+
 /obj/structure/mining_altar
 	name = "summoning altar"
 	desc = "An altar that has been used to summon demons from the other realms. Perhaps it can still be used."
@@ -36,8 +41,13 @@
 
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
+	anchored = TRUE
+
 	var/megafauna_tier = EMPTY_TIER
+	var/megafauna_spawned
+	var/megafauna_spawned_in = FALSE
 	var/list/summoned_monsters = list()
+	var/obj/item/summon_item/summoning_item
 
 	var/mob/living/carbon/summoner
 
@@ -45,9 +55,11 @@
 
 	var/already_summoned = FALSE
 	var/tendril_spawner = FALSE
+	var/cooldown_activated = FALSE
 
 	var/times_used = 0
 	var/bdm_spawned = FALSE
+
 
 /obj/structure/mining_altar/Initialize()
 	. = ..()
@@ -61,24 +73,36 @@
 	var/turf/source_turf = get_turf(src)
 	if(world.time < check_timer)
 		return
-	check_timer = world.time + 10 SECONDS
+	check_timer = world.time + 5 SECONDS
 
-	if(summoner?.stat == DEAD)
-		tendril_spawner = FALSE
-		already_summoned = FALSE
-		summoner = null
-		if(summoned_monsters.len < 1)
-			return
-		for(var/summoned_monster in summoned_monsters)
-			qdel(summoned_monsters)
+	if(summoner)
+		var/area/altar_area = get_area(src)
+		var/area/summoner_area = get_area(summoner)
+		if(altar_area != summoner_area)
+			summoner.forceMove(source_turf)
+		if(summoner.stat == DEAD)
+			tendril_spawner = FALSE
+			already_summoned = FALSE
+			summoner = null
+			megafauna_spawned_in = FALSE
+			if(summoned_monsters.len < 1)
+				return
+			for(var/summoned_monster in summoned_monsters)
+				summoned_monsters -= summoned_monster
+				qdel(summoned_monster)
 
-	if(summoned_monsters.len < 1)
+	if(summoned_monsters.len < 1 && already_summoned)
+		if(already_summoned)
+			addtimer(CALLBACK(src, .proc/end_cooldown_timer), 5 MINUTES)
 		already_summoned = FALSE
 		summoner = null
 		if(tendril_spawner)
 			tendril_spawner = FALSE
-			var/obj/structure/closet/crate/necropolis/spawned_chest =  new /obj/structure/closet/crate/necropolis(source_turf)
-			spawned_chest.PopulateContents()
+			new /obj/structure/closet/crate/necropolis/tendril(source_turf)
+		if(megafauna_tier == megafauna_spawned && megafauna_spawned_in)
+			megafauna_spawned_in = FALSE
+			if(megafauna_tier < COLOSSUS_TIER)
+				new summoning_item(source_turf)
 
 	if(times_used >= 5 && !bdm_spawned)
 		bdm_spawned = TRUE
@@ -87,8 +111,6 @@
 	if(already_summoned)
 		for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 			blockers.density = TRUE
-		if(get_dist(get_turf(summoner), source_turf) > 20)
-			summoner.forceMove(source_turf)
 
 	else if(!already_summoned)
 		for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
@@ -98,6 +120,10 @@
 
 /obj/structure/mining_altar/attack_hand(mob/user)
 	if(already_summoned)
+		return
+
+	if(cooldown_activated)
+		to_chat(user, "<span class='warning'>Currently on cooldown!</span>")
 		return
 
 	var/list/monster_type = list("Normal", "Elite", "Megafauna")
@@ -130,10 +156,7 @@
 				if("Legion")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
-						var/mob/living/simple_animal/hostile/asteroid/hivelord/legion/random/spawned_monster = new /mob/living/simple_animal/hostile/asteroid/hivelord/legion/random(dir_turf)
-						spawned_monster.target = user
-						spawned_monster.parent_altar = src
-						summoned_monsters += spawned_monster
+						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/hivelord/legion/random, dir_turf), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -141,10 +164,7 @@
 				if("Watcher")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
-						var/mob/living/simple_animal/hostile/asteroid/basilisk/watcher/random/spawned_monster = new /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/random(dir_turf)
-						spawned_monster.target = user
-						spawned_monster.parent_altar = src
-						summoned_monsters += spawned_monster
+						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/random, dir_turf), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
@@ -152,144 +172,131 @@
 				if("Goliath")
 					for(var/directions in GLOB.cardinals)
 						var/turf/dir_turf = get_step(src, directions)
-						var/mob/living/simple_animal/hostile/asteroid/goliath/beast/random/spawned_monster = new /mob/living/simple_animal/hostile/asteroid/goliath/beast/random(dir_turf)
-						spawned_monster.target = user
-						spawned_monster.parent_altar = src
-						summoned_monsters += spawned_monster
+						addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/goliath/beast/random, dir_turf), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "basalt[rand(1,3)]"
-			times_used++
-			summoner = user
-			already_summoned = TRUE
-			tendril_spawner = TRUE
 		if("Elite")
 			var/choice2 = input(user, "Which kind of monster?") as null|anything in elite_monster
 			if(!choice2)
 				return
 			switch(choice2)
 				if("Broodmother")
-					var/mob/living/simple_animal/hostile/asteroid/elite/broodmother/spawned_monster = new /mob/living/simple_animal/hostile/asteroid/elite/broodmother(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/broodmother, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "necro[rand(1,3)]"
 				if("Legionnaire")
-					var/mob/living/simple_animal/hostile/asteroid/elite/legionnaire/spawned_monster = new /mob/living/simple_animal/hostile/asteroid/elite/legionnaire(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/legionnaire, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Herald")
-					var/mob/living/simple_animal/hostile/asteroid/elite/herald/spawned_monster = new /mob/living/simple_animal/hostile/asteroid/elite/herald(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/herald, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
 				if("Pandora")
-					var/mob/living/simple_animal/hostile/asteroid/elite/pandora/spawned_monster = new /mob/living/simple_animal/hostile/asteroid/elite/pandora(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/asteroid/elite/pandora, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "floor"
-			summoner = user
-			already_summoned = TRUE
 		if("Megafauna")
 			var/choice2 = input(user, "Which kind of monster?") as null|anything in megafauna_monster
 			if(!choice2)
 				return
 			switch(choice2)
 				if("Blood-Drunk Miner")
-					var/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/spawned_monster = new /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
-					already_summoned = TRUE
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
+					megafauna_spawned = BDM_TIER
+					summoning_item = /obj/item/summon_item/hiero
 				if("Hierophant")
-					var/mob/living/simple_animal/hostile/megafauna/hierophant/spawned_monster = new /mob/living/simple_animal/hostile/megafauna/hierophant(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
-					already_summoned = TRUE
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/hierophant, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "floor"
+					megafauna_spawned = HIERO_TIER
+					summoning_item = /obj/item/summon_item/bubble
 				if("Bubblegum")
-					var/mob/living/simple_animal/hostile/megafauna/bubblegum/spawned_monster = new /mob/living/simple_animal/hostile/megafauna/bubblegum(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
-					already_summoned = TRUE
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/bubblegum, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "necro[rand(1,3)]"
+					megafauna_spawned = BUBBLE_TIER
+					summoning_item = /obj/item/summon_item/drake
 				if("Ash Drake")
-					var/mob/living/simple_animal/hostile/megafauna/dragon/spawned_monster = new /mob/living/simple_animal/hostile/megafauna/dragon(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
-					already_summoned = TRUE
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/dragon, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "basalt[rand(1,3)]"
+					megafauna_spawned = DRAKE_TIER
+					summoning_item = /obj/item/summon_item/legion
 				if("Legion")
-					var/mob/living/simple_animal/hostile/megafauna/legion/spawned_monster = new /mob/living/simple_animal/hostile/megafauna/legion(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
-					already_summoned = TRUE
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/legion, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
+					megafauna_spawned = LEGION_TIER
+					summoning_item = /obj/item/summon_item/colossus
 				if("Colossus")
-					var/mob/living/simple_animal/hostile/megafauna/colossus/spawned_monster = new /mob/living/simple_animal/hostile/megafauna/colossus(get_turf(src))
-					spawned_monster.target = user
-					spawned_monster.parent_altar = src
-					summoned_monsters += spawned_monster
-					already_summoned = TRUE
+					addtimer(CALLBACK(src, .proc/spawn_monster, /mob/living/simple_animal/hostile/megafauna/colossus, get_turf(src)), 5 SECONDS)
 					for(var/turf/closed/indestructible/mining_alter/glitch/barrier/blockers in range(20, src))
 						blockers.density = TRUE
 					for(var/turf/open/indestructible/mining_alter/glitch/tiles in range(20, src))
 						tiles.icon_state = "boss[rand(1,3)]"
+					megafauna_spawned = COLOSSUS_TIER
 
 /obj/structure/mining_altar/attackby(obj/item/I, mob/living/user, params)
-	. = ..()
 	if(istype(I, /obj/item/summon_item/miner))
 		if(megafauna_tier < BDM_TIER)
 			megafauna_tier = BDM_TIER
+		return
 	if(istype(I, /obj/item/summon_item/hiero))
 		if(megafauna_tier < HIERO_TIER)
 			megafauna_tier = HIERO_TIER
+		return
 	if(istype(I, /obj/item/summon_item/bubble))
 		if(megafauna_tier < BUBBLE_TIER)
 			megafauna_tier = BUBBLE_TIER
+		return
 	if(istype(I, /obj/item/summon_item/drake))
 		if(megafauna_tier < DRAKE_TIER)
 			megafauna_tier = DRAKE_TIER
+		return
 	if(istype(I, /obj/item/summon_item/legion))
 		if(megafauna_tier < LEGION_TIER)
 			megafauna_tier = LEGION_TIER
+		return
 	if(istype(I, /obj/item/summon_item/colossus))
 		if(megafauna_tier < COLOSSUS_TIER)
 			megafauna_tier = COLOSSUS_TIER
+		return
+	else
+		return ..()
+
+/obj/structure/mining_altar/proc/end_cooldown_timer()
+	if(cooldown_activated)
+		cooldown_activated = FALSE
+
+/obj/structure/mining_altar/proc/spawn_monster(mob/living/simple_animal/hostile/chosen_monster, turf/chosen_turf)
+	new chosen_monster(chosen_turf)
+	chosen_monster.parent_altar = src
+	summoned_monsters += chosen_monster
+	summoner = user
+	already_summoned = TRUE
+	megafauna_spawned_in = TRUE
+	cooldown_activated = TRUE
+	times_used++

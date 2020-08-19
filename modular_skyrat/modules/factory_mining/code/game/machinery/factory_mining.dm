@@ -99,6 +99,20 @@
 	. = ..()
 	GLOB.factory_machines += src
 	START_PROCESSING(SSobj, src)
+	for(var/directions in GLOB.cardinals)
+		var/turf/step_turf = get_step(src, directions)
+		for(var/obj/machinery/conveyor/factory/chosen_conveyor in step_turf.contents)
+			if(directions == REVERSE_DIR(chosen_conveyor.forwards))
+				input_turf = directions
+			else
+				output_turf = directions
+		for(var/obj/machinery/conveyor/factory/split/chosen_conveyor in step_turf.contents)
+			if(directions == REVERSE_DIR(chosen_conveyor.forwards))
+				input_turf = directions
+			else if(directions == REVERSE_DIR(chosen_conveyor.split_dir))
+				input_turf = directions
+			else
+				output_turf = directions
 
 /obj/machinery/factory/Destroy()
 	GLOB.factory_machines -= src
@@ -340,7 +354,7 @@
 	current_coolant -= 5
 	if(current_coolant <= 5)
 		current_coolant = 0
-	desc = "[initial(desc)] There is [current_coolant] coolant left."
+	desc = "[initial(desc)] There is [current_coolant] lubricant left."
 	if(prob(max_coolant / current_coolant))
 		return FALSE
 	return TRUE
