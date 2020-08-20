@@ -28,8 +28,8 @@
 	health = 500
 	healable = 0
 	environment_smash = 1
-	melee_damage_lower = 20
-	melee_damage_upper = 20
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 //	see_in_dark = 8
 //	see_invisible = SEE_INVISIBLE_MINIMUM
 	wander = 0
