@@ -349,17 +349,19 @@
 	return TRUE
 
 /obj/machinery/factory/proc/check_coolant()
-	if(current_coolant <= 0)
-		return FALSE
 	current_coolant -= 5
 	if(current_coolant <= 5)
 		current_coolant = 0
 	desc = "[initial(desc)] There is [current_coolant] lubricant left."
+	if(current_coolant <= 0)
+		return FALSE
 	if(prob(max_coolant / current_coolant))
 		return FALSE
 	return TRUE
 
 /obj/machinery/factory/proc/check_hostile_mobs()
-	if(locate(/mob/living/simple_animal/hostile/asteroid) in range(5, src))
+	for(var/mob/living/simple_animal/hostile/hostile_mob in range(5, src))
+		if(hostile_mob.stat == DEAD)
+			return FALSE
 		return TRUE
 	return FALSE

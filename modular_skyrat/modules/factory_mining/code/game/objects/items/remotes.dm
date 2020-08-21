@@ -83,7 +83,9 @@
 		machinery_choice = list(
 			"Smeltery"	= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/machines.dmi', icon_state = "furnace"),
 			"Processor"	= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/machines.dmi', icon_state = "processor"),
-			"Miner"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/machines.dmi', icon_state = "miner")
+			"Miner"		= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/machines.dmi', icon_state = "miner"),
+			"Loader"	= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/machines.dmi', icon_state = "miner"),
+			"Butcher"	= image(icon = 'modular_skyrat/modules/factory_mining/icons/obj/machines.dmi', icon_state = "miner")
 		)
 
 	var/choice1 = show_radial_menu(user, src, building_choice, require_near = TRUE, tooltips = TRUE)
@@ -120,6 +122,10 @@
 					build_choice = /obj/machinery/factory/processor
 				if("Miner")
 					build_choice = /obj/machinery/factory/miner
+				if("Loader")
+					build_choice = /obj/machinery/factory/loader
+				if("Butcher")
+					build_choice = /obj/machinery/factory/butcher
 			build_dir = NORTH
 		if("Direction")
 			var/choice2 = show_radial_menu(user, src, card_choice, require_near = TRUE, tooltips = TRUE)
