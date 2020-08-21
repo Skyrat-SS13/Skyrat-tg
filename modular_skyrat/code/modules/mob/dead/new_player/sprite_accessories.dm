@@ -18,6 +18,9 @@
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
 
+	///Use this as a typepath to an organ that this sprite_accessory will be associated. Make sure the organ has 'mutantpart_info' set properly.
+	var/organ_type
+
 	var/extra = FALSE
 	var/extra_color_src
 	var/extra2 = FALSE
@@ -107,6 +110,7 @@
 	key = "ears"
 	generic = "Ears"
 	skip_type = /datum/sprite_accessory/ears
+	organ_type = /obj/item/organ/ears/mutant
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
@@ -127,12 +131,15 @@
 	key = "tail"
 	generic = "Tail"
 	skip_type = /datum/sprite_accessory/tails
+	organ_type = /obj/item/organ/tail
 
 /datum/sprite_accessory/tails/lizard
 	recommended_species = list("lizard", "ashwalker")
+	organ_type = /obj/item/organ/tail/lizard
 
 /datum/sprite_accessory/tails/human
 	recommended_species = list("human", "felinid")
+	organ_type = /obj/item/organ/tail/cat
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
@@ -152,96 +159,89 @@
 
 /datum/sprite_accessory/socks
 	icon = 'modular_skyrat/icons/mob/clothing/underwear.dmi'
-	use_static = null
+	use_static = TRUE
 
 /datum/sprite_accessory/socks/socks_knee
 	name = "Knee-high"
 	icon_state = "socks_knee"
+	use_static = null
 
 /datum/sprite_accessory/socks/striped_knee
 	name = "Knee-high - Striped"
 	icon_state = "striped_knee"
+	use_static = null
 
 /datum/sprite_accessory/socks/thin_knee
 	name = "Knee-high - Thin"
 	icon_state = "thin_knee"
+	use_static = null
 
 /datum/sprite_accessory/socks/socks_norm
 	name = "Normal"
 	icon_state = "socks_norm"
+	use_static = null
 
 /datum/sprite_accessory/socks/socks_short
 	name = "Short"
 	icon_state = "socks_short"
+	use_static = null
 
 /datum/sprite_accessory/socks/socks_thigh
 	name = "Thigh-high"
 	icon_state = "socks_thigh"
+	use_static = null
 
 /datum/sprite_accessory/socks/bee_thigh
 	name = "Thigh-high - Bee (Old)"
 	icon_state = "bee_thigh_old"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/bee_knee
 	name = "Knee-high - Bee (Old)"
 	icon_state = "bee_knee_old"
-	use_static = TRUE
 
 /datum/sprite_accessory/underwear/socks/christmas_norm
 	name = "Normal - Christmas"
 	icon_state = "christmas_norm"
-	use_static = TRUE
 
 /datum/sprite_accessory/underwear/socks/candycaner_norm
 	name = "Normal - Red Candy Cane"
 	icon_state = "candycaner_norm"
-	use_static = TRUE
 
 /datum/sprite_accessory/underwear/socks/candycaneg_norm
 	name = "Normal - Green Candy Cane"
 	icon_state = "candycaneg_norm"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/christmas_knee
 	name = "Knee-High - Christmas"
 	icon_state = "christmas_knee"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/candycaner_knee
 	name = "Knee-High - Red Candy Cane"
 	icon_state = "candycaner_knee"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/candycaneg_knee
 	name = "Knee-High - Green Candy Cane"
 	icon_state = "candycaneg_knee"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/christmas_thigh
 	name = "Thigh-high - Christmas"
 	icon_state = "christmas_thigh"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/candycaner_thigh
 	name = "Thigh-high - Red Candy Cane"
 	icon_state = "candycaner_thigh"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/candycaneg_thigh
 	name = "Thigh-high - Green Candy Cane"
 	icon_state = "candycaneg_thigh"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/rainbow_knee
 	name = "Knee-high - Rainbow"
 	icon_state = "rainbow_knee"
-	use_static = TRUE
 
 /datum/sprite_accessory/socks/rainbow_thigh
 	name = "Thigh-high - Rainbow"
 	icon_state = "rainbow_thigh"
-	use_static = TRUE
 
 
 /datum/sprite_accessory/underwear
@@ -398,22 +398,24 @@
 
 /datum/sprite_accessory/undershirt
 	icon = 'modular_skyrat/icons/mob/clothing/underwear.dmi'
-	use_static = null
-
+	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/tanktop_alt
 	name = "Tank Top - Alt"
 	icon_state = "tanktop_alt"
+	use_static = null
 
 /datum/sprite_accessory/undershirt/tanktop_midriff
 	name = "Tank Top - Midriff"
 	icon_state = "tank_midriff"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/tanktop_midriff_alt
 	name = "Tank Top - Midriff Halterneck"
 	icon_state = "tank_midriff_alt"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/tankstripe
 	name = "Tank Top - Striped"
@@ -429,21 +431,25 @@
 	name = "Baby-Doll"
 	icon_state = "babydoll"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/bra
 	name = "Bra"
 	icon_state = "bra"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/bra_alt
 	name = "Bra - Alt"
 	icon_state = "bra_alt"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/bra_thin
 	name = "Bra - Thin"
 	icon_state = "bra_thin"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/bra_kinky
 	name = "Bra - Kinky Black"
@@ -479,36 +485,43 @@
 	name = "Bra - Neko"
 	icon_state = "bra_neko"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/halterneck_bra
 	name = "Bra - Halterneck"
 	icon_state = "halterneck_bra"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/sports_bra
 	name = "Bra, Sports"
 	icon_state = "sports_bra"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/sports_bra_alt
 	name = "Bra, Sports - Alt"
 	icon_state = "sports_bra_alt"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/bra_strapless
 	name = "Bra, Strapless"
 	icon_state = "bra_strapless"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/bra_strapless_alt
 	name = "Bra, Strapless - Alt"
 	icon_state = "bra_blue"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/striped_bra
 	name = "Bra - Striped"
 	icon_state = "striped_bra"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/fishnet_sleeves
 	name = "Fishnet - sleeves"
@@ -532,13 +545,16 @@
 	name = "Swimsuit Top"
 	icon_state = "bra_swimming"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/swimsuit_alt
 	name = "Swimsuit Top - Strapless"
 	icon_state = "bra_swimming_alt"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/undershirt/tubetop
 	name = "Tube Top"
 	icon_state = "tubetop"
 	gender = FEMALE
+	use_static = null

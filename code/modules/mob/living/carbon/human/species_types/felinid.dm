@@ -8,8 +8,8 @@
 	mutant_bodyparts = list("ears", "tail_human")
 	default_features = list("mcolor" = "FFF", "tail_human" = "Cat", "ears" = "Cat", "wings" = "None")
 
-	mutantears = /obj/item/organ/ears/cat
-	mutant_organs = list(/obj/item/organ/tail/cat)
+	//mutantears = /obj/item/organ/ears/cat //Skyrat change
+	//mutant_organs = list(/obj/item/organ/tail/cat) //Skyrat change
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
 	payday_modifier = 0.75

@@ -31,6 +31,15 @@
 				var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
 				if(!SP.factual)
 					bodyparts_to_add -= key
+					continue
+				if(SP.organ_type && !istype(src,/mob/living/carbon/human/dummy))
+					var/obj/item/organ/ORG = new SP.organ_type
+					ORG.mutantpart_key = key
+					ORG.mutantpart_info = bodyparts_to_add[key].Copy()
+					ORG.Insert(src, 0, FALSE)
+					//Why dont we remove the key from the list here, as it's gonna get added either way?
+					//Well there's some jank that makes the organ not properly do it on initializations
+					//And this way there is literally no difference in practice
 			dna.features = pref_load.features.Copy()
 			dna.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()
 			dna.species.mutant_bodyparts = bodyparts_to_add

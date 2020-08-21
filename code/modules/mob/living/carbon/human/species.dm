@@ -265,7 +265,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
   * * replace_current - boolean, forces all old organs to get deleted whether or not they pass the species' ability to keep that organ
   * * excluded_zones - list, add zone defines to block organs inside of the zones from getting handled. see headless mutation for an example
   */
-/datum/species/proc/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE,list/excluded_zones)
+/datum/species/proc/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=FALSE,list/excluded_zones) //SKYRAT EDIT replace_current to FALSE from TRUE
 	//what should be put in if there is no mutantorgan (brains handled seperately)
 	var/list/slot_mutantorgans = list(ORGAN_SLOT_BRAIN = mutantbrain, ORGAN_SLOT_HEART = mutantheart, ORGAN_SLOT_LUNGS = mutantlungs, ORGAN_SLOT_APPENDIX = mutantappendix, \
 	ORGAN_SLOT_EYES = mutanteyes, ORGAN_SLOT_EARS = mutantears, ORGAN_SLOT_TONGUE = mutanttongue, ORGAN_SLOT_LIVER = mutantliver, ORGAN_SLOT_STOMACH = mutantstomach)

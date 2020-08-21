@@ -8,7 +8,7 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("tail_lizard", "snout", "spines", "horns", "frills", "body_markings", "legs")
 	mutanttongue = /obj/item/organ/tongue/lizard
-	mutant_organs = list(/obj/item/organ/tail/lizard)
+	//mutant_organs = list(/obj/item/organ/tail/lizard) //Skyrat change
 	coldmod = 1.5
 	heatmod = 0.67
 	payday_modifier = 0.75

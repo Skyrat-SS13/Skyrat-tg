@@ -1,3 +1,7 @@
+/datum/species
+	///List of organs that wont get removed on regeneration. This is important for anything that could be added through customization
+	var/list/compatible_organs = list()
+
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
@@ -187,6 +191,8 @@
 /datum/species/human/felinid
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
+	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
+	compatible_organs = list(/obj/item/organ/ears/mutant)
 
 /datum/species/human
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
