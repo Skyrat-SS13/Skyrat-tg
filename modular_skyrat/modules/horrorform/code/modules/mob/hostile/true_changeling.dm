@@ -86,10 +86,10 @@
 				if(M_turf && M_turf.z == src.z)
 					var/dist = get_dist(M_turf, src)
 					if(dist <= 7) //source of sound very close
-						M.playsound_local(src, 'modular_skyrat/master_files/sound/effects/horror_scream.ogg', 80, 1, frequency, falloff = 2)
+						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency, falloff = 2)
 					else
 						var/vol = clamp(100-((dist-7)*5), 10, 100) //Every tile decreases sound volume by 5
-						M.playsound_local(src, 'modular_skyrat/master_files/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency, falloff = 5)
+						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency, falloff = 5)
 				if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
 					M.show_message(message)
 		audible_message(message)
@@ -200,7 +200,7 @@
 			BP.dismember()
 			dismembered = TRUE
 	playsound(lunch, 'sound/effects/splat.ogg', 50, 1)
-	playsound(lunch, 'modular_skyrat/master_files/sound/misc/tear.ogg', 50, 1)
+	playsound(lunch, 'modular_skyrat/modules/horrorform/sound/misc/tear.ogg', 50, 1)
 	lunch.emote("scream")
 	if(lunch.nutrition >= NUTRITION_LEVEL_FAT)
 		T.adjustBruteLoss(-100) //Tasty leetle peegy
