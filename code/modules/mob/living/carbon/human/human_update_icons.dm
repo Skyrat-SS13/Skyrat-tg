@@ -97,7 +97,7 @@ There are several things that need to be remembered:
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
 
-/mob/living/carbon/human/update_inv_w_uniform()
+/*/mob/living/carbon/human/update_inv_w_uniform() SKYRAT EDIT - moved to modular_skyrat
 	remove_overlay(UNIFORM_LAYER)
 
 	if(client && hud_used)
@@ -138,7 +138,7 @@ There are several things that need to be remembered:
 		overlays_standing[UNIFORM_LAYER] = uniform_overlay
 
 	apply_overlay(UNIFORM_LAYER)
-	update_mutant_bodyparts()
+	update_mutant_bodyparts()*/
 
 
 /mob/living/carbon/human/update_inv_wear_id()
@@ -252,7 +252,7 @@ There are several things that need to be remembered:
 	apply_overlay(EARS_LAYER)
 
 
-/mob/living/carbon/human/update_inv_shoes()
+/*/mob/living/carbon/human/update_inv_shoes() SKYRAT EDIT - moved to modular_skyrat
 	remove_overlay(SHOES_LAYER)
 
 	if(get_num_legs(FALSE) <2)
@@ -275,7 +275,7 @@ There are several things that need to be remembered:
 			shoes_overlay.pixel_y += dna.species.offset_features[OFFSET_SHOES][2]
 		overlays_standing[SHOES_LAYER] = shoes_overlay
 
-	apply_overlay(SHOES_LAYER)
+	apply_overlay(SHOES_LAYER)*/
 
 
 /mob/living/carbon/human/update_inv_s_store()
@@ -334,7 +334,7 @@ There are several things that need to be remembered:
 
 
 
-/mob/living/carbon/human/update_inv_wear_suit()
+/*/mob/living/carbon/human/update_inv_wear_suit() SKYRAT EDIT - moved to modular_skyrat
 	remove_overlay(SUIT_LAYER)
 
 	if(client && hud_used)
@@ -356,7 +356,7 @@ There are several things that need to be remembered:
 	update_hair()
 	update_mutant_bodyparts()
 
-	apply_overlay(SUIT_LAYER)
+	apply_overlay(SUIT_LAYER)*/
 
 
 /mob/living/carbon/human/update_inv_pockets()
@@ -488,7 +488,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 */
-/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null)
+/*/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null) SKYRAT EDIT - moved to modular_skyrat
 
 	//Find a valid icon_state from variables+arguments
 	var/t_state
@@ -528,7 +528,7 @@ generate/load female uniform sprites matching all previously decided variables
 	standing.alpha = alpha
 	standing.color = color
 
-	return standing
+	return standing*/
 
 
 /obj/item/proc/get_held_offsets()

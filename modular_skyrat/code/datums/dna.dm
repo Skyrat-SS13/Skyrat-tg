@@ -26,9 +26,14 @@
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
 		if(pref_load)
+			var/list/bodyparts_to_add = pref_load.mutant_bodyparts.Copy()
+			for(var/key in bodyparts_to_add)
+				var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
+				if(!SP.factual)
+					bodyparts_to_add -= key
 			dna.features = pref_load.features.Copy()
 			dna.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()
-			dna.species.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()
+			dna.species.mutant_bodyparts = bodyparts_to_add
 			dna.real_name = pref_load.real_name
 
 		dna.species.on_species_gain(src, old_species, pref_load)

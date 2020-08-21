@@ -602,7 +602,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
   * Arguments:
   * * H - Human, whoever we're handling the body for
   */
-/datum/species/proc/handle_body(mob/living/carbon/human/H)
+/*/datum/species/proc/handle_body(mob/living/carbon/human/H) SKYRAT CHANGE - moved to modular_skyrat
 	H.remove_overlay(BODY_LAYER)
 
 	var/list/standing = list()
@@ -662,7 +662,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		H.overlays_standing[BODY_LAYER] = standing
 
 	H.apply_overlay(BODY_LAYER)
-	handle_mutant_bodyparts(H)
+	handle_mutant_bodyparts(H)*/
 
 /**
   * Handles the mutant bodyparts of a human

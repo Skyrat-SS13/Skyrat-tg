@@ -215,7 +215,7 @@
 		var/obj/item/bodypart/BP = X
 		BP.original_owner = src
 
-/mob/living/carbon/proc/update_body_parts()
+/*/mob/living/carbon/proc/update_body_parts() SKYRAT EDIT - moved to modular_skyrat
 	//CHECK FOR UPDATE
 	var/oldkey = icon_render_key
 	icon_render_key = generate_icon_render_key()
@@ -243,7 +243,7 @@
 		limb_icon_cache[icon_render_key] = new_limbs
 
 	apply_overlay(BODYPARTS_LAYER)
-	update_damage_overlays()
+	update_damage_overlays()*/
 
 
 
@@ -263,7 +263,7 @@
 
 //produces a key based on the mob's limbs
 
-/mob/living/carbon/proc/generate_icon_render_key()
+/*/mob/living/carbon/proc/generate_icon_render_key() SKYRAT EDIT - moved to modular_skyrat
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		. += "-[BP.body_zone]"
@@ -277,7 +277,7 @@
 			. += "-robotic"
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
-		. += "-husk"
+		. += "-husk"*/
 
 
 //change the mob's icon to the one matching its key

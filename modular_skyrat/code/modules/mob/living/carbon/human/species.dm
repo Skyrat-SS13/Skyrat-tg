@@ -80,7 +80,7 @@
 		if(!(DIGITIGRADE in species_traits)) //Someone cut off a digitigrade leg and tacked it on
 			species_traits += DIGITIGRADE
 		var/should_be_squished = FALSE
-		if(H.wear_suit && ((H.wear_suit.flags_inv & HIDEJUMPSUIT) || (H.wear_suit.body_parts_covered & LEGS)) || (H.w_uniform && (H.w_uniform.body_parts_covered & LEGS)))
+		if((H.wear_suit && H.wear_suit.flags_inv & HIDEJUMPSUIT && !(H.wear_suit.mutant_variants & STYLE_DIGITIGRADE) && (H.wear_suit.body_parts_covered & LEGS)) || (H.w_uniform && (H.w_uniform.body_parts_covered & LEGS) && !(H.w_uniform.mutant_variants & STYLE_DIGITIGRADE)))
 			should_be_squished = TRUE
 		if(O.use_digitigrade == FULL_DIGITIGRADE && should_be_squished)
 			O.use_digitigrade = SQUISHED_DIGITIGRADE
@@ -298,3 +298,79 @@
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
+
+/datum/species/proc/handle_body(mob/living/carbon/human/H)
+	H.remove_overlay(BODY_LAYER)
+
+	var/list/standing = list()
+
+	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
+
+	if(HD && !(HAS_TRAIT(H, TRAIT_HUSK)))
+		// lipstick
+		if(H.lip_style && (LIPS in species_traits))
+			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/human_face.dmi', "lips_[H.lip_style]", -BODY_LAYER)
+			lip_overlay.color = H.lip_color
+			if(OFFSET_FACE in H.dna.species.offset_features)
+				lip_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
+				lip_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
+			standing += lip_overlay
+
+		// eyes
+		if(!(NOEYESPRITES in species_traits))
+			var/obj/item/organ/eyes/E = H.getorganslot(ORGAN_SLOT_EYES)
+			var/mutable_appearance/eye_overlay
+			if(!E)
+				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+			else
+				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', E.eye_icon_state, -BODY_LAYER)
+			if((EYECOLOR in species_traits) && E)
+				eye_overlay.color = "#" + H.eye_color
+			if(OFFSET_FACE in H.dna.species.offset_features)
+				eye_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
+				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
+			standing += eye_overlay
+
+	//Underwear, Undershirts & Socks
+	if(!(NO_UNDERWEAR in species_traits))
+		if(H.underwear)
+			var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[H.underwear]
+			var/mutable_appearance/underwear_overlay
+			if(underwear)
+				var/icon_state = underwear.icon_state
+				if(underwear.has_digitigrade && (DIGITIGRADE in species_traits))
+					icon_state += "_d" 
+				underwear_overlay = mutable_appearance(underwear.icon, icon_state, -BODY_LAYER)
+				if(!underwear.use_static)
+					underwear_overlay.color = "#" + H.underwear_color
+				standing += underwear_overlay
+
+		if(H.undershirt)
+			var/datum/sprite_accessory/undershirt/undershirt = GLOB.undershirt_list[H.undershirt]
+			if(undershirt)
+				var/mutable_appearance/undershirt_overlay
+				if(H.dna.species.sexes && H.gender == FEMALE)
+					undershirt_overlay = wear_female_version(undershirt.icon_state, undershirt.icon, BODY_LAYER)
+				else
+					undershirt_overlay = mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
+				if(!undershirt.use_static)
+					undershirt_overlay.color = "#" + H.undershirt_color
+				standing += undershirt_overlay
+
+		if(H.socks && H.get_num_legs(FALSE) >= 2 && !(mutant_bodyparts["taur"]))
+			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[H.socks]
+			if(socks)
+				var/mutable_appearance/socks_overlay
+				var/icon_state = socks.icon_state
+				if(DIGITIGRADE in species_traits)
+					icon_state += "_d" 
+				socks_overlay = mutable_appearance(socks.icon, icon_state, -BODY_LAYER)
+				if(!socks.use_static)
+					socks_overlay.color = "#" + H.socks_color
+				standing += socks_overlay
+
+	if(standing.len)
+		H.overlays_standing[BODY_LAYER] = standing
+
+	H.apply_overlay(BODY_LAYER)
+	handle_mutant_bodyparts(H)
