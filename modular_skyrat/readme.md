@@ -240,7 +240,7 @@ In those cases, we've decided to apply the following convention, with examples:
   //SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE
   //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
   if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
-  //SKYRAT EDITCHANGE END
+  //SKYRAT EDIT CHANGE END
       return 1
   ```
 
