@@ -72,9 +72,9 @@ And then you'll want to establish your core folder that you'll be working out of
 
 ### Maps
 
-The major station maps have their equivalents in the same folder as the originals, but with a `_skyrat` suffix.
+The major station maps have their equivalents in the same folder as the originals, but with their filename having a `_skyrat` suffix.
 
-If you wanted to add some location to the CentCom z-level, a'la whatever off-station location that isn't meant to be reachable or escapable through normal means, we have our own separate z-level, in `_maps/map_files/generic/Offstation_skyrat.dmm`.
+If you wanted to add some location to the CentCom z-level, a'la whatever off-station location that isn't meant to be reachable or escapable through normal means, we have our own separate z-level, in `_maps/map_files/generic/Offstation_skyrat.dmm`. That z-level, by design, has the same traits as the CentCom z-level, meaning that teleporters and a lot of other things will simply refuse to work there.
 
 If you plan to edit space ruins and so on, currently, it should be discussed with a maintainer and likely should be PRed upstream, to tgstation repository.
 
