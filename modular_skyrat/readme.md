@@ -63,9 +63,17 @@ Our answer to this is modularization of the code.
 
 ## The modularization protocol
 
-Always start by thinking of an ID for your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
+Always start by thinking of the theme/purpose of your module. It's oftentimes a good idea to see if there isn't an already existing one, that you should append to. Otherwise, pick a new ID for your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
 
 And then you'll want to establish your core folder that you'll be working out of which is normally your module ID. E.g. `modular_skyrat/modules/shuttle_toggle`
+
+### Maps
+
+The major station maps have their equivalents in the same folder as the originals, but with a `_skyrat` suffix.
+
+If you wanted to add some location to the CentCom z-level, a'la whatever off-station location that isn't meant to be reachable or escapable through normal means, we have our own separate z-level, in `_maps/map_files/generic/Offstation_skyrat.dmm`.
+
+If you plan to edit space ruins and so on, currently, it should be discussed with a maintainer and likely should be PRed upstream, to tgstation repository.
 
 ### Assets: images, sounds, icons and binaries
 
