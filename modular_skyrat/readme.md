@@ -63,13 +63,11 @@ Our answer to this is modularization of the code.
 
 ## The modularization protocol
 
-Always start by thinking of an ID for your module. E.g. `DNA_FEATURE_WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
+Always start by thinking of an ID for your module. E.g. `DNA-FEATURE-WINGS` or `XENOARCHEAOLOGY` or `SHUTTLE_TOGGLE` - We will use this in future documentation. It is essentially your module ID. It must be uniform throughout the entire module. All references MUST be exactly the same.
 
-And then you'll want to establish your core folder that you'll be working out of which is normally your module ID. E.g. `modular_skyrat/modules/yourmodulename`
+And then you'll want to establish your core folder that you'll be working out of which is normally your module ID. E.g. `modular_skyrat/modules/shuttle_toggle`
 
 ### Assets: images, sounds, icons and binaries
-
->APPEND PROPOSAL
 
 Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
 
@@ -93,65 +91,15 @@ All assets added by us should be placed into the same modular folder as your cod
 
 - Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
 
->APPEND END
-
->
-
-Git doesn't handle conflicts of binary files well at all, therefore changes to core binary files are absolutely forbidden, unless you have a really *really* ***really*** good reason to do otherwise.
-
-All assets added by us should be added to the appropriate subfolders of the **`modular_skyrat/`**, creating them if necessary, corresponding to the position where they would go in the core code's folder structure so:
-
-- Icons go into **`modular_skyrat/icons/`**
-  - ***Example:*** You are adding a new uniform for cargo.
-  You go check where similar clothing in the core code is located.
-  You find the on-mob sprites in `icons/mob/clothing/under/cargo.dmi`
-  You find the item sprites in `icons/obj/clothing/under/cargo.dmi`
-  Therefore your new sprites go into the corresponding modular folders
-  `modular_skyrat/icons/mob/clothing/under/cargo.dmi` and `modular_skyrat/icons/obj/clothing/under/cargo.dmi`
-  The next step would only be to point the new item to the new icon  files, through changing the appropriate item's vars, in your modular file, like so:
-
-    ```byond
-    /obj/item/clothing/under/rank/cargo/cargo_superman
-      icon = 'modular_skyrat/icons/obj/clothing/under/cargo.dmi'
-      icon_state = "cargo_superman"
-      worn_icon = 'modular_skyrat/icons/mob/clothing/under/cargo.dmi'
-      worn_icon_state = "cargo_superman"
-    ```
-
-  With likely other vars set to their own appropriate values. Clothing is not the focal point of this guide, so ask around or figure it by yourself.
-
-  - ***Example:*** You're adding a new lavaland mob.
-  Again, you go check where similar-class mobs are located, let's say
-  `icons/mob/lavaland/lavaland_monsters.dmi`, so yours goes into `modular_skyrat/icons/mob/lavaland/lavaland_monsters.dmi`
-  And likewise, you touch your modular code up to point to the modular icon file.
-
-- Sounds go into **`modular_skyrat/sound/`** folder, following similar rules as above, but with a little bit more freedom in terms of organization.
-
-- Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
-
->
-
 ### Fully modular portions of your code
 
 This section will be fairly straightforward, however, I will try to go over the basics and give simple examples, as the guide is aimed at new contributors likewise.
 
 The rule of thumb is that if you don't absolutely have to, you shouldn't make any changes to core codebase files.
 
->APPEND PROPOSAL
-
 In short, most of the modular code will be placed in the subfolders of your main module folder **`modular_skyrat/modules/yourmodule/code/`**, with similar rules as with the assets, in terms of correspondence to the main code locations.
 In case of new content, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/modules/yourmodule/code`** in their own separate folder, to ensure they're easy to find, manage and maintain.
 For example, `modular_skyrat/modules/xenoarcheaology/code` containing all the code, tools, items and machinery related to it.
-
->APPEND END
-
->
-
-In short, most of the modular code will be placed in the subfolders of  **`modular_skyrat/code/`**, with similar rules as with the assets, in terms of correspondence to the main code locations.
-In case of new content, however, there's a bit more freedom allowed, and it is heavily encouraged to put thematic feature groups under **`modular_skyrat/code/modules`** in their own separate folder, to ensure they're easy to find, manage and maintain.
-For example, `modular_skyrat/code/modules/xenoarcheaology` containing all the code, tools, items and machinery related to it.
-
->
 
 Such modules, unless _very_ simple, **need** to have a `readme.dm` in their folder, containing the following:
 
@@ -183,6 +131,11 @@ MODULE ID: <!-- uppercase, underscore_connected name of your module, that you us
 
 - N/A
 <!-- If you needed to add any defines, mention the files you added those defines in -->
+
+### Master file additions
+
+- N/A
+<!-- Any master file changes you've made to existing master files or if you've added a new master file. Please mark either as #NEW or #CHANGE -->
 
 ### Included files that are not contained in this module:
 
@@ -292,7 +245,7 @@ In those cases, we've decided to apply the following convention, with examples:
   //SKYRAT EDIT CHANGE BEGIN - SHUTTLE_TOGGLE
   //if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE) - SKYRAT EDIT - ORIGINAL
   if(SHUTTLE_STRANDED, SHUTTLE_ESCAPE, SHUTTLE_DISABLED)
-  //SKYRAT EDITCHANGE END
+  //SKYRAT EDIT CHANGE END
       return 1
   ```
 
@@ -309,7 +262,7 @@ That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them t
 
 Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
 
-- <https://github.com/Skyrat-SS13/Skyrat-tg/pull/104>
+- <https://github.com/Skyrat-SS13/Skyrat-tg/pull/241>
 - <https://github.com/Skyrat-SS13/Skyrat-tg/pull/111>
 
 ## Afterword
