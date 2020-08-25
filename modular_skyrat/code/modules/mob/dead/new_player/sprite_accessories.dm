@@ -11,6 +11,8 @@
 	///Notable things that have it set to FALSE are things that need special setup, such as genitals
 	var/generic
 
+	var/special_render_case
+
 	var/skip_type = /datum/sprite_accessory
 
 	color_src = USE_ONE_COLOR
@@ -121,6 +123,7 @@
 	key = "snout"
 	generic = "Snout"
 	skip_type = /datum/sprite_accessory/snouts
+	var/use_muzzled_sprites = TRUE
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD || HD.status == BODYPART_ROBOTIC)

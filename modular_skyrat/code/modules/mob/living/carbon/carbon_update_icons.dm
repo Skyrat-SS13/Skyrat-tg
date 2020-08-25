@@ -55,3 +55,54 @@
 
 	if(dna?.species.mutant_bodyparts["taur"])
 		. += "-taur"
+
+/mob/living/carbon/update_inv_head()
+	remove_overlay(HEAD_LAYER)
+
+	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
+		return
+
+	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_HEAD) + 1]
+		inv.update_icon()
+
+	if(head)
+		var/desired_icon = head.worn_icon
+		var/used_style = NONE
+		if(dna?.species.mutant_bodyparts["snout"])
+			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
+			if(S.use_muzzled_sprites && head.mutant_variants & STYLE_MUZZLE)
+				used_style = STYLE_MUZZLE
+		if(used_style == STYLE_MUZZLE)
+			desired_icon = head.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/head_muzzled.dmi'
+
+		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_icon = desired_icon)
+		update_hud_head(head)
+
+	apply_overlay(HEAD_LAYER)
+
+/mob/living/carbon/update_inv_wear_mask()
+	remove_overlay(FACEMASK_LAYER)
+
+	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
+		return
+
+	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1])
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1]
+		inv.update_icon()
+
+	if(wear_mask)
+		var/desired_icon = wear_mask.worn_icon
+		var/used_style = NONE
+		if(dna?.species.mutant_bodyparts["snout"])
+			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
+			if(S.use_muzzled_sprites && wear_mask.mutant_variants & STYLE_MUZZLE)
+				used_style = STYLE_MUZZLE
+		if(used_style == STYLE_MUZZLE)
+			desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/mask_muzzled.dmi'
+		
+		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
+			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_icon = desired_icon)
+		update_hud_wear_mask(wear_mask)
+
+	apply_overlay(FACEMASK_LAYER)

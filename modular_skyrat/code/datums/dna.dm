@@ -38,7 +38,7 @@
 					ORG.mutantpart_info = bodyparts_to_add[key].Copy()
 					ORG.Insert(src, 0, FALSE)
 					//Why dont we remove the key from the list here, as it's gonna get added either way?
-					//Well there's some jank that makes the organ not properly do it on initializations
+					//Well there's some jank that makes the organ not properly do it on initializations, which doesnt happen on organ manipulations
 					//And this way there is literally no difference in practice
 			dna.features = pref_load.features.Copy()
 			dna.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()

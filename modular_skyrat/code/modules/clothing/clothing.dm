@@ -4,12 +4,20 @@
 	var/worn_icon_taur_snake
 	var/worn_icon_taur_paw
 	var/worn_icon_taur_hoof
+	var/worn_icon_muzzled
+
+/obj/item/clothing/head
+	mutant_variants = STYLE_MUZZLE
+
+/obj/item/clothing/mask
+	mutant_variants = STYLE_MUZZLE
 
 /obj/item/clothing/under
 	mutant_variants = STYLE_DIGITIGRADE
 
 /obj/item/clothing/suit
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 /obj/item/clothing/suit/armor
 	mutant_variants = NONE

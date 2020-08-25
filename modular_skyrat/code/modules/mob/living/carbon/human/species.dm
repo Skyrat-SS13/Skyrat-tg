@@ -1,6 +1,8 @@
 /datum/species
 	///List of organs that wont get removed on regeneration. This is important for anything that could be added through customization
 	var/list/compatible_organs = list()
+	///Self explanatory
+	var/can_have_genitals = TRUE
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
@@ -114,7 +116,13 @@
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 
-			if(S.gender_specific)
+			if(S.special_render_case)
+				switch(S.key)
+					if("penis", "womb", "vagina", "testicles")
+						var/datum/sprite_accessory/genital/SAG = S
+						var/obj/item/organ/genital/gen = H.getorganslot(SAG.associated_organ_slot)
+						accessory_overlay.icon_state = "m_[bodypart]_[gen.sprite_suffix]_[layertext]"
+			else if(S.gender_specific)
 				accessory_overlay.icon_state = "[g]_[bodypart]_[S.icon_state]_[layertext]"
 			else
 				accessory_overlay.icon_state = "m_[bodypart]_[S.icon_state]_[layertext]"

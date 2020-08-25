@@ -104,7 +104,7 @@
 	apply_overlay(DAMAGE_LAYER)
 
 
-/mob/living/carbon/update_inv_wear_mask()
+/*/mob/living/carbon/update_inv_wear_mask() SKYRAT CHANGE - moved to modular
 	remove_overlay(FACEMASK_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
@@ -119,7 +119,7 @@
 			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi')
 		update_hud_wear_mask(wear_mask)
 
-	apply_overlay(FACEMASK_LAYER)
+	apply_overlay(FACEMASK_LAYER)*/
 
 /mob/living/carbon/update_inv_neck()
 	remove_overlay(NECK_LAYER)
@@ -148,7 +148,7 @@
 
 	apply_overlay(BACK_LAYER)
 
-/mob/living/carbon/update_inv_head()
+/*/mob/living/carbon/update_inv_head() SKYRAT CHANGE - moved to modular_skyrat
 	remove_overlay(HEAD_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
@@ -162,7 +162,7 @@
 		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi')
 		update_hud_head(head)
 
-	apply_overlay(HEAD_LAYER)
+	apply_overlay(HEAD_LAYER)*/
 
 
 /mob/living/carbon/update_inv_handcuffed()
