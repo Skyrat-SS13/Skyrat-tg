@@ -42,7 +42,10 @@
 		body_type = gender
 	else
 		body_type = pick(MALE, FEMALE)
-	features = pref_species.get_random_features()
+	//features = pref_species.get_random_features()
+	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
+	for(var/key in new_features)
+		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
 
 //This proc makes sure that we only have the parts that the species should have, add missing ones, remove extra ones(should any be changed)
@@ -50,6 +53,14 @@
 /datum/preferences/proc/validate_species_parts()
 	if(!pref_species)
 		return
+
+	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
+	if(pref_species.can_have_genitals)
+		target_bodyparts["vagina"] = "None"
+		target_bodyparts["womb"] = "None"
+		target_bodyparts["testicles"] = "None"
+		target_bodyparts["breasts"] = "None"
+		target_bodyparts["penis"] = "None"
 
 	//Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
@@ -64,17 +75,20 @@
 		validate_color_keys_for_part(key) //Validate the color count of each accessory that wasnt removed
 
 	//Add any missing accessories
-	for(var/key in pref_species.default_mutant_bodyparts)
+	for(var/key in target_bodyparts)
 		if(!mutant_bodyparts[key])
 			var/datum/sprite_accessory/SA
-			if(pref_species.default_mutant_bodyparts[key] == ACC_RANDOM)
+			if(target_bodyparts[key] == ACC_RANDOM)
 				SA = random_accessory_of_key_for_species(key, pref_species)
 			else
-				SA = GLOB.sprite_accessories[key][pref_species.default_mutant_bodyparts[key]]
+				SA = GLOB.sprite_accessories[key][target_bodyparts[key]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
 			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
 			mutant_bodyparts[key] = final_list
+
+	if(!allow_advanced_colors)
+		reset_colors()
 
 /datum/preferences/proc/validate_color_keys_for_part(key)
 	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
@@ -86,7 +100,9 @@
 
 /datum/preferences/proc/set_new_species(new_species_path)
 	pref_species = new new_species_path()
-	features = pref_species.get_random_features()
+	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
+	for(var/key in new_features)
+		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
 
 /datum/preferences/proc/reset_colors()

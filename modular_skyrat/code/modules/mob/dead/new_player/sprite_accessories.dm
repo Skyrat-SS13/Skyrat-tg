@@ -43,6 +43,9 @@
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return FALSE
 
+/datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H, icon_state)
+	return null
+
 /datum/sprite_accessory/proc/get_default_color(var/list/features) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
@@ -77,11 +80,19 @@
 	key = "spines"
 	generic = "Spines"
 	skip_type = /datum/sprite_accessory/spines
+	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
+	special_render_case = TRUE
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 		return TRUE
 	return FALSE
+
+/datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H, icon_state)
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(T && T.wagging)
+		icon_state += "_wagging"
+	return icon_state
 
 /datum/sprite_accessory/caps
 	key = "caps"
@@ -135,6 +146,14 @@
 	generic = "Tail"
 	skip_type = /datum/sprite_accessory/tails
 	organ_type = /obj/item/organ/tail
+	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
+	special_render_case = TRUE
+
+/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H, icon_state)
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(T && T.wagging)
+		icon_state += "_wagging"
+	return icon_state
 
 /datum/sprite_accessory/tails/lizard
 	recommended_species = list("lizard", "ashwalker")

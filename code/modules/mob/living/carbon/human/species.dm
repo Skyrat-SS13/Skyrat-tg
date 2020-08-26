@@ -1998,7 +1998,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //Tail Wagging//
 ////////////////
 
-/datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
+/*/datum/species/proc/can_wag_tail(mob/living/carbon/human/H) SKYRAT EDIT - customization - moved to modular
 	return FALSE
 
 /datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
@@ -2006,7 +2006,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 
-/datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
+/datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)*/
 
 ///////////////
 //FLIGHT SHIT//

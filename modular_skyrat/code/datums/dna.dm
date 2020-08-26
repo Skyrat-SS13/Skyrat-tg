@@ -27,23 +27,34 @@
 		dna.species = new_race
 		if(pref_load)
 			var/list/bodyparts_to_add = pref_load.mutant_bodyparts.Copy()
+			/*if(pref_load.pref_species.can_have_genitals)
+				bodyparts_to_add += pref_load.breasts_bodypart*/
+
+			var/list/organs_to_build = list()
+
 			for(var/key in bodyparts_to_add)
 				var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
 				if(!SP.factual)
 					bodyparts_to_add -= key
 					continue
-				if(SP.organ_type && !istype(src,/mob/living/carbon/human/dummy))
-					var/obj/item/organ/ORG = new SP.organ_type
-					ORG.mutantpart_key = key
-					ORG.mutantpart_info = bodyparts_to_add[key].Copy()
-					ORG.Insert(src, 0, FALSE)
+				if(SP.organ_type)
+					organs_to_build[key] = SP.organ_type
 					//Why dont we remove the key from the list here, as it's gonna get added either way?
 					//Well there's some jank that makes the organ not properly do it on initializations, which doesnt happen on organ manipulations
 					//And this way there is literally no difference in practice
 			dna.features = pref_load.features.Copy()
 			dna.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()
-			dna.species.mutant_bodyparts = bodyparts_to_add
+			dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 			dna.real_name = pref_load.real_name
+
+			//We have to build them later as they require other DNA information
+			for(var/key in organs_to_build)
+				var/path = organs_to_build[key]
+				var/obj/item/organ/ORG = new path
+				ORG.build_from_dna(dna, key)
+				ORG.Insert(src, 0, FALSE)
+
+			dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 
 		dna.species.on_species_gain(src, old_species, pref_load)
 		if(ishuman(src))

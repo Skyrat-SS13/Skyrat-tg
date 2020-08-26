@@ -24,3 +24,7 @@
 		H.dna.species.mutant_bodyparts -= mutantpart_key
 		H.update_body()
 	. = ..()
+
+/obj/item/organ/proc/build_from_dna(datum/dna/DNA, associated_key)
+	mutantpart_key = associated_key
+	mutantpart_info = DNA.mutant_bodyparts[associated_key].Copy()

@@ -17,6 +17,7 @@
 	center = FALSE
 	hide_legs = FALSE
 	factual = FALSE
+	color_src = null
 
 /datum/sprite_accessory/taur/cow
 	name = "Cow"

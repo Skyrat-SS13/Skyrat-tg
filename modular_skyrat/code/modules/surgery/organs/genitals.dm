@@ -21,8 +21,13 @@
 /obj/item/organ/genital/proc/get_description_string()
 	return "genitals"
 
-/obj/item/organ/genital/proc/set_size(size)
+/obj/item/organ/genital/proc/set_type_and_size(type, size)
+	genital_type = type
 	genital_size = size
+	update_sprite_suffix()
+
+/obj/item/organ/genital/Initialize()
+	. = ..()
 	update_sprite_suffix()
 
 /obj/item/organ/genital/penis
@@ -76,3 +81,22 @@
 	else if (current_size > max_size)
 		current_size = max_size
 	return current_size
+
+/obj/item/organ/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
+	..()
+	var/type = lowertext(DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME])
+	set_type_and_size(type, DNA.features["breasts_size"])
+
+/proc/breasts_size_to_cup(number)
+	if(number < 0)
+		number = 0
+	var/returned = GLOB.breasts_size_translation["[number]"]
+	if(!returned)
+		returned = "beyond measurement"
+	return returned
+
+/proc/breasts_cup_to_size(cup)
+	for(var/key in GLOB.breasts_size_translation)
+		if(GLOB.breasts_size_translation[key] == cup)
+			return text2num(key)
+	return 0

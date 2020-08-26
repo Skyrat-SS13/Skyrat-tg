@@ -17,7 +17,7 @@
 /datum/species/human/felinid/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-//Curiosity killed the cat's wagging tail.
+/*//Curiosity killed the cat's wagging tail. SKYRAT EDIT - Customization
 /datum/species/human/felinid/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
 		stop_wagging_tail(H)
@@ -37,7 +37,7 @@
 	if("tail_human" in mutant_bodyparts)
 		mutant_bodyparts -= "tail_human"
 		mutant_bodyparts |= "waggingtail_human"
-	H.update_body()
+	H.update_body()*/
 
 /datum/species/human/felinid/stop_wagging_tail(mob/living/carbon/human/H)
 	if("waggingtail_human" in mutant_bodyparts)

@@ -45,7 +45,7 @@
 
 	return randname
 
-//I wag in death
+/*//I wag in death SKYRAT EDIT - customization
 /datum/species/lizard/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
 		stop_wagging_tail(H)
@@ -75,7 +75,7 @@
 		mutant_bodyparts -= "waggingspines"
 		mutant_bodyparts |= "tail_lizard"
 		mutant_bodyparts |= "spines"
-	H.update_body()
+	H.update_body()*/
 
 /*
  Lizard subspecies: ASHWALKERS

@@ -117,11 +117,10 @@
 			var/mutable_appearance/accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 
 			if(S.special_render_case)
-				switch(S.key)
-					if("penis", "womb", "vagina", "testicles")
-						var/datum/sprite_accessory/genital/SAG = S
-						var/obj/item/organ/genital/gen = H.getorganslot(SAG.associated_organ_slot)
-						accessory_overlay.icon_state = "m_[bodypart]_[gen.sprite_suffix]_[layertext]"
+				var/special_state = S.get_special_render_state(H, S.icon_state)
+				if(!special_state)
+					continue
+				accessory_overlay.icon_state = "m_[bodypart]_[special_state]_[layertext]"
 			else if(S.gender_specific)
 				accessory_overlay.icon_state = "[g]_[bodypart]_[S.icon_state]_[layertext]"
 			else
@@ -232,12 +231,19 @@
 
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
-	for(var/key in default_mutant_bodyparts)
+	var/list/bodyparts_to_add = default_mutant_bodyparts.Copy()
+	if(can_have_genitals)
+		bodyparts_to_add["vagina"] = "None"
+		bodyparts_to_add["womb"] = "None"
+		bodyparts_to_add["testicles"] = "None"
+		bodyparts_to_add["breasts"] = "None"
+		bodyparts_to_add["penis"] = "None"
+	for(var/key in bodyparts_to_add)
 		var/datum/sprite_accessory/SP
-		if(default_mutant_bodyparts[key] == ACC_RANDOM)
+		if(bodyparts_to_add[key] == ACC_RANDOM)
 			SP = random_accessory_of_key_for_species(key, src)
 		else
-			SP = GLOB.sprite_accessories[key][default_mutant_bodyparts[key]]
+			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key]]
 		var/list/color_list = SP.get_default_color(features)
 		var/list/final_list = list()
 		final_list[MUTANT_INDEX_NAME] = SP.name
@@ -388,3 +394,55 @@
 
 	H.apply_overlay(BODY_LAYER)
 	handle_mutant_bodyparts(H)
+
+//I wag in death
+/datum/species/spec_death(gibbed, mob/living/carbon/human/H)
+	if(H)
+		stop_wagging_tail(H)
+
+/datum/species/spec_stun(mob/living/carbon/human/H,amount)
+	if(H)
+		stop_wagging_tail(H)
+	. = ..()
+
+////////////////
+//Tail Wagging//
+////////////////
+
+/datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return FALSE
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(!T)
+		return FALSE
+	if(T.can_wag)
+		return TRUE
+	return FALSE
+
+/datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return FALSE
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(!T)
+		return FALSE
+	if(T.wagging)
+		return TRUE
+	return FALSE
+
+/datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(!T)
+		return FALSE
+	T.wagging = TRUE
+	H.update_body()
+
+/datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
+	if(!H) //Somewhere in the core code we're getting those procs with H being null
+		return
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(!T)
+		return 
+	T.wagging = FALSE
+	H.update_body()
