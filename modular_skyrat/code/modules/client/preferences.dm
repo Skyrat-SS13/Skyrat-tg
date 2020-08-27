@@ -78,12 +78,17 @@
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
+	//Has to include all information that extra organs from mutant bodyparts would need. (so far only genitals now)
 	var/list/features = list("mcolor" = "FFF",
 							 "mcolor2" = "FFF",
 							"mcolor3" = "FFF",
 							"flavor_text" = "",
 							"breasts_size" = 1,
-							"penis_size" = 12)
+							"breasts_lactation" = FALSE,
+							"penis_size" = 13,
+							"penis_girth" = 9,
+							"balls_size" = 1
+							)
 	var/list/randomise = list(RANDOM_UNDERWEAR = FALSE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = FALSE, RANDOM_SOCKS = FALSE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
 
@@ -466,11 +471,28 @@
 					
 					if(pref_species.can_have_genitals)
 						dat += APPEARANCE_CATEGORY_COLUMN
-						dat += "penis here"
+						dat += "<h3>Penis</h3>"
+						var/penis_name = mutant_bodyparts["penis"][MUTANT_INDEX_NAME]
+						dat += print_bodypart_change_line("penis")
+						if(penis_name != "None")
+							dat += "<br><b>Length: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_size;task=change_genitals'>[features["penis_size"]]</a> cm."
+							dat += "<br><b>Girth: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_girth;task=change_genitals'>[features["penis_girth"]]</a> cm. circumference"
+							
+						dat += "<h3>Testicles</h3>"
+						var/balls_name = mutant_bodyparts["testicles"][MUTANT_INDEX_NAME]
+						dat += print_bodypart_change_line("testicles")
+						if(balls_name != "None")
+							var/named_size = balls_size_to_description(features["balls_size"])
+							dat += "<br><b>Size: </b> <a href='?_src_=prefs;key=["testicles"];preference=balls_size;task=change_genitals'>[named_size]</a>"
+
+						dat += "</td>"
 						dat += "</td>"
 
 						dat += APPEARANCE_CATEGORY_COLUMN
-						dat += "vagina here"
+						dat += "<h3>Vagina</h3>"
+						dat += print_bodypart_change_line("vagina")
+						dat += "<h3>Womb</h3>"
+						dat += print_bodypart_change_line("womb")
 						dat += "</td>"
 
 						dat += APPEARANCE_CATEGORY_COLUMN
@@ -479,7 +501,9 @@
 						dat += print_bodypart_change_line("breasts")
 						if(breasts_name != "None")
 							var/named_size = breasts_size_to_cup(features["breasts_size"])
+							var/named_lactation = (features["breasts_lactation"]) ? "Yes" : "No"
 							dat += "<br><b>Size: </b> <a href='?_src_=prefs;key=["breasts"];preference=breasts_size;task=change_genitals'>[named_size]</a>"
+							dat += "<br><b>Can Lactate: </b> <a href='?_src_=prefs;key=["breasts"];preference=breasts_lactation;task=change_genitals'>[named_lactation]</a>"
 						dat += "</td>"
 
 					dat += "</tr></table>"
@@ -1121,6 +1145,25 @@
 					var/new_size = input(user, "Choose your character's breasts size:", "Character Preference") as null|anything in GLOB.preference_breast_sizes
 					if(new_size)
 						features["breasts_size"] = breasts_cup_to_size(new_size)
+				if("breasts_lactation")
+					features["breasts_lactation"] = !features["breasts_lactation"]
+				if("penis_size")
+					var/new_length = input(user, "Choose your penis length:\n(2-50 in cm)", "Character Preference") as num|null
+					if(new_length)
+						features["penis_size"] = clamp(round(new_length, 1), 2, 50)
+						if(features["penis_girth"] >= new_length)
+							features["penis_girth"] = new_length - 1
+				if("penis_girth")
+					var/max_girth = 15
+					if(features["penis_size"] >= max_girth)
+						max_girth = features["penis_size"] - 1
+					var/new_girth = input(user, "Choose your penis girth:\n(3-[max_girth] (based on length) in cm)", "Character Preference") as num|null
+					if(new_girth)
+						features["penis_girth"] = clamp(round(new_girth, 1), 3, max_girth)
+				if("balls_size")
+					var/new_size = input(user, "Choose your character's balls size:", "Character Preference") as null|anything in GLOB.preference_balls_sizes
+					if(new_size)
+						features["balls_size"] = balls_description_to_size(new_size)
 		if("change_bodypart")
 			switch(href_list["preference"])
 				if("change_name")
@@ -1153,7 +1196,9 @@
 					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
 				if("reset_all_colors")
-					reset_colors()
+					var/action = alert(user, "Are you sure you want to reset all colors?", "", "Yes", "No")
+					if(action == "Yes")
+						reset_colors()
 
 		if("random")
 			switch(href_list["preference"])
@@ -2007,10 +2052,10 @@
 		shown_colors = 3
 	else if (SA.color_src == USE_ONE_COLOR)
 		shown_colors = 1
-	if(allow_advanced_colors && shown_colors)
+	if((allow_advanced_colors || SA.always_color_customizable) && shown_colors)
 		dat += "<a href='?_src_=prefs;key=[key];preference=reset_color;task=change_bodypart'>R</a>"
 	dat += "<a href='?_src_=prefs;key=[key];preference=change_name;task=change_bodypart'>[acc_name]</a>"
-	if(allow_advanced_colors)
+	if(allow_advanced_colors || SA.always_color_customizable)
 		if(shown_colors)
 			var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 			for(var/i in 1 to shown_colors)

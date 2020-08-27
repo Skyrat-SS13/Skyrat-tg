@@ -108,6 +108,8 @@
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		if(SA.always_color_customizable)
+			continue
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
 
 /datum/preferences/proc/random_species()

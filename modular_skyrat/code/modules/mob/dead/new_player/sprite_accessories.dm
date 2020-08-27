@@ -23,6 +23,9 @@
 	///Use this as a typepath to an organ that this sprite_accessory will be associated. Make sure the organ has 'mutantpart_info' set properly.
 	var/organ_type
 
+	///Set this to true to make an accessory appear as color customizable in preferences despite advanced color settings being off, will also prevent the accessory from being reset
+	var/always_color_customizable
+
 	var/extra = FALSE
 	var/extra_color_src
 	var/extra2 = FALSE
