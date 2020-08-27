@@ -17,6 +17,26 @@
 	associated_organ_slot = ORGAN_SLOT_PENIS
 	key = "penis"
 	always_color_customizable = TRUE
+	center = TRUE
+	special_icon_case = TRUE
+	special_x_dimension = TRUE
+	default_color = DEFAULT_SKIN_OR_PRIMARY
+
+/datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/H)
+	var/returned = icon
+	if(H.dna.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
+		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
+			returned = 'modular_skyrat/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
+	return returned
+
+/datum/sprite_accessory/genital/penis/get_special_x_dimension(mob/living/carbon/human/H)
+	var/returned = dimension_x
+	if(H.dna.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
+		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
+			returned = 64
+	return returned
 
 /datum/sprite_accessory/genital/penis/none
 	icon_state = "none"
@@ -158,6 +178,7 @@
 	organ_type = /obj/item/organ/genital/breasts
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"
+	default_color = DEFAULT_SKIN_OR_PRIMARY
 
 /datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/genital/breasts/badonkers = H.getorganslot(associated_organ_slot)

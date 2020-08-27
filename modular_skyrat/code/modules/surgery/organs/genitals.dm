@@ -108,6 +108,7 @@
 	genital_type = "pair"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
+	var/lactates = FALSE
 
 /obj/item/organ/genital/breasts/get_sprite_size_string()
 	var/max_size = 5
@@ -123,6 +124,7 @@
 /obj/item/organ/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	var/type = lowertext(DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME])
+	lactates = DNA.features["breasts_lactation"]
 	set_type_and_size(type, DNA.features["breasts_size"])
 
 /proc/breasts_size_to_cup(number)

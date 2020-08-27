@@ -26,6 +26,10 @@
 	///Set this to true to make an accessory appear as color customizable in preferences despite advanced color settings being off, will also prevent the accessory from being reset
 	var/always_color_customizable
 
+	var/special_x_dimension
+
+	var/special_icon_case
+
 	var/extra = FALSE
 	var/extra_color_src
 	var/extra2 = FALSE
@@ -49,7 +53,13 @@
 /datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	return null
 
-/datum/sprite_accessory/proc/get_default_color(var/list/features) //Needs features for the color information
+/datum/sprite_accessory/proc/get_special_icon(mob/living/carbon/human/H)
+	return null
+
+/datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H)
+	return 0
+
+/datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
@@ -60,6 +70,11 @@
 			colors = list(features["mcolor3"])
 		if(DEFAULT_MATRIXED)
 			colors = list(features["mcolor"], features["mcolor2"], features["mcolor3"])
+		if(DEFAULT_SKIN_OR_PRIMARY)
+			if(pref_species && pref_species.use_skintones)
+				colors = list(features["skin_color"])
+			else
+				colors = list(features["mcolor"])
 		else
 			colors = list(default_color)
 

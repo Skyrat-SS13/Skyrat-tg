@@ -114,7 +114,19 @@
 			if(S.is_hidden(H, HD))
 				continue
 
-			var/mutable_appearance/accessory_overlay = mutable_appearance(S.icon, layer = -layer)
+			var/icon_to_use
+			var/x_shift
+			if(S.special_icon_case)
+				icon_to_use = S.get_special_icon(H, S.icon)
+			else
+				icon_to_use = S.icon
+
+			if(S.special_x_dimension)
+				x_shift = S.get_special_x_dimension(H, S.icon)
+			else 
+				x_shift = S.dimension_x
+
+			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
 			if(S.special_render_case)
 				var/special_state = S.get_special_render_state(H, S.icon_state)
@@ -127,7 +139,7 @@
 				accessory_overlay.icon_state = "m_[bodypart]_[S.icon_state]_[layertext]"
 
 			if(S.center)
-				accessory_overlay = center_image(accessory_overlay, S.dimension_x, S.dimension_y)
+				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
 
 			if(!(HAS_TRAIT(H, TRAIT_HUSK)))
 				if(!forced_colour)
@@ -244,7 +256,7 @@
 			SP = random_accessory_of_key_for_species(key, src)
 		else
 			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key]]
-		var/list/color_list = SP.get_default_color(features)
+		var/list/color_list = SP.get_default_color(features, src)
 		var/list/final_list = list()
 		final_list[MUTANT_INDEX_NAME] = SP.name
 		final_list[MUTANT_INDEX_COLOR_LIST] = color_list

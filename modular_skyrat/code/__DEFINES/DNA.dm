@@ -15,6 +15,7 @@
 #define DEFAULT_SECONDARY	2
 #define DEFAULT_TERTIARY	3
 #define DEFAULT_MATRIXED	4 //uses all three colors for a matrix
+#define DEFAULT_SKIN_OR_PRIMARY	5 //Uses skin tone color if the character uses one, otherwise primary
 
 // Defines for extra bits of accessories
 #define COLOR_SRC_PRIMARY	1

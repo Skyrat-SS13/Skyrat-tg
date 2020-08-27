@@ -32,7 +32,7 @@
 	if(randomise[RANDOM_FACIAL_HAIR_COLOR])
 		facial_hair_color = random_short_color()
 	if(randomise[RANDOM_SKIN_TONE])
-		skin_tone = random_skin_tone()
+		set_skin_tone(random_skin_tone())
 	if(randomise[RANDOM_EYE_COLOR])
 		eye_color = random_eye_color()
 	if(!pref_species)
@@ -84,7 +84,7 @@
 				SA = GLOB.sprite_accessories[key][target_bodyparts[key]]
 			var/final_list = list()
 			final_list[MUTANT_INDEX_NAME] = SA.name
-			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+			final_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 			mutant_bodyparts[key] = final_list
 
 	if(!allow_advanced_colors)
@@ -94,9 +94,9 @@
 	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 	var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 	if(SA.color_src == USE_MATRIXED_COLORS && colorlist.len != 3)
-		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 	else if (SA.color_src == USE_ONE_COLOR && colorlist.len != 1)
-		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 
 /datum/preferences/proc/set_new_species(new_species_path)
 	pref_species = new new_species_path()
@@ -110,7 +110,7 @@
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA.always_color_customizable)
 			continue
-		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]

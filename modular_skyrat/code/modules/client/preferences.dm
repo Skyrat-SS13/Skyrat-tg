@@ -82,11 +82,13 @@
 	var/list/features = list("mcolor" = "FFF",
 							 "mcolor2" = "FFF",
 							"mcolor3" = "FFF",
+							"skin_color" = "FED",
 							"flavor_text" = "",
 							"breasts_size" = 1,
 							"breasts_lactation" = FALSE,
 							"penis_size" = 13,
 							"penis_girth" = 9,
+							"penis_taur_mode" = TRUE, //Only applies when you're a proper taur anyway
 							"balls_size" = 1
 							)
 	var/list/randomise = list(RANDOM_UNDERWEAR = FALSE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = FALSE, RANDOM_SOCKS = FALSE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
@@ -477,7 +479,7 @@
 						if(penis_name != "None")
 							dat += "<br><b>Length: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_size;task=change_genitals'>[features["penis_size"]]</a> cm."
 							dat += "<br><b>Girth: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_girth;task=change_genitals'>[features["penis_girth"]]</a> cm. circumference"
-							
+
 						dat += "<h3>Testicles</h3>"
 						var/balls_name = mutant_bodyparts["testicles"][MUTANT_INDEX_NAME]
 						dat += print_bodypart_change_line("testicles")
@@ -485,6 +487,11 @@
 							var/named_size = balls_size_to_description(features["balls_size"])
 							dat += "<br><b>Size: </b> <a href='?_src_=prefs;key=["testicles"];preference=balls_size;task=change_genitals'>[named_size]</a>"
 
+						if(mutant_bodyparts["taur"])
+							var/datum/sprite_accessory/taur/TSP = GLOB.sprite_accessories["taur"][mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+							if(TSP.factual && !(TSP.taur_mode & STYLE_TAUR_SNAKE))
+								var/text_string = (features["penis_taur_mode"]) ? "Yes" : "No"
+								dat += "<br><b>Taur Mode: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_taur_mode;task=change_genitals'>[text_string]</a>"
 						dat += "</td>"
 						dat += "</td>"
 
@@ -1147,6 +1154,8 @@
 						features["breasts_size"] = breasts_cup_to_size(new_size)
 				if("breasts_lactation")
 					features["breasts_lactation"] = !features["breasts_lactation"]
+				if("penis_taur_mode")
+					features["penis_taur_mode"] = !features["penis_taur_mode"]
 				if("penis_size")
 					var/new_length = input(user, "Choose your penis length:\n(2-50 in cm)", "Character Preference") as num|null
 					if(new_length)
@@ -1225,7 +1234,7 @@
 				if(BODY_ZONE_PRECISE_EYES)
 					eye_color = random_eye_color()
 				if("s_tone")
-					skin_tone = random_skin_tone()
+					set_skin_tone(random_skin_tone())
 				if("species")
 					random_species()
 				if("bag")
@@ -1538,7 +1547,7 @@
 				if("s_tone")
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
 					if(new_s_tone)
-						skin_tone = new_s_tone
+						set_skin_tone(new_s_tone)
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null
@@ -2061,3 +2070,9 @@
 			for(var/i in 1 to shown_colors)
 				dat += "<span style='border: 1px solid #161616; background-color: ["#[colorlist[i]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'>Set</a>"
 	return dat
+
+/datum/preferences/proc/set_skin_tone(new_skin_tone)
+	skin_tone = new_skin_tone
+	features["skin_color"] = sanitize_hexcolor(skintone2hex(skin_tone), 3, 0)
+	if(!allow_advanced_colors)
+		reset_colors()
