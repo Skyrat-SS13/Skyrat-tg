@@ -1931,7 +1931,7 @@
 
 	hardcore_survival_score = 0 //Set to 0 to prevent you getting points from last another time.
 
-	if((randomise[RANDOM_SPECIES] || randomise[RANDOM_HARDCORE]) && !character_setup)
+	/*if((randomise[RANDOM_SPECIES] || randomise[RANDOM_HARDCORE]) && !character_setup)
 
 		random_species()
 
@@ -1945,7 +1945,7 @@
 
 	if(randomise[RANDOM_HARDCORE] && parent.mob.mind && !character_setup)
 		if(can_be_random_hardcore())
-			hardcore_random_setup(character, antagonist, is_latejoiner)
+			hardcore_random_setup(character, antagonist, is_latejoiner)*/
 
 	if(roundstart_checks)
 		if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))

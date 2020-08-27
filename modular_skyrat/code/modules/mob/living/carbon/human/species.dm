@@ -229,6 +229,16 @@
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 
+/datum/species/plasmaman
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
+	mutant_bodyparts = list()
+	can_have_genitals = FALSE
+
+/datum/species/ethereal
+	default_features = list(list("FFF"), list("FFF"), list("FFF"))
+	mutant_bodyparts = list()
+	can_have_genitals = FALSE
+
 /datum/species/lizard
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()

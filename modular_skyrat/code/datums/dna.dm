@@ -49,6 +49,8 @@
 					//And this way there is literally no difference in practice
 		dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 
+		dna.species.on_species_gain(src, old_species, pref_load)
+
 		//We have to build them later as they require other DNA information
 		for(var/key in organs_to_build)
 			var/path = organs_to_build[key]
@@ -58,9 +60,9 @@
 
 		dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 		//END OF BODYPARTS AND FEATURES
-		dna.species.on_species_gain(src, old_species, pref_load)
+		//dna.species.on_species_gain(src, old_species, pref_load)
 		if(ishuman(src))
 			qdel(language_holder)
 			var/species_holder = initial(mrace.species_language_holder)
 			language_holder = new species_holder(src)
-		update_atom_languages()
+		update_atom_languages()	
