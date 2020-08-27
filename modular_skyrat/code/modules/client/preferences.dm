@@ -380,8 +380,8 @@
 
 					if((EYECOLOR in pref_species.species_traits) && !(NOEYESPRITES in pref_species.species_traits))
 
-						if(!use_skintones)
-							dat += APPEARANCE_CATEGORY_COLUMN
+						/*if(!use_skintones)
+							dat += APPEARANCE_CATEGORY_COLUMN*/
 
 						dat += "<h3>Eye Color</h3>"
 						dat += "<span style='border: 1px solid #161616; background-color: #[eye_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=eyes;task=input'>Change</a>"
