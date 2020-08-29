@@ -88,6 +88,8 @@
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
 
+	var/rendered_bp_icon //Skyrat change - customization
+
 
 /obj/item/bodypart/examine(mob/user)
 	. = ..()
@@ -590,6 +592,7 @@
 
 		var/datum/species/S = H.dna.species
 		species_id = S.limbs_id
+		rendered_bp_icon = S.limbs_icon
 		species_flags_list = H.dna.species.species_traits
 
 		if(S.use_skintones)
@@ -676,7 +679,7 @@
 
 	if(is_organic_limb())
 		if(should_draw_greyscale)
-			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
+			limb.icon = rendered_bp_icon || 'icons/mob/human_parts_greyscale.dmi' //Skyrat change - customization
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else if(use_digitigrade)

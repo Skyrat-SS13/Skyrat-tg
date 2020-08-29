@@ -3,6 +3,8 @@
 	var/list/compatible_organs = list()
 	///Self explanatory
 	var/can_have_genitals = TRUE
+	///Override of icon file of which we're taking the icons from for our limbs
+	var/limbs_icon
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
@@ -216,10 +218,12 @@
 /datum/species/human
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
+	default_mutant_bodyparts = list("ears" = "None", "tail" = "None")
 
 /datum/species/moth
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
+	default_mutant_bodyparts = list("moth_wings" = ACC_RANDOM, "moth_markings" = ACC_RANDOM)
 
 /datum/species/mush
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
@@ -242,7 +246,8 @@
 /datum/species/lizard
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Smooth", "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
+	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")
 
 /datum/species/proc/get_random_features()
 	var/list/feature_list = list()

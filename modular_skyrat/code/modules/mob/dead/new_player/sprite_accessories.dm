@@ -82,6 +82,7 @@
 
 /datum/sprite_accessory/moth_wings
 	key = "moth_wings"
+	generic = "Moth wings"
 	skip_type = /datum/sprite_accessory/moth_wings
 
 /datum/sprite_accessory/moth_wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -174,11 +175,11 @@
 	return icon_state
 
 /datum/sprite_accessory/tails/lizard
-	recommended_species = list("lizard", "ashwalker")
+	recommended_species = list("lizard", "ashwalker", "mammal")
 	organ_type = /obj/item/organ/tail/lizard
 
 /datum/sprite_accessory/tails/human
-	recommended_species = list("human", "felinid")
+	recommended_species = list("human", "felinid", "mammal")
 	organ_type = /obj/item/organ/tail/cat
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)

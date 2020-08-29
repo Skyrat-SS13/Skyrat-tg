@@ -82,6 +82,7 @@
 	var/list/features = list("mcolor" = "FFF",
 							 "mcolor2" = "FFF",
 							"mcolor3" = "FFF",
+							"ethcolor" = "FCC", //Ideally get rid of this later, in favor for "mcolor"
 							"skin_color" = "FED",
 							"flavor_text" = "",
 							"breasts_size" = 1,
@@ -1187,6 +1188,9 @@
 					if(new_name && mutant_bodyparts[key])
 						mutant_bodyparts[key][MUTANT_INDEX_NAME] = new_name
 						validate_color_keys_for_part(key)
+						if(!allow_advanced_colors)
+							var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][new_name]
+							mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
 				if("change_color")
 					var/key = href_list["key"]
 					if(!mutant_bodyparts[key])
@@ -1655,11 +1659,11 @@
 					var/pickedGender = input(user, "Choose your gender.", "Character Preference", gender) as null|anything in friendlyGenders
 					if(pickedGender && friendlyGenders[pickedGender] != gender)
 						gender = friendlyGenders[pickedGender]
-						underwear = random_underwear(gender)
-						undershirt = random_undershirt(gender)
-						socks = random_socks()
-						facial_hairstyle = random_facial_hairstyle(gender)
-						hairstyle = random_hairstyle(gender)
+						//underwear = random_underwear(gender)
+						//undershirt = random_undershirt(gender)
+						//socks = random_socks()
+						//facial_hairstyle = random_facial_hairstyle(gender)
+						//hairstyle = random_hairstyle(gender) //TODO: this is just a bandaid. Remove those restrictions later
 				if("body_type")
 					if(body_type == MALE)
 						body_type = FEMALE

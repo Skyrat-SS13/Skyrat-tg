@@ -24,7 +24,7 @@
 
 /datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/H)
 	var/returned = icon
-	if(H.dna.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
+	if(H.dna.species.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
 		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
 			returned = 'modular_skyrat/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
@@ -32,7 +32,7 @@
 
 /datum/sprite_accessory/genital/penis/get_special_x_dimension(mob/living/carbon/human/H)
 	var/returned = dimension_x
-	if(H.dna.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
+	if(H.dna.species.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
 		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
 			returned = 64

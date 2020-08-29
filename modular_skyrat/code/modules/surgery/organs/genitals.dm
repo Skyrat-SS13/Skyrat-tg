@@ -39,6 +39,8 @@
 	icon = 'modular_skyrat/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
+	mutantpart_key = "penis"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	var/girth = 9
 
 /obj/item/organ/genital/penis/get_sprite_size_string()
@@ -68,6 +70,8 @@
 	desc = "A male reproductive organ."
 	icon_state = "testicles"
 	icon = 'modular_skyrat/icons/obj/genitals/testicles.dmi'
+	mutantpart_key = "testicles"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TESTICLES
 
@@ -88,14 +92,19 @@
 	name = "vagina"
 	icon = 'modular_skyrat/icons/obj/genitals/vagina.dmi'
 	icon_state = "vagina"
+	mutantpart_key = "vagina"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
+
 
 /obj/item/organ/genital/womb
 	name = "womb"
 	desc = "A female reproductive organ."
 	icon = 'modular_skyrat/icons/obj/genitals/vagina.dmi'
 	icon_state = "womb"
+	mutantpart_key = "womb"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_WOMB
 	visibility_preference = GENITAL_SKIP_VISIBILITY
@@ -106,6 +115,8 @@
 	icon_state = "breasts"
 	icon = 'modular_skyrat/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
+	mutantpart_key = "penis"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
 	var/lactates = FALSE
@@ -161,7 +172,7 @@
 	set desc = "Allows you to toggle which genitals should show through clothes or not."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You can toggle genitals visibility right now...</span>")
+		to_chat(usr, "<span class='warning'>You can't toggle genitals visibility right now...</span>")
 		return
 
 	var/list/genital_list = list()
@@ -174,7 +185,7 @@
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = input(src, "Choose which genitalia to expose/hide", "Expose/Hide genitals") as null|anything in genital_list
 	if(picked_organ && (picked_organ in internal_organs))
-		var/static/list/gen_vis_trans = list("Never show" = GENITAL_NEVER_SHOW,
+		var/list/gen_vis_trans = list("Never show" = GENITAL_NEVER_SHOW,
 												"Hidden by clothes" = GENITAL_HIDDEN_BY_CLOTHES,
 												"Always show" = GENITAL_ALWAYS_SHOW
 												)
