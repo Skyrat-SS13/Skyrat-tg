@@ -28,7 +28,7 @@
 #define MUTANT_INDEX_COLOR_LIST	"color"
 
 //Does this need alpha (4th thing) in the color lists? I dont know!! help
-#define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64), list(0.64, 0.64, 0.64), list(0.64, 0.64, 0.64), list(0, 0, 0, 1))
+#define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64, 1), list(0.64, 0.64, 0.64, 1), list(0.64, 0.64, 0.64, 1), list(0, 0, 0, 1))
 
 //Defines for an accessory to be randomed
 #define ACC_RANDOM		"random"
@@ -39,3 +39,5 @@
 #define ORGAN_SLOT_VAGINA "vagina"
 #define ORGAN_SLOT_TESTICLES "testicles"
 #define ORGAN_SLOT_BREASTS "breasts"
+
+#define ORGAN_SLOT_WINGS "wings"

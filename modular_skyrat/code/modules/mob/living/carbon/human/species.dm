@@ -218,12 +218,12 @@
 /datum/species/human
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("ears" = "None", "tail" = "None")
+	default_mutant_bodyparts = list("ears" = "None", "wings" = "None", "tail" = "None")
 
 /datum/species/moth
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("moth_wings" = ACC_RANDOM, "moth_markings" = ACC_RANDOM)
+	default_mutant_bodyparts = list("moth_markings" = ACC_RANDOM, "wings" = ACC_RANDOM)
 
 /datum/species/mush
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
@@ -247,7 +247,7 @@
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")
+	default_mutant_bodyparts = list("wings" = "None", "tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")
 
 /datum/species/proc/get_random_features()
 	var/list/feature_list = list()
@@ -452,9 +452,7 @@
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
 	if(!T)
 		return FALSE
-	if(T.wagging)
-		return TRUE
-	return FALSE
+	return T.wagging
 
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null

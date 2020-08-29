@@ -138,55 +138,6 @@
 		return TRUE
 	return FALSE
 
-/datum/sprite_accessory/ears
-	key = "ears"
-	generic = "Ears"
-	skip_type = /datum/sprite_accessory/ears
-	organ_type = /obj/item/organ/ears/mutant
-
-/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
-		return TRUE
-	return FALSE
-
-/datum/sprite_accessory/snouts
-	key = "snout"
-	generic = "Snout"
-	skip_type = /datum/sprite_accessory/snouts
-	var/use_muzzled_sprites = TRUE
-
-/datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD || HD.status == BODYPART_ROBOTIC)
-		return TRUE
-	return FALSE
-
-/datum/sprite_accessory/tails
-	key = "tail"
-	generic = "Tail"
-	skip_type = /datum/sprite_accessory/tails
-	organ_type = /obj/item/organ/tail
-	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
-	special_render_case = TRUE
-
-/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H, icon_state)
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-	if(T && T.wagging)
-		icon_state += "_wagging"
-	return icon_state
-
-/datum/sprite_accessory/tails/lizard
-	recommended_species = list("lizard", "ashwalker", "mammal")
-	organ_type = /obj/item/organ/tail/lizard
-
-/datum/sprite_accessory/tails/human
-	recommended_species = list("human", "felinid", "mammal")
-	organ_type = /obj/item/organ/tail/cat
-
-/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-		return TRUE
-	return FALSE
-
 /datum/sprite_accessory/body_markings
 	key = "body_markings"
 	generic = "Body Markings"
