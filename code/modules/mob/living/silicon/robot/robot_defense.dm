@@ -340,8 +340,13 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 
 	SetEmagged(1)
 	SetStun(60) //Borgs were getting into trouble because they would attack the emagger before the new laws were shown
+<<<<<<< HEAD
 	lawupdate = 0
 	connected_ai = null
+=======
+	lawupdate = FALSE
+	set_connected_ai(null)
+>>>>>>> 89b4e01680a... Fix various issues with browser statpanel (#53263)
 	message_admins("[ADMIN_LOOKUPFLW(user)] emagged cyborg [ADMIN_LOOKUPFLW(src)].  Laws overridden.")
 	log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
 	var/time = time2text(world.realtime,"hh:mm:ss")
