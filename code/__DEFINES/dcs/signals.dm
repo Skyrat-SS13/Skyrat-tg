@@ -442,6 +442,8 @@
 #define COMSIG_OBJ_DEFAULT_UNFASTEN_WRENCH "obj_default_unfasten_wrench"
 ///from base of /turf/proc/levelupdate(). (intact) true to hide and false to unhide
 #define COMSIG_OBJ_HIDE	"obj_hide"
+/// from /obj/item/toy/crayon/spraycan/afterattack: (color_is_dark)
+#define COMSIG_OBJ_PAINTED "obj_painted"
 
 // /obj/machinery signals
 
@@ -659,6 +661,9 @@
 
 ///from base of obj/item/reagent_containers/food/snacks/attack() & Edible component: (mob/living/eater, mob/feeder, bitecount, bitesize)
 #define COMSIG_FOOD_EATEN "food_eaten"
+
+///from base of Component/edible/On_Consume: (mob/living/eater, mob/living/feeder)
+#define COMSIG_FOOD_CONSUMED "food_consumed"
 
 #define COMSIG_ITEM_FRIED "item_fried"
 	#define COMSIG_FRYING_HANDLED (1<<0)
