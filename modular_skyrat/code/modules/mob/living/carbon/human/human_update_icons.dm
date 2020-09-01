@@ -198,3 +198,75 @@
 	standing.color = color
 
 	return standing
+
+/mob/living/carbon/human/update_body_parts()
+	. = ..()
+	update_body_markings()
+
+/mob/living/carbon/human/proc/update_body_markings() //TODO: make this use a one - time basis blend on the limb icon instead
+	remove_overlay(BODYPART_MARKINGS_LAYER)
+	var/list/standing = list()
+	for(var/X in bodyparts)
+		var/list/bit_flags = list()
+		var/obj/item/bodypart/BP = X
+		if(BP.is_pseudopart)
+			continue
+		bit_flags[BP.body_zone] = BP.body_part
+		switch(BP.body_part)
+			if(ARM_LEFT) //Do we need to check for an aux zone? Presumabely the psuedopart check already solves our issues
+				bit_flags[BODY_ZONE_PRECISE_L_HAND] = HAND_LEFT
+			if(ARM_RIGHT)
+				bit_flags[BODY_ZONE_PRECISE_R_HAND] = HAND_RIGHT
+
+		for(var/marking_zone in bit_flags)
+			//var/bit = bit_flags[marking_zone]
+			if(dna.species.body_markings[marking_zone])
+				var/render_limb_string = marking_zone
+
+				switch(render_limb_string)
+					if(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
+						if(BP.use_digitigrade)
+							render_limb_string = "digitigrade_[BP.use_digitigrade]_[render_limb_string]"
+					/*if(BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_PRECISE_L_HAND)
+						Well this is a little bit tricky because of the marking overlay being rendered on top of a person's chest. This requires to integrate the marking system into limb rendering
+						//Add a behind hand overlay thingy here
+						*/
+					if(BODY_ZONE_CHEST)
+						var/icon_gender = (body_type == FEMALE) ? "f" : "m"
+						render_limb_string = "[render_limb_string]_[icon_gender]"
+
+				for(var/i in 1 to dna.species.body_markings[marking_zone].len)
+					var/list/marking_list = dna.species.body_markings[marking_zone][i]
+					var/datum/body_marking/BM = GLOB.body_markings[marking_list[MUTANT_INDEX_NAME]]
+
+					var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPART_MARKINGS_LAYER)
+					switch(BM.color_src)
+						if(USE_ONE_COLOR)
+							accessory_overlay.color = "#"+marking_list[MUTANT_INDEX_COLOR_LIST][1]
+						if(USE_MATRIXED_COLORS)
+							var/list/color_list = marking_list[MUTANT_INDEX_COLOR_LIST]
+							var/list/finished_list = list()
+							finished_list += ReadRGB("[color_list[1]]0")
+							finished_list += ReadRGB("[color_list[2]]0")
+							finished_list += ReadRGB("[color_list[3]]0")
+							finished_list += list(0,0,0,255)
+							for(var/index in 1 to finished_list.len)
+								finished_list[index] /= 255
+							accessory_overlay.color = finished_list
+						if(MUTCOLORS)
+							accessory_overlay.color = "#[dna.features["mcolor"]]"
+						if(HAIR)
+							if(hair_color == "mutcolor")
+								accessory_overlay.color = "#[dna.features["mcolor"]]"
+							else
+								accessory_overlay.color = "#[hair_color]"
+						if(FACEHAIR)
+							accessory_overlay.color = "#[facial_hair_color]"
+						if(EYECOLOR)
+							accessory_overlay.color = "#[eye_color]"
+					standing += accessory_overlay
+
+	if(standing.len)
+		overlays_standing[BODYPART_MARKINGS_LAYER] = standing
+
+	apply_overlay(BODYPART_MARKINGS_LAYER)

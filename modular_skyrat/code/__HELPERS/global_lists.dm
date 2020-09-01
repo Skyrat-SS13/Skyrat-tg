@@ -25,7 +25,7 @@
 			GLOB.body_markings[BM.name] = BM
 			//We go through all the possible affected bodyparts and a name reference where applicable
 			for(var/marking_zone in GLOB.marking_zones)
-				var/bitflag = GLOB.marking_zones[marking_zone]
+				var/bitflag = GLOB.marking_zone_to_bitflag[marking_zone]
 				if(BM.affected_bodyparts & bitflag)
 					if(!GLOB.body_markings_per_limb[marking_zone])
 						GLOB.body_markings_per_limb[marking_zone] = list()

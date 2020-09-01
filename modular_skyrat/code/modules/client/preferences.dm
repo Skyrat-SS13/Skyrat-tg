@@ -510,19 +510,41 @@
 
 					dat += "</tr></table>"
 				if(2)
-					dat += "<center><h3>Body Markings</h3></center>"
+					//dat += "<center><h3>Body Markings</h3></center>"
+					dat += "Use a preset: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>"
+					dat += " Primary:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a>"
+					dat += " Secondary:<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a>"
+					dat += " Tertiary:<span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a>"
 					dat += "<table width='100%'>"
 					dat += "<td valign='top' width='50%'>"
 					var/iterated_markings = 0
 					for(var/zone in GLOB.marking_zones)
-						dat += "<center><h3>[zone]</h3></center>"
+						var/named_zone = " "
+						switch(zone)
+							if(BODY_ZONE_R_ARM)
+								named_zone = "Right Arm"
+							if(BODY_ZONE_L_ARM)
+								named_zone = "Left Arm"
+							if(BODY_ZONE_HEAD)
+								named_zone = "Head"
+							if(BODY_ZONE_CHEST)
+								named_zone = "Chest"
+							if(BODY_ZONE_R_LEG)
+								named_zone = "Right Leg"
+							if(BODY_ZONE_L_LEG)
+								named_zone = "Left Leg"
+							if(BODY_ZONE_PRECISE_R_HAND)
+								named_zone = "Right Hand"
+							if(BODY_ZONE_PRECISE_L_HAND)
+								named_zone = "Left Hand"
+						dat += "<center><h3>[named_zone]</h3></center>"
 						dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#13171C'>"
 						dat += "<tr style='vertical-align:top'>"
 						dat += "<td width=10%><font size=2> </font></td>"
-						dat += "<td width=10%><font size=2> </font></td>"
-						dat += "<td width=20%><font size=2> </font></td>"
-						dat += "<td width=40%><font size=2> </font></td>"
-						dat += "<td width=20%><font size=2> </font></td>"
+						dat += "<td width=6%><font size=2> </font></td>"
+						dat += "<td width=25%><font size=2> </font></td>"
+						dat += "<td width=44%><font size=2> </font></td>"
+						dat += "<td width=15%><font size=2> </font></td>"
 						dat += "</tr>"
 
 						if(body_markings[zone])
@@ -1282,6 +1304,8 @@
 					if(length(body_markings[zone]) < index)
 						return
 					body_markings[zone].Cut(index, index+1)
+					if(body_markings[zone].len == 0)
+						body_markings -= zone
 				if("change_marking")
 					var/zone = href_list["key"]
 					var/index = text2num(href_list["index"])
@@ -1594,39 +1618,30 @@
 				if("mutant_color")
 					var/new_mutantcolor = input(user, "Choose your character's primary color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
-						var/temp_hsv = RGBtoHSV(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
 							features["mcolor"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
-							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 						else
-							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 						if(!allow_advanced_colors)
 							reset_colors()
 
 				if("mutant_color2")
 					var/new_mutantcolor = input(user, "Choose your character's secondary color:", "Character Preference","#"+features["mcolor2"]) as color|null
 					if(new_mutantcolor)
-						var/temp_hsv = RGBtoHSV(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
 							features["mcolor2"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
-							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
 						else
-							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
 						if(!allow_advanced_colors)
 							reset_colors()
 
 				if("mutant_color3")
 					var/new_mutantcolor = input(user, "Choose your character's tertiary color:", "Character Preference","#"+features["mcolor3"]) as color|null
 					if(new_mutantcolor)
-						var/temp_hsv = RGBtoHSV(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
 							features["mcolor3"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright, but only if they affect the skin
-							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
 						else
-							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
 						if(!allow_advanced_colors)
 							reset_colors()
 
@@ -1807,6 +1822,10 @@
 					mismatched_customization = !mismatched_customization
 
 				if("adv_colors")
+					if(allow_advanced_colors)
+						var/action = alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", "Yes", "No")
+						if(action && action != "Yes")
+							return
 					allow_advanced_colors = !allow_advanced_colors
 					if(!allow_advanced_colors)
 						reset_colors()
