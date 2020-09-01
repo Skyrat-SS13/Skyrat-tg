@@ -17,12 +17,6 @@
 /obj/effect/acid_act()
 	return
 
-<<<<<<< HEAD
-/obj/effect/mech_melee_attack(obj/mecha/M)
-	return
-
-=======
->>>>>>> ce3d7e2f0d7... Mecha refactor 2020 (#52902)
 /obj/effect/blob_act(obj/structure/blob/B)
 	return
 
