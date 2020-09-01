@@ -157,13 +157,7 @@
 	var/mismatched_customization = FALSE
 	var/allow_advanced_colors = FALSE
 	var/list/mutant_bodyparts = list()
-	///Genital mutant body parts that are handled in a special way
-	//var/breasts_bodypart = list("None", list("FFF"))
-	//var/breasts_size = 1
-	/*var/vagina_bodypart = list("None", list("FFF"))
-	var/womb_bodypart = list("None", list("FFF"))
-	var/penis_bodypart = list("None", list("FFF"))
-	var/testicles_bodypart = list("None", list("FFF"))*/
+	var/list/body_markings = list()
 
 	var/character_settings_tab = 0
 
@@ -471,7 +465,7 @@
 					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN)
 						dat += "<br><b>Don The Ultimate Gamer Cloak?:</b><BR><a href ='?_src_=prefs;preference=playtime_reward_cloak'>[(playtime_reward_cloak) ? "Enabled" : "Disabled"]</a><BR></td>"
 
-					
+
 					if(pref_species.can_have_genitals)
 						dat += APPEARANCE_CATEGORY_COLUMN
 						dat += "<h3>Penis</h3>"
@@ -515,6 +509,70 @@
 						dat += "</td>"
 
 					dat += "</tr></table>"
+				if(2)
+					dat += "<center><h3>Body Markings</h3></center>"
+					dat += "<table width='100%'>"
+					dat += "<td valign='top' width='50%'>"
+					var/iterated_markings = 0
+					for(var/zone in GLOB.marking_zones)
+						dat += "<center><h3>[zone]</h3></center>"
+						dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#13171C'>"
+						dat += "<tr style='vertical-align:top'>"
+						dat += "<td width=10%><font size=2> </font></td>"
+						dat += "<td width=10%><font size=2> </font></td>"
+						dat += "<td width=20%><font size=2> </font></td>"
+						dat += "<td width=40%><font size=2> </font></td>"
+						dat += "<td width=20%><font size=2> </font></td>"
+						dat += "</tr>"
+
+						if(body_markings[zone])
+							for(var/i in 1 to body_markings[zone].len)
+								var/list/marking_list = body_markings[zone][i]
+								var/datum/body_marking/BD = GLOB.body_markings[marking_list[MUTANT_INDEX_NAME]]
+								var/can_move_up = " "
+								var/can_move_down = " "
+								var/color_line = " "
+								var/shown_colors = 0
+								if(BD.color_src == USE_MATRIXED_COLORS)
+									shown_colors = 3
+								else if (BD.color_src == USE_ONE_COLOR)
+									shown_colors = 1
+								if(shown_colors && (BD.always_color_customizable || allow_advanced_colors))
+									var/list/colorlist = marking_list[MUTANT_INDEX_COLOR_LIST]
+									color_line = "<a href='?_src_=prefs;index=[i];key=[zone];preference=reset_color;task=change_marking'>R</a>"
+									for(var/bee in 1 to shown_colors)
+										color_line += "<span style='border: 1px solid #161616; background-color: ["#[colorlist[bee]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;index=[i];key=[zone];color_index=[bee];preference=change_color;task=change_marking'>Set</a>"
+								if(i < body_markings[zone].len)
+									can_move_up = "<a href='?_src_=prefs;index=[i];key=[zone];preference=marking_move_up;task=change_marking'>Down</a>"
+								if(i > 1)
+									can_move_down = "<a href='?_src_=prefs;index=[i];key=[zone];preference=marking_move_down;task=change_marking'>Up</a>"
+								dat += "<tr style='vertical-align:top;'>"
+								dat += "<td>[can_move_up]</td>"
+								dat += "<td>[can_move_down]</td>"
+								dat += "<td><a href='?_src_=prefs;index=[i];key=[zone];preference=change_marking;task=change_marking'>[marking_list[MUTANT_INDEX_NAME]]</a></td>"
+								dat += "<td>[color_line]</td>"
+								dat += "<td><a href='?_src_=prefs;index=[i];key=[zone];preference=remove_marking;task=change_marking'>Remove</a></td>"
+								dat += "</tr>"
+
+						if(!(body_markings[zone]) || body_markings[zone].len < MAXIMUM_MARKINGS_PER_LIMB)
+							dat += "<tr style='vertical-align:top;'>"
+							dat += "<td> </td>"
+							dat += "<td> </td>"
+							dat += "<td> </td>"
+							dat += "<td> </td>"
+							dat += "<td><a href='?_src_=prefs;key=[zone];preference=add_marking;task=change_marking'>Add</a></td>"
+							dat += "</tr>"
+
+						dat += "</table>"
+
+						iterated_markings += 1
+						if(iterated_markings >= 4)
+							dat += "<td valign='top' width='50%'>"
+							iterated_markings = 0
+
+					dat += "</tr></table>"
+
+
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -1147,6 +1205,108 @@
 		return TRUE
 
 	switch(href_list["task"])
+		if("change_marking")
+			switch(href_list["preference"])
+				if("reset_color")
+					var/zone = href_list["key"]
+					var/index = text2num(href_list["index"])
+					if(length(body_markings[zone]) < index)
+						return
+					var/datum/body_marking/BM = GLOB.body_markings[body_markings[zone][index][MUTANT_INDEX_NAME]]
+					body_markings[zone][index][MUTANT_INDEX_COLOR_LIST] = BM.get_default_color(features, pref_species)
+				if("change_color")
+					var/zone = href_list["key"]
+					var/index = text2num(href_list["index"])
+					var/color_index = text2num(href_list["color_index"])
+					if(length(body_markings[zone]) < index)
+						return
+					var/colorlist = body_markings[zone][index][MUTANT_INDEX_COLOR_LIST]
+					var/new_color = input(user, "Choose your markings color:", "Character Preference","#[colorlist[color_index]]") as color|null
+					if(new_color)
+						if(length(body_markings[zone]) < index)
+							return
+						colorlist[color_index] = sanitize_hexcolor(new_color)
+				if("marking_move_up")
+					var/zone = href_list["key"]
+					var/index = text2num(href_list["index"])
+					if(length(body_markings[zone]) < index)
+						return
+					if(index < body_markings[zone].len)
+						var/current_list = body_markings[zone][index]
+						var/moved_list = body_markings[zone][index+1]
+						body_markings[zone][index+1] = current_list
+						body_markings[zone][index] = moved_list
+				if("marking_move_down")
+					var/zone = href_list["key"]
+					var/index = text2num(href_list["index"])
+					if(length(body_markings[zone]) < index)
+						return
+					if(index > 1)
+						var/current_list = body_markings[zone][index]
+						var/moved_list = body_markings[zone][index-1]
+						body_markings[zone][index-1] = current_list
+						body_markings[zone][index] = moved_list
+				if("add_marking")
+					var/zone = href_list["key"]
+					if(!GLOB.body_markings_per_limb[zone])
+						return
+					var/list/possible_candidates = GLOB.body_markings_per_limb[zone].Copy()
+					if(body_markings[zone])
+						//To prevent exploiting hrefs to bypass the marking limit
+						if(body_markings[zone].len >= MAXIMUM_MARKINGS_PER_LIMB)
+							return
+						//Remove already used markings from the candidates
+						for(var/list/this_list in body_markings[zone])
+							possible_candidates -= this_list[MUTANT_INDEX_NAME]
+					if(!mismatched_customization)
+						for(var/name in possible_candidates)
+							var/datum/body_marking/BD = GLOB.body_markings[name]
+							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+								possible_candidates -= name
+
+					if(possible_candidates.len == 0)
+						return
+					var/desired_marking = input(user, "Choose your new marking to add:", "Character Preference") as null|anything in possible_candidates
+					if(desired_marking)
+						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
+						if(!body_markings[zone])
+							body_markings[zone] = list()
+						var/list/new_list = list()
+						new_list[MUTANT_INDEX_NAME] = BD.name
+						new_list[MUTANT_INDEX_COLOR_LIST] = BD.get_default_color(features, pref_species)
+						body_markings[zone][++body_markings[zone].len] = new_list
+
+				if("remove_marking")
+					var/zone = href_list["key"]
+					var/index = text2num(href_list["index"])
+					if(length(body_markings[zone]) < index)
+						return
+					body_markings[zone].Cut(index, index+1)
+				if("change_marking")
+					var/zone = href_list["key"]
+					var/index = text2num(href_list["index"])
+
+					var/list/possible_candidates = GLOB.body_markings_per_limb[zone].Copy()
+					if(body_markings[zone])
+						//Remove already used markings from the candidates
+						for(var/list/this_list in body_markings[zone])
+							possible_candidates -= this_list[MUTANT_INDEX_NAME]
+					if(!mismatched_customization)
+						for(var/name in possible_candidates)
+							var/datum/body_marking/BD = GLOB.body_markings[name]
+							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+								possible_candidates -= name
+					if(possible_candidates.len == 0)
+						return
+					var/desired_marking = input(user, "Choose a marking to change the current one to:", "Character Preference") as null|anything in possible_candidates
+					if(desired_marking)
+						if(length(body_markings[zone]) < index)
+							return
+						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
+						var/list/new_list = list()
+						new_list[MUTANT_INDEX_NAME] = BD.name
+						new_list[MUTANT_INDEX_COLOR_LIST] = BD.get_default_color(features, pref_species)
+						body_markings[zone][index] = new_list
 		if("change_genitals")
 			switch(href_list["preference"])
 				if("breasts_size")
@@ -1180,7 +1340,7 @@
 					var/key = href_list["key"]
 					if(!mutant_bodyparts[key])
 						return
-					var/new_name 
+					var/new_name
 					if(mismatched_customization)
 						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in GLOB.sprite_accessories[key]
 					else
@@ -1199,7 +1359,7 @@
 					var/index = text2num(href_list["color_index"])
 					if(colorlist.len < index)
 						return
-					var/new_color = input(user, "Choose your character's [key] color:", "Character Preference","colorlist[index]") as color|null
+					var/new_color = input(user, "Choose your character's [key] color:", "Character Preference","#[colorlist[index]]") as color|null
 					if(new_color)
 						colorlist[index] = sanitize_hexcolor(new_color)
 				if("reset_color")

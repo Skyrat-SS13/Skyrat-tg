@@ -19,6 +19,8 @@
 /datum/sprite_accessory/ears/mutant/none
 	name = "None"
 	icon_state = "none"
+	color_src = null
+	factual = FALSE
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"

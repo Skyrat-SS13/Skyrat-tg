@@ -1,2 +1,6 @@
 GLOBAL_LIST_EMPTY(sprite_accessories)
 GLOBAL_LIST_EMPTY(generic_accessories)
+
+GLOBAL_LIST_EMPTY(body_markings)
+GLOBAL_LIST_EMPTY(body_markings_per_limb)
+GLOBAL_LIST_EMPTY(body_marking_sets)

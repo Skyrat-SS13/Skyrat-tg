@@ -1,10 +1,10 @@
 /datum/species
-	///List of organs that wont get removed on regeneration. This is important for anything that could be added through customization
-	var/list/compatible_organs = list()
 	///Self explanatory
 	var/can_have_genitals = TRUE
 	///Override of icon file of which we're taking the icons from for our limbs
 	var/limbs_icon
+	///A list of actual body markings on the owner of the species. Associative lists with keys named by limbs defines, pointing to a list with names and colors for the marking to be rendered. This is also stored in the DNA
+	var/list/body_markings = list()
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
@@ -125,7 +125,7 @@
 
 			if(S.special_x_dimension)
 				x_shift = S.get_special_x_dimension(H, S.icon)
-			else 
+			else
 				x_shift = S.dimension_x
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
@@ -213,7 +213,6 @@
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
-	compatible_organs = list(/obj/item/organ/ears/mutant)
 
 /datum/species/human
 	default_features = list(list("FFF"), list("FFF"), list("FFF"))
@@ -386,7 +385,7 @@
 			if(underwear)
 				var/icon_state = underwear.icon_state
 				if(underwear.has_digitigrade && (DIGITIGRADE in species_traits))
-					icon_state += "_d" 
+					icon_state += "_d"
 				underwear_overlay = mutable_appearance(underwear.icon, icon_state, -BODY_LAYER)
 				if(!underwear.use_static)
 					underwear_overlay.color = "#" + H.underwear_color
@@ -410,7 +409,7 @@
 				var/mutable_appearance/socks_overlay
 				var/icon_state = socks.icon_state
 				if(DIGITIGRADE in species_traits)
-					icon_state += "_d" 
+					icon_state += "_d"
 				socks_overlay = mutable_appearance(socks.icon, icon_state, -BODY_LAYER)
 				if(!socks.use_static)
 					socks_overlay.color = "#" + H.socks_color
@@ -468,6 +467,6 @@
 		return
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
 	if(!T)
-		return 
+		return
 	T.wagging = FALSE
 	H.update_body()

@@ -41,3 +41,5 @@
 #define ORGAN_SLOT_BREASTS "breasts"
 
 #define ORGAN_SLOT_WINGS "wings"
+
+#define MAXIMUM_MARKINGS_PER_LIMB 3

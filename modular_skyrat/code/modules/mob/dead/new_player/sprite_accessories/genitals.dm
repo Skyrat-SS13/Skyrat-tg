@@ -47,6 +47,7 @@
 /datum/sprite_accessory/genital/penis/human
 	icon_state = "human"
 	name = "Human"
+	default_color = DEFAULT_SKIN_OR_PRIMARY
 
 /datum/sprite_accessory/genital/penis/knotted
 	icon_state = "knotted"

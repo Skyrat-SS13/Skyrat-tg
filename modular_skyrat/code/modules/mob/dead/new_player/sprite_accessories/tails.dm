@@ -29,6 +29,7 @@
 	name = "None"
 	icon_state = "none"
 	recommended_species = list("mammal", "human")
+	color_src = null
 	factual = FALSE
 
 /datum/sprite_accessory/tails/mammal
