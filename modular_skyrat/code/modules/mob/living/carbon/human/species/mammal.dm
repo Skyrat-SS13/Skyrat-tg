@@ -16,4 +16,3 @@
 
 /datum/species/mammal/qualifies_for_rank(rank, list/features)
 	return TRUE
-

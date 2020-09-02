@@ -130,7 +130,7 @@
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/secondary/tiger
-	name = "Tiger Spots"
+	name = "Tiger Spot"
 	icon_state = "tiger"
 	affected_bodyparts = HEAD | CHEST | LEG_RIGHT | LEG_LEFT
 

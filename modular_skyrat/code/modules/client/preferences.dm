@@ -512,9 +512,11 @@
 				if(2)
 					//dat += "<center><h3>Body Markings</h3></center>"
 					dat += "Use a preset: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>"
+					dat += "<table width='100%' align='center'>"
 					dat += " Primary:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a>"
 					dat += " Secondary:<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a>"
 					dat += " Tertiary:<span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>Change</a>"
+					dat += "</table>"
 					dat += "<table width='100%'>"
 					dat += "<td valign='top' width='50%'>"
 					var/iterated_markings = 0
@@ -1229,6 +1231,31 @@
 	switch(href_list["task"])
 		if("change_marking")
 			switch(href_list["preference"])
+				if("use_preset")
+					var/action = alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", "Yes", "No")
+					if(action && action == "Yes")
+						var/list/candidates = GLOB.body_marking_sets.Copy()
+						if(!mismatched_customization)
+							for(var/name in candidates)
+								var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
+								if(BMS.recommended_species && (!pref_species.id in BMS.recommended_species))
+									candidates -= name
+						var/desired_set = input(user, "Choose your new body markings:", "Character Preference") as null|anything in candidates
+						if(desired_set)
+							var/datum/body_marking_set/BMS = GLOB.body_marking_sets[desired_set]
+							body_markings.Cut()
+							for(var/set_name in BMS.body_marking_list)
+								var/datum/body_marking/BM = GLOB.body_markings[set_name]
+								for(var/zone in GLOB.body_markings_per_limb)
+									var/list/marking_list = GLOB.body_markings_per_limb[zone]
+									if(set_name in marking_list)
+										if(!body_markings[zone])
+											body_markings[zone] = list()
+										var/list/new_list = list()
+										new_list[MUTANT_INDEX_NAME] = set_name
+										new_list[MUTANT_INDEX_COLOR_LIST] = BM.get_default_color(features, pref_species)
+										body_markings[zone][++body_markings[zone].len] = new_list
+
 				if("reset_color")
 					var/zone = href_list["key"]
 					var/index = text2num(href_list["index"])
