@@ -248,4 +248,3 @@
 			var/mob/living/L = M.pulledby
 			L.set_pull_offsets(M, L.grab_state)
 	return M
-	
