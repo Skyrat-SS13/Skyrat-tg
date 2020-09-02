@@ -266,13 +266,8 @@
 			O.custom_name = created_name
 			O.locked = panel_locked
 			if(!aisync)
-<<<<<<< HEAD
-				lawsync = 0
-				O.connected_ai = null
-=======
 				lawsync = FALSE
 				O.set_connected_ai(null)
->>>>>>> 89b4e01680a... Fix various issues with browser statpanel (#53263)
 			else
 				O.notify_ai(NEW_BORG)
 				if(forced_ai)

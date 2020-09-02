@@ -25,17 +25,9 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	SHOULD_CALL_PARENT(0)
 	return QDEL_HINT_IWILLGC
 
-<<<<<<< HEAD
-/datum/controller/global_vars/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
-	
-	stat("Globals:", statclick.update("Edit"))
-=======
 /datum/controller/global_vars/stat_entry(msg)
 	msg = "Edit"
 	return msg
->>>>>>> 89b4e01680a... Fix various issues with browser statpanel (#53263)
 
 /datum/controller/global_vars/vv_edit_var(var_name, var_value)
 	if(gvars_datum_protected_varlist[var_name])
