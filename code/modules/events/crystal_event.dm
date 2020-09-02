@@ -722,4 +722,3 @@ This section is for the crystal monsters variations
 		turf_bump.Melt()
 	playsound(get_turf(src), 'sound/effects/supermatter.ogg', 35, TRUE)
 
-
