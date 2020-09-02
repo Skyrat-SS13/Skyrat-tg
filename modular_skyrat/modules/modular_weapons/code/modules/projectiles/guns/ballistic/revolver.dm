@@ -36,7 +36,7 @@
 
 /obj/item/gun/ballistic/revolver/rifle/gold
 	name = "\improper .45 Revolving Rifle"
-	desc = "A gold trimmed revolving rifle! It fires 10mm bullets."
+	desc = "A gold trimmed revolving rifle! It fires .45 bullets."
 	icon_state = "revolving-rifle-gold"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev45	//Gold! We're using .45 because TG's 10mm does 40 damage, this does 30.
 	w_class = WEIGHT_CLASS_BULKY
