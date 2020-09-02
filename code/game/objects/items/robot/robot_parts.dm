@@ -256,8 +256,8 @@
 			if(!O)
 				return
 			if(M.laws && M.laws.id != DEFAULT_AI_LAWID)
-				aisync = 0
-				lawsync = 0
+				aisync = FALSE
+				lawsync = FALSE
 				O.laws = M.laws
 				M.laws.associate(O)
 
@@ -273,7 +273,7 @@
 				if(forced_ai)
 					O.set_connected_ai(forced_ai)
 			if(!lawsync)
-				O.lawupdate = 0
+				O.lawupdate = FALSE
 				if(M.laws.id == DEFAULT_AI_LAWID)
 					O.make_laws()
 
