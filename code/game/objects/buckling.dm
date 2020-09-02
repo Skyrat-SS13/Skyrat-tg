@@ -201,12 +201,6 @@
 
 //Wrapper procs that handle sanity and user feedback
 /atom/movable/proc/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
-<<<<<<< HEAD
-	if(!in_range(user, src) || !isturf(user.loc) || user.incapacitated() || M.anchored)
-		return FALSE
-
-	add_fingerprint(user)
-=======
 	// Is buckling even possible? Do a full suite of checks.
 	if(!is_user_buckle_possible(M, user, check_loc))
 		return FALSE
@@ -227,7 +221,6 @@
 		if(!is_user_buckle_possible(M, user, check_loc))
 			return FALSE
 
->>>>>>> 88625f4591b... Improves buckling do_after code when buckling others from an adjacent position. (#53363)
 	. = buckle_mob(M, check_loc = check_loc)
 	if(.)
 		if(M == user)
@@ -255,3 +248,4 @@
 			var/mob/living/L = M.pulledby
 			L.set_pull_offsets(M, L.grab_state)
 	return M
+	
