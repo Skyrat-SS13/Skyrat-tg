@@ -2,6 +2,7 @@
 	make_sprite_accessory_references()
 	make_body_marking_references()
 	make_body_marking_set_references()
+	make_loadout_references()
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories
@@ -38,3 +39,16 @@
 		if(initial(BM.name))
 			BM = new path()
 			GLOB.body_marking_sets[BM.name] = BM
+
+/proc/make_loadout_references()
+	// Here we build the global loadout lists
+	for(var/path in subtypesof(/datum/loadout_item))
+		var/datum/loadout_item/L = path
+		if(initial(L.name))
+			L = new path()
+			GLOB.loadout_items[L.name] = L
+			if(!GLOB.loadout_category_to_subcategory_to_items[L.category])
+				GLOB.loadout_category_to_subcategory_to_items[L.category] = list()
+			if(!GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory])
+				GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] = list()
+			GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] += L.name

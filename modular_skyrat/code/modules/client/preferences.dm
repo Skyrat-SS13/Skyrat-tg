@@ -161,6 +161,14 @@
 
 	var/character_settings_tab = 0
 
+	///How many loadout points we've got remaining
+	var/loadout_points = 10
+	///Loadout items, this is an associative list stored as [name] = "info". Info can be either colors or styles for the loadout items
+	var/loadout = list()
+
+	var/loadout_category
+	var/loadout_subcategory
+
 /datum/preferences/New(client/C)
 	parent = C
 
