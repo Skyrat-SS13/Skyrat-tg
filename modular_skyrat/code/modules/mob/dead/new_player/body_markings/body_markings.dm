@@ -8,8 +8,6 @@
 	var/icon_state
 	///The preview name of the body marking. NEEDS A UNIQUE NAME
 	var/name
-	///How many colors are we using? either USE_ONE_COLOR or USE_MATRIXED_COLORS. Matrixed requires a R/G/B sprite
-	var/color_src = USE_ONE_COLOR
 	///The color the marking defaults to, important for randomisations. either a hex color ie."FFF" or a define like DEFAULT_PRIMARY
 	var/default_color
 	///Which bodyparts does the marking affect in BITFLAGS!! (HEAD, CHEST, ARM_LEFT, ARM_RIGHT, HAND_LEFT, HAND_RIGHT, LEG_RIGHT, LEG_LEFT)
@@ -21,32 +19,24 @@
 
 /datum/body_marking/New()
 	if(!default_color)
-		switch(color_src)
-			if(USE_ONE_COLOR)
-				default_color = DEFAULT_PRIMARY
-			if(USE_MATRIXED_COLORS)
-				default_color = DEFAULT_MATRIXED
-			else
-				default_color = "FFF"
+		default_color = "FFF"
 
 /datum/body_marking/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
 	var/list/colors
 	switch(default_color)
 		if(DEFAULT_PRIMARY)
-			colors = list(features["mcolor"])
+			colors = features["mcolor"]
 		if(DEFAULT_SECONDARY)
-			colors = list(features["mcolor2"])
+			colors = features["mcolor2"]
 		if(DEFAULT_TERTIARY)
-			colors = list(features["mcolor3"])
-		if(DEFAULT_MATRIXED)
-			colors = list(features["mcolor"], features["mcolor2"], features["mcolor3"])
+			colors = features["mcolor3"]
 		if(DEFAULT_SKIN_OR_PRIMARY)
 			if(pref_species && pref_species.use_skintones)
-				colors = list(features["skin_color"])
+				colors = features["skin_color"]
 			else
-				colors = list(features["mcolor"])
+				colors = features["mcolor"]
 		else
-			colors = list(default_color)
+			colors = default_color
 
 	return colors
 

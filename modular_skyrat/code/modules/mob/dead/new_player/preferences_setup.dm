@@ -114,9 +114,9 @@
 
 	for(var/zone in body_markings)
 		var/list/bml = body_markings[zone]
-		for(var/i in 1 to bml.len)
-			var/datum/body_marking/BM = GLOB.body_markings[bml[i][MUTANT_INDEX_NAME]]
-			bml[i][MUTANT_INDEX_COLOR_LIST] = BM.get_default_color(features, pref_species)
+		for(var/key in bml)
+			var/datum/body_marking/BM = GLOB.body_markings[key]
+			bml[key] = BM.get_default_color(features, pref_species)
 
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]

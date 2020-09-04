@@ -166,8 +166,8 @@
 	///Loadout items, this is an associative list stored as [name] = "info". Info can be either colors or styles for the loadout items
 	var/loadout = list()
 
-	var/loadout_category
-	var/loadout_subcategory
+	var/loadout_category = ""
+	var/loadout_subcategory = ""
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -253,12 +253,15 @@
 
 			dat += "<HR>"
 			dat += "<center>"
-			dat += "<b>Mismatched parts:</b> <a href='?_src_=prefs;preference=mismatch'>[(mismatched_customization) ? "Enabled" : "Disabled"]</a>"
-			dat += "<b> Advanced colors:</b> <a href='?_src_=prefs;preference=adv_colors'>[(allow_advanced_colors) ? "Enabled" : "Disabled"]</a>"
-			if(allow_advanced_colors)
-				dat += "<tr><td align='right'>"
-				dat += "<a href='?_src_=prefs;preference=reset_all_colors;task=change_bodypart'>Reset colors</a><BR>"
-				dat += "</tr><td>"
+			if(character_settings_tab == 4)
+				dat += "<b>Remaining loadout points: [loadout_points]</b>"
+			else
+				dat += "<b>Mismatched parts:</b> <a href='?_src_=prefs;preference=mismatch'>[(mismatched_customization) ? "Enabled" : "Disabled"]</a>"
+				dat += "<b> Advanced colors:</b> <a href='?_src_=prefs;preference=adv_colors'>[(allow_advanced_colors) ? "Enabled" : "Disabled"]</a>"
+				if(allow_advanced_colors)
+					dat += "<tr><td align='right'>"
+					dat += "<a href='?_src_=prefs;preference=reset_all_colors;task=change_bodypart'>Reset colors</a><BR>"
+					dat += "</tr><td>"
 			dat += "</center>"
 			dat += "<HR>"
 			switch(character_settings_tab)
@@ -558,32 +561,26 @@
 						dat += "</tr>"
 
 						if(body_markings[zone])
-							for(var/i in 1 to body_markings[zone].len)
-								var/list/marking_list = body_markings[zone][i]
-								var/datum/body_marking/BD = GLOB.body_markings[marking_list[MUTANT_INDEX_NAME]]
+							for(var/key in body_markings[zone])
+								var/datum/body_marking/BD = GLOB.body_markings[key]
 								var/can_move_up = " "
 								var/can_move_down = " "
 								var/color_line = " "
-								var/shown_colors = 0
-								if(BD.color_src == USE_MATRIXED_COLORS)
-									shown_colors = 3
-								else if (BD.color_src == USE_ONE_COLOR)
-									shown_colors = 1
-								if(shown_colors && (BD.always_color_customizable || allow_advanced_colors))
-									var/list/colorlist = marking_list[MUTANT_INDEX_COLOR_LIST]
-									color_line = "<a href='?_src_=prefs;index=[i];key=[zone];preference=reset_color;task=change_marking'>R</a>"
-									for(var/bee in 1 to shown_colors)
-										color_line += "<span style='border: 1px solid #161616; background-color: ["#[colorlist[bee]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;index=[i];key=[zone];color_index=[bee];preference=change_color;task=change_marking'>Set</a>"
-								if(i < body_markings[zone].len)
-									can_move_up = "<a href='?_src_=prefs;index=[i];key=[zone];preference=marking_move_up;task=change_marking'>Down</a>"
-								if(i > 1)
-									can_move_down = "<a href='?_src_=prefs;index=[i];key=[zone];preference=marking_move_down;task=change_marking'>Up</a>"
+								var/current_index = LAZYFIND(body_markings[zone], key)
+								if(BD.always_color_customizable || allow_advanced_colors)
+									var/color = body_markings[zone][key]
+									color_line = "<a href='?_src_=prefs;name=[key];key=[zone];preference=reset_color;task=change_marking'>R</a>"
+									color_line += "<span style='border: 1px solid #161616; background-color: ["#[color]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;name=[key];key=[zone];preference=change_color;task=change_marking'>Set</a>"
+								if(current_index < length(body_markings[zone]))
+									can_move_down = "<a href='?_src_=prefs;name=[key];key=[zone];preference=marking_move_down;task=change_marking'>Down</a>"
+								if(current_index > 1)
+									can_move_up = "<a href='?_src_=prefs;name=[key];key=[zone];preference=marking_move_up;task=change_marking'>Up</a>"
 								dat += "<tr style='vertical-align:top;'>"
 								dat += "<td>[can_move_up]</td>"
 								dat += "<td>[can_move_down]</td>"
-								dat += "<td><a href='?_src_=prefs;index=[i];key=[zone];preference=change_marking;task=change_marking'>[marking_list[MUTANT_INDEX_NAME]]</a></td>"
+								dat += "<td><a href='?_src_=prefs;name=[key];key=[zone];preference=change_marking;task=change_marking'>[key]</a></td>"
 								dat += "<td>[color_line]</td>"
-								dat += "<td><a href='?_src_=prefs;index=[i];key=[zone];preference=remove_marking;task=change_marking'>Remove</a></td>"
+								dat += "<td><a href='?_src_=prefs;name=[key];key=[zone];preference=remove_marking;task=change_marking'>Remove</a></td>"
 								dat += "</tr>"
 
 						if(!(body_markings[zone]) || body_markings[zone].len < MAXIMUM_MARKINGS_PER_LIMB)
@@ -603,7 +600,55 @@
 							iterated_markings = 0
 
 					dat += "</tr></table>"
+				if(4) //Loadout
+					dat += "<center>"
+					for(var/category in GLOB.loadout_category_to_subcategory_to_items)
+						dat += "<a href='?_src_=prefs;preference=loadout_cat;tab=[category]' [loadout_category == category ? "class='linkOn'" : ""]>[category]</a> "
+					dat += "</center>"
+					dat += "<HR>"
+					if(loadout_category != "")
+						dat += "<center>"
+						for(var/subcategory in GLOB.loadout_category_to_subcategory_to_items[loadout_category])
+							dat += "<a href='?_src_=prefs;preference=loadout_subcat;tab=[subcategory]' [loadout_subcategory == subcategory ? "class='linkOn'" : ""]>[subcategory]</a> "
+						dat += "</center>"
+						dat += "<HR>"
+						if(loadout_subcategory != "")
+							var/list/item_names = GLOB.loadout_category_to_subcategory_to_items[loadout_category][loadout_subcategory]
 
+							dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
+							dat += "<tr style='vertical-align:top'>"
+							dat += "<td width=18%><font size=2><b>Name</b></font></td>"
+							dat += "<td width=20%><font size=2> </font></td>"
+							dat += "<td width=40%><font size=2><b>Description</b></font></td>"
+							dat += "<td width=17%><font size=2><b>Restrictions</b></font></td>"
+							dat += "<td width=5%><font size=2><center><b>Cost</b></center></font></td>"
+							dat += "</tr>"
+							var/even = FALSE
+							for(var/name in item_names)
+								var/datum/loadout_item/LI = GLOB.loadout_items[name]
+								if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
+									continue
+								var/background_cl = "#23273C"
+								if(even)
+									background_cl = "#17191C"
+								even = !even
+								var/loadout_button_class
+								if(loadout[LI.name]) //We have this item purchased, but we can sell it
+									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[LI.name]' class='linkOn'"
+								else if(LI.cost > loadout_points) //We cannot afford this item
+									loadout_button_class = "class='linkOff'"
+								else //We can buy it
+									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[LI.name]'"
+
+								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
+								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
+								dat += "<td><font size=2> </font></td>"
+								dat += "<td><font size=2><i>[LI.description]</i></font></td>"
+								dat += "<td><font size=2><i>[LI.restricted_desc]</i></font></td>"
+								dat += "<td><font size=2><center>[LI.cost]</center></font></td>"
+								dat += "</tr>"
+
+							dat += "</table>"
 
 
 		if (1) // Game Preferences
@@ -1237,6 +1282,19 @@
 		return TRUE
 
 	switch(href_list["task"])
+		if("change_loadout")
+			var/name = href_list["item"]
+			var/datum/loadout_item/LI = GLOB.loadout_items[name]
+			if(loadout[name]) //We sell it!
+				loadout -= name
+				loadout_points += LI.cost
+			else //We attempt to buy it
+				if(LI.cost > loadout_points)
+					return
+				if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
+					return
+				loadout_points -= LI.cost
+				loadout[name] = "NONE" //As in "No extra information associated"
 		if("change_marking")
 			switch(href_list["preference"])
 				if("use_preset")
@@ -1259,42 +1317,72 @@
 									if(set_name in marking_list)
 										if(!body_markings[zone])
 											body_markings[zone] = list()
-										var/list/new_list = list()
-										new_list[MUTANT_INDEX_NAME] = set_name
-										new_list[MUTANT_INDEX_COLOR_LIST] = BM.get_default_color(features, pref_species)
-										body_markings[zone][++body_markings[zone].len] = new_list
+										body_markings[zone][set_name] = BM.get_default_color(features, pref_species)
 
 				if("reset_color")
 					var/zone = href_list["key"]
-					var/index = text2num(href_list["index"])
-					if(length(body_markings[zone]) < index)
+					var/name = text2num(href_list["name"])
+					if(!body_markings[zone] || !body_markings[zone][name])
 						return
-					var/datum/body_marking/BM = GLOB.body_markings[body_markings[zone][index][MUTANT_INDEX_NAME]]
-					body_markings[zone][index][MUTANT_INDEX_COLOR_LIST] = BM.get_default_color(features, pref_species)
+					var/datum/body_marking/BM = GLOB.body_markings[name]
+					body_markings[zone][name] = BM.get_default_color(features, pref_species)
 				if("change_color")
 					var/zone = href_list["key"]
-					var/index = text2num(href_list["index"])
-					var/color_index = text2num(href_list["color_index"])
-					if(length(body_markings[zone]) < index)
+					var/name = href_list["name"]
+					if(!body_markings[zone] || !body_markings[zone][name])
 						return
-					var/colorlist = body_markings[zone][index][MUTANT_INDEX_COLOR_LIST]
-					var/new_color = input(user, "Choose your markings color:", "Character Preference","#[colorlist[color_index]]") as color|null
+					var/color = body_markings[zone][name]
+					var/new_color = input(user, "Choose your markings color:", "Character Preference","#[color]") as color|null
 					if(new_color)
-						if(length(body_markings[zone]) < index)
+						if(!body_markings[zone] || !body_markings[zone][name])
 							return
-						colorlist[color_index] = sanitize_hexcolor(new_color)
+						body_markings[zone][name] = sanitize_hexcolor(new_color)
 				if("marking_move_up")
 					var/zone = href_list["key"]
-					var/index = text2num(href_list["index"])
-					if(length(body_markings[zone]) < index)
+					var/name = href_list["name"]
+					var/list/marking_list = LAZYACCESS(body_markings, zone)
+					var/current_index = LAZYFIND(marking_list, name)
+					if(!current_index || --current_index < 1)
 						return
-					if(index < body_markings[zone].len)
+					var/marking_content = marking_list[name]
+					marking_list -= name
+					marking_list.Insert(current_index, name)
+					marking_list[name] = marking_content
+					/*var/zone = href_list["key"]
+					var/name = href_list["name"]
+					if(!body_markings[zone] || !body_markings[zone][name])
+						return
+					var/current_index = body_markings[zone].Find("name")
+					if(current_index < body_markings[zone].len)
+						var/list/ordering = list()
+						for(var/key in body_markings[zone])
+							ordering += key
+						var/ordering_moved_current = ordering[current_index]
+						var/ordering_moved = ordering[current_index+1]
+						ordering[current_index+1] = ordering_moved_current
+						ordering[current_index] = ordering_moved
+						var/list/new_zone_list = list()
+						for(var/key in ordering)
+							new_zone_list[key] = body_markings[zone][key]
+						body_markings[zone] = new_zone_list*/
+						/*
 						var/current_list = body_markings[zone][index]
 						var/moved_list = body_markings[zone][index+1]
 						body_markings[zone][index+1] = current_list
 						body_markings[zone][index] = moved_list
+						*/
 				if("marking_move_down")
 					var/zone = href_list["key"]
+					var/name = href_list["name"]
+					var/list/marking_list = LAZYACCESS(body_markings, zone)
+					var/current_index = LAZYFIND(marking_list, name)
+					if(!current_index || ++current_index > length(marking_list))
+						return
+					var/marking_content = marking_list[name]
+					marking_list -= name
+					marking_list.Insert(current_index, name)
+					marking_list[name] = marking_content
+					/*var/zone = href_list["key"]
 					var/index = text2num(href_list["index"])
 					if(length(body_markings[zone]) < index)
 						return
@@ -1302,7 +1390,7 @@
 						var/current_list = body_markings[zone][index]
 						var/moved_list = body_markings[zone][index-1]
 						body_markings[zone][index-1] = current_list
-						body_markings[zone][index] = moved_list
+						body_markings[zone][index] = moved_list*/
 				if("add_marking")
 					var/zone = href_list["key"]
 					if(!GLOB.body_markings_per_limb[zone])
@@ -1328,28 +1416,25 @@
 						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
 						if(!body_markings[zone])
 							body_markings[zone] = list()
-						var/list/new_list = list()
-						new_list[MUTANT_INDEX_NAME] = BD.name
-						new_list[MUTANT_INDEX_COLOR_LIST] = BD.get_default_color(features, pref_species)
-						body_markings[zone][++body_markings[zone].len] = new_list
+						body_markings[zone][BD.name] = BD.get_default_color(features, pref_species)
 
 				if("remove_marking")
 					var/zone = href_list["key"]
-					var/index = text2num(href_list["index"])
-					if(length(body_markings[zone]) < index)
+					var/name = href_list["name"]
+					if(!body_markings[zone] || !body_markings[zone][name])
 						return
-					body_markings[zone].Cut(index, index+1)
+					body_markings[zone] -= name
 					if(body_markings[zone].len == 0)
 						body_markings -= zone
 				if("change_marking")
 					var/zone = href_list["key"]
-					var/index = text2num(href_list["index"])
+					var/changing_name = href_list["name"]
 
 					var/list/possible_candidates = GLOB.body_markings_per_limb[zone].Copy()
 					if(body_markings[zone])
 						//Remove already used markings from the candidates
-						for(var/list/this_list in body_markings[zone])
-							possible_candidates -= this_list[MUTANT_INDEX_NAME]
+						for(var/keyed_name in body_markings[zone])
+							possible_candidates -= keyed_name
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
@@ -1359,13 +1444,14 @@
 						return
 					var/desired_marking = input(user, "Choose a marking to change the current one to:", "Character Preference") as null|anything in possible_candidates
 					if(desired_marking)
-						if(length(body_markings[zone]) < index)
+						if(!body_markings[zone] || !body_markings[zone][changing_name])
 							return
+						var/held_index = LAZYFIND(body_markings[zone], changing_name)
+						body_markings[zone] -= changing_name
 						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
-						var/list/new_list = list()
-						new_list[MUTANT_INDEX_NAME] = BD.name
-						new_list[MUTANT_INDEX_COLOR_LIST] = BD.get_default_color(features, pref_species)
-						body_markings[zone][index] = new_list
+						var/marking_content = BD.get_default_color(features, pref_species)
+						body_markings[zone].Insert(held_index, desired_marking)
+						body_markings[zone][desired_marking] = marking_content
 		if("change_genitals")
 			switch(href_list["preference"])
 				if("breasts_size")
@@ -2135,6 +2221,27 @@
 				if("character_tab")
 					if (href_list["tab"])
 						character_settings_tab = text2num(href_list["tab"])
+						if(character_settings_tab == 4) //If we click the loadout tab, load in the defaults stuff
+							var/list/cats = GLOB.loadout_category_to_subcategory_to_items
+							for(var/category in cats)
+								loadout_category = category
+								break
+							var/list/subs = GLOB.loadout_category_to_subcategory_to_items[loadout_category]
+							for(var/subcat in subs)
+								loadout_subcategory = subcat
+								break
+
+				if("loadout_cat")
+					if (href_list["tab"])
+						loadout_category = href_list["tab"]
+						var/list/subs = GLOB.loadout_category_to_subcategory_to_items[loadout_category]
+						for(var/subcat in subs)
+							loadout_subcategory = subcat
+							break
+
+				if("loadout_subcat")
+					if (href_list["tab"])
+						loadout_subcategory = href_list["tab"]
 
 				if("clear_heart")
 					hearted = FALSE

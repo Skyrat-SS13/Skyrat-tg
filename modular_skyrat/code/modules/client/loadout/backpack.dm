@@ -85,7 +85,7 @@
 
 //TOYS
 /datum/loadout_item/backpack/toy
-	category = LOADOUT_SUBCATEGORY_BACKPACK_TOYS
+	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_TOYS
 
 /datum/loadout_item/backpack/toy/dice
 	name = "Dice bag"

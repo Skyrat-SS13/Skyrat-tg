@@ -235,35 +235,11 @@
 						var/icon_gender = (body_type == FEMALE) ? "f" : "m"
 						render_limb_string = "[render_limb_string]_[icon_gender]"
 
-				for(var/i in 1 to dna.species.body_markings[marking_zone].len)
-					var/list/marking_list = dna.species.body_markings[marking_zone][i]
-					var/datum/body_marking/BM = GLOB.body_markings[marking_list[MUTANT_INDEX_NAME]]
+				for(var/key in dna.species.body_markings[marking_zone])
+					var/datum/body_marking/BM = GLOB.body_markings[key]
 
 					var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPART_MARKINGS_LAYER)
-					switch(BM.color_src)
-						if(USE_ONE_COLOR)
-							accessory_overlay.color = "#"+marking_list[MUTANT_INDEX_COLOR_LIST][1]
-						if(USE_MATRIXED_COLORS)
-							var/list/color_list = marking_list[MUTANT_INDEX_COLOR_LIST]
-							var/list/finished_list = list()
-							finished_list += ReadRGB("[color_list[1]]0")
-							finished_list += ReadRGB("[color_list[2]]0")
-							finished_list += ReadRGB("[color_list[3]]0")
-							finished_list += list(0,0,0,255)
-							for(var/index in 1 to finished_list.len)
-								finished_list[index] /= 255
-							accessory_overlay.color = finished_list
-						if(MUTCOLORS)
-							accessory_overlay.color = "#[dna.features["mcolor"]]"
-						if(HAIR)
-							if(hair_color == "mutcolor")
-								accessory_overlay.color = "#[dna.features["mcolor"]]"
-							else
-								accessory_overlay.color = "#[hair_color]"
-						if(FACEHAIR)
-							accessory_overlay.color = "#[facial_hair_color]"
-						if(EYECOLOR)
-							accessory_overlay.color = "#[eye_color]"
+					accessory_overlay.color = "#[dna.species.body_markings[marking_zone][key]]"
 					standing += accessory_overlay
 
 	if(standing.len)
