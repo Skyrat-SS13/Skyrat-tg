@@ -169,6 +169,8 @@
 	var/loadout_category = ""
 	var/loadout_subcategory = ""
 
+	var/preview_pref = PREVIEW_PREF_JOB
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -248,20 +250,36 @@
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=1' [character_settings_tab == 1 ? "class='linkOn'" : ""]>Appearance</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=2' [character_settings_tab == 2 ? "class='linkOn'" : ""]>Markings</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=3' [character_settings_tab == 3 ? "class='linkOn'" : ""]>Background</a>"
-			dat += "<a href='?_src_=prefs;preference=character_tab;tab=4' [character_settings_tab == 4 ? "class='linkOn'" : ""]>Loadout</a>"
+			dat += "<a href='?_src_=prefs;preference=character_tab;tab=4' [character_settings_tab == 4 ? "class='linkOn'" : ""]>Loadout</a>" //If you change the index of this tab, change all the logic regarding tab
 			dat += "</center>"
 
 			dat += "<HR>"
 			dat += "<center>"
+			dat += "<table width='100%'>"
+			dat += "<tr>"
+			dat += "<td width=35%>"
+			dat += "Preview:"
+			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_JOB]' [preview_pref == PREVIEW_PREF_JOB ? "class='linkOn'" : ""]>[PREVIEW_PREF_JOB]</a>"
+			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_LOADOUT]' [preview_pref == PREVIEW_PREF_LOADOUT ? "class='linkOn'" : ""]>[PREVIEW_PREF_LOADOUT]</a>"
+			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_NAKED]' [preview_pref == PREVIEW_PREF_NAKED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED]</a>"
+			dat += "</td>"
 			if(character_settings_tab == 4)
+				dat += "<td width=65%>"
 				dat += "<b>Remaining loadout points: [loadout_points]</b>"
+				dat += "</td>"
 			else
+				dat += "<td width=35%>"
 				dat += "<b>Mismatched parts:</b> <a href='?_src_=prefs;preference=mismatch'>[(mismatched_customization) ? "Enabled" : "Disabled"]</a>"
+				dat += "</td>"
+
+				dat += "<td width=30%>"
 				dat += "<b> Advanced colors:</b> <a href='?_src_=prefs;preference=adv_colors'>[(allow_advanced_colors) ? "Enabled" : "Disabled"]</a>"
 				if(allow_advanced_colors)
-					dat += "<tr><td align='right'>"
 					dat += "<a href='?_src_=prefs;preference=reset_all_colors;task=change_bodypart'>Reset colors</a><BR>"
-					dat += "</tr><td>"
+				dat += "</td>"
+
+			dat += "</tr>"
+			dat += "</table>"
 			dat += "</center>"
 			dat += "<HR>"
 			switch(character_settings_tab)
@@ -624,8 +642,8 @@
 							dat += "<td width=5%><font size=2><center><b>Cost</b></center></font></td>"
 							dat += "</tr>"
 							var/even = FALSE
-							for(var/name in item_names)
-								var/datum/loadout_item/LI = GLOB.loadout_items[name]
+							for(var/path in item_names)
+								var/datum/loadout_item/LI = GLOB.loadout_items[path]
 								if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
 									continue
 								var/background_cl = "#23273C"
@@ -633,12 +651,12 @@
 									background_cl = "#17191C"
 								even = !even
 								var/loadout_button_class
-								if(loadout[LI.name]) //We have this item purchased, but we can sell it
-									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[LI.name]' class='linkOn'"
+								if(loadout[LI.path]) //We have this item purchased, but we can sell it
+									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]' class='linkOn'"
 								else if(LI.cost > loadout_points) //We cannot afford this item
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
-									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[LI.name]'"
+									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
 
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
@@ -649,7 +667,6 @@
 								dat += "</tr>"
 
 							dat += "</table>"
-
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -1283,10 +1300,10 @@
 
 	switch(href_list["task"])
 		if("change_loadout")
-			var/name = href_list["item"]
-			var/datum/loadout_item/LI = GLOB.loadout_items[name]
-			if(loadout[name]) //We sell it!
-				loadout -= name
+			var/path = text2path(href_list["item"])
+			var/datum/loadout_item/LI = GLOB.loadout_items[path]
+			if(loadout[path]) //We sell it!
+				loadout -= path
 				loadout_points += LI.cost
 			else //We attempt to buy it
 				if(LI.cost > loadout_points)
@@ -1294,7 +1311,7 @@
 				if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
 					return
 				loadout_points -= LI.cost
-				loadout[name] = "NONE" //As in "No extra information associated"
+				loadout[LI.path] = "NONE" //As in "No extra information associated"
 		if("change_marking")
 			switch(href_list["preference"])
 				if("use_preset")
@@ -2217,6 +2234,9 @@
 				if("tab")
 					if (href_list["tab"])
 						current_tab = text2num(href_list["tab"])
+
+				if("character_preview")
+					preview_pref = href_list["tab"]
 
 				if("character_tab")
 					if (href_list["tab"])

@@ -8,15 +8,15 @@
 
 /datum/loadout_item/neck/choker
 	name = "Choker"
-	path = /obj/item/clothing/neck/petcollar/choker
+	path = /obj/item/clothing/neck/human_petcollar/choker
 
 /datum/loadout_item/neck/collar
 	name = "Collar"
-	path = /obj/item/clothing/neck/petcollar
+	path = /obj/item/clothing/neck/human_petcollar
 
 /datum/loadout_item/neck/leathercollar
 	name = "Leather collar"
-	path = /obj/item/clothing/neck/petcollar/leather
+	path = /obj/item/clothing/neck/human_petcollar/leather
 
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"

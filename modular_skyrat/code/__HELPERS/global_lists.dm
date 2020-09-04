@@ -44,11 +44,11 @@
 	// Here we build the global loadout lists
 	for(var/path in subtypesof(/datum/loadout_item))
 		var/datum/loadout_item/L = path
-		if(initial(L.name))
+		if(initial(L.path))
 			L = new path()
-			GLOB.loadout_items[L.name] = L
+			GLOB.loadout_items[L.path] = L
 			if(!GLOB.loadout_category_to_subcategory_to_items[L.category])
 				GLOB.loadout_category_to_subcategory_to_items[L.category] = list()
 			if(!GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory])
 				GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] = list()
-			GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] += L.name
+			GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] += L.path

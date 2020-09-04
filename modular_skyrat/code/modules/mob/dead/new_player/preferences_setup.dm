@@ -123,3 +123,64 @@
 	set_new_species(random_species_type)
 	if(randomise[RANDOM_NAME])
 		real_name = pref_species.random_name(gender,1)
+
+/datum/preferences/proc/update_preview_icon()
+	// Determine what job is marked as 'High' priority, and dress them up as such.
+	var/datum/job/previewJob
+	var/highest_pref = 0
+	for(var/job in job_preferences)
+		if(job_preferences[job] > highest_pref)
+			previewJob = SSjob.GetJob(job)
+			highest_pref = job_preferences[job]
+
+	if(previewJob)
+		// Silicons only need a very basic preview since there is no customization for them.
+		if(istype(previewJob,/datum/job/ai))
+			parent.show_character_previews(image('icons/mob/ai.dmi', icon_state = resolve_ai_icon(preferred_ai_core_display), dir = SOUTH))
+			return
+		if(istype(previewJob,/datum/job/cyborg))
+			parent.show_character_previews(image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH))
+			return
+
+	// Set up the dummy for its photoshoot
+	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+	copy_to(mannequin, 1, TRUE, TRUE)
+
+	switch(preview_pref)
+		if(PREVIEW_PREF_JOB)
+			if(previewJob)
+				mannequin.job = previewJob.title
+				previewJob.equip(mannequin, TRUE, preference_source = parent)
+		if(PREVIEW_PREF_LOADOUT)
+			equip_preference_loadout(mannequin, TRUE, previewJob)
+
+	COMPILE_OVERLAYS(mannequin)
+	parent.show_character_previews(new /mutable_appearance(mannequin))
+	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+
+/datum/preferences/proc/equip_preference_loadout(mob/living/carbon/human/H, just_preview = FALSE, datum/job/choosen_job)
+	if(!ishuman(H))
+		return
+	var/list/items_to_pack = list()
+	for(var/item_name in loadout)
+		var/datum/loadout_item/LI = GLOB.loadout_items[item_name]
+		var/obj/item/ITEM = LI.get_spawned_item(loadout[item_name])
+		//Skip the item if the job doesn't match, but only if that not used for the preview
+		if(!just_preview && (choosen_job && LI.restricted_roles && !(choosen_job.title in LI.restricted_roles)))
+			continue
+		if(!H.equip_to_appropriate_slot(ITEM))
+			if(!just_preview)
+				items_to_pack += ITEM
+				//Here we stick it into a bag, if possible
+				if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
+					//Otherwise - on the ground
+					ITEM.forceMove(get_turf(H))
+	return items_to_pack
+
+/datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)
+	//Here we stick it into a bag, if possible
+	for(var/item in packed_items)
+		var/obj/item/ITEM = item
+		if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
+			//Otherwise - on the ground
+			ITEM.forceMove(get_turf(H))

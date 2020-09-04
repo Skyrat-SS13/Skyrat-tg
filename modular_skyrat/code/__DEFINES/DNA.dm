@@ -43,3 +43,7 @@
 #define ORGAN_SLOT_WINGS "wings"
 
 #define MAXIMUM_MARKINGS_PER_LIMB 3
+
+#define PREVIEW_PREF_JOB "Job"
+#define PREVIEW_PREF_LOADOUT "Loadout"
+#define PREVIEW_PREF_NAKED "Naked"

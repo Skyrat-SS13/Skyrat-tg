@@ -105,7 +105,7 @@
 		hardcore_survival_score += available_hardcore_quirks[picked_quirk]
 		available_hardcore_quirks -= picked_quirk
 
-/datum/preferences/proc/update_preview_icon()
+/*/datum/preferences/proc/update_preview_icon() SKYRAT EDIT - customization - moved to modular 
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	var/datum/job/previewJob
 	var/highest_pref = 0
@@ -133,4 +133,4 @@
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
-	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)*/

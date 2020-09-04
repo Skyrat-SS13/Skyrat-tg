@@ -35,7 +35,8 @@
 
 /datum/loadout_item/proc/get_spawned_item(customization) //Pass the value from the associative list
 	var/obj/item/spawned = new path()
-	customize(spawned, customization)
+	if(customization != "NONE")
+		customize(spawned, customization)
 	return spawned
 
 /datum/loadout_item/proc/customize(var/obj/item/spawned, customization)
