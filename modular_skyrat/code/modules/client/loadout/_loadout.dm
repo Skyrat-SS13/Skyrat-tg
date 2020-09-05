@@ -35,9 +35,20 @@
 
 /datum/loadout_item/proc/get_spawned_item(customization) //Pass the value from the associative list
 	var/obj/item/spawned = new path()
-	if(customization != "NONE")
+	if(customization != "None")
 		customize(spawned, customization)
 	return spawned
 
+//Proc designed to be overwritten by invidivual loadout items. has support for a one color feed, as that is common
 /datum/loadout_item/proc/customize(var/obj/item/spawned, customization)
-	return
+	if(extra_info == LOADOUT_INFO_ONE_COLOR)
+		spawned.color = "#[customization]"
+
+/datum/loadout_item/proc/default_customization()
+	switch(extra_info)
+		if(LOADOUT_INFO_ONE_COLOR)
+			return "FFF"
+		if(LOADOUT_INFO_THREE_COLORS)
+			return "FFF|FFF|FFF"
+		else
+			return "None"

@@ -90,14 +90,15 @@
 				applied_style = STYLE_DIGITIGRADE
 
 		var/x_override
-		if(applied_style & STYLE_DIGITIGRADE)
-			icon_file = wear_suit.worn_icon_digi || 'modular_skyrat/icons/mob/clothing/suit_digi.dmi'
-		else if(applied_style & STYLE_TAUR_SNAKE)
-			icon_file = wear_suit.worn_icon_taur_snake || 'modular_skyrat/icons/mob/clothing/suit_taur_snake.dmi'
-		else if(applied_style & STYLE_TAUR_HOOF)
-			icon_file = wear_suit.worn_icon_taur_hoof || 'modular_skyrat/icons/mob/clothing/suit_taur_hoof.dmi'
-		else if(applied_style & STYLE_TAUR_PAW)
-			icon_file = wear_suit.worn_icon_taur_paw || 'modular_skyrat/icons/mob/clothing/suit_taur_paw.dmi'
+		switch(applied_style)
+			if(STYLE_DIGITIGRADE)
+				icon_file = wear_suit.worn_icon_digi || 'modular_skyrat/icons/mob/clothing/suit_digi.dmi'
+			if(STYLE_TAUR_SNAKE)
+				icon_file = wear_suit.worn_icon_taur_snake || 'modular_skyrat/icons/mob/clothing/suit_taur_snake.dmi'
+			if(STYLE_TAUR_HOOF)
+				icon_file = wear_suit.worn_icon_taur_hoof || 'modular_skyrat/icons/mob/clothing/suit_taur_hoof.dmi'
+			if(STYLE_TAUR_PAW)
+				icon_file = wear_suit.worn_icon_taur_paw || 'modular_skyrat/icons/mob/clothing/suit_taur_paw.dmi'
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -134,7 +135,11 @@
 			if(hud_used.inventory_shown)			//if the inventory is open
 				client.screen += shoes					//add it to client's screen
 		update_observer_view(shoes,1)
-		overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi')
+		var/icon_file = shoes.worn_icon
+		if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
+			icon_file = shoes.worn_icon_digi || 'modular_skyrat/icons/mob/clothing/feet_digi.dmi'
+
+		overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file)
 		var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
 		if(OFFSET_SHOES in dna.species.offset_features)
 			shoes_overlay.pixel_x += dna.species.offset_features[OFFSET_SHOES][1]

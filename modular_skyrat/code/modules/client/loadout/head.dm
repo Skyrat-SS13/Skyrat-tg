@@ -5,10 +5,12 @@
 /datum/loadout_item/head/baseball
 	name = "Ballcap"
 	path = /obj/item/clothing/head/soft/mime
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/head/beanie
 	name = "Beanie"
 	path = /obj/item/clothing/head/beanie
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/head/beret
 	name = "Black beret"

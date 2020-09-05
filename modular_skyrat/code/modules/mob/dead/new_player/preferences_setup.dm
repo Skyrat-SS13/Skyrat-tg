@@ -175,6 +175,8 @@
 				if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
 					//Otherwise - on the ground
 					ITEM.forceMove(get_turf(H))
+			else
+				qdel(ITEM)
 	return items_to_pack
 
 /datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)

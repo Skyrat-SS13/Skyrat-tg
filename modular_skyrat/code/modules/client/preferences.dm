@@ -171,6 +171,19 @@
 
 	var/preview_pref = PREVIEW_PREF_JOB
 
+	var/ooc_prefs = ""
+	var/erp_pref = "Ask"
+	var/noncon_pref = "Ask"
+	var/vore_pref = "Ask"
+
+	//BACKGROUND STUFF
+	var/general_record = ""
+	var/security_record = ""
+	var/medical_record = ""
+
+	var/background_info = ""
+	var/exploitable_info = ""
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -263,7 +276,7 @@
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_LOADOUT]' [preview_pref == PREVIEW_PREF_LOADOUT ? "class='linkOn'" : ""]>[PREVIEW_PREF_LOADOUT]</a>"
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_NAKED]' [preview_pref == PREVIEW_PREF_NAKED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED]</a>"
 			dat += "</td>"
-			if(character_settings_tab == 4)
+			if(character_settings_tab == 4) //if loadout
 				dat += "<td width=65%>"
 				dat += "<b>Remaining loadout points: [loadout_points]</b>"
 				dat += "</td>"
@@ -283,7 +296,7 @@
 			dat += "</center>"
 			dat += "<HR>"
 			switch(character_settings_tab)
-				if(0)
+				if(0) //General
 					dat += "<center><h2>Occupation Choices</h2>"
 					dat += "<a href='?_src_=prefs;preference=job;task=menu'>Set Occupation Preferences</a><br></center>"
 					if(CONFIG_GET(flag/roundstart_traits))
@@ -347,13 +360,14 @@
 
 						dat += "<a href='?_src_=prefs;preference=phobia;task=input'>[phobia]</a><BR>"
 
-				if(1)
+				if(1) //Appearance
 					dat += "<h2>Body</h2>"
 					dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY]'>Always Random Body: [(randomise[RANDOM_BODY]) ? "Yes" : "No"]</A>"
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY_ANTAG]'>When Antagonist: [(randomise[RANDOM_BODY_ANTAG]) ? "Yes" : "No"]</A><br>"
 
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
+					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
 					dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 					if(length(features["flavor_text"]) <= 40)
@@ -364,7 +378,20 @@
 					else
 						dat += "[copytext(html_encode(features["flavor_text"]), 1, 40)]..."
 
-					dat += "<br><b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
+					dat +=	"<h2>OOC Preferences</h2>"
+					dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
+					dat += 	"<b>Non-Con:</b><a href='?_src_=prefs;preference=noncon_pref;task=input'>[noncon_pref]</a> "
+					dat += 	"<b>Vore:</b><a href='?_src_=prefs;preference=vore_pref;task=input'>[vore_pref]</a><br>"
+					dat += "<a href='?_src_=prefs;preference=ooc_prefs;task=input'><b>Set OOC prefs</b></a><br>"
+					if(length(ooc_prefs) <= 40)
+						if(!length(ooc_prefs))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(ooc_prefs)]"
+					else
+						dat += "[copytext(html_encode(ooc_prefs), 1, 40)]..."
+					dat += "<br>"
+
 					//dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
 
@@ -538,8 +565,7 @@
 						dat += "</td>"
 
 					dat += "</tr></table>"
-				if(2)
-					//dat += "<center><h3>Body Markings</h3></center>"
+				if(2) //Markings
 					dat += "Use a preset: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>"
 					dat += "<table width='100%' align='center'>"
 					dat += " Primary:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a>"
@@ -618,6 +644,72 @@
 							iterated_markings = 0
 
 					dat += "</tr></table>"
+				if(3) //Background
+					dat += "<table width='100%'><tr>"
+					dat += "<td width=33%>"
+					dat += "<center><h3>Records</h3></center>"
+					dat += "<h2>General</h2>"
+					dat += "<a href='?_src_=prefs;preference=general_record;task=input'><b>Set general record</b></a><br>"
+					if(length(general_record) <= 40)
+						if(!length(general_record))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(general_record)]"
+					else
+						dat += "[copytext(html_encode(general_record), 1, 40)]..."
+					dat += "<br>"
+
+
+					dat += "<h2>Medical</h2>"
+					dat += "<a href='?_src_=prefs;preference=medical_record;task=input'><b>Set medical record</b></a><br>"
+					if(length(medical_record) <= 40)
+						if(!length(medical_record))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(medical_record)]"
+					else
+						dat += "[copytext(html_encode(medical_record), 1, 40)]..."
+					dat += "<br>"
+
+
+					dat += "<h2>Security</h2>"
+					dat += "<a href='?_src_=prefs;preference=security_record;task=input'><b>Set security record</b></a><br>"
+					if(length(security_record) <= 40)
+						if(!length(security_record))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(security_record)]"
+					else
+						dat += "[copytext(html_encode(security_record), 1, 40)]..."
+					dat += "<br>"
+					dat += "</td>"
+
+
+					dat += "<td width=33%>"
+					dat += "<center><h3>Information</h3></center>"
+					dat += "<h2>Background</h2>"
+					dat += "<a href='?_src_=prefs;preference=background_info;task=input'><b>Set background information</b></a><br>"
+					if(length(background_info) <= 40)
+						if(!length(background_info))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(background_info)]"
+					else
+						dat += "[copytext(html_encode(background_info), 1, 40)]..."
+					dat += "<h2>Exploitable</h2>"
+					dat += "<a href='?_src_=prefs;preference=exploitable_info;task=input'><b>Set exploitable information</b></a><br>"
+					if(length(exploitable_info) <= 40)
+						if(!length(exploitable_info))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(exploitable_info)]"
+					else
+						dat += "[copytext(html_encode(exploitable_info), 1, 40)]..."
+					dat += "</td>"
+					dat += "<td width=33%>"
+					//Empty column for future stuff here
+					dat += "</td>"
+					dat += "</tr></table>"
 				if(4) //Loadout
 					dat += "<center>"
 					for(var/category in GLOB.loadout_category_to_subcategory_to_items)
@@ -651,16 +743,26 @@
 									background_cl = "#17191C"
 								even = !even
 								var/loadout_button_class
+								var/customization_button = ""
 								if(loadout[LI.path]) //We have this item purchased, but we can sell it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]' class='linkOn'"
+									var/custom_info = loadout[LI.path]
+									switch(LI.extra_info)
+										if(LOADOUT_INFO_ONE_COLOR)
+											customization_button = "<center><span style='border: 1px solid #161616; background-color: ["#[custom_info]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path]'>Change</a></center>"
+										if(LOADOUT_INFO_THREE_COLORS)
+											customization_button = "" //TODO
+										if(LOADOUT_INFO_STYLE)
+											customization_button = "" //TODO
 								else if(LI.cost > loadout_points) //We cannot afford this item
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
+								
 
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
-								dat += "<td><font size=2> </font></td>"
+								dat += "<td><font size=2>[customization_button]</font></td>"
 								dat += "<td><font size=2><i>[LI.description]</i></font></td>"
 								dat += "<td><font size=2><i>[LI.restricted_desc]</i></font></td>"
 								dat += "<td><font size=2><center>[LI.cost]</center></font></td>"
@@ -1299,6 +1401,22 @@
 		return TRUE
 
 	switch(href_list["task"])
+		if("change_loadout_customization")
+			var/path = text2path(href_list["item"])
+			if(!loadout[path])
+				return
+			var/datum/loadout_item/LI = GLOB.loadout_items[path]
+			switch(LI.extra_info)
+				if(LOADOUT_INFO_ONE_COLOR)
+					var/new_color = input(user, "Choose your item's color:", "Character Preference","#[loadout[path]]") as color|null
+					if(new_color)
+						if(!loadout[path])
+							return
+						loadout[path] = sanitize_hexcolor(new_color)
+				if(LOADOUT_INFO_THREE_COLORS)
+					return
+				if(LOADOUT_INFO_STYLE)
+					return
 		if("change_loadout")
 			var/path = text2path(href_list["item"])
 			var/datum/loadout_item/LI = GLOB.loadout_items[path]
@@ -1311,7 +1429,7 @@
 				if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
 					return
 				loadout_points -= LI.cost
-				loadout[LI.path] = "NONE" //As in "No extra information associated"
+				loadout[LI.path] = LI.default_customization() //As in "No extra information associated"
 		if("change_marking")
 			switch(href_list["preference"])
 				if("use_preset")
@@ -1365,29 +1483,6 @@
 					marking_list -= name
 					marking_list.Insert(current_index, name)
 					marking_list[name] = marking_content
-					/*var/zone = href_list["key"]
-					var/name = href_list["name"]
-					if(!body_markings[zone] || !body_markings[zone][name])
-						return
-					var/current_index = body_markings[zone].Find("name")
-					if(current_index < body_markings[zone].len)
-						var/list/ordering = list()
-						for(var/key in body_markings[zone])
-							ordering += key
-						var/ordering_moved_current = ordering[current_index]
-						var/ordering_moved = ordering[current_index+1]
-						ordering[current_index+1] = ordering_moved_current
-						ordering[current_index] = ordering_moved
-						var/list/new_zone_list = list()
-						for(var/key in ordering)
-							new_zone_list[key] = body_markings[zone][key]
-						body_markings[zone] = new_zone_list*/
-						/*
-						var/current_list = body_markings[zone][index]
-						var/moved_list = body_markings[zone][index+1]
-						body_markings[zone][index+1] = current_list
-						body_markings[zone][index] = moved_list
-						*/
 				if("marking_move_down")
 					var/zone = href_list["key"]
 					var/name = href_list["name"]
@@ -1399,15 +1494,6 @@
 					marking_list -= name
 					marking_list.Insert(current_index, name)
 					marking_list[name] = marking_content
-					/*var/zone = href_list["key"]
-					var/index = text2num(href_list["index"])
-					if(length(body_markings[zone]) < index)
-						return
-					if(index > 1)
-						var/current_list = body_markings[zone][index]
-						var/moved_list = body_markings[zone][index-1]
-						body_markings[zone][index-1] = current_list
-						body_markings[zone][index] = moved_list*/
 				if("add_marking")
 					var/zone = href_list["key"]
 					if(!GLOB.body_markings_per_limb[zone])
@@ -1626,6 +1712,61 @@
 					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Flavor Text", features["flavor_text"]) as message|null //Skyrat edit, removed stripped_multiline_input()
 					if(!isnull(msg))
 						features["flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("ooc_prefs")
+					var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
+					if(!isnull(msg))
+						ooc_prefs = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("general_record")
+					var/msg = input(usr, "Set your general record. This is more or less public information, available from security, medical and command consoles", "General Record", general_record) as message|null
+					if(!isnull(msg))
+						general_record = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("medical_record")
+					var/msg = input(usr, "Set your medical record. ", "Medical Record", medical_record) as message|null
+					if(!isnull(msg))
+						medical_record = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("security_record")
+					var/msg = input(usr, "Set your security record. ", "Medical Record", security_record) as message|null
+					if(!isnull(msg))
+						security_record = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("background_info")
+					var/msg = input(usr, "Set your background information. (Where you come from, which culture were you raised in and why you are working here etc.)", "Background Info", background_info) as message|null
+					if(!isnull(msg))
+						background_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("exploitable_info")
+					var/msg = input(usr, "Set your exploitable information. This is sensitive informations that antagonists may get to see, recommended for better roleplay experience", "Exploitable Info", exploitable_info) as message|null
+					if(!isnull(msg))
+						exploitable_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("erp_pref")
+					switch(erp_pref)
+						if("Yes")
+							erp_pref = "Ask"
+						if("Ask")
+							erp_pref = "No"
+						if("No")
+							erp_pref = "Yes"
+				if("noncon_pref")
+					switch(noncon_pref)
+						if("Yes")
+							noncon_pref = "Ask"
+						if("Ask")
+							noncon_pref = "No"
+						if("No")
+							noncon_pref = "Yes"
+				if("vore_pref")
+					switch(vore_pref)
+						if("Yes")
+							vore_pref = "Ask"
+						if("Ask")
+							vore_pref = "No"
+						if("No")
+							vore_pref = "Yes"
 
 				if("hair")
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#"+hair_color) as color|null

@@ -18,6 +18,8 @@
 /obj/item/clothing/suit
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 
+/obj/item/clothing/shoes
+	mutant_variants = STYLE_DIGITIGRADE
 
 /obj/item/clothing/suit/armor
 	mutant_variants = NONE
