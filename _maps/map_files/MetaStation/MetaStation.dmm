@@ -202,7 +202,7 @@
 	dir = 8
 	},
 /obj/machinery/bounty_board{
-	dir = 8;
+	dir = 4;
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
@@ -1884,7 +1884,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "aet" = (
 /obj/structure/table/wood,
 /obj/machinery/newscaster/security_unit{
@@ -1931,8 +1931,11 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "aey" = (
 /turf/closed/wall,
 /area/security/range)
@@ -2619,15 +2622,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/power/apc/highcap/five_k{
-	areastring = "/area/security/warden";
-	dir = 8;
-	name = "Gear Room APC";
-	pixel_x = -25
-	},
-/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "afZ" = (
 /obj/structure/table,
 /obj/item/storage/box/evidence{
@@ -3097,7 +3093,7 @@
 "agS" = (
 /obj/structure/lattice,
 /turf/closed/wall/r_wall,
-/area/security/warden)
+/area/security/main)
 "agT" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
@@ -3413,8 +3409,10 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "ahB" = (
-/turf/closed/wall,
-/area/security/warden)
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/plasteel/dark,
+/area/security/main)
 "ahC" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 4
@@ -3472,16 +3470,17 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 8
 	},
+/obj/effect/turf_decal/trimline/red/filled/corner,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "ahG" = (
-/obj/effect/turf_decal/trimline/red/filled/corner,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/security/brig)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/main)
 "ahI" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/structure/disposalpipe/segment{
@@ -3800,6 +3799,7 @@
 /obj/structure/chair/stool,
 /obj/machinery/camera{
 	c_tag = "Prison Visitation";
+	dir = 2;
 	network = list("ss13","prison")
 	},
 /obj/effect/turf_decal/trimline/red/warning{
@@ -3809,12 +3809,19 @@
 /area/security/brig)
 "ait" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 4
+	},
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "aiv" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -3926,6 +3933,7 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "aiC" = (
+<<<<<<< HEAD
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
 	},
@@ -3937,6 +3945,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+=======
+/obj/structure/cable,
+/turf/open/floor/plasteel/dark,
+/area/security/main)
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 "aiD" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -3970,7 +3983,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "aiI" = (
 /obj/machinery/camera{
 	c_tag = "Xenobiology Lab - Pen #3";
@@ -4268,9 +4281,16 @@
 /area/security/brig)
 "ajs" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1,
+=======
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "ajt" = (
 /obj/structure/closet{
 	name = "Evidence Closet 5"
@@ -4351,7 +4371,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "ajz" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -4377,7 +4397,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "ajB" = (
 /obj/machinery/computer/secure_data,
 /obj/effect/turf_decal/tile/neutral{
@@ -4973,9 +4993,14 @@
 /area/ai_monitored/security/armory)
 "akI" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "akJ" = (
 /obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/red{
@@ -4986,7 +5011,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "akK" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -5611,7 +5636,7 @@
 	req_one_access_txt = "1;4"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "alY" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -5647,7 +5672,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "amd" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -5660,14 +5685,15 @@
 /area/security/main)
 "ame" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "amf" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "amg" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -6321,7 +6347,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "anv" = (
 /obj/machinery/camera{
 	c_tag = "Security - Office - Port";
@@ -6605,6 +6631,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "aog" = (
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	dir = 1
 	},
@@ -6614,14 +6641,28 @@
 /area/maintenance/port/fore)
 "aoh" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible/layer3{
+=======
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 8
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"aoh" = (
+/obj/structure/rack,
+/obj/item/clothing/under/misc/mailman,
+/obj/item/clothing/under/misc/vice_officer,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "aoi" = (
+<<<<<<< HEAD
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/item/tank/internals/oxygen,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible/layer3,
+=======
+/obj/effect/spawner/lootdrop/gross_decal_spawner,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aoj" = (
@@ -6693,7 +6734,6 @@
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "aor" = (
-/obj/structure/cable,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
@@ -6782,7 +6822,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "aoB" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -7244,11 +7284,9 @@
 /turf/open/floor/plasteel/dark,
 /area/storage/tech)
 "apy" = (
-/obj/structure/light_construct/small{
+/obj/effect/landmark/xeno_spawn,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
-	},
-/obj/structure/chair{
-	dir = 8
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -7269,11 +7307,17 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
 "apC" = (
+<<<<<<< HEAD
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3,
+=======
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/item/tank/internals/oxygen,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "apD" = (
@@ -7355,7 +7399,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "apR" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
@@ -7851,10 +7895,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aqQ" = (
-/obj/item/vending_refill/cigarette,
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
-"aqR" = (
 /obj/structure/chair{
 	dir = 8
 	},
@@ -7862,25 +7902,40 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/port/fore)
+"aqR" = (
+/obj/structure/light_construct/small{
+	dir = 4
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "aqS" = (
-/obj/structure/closet/crate,
-/obj/item/clothing/gloves/color/fyellow,
+/obj/item/cigbutt,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aqT" = (
+<<<<<<< HEAD
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
+=======
+/obj/structure/closet/crate,
+/obj/item/clothing/gloves/color/fyellow,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aqU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 6
+=======
+/obj/structure/disposalpipe/segment{
+	dir = 4
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aqX" = (
@@ -7944,14 +7999,22 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/camera{
-	c_tag = "Brig - Hallway - Port"
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 1
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 8
+=======
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/camera{
+	c_tag = "Brig - Hallway - Port"
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -8016,7 +8079,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "arj" = (
 /obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/red,
@@ -8024,11 +8087,11 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "ark" = (
 /obj/machinery/newscaster/security_unit,
 /turf/closed/wall,
-/area/security/warden)
+/area/security/main)
 "arl" = (
 /obj/effect/landmark/start/security_officer,
 /obj/effect/turf_decal/tile/red{
@@ -8419,22 +8482,32 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "asl" = (
+<<<<<<< HEAD
 /obj/machinery/door/airlock/maintenance{
 	name = "Storage Room";
 	req_access_txt = "12"
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
+=======
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "asm" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Brig Maintenance";
-	req_one_access_txt = "63;12"
+/obj/structure/disposalpipe/segment{
+	dir = 6
 	},
-/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 6
+	},
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "asn" = (
@@ -9050,7 +9123,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+=======
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -9062,13 +9140,16 @@
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "atG" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/machinery/door/airlock/maintenance{
+	name = "Storage Room";
+	req_access_txt = "12"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3,
+=======
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "atH" = (
@@ -9082,16 +9163,19 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "atI" = (
-/obj/structure/disposalpipe/segment{
-	dir = 9
+/obj/machinery/door/airlock/maintenance{
+	name = "Brig Maintenance";
+	req_one_access_txt = "63;12"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 9
 	},
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "atJ" = (
@@ -9101,13 +9185,9 @@
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "atK" = (
-/obj/machinery/computer/shuttle/labor{
-	dir = 4
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "atL" = (
@@ -9139,11 +9219,19 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	dir = 1
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -9151,20 +9239,31 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 4
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "atQ" = (
-/obj/effect/turf_decal/trimline/red/filled/line,
-/obj/structure/cable,
-/obj/structure/disposalpipe/junction{
-	dir = 4
+/obj/structure/disposalpipe/segment{
+	dir = 9
 	},
-/turf/open/floor/plasteel,
-/area/security/brig)
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "atR" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/structure/disposalpipe/segment{
@@ -9516,13 +9615,7 @@
 /area/hallway/primary/central)
 "auU" = (
 /obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/obj/structure/sign/warning/vacuum/external{
-	pixel_x = -32
-	},
-/obj/effect/turf_decal/trimline/red/filled/corner{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -9568,20 +9661,35 @@
 "auY" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 8
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "auZ" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/security/warden)
+/obj/machinery/computer/shuttle/labor{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "ava" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
@@ -9594,6 +9702,11 @@
 	dir = 9
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "avc" = (
@@ -9975,36 +10088,27 @@
 	},
 /area/maintenance/port/fore)
 "avY" = (
-/obj/machinery/door/airlock/external{
-	name = "Labor Camp Shuttle Airlock";
-	req_access_txt = "2"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/structure/cable,
+/obj/structure/disposalpipe/junction{
 	dir = 4
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plasteel,
 /area/security/brig)
 "avZ" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Shuttle Airlock";
-	req_access_txt = "2"
-	},
-/obj/machinery/button/door{
-	id = "prison release";
-	name = "Labor Camp Shuttle Lockdown";
-	pixel_y = -25;
-	req_access_txt = "2"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/security/brig)
-"awa" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
+"awa" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 6
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -10013,11 +10117,19 @@
 	dir = 5
 	},
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 6
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -10045,8 +10157,10 @@
 /area/security/brig)
 "awf" = (
 /obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel/showroomfloor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
 /area/security/warden)
 "awg" = (
 /obj/structure/chair/office{
@@ -10056,7 +10170,10 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	dir = 8
 	},
-/turf/open/floor/plasteel/showroomfloor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel,
 /area/security/warden)
 "awh" = (
 /obj/structure/disposalpipe/segment{
@@ -10342,74 +10459,88 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "awV" = (
-/obj/structure/cable,
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "awW" = (
 /turf/closed/wall/r_wall,
 /area/security/nuke_storage)
 "awZ" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/red/filled/corner{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/security/brig)
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/r_wall,
+/area/security/warden)
 "axc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "axe" = (
-/obj/machinery/door_timer{
-	id = "Cell 2";
-	name = "Cell 2";
-	pixel_y = -32
-	},
-/obj/effect/landmark/event_spawn,
-/obj/machinery/light,
-/turf/open/floor/plasteel,
-/area/security/brig)
-"axf" = (
-/obj/machinery/door_timer{
-	id = "Cell 3";
-	name = "Cell 3";
-	pixel_x = 32;
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
+"axf" = (
+/obj/machinery/door/airlock/external{
+	name = "Labor Camp Shuttle Airlock";
+	req_access_txt = "2"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel,
+=======
+/turf/open/floor/plasteel/dark,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /area/security/brig)
 "axg" = (
-/obj/machinery/light,
-/obj/machinery/door_timer{
-	id = "Cell 1";
-	name = "Cell 1";
-	pixel_y = -32
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Shuttle Airlock";
+	req_access_txt = "2"
 	},
-/turf/open/floor/plasteel,
+/obj/machinery/button/door{
+	id = "prison release";
+	name = "Labor Camp Shuttle Lockdown";
+	pixel_y = -25;
+	req_access_txt = "2"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/brig)
 "axh" = (
-/obj/structure/closet/secure_closet/warden,
-/obj/item/gun/energy/laser,
-/turf/open/floor/plasteel/showroomfloor,
-/area/security/warden)
-"axi" = (
+/obj/machinery/computer/prisoner/management{
+	dir = 8
+	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
+=======
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plasteel,
-/area/security/brig)
+/area/security/warden)
+"axi" = (
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/security/warden)
 "axj" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -10455,7 +10586,7 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "axm" = (
 /obj/machinery/power/apc/highcap/ten_k{
 	areastring = "/area/security/brig";
@@ -10713,6 +10844,7 @@
 	},
 /area/maintenance/starboard/fore)
 "axR" = (
+<<<<<<< HEAD
 /obj/machinery/photocopier{
 	pixel_y = 3
 	},
@@ -10721,6 +10853,14 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	dir = 8
+=======
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -10894,21 +11034,6 @@
 /turf/open/floor/plasteel,
 /area/construction/storage_wing)
 "ayo" = (
-/obj/machinery/computer/bank_machine,
-/obj/effect/turf_decal/bot_white,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/security/nuke_storage)
-"ayp" = (
 /obj/machinery/light_switch{
 	pixel_y = 28
 	},
@@ -10916,7 +11041,7 @@
 	luminosity = 2
 	},
 /area/security/nuke_storage)
-"ayq" = (
+"ayp" = (
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
@@ -10927,7 +11052,7 @@
 	luminosity = 2
 	},
 /area/security/nuke_storage)
-"ayr" = (
+"ayq" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/nuke_storage";
 	dir = 1;
@@ -10939,7 +11064,7 @@
 	luminosity = 2
 	},
 /area/security/nuke_storage)
-"ays" = (
+"ayr" = (
 /obj/structure/filingcabinet,
 /obj/item/folder/documents,
 /obj/effect/turf_decal/bot_white,
@@ -10955,6 +11080,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
+"ays" = (
+/obj/machinery/light,
+/obj/machinery/door_timer{
+	id = "Cell 1";
+	name = "Cell 1";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "ayw" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	dir = 4
@@ -10965,51 +11099,62 @@
 /turf/open/floor/plasteel,
 /area/construction/storage_wing)
 "ayx" = (
-/obj/machinery/door/window/brigdoor/security/cell{
-	id = "Cell 1";
-	name = "Cell 1"
+/obj/machinery/door_timer{
+	id = "Cell 2";
+	name = "Cell 2";
+	pixel_y = -32
 	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
+<<<<<<< HEAD
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
+=======
+/obj/effect/landmark/event_spawn,
+/obj/machinery/light,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plasteel,
 /area/security/brig)
 "ayy" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/showroomfloor,
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/plasteel,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /area/security/warden)
 "ayz" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Brig Control";
-	req_access_txt = "3"
-	},
 /obj/structure/cable,
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel/showroomfloor,
-/area/security/warden)
-"ayA" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/structure/disposalpipe/segment,
+/obj/machinery/power/apc/highcap/five_k{
+	areastring = "/area/security/warden";
+	dir = 1;
+	name = "Brig Control APC";
+	pixel_y = 23
 	},
-/obj/machinery/camera{
-	c_tag = "Warden's Office";
-	dir = 4
+/obj/structure/bed/dogbed/mcgriff,
+/mob/living/simple_animal/pet/dog/pug/mcgriff,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
 	},
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel,
 /area/security/warden)
 "ayB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 5
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/showroomfloor,
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /area/security/warden)
 "ayC" = (
 /obj/structure/cable,
@@ -11339,6 +11484,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "azv" = (
+<<<<<<< HEAD
 /obj/effect/turf_decal/bot_white/right,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -11357,13 +11503,16 @@
 /area/security/nuke_storage)
 "azw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 10
 	},
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
 /area/security/nuke_storage)
-"azx" = (
+"azw" = (
 /obj/machinery/nuclearbomb/selfdestruct,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -11377,7 +11526,7 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"azy" = (
+"azx" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 6
@@ -11386,7 +11535,7 @@
 	luminosity = 2
 	},
 /area/security/nuke_storage)
-"azz" = (
+"azy" = (
 /obj/effect/turf_decal/bot_white/left,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -11403,22 +11552,27 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"azC" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/hallway/primary/fore)
-"azD" = (
-/obj/machinery/flasher{
-	id = "Cell 1";
-	pixel_x = -28
+"azz" = (
+/obj/machinery/door_timer{
+	id = "Cell 3";
+	name = "Cell 3";
+	pixel_x = 32;
+	pixel_y = -32
 	},
+<<<<<<< HEAD
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+=======
+/obj/effect/turf_decal/trimline/red/filled/line{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/security/brig)
-"azE" = (
+"azD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -11429,10 +11583,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"azG" = (
-/obj/machinery/light/small{
-	dir = 4
+"azE" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/closet/secure_closet/warden,
+/obj/item/gun/energy/laser,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
 	},
+<<<<<<< HEAD
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
@@ -11441,9 +11599,25 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 9
-	},
+=======
 /turf/open/floor/plasteel,
-/area/security/brig)
+/area/security/warden)
+"azG" = (
+/obj/machinery/computer/bank_machine,
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/nuke_storage)
 "azK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -11864,10 +12038,19 @@
 /turf/open/floor/plating,
 /area/quartermaster/miningoffice)
 "aAN" = (
+/obj/machinery/door/window/brigdoor/security/cell{
+	id = "Cell 1";
+	name = "Cell 1"
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
 /obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "aAO" = (
 /obj/machinery/mineral/equipment_vendor,
 /obj/effect/turf_decal/tile/brown,
@@ -11880,6 +12063,7 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "aAP" = (
+<<<<<<< HEAD
 /obj/effect/turf_decal/bot_white/right,
 /obj/structure/closet/crate/goldcrate,
 /obj/effect/turf_decal/tile/neutral{
@@ -11896,14 +12080,22 @@
 /area/security/nuke_storage)
 "aAQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 5
 	},
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
 /area/security/nuke_storage)
+<<<<<<< HEAD
 "aAR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+=======
+"aAQ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -11913,7 +12105,7 @@
 	luminosity = 2
 	},
 /area/security/nuke_storage)
-"aAS" = (
+"aAR" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 9
@@ -11922,7 +12114,7 @@
 	luminosity = 2
 	},
 /area/security/nuke_storage)
-"aAT" = (
+"aAS" = (
 /obj/effect/turf_decal/bot_white/left,
 /obj/structure/closet/crate/silvercrate,
 /obj/effect/turf_decal/tile/neutral{
@@ -11937,25 +12129,27 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"aAV" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 2;
-	height = 5;
-	id = "laborcamp_home";
-	name = "fore bay 1";
-	roundstart_template = /datum/map_template/shuttle/labour/box;
-	width = 9
+"aAT" = (
+/obj/machinery/door/window/brigdoor/security/cell{
+	id = "Cell 2";
+	name = "Cell 2"
 	},
-/turf/open/space/basic,
-/area/space)
-"aAW" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/plasteel,
+/area/security/brig)
+"aAV" = (
 /obj/machinery/door/airlock/external{
 	name = "Labor Camp Shuttle Airlock"
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
-"aAX" = (
+"aAW" = (
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = 28
@@ -11977,28 +12171,47 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
+"aAX" = (
+/obj/machinery/door/window/brigdoor/security/cell{
+	id = "Cell 3";
+	name = "Cell 3"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "aAY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/bed,
-/obj/item/bedsheet,
+/obj/structure/closet/secure_closet/brig{
+	id = "Cell 1";
+	name = "Cell 1 Locker"
+	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "aBa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/flasher{
+/obj/structure/closet/secure_closet/brig{
 	id = "Cell 3";
-	pixel_x = -23;
-	pixel_y = -23
+	name = "Cell 3 Locker"
 	},
-/obj/structure/bed,
-/obj/item/bedsheet,
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "aBb" = (
 /obj/effect/landmark/start/warden,
 /obj/structure/chair/office,
 /obj/structure/cable,
-/turf/open/floor/plasteel/showroomfloor,
+/obj/effect/turf_decal/trimline/red/filled/line,
+/turf/open/floor/plasteel,
 /area/security/warden)
 "aBc" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -12392,31 +12605,17 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/port/fore)
 "aCd" = (
-/obj/effect/turf_decal/bot_white/right,
-/obj/machinery/ore_silo,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/security/nuke_storage)
-"aCe" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"aCf" = (
+"aCe" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -12426,7 +12625,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"aCg" = (
+"aCf" = (
 /obj/machinery/camera/motion{
 	c_tag = "Vault";
 	dir = 1;
@@ -12439,7 +12638,7 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"aCh" = (
+"aCg" = (
 /obj/structure/safe,
 /obj/item/storage/secure/briefcase{
 	contents = newlist(/obj/item/clothing/suit/armor/vest,/obj/item/gun/ballistic/automatic/pistol,/obj/item/suppressor,/obj/item/melee/classic_baton/telescopic,/obj/item/clothing/mask/balaclava,/obj/item/bodybag,/obj/item/soap/nanotrasen)
@@ -12469,13 +12668,74 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"aCj" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	name = "Labor Camp Shuttle Airlock"
+"aCh" = (
+/obj/machinery/camera{
+	c_tag = "Warden's Office";
+	dir = 5
 	},
-/turf/open/floor/plasteel/dark,
-/area/hallway/primary/fore)
+/obj/structure/disposalpipe/segment,
+/obj/structure/table,
+/obj/machinery/button/door{
+	desc = "Controls the shutters over the cell windows.";
+	id = "Secure Gate";
+	name = "Cell Window Control";
+	pixel_x = -6;
+	pixel_y = 7;
+	req_access_txt = "63";
+	specialfunctions = 4
+	},
+/obj/machinery/button/door{
+	desc = "Controls the shutters over the brig windows.";
+	id = "briglockdown";
+	name = "Brig Lockdown Control";
+	pixel_x = 6;
+	pixel_y = 7;
+	req_access = null;
+	req_access_txt = "63"
+	},
+/obj/machinery/button/door{
+	desc = "Controls the blast doors in front of the prison wing.";
+	id = "Prison Gate";
+	name = "Prison Wing Lockdown";
+	pixel_y = -3;
+	req_access_txt = "2"
+	},
+/obj/item/key/security,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/security/warden)
+"aCj" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/button/door{
+	desc = "A door remote control switch for the exterior brig doors.";
+	id = "outerbrig";
+	name = "Brig Exterior Door Control";
+	normaldoorcontrol = 1;
+	pixel_x = 6;
+	pixel_y = 7;
+	req_access_txt = "63"
+	},
+/obj/machinery/button/flasher{
+	id = "secentranceflasher";
+	name = "Brig Entrance Flasher";
+	pixel_y = -3;
+	req_access_txt = "1"
+	},
+/obj/machinery/button/door{
+	desc = "A door remote control switch for the interior brig doors.";
+	id = "innerbrig";
+	name = "Brig Interior Door Control";
+	normaldoorcontrol = 1;
+	pixel_x = -6;
+	pixel_y = 7;
+	req_access_txt = "63"
+	},
+/turf/open/floor/plasteel,
+/area/security/warden)
 "aCk" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -12808,7 +13068,8 @@
 /area/quartermaster/miningoffice)
 "aDl" = (
 /obj/structure/disposalpipe/segment,
-/turf/closed/wall,
+/obj/structure/closet/emcloset,
+/turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aDm" = (
 /obj/structure/disposalpipe/segment,
@@ -12845,6 +13106,10 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aDr" = (
+/obj/structure/sign/warning/securearea,
+/turf/closed/wall/r_wall,
+/area/security/nuke_storage)
+"aDs" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/vault{
 	name = "Vault";
@@ -12867,14 +13132,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/dark,
 /area/security/nuke_storage)
-"aDs" = (
-/obj/structure/sign/warning/securearea,
-/turf/closed/wall/r_wall,
-/area/security/nuke_storage)
 "aDu" = (
-/turf/closed/wall,
-/area/hallway/primary/fore)
-"aDv" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "prison release";
 	name = "prisoner processing blast door"
@@ -12888,6 +13146,9 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"aDv" = (
+/turf/closed/wall,
+/area/hallway/primary/fore)
 "aDw" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -12895,32 +13156,32 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "aDx" = (
+/obj/effect/turf_decal/bot_white/right,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/nuke_storage)
+"aDy" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
-"aDy" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
-	},
-/obj/structure/sign/warning/electricshock{
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel,
-/area/hallway/primary/fore)
 "aDz" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
-	},
-/obj/structure/sign/warning/electricshock{
-	pixel_y = 32
-	},
-/obj/machinery/camera{
-	c_tag = "Fore Primary Hallway Cells"
-	},
-/turf/open/floor/plasteel,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/hallway/primary/fore)
 "aDA" = (
 /obj/machinery/light{
@@ -12952,11 +13213,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "aDE" = (
-/obj/machinery/computer/prisoner/management{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel,
 /area/security/warden)
 "aDF" = (
 /obj/machinery/flasher{
@@ -12982,7 +13239,7 @@
 	},
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "aDH" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/plasteel/dark,
@@ -13376,13 +13633,15 @@
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "aEG" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/machinery/flasher{
+	id = "Cell 1";
+	pixel_x = -28
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -13391,19 +13650,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/dark,
 /area/construction/storage_wing)
+=======
+/turf/open/floor/plasteel,
+/area/security/brig)
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 "aEH" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/construction/storage_wing)
 "aEI" = (
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/open/floor/plasteel,
-/area/hallway/primary/fore)
-"aEJ" = (
 /obj/structure/sign/warning/vacuum/external{
 	pixel_y = 32
 	},
@@ -13412,17 +13668,37 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
-"aEK" = (
-/obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=1.5-Fore-Central";
-	location = "1-BrigCells"
+"aEJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
+<<<<<<< HEAD
 /area/hallway/primary/fore)
 "aEL" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1,
+=======
+/area/security/brig)
+"aEK" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"aEL" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "aEM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
 	dir = 4
@@ -13482,7 +13758,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "aEX" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/dark,
@@ -13824,28 +14100,30 @@
 /turf/closed/wall,
 /area/construction/storage_wing)
 "aFR" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Vault Storage"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/structure/disposalpipe/segment,
+/obj/machinery/computer/security/telescreen{
+	desc = "Used for watching Prison Wing holding areas.";
+	dir = 4;
+	name = "Prison Monitor";
+	network = list("prison");
+	pixel_x = -30
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
+<<<<<<< HEAD
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel/dark,
 /area/construction/storage_wing)
+=======
+/turf/open/floor/plasteel,
+/area/security/warden)
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 "aFV" = (
 /obj/machinery/status_display/supply{
 	pixel_y = 32
@@ -13861,8 +14139,14 @@
 /area/quartermaster/storage)
 "aFW" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
+=======
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aFX" = (
@@ -13879,14 +14163,20 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "aFY" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security{
-	name = "Security-Storage Backroom";
-	req_access_txt = "63"
+/obj/effect/turf_decal/bot_white/right,
+/obj/structure/closet/crate/goldcrate,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
-/area/hallway/primary/fore)
+/area/security/nuke_storage)
 "aFZ" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -14453,23 +14743,28 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aHn" = (
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/structure/rack,
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
-"aHp" = (
-/obj/structure/cable,
-/obj/item/kirbyplants/random,
-/obj/machinery/camera{
-	c_tag = "Outer Vault";
-	dir = 4;
-	name = "storage wing camera"
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 2;
+	height = 5;
+	id = "laborcamp_home";
+	name = "fore bay 1";
+	roundstart_template = /datum/map_template/shuttle/labour/box;
+	width = 9
 	},
+/turf/open/space/basic,
+/area/space)
+"aHp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/item/bedsheet,
 /turf/open/floor/plasteel,
-/area/construction/storage_wing)
+/area/security/brig)
 "aHs" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
@@ -14839,6 +15134,7 @@
 /area/maintenance/starboard/fore)
 "aIw" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 4
 	},
@@ -14849,20 +15145,39 @@
 /area/construction/storage_wing)
 "aIx" = (
 /obj/structure/cable,
+=======
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /obj/machinery/power/apc/auto_name/south,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel,
 /area/construction/storage_wing)
-"aIz" = (
-/obj/machinery/light{
+"aIx" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel,
+/area/construction/storage_wing)
+"aIz" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 10
+	},
+/obj/machinery/camera{
+	c_tag = "Outer Vault";
+	dir = 8;
+	name = "storage wing camera"
 	},
 /turf/open/floor/plasteel,
 /area/construction/storage_wing)
@@ -15151,13 +15466,23 @@
 /turf/closed/wall,
 /area/hydroponics/garden)
 "aJi" = (
+<<<<<<< HEAD
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 10
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/flasher{
+	id = "Cell 2";
+	pixel_x = -23;
+	pixel_y = -23
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/obj/structure/bed,
+/obj/item/bedsheet,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "aJj" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/machinery/field/generator,
@@ -60652,13 +60977,11 @@
 /area/maintenance/department/science/xenobiology)
 "cTY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/flasher{
+/obj/structure/closet/secure_closet/brig{
 	id = "Cell 2";
-	pixel_x = -23;
-	pixel_y = -23
+	name = "Cell 2 Locker"
 	},
-/obj/structure/bed,
-/obj/item/bedsheet,
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "cUL" = (
@@ -63362,17 +63685,20 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "dhv" = (
-/obj/machinery/door/window/brigdoor/security/cell{
-	id = "Cell 2";
-	name = "Cell 2"
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/flasher{
+	id = "Cell 3";
+	pixel_x = -23;
+	pixel_y = -23
 	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
+<<<<<<< HEAD
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
+=======
+/obj/structure/bed,
+/obj/item/bedsheet,
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plasteel,
 /area/security/brig)
 "dhw" = (
@@ -63389,13 +63715,19 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = 32
 	},
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 4
 	},
+=======
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "dhy" = (
@@ -63465,15 +63797,15 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/dorms)
 "dhG" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access_txt = "12;63;48;50"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/construction/storage_wing)
 "dhH" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/sign/poster/contraband/random{
@@ -64147,10 +64479,13 @@
 	},
 /area/quartermaster/qm)
 "dmU" = (
-/obj/machinery/computer/crew{
+/obj/machinery/computer/security{
 	dir = 8
 	},
-/turf/open/floor/plasteel/showroomfloor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
 /area/security/warden)
 "dnd" = (
 /obj/structure/closet/firecloset,
@@ -64196,22 +64531,38 @@
 	},
 /area/maintenance/port/fore)
 "dnM" = (
-/obj/structure/chair{
-	dir = 8
+/obj/structure/cable,
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
 	},
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal/bin,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/security/warden)
 "dnO" = (
 /obj/machinery/space_heater,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "dnP" = (
+<<<<<<< HEAD
 /obj/effect/landmark/xeno_spawn,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	dir = 4
+=======
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
+	},
 /area/maintenance/port/fore)
 "dnR" = (
 /obj/structure/grille,
@@ -64227,6 +64578,7 @@
 /area/maintenance/port/fore)
 "dod" = (
 /obj/item/cigbutt,
+/obj/item/vending_refill/cigarette,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "doe" = (
@@ -64839,22 +65191,27 @@
 /turf/open/floor/plating,
 /area/medical/virology)
 "dBX" = (
-/obj/machinery/door/window/brigdoor/security/cell{
-	id = "Cell 3";
-	name = "Cell 3"
+/obj/effect/turf_decal/bot_white/right,
+/obj/machinery/ore_silo,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/trimline/red/filled/corner{
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plasteel,
 /area/security/brig)
+=======
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/nuke_storage)
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 "dBY" = (
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/tile/neutral{
@@ -64932,7 +65289,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "dCg" = (
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -64944,30 +65301,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "dCh" = (
-/obj/structure/table,
-/obj/machinery/button/door{
-	id = "Prison Gate";
-	name = "Prison Wing Lockdown";
-	pixel_y = -3;
-	req_access_txt = "2"
-	},
-/obj/machinery/button/door{
-	id = "Secure Gate";
-	name = "Cell Window Control";
-	pixel_x = -5;
-	pixel_y = 7;
-	specialfunctions = 4
-	},
-/obj/machinery/button/door{
-	id = "briglockdown";
-	name = "Brig Lockdown Control";
-	pixel_x = 5;
-	pixel_y = 7
-	},
-/obj/item/key/security,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = 28
@@ -64975,7 +65312,27 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/plasteel/showroomfloor,
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/paper_bin{
+	pixel_x = -11;
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_x = -11;
+	pixel_y = 7
+	},
+/obj/item/hand_labeler{
+	pixel_x = -10;
+	pixel_y = -6
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
 /area/security/warden)
 "dCi" = (
 /obj/structure/closet,
@@ -65801,8 +66158,10 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "ejE" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -65922,7 +66281,7 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "epU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -66262,14 +66621,12 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison/safe)
 "eYX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/brig{
-	id = "Cell 2";
-	name = "Cell 2 Locker"
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security/glass{
+	name = "Labor Camp Shuttle Airlock"
 	},
-/obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/security/brig)
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/fore)
 "eZe" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -67794,6 +68151,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "hjl" = (
+<<<<<<< HEAD
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -67804,9 +68162,16 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 9
+=======
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/structure/sign/warning/electricshock{
+	pixel_y = 32
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
 /turf/open/floor/plasteel,
-/area/security/brig)
+/area/hallway/primary/fore)
 "hkq" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -68119,6 +68484,13 @@
 /obj/structure/closet/crate/medical,
 /turf/open/floor/plasteel/white,
 /area/medical/abandoned)
+"hHJ" = (
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=1.5-Fore-Central";
+	location = "1-BrigCells"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/fore)
 "hHS" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -68518,7 +68890,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "ixE" = (
 /obj/structure/disposaloutlet,
 /obj/structure/disposalpipe/trunk{
@@ -68655,6 +69027,15 @@
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"iMF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/port/fore)
 "iMY" = (
 /obj/machinery/vending/medical,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -70362,8 +70743,17 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "lxj" = (
-/turf/closed/wall/r_wall,
-/area/space)
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/structure/sign/warning/electricshock{
+	pixel_y = 32
+	},
+/obj/machinery/camera{
+	c_tag = "Fore Primary Hallway Cells"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/fore)
 "lzk" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -71073,12 +71463,18 @@
 /area/maintenance/port/aft)
 "mDQ" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/structure/bed/dogbed/mcgriff,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+=======
+/obj/machinery/computer/secure_data{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 8
 	},
-/mob/living/simple_animal/pet/dog/pug/mcgriff,
-/turf/open/floor/plasteel/showroomfloor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
 /area/security/warden)
 "mEn" = (
 /obj/machinery/door/window/brigdoor/security/holding{
@@ -71377,10 +71773,15 @@
 /area/engine/break_room)
 "npx" = (
 /obj/structure/cable,
+<<<<<<< HEAD
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 5
+=======
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 9
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	},
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel,
 /area/security/warden)
 "nrc" = (
 /obj/structure/flora/ausbushes/sunnybush,
@@ -71517,14 +71918,12 @@
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "nEv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/brig{
-	id = "Cell 3";
-	name = "Cell 3 Locker"
-	},
 /obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/security/brig)
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/port/fore)
 "nHj" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -71547,14 +71946,26 @@
 	},
 /area/medical/break_room)
 "nIb" = (
+<<<<<<< HEAD
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+=======
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
-/area/maintenance/port/fore)
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/plasteel/dark,
+/area/construction/storage_wing)
 "nJh" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
@@ -71684,6 +72095,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+"nRn" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/port/fore)
 "nRJ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -71909,7 +72329,9 @@
 	},
 /area/quartermaster/qm)
 "okv" = (
-/obj/effect/spawner/lootdrop/gross_decal_spawner,
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "okP" = (
@@ -71940,6 +72362,29 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison/safe)
+"omn" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Vault Storage"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/plasteel/dark,
+/area/construction/storage_wing)
 "ong" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -72323,7 +72768,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "oWY" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/yellow{
@@ -72638,11 +73083,12 @@
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "pvK" = (
-/obj/machinery/computer/security{
+/obj/structure/cable,
+/obj/machinery/computer/crew{
 	dir = 4
 	},
-/obj/structure/cable,
-/turf/open/floor/plasteel/showroomfloor,
+/obj/effect/turf_decal/trimline/red/filled/line,
+/turf/open/floor/plasteel,
 /area/security/warden)
 "pvL" = (
 /obj/machinery/door/firedoor,
@@ -73695,8 +74141,11 @@
 	c_tag = "Security - Gear Room";
 	dir = 8
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
-/area/security/warden)
+/area/security/main)
 "qRO" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood,
@@ -73783,6 +74232,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/main)
+"raA" = (
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/structure/rack,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "raN" = (
 /obj/structure/sign/warning/vacuum/external{
 	pixel_y = -32
@@ -73948,16 +74402,10 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
 "roZ" = (
-/obj/machinery/computer/secure_data{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
 	},
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching Prison Wing holding areas.";
-	name = "Prison Monitor";
-	network = list("prison");
-	pixel_x = -30
-	},
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel,
 /area/security/warden)
 "rpL" = (
 /obj/machinery/door/airlock/external{
@@ -74884,6 +75332,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/machinery/photocopier{
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "sJW" = (
@@ -75271,6 +75722,16 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+"tzy" = (
+/obj/machinery/door/airlock/maintenance{
+	req_one_access_txt = "12;63;48;50"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "tAh" = (
 /obj/item/radio/intercom{
 	pixel_x = -29
@@ -75736,6 +76197,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/break_room)
+"uqX" = (
+/obj/structure/cable,
+/obj/item/kirbyplants/random,
+/turf/open/floor/plasteel,
+/area/construction/storage_wing)
 "urv" = (
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced/tinted,
@@ -75789,14 +76255,12 @@
 /turf/open/floor/plasteel,
 /area/maintenance/department/science)
 "uvH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/secure_closet/brig{
-	id = "Cell 1";
-	name = "Cell 1 Locker"
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -22
 	},
-/obj/structure/cable,
 /turf/open/floor/plasteel,
-/area/security/brig)
+/area/hallway/primary/fore)
 "uxd" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -77207,6 +77671,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+"wAq" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Security-Storage Backroom";
+	req_access_txt = "63"
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/fore)
 "wAB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -77658,9 +78131,22 @@
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "xjc" = (
+<<<<<<< HEAD
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+=======
+/obj/machinery/light/small{
+>>>>>>> 2d223a09c71... Tweaks meta brig and vault area to expand the Warden's Office (#53197)
 	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/event_spawn,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 9
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -97253,7 +97739,7 @@ aqN
 ask
 alM
 auI
-att
+axe
 dne
 aBZ
 dpG
@@ -98025,16 +98511,16 @@ dne
 aty
 auL
 avS
-aAN
+auL
 aDl
 aEv
-aIu
-aRG
-aRG
-dnZ
+aFW
+aHk
+aHk
+nEv
 aHm
-aRG
-dnZ
+aHk
+nRn
 aSZ
 aKZ
 aNV
@@ -98280,18 +98766,18 @@ apw
 dod
 dne
 atH
-fVm
-doJ
-awV
-dnu
 dne
-aJi
-aFW
-aHk
-aHk
-aHk
-aHk
-aIs
+dne
+dne
+dne
+dne
+dne
+dne
+dne
+dne
+dne
+aHl
+aIu
 aSZ
 aLa
 aNW
@@ -98532,23 +99018,23 @@ ajl
 akr
 alI
 amX
-aRG
+aoi
 dnZ
 aqP
 dne
 atA
 dne
+aaa
+aaa
+aaf
+aaa
+aaa
+aaf
+aaa
+aaa
 dne
-dne
-dne
-dne
-dne
-dne
-dne
-dne
-dne
-aHl
-aIu
+dnk
+iMF
 aSZ
 aLb
 aNX
@@ -98790,22 +99276,22 @@ aks
 alJ
 amY
 okv
-aRG
+aqR
 aqQ
 dne
 atB
 dne
-aaa
-aaa
 aaf
-aaa
-aaa
+awW
+awW
+awW
+awW
+awW
+awW
 aaf
-aaa
-aaa
 dne
-dnk
-nIb
+raA
+aIu
 cTs
 aRS
 asY
@@ -99046,23 +99532,23 @@ aio
 aio
 aio
 aio
-dnM
-apy
-aqR
+dne
+dne
+dne
 dne
 akm
 dne
-aaf
+aaa
 awW
+azG
+aDx
+aFY
+dBX
 awW
-awW
-awW
-awW
-awW
-aaf
+aaa
 dne
-aHn
-aIu
+dne
+tzy
 aSZ
 bOq
 aNY
@@ -99301,11 +99787,11 @@ aaa
 aaf
 aaf
 aaf
-aaf
 dne
 dne
-dne
-dne
+dnO
+dnk
+aqT
 dne
 dhx
 anb
@@ -99315,10 +99801,10 @@ ayo
 azv
 aAP
 aCd
-awW
-aaa
-dne
-dne
+aDr
+aEH
+aEH
+uqX
 dhG
 aSZ
 aQq
@@ -99559,10 +100045,10 @@ aeJ
 aaa
 aaa
 dne
-dne
-dnO
-dnk
+dnu
+apy
 aqS
+dnZ
 dne
 atE
 anb
@@ -99573,9 +100059,9 @@ azw
 aAQ
 aCe
 aDs
-aEH
-aEH
-aHp
+nIb
+omn
+aXo
 aIw
 aSZ
 aLe
@@ -99815,12 +100301,12 @@ eWu
 aeJ
 lMJ
 lMJ
-dne
-dnu
+aip
+aoh
 dnP
-dod
-dnZ
-dne
+doe
+asl
+atG
 atP
 anb
 aaa
@@ -99830,9 +100316,9 @@ azx
 aAR
 aCf
 aDr
-aEG
-aFR
-aXo
+aEH
+aEH
+rVn
 aIx
 aSZ
 aNF
@@ -100072,13 +100558,13 @@ qCa
 aeJ
 aaa
 aaa
-aip
-awS
+dne
+dnd
 aog
-doe
-aqT
-asl
-atG
+dne
+dne
+dne
+atH
 anb
 aaa
 awW
@@ -100086,8 +100572,8 @@ ayr
 azy
 aAS
 aCg
-aDs
-aEH
+awW
+aaa
 aEH
 aHt
 pMn
@@ -100330,21 +100816,21 @@ aeJ
 lMJ
 lMJ
 dne
-dnd
-aoh
 dne
 dne
 dne
-atH
-anb
-aaa
+asm
+atI
+atQ
+dne
+aaf
 awW
-ays
-azz
-aAT
-aCh
 awW
-aaa
+awW
+awW
+awW
+awW
+lMJ
 aEH
 aIB
 aIz
@@ -100586,23 +101072,23 @@ qCa
 aeJ
 aaa
 aaa
+lMJ
 dne
-dne
-dne
-dne
+apC
+doe
 aqU
-asm
-atI
 dne
-aaf
-awW
-awW
-awW
-awW
-awW
-awW
-lAu
-aEH
+dne
+dne
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aFN
 aHt
 aFN
 aJO
@@ -100845,12 +101331,12 @@ lMJ
 lMJ
 lMJ
 dne
-aoi
-aHk
-apC
+awS
+aRG
+ajT
 dne
-dne
-dne
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -101883,7 +102369,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+aHn
 aaa
 aaa
 anb
@@ -102134,18 +102620,18 @@ aon
 vsp
 aqX
 ajm
+ajo
+ajo
+axf
+ajo
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aDz
 aAV
-aaa
-aaa
-dne
-doJ
-aio
+aDz
+aDv
+aDv
+wAq
+aHx
 anb
 anb
 aio
@@ -102391,17 +102877,17 @@ aoo
 pCw
 iUe
 ajm
+auZ
 ajo
-ajo
-avY
+avk
 ajo
 aaa
-azC
+aDv
 aAW
-azC
+eYX
 aDu
-aDu
-aFY
+uvH
+aFZ
 aHx
 aaa
 aaa
@@ -102649,13 +103135,13 @@ xke
 aqY
 ahx
 atK
-ajo
-avk
-ajo
-aaa
-aDu
-aAX
-aCj
+ahx
+axg
+ahx
+ahx
+ajm
+ajm
+ajm
 aDv
 aEI
 aFZ
@@ -102906,15 +103392,15 @@ gEY
 aqZ
 ahx
 aws
-ahx
+awV
 avZ
-ahx
-ahx
-ajm
-ajm
-ajm
-aDu
-aEJ
+axR
+aiq
+aEG
+aHp
+aCk
+aDy
+aDC
 aFZ
 aHx
 aaa
@@ -103165,13 +103651,13 @@ agT
 aws
 auU
 awa
-awZ
-aiq
+axp
+aAN
 azD
 aAY
 aCk
-aDx
-aDC
+aDw
+hHJ
 aGb
 aHx
 aaf
@@ -103422,12 +103908,12 @@ apF
 atM
 auV
 awb
-axp
-ayx
-azE
-uvH
-aCk
-aDw
+ays
+ahx
+aiq
+aiq
+ajm
+hjl
 aEK
 aFZ
 aHx
@@ -103679,13 +104165,13 @@ alS
 atN
 alS
 awc
-axg
-ahx
+aws
 aiq
-aiq
-ajm
+aEJ
+aJi
+aCk
 aDy
-aEL
+aDC
 aGd
 aHx
 aaa
@@ -103936,12 +104422,12 @@ irI
 sJV
 auW
 ara
-aws
-aiq
+axp
+aAT
 xjc
 cTY
 aCk
-aDx
+aDw
 aDC
 asC
 aHx
@@ -104177,7 +104663,7 @@ adh
 naq
 adW
 aep
-lxj
+ajm
 lMJ
 aaa
 ajm
@@ -104193,13 +104679,13 @@ asp
 ahE
 aiq
 atO
-axp
-dhv
-azG
-eYX
-aCk
-aDw
-aHA
+ayx
+ahx
+aiq
+aiq
+ajm
+hjl
+dCr
 aGf
 aHx
 aaf
@@ -104448,15 +104934,15 @@ apJ
 arb
 asq
 ava
-axR
+anB
 awe
-axe
-ahx
+aws
 aiq
-aiq
-ajm
+aEJ
+dhv
+aCk
 aDy
-dCr
+aHA
 aGg
 aHx
 aaa
@@ -104707,12 +105193,12 @@ asr
 ahF
 auY
 avb
-awp
-aiq
-xjc
+azz
+aAX
+aEL
 aBa
 aCk
-aDx
+aDw
 aHA
 aGh
 aHx
@@ -104961,15 +105447,15 @@ agb
 apL
 aeq
 ass
-ahG
-aiC
+ahI
+adY
 axi
-axf
-dBX
-hjl
-nEv
-aCk
-aDw
+ajx
+adY
+ajx
+ajx
+adY
+lxj
 aHA
 aHw
 aHy
@@ -105218,15 +105704,15 @@ agc
 apM
 aeq
 ast
-ahI
-adY
+avY
+awZ
 ayz
-ajx
+azE
+aCh
+aFR
+dnM
 adY
-ajx
-ajx
-adY
-aDz
+aDw
 aHA
 aIr
 aHx
@@ -105475,11 +105961,11 @@ agK
 apN
 cZk
 asu
-atQ
-auZ
+ahI
+ajx
 awf
 aDE
-ayA
+aDE
 roZ
 pvK
 aBc
@@ -105736,7 +106222,7 @@ atR
 azb
 ayB
 ayy
-ayy
+aCj
 npx
 aBb
 hql
@@ -106233,10 +106719,10 @@ aaf
 aaf
 lMJ
 agS
-ajx
-ajx
+aiD
+aiD
 agS
-adY
+aqa
 aeq
 anl
 anl
@@ -106488,12 +106974,12 @@ aaa
 aaa
 aaf
 aaa
-adY
+aqa
 agS
 aDG
 eph
 oVO
-adY
+aqa
 aes
 ajy
 arj
@@ -106501,7 +106987,7 @@ amb
 afY
 amf
 dCf
-ajx
+aiD
 ahC
 atS
 aaD
@@ -106745,11 +107231,11 @@ aaa
 aaa
 aaf
 aaa
-ajx
+aiD
 axl
 ame
-ame
-ame
+ahB
+ahG
 ehi
 ajs
 akI
@@ -107002,20 +107488,20 @@ aaa
 aaa
 aaf
 aaa
-adY
+aqa
 agS
 aEW
 ixj
 qRr
-adY
+aqa
 aex
 ajA
 akJ
-ame
+aiC
 anu
 aoz
 apQ
-ajx
+aiD
 asz
 ahP
 anB
@@ -107261,17 +107747,17 @@ aaf
 aav
 lMJ
 agS
-ajx
-ajx
+aiD
+aiD
 agS
-adY
-adY
-adY
-ajx
+aqa
+aqa
+aqa
+aiD
 alX
-ahB
-ajx
-ahB
+ajD
+aiD
+ajD
 ark
 aiD
 ajD
