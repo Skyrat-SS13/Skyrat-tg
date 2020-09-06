@@ -1,3 +1,5 @@
+#define LOADOUT_POINTS_MAX 10
+
 #define LOADOUT_CATEGORY_NONE				"ERROR"
 //Those two subcategories are good to apply to any category
 #define LOADOUT_SUBCATEGORY_MISC			"Miscellaneous"

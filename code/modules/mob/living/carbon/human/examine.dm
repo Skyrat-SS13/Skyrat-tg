@@ -419,6 +419,21 @@
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
+
+	//SKYRAT EDIT START - customization - Flavor text and OOC prefs and the kinds
+	if(!skipface)
+		var/line
+		if(length(dna.features["flavor_text"]))
+			var/message = dna.features["flavor_text"]
+			if(length_char(message) <= 40)
+				line = "<span class='notice'>[message]</span>"
+			else
+				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</span></a>"
+		if(client)
+			if(length(client.prefs.ooc_prefs))
+				line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>(OOC)</a></span>"
+		. += line
+	//END OF SKYRAT EDIT
 	. += "*---------*</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
