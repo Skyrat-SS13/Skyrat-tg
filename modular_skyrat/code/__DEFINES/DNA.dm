@@ -27,8 +27,8 @@
 #define MUTANT_INDEX_NAME		"name"
 #define MUTANT_INDEX_COLOR_LIST	"color"
 
-//Does this need alpha (4th thing) in the color lists? I dont know!! help
-#define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64, 1), list(0.64, 0.64, 0.64, 1), list(0.64, 0.64, 0.64, 1), list(0, 0, 0, 1))
+//The color list that is passed to color matrixed things when a person is husked
+#define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0, 0, 0, 1))
 
 //Defines for an accessory to be randomed
 #define ACC_RANDOM		"random"
@@ -49,4 +49,3 @@
 #define PREVIEW_PREF_NAKED "Naked"
 
 #define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"balls_size" = 1)
-

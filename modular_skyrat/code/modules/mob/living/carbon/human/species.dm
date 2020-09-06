@@ -143,8 +143,13 @@
 			if(S.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
 
-			if(!(HAS_TRAIT(H, TRAIT_HUSK)))
-				if(!forced_colour)
+			if(!forced_colour)
+				if(HAS_TRAIT(H, TRAIT_HUSK))
+					if(S.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
+						accessory_overlay.color = HUSK_COLOR_LIST
+					else
+						accessory_overlay.color = "#AAA" //The gray husk color
+				else
 					switch(S.color_src)
 						if(USE_ONE_COLOR)
 							accessory_overlay.color = "#"+bodyparts_to_add[bodypart][MUTANT_INDEX_COLOR_LIST][1]
@@ -174,10 +179,8 @@
 							accessory_overlay.color = "#[H.facial_hair_color]"
 						if(EYECOLOR)
 							accessory_overlay.color = "#[H.eye_color]"
-				else if(USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
-					accessory_overlay.color = HUSK_COLOR_LIST
-				else
-					accessory_overlay.color = forced_colour
+			else
+				accessory_overlay.color = forced_colour
 			standing += accessory_overlay
 
 			if(S.hasinner)

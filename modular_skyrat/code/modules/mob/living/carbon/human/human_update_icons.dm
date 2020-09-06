@@ -211,6 +211,9 @@
 /mob/living/carbon/human/proc/update_body_markings() //TODO: make this use a one - time basis blend on the limb icon instead
 	remove_overlay(BODYPART_MARKINGS_LAYER)
 	var/list/standing = list()
+	var/override_color
+	if(HAS_TRAIT(src, TRAIT_HUSK))
+		override_color = "888"
 	for(var/X in bodyparts)
 		var/list/bit_flags = list()
 		var/obj/item/bodypart/BP = X
@@ -244,7 +247,10 @@
 					var/datum/body_marking/BM = GLOB.body_markings[key]
 
 					var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPART_MARKINGS_LAYER)
-					accessory_overlay.color = "#[dna.species.body_markings[marking_zone][key]]"
+					if(override_color)
+						accessory_overlay.color = "#[override_color]"
+					else
+						accessory_overlay.color = "#[dna.species.body_markings[marking_zone][key]]"
 					standing += accessory_overlay
 
 	if(standing.len)
