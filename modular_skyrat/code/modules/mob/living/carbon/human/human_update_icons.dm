@@ -86,7 +86,7 @@
 			else if(wear_suit.mutant_variants & S.alt_taur_mode)
 				applied_style = S.alt_taur_mode
 		if(!applied_style)
-			if((DIGITIGRADE in dna.species.species_traits) && (w_uniform.mutant_variants & STYLE_DIGITIGRADE))
+			if((DIGITIGRADE in dna.species.species_traits) && (wear_suit.mutant_variants & STYLE_DIGITIGRADE))
 				applied_style = STYLE_DIGITIGRADE
 
 		var/x_override

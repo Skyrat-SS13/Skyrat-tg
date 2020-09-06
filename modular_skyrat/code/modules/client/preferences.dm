@@ -79,19 +79,7 @@
 	var/eye_color = "000"				//Eye color
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	//Has to include all information that extra organs from mutant bodyparts would need. (so far only genitals now)
-	var/list/features = list("mcolor" = "FFF",
-							 "mcolor2" = "FFF",
-							"mcolor3" = "FFF",
-							"ethcolor" = "FCC", //Ideally get rid of this later, in favor for "mcolor"
-							"skin_color" = "FED",
-							"flavor_text" = "",
-							"breasts_size" = 1,
-							"breasts_lactation" = FALSE,
-							"penis_size" = 13,
-							"penis_girth" = 9,
-							"penis_taur_mode" = TRUE, //Only applies when you're a proper taur anyway
-							"balls_size" = 1
-							)
+	var/list/features = MANDATORY_FEATURE_LIST
 	var/list/randomise = list(RANDOM_UNDERWEAR = FALSE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = FALSE, RANDOM_SOCKS = FALSE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
 

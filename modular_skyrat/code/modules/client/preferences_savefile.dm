@@ -266,11 +266,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	scars_index = rand(1,5)
 
-	if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
+	/*if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
 		WRITE_FILE(S["features["mcolor"]"]	, "#FFF")
 
 	if(!S["feature_ethcolor"] || S["feature_ethcolor"] == "#000")
-		WRITE_FILE(S["feature_ethcolor"]	, "9c3030")
+		WRITE_FILE(S["feature_ethcolor"]	, "9c3030")*/
 
 	//Character
 	READ_FILE(S["real_name"], real_name)
@@ -293,7 +293,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["playtime_reward_cloak"], playtime_reward_cloak)
 	READ_FILE(S["phobia"], phobia)
 	READ_FILE(S["randomise"],  randomise)
-	READ_FILE(S["feature_mcolor"], features["mcolor"])
+	/*READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
 	READ_FILE(S["feature_lizard_tail"], features["tail_lizard"])
 	READ_FILE(S["feature_lizard_snout"], features["snout"])
@@ -303,19 +303,19 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["feature_lizard_body_markings"], features["body_markings"])
 	READ_FILE(S["feature_lizard_legs"], features["legs"])
 	READ_FILE(S["feature_moth_wings"], features["moth_wings"])
-	READ_FILE(S["feature_moth_markings"], features["moth_markings"])
+	READ_FILE(S["feature_moth_markings"], features["moth_markings"])*/
 	READ_FILE(S["persistent_scars"] , persistent_scars)
 	READ_FILE(S["scars1"], scars_list["1"])
 	READ_FILE(S["scars2"], scars_list["2"])
 	READ_FILE(S["scars3"], scars_list["3"])
 	READ_FILE(S["scars4"], scars_list["4"])
 	READ_FILE(S["scars5"], scars_list["5"])
-	if(!CONFIG_GET(flag/join_with_mutant_humans))
+	/*if(!CONFIG_GET(flag/join_with_mutant_humans))
 		features["tail_human"] = "none"
 		features["ears"] = "none"
 	else
 		READ_FILE(S["feature_human_tail"], features["tail_human"])
-		READ_FILE(S["feature_human_ears"], features["ears"])
+		READ_FILE(S["feature_human_ears"], features["ears"])*/
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)
@@ -351,11 +351,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(!custom_names[custom_name_id])
 			custom_names[custom_name_id] = get_default_name(custom_name_id)
 
-	if(!features["mcolor"] || features["mcolor"] == "#000")
+	/*if(!features["mcolor"] || features["mcolor"] == "#000")
 		features["mcolor"] = pick("FFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
 
 	if(!features["ethcolor"] || features["ethcolor"] == "#000")
-		features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
+		features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]*/
 
 	randomise = SANITIZE_LIST(randomise)
 
@@ -415,6 +415,57 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	all_quirks = SANITIZE_LIST(all_quirks)
 
+	//All the new skyrat related stuff here
+	READ_FILE(S["features"], features)
+	READ_FILE(S["mutant_bodyparts"], mutant_bodyparts)
+	READ_FILE(S["body_markings"], body_markings)
+
+	READ_FILE(S["loadout"], loadout)
+
+	READ_FILE(S["ooc_prefs"], ooc_prefs)
+	READ_FILE(S["erp_pref"], erp_pref)
+	READ_FILE(S["noncon_pref"], noncon_pref)
+	READ_FILE(S["vore_pref"], vore_pref)
+	READ_FILE(S["general_record"], general_record)
+	READ_FILE(S["security_record"], security_record)
+	READ_FILE(S["medical_record"], medical_record)
+	READ_FILE(S["background_info"], background_info)
+	READ_FILE(S["exploitable_info"], exploitable_info)
+
+	features = SANITIZE_LIST(features)
+	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
+	body_markings = SANITIZE_LIST(body_markings)
+
+	loadout = SANITIZE_LIST(loadout)
+	//LOADOUT POINT VALIDATION
+	//Here we calculate if we truly can use the loaded loadout
+	loadout_points = initial(loadout_points)
+	var/accumulated_cost = 0
+	for(var/path in loadout)
+		var/datum/loadout_item/LI = GLOB.loadout_items[path]
+		if(!LI)
+			loadout -= path
+			continue
+		accumulated_cost += LI.cost
+	if(accumulated_cost > loadout_points) //Not enough points, reset loadout
+		loadout = list()
+	else
+		loadout_points -= accumulated_cost //We got enough points, subtract the cost
+
+	ooc_prefs = sanitize_text(ooc_prefs)
+	if(!length(erp_pref))
+		erp_pref = "Ask"
+	if(!length(noncon_pref))
+		noncon_pref = "Ask"
+	if(!length(vore_pref))
+		vore_pref = "Ask"
+
+	general_record = sanitize_text(general_record)
+	security_record = sanitize_text(security_record)
+	medical_record = sanitize_text(medical_record)
+	background_info = sanitize_text(background_info)
+	exploitable_info = sanitize_text(exploitable_info)
+
 	validate_species_parts()
 
 	return TRUE
@@ -451,7 +502,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["randomise"]		, randomise)
 	WRITE_FILE(S["species"]			, pref_species.id)
 	WRITE_FILE(S["phobia"], phobia)
-	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
+	/*WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
 	WRITE_FILE(S["feature_ethcolor"]					, features["ethcolor"])
 	WRITE_FILE(S["feature_lizard_tail"]			, features["tail_lizard"])
 	WRITE_FILE(S["feature_human_tail"]				, features["tail_human"])
@@ -463,7 +514,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_lizard_body_markings"]	, features["body_markings"])
 	WRITE_FILE(S["feature_lizard_legs"]			, features["legs"])
 	WRITE_FILE(S["feature_moth_wings"]			, features["moth_wings"])
-	WRITE_FILE(S["feature_moth_markings"]		, features["moth_markings"])
+	WRITE_FILE(S["feature_moth_markings"]		, features["moth_markings"])*/
 	WRITE_FILE(S["persistent_scars"]			, persistent_scars)
 	WRITE_FILE(S["scars1"]						, scars_list["1"])
 	WRITE_FILE(S["scars2"]						, scars_list["2"])
@@ -487,6 +538,23 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"]			, all_quirks)
+
+	//All the new skyrat related stuff here
+	WRITE_FILE(S["features"] , features)
+	WRITE_FILE(S["mutant_bodyparts"] , mutant_bodyparts)
+	WRITE_FILE(S["body_markings"] , body_markings)
+
+	WRITE_FILE(S["loadout"] , loadout)
+
+	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
+	WRITE_FILE(S["erp_pref"] , erp_pref)
+	WRITE_FILE(S["noncon_pref"] , noncon_pref)
+	WRITE_FILE(S["vore_pref"] , vore_pref)
+	WRITE_FILE(S["general_record"] , general_record)
+	WRITE_FILE(S["security_record"] , security_record)
+	WRITE_FILE(S["medical_record"] , medical_record)
+	WRITE_FILE(S["background_info"] , background_info)
+	WRITE_FILE(S["exploitable_info"] , exploitable_info)
 
 	return TRUE
 

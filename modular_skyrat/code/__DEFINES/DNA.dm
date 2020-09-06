@@ -47,3 +47,6 @@
 #define PREVIEW_PREF_JOB "Job"
 #define PREVIEW_PREF_LOADOUT "Loadout"
 #define PREVIEW_PREF_NAKED "Naked"
+
+#define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"balls_size" = 1)
+

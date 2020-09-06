@@ -179,8 +179,9 @@
 				qdel(ITEM)
 	return items_to_pack
 
+//This needs to be a seperate proc because the character could not have the proper backpack during the moment of loadout equip
 /datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)
-	//Here we stick it into a bag, if possible
+	//Here we stick loadout items that couldn't be equipped into a bag. 
 	for(var/item in packed_items)
 		var/obj/item/ITEM = item
 		if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
