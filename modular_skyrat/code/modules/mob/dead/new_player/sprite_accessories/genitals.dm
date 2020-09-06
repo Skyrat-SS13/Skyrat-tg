@@ -3,6 +3,21 @@
 	special_render_case = TRUE
 	var/associated_organ_slot 
 
+/datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
+	if(!badonkers)
+		return TRUE
+	switch(badonkers.visibility_preference)
+		if(GENITAL_ALWAYS_SHOW)
+			return FALSE
+		if(GENITAL_HIDDEN_BY_CLOTHES)
+			if(H.w_uniform || H.wear_suit)
+				return TRUE
+			else
+				return FALSE
+		else
+			return TRUE
+
 /datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
 	if(gen)
@@ -180,21 +195,6 @@
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"
 	default_color = DEFAULT_SKIN_OR_PRIMARY
-
-/datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	var/obj/item/organ/genital/breasts/badonkers = H.getorganslot(associated_organ_slot)
-	if(!badonkers)
-		return TRUE
-	switch(badonkers.visibility_preference)
-		if(GENITAL_ALWAYS_SHOW)
-			return FALSE
-		if(GENITAL_HIDDEN_BY_CLOTHES)
-			if(H.w_uniform || H.wear_suit)
-				return TRUE
-			else
-				return FALSE
-		else
-			return TRUE
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"
