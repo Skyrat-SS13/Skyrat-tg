@@ -6,7 +6,7 @@
 	///Type of the genital. For penises tapered/horse/human etc. for breasts quadruple/sixtuple etc...
 	var/genital_type = "human"
 	///Used for determining what sprite is being used, derrives from size and type
-	var/sprite_suffix 
+	var/sprite_suffix
 	///Used for input from the user whether to show a genital through clothing or not, always or never etc.
 	var/visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
 	///Whether the organ is aroused, matters for sprites, use a 0 or 1 for easy string append
@@ -23,6 +23,9 @@
 /obj/item/organ/genital/proc/get_description_string()
 	return "genitals"
 
+/obj/item/organ/genital/proc/update_genital_icon_state()
+	return
+
 /obj/item/organ/genital/proc/set_type_and_size(type, size)
 	genital_type = type
 	genital_size = size
@@ -31,6 +34,10 @@
 /obj/item/organ/genital/Initialize()
 	. = ..()
 	update_sprite_suffix()
+
+/obj/item/organ/genital/Remove(mob/living/carbon/M, special = FALSE)
+	. = ..()
+	update_genital_icon_state()
 
 /obj/item/organ/genital/penis
 	name = "penis"
@@ -42,6 +49,22 @@
 	mutantpart_key = "penis"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	var/girth = 9
+
+/obj/item/organ/genital/penis/update_genital_icon_state()
+	var/size_affix
+	var/measured_size = FLOOR(genital_size,1)
+	if(measured_size < 1)
+		measured_size = 1
+	switch(measured_size)
+		if(1 to 8)
+			size_affix = "1"
+		if(9 to 15)
+			size_affix = "2"
+		if(16 to 25)
+			size_affix = "3"
+		else
+			size_affix = "4"
+	icon_state = "penis_[genital_type]_[size_affix]"
 
 /obj/item/organ/genital/penis/get_sprite_size_string()
 	var/size_affix
@@ -121,20 +144,30 @@
 	slot = ORGAN_SLOT_BREASTS
 	var/lactates = FALSE
 
+/obj/item/organ/genital/breasts/update_genital_icon_state()
+	var/max_size = 5
+	var/current_size = FLOOR(genital_size, 1)
+	if(current_size < 0)
+		current_size = 0
+	else if (current_size > max_size)
+		current_size = max_size
+	icon_state = "breasts_pair_[current_size]"
+
 /obj/item/organ/genital/breasts/get_sprite_size_string()
 	var/max_size = 5
 	if(genital_type == "pair")
 		max_size = 16
 	var/current_size = FLOOR(genital_size, 1)
 	if(current_size < 0)
-		current_size = 0 
+		current_size = 0
 	else if (current_size > max_size)
 		current_size = max_size
 	return current_size
 
 /obj/item/organ/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
 	..()
-	var/type = lowertext(DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME])
+	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[associated_key][mutantpart_info[MUTANT_INDEX_NAME]]
+	var/type = SA.icon_state
 	lactates = DNA.features["breasts_lactation"]
 	set_type_and_size(type, DNA.features["breasts_size"])
 
