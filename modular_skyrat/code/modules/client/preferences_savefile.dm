@@ -432,6 +432,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["background_info"], background_info)
 	READ_FILE(S["exploitable_info"], exploitable_info)
 
+	READ_FILE(S["mismatched_customization"] , mismatched_customization)
+	READ_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
+
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
 	body_markings = SANITIZE_LIST(body_markings)
@@ -465,6 +468,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	medical_record = sanitize_text(medical_record)
 	background_info = sanitize_text(background_info)
 	exploitable_info = sanitize_text(exploitable_info)
+
+	mismatched_customization = sanitize_integer(mismatched_customization, FALSE, TRUE, initial(mismatched_customization))
+	allow_advanced_colors = sanitize_integer(allow_advanced_colors, FALSE, TRUE, initial(allow_advanced_colors))
 
 	validate_species_parts()
 
@@ -555,6 +561,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["medical_record"] , medical_record)
 	WRITE_FILE(S["background_info"] , background_info)
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
+
+	WRITE_FILE(S["mismatched_customization"] , mismatched_customization)
+	WRITE_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
 
 	return TRUE
 
