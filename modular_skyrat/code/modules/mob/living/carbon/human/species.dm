@@ -268,6 +268,15 @@
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 
+/datum/species/New()
+	. = ..()
+	if(can_have_genitals)
+		default_mutant_bodyparts["vagina"] = "None"
+		default_mutant_bodyparts["womb"] = "None"
+		default_mutant_bodyparts["testicles"] = "None"
+		default_mutant_bodyparts["breasts"] = "None"
+		default_mutant_bodyparts["penis"] = "None"
+
 /datum/species/dullahan
 	default_features = null
 	mutant_bodyparts = list()
@@ -317,12 +326,6 @@
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
 	var/list/bodyparts_to_add = default_mutant_bodyparts.Copy()
-	if(can_have_genitals)
-		bodyparts_to_add["vagina"] = "None"
-		bodyparts_to_add["womb"] = "None"
-		bodyparts_to_add["testicles"] = "None"
-		bodyparts_to_add["breasts"] = "None"
-		bodyparts_to_add["penis"] = "None"
 	for(var/key in bodyparts_to_add)
 		var/datum/sprite_accessory/SP
 		if(bodyparts_to_add[key] == ACC_RANDOM)

@@ -55,12 +55,6 @@
 		return
 
 	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
-	if(pref_species.can_have_genitals)
-		target_bodyparts["vagina"] = "None"
-		target_bodyparts["womb"] = "None"
-		target_bodyparts["testicles"] = "None"
-		target_bodyparts["breasts"] = "None"
-		target_bodyparts["penis"] = "None"
 
 	//Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
