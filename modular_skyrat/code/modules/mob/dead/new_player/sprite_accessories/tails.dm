@@ -1,7 +1,6 @@
 /datum/sprite_accessory/tails
 	key = "tail"
 	generic = "Tail"
-	skip_type = /datum/sprite_accessory/tails
 	organ_type = /obj/item/organ/tail
 	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
@@ -36,13 +35,11 @@
 	icon_state = "none"
 	recommended_species = list("mammal", "human")
 	icon = 'modular_skyrat/icons/mob/sprite_accessory/tails.dmi'
-	skip_type = /datum/sprite_accessory/tails/mammal
 	organ_type = /obj/item/organ/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/tails/mammal/wagging
 	organ_type = /obj/item/organ/tail/fluffy
-	skip_type = /datum/sprite_accessory/tails/mammal/wagging
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"

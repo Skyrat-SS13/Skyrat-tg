@@ -687,7 +687,7 @@
 			else
 				limb.icon_state = "[species_id]_[body_zone]"
 		else
-			limb.icon = 'icons/mob/human_parts.dmi'
+			limb.icon = rendered_bp_icon || 'icons/mob/human_parts.dmi' //Skyrat change - customization
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else

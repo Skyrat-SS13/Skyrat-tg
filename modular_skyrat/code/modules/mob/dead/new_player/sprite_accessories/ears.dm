@@ -1,7 +1,6 @@
 /datum/sprite_accessory/ears
 	key = "ears"
 	generic = "Ears"
-	skip_type = /datum/sprite_accessory/ears
 	organ_type = /obj/item/organ/ears/mutant
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -11,7 +10,6 @@
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/icons/mob/sprite_accessory/ears.dmi'
-	skip_type = /datum/sprite_accessory/ears/mutant
 	organ_type = /obj/item/organ/ears/mutant
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list("mammal", "human", "felinid")

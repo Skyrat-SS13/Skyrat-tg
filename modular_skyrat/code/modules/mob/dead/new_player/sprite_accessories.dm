@@ -13,8 +13,6 @@
 
 	var/special_render_case
 
-	var/skip_type = /datum/sprite_accessory
-
 	color_src = USE_ONE_COLOR
 
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
@@ -83,7 +81,6 @@
 /datum/sprite_accessory/moth_wings
 	key = "moth_wings"
 	generic = "Moth wings"
-	skip_type = /datum/sprite_accessory/moth_wings
 
 /datum/sprite_accessory/moth_wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if((H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(H.dna.species, H.wear_suit.species_exception))))
@@ -93,12 +90,10 @@
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
 	generic = "Moth markings"
-	skip_type = /datum/sprite_accessory/moth_markings
 
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"
-	skip_type = /datum/sprite_accessory/spines
 	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 
@@ -116,12 +111,10 @@
 /datum/sprite_accessory/caps
 	key = "caps"
 	generic = "Caps"
-	skip_type = /datum/sprite_accessory/caps
 
 /datum/sprite_accessory/frills
 	key = "frills"
 	generic = "Frills"
-	skip_type = /datum/sprite_accessory/frills
 
 /datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC)
@@ -131,7 +124,6 @@
 /datum/sprite_accessory/horns
 	key = "horns"
 	generic = "Horns"
-	skip_type = /datum/sprite_accessory/horns
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
@@ -141,12 +133,10 @@
 /datum/sprite_accessory/body_markings
 	key = "body_markings"
 	generic = "Body Markings"
-	skip_type = /datum/sprite_accessory/body_markings
 
 /datum/sprite_accessory/legs
 	key = "legs"
 	generic = "Leg Type"
-	skip_type = /datum/sprite_accessory/legs
 	color_src = null
 
 /datum/sprite_accessory/socks

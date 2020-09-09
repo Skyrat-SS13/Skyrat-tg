@@ -1,4 +1,5 @@
 /datum/species
+	mutant_bodyparts = list()
 	///Self explanatory
 	var/can_have_genitals = TRUE
 	///Override of icon file of which we're taking the icons from for our limbs
@@ -332,6 +333,8 @@
 			SP = random_accessory_of_key_for_species(key, src)
 		else
 			SP = GLOB.sprite_accessories[key][bodyparts_to_add[key]]
+			if(!SP)
+				CRASH("Cant find accessory of [key] key, [bodyparts_to_add[key]] name, for species [id]")
 		var/list/color_list = SP.get_default_color(features, src)
 		var/list/final_list = list()
 		final_list[MUTANT_INDEX_NAME] = SP.name

@@ -1,7 +1,6 @@
 /datum/sprite_accessory/snouts
 	key = "snout"
 	generic = "Snout"
-	skip_type = /datum/sprite_accessory/snouts
 	var/use_muzzled_sprites = TRUE
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)

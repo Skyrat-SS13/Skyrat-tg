@@ -2,7 +2,6 @@
 	icon = 'modular_skyrat/icons/mob/sprite_accessory/taur.dmi'
 	key = "taur"
 	generic = "Taur Type"
-	skip_type = /datum/sprite_accessory/taur
 	color_src = USE_MATRIXED_COLORS
 	dimension_x = 64
 	center = TRUE

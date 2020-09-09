@@ -1,5 +1,4 @@
 /datum/sprite_accessory/genital
-	skip_type = /datum/sprite_accessory/genital
 	special_render_case = TRUE
 	var/associated_organ_slot 
 
@@ -27,7 +26,6 @@
 
 /datum/sprite_accessory/genital/penis
 	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
-	skip_type = /datum/sprite_accessory/genital/penis
 	organ_type = /obj/item/organ/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
 	key = "penis"
@@ -94,7 +92,6 @@
 
 /datum/sprite_accessory/genital/testicles
 	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/testicles_onmob.dmi'
-	skip_type = /datum/sprite_accessory/genital/testicles
 	organ_type = /obj/item/organ/genital/testicles
 	associated_organ_slot = ORGAN_SLOT_TESTICLES
 	key = "testicles"
@@ -118,7 +115,6 @@
 
 /datum/sprite_accessory/genital/vagina
 	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
-	skip_type = /datum/sprite_accessory/genital/vagina
 	organ_type = /obj/item/organ/genital/vagina
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = "vagina"
@@ -172,7 +168,6 @@
 
 
 /datum/sprite_accessory/genital/womb
-	skip_type = /datum/sprite_accessory/genital/womb
 	organ_type = /obj/item/organ/genital/womb
 	associated_organ_slot = ORGAN_SLOT_WOMB
 	key = "womb"
@@ -190,7 +185,6 @@
 
 /datum/sprite_accessory/genital/breasts
 	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
-	skip_type = /datum/sprite_accessory/genital/breasts
 	organ_type = /obj/item/organ/genital/breasts
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"

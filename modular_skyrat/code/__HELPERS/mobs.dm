@@ -39,4 +39,6 @@
 /proc/random_accessory_of_key_for_species(key, datum/species/S)
 	var/list/accessory_list = accessory_list_of_key_for_species(key, S)
 	var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][pick(accessory_list)]
+	if(!SP)
+		CRASH("Cant find random accessory of [key] key, for species [S.id]")
 	return SP

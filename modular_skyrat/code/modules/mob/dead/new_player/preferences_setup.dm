@@ -98,6 +98,7 @@
 	for(var/key in new_features)
 		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
+	body_markings = list()
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)
