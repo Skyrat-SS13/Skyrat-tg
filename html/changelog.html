@@ -51,6 +51,74 @@
 		
 		-->
 		<div class="commit sansserif">
+			<h2 class="date">10 September 2020</h2>
+			<h3 class="author">ATHATH updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="spellcheck">The default EMP feedback message for arm implants has been improved.</li>
+			</ul>
+			<h3 class="author">Qustinnus updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Allows you to use the ability of vatbeasts when riding them</li>
+			</ul>
+			<h3 class="author">Ryll/Shaps updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">The blob random event can no longer occur after the shuttle has reached the point of no return</li>
+			</ul>
+			<h3 class="author">SkyratBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">The crashed ship ruin now has proper meat.</li>
+				<li class="tweak">More cardboard box-adjacent things break down into cardboard, and are all made of cardboard.</li>
+				<li class="rscadd">Ligthing aoe projectile now have a no_stun version for the boss rank</li>
+				<li class="rscadd">Crystal mobs have TRAIT_TESLA_SHOCKIMMUNE to prevent boss from hurting himself and the other crystal mobs</li>
+				<li class="rscadd">Revamped mode, announced main portals with location, close them to be able to stabilize the SM</li>
+				<li class="balance">Balanced mobs spawn from portal and how much damage they deal</li>
+				<li class="bugfix">Fixed grammar stuff on crystal consume announcement</li>
+				<li class="tweak">Lowered time needed to use the crystal stabilizer to 7 second total</li>
+				<li class="refactor">Refractored code so that the more_portals() proc gets called by the event instead of a CALLBACK</li>
+				<li class="code_imp">Added check at start of event for presence of the supermatter crystal</li>
+				<li class="bugfix">The light tiles on disco inferno no longer look ugly when they burn down every shift.</li>
+				<li class="bugfix">Pacifists do not care about harm if it is for Scotland,</li>
+				<li class="bugfix">Corrected the directions of arcades on delta, icebox, and pubby</li>
+				<li class="bugfix">Fix ruins overlapping the station and away missions increasing world size.</li>
+				<li class="rscadd">adds trait injector mapping helper</li>
+				<li class="code_imp">Process procs now properly utilize deltatime when implementing rates, timers and probabilities, which paves way for easier subsystem tickrate adjustments.</li>
+				<li class="tweak">Things without a client or not alive, bots included, will be ejected out of the station pods (like the ones leading to the AI sat) on arrival, to prevent them being hidden in a very hard to detect location.</li>
+				<li class="bugfix">Showers no longer have the vapor reaction, as before the changes.</li>
+				<li class="bugfix">Showers no longer produce ludicrously over-scaled chemical reactions.</li>
+				<li class="balance">Gas chems now produce 1/4th less gas when released into the air as before.</li>
+				<li class="bugfix">fixed mech icons and lights</li>
+				<li class="bugfix">Made strafe behavior better</li>
+				<li class="bugfix">fixed mechs exploding</li>
+				<li class="bugfix">fixed mech weapon cooldowns being inconsistent</li>
+				<li class="code_imp">cleaned up mech code some more</li>
+				<li class="rscadd">You can now tap/rotate trading cards!</li>
+				<li class="rscadd">Readds the tesla with some changes, it's more about killing machines and people then the hull now. Oh and it makes pretty blue light now. Power delam your local supermatter crystal today</li>
+				<li class="rscadd">You feel the universe shift, tesla code has changed.</li>
+				<li class="bugfix">Most zaps no longer generate power, excepting the sm zaps.</li>
+				<li class="bugfix">The arena shuttle no longer teleports people into space.</li>
+				<li class="bugfix">Performing a head transplant will now properly preserve the appearance.</li>
+				<li class="balance">nightmares can now dodge beam projectiles on dark tiles</li>
+				<li class="tweak">lasers', emitters', and disablers' projectiles, now emit light only on their own tile, instead of a 3x3 square</li>
+				<li class="bugfix">Announcements now correctly read Mother Russia Bleeds</li>
+				<li class="bugfix">Delta added many fire alarms</li>
+				<li class="bugfix">FIXES WEEWOO MAKING SERVER EXPLODE</li>
+				<li class="bugfix">Random arcade cabinets keep rotation on mapload</li>
+			</ul>
+			<h3 class="author">Wallem updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds Sign Language as a new neutral quirk titled "Tongue Tied." Comes with all the benefits and challenges of using your hands to speak to people.</li>
+			</ul>
+			<h3 class="author">floyd updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">moved cakes to newfood code</li>
+				<li class="balance">i fucked up some food lists because i misunderstood them, thats now fixed.</li>
+				<li class="code_imp">edible component now properly handles transfering reagents on processing, microwaving and crafting</li>
+			</ul>
+			<h3 class="author">itseasytosee updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="soundadd">light eaters make a slashing sound effect rather than a bludgeoning one</li>
+			</ul>
+
 			<h2 class="date">08 September 2020</h2>
 			<h3 class="author">Ryll/Shaps updated:</h3>
 			<ul class="changes bgimages16">
@@ -1909,34 +1977,6 @@
 			<h3 class="author">tralezab updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Cargo can purchase monkey sentience helmets under the science tab!</li>
-			</ul>
-
-			<h2 class="date">09 July 2020</h2>
-			<h3 class="author">EdgeLordExe updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">You can no longer infinitely spawn heretics summons</li>
-			</ul>
-			<h3 class="author">Jared-Fogle updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="code_imp">Added surgery related unit tests and adds TEST_ASSERT, TEST_ASSERT_EQUAL, and allocate to unit tests.</li>
-			</ul>
-			<h3 class="author">Melbert updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes an infinite loop / infinite camera shake in the Bubblegum hallucination</li>
-			</ul>
-			<h3 class="author">Timberpoes updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Ghost orbit menu can now orbit things with weird metadata in their names like medibots and MULEBOTs.</li>
-				<li class="tweak">Ghost orbit menu search bar looks prettier.</li>
-				<li class="tweak">Ghost orbit menu no longer auto-closes when you select something to orbit. Indirectly buffs voyeurs.</li>
-			</ul>
-			<h3 class="author">nightred updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed destructive analyzer item visual not being removed when destroying items</li>
-			</ul>
-			<h3 class="author">zxaber updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Borg machine conveyance has been repaired, to the delight of any "alternative"-functioning AIs that wish to onboard new silicon employees.</li>
 			</ul>
 		</div>
 
