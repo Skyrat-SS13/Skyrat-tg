@@ -13,7 +13,7 @@
 	///Which bodyparts does the marking affect in BITFLAGS!! (HEAD, CHEST, ARM_LEFT, ARM_RIGHT, HAND_LEFT, HAND_RIGHT, LEG_RIGHT, LEG_LEFT)
 	var/affected_bodyparts
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species
+	var/recommended_species = list("mammal")
 	///If this is on the color customization will show up despite the pref settings, it will also cause the marking to not reset colors to match the defaults
 	var/always_color_customizable
 
@@ -184,6 +184,21 @@
 	icon_state = "bat"
 	affected_bodyparts = HEAD | CHEST
 
+/datum/body_marking/secondary/floof
+	name = "Floof"
+	icon_state = "floof"
+	affected_bodyparts = HEAD | CHEST
+
+/datum/body_marking/secondary/floofer
+	name = "Floofer"
+	icon_state = "floofer"
+	affected_bodyparts = HEAD | CHEST
+
+/datum/body_marking/secondary/rat
+	name = "Rat Paw"
+	icon_state = "rat"
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
 /datum/body_marking/tertiary
 	icon = 'modular_skyrat/icons/mob/body_markings/tertiary_markings.dmi'
 	default_color = DEFAULT_TERTIARY
@@ -272,3 +287,18 @@
 	name = "Bat Mark"
 	icon_state = "bat"
 	affected_bodyparts = CHEST
+
+/datum/body_marking/tertiary/floofer
+	name = "Floofer Sock"
+	icon_state = "floofer"
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/tertiary/rat
+	name = "Rat Spot"
+	icon_state = "rat"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/tertiary/sloth
+	name = "Sloth Head"
+	icon_state = "sloth"
+	affected_bodyparts = HEAD

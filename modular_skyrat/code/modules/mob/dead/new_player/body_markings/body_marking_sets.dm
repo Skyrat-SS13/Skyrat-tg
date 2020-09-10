@@ -4,7 +4,7 @@
 	///List of the body markings in this set
 	var/body_marking_list
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species
+	var/recommended_species = list("mammal")
 
 /datum/body_marking_set/none
 	name = "None"
@@ -117,3 +117,57 @@
 /datum/body_marking_set/goat
 	name = "Goat"
 	body_marking_list = list("Goat Hoof")
+
+/datum/body_marking_set/floof
+	name = "Floof"
+	body_marking_list = list("Floof")
+
+/datum/body_marking_set/floofer
+	name = "Floofer"
+	body_marking_list = list("Floofer", "Floofer Sock")
+
+/datum/body_marking_set/rat
+	name = "Rat"
+	body_marking_list = list("Rat", "Rat Spot")
+
+/datum/body_marking_set/sloth
+	name = "Sloth"
+	body_marking_list = list("Rat", "Sloth Head") //Yes we're re-using the rat bits as they'd be identical
+
+/datum/body_marking_set/vox
+	recommended_species = list("vox")
+
+/datum/body_marking_set/vox/vox
+	name = "Vox"
+	body_marking_list = list("Vox")
+
+/datum/body_marking_set/vox/vox_tiger
+	name = "Vox Tiger"
+	body_marking_list = list("Vox", "Vox Tiger Tattoo")
+
+/datum/body_marking_set/vox/vox_hive
+	name = "Vox Hive"
+	body_marking_list = list("Vox", "Vox Hive Tattoo")
+
+/datum/body_marking_set/vox/vox_nightling
+	name = "Vox Nightling"
+	body_marking_list = list("Vox", "Vox Nightling Tattoo")
+
+/datum/body_marking_set/vox/vox_heart
+	name = "Vox Heart"
+	body_marking_list = list("Vox", "Vox Heart Tattoo")
+
+/datum/body_marking_set/synthliz
+	recommended_species = list("synthliz")
+
+/datum/body_marking_set/synthliz/scutes
+	name = "Synth Scutes"
+	body_marking_list = list("Synth Scutes")
+
+/datum/body_marking_set/synthliz/pecs
+	name = "Synth Pecs"
+	body_marking_list = list("Synth Pecs")
+
+/datum/body_marking_set/synthliz/pecs_light
+	name = "Synth Pecs Lights"
+	body_marking_list = list("Synth Pecs", "Synth Collar Lights")
