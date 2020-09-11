@@ -158,7 +158,7 @@
 		t_state = !isinhands ? (worn_icon_state ? worn_icon_state : icon_state) : (inhand_icon_state ? inhand_icon_state : icon_state)
 
 	//Find a valid icon file from variables+arguments
-	var/file2use 
+	var/file2use
 	if(override_icon)
 		file2use = override_icon
 	else
@@ -255,5 +255,34 @@
 
 	if(standing.len)
 		overlays_standing[BODYPART_MARKINGS_LAYER] = standing
-
 	apply_overlay(BODYPART_MARKINGS_LAYER)
+
+/mob/living/carbon/human/update_inv_glasses()
+	remove_overlay(GLASSES_LAYER)
+
+	if(!get_bodypart(BODY_ZONE_HEAD)) //decapitated
+		return
+
+	if(client && hud_used)
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_EYES) + 1]
+		inv.update_icon()
+
+	if(glasses)
+		glasses.screen_loc = ui_glasses		//...draw the item in the inventory screen
+		if(client && hud_used && hud_used.hud_shown)
+			if(hud_used.inventory_shown)			//if the inventory is open ...
+				client.screen += glasses				//Either way, add the item to the HUD
+		update_observer_view(glasses,1)
+		if(!(head && (head.flags_inv & HIDEEYES)) && !(wear_mask && (wear_mask.flags_inv & HIDEEYES)))
+			var/icon_file = glasses.worn_icon
+			if(dna.species.id == "vox")
+				icon_file = 'modular_skyrat/icons/mob/clothing/eyes_vox.dmi'
+			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_icon = icon_file)
+
+		var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
+		if(glasses_overlay)
+			if(OFFSET_GLASSES in dna.species.offset_features)
+				glasses_overlay.pixel_x += dna.species.offset_features[OFFSET_GLASSES][1]
+				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
+			overlays_standing[GLASSES_LAYER] = glasses_overlay
+	apply_overlay(GLASSES_LAYER)

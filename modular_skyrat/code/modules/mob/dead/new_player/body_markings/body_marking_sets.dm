@@ -139,23 +139,23 @@
 
 /datum/body_marking_set/vox/vox
 	name = "Vox"
-	body_marking_list = list("Vox")
+	body_marking_list = list("Vox Talon")
 
 /datum/body_marking_set/vox/vox_tiger
 	name = "Vox Tiger"
-	body_marking_list = list("Vox", "Vox Tiger Tattoo")
+	body_marking_list = list("Vox Talon", "Vox Tiger Tattoo")
 
 /datum/body_marking_set/vox/vox_hive
 	name = "Vox Hive"
-	body_marking_list = list("Vox", "Vox Hive Tattoo")
+	body_marking_list = list("Vox Talon", "Vox Hive Tattoo")
 
 /datum/body_marking_set/vox/vox_nightling
 	name = "Vox Nightling"
-	body_marking_list = list("Vox", "Vox Nightling Tattoo")
+	body_marking_list = list("Vox Talon", "Vox Nightling Tattoo")
 
 /datum/body_marking_set/vox/vox_heart
 	name = "Vox Heart"
-	body_marking_list = list("Vox", "Vox Heart Tattoo")
+	body_marking_list = list("Vox Talon", "Vox Heart Tattoo")
 
 /datum/body_marking_set/synthliz
 	recommended_species = list("synthliz")

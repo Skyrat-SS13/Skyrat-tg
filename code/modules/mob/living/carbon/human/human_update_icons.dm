@@ -199,7 +199,7 @@ There are several things that need to be remembered:
 	apply_overlay(GLOVES_LAYER)
 
 
-/mob/living/carbon/human/update_inv_glasses()
+/*/mob/living/carbon/human/update_inv_glasses() SKYRAT EDIT - customization - moved to modular
 	remove_overlay(GLASSES_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //decapitated
@@ -224,7 +224,7 @@ There are several things that need to be remembered:
 				glasses_overlay.pixel_x += dna.species.offset_features[OFFSET_GLASSES][1]
 				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 			overlays_standing[GLASSES_LAYER] = glasses_overlay
-	apply_overlay(GLASSES_LAYER)
+	apply_overlay(GLASSES_LAYER)*/
 
 
 /mob/living/carbon/human/update_inv_ears()

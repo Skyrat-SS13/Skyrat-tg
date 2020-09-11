@@ -69,12 +69,17 @@
 	if(head)
 		var/desired_icon = head.worn_icon
 		var/used_style = NONE
-		if(dna?.species.mutant_bodyparts["snout"])
+		if(dna?.species.id == "vox")
+			used_style = STYLE_VOX
+		else if(dna?.species.mutant_bodyparts["snout"])
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
 			if(S.use_muzzled_sprites && head.mutant_variants & STYLE_MUZZLE)
 				used_style = STYLE_MUZZLE
-		if(used_style == STYLE_MUZZLE)
-			desired_icon = head.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/head_muzzled.dmi'
+		switch(used_style)
+			if(STYLE_MUZZLE)
+				desired_icon = head.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/head_muzzled.dmi'
+			if(STYLE_VOX)
+				desired_icon = 'modular_skyrat/icons/mob/clothing/head_vox.dmi'
 
 		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_icon = desired_icon)
 		update_hud_head(head)
@@ -94,13 +99,18 @@
 	if(wear_mask)
 		var/desired_icon = wear_mask.worn_icon
 		var/used_style = NONE
-		if(dna?.species.mutant_bodyparts["snout"])
+		if(dna?.species.id == "vox")
+			used_style = STYLE_VOX
+		else if(dna?.species.mutant_bodyparts["snout"])
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
 			if(S.use_muzzled_sprites && wear_mask.mutant_variants & STYLE_MUZZLE)
 				used_style = STYLE_MUZZLE
-		if(used_style == STYLE_MUZZLE)
-			desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/mask_muzzled.dmi'
-		
+		switch(used_style)
+			if(STYLE_MUZZLE)
+				desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/mask_muzzled.dmi'
+			if(STYLE_VOX)
+				desired_icon = 'modular_skyrat/icons/mob/clothing/mask_vox.dmi'
+
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
 			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_icon = desired_icon)
 		update_hud_wear_mask(wear_mask)

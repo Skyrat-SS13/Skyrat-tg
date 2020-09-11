@@ -96,6 +96,7 @@
 	generic = "Spines"
 	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
+	recommended_species = list("lizard")
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))

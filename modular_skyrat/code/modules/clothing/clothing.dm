@@ -7,10 +7,13 @@
 	var/worn_icon_muzzled
 
 /obj/item/clothing/head
-	mutant_variants = STYLE_MUZZLE
+	mutant_variants = STYLE_MUZZLE | STYLE_VOX
 
 /obj/item/clothing/mask
-	mutant_variants = STYLE_MUZZLE
+	mutant_variants = STYLE_MUZZLE | STYLE_VOX
+
+/obj/item/clothing/glasses
+	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/under
 	mutant_variants = STYLE_DIGITIGRADE

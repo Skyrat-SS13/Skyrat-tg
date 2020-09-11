@@ -1427,8 +1427,10 @@
 						if(!mismatched_customization)
 							for(var/name in candidates)
 								var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
-								if(BMS.recommended_species && (!pref_species.id in BMS.recommended_species))
+								if(BMS.recommended_species && !(pref_species.id in BMS.recommended_species))
 									candidates -= name
+						if(length(candidates) == 0)
+							return
 						var/desired_set = input(user, "Choose your new body markings:", "Character Preference") as null|anything in candidates
 						if(desired_set)
 							var/datum/body_marking_set/BMS = GLOB.body_marking_sets[desired_set]
