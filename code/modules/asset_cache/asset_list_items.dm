@@ -307,8 +307,6 @@
 		InsertAll("", each, GLOB.alldirs)
 	..()
 
-<<<<<<< HEAD
-=======
 /datum/asset/spritesheet/supplypods
 	name = "supplypods"
 
@@ -338,7 +336,6 @@
 		Insert("pod_asset[style]", podIcon)
 	return ..()
 
->>>>>>> a55d5439e94... Fixes tests on master. Maybe. (#53613)
 // Representative icons for each research design
 /datum/asset/spritesheet/research_designs
 	name = "design"
