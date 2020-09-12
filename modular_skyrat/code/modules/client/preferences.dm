@@ -1434,15 +1434,7 @@
 						var/desired_set = input(user, "Choose your new body markings:", "Character Preference") as null|anything in candidates
 						if(desired_set)
 							var/datum/body_marking_set/BMS = GLOB.body_marking_sets[desired_set]
-							body_markings.Cut()
-							for(var/set_name in BMS.body_marking_list)
-								var/datum/body_marking/BM = GLOB.body_markings[set_name]
-								for(var/zone in GLOB.body_markings_per_limb)
-									var/list/marking_list = GLOB.body_markings_per_limb[zone]
-									if(set_name in marking_list)
-										if(!body_markings[zone])
-											body_markings[zone] = list()
-										body_markings[zone][set_name] = BM.get_default_color(features, pref_species)
+							body_markings = assemble_body_markings_from_set(BMS, features, pref_species)
 
 				if("reset_color")
 					var/zone = href_list["key"]

@@ -52,3 +52,27 @@
 					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s exploitable information", replacetext(client.prefs.exploitable_info, "\n", "<BR>")))
 					popup.open()
 					return
+
+/mob/living/carbon/human/species/synthliz
+	race = /datum/species/synthliz
+
+/mob/living/carbon/human/species/vox
+	race = /datum/species/vox
+
+/mob/living/carbon/human/species/ipc
+	race = /datum/species/ipc
+
+/mob/living/carbon/human/species/mammal
+	race = /datum/species/mammal
+
+/mob/living/carbon/human/species/podweak
+	race = /datum/species/pod/podweak
+
+/mob/living/carbon/human/species/xeno
+	race = /datum/species/xeno
+
+/mob/living/carbon/human/species/dwarf
+	race = /datum/species/dwarf
+
+/mob/living/carbon/human/species/roundstartslime
+	race = /datum/species/jelly/roundstartslime

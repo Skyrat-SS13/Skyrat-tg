@@ -49,3 +49,15 @@
 
 		if(!findname(.))
 			break
+
+/proc/assemble_body_markings_from_set(datum/body_marking_set/BMS, list/features, datum/species/pref_species)
+	var/list/body_markings = list()
+	for(var/set_name in BMS.body_marking_list)
+		var/datum/body_marking/BM = GLOB.body_markings[set_name]
+		for(var/zone in GLOB.body_markings_per_limb)
+			var/list/marking_list = GLOB.body_markings_per_limb[zone]
+			if(set_name in marking_list)
+				if(!body_markings[zone])
+					body_markings[zone] = list()
+				body_markings[zone][set_name] = BM.get_default_color(features, pref_species)
+	return body_markings

@@ -35,6 +35,13 @@
 	H.dna.features["spines"] = pick(GLOB.spines_list)
 	H.dna.features["body_markings"] = pick(GLOB.body_markings_list)
 	H.dna.features["moth_wings"] = pick(GLOB.moth_wings_list)*/
+	//SKYRAT EDIT BEGIN - customization - adds nessecary species information
+	H.dna.features = H.dna.species.get_random_features()
+	H.dna.mutant_bodyparts = H.dna.species.get_random_mutant_bodyparts(H.dna.features)
+	H.dna.body_markings = H.dna.species.get_random_body_markings(H.dna.features)
+	H.dna.species.mutant_bodyparts = H.dna.mutant_bodyparts.Copy()
+	H.dna.species.body_markings = H.dna.body_markings.Copy()
+	//SKYRAT EDIT END
 
 	H.update_body()
 	H.update_hair()

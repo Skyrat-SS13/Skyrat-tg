@@ -36,3 +36,18 @@
 		randname += " [lastname]"
 
 	return randname
+
+/datum/species/vox/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	returned["mcolor"] = pick("7D8", "7DA", "7CD", "7DC")
+	returned["mcolor2"] = pick("ED8", "EC8")
+	returned["mcolor3"] = pick("222", "4EF", "4FB", "84F", "323")
+	return returned
+
+/datum/species/vox/get_random_body_markings(list/passed_features)
+	var/name = pick("Vox", "Vox Hive", "Vox Nightling", "Vox Heart", "Vox Tiger")
+	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
+	var/list/markings = list()
+	if(BMS)
+		markings = assemble_body_markings_from_set(BMS, passed_features, src)
+	return markings

@@ -4,7 +4,7 @@
 	icon_state = "lungs-c"
 	safe_oxygen_min = 0	//Dont need oxygen
 	safe_oxygen_max = 2 //But it is quite toxic to them
-	safe_nitro_min = 16 // Atleast 16 nitrogen, no upper cap
+	safe_nitro_min = 10 // Atleast 10 nitrogen
 	oxy_damage_type = TOX
 	oxy_breath_dam_min = 6
 	oxy_breath_dam_max = 20

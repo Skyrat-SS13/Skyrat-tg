@@ -37,7 +37,10 @@
 			dna.body_markings = pref_load.body_markings.Copy()
 			dna.species.body_markings = pref_load.body_markings.Copy()
 		else
+			dna.features = new_race.get_random_features()
 			dna.mutant_bodyparts = new_race.get_random_mutant_bodyparts(dna.features)
+			dna.body_markings = new_race.get_random_body_markings(dna.features)
+			dna.species.body_markings = dna.body_markings.Copy()
 
 		bodyparts_to_add = dna.mutant_bodyparts.Copy()
 

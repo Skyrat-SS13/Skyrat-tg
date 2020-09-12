@@ -97,6 +97,7 @@
 	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	recommended_species = list("lizard")
+	default_color = DEFAULT_SECONDARY
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
@@ -116,6 +117,7 @@
 /datum/sprite_accessory/frills
 	key = "frills"
 	generic = "Frills"
+	default_color = DEFAULT_SECONDARY
 
 /datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC)
@@ -134,6 +136,7 @@
 /datum/sprite_accessory/body_markings
 	key = "body_markings"
 	generic = "Body Markings"
+	default_color = DEFAULT_TERTIARY
 
 /datum/sprite_accessory/legs
 	key = "legs"

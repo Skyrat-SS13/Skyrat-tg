@@ -472,6 +472,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	mismatched_customization = sanitize_integer(mismatched_customization, FALSE, TRUE, initial(mismatched_customization))
 	allow_advanced_colors = sanitize_integer(allow_advanced_colors, FALSE, TRUE, initial(allow_advanced_colors))
 
+	//Validating mandatory features
+	for(var/key in MANDATORY_FEATURE_LIST)
+		if(!features[key])
+			features[key] = MANDATORY_FEATURE_LIST[key]
+
+	//validating body markings
+	for(var/zone in body_markings)
+		for(var/name in body_markings[zone])
+			if(!(name in GLOB.body_markings_per_limb[zone]))
+				body_markings[zone] -= name
+
 	validate_species_parts()
 
 	return TRUE

@@ -47,6 +47,7 @@
 	for(var/key in new_features)
 		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
+	body_markings = pref_species.get_random_body_markings(features)
 
 //This proc makes sure that we only have the parts that the species should have, add missing ones, remove extra ones(should any be changed)
 //Also, this handles missing color keys
@@ -98,7 +99,7 @@
 	for(var/key in new_features)
 		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
-	body_markings = list()
+	body_markings = pref_species.get_random_body_markings(features)
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)

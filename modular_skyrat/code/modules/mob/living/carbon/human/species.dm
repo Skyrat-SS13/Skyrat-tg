@@ -317,14 +317,12 @@
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 
-/datum/species/lizard
-	default_features = null
-	mutant_bodyparts = list()
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "horns" = ACC_RANDOM, "frills" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
-
-/datum/species/proc/get_random_features() //TODO: Add special cases of mcolor randomisation for all the custom species
-	return MANDATORY_FEATURE_LIST
+/datum/species/proc/get_random_features()
+	var/list/returned = MANDATORY_FEATURE_LIST
+	returned["mcolor"] = random_short_color()
+	returned["mcolor2"] = random_short_color()
+	returned["mcolor3"] = random_short_color()
+	return returned
 
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
@@ -344,6 +342,9 @@
 		mutantpart_list[key] = final_list
 
 	return mutantpart_list
+
+/datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
+	return list()
 
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	// Drop the items the new species can't wear
