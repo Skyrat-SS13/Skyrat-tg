@@ -14,3 +14,4 @@
 	payday_modifier = 1
 	liked_food = ALCOHOL | MEAT | DAIRY //Dwarves like alcohol, meat, and dairy products.
 	disliked_food = JUNKFOOD | FRIED //Dwarves hate foods that have no nutrition other than alcohol.
+	species_language_holder = /datum/language_holder/dwarf

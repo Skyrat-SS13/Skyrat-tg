@@ -19,6 +19,7 @@
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = MEAT | FRIED
 	outfit_important_for_life = /datum/outfit/vox
+	species_language_holder = /datum/language_holder/vox
 
 /datum/species/vox/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	var/datum/outfit/vox/O = new /datum/outfit/vox

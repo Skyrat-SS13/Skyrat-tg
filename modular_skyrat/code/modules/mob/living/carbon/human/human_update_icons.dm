@@ -204,58 +204,39 @@
 
 	return standing
 
+//Removed the icon cache from this, as its not feasible to make a cache for the plathora of customizable species and markings
 /mob/living/carbon/human/update_body_parts()
-	. = ..()
-	update_body_markings()
+	//CHECK FOR UPDATE
+	var/oldkey = icon_render_key
+	icon_render_key = generate_icon_render_key()
+	if(oldkey == icon_render_key)
+		return
 
-/mob/living/carbon/human/proc/update_body_markings() //TODO: make this use a one - time basis blend on the limb icon instead
-	remove_overlay(BODYPART_MARKINGS_LAYER)
-	var/list/standing = list()
-	var/override_color
-	if(HAS_TRAIT(src, TRAIT_HUSK))
-		override_color = "888"
+	remove_overlay(BODYPARTS_LAYER)
+
 	for(var/X in bodyparts)
-		var/list/bit_flags = list()
 		var/obj/item/bodypart/BP = X
-		if(BP.is_pseudopart)
+		BP.update_limb()
+
+	var/is_taur = FALSE
+	if(dna?.species.mutant_bodyparts["taur"])
+		var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+		if(S.hide_legs)
+			is_taur = TRUE
+
+	//GENERATE NEW LIMBS
+	var/list/new_limbs = list()
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/BP = X
+		if(is_taur && (BP.body_part == LEG_LEFT || BP.body_part == LEG_RIGHT))
 			continue
-		bit_flags[BP.body_zone] = BP.body_part
-		switch(BP.body_part)
-			if(ARM_LEFT) //Do we need to check for an aux zone? Presumabely the psuedopart check already solves our issues
-				bit_flags[BODY_ZONE_PRECISE_L_HAND] = HAND_LEFT
-			if(ARM_RIGHT)
-				bit_flags[BODY_ZONE_PRECISE_R_HAND] = HAND_RIGHT
 
-		for(var/marking_zone in bit_flags)
-			//var/bit = bit_flags[marking_zone]
-			if(dna.species.body_markings[marking_zone])
-				var/render_limb_string = marking_zone
+		new_limbs += BP.get_limb_icon()
+	if(new_limbs.len)
+		overlays_standing[BODYPARTS_LAYER] = new_limbs
 
-				switch(render_limb_string)
-					if(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
-						if(BP.use_digitigrade)
-							render_limb_string = "digitigrade_[BP.use_digitigrade]_[render_limb_string]"
-					/*if(BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_PRECISE_L_HAND)
-						Well this is a little bit tricky because of the marking overlay being rendered on top of a person's chest. This requires to integrate the marking system into limb rendering
-						//Add a behind hand overlay thingy here
-						*/
-					if(BODY_ZONE_CHEST)
-						var/icon_gender = (body_type == FEMALE) ? "f" : "m"
-						render_limb_string = "[render_limb_string]_[icon_gender]"
-
-				for(var/key in dna.species.body_markings[marking_zone])
-					var/datum/body_marking/BM = GLOB.body_markings[key]
-
-					var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPART_MARKINGS_LAYER)
-					if(override_color)
-						accessory_overlay.color = "#[override_color]"
-					else
-						accessory_overlay.color = "#[dna.species.body_markings[marking_zone][key]]"
-					standing += accessory_overlay
-
-	if(standing.len)
-		overlays_standing[BODYPART_MARKINGS_LAYER] = standing
-	apply_overlay(BODYPART_MARKINGS_LAYER)
+	apply_overlay(BODYPARTS_LAYER)
+	update_damage_overlays()
 
 /mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)

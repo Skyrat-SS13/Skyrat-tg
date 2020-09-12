@@ -66,7 +66,7 @@
 	body_zone = BODY_ZONE_L_ARM
 	body_part = ARM_LEFT
 	aux_zone = BODY_ZONE_PRECISE_L_HAND
-	aux_layer = BODYPARTS_LAYER //SKYRAT EDIT - customization - I'm not sure if hands need an extra layer, but that conflicts with markings
+	aux_layer = HANDS_PART_LAYER
 	body_damage_coeff = 0.75
 	held_index = 1
 	px_x = -6
@@ -130,7 +130,7 @@
 	body_zone = BODY_ZONE_R_ARM
 	body_part = ARM_RIGHT
 	aux_zone = BODY_ZONE_PRECISE_R_HAND
-	aux_layer = BODYPARTS_LAYER //SKYRAT EDIT - customization - I'm not sure if hands need an extra layer, but that conflicts with markings
+	aux_layer = HANDS_PART_LAYER
 	body_damage_coeff = 0.75
 	held_index = 2
 	px_x = 6
