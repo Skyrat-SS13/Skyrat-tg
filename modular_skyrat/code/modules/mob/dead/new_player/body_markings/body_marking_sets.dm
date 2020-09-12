@@ -128,11 +128,11 @@
 
 /datum/body_marking_set/rat
 	name = "Rat"
-	body_marking_list = list("Rat", "Rat Spot")
+	body_marking_list = list("Rat Paw", "Rat Spot")
 
 /datum/body_marking_set/sloth
 	name = "Sloth"
-	body_marking_list = list("Rat", "Sloth Head") //Yes we're re-using the rat bits as they'd be identical
+	body_marking_list = list("Rat Paw", "Sloth Head") //Yes we're re-using the rat bits as they'd be identical
 
 /datum/body_marking_set/vox
 	recommended_species = list("vox")
