@@ -1,3 +1,4 @@
+//THIS FILE WAS EDITED BY SKYRAT EDIT
 GLOBAL_LIST_INIT(command_positions, list(
 	"Captain",
 	"Head of Personnel",
@@ -49,13 +50,14 @@ GLOBAL_LIST_INIT(service_positions, list(
 	"Prisoner",
 	"Assistant"))
 
-
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Warden",
 	"Detective",
-	"Security Officer"))
-
+	"Security Officer",
+//SKYRAT EDIT ADDITION BEGIN - BLUESHIELD
+	"Blueshield")) //Skyrat addition
+//SKYRAT EDIT ADDITION END
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",
@@ -97,7 +99,7 @@ GLOBAL_PROTECT(exp_specialmap)
 
 //this is necessary because antags happen before job datums are handed out, but NOT before they come into existence
 //so I can't simply use job datum.department_head straight from the mind datum, laaaaame.
-/proc/get_department_heads(var/job_title)
+/proc/get_department_heads(job_title)
 	if(!job_title)
 		return list()
 
