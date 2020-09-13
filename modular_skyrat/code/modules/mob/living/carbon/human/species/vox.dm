@@ -20,6 +20,7 @@
 	liked_food = MEAT | FRIED
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 
 /datum/species/vox/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	var/datum/outfit/vox/O = new /datum/outfit/vox
