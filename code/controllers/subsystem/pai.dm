@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(pai)
 
 			if("submit")
 				if(candidate)
-					candidate.ready = 1
+					candidate.ready = TRUE
 					for(var/obj/item/paicard/p in pai_card_list)
 						if(!p.pai)
 							p.alertUpdate()
@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(pai)
 /datum/controller/subsystem/pai/proc/spam_again()
 	ghost_spam = FALSE
 
-/datum/controller/subsystem/pai/proc/check_ready(var/datum/pai_candidate/C)
+/datum/controller/subsystem/pai/proc/check_ready(datum/pai_candidate/C)
 	if(!C.ready)
 		return FALSE
 	for(var/mob/dead/observer/O in GLOB.player_list)
@@ -195,4 +195,4 @@ SUBSYSTEM_DEF(pai)
 	var/description
 	var/role
 	var/comments
-	var/ready = 0
+	var/ready = FALSE
