@@ -5,7 +5,7 @@
 	///Override of icon file of which we're taking the icons from for our limbs
 	var/limbs_icon
 	///A list of actual body markings on the owner of the species. Associative lists with keys named by limbs defines, pointing to a list with names and colors for the marking to be rendered. This is also stored in the DNA
-	var/list/body_markings = list()
+	var/list/list/body_markings = list()
 	///Override of the eyes icon file, used for Vox and maybe more in the future
 	var/eyes_icon
 

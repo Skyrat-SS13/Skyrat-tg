@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(sprite_accessories)
 GLOBAL_LIST_EMPTY(generic_accessories)
 
 GLOBAL_LIST_EMPTY(body_markings)
-GLOBAL_LIST_EMPTY(body_markings_per_limb)
+GLOBAL_LIST_EMPTY_TYPED(body_markings_per_limb, /list)
 GLOBAL_LIST_EMPTY(body_marking_sets)
 
 GLOBAL_LIST_EMPTY(loadout_items)

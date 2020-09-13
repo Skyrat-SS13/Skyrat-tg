@@ -1,7 +1,7 @@
 /obj/item/organ
 	///This is for associating an organ with a mutant bodypart. Look at tails for examples
 	var/mutantpart_key
-	var/list/mutantpart_info
+	var/list/list/mutantpart_info
 
 /obj/item/organ/Initialize()
 	. = ..()
