@@ -122,12 +122,6 @@
 	icon_state = "sharplight"
 	color_src = USE_ONE_COLOR*/
 
-/datum/sprite_accessory/snouts/mammal/skulldog
-	name = "Skulldog"
-	icon_state = "skulldog"
-	extra = TRUE
-	//extra_color_src = MATRIXED
-
 /datum/sprite_accessory/snouts/mammal/toucan
 	name = "Toucan"
 	icon_state = "toucan"
@@ -250,3 +244,49 @@
 /datum/sprite_accessory/snouts/mammal/fredpanda
 	name = "WahCoon (Top)"
 	icon_state = "fwah"
+
+/datum/sprite_accessory/snouts/mammal/skulldog
+	name = "Skulldog"
+	icon_state = "skulldog"
+	extra = TRUE
+	//extra_color_src = MATRIXED
+
+/datum/sprite_accessory/snouts/mammal/hanubus
+	name = "Anubus"
+	icon_state = "hanubus"
+
+/datum/sprite_accessory/snouts/mammal/hpanda
+	name = "Panda"
+	icon_state = "hpanda"
+
+/datum/sprite_accessory/snouts/mammal/hjackal
+	name = "Jackal"
+	icon_state = "hjackal"
+
+/datum/sprite_accessory/snouts/mammal/hspots
+	name = "Hyena"
+	icon_state = "hspots"
+
+/datum/sprite_accessory/snouts/mammal/hhorse
+	name = "Horse"
+	icon_state = "hhorse"
+
+/datum/sprite_accessory/snouts/mammal/hzebra
+	name = "Zebra"
+	icon_state = "hzebra"
+
+/datum/sprite_accessory/snouts/mammal/sbeak
+	name = "Corvid Beak"
+	icon_state = "sbeak"
+	extra = TRUE
+	//extra_color_src = MATRIXED
+
+/datum/sprite_accessory/snouts/mammal/shark_light
+	name = "Shark Light"
+	icon_state = "sharkblubber"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/snouts/mammal/rat
+	name = "Rat"
+	icon_state = "rat"
+	color_src = USE_MATRIXED_COLORS

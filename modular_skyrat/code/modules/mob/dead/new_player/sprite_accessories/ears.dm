@@ -150,3 +150,35 @@
 /datum/sprite_accessory/ears/mutant/wolf
 	name = "Wolf"
 	icon_state = "wolf"
+
+/datum/sprite_accessory/ears/mutant/antenna_simple1
+	name = "Insect antenna (coloring 2)"
+	icon_state = "antenna_simple1"
+
+/datum/sprite_accessory/ears/mutant/antenna_simple1_v2
+	name = "Insect antenna (coloring 3)"
+	icon_state = "antenna_simple1v2"
+
+/datum/sprite_accessory/ears/mutant/antenna_simple2
+	name = "Insect antenna 2 (coloring 2)"
+	icon_state = "antenna_simple2"
+
+/datum/sprite_accessory/ears/mutant/antenna_simple2_v2
+	name = "Insect antenna 2 (coloring 3)"
+	icon_state = "antenna_simple2v2"
+
+/datum/sprite_accessory/ears/mutant/antenna_fuzzball
+	name = "Fuzzball antenna (coloring 2+3)"
+	icon_state = "antenna_fuzzball"
+
+/datum/sprite_accessory/ears/mutant/antenna_fuzzball_v2
+	name = "Fuzzball antenna (coloring 3+1)"
+	icon_state = "antenna_fuzzballv2"
+
+/datum/sprite_accessory/ears/mutant/cobrahood
+	name = "Cobra Hood"
+	icon_state = "cobrahood"
+
+/datum/sprite_accessory/ears/mutant/cobrahoodears
+	name = "Cobra Hood (Ears)"
+	icon_state = "cobraears"

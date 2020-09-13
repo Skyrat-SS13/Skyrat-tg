@@ -199,3 +199,11 @@
 /datum/sprite_accessory/tails/mammal/wagging/guilmon
 	name = "Guilmon"
 	icon_state = "guilmon"
+
+/datum/sprite_accessory/tails/mammal/wagging/sharknofin
+	name = "Shark no fin"
+	icon_state = "sharknofin"
+
+/datum/sprite_accessory/tails/mammal/raptor
+    name = "Raptor"
+    icon_state = "raptor"

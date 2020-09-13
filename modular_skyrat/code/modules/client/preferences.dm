@@ -1438,7 +1438,7 @@
 
 				if("reset_color")
 					var/zone = href_list["key"]
-					var/name = text2num(href_list["name"])
+					var/name = href_list["name"]
 					if(!body_markings[zone] || !body_markings[zone][name])
 						return
 					var/datum/body_marking/BM = GLOB.body_markings[name]
