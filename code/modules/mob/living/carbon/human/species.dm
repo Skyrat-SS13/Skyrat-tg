@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	/// Default mutant bodyparts for this species, like horns. Don't forget to set one for every mutant bodypart you allow this species to have.
 	var/list/default_features = list()
 	/// Visible CURRENT bodyparts that are unique to a species. DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK SHIT UP! Changes to this list for non-species specific bodyparts (ie cat ears and tails) should be assigned at organ level if possible. Layer hiding is handled by [datum/species/handle_mutant_bodyparts()] below.
-	var/list/mutant_bodyparts = list()
+	var/list/list/mutant_bodyparts = list() //Skyrat edit - customization - needs to be a typed list for travis
 	///Internal organs that are unique to this race, like a tail.
 	var/list/mutant_organs = list()
 	///Multiplier for the race's speed. Positive numbers make it move slower, negative numbers make it move faster.
