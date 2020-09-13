@@ -516,8 +516,8 @@
 						var/penis_name = mutant_bodyparts["penis"][MUTANT_INDEX_NAME]
 						dat += print_bodypart_change_line("penis")
 						if(penis_name != "None")
-							dat += "<br><b>Length: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_size;task=change_genitals'>[features["penis_size"]]</a> cm."
-							dat += "<br><b>Girth: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_girth;task=change_genitals'>[features["penis_girth"]]</a> cm. circumference"
+							dat += "<br><b>Length: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_size;task=change_genitals'>[features["penis_size"]]</a> inches."
+							dat += "<br><b>Girth: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_girth;task=change_genitals'>[features["penis_girth"]]</a> inches circumference"
 
 						dat += "<h3>Testicles</h3>"
 						var/balls_name = mutant_bodyparts["testicles"][MUTANT_INDEX_NAME]
@@ -1548,18 +1548,18 @@
 				if("penis_taur_mode")
 					features["penis_taur_mode"] = !features["penis_taur_mode"]
 				if("penis_size")
-					var/new_length = input(user, "Choose your penis length:\n(2-50 in cm)", "Character Preference") as num|null
+					var/new_length = input(user, "Choose your penis length:\n(2-20 in inches)", "Character Preference") as num|null
 					if(new_length)
-						features["penis_size"] = clamp(round(new_length, 1), 2, 50)
+						features["penis_size"] = clamp(round(new_length, 1), 2, 20)
 						if(features["penis_girth"] >= new_length)
 							features["penis_girth"] = new_length - 1
 				if("penis_girth")
 					var/max_girth = 15
 					if(features["penis_size"] >= max_girth)
 						max_girth = features["penis_size"] - 1
-					var/new_girth = input(user, "Choose your penis girth:\n(3-[max_girth] (based on length) in cm)", "Character Preference") as num|null
+					var/new_girth = input(user, "Choose your penis girth:\n(1-[max_girth] (based on length) in inches)", "Character Preference") as num|null
 					if(new_girth)
-						features["penis_girth"] = clamp(round(new_girth, 1), 3, max_girth)
+						features["penis_girth"] = clamp(round(new_girth, 1), 1, max_girth)
 				if("balls_size")
 					var/new_size = input(user, "Choose your character's balls size:", "Character Preference") as null|anything in GLOB.preference_balls_sizes
 					if(new_size)
