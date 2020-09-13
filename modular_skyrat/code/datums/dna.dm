@@ -1,8 +1,8 @@
 /datum/dna
-	var/list/mutant_bodyparts = list()
+	var/list/list/mutant_bodyparts = list()
 	features = MANDATORY_FEATURE_LIST
 	///Body markings of the DNA's owner. This is for storing their original state for re-creating the character. They'll get changed on species mutation
-	var/list/body_markings = list()
+	var/list/list/body_markings = list()
 
 /datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
 	if(newblood_type)

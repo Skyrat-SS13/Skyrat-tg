@@ -144,8 +144,8 @@
 	/// Will the person see accessories not meant for their species to choose from
 	var/mismatched_customization = FALSE
 	var/allow_advanced_colors = FALSE
-	var/list/mutant_bodyparts = list()
-	var/list/body_markings = list()
+	var/list/list/mutant_bodyparts = list()
+	var/list/list/body_markings = list()
 
 	var/character_settings_tab = 0
 
