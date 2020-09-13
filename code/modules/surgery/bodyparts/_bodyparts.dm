@@ -94,6 +94,7 @@
 	var/obj/item/stack/current_gauze
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/grasp_self])
 	var/obj/item/self_grasp/grasped_by
+	var/rendered_bp_icon //Skyrat change - customization
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -113,8 +114,6 @@
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
 	return ..()
-
-	var/rendered_bp_icon //Skyrat change - customization
 
 
 /obj/item/bodypart/examine(mob/user)

@@ -32,10 +32,10 @@
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20, 150)
 			owner.jitteriness += 30
 			owner.stuttering += 30
-			owner.confused += 10
+			owner.add_confusion(10)
 		if(2)
 			to_chat(owner, "<span class='warning'>You feel [pick("disoriented", "confused", "dizzy")].</span>")
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10, 150)
 			owner.jitteriness += 10
 			owner.stuttering += 10
-			owner.confused += 3
+			owner.add_confusion(3)

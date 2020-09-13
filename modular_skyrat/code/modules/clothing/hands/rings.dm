@@ -9,7 +9,6 @@
 	icon_state = "ringgold"
 	inhand_icon_state = "gring"
 	body_parts_covered = 0
-	attack_verb = list("proposed")
 	transfer_prints = TRUE
 	strip_delay = 40
 

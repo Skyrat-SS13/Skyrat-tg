@@ -152,12 +152,6 @@
 	name = "Box of crayons"
 	path = /obj/item/storage/crayons
 
-/datum/loadout_item/backpack/toy/plushvar
-	name = "Ratvar Plushie"
-	path = /obj/item/toy/plush/plushvar
-	cost = 5
-	restricted_roles = list("Chaplain")
-
 /datum/loadout_item/backpack/toy/narplush
 	name = "Narsie Plushie"
 	path = /obj/item/toy/plush/narplush

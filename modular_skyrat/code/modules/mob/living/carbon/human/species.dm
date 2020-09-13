@@ -415,7 +415,7 @@
 					undershirt_overlay.color = "#" + H.undershirt_color
 				standing += undershirt_overlay
 
-		if(H.socks && H.get_num_legs(FALSE) >= 2 && !(mutant_bodyparts["taur"]) && !(H.underwear_visibility & UNDERWEAR_HIDE_SOCKS))
+		if(H.socks && H.num_legs >= 2 && !(mutant_bodyparts["taur"]) && !(H.underwear_visibility & UNDERWEAR_HIDE_SOCKS))
 			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[H.socks]
 			if(socks)
 				var/mutable_appearance/socks_overlay

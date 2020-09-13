@@ -17,5 +17,3 @@
 	limbs_icon = 'modular_skyrat/icons/mob/species/xeno_parts_greyscale.dmi'
 	damage_overlay_type = "xeno"
 
-/datum/species/xeno/qualifies_for_rank(rank, list/features)
-	return TRUE

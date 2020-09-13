@@ -122,7 +122,7 @@
 		if(S.hide_legs)
 			return
 
-	if(get_num_legs(FALSE) <2)
+	if(num_legs<2)
 		return
 
 	if(client && hud_used)

@@ -14,9 +14,6 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/icons/mob/species/mammal_parts_greyscale.dmi'
 
-/datum/species/mammal/qualifies_for_rank(rank, list/features)
-	return TRUE
-
 /datum/species/mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
