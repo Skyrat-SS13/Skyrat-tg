@@ -1556,7 +1556,7 @@
 				if("penis_girth")
 					var/max_girth = 15
 					if(features["penis_size"] >= max_girth)
-						max_girth = features["penis_size"] - 1
+						max_girth = features["penis_size"]
 					var/new_girth = input(user, "Choose your penis girth:\n(1-[max_girth] (based on length) in inches)", "Character Preference") as num|null
 					if(new_girth)
 						features["penis_girth"] = clamp(round(new_girth, 1), 1, max_girth)
