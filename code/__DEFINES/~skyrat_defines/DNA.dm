@@ -10,7 +10,7 @@
 
 //Some defines for sprite accessories
 
-// Which color source we're using when the accessory is added 
+// Which color source we're using when the accessory is added
 #define DEFAULT_PRIMARY		1
 #define DEFAULT_SECONDARY	2
 #define DEFAULT_TERTIARY	3
@@ -49,3 +49,7 @@
 #define PREVIEW_PREF_NAKED "Naked"
 
 #define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"balls_size" = 1)
+
+#define UNDERWEAR_HIDE_SOCKS		(1<<0)
+#define UNDERWEAR_HIDE_SHIRT		(1<<1)
+#define UNDERWEAR_HIDE_UNDIES		(1<<2)

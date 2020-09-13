@@ -23,63 +23,6 @@
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
 
-	/*if("tail_lizard" in mutant_bodyparts)
-		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "tail_lizard"
-
-	if("waggingtail_lizard" in mutant_bodyparts)
-		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "waggingtail_lizard"
-		else if ("tail_lizard" in mutant_bodyparts)
-			bodyparts_to_add -= "waggingtail_lizard"
-
-	if("tail_human" in mutant_bodyparts)
-		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "tail_human"
-
-
-	if("waggingtail_human" in mutant_bodyparts)
-		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "waggingtail_human"
-		else if ("tail_human" in mutant_bodyparts)
-			bodyparts_to_add -= "waggingtail_human"
-
-	if("spines" in mutant_bodyparts)
-		if(!H.dna.features["spines"] || H.dna.features["spines"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "spines"
-
-	if("waggingspines" in mutant_bodyparts)
-		if(!H.dna.features["spines"] || H.dna.features["spines"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "waggingspines"
-		else if ("tail" in mutant_bodyparts)
-			bodyparts_to_add -= "waggingspines"
-
-	if("snout" in mutant_bodyparts) //Take a closer look at that snout!
-		if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD || HD.status == BODYPART_ROBOTIC)
-			bodyparts_to_add -= "snout"
-
-	if("frills" in mutant_bodyparts)
-		if(!H.dna.features["frills"] || H.dna.features["frills"] == "None" || H.head && (H.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC)
-			bodyparts_to_add -= "frills"
-
-	if("horns" in mutant_bodyparts)
-		if(!H.dna.features["horns"] || H.dna.features["horns"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
-			bodyparts_to_add -= "horns"
-
-	if("ears" in mutant_bodyparts)
-		if(!H.dna.features["ears"] || H.dna.features["ears"] == "None" || H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
-			bodyparts_to_add -= "ears"
-
-	if("wings" in mutant_bodyparts)
-		if(!H.dna.features["wings"] || H.dna.features["wings"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception))))
-			bodyparts_to_add -= "wings"
-
-	if("wings_open" in mutant_bodyparts)
-		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception)))
-			bodyparts_to_add -= "wings_open"
-		else if ("wings" in mutant_bodyparts)
-			bodyparts_to_add -= "wings_open"*/
-
 	//Digitigrade legs are stuck in the phantom zone between true limbs and mutant bodyparts. Mainly it just needs more agressive updating than most limbs.
 	var/update_needed = FALSE
 	var/not_digitigrade = TRUE
@@ -448,7 +391,7 @@
 
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))
-		if(H.underwear)
+		if(H.underwear && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
 			var/datum/sprite_accessory/underwear/underwear = GLOB.underwear_list[H.underwear]
 			var/mutable_appearance/underwear_overlay
 			if(underwear)
@@ -460,7 +403,7 @@
 					underwear_overlay.color = "#" + H.underwear_color
 				standing += underwear_overlay
 
-		if(H.undershirt)
+		if(H.undershirt && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
 			var/datum/sprite_accessory/undershirt/undershirt = GLOB.undershirt_list[H.undershirt]
 			if(undershirt)
 				var/mutable_appearance/undershirt_overlay
@@ -472,7 +415,7 @@
 					undershirt_overlay.color = "#" + H.undershirt_color
 				standing += undershirt_overlay
 
-		if(H.socks && H.get_num_legs(FALSE) >= 2 && !(mutant_bodyparts["taur"]))
+		if(H.socks && H.get_num_legs(FALSE) >= 2 && !(mutant_bodyparts["taur"]) && !(H.underwear_visibility & UNDERWEAR_HIDE_SOCKS))
 			var/datum/sprite_accessory/socks/socks = GLOB.socks_list[H.socks]
 			if(socks)
 				var/mutable_appearance/socks_overlay

@@ -20,8 +20,8 @@
 /obj/item/organ/genital/proc/update_sprite_suffix()
 	sprite_suffix = "[get_sprite_size_string()]"
 
-/obj/item/organ/genital/proc/get_description_string()
-	return "genitals"
+/obj/item/organ/genital/proc/get_description_string(datum/sprite_accessory/genital/gas)
+	return "You see genitals"
 
 /obj/item/organ/genital/proc/update_genital_icon_state()
 	return
@@ -49,6 +49,9 @@
 	mutantpart_key = "penis"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	var/girth = 9
+
+/obj/item/organ/genital/penis/get_description_string(datum/sprite_accessory/genital/gas)
+	return "You see a [lowertext(gas.name)] penis. You estimate it's [genital_size] inches long, and [girth] inches in circumference."
 
 /obj/item/organ/genital/penis/update_genital_icon_state()
 	var/size_affix
@@ -98,6 +101,9 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TESTICLES
 
+/obj/item/organ/genital/testicles/get_description_string(datum/sprite_accessory/genital/gas)
+	return "You see a pair of testicles, they look [lowertext(balls_size_to_description(genital_size))]."
+
 /obj/item/organ/genital/testicles/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	var/type = lowertext(DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME])
@@ -120,6 +126,8 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
 
+/obj/item/organ/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
+	return "You see a [lowertext(gas.name)] vagina."
 
 /obj/item/organ/genital/womb
 	name = "womb"
@@ -143,6 +151,9 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
 	var/lactates = FALSE
+
+/obj/item/organ/genital/breasts/get_description_string(datum/sprite_accessory/genital/gas)
+	return "You see a [lowertext(gas.name)] of breasts. You estimate they are [breasts_size_to_cup(genital_size)]-cups."
 
 /obj/item/organ/genital/breasts/update_genital_icon_state()
 	var/max_size = 5
@@ -199,7 +210,7 @@
 			return text2num(key)
 	return 0
 
-/mob/living/carbon/verb/toggle_genitals()
+/mob/living/carbon/human/verb/toggle_genitals()
 	set category = "IC"
 	set name = "Expose/Hide genitals"
 	set desc = "Allows you to toggle which genitals should show through clothes or not."

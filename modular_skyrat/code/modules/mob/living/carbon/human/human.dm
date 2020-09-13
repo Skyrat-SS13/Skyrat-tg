@@ -2,6 +2,22 @@
 	. = ..()
 	if(href_list["lookup_info"])
 		switch(href_list["lookup_info"])
+			if("genitals")
+				var/list/line = list()
+				for(var/genital in list("penis", "testicles", "vagina", "breasts"))
+					if(!dna.species.mutant_bodyparts[genital])
+						continue
+					var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+					if(!G)
+						continue
+					if(G.is_hidden(src))
+						continue
+					var/obj/item/organ/genital/ORG = getorganslot(G.associated_organ_slot)
+					if(!ORG)
+						continue
+					line += ORG.get_description_string(G)
+				if(length(line))
+					to_chat(usr, "<span class='notice'>[jointext(line, "\n")]</span>")
 			if("flavor_text")
 				if(length(dna.features["flavor_text"]))
 					var/datum/browser/popup = new(usr, "[name]'s flavor text", "[name]'s Flavor Text", 500, 200)
@@ -76,3 +92,33 @@
 
 /mob/living/carbon/human/species/roundstartslime
 	race = /datum/species/jelly/roundstartslime
+
+/mob/living/carbon/human/verb/toggle_undies()
+	set category = "IC"
+	set name = "Toggle underwear visibility"
+	set desc = "Allows you to toggle which underwear should show or be hidden. Underwear will obscure genitals."
+
+	if(stat != CONSCIOUS)
+		to_chat(usr, "<span class='warning'>You can't toggle underwear visibility right now...</span>")
+		return
+
+	var/underwear_button = underwear_visibility & UNDERWEAR_HIDE_UNDIES ? "Show underwear" : "Hide underwear"
+	var/undershirt_button = underwear_visibility & UNDERWEAR_HIDE_SHIRT ? "Show shirt" : "Hide shirt"
+	var/socks_button = underwear_visibility & UNDERWEAR_HIDE_SOCKS ? "Show socks" : "Hide socks"
+	var/list/choice_list = list("[underwear_button]" = 1,"[undershirt_button]" = 2,"[socks_button]" = 3,"Show all" = 4, "Hide all" = 5)
+	var/picked_visibility = input(src, "Choose visibility setting", "Show/Hide underwear") as null|anything in choice_list
+	if(picked_visibility)
+		var/picked_choice = choice_list[picked_visibility]
+		switch(picked_choice)
+			if(1)
+				underwear_visibility ^= UNDERWEAR_HIDE_UNDIES
+			if(2)
+				underwear_visibility ^= UNDERWEAR_HIDE_SHIRT
+			if(3)
+				underwear_visibility ^= UNDERWEAR_HIDE_SOCKS
+			if(4)
+				underwear_visibility = NONE
+			if(5)
+				underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
+		update_body()
+	return

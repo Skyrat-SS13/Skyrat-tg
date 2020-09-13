@@ -35,6 +35,11 @@
 	special_x_dimension = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 
+/datum/sprite_accessory/genital/penis/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
+		return TRUE
+	. = ..()
+
 /datum/sprite_accessory/genital/penis/get_special_icon(mob/living/carbon/human/H)
 	var/returned = icon
 	if(H.dna.species.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
@@ -97,6 +102,11 @@
 	key = "testicles"
 	var/has_size = TRUE
 
+/datum/sprite_accessory/genital/testicles/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
+		return TRUE
+	. = ..()
+
 /datum/sprite_accessory/genital/testicles/none
 	icon_state = "none"
 	name = "None"
@@ -121,6 +131,12 @@
 	always_color_customizable = TRUE
 	default_color = "fcc"
 	var/alt_aroused = TRUE
+
+/datum/sprite_accessory/genital/vagina/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
+		return TRUE
+	. = ..()
+
 
 /datum/sprite_accessory/genital/vagina/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
@@ -189,6 +205,11 @@
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"
 	default_color = DEFAULT_SKIN_OR_PRIMARY
+
+/datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
+		return TRUE
+	. = ..()
 
 /datum/sprite_accessory/genital/breasts/none
 	icon_state = "none"

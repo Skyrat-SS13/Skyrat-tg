@@ -149,6 +149,9 @@
 				previewJob.equip(mannequin, TRUE, preference_source = parent)
 		if(PREVIEW_PREF_LOADOUT)
 			equip_preference_loadout(mannequin, TRUE, previewJob)
+		if(PREVIEW_PREF_NAKED)
+			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
+			mannequin.update_body()
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))

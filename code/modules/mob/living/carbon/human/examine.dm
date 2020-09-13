@@ -421,6 +421,13 @@
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 
 	//SKYRAT EDIT START - customization - Flavor text and OOC prefs and the kinds
+	for(var/genital in list("penis", "testicles", "vagina", "breasts"))
+		if(dna.species.mutant_bodyparts[genital])
+			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+			if(G)
+				if(!(G.is_hidden(src)))
+					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
+					break
 	if(!skipface)
 		var/line
 		if(length(dna.features["flavor_text"]))
@@ -428,7 +435,7 @@
 			if(length_char(message) <= 40)
 				line = "<span class='notice'>[message]</span>"
 			else
-				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</span></a>"
+				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
 		if(client)
 			if(length(client.prefs.ooc_prefs))
 				line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>(OOC)</a></span>"
