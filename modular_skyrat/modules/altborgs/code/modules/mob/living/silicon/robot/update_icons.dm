@@ -3,11 +3,20 @@
 	update_dogborg_icons()
 
 /mob/living/silicon/robot/proc/update_dogborg_icons()
+	cut_overlays()
 	icon = (module.cyborg_icon_override ? module.cyborg_icon_override : initial(icon))
-	if(laser)
-		add_overlay("laser")//Is this even used??? - Yes borg/inventory.dm
-	if(disabler)
-		add_overlay("disabler")//ditto
+	var/extra_overlay
+	for(var/i in held_items)
+		var/obj/item/O = i
+		if(istype(O,/obj/item/gun/energy/laser/cyborg))
+			extra_overlay = "laser"
+			break
+		if(istype(O,/obj/item/gun/energy/disabler/cyborg) || istype(O,/obj/item/gun/energy/e_gun/advtaser/cyborg))
+			extra_overlay = "disabler"
+			break
+
+	if(extra_overlay)
+		add_overlay(extra_overlay)
 
 
 	//if(sleeper_g && module.sleeper_overlay)
@@ -26,14 +35,13 @@
 		pixel_x = initial(pixel_x)
 
 	if(client && stat != DEAD && module.dogborg)
-		if(resting)
-			if(sitting)
-				icon_state = "[module.cyborg_base_icon]-sit"
-			if(bellyup)
-				icon_state = "[module.cyborg_base_icon]-bellyup"
-			else if(!sitting && !bellyup)
+		switch(robot_resting)
+			if(ROBOT_REST_NORMAL)
 				icon_state = "[module.cyborg_base_icon]-rest"
-			cut_overlays()
-		else
-			icon_state = "[module.cyborg_base_icon]"
+			if(ROBOT_REST_SITTING)
+				icon_state = "[module.cyborg_base_icon]-sit"
+			if(ROBOT_REST_BELLY_UP)
+				icon_state = "[module.cyborg_base_icon]-bellyup"
+			else
+				icon_state = "[module.cyborg_base_icon]"
 	update_fire()

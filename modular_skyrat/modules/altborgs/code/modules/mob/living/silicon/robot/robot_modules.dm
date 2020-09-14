@@ -13,8 +13,8 @@
 	basic_modules += new /obj/item/dogborg_nose(src)
 	basic_modules += new /obj/item/dogborg_tongue(src)
 	var/mob/living/silicon/robot/R = loc
-	R.verbs += /mob/living/silicon/robot/proc/robot_lay_down
-	R.verbs += /mob/living/silicon/robot/proc/rest_style
+	add_verb(R , /mob/living/silicon/robot/proc/robot_lay_down)
+	add_verb(R , /mob/living/silicon/robot/proc/rest_style)
 /* - TODO ADD SLEEPERS
 	var/obj/item/dogborg/sleeper/K9/flavour/I = new(src)
 	if(istype(src, /obj/item/robot_module/engineering))

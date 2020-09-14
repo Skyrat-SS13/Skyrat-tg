@@ -1,10 +1,8 @@
 /mob/living/silicon/robot/unequip_module_from_slot(obj/item/O)
 	..()
 	if(istype(O,/obj/item/gun/energy/laser/cyborg))
-		laser = FALSE
 		update_icons()
 	else if(istype(O,/obj/item/gun/energy/disabler/cyborg) || istype(O,/obj/item/gun/energy/e_gun/advtaser/cyborg))
-		disabler = FALSE
 		update_icons() //PUT THE GUN AWAY
 	/* - TODO ADD SLEEPERS
 	else if(istype(O,/obj/item/dogborg/sleeper))
@@ -18,8 +16,6 @@
 /mob/living/silicon/robot/equip_module_to_slot(obj/item/O)
 	..()
 	if(istype(O,/obj/item/gun/energy/laser/cyborg))
-		laser = TRUE
 		update_icons() //REEEEEEACH FOR THE SKY
 	if(istype(O,/obj/item/gun/energy/disabler/cyborg) || istype(O,/obj/item/gun/energy/e_gun/advtaser/cyborg))
-		disabler = TRUE
 		update_icons()

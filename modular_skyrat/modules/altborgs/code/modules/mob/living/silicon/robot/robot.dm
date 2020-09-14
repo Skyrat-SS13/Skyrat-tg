@@ -1,54 +1,55 @@
 /mob/living/silicon/robot
-	var/sitting = FALSE
-	var/bellyup = FALSE
+	var/robot_resting = FALSE
 	var/dogborg = FALSE
-	var/disabler
-	var/laser
-	var/sleeper_g
-	var/sleeper_r
-	var/sleeper_nv
+
+/mob/living/silicon/robot/doMove(atom/destination) //Could potentially be a signal instead
+	. = ..()
+	if(robot_resting)
+		robot_resting = FALSE
+		update_icons()
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"
-	set category = "Robot Commands"
+	set category = "IC"
 	set desc = "Select your resting pose."
-	sitting = FALSE
-	bellyup = FALSE
+	if(!dogborg)
+		to_chat(src, "<span class='warning'>You can't do that!</span>")
 	var/choice = alert(src, "Select resting pose", "", "Resting", "Sitting", "Belly up")
 	switch(choice)
 		if("Resting")
-			update_icons()
-			return FALSE
+			robot_resting = ROBOT_REST_NORMAL
 		if("Sitting")
-			sitting = TRUE
+			robot_resting = ROBOT_REST_SITTING
 		if("Belly up")
-			bellyup = TRUE
+			robot_resting = ROBOT_REST_BELLY_UP
 	update_icons()
 
 /mob/living/silicon/robot/proc/robot_lay_down()
 	set name = "Lay down"
-	set category = "Robot Commands"
+	set category = "IC"
+	if(!dogborg)
+		to_chat(src, "<span class='warning'>You can't do that!</span>")
 	if(stat != CONSCIOUS) //Make sure we don't enable movement when not concious
 		return
-	if(resting)
+	if(robot_resting)
 		to_chat(src, "<span class='notice'>You are now getting up.</span>")
-		resting = FALSE
+		robot_resting = FALSE
 		mobility_flags = MOBILITY_FLAGS_DEFAULT
 	else
 		to_chat(src, "<span class='notice'>You are now laying down.</span>")
-		resting = TRUE
-		mobility_flags &= ~MOBILITY_MOVE
+		robot_resting = ROBOT_REST_NORMAL
 	update_icons()
 
 /mob/living/silicon/robot/update_mobility()
 	..()
 	if(dogborg)
-		resting = FALSE
+		robot_resting = FALSE
 		update_icons()
 
 /mob/living/silicon/robot/update_module_innate()
 	..()
-	hands.icon = (module.moduleselect_alternate_icon ? module.moduleselect_alternate_icon : initial(hands.icon))
+	if(hands)
+		hands.icon = (module.moduleselect_alternate_icon ? module.moduleselect_alternate_icon : initial(hands.icon))
 
 /mob/living/silicon/robot/modules/miner/skyrat
 	set_module = /obj/item/robot_module/miner/skyrat
