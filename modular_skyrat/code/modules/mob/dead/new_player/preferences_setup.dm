@@ -147,15 +147,16 @@
 			if(previewJob)
 				mannequin.job = previewJob.title
 				previewJob.equip(mannequin, TRUE, preference_source = parent)
+			mannequin.underwear_visibility = NONE
+			mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
 		if(PREVIEW_PREF_LOADOUT)
 			mannequin.underwear_visibility = NONE
 			equip_preference_loadout(mannequin, TRUE, previewJob)
+			mannequin.underwear_visibility = NONE
+			mannequin.update_body()
 		if(PREVIEW_PREF_NAKED)
 			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
-			mannequin.update_body()
-	if(preview_pref != PREVIEW_PREF_NAKED && mannequin.underwear_visibility != NONE)
-		mannequin.underwear_visibility = NONE
-		mannequin.update_body()
+			mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
