@@ -9,8 +9,6 @@ MODULE ID: ALTBORGS
 Adds all alternate borg presets to the game, ported from Skyrat.
 
 ### TG Proc Changes:
-
-- REMOVAL: code\modules\mob\living\silicon\robot\robot.dm > /mob/living/silicon/robot/update_icons()
 - ADDITION: code\modules\mob\living\silicon\robot\robot_modules.dm > /obj/item/robot_module/proc/transform_to(new_module_type)
 
 ### Defines:
