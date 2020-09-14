@@ -430,10 +430,10 @@
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 	//SKYRAT CHANGES BEGIN - module GUNPOINT
 	if(gunpointing)
-		. += "<b>[t_He] [t_is] holding [gunpointing.target.name] at gunpoint with [gunpointing.aimed_gun.name]!</b>\n"
+		. += "<span class='warning'><b>[t_He] [t_is] holding [gunpointing.target.name] at gunpoint with [gunpointing.aimed_gun.name]!</b></span>\n"
 	if(length(gunpointed))
 		for(var/datum/gunpoint/GP in gunpointed)
-			. += "<b>[GP.source.name] [GP.source.p_are()] holding [t_him] at gunpoint with [GP.aimed_gun.name]!</b>\n"
+			. += "<span class='warning'><b>[GP.source.name] [GP.source.p_are()] holding [t_him] at gunpoint with [GP.aimed_gun.name]!</b></span>\n"
 	//SKYRAT CHANGES END
 	. += "*---------*</span>"
 
