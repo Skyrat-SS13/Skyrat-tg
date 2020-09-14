@@ -124,7 +124,7 @@
 	var/mob/living/mob_occupant = occupant
 	if(mess)
 		. += "It's filled with blood and viscera. You swear you can see it moving..."
-	if(is_operational() && istype(mob_occupant))
+	if(is_operational && istype(mob_occupant))
 		if(mob_occupant.stat != DEAD)
 			. += "Current clone cycle is [round(get_completion())]% complete."
 
@@ -248,7 +248,7 @@
 /obj/machinery/clonepod/process()
 	var/mob/living/mob_occupant = occupant
 
-	if(!is_operational()) //Autoeject if power is lost
+	if(!is_operational) //Autoeject if power is lost
 		if(mob_occupant)
 			go_out()
 			log_cloning("[key_name(mob_occupant)] ejected from [src] at [AREACOORD(src)] due to power loss.")
@@ -461,12 +461,12 @@
 		log_cloning("[key_name(mob_occupant)] destroyed within [src] at [AREACOORD(src)] due to malfunction.")
 		QDEL_IN(mob_occupant, 40)
 
-/obj/machinery/clonepod/container_resist(mob/living/user)
+/obj/machinery/clonepod/container_resist_act(mob/living/user)
 	if(user.stat == CONSCIOUS)
 		go_out()
 
 /obj/machinery/clonepod/relaymove(mob/user)
-	container_resist(user)
+	container_resist_act(user)
 
 /obj/machinery/clonepod/emp_act(severity)
 	. = ..()
