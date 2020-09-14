@@ -784,7 +784,7 @@
 		/obj/item/shockpaddles/cyborg,
 		/obj/item/healthanalyzer/advanced,
 		/obj/item/retractor/advanced,
-		/obj/item/surgicaldrill/advanced,
+		/obj/item/surgicaldrill,
 		/obj/item/scalpel/advanced,
 		/obj/item/gun/medbeam,
 		/obj/item/reagent_containers/borghypo/syndicate,

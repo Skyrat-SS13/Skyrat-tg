@@ -425,7 +425,6 @@
 /mob/living/silicon/robot/regenerate_icons()
 	return update_icons()
 
-/* - SKYRAT EDIT BEGIN REMOVAL - ALTBORGS - MOVED TO UPDATE_ICONS.DM IN MODULE FOLDER
 /mob/living/silicon/robot/update_icons()
 	cut_overlays()
 	icon_state = module.cyborg_base_icon
@@ -451,7 +450,6 @@
 		head_overlay.pixel_y += hat_offset
 		add_overlay(head_overlay)
 	update_fire()
-*/ // SKYRAT EDIT REMOVAL END
 
 /mob/living/silicon/robot/proc/self_destruct()
 	if(emagged)
