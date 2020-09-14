@@ -1,6 +1,9 @@
 //#define LOWMEMORYMODE //uncomment this to load centcom and runtime station and thats it.
 
 #include "map_files\generic\CentCom.dmm"
+// SKYRAT EDIT ADDITION BEGIN - MODULAR_MAPS
+#include "map_files\generic\Offstation_skyrat.dmm"
+// SKYRAT EDIT ADDITION END - MODULAR_MAPS
 
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
