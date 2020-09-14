@@ -12,7 +12,7 @@ Allows anyone with a gun to use SHIFT + MMB to hold someone at gunpoint, much li
 - /datum/radial_menu/proc/setup_menu() - modified
 - /obj/item/proc/attack_self() -modified
 - /obj/item/radio/talk_into() -modified
-- /obj/item/radio/talk_into() -modified
+- /obj/item/radio/headset/talk_into() - modified
 - /mob/living/carbon/human/examine() - modified
 - /mob/living/proc/update_mobility() - modified
 - /mob/living/proc/MobBump() - modified
