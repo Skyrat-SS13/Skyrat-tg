@@ -3,7 +3,6 @@
 	update_dogborg_icons()
 
 /mob/living/silicon/robot/proc/update_dogborg_icons()
-	cut_overlays()
 	icon = (module.cyborg_icon_override ? module.cyborg_icon_override : initial(icon))
 	var/extra_overlay
 	for(var/i in held_items)
