@@ -97,7 +97,9 @@ There are several things that need to be remembered:
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
 
-/*/mob/living/carbon/human/update_inv_w_uniform() SKYRAT EDIT - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/human/update_inv_w_uniform()
 	remove_overlay(UNIFORM_LAYER)
 
 	if(client && hud_used)
@@ -138,7 +140,9 @@ There are several things that need to be remembered:
 		overlays_standing[UNIFORM_LAYER] = uniform_overlay
 
 	apply_overlay(UNIFORM_LAYER)
-	update_mutant_bodyparts()*/
+	update_mutant_bodyparts()
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_wear_id()
@@ -199,7 +203,9 @@ There are several things that need to be remembered:
 	apply_overlay(GLOVES_LAYER)
 
 
-/*/mob/living/carbon/human/update_inv_glasses() SKYRAT EDIT - customization - moved to modular
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //decapitated
@@ -224,7 +230,9 @@ There are several things that need to be remembered:
 				glasses_overlay.pixel_x += dna.species.offset_features[OFFSET_GLASSES][1]
 				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 			overlays_standing[GLASSES_LAYER] = glasses_overlay
-	apply_overlay(GLASSES_LAYER)*/
+	apply_overlay(GLASSES_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_ears()
@@ -252,7 +260,9 @@ There are several things that need to be remembered:
 	apply_overlay(EARS_LAYER)
 
 
-/*/mob/living/carbon/human/update_inv_shoes() SKYRAT EDIT - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/human/update_inv_shoes()
 	remove_overlay(SHOES_LAYER)
 
 	if(num_legs < 2)
@@ -275,7 +285,9 @@ There are several things that need to be remembered:
 			shoes_overlay.pixel_y += dna.species.offset_features[OFFSET_SHOES][2]
 		overlays_standing[SHOES_LAYER] = shoes_overlay
 
-	apply_overlay(SHOES_LAYER)*/
+	apply_overlay(SHOES_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_s_store()
@@ -334,7 +346,9 @@ There are several things that need to be remembered:
 
 
 
-/*/mob/living/carbon/human/update_inv_wear_suit() SKYRAT EDIT - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/human/update_inv_wear_suit()
 	remove_overlay(SUIT_LAYER)
 
 	if(client && hud_used)
@@ -356,7 +370,9 @@ There are several things that need to be remembered:
 	update_hair()
 	update_mutant_bodyparts()
 
-	apply_overlay(SUIT_LAYER)*/
+	apply_overlay(SUIT_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_pockets()
@@ -488,7 +504,9 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 */
-/*/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null) SKYRAT EDIT - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null)
 
 	//Find a valid icon_state from variables+arguments
 	var/t_state
@@ -528,7 +546,9 @@ generate/load female uniform sprites matching all previously decided variables
 	standing.alpha = alpha
 	standing.color = color
 
-	return standing*/
+	return standing
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 /obj/item/proc/get_held_offsets()
@@ -559,8 +579,8 @@ generate/load female uniform sprites matching all previously decided variables
 		. += "-coloured-[skin_tone]"
 	else if(dna.species.fixed_mut_color)
 		. += "-coloured-[dna.species.fixed_mut_color]"
-	else if(MUTCOLORS in dna.species.species_traits) //Skyrat edit
-		. += "-coloured-[dna.features["mcolor"]]" //Skyrat edit
+	else if(MUTCOLORS in dna.species.species_traits) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+		. += "-coloured-[dna.features["mcolor"]]" //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	else
 		. += "-not_coloured"
 

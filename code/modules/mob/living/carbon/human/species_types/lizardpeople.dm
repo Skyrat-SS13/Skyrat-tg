@@ -8,7 +8,7 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("tail_lizard", "snout", "spines", "horns", "frills", "body_markings", "legs")
 	mutanttongue = /obj/item/organ/tongue/lizard
-	//mutant_organs = list(/obj/item/organ/tail/lizard) //Skyrat change
+	//mutant_organs = list(/obj/item/organ/tail/lizard) //SKYRAT EDIT REMOVAL - CUSTOMIZATION
 	coldmod = 1.5
 	heatmod = 0.67
 	payday_modifier = 0.75
@@ -45,7 +45,9 @@
 
 	return randname
 
-/*//I wag in death SKYRAT EDIT - customization
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+//I wag in death SKYRAT EDIT - customization
 /datum/species/lizard/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
 		stop_wagging_tail(H)
@@ -75,7 +77,9 @@
 		mutant_bodyparts -= "waggingspines"
 		mutant_bodyparts |= "tail_lizard"
 		mutant_bodyparts |= "spines"
-	H.update_body()*/
+	H.update_body()
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/species/lizard/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	var/real_tail_type = C.dna.features["tail_lizard"]

@@ -1,6 +1,8 @@
 GLOBAL_LIST_EMPTY(preferences_datums)
 
-/*/datum/preferences Moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
 	var/path
@@ -1961,4 +1963,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z,[namedata["allow_numbers"] ? ",0-9," : ""] -, ' and .</font>")
 			return
 		else
-			custom_names[name_id] = sanitized_name*/
+			custom_names[name_id] = sanitized_name
+*/
+//SKYRAT EDIT REMOVAL END

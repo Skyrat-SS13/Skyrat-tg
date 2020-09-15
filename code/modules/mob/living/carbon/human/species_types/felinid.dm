@@ -8,15 +8,17 @@
 	mutant_bodyparts = list("ears", "tail_human")
 	default_features = list("mcolor" = "FFF", "tail_human" = "Cat", "ears" = "Cat", "wings" = "None")
 
-	//mutantears = /obj/item/organ/ears/cat //Skyrat change
-	//mutant_organs = list(/obj/item/organ/tail/cat) //Skyrat change
+	//mutantears = /obj/item/organ/ears/cat //SKYRAT EDIT REMOVAL - CUSTOMIZATION
+	//mutant_organs = list(/obj/item/organ/tail/cat) //SKYRAT EDIT REMOVAL - CUSTOMIZATION
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/felinid
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
 	payday_modifier = 0.75
 
 
-/*//Curiosity killed the cat's wagging tail. SKYRAT EDIT - Customization
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+//Curiosity killed the cat's wagging tail.
 /datum/species/human/felinid/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
 		stop_wagging_tail(H)
@@ -36,7 +38,9 @@
 	if("tail_human" in mutant_bodyparts)
 		mutant_bodyparts -= "tail_human"
 		mutant_bodyparts |= "waggingtail_human"
-	H.update_body()*/
+	H.update_body()
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/species/human/felinid/stop_wagging_tail(mob/living/carbon/human/H)
 	if("waggingtail_human" in mutant_bodyparts)

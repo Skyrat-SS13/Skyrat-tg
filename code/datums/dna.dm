@@ -255,15 +255,18 @@
 	uni_identity = generate_uni_identity()
 	unique_enzymes = generate_unique_enzymes()
 
-/*/datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE) SKYRAT - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
 	if(newblood_type)
 		blood_type = newblood_type
 	unique_enzymes = generate_unique_enzymes()
 	uni_identity = generate_uni_identity()
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
-	features = random_features()*/
-
+	features = random_features()
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 
@@ -295,7 +298,9 @@
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
-/*/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE) moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(mrace && has_dna())
 		var/datum/species/new_race
 		if(ispath(mrace))
@@ -313,7 +318,9 @@
 			qdel(language_holder)
 			var/species_holder = initial(mrace.species_language_holder)
 			language_holder = new species_holder(src)
-		update_atom_languages()*/
+		update_atom_languages()
+*/
+//SKYRAT EDIT REMOVAL BEGIN
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()

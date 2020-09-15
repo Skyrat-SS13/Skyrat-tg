@@ -429,7 +429,7 @@
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 
-	//SKYRAT EDIT START - customization - Flavor text and OOC prefs and the kinds
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	for(var/genital in list("penis", "testicles", "vagina", "breasts"))
 		if(dna.species.mutant_bodyparts[genital])
 			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
@@ -450,7 +450,7 @@
 				line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
 		if(line)
 			. += line
-	//END OF SKYRAT EDIT
+	//SKYRAT EDIT ADDITION END
 	. += "*---------*</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)

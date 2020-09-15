@@ -104,7 +104,9 @@
 	apply_overlay(DAMAGE_LAYER)
 
 
-/*/mob/living/carbon/update_inv_wear_mask() SKYRAT CHANGE - moved to modular
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/update_inv_wear_mask()
 	remove_overlay(FACEMASK_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
@@ -119,7 +121,9 @@
 			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi')
 		update_hud_wear_mask(wear_mask)
 
-	apply_overlay(FACEMASK_LAYER)*/
+	apply_overlay(FACEMASK_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /mob/living/carbon/update_inv_neck()
 	remove_overlay(NECK_LAYER)
@@ -148,7 +152,9 @@
 
 	apply_overlay(BACK_LAYER)
 
-/*/mob/living/carbon/update_inv_head() SKYRAT CHANGE - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
@@ -162,7 +168,9 @@
 		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi')
 		update_hud_head(head)
 
-	apply_overlay(HEAD_LAYER)*/
+	apply_overlay(HEAD_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/update_inv_handcuffed()
@@ -215,7 +223,9 @@
 		var/obj/item/bodypart/BP = X
 		BP.original_owner = src
 
-/*/mob/living/carbon/proc/update_body_parts() SKYRAT EDIT - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/proc/update_body_parts()
 	//CHECK FOR UPDATE
 	var/oldkey = icon_render_key
 	icon_render_key = generate_icon_render_key()
@@ -243,7 +253,9 @@
 		limb_icon_cache[icon_render_key] = new_limbs
 
 	apply_overlay(BODYPARTS_LAYER)
-	update_damage_overlays()*/
+	update_damage_overlays()
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 
@@ -263,7 +275,9 @@
 
 //produces a key based on the mob's limbs
 
-/*/mob/living/carbon/proc/generate_icon_render_key() SKYRAT EDIT - moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/mob/living/carbon/proc/generate_icon_render_key()
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		. += "-[BP.body_zone]"
@@ -277,7 +291,9 @@
 			. += "-robotic"
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
-		. += "-husk"*/
+		. += "-husk"
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 //change the mob's icon to the one matching its key

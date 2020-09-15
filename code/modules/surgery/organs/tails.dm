@@ -18,7 +18,9 @@
 	desc = "A severed cat tail. Who's wagging now?"
 	tail_type = "Cat"
 
-/*/obj/item/organ/tail/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+/*
+/obj/item/organ/tail/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
 	..()
 	if(istype(H))
 		if(!("tail_human" in H.dna.species.mutant_bodyparts))
@@ -32,7 +34,9 @@
 		H.dna.features["tail_human"] = "None"
 		H.dna.species.mutant_bodyparts -= "tail_human"
 		color = H.hair_color
-		H.update_body()*/
+		H.update_body()
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/organ/tail/lizard
 	name = "lizard tail"
@@ -41,11 +45,13 @@
 	tail_type = "Smooth"
 	var/spines = "None"
 
-/*/obj/item/organ/tail/lizard/Initialize()
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+/*
+/obj/item/organ/tail/lizard/Initialize()
 	..()
-	color = "#"+ random_color()*/
+	color = "#"+ random_color()
 
-/*/obj/item/organ/tail/lizard/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/tail/lizard/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
 	..()
 	if(istype(H))
 		// Checks here are necessary so it wouldn't overwrite the tail of a lizard it spawned in
@@ -56,9 +62,9 @@
 		if(!("spines" in H.dna.species.mutant_bodyparts))
 			H.dna.features["spines"] = spines
 			H.dna.species.mutant_bodyparts |= "spines"
-		H.update_body()*/
+		H.update_body()
 
-/*/obj/item/organ/tail/lizard/Remove(mob/living/carbon/human/H,  special = 0)
+/obj/item/organ/tail/lizard/Remove(mob/living/carbon/human/H,  special = 0)
 	..()
 	if(istype(H))
 		H.dna.species.mutant_bodyparts -= "tail_lizard"
@@ -76,4 +82,6 @@
 		return
 
 	new_tail.tail_type = tail_type
-	new_tail.spines = spines*/
+	new_tail.spines = spines
+*/
+//SKYRAT EDIT REMOVAL END

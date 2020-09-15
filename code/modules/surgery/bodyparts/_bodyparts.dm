@@ -94,7 +94,7 @@
 	var/obj/item/stack/current_gauze
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/grasp_self])
 	var/obj/item/self_grasp/grasped_by
-	var/rendered_bp_icon //Skyrat change - customization
+	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -814,7 +814,9 @@
 	add_overlay(standing)
 
 //Gives you a proper icon appearance for the dismembered limb
-/*/obj/item/bodypart/proc/get_limb_icon(dropped) SKYRAT EDIT - customization - moved to modular
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/obj/item/bodypart/proc/get_limb_icon(dropped)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
 	. = list()
@@ -851,7 +853,7 @@
 
 	if(is_organic_limb())
 		if(should_draw_greyscale)
-			limb.icon = rendered_bp_icon || 'icons/mob/human_parts_greyscale.dmi' //Skyrat change - customization
+			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else if(use_digitigrade)
@@ -859,7 +861,7 @@
 			else
 				limb.icon_state = "[species_id]_[body_zone]"
 		else
-			limb.icon = rendered_bp_icon || 'icons/mob/human_parts.dmi' //Skyrat change - customization
+			limb.icon = 'icons/mob/human_parts.dmi'
 			if(should_draw_gender)
 				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 			else
@@ -885,7 +887,9 @@
 		if(draw_color)
 			limb.color = "#[draw_color]"
 			if(aux_zone)
-				aux.color = "#[draw_color]"*/
+				aux.color = "#[draw_color]"
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()

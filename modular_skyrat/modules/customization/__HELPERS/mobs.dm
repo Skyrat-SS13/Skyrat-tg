@@ -24,7 +24,7 @@
 	if(!GLOB.moth_markings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)*/
 	//For now we will always return none for tail_human and ears.
-	return(list("#FFF", "#FFF", "#FFF"))
+	return MANDATORY_FEATURE_LIST
 
 /proc/accessory_list_of_key_for_species(key, datum/species/S)
 	var/list/accessory_list = list()

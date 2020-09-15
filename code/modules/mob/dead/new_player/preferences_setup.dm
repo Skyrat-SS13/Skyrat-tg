@@ -1,6 +1,8 @@
 
 	//The mob should have a gender you want before running this proc. Will run fine without H
-/*/datum/preferences/proc/random_character(gender_override, antag_override = FALSE) SKYRAT - Moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/datum/preferences/proc/random_character(gender_override, antag_override = FALSE)
 	if(randomise[RANDOM_SPECIES])
 		random_species()
 	else if(randomise[RANDOM_NAME])
@@ -42,13 +44,19 @@
 	if(gender in list(MALE, FEMALE))
 		body_type = gender
 	else
-		body_type = pick(MALE, FEMALE)*/
+		body_type = pick(MALE, FEMALE)
+*/
+//SKYRAT EDIT REMOVAL END
 
-/*/datum/preferences/proc/random_species() SKYRAT moved to modular_skyrat
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
 	pref_species = new random_species_type
 	if(randomise[RANDOM_NAME])
-		real_name = pref_species.random_name(gender,1)*/
+		real_name = pref_species.random_name(gender,1)
+*/
+//SKYRAT EDIT REMOVAL END
 
 ///Setup a hardcore random character and calculate their hardcore random score
 /datum/preferences/proc/hardcore_random_setup(mob/living/carbon/human/character, antagonist, is_latejoiner)
@@ -105,7 +113,9 @@
 		hardcore_survival_score += available_hardcore_quirks[picked_quirk]
 		available_hardcore_quirks -= picked_quirk
 
-/*/datum/preferences/proc/update_preview_icon() SKYRAT EDIT - customization - moved to modular 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
+/datum/preferences/proc/update_preview_icon()
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	var/datum/job/previewJob
 	var/highest_pref = 0
@@ -133,4 +143,6 @@
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
-	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)*/
+	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+*/
+//SKYRAT EDIT REMOVAL END
