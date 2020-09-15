@@ -22,7 +22,7 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/human_update_icons.dm > /mob/living/carbon/human/update_inv_w_uniform(), /mob/living/carbon/human/update_inv_glasses(), /mob/living/carbon/human/update_inv_shoes(), /mob/living/carbon/human/update_inv_wear_suit(), /obj/item/proc/build_worn_icon(), /mob/living/carbon/human/generate_icon_render_key()
  ./code/modules/mob/living/carbon/human/species.dm > /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/can_wag_tail(), /datum/species/proc/stop_wagging_tail(), /datum/species/proc/start_wagging_tail(), /datum/species/proc/is_wagging_tail()
  ./code/modules/mob/living/carbon/human/species_types/felinid.dm > the 5 procs related to wagging tail
- ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail
+ ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
  ./code/modules/surgery/bodyparts/_bodyparts.dm > /obj/item/bodypart/proc/get_limb_icon()
  ./code/modules/surgery/organs/ears.dm > /obj/item/organ/ears/cat/Insert(), /obj/item/organ/ears/cat/Remove()
  ./ code/modules/surgery/organs/tails.dm > /obj/item/organ/tail/cat/Insert(), /obj/item/organ/tail/cat/Remove(), /obj/item/organ/tail/lizard/Initialize(), /obj/item/organ/tail/lizard/Insert(), /obj/item/organ/tail/lizard/Remove()

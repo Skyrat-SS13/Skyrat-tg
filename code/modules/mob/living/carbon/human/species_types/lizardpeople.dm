@@ -78,8 +78,6 @@
 		mutant_bodyparts |= "tail_lizard"
 		mutant_bodyparts |= "spines"
 	H.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/species/lizard/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	var/real_tail_type = C.dna.features["tail_lizard"]
@@ -105,6 +103,8 @@
 		// organ.Insert will qdel any existing organs in the same slot, so
 		// we don't need to manage that.
 		new_tail.Insert(C, TRUE, FALSE)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /*
  Lizard subspecies: ASHWALKERS
