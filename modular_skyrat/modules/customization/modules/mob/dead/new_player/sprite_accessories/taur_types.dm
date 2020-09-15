@@ -1,5 +1,5 @@
 /datum/sprite_accessory/taur
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/taur.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/taur.dmi'
 	key = "taur"
 	generic = "Taur Type"
 	color_src = USE_MATRIXED_COLORS

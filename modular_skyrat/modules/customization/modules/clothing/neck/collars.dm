@@ -15,8 +15,8 @@
 	/obj/item/key/collar))
 
 /obj/item/clothing/neck/human_petcollar
-	icon = 'modular_skyrat/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
 	name = "pet collar"
 	desc = "It's for pets. Though you probably could wear it yourself, you'd doubtless be the subject of ridicule. It seems to be made out of a polychromic material."
 	icon_state = "petcollar"

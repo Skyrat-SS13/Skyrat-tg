@@ -1,5 +1,5 @@
 /datum/body_marking/secondary/synthliz
-	icon = 'modular_skyrat/icons/mob/body_markings/synthliz_secondary.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/synthliz_secondary.dmi'
 	recommended_species = list("synthliz")
 
 /datum/body_marking/secondary/synthliz/scutes
@@ -18,7 +18,7 @@
 	affected_bodyparts = CHEST 
 
 /datum/body_marking/tertiary/synthliz
-	icon = 'modular_skyrat/icons/mob/body_markings/synthliz_tertiary.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/synthliz_tertiary.dmi'
 	recommended_species = list("synthliz")
 
 /datum/body_marking/tertiary/synthliz/plates

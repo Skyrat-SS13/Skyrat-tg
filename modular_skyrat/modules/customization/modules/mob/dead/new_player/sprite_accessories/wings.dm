@@ -24,7 +24,7 @@
 
 //TODO: seperate moth wings from moth fluff
 /datum/sprite_accessory/wings/moth
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/moth_wings.dmi' //Needs new icon to suit new naming convention
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/moth_wings.dmi' //Needs new icon to suit new naming convention
 	default_color = "FFF"
 	recommended_species = list("moth", "mammal") //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/wings/moth
@@ -107,7 +107,7 @@
 	icon_state = "witchwing"
 
 /datum/sprite_accessory/wings/mammal
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/wings.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
 	recommended_species = list("mammal", "lizard")
 

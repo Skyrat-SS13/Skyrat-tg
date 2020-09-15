@@ -19,9 +19,9 @@
 
 
 /obj/item/tank/internals/nitrogen/belt
-	icon = 'modular_skyrat/icons/obj/tank.dmi'
-	lefthand_file = 'modular_skyrat/icons/mob/inhands/equipment/tanks_lefthand.dmi'
-	righthand_file = 'modular_skyrat/icons/mob/inhands/equipment/tanks_righthand.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/tank.dmi'
+	lefthand_file = 'modular_skyrat/modules/customization/icons/mob/inhands/equipment/tanks_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/customization/icons/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"
 	slot_flags = ITEM_SLOT_BELT
 	force = 5

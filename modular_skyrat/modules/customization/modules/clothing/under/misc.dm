@@ -1,6 +1,6 @@
 /obj/item/clothing/under/misc/stripper
-	icon = 'modular_skyrat/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	name = "pink stripper outfit"
 	icon_state = "stripper_p"
 	body_parts_covered = CHEST|GROIN
@@ -16,8 +16,8 @@
 	icon_state = "mankini"
 
 /obj/item/clothing/under/croptop
-	icon = 'modular_skyrat/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	name = "crop top"
 	desc = "We've saved money by giving you half a shirt!"
 	icon_state = "croptop"

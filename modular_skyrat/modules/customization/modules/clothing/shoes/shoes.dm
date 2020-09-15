@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/wraps
-	icon = 'modular_skyrat/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/feet.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
 	name = "gilded leg wraps"
 	desc = "Ankle coverings. These ones have a golden design."
 	icon_state = "gildedcuffs"
@@ -22,8 +22,8 @@
 	icon_state = "bluecuffs"
 
 /obj/item/clothing/shoes/cowboyboots
-	icon = 'modular_skyrat/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/feet.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
 	name = "cowboy boots"
 	desc = "A standard pair of brown cowboy boots."
 	icon_state = "cowboyboots"

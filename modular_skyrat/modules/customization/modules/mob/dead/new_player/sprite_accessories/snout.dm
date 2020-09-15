@@ -15,7 +15,7 @@
 	factual = FALSE
 
 /datum/sprite_accessory/snouts/mammal
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/snouts.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/snouts.dmi'
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list("mammal")
 

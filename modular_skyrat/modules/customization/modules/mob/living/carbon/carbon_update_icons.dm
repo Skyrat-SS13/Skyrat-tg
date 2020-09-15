@@ -77,9 +77,9 @@
 				used_style = STYLE_MUZZLE
 		switch(used_style)
 			if(STYLE_MUZZLE)
-				desired_icon = head.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/head_muzzled.dmi'
+				desired_icon = head.worn_icon_muzzled || 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
 			if(STYLE_VOX)
-				desired_icon = 'modular_skyrat/icons/mob/clothing/head_vox.dmi'
+				desired_icon = 'modular_skyrat/master_files/icons/mob/clothing/head_vox.dmi'
 
 		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_icon = desired_icon)
 		update_hud_head(head)
@@ -107,9 +107,9 @@
 				used_style = STYLE_MUZZLE
 		switch(used_style)
 			if(STYLE_MUZZLE)
-				desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/icons/mob/clothing/mask_muzzled.dmi'
+				desired_icon = wear_mask.worn_icon_muzzled || 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 			if(STYLE_VOX)
-				desired_icon = 'modular_skyrat/icons/mob/clothing/mask_vox.dmi'
+				desired_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask_vox.dmi'
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
 			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/clothing/mask.dmi', override_icon = desired_icon)

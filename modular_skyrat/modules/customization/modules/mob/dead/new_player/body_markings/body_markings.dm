@@ -41,7 +41,7 @@
 	return colors
 
 /datum/body_marking/secondary
-	icon = 'modular_skyrat/icons/mob/body_markings/secondary_markings.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
 
 /datum/body_marking/secondary/tajaran
@@ -200,7 +200,7 @@
 	affected_bodyparts = ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/tertiary
-	icon = 'modular_skyrat/icons/mob/body_markings/tertiary_markings.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/tertiary_markings.dmi'
 	default_color = DEFAULT_TERTIARY
 
 /datum/body_marking/tertiary/redpanda

@@ -2,7 +2,7 @@
 	key = "tail"
 	generic = "Tail"
 	organ_type = /obj/item/organ/tail
-	icon = 'modular_skyrat/icons/mob/mutant_bodyparts.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H, icon_state)
@@ -34,7 +34,7 @@
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
 	recommended_species = list("mammal", "human")
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/tails.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/tails.dmi'
 	organ_type = /obj/item/organ/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
 

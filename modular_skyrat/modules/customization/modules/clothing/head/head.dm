@@ -1,6 +1,6 @@
 /obj/item/clothing/head/flakhelm	//Actually the M1 Helmet
-	icon = 'modular_skyrat/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	name = "flak helmet"
 	icon_state = "m1helm"
 	inhand_icon_state = "helmet"
@@ -12,8 +12,8 @@
 	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
 
 /obj/item/clothing/head/cowboyhat
-	icon = 'modular_skyrat/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	name = "cowboy hat"
 	desc = "A standard brown cowboy hat, yeehaw."
 	icon_state = "cowboyhat"

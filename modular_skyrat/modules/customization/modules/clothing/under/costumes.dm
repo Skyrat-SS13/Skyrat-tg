@@ -1,7 +1,7 @@
 // Lunar Clothes
 /obj/item/clothing/under/costume/qipao
-	icon = 'modular_skyrat/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	name = "black qipao"
 	desc = "A qipao, traditionally worn in ancient Earth China by women during social events and lunar new years. This one is black."
 	icon_state = "qipao"
@@ -24,8 +24,8 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/cheongsam
-	icon = 'modular_skyrat/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	name = "black cheongsam"
 	desc = "A cheongsam, traditionally worn in ancient Earth China by men during social events and lunar new years. This one is black."
 	icon_state = "cheong"

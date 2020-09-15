@@ -9,7 +9,7 @@
 	return FALSE
 
 /datum/sprite_accessory/ears/mutant
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/ears.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/ears/mutant
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list("mammal", "human", "felinid")

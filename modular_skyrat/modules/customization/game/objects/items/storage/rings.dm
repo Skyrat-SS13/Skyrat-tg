@@ -5,7 +5,7 @@
 /obj/item/storage/fancy/ringbox
 	name = "ring box"
 	desc = "A tiny box covered in soft red felt made for holding rings."
-	icon = 'modular_skyrat/icons/obj/ring.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/ring.dmi'
 	icon_state = "gold ringbox"
 	icon_type = "gold ring"
 	w_class = WEIGHT_CLASS_TINY

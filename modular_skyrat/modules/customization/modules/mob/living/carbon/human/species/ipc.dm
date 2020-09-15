@@ -9,7 +9,7 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ipc_antenna" = ACC_RANDOM, "ipc_screen" = ACC_RANDOM, "ipc_chassis" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/icons/mob/species/ipc_parts.dmi'
+	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/ipc_parts.dmi'
 	hair_alpha = 210
 	sexes = 0
 	var/datum/action/innate/monitor_change/screen

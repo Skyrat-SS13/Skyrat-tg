@@ -25,7 +25,7 @@
 		return null
 
 /datum/sprite_accessory/genital/penis
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
 	organ_type = /obj/item/organ/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
 	key = "penis"
@@ -45,7 +45,7 @@
 	if(H.dna.species.mutant_bodyparts["taur"] && H.dna.features["penis_taur_mode"])
 		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
-			returned = 'modular_skyrat/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
+			returned = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/taur_penis_onmob.dmi'
 	return returned
 
 /datum/sprite_accessory/genital/penis/get_special_x_dimension(mob/living/carbon/human/H)
@@ -96,7 +96,7 @@
 	name = "Knotted Hemi"
 
 /datum/sprite_accessory/genital/testicles
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/testicles_onmob.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/testicles_onmob.dmi'
 	organ_type = /obj/item/organ/genital/testicles
 	associated_organ_slot = ORGAN_SLOT_TESTICLES
 	key = "testicles"
@@ -124,7 +124,7 @@
 	has_size = FALSE
 
 /datum/sprite_accessory/genital/vagina
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
 	organ_type = /obj/item/organ/genital/vagina
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = "vagina"
@@ -200,7 +200,7 @@
 	color_src = null
 
 /datum/sprite_accessory/genital/breasts
-	icon = 'modular_skyrat/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
 	organ_type = /obj/item/organ/genital/breasts
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"

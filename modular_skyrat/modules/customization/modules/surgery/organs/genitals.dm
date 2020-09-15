@@ -43,7 +43,7 @@
 	name = "penis"
 	desc = "A male reproductive organ."
 	icon_state = "penis"
-	icon = 'modular_skyrat/icons/obj/genitals/penis.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
 	mutantpart_key = "penis"
@@ -95,7 +95,7 @@
 	name = "testicles"
 	desc = "A male reproductive organ."
 	icon_state = "testicles"
-	icon = 'modular_skyrat/icons/obj/genitals/testicles.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/testicles.dmi'
 	mutantpart_key = "testicles"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -119,7 +119,7 @@
 
 /obj/item/organ/genital/vagina
 	name = "vagina"
-	icon = 'modular_skyrat/icons/obj/genitals/vagina.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/vagina.dmi'
 	icon_state = "vagina"
 	mutantpart_key = "vagina"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
@@ -132,7 +132,7 @@
 /obj/item/organ/genital/womb
 	name = "womb"
 	desc = "A female reproductive organ."
-	icon = 'modular_skyrat/icons/obj/genitals/vagina.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/vagina.dmi'
 	icon_state = "womb"
 	mutantpart_key = "womb"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
@@ -144,7 +144,7 @@
 	name = "breasts"
 	desc = "Female milk producing organs."
 	icon_state = "breasts"
-	icon = 'modular_skyrat/icons/obj/genitals/breasts.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
 	mutantpart_key = "penis"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
