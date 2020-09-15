@@ -44,6 +44,8 @@
 				default_color = "FFF"
 	if(name == "None")
 		factual = FALSE
+	if(color_src == USE_MATRIXED_COLORS && default_color != DEFAULT_MATRIXED)
+		default_color = DEFAULT_MATRIXED
 
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return FALSE
