@@ -10,7 +10,6 @@
 	var/eyes_icon
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
-	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/list/standing	= list()
 
@@ -47,7 +46,9 @@
 	if(not_digitigrade && (DIGITIGRADE in species_traits)) //Curse is lifted
 		species_traits -= DIGITIGRADE
 
-	if(!bodyparts_to_add)
+	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
+
+	if(!length(bodyparts_to_add))
 		return
 
 	var/g = (H.body_type == FEMALE) ? "f" : "m"
