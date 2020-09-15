@@ -449,11 +449,11 @@
 	if(m_intent == MOVE_INTENT_RUN)
 		m_intent = MOVE_INTENT_WALK
 	else
-		//SKYRAT EDIT BEGIN - module GUNPOINT
+		//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 		if (HAS_TRAIT(src,TRAIT_NORUNNING))
 			to_chat(src, "You find yourself unable to run.")
 			return FALSE
-		//SKYRAT EDIT END
+		//SKYRAT EDIT ADDITION END
 		m_intent = MOVE_INTENT_RUN
 	if(hud_used && hud_used.static_inventory)
 		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)

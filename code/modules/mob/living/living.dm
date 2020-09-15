@@ -116,7 +116,7 @@
 					if(!(world.time % 5))
 						to_chat(src, "<span class='warning'>[L] is restraining [P], you cannot push past.</span>")
 					return TRUE
-		//SKYRAT CHANGES START - module GUNPOINT
+		//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 		if(L.gunpointed.len)
 			var/is_pointing = FALSE
 			for(var/datum/gunpoint/gp in L.gunpointed)
@@ -131,7 +131,7 @@
 			if(!(world.time % 5))
 				to_chat(src, "<span class='warning'>[L] is holding someone at gunpoint, you cannot push past.</span>")
 			return TRUE
-		//END OF SKYRAT CHANGES
+		//SKYRAT EDIT ADDITION END
 
 	if(moving_diagonally)//no mob swap during diagonal moves.
 		return TRUE
@@ -1298,7 +1298,7 @@
 			add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/limbless, multiplicative_slowdown = limbless_slowdown)
 		else
 			remove_movespeed_modifier(/datum/movespeed_modifier/limbless)
-	SEND_SIGNAL(src, COMSIG_LIVING_UPDATED_MOBILITY, mobility_flags) //SKYRAT CHANGE - module GUNPOINT - extra signal
+	SEND_SIGNAL(src, COMSIG_LIVING_UPDATED_MOBILITY, mobility_flags) //SKYRAT EDIT ADDITION - GUNPOINT
 
 
 ///Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment, through update_mobility()
