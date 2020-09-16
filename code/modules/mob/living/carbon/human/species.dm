@@ -57,7 +57,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	/// Default mutant bodyparts for this species, like horns. Don't forget to set one for every mutant bodypart you allow this species to have.
 	var/list/default_features = list()
 	/// Visible CURRENT bodyparts that are unique to a species. DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK SHIT UP! Changes to this list for non-species specific bodyparts (ie cat ears and tails) should be assigned at organ level if possible. Layer hiding is handled by [datum/species/handle_mutant_bodyparts()] below.
-	var/list/mutant_bodyparts = list()
+	//var/list/mutant_bodyparts = list() - ORIGINAL
+	var/list/list/mutant_bodyparts = list() //SKYRAT EDIT CHANGE - CUSTOMIZATIOn
 	///Internal organs that are unique to this race, like a tail.
 	var/list/mutant_organs = list()
 	///Multiplier for the race's speed. Positive numbers make it move slower, negative numbers make it move faster.
@@ -321,6 +322,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
   * * old_species - The species that the carbon used to be before becoming this race, used for regenerating organs.
   * * pref_load - Preferences to be loaded from character setup, loads in preferred mutant things like bodyparts, digilegs, skin color, etc.
   */
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
@@ -387,6 +390,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /**
   * Proc called when a carbon is no longer this species.
@@ -598,6 +603,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
   * Arguments:
   * * H - Human, whoever we're handling the body for
   */
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/species/proc/handle_body(mob/living/carbon/human/H)
 	H.remove_overlay(BODY_LAYER)
 
@@ -659,6 +666,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	H.apply_overlay(BODY_LAYER)
 	handle_mutant_bodyparts(H)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /**
   * Handles the mutant bodyparts of a human
@@ -669,6 +678,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
   * * H - Human, whoever we're handling the body for
   * * forced_colour - The forced color of an accessory. Leave null to use mutant color.
   */
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
@@ -869,6 +880,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	H.apply_overlay(BODY_BEHIND_LAYER)
 	H.apply_overlay(BODY_ADJ_LAYER)
 	H.apply_overlay(BODY_FRONT_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 //This exists so sprite accessories can still be per-layer without having to include that layer's
@@ -946,10 +959,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(ITEM_SLOT_FEET)
 			if(H.num_legs < 2)
 				return FALSE
+			//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+			/*
 			if(DIGITIGRADE in species_traits)
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>The footwear around here isn't compatible with your feet!</span>")
 				return FALSE
+			*/
+			//SKYRAT EDIT REMOVAL END
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(ITEM_SLOT_BELT)
 			var/obj/item/bodypart/O = H.get_bodypart(BODY_ZONE_CHEST)
@@ -1842,6 +1859,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //Tail Wagging//
 ////////////////
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
 	return FALSE
 
@@ -1851,6 +1870,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
+*/
+//SKYRAT EDIT REMOVAL END
 
 ///////////////
 //FLIGHT SHIT//
