@@ -1,5 +1,7 @@
 GLOBAL_LIST_EMPTY(preferences_datums)
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -1962,3 +1964,5 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			return
 		else
 			custom_names[name_id] = sanitized_name
+*/
+//SKYRAT EDIT REMOVAL END
