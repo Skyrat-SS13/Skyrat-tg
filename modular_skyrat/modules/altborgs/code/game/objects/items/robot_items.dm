@@ -13,9 +13,6 @@
 		return
 	var/mob/living/silicon/robot/R = user
 	var/mob/living/L = target
-	if(L.ckey)
-		to_chat(R, "<span class='danger'>ERROR ERROR: Target not lickable. Aborting display-of-affection subroutine.</span>")
-		return
 
 	if(check_zone(R.zone_selected) == "head")
 		R.visible_message("<span class='warning'>\the [R] affectionally licks \the [L]'s face!</span>", "<span class='notice'>You affectionally lick \the [L]'s face!</span>")
