@@ -10,7 +10,7 @@
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"
-	set category = "IC"
+	set category = "Robot Commands"
 	set desc = "Select your resting pose."
 	if(!dogborg)
 		to_chat(src, "<span class='warning'>You can't do that!</span>")
@@ -26,7 +26,7 @@
 
 /mob/living/silicon/robot/proc/robot_lay_down()
 	set name = "Lay down"
-	set category = "IC"
+	set category = "Robot Commands"
 	if(!dogborg)
 		to_chat(src, "<span class='warning'>You can't do that!</span>")
 	if(stat != CONSCIOUS) //Make sure we don't enable movement when not concious
@@ -66,12 +66,12 @@
 		return
 
 	var/list/skyratmodule = list(
+	"Departmental Modules" = "next",
 	"Skyrat Service(alt skins)" = /obj/item/robot_module/butler/skyrat,
-	"Skyrat Miner(alt skins)" = /obj/item/robot_module/miner/skyrat,
-	"Next page" = "next"
+	"Skyrat Miner(alt skins)" = /obj/item/robot_module/miner/skyrat
 	)
-	var/input_module_sk = input("Please select a skyrat module if you want one, otherwise select next page.", "Robot", null, null) as null|anything in sortList(skyratmodule)
-	if(input_module_sk == "Next page" || !input_module_sk || module.type != /obj/item/robot_module)
+	var/input_module_sk = input("Please select a module, or choose a reskin.", "Robot", null, null) as null|anything in sortList(skyratmodule)
+	if(input_module_sk == "Departmental Modules" || !input_module_sk || module.type != /obj/item/robot_module)
 		return ..()
 	else
 		module.transform_to(skyratmodule[input_module_sk])
