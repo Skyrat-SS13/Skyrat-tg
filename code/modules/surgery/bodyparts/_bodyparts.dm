@@ -94,6 +94,7 @@
 	var/obj/item/stack/current_gauze
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/grasp_self])
 	var/obj/item/self_grasp/grasped_by
+	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -763,6 +764,7 @@
 
 		var/datum/species/S = H.dna.species
 		species_id = S.limbs_id
+		rendered_bp_icon = S.limbs_icon
 		species_flags_list = H.dna.species.species_traits
 
 		if(S.use_skintones)
@@ -812,6 +814,8 @@
 	add_overlay(standing)
 
 //Gives you a proper icon appearance for the dismembered limb
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /obj/item/bodypart/proc/get_limb_icon(dropped)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
@@ -884,6 +888,8 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()
