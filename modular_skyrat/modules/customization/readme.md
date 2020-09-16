@@ -27,6 +27,8 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/surgery/organs/ears.dm > /obj/item/organ/ears/cat/Insert(), /obj/item/organ/ears/cat/Remove()
  ./ code/modules/surgery/organs/tails.dm > /obj/item/organ/tail/cat/Insert(), /obj/item/organ/tail/cat/Remove(), /obj/item/organ/tail/lizard/Initialize(), /obj/item/organ/tail/lizard/Insert(), /obj/item/organ/tail/lizard/Remove()
 
+ ./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
+
 ### Defines:
 
  ./code/modules/surgery/organs/tongue.dm > var/static/list/languages_possible_base - added 2 languages

@@ -483,3 +483,16 @@
 		return
 	T.wagging = FALSE
 	H.update_body()
+
+/datum/species/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE,list/excluded_zones)
+	. = ..()
+	for(var/key in C.dna.mutant_bodyparts)
+		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		if(SA.organ_type)
+			var/obj/item/organ/path = new SA.organ_type
+			var/obj/item/organ/oldorgan = C.getorganslot(path.slot)
+			if(oldorgan)
+				oldorgan.Remove(C,TRUE)
+				QDEL_NULL(oldorgan)
+			path.build_from_dna(C.dna, key)
+			path.Insert(C, 0, FALSE)
