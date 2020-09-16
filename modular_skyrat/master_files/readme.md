@@ -11,3 +11,4 @@ MASTER SOUND FILES
 - N/A
 
 MASTER CODE FILES
+- /master_files/code/modules/power/lighting.dm
