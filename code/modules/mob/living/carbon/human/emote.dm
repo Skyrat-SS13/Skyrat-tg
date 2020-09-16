@@ -104,6 +104,7 @@
 	var/mob/living/carbon/human/H = user
 	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
 		return
+	//if(!H.dna.species.is_wagging_tail()) - ORIGINAL
 	if(!H.dna.species.is_wagging_tail(H)) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		H.dna.species.start_wagging_tail(H)
 	else
