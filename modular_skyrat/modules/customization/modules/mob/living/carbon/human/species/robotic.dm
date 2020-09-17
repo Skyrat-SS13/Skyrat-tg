@@ -45,7 +45,7 @@
 /datum/species/robotic/ipc
 	name = "I.P.C."
 	id = "ipc"
-	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS_PARTSONLY,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,NOEYESPRITES,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
+	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS_PARTSONLY,EYECOLOR,LIPS,HAIR,NOEYESPRITES,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ipc_antenna" = ACC_RANDOM, "ipc_screen" = ACC_RANDOM, "ipc_chassis" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -106,7 +106,7 @@
 /datum/species/robotic/synthliz
 	name = "Synthetic Lizardperson"
 	id = "synthliz"
-	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
+	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ipc_antenna" = ACC_RANDOM, "tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
