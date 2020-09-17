@@ -18,11 +18,11 @@
 	taste_description = "motor oil"
 
 /datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/M)
-	if(!(M.mob_biotypes & MOB_ROBOTIC))
-		M.remove_reagent(type, 3.6) //gets removed from organics very fast
+	var/mob/living/carbon/U = M
+	if(!(U.mob_biotypes & MOB_ROBOTIC))
+		U.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
-			var/mob/living/carbon/U = M
-			M.remove_reagent(type, 15)
+			U.remove_reagent(type, 15)
 			U.vomit(5, FALSE, FALSE)
 	return ..()
 
