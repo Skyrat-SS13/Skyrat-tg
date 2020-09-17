@@ -122,3 +122,8 @@
 				underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
 		update_body()
 	return
+
+/mob/living/carbon/human/revive(full_heal = 0, admin_revive = 0)
+	if(..())
+		if(dna && dna.species)
+			dna.species.spec_revival(src) 

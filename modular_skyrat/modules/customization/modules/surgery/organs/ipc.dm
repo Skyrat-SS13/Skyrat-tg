@@ -126,7 +126,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/lungs/robot_ipc/emp_act(severity) //Should probably put it somewhere else later
+/obj/item/organ/lungs/robot_ipc/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return

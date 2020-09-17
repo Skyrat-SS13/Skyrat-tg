@@ -495,3 +495,6 @@
 	if(ROBOTIC_LIMBS in species_traits)
 		for(var/obj/item/bodypart/B in C.bodyparts)
 			B.change_bodypart_status(BODYPART_ORGANIC, FALSE, TRUE)
+
+/datum/species/proc/spec_revival(mob/living/carbon/human/H)
+	return

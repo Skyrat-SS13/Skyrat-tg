@@ -30,6 +30,8 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/status_procs.dm > /mob/living/carbon/human/become_husk() > APPENDED
  ./code/modules/reagents/chemistry/holder.dm > /datum/reagents/metabolize()
  ./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm > /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
+ ./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
+ ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
 
 ### Defines:
 

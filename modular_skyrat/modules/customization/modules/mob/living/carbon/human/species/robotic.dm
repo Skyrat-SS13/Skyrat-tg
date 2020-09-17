@@ -26,10 +26,19 @@
 /datum/species/robotic/spec_life(mob/living/carbon/human/H)
 	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
 		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
-		H.adjust_bodytemperature(10) //We're overheating!!
+		H.adjust_bodytemperature(20) //We're overheating!!
 		if(prob(10))
 			to_chat(H, "<span class='warning'>Alert: Critical damage taken! Cooling systems failing!</span>")
 			do_sparks(3, TRUE, H)
+
+/datum/species/robotic/spec_revival(mob/living/carbon/human/H)
+	playsound(H.loc, 'sound/machines/chime.ogg', 50, 1, -1)
+	H.visible_message("<span class='notice'>[H]'s monitor lights up.</span>", "<span class='notice'>All systems nominal. You're back online!</span>")
+
+/datum/species/robotic/on_species_gain(mob/living/carbon/human/C)
+	var/obj/item/organ/appendix/appendix = C.getorganslot(ORGAN_SLOT_APPENDIX)
+	appendix.Remove(C)
+	qdel(appendix)
 
 /datum/species/robotic/ipc
 	name = "I.P.C."
@@ -42,6 +51,20 @@
 	hair_alpha = 210
 	sexes = 0
 	var/datum/action/innate/monitor_change/screen
+	var/saved_screen = "Blank"
+
+/datum/species/robotic/ipc/spec_revival(mob/living/carbon/human/H)
+	. = ..()
+	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "BSOD"
+	sleep(3 SECONDS)
+	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = saved_screen
+
+/datum/species/robotic/ipc/spec_death(gibbed, mob/living/carbon/human/H)
+	. = ..()
+	saved_screen = H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME]
+	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "BSOD"
+	sleep(3 SECONDS)
+	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "Blank"
 
 /datum/species/robotic/ipc/on_species_gain(mob/living/carbon/human/C)
 	. = ..()
