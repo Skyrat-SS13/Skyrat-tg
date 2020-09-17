@@ -17,16 +17,15 @@
 	glass_desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
 	taste_description = "motor oil"
 
-/datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/M)
-	var/mob/living/carbon/U = M
-	if(!(U.mob_biotypes & MOB_ROBOTIC))
-		U.remove_reagent(type, 3.6) //gets removed from organics very fast
+/datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/carbon/M)
+	if(!(M.mob_biotypes & MOB_ROBOTIC))
+		M.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
-			U.remove_reagent(type, 15)
-			U.vomit(5, FALSE, FALSE)
+			M.remove_reagent(type, 15)
+			M.vomit(5, FALSE, FALSE)
 	return ..()
 
-/datum/reagent/consumable/ethanol/synthanol/expose_mob(mob/living/M, method=TOUCH, volume)
+/datum/reagent/consumable/ethanol/synthanol/expose_mob(mob/living/carbon/M, method=TOUCH, volume)
 	. = ..()
 	if(M.mob_biotypes & MOB_ROBOTIC)
 		return
