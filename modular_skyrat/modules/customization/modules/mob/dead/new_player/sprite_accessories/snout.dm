@@ -2,9 +2,10 @@
 	key = "snout"
 	generic = "Snout"
 	var/use_muzzled_sprites = TRUE
+	recommended_species = list("mammal", "lizard")
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD || HD.status == BODYPART_ROBOTIC)
+	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD)
 		return TRUE
 	return FALSE
 

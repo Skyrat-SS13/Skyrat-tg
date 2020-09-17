@@ -18,7 +18,7 @@
 	icon_state = "synthliz_tert"
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_tertunder
-	color_src = USE_ONE_COLOR
+	color_src = USE_MATRIXED_COLORS
 	name = "Synthetic Lizard - Snout Tertiary Under"
 	icon_state = "synthliz_tertunder"
 

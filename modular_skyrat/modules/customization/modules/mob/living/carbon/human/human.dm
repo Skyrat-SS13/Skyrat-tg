@@ -70,13 +70,13 @@
 					return
 
 /mob/living/carbon/human/species/synthliz
-	race = /datum/species/synthliz
+	race = /datum/species/robotic/synthliz
 
 /mob/living/carbon/human/species/vox
 	race = /datum/species/vox
 
 /mob/living/carbon/human/species/ipc
-	race = /datum/species/ipc
+	race = /datum/species/robotic/ipc
 
 /mob/living/carbon/human/species/mammal
 	race = /datum/species/mammal

@@ -1,15 +1,25 @@
-//We start from 10 to not interfere with TG species defines, should they add more
+//We start from 30 to not interfere with TG species defines, should they add more
 /// We're using all three mutcolor features for our skin coloration
-#define MUTCOLOR_MATRIXED	10
-#define MUTCOLORS2			11
-#define MUTCOLORS3			12
+#define MUTCOLOR_MATRIXED	30
+#define MUTCOLORS2			31
+#define MUTCOLORS3			32
 // Defines for whether an accessory should have one or three colors to choose for
-#define USE_ONE_COLOR		11
-#define USE_MATRIXED_COLORS	12
+#define USE_ONE_COLOR		31
+#define USE_MATRIXED_COLORS	32
+// Defines for some extra species traits
+#define REVIVES_BY_HEALING	33
+#define ROBOTIC_LIMBS		34
+#define ROBOTIC_DNA_ORGANS	35
 //Also.. yes for some reason specie traits and accessory defines are together
 
-//Some defines for sprite accessories
+//Defines for processing reagents, for synths, IPC's and Vox
+#define PROCESS_ORGANIC 1		//Only processes reagents with "ORGANIC" or "ORGANIC | SYNTHETIC"
+#define PROCESS_SYNTHETIC 2		//Only processes reagents with "SYNTHETIC" or "ORGANIC | SYNTHETIC"
 
+#define REAGENT_ORGANIC 1
+#define REAGENT_SYNTHETIC 2	
+
+//Some defines for sprite accessories
 // Which color source we're using when the accessory is added
 #define DEFAULT_PRIMARY		1
 #define DEFAULT_SECONDARY	2
