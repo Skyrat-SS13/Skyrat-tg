@@ -26,7 +26,7 @@
 /datum/species/robotic/spec_life(mob/living/carbon/human/H)
 	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
 		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
-		H.adjust_bodytemperature(20) //We're overheating!!
+		H.adjust_bodytemperature(13) //We're overheating!!
 		if(prob(10))
 			to_chat(H, "<span class='warning'>Alert: Critical damage taken! Cooling systems failing!</span>")
 			do_sparks(3, TRUE, H)
