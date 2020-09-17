@@ -32,6 +32,7 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm > /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
  ./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
  ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
+ ./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
 
 ### Defines:
 
