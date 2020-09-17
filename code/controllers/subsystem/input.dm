@@ -23,8 +23,13 @@ SUBSYSTEM_DEF(input)
 	"Any" = "\"KeyDown \[\[*\]\]\"",
 	"Any+UP" = "\"KeyUp \[\[*\]\]\"",
 	"O" = "ooc",
-	"T" = "say",
-	"M" = "me",
+	/* SKYRAT EDIT CHANGE BEGIN - TYPING INDICATOR
+	"T" = "say", - Original
+	"M" = "me",	- Original
+	*/
+	"T" = "say_special",
+	"M" = "me_special",
+	//SKYRAT EDIT CHANGE END
 	"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"",
 	"Tab" = "\".winset \\\"input.focus=true?map.focus=true input.background-color=[COLOR_INPUT_DISABLED]:input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 	"Escape" = "\".winset \\\"input.text=\\\"\\\"\\\"\"")

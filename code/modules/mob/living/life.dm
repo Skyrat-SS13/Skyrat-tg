@@ -63,6 +63,7 @@
 		if(stat != DEAD)
 			handle_traits() // eye, ear, brain damages
 			handle_status_effects() //all special effects, stun, knockdown, jitteryness, hallucination, sleeping, etc
+			handle_typing_indicator() //SKYRAT EDIT ADDITION - TYPING INDICATOR
 
 	handle_fire()
 

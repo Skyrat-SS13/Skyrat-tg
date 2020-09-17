@@ -87,6 +87,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		//The filter doesn't act on the sanitized message, but the raw message.
 		ic_blocked = TRUE
 
+	set_typing_indicator(FALSE) //SKYRAT EDIT ADDITION - TYPING INDICATOR
+
 	if(sanitize)
 		message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 	if(!message || message == "")
@@ -326,7 +328,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			speech_bubble_recipients.Add(M.client)
 	var/image/I = image('icons/mob/talk.dmi', src, "[bubble_type][say_test(message)]", FLY_LAYER)
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-	INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_recipients, 30)
+	//INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_recipients, 30) - ORIGINAL
+	INVOKE_ASYNC(GLOBAL_PROC, /.proc/animate_speechbubble, I, speech_bubble_recipients, 30) //SKYRAT EDIT CHANGE - TYPING INDICATOR
 
 /mob/proc/binarycheck()
 	return FALSE
