@@ -37,8 +37,9 @@
 
 /datum/species/robotic/on_species_gain(mob/living/carbon/human/C)
 	var/obj/item/organ/appendix/appendix = C.getorganslot(ORGAN_SLOT_APPENDIX)
-	appendix.Remove(C)
-	qdel(appendix)
+	if(appendix)
+		appendix.Remove(C)
+		qdel(appendix)
 
 /datum/species/robotic/ipc
 	name = "I.P.C."
