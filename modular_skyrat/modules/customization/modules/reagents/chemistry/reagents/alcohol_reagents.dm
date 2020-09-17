@@ -17,20 +17,20 @@
 	glass_desc = "The equivalent of alcohol for synthetic crewmembers. They'd find it awful if they had tastebuds too."
 	taste_description = "motor oil"
 
-/datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/carbon/M)
-	if(!(M.mob_biotypes & MOB_ROBOTIC))
-		M.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
+/datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/carbon/C)
+	if(!(C.mob_biotypes & MOB_ROBOTIC))
+		C.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
-			M.reagents.remove_reagent(type, 15)
-			M.vomit(5, FALSE, FALSE)
+			C.reagents.remove_reagent(type, 15)
+			C.vomit(5, FALSE, FALSE)
 	return ..()
 
-/datum/reagent/consumable/ethanol/synthanol/expose_mob(mob/living/carbon/M, method=TOUCH, volume)
+/datum/reagent/consumable/ethanol/synthanol/expose_mob(mob/living/carbon/C, method=TOUCH, volume)
 	. = ..()
-	if(M.mob_biotypes & MOB_ROBOTIC)
+	if(C.mob_biotypes & MOB_ROBOTIC)
 		return
 	if(method == INGEST)
-		to_chat(M, pick("<span class = 'danger'>That was awful!</span>", "<span class = 'danger'>That was disgusting!</span>"))
+		to_chat(C, pick("<span class = 'danger'>That was awful!</span>", "<span class = 'danger'>That was disgusting!</span>"))
 
 /datum/reagent/consumable/ethanol/synthanol/robottears
 	name = "Robot Tears"
