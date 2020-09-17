@@ -70,13 +70,13 @@
 					return
 
 /mob/living/carbon/human/species/synthliz
-	race = /datum/species/synthliz
+	race = /datum/species/robotic/synthliz
 
 /mob/living/carbon/human/species/vox
 	race = /datum/species/vox
 
 /mob/living/carbon/human/species/ipc
-	race = /datum/species/ipc
+	race = /datum/species/robotic/ipc
 
 /mob/living/carbon/human/species/mammal
 	race = /datum/species/mammal
@@ -122,3 +122,8 @@
 				underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
 		update_body()
 	return
+
+/mob/living/carbon/human/revive(full_heal = 0, admin_revive = 0)
+	if(..())
+		if(dna && dna.species)
+			dna.species.spec_revival(src) 

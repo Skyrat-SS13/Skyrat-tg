@@ -20,12 +20,19 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/emote.dm > /datum/emote/living/carbon/human/wag/run_emote(), /datum/emote/living/carbon/human/wag/can_run_emote()
  ./code/modules/mob/living/carbon/human/examine.dm > /mob/living/carbon/human/examine()
  ./code/modules/mob/living/carbon/human/human_update_icons.dm > /mob/living/carbon/human/update_inv_w_uniform(), /mob/living/carbon/human/update_inv_glasses(), /mob/living/carbon/human/update_inv_shoes(), /mob/living/carbon/human/update_inv_wear_suit(), /obj/item/proc/build_worn_icon(), /mob/living/carbon/human/generate_icon_render_key()
- ./code/modules/mob/living/carbon/human/species.dm > /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/can_wag_tail(), /datum/species/proc/stop_wagging_tail(), /datum/species/proc/start_wagging_tail(), /datum/species/proc/is_wagging_tail()
+ ./code/modules/mob/living/carbon/human/species.dm > /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/can_wag_tail(), /datum/species/proc/stop_wagging_tail(), /datum/species/proc/start_wagging_tail(), /datum/species/proc/is_wagging_tail(), /datum/species/proc/handle_hair()
  ./code/modules/mob/living/carbon/human/species_types/felinid.dm > the 5 procs related to wagging tail
  ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
  ./code/modules/surgery/bodyparts/_bodyparts.dm > /obj/item/bodypart/proc/get_limb_icon()
  ./code/modules/surgery/organs/ears.dm > /obj/item/organ/ears/cat/Insert(), /obj/item/organ/ears/cat/Remove()
- ./ code/modules/surgery/organs/tails.dm > /obj/item/organ/tail/cat/Insert(), /obj/item/organ/tail/cat/Remove(), /obj/item/organ/tail/lizard/Initialize(), /obj/item/organ/tail/lizard/Insert(), /obj/item/organ/tail/lizard/Remove()
+ ./code/modules/surgery/organs/tails.dm > /obj/item/organ/tail/cat/Insert(), /obj/item/organ/tail/cat/Remove(), /obj/item/organ/tail/lizard/Initialize(), /obj/item/organ/tail/lizard/Insert(), /obj/item/organ/tail/lizard/Remove()
+ ./code/modules/surgery/bodyparts/dismemberment.dm > /mob/living/carbon/regenerate_limb()
+ ./code/modules/mob/living/carbon/human/status_procs.dm > /mob/living/carbon/human/become_husk() > APPENDED
+ ./code/modules/reagents/chemistry/holder.dm > /datum/reagents/metabolize()
+ ./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm > /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
+ ./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
+ ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
+ ./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
 
 ### Defines:
 
@@ -40,6 +47,9 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/__DEFINES/~skyrat_defines/DNA.dm > A TON of defines
  ./code/__DEFINES/~skyrat_defines/obj_flags.dm  > Organ flags
  ./code/__DEFINES/~skyrat_defines/say.dm > MAX_FLAVOR_LEN
+ ./code/__DEFINES/~skyrat_defines/traits.dm > TRAIT_NO_HUSK
+
+ .\modular_skyrat\modules\customization\modules\reagents\chemistry\reagents.dm > var/process_flags
 
 ### Master file additions
 
@@ -58,6 +68,8 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  .\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_hoof.dmi
  .\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_paw.dmi
  .\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_snake.dmi
+
+ ./modular_skyrat/master_files/icons/obj/drinks.dmi
 
 ### Included files that are not contained in this module:
 

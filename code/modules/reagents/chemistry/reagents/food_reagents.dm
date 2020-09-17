@@ -22,7 +22,7 @@
 			H.adjust_nutrition(nutriment_factor)
 	if(length(reagent_removal_skip_list))
 		return
-	holder.remove_reagent(type, metabolization_rate)
+	M.remove_reagent(type, metabolization_rate) //SKYRAT EDIT CHANGE - CUSTOMIZATION (holder -> M)
 
 /datum/reagent/consumable/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()

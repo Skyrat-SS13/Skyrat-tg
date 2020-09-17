@@ -500,6 +500,12 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		//Consider moving this to a new species proc "spec_heal" maybe?
+		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+			if(owner.health > 50 && !owner.hellbound)
+				owner.revive(FALSE)
+		//SKYRAT EDIT ADDITION END
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
