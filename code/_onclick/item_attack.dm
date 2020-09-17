@@ -23,6 +23,7 @@
 /obj/item/proc/attack_self(mob/user)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_NO_INTERACT)
 		return
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_SELF, src) //SKYRAT EDIT ADDITION - GUNPOINT
 	interact(user)
 
 /**
