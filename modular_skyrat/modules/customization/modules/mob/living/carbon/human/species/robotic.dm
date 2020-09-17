@@ -36,6 +36,7 @@
 	H.visible_message("<span class='notice'>[H]'s monitor lights up.</span>", "<span class='notice'>All systems nominal. You're back online!</span>")
 
 /datum/species/robotic/on_species_gain(mob/living/carbon/human/C)
+	. = ..()
 	var/obj/item/organ/appendix/appendix = C.getorganslot(ORGAN_SLOT_APPENDIX)
 	if(appendix)
 		appendix.Remove(C)
@@ -83,6 +84,7 @@
 		C.update_body()
 
 /datum/species/robotic/ipc/on_species_loss(mob/living/carbon/human/C)
+	. = ..()
 	if(screen)
 		screen.Remove(C)
 	..()
