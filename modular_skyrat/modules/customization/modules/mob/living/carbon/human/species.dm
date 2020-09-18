@@ -8,6 +8,8 @@
 	var/list/list/body_markings = list()
 	///Override of the eyes icon file, used for Vox and maybe more in the future
 	var/eyes_icon
+	///How are we treated regarding processing reagents, by default we process them as if we're organic
+	var/reagent_flags = PROCESS_ORGANIC
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
@@ -353,6 +355,10 @@
 		fly = new
 		fly.Grant(C)
 
+	if(ROBOTIC_LIMBS in species_traits)
+		for(var/obj/item/bodypart/B in C.bodyparts)
+			B.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
+
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
 	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
@@ -500,3 +506,12 @@
 				QDEL_NULL(oldorgan)
 			path.build_from_dna(C.dna, key)
 			path.Insert(C, 0, FALSE)
+
+/datum/species/on_species_loss(mob/living/carbon/C, datum/species/old_species, pref_load)
+	. = ..()
+	if(ROBOTIC_LIMBS in species_traits)
+		for(var/obj/item/bodypart/B in C.bodyparts)
+			B.change_bodypart_status(BODYPART_ORGANIC, FALSE, TRUE)
+
+/datum/species/proc/spec_revival(mob/living/carbon/human/H)
+	return

@@ -460,6 +460,10 @@
 			L.brutestate = 0
 			L.burnstate = 0
 
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(dna?.species && (ROBOTIC_LIMBS in dna.species.species_traits))
+			L.change_bodypart_status(BODYPART_ROBOTIC)
+		//SKYRAT EDIT ADDITION END
 		if(!L.attach_limb(src, 1))
 			qdel(L)
 			return FALSE

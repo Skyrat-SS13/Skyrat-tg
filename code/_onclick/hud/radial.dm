@@ -80,6 +80,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
+	var/icon_path = 'icons/mob/radial.dmi' //SKYRAT EDIT ADDITION - GUNPOINT
 
 //If we swap to vis_contens inventory these will need a redo
 /datum/radial_menu/proc/check_screen_border(mob/user)
@@ -122,6 +123,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		var/elements_to_add = max_elements - elements.len
 		for(var/i in 1 to elements_to_add) //Create all elements
 			var/obj/screen/radial/slice/new_element = new /obj/screen/radial/slice
+			new_element.icon = icon_path //SKYRAT EDIT ADDITION - GUNPOINT
 			new_element.tooltips = use_tooltips
 			new_element.parent = src
 			elements += new_element
