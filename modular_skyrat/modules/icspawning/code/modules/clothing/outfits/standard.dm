@@ -28,7 +28,7 @@
 	icon_state = "hardsuit0-flight"
 	inhand_icon_state = "hardsuit0-flight"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	hardsuit_type = "flightsuit"
+	hardsuit_type = "flight"
 	armor = list("melee" = 98, "bullet" = 98, "laser" = 98, "energy" = 98, "bomb" = 98, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
 
 /obj/item/clothing/shoes/combat/debug
