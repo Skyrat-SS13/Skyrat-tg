@@ -1,6 +1,12 @@
 /mob/living/Moved()
 	. = ..()
 	update_turf_movespeed(loc)
+	//SKYRAT EDIT ADDITION BEGIN - PIXEL_SHIFT
+	if(is_shifted)
+		is_shifted = FALSE
+		pixel_x = get_standard_pixel_x_offset(mobility_flags & MOBILITY_STAND)
+		pixel_y = get_standard_pixel_y_offset(mobility_flags & MOBILITY_STAND)
+	//SKYRAT EDIT ADDITION END
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
