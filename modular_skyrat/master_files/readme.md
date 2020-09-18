@@ -12,3 +12,4 @@ MASTER SOUND FILES
 
 MASTER CODE FILES
 - /master_files/code/modules/power/lighting.dm
+- /master_files/code/modules/clothing/non_anthro_clothes.dm > PLEASE USE THIS TO LOG ANY CLOTHES THAT DO NOT NEED ANTHRO VARIANTS.
