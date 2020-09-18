@@ -51,7 +51,7 @@
 /obj/item/clothing/under/dress
 	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/security/officer
+/obj/item/clothing/under/rank/security/officer/skirt
 	mutant_variants = NONE
 
 /obj/item/clothing/under/suit/black/skirt
