@@ -43,6 +43,11 @@
 
 /obj/item/clothing/head/hardhat
 	mutant_variants = NONE
+
+/obj/item/clothing/head/beanie
+	mutant_variants = NONE
+
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
