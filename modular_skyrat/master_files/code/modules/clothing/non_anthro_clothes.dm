@@ -16,6 +16,16 @@
 
 /obj/item/clothing/head/helmet/sec
 	mutant_variants = NONE
+
+/obj/item/clothing/head/warden
+	mutant_variants = NONE
+
+/obj/item/clothing/head/wizard/red
+	mutant_variants = NONE
+
+/obj/item/clothing/head/wizard
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
