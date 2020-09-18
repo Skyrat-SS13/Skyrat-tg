@@ -29,7 +29,20 @@
 /obj/item/clothing/head/hos
 	mutant_variants = NONE
 
+/obj/item/clothing/head/beret/blueshield
+	mutant_variants = NONE
 
+/obj/item/clothing/head/caphat
+	mutant_variants = NONE
+
+/obj/item/clothing/head/crown/fancy
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hopcap
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hardhat
+	mutant_variants = NONE
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
