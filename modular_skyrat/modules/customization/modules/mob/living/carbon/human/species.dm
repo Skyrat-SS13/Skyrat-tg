@@ -486,10 +486,14 @@
 
 /datum/species/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE,list/excluded_zones)
 	. = ..()
+	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
 	for(var/key in C.dna.mutant_bodyparts)
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
+			if(robot_organs)
+				path.status = ORGAN_ROBOTIC
+				path.status = ORGAN_SYNTHETIC
 			var/obj/item/organ/oldorgan = C.getorganslot(path.slot)
 			if(oldorgan)
 				oldorgan.Remove(C,TRUE)
