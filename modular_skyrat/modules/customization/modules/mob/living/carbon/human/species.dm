@@ -499,7 +499,7 @@
 			var/obj/item/organ/path = new SA.organ_type
 			if(robot_organs)
 				path.status = ORGAN_ROBOTIC
-				path.organ_flags |= ORGAN_SYNTHETIC)
+				path.organ_flags |= ORGAN_SYNTHETIC
 			var/obj/item/organ/oldorgan = C.getorganslot(path.slot)
 			if(oldorgan)
 				oldorgan.Remove(C,TRUE)
