@@ -11,6 +11,7 @@
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT_NORTH
 
 /datum/keybinding/mob/shift_north/down(client/user)
+	. = ..()
 	var/mob/M = user.mob
 	M.northshift()
 	return TRUE
@@ -24,6 +25,7 @@
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT_EAST
 
 /datum/keybinding/mob/shift_east/down(client/user)
+	. = ..()
 	var/mob/M = user.mob
 	M.eastshift()
 	return TRUE
@@ -37,6 +39,7 @@
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT_SOUTH
 
 /datum/keybinding/mob/shift_south/down(client/user)
+	. = ..()
 	var/mob/M = user.mob
 	M.southshift()
 	return TRUE
@@ -50,6 +53,7 @@
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT_WEST
 
 /datum/keybinding/mob/shift_west/down(client/user)
+	. = ..()
 	var/mob/M = user.mob
 	M.westshift()
 	return TRUE
