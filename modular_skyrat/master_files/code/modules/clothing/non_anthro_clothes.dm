@@ -26,6 +26,10 @@
 /obj/item/clothing/head/wizard
 	mutant_variants = NONE
 
+/obj/item/clothing/head/hos
+	mutant_variants = NONE
+
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
