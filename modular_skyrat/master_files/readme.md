@@ -12,3 +12,6 @@ MASTER SOUND FILES
 
 MASTER CODE FILES
 - /master_files/code/modules/power/lighting.dm
+
+MASTER GLOBAL VARS
+- modular_skyrat/master_files/code/_globalvars/configuration.dm > GLOBAL_VAR_INIT(looc_allowed, TRUE)
