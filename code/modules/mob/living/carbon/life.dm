@@ -509,7 +509,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		handle_hallucinations()
 
 	if(drunkenness)
-		drunkenness = max(drunkenness - (drunkenness * 0.04) - 0.01, 0)
+		//drunkenness = max(drunkenness - (drunkenness * 0.04) - 0.01, 0) //ORIGINAL
+		drunkenness = max(drunkenness - (drunkenness * 0.01) - 0.01, 0) //SKYRAT EDIT CHANGE - booze
 		if(drunkenness >= 6)
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
 			if(prob(25))
