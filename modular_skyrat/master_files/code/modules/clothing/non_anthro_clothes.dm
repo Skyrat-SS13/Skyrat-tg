@@ -47,6 +47,14 @@
 /obj/item/clothing/head/beanie
 	mutant_variants = NONE
 
+/obj/item/clothing/head/helmet/abductor
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/winterhood
+	mutant_variants = NONE
+
+/obj/item/clothing/head/beret
+	mutant_variants = NONE
 
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -55,6 +63,9 @@
 //MASK>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+/obj/item/clothing/under/misc/gear_harness
+	mutant_variants = NONE
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/toggle/chef
@@ -71,5 +82,12 @@
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/jacket/miljacket
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/jacket
+	mutant_variants = NONE
+
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
