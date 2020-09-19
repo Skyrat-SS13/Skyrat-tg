@@ -6,7 +6,7 @@ MODULE ID: VERBS
 
 ### Description:
 
-Adds a few emotes and verbs for players to use, such as LOOC, subtle, and a couple who changes.
+Adds a few emotes and verbs for players to use, such as LOOC, subtle.
 
 ### TG Proc Changes:
 

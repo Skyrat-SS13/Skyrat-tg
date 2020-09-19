@@ -109,7 +109,7 @@
 	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message(message=message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.audible_message_subtler(message=message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
 	else
 		user.visible_message(message=message,self_message=message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list)
 
@@ -136,3 +136,17 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	usr.emote("subtler")
+
+//This is bad code.
+/atom/proc/audible_message_subtler(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, self_message, audible_message_flags = NONE)
+	var/list/hearers = get_hearers_in_view(hearing_distance, src)
+	if(self_message)
+		hearers -= src
+	hearers -= ignored_mobs
+	var/raw_msg = message
+	if(audible_message_flags & EMOTE_MESSAGE)
+		message = "<b>[src]</b> [message]"
+	for(var/mob/M in hearers)
+		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
+			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
+		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)

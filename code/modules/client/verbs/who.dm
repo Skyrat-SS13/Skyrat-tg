@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL BEGIN - VERBS - MOVED TO WHO.DM IN MODULE
 /client/verb/who()
 	set name = "Who"
 	set category = "OOC"
@@ -56,7 +55,6 @@
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
 	to_chat(src, msg)
-*/ //SKYRAT EDIT REMOVAL END
 
 /client/verb/adminwho()
 	set category = "Admin"
