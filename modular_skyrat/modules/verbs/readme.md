@@ -1,6 +1,6 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/151
 
-## Title: Cloning
+## Title: More verbs and subtler.
 
 MODULE ID: VERBS
 
