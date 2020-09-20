@@ -17,6 +17,7 @@
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"
 	desc = "The first three prototypes were discontinued after mass casualty incidents."
+	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "disco"
 	req_access = list(ACCESS_ENGINE)
 	anchored = FALSE
