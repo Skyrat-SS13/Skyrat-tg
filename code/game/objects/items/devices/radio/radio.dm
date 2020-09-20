@@ -185,11 +185,26 @@
 					recalculateChannels()
 				. = TRUE
 
-/obj/item/radio/talk_into(atom/movable/M, message, channel, list/spans, datum/language/language, list/message_mods)
+///obj/item/radio/talk_into(atom/movable/M, message, channel, list/spans, datum/language/language, list/message_mods) - ORIGINAL
+/obj/item/radio/talk_into(atom/movable/M, message, channel, list/spans, datum/language/language, list/message_mods, direct = TRUE) //SKYRAT EDIT CHANGE - GUNPOINT
+	if(HAS_TRAIT(M, TRAIT_SIGN_LANG)) //Forces Sign Language users to wear the translation gloves to speak over radios
+		var/mob/living/carbon/mute = M
+		if(istype(mute))
+			var/empty_indexes = mute.get_empty_held_indexes() //How many hands the player has empty
+			var/obj/item/clothing/gloves/radio/G = mute.get_item_by_slot(ITEM_SLOT_GLOVES)
+			if(!istype(G))
+				return FALSE
+			if(length(empty_indexes) == 1)
+				message = stars(message)
+			if(length(empty_indexes) == 0) //Due to the requirement of gloves, the arm check for normal speech would be redundant here.
+				return FALSE
+			if(mute.handcuffed)//Would be weird if they couldn't sign but their words still went over the radio
+				return FALSE
 	if(!spans)
 		spans = list(M.speech_span)
 	if(!language)
 		language = M.get_selected_language()
+	SEND_SIGNAL(M, COMSIG_MOVABLE_RADIO_TALK_INTO, src, message, channel, spans, language, direct) //SKYRAT EDIT ADDITION - GUNPOINT
 	INVOKE_ASYNC(src, .proc/talk_into_impl, M, message, channel, spans.Copy(), language, message_mods)
 	return ITALICS | REDUCE_RANGE
 
@@ -285,7 +300,7 @@
 			if (idx && (idx % 2) == (message_mods[RADIO_EXTENSION] == MODE_L_HAND))
 				return
 
-	talk_into(speaker, raw_message, , spans, language=message_language)
+	talk_into(speaker, raw_message, , spans, language=message_language, direct=FALSE) //SKYRAT EDIT CHANGE - GUNPOINT
 
 // Checks if this radio can receive on the given frequency.
 /obj/item/radio/proc/can_receive(freq, level)

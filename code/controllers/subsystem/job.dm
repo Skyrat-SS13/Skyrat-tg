@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(job)
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
 		to_chat(world, "<span class='boldannounce'>Error setting up jobs, no job datums found</span>")
-		return 0
+		return FALSE
 
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()
@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(job)
 		name_occupations[job.title] = job
 		type_occupations[J] = job
 
-	return 1
+	return TRUE
 
 
 /datum/controller/subsystem/job/proc/GetJob(rank)
@@ -189,8 +189,8 @@ SUBSYSTEM_DEF(job)
 				continue
 			var/mob/dead/new_player/candidate = pick(candidates)
 			if(AssignRole(candidate, command_position))
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
@@ -209,10 +209,10 @@ SUBSYSTEM_DEF(job)
 		AssignRole(candidate, command_position)
 
 /datum/controller/subsystem/job/proc/FillAIPosition()
-	var/ai_selected = 0
+	var/ai_selected = FALSE
 	var/datum/job/job = GetJob("AI")
 	if(!job)
-		return 0
+		return FALSE
 	for(var/i = job.total_positions, i > 0, i--)
 		for(var/level in level_order)
 			var/list/candidates = list()
@@ -223,8 +223,8 @@ SUBSYSTEM_DEF(job)
 					ai_selected++
 					break
 	if(ai_selected)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /** Proc DivideOccupations
@@ -445,7 +445,13 @@ SUBSYSTEM_DEF(job)
 		living_mob.mind.assigned_role = rank
 
 	to_chat(M, "<b>You are the [rank].</b>")
+	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
+		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
+		if(job.no_dresscode)
+			if(M.client)
+				packed_items = M.client.prefs.equip_preference_loadout(M, FALSE, job)
+		//SKYRAT CHANGE ADDITION END
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)//silicons override this proc to return a mob
 		if(ismob(new_mob))
 			living_mob = new_mob
@@ -477,6 +483,12 @@ SUBSYSTEM_DEF(job)
 		living_mob.add_memory("Your account ID is [wageslave.account_id].")
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
+		if(!job.no_dresscode)
+			if(M.client)
+				packed_items = M.client.prefs.equip_preference_loadout(M, FALSE, job)
+		M.client.prefs.add_packed_items(M, packed_items)
+		//SKYRAT CHANGE ADDITION END
 
 	return living_mob
 
