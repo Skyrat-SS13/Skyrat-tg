@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/151
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/872
 
 ## Title: More verbs and subtler.
 
