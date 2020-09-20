@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/892
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/893
 
 ## Title: Adds alternating explosions
 
