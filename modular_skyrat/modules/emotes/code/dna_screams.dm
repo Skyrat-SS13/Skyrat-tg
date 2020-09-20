@@ -27,7 +27,7 @@
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
 	fluff_desc = "Flypeople are at their most common genetically damaged sapients, who suffered extreme changes to their biology because of botched teletransportation technology. Some of them are however, simply variations of insectoids."
 
-datum/species/moth
+/datum/species/moth
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
 	fluff_desc = "Mothpeople are a variant of Insectoids, and are extremely similar in biology and overall appearance, but they most commonly resemble the moths found on old human Earth."
 
