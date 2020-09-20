@@ -1,7 +1,7 @@
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'modular_skyrat/modules/jukebox/icons/obj/stationobjs.dmi'
 	icon_state = "jukebox"
 	verb_say = "states"
 	density = TRUE
@@ -146,7 +146,7 @@
 	var/jukeboxslottotake = SSjukeboxes.addjukebox(src, selection, 2)
 	if(jukeboxslottotake)
 		active = TRUE
-		update_icon()
+		update_icon_state()
 		START_PROCESSING(SSobj, src)
 		stop = world.time + selection.song_length
 		return TRUE
