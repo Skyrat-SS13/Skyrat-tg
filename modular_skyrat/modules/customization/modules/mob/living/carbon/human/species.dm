@@ -495,7 +495,7 @@
 	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
 	for(var/key in C.dna.mutant_bodyparts)
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
-		if(SA.organ_type)
+		if(SA.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
 			if(robot_organs)
 				path.status = ORGAN_ROBOTIC
