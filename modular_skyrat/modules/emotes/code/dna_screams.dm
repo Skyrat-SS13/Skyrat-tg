@@ -7,14 +7,13 @@
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	fluff_desc = "An advanced model of IPCs, made not only to replicate humanoid behavior but also humanoid appearance. Although they were originally built to be humanlike, they come in various \"species\", and, of course, suffer under the same prejudices of other synthetics."
 
+/datum/species/robotic
+	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
+	fluff_desc = "IPCs were originally manufactured by NanoTrasen to cheaply replace humanoid workers. This backfired, as IPCs started to revolt and demand human rights throughout various protests, their degrees of violence varying - To this day, IPCs suffer with a lot of prejudice for being considered lesser than organics and a tool to replace them, even if they did win many of the rights of other sapients."
+
 /datum/species/android
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	fluff_desc = "Androids are simply put, fully augmented humans. Many of them did it for the sake of near-immortality, or just because of rampant technophilia. As such, most of them are extremist transhumanists, and due to the cost of being augmented most of them are of higher class."
-
-/datum/species/ipc
-	name = "I.P.C"
-	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
-	fluff_desc = "IPCs were originally manufactured by NanoTrasen to cheaply replace humanoid workers. This backfired, as IPCs started to revolt and demand human rights throughout various protests, their degrees of violence varying - To this day, IPCs suffer with a lot of prejudice for being considered lesser than organics and a tool to replace them, even if they did win many of the rights of other sapients."
 
 /datum/species/lizard
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_lizard.ogg')
@@ -28,13 +27,12 @@
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
 	fluff_desc = "Flypeople are at their most common genetically damaged sapients, who suffered extreme changes to their biology because of botched teletransportation technology. Some of them are however, simply variations of insectoids."
 
-/datum/species/insect
-	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
-	fluff_desc = "Insectoid is an umbrella term used to describe a type of alien one might encounter within the galaxy. They take a wide form of creeds and appearances, with backgrounds varying wildly."
-
-/datum/species/insect/moth
+datum/species/moth
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
 	fluff_desc = "Mothpeople are a variant of Insectoids, and are extremely similar in biology and overall appearance, but they most commonly resemble the moths found on old human Earth."
+
+/datum/species/snail
+		femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
 
 /datum/species/human
 	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
@@ -43,48 +41,23 @@
 /datum/species/human/felinid
 	fluff_desc = "Felinid is simply a popular name for genemodded humans with animal-like features, most commonly resembling that of a house cat."
 
-/datum/species/human/humanoid
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
-	fluff_desc = "Humanoid is an umbrella term for sapient beings that share many physical similarities with humans, more so than anthropomorphs. They come from very wildly varying backgrounds, and their existence is sometimes used as religious proof for the existance of a \"great architect\" behind the known universe."
-
-/datum/species/human/humanoid/dunmer
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
-	fluff_desc = "Ashlanders come from lavaland, and are considered a cheap workforce by NanoTrasen and SolGov. Most of them quickly adapted to their colonization and greatly appreciated the new technology, though dunmeri tradionalists might feel unsatisfied with how they are treated as inferior and how their culture and religion is slowly being abandoned."
-
-/datum/species/angel
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
-	fluff_desc = "Little to nothing is known about Angels as a species. While sharing remarkable similarities with those found within Christian Mythology, the culture of Angels is almost entirely separate from that of Humanity. Conspiracy theories abound within the Solar Federation of if these \"Angels\" had in some way influenced early development of Human Civilization."
-
-/datum/species/corporate
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
-	fluff_desc = "Corporate androids are advanced androids employed by NanoTrasen, or loaned out as mercenary forces to SolGov. Most of the time, they are high ranking CentCom officers."
-
 /datum/species/dullahan
 	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
 	fluff_desc = "Not much is known about the mysterious dullahan, but they sure know how to make someone lose their mind."
+
+/datum/species/ethereal
+	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
 
 /datum/species/dwarf
 	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
 	fluff_desc = "The result of genetic modification for use in colonization efforts, Dwarves are extremely distant relatives of Humans. Originally made for planets with extreme gravity, Dwarves are much more bulky and short in their physiology; along with various other changes, the most unusual outcome was their biological dependence on alcohol to survive. If a Dwarf goes too long without alcohol, they will suffer similar effects to extreme dehydration in humans, eventually culminating in death."
 
-/datum/species/anthro
+/datum/species/mammal
 	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
 	fluff_desc = "Anthropomorph is an umbrella term used to describe the vast majority of sapient species one might encounter within the galaxy. They can take almost any form, and can be found all across the stars."
 
-/datum/species/anthro/mammal
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
-	fluff_desc = "Mammal is an umbrella term used to describe sapient mammalian species one might encounter within the galaxy. They can take almost any form, and can be found all across the stars."
-
-/datum/species/anthro/avian
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
-	fluff_desc = "Avian is an umbrella term used to describe sapient avian species one might encounter within the galaxy. They can take almost any form, and can be found all across the stars."
-
-/datum/species/anthro/aquatic
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
-	fluff_desc = "Aquatic is an umbrella term used to describe sapient aquatic species one might encounter within the galaxy. They can take almost any form, and can be found all across the stars."
-
 /datum/species/jelly
-	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
+	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/jelly_scream.ogg')
 	fluff_desc = "Slimepeople are by and large the results of experimentation on various slime entities in control of various organizations, chief of which being Nanotrasen and their Xenobiological Research Department. While a vast majority of Slimepeople are the result of this experimentation, there exists many gel-like alien species in galaxy, along with those resultant from consumer-grade Nanotrasen brand Slime-Hybrid genemods."
 
 /datum/species/plasmaman
@@ -99,7 +72,7 @@
 	femalescreamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_f1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_f2.ogg')
 	fluff_desc = "Shadowpeople are by and large, mostly unknown. Their origins are a mystery to almost all of civilized space - and with mystery, comes myths. The most popular of these myths is that shadowpeople were once a religious sect of ashlanders on lavaland, who lived in harmony with the dark forces who controlled the underground of the planet. One day, however it may have happened, that these people angered the dark gods of the molten hellscape, whom cursed them to forever live in eternal darkness, lest their forms waste away to the ash they had been born from. Most shadowpeople suffer extreme prejudice, as rumors are largely spread around the frontier about shadowpeople with bladelike appendages that live in the darkness, waiting to prey on the blood of the innocent and to curse everything with unending darkness."
 
-/datum/species/synthliz
+/datum/species/robotic/synthliz
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	fluff_desc = "Synthetic Lizardpeople are a variant of IPC, much more advanced in construction. Although benefitting from higher production quality and improved internal systems, they still suffer from all of the original problems that being a synthetic humanoid comes with."
 
