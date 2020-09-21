@@ -56,10 +56,15 @@
 	return ..()
 
 /obj/machinery/jukebox/update_icon_state()
+	. = ..()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	luminosity = 0
+
 	if(active)
-		icon_state = "[initial(icon_state)]-active"
-	else
-		icon_state = "[initial(icon_state)]"
+		luminosity = 1
+		SSvis_overlays.add_vis_overlay(src, icon, "active", layer, plane, dir, alpha)
+		SSvis_overlays.add_vis_overlay(src, icon, "active", EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha)
+
 
 /obj/machinery/jukebox/ui_status(mob/user)
 	if(!anchored)
@@ -147,7 +152,7 @@
 	var/jukeboxslottotake = SSjukeboxes.addjukebox(src, selection, 2)
 	if(jukeboxslottotake)
 		active = TRUE
-		update_icon_state()
+		update_icon()
 		START_PROCESSING(SSobj, src)
 		stop = world.time + selection.song_length
 		return TRUE
