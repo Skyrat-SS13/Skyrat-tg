@@ -119,21 +119,6 @@
 /datum/emote/living/custom
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 
-/datum/emote/living/insult
-	key = "insult"
-	key_third_person = "insults"
-	message = "spews insults."
-	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/insult/run_emote(mob/living/user, params)
-	if(user.mind?.miming)
-		message = "creatively gesticulates."
-	else if(!user.is_muzzled())
-		message = pick_list_replacements(INSULTS_FILE, "insult_gen")
-	else
-		message = "muffles something."
-	. = ..()
-
 /datum/emote/living/snap
 	key = "snap"
 	key_third_person = "snaps"

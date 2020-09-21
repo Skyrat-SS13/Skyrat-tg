@@ -89,5 +89,5 @@
 	fluff_desc = "Xenomorph hybrids were initially the result of faulty genetic experimentation with xenos by NanoTrasen researchers, but since then genemods for \"xenomorphication\" have become very popular among xenophilics. Although widely believed that they share some sort of affinity with normal xenomorphs, this is simply untrue - Xenomorphs are savage, and will ravage xenohybrids without any qualms."
 
 /datum/species/zombie
-	screamsounds = list('modular_skyrat/modules/emotes/sound/zombie/zombie_scream.ogg')
+	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/zombie_scream.ogg')
 	fluff_desc = "Zombies are the result of an as of yet largely unknown jailbroken Nanomachine software program, which overload the body by using natural metabolic and cardiovascular systems to constantly replicate themselves within a host. Hosts are extremely aggressive on account of neurological changes imposed by the nanomachines, driven to spread their affliction to anyone who isn't infected. While sapient zombies do exist, able to regulate their nanomachines to be nonlethal and overall benign, they still suffer heavy prejudice on account of their origin."
