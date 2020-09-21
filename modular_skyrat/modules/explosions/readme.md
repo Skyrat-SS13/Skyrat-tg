@@ -10,7 +10,7 @@ Adds alternating explosions to the game, a port from the oldbase.
 
 ### TG Proc Changes:
 
-- /datum/controller/subsystem/explosions/proc/explode
+- code\controllers\subsystem\explosions.dm > /datum/controller/subsystem/explosions/proc/explode
 
 ### Defines:
 

@@ -283,9 +283,8 @@ SUBSYSTEM_DEF(explosions)
 						shake_camera(M, 10, clamp(baseshakeamount*0.25, 0, 2.5))
 						echo_volume = 60
 					M.playsound_local(epicenter, null, echo_volume, 1, frequency, S = explosion_echo_sound, distance_multiplier = 0)
-
-				if(creaking_explosion) // 5 seconds after the bang, the station begins to creak
-					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, hull_creaking_sound, null, null, null, null, 0), 5 SECONDS)
+				if(creaking_explosion)
+					addtimer(CALLBACK(M, /mob/proc/playsound_local, epicenter, null, rand(25, 40), 1, frequency, null, null, FALSE, hull_creaking_sound, 0), rand(4, 7))
 				//SKYRAT EDIT ADDITION END
 	if(heavy_impact_range > 1)
 		var/datum/effect_system/explosion/E
