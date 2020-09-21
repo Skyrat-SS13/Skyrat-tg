@@ -14,7 +14,7 @@
 	if(!msg)
 		return
 
-	if(!(prefs.chat_toggles & CHAT_LOOC))
+	if(!(prefs.skyrat_toggles & CHAT_LOOC))
 		to_chat(src, "<span class='danger'> You have LOOC muted.</span>")
 		return
 	if(is_banned_from(mob, "OOC"))
@@ -56,12 +56,12 @@
 		if (isobserver(M))
 			continue //Also handled later.
 
-		if(C.prefs.chat_toggles & CHAT_LOOC)
+		if(C.prefs.skyrat_toggles & CHAT_LOOC)
 			to_chat(C, "<span class='looc'><span class='prefix'>LOOC:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
 
 	for(var/client/C in GLOB.admins)
-		if(C.prefs.chat_toggles & CHAT_LOOC)
+		if(C.prefs.skyrat_toggles & CHAT_LOOC)
 			if (C.mob in heard)
 				to_chat(C, "<span class='looc'>[ADMIN_FLW(usr)] <span class='prefix'>LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
-			else if (!(C.prefs.chat_toggles & CHAT_LOOC_ADMIN))
+			else if (!(C.prefs.skyrat_toggles & CHAT_LOOC_ADMIN))
 				to_chat(C, "<span class='rlooc'>[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")

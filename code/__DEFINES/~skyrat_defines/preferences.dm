@@ -1,3 +1,5 @@
-//Chat toggles
-#define CHAT_LOOC			(1<<12)
-#define CHAT_LOOC_ADMIN		(1<<13)
+//Skyrat toggles
+#define CHAT_LOOC			(1<<0)
+#define CHAT_LOOC_ADMIN		(1<<1)
+
+#define TOGGLES_DEFAULT_CHAT_SKYRAT (CHAT_LOOC|CHAT_LOOC_ADMIN)
