@@ -41,11 +41,10 @@
 			var/mob/living/carbon/human/H = user
 			var/datum/species/userspecies = H.dna.species
 			if(H)
-				if(userspecies.screamsounds.len)
+				if(H.gender == FEMALE && length(userspecies.femalescreamsounds))
+					sound = pick(userspecies.femalescreamsounds)
+				else
 					sound = pick(userspecies.screamsounds)
-				if(H.gender == FEMALE)
-					if(userspecies.femalescreamsounds.len)
-						sound = pick(userspecies.femalescreamsounds)
 		if(isalien(user))
 			sound = 'sound/voice/hiss6.ogg'
 		/* TO DO - REINDEX SCREAMS
