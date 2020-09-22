@@ -1,5 +1,3 @@
-#define INSULTS_FILE "insult.json"
-
 /datum/emote/living/quill
 	key = "quill"
 	key_third_person = "quills"
