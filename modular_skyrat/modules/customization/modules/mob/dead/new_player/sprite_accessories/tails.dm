@@ -4,6 +4,7 @@
 	organ_type = /obj/item/organ/tail
 	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)

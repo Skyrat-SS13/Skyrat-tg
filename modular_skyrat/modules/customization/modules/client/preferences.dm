@@ -171,6 +171,8 @@
 
 	var/background_info = ""
 	var/exploitable_info = ""
+	///Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set
+	var/needs_update = TRUE
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -209,7 +211,9 @@
 	if(slot_randomized)
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
 		slot_randomized = FALSE
-	update_preview_icon()
+	if(needs_update)
+		update_preview_icon()
+		needs_update = FALSE
 	var/list/dat = list("<center>")
 
 	dat += "<a href='?_src_=prefs;preference=tab;tab=0' [current_tab == 0 ? "class='linkOn'" : ""]>Character Settings</a>"
@@ -265,8 +269,11 @@
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_NAKED]' [preview_pref == PREVIEW_PREF_NAKED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED]</a>"
 			dat += "</td>"
 			if(character_settings_tab == 4) //if loadout
-				dat += "<td width=65%>"
+				dat += "<td width=50%>"
 				dat += "<b>Remaining loadout points: [loadout_points]</b>"
+				dat += "</td>"
+				dat += "<td width=15%>"
+				dat += "<a href='?_src_=prefs;preference=reset_loadout'>Reset Loadout</a>"
 				dat += "</td>"
 			else
 				dat += "<td width=35%>"
@@ -742,11 +749,11 @@
 											customization_button = "" //TODO
 										if(LOADOUT_INFO_STYLE)
 											customization_button = "" //TODO
-								else if(LI.cost > loadout_points) //We cannot afford this item
+								//We check for whether the item is donator only, and if the person isn't donator, then check cost
+								else if((LI.donator_only && !GLOB.donator_list[user.ckey] && !user.client.holder) || LI.cost > loadout_points) //We cannot afford this item
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
-								
 
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
@@ -757,6 +764,14 @@
 								dat += "</tr>"
 
 							dat += "</table>"
+							if(loadout_subcategory == LOADOUT_SUBCATEGORY_DONATOR)
+								dat += "<HR>"
+								if(GLOB.donator_list[user.ckey])
+									dat += "<center><b>Thank you for your support!</b></center>"
+								else if (user.client.holder)
+									dat += "<center>Thank you for staffing the server! Enjoy those cool items</center>"
+								else
+									dat += "<center>You can support us on our patreon to help us run the servers, and get access to cool loadout items, and more points!</center>"
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -1390,6 +1405,7 @@
 
 	switch(href_list["task"])
 		if("change_loadout_customization")
+			needs_update = TRUE
 			var/path = text2path(href_list["item"])
 			if(!loadout[path])
 				return
@@ -1406,6 +1422,7 @@
 				if(LOADOUT_INFO_STYLE)
 					return
 		if("change_loadout")
+			needs_update = TRUE
 			var/path = text2path(href_list["item"])
 			var/datum/loadout_item/LI = GLOB.loadout_items[path]
 			if(loadout[path]) //We sell it!
@@ -1419,6 +1436,7 @@
 				loadout_points -= LI.cost
 				loadout[LI.path] = LI.default_customization() //As in "No extra information associated"
 		if("change_marking")
+			needs_update = TRUE
 			switch(href_list["preference"])
 				if("use_preset")
 					var/action = alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", "Yes", "No")
@@ -1538,6 +1556,7 @@
 						body_markings[zone].Insert(held_index, desired_marking)
 						body_markings[zone][desired_marking] = marking_content
 		if("change_genitals")
+			needs_update = TRUE
 			switch(href_list["preference"])
 				if("breasts_size")
 					var/new_size = input(user, "Choose your character's breasts size:", "Character Preference") as null|anything in GLOB.preference_breast_sizes
@@ -1565,6 +1584,7 @@
 					if(new_size)
 						features["balls_size"] = balls_description_to_size(new_size)
 		if("change_bodypart")
+			needs_update = TRUE
 			switch(href_list["preference"])
 				if("change_name")
 					var/key = href_list["key"]
@@ -1604,6 +1624,7 @@
 						reset_colors()
 
 		if("random")
+			needs_update = TRUE
 			switch(href_list["preference"])
 				if("name")
 					real_name = pref_species.random_name(gender,1)
@@ -1751,11 +1772,13 @@
 							vore_pref = "Yes"
 
 				if("hair")
+					needs_update = TRUE
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#"+hair_color) as color|null
 					if(new_hair)
 						hair_color = sanitize_hexcolor(new_hair)
 
 				if("hairstyle")
+					needs_update = TRUE
 					var/new_hairstyle
 					if(gender == MALE)
 						new_hairstyle = input(user, "Choose your character's hairstyle:", "Character Preference")  as null|anything in GLOB.hairstyles_male_list
@@ -1767,6 +1790,7 @@
 						hairstyle = new_hairstyle
 
 				if("next_hairstyle")
+					needs_update = TRUE
 					if (gender == MALE)
 						hairstyle = next_list_item(hairstyle, GLOB.hairstyles_male_list)
 					else if(gender == FEMALE)
@@ -1775,6 +1799,7 @@
 						hairstyle = next_list_item(hairstyle, GLOB.hairstyles_list)
 
 				if("previous_hairstyle")
+					needs_update = TRUE
 					if (gender == MALE)
 						hairstyle = previous_list_item(hairstyle, GLOB.hairstyles_male_list)
 					else if(gender == FEMALE)
@@ -1783,11 +1808,13 @@
 						hairstyle = previous_list_item(hairstyle, GLOB.hairstyles_list)
 
 				if("facial")
+					needs_update = TRUE
 					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
 					if(new_facial)
 						facial_hair_color = sanitize_hexcolor(new_facial)
 
 				if("facial_hairstyle")
+					needs_update = TRUE
 					var/new_facial_hairstyle
 					if(gender == MALE)
 						new_facial_hairstyle = input(user, "Choose your character's facial-hairstyle:", "Character Preference")  as null|anything in GLOB.facial_hairstyles_male_list
@@ -1799,6 +1826,7 @@
 						facial_hairstyle = new_facial_hairstyle
 
 				if("next_facehairstyle")
+					needs_update = TRUE
 					if (gender == MALE)
 						facial_hairstyle = next_list_item(facial_hairstyle, GLOB.facial_hairstyles_male_list)
 					else if(gender == FEMALE)
@@ -1807,6 +1835,7 @@
 						facial_hairstyle = next_list_item(facial_hairstyle, GLOB.facial_hairstyles_list)
 
 				if("previous_facehairstyle")
+					needs_update = TRUE
 					if (gender == MALE)
 						facial_hairstyle = previous_list_item(facial_hairstyle, GLOB.facial_hairstyles_male_list)
 					else if (gender == FEMALE)
@@ -1826,21 +1855,25 @@
 						underwear = new_underwear
 
 				if("underwear_color")
+					needs_update = TRUE
 					var/new_underwear_color = input(user, "Choose your character's underwear color:", "Character Preference","#"+underwear_color) as color|null
 					if(new_underwear_color)
 						underwear_color = sanitize_hexcolor(new_underwear_color)
 
 				if("undershirt_color")
+					needs_update = TRUE
 					var/new_undershirt_color = input(user, "Choose your character's undershirt color:", "Character Preference","#"+undershirt_color) as color|null
 					if(new_undershirt_color)
 						undershirt_color = sanitize_hexcolor(new_undershirt_color)
 
 				if("socks_color")
+					needs_update = TRUE
 					var/new_socks_color = input(user, "Choose your character's socks color:", "Character Preference","#"+socks_color) as color|null
 					if(new_socks_color)
 						socks_color = sanitize_hexcolor(new_socks_color)
 
 				if("undershirt")
+					needs_update = TRUE
 					var/new_undershirt
 					if(gender == MALE)
 						new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in GLOB.undershirt_m
@@ -1852,18 +1885,20 @@
 						undershirt = new_undershirt
 
 				if("socks")
+					needs_update = TRUE
 					var/new_socks
 					new_socks = input(user, "Choose your character's socks:", "Character Preference") as null|anything in GLOB.socks_list
 					if(new_socks)
 						socks = new_socks
 
 				if("eyes")
+					needs_update = TRUE
 					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference","#"+eye_color) as color|null
 					if(new_eyes)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("species")
-
+					needs_update = TRUE
 					var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
 
 					if(result)
@@ -1877,6 +1912,7 @@
 							real_name = pref_species.random_name(gender)
 
 				if("mutant_color")
+					needs_update = TRUE
 					var/new_mutantcolor = input(user, "Choose your character's primary color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
@@ -1887,6 +1923,7 @@
 							reset_colors()
 
 				if("mutant_color2")
+					needs_update = TRUE
 					var/new_mutantcolor = input(user, "Choose your character's secondary color:", "Character Preference","#"+features["mcolor2"]) as color|null
 					if(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
@@ -1897,6 +1934,7 @@
 							reset_colors()
 
 				if("mutant_color3")
+					needs_update = TRUE
 					var/new_mutantcolor = input(user, "Choose your character's tertiary color:", "Character Preference","#"+features["mcolor3"]) as color|null
 					if(new_mutantcolor)
 						if(new_mutantcolor == "#000000")
@@ -1907,6 +1945,7 @@
 							reset_colors()
 
 				if("color_ethereal")
+					needs_update = TRUE
 					var/new_etherealcolor = input(user, "Choose your ethereal color", "Character Preference") as null|anything in GLOB.color_list_ethereal
 					if(new_etherealcolor)
 						features["ethcolor"] = GLOB.color_list_ethereal[new_etherealcolor]
@@ -1985,6 +2024,7 @@
 						features["moth_markings"] = new_moth_markings*/
 
 				if("s_tone")
+					needs_update = TRUE
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
 					if(new_s_tone)
 						set_skin_tone(new_s_tone)
@@ -2005,6 +2045,7 @@
 						backpack = new_backpack
 
 				if("suit")
+					needs_update = TRUE
 					if(jumpsuit_style == PREF_SUIT)
 						jumpsuit_style = PREF_SKIRT
 					else
@@ -2079,6 +2120,13 @@
 
 		else
 			switch(href_list["preference"])
+				if("reset_loadout")
+					var/action = alert(user, "Are you sure you want to reset your loadout?", "", "Yes", "No")
+					if(action && action != "Yes")
+						return
+					loadout = list()
+					loadout_points = initial_loadout_points()
+
 				if("mismatch")
 					mismatched_customization = !mismatched_customization
 
@@ -2095,6 +2143,7 @@
 					if(unlock_content)
 						toggles ^= MEMBER_PUBLIC
 				if("gender")
+					needs_update = TRUE
 					var/list/friendlyGenders = list("Male" = "male", "Female" = "female", "Other" = "plural")
 					var/pickedGender = input(user, "Choose your gender.", "Character Preference", gender) as null|anything in friendlyGenders
 					if(pickedGender && friendlyGenders[pickedGender] != gender)
@@ -2105,6 +2154,7 @@
 						//facial_hairstyle = random_facial_hairstyle(gender)
 						//hairstyle = random_hairstyle(gender) //TODO: this is just a bandaid. Remove those restrictions later
 				if("body_type")
+					needs_update = TRUE
 					if(body_type == MALE)
 						body_type = FEMALE
 					else
@@ -2360,6 +2410,7 @@
 
 				if("character_preview")
 					preview_pref = href_list["tab"]
+					needs_update = TRUE
 
 				if("character_tab")
 					if (href_list["tab"])
@@ -2544,3 +2595,9 @@
 	features["skin_color"] = sanitize_hexcolor(skintone2hex(skin_tone), 3, 0)
 	if(!allow_advanced_colors)
 		reset_colors()
+
+/datum/preferences/proc/initial_loadout_points()
+	if(GLOB.donator_list[parent.ckey])
+		return LOADOUT_POINTS_MAX_DONATOR
+	else
+		return LOADOUT_POINTS_MAX
