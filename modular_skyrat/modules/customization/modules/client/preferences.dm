@@ -767,7 +767,7 @@
 								else if (user.client.holder)
 									dat += "<center>Thank you for staffing the server! Enjoy those cool items</center>"
 								else
-									dat += "<center>You can support us on our patreon to help us run the servers, and get access to cool loadout items!</center>"
+									dat += "<center>You can support us on our patreon to help us run the servers, and get access to cool loadout items, and more points!</center>"
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -2095,7 +2095,7 @@
 					if(action && action != "Yes")
 						return
 					loadout = list()
-					loadout_points = LOADOUT_POINTS_MAX
+					loadout_points = initial_loadout_points()
 
 				if("mismatch")
 					mismatched_customization = !mismatched_customization
@@ -2562,3 +2562,9 @@
 	features["skin_color"] = sanitize_hexcolor(skintone2hex(skin_tone), 3, 0)
 	if(!allow_advanced_colors)
 		reset_colors()
+
+/datum/preferences/proc/initial_loadout_points()
+	if(GLOB.donator_list[parent.ckey])
+		return LOADOUT_POINTS_MAX_DONATOR
+	else
+		return LOADOUT_POINTS_MAX

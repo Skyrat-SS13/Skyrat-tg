@@ -1,4 +1,5 @@
 #define LOADOUT_POINTS_MAX 10
+#define LOADOUT_POINTS_MAX_DONATOR 20
 
 #define LOADOUT_CATEGORY_NONE				"ERROR"
 //Those three subcategories are good to apply to any category

@@ -442,7 +442,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	loadout = SANITIZE_LIST(loadout)
 	//LOADOUT POINT VALIDATION
 	//Here we calculate if we truly can use the loaded loadout
-	loadout_points = initial(loadout_points)
+	loadout_points = initial_loadout_points()
 	var/accumulated_cost = 0
 	for(var/path in loadout)
 		var/datum/loadout_item/LI = GLOB.loadout_items[path]
