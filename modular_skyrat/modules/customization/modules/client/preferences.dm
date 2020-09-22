@@ -45,7 +45,7 @@
 	var/toggles = TOGGLES_DEFAULT
 	var/db_flags
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
-	var/skyrat_toggles = TOGGLES_DEFAULT_CHAT_SKYRAT
+	var/skyrat_toggles = TOGGLES_DEFAULT_SKYRAT
 	var/ghost_form = "ghost"
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/ghost_accs = GHOST_ACCS_DEFAULT_OPTION
