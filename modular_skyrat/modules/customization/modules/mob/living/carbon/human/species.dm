@@ -217,7 +217,7 @@
 
 				standing += extra2_accessory_overlay
 
-			H.overlays_standing[layer] = standing.Copy()
+			H.overlays_standing[layer] += standing
 			standing = list()
 
 	H.apply_overlay(BODY_BEHIND_LAYER)
