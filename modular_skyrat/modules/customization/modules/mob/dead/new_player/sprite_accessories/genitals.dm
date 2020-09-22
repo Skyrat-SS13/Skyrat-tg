@@ -34,6 +34,7 @@
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/genital/penis/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
@@ -100,6 +101,7 @@
 	organ_type = /obj/item/organ/genital/testicles
 	associated_organ_slot = ORGAN_SLOT_TESTICLES
 	key = "testicles"
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/has_size = TRUE
 
 /datum/sprite_accessory/genital/testicles/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -130,6 +132,7 @@
 	key = "vagina"
 	always_color_customizable = TRUE
 	default_color = "fcc"
+	relevent_layers = list(BODY_FRONT_LAYER)
 	var/alt_aroused = TRUE
 
 /datum/sprite_accessory/genital/vagina/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -205,6 +208,7 @@
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"
 	default_color = DEFAULT_SKIN_OR_PRIMARY
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))

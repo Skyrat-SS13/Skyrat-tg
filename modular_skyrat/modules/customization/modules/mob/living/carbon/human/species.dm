@@ -12,7 +12,6 @@
 	var/reagent_flags = PROCESS_ORGANIC
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
-	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/list/standing	= list()
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
@@ -57,7 +56,7 @@
 		if(S.is_hidden(H, HD))
 			continue
 		new_renderkey += "-[key]-[S.name]"
-		bodyparts_to_add[key] = mutant_bodyparts[key]
+		bodyparts_to_add += S
 
 	if(new_renderkey == H.mutant_renderkey)
 		return
@@ -69,35 +68,39 @@
 
 	var/g = (H.body_type == FEMALE) ? "f" : "m"
 
-	for(var/layer in relevent_layers)
-		var/layertext = mutant_bodyparts_layertext(layer)
+	for(var/bodypart in bodyparts_to_add)
+		var/datum/sprite_accessory/S = bodypart
+		var/key = S.key
 
-		for(var/bodypart in bodyparts_to_add)
-			var/datum/sprite_accessory/S = GLOB.sprite_accessories[bodypart][bodyparts_to_add[bodypart][MUTANT_INDEX_NAME]]
+		var/icon_to_use
+		var/x_shift
+		if(S.special_icon_case)
+			icon_to_use = S.get_special_icon(H, S.icon)
+		else
+			icon_to_use = S.icon
 
-			var/icon_to_use
-			var/x_shift
-			if(S.special_icon_case)
-				icon_to_use = S.get_special_icon(H, S.icon)
-			else
-				icon_to_use = S.icon
+		if(S.special_x_dimension)
+			x_shift = S.get_special_x_dimension(H, S.icon)
+		else
+			x_shift = S.dimension_x
 
-			if(S.special_x_dimension)
-				x_shift = S.get_special_x_dimension(H, S.icon)
-			else
-				x_shift = S.dimension_x
+		var/special_state
+		if(S.special_render_case)
+			special_state = S.get_special_render_state(H, S.icon_state)
+			if(!special_state)
+				continue
+
+		for(var/layer in S.relevent_layers)
+			var/layertext = mutant_bodyparts_layertext(layer)
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
-			if(S.special_render_case)
-				var/special_state = S.get_special_render_state(H, S.icon_state)
-				if(!special_state)
-					continue
-				accessory_overlay.icon_state = "m_[bodypart]_[special_state]_[layertext]"
+			if(special_state)
+				accessory_overlay.icon_state = "m_[key]_[special_state]_[layertext]"
 			else if(S.gender_specific)
-				accessory_overlay.icon_state = "[g]_[bodypart]_[S.icon_state]_[layertext]"
+				accessory_overlay.icon_state = "[g]_[key]_[S.icon_state]_[layertext]"
 			else
-				accessory_overlay.icon_state = "m_[bodypart]_[S.icon_state]_[layertext]"
+				accessory_overlay.icon_state = "m_[key]_[S.icon_state]_[layertext]"
 
 			if(S.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
@@ -111,9 +114,9 @@
 				else
 					switch(S.color_src)
 						if(USE_ONE_COLOR)
-							accessory_overlay.color = "#"+bodyparts_to_add[bodypart][MUTANT_INDEX_COLOR_LIST][1]
+							accessory_overlay.color = "#"+mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
-							var/list/color_list = bodyparts_to_add[bodypart][MUTANT_INDEX_COLOR_LIST]
+							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 							var/list/finished_list = list()
 							finished_list += ReadRGB("[color_list[1]]0")
 							finished_list += ReadRGB("[color_list[2]]0")
@@ -145,9 +148,9 @@
 			if(S.hasinner)
 				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 				if(S.gender_specific)
-					inner_accessory_overlay.icon_state = "[g]_[bodypart]inner_[S.icon_state]_[layertext]"
+					inner_accessory_overlay.icon_state = "[g]_[key]inner_[S.icon_state]_[layertext]"
 				else
-					inner_accessory_overlay.icon_state = "m_[bodypart]inner_[S.icon_state]_[layertext]"
+					inner_accessory_overlay.icon_state = "m_[key]inner_[S.icon_state]_[layertext]"
 
 				if(S.center)
 					inner_accessory_overlay = center_image(inner_accessory_overlay, S.dimension_x, S.dimension_y)
@@ -158,9 +161,9 @@
 			if(S.extra) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 				if(S.gender_specific)
-					extra_accessory_overlay.icon_state = "[g]_[bodypart]_extra_[S.icon_state]_[layertext]"
+					extra_accessory_overlay.icon_state = "[g]_[key]_extra_[S.icon_state]_[layertext]"
 				else
-					extra_accessory_overlay.icon_state = "m_[bodypart]_extra_[S.icon_state]_[layertext]"
+					extra_accessory_overlay.icon_state = "m_[key]_extra_[S.icon_state]_[layertext]"
 				if(S.center)
 					extra_accessory_overlay = center_image(extra_accessory_overlay, S.dimension_x, S.dimension_y)
 
@@ -190,9 +193,9 @@
 			if(S.extra2) //apply the extra overlay, if there is one
 				var/mutable_appearance/extra2_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 				if(S.gender_specific)
-					extra2_accessory_overlay.icon_state = "[g]_[bodypart]_extra2_[S.icon_state]_[layertext]"
+					extra2_accessory_overlay.icon_state = "[g]_[key]_extra2_[S.icon_state]_[layertext]"
 				else
-					extra2_accessory_overlay.icon_state = "m_[bodypart]_extra2_[S.icon_state]_[layertext]"
+					extra2_accessory_overlay.icon_state = "m_[key]_extra2_[S.icon_state]_[layertext]"
 				if(S.center)
 					extra2_accessory_overlay = center_image(extra2_accessory_overlay, S.dimension_x, S.dimension_y)
 
@@ -214,8 +217,8 @@
 
 				standing += extra2_accessory_overlay
 
-		H.overlays_standing[layer] = standing.Copy()
-		standing = list()
+			H.overlays_standing[layer] = standing.Copy()
+			standing = list()
 
 	H.apply_overlay(BODY_BEHIND_LAYER)
 	H.apply_overlay(BODY_ADJ_LAYER)

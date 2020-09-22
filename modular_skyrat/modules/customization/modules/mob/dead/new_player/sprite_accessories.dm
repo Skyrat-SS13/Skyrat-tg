@@ -15,6 +15,9 @@
 
 	color_src = USE_ONE_COLOR
 
+	///Which layers does this accessory affect (BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	var/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
 
@@ -116,19 +119,10 @@
 	key = "caps"
 	generic = "Caps"
 
-/datum/sprite_accessory/frills
-	key = "frills"
-	generic = "Frills"
-	default_color = DEFAULT_SECONDARY
-
-/datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC)
-		return TRUE
-	return FALSE
-
 /datum/sprite_accessory/horns
 	key = "horns"
 	generic = "Horns"
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
