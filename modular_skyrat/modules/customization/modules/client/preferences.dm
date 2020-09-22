@@ -265,8 +265,11 @@
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_NAKED]' [preview_pref == PREVIEW_PREF_NAKED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED]</a>"
 			dat += "</td>"
 			if(character_settings_tab == 4) //if loadout
-				dat += "<td width=65%>"
+				dat += "<td width=50%>"
 				dat += "<b>Remaining loadout points: [loadout_points]</b>"
+				dat += "</td>"
+				dat += "<td width=15%>"
+				dat += "<a href='?_src_=prefs;preference=reset_loadout'>Reset Loadout</a>"
 				dat += "</td>"
 			else
 				dat += "<td width=35%>"
@@ -742,11 +745,11 @@
 											customization_button = "" //TODO
 										if(LOADOUT_INFO_STYLE)
 											customization_button = "" //TODO
-								else if(LI.cost > loadout_points) //We cannot afford this item
+								//We check for whether the item is donator only, and if the person isn't donator, then check cost
+								else if((LI.donator_only && !GLOB.donator_list[user.ckey] && !user.client.holder) || LI.cost > loadout_points) //We cannot afford this item
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
-								
 
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
@@ -757,6 +760,14 @@
 								dat += "</tr>"
 
 							dat += "</table>"
+							if(loadout_subcategory == LOADOUT_SUBCATEGORY_DONATOR)
+								dat += "<HR>"
+								if(GLOB.donator_list[user.ckey])
+									dat += "<center><b>Thank you for your support!</b></center>"
+								else if (user.client.holder)
+									dat += "<center>Thank you for staffing the server! Enjoy those cool items</center>"
+								else
+									dat += "<center>You can support us on our patreon to help us run the servers, and get access to cool loadout items!</center>"
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -2079,6 +2090,13 @@
 
 		else
 			switch(href_list["preference"])
+				if("reset_loadout")
+					var/action = alert(user, "Are you sure you want to reset your loadout?", "", "Yes", "No")
+					if(action && action != "Yes")
+						return
+					loadout = list()
+					loadout_points = LOADOUT_POINTS_MAX
+
 				if("mismatch")
 					mismatched_customization = !mismatched_customization
 

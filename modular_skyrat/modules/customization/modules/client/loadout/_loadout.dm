@@ -18,6 +18,8 @@
 	var/restricted_desc
 	///Extra information which the user can set. (LOADOUT_INFO_NONE, LOADOUT_INFO_STYLE, LOADOUT_INFO_ONE_COLOR, LOADOUT_INFO_THREE_COLORS)
 	var/extra_info
+	///Whether the item is restricted to supporters
+	var/donator_only
 
 /datum/loadout_item/New()
 	if(!description && path)
