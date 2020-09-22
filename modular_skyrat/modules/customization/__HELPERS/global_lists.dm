@@ -3,6 +3,8 @@
 	make_body_marking_references()
 	make_body_marking_set_references()
 	make_loadout_references()
+	//We're loading donators here because it's the least intrusive way modularly
+	load_donators()
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories
