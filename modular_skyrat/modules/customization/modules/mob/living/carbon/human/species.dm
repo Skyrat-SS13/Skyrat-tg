@@ -15,13 +15,6 @@
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/list/standing	= list()
 
-	H.remove_overlay(BODY_BEHIND_LAYER)
-	H.remove_overlay(BODY_ADJ_LAYER)
-	H.remove_overlay(BODY_FRONT_LAYER)
-
-	if(!mutant_bodyparts)
-		return
-
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
 
 	//Digitigrade legs are stuck in the phantom zone between true limbs and mutant bodyparts. Mainly it just needs more agressive updating than most limbs.
@@ -48,10 +41,31 @@
 	if(not_digitigrade && (DIGITIGRADE in species_traits)) //Curse is lifted
 		species_traits -= DIGITIGRADE
 
-	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
-
-	if(!length(bodyparts_to_add))
+	if(!mutant_bodyparts)
+		H.remove_overlay(BODY_BEHIND_LAYER)
+		H.remove_overlay(BODY_ADJ_LAYER)
+		H.remove_overlay(BODY_FRONT_LAYER)
 		return
+
+	var/list/bodyparts_to_add = list()
+	var/new_renderkey = "[id]"
+
+	for(var/key in mutant_bodyparts)
+		var/datum/sprite_accessory/S = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		if(!S || S.icon_state == "none")
+			continue
+		if(S.is_hidden(H, HD))
+			continue
+		new_renderkey += "-[key]-[S.name]"
+		bodyparts_to_add[key] = mutant_bodyparts[key]
+
+	if(new_renderkey == H.mutant_renderkey)
+		return
+	H.mutant_renderkey = new_renderkey
+
+	H.remove_overlay(BODY_BEHIND_LAYER)
+	H.remove_overlay(BODY_ADJ_LAYER)
+	H.remove_overlay(BODY_FRONT_LAYER)
 
 	var/g = (H.body_type == FEMALE) ? "f" : "m"
 
@@ -60,10 +74,6 @@
 
 		for(var/bodypart in bodyparts_to_add)
 			var/datum/sprite_accessory/S = GLOB.sprite_accessories[bodypart][bodyparts_to_add[bodypart][MUTANT_INDEX_NAME]]
-			if(!S || S.icon_state == "none")
-				continue
-			if(S.is_hidden(H, HD))
-				continue
 
 			var/icon_to_use
 			var/x_shift
