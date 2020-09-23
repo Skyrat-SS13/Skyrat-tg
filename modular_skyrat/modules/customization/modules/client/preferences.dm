@@ -732,7 +732,7 @@
 							var/even = FALSE
 							for(var/path in item_names)
 								var/datum/loadout_item/LI = GLOB.loadout_items[path]
-								if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
+								if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey])
 									continue
 								var/background_cl = "#23273C"
 								if(even)
