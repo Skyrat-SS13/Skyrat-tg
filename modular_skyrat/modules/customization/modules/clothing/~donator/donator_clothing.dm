@@ -24,7 +24,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
 	icon_state = "blutigen_kimono"
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	body_parts_covered = CHEST|GROIN|ARMS
 	mutant_variants = NONE
 
 //Donation reward for Random516
