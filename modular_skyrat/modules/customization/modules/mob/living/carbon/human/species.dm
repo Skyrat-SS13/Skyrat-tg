@@ -55,7 +55,12 @@
 			continue
 		if(S.is_hidden(H, HD))
 			continue
-		new_renderkey += "-[key]-[S.name]"
+		var/render_state
+		if(S.special_render_case)
+			render_state = S.get_special_render_state(H, S.icon_state)
+		else
+			render_state = S.icon_state
+		new_renderkey += "-[key]-[render_state]"
 		bodyparts_to_add += S
 
 	if(new_renderkey == H.mutant_renderkey)
