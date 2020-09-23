@@ -503,7 +503,7 @@
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		//Consider moving this to a new species proc "spec_heal" maybe?
 		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
-			if(owner.health > 50 && !owner.hellbound)
+			if(owner.health > 50)
 				owner.revive(FALSE)
 		//SKYRAT EDIT ADDITION END
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
