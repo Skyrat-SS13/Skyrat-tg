@@ -123,6 +123,7 @@
 		relevant_cap = max(hpc, epc)
 
 	if(href_list["show_preferences"])
+		client.prefs.needs_update = TRUE //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		client.prefs.ShowChoices(src)
 		return TRUE
 
