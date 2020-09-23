@@ -11,7 +11,4 @@ GLOBAL_LIST(donator_list)
 			continue
 		GLOB.donator_list[ckey(line)] = TRUE //Associative so we can check it much faster
 
-	if(!GLOB.donator_list.len)
-		GLOB.donator_list = null
-
 #undef DONATORLISTFILE
