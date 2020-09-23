@@ -45,6 +45,7 @@
 	var/toggles = TOGGLES_DEFAULT
 	var/db_flags
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
+	var/skyrat_toggles = TOGGLES_DEFAULT_SKYRAT
 	var/ghost_form = "ghost"
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 	var/ghost_accs = GHOST_ACCS_DEFAULT_OPTION
@@ -731,7 +732,7 @@
 							var/even = FALSE
 							for(var/path in item_names)
 								var/datum/loadout_item/LI = GLOB.loadout_items[path]
-								if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
+								if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey])
 									continue
 								var/background_cl = "#23273C"
 								if(even)
@@ -754,7 +755,6 @@
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
-
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
 								dat += "<td><font size=2>[customization_button]</font></td>"
