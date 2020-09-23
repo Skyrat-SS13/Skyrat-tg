@@ -59,7 +59,7 @@
 		if(S.special_render_case)
 			render_state = S.get_special_render_state(H, S.icon_state)
 		else
-			render_state = icon_state
+			render_state = S.icon_state
 		new_renderkey += "-[key]-[render_state]"
 		bodyparts_to_add += S
 
