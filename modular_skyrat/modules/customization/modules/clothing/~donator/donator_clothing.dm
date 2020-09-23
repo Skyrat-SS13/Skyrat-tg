@@ -3,7 +3,7 @@
 /obj/item/clothing/head/drake_skull
 	name = "skull of an ashdrake"
 	desc = "How did they get this?"
-	icon = 'modular_skyrat/icons/obj/clothing/hats.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
 	icon_state = "drake_skull"
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/large-worn-icons/32x64/head.dmi'
 	flags_cover = HEADCOVERSEYES
