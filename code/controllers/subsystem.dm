@@ -83,6 +83,9 @@
 	/// Previous subsystem in the queue of subsystems to run this tick
 	var/datum/controller/subsystem/queue_prev
 
+	/// Maximum MC tick allowance to run, exists for the purposes of fine-tuning
+	var/max_mc_tick = 70
+
 	//Do not blindly add vars here to the bottom, put it where it goes above
 	//If your var only has two values, put it in as a flag.
 
