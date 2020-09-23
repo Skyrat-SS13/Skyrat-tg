@@ -1,5 +1,5 @@
 
-TOGGLE_CHECKBOX(/datum/verbs/menu/Settings, listen_looc)()
+/client/verb/listen_looc()
 	set name = "Show/Hide LOOC"
 	set category = "Preferences"
 	set desc = "Toggles seeing LocalOutOfCharacter chat"
