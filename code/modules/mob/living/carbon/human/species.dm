@@ -56,11 +56,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/species_language_holder = /datum/language_holder
 	/// Default mutant bodyparts for this species, like horns. Don't forget to set one for every mutant bodypart you allow this species to have.
 	var/list/default_features = list()
-<<<<<<< HEAD
-	/// Visible CURRENT bodyparts that are unique to a species. DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK SHIT UP! Changes to this list for non-species specific bodyparts (ie cat ears and tails) should be assigned at organ level if possible. Layer hiding is handled by [datum/species/handle_mutant_bodyparts()] below.
-	//var/list/mutant_bodyparts = list() - ORIGINAL
-	var/list/list/mutant_bodyparts = list() //SKYRAT EDIT CHANGE - CUSTOMIZATIOn
-=======
 	/// Visible CURRENT bodyparts that are unique to a species.
 	///
 	/// DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK
@@ -68,8 +63,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	/// cat ears and tails) should be assigned at organ level if possible.
 	/// Layer hiding is handled by [/datum/species/proc/handle_mutant_bodyparts]
 	/// below.
-	var/list/mutant_bodyparts = list()
->>>>>>> f80836d00d6... Fix broken dmdoc crosslinks (#53896)
+	//var/list/mutant_bodyparts = list() - ORIGINAL
+	var/list/list/mutant_bodyparts = list() //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	///Internal organs that are unique to this race, like a tail.
 	var/list/mutant_organs = list()
 	///Multiplier for the race's speed. Positive numbers make it move slower, negative numbers make it move faster.
