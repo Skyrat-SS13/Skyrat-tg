@@ -13,7 +13,7 @@
 	///Which bodyparts does the marking affect in BITFLAGS!! (HEAD, CHEST, ARM_LEFT, ARM_RIGHT, HAND_LEFT, HAND_RIGHT, LEG_RIGHT, LEG_LEFT)
 	var/affected_bodyparts
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species = list("mammal")
+	var/recommended_species = list("mammal", "lizard")
 	///If this is on the color customization will show up despite the pref settings, it will also cause the marking to not reset colors to match the defaults
 	var/always_color_customizable
 
@@ -39,6 +39,23 @@
 			colors = default_color
 
 	return colors
+
+//Use this one for things with pre-set default colors, I guess
+/datum/body_marking/other
+	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/other_markings.dmi'
+
+/datum/body_marking/other/drake_bone
+	name = "Drake Bone"
+	icon_state = "drakebone"
+	default_color = "CCC"
+	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT 
+
+/datum/body_marking/other/drake_eyes
+	name = "Drake Eyes"
+	icon_state = "drakeeyes"
+	default_color = "F00"
+	affected_bodyparts = HEAD
+	always_color_customizable = TRUE
 
 /datum/body_marking/secondary
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/secondary_markings.dmi'
