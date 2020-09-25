@@ -14,6 +14,7 @@
 	description = _description
 	cleanable = _cleanable
 
+<<<<<<< HEAD:code/datums/components/decal.dm
 	apply()
 
 /datum/component/decal/RegisterWithParent()
@@ -39,6 +40,23 @@
 	apply()
 
 /datum/component/decal/proc/generate_appearance(_icon, _icon_state, _dir, _layer, _color, _alpha)
+=======
+	RegisterSignal(target,COMSIG_ATOM_UPDATE_OVERLAYS,.proc/apply_overlay, TRUE)
+	if(target.flags_1 & INITIALIZED_1)
+		target.update_icon() //could use some queuing here now maybe.
+	else
+		RegisterSignal(target,COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE,.proc/late_update_icon, TRUE)
+	if(isitem(target))
+		INVOKE_ASYNC(target, /obj/item/.proc/update_slot_icon, TRUE)
+	if(_dir)
+		RegisterSignal(target, COMSIG_ATOM_DIR_CHANGE, .proc/rotate_react,TRUE)
+	if(_cleanable)
+		RegisterSignal(target, COMSIG_COMPONENT_CLEAN_ACT, .proc/clean_react,TRUE)
+	if(_description)
+		RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/examine,TRUE)
+
+/datum/element/decal/proc/generate_appearance(_icon, _icon_state, _dir, _layer, _color, _alpha, source)
+>>>>>>> 9b1a6530c76... Fixes decals (#53954):code/datums/elements/decal.dm
 	if(!_icon || !_icon_state)
 		return FALSE
 	// It has to be made from an image or dir breaks because of a byond bug
@@ -65,17 +83,25 @@
 		source.update_icon()
 		UnregisterSignal(source,COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZE)
 
+<<<<<<< HEAD:code/datums/components/decal.dm
 /datum/component/decal/proc/apply_overlay(atom/source, list/overlay_list)
+=======
+
+/datum/element/decal/proc/apply_overlay(atom/source, list/overlay_list)
+>>>>>>> 9b1a6530c76... Fixes decals (#53954):code/datums/elements/decal.dm
 	SIGNAL_HANDLER
 
 	overlay_list += pic
 
+<<<<<<< HEAD:code/datums/components/decal.dm
 /datum/component/decal/proc/remove(atom/thing)
 	var/atom/master = thing || parent
 	UnregisterSignal(master,COMSIG_ATOM_UPDATE_OVERLAYS)
 	master.update_icon()
 	if(isitem(master))
 		addtimer(CALLBACK(master, /obj/item/.proc/update_slot_icon), 0, TIMER_UNIQUE)
+=======
+>>>>>>> 9b1a6530c76... Fixes decals (#53954):code/datums/elements/decal.dm
 
 /datum/component/decal/proc/rotate_react(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
