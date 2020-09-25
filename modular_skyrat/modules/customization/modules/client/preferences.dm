@@ -562,7 +562,7 @@
 
 					dat += "</tr></table>"
 				if(2) //Markings
-					dat += "Use a preset: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>"
+					dat += "Use a <b>markings preset</b>: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>  "
 					dat += "<table width='100%' align='center'>"
 					dat += " Primary:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a>"
 					dat += " Secondary:<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a>"
