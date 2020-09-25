@@ -485,6 +485,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	validate_species_parts()
 
+	needs_update = TRUE
 	return TRUE
 
 /datum/preferences/proc/save_character()
