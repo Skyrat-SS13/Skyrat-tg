@@ -37,7 +37,7 @@
 	H.dna.features["spines"] = pick(GLOB.spines_list)
 	H.dna.features["body_markings"] = pick(GLOB.body_markings_list)
 	H.dna.features["moth_wings"] = pick(GLOB.moth_wings_list)
-<<<<<<< HEAD
+	H.dna.features["moth_antennae"] = pick(GLOB.moth_antennae_list)
 	*/
 	//SKYRAT EDIT REMOVAL END
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
@@ -47,9 +47,6 @@
 	H.dna.species.mutant_bodyparts = H.dna.mutant_bodyparts.Copy()
 	H.dna.species.body_markings = H.dna.body_markings.Copy()
 	//SKYRAT EDIT ADDITION END
-=======
-	H.dna.features["moth_antennae"] = pick(GLOB.moth_antennae_list)
->>>>>>> 2eb6b1362e0... Separates mothpeople antennae into a mutant bodypart (#53928)
 
 	H.update_body()
 	H.update_hair()
