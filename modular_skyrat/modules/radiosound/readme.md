@@ -10,7 +10,7 @@ Makes radios go chk chk.
 
 ### TG Proc Changes:
 
-- N/A
+- APPEND: /code/game/objects/items/devices/radio/headset.dm > /obj/item/radio/headset/talk_into()
 
 ### Defines:
 
