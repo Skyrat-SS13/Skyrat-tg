@@ -33,7 +33,7 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
-	if(species_id)
+	if(organic_render)
 		if(should_draw_greyscale)
 			limb.icon = rendered_bp_icon || 'icons/mob/human_parts_greyscale.dmi' //Skyrat change - customization
 			if(should_draw_gender)

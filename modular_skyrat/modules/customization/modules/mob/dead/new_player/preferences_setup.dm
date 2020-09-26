@@ -100,6 +100,9 @@
 		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
 	body_markings = pref_species.get_random_body_markings(features)
+	//We reset the quirk-based stuff
+	augments = list()
+	all_quirks = list()
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)
@@ -148,15 +151,13 @@
 				mannequin.job = previewJob.title
 				previewJob.equip(mannequin, TRUE, preference_source = parent)
 			mannequin.underwear_visibility = NONE
-			mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
 		if(PREVIEW_PREF_LOADOUT)
 			mannequin.underwear_visibility = NONE
 			equip_preference_loadout(mannequin, TRUE, previewJob)
 			mannequin.underwear_visibility = NONE
-			mannequin.update_body()
 		if(PREVIEW_PREF_NAKED)
 			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
-			mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
+	mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
