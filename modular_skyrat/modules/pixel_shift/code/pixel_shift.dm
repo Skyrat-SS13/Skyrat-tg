@@ -11,7 +11,7 @@
 	category = CATEGORY_MOVEMENT
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT
 
-/datum/keybinding/mob/pixel_shift/down(client/user)
+/datum/keybinding/living/pixel_shift/down(client/user)
 	. = ..()
 	if(.)
 		return
