@@ -4,7 +4,7 @@
 	var/shifting //If we are in the shifting setting.
 
 /datum/keybinding/living/pixel_shift
-	hotkey_keys = list("Ctrl")
+	hotkey_keys = list("Alt")
 	name = "pixel_shift"
 	full_name = "Pixel Shift"
 	description = "Shift your characters offset."
