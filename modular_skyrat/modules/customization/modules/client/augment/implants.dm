@@ -1,6 +1,12 @@
 /datum/augment_item/implant
 	category = AUGMENT_CATEGORY_IMPLANTS
 
+/datum/augment_item/implant/apply(mob/living/carbon/human/H, character_setup = FALSE)
+	if(character_setup)
+		return
+	var/obj/item/organ/new_organ = new path()
+	new_organ.Insert(H,FALSE,FALSE)
+
 //BRAIN IMPLANTS
 /datum/augment_item/implant/brain
 	slot = AUGMENT_SLOT_BRAIN_IMPLANT
@@ -24,3 +30,8 @@
 //MOUTH IMPLANTS
 /datum/augment_item/implant/mouth
 	slot = AUGMENT_SLOT_MOUTH_IMPLANT
+
+/datum/augment_item/implant/mouth/breathing_tube
+	name = "Breathing Tube"
+	cost = 2
+	path = /obj/item/organ/cyberimp/mouth/breathing_tube

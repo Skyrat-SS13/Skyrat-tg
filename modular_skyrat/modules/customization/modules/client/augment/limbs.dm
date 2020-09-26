@@ -1,6 +1,8 @@
 /datum/augment_item/limb
 	category = AUGMENT_CATEGORY_LIMBS
 	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
+	///Hardcoded styles that can be chosen from and apply to limb, if it's true
+	var/uses_robotic_styles = TRUE
 
 /datum/augment_item/limb/apply(mob/living/carbon/human/H, character_setup = FALSE)
 	if(character_setup)
@@ -36,6 +38,10 @@
 	path = /obj/item/bodypart/l_arm/robot/surplus
 	cost = -1
 
+/datum/augment_item/limb/l_arm/cyborg
+	name = "Cyborg"
+	path = /obj/item/bodypart/l_arm/robot
+
 //RIGHT ARMS
 /datum/augment_item/limb/r_arm
 	slot = AUGMENT_SLOT_R_ARM
@@ -44,6 +50,10 @@
 	name = "Prosthetic"
 	path = /obj/item/bodypart/r_arm/robot/surplus
 	cost = -1
+
+/datum/augment_item/limb/r_arm/cyborg
+	name = "Cyborg"
+	path = /obj/item/bodypart/r_arm/robot
 
 //LEFT LEGS
 /datum/augment_item/limb/l_leg
@@ -54,6 +64,10 @@
 	path = /obj/item/bodypart/l_leg/robot/surplus
 	cost = -1
 
+/datum/augment_item/limb/l_leg/cyborg
+	name = "Cyborg"
+	path = /obj/item/bodypart/l_leg/robot
+
 //RIGHT LEGS
 /datum/augment_item/limb/r_leg
 	slot = AUGMENT_SLOT_R_LEG
@@ -62,3 +76,7 @@
 	name = "Prosthetic"
 	path = /obj/item/bodypart/r_leg/robot/surplus
 	cost = -1
+
+/datum/augment_item/limb/r_leg/cyborg
+	name = "Cyborg"
+	path = /obj/item/bodypart/r_leg/robot

@@ -176,6 +176,8 @@
 	var/needs_update = TRUE
 	///List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
 	var/augments = list()
+	///List of chosen preferred styles for limb replacements
+	var/augment_limb_styles = list()
 	///Which augment slot we currently have chosen, this is for UI display
 	var/chosen_augment_slot
 
@@ -811,7 +813,8 @@
 								dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#13171C'>"
 								dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#23273C'><a [link]>[slot_name]</a>: [print_name]</td></tr>"
 								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
-								dat += "</table><br>"
+								dat += "</table>"
+							dat += "</td>"
 						dat += "<td valign='top' width='31%'>"
 						if(chosen_augment_slot)
 							var/list/augment_list = GLOB.augment_slot_to_items[chosen_augment_slot]
@@ -2695,6 +2698,9 @@
 		return LOADOUT_POINTS_MAX
 
 /datum/preferences/proc/CanBuyAugment(datum/augment_item/target_aug, datum/augment_item/current_aug)
+	//Check biotypes
+	if(!(pref_species.inherent_biotypes & target_aug.allowed_biotypes))
+		return
 	var/quirk_points = GetQuirkBalance()
 	var/leverage = 0 
 	if(current_aug)

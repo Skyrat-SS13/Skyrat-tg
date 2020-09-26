@@ -436,6 +436,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
 
 	READ_FILE(S["augments"] , augments)
+	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
@@ -486,6 +487,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				body_markings[zone] -= name
 
 	augments = SANITIZE_LIST(augments)
+	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
 
 	validate_species_parts()
 
@@ -581,6 +583,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
 
 	WRITE_FILE(S["augments"] , augments)
+	WRITE_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
 	return TRUE
 
