@@ -19,7 +19,7 @@
 	M.shifting = TRUE
 	return TRUE
 
-/datum/keybinding/mob/pixel_shift/up(client/user)
+/datum/keybinding/living/pixel_shift/up(client/user)
 	. = ..()
 	if(.)
 		return
