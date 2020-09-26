@@ -1,9 +1,9 @@
-/mob/living
+/mob
 	///Whether the mob is pixel shifted or not
 	var/is_shifted
 	var/shifting //If we are in the shifting setting.
 
-/datum/keybinding/living/pixel_shift
+/datum/keybinding/mob/pixel_shift
 	hotkey_keys = list("Alt")
 	name = "pixel_shift"
 	full_name = "Pixel Shift"
@@ -11,23 +11,34 @@
 	category = CATEGORY_MOVEMENT
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT
 
-/datum/keybinding/living/pixel_shift/down(client/user)
+/datum/keybinding/mob/pixel_shift/down(client/user)
 	. = ..()
 	if(.)
 		return
-	var/mob/living/M = user.mob
+	var/mob/M = user.mob
 	M.shifting = TRUE
 	return TRUE
 
-/datum/keybinding/living/pixel_shift/up(client/user)
+/datum/keybinding/mob/pixel_shift/up(client/user)
 	. = ..()
 	if(.)
 		return
-	var/mob/living/M = user.mob
+	var/mob/M = user.mob
 	M.shifting = FALSE
 	return TRUE
 
-/mob/living/proc/pixel_shift(direction)
+/mob/proc/unpixel_shift()
+	if(is_shifted)
+		is_shifted = FALSE
+		if(isliving(src))
+			var/mob/living/M = src
+			pixel_x = M.get_standard_pixel_x_offset(!M.mobility_flags & MOBILITY_STAND)
+			pixel_y = M.get_standard_pixel_y_offset(!M.mobility_flags & MOBILITY_STAND)
+		else
+			pixel_x = 0
+			pixel_y = 0
+
+/mob/proc/pixel_shift(direction)
 	switch(direction)
 		if(NORTH)
 			if(!canface())
