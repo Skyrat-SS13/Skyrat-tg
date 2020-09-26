@@ -15,7 +15,7 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
+	var/mob/living/M = user.mob
 	M.shifting = TRUE
 	return TRUE
 
@@ -23,11 +23,11 @@
 	. = ..()
 	if(.)
 		return
-	var/mob/M = user.mob
+	var/mob/living/M = user.mob
 	M.shifting = FALSE
 	return TRUE
 
-/mob/proc/pixel_shift(direction)
+/mob/living/proc/pixel_shift(direction)
 	switch(direction)
 		if(NORTH)
 			if(!canface())
