@@ -488,10 +488,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	augments = SANITIZE_LIST(augments)
 	//validating augments
-	for(var/slot in augments)
-		var/datum/augment_item/aug = GLOB.augment_items[augments[slot]]
+	for(var/aug_slot in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[aug_slot]]
 		if(!aug)
-			augments -= slot
+			augments -= aug_slot
 	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
 	//validating limb styles
 	for(var/key in augment_limb_styles)
