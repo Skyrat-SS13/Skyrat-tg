@@ -841,12 +841,14 @@
 									if(augments[chosen_augment_slot])
 										current = GLOB.augment_items[augments[chosen_augment_slot]]
 									var/aug_link = "class='linkOff'"
+									var/name_print = aug_datum.name
 									if (current == aug_datum)
 										aug_link = "class='linkOn' href='?_src_=prefs;task=set_augment;type=[type_thing]'"
+										name_print = "[name_print] (Remove)"
 									else if(CanBuyAugment(aug_datum, current))
 										aug_link = "href='?_src_=prefs;task=set_augment;type=[type_thing]'"
 									dat += "<tr style='background-color:[even ? "#13171C" : "#19232C"]'>"
-									dat += "<td><b><a [aug_link]>[aug_datum.name]</a></b></td>"
+									dat += "<td><b><a [aug_link]>[name_print]</a></b></td>"
 									dat += "<td><center>[aug_datum.cost]</center></td>"
 									dat += "<td><i>[aug_datum.description]</i></td>"
 									dat += "</tr>"
