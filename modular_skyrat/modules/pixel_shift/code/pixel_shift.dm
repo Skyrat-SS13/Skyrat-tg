@@ -27,17 +27,6 @@
 	M.shifting = FALSE
 	return TRUE
 
-/mob/proc/unpixel_shift(living)
-	if(is_shifted)
-		is_shifted = FALSE
-		if(living)
-			var/mob/living/M = src
-			pixel_x = M.get_standard_pixel_x_offset(!M.mobility_flags & MOBILITY_STAND)
-			pixel_y = M.get_standard_pixel_y_offset(!M.mobility_flags & MOBILITY_STAND)
-		else
-			pixel_x = 0
-			pixel_y = 0
-
 /mob/proc/pixel_shift(direction)
 	switch(direction)
 		if(NORTH)
