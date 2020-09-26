@@ -97,8 +97,8 @@
 			return FALSE
 		else if(M.is_shifted)
 			M.is_shifted = FALSE
-			pixel_x = M.get_standard_pixel_x_offset(!M.mobility_flags & MOBILITY_STAND)
-			pixel_y = M.get_standard_pixel_y_offset(!M.mobility_flags & MOBILITY_STAND)
+			M.pixel_x = M.get_standard_pixel_x_offset(!M.mobility_flags & MOBILITY_STAND)
+			M.pixel_y = M.get_standard_pixel_y_offset(!M.mobility_flags & MOBILITY_STAND)
 	//SKYRAT EDIT ADDITION END
 
 	var/mob/living/L = mob  //Already checked for isliving earlier
