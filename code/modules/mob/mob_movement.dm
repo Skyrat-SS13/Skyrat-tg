@@ -93,12 +93,8 @@
 	if(mob.shifting)
 		mob.pixel_shift(direct)
 		return FALSE
-	else
-		if(mob.is_shifted)
-			if(isliving(mob))
-				mob.unpixel_shift(TRUE)
-			else
-				mob.unpixel_shift(FALSE)
+	else if(mob.is_shifted)
+		mob.unpixel_shift()
 	//SKYRAT EDIT ADDITION END
 
 	var/mob/living/L = mob  //Already checked for isliving earlier
