@@ -3,7 +3,7 @@
 	var/is_shifted
 	var/shifting //If we are in the shifting setting.
 
-/datum/keybinding/mob/pixel_shift
+/datum/keybinding/living/pixel_shift
 	hotkey_keys = list("Ctrl")
 	name = "pixel_shift"
 	full_name = "Pixel Shift"
@@ -11,7 +11,7 @@
 	category = CATEGORY_MOVEMENT
 	keybind_signal = COMSIG_KB_MOB_PIXELSHIFT
 
-/datum/keybinding/mob/pixel_shift/down(client/user)
+/datum/keybinding/living/pixel_shift/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -19,7 +19,7 @@
 	M.shifting = TRUE
 	return TRUE
 
-/datum/keybinding/mob/pixel_shift/up(client/user)
+/datum/keybinding/living/pixel_shift/up(client/user)
 	. = ..()
 	if(.)
 		return
