@@ -487,7 +487,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				body_markings[zone] -= name
 
 	augments = SANITIZE_LIST(augments)
+	//validating augments
+	for(var/slot in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[slot]]
+		if(!aug)
+			augments -= slot
 	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
+	//validating limb styles
+	for(var/key in augment_limb_styles)
+		if(!GLOB.robotic_styles_list[key])
+			augment_limb_styles -= key
 
 	validate_species_parts()
 
