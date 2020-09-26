@@ -235,7 +235,7 @@
 	return TRUE
 
 /datum/keybinding/mob/prevent_movement
-	hotkey_keys = list("Alt")
+	hotkey_keys = list("Ctrl") //SKYRAT EDIT CHANGE ALT > CTRL - PIXEL_SHIFT
 	name = "block_movement"
 	full_name = "Block movement"
 	description = "Prevents you from moving"

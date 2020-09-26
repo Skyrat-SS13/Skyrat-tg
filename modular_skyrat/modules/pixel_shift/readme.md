@@ -9,10 +9,11 @@ Adds the ability for living mobs to shift their sprite to fit an RP situation be
 ### TG Proc Changes:
 
  - ADDITION: \code\modules\mob\living > /mob/living/Moved()
+ - CHANGE: Skyrat-tg\code\datums\keybinding\mob.dm > /datum/keybinding/mob/prevent_movement - Keybind changed to ctrl.
 
 ### Defines:
 
- .\code\__DEFINES\~skyrat_defines > COMSIG_KB_MOB_PIXELSHIFT_NORTH/SOUTH/WEST/EAST
+ - Skyrat-tg\code\modules\mob\mob_movement.dm > /client/Move(n, direct)
 
 ### Included files:
 
@@ -21,3 +22,4 @@ N/A
 ### Credits:
 
 Azarak - Porting
+Gandalf2k15 - Refactoring

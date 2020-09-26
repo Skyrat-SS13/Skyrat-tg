@@ -1,4 +1,1 @@
-#define COMSIG_KB_MOB_PIXELSHIFT_NORTH "keybinding_mob_pixelshift_north"
-#define COMSIG_KB_MOB_PIXELSHIFT_SOUTH "keybinding_mob_pixelshift_south"
-#define COMSIG_KB_MOB_PIXELSHIFT_WEST "keybinding_mob_pixelshift_west"
-#define COMSIG_KB_MOB_PIXELSHIFT_EAST "keybinding_mob_pixelshift_east"
+#define COMSIG_KB_MOB_PIXELSHIFT "keybinding_mob_pixelshift"

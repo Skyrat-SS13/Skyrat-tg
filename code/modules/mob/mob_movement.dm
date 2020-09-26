@@ -89,6 +89,17 @@
 		return FALSE
 	if(mob.force_moving)
 		return FALSE
+	//SKYRAT EDIT ADDITION BEGIN - PIXEL_SHIFT
+	if(mob.shifting)
+		mob.pixel_shift(direct)
+		return FALSE
+	else
+		if(mob.is_shifted)
+			if(isliving(mob))
+				mob.unpixel_shift(TRUE)
+			else
+				mob.unpixel_shift(FALSE)
+	//SKYRAT EDIT ADDITION END
 
 	var/mob/living/L = mob  //Already checked for isliving earlier
 	if(L.incorporeal_move)	//Move though walls
