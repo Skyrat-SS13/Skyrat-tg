@@ -829,9 +829,9 @@
 								dat += "<table width=100%; style='background-color:#13171C'>"
 								dat += "<center><h2>[chosen_augment_slot]</h2></center>"
 								dat += "<tr style='vertical-align:top;background-color:#23273C'>"
-								dat += "<td width=20%><b>Name</b></td>"
-								dat += "<td width=10%><b>Cost</b></td>"
-								dat += "<td width=70%><b>Description</b></td>"
+								dat += "<td width=33%><b>Name</b></td>"
+								dat += "<td width=7%><b>Cost</b></td>"
+								dat += "<td width=60%><b>Description</b></td>"
 								dat += "</tr>"
 								var/even = FALSE
 								for(var/type_thing in augment_list)
