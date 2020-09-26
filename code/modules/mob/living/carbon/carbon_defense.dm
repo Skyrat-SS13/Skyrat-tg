@@ -445,7 +445,7 @@
 		M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better!</span>", \
 					"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
-		if(check_zone(M.zone_selected) == BODY_ZONE_HEAD && HAS_TRAIT(src, TRAIT_EXCITABLE))
+		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			src.emote("wag")
 		//SKYRAT EDIT ADDITION END
 
