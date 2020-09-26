@@ -812,6 +812,13 @@
 									print_name = "<font color='[font_color]'>[print_name]</font>"
 								dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#13171C'>"
 								dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#23273C'><a [link]>[slot_name]</a>: [print_name]</td></tr>"
+								if(category_name == AUGMENT_CATEGORY_LIMBS && chosen_item)
+									var/datum/augment_item/limb/chosen_limb = chosen_item
+									var/print_style = "<font color='#AAAAAA'>None</font>"
+									if(augment_limb_styles[slot_name])
+										print_style = augment_limb_styles[slot_name]
+									if(chosen_limb.uses_robotic_styles)
+										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#16274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
 								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
 								dat += "</table>"
 							dat += "</td>"
@@ -1480,6 +1487,16 @@
 		return TRUE
 
 	switch(href_list["task"])
+		if("augment_style")
+			needs_update = TRUE
+			var/slot_name = href_list["slot"]
+			var/new_style = input(user, "Choose your character's [slot_name] augmentation style:", "Character Preference")  as null|anything in GLOB.robotic_styles_list
+			if(new_style)
+				if(new_style == "None")
+					if(augment_limb_styles[slot_name])
+						augment_limb_styles -= slot_name
+				else
+					augment_limb_styles[slot_name] = new_style
 		if("set_augment")
 			if(pref_species.can_augment)
 				needs_update = TRUE
@@ -2613,7 +2630,7 @@
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, character_setup)
+			aug.apply(character, character_setup, src)
 
 	if(icon_updates)
 		character.update_body()

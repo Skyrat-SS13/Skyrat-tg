@@ -18,5 +18,5 @@
 		var/obj/O = path
 		description = initial(O.desc)
 
-/datum/augment_item/proc/apply(mob/living/carbon/human/H, character_setup = FALSE)
+/datum/augment_item/proc/apply(mob/living/carbon/human/H, character_setup = FALSE, datum/preferences/prefs)
 	return

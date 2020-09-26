@@ -1,7 +1,7 @@
 /datum/augment_item/implant
 	category = AUGMENT_CATEGORY_IMPLANTS
 
-/datum/augment_item/implant/apply(mob/living/carbon/human/H, character_setup = FALSE)
+/datum/augment_item/implant/apply(mob/living/carbon/human/H, character_setup = FALSE, datum/preferences/prefs)
 	if(character_setup)
 		return
 	var/obj/item/organ/new_organ = new path()
