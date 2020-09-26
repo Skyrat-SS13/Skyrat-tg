@@ -791,7 +791,7 @@
 					else if(!SSquirks || !SSquirks.quirks.len)
 						dat += "The quirk subsystem is still initializing! Try again in a minute."
 					else
-						dat += "<table><tr>"
+						dat += "<table width='100%'><tr>"
 						for(var/category_name in GLOB.augment_categories_to_slots)
 							dat += "<td valign='top' width='23%'>"
 							dat += "<h2>[category_name]:</h2>"
@@ -814,7 +814,7 @@
 								dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#23273C'><a [link]>[slot_name]</a>: [print_name]</td></tr>"
 								if(category_name == AUGMENT_CATEGORY_LIMBS && chosen_item)
 									var/datum/augment_item/limb/chosen_limb = chosen_item
-									var/print_style = "<font color='#AAAAAA'>None</font>"
+									var/print_style = "<font color='#999999'>None</font>"
 									if(augment_limb_styles[slot_name])
 										print_style = augment_limb_styles[slot_name]
 									if(chosen_limb.uses_robotic_styles)
@@ -825,7 +825,6 @@
 						dat += "<td valign='top' width='31%'>"
 						if(chosen_augment_slot)
 							var/list/augment_list = GLOB.augment_slot_to_items[chosen_augment_slot]
-
 							if(augment_list)
 								dat += "<table width=100%; style='background-color:#13171C'>"
 								dat += "<center><h2>[chosen_augment_slot]</h2></center>"
@@ -834,9 +833,11 @@
 								dat += "<td width=10%><b>Cost</b></td>"
 								dat += "<td width=70%><b>Description</b></td>"
 								dat += "</tr>"
+								var/even = FALSE
 								for(var/type_thing in augment_list)
 									var/datum/augment_item/aug_datum = GLOB.augment_items[type_thing]
 									var/datum/augment_item/current
+									even = !even
 									if(augments[chosen_augment_slot])
 										current = GLOB.augment_items[augments[chosen_augment_slot]]
 									var/aug_link = "class='linkOff'"
@@ -844,13 +845,12 @@
 										aug_link = "class='linkOn' href='?_src_=prefs;task=set_augment;type=[type_thing]'"
 									else if(CanBuyAugment(aug_datum, current))
 										aug_link = "href='?_src_=prefs;task=set_augment;type=[type_thing]'"
-									dat += "<tr>"
+									dat += "<tr style='background-color:[even ? "#13171C" : "#19232C"]'>"
 									dat += "<td><b><a [aug_link]>[aug_datum.name]</a></b></td>"
-									dat += "<td>[aug_datum.cost]</td>"
+									dat += "<td><center>[aug_datum.cost]</center></td>"
 									dat += "<td><i>[aug_datum.description]</i></td>"
 									dat += "</tr>"
 								dat += "</table>"
-
 						dat += "</td></tr></table>"
 
 		if (1) // Game Preferences
@@ -2719,7 +2719,7 @@
 	if(!(pref_species.inherent_biotypes & target_aug.allowed_biotypes))
 		return
 	var/quirk_points = GetQuirkBalance()
-	var/leverage = 0 
+	var/leverage = 0
 	if(current_aug)
 		leverage += current_aug.cost
 	if((quirk_points+leverage)>= target_aug.cost)
