@@ -439,7 +439,7 @@
 			"<span class='notice'>You boop [src] on the nose.</span>", target = src,
 			target_message = "<span class='notice'>[M] boops your nose.</span>")
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
-		//SKYRAT EDIT ADDITION END
+	//SKYRAT EDIT ADDITION END
 
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
 		M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better!</span>", \
