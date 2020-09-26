@@ -1,9 +1,15 @@
-/*
+/// Modular overwrite of emoji stuff for Skyrat's emoji additions.
+// code\modules\asset_cache\asset_list_items.dm
+/datum/asset/spritesheet/chat/register()
+	InsertAll("emoji", 'modular_skyrat/icons/emoji.dmi')
+	..()
+
+// Basically code\modules\emoji\emoji_parse.dm with edits.
 /proc/emoji_parse(text) //turns :ai: into an emoji in text.
 	. = text
 	if(!CONFIG_GET(flag/emojis))
 		return
-	var/static/list/emojis = icon_states(icon('icons/emoji.dmi'))
+	var/static/list/emojis = icon_states(icon('modular_skyrat/icons/emoji.dmi'))
 	var/parsed = ""
 	var/pos = 1
 	var/search = 0
@@ -35,7 +41,7 @@
 	. = text
 	if(!CONFIG_GET(flag/emojis))
 		return
-	var/static/list/emojis = icon_states(icon('icons/emoji.dmi'))
+	var/static/list/emojis = icon_states(icon('modular_skyrat/icons/emoji.dmi'))
 	var/final = "" //only tags are added to this
 	var/pos = 1
 	var/search = 0
@@ -52,4 +58,3 @@
 				continue
 		break
 	return final
-*/
