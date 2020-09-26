@@ -90,15 +90,14 @@
 	if(mob.force_moving)
 		return FALSE
 	//SKYRAT EDIT ADDITION BEGIN - PIXEL_SHIFT
-	if(mob.shifting)
-		mob.pixel_shift(direct)
-		return FALSE
-	else
-		if(mob.is_shifted)
-			if(isliving(mob))
-				mob.unpixel_shift(TRUE)
-			else
-				mob.unpixel_shift(FALSE)
+	if(isliving(mob))
+		var/mob/living/M = mob
+		if(M.shifting)
+			M.pixel_shift(direct)
+			return FALSE
+		else if(M.is_shifted)
+			pixel_x = M.get_standard_pixel_x_offset(!M.mobility_flags & MOBILITY_STAND)
+			pixel_y = M.get_standard_pixel_y_offset(!M.mobility_flags & MOBILITY_STAND)
 	//SKYRAT EDIT ADDITION END
 
 	var/mob/living/L = mob  //Already checked for isliving earlier
