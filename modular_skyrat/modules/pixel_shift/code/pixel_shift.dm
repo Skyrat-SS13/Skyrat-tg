@@ -3,7 +3,7 @@
 	var/is_shifted
 	var/shifting //If we are in the shifting setting.
 
-/datum/keybinding/mob/pixel_shift
+/datum/keybinding/living/pixel_shift
 	hotkey_keys = list("Ctrl")
 	name = "pixel_shift"
 	full_name = "Pixel Shift"
