@@ -1,4 +1,4 @@
-/mob
+/mob/living
 	///Whether the mob is pixel shifted or not
 	var/is_shifted
 	var/shifting //If we are in the shifting setting.
