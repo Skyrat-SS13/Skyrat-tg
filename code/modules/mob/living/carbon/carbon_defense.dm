@@ -434,10 +434,8 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-		M.visible_message( \
-			"<span class='notice'>[M] boops [src]'s nose.</span>", \
-			"<span class='notice'>You boop [src] on the nose.</span>", target = src,
-			target_message = "<span class='notice'>[M] boops your nose.</span>")
+		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
+					"<span class='notice'>You boop [src] on the nose.</span>")
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
 	//SKYRAT EDIT ADDITION END
 
