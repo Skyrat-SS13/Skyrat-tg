@@ -5,6 +5,7 @@
 	color_src = USE_MATRIXED_COLORS
 	dimension_x = 64
 	center = TRUE
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	var/taur_mode = NONE //Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
 	var/alt_taur_mode = NONE //Same as above.
 	var/hide_legs = TRUE

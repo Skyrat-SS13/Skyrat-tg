@@ -13,7 +13,7 @@
 	if(C.stat == DEAD && ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(H?.dna?.species && (REVIVES_BY_HEALING in H.dna.species.species_traits))
-			if(H.health > 50 && !H.hellbound)
+			if(H.health > 50)
 				H.revive(FALSE)
 
 /obj/item/organ/brain/ipc_positron/emp_act(severity)

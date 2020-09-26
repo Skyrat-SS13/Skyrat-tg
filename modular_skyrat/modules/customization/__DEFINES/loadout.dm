@@ -1,7 +1,9 @@
 #define LOADOUT_POINTS_MAX 10
+#define LOADOUT_POINTS_MAX_DONATOR 20
 
 #define LOADOUT_CATEGORY_NONE				"ERROR"
-//Those two subcategories are good to apply to any category
+//Those three subcategories are good to apply to any category
+#define LOADOUT_SUBCATEGORY_DONATOR			"Donator"
 #define LOADOUT_SUBCATEGORY_MISC			"Miscellaneous"
 #define LOADOUT_SUBCATEGORY_JOB 			"Job-related"
 

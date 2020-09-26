@@ -40,10 +40,6 @@
 #define VENTCRAWLER_NUDE   1
 #define VENTCRAWLER_ALWAYS 2
 
-//Bloodcrawling defines
-#define BLOODCRAWL 1 /// bloodcrawling, see: [/mob/living/var/bloodcrawl]
-#define BLOODCRAWL_EAT 2 /// crawling+mob devour
-
 //Mob bio-types flags
 #define MOB_ORGANIC 	(1 << 0)
 #define MOB_MINERAL		(1 << 1)
@@ -69,7 +65,6 @@
 #define MONKEY_BODYPART "monkey"
 #define ALIEN_BODYPART "alien"
 #define LARVA_BODYPART "larva"
-#define DEVIL_BODYPART "devil"
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
 // Health/damage defines for carbon mobs
@@ -284,7 +279,8 @@
 #define OFFSET_NECK "neck"
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN				17	//youngest a character can be
+//#define AGE_MIN				17	//youngest a character can be //ORIGINAL
+#define AGE_MIN				18	//youngest a character can be //SKYRAT EDIT CHANGE - age
 #define AGE_MAX				85	//oldest a character can be
 #define AGE_MINOR			20  //legal age of space drinking and smoking
 #define WIZARD_AGE_MIN		30	//youngest a wizard can be

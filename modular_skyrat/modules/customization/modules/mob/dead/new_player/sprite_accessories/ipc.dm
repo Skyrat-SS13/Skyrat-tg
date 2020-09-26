@@ -7,6 +7,7 @@
 	color_src = null
 	key = "ipc_screen"
 	generic = "Screen"
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/screen/blank
 	name = "Blank"
@@ -138,6 +139,7 @@
 	recommended_species = list("ipc")
 	key = "ipc_antenna"
 	generic = "Antenna"
+	relevent_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/antenna/none
 	name = "None"

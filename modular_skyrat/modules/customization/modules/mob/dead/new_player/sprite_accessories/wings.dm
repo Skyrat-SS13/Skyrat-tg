@@ -5,6 +5,7 @@
 	color_src = USE_ONE_COLOR
 	recommended_species = list("human", "felinid", "lizard", "mammal")
 	organ_type = /obj/item/organ/wings
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/none
 	name = "None"

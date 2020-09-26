@@ -40,6 +40,23 @@
 
 	return colors
 
+//Use this one for things with pre-set default colors, I guess
+/datum/body_marking/other
+	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/other_markings.dmi'
+
+/datum/body_marking/other/drake_bone
+	name = "Drake Bone"
+	icon_state = "drakebone"
+	default_color = "CCC"
+	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT 
+
+/datum/body_marking/other/drake_eyes
+	name = "Drake Eyes"
+	icon_state = "drakeeyes"
+	default_color = "F00"
+	affected_bodyparts = HEAD
+	always_color_customizable = TRUE
+
 /datum/body_marking/secondary
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
