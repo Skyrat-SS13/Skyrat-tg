@@ -1,3 +1,10 @@
+/**
+  * Polychromic element
+  *
+  * Add this to an R/G/B matrixed clothing to make it triple coloured and customizable!
+  * Make sure the passed list is a list of three, 3-length colours without a hash i.e. list("FFF","EEE","621").
+  */
+
 /datum/element/polychromic
 	element_flags = ELEMENT_BESPOKE
 	id_arg_index = 3
@@ -27,7 +34,7 @@
 	var/choice = input(usr ,"Which color would you like to change?", "Polychromic") as null|anything in choices
 	if(choice)
 		var/color = input(usr, "Choose your new color:", "Polychromic") as color|null
-		if(color && target)
+		if(color && target && in_range(target, usr))
 			var/list/color_list = ReadRGB(color)
 			for(var/index in 1 to color_list.len)
 				color_list[index] /= 255

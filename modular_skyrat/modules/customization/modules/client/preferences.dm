@@ -747,7 +747,10 @@
 										if(LOADOUT_INFO_ONE_COLOR)
 											customization_button = "<center><span style='border: 1px solid #161616; background-color: ["#[custom_info]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path]'>Change</a></center>"
 										if(LOADOUT_INFO_THREE_COLORS)
-											customization_button = "" //TODO
+											var/list/color_list = splittext(custom_info, "|")
+											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[1]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=1'>Change</a></center>"
+											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[2]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=2'>Change</a></center>"
+											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[3]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=3'>Change</a></center>"
 										if(LOADOUT_INFO_STYLE)
 											customization_button = "" //TODO
 								//We check for whether the item is donator only, and if the person isn't donator, then check cost
@@ -1418,7 +1421,15 @@
 							return
 						loadout[path] = sanitize_hexcolor(new_color)
 				if(LOADOUT_INFO_THREE_COLORS)
-					return
+					var/color_slot = text2num(href_list["color_slot"])
+					if(color_slot)
+						var/list/color_list = splittext(loadout[path], "|")
+						var/new_color = input(user, "Choose your item's color:", "Character Preference","#[color_list[color_slot]]") as color|null
+						if(new_color)
+							if(!loadout[path])
+								return
+							color_list[color_slot] = sanitize_hexcolor(new_color)
+							loadout[path] = color_list.Join("|")
 				if(LOADOUT_INFO_STYLE)
 					return
 		if("change_loadout")

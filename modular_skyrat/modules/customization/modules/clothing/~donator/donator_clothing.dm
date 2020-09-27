@@ -1,4 +1,46 @@
 /**************SKYRAT REWARDS**************/
+//SUITS
+/obj/item/clothing/suit/hooded/wintercoat/polychromic
+	name = "polychromic winter coat"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	icon_state = "coatpoly"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/polychromic
+
+/obj/item/clothing/suit/hooded/wintercoat/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("666", "CBA", "00F"))
+
+//We need this to color the hood that comes up
+/obj/item/clothing/suit/hooded/wintercoat/polychromic/ToggleHood()
+	. = ..()
+	if(hood)
+		hood.color = color
+		hood.update_slot_icon()
+
+/obj/item/clothing/head/hooded/winterhood/polychromic
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/head.dmi'
+	icon_state = "winterhood_poly"
+
+//SCARVES
+/obj/item/clothing/neck/cloak/polychromic
+	name = "polychromic cloak"
+	desc = "For when you want to show off your horrible colour coordination skills."
+	icon_state = "polycloak"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
+	var/list/poly_colors = list("FFF", "FFF", "888")
+
+/obj/item/clothing/neck/cloak/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors)
+
+/obj/item/clothing/neck/cloak/polychromic/veil
+	name = "polychromic veil"
+	icon_state = "polyveil"
+
+//UNIFORMS
 /obj/item/clothing/under/dress/skirt/polychromic
 	name = "polychromic skirt"
 	desc = "A fancy skirt made with polychromic threads."
