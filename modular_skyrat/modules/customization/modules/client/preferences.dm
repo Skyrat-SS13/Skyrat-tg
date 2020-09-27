@@ -174,6 +174,8 @@
 	var/exploitable_info = ""
 	///Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set
 	var/needs_update = TRUE
+	///Whether the user wants to see body size being shown in the preview
+	var/show_body_size = FALSE
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -364,6 +366,7 @@
 
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
+					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
 					dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 					if(length(features["flavor_text"]) <= 40)
@@ -1897,6 +1900,17 @@
 					if(new_eyes)
 						eye_color = sanitize_hexcolor(new_eyes)
 
+				if("show_body_size")
+					needs_update = TRUE
+					show_body_size = !show_body_size
+
+				if("body_size")
+					needs_update = TRUE
+					var/new_body_size = input(user, "Choose your desired sprite size:\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%), Warning: May make your character look distorted", "Character Preference", features["body_size"]*100) as num|null
+					if(new_body_size)
+						new_body_size = clamp(new_body_size * 0.01, BODY_SIZE_MIN, BODY_SIZE_MAX)
+						features["body_size"] = new_body_size
+
 				if("species")
 					needs_update = TRUE
 					var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
@@ -2516,6 +2530,11 @@
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
+	if(!character_setup || (character_setup && show_body_size))
+		character.dna.update_body_size()
+	else //We need to update it to 100% in case they switch back
+		character.dna.features["body_size"] = BODY_SIZE_NORMAL
+		character.dna.update_body_size()
 
 	/*if("tail_lizard" in pref_species.default_features)
 		character.dna.species.mutant_bodyparts |= "tail_lizard"*/
