@@ -41,10 +41,21 @@
 		customize(spawned, customization)
 	return spawned
 
-//Proc designed to be overwritten by invidivual loadout items. has support for a one color feed, as that is common
+//Proc designed to be overwritten by invidivual loadout items. has support for a one color feed, and poly colors
 /datum/loadout_item/proc/customize(var/obj/item/spawned, customization)
-	if(extra_info == LOADOUT_INFO_ONE_COLOR)
-		spawned.color = "#[customization]"
+	switch(extra_info)
+		if(LOADOUT_INFO_ONE_COLOR)
+			spawned.color = "#[customization]"
+		if(LOADOUT_INFO_THREE_COLORS)
+			var/list/color_list = splittext(customization, "|")
+			var/list/finished_list = list()
+			finished_list += ReadRGB("[color_list[1]]0")
+			finished_list += ReadRGB("[color_list[2]]0")
+			finished_list += ReadRGB("[color_list[3]]0")
+			finished_list += list(0,0,0,255)
+			for(var/index in 1 to finished_list.len)
+				finished_list[index] /= 255
+			spawned.color = finished_list
 
 /datum/loadout_item/proc/default_customization()
 	switch(extra_info)

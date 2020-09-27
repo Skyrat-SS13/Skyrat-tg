@@ -1,4 +1,162 @@
 /**************SKYRAT REWARDS**************/
+//SUITS
+/obj/item/clothing/suit/hooded/wintercoat/polychromic
+	name = "polychromic winter coat"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	icon_state = "coatpoly"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/polychromic
+
+/obj/item/clothing/suit/hooded/wintercoat/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("666", "CBA", "00F"))
+
+//We need this to color the hood that comes up
+/obj/item/clothing/suit/hooded/wintercoat/polychromic/ToggleHood()
+	. = ..()
+	if(hood)
+		hood.color = color
+		hood.update_slot_icon()
+
+/obj/item/clothing/head/hooded/winterhood/polychromic
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/head.dmi'
+	icon_state = "winterhood_poly"
+
+//SCARVES
+/obj/item/clothing/neck/cloak/polychromic
+	name = "polychromic cloak"
+	desc = "For when you want to show off your horrible colour coordination skills."
+	icon_state = "polycloak"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
+	var/list/poly_colors = list("FFF", "FFF", "888")
+
+/obj/item/clothing/neck/cloak/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors)
+
+/obj/item/clothing/neck/cloak/polychromic/veil
+	name = "polychromic veil"
+	icon_state = "polyveil"
+
+//UNIFORMS
+/obj/item/clothing/under/dress/skirt/polychromic
+	name = "polychromic skirt"
+	desc = "A fancy skirt made with polychromic threads."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "polyskirt"
+	mutant_variants = NONE
+	var/list/poly_colors = list("FFF", "F88", "888")
+
+/obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors)
+
+/obj/item/clothing/under/dress/skirt/polychromic/pleated
+	name = "polychromic pleated skirt"
+	desc = "A magnificent pleated skirt complements the woolen polychromatic sweater."
+	icon_state = "polypleat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	poly_colors = list("8CF", "888", "F33")
+
+/obj/item/clothing/under/misc/poly_shirt
+	name = "polychromic button-up shirt"
+	desc = "A fancy button-up shirt made with polychromic threads."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "polysuit"
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/poly_shirt/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF", "333", "333"))
+
+/obj/item/clothing/under/misc/polyshorts
+	name = "polychromic shorts"
+	desc = "For ease of movement and style."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "polyshorts"
+	can_adjust = FALSE
+	body_parts_covered = CHEST|GROIN|ARMS
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("333", "888", "888"))
+
+/obj/item/clothing/under/misc/polyjumpsuit
+	name = "polychromic tri-tone jumpsuit"
+	desc = "A fancy jumpsuit made with polychromic threads."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "polyjump"
+	can_adjust = FALSE
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF", "888", "333"))
+
+/obj/item/clothing/under/misc/poly_bottomless
+	name = "polychromic bottomless shirt"
+	desc = "Great for showing off your underwear in dubious style."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "polybottomless"
+	body_parts_covered = CHEST|ARMS	//Because there's no bottom included
+	can_adjust = FALSE
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("888", "F33", "FFF"))
+
+/obj/item/clothing/under/misc/poly_tanktop
+	name = "polychromic tank top"
+	desc = "For those lazy summer days."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "polyshimatank"
+	body_parts_covered = CHEST|GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+	var/list/poly_colors = list("888", "FFF", "8CF")
+
+/obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors)
+
+/obj/item/clothing/under/misc/poly_tanktop/female
+	name = "polychromic feminine tank top"
+	desc = "Great for showing off your chest in style. Not recommended for males."
+	icon_state = "polyfemtankpantsu"
+	poly_colors = list("888", "F33", "FFF")
+
+/obj/item/clothing/under/shorts/polychromic
+	name = "polychromic athletic shorts"
+	desc = "95% Polychrome, 5% Spandex!"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "polyshortpants"
+	mutant_variants = NONE
+	var/list/poly_colors = list("FFF", "F88", "FFF")
+
+/obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors)
+
+/obj/item/clothing/under/shorts/polychromic/pantsu
+	name = "polychromic panties"
+	desc = "Topless striped panties. Now with 120% more polychrome!"
+	icon_state = "polypantsu"
+	body_parts_covered = GROIN
+	mutant_variants = NONE
+	poly_colors = list("FFF", "8CF", "FFF")
+
+/**************CKEY EXCLUSIVES*************/
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
 	name = "skull of an ashdrake"
