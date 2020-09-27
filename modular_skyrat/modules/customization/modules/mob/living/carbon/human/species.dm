@@ -10,6 +10,8 @@
 	var/eyes_icon
 	///How are we treated regarding processing reagents, by default we process them as if we're organic
 	var/reagent_flags = PROCESS_ORGANIC
+	///Whether a species can use augmentations in preferences
+	var/can_augment = TRUE
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/standing	= list()
@@ -55,7 +57,12 @@
 			continue
 		if(S.is_hidden(H, HD))
 			continue
-		new_renderkey += "-[key]-[S.name]"
+		var/render_state
+		if(S.special_render_case)
+			render_state = S.get_special_render_state(H, S.icon_state)
+		else
+			render_state = S.icon_state
+		new_renderkey += "-[key]-[render_state]"
 		bodyparts_to_add += S
 
 	if(new_renderkey == H.mutant_renderkey)
@@ -256,7 +263,7 @@
 /datum/species/moth
 	default_features = null
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("moth_markings" = ACC_RANDOM, "wings" = ACC_RANDOM)
+	default_mutant_bodyparts = list("moth_markings" = ACC_RANDOM, "wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM)
 
 /datum/species/mush
 	default_features = null
@@ -270,11 +277,13 @@
 	default_features = null
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
+	can_augment = FALSE
 
 /datum/species/ethereal
 	default_features = null
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
+	can_augment = FALSE
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -368,9 +377,15 @@
 		fly = new
 		fly.Grant(C)
 
+	var/robotic_limbs
 	if(ROBOTIC_LIMBS in species_traits)
-		for(var/obj/item/bodypart/B in C.bodyparts)
+		robotic_limbs = TRUE
+	for(var/obj/item/bodypart/B in C.bodyparts)
+		if(robotic_limbs)
 			B.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
+			B.organic_render = TRUE
+		else if (B.status == BODYPART_ORGANIC)
+			B.organic_render = TRUE
 
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 

@@ -4,6 +4,8 @@ MODULE ID: CUSTOMIZATION
 
 ### Description:
 
+ IF YOU WANT TO ADD AN EXTRA FEATURE TO SOMEONES DNA LOOK AT "code/__DEFINES/~skyrat_defines/DNA.dm"
+
 Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb body marking system. Adds in loadout, with lots of clothing ported over. Adds in all the missing species. Adds in flavor text and OOC prefs. Adds in special rendering cases for digitigrades, taurs, snouts, voxes etc.
 
 ### TG Proc Changes:
@@ -33,6 +35,7 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
  ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
  ./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
+ ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
 
  ./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
 

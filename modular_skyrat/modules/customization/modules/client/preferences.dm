@@ -174,6 +174,14 @@
 	var/exploitable_info = ""
 	///Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set
 	var/needs_update = TRUE
+	///List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
+	var/augments = list()
+	///List of chosen preferred styles for limb replacements
+	var/augment_limb_styles = list()
+	///Which augment slot we currently have chosen, this is for UI display
+	var/chosen_augment_slot
+	///Whether the user wants to see body size being shown in the preview
+	var/show_body_size = FALSE
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -257,6 +265,7 @@
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=2' [character_settings_tab == 2 ? "class='linkOn'" : ""]>Markings</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=3' [character_settings_tab == 3 ? "class='linkOn'" : ""]>Background</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=4' [character_settings_tab == 4 ? "class='linkOn'" : ""]>Loadout</a>" //If you change the index of this tab, change all the logic regarding tab
+			dat += "<a href='?_src_=prefs;preference=character_tab;tab=5' [character_settings_tab == 5 ? "class='linkOn'" : ""]>Augmentation</a>"
 			dat += "</center>"
 
 			dat += "<HR>"
@@ -269,23 +278,29 @@
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_LOADOUT]' [preview_pref == PREVIEW_PREF_LOADOUT ? "class='linkOn'" : ""]>[PREVIEW_PREF_LOADOUT]</a>"
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_NAKED]' [preview_pref == PREVIEW_PREF_NAKED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED]</a>"
 			dat += "</td>"
-			if(character_settings_tab == 4) //if loadout
-				dat += "<td width=50%>"
-				dat += "<b>Remaining loadout points: [loadout_points]</b>"
-				dat += "</td>"
-				dat += "<td width=15%>"
-				dat += "<a href='?_src_=prefs;preference=reset_loadout'>Reset Loadout</a>"
-				dat += "</td>"
-			else
-				dat += "<td width=35%>"
-				dat += "<b>Mismatched parts:</b> <a href='?_src_=prefs;preference=mismatch'>[(mismatched_customization) ? "Enabled" : "Disabled"]</a>"
-				dat += "</td>"
+			switch(character_settings_tab)
+				if(4) //Loadout
+					dat += "<td width=50%>"
+					dat += "<b>Remaining loadout points: [loadout_points]</b>"
+					dat += "</td>"
+					dat += "<td width=15%>"
+					dat += "<a href='?_src_=prefs;preference=reset_loadout'>Reset Loadout</a>"
+					dat += "</td>"
+				if(5) //Augments
+					dat += "<td width=65%>"
+					if(!(!SSquirks || !SSquirks.quirks.len))
+						dat += "<b>Remaining quirk points: [GetQuirkBalance()]</b>"
+					dat += "</td>"
+				else
+					dat += "<td width=35%>"
+					dat += "<b>Mismatched parts:</b> <a href='?_src_=prefs;preference=mismatch'>[(mismatched_customization) ? "Enabled" : "Disabled"]</a>"
+					dat += "</td>"
 
-				dat += "<td width=30%>"
-				dat += "<b> Advanced colors:</b> <a href='?_src_=prefs;preference=adv_colors'>[(allow_advanced_colors) ? "Enabled" : "Disabled"]</a>"
-				if(allow_advanced_colors)
-					dat += "<a href='?_src_=prefs;preference=reset_all_colors;task=change_bodypart'>Reset colors</a><BR>"
-				dat += "</td>"
+					dat += "<td width=30%>"
+					dat += "<b> Advanced colors:</b> <a href='?_src_=prefs;preference=adv_colors'>[(allow_advanced_colors) ? "Enabled" : "Disabled"]</a>"
+					if(allow_advanced_colors)
+						dat += "<a href='?_src_=prefs;preference=reset_all_colors;task=change_bodypart'>Reset colors</a><BR>"
+					dat += "</td>"
 
 			dat += "</tr>"
 			dat += "</table>"
@@ -364,6 +379,7 @@
 
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
+					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
 					dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 					if(length(features["flavor_text"]) <= 40)
@@ -562,7 +578,7 @@
 
 					dat += "</tr></table>"
 				if(2) //Markings
-					dat += "Use a preset: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>"
+					dat += "Use a <b>markings preset</b>: <a href='?_src_=prefs;preference=use_preset;task=change_marking'>Choose</a>  "
 					dat += "<table width='100%' align='center'>"
 					dat += " Primary:<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>Change</a>"
 					dat += " Secondary:<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>Change</a>"
@@ -747,7 +763,10 @@
 										if(LOADOUT_INFO_ONE_COLOR)
 											customization_button = "<center><span style='border: 1px solid #161616; background-color: ["#[custom_info]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path]'>Change</a></center>"
 										if(LOADOUT_INFO_THREE_COLORS)
-											customization_button = "" //TODO
+											var/list/color_list = splittext(custom_info, "|")
+											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[1]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=1'>Change</a></center>"
+											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[2]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=2'>Change</a></center>"
+											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[3]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=3'>Change</a></center>"
 										if(LOADOUT_INFO_STYLE)
 											customization_button = "" //TODO
 								//We check for whether the item is donator only, and if the person isn't donator, then check cost
@@ -772,6 +791,75 @@
 									dat += "<center>Thank you for staffing the server! Enjoy those cool items</center>"
 								else
 									dat += "<center>You can support us on our patreon to help us run the servers, and get access to cool loadout items, and more points!</center>"
+				if(5) //Augmentations
+					if(!pref_species.can_augment)
+						dat += "Sorry, but your species doesn't support augmentations"
+					else if(!SSquirks || !SSquirks.quirks.len)
+						dat += "The quirk subsystem is still initializing! Try again in a minute."
+					else
+						dat += "<table width='100%'><tr>"
+						for(var/category_name in GLOB.augment_categories_to_slots)
+							dat += "<td valign='top' width='23%'>"
+							dat += "<h2>[category_name]:</h2>"
+							var/list/slot_list = GLOB.augment_categories_to_slots[category_name]
+							for(var/slot_name in slot_list)
+								var/link = "href='?_src_=prefs;task=augment_slot;slot=[slot_name]'"
+								var/datum/augment_item/chosen_item
+								if(augments[slot_name])
+									chosen_item = GLOB.augment_items[augments[slot_name]]
+								if(chosen_augment_slot && chosen_augment_slot == slot_name)
+									link = "class='linkOn'"
+								var/print_name = ""
+								if(chosen_item)
+									print_name = chosen_item.name
+									var/font_color = "#AAAAFF"
+									if(chosen_item.cost != 0)
+										font_color = chosen_item.cost > 0 ? "#AAFFAA" : "#FFAAAA"
+									print_name = "<font color='[font_color]'>[print_name]</font>"
+								dat += "<table align='center'; width='100%'; height='100px'; style='background-color:#13171C'>"
+								dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#23273C'><a [link]>[slot_name]</a>: [print_name]</td></tr>"
+								if(category_name == AUGMENT_CATEGORY_LIMBS && chosen_item)
+									var/datum/augment_item/limb/chosen_limb = chosen_item
+									var/print_style = "<font color='#999999'>None</font>"
+									if(augment_limb_styles[slot_name])
+										print_style = augment_limb_styles[slot_name]
+									if(chosen_limb.uses_robotic_styles)
+										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#16274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
+								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
+								dat += "</table>"
+							dat += "</td>"
+						dat += "<td valign='top' width='31%'>"
+						if(chosen_augment_slot)
+							var/list/augment_list = GLOB.augment_slot_to_items[chosen_augment_slot]
+							if(augment_list)
+								dat += "<table width=100%; style='background-color:#13171C'>"
+								dat += "<center><h2>[chosen_augment_slot]</h2></center>"
+								dat += "<tr style='vertical-align:top;background-color:#23273C'>"
+								dat += "<td width=33%><b>Name</b></td>"
+								dat += "<td width=7%><b>Cost</b></td>"
+								dat += "<td width=60%><b>Description</b></td>"
+								dat += "</tr>"
+								var/even = FALSE
+								for(var/type_thing in augment_list)
+									var/datum/augment_item/aug_datum = GLOB.augment_items[type_thing]
+									var/datum/augment_item/current
+									even = !even
+									if(augments[chosen_augment_slot])
+										current = GLOB.augment_items[augments[chosen_augment_slot]]
+									var/aug_link = "class='linkOff'"
+									var/name_print = aug_datum.name
+									if (current == aug_datum)
+										aug_link = "class='linkOn' href='?_src_=prefs;task=set_augment;type=[type_thing]'"
+										name_print = "[name_print] (Remove)"
+									else if(CanBuyAugment(aug_datum, current))
+										aug_link = "href='?_src_=prefs;task=set_augment;type=[type_thing]'"
+									dat += "<tr style='background-color:[even ? "#13171C" : "#19232C"]'>"
+									dat += "<td><b><a [aug_link]>[name_print]</a></b></td>"
+									dat += "<td><center>[aug_datum.cost]</center></td>"
+									dat += "<td><i>[aug_datum.description]</i></td>"
+									dat += "</tr>"
+								dat += "</table>"
+						dat += "</td></tr></table>"
 
 		if (1) // Game Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
@@ -1304,6 +1392,9 @@
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
+	for(var/key in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+		bal -= aug.cost
 	return bal
 
 /datum/preferences/proc/GetPositiveQuirkCount()
@@ -1404,6 +1495,31 @@
 		return TRUE
 
 	switch(href_list["task"])
+		if("augment_style")
+			needs_update = TRUE
+			var/slot_name = href_list["slot"]
+			var/new_style = input(user, "Choose your character's [slot_name] augmentation style:", "Character Preference")  as null|anything in GLOB.robotic_styles_list
+			if(new_style)
+				if(new_style == "None")
+					if(augment_limb_styles[slot_name])
+						augment_limb_styles -= slot_name
+				else
+					augment_limb_styles[slot_name] = new_style
+		if("set_augment")
+			if(pref_species.can_augment)
+				needs_update = TRUE
+				var/typed_path = text2path(href_list["type"])
+				var/datum/augment_item/target_aug = GLOB.augment_items[typed_path]
+				var/datum/augment_item/current
+				if(augments[target_aug.slot])
+					current = GLOB.augment_items[augments[target_aug.slot]]
+				if(current == target_aug)
+					augments -= target_aug.slot
+				else if(CanBuyAugment(target_aug, current))
+					augments[target_aug.slot] = typed_path
+		if("augment_slot")
+			var/slot_name = href_list["slot"]
+			chosen_augment_slot = slot_name
 		if("change_loadout_customization")
 			needs_update = TRUE
 			var/path = text2path(href_list["item"])
@@ -1418,7 +1534,15 @@
 							return
 						loadout[path] = sanitize_hexcolor(new_color)
 				if(LOADOUT_INFO_THREE_COLORS)
-					return
+					var/color_slot = text2num(href_list["color_slot"])
+					if(color_slot)
+						var/list/color_list = splittext(loadout[path], "|")
+						var/new_color = input(user, "Choose your item's color:", "Character Preference","#[color_list[color_slot]]") as color|null
+						if(new_color)
+							if(!loadout[path])
+								return
+							color_list[color_slot] = sanitize_hexcolor(new_color)
+							loadout[path] = color_list.Join("|")
 				if(LOADOUT_INFO_STYLE)
 					return
 		if("change_loadout")
@@ -1896,6 +2020,17 @@
 					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference","#"+eye_color) as color|null
 					if(new_eyes)
 						eye_color = sanitize_hexcolor(new_eyes)
+
+				if("show_body_size")
+					needs_update = TRUE
+					show_body_size = !show_body_size
+
+				if("body_size")
+					needs_update = TRUE
+					var/new_body_size = input(user, "Choose your desired sprite size:\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%), Warning: May make your character look distorted", "Character Preference", features["body_size"]*100) as num|null
+					if(new_body_size)
+						new_body_size = clamp(new_body_size * 0.01, BODY_SIZE_MIN, BODY_SIZE_MAX)
+						features["body_size"] = new_body_size
 
 				if("species")
 					needs_update = TRUE
@@ -2516,9 +2651,18 @@
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
+	if(!character_setup || (character_setup && show_body_size))
+		character.dna.update_body_size()
+	else //We need to update it to 100% in case they switch back
+		character.dna.features["body_size"] = BODY_SIZE_NORMAL
+		character.dna.update_body_size()
 
 	/*if("tail_lizard" in pref_species.default_features)
 		character.dna.species.mutant_bodyparts |= "tail_lizard"*/
+	if(length(augments))
+		for(var/key in augments)
+			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+			aug.apply(character, character_setup, src)
 
 	if(icon_updates)
 		character.update_body()
@@ -2601,3 +2745,16 @@
 		return LOADOUT_POINTS_MAX_DONATOR
 	else
 		return LOADOUT_POINTS_MAX
+
+/datum/preferences/proc/CanBuyAugment(datum/augment_item/target_aug, datum/augment_item/current_aug)
+	//Check biotypes
+	if(!(pref_species.inherent_biotypes & target_aug.allowed_biotypes))
+		return
+	var/quirk_points = GetQuirkBalance()
+	var/leverage = 0
+	if(current_aug)
+		leverage += current_aug.cost
+	if((quirk_points+leverage)>= target_aug.cost)
+		return TRUE
+	else
+		return FALSE
