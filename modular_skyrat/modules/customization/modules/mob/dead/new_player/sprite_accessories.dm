@@ -119,16 +119,6 @@
 	key = "caps"
 	generic = "Caps"
 
-/datum/sprite_accessory/horns
-	key = "horns"
-	generic = "Horns"
-	relevent_layers = list(BODY_ADJ_LAYER)
-
-/datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
-		return TRUE
-	return FALSE
-
 /datum/sprite_accessory/body_markings
 	key = "body_markings"
 	generic = "Body Markings"
