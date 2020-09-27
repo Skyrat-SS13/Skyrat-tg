@@ -431,11 +431,22 @@
 						null, "<span class='hear'>You hear the rustling of clothes.</span>", DEFAULT_MESSAGE_RANGE, list(M, src))
 		to_chat(M, "<span class='notice'>You shake [src] trying to pick [p_them()] up!</span>")
 		to_chat(src, "<span class='notice'>[M] shakes you to get you up!</span>")
-		
+
+	//SKYRAT EDIT ADDITION BEGIN - EMOTES
+	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
+					"<span class='notice'>You boop [src] on the nose.</span>")
+		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
+	//SKYRAT EDIT ADDITION END
+
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
 		M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better!</span>", \
 					"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
-					
+		//SKYRAT EDIT ADDITION BEGIN - EMOTES
+		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
+			src.emote("wag")
+		//SKYRAT EDIT ADDITION END
+
 	else
 		M.visible_message("<span class='notice'>[M] hugs [src] to make [p_them()] feel better!</span>", \
 					null, "<span class='hear'>You hear the rustling of clothes.</span>", DEFAULT_MESSAGE_RANGE, list(M, src))
