@@ -28,6 +28,9 @@
 	return TRUE
 
 /mob/proc/unpixel_shift()
+	return
+
+/mob/living/unpixel_shift()
 	if(is_shifted)
 		is_shifted = FALSE
 		if(isliving(src))
