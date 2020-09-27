@@ -37,6 +37,9 @@
 		pixel_y = M.get_standard_pixel_y_offset(!M.mobility_flags & MOBILITY_STAND)
 
 /mob/proc/pixel_shift(direction)
+	return
+
+/mob/living/pixel_shift(direction)
 	switch(direction)
 		if(NORTH)
 			if(!canface())
