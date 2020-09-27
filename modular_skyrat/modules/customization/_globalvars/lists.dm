@@ -54,3 +54,21 @@ GLOBAL_LIST_INIT(marking_zones, list(BODY_ZONE_HEAD,BODY_ZONE_CHEST,BODY_ZONE_L_
 GLOBAL_LIST_INIT(preference_breast_sizes, list("Flatchested","A","B","C","D","E","F","G","H"))
 
 GLOBAL_LIST_INIT(preference_balls_sizes, list("Small","Average","Big","Enormous"))
+
+GLOBAL_LIST_INIT(robotic_styles_list, list("None" = "None",
+										"Surplus" = 'icons/mob/augmentation/surplus_augments.dmi',
+										"Cyborg" = 'icons/mob/augmentation/augments.dmi',
+										"Engineering" = 'icons/mob/augmentation/augments_engineer.dmi',
+										"Mining" = 'icons/mob/augmentation/augments_mining.dmi',
+										"Security" = 'icons/mob/augmentation/augments_security.dmi',
+										"Morpheus Cyberkinetics" = 'modular_skyrat/modules/customization/icons/mob/augmentation/mcgipc.dmi',
+										"Bishop Cyberkinetics" = 'modular_skyrat/modules/customization/icons/mob/augmentation/bshipc.dmi',
+										"Bishop Cyberkinetics 2.0" = 'modular_skyrat/modules/customization/icons/mob/augmentation/bs2ipc.dmi',
+										"Hephaestus Industries" = 'modular_skyrat/modules/customization/icons/mob/augmentation/hsiipc.dmi',
+										"Hephaestus Industries 2.0" = 'modular_skyrat/modules/customization/icons/mob/augmentation/hi2ipc.dmi',
+										"Shellguard Munitions Standard Series" = 'modular_skyrat/modules/customization/icons/mob/augmentation/sgmipc.dmi',
+										"Ward-Takahashi Manufacturing" = 'modular_skyrat/modules/customization/icons/mob/augmentation/wtmipc.dmi',
+										"Xion Manufacturing Group" = 'modular_skyrat/modules/customization/icons/mob/augmentation/xmgipc.dmi',
+										"Xion Manufacturing Group 2.0" = 'modular_skyrat/modules/customization/icons/mob/augmentation/xm2ipc.dmi',
+										"Zeng-Hu Pharmaceuticals" = 'modular_skyrat/modules/customization/icons/mob/augmentation/zhpipc.dmi'
+										))

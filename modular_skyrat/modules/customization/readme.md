@@ -35,6 +35,7 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
  ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
  ./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
+ ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
 
  ./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
 

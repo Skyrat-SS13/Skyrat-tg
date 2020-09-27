@@ -435,6 +435,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["mismatched_customization"] , mismatched_customization)
 	READ_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
 
+	READ_FILE(S["augments"] , augments)
+	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
+
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
 	body_markings = SANITIZE_LIST(body_markings)
@@ -482,6 +485,18 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		for(var/name in body_markings[zone])
 			if(!(name in GLOB.body_markings_per_limb[zone]))
 				body_markings[zone] -= name
+
+	augments = SANITIZE_LIST(augments)
+	//validating augments
+	for(var/aug_slot in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[aug_slot]]
+		if(!aug)
+			augments -= aug_slot
+	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
+	//validating limb styles
+	for(var/key in augment_limb_styles)
+		if(!GLOB.robotic_styles_list[key])
+			augment_limb_styles -= key
 
 	validate_species_parts()
 
@@ -576,6 +591,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["mismatched_customization"] , mismatched_customization)
 	WRITE_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
+
+	WRITE_FILE(S["augments"] , augments)
+	WRITE_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
 	return TRUE
 

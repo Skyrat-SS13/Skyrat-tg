@@ -35,6 +35,7 @@
 			if(O.status == BODYPART_ROBOTIC)
 				O.rendered_bp_icon = target.dna.species.limbs_icon
 				O.species_id = target.dna.species.limbs_id
+				O.organic_render = TRUE
 				if(O.body_zone == BODY_ZONE_L_LEG || O.body_zone == BODY_ZONE_R_LEG)
 					if(target.dna.mutant_bodyparts["legs"] && target.dna.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
 						O.use_digitigrade = FULL_DIGITIGRADE
