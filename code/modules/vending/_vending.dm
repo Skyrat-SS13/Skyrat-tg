@@ -867,6 +867,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				flick(icon_vend,src)
 			playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
 			new R.product_path(get_turf(src))
+			issue_receipt(R.name, usr, price_to_use, src.name, get_area(src))
 			R.amount--
 			SSblackbox.record_feedback("nested tally", "vending_machine_usage", 1, list("[type]", "[R.product_path]"))
 			vend_ready = TRUE
