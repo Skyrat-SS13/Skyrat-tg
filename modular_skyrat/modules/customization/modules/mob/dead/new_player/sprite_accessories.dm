@@ -19,7 +19,7 @@
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
 
-	///Use this as a typepath to an organ that this sprite_accessory will be associated. Make sure the organ has 'mutantpart_info' set properly.
+	///Use this as a type path to an organ that this sprite_accessory will be associated. Make sure the organ has 'mutantpart_info' set properly.
 	var/organ_type
 
 	///Set this to true to make an accessory appear as color customizable in preferences despite advanced color settings being off, will also prevent the accessory from being reset
