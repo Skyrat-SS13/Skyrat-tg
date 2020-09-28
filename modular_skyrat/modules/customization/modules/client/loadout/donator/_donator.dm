@@ -20,9 +20,6 @@
 	category = LOADOUT_CATEGORY_NECK
 	subcategory = LOADOUT_SUBCATEGORY_DONATOR
 
-/datum/loadout_item/backpack/neck/public
-	donator_only = TRUE
-
 /datum/loadout_item/shoes/donator
 	category = LOADOUT_CATEGORY_SHOES
 	subcategory = LOADOUT_SUBCATEGORY_DONATOR
