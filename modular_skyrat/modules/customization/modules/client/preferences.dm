@@ -3,7 +3,7 @@
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 3
+	var/max_save_slots = 10
 
 	//non-preference stuff
 	var/muted = 0
@@ -2538,6 +2538,8 @@
 						random_character()
 						real_name = random_unique_name(gender)
 						save_character()
+					else
+						needs_update = TRUE
 
 				if("tab")
 					if (href_list["tab"])
