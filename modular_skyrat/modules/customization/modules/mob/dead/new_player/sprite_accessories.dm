@@ -32,7 +32,7 @@
 	var/special_icon_case
 	///Special case of possibly not applying color to the accessory, important for hardsuit styles
 	var/special_colorize
-
+	///Whether it has any extras to render, and their appropriate color sources
 	var/extra = FALSE
 	var/extra_color_src
 	var/extra2 = FALSE
