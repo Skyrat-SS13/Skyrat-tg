@@ -11,8 +11,6 @@
 	///Notable things that have it set to FALSE are things that need special setup, such as genitals
 	var/generic
 
-	var/special_render_case
-
 	color_src = USE_ONE_COLOR
 
 	///Which layers does this accessory affect (BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
@@ -26,10 +24,14 @@
 
 	///Set this to true to make an accessory appear as color customizable in preferences despite advanced color settings being off, will also prevent the accessory from being reset
 	var/always_color_customizable
-
+	///Whether the accessory can have a special icon_state to render, i.e. wagging tails
+	var/special_render_case
+	///Special case of whether the accessory should be shifted in the X dimension, check taur genitals for example
 	var/special_x_dimension
-
+	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
+	///Special case of possibly not applying color to the accessory, important for hardsuit styles
+	var/special_colorize
 
 	var/extra = FALSE
 	var/extra_color_src
@@ -61,6 +63,9 @@
 
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H)
 	return 0
+
+/datum/sprite_accessory/proc/do_colorize(mob/living/carbon/human/H)
+	return TRUE
 
 /datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
 	var/list/colors
