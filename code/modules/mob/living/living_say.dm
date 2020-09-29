@@ -386,6 +386,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
 	//SKYRAT EDIT ADDITION BEGIN
 	if(!(mobility_flags & MOBILITY_USE)) // if can't use items, you can't press the button
+		to_chat(src, "<span class='warning'>You can't use the radio now!</span>")
 		return TRUE //Means other procs wont continue
 	//SKYRAT EDIT END
 	var/obj/item/implant/radio/imp = locate() in src
