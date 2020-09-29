@@ -182,6 +182,8 @@
 	var/chosen_augment_slot
 	///Whether the user wants to see body size being shown in the preview
 	var/show_body_size = FALSE
+	///The arousal state of the previewed character, can be toggled by the user
+	var/arousal_preview = AROUSAL_NONE
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -535,6 +537,8 @@
 
 
 					if(pref_species.can_have_genitals)
+						dat +=	"<h2>Arousal Preview</h2>"
+						dat += "<a href='?_src_=prefs;preference=change_arousal_preview;task=input'>Change arousal preview</a>"
 						dat += APPEARANCE_CATEGORY_COLUMN
 						dat += "<h3>Penis</h3>"
 						var/penis_name = mutant_bodyparts["penis"][MUTANT_INDEX_NAME]
@@ -542,6 +546,7 @@
 						if(penis_name != "None")
 							dat += "<br><b>Length: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_size;task=change_genitals'>[features["penis_size"]]</a> inches."
 							dat += "<br><b>Girth: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_girth;task=change_genitals'>[features["penis_girth"]]</a> inches circumference"
+							dat += "<br><b>Sheath: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_sheath;task=change_genitals'>[features["penis_sheath"]]</a>"
 
 						dat += "<h3>Testicles</h3>"
 						var/balls_name = mutant_bodyparts["testicles"][MUTANT_INDEX_NAME]
@@ -1696,6 +1701,11 @@
 						features["penis_size"] = clamp(round(new_length, 1), 2, 20)
 						if(features["penis_girth"] >= new_length)
 							features["penis_girth"] = new_length - 1
+				if("penis_sheath")
+					var/list/sheath_choice_list = list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
+					var/new_sheath = input(user, "Choose your penis sheath", "Character Preference") as null|anything in sheath_choice_list
+					if(new_sheath)
+						features["penis_sheath"] = new_sheath
 				if("penis_girth")
 					var/max_girth = 15
 					if(features["penis_size"] >= max_girth)
@@ -1894,6 +1904,16 @@
 							vore_pref = "No"
 						if("No")
 							vore_pref = "Yes"
+
+				if("change_arousal_preview")
+					var/list/gen_arous_trans = list("Not aroused" = AROUSAL_NONE,
+						"Partly aroused" = AROUSAL_PARTIAL,
+						"Very aroused" = AROUSAL_FULL
+						)
+					var/new_arousal = input(user, "Choose your character's arousal:", "Character Preference")  as null|anything in gen_arous_trans
+					if(new_arousal)
+						arousal_preview = gen_arous_trans[new_arousal]
+						needs_update = TRUE
 
 				if("hair")
 					needs_update = TRUE
@@ -2658,6 +2678,13 @@
 	else //We need to update it to 100% in case they switch back
 		character.dna.features["body_size"] = BODY_SIZE_NORMAL
 		character.dna.update_body_size()
+
+	if(character_setup)
+		for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+			var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
+			if(gent)
+				gent.aroused = arousal_preview
+				gent.update_sprite_suffix()
 
 	/*if("tail_lizard" in pref_species.default_features)
 		character.dna.species.mutant_bodyparts |= "tail_lizard"*/

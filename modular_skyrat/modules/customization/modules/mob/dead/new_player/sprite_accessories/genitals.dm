@@ -20,7 +20,7 @@
 /datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
 	if(gen)
-		return  "[icon_state]_[gen.sprite_suffix]"
+		return  "[gen.sprite_suffix]"
 	else
 		return null
 
@@ -29,11 +29,12 @@
 	organ_type = /obj/item/organ/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
 	key = "penis"
+	color_src = USE_MATRIXED_COLORS
 	always_color_customizable = TRUE
 	center = TRUE
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
-	default_color = DEFAULT_SKIN_OR_PRIMARY
+	//default_color = DEFAULT_SKIN_OR_PRIMARY //This is the price we're paying for sheaths
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/genital/penis/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -162,7 +163,7 @@
 /datum/sprite_accessory/genital/vagina/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
 	if(gen)
-		return "[icon_state]_[gen.aroused]"
+		return "[gen.sprite_suffix]"
 	else
 		return null
 
