@@ -102,7 +102,7 @@
 		var/poking_out = 0
 		if(aroused == AROUSAL_PARTIAL)
 			poking_out = 1
-		return "[sheath]_[poking_out]"
+		return "[lowertext(sheath)]_[poking_out]"
 
 	var/size_affix
 	var/measured_size = FLOOR(genital_size,1)
