@@ -251,7 +251,16 @@
 					new /datum/admin_help(msg, recipient, TRUE)
 					already_logged = TRUE
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
+				//SKYRAT EDIT ADDTION BEGIN - ADMIN
+				if(recipient.current_ticket.handler)
+					if(recipient.current_ticket.handler != usr.ckey)
+						var/response = alert(usr, "This ticket is already being handled by [recipient.current_ticket.handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
 
+						if(response == "No")
+							return
+				else
+					recipient.current_ticket.HandleIssue()
+				//SKYRAT EDIT END
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
 					html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>",
