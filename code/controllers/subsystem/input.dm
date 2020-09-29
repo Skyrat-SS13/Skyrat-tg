@@ -36,10 +36,6 @@ SUBSYSTEM_DEF(input)
 	for(var/i in 1 to clients.len)
 		var/client/user = clients[i]
 		user.set_macros()
-<<<<<<< HEAD
-		user.update_movement_keys()
-=======
->>>>>>> ed02f99f92a... Communication hotfix (#54084)
 
 /datum/controller/subsystem/input/fire()
 	var/list/clients = GLOB.clients // Let's sing the list cache song
