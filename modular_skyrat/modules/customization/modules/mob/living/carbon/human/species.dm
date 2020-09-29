@@ -256,11 +256,6 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 
-/datum/species/moth
-	default_features = null
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("moth_markings" = ACC_RANDOM, "wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM)
-
 /datum/species/mush
 	default_features = null
 	mutant_bodyparts = list()
