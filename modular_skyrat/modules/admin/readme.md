@@ -15,10 +15,11 @@ Adds multuple admin features, loud asay, and better admin tickets. As well as bo
 - code\modules\admin\admin_verbs.dm
 - code\modules\admin\verbs\adminhelp.dm > SEE file for SKYRAT EDITS
 - code\modules\admin\verbs\adminpm.dm > /client/proc/cmd_admin_pm(whom, msg)
+- code\modules\mob\living\emote.dm > /datum/emote/living/custom/run_emote
 
 ### Defines:
 
--
+- N/A
 
 ### Master file additions
 
