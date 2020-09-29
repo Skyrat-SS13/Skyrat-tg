@@ -8,6 +8,7 @@
 
 /datum/body_marking_set/none
 	name = "None"
+	recommended_species = null
 	body_marking_list = list()
 
 /datum/body_marking_set/tajaran
