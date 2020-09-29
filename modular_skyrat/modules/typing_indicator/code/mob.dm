@@ -12,11 +12,14 @@ GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/mod
 
 /mob/living/key_down(_key, client/user)
 	if(!typing_indicator && stat == CONSCIOUS)
-		switch(_key)
-			if("T")
-				set_typing_indicator(TRUE)
-			if("M")
-				set_typing_indicator(TRUE)
+		for(var/kb_name in user.prefs.key_bindings[_key])
+			switch(kb_name)
+				if("Say")
+					set_typing_indicator(TRUE)
+					break
+				if("Me")
+					set_typing_indicator(TRUE)
+					break
 	return ..()
 
 /proc/animate_speechbubble(image/I, list/show_to, duration)
