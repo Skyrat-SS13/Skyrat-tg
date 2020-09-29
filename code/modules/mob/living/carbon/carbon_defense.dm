@@ -430,7 +430,6 @@
 		to_chat(M, "<span class='notice'>You shake [src] trying to pick [p_them()] up!</span>")
 		to_chat(src, "<span class='notice'>[M] shakes you to get you up!</span>")
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
@@ -445,11 +444,6 @@
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			src.emote("wag")
 		//SKYRAT EDIT ADDITION END
-=======
-	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
-		M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better!</span>", \
-					"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
->>>>>>> 3cc7733f34c... Moblity refactor: hands blocked and restrained edition. (#53981)
 
 	else
 		M.visible_message("<span class='notice'>[M] hugs [src] to make [p_them()] feel better!</span>", \
