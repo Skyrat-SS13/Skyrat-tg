@@ -311,7 +311,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(SSinput.initialized)
 		set_macros()
+<<<<<<< HEAD
 		update_movement_keys()
+=======
+>>>>>>> ed02f99f92a... Communication hotfix (#54084)
 
 	// Initialize tgui panel
 	tgui_panel.initialize()
