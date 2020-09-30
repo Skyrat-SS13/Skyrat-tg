@@ -125,7 +125,7 @@
 
 /datum/body_marking_set/floofer
 	name = "Floofer"
-	body_marking_list = list("Floofer", "Floofer Sock")
+	body_marking_list = list("Floof", "Floofer Sock")
 
 /datum/body_marking_set/rat
 	name = "Rat"
