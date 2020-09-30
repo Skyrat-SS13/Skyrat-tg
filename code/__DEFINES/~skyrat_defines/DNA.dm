@@ -66,7 +66,7 @@
 #define SHEATH_NORMAL		"Sheath"
 #define SHEATH_SLIT			"Slit"
 
-#define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL)
+#define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL, "custom_species" = null)
 
 #define UNDERWEAR_HIDE_SOCKS		(1<<0)
 #define UNDERWEAR_HIDE_SHIRT		(1<<1)
