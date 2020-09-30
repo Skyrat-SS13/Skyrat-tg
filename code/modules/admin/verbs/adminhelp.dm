@@ -99,13 +99,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
 			var/obj/effect/statclick/updated = AH.statclick.update()
-			//SKYRAT EDIT CHANGE BEGIN - ADMIN
-			var/prefix = "N/A"
-			if(AH.handler)
-				prefix = "H-"
-			//L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
-			L[++L.len] = list("#[AH.id]. [prefix][AH.handler]|[AH.initiator_key_name]:", "[updated.name]", REF(AH))
-			//SKYRAT EDIT END
+			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
 		else
 			++num_disconnected
 	if(num_disconnected)
@@ -172,8 +166,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/initiator_key_name
 	var/heard_by_no_admins = FALSE
 
-	var/handler = "" //SKYRAT EDIT - string of admin who takes care of the ticket to display at stat()
-
 	var/list/_interactions	//use AddInteraction() or, preferably, admin_ticket_log()
 
 	var/obj/effect/statclick/ahelp/statclick
@@ -183,17 +175,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //call this on its own to create a ticket, don't manually assign current_ticket
 //msg is the title of the ticket: usually the ahelp text
 //is_bwoink is TRUE if this ticket was started by an admin PM
-/datum/admin_help/New(msg, client/C, is_bwoink, client/admin_C) //SKYRAT EDIT CHANGE, client/admin_C
+/datum/admin_help/New(msg, client/C, is_bwoink)
 	//clean the input msg
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
 		qdel(src)
 		return
-
-	//SKYRAT EDIT ADDITION - ADMIN
-	if(admin_C && is_bwoink)
-		handler = "[admin_C.ckey]"
-	//SKYRAT EDIT END
 
 	id = ++ticket_counter
 	opened_at = world.time
@@ -261,7 +248,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)"
+
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
 	if(!ref_src)
@@ -345,18 +332,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		initiator.current_ticket = null
 
 //Mark open ticket as closed/meme
-/datum/admin_help/proc/Close(key_name = key_name_admin(usr), silent = FALSE, ignore_admincheck = FALSE)
+/datum/admin_help/proc/Close(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
-	//SKYRAT EDIT ADDITION BEGIN - ADMIN
-	if (!ignore_admincheck)
-		if(handler && handler != usr.ckey)
-			var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
-
-			if(response == "No")
-				return
-	//SKYRAT EDIT END
-
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -372,13 +350,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/Resolve(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
-	//SKYRAT EDIT ADDITION BEGIN - ADMIN
-	if(handler && handler != usr.ckey)
-		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
-
-		if(response == "No")
-			return
-	//SKYRAT EDIT END
 	RemoveActive()
 	state = AHELP_RESOLVED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -399,14 +370,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(state != AHELP_ACTIVE)
 		return
 
-	//SKYRAT EDIT ADDITION BEGIN - ADMIN
-	if(handler && handler != usr.ckey)
-		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
-
-		if(response == "No")
-			return
-	//SKYRAT EDIT END
-
 	if(initiator)
 		initiator.giveadminhelpverb()
 
@@ -422,21 +385,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	log_admin_private(msg)
 	AddInteraction("Rejected by [key_name].")
 	SSblackbox.LogAhelp(id, "Rejected", "Rejected by [usr.key]", null, usr.ckey)
-	//Close(silent = TRUE) - ORIGINAL
-	Close(silent = TRUE, ignore_admincheck = TRUE)	//SKYRAT EDIT CHANGE - ADMIN
+	Close(silent = TRUE)
 
 //Resolve ticket with IC Issue message
 /datum/admin_help/proc/ICIssue(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
 		return
-
-	//SKYRAT EDIT ADDITION BEGIN - ADMIN
-	if(handler && handler != usr.ckey)
-		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
-
-		if(response == "No")
-			return
-	//SKYRAT EDIT END
 
 	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as IC issue! -</b></font><br>"
 	msg += "<font color='red'>Your issue has been determined by an administrator to be an in character issue and does NOT require administrator intervention at this time. For further resolution you should pursue options that are in character.</font>"
@@ -512,10 +466,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Close()
 		if("resolve")
 			Resolve()
-		//SKYRAT EDIT ADDITION - ADMIN
-		if("handleissue")
-			HandleIssue()
-		//SKYRAT EDIT END
 		if("reopen")
 			Reopen()
 
@@ -576,16 +526,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(current_ticket)
-		if(alert(usr, "You already have a ticket open. Is this for the same issue?",,"Yes","No") != "No")
-			if(current_ticket)
-				current_ticket.MessageNoRecipient(msg)
-				current_ticket.TimeoutVerb()
-				return
-			else
-				to_chat(usr, "<span class='warning'>Ticket not found, creating new one...</span>")
-		else
-			current_ticket.AddInteraction("[key_name_admin(usr)] opened a new ticket.")
-			current_ticket.Close(ignore_admincheck = TRUE)
+		current_ticket.MessageNoRecipient(msg)
+		current_ticket.TimeoutVerb()
+		return
 
 	new /datum/admin_help(msg, src, FALSE)
 
