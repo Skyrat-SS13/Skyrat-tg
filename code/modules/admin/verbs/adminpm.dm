@@ -251,6 +251,7 @@
 					new /datum/admin_help(msg, recipient, TRUE)
 					already_logged = TRUE
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
+
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
 					html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>",
