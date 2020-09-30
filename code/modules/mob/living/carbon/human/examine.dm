@@ -31,8 +31,11 @@
 		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
 
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]")
-	if(species_visible && dna.features["custom_species"]) //If they have a custom species shown, show the real one too
-		. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
+	if(species_visible) //If they have a custom species shown, show the real one too
+		if(dna.features["custom_species"])
+			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
+	else
+		. += "You can't make out what species they are."
 	//SKYRAT EDIT CHANGE END
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING))
