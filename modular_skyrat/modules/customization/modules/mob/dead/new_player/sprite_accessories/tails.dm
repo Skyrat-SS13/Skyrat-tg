@@ -61,6 +61,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/catbig
 	name = "Cat, Big"
 	icon_state = "catbig"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/twocat
 	name = "Cat, Double"
@@ -173,6 +174,10 @@
 	name = "Skunk"
 	icon_state = "skunk"
 
+/datum/sprite_accessory/tails/mammal/wagging/stripe
+	name = "Stripe"
+	icon_state = "stripe"
+
 /datum/sprite_accessory/tails/mammal/wagging/straighttail
 	name = "Straight Tail"
 	icon_state = "straighttail"
@@ -180,6 +185,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/squirrel
 	name = "Squirrel"
 	icon_state = "squirrel"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/tamamo_kitsune
 	name = "Tamamo Kitsune Tails"
@@ -196,6 +202,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/wolf
 	name = "Wolf"
 	icon_state = "wolf"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/guilmon
 	name = "Guilmon"
@@ -208,3 +215,8 @@
 /datum/sprite_accessory/tails/mammal/raptor
     name = "Raptor"
     icon_state = "raptor"
+
+/datum/sprite_accessory/tails/mammal/wagging/lunasune
+	name = "Lunasune"
+	icon_state = "lunasune"
+	color_src = USE_ONE_COLOR
