@@ -24,6 +24,7 @@
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/bat
 	name = "Bat"
@@ -32,6 +33,7 @@
 /datum/sprite_accessory/ears/mutant/bear
 	name = "Bear"
 	icon_state = "bear"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/bigwolf
 	name = "Big Wolf"
@@ -64,6 +66,7 @@
 /datum/sprite_accessory/ears/mutant/cow
 	name = "Cow"
 	icon_state = "cow"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/curled
 	name = "Curled Horn"
@@ -80,6 +83,7 @@
 /datum/sprite_accessory/ears/mutant/eevee
 	name = "Eevee"
 	icon_state = "eevee"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/elf
 	name = "Elf"
@@ -90,6 +94,7 @@
 /datum/sprite_accessory/ears/mutant/elephant
 	name = "Elephant"
 	icon_state = "elephant"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/fennec
 	name = "Fennec"
@@ -98,6 +103,7 @@
 /datum/sprite_accessory/ears/mutant/fish
 	name = "Fish"
 	icon_state = "fish"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/fox
 	name = "Fox"
@@ -113,12 +119,13 @@
 	color_src = HAIR
 
 /datum/sprite_accessory/ears/mutant/kangaroo
-	name = "kangaroo"
+	name = "Kangaroo"
 	icon_state = "kangaroo"
 
 /datum/sprite_accessory/ears/mutant/lab
 	name = "Dog, Long"
 	icon_state = "lab"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/murid
 	name = "Murid"
@@ -151,6 +158,10 @@
 /datum/sprite_accessory/ears/mutant/wolf
 	name = "Wolf"
 	icon_state = "wolf"
+
+/datum/sprite_accessory/ears/mutant/perky
+	name = "Perky"
+	icon_state = "perky"
 
 /datum/sprite_accessory/ears/mutant/antenna_simple1
 	name = "Insect antenna (coloring 2)"
