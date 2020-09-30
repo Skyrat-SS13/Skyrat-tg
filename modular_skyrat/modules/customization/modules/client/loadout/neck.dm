@@ -38,8 +38,9 @@
 	subcategory = LOADOUT_SUBCATEGORY_NECK_SCARVES
 
 /datum/loadout_item/neck/scarf/scarf
-	name = "White scarf"
+	name = "Colorable scarf"
 	path = /obj/item/clothing/neck/scarf
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/neck/scarf/blackscarf
 	name = "Black scarf"
