@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/endspanpart = "</span>"
 
 	//Message
-	//SKYRAT EDIT CHANGE - ADMIN
+	//SKYRAT EDIT CHANGE - EMOTES
 	// var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mods)]</span></span>" - ORIGINAL
 	var/messagepart = " <span class='message'>[say_emphasis(lang_treat(speaker, message_language, raw_message, spans, message_mods))]</span></span>"
 	//SKYRAT EDIT END
