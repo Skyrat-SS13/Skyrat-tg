@@ -43,12 +43,31 @@
 //Use this one for things with pre-set default colors, I guess
 /datum/body_marking/other
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/other_markings.dmi'
+	recommended_species = null
 
 /datum/body_marking/other/drake_bone
 	name = "Drake Bone"
 	icon_state = "drakebone"
 	default_color = "CCC"
 	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT 
+
+/datum/body_marking/other/tonage
+	name = "Tonage"
+	icon_state = "tonage"
+	default_color = "333"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/other/pilot
+	name = "Pilot"
+	icon_state = "pilot"
+	default_color = "CCC"
+	affected_bodyparts = HEAD | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT
+
+/datum/body_marking/other/pilot_jaw
+	name = "Pilot Jaw"
+	icon_state = "pilot_jaw"
+	default_color = "CCC"
+	affected_bodyparts = HEAD 
 
 /datum/body_marking/other/drake_eyes
 	name = "Drake Eyes"
