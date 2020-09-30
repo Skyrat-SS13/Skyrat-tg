@@ -225,11 +225,6 @@
 	icon_state = "floof"
 	affected_bodyparts = HEAD | CHEST
 
-/datum/body_marking/secondary/floofer
-	name = "Floofer"
-	icon_state = "floofer"
-	affected_bodyparts = HEAD | CHEST
-
 /datum/body_marking/secondary/rat
 	name = "Rat Paw"
 	icon_state = "rat"
@@ -327,7 +322,7 @@
 /datum/body_marking/tertiary/floofer
 	name = "Floofer Sock"
 	icon_state = "floofer"
-	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT | HAND_LEFT | HAND_RIGHT 
 
 /datum/body_marking/tertiary/rat
 	name = "Rat Spot"
