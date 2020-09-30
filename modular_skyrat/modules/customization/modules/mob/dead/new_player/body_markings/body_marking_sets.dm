@@ -8,6 +8,7 @@
 
 /datum/body_marking_set/none
 	name = "None"
+	recommended_species = null
 	body_marking_list = list()
 
 /datum/body_marking_set/tajaran
@@ -171,3 +172,60 @@
 /datum/body_marking_set/synthliz/pecs_light
 	name = "Synth Pecs Lights"
 	body_marking_list = list("Synth Pecs", "Synth Collar Lights")
+
+//MOTH
+
+/datum/body_marking_set/moth
+	recommended_species = list("moth")
+
+/datum/body_marking_set/moth/reddish
+	name = "Reddish"
+	body_marking_list = list("Reddish")
+
+/datum/body_marking_set/moth/royal
+	name = "Royal"
+	body_marking_list = list("Royal")
+
+/datum/body_marking_set/moth/gothic
+	name = "Gothic"
+	body_marking_list = list("Gothic")
+
+/datum/body_marking_set/moth/whitefly
+	name = "Whitefly"
+	body_marking_list = list("Whitefly")
+
+/datum/body_marking_set/moth/burnt_off
+	name = "Burnt Off"
+	body_marking_list = list("Burnt Off")
+
+/datum/body_marking_set/moth/deathhead
+	name = "Deathhead"
+	body_marking_list = list("Deathhead")
+
+/datum/body_marking_set/moth/poison
+	name = "Poison"
+	body_marking_list = list("Poison")
+
+/datum/body_marking_set/moth/ragged
+	name = "Ragged"
+	body_marking_list = list("Ragged")
+
+/datum/body_marking_set/moth/moonfly
+	name = "Moonfly"
+	body_marking_list = list("Moonfly")
+
+/datum/body_marking_set/moth/oakworm
+	name = "Oakworm"
+	body_marking_list = list("Oakworm")
+
+/datum/body_marking_set/moth/jungle
+	name = "Jungle"
+	body_marking_list = list("Jungle")
+
+/datum/body_marking_set/moth/witchwing
+	name = "Witchwing"
+	body_marking_list = list("Witchwing")
+
+/datum/body_marking_set/moth/lovers
+	name = "Lovers"
+	body_marking_list = list("Lovers")
