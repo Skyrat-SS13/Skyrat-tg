@@ -50,6 +50,12 @@
 	default_color = "CCC"
 	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT 
 
+/datum/body_marking/other/tonage
+	name = "Tonage"
+	icon_state = "tonage"
+	default_color = "333"
+	affected_bodyparts = CHEST
+
 /datum/body_marking/other/drake_eyes
 	name = "Drake Eyes"
 	icon_state = "drakeeyes"
