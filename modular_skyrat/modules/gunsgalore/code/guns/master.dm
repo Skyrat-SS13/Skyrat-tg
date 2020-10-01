@@ -4,7 +4,7 @@
 	var/reliability = 0 //How reliable a gun is, set this to change starting reliablity. Lower is better.
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is
-	var/dirt_modifier = 0 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
+	var/dirt_modifier = 1 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
 	var/jam_chance = 0 //Used when calculating if a gun will jam or not.
 
 /obj/item/gun/ballistic/update_overlays()
@@ -23,16 +23,15 @@
 	. = ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
-	. = ..()
 	if(realistic)
 		dirt_level += 0.5*dirt_modifier
 
 		if(jammed)
 			return
 
-		jam_chance = dirt_level/10+reliability
+		jam_chance = dirt_level/5+reliability/2
 
-		if(reliability >= 1)
+		if(reliability >= 10)
 			if(prob(jam_chance))
 				jammed = TRUE
 				playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
@@ -42,6 +41,7 @@
 				jammed = TRUE
 				playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
 				to_chat(user, "<span class='danger'>The [src] jams!</span>")
+	. = ..()
 
 /obj/item/gun/ballistic/automatic/ppsh/can_shoot()
 	if(realistic)
@@ -133,17 +133,17 @@
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/fg42
-	new /obj/item/ammo_box/magazine/fg42
+	new /obj/item/ammo_box/magazine/fg42 = 2
 	new /obj/item/gun/ballistic/automatic/akm
-	new /obj/item/ammo_box/magazine/akm
+	new /obj/item/ammo_box/magazine/akm = 2
 	new /obj/item/gun/ballistic/automatic/m4
-	new /obj/item/ammo_box/magazine/m4
+	new /obj/item/ammo_box/magazine/m4 = 2
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34
-	new /obj/item/ammo_box/magazine/mg34
+	new /obj/item/ammo_box/magazine/mg34 = 2
 	new /obj/item/gun/ballistic/automatic/mp40
-	new /obj/item/ammo_box/magazine/mp40
+	new /obj/item/ammo_box/magazine/mp40 = 2
 	new /obj/item/gun/ballistic/automatic/stg
-	new /obj/item/ammo_box/magazine/stg
+	new /obj/item/ammo_box/magazine/stg = 2
 	new /obj/item/gun/ballistic/automatic/ppsh
-	new /obj/item/ammo_box/magazine/ppsh
+	new /obj/item/ammo_box/magazine/ppsh = 2
 	..()

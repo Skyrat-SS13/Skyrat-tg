@@ -16,7 +16,7 @@
 	worn_icon_state = "fg42"
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 0.1
+	reliability = 1
 
 /obj/item/ammo_box/magazine/fg42
 	name = "fg42 magazine (7.92×33mm)"
