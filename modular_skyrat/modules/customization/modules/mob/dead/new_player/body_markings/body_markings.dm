@@ -241,7 +241,7 @@
 
 /datum/body_marking/tertiary/shepherd
 	name = "Shepherd Spot"
-	icon_state = "redpanda"
+	icon_state = "shepherd"
 	affected_bodyparts = HEAD | CHEST
 
 /datum/body_marking/tertiary/wolf
