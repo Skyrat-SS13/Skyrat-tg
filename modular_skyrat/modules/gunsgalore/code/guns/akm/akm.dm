@@ -13,16 +13,9 @@
 	fire_delay = 1
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm_back.dmi'
 	worn_icon_state = "akm"
-
-/obj/item/gun/ballistic/automatic/akm/update_overlays()
-	if(!magazine)
-		inhand_icon_state = "akm_empty"
-		worn_icon_state = "akm_empty"
-	else
-		inhand_icon_state = "akm"
-		worn_icon_state = "akm"
-	update_icon()
-	. = ..()
+	alt_icons = TRUE
+	realistic = TRUE
+	reliability = 7
 
 /obj/item/ammo_box/magazine/akm
 	name = "akm magazine (7.62×39mm)"
