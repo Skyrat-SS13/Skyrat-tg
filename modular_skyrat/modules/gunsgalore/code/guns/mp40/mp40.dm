@@ -16,6 +16,7 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	reliability = 4
+	dirt_modifier = 0.5
 
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"

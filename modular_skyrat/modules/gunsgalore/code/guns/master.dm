@@ -1,9 +1,9 @@
 /obj/item/gun/ballistic
 	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
 	var/realistic = FALSE //realistic guns that use reliability and dirt
-	var/reliability = 0 //How reliable a gun is, set this to change starting reliablity. Lower is better.
+	var/reliability = 0 //How reliable a gun is from the factory, set this to change starting reliablity. Lower is better.
 	var/jammed = FALSE //Is it jammed?
-	var/dirt_level = 0 //how dirty a gun is
+	var/dirt_level = 0 //how dirty a gun is.
 	var/dirt_modifier = 1 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
 	var/jam_chance = 0 //Used when calculating if a gun will jam or not.
 

@@ -17,6 +17,7 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	reliability = 1
+	dirt_modifier = 0.5
 
 /obj/item/ammo_box/magazine/fg42
 	name = "fg42 magazine (7.92×33mm)"

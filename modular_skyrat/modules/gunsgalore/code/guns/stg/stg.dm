@@ -16,6 +16,7 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	reliability = 3
+	dirt_modifier = 0.5
 
 /obj/item/ammo_box/magazine/stg
 	name = "stg magazine (7.92×33mm)"
