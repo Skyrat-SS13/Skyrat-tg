@@ -6,8 +6,6 @@
 			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/tas_red_alert.ogg', volume = 50)
 		if(SEC_LEVEL_DELTA)
 			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/deltaklaxon.ogg')
-		else
-			return
 
 /proc/alert_sound_to_playing(soundin, volume = 100, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
 	if(!S)
