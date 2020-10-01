@@ -7,6 +7,7 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0.1, "bio" = 0, "rad" = 0, "fire" = -10, "acid" = -15, "wound" = 1)
 	desc = "A dilapidated helmet used in ancient wars. This one is brittle and essentially useless. An ace of spades is tucked into the band around the outer shell."
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/tiny/spacenam	//So you can stuff other things in the elastic band instead of it simply being a fluff thing.
+	mutant_variants = NONE
 
 /datum/component/storage/concrete/pockets/tiny/spacenam
 	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
@@ -18,6 +19,7 @@
 	desc = "A standard brown cowboy hat, yeehaw."
 	icon_state = "cowboyhat"
 	inhand_icon_state = "cowboyhat"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/cowboyhat/black
 	name = "black cowboy hat"
