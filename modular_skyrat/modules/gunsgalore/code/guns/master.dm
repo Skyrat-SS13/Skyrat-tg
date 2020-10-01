@@ -29,14 +29,14 @@
 		if(jammed)
 			return
 
-		jam_chance = dirt_level/5+reliability/2
+		jam_chance = dirt_level/5
 
-		if(reliability >= 10)
+		if(prob(reliability) && dirt_level <= 10)
 			if(prob(jam_chance))
 				jammed = TRUE
 				playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
 				to_chat(user, "<span class='danger'>The [src] jams!</span>")
-		else if(dirt_level > 10)
+		else
 			if(prob(jam_chance))
 				jammed = TRUE
 				playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
@@ -132,18 +132,18 @@
 	icon_state = "weaponcrate"
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/fg42
-	new /obj/item/ammo_box/magazine/fg42
-	new /obj/item/gun/ballistic/automatic/akm
-	new /obj/item/ammo_box/magazine/akm
-	new /obj/item/gun/ballistic/automatic/m4
-	new /obj/item/ammo_box/magazine/m45
-	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34
-	new /obj/item/ammo_box/magazine/mg34
-	new /obj/item/gun/ballistic/automatic/mp40
-	new /obj/item/ammo_box/magazine/mp40
-	new /obj/item/gun/ballistic/automatic/stg
-	new /obj/item/ammo_box/magazine/stg
-	new /obj/item/gun/ballistic/automatic/ppsh
-	new /obj/item/ammo_box/magazine/ppsh
-	..()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/fg42(src)
+	new /obj/item/ammo_box/magazine/fg42(src)
+	new /obj/item/gun/ballistic/automatic/akm(src)
+	new /obj/item/ammo_box/magazine/akm(src)
+	new /obj/item/gun/ballistic/automatic/m4(src)
+	new /obj/item/ammo_box/magazine/m45(src)
+	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34(src)
+	new /obj/item/ammo_box/magazine/mg34(src)
+	new /obj/item/gun/ballistic/automatic/mp40(src)
+	new /obj/item/ammo_box/magazine/mp40(src)
+	new /obj/item/gun/ballistic/automatic/stg(src)
+	new /obj/item/ammo_box/magazine/stg(src)
+	new /obj/item/gun/ballistic/automatic/ppsh(src)
+	new /obj/item/ammo_box/magazine/ppsh(src)
