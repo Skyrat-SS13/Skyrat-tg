@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL BEGIN - EVENTS
+/*
 /datum/round_event_control/brain_trauma
 	name = "Spontaneous Brain Trauma"
 	typepath = /datum/round_event/brain_trauma
@@ -34,3 +36,5 @@
 	))
 
 	H.gain_trauma_type(trauma_type, resistance)
+*/
+//SKYRAT EDIT REMOVAL END

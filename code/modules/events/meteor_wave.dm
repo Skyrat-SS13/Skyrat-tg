@@ -15,6 +15,12 @@
 	var/list/wave_type
 	var/wave_name = "normal"
 
+//SKYRAT EDIT ADDITION - EVENTS
+/datum/round_event/meteor_wave/setup()
+	startWhen = rand(90, 180) // Apparently it is by 2 seconds, so 90 is actually 180 seconds, and 180 is 360 seconds. So this is 3-6 minutes
+	endWhen = startWhen + 60
+//SKYRAT EDIT ADDITION END
+
 /datum/round_event/meteor_wave/New()
 	..()
 	if(!wave_type)
@@ -47,7 +53,8 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/meteors.ogg')
+	//priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/meteors.ogg') //ORIGINAL
+	priority_announce("Meteors have been detected on collision course with the station. Estimated time until impact: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds.", "Meteor Alert", 'sound/ai/meteors.ogg') //ORIGINAL
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
@@ -56,7 +63,8 @@
 /datum/round_event_control/meteor_wave/threatening
 	name = "Meteor Wave: Threatening"
 	typepath = /datum/round_event/meteor_wave/threatening
-	weight = 5
+	//weight = 5 //ORIGINAL
+	weight = 2 //SKYRAT EDIT CHANGE - EVENTS
 	min_players = 20
 	max_occurrences = 3
 	earliest_start = 35 MINUTES
@@ -67,7 +75,8 @@
 /datum/round_event_control/meteor_wave/catastrophic
 	name = "Meteor Wave: Catastrophic"
 	typepath = /datum/round_event/meteor_wave/catastrophic
-	weight = 7
+	//weight = 7 //ORIGINAL
+	weight = 2 //SKYRAT EDIT CHANGE - EVENTS
 	min_players = 25
 	max_occurrences = 3
 	earliest_start = 45 MINUTES
