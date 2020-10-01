@@ -56,15 +56,66 @@
 /obj/item/clothing/head/beret
 	mutant_variants = NONE
 
+/obj/item/clothing/head/soft
+	mutant_variants = NONE
+
+/obj/item/clothing/head/flatcap
+	mutant_variants = NONE
+
+/obj/item/clothing/head/pirate
+	mutant_variants = NONE
+
+/obj/item/clothing/head/rice_hat
+	mutant_variants = NONE
+
+/obj/item/clothing/head/ushanka
+	mutant_variants = NONE
+
+/obj/item/clothing/head/collectable
+	mutant_variants = NONE
+
+/obj/item/clothing/head/fedora
+	mutant_variants = NONE
+
+/obj/item/clothing/head/that
+	mutant_variants = NONE
+
+/obj/item/clothing/head/rabbitears
+	mutant_variants = NONE
+
+/obj/item/clothing/head/mailman
+	mutant_variants = NONE
+
+/obj/item/clothing/head/centhat
+	mutant_variants = NONE
+
+/obj/item/clothing/head/nursehat
+	mutant_variants = NONE
+
+/obj/item/clothing/head/cueball
+	mutant_variants = NONE
+
+/obj/item/clothing/head/bandana
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //MASK>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+/obj/item/clothing/mask/fakemoustache
+	flags_inv = NONE
+
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 /obj/item/clothing/under/misc/gear_harness
+	mutant_variants = NONE
+
+/obj/item/clothing/under/costume/maid
+	mutant_variants = NONE
+
+/obj/item/clothing/under/costume/schoolgirl
 	mutant_variants = NONE
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -89,5 +140,10 @@
 /obj/item/clothing/suit/jacket
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/ianshirt
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/poncho
+	mutant_variants = NONE
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
