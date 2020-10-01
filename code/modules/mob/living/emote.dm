@@ -451,6 +451,7 @@
 		message = params
 		if(type_override)
 			emote_type = type_override
+	message = user.say_emphasis(message) //SKYRAT EDIT ADDITION - EMOTES
 	. = ..()
 	message = null
 	emote_type = EMOTE_VISIBLE
