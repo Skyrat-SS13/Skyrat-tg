@@ -133,17 +133,17 @@
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/fg42
-	new /obj/item/ammo_box/magazine/fg42 = 2
+	new /obj/item/ammo_box/magazine/fg42
 	new /obj/item/gun/ballistic/automatic/akm
-	new /obj/item/ammo_box/magazine/akm = 2
+	new /obj/item/ammo_box/magazine/akm
 	new /obj/item/gun/ballistic/automatic/m4
-	new /obj/item/ammo_box/magazine/m4 = 2
+	new /obj/item/ammo_box/magazine/m45
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34
-	new /obj/item/ammo_box/magazine/mg34 = 2
+	new /obj/item/ammo_box/magazine/mg34
 	new /obj/item/gun/ballistic/automatic/mp40
-	new /obj/item/ammo_box/magazine/mp40 = 2
+	new /obj/item/ammo_box/magazine/mp40
 	new /obj/item/gun/ballistic/automatic/stg
-	new /obj/item/ammo_box/magazine/stg = 2
+	new /obj/item/ammo_box/magazine/stg
 	new /obj/item/gun/ballistic/automatic/ppsh
-	new /obj/item/ammo_box/magazine/ppsh = 2
+	new /obj/item/ammo_box/magazine/ppsh
 	..()
