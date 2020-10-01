@@ -17,10 +17,9 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 		if("delta")
 			level = SEC_LEVEL_DELTA
 
-	set_security_level_skyrat(level) //SKYRAT EDIT ADDITION - ALERTS
-
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != GLOB.security_level)
+		set_security_level_skyrat(level) //SKYRAT EDIT ADDITION - ALERTS
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				minor_announce(CONFIG_GET(string/alert_green), "Attention! Security level lowered to green:")
