@@ -166,6 +166,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/large-worn-icons/32x64/head.dmi'
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	mutant_variants = NONE
 
 //Donation reward for Random516
 /obj/item/clothing/gloves/fingerless/blutigen_wraps
