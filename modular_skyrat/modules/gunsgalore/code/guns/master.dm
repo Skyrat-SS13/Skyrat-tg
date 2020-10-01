@@ -2,10 +2,12 @@
 	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
 	var/realistic = FALSE //realistic guns that use reliability and dirt
 	var/reliability = 0 //How reliable a gun is from the factory, set this to change starting reliablity. Lower is better.
+	var/durability = 100 //How used this gun is.
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is.
 	var/dirt_modifier = 1 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
 	var/jam_chance = 0 //Used when calculating if a gun will jam or not.
+	var/base_spread = 0
 
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
@@ -16,6 +18,10 @@
 			inhand_icon_state = "[initial(icon_state)]"
 			worn_icon_state = "[initial(icon_state)]"
 	. = ..()
+
+/obj/item/gun/ballistic/Initialize()
+	. = ..()
+	base_spread = spread
 
 /obj/item/gun/ballistic/ComponentInitialize()
 	if(alt_icons)
@@ -30,6 +36,8 @@
 			return
 
 		jam_chance = dirt_level/5
+
+		spread = base_spread + jam_chance
 
 		if(prob(reliability) && dirt_level <= 10)
 			if(prob(jam_chance))
@@ -53,7 +61,6 @@
 		. = ..()
 
 /obj/item/gun/ballistic/AltClick(mob/user)
-	. = ..()
 	if(realistic)
 		if(!user.canUseTopic(src))
 			return
@@ -61,7 +68,7 @@
 			jammed = FALSE
 			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
-
+	. = ..()
 /obj/item/gun/ballistic/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
 	if(realistic)
 		if(jammed)
@@ -87,6 +94,18 @@
 				. += "It looks very dirty."
 			else
 				. += "<span class='warning'>It is filthy!</span>"
+
+		switch(durability)
+			if(0 to 10)
+				. += "<span class='warning'>It looks battle scarred!</span>"
+			if(11 to 30)
+				. += "It looks well worn."
+			if(31 to 50)
+				. += "It looks field tested."
+			if(51 to 70)
+				. += "It has minimal wear."
+			else
+				. += "It looks factory new."
 
 		if(jammed)
 			. += "<b>It is jammed, alt+click it to unjam it!</b>"
