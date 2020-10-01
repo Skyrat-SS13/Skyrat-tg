@@ -15,7 +15,7 @@
 	worn_icon_state = "mp40"
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 4
+	reliability = 0.4
 
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"

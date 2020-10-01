@@ -15,7 +15,7 @@
 	worn_icon_state = "stg"
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 3
+	reliability = 0.3
 
 /obj/item/ammo_box/magazine/stg
 	name = "stg magazine (7.92×33mm)"

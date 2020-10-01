@@ -5,7 +5,7 @@
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is
 	var/dirt_modifier = 0 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
-
+	var/jam_chance = 0 //Used when calculating if a gun will jam or not.
 
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
@@ -22,17 +22,26 @@
 		AddElement(/datum/element/update_icon_updates_onmob)
 	. = ..()
 
-/obj/item/gun/ballistic/automatic/ppsh/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
+/obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
 	. = ..()
 	if(realistic)
-		dirt_level += 0.01*dirt_modifier
+		dirt_level += 0.5*dirt_modifier
 
-		reliability += dirt_level
+		if(jammed)
+			return
 
-		if(prob(reliability))
-			jammed = TRUE
-			playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
-			to_chat(user, "<span class='danger'>The [src] jams!</span>")
+		jam_chance = dirt_level/10+reliability
+
+		if(reliability >= 1)
+			if(prob(jam_chance))
+				jammed = TRUE
+				playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
+				to_chat(user, "<span class='danger'>The [src] jams!</span>")
+		else if(dirt_level > 10)
+			if(prob(jam_chance))
+				jammed = TRUE
+				playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
+				to_chat(user, "<span class='danger'>The [src] jams!</span>")
 
 /obj/item/gun/ballistic/automatic/ppsh/can_shoot()
 	if(realistic)
@@ -89,9 +98,12 @@
 	if(realistic)
 		if(istype(A, /obj/item/soap))
 			var/obj/item/soap/S = A
-			dirt_level -= S.cleanspeed
-			if(dirt_level < 0)
-				dirt_level = 0
+			to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
+			if(do_after(user, S.cleanspeed))
+				dirt_level -= S.cleanspeed
+				if(dirt_level < 0)
+					dirt_level = 0
+				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!")
 
 
 //NEW CARTRAGES
@@ -120,7 +132,6 @@
 	icon_state = "weaponcrate"
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
-	. = ..()
 	new /obj/item/gun/ballistic/automatic/fg42
 	new /obj/item/ammo_box/magazine/fg42
 	new /obj/item/gun/ballistic/automatic/akm
@@ -135,3 +146,4 @@
 	new /obj/item/ammo_box/magazine/stg
 	new /obj/item/gun/ballistic/automatic/ppsh
 	new /obj/item/ammo_box/magazine/ppsh
+	..()

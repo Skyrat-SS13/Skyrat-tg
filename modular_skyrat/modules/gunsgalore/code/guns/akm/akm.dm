@@ -15,7 +15,7 @@
 	worn_icon_state = "akm"
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 7
+	reliability = 0.7
 
 /obj/item/ammo_box/magazine/akm
 	name = "akm magazine (7.62×39mm)"

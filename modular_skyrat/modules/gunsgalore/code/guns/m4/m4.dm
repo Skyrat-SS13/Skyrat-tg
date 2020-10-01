@@ -15,7 +15,7 @@
 	worn_icon_state = "m4"
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 7
+	reliability = 0.7
 
 /obj/item/ammo_box/magazine/m4
 	name = "m4 magazine (5.56×45mm)"

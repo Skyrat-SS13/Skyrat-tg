@@ -16,7 +16,7 @@
 	worn_icon_state = "ppsh"
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 10
+	reliability = 1
 	dirt_modifier = 2
 
 /obj/item/ammo_box/magazine/ppsh
