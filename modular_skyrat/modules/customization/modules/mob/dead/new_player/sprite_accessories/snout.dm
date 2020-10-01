@@ -64,6 +64,14 @@
 	name = "Mammal, Long ALT"
 	icon_state = "lcanidalt"
 
+/datum/sprite_accessory/snouts/mammal/lcanidstriped
+	name = "Mammal, Long, Striped"
+	icon_state = "lcanidstripe"
+
+/datum/sprite_accessory/snouts/mammal/lcanidstripedalt
+	name = "Mammal, Long, Striped ALT"
+	icon_state = "lcanidstripealt"
+
 /datum/sprite_accessory/snouts/mammal/scanid
 	name = "Mammal, Short"
 	icon_state = "scanid"
@@ -75,6 +83,10 @@
 /datum/sprite_accessory/snouts/mammal/scanidalt2
 	name = "Mammal, Short ALT 2"
 	icon_state = "scanidalt2"
+
+/datum/sprite_accessory/snouts/mammal/scanidalt3
+	name = "Mammal, Short ALT 3"
+	icon_state = "scanidalt3"
 
 /datum/sprite_accessory/snouts/mammal/wolf
 	name = "Mammal, Thick"
@@ -179,6 +191,14 @@
 	name = "Mammal, Long ALT (Top)"
 	icon_state = "flcanidalt"
 
+/datum/sprite_accessory/snouts/mammal/flcanidstriped
+	name = "Mammal, Long, Striped (Top)"
+	icon_state = "flcanidstripe"
+
+/datum/sprite_accessory/snouts/mammal/flcanidstripedalt
+	name = "Mammal, Long, Striped ALT (Top)"
+	icon_state = "flcanidstripealt"
+
 /datum/sprite_accessory/snouts/mammal/fscanid
 	name = "Mammal, Short (Top)"
 	icon_state = "fscanid"
@@ -190,6 +210,10 @@
 /datum/sprite_accessory/snouts/mammal/fscanidalt2
 	name = "Mammal, Short ALT 2 (Top)"
 	icon_state = "fscanidalt2"
+
+/datum/sprite_accessory/snouts/mammal/fscanidalt3
+	name = "Mammal, Short ALT 3 (Top)"
+	icon_state = "fscanidalt3"
 
 /datum/sprite_accessory/snouts/mammal/fwolf
 	name = "Mammal, Thick (Top)"
