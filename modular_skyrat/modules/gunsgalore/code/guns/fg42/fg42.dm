@@ -11,19 +11,18 @@
 	can_suppress = FALSE
 	burst_size = 2
 	spread = 0
-	fire_delay = 1
+	fire_delay = 2
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42_back.dmi'
 	worn_icon_state = "fg42"
 	alt_icons = TRUE
 	realistic = TRUE
 	reliability = 1
-	dirt_modifier = 0.5
 
 /obj/item/ammo_box/magazine/fg42
-	name = "fg42 magazine (7.92×33mm)"
+	name = "fg42 magazine (7.92×57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42.dmi'
 	icon_state = "7.92mm"
-	ammo_type = /obj/item/ammo_casing/a792
-	caliber = "a792"
+	ammo_type = /obj/item/ammo_casing/a792x57
+	caliber = "a792x57"
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY

@@ -10,7 +10,7 @@
 	mag_type = /obj/item/ammo_box/magazine/m16
 	can_suppress = FALSE
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 4
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16_back.dmi'
 	worn_icon_state = "m16"
 	alt_icons = TRUE

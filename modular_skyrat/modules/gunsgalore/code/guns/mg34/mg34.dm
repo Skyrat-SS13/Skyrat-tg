@@ -6,7 +6,9 @@
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34_righthand.dmi'
 	inhand_icon_state = "mg34"
+	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34_back.dmi'
 	weapon_weight = WEAPON_HEAVY
+	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
 	spread = 15
 	mag_type = /obj/item/ammo_box/magazine/mg34
@@ -15,17 +17,36 @@
 	fire_delay = 1
 	realistic = TRUE
 	reliability = 5
-	dirt_modifier = 0.5
 
 /obj/item/ammo_box/magazine/mg34
 	name = "mg34 drum mag (7.92×57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34.dmi'
 	icon_state = "mg34_drum"
-	ammo_type = /obj/item/ammo_casing/a792
-	caliber = "a792"
+	ammo_type = /obj/item/ammo_casing/a792x57
+	caliber = "a792x57"
 	max_ammo = 75
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34/update_overlays()
 	. = ..()
 	. += "mg34_door_[cover_open ? "open" : "closed"]"
+
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34/packapunch //INFINITY GUNNNNNNNN
+	name = "MG34 UBER"
+	desc = "Here, there, seems like everywhere. Nasty things are happening, now everyone is scared. Old Jeb Brown the Blacksmith, he saw his mother die. A critter took a bite from her and now she's in the sky. "
+	icon_state = "mg34_packapunch"
+	fire_delay = 0.04
+	burst_size = 5
+	spread = 5
+	reliability = 0
+	dirt_modifier = 0
+	durability = 500
+	mag_type = /obj/item/ammo_box/magazine/mg34/packapunch
+
+/obj/item/ammo_box/magazine/mg34/packapunch
+	max_ammo = 999
+	multiple_sprites = AMMO_BOX_ONE_SPRITE
+
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34/packapunch/afterattack(atom/target, mob/living/user, flag, params)
+	. = ..()
+	magazine.top_off()

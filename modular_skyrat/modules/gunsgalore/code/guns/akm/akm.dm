@@ -10,18 +10,17 @@
 	mag_type = /obj/item/ammo_box/magazine/akm
 	can_suppress = FALSE
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 3
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm_back.dmi'
 	worn_icon_state = "akm"
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 7
 
 /obj/item/ammo_box/magazine/akm
 	name = "akm magazine (7.62×39mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm.dmi'
 	icon_state = "7.62mm"
-	ammo_type = /obj/item/ammo_casing/a762
-	caliber = "a762"
+	ammo_type = /obj/item/ammo_casing/a762x39
+	caliber = "a762x39"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY

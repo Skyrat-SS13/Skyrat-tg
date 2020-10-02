@@ -10,20 +10,19 @@
 	mag_type = /obj/item/ammo_box/magazine/stg
 	can_suppress = FALSE
 	burst_size = 4
-	fire_delay = 1
+	fire_delay = 1.5
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/stg/stg_back.dmi'
 	worn_icon_state = "stg"
 	alt_icons = TRUE
 	realistic = TRUE
 	reliability = 3
-	dirt_modifier = 0.5
 
 /obj/item/ammo_box/magazine/stg
 	name = "stg magazine (7.92×33mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/stg/stg.dmi'
 	icon_state = "7.92mm"
-	ammo_type = /obj/item/ammo_casing/a792
-	caliber = "a792"
+	ammo_type = /obj/item/ammo_casing/a792x33
+	caliber = "a792x33"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
