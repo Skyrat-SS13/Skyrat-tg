@@ -146,7 +146,7 @@
 				dirt_level -= S.cleanspeed
 				if(dirt_level < 0)
 					dirt_level = 0
-				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!")
+				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
 
 
 //NEW CARTRAGES
