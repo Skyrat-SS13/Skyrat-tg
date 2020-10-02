@@ -299,7 +299,7 @@
 					dat += "</td>"
 
 					dat += "<td width=30%>"
-					dat += "<b> Advanced colors:</b> <a href='?_src_=prefs;preference=adv_colors'>[(allow_advanced_colors) ? "Enabled" : "Disabled"]</a>"
+					dat += "<b> Color customization:</b> <a href='?_src_=prefs;preference=adv_colors'>[(allow_advanced_colors) ? "Enabled" : "Disabled"]</a>"
 					if(allow_advanced_colors)
 						dat += "<a href='?_src_=prefs;preference=reset_all_colors;task=change_bodypart'>Reset colors</a><BR>"
 					dat += "</td>"

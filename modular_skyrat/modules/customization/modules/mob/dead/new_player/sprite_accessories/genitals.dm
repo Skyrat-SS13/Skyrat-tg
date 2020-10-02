@@ -102,6 +102,7 @@
 	organ_type = /obj/item/organ/genital/testicles
 	associated_organ_slot = ORGAN_SLOT_TESTICLES
 	key = "testicles"
+	always_color_customizable = TRUE
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
@@ -226,6 +227,7 @@
 	organ_type = /obj/item/organ/genital/breasts
 	associated_organ_slot = ORGAN_SLOT_BREASTS
 	key = "breasts"
+	always_color_customizable = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
