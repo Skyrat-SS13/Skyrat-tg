@@ -1,6 +1,7 @@
 /datum/sprite_accessory/genital
 	special_render_case = TRUE
 	var/associated_organ_slot 
+	var/uses_skintones
 
 /datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
@@ -36,6 +37,7 @@
 	special_x_dimension = TRUE
 	//default_color = DEFAULT_SKIN_OR_PRIMARY //This is the price we're paying for sheaths
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	var/can_have_sheath = TRUE
 
 /datum/sprite_accessory/genital/penis/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.underwear != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_UNDIES))
@@ -67,7 +69,10 @@
 /datum/sprite_accessory/genital/penis/human
 	icon_state = "human"
 	name = "Human"
+	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SKIN_OR_PRIMARY
+	uses_skintones = TRUE
+	can_have_sheath = FALSE
 
 /datum/sprite_accessory/genital/penis/knotted
 	icon_state = "knotted"
@@ -104,6 +109,7 @@
 	key = "testicles"
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
+	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
 	var/has_size = TRUE
 
@@ -137,6 +143,7 @@
 /datum/sprite_accessory/genital/testicles/pair
 	name = "Pair"
 	icon_state = "pair"
+	uses_skintones = TRUE
 
 /datum/sprite_accessory/genital/testicles/internal
 	name = "Internal"
@@ -228,6 +235,7 @@
 	key = "breasts"
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	uses_skintones = TRUE
 
 /datum/sprite_accessory/genital/breasts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.undershirt != "Nude" && !(H.underwear_visibility & UNDERWEAR_HIDE_SHIRT))

@@ -538,9 +538,8 @@
 
 
 					if(pref_species.can_have_genitals)
-						dat +=	"<h2>Arousal Preview</h2>"
-						dat += "<a href='?_src_=prefs;preference=change_arousal_preview;task=input'>Change arousal preview</a>"
 						dat += APPEARANCE_CATEGORY_COLUMN
+						dat += "<a href='?_src_=prefs;preference=change_arousal_preview;task=input'>Change arousal preview</a>"
 						dat += "<h3>Penis</h3>"
 						var/penis_name = mutant_bodyparts["penis"][MUTANT_INDEX_NAME]
 						dat += print_bodypart_change_line("penis")
@@ -565,6 +564,7 @@
 						dat += "</td>"
 
 						dat += APPEARANCE_CATEGORY_COLUMN
+						dat += "<b>Uses skintones: </b> <a href='?_src_=prefs;preference=uses_skintones;task=input'>[(features["uses_skintones"]) ? "Yes" : "No"]</a>"
 						dat += "<h3>Vagina</h3>"
 						dat += print_bodypart_change_line("vagina")
 						dat += "<h3>Womb</h3>"
@@ -572,6 +572,7 @@
 						dat += "</td>"
 
 						dat += APPEARANCE_CATEGORY_COLUMN
+						dat += "<BR>"
 						dat += "<h3>Breasts</h3>"
 						var/breasts_name = mutant_bodyparts["breasts"][MUTANT_INDEX_NAME]
 						dat += print_bodypart_change_line("breasts")
@@ -1735,7 +1736,7 @@
 						validate_color_keys_for_part(key)
 						if(!allow_advanced_colors)
 							var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][new_name]
-							mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+							mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 				if("change_color")
 					var/key = href_list["key"]
 					if(!mutant_bodyparts[key])
@@ -1752,7 +1753,7 @@
 					if(!mutant_bodyparts[key])
 						return
 					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
-					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features)
+					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 				if("reset_all_colors")
 					var/action = alert(user, "Are you sure you want to reset all colors?", "", "Yes", "No")
 					if(action == "Yes")
@@ -1880,6 +1881,10 @@
 					var/msg = input(usr, "Set your exploitable information. This is sensitive informations that antagonists may get to see, recommended for better roleplay experience", "Exploitable Info", exploitable_info) as message|null
 					if(!isnull(msg))
 						exploitable_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("uses_skintones")	
+					needs_update = TRUE
+					features["uses_skintones"] = !features["uses_skintones"]
 
 				if("erp_pref")
 					switch(erp_pref)
