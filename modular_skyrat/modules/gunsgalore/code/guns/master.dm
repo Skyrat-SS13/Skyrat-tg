@@ -9,8 +9,7 @@
 	var/base_spread = 0
 	var/durability = 100 //How used this gun is.
 	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
-	var/gun_type //The type of firearm it is.
-	var/override_guntype = FALSE //if we are ignoring the default gun settings.
+	var/gun_type //The gun type define.
 
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
@@ -22,51 +21,48 @@
 			worn_icon_state = "[initial(icon_state)]"
 	. = ..()
 
+/obj/item/gun/ballistic/assault_rifle
+	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
+	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
+
+/obj/item/gun/ballistic/battle_rifle
+	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_cock.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
+	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
+
+/obj/item/gun/ballistic/machine_gun
+	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
+	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
+
+/obj/item/gun/ballistic/sniper_rifle
+	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
+	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
+
+/obj/item/gun/ballistic/submachine_gun
+	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
+	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
+
+
+
 /obj/item/gun/ballistic/Initialize()
 	. = ..()
 	if(realistic)
 		base_spread = spread
-		if(!override_guntype)
-			switch(gun_type)
-				if(HANDGUN)
-					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_cock.ogg'
-					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magin.ogg'
-					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magin.ogg'
-					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magout.ogg'
-					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magout.ogg'
-				if(ASSAULT_RIFLE)
-					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
-					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
-					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
-				if(BATTLE_RIFLE)
-					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_cock.ogg'
-					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
-					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
-					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
-					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
-				if(MACHINE_GUN)
-					rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
-					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
-					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
-					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
-					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
-				if(SNIPER_RIFLE)
-					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
-					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
-					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
-					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
-					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
-				if(SUBMACHINE_GUN)
-					rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
-					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
-					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
-					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
-					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
-				if(RIFLE)
-					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/rifle_boltback.ogg'
-					bolt_drop_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/rifle_boltforward.ogg'
+
 
 
 /obj/item/gun/ballistic/ComponentInitialize()
@@ -109,12 +105,15 @@
 
 /obj/item/gun/ballistic/process_fire()
 	if(realistic)
+
 		if(jammed)
 			shoot_with_empty_chamber()
 			return
 	. = ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
+
+
 	if(realistic)
 		if(jammed)
 			return FALSE
@@ -224,20 +223,25 @@
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/fg42(src)
+	new /obj/item/gun/ballistic/automatic/battle_rifle/fg42(src)
 	new /obj/item/ammo_box/magazine/fg42(src)
-	new /obj/item/gun/ballistic/automatic/akm(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/akm(src)
 	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/gun/ballistic/automatic/m16(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/m16(src)
 	new /obj/item/ammo_box/magazine/m16(src)
 	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34(src)
 	new /obj/item/ammo_box/magazine/mg34(src)
-	new /obj/item/gun/ballistic/automatic/mp40(src)
+	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40(src)
 	new /obj/item/ammo_box/magazine/mp40(src)
-	new /obj/item/gun/ballistic/automatic/stg(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/stg(src)
 	new /obj/item/ammo_box/magazine/stg(src)
-	new /obj/item/gun/ballistic/automatic/ppsh(src)
+	new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh(src)
 	new /obj/item/ammo_box/magazine/ppsh(src)
-	new /obj/item/gun/ballistic/automatic/pps(src)
+	new /obj/item/gun/ballistic/automatic/submachine_gun/pps(src)
 	new /obj/item/ammo_box/magazine/pps(src)
 
+/obj/effect/temp_visual/dir_setting/firing_effect
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 0.5
+	light_color = LIGHT_COLOR_FIRE

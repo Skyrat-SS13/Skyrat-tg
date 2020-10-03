@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/fg42
+/obj/item/gun/ballistic/automatic/battle_rifle/fg42
 	name = "\improper Fallschirmjägergewehr 42"
 	desc = "The FG 42 (German: Fallschirmjägergewehr 42, paratrooper rifle 42) is a selective-fire 7.92×57mm Mauser automatic rifle produced in Nazi Germany during World War II. The weapon was developed specifically for the use of the Fallschirmjäger airborne infantry in 1942 and was used in very limited numbers until the end of the war."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42.dmi'

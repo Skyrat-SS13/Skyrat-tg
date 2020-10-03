@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/akm
+/obj/item/gun/ballistic/automatic/assault_rifle/akm
 	name = "\improper Automatic Kalashnikov Rifle"
 	desc = "Introduced into service with the Soviet Army in 1959, the AKM is the prevalent variant of the entire AK series of firearms and it has found widespread use with most member states of the former Warsaw Pact and its African and Asian allies as well as being widely exported and produced in many other countries."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm.dmi'

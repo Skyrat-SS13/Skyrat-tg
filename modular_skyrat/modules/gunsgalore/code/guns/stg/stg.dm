@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/stg
+/obj/item/gun/ballistic/automatic/assault_rifle/stg
 	name = "\improper Sturmgewehr 44"
 	desc = "The StG 44 (abbreviation of Sturmgewehr 44) is a German selective-fire assault rifle developed during World War II by Hugo Schmeisser."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/stg/stg.dmi'
@@ -14,6 +14,7 @@
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/stg/stg_back.dmi'
 	worn_icon_state = "stg"
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/stg/stg.ogg'
+	fire_sound_volume = 70
 	alt_icons = TRUE
 	realistic = TRUE
 	gun_type = ASSAULT_RIFLE

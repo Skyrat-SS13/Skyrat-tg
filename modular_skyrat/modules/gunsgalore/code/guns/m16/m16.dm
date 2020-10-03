@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/m16
+/obj/item/gun/ballistic/automatic/assault_rifle/m16
 	name = "\improper M16 Rifle"
 	desc = "The M16 rifle, officially designated Rifle, Caliber 5.56 mm, M16, is a family of military rifles adapted from the ArmaLite AR-15 rifle for the United States military. The original M16 rifle was a 5.56mm automatic rifle with a 20-round magazine."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16.dmi'

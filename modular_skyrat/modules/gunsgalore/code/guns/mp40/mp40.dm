@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/mp40
+/obj/item/gun/ballistic/automatic/submachine_gun/mp40
 	name = "\improper Maschinenpistole 40"
 	desc = "The MP 40 (Maschinenpistole 40) is a submachine gun chambered for the 9×19mm Parabellum cartridge. It was developed in Nazi Germany and used extensively by the Axis powers during World War II."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mp40/mp40.dmi'

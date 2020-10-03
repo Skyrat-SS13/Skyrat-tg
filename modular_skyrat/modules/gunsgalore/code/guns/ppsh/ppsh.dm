@@ -1,4 +1,4 @@
-/obj/item/gun/ballistic/automatic/ppsh
+/obj/item/gun/ballistic/automatic/submachine_gun/ppsh
 	name = "\improper PPSh-41"
 	desc = "The PPSh-41 (pistolet-pulemyot Shpagina; Shpagin machine pistol) is a Soviet submachine gun designed by Georgy Shpagin as a cheap, reliable, and simplified alternative to the PPD-40."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/ppsh/ppsh.dmi'
