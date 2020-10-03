@@ -33,14 +33,18 @@
 		icon = 'icons/mob/robots.dmi'
 		pixel_x = initial(pixel_x)
 
-	if(client && stat != DEAD && module.dogborg)
-		switch(robot_resting)
-			if(ROBOT_REST_NORMAL)
-				icon_state = "[module.cyborg_base_icon]-rest"
-			if(ROBOT_REST_SITTING)
-				icon_state = "[module.cyborg_base_icon]-sit"
-			if(ROBOT_REST_BELLY_UP)
-				icon_state = "[module.cyborg_base_icon]-bellyup"
-			else
-				icon_state = "[module.cyborg_base_icon]"
+	if(robot_resting)
+		if(stat != DEAD && module.dogborg)
+			switch(robot_resting)
+				if(ROBOT_REST_NORMAL)
+					icon_state = "[module.cyborg_base_icon]-rest"
+				if(ROBOT_REST_SITTING)
+					icon_state = "[module.cyborg_base_icon]-sit"
+				if(ROBOT_REST_BELLY_UP)
+					icon_state = "[module.cyborg_base_icon]-bellyup"
+				else
+					icon_state = "[module.cyborg_base_icon]"
+			cut_overlays()
+	else
+		icon_state = "[module.cyborg_base_icon]"
 	update_fire()
