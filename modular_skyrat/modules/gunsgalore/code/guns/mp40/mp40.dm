@@ -13,9 +13,11 @@
 	fire_delay = 1.7
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mp40/mp40_back.dmi'
 	worn_icon_state = "mp40"
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mp40/mp40.ogg'
+	fire_sound_volume = 100
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 4
+	gun_type = SUBMACHINE_GUN
 
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"

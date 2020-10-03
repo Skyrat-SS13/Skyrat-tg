@@ -1,7 +1,6 @@
 /obj/item/gun/ballistic
 	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
 	var/realistic = FALSE //realistic guns that use reliability and dirt
-	var/reliability = 0 //How reliable a gun is from the factory, set this to change starting reliablity. Lower is better.
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is.
 	var/dirt_modifier = 0.5 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
@@ -9,7 +8,9 @@
 	var/unjam_time = 0 //Used when calculating how long a gun takes to unjam.
 	var/base_spread = 0
 	var/durability = 100 //How used this gun is.
-	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.5 = 500 shots.
+	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
+	var/gun_type //The type of firearm it is.
+	var/override_guntype = FALSE //if we are ignoring the default gun settings.
 
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
@@ -23,7 +24,50 @@
 
 /obj/item/gun/ballistic/Initialize()
 	. = ..()
-	base_spread = spread
+	if(realistic)
+		base_spread = spread
+		if(!override_guntype)
+			switch(gun_type)
+				if(HANDGUN)
+					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_cock.ogg'
+					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magin.ogg'
+					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magin.ogg'
+					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magout.ogg'
+					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/pistol_magout.ogg'
+				if(ASSAULT_RIFLE)
+					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
+					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
+					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
+					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
+					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
+				if(BATTLE_RIFLE)
+					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_cock.ogg'
+					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
+					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
+					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
+					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
+				if(MACHINE_GUN)
+					rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
+					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
+					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
+					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
+					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
+				if(SNIPER_RIFLE)
+					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
+					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
+					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
+					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
+					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
+				if(SUBMACHINE_GUN)
+					rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
+					load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+					load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+					eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
+					eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
+				if(RIFLE)
+					rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/rifle_boltback.ogg'
+					bolt_drop_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/rifle_boltforward.ogg'
+
 
 /obj/item/gun/ballistic/ComponentInitialize()
 	if(alt_icons)
@@ -35,14 +79,33 @@
 		unjam_time = clamp((jam_chance*10)/(durability/10), 0, 50)
 		jammed = TRUE
 		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
-		to_chat(user, "<span class='danger'>The [src] jams!</span>")
-		return TRUE
+		visible_message("<span class='danger'>The [src] jams!</span>")
 	else if(jammed)
 		to_chat(user, "You start to unjam the bolt!")
 		if(do_after(user, unjam_time))
 			jammed = FALSE
 			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
+
+
+/obj/item/gun/ballistic/can_shoot()
+	if(realistic)
+		if(jammed)
+			return FALSE
+		else
+			. = ..()
+	else
+		. = ..()
+
+/obj/item/gun/ballistic/process_burst(mob/living/user, atom/target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, iteration)
+	if(realistic)
+		if(jammed)
+			firing_burst = FALSE
+			return FALSE
+		else
+			. = ..()
+	else
+		. = ..()
 
 /obj/item/gun/ballistic/process_fire()
 	if(realistic)
@@ -54,7 +117,7 @@
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
 	if(realistic)
 		if(jammed)
-			return
+			return FALSE
 
 		dirt_level += dirt_modifier
 
@@ -68,17 +131,19 @@
 			if(0 to 9)
 				if(prob(90))
 					jam(user)
+					return FALSE
 			if(10 to 29)
 				if(prob(10))
 					jam(user)
+					return FALSE
 			if(30 to 49)
 				if(prob(5))
 					jam(user)
+					return FALSE
 
-		if(prob(reliability) && dirt_level <= 30 && prob(jam_chance))
+		if(dirt_level > 30 && prob(jam_chance))
 			jam(user)
-		else if(prob(jam_chance))
-			jam(user)
+			return FALSE
 	. = ..()
 
 /obj/item/gun/ballistic/AltClick(mob/user)
@@ -93,7 +158,7 @@
 /obj/item/gun/ballistic/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
 	if(realistic)
 		if(jammed)
-			to_chat(user, "<span class='warning'>[src]'s is jammed, unjam it before firing!</span>")
+			to_chat(user, "<span class='warning'>[src] is jammed, unjam it before firing!</span>")
 			return
 		else
 			. = ..()
@@ -147,71 +212,6 @@
 				if(dirt_level < 0)
 					dirt_level = 0
 				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
-
-
-//NEW CARTRAGES
-
-//GERMAN
-//7.92×33mm Kurz german
-/obj/item/ammo_casing/a792x33
-	name = "7.92x33 bullet casing"
-	desc = "A 7.92×33mm Kurz bullet casing."
-	icon_state = "762-casing"
-	caliber = "a792x33"
-	projectile_type = /obj/projectile/bullet/a792x33
-
-/obj/projectile/bullet/a792x33
-	name = "7.92x33 bullet"
-	damage = 40
-	wound_bonus = -40
-	wound_falloff_tile = 0
-//
-
-//7.92×57mm Mauser
-/obj/item/ammo_casing/a792x57
-	name = "7.92x57 bullet casing"
-	desc = "A 7.92×33mm Mauser bullet casing."
-	icon_state = "762-casing"
-	caliber = "a792x57"
-	projectile_type = /obj/projectile/bullet/a792x57
-
-/obj/projectile/bullet/a792x57
-	name = "7.92x57 bullet"
-	damage = 45
-	armour_penetration = 5
-	wound_bonus = -45
-	wound_falloff_tile = 0
-//
-
-//RUSSIAN
-//7.62x25 tokarev
-/obj/item/ammo_casing/a762x25
-	name = "7.62x25 bullet casing"
-	desc = "A 7.62x25 Tokarev bullet casing."
-	icon_state = "762-casing"
-	caliber = "a762x25"
-	projectile_type = /obj/projectile/bullet/a762x25
-
-/obj/projectile/bullet/a762x25
-	name = "7.62x25 bullet"
-	damage = 25
-	wound_bonus = -35
-	wound_falloff_tile = 0
-//
-
-//7.62×39mm M43
-/obj/item/ammo_casing/a762x39
-	name = "7.62x39 bullet casing"
-	desc = "A 7.62×39mm M43 bullet casing."
-	icon_state = "762-casing"
-	caliber = "a762x39"
-	projectile_type = /obj/projectile/bullet/a762x39
-
-/obj/projectile/bullet/a762x39
-	name = "7.62x25 bullet"
-	damage = 35
-	wound_bonus = -35
-	wound_falloff_tile = 0
 
 
 //CRATES

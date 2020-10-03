@@ -14,15 +14,17 @@
 	fire_delay = 2
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42_back.dmi'
 	worn_icon_state = "fg42"
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/fg42/fg42.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 1
+	zoomable = TRUE
+	gun_type = BATTLE_RIFLE
 
 /obj/item/ammo_box/magazine/fg42
 	name = "fg42 magazine (7.92×57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42.dmi'
 	icon_state = "7.92mm"
-	ammo_type = /obj/item/ammo_casing/a792x57
+	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY

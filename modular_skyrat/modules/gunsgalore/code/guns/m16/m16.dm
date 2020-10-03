@@ -13,9 +13,11 @@
 	fire_delay = 4
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16_back.dmi'
 	worn_icon_state = "m16"
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16/m16.ogg'
+	fire_sound_volume = 50
 	alt_icons = TRUE
 	realistic = TRUE
-	reliability = 7
+	gun_type = ASSAULT_RIFLE
 
 /obj/item/ammo_box/magazine/m16
 	name = "m16 magazine (5.56×45mm)"

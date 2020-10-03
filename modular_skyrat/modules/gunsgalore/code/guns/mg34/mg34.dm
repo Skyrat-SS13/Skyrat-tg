@@ -12,17 +12,20 @@
 	w_class = WEIGHT_CLASS_HUGE
 	spread = 15
 	mag_type = /obj/item/ammo_box/magazine/mg34
+	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mg34/mg34.ogg'
+	fire_sound_volume = 70
 	can_suppress = FALSE
 	burst_size = 5
 	fire_delay = 1
 	realistic = TRUE
-	reliability = 5
+	dirt_modifier = 0.1
+	gun_type = MACHINE_GUN
 
 /obj/item/ammo_box/magazine/mg34
 	name = "mg34 drum mag (7.92×57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34.dmi'
 	icon_state = "mg34_drum"
-	ammo_type = /obj/item/ammo_casing/a792x57
+	ammo_type = /obj/item/ammo_casing/realistic/a792x57
 	caliber = "a792x57"
 	max_ammo = 75
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
@@ -38,7 +41,6 @@
 	fire_delay = 0.04
 	burst_size = 5
 	spread = 5
-	reliability = 0
 	dirt_modifier = 0
 	durability = 500
 	mag_type = /obj/item/ammo_box/magazine/mg34/packapunch
