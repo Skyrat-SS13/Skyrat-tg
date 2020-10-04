@@ -29,6 +29,7 @@
 		else if(istype(pew, /obj/item/gun/ballistic))
 			var/obj/item/gun/ballistic/bgun = pew
 			if(toggle)
+				hud_used.ammo_counter.icon_state = "ammo_counter"
 				hud_used.ammo_counter.invisibility = 0
 				hud_used.ammo_counter.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:8px'><font color='#f5f7b3'>[bgun.get_ammo()]</font></div>"
 			else
