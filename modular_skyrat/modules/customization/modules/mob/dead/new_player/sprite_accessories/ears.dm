@@ -9,6 +9,10 @@
 		return TRUE
 	return FALSE
 
+
+/datum/sprite_accessory/ears/cat
+	recommended_species = list("mammal", "human", "felinid")
+
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/ears/mutant
@@ -20,6 +24,13 @@
 	icon_state = "none"
 	color_src = null
 	factual = FALSE
+
+/datum/sprite_accessory/ears/mutant/vulpkanin
+	recommended_species = list("mammal", "human", "felinid", "vulpkanin")
+
+/datum/sprite_accessory/ears/mutant/tajaran
+	recommended_species = list("mammal", "human", "felinid", "tajaran")
+
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"
@@ -59,7 +70,7 @@
 	name = "Bunny"
 	icon_state = "bunny"
 
-/datum/sprite_accessory/ears/mutant/catbig
+/datum/sprite_accessory/ears/mutant/tajaran/catbig
 	name = "Cat, Big"
 	icon_state = "catbig"
 
@@ -105,7 +116,7 @@
 	icon_state = "fish"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/ears/mutant/fox
+/datum/sprite_accessory/ears/mutant/vulpkanin/fox
 	name = "Fox"
 	icon_state = "fox"
 
@@ -131,7 +142,7 @@
 	name = "Murid"
 	icon_state = "murid"
 
-/datum/sprite_accessory/ears/mutant/otie
+/datum/sprite_accessory/ears/mutant/vulpkanin/otie
 	name = "Otusian"
 	icon_state = "otie"
 
@@ -155,11 +166,11 @@
 	name = "Squirrel"
 	icon_state = "squirrel"
 
-/datum/sprite_accessory/ears/mutant/wolf
+/datum/sprite_accessory/ears/mutant/vulpkanin/wolf
 	name = "Wolf"
 	icon_state = "wolf"
 
-/datum/sprite_accessory/ears/mutant/perky
+/datum/sprite_accessory/ears/mutant/vulpkanin/perky
 	name = "Perky"
 	icon_state = "perky"
 

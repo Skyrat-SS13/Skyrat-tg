@@ -42,6 +42,12 @@
 /datum/sprite_accessory/tails/mammal/wagging
 	organ_type = /obj/item/organ/tail/fluffy
 
+/datum/sprite_accessory/tails/mammal/wagging/vulpkanin
+	recommended_species = list("mammal", "human", "vulpkanin")
+
+/datum/sprite_accessory/tails/mammal/wagging/tajaran
+	recommended_species = list("mammal", "human", "tajaran")
+
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
@@ -58,7 +64,7 @@
 	name = "Bee"
 	icon_state = "bee"
 
-/datum/sprite_accessory/tails/mammal/wagging/catbig
+/datum/sprite_accessory/tails/mammal/wagging/tajaran/catbig
 	name = "Cat, Big"
 	icon_state = "catbig"
 	color_src = USE_ONE_COLOR
@@ -93,7 +99,7 @@
 	name = "Fish"
 	icon_state = "fish"
 
-/datum/sprite_accessory/tails/mammal/wagging/fox
+/datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox
 	name = "Fox"
 	icon_state = "fox"
 

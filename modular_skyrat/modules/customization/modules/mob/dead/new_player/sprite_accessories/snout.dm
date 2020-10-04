@@ -21,6 +21,12 @@
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list("mammal")
 
+/datum/sprite_accessory/snouts/mammal/vulpkanin
+	recommended_species = list("mammal", "vulpkanin")
+
+/datum/sprite_accessory/snouts/mammal/tajaran
+	recommended_species = list("mammal", "tajaran")
+
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"
 	icon_state = "bird"
@@ -56,35 +62,35 @@
 	name = "Rodent"
 	icon_state = "rodent"
 
-/datum/sprite_accessory/snouts/mammal/lcanid
+/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanid
 	name = "Mammal, Long"
 	icon_state = "lcanid"
 
-/datum/sprite_accessory/snouts/mammal/lcanidalt
+/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanidalt
 	name = "Mammal, Long ALT"
 	icon_state = "lcanidalt"
 
-/datum/sprite_accessory/snouts/mammal/lcanidstriped
+/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanidstriped
 	name = "Mammal, Long, Striped"
 	icon_state = "lcanidstripe"
 
-/datum/sprite_accessory/snouts/mammal/lcanidstripedalt
+/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanidstripedalt
 	name = "Mammal, Long, Striped ALT"
 	icon_state = "lcanidstripealt"
 
-/datum/sprite_accessory/snouts/mammal/scanid
+/datum/sprite_accessory/snouts/mammal/tajaran/scanid
 	name = "Mammal, Short"
 	icon_state = "scanid"
 
-/datum/sprite_accessory/snouts/mammal/scanidalt
+/datum/sprite_accessory/snouts/mammal/tajaran/scanidalt
 	name = "Mammal, Short ALT"
 	icon_state = "scanidalt"
 
-/datum/sprite_accessory/snouts/mammal/scanidalt2
+/datum/sprite_accessory/snouts/mammal/tajaran/scanidalt2
 	name = "Mammal, Short ALT 2"
 	icon_state = "scanidalt2"
 
-/datum/sprite_accessory/snouts/mammal/scanidalt3
+/datum/sprite_accessory/snouts/mammal/tajaran/scanidalt3
 	name = "Mammal, Short ALT 3"
 	icon_state = "scanidalt3"
 
@@ -183,35 +189,35 @@
 	name = "Husky (Top)"
 	icon_state = "fhusky"
 
-/datum/sprite_accessory/snouts/mammal/flcanid
+/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanid
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
 
-/datum/sprite_accessory/snouts/mammal/flcanidalt
+/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanidalt
 	name = "Mammal, Long ALT (Top)"
 	icon_state = "flcanidalt"
 
-/datum/sprite_accessory/snouts/mammal/flcanidstriped
+/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanidstriped
 	name = "Mammal, Long, Striped (Top)"
 	icon_state = "flcanidstripe"
 
-/datum/sprite_accessory/snouts/mammal/flcanidstripedalt
+/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanidstripedalt
 	name = "Mammal, Long, Striped ALT (Top)"
 	icon_state = "flcanidstripealt"
 
-/datum/sprite_accessory/snouts/mammal/fscanid
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanid
 	name = "Mammal, Short (Top)"
 	icon_state = "fscanid"
 
-/datum/sprite_accessory/snouts/mammal/fscanidalt
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt
 	name = "Mammal, Short ALT (Top)"
 	icon_state = "fscanidalt"
 
-/datum/sprite_accessory/snouts/mammal/fscanidalt2
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt2
 	name = "Mammal, Short ALT 2 (Top)"
 	icon_state = "fscanidalt2"
 
-/datum/sprite_accessory/snouts/mammal/fscanidalt3
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt3
 	name = "Mammal, Short ALT 3 (Top)"
 	icon_state = "fscanidalt3"
 
