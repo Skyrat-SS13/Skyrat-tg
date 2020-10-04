@@ -112,8 +112,6 @@
 	. = ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
-
-
 	if(realistic)
 		if(jammed)
 			return FALSE
