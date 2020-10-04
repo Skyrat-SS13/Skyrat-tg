@@ -100,6 +100,8 @@
 		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
 	body_markings = pref_species.get_random_body_markings(features)
+	if(pref_species.use_skintones)
+		features["uses_skintones"] = TRUE
 	//We reset the quirk-based stuff
 	augments = list()
 	all_quirks = list()
