@@ -243,5 +243,5 @@
 /obj/effect/temp_visual/dir_setting/firing_effect
 	light_system = MOVABLE_LIGHT
 	light_range = 2
-	light_power = 0.5
+	light_power = 1
 	light_color = LIGHT_COLOR_FIRE
