@@ -1233,55 +1233,8 @@
 
 //Updates lying and icons on robots, animals and brains. Needs to be refactored to use traits and update based on events.
 /mob/living/proc/update_mobility()
-<<<<<<< HEAD
-	var/canstand_involuntary = !HAS_TRAIT(src, TRAIT_FLOORED)
-	var/canstand = canstand_involuntary && !resting
-
-	if(buckled && buckled.buckle_lying != -1)
-		if(buckled.buckle_lying != 0)
-			mobility_flags &= ~MOBILITY_STAND
-		else
-			mobility_flags |= MOBILITY_STAND
-		set_lying_angle(buckled.buckle_lying)
-	else if(!canstand)
-		mobility_flags &= ~MOBILITY_STAND
-		if(lying_angle == 0) //force them on the ground
-			set_lying_angle(pick(90, 270))
-			if(!canstand_involuntary)
-				on_fall()
-	else
-		mobility_flags |= MOBILITY_STAND
-		set_lying_angle(0)
-
-	if(lying_angle != 0 || HAS_TRAIT(src, TRAIT_HANDS_BLOCKED) || incapacitated())
-		mobility_flags &= ~(MOBILITY_UI|MOBILITY_PULL)
-	else
-		mobility_flags |= MOBILITY_UI|MOBILITY_PULL
-
-	if(!(mobility_flags & MOBILITY_PULL))
-		if(pulling)
-			stop_pulling()
-	if(!(mobility_flags & MOBILITY_UI))
-		unset_machine()
-
-	// Movespeed mods based on arms/legs quantity
-	if(movement_type & (FLYING | FLOATING))
-		remove_movespeed_modifier(/datum/movespeed_modifier/limbless)
-	else
-		var/limbless_slowdown = 0
-		// These checks for <2 should be swapped out for something else if we ever end up with a species with more than 2
-		if(usable_legs < default_num_legs)
-			limbless_slowdown += (default_num_legs * 3) - (usable_legs * 3)
-			if(!usable_legs && usable_hands < default_num_hands)
-				limbless_slowdown += (default_num_hands * 3) - (usable_hands * 3)
-		if(limbless_slowdown)
-			add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/limbless, multiplicative_slowdown = limbless_slowdown)
-		else
-			remove_movespeed_modifier(/datum/movespeed_modifier/limbless)
 	SEND_SIGNAL(src, COMSIG_LIVING_UPDATED_MOBILITY, mobility_flags) //SKYRAT EDIT ADDITION - GUNPOINT
-=======
 	return
->>>>>>> db54913fe6d... Mobility refactor: UI, pull and lying down edition (#54078)
 
 
 ///Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment, through update_mobility()
