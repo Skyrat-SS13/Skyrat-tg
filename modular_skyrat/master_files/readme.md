@@ -17,6 +17,9 @@ MASTER CODE FILES
 - /master_files/code/datums/traits/neutral.dm > USE THIS FOR ANY NEUTRAL TRAITS
 - /master_files/code/datums/traits/negative.dm > USE THIS FOR ANY NEGATIVE TRAITS
 - /master_files/code/datums/traits/good.dm > USE THIS FOR ANY GOOD TRAITS
+- /master_files/code/_onclick/hud/_defines.dm > USE THIS FOR HUD DEFINES
+- /master_files/code/_onclick/hud/hud.dm > USE THIS FOR HUD DEFINES
+- /master_files/code/_onclick/hud/human.dm > DITTO.
 
 MASTER GLOBAL VARS
 - modular_skyrat/master_files/code/_globalvars/configuration.dm > GLOBAL_VAR_INIT(looc_allowed, TRUE)
