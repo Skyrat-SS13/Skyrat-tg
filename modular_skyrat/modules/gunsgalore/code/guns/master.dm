@@ -11,6 +11,11 @@
 	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
 	var/gun_type //The gun type define.
 
+/obj/item/gun/ballistic/Initialize()
+	. = ..()
+	if(realistic)
+		base_spread = spread
+
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
 		if(!magazine)
@@ -56,15 +61,6 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 
-
-
-/obj/item/gun/ballistic/Initialize()
-	. = ..()
-	if(realistic)
-		base_spread = spread
-
-
-
 /obj/item/gun/ballistic/ComponentInitialize()
 	if(alt_icons)
 		AddElement(/datum/element/update_icon_updates_onmob)
@@ -105,7 +101,6 @@
 
 /obj/item/gun/ballistic/process_fire()
 	if(realistic)
-
 		if(jammed)
 			shoot_with_empty_chamber()
 			return
@@ -196,7 +191,6 @@
 			. += "<span class='warning'><b>It is barely functioning!</b></span>"
 		else
 			. += "It is functioning normally."
-
 
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
