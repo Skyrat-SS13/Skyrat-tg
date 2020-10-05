@@ -31,6 +31,8 @@
 /datum/sprite_accessory/ears/mutant/tajaran
 	recommended_species = list("mammal", "human", "felinid", "tajaran")
 
+/datum/sprite_accessory/ears/mutant/akula
+	recommended_species = list("mammal", "human", "felinid", "akula")
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"
@@ -154,7 +156,7 @@
 	name = "Scolipede"
 	icon_state = "pede"
 
-/datum/sprite_accessory/ears/mutant/sergal
+/datum/sprite_accessory/ears/mutant/akula/sergal
 	name = "Sergal"
 	icon_state = "sergal"
 

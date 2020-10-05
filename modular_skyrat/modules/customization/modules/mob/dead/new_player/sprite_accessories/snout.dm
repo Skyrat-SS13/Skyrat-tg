@@ -2,7 +2,7 @@
 	key = "snout"
 	generic = "Snout"
 	var/use_muzzled_sprites = TRUE
-	recommended_species = list("mammal", "lizard")
+	recommended_species = list("mammal", "lizard", "unathi")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -26,6 +26,9 @@
 
 /datum/sprite_accessory/snouts/mammal/tajaran
 	recommended_species = list("mammal", "tajaran")
+
+/datum/sprite_accessory/snouts/mammal/akula
+	recommended_species = list("mammal", "akula")
 
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"
@@ -66,7 +69,7 @@
 	name = "Mammal, Long"
 	icon_state = "lcanid"
 
-/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanidalt
+/datum/sprite_accessory/snouts/mammal/lcanidalt
 	name = "Mammal, Long ALT"
 	icon_state = "lcanidalt"
 
@@ -74,7 +77,7 @@
 	name = "Mammal, Long, Striped"
 	icon_state = "lcanidstripe"
 
-/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanidstripedalt
+/datum/sprite_accessory/snouts/mammal/lcanidstripedalt
 	name = "Mammal, Long, Striped ALT"
 	icon_state = "lcanidstripealt"
 
@@ -124,11 +127,11 @@
 	name = "Sergal"
 	icon_state = "sergal"
 
-/datum/sprite_accessory/snouts/mammal/shark
+/datum/sprite_accessory/snouts/mammal/akula/shark
 	name = "Shark"
 	icon_state = "shark"
 
-/datum/sprite_accessory/snouts/mammal/hshark
+/datum/sprite_accessory/snouts/mammal/akula/hshark
 	name = "hShark"
 	icon_state = "hshark"
 
@@ -193,7 +196,7 @@
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
 
-/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanidalt
+/datum/sprite_accessory/snouts/mammal/flcanidalt
 	name = "Mammal, Long ALT (Top)"
 	icon_state = "flcanidalt"
 
@@ -201,7 +204,7 @@
 	name = "Mammal, Long, Striped (Top)"
 	icon_state = "flcanidstripe"
 
-/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanidstripedalt
+/datum/sprite_accessory/snouts/mammal/flcanidstripedalt
 	name = "Mammal, Long, Striped ALT (Top)"
 	icon_state = "flcanidstripealt"
 
@@ -313,7 +316,7 @@
 	extra = TRUE
 	//extra_color_src = MATRIXED
 
-/datum/sprite_accessory/snouts/mammal/shark_light
+/datum/sprite_accessory/snouts/mammal/akula/shark_light
 	name = "Shark Light"
 	icon_state = "sharkblubber"
 	color_src = USE_MATRIXED_COLORS

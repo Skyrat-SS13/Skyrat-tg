@@ -106,7 +106,6 @@
 	generic = "Spines"
 	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
-	recommended_species = list("lizard")
 	default_color = DEFAULT_SECONDARY
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)

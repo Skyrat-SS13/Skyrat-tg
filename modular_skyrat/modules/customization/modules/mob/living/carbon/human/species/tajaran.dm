@@ -6,7 +6,7 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	default_features = null
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "ears" = ACC_RANDOM, "legs" = "Digitigrade Legs")
+	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "ears" = ACC_RANDOM, "legs" = "Normal Legs")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -32,8 +32,8 @@
 			main_color = "A98"
 			second_color = "AA9"
 		if(4)
-			main_color = "443"
-			second_color = "554"
+			main_color = "EED"
+			second_color = "FEE"
 		if(5)
 			main_color = "DC9"
 			second_color = "DCA"
@@ -43,7 +43,7 @@
 	return returned
 
 /datum/species/tajaran/get_random_body_markings(list/passed_features)
-	var/name = pick("Fox", "Floof", "Floofer")
+	var/name = pick("Tajaran", "Floof", "Floofer")
 	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
 	var/list/markings = list()
 	if(BMS)

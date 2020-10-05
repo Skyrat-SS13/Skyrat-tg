@@ -4,7 +4,7 @@
 	///List of the body markings in this set
 	var/body_marking_list
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species = list("mammal")
+	var/recommended_species = list("mammal", "tajaran", "vulpkanin", "akula")
 
 /datum/body_marking_set/none
 	name = "None"
@@ -14,6 +14,10 @@
 /datum/body_marking_set/tajaran
 	name = "Tajaran"
 	body_marking_list = list("Tajaran")
+
+/datum/body_marking_set/fox
+	name = "Fox"
+	body_marking_list = list("Fox", "Fox Sock")
 
 /datum/body_marking_set/sergal
 	name = "Sergal"
@@ -150,6 +154,10 @@
 /datum/body_marking_set/datashark
 	name = "Datashark"
 	body_marking_list = list("Datashark")
+
+/datum/body_marking_set/shark
+	name = "Shark"
+	body_marking_list = list("Shark")
 
 /datum/body_marking_set/belly
 	name = "Belly"

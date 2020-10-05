@@ -13,7 +13,7 @@
 	return icon_state
 
 /datum/sprite_accessory/tails/lizard
-	recommended_species = list("lizard", "ashwalker", "mammal")
+	recommended_species = list("lizard", "ashwalker", "mammal", "unathi")
 	organ_type = /obj/item/organ/tail/lizard
 
 /datum/sprite_accessory/tails/human
@@ -47,6 +47,9 @@
 
 /datum/sprite_accessory/tails/mammal/wagging/tajaran
 	recommended_species = list("mammal", "human", "tajaran")
+
+/datum/sprite_accessory/tails/mammal/wagging/akula
+	recommended_species = list("mammal", "human", "akula")
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
@@ -168,7 +171,7 @@
 	name = "Sergal"
 	icon_state = "sergal"
 
-/datum/sprite_accessory/tails/mammal/wagging/shark
+/datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
 
@@ -214,7 +217,7 @@
 	name = "Guilmon"
 	icon_state = "guilmon"
 
-/datum/sprite_accessory/tails/mammal/wagging/sharknofin
+/datum/sprite_accessory/tails/mammal/wagging/akula/sharknofin
 	name = "Shark no fin"
 	icon_state = "sharknofin"
 
