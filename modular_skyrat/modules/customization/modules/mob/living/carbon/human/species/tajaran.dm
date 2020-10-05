@@ -49,3 +49,17 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/tajaran/random_name(gender,unique,lastname)
+	var/randname
+	if(gender == MALE)
+		randname = pick(GLOB.first_names_male_taj)
+	else
+		randname = pick(GLOB.first_names_female_taj)
+
+	if(lastname)
+		randname += " [lastname]"
+	else
+		randname += " [pick(GLOB.last_names_taj)]"
+
+	return randname
