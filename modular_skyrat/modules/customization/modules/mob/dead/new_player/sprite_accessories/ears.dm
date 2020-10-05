@@ -11,13 +11,13 @@
 
 
 /datum/sprite_accessory/ears/cat
-	recommended_species = list("mammal", "human", "felinid")
+	recommended_species = list("mammal", "human", "felinid", "humanoid")
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/ears/mutant
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list("mammal", "human", "felinid")
+	recommended_species = list("mammal", "human", "felinid", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/none
 	name = "None"
@@ -26,13 +26,13 @@
 	factual = FALSE
 
 /datum/sprite_accessory/ears/mutant/vulpkanin
-	recommended_species = list("mammal", "human", "felinid", "vulpkanin")
+	recommended_species = list("mammal", "human", "felinid", "vulpkanin", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/tajaran
-	recommended_species = list("mammal", "human", "felinid", "tajaran")
+	recommended_species = list("mammal", "human", "felinid", "tajaran", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/akula
-	recommended_species = list("mammal", "human", "felinid", "akula")
+	recommended_species = list("mammal", "human", "felinid", "akula", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"

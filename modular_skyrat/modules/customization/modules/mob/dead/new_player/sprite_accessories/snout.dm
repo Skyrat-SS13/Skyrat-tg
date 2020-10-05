@@ -19,16 +19,16 @@
 /datum/sprite_accessory/snouts/mammal
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/snouts.dmi'
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list("mammal")
+	recommended_species = list("mammal", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/vulpkanin
-	recommended_species = list("mammal", "vulpkanin")
+	recommended_species = list("mammal", "vulpkanin", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/tajaran
-	recommended_species = list("mammal", "tajaran")
+	recommended_species = list("mammal", "tajaran", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/akula
-	recommended_species = list("mammal", "akula")
+	recommended_species = list("mammal", "akula", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"

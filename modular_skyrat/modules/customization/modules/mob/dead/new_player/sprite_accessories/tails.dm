@@ -28,13 +28,13 @@
 /datum/sprite_accessory/tails/none
 	name = "None"
 	icon_state = "none"
-	recommended_species = list("mammal", "human")
+	recommended_species = list("mammal", "human", "humanoid")
 	color_src = null
 	factual = FALSE
 
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
-	recommended_species = list("mammal", "human")
+	recommended_species = list("mammal", "human", "humanoid")
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/tails.dmi'
 	organ_type = /obj/item/organ/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
@@ -43,13 +43,13 @@
 	organ_type = /obj/item/organ/tail/fluffy
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin
-	recommended_species = list("mammal", "human", "vulpkanin")
+	recommended_species = list("mammal", "human", "vulpkanin", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/tajaran
-	recommended_species = list("mammal", "human", "tajaran")
+	recommended_species = list("mammal", "human", "tajaran", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
-	recommended_species = list("mammal", "human", "akula")
+	recommended_species = list("mammal", "human", "akula", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
