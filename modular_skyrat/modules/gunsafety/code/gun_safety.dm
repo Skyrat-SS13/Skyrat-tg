@@ -23,7 +23,7 @@
 	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
 	tsafety.UpdateButtonIcon()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
-	to_chat(user, "<span class='notice'>You toggle the [src]'s safety [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"].</span>")
+	to_chat(user, "<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"].</span>")
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	if(safety)
