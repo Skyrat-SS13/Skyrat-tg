@@ -26,6 +26,7 @@
 			worn_icon_state = "[initial(icon_state)]"
 	. = ..()
 
+//gun pickup message
 /obj/item/gun/pickup(mob/user)
 	. = ..()
 	if(w_class > WEIGHT_CLASS_SMALL && !suppressed)
@@ -84,7 +85,6 @@
 			jammed = FALSE
 			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
-
 
 /obj/item/gun/ballistic/can_shoot()
 	if(realistic)
