@@ -323,7 +323,7 @@
 	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
-/datum/emote/living/meow/run_emote(mob/living/user, params)
+/datum/emote/living/hiss/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
