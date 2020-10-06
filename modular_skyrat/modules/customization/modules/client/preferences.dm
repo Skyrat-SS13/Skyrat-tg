@@ -189,6 +189,10 @@
 	var/pref_location
 	var/pref_faction
 
+	var/culture_more_info = FALSE
+	var/location_more_info = FALSE
+	var/faction_more_info = FALSE
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -670,29 +674,38 @@
 				if(3) //Background
 					dat += "<table width='100%'>"
 					dat += "<tr>"
-					dat += "<td width='25%'></td>"
+					dat += "<td width='21%'></td>"
 					dat += "<td width='70%'></td>"
-					dat += "<td width='5%'></td>"
+					dat += "<td width='9%'></td>"
 					dat += "</tr>"
-					var/even = TRUE
+					var/even = FALSE
 					for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
 						even = !even
 						var/datum/cultural_info/cult
 						var/prefix
+						var/more = FALSE
 						switch(cultural_thing)
 							if(CULTURE_CULTURE)
 								cult = GLOB.culture_cultures[pref_culture]
 								prefix = "Culture"
+								more = culture_more_info
 							if(CULTURE_LOCATION)
 								cult = GLOB.culture_locations[pref_location]
 								prefix = "Location"
+								more = location_more_info
 							if(CULTURE_FACTION)
 								cult = GLOB.culture_factions[pref_faction]
 								prefix = "Faction"
+								more = faction_more_info
+						var/cult_desc 
+						if(more || length(cult.description) <= 100)
+							cult_desc = cult.description
+						else
+							cult_desc = "[copytext(cult.description, 1, 100)]..."
 						dat += "<tr style='background-color:[even ? "#13171C" : "#19232C"]'>"
-						dat += "<td>[prefix]: [cult.name]<BR></td>"
-						dat += "<td>[cult.description]</td>"
-						dat += "<td>More/Less</td>"
+						dat += "<td><b>[prefix]:</b> <a href='?_src_=prefs;preference=cultural_info_change;info=[cultural_thing];task=input'>[cult.name]</a><font color='#AAAAAA' size=1><b>[cult.get_extra_desc(more)]</b></font></td>"
+						dat += "<td><i>[cult_desc]</i></td>"
+						dat += "<td><a href='?_src_=prefs;preference=cultural_info_toggle;info=[cultural_thing];task=input'>[more ? "Show Less" : "Show More"]</a></td>"
 						dat += "</tr>"
 					dat += "</table>"
 					dat += "<table width='100%'><tr>"
@@ -1887,6 +1900,44 @@
 					var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
 					if(!isnull(msg))
 						ooc_prefs = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("cultural_info_change")
+					var/thing = href_list["info"]
+					var/list/choice_list = list()
+					var/list/iteration_list
+					var/list/siphon_list
+					switch(thing)
+						if(CULTURE_CULTURE)
+							iteration_list = pref_species.cultures
+							siphon_list = GLOB.culture_cultures
+						if(CULTURE_FACTION)
+							iteration_list = pref_species.factions
+							siphon_list = GLOB.culture_factions
+						if(CULTURE_LOCATION)
+							iteration_list = pref_species.locations
+							siphon_list = GLOB.culture_locations
+					for(var/cultural_entity in iteration_list)
+						var/datum/cultural_info/CINFO = siphon_list[cultural_entity]
+						choice_list[CINFO.name] = cultural_entity
+					var/new_cultural_thing = input(user, "Choose your character's [thing]:", "Character Preference")  as null|anything in choice_list
+					if(new_cultural_thing)
+						switch(thing)
+							if(CULTURE_CULTURE)
+								pref_culture = choice_list[new_cultural_thing]
+							if(CULTURE_FACTION)
+								pref_faction = choice_list[new_cultural_thing]
+							if(CULTURE_LOCATION)
+								pref_location = choice_list[new_cultural_thing]
+
+				if("cultural_info_toggle")
+					var/thing = href_list["info"]
+					switch(thing)
+						if(CULTURE_CULTURE)
+							culture_more_info = !culture_more_info
+						if(CULTURE_FACTION)
+							faction_more_info = !faction_more_info
+						if(CULTURE_LOCATION)
+							location_more_info = !location_more_info
 
 				if("general_record")
 					var/msg = input(usr, "Set your general record. This is more or less public information, available from security, medical and command consoles", "General Record", general_record) as message|null
