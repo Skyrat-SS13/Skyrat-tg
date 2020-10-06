@@ -7,6 +7,7 @@
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34_righthand.dmi'
 	inhand_icon_state = "mg34"
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34_back.dmi'
+	worn_icon_state = "mg34"
 	weapon_weight = WEAPON_HEAVY
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_HUGE
