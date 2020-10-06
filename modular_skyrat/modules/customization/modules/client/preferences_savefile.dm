@@ -477,6 +477,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["augments"] , augments)
 	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
+	READ_FILE(S["pref_culture"] , pref_culture)
+	READ_FILE(S["pref_location"] , pref_location)
+	READ_FILE(S["pref_faction"] , pref_faction)
+
+	if(!pref_culture || !GLOB.culture_cultures[pref_culture])
+		pref_culture = pref_species.cultures[1]
+	if(!pref_location || !GLOB.culture_locations[pref_location])
+		pref_location = pref_species.locations[1]
+	if(!pref_faction || !GLOB.culture_factions[pref_faction])
+		pref_faction = pref_species.factions[1]
+
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
 	body_markings = SANITIZE_LIST(body_markings)
@@ -633,6 +644,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["augments"] , augments)
 	WRITE_FILE(S["augment_limb_styles"] , augment_limb_styles)
+
+	WRITE_FILE(S["pref_culture"] , pref_culture)
+	WRITE_FILE(S["pref_location"] , pref_location)
+	WRITE_FILE(S["pref_faction"] , pref_faction)
 
 	return TRUE
 

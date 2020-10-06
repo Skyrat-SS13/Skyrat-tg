@@ -185,6 +185,10 @@
 	///The arousal state of the previewed character, can be toggled by the user
 	var/arousal_preview = AROUSAL_NONE
 
+	var/pref_culture
+	var/pref_location
+	var/pref_faction
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -664,9 +668,36 @@
 
 					dat += "</tr></table>"
 				if(3) //Background
+					dat += "<table width='100%'>"
+					dat += "<tr>"
+					dat += "<td width='25%'></td>"
+					dat += "<td width='70%'></td>"
+					dat += "<td width='5%'></td>"
+					dat += "</tr>"
+					var/even = TRUE
+					for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
+						even = !even
+						var/datum/cultural_info/cult
+						var/prefix
+						switch(cultural_thing)
+							if(CULTURE_CULTURE)
+								cult = GLOB.culture_cultures[pref_culture]
+								prefix = "Culture"
+							if(CULTURE_LOCATION)
+								cult = GLOB.culture_locations[pref_location]
+								prefix = "Location"
+							if(CULTURE_FACTION)
+								cult = GLOB.culture_factions[pref_faction]
+								prefix = "Faction"
+						dat += "<tr style='background-color:[even ? "#13171C" : "#19232C"]'>"
+						dat += "<td>[prefix]: [cult.name]<BR></td>"
+						dat += "<td>[cult.description]</td>"
+						dat += "<td>More/Less</td>"
+						dat += "</tr>"
+					dat += "</table>"
 					dat += "<table width='100%'><tr>"
 					dat += "<td width=33%>"
-					dat += "<center><h3>Records</h3></center>"
+					dat += "<center><h2>Records</h2></center>"
 					dat += "<h2>General</h2>"
 					dat += "<a href='?_src_=prefs;preference=general_record;task=input'><b>Set general record</b></a><br>"
 					if(length(general_record) <= 40)
@@ -705,7 +736,7 @@
 
 
 					dat += "<td width=33%>"
-					dat += "<center><h3>Information</h3></center>"
+					dat += "<center><h2>Information</h2></center>"
 					dat += "<h2>Background</h2>"
 					dat += "<a href='?_src_=prefs;preference=background_info;task=input'><b>Set background information</b></a><br>"
 					if(length(background_info) <= 40)
