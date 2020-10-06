@@ -94,7 +94,7 @@
 		A.BorgCtrlShiftClick(src) // End of skyrat edit
 		
 /mob/living/silicon/robot/ShiftClickOn(atom/A)
-		if(isturf(A)) // Skyrat edit
+	if(isturf(A)) // Skyrat edit
 		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
 		if(airlock)
 			airlock.BorgShiftClick(src)
