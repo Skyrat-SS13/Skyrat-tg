@@ -42,6 +42,11 @@
 		appendix.Remove(C)
 		qdel(appendix)
 
+/datum/species/robotic/random_name(gender,unique,lastname)
+	var/randname = pick(GLOB.posibrain_names)
+	randname = "[randname]-[rand(100, 999)]"
+	return randname
+
 /datum/species/robotic/ipc
 	name = "I.P.C."
 	id = "ipc"
