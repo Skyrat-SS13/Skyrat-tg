@@ -2,6 +2,7 @@
 	default_features = null
 	mutant_bodyparts = list()
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
+	cultures = list(/datum/cultural_info/culture/generic, /datum/cultural_info/culture/lavaland)
 	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
 
 /datum/species/lizard/get_random_features()

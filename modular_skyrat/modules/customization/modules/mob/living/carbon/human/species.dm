@@ -14,8 +14,8 @@
 	var/can_augment = TRUE
 
 	var/list/cultures = list(/datum/cultural_info/culture/generic)
-	var/list/locations = list(/datum/cultural_info/location/generic)
-	var/list/factions = list(/datum/cultural_info/faction/generic)
+	var/list/locations = list(/datum/cultural_info/location/generic, /datum/cultural_info/location/stateless)
+	var/list/factions = list(/datum/cultural_info/faction/generic, /datum/cultural_info/faction/nanotrasen)
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/standing	= list()
