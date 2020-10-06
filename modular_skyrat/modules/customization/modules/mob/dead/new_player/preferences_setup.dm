@@ -95,11 +95,14 @@
 
 /datum/preferences/proc/set_new_species(new_species_path)
 	pref_species = new new_species_path()
+	real_name = pref_species.random_name(gender,1)
 	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
 	for(var/key in new_features)
 		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
 	body_markings = pref_species.get_random_body_markings(features)
+	if(pref_species.use_skintones)
+		features["uses_skintones"] = TRUE
 	//We reset the quirk-based stuff
 	augments = list()
 	all_quirks = list()
@@ -187,8 +190,10 @@
 //This needs to be a seperate proc because the character could not have the proper backpack during the moment of loadout equip
 /datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)
 	//Here we stick loadout items that couldn't be equipped into a bag. 
+	var/obj/item/back_item = H.back
 	for(var/item in packed_items)
 		var/obj/item/ITEM = item
-		if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
-			//Otherwise - on the ground
-			ITEM.forceMove(get_turf(H))
+		if(back_item)
+			ITEM.forceMove(back_item)
+		else
+			qdel(ITEM)

@@ -91,3 +91,6 @@
 /datum/species/zombie
 	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/zombie_scream.ogg')
 	fluff_desc = "Zombies are the result of an as of yet largely unknown jailbroken Nanomachine software program, which overload the body by using natural metabolic and cardiovascular systems to constantly replicate themselves within a host. Hosts are extremely aggressive on account of neurological changes imposed by the nanomachines, driven to spread their affliction to anyone who isn't infected. While sapient zombies do exist, able to regulate their nanomachines to be nonlethal and overall benign, they still suffer heavy prejudice on account of their origin."
+
+/datum/species/tajaran
+	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/cat_scream.ogg')

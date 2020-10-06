@@ -21,7 +21,8 @@
 	return TRUE
 
 /datum/keybinding/living/look_up
-	hotkey_keys = list("L")
+	//hotkey_keys = list("L") //ORIGINAL
+	hotkey_keys = list("P") //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	name = "look up"
 	full_name = "Look Up"
 	description = "Look up at the next z-level.  Only works if directly below open space."

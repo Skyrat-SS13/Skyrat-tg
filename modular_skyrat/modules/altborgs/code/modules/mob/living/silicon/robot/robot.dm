@@ -2,7 +2,7 @@
 	var/robot_resting = FALSE
 	var/dogborg = FALSE
 
-/mob/living/silicon/robot/doMove(atom/destination) //Could potentially be a signal instead
+/mob/living/silicon/robot/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	. = ..()
 	if(robot_resting)
 		robot_resting = FALSE

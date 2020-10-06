@@ -13,6 +13,8 @@
 	var/visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
 	///Whether the organ is aroused, matters for sprites, use AROUSAL_CANT, AROUSAL_NONE, AROUSAL_PARTIAL or AROUSAL_FULL
 	var/aroused = AROUSAL_NONE
+	///Whether the organ is supposed to use a skintoned variant of the sprite
+	var/uses_skintones
 
 //This translates the float size into a sprite string
 /obj/item/organ/genital/proc/get_sprite_size_string()
@@ -42,9 +44,11 @@
 
 /obj/item/organ/genital/build_from_dna(datum/dna/DNA, associated_key)
 	..()
-	var/datum/sprite_accessory/SA = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/genital/SA = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
 	genital_name = SA.name
 	genital_type = SA.icon_state
+	if(DNA.features["uses_skintones"])
+		uses_skintones = SA.uses_skintones
 	update_sprite_suffix()
 
 /obj/item/organ/genital/penis
@@ -95,7 +99,10 @@
 			size_affix = "3"
 		else
 			size_affix = "4"
-	icon_state = "penis_[genital_type]_[size_affix]"
+	var/passed_string = "penis_[genital_type]_[size_affix]"
+	if(uses_skintones)
+		passed_string += "_s"
+	icon_state = passed_string
 
 /obj/item/organ/genital/penis/get_sprite_size_string()
 	if(aroused != AROUSAL_FULL && sheath != SHEATH_NONE) //Sheath time!
@@ -120,12 +127,17 @@
 			size_affix = "3"
 		else
 			size_affix = "4"
-	return "[genital_type]_[size_affix]_[is_erect]"
+	var/passed_string = "[genital_type]_[size_affix]_[is_erect]"
+	if(uses_skintones)
+		passed_string += "_s"
+	return passed_string
 
 /obj/item/organ/genital/penis/build_from_dna(datum/dna/DNA, associated_key)
 	..()
 	girth = DNA.features["penis_girth"]
-	sheath = DNA.features["penis_sheath"]
+	var/datum/sprite_accessory/genital/penis/PS = GLOB.sprite_accessories[associated_key][DNA.mutant_bodyparts[associated_key][MUTANT_INDEX_NAME]]
+	if(PS.can_have_sheath)
+		sheath = DNA.features["penis_sheath"]
 	set_size(DNA.features["penis_size"])
 
 /obj/item/organ/genital/testicles
@@ -139,6 +151,13 @@
 	slot = ORGAN_SLOT_TESTICLES
 	aroused = AROUSAL_CANT
 
+/obj/item/organ/genital/testicles/update_genital_icon_state()
+	var/measured_size = clamp(genital_size, 1, 3)
+	var/passed_string = "testicles_[genital_type]_[measured_size]"
+	if(uses_skintones)
+		passed_string += "_s"
+	icon_state = passed_string
+
 /obj/item/organ/genital/testicles/get_description_string(datum/sprite_accessory/genital/gas)
 	return "You see a pair of testicles, they look [lowertext(balls_size_to_description(genital_size))]."
 
@@ -148,11 +167,11 @@
 
 /obj/item/organ/genital/testicles/get_sprite_size_string()
 	var/measured_size = FLOOR(genital_size,1)
-	if(measured_size < 0)
-		measured_size = 0
-	else if (measured_size > 3)
-		measured_size = 3
-	return "[genital_type]_[measured_size]"
+	measured_size = clamp(measured_size, 0, 3)
+	var/passed_string = "[genital_type]_[measured_size]"
+	if(uses_skintones)
+		passed_string += "_s"
+	return passed_string
 
 /obj/item/organ/genital/vagina
 	name = "vagina"
@@ -212,7 +231,7 @@
 		if("Flatchested")
 			size_description = " They are small and flat, however."
 		if("beyond measurement")
-			size_description = " Their size is enormous, far beyond measurement."
+			size_description = " Their size is enormous, you estimate they're around [genital_size] inches in diameter."
 		else
 			size_description = " You estimate they are [translation]-cups."
 	returned_string += size_description
@@ -230,7 +249,10 @@
 		current_size = 0
 	else if (current_size > max_size)
 		current_size = max_size
-	icon_state = "breasts_pair_[current_size]"
+	var/passed_string = "breasts_pair_[current_size]"
+	if(uses_skintones)
+		passed_string += "_s"
+	icon_state = passed_string
 
 /obj/item/organ/genital/breasts/get_sprite_size_string()
 	var/max_size = 5
@@ -241,7 +263,10 @@
 		current_size = 0
 	else if (current_size > max_size)
 		current_size = max_size
-	return "[genital_type]_[current_size]"
+	var/passed_string = "[genital_type]_[current_size]"
+	if(uses_skintones)
+		passed_string += "_s"
+	return passed_string
 
 /obj/item/organ/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
 	..()
