@@ -26,6 +26,12 @@
 			worn_icon_state = "[initial(icon_state)]"
 	. = ..()
 
+/obj/item/gun/pickup(mob/user)
+	. = ..()
+	if(w_class > WEIGHT_CLASS_SMALL && !suppressed)
+		user.visible_message("<span class='warning'>[user] grabs <b>[src]</b>!</span>",
+		"<span class='warning'>You grab [src]!</span>")
+
 /obj/item/gun/ballistic/assault_rifle
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
@@ -71,7 +77,7 @@
 		unjam_time = clamp((jam_chance*10)/(durability/10), 0, 50)
 		jammed = TRUE
 		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
-		visible_message("<span class='danger'>The [src] jams!</span>")
+		to_chat(user, "<span class='danger'>The [src] jams!</span>")
 	else if(jammed)
 		to_chat(user, "You start to unjam the bolt!")
 		if(do_after(user, unjam_time))
@@ -113,11 +119,11 @@
 
 		dirt_level += dirt_modifier
 
-		durability -= durability_factor
+		durability = clamp(durability -= durability_factor, 1, 1000)
 
 		jam_chance = dirt_level/5
 
-		spread = base_spread + jam_chance
+		spread = base_spread + ((jam_chance / durability)*100)
 
 		switch(FLOOR(durability, 1))
 			if(0 to 9)
