@@ -97,6 +97,11 @@
 	name = "Mammal, Short ALT 3"
 	icon_state = "scanidalt3"
 
+/datum/sprite_accessory/snouts/mammal/tajaran/normal
+	name = "Tajaran, normal"
+	icon_state = "ntajaran"
+	color_src = USE_ONE_COLOR
+
 /datum/sprite_accessory/snouts/mammal/wolf
 	name = "Mammal, Thick"
 	icon_state = "wolf"
@@ -325,3 +330,4 @@
 	name = "Rat"
 	icon_state = "rat"
 	color_src = USE_MATRIXED_COLORS
+
