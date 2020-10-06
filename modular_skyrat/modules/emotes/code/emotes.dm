@@ -295,3 +295,21 @@
 	user.nextsoundemote = world.time + 7
 	var/sound = pick('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg')
 	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	hands_use_check = FALSE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/meow/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
+	playsound(user, sound, 50, 1, -1)
