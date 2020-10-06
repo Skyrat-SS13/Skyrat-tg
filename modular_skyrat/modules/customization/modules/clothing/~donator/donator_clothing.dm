@@ -40,6 +40,14 @@
 	name = "polychromic veil"
 	icon_state = "polyveil"
 
+/obj/item/clothing/neck/cloak/polychromic/boat
+	name = "polychromic boatcloak"
+	icon_state = "polyboat"
+
+/obj/item/clothing/neck/cloak/polychromic/shroud
+	name = "polychromic shroud"
+	icon_state = "polyshroud"
+
 //UNIFORMS
 /obj/item/clothing/under/dress/skirt/polychromic
 	name = "polychromic skirt"
