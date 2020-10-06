@@ -76,6 +76,10 @@
 	name = "Cat, Big"
 	icon_state = "catbig"
 
+/datum/sprite_accessory/ears/mutant/tajaran/catnormal
+	name = "Cat, normal"
+	icon_state = "catnormal"
+
 /datum/sprite_accessory/ears/mutant/cow
 	name = "Cow"
 	icon_state = "cow"
