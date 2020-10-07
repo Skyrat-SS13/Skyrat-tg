@@ -12,6 +12,8 @@ Adds a dynamic hud system for energy and some ballistics guns.
 
 .code\__DEFINES\atom_hud.dm > #define AMMO_HUD	"25"
 
+.code\modules\projectiles\guns\ballistic.dm > /obj/item/gun/ballistic/examine(mob/user)
+
 ### Master file additions
 
 - Hud directory > _defines.dm, human.dm, hud.dm
