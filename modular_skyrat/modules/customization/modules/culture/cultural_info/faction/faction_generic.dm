@@ -27,12 +27,12 @@
 	its massive bureaucracy and the distance between worlds. Through its member states, the SCG governs as one of the \
 	most advanced and powerful civilisations in the known galaxy."
 
-/datum/cultural_info/faction/hephaestus
-	name = "Hephaestus Industries"
-	description = "Hephaestus Industries, known simply as Hephaestus, is one of the largest corporations in existence today. \
-	The leading manufacturer of military grade personal weapons, assault vehicles, defence systems and security measures, \
-	Hephaestus has a somewhat controversial reputation as a result of blatant war profiteering, compounded by their attempts to \
-	exploit Unathi equipment and assets for their own gains. In spite of this, Hephaestus maintains a reputation for the quality and \
-	reliability of its equipment as well as its general affordability. Internally, Hephaestus is a desirable employer as a result of its \
-	many employee benefits and focus on employee development, though many dread being transferred to one of the 'remote' branches."
-	economic_power = 1.2
+/datum/cultural_info/faction/freetrade
+	name = "Free Trade Union"
+	description = "The Free Trade Union, commonly referred to as the FTU, is is an employee-owned conglomerate of tens of thousands of \
+	various traders and merchants from all over SCG space and beyond. Colloquially known as the 'fifth megacorp', they control a sizeable fleet \
+	of trading ships which are form the backbone of their trading force along with a large contingent of combat capable vessels that cruise the shipping lanes, \
+	keeping FTU members free from pirates. The FTU has a large amount of economic power across Sol space and operates large trade hubs and stations near most \
+	Gateway installations and planets. Somewhat unscrupulous, FTU stations and merchants are known for \
+	selling a great many restricted items and supplying all manner of goods indiscriminately."
+	economic_power = 1.3
