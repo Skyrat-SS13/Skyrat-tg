@@ -20,7 +20,7 @@ MASTER CODE FILES
 - /master_files/code/_onclick/hud/_defines.dm > USE THIS FOR HUD DEFINES
 - /master_files/code/_onclick/hud/hud.dm > USE THIS FOR HUD DEFINES
 - /master_files/code/_onclick/hud/human.dm > DITTO.
-
+- master_files\code\game\objects\items.dm
 MASTER GLOBAL VARS
 - modular_skyrat/master_files/code/_globalvars/configuration.dm > GLOBAL_VAR_INIT(looc_allowed, TRUE)
 

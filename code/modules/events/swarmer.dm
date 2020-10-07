@@ -2,7 +2,8 @@
 	name = "Spawn Swarmer Beacon"
 	typepath = /datum/round_event/spawn_swarmer
 	weight = 8
-	max_occurrences = 1 //Only once okay fam
+	//max_occurrences = 1 //Only once okay fam //ORIGINAL
+	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
 	earliest_start = 30 MINUTES
 	min_players = 15
 

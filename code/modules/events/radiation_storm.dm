@@ -1,7 +1,8 @@
 /datum/round_event_control/radiation_storm
 	name = "Radiation Storm"
 	typepath = /datum/round_event/radiation_storm
-	max_occurrences = 1
+	//max_occurrences = 1 //ORIGINAL
+	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
 
 /datum/round_event/radiation_storm
 

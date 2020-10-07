@@ -9,17 +9,30 @@
 		return TRUE
 	return FALSE
 
+
+/datum/sprite_accessory/ears/cat
+	recommended_species = list("mammal", "human", "felinid", "humanoid")
+
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/ears/mutant
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list("mammal", "human", "felinid")
+	recommended_species = list("mammal", "human", "felinid", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/none
 	name = "None"
 	icon_state = "none"
 	color_src = null
 	factual = FALSE
+
+/datum/sprite_accessory/ears/mutant/vulpkanin
+	recommended_species = list("mammal", "human", "felinid", "vulpkanin", "humanoid")
+
+/datum/sprite_accessory/ears/mutant/tajaran
+	recommended_species = list("mammal", "human", "felinid", "tajaran", "humanoid")
+
+/datum/sprite_accessory/ears/mutant/akula
+	recommended_species = list("mammal", "human", "felinid", "akula", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"
@@ -59,9 +72,13 @@
 	name = "Bunny"
 	icon_state = "bunny"
 
-/datum/sprite_accessory/ears/mutant/catbig
+/datum/sprite_accessory/ears/mutant/tajaran/catbig
 	name = "Cat, Big"
 	icon_state = "catbig"
+
+/datum/sprite_accessory/ears/mutant/tajaran/catnormal
+	name = "Cat, normal"
+	icon_state = "catnormal"
 
 /datum/sprite_accessory/ears/mutant/cow
 	name = "Cow"
@@ -105,7 +122,7 @@
 	icon_state = "fish"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/ears/mutant/fox
+/datum/sprite_accessory/ears/mutant/vulpkanin/fox
 	name = "Fox"
 	icon_state = "fox"
 
@@ -131,7 +148,7 @@
 	name = "Murid"
 	icon_state = "murid"
 
-/datum/sprite_accessory/ears/mutant/otie
+/datum/sprite_accessory/ears/mutant/vulpkanin/otie
 	name = "Otusian"
 	icon_state = "otie"
 
@@ -143,7 +160,7 @@
 	name = "Scolipede"
 	icon_state = "pede"
 
-/datum/sprite_accessory/ears/mutant/sergal
+/datum/sprite_accessory/ears/mutant/akula/sergal
 	name = "Sergal"
 	icon_state = "sergal"
 
@@ -155,11 +172,11 @@
 	name = "Squirrel"
 	icon_state = "squirrel"
 
-/datum/sprite_accessory/ears/mutant/wolf
+/datum/sprite_accessory/ears/mutant/vulpkanin/wolf
 	name = "Wolf"
 	icon_state = "wolf"
 
-/datum/sprite_accessory/ears/mutant/perky
+/datum/sprite_accessory/ears/mutant/vulpkanin/perky
 	name = "Perky"
 	icon_state = "perky"
 

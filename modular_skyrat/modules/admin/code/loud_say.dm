@@ -22,7 +22,7 @@
 
 	for(var/client/I in GLOB.admins)
 		if(I.prefs.toggles & SOUND_ADMINHELP)
-			SEND_SOUND(I, sound('sound/effects/huuu.ogg')) //Stop using loud mode if you don't need to.
+			SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg')) //Stop using loud mode if you don't need to.
 		window_flash(I, ignorepref = TRUE)
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "loudAsay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
