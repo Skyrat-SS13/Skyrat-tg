@@ -13,4 +13,12 @@
 	if(!more)
 		return
 	if(additional_langs)
-		. += "<BR>Optional Languages: [length(additional_langs)]"
+		. += "<BR>Optional Languages: "
+		var/not_first_iteration = FALSE
+		for(var/langkey in additional_langs)
+			var/datum/language/lang_datum = langkey
+			if(not_first_iteration)
+				. += ", "
+			else
+				not_first_iteration = TRUE
+			. += "[initial(lang_datum.name)]"

@@ -38,6 +38,7 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
  .\code\modules\client.dm > /client/proc/update_special_keybinds()
   ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
+  ./code/modules/language/language_holder.dm > /datum/language_holder/New()
 
  ./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
 

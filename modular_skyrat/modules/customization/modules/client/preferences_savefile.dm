@@ -481,6 +481,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["pref_location"] , pref_location)
 	READ_FILE(S["pref_faction"] , pref_faction)
 
+	READ_FILE(S["languages"] , languages)
+	languages = SANITIZE_LIST(languages)
+	validate_languages()
+
 	if(!pref_culture || !GLOB.culture_cultures[pref_culture])
 		pref_culture = pref_species.cultures[1]
 	if(!pref_location || !GLOB.culture_locations[pref_location])
@@ -648,6 +652,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pref_culture"] , pref_culture)
 	WRITE_FILE(S["pref_location"] , pref_location)
 	WRITE_FILE(S["pref_faction"] , pref_faction)
+
+	WRITE_FILE(S["languages"] , languages)
 
 	return TRUE
 
