@@ -4,7 +4,7 @@
 
 /datum/cultural_info/culture/vatgrown
 	name = "Vat Grown"
-	description = "You were not born like most of the people, instead grown and raised in laboratory conditions, as an experiment, or to serve some purpose."
+	description = "You were not born like most of the people, instead grown and raised in laboratory conditions, either as clone, gene-adapt or some experiment."
 
 /datum/cultural_info/culture/martian_surfacer
 	name = "Martian, Surfacer"
