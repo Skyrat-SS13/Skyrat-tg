@@ -37,6 +37,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
 
+	if(mentor_client_procs(href_list))
+		return
+
 	// asset_cache
 	var/asset_cache_job
 	if(href_list["asset_cache_confirm_arrival"])
