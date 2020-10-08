@@ -104,7 +104,7 @@
 
 	var/list/ignoring = list()
 
-	var/clientfps = 0
+	var/clientfps = 40
 
 	var/parallax
 
