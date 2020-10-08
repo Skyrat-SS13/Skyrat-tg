@@ -85,6 +85,10 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(!job.player_old_enough(player.client))
 			return FALSE
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(job.has_banned_quirk(player.client.prefs))
+			return FALSE
+		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			return FALSE
 		var/position_limit = job.total_positions
@@ -109,6 +113,11 @@ SUBSYSTEM_DEF(job)
 		if(!job.player_old_enough(player.client))
 			JobDebug("FOC player not old enough, Player: [player]")
 			continue
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(job.has_banned_quirk(player.client.prefs))
+			JobDebug("FOC job not compatible with quirks, Player: [player]")
+			continue
+		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			JobDebug("FOC player not enough xp, Player: [player]")
 			continue
@@ -146,6 +155,12 @@ SUBSYSTEM_DEF(job)
 		if(!job.player_old_enough(player.client))
 			JobDebug("GRJ player not old enough, Player: [player]")
 			continue
+
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(job.has_banned_quirk(player.client.prefs))
+			JobDebug("GRJ player has incompatible quirk, Player: [player]")
+			continue
+		//SKYRAT EDIT END
 
 		if(job.required_playtime_remaining(player.client))
 			JobDebug("GRJ player not enough xp, Player: [player]")
@@ -326,6 +341,12 @@ SUBSYSTEM_DEF(job)
 				if(!job.player_old_enough(player.client))
 					JobDebug("DO player not old enough, Player: [player], Job:[job.title]")
 					continue
+
+				//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+				if(job.has_banned_quirk(player.client.prefs))
+					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
+					continue
+				//SKYRAT EDIT END
 
 				if(job.required_playtime_remaining(player.client))
 					JobDebug("DO player not enough xp, Player: [player], Job:[job.title]")

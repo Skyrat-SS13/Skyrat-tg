@@ -255,6 +255,10 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		//SKYRAT EDIT END
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -278,6 +282,10 @@
 		return JOB_UNAVAILABLE_ACCOUNTAGE
 	if(job.required_playtime_remaining(client))
 		return JOB_UNAVAILABLE_PLAYTIME
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	//SKYRAT EDIT END
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
