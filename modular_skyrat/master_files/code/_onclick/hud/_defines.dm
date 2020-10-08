@@ -1,2 +1,2 @@
 //skyrat hud defines
-#define ui_ammocounter "EAST-1:27,CENTER-5:10"
+#define ui_ammocounter "EAST-1:28,CENTER-5:9"

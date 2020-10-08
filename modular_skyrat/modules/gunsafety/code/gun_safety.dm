@@ -25,7 +25,7 @@
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message("<span class='notice'>[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"].",
 	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"].</span>")
-
+	update_icon()
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	if(safety)
 		to_chat(user, "<span class='warning'>The safety is on!</span>")
@@ -36,4 +36,4 @@
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
-	. += "The safety is [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"]."
+	. += "<span>The safety is [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"].</span>"
