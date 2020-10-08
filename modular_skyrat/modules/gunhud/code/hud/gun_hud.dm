@@ -7,7 +7,7 @@
 /obj/item/gun/ballistic
 	var/has_ammo_display = FALSE //Does this gun have an ammo display on it? No? Okay don't show the ammo hud.
 
-//GUI toggles
+//GUI toggles - NEEDS TO BE SIGNALS
 /*
 /obj/item/gun/Initialize()
 	. = ..()
@@ -26,7 +26,7 @@
 
 /obj/item/gun/update_overlays()
 	if(ishuman(src.loc))
-		var/mob/living/carbon/human/user = loc
+		var/mob/living/carbon/human/user = src.loc
 		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
 		hud.handle()
 	. = ..()
@@ -43,10 +43,16 @@
 		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
 		hud.turn_off()
 
+/obj/item/gun/equipped(mob/living/user, slot)
+	. = ..()
+	if(ishuman(user))
+		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		hud.turn_on()
+
 //WELDER
 /obj/item/weldingtool/update_overlays()
 	if(ishuman(src.loc))
-		var/mob/living/carbon/human/user = loc
+		var/mob/living/carbon/human/user = src.loc
 		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
 		hud.handle()
 	. = ..()
@@ -63,26 +69,24 @@
 		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
 		hud.turn_off()
 
+/obj/item/weldingtool/equipped(mob/user, slot, initial)
+	. = ..()
+	if(ishuman(user))
+		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		hud.turn_on()
+
+/*shitcode
 /obj/item/weldingtool/process()
 	if(ishuman(src.loc))
-		var/mob/living/carbon/human/user = loc
+		var/mob/living/carbon/human/user = src.loc
 		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
 		to_chat(src.loc, "CHECK WELDER PROCESS")
+		to_chat(hud)
 		hud.handle()
 	..()
+*/
+
 //HUMAN
-
-/mob/living/carbon/human/Click(location, control, params)
-	. = ..()
-
-
-/mob/living/carbon/human/Life()
-	if(stat != DEAD)
-		var/obj/screen/ammo_counter/hud = hud_used.ammo_counter
-		hud.handle()
-	. = ..()
-
-
 
 //Ammo counter
 /obj/screen/ammo_counter
@@ -158,6 +162,9 @@
 	oth_h = ""
 	indicator = ""
 	var/helditem = usr.get_active_held_item()
+	if(!helditem)
+		turn_off()
+		return
 	if(istype(helditem, /obj/item/gun/ballistic))
 		gun_ballistic(helditem)
 	if(istype(helditem, /obj/item/gun/energy))
@@ -165,6 +172,7 @@
 	if(istype(helditem, /obj/item/weldingtool))
 		welder(helditem)
 
+//ENERGY GUNS
 /obj/screen/ammo_counter/proc/gun_energy(var/obj/item/gun/energy/pew)
 	if(!istype(pew, /obj/item/gun/energy))
 		return
@@ -174,6 +182,7 @@
 	icon_state = "eammo_counter"
 
 	maptext_x = -12
+
 
 	var/obj/item/ammo_casing/energy/shot = pew.ammo_type[pew.select]
 	var/batt_percent = FLOOR(clamp(pew.cell.charge / pew.cell.maxcharge, 0, 1) * 100, 1)
@@ -194,6 +203,7 @@
 		return
 	maptext = "<span class='maptext'><div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div></span>"
 
+//BALLISTIC GUNS
 /obj/screen/ammo_counter/proc/gun_ballistic(var/obj/item/gun/ballistic/pew)
 	if(!istype(pew, /obj/item/gun/ballistic))
 		turn_off()
@@ -253,6 +263,7 @@
 			oth_h = "h9"
 	update_icon()
 
+//WELDER
 /obj/screen/ammo_counter/proc/welder(var/obj/item/weldingtool/welder)
 	if(!istype(welder, /obj/item/weldingtool))
 		turn_off()
@@ -278,6 +289,7 @@
 		indicator = "flame_off"
 
 	var/fuel = num2text(welder.get_fuel())
+	to_chat(usr, "[fuel]")
 	switch(length(fuel))
 		if(1)
 			oth_o = "o[fuel[1]]"
