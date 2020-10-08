@@ -55,3 +55,58 @@
 /datum/body_marking/moth/lovers
 	name = "Lovers"
 	icon_state = "lovers"
+
+/datum/body_marking/moth/grayscale
+	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/moth_grayscale_markings.dmi'
+
+/datum/body_marking/moth/grayscale/reddish
+	name = "Reddish Grayscale"
+	icon_state = "reddish"
+
+/datum/body_marking/moth/grayscale/royal
+	name = "Royal Grayscale"
+	icon_state = "royal"
+
+/datum/body_marking/moth/grayscale/gothic
+	name = "Gothic Grayscale"
+	icon_state = "gothic"
+
+/datum/body_marking/moth/grayscale/whitefly
+	name = "Whitefly Grayscale"
+	icon_state = "whitefly"
+
+/datum/body_marking/moth/grayscale/burnt_off
+	name = "Burnt Off Grayscale"
+	icon_state = "burnt_off"
+
+/datum/body_marking/moth/grayscale/deathhead
+	name = "Deathhead Grayscale"
+	icon_state = "deathhead"
+
+/datum/body_marking/moth/grayscale/poison
+	name = "Poison Grayscale"
+	icon_state = "poison"
+
+/datum/body_marking/moth/grayscale/ragged
+	name = "Ragged Grayscale"
+	icon_state = "ragged"
+
+/datum/body_marking/moth/grayscale/moonfly
+	name = "Moonfly Grayscale"
+	icon_state = "moonfly"
+
+/datum/body_marking/moth/grayscale/oakworm
+	name = "Oakworm Grayscale"
+	icon_state = "oakworm"
+
+/datum/body_marking/moth/grayscale/jungle
+	name = "Jungle Grayscale"
+	icon_state = "jungle"
+
+/datum/body_marking/moth/grayscale/witchwing
+	name = "Witchwing Grayscale"
+	icon_state = "witchwing"
+
+/datum/body_marking/moth/grayscale/lovers
+	name = "Lovers Grayscale"
+	icon_state = "lovers"
