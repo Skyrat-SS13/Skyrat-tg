@@ -229,3 +229,7 @@
 	name = "Lunasune"
 	icon_state = "lunasune"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/spade
+	name = "Succubus Spade Tail"
+	icon_state = "spade"
