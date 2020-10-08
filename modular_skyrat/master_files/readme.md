@@ -18,6 +18,7 @@ MASTER CODE FILES
 - /master_files/code/datums/traits/negative.dm > USE THIS FOR ANY NEGATIVE TRAITS
 - /master_files/code/datums/traits/good.dm > USE THIS FOR ANY GOOD TRAITS
 - master_files\code\game\objects\items.dm
+- master_files\code\modules\clothing\spacesuits\_spacesuits.dm
 MASTER GLOBAL VARS
 - modular_skyrat/master_files/code/_globalvars/configuration.dm > GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
