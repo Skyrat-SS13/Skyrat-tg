@@ -203,7 +203,7 @@
 		if(istype(A, /obj/item/soap))
 			var/obj/item/soap/S = A
 			to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
-			if(do_after(user, 1000/S.cleanspeed))
+			if(do_after(user, (1000/S.cleanspeed) SECONDS))
 				dirt_level -= S.cleanspeed
 				if(dirt_level < 0)
 					dirt_level = 0
