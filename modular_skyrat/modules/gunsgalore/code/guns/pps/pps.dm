@@ -18,7 +18,6 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	durability_factor = 0.5
-	gun_type = SUBMACHINE_GUN
 
 /obj/item/ammo_box/magazine/pps
 	name = "pps magazine (7.62×25mm)"

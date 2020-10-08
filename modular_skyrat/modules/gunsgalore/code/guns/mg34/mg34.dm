@@ -20,7 +20,6 @@
 	fire_delay = 1
 	realistic = TRUE
 	dirt_modifier = 0.1
-	gun_type = MACHINE_GUN
 
 /obj/item/ammo_box/magazine/mg34
 	name = "mg34 drum mag (7.92×57mm)"

@@ -1,7 +1,0 @@
-#define HANDGUN "handgun"
-#define ASSAULT_RIFLE "assault rifle"
-#define BATTLE_RIFLE "battle rifle"
-#define MACHINE_GUN "machine gun"
-#define SNIPER_RIFLE "sniper rifle"
-#define SUBMACHINE_GUN "submachine gun"
-#define RIFLE "rifle"

@@ -18,7 +18,6 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	zoomable = TRUE
-	gun_type = BATTLE_RIFLE
 
 /obj/item/ammo_box/magazine/fg42
 	name = "fg42 magazine (7.92×57mm)"

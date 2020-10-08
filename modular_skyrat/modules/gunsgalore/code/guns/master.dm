@@ -9,7 +9,6 @@
 	var/base_spread = 0
 	var/durability = 100 //How used this gun is.
 	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
-	var/gun_type //The gun type define.
 
 /obj/item/gun/ballistic/Initialize()
 	. = ..()

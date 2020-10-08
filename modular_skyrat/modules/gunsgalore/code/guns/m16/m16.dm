@@ -17,7 +17,6 @@
 	fire_sound_volume = 50
 	alt_icons = TRUE
 	realistic = TRUE
-	gun_type = ASSAULT_RIFLE
 
 /obj/item/ammo_box/magazine/m16
 	name = "m16 magazine (5.56×45mm)"

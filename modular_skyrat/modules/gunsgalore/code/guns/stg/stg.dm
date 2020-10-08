@@ -17,7 +17,6 @@
 	fire_sound_volume = 70
 	alt_icons = TRUE
 	realistic = TRUE
-	gun_type = ASSAULT_RIFLE
 
 /obj/item/ammo_box/magazine/stg
 	name = "stg magazine (7.92×33mm)"

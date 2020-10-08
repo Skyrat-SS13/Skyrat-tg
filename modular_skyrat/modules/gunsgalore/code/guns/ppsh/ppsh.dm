@@ -19,7 +19,6 @@
 	alt_icons = TRUE
 	realistic = TRUE
 	dirt_modifier = 0.3
-	gun_type = SUBMACHINE_GUN
 
 /obj/item/ammo_box/magazine/ppsh
 	name = "ppsh-41 magazine (7.62×25mm)"

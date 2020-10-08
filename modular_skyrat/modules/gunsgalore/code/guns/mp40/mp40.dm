@@ -17,7 +17,6 @@
 	fire_sound_volume = 100
 	alt_icons = TRUE
 	realistic = TRUE
-	gun_type = SUBMACHINE_GUN
 
 /obj/item/ammo_box/magazine/mp40
 	name = "mp40 magazine (9mmx19)"

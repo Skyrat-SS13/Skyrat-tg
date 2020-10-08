@@ -16,7 +16,6 @@
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/akm/akm.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
-	gun_type = ASSAULT_RIFLE
 
 /obj/item/ammo_box/magazine/akm
 	name = "akm magazine (7.62×39mm)"
