@@ -409,7 +409,7 @@
 	. = ..()
 	var/count_chambered = !(bolt_type == BOLT_TYPE_NO_BOLT || bolt_type == BOLT_TYPE_OPEN)
 
-	if(has_ammo_display || src.internal_magazine) //SKYRAT EDIT ADDITION - GUNHUD
+	if(has_ammo_display || internal_magazine) //SKYRAT EDIT ADDITION - GUNHUD
 		. += "It has [get_ammo(count_chambered)] round\s remaining."
 	if (!chambered)
 		. += "It does not seem to have a round chambered."
