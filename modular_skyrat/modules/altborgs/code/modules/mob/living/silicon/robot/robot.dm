@@ -59,11 +59,13 @@
 
 /mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
 	. = ..()
-	pixel_x = -16
+	if(dogborg)
+		pixel_x = -16
 
 /mob/living/silicon/robot/stop_pulling()
 	. = ..()
-	pixel_x = -16
+	if(dogborg)
+		pixel_x = -16
 
 /mob/living/silicon/robot/pick_module()
 	if(module.type != /obj/item/robot_module)
