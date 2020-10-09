@@ -57,7 +57,11 @@
 /mob/living/silicon/robot/modules/butler/skyrat
 	set_module = /obj/item/robot_module/butler/skyrat
 
-/mob/living/silicon/robot/pulled(atom/movable/AM)
+/mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
+	. = ..()
+	pixel_x = -16
+
+/mob/living/silicon/robot/stop_pulling()
 	. = ..()
 	pixel_x = -16
 
