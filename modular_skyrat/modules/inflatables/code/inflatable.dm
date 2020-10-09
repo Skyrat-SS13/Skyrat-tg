@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "folded_wall"
 	w_class = WEIGHT_CLASS_SMALL
+	CanAtmosPass = ATMOS_PASS_NO
 	var/structuretype = /obj/structure/inflatable
 
 /obj/item/inflatable/attack_self(mob/user)
@@ -21,9 +22,10 @@
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
-	density = 1
-	anchored = 1
-	opacity = 0
+	atmos_can
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "wall"
 	var/health = 20
@@ -40,7 +42,7 @@
 
 /obj/structure/inflatable/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	. = ..()
-	return 0
+	return FALSE
 
 /obj/structure/inflatable/CanAtmosPass(turf/T)
 	return !density
@@ -99,7 +101,7 @@
 		return
 	if(W.sharpness)
 		visible_message("<span class='danger'><b>[user] pierces [src] with [W]!</b></span>")
-		deflate(1)
+		deflate(TRUE)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
 		..()
@@ -109,7 +111,7 @@
 	if(sound_effect)
 		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
 	if(health <= 0)
-		deflate(1)
+		deflate(TRUE)
 
 /obj/structure/inflatable/AltClick()
 	if(usr.stat || usr.can_interact())
@@ -150,15 +152,16 @@
 
 /obj/structure/inflatable/door //based on mineral door code
 	name = "inflatable door"
-	density = 1
-	anchored = 1
-	opacity = 0
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
+	CanAtmosPass = ATMOS_PASS_DENSITY
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "door_closed"
 	torntype = /obj/item/inflatable/torn/door
 	itemtype = /obj/item/inflatable/door
-	var/state = 0 //closed, 1 == open
-	var/isSwitchingStates = 0
+	var/state = FALSE //closed, 1 == open
+	var/isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/attack_hand(mob/user)
 	return TryToSwitchState(user)
@@ -169,9 +172,6 @@
 		return state
 	if(istype(mover, /obj/effect/beam))
 		return !opacity
-	return !density
-
-/obj/structure/inflatable/door/CanAtmosPass(turf/T)
 	return !density
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
@@ -194,27 +194,27 @@
 		Close()
 	else
 		Open()
-	air_update_turf(1)
+	air_update_turf(TRUE)
 
 /obj/structure/inflatable/door/proc/Open()
-	isSwitchingStates = 1
+	isSwitchingStates = TRUE
 	flick("door_opening",src)
 	sleep(10)
-	density = 0
-	opacity = 0
-	state = 1
+	density = FALSE
+	opacity = FALSE
+	state = TRUE
 	update_icon()
-	isSwitchingStates = 0
+	isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/proc/Close()
-	isSwitchingStates = 1
+	isSwitchingStates = TRUE
 	flick("door_closing",src)
 	sleep(10)
-	density = 1
-	opacity = 0
-	state = 0
+	density = TRUE
+	opacity = FALSE
+	state = FALSE
 	update_icon()
-	isSwitchingStates = 0
+	isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/update_icon()
 	if(state)
@@ -224,7 +224,7 @@
 
 /obj/structure/inflatable/door/deflate(violent)
 	..()
-	air_update_turf(1)
+	air_update_turf(TRUE)
 
 /obj/item/inflatable/torn
 	name = "torn inflatable wall"
@@ -266,7 +266,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/inflatable/ComponentInitialize()
-	.=..()
+	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 21
 
@@ -275,7 +275,7 @@
 		new /obj/item/inflatable/door(src)
 	for(var/i = 0, i < 16, i ++)
 		new /obj/item/inflatable(src)
-	.=..()
+	. = ..()
 
 /obj/item/inflatable/suicide_act(mob/living/user)
 	visible_message(user, "<span class='danger'>[user] starts shoving the [src] up his ass! It looks like hes going to pull the cord, oh shit!</span>")
