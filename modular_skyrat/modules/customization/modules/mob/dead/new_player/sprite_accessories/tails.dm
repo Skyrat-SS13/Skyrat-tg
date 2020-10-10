@@ -49,7 +49,7 @@
 	recommended_species = list("mammal", "human", "tajaran", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
-	recommended_species = list("mammal", "human", "akula", "humanoid")
+	recommended_species = list("mammal", "human", "akula", "aquatic", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"

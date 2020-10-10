@@ -29,7 +29,7 @@
 	recommended_species = list("mammal", "tajaran", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/akula
-	recommended_species = list("mammal", "akula", "humanoid")
+	recommended_species = list("mammal", "akula", "aquatic", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"
