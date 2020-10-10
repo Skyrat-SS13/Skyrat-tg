@@ -374,9 +374,7 @@
 	if(mob_occupant.mind)
 		//Handle job slot/tater cleanup.
 		if(mob_occupant.mind.assigned_role)
-			var/datum/job/JOB = SSjob.GetJob(mob_occupant.mind.assigned_role)
-			if(JOB)
-				JOB.current_positions = max(0, JOB.current_positions - 1)
+			SSjob.FreeRole(mob_occupant.mind.assigned_role)
 		mob_occupant.mind.special_role = null
 
 	// Delete them from datacore.
