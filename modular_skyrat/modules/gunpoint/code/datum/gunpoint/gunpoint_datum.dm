@@ -186,7 +186,7 @@
 	if(!CheckContinuity())
 		qdel(src)
 
-/datum/gunpoint/proc/SourceUpdatedResting()
+/datum/gunpoint/proc/SourceUpdatedResting(datum/datum_source, resting)
 	if(resting)
 		qdel(src)
 
