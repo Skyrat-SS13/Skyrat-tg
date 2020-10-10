@@ -486,6 +486,7 @@
 /// Proc to append and redefine behavior to the change of the [/mob/living/var/resting] variable.
 /mob/living/proc/update_resting()
 	update_rest_hud_icon()
+	SEND_SIGNAL(src, COMSIG_LIVING_UPDATED_RESTING, resting) //SKYRAT EDIT ADDITION - GUNPOINT
 
 
 /mob/living/proc/get_up(instant = FALSE)
@@ -1248,17 +1249,7 @@
 	return ..() && !(buckled && buckled.buckle_prevents_pull)
 
 
-<<<<<<< HEAD
-//Updates lying and icons on robots, animals and brains. Needs to be refactored to use traits and update based on events.
-/mob/living/proc/update_mobility()
-	SEND_SIGNAL(src, COMSIG_LIVING_UPDATED_MOBILITY, mobility_flags) //SKYRAT EDIT ADDITION - GUNPOINT
-	return
-
-
-///Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment, through update_mobility()
-=======
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
->>>>>>> af65c901255... Mobility refactor: no more update_mobility() (#54183)
 /mob/living/proc/on_fall()
 	return
 
