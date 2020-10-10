@@ -62,15 +62,17 @@
 
 /datum/species/robotic/ipc/spec_revival(mob/living/carbon/human/H)
 	. = ..()
-	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "BSOD"
-	sleep(3 SECONDS)
+	//TODO: fix this
+	/*H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "BSOD"
+	sleep(3 SECONDS)*/
 	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = saved_screen
 
 /datum/species/robotic/ipc/spec_death(gibbed, mob/living/carbon/human/H)
 	. = ..()
 	saved_screen = H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME]
-	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "BSOD"
-	sleep(3 SECONDS)
+	//TODO: fix this
+	/*H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "BSOD"
+	sleep(3 SECONDS)*/
 	H.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = "Blank"
 
 /datum/species/robotic/ipc/on_species_gain(mob/living/carbon/human/C)
