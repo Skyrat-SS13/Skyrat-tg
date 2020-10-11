@@ -44,7 +44,8 @@
 		if(get_dist(M, turf_source) <= maxdistance)
 			M.playsound_local(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, S)
 
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel = 0, pressure_affected = TRUE, sound/S, distance_multiplier = 1)
+///mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel = 0, pressure_affected = TRUE, sound/S, distance_multiplier = 1) //ORIGINAL
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel = 0, pressure_affected = TRUE, sound/S, distance_multiplier = 1 ,envwet = -10000, envdry = 0) //SKYRAT EDIT CHANGE - SOUND ECHO
 	if(!client || !can_hear())
 		return
 
@@ -54,6 +55,7 @@
 	S.wait = 0 //No queue
 	S.channel = channel || SSsounds.random_available_channel()
 	S.volume = vol
+	S.environment = 7 //SKYRAT CHANGE ADDITION - SOUND ECHO
 
 	if(vary)
 		if(frequency)
@@ -83,6 +85,8 @@
 					pressure_factor = max((pressure - SOUND_MINIMUM_PRESSURE)/(ONE_ATMOSPHERE - SOUND_MINIMUM_PRESSURE), 0)
 			else //space
 				pressure_factor = 0
+
+			S.echo = list(envdry, null, envwet, null, null, null, null, null, null, null, null, null, null, 1, 1, 1, null, null) //SKYRAT CHANGE ADDITION - SOUND ECHO
 
 			if(distance <= 1)
 				pressure_factor = max(pressure_factor, 0.15) //touching the source of the sound
