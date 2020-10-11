@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		if(!(M.client.prefs.toggles & SOUND_INSTRUMENTS))
 			continue
 
-		M.playsound_local_skyrat(M, null, jukebox.volume, channel = youvegotafreejukebox[2], S = song_to_init)
+		M.playsound_local(M, null, jukebox.volume, channel = youvegotafreejukebox[2], S = song_to_init)
 	return activejukeboxes.len
 
 /datum/controller/subsystem/jukeboxes/proc/removejukebox(IDtoremove)
@@ -119,6 +119,6 @@ SUBSYSTEM_DEF(jukeboxes)
 			else
 				song_played.status = SOUND_MUTE | SOUND_UPDATE	//Setting volume = 0 doesn't let the sound properties update at all, which is lame.
 
-			M.playsound_local_skyrat(currentturf, null, jukebox.volume, channel = jukeinfo[2], S = song_played, envwet = (inrange ? -250 : 0), envdry = (inrange ? 0 : -10000))
+			M.playsound_local(currentturf, null, jukebox.volume, channel = jukeinfo[2], S = song_played, envwet = (inrange ? -250 : 0), envdry = (inrange ? 0 : -10000))
 			CHECK_TICK
 	return
