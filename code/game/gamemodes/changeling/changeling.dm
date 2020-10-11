@@ -93,10 +93,10 @@ GLOBAL_VAR(changeling_team_objective_type) //If this is not null, we hand our th
 						changelings += character.mind
 
 /datum/game_mode/changeling/generate_report()
-	return "The Gorlex Marauders have announced the successful raid and destruction of Central Command containment ship #S-[rand(1111, 9999)]. This ship housed only a single prisoner - \
-			codenamed \"Thing\", and it was highly adaptive and extremely dangerous. We have reason to believe that the Thing has allied with the Syndicate, and you should note that likelihood \
-			of the Thing being sent to a station in this sector is highly likely. It may be in the guise of any crew member. Trust nobody - suspect everybody. Do not announce this to the crew, \
-			as paranoia may spread and inhibit workplace efficiency."
+	return "There have been disturbing reports of colonists being left dead with all bodily fluids reportedly sucked out of their bodies. On top of that, there have been accounts of ships and \
+	shuttles in your sector turning up dark with the crew found in similarly husked states, or seemingly butchered by something clearly not human. While these could be simple animal or mutant \
+	attacks, it is equally likely that there are shapeshifting creatures within your region. If this is the case, proceed with EXTREME caution, as these creatures are likely very dangeorus and hostile. \
+	If they attempt communication, do not trust them."
 
 /proc/changeling_transform(mob/living/carbon/human/user, datum/changelingprofile/chosen_prof)
 	var/datum/dna/chosen_dna = chosen_prof.dna

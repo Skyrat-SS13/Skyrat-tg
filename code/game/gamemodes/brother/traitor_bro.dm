@@ -64,4 +64,4 @@
 	return ..()
 
 /datum/game_mode/traitor/bros/generate_report()
-	return "It's Syndicate recruiting season. Be alert for potential Syndicate infiltrators, but also watch out for disgruntled employees trying to defect. Unlike Nanotrasen, the Syndicate prides itself in teamwork and will only recruit pairs that share a brotherly trust."
+	return "Reports in your region indicate the presence of criminal duos. Be on the lookout for potential 'Bonnie and Clyde' imitators, as the suspects in question always seem to be working in pairs."

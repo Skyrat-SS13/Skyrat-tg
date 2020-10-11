@@ -65,5 +65,7 @@
 	return ..()
 
 /datum/game_mode/heretics/generate_report()
-	return "Cybersun Industries has announced that they have successfully raided a high-security library. The library contained a very dangerous book that was \
-	shown to posses anomalous properties. We suspect that the book has been copied over, Stay vigilant!"
+	return "Latest news reports from Sol tell of a recent theft from the Alexandria Memorial Museum on Mars. Apparently the only thing stolen was a book, bound in strange leather and bearing a \
+	disturbing symbol on it's cover. Those who looked at the book for extended periods of time reported headaches and strange, random bouts of fatigue, even hearing whispers on the air. \
+	It is unknown why this book was stolen, or by whom. But it is likely they have fled out onto the frontier, and all stations and colonies are urged to keep an eye out for it, as the \
+	authorities are still searching for the thief."
