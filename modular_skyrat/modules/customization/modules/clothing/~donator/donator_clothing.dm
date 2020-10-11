@@ -40,6 +40,14 @@
 	name = "polychromic veil"
 	icon_state = "polyveil"
 
+/obj/item/clothing/neck/cloak/polychromic/boat
+	name = "polychromic boatcloak"
+	icon_state = "polyboat"
+
+/obj/item/clothing/neck/cloak/polychromic/shroud
+	name = "polychromic shroud"
+	icon_state = "polyshroud"
+
 //UNIFORMS
 /obj/item/clothing/under/dress/skirt/polychromic
 	name = "polychromic skirt"
@@ -166,6 +174,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/large-worn-icons/32x64/head.dmi'
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
+	mutant_variants = NONE
 
 //Donation reward for Random516
 /obj/item/clothing/gloves/fingerless/blutigen_wraps

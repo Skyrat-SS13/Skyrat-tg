@@ -62,8 +62,17 @@
 #define BODY_SIZE_MAX			1.25
 #define BODY_SIZE_MIN			0.85
 
-#define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL)
+#define SHEATH_NONE			"None"
+#define SHEATH_NORMAL		"Sheath"
+#define SHEATH_SLIT			"Slit"
+
+#define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL, "custom_species" = null, "uses_skintones" = FALSE)
 
 #define UNDERWEAR_HIDE_SOCKS		(1<<0)
 #define UNDERWEAR_HIDE_SHIRT		(1<<1)
 #define UNDERWEAR_HIDE_UNDIES		(1<<2)
+
+#define AROUSAL_CANT		0
+#define AROUSAL_NONE		1
+#define AROUSAL_PARTIAL		2
+#define AROUSAL_FULL		3

@@ -11,8 +11,6 @@
 	///Notable things that have it set to FALSE are things that need special setup, such as genitals
 	var/generic
 
-	var/special_render_case
-
 	color_src = USE_ONE_COLOR
 
 	///Which layers does this accessory affect (BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
@@ -21,16 +19,20 @@
 	///This is used to determine whether an accessory gets added to someone. This is important for accessories that are "None", which should have this set to false
 	var/factual = TRUE
 
-	///Use this as a typepath to an organ that this sprite_accessory will be associated. Make sure the organ has 'mutantpart_info' set properly.
+	///Use this as a type path to an organ that this sprite_accessory will be associated. Make sure the organ has 'mutantpart_info' set properly.
 	var/organ_type
 
 	///Set this to true to make an accessory appear as color customizable in preferences despite advanced color settings being off, will also prevent the accessory from being reset
 	var/always_color_customizable
-
+	///Whether the accessory can have a special icon_state to render, i.e. wagging tails
+	var/special_render_case
+	///Special case of whether the accessory should be shifted in the X dimension, check taur genitals for example
 	var/special_x_dimension
-
+	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
-
+	///Special case of possibly not applying color to the accessory, important for hardsuit styles
+	var/special_colorize
+	///Whether it has any extras to render, and their appropriate color sources
 	var/extra = FALSE
 	var/extra_color_src
 	var/extra2 = FALSE
@@ -61,6 +63,9 @@
 
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H)
 	return 0
+
+/datum/sprite_accessory/proc/do_colorize(mob/living/carbon/human/H)
+	return TRUE
 
 /datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
 	var/list/colors
@@ -101,8 +106,8 @@
 	generic = "Spines"
 	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
-	recommended_species = list("lizard")
 	default_color = DEFAULT_SECONDARY
+	recommended_species = list("lizard", "unathi")
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))

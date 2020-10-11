@@ -1,7 +1,7 @@
 /datum/sprite_accessory/horns
 	key = "horns"
 	generic = "Horns"
-	relevent_layers = list(BODY_ADJ_LAYER)
+	relevent_layers = list(BODY_FRONT_LAYER)
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/horns.dmi'
 	default_color = "555"
 

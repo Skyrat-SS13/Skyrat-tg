@@ -16,7 +16,7 @@
 	w_class = WEIGHT_CLASS_SMALL //small but packs a PUNCH.
 	preload_cell_type = /obj/item/stock_parts/cell/high/plus
 
-/obj/item/melee/baton/attack(mob/M, mob/living/carbon/human/user)
+/obj/item/melee/baton/blueshieldprod/attack(mob/M, mob/living/carbon/human/user)
 	if(!HAS_TRAIT(user, TRAIT_MINDSHIELD))
 		to_chat(user, "<span class='danger'>A red light on the baton flashes!</span>")
 		return TRUE
