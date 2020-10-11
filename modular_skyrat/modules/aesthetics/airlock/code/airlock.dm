@@ -220,7 +220,6 @@
 				note_overlay = get_airlock_overlay("[notetype]_opening", note_overlay_file)
 
 	if(lights_overlay != old_lights_overlay)
-		old_lights_overlay = ""
 		update_vis_overlays(lights_overlay)
 		old_lights_overlay = lights_overlay
 		set_light(pre_light_range, pre_light_power, pre_light_color)
