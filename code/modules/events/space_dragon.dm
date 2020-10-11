@@ -1,15 +1,10 @@
 /datum/round_event_control/space_dragon
 	name = "Spawn Space Dragon"
 	typepath = /datum/round_event/ghost_role/space_dragon
-<<<<<<< HEAD
 	//max_occurrences = 1 //ORIGINAL
 	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
-	weight = 5
-	earliest_start = 35 MINUTES
-=======
 	weight = 10
 	max_occurrences = 1
->>>>>>> 2d03ef916c3... Space Dragon QOL and Additional Features (#54124)
 	min_players = 20
 
 /datum/round_event/ghost_role/space_dragon
