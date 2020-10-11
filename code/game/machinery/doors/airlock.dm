@@ -430,17 +430,22 @@
 			icon_state = "nonexistenticonstate" //MADNESS
 	set_airlock_overlays(state)
 
+/* SKYRAT EDIT MOVED TO AIRLOCK.DM IN AESTHETICS MODULE
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/mutable_appearance/frame_overlay
 	var/mutable_appearance/filling_overlay
-	var/mutable_appearance/lights_overlay
+	var/lights_overlay = ""
 	var/mutable_appearance/panel_overlay
 	var/mutable_appearance/weld_overlay
 	var/mutable_appearance/damag_overlay
 	var/mutable_appearance/sparks_overlay
 	var/mutable_appearance/note_overlay
 	var/mutable_appearance/seal_overlay
+
 	var/notetype = note_type()
+	var/pre_light_range = 0
+	var/pre_light_power = 0
+	var/pre_light_color = ""
 
 	switch(state)
 		if(AIRLOCK_CLOSED)
@@ -463,10 +468,21 @@
 			else if(obj_integrity < (0.75 * max_integrity))
 				damag_overlay = get_airlock_overlay("sparks_damaged", overlays_file)
 			if(lights && hasPower())
+				pre_light_range = AIRLOCK_LIGHT_RANGE
+				pre_light_power = AIRLOCK_LIGHT_POWER
 				if(locked)
-					lights_overlay = get_airlock_overlay("lights_bolts", overlays_file)
+					//lights_overlay = get_airlock_overlay("lights_bolts", overlays_file)
+					lights_overlay = "lights_bolts"
+					pre_light_color = AIRLOCK_BOLTS_LIGHT_COLOR
 				else if(emergency)
-					lights_overlay = get_airlock_overlay("lights_emergency", overlays_file)
+					//lights_overlay = get_airlock_overlay("lights_emergency", overlays_file)
+					lights_overlay = "lights_emergency"
+					pre_light_color = AIRLOCK_EMERGENCY_LIGHT_COLOR
+				else
+					//lights_overlay = get_airlock_overlay("lights_poweron", overlays_file)
+					lights_overlay = "lights_poweron"
+					pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
+
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
 
@@ -491,7 +507,13 @@
 				weld_overlay = get_airlock_overlay("welded", overlays_file)
 			if(seal)
 				seal_overlay = get_airlock_overlay("sealed", overlays_file)
-			lights_overlay = get_airlock_overlay("lights_denied", overlays_file)
+			if(lights && hasPower())
+				pre_light_range = AIRLOCK_LIGHT_RANGE
+				pre_light_power = AIRLOCK_LIGHT_POWER
+				lights_overlay = "lights_denied"
+				//lights_overlay = get_airlock_overlay("lights_denied", overlays_file)
+				pre_light_color = AIRLOCK_DENY_LIGHT_COLOR
+
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
 
@@ -525,7 +547,11 @@
 			else
 				filling_overlay = get_airlock_overlay("fill_closing", icon)
 			if(lights && hasPower())
-				lights_overlay = get_airlock_overlay("lights_closing", overlays_file)
+				pre_light_range = AIRLOCK_LIGHT_RANGE
+				pre_light_power = AIRLOCK_LIGHT_POWER
+				//lights_overlay = get_airlock_overlay("lights_closing", overlays_file)
+				lights_overlay = "lights_closing"
+				pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
 			if(panel_open)
 				if(security_level)
 					panel_overlay = get_airlock_overlay("panel_closing_protected", overlays_file)
@@ -549,6 +575,23 @@
 				damag_overlay = get_airlock_overlay("sparks_open", overlays_file)
 			if(note)
 				note_overlay = get_airlock_overlay("[notetype]_open", note_overlay_file)
+				//SKYRAT EDIT ADDTION - AESTHETICS
+			if(lights && hasPower())
+				pre_light_range = AIRLOCK_LIGHT_RANGE
+				pre_light_power = AIRLOCK_LIGHT_POWER
+				if(locked)
+					//lights_overlay = get_airlock_overlay("lights_bolts_open", overlays_file)
+					lights_overlay = "lights_bolts_open"
+					pre_light_color = AIRLOCK_BOLTS_LIGHT_COLOR
+				else if(emergency)
+					//lights_overlay = get_airlock_overlay("lights_emergency_open", overlays_file)
+					lights_overlay = "lights_emergency_open"
+					pre_light_color = AIRLOCK_EMERGENCY_LIGHT_COLOR
+				else
+					//lights_overlay = get_airlock_overlay("lights_poweron_open", overlays_file)
+					lights_overlay = "lights_poweron_open"
+					pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
+				//SKYRAT EDIT END
 
 		if(AIRLOCK_OPENING)
 			frame_overlay = get_airlock_overlay("opening", icon)
@@ -557,7 +600,11 @@
 			else
 				filling_overlay = get_airlock_overlay("fill_opening", icon)
 			if(lights && hasPower())
-				lights_overlay = get_airlock_overlay("lights_opening", overlays_file)
+				pre_light_range = AIRLOCK_LIGHT_RANGE
+				pre_light_power = AIRLOCK_LIGHT_POWER
+				//lights_overlay = get_airlock_overlay("lights_opening", overlays_file)
+				lights_overlay = "lights_opening"
+				pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
 			if(panel_open)
 				if(security_level)
 					panel_overlay = get_airlock_overlay("panel_opening_protected", overlays_file)
@@ -566,17 +613,47 @@
 			if(note)
 				note_overlay = get_airlock_overlay("[notetype]_opening", note_overlay_file)
 
-	cut_overlays()
-	add_overlay(frame_overlay)
-	add_overlay(filling_overlay)
-	add_overlay(lights_overlay)
-	add_overlay(panel_overlay)
-	add_overlay(weld_overlay)
-	add_overlay(sparks_overlay)
-	add_overlay(damag_overlay)
-	add_overlay(note_overlay)
-	add_overlay(seal_overlay)
+	if(frame_overlay != old_frame_overlay)
+		cut_overlay(old_frame_overlay)
+		add_overlay(frame_overlay)
+		old_frame_overlay = frame_overlay
+	if(filling_overlay != old_filling_overlay)
+		cut_overlay(old_filling_overlay)
+		add_overlay(filling_overlay)
+		old_filling_overlay = filling_overlay
+	if(panel_overlay != old_panel_overlay)
+		cut_overlay(old_panel_overlay)
+		add_overlay(panel_overlay)
+		old_panel_overlay = panel_overlay
+	if(weld_overlay != old_weld_overlay)
+		cut_overlay(old_weld_overlay)
+		add_overlay(weld_overlay)
+		old_weld_overlay = weld_overlay
+	if(damag_overlay != old_damag_overlay)
+		cut_overlay(old_damag_overlay)
+		add_overlay(damag_overlay)
+		old_damag_overlay = damag_overlay
+	if(note_overlay != old_note_overlay)
+		cut_overlay(old_note_overlay)
+		add_overlay(note_overlay)
+		old_note_overlay = note_overlay
+	if(seal_overlay != old_seal_overlay)
+		cut_overlay(old_seal_overlay)
+		add_overlay(seal_overlay)
+		old_seal_overlay = seal_overlay
+
+	//Vis lights
+	if(lights_overlay != old_lights_overlay)
+		update_vis_overlays(lights_overlay)
+		old_lights_overlay = lights_overlay
+		set_light(pre_light_range, pre_light_power, pre_light_color)
+	if(sparks_overlay != old_sparks_overlay)
+		cut_overlay(old_sparks_overlay)
+		add_overlay(sparks_overlay)
+		old_sparks_overlay = sparks_overlay
+
 	check_unres()
+*/
 
 /proc/get_airlock_overlay(icon_state, icon_file)
 	var/obj/machinery/door/airlock/A
@@ -586,6 +663,27 @@
 	if((!(. = airlock_overlays[iconkey])))
 		. = airlock_overlays[iconkey] = mutable_appearance(icon_file, icon_state)
 
+//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
+/obj/machinery/door/airlock/proc/check_unres() //unrestricted sides. This overlay indicates which directions the player can access even without an ID
+	if(hasPower() && unres_sides)
+		if(unres_sides & NORTH)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_n")
+			I.pixel_y = 32
+			add_overlay(I)
+		if(unres_sides & SOUTH)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_s")
+			I.pixel_y = -32
+			add_overlay(I)
+		if(unres_sides & EAST)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_e")
+			I.pixel_x = 32
+			add_overlay(I)
+		if(unres_sides & WEST)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_w")
+			I.pixel_x = -32
+			add_overlay(I)
+
+/* - SKYRAT ORIGINAL
 /obj/machinery/door/airlock/proc/check_unres() //unrestricted sides. This overlay indicates which directions the player can access even without an ID
 	if(hasPower() && unres_sides)
 		if(unres_sides & NORTH)
@@ -610,7 +708,8 @@
 			add_overlay(I)
 	else
 		set_light(0)
-
+*/
+//SKYRAT EDIT END
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
 		if("opening")
@@ -1112,7 +1211,8 @@
 		if(closeOther != null && istype(closeOther, /obj/machinery/door/airlock/) && !closeOther.density)
 			closeOther.close()
 	else
-		playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE)
+		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) - ORIGINAL
+		playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 
 	if(autoclose)
 		autoclose_in(normalspeed ? 150 : 15)
@@ -1161,7 +1261,8 @@
 		playsound(src, doorClose, 30, TRUE)
 
 	else
-		playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE)
+		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) //ORIGINAL
+		playsound(src, forcedClosed, 30, TRUE) //SKYRAT EDIT ADDITION - AESTHETICS
 
 	var/obj/structure/window/killthis = (locate(/obj/structure/window) in get_turf(src))
 	if(killthis)
