@@ -100,8 +100,10 @@
 						tmp_alertlevel = SEC_LEVEL_GREEN
 					if(tmp_alertlevel < SEC_LEVEL_GREEN)
 						tmp_alertlevel = SEC_LEVEL_GREEN
-					if(tmp_alertlevel > SEC_LEVEL_BLUE)
-						tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
+					//if(tmp_alertlevel > SEC_LEVEL_BLUE) //ORIGINAL
+					//	tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this //ORIGINAL
+					if(tmp_alertlevel > SEC_LEVEL_AMBER) //SKYRAT EDIT CHANGE - ALERTS
+						tmp_alertlevel = SEC_LEVEL_AMBER //Cannot engage delta with this //SKYRAT EDIT CHANGE - ALERTS
 					set_security_level(tmp_alertlevel)
 					if(GLOB.security_level != old_level)
 						to_chat(usr, "<span class='notice'>Authorization confirmed. Modifying security level.</span>")
@@ -389,8 +391,10 @@
 				tmp_alertlevel = SEC_LEVEL_GREEN
 			if(tmp_alertlevel < SEC_LEVEL_GREEN)
 				tmp_alertlevel = SEC_LEVEL_GREEN
-			if(tmp_alertlevel > SEC_LEVEL_BLUE)
-				tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
+			//if(tmp_alertlevel > SEC_LEVEL_BLUE) //ORIGINAL
+			//	tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this //ORIGINAL
+			if(tmp_alertlevel > SEC_LEVEL_AMBER) //SKYRAT EDIT CHANGE - ALERTS
+				tmp_alertlevel = SEC_LEVEL_AMBER //Cannot engage delta with this //SKYRAT EDIT CHANGE - ALERTS
 			set_security_level(tmp_alertlevel)
 			if(GLOB.security_level != old_level)
 				//Only notify people if an actual change happened
@@ -551,6 +555,11 @@
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
 			else
+				//SKYRAT CHANGE ADDITION BEGIN - ALERTS
+				dat += "<A HREF='?src=[REF(src)];operation=securitylevel;newalertlevel=[SEC_LEVEL_AMBER]'>Amber</A><BR>"
+				dat += "<A HREF='?src=[REF(src)];operation=securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Orange</A><BR>"
+				dat += "<A HREF='?src=[REF(src)];operation=securitylevel;newalertlevel=[SEC_LEVEL_VIOLET]'>Violet</A><BR>"
+				//SKYRAT CHANGE END
 				dat += "<A HREF='?src=[REF(src)];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
 				dat += "<A HREF='?src=[REF(src)];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 		if(STATE_CONFIRM_LEVEL)
@@ -692,6 +701,11 @@
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
 			else
+				//SKYRAT EDIT ADDITION - ALERTS
+				dat += "<A HREF='?src=[REF(src)];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_AMBER]'>Amber</A><BR>"
+				dat += "<A HREF='?src=[REF(src)];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Orange</A><BR>"
+				dat += "<A HREF='?src=[REF(src)];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_VIOLET]'>Violet</A><BR>"
+				//SKYRAT EDIT END
 				dat += "<A HREF='?src=[REF(src)];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
 				dat += "<A HREF='?src=[REF(src)];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 
