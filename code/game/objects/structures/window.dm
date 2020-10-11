@@ -606,7 +606,8 @@
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	//canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE) ORIGINAL
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK) //SKYRAT EDIT CHANGE - AESTHETICS
 	glass_amount = 2
 
 /obj/structure/window/fulltile/unanchored
@@ -657,7 +658,8 @@
 	state = RWINDOW_SECURE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	//canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE) ORIGINAL
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK) //SKYRAT EDIT CHANGE - AESTHETICS
 	glass_amount = 2
 
 /obj/structure/window/reinforced/fulltile/unanchored

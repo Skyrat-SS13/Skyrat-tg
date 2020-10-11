@@ -2,7 +2,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/248
 
 ## Title: General aesthetic change.
 
-MODULE ID: AESTHETIC
+MODULE ID: AESTHETICS
 
 ### Description:
 

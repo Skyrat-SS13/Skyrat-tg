@@ -146,26 +146,6 @@
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
 
-		if(AIRLOCK_CLOSING)
-			frame_overlay = get_airlock_overlay("closing", icon)
-			if(airlock_material)
-				filling_overlay = get_airlock_overlay("[airlock_material]_closing", overlays_file)
-			else
-				filling_overlay = get_airlock_overlay("fill_closing", icon)
-			if(lights && hasPower())
-				pre_light_range = AIRLOCK_LIGHT_RANGE
-				pre_light_power = AIRLOCK_LIGHT_POWER
-				//lights_overlay = get_airlock_overlay("lights_closing", overlays_file)
-				lights_overlay = "lights_closing"
-				pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
-			if(panel_open)
-				if(security_level)
-					panel_overlay = get_airlock_overlay("panel_closing_protected", overlays_file)
-				else
-					panel_overlay = get_airlock_overlay("panel_closing", overlays_file)
-			if(note)
-				note_overlay = get_airlock_overlay("[notetype]_closing", note_overlay_file)
-
 		if(AIRLOCK_OPEN)
 			frame_overlay = get_airlock_overlay("open", icon)
 			if(airlock_material)
@@ -199,6 +179,26 @@
 					pre_light_color = AIRLOCK_POWERON_LIGHT_COLOR
 				//SKYRAT EDIT END
 
+		if(AIRLOCK_CLOSING)
+			frame_overlay = get_airlock_overlay("closing", icon)
+			if(airlock_material)
+				filling_overlay = get_airlock_overlay("[airlock_material]_closing", overlays_file)
+			else
+				filling_overlay = get_airlock_overlay("fill_closing", icon)
+			if(lights && hasPower())
+				pre_light_range = AIRLOCK_LIGHT_RANGE
+				pre_light_power = AIRLOCK_LIGHT_POWER
+				//lights_overlay = get_airlock_overlay("lights_opening", overlays_file)
+				lights_overlay = "lights_closing"
+				pre_light_color = AIRLOCK_ACCESS_LIGHT_COLOR
+			if(panel_open)
+				if(security_level)
+					panel_overlay = get_airlock_overlay("panel_closing_protected", overlays_file)
+				else
+					panel_overlay = get_airlock_overlay("panel_closing", overlays_file)
+			if(note)
+				note_overlay = get_airlock_overlay("[notetype]_closing", note_overlay_file)
+
 		if(AIRLOCK_OPENING)
 			frame_overlay = get_airlock_overlay("opening", icon)
 			if(airlock_material)
@@ -219,6 +219,15 @@
 			if(note)
 				note_overlay = get_airlock_overlay("[notetype]_opening", note_overlay_file)
 
+	if(lights_overlay != old_lights_overlay)
+		old_lights_overlay = ""
+		update_vis_overlays(lights_overlay)
+		old_lights_overlay = lights_overlay
+		set_light(pre_light_range, pre_light_power, pre_light_color)
+	if(sparks_overlay != old_sparks_overlay)
+		cut_overlay(old_sparks_overlay)
+		add_overlay(sparks_overlay)
+		old_sparks_overlay = sparks_overlay
 	if(frame_overlay != old_frame_overlay)
 		cut_overlay(old_frame_overlay)
 		add_overlay(frame_overlay)
@@ -247,16 +256,6 @@
 		cut_overlay(old_seal_overlay)
 		add_overlay(seal_overlay)
 		old_seal_overlay = seal_overlay
-
-	//Vis lights
-	if(lights_overlay != old_lights_overlay)
-		update_vis_overlays(lights_overlay)
-		old_lights_overlay = lights_overlay
-		set_light(pre_light_range, pre_light_power, pre_light_color)
-	if(sparks_overlay != old_sparks_overlay)
-		cut_overlay(old_sparks_overlay)
-		add_overlay(sparks_overlay)
-		old_sparks_overlay = sparks_overlay
 
 	check_unres()
 
