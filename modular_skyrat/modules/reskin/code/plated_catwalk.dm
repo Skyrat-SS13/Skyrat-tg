@@ -9,6 +9,10 @@
 /obj/machinery/atmospherics/pipe
 	plane = FLOOR_PLANE
 
+/obj/structure/lattice/catwalk
+	layer = 2.465 //GAS_SCRUBBER_LAYER 2.46
+	plane = FLOOR_PLANE
+
 /obj/structure/plated_catwalk
 	name = "plated catwalk"
 	desc = "A durable catwalk for easier maintenance of pipes and wires. Cats hate this thing."
