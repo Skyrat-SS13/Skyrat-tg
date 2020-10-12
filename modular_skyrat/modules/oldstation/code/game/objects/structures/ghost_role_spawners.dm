@@ -130,3 +130,4 @@
 /obj/effect/mob_spawn/human/oldatmos/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
+
