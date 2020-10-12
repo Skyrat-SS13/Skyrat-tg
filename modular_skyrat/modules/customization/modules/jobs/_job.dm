@@ -1,6 +1,8 @@
 /datum/job
 	///With this set to TRUE, the loadout will be applied before a job clothing will be
 	var/no_dresscode
+	//Whether the job can use the loadout system
+	var/loadout = TRUE
 	//List of banned quirks in their names(dont blame me, that's how they're stored), players can't join as the job if they have the quirk. Associative for the purposes of performance
 	var/list/banned_quirks
 
@@ -45,3 +47,9 @@
 
 /datum/job/qm
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/ai
+	loadout = FALSE
+
+/datum/job/cyborg
+	loadout = FALSE
