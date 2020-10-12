@@ -470,8 +470,8 @@ SUBSYSTEM_DEF(job)
 	if(job)
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)//silicons override this proc to return a mob
 		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-		if(job.no_dresscode)
-			if(M.client && isliving(new_mob))
+		if(job.no_dresscode && job.loadout)
+			if(M.client)
 				packed_items = M.client.prefs.equip_preference_loadout(M, FALSE, job)
 		//SKYRAT CHANGE ADDITION END
 		if(ismob(new_mob))
@@ -505,7 +505,7 @@ SUBSYSTEM_DEF(job)
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-		if(!job.no_dresscode)
+		if(!job.no_dresscode && job.loadout)
 			if(M.client)
 				packed_items = M.client.prefs.equip_preference_loadout(M, FALSE, job)
 		if(packed_items)
