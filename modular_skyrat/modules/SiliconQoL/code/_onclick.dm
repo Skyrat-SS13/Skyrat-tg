@@ -8,6 +8,7 @@
 			airlock.AICtrlShiftClick(src)
 	else
 		A.AICtrlShiftClick(src) // End of skyrat edit
+
 /mob/living/silicon/ai/ShiftClickOn(atom/A)
 	if(isturf(A)) 
 		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
@@ -24,6 +25,7 @@
 			airlock.AICtrlClick(src)
 	else
 		A.AICtrlClick(src)
+
 /mob/living/silicon/ai/AltClickOn(atom/A)
 	if(isturf(A)) 
 		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
@@ -32,13 +34,13 @@
 	else
 		A.AIAltClick(src)
 
-
 /atom/proc/AIExamine() // Used for AI specific examines .Currently only employed to stop door examines.
 	usr.examinate(src)
 
+// Should keep all AI Examines in here in a list.
 /obj/machinery/door/airlock/AIExamine() // Lets not spam the AI with door examinations
 	return
-
+	
 /mob/living/silicon/ai/ClickOn(atom/A, params)
 	..()
 	var/list/modifiers = params2list(params)
@@ -57,6 +59,7 @@
 			airlock.BorgCtrlShiftClick(src)
 	else
 		A.BorgCtrlShiftClick(src) 
+
 /mob/living/silicon/robot/ShiftClickOn(atom/A)
 	if(isturf(A)) 
 		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
@@ -72,10 +75,11 @@
 			airlock.BorgCtrlClick(src)
 	else
 		A.BorgCtrlClick(src) // End of skyrat edit
+
 /mob/living/silicon/robot/AltClickOn(atom/A)
 	if(isturf(A)) 
 		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
 		if(airlock)
-			airlock.AltClick(src)
+			airlock.BorgAltClick(src)
 	else
-		A.AltClick(src) 
+		A.BorgAltClick(src) 
