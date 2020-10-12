@@ -16,14 +16,10 @@
 
 /turf/closed/wall/rust/New(loc, ...)
 	. = ..()
-	var/mutable_appearance/rust = new(loc)
-	rust.icon = icon
-	rust.icon_state = "rust"
+	var/mutable_appearance/rust = mutable_appearance(icon, "rust")
 	add_overlay(rust)
 
 /turf/closed/wall/r_wall/rust/New(loc, ...)
 	. = ..()
-	var/mutable_appearance/rust
-	rust.icon = icon
-	rust.icon_state = "rust"
+	var/mutable_appearance/rust = mutable_appearance(icon, "rust")
 	add_overlay(rust)
