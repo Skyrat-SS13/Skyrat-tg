@@ -5,3 +5,4 @@
 	icon_state = "assistant"
 	inhand_icon_state = "gy_suit"
 	mutantrace_variation = NONE
+
