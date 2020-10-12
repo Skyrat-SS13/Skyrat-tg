@@ -149,9 +149,14 @@
 
 
 /datum/game_mode/cult/generate_report()
+/*	return "Some stations in your sector have reported evidence of blood sacrifice and strange magic. Ties to the Wizards' Federation have been proven not to exist, and many employees \
+			have disappeared; even Central Command employees light-years away have felt strange presences and at times hysterical compulsions. Interrogations point towards this being the work of \
+			the cult of Nar'Sie. If evidence of this cult is discovered aboard your station, extreme caution and extreme vigilance must be taken going forward, and all resources should be \
+			devoted to stopping this cult. Note that holy water seems to weaken and eventually return the minds of cultists that ingest it, and mindshield implants will prevent conversion \
+			altogether."*/
 	return "News is spreading like wildfire about kidnappings and live sacrifices within the frontier regions. Hooded figures bearing what appears to be religious paraphernalia and red-metal daggers \
 	have been spotted in the smaller colonies, and are believed to either be fringe religious extremists or terrorists using such things as a cover to aid in their goals. Nevertheless, be on \
 	the lookout for any kidnappings and crew members practicing what seems to be abnormal behavior. If the worst seems to happen, a local chaplain may be able to aid you, as there are reports of \
-	colony priests forcefully exorcising accused 'witches' and finding them brought back to their senses."
+	colony priests forcefully exorcising accused 'witches' and finding them brought back to their senses." //Skyrat edit
 
 #undef CULT_SCALING_COEFFICIENT

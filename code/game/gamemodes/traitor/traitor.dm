@@ -94,7 +94,9 @@
 	character.add_antag_datum(new_antag)
 
 /datum/game_mode/traitor/generate_report()
+/*	return "Although more specific threats are commonplace, you should always remain vigilant for Syndicate agents aboard your station. Syndicate communications have implied that many \
+		Nanotrasen employees are Syndicate agents with hidden memories that may be activated at a moment's notice, so it's possible that these agents might not even know their positions." */
 	return "Although more specific threats are commonplace, you should always remain vigilant for crew members that seem to be acting with malicious intents toward the station and crew. \
 	These can include espionage agents, petty criminals, thieves, assassins, gangsters, or any number of crew members with some sort of ulterior motive. These individuals typically will work alone \
 	and possess equipment typically obtained from the black market or military organizations. It is likely they have smuggled these items in beforehand. Be alert and remember that these are \
-	still crew members. Follow standard arrest procedures, confiscate contraband, and ensure they and the rest of the crew remain productive."
+	still crew members. Follow standard arrest procedures, confiscate contraband, and ensure they and the rest of the crew remain productive." //Skyrat edit

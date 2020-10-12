@@ -84,5 +84,8 @@
 	..()
 
 /datum/game_mode/traitor/changeling/generate_report()
+/*	return "The Syndicate has started some experimental research regarding humanoid shapeshifting.  There are rumors that this technology will be field tested on a Nanotrasen station \
+			for infiltration purposes.  Be advised that support personel may also be deployed to defend these shapeshifters. Trust nobody - suspect everybody. Do not announce this to the crew, \
+			as paranoia may spread and inhibit workplace efficiency." */
 	return "Espionage agents, petty criminals, and similar elements are becoming increasingly common in your sector, but more disturbingly these are becoming more prevelant alongside shapeshifters. \
-	Exhibit extreme caution and avoid causing unneeded paranoia or concern among your station crew."
+	Exhibit extreme caution and avoid causing unneeded paranoia or concern among your station crew." //Skyrat edit
