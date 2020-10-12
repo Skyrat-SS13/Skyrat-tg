@@ -78,11 +78,7 @@
 		return
 
 	A.attack_ai(src)
-	
-	if(isturf(A)&&(!modifiers["shift"]))  //Skyrat edit , interact with firelocks by clicking on their turf .It has to check for the modifier because it would close firelock over doors when shift-clicking a turf.
-		var/obj/machinery/door/firedoor/TheDoor = locate(/obj/machinery/door/firedoor) in A
-		if(TheDoor)
-			TheDoor.attack_ai(usr) //Skyrat edit end
+
 /*
 	AI has no need for the UnarmedAttack() and RangedAttack() procs,
 	because the AI code is not generic;	attack_ai() is used instead.
@@ -103,34 +99,13 @@
 	for AI shift, ctrl, and alt clicking.
 */
 
-/mob/living/silicon/ai/CtrlShiftClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
-		if(airlock)
-			airlock.AICtrlShiftClick(src)
-	else
-		A.AICtrlShiftClick(src) // End of skyrat edit
+/mob/living/silicon/ai/CtrlShiftClickOn(atom/A) // Procs overriden in modular_skyrat/modules/Silicon_QoL
+		A.AICtrlShiftClick(src) 
 /mob/living/silicon/ai/ShiftClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
-		if(airlock)
-			airlock.AIShiftClick(src)
-	else
 		A.AIShiftClick(src)
-		A.AIExamine(A) // End of Skyrat edit
 /mob/living/silicon/ai/CtrlClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
-		if(airlock)
-			airlock.AICtrlClick(src)
-	else
 		A.AICtrlClick(src)
 /mob/living/silicon/ai/AltClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A
-		if(airlock)
-			airlock.AIAltClick(src)
-	else
 		A.AIAltClick(src) // End of Skyrat edit
 /*
 	The following criminally helpful code is just the previous code cleaned up;
@@ -148,8 +123,6 @@
 	return
 /atom/proc/AICtrlShiftClick()
 	return
-/atom/proc/AIExamine() // Skyrat edit , new proc. Used to prevent airlocks from returning a examine test.Could be used in the future to add AI specific examines.
-	usr.examinate(src) // End of skyrat edit
 /* Airlocks */
 /obj/machinery/door/airlock/AICtrlClick() // Bolts doors
 	if(obj_flags & EMAGGED)
@@ -174,9 +147,6 @@
 	user_toggle_open(usr)
 	add_hiddenprint(usr)
 	
-/obj/machinery/door/airlock/AIExamine() //Skyrat edit , Lets not spam the AI with door examinations
-	return // End of skyrat edit
-
 /obj/machinery/door/airlock/AICtrlShiftClick()  // Sets/Unsets Emergency Access Override
 	if(obj_flags & EMAGGED)
 		return
