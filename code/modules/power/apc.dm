@@ -337,7 +337,8 @@
 			if(APC_NOT_CHARGING)
 				set_light_color(COLOR_SOFT_RED)
 			if(APC_CHARGING)
-				set_light_color(LIGHT_COLOR_BLUE)
+			//	set_light_color(LIGHT_COLOR_BLUE) ORIGINAL
+				set_light_color(LIGHT_COLOR_ORANGE)//SKYRAT EDIT CHANGE - AESTHETICS
 			if(APC_FULLY_CHARGED)
 				set_light_color(LIGHT_COLOR_GREEN)
 		set_light(lon_range)
