@@ -13,3 +13,4 @@
 /area/ruin/space/has_grav/ancientstation/med
 	name = "Beta Station Clinic"
 	icon_state = "blue"
+
