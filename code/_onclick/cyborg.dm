@@ -85,35 +85,14 @@
 
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
-/mob/living/silicon/robot/CtrlShiftClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
-		if(airlock)
-			airlock.BorgCtrlShiftClick(src)
-	else
-		A.BorgCtrlShiftClick(src) // End of skyrat edit
-		
+/mob/living/silicon/robot/CtrlShiftClickOn(atom/A) // Procs overridden in skyrat_modular/modules/Silicon_QoL
+	A.BorgCtrlShiftClick(src) 
 /mob/living/silicon/robot/ShiftClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
-		if(airlock)
-			airlock.BorgShiftClick(src)
-	else
-		A.BorgShiftClick(src) // End of skyrat edit
-		
+	A.BorgShiftClick(src) 
 /mob/living/silicon/robot/CtrlClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
-		if(airlock)
-			airlock.BorgCtrlClick(src)
-	else
+	A.BorgCtrlClick(src)
 /mob/living/silicon/robot/AltClickOn(atom/A)
-	if(isturf(A)) // Skyrat edit
-		var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in A // Skyrat edit
-		if(airlock)
-			airlock.BorgAltClick(src)
-	else
-		A.BorgAltClick(src) // End of skyrat edit
+	A.BorgAltClick(src) // End of skyrat edit
 
 /atom/proc/BorgCtrlShiftClick(mob/living/silicon/robot/user) //forward to human click if not overridden
 	CtrlShiftClick(user)
