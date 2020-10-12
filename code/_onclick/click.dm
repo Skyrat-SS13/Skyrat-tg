@@ -119,6 +119,7 @@
 		return
 
 	if(in_throw_mode)
+		changeNext_move(CLICK_CD_THROW)
 		throw_item(A)
 		return
 
