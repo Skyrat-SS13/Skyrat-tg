@@ -66,6 +66,8 @@
 
 	handle_fire()
 
+	adjustStaminaLoss(-4 * (0.2 + (max(health/maxHealth, 0)) - (staminaloss/maxHealth)))
+
 	if(machine)
 		machine.check_eye(src)
 
