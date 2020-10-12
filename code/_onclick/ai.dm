@@ -100,13 +100,13 @@
 */
 
 /mob/living/silicon/ai/CtrlShiftClickOn(atom/A) // Procs overriden in modular_skyrat/modules/Silicon_QoL
-		A.AICtrlShiftClick(src) 
+	A.AICtrlShiftClick(src) 
 /mob/living/silicon/ai/ShiftClickOn(atom/A)
-		A.AIShiftClick(src)
+	A.AIShiftClick(src)
 /mob/living/silicon/ai/CtrlClickOn(atom/A)
-		A.AICtrlClick(src)
+	A.AICtrlClick(src)
 /mob/living/silicon/ai/AltClickOn(atom/A)
-		A.AIAltClick(src) // End of Skyrat edit
+	A.AIAltClick(src) // End of Skyrat edit
 /*
 	The following criminally helpful code is just the previous code cleaned up;
 	I have no idea why it was in atoms.dm instead of respective files.
