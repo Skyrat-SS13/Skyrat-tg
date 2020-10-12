@@ -54,8 +54,20 @@
 
 	GLOB.emote_list = init_emote_list()
 
+<<<<<<< HEAD
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
 	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
+=======
+	init_crafting_recipes(GLOB.crafting_recipes)
+
+/// Inits the crafting recipe list, sorting crafting recipe requirements in the process.
+/proc/init_crafting_recipes(list/crafting_recipes)
+	for(var/path in subtypesof(/datum/crafting_recipe))
+		var/datum/crafting_recipe/recipe = new path()
+		recipe.reqs = sortList(recipe.reqs, /proc/cmp_crafting_req_priority)
+		crafting_recipes += recipe
+	return crafting_recipes
+>>>>>>> 60ee1c4a228... Fixes crafting duplication bug/runtime and attempts to address destroying items in consumed containers (#54330)
 
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.
