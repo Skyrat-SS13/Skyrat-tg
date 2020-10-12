@@ -1,0 +1,5 @@
+#define MAX_HUMAN_LIFE 200
+
+#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 2
+
+//Stamina crit threshold is MAX_HUMAN_LIFE - HEALTH_THRESHOLD_CRIT so 200 - 40 = 160

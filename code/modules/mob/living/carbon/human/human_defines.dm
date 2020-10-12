@@ -14,6 +14,9 @@
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	can_be_shoved_into = TRUE
 
+	maxHealth = MAX_HUMAN_LIFE
+	health = MAX_HUMAN_LIFE
+
 	//Hair colour and style
 	var/hair_color = "000"
 	var/hairstyle = "Bald"
