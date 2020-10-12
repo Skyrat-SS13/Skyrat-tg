@@ -67,3 +67,5 @@
 	info = "The newest subjects are a recently discovered species from an exoplanet some SolGov expedition corpsmen went to recently. Some samples were recovered, alongside some sort of 'egg' \
 	that we've been tasked with studying. The egg, when disturbed, opened up and a strange, spider-like creature emerged shortly after. After leaping from the egg and into a window, the creature \
 	became docile. We decided to send a monkey into the chamber, and the spider reacted to the disturbance by latching onto the monkey's face. I'll have to make more reports as we observe the behaviors."
+	
+	
