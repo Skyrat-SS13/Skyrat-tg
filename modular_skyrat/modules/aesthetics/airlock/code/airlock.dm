@@ -219,50 +219,22 @@
 			if(note)
 				note_overlay = get_airlock_overlay("[notetype]_opening", note_overlay_file)
 
-	if(lights_overlay != old_lights_overlay)
-		update_vis_overlays(lights_overlay)
-		old_lights_overlay = lights_overlay
-		set_light(pre_light_range, pre_light_power, pre_light_color)
-	if(sparks_overlay != old_sparks_overlay)
-		cut_overlay(old_sparks_overlay)
-		add_overlay(sparks_overlay)
-		old_sparks_overlay = sparks_overlay
-	if(frame_overlay != old_frame_overlay)
-		cut_overlay(old_frame_overlay)
-		add_overlay(frame_overlay)
-		old_frame_overlay = frame_overlay
-	if(filling_overlay != old_filling_overlay)
-		cut_overlay(old_filling_overlay)
-		add_overlay(filling_overlay)
-		old_filling_overlay = filling_overlay
-	if(panel_overlay != old_panel_overlay)
-		cut_overlay(old_panel_overlay)
-		add_overlay(panel_overlay)
-		old_panel_overlay = panel_overlay
-	if(weld_overlay != old_weld_overlay)
-		cut_overlay(old_weld_overlay)
-		add_overlay(weld_overlay)
-		old_weld_overlay = weld_overlay
-	if(damag_overlay != old_damag_overlay)
-		cut_overlay(old_damag_overlay)
-		add_overlay(damag_overlay)
-		old_damag_overlay = damag_overlay
-	if(note_overlay != old_note_overlay)
-		cut_overlay(old_note_overlay)
-		add_overlay(note_overlay)
-		old_note_overlay = note_overlay
-	if(seal_overlay != old_seal_overlay)
-		cut_overlay(old_seal_overlay)
-		add_overlay(seal_overlay)
-		old_seal_overlay = seal_overlay
-
+	cut_overlays()
+	update_vis_overlays(lights_overlay)
+	set_light(pre_light_range, pre_light_power, pre_light_color)
+	add_overlay(sparks_overlay)
+	add_overlay(frame_overlay)
+	add_overlay(filling_overlay)
+	add_overlay(panel_overlay)
+	add_overlay(weld_overlay)
+	add_overlay(damag_overlay)
+	add_overlay(note_overlay)
+	add_overlay(seal_overlay)
 	check_unres()
 
 
 /obj/machinery/door/airlock/proc/update_vis_overlays(overlay_state)
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	vis_contents = null
-	managed_vis_overlays = null
 	if(lights && hasPower())
 		SSvis_overlays.add_vis_overlay(src, overlays_file, overlay_state, layer, plane, dir, alpha, unique = TRUE)
 		SSvis_overlays.add_vis_overlay(src, overlays_file, overlay_state, EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha, unique = TRUE)
