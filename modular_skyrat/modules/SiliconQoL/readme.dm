@@ -14,7 +14,7 @@ Added a comment informing of the overrides.
 
 ### Defines:
 
-N/a
+- N/A
 
 ### Master file additions
 
