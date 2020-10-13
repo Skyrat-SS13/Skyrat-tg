@@ -26,10 +26,13 @@
 	icon_state = "maint_panel-0"
 	base_icon_state = "maint_panel"
 
-/turf/open/floor/plating
-	icon = 'modular_skyrat/modules/reskin/icons/plating.dmi'
-	icon_state = "plating-255"
-	base_icon_state = "plating"
-	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_PLATING)
-	canSmoothWith = list(SMOOTH_GROUP_PLATING)
+//Hack to make it not do inheritance
+/turf/open/floor/plating/Initialize()
+	. = ..()
+	if(type == /turf/open/floor/plating)
+		icon = 'modular_skyrat/modules/reskin/icons/plating.dmi'
+		icon_state = "plating-255"
+		base_icon_state = "plating"
+		smoothing_flags = SMOOTH_BITMASK
+		smoothing_groups = list(SMOOTH_GROUP_PLATING)
+		canSmoothWith = list(SMOOTH_GROUP_PLATING)
