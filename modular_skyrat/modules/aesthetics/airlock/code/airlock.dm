@@ -15,6 +15,7 @@
 #define AIRLOCK_EMAG	6
 
 /obj/machinery/door/airlock
+	var/obj/effect/overlay/vis_airlock/vis_overlay
 	doorOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open.ogg'
 	doorClose = 'modular_skyrat/modules/aesthetics/airlock/sound/close.ogg'
 	doorDeni = 'modular_skyrat/modules/aesthetics/airlock/sound/access_denied.ogg'
@@ -32,6 +33,24 @@
 	var/mutable_appearance/old_sparks_overlay
 	var/mutable_appearance/old_note_overlay
 	var/mutable_appearance/old_seal_overlay
+
+/obj/machinery/door/airlock/Initialize()
+	vis_overlay = new(loc)
+	vis_overlay.icon = icon
+	vis_overlay.icon_state = ""
+	set_airlock_overlays()
+	vis_contents += vis_overlay
+	. = ..()
+
+/obj/effect/overlay/vis_airlock
+	layer = EMISSIVE_LAYER
+	plane = EMISSIVE_PLANE
+	vis_flags = VIS_INHERIT_DIR
+
+/obj/machinery/door/airlock/Destroy()
+	. = ..()
+	vis_contents -= vis_overlay
+	QDEL_NULL(vis_overlay)
 
 /obj/machinery/door/airlock/power_change()
 	..()
@@ -234,10 +253,7 @@
 
 
 /obj/machinery/door/airlock/proc/update_vis_overlays(overlay_state)
-	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	if(lights && hasPower())
-		SSvis_overlays.add_vis_overlay(src, overlays_file, overlay_state, layer, plane, dir, alpha, unique = TRUE)
-		SSvis_overlays.add_vis_overlay(src, overlays_file, overlay_state, EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha, unique = TRUE)
+	vis_overlay.icon_state = overlay_state
 
 //STATION AIRLOCKS
 /obj/machinery/door/airlock
