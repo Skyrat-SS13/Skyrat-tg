@@ -15,7 +15,8 @@
 #define AIRLOCK_EMAG	6
 
 /obj/machinery/door/airlock
-	var/obj/effect/overlay/vis_airlock/vis_overlay
+	var/obj/effect/overlay/vis_airlock/vis_overlay1
+	var/obj/effect/overlay/vis_airlock/vis_overlay2
 	doorOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open.ogg'
 	doorClose = 'modular_skyrat/modules/aesthetics/airlock/sound/close.ogg'
 	doorDeni = 'modular_skyrat/modules/aesthetics/airlock/sound/access_denied.ogg'
@@ -35,22 +36,28 @@
 	var/mutable_appearance/old_seal_overlay
 
 /obj/machinery/door/airlock/Initialize()
-	vis_overlay = new(loc)
-	vis_overlay.icon = icon
-	vis_overlay.icon_state = ""
+	vis_overlay1 = new()
+	vis_overlay1.icon = overlays_file
+	vis_overlay1.icon_state = ""
+	vis_overlay2 = new()
+	vis_overlay2.icon = overlays_file
+	vis_overlay2.icon_state = ""
+	vis_overlay2.layer = layer
+	vis_overlay2.plane = 1
 	set_airlock_overlays()
-	vis_contents += vis_overlay
 	. = ..()
 
 /obj/effect/overlay/vis_airlock
 	layer = EMISSIVE_LAYER
 	plane = EMISSIVE_PLANE
-	vis_flags = VIS_INHERIT_DIR
+	vis_flags = VIS_INHERIT_ID
 
 /obj/machinery/door/airlock/Destroy()
 	. = ..()
-	vis_contents -= vis_overlay
-	QDEL_NULL(vis_overlay)
+	vis_contents -= vis_overlay1
+	vis_contents -= vis_overlay2
+	QDEL_NULL(vis_overlay1)
+	QDEL_NULL(vis_overlay2)
 
 /obj/machinery/door/airlock/power_change()
 	..()
@@ -239,7 +246,6 @@
 				note_overlay = get_airlock_overlay("[notetype]_opening", note_overlay_file)
 
 	cut_overlays()
-	update_vis_overlays(lights_overlay)
 	set_light(pre_light_range, pre_light_power, pre_light_color)
 	add_overlay(sparks_overlay)
 	add_overlay(frame_overlay)
@@ -249,11 +255,15 @@
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
 	add_overlay(seal_overlay)
+	update_vis_overlays(lights_overlay)
 	check_unres()
 
 
 /obj/machinery/door/airlock/proc/update_vis_overlays(overlay_state)
-	vis_overlay.icon_state = overlay_state
+	vis_overlay1.icon_state = overlay_state
+	vis_overlay2.icon_state = overlay_state
+	vis_contents += vis_overlay1
+	vis_contents += vis_overlay2
 
 //STATION AIRLOCKS
 /obj/machinery/door/airlock
