@@ -1809,6 +1809,10 @@
 	. = body_position
 	body_position = new_value
 	if(new_value == LYING_DOWN) // From standing to lying down.
+		//SKYRAT EDIT ADDITION BEGIN - SOUNDS
+		if(has_gravity())
+			playsound(src, "bodyfall", 50, TRUE)
+		//SKYRAT EDIT END
 		on_lying_down()
 	else // From lying down to standing up.
 		on_standing_up()
