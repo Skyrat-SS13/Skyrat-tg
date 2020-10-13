@@ -84,6 +84,7 @@
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
 	return "<span class='notice'>The supporting rods look like they could be <b>cut</b>.</span>"
 
+/*
 /obj/structure/lattice/catwalk/Move()
 	var/turf/T = loc
 	for(var/obj/structure/cable/C in T)
@@ -95,6 +96,7 @@
 	for(var/obj/structure/cable/C in T)
 		C.deconstruct()
 	..()
+*/
 
 /obj/structure/lattice/lava
 	name = "heatproof support lattice"

@@ -1,5 +1,3 @@
-#define SMOOTH_GROUP_PLATED_CATWALK S_OBJ(71)			///obj/structure/plated_catwalk
-
 /obj/structure/disposalpipe
 	plane = FLOOR_PLANE
 
@@ -10,7 +8,7 @@
 	plane = FLOOR_PLANE
 
 /obj/structure/lattice/catwalk
-	layer = 2.465 //GAS_SCRUBBER_LAYER 2.46
+	layer = CATWALK_LAYER
 	plane = FLOOR_PLANE
 
 /obj/structure/lattice/catwalk/plated
