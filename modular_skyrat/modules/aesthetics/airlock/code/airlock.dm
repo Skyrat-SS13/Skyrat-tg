@@ -44,6 +44,8 @@
 	vis_overlay2.icon_state = ""
 	vis_overlay2.layer = layer
 	vis_overlay2.plane = 1
+	vis_contents += vis_overlay1
+	vis_contents += vis_overlay2
 	set_airlock_overlays()
 	. = ..()
 
@@ -262,8 +264,7 @@
 /obj/machinery/door/airlock/proc/update_vis_overlays(overlay_state)
 	vis_overlay1.icon_state = overlay_state
 	vis_overlay2.icon_state = overlay_state
-	vis_contents += vis_overlay1
-	vis_contents += vis_overlay2
+
 
 //STATION AIRLOCKS
 /obj/machinery/door/airlock
