@@ -25,14 +25,14 @@
 	singular_name = "plated catwalk rod"
 	desc = "Rods that could be used to make a plated catwalk."
 	icon_state = "catwalk_plated"
-	catwalk_type = /obj/structure/plated_catwalk
+	catwalk_type = /obj/structure/lattice/catwalk/plated
 
 /obj/item/stack/catwalk/plated/dark
 	name = "dark plated catwalk rods"
 	singular_name = "dark plated catwalk rod"
 	desc = "Rods that could be used to make a plated catwalk, with style."
 	icon_state = "catwalk_plated_dark"
-	catwalk_type = /obj/structure/plated_catwalk/dark
+	catwalk_type = /obj/structure/lattice/catwalk/plated/dark
 
 /obj/item/stack/catwalk/swarmer
 	name = "swarmer catwalk rods"
@@ -50,9 +50,9 @@
 			var/obj/item/stack/catwalk/catitem = C
 			if(locate(/obj/structure/lattice/catwalk, src))
 				return
-			if(locate(/obj/structure/plated_catwalk, src))
+			if(locate(/obj/structure/lattice/catwalk/plated, src))
 				return
-			if(locate(/obj/structure/plated_catwalk, src))
+			if(locate(/obj/structure/lattice/catwalk/plated/dark, src))
 				return
 			var/cost = 2
 			var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
