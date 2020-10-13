@@ -229,7 +229,6 @@
 
 	cut_overlays()
 	set_light(pre_light_range, pre_light_power, pre_light_color)
-	add_overlay(sparks_overlay)
 	add_overlay(frame_overlay)
 	add_overlay(filling_overlay)
 	add_overlay(panel_overlay)
@@ -237,6 +236,7 @@
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
 	add_overlay(seal_overlay)
+	add_overlay(sparks_overlay)
 	update_vis_overlays(lights_overlay)
 	check_unres()
 
