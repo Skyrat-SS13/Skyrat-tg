@@ -19,7 +19,10 @@
 	if(click_cooldown_override)
 		user.changeNext_move(click_cooldown_override)
 	else
-		user.changeNext_move(CLICK_CD_RANGE)
+		if(user.staminaloss > STAMINA_THRESHOLD_TIRED_CLICK_CD)
+			user.changeNext_move(CLICK_CD_RANGE_TIRED)
+		else
+			user.changeNext_move(CLICK_CD_RANGE)
 	user.newtonian_move(get_dir(target, user))
 	update_icon()
 	return TRUE

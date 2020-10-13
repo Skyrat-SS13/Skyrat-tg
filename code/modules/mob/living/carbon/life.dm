@@ -40,6 +40,10 @@
 	//Updates the number of stored chemicals for powers
 	handle_changeling()
 
+	if(staminaloss)
+		//Stamina regeneration: Regens faster, the more health you have, and the more staminaloss you have
+		adjustStaminaLoss(-(STAMINA_STATIC_REGEN_FLAT+(staminaloss/STAMINALOSS_REGEN_COEFF)) * (STAMINA_STATIC_REGEN_MULTIPLIER + (max(health/maxHealth, 0))))
+
 	if(stat != DEAD)
 		return 1
 
@@ -330,15 +334,20 @@
 	return
 
 /mob/living/carbon/proc/handle_bodyparts()
+	return
+	/*
 	var/stam_regen = FALSE
 	if(stam_regen_start_time <= world.time)
 		stam_regen = TRUE
 		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 			. |= BODYPART_LIFE_UPDATE_HEALTH //make sure we remove the stamcrit
+	*/
+	/*
 	for(var/I in bodyparts)
 		var/obj/item/bodypart/BP = I
 		if(BP.needs_processing)
 			. |= BP.on_life(stam_regen)
+	*/
 
 /mob/living/carbon/proc/handle_organs()
 	if(stat != DEAD)

@@ -580,14 +580,46 @@
 
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
-	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
+	if(stam > STAMINA_THRESHOLD_SLOWDOWN)
+		add_movespeed_modifier(/datum/movespeed_modifier/stamina_slowdown)
+		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina mild", /datum/mood_event/stamina_mild)
+			if(!HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
+				ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
+				//When you get floored by stamina, you also get a brief stun
+				Stun(0.5 SECONDS)
+		else
+			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+
+		if(stam > STAMINA_THRESHOLD_SOFTCRIT)
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina severe", /datum/mood_event/stamina_severe)
+			if(!HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, STAMINA))
+				ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+		else
+			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+
+		if(stam > STAMINA_THRESHOLD_HARDCRIT)
+			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+		else
+			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/stamina_slowdown)
+		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+		if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
+			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+		if(HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, STAMINA))
+			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
 		enter_stamcrit()
 	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
 	else
-		return
+		return*/
 	update_health_hud()
 
 /mob/living/carbon/update_sight()

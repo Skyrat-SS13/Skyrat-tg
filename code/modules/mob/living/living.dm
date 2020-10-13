@@ -476,8 +476,8 @@
 			if(!silent)
 				to_chat(src, "<span class='notice'>You will now stand up as soon as you are able to.</span>")
 		else
-			if(!silent)
-				to_chat(src, "<span class='notice'>You stand up.</span>")
+			/*if(!silent)
+				to_chat(src, "<span class='notice'>You stand up.</span>")*/
 			get_up(instant)
 
 	update_resting()
@@ -492,10 +492,25 @@
 /mob/living/proc/get_up(instant = FALSE)
 	set waitfor = FALSE
 	var/static/datum/callback/rest_checks = CALLBACK(src, .proc/rest_checks_callback)
-	if(!instant && !do_mob(src, src, 2 SECONDS, uninterruptible = TRUE, extra_checks = rest_checks))
-		return
+	var/get_up_speed = GET_UP_FAST
+	var/stam = getStaminaLoss()
+	switch(FLOOR(stam,1))
+		if(STAMINA_THRESHOLD_MEDIUM_GET_UP to STAMINA_THRESHOLD_SLOW_GET_UP)
+			get_up_speed = GET_UP_MEDIUM
+		if(STAMINA_THRESHOLD_SLOW_GET_UP+1 to INFINITY)
+			get_up_speed = GET_UP_SLOW
+	if(!instant)
+		if(get_up_speed == GET_UP_SLOW) //Slow getups are easily noticable
+			visible_message("<span class='notice'>[src] weakily attempts to stand up.</span>", "<span class='notice'>You weakily attempt to stand up.</span>")
+			if(!do_mob(src, src, get_up_speed SECONDS, uninterruptible = TRUE, extra_checks = rest_checks))
+				visible_message("<span class='warning'>[src] fails to stand up.</span>", "<span class='warning'>You fail to stand up.</span>")
+				return
+		else
+			if(!do_mob(src, src, get_up_speed SECONDS, uninterruptible = TRUE, extra_checks = rest_checks))
+				return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
+	to_chat(src, "<span class='notice'>You stand up.</span>")
 	set_lying_angle(0)
 	set_body_position(STANDING_UP)
 
