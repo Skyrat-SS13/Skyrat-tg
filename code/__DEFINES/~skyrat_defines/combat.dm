@@ -52,3 +52,25 @@
 	description = "<span class='boldwarning'>AAAAGHHH THE PAIN!.</span>\n"
 	mood_change = -3
 	timeout = 1 MINUTES
+
+//Force mob to rest, does NOT do stamina damage.
+//It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
+/mob/living/carbon/proc/KnockToFloor(disarm_items, silent = TRUE, ignore_canknockdown = FALSE)
+	if(!silent && body_position != LYING_DOWN)
+		to_chat(src, "<span class='warning'>You are knocked to the floor!</span>")
+	Knockdown(1, ignore_canknockdown)
+	if(disarm_items)
+		drop_all_held_items()
+
+/mob/living/proc/StaminaKnockdown(stamina_damage, disarm, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+	return Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
+
+/mob/living/carbon/StaminaKnockdown(stamina_damage, disarm, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+	if(!ignore_canknockdown && !(status_flags & CANKNOCKDOWN))
+		return FALSE
+	if(istype(buckled, /obj/vehicle/ridden))
+		buckled.unbuckle_mob(src)
+	KnockToFloor(disarm, TRUE, ignore_canknockdown)
+	adjustStaminaLoss(stamina_damage)
+	if(!isnull(hardstun))
+		Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
