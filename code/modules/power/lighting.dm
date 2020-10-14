@@ -204,8 +204,8 @@
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'icons/obj/lighting.dmi'
-	var/overlayicon = 'icons/obj/lighting_overlay.dmi'
+	icon = 'icons/obj/lighting.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	var/overlayicon = 'icons/obj/lighting_overlay.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube"
 	desc = "A lighting fixture."
