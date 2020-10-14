@@ -10,7 +10,7 @@ This takes a few sprites from TauCeti station and ports them over to us. With a 
 
 ### TG Proc Changes:
 
-- code\game\machinery\doors\airlock.dm >/obj/machinery/door/airlock/proc/set_airlock_overlays(state)
+- Please see changed files on PR. Skyrat tags applied.
 
 
 ### Defines:
