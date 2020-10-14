@@ -19,22 +19,21 @@
 		if(stored_extinguisher)
 			if(istype(stored_extinguisher, /obj/item/extinguisher/mini))
 				icon_state = "extinguisher_mini_closed"
-			if(istype(stored_extinguisher, /obj/item/extinguisher/advanced))
+			else if(istype(stored_extinguisher, /obj/item/extinguisher/advanced))
 				icon_state = "extinguisher_advanced_closed"
 			else
 				icon_state = "extinguisher_standard_closed"
+		else
+			icon_state = "extinguisher_empty_closed"
 	else if(stored_extinguisher)
 		if(istype(stored_extinguisher, /obj/item/extinguisher/mini))
 			icon_state = "extinguisher_mini_open"
-		if(istype(stored_extinguisher, /obj/item/extinguisher/advanced))
+		else if(istype(stored_extinguisher, /obj/item/extinguisher/advanced))
 			icon_state = "extinguisher_advanced_open"
 		else
 			icon_state = "extinguisher_standard_open"
 	else
-		if(!opened)
-			icon_state = "extinguisher_empty_closed"
-		else
-			icon_state = "extinguisher_empty_open"
+		icon_state = "extinguisher_empty_open"
 
 /obj/item/extinguisher/Initialize()
 	. = ..()
@@ -43,5 +42,5 @@
 
 /obj/item/extinguisher/update_overlays()
 	. = ..()
-	if(istype(src, /obj/item/extinguisher))
+	if(!istype(src, /obj/item/extinguisher/mini && !istype(src, /obj/item/extinguisher/advanced)))
 		. += "ex_overlay_[random_overlay]"
