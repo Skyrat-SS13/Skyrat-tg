@@ -63,9 +63,13 @@
 		drop_all_held_items()
 
 /mob/living/proc/StaminaKnockdown(stamina_damage, disarm, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+	if(!stamina_damage)
+		return
 	return Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
 
 /mob/living/carbon/StaminaKnockdown(stamina_damage, disarm, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+	if(!stamina_damage)
+		return
 	if(!ignore_canknockdown && !(status_flags & CANKNOCKDOWN))
 		return FALSE
 	if(istype(buckled, /obj/vehicle/ridden))
