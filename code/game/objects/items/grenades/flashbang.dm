@@ -33,7 +33,8 @@
 //Bang
 	if(!distance || loc == M || loc == M.loc)	//Stop allahu akbarring rooms with this.
 		M.Paralyze(20)
-		M.Knockdown(200)
+		//M.Knockdown(200)
+		M.StaminaKnockdown(40, TRUE)
 		M.soundbang_act(1, 200, 10, 15)
 	else
 		if(distance <= 1) // Adds more stun as to not prime n' pull (#45381)
