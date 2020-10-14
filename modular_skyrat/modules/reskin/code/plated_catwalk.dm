@@ -8,8 +8,15 @@
 	plane = FLOOR_PLANE
 
 /obj/structure/lattice/catwalk
+	smoothing_groups = list(SMOOTH_GROUP_NORMAL_CATWALK)
+	canSmoothWith = list(SMOOTH_GROUP_NORMAL_CATWALK)
 	layer = CATWALK_LAYER
 	plane = FLOOR_PLANE
+
+/obj/structure/lattice/catwalk/Initialize()
+	. = ..()
+	if(isspaceturf(loc))
+		layer = LATTICE_LAYER
 
 /obj/structure/lattice/catwalk/plated
 	name = "plated catwalk"
