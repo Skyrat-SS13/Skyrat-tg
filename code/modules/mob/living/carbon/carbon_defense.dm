@@ -408,7 +408,7 @@
 	//Stun
 	var/should_stun = (!(flags & SHOCK_TESLA) || siemens_coeff > 0.5) && !(flags & SHOCK_NOSTUN)
 	if(should_stun)
-		StaminaKnockdown(10)
+		StaminaKnockdown(10, TRUE)
 		//Paralyze(40)
 	//Jitter and other fluff.
 	jitteriness += 1000
@@ -422,7 +422,7 @@
 	jitteriness = max(jitteriness - 990, 10)
 	if(should_stun)
 		//Paralyze(60)
-		StaminaKnockdown(10)
+		StaminaKnockdown(10, TRUE)
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
