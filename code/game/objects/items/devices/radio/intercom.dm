@@ -1,4 +1,4 @@
-/obj/item/radio/intercom
+/obj/item/radio/intercom //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "station intercom"
 	desc = "Talk through this."
 	icon_state = "intercom"

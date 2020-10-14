@@ -5,7 +5,7 @@
 /obj/machinery/door/firedoor
 	name = "firelock"
 	desc = "Apply crowbar."
-	icon = 'icons/obj/doors/Doorfireglass.dmi'
+	icon = 'icons/obj/doors/Doorfireglass.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "door_open"
 	opacity = FALSE
 	density = FALSE
@@ -248,7 +248,7 @@
 
 /obj/machinery/door/firedoor/heavy
 	name = "heavy firelock"
-	icon = 'icons/obj/doors/Doorfire.dmi'
+	icon = 'icons/obj/doors/Doorfire.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	glass = FALSE
 	explosion_block = 2
 	assemblytype = /obj/structure/firelock_frame/heavy
@@ -264,7 +264,7 @@
 /obj/structure/firelock_frame
 	name = "firelock frame"
 	desc = "A partially completed firelock."
-	icon = 'icons/obj/doors/Doorfire.dmi'
+	icon = 'icons/obj/doors/Doorfire.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "frame1"
 	anchored = FALSE
 	density = TRUE

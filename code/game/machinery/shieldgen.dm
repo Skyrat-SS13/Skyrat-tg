@@ -251,7 +251,7 @@
 /obj/machinery/power/shieldwallgen
 	name = "shield wall generator"
 	desc = "A shield generator."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/stationobjs.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "shield_wall_gen"
 	anchored = FALSE
 	density = TRUE

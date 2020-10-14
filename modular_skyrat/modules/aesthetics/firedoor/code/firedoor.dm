@@ -10,6 +10,9 @@
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor.dmi'
 
+/obj/structure/firelock_frame
+	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor.dmi'
+
 /obj/machinery/door/firedoor/open()
 	playsound(loc, door_open_sound, 90, TRUE)
 	. = ..()

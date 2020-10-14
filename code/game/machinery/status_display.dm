@@ -19,7 +19,7 @@
 /obj/machinery/status_display
 	name = "status display"
 	desc = null
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/status_display.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "frame"
 	density = FALSE
 	use_power = IDLE_POWER_USE

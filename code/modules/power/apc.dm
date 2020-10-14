@@ -47,7 +47,7 @@
 // controls power to devices in that area
 // may be opened to change power cell
 // three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
-
+//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area's electrical systems."

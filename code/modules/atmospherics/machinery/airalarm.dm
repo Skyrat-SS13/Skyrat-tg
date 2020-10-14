@@ -41,7 +41,7 @@
 /obj/item/wallframe/airalarm
 	name = "air alarm frame"
 	desc = "Used for building Air Alarms."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/monitors.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "alarm_bitem"
 	result_path = /obj/machinery/airalarm
 
@@ -60,7 +60,7 @@
 /obj/machinery/airalarm
 	name = "air alarm"
 	desc = "A machine that monitors atmosphere levels. Goes off if the area is dangerous."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/monitors.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "alarm0"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
