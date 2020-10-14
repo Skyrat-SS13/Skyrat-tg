@@ -10,6 +10,8 @@
 	var/eyes_icon
 	///How are we treated regarding processing reagents, by default we process them as if we're organic
 	var/reagent_flags = PROCESS_ORGANIC
+	///Whether a species can use augmentations in preferences
+	var/can_augment = TRUE
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/standing	= list()
@@ -55,8 +57,13 @@
 			continue
 		if(S.is_hidden(H, HD))
 			continue
-		new_renderkey += "-[key]-[S.name]"
-		bodyparts_to_add += S
+		var/render_state
+		if(S.special_render_case)
+			render_state = S.get_special_render_state(H, S.icon_state)
+		else
+			render_state = S.icon_state
+		new_renderkey += "-[key]-[render_state]"
+		bodyparts_to_add[S] = render_state
 
 	if(new_renderkey == H.mutant_renderkey)
 		return
@@ -84,63 +91,59 @@
 		else
 			x_shift = S.dimension_x
 
-		var/special_state
-		if(S.special_render_case)
-			special_state = S.get_special_render_state(H, S.icon_state)
-			if(!special_state)
-				continue
+		var/render_state = bodyparts_to_add[S]
+		if(S.gender_specific)
+			render_state = "[g]_[key]_[render_state]"
+		else
+			render_state = "m_[key]_[render_state]"
 
 		for(var/layer in S.relevent_layers)
 			var/layertext = mutant_bodyparts_layertext(layer)
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
-			if(special_state)
-				accessory_overlay.icon_state = "m_[key]_[special_state]_[layertext]"
-			else if(S.gender_specific)
-				accessory_overlay.icon_state = "[g]_[key]_[S.icon_state]_[layertext]"
-			else
-				accessory_overlay.icon_state = "m_[key]_[S.icon_state]_[layertext]"
+			accessory_overlay.icon_state = "[render_state]_[layertext]"
 
 			if(S.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
 
 			if(!forced_colour)
-				if(HAS_TRAIT(H, TRAIT_HUSK))
-					if(S.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
-						accessory_overlay.color = HUSK_COLOR_LIST
+				if(!S.special_colorize || S.do_colorize(H))
+					if(HAS_TRAIT(H, TRAIT_HUSK))
+						if(S.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
+							accessory_overlay.color = HUSK_COLOR_LIST
+						else
+							accessory_overlay.color = "#AAA" //The gray husk color
 					else
-						accessory_overlay.color = "#AAA" //The gray husk color
-				else
-					switch(S.color_src)
-						if(USE_ONE_COLOR)
-							accessory_overlay.color = "#"+mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
-						if(USE_MATRIXED_COLORS)
-							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-							var/list/finished_list = list()
-							finished_list += ReadRGB("[color_list[1]]0")
-							finished_list += ReadRGB("[color_list[2]]0")
-							finished_list += ReadRGB("[color_list[3]]0")
-							finished_list += list(0,0,0,255)
-							for(var/index in 1 to finished_list.len)
-								finished_list[index] /= 255
-							accessory_overlay.color = finished_list
-						if(MUTCOLORS)
-							if(fixed_mut_color)
-								accessory_overlay.color = "#[fixed_mut_color]"
-							else
-								accessory_overlay.color = "#[H.dna.features["mcolor"]]"
-						if(HAIR)
-							if(hair_color == "mutcolor")
-								accessory_overlay.color = "#[H.dna.features["mcolor"]]"
-							else if(hair_color == "fixedmutcolor")
-								accessory_overlay.color = "#[fixed_mut_color]"
-							else
-								accessory_overlay.color = "#[H.hair_color]"
-						if(FACEHAIR)
-							accessory_overlay.color = "#[H.facial_hair_color]"
-						if(EYECOLOR)
-							accessory_overlay.color = "#[H.eye_color]"
+						switch(S.color_src)
+							if(USE_ONE_COLOR)
+								accessory_overlay.color = "#"+mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
+							if(USE_MATRIXED_COLORS)
+								var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
+								var/list/finished_list = list()
+								finished_list += ReadRGB("[color_list[1]]0")
+								finished_list += ReadRGB("[color_list[2]]0")
+								finished_list += ReadRGB("[color_list[3]]0")
+								finished_list += list(0,0,0,255)
+								for(var/index in 1 to finished_list.len)
+									finished_list[index] /= 255
+								accessory_overlay.color = finished_list
+							if(MUTCOLORS)
+								if(fixed_mut_color)
+									accessory_overlay.color = "#[fixed_mut_color]"
+								else
+									accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+							if(HAIR)
+								if(hair_color == "mutcolor")
+									accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+								else if(hair_color == "fixedmutcolor")
+									accessory_overlay.color = "#[fixed_mut_color]"
+								else
+									accessory_overlay.color = "#[H.hair_color]"
+							if(FACEHAIR)
+								accessory_overlay.color = "#[H.facial_hair_color]"
+							if(EYECOLOR)
+								accessory_overlay.color = "#[H.eye_color]"
 			else
 				accessory_overlay.color = forced_colour
 			standing += accessory_overlay
@@ -253,11 +256,6 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 
-/datum/species/moth
-	default_features = null
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("moth_markings" = ACC_RANDOM, "wings" = ACC_RANDOM)
-
 /datum/species/mush
 	default_features = null
 	mutant_bodyparts = list()
@@ -270,11 +268,13 @@
 	default_features = null
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
+	can_augment = FALSE
 
 /datum/species/ethereal
 	default_features = null
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
+	can_augment = FALSE
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -368,9 +368,15 @@
 		fly = new
 		fly.Grant(C)
 
+	var/robotic_limbs
 	if(ROBOTIC_LIMBS in species_traits)
-		for(var/obj/item/bodypart/B in C.bodyparts)
+		robotic_limbs = TRUE
+	for(var/obj/item/bodypart/B in C.bodyparts)
+		if(robotic_limbs)
 			B.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
+			B.organic_render = TRUE
+		else if (B.status == BODYPART_ORGANIC)
+			B.organic_render = TRUE
 
 	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 

@@ -100,6 +100,11 @@
 		features[key] = new_features[key]
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
 	body_markings = pref_species.get_random_body_markings(features)
+	if(pref_species.use_skintones)
+		features["uses_skintones"] = TRUE
+	//We reset the quirk-based stuff
+	augments = list()
+	all_quirks = list()
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)
@@ -148,15 +153,13 @@
 				mannequin.job = previewJob.title
 				previewJob.equip(mannequin, TRUE, preference_source = parent)
 			mannequin.underwear_visibility = NONE
-			mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
 		if(PREVIEW_PREF_LOADOUT)
 			mannequin.underwear_visibility = NONE
 			equip_preference_loadout(mannequin, TRUE, previewJob)
 			mannequin.underwear_visibility = NONE
-			mannequin.update_body()
 		if(PREVIEW_PREF_NAKED)
 			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
-			mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
+	mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
@@ -186,8 +189,10 @@
 //This needs to be a seperate proc because the character could not have the proper backpack during the moment of loadout equip
 /datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)
 	//Here we stick loadout items that couldn't be equipped into a bag. 
+	var/obj/item/back_item = H.back
 	for(var/item in packed_items)
 		var/obj/item/ITEM = item
-		if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
-			//Otherwise - on the ground
-			ITEM.forceMove(get_turf(H))
+		if(back_item)
+			ITEM.forceMove(back_item)
+		else
+			qdel(ITEM)

@@ -9,6 +9,26 @@
 		return TRUE
 	return FALSE
 
+/datum/sprite_accessory/frills/divinity
+	name = "Divinity"
+	icon_state = "divinity"
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/frills.dmi'
+
+/datum/sprite_accessory/frills/horns
+	name = "Horns"
+	icon_state = "horns"
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/frills.dmi'
+
+/datum/sprite_accessory/frills/hornsdouble
+	name = "Horns Double"
+	icon_state = "hornsdouble"
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/frills.dmi'
+
+/datum/sprite_accessory/frills/big
+	name = "Big"
+	icon_state = "big"
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/frills.dmi'
+
 /datum/sprite_accessory/frills/cobrahood
 	name = "Cobra Hood"
 	icon_state = "cobrahood"

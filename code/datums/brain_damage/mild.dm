@@ -50,8 +50,12 @@
 	owner.derpspeech = min(owner.derpspeech + 5, 25)
 	if(prob(3))
 		owner.emote("drool")
+	//SKYRAT EDIT REMOVAL BEGIN - LRP
+	/*
 	else if(owner.stat == CONSCIOUS && prob(3))
 		owner.say(pick_list_replacements(BRAIN_DAMAGE_FILE, "brain_damage"), forced = "brain damage")
+	*/
+	//SKYRAT EDIT END
 	..()
 
 /datum/brain_trauma/mild/dumbness/on_lose()
@@ -134,7 +138,7 @@
 	var/fall_chance = 1
 	if(owner.m_intent == MOVE_INTENT_RUN)
 		fall_chance += 2
-	if(prob(fall_chance) && (owner.mobility_flags & MOBILITY_STAND))
+	if(prob(fall_chance) && owner.body_position == STANDING_UP)
 		to_chat(owner, "<span class='warning'>Your leg gives out!</span>")
 		owner.Paralyze(35)
 

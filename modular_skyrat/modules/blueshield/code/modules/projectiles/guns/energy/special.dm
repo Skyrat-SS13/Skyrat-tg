@@ -14,6 +14,7 @@
 	obj_flags = UNIQUE_RENAME
 	cell_type = /obj/item/stock_parts/cell/blueshield
 	pin = /obj/item/firing_pin/implant/mindshield
+	selfcharge = TRUE
 
 /obj/item/stock_parts/cell/blueshield
 	name = "internal revolver power cell"
@@ -32,7 +33,6 @@
 	name = "internal pistol power cell"
 	maxcharge = 1000
 	chargerate = 300
-	self_recharge = TRUE
 	var/obj/item/gun/energy/e_gun/revolver/pdw9/parent
 
 /obj/item/stock_parts/cell/pdw9/Initialize()

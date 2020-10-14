@@ -1,17 +1,12 @@
-/datum/loadout_item/backpack/donator
-	category = LOADOUT_CATEGORY_BACKPACK
-	subcategory = LOADOUT_SUBCATEGORY_DONATOR
-	donator_only = TRUE
-
-/datum/loadout_item/backpack/donator/coin
+/datum/loadout_item/backpack/donator/public/coin
 	name = "Iron Coin"
 	path = /obj/item/coin/iron
 
-/datum/loadout_item/backpack/donator/havana_cigar_case
+/datum/loadout_item/backpack/donator/public/havana_cigar_case
 	name = "Havanian Cigars"
 	path = /obj/item/storage/fancy/cigarettes/cigars/havana
 	cost = 3
 
-/datum/loadout_item/backpack/donator/vape
+/datum/loadout_item/backpack/donator/public/vape
 	name = "E-Cigarette"
 	path = /obj/item/clothing/mask/vape
