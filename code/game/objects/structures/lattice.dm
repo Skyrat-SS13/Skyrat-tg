@@ -84,6 +84,7 @@
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
 	return "<span class='notice'>The supporting rods look like they could be <b>cut</b>.</span>"
 
+//SKYRAT EDIT REMOVAL BEGIN
 /*
 /obj/structure/lattice/catwalk/Move()
 	var/turf/T = loc
@@ -97,6 +98,7 @@
 		C.deconstruct()
 	..()
 */
+//SKYRAT EDIT REMOVAL END
 
 /obj/structure/lattice/lava
 	name = "heatproof support lattice"
