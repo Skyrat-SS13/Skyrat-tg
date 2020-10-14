@@ -1,4 +1,4 @@
-/obj/item/gun/energy/laser
+/obj/item/gun/energy/laser //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "laser gun"
 	desc = "A basic energy-based laser gun that fires concentrated beams of light which pass through glass and thin metal."
 	icon_state = "laser"
