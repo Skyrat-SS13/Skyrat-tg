@@ -4,7 +4,7 @@
 	message = "rustles their quills."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/quill/run_emote(mob/living/user, params)
@@ -82,7 +82,7 @@
 	message = "peeps like a bird!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/peep/run_emote(mob/living/user, params)
@@ -99,7 +99,7 @@
 	message = "peeps twice like a bird!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/peep2/run_emote(mob/living/user, params)
@@ -123,7 +123,7 @@
 	message = "snaps their fingers."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap/run_emote(mob/living/user, params)
@@ -140,7 +140,7 @@
 	message = "snaps twice."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap2/run_emote(mob/living/user, params)
@@ -157,7 +157,7 @@
 	message = "snaps thrice."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap3/run_emote(mob/living/user, params)
@@ -174,7 +174,7 @@
 	message = "lets out an awoo!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/awoo/run_emote(mob/living/user, params)
@@ -191,7 +191,7 @@
 	message = "lets out a nya!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/nya/run_emote(mob/living/user, params)
@@ -208,7 +208,7 @@
 	message = "lets out a weh!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/weh/run_emote(mob/living/user, params)
@@ -224,7 +224,7 @@
 	key_third_person = "suddenly hits a dab"
 	message = "suddenly hits a dab!"
 	emote_type = EMOTE_AUDIBLE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 
 /datum/emote/living/mothsqueak
 	key = "msqueak"
@@ -232,7 +232,7 @@
 	message = "lets out a tiny squeak!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/mothsqueak/run_emote(mob/living/user, params)
@@ -249,7 +249,7 @@
 	message = "merps!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/merp/run_emote(mob/living/user, params)
@@ -266,7 +266,7 @@
 	message = "barks!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/bark/run_emote(mob/living/user, params)
@@ -284,7 +284,7 @@
 	message = "squishes!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/squish/run_emote(mob/living/user, params)
@@ -294,4 +294,40 @@
 		return
 	user.nextsoundemote = world.time + 7
 	var/sound = pick('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	hands_use_check = FALSE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/meow/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	hands_use_check = FALSE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/hiss/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
 	playsound(user, sound, 50, 1, -1)

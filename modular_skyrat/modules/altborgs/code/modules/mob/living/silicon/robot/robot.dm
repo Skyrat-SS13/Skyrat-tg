@@ -2,7 +2,7 @@
 	var/robot_resting = FALSE
 	var/dogborg = FALSE
 
-/mob/living/silicon/robot/doMove(atom/destination) //Could potentially be a signal instead
+/mob/living/silicon/robot/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	. = ..()
 	if(robot_resting)
 		robot_resting = FALSE
@@ -40,8 +40,8 @@
 		robot_resting = ROBOT_REST_NORMAL
 	update_icons()
 
-/mob/living/silicon/robot/update_mobility()
-	..()
+/mob/living/silicon/robot/update_resting()
+	. = ..()
 	if(dogborg)
 		robot_resting = FALSE
 		update_icons()
@@ -56,6 +56,16 @@
 
 /mob/living/silicon/robot/modules/butler/skyrat
 	set_module = /obj/item/robot_module/butler/skyrat
+
+/mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
+	. = ..()
+	if(dogborg)
+		pixel_x = -16
+
+/mob/living/silicon/robot/stop_pulling()
+	. = ..()
+	if(dogborg)
+		pixel_x = -16
 
 /mob/living/silicon/robot/pick_module()
 	if(module.type != /obj/item/robot_module)

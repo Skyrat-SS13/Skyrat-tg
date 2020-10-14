@@ -95,6 +95,7 @@
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
 	var/obj/item/self_grasp/grasped_by
 	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
+	var/organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -572,7 +573,7 @@
 	if(total_damage >= max_damage * disable_threshold) //Easy limb disable disables the limb at 40% health instead of 0%
 		if(!last_maxed)
 			if(owner.stat < UNCONSCIOUS)
-				owner.emote("scream")
+				INVOKE_ASYNC(owner, /mob.proc/emote, "scream")
 			last_maxed = TRUE
 		set_disabled(TRUE)
 		return
@@ -591,11 +592,6 @@
 
 	if(!owner)
 		return
-	if(bodypart_disabled)
-		if(!.)
-			owner.update_mobility()
-	else if (.)
-		owner.update_mobility()
 	owner.update_health_hud() //update the healthdoll
 	owner.update_body()
 
@@ -736,8 +732,10 @@
 	if(change_icon_to_default)
 		if(status == BODYPART_ORGANIC)
 			icon = DEFAULT_BODYPART_ICON_ORGANIC
+			organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		else if(status == BODYPART_ROBOTIC)
 			icon = DEFAULT_BODYPART_ICON_ROBOTIC
+			organic_render = FALSE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 	if(owner)
 		owner.updatehealth()
@@ -777,8 +775,9 @@
 		should_draw_greyscale = FALSE
 
 		var/datum/species/S = H.dna.species
-		species_id = S.limbs_id
-		rendered_bp_icon = S.limbs_icon
+		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
+			species_id = S.limbs_id
+			rendered_bp_icon = S.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		species_flags_list = H.dna.species.species_traits
 
 		if(S.use_skintones)
@@ -959,7 +958,7 @@
 		var/datum/wound/W = thing
 		bleed_rate += W.blood_flow
 
-	if(owner.mobility_flags & ~MOBILITY_STAND)
+	if(owner.body_position == LYING_DOWN)
 		bleed_rate *= 0.75
 
 	if(grasped_by)

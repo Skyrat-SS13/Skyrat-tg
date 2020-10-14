@@ -3,6 +3,7 @@
 	make_body_marking_references()
 	make_body_marking_set_references()
 	make_loadout_references()
+	make_augment_references()
 	//We're loading donators here because it's the least intrusive way modularly
 	load_donators()
 
@@ -54,3 +55,18 @@
 			if(!GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory])
 				GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] = list()
 			GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] += L.path
+
+/proc/make_augment_references()
+	// Here we build the global loadout lists
+	for(var/path in subtypesof(/datum/augment_item))
+		var/datum/augment_item/L = path
+		if(initial(L.path))
+			L = new path()
+			GLOB.augment_items[L.path] = L
+
+			if(!GLOB.augment_slot_to_items[L.slot])
+				GLOB.augment_slot_to_items[L.slot] = list()
+				if(!GLOB.augment_categories_to_slots[L.category])
+					GLOB.augment_categories_to_slots[L.category] = list()
+				GLOB.augment_categories_to_slots[L.category] += L.slot
+			GLOB.augment_slot_to_items[L.slot] += L.path

@@ -2,9 +2,15 @@
 	category = LOADOUT_CATEGORY_UNIFORM
 	subcategory = LOADOUT_SUBCATEGORY_DONATOR
 
+/datum/loadout_item/uniform/donator/public
+	donator_only = TRUE
+
 /datum/loadout_item/suit/donator
 	category = LOADOUT_CATEGORY_SUIT
 	subcategory = LOADOUT_SUBCATEGORY_DONATOR
+
+/datum/loadout_item/suit/donator/public
+	donator_only = TRUE
 
 /datum/loadout_item/gloves/donator
 	category = LOADOUT_CATEGORY_GLOVES
