@@ -518,8 +518,12 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	return
 
 /turf/handle_fall(mob/faller)
+	//SKYRAT EDIT REMOVAL BEGIN - SOUNDS - moved to other place, to make you thud when you voluntairly rest
+	/*
 	if(has_gravity(src))
 		playsound(src, "bodyfall", 50, TRUE)
+	*/
+	//SKYRAT EDIT END
 	faller.drop_all_held_items()
 
 /turf/proc/photograph(limit=20)
