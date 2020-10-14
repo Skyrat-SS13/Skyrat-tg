@@ -8,7 +8,7 @@
 	plane = FLOOR_PLANE
 
 /obj/structure/lattice/catwalk
-	smoothing_groups = list(SMOOTH_GROUP_NORMAL_CATWALK)
+	smoothing_groups = list(SMOOTH_GROUP_NORMAL_CATWALK, SMOOTH_GROUP_OPEN_FLOOR)
 	canSmoothWith = list(SMOOTH_GROUP_NORMAL_CATWALK)
 	layer = CATWALK_LAYER
 	plane = FLOOR_PLANE

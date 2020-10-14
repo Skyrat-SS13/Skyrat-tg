@@ -1,6 +1,3 @@
-#define SMOOTH_GROUP_MAINTENANCE_TILE S_OBJ(72)			///turf/open/floor/plasteel/maintenance
-#define SMOOTH_GROUP_PLATING S_OBJ(73)			///turf/open/floor/plasteel/maintenance
-
 /turf/open/floor/maintenance
 	icon_state = "floor"
 	desc = "Cold concrete floor."
@@ -49,6 +46,7 @@
 /obj/item/stack/tile/maintenance/panel
 	turf_type = /turf/open/floor/maintenance/panel
 
+/*
 //Hack to make it not do inheritance
 /turf/open/floor/plating/Initialize()
 	. = ..()
@@ -63,3 +61,4 @@
 /turf/open/floor/plating/AfterChange()
 	. = ..()
 	icon_state = "plating-255"
+*/
