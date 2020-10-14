@@ -42,5 +42,5 @@
 
 /obj/item/extinguisher/update_overlays()
 	. = ..()
-	if(!istype(src, /obj/item/extinguisher/mini && !istype(src, /obj/item/extinguisher/advanced)))
+	if(!istype(src, /obj/item/extinguisher/mini) && !istype(src, /obj/item/extinguisher/advanced))
 		. += "ex_overlay_[random_overlay]"
