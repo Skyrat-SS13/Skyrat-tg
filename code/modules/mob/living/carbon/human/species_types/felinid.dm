@@ -14,6 +14,7 @@
 	species_language_holder = /datum/language_holder/felinid
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
 	payday_modifier = 0.75
+	ass_image = 'icons/ass/asscat.png'
 
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
