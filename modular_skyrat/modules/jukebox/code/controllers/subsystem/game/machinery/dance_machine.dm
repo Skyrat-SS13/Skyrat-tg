@@ -451,10 +451,6 @@
 /obj/machinery/jukebox/disco/process()
 	. = ..()
 	if(active)
-		for(var/mob/living/dancer in rangers)
-			if(QDELETED(dancer))
-				rangers -= dancer
-				continue
-			if(!prob(dance_chance) || HAS_TRAIT(dancer, TRAIT_IMMOBILIZED))
-				continue
-			dance(dancer)
+		for(var/mob/living/M in rangers)
+			if(prob(5+(allowed(M)*4)) && (M.mobility_flags & MOBILITY_MOVE))
+				dance(M)
