@@ -3,4 +3,4 @@
 // Mob signals
 #define COMSIG_MOB_ITEM_ATTACK_SELF "item_attack_self"				//from base of obj/item/attack_self(): (obj/item)
 // Living signals
-#define COMSIG_LIVING_UPDATED_MOBILITY "living_updated_mobility" //from base of (/mob/living/proc/update_mobility): (mobility_flags)
+#define COMSIG_LIVING_UPDATED_RESTING "living_updated_resting" //from base of (/mob/living/proc/update_resting): (resting)

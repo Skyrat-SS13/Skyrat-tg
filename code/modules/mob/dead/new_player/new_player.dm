@@ -386,6 +386,9 @@
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
+	//SKYRAT EDIT ADDITION BEGIN - ALERTS
+	dat += "<div class='notice'>Alert Level: [capitalize(num2seclevel(GLOB.security_level))]</div>"
+	//SKYRAT EDIT END
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
@@ -461,6 +464,7 @@
 		if(transfer_after)
 			mind.late_joiner = TRUE
 		mind.active = FALSE					//we wish to transfer the key manually
+		mind.original_character_slot_index = client.prefs.default_slot
 		mind.transfer_to(H)					//won't transfer key since the mind is not active
 		mind.original_character = H
 

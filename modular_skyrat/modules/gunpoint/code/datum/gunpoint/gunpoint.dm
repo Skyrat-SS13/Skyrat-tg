@@ -39,7 +39,7 @@
 		gunpointing = new(src, L, G)
 
 /mob/living/proc/CanGunpointAt(mob/living/L, notice = FALSE)
-	if(!(src.mobility_flags & MOBILITY_STAND))
+	if(resting)
 		if(notice)
 			to_chat(src, "<span class='warning'>You need to be standing to get a good aim!</span>")
 		return FALSE
