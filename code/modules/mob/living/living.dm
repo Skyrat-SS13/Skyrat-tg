@@ -945,7 +945,7 @@
 	if(throwing)
 		return
 	var/fixed = 0
-	if(anchored || (buckled && buckled.anchored))
+	if(anchored || (buckled?.anchored))
 		fixed = 1
 	if(on && !(movement_type & FLOATING) && !fixed)
 		animate(src, pixel_y = pixel_y + 2, time = 10, loop = -1)
@@ -1267,7 +1267,7 @@
 	C.Paralyze(40)
 
 /mob/living/can_be_pulled()
-	return ..() && !(buckled && buckled.buckle_prevents_pull)
+	return ..() && !(buckled?.buckle_prevents_pull)
 
 
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
@@ -1299,7 +1299,7 @@
 			if(changeling.changeling_speak)
 				return LINGHIVE_LING
 			return LINGHIVE_OUTSIDER
-	if(mind && mind.linglink)
+	if(mind?.linglink)
 		return LINGHIVE_LINK
 	return LINGHIVE_NONE
 
@@ -1404,7 +1404,7 @@
 
 /mob/living/update_mouse_pointer()
 	..()
-	if (client && ranged_ability && ranged_ability.ranged_mousepointer)
+	if (client && ranged_ability?.ranged_mousepointer)
 		client.mouse_pointer_icon = ranged_ability.ranged_mousepointer
 
 /mob/living/vv_edit_var(var_name, var_value)
@@ -1824,6 +1824,10 @@
 	. = body_position
 	body_position = new_value
 	if(new_value == LYING_DOWN) // From standing to lying down.
+		//SKYRAT EDIT ADDITION BEGIN - SOUNDS
+		if(has_gravity())
+			playsound(src, "bodyfall", 50, TRUE)
+		//SKYRAT EDIT END
 		on_lying_down()
 	else // From lying down to standing up.
 		on_standing_up()
