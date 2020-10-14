@@ -77,6 +77,7 @@
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
+	new /obj/item/storage/inflatable(src) //SKYRAT EDIT ADDITION - INFLATABLES
 
 /*
  * Tool Closet
