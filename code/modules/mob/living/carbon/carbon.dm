@@ -586,6 +586,7 @@
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina mild", /datum/mood_event/stamina_mild)
 			if(!HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
 				//When you get floored by stamina, you also get a brief stun and disarm
+				to_chat(src, "<span class='warning'>The pain makes you collapse!</span>")
 				Stun(0.5 SECONDS)
 				drop_all_held_items()
 				ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
@@ -601,6 +602,7 @@
 
 		if(stam > STAMINA_THRESHOLD_HARDCRIT)
 			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+				to_chat(src, "<span class='boldwarning'>It hurts too much to keep going...</span>")
 				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 		else
 			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
