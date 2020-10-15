@@ -303,7 +303,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				//SKYRAT EDIT ADDITION BEGIN - YELLING ECHOES
 				if(yellareas)
 					var/area/A = get_area(M)
-					if(istype(A) && A.ambientsounds != SPACE && A in yellareas)
+					if(istype(A) && A.ambientsounds != SPACE && (A in yellareas))
 						listening |= M
 				//SKYRAT EDIT ADDITION END
 				continue
