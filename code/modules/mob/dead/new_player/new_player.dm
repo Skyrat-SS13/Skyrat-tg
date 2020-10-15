@@ -255,6 +255,10 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		//SKYRAT EDIT END
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -278,6 +282,10 @@
 		return JOB_UNAVAILABLE_ACCOUNTAGE
 	if(job.required_playtime_remaining(client))
 		return JOB_UNAVAILABLE_PLAYTIME
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	//SKYRAT EDIT END
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
@@ -378,6 +386,9 @@
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
+	//SKYRAT EDIT ADDITION BEGIN - ALERTS
+	dat += "<div class='notice'>Alert Level: [capitalize(num2seclevel(GLOB.security_level))]</div>"
+	//SKYRAT EDIT END
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
@@ -453,6 +464,7 @@
 		if(transfer_after)
 			mind.late_joiner = TRUE
 		mind.active = FALSE					//we wish to transfer the key manually
+		mind.original_character_slot_index = client.prefs.default_slot
 		mind.transfer_to(H)					//won't transfer key since the mind is not active
 		mind.original_character = H
 

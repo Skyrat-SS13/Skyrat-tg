@@ -32,7 +32,7 @@
 	recommended_species = list("mammal", "human", "felinid", "tajaran", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/akula
-	recommended_species = list("mammal", "human", "felinid", "akula", "humanoid")
+	recommended_species = list("mammal", "human", "felinid", "aquatic", "akula", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"

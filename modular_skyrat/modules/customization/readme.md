@@ -41,6 +41,9 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
 
  ./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
 
+ ./code/controllers/subsystem/job.dm > /datum/controller/subsystem/job/proc/FindOccupationCandidates(), /datum/controller/subsystem/job/proc/GiveRandomJob(), /datum/controller/subsystem/job/proc/DivideOccupations(), /datum/controller/subsystem/job/proc/AssignRole()
+ ./code/modules/mob/dead/new_player/new_player.dm > /mob/dead/new_player/proc/IsJobUnavailable(), /proc/get_job_unavailable_error_message()
+
 ### Defines:
 
  ./code/modules/surgery/organs/tongue.dm > var/static/list/languages_possible_base - added 2 languages

@@ -99,14 +99,14 @@
 	for AI shift, ctrl, and alt clicking.
 */
 
-/mob/living/silicon/ai/CtrlShiftClickOn(atom/A)
-	A.AICtrlShiftClick(src)
+/mob/living/silicon/ai/CtrlShiftClickOn(atom/A) // Procs overriden in modular_skyrat/modules/Silicon_QoL
+	A.AICtrlShiftClick(src) 
 /mob/living/silicon/ai/ShiftClickOn(atom/A)
 	A.AIShiftClick(src)
 /mob/living/silicon/ai/CtrlClickOn(atom/A)
 	A.AICtrlClick(src)
 /mob/living/silicon/ai/AltClickOn(atom/A)
-	A.AIAltClick(src)
+	A.AIAltClick(src) 
 
 /*
 	The following criminally helpful code is just the previous code cleaned up;
@@ -124,7 +124,6 @@
 	return
 /atom/proc/AICtrlShiftClick()
 	return
-
 /* Airlocks */
 /obj/machinery/door/airlock/AICtrlClick() // Bolts doors
 	if(obj_flags & EMAGGED)
@@ -148,7 +147,7 @@
 
 	user_toggle_open(usr)
 	add_hiddenprint(usr)
-
+	
 /obj/machinery/door/airlock/AICtrlShiftClick()  // Sets/Unsets Emergency Access Override
 	if(obj_flags & EMAGGED)
 		return

@@ -95,7 +95,6 @@
 
 /datum/preferences/proc/set_new_species(new_species_path)
 	pref_species = new new_species_path()
-	real_name = pref_species.random_name(gender,1)
 	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
 	for(var/key in new_features)
 		features[key] = new_features[key]

@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL BEGIN - JUKEBOX - MOVED TO DANCE_MACHINE.DM
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
@@ -392,7 +393,7 @@
 		for(var/i in 1 to speed)
 			M.setDir(pick(GLOB.cardinals))
 			for(var/mob/living/carbon/NS in rangers)
-				NS.set_resting(!NS.resting, TRUE)
+				NS.set_resting(!NS.resting, TRUE, TRUE)
 		 time--
 
 /obj/machinery/jukebox/disco/proc/dance5(mob/living/M)
@@ -476,3 +477,4 @@
 		for(var/mob/living/M in rangers)
 			if(prob(5+(allowed(M)*4)) && (M.mobility_flags & MOBILITY_MOVE))
 				dance(M)
+*/ //SKYRAT EDIT REMOVAL END
