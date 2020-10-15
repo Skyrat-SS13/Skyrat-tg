@@ -1,8 +1,7 @@
-/* SKYRAT EDIT REMOVAL BEGIN - JUKEBOX - MOVED TO DANCE_MACHINE.DM
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'modular_skyrat/modules/jukebox/icons/obj/stationobjs.dmi'
 	icon_state = "jukebox"
 	verb_say = "states"
 	density = TRUE
@@ -18,6 +17,7 @@
 /obj/machinery/jukebox/disco
 	name = "radiant dance machine mark IV"
 	desc = "The first three prototypes were discontinued after mass casualty incidents."
+	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "disco"
 	req_access = list(ACCESS_ENGINE)
 	anchored = FALSE
@@ -32,33 +32,9 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	flags_1 = NODECONSTRUCT_1
 
-/datum/track
-	var/song_name = "generic"
-	var/song_path = null
-	var/song_length = 0
-	var/song_beat = 0
-
-/datum/track/New(name, path, length, beat)
-	song_name = name
-	song_path = path
-	song_length = length
-	song_beat = beat
-
 /obj/machinery/jukebox/Initialize()
 	. = ..()
-	var/list/tracks = flist("[global.config.directory]/jukebox_music/sounds/")
-
-	for(var/S in tracks)
-		var/datum/track/T = new()
-		T.song_path = file("[global.config.directory]/jukebox_music/sounds/[S]")
-		var/list/L = splittext(S,"+")
-		if(L.len != 3)
-			continue
-		T.song_name = L[1]
-		T.song_length = text2num(L[2])
-		T.song_beat = text2num(L[3])
-		songs |= T
-
+	songs = SSjukeboxes.songs
 	if(songs.len)
 		selection = pick(songs)
 
@@ -80,10 +56,15 @@
 	return ..()
 
 /obj/machinery/jukebox/update_icon_state()
+	. = ..()
+	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+	luminosity = 0
+
 	if(active)
-		icon_state = "[initial(icon_state)]-active"
-	else
-		icon_state = "[initial(icon_state)]"
+		luminosity = 1
+		SSvis_overlays.add_vis_overlay(src, icon, "active", layer, plane, dir, alpha)
+		SSvis_overlays.add_vis_overlay(src, icon, "active", EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha)
+
 
 /obj/machinery/jukebox/ui_status(mob/user)
 	if(!anchored)
@@ -91,11 +72,9 @@
 		return UI_CLOSE
 	if(!allowed(user) && !isobserver(user))
 		to_chat(user,"<span class='warning'>Error: Access Denied.</span>")
-		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
-	if(!songs.len && !isobserver(user))
+	if(!SSjukeboxes.songs.len && !isobserver(user))
 		to_chat(user,"<span class='warning'>Error: No music tracks have been authorized for your station. Petition Central Command to resolve this issue.</span>")
-		playsound(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
 	return ..()
 
@@ -109,7 +88,7 @@
 	var/list/data = list()
 	data["active"] = active
 	data["songs"] = list()
-	for(var/datum/track/S in songs)
+	for(var/datum/track/S in SSjukeboxes.songs)
 		var/list/track_data = list(
 			name = S.song_name
 		)
@@ -136,10 +115,8 @@
 			if(!active)
 				if(stop > world.time)
 					to_chat(usr, "<span class='warning'>Error: The device is still resetting from the last activation, it will be ready again in [DisplayTimeText(stop-world.time)].</span>")
-					playsound(src, 'sound/misc/compiler-failure.ogg', 50, TRUE)
 					return
 				activate_music()
-				START_PROCESSING(SSobj, src)
 				return TRUE
 			else
 				stop = 0
@@ -149,7 +126,7 @@
 				to_chat(usr, "<span class='warning'>Error: You cannot change the song until the current one is over.</span>")
 				return
 			var/list/available = list()
-			for(var/datum/track/S in songs)
+			for(var/datum/track/S in SSjukeboxes.songs)
 				available[S.song_name] = S
 			var/selected = params["track"]
 			if(QDELETED(src) || !selected || !istype(available[selected], /datum/track))
@@ -172,10 +149,15 @@
 				return TRUE
 
 /obj/machinery/jukebox/proc/activate_music()
-	active = TRUE
-	update_icon()
-	START_PROCESSING(SSobj, src)
-	stop = world.time + selection.song_length
+	var/jukeboxslottotake = SSjukeboxes.addjukebox(src, selection, 2)
+	if(jukeboxslottotake)
+		active = TRUE
+		update_icon()
+		START_PROCESSING(SSobj, src)
+		stop = world.time + selection.song_length
+		return TRUE
+	else
+		return FALSE
 
 /obj/machinery/jukebox/disco/activate_music()
 	..()
@@ -216,7 +198,8 @@
 	for(var/i in 1 to 10)
 		spawn_atom_to_turf(/obj/effect/temp_visual/hierophant/telegraph/edge, src, 1, FALSE)
 		sleep(5)
-
+		if(QDELETED(src))
+			return
 #define DISCO_INFENO_RANGE (rand(85, 115)*0.01)
 
 /obj/machinery/jukebox/disco/proc/lights_spin()
@@ -318,7 +301,7 @@
 
 /obj/machinery/jukebox/disco/proc/dance(mob/living/M) //Show your moves
 	set waitfor = FALSE
-	switch(rand(0,9))
+	switch(rand(0, 9))
 		if(0 to 1)
 			dance2(M)
 		if(2 to 3)
@@ -338,6 +321,7 @@
 		emote("flip")
 
 /obj/machinery/jukebox/disco/proc/dance3(mob/living/M)
+	set waitfor = FALSE
 	var/matrix/initial_matrix = matrix(M.transform)
 	for (var/i in 1 to 75)
 		if (!M)
@@ -402,6 +386,8 @@
 	for (var/i in 1 to 60)
 		if (!M)
 			return
+		if(!active)
+			break
 		if (i<31)
 			initial_matrix = matrix(M.transform)
 			initial_matrix.Translate(0,1)
@@ -436,10 +422,11 @@
 	lying_prev = 0
 
 /obj/machinery/jukebox/proc/dance_over()
-	for(var/mob/living/L in rangers)
-		if(!L || !L.client)
-			continue
-		L.stop_sound_channel(CHANNEL_JUKEBOX)
+	var/position = SSjukeboxes.findjukeboxindex(src)
+	if(!position)
+		return
+	SSjukeboxes.removejukebox(position)
+	STOP_PROCESSING(SSobj, src)
 	rangers = list()
 
 /obj/machinery/jukebox/disco/dance_over()
@@ -448,22 +435,7 @@
 	QDEL_LIST(sparkles)
 
 /obj/machinery/jukebox/process()
-	if(world.time < stop && active)
-		var/sound/song_played = sound(selection.song_path)
-
-		for(var/mob/M in range(10,src))
-			if(!M.client || !(M.client.prefs.toggles & SOUND_INSTRUMENTS))
-				continue
-			if(!(M in rangers))
-				rangers[M] = TRUE
-				M.playsound_local(get_turf(M), null, volume, channel = CHANNEL_JUKEBOX, S = song_played)
-		for(var/mob/L in rangers)
-			if(get_dist(src,L) > 10)
-				rangers -= L
-				if(!L || !L.client)
-					continue
-				L.stop_sound_channel(CHANNEL_JUKEBOX)
-	else if(active)
+	if(active && world.time >= stop)
 		active = FALSE
 		STOP_PROCESSING(SSobj, src)
 		dance_over()
@@ -477,4 +449,3 @@
 		for(var/mob/living/M in rangers)
 			if(prob(5+(allowed(M)*4)) && (M.mobility_flags & MOBILITY_MOVE))
 				dance(M)
-*/ //SKYRAT EDIT REMOVAL END
