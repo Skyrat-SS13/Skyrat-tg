@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 
 #define isbot(A) (istype(A, /mob/living/simple_animal/bot))
 
-#define isshade(A) (istype(A, /mob/living/simple_animal/shade))
+#define isshade(A) (istype(A, /mob/living/simple_animal/hostile/construct/shade)) //SKYRAT EDIT, changes shades into constructs
 
 #define ismouse(A) (istype(A, /mob/living/simple_animal/mouse))
 

@@ -263,6 +263,10 @@
 				++cultplayers
 			else
 				++alive
+	//SKYRAT EDIT ADDITION BEGIN
+	if(!alive)
+		return
+		//SKYRAT EDIT END
 	var/ratio = cultplayers/alive
 	if(ratio > CULT_RISEN && !cult_risen)
 		for(var/datum/mind/B in members)

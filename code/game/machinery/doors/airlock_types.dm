@@ -473,7 +473,7 @@
 /obj/machinery/door/airlock/cult/allowed(mob/living/L)
 	if(!density)
 		return TRUE
-	if(friendly || iscultist(L) || istype(L, /mob/living/simple_animal/shade) || isconstruct(L))
+	if(friendly || iscultist(L) || isconstruct(L)) //SKYRAT EDIT, removes shade check as it was made into a construct
 		if(!stealthy)
 			new openingoverlaytype(loc)
 		return TRUE

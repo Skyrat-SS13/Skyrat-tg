@@ -67,6 +67,16 @@
 		CR.button.moved = "6:[pos],4:-2"
 	add_overlay("glow_[icon_state][holy]")
 
+//SKYRAT EDIT ADDITION BEGIN
+/mob/living/simple_animal/hostile/construct/death()
+	if(original_mind)
+		if(!original_mind || (!ckey && original_mind.key))
+			CRASH("[src] tried to transfer ckey [original_mind ? "on ckey-less mob with a player mob as target" : "without a valid mob target"]!")
+		mind.transfer_to(original_mind, TRUE)
+		if(HAS_TRAIT_FROM(original_mind, TRAIT_SACRIFICED, "sacrificed"))
+			REMOVE_TRAIT(original_mind, TRAIT_SACRIFICED, "sacrificed")
+	..()
+//SKYRAT EDIT END
 /mob/living/simple_animal/hostile/construct/Login()
 	. = ..()
 	if(!. || !client)
@@ -112,7 +122,7 @@
 	return
 
 /mob/living/simple_animal/hostile/construct/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
-	return 0
+	return FALSE
 
 /mob/living/simple_animal/hostile/construct/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	. = ..()

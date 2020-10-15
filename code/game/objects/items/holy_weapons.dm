@@ -484,7 +484,7 @@
 
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
-		var/mob/living/simple_animal/shade/S = new(src)
+		var/mob/living/simple_animal/hostile/construct/shade/S = new(src) //SKYRAT EDIT, makes the shade into a construct
 		S.ckey = C.ckey
 		S.fully_replace_character_name(null, "The spirit of [name]")
 		S.status_flags |= GODMODE
@@ -501,7 +501,8 @@
 		possessed = FALSE
 
 /obj/item/nullrod/scythe/talking/Destroy()
-	for(var/mob/living/simple_animal/shade/S in contents)
+	//for(var/mob/living/simple_animal/hostile/construct/shade/S in contents)
+	for(var/mob/living/simple_animal/hostile/construct/shade/S in contents) //SKYRAT EDIT, makes the shade into a construct
 		to_chat(S, "<span class='userdanger'>You were destroyed!</span>")
 		qdel(S)
 	return ..()

@@ -55,7 +55,7 @@
 			. += "<span class='cult'>This shard is spent; it is now just a creepy rock.</span>"
 
 /obj/item/soulstone/Destroy() //Stops the shade from being qdel'd immediately and their ghost being sent back to the arrival shuttle.
-	for(var/mob/living/simple_animal/shade/A in src)
+	for(var/mob/living/simple_animal/hostile/construct/shade/A in src) //SKYRAT EDIT, makes the shade into a construct
 		A.death()
 	return ..()
 
@@ -104,7 +104,7 @@
 	release_shades(user)
 
 /obj/item/soulstone/proc/release_shades(mob/user)
-	for(var/mob/living/simple_animal/shade/A in src)
+	for(var/mob/living/simple_animal/hostile/construct/shade/A in src) //SKYRAT EDIT, makes the shade into a construct
 		A.forceMove(get_turf(user))
 		A.cancel_camera()
 		if(purified)
@@ -196,7 +196,7 @@
 					to_chat(user, "<span class='userdanger'>Capture failed!</span>: Kill or maim the victim first!")
 
 		if("SHADE")
-			var/mob/living/simple_animal/shade/T = target
+			var/mob/living/simple_animal/hostile/construct/shade/T = target //SKYRAT EDIT, makes the shade into a construct
 			if(contents.len)
 				to_chat(user, "<span class='userdanger'>Capture failed!</span>: [src] is full! Free an existing soul to make room.")
 			else
@@ -214,7 +214,7 @@
 
 		if("CONSTRUCT")
 			var/obj/structure/constructshell/T = target
-			var/mob/living/simple_animal/shade/A = locate() in src
+			var/mob/living/simple_animal/hostile/construct/shade/A = locate() in src //SKYRAT EDIT, makes the shade into a construct
 			if(A)
 				var/list/constructs = list(
 					"Juggernaut" = image(icon = 'icons/mob/cult.dmi', icon_state = "juggernaut"),
@@ -280,6 +280,11 @@
 		var/datum/action/innate/seek_master/SM = new()
 		SM.Grant(newstruct)
 	newstruct.key = target.key
+	//SKYRAT EDIT ADDITION BEGIN
+	if(target.type == /mob/living/simple_animal/hostile/construct/shade) //Make sure we remember which body belonged to the shade
+		var/mob/living/simple_animal/hostile/construct/shade/shade = target
+		newstruct.original_mind = shade.original_mind
+		//SKYRAT EDIT END
 	var/obj/screen/alert/bloodsense/BS
 	if(newstruct.mind && ((stoner && iscultist(stoner)) || cultoverride) && SSticker && SSticker.mode)
 		SSticker.mode.add_cultist(newstruct.mind, 0)
@@ -297,15 +302,20 @@
 /obj/item/soulstone/proc/init_shade(mob/living/carbon/human/T, mob/user, message_user = FALSE, mob/shade_controller)
 	if(!shade_controller)
 		shade_controller = T
-	new /obj/effect/decal/remains/human(T.loc) //Spawns a skeleton
+	//SKYRAT EDIT ADDITION BEGIN
+	if(HAS_TRAIT_FROM(T, TRAIT_SACRIFICED, "sacrificed"))
+		if(user)
+			to_chat(user, "This body has already been harvested!")
+		return
+	ADD_TRAIT(T, TRAIT_SACRIFICED, "sacrificed")
+	//SKYRAT EDIT END
 	T.stop_sound_channel(CHANNEL_HEARTBEAT)
-	T.invisibility = INVISIBILITY_ABSTRACT
-	T.dust_animation()
-	var/mob/living/simple_animal/shade/S = new /mob/living/simple_animal/shade(src)
+	var/mob/living/simple_animal/hostile/construct/shade/S = new /mob/living/simple_animal/hostile/construct/shade(src) //SKYRAT EDIT, makes the shade into a construct
 	S.AddComponent(/datum/component/soulstoned, src)
 	S.name = "Shade of [T.real_name]"
 	S.real_name = "Shade of [T.real_name]"
 	S.key = shade_controller.key
+	S.original_mind = T.mind.current //SKYRAT EDIT, saves the original's mob mind for later transfer
 	S.copy_languages(T, LANGUAGE_MIND)//Copies the old mobs languages into the new mob holder.
 	if(user)
 		S.copy_languages(user, LANGUAGE_MASTER)
@@ -348,5 +358,5 @@
 	for(var/obj/item/W in T)
 		T.dropItemToGround(W)
 	init_shade(T, user , shade_controller = chosen_ghost)
-	qdel(T)
+	//qdel(T) SKYRAT EDIT, soulstones no longer delete victims
 	return TRUE

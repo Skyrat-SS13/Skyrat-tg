@@ -217,7 +217,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 			playsound(src,'sound/effects/pray_chaplain.ogg',60,TRUE)
 			for(var/obj/item/soulstone/SS in sword.contents)
 				SS.usability = TRUE
-				for(var/mob/living/simple_animal/shade/EX in SS)
+				for(var/mob/living/simple_animal/hostile/construct/shade/EX in SS) //SKYRAT EDIT, makes the shade into a construct
 					SSticker.mode.remove_cultist(EX.mind, 1, 0)
 					EX.icon_state = "ghost1"
 					EX.name = "Purified [EX.name]"
@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 					SS.icon_state = "purified_soulstone2"
 					if(iscultist(M))
 						SSticker.mode.remove_cultist(M.mind, FALSE, FALSE)
-			for(var/mob/living/simple_animal/shade/EX in SS)
+			for(var/mob/living/simple_animal/hostile/construct/shade/EX in SS)
 				EX.icon_state = "ghost1"
 				EX.name = "Purified [initial(EX.name)]"
 			user.visible_message("<span class='notice'>[user] purifies [SS]!</span>")
@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 		playsound(src,'sound/hallucinations/veryfar_noise.ogg',40,TRUE)
 		if(do_after(user, 40, target = sword))
 			playsound(src,'sound/effects/pray_chaplain.ogg',60,TRUE)
-			for(var/mob/living/simple_animal/shade/S in sword.contents)
+			for(var/mob/living/simple_animal/hostile/construct/shade/S in sword.contents)
 				to_chat(S, "<span class='userdanger'>You were destroyed by the exorcism!</span>")
 				qdel(S)
 			sword.possessed = FALSE //allows the chaplain (or someone else) to reroll a new spirit for their sword

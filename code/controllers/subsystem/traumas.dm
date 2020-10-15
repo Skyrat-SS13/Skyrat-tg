@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(traumas)
 					   /mob/living/simple_animal/drone, /mob/living/simple_animal/bot, /mob/living/simple_animal/hostile/swarmer)),
 					   "doctors"   = typecacheof(list(/mob/living/simple_animal/bot/medbot)),
 					   "the supernatural"   = typecacheof(list(/mob/living/simple_animal/hostile/construct,
-					   /mob/living/simple_animal/revenant, /mob/living/simple_animal/shade)),
+					   /mob/living/simple_animal/revenant, /mob/living/simple_animal/hostile/construct/shade)), //SKYRAT EDIT, makes shade a construct
 					   "aliens"   = typecacheof(list(/mob/living/carbon/alien, /mob/living/simple_animal/slime)),
 					   "conspiracies" = typecacheof(list(/mob/living/simple_animal/bot/secbot, /mob/living/simple_animal/drone,
 					   /mob/living/simple_animal/pet/penguin)),

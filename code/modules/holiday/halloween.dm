@@ -78,7 +78,7 @@
 	else if(trapped == HOWLING_GHOST)
 		visible_message("<span class='userdanger'><font size='5'>[pick("OooOOooooOOOoOoOOooooOOOOO", "BooOOooOooooOOOO", "BOO!", "WoOOoOoooOooo")]</font></span>")
 		playsound(loc, 'sound/spookoween/ghosty_wind.ogg', 300, TRUE)
-		new /mob/living/simple_animal/shade/howling_ghost(loc)
+		new /mob/living/simple_animal/hostile/construct/shade/howling_ghost(loc) //SKYRAT CHANGE, makes shades constructs
 		trapped = 0
 
 	else if(trapped == SCARY_BATS)
@@ -115,7 +115,7 @@
 //Spookoween Ghost//
 ////////////////////
 
-/mob/living/simple_animal/shade/howling_ghost
+/mob/living/simple_animal/hostile/construct/shade/howling_ghost
 	name = "ghost"
 	real_name = "ghost"
 	icon = 'icons/mob/mob.dmi'
@@ -129,14 +129,14 @@
 	layer = 4
 	var/timer = 0
 
-/mob/living/simple_animal/shade/howling_ghost/Initialize()
+/mob/living/simple_animal/hostile/construct/shade/howling_ghost/Initialize()
 	. = ..()
 	icon_state = pick("ghost","ghostian","ghostian2","ghostking","ghost1","ghost2")
 	icon_living = icon_state
 	status_flags |= GODMODE
 	timer = rand(1,15)
 
-/mob/living/simple_animal/shade/howling_ghost/Life()
+/mob/living/simple_animal/hostile/construct/shade/howling_ghost/Life()
 	..()
 	timer--
 	if(prob(20))
@@ -145,16 +145,16 @@
 		spooky_ghosty()
 		timer = rand(1,15)
 
-/mob/living/simple_animal/shade/howling_ghost/proc/EtherealMove(direction)
+/mob/living/simple_animal/hostile/construct/shade/howling_ghost/proc/EtherealMove(direction)
 	forceMove(get_step(src, direction))
 	setDir(direction)
 
-/mob/living/simple_animal/shade/howling_ghost/proc/roam()
+/mob/living/simple_animal/hostile/construct/shade/howling_ghost/proc/roam()
 	if(prob(80))
 		var/direction = pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST)
 		EtherealMove(direction)
 
-/mob/living/simple_animal/shade/howling_ghost/proc/spooky_ghosty()
+/mob/living/simple_animal/hostile/construct/shade/howling_ghost/proc/spooky_ghosty()
 	if(prob(20)) //haunt
 		playsound(loc, pick('sound/spookoween/ghosty_wind.ogg','sound/spookoween/ghost_whisper.ogg','sound/spookoween/chain_rattling.ogg'), 300, TRUE)
 	if(prob(10)) //flickers
@@ -168,7 +168,7 @@
 			step(I,direction)
 		return
 
-/mob/living/simple_animal/shade/howling_ghost/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+/mob/living/simple_animal/hostile/construct/shade/howling_ghost/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	. = 0
 
 ///////////////////////////

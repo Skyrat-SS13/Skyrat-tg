@@ -82,7 +82,7 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 		fail_invoke()
 
 /obj/effect/rune/attack_animal(mob/living/simple_animal/M)
-	if(istype(M, /mob/living/simple_animal/shade) || istype(M, /mob/living/simple_animal/hostile/construct))
+	if(istype(M, /mob/living/simple_animal/hostile/construct/shade) || istype(M, /mob/living/simple_animal/hostile/construct)) //SKYRAT EDIT, makes the shade into a construct
 		if(istype(M, /mob/living/simple_animal/hostile/construct/wraith/angelic) || istype(M, /mob/living/simple_animal/hostile/construct/juggernaut/angelic) || istype(M, /mob/living/simple_animal/hostile/construct/artificer/angelic))
 			to_chat(M, "<span class='warning'>You purge the rune!</span>")
 			qdel(src)
@@ -202,11 +202,18 @@ structure_check() searches for nearby cultist structures required for the invoca
 		fail_invoke()
 		log_game("Offer rune failed - no eligible targets")
 		return
+	//SKYRAT EDIT ADDITION BEGIN
+	var/mob/living/L = pick(myriad_targets)
+	if(HAS_TRAIT(L, TRAIT_SACRIFICED))
+		fail_invoke()
+		log_game("Offer rune failed - target has already been sacrificed")
+		to_chat(invokers, "<span class='warning'>[L] has already been sacrificed!</span>")
+		return
+		//SKYRAT EDIT END
 	rune_in_use = TRUE
 	visible_message("<span class='warning'>[src] pulses blood red!</span>")
 	var/oldcolor = color
 	color = RUNE_COLOR_DARKRED
-	var/mob/living/L = pick(myriad_targets)
 
 	var/mob/living/F = invokers[1]
 	var/datum/antagonist/cult/C = F.mind.has_antag_datum(/datum/antagonist/cult,TRUE)
@@ -303,12 +310,18 @@ structure_check() searches for nearby cultist structures required for the invoca
 		stone.invisibility = 0
 
 	if(sacrificial)
+		//SKYRAT EDIT ADDITION BEGIN
+		ADD_TRAIT(sacrificial, TRAIT_SACRIFICED, "sacrificed")
 		if(iscyborg(sacrificial))
+			var/mob/living/silicon/robot/bot = sacrificial
 			playsound(sacrificial, 'sound/magic/disable_tech.ogg', 100, TRUE)
-			sacrificial.dust() //To prevent the MMI from remaining
+			bot.deconstruct()
+
 		else
 			playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
-			sacrificial.gib()
+			var/mob/living/carbon/human/H = sacrificial
+			H.spew_organ(2, 6)
+			//SKYRAT EDIT END
 	return TRUE
 
 

@@ -151,7 +151,10 @@
 			if(MOOD_LEVEL_HAPPY4 to INFINITY)
 				. += "[t_He] look[p_s()] ecstatic."
 	. += "*---------*</span>"
-
+	//SKYRAT EDIT ADDITION BEGIN
+	if(HAS_TRAIT(src, TRAIT_SACRIFICED))
+		. += "<span class='cult italic'>[t_He] has dark cloud's swirling around [t_him] head, [t_him] eyes looking dull.</span>"
+		//SKYRAT EDIT END
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /mob/living/carbon/examine_more(mob/user)
