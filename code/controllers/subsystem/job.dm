@@ -469,17 +469,17 @@ SUBSYSTEM_DEF(job)
 	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)//silicons override this proc to return a mob
-		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-		if(job.no_dresscode && job.loadout)
-			if(M.client)
-				packed_items = M.client.prefs.equip_preference_loadout(M, FALSE, job)
-		//SKYRAT CHANGE ADDITION END
 		if(ismob(new_mob))
 			living_mob = new_mob
 			if(!joined_late)
 				newplayer.new_character = living_mob
 			else
 				M = living_mob
+			//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
+			if(job.no_dresscode && job.loadout)
+				if(M.client)
+					packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job)
+			//SKYRAT CHANGE ADDITION END
 
 		SSpersistence.antag_rep_change[M.client.ckey] += job.GetAntagRep()
 
@@ -507,9 +507,9 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
 		if(!job.no_dresscode && job.loadout)
 			if(M.client)
-				packed_items = M.client.prefs.equip_preference_loadout(M, FALSE, job)
+				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job)
 		if(packed_items)
-			M.client.prefs.add_packed_items(M, packed_items)
+			M.client.prefs.add_packed_items(living_mob, packed_items)
 		//SKYRAT CHANGE ADDITION END
 
 	return living_mob
