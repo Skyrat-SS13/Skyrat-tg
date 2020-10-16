@@ -9,7 +9,7 @@
 #endif
 
 #ifdef TESTING
-#define DATUMVAR_DEBUGGING_MODE
+#define DATUMVAR_DEBUGGING_
 
 /*
 * Enables extools-powered reference tracking system, letting you see what is referencing objects that refuse to hard delete.
