@@ -1,12 +1,12 @@
 /*********************Mining Hammer****************/
 /obj/item/kinetic_crusher
-	icon = 'icons/obj/mining.dmi'
+	icon = 'icons_manaos/obj/mining.dmi'
 	icon_state = "crusher"
 	inhand_icon_state = "crusher0"
-	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+	lefthand_file = 'icons_manaos/mob/inhands/weapons/hammers_lefthand.dmi'
+	righthand_file = 'icons_manaos/mob/inhands/weapons/hammers_righthand.dmi'
 	name = "proto-kinetic crusher"
-	desc = "An early design of the proto-kinetic accelerator, it is little more than a combination of various mining tools cobbled together, forming a high-tech club. \
+	desc = "An alternate design of the proto-kinetic accelerator, it is little more than a combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
 	force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
