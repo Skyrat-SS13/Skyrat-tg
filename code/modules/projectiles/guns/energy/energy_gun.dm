@@ -41,6 +41,7 @@
 	name = "prototype energy gun"
 	desc = "NT-P:01 Prototype Energy Gun. Early stage development of a unique laser rifle that has multifaceted energy lens allowing the gun to alter the form of projectile it fires on command."
 	icon_state = "protolaser"
+	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - AESTHETICS
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/electrode/old)
 
@@ -53,8 +54,8 @@
 /obj/item/gun/energy/e_gun/hos
 	name = "\improper X-01 MultiPhase Energy Gun"
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
-	cell_type = /obj/item/stock_parts/cell/hos_gun
 	icon_state = "hoslaser"
+	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - AESTHETICS
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 10
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/hos, /obj/item/ammo_casing/energy/laser/hos, /obj/item/ammo_casing/energy/ion/hos)
@@ -66,6 +67,7 @@
 	desc = "The \"Dynamic Rapid-Apprehension of the Guilty\" net is a revolution in law enforcement technology."
 	icon_state = "dragnet"
 	inhand_icon_state = "dragnet"
+	cell_type = /obj/item/stock_parts/cell  //SKYRAT EDIT ADDITION - AESTHETICS
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/net, /obj/item/ammo_casing/energy/trap)
@@ -85,17 +87,19 @@
 	inhand_icon_state = "turretlaser"
 	slot_flags = null
 	w_class = WEIGHT_CLASS_HUGE
+	cell_type = /obj/item/stock_parts/cell  //SKYRAT EDIT ADDITION - AESTHETICS
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/laser)
 	weapon_weight = WEAPON_HEAVY
 	can_flashlight = FALSE
 	trigger_guard = TRIGGER_GUARD_NONE
 	ammo_x_offset = 2
 
-/obj/item/gun/energy/e_gun/nuclear
+/obj/item/gun/energy/e_gun/nuclear //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
 	icon_state = "nucgun"
 	inhand_icon_state = "nucgun"
+	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - AESTHETICS
 	charge_delay = 10
 	pin = null
 	can_charge = FALSE
