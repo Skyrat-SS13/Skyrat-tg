@@ -46,7 +46,8 @@
 	if(isliving(hit_atom))
 		var/mob/living/L = hit_atom
 		if(stunning)
-			L.Paralyze(20) //splat!
+			//L.Paralyze(20) //splat!
+			L.StaminaKnockdown(10, TRUE)
 		L.adjust_blurriness(1)
 		L.visible_message("<span class='warning'>[L] is creamed by [src]!</span>", "<span class='userdanger'>You've been creamed by [src]!</span>")
 		playsound(L, "desecration", 50, TRUE)

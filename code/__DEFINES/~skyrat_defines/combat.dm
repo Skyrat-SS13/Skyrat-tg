@@ -38,6 +38,18 @@
 #define CLICK_CD_MELEE_TIRED 11 //#define CLICK_CD_MELEE 8, so 38% slower
 #define CLICK_CD_RANGE_TIRED 5 //#define CLICK_CD_RANGE 4, so 25% slower
 
+#define PAIN_THRESHOLD_MESSAGE_ACHE 30
+#define PAIN_THRESHOLD_MESSAGE_MILD 70
+#define PAIN_THRESHOLD_MESSAGE_MEDIUM 100
+#define PAIN_THRESHOLD_MESSAGE_HIGH 130
+#define PAIN_THRESHOLD_MESSAGE_SEVERE 160
+#define PAIN_THRESHOLD_MESSAGE_OHGOD 190
+
+#define PAIN_MESSAGE_COOLDOWN 20 SECONDS
+
+/mob/living/carbon
+	var/next_pain_message = 0
+
 //Stamina crit threshold is MAX_HUMAN_LIFE - HEALTH_THRESHOLD_CRIT so 200 - 40 = 160
 //MOVE THOSE LATER
 /datum/movespeed_modifier/stamina_slowdown

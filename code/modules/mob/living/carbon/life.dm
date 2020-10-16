@@ -43,7 +43,21 @@
 	if(staminaloss)
 		//Stamina regeneration: Regens faster, the more health you have, and the more staminaloss you have
 		adjustStaminaLoss(-(STAMINA_STATIC_REGEN_FLAT+(staminaloss/STAMINALOSS_REGEN_COEFF)) * (STAMINA_STATIC_REGEN_MULTIPLIER + (max(health/maxHealth, 0))))
-
+		if(staminaloss > PAIN_THRESHOLD_MESSAGE_ACHE && world.time > next_pain_message && stat != DEAD)
+			next_pain_message = world.time + PAIN_MESSAGE_COOLDOWN
+			switch(FLOOR(staminaloss,1))
+				if(PAIN_THRESHOLD_MESSAGE_ACHE to PAIN_THRESHOLD_MESSAGE_MILD)
+					to_chat(src, "<span class='warning'>Your body aches.</span>")
+				if(PAIN_THRESHOLD_MESSAGE_MILD to PAIN_THRESHOLD_MESSAGE_MEDIUM)
+					to_chat(src, "<span class='warning'>Your body hurts!</span>")
+				if(PAIN_THRESHOLD_MESSAGE_MEDIUM to PAIN_THRESHOLD_MESSAGE_HIGH)
+					to_chat(src, "<span class='warning'>Your body hurts badly!</span>")
+				if(PAIN_THRESHOLD_MESSAGE_HIGH to PAIN_THRESHOLD_MESSAGE_SEVERE)
+					to_chat(src, "<span class='warning'>You feel incapacitating pain!</span>")
+				if(PAIN_THRESHOLD_MESSAGE_SEVERE to PAIN_THRESHOLD_MESSAGE_OHGOD)
+					to_chat(src, "<span class='boldwarning'>You feel severe pain!</span>")
+				if(PAIN_THRESHOLD_MESSAGE_OHGOD to INFINITY)
+					to_chat(src, "<span class='boldwarning'>You feel extreme pain!</span>")
 	if(stat != DEAD)
 		return 1
 
