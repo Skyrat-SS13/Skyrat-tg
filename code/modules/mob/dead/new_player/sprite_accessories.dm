@@ -2034,3 +2034,7 @@
 /datum/sprite_accessory/moth_markings/witchwing
 	name = "Witch Wing"
 	icon_state = "witchwing"
+
+/datum/sprite_accessory/hair/cerberus
+	name = "Cerberus"
+	icon_state = "hair_cerberus"
