@@ -25,12 +25,12 @@
 #define STAMINA_CROWD_CONTROL_COEFF 200
 
 //Resting thresholds
-#define STAMINA_THRESHOLD_MEDIUM_GET_UP 30
-#define STAMINA_THRESHOLD_SLOW_GET_UP 70
+#define STAMINA_THRESHOLD_MEDIUM_GET_UP 50
+#define STAMINA_THRESHOLD_SLOW_GET_UP 100
 
 //Standing times in seconds
-#define GET_UP_FAST 0.6
-#define GET_UP_MEDIUM 2
+#define GET_UP_FAST 0.7
+#define GET_UP_MEDIUM 1.5
 #define GET_UP_SLOW 3
 
 //Stamina threshold for attacking slower with items
