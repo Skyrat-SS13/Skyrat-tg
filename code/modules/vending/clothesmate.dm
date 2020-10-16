@@ -111,7 +111,8 @@
 		            /obj/item/clothing/suit/toggle/suspenders/blue = 2,
 		            /obj/item/clothing/suit/toggle/suspenders/gray = 2,
 		            /obj/item/clothing/under/suit/redskirt = 1,
-		            /obj/item/clothing/under/suit/redsuit = 1)
+		            /obj/item/clothing/under/suit/redsuit = 1,
+		            /obj/item/clothing/head/bow = 1)
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 1,
 		              /obj/item/clothing/mask/balaclava = 1,

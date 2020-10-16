@@ -481,3 +481,8 @@
 	desc = "A gauzy white veil."
 	icon_state = "weddingveil"
 	inhand_icon_state = "weddingveil"
+
+/obj/item/clothing/head/bow
+	name = "moño rojo"
+	desc = "Un bonito moño de color rojo, adorable~."
+	icon_state = "bow"
