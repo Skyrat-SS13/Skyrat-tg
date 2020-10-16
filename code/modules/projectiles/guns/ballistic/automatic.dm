@@ -61,7 +61,7 @@
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
 
-/obj/item/gun/ballistic/automatic/c20r
+/obj/item/gun/ballistic/automatic/c20r //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper C-20r SMG"
 	desc = "A bullpup three-round burst .45 SMG, designated 'C-20r'. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp."
 	icon_state = "c20r"
