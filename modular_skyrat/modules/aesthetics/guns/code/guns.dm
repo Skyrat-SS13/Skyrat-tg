@@ -1,7 +1,4 @@
 /obj/item/gun/energy/e_gun
-	name = "energy rifle"
-	desc = "A basic hybrid energy rifle with two settings: disable and kill."
-	cell_type = /obj/item/stock_parts/cell/upgraded
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
@@ -13,12 +10,9 @@
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
 /obj/item/gun/energy/laser
-	name = "laser carbine"
-	desc = "An energy-based laser carbine that fires concentrated beams of light which pass through glass and thin metal."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
-	cell_type = /obj/item/stock_parts/cell/upgraded
 
 /obj/item/gun/ballistic/shotgun/riot
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
@@ -90,3 +84,23 @@
 
 /obj/item/gun/energy/e_gun/nuclear/rainbow/emag_act(mob/user, obj/item/card/emag/E)
 	return FALSE
+
+//BEAM SOUNDS
+/obj/item/ammo_casing/energy
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser3.ogg'
+
+/obj/item/ammo_casing/energy/laser/pulse
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
+
+/obj/item/gun/energy/xray
+	fire_sound_volume = 100
+
+/obj/item/gun/energy/lasercannon
+	fire_sound_volume = 100
+
+/obj/item/ammo_casing/energy/xray
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/xray_laser.ogg'
+
+/obj/item/ammo_casing/energy/laser/accelerator
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser_cannon_fire.ogg'
+
