@@ -475,11 +475,6 @@ SUBSYSTEM_DEF(job)
 				newplayer.new_character = living_mob
 			else
 				M = living_mob
-			//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-			if(job.no_dresscode && job.loadout)
-				if(M.client)
-					packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job)
-			//SKYRAT CHANGE ADDITION END
 
 		SSpersistence.antag_rep_change[M.client.ckey] += job.GetAntagRep()
 
@@ -505,7 +500,7 @@ SUBSYSTEM_DEF(job)
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-		if(!job.no_dresscode && job.loadout)
+		if(job.loadout)
 			if(M.client)
 				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job)
 		if(packed_items)
