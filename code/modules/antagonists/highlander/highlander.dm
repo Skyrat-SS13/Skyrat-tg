@@ -3,7 +3,7 @@
 	var/obj/item/claymore/highlander/sword
 	show_in_antagpanel = FALSE
 	show_name_in_check_antagonists = TRUE
-	can_elimination_hijack = ELIMINATION_ENABLED
+	can_hijack = HIJACK_HIJACKER
 
 /datum/antagonist/highlander/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/L = owner.current || mob_override
@@ -25,9 +25,10 @@
 	steal_objective.owner = owner
 	steal_objective.set_target(new /datum/objective_item/steal/nukedisc)
 	objectives += steal_objective
-	var/datum/objective/elimination/highlander/elimination_objective = new
-	elimination_objective.owner = owner
-	objectives += elimination_objective
+
+	var/datum/objective/hijack/highlander/hijack_objective = new
+	hijack_objective.owner = owner
+	objectives += hijack_objective
 
 /datum/antagonist/highlander/on_gain()
 	forge_objectives()

@@ -50,7 +50,6 @@
 /datum/augment_item/organ/eyes/highlumi
 	name = "High-luminosity eyes"
 	path = /obj/item/organ/eyes/robotic/glow
-	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
 	cost = 1
 
 //TONGUES

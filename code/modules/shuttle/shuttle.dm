@@ -36,22 +36,10 @@
 	///Delete this port after ship fly off.
 	var/delete_after = FALSE
 
-	///are we registered in SSshuttles?
-	var/registered = FALSE
-
-	///register to SSshuttles
 /obj/docking_port/proc/register()
-	if(registered)
-		WARNING("docking_port registered multiple times")
-		unregister()
-	registered = TRUE
 	return
 
-	///unregister from SSshuttles
 /obj/docking_port/proc/unregister()
-	if(!registered)
-		WARNING("docking_port unregistered multiple times")
-	registered = FALSE
 	return
 
 /obj/docking_port/proc/Check_id()
@@ -197,8 +185,7 @@
 	var/datum/map_template/shuttle/roundstart_template
 	var/json_key
 
-/obj/docking_port/stationary/register(replace = FALSE)
-	. = ..()
+/obj/docking_port/stationary/register()
 	if(!id)
 		id = "dock"
 	else
@@ -208,14 +195,13 @@
 		name = "dock"
 
 	var/counter = SSshuttle.assoc_stationary[id]
-	if(!replace || !counter)
-		if(counter)
-			counter++
-			SSshuttle.assoc_stationary[id] = counter
-			id = "[id]_[counter]"
-			name = "[name] [counter]"
-		else
-			SSshuttle.assoc_stationary[id] = 1
+	if(counter)
+		counter++
+		SSshuttle.assoc_stationary[id] = counter
+		id = "[id]_[counter]"
+		name = "[name] [counter]"
+	else
+		SSshuttle.assoc_stationary[id] = 1
 
 	if(!port_destinations)
 		port_destinations = id
@@ -238,7 +224,6 @@
 	#endif
 
 /obj/docking_port/stationary/unregister()
-	. = ..()
 	SSshuttle.stationary -= src
 
 /obj/docking_port/stationary/Destroy(force)
@@ -366,29 +351,25 @@
 	var/list/hidden_turfs = list()
 
 /obj/docking_port/mobile/register(replace = FALSE)
-	. = ..()
 	if(!id)
 		id = "shuttle"
 
 	if(!name)
 		name = "shuttle"
 
-	var/counter = SSshuttle.assoc_mobile[id]
-	if(!replace || !counter)
+	if(!replace)
+		var/counter = SSshuttle.assoc_mobile[id]
 		if(counter)
 			counter++
 			SSshuttle.assoc_mobile[id] = counter
 			id = "[id]_[counter]"
 			name = "[name] [counter]"
-			//Re link machinery to new shuttle id
-			linkup()
 		else
 			SSshuttle.assoc_mobile[id] = 1
 
 	SSshuttle.mobile += src
 
 /obj/docking_port/mobile/unregister()
-	. = ..()
 	SSshuttle.mobile -= src
 
 /obj/docking_port/mobile/Destroy(force)
@@ -432,13 +413,13 @@
 	#endif
 
 // Called after the shuttle is loaded from template
-/obj/docking_port/mobile/proc/linkup(obj/docking_port/stationary/dock)
+/obj/docking_port/mobile/proc/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
 	for(var/place in shuttle_areas)
 		var/area/area = place
-		area.connect_to_shuttle(src, dock)
+		area.connect_to_shuttle(src, dock, id, FALSE)
 		for(var/each in place)
 			var/atom/atom = each
-			atom.connect_to_shuttle(src, dock)
+			atom.connect_to_shuttle(src, dock, id, FALSE)
 
 
 //this is a hook for custom behaviour. Maybe at some point we could add checks to see if engines are intact
