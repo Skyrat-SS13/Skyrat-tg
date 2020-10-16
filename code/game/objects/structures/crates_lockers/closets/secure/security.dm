@@ -142,6 +142,7 @@
 /obj/structure/closet/secure_closet/security/sec/PopulateContents()
 	..()
 	new /obj/item/storage/belt/security/full(src)
+	new /obj/item/holosign_creator/security (src)
 
 /obj/structure/closet/secure_closet/security/cargo
 
