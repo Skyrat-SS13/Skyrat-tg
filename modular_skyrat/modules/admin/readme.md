@@ -12,6 +12,8 @@ Adds multuple admin features, loud asay. As well as bold/itallics/underline.
 
 - code\datums\chatmessage.dm > /datum/chatmessage/proc/generate_image
 - code\game\say.dm > /atom/movable/proc/compose_message
+- code\modules\admin\verbs\adminhelp.dm
+- code\modules\admin\verbs\adminpm.dm
 - code\modules\admin\admin_verbs.dm
 - code\modules\mob\living\emote.dm > /datum/emote/living/custom/run_emote
 

@@ -439,6 +439,9 @@
 	else if(target.client)
 		if(alert(target,"Would you like to enter cryosleep?",,"Yes","No") == "No")
 			return
+	if (user != target && round(((world.time - target.lastclienttime) / (1 MINUTES)),1) <= CONFIG_GET(number/cryo_min_ssd_time))
+		to_chat(user, "<span class='danger'>You can't put [target] into [src]. They might wake up soon.</span>")
+		return
 	var/generic_plsnoleave_message = " Please adminhelp before leaving the round, even if there are no administrators online!"
 	if(target == user && world.time - target.client.cryo_warned > 5 MINUTES)//if we haven't warned them in the last 5 minutes
 		var/list/caught_string
