@@ -45,6 +45,17 @@
 /obj/item/gun/energy/e_gun/nuclear
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
 	ammo_x_offset = 2
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+
+/obj/item/gun/energy/lasercannon
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
+	fire_sound_volume = 100
+	ammo_x_offset = 2
+	charge_sections = 5
+	inhand_icon_state = ""
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
 /obj/item/gun/energy/e_gun/nuclear/rainbow
 	name = "fantastic energy gun"
@@ -93,9 +104,6 @@
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
 
 /obj/item/gun/energy/xray
-	fire_sound_volume = 100
-
-/obj/item/gun/energy/lasercannon
 	fire_sound_volume = 100
 
 /obj/item/ammo_casing/energy/xray
