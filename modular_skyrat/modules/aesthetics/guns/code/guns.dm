@@ -19,6 +19,7 @@
 	ammo_x_offset = 2
 
 /obj/item/gun/ballistic/shotgun/riot
+	name = "peacekeeper shotgun"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
