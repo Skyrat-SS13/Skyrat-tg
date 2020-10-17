@@ -498,7 +498,7 @@
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
-/datum/emote/living/human/laugh/run_emote(mob/living/user, params)
+/datum/emote/living/laugh/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
