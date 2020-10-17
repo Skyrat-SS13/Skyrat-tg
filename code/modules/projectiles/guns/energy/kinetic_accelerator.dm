@@ -575,6 +575,12 @@
 	chassis_icon = "kineticgun_h"
 	chassis_name = "hyper-kinetic accelerator"
 
+/obj/item/borg/upgrade/modkit/chassis_mod/ash
+	name = "ashen chassis"
+	desc = "La llama se extingue, y los señores se quedan sin tronos."
+	chassis_icon = "kineticgun_ash"
+	chassis_name = "the ashen one"
+
 /obj/item/borg/upgrade/modkit/tracer
 	name = "white tracer bolts"
 	desc = "Causes kinetic accelerator bolts to have a white tracer trail and explosion."
