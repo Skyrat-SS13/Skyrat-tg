@@ -26,6 +26,11 @@
 	inhand_icon_state = "riot_shotgun"
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
+	can_suppress = TRUE
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
+	suppressed_volume = 100
+	vary_fire_sound = TRUE
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
 
 /obj/item/gun/grenadelauncher
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
