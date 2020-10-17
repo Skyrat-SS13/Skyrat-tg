@@ -98,7 +98,7 @@
 
 //BEAM SOUNDS
 /obj/item/ammo_casing/energy
-	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser3.ogg'
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser.ogg'
 
 /obj/item/ammo_casing/energy/laser/pulse
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/pulse.ogg'
