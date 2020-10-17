@@ -1,7 +1,7 @@
 /mob/dead/observer/verb/show_notificationprefs()
-	set category = "Ghost"
-	set name = "Notification preferences"
-	set desc = "Notification preferences"
+	set category = "Fantasma"
+	set name = "Preferencias de notificación"
+	set desc = "Preferencias de notificación"
 
 	var/datum/notificationpanel/panel = new(usr)
 
