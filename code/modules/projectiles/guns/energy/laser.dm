@@ -79,7 +79,7 @@
 
 ///Laser Cannon
 
-/obj/item/gun/energy/lasercannon
+/obj/item/gun/energy/lasercannon//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "accelerator laser cannon"
 	desc = "An advanced laser cannon that does more damage the farther away the target is."
 	icon_state = "lasercannon"
