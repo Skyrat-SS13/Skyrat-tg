@@ -117,7 +117,7 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 	var/hourT
 	if(hour)
 		hourT = " y [hour] hora[(hour != 1)? "s":""]"
-	return "[day] dia[(day != 1)? "s":""][hourT][minuteT][secondT]"
+	return "[day] día[(day != 1)? "s":""][hourT][minuteT][secondT]"
 
 
 /proc/daysSince(realtimev)
