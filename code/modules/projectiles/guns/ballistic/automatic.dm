@@ -132,7 +132,7 @@
 	mag_display = TRUE
 	rack_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 
-/obj/item/gun/ballistic/automatic/m90
+/obj/item/gun/ballistic/automatic/m90 //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper M-90gl Carbine"
 	desc = "A three-round burst 5.56 toploading carbine, designated 'M-90gl'. Has an attached underbarrel grenade launcher which can be toggled on and off."
 	icon_state = "m90"

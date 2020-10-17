@@ -14,6 +14,10 @@
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 
+/obj/item/gun/energy/e_gun/stun
+	charge_sections = 5
+	ammo_x_offset = 2
+
 /obj/item/gun/ballistic/shotgun/riot
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -39,7 +43,15 @@
 /obj/item/gun/ballistic/automatic/c20r
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
+/obj/item/gun/ballistic/automatic/m90
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 /obj/item/gun/ballistic/revolver/detective
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+
+/obj/item/gun/ballistic/automatic/pistol/aps
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+
+/obj/item/gun/ballistic/automatic/pistol
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
 /obj/item/gun/energy/e_gun/nuclear
