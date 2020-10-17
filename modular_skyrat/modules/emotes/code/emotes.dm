@@ -70,7 +70,7 @@
 		if(C.gender == FEMALE)
 			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg')
 	if(isvox(user))
-	sound = 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
+		sound = 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
 	playsound(user, sound, 50, 1, -1)
 
 /datum/emote/living/sneeze/run_emote(mob/living/user, params)
@@ -404,19 +404,6 @@
 		var/mob/living/carbon/C = user
 		if(C.gender == FEMALE)
 			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_sniff.ogg')
-	playsound(user, sound, 50, 1, -1)
-
-/datum/emote/living/cough/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/male_cough_1.ogg','modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg','modular_skyrat/modules/emotes/sound/emotes/male/male_cough_3.ogg')
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.gender == FEMALE)
-			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg')
 	playsound(user, sound, 50, 1, -1)
 
 /datum/emote/living/gasp/run_emote(mob/living/user, params)
