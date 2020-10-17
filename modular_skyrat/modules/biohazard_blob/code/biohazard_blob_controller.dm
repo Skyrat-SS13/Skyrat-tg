@@ -1,6 +1,8 @@
 #define SPREAD_PROCESS 1
 #define SPREAD_STALLED_PROCESS 20
 
+#define PROGRESSION_FOR_STRUCTURE 20
+
 #define RESIN_CANT_SPREAD 0
 #define RESIN_DID_SPREAD 1
 #define RESIN_ATTACKED_DOOR 2
@@ -11,13 +13,16 @@
 	var/obj/structure/biohazard_blob/core/our_core
 	var/list/other_structures = list()
 	var/progress_to_spread = 0
+	var/structure_progression = 15
 	var/stalled = FALSE
+	var/blob_type
 
-/datum/biohazard_blob_controller/New(obj/structure/biohazard_blob/core/the_core)
+/datum/biohazard_blob_controller/New(obj/structure/biohazard_blob/core/the_core, passedtype)
 	if(!the_core)
 		qdel(src)
 		return
 	our_core = the_core
+	blob_type = passedtype
 	our_core.our_controller = src
 	START_PROCESSING(SSobj, src)
 	return ..()
@@ -35,13 +40,50 @@
 			a_resin.blooming = FALSE
 			a_resin.set_light(0)
 			a_resin.update_overlays()
+	//With the death of the core, we kill all structures
+	for(var/t in other_structures)
+		var/obj/structure/biohazard_blob/v = t
+		v.Destroy
 	return
 
 /datum/biohazard_blob_controller/proc/TrySpreadResin(obj/structure/biohazard_blob/resin/spreaded_resin)
+	. = RESIN_CANT_SPREAD
 	var/turf/ownturf = get_turf(spreaded_resin)
+	if(structure_progression > PROGRESSION_FOR_STRUCTURE)
+		var/forbidden = FALSE
+		for(var/obj/O in ownturf)
+			if(istype(O, /obj/structure/biohazard_blob/bulb) || istype(O, /obj/structure/biohazard_blob/core) || istype(O, /obj/structure/biohazard_blob/wall))
+				forbidden = TRUE
+				break
+		if(!forbidden)
+			structure_progression -= PROGRESSION_FOR_STRUCTURE
+			var/struct = new /obj/structure/biohazard_blob/bulb(ownturf, blob_type)
+			other_structures[struct] = TRUE
+
+	//Check if we can attack an airlock
+	for(var/a in get_adjacent_open_turfs(spreaded_resin))
+		var/turf/open/open_turf = a
+		for(var/obj/O in open_turf)
+			if(istype(O, /obj/machinery/door/airlock) || istype(O, /obj/machinery/door/firedoor) || istype(O, /obj/structure/door_assembly))
+				if(O.density)
+					spreaded_resin.do_attack_animation(O, ATTACK_EFFECT_PUNCH)
+					playsound(O, 'sound/effects/attackblob.ogg', 50, TRUE)
+					O.take_damage(40, BRUTE, MELEE, 1, get_dir(O, spreaded_resin))
+					. = RESIN_ATTACKED_DOOR
+					break
+		if(.)
+			break
+
 	var/list/possible_locs = list(ownturf) //Ownturf, because it could spread into the same turf, but on the wall
 	for(var/T in ownturf.GetAtmosAdjacentTurfs())
-		possible_locs += T
+		//We encounter a space turf? Make a thick wall to block of that nasty vacuum
+		if(isspaceturf(T))
+			if(!locate(/obj/structure/biohazard_blob/wall, ownturf))
+				var/the_wall = new /obj/structure/biohazard_blob/wall(ownturf, blob_type)
+				other_structures[the_wall] = TRUE
+				CALCULATE_ADJACENT_TURFS(T)
+		else
+			possible_locs += T
 
 	for(var/T in possible_locs)
 		var/turf/iterated_turf = T
@@ -66,7 +108,7 @@
 	for(var/obj/machinery/light/potato in loc)
 		potato.break_light_tube()
 	//Spawn the resin
-	var/obj/structure/biohazard_blob/resin/new_resin = new /obj/structure/biohazard_blob/resin(loc)
+	var/obj/structure/biohazard_blob/resin/new_resin = new /obj/structure/biohazard_blob/resin(loc, blob_type)
 	new_resin.our_controller = src
 	all_resin[new_resin] = TRUE
 	active_resin[new_resin] = TRUE
@@ -94,6 +136,7 @@
 		return
 	if(progress_to_spread < SPREAD_PROCESS)
 		return
+	structure_progression++
 	stalled = FALSE
 	progress_to_spread = 0
 
@@ -102,6 +145,8 @@
 			var/obj/structure/biohazard_blob/resin/iterated_resin = pick(all_resin)
 			qdel(iterated_resin)
 			return
+		//No structures, no core, no resin
+		qdel(src)
 
 	//No resin, but we've got a core
 	if(!length(all_resin))
@@ -127,11 +172,13 @@
 		var/obj/structure/biohazard_blob/resin/active_resin = t
 		var/attempt = TrySpreadResin(active_resin)
 		switch(attempt)
-			if(RESIN_DID_SPREAD, RESIN_ATTACKED_DOOR)
+			if(RESIN_DID_SPREAD)
 				return
 
 #undef SPREAD_PROCESS
 #undef SPREAD_STALLED_PROCESS
+
+#undef PROGRESSION_FOR_STRUCTURE
 
 #undef RESIN_CANT_SPREAD
 #undef RESIN_DID_SPREAD
