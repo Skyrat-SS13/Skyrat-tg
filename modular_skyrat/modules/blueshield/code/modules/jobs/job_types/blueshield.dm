@@ -1,11 +1,11 @@
 /datum/job/blueshield
 	title = "Blueshield"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Captain")
+	department_head = list("Central Command")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Captain"
+	supervisors = "Central Command"
 	selection_color = "#ddddff"
 	minimal_player_age = 7
 	exp_requirements = 2400
