@@ -336,6 +336,9 @@
 			recording_recipe = null
 			. = TRUE
 		if("custom_amount")
+			if(!beaker)
+				to_chat(usr, "<span class ='notice'>Insert a container first!</span>")
+				return
 			if(customTransferAmount)
 				transferAmounts -= customTransferAmount
 			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
@@ -352,8 +355,6 @@
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
 		transferAmounts = B.possible_transfer_amounts
-		if(customTransferAmount)
-			transferAmounts += customTransferAmount
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
