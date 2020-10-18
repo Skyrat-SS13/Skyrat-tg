@@ -129,8 +129,10 @@
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	SSvis_overlays.add_vis_overlay(src, icon, "blob_core_overlay", layer, plane, dir, alpha)
 	SSvis_overlays.add_vis_overlay(src, icon, "blob_core_overlay", EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha)
-	managed_vis_overlays[1].appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
-	managed_vis_overlays[2].appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+	var/obj/effect/overlay/vis/overlay1 = managed_vis_overlays[1]
+	var/obj/effect/overlay/vis/overlay2 = managed_vis_overlays[2]
+	overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+	overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 
 #undef CORE_RETALIATION_COOLDOWN
 
@@ -165,8 +167,10 @@
 	if(blooming)
 		SSvis_overlays.add_vis_overlay(src, icon, "[icon_state]_overlay", layer, plane, dir, alpha)
 		SSvis_overlays.add_vis_overlay(src, icon, "[icon_state]_overlay", EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha)
-		managed_vis_overlays[1].appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
-		managed_vis_overlays[2].appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+		var/obj/effect/overlay/vis/overlay1 = managed_vis_overlays[1]
+		var/obj/effect/overlay/vis/overlay2 = managed_vis_overlays[2]
+		overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+		overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 
 /obj/structure/biohazard_blob/resin/proc/CalcDir()
 	var/direction = 16
@@ -322,8 +326,10 @@
 	if(is_full)
 		SSvis_overlays.add_vis_overlay(src, icon, "blob_bulb_overlay", layer, plane, dir, BLOB_BULB_ALPHA)
 		SSvis_overlays.add_vis_overlay(src, icon, "blob_bulb_overlay", EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha)
-		managed_vis_overlays[1].appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
-		managed_vis_overlays[2].appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+		var/obj/effect/overlay/vis/overlay1 = managed_vis_overlays[1]
+		var/obj/effect/overlay/vis/overlay2 = managed_vis_overlays[2]
+		overlay1.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
+		overlay2.appearance_flags = PIXEL_SCALE | TILE_BOUND | RESET_COLOR
 
 #undef BLOB_BULB_ALPHA
 
