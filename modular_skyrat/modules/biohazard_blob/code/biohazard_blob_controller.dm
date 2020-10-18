@@ -1,7 +1,9 @@
-#define SPREAD_PROCESS 1
+#define SPREAD_PROCESS 3
 #define SPREAD_STALLED_PROCESS 20
 
-#define PROGRESSION_FOR_STRUCTURE 20
+#define PROGRESSION_FOR_STRUCTURE 30
+#define PROGRESSION_RETALIATED 3
+#define STRUCTURE_PROGRESSION_START 23
 
 #define RESIN_CANT_SPREAD 0
 #define RESIN_DID_SPREAD 1
@@ -10,14 +12,15 @@
 /datum/biohazard_blob_controller
 	var/list/active_resin = list()
 	var/list/all_resin = list()
-	var/obj/structure/biohazard_blob/core/our_core
+	var/obj/structure/biohazard_blob/structure/core/our_core
 	var/list/other_structures = list()
 	var/progress_to_spread = 0
-	var/structure_progression = 15
+	var/structure_progression = STRUCTURE_PROGRESSION_START
 	var/stalled = FALSE
 	var/blob_type
+	var/spread_delay = SPREAD_PROCESS
 
-/datum/biohazard_blob_controller/New(obj/structure/biohazard_blob/core/the_core, passedtype)
+/datum/biohazard_blob_controller/New(obj/structure/biohazard_blob/structure/core/the_core, passedtype)
 	if(!the_core)
 		qdel(src)
 		return
@@ -31,6 +34,11 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+/datum/biohazard_blob_controller/proc/CoreRetaliated()
+	structure_progression += PROGRESSION_RETALIATED
+	active_resin.Cut()
+	ActivateAdjacentResinRecursive(get_turf(our_core), 4)
+
 /datum/biohazard_blob_controller/proc/CoreDeath()
 	active_resin.Cut()
 	for(var/t in all_resin)
@@ -42,8 +50,8 @@
 			a_resin.update_overlays()
 	//With the death of the core, we kill all structures
 	for(var/t in other_structures)
-		var/obj/structure/biohazard_blob/v = t
-		v.Destroy
+		var/obj/structure/biohazard_blob/structure/our_structure = t
+		qdel(our_structure)
 	return
 
 /datum/biohazard_blob_controller/proc/TrySpreadResin(obj/structure/biohazard_blob/resin/spreaded_resin)
@@ -52,12 +60,19 @@
 	if(structure_progression > PROGRESSION_FOR_STRUCTURE)
 		var/forbidden = FALSE
 		for(var/obj/O in ownturf)
-			if(istype(O, /obj/structure/biohazard_blob/bulb) || istype(O, /obj/structure/biohazard_blob/core) || istype(O, /obj/structure/biohazard_blob/wall))
+			if(istype(O, /obj/structure/biohazard_blob/structure))
 				forbidden = TRUE
 				break
 		if(!forbidden)
 			structure_progression -= PROGRESSION_FOR_STRUCTURE
-			var/struct = new /obj/structure/biohazard_blob/bulb(ownturf, blob_type)
+			var/spawn_type
+			var/random = rand(1,2)
+			switch(random)
+				if(1)
+					spawn_type = /obj/structure/biohazard_blob/structure/bulb
+				if(2)
+					spawn_type = /obj/structure/biohazard_blob/structure/spawner
+			var/struct = new spawn_type(ownturf, blob_type)
 			other_structures[struct] = TRUE
 
 	//Check if we can attack an airlock
@@ -78,8 +93,8 @@
 	for(var/T in ownturf.GetAtmosAdjacentTurfs())
 		//We encounter a space turf? Make a thick wall to block of that nasty vacuum
 		if(isspaceturf(T))
-			if(!locate(/obj/structure/biohazard_blob/wall, ownturf))
-				var/the_wall = new /obj/structure/biohazard_blob/wall(ownturf, blob_type)
+			if(!locate(/obj/structure/biohazard_blob/structure/wall, ownturf))
+				var/the_wall = new /obj/structure/biohazard_blob/structure/wall(ownturf, blob_type)
 				other_structures[the_wall] = TRUE
 				CALCULATE_ADJACENT_TURFS(T)
 		else
@@ -104,6 +119,8 @@
 	return RESIN_CANT_SPREAD
 
 /datum/biohazard_blob_controller/proc/SpawnResin(loc)
+	//Each spawned resin gives us progression for a structure
+	structure_progression++
 	//On spawning effects
 	for(var/obj/machinery/light/potato in loc)
 		potato.break_light_tube()
@@ -115,11 +132,25 @@
 	new_resin.CalcDir()
 	return
 
-/datum/biohazard_blob_controller/proc/ActivateAdjacentResin(obj/structure/biohazard_blob/resin/centrum)
+/datum/biohazard_blob_controller/proc/ActivateAdjacentResinRecursive(turf/centrum_turf, iterations = 1)
+	var/list/turfs = list()
+	turfs[centrum_turf] = TRUE
+	for(var/i in 1 to iterations)
+		for(var/t in turfs)
+			var/turf/open = t
+			for(var/atmoadj in open.GetAtmosAdjacentTurfs())
+				turfs[atmoadj] = TRUE
+	for(var/t in turfs)
+		var/turf/ite_turf = t
+		for(var/obj/structure/biohazard_blob/resin/potato in ite_turf)
+			if(potato && potato.our_controller && potato.our_controller == src)
+				active_resin[potato] = TRUE
+				return
+
+/datum/biohazard_blob_controller/proc/ActivateAdjacentResin(turf/centrum_turf)
 	if(!our_core)
 		//We're dead, no point in doing this
 		return
-	var/turf/centrum_turf = get_turf(centrum)
 	var/list/turfs = list(centrum_turf)
 	for(var/t in centrum_turf.GetAtmosAdjacentTurfs())
 		turfs += t
@@ -134,9 +165,8 @@
 	progress_to_spread++
 	if(stalled && progress_to_spread < SPREAD_STALLED_PROCESS)
 		return
-	if(progress_to_spread < SPREAD_PROCESS)
+	if(progress_to_spread < spread_delay)
 		return
-	structure_progression++
 	stalled = FALSE
 	progress_to_spread = 0
 
@@ -179,6 +209,8 @@
 #undef SPREAD_STALLED_PROCESS
 
 #undef PROGRESSION_FOR_STRUCTURE
+#undef PROGRESSION_RETALIATED
+#undef STRUCTURE_PROGRESSION_START
 
 #undef RESIN_CANT_SPREAD
 #undef RESIN_DID_SPREAD
