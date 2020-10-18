@@ -41,7 +41,7 @@
 				to_chat(affected_mob, "<span class='userdanger'>[pick("Your muscles seize!", "You collapse!")]</span>")
 				affected_mob.adjustStaminaLoss(50, FALSE)
 				affected_mob.Paralyze(40, FALSE)
-				affected_mob.AdjustBruteloss(5) //It's damaging the muscles
+				affected_mob.AdjustBruteLoss(5) //It's damaging the muscles
 			if(prob(2))
 				affected_mob.adjustStaminaLoss(100, FALSE)
 				affected_mob.visible_message("<span class='warning'>[affected_mob] faints!</span>", "<span class='userdanger'>You surrender yourself and feel at peace...</span>")
