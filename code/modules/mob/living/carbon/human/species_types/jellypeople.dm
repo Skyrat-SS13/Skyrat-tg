@@ -116,8 +116,6 @@
 	default_color = "00FFFF"
 	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR,NOBLOOD)
 	say_mod = "says"
-	hair_color = "mutcolor"
-	hair_alpha = 150
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	var/datum/action/innate/split_body/slime_split
 	var/list/mob/living/carbon/bodies

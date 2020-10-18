@@ -2038,3 +2038,8 @@
 /datum/sprite_accessory/hair/cerberus
 	name = "Cerberus"
 	icon_state = "hair_cerberus"
+
+/datum/sprite_accessory/hair/anomaly
+	name = "Anomaly"
+	icon_state = "hair_anomaly"
+

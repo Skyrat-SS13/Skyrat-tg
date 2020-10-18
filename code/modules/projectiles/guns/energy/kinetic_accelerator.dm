@@ -2,7 +2,10 @@
 	name = "proto-kinetic accelerator"
 	desc = "A self recharging, ranged mining tool that does increased damage in low pressure."
 	icon_state = "kineticgun"
+	icon = 'icons_manaos/obj/guns/energy.dmi'
 	inhand_icon_state = "kineticgun"
+	lefthand_file = 'icons_manaos/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons_manaos/mob/inhands/weapons/guns_righthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
 	cell_type = /obj/item/stock_parts/cell/emproof
 	item_flags = NONE
@@ -563,6 +566,7 @@
 	if(.)
 		KA.icon_state = chassis_icon
 		KA.name = chassis_name
+		icon = 'icons_manaos/obj/guns/energy.dmi'
 
 /obj/item/borg/upgrade/modkit/chassis_mod/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
 	KA.icon_state = initial(KA.icon_state)
@@ -574,6 +578,12 @@
 	desc = "Makes your KA orange. All the fun of having explosive blasts without actually having explosive blasts."
 	chassis_icon = "kineticgun_h"
 	chassis_name = "hyper-kinetic accelerator"
+
+/obj/item/borg/upgrade/modkit/chassis_mod/ash
+	name = "ashen chassis"
+	desc = "La llama se extingue, y los señores se quedan sin tronos."
+	chassis_icon = "kineticgun_ash"
+	chassis_name = "the ashen one"
 
 /obj/item/borg/upgrade/modkit/tracer
 	name = "white tracer bolts"
