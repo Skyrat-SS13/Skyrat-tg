@@ -102,7 +102,7 @@ export const ChemDispenser = (props, context) => {
             )}
           </Box>
         </Section>
-        <Button
+        <Button //SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
           icon="pen"
           content="Custom Amount"
           onClick={() => act('custom_amount')} />
