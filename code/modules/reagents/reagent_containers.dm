@@ -45,7 +45,7 @@
 				to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
 				return
 */
-//SKYRAT EDIT CHANGE BEGIN
+//SKYRAT EDIT CHANGE BEGIN - CHEMISTRY QOL
 /obj/item/reagent_containers/attack_self(mob/user)
 	var/transfer_amount = clamp(input(user, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, 50)
 	amount_per_transfer_from_this = transfer_amount
