@@ -362,24 +362,6 @@
 	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
 	playsound(user, sound, 50, 1, -1)
 
-/datum/emote/living/cyka
-	key = "cyka"
-	key_third_person = "rants something"
-	message = "rants something slavish!"
-	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-
-/datum/emote/living/cyka/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/cheekibreeki.ogg', 'modular_skyrat/modules/emotes/sound/emotes/cyka1.ogg')
-	playsound(user, sound, 50, 1, -1)
-
 /datum/emote/living/sigh/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
