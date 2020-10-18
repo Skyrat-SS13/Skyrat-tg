@@ -354,6 +354,8 @@
 		return
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
+		if(customTransferAmount)
+			transferAmounts -= customTransferAmount
 		transferAmounts = B.possible_transfer_amounts
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
