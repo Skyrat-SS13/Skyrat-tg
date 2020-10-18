@@ -583,7 +583,7 @@
 	name = "ashen chassis"
 	desc = "La llama se extingue, y los señores se quedan sin tronos."
 	chassis_icon = "kineticgun_ash"
-	chassis_name = "the ashen one"
+	chassis_name = "ashen one"
 
 /obj/item/borg/upgrade/modkit/tracer
 	name = "white tracer bolts"
