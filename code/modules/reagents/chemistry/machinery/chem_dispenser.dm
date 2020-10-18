@@ -83,6 +83,9 @@
 
 	var/list/saved_recipes = list()
 
+	var/list/transferAmounts = list()
+	var/customTransferAmount
+
 /obj/machinery/chem_dispenser/Initialize()
 	. = ..()
 	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
@@ -332,6 +335,11 @@
 				return
 			recording_recipe = null
 			. = TRUE
+		if("custom_amount")
+			if(customTransferAmount)
+				transferAmounts -= customTransferAmount
+			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
+			transferAmounts += customTransferAmount
 
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
@@ -343,6 +351,9 @@
 		return
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
+		transferAmounts = B.possible_transfer_amounts
+		if(customTransferAmount)
+			transferAmounts += customTransferAmount
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return

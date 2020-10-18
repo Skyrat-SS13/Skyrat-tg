@@ -102,6 +102,10 @@ export const ChemDispenser = (props, context) => {
             )}
           </Box>
         </Section>
+        <Button
+          icon="pen"
+          content="Custom Amount"
+          onClick={() => act('custom_amount')} />
         <Section
           title="Dispense"
           buttons={(
