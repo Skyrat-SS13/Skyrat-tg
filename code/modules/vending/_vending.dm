@@ -869,7 +869,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/obj/item/vended = new R.product_path(get_turf(src)) //SKYRAT EDIT CHANGE - QOL - ORIGINAL: new R.product_path(get_turf(src))
 			R.amount--
 			//SKYRAT EDIT ADDITION BEGIN - QOL
-			if(usr.CanReach(src) && usr.put_in_hands(R))
+			if(usr.CanReach(src) && usr.put_in_hands(vended))
 				to_chat(usr, "<span class='notice'>You take [R.name] out of the slot.</span>")
 			else
 				to_chat(usr, "<span class='warning'>[capitalize(R.name)] falls onto the floor!</span>")
