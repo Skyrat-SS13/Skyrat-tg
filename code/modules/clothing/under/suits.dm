@@ -147,12 +147,16 @@
 /obj/item/clothing/under/suit/redsuit
 	name = "traje de camisa roja"
 	desc = "Una camisa de traje roja, muy elegante y femenina."
+	icon = 'icons_manaos/obj/clothing/uniform.dmi'
+	worn_icon = 'icons_manaos/mob/clothing/uniform.dmi'
 	icon_state = "redsuit"
 	can_adjust = TRUE
 
 /obj/item/clothing/under/suit/redskirt
 	name = "falda de camisa roja"
 	desc = "Una camisa de traje roja junto a una bonita falda, muy elegante y femenina."
+	icon = 'icons_manaos/obj/clothing/uniform.dmi'
+	worn_icon = 'icons_manaos/mob/clothing/uniform.dmi'
 	icon_state = "redsuitskirt"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
