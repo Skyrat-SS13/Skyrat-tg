@@ -57,7 +57,7 @@
 	RegisterSignal(source, COMSIG_LIVING_STATUS_STUN, .proc/SourceCC)
 	RegisterSignal(source, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/SourceCC)
 	RegisterSignal(source, COMSIG_LIVING_STATUS_PARALYZE, .proc/SourceCC)
-	RegisterSignal(source, COMSIG_LIVING_UPDATED_MOBILITY, .proc/SourceUpdatedMobility)
+	RegisterSignal(source, COMSIG_LIVING_UPDATED_RESTING, .proc/SourceUpdatedResting)
 
 	RegisterSignal(aimed_gun, COMSIG_ITEM_EQUIPPED,.proc/ClickDestroy)
 	RegisterSignal(aimed_gun, COMSIG_ITEM_DROPPED,.proc/ClickDestroy)
@@ -77,7 +77,7 @@
 
 /datum/gunpoint/proc/MeleeAttackReact(datum/source_datum, atom/target)
 	if(!CheckContinuity())
-		Destroy()
+		qdel(src)
 		return
 	if(!allow_use && CanReact())
 		source.log_message("[source] shot [target] because they attacked/disarmed/pulled", LOG_ATTACK)
@@ -87,7 +87,7 @@
 /datum/gunpoint/proc/LockOn()
 	if(src) //if we're not present then locking on failed and this datum is deleted
 		if(!CheckContinuity())
-			Destroy()
+			qdel(src)
 			return
 		locked = TRUE
 		log_combat(target, source, "locked onto with aiming")
@@ -119,7 +119,7 @@
 /datum/gunpoint/Destroy()
 	UnregisterSignal(aimed_gun, list(COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED))
 	UnregisterSignal(target, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_ITEM_AFTERATTACK, COMSIG_MOB_ITEM_ATTACK_SELF, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, COMSIG_MOB_ITEM_ATTACK, COMSIG_MOVABLE_RADIO_TALK_INTO, COMSIG_MOB_FIRED_GUN, COMSIG_MOVABLE_MOVED))
-	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_STATUS_STUN, COMSIG_LIVING_STATUS_KNOCKDOWN, COMSIG_LIVING_STATUS_PARALYZE, COMSIG_LIVING_UPDATED_MOBILITY))
+	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_STATUS_STUN, COMSIG_LIVING_STATUS_KNOCKDOWN, COMSIG_LIVING_STATUS_PARALYZE, COMSIG_LIVING_UPDATED_RESTING))
 
 	REMOVE_TRAIT(source, TRAIT_NORUNNING, "gunpoint")
 	if(was_running)
@@ -140,11 +140,11 @@
 /datum/gunpoint/proc/ClickDestroy()
 	if(locked)
 		playsound(get_turf(source), 'modular_skyrat/modules/gunpoint/sound/targetoff.ogg', 50,1)
-	Destroy()
+	qdel(src)
 
 /datum/gunpoint/proc/SourceCC(datum/source, amount, update, ignore)
 	if(amount && !ignore)
-		Destroy()
+		qdel(src)
 
 /datum/gunpoint/proc/ShootTarget()
 	next_autoshot = world.time + 5
@@ -160,7 +160,7 @@
 
 /datum/gunpoint/proc/MovedReact(datum/datum_source, atom/moved, direction, forced)
 	if(!CheckContinuity())
-		Destroy()
+		qdel(src)
 		return
 	if(!allow_move && CanReact() && !(target.pulledby && target.pulledby == source)) //Don't shoot him if we're pulling them
 		MovedShootProc()
@@ -175,7 +175,7 @@
 
 /datum/gunpoint/proc/UseReact(datum/datum_source)
 	if(!CheckContinuity())
-		Destroy()
+		qdel(src)
 		return
 	if(!allow_use && CanReact())
 		source.log_message("[source] shot [target] because they used an item", LOG_ATTACK)
@@ -184,11 +184,11 @@
 
 /datum/gunpoint/proc/SourceMoved(datum/datum_source)
 	if(!CheckContinuity())
-		Destroy()
+		qdel(src)
 
-/datum/gunpoint/proc/SourceUpdatedMobility()
-	if(!(source.mobility_flags & MOBILITY_STAND))
-		Destroy()
+/datum/gunpoint/proc/SourceUpdatedResting(datum/datum_source, resting)
+	if(resting)
+		qdel(src)
 
 /datum/gunpoint/proc/ConstructChoiceList()
 	var/image/radio_image = (allow_radio ? radio_allow : radio_forbid)

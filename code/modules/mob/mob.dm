@@ -32,7 +32,7 @@
 		progressbars = null
 	for (var/alert in alerts)
 		clear_alert(alert, TRUE)
-	if(observers && observers.len)
+	if(observers?.len)
 		for(var/M in observers)
 			var/mob/dead/observe = M
 			observe.reset_perspective(null)
@@ -588,6 +588,16 @@
 
 	return TRUE
 
+/**
+  * Called by using Activate Held Object with an empty hand/limb
+  *
+  * Does nothing by default. The intended use is to allow limbs to call their
+  * own attack_self procs. It is up to the individual mob to override this
+  * parent and actually use it.
+  */
+/mob/proc/limb_attack_self()
+	return
+
 ///Can this mob resist (default FALSE)
 /mob/proc/can_resist()
 	return FALSE		//overridden in living.dm
@@ -643,6 +653,10 @@
 	if(I)
 		I.attack_self(src)
 		update_inv_hands()
+		return
+
+	limb_attack_self()
+
 
 /**
   * Get the notes of this mob
@@ -981,7 +995,7 @@
 		return src
 
 /**
-  * Buckle to another mob
+  * Buckle a living mob to this mob
   *
   * You can buckle on mobs if you're next to them since most are dense
   *
@@ -1018,14 +1032,6 @@
 		if(L.mob_size <= MOB_SIZE_SMALL) //being on top of a small mob doesn't put you very high.
 			return 0
 	return 9
-
-///can the mob be buckled to something by default?
-/mob/proc/can_buckle()
-	return TRUE
-
-///can the mob be unbuckled from something by default?
-/mob/proc/can_unbuckle()
-	return TRUE
 
 ///Can the mob interact() with an atom?
 /mob/proc/can_interact_with(atom/A)

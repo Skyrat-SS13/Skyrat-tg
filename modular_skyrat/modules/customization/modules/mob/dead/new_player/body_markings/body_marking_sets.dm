@@ -4,7 +4,7 @@
 	///List of the body markings in this set
 	var/body_marking_list
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species = list("mammal", "tajaran", "vulpkanin", "akula")
+	var/recommended_species = list("mammal", "tajaran", "vulpkanin", "aquatic", "akula")
 
 /datum/body_marking_set/none
 	name = "None"

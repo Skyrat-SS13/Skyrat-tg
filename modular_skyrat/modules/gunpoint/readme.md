@@ -21,7 +21,7 @@ Allows anyone with a gun to use SHIFT + MMB to hold someone at gunpoint, much li
 ### Defines:
 
  ./code/_onclick/hud/radial.dm > /datum/radial_menu - var/icon_path
- ./code/__DEFINES/~skyrat_defines/signals.dm - COMSIG_MOVABLE_RADIO_TALK_INTO, COMSIG_MOB_ITEM_ATTACK_SELF, COMSIG_LIVING_UPDATED_MOBILITY 
+ ./code/__DEFINES/~skyrat_defines/signals.dm - COMSIG_MOVABLE_RADIO_TALK_INTO, COMSIG_MOB_ITEM_ATTACK_SELF, COMSIG_LIVING_UPDATED_RESTING 
  ./code/__DEFINES/~skyrat_defines/traits.dm - TRAIT_NORUNNING
 
 ### Master file additions
