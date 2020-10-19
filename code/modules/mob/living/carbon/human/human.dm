@@ -20,7 +20,8 @@
 
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, .proc/clean_face)
 	AddComponent(/datum/component/personal_crafting)
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, 2)
+	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, 2) //ORIGINAL
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, 2) //SKYRAT EDIT CHANGE - AESTHETICS 
 	AddComponent(/datum/component/bloodysoles/feet)
 	GLOB.human_list += src
 
