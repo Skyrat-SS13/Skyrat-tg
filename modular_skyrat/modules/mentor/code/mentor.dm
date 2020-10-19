@@ -64,14 +64,14 @@ GLOBAL_PROTECT(mentor_href_token)
 		C.remove_mentor_verbs()
 		C.mentor_datum = null
 	GLOB.mentors.Cut()
-	if(CONFIG_GET(flag/mentor_legacy_system))//legacy
-		var/list/lines = world.file2list("config/skyrat/mentors.txt")
-		for(var/line in lines)
-			if(!length(line))
-				continue
-			if(findtextEx(line, "#", 1, 2))
-				continue
-			new /datum/mentors(line)
+	//if(CONFIG_GET(flag/mentor_legacy_system))//legacy
+	var/list/lines = world.file2list("config/skyrat/mentors.txt")
+	for(var/line in lines)
+		if(!length(line))
+			continue
+		if(findtextEx(line, "#", 1, 2))
+			continue
+		new /datum/mentors(line)
 	/*else//Database
 		if(!SSdbcore.Connect())
 			log_world("Failed to connect to database in load_mentors(). Reverting to legacy system.")

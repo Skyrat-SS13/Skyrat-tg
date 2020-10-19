@@ -37,7 +37,6 @@
 		mentor_datum.owner = src
 		GLOB.mentors[src] = TRUE
 		add_mentor_verbs()
-		mentor_memo_output("Show")
 		if(check_rights_for(src, R_ADMIN,0))
 			cmd_mentor_dementor()
 
