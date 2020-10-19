@@ -71,6 +71,7 @@
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
+	new /obj/item/clothing/suit/space/hardsuit/security_armor/hos(src) //SKYRAT ADDITION - TECHARMOR PORT
 	new /obj/item/clothing/neck/cloak/hos(src)
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
@@ -130,7 +131,8 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest(src)
+	//new /obj/item/clothing/suit/armor/vest(src)  SKYRAT EDIT - TECHARMOR PORT
+	new /obj/item/clothing/suit/space/hardsuit/security_armor(src) //SKYRAT ADDITION - TECHARMOR PORT
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
