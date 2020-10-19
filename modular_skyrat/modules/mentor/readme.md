@@ -9,6 +9,7 @@ Adds a mentor system, allowing for players to send a-help like messages to mento
 ### TG Proc Changes:
 
 - code/modules/client/client_procs.dm > client/Topic()
+- /code/modules/admin/secrets.dm > /datum/admins/proc/Secrets_topic(), /datum/admins/proc/Secrets()
 
 ### Defines:
 
