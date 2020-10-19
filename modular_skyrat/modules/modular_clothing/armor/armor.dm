@@ -6,7 +6,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit-secexo"
 	icon_state = "hardsuit0-secexo"
-	inhand_item_state = "hardsuit0-secexo"
+	inhand_icon_state = "hardsuit0-secexo"
 	hardsuit_type = "secexo"
 	armor = list("melee" = 40, "bullet" = 30, "laser" = 30,"energy" = 10, "bomb" = 25, "bio" = 50, "rad" = 0, "fire" = 55, "acid" = 70)
 	clothing_flags = THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
@@ -19,10 +19,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hardsuit-secexo"
-	inhand_item_state = "hardsuit-secexo"
+	inhand_icon_state = "hardsuit-secexo"
 	max_integrity = 250
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 50, "rad" = 0, "fire" = 55, "acid" = 70)
-	allowed = list(/obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/flashlight, /obj/item/gun/ballistic, /obj/item/gun/energy, /obj/item/kitchen/knife/combat, /obj/item/melee/baton, /obj/item/melee/classic_baton/telescopic, /obj/item/reagent_containers/spray/pepper, /obj/item/restraints/handcuffs, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/blunderbuss) //I had to do this all snowflake style because it just would not accept any sort of global list, fucking kill me
+	allowed = list(/obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/flashlight, /obj/item/gun/ballistic, /obj/item/gun/energy, /obj/item/kitchen/knife/combat, /obj/item/melee/baton, /obj/item/melee/classic_baton/telescopic, /obj/item/reagent_containers/spray/pepper, /obj/item/restraints/handcuffs, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman) //I had to do this all snowflake style because it just would not accept any sort of global list, fucking kill me
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_armor
 	clothing_flags = THICKMATERIAL
 	mutant_variants = STYLE_DIGITIGRADE
@@ -40,7 +40,7 @@ just as if you were wearing them separate. Stop screaming to me about this. Plea
 
 /obj/item/clothing/head/helmet/space/hardsuit/security_armor/equipped(mob/living/carbon/human/user, slot)
 	..()
-	if (slot == SLOT_HEAD)
+	if (slot == ITEM_SLOT_HEAD)
 		var/datum/atom_hud/DHUD = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 		DHUD.add_hud_to(user)
 
@@ -54,18 +54,18 @@ just as if you were wearing them separate. Stop screaming to me about this. Plea
 	name = "head of security's techhelmet"
 	desc = "A specialized exoskeleton armor helmet built into a suit of armor; offers decent protection, and comes with a flash-resistant HUD visor and headlamp."
 	icon_state = "hardsuit0-hosexo"
-	inhand_item_state = "hardsuit0-hosexo"
+	inhand_icon_state = "hardsuit0-hosexo"
 	hardsuit_type = "hosexo"
-	mutant_variants = NONE
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
+	mutant_variants = STYLE_MUZZLE
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR
 
 /obj/item/clothing/suit/space/hardsuit/security_armor/hos
 	name = "head of security's techarmor"
 	desc = "A specialized exoskeleton armor suit comprised of flexible protective shielding. This particular suit has been designed specifically for the station security commander."
 	icon_state = "hardsuit-hosexo"
-	inhand_item_state = "hardsuit-hosexo"
+	inhand_icon_state = "hardsuit-hosexo"
 	max_integrity = 300
 	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 50, "rad" = 0, "fire" = 70, "acid" = 90)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_armor/hos
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAUR
-
+	mutant_variants = STYLE_DIGITIGRADE
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT

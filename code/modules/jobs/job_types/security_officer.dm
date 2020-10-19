@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/officer
 	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/helmet/sec
+	//head = /obj/item/clothing/head/helmet/sec - SKYRAT EDIT - TECHARMOR PORT
 	//suit = /obj/item/clothing/suit/armor/vest/alt - SKYRAT EDIT - TECHARMOR PORT
 	suit = /obj/item/clothing/suit/space/hardsuit/security_armor //SKYRAT EDIT - TECHARMOR PORT
 	shoes = /obj/item/clothing/shoes/jackboots
