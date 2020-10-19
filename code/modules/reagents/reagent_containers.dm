@@ -31,7 +31,6 @@
 	if(list_reagents)
 		reagents.add_reagent_list(list_reagents)
 
-/* ORIGINAL
 /obj/item/reagent_containers/attack_self(mob/user)
 	if(possible_transfer_amounts.len)
 		var/i=0
@@ -44,10 +43,11 @@
 					amount_per_transfer_from_this = possible_transfer_amounts[1]
 				to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
 				return
-*/
+
 //SKYRAT EDIT CHANGE BEGIN - CHEMISTRY QOL
-/obj/item/reagent_containers/attack_self(mob/user)
-	var/transfer_amount = clamp(input(user, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, 50)
+/obj/item/reagent_containers/AltClick(mob/user)
+	. = ..()
+	var/transfer_amount = input("Amount per transfer from this:","[src]") as null|anything in possible_transfer_amounts
 	amount_per_transfer_from_this = transfer_amount
 	to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
 	return
