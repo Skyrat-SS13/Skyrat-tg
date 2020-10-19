@@ -497,6 +497,7 @@
 			return FALSE
 		if(dump_destination.storage_contents_dump_act(src, M))
 			playsound(A, "rustle", 50, TRUE, -5)
+			A.do_squish(0.8, 1.2) //SKYRAT EDIT ADDITION - AESTHETICS
 			return TRUE
 	return FALSE
 
@@ -567,12 +568,14 @@
 	// this must come before the screen objects only block, dunno why it wasn't before
 	if(over_object == M)
 		user_show_to_mob(M)
+		playsound(A, "rustle", 50, TRUE, -5) //SKYRAT EDIT ADDITION - AESTHETICS
+		A.do_jiggle() //SKYRAT EDIT ADDITION - AESTHETICS
 	if(!istype(over_object, /obj/screen))
 		dump_content_at(over_object, M)
 		return
 	if(A.loc != M)
 		return
-	playsound(A, "rustle", 50, TRUE, -5)
+	//playsound(A, "rustle", 50, TRUE, -5) //SKYRAT EDIT REMOVAL - AESTHETICS
 	if(istype(over_object, /obj/screen/inventory/hand))
 		var/obj/screen/inventory/hand/H = over_object
 		M.putItemFromInventoryInHandIfPossible(A, H.held_index)
@@ -684,6 +687,8 @@
 		return
 	if(rustle_sound)
 		playsound(parent, "rustle", 50, TRUE, -5)
+	var/atom/A = parent  //SKYRAT EDIT ADDITION - AESTHETICS
+	A.do_squish() //SKYRAT EDIT ADDITION - AESTHETICS
 	for(var/mob/viewing in viewers(user, null))
 		if(M == viewing)
 			to_chat(usr, "<span class='notice'>You put [I] [insert_preposition]to [parent].</span>")
@@ -839,6 +844,7 @@
 		A.add_fingerprint(user)
 		user_show_to_mob(user)
 		playsound(A, "rustle", 50, TRUE, -5)
+		A.do_jiggle() //SKYRAT EDIT ADDITION - AESTHETICS
 		return
 
 	var/obj/item/I = locate() in real_location()
