@@ -1,4 +1,4 @@
-(LINK GOES HERE)
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/1383
 
 ## Title: Techarmor Port
 
