@@ -34,7 +34,7 @@
 	light_power = 1
 	light_color = LIGHT_COLOR_FIRE
 	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
-	maxbodytemp = 1500
+	maxbodytemp = INFINITY
 	gender = MALE
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize()
