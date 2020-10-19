@@ -11,7 +11,8 @@ Ports the Techarmor over from the old base.
 ### TG Proc Changes:
 
 - security_officer.dm: Armor changed from normal armor (/obj/item/clothing/suit/armor/vest/alt) to techarmor (/obj/item/clothing/suit/space/hardsuit/security_armor)
-- security.dm: Lockers now contain their respective Techarmor variants, old armor has been commented away.
+- locker/security.dm: Lockers now contain their respective Techarmor variants, old armor has been commented away.
+- vending/security.dm: Added normal Security Vests and Helmets to the SecVend.
 
 ### Defines:
 
