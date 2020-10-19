@@ -5,6 +5,9 @@
 	mob_biotypes = MOB_ORGANIC
 	gold_core_spawnable = NO_SPAWN
 	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_mobs.dmi'
+	vision_range = 5
+	aggro_vision_range = 8
+	move_to_delay = 6
 
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler
@@ -23,7 +26,6 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 	faction = list(MOLD_FACTION)
-	move_to_delay = 6
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BURN
 	del_on_death = TRUE
@@ -33,6 +35,7 @@
 	light_color = LIGHT_COLOR_FIRE
 	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
 	maxbodytemp = 1500
+	gender = MALE
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize()
 	. = ..()
@@ -78,7 +81,6 @@
 	melee_damage_lower = 7
 	melee_damage_upper = 13
 	faction = list(MOLD_FACTION)
-	move_to_delay = 6
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
 	pass_flags = PASSTABLE
@@ -102,7 +104,6 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 6
 	faction = list(MOLD_FACTION)
-	move_to_delay = 6
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
 	attack_sound = 'sound/effects/attackblob.ogg'
