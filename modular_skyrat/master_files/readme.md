@@ -18,7 +18,6 @@ MASTER CODE FILES
 - /master_files/code/datums/traits/neutral.dm > USE THIS FOR ANY NEUTRAL TRAITS
 - /master_files/code/datums/traits/negative.dm > USE THIS FOR ANY NEGATIVE TRAITS
 - /master_files/code/datums/traits/good.dm > USE THIS FOR ANY GOOD TRAITS
-- master_files\code\game\objects\items.dm
 - \master_files\code\game\objects\structures\trash_pile.dm
 - /master_files/code/modules/mob/living/carbon/carbon_say.dm
 MASTER GLOBAL VARS
