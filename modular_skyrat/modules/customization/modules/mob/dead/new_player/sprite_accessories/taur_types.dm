@@ -11,6 +11,11 @@
 	var/hide_legs = TRUE
 	var/hide_markings = FALSE //Any taur part that has "legs" should not hide markings
 
+/datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+		return TRUE
+	return FALSE
+
 /datum/sprite_accessory/taur/none
 	name = "None"
 	dimension_x = 32

@@ -9,6 +9,7 @@
 /datum/loadout_item/neck/choker
 	name = "Choker"
 	path = /obj/item/clothing/neck/human_petcollar/choker
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/neck/collar
 	name = "Collar"
@@ -28,6 +29,16 @@
 	path = /obj/item/clothing/neck/cloak/polychromic/veil
 	extra_info = LOADOUT_INFO_THREE_COLORS
 
+/datum/loadout_item/neck/poly_shroud
+	name = "Polychromic Shroud"
+	path = /obj/item/clothing/neck/cloak/polychromic/shroud
+	extra_info = LOADOUT_INFO_THREE_COLORS
+
+/datum/loadout_item/neck/poly_boat
+	name = "Polychromic Boatcloak"
+	path = /obj/item/clothing/neck/cloak/polychromic/boat
+	extra_info = LOADOUT_INFO_THREE_COLORS
+
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
 	path = /obj/item/clothing/neck/stethoscope
@@ -38,8 +49,9 @@
 	subcategory = LOADOUT_SUBCATEGORY_NECK_SCARVES
 
 /datum/loadout_item/neck/scarf/scarf
-	name = "White scarf"
+	name = "Colorable scarf"
 	path = /obj/item/clothing/neck/scarf
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/neck/scarf/blackscarf
 	name = "Black scarf"

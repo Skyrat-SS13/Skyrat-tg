@@ -27,7 +27,7 @@
 /datum/sprite_accessory/wings/moth
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/moth_wings.dmi' //Needs new icon to suit new naming convention
 	default_color = "FFF"
-	recommended_species = list("moth", "mammal") //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
+	recommended_species = list("moth", "mammal", "insect") //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/wings/moth
 
 /datum/sprite_accessory/wings/moth/plain

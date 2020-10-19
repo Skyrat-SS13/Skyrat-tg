@@ -36,8 +36,13 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
  ./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
  ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
+ .\code\modules\client.dm > /client/proc/update_special_keybinds()
+  ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
 
  ./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
+
+ ./code/controllers/subsystem/job.dm > /datum/controller/subsystem/job/proc/FindOccupationCandidates(), /datum/controller/subsystem/job/proc/GiveRandomJob(), /datum/controller/subsystem/job/proc/DivideOccupations(), /datum/controller/subsystem/job/proc/AssignRole()
+ ./code/modules/mob/dead/new_player/new_player.dm > /mob/dead/new_player/proc/IsJobUnavailable(), /proc/get_job_unavailable_error_message()
 
 ### Defines:
 
@@ -46,6 +51,7 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/species_types/felinid.dm > commented out "mutantears = /obj/item/organ/ears/cat" and "mutant_organs = list(/obj/item/organ/tail/cat)"
  ./code/modules/mob/living/carbon/human/species.dm > var/list/list/mutant_bodyparts (added typed list type)
  ./code/_globalvars/lists/flavor_misc.dm > Removed accessory list defines
+ .\code\datums\keybindings\living.dm > /datum/keybinding/living/look_up > from L to P
 
  ./code/modules/surgery/bodyparts/_bodyparts.dm > var/rendered_bp_icon
 

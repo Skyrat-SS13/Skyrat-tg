@@ -256,11 +256,6 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 
-/datum/species/moth
-	default_features = null
-	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("moth_markings" = ACC_RANDOM, "wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM)
-
 /datum/species/mush
 	default_features = null
 	mutant_bodyparts = list()
@@ -358,6 +353,9 @@
 
 	if(TRAIT_TOXIMMUNE in inherent_traits)
 		C.setToxLoss(0, TRUE, TRUE)
+
+	if(TRAIT_OXYIMMUNE in inherent_traits)
+		C.setOxyLoss(0, TRUE, TRUE)
 
 	if(TRAIT_NOMETABOLISM in inherent_traits)
 		C.reagents.end_metabolization(C, keep_liverless = TRUE)

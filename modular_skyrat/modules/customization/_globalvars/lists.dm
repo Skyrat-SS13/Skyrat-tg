@@ -26,16 +26,6 @@ GLOBAL_LIST_INIT(balls_size_translation, list("0" = "Small",
 												"3" = "Enormous"
 												))
 
-/*GLOBAL_LIST_INIT(bitflag_to_marking_zones, list(HEAD = "Head",
-											CHEST = "Chest",
-											LEG_LEFT = "Left Leg",
-											LEG_RIGHT = "Right Leg",
-											ARM_LEFT = "Left Arm",
-											ARM_RIGHT = "Right Arm",
-											HAND_LEFT = "Left Hand",
-											HAND_RIGHT = "Right Hand"
-											))*/
-
 GLOBAL_LIST_INIT(marking_zone_to_bitflag, list(BODY_ZONE_HEAD = HEAD,
 										BODY_ZONE_CHEST = CHEST,
 										BODY_ZONE_L_LEG = LEG_LEFT,
@@ -51,7 +41,7 @@ GLOBAL_LIST_INIT(marking_zone_to_bitflag, list(BODY_ZONE_HEAD = HEAD,
 GLOBAL_LIST_INIT(marking_zones, list(BODY_ZONE_HEAD,BODY_ZONE_CHEST,BODY_ZONE_L_LEG,BODY_ZONE_R_LEG,BODY_ZONE_L_ARM,BODY_ZONE_R_ARM,BODY_ZONE_PRECISE_L_HAND,BODY_ZONE_PRECISE_R_HAND))
 
 ///Those are the values available from prefs
-GLOBAL_LIST_INIT(preference_breast_sizes, list("Flatchested","A","B","C","D","E","F","G","H"))
+GLOBAL_LIST_INIT(preference_breast_sizes, list("Flatchested","A","B","C","D","E","F","G","H","I","J"))
 
 GLOBAL_LIST_INIT(preference_balls_sizes, list("Small","Average","Big","Enormous"))
 

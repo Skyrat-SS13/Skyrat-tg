@@ -99,7 +99,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
 			var/obj/effect/statclick/updated = AH.statclick.update()
-			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
+			//L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH)) //ORIGINAL
+			L[++L.len] = list("[AH.handler ? "H-[AH.handler]" : ""]#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH)) //SKYRAT EDIT CHANGE - ADMIN
 		else
 			++num_disconnected
 	if(num_disconnected)
@@ -175,12 +176,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //call this on its own to create a ticket, don't manually assign current_ticket
 //msg is the title of the ticket: usually the ahelp text
 //is_bwoink is TRUE if this ticket was started by an admin PM
-/datum/admin_help/New(msg, client/C, is_bwoink)
+///datum/admin_help/New(msg, client/C, is_bwoink) //ORIGINAL
+/datum/admin_help/New(msg, client/C, is_bwoink, client/admin_C) //SKYRAT EDIT CHANGE - ADMIN
 	//clean the input msg
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
 		qdel(src)
 		return
+
+	//SKYRAT EDIT ADDITION BEGIN
+	if(admin_C && is_bwoink)
+		handler = "[admin_C.ckey]"
+	//SKYRAT EDIT END
 
 	id = ++ticket_counter
 	opened_at = world.time
@@ -248,6 +255,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)" //SKYRAT EDIT ADDITION - ADMIN
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -468,6 +476,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Resolve()
 		if("reopen")
 			Reopen()
+		//SKYRAT EDIT ADDITION BEING - ADMIN
+		if("handleissue")
+			HandleIssue()
+		//SKYRAT EDIT ADDITION END
 
 //
 // TICKET STATCLICK
@@ -589,18 +601,26 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		send2adminchat(source,final)
 		send2otherserver(source,final)
 
-/// Sends a message to other servers.
-/proc/send2otherserver(source,msg,type = "Ahelp",target_servers)
+/**
+  * Sends a message to a set of cross-communications-enabled servers using world topic calls
+  *
+  * Arguments:
+  * * source - Who sent this message
+  * * msg - The message body
+  * * type - The type of message, becomes the topic command under the hood
+  * * target_servers - A collection of servers to send the message to, defined in config
+  * * additional_data - An (optional) associated list of extra parameters and data to send with this world topic call
+  */
+/proc/send2otherserver(source, msg, type = "Ahelp", target_servers, list/additional_data = list())
 	if(!CONFIG_GET(string/comms_key))
 		debug_world_log("Server cross-comms message not sent for lack of configured key")
 		return
 
 	var/our_id = CONFIG_GET(string/cross_comms_name)
-	var/list/message = list()
-	message["message_sender"] = source
-	message["message"] = msg
-	message["source"] = "([our_id])"
-	message += type
+	additional_data["message_sender"] = source
+	additional_data["message"] = msg
+	additional_data["source"] = "([our_id])"
+	additional_data += type
 
 	var/list/servers = CONFIG_GET(keyed_list/cross_server)
 	for(var/I in servers)
@@ -608,7 +628,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			continue
 		if(target_servers && !(I in target_servers))
 			continue
-		world.send_cross_comms(I, message)
+		world.send_cross_comms(I, additional_data)
 
 /// Sends a message to a given cross comms server by name (by name for security).
 /world/proc/send_cross_comms(server_name, list/message, auth = TRUE)

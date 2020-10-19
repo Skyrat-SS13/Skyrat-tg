@@ -1,8 +1,9 @@
 /datum/sprite_accessory/snouts
 	key = "snout"
 	generic = "Snout"
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/lizard_snouts.dmi'
 	var/use_muzzled_sprites = TRUE
-	recommended_species = list("mammal", "lizard")
+	recommended_species = list("mammal", "lizard", "unathi")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -19,7 +20,16 @@
 /datum/sprite_accessory/snouts/mammal
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/snouts.dmi'
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list("mammal")
+	recommended_species = list("mammal", "humanoid")
+
+/datum/sprite_accessory/snouts/mammal/vulpkanin
+	recommended_species = list("mammal", "vulpkanin", "humanoid")
+
+/datum/sprite_accessory/snouts/mammal/tajaran
+	recommended_species = list("mammal", "tajaran", "humanoid")
+
+/datum/sprite_accessory/snouts/mammal/akula
+	recommended_species = list("mammal", "akula", "aquatic", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"
@@ -56,7 +66,7 @@
 	name = "Rodent"
 	icon_state = "rodent"
 
-/datum/sprite_accessory/snouts/mammal/lcanid
+/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanid
 	name = "Mammal, Long"
 	icon_state = "lcanid"
 
@@ -64,17 +74,34 @@
 	name = "Mammal, Long ALT"
 	icon_state = "lcanidalt"
 
-/datum/sprite_accessory/snouts/mammal/scanid
+/datum/sprite_accessory/snouts/mammal/vulpkanin/lcanidstriped
+	name = "Mammal, Long, Striped"
+	icon_state = "lcanidstripe"
+
+/datum/sprite_accessory/snouts/mammal/lcanidstripedalt
+	name = "Mammal, Long, Striped ALT"
+	icon_state = "lcanidstripealt"
+
+/datum/sprite_accessory/snouts/mammal/tajaran/scanid
 	name = "Mammal, Short"
 	icon_state = "scanid"
 
-/datum/sprite_accessory/snouts/mammal/scanidalt
+/datum/sprite_accessory/snouts/mammal/tajaran/scanidalt
 	name = "Mammal, Short ALT"
 	icon_state = "scanidalt"
 
-/datum/sprite_accessory/snouts/mammal/scanidalt2
+/datum/sprite_accessory/snouts/mammal/tajaran/scanidalt2
 	name = "Mammal, Short ALT 2"
 	icon_state = "scanidalt2"
+
+/datum/sprite_accessory/snouts/mammal/tajaran/scanidalt3
+	name = "Mammal, Short ALT 3"
+	icon_state = "scanidalt3"
+
+/datum/sprite_accessory/snouts/mammal/tajaran/normal
+	name = "Tajaran, normal"
+	icon_state = "ntajaran"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/snouts/mammal/wolf
 	name = "Mammal, Thick"
@@ -106,11 +133,11 @@
 	name = "Sergal"
 	icon_state = "sergal"
 
-/datum/sprite_accessory/snouts/mammal/shark
+/datum/sprite_accessory/snouts/mammal/akula/shark
 	name = "Shark"
 	icon_state = "shark"
 
-/datum/sprite_accessory/snouts/mammal/hshark
+/datum/sprite_accessory/snouts/mammal/akula/hshark
 	name = "hShark"
 	icon_state = "hshark"
 
@@ -171,7 +198,7 @@
 	name = "Husky (Top)"
 	icon_state = "fhusky"
 
-/datum/sprite_accessory/snouts/mammal/flcanid
+/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanid
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
 
@@ -179,17 +206,29 @@
 	name = "Mammal, Long ALT (Top)"
 	icon_state = "flcanidalt"
 
-/datum/sprite_accessory/snouts/mammal/fscanid
+/datum/sprite_accessory/snouts/mammal/vulpkanin/flcanidstriped
+	name = "Mammal, Long, Striped (Top)"
+	icon_state = "flcanidstripe"
+
+/datum/sprite_accessory/snouts/mammal/flcanidstripedalt
+	name = "Mammal, Long, Striped ALT (Top)"
+	icon_state = "flcanidstripealt"
+
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanid
 	name = "Mammal, Short (Top)"
 	icon_state = "fscanid"
 
-/datum/sprite_accessory/snouts/mammal/fscanidalt
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt
 	name = "Mammal, Short ALT (Top)"
 	icon_state = "fscanidalt"
 
-/datum/sprite_accessory/snouts/mammal/fscanidalt2
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt2
 	name = "Mammal, Short ALT 2 (Top)"
 	icon_state = "fscanidalt2"
+
+/datum/sprite_accessory/snouts/mammal/tajaran/fscanidalt3
+	name = "Mammal, Short ALT 3 (Top)"
+	icon_state = "fscanidalt3"
 
 /datum/sprite_accessory/snouts/mammal/fwolf
 	name = "Mammal, Thick (Top)"
@@ -283,7 +322,7 @@
 	extra = TRUE
 	//extra_color_src = MATRIXED
 
-/datum/sprite_accessory/snouts/mammal/shark_light
+/datum/sprite_accessory/snouts/mammal/akula/shark_light
 	name = "Shark Light"
 	icon_state = "sharkblubber"
 	color_src = USE_MATRIXED_COLORS
@@ -292,3 +331,4 @@
 	name = "Rat"
 	icon_state = "rat"
 	color_src = USE_MATRIXED_COLORS
+

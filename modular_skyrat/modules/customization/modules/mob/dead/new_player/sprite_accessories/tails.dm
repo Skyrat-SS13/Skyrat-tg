@@ -13,7 +13,7 @@
 	return icon_state
 
 /datum/sprite_accessory/tails/lizard
-	recommended_species = list("lizard", "ashwalker", "mammal")
+	recommended_species = list("lizard", "ashwalker", "mammal", "unathi")
 	organ_type = /obj/item/organ/tail/lizard
 
 /datum/sprite_accessory/tails/human
@@ -28,19 +28,28 @@
 /datum/sprite_accessory/tails/none
 	name = "None"
 	icon_state = "none"
-	recommended_species = list("mammal", "human")
+	recommended_species = list("mammal", "human", "humanoid")
 	color_src = null
 	factual = FALSE
 
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
-	recommended_species = list("mammal", "human")
+	recommended_species = list("mammal", "human", "humanoid")
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/tails.dmi'
 	organ_type = /obj/item/organ/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/tails/mammal/wagging
 	organ_type = /obj/item/organ/tail/fluffy
+
+/datum/sprite_accessory/tails/mammal/wagging/vulpkanin
+	recommended_species = list("mammal", "human", "vulpkanin", "humanoid")
+
+/datum/sprite_accessory/tails/mammal/wagging/tajaran
+	recommended_species = list("mammal", "human", "tajaran", "humanoid")
+
+/datum/sprite_accessory/tails/mammal/wagging/akula
+	recommended_species = list("mammal", "human", "akula", "aquatic", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
@@ -58,9 +67,10 @@
 	name = "Bee"
 	icon_state = "bee"
 
-/datum/sprite_accessory/tails/mammal/wagging/catbig
+/datum/sprite_accessory/tails/mammal/wagging/tajaran/catbig
 	name = "Cat, Big"
 	icon_state = "catbig"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/twocat
 	name = "Cat, Double"
@@ -92,7 +102,7 @@
 	name = "Fish"
 	icon_state = "fish"
 
-/datum/sprite_accessory/tails/mammal/wagging/fox
+/datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox
 	name = "Fox"
 	icon_state = "fox"
 
@@ -161,7 +171,7 @@
 	name = "Sergal"
 	icon_state = "sergal"
 
-/datum/sprite_accessory/tails/mammal/wagging/shark
+/datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
 
@@ -173,6 +183,10 @@
 	name = "Skunk"
 	icon_state = "skunk"
 
+/datum/sprite_accessory/tails/mammal/wagging/stripe
+	name = "Stripe"
+	icon_state = "stripe"
+
 /datum/sprite_accessory/tails/mammal/wagging/straighttail
 	name = "Straight Tail"
 	icon_state = "straighttail"
@@ -180,6 +194,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/squirrel
 	name = "Squirrel"
 	icon_state = "squirrel"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/tamamo_kitsune
 	name = "Tamamo Kitsune Tails"
@@ -196,15 +211,25 @@
 /datum/sprite_accessory/tails/mammal/wagging/wolf
 	name = "Wolf"
 	icon_state = "wolf"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/guilmon
 	name = "Guilmon"
 	icon_state = "guilmon"
 
-/datum/sprite_accessory/tails/mammal/wagging/sharknofin
+/datum/sprite_accessory/tails/mammal/wagging/akula/sharknofin
 	name = "Shark no fin"
 	icon_state = "sharknofin"
 
 /datum/sprite_accessory/tails/mammal/raptor
     name = "Raptor"
     icon_state = "raptor"
+
+/datum/sprite_accessory/tails/mammal/wagging/lunasune
+	name = "Lunasune"
+	icon_state = "lunasune"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/spade
+	name = "Succubus Spade Tail"
+	icon_state = "spade"

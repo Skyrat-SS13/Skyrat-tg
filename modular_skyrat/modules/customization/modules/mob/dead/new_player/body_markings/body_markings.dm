@@ -43,12 +43,31 @@
 //Use this one for things with pre-set default colors, I guess
 /datum/body_marking/other
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/other_markings.dmi'
+	recommended_species = null
 
 /datum/body_marking/other/drake_bone
 	name = "Drake Bone"
 	icon_state = "drakebone"
 	default_color = "CCC"
 	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT 
+
+/datum/body_marking/other/tonage
+	name = "Body Tonage"
+	icon_state = "tonage"
+	default_color = "555"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/other/pilot
+	name = "Pilot"
+	icon_state = "pilot"
+	default_color = "CCC"
+	affected_bodyparts = HEAD | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT
+
+/datum/body_marking/other/pilot_jaw
+	name = "Pilot Jaw"
+	icon_state = "pilot_jaw"
+	default_color = "CCC"
+	affected_bodyparts = HEAD 
 
 /datum/body_marking/other/drake_eyes
 	name = "Drake Eyes"
@@ -206,15 +225,76 @@
 	icon_state = "floof"
 	affected_bodyparts = HEAD | CHEST
 
-/datum/body_marking/secondary/floofer
-	name = "Floofer"
-	icon_state = "floofer"
-	affected_bodyparts = HEAD | CHEST
-
 /datum/body_marking/secondary/rat
 	name = "Rat Paw"
 	icon_state = "rat"
 	affected_bodyparts = ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/scolipede
+	name = "Scolipede"
+	icon_state = "scolipede"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/guilmon
+	name = "Guilmon"
+	icon_state = "guilmon"
+	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/xeno
+	name = "Xeno"
+	icon_state = "xeno"
+	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+	recommended_species = list("xeno")
+
+/datum/body_marking/secondary/datashark
+	name = "Datashark"
+	icon_state = "datashark"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/belly
+	name = "Belly"
+	icon_state = "belly"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/secondary/bellyslim
+	name = "Belly Slim"
+	icon_state = "bellyslim"
+	affected_bodyparts = HEAD | CHEST | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/handsfeet
+	name = "Hands Feet"
+	icon_state = "handsfeet"
+	affected_bodyparts = HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/frog
+	name = "Frog"
+	icon_state = "frog"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/bee
+	name = "Bee"
+	icon_state = "bee"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/gradient
+	name = "Gradient"
+	icon_state = "gradient"
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/harlequin
+	name = "Harlequin"
+	icon_state = "harlequin"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | HAND_LEFT | LEG_LEFT
+
+/datum/body_marking/secondary/harlequin_reversed
+	name = "Harlequin Reversed"
+	icon_state = "harlequin_reversed"
+	affected_bodyparts = HEAD | CHEST | ARM_RIGHT | HAND_RIGHT | LEG_RIGHT
+
+/datum/body_marking/secondary/plain
+	name = "Plain"
+	icon_state = "plain"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/tertiary
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/tertiary_markings.dmi'
@@ -227,7 +307,7 @@
 
 /datum/body_marking/tertiary/shepherd
 	name = "Shepherd Spot"
-	icon_state = "redpanda"
+	icon_state = "shepherd"
 	affected_bodyparts = HEAD | CHEST
 
 /datum/body_marking/tertiary/wolf
@@ -308,7 +388,7 @@
 /datum/body_marking/tertiary/floofer
 	name = "Floofer Sock"
 	icon_state = "floofer"
-	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT | HAND_LEFT | HAND_RIGHT 
 
 /datum/body_marking/tertiary/rat
 	name = "Rat Spot"
@@ -319,3 +399,19 @@
 	name = "Sloth Head"
 	icon_state = "sloth"
 	affected_bodyparts = HEAD
+
+/datum/body_marking/tertiary/scolipede
+	name = "Scolipede Spikes"
+	icon_state = "scolipede"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/tertiary/guilmon
+	name = "Guilmon Mark"
+	icon_state = "guilmon"
+	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/tertiary/xeno
+	name = "Xeno Head"
+	icon_state = "xeno"
+	affected_bodyparts = HEAD
+	recommended_species = list("xeno")
