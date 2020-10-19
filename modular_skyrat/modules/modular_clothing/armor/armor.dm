@@ -6,12 +6,12 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit-secexo"
 	icon_state = "hardsuit0-secexo"
-	item_state = "hardsuit0-secexo"
+	inhand_item_state = "hardsuit0-secexo"
 	hardsuit_type = "secexo"
 	armor = list("melee" = 40, "bullet" = 30, "laser" = 30,"energy" = 10, "bomb" = 25, "bio" = 50, "rad" = 0, "fire" = 55, "acid" = 70)
-	clothing_flags = THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
+	clothing_flags = THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
 	flags_inv = HIDEMASK|HIDEEARS|HIDEFACE|HIDEHAIR
-	mutantrace_variation = STYLE_MUZZLE
+	mutant_variants = STYLE_MUZZLE
 
 /obj/item/clothing/suit/space/hardsuit/security_armor
 	name = "type I full-body techarmor"
@@ -19,15 +19,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hardsuit-secexo"
-	item_state = "hardsuit-secexo"
+	inhand_item_state = "hardsuit-secexo"
 	max_integrity = 250
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 50, "rad" = 0, "fire" = 55, "acid" = 70)
 	allowed = list(/obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/flashlight, /obj/item/gun/ballistic, /obj/item/gun/energy, /obj/item/kitchen/knife/combat, /obj/item/melee/baton, /obj/item/melee/classic_baton/telescopic, /obj/item/reagent_containers/spray/pepper, /obj/item/restraints/handcuffs, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/blunderbuss) //I had to do this all snowflake style because it just would not accept any sort of global list, fucking kill me
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_armor
 	clothing_flags = THICKMATERIAL
-	mutantrace_variation = STYLE_DIGITIGRADE
+	mutant_variants = STYLE_DIGITIGRADE
 	slowdown = 0
-	anthro_mob_worn_overlay = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
 	flags_inv = NONE
 /*Let me just put a big fucking note right here because I know somebody is going to complain about this:
 No, this does not let you stack the helmet-given flash resistance and Nightvision or Thermal glasses with no consequence.
@@ -55,16 +54,16 @@ just as if you were wearing them separate. Stop screaming to me about this. Plea
 	name = "head of security's techhelmet"
 	desc = "A specialized exoskeleton armor helmet built into a suit of armor; offers decent protection, and comes with a flash-resistant HUD visor and headlamp."
 	icon_state = "hardsuit0-hosexo"
-	item_state = "hardsuit0-hosexo"
+	inhand_item_state = "hardsuit0-hosexo"
 	hardsuit_type = "hosexo"
-	mutantrace_variation = NONE
+	mutant_variants = NONE
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
 
 /obj/item/clothing/suit/space/hardsuit/security_armor/hos
 	name = "head of security's techarmor"
 	desc = "A specialized exoskeleton armor suit comprised of flexible protective shielding. This particular suit has been designed specifically for the station security commander."
 	icon_state = "hardsuit-hosexo"
-	item_state = "hardsuit-hosexo"
+	inhand_item_state = "hardsuit-hosexo"
 	max_integrity = 300
 	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 50, "rad" = 0, "fire" = 70, "acid" = 90)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_armor/hos
