@@ -38,11 +38,14 @@
 		if(CLONE)
 			adjustCloneLoss(damage_amount, forced = forced)
 		if(STAMINA)
+			/*
 			if(BP)
 				if(BP.receive_damage(0, 0, damage_amount))
 					update_damage_overlays()
 			else
 				adjustStaminaLoss(damage_amount, forced = forced)
+			*/
+			adjustStaminaLoss(damage_amount, forced = forced)
 	return TRUE
 
 
