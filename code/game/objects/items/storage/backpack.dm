@@ -9,6 +9,28 @@
  * Backpack
  */
 
+/obj/item/storage/RIG
+	name = "Resource Integration Gear"
+	desc = "RIG, sigla en inglés para Resource Integration Gear, conocido en español como Dispositivo Integrador de Recursos o DRI, es un sistema integrado de administración de salud y de aumento de fuerza que asiste a sus usuarios en ambientes anteriormente peligrosos e inhabitables. Pero tambien se ve cool en ti."
+	icon_state = "rig_civil"
+	inhand_icon_state = "satchel"
+	resistance_flags = FIRE_PROOF
+	w_class = WEIGHT_CLASS_NORMAL //Can fit in backpacks itself.
+	slowdown = 0
+	slot_flags = ITEM_SLOT_BACK	//ERROOOOO
+	worn_icon = 'icons_manaos/mob/clothing/back.dmi'
+	icon = 'icons_manaos/obj/storage.dmi'
+	light_range = 2
+	light_color = LIGHT_COLOR_ELECTRIC_CYAN
+
+/obj/item/storage/RIG/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_combined_w_class = 21
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.max_items = 21
+
+
 /obj/item/storage/backpack
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."

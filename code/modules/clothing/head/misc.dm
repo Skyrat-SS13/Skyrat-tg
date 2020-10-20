@@ -485,4 +485,15 @@
 /obj/item/clothing/head/bow
 	name = "moño rojo"
 	desc = "Un bonito moño de color rojo, adorable~."
+	icon = 'icons_manaos/obj/clothing/head.dmi'
+	worn_icon = 'icons_manaos/mob/clothing/head.dmi'
 	icon_state = "bow"
+	clothing_flags = SNUG_FIT
+	dynamic_hair_suffix = ""
+
+/obj/item/clothing/head/boinasyd
+	name = "boina negra de servicio médico"
+	desc = "Una boina negra que denota en el Servicio de Salud Interestelar. Para tus necesidades... edgys."
+	icon = 'icons_manaos/obj/clothing/head.dmi'
+	worn_icon = 'icons_manaos/mob/clothing/head.dmi'
+	icon_state = "boina_syd"

@@ -18,11 +18,11 @@
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 
 	if(GLOB.admin_notice)
-		to_chat(src, "<span class='notice'><b>Admin Notice:</b>\n \t [GLOB.admin_notice]</span>")
+		to_chat(src, "<span class='notice'><b>Aviso Admin:</b>\n \t [GLOB.admin_notice]</span>")
 
 	var/spc = CONFIG_GET(number/soft_popcap)
 	if(spc && living_player_count() >= spc)
-		to_chat(src, "<span class='notice'><b>Server Notice:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]</span>")
+		to_chat(src, "<span class='notice'><b>Aviso del Servidor:</b>\n \t [CONFIG_GET(string/soft_popcap_message)]</span>")
 
 	sight |= SEE_TURFS
 
@@ -32,7 +32,7 @@
 		var/tl = SSticker.GetTimeLeft()
 		var/postfix
 		if(tl > 0)
-			postfix = "in about [DisplayTimeText(tl)]"
+			postfix = "en aproximadamente [DisplayTimeText(tl)]"
 		else
-			postfix = "soon"
-		to_chat(src, "Please set up your character and select \"Ready\". The game will start [postfix].")
+			postfix = "pronto"
+		to_chat(src, "Por favor prepara tu personaje y dale a \"Listo\". La ronda comenzará [postfix].")
