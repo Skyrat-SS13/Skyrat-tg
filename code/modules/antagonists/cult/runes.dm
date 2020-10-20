@@ -214,7 +214,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	visible_message("<span class='warning'>[src] pulses blood red!</span>")
 	var/oldcolor = color
 	color = RUNE_COLOR_DARKRED
-
+	//var/mob/living/L = pick(myriad_targets) SKYRAT EDIT
 	var/mob/living/F = invokers[1]
 	var/datum/antagonist/cult/C = F.mind.has_antag_datum(/datum/antagonist/cult,TRUE)
 	var/datum/team/cult/Cult_team = C.cult_team
@@ -315,12 +315,14 @@ structure_check() searches for nearby cultist structures required for the invoca
 		if(iscyborg(sacrificial))
 			var/mob/living/silicon/robot/bot = sacrificial
 			playsound(sacrificial, 'sound/magic/disable_tech.ogg', 100, TRUE)
+			//sacrificial.dust() //To prevent the MMI from remaining
 			bot.deconstruct()
 
 		else
 			playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
 			var/mob/living/carbon/human/H = sacrificial
 			H.spew_organ(2, 6)
+			//sacrificial.gib()
 			//SKYRAT EDIT END
 	return TRUE
 
