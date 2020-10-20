@@ -3,11 +3,13 @@
 	icon_state = "spark"
 	color = "#FFFF00"
 	nodamage = FALSE
-	paralyze = 100
+	//paralyze = 100 //SKYRAT EDIT REMOVAL - COMBAT
+	stamina = 78  //SKYRAT EDIT ADDITION - COMBAT
 	stutter = 5
 	jitter = 20
 	hitsound = 'sound/weapons/taserhit.ogg'
-	range = 7
+	//range = 7 //ORIGINAL
+	range = 5  //SKYRAT EDIT CHANGE - COMBAT
 	tracer_type = /obj/effect/projectile/tracer/stun
 	muzzle_type = /obj/effect/projectile/muzzle/stun
 	impact_type = /obj/effect/projectile/impact/stun
