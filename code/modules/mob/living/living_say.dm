@@ -308,6 +308,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				//SKYRAT EDIT ADDITION END
 				continue
 			if(get_dist(M, src) > 7 || M.z != z) //they're out of range of normal hearing
+				if(!M.client)
+					continue
 				if(eavesdrop_range)
 					if(!(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
 						continue
