@@ -108,7 +108,7 @@ git commit -m "$(git -c core.editor=true log -1 --pretty=%B | sed 's/@/@ /g')" -
 if command -v yarn &> /dev/null
 then
     ./tgui/bin/tgui
-	git -c core.editor=true commit --allow-empty -m "Rebuilt tgui."
+	git -c core.editor=true commit -m "Rebuilt tgui."
 fi
 
 # Push them onto the branch
