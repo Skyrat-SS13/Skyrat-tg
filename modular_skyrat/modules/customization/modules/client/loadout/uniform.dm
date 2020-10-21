@@ -22,10 +22,29 @@
 	name = "Kilt"
 	path = /obj/item/clothing/under/costume/kilt
 
-/*/datum/loadout_item/uniform/polykilt
-	name = "Polychromic Kilt"
-	path = /obj/item/clothing/under/costume/kilt/polychromic
-	cost = 3*/
+/datum/loadout_item/uniform/poly_button_up
+	name = "Polychromic Button Up Shirt"
+	path = /obj/item/clothing/under/misc/poly_shirt
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
+/datum/loadout_item/uniform/poly_tri_jumpsuit
+	name = "Polychromic Tri-Tone Jumpsuit"
+	path = /obj/item/clothing/under/misc/polyjumpsuit
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
+/datum/loadout_item/uniform/poly_tanktop
+	name = "Polychromic Tanktop"
+	path = /obj/item/clothing/under/misc/poly_tanktop
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
+/datum/loadout_item/uniform/poly_tanktop_fem
+	name = "Polychromic Feminine Tanktop"
+	path = /obj/item/clothing/under/misc/poly_tanktop/female
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
 
 /datum/loadout_item/uniform/gear_harnesses
 	name = "Gear Harness"
@@ -154,6 +173,18 @@
 /datum/loadout_item/uniform/skirt/denimskirt
 	name = "Denim Skirt"
 	path = /obj/item/clothing/under/pants/denimskirt
+
+/datum/loadout_item/uniform/skirt/poly_skirt
+	name = "Polychromic Skirt"
+	path = /obj/item/clothing/under/dress/skirt/polychromic
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
+/datum/loadout_item/uniform/skirt/poly_skirt_pleated
+	name = "Polychromic Pleated Skirt"
+	path = /obj/item/clothing/under/dress/skirt/polychromic/pleated
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
 
 //DRESSES
 /datum/loadout_item/uniform/dress
