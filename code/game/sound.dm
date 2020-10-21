@@ -81,12 +81,9 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 
 */
 
-<<<<<<< HEAD
-///mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel = 0, pressure_affected = TRUE, sound/S, distance_multiplier = 1) //ORIGINAL
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, channel = 0, pressure_affected = TRUE, sound/S, distance_multiplier = 1 ,envwet = -10000, envdry = 0) //SKYRAT EDIT CHANGE - SOUND ECHO
-=======
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1)
->>>>>>> 74755a5a3ad... Audio falloff re-work, and increased audio range. (#54362)
+////mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1) //ORIGINAL
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1,envwet = -10000, envdry = 0)  //SKYRAT EDIT CHANGE - SOUND ECHO
+
 	if(!client || !can_hear())
 		return
 

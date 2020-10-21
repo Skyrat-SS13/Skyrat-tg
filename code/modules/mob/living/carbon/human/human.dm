@@ -20,12 +20,8 @@
 
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, .proc/clean_face)
 	AddComponent(/datum/component/personal_crafting)
-<<<<<<< HEAD
-	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, 2) //ORIGINAL
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, 2) //SKYRAT EDIT CHANGE - AESTHETICS 
-=======
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, -6)
->>>>>>> 74755a5a3ad... Audio falloff re-work, and increased audio range. (#54362)
+	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, -6) //ORIGINAL
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS 
 	AddComponent(/datum/component/bloodysoles/feet)
 	GLOB.human_list += src
 
