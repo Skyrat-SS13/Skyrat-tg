@@ -36,6 +36,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
+	//SKYRAT EDIT ADDITION BEGIN - MENTOR
+	if(mentor_client_procs(href_list))
+		return
+	//SKYRAT EDIT ADDITION END
 
 	// asset_cache
 	var/asset_cache_job
