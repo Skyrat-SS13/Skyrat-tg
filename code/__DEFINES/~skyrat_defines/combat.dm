@@ -129,6 +129,7 @@
 
 							target.apply_damage(15, BRUTE, affecting, armor_block)
 							playsound(target, 'sound/effects/hit_kick.ogg', 70)
+							log_combat(user, target, "headsmashes", "against the floor (knocking unconscious)")
 
 		//Chances are, no matter what you do on disarm you're gonna break your grip by accident because of shoving, let make a good use of disarm intent for maneuvers then
 		if(INTENT_DISARM)
@@ -142,6 +143,7 @@
 					to_chat(user, "<span class='danger'>You lock [target.name]'s neck with your arm and begin to choke [target.p_them()]...</span>")
 					if(do_mob(user, target, 1.5 SECONDS))
 						var/in_progress = TRUE
+						log_combat(user, target, "chokeholds", "(trying to knock unconscious)")
 						while(in_progress)
 							user.changeNext_move(1 SECONDS)
 							if(!do_mob(user, target, 1 SECONDS))
@@ -176,6 +178,7 @@
 						target.Paralyze(2 SECONDS)
 						user.emote("flip")
 						target.emote("flip")
+						log_combat(user, target, "suplexes", "down on the ground (knocking down both)")
 				else 
 					var/datum/wound/blunt/blute_wound = affecting.get_wound_type(/datum/wound/blunt)
 					if(blute_wound && blute_wound.severity >= WOUND_SEVERITY_MODERATE)
@@ -192,6 +195,7 @@
 							"<span class='userdanger'>[user.name] dislocates your [affecting.name]!</span>", ignored_mobs=user)
 						to_chat(user, "<span class='danger'>You dislocate [target.name]'s [affecting.name]!</span>")
 						affecting.force_wound_upwards(/datum/wound/blunt/moderate)
+						log_combat(user, target, "dislocates", "the [affecting.name]")
 
 	if(.)
 		user.changeNext_move(CLICK_CD_MELEE)
