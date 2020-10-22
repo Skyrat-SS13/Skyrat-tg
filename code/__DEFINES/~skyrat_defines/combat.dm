@@ -6,11 +6,11 @@
 #define PUNCH_EXTRA_STAMINA_MULTIPLIER 0.75
 
 //STAMINA REGEN
-#define STAMINA_STATIC_REGEN_MULTIPLIER 0.2
+#define STAMINA_STATIC_REGEN_MULTIPLIER 0.3
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
 #define STAMINA_STATIC_REGEN_FLAT 2
 //This increases the multiplier in relation to current stamina (staminaloss/THIS)
-#define STAMINALOSS_REGEN_COEFF 40
+#define STAMINALOSS_REGEN_COEFF 35
 
 //Thresholds for detrimental effects from stamina
 #define STAMINA_THRESHOLD_SLOWDOWN 70

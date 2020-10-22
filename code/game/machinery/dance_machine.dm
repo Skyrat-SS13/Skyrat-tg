@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL BEGIN - JUKEBOX - MOVED TO DANCE_MACHINE.DM
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
@@ -476,3 +477,4 @@
 		for(var/mob/living/M in rangers)
 			if(prob(5+(allowed(M)*4)) && (M.mobility_flags & MOBILITY_MOVE))
 				dance(M)
+*/ //SKYRAT EDIT REMOVAL END
