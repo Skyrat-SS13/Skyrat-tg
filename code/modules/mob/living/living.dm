@@ -507,6 +507,9 @@
 		else
 			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback)))
 				return
+	if(pulledby && pulledby.grab_state)
+		to_chat(src, "<span class='warning'>You fail to stand up, you're restrained!</span>")
+		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
 	to_chat(src, "<span class='notice'>You stand up.</span>")
@@ -885,10 +888,17 @@
 
 /mob/living/resist_grab(moving_resist)
 	. = TRUE
-	if(pulledby.grab_state || resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS))
+	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
 		var/altered_grab_state = pulledby.grab_state
-		if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
+		if(HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++
+		if(staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
+			altered_grab_state++
+		if(body_position == LYING_DOWN)
+			altered_grab_state++
+		var/mob/M = pulledby
+		if(M.staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
+			altered_grab_state--
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
 		resist_chance = (resist_chance/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
 		if(prob(resist_chance))
@@ -900,7 +910,7 @@
 			return FALSE
 		else
 			//adjustStaminaLoss(rand(15,20))//failure to escape still imparts a pretty serious penalty
-			adjustStaminaLoss(rand(5,10))//failure to escape still imparts a pretty serious penalty
+			adjustStaminaLoss(rand(10,15))//failure to escape still imparts a pretty serious penalty
 			visible_message("<span class='danger'>[src] struggles as they fail to break free of [pulledby]'s grip!</span>", \
 							"<span class='warning'>You struggle as you fail to break free of [pulledby]'s grip!</span>", null, null, pulledby)
 			to_chat(pulledby, "<span class='danger'>[src] struggles as they fail to break free of your grip!</span>")

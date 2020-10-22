@@ -10,7 +10,7 @@
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
 #define STAMINA_STATIC_REGEN_FLAT 2
 //This increases the multiplier in relation to current stamina (staminaloss/THIS)
-#define STAMINALOSS_REGEN_COEFF 35
+#define STAMINALOSS_REGEN_COEFF 40
 
 //Thresholds for detrimental effects from stamina
 #define STAMINA_THRESHOLD_SLOWDOWN 70
@@ -20,6 +20,9 @@
 #define STAMINA_THRESHOLD_SOFTCRIT 160
 
 #define STAMINA_THRESHOLD_HARDCRIT 190
+
+//Stamina threshold from which resisting a grab becomes hard
+#define STAMINA_THRESHOLD_HARD_RESIST 100
 
 //A coefficient for doing the change of random CC's on a person (staminaloss/THIS)
 #define STAMINA_CROWD_CONTROL_COEFF 200
@@ -67,26 +70,28 @@
 
 //Force mob to rest, does NOT do stamina damage.
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
-/mob/living/carbon/proc/KnockToFloor(disarm_items, silent = TRUE, ignore_canknockdown = FALSE)
+/mob/living/carbon/proc/KnockToFloor(silent = TRUE, ignore_canknockdown = FALSE)
 	if(!silent && body_position != LYING_DOWN)
 		to_chat(src, "<span class='warning'>You are knocked to the floor!</span>")
 	Knockdown(1, ignore_canknockdown)
-	if(disarm_items)
-		drop_all_held_items()
 
-/mob/living/proc/StaminaKnockdown(stamina_damage, disarm, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+/mob/living/proc/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
 	if(!stamina_damage)
 		return
 	return Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
 
-/mob/living/carbon/StaminaKnockdown(stamina_damage, disarm, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+/mob/living/carbon/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
 	if(!stamina_damage)
 		return
 	if(!ignore_canknockdown && !(status_flags & CANKNOCKDOWN))
 		return FALSE
 	if(istype(buckled, /obj/vehicle/ridden))
 		buckled.unbuckle_mob(src)
-	KnockToFloor(disarm, TRUE, ignore_canknockdown)
+	KnockToFloor(TRUE, ignore_canknockdown)
 	adjustStaminaLoss(stamina_damage)
-	if(!isnull(hardstun))
+	if(disarm)
+		drop_all_held_items()
+	if(brief_stun)
+		Stun(0.25 SECONDS)
+	if(hardstun)
 		Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
