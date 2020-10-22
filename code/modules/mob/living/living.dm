@@ -896,7 +896,7 @@
 			altered_grab_state++
 		if(body_position == LYING_DOWN)
 			altered_grab_state++
-		var/mob/M = pulledby
+		var/mob/living/M = pulledby
 		if(M.staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
 			altered_grab_state--
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
