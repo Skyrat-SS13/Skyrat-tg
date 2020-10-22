@@ -287,6 +287,7 @@
 		target.visible_message("<span class='danger'>[name] kicks [target.name] onto [target.p_their()] side!</span>",
 						"<span class='userdanger'>You're kicked onto your side by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
 		to_chat(src, "<span class='danger'>You kick [target.name] onto [target.p_their()] side!</span>")
+		target.adjustStaminaLoss(20) //Ouch!
 		addtimer(CALLBACK(target, /mob/living/proc/SetKnockdown, 0), SHOVE_CHAIN_PARALYZE)
 		log_combat(src, target, "kicks", "onto their side (paralyzing)")
 		return

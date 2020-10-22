@@ -585,7 +585,7 @@
 	if(stam > STAMINA_THRESHOLD_SLOWDOWN)
 		add_movespeed_modifier(/datum/movespeed_modifier/stamina_slowdown)
 		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina mild", /datum/mood_event/stamina_mild)
+			//SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina mild", /datum/mood_event/stamina_mild)
 			if(!HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
 				//When you get floored by stamina, you also get a brief stun and disarm
 				to_chat(src, "<span class='boldwarning'>You feel weak and collapse!</span>")
@@ -596,7 +596,7 @@
 			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
 
 		if(stam > STAMINA_THRESHOLD_SOFTCRIT)
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina severe", /datum/mood_event/stamina_severe)
+			//SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina severe", /datum/mood_event/stamina_severe)
 			if(!HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, STAMINA))
 				ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		else

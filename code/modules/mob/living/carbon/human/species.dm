@@ -1438,6 +1438,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		to_chat(M, "<span class='warning'>You attempt to touch [H]!</span>")
 		return
 	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
+	//Check if we can do a grab maneuver, if so, attempt it
+	if(H.pulledby && H.pulledby == M && M.grab_state && try_grab_maneuver(M, H))
+		return
 	switch(M.a_intent)
 		if("help")
 			help(M, H, attacker_style)
