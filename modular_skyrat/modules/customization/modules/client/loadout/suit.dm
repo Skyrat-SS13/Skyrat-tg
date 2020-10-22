@@ -43,11 +43,11 @@
 	name = "Brass winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
 
-/*/datum/loadout_item/suit/coat/polycoat
-	name = "Polychromic winter coat"
+/datum/loadout_item/suit/coat/poly
+	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
-	cost = 4 //too many people with neon green coats is hard on the eyes
-*/
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
 
 //JACKETS
 /datum/loadout_item/suit/jacket

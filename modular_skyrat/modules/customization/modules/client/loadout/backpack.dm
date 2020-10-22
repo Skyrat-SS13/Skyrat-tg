@@ -15,6 +15,17 @@
 	path = /obj/item/lighter
 	cost = 2
 
+/datum/loadout_item/backpack/ttsdevice
+	name = "Text-to-Speech Device"
+	path = /obj/item/ttsdevice
+	cost = 7
+
+/datum/loadout_item/backpack/paicard
+	name = "Personal AI device"
+	description = "A device, that let you browse and download various AIs."
+	path = /obj/item/paicard
+	cost = 2
+
 /datum/loadout_item/backpack/cigar
 	name = "Cigar"
 	path = /obj/item/clothing/mask/cigarette/cigar
