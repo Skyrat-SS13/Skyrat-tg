@@ -2343,7 +2343,7 @@
 		var/stam_crash = 0
 		for(var/thing in M.all_wounds)
 			var/datum/wound/W = thing
-			stam_crash += (W.severity + 1) * 3 // spike of 3 stam damage per wound severity (moderate = 6, severe = 9, critical = 12) when the determination wears off if it was a combat rush
+			stam_crash += (W.severity + 1) * 5 // spike of 3 stam damage per wound severity (moderate = 6, severe = 9, critical = 12) when the determination wears off if it was a combat rush
 		M.adjustStaminaLoss(stam_crash)
 	M.remove_status_effect(STATUS_EFFECT_DETERMINED)
 	..()
@@ -2355,12 +2355,14 @@
 
 	volume = min(volume, WOUND_DETERMINATION_MAX)
 
+	var/stam_regen = 1
 	for(var/thing in M.all_wounds)
 		var/datum/wound/W = thing
 		var/obj/item/bodypart/wounded_part = W.limb
 		if(wounded_part)
 			wounded_part.heal_damage(0.25, 0.25)
-		M.adjustStaminaLoss(-0.25*REM) // the more wounds, the more stamina regen
+		stam_regen += 0.5 // the more wounds, the more stamina regen
+	M.adjustStaminaLoss(-stam_regen*REM)
 	..()
 
 /datum/reagent/eldritch //unholy water, but for eldritch cultists. why couldn't they have both just used the same reagent? who knows. maybe nar'sie is considered to be too "mainstream" of a god to worship in the cultist community.
