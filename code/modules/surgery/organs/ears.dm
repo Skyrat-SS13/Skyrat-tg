@@ -72,9 +72,14 @@
 	..()
 	if(istype(H))
 		color = H.hair_color
+<<<<<<< HEAD
 		H.dna.species.mutant_bodyparts |= "ears"
 		H.dna.features["ears"] = "Cat"
 		H.update_body()*/
+=======
+		H.dna.features["ears"] = H.dna.species.mutant_bodyparts["ears"] = "Cat"
+		H.update_body()
+>>>>>>> b6099da14bf... Merges species/var/list/default_features with species/var/list/mutant_bodyparts. (#54525)
 
 /*/obj/item/organ/ears/cat/Remove(mob/living/carbon/human/H,  special = 0)
 	..()
