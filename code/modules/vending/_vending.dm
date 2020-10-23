@@ -866,25 +866,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(icon_vend) //Show the vending animation if needed
 				flick(icon_vend,src)
 			playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
-<<<<<<< HEAD
-			var/vended = new R.product_path(get_turf(src))//SKYRAT EDIT CHANGE - QOL - ORIGINAL: new R.product_path(get_turf(src))
-			R.amount--
-			//SKYRAT EDIT ADDITION BEGIN - QOL
-			if(istype(vended, /obj/item))
-				var/obj/item/V = vended
-				if(usr.CanReach(src) && usr.put_in_hands(V))
-					to_chat(usr, "<span class='notice'>You take [R.name] out of the slot.</span>")
-				else
-					to_chat(usr, "<span class='warning'>[capitalize(R.name)] falls onto the floor!</span>")
-			//SKYRAT EDIT END
-=======
 			var/obj/item/vended_item = new R.product_path(get_turf(src))
 			R.amount--
 			if(usr.CanReach(src) && usr.put_in_hands(vended_item))
 				to_chat(usr, "<span class='notice'>You take [R.name] out of the slot.</span>")
 			else
 				to_chat(usr, "<span class='warning'>[capitalize(R.name)] falls onto the floor!</span>")
->>>>>>> f5e3dda4f6f... Vended items now go into hand (#54463)
 			SSblackbox.record_feedback("nested tally", "vending_machine_usage", 1, list("[type]", "[R.product_path]"))
 			vend_ready = TRUE
 
