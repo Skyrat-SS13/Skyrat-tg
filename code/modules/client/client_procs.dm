@@ -36,6 +36,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/Topic(href, href_list, hsrc)
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
+	//SKYRAT EDIT ADDITION BEGIN - MENTOR
+	if(mentor_client_procs(href_list))
+		return
+	//SKYRAT EDIT ADDITION END
 
 	// asset_cache
 	var/asset_cache_job
@@ -80,6 +84,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return
+	if(href_list["reload_tguipanel"])
+		nuke_chat()
 	if(href_list["reload_statbrowser"])
 		src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	// Log all hrefs

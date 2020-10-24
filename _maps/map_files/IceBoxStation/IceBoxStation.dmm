@@ -525,7 +525,6 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
-/obj/machinery/computer/bounty,
 /turf/open/floor/plasteel,
 /area/quartermaster/qm)
 "abu" = (
@@ -6613,7 +6612,7 @@
 "aog" = (
 /obj/docking_port/stationary/random/icemoon{
 	dir = 8;
-	id = "pod_lavaland2";
+	id = "pod_2_lavaland";
 	name = "lavaland"
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -10951,7 +10950,7 @@
 "ayw" = (
 /obj/docking_port/stationary/random/icemoon{
 	dir = 4;
-	id = "pod_lavaland3";
+	id = "pod_3_lavaland";
 	name = "lavaland"
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -17689,13 +17688,10 @@
 /turf/open/floor/plasteel/dark,
 /area/chapel/office)
 "aNX" = (
-/obj/item/radio/intercom{
-	broadcasting = 1;
-	frequency = 1481;
-	name = "Confessional Intercom";
-	pixel_x = 25
-	},
 /obj/structure/chair,
+/obj/item/radio/intercom/chapel{
+	pixel_x = 28
+	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
 "aNY" = (
@@ -18624,14 +18620,11 @@
 /turf/open/floor/plasteel/dark,
 /area/science/nanite)
 "aQz" = (
-/obj/item/radio/intercom{
-	broadcasting = 1;
-	frequency = 1481;
-	name = "Confessional Intercom";
-	pixel_x = 25
-	},
 /obj/structure/chair{
 	dir = 1
+	},
+/obj/item/radio/intercom/chapel{
+	pixel_x = 28
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
@@ -22785,7 +22778,7 @@
 "baC" = (
 /obj/docking_port/stationary/random/icemoon{
 	dir = 8;
-	id = "pod_lavaland1";
+	id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -26418,9 +26411,6 @@
 	c_tag = "Cargo Bay North"
 	},
 /obj/machinery/vending/wardrobe/cargo_wardrobe,
-/turf/open/floor/plasteel,
-/area/quartermaster/storage)
-"bjr" = (
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "bjs" = (
@@ -30671,9 +30661,6 @@
 /turf/open/floor/plasteel/white,
 /area/science/research)
 "btB" = (
-/obj/machinery/computer/bounty{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -31624,7 +31611,7 @@
 "bvM" = (
 /obj/docking_port/stationary/random/icemoon{
 	dir = 4;
-	id = "pod_lavaland4";
+	id = "pod_4_lavaland";
 	name = "lavaland"
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -37023,8 +37010,8 @@
 /area/icemoon/surface/outdoors)
 "bLq" = (
 /turf/closed/indestructible/riveted{
-	name = "hyper-reinforced wall";
-	desc = "A wall impregnated with Fixium, able to withstand massive explosions with ease"
+	desc = "A wall impregnated with Fixium, able to withstand massive explosions with ease";
+	name = "hyper-reinforced wall"
 	},
 /area/science/test_area)
 "bLr" = (
@@ -42442,8 +42429,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "ceQ" = (
-/obj/structure/target_stake,
-/obj/machinery/magnetic_module,
+/obj/structure/training_machine,
 /obj/effect/landmark/blobstart,
 /turf/open/floor/engine,
 /area/science/misc_lab)
@@ -43538,10 +43524,6 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads/chief)
 "cka" = (
-/obj/machinery/magnetic_controller{
-	autolink = 1;
-	pixel_y = 3
-	},
 /obj/structure/table,
 /turf/open/floor/plasteel,
 /area/science/misc_lab)
@@ -51040,6 +51022,23 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/chemistry)
+"jtQ" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/training_toolbox{
+	pixel_y = 5
+	},
+/obj/structure/table,
+/obj/item/training_toolbox{
+	pixel_y = -2
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness)
 "juq" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
@@ -51869,6 +51868,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/lobby)
+"leY" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/structure/training_machine,
+/obj/item/target,
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness)
 "lhu" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -53105,7 +53113,6 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "ofT" = (
-/obj/machinery/computer/bounty,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "ogj" = (
@@ -75625,11 +75632,11 @@ aSg
 bgw
 aZE
 ajF
-bjr
-bjr
+ofT
+ofT
 bps
-bjr
-bjr
+ofT
+ofT
 buB
 ash
 asx
@@ -76140,10 +76147,10 @@ aZE
 aZE
 bkn
 bmh
-bjr
-bjr
-bjr
-bjr
+ofT
+ofT
+ofT
+ofT
 axE
 cCo
 cCo
@@ -76400,13 +76407,13 @@ bmh
 boK
 bpz
 boK
-bjr
+ofT
 bkt
-bjr
-bjr
-bjr
+ofT
+ofT
+ofT
 buC
-bjr
+ofT
 blW
 boP
 awC
@@ -76663,7 +76670,7 @@ aqu
 aqu
 asX
 ayf
-bjr
+ofT
 blW
 blW
 bxy
@@ -76908,8 +76915,8 @@ aSg
 aSX
 aZE
 aAr
-bjr
-bjr
+ofT
+ofT
 bmh
 boK
 aKM
@@ -76920,9 +76927,9 @@ arm
 arm
 arm
 ayg
-bjr
+ofT
 avD
-bjr
+ofT
 awE
 azU
 byE
@@ -77165,8 +77172,8 @@ bff
 bfk
 aZE
 bjo
-bjr
-bjr
+ofT
+ofT
 bmh
 boK
 aKM
@@ -77177,7 +77184,7 @@ arm
 arm
 arm
 ayi
-bjr
+ofT
 aZE
 blW
 bxy
@@ -77422,19 +77429,19 @@ bxu
 bxu
 aZE
 ofT
-bjr
+ofT
 ama
 bmh
-bjr
+ofT
 aKM
-bjr
+ofT
 aqg
 arm
 arm
 arm
 arm
 ayp
-bjr
+ofT
 blW
 boP
 bxy
@@ -77679,19 +77686,19 @@ aea
 aem
 afw
 ahB
-bjr
-bjr
+ofT
+ofT
 bmh
 aKd
 aKg
-bjr
+ofT
 aqi
 arQ
 arQ
 arQ
 atl
 azg
-bjr
+ofT
 blW
 boP
 bxy
@@ -78202,8 +78209,8 @@ brM
 bts
 buD
 bvY
-bjr
-bjr
+ofT
+ofT
 aAY
 blW
 boP
@@ -78460,7 +78467,7 @@ aZE
 aZE
 aZE
 aZE
-bjr
+ofT
 aAY
 aZE
 boP
@@ -96153,7 +96160,7 @@ auB
 dMS
 cRr
 aua
-aua
+leY
 arj
 boP
 alP
@@ -96410,7 +96417,7 @@ auB
 ndD
 gjD
 aua
-ndD
+jtQ
 arj
 boP
 alP

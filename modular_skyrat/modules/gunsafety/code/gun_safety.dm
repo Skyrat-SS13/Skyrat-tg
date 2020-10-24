@@ -23,8 +23,9 @@
 	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
 	tsafety.UpdateButtonIcon()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
-	user.visible_message("<span class='notice'>[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"].",
-	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"].</span>")
+	user.visible_message("<span class='notice'>[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].",
+	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>")
+	update_icon()
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	if(safety)
@@ -36,4 +37,4 @@
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
-	. += "The safety is [safety ? "<font color='#00ff15'>ON</span>" : "<font color='#ff0000'>OFF</span>"]."
+	. += "<span>The safety is [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
