@@ -228,8 +228,6 @@
 	H.apply_overlay(BODY_FRONT_LAYER)
 
 /datum/species
-	///This holds 3 lists. Each of the list is possible colors to choose for randomization of a species, first list is primary, second secondary, third tertiary
-	default_features = null
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 
@@ -243,35 +241,28 @@
 		default_mutant_bodyparts["penis"] = "None"
 
 /datum/species/dullahan
-	default_features = null
 	mutant_bodyparts = list()
 
 /datum/species/human/felinid
-	default_features = null
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
 
 /datum/species/human
-	default_features = null
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
 
 /datum/species/mush
-	default_features = null
 	mutant_bodyparts = list()
 
 /datum/species/vampire
-	default_features = null
 	mutant_bodyparts = list()
 
 /datum/species/plasmaman
-	default_features = null
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
 
 /datum/species/ethereal
-	default_features = null
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE

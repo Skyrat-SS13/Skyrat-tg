@@ -23,19 +23,12 @@
 /obj/item/organ/tail/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
 	..()
 	if(istype(H))
-<<<<<<< HEAD
-		if(!("tail_human" in H.dna.species.mutant_bodyparts))
-			H.dna.species.mutant_bodyparts |= "tail_human"
-			H.dna.features["tail_human"] = tail_type
-			H.update_body()*/
-=======
 		var/default_part = H.dna.species.mutant_bodyparts["tail_human"]
 		if(!default_part || default_part == "None")
 			H.dna.features["tail_human"] = H.dna.species.mutant_bodyparts["tail_human"] = tail_type
 			H.update_body()
->>>>>>> b6099da14bf... Merges species/var/list/default_features with species/var/list/mutant_bodyparts. (#54525)
 
-/*/obj/item/organ/tail/cat/Remove(mob/living/carbon/human/H,  special = 0)
+/obj/item/organ/tail/cat/Remove(mob/living/carbon/human/H,  special = 0)
 	..()
 	if(istype(H))
 		H.dna.features["tail_human"] = "None"
