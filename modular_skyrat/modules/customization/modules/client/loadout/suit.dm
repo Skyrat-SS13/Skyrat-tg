@@ -23,6 +23,11 @@
 	name = "Ian Shirt"
 	path = /obj/item/clothing/suit/ianshirt
 
+/datum/loadout_item/suit/wornshirt
+	name = "Colorable Worn Shirt"
+	path = /obj/item/clothing/suit/wornshirt
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 //COATS
 /datum/loadout_item/suit/coat
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_COATS
