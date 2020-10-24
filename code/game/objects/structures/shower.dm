@@ -127,7 +127,7 @@
 
 /obj/machinery/shower/process()
 	if(on && reagents.total_volume >= 5)
-		reagents.remove_any(5)
+		//reagents.remove_any(5) //SKYRAT EDIT REMOVAL - QOL
 		wash_atom(loc)
 		for(var/am in loc)
 			var/atom/movable/movable_content = am
