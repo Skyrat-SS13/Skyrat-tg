@@ -33,3 +33,9 @@
 	desc = "A pair of black cowboy boots, pretty easy to scuff up."
 	icon_state = "cowboyboots_black"
 
+/obj/item/clothing/shoes/high_heels
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	name = "high heels"
+	desc = "A fancy pair of high heels. Won't compensate for your below average height that much."
+	icon_state = "heels"
