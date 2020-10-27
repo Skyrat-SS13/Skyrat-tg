@@ -44,3 +44,30 @@
 	desc = "A security cowboy hat, perfect for any true lawman"
 	icon_state = "cowboyhat_sec"
 	inhand_icon_state= "cowboyhat_sec"
+
+/obj/item/clothing/head/kepi
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	name = "kepi"
+	desc = "A white cap with visor. Oui oui, mon capitane!"
+	icon_state = "kepi"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/kepi/old
+	icon_state = "kepi_old"
+	desc = "A flat, white circular cap with a visor, that demands some honor from it's wearer."
+
+/obj/item/clothing/head/maid
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	name = "maid headband"
+	desc = "Maid in China."
+	icon_state = "maid"
+	dynamic_hair_suffix = ""
+	mutant_variants = NONE
+
+/obj/item/clothing/head/beret/white
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	name = "beret"
+	icon_state = "beret_white"

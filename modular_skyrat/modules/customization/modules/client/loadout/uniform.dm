@@ -22,6 +22,12 @@
 	name = "Kilt"
 	path = /obj/item/clothing/under/costume/kilt
 
+/datum/loadout_item/uniform/poly_kilt
+	name = "Polychromic Kilt"
+	path = /obj/item/clothing/under/misc/poly_kilt
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
 /datum/loadout_item/uniform/poly_button_up
 	name = "Polychromic Button Up Shirt"
 	path = /obj/item/clothing/under/misc/poly_shirt

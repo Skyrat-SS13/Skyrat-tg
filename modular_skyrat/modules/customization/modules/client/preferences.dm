@@ -2708,8 +2708,6 @@
 				gent.aroused = arousal_preview
 				gent.update_sprite_suffix()
 
-	/*if("tail_lizard" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "tail_lizard"*/
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]

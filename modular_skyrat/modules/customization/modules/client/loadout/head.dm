@@ -12,6 +12,11 @@
 	path = /obj/item/clothing/head/beanie
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
+/datum/loadout_item/head/beret_white
+	name = "Colorable beret"
+	path = /obj/item/clothing/head/beret/white
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/head/beret
 	name = "Black beret"
 	path = /obj/item/clothing/head/beret/black
@@ -56,6 +61,32 @@
 /datum/loadout_item/head/mailmanhat
 	name = "Mailman's Hat"
 	path = /obj/item/clothing/head/mailman
+
+/datum/loadout_item/head/whitekepi
+	name = "White Kepi"
+	path = /obj/item/clothing/head/kepi
+
+/datum/loadout_item/head/whitekepiold
+	name = "White Kepi, Old"
+	path = /obj/item/clothing/head/kepi/old
+
+/datum/loadout_item/head/maidhead
+	name = "Maid Headband"
+	path = /obj/item/clothing/head/maid
+
+/datum/loadout_item/head/cardboard
+	name = "Cardboard Helmet"
+	path = /obj/item/clothing/head/cardborg
+	cost = 2
+
+/datum/loadout_item/head/wig
+	name = "Wig"
+	path = /obj/item/clothing/head/wig
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/head/wignatural
+	name = "Natural Wig"
+	path = /obj/item/clothing/head/wig/natural
 
 //Cowboy Stuff
 /datum/loadout_item/head/cowboyhat
