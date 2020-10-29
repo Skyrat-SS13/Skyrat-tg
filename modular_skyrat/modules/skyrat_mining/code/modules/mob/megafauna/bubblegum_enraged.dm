@@ -39,7 +39,7 @@
 	imps = 0
 	for(var/obj/effect/decal/cleanable/blood/H in range(src, 7))
 		if(prob(8))
-			var/mob/living/simple_animal/hostile/imp/imp = new(H.loc)
+			var/mob/living/simple_animal/hostile/asteroid/imp/imp = new(H.loc)
 			imp.origin = src
 			imps += 1
 
@@ -73,7 +73,7 @@
 		charging = FALSE
 		visible_message("<span class='danger'>[src] rises from the ground as the last imp dies!</span>")
 
-/mob/living/simple_animal/hostile/imp
+/mob/living/simple_animal/hostile/asteroid/imp
 	name = "imp"
 	desc = "A large, menacing creature covered in armored black scales."
 	speak_emote = list("cackles")
@@ -84,6 +84,7 @@
 	speed = 1
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
+	projectiletype = /obj/projectile/magic/impfireball
 	status_flags = CANPUSH
 	attack_sound = 'sound/magic/demon_attack1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -105,11 +106,11 @@
 
 	var/mob/living/simple_animal/hostile/megafauna/bubblegum/hard/origin
 
-/mob/living/simple_animal/hostile/imp/Initialize()
+/mob/living/simple_animal/hostile/asteroid/imp/Initialize()
 	..()
 	boost = world.time + 30
 
-/mob/living/simple_animal/hostile/imp/Life(seconds, times_fired)
+/mob/living/simple_animal/hostile/asteroid/imp/Life(seconds, times_fired)
 	if(!(. = ..()))
 		return
 	if(boost<world.time)
@@ -117,10 +118,26 @@
 	else
 		speed = 0
 
-/mob/living/simple_animal/hostile/imp/death()
+/mob/living/simple_animal/hostile/asteroid/imp/death()
 	..(1)
 	playsound(get_turf(src),'sound/magic/demon_dies.ogg', 200, 1)
 	visible_message("<span class='danger'>[src] screams in agony as it sublimates into a sulfurous smoke.</span>")
 	if(origin)
 		origin.imp_death()
 	qdel(src)
+
+/obj/projectile/magic/impfireball //bobyot y u no use child of fireball
+	name = "demonic fireball" //because it fucking explodes and deals brute damage even when values are set to -1
+	icon_state = "fireball"
+	damage = 10
+	damage_type = BURN
+	nodamage = 0
+	armour_penetration = 20
+	var/firestacks = 5
+
+/obj/projectile/magic/impfireball/on_hit(target)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		C.adjust_fire_stacks(firestacks)
+		C.IgniteMob()
