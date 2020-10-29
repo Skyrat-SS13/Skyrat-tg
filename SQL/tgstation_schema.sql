@@ -10,6 +10,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table Structure for table 'game_log'
+--
+-- Skyrat edit to enable SQL logging of all messages.
+
+CREATE TABLE `game_log` (
+  `ID` int(11) NOT NULL,
+  `datetime` datetime NOT NULL,
+  `round_id` int(11) NOT NULL,
+  `ckey` varchar(32) COLLATE utf8_bin NOT NULL,
+  `loc` varchar(60) COLLATE utf8_bin NOT NULL,
+  `type` varchar(10) COLLATE utf8_bin NOT NULL,
+  `message` varchar(1000) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
 -- Table structure for table `admin`
 --
 

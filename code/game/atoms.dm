@@ -1319,7 +1319,7 @@
 /atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	return
 
-/// Generic logging helper
+/// Generic logging helper //Skyrat Edit
 /atom/proc/log_message(message, message_type, color=null, log_globally=TRUE, log_SQL=TRUE)
 	if(!log_globally)
 		return
@@ -1334,7 +1334,7 @@
 			qdel(query_sql_log_messages)
 			return
 		qdel(query_sql_log_messages)
-
+//end Skyrat Edit
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
 	switch(message_type)
 		if(LOG_ATTACK)
