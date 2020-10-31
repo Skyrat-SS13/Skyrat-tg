@@ -48,7 +48,6 @@
 				C.broken = TRUE
 				C.open()
 
-	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
 	var/mob/living/simple_animal/hostile/true_changeling/new_mob = new(get_turf(user))
 
 	//Currently this is a thing as changeling ID's are not longer a thing
