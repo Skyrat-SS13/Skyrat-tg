@@ -22,12 +22,7 @@
 /// Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
-<<<<<<< HEAD
-		return
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK_SELF, src) //SKYRAT EDIT ADDITION - GUNPOINT
-=======
 		return TRUE
->>>>>>> 439271b8442... Fixes the attack chain (#54642)
 	interact(user)
 
 /**
