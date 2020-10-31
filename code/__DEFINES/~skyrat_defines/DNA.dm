@@ -60,7 +60,7 @@
 
 #define BODY_SIZE_NORMAL 		1.00
 #define BODY_SIZE_MAX			1.5
-#define BODY_SIZE_MIN			0.75
+#define BODY_SIZE_MIN			0.8
 
 #define SHEATH_NONE			"None"
 #define SHEATH_NORMAL		"Sheath"
