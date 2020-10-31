@@ -59,8 +59,8 @@
 #define PREVIEW_PREF_NAKED "Naked"
 
 #define BODY_SIZE_NORMAL 		1.00
-#define BODY_SIZE_MAX			1.25
-#define BODY_SIZE_MIN			0.85
+#define BODY_SIZE_MAX			1.5
+#define BODY_SIZE_MIN			0.75
 
 #define SHEATH_NONE			"None"
 #define SHEATH_NORMAL		"Sheath"
