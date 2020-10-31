@@ -54,9 +54,9 @@
 	//Currently this is a thing as changeling ID's are not longer a thing
 	//Feel free to re-add them whomever wants to -Azarak
 	var/changeling_name
-	if(user.current.gender == FEMALE)
+	if(user.gender == FEMALE)
 		changeling_name = "Ms. "
-	else if(user.current.gender == MALE)
+	else if(user.gender == MALE)
 		changeling_name = "Mr. "
 	else
 		changeling_name = "Mx. "
