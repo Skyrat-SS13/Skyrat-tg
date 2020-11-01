@@ -6,6 +6,8 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 
 //config.alert_desc_blue_downto
 
+//SKYRAT EDIT REMOVAL BEGIN - ALERTS (moved to modular)
+/*
 /proc/set_security_level(level)
 	switch(level)
 		if("green")
@@ -19,7 +21,6 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_DELTA && level != GLOB.security_level)
-		set_security_level_skyrat(level) //SKYRAT EDIT ADDITION - ALERTS
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				minor_announce(CONFIG_GET(string/alert_green), "Attention! Security level lowered to green:")
@@ -117,3 +118,5 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 			return SEC_LEVEL_RED
 		if("delta")
 			return SEC_LEVEL_DELTA
+*/
+//SKYRAT EDIT END

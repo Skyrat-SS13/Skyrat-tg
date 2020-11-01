@@ -99,7 +99,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
 			var/obj/effect/statclick/updated = AH.statclick.update()
-			L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH))
+			//L[++L.len] = list("#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH)) //ORIGINAL
+			L[++L.len] = list("[AH.handler ? "H-[AH.handler]" : ""]#[AH.id]. [AH.initiator_key_name]:", "[updated.name]", REF(AH)) //SKYRAT EDIT CHANGE - ADMIN
 		else
 			++num_disconnected
 	if(num_disconnected)
@@ -175,12 +176,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //call this on its own to create a ticket, don't manually assign current_ticket
 //msg is the title of the ticket: usually the ahelp text
 //is_bwoink is TRUE if this ticket was started by an admin PM
-/datum/admin_help/New(msg, client/C, is_bwoink)
+///datum/admin_help/New(msg, client/C, is_bwoink) //ORIGINAL
+/datum/admin_help/New(msg, client/C, is_bwoink, client/admin_C) //SKYRAT EDIT CHANGE - ADMIN
 	//clean the input msg
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
 		qdel(src)
 		return
+
+	//SKYRAT EDIT ADDITION BEGIN
+	if(admin_C && is_bwoink)
+		handler = "[admin_C.ckey]"
+	//SKYRAT EDIT END
 
 	id = ++ticket_counter
 	opened_at = world.time
@@ -248,6 +255,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)" //SKYRAT EDIT ADDITION - ADMIN
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -468,6 +476,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Resolve()
 		if("reopen")
 			Reopen()
+		//SKYRAT EDIT ADDITION BEING - ADMIN
+		if("handleissue")
+			HandleIssue()
+		//SKYRAT EDIT ADDITION END
 
 //
 // TICKET STATCLICK

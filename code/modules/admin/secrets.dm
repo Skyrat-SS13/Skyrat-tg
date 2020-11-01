@@ -9,8 +9,9 @@
 			<BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=admin_log'>Admin Log</A><BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=show_admins'>Show Admin List</A><BR>
+			<A href='?src=[REF(src)];[HrefToken()];secrets=mentor_log'>Mentor Log</A><BR>
 			<BR>
-			"}
+			"}//SKYRAT EDIT ADDITION - MENTOR
 
 	if(check_rights(R_ADMIN,0))
 		dat += {"
@@ -97,6 +98,11 @@
 	var/datum/round_event/E
 	var/ok = FALSE
 	switch(item)
+		//SKYRAT EDIT ADDITION BEGIN - MENTOR
+		if("mentor_log")
+			MentorLogSecret()
+		//SKYRAT EDIT ADDITION END
+
 		if("admin_log")
 			var/dat = "<B>Admin Log<HR></B>"
 			for(var/l in GLOB.admin_log)

@@ -31,6 +31,7 @@
 	icon_state = "cheong"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
+	mutant_variants = NONE
 
 /obj/item/clothing/under/costume/cheongsam/white
 	name = "white cheongsam"

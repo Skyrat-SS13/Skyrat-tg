@@ -72,6 +72,9 @@
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt
 	mutant_variants = NONE
 
+/obj/item/clothing/under/rank/security/head_of_security/skirt
+	mutant_variants = NONE
+
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	mutant_variants = NONE
 

@@ -170,7 +170,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 		fcopy(clean, "[GLOB.log_directory]/photos/[photo_file].png")
 	return photo_file
 
-/obj/item/wallframe/newscaster
+/obj/item/wallframe/newscaster //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "newscaster frame"
 	desc = "Used to build newscasters, just secure to the wall."
 	icon_state = "newscaster"
@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 /obj/machinery/newscaster
 	name = "newscaster"
 	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
-	icon = 'icons/obj/terminals.dmi'
+	icon = 'icons/obj/terminals.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "newscaster_normal"
 	verb_say = "beeps"
 	verb_ask = "beeps"

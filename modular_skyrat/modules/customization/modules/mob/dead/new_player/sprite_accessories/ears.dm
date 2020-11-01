@@ -12,6 +12,7 @@
 
 /datum/sprite_accessory/ears/cat
 	recommended_species = list("mammal", "human", "felinid", "humanoid")
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
@@ -32,7 +33,7 @@
 	recommended_species = list("mammal", "human", "felinid", "tajaran", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/akula
-	recommended_species = list("mammal", "human", "felinid", "akula", "humanoid")
+	recommended_species = list("mammal", "human", "felinid", "aquatic", "akula", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"

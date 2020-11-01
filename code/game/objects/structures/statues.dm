@@ -20,6 +20,15 @@
 	. = ..()
 	AddComponent(art_type, impressiveness)
 	INVOKE_ASYNC(src, /datum.proc/_AddComponent, list(/datum/component/beauty, impressiveness *  75))
+	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE, CALLBACK(src, .proc/can_user_rotate), CALLBACK(src, .proc/can_be_rotated), null)
+
+/obj/structure/statue/proc/can_be_rotated(mob/user)
+	if(!anchored)
+		return TRUE
+	to_chat(user, "<span class='warning'>It's bolted to the floor, you'll need to unwrench it first.</span>")
+
+/obj/structure/statue/proc/can_user_rotate(mob/user)
+	return isliving(user) && user.canUseTopic(src, BE_CLOSE, no_dexterity = ismonkey(user))
 
 /obj/structure/statue/attackby(obj/item/W, mob/living/user, params)
 	add_fingerprint(user)
@@ -268,7 +277,7 @@
 
 /obj/structure/statue/elder_atmosian
 	name = "Elder Atmosian"
-	desc = "A statue of an Elder Atmosian, capable of bending the laws of thermodynamics to their will"
+	desc = "A statue of an Elder Atmosian, capable of bending the laws of thermodynamics to their will."
 	icon_state = "eng"
 	custom_materials = list(/datum/material/metalhydrogen = MINERAL_MATERIAL_AMOUNT*10)
 	max_integrity = 1000
@@ -277,7 +286,7 @@
 
 /obj/item/chisel
 	name = "chisel"
-	desc = "breaking and making art since 4000 BC. This one uses advanced technology to allow creation of lifelike moving statues."
+	desc = "Breaking and making art since 4000 BC. This one uses advanced technology to allow the creation of lifelike moving statues."
 	icon = 'icons/obj/statue.dmi'
 	icon_state = "chisel"
 	inhand_icon_state = "screwdriver_nuke"

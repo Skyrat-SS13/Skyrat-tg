@@ -67,3 +67,8 @@
 	name = "Dark Armor"
 	path = /obj/item/clothing/suit/armor/vest/darkcarapace
 	ckeywhitelist = list("inferno707")
+
+/datum/loadout_item/neck/donator/zuliecloak
+	name = "Project: Zul-E"
+	path = /obj/item/clothing/suit/hooded/cloak/zuliecloak
+	ckeywhitelist = list("asky")
