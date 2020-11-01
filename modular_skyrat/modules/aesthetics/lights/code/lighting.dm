@@ -5,9 +5,9 @@
 	var/turning_on = FALSE //More stress stuff.
 
 /obj/machinery/light/proc/turn_on(trigger)
-	turning_on = FALSE
-	if(!on || QDELETED(src))
+	if(QDELETED(src) || !on)
 		return
+	turning_on = FALSE
 	var/BR = brightness
 	var/PO = bulb_power
 	var/CO = bulb_colour
