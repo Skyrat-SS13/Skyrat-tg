@@ -413,7 +413,6 @@
 		emergency_mode = TRUE
 		START_PROCESSING(SSmachines, src)
 	else
-		testmapload += "turn off"
 		use_power = IDLE_POWER_USE
 		set_light(0)
 	update_icon()
