@@ -361,6 +361,11 @@
 	else
 		glowybit.alpha = 0
 
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#define LIGHT_ON_DELAY_UPPER 3 SECONDS
+#define LIGHT_ON_DELAY_LOWER 1 SECONDS
+//SKYRAT EDIT END
+
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE)
 	switch(status)
@@ -368,40 +373,47 @@
 			on = FALSE
 	emergency_mode = FALSE
 	if(on)
-		spawn(rand(10,30))	//SKYRAT EDIT ADDITION - AESTHETICS
-			if(!on) 	//SKYRAT EDIT ADDITION - AESTHETICS
-				return 	//SKYRAT EDIT ADDITION - AESTHETICS
-			var/BR = brightness
-			var/PO = bulb_power
-			var/CO = bulb_colour
-			if(color)
-				CO = color
-			var/area/A = get_area(src)
-			if (A?.fire)
-				CO = bulb_emergency_colour
-			else if (nightshift_enabled)
-				BR = nightshift_brightness
-				PO = nightshift_light_power
-				if(!color)
-					CO = nightshift_light_color
-			var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
-			if(!matching)
-				switchcount++
-				if(rigged)
-					if(status == LIGHT_OK && trigger)
-						explode()
-				else if( prob( min(60, (switchcount^2)*0.01) ) )
-					if(trigger)
-						burn_out()
-				else
-					use_power = ACTIVE_POWER_USE
-					set_light(BR, PO, CO)
-					playsound(src.loc, 'modular_skyrat/modules/aesthetics/lights/sound/light_on.ogg', 65, 1)
+	/* SKYRAT EDIT ORIGINAL
+		var/BR = brightness
+		var/PO = bulb_power
+		var/CO = bulb_colour
+		if(color)
+			CO = color
+		var/area/A = get_area(src)
+		if (A?.fire)
+			CO = bulb_emergency_colour
+		else if (nightshift_enabled)
+			BR = nightshift_brightness
+			PO = nightshift_light_power
+			if(!color)
+				CO = nightshift_light_color
+		var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
+		if(!matching)
+			switchcount++
+			if(rigged)
+				if(status == LIGHT_OK && trigger)
+					explode()
+			else if( prob( min(60, (switchcount^2)*0.01) ) )
+				if(trigger)
+					burn_out()
+			else
+				use_power = ACTIVE_POWER_USE
+				set_light(BR, PO, CO)
+		*/
+		//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
+		if(maploaded)
+			turn_on(trigger)
+			maploaded = FALSE
+		else if(!turning_on)
+			turning_on = TRUE
+			addtimer(CALLBACK(src, .proc/turn_on, trigger), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+		//SKYRAT EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
 		START_PROCESSING(SSmachines, src)
 	else
+		testmapload += "turn off"
 		use_power = IDLE_POWER_USE
 		set_light(0)
 	update_icon()
@@ -416,6 +428,11 @@
 			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
 
 	broken_sparks(start_only=TRUE)
+
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#undef LIGHT_ON_DELAY_UPPER
+#undef LIGHT_ON_DELAY_LOWER
+//SKYRAT EDIT END
 
 /obj/machinery/light/update_atom_colour()
 	..()
