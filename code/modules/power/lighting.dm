@@ -361,6 +361,11 @@
 	else
 		glowybit.alpha = 0
 
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#define LIGHT_ON_DELAY_UPPER 3 SECONDS
+#define LIGHT_ON_DELAY_LOWER 1 SECONDS
+//SKYRAT EDIT END
+
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE)
 	switch(status)
@@ -368,6 +373,7 @@
 			on = FALSE
 	emergency_mode = FALSE
 	if(on)
+	/* SKYRAT EDIT ORIGINAL
 		var/BR = brightness
 		var/PO = bulb_power
 		var/CO = bulb_colour
@@ -393,6 +399,15 @@
 			else
 				use_power = ACTIVE_POWER_USE
 				set_light(BR, PO, CO)
+		*/
+		//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
+		if(maploaded)
+			turn_on(trigger)
+			maploaded = FALSE
+		else if(!turning_on)
+			turning_on = TRUE
+			addtimer(CALLBACK(src, .proc/turn_on, trigger), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+		//SKYRAT EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
@@ -412,6 +427,11 @@
 			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
 
 	broken_sparks(start_only=TRUE)
+
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#undef LIGHT_ON_DELAY_UPPER
+#undef LIGHT_ON_DELAY_LOWER
+//SKYRAT EDIT END
 
 /obj/machinery/light/update_atom_colour()
 	..()

@@ -163,15 +163,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 /proc/age2agedescription(age)
 	switch(age)
-		if(0 to 1)
-			return "infant"
-		if(1 to 3)
-			return "toddler"
-		if(3 to 13)
-			return "child"
-		if(13 to 19)
-			return "teenager"
-		if(19 to 30)
+		if(0 to 30) //SKYRAT EDIT CHANGE - NO
 			return "young adult"
 		if(30 to 45)
 			return "adult"
