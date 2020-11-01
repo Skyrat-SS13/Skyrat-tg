@@ -13,7 +13,7 @@
 	. = ..()
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/user = loc
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.turn_on()
 */
 
@@ -27,59 +27,59 @@
 /obj/item/gun/update_overlays()
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/user = src.loc
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.handle()
 	. = ..()
 
 /obj/item/gun/pickup(mob/user)
 	. = ..()
 	if(ishuman(user))
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.turn_on()
 
 /obj/item/gun/dropped(mob/user)
 	. = ..()
 	if(ishuman(user))
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.turn_off()
 
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
 	if(ishuman(user))
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.turn_on()
 
 //WELDER
 /obj/item/weldingtool/update_overlays()
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/user = src.loc
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.handle()
 	. = ..()
 
 /obj/item/weldingtool/pickup(mob/user)
 	. = ..()
 	if(ishuman(user))
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.turn_on()
 
 /obj/item/weldingtool/dropped(mob/user)
 	. = ..()
 	if(ishuman(user))
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.turn_off()
 
 /obj/item/weldingtool/equipped(mob/user, slot, initial)
 	. = ..()
 	if(ishuman(user))
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		hud.turn_on()
 
 /*shitcode
 /obj/item/weldingtool/process()
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/user = src.loc
-		var/obj/screen/ammo_counter/hud = user.hud_used.ammo_counter
+		var/obj/screen/hud_counter/hud = user.hud_used.hud_counter
 		to_chat(src.loc, "CHECK WELDER PROCESS")
 		to_chat(hud)
 		hud.handle()
@@ -89,8 +89,8 @@
 //HUMAN
 
 //Ammo counter
-/obj/screen/ammo_counter
-	name = "ammo counter"
+/obj/screen/hud_counter
+	name = "hud_counter"
 	icon = 'modular_skyrat/modules/gunhud/icons/hud/gun_hud.dmi'
 	icon_state = ""
 	screen_loc = ui_ammocounter
@@ -105,7 +105,18 @@
 	var/indicator
 	var/active = list(/obj/item/gun/, /obj/item/weldingtool)
 
-/obj/screen/ammo_counter/update_overlays()
+#define COMSIG_HUD_COUNTER_TOGGLE "hud_toggle"
+
+/datum/component/hud_counter
+	var/mode
+	var/hud_icon_state
+	var/backing_color
+	var/oth_o
+	var/oth_t
+	var/oth_h
+	var/indicator
+
+/obj/screen/hud_counter/update_overlays()
 	. = ..()
 	cut_overlays()
 	switch(mode)
@@ -134,18 +145,18 @@
 		indicator_overlay.color = backing_color
 		. += indicator_overlay
 
-/obj/screen/ammo_counter/proc/turn_off()
+/obj/screen/hud_counter/proc/turn_off()
 	invisibility = INVISIBILITY_ABSTRACT
 	status = FALSE
 	maptext = null
 	mode = MODE_OFF
 
-/obj/screen/ammo_counter/proc/turn_on()
+/obj/screen/hud_counter/proc/turn_on()
 	invisibility = 0
 	status = TRUE
 	handle()
 
-/obj/screen/ammo_counter/proc/handle()
+/obj/screen/hud_counter/proc/handle()
 	if(!status)
 		return
 	if(isobserver(usr))
@@ -154,7 +165,7 @@
 		return
 	if(!usr.hud_used)
 		return
-	if(!usr.hud_used.ammo_counter)
+	if(!usr.hud_used.hud_counter)
 		return
 	maptext = ""
 	oth_o = ""
@@ -173,7 +184,7 @@
 		welder(helditem)
 
 //ENERGY GUNS
-/obj/screen/ammo_counter/proc/gun_energy(var/obj/item/gun/energy/pew)
+/obj/screen/hud_counter/proc/gun_energy(var/obj/item/gun/energy/pew)
 	if(!istype(pew, /obj/item/gun/energy))
 		return
 
@@ -204,7 +215,7 @@
 	maptext = "<span class='maptext'><div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div></span>"
 
 //BALLISTIC GUNS
-/obj/screen/ammo_counter/proc/gun_ballistic(var/obj/item/gun/ballistic/pew)
+/obj/screen/hud_counter/proc/gun_ballistic(var/obj/item/gun/ballistic/pew)
 	if(!istype(pew, /obj/item/gun/ballistic))
 		turn_off()
 		return
@@ -264,7 +275,7 @@
 	update_icon()
 
 //WELDER
-/obj/screen/ammo_counter/proc/welder(var/obj/item/weldingtool/welder)
+/obj/screen/hud_counter/proc/welder(var/obj/item/weldingtool/welder)
 	if(!istype(welder, /obj/item/weldingtool))
 		turn_off()
 		return
@@ -305,36 +316,6 @@
 			oth_t = "t9"
 			oth_h = "h9"
 	update_icon()
-
-/obj/screen/ammo_counter/proc/mech()
-
-//BALLISTIC GUNS WITH AMMO DISPLAY GO HERE
-/obj/item/gun/ballistic/automatic/wt550
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/automatic/c20r
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/automatic/m90
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/automatic/ar
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/minigun
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/automatic/toy
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/automatic/laser
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/shotgun/bulldog
-	has_ammo_display = TRUE
 
 #undef MODE_ENERGY
 #undef MODE_BALLISTICS
