@@ -39,4 +39,5 @@
 
 /obj/machinery/light/Initialize(mapload = TRUE)
 	. = ..()
-	maploaded = TRUE
+	if(on)
+		maploaded = TRUE
