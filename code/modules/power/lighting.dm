@@ -368,31 +368,35 @@
 			on = FALSE
 	emergency_mode = FALSE
 	if(on)
-		var/BR = brightness
-		var/PO = bulb_power
-		var/CO = bulb_colour
-		if(color)
-			CO = color
-		var/area/A = get_area(src)
-		if (A?.fire)
-			CO = bulb_emergency_colour
-		else if (nightshift_enabled)
-			BR = nightshift_brightness
-			PO = nightshift_light_power
-			if(!color)
-				CO = nightshift_light_color
-		var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
-		if(!matching)
-			switchcount++
-			if(rigged)
-				if(status == LIGHT_OK && trigger)
-					explode()
-			else if( prob( min(60, (switchcount^2)*0.01) ) )
-				if(trigger)
-					burn_out()
-			else
-				use_power = ACTIVE_POWER_USE
-				set_light(BR, PO, CO)
+		spawn(rand(10,30))	//SKYRAT EDIT ADDITION - AESTHETICS
+			if(!on) 	//SKYRAT EDIT ADDITION - AESTHETICS
+				return 	//SKYRAT EDIT ADDITION - AESTHETICS
+			var/BR = brightness
+			var/PO = bulb_power
+			var/CO = bulb_colour
+			if(color)
+				CO = color
+			var/area/A = get_area(src)
+			if (A?.fire)
+				CO = bulb_emergency_colour
+			else if (nightshift_enabled)
+				BR = nightshift_brightness
+				PO = nightshift_light_power
+				if(!color)
+					CO = nightshift_light_color
+			var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
+			if(!matching)
+				switchcount++
+				if(rigged)
+					if(status == LIGHT_OK && trigger)
+						explode()
+				else if( prob( min(60, (switchcount^2)*0.01) ) )
+					if(trigger)
+						burn_out()
+				else
+					use_power = ACTIVE_POWER_USE
+					set_light(BR, PO, CO)
+					playsound(src.loc, 'modular_skyrat/modules/aesthetics/lights/sound/light_on.ogg', 65, 1)
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
