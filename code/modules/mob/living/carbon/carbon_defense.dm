@@ -252,7 +252,7 @@
 			return
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	if(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == src.dir)
-		if(!HAS_TRAIT(target, TRAIT_IRONASS))
+		if(HAS_TRAIT(target, TRAIT_IRONASS))
 			var/obj/item/bodypart/affecting = src.get_bodypart("[(src.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 			if(affecting?.receive_damage(2))
 				src.update_damage_overlays()
@@ -260,13 +260,15 @@
 			"<span class='danger'>You tried slapping [target]'s ass, but it felt like metal, ouch!</span>",\
 			"You hear a sore sounding slap.")
 			playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, -1)
+			to_chat(target, "<span class='danger'>[src] tried slapping your ass, but it was deflected!")
 			return
 		else
 			do_ass_slap_animation(target)
 			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
-			visible_message("<span class='danger'>\The [src] slaps [src == target ? "[src.p_their()] own" : "\the [target]'s"] ass!</span>",\
-				"<span class='notice'>[src] slaps your ass! </span>",\
-				"You hear a slap.", "<span class='notice'>You slap [src == target ? "your own" : "\the [target]'s"] ass! </span>")
+			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
+				"<span class='notice'>You slap [src] on the ass, how satisfying.</span>",\
+				"You hear a slap.")
+			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
 	//SKYRAT EDIT END
 	do_attack_animation(target, ATTACK_EFFECT_DISARM)
