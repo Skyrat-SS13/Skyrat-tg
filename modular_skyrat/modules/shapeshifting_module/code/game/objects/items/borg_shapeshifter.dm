@@ -13,12 +13,13 @@
 	var/savedOverride
 	var/savedPixelOffset
 	var/savedModuleName
+	var/savedDogborg
 	var/active = FALSE
 	var/activationCost = 100
 	var/activationUpkeep = 5
 	var/disguise = null
 	var/disguise_icon_override = null
-	var/disguise_pixel_offset = null
+	var/disguise_pixel_offset = 0
 	var/disguise_dogborg = FALSE
 	var/mob/listeningTo
 	var/list/signalCache = list( // list here all signals that should break the camouflage
@@ -890,6 +891,7 @@
 	savedOverride = user.module.cyborg_icon_override
 	savedPixelOffset = user.module.cyborg_pixel_offset
 	savedModuleName = user.module.name
+	savedDogborg = user.module.dogborg
 	user.module.name = disguiseModuleName
 	user.module.cyborg_base_icon = disguise
 	user.module.cyborg_icon_override = disguise_icon_override
@@ -906,6 +908,9 @@
 	RegisterSignal(user, signalCache, .proc/disrupt)
 	listeningTo = user
 
+	if(savedPixelOffset == null)
+		savedPixelOffset = 0
+
 /obj/item/borg_shapeshifter/proc/deactivate(mob/living/silicon/robot/user)
 	STOP_PROCESSING(SSobj, src)
 	if(listeningTo)
@@ -915,8 +920,8 @@
 	user.module.name = savedModuleName
 	user.module.cyborg_base_icon = savedIcon
 	user.module.cyborg_icon_override = savedOverride
-	user.module.cyborg_pixel_offset = 0
-	user.module.dogborg = FALSE
+	user.module.cyborg_pixel_offset = savedPixelOffset
+	user.module.dogborg = savedDogborg
 	user.bubble_icon = savedBubbleIcon
 	active = FALSE
 	user.update_icons()
