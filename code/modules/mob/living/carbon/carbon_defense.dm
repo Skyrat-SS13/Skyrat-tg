@@ -166,7 +166,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - MEDICAL
 	if((pulledby == user) && (pulledby.grab_state >= GRAB_AGGRESSIVE) && (user.a_intent == INTENT_HARM))
 		var/obj/item/bodypart/part = get_bodypart(user.zone_selected)
-		if(istype(part) || zone_selected == BODY_ZONE_PRECISE_GROIN)
+		if(istype(part))
 			part.get_wrenched(user, src)
 			return TRUE
 	//SKYRAT EDIT END
