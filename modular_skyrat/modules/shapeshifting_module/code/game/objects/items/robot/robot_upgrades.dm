@@ -1,6 +1,6 @@
 /obj/item/borg/upgrade/borg_shapeshifter
 	name = "Cyborg Shapeshifter Module"
-	desc = "Who know what the uses of it."
+	desc = "An experimental device which allows a cyborg to disguise themself into another type of cyborg."
 	icon_state = "cyborg_upgrade3"
 
 /obj/item/borg/upgrade/borg_shapeshifter/action(mob/living/silicon/robot/R, user = usr)

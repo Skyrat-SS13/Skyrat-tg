@@ -761,7 +761,7 @@
 			if("Clown")
 				var/static/list/clown_icons = sortList(list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
-					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = "bootyclown"),
+					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootyclown"),
 					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootyclown"),
 					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marina_mommy"),
 					"Garish" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "garish"),
@@ -777,22 +777,22 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Bootyborg")
 						disguise = "bootyclown"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Male Bootyborg")
 						disguise = "male_bootyclown"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Marina")
 						disguise = "marina_mommy"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Garish")
 						disguise = "garish"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Robot")
 						disguise = "clownbot"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Sleek")
 						disguise = "clownman"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					else
 						return FALSE
 			if("Syndicate")
