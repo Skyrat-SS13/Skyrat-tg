@@ -74,7 +74,7 @@
 	if (current_skin)
 		. += "It can be spun with <b>alt+click</b>"
 
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/detective //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper Colt Detective Special"
 	desc = "A classic, if not outdated, law enforcement firearm. Uses .38 Special rounds. \nSome spread rumors that if you loosen the barrel with a wrench, you can \"improve\" it."
 	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
@@ -136,7 +136,7 @@
 		to_chat(user, "<span class='notice'>You tighten the barrel of [src]. Now it will fire .38 rounds.</span>")
 
 
-/obj/item/gun/ballistic/revolver/mateba
+/obj/item/gun/ballistic/revolver/mateba //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper Unica 6 auto-revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	icon_state = "mateba"

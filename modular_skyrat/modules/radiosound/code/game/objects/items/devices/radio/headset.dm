@@ -11,5 +11,5 @@
 	if(!listening)
 		return ITALICS | REDUCE_RANGE
 	if(radiosound)
-		playsound(M, radiosound, rand(20, 30), 0, 0, 0)
+		playsound(M, radiosound, rand(20, 30), 0, 0, SOUND_FALLOFF_EXPONENT)
 	. = ..()

@@ -39,7 +39,7 @@
 	inhand_icon_state = "trashbag"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
-	slot_flags = null
+	slot_flags = ITEM_SLOT_BELT //SKYRAT EDIT CHANGE - QOL - ORIGINAL: none
 	var/insertable = TRUE
 
 /obj/item/storage/bag/trash/ComponentInitialize()
@@ -120,7 +120,7 @@
 
 /obj/item/storage/bag/ore/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/rad_insulation, 0.01) //please datum mats no more cancer
+	AddElement(/datum/element/rad_insulation, 0.01) //please datum mats no more cancer
 	var/datum/component/storage/concrete/stack/STR = GetComponent(/datum/component/storage/concrete/stack)
 	STR.allow_quick_empty = TRUE
 	STR.set_holdable(list(/obj/item/stack/ore))

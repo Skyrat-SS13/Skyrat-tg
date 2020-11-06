@@ -4,3 +4,4 @@
 #define TRAIT_EXCITABLE				"wagwag" //Will wag when patted!
 #define TRAIT_OXYIMMUNE				"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
 #define TRAIT_SACRIFICED			"sacrificed" //The victim cant be sacrificed due to already having been
+#define TRAIT_IRONASS				"ironass"

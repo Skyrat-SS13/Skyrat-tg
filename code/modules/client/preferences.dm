@@ -377,7 +377,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			//Mutant stuff
 			var/mutant_category = 0
 
-			if("tail_lizard" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["tail_lizard"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -390,7 +390,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("snout" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["snout"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -403,7 +403,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("horns" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["horns"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -416,7 +416,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("frills" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["frills"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -429,7 +429,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("spines" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["spines"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -442,7 +442,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("body_markings" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["body_markings"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -455,7 +455,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("legs" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["legs"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -468,7 +468,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("moth_wings" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["moth_wings"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -481,7 +481,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("moth_antennae" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["moth_antennae"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -494,7 +494,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("moth_markings" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["moth_markings"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -507,7 +507,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("tail_human" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["tail_human"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -520,7 +520,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			if("ears" in pref_species.default_features)
+			if(pref_species.mutant_bodyparts["ears"])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -541,7 +541,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			if(CONFIG_GET(flag/join_with_mutant_humans))
 
-				if("wings" in pref_species.default_features && GLOB.r_wings_list.len >1)
+				if(pref_species.mutant_bodyparts["wings"] && GLOB.r_wings_list.len >1)
 					if(!mutant_category)
 						dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -1932,10 +1932,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
 	character.dna.real_name = character.real_name
 
-	if("tail_lizard" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "tail_lizard"
-	if("spines" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "spines"
+	if(pref_species.mutant_bodyparts["tail_lizard"])
+		character.dna.species.mutant_bodyparts["tail_lizard"] = pref_species.mutant_bodyparts["tail_lizard"]
+	if(pref_species.mutant_bodyparts["spines"])
+		character.dna.species.mutant_bodyparts["spines"] = pref_species.mutant_bodyparts["spines"]
 
 	if(icon_updates)
 		character.update_body()

@@ -54,7 +54,6 @@
 		/datum/reagent/potassium,
 		/datum/reagent/uranium/radium,
 		/datum/reagent/silicon,
-		/datum/reagent/silver,
 		/datum/reagent/sodium,
 		/datum/reagent/stable_plasma,
 		/datum/reagent/consumable/sugar,
@@ -83,7 +82,10 @@
 	var/list/recording_recipe
 
 	var/list/saved_recipes = list()
-
+	//SKYRAT EDIT BEGIN - CHEMISTRY QOL
+	var/list/transferAmounts = list()
+	var/customTransferAmount
+	//SKYRAT EDIT END
 /obj/machinery/chem_dispenser/Initialize()
 	. = ..()
 	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
@@ -333,7 +335,16 @@
 				return
 			recording_recipe = null
 			. = TRUE
-
+		//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
+		if("custom_amount")
+			if(!beaker)
+				to_chat(usr, "<span class ='notice'>Insert a container first!</span>")
+				return
+			if(customTransferAmount)
+				transferAmounts -= customTransferAmount
+			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
+			transferAmounts += customTransferAmount
+		//SKYRAT EDIT END
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
 		return
@@ -344,6 +355,11 @@
 		return
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
+		//SKYRAT EDIT BEGIN - CHEMISTRY QOL
+		if(customTransferAmount)
+			transferAmounts -= customTransferAmount
+		transferAmounts = B.possible_transfer_amounts
+		//SKYRAT EDIT END
 		. = TRUE //no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
