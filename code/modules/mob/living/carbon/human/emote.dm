@@ -53,6 +53,7 @@
 	only_forced_audio = TRUE
 	vary = TRUE
 
+/* - SKYRAT EDIT REMOVAL - EMOTES
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
@@ -68,7 +69,7 @@
 			return pick('sound/voice/human/malescream_1.ogg', 'sound/voice/human/malescream_2.ogg', 'sound/voice/human/malescream_3.ogg', 'sound/voice/human/malescream_4.ogg', 'sound/voice/human/malescream_5.ogg', 'sound/voice/human/malescream_6.ogg')
 	else if(ismoth(H))
 		return 'sound/voice/moth/scream_moth.ogg'
-
+*/
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"

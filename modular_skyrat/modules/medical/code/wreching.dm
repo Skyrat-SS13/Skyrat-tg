@@ -45,7 +45,7 @@
 			else if(body_zone == BODY_ZONE_PRECISE_GROIN)
 				W = new /datum/wound/blunt/moderate/hips()
 			else if(body_zone == BODY_ZONE_CHEST)
-					W = new /datum/wound/blunt/moderate/ribcage()
+				W = new /datum/wound/blunt/moderate/ribcage()
 			else
 				W = new /datum/wound/blunt/moderate()
 		if(istype(W))
