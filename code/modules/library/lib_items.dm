@@ -16,7 +16,7 @@
 
 /obj/structure/bookcase
 	name = "bookcase"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/obj/library.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "bookempty"
 	desc = "A great place for storing knowledge."
 	anchored = FALSE

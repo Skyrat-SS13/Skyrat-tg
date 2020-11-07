@@ -6,7 +6,6 @@
 	default_color = "00FF00"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	default_features = null
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Xenomorph Tail", "legs" = "Digitigrade Legs", "xenodorsal" = ACC_RANDOM, "xenohead" = ACC_RANDOM, "taur" = "None")
 	attack_verb = "slash"

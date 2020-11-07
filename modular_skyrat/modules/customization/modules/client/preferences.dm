@@ -756,7 +756,7 @@
 							var/even = FALSE
 							for(var/path in item_names)
 								var/datum/loadout_item/LI = GLOB.loadout_items[path]
-								if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey])
+								if(LI.ckeywhitelist && !(user.ckey in LI.ckeywhitelist))
 									continue
 								var/background_cl = "#23273C"
 								if(even)
@@ -2708,8 +2708,6 @@
 				gent.aroused = arousal_preview
 				gent.update_sprite_suffix()
 
-	/*if("tail_lizard" in pref_species.default_features)
-		character.dna.species.mutant_bodyparts |= "tail_lizard"*/
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]

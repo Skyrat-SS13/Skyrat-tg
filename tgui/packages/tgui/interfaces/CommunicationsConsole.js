@@ -3,6 +3,7 @@ import { capitalize } from "common/string";
 import { useBackend, useLocalState } from "../backend";
 import { Box, Button, Flex, Input, Modal, Section, Table, TextArea } from "../components";
 import { Window } from "../layouts";
+import { sanitizeText } from "../sanitize";
 
 const STATE_BUYING_SHUTTLE = "buying_shuttle";
 const STATE_CHANGING_STATUS = "changing_status";
@@ -268,6 +269,7 @@ const PageMain = (props, context) => {
     canBuyShuttles,
     canMakeAnnouncement,
     canMessageAssociates,
+    canRecallShuttles,
     canRequestNuke,
     canSendToSectors,
     canSetAlertLevel,
@@ -306,8 +308,14 @@ const PageMain = (props, context) => {
               icon="space-shuttle"
               content="Recall Emergency Shuttle"
               color="bad"
-              disabled={!shuttleRecallable}
-              tooltip={!shuttleRecallable && "It's too late for the emergency shuttle to be recalled."}
+              disabled={!canRecallShuttles || !shuttleRecallable}
+              tooltip={(
+                canRecallShuttles && (
+                  !shuttleRecallable && "It's too late for the emergency shuttle to be recalled."
+                ) || (
+                  "You do not have permission to recall the emergency shuttle."
+                )
+              )}
               tooltipPosition="bottom-right"
               onClick={() => act("recallShuttle")}
             />
@@ -509,26 +517,30 @@ const PageMain = (props, context) => {
         && sectors.length > 0
         && (
           <Section title="Allied Sectors">
-            <Flex>
+            <Flex
+              direction="column">
               {
                 sectors.map(sectorName => (
-                  <Button
-                    content={
-                      `Send a message to station in ${sectorName} sector`
-                    }
-                    disabled={!importantActionReady}
-                    key={sectorName}
-                    onClick={() => setMessagingSector(sectorName)}
-                  />
+                  <Flex.Item key={sectorName}>
+                    <Button
+                      content={
+                        `Send a message to station in ${sectorName} sector`
+                      }
+                      disabled={!importantActionReady}
+                      onClick={() => setMessagingSector(sectorName)}
+                    />
+                  </Flex.Item>
                 ))
               }
 
               {sectors.length > 2 && (
-                <Button
-                  content="Send a message to all allied stations"
-                  disabled={!importantActionReady}
-                  onClick={() => setMessagingSector("all")}
-                />
+                <Flex.Item>
+                  <Button
+                    content="Send a message to all allied stations"
+                    disabled={!importantActionReady}
+                    onClick={() => setMessagingSector("all")}
+                  />
+                </Flex.Item>
               )}
             </Flex>
           </Section>
@@ -598,6 +610,10 @@ const PageMessages = (props, context) => {
       );
     }
 
+    const textHtml = {
+      __html: sanitizeText(message.content),
+    };
+
     messageElements.push((
       <Section
         title={message.title}
@@ -612,7 +628,8 @@ const PageMessages = (props, context) => {
             })}
           />
         )}>
-        <Box>{message.content}</Box>
+        <Box
+          dangerouslySetInnerHTML={textHtml} />
 
         {answers}
       </Section>

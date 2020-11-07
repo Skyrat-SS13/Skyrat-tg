@@ -2,22 +2,41 @@
 #define CHANNEL_LOBBYMUSIC 1024
 #define CHANNEL_ADMIN 1023
 #define CHANNEL_VOX 1022
-#define CHANNEL_JUKEBOX 1021
+/* SKYRAT EDIT CHANGE BEGIN - JUKEBOX - ORIGINAL
 #define CHANNEL_JUSTICAR_ARK 1020
 #define CHANNEL_HEARTBEAT 1019 //sound channel for heartbeats
 #define CHANNEL_AMBIENCE 1018
 #define CHANNEL_BUZZ 1017
 #define CHANNEL_BICYCLE 1016
+*/
+#define CHANNEL_JUKEBOX 1021
+#define CHANNEL_JUKEBOX_START 1016
+#define CHANNEL_JUSTICAR_ARK 1015
+#define CHANNEL_HEARTBEAT 1014 //sound channel for heartbeats
+#define CHANNEL_AMBIENCE 1013
+#define CHANNEL_BUZZ 1012
+#define CHANNEL_BICYCLE 1011
+//SKYRAT EDIT CHANGE END
+
+///Default range of a sound.
+#define SOUND_RANGE 17
+///default extra range for sounds considered to be quieter
+#define SHORT_RANGE_SOUND_EXTRARANGE -9
+///The range deducted from sound range for things that are considered silent / sneaky
+#define SILENCED_SOUND_EXTRARANGE -11
+///Percentage of sound's range where no falloff is applied
+#define SOUND_DEFAULT_FALLOFF_DISTANCE 1 //For a normal sound this would be 1 tile of no falloff
+///The default exponent of sound falloff
+#define SOUND_FALLOFF_EXPONENT 6
 
 //THIS SHOULD ALWAYS BE THE LOWEST ONE!
 //KEEP IT UPDATED
 
-#define CHANNEL_HIGHEST_AVAILABLE 1015
+#define CHANNEL_HIGHEST_AVAILABLE 1010 //SKYRAT EDIT CHANGE - JUKEBOX > ORIGINAL VALUE 1015
 
 #define MAX_INSTRUMENT_CHANNELS (128 * 6)
 
 #define SOUND_MINIMUM_PRESSURE 10
-#define FALLOFF_SOUNDS 1
 
 
 //Ambience types

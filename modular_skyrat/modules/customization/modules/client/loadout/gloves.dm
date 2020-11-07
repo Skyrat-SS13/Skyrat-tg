@@ -6,6 +6,11 @@
 	name = "Fingerless Gloves"
 	path = /obj/item/clothing/gloves/fingerless
 
+/datum/loadout_item/gloves/evening
+	name = "Colorable Evening Gloves"
+	path = /obj/item/clothing/gloves/evening
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/gloves/goldring
 	name = "A gold ring"
 	path = /obj/item/clothing/gloves/ring
