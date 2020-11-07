@@ -31,8 +31,9 @@
 	path = /obj/item/clothing/shoes/sneakers/brown
 
 /datum/loadout_item/shoes/whiteshoes
-	name = "White shoes"
+	name = "Colorable shoes"
 	path = /obj/item/clothing/shoes/sneakers/white
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/shoes/gildedcuffs
 	name = "Gilded leg wraps"
@@ -49,6 +50,11 @@
 /datum/loadout_item/shoes/bluecuffs
 	name = "Blue leg wraps"
 	path= /obj/item/clothing/shoes/wraps/blue
+
+/datum/loadout_item/shoes/high_heels
+	name = "Colorable High Heels"
+	path = /obj/item/clothing/shoes/high_heels
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /*/datum/loadout_item/shoes/christmasbootsr - it aint christmas!
 	name = "Red Christmas Boots"

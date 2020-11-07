@@ -1,4 +1,4 @@
-#define FIREALARM_COOLDOWN 67 // Chosen fairly arbitrarily, it is the length of the audio in FireAlarm.ogg. The actual track length is 7 seconds 8ms but but the audio stops at 6s 700ms
+#define FIREALARM_COOLDOWN 80 //SKYRAT EDIT CHANGE - ORIGINAL: 67 - AESTHETIC // Chosen fairly arbitrarily, it is the length of the audio in FireAlarm.ogg. The actual track length is 7 seconds 8ms but but the audio stops at 6s 700ms
 
 /obj/item/electronics/firealarm
 	name = "fire alarm electronics"
@@ -8,15 +8,14 @@
 /obj/item/wallframe/firealarm
 	name = "fire alarm frame"
 	desc = "Used for building fire alarms."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/monitors.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "fire_bitem"
 	result_path = /obj/machinery/firealarm
 
 /obj/machinery/firealarm
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
-	//icon = 'icons/obj/monitors.dmi' //ORIGINAL
-	icon = 'modular_skyrat/modules/alerts/icons/obj/monitors.dmi' //SKYRAT EDIT CHANGE
+	icon = 'icons/obj/monitors.dmi'  //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "fire0"
 	max_integrity = 250
 	integrity_failure = 0.4
@@ -117,7 +116,7 @@
 	if(user)
 		user.visible_message("<span class='warning'>Sparks fly out of [src]!</span>",
 							"<span class='notice'>You emag [src], disabling its thermal sensors.</span>")
-	playsound(src, "sparks", 50, TRUE)
+	playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/machinery/firealarm/temperature_expose(datum/gas_mixture/air, temperature, volume)
 	if((temperature > T0C + 200 || temperature < BODYTEMP_COLD_DAMAGE_LIMIT) && (last_alarm+FIREALARM_COOLDOWN < world.time) && !(obj_flags & EMAGGED) && detecting && !machine_stat)
@@ -130,7 +129,8 @@
 	last_alarm = world.time
 	var/area/A = get_area(src)
 	A.firealert(src)
-	playsound(loc, 'goon/sound/machinery/FireAlarm.ogg', 75)
+	//playsound(loc, 'goon/sound/machinery/FireAlarm.ogg', 75) ORIGINAL
+	playsound(loc, alarm_sound, 75) //SKYRAT EDIT CHANGE - AESTHETICS
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
 

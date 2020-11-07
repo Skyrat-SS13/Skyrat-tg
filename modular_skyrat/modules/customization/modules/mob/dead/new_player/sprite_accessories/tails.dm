@@ -13,7 +13,7 @@
 	return icon_state
 
 /datum/sprite_accessory/tails/lizard
-	recommended_species = list("lizard", "ashwalker", "mammal", "unathi")
+	recommended_species = list("lizard", "ashlizard", "mammal", "unathi")
 	organ_type = /obj/item/organ/tail/lizard
 
 /datum/sprite_accessory/tails/human
