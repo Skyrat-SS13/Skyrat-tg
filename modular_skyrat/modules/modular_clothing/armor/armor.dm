@@ -4,6 +4,7 @@
 	desc = "A specialized exoskeleton armor helmet built into a suit of armor; offers decent protection, and comes with a flash-resistant HUD visor and headlamp."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	flash_protect = FLASH_PROTECTION_FLASH //The visor protects from flashes, but you're still going to go blind if you try to weld something.
 	icon_state = "hardsuit-secexo"
 	icon_state = "hardsuit0-secexo"
 	inhand_icon_state = "hardsuit0-secexo"

@@ -158,6 +158,10 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/target = M
 
+		if(target.head == /obj/item/clothing/head/helmet/space/hardsuit/security_armor) //SKYRAT EDIT BEGIN - No more hugger immunity for techarmor. I have yet to see xenos in action on rebase so this might be brought back later. Likely not, though.
+			var/obj/item/clothing/head/helmet/space/hardsuit/security_armor/techarmor = target.head
+			techarmor.suit.RemoveHelmet() //SKYRAT EDIT END - Thank you Krennic <3
+
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.is_mouth_covered(head_only = 1))
