@@ -98,6 +98,8 @@
 #define COMSIG_ATOM_BULLET_ACT "atom_bullet_act"
 ///from base of atom/CheckParts(): (list/parts_list, datum/crafting_recipe/R)
 #define COMSIG_ATOM_CHECKPARTS "atom_checkparts"
+///from base of atom/CheckParts(): (atom/movable/new_craft) - The atom has just been used in a crafting recipe and has been moved inside new_craft.
+#define COMSIG_ATOM_USED_IN_CRAFT "atom_used_in_craft"
 ///from base of atom/blob_act(): (/obj/structure/blob)
 #define COMSIG_ATOM_BLOB_ACT "atom_blob_act"
 ///from base of atom/acid_act(): (acidpwr, acid_volume)
@@ -115,7 +117,7 @@
 ///from obj/machinery/bsa/full/proc/fire(): ()
 #define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"
 	#define COMSIG_ATOM_BLOCKS_BSA_BEAM (1<<0)
-///from base of atom/set_light(): (l_range, l_power, l_color)
+///from base of atom/set_light(): (l_range, l_power, l_color, l_on)
 #define COMSIG_ATOM_SET_LIGHT "atom_set_light"
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
@@ -153,9 +155,9 @@
 #define COMSIG_ATOM_SET_OPACITY "atom_set_opacity"
 
 //from base of atom/movable/on_enter_storage(): (datum/component/storage/concrete/master_storage)
-#define COMISG_STORAGE_ENTERED "storage_entered"
+#define COMSIG_STORAGE_ENTERED "storage_entered"
 //from base of atom/movable/on_exit_storage(): (datum/component/storage/concrete/master_storage)
-#define CONSIG_STORAGE_EXITED "storage_exited"
+#define COMSIG_STORAGE_EXITED "storage_exited"
 
 ///from base of atom/expose_reagents(): (/list, /datum/reagents, methods, volume_modifier, show_message)
 #define COMSIG_ATOM_EXPOSE_REAGENTS "atom_expose_reagents"
@@ -211,6 +213,8 @@
 	#define COMPONENT_NO_MOUSEDROP (1<<0)
 ///from base of atom/MouseDrop_T: (/atom/from, /mob/user)
 #define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"
+///from base of mob/MouseWheelOn(): (/atom, delta_x, delta_y, params)
+#define COMSIG_MOUSE_SCROLL_ON "mousescroll_on"
 
 // /area signals
 
@@ -227,7 +231,9 @@
 #define COMSIG_TURF_CHANGE "turf_change"
 ///from base of atom/has_gravity(): (atom/asker, list/forced_gravities)
 #define COMSIG_TURF_HAS_GRAVITY "turf_has_gravity"
-///from base of turf/New(): (turf/source, direction)
+///from base of turf/multiz_turf_del(): (turf/source, direction)
+#define COMSIG_TURF_MULTIZ_DEL "turf_multiz_del"
+///from base of turf/multiz_turf_new: (turf/source, direction)
 #define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"
 
 // /atom/movable signals
@@ -279,6 +285,8 @@
 
 ///called when the movable is added to a disposal holder object for disposal movement: (obj/structure/disposalholder/holder, obj/machinery/disposal/source)
 #define COMSIG_MOVABLE_DISPOSING "movable_disposing"
+// called when movable is expelled from a disposal pipe, bin or outlet on obj/pipe_eject: (direction)
+#define COMSIG_MOVABLE_PIPE_EJECTING "movable_pipe_ejecting"
 ///called when the movable sucessfully has it's anchored var changed, from base atom/movable/set_anchored(): (value)
 #define COMSIG_MOVABLE_SET_ANCHORED "movable_set_anchored"
 ///from base of atom/movable/setGrabState(): (newstate)
@@ -293,6 +301,8 @@
 #define COMSIG_MOVABLE_LIGHT_OVERLAY_TOGGLE_ON "movable_light_overlay_toggle_on"
 ///called when the movable's glide size is updated: (new_glide_size)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"
+///Called when a movable is hit by a plunger in layer mode, from /obj/item/plunger/attack_obj()
+#define COMSIG_MOVABLE_CHANGE_DUCT_LAYER "movable_change_duct_layer"
 
 // /mob signals
 
@@ -803,7 +813,11 @@
 #define COMSIG_CONTAINER_TRY_ATTACH "container_try_attach"
 
 /* Attack signals. They should share the returned flags, to standardize the attack chain. */
+/// tool_act -> pre_attack -> target.attackby (item.attack) -> afterattack
+	///Ends the attack chain. If sent early might cause posterior attacks not to happen.
 	#define COMPONENT_CANCEL_ATTACK_CHAIN (1<<0)
+	///Skips the specific attack step, continuing for the next one to happen.
+	#define COMPONENT_SKIP_ATTACK (1<<1)
 ///from base of atom/attack_ghost(): (mob/dead/observer/ghost)
 #define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"
 ///from base of atom/attack_hand(): (mob/user)

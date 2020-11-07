@@ -345,3 +345,23 @@
 		ooser.update_inv_wear_mask()
 		ooser.update_action_buttons_icon()
 		to_chat(ooser, "<span class='notice'>You toggle the [src] to [possible_colors[c_color_index]].</span>")
+
+/obj/item/clothing/suit/hooded/cloak/zuliecloak
+	name = "Project: Zul-E"
+	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
+	icon_state = "zuliecloak"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
+	hoodtype = /obj/item/clothing/head/hooded/cloakhood/zuliecloak
+	body_parts_covered = CHEST|GROIN|ARMS
+	slot_flags = ITEM_SLOT_OCLOTHING | ITEM_SLOT_NECK //it's a cloak. it's cosmetic. so why the hell not? what could possibly go wrong?
+	mutant_variants = NONE
+
+/obj/item/clothing/head/hooded/cloakhood/zuliecloak
+	name = "NT Special Issue"
+	desc = "This hat is unquestionably the best one, bluespaced to and from CentComm. It smells of Fish and Tea with a hint of antagonism"
+	icon_state = "zuliecap"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
+	flags_inv = HIDEEARS|HIDEHAIR
+	mutant_variants = NONE

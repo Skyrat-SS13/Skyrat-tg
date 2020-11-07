@@ -1,7 +1,7 @@
 /obj/machinery/door/poddoor
 	name = "blast door"
 	desc = "A heavy duty blast door that opens mechanically."
-	icon = 'icons/obj/doors/blastdoor.dmi'
+	icon = 'icons/obj/doors/blastdoor.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "closed"
 	var/id = 1
 	layer = BLASTDOOR_LAYER
@@ -61,6 +61,18 @@
 	name = "combustion chamber vent"
 	id = INCINERATOR_SYNDICATELAVA_AUXVENT
 
+/obj/machinery/door/poddoor/massdriver_toxins
+	name = "Toxins Launcher Bay Door"
+	id = MASSDRIVER_TOXINS
+
+/obj/machinery/door/poddoor/massdriver_chapel
+	name = "Chapel Launcher Bay Door"
+	id = MASSDRIVER_CHAPEL
+
+/obj/machinery/door/poddoor/massdriver_trash
+	name = "Disposals Launcher Bay Door"
+	id = MASSDRIVER_DISPOSALS
+
 /obj/machinery/door/poddoor/Bumped(atom/movable/AM)
 	if(density)
 		return 0
@@ -77,10 +89,12 @@
 	switch(animation)
 		if("opening")
 			flick("opening", src)
-			playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE)
+			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
+			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 		if("closing")
 			flick("closing", src)
-			playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE)
+			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
+			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 
 /obj/machinery/door/poddoor/update_icon_state()
 	if(density)

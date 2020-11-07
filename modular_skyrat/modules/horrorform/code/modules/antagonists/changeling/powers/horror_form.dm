@@ -48,10 +48,20 @@
 				C.broken = TRUE
 				C.open()
 
-	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
 	var/mob/living/simple_animal/hostile/true_changeling/new_mob = new(get_turf(user))
 
-	new_mob.real_name = changeling.changelingID
+	//Currently this is a thing as changeling ID's are not longer a thing
+	//Feel free to re-add them whomever wants to -Azarak
+	var/changeling_name
+	if(user.gender == FEMALE)
+		changeling_name = "Ms. "
+	else if(user.gender == MALE)
+		changeling_name = "Mr. "
+	else
+		changeling_name = "Mx. "
+	changeling_name += pick(GLOB.possible_abductor_names) //Abductor suffixes are the same ones as changelings
+
+	new_mob.real_name = changeling_name
 	new_mob.name = new_mob.real_name
 	new_mob.stored_changeling = user
 	user.loc = new_mob
