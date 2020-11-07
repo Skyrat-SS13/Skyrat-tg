@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(bunker_passthrough)
 
 /client/proc/addbunkerbypass(ckeytobypass as text)
-	set category = "Special Verbs"
+	set category = "Admin"
 	set name = "Add PB Bypass"
 	set desc = "Allows a given ckey to connect despite the panic bunker for a given round."
 	if(!CONFIG_GET(flag/sql_enabled))
@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
 
 /client/proc/revokebunkerbypass(ckeytobypass as text)
-	set category = "Special Verbs"
+	set category = "Admin"
 	set name = "Revoke PB Bypass"
 	set desc = "Revoke's a ckey's permission to bypass the panic bunker for a given round."
 
