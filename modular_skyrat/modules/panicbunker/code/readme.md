@@ -25,4 +25,4 @@ Adds a system that uses a JSON file to enable bunker bypassing. This is a very m
 - N/A
 
 ### Credits:
-Azarak - original code & porting
+Gandalf2k15 - Porting
