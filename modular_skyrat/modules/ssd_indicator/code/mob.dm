@@ -20,6 +20,7 @@ GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('modular_skyrat/module
 /mob/living/Logout()
 	lastclienttime = world.time
 	set_ssd_indicator(TRUE)
+	. = ..()
 
 /*
 //EDIT - TRANSFER CKEY IS NOT A THING ON THE TG CODEBASE, if things break too bad because of it, consider implementing it

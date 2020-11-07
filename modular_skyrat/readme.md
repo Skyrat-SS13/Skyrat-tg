@@ -133,10 +133,10 @@ MODULE ID: <!-- uppercase, underscore_connected name of your module, that you us
 
 <!-- Here, try to describe what your PR does, what features it provides and any other directly useful information -->
 
-### TG Proc Changes:
+### TG Proc/File Changes:
 
 - N/A
-<!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. -->
+<!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. APPEND: Also, please include any files that you've changed. .DM files that is. -->
 
 ### Defines:
 
@@ -194,6 +194,8 @@ And that wraps the basics of it up.
 ### Non-modular changes to the core code - IMPORTANT
 
 Every once in a while, there comes a time, where editing the core files becomes inevitable.
+
+Please be sure to log these in the module readme.dm. Any file changes.
 
 In those cases, we've decided to apply the following convention, with examples:
 

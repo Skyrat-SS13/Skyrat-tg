@@ -23,6 +23,11 @@
 	name = "Ian Shirt"
 	path = /obj/item/clothing/suit/ianshirt
 
+/datum/loadout_item/suit/wornshirt
+	name = "Colorable Worn Shirt"
+	path = /obj/item/clothing/suit/wornshirt
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 //COATS
 /datum/loadout_item/suit/coat
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_COATS
@@ -43,11 +48,11 @@
 	name = "Brass winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
 
-/*/datum/loadout_item/suit/coat/polycoat
-	name = "Polychromic winter coat"
+/datum/loadout_item/suit/coat/poly
+	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
-	cost = 4 //too many people with neon green coats is hard on the eyes
-*/
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
 
 //JACKETS
 /datum/loadout_item/suit/jacket

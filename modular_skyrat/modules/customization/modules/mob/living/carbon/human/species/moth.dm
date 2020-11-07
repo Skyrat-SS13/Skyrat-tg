@@ -1,5 +1,4 @@
 /datum/species/moth
-	default_features = null
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM)
 
