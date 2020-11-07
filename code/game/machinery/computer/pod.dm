@@ -56,6 +56,11 @@
 			M.close()
 
 /obj/machinery/computer/pod/ui_interact(mob/user, datum/tgui/ui)
+	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
+	if(clicksound && world.time > next_clicksound && isliving(user))
+		next_clicksound = world.time + rand(50, 100)
+		playsound(src, get_sfx_skyrat(clicksound), clickvol)
+	//SKYRAT EDIT END
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MassDriverControl", name)
@@ -78,7 +83,8 @@
 	return data
 
 /obj/machinery/computer/pod/ui_act(action, list/params)
-	if(..())
+	. = ..()
+	if(.)
 		return
 	if(!allowed(usr))
 		to_chat(usr, "<span class='warning'>Access denied.</span>")
@@ -134,6 +140,26 @@
 	icon_state = "oldcomp"
 	icon_screen = "library"
 	icon_keyboard = "no_keyboard"
+
+/obj/machinery/computer/pod/old/mass_driver_controller
+	name = "\improper Mass Driver Controller"
+	icon = 'icons/obj/airlock_machines.dmi'
+	icon_state = "airlock_control_standby"
+	icon_keyboard = "no_keyboard"
+	density = FALSE
+
+/obj/machinery/computer/pod/old/mass_driver_controller/toxinsdriver
+	id = MASSDRIVER_TOXINS
+
+//for maps where pod doors are outside of the standard 4 tile controller detection range (ie Pubbystation)
+/obj/machinery/computer/pod/old/mass_driver_controller/toxinsdriver/longrange
+	range = 6
+
+/obj/machinery/computer/pod/old/mass_driver_controller/chapelgun
+	id = MASSDRIVER_CHAPEL
+
+/obj/machinery/computer/pod/old/mass_driver_controller/trash
+	id = MASSDRIVER_DISPOSALS
 
 /obj/machinery/computer/pod/old/syndicate
 	name = "\improper ProComp Executive IIc"

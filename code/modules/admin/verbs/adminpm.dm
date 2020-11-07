@@ -248,9 +248,21 @@
 			if(holder)	//sender is an admin but recipient is not. Do BIG RED TEXT
 				var/already_logged = FALSE
 				if(!recipient.current_ticket)
-					new /datum/admin_help(msg, recipient, TRUE)
+					//new /datum/admin_help(msg, recipient, TRUE) //ORIGINAL
+					new /datum/admin_help(msg, recipient, TRUE, src) //SKYRAT EDIT CHANGE - ADMIN
 					already_logged = TRUE
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Ticket Opened", msg, recipient.ckey, src.ckey)
+
+				//SKYRAT EDIT ADDITION BEGIN - ADMIN
+				if(recipient.current_ticket.handler)
+					if(recipient.current_ticket.handler != usr.ckey)
+						var/response = alert(usr, "This ticket is already being handled by [recipient.current_ticket.handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
+
+						if(response == "No")
+							return
+				else
+					recipient.current_ticket.HandleIssue()
+				//SKYRAT EDIT ADDITION END
 
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
@@ -273,7 +285,6 @@
 
 				if(!already_logged) //Reply to an existing ticket
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
-
 
 				//always play non-admin recipients the adminhelp sound
 				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))

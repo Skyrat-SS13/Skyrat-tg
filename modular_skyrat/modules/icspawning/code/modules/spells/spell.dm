@@ -15,7 +15,7 @@
 	invocation = "Return on!" // pls someone get reference <3
 	invocation_type = "whisper"
 	school = "evocation"
-	action_icon_state = "exitstate"
+	action_icon_state = "lightning"
 
 /obj/effect/proc_holder/spell/self/return_back/can_cast(mob/user = usr, skipcharge = FALSE, silent = FALSE)
 	return TRUE

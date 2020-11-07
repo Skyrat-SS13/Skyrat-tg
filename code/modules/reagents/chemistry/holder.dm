@@ -206,8 +206,8 @@
   * * no_react - passed through to [/datum/reagents/proc/add_reagent]
   * * mob/transfered_by - used for logging
   * * remove_blacklisted - skips transferring of reagents with can_synth = FALSE
-  * * methods - passed through to [/datum/reagents/proc/react_single] and [/datum/reagent/proc/on_transfer]
-  * * show_message - passed through to [/datum/reagents/proc/react_single]
+  * * methods - passed through to [/datum/reagents/proc/expose_single] and [/datum/reagent/proc/on_transfer]
+  * * show_message - passed through to [/datum/reagents/proc/expose_single]
   * * round_robin - if round_robin=TRUE, so transfer 5 from 15 water, 15 sugar and 15 plasma becomes 10, 15, 15 instead of 13.3333, 13.3333 13.3333. Good if you hate floating point errors
   * * ignore_stomach - when using methods INGEST will not use the stomach as the target
   */
@@ -376,6 +376,29 @@
 
 		if(!C)
 			C = R.holder.my_atom
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			//Check if this mob's species is set and can process this type of reagent
+			var/can_process = FALSE
+			//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
+			if(H.dna && H.dna.species.reagent_flags)
+				var/owner_flags = H.dna.species.reagent_flags
+				if((R.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+					can_process = TRUE
+				if((R.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+					can_process = TRUE
+
+			//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
+			if(!can_process)
+				R.holder.remove_reagent(R.type, R.metabolization_rate)
+				continue
+		//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+		else
+			if(R.process_flags == REAGENT_SYNTHETIC)
+				R.holder.remove_reagent(R.type, R.metabolization_rate)
+				continue
+		//SKYRAT EDIT ADDITION END
 
 		if(C && R)
 			if(C.reagent_check(R) != TRUE)
@@ -428,7 +451,6 @@
 		addiction_tick++
 	if(C && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		C.updatehealth()
-		C.update_mobility()
 		C.update_stamina()
 	update_total()
 
@@ -663,6 +685,12 @@
   * * [/datum/reagent/proc/expose_mob]
   * * [/datum/reagent/proc/expose_turf]
   * * [/datum/reagent/proc/expose_obj]
+  *
+  * Arguments
+  * - Atom/A: What mob/turf/object is being exposed to reagents? This is your reaction target.
+  * - Methods: What reaction type is the reagent itself going to call on the reaction target? Types are TOUCH, INGEST, VAPOR, PATCH, and INJECT.
+  * - Volume_modifier: What is the reagent volume multiplied by when exposed? Note that this is called on the volume of EVERY reagent in the base body, so factor in your Maximum_Volume if necessary!
+  * - Show_message: Whether to display anything to mobs when they are exposed.
   */
 /datum/reagents/proc/expose(atom/A, methods = TOUCH, volume_modifier = 1, show_message = 1)
 	if(isnull(A))

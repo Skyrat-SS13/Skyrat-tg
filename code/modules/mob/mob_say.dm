@@ -4,6 +4,10 @@
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
+	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
+	if(typing_indicator)
+		set_typing_indicator(FALSE)
+	//SKYRAT EDIT ADDITION END
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
@@ -27,6 +31,10 @@
 /mob/verb/me_verb(message as text)
 	set name = "Me"
 	set category = "IC"
+	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
+	if(typing_indicator)
+		set_typing_indicator(FALSE)
+	//SKYRAT EDIT ADDITION END
 
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
@@ -67,7 +75,7 @@
 	if(isobserver(src) && O.deadchat_name)
 		name = "[O.deadchat_name]"
 	else
-		if(mind && mind.name)
+		if(mind?.name)
 			name = "[mind.name]"
 		else
 			name = real_name
@@ -94,10 +102,6 @@
 ///Check if the mob has a hivemind channel
 /mob/proc/hivecheck()
 	return FALSE
-
-///Check if the mob has a ling hivemind
-/mob/proc/lingcheck()
-	return LINGHIVE_NONE
 
 ///The amount of items we are looking for in the message
 #define MESSAGE_MODS_LENGTH 6

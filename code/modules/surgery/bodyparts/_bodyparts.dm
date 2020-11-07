@@ -92,8 +92,10 @@
 	var/generic_bleedstacks
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
-	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/grasp_self])
+	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
 	var/obj/item/self_grasp/grasped_by
+	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
+	var/organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -122,6 +124,14 @@
 	if(burn_dam > DAMAGE_PRECISION)
 		. += "<span class='warning'>This limb has [burn_dam > 30 ? "severe" : "minor"] burns.</span>"
 
+	if(locate(/datum/wound/blunt) in wounds)
+		. += "<span class='warning'>The bones in this limb appear badly cracked.</span>"
+	if(locate(/datum/wound/slash) in wounds)
+		. += "<span class='warning'>The flesh on this limb appears badly lacerated.</span>"
+	if(locate(/datum/wound/pierce) in wounds)
+		. += "<span class='warning'>The flesh on this limb appears badly perforated.</span>"
+	if(locate(/datum/wound/burn) in wounds)
+		. += "<span class='warning'>The flesh on this limb appears badly cooked.</span>"
 
 /obj/item/bodypart/blob_act()
 	take_damage(max_damage)
@@ -356,7 +366,7 @@
 /**
   * check_wounding() is where we handle rolling for, selecting, and applying a wound if we meet the criteria
   *
-  * We generate a "score" for how woundable the attack was based on the damage and other factors discussed in [/obj/item/bodypart/proc/check_wounding_mods], then go down the list from most severe to least severe wounds in that category.
+  * We generate a "score" for how woundable the attack was based on the damage and other factors discussed in [/obj/item/bodypart/proc/check_woundings_mods], then go down the list from most severe to least severe wounds in that category.
   * We can promote a wound from a lesser to a higher severity this way, but we give up if we have a wound of the given type and fail to roll a higher severity, so no sidegrades/downgrades
   *
   * Arguments:
@@ -499,6 +509,12 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		//Consider moving this to a new species proc "spec_heal" maybe?
+		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
+			if(owner.health > 50)
+				owner.revive(FALSE)
+		//SKYRAT EDIT ADDITION END
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -557,7 +573,7 @@
 	if(total_damage >= max_damage * disable_threshold) //Easy limb disable disables the limb at 40% health instead of 0%
 		if(!last_maxed)
 			if(owner.stat < UNCONSCIOUS)
-				owner.emote("scream")
+				INVOKE_ASYNC(owner, /mob.proc/emote, "scream")
 			last_maxed = TRUE
 		set_disabled(TRUE)
 		return
@@ -576,11 +592,6 @@
 
 	if(!owner)
 		return
-	if(bodypart_disabled)
-		if(!.)
-			owner.update_mobility()
-	else if (.)
-		owner.update_mobility()
 	owner.update_health_hud() //update the healthdoll
 	owner.update_body()
 
@@ -721,8 +732,10 @@
 	if(change_icon_to_default)
 		if(status == BODYPART_ORGANIC)
 			icon = DEFAULT_BODYPART_ICON_ORGANIC
+			organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		else if(status == BODYPART_ROBOTIC)
 			icon = DEFAULT_BODYPART_ICON_ROBOTIC
+			organic_render = FALSE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 	if(owner)
 		owner.updatehealth()
@@ -762,7 +775,9 @@
 		should_draw_greyscale = FALSE
 
 		var/datum/species/S = H.dna.species
-		species_id = S.limbs_id
+		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
+			species_id = S.limbs_id
+			rendered_bp_icon = S.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		species_flags_list = H.dna.species.species_traits
 
 		if(S.use_skintones)
@@ -812,6 +827,8 @@
 	add_overlay(standing)
 
 //Gives you a proper icon appearance for the dismembered limb
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /obj/item/bodypart/proc/get_limb_icon(dropped)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
@@ -884,6 +901,8 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()
@@ -939,7 +958,7 @@
 		var/datum/wound/W = thing
 		bleed_rate += W.blood_flow
 
-	if(owner.mobility_flags & ~MOBILITY_STAND)
+	if(owner.body_position == LYING_DOWN)
 		bleed_rate *= 0.75
 
 	if(grasped_by)

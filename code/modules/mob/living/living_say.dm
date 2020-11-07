@@ -121,10 +121,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(SOFT_CRIT)
 			message_mods[WHISPER_MODE] = MODE_WHISPER
 		if(UNCONSCIOUS)
-			if(!(message_mods[MODE_CHANGELING] || message_mods[MODE_ALIEN]))
+			if(!message_mods[MODE_ALIEN])
 				return
 		if(HARD_CRIT)
-			if(!(message_mods[WHISPER_MODE] || message_mods[MODE_CHANGELING] || message_mods[MODE_ALIEN]))
+			if(!(message_mods[WHISPER_MODE] || message_mods[MODE_ALIEN]))
 				return
 		if(DEAD)
 			say_dead(original_message)
@@ -271,23 +271,28 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		eavesdrop_range = EAVESDROP_EXTRA_RANGE
 	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source)
 	var/list/the_dead = list()
+	//SKYRAT EDIT ADDITION BEGIN - YELLING ECHOES
+	var/list/yellareas
+	if(say_test(message) == "2")
+		yellareas = get_areas_in_range(message_range,src)
+	//SKYRAT EDIT ADDITION END
 	if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
 		var/mob/living/carbon/mute = src
 		if(istype(mute))
 			var/empty_indexes = get_empty_held_indexes() //How many hands the player has empty
 			if(length(empty_indexes) == 1 || !mute.get_bodypart(BODY_ZONE_L_ARM) || !mute.get_bodypart(BODY_ZONE_R_ARM))
 				message = stars(message)
-			if(length(empty_indexes) == 0)//Both hands full, can't sign
-				to_chat(src, "<span class='warning'>You can't sign with your hands full!</span.?>")
+			if(length(empty_indexes) == 0 || (length(empty_indexes) < 2 && (!mute.get_bodypart(BODY_ZONE_L_ARM) || !mute.get_bodypart(BODY_ZONE_R_ARM))))//All existing hands full, can't sign
+				mute.visible_message("tries to sign, but can't with [src.p_their()] hands full!</span.?>", visible_message_flags = EMOTE_MESSAGE)
 				return FALSE
 			if(!mute.get_bodypart(BODY_ZONE_L_ARM) && !mute.get_bodypart(BODY_ZONE_R_ARM))//Can't sign with no arms!
 				to_chat(src, "<span class='warning'>You can't sign with no hands!</span.?>")
 				return FALSE
 			if(mute.handcuffed)//Can't sign when your hands are cuffed, but can at least make a visual effort to
-				mute.visible_message("<span class='warning'>[src] tries to sign, but can't with [src.p_their()] hands cuffed!</span.?>")
+				mute.visible_message("tries to sign, but can't with [src.p_their()] hands bound!</span.?>", visible_message_flags = EMOTE_MESSAGE)
 				return FALSE
-			if(mute.has_status_effect(STATUS_EFFECT_PARALYZED))
-				to_chat(src, "<span class='warning'>You can't sign in this state!</span.?>")
+			if(HAS_TRAIT(mute, TRAIT_HANDS_BLOCKED) || HAS_TRAIT(mute, TRAIT_EMOTEMUTE))
+				to_chat(src, "<span class='warning'>You can't sign at the moment!</span.?>")
 				return FALSE
 	if(client) //client is so that ghosts don't have to listen to mice
 		for(var/_M in GLOB.player_list)
@@ -295,11 +300,18 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			if(QDELETED(M))	//Some times nulls and deleteds stay in this list. This is a workaround to prevent ic chat breaking for everyone when they do.
 				continue	//Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
 			if(M.stat != DEAD) //not dead, not important
+				//SKYRAT EDIT ADDITION BEGIN - YELLING ECHOES
+				if(yellareas)
+					var/area/A = get_area(M)
+					if(istype(A) && A.ambientsounds != SPACE && (A in yellareas))
+						listening |= M
+				//SKYRAT EDIT ADDITION END
 				continue
 			if(get_dist(M, src) > 7 || M.z != z) //they're out of range of normal hearing
-				if(eavesdrop_range && !(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
-					continue
-				if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
+				if(eavesdrop_range)
+					if(!(M.client.prefs.chat_toggles & CHAT_GHOSTWHISPER)) //they're whispering and we have hearing whispers at any range off
+						continue
+				else if(!(M.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
 					continue
 			listening |= M
 			the_dead[M] = TRUE
@@ -326,7 +338,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			speech_bubble_recipients.Add(M.client)
 	var/image/I = image('icons/mob/talk.dmi', src, "[bubble_type][say_test(message)]", FLY_LAYER)
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-	INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_recipients, 30)
+	//INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_recipients, 30) - ORIGINAL
+	INVOKE_ASYNC(GLOBAL_PROC, /.proc/animate_speechbubble, I, speech_bubble_recipients, 30) //SKYRAT EDIT CHANGE - TYPING_INDICATOR
 
 /mob/proc/binarycheck()
 	return FALSE
@@ -383,7 +396,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
 	var/obj/item/implant/radio/imp = locate() in src
-	if(imp && imp.radio.on)
+	if(imp?.radio.on)
 		if(message_mods[MODE_HEADSET])
 			imp.radio.talk_into(src, message, , spans, language, message_mods)
 			return ITALICS | REDUCE_RANGE

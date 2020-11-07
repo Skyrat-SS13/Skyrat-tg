@@ -25,6 +25,7 @@
 #include "binary_insert.dm"
 #include "card_mismatch.dm"
 #include "chain_pull_through_space.dm"
+#include "combat.dm"
 #include "component_tests.dm"
 #include "confusion.dm"
 #include "emoting.dm"
@@ -42,16 +43,19 @@
 #include "reagent_recipe_collisions.dm"
 #include "resist.dm"
 #include "say.dm"
+#include "serving_tray.dm"
 #include "siunit.dm"
 #include "spawn_humans.dm"
 #include "species_whitelists.dm"
 #include "stomach.dm"
 #include "subsystem_init.dm"
 #include "surgeries.dm"
+#include "teleporters.dm"
 #include "timer_sanity.dm"
 #include "unit_test.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
 #undef TEST_ASSERT_NOTEQUAL
+#undef TEST_FOCUS
 #endif

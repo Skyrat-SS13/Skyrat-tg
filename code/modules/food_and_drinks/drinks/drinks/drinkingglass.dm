@@ -23,6 +23,7 @@
 			name = R.glass_name
 			desc = R.glass_desc
 		if(R.glass_icon_state)
+			icon = R.glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
 			icon_state = R.glass_icon_state
 		else
 			var/mutable_appearance/reagent_overlay = mutable_appearance(icon, "glassoverlay")
@@ -93,8 +94,8 @@
 	list_reagents = list(/datum/reagent/consumable/nuka_cola = 50)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/egg)) //breaking eggs
-		var/obj/item/reagent_containers/food/snacks/egg/E = I
+	if(istype(I, /obj/item/food/egg)) //breaking eggs
+		var/obj/item/food/egg/E = I
 		if(reagents)
 			if(reagents.total_volume >= reagents.maximum_volume)
 				to_chat(user, "<span class='notice'>[src] is full.</span>")

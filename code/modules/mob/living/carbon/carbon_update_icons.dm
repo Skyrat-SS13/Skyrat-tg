@@ -8,11 +8,11 @@
 		changed++
 		ntransform.TurnTo(lying_prev , lying_angle)
 		if(!lying_angle) //Lying to standing
-			final_pixel_y = get_standard_pixel_y_offset()
+			final_pixel_y = base_pixel_y + get_standard_pixel_y_offset()
 		else //if(lying != 0)
 			if(lying_prev == 0) //Standing to lying
-				pixel_y = get_standard_pixel_y_offset()
-				final_pixel_y = get_standard_pixel_y_offset(lying_angle)
+				pixel_y = base_pixel_y + get_standard_pixel_y_offset()
+				final_pixel_y = base_pixel_y + get_standard_pixel_y_offset(lying_angle)
 				if(dir & (EAST|WEST)) //Facing east or west
 					final_dir = pick(NORTH, SOUTH) //So you fall on your side rather than your face or ass
 	if(resize != RESIZE_DEFAULT_SIZE)
@@ -57,7 +57,7 @@
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 			I.screen_loc = ui_hand_position(get_held_index_of_item(I))
 			client.screen += I
-			if(observers && observers.len)
+			if(observers?.len)
 				for(var/M in observers)
 					var/mob/dead/observe = M
 					if(observe.client && observe.client.eye == src)
@@ -104,13 +104,15 @@
 	apply_overlay(DAMAGE_LAYER)
 
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /mob/living/carbon/update_inv_wear_mask()
 	remove_overlay(FACEMASK_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
 		return
 
-	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1])
+	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1])
 		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1]
 		inv.update_icon()
 
@@ -120,11 +122,13 @@
 		update_hud_wear_mask(wear_mask)
 
 	apply_overlay(FACEMASK_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /mob/living/carbon/update_inv_neck()
 	remove_overlay(NECK_LAYER)
 
-	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1])
+	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1])
 		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1]
 		inv.update_icon()
 
@@ -138,7 +142,7 @@
 /mob/living/carbon/update_inv_back()
 	remove_overlay(BACK_LAYER)
 
-	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
+	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
 		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1]
 		inv.update_icon()
 
@@ -148,13 +152,15 @@
 
 	apply_overlay(BACK_LAYER)
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /mob/living/carbon/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
 		return
 
-	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
+	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
 		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_HEAD) + 1]
 		inv.update_icon()
 
@@ -163,6 +169,8 @@
 		update_hud_head(head)
 
 	apply_overlay(HEAD_LAYER)
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/update_inv_handcuffed()
@@ -215,6 +223,8 @@
 		var/obj/item/bodypart/BP = X
 		BP.original_owner = src
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /mob/living/carbon/proc/update_body_parts()
 	//CHECK FOR UPDATE
 	var/oldkey = icon_render_key
@@ -244,6 +254,8 @@
 
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 
@@ -263,6 +275,8 @@
 
 //produces a key based on the mob's limbs
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /mob/living/carbon/proc/generate_icon_render_key()
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
@@ -278,6 +292,8 @@
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 //change the mob's icon to the one matching its key

@@ -31,9 +31,9 @@ This section is for the event controller
 /datum/round_event_control/crystal_invasion
 	name = "Crystal Invasion"
 	typepath = /datum/round_event/crystal_invasion
-	weight = 8
+	weight = 0
 	min_players = 35
-	max_occurrences = 1
+	max_occurrences = 0 //no random chance to you
 	earliest_start = 25 MINUTES
 
 /datum/round_event/crystal_invasion
@@ -363,6 +363,10 @@ This section is for the destabilized SM
 	var/datum/gas_mixture/removed
 	var/gasefficency = 0.5
 	removed = env.remove(gasefficency * env.total_moles())
+
+	if(!removed)
+		return
+
 	removed.assert_gases(/datum/gas/bz, /datum/gas/miasma)
 	if(!removed || !removed.total_moles() || isspaceturf(loc_turf))
 		removed.gases[/datum/gas/bz][MOLES] += 0.5
@@ -639,7 +643,7 @@ This section is for the crystal monsters variations
 /mob/living/simple_animal/hostile/crystal_monster
 	name = "crystal monster"
 	desc = "A monster made of crystals similar to the Supermatter ones."
-	icon = 'icons/mob/simple_human.dmi'
+	icon = 'icons/mob/crystal_mobs.dmi'
 	icon_state = "crystal_minion"
 	icon_living = "crystal_minion"
 	icon_dead = "crystal_minion"
@@ -676,7 +680,6 @@ This section is for the crystal monsters variations
 /mob/living/simple_animal/hostile/crystal_monster/minion
 	name = "crystal minion"
 	desc = "A monster made of crystals similar to the Supermatter ones."
-	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "crystal_minion"
 	icon_living = "crystal_minion"
 	icon_dead = "crystal_minion"
@@ -704,7 +707,6 @@ This section is for the crystal monsters variations
 /mob/living/simple_animal/hostile/crystal_monster/thug
 	name = "crystal thug"
 	desc = "A monster made of crystals similar to the Supermatter ones."
-	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "crystal_thug"
 	icon_living = "crystal_thug"
 	icon_dead = "crystal_thug"
@@ -736,7 +738,6 @@ This section is for the crystal monsters variations
 /mob/living/simple_animal/hostile/crystal_monster/recruit
 	name = "crystal recruit"
 	desc = "A monster made of crystals similar to the Supermatter ones."
-	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "crystal_recruit"
 	icon_living = "crystal_recruit"
 	icon_dead = "crystal_recruit"
@@ -762,7 +763,6 @@ This section is for the crystal monsters variations
 /mob/living/simple_animal/hostile/crystal_monster/killer
 	name = "crystal killer"
 	desc = "A monster made of crystals similar to the Supermatter ones."
-	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "crystal_killer"
 	icon_living = "crystal_killer"
 	icon_dead = "crystal_killer"
@@ -804,7 +804,6 @@ This section is for the crystal monsters variations
 /mob/living/simple_animal/hostile/crystal_monster/boss
 	name = "crystal boss"
 	desc = "A monster made of crystals similar to the Supermatter ones."
-	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "crystal_boss"
 	icon_living = "crystal_boss"
 	icon_dead = "crystal_boss"

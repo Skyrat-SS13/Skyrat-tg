@@ -13,11 +13,30 @@
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
 			obscure_name = TRUE
 
-	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
-
+	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	var/species_visible
+	var/species_name_string
+	if(skipface || get_visible_name() == "Unknown")
+		species_visible = FALSE
+	else
+		species_visible = TRUE
 
+	if(!species_visible)
+		species_name_string = "!"
+	else if (dna.features["custom_species"])
+		species_name_string = ", [prefix_a_or_an(dna.features["custom_species"])] <EM>[dna.features["custom_species"]]</EM>!"
+	else
+		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
+
+	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]")
+	if(species_visible) //If they have a custom species shown, show the real one too
+		if(dna.features["custom_species"])
+			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
+	else
+		. += "You can't make out what species they are."
+	//SKYRAT EDIT CHANGE END
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING))
 		//accessory
@@ -122,8 +141,6 @@
 		if(!just_sleeping)
 			if(suiciding)
 				. += "<span class='warning'>[t_He] appear[p_s()] to have committed suicide... there is no hope of recovery.</span>"
-			if(hellbound)
-				. += "<span class='warning'>[t_His] soul seems to have been ripped out of [t_his] body. Revival is impossible.</span>"
 			. += ""
 			if(getorgan(/obj/item/organ/brain) && !key && !get_ghost(FALSE, TRUE))
 				. += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...</span>"
@@ -146,9 +163,9 @@
 		missing -= body_part.body_zone
 		for(var/obj/item/I in body_part.embedded_objects)
 			if(I.isEmbedHarmless())
-				msg += "<B>[t_He] [t_has] \a [icon2html(I, user)] [I] stuck to [t_his] [body_part.name]!</B>\n"
+				msg += "<B>[t_He] [t_has] [icon2html(I, user)] \a [I] stuck to [t_his] [body_part.name]!</B>\n"
 			else
-				msg += "<B>[t_He] [t_has] \a [icon2html(I, user)] [I] embedded in [t_his] [body_part.name]!</B>\n"
+				msg += "<B>[t_He] [t_has] [icon2html(I, user)] \a [I] embedded in [t_his] [body_part.name]!</B>\n"
 
 		for(var/i in body_part.wounds)
 			var/datum/wound/iter_wound = i
@@ -220,7 +237,7 @@
 		msg += "[t_He] look[p_s()] a little soaked.\n"
 
 
-	if(pulledby && pulledby.grab_state)
+	if(pulledby?.grab_state)
 		msg += "[t_He] [t_is] restrained by [pulledby]'s grip.\n"
 
 	if(nutrition < NUTRITION_LEVEL_STARVING - 50)
@@ -359,7 +376,8 @@
 			if(!key)
 				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 			else if(!client)
-				msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
+				//msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n" //ORIGINAL
+				msg += "[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)),1)] minutes. [t_He] may snap out of it soon.\n" //SKYRAT CHANGE ADDITION - SSD_INDICATOR
 
 	var/scar_severity = 0
 	for(var/i in all_scars)
@@ -428,6 +446,43 @@
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
+	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
+	if(gunpointing)
+		. += "<span class='warning'><b>[t_He] [t_is] holding [gunpointing.target.name] at gunpoint with [gunpointing.aimed_gun.name]!</b></span>\n"
+	if(length(gunpointed))
+		for(var/datum/gunpoint/GP in gunpointed)
+			. += "<span class='warning'><b>[GP.source.name] [GP.source.p_are()] holding [t_him] at gunpoint with [GP.aimed_gun.name]!</b></span>\n"
+  //SKYRAT EDIT ADDITION END
+
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	for(var/genital in list("penis", "testicles", "vagina", "breasts"))
+		if(dna.species.mutant_bodyparts[genital])
+			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
+			if(G)
+				if(!(G.is_hidden(src)))
+					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
+					break
+	if(!skipface)
+		var/line
+		if(length(dna.features["flavor_text"]))
+			var/message = dna.features["flavor_text"]
+			if(length_char(message) <= 40)
+				line = "<span class='notice'>[message]</span>"
+			else
+				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
+		if(client)
+			if(length(client.prefs.ooc_prefs))
+				line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+		if(line)
+			. += line
+	//Temporary flavor text addition:
+	if(temporary_flavor_text)
+		if(length_char(temporary_flavor_text) <= 40)
+			. += "<span class='notice'>[temporary_flavor_text]</span>"
+		else
+			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
+
+	//SKYRAT EDIT ADDITION END
 	. += "*---------*</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)

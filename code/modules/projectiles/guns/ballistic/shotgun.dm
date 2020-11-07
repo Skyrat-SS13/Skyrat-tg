@@ -30,7 +30,7 @@
 
 /obj/item/gun/ballistic/shotgun/blow_up(mob/user)
 	. = 0
-	if(chambered && chambered.BB)
+	if(chambered?.BB)
 		process_fire(user, user, FALSE)
 		. = 1
 
@@ -39,7 +39,7 @@
 
 // RIOT SHOTGUN //
 
-/obj/item/gun/ballistic/shotgun/riot //for spawn in the armory
+/obj/item/gun/ballistic/shotgun/riot //for spawn in the armory //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "riot shotgun"
 	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
 	icon_state = "riotshotgun"
