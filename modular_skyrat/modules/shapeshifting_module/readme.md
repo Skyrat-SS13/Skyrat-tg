@@ -10,7 +10,7 @@ Add a new cyborg module, The Cyborg Shapeshifter. Basically allows a cyborg to d
 
 ### TG Proc/File Changes:
 
-- N/A
+- CHANGE: altborgs/code/modules/mob/living/silicon/robot/update_icons.dm > if(module.cyborg_pixel_offset != null)
 <!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. APPEND: Also, please include any files that you've changed. .DM files that is. -->
 
 ### Defines:
@@ -25,7 +25,7 @@ Add a new cyborg module, The Cyborg Shapeshifter. Basically allows a cyborg to d
 
 ### Included files that are not contained in this module:
 
-- CHANGE: altborgs/code/modules/mob/living/silicon/robot/update_icons.dm > if(module.cyborg_pixel_offset != null)
+- N/A
 <!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here -->
 
 ### Credits:
