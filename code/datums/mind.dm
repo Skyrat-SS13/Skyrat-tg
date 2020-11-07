@@ -44,7 +44,6 @@
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
 
-	var/linglink
 	var/datum/martial_art/martial_art
 	var/static/default_martial_art = new/datum/martial_art
 	var/miming = FALSE // Mime's vow of silence
@@ -765,6 +764,11 @@
 	if(G)
 		G.reenter_corpse()
 
+/// Sets our can_hijack to the fastest speed our antag datums allow.
+/datum/mind/proc/get_hijack_speed()
+	. = 0
+	for(var/datum/antagonist/A in antag_datums)
+		. = max(., A.hijack_speed())
 
 /datum/mind/proc/has_objective(objective_type)
 	for(var/datum/antagonist/A in antag_datums)

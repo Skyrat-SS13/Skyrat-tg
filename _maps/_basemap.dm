@@ -14,7 +14,7 @@
 		#include "map_files\MetalStation\MetalStation.dmm"
 		#include "map_files\MetalStation\MetalStation_Above.dmm"
 
-		#ifdef TRAVISBUILDING
+		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
 	#endif

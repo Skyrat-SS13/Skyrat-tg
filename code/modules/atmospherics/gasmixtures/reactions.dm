@@ -8,20 +8,19 @@ tritfire = -2
 halon_o2removal = -1
 nitrous_decomp = 0
 water_vapor = 1
+nitryl_decomp = 21
 pluox_formation = 2
 nitrylformation = 3
 bzformation = 4
 freonformation = 5
 stimformation = 6
 nobliumformation = 7
-hexane_plasma_filtering = 8
-zauker_decomp = 9
-healium_formation = 10
-proto_nitrate_formation = 11
-zauker_formation = 12
-halon_formation = 13
-hexane_formation = 14
-proto_nitrate_response = 15 - 18
+zauker_decomp = 8
+healium_formation = 9
+proto_nitrate_formation = 10
+zauker_formation = 11
+halon_formation = 12
+proto_nitrate_response = 13 - 18
 fusion = 19
 metallic_hydrogen = 20
 nobiliumsuppression = INFINITY
@@ -72,7 +71,10 @@ nobiliumsuppression = INFINITY
 	id = "nobstop"
 
 /datum/gas_reaction/nobliumsupression/init_reqs()
-	min_requirements = list(/datum/gas/hypernoblium = REACTION_OPPRESSION_THRESHOLD)
+	min_requirements = list(
+		/datum/gas/hypernoblium = REACTION_OPPRESSION_THRESHOLD,
+		"TEMP" = 20
+	)
 
 /datum/gas_reaction/nobliumsupression/react()
 	return STOP_REACTIONS
@@ -499,6 +501,37 @@ nobiliumsuppression = INFINITY
 			air.temperature = max(((temperature * old_heat_capacity + energy_used) / new_heat_capacity), TCMB) //the air heats up when reacting
 		return REACTING
 
+/datum/gas_reaction/nitryl_decomposition //The decomposition of nitryl. Exothermic. Requires oxygen as catalyst.
+	priority = 21
+	name = "Nitryl Decomposition"
+	id = "nitryl_decomp"
+
+/datum/gas_reaction/nitryl_decomposition/init_reqs()
+	min_requirements = list(
+		/datum/gas/oxygen = MINIMUM_MOLE_COUNT,
+		/datum/gas/nitryl = MINIMUM_MOLE_COUNT,
+		"MAX_TEMP" = 600
+	)
+
+/datum/gas_reaction/nitryl_decomposition/react(datum/gas_mixture/air)
+	var/list/cached_gases = air.gases
+	var/temperature = air.temperature
+	var/old_heat_capacity = air.heat_capacity()
+	var/heat_efficency = min(temperature / (FIRE_MINIMUM_TEMPERATURE_TO_EXIST * 8), cached_gases[/datum/gas/nitryl][MOLES])
+	var/energy_produced = heat_efficency * NITRYL_DECOMPOSITION_ENERGY
+	ASSERT_GAS(/datum/gas/nitrogen, air)
+	if ((cached_gases[/datum/gas/nitryl][MOLES] - heat_efficency < 0)) //Shouldn't produce gas from nothing.
+		return NO_REACTION
+	cached_gases[/datum/gas/nitryl][MOLES] -= heat_efficency
+	cached_gases[/datum/gas/oxygen][MOLES] += heat_efficency
+	cached_gases[/datum/gas/nitrogen][MOLES] += heat_efficency
+
+	if(energy_produced> 0)
+		var/new_heat_capacity = air.heat_capacity()
+		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
+			air.temperature = max(((temperature * old_heat_capacity + energy_produced) / new_heat_capacity), TCMB) //the air heats up when reacting
+		return REACTING
+
 /datum/gas_reaction/nitrylformation //The formation of nitryl. Endothermic. Requires bz.
 	priority = 3
 	name = "Nitryl formation"
@@ -685,14 +718,16 @@ nobiliumsuppression = INFINITY
 	min_requirements = list(
 		/datum/gas/nitrogen = 10,
 		/datum/gas/tritium = 5,
-		"TEMP" = 50000)
+		"TEMP" = TCMB,
+		"MAX_TEMP" = 15
+		)
 
 /datum/gas_reaction/nobliumformation/react(datum/gas_mixture/air)
 	var/list/cached_gases = air.gases
 	air.assert_gases(/datum/gas/hypernoblium, /datum/gas/bz)
 	var/old_heat_capacity = air.heat_capacity()
 	var/nob_formed = min((cached_gases[/datum/gas/nitrogen][MOLES] + cached_gases[/datum/gas/tritium][MOLES]) * 0.01, cached_gases[/datum/gas/tritium][MOLES] * 0.1, cached_gases[/datum/gas/nitrogen][MOLES] * 0.2)
-	var/energy_taken = nob_formed * (NOBLIUM_FORMATION_ENERGY / (max(cached_gases[/datum/gas/bz][MOLES], 1)))
+	var/energy_produced = nob_formed * (NOBLIUM_FORMATION_ENERGY / (max(cached_gases[/datum/gas/bz][MOLES], 1)))
 	if ((cached_gases[/datum/gas/tritium][MOLES] - 5 * nob_formed < 0) || (cached_gases[/datum/gas/nitrogen][MOLES] - 10 * nob_formed < 0))
 		return NO_REACTION
 	cached_gases[/datum/gas/tritium][MOLES] -= nob_formed * 5
@@ -703,7 +738,7 @@ nobiliumsuppression = INFINITY
 	if (nob_formed)
 		var/new_heat_capacity = air.heat_capacity()
 		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
-			air.temperature = max(((air.temperature * old_heat_capacity - energy_taken) / new_heat_capacity), TCMB)
+			air.temperature = max(((air.temperature * old_heat_capacity + energy_produced) / new_heat_capacity), TCMB)
 
 
 /datum/gas_reaction/miaster	//dry heat sterilization: clears out pathogens in the air
@@ -733,7 +768,7 @@ nobiliumsuppression = INFINITY
 	air.temperature += cleaned_air * 0.002
 
 /datum/gas_reaction/halon_formation
-	priority = 13
+	priority = 12
 	name = "Halon formation"
 	id = "halon_formation"
 
@@ -764,40 +799,8 @@ nobiliumsuppression = INFINITY
 			air.temperature = max(((temperature * old_heat_capacity + energy_used) / new_heat_capacity), TCMB)
 	return REACTING
 
-/datum/gas_reaction/hexane_formation
-	priority = 14
-	name = "Hexane formation"
-	id = "hexane_formation"
-
-/datum/gas_reaction/hexane_formation/init_reqs()
-	min_requirements = list(
-		/datum/gas/bz = MINIMUM_MOLE_COUNT,
-		/datum/gas/hydrogen = MINIMUM_MOLE_COUNT,
-		"TEMP" = 450,
-		"MAX_TEMP" = 465
-	)
-
-/datum/gas_reaction/hexane_formation/react(datum/gas_mixture/air, datum/holder)
-	var/list/cached_gases = air.gases
-	var/temperature = air.temperature
-	var/old_heat_capacity = air.heat_capacity()
-	var/heat_efficency = min(temperature * 0.01, cached_gases[/datum/gas/hydrogen][MOLES], cached_gases[/datum/gas/bz][MOLES])
-	var/energy_used = heat_efficency * 600
-	ASSERT_GAS(/datum/gas/hexane, air)
-	if ((cached_gases[/datum/gas/hydrogen][MOLES] - heat_efficency * 5 < 0 ) || (cached_gases[/datum/gas/bz][MOLES] - heat_efficency * 0.25 < 0)) //Shouldn't produce gas from nothing.
-		return NO_REACTION
-	cached_gases[/datum/gas/hydrogen][MOLES] -= heat_efficency * 5
-	cached_gases[/datum/gas/bz][MOLES] -= heat_efficency * 0.25
-	cached_gases[/datum/gas/hexane][MOLES] += heat_efficency * 5.25
-
-	if(energy_used)
-		var/new_heat_capacity = air.heat_capacity()
-		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
-			air.temperature = max(((temperature * old_heat_capacity - energy_used) / new_heat_capacity), TCMB)
-	return REACTING
-
 /datum/gas_reaction/healium_formation
-	priority = 10
+	priority = 9
 	name = "Healium formation"
 	id = "healium_formation"
 
@@ -829,7 +832,7 @@ nobiliumsuppression = INFINITY
 	return REACTING
 
 /datum/gas_reaction/proto_nitrate_formation
-	priority = 11
+	priority = 10
 	name = "Proto Nitrate formation"
 	id = "proto_nitrate_formation"
 
@@ -861,7 +864,7 @@ nobiliumsuppression = INFINITY
 	return REACTING
 
 /datum/gas_reaction/zauker_formation
-	priority = 12
+	priority = 11
 	name = "Zauker formation"
 	id = "zauker_formation"
 
@@ -923,39 +926,8 @@ nobiliumsuppression = INFINITY
 			air.temperature = max(((temperature * old_heat_capacity - energy_used) / new_heat_capacity), TCMB)
 	return REACTING
 
-/datum/gas_reaction/hexane_plasma_filtering
-	priority = 8
-	name = "Hexane plasma filtering"
-	id = "hexane_plasma_filtering"
-
-/datum/gas_reaction/hexane_plasma_filtering/init_reqs()
-	min_requirements = list(
-		/datum/gas/hexane = MINIMUM_MOLE_COUNT,
-		/datum/gas/plasma = MINIMUM_MOLE_COUNT,
-		"TEMP" = 150
-	)
-
-/datum/gas_reaction/hexane_plasma_filtering/react(datum/gas_mixture/air, datum/holder)
-	var/list/cached_gases = air.gases
-	var/temperature = air.temperature
-	var/old_heat_capacity = air.heat_capacity()
-	var/heat_efficency = min(temperature * 0.01, cached_gases[/datum/gas/hexane][MOLES], cached_gases[/datum/gas/plasma][MOLES])
-	var/energy_used = heat_efficency * 250
-	ASSERT_GAS(/datum/gas/carbon_dioxide, air)
-	if ((cached_gases[/datum/gas/hexane][MOLES] - heat_efficency * 0.2 < 0 ) || (cached_gases[/datum/gas/plasma][MOLES] - heat_efficency * 0.5 < 0)) //Shouldn't produce gas from nothing.
-		return NO_REACTION
-	cached_gases[/datum/gas/hexane][MOLES] -= heat_efficency * 0.2
-	cached_gases[/datum/gas/plasma][MOLES] -= heat_efficency * 0.5
-	cached_gases[/datum/gas/carbon_dioxide][MOLES] += heat_efficency * 0.4
-
-	if(energy_used)
-		var/new_heat_capacity = air.heat_capacity()
-		if(new_heat_capacity > MINIMUM_HEAT_CAPACITY)
-			air.temperature = max(((temperature * old_heat_capacity - energy_used) / new_heat_capacity), TCMB)
-	return REACTING
-
 /datum/gas_reaction/zauker_decomp
-	priority = 9
+	priority = 8
 	name = "Zauker decomposition"
 	id = "zauker_decomp"
 
@@ -991,7 +963,7 @@ nobiliumsuppression = INFINITY
 	return NO_REACTION
 
 /datum/gas_reaction/proto_nitrate_bz_response
-	priority = 15
+	priority = 13
 	name = "Proto Nitrate bz response"
 	id = "proto_nitrate_bz_response"
 

@@ -6,7 +6,7 @@
 	anchored = FALSE
 	density = TRUE
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN
-	icon = 'icons/obj/atmos.dmi'
+	icon = 'icons/obj/atmos.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "sheater-off"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater/cooler is guaranteed not to set the station on fire. Warranty void if used in engines."

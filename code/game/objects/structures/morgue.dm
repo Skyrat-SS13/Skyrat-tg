@@ -16,7 +16,7 @@
 GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants and other ghosties.
 
 /obj/structure/bodycontainer
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/stationobjs.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "morgue1"
 	density = TRUE
 	anchored = TRUE
@@ -229,8 +229,8 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	connected = new /obj/structure/tray/c_tray(src)
 	connected.connected = src
 
-/obj/structure/bodycontainer/crematorium/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
-	id = "[idnum][id]"
+/obj/structure/bodycontainer/crematorium/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	id = "[port.id]_[id]"
 
 /obj/structure/bodycontainer/crematorium/update_icon()
 	if(!connected || connected.loc != src)

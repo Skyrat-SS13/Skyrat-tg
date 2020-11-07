@@ -3,7 +3,7 @@
 	generic = "Snout"
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/lizard_snouts.dmi'
 	var/use_muzzled_sprites = TRUE
-	recommended_species = list("mammal", "lizard", "unathi")
+	recommended_species = list("mammal", "lizard", "unathi", "ashlizard")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)

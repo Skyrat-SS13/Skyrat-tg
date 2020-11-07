@@ -7,7 +7,7 @@
 /obj/machinery/power/rad_collector
 	name = "Radiation Collector Array"
 	desc = "A device which uses Hawking Radiation and plasma to produce power."
-	icon = 'icons/obj/singularity.dmi'
+	icon = 'icons/obj/singularity.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "ca"
 	anchored = FALSE
 	density = TRUE
