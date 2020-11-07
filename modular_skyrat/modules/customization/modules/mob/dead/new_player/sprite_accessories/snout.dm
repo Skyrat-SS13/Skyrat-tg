@@ -1,8 +1,9 @@
 /datum/sprite_accessory/snouts
 	key = "snout"
 	generic = "Snout"
+	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/lizard_snouts.dmi'
 	var/use_muzzled_sprites = TRUE
-	recommended_species = list("mammal", "lizard", "unathi")
+	recommended_species = list("mammal", "lizard", "unathi", "ashlizard")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -28,7 +29,7 @@
 	recommended_species = list("mammal", "tajaran", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/akula
-	recommended_species = list("mammal", "akula", "humanoid")
+	recommended_species = list("mammal", "akula", "aquatic", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"
@@ -96,6 +97,11 @@
 /datum/sprite_accessory/snouts/mammal/tajaran/scanidalt3
 	name = "Mammal, Short ALT 3"
 	icon_state = "scanidalt3"
+
+/datum/sprite_accessory/snouts/mammal/tajaran/normal
+	name = "Tajaran, normal"
+	icon_state = "ntajaran"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/snouts/mammal/wolf
 	name = "Mammal, Thick"
@@ -325,3 +331,4 @@
 	name = "Rat"
 	icon_state = "rat"
 	color_src = USE_MATRIXED_COLORS
+

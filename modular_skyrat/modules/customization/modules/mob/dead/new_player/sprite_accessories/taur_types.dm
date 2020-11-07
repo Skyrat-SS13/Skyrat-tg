@@ -11,6 +11,11 @@
 	var/hide_legs = TRUE
 	var/hide_markings = FALSE //Any taur part that has "legs" should not hide markings
 
+/datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+		return TRUE
+	return FALSE
+
 /datum/sprite_accessory/taur/none
 	name = "None"
 	dimension_x = 32
@@ -38,6 +43,7 @@
 	alt_taur_mode = STYLE_TAUR_PAW
 	color_src = USE_ONE_COLOR
 	extra = TRUE
+	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/drake
 	name = "Drake"
@@ -45,6 +51,7 @@
 	taur_mode = STYLE_TAUR_PAW
 	color_src = USE_ONE_COLOR
 	extra = TRUE
+	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/drake/old
 	name = "Drake (Old)"
@@ -57,6 +64,7 @@
 	icon_state = "drider"
 	color_src = USE_ONE_COLOR
 	extra = TRUE
+	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/eevee
 	name = "Eevee"
@@ -64,6 +72,7 @@
 	taur_mode = STYLE_TAUR_PAW
 	color_src = USE_ONE_COLOR
 	extra = TRUE
+	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/horse
 	name = "Horse"
@@ -89,6 +98,8 @@
 	color_src = USE_ONE_COLOR
 	extra = TRUE
 	extra2 = TRUE
+	extra_color_src = MUTCOLORS2
+	extra2_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/taur/tentacle
 	name = "Tentacle"
@@ -103,6 +114,7 @@
 	taur_mode = STYLE_TAUR_PAW
 	color_src = USE_ONE_COLOR
 	extra = TRUE
+	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/feline
 	name = "Feline"
@@ -110,3 +122,4 @@
 	taur_mode = STYLE_TAUR_PAW
 	color_src = USE_ONE_COLOR
 	extra = TRUE
+	extra_color_src = MUTCOLORS2

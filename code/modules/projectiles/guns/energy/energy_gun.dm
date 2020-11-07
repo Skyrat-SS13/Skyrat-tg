@@ -1,7 +1,8 @@
-/obj/item/gun/energy/e_gun
+/obj/item/gun/energy/e_gun //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "energy gun"
 	desc = "A basic hybrid energy gun with two settings: disable and kill."
 	icon_state = "energy"
+	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null	//so the human update icon uses the icon_state instead.
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
 	modifystate = 1
@@ -52,8 +53,8 @@
 /obj/item/gun/energy/e_gun/hos
 	name = "\improper X-01 MultiPhase Energy Gun"
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
-	cell_type = /obj/item/stock_parts/cell/hos_gun
 	icon_state = "hoslaser"
+	w_class = WEIGHT_CLASS_NORMAL
 	force = 10
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/hos, /obj/item/ammo_casing/energy/laser/hos, /obj/item/ammo_casing/energy/ion/hos)
 	ammo_x_offset = 4
@@ -67,6 +68,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	ammo_type = list(/obj/item/ammo_casing/energy/net, /obj/item/ammo_casing/energy/trap)
+	w_class = WEIGHT_CLASS_NORMAL
 	can_flashlight = FALSE
 	ammo_x_offset = 1
 
@@ -88,7 +90,7 @@
 	trigger_guard = TRIGGER_GUARD_NONE
 	ammo_x_offset = 2
 
-/obj/item/gun/energy/e_gun/nuclear
+/obj/item/gun/energy/e_gun/nuclear //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
 	icon_state = "nucgun"

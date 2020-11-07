@@ -13,7 +13,7 @@
 	return icon_state
 
 /datum/sprite_accessory/tails/lizard
-	recommended_species = list("lizard", "ashwalker", "mammal", "unathi")
+	recommended_species = list("lizard", "ashlizard", "mammal", "unathi")
 	organ_type = /obj/item/organ/tail/lizard
 
 /datum/sprite_accessory/tails/human
@@ -49,7 +49,7 @@
 	recommended_species = list("mammal", "human", "tajaran", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
-	recommended_species = list("mammal", "human", "akula", "humanoid")
+	recommended_species = list("mammal", "human", "akula", "aquatic", "humanoid")
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
@@ -229,3 +229,7 @@
 	name = "Lunasune"
 	icon_state = "lunasune"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/spade
+	name = "Succubus Spade Tail"
+	icon_state = "spade"

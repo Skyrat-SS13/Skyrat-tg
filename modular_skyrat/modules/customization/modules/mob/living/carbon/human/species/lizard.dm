@@ -1,5 +1,4 @@
 /datum/species/lizard
-	default_features = null
 	mutant_bodyparts = list()
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
 	cultures = list(CULTURES_EXOTIC, CULTURES_LIZARD, CULTURES_HUMAN)
@@ -25,3 +24,6 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
 	return returned
+
+/datum/species/lizard/ashwalker
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR)

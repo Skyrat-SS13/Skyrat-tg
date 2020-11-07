@@ -194,7 +194,7 @@
 
 	/// A buffer of currently held keys.
 	var/list/keys_held = list()
-	/// A buffer for combinations such of modifiers + keys (ex: CtrlD, AltE, ShiftT). Format: ["key"] -> ["combo"] (ex: ["D"] -> ["CtrlD"])
+	/// A buffer for combinations such of modifiers + keys (ex: CtrlD, AltE, ShiftT). Format: `"key"` -> `"combo"` (ex: `"D"` -> `"CtrlD"`)
 	var/list/key_combos_held = list()
 	/*
 	** These next two vars are to apply movement for keypresses and releases made while move delayed.
@@ -204,3 +204,6 @@
 	var/next_move_dir_add
  	/// On next move, subtract this dir from the move that would otherwise be done
 	var/next_move_dir_sub
+
+	/// If the client is currently under the restrictions of the interview system
+	var/interviewee = FALSE
