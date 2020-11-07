@@ -16,7 +16,7 @@
 
 /obj/structure/bookcase
 	name = "bookcase"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/obj/library.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "bookempty"
 	desc = "A great place for storing knowledge."
 	anchored = FALSE
@@ -145,7 +145,7 @@
 	if(contents.len)
 		var/obj/item/book/choice = input(user, "Which book would you like to remove from the shelf?") as null|obj in sortNames(contents.Copy())
 		if(choice)
-			if(!(user.mobility_flags & MOBILITY_USE) || user.stat || user.restrained() || !in_range(loc, user))
+			if(!(user.mobility_flags & MOBILITY_USE) || user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED) || !in_range(loc, user))
 				return
 			if(ishuman(user))
 				if(!user.get_active_held_item())

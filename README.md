@@ -1,6 +1,6 @@
 ## Skyrat 13 (/tg/station Downstream)
 
-[![Build Status](https://travis-ci.org/Skyrat-SS13/Skyrat-tg.svg?branch=master)](https://travis-ci.org/github/Skyrat-SS13/Skyrat-tg) 
+[![Build Status](https://github.com/Skyrat-SS13/Skyrat-tg/workflows/Run%20tests/badge.svg)](https://github.com/Skyrat-SS13/Skyrat-tg/actions?query=workflow%3A%22Run+tests%22) 
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/Skyrat-SS13/Skyrat-tg.svg)](https://isitmaintained.com/project/Skyrat-SS13/Skyrat-tg "Percentage of issues still open")
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Skyrat-SS13/Skyrat-tg.svg)](https://isitmaintained.com/project/Skyrat-SS13/Skyrat-tg "Average time to resolve an issue")
 ![Coverage](https://img.shields.io/codecov/c/github/Skyrat-SS13/Skyrat-tg)

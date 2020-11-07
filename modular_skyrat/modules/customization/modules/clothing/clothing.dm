@@ -1,5 +1,8 @@
-/obj/item/clothing
+//Mutant variants needs to be a property of all items, because all items can be equipped, despite the mob code only expecting clothing items (ugh)
+/obj/item
 	var/mutant_variants = NONE
+
+/obj/item/clothing
 	var/worn_icon_digi
 	var/worn_icon_taur_snake
 	var/worn_icon_taur_paw
@@ -67,6 +70,9 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/security/head_of_security/skirt
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt

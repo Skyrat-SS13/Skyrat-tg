@@ -159,7 +159,7 @@
 			if("Chaplain")
 				heirloom_type = pick(/obj/item/toy/windup_toolbox, /obj/item/reagent_containers/food/drinks/bottle/holywater)
 			if("Assistant")
-				heirloom_type = /obj/item/storage/toolbox/mechanical/old/heirloom
+				heirloom_type = pick(/obj/item/storage/toolbox/mechanical/old/heirloom, /obj/item/clothing/gloves/cut/heirloom)
 			//Security/Command
 			if("Captain")
 				heirloom_type = /obj/item/reagent_containers/food/drinks/flask/gold
@@ -408,6 +408,8 @@
 	medical_record_text = "Patient suffers from prosopagnosia and cannot recognize faces."
 	hardcore_value = 5
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+/*
 /datum/quirk/prosthetic_limb
 	name = "Prosthetic Limb"
 	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a random prosthetic!"
@@ -441,6 +443,8 @@
 /datum/quirk/prosthetic_limb/post_add()
 	to_chat(quirk_holder, "<span class='boldannounce'>Your [slot_string] has been replaced with a surplus prosthetic. It is fragile and will easily come apart under duress. Additionally, \
 	you need to use a welding tool and cables to repair it, instead of bruise packs and ointment.</span>")
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/quirk/pushover
 	name = "Pushover"

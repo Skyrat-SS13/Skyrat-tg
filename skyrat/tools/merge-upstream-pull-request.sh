@@ -105,6 +105,12 @@ git -c core.editor=true commit --allow-empty -m "$2"
 # Prune any possible mentions from the commit message.
 git commit -m "$(git -c core.editor=true log -1 --pretty=%B | sed 's/@/@ /g')" --amend
 
+if command -v yarn &> /dev/null
+then
+    ./tgui/bin/tgui
+    git -c core.editor=true commit -m "Rebuilt tgui."
+fi
+
 # Push them onto the branch
 echo "Pushing changes"
 git push -u origin "$BASE_BRANCH_NAME$1"

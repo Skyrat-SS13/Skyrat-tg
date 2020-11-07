@@ -40,6 +40,11 @@
 	return APC.z == z && !APC.malfhack && !APC.aidisabled && !(APC.obj_flags & EMAGGED) && !APC.machine_stat && !istype(APC.area, /area/ai_monitored) && !(APC.area.area_flags & NO_ALERTS)
 
 /obj/machinery/computer/apc_control/ui_interact(mob/user, datum/tgui/ui)
+	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
+	if(clicksound && world.time > next_clicksound && isliving(user))
+		next_clicksound = world.time + rand(50, 100)
+		playsound(src, get_sfx_skyrat(clicksound), clickvol)
+	//SKYRAT EDIT END
 	operator = user
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -80,8 +85,10 @@
 	return data
 
 /obj/machinery/computer/apc_control/ui_act(action, params)
-	if(..())
+	. = ..()
+	if(.)
 		return
+
 	switch(action)
 		if("log-in")
 			if(obj_flags & EMAGGED)
@@ -178,7 +185,7 @@
 		return
 	obj_flags |= EMAGGED
 	log_game("[key_name(user)] emagged [src] at [AREACOORD(src)]")
-	playsound(src, "sparks", 50, TRUE)
+	playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/machinery/computer/apc_control/proc/log_activity(log_text)
 	if(!should_log)

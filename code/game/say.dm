@@ -58,8 +58,10 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/endspanpart = "</span>"
 
 	//Message
-	var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mods)]</span></span>"
-
+	//SKYRAT EDIT CHANGE - EMOTES
+	// var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mods)]</span></span>" - ORIGINAL
+	var/messagepart = " <span class='message'>[say_emphasis(lang_treat(speaker, message_language, raw_message, spans, message_mods))]</span></span>"
+	//SKYRAT EDIT END
 	var/languageicon = ""
 	var/datum/language/D = GLOB.language_datum_instances[message_language]
 	if(istype(D) && D.display_icon(src))
@@ -168,12 +170,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/obj/item/radio/radio
 
 INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
-/atom/movable/virtualspeaker/Initialize(mapload, atom/movable/M, radio)
+/atom/movable/virtualspeaker/Initialize(mapload, atom/movable/M, _radio)
 	. = ..()
-	radio = radio
+	radio = _radio
 	source = M
-	if (istype(M))
-		name = M.GetVoice()
+	if(istype(M))
+		name = radio.anonymize ? "Unknown" : M.GetVoice()
 		verb_say = M.verb_say
 		verb_ask = M.verb_ask
 		verb_exclaim = M.verb_exclaim

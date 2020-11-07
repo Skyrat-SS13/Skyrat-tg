@@ -73,6 +73,44 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 /datum/preferences/proc/update_character(current_version, savefile/S)
 	return
 
+/// checks through keybindings for outdated unbound keys and updates them
+/datum/preferences/proc/check_keybindings()
+	if(!parent)
+		return
+	var/list/user_binds = list()
+	for (var/key in key_bindings)
+		for(var/kb_name in key_bindings[key])
+			user_binds[kb_name] += list(key)
+	var/list/notadded = list()
+	for (var/name in GLOB.keybindings_by_name)
+		var/datum/keybinding/kb = GLOB.keybindings_by_name[name]
+		if(length(user_binds[kb.name]))
+			continue // key is unbound and or bound to something
+		var/addedbind = FALSE
+		if(hotkeys)
+			for(var/hotkeytobind in kb.classic_keys)
+				if(!length(key_bindings[hotkeytobind]))
+					LAZYADD(key_bindings[hotkeytobind], kb.name)
+					addedbind = TRUE
+		else
+			for(var/classickeytobind in kb.classic_keys)
+				if(!length(key_bindings[classickeytobind]))
+					LAZYADD(key_bindings[classickeytobind], kb.name)
+					addedbind = TRUE
+		if(!addedbind)
+			notadded += kb
+	if(length(notadded))
+		addtimer(CALLBACK(src, .proc/announce_conflict, notadded), 5 SECONDS)
+
+/datum/preferences/proc/announce_conflict(list/notadded)
+	to_chat(parent, "<span class='userdanger'>KEYBINDING CONFLICT!!!\n\
+	There are new keybindings that have defaults bound to keys you already set, They will default to Unbound. You can bind them in Setup Character or Game Preferences\n\
+	<a href='?_src_=prefs;preference=tab;tab=3'>Or you can click here to go straight to the keybindings page</a></span>")
+	for(var/item in notadded)
+		var/datum/keybinding/conflicted = item
+		to_chat(parent, "<span class='userdanger'>[conflicted.category]: [conflicted.full_name] needs updating")
+		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
+
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
 		return
@@ -137,6 +175,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	// Custom hotkeys
 	READ_FILE(S["key_bindings"], key_bindings)
+	check_keybindings()
 	// hearted
 	READ_FILE(S["hearted_until"], hearted_until)
 	if(hearted_until > world.realtime)
@@ -162,7 +201,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	windowflashing	= sanitize_integer(windowflashing, FALSE, TRUE, initial(windowflashing))
 	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, (2**24)-1, initial(toggles))
-	clientfps		= sanitize_integer(clientfps, 0, 1000, 0)
+	clientfps		= sanitize_integer(clientfps, 0, 1000, 40)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	ambientocclusion	= sanitize_integer(ambientocclusion, FALSE, TRUE, initial(ambientocclusion))
 	auto_fit_viewport	= sanitize_integer(auto_fit_viewport, FALSE, TRUE, initial(auto_fit_viewport))
@@ -435,6 +474,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["mismatched_customization"] , mismatched_customization)
 	READ_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
 
+	READ_FILE(S["augments"] , augments)
+	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
+
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
 	body_markings = SANITIZE_LIST(body_markings)
@@ -483,8 +525,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if(!(name in GLOB.body_markings_per_limb[zone]))
 				body_markings[zone] -= name
 
+	augments = SANITIZE_LIST(augments)
+	//validating augments
+	for(var/aug_slot in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[aug_slot]]
+		if(!aug)
+			augments -= aug_slot
+	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
+	//validating limb styles
+	for(var/key in augment_limb_styles)
+		if(!GLOB.robotic_styles_list[key])
+			augment_limb_styles -= key
+
 	validate_species_parts()
 
+	needs_update = TRUE
 	return TRUE
 
 /datum/preferences/proc/save_character()
@@ -575,6 +630,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["mismatched_customization"] , mismatched_customization)
 	WRITE_FILE(S["allow_advanced_colors"] , allow_advanced_colors)
+
+	WRITE_FILE(S["augments"] , augments)
+	WRITE_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
 	return TRUE
 

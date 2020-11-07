@@ -37,7 +37,7 @@
 	attack_verb_simple = "rip into"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	next_move_modifier = 0.5 //Faster attacks
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/human = 15) //It's a pretty big dude. Actually killing one is a feat.
+	butcher_results = list(/obj/item/food/meat/slab/human = 15) //It's a pretty big dude. Actually killing one is a feat.
 	gold_core_spawnable = 0 //Should stay exclusive to changelings tbh, otherwise makes it much less significant to sight one
 	var/datum/action/innate/turn_to_human
 	var/datum/action/innate/devour
@@ -86,10 +86,10 @@
 				if(M_turf && M_turf.z == src.z)
 					var/dist = get_dist(M_turf, src)
 					if(dist <= 7) //source of sound very close
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency, falloff = 2)
+						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency)
 					else
 						var/vol = clamp(100-((dist-7)*5), 10, 100) //Every tile decreases sound volume by 5
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency, falloff = 5)
+						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency)
 				if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
 					M.show_message(message)
 		audible_message(message)

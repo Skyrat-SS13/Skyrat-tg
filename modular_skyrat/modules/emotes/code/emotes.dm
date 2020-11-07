@@ -4,7 +4,7 @@
 	message = "rustles their quills."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/quill/run_emote(mob/living/user, params)
@@ -64,8 +64,14 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 7
-	if (isvox(user))
-		playsound(user, 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg', 50, 1, -1)
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/male_cough_1.ogg','modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg','modular_skyrat/modules/emotes/sound/emotes/male/male_cough_3.ogg')
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.gender == FEMALE)
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg')
+	if(isvox(user))
+		sound = 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
+	playsound(user, sound, 50, 1, -1)
 
 /datum/emote/living/sneeze/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -73,8 +79,14 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 7
-	if (isvox(user))
-		playsound(user, 'modular_skyrat/modules/emotes/sound/emotes/voxsneeze.ogg', 50, 1, -1)
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/male_sneeze.ogg')
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.gender == FEMALE)
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg')
+	if(isvox(user))
+		sound = 'modular_skyrat/modules/emotes/sound/emotes/voxsneeze.ogg'
+	playsound(user, sound, 50, 1, -1)
 
 /datum/emote/living/peep
 	key = "peep"
@@ -82,7 +94,7 @@
 	message = "peeps like a bird!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/peep/run_emote(mob/living/user, params)
@@ -99,7 +111,7 @@
 	message = "peeps twice like a bird!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/peep2/run_emote(mob/living/user, params)
@@ -123,7 +135,7 @@
 	message = "snaps their fingers."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap/run_emote(mob/living/user, params)
@@ -140,7 +152,7 @@
 	message = "snaps twice."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap2/run_emote(mob/living/user, params)
@@ -157,7 +169,7 @@
 	message = "snaps thrice."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap3/run_emote(mob/living/user, params)
@@ -174,7 +186,7 @@
 	message = "lets out an awoo!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/awoo/run_emote(mob/living/user, params)
@@ -191,7 +203,7 @@
 	message = "lets out a nya!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/nya/run_emote(mob/living/user, params)
@@ -208,7 +220,7 @@
 	message = "lets out a weh!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/weh/run_emote(mob/living/user, params)
@@ -224,7 +236,7 @@
 	key_third_person = "suddenly hits a dab"
 	message = "suddenly hits a dab!"
 	emote_type = EMOTE_AUDIBLE
-	restraint_check = TRUE
+	hands_use_check = TRUE
 
 /datum/emote/living/mothsqueak
 	key = "msqueak"
@@ -232,7 +244,7 @@
 	message = "lets out a tiny squeak!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/mothsqueak/run_emote(mob/living/user, params)
@@ -249,7 +261,7 @@
 	message = "merps!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/merp/run_emote(mob/living/user, params)
@@ -266,7 +278,7 @@
 	message = "barks!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/bark/run_emote(mob/living/user, params)
@@ -284,7 +296,7 @@
 	message = "squishes!"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	restraint_check = FALSE
+	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/squish/run_emote(mob/living/user, params)
@@ -295,3 +307,185 @@
 	user.nextsoundemote = world.time + 7
 	var/sound = pick('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg')
 	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/meow
+	key = "meow"
+	key_third_person = "meows"
+	message = "meows!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	hands_use_check = FALSE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/meow/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	hands_use_check = FALSE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/hiss/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/chitter
+	key = "chitter"
+	key_third_person = "chitters"
+	message = "chitters!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	hands_use_check = FALSE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/chitter/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/sigh/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/male_sigh.ogg')
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.gender == FEMALE)
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_sigh.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/sniff/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/male_sniff.ogg')
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.gender == FEMALE)
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_sniff.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/gasp/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/gasp_m1.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m2.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m3.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m4.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m5.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m6.ogg')
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.gender == FEMALE)
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/gasp_f1.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f2.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f3.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f4.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f5.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f6.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/snore/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/snore.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/burp/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/burp_m.ogg')
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.gender == FEMALE)
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/burp_f.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/clap
+	key = "clap"
+	key_third_person = "claps"
+	message = "claps."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/clap/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/clap1.ogg','modular_skyrat/modules/emotes/sound/emotes/clap2.ogg','modular_skyrat/modules/emotes/sound/emotes/clap3.ogg','modular_skyrat/modules/emotes/sound/emotes/clap4.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/clap1
+	key = "clap1"
+	key_third_person = "claps once"
+	message = "claps once."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon)
+
+/datum/emote/living/clap1/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/claponce1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/claponce2.ogg')
+	playsound(user, sound, 50, 1, -1)
+
+/datum/emote/living/laugh
+	key = "laugh"
+	key_third_person = "laughs"
+	message = "laughs."
+	message_mime = "laughs silently!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+
+/datum/emote/living/laugh/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/mob/living/carbon/H = user
+	var/sound = pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
+	if(H.dna.species.id == "moth")
+		sound = 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
+	playsound(user, sound, 50, 1, -1)
+
+/mob/living/proc/do_ass_slap_animation(atom/slapped)
+	do_attack_animation(slapped, no_effect=TRUE)
+	var/image/gloveimg = image('icons/effects/effects.dmi', slapped, "slapglove", slapped.layer + 0.1)
+	gloveimg.pixel_y = -5
+	gloveimg.pixel_x = 0
+	flick_overlay(gloveimg, GLOB.clients, 10)
+
+	// And animate the attack!
+	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 3)
+	animate(time = 1)
+	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)

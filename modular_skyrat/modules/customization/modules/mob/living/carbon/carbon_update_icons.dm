@@ -45,10 +45,8 @@
 			. += "-digitigrade[BP.use_digitigrade]"
 		if(BP.animal_origin)
 			. += "-[BP.animal_origin]"
-		if(BP.status == BODYPART_ORGANIC)
-			. += "-organic"
-		else
-			. += "-robotic"
+		if(BP.organic_render)
+			. += "-OR"
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"

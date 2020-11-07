@@ -1,9 +1,9 @@
 /mob/living/silicon/robot/update_icons()
+	icon = (module.cyborg_icon_override ? module.cyborg_icon_override : initial(icon))
 	. = ..()
 	update_dogborg_icons()
 
 /mob/living/silicon/robot/proc/update_dogborg_icons()
-	icon = (module.cyborg_icon_override ? module.cyborg_icon_override : initial(icon))
 	var/extra_overlay
 	for(var/i in held_items)
 		var/obj/item/O = i
@@ -33,14 +33,18 @@
 		icon = 'icons/mob/robots.dmi'
 		pixel_x = initial(pixel_x)
 
-	if(client && stat != DEAD && module.dogborg)
-		switch(robot_resting)
-			if(ROBOT_REST_NORMAL)
-				icon_state = "[module.cyborg_base_icon]-rest"
-			if(ROBOT_REST_SITTING)
-				icon_state = "[module.cyborg_base_icon]-sit"
-			if(ROBOT_REST_BELLY_UP)
-				icon_state = "[module.cyborg_base_icon]-bellyup"
-			else
-				icon_state = "[module.cyborg_base_icon]"
+	if(robot_resting)
+		if(stat != DEAD && module.dogborg)
+			switch(robot_resting)
+				if(ROBOT_REST_NORMAL)
+					icon_state = "[module.cyborg_base_icon]-rest"
+				if(ROBOT_REST_SITTING)
+					icon_state = "[module.cyborg_base_icon]-sit"
+				if(ROBOT_REST_BELLY_UP)
+					icon_state = "[module.cyborg_base_icon]-bellyup"
+				else
+					icon_state = "[module.cyborg_base_icon]"
+			cut_overlays()
+	else
+		icon_state = "[module.cyborg_base_icon]"
 	update_fire()
