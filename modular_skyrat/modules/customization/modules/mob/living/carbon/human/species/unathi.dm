@@ -4,7 +4,6 @@
 	default_color = "4B4B4B"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	default_features = null
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = "None", "frills" = "None", "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Normal Legs")
 	attack_verb = "slash"

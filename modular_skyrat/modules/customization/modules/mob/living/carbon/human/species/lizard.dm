@@ -1,5 +1,4 @@
 /datum/species/lizard
-	default_features = null
 	mutant_bodyparts = list()
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
 	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
@@ -24,3 +23,6 @@
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
 	return returned
+
+/datum/species/lizard/ashwalker
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR)

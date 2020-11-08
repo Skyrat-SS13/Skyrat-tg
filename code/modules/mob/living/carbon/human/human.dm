@@ -20,7 +20,8 @@
 
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, .proc/clean_face)
 	AddComponent(/datum/component/personal_crafting)
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, 2)
+	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, -6) //ORIGINAL
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS 
 	AddComponent(/datum/component/bloodysoles/feet)
 	GLOB.human_list += src
 
@@ -81,34 +82,6 @@
 			. += ""
 			. += "Chemical Storage: [changeling.chem_charges]/[changeling.chem_storage]"
 			. += "Absorbed DNA: [changeling.absorbedcount]"
-	//NINJACODE
-	if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)) //Only display if actually a ninja.
-		var/obj/item/clothing/suit/space/space_ninja/SN = wear_suit
-		. += "SpiderOS Status: [SN.s_initialized ? "Initialized" : "Disabled"]"
-		. += "Current Time: [station_time_timestamp()]"
-		if(SN.s_initialized)
-			//Suit gear
-			. += "Energy Charge: [round(SN.cell.charge/100)]%"
-			. += "Smoke Bombs: \Roman [SN.s_bombs]"
-			//Ninja status
-			. += "Fingerprints: [md5(dna.uni_identity)]"
-			. += "Unique Identity: [dna.unique_enzymes]"
-			. += "Overall Status: [stat > 1 ? "dead" : "[health]% healthy"]"
-			. += "Nutrition Status: [nutrition]"
-			. += "Oxygen Loss: [getOxyLoss()]"
-			. += "Toxin Levels: [getToxLoss()]"
-			. += "Burn Severity: [getFireLoss()]"
-			. += "Brute Trauma: [getBruteLoss()]"
-			. += "Radiation Levels: [radiation] rad"
-			. += "Body Temperature: [bodytemperature-T0C] degrees C ([bodytemperature*1.8-459.67] degrees F)"
-
-			//Diseases
-			if(length(diseases))
-				. += "Viruses:"
-				for(var/thing in diseases)
-					var/datum/disease/D = thing
-					. += "* [D.name], Type: [D.spread_text], Stage: [D.stage]/[D.max_stages], Possible Cure: [D.cure_text]"
-
 
 /mob/living/carbon/human/show_inv(mob/user)
 	user.set_machine(src)
@@ -1097,7 +1070,7 @@
 		//Joe Medic starts quickly/expertly lifting Grey Tider onto their back..
 		"<span class='notice'>[carrydelay < 35 ? "Using your gloves' nanochips, you" : "You"] [skills_space] start to lift [target] onto your back[carrydelay == 40 ? ", while assisted by the nanochips in your gloves.." : "..."]</span>")
 		//(Using your gloves' nanochips, you/You) ( /quickly/expertly) start to lift Grey Tider onto your back(, while assisted by the nanochips in your gloves../...)
-		if(do_after(src, carrydelay, TRUE, target))
+		if(do_after(src, carrydelay, target))
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE) && !target.buckled)
 				if(target.loc != loc)
@@ -1295,12 +1268,6 @@
 
 /mob/living/carbon/human/species/golem/snow
 	race = /datum/species/golem/snow
-
-/mob/living/carbon/human/species/golem/capitalist
-	race = /datum/species/golem/capitalist
-
-/mob/living/carbon/human/species/golem/soviet
-	race = /datum/species/golem/soviet
 
 /mob/living/carbon/human/species/jelly
 	race = /datum/species/jelly
