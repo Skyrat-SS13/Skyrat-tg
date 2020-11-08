@@ -16,7 +16,7 @@
 	worn_icon = 'modular_skyrat/modules/roboclothes/icons/mob/robobag_onmob.dmi'
 	icon_state = "satchel-robo"
 
-obj/item/storage/backpack/duffel/robo
+/obj/item/storage/backpack/duffel/robo
 	name = "robotics duffelbag"
 	desc = "A sleek, industrial-strength duffelbag issued to robotics personnel. Smells faintly of oil."
 	icon = 'modular_skyrat/modules/roboclothes/icons/obj/robobag_item.dmi'
