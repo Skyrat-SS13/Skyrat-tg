@@ -149,9 +149,14 @@
 		shape.apply_damage(damapply, source.convert_damage_type, forced = TRUE, wound_bonus=CANT_WOUND);
 		shape.blood_volume = stored.blood_volume;
 
+<<<<<<< HEAD
 	stored.RegisterSignal(src, COMSIG_PARENT_QDELETING, .proc/shape_death)
 	stored.RegisterSignal(shape, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH), .proc/shape_death)
 	shape.RegisterSignal(stored, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_DEATH), .proc/shape_death)
+=======
+	RegisterSignal(shape, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/shape_death)
+	RegisterSignal(stored, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH), .proc/caster_death)
+>>>>>>> 477d97647e5... Move death(), gib(), and dust() from /mob to /mob/living (#54810)
 
 /obj/shapeshift_holder/Destroy()
 	if(!restoring)
@@ -191,6 +196,13 @@
 		restore()
 
 /obj/shapeshift_holder/proc/restore(death=FALSE)
+<<<<<<< HEAD
+=======
+	// Destroy() calls this proc if it hasn't been called. Unregistering here prevents multiple qdel loops
+	// when caster and shape both die at the same time.
+	UnregisterSignal(shape, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
+	UnregisterSignal(stored, list(COMSIG_PARENT_QDELETING, COMSIG_LIVING_DEATH))
+>>>>>>> 477d97647e5... Move death(), gib(), and dust() from /mob to /mob/living (#54810)
 	restoring = TRUE
 	stored.forceMove(shape.loc)
 	stored.notransform = FALSE
