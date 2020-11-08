@@ -66,7 +66,7 @@ just as if you were wearing them separate. Stop screaming to me about this. Plea
 	icon_state = "hardsuit-hosexo"
 	inhand_icon_state = "hardsuit-hosexo"
 	max_integrity = 300
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 100, "rad" = 0, "fire" = 70, "acid" = 90, "wound" = 10)
+	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 100, "rad" = 0, "fire" = 70, "acid" = 90, "wound" = 10)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_armor/hos
 	mutant_variants = STYLE_DIGITIGRADE
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
