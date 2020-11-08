@@ -276,7 +276,7 @@
 		if(BIO_BLOB_TYPE_FUNGUS)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
-			R.add_reagent(/datum/reagent/fungalspores, 50)
+			R.add_reagent(/datum/reagent/cordycepsspores, 50)
 			var/datum/effect_system/smoke_spread/chem/smoke = new()
 			smoke.set_up(R, 5)
 			smoke.attach(src)
