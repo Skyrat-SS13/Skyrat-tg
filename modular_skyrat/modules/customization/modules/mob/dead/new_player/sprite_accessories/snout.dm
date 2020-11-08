@@ -332,3 +332,7 @@
 	icon_state = "rat"
 	color_src = USE_MATRIXED_COLORS
 
+/datum/sprite_accessory/snouts/mammal/stubby
+	name = "Stubby"
+	icon_state = "stubby"
+	color_src = USE_MATRIXED_COLORS
