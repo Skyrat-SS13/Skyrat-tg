@@ -210,7 +210,7 @@
 /obj/item/storage/box/medipens
 	name = "box of medipens"
 	desc = "A box full of epinephrine MediPens."
-	illustration = "syringe"
+	illustration = "epipen"
 
 /obj/item/storage/box/medipens/PopulateContents()
 	for(var/i in 1 to 7)
@@ -219,7 +219,7 @@
 /obj/item/storage/box/medipens/utility
 	name = "stimpack value kit"
 	desc = "A box with several stimpack medipens for the economical miner."
-	illustration = "syringe"
+	illustration = "epipen"
 
 /obj/item/storage/box/medipens/utility/PopulateContents()
 	..() // includes regular medipens.
