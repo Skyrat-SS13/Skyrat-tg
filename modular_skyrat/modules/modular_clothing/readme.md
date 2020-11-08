@@ -33,3 +33,4 @@ Now nobody has ANY RIGHT to complain about helmet visor flash protection!
 ### Credits:
 Shade Aware - Code
 JungleRat - Spritework
+necromanceranne - Helping with rebalancing values to be equal to TG armor sets
