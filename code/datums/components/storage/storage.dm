@@ -568,26 +568,16 @@
 	// this must come before the screen objects only block, dunno why it wasn't before
 	if(over_object == M)
 		user_show_to_mob(M)
-<<<<<<< HEAD
 		playsound(A, "rustle", 50, TRUE, -5) //SKYRAT EDIT ADDITION - AESTHETICS
 		A.do_jiggle() //SKYRAT EDIT ADDITION - AESTHETICS
-	if(!istype(over_object, /obj/screen))
-=======
 	if(!istype(over_object, /atom/movable/screen))
->>>>>>> edd6500d786... /obj/screen --> /atom/movable/screen (#54403)
 		dump_content_at(over_object, M)
 		return
 	if(A.loc != M)
 		return
-<<<<<<< HEAD
 	//playsound(A, "rustle", 50, TRUE, -5) //SKYRAT EDIT REMOVAL - AESTHETICS
-	if(istype(over_object, /obj/screen/inventory/hand))
-		var/obj/screen/inventory/hand/H = over_object
-=======
-	playsound(A, "rustle", 50, TRUE, -5)
 	if(istype(over_object, /atom/movable/screen/inventory/hand))
 		var/atom/movable/screen/inventory/hand/H = over_object
->>>>>>> edd6500d786... /obj/screen --> /atom/movable/screen (#54403)
 		M.putItemFromInventoryInHandIfPossible(A, H.held_index)
 		return
 	A.add_fingerprint(M)
