@@ -6,14 +6,14 @@
 	appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	mouse_opacity = 0
 
-/proc/flick_emote_popup_on_mob(mob/M, state, time)
+/mob/living/proc/flick_emote_popup_on_mob(state, time)
 	var/obj/effect/overlay/emote_popup/I = new
 	I.icon_state = state
-	M.vis_contents += I
+	vis_contents += I
 	animate(I, alpha = 255, time = 5, easing = BOUNCE_EASING, pixel_y = 10)
-	addtimer(CALLBACK(src, .proc/remove_emote_popup_on_mob, I, M), time)
+	addtimer(CALLBACK(src, .proc/remove_emote_popup_on_mob, I), time)
 
-/proc/remove_emote_popup_on_mob(obj/effect/overlay/emote_popup/I, mob/M)
-	M.vis_contents -= I
+/mob/living/proc/remove_emote_popup_on_mob(obj/effect/overlay/emote_popup/I)
+	vis_contents -= I
 	qdel(I)
 	return
