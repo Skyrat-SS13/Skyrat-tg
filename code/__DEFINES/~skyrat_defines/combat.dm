@@ -1,7 +1,7 @@
-#define MAX_HUMAN_LIFE 200
+#define MAX_HUMAN_LIFE 180
 
 //APPLICATION OF STAM DAMAGE
-#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.75
+#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.8
 
 #define PUNCH_EXTRA_STAMINA_MULTIPLIER 0.75
 
@@ -49,6 +49,8 @@
 #define PAIN_THRESHOLD_MESSAGE_OHGOD 190
 
 #define PAIN_MESSAGE_COOLDOWN 20 SECONDS
+
+#define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
 /mob/living/carbon
 	var/next_pain_message = 0
