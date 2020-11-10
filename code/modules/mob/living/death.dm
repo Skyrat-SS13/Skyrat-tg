@@ -70,6 +70,10 @@
 	med_hud_set_status()
 	stop_pulling()
 
+	set_combat_indicator(FALSE) //SKYRAT EDIT ADDITION - COMBAT_INDICATOR
+	set_ssd_indicator(FALSE) //SKYRAT EDIT ADDITION - SSD_INDICATOR
+	set_typing_indicator(FALSE) //SKYRAT EDIT ADDITION - TYPING_INDICATOR
+
 	. = ..()
 
 	if (client)
