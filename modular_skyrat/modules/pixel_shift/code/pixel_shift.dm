@@ -33,8 +33,8 @@
 /mob/living/unpixel_shift()
 	if(is_shifted)
 		is_shifted = FALSE
-		pixel_x = get_standard_pixel_x_offset(!mobility_flags & MOBILITY_STAND)
-		pixel_y = get_standard_pixel_y_offset(!mobility_flags & MOBILITY_STAND)
+		pixel_x = body_position_pixel_x_offset
+		pixel_y = body_position_pixel_y_offset
 
 /mob/proc/pixel_shift(direction)
 	return
