@@ -176,6 +176,7 @@
 	update_simplemob_varspeed()
 	if(dextrous)
 		AddComponent(/datum/component/personal_crafting)
+		ADD_TRAIT(src, TRAIT_ADVANCEDTOOLUSER, ROUNDSTART_TRAIT)
 
 	if(speak)
 		speak = string_list(speak)
@@ -371,7 +372,7 @@
 	if(!environment_air_is_safe())
 		adjustHealth(unsuitable_atmos_damage)
 		if(unsuitable_atmos_damage > 0)
-			throw_alert("not_enough_oxy", /obj/screen/alert/not_enough_oxy)
+			throw_alert("not_enough_oxy", /atom/movable/screen/alert/not_enough_oxy)
 	else
 		clear_alert("not_enough_oxy")
 
@@ -382,20 +383,20 @@
 		adjustHealth(unsuitable_atmos_damage)
 		switch(unsuitable_atmos_damage)
 			if(1 to 5)
-				throw_alert("temp", /obj/screen/alert/cold, 1)
+				throw_alert("temp", /atom/movable/screen/alert/cold, 1)
 			if(5 to 10)
-				throw_alert("temp", /obj/screen/alert/cold, 2)
+				throw_alert("temp", /atom/movable/screen/alert/cold, 2)
 			if(10 to INFINITY)
-				throw_alert("temp", /obj/screen/alert/cold, 3)
+				throw_alert("temp", /atom/movable/screen/alert/cold, 3)
 	else if(bodytemperature > maxbodytemp)
 		adjustHealth(unsuitable_atmos_damage)
 		switch(unsuitable_atmos_damage)
 			if(1 to 5)
-				throw_alert("temp", /obj/screen/alert/hot, 1)
+				throw_alert("temp", /atom/movable/screen/alert/hot, 1)
 			if(5 to 10)
-				throw_alert("temp", /obj/screen/alert/hot, 2)
+				throw_alert("temp", /atom/movable/screen/alert/hot, 2)
 			if(10 to INFINITY)
-				throw_alert("temp", /obj/screen/alert/hot, 3)
+				throw_alert("temp", /atom/movable/screen/alert/hot, 3)
 	else
 		clear_alert("temp")
 
@@ -610,10 +611,7 @@
 	return (..() || access_card)
 
 /mob/living/simple_animal/can_hold_items()
-	return dextrous
-
-/mob/living/simple_animal/IsAdvancedToolUser()
-	return dextrous
+	return dextrous && ..()
 
 /mob/living/simple_animal/activate_hand(selhand)
 	if(!dextrous)
@@ -642,7 +640,7 @@
 	var/oindex = active_hand_index
 	active_hand_index = hand_index
 	if(hud_used)
-		var/obj/screen/inventory/hand/H
+		var/atom/movable/screen/inventory/hand/H
 		H = hud_used.hand_slots["[hand_index]"]
 		if(H)
 			H.update_icon()
