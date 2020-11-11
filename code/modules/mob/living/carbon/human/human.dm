@@ -23,6 +23,7 @@
 	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, -6) //ORIGINAL
 	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS 
 	AddComponent(/datum/component/bloodysoles/feet)
+	ADD_TRAIT(src, TRAIT_ADVANCEDTOOLUSER, ROUNDSTART_TRAIT)
 	GLOB.human_list += src
 
 /mob/living/carbon/human/proc/setup_human_dna()
@@ -899,9 +900,6 @@
 	return ..()
 
 /mob/living/carbon/human/is_literate()
-	return TRUE
-
-/mob/living/carbon/human/can_hold_items()
 	return TRUE
 
 /mob/living/carbon/human/update_gravity(has_gravity,override = 0)
