@@ -606,17 +606,6 @@
 		to_chat(ghost, "[link] [my_message]")
 	usr.log_talk(message, LOG_SAY, tag="spider command")
 
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/poison/giant_spider/handle_temperature_damage()
-	if(bodytemperature < minbodytemp)
-		adjustBruteLoss(20)
-		throw_alert("temp", /obj/screen/alert/cold, 3)
-	else if(bodytemperature > maxbodytemp)
-		adjustBruteLoss(20)
-		throw_alert("temp", /obj/screen/alert/hot, 3)
-	else
-		clear_alert("temp")
-=======
 /**
   * # Giant Ice Spider
   *
@@ -664,7 +653,6 @@
 	poison_type = /datum/reagent/consumable/frostoil
 	color = rgb(114,228,250)
 	gold_core_spawnable = NO_SPAWN
->>>>>>> 0279109cf9c... Spider Rework (#54451)
 
 /**
   * # Flesh Spider
