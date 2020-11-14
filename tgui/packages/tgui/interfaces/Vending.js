@@ -25,6 +25,11 @@ const VendingRow = (props, context) => {
       && department === user.department
     )
   );
+<<<<<<< HEAD
+=======
+  const discount = department === user?.department;
+  const redPrice = Math.round(product.price * jobDiscount);
+>>>>>>> f5d435063c7... Whoops. (#54964)
   return (
     <Table.Row>
       <Table.Cell collapsing>
