@@ -299,7 +299,7 @@
 		if(appears_dead)
 			bleed_text += ", but it has pooled and is not flowing.</span></B>\n"
 		else
-			if(has_reagent(/datum/reagent/toxin/heparin, needs_metabolizing = TRUE))
+			if(reagents.has_reagent(/datum/reagent/toxin/heparin, needs_metabolizing = TRUE))
 				bleed_text += " incredibly quickly"
 
 			bleed_text += "!</B>\n"
@@ -310,7 +310,7 @@
 
 		msg += bleed_text.Join()
 
-	if(has_reagent(/datum/reagent/teslium, needs_metabolizing = TRUE))
+	if(reagents.has_reagent(/datum/reagent/teslium, needs_metabolizing = TRUE))
 		msg += "[t_He] [t_is] emitting a gentle blue glow!\n"
 
 	if(islist(stun_absorption))
