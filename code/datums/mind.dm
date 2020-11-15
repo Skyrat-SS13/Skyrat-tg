@@ -258,6 +258,14 @@
 		antag_team.add_member(src)
 	INVOKE_ASYNC(A, /datum/antagonist.proc/on_gain)
 	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+	if(A.uses_ambitions)
+		if(!my_ambitions)
+			my_ambitions = new(src)
+		//If we already have ambitions done, call the add proc to give us the proper powers/uplinks
+		if(my_ambitions.submitted)
+			A.ambitions_add()
+	//SKYRAT EDIT ADDITION END
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -266,6 +274,10 @@
 	var/datum/antagonist/A = has_antag_datum(datum_type)
 	if(A)
 		A.on_removal()
+		//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+		if(A.uses_ambitions && my_ambitions.submitted)
+			A.ambitions_removal()
+		//SKYRAT EDIT ADDITION END
 		return TRUE
 
 
@@ -634,6 +646,13 @@
 
 	else if (href_list["obj_announce"])
 		announce_objectives()
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+	if (href_list["ambitions"])
+		if(!my_ambitions)
+			return
+		//It's admin viewing the user's ambitions. The user can view them through a verb.
+		my_ambitions.ShowPanel(usr, TRUE)
+	//SKYRAT EDIT ADDITION END
 
 	//Something in here might have changed your mob
 	if(self_antagging && (!usr || !usr.client) && current.client)
