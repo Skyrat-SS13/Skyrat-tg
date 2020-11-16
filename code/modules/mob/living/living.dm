@@ -293,7 +293,8 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-			if(isfelinid(AM) && isfelinid(src))
+			//if(isfelinid(AM) && isfelinid(src)) //ORIGINAL
+			if(AM.getorganslot(ORGAN_SLOT_TAIL) && src.getorganslot(ORGAN_SLOT_TAIL)) //SKYRAT EDIT CHANGE
 				M.visible_message("<span class='warning'>[src] coils their tail with [AM], wow is that okay in public?!</span>", "[src] has entwined their tail with yours!")
 				to_chat(src, "You entwine your tail with [AM]")
 			else
