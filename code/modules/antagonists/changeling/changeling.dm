@@ -67,9 +67,13 @@
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()
+	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+	/*
 	create_actions()
 	reset_powers()
 	create_initial_profile()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		forge_objectives()
 	owner.current.grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue. We are able to transform our body after all.
@@ -83,7 +87,11 @@
 		if(B && (B.decoy_override != initial(B.decoy_override)))
 			B.organ_flags |= ORGAN_VITAL
 			B.decoy_override = FALSE
+	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+	/*
 	remove_changeling_powers()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	. = ..()
 
 /datum/antagonist/changeling/proc/reset_properties()

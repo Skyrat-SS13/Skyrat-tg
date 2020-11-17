@@ -201,8 +201,12 @@
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE)
 			owner.current.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MALF)
 		if(TRAITOR_HUMAN)
+			//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+			/*
 			if(should_equip)
 				equip(silent)
+			*/
+			//SKYRAT EDIT REMOVAL END
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE)
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
