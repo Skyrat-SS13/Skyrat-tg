@@ -1,11 +1,3 @@
-#define AMBITION_INTENSITY_MILD 2
-#define AMBITION_INTENSITY_MEDIUM 4
-#define AMBITION_INTENSITY_SEVERE 10
-#define AMBITION_INTENSITY_EXTREME 15
-
-#define ADMIN_TPMONTY_NONAME(user) "[ADMIN_QUE(user)] [ADMIN_JMP(user)] [ADMIN_FLW(user)]"
-#define ADMIN_TPMONTY(user) "[key_name_admin(user)] [ADMIN_TPMONTY_NONAME(user)]"
-
 /datum/ambitions
 	///Reasons of why would you act in antagonic ways
 	var/narrative = ""
@@ -27,9 +19,18 @@
 	var/list/log = list("Ambition Logs:")
 	///The mind the ambitions belong to
 	var/datum/mind/my_mind
+	///The original name of our character
+	var/owner_name
+	///The last change requested by an admin, if a review was asked for
+	var/last_requested_change
 
 /datum/ambitions/New(datum/mind/M)
 	my_mind = M
+	owner_name = my_mind.current.real_name
+	//Greet our antag player and give him a link to open ambitions!
+	to_chat(my_mind.current, "<span class='boldnotice'>You're a story driven antagonist, this means you'll have to fill ambitions before you start antagonising!</span>")
+	to_chat(my_mind.current, "<span class='boldnotice'>After filling them out you'll get access to your uplink or powers.</span>")
+	to_chat(my_mind.current, "<span class='boldnotice'>Click <a href='?src=[REF(src)];pref=show_ambitions'>here</a> to set your ambitions, or access them at any time from your IC tab.</span>")
 
 /datum/ambitions/proc/ShowPanel(mob/user, admin_view = FALSE)
 	if(!user || !user.client)
@@ -46,8 +47,10 @@
 					dat += "<BR><b><font color='#ffd500'>...however they changed their ambitions after that, see logs for more info.</font></b>"
 		else
 			dat += "<BR><b>They have NOT requested an admin review.</b>"
-		var/approve_link = (admin_review_requested && (!admin_approval || changed_after_approval)) ? "href='?src=[REF(src)];admin_pref=approve'" : "class='linkOff'"
-		dat += "<BR><a [approve_link]>Approve</a> <a href='?src=[REF(src)];admin_pref=logs'>Logs</a>"
+		dat += "<BR>"
+		if(admin_review_requested && (!admin_approval || changed_after_approval))
+			dat += "<a href='?src=[REF(src)];admin_pref=approve'>Approve</a> <a href='?src=[REF(src)];admin_pref=handle'>Handle</a> <a href='?src=[REF(src)];admin_pref=request_changes'>Request Changes</a>  <a href='?src=[REF(src)];admin_pref=discard_review'>Discard</a> -"
+		dat += " <a href='?src=[REF(src)];admin_pref=logs'>Logs</a>"
 		dat += "<HR>"
 
 	dat += "<b>Antagonists are supposed to provide excitement and intrigue, drive a story with the crew, and provide fun and interesting experience for people involved. <BR> Remember, it's not about winning or losing, but about the story and interactions, this is a roleplay server.</b><BR><BR>"
@@ -57,11 +60,15 @@
 	dat += "<BR><i>You can still edit them post submission.</i>"
 	dat += "<BR><b><font color='#FF0000'>If your ambitions are nonsensical, you may be subjected to an antagonist ban.</font></b>"
 	var/review_link = (is_proper_ambitions() && !admin_review_requested) ? "href='?src=[REF(src)];pref=request_review'" : "class='linkOff'"
-	dat += "<center><a href='?src=[REF(src)];pref=template'>Choose template</a> <a [review_link]>Request admin review</a></center>"
+	dat += "<center><a href='?src=[REF(src)];pref=template'>Choose template</a> <a [review_link]>Request admin review (optional)</a></center>"
 	dat += "<BR><i>If you do choose a template, you'll get tips regarding it in your chat, and it wont submit automatically.</i>"
 	dat += "<HR>"
 	if(changed_after_approval)
 		dat += "<BR><b><font color='#ffd500'>Some fields were changed after an admin approval.</font></b>"
+	if(last_requested_change)
+		dat += "<BR><b><font color='#ffd500'>Requested changes:</font></b>"
+		dat += "<BR><b><font color='#ffd500'>[last_requested_change]</font></b>"
+		dat += "<BR><a href='?src=[REF(src)];pref=requested_done'>Notify admin that you've done them!</a></b>"
 	dat += "<h3>Narrative:</h3>"
 	dat += "<i>Here you set your narrative. It's the reason on why you're doing antagonistic things. Perhaps you need money for personal reasons, or you were contracted to do someone's dirty work, or want to take down the BigPharma.</i>"
 	dat += "<BR><table align='center'; width='100%'; style='background-color:#13171C'><tr><td><center>"
@@ -96,16 +103,18 @@
 		dat += "<BR><center><font color='#CCCCFF'><b>Please set your intensity!</b></font></center>"
 	dat += "<table>"
 	dat += "<tr><td width=15%></td><td width=85%></td></tr>"
-	for(var/i in 1 to 4)
+	for(var/i in 1 to 5)
 		var/current_spice
 		switch(i)
 			if(1)
-				current_spice = AMBITION_INTENSITY_MILD
+				current_spice = AMBITION_INTENSITY_STEALTH
 			if(2)
-				current_spice = AMBITION_INTENSITY_MEDIUM
+				current_spice = AMBITION_INTENSITY_MILD
 			if(3)
-				current_spice = AMBITION_INTENSITY_SEVERE
+				current_spice = AMBITION_INTENSITY_MEDIUM
 			if(4)
+				current_spice = AMBITION_INTENSITY_SEVERE
+			if(5)
 				current_spice = AMBITION_INTENSITY_EXTREME
 		var/active = (current_spice == intensity)
 		var/spice_link = active ? "class='linkOn'" : "href='?src=[REF(src)];pref=spice;amount=[current_spice]'"
@@ -113,6 +122,10 @@
 		var/spice_desc
 		var/spice_color
 		switch(current_spice)
+			if(AMBITION_INTENSITY_STEALTH)
+				spice_name = "Stealth"
+				spice_desc = "Nothing noticable to the public, interacting with one or two people."
+				spice_color = "#a6a6a6"
 			if(AMBITION_INTENSITY_MILD)
 				spice_name = "Mild"
 				spice_desc = "Thievery and vandalism."
@@ -157,12 +170,39 @@
 /datum/ambitions/Topic(href, href_list)
 	if(href_list["admin_pref"])
 		switch(href_list["admin_pref"])
+			if("handle")
+				var/last_ckey = GLOB.ambitions_to_review[src]
+				if(last_ckey && last_ckey != usr.ckey)
+					var/action = alert(usr, "[last_ckey] is already handling this review! Do you want to handle nonetheless?", "", "Yes", "No")
+					if(action && !(action == "Yes"))
+						return
+				GLOB.ambitions_to_review[src] = usr.ckey
+				message_admins("<span class='adminhelp'>[usr.ckey] is handling [owner_name]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				to_chat(my_mind.current, "<span class='boldnotice'>[usr.ckey] is handling your ambitions.</span>")
+			if("request_changes")
+				var/changes_wanted = input(usr, "Requested changes:", "Ambitions")  as message|null
+				if(changes_wanted)
+					last_requested_change = changes_wanted
+					to_chat(my_mind.current, "<span class='boldwarning'>[usr.ckey] requested changes on your ambitions: [changes_wanted]. (<a href='?src=[REF(src)];pref=show_ambitions'>VIEW</a>)</span>")
+					message_admins("<span class='adminhelp'>[usr.ckey] requested changes in [ADMIN_TPMONTY(my_mind.current)]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+			if("discard_review")
+				var/action = alert(usr, "Are you sure you want to discard this review request (Use request changes if you want it changed instead)?", "", "Yes", "No")
+				if(action && action == "Yes" && admin_review_requested)
+					admin_review_requested = FALSE
+					admin_approval = FALSE
+					changed_after_approval = FALSE
+					last_requested_change = null
+					GLOB.ambitions_to_review -= src
+					to_chat(my_mind.current, "<span class='warning'><b>Your ambitions review request was discarded by [usr.ckey].</b></span>")
+					message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions review request was DISCARDED by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("approve")
 				admin_approval = TRUE
 				changed_after_approval = FALSE
+				last_requested_change = null
+				GLOB.ambitions_to_review -= src
 				log_action("APPROVED: Got an approval from [usr.ckey]", FALSE)
 				to_chat(my_mind.current, "<span class='nicegreen'><b>Your ambitions were approved by [usr.ckey].</b></span>")
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)]'s ambitions were approved by [usr.ckey].</span>")
+				message_admins("<span class='nicegreen'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions were approved by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 				submit()
 			if("logs")
 				var/datum/browser/popup = new(usr, "Ambition logging", "Ambition logs", 500, 200)
@@ -175,16 +215,37 @@
 
 	if(href_list["pref"])
 		switch(href_list["pref"])
+			if("template")
+				var/list/available_templates = list()
+				for(var/name in GLOB.ambitions_templates)
+					var/datum/ambition_template/AT = GLOB.ambitions_templates[name]
+					if(AT.antag_whitelist)
+						continue
+					if(AT.job_whitelist)
+						continue
+					available_templates += AT
+			if("requested_done")
+				to_chat(src, "<span class='nicegreen'><b>You notify admins that you have adressed the requested changes.</b></span>")
+				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] notifies that he has finished the requested changes in his ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("request_review")
 				admin_review_requested = TRUE
+				GLOB.ambitions_to_review[src] = 0
 				log_action("--Requested an admin review--", FALSE)
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has requested a review of their ambitions.</span>")
+				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("submit")
 				submit()
 				log_action("SUBMIT: Submitted their ambitions", FALSE)
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has submitted their ambitions.</span>")
+				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has submitted their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("spice")
-				intensity = text2num(href_list["amount"])
+				var/new_intensity = text2num(href_list["amount"])
+				if(intensity == new_intensity)
+					return
+				if(submitted)
+					GLOB.total_intensity -= intensity
+					GLOB.intensity_counts["[intensity]"] -= 1
+					GLOB.total_intensity += new_intensity
+					GLOB.intensity_counts["[new_intensity]"] += 1
+				intensity = new_intensity
 			if("edit_admin_note")
 				var/msg = input(usr, "Set your note to admins!", "Note to admins", note_to_admins) as message|null
 				if(msg)
@@ -234,8 +295,12 @@
 	return TRUE
 
 /datum/ambitions/proc/submit()
+	if(submitted)
+		return
 	submitted = TRUE
 	my_mind.ambition_submit()
+	GLOB.total_intensity += intensity
+	GLOB.intensity_counts["[intensity]"] += 1
 
 /mob/proc/view_ambitions()
 	set name = "View Ambitions"
@@ -246,6 +311,9 @@
 	if(!mind.my_ambitions)
 		return
 	mind.my_ambitions.ShowPanel(src)
+
+/datum/ambitions/proc/Action(action)
+	ShowPanel(usr, TRUE)
 
 #undef AMBITION_INTENSITY_MILD
 #undef AMBITION_INTENSITY_MEDIUM

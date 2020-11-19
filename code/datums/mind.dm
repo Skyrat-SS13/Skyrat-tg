@@ -117,6 +117,11 @@
 	var/mob/living/old_current = current
 	if(current)
 		current.transfer_observers_to(new_character)	//transfer anyone observing the old character to the new one
+	//SKYRAT CHANGE ADDITION BEGIN - AMBITIONS
+	if(my_ambitions)
+		remove_verb(current, /mob/proc/view_ambitions)
+		add_verb(new_character, /mob/proc/view_ambitions)
+	//SKYRAT CHANGE ADDITION END
 	current = new_character								//associate ourself with our new body
 	new_character.mind = src							//and associate our new body with ourself
 	for(var/a in antag_datums)	//Makes sure all antag datums effects are applied in the new body
@@ -262,6 +267,7 @@
 	if(A.uses_ambitions)
 		if(!my_ambitions)
 			my_ambitions = new(src)
+			add_verb(current, /mob/proc/view_ambitions)
 		//If we already have ambitions done, call the add proc to give us the proper powers/uplinks
 		if(my_ambitions.submitted)
 			A.ambitions_add()
