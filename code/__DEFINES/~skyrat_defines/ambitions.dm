@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(ambitions_templates, setup_ambition_templates())
 	var/list/LI = list()
 	for(var/path in subtypesof(/datum/ambition_template))
 		var/datum/ambition_template/P = path
-		if(initial(P.key))
+		if(initial(P.name))
 			P = new path()
-			ambitions_templates[P.name] = P
+			LI[P.name] = P
 	return LI

@@ -60,8 +60,16 @@
 	dat += "<BR><i>You can still edit them post submission.</i>"
 	dat += "<BR><b><font color='#FF0000'>If your ambitions are nonsensical, you may be subjected to an antagonist ban.</font></b>"
 	var/review_link = (is_proper_ambitions() && !admin_review_requested) ? "href='?src=[REF(src)];pref=request_review'" : "class='linkOff'"
-	dat += "<center><a href='?src=[REF(src)];pref=template'>Choose template</a> <a [review_link]>Request admin review (optional)</a></center>"
-	dat += "<BR><i>If you do choose a template, you'll get tips regarding it in your chat, and it wont submit automatically.</i>"
+	var/submit_link = "class='linkOff'"
+	if(!is_proper_ambitions())
+		dat += "<BR><center><b>Before you'll be able to submit your ambitions, you need to fill narratives, objectives and intensity.</b></center>"
+	else if(admin_review_requested && !admin_approval)
+		dat += "<BR><center><b>You've requested admin approval, ambitions will automatically be submitted after approval.</b></center>"
+	else if(!submitted)
+		submit_link = "href='?src=[REF(src)];pref=submit'"
+	else
+		dat += "<BR><center><b>You've already submitted your ambitions, but feel free to edit them.</b></center>"
+	dat += "<center><a [submit_link]>Submit</a> <a href='?src=[REF(src)];pref=template'>Choose template</a> <a [review_link]>Request admin review (optional)</a></center>"
 	dat += "<HR>"
 	if(changed_after_approval)
 		dat += "<BR><b><font color='#ffd500'>Some fields were changed after an admin approval.</font></b>"
@@ -151,15 +159,6 @@
 	dat += note_to_admins
 	dat += "</center><BR><center><a href='?src=[REF(src)];pref=edit_admin_note'>Edit your note to admin</a></center>"
 	dat += "</td></tr></table>"
-	dat += "<HR>"
-	if(!is_proper_ambitions())
-		dat += "<center><b>Before you'll be able to submit your ambitions, you need to fill narratives, objectives and intensity.</b></center>"
-	else if(admin_review_requested && !admin_approval)
-		dat += "<center><b>You've requested admin approval, please wait before submitting.</b></center>"
-	else if(!submitted)
-		dat += "<center><a href='?src=[REF(src)];pref=submit'>Submit</a></center>"
-	else
-		dat += "<center><b>You've already submitted your ambitions, but feel free to edit them.</b></center>"
 
 	winshow(usr, "ambition_window", TRUE)
 	var/datum/browser/popup = new(usr, "ambition_window", "<div align='center'>Ambitions</div>", 950, 750)
@@ -167,7 +166,90 @@
 	popup.open(FALSE)
 	onclose(usr, "ambition_window", src)
 
+/datum/ambitions/proc/ShowTemplatePanel(mob/user)
+	if(!user || !user.client)
+		return
+	var/list/dat =  list("<center>")
+	dat += "<i>Templates shown here are mostly ideas for your antagonism, you are encouraged to edit them to fit your character the most.</i>"
+	dat += "<BR><i>Not all of them have all fields, mostly intensity, as it's up to you how you execute a lot of narratives.</i>"
+	dat += "<BR><i>Hopefully those can give you fun ideas on how to do antagonism in the future too!</i>"
+	var/list/available_templates = list()
+	for(var/name in GLOB.ambitions_templates)
+		var/datum/ambition_template/AT = GLOB.ambitions_templates[name]
+		if(AT.antag_whitelist)
+			var/has_required = FALSE
+			for(var/datum/antagonist/A in my_mind.antag_datums)
+				if(A.name in AT.antag_whitelist)
+					has_required = TRUE
+					break
+			if(!has_required)
+				continue
+		if(AT.job_whitelist)
+			if(!(my_mind.assigned_role in AT.job_whitelist))
+				continue
+		available_templates += AT
+	for(var/temp in available_templates)
+		var/datum/ambition_template/AT = temp
+		dat += "<table align='center'; width='100%'; style='background-color:#13171C'>"
+		dat += "<tr><td><b>[AT.name]</b>  <a href='?src=[REF(src)];temp_pref=choose;name=[AT.name]'>Choose</a></td></tr>"
+		if(AT.narrative != "")
+			dat += "<tr style='background-color:#21526b'><td>Narrative:</td></tr>"
+			dat += "<tr><td>[AT.narrative]</td></tr>"
+		if(length(AT.objectives))
+			dat += "<tr style='background-color:#21526b'><td>Objectives:</td></tr>"
+			var/even = FALSE
+			for(var/objec in AT.objectives)
+				even = !even
+				var/bgc = even ? "#13171C" : "#18211C"
+				dat += "<tr style='background-color:[bgc]'><td>* [objec]</td></tr>"
+		if(AT.intensity)
+			var/string = "ERROR"
+			switch(AT.intensity)
+				if(AMBITION_INTENSITY_STEALTH)
+					string = "Stealth"
+				if(AMBITION_INTENSITY_MILD)
+					string = "Mild"
+				if(AMBITION_INTENSITY_MEDIUM)
+					string = "Medium"
+				if(AMBITION_INTENSITY_SEVERE)
+					string = "Severe"
+				if(AMBITION_INTENSITY_EXTREME)
+					string = "Extreme"
+			dat += "<tr style='background-color:#21526b'><td>Intensity: [string]</td></tr>"
+		if(length(AT.tips))
+			dat += "<tr style='background-color:#21526b'><td>Tips:</td></tr>"
+			var/even = FALSE
+			for(var/tip in AT.tips)
+				even = !even
+				var/bgc = even ? "#13171C" : "#23272C"
+				dat += "<tr style='background-color:[bgc]'><td>[tip]</td></tr>"
+		dat += "</table>"
+		dat += "<BR>"
+
+	winshow(usr, "ambition_template_window", TRUE)
+	var/datum/browser/popup = new(usr, "ambition_template_window", "<div align='center'>Ambition Templates</div>", 950, 750)
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+	onclose(usr, "ambition_template_window", src)
+
 /datum/ambitions/Topic(href, href_list)
+	if(href_list["temp_pref"])
+		var/temp_name = href_list["name"]
+		var/datum/ambition_template/AT = GLOB.ambitions_templates[temp_name]
+		if(AT)
+			narrative = AT.narrative
+			objectives = AT.objectives.Copy()
+			if(submitted)
+				GLOB.total_intensity -= intensity
+				if(intensity)
+					GLOB.intensity_counts["[intensity]"] -= 1
+				GLOB.total_intensity += AT.intensity
+				if(AT.intensity)
+					GLOB.intensity_counts["[AT.intensity]"] += 1
+			intensity = AT.intensity
+			log_action("TEMPLATE: Chosen the [AT.name] template")
+		usr << browse(null, "window=ambition_template_window")
+		ShowPanel(usr)
 	if(href_list["admin_pref"])
 		switch(href_list["admin_pref"])
 			if("handle")
@@ -216,14 +298,8 @@
 	if(href_list["pref"])
 		switch(href_list["pref"])
 			if("template")
-				var/list/available_templates = list()
-				for(var/name in GLOB.ambitions_templates)
-					var/datum/ambition_template/AT = GLOB.ambitions_templates[name]
-					if(AT.antag_whitelist)
-						continue
-					if(AT.job_whitelist)
-						continue
-					available_templates += AT
+				ShowTemplatePanel(usr)
+				return
 			if("requested_done")
 				to_chat(src, "<span class='nicegreen'><b>You notify admins that you have adressed the requested changes.</b></span>")
 				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] notifies that he has finished the requested changes in his ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
@@ -240,11 +316,26 @@
 				var/new_intensity = text2num(href_list["amount"])
 				if(intensity == new_intensity)
 					return
+				var/string = "ERROR"
+				switch(intensity)
+					if(AMBITION_INTENSITY_STEALTH)
+						string = "Stealth"
+					if(AMBITION_INTENSITY_MILD)
+						string = "Mild"
+					if(AMBITION_INTENSITY_MEDIUM)
+						string = "Medium"
+					if(AMBITION_INTENSITY_SEVERE)
+						string = "Severe"
+					if(AMBITION_INTENSITY_EXTREME)
+						string = "Extreme"
+				log_action("INTENSITY: set to [string]")
 				if(submitted)
 					GLOB.total_intensity -= intensity
-					GLOB.intensity_counts["[intensity]"] -= 1
+					if(intensity)
+						GLOB.intensity_counts["[intensity]"] -= 1
 					GLOB.total_intensity += new_intensity
-					GLOB.intensity_counts["[new_intensity]"] += 1
+					if(new_intensity)
+						GLOB.intensity_counts["[new_intensity]"] += 1
 				intensity = new_intensity
 			if("edit_admin_note")
 				var/msg = input(usr, "Set your note to admins!", "Note to admins", note_to_admins) as message|null

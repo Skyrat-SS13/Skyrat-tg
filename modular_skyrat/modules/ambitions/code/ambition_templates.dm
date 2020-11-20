@@ -13,7 +13,7 @@
 	///Intensity given by the template
 	var/intensity = 0
 	///Tips displayed to the antag
-	var/list/tips = list()
+	var/list/tips
 
 /datum/ambition_template/blank
 	name = "Blank"
