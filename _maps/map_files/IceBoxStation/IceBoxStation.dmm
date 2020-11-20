@@ -10399,6 +10399,7 @@
 "axg" = (
 /obj/structure/table/glass,
 /obj/item/storage/bag/trash,
+/obj/structure/bedsheetbin,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "axh" = (
@@ -19855,7 +19856,7 @@
 /area/storage/tools)
 "aTM" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
 "aTN" = (
@@ -20559,7 +20560,7 @@
 "aVA" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/kitchen)
 "aVB" = (
@@ -21830,15 +21831,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plasteel,
 /area/bridge)
-"aYt" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/engine/atmos)
 "aYu" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -21859,12 +21851,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/bridge)
-"aYv" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/engine/atmos)
 "aYw" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/highsecurity{
@@ -30396,7 +30382,6 @@
 /obj/structure/table/optable{
 	name = "Robotics Operating Table"
 	},
-/obj/item/surgical_drapes,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "bsV" = (
@@ -34503,9 +34488,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
-/obj/machinery/vending/medical{
-	pixel_x = -2
-	},
+/obj/machinery/vending/medical/chems,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/aft)
 "bDX" = (
@@ -38127,15 +38110,6 @@
 /area/engine/atmos)
 "bOU" = (
 /obj/machinery/holopad,
-/turf/open/floor/plasteel,
-/area/engine/atmos)
-"bOV" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
-	dir = 8
-	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "bOW" = (
@@ -46767,7 +46741,7 @@
 /obj/item/reagent_containers/food/condiment/peppermill{
 	pixel_x = 2
 	},
-/obj/item/reagent_containers/food/snacks/mint{
+/obj/item/food/mint{
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
@@ -53718,6 +53692,12 @@
 /obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plasteel,
 /area/medical/medbay/lobby)
+"pEY" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "pFO" = (
 /obj/machinery/camera{
 	c_tag = "Holodeck - Fore";
@@ -54212,6 +54192,15 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/medical/psychology)
+"rid" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "rjh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -55240,6 +55229,15 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"uco" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "udp" = (
 /obj/item/crowbar/large,
 /obj/structure/rack,
@@ -88486,7 +88484,7 @@ bZN
 bLK
 bML
 bNT
-bOV
+uco
 bQj
 bRw
 bSF
@@ -88743,7 +88741,7 @@ bBR
 bLK
 bMN
 bNV
-aYt
+rid
 bQo
 bRz
 bSH
@@ -89000,7 +88998,7 @@ bAw
 bLK
 bMM
 bOd
-aYv
+pEY
 bOd
 bRy
 bSG
