@@ -106,10 +106,14 @@
 		new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
 		//owner.gib(TRUE) - ORIGINAL
 		//SKYRAT EDIT CHANGE - ALIEN QOL
-		for(var/obj/item/bodypart/BP in owner.bodyparts) //We want to check if there is a chest to dismember.
-			if(BP.name == "chest")
-				BP.dismember()
-				break
+		if(owner.getBruteLoss() >= 150)
+			for(var/obj/item/bodypart/BP in owner.bodyparts) //We want to check if there is a chest to dismember.
+				if(BP.name == "chest")
+					BP.dismember()
+					break
+		else
+			owner.apply_damage(40)
+			owner.spawn_gibs()
 		//SKYRAT EDIT END
 	else
 		new_xeno.visible_message("<span class='danger'>[new_xeno] wriggles out of [owner]!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>")
