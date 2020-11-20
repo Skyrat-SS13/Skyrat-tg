@@ -1050,8 +1050,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/grenade/clusterbuster/soap
 	cost = 3
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/uplink_item/explosives/syndicate_bomb
 	name = "Syndicate Bomb"
 	desc = "The Syndicate bomb is a fearsome device capable of massive destruction. It has an adjustable timer, \
@@ -1061,9 +1059,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			be defused, and some crew may attempt to do so. \
 			The bomb core can be pried out and manually detonated with other explosives."
 	item = /obj/item/sbeacondrop/bomb
-	cost = 11
-*/
-//SKYRAT EDIT REMOVAL END
+	//cost = 11 //ORIGINAL
+	cost = 18 //SKYRAT EDIT CHANGE
+	cant_discount = TRUE //SKYRAT EDIT ADDITION
 
 /datum/uplink_item/explosives/syndicate_bomb/emp
 	name = "Syndicate EMP Bomb"
