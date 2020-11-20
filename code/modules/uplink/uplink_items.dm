@@ -635,15 +635,18 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 6
 	surplus = 50
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/uplink_item/stealthy_weapons/romerol_kit
 	name = "Romerol"
 	desc = "A highly experimental bioterror agent which creates dormant nodules to be etched into the grey matter of the brain. \
 			On death, these nodules take control of the dead body, causing limited revivification, \
 			along with slurred speech, aggression, and the ability to infect others with this agent."
 	item = /obj/item/storage/box/syndie_kit/romerol
-	//cost = 25 //ORIGINAL
-	cost = 50 //SKYRAT EDIT CHANGE
+	cost = 25
 	cant_discount = TRUE
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/stealthy_weapons/sleepy_pen
 	name = "Sleepy Pen"
@@ -1047,6 +1050,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/grenade/clusterbuster/soap
 	cost = 3
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/uplink_item/explosives/syndicate_bomb
 	name = "Syndicate Bomb"
 	desc = "The Syndicate bomb is a fearsome device capable of massive destruction. It has an adjustable timer, \
@@ -1056,8 +1061,10 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			be defused, and some crew may attempt to do so. \
 			The bomb core can be pried out and manually detonated with other explosives."
 	item = /obj/item/sbeacondrop/bomb
-	//cost = 11 //ORIGINAL
-	cost = 20 //SKYRAT EDIT CHANGE
+	cost = 11
+	cost = 20
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/explosives/syndicate_bomb/emp
 	name = "Syndicate EMP Bomb"
