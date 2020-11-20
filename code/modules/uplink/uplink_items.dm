@@ -1062,7 +1062,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			The bomb core can be pried out and manually detonated with other explosives."
 	item = /obj/item/sbeacondrop/bomb
 	cost = 11
-	cost = 20
 */
 //SKYRAT EDIT REMOVAL END
 
