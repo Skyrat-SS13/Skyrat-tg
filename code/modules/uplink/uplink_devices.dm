@@ -20,7 +20,8 @@
 	throw_range = 7
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/uplink/Initialize(mapload, owner, tc_amount = 20)
+///obj/item/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
+/obj/item/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, FALSE, TRUE, null, tc_amount)
 
@@ -69,11 +70,13 @@
 	hidden_uplink.name = "dusty radio"
 
 // Multitool uplink
-/obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 20)
+///obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
+/obj/item/multitool/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, FALSE, TRUE, null, tc_amount)
 
 // Pen uplink
-/obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 20)
+///obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
+/obj/item/pen/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, TRUE, FALSE, null, tc_amount)
