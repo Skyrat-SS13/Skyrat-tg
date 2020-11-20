@@ -277,6 +277,7 @@ class PaperSheetStamper extends Component {
       y: 0,
       rotate: 0,
     };
+<<<<<<< HEAD
   }
 
   findStampPosition(e) {
@@ -296,6 +297,67 @@ class PaperSheetStamper extends Component {
       offset.left += reference.offsetLeft;
       offset.top += reference.offsetTop;
       reference = reference.offsetParent;
+=======
+    this.style = null;
+    this.handleMouseMove = e => {
+      const pos = this.findStampPosition(e);
+      if (!pos) { return; }
+      // center offset of stamp & rotate
+      pauseEvent(e);
+      this.setState({ x: pos[0], y: pos[1], rotate: pos[2] });
+    };
+    this.handleMouseClick = e => {
+      if (e.pageY <= 30) { return; }
+      const { act, data } = useBackend(this.context);
+      const stamp_obj = {
+        x: this.state.x, y: this.state.y, r: this.state.rotate,
+        stamp_class: this.props.stamp_class,
+        stamp_icon_state: data.stamp_icon_state,
+      };
+      act("stamp", stamp_obj);
+    };
+  }
+
+  findStampPosition(e) {
+    let rotating;
+    const windowRef = document.querySelector('.Layout__content');
+    if (e.shiftKey) {
+      rotating = true;
+    }
+
+    if (document.getElementById("stamp"))
+    {
+      const stamp = document.getElementById("stamp");
+      const stampHeight = stamp.clientHeight;
+      const stampWidth = stamp.clientWidth;
+
+      const currentHeight = rotating ? this.state.y : e.pageY
+      - windowRef.scrollTop - stampHeight;
+      const currentWidth = rotating ? this.state.x : e.pageX - (stampWidth / 2);
+
+      const widthMin = 0;
+      const heightMin = 0;
+
+      const widthMax = (windowRef.clientWidth) - (
+        stampWidth);
+      const heightMax = (windowRef.clientHeight - windowRef.scrollTop) - (
+        stampHeight);
+
+      const radians = Math.atan2(
+        e.pageX - currentWidth,
+        e.pageY - currentHeight
+      );
+
+      const rotate = rotating ? (radians * (180 / Math.PI) * -1)
+        : this.state.rotate;
+
+      const pos = [
+        clamp(currentWidth, widthMin, widthMax),
+        clamp(currentHeight, heightMin, heightMax),
+        rotate,
+      ];
+      return pos;
+>>>>>>> 63b0b899568... Fix stamp rotation (#55057)
     }
 
     const pos = [
