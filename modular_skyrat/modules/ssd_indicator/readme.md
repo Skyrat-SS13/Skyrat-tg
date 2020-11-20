@@ -10,6 +10,7 @@ Shows a green "ZZZ" on people that are SSD, records when they went SSD and shows
 
 
  ./code/modules/mob/living/carbon/human/examine.dm > /mob/living/carbon/human/examine()
+ - ADDITION: code/modules/mob/living/death.dm > /mob/living/death()
 
 ### Defines:
 
