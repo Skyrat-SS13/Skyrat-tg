@@ -147,7 +147,7 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(clonename, ui, mutation_index, mindref, last_death, blood_type, datum/species/mrace, list/features, factions, list/quirks, datum/bank_account/insurance, list/traumas, empty)
+/obj/machinery/clonepod/proc/growclone(clonename, ui, mutation_index, mindref, last_death, blood_type, datum/species/mrace, list/features, list/mutantparts, list/markings, factions, list/quirks, datum/bank_account/insurance, list/traumas, empty)
 	if(panel_open)
 		return NONE
 	if(mess || attempting)
@@ -188,11 +188,7 @@
 	H.real_name = clonename
 
 	H.hardset_dna(ui, mutation_index, H.dna.default_mutation_genes, H.real_name, blood_type, mrace, features, H.dna.mutations, FALSE)
-	if(iscarbon(occupant))
-		var/mob/living/carbon/old = occupant
-		H.dna.mutant_bodyparts = old.dna.mutant_bodyparts
-		H.dna.body_markings = old.dna.body_markings
-		H.dna.features = old.dna.features
+	H.set_species(mrace, TRUE, null, features, mutantparts, markings)
 
 	if(!HAS_TRAIT(H, TRAIT_RADIMMUNE))//dont apply mutations if the species is Mutation proof.
 		if(efficiency > 2)
