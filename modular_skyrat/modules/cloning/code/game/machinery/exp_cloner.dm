@@ -39,7 +39,6 @@
 		clonename = "clone ([rand(1,999)])"
 	H.real_name = clonename
 
-	icon_state = "pod_1"
 	//Get the clone body ready
 	maim_clone(H)
 	ADD_TRAIT(H, TRAIT_STABLEHEART, CLONING_POD_TRAIT)
@@ -70,6 +69,7 @@
 
 		H.set_suicide(FALSE)
 	attempting = FALSE
+	update_icon()
 	return CLONING_DELETE_RECORD | CLONING_SUCCESS //so that we don't spam clones with autoprocess unless we leave a body in the scanner
 
 
