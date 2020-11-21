@@ -476,9 +476,6 @@
 			else if(!pod)
 				temp = "<font class='bad'>No Clonepods available.</font>"
 				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
-			//else if(!CONFIG_GET(flag/revival_cloning) && !empty)
-		//		temp = "<font class='bad'>Unable to initiate cloning cycle.</font>"
-		//		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 			else if(pod.occupant)
 				temp = "<font class='bad'>Cloning cycle already in progress.</font>"
 				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
