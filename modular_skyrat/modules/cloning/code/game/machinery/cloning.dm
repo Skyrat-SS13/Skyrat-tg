@@ -12,7 +12,7 @@
 	name = "cloning pod"
 	desc = "An electronically-lockable pod for growing organic tissue."
 	density = TRUE
-	icon = 'modular_skyrat/modules/cloning/icons/obj/machines/cloning.dmi'
+	icon = 'modular_skyrat/modules/cloning/icons/obj/machines/cloning_pod.dmi'
 	icon_state = "pod_0"
 	req_access = list(ACCESS_CLONING) //FOR PREMATURE UNLOCKING.
 	verb_say = "states"
@@ -52,6 +52,7 @@
 		radio.subspace_transmission = TRUE
 		radio.canhear_range = 0
 		radio.recalculateChannels()
+	update_icon()
 
 /obj/machinery/clonepod/Destroy()
 	var/mob/living/mob_occupant = occupant
@@ -174,7 +175,6 @@
 		if(clonemind.damnation_type) //Can't clone the damned.
 			INVOKE_ASYNC(src, .proc/horrifyingsound)
 			mess = TRUE
-			icon_state = "pod_g"
 			update_icon()
 			return NONE
 		current_insurance = insurance
@@ -204,7 +204,6 @@
 	H.silent = 20 //Prevents an extreme edge case where clones could speak if they said something at exactly the right moment.
 	occupant = H
 
-	icon_state = "pod_1"
 	//Get the clone body ready
 	maim_clone(H)
 	ADD_TRAIT(H, TRAIT_STABLEHEART, CLONING_POD_TRAIT)
@@ -243,6 +242,7 @@
 
 		H.set_suicide(FALSE)
 	attempting = FALSE
+	update_icon()
 	return CLONING_SUCCESS
 
 //Grow clones to maturity then kick them out.  FREELOADERS
@@ -328,8 +328,10 @@
 	else if (!mob_occupant || mob_occupant.loc != src)
 		occupant = null
 		if (!mess && !panel_open)
-			icon_state = "pod_0"
+			update_icon()
 		use_power(200)
+
+	update_icon()
 
 //Let's unlock this early I guess.  Might be too early, needs tweaking.
 /obj/machinery/clonepod/attackby(obj/item/W, mob/user, params)
@@ -415,7 +417,7 @@
 		mess = FALSE
 		new /obj/effect/gibspawner/generic(get_turf(src), mob_occupant)
 		audible_message("<span class='hear'>You hear a splat.</span>")
-		icon_state = "pod_0"
+		update_icon()
 		return
 
 	if(!mob_occupant)
@@ -434,7 +436,7 @@
 		mob_occupant.flash_act()
 
 	occupant.forceMove(T)
-	icon_state = "pod_0"
+	update_icon()
 	mob_occupant.domutcheck(1) //Waiting until they're out before possible monkeyizing. The 1 argument forces powers to manifest.
 	for(var/fl in unattached_flesh)
 		qdel(fl)
@@ -451,7 +453,7 @@
 			technician, as your warranty may be affected.")
 		mess = TRUE
 		maim_clone(mob_occupant)	//Remove every bit that's grown back so far to drop later, also destroys bits that haven't grown yet
-		icon_state = "pod_g"
+		update_icon()
 		if(clonemind && mob_occupant.mind != clonemind)
 			clonemind.transfer_to(mob_occupant)
 		mob_occupant.grab_ghost() // We really just want to make you suffer.
@@ -537,6 +539,48 @@
 		unattached_flesh += organ
 
 	flesh_number = unattached_flesh.len
+
+/obj/machinery/clonepod/update_icon_state()
+	if(mess)
+		icon_state = "pod_g"
+	else if(occupant)
+		icon_state = "pod_1"
+	else
+		icon_state = "pod_0"
+	if(panel_open)
+		icon_state = "pod_0_maintenance"
+
+/obj/machinery/clonepod/update_overlays()
+	. = ..()
+	if(mess)
+		var/mutable_appearance/gib1 = mutable_appearance('modular_skyrat/modules/cloning/icons/obj/machines/cryo_mobs.dmi', "gibup")
+		var/mutable_appearance/gib2 = mutable_appearance('modular_skyrat/modules/cloning/icons/obj/machines/cryo_mobs.dmi', "gibdown")
+		gib1.pixel_y = 27 + round(sin(world.time) * 3)
+		gib1.pixel_x = round(sin(world.time * 3))
+		gib2.pixel_y = 27 + round(cos(world.time) * 3)
+		gib2.pixel_x = round(cos(world.time * 3))
+		. += gib2
+		. += gib1
+	else if(occupant)
+		var/mutable_appearance/occupant_overlay
+		var/unattached_fl_number = length(unattached_flesh) ? unattached_flesh.len : 0
+		var/completion = (flesh_number - unattached_fl_number) / flesh_number
+		if(completion > 0.7)
+			occupant_overlay = mutable_appearance(occupant.icon, occupant.icon_state)
+			occupant_overlay.copy_overlays(occupant)
+		else
+			occupant_overlay = mutable_appearance('modular_skyrat/modules/cloning/icons/obj/machines/cryo_mobs.dmi', "clone_meat")
+			var/matrix/tform = matrix()
+			tform.Scale(completion)
+			tform.Turn(cos(world.time * 2) * 3)
+			occupant_overlay.transform = tform
+			occupant_overlay.appearance_flags = NONE
+		occupant_overlay.dir = SOUTH
+		occupant_overlay.pixel_y = 27 + round(sin(world.time) * 3)
+		occupant_overlay.pixel_x = round(sin(world.time * 3))
+		. += occupant_overlay
+		. += "cover-on"
+	. += "panel"
 
 /*
  *	Manual -- A big ol' manual.
