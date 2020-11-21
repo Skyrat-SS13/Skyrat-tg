@@ -60,7 +60,7 @@
 
 
 
-/obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow(gib_on_success=TRUE)
+/obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow()
 	if(!owner || bursting)
 		return
 
