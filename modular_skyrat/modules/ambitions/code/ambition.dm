@@ -132,23 +132,23 @@
 		switch(current_spice)
 			if(AMBITION_INTENSITY_STEALTH)
 				spice_name = "Stealth"
-				spice_desc = "Nothing noticable to the public, interacting with one or two people."
+				spice_desc = "Unseen by the majority of players, actions affecting only a small area/group of players."
 				spice_color = "#a6a6a6"
 			if(AMBITION_INTENSITY_MILD)
 				spice_name = "Mild"
-				spice_desc = "Thievery and vandalism."
+				spice_desc = "Mugging, stealing or vandalism."
 				spice_color = "#fcdf03"
 			if(AMBITION_INTENSITY_MEDIUM)
 				spice_name = "Medium"
-				spice_desc = "Mugging, beating people, general thuggery."
+				spice_desc = "Assault, manslaughter, severe vandalism, rioting."
 				spice_color = "#fcb103"
 			if(AMBITION_INTENSITY_SEVERE)
 				spice_name = "Severe"
-				spice_desc = "Station sabotage and occasional manslaughter."
+				spice_desc = "Murder, grand theft, grand tresspass."
 				spice_color = "#fc8c03"
 			if(AMBITION_INTENSITY_EXTREME)
 				spice_name = "Extreme"
-				spice_desc = "Grand sabotage and indiscriminate murder."
+				spice_desc = "Bombings, open combat and terrorism."
 				spice_color = "#fc5603"
 		dat += "<tr style='background-color:[spice_color]'><td><a [spice_link]>[spice_name]</a></td><td><center><i><font color='#000000'><b>[spice_desc]</b></font></i></center></td></tr>"
 	dat += "</table>"
