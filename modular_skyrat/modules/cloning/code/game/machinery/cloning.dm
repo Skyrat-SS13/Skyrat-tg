@@ -188,10 +188,11 @@
 	H.real_name = clonename
 
 	H.hardset_dna(ui, mutation_index, H.dna.default_mutation_genes, H.real_name, blood_type, mrace, features, H.dna.mutations, FALSE)
+
 	if(iscarbon(occupant))
 		var/mob/living/carbon/old = occupant
-		H.dna.mutant_bodyparts = old.dna.mutant_bodyparts
-		H.dna.body_markings = old.dna.body_markings
+		H.dna.species.mutant_bodyparts = old.dna.species.mutant_bodyparts
+		H.dna.species.body_markings = old.dna.species.body_markings
 		H.dna.features = old.dna.features
 
 	if(!HAS_TRAIT(H, TRAIT_RADIMMUNE))//dont apply mutations if the species is Mutation proof.
