@@ -102,23 +102,19 @@
 		new_xeno.notransform = 0
 		new_xeno.invisibility = 0
 
-	if(gib_on_success)
-		new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
-		//owner.gib(TRUE) - ORIGINAL
-		//SKYRAT EDIT CHANGE - ALIEN QOL
-		if(owner.getBruteLoss() >= 150)
-			for(var/obj/item/bodypart/BP in owner.bodyparts) //We want to check if there is a chest to dismember.
-				if(BP.name == "chest")
-					BP.dismember()
-					break
-		else
-			owner.apply_damage(40)
-			owner.spawn_gibs()
-		//SKYRAT EDIT END
+	new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
+	//owner.gib(TRUE) - ORIGINAL
+	//SKYRAT EDIT CHANGE - ALIEN QOL
+	if(owner.getBruteLoss() >= 150)
+		for(var/obj/item/bodypart/BP in owner.bodyparts) //We want to check if there is a chest to dismember.
+			if(BP.name == "chest")
+				BP.dismember()
+				break
 	else
-		new_xeno.visible_message("<span class='danger'>[new_xeno] wriggles out of [owner]!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>")
-		owner.adjustBruteLoss(40)
-		owner.cut_overlay(overlay)
+		owner.apply_damage(40)
+		owner.spawn_gibs()
+	//SKYRAT EDIT END
+	owner.cut_overlay(overlay)
 	qdel(src)
 
 
