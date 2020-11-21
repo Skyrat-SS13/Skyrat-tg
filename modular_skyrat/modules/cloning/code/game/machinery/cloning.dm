@@ -189,6 +189,7 @@
 
 	H.hardset_dna(ui, mutation_index, H.dna.default_mutation_genes, H.real_name, blood_type, mrace, features, H.dna.mutations, FALSE)
 
+
 	if(!HAS_TRAIT(H, TRAIT_RADIMMUNE))//dont apply mutations if the species is Mutation proof.
 		if(efficiency > 2)
 			var/list/unclean_mutations = (GLOB.not_good_mutations|GLOB.bad_mutations)
@@ -273,7 +274,7 @@
 				var/datum/bank_account/D = SSeconomy.get_dep_account(payment_department)
 				if(D)
 					D.adjust_money(fair_market_price)
-		if(mob_occupant && (mob_occupant.stat == DEAD) || (mob_occupant.suiciding) || mob_occupant.hellbound)  //Autoeject corpses and suiciding dudes.
+		if(mob_occupant && (mob_occupant.stat == DEAD) || (mob_occupant.suiciding))  //Autoeject corpses and suiciding dudes.
 			connected_message("Clone Rejected: Deceased.")
 			if(internal_radio)
 				SPEAK("The cloning of [mob_occupant.real_name] has been \

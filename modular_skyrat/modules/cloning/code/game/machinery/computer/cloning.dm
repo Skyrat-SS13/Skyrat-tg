@@ -163,7 +163,7 @@
 	else
 		return ..()
 
-/obj/machinery/computer/cloning/ui_interact(mob/user)
+/obj/machinery/computer/cloning/ui_interact(mob/living/user)
 	. = ..()
 
 	updatemodules(TRUE)
@@ -545,7 +545,7 @@
 		scantemp = "<font class='bad'>Unable to locate valid genetic data.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 		return
-	if(!body_only && (mob_occupant.suiciding || mob_occupant.hellbound))
+	if(!body_only && (mob_occupant.suiciding))
 		scantemp = "<font class='bad'>Subject's brain is not responding to scanning stimuli.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 		return
