@@ -122,6 +122,9 @@
 /obj/item/clothing/head/helmet/space/hardsuit/carp
 	mutant_variants = NONE
 
+/obj/item/clothing/head/helmet/police
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -136,6 +139,9 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/mask/gas/carp
+	mutant_variants = NONE
+
+/obj/item/clothing/mask/gas/sechailer/swat/spacepol
 	mutant_variants = NONE
 
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -159,6 +165,9 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/security/officer/beatcop
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/security/officer/spacepol
 	mutant_variants = NONE
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -218,4 +227,6 @@
 
 /obj/item/clothing/suit/hooded/chaplain_hoodie
 	mutant_variants = NONE
+
+
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
