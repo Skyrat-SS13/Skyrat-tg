@@ -111,7 +111,7 @@
 				BP.dismember()
 				break
 	else
-		var/obj/item/bodypart/affecting = H.get_bodypart("chest")
+		var/obj/item/bodypart/affecting = owner.get_bodypart("chest")
 		if(affecting)
 			affecting.apply_damage(40)
 		owner.spawn_gibs()
