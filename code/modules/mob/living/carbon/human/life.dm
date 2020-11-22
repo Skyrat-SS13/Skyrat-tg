@@ -90,13 +90,13 @@
 		var/datum/species/S = dna.species
 
 		if(S.breathid == "o2")
-			throw_alert("not_enough_oxy", /obj/screen/alert/not_enough_oxy)
+			throw_alert("not_enough_oxy", /atom/movable/screen/alert/not_enough_oxy)
 		else if(S.breathid == "tox")
-			throw_alert("not_enough_tox", /obj/screen/alert/not_enough_tox)
+			throw_alert("not_enough_tox", /atom/movable/screen/alert/not_enough_tox)
 		else if(S.breathid == "co2")
-			throw_alert("not_enough_co2", /obj/screen/alert/not_enough_co2)
+			throw_alert("not_enough_co2", /atom/movable/screen/alert/not_enough_co2)
 		else if(S.breathid == "n2")
-			throw_alert("not_enough_nitro", /obj/screen/alert/not_enough_nitro)
+			throw_alert("not_enough_nitro", /atom/movable/screen/alert/not_enough_nitro)
 
 		return FALSE
 	else
@@ -292,7 +292,7 @@
 		if(getToxLoss() >= 45 && nutrition > 20)
 			lastpuke += prob(50)
 			if(lastpuke >= 50) // about 25 second delay I guess
-				vomit(20, toxic = TRUE)
+				vomit(20)
 				lastpuke = 0
 
 
