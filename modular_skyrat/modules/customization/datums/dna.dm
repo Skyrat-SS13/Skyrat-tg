@@ -26,7 +26,7 @@
 	holder.transform = holder.transform.Translate(0, translate)
 	current_body_size = features["body_size"]
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, var/datum/preferences/pref_load)
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, var/datum/preferences/pref_load, var/list/override_features, var/list/override_mutantparts, var/list/override_markings)
 	if(mrace && has_dna())
 		var/datum/species/new_race
 		if(ispath(mrace))
@@ -48,9 +48,9 @@
 			dna.body_markings = pref_load.body_markings.Copy()
 			dna.species.body_markings = pref_load.body_markings.Copy()
 		else
-			dna.features = new_race.get_random_features()
-			dna.mutant_bodyparts = new_race.get_random_mutant_bodyparts(dna.features)
-			dna.body_markings = new_race.get_random_body_markings(dna.features)
+			dna.features = override_features || new_race.get_random_features()
+			dna.mutant_bodyparts = override_mutantparts || new_race.get_random_mutant_bodyparts(dna.features)
+			dna.body_markings = override_markings || new_race.get_random_body_markings(dna.features)
 			dna.species.body_markings = dna.body_markings.Copy()
 
 		bodyparts_to_add = dna.mutant_bodyparts.Copy()
