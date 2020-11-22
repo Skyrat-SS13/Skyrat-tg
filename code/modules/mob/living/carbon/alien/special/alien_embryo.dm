@@ -113,7 +113,7 @@
 	else
 		var/obj/item/bodypart/affecting = H.get_bodypart("chest")
 		if(affecting)
-				affecting.apply_damage(40)
+			affecting.apply_damage(40)
 		owner.spawn_gibs()
 	//SKYRAT EDIT END
 	owner.cut_overlay(overlay)
