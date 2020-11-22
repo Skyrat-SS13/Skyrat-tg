@@ -1341,8 +1341,10 @@
 			log_whisper(log_text)
 		if(LOG_EMOTE)
 			log_emote(log_text)
+		//SKYRAT EDIT ADDITION BEGIN
 		if(LOG_SUBTLER)
 			log_subtler(log_text)
+		//SKYRAT EDIT ADDITION END
 		if(LOG_DSAY)
 			log_dsay(log_text)
 		if(LOG_PDA)
