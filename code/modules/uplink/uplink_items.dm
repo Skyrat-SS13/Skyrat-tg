@@ -642,7 +642,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			along with slurred speech, aggression, and the ability to infect others with this agent."
 	item = /obj/item/storage/box/syndie_kit/romerol
 	//cost = 25 //ORIGINAL
-	cost = 55 //SKYRAT EDIT CHANGE
+	cost = 45 //SKYRAT EDIT CHANGE
 	cant_discount = TRUE
 
 /datum/uplink_item/stealthy_weapons/sleepy_pen
