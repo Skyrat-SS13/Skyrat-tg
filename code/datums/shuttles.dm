@@ -348,6 +348,12 @@
 	admin_notes = "Choo choo motherfucker!"
 	credit_cost = 1000
 
+/datum/map_template/shuttle/emergency/outpost
+	suffix = "outpost"
+	name = "Outpost Station Shuttle"
+	description = "A big shuttle for big monsters. Barely retrofitted for modern docking standards."
+	credit_cost = 10000
+
 /datum/map_template/shuttle/emergency/cere
 	suffix = "cere"
 	name = "Cere Station Emergency Shuttle"
@@ -551,6 +557,10 @@
 /datum/map_template/shuttle/arrival/donut
 	suffix = "donut"
 	name = "arrival shuttle (Donut)"
+
+/datum/map_template/shuttle/arrival/outpost
+	suffix = "outpost"
+	name = "arrival shuttle (Outpost)"
 
 /datum/map_template/shuttle/infiltrator/basic
 	suffix = "basic"
