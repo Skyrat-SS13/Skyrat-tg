@@ -71,7 +71,7 @@
 /obj/character_event_spawner/proc/SpawnPerson(mob/dead/observer/user, alias)
 	if(!user || !user.client)
 		return
-	message_admins("[ADMIN_LOOKUPFLW(user)] spawned as a [ESI.job_name] by using a spawner.")
+	message_admins("[ADMIN_LOOKUPFLW(user)] spawned as a [job_name] by using a spawner.")
 	used = TRUE
 	icon_state = "cryopod-open"
 	name = "opened cryogenic sleeper"
