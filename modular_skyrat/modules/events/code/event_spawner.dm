@@ -3,6 +3,7 @@
 	icon_state = "cryopod"
 
 	var/list/species_whitelist
+	var/list/gender_whitelist
 	var/list/ckey_whitelist
 	var/used_outfit = /datum/outfit/centcom/ert/engineer
 	var/job_name
@@ -26,21 +27,46 @@
 	if(ckey_whitelist && !(user.ckey in ckey_whitelist))
 		alert(user, "Sorry, This spawner is not for you!", "", "Ok")
 		return
-	var/action = alert(user, "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.\nDo you wanna proceed?", "", "Yes", "No")
-	if(action && action == "Yes")
-		if(!user || !user.client)
-			return
-		if(species_whitelist && !(user.client.prefs.pref_species.id in species_whitelist))
-			var/species_string = ""
-			var/first = TRUE
-			for(var/spec_key in species_whitelist)
-				if(!first)
-					species_string += ", "
-				species_string += "[spec_key]"
-				first = FALSE
-			alert(user, "Sorry, This spawner is limited to those species: [species_string]. Please change your character.", "", "Ok")
-			return
-		SpawnPerson(user)
+	var/species_string
+	if(species_whitelist)
+		species_string = ""
+		var/first = TRUE
+		for(var/spec_key in species_whitelist)
+			if(!first)
+				species_string += ", "
+			species_string += "[spec_key]"
+			first = FALSE
+	var/gender_string
+	if(gender_whitelist)
+		gender_string = ""
+		var/first = TRUE
+		for(var/spec_key in gender_whitelist)
+			if(!first)
+				gender_string += ", "
+			gender_string += "[spec_key]"
+			first = FALSE
+	var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.\nDo you wanna proceed?"
+	if(species_string)
+		warning_string += "\nThis role is restricted to those species: [species_string]"
+	if(gender_string)
+		warning_string += "\nThis role is restricted to those genders: [gender_string]"
+	var/action = alert(user, warning_string, "", "Yes", "Yes with Alias", "No")
+	if(!action || action == "No")
+		return
+	var/alias
+	if(action == "Yes with Alias")
+		var/msg = input(usr, "Set your character's alias for this role", "Alias") as text|null
+		if(msg)
+			alias = msg
+	if(!user || !user.client)
+		return
+	if(species_whitelist && !(user.client.prefs.pref_species.id in species_whitelist))
+		alert(user, "Sorry, This spawner is limited to those species: [species_string]. Please switch your character.", "", "Ok")
+		return
+	if(gender_whitelist && !(user.client.prefs.gender in gender_whitelist))
+		alert(user, "Sorry, This spawner is limited to those genders: [gender_string]. Please switch your character.", "", "Ok")
+		return
+	SpawnPerson(user, alias)
 
 /obj/character_event_spawner/proc/SpawnPerson(mob/dead/observer/user, alias)
 	if(!user || !user.client)
@@ -53,20 +79,32 @@
 	H.dna.update_dna_identity()
 
 	if(alias)
+		H.name = alias
 		H.real_name = alias
 
+	H.forceMove(get_turf(src))
 	//Pre-job equips so Voxes dont die
 	H.dna.species.before_equip_job(null, H)
 
 	if(used_outfit && used_outfit != "Naked")
 		H.equipOutfit(used_outfit)
 
+	var/obj/item/back_item = H.back
+	if(additional_equipment)
+		for(var/eq_path in additional_equipment)
+			var/obj/item/equipped = new eq_path()
+			if(!H.equip_to_appropriate_slot(equipped))
+				if(back_item)
+					equipped.forceMove(back_item)
+				else
+					equipped.forceMove(get_turf(H))
+
 	var/list/packed_items
 	if(gets_loadout)
 		packed_items = user.client.prefs.equip_preference_loadout(H, FALSE, null)
 
 	if(packed_items)
-		user.client.prefs.add_packed_items(H, packed_items)
+		user.client.prefs.add_packed_items(H, packed_items, FALSE)
 
 	//Override access of the ID card here
 	var/obj/item/card/id/ID
@@ -92,7 +130,15 @@
 		ID.registered_name = H.real_name
 		ID.assignment = job_name
 		ID.update_label()
-	//Override headset key here
+	//Override headset here
+	if(headset_override)
+		var/obj/item/headset_slot = H.get_item_by_slot(ITEM_SLOT_EARS)
+		if(headset_slot)
+			qdel(headset_slot)
+		var/obj/item/new_headset = new headset_override()
+		if(new_headset)
+			if(!H.equip_to_slot_if_possible(new_headset, ITEM_SLOT_EARS, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
+				qdel(new_headset)
 
 	H.regenerate_icons()
 	//Give control
@@ -101,7 +147,8 @@
 	else
 		H.ckey = user.ckey
 
-	H.forceMove(get_turf(src))
 	//Greet!
-	to_chat(H, "You are the [job_name]")
-	to_chat(H, "[flavor_text]")
+	to_chat(H, "<span class='big'>You are the [job_name]</span>")
+	to_chat(H, "<span class='bold'>[flavor_text]</span>")
+	if(disappear_after_spawn)
+		qdel(src)

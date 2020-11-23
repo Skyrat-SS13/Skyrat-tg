@@ -187,12 +187,14 @@
 	return items_to_pack
 
 //This needs to be a seperate proc because the character could not have the proper backpack during the moment of loadout equip
-/datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)
+/datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items, del_on_fail = TRUE)
 	//Here we stick loadout items that couldn't be equipped into a bag. 
 	var/obj/item/back_item = H.back
 	for(var/item in packed_items)
 		var/obj/item/ITEM = item
 		if(back_item)
 			ITEM.forceMove(back_item)
-		else
+		else if (del_on_fail)
 			qdel(ITEM)
+		else
+			ITEM.forceMove(get_turf(H))
