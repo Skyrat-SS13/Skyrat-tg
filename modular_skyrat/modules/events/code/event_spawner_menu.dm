@@ -35,6 +35,7 @@
 	CES.headset_override = headset_override
 	CES.flavor_text = flavor_text
 	CES.disappear_after_spawn = disappear_after_spawn
+	CES.name = "[job_name] cryogenic sleeper"
 
 
 /datum/event_spawner_manager
@@ -212,7 +213,7 @@
 			if("add_ckey")
 				var/msg = input(usr, "Add allowed CKEY to the spawner.", "Add CKEY", "") as text|null
 				if(msg)
-					ESI.ckey_whitelist += msg
+					ESI.ckey_whitelist += lowertext(msg)
 			if("add_species")
 				var/result = input(usr, "Select a species", "Add species") as null|anything in GLOB.roundstart_races
 				if(result)

@@ -24,7 +24,7 @@
 		return
 	if(used)
 		return
-	if(ckey_whitelist && !(user.ckey in ckey_whitelist))
+	if(ckey_whitelist && !(lowertext(user.ckey) in ckey_whitelist))
 		alert(user, "Sorry, This spawner is not for you!", "", "Ok")
 		return
 	var/species_string
