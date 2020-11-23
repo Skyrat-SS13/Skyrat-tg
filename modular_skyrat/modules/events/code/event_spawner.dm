@@ -73,6 +73,7 @@
 		return
 	used = TRUE
 	icon_state = "cryopod-open"
+	name = "opened cryogenic sleeper"
 	//Spawn and copify prefs
 	var/mob/living/carbon/human/H = new(src)
 	user.client.prefs.copy_to(H)
