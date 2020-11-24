@@ -48,6 +48,14 @@
 	build_path = /obj/item/ammo_box/magazine/smg32/empty
 	category = list("hacked", "Security")
 
+/datum/design/a762
+	name = "7.62 Bullet"
+	id = "a762"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 3000)
+	build_path = /obj/item/ammo_casing/a762
+	category = list("hacked", "Security")
+
 // 4.6x30mm - SMG round, used in the WT550 and in numerous modular guns as a weaker alternative to 9mm.
 
 /datum/design/c46x30mm
