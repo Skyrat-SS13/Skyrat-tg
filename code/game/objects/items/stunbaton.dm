@@ -207,11 +207,11 @@
 	else
 		if(turned_on)
 			if(attack_cooldown_check <= world.time)
-				baton_effect(M, user)
+				baton_effect(M, user, TRUE)
 		..()
 
 
-/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
+/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user, harmy = FALSE)
 	if(shields_blocked(L, user))
 		return FALSE
 	/*
@@ -232,7 +232,10 @@
 	//L.set_confusion(max(confusion_amt, L.get_confusion()))
 	L.stuttering = max(8, L.stuttering)
 	//L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST)
-	L.StaminaKnockdown(stamina_loss_amt)
+	if(harmy) //Less extra stamina damage for harm batons
+		L.StaminaKnockdown(stamina_loss_amt-force)
+	else
+		L.StaminaKnockdown(stamina_loss_amt)
 
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
 	//addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay)
