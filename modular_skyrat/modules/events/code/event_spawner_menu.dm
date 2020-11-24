@@ -361,6 +361,7 @@
 				ESI2.headset_override = ESI.headset_override
 				ESI2.flavor_text = ESI.flavor_text	
 				ESI2.disappear_after_spawn = ESI.disappear_after_spawn
+				ESI2.prompt_players = ESI.prompt_players
 
 		ShowPanel(usr, null)
 		return
