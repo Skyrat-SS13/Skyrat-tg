@@ -60,7 +60,7 @@
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/transforming/energy/sword
 	l_hand = /obj/item/storage/part_replacer/bluespace/tier2
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/stack/sheet/metal/fifty=1, /obj/item/stack/sheet/glass/fifty=1, /obj/item/construction/rcd/combat, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/energy/e_gun, /obj/item/gun/ballistic/automatic/pistol/m1911=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/stack/sheet/metal/fifty=1, /obj/item/stack/sheet/glass/fifty=1, /obj/item/construction/rcd/combat, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/energy/e_gun=1, /obj/item/gun/ballistic/automatic/pistol/m1911=1)
 
 /datum/outfit/faction_crew
 	name = "Faction - Crew"
