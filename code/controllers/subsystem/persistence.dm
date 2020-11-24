@@ -33,6 +33,7 @@ SUBSYSTEM_DEF(persistence)
 		LoadAntagReputation()
 	LoadRandomizedRecipes()
 	LoadPaintings()
+	LoadPanicBunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 	return ..()
 
 /datum/controller/subsystem/persistence/proc/LoadPoly()
@@ -181,6 +182,7 @@ SUBSYSTEM_DEF(persistence)
 	SaveRandomizedRecipes()
 	SavePaintings()
 	SaveScars()
+	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
 
 /datum/controller/subsystem/persistence/proc/GetPhotoAlbums()
 	var/album_path = file("data/photo_albums.json")
