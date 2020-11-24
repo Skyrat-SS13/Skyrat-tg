@@ -113,6 +113,9 @@
 			display = initial(OU.suit)
 			if(display)
 				dat += "<BR>Suit: [initial(display.name)]<font color='#777777'> - ([display])</font>"
+			display = initial(OU.suit_store)
+			if(display)
+				dat += "<BR>Suit Storage: [initial(display.name)]<font color='#777777'> - ([display])</font>"
 			display = initial(OU.belt)
 			if(display)
 				dat += "<BR>Belt: [initial(display.name)]<font color='#777777'> - ([display])</font>"
