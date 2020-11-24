@@ -58,16 +58,16 @@
 	flavor_text = blocks["flavor_text"]
 	gets_loadout = blocks["gets_loadout"]
 	used_outfit = text2path(blocks["used_outfit"])
-	access_override = blocks["access_override"].Copy()
+	access_override = blocks["access_override"]
 	headset_override = text2path(blocks["headset_override"])
-	var/list/temp_additional_equipment = blocks["additional_equipment"].Copy()
+	var/list/temp_additional_equipment = blocks["additional_equipment"]
 	var/list/to_equipment = list()
 	for(var/string in temp_additional_equipment)
 		to_equipment += text2path(string)
 	additional_equipment = to_equipment
-	species_whitelist = blocks["species_whitelist"].Copy()
-	gender_whitelist = blocks["gender_whitelist"].Copy()
-	ckey_whitelist = blocks["ckey_whitelist"].Copy()
+	species_whitelist = blocks["species_whitelist"]
+	gender_whitelist = blocks["gender_whitelist"]
+	ckey_whitelist = blocks["ckey_whitelist"]
 	disappear_after_spawn = blocks["disappear_after_spawn"]
 
 /datum/event_spawner_manager
