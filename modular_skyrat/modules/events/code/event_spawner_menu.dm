@@ -39,7 +39,7 @@
 	CES.name = "[job_name] cryogenic sleeper"
 	if(prompt_players)
 		for(var/mob/dead/observer/ghost in GLOB.player_list)
-			if(ckey_whitelist && !(lowertext(ghost.ckey) in ckey_whitelist))
+			if(length(ckey_whitelist) && !(lowertext(ghost.ckey) in ckey_whitelist))
 				continue
 			ghost.playsound_local(ghost, 'sound/effects/ghost2.ogg', 75, FALSE)
 			var/turf_link = TURF_LINK(ghost, spawn_loc)
