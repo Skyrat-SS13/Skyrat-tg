@@ -615,7 +615,7 @@
 			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-			filters -= FILTER_STAMINACRIT
+		filters -= FILTER_STAMINACRIT //Temporary tweak to fix aheals bugging this
 	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
 		enter_stamcrit()
 	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))

@@ -312,7 +312,7 @@
 			target.Knockdown(knockdown_time_carbon)
 			target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST)
 			*/
-			user.apply_damage(force*0.5, BRUTE, BODY_ZONE_CHEST)
+			target.apply_damage(force*0.5, BRUTE, BODY_ZONE_CHEST)
 			target.StaminaKnockdown(stamina_damage)
 			additional_effects_carbon(target, user)
 
