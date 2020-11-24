@@ -29,7 +29,7 @@
 	uniform = /obj/item/clothing/under/rank/security/blueshield
 	id = /obj/item/card/id/silver
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
-	suit_store = /obj/item/gun/ballistic/automatic/wt550
+	suit_store = /obj/item/gun/energy/e_gun
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated/blueshield
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/heads/blueshield/alt
