@@ -207,7 +207,7 @@
 		dat += " <- <a href='?src=[REF(src)];inst_pref=add_ckey;id=[ESI.id]'>Add</a>"
 		dat += "<BR><font color='#777777'><i>If no ckeys are in the list, then any ckey can join as this role.</i></font>"
 		dat += "<BR>Spawner disappears after spawn: <a href='?src=[REF(src)];inst_pref=disappear_after_spawn;id=[ESI.id]'>[ESI.disappear_after_spawn ? "Yes" : "No"]</a>"
-		dat += "<BR>Prompt players when spawner created: <a href='?src=[REF(src)];inst_pref=prompt_players;id=[ESI.id]'>[ESI.prompt_players ? "Yes" : "No"]</a>"
+		dat += "<BR>Prompt players when spawner created: <a href='?src=[REF(src)];inst_pref=prompt_players;id=[ESI.id]'>[ESI.prompt_players ? "Yes" : "No"]</a> <font color='#777777'><i>This will only prompt ckeys which can access the spawner.</i></font>"
 		dat += "<HR><center><a href='?src=[REF(src)];inst_pref=make_spawner;id=[ESI.id]'>Create spawner on current location</a></center>"
 		//Buttons for easy override for the faction stuff (for access and headset keys)
 
