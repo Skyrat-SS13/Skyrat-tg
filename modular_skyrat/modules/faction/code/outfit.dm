@@ -11,7 +11,7 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/faction_command
 	l_pocket = /obj/item/melee/transforming/energy/sword
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,/obj/item/storage/box/faction_access_cards=1, /obj/item/storage/box/zipties,/obj/item/melee/classic_baton/telescopic=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,/obj/item/storage/box/faction_access_cards=1, /obj/item/storage/box/zipties,/obj/item/melee/classic_baton/telescopic=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1, /obj/item/stack/spacecash/c10000=1)
 
 /datum/outfit/faction_goon
 	name = "Faction - Goon"
@@ -28,7 +28,7 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/transforming/energy/sword
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,/obj/item/ammo_box/magazine/wt550m9=2, /obj/item/ammo_box/magazine/m45=2, /obj/item/melee/classic_baton=1, /obj/item/gun/ballistic/automatic/pistol/m1911=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,/obj/item/ammo_box/magazine/wt550m9=2, /obj/item/ammo_box/magazine/m45=2, /obj/item/melee/classic_baton=1, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/stack/spacecash/c1000=1)
 
 /datum/outfit/faction_medic
 	name = "Faction - Medic"
@@ -44,7 +44,7 @@
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/transforming/energy/sword
 	l_hand = /obj/item/storage/backpack/duffelbag/med/surgery
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/storage/firstaid/tactical=1,/obj/item/storage/firstaid/regular=1,/obj/item/storage/firstaid/toxin=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/storage/firstaid/tactical=1,/obj/item/storage/firstaid/regular=1,/obj/item/storage/firstaid/toxin=1, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/stack/spacecash/c1000=1)
 
 /datum/outfit/faction_tech
 	name = "Faction - Tech"
@@ -60,7 +60,7 @@
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/transforming/energy/sword
 	l_hand = /obj/item/storage/part_replacer/bluespace/tier2
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/stack/sheet/metal/fifty=1, /obj/item/stack/sheet/glass/fifty=1, /obj/item/construction/rcd/combat, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/energy/e_gun=1, /obj/item/gun/ballistic/automatic/pistol/m1911=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/stack/sheet/metal/fifty=1, /obj/item/stack/sheet/glass/fifty=1, /obj/item/construction/rcd/combat, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/energy/e_gun=1, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/stack/spacecash/c1000=1)
 
 /datum/outfit/faction_crew
 	name = "Faction - Crew"
@@ -72,4 +72,4 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/transforming/energy/sword
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,/obj/item/ammo_box/magazine/m9mm=2)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,/obj/item/ammo_box/magazine/m9mm=2,/obj/item/stack/spacecash/c500=1)
