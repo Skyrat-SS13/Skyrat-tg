@@ -83,5 +83,5 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_HEAVY
 
-/obj/item/gun/ballistic/automatic/cfa_wildcat
+/obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
