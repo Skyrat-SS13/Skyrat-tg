@@ -56,8 +56,9 @@
 	var/alias
 	if(action == "Yes with Alias")
 		var/msg = reject_bad_name(input(usr, "Set your character's alias for this role", "Alias") as text|null)
-		if(msg)
-			alias = msg
+		if(!msg)
+			return
+		alias = msg
 	if(!user || !user.client)
 		return
 	if(species_whitelist && !(user.client.prefs.pref_species.id in species_whitelist))
