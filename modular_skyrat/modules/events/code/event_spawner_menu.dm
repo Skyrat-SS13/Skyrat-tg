@@ -11,6 +11,7 @@
 	var/flavor_text = "Flavor Text to be displayed"
 	var/list/additional_equipment = list()
 	var/disappear_after_spawn = FALSE
+	var/prompt_players = FALSE
 
 	var/show_outfit_equipment = FALSE
 
@@ -36,6 +37,13 @@
 	CES.flavor_text = flavor_text
 	CES.disappear_after_spawn = disappear_after_spawn
 	CES.name = "[job_name] cryogenic sleeper"
+	if(prompt_players)
+		for(var/mob/dead/observer/ghost in GLOB.player_list)
+			if(ckey_whitelist && !(lowertext(ghost.ckey) in ckey_whitelist))
+				continue
+			ghost.playsound_local(ghost, 'sound/effects/ghost2.ogg', 75, FALSE)
+			var/turf_link = TURF_LINK(ghost, spawn_loc)
+			to_chat(ghost, "[turf_link] <span class='boldnotice'>Event spawner that you can enter has been created. The role is [CES.job_name].")
 
 /datum/event_spawner_instance/proc/GetExport()
 	var/list/blocks = list()
@@ -50,6 +58,7 @@
 	blocks["gender_whitelist"] = gender_whitelist.Copy()
 	blocks["ckey_whitelist"] = ckey_whitelist.Copy()
 	blocks["disappear_after_spawn"] = disappear_after_spawn
+	blocks["prompt_players"] = prompt_players
 	return json_encode(blocks)
 
 /datum/event_spawner_instance/proc/DoImport(input)
@@ -69,6 +78,7 @@
 	gender_whitelist = blocks["gender_whitelist"]
 	ckey_whitelist = blocks["ckey_whitelist"]
 	disappear_after_spawn = blocks["disappear_after_spawn"]
+	prompt_players = blocks["prompt_players"]
 
 /datum/event_spawner_manager
 	var/next_id = 0
@@ -197,6 +207,7 @@
 		dat += " <- <a href='?src=[REF(src)];inst_pref=add_ckey;id=[ESI.id]'>Add</a>"
 		dat += "<BR><font color='#777777'><i>If no ckeys are in the list, then any ckey can join as this role.</i></font>"
 		dat += "<BR>Spawner disappears after spawn: <a href='?src=[REF(src)];inst_pref=disappear_after_spawn;id=[ESI.id]'>[ESI.disappear_after_spawn ? "Yes" : "No"]</a>"
+		dat += "<BR>Prompt players when spawner created: <a href='?src=[REF(src)];inst_pref=prompt_players;id=[ESI.id]'>[ESI.prompt_players ? "Yes" : "No"]</a>"
 		dat += "<HR><center><a href='?src=[REF(src)];inst_pref=make_spawner;id=[ESI.id]'>Create spawner on current location</a></center>"
 		//Buttons for easy override for the faction stuff (for access and headset keys)
 
@@ -251,6 +262,8 @@
 				ESI.gets_loadout = !ESI.gets_loadout
 			if("disappear_after_spawn")
 				ESI.disappear_after_spawn = !ESI.disappear_after_spawn
+			if("prompt_players")
+				ESI.prompt_players = !ESI.prompt_players
 			if("add_ckey")
 				var/msg = input(usr, "Add allowed CKEY to the spawner.", "Add CKEY", "") as text|null
 				if(msg)
