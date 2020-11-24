@@ -1,9 +1,6 @@
 /*
 	AI ClickOn()
 
-	Note currently ai restrained() returns 0 in all cases,
-	therefore restrained code has been removed
-
 	The AI can double click to move the camera (this was already true but is cleaner),
 	or double click a mob to track them.
 
@@ -29,7 +26,7 @@
 	if(multicam_on)
 		var/turf/T = get_turf(A)
 		if(T)
-			for(var/obj/screen/movable/pic_in_pic/ai/P in T.vis_locs)
+			for(var/atom/movable/screen/movable/pic_in_pic/ai/P in T.vis_locs)
 				if(P.ai == src)
 					P.Click(params)
 					break
@@ -57,10 +54,6 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftClickOn(A)
-		return
-	if(modifiers["middle"])
-		if(controlled_mech) //Are we piloting a mech? Placed here so the modifiers are not overridden.
-			controlled_mech.click_action(A, src, params) //Override AI normal click behavior.
 		return
 	if(modifiers["shift"])
 		ShiftClickOn(A)
@@ -106,14 +99,14 @@
 	for AI shift, ctrl, and alt clicking.
 */
 
-/mob/living/silicon/ai/CtrlShiftClickOn(atom/A)
-	A.AICtrlShiftClick(src)
+/mob/living/silicon/ai/CtrlShiftClickOn(atom/A) // Procs overriden in modular_skyrat/modules/Silicon_QoL
+	A.AICtrlShiftClick(src) 
 /mob/living/silicon/ai/ShiftClickOn(atom/A)
 	A.AIShiftClick(src)
 /mob/living/silicon/ai/CtrlClickOn(atom/A)
 	A.AICtrlClick(src)
 /mob/living/silicon/ai/AltClickOn(atom/A)
-	A.AIAltClick(src)
+	A.AIAltClick(src) 
 
 /*
 	The following criminally helpful code is just the previous code cleaned up;
@@ -131,7 +124,6 @@
 	return
 /atom/proc/AICtrlShiftClick()
 	return
-
 /* Airlocks */
 /obj/machinery/door/airlock/AICtrlClick() // Bolts doors
 	if(obj_flags & EMAGGED)
@@ -155,7 +147,7 @@
 
 	user_toggle_open(usr)
 	add_hiddenprint(usr)
-
+	
 /obj/machinery/door/airlock/AICtrlShiftClick()  // Sets/Unsets Emergency Access Override
 	if(obj_flags & EMAGGED)
 		return

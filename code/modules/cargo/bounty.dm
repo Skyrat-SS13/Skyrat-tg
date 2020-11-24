@@ -83,10 +83,10 @@ GLOBAL_LIST_EMPTY(bounties_list)
   */
 /proc/random_bounty(guided = 0)
 	var/bounty_num
-	if(guided)
+	if(guided && (guided != CIV_JOB_RANDOM))
 		bounty_num = guided
 	else
-		bounty_num = rand(1,13)
+		bounty_num = rand(1,12)
 	switch(bounty_num)
 		if(1)
 			var/subtype = pick(subtypesof(/datum/bounty/item/assistant))

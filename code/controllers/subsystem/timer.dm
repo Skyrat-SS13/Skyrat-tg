@@ -54,7 +54,8 @@ SUBSYSTEM_DEF(timer)
 	bucket_resolution = world.tick_lag
 
 /datum/controller/subsystem/timer/stat_entry(msg)
-	..("B:[bucket_count] P:[length(second_queue)] H:[length(hashes)] C:[length(clienttime_timers)] S:[length(timer_id_dict)]")
+	msg = "B:[bucket_count] P:[length(second_queue)] H:[length(hashes)] C:[length(clienttime_timers)] S:[length(timer_id_dict)]"
+	return ..()
 
 /datum/controller/subsystem/timer/fire(resumed = FALSE)
 	// Store local references to datum vars as it is faster to access them
@@ -99,7 +100,10 @@ SUBSYSTEM_DEF(timer)
 		log_world(to_log.Join("\n"))
 
 	// Process client-time timers
-	var/next_clienttime_timer_index = 0
+	var/static/next_clienttime_timer_index = 0
+	if (next_clienttime_timer_index)
+		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
+		next_clienttime_timer_index = 0
 	for (next_clienttime_timer_index in 1 to length(clienttime_timers))
 		if (MC_TICK_CHECK)
 			next_clienttime_timer_index--
@@ -111,7 +115,6 @@ SUBSYSTEM_DEF(timer)
 
 		var/datum/callback/callBack = ctime_timer.callBack
 		if (!callBack)
-			clienttime_timers.Cut(next_clienttime_timer_index,next_clienttime_timer_index + 1)
 			CRASH("Invalid timer: [get_timer_debug_string(ctime_timer)] world.time: [world.time], \
 				head_offset: [head_offset], practical_offset: [practical_offset], REALTIMEOFDAY: [REALTIMEOFDAY]")
 
@@ -121,13 +124,14 @@ SUBSYSTEM_DEF(timer)
 		if(ctime_timer.flags & TIMER_LOOP)
 			ctime_timer.spent = 0
 			ctime_timer.timeToRun = REALTIMEOFDAY + ctime_timer.wait
-			BINARY_INSERT(ctime_timer, clienttime_timers, datum/timedevent, ctime_timer, timeToRun, COMPARE_KEY)
+			BINARY_INSERT(ctime_timer, clienttime_timers, /datum/timedevent, ctime_timer, timeToRun, COMPARE_KEY)
 		else
 			qdel(ctime_timer)
 
 	// Remove invoked client-time timers
 	if (next_clienttime_timer_index)
 		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
+		next_clienttime_timer_index = 0
 
 	if (MC_TICK_CHECK)
 		return
@@ -524,7 +528,7 @@ SUBSYSTEM_DEF(timer)
 	else if (timeToRun >= TIMER_MAX)
 		L = SStimer.second_queue
 	if(L)
-		BINARY_INSERT(src, L, datum/timedevent, src, timeToRun, COMPARE_KEY)
+		BINARY_INSERT(src, L, /datum/timedevent, src, timeToRun, COMPARE_KEY)
 		return
 
 	// Get a local reference to the bucket list, this is faster than referencing the datum

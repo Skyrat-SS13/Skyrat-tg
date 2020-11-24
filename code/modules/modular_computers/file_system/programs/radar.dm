@@ -63,7 +63,8 @@
 	return data
 
 /datum/computer_file/program/radar/ui_act(action, params)
-	if(..())
+	. = ..()
+	if(.)
 		return
 
 	switch(action)
@@ -212,6 +213,7 @@
 	requires_ntnet = TRUE
 	transfer_access = ACCESS_MEDICAL
 	available_on_ntnet = TRUE
+	program_icon = "heartbeat"
 
 /datum/computer_file/program/radar/lifeline/find_atom()
 	return locate(selected) in GLOB.human_list
@@ -228,7 +230,7 @@
 		var/crewmember_name = "Unknown"
 		if(humanoid.wear_id)
 			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
-			if(ID && ID.registered_name)
+			if(ID?.registered_name)
 				crewmember_name = ID.registered_name
 		var/list/crewinfo = list(
 			ref = REF(humanoid),
@@ -251,7 +253,7 @@
 //Nuke Disk Finder App//
 ////////////////////////
 
-///A program that tracks crew members via suit sensors
+///A program that tracks nukes and nuclear accessories
 /datum/computer_file/program/radar/fission360
 	filename = "fission360"
 	filedesc = "Fission360"
@@ -262,6 +264,7 @@
 	available_on_ntnet = FALSE
 	available_on_syndinet = TRUE
 	tgui_id = "NtosRadarSyndicate"
+	program_icon = "bomb"
 	arrowstyle = "ntosradarpointerS.png"
 	pointercolor = "red"
 
@@ -275,8 +278,6 @@
 	objects = list()
 	for(var/i in GLOB.nuke_list)
 		var/obj/machinery/nuclearbomb/nuke = i
-		if(!trackable(nuke))
-			continue
 
 		var/list/nukeinfo = list(
 			ref = REF(nuke),
@@ -284,9 +285,8 @@
 			)
 		objects += list(nukeinfo)
 	var/obj/item/disk/nuclear/disk = locate() in GLOB.poi_list
-	if(trackable(disk))
-		var/list/nukeinfo = list(
-			ref = REF(disk),
-			name = disk.name,
-			)
-		objects += list(nukeinfo)
+	var/list/nukeinfo = list(
+		ref = REF(disk),
+		name = "Nuke Auth. Disk",
+		)
+	objects += list(nukeinfo)

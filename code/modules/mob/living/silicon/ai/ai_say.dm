@@ -123,6 +123,7 @@
 	announcing_vox = world.time + VOX_DELAY
 
 	log_game("[key_name(src)] made a vocal announcement with the following message: [message].")
+	log_talk(message, LOG_SAY, tag="VOX Announcement")
 
 	for(var/word in words)
 		play_vox_word(word, src.z, null)
@@ -148,8 +149,8 @@
 						SEND_SOUND(M, voice)
 		else
 			SEND_SOUND(only_listener, voice)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 #undef VOX_DELAY
 #endif

@@ -14,7 +14,7 @@
 	if(check_click_intercept(params,A))
 		return
 
-	if(stat || lockcharge || IsParalyzed() || IsStun())
+	if(stat || (lockcharge) || IsParalyzed() || IsStun())
 		return
 
 	var/list/modifiers = params2list(params)
@@ -42,12 +42,6 @@
 
 	face_atom(A) // change direction to face what you clicked on
 
-	/*
-	cyborg restrained() currently does nothing
-	if(restrained())
-		RestrainedClickOn(A)
-		return
-	*/
 	if(aicamera.in_camera_mode) //Cyborg picture taking
 		aicamera.camera_mode_off()
 		aicamera.captureimage(A, usr)
@@ -91,14 +85,14 @@
 
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
-/mob/living/silicon/robot/CtrlShiftClickOn(atom/A)
-	A.BorgCtrlShiftClick(src)
+/mob/living/silicon/robot/CtrlShiftClickOn(atom/A) // Procs overridden in skyrat_modular/modules/Silicon_QoL
+	A.BorgCtrlShiftClick(src) 
 /mob/living/silicon/robot/ShiftClickOn(atom/A)
-	A.BorgShiftClick(src)
+	A.BorgShiftClick(src) 
 /mob/living/silicon/robot/CtrlClickOn(atom/A)
 	A.BorgCtrlClick(src)
 /mob/living/silicon/robot/AltClickOn(atom/A)
-	A.BorgAltClick(src)
+	A.BorgAltClick(src) 
 
 /atom/proc/BorgCtrlShiftClick(mob/living/silicon/robot/user) //forward to human click if not overridden
 	CtrlShiftClick(user)

@@ -8,8 +8,10 @@ SUBSYSTEM_DEF(events)
 	var/list/currentrun = list()
 
 	var/scheduled = 0			//The next world.time that a naturally occuring random event can be selected.
-	var/frequency_lower = 1800	//3 minutes lower bound.
-	var/frequency_upper = 6000	//10 minutes upper bound. Basically an event will happen every 3 to 10 minutes.
+	//var/frequency_lower = 1800	//3 minutes lower bound. //ORIGINAL
+	var/frequency_lower = 3000 //5 minutes //SKYRAT EDIT CHANGE - EVENTS
+	//var/frequency_upper = 6000	//10 minutes upper bound. Basically an event will happen every 3 to 10 minutes. //ORIGINAL
+	var/frequency_upper = 9000 //15 minutes. So you get events inbetween 5 and 15 minutes. //SKYRAT EDIT CHANGE - EVENTS
 
 	var/list/holidays			//List of all holidays occuring today or null if no holidays
 	var/wizardmode = FALSE
@@ -25,7 +27,7 @@ SUBSYSTEM_DEF(events)
 	return ..()
 
 
-/datum/controller/subsystem/events/fire(resumed = 0)
+/datum/controller/subsystem/events/fire(resumed = FALSE)
 	if(!resumed)
 		checkEvent() //only check these if we aren't resuming a paused fire
 		src.currentrun = running.Copy()
@@ -37,7 +39,7 @@ SUBSYSTEM_DEF(events)
 		var/datum/thing = currentrun[currentrun.len]
 		currentrun.len--
 		if(thing)
-			thing.process()
+			thing.process(wait * 0.1)
 		else
 			running.Remove(thing)
 		if (MC_TICK_CHECK)
@@ -100,7 +102,7 @@ SUBSYSTEM_DEF(events)
 // Why the heck is this here! Took me so damn long to find!
 /client/proc/forceEvent()
 	set name = "Trigger Event"
-	set category = "Admin - Events"
+	set category = "Admin.Events"
 
 	if(!holder ||!check_rights(R_FUN))
 		return

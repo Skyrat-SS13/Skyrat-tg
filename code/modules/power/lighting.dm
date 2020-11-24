@@ -9,8 +9,11 @@
 #define LIGHT_BROKEN 2
 #define LIGHT_BURNED 3
 
-#define BROKEN_SPARKS_MIN (30 SECONDS)
-#define BROKEN_SPARKS_MAX (90 SECONDS)
+#define BROKEN_SPARKS_MIN (3 MINUTES)
+#define BROKEN_SPARKS_MAX (9 MINUTES)
+
+#define LIGHT_DRAIN_TIME 25
+#define LIGHT_POWER_GAIN 35
 
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
@@ -44,7 +47,7 @@
 	anchored = TRUE
 	layer = WALL_OBJ_LAYER
 	max_integrity = 200
-	armor = list("melee" = 50, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 50)
+	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 50)
 
 	var/stage = 1
 	var/fixture_type = "tube"
@@ -91,12 +94,16 @@
 		cell = null
 		add_fingerprint(user)
 
+
 /obj/structure/light_construct/attack_tk(mob/user)
-	if(cell)
-		to_chat(user, "<span class='notice'>You telekinetically remove [cell].</span>")
-		cell.forceMove(drop_location())
-		cell.attack_tk(user)
-		cell = null
+	if(!cell)
+		return
+	to_chat(user, "<span class='notice'>You telekinetically remove [cell].</span>")
+	var/obj/item/stock_parts/cell/cell_reference = cell
+	cell = null
+	cell_reference.forceMove(drop_location())
+	return cell_reference.attack_tk(user)
+
 
 /obj/structure/light_construct/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
@@ -117,6 +124,10 @@
 			cell = W
 			add_fingerprint(user)
 		return
+	else if (istype(W, /obj/item/light))
+		to_chat(user, "<span class='warning'>This [name] isn't finished being setup!</span>")
+		return
+
 	switch(stage)
 		if(1)
 			if(W.tool_behaviour == TOOL_WRENCH)
@@ -197,8 +208,8 @@
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'icons/obj/lighting.dmi'
-	var/overlayicon = 'icons/obj/lighting_overlay.dmi'
+	icon = 'icons/obj/lighting.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	var/overlayicon = 'icons/obj/lighting_overlay.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube"
 	desc = "A lighting fixture."
@@ -332,7 +343,7 @@
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
 			var/area/A = get_area(src)
-			if(emergency_mode || (A && A.fire))
+			if(emergency_mode || (A?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
@@ -350,6 +361,11 @@
 	else
 		glowybit.alpha = 0
 
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#define LIGHT_ON_DELAY_UPPER 3 SECONDS
+#define LIGHT_ON_DELAY_LOWER 1 SECONDS
+//SKYRAT EDIT END
+
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE)
 	switch(status)
@@ -357,13 +373,14 @@
 			on = FALSE
 	emergency_mode = FALSE
 	if(on)
+	/* SKYRAT EDIT ORIGINAL
 		var/BR = brightness
 		var/PO = bulb_power
 		var/CO = bulb_colour
 		if(color)
 			CO = color
 		var/area/A = get_area(src)
-		if (A && A.fire)
+		if (A?.fire)
 			CO = bulb_emergency_colour
 		else if (nightshift_enabled)
 			BR = nightshift_brightness
@@ -382,6 +399,15 @@
 			else
 				use_power = ACTIVE_POWER_USE
 				set_light(BR, PO, CO)
+		*/
+		//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
+		if(maploaded)
+			turn_on(trigger)
+			maploaded = FALSE
+		else if(!turning_on)
+			turning_on = TRUE
+			addtimer(CALLBACK(src, .proc/turn_on, trigger), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+		//SKYRAT EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
@@ -402,12 +428,17 @@
 
 	broken_sparks(start_only=TRUE)
 
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#undef LIGHT_ON_DELAY_UPPER
+#undef LIGHT_ON_DELAY_LOWER
+//SKYRAT EDIT END
+
 /obj/machinery/light/update_atom_colour()
 	..()
 	update()
 
 /obj/machinery/light/proc/broken_sparks(start_only=FALSE)
-	if(!QDELETED(src) && status == LIGHT_BROKEN && has_power())
+	if(!QDELETED(src) && status == LIGHT_BROKEN && has_power() && Master.current_runlevel)
 		if(!start_only)
 			do_sparks(3, TRUE, src)
 		var/delay = rand(BROKEN_SPARKS_MIN, BROKEN_SPARKS_MAX)
@@ -605,10 +636,10 @@
 
 
 /obj/machinery/light/proc/flicker(amount = rand(10, 20))
-	set waitfor = 0
+	set waitfor = FALSE
 	if(flickering)
 		return
-	flickering = 1
+	flickering = TRUE
 	if(on && status == LIGHT_OK)
 		for(var/i = 0; i < amount; i++)
 			if(status != LIGHT_OK)
@@ -618,7 +649,7 @@
 			sleep(rand(5, 15))
 		on = (status == LIGHT_OK)
 		update(0)
-	flickering = 0
+	flickering = FALSE
 
 // ai attack - make lights flicker, because why not
 
@@ -654,12 +685,12 @@
 				if(E.drain_time > world.time)
 					return
 				to_chat(H, "<span class='notice'>You start channeling some power through the [fitting] into your body.</span>")
-				E.drain_time = world.time + 30
-				if(do_after(user, 30, target = src))
+				E.drain_time = world.time + LIGHT_DRAIN_TIME
+				if(do_after(user, LIGHT_DRAIN_TIME, target = src))
 					var/obj/item/organ/stomach/ethereal/stomach = H.getorganslot(ORGAN_SLOT_STOMACH)
 					if(istype(stomach))
 						to_chat(H, "<span class='notice'>You receive some charge from the [fitting].</span>")
-						stomach.adjust_charge(2)
+						stomach.adjust_charge(LIGHT_POWER_GAIN)
 					else
 						to_chat(H, "<span class='warning'>You can't receive charge from the [fitting]!</span>")
 				return
@@ -723,8 +754,8 @@
 
 	to_chat(user, "<span class='notice'>You telekinetically remove the light [fitting].</span>")
 	// create a light tube/bulb item and put it in the user's hand
-	var/obj/item/light/L = drop_light_tube()
-	L.attack_tk(user)
+	var/obj/item/light/light_tube = drop_light_tube()
+	return light_tube.attack_tk(user)
 
 
 // break the light and make sparks if was on
@@ -750,15 +781,16 @@
 	update()
 
 /obj/machinery/light/zap_act(power, zap_flags)
-	if(zap_flags & ZAP_MACHINE_EXPLOSIVE)
+	var/explosive = zap_flags & ZAP_MACHINE_EXPLOSIVE
+	zap_flags &= ~(ZAP_MACHINE_EXPLOSIVE | ZAP_OBJ_DAMAGE)
+	. = ..()
+	if(explosive)
 		explosion(src,0,0,0,flame_range = 5, adminlog = FALSE)
 		qdel(src)
-	else
-		return ..()
 
 // called when area power state changes
 /obj/machinery/light/power_change()
-	SHOULD_CALL_PARENT(0)
+	SHOULD_CALL_PARENT(FALSE)
 	var/area/A = get_area(src)
 	seton(A.lightswitch && A.power_light)
 
@@ -812,6 +844,7 @@
 	base_state = "ltube"
 	inhand_icon_state = "c_tube"
 	brightness = 8
+	custom_price = PAYCHECK_EASY * 0.5
 
 /obj/item/light/tube/broken
 	status = LIGHT_BROKEN
@@ -825,6 +858,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	brightness = 4
+	custom_price = PAYCHECK_EASY * 0.4
 
 /obj/item/light/bulb/broken
 	status = LIGHT_BROKEN
@@ -911,3 +945,6 @@
 	layer = 2.5
 	light_type = /obj/item/light/bulb
 	fitting = "bulb"
+
+#undef LIGHT_DRAIN_TIME
+#undef LIGHT_POWER_GAIN

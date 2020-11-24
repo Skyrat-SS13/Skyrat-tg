@@ -2,7 +2,7 @@
 	name = "alien"
 	icon_state = "alien"
 	pass_flags = PASSTABLE
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 5, /obj/item/stack/sheet/animalhide/xeno = 1)
+	butcher_results = list(/obj/item/food/meat/slab/xeno = 5, /obj/item/stack/sheet/animalhide/xeno = 1)
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = 1
 	hud_type = /datum/hud/alien
@@ -13,20 +13,22 @@
 	var/leap_on_click = 0
 	var/pounce_cooldown = 0
 	var/pounce_cooldown_time = 30
-	var/custom_pixel_x_offset = 0 //for admin fuckery.
-	var/custom_pixel_y_offset = 0
 	var/sneaking = 0 //For sneaky-sneaky mode and appropriate slowdown
 	var/drooling = 0 //For Neruotoxic spit overlays
 	deathsound = 'sound/voice/hiss6.ogg'
-	bodyparts = list(/obj/item/bodypart/chest/alien, /obj/item/bodypart/head/alien, /obj/item/bodypart/l_arm/alien,
-					 /obj/item/bodypart/r_arm/alien, /obj/item/bodypart/r_leg/alien, /obj/item/bodypart/l_leg/alien)
+	bodyparts = list(
+		/obj/item/bodypart/chest/alien,
+		/obj/item/bodypart/head/alien,
+		/obj/item/bodypart/l_arm/alien,
+		/obj/item/bodypart/r_arm/alien,
+		/obj/item/bodypart/r_leg/alien,
+		/obj/item/bodypart/l_leg/alien,
+		)
 
 /mob/living/carbon/alien/humanoid/Initialize()
 	. = ..()
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_CLAW, 0.5, -3)
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_CLAW, 0.5, -11)
 
-/mob/living/carbon/alien/humanoid/restrained(ignore_grab)
-	return handcuffed
 
 /mob/living/carbon/alien/humanoid/show_inv(mob/user)
 	user.set_machine(src)
@@ -75,22 +77,6 @@
 						"<span class='danger'>You break free of [pulledby]'s grip!</span>")
 	pulledby.stop_pulling()
 	. = 0
-
-/mob/living/carbon/alien/humanoid/get_standard_pixel_y_offset(lying = 0)
-	if(leaping)
-		return -32
-	else if(custom_pixel_y_offset)
-		return custom_pixel_y_offset
-	else
-		return initial(pixel_y)
-
-/mob/living/carbon/alien/humanoid/get_standard_pixel_x_offset(lying = 0)
-	if(leaping)
-		return -32
-	else if(custom_pixel_x_offset)
-		return custom_pixel_x_offset
-	else
-		return initial(pixel_x)
 
 /mob/living/carbon/alien/humanoid/get_permeability_protection(list/target_zones)
 	return 0.8

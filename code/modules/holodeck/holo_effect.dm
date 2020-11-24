@@ -5,7 +5,7 @@
 	These remove snowflake code for special holodeck functions.
 */
 /obj/effect/holodeck_effect
-	icon = 'icons/mob/screen_gen.dmi'
+	icon = 'icons/hud/screen_gen.dmi'
 	icon_state = "x2"
 	invisibility = INVISIBILITY_ABSTRACT
 
@@ -45,14 +45,14 @@
 		D.card_throwforce = 0
 		D.card_throw_speed = 3
 		D.card_throw_range = 7
-		D.card_attack_verb = list("attacked")
+		D.card_attack_verb_continuous = string_list(list("attacks"))
 	else
 		D.card_hitsound = 'sound/weapons/bladeslice.ogg'
 		D.card_force = 5
 		D.card_throwforce = 10
 		D.card_throw_speed = 3
 		D.card_throw_range = 7
-		D.card_attack_verb = list("attacked", "sliced", "diced", "slashed", "cut")
+		D.card_attack_verb_continuous = string_list(list("attacks", "slices", "dices", "slashes", "cuts"))
 
 
 /obj/effect/holodeck_effect/sparks/activate(obj/machinery/computer/holodeck/HC)
@@ -87,11 +87,13 @@
 	qdel(src)
 
 /obj/effect/holodeck_effect/mobspawner/pet
-	mobtype = list(
-		/mob/living/simple_animal/butterfly, /mob/living/simple_animal/chick/holo,
-		/mob/living/simple_animal/pet/cat, /mob/living/simple_animal/pet/cat/kitten,
-		/mob/living/simple_animal/pet/dog/corgi, /mob/living/simple_animal/pet/dog/corgi/puppy,
-		/mob/living/simple_animal/pet/dog/pug, /mob/living/simple_animal/pet/fox)
+
+/obj/effect/holodeck_effect/mobspawner/pet/Initialize()
+	. = ..()
+	mobtype = list(/mob/living/simple_animal/butterfly, /mob/living/simple_animal/chick/holo, /mob/living/simple_animal/pet/fox)
+	mobtype += pick(/mob/living/simple_animal/pet/dog/corgi, /mob/living/simple_animal/pet/dog/corgi/puppy,
+		/mob/living/simple_animal/pet/dog/pug)
+	mobtype += pick(/mob/living/simple_animal/pet/cat, /mob/living/simple_animal/pet/cat/kitten)
 
 /obj/effect/holodeck_effect/mobspawner/bee
 	mobtype = /mob/living/simple_animal/hostile/poison/bees/toxin

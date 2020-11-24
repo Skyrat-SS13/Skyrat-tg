@@ -6,6 +6,8 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 
 //config.alert_desc_blue_downto
 
+//SKYRAT EDIT REMOVAL BEGIN - ALERTS (moved to modular)
+/*
 /proc/set_security_level(level)
 	switch(level)
 		if("green")
@@ -60,7 +62,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 					if(is_station_level(FA.z))
 						FA.update_icon()
 				for(var/obj/machinery/computer/shuttle/pod/pod in GLOB.machines)
-					pod.admin_controlled = 0
+					pod.locked = FALSE
 			if(SEC_LEVEL_DELTA)
 				minor_announce(CONFIG_GET(string/alert_delta), "Attention! Delta security level reached!",1)
 				if(SSshuttle.emergency.mode == SHUTTLE_CALL || SSshuttle.emergency.mode == SHUTTLE_RECALL)
@@ -73,7 +75,7 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 					if(is_station_level(FA.z))
 						FA.update_icon()
 				for(var/obj/machinery/computer/shuttle/pod/pod in GLOB.machines)
-					pod.admin_controlled = 0
+					pod.locked = FALSE
 		if(level >= SEC_LEVEL_RED)
 			for(var/obj/machinery/door/D in GLOB.machines)
 				if(D.red_alert_access)
@@ -116,3 +118,5 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 			return SEC_LEVEL_RED
 		if("delta")
 			return SEC_LEVEL_DELTA
+*/
+//SKYRAT EDIT END

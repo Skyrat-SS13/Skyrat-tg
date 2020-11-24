@@ -71,9 +71,10 @@
 /**
   * Perform a whitespace cleanup on the text, similar to what HTML renderers do
   *
-  * This is useful if you want to better predict how text is going to look like when displaying it to a user
+  * This is useful if you want to better predict how text is going to look like when displaying it to a user.
   * HTML renderers collapse multiple whitespaces into one, trims prepending and appending spaces, among other things. This proc attempts to do the same thing.
-  * HTML5 defines whitespace pretty much exactly like regex defines the \s group, [ \t\r\n\f].
+  * HTML5 defines whitespace pretty much exactly like regex defines the `\s` group, `[ \t\r\n\f]`.
+  *
   * Arguments:
   * * t - The text to "render"
   */
@@ -116,10 +117,11 @@
 	if(non_whitespace)
 		return text		//only accepts the text if it has some non-spaces
 
-// Used to get a properly sanitized input, of max_length
-// no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
+/// Used to get a properly sanitized input, of max_length
+/// no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
 /proc/stripped_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN, no_trim=FALSE)
 	var/name = input(user, message, title, default) as text|null
+
 	if(no_trim)
 		return copytext(html_encode(name), 1, max_length)
 	else
@@ -256,15 +258,15 @@
 /proc/text_in_list(haystack, list/needle_list, start=1, end=0)
 	for(var/needle in needle_list)
 		if(findtext(haystack, needle, start, end))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 //Like above, but case sensitive
 /proc/text_in_list_case(haystack, list/needle_list, start=1, end=0)
 	for(var/needle in needle_list)
 		if(findtextEx(haystack, needle, start, end))
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 //Adds 'char' ahead of 'text' until there are 'count' characters total
 /proc/add_leading(text, count, char = " ")
@@ -293,6 +295,21 @@
 		if (text2ascii(text, i) > 32)
 			return copytext(text, 1, i + 1)
 	return ""
+
+/**
+  * Truncate a string to the given length
+  *
+  * Will only truncate if the string is larger than the length and *ignores unicode concerns*
+  *
+  * This exists soley because trim does other stuff too.
+  *
+  * Arguments:
+  * * text - String
+  * * max_length - integer length to truncate at
+  */
+/proc/truncate(text, max_length)
+	if(length(text) > max_length)
+		return copytext(text, 1, max_length)
 
 //Returns a string with reserved characters and spaces before the first word and after the last word removed.
 /proc/trim(text, max_length)
@@ -877,6 +894,8 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
   * * value - The number to convert to text. Can be positive or negative.
   * * unit - The base unit of the number, such as "Pa" or "W".
   * * maxdecimals - Maximum amount of decimals to display for the final number. Defaults to 1.
+  * *
+  * * For pressure conversion, use proc/siunit_pressure() below
   */
 /proc/siunit(value, unit, maxdecimals=1)
 	var/static/list/prefixes = list("f","p","n","μ","m","","k","M","G","T","P")
@@ -900,3 +919,29 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 
 	var/prefix = prefixes[prefix_index]
 	return "[coefficient] [prefix][unit]"
+
+
+/** The game code never uses Pa, but kPa, since 1 Pa is too small to reasonably handle
+  * Thus, to ensure correct conversion from any kPa in game code, this value needs to be multiplied by 10e3 to get Pa, which the siunit() proc expects
+  * Args:
+  * * value_in_kpa - Value that should be converted to readable text in kPa
+  * * maxdecimals - maximum number of decimals that are displayed, defaults to 1 in proc/siunit()
+ */
+/proc/siunit_pressure(value_in_kpa, maxdecimals)
+	var/pressure_adj = value_in_kpa * 1000 //to adjust for using kPa instead of Pa
+	return siunit(pressure_adj, "Pa", maxdecimals)
+
+/// Slightly expensive proc to scramble a message using equal probabilities of character replacement from a list. DOES NOT SUPPORT HTML!
+/proc/scramble_message_replace_chars(original, replaceprob = 25, list/replacementchars = list("$", "@", "!", "#", "%", "^", "&", "*"), replace_letters_only = FALSE, replace_whitespace = FALSE)
+	var/list/out = list()
+	var/static/list/whitespace = list(" ", "\n", "\t")
+	for(var/i in 1 to length(original))
+		var/char = original[i]
+		if(!replace_whitespace && (char in whitespace))
+			out += char
+			continue
+		if(replace_letters_only && (!ISINRANGE(char, 65, 90) && !ISINRANGE(char, 97, 122)))
+			out += char
+			continue
+		out += prob(replaceprob)? pick(replacementchars) : char
+	return out.Join("")

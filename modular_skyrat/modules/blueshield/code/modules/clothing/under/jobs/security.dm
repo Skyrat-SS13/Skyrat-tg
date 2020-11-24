@@ -4,7 +4,7 @@
 	name = "Blueshield Uniform"
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/blueshield/icons/mob/uniform.dmi'
-	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/uniform_digi.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/blueshield/icons/mob/uniform_digi.dmi'
 	icon_state = "blueshield"
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" =10, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
 	can_adjust = FALSE
@@ -16,7 +16,7 @@
 	desc = "A stylish alternative to the normal Blueshield's Uniform, complete with tactical pants."
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/blueshield/icons/mob/uniform.dmi'
-	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/uniform_digi.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/blueshield/icons/mob/uniform_digi.dmi'
 	icon_state = "bs_turtleneck"
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" =10, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
 	can_adjust = FALSE

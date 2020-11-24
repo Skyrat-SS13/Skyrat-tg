@@ -2,6 +2,7 @@
 	name = "Spontaneous Brain Trauma"
 	typepath = /datum/round_event/brain_trauma
 	weight = 25
+	max_occurrences = 0 //SKYRAT EDIT ADDITION - EVENTS
 
 /datum/round_event/brain_trauma
 	fakeable = FALSE
@@ -14,7 +15,8 @@
 			continue
 		if(!H.getorgan(/obj/item/organ/brain)) // If only I had a brain
 			continue
-
+		if(!SSjob.GetJob(H.mind.assigned_role) || (H.mind.assigned_role in GLOB.nonhuman_positions)) //please stop giving my centcom admin gimmicks full body paralysis
+			continue
 		traumatize(H)
 		announce_to_ghosts(H)
 		break

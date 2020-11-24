@@ -61,7 +61,7 @@
 	description = "Apparently the company that makes Cheesie Honkers is going out of business soon. CentCom wants to stock up before it happens!"
 	reward = 1200
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/cheesiehonkers)
+	wanted_types = list(/obj/item/food/cheesiehonkers)
 
 /datum/bounty/item/assistant/baseball_bat
 	name = "Baseball Bat"
@@ -110,13 +110,6 @@
 	reward = 1500
 	wanted_types = list(/obj/item/stack/sheet/animalhide/monkey)
 
-/datum/bounty/item/assistant/shard
-	name = "Shards"
-	description = "A killer clown has been stalking CentCom, and staff have been unable to catch her because she's not wearing shoes. Please ship some shards so that a booby trap can be constructed."
-	reward = 1500
-	required_count = 15
-	wanted_types = list(/obj/item/shard)
-
 /datum/bounty/item/assistant/comfy_chair
 	name = "Comfy Chairs"
 	description = "Commander Pat is unhappy with his chair. He claims it hurts his back. Ship some alternatives out to humor him."
@@ -129,7 +122,7 @@
 	description = "Commander Zot has the hots for Commander Zena. Send a shipment of geraniums - her favorite flower - and he'll happily reward you."
 	reward = 4000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/grown/poppy/geranium)
+	wanted_types = list(/obj/item/food/grown/poppy/geranium)
 	include_subtypes = FALSE
 
 /datum/bounty/item/assistant/poppy
@@ -137,7 +130,7 @@
 	description = "Commander Zot really wants to sweep Security Officer Olivia off her feet. Send a shipment of Poppies - her favorite flower - and he'll happily reward you."
 	reward = 1000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/grown/poppy)
+	wanted_types = list(/obj/item/food/grown/poppy)
 	include_subtypes = FALSE
 
 /datum/bounty/item/assistant/shadyjims
@@ -158,7 +151,7 @@
 	description = "Due to a recent genetics accident, Central Command is in serious need of monkeys. Your mission is to ship monkey cubes."
 	reward = 2000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/monkeycube)
+	wanted_types = list(/obj/item/food/monkeycube)
 
 /datum/bounty/item/assistant/ied
 	name = "IED"
@@ -171,7 +164,7 @@
 	name = "Raw Corgi Meat"
 	description = "The Syndicate recently stole all of CentCom's Corgi meat. Ship out a replacement immediately."
 	reward = 3000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/meat/slab/corgi)
+	wanted_types = list(/obj/item/food/meat/slab/corgi)
 
 /datum/bounty/item/assistant/action_figures
 	name = "Action Figures"
@@ -186,3 +179,26 @@
 	reward = 5000
 	required_count = 5
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/deadmouse)
+
+/datum/bounty/item/assistant/paper_bin
+	name = "Paper Bins"
+	description = "Our accounting division is all out of paper. We need a new shipment immediately."
+	reward = 2500
+	required_count = 5
+	wanted_types = list(/obj/item/paper_bin)
+
+
+/datum/bounty/item/assistant/crayons
+	name = "Crayons"
+	description = "Dr Jones' kid ate all our crayons again. Please send us yours."
+	reward = 2000
+	required_count = 24
+	wanted_types = list(/obj/item/toy/crayon)
+
+/datum/bounty/item/assistant/pens
+	name = "Pens"
+	description = "We are hosting the intergalactic pen balancing competition. We need you to send us some standardized ball point pens."
+	reward = 2000
+	required_count = 10
+	include_subtypes = FALSE
+	wanted_types = list(/obj/item/pen)

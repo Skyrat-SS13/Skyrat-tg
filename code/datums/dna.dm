@@ -15,6 +15,9 @@
 	var/default_mutation_genes[DNA_MUTATION_BLOCKS] //List of the default genes from this mutation to allow DNA Scanner highlighting
 	var/stability = 100
 	var/scrambled = FALSE //Did we take something like mutagen? In that case we cant get our genes scanned to instantly cheese all the powers.
+	//SKYRAT EDIT BEGIN - ADDITION - CLONING
+	var/delete_species = TRUE
+	//SKYRAT EDIT END
 
 /datum/dna/New(mob/living/new_holder)
 	if(istype(new_holder))
@@ -27,7 +30,11 @@
 			cholder.dna = null
 	holder = null
 
-	QDEL_NULL(species)
+	//SKYRAT EDIT BEGIN - CHANGE - CLONING
+	//QDEL_NULL(species) - SKYRAT ORIGINAL
+	if(delete_species)
+		QDEL_NULL(species)
+	//SKYRAT EDIT END
 
 	mutations.Cut()					//This only references mutations, just dereference.
 	temporary_mutations.Cut()		//^
@@ -120,7 +127,7 @@
 
 /datum/dna/proc/generate_dna_blocks()
 	var/bonus
-	if(species && species.inert_mutation)
+	if(species?.inert_mutation)
 		bonus = GET_INITIALIZED_MUTATION(species.inert_mutation)
 	var/list/mutations_temp = GLOB.good_mutations + GLOB.bad_mutations + GLOB.not_good_mutations + bonus
 	if(!LAZYLEN(mutations_temp))
@@ -221,8 +228,8 @@
 /datum/dna/proc/is_same_as(datum/dna/D)
 	if(uni_identity == D.uni_identity && mutation_index == D.mutation_index && real_name == D.real_name)
 		if(species.type == D.species.type && features == D.features && blood_type == D.blood_type)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /datum/dna/proc/update_instability(alert=TRUE)
 	stability = 100
@@ -255,6 +262,8 @@
 	uni_identity = generate_uni_identity()
 	unique_enzymes = generate_unique_enzymes()
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/dna/proc/initialize_dna(newblood_type, skip_index = FALSE)
 	if(newblood_type)
 		blood_type = newblood_type
@@ -263,7 +272,8 @@
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
 	features = random_features()
-
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 
@@ -295,6 +305,8 @@
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(mrace && has_dna())
 		var/datum/species/new_race
@@ -314,6 +326,8 @@
 			var/species_holder = initial(mrace.species_language_holder)
 			language_holder = new species_holder(src)
 		update_atom_languages()
+*/
+//SKYRAT EDIT REMOVAL BEGIN
 
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
@@ -438,7 +452,7 @@
 
 /datum/dna/proc/check_block_string(mutation)
 	if((LAZYLEN(mutation_index) > DNA_MUTATION_BLOCKS) || !(mutation in mutation_index))
-		return 0
+		return FALSE
 	return is_gene_active(mutation)
 
 /datum/dna/proc/is_gene_active(mutation)
@@ -549,7 +563,7 @@
 
 /proc/scramble_dna(mob/living/carbon/M, ui=FALSE, se=FALSE, probability)
 	if(!M.has_dna())
-		return 0
+		return FALSE
 	if(se)
 		for(var/i=1, i<=DNA_MUTATION_BLOCKS, i++)
 			if(prob(probability))
@@ -560,7 +574,7 @@
 			if(prob(probability))
 				M.dna.uni_identity = setblock(M.dna.uni_identity, i, random_string(DNA_BLOCK_SIZE, GLOB.hex_characters))
 		M.updateappearance(mutations_overlay_update=1)
-	return 1
+	return TRUE
 
 //value in range 1 to values. values must be greater than 0
 //all arguments assumed to be positive integers
@@ -652,8 +666,6 @@
 				set_species(/datum/species/skeleton)
 				if(prob(90))
 					addtimer(CALLBACK(src, .proc/death), 30)
-					if(mind)
-						mind.hasSoul = FALSE
 			if(5)
 				to_chat(src, "<span class='phobia'>LOOK UP!</span>")
 				addtimer(CALLBACK(src, .proc/something_horrible_mindmelt), 30)

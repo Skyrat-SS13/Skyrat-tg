@@ -160,7 +160,7 @@
 		C.Knockdown(20)
 
 /mob/living/simple_animal/bot/cleanbot/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
+	if(W.GetID())
 		if(bot_core.allowed(user) && !open && !emagged)
 			locked = !locked
 			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] \the [src] behaviour controls.</span>")
@@ -190,7 +190,7 @@
 /mob/living/simple_animal/bot/cleanbot/process_scan(atom/A)
 	if(iscarbon(A))
 		var/mob/living/carbon/C = A
-		if(C.stat != DEAD && !(C.mobility_flags & MOBILITY_STAND))
+		if(C.stat != DEAD && C.body_position == LYING_DOWN)
 			return C
 	else if(is_type_in_typecache(A, target_types))
 		return A
@@ -318,7 +318,7 @@
 
 		var/turf/T = get_turf(A)
 		if(do_after(src, 1, target = T))
-			T.wash(CLEAN_WASH)
+			T.wash(CLEAN_SCRUB)
 			visible_message("<span class='notice'>[src] cleans \the [T].</span>")
 			target = null
 

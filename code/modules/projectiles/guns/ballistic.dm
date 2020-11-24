@@ -98,7 +98,10 @@
 		return
 	if (!magazine)
 		magazine = new mag_type(src)
-	chamber_round(replace_new_round = TRUE)
+	if(bolt_type == BOLT_TYPE_STANDARD)
+		chamber_round()
+	else
+		chamber_round(replace_new_round = TRUE)
 	update_icon()
 
 /obj/item/gun/ballistic/vv_edit_var(vname, vval)
@@ -374,7 +377,6 @@
 			flip_cooldown = (world.time + 30)
 			user.visible_message("<span class='notice'>[user] spins the [src] around their finger by the trigger. That’s pretty badass.</span>")
 			playsound(src, 'sound/items/handling/ammobox_pickup.ogg', 20, FALSE)
-			return
 	if(!internal_magazine && magazine)
 		if(!magazine.ammo_count())
 			eject_magazine(user)

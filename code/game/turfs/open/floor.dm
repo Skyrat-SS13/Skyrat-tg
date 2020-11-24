@@ -3,7 +3,8 @@
 	//- you should use istype() if you want to find out whether a floor has a certain type
 	//- floor_tile is now a path, and not a tile obj
 	name = "floor"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'icons/turf/floors.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	base_icon_state = "floor"
 	baseturfs = /turf/open/floor/plating
 
 	footstep = FOOTSTEP_FLOOR
@@ -11,51 +12,34 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
-	var/icon_regular_floor = "floor" //used to remember what icon the tile should have by default
-	var/icon_plating = "plating"
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = list(SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_TURF_OPEN)
+
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
-	intact = 1
-	var/broken = 0
-	var/burnt = 0
+	intact = TRUE
+	tiled_dirt = TRUE
+
+	var/icon_plating = "plating"
+	var/broken = FALSE
+	var/burnt = FALSE
 	var/floor_tile = null //tile that this floor drops
 	var/list/broken_states
 	var/list/burnt_states
 
-	tiled_dirt = TRUE
 
 /turf/open/floor/Initialize(mapload)
 	if (!broken_states)
-		broken_states = typelist("broken_states", list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5"))
+		broken_states = string_list(list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5"))
 	else
-		broken_states = typelist("broken_states", broken_states)
-	burnt_states = typelist("burnt_states", burnt_states)
+		broken_states = string_list(broken_states)
+	if(burnt_states)
+		burnt_states = string_list(burnt_states)
 	if(!broken && broken_states && (icon_state in broken_states))
 		broken = TRUE
 	if(!burnt && burnt_states && (icon_state in burnt_states))
 		burnt = TRUE
 	. = ..()
-	//This is so damaged or burnt tiles or platings don't get remembered as the default tile
-	var/static/list/icons_to_ignore_at_floor_init = list("foam_plating", "plating","light_on","light_on_flicker1","light_on_flicker2",
-					"light_on_clicker3","light_on_clicker4","light_on_clicker5",
-					"light_on_broken","light_off","wall_thermite","grass", "sand",
-					"asteroid","asteroid_dug",
-					"asteroid0","asteroid1","asteroid2","asteroid3","asteroid4",
-					"asteroid5","asteroid6","asteroid7","asteroid8","asteroid9","asteroid10","asteroid11","asteroid12",
-					"basalt","basalt_dug",
-					"basalt0","basalt1","basalt2","basalt3","basalt4",
-					"basalt5","basalt6","basalt7","basalt8","basalt9","basalt10","basalt11","basalt12",
-					"snow","snow_dug","ice",
-					"snow0","snow1","snow2","snow3","snow4",
-					"snow5","snow6","snow7","snow8","snow9","snow10","snow11","snow12",
-					"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "carpetsymbol", "carpetstar",
-					"carpetcorner", "carpetside", "carpet", "ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5",
-					"ironsand6", "ironsand7", "ironsand8", "ironsand9", "ironsand10", "ironsand11",
-					"ironsand12", "ironsand13", "ironsand14", "ironsand15")
-	if(broken || burnt || (icon_state in icons_to_ignore_at_floor_init)) //so damaged/burned tiles or plating icons aren't saved as the default
-		icon_regular_floor = "floor"
-	else
-		icon_regular_floor = icon_state
 	if(mapload && prob(33))
 		MakeDirty()
 	if(is_station_level(z))
@@ -135,7 +119,7 @@
 /turf/open/floor/burn_tile()
 	if(broken || burnt)
 		return
-	if(burnt_states.len)
+	if(LAZYLEN(burnt_states))
 		icon_state = pick(burnt_states)
 	else
 		icon_state = pick(broken_states)
@@ -153,22 +137,25 @@
 		return ..() //fucking turfs switch the fucking src of the fucking running procs
 	if(!ispath(path, /turf/open/floor))
 		return ..()
-	var/old_icon = icon_regular_floor
 	var/old_dir = dir
 	var/turf/open/floor/W = ..()
-	W.icon_regular_floor = old_icon
 	W.setDir(old_dir)
 	W.update_icon()
 	return W
 
-/turf/open/floor/attackby(obj/item/C, mob/user, params)
-	if(!C || !user)
-		return 1
-	if(..())
-		return 1
-	if(intact && istype(C, /obj/item/stack/tile))
-		try_replace_tile(C, user, params)
-	return 0
+/turf/open/floor/attackby(obj/item/object, mob/user, params)
+	if(!object || !user)
+		return TRUE
+	. = ..()
+	if(.)
+		return .
+	if(intact && istype(object, /obj/item/stack/tile))
+		try_replace_tile(object, user, params)
+		return TRUE
+	if(user.a_intent == INTENT_HARM && istype(object, /obj/item/stack/sheet))
+		var/obj/item/stack/sheet/sheets = object
+		return sheets.on_attack_floor(user, params)
+	return FALSE
 
 /turf/open/floor/crowbar_act(mob/living/user, obj/item/I)
 	if(intact && pry_tile(I, user))
@@ -191,8 +178,8 @@
 
 /turf/open/floor/proc/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, force_plating)
 	if(broken || burnt)
-		broken = 0
-		burnt = 0
+		broken = FALSE
+		burnt = FALSE
 		if(user && !silent)
 			to_chat(user, "<span class='notice'>You remove the broken plating.</span>")
 	else
@@ -207,8 +194,8 @@
 
 /turf/open/floor/proc/spawn_tile()
 	if(!has_tile())
-		return
-	new floor_tile(src)
+		return null
+	return new floor_tile(src)
 
 /turf/open/floor/singularity_pull(S, current_size)
 	..()
@@ -266,7 +253,10 @@
 			PlaceOnTop(/turf/closed/wall)
 			return TRUE
 		if(RCD_AIRLOCK)
-			if(locate(/obj/machinery/door) in src)
+			for(var/obj/machinery/door/door in src)
+				if(door.sub_door)
+					continue
+				to_chat(user, "<span class='notice'>There is another door here!</span>")
 				return FALSE
 			if(ispath(the_rcd.airlock_type, /obj/machinery/door/window))
 				to_chat(user, "<span class='notice'>You build a windoor.</span>")
@@ -334,11 +324,13 @@
 	name = "floor"
 	icon_state = "materialfloor"
 	material_flags = MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
+	floor_tile = /obj/item/stack/tile/material
 
 /turf/open/floor/material/has_tile()
-	return custom_materials.len
+	return LAZYLEN(custom_materials)
 
 /turf/open/floor/material/spawn_tile()
-	for(var/i in custom_materials)
-		var/datum/material/M = i
-		new M.sheet_type(src, FLOOR(custom_materials[M] / MINERAL_MATERIAL_AMOUNT, 1))
+	. = ..()
+	if(.)
+		var/obj/item/stack/tile = .
+		tile.set_mats_per_unit(custom_materials, 1)

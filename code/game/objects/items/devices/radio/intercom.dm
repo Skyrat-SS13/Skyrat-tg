@@ -1,4 +1,4 @@
-/obj/item/radio/intercom
+/obj/item/radio/intercom //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "station intercom"
 	desc = "Talk through this."
 	icon_state = "intercom"
@@ -54,6 +54,16 @@
 			qdel(src)
 		return
 	return ..()
+
+/**
+  * Override attack_tk_grab instead of attack_tk because we actually want attack_tk's
+  * functionality. What we DON'T want is attack_tk_grab attempting to pick up the
+  * intercom as if it was an ordinary item.
+  */
+/obj/item/radio/intercom/attack_tk_grab(mob/user)
+	interact(user)
+	return COMPONENT_CANCEL_ATTACK_CHAIN
+
 
 /obj/item/radio/intercom/attack_ai(mob/user)
 	interact(user)
@@ -132,3 +142,9 @@
 	pixel_shift = 29
 	inverse = TRUE
 	custom_materials = list(/datum/material/iron = 75, /datum/material/glass = 25)
+
+/obj/item/radio/intercom/chapel
+	name = "Confessional intercom"
+	anonymize = TRUE
+	frequency = 1481
+	broadcasting = TRUE

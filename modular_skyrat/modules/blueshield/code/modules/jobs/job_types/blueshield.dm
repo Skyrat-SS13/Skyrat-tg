@@ -1,11 +1,11 @@
 /datum/job/blueshield
 	title = "Blueshield"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Captain")
+	department_head = list("Central Command")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Captain"
+	supervisors = "Central Command"
 	selection_color = "#ddddff"
 	minimal_player_age = 7
 	exp_requirements = 2400
@@ -48,3 +48,15 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
+
+/obj/item/choice_beacon/blueshield
+	name = "blueshield's shotgun beacon"
+	desc = "A beacon, allowing the blueshield to select between two available models of personal shotguns."
+
+/obj/item/choice_beacon/blueshield/generate_display_names()
+	var/static/list/bshield
+	if(!bshield)
+		bshield = list()
+		bshield["Energy Revolver"] = /obj/item/gun/energy/e_gun/revolver
+		bshield["PDW-9"] = /obj/item/gun/energy/e_gun/revolver/pdw9
+	return bshield

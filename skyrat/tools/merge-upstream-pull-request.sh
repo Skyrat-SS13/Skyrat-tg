@@ -78,6 +78,8 @@ if echo "$CHERRY_PICK_OUTPUT" | grep -i 'error: mainline was specified but commi
 	  # Add all files onto this branch
 	  git add -A .
 	  git -c core.editor=true cherry-pick --continue
+	  # Prune any possible mentions from the commit message.
+	  git commit -m "$(git -c core.editor=true log -1 --pretty=%B | sed 's/@/@ /g')" --amend
     done
   else
     echo "Cherry-picking: $MERGE_SHA"
@@ -85,16 +87,29 @@ if echo "$CHERRY_PICK_OUTPUT" | grep -i 'error: mainline was specified but commi
 	# Add all files onto this branch
 	git add -A .
 	git -c core.editor=true cherry-pick --continue
+	# Prune any possible mentions from the commit message.
+	git commit -m "$(git -c core.editor=true log -1 --pretty=%B | sed 's/@/@ /g')" --amend
   fi
 else
   # Add all files onto this branch
   echo "Adding files to branch:"
   git add -A .
+  # Prune any possible mentions from the commit message.
+  git commit -m "$(git -c core.editor=true log -1 --pretty=%B | sed 's/@/@ /g')" --amend
 fi
 
 # Commit these changes
 echo "Commiting changes"
 git -c core.editor=true commit --allow-empty -m "$2"
+
+# Prune any possible mentions from the commit message.
+git commit -m "$(git -c core.editor=true log -1 --pretty=%B | sed 's/@/@ /g')" --amend
+
+if command -v yarn &> /dev/null
+then
+    ./tgui/bin/tgui
+    git -c core.editor=true commit -m "Rebuilt tgui."
+fi
 
 # Push them onto the branch
 echo "Pushing changes"

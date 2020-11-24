@@ -77,6 +77,8 @@
 
 /datum/config_entry/flag/log_emote	// log emotes
 
+/datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
+
 /datum/config_entry/flag/log_econ	// log economy actions
 
 /datum/config_entry/flag/log_adminchat	// log admin chat messages
@@ -312,6 +314,11 @@
 
 /datum/config_entry/flag/panic_bunker	// prevents people the server hasn't seen before from connecting
 
+/datum/config_entry/number/panic_bunker_living // living time in minutes that a player needs to pass the panic bunker
+
+/// Flag for requiring players who would otherwise be denied access by the panic bunker to complete a written interview
+/datum/config_entry/flag/panic_bunker_interview
+
 /datum/config_entry/string/panic_bunker_message
 	config_entry_value = "Sorry but the server is currently not accepting connections from never before seen players."
 
@@ -491,15 +498,6 @@
 
 /datum/config_entry/flag/auto_profile
 
-// DISCORD ROLE STUFFS
-// Using strings for everything because BYOND does not like numbers this big
-// (exception to the above is required living hours haha)
-/datum/config_entry/flag/enable_discord_autorole
+/datum/config_entry/string/centcom_ban_db	// URL for the CentCom Galactic Ban DB API
 
-/datum/config_entry/number/required_living_hours
-
-/datum/config_entry/string/discord_token
-
-/datum/config_entry/string/discord_guildid
-
-/datum/config_entry/string/discord_roleid
+/datum/config_entry/string/centcom_source_whitelist

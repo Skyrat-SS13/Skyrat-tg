@@ -63,7 +63,7 @@
 	/// see [/datum/reagents/proc/metabolize] for usage
 	var/addiction_tick = 1
 	/// currently addicted reagents
-	var/list/datum/reagent/addiction_list = new/list()
+	var/list/datum/reagent/addiction_list
 	/// various flags, see code\__DEFINES\reagents.dm
 	var/flags
 
@@ -81,13 +81,11 @@
 /datum/reagents/Destroy()
 	. = ..()
 	//We're about to delete all reagents, so lets cleanup
-	addiction_list.Cut()
-	var/list/cached_reagents = reagent_list
-	for(var/reagent in cached_reagents)
+	addiction_list = null
+	for(var/reagent in reagent_list)
 		var/datum/reagent/R = reagent
 		qdel(R)
-	cached_reagents.Cut()
-	cached_reagents = null
+	reagent_list = null
 	if(my_atom && my_atom.reagents == src)
 		my_atom.reagents = null
 	my_atom = null
@@ -206,11 +204,12 @@
   * * no_react - passed through to [/datum/reagents/proc/add_reagent]
   * * mob/transfered_by - used for logging
   * * remove_blacklisted - skips transferring of reagents with can_synth = FALSE
-  * * method - passed through to [/datum/reagents/proc/react_single] and [/datum/reagent/proc/on_transfer]
-  * * show_message - passed through to [/datum/reagents/proc/react_single]
+  * * methods - passed through to [/datum/reagents/proc/expose_single] and [/datum/reagent/proc/on_transfer]
+  * * show_message - passed through to [/datum/reagents/proc/expose_single]
   * * round_robin - if round_robin=TRUE, so transfer 5 from 15 water, 15 sugar and 15 plasma becomes 10, 15, 15 instead of 13.3333, 13.3333 13.3333. Good if you hate floating point errors
+  * * ignore_stomach - when using methods INGEST will not use the stomach as the target
   */
-/datum/reagents/proc/trans_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE, mob/transfered_by, remove_blacklisted = FALSE, method = null, show_message = TRUE, round_robin = FALSE)
+/datum/reagents/proc/trans_to(obj/target, amount = 1, multiplier = 1, preserve_data = TRUE, no_react = FALSE, mob/transfered_by, remove_blacklisted = FALSE, methods = NONE, show_message = TRUE, round_robin = FALSE, ignore_stomach = FALSE)
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -223,10 +222,19 @@
 		R = target
 		target_atom = R.my_atom
 	else
-		if(!target.reagents)
+		if(!ignore_stomach && (methods & INGEST) && istype(target, /mob/living/carbon))
+			var/mob/living/carbon/eater = target
+			var/obj/item/organ/stomach/belly = eater.getorganslot(ORGAN_SLOT_STOMACH)
+			if(!belly)
+				eater.expel_ingested(my_atom, amount)
+				return
+			R = belly.reagents
+			target_atom = belly
+		else if(!target.reagents)
 			return
-		R = target.reagents
-		target_atom = target
+		else
+			R = target.reagents
+			target_atom = target
 
 	amount = min(min(amount, src.total_volume), R.maximum_volume-R.total_volume)
 	var/trans_data = null
@@ -241,9 +249,12 @@
 			if(preserve_data)
 				trans_data = copy_data(T)
 			R.add_reagent(T.type, transfer_amount * multiplier, trans_data, chem_temp, no_react = 1) //we only handle reaction after every reagent has been transfered.
-			if(method)
-				R.expose_single(T, target_atom, method, part, show_message)
-				T.on_transfer(target_atom, method, transfer_amount * multiplier)
+			if(methods)
+				if(istype(target_atom, /obj/item/organ))
+					R.expose_single(T, target, methods, part, show_message)
+				else
+					R.expose_single(T, target_atom, methods, part, show_message)
+				T.on_transfer(target_atom, methods, transfer_amount * multiplier)
 			remove_reagent(T.type, transfer_amount)
 			transfer_log[T.type] = transfer_amount
 	else
@@ -261,9 +272,12 @@
 				transfer_amount = T.volume
 			R.add_reagent(T.type, transfer_amount * multiplier, trans_data, chem_temp, no_react = 1)
 			to_transfer = max(to_transfer - transfer_amount , 0)
-			if(method)
-				R.expose_single(T, target_atom, method, transfer_amount, show_message)
-				T.on_transfer(target_atom, method, transfer_amount * multiplier)
+			if(methods)
+				if(istype(target_atom, /obj/item/organ))
+					R.expose_single(T, target, methods, transfer_amount, show_message)
+				else
+					R.expose_single(T, target_atom, methods, transfer_amount, show_message)
+				T.on_transfer(target_atom, methods, transfer_amount * multiplier)
 			remove_reagent(T.type, transfer_amount)
 			transfer_log[T.type] = transfer_amount
 
@@ -360,6 +374,29 @@
 
 		if(!C)
 			C = R.holder.my_atom
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			//Check if this mob's species is set and can process this type of reagent
+			var/can_process = FALSE
+			//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
+			if(H.dna && H.dna.species.reagent_flags)
+				var/owner_flags = H.dna.species.reagent_flags
+				if((R.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+					can_process = TRUE
+				if((R.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+					can_process = TRUE
+
+			//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
+			if(!can_process)
+				R.holder.remove_reagent(R.type, R.metabolization_rate)
+				continue
+		//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+		else
+			if(R.process_flags == REAGENT_SYNTHETIC)
+				R.holder.remove_reagent(R.type, R.metabolization_rate)
+				continue
+		//SKYRAT EDIT ADDITION END
 
 		if(C && R)
 			if(C.reagent_check(R) != TRUE)
@@ -371,18 +408,20 @@
 				if(can_overdose)
 					if(R.overdose_threshold)
 						if(R.volume >= R.overdose_threshold && !R.overdosed)
-							R.overdosed = 1
+							R.overdosed = TRUE
 							need_mob_update += R.overdose_start(C)
 							log_game("[key_name(C)] has started overdosing on [R.name] at [R.volume] units.")
+					var/is_addicted_to = cached_addictions && is_type_in_list(R, cached_addictions)
 					if(R.addiction_threshold)
-						if(R.volume >= R.addiction_threshold && !is_type_in_list(R, cached_addictions))
+						if(R.volume >= R.addiction_threshold && !is_addicted_to)
 							var/datum/reagent/new_reagent = new R.addiction_type()
-							cached_addictions.Add(new_reagent)
+							LAZYADD(cached_addictions, new_reagent)
+							is_addicted_to = TRUE
 							log_game("[key_name(C)] has become addicted to [R.name] at [R.volume] units.")
 					if(R.overdosed)
 						need_mob_update += R.overdose_process(C)
 					var/datum/reagent/addiction_type = new R.addiction_type()
-					if(is_type_in_list(addiction_type ,cached_addictions))
+					if(is_addicted_to)
 						for(var/addiction in cached_addictions)
 							var/datum/reagent/A = addiction
 							if(istype(addiction_type, A))
@@ -394,25 +433,25 @@
 			addiction_tick = 1
 			for(var/addiction in cached_addictions)
 				var/datum/reagent/R = addiction
-				if(C && R)
-					R.addiction_stage++
-					switch(R.addiction_stage)
-						if(1 to 10)
-							need_mob_update += R.addiction_act_stage1(C)
-						if(10 to 20)
-							need_mob_update += R.addiction_act_stage2(C)
-						if(20 to 30)
-							need_mob_update += R.addiction_act_stage3(C)
-						if(30 to 40)
-							need_mob_update += R.addiction_act_stage4(C)
-						if(40 to INFINITY)
-							remove_addiction(R)
-						else
-							SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
+				if(!C)
+					break
+				R.addiction_stage++
+				switch(R.addiction_stage)
+					if(1 to 10)
+						need_mob_update += R.addiction_act_stage1(C)
+					if(10 to 20)
+						need_mob_update += R.addiction_act_stage2(C)
+					if(20 to 30)
+						need_mob_update += R.addiction_act_stage3(C)
+					if(30 to 40)
+						need_mob_update += R.addiction_act_stage4(C)
+					if(40 to INFINITY)
+						remove_addiction(R)
+					else
+						SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
 		addiction_tick++
 	if(C && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		C.updatehealth()
-		C.update_mobility()
 		C.update_stamina()
 	update_total()
 
@@ -420,7 +459,7 @@
 /datum/reagents/proc/remove_addiction(datum/reagent/R)
 	to_chat(my_atom, "<span class='notice'>You feel like you've gotten over your need for [R.name].</span>")
 	SEND_SIGNAL(my_atom, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
-	addiction_list.Remove(R)
+	LAZYREMOVE(addiction_list, R)
 	qdel(R)
 
 /// Signals that metabolization has stopped, triggering the end of trait-based effects
@@ -582,7 +621,6 @@
 
 	while(reaction_occurred)
 	update_total()
-	return 0
 
 /// Remove every reagent except this one
 /datum/reagents/proc/isolate_reagent(reagent)
@@ -599,14 +637,14 @@
 	for(var/_reagent in cached_reagents)
 		var/datum/reagent/R = _reagent
 		if(R.type == reagent)
-			if(my_atom && isliving(my_atom))
-				var/mob/living/M = my_atom
+			if(isliving(my_atom))
 				if(R.metabolizing)
 					R.metabolizing = FALSE
-					R.on_mob_end_metabolize(M)
-				R.on_mob_delete(M)
+					R.on_mob_end_metabolize(my_atom)
+				R.on_mob_delete(my_atom)
+
 			//Clear from relevant lists
-			addiction_list -= R
+			LAZYREMOVE(addiction_list, R)
 			reagent_list -= R
 			qdel(R)
 			update_total()
@@ -620,12 +658,11 @@
 	total_volume = 0
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
-		if(R.volume < 0.1)
+		if(R.volume < 0.05)
 			del_reagent(R.type)
 		else
 			total_volume += R.volume
 
-	return 0
 
 /// Removes all reagents
 /datum/reagents/proc/clear_reagents()
@@ -635,15 +672,20 @@
 		del_reagent(R.type)
 	if(my_atom)
 		my_atom.on_reagent_change(CLEAR_REAGENTS)
-	return 0
 
 /**
   * Applies the relevant expose_ proc for every reagent in this holder
   * * [/datum/reagent/proc/expose_mob]
   * * [/datum/reagent/proc/expose_turf]
   * * [/datum/reagent/proc/expose_obj]
+  *
+  * Arguments
+  * - Atom/A: What mob/turf/object is being exposed to reagents? This is your reaction target.
+  * - Methods: What reaction type is the reagent itself going to call on the reaction target? Types are TOUCH, INGEST, VAPOR, PATCH, and INJECT.
+  * - Volume_modifier: What is the reagent volume multiplied by when exposed? Note that this is called on the volume of EVERY reagent in the base body, so factor in your Maximum_Volume if necessary!
+  * - Show_message: Whether to display anything to mobs when they are exposed.
   */
-/datum/reagents/proc/expose(atom/A, method = TOUCH, volume_modifier = 1, show_message = 1)
+/datum/reagents/proc/expose(atom/A, methods = TOUCH, volume_modifier = 1, show_message = 1)
 	if(isnull(A))
 		return null
 
@@ -656,11 +698,11 @@
 		var/datum/reagent/R = reagent
 		reagents[R] = R.volume * volume_modifier
 
-	return A.expose_reagents(reagents, src, method, volume_modifier, show_message)
+	return A.expose_reagents(reagents, src, methods, volume_modifier, show_message)
 
 
 /// Same as [/datum/reagents/proc/expose] but only for one reagent
-/datum/reagents/proc/expose_single(datum/reagent/R, atom/A, method = TOUCH, volume_modifier = 1, show_message = TRUE)
+/datum/reagents/proc/expose_single(datum/reagent/R, atom/A, methods = TOUCH, volume_modifier = 1, show_message = TRUE)
 	if(isnull(A))
 		return null
 
@@ -670,7 +712,7 @@
 		return null
 
 	// Yes, we need the parentheses.
-	return A.expose_reagents(list((R) = R.volume * volume_modifier), src, method, volume_modifier, show_message)
+	return A.expose_reagents(list((R) = R.volume * volume_modifier), src, methods, volume_modifier, show_message)
 
 /// Is this holder full or not
 /datum/reagents/proc/holder_full()
@@ -758,7 +800,8 @@
 		R.on_new(data)
 
 	if(isliving(my_atom))
-		R.on_mob_add(my_atom) //Must occur befor it could posibly run on_mob_delete
+		R.on_mob_add(my_atom) //Must occur before it could posibly run on_mob_delete
+
 	update_total()
 	if(my_atom)
 		my_atom.on_reagent_change(ADD_REAGENT)
@@ -817,17 +860,14 @@ Needs matabolizing takes into consideration if the chemical is matabolizing when
 		if (R.type == reagent)
 			if(!amount)
 				if(needs_metabolizing && !R.metabolizing)
-					return 0
+					return FALSE
 				return R
 			else
 				if(round(R.volume, CHEMICAL_QUANTISATION_LEVEL) >= amount)
 					if(needs_metabolizing && !R.metabolizing)
-						return 0
+						return FALSE
 					return R
-				else
-					return 0
-
-	return 0
+	return FALSE
 
 /// Get the amount of this reagent
 /datum/reagents/proc/get_reagent_amount(reagent)
@@ -836,7 +876,6 @@ Needs matabolizing takes into consideration if the chemical is matabolizing when
 		var/datum/reagent/R = _reagent
 		if (R.type == reagent)
 			return round(R.volume, CHEMICAL_QUANTISATION_LEVEL)
-
 	return 0
 
 /// Get a comma separated string of every reagent name in this holder

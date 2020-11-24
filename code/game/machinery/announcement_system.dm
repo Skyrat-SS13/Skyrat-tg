@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	update_icon()
 
 /obj/machinery/announcement_system/update_icon_state()
-	if(is_operational())
+	if(is_operational)
 		icon_state = (panel_open ? "AAS_On_Open" : "AAS_On")
 	else
 		icon_state = (panel_open ? "AAS_Off_Open" : "AAS_Off")
@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		return
 	else if(P.tool_behaviour == TOOL_MULTITOOL && panel_open && (machine_stat & BROKEN))
 		to_chat(user, "<span class='notice'>You reset [src]'s firmware.</span>")
-		machine_stat &= ~BROKEN
+		set_machine_stat(machine_stat & ~BROKEN)
 		update_icon()
 	else
 		return ..()
@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	return str
 
 /obj/machinery/announcement_system/proc/announce(message_type, user, rank, list/channels)
-	if(!is_operational())
+	if(!is_operational)
 		return
 
 	var/message
@@ -86,6 +86,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		message = CompileText(newhead, user, rank)
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
+	//SKYRAT EDIT ADDITION BEGIN - CRYOSLEEP
+	else if(message_type == "CRYOSTORAGE")
+		message = CompileText("%PERSON, %RANK has been moved to cryo storage.", user, rank)
+	//SKYRAT EDIT ADDITION END
 
 	if(channels.len == 0)
 		radio.talk_into(src, message, null)

@@ -45,9 +45,9 @@
 /proc/above_neck(zone)
 	var/list/zones = list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES)
 	if(zones.Find(zone))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /**
   * Convert random parts of a passed in message to stars
@@ -256,7 +256,7 @@
   */
 /mob/verb/a_intent_change(input as text)
 	set name = "a-intent"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!possible_a_intents || !possible_a_intents.len)
 		return
@@ -283,7 +283,7 @@
 
 		a_intent = possible_a_intents[current_intent]
 
-	if(hud_used && hud_used.action_intent)
+	if(hud_used?.action_intent)
 		hud_used.action_intent.icon_state = "[a_intent]"
 
 ///Checks if the mob is able to see or not. eye_blind is temporary blindness, the trait is if they're permanently blind.
@@ -352,7 +352,7 @@
 		if(flashwindow)
 			window_flash(O.client)
 		if(source)
-			var/obj/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /obj/screen/alert/notify_action)
+			var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
 			if(A)
 				if(O.client.prefs && O.client.prefs.UI_style)
 					A.icon = ui_style2icon(O.client.prefs.UI_style)
@@ -434,6 +434,7 @@
 		message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(M)])")
 		M.ghostize(0)
 		M.key = C.key
+		M.client?.init_verbs()
 		return TRUE
 	else
 		to_chat(M, "There were no ghosts willing to take control.")
@@ -447,7 +448,6 @@
 ///Is the mob a floating mob
 /mob/proc/is_floating()
 	return (movement_type & FLOATING)
-
 
 ///Clicks a random nearby mob with the source from this mob
 /mob/proc/click_random_mob()
@@ -482,7 +482,22 @@
 		else
 			colored_message = "<font color='[color]'>[message]</font>"
 
-	var/list/timestamped_message = list("[LAZYLEN(logging[smessage_type]) + 1]\[[time_stamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
+	//This makes readability a bit better for admins.
+	switch(message_type)
+		if(LOG_WHISPER)
+			colored_message = "(WHISPER) [colored_message]"
+		if(LOG_OOC)
+			colored_message = "(OOC) [colored_message]"
+		if(LOG_ASAY)
+			colored_message = "(ASAY) [colored_message]"
+		if(LOG_EMOTE)
+			colored_message = "(EMOTE) [colored_message]"
+		//SKYRAT EDIT ADDITION BEGIN
+		if(LOG_SUBTLER)
+			colored_message = "(EMOTE) (SUBTLER) [colored_message]"
+		//SKYRAT EDIT ADDITION END
+	
+	var/list/timestamped_message = list("\[[time_stamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
 
 	logging[smessage_type] += timestamped_message
 
@@ -510,6 +525,8 @@
 		else if(HAS_TRAIT_FROM(src, TRAIT_DISSECTED,"Thorough Dissection"))
 			dissectionmsg = " via Thorough Dissection"
 		. += "<span class='notice'>This body has been dissected and analyzed[dissectionmsg].</span><br>"
+	if(HAS_TRAIT(src,TRAIT_HUSK))
+		. += "<span class='warning'>This body has been reduced to a grotesque husk.</span>"
 
 /**
   * Get the list of keywords for policy config

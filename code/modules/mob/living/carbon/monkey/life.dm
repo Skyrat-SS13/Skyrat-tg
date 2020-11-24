@@ -4,8 +4,6 @@
 
 
 /mob/living/carbon/monkey/Life()
-	set invisibility = 0
-
 	if (notransform)
 		return
 
@@ -13,7 +11,7 @@
 
 		if(!client)
 			if(stat == CONSCIOUS)
-				if(on_fire || buckled || restrained())
+				if(on_fire || buckled || HAS_TRAIT(src, TRAIT_RESTRAINED) || (pulledby && pulledby.grab_state > GRAB_PASSIVE))
 					if(!resisting && prob(MONKEY_RESIST_PROB))
 						resisting = TRUE
 						walk_to(src,0)
@@ -75,13 +73,13 @@
 	if(bodytemperature > BODYTEMP_HEAT_DAMAGE_LIMIT && !HAS_TRAIT(src, TRAIT_RESISTHEAT))
 		switch(bodytemperature)
 			if(360 to 400)
-				throw_alert("temp", /obj/screen/alert/hot, 1)
+				throw_alert("temp", /atom/movable/screen/alert/hot, 1)
 				apply_damage(HEAT_DAMAGE_LEVEL_1, BURN)
 			if(400 to 460)
-				throw_alert("temp", /obj/screen/alert/hot, 2)
+				throw_alert("temp", /atom/movable/screen/alert/hot, 2)
 				apply_damage(HEAT_DAMAGE_LEVEL_2, BURN)
 			if(460 to INFINITY)
-				throw_alert("temp", /obj/screen/alert/hot, 3)
+				throw_alert("temp", /atom/movable/screen/alert/hot, 3)
 				if(on_fire)
 					apply_damage(HEAT_DAMAGE_LEVEL_3, BURN)
 				else
@@ -91,13 +89,13 @@
 		if(!istype(loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 			switch(bodytemperature)
 				if(200 to 260)
-					throw_alert("temp", /obj/screen/alert/cold, 1)
+					throw_alert("temp", /atom/movable/screen/alert/cold, 1)
 					apply_damage(COLD_DAMAGE_LEVEL_1, BURN)
 				if(120 to 200)
-					throw_alert("temp", /obj/screen/alert/cold, 2)
+					throw_alert("temp", /atom/movable/screen/alert/cold, 2)
 					apply_damage(COLD_DAMAGE_LEVEL_2, BURN)
 				if(-INFINITY to 120)
-					throw_alert("temp", /obj/screen/alert/cold, 3)
+					throw_alert("temp", /atom/movable/screen/alert/cold, 3)
 					apply_damage(COLD_DAMAGE_LEVEL_3, BURN)
 		else
 			clear_alert("temp")
@@ -112,16 +110,16 @@
 	switch(adjusted_pressure)
 		if(HAZARD_HIGH_PRESSURE to INFINITY)
 			adjustBruteLoss( min( ( (adjusted_pressure / HAZARD_HIGH_PRESSURE) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE) )
-			throw_alert("pressure", /obj/screen/alert/highpressure, 2)
+			throw_alert("pressure", /atom/movable/screen/alert/highpressure, 2)
 		if(WARNING_HIGH_PRESSURE to HAZARD_HIGH_PRESSURE)
-			throw_alert("pressure", /obj/screen/alert/highpressure, 1)
+			throw_alert("pressure", /atom/movable/screen/alert/highpressure, 1)
 		if(WARNING_LOW_PRESSURE to WARNING_HIGH_PRESSURE)
 			clear_alert("pressure")
 		if(HAZARD_LOW_PRESSURE to WARNING_LOW_PRESSURE)
-			throw_alert("pressure", /obj/screen/alert/lowpressure, 1)
+			throw_alert("pressure", /atom/movable/screen/alert/lowpressure, 1)
 		else
 			adjustBruteLoss( LOW_PRESSURE_DAMAGE )
-			throw_alert("pressure", /obj/screen/alert/lowpressure, 2)
+			throw_alert("pressure", /atom/movable/screen/alert/lowpressure, 2)
 
 	return
 
@@ -142,10 +140,10 @@
 	//the fire tries to damage the exposed clothes and items
 	var/list/burning_items = list()
 	//HEAD//
-	var/list/obscured = check_obscured_slots(TRUE)
-	if(wear_mask && !(ITEM_SLOT_MASK in obscured))
+	var/obscured = check_obscured_slots(TRUE)
+	if(wear_mask && !(obscured & ITEM_SLOT_MASK))
 		burning_items += wear_mask
-	if(wear_neck && !(ITEM_SLOT_NECK in obscured))
+	if(wear_neck && !(obscured & ITEM_SLOT_NECK))
 		burning_items += wear_neck
 	if(head)
 		burning_items += head

@@ -60,13 +60,13 @@
 
 
 
-/obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow(gib_on_success=TRUE)
+/obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow()
 	if(!owner || bursting)
 		return
 
 	bursting = TRUE
 
-	var/list/candidates = pollGhostCandidates("Do you want to play as an alien larva that will burst out of [owner]?", ROLE_ALIEN, null, ROLE_ALIEN, 100, POLL_IGNORE_ALIEN_LARVA)
+	var/list/candidates = pollGhostCandidates("Do you want to play as an alien larva that will burst out of [owner.real_name]?", ROLE_ALIEN, null, ROLE_ALIEN, 100, POLL_IGNORE_ALIEN_LARVA)
 
 	if(QDELETED(src) || QDELETED(owner))
 		return
@@ -85,27 +85,38 @@
 	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc)
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100))	//To get the player's attention
-	new_xeno.mobility_flags = NONE //so we don't move during the bursting animation
+	ADD_TRAIT(new_xeno, TRAIT_IMMOBILIZED, type) //so we don't move during the bursting animation
+	ADD_TRAIT(new_xeno, TRAIT_HANDS_BLOCKED, type)
 	new_xeno.notransform = 1
 	new_xeno.invisibility = INVISIBILITY_MAXIMUM
 
 	sleep(6)
 
 	if(QDELETED(src) || QDELETED(owner))
-		return
+		qdel(new_xeno)
+		CRASH("AttemptGrow failed due to the early qdeletion of source or owner.")
 
 	if(new_xeno)
-		new_xeno.mobility_flags = MOBILITY_FLAGS_DEFAULT
+		REMOVE_TRAIT(new_xeno, TRAIT_IMMOBILIZED, type)
+		REMOVE_TRAIT(new_xeno, TRAIT_HANDS_BLOCKED, type)
 		new_xeno.notransform = 0
 		new_xeno.invisibility = 0
 
-	if(gib_on_success)
-		new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
-		owner.gib(TRUE)
+	new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
+	//owner.gib(TRUE) - ORIGINAL
+	//SKYRAT EDIT CHANGE - ALIEN QOL
+	if(owner.getBruteLoss() >= 150)
+		for(var/obj/item/bodypart/BP in owner.bodyparts) //We want to check if there is a chest to dismember.
+			if(BP.name == "chest")
+				BP.dismember()
+				break
 	else
-		new_xeno.visible_message("<span class='danger'>[new_xeno] wriggles out of [owner]!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>")
-		owner.adjustBruteLoss(40)
-		owner.cut_overlay(overlay)
+		var/obj/item/bodypart/affecting = owner.get_bodypart("chest")
+		if(affecting)
+			affecting.receive_damage(40)
+		owner.spawn_gibs()
+	//SKYRAT EDIT END
+	owner.cut_overlay(overlay)
 	qdel(src)
 
 

@@ -198,10 +198,6 @@
 	icon_state = "engineering"
 	build_path = /obj/machinery/power/port_gen/pacman/super
 
-/obj/item/circuitboard/machine/pacman/mrs
-	name = "MRSPACMAN-type Generator (Machine Board)"
-	build_path = /obj/machinery/power/port_gen/pacman/mrs
-
 /obj/item/circuitboard/machine/power_compressor
 	name = "Power Compressor (Machine Board)"
 	icon_state = "engineering"
@@ -337,6 +333,52 @@
 
 #undef PATH_FREEZER
 #undef PATH_HEATER
+
+/obj/item/circuitboard/machine/HFR_fuel_input
+	name = "HFR Fuel Input (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/atmospherics/components/unary/hypertorus/fuel_input
+	req_components = list(
+		/obj/item/stack/sheet/plasteel = 5)
+
+/obj/item/circuitboard/machine/HFR_waste_output
+	name = "HFR Waste Output (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/atmospherics/components/unary/hypertorus/waste_output
+	req_components = list(
+		/obj/item/stack/sheet/plasteel = 5)
+
+/obj/item/circuitboard/machine/HFR_moderator_input
+	name = "HFR Moderator Input (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/atmospherics/components/unary/hypertorus/moderator_input
+	req_components = list(
+		/obj/item/stack/sheet/plasteel = 5)
+
+/obj/item/circuitboard/machine/HFR_core
+	name = "HFR core (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/atmospherics/components/binary/hypertorus/core
+	req_components = list(
+		/obj/item/stack/cable_coil = 10,
+		/obj/item/stack/sheet/glass = 10,
+		/obj/item/stack/sheet/plasteel = 10)
+
+/obj/item/circuitboard/machine/HFR_corner
+	name = "HFR Corner (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/hypertorus/corner
+	req_components = list(
+		/obj/item/stack/sheet/plasteel = 5)
+
+/obj/item/circuitboard/machine/HFR_interface
+	name = "HFR Interface (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/hypertorus/interface
+	req_components = list(
+		/obj/item/stack/cable_coil = 10,
+		/obj/item/stack/sheet/glass = 10,
+		/obj/item/stack/sheet/plasteel = 5)
 
 //Generic
 
@@ -493,7 +535,7 @@
 /obj/item/circuitboard/machine/vendor
 	name = "Custom Vendor (Machine Board)"
 	desc = "You can turn the \"brand selection\" dial using a screwdriver."
-	custom_premium_price = 100
+	custom_premium_price = PAYCHECK_ASSISTANT * 1.5
 	build_path = /obj/machinery/vending/custom
 	req_components = list(/obj/item/vending_refill/custom = 1)
 
@@ -524,6 +566,7 @@
 		/obj/machinery/vending/wardrobe/viro_wardrobe = "ViroDrobe",
 		/obj/machinery/vending/clothing = "ClothesMate",
 		/obj/machinery/vending/medical = "NanoMed Plus",
+		/obj/machinery/vending/drugs = "NanoDrug Plus",
 		/obj/machinery/vending/wallmed = "NanoMed",
 		/obj/machinery/vending/assist  = "Vendomat",
 		/obj/machinery/vending/engivend = "Engi-Vend",
@@ -585,6 +628,15 @@
 		/obj/item/stock_parts/card_reader = 1,
 		/obj/item/stock_parts/scanning_module = 1,
 		/obj/item/stock_parts/micro_laser = 1
+	)
+
+/obj/item/circuitboard/machine/accounting
+	name = "Account Registration Device (Machine Board)"
+	icon_state = "command"
+	build_path = /obj/machinery/accounting
+	req_components = list(
+		/obj/item/stock_parts/card_reader = 1,
+		/obj/item/stock_parts/scanning_module = 1
 	)
 
 //Medical
@@ -728,7 +780,7 @@
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/stasis
-	name = "Lifeform Stasis Unit (Machine Board)"
+	name = "\improper Lifeform Stasis Unit (Machine Board)"
 	icon_state = "medical"
 	build_path = /obj/machinery/stasis
 	req_components = list(
@@ -920,6 +972,12 @@
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/cable_coil = 2)
+
+/obj/item/circuitboard/machine/mechpad
+	name = "Mecha Orbital Pad (Machine Board)"
+	icon_state = "science"
+	build_path = /obj/machinery/mechpad
+	req_components = list()
 
 //Security
 
@@ -1192,6 +1250,17 @@
 		/obj/item/stock_parts/scanning_module = 2
 	)
 
+/obj/item/circuitboard/machine/plumbing_receiver
+	name = "Chemical Recipient (Machine Board)"
+	icon_state = "medical"
+	build_path = /obj/machinery/plumbing/receiver
+	req_components = list(
+		/obj/item/stack/ore/bluespace_crystal = 1,
+		/obj/item/stock_parts/capacitor = 2,
+		/obj/item/stack/sheet/glass = 1)
+	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
+	needs_anchored = FALSE
+
 /obj/item/circuitboard/machine/skill_station
 	name = "Skill Station (Machine Board)"
 	build_path = /obj/machinery/skill_station
@@ -1200,3 +1269,4 @@
 		/obj/item/stock_parts/micro_laser = 2,
 		/obj/item/stock_parts/scanning_module = 2
 	)
+

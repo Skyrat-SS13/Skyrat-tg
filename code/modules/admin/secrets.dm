@@ -9,8 +9,9 @@
 			<BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=admin_log'>Admin Log</A><BR>
 			<A href='?src=[REF(src)];[HrefToken()];secrets=show_admins'>Show Admin List</A><BR>
+			<A href='?src=[REF(src)];[HrefToken()];secrets=mentor_log'>Mentor Log</A><BR>
 			<BR>
-			"}
+			"}//SKYRAT EDIT ADDITION - MENTOR
 
 	if(check_rights(R_ADMIN,0))
 		dat += {"
@@ -95,8 +96,13 @@
 
 /datum/admins/proc/Secrets_topic(item,href_list)
 	var/datum/round_event/E
-	var/ok = 0
+	var/ok = FALSE
 	switch(item)
+		//SKYRAT EDIT ADDITION BEGIN - MENTOR
+		if("mentor_log")
+			MentorLogSecret()
+		//SKYRAT EDIT ADDITION END
+
 		if("admin_log")
 			var/dat = "<B>Admin Log<HR></B>"
 			for(var/l in GLOB.admin_log)
@@ -290,7 +296,7 @@
 			for(var/i in GLOB.human_list)
 				var/mob/living/carbon/human/H = i
 				INVOKE_ASYNC(H, /mob/living/carbon.proc/monkeyize)
-			ok = 1
+			ok = TRUE
 
 		if("allspecies")
 			if(!check_rights(R_FUN))
@@ -709,7 +715,7 @@
 			to_chat(world, text("<B>A secret has been activated by []!</B>", usr.key), confidential = TRUE)
 
 /proc/portalAnnounce(announcement, playlightning)
-	set waitfor = 0
+	set waitfor = FALSE
 	if (playlightning)
 		sound_to_playing_players('sound/magic/lightning_chargeup.ogg')
 		sleep(80)

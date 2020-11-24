@@ -26,8 +26,8 @@
 	if(extractor)
 		seedloc = extractor.loc
 
-	if(istype(O, /obj/item/reagent_containers/food/snacks/grown/))
-		var/obj/item/reagent_containers/food/snacks/grown/F = O
+	if(istype(O, /obj/item/food/grown/))
+		var/obj/item/food/grown/F = O
 		if(F.seed)
 			if(user && !user.temporarilyRemoveItemFromInventory(O)) //couldn't drop the item
 				return
@@ -182,7 +182,8 @@
 	.["seeds"] = V
 
 /obj/machinery/seed_extractor/ui_act(action, params)
-	if(..())
+	. = ..()
+	if(.)
 		return
 
 	switch(action)

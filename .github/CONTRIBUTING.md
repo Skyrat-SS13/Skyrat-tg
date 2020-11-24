@@ -71,7 +71,7 @@ datum
 				proc3()
 					code
 			proc2()
-				..()
+				. = ..()
 				code
 ```
 
@@ -95,9 +95,42 @@ The previous code made compliant:
 /datum/datum1/datum2/proc/proc3()
 	code
 /datum/datum1/datum2/proc2()
-	..()
+	. = ..()
 	code
 ```
+
+### All process procs need to make use of delta-time and be frame independent
+
+In a lot of our older code, process() is frame dependent. As an example, here's some example mob code.
+
+```DM
+/mob/testmob
+	var/health = 100
+	var/health_loss = 4 //We want to lose 2 health per second, so 4 per SSmobs process
+
+/mob/testmob/process(delta_time) //SSmobs runs once every 2 seconds
+	health -= health_loss
+
+```
+
+As the mobs subsystem runs once every 2 seconds, the mob now loses 4 health every process, or 2 health per second. This is called frame dependent programming.
+
+Why is this an issue? If someone decides to make it so the mobs subsystem processes once every second (2 times as fast), your effects in process() will also be two times as fast. Resulting in 4 health loss per second rather than 2.
+
+How do we solve this? By using delta-time. Delta-time is the amount of seconds you would theoretically have between 2 process() calls. In the case of the mobs subsystem, this would be 2 (As there is 2 seconds between every call in process()). Here is a new example using delta-time
+
+```DM
+/mob/testmob
+	var/health = 100
+	var/health_loss = 2 //Health loss every second
+
+/mob/testmob/process(delta_time) //SSmobs runs once every 2 seconds
+	health -= health_loss * delta_time
+
+```
+In the above example, we made our health_loss variable a per second value rather than per process. In the actual process() proc we then make use of deltatime. Because SSmobs runs once every  2 seconds. Delta_time would have a value of 2. This means that by doing health_loss * delta_time, you end up with the correct amount of health_loss per process, but if for some reason the SSmobs subsystem gets changed to be faster or slower in a PR, your health_loss variable will work the same.
+
+For example, if SSmobs is set to run once every 4 seconds, it would call process once every 4 seconds and multiply your health_loss var by 4 before subtracting it. Ensuring that your code is frame independent.
 
 ### No overriding type safety checks
 The use of the : operator to override type safety checks is not allowed. You must cast the variable to the proper type.
@@ -152,7 +185,7 @@ There are two key points here:
 Remember: although this tradeoff makes sense in many cases, it doesn't cover them all. Think carefully about your addition before deciding if you need to use it.
 
 ### Prefer `Initialize()` over `New()` for atoms
-Our game controller is pretty good at handling long operations and lag, but it can't control what happens when the map is loaded, which calls `New` for all atoms on the map. If you're creating a new atom, use the `Initialize` proc to do what you would normally do in `New`. This cuts down on the number of proc calls needed when the world is loaded. See here for details on `Initialize`: https://github.com/tgstation/tgstation/blob/master/code/game/atoms.dm#L49
+Our game controller is pretty good at handling long operations and lag, but it can't control what happens when the map is loaded, which calls `New` for all atoms on the map. If you're creating a new atom, use the `Initialize` proc to do what you would normally do in `New`. This cuts down on the number of proc calls needed when the world is loaded. See here for details on `Initialize`: https://github.com/tgstation/tgstation/blob/34775d42a2db4e0f6734560baadcfcf5f5540910/code/game/atoms.dm#L166
 While we normally encourage (and in some cases, even require) bringing out of date code up to date when you make unrelated changes near the out of date code, that is not the case for `New` -> `Initialize` conversions. These systems are generally more dependant on parent and children procs so unrelated random conversions of existing things can cause bugs that take months to figure out.
 
 ### No magic numbers or strings
@@ -181,7 +214,7 @@ This is clearer and enhances readability of your code! Get used to doing it!
 ### Control statements
 (if, while, for, etc)
 
-* All control statements must not contain code on the same line as the statement (`if (blah) return`)
+* No control statement may contain code on the same line as the statement (`if (blah) return`)
 * All control statements comparing a variable to a number should use the formula of `thing` `operator` `number`, not the reverse (eg: `if (count <= 10)` not `if (10 >= count)`)
 
 ### Use early return
@@ -230,6 +263,47 @@ This is good:
 		mob.dothing()
 ````
 
+### Getters and setters
+
+* Avoid getter procs. They are useful tools in languages with that properly enforce variable privacy and encapsulation, but DM is not one of them. The upfront cost in proc overhead is met with no benefits, and it may tempt to develop worse code.
+
+This is bad:
+```DM
+/datum/datum1/proc/simple_getter()
+	return gotten_variable
+```
+Prefer to either access the variable directly or use a macro/define.
+
+
+* Make usage of variables or traits, set up through condition setters, for a more maintainable alternative to compex and redefined getters.
+
+These are bad:
+```DM
+/datum/datum1/proc/complex_getter()
+	return condition ? VALUE_A : VALUE_B
+
+/datum/datum1/child_datum/complex_getter()
+	return condition ? VALUE_C : VALUE_D
+```
+
+This is good:
+```DM
+/datum/datum1
+	var/getter_turned_into_variable
+
+/datum/datum1/proc/set_condition(new_value)
+	if(condition == new_value)
+		return
+	condition = new_value
+	on_condition_change()
+
+/datum/datum1/proc/on_condition_change()
+	getter_turned_into_variable = condition ? VALUE_A : VALUE_B
+
+/datum/datum1/child_datum/on_condition_change()
+	getter_turned_into_variable = condition ? VALUE_C : VALUE_D
+```
+
 
 ### Develop Secure Code
 
@@ -263,6 +337,12 @@ This is good:
 
 * Primary keys are inherently immutable and you must never do anything to change the primary key of a row or entity. This includes preserving auto increment numbers of rows when copying data to a table in a conversion script. No amount of bitching about gaps in ids or out of order ids will save you from this policy.
 
+* The ttl for data from the database is 10 seconds. You must have a compelling reason to store and reuse data for longer then this.
+
+* Do not write stored and transformed data to the database, instead, apply the transformation to the data in the database directly.
+	* ie: SELECTing a number from the database, doubling it, then updating the database with the doubled number. If the data in the database changed between step 1 and 3, you'll get an incorrect result. Instead, directly double it in the update query. `UPDATE table SET num = num*2` instead of `UPDATE table SET num = [num]`.
+	* if the transformation is user provided (such as allowing a user to edit a string), you should confirm the value being updated did not change in the database in the intervening time before writing the new user provided data by checking the old value with the current value in the database, and if it has changed, allow the user to decide what to do next.
+
 ### Mapping Standards
 * TGM Format & Map Merge
 	* All new maps submitted to the repo through a pull request must be in TGM format (unless there is a valid reason present to have it in the default BYOND format.) This is done using the [Map Merge](https://github.com/tgstation/tgstation/wiki/Map-Merger) utility included in the repo to convert the file to TGM format.
@@ -281,6 +361,27 @@ This is good:
 * Documentation for TGUI can be found at:
 	* [tgui/README.md](../tgui/README.md)
 	* [tgui/tutorial-and-examples.md](../tgui/docs/tutorial-and-examples.md)
+
+### Signal Handlers
+All procs that are registered to listen for signals using `RegisterSignal()` must contain at the start of the proc `SIGNAL_HANDLER` eg;
+```
+/type/path/proc/signal_callback()
+	SIGNAL_HANDLER
+	// rest of the code
+```
+This is to ensure that it is clear the proc handles signals and turns on a lint to ensure it does not sleep.
+
+There exists `SIGNAL_HANDLER_DOES_SLEEP`, but this is only for legacy signal handlers that still sleep, new/changed code may not use this.
+
+### Enforcing parent calling
+When adding new signals to root level procs, eg;
+```
+/atom/proc/setDir(newdir)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
+	dir = newdir
+```
+The `SHOULD_CALL_PARENT(TRUE)` lint should be added to ensure that overrides/child procs call the parent chain and ensure the signal is sent.
 
 ### Other Notes
 * Code should be modular where possible; if you are working on a new addition, then strongly consider putting it in its own file unless it makes sense to put it with similar ones (i.e. a new tool would go in the "tools.dm" file)
@@ -408,7 +509,7 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * Make sure your pull request complies to the requirements outlined here
 
-* You are going to be expected to document all your changes in the pull request. Failing to do so will mean delaying it as we will have to question why you made the change. On the other hand, you can speed up the process by making the pull request readable and easy to understand, with diagrams or before/after data.
+* You are going to be expected to document all your changes in the pull request. Failing to do so will mean delaying it as we will have to question why you made the change. On the other hand, you can speed up the process by making the pull request readable and easy to understand, with diagrams or before/after data. Should you be optimizing a routine you must provide proof by way of profiling that your changes are faster.
 
 * We ask that you use the changelog system to document your change, which prevents our players from being caught unaware by changes - you can find more information about this [on this wiki page](http://tgstation13.org/wiki/Guide_to_Changelogs).
 

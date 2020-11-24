@@ -65,6 +65,11 @@
 	return GLOB.not_incapacitated_state
 
 /obj/machinery/computer/operating/ui_interact(mob/user, datum/tgui/ui)
+	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
+	if(clicksound && world.time > next_clicksound && isliving(user))
+		next_clicksound = world.time + rand(50, 100)
+		playsound(src, get_sfx_skyrat(clicksound), clickvol)
+	//SKYRAT EDIT END
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "OperatingComputer", name)
@@ -90,7 +95,7 @@
 	else
 		if(sbed)
 			data["table"] = sbed
-			if(!ishuman(sbed.occupant) &&  !ismonkey(sbed.occupant))
+			if(!ishuman(sbed.occupant) && !ismonkey(sbed.occupant))
 				return data
 			data["patient"] = list()
 			patient = sbed.occupant
@@ -104,7 +109,7 @@
 		if(SOFT_CRIT)
 			data["patient"]["stat"] = "Conscious"
 			data["patient"]["statstate"] = "average"
-		if(UNCONSCIOUS)
+		if(UNCONSCIOUS, HARD_CRIT)
 			data["patient"]["stat"] = "Unconscious"
 			data["patient"]["statstate"] = "average"
 		if(DEAD)
@@ -144,7 +149,8 @@
 
 
 /obj/machinery/computer/operating/ui_act(action, params)
-	if(..())
+	. = ..()
+	if(.)
 		return
 	switch(action)
 		if("sync")

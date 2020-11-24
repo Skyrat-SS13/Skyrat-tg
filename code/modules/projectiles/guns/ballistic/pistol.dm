@@ -31,7 +31,7 @@
 	var/obj/item/suppressor/S = new(src)
 	install_suppressor(S)
 
-/obj/item/gun/ballistic/automatic/pistol/m1911
+/obj/item/gun/ballistic/automatic/pistol/m1911 //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper M1911"
 	desc = "A classic .45 handgun with a small magazine capacity."
 	icon_state = "m1911"
@@ -87,7 +87,7 @@
 	icon_state = "flatgun"
 
 /obj/item/gun/ballistic/automatic/pistol/stickman/pickup(mob/living/user)
-	SHOULD_CALL_PARENT(0)
+	SHOULD_CALL_PARENT(FALSE)
 	to_chat(user, "<span class='notice'>As you try to pick up [src], it slips out of your grip..</span>")
 	if(prob(50))
 		to_chat(user, "<span class='notice'>..and vanishes from your vision! Where the hell did it go?</span>")

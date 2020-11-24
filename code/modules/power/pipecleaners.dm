@@ -179,7 +179,7 @@ By design, d1 is the smallest direction and d2 is the highest
 /obj/item/stack/pipe_cleaner_coil
 	name = "pipe cleaner coil"
 	desc = "A coil of pipe cleaners. Good for arts and crafts, not to build with."
-	custom_price = 25
+	custom_price = PAYCHECK_ASSISTANT * 0.5
 	gender = NEUTER //That's a pipe_cleaner coil sounds better than that's some pipe_cleaner coils
 	icon = 'icons/obj/power.dmi'
 	icon_state = "pipecleaner"
@@ -190,28 +190,32 @@ By design, d1 is the smallest direction and d2 is the highest
 	max_amount = MAXCOIL
 	amount = MAXCOIL
 	merge_type = /obj/item/stack/pipe_cleaner_coil // This is here to let its children merge between themselves
-	var/pipe_cleaner_color = "red"
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 5
-	custom_materials = list(/datum/material/iron=10, /datum/material/glass=5)
+	mats_per_unit = list(/datum/material/iron=10, /datum/material/glass=5)
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
+	attack_verb_continuous = list("whips", "lashes", "disciplines", "flogs")
+	attack_verb_simple = list("whip", "lash", "discipline", "flog")
 	singular_name = "pipe cleaner piece"
 	full_w_class = WEIGHT_CLASS_SMALL
 	grind_results = list("copper" = 2) //2 copper per pipe_cleaner in the coil
 	usesound = 'sound/items/deconstruct.ogg'
+	/// Currently set cable color
+	var/pipe_cleaner_color = COLOR_RED
 
 /obj/item/stack/pipe_cleaner_coil/cyborg
 	is_cyborg = 1
-	custom_materials = null
+	mats_per_unit = null
 	cost = 1
 
 /obj/item/stack/pipe_cleaner_coil/cyborg/attack_self(mob/user)
-	var/pipe_cleaner_color = input(user,"Pick a pipe cleaner color.","Cable Color") in sortList(list("red","yellow","green","blue","pink","orange","cyan","white"))
-	pipe_cleaner_color = pipe_cleaner_color
+	var/selected_color = input(user, "Pick a pipe cleaner color.", "Cable Color") as null|anything in list("blue", "cyan", "green", "orange", "pink", "red", "white", "yellow")
+	if(!selected_color)
+		return
+	pipe_cleaner_color = GLOB.pipe_cleaner_colors[selected_color]
 	update_icon()
 
 /obj/item/stack/pipe_cleaner_coil/suicide_act(mob/user)
@@ -229,8 +233,8 @@ By design, d1 is the smallest direction and d2 is the highest
 	if(pipe_cleaner_colors[pipe_cleaner_color])
 		pipe_cleaner_color = pipe_cleaner_colors[pipe_cleaner_color]
 
-	pixel_x = rand(-2,2)
-	pixel_y = rand(-2,2)
+	pixel_x = base_pixel_x + rand(-2, 2)
+	pixel_y = base_pixel_y + rand(-2, 2)
 	update_icon()
 
 ///////////////////////////////////
@@ -456,8 +460,8 @@ By design, d1 is the smallest direction and d2 is the highest
 	. = ..()
 	if(!amount)
 		amount = rand(1,2)
-	pixel_x = rand(-2,2)
-	pixel_y = rand(-2,2)
+	pixel_x = base_pixel_x + rand(-2, 2)
+	pixel_y = base_pixel_y + rand(-2, 2)
 	update_icon()
 
 /obj/item/stack/pipe_cleaner_coil/cut/red

@@ -34,8 +34,10 @@
 //Someone needs to break down the dat += into chunks instead of long ass lines.
 /obj/machinery/computer/secure_data/ui_interact(mob/user)
 	. = ..()
+	/* SKYRAT EDIT REMOVAL - AESTHETICS
 	if(isliving(user))
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+	*/
 	if(src.z > 6)
 		to_chat(user, "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the station!")
 		return
@@ -55,7 +57,7 @@
 					dat += {"
 
 		<head>
-			<script src="jquery.min.js"></script>
+			<script src="[SSassets.transport.get_asset_url("jquery.min.js")]"></script>
 			<script type='text/javascript'>
 
 				function updateSearch(){
@@ -258,7 +260,6 @@
 			dat += "<A href='?src=[REF(src)];choice=Log In'>{Log In}</A>"
 	var/datum/browser/popup = new(user, "secure_rec", "Security Records Console", 600, 400)
 	popup.set_content(dat)
-	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
 	return
 
@@ -305,19 +306,20 @@ What a mess.*/
 				playsound(src, 'sound/machines/terminal_off.ogg', 50, FALSE)
 
 			if("Log In")
-				var/mob/M = usr
-				var/obj/item/card/id/I = M.get_idcard(TRUE)
-				if(issilicon(M))
-					var/mob/living/silicon/borg = M
+				var/obj/item/card/id/I
+				if(isliving(usr))
+					var/mob/living/L = usr
+					I = L.get_idcard(TRUE)
+				if(issilicon(usr))
 					active1 = null
 					active2 = null
-					authenticated = borg.name
+					authenticated = usr.name
 					rank = "AI"
 					screen = 1
-				else if(isAdminGhostAI(M))
+				else if(isAdminGhostAI(usr))
 					active1 = null
 					active2 = null
-					authenticated = M.client.holder.admin_signature
+					authenticated = usr.client.holder.admin_signature
 					rank = "Central Command"
 					screen = 1
 				else if(I && check_access(I))
@@ -856,12 +858,11 @@ What a mess.*/
 			continue
 
 /obj/machinery/computer/secure_data/proc/canUseSecurityRecordsConsole(mob/user, message1 = 0, record1, record2)
-	if(user)
-		if(authenticated)
-			if(user.canUseTopic(src, !issilicon(user)))
-				if(!trim(message1))
-					return 0
-				if(!record1 || record1 == active1)
-					if(!record2 || record2 == active2)
-						return 1
-	return 0
+	if(user && authenticated)
+		if(user.canUseTopic(src, !issilicon(user)))
+			if(!trim(message1))
+				return FALSE
+			if(!record1 || record1 == active1)
+				if(!record2 || record2 == active2)
+					return TRUE
+	return FALSE

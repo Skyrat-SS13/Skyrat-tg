@@ -83,27 +83,35 @@
 	if(!..()) //a check failed or the item has already found its slot
 		return
 
-	var/current_equip
+	var/obj/item/current_equip
 	var/not_handled = FALSE //Added in case we make this type path deeper one day
 	switch(slot)
 		if(ITEM_SLOT_BELT)
 			if (belt && swap)
+				if (!temporarilyRemoveItemFromInventory(belt))
+					return
 				current_equip = belt
 			belt = I
 			update_inv_belt()
 		if(ITEM_SLOT_ID)
 			if (wear_id && swap)
+				if (!temporarilyRemoveItemFromInventory(wear_id))
+					return
 				current_equip = wear_id
 			wear_id = I
 			sec_hud_set_ID()
 			update_inv_wear_id()
 		if(ITEM_SLOT_EARS)
 			if (ears && swap)
+				if (!temporarilyRemoveItemFromInventory(ears))
+					return
 				current_equip = ears
 			ears = I
 			update_inv_ears()
 		if(ITEM_SLOT_EYES)
 			if (glasses && swap)
+				if (!temporarilyRemoveItemFromInventory(glasses))
+					return
 				current_equip = glasses
 			glasses = I
 			var/obj/item/clothing/glasses/G = I
@@ -113,32 +121,49 @@
 				update_tint()
 			if(G.vision_correction)
 				clear_fullscreen("nearsighted")
-				clear_fullscreen("eye_damage")
 			if(G.vision_flags || G.darkness_view || G.invis_override || G.invis_view || !isnull(G.lighting_alpha))
 				update_sight()
 			update_inv_glasses()
 		if(ITEM_SLOT_GLOVES)
 			if (gloves && swap)
+				if (!temporarilyRemoveItemFromInventory(gloves))
+					return
 				current_equip = gloves
 			gloves = I
 			update_inv_gloves()
 		if(ITEM_SLOT_FEET)
 			if (shoes && swap)
+				if (!temporarilyRemoveItemFromInventory(shoes))
+					return
 				current_equip = shoes
 			shoes = I
 			update_inv_shoes()
 		if(ITEM_SLOT_OCLOTHING)
-			if (wear_suit && swap)
+			var/obj/item/s_store_backup = s_store
+
+			if (swap && wear_suit)
+				if (!temporarilyRemoveItemFromInventory(wear_suit))
+					return
 				current_equip = wear_suit
+
 			wear_suit = I
+
+			if (swap && s_store_backup)
+				dropItemToGround(s_store_backup)
+				put_in_inactive_hand(s_store_backup)
+				equip_to_slot_if_possible(s_store_backup, ITEM_SLOT_SUITSTORE)
+
 			if(I.flags_inv & HIDEJUMPSUIT)
 				update_inv_w_uniform()
 			if(wear_suit.breakouttime) //when equipping a straightjacket
+				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 				stop_pulling() //can't pull if restrained
 				update_action_buttons_icon() //certain action buttons will no longer be usable.
 			update_inv_wear_suit()
 		if(ITEM_SLOT_ICLOTHING)
 			if (w_uniform && swap)
+				if (!temporarilyRemoveItemFromInventory(w_uniform))
+					return
 				current_equip = w_uniform
 			w_uniform = I
 			update_suit_sensors()
@@ -151,6 +176,8 @@
 			update_inv_pockets()
 		if(ITEM_SLOT_SUITSTORE)
 			if (s_store && swap)
+				if (!temporarilyRemoveItemFromInventory(s_store))
+					return
 				current_equip = s_store
 			s_store = I
 			update_inv_s_store()
@@ -163,6 +190,10 @@
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
 	if(!not_handled)
 		I.equipped(src, slot, initial)
+
+		// Send a signal for when we equip an item that used to cover our feet/shoes. Used for bloody feet
+		if((I.body_parts_covered & FEET) || (I.flags_inv | I.transparent_protection) & HIDESHOES)
+			SEND_SIGNAL(src, COMSIG_CARBON_EQUIP_SHOECOVER, I, slot, initial, redraw_mob, swap)
 
 	return not_handled //For future deeper overrides
 
@@ -183,6 +214,7 @@
 		if(s_store && invdrop)
 			dropItemToGround(s_store, TRUE) //It makes no sense for your suit storage to stay on you if you drop your suit.
 		if(wear_suit.breakouttime) //when unequipping a straightjacket
+			REMOVE_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 			drop_all_held_items() //suit is restraining
 			update_action_buttons_icon() //certain action buttons may be usable again.
 		wear_suit = null
@@ -217,7 +249,7 @@
 			update_tint()
 		if(G.vision_correction)
 			if(HAS_TRAIT(src, TRAIT_NEARSIGHT))
-				overlay_fullscreen("nearsighted", /obj/screen/fullscreen/impaired, 1)
+				overlay_fullscreen("nearsighted", /atom/movable/screen/fullscreen/impaired, 1)
 		if(G.vision_flags || G.darkness_view || G.invis_override || G.invis_view || !isnull(G.lighting_alpha))
 			update_sight()
 		if(!QDELETED(src))
@@ -251,6 +283,10 @@
 		s_store = null
 		if(!QDELETED(src))
 			update_inv_s_store()
+
+	// Send a signal for when we unequip an item that used to cover our feet/shoes. Used for bloody feet
+	if((I.body_parts_covered & FEET) || (I.flags_inv | I.transparent_protection) & HIDESHOES)
+		SEND_SIGNAL(src, COMSIG_CARBON_UNEQUIP_SHOECOVER, I, force, newloc, no_move, invdrop, silent)
 
 /mob/living/carbon/human/wear_mask_update(obj/item/I, toggle_off = 1)
 	if((I.flags_inv & (HIDEHAIR|HIDEFACIALHAIR)) || (initial(I.flags_inv) & (HIDEHAIR|HIDEFACIALHAIR)))

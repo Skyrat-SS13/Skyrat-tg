@@ -234,7 +234,7 @@
 	name = "Bee Day"
 	begin_day = 20
 	begin_month = MAY
-	drone_hat = /obj/item/clothing/mask/rat/bee
+	drone_hat = /obj/item/clothing/mask/animal/rat/bee
 
 /datum/holiday/bee/getStationPrefix()
 	return pick("Bee","Honey","Hive","Africanized","Mead","Buzz")
@@ -322,11 +322,11 @@
 	if(mm == 9)
 		if(yy/4 == round(yy/4)) //Note: Won't work right on September 12th, 2200 (at least it's a Friday!)
 			if(dd == 12)
-				return 1
+				return TRUE
 		else
 			if(dd == 13)
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 /datum/holiday/programmers/getStationPrefix()
 	return pick("span>","DEBUG: ","null","/list","EVENT PREFIX NOT FOUND") //Portability
@@ -398,7 +398,7 @@
 	name = "Flowers Day"
 	begin_day = 19
 	begin_month = NOVEMBER
-	drone_hat = /obj/item/reagent_containers/food/snacks/grown/moonflower
+	drone_hat = /obj/item/food/grown/moonflower
 
 /datum/holiday/hello
 	name = "Saying-'Hello' Day"
@@ -504,7 +504,7 @@
 	name = "Mayan Doomsday Anniversary"
 	begin_day = 21
 	begin_month = DECEMBER
-	drone_hat = /obj/item/clothing/mask/rat/tribal
+	drone_hat = /obj/item/clothing/mask/animal/rat/tribal
 
 /datum/holiday/xmas
 	name = CHRISTMAS
@@ -594,7 +594,7 @@
 /datum/holiday/easter/celebrate()
 	GLOB.maintenance_loot += list(
 		list(
-			/obj/item/reagent_containers/food/snacks/egg/loaded = 15,
+			/obj/item/food/egg/loaded = 15,
 			/obj/item/storage/basket/easter = 15
 		) = maint_holiday_weight,
 	)

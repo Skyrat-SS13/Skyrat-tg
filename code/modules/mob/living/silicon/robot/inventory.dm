@@ -51,6 +51,10 @@
   * * module_num - the slot number being equipped to.
   */
 /mob/living/silicon/robot/proc/equip_module_to_slot(obj/item/item_module, module_num)
+	var/storage_was_closed = FALSE //Just to be consistant and all
+	if(!shown_robot_modules) //Tools may be invisible if the collection is hidden
+		hud_used.toggle_show_robot_modules()
+		storage_was_closed = TRUE
 	switch(module_num)
 		if(1)
 			item_module.screen_loc = inv1.screen_loc
@@ -72,6 +76,9 @@
 		update_sight()
 
 	observer_screen_update(item_module, TRUE)
+
+	if(storage_was_closed)
+		hud_used.toggle_show_robot_modules()
 	return TRUE
 
 /**
@@ -149,6 +156,11 @@
 
 			playsound(src, 'sound/machines/warning-buzzer.ogg', 75, TRUE, TRUE)
 			audible_message("<span class='warning'>[src] sounds an alarm! \"CRITICAL ERROR: ALL modules OFFLINE.\"</span>")
+
+			if(builtInCamera)
+				builtInCamera.status = FALSE
+				to_chat(src, "<span class='userdanger'>CRITICAL ERROR: Built in security camera OFFLINE.</span>")
+
 			to_chat(src, "<span class='userdanger'>CRITICAL ERROR: ALL modules OFFLINE.</span>")
 
 		if(2)
@@ -175,7 +187,6 @@
 
 	return TRUE
 
-
 /**
   * Breaks all of a cyborg's slots.
   */
@@ -200,6 +211,9 @@
 
 			inv1.icon_state = initial(inv1.icon_state)
 			disabled_modules &= ~BORG_MODULE_ALL_DISABLED
+			if(builtInCamera)
+				builtInCamera.status = TRUE
+				to_chat(src, "<span class='notice'>You hear your built in security camera focus adjust as it comes back online!</span>")
 		if(2)
 			if(!(disabled_modules & BORG_MODULE_TWO_DISABLED))
 				return FALSE
@@ -231,7 +245,7 @@
   * * add - whether or not the item is being added, or removed.
   */
 /mob/living/silicon/robot/proc/observer_screen_update(obj/item/item_module, add = TRUE)
-	if(observers && observers.len)
+	if(observers?.len)
 		for(var/M in observers)
 			var/mob/dead/observe = M
 			if(observe.client && observe.client.eye == src)
@@ -388,3 +402,7 @@
 
 /mob/living/silicon/robot/swap_hand()
 	cycle_modules()
+
+/mob/living/silicon/robot/can_hold_items()
+	return FALSE //held_items are used for modules.
+

@@ -53,7 +53,7 @@
 		return FALSE
 	if(EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return FALSE
-	if(ispath(typepath, /datum/round_event/ghost_role) && GHOSTROLE_MIDROUND_EVENT)
+	if(ispath(typepath, /datum/round_event/ghost_role) && !(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
 		return FALSE
 	return TRUE
 
@@ -63,8 +63,10 @@
 
 	triggering = TRUE
 	if (alert_observers)
-		message_admins("Random Event triggering in 10 seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
-		sleep(100)
+		//message_admins("Random Event triggering in 10 seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)") //ORIGINAL
+		//sleep(100) //ORIGINAL
+		message_admins("Random Event triggering in 60 seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)") //SKYRAT EDIT CHANGE - EVENTS
+		sleep(600) //SKYRAT EDIT CHANGE - EVENTS
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!canSpawnEvent(players_amt, gamemode))

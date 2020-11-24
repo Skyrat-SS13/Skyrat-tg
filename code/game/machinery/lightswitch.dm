@@ -1,7 +1,7 @@
 /// The light switch. Can have multiple per area.
 /obj/machinery/light_switch
 	name = "light switch"
-	icon = 'icons/obj/power.dmi'
+	icon = 'icons/obj/power.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "light1"
 	desc = "Make dark."
 	power_channel = AREA_USAGE_LIGHT
@@ -52,7 +52,7 @@
 	area.power_change()
 
 /obj/machinery/light_switch/power_change()
-	SHOULD_CALL_PARENT(0)
+	SHOULD_CALL_PARENT(FALSE)
 	if(area == get_area(src))
 		return ..()
 

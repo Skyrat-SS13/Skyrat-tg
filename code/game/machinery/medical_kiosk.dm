@@ -59,7 +59,7 @@
 	return
 
 /obj/machinery/medical_kiosk/update_icon_state()
-	if(is_operational())
+	if(is_operational)
 		icon_state = "kiosk_off"
 	else
 		icon_state = "kiosk"
@@ -211,7 +211,7 @@
 	var/clone_loss = altPatient.getCloneLoss()
 	var/brain_loss = altPatient.getOrganLoss(ORGAN_SLOT_BRAIN)
 	var/brain_status = "Brain patterns normal."
-	if(LAZYLEN(user.get_traumas()))
+	if(LAZYLEN(altPatient.get_traumas()))
 		var/list/trauma_text = list()
 		for(var/datum/brain_trauma/B in altPatient.get_traumas())
 			var/trauma_desc = ""
@@ -234,9 +234,18 @@
 	if(altPatient.reagents.reagent_list.len)	//Chemical Analysis details.
 		for(var/datum/reagent/R in altPatient.reagents.reagent_list)
 			chemical_list += list(list("name" = R.name, "volume" = round(R.volume, 0.01)))
-			if(R.overdosed == 1)
+			if(R.overdosed)
 				overdose_list += list(list("name" = R.name))
-
+	var/obj/item/organ/stomach/belly = altPatient.getorganslot(ORGAN_SLOT_STOMACH)
+	if(belly?.reagents.reagent_list.len) //include the stomach contents if it exists
+		for(var/bile in belly.reagents.reagent_list)
+			var/datum/reagent/bit = bile
+			if(!belly.food_reagents[bit.type])
+				chemical_list += list(list("name" = bit.name, "volume" = round(bit.volume, 0.01)))
+			else
+				var/bit_vol = bit.volume - belly.food_reagents[bit.type]
+				if(bit_vol > 0)
+					chemical_list += list(list("name" = bit.name, "volume" = round(bit_vol, 0.01)))
 	if(altPatient.reagents.addiction_list.len)
 		for(var/datum/reagent/R in altPatient.reagents.addiction_list)
 			addict_list += list(list("name" = R.name))
@@ -316,8 +325,10 @@
 	return data
 
 /obj/machinery/medical_kiosk/ui_act(action,active)
-	if(..())
+	. = ..()
+	if(.)
 		return
+
 	switch(action)
 		if("beginScan_1")
 			if(!scan_active_1)

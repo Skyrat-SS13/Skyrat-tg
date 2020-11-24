@@ -38,6 +38,10 @@
 			user.put_in_hands(O)
 			return
 
+		if(I.embedding && I.embedding == conferred_embed)
+			to_chat(user, "<span class='warning'>[I] is already coated in [src]!</span>")
+			return
+
 		I.embedding = conferred_embed
 		I.updateEmbedding()
 		to_chat(user, "<span class='notice'>You finish wrapping [I] with [src].</span>")
@@ -80,4 +84,4 @@
 	prefix = "surgical"
 	conferred_embed = list("embed_chance" = 30, "pain_mult" = 0, "jostle_pain_mult" = 0, "ignore_throwspeed_threshold" = TRUE)
 	splint_factor = 0.4
-	custom_price = 500
+	custom_price = PAYCHECK_MEDIUM
