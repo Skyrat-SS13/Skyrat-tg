@@ -37,6 +37,38 @@
 	CES.disappear_after_spawn = disappear_after_spawn
 	CES.name = "[job_name] cryogenic sleeper"
 
+/datum/event_spawner_instance/proc/GetExport()
+	var/list/blocks = list()
+	blocks["job_name"] = job_name
+	blocks["flavor_text"] = flavor_text
+	blocks["gets_loadout"] = gets_loadout
+	blocks["used_outfit"] = used_outfit
+	blocks["access_override"] = access_override.Copy()
+	blocks["headset_override"] = headset_override
+	blocks["additional_equipment"] = additional_equipment.Copy()
+	blocks["species_whitelist"] = species_whitelist.Copy()
+	blocks["gender_whitelist"] = gender_whitelist.Copy()
+	blocks["ckey_whitelist"] = ckey_whitelist.Copy()
+	blocks["disappear_after_spawn"] = disappear_after_spawn
+	return json_encode(blocks)
+
+/datum/event_spawner_instance/proc/DoImport(input)
+	var/list/blocks = json_decode(input)
+	job_name = blocks["job_name"]
+	flavor_text = blocks["flavor_text"]
+	gets_loadout = blocks["gets_loadout"]
+	used_outfit = text2path(blocks["used_outfit"])
+	access_override = blocks["access_override"].Copy()
+	headset_override = text2path(blocks["headset_override"])
+	var/list/temp_additional_equipment = blocks["additional_equipment"].Copy()
+	var/list/to_equipment = list()
+	for(var/string in temp_additional_equipment)
+		to_equipment += text2path(string)
+	additional_equipment = to_equipment
+	species_whitelist = blocks["species_whitelist"].Copy()
+	gender_whitelist = blocks["gender_whitelist"].Copy()
+	ckey_whitelist = blocks["ckey_whitelist"].Copy()
+	disappear_after_spawn = blocks["disappear_after_spawn"]
 
 /datum/event_spawner_manager
 	var/next_id = 0
@@ -54,7 +86,7 @@
 		var/datum/event_spawner_instance/ESI = managed_instances["[panel_id]"]
 		if(!ESI)
 			return
-		dat += "<a href='?src=[REF(src)];inst_pref=return;id=[ESI.id]'>Return</a><HR>"
+		dat += "<a href='?src=[REF(src)];inst_pref=return;id=[ESI.id]'>Return</a> ----- <a href='?src=[REF(src)];inst_pref=export;id=[ESI.id]'>Export</a> <a href='?src=[REF(src)];inst_pref=import;id=[ESI.id]'>Import</a><HR>"
 		dat += "<a href='?src=[REF(src)];inst_pref=job_name;id=[ESI.id]'>Job Name:</a> <b>[ESI.job_name]</b>"
 		dat += "<BR><font color='#777777'><i>This will appear on the person's ID</i></font>"
 		dat += "<BR><a href='?src=[REF(src)];inst_pref=flavor_text;id=[ESI.id]'>Flavor Text:</a> <i>[ESI.flavor_text]</i>"
@@ -117,10 +149,16 @@
 			var/list/backpack_cont = initial(OU.backpack_contents)
 			if(backpack_cont)
 				dat += "<BR>+Things in the backpack (due to coding limitations, those cant be established. See the code for the outfit to know more.)"
+			display = initial(OU.l_hand)
+			if(display)
+				dat += "<BR>Left hand: [initial(display.name)]<font color='#777777'> - ([display])</font>"
+			display = initial(OU.r_hand)
+			if(display)
+				dat += "<BR>Right hand: [initial(display.name)]<font color='#777777'> - ([display])</font>"
 
 		dat += "<HR>"
 		dat += "<font color='#777777'><i>Here you can add extra equipment on top of loadout, if possible those will be auto equipped.</i></font>"
-		dat += "<BR><font color='#777777'><i>You HAVE to add them as typed paths('/obj/item/gun/energy/e_gun'). Search in Game Panel to find desired paths.</i></font>"
+		dat += "<BR><font color='#777777'><i>You HAVE to add them as typed paths(/obj/item/gun/energy/e_gun). Search in Game Panel to find desired paths.</i></font>"
 		dat += "<BR><b>Additional equipment: <a href='?src=[REF(src)];inst_pref=add_equip;id=[ESI.id]'>Add</a></b>"
 		for(var/eq in ESI.additional_equipment)
 			var/obj/item/equip = eq
@@ -228,7 +266,7 @@
 					if(!(msg in ESI.access_override))
 						ESI.access_override += msg
 			if("add_equip")
-				var/msg = input(usr, "Add an equipment piece, as typed path (ex. '/obj/item/gun/energy/e_gun').", "Add equipment", "") as text|null
+				var/msg = input(usr, "Add an equipment piece, as typed path (ex. /obj/item/gun/energy/e_gun).", "Add equipment", "") as text|null
 				if(!isnull(msg))
 					var/typed = text2path(msg)
 					if(!isnull(typed))
@@ -258,19 +296,56 @@
 				var/turfed = get_turf(usr)
 				ESI.CreateSpawner(turfed)
 				message_admins("[ADMIN_LOOKUPFLW(usr)] created an event character spawner for [ESI.job_name].")
+			if("export")
+				var/output = ESI.GetExport()
+				usr << browse("<code>[output]</code>", "window=export_spawner;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
+				return
+			if("import")
+				var/input = input(usr, "Input the spawner savefile here.", "Import Spawner") as message|null
+				if(input)
+					ESI.DoImport(input)
 		ShowPanel(usr, numb)
 	if(href_list["pref"])
 		switch(href_list["pref"])
 			if("create_new_instance")
+				var/action = alert(usr, "Create a new instance, or import?", "", "New", "Import")
+				if(!action)
+					return
+				var/import_input
+				if(action == "Import")
+					import_input = input(usr, "Input the spawner savefile here.", "Import Spawner") as message|null
+					if(!import_input)
+						return
 				next_id++
 				var/datum/event_spawner_instance/ESI = new(next_id)
 				managed_instances["[next_id]"] = ESI
+				if(import_input)
+					ESI.DoImport(import_input)
 			if("configure_instance")
 				var/numb = text2num(href_list["id"])
 				var/datum/event_spawner_instance/ESI = managed_instances["[numb]"]
 				if(ESI)
 					ShowPanel(usr, numb)
 					return
+			if("clone_instance")
+				var/numb = text2num(href_list["id"])
+				var/datum/event_spawner_instance/ESI = managed_instances["[numb]"]
+				next_id++
+				var/datum/event_spawner_instance/ESI2 = new(next_id)
+				managed_instances["[next_id]"] = ESI2
+				//Copypasta everything
+				ESI2.species_whitelist = ESI.species_whitelist.Copy()
+				ESI2.gender_whitelist = ESI.gender_whitelist.Copy()
+				ESI2.ckey_whitelist = ESI.ckey_whitelist.Copy()
+				ESI2.access_override = ESI.access_override.Copy()
+				ESI2.additional_equipment = ESI.additional_equipment.Copy()
+				ESI2.used_outfit = ESI.used_outfit
+				ESI2.job_name = ESI.job_name
+				ESI2.gets_loadout = ESI.gets_loadout
+				ESI2.headset_override = ESI.headset_override
+				ESI2.flavor_text = ESI.flavor_text	
+				ESI2.disappear_after_spawn = ESI.disappear_after_spawn
+
 		ShowPanel(usr, null)
 		return
 

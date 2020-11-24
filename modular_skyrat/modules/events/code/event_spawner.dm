@@ -101,7 +101,16 @@
 			if(!H.equip_to_slot_if_possible(new_headset, ITEM_SLOT_EARS, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
 				new_headset.forceMove(get_turf(H))
 
-	var/obj/item/back_item = H.back
+	var/obj/item/back_item
+	if(H.back && SEND_SIGNAL(H.back, COMSIG_CONTAINS_STORAGE))
+		back_item = H.back
+	//Spawn our character a backpack if they dont have any
+	if(!back_item)
+		var/obj/item/new_bp = new /obj/item/storage/backpack()
+		if(H.equip_to_appropriate_slot(new_bp))
+			back_item = new_bp
+		else
+			new_bp.forceMove(get_turf(H))
 	if(additional_equipment)
 		for(var/eq_path in additional_equipment)
 			var/obj/item/equipped = new eq_path()
