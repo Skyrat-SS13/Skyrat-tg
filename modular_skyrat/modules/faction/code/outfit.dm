@@ -51,6 +51,7 @@
 	head = /obj/item/clothing/head/hos/beret/faction
 	uniform = /obj/item/clothing/under/syndicate
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
+	suit_store = /obj/item/gun/energy/e_gun
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	ears = /obj/item/radio/headset/headset_faction/bowman
@@ -60,7 +61,7 @@
 	id = /obj/item/card/id/faction_crew
 	l_pocket = /obj/item/melee/transforming/energy/sword
 	l_hand = /obj/item/storage/part_replacer/bluespace/tier2
-	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/stack/sheet/metal/fifty=1, /obj/item/stack/sheet/glass/fifty=1, /obj/item/construction/rcd/combat, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/energy/e_gun=1, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/stack/spacecash/c1000=1)
+	backpack_contents = list(/obj/item/storage/box/survival/engineer=1, /obj/item/stack/sheet/metal/fifty=1, /obj/item/stack/sheet/glass/fifty=1, /obj/item/construction/rcd/combat, /obj/item/ammo_box/magazine/m45=2, /obj/item/gun/ballistic/automatic/pistol/m1911=1,/obj/item/stack/spacecash/c1000=1)
 
 /datum/outfit/faction_crew
 	name = "Faction - Crew"
