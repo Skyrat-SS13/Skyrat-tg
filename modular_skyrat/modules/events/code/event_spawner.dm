@@ -66,6 +66,8 @@
 	if(gender_whitelist && !(user.client.prefs.gender in gender_whitelist))
 		alert(user, "Sorry, This spawner is limited to those genders: [gender_string]. Please switch your character.", "", "Ok")
 		return
+	if(used)
+		return
 	SpawnPerson(user, alias)
 
 /obj/character_event_spawner/proc/SpawnPerson(mob/dead/observer/user, alias)
