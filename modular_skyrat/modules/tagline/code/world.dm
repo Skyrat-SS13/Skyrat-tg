@@ -1,3 +1,6 @@
+#define SECLEVEL2NUM(text)	(GLOB.all_security_levels.Find(text))
+#define NUM2SECLEVEL(num)	(ISINRANGE(num, 1, length(GLOB.all_security_levels)) ? GLOB.all_security_levels[num] : null)
+
 /world/proc/update_status()
 
 	var/list/features = list()
@@ -40,3 +43,4 @@
 		s += "\[[jointext(features, ", ")]"
 
 	status = s
+
