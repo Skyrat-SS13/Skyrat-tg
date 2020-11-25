@@ -541,6 +541,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		//Relies on pref existing, but this proc is only called after that occurs, so we're fine.
 		var/minutes = get_exp_living(pure_numeric = TRUE)
 		if(minutes <= living_recs && !CONFIG_GET(flag/panic_bunker_interview))
+			var/reject_message = "Failed Login: [key] - Account attempting to connect during panic bunker, but they do not have the required living time [minutes]/[living_recs]"
 			message_admins("<span class='adminnotice'>Failed Login: [key] - [address] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, {"<span class='notice'>Hi! We have temporarily enabled safety measures that prevents new players from joining currently.<br>Please try again later, or contact a staff on Discord if you have any questions. <br> <br> To join our community, check out our Discord! To gain full access to our Discord, read the rules and post a request in the #access-requests channel under the \"Landing Zone\" category in the Discord server linked here: <a href='https://discord.gg/6RpdCgR'>https://discord.gg/6RpdCgR</a></span>"}) //skyrat-edit
 			log_access(reject_message)
