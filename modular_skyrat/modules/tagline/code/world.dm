@@ -1,6 +1,3 @@
-#define SECLEVEL2NUM(text)	(GLOB.all_security_levels.Find(text))
-#define NUM2SECLEVEL(num)	(ISINRANGE(num, 1, length(GLOB.all_security_levels)) ? GLOB.all_security_levels[num] : null)
-
 /world/proc/update_status()
 
 	var/list/features = list()
@@ -27,9 +24,6 @@
 
 	if(SSmapping.config)
 		features += "[SSmapping.config.map_name]"
-
-	if(NUM2SECLEVEL(GLOB.security_level))
-		features += "[NUM2SECLEVEL(GLOB.security_level)] alert"
 
 	if (n > 1)
 		features += "~[n] players"
