@@ -10,6 +10,7 @@ Ports the more important OldChem chemicals to the new base, because Cobbychem is
 
 - "Multiver" has been renamed to Charcoal and had its lung damage stripped out.
 - borghydro.dm now uses old chemicals instead of the Cobbychem fuck-shit.
+- rot.dm now only needs 1u Formaldehyde OR Preservahyde to preserve a body, like how it was on the old server.
 
 ### Defines:
 
