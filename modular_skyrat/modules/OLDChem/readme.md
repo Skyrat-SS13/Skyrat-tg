@@ -9,6 +9,7 @@ Ports the more important OldChem chemicals to the new base, because Cobbychem is
 ### TG Proc Changes:
 
 - "Multiver" has been renamed to Charcoal and had its lung damage stripped out.
+- borghydro.dm now uses old chemicals instead of the Cobbychem fuck-shit.
 
 ### Defines:
 
