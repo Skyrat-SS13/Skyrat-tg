@@ -170,11 +170,12 @@
 			screen_obj.color = "#f15d36"
 
 	if(!conflicting_moodies.len) //no special icons- go to the normal icon states
-		// Skyrat edit - Alexithymia
+		//SKYRAT EDIT ADDITION BEGIN - ALEXITHYMIA
 		if(HAS_TRAIT(owner, TRAIT_MOOD_NOEXAMINE))
 			screen_obj.icon_state = "mood5"
 			screen_obj.color = "#4b96c4"
 			return
+		//SKYRAT EDIT ADDITION END
 		screen_obj.icon_state = "mood[mood_level]"
 		return
 
@@ -430,4 +431,3 @@
 
 #undef MINOR_INSANITY_PEN
 #undef MAJOR_INSANITY_PEN
-
