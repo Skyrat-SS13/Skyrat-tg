@@ -92,7 +92,8 @@
 		msg += "<span class='notice'>No clue.</span>\n"
 
 	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
-	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
+	//if(mood_events.len) //ORIGINAL
+	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
 		for(var/i in mood_events)
 			var/datum/mood_event/event = mood_events[i]
 			msg += event.description
