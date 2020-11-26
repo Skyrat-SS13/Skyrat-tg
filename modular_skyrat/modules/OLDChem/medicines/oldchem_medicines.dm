@@ -93,3 +93,18 @@
 	M.adjustFireLoss(2*REM, FALSE)
 	..()
 	. = 1
+
+/datum/reagent/blood/synthetics
+	data = list("donor"=null,"viruses"=null,"blood_DNA"="REPLICATED","blood_type"="SY","resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null)
+	name = "Synthetic Blood"
+	description = "A synthetically produced imitation of blood."
+	taste_description = "oil"
+	color = "#3700ff"
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+
+/datum/reagent/medicine/preservahyde
+	name = "Preservahyde"
+	description = "A powerful preservation agent, utilizing the preservative effects of formaldehyde with significantly less of the histamine."
+	reagent_state = LIQUID
+	color = "#f7685e"
+	metabolization_rate = REAGENTS_METABOLISM * 0.25
