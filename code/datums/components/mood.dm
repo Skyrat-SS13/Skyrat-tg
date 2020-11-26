@@ -67,7 +67,29 @@
 		msg += "<span class='notice'>I don't really know.</span>\n"
 	
 	msg += "<span class='notice'>My current mood: </span>" //Short term
-	// Skyrat edit - Alexithymia
+	//ORIGINAL
+	/* 
+	switch(mood_level)
+		if(1)
+			msg += "<span class='boldwarning'>I wish I was dead!</span>\n"
+		if(2)
+			msg += "<span class='boldwarning'>I feel terrible...</span>\n"
+		if(3)
+			msg += "<span class='boldwarning'>I feel very upset.</span>\n"
+		if(4)
+			msg += "<span class='boldwarning'>I'm a bit sad.</span>\n"
+		if(5)
+			msg += "<span class='nicegreen'>I'm alright.</span>\n"
+		if(6)
+			msg += "<span class='nicegreen'>I feel pretty okay.</span>\n"
+		if(7)
+			msg += "<span class='nicegreen'>I feel pretty good.</span>\n"
+		if(8)
+			msg += "<span class='nicegreen'>I feel amazing!</span>\n"
+		if(9)
+			msg += "<span class='nicegreen'>I love life!</span>\n"
+	*/
+	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
 	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
 		switch(mood_level)
 			if(1)
@@ -90,6 +112,7 @@
 				msg += "<span class='nicegreen'>I love life!</span>\n"
 	else
 		msg += "<span class='notice'>No clue.</span>\n"
+	//SKYRAT EDIT CHANGE END
 
 	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
 	//if(mood_events.len) //ORIGINAL
