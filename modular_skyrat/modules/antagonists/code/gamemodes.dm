@@ -14,19 +14,19 @@
 	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
 /datum/dynamic_ruleset/roundstart/traitor
-	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
 /datum/dynamic_ruleset/roundstart/traitorbro
-	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
 /datum/dynamic_ruleset/roundstart/changeling
-	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
 /datum/dynamic_ruleset/roundstart/heretics
-	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
 /datum/dynamic_ruleset/midround/autotraitor
-	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
 /datum/dynamic_ruleset/latejoin/infiltrator
-	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
