@@ -52,6 +52,38 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">26 November 2020</h2>
+			<h3 class="author">Azarak updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">you now get warned if someone else is handling the ticket</li>
+			</ul>
+			<h3 class="author">Gandalf2k15 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Server tagline!</li>
+				<li class="bugfix">Atmos</li>
+			</ul>
+			<h3 class="author">RatFromTheJungle updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">replaced the blueshield vests icon with a (subjectively) better icon, in the least efficient way possible.</li>
+			</ul>
+			<h3 class="author">SkyratBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">Humans body temperature stabilization overhauled</li>
+				<li class="refactor">Humans will now receive temperature alerts before they taking damage</li>
+				<li class="refactor">Humans now take wounds and burn damage based on body temperature</li>
+				<li class="refactor">Watchers temperature shot reworked</li>
+				<li class="refactor">Fever and Shivers have a more reasonable cap</li>
+				<li class="refactor">Pastries have been refactored for new foods.</li>
+				<li class="bugfix">Health analyzer chemical scan should now work again.</li>
+				<li class="bugfix">Medical kiosks should no longer reset loop.</li>
+				<li class="bugfix">Crew with the smoker quirk are addicted to nicotine on shift start again.</li>
+				<li class="bugfix">Jungle fever monkeys will now pass canUseTopic() dexterity checks and be able to use tgui machineries.</li>
+			</ul>
+			<h3 class="author">bobbahbrown updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">Cleaned up the crew console code, moved sorting of sensor entries to clientside.</li>
+			</ul>
+
 			<h2 class="date">25 November 2020</h2>
 			<h3 class="author">Arkatos, original by dearmochi updated:</h3>
 			<ul class="changes bgimages16">
@@ -1431,54 +1463,6 @@
 				<li class="tweak">Bombing an area heavily on icebox's top 2 floors can also result in chasms leading to the second level.</li>
 				<li class="bugfix">Building atop openspace on icebox no longer produces magical snow under your lattices.</li>
 				<li class="rscadd">Non-motorized wheelchairs are now manufactured to be foldable.</li>
-			</ul>
-
-			<h2 class="date">24 September 2020</h2>
-			<h3 class="author">ATHATH updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Adding a symptom to a virus that already has 4 or 5 symptoms in it no longer has a chance of removing a random symptom from that virus.</li>
-			</ul>
-			<h3 class="author">Gandalf2k15 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added LOOC, subtle, and subtler. Tweaked WHO too.</li>
-			</ul>
-			<h3 class="author">Ryll/Shaps updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Dismemberment will no longer lead to phantom scars showing up on a person's missing limbs. Insert your own MGSV joke here.</li>
-				<li class="bugfix">Fixed some bad logic that made self-treating severe/critical broken bones with bone gel have 63%/83% base fail rates, instead of 25%/45% as intended. As such, self-treating these wounds is now far less likely to fail, though you'll still have to wait for the effect.</li>
-				<li class="tweak">The bonuses to the above self-treatment success rates from drunkenness, morphine, and determination are a bit higher as well.</li>
-				<li class="tweak">You can now see what wound types a detached limb is suffering by inspecting it</li>
-				<li class="bugfix">Projectiles now properly display impact messages on people as well as blood impact splatters</li>
-				<li class="bugfix">Embedded objects now properly use the "a" article rather than "the" when relevant</li>
-			</ul>
-			<h3 class="author">SkyratBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Flower Buds now have a countdown for ghosts</li>
-				<li class="rscdel">Removed devil and affiliated shitcode</li>
-				<li class="bugfix">Vatbeasts, gelatinous cubes, and sholean grapes are visible after being revived now</li>
-				<li class="bugfix">Non-gameplay impacting runtime related to antag datums.</li>
-				<li class="tweak">Code causing antag datums to silently fail when unusual error states occur has been replaced. This will cause errors that were previously ignored to now generate runtimes.</li>
-				<li class="bugfix">The AI can now move its camera up z-levels as well as down by using the option in the IC tab. If you're an AI and you can't see anything, your camera may be on the wrong Z-level. Try moving it up or returning hitting the button to return to your core.</li>
-				<li class="bugfix">Assuming direct control of mobs now appropriately updates the verb tabs. Notably, this fixes ghosts who accept offered AI roles not getting the AI verb tab, but will fix all instances of special verbs not unlocking for every other mob type too.</li>
-				<li class="rscadd">The "Who" verb now uses a table rather than a list.</li>
-				<li class="bugfix">Some fixes to map_template.load() to make it less runtime.</li>
-				<li class="refactor">Mecha medical and other_equipment refactor</li>
-				<li class="tweak">Makes the darkblade fit on your back instead of your belt.</li>
-				<li class="imageadd">Adds a whole bunch of missing sprites for: the nullrod, cult blade, spellblade, claymores and dark scythe, among others.</li>
-				<li class="imageadd">Updates the on-mobs for shotguns a little, and fixes several high powered firearms being concealable in suit storage slots.</li>
-				<li class="imageadd">Makes stunprods visible in suit storage slots.</li>
-				<li class="imageadd">Knife sprites for you belt and suit storage!</li>
-				<li class="tweak">Added request console to meta bar</li>
-				<li class="bugfix">The block movement key now locks turning like it used to.</li>
-				<li class="tweak">Large welding fuel tanks are now red instead of white. Large tanks now also have a difference in size.</li>
-				<li class="tweak">Cell chargers, PKA Modkits, light switches and buttons have been touched up a bit.</li>
-				<li class="tweak">The incinerator button no longer looks like just a light switch</li>
-				<li class="bugfix">You get a notice if you are unable to succumb to death</li>
-				<li class="rscadd">Added custom statues. Create carving block from 5 sheets of material then use a chisel on it.</li>
-			</ul>
-			<h3 class="author">imsxz updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">you can now pat carbon mobs on the head.</li>
 			</ul>
 		</div>
 
