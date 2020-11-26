@@ -364,6 +364,10 @@
 	var/mob/living/carbon/human/traitor_mob = current
 	if (!istype(traitor_mob))
 		return
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS (no doubling uplinks)
+	if(find_syndicate_uplink())
+		return
+	//SKYRAT EDIT ADDITION END
 
 	var/list/all_contents = traitor_mob.GetAllContents()
 	var/obj/item/pda/PDA = locate() in all_contents
