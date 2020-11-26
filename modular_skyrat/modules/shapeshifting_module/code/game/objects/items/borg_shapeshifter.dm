@@ -14,6 +14,7 @@
 	var/savedPixelOffset
 	var/savedModuleName
 	var/savedDogborg
+	var/savedSpecialLightKey
 	var/active = FALSE
 	var/activationCost = 100
 	var/activationUpkeep = 5
@@ -21,6 +22,7 @@
 	var/disguise_icon_override = null
 	var/disguise_pixel_offset = 0
 	var/disguise_dogborg = FALSE
+	var/disguise_special_light_key = null
 	var/mob/listeningTo
 	var/list/signalCache = list( // list here all signals that should break the camouflage
 			COMSIG_PARENT_ATTACKBY,
@@ -34,9 +36,9 @@
 	var/mob/living/silicon/robot/user // needed for process()
 	var/animation_playing = FALSE
 	var/list/borgmodels = list(
-							"(Standard) Default", 
+							"(Standard) Default",
 							"(Standard) Heavy",
-							"(Standard) Sleek", 
+							"(Standard) Sleek",
 							"(Standard) Marina",
 							"(Standard) Robot",
 							"(Standard) Eyebot",
@@ -331,6 +333,7 @@
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Default - Treads")
 						disguise = "engi-tread"
+						disguise_special_light_key = "engineer"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Loader")
 						disguise = "loaderborg"
@@ -365,6 +368,7 @@
 						disguise_dogborg = TRUE
 					if("Alina")
 						disguise = "alina-eng"
+						disguise_special_light_key = "alina"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
@@ -430,6 +434,7 @@
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Default - Treads")
 						disguise = "sec-tread"
+						disguise_special_light_key = "sec"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Sleek")
 						disguise = "sleeksec"
@@ -453,6 +458,7 @@
 						disguise_dogborg = TRUE
 					if("Alina")
 						disguise = "alina-sec"
+						disguise_special_light_key = "alina"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
@@ -530,15 +536,19 @@
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("(Service) Waitress")
 						disguise = "service_f"
+						disguise_special_light_key = "service"
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("(Service) Butler")
 						disguise = "service_m"
+						disguise_special_light_key = "service"
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("(Service) Bro")
 						disguise = "brobot"
+						disguise_special_light_key = "service"
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("(Service) Can")
 						disguise = "kent"
+						disguise_special_light_key = "medical"
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("(Service) Tophat")
 						disguise = "tophat"
@@ -655,6 +665,7 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Asteroid")
 						disguise = "minerOLD"
+						disguise_special_light_key = "miner"
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Droid")
 						disguise = "miner"
@@ -892,11 +903,13 @@
 	savedPixelOffset = user.module.cyborg_pixel_offset
 	savedModuleName = user.module.name
 	savedDogborg = user.module.dogborg
+	savedSpecialLightKey = user.module.special_light_key
 	user.module.name = disguiseModuleName
 	user.module.cyborg_base_icon = disguise
 	user.module.cyborg_icon_override = disguise_icon_override
 	user.module.cyborg_pixel_offset = disguise_pixel_offset
 	user.module.dogborg = disguise_dogborg
+	user.module.special_light_key = disguise_special_light_key
 	user.bubble_icon = "robot"
 	active = TRUE
 	user.update_icons()
@@ -922,6 +935,7 @@
 	user.module.cyborg_icon_override = savedOverride
 	user.module.cyborg_pixel_offset = savedPixelOffset
 	user.module.dogborg = savedDogborg
+	user.module.special_light_key = savedSpecialLightKey
 	user.bubble_icon = savedBubbleIcon
 	active = FALSE
 	user.update_icons()
