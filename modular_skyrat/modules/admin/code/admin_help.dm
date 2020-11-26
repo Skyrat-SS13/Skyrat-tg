@@ -25,3 +25,15 @@
 	AddInteraction("Being handled by [key_name]")
 
 	handler = "[usr.ckey]"
+
+/mob/dead/observer/Destroy()
+	stack_trace("GHOST DELETED DEBUG")
+	return ..()
+
+/client/Destroy()
+	stack_trace("CLIENT DELETED DEBUG")
+	return ..()
+
+/obj/effect/abstract/directional_lighting/Destroy()
+	stack_trace("ABSTRACT LIGHT DELETED DEBUG")
+	return ..()
