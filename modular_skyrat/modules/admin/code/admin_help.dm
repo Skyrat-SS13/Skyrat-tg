@@ -33,7 +33,3 @@
 /client/Destroy()
 	stack_trace("CLIENT DELETED DEBUG")
 	return ..()
-
-/obj/effect/abstract/directional_lighting/Destroy()
-	stack_trace("ABSTRACT LIGHT DELETED DEBUG")
-	return ..()
