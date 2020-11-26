@@ -26,11 +26,14 @@
 
 /datum/ambitions/New(datum/mind/M)
 	my_mind = M
-	owner_name = my_mind.current.real_name
+	if(my_mind.current.client)
+		owner_name = key_name(my_mind.current.client, FALSE, TRUE)
+	else
+		owner_name = my_mind.current.real_name
 	//Greet our antag player and give him a link to open ambitions!
-	to_chat(my_mind.current, "<span class='boldnotice'>You're a story driven antagonist, this means you'll have to fill ambitions before you start antagonising!</span>")
-	to_chat(my_mind.current, "<span class='boldnotice'>After filling them out you'll get access to your uplink or powers.</span>")
-	to_chat(my_mind.current, "<span class='boldnotice'>Click <a href='?src=[REF(src)];pref=show_ambitions'>here</a> to set your ambitions, or access them at any time from your IC tab.</span>")
+	to_chat(my_mind.current, "<span class='boldwarning'>You're a story driven antagonist, this means you'll have to fill ambitions before you start antagonising!</span>")
+	to_chat(my_mind.current, "<span class='boldwarning'>After filling them out you'll get access to your uplink or powers.</span>")
+	to_chat(my_mind.current, "<span class='boldwarning'>Click <a href='?src=[REF(src)];pref=show_ambitions'>here</a> to set your ambitions, or access them at any time from your IC tab.</span>")
 
 /datum/ambitions/proc/ShowPanel(mob/user, admin_view = FALSE)
 	if(!user || !user.client)
@@ -38,7 +41,7 @@
 	var/list/dat = list("<center>")
 	if(admin_view)
 		dat += "<h3>Admin View Options:</h3>"
-		dat += "<i>Down below you have [my_mind.current.name]'s ambitions.</i>"
+		dat += "<i>Down below you have [owner_name]'s ambitions.</i>"
 		if(admin_review_requested)
 			dat += "<BR><b>They have requested an admin review.</b>"
 			if(admin_approval)
