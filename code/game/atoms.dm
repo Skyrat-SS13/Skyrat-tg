@@ -1272,9 +1272,13 @@
 			var/atom/created_atom = new atom_to_create(drop_location())
 			SEND_SIGNAL(created_atom, COMSIG_ATOM_CREATEDBY_PROCESSING, src, chosen_option)
 			created_atom.OnCreatedFromProcessing(user, I, chosen_option, src)
-		to_chat(user, "<span class='notice'>You manage to create [chosen_option[TOOL_PROCESSING_AMOUNT]] [initial(atom_to_create.name)]\s from [src].</span>")
-		qdel(src)
+			to_chat(user, "<span class='notice'>You manage to create [chosen_option[TOOL_PROCESSING_AMOUNT]] [initial(atom_to_create.name)]\s from [src].</span>")
+		UsedforProcessing(user, I, chosen_option)
 		return
+
+/atom/proc/UsedforProcessing(mob/living/user, obj/item/I, list/chosen_option)
+	qdel(src)
+	return
 
 /atom/proc/OnCreatedFromProcessing(mob/living/user, obj/item/I, list/chosen_option, atom/original_atom)
 	return
@@ -1341,6 +1345,10 @@
 			log_whisper(log_text)
 		if(LOG_EMOTE)
 			log_emote(log_text)
+		//SKYRAT EDIT ADDITION BEGIN
+		if(LOG_SUBTLER)
+			log_subtler(log_text)
+		//SKYRAT EDIT ADDITION END
 		if(LOG_DSAY)
 			log_dsay(log_text)
 		if(LOG_PDA)
