@@ -29,7 +29,3 @@
 /mob/dead/observer/Destroy()
 	stack_trace("GHOST DELETED DEBUG")
 	return ..()
-
-/client/Destroy()
-	stack_trace("CLIENT DELETED DEBUG")
-	return ..()
