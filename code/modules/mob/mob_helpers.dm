@@ -492,6 +492,10 @@
 			colored_message = "(ASAY) [colored_message]"
 		if(LOG_EMOTE)
 			colored_message = "(EMOTE) [colored_message]"
+		//SKYRAT EDIT ADDITION BEGIN
+		if(LOG_SUBTLER)
+			colored_message = "(EMOTE) (SUBTLER) [colored_message]"
+		//SKYRAT EDIT ADDITION END
 	
 	var/list/timestamped_message = list("\[[time_stamp()]\] [key_name(src)] [loc_name(src)]" = colored_message)
 
@@ -542,3 +546,7 @@
 ///Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()
 	return stat == DEAD || has_unlimited_silicon_privilege //Dead guys and silicons can always see reagents
+
+///Can this mob hold items
+/mob/proc/can_hold_items(obj/item/I)
+	return length(held_items)
