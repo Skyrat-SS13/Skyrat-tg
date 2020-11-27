@@ -2,7 +2,7 @@
 	remove_overlay(UNIFORM_LAYER)
 
 	if(client && hud_used)
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ICLOTHING) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ICLOTHING) + 1]
 		inv.update_icon()
 
 	if(istype(w_uniform, /obj/item/clothing/under))
@@ -68,7 +68,7 @@
 	remove_overlay(SUIT_LAYER)
 
 	if(client && hud_used)
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_OCLOTHING) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_OCLOTHING) + 1]
 		inv.update_icon()
 
 	if(istype(wear_suit, /obj/item/clothing/suit))
@@ -126,7 +126,7 @@
 		return
 
 	if(client && hud_used)
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_FEET) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_FEET) + 1]
 		inv.update_icon()
 
 	if(shoes)
@@ -245,7 +245,7 @@
 		return
 
 	if(client && hud_used)
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_EYES) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_EYES) + 1]
 		inv.update_icon()
 
 	if(glasses)

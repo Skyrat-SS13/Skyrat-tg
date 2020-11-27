@@ -13,7 +13,3 @@
 /obj/item/ammo_box/magazine/internal/boltaction/enchanted/arcane_barrage
 	ammo_type = /obj/item/ammo_casing/magic/arcane_barrage
 
-/obj/item/ammo_box/magazine/internal/boltaction/harpoon
-	max_ammo = 1
-	caliber = "harpoon"
-	ammo_type = /obj/item/ammo_casing/caseless/harpoon

@@ -3,9 +3,9 @@ import { classes } from 'common/react';
 import { storage } from 'common/storage';
 import { multiline } from 'common/string';
 import { createUuid } from 'common/uuid';
-import { Component, Fragment } from 'inferno';
+import { Component } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, ByondUi, Divider, Flex, Input, Knob, LabeledControls, NumberInput, Section } from '../components';
+import { Box, Button, ByondUi, Divider, Flex, Fragment, Input, Knob, LabeledControls, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
 const pod_grey = {
@@ -556,7 +556,7 @@ const TabPod = (props, context) => {
 
 
 const TabBay = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data, config } = useBackend(context);
   return (
     <Fragment>
       <Button
@@ -573,7 +573,8 @@ const TabBay = (props, context) => {
 };
 
 const TabDrop = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data, config } = useBackend(context);
+  const { mapRef } = data;
   return (
     <Fragment>
       <Button
@@ -808,24 +809,22 @@ class PresetsPage extends Component {
   }
 
   saveDataToPreset(id, data) {
-    storage.set("podlauncher_preset_" + id, data);
+    storage.set("podlauncher_preset_"+id, data);
   }
 
   async loadDataFromPreset(id, context) {
-    const { act } = useBackend(this.context);
-    act("loadDataFromPreset", {
-      payload: await storage.get("podlauncher_preset_" + id),
-    });
+    const { act, data } = useBackend(context);
+    act('loadDataFromPreset', { payload: await storage.get("podlauncher_preset_"+id) });
   }
 
   newPreset(presetName, hue, data) {
     let { presets } = this.state;
-    if (!presets) {
+    if (!presets || presets === undefined) {
       presets = [];
       presets.push("hi!");
     }
-    const id = createUuid();
-    const thing = { id, title: presetName, hue };
+    let id = createUuid();
+    let thing = { id, title: presetName, hue };
     presets.push(thing);
     storage.set("podlauncher_presetlist", presets);
     this.saveDataToPreset(id, data);
@@ -889,8 +888,8 @@ class PresetsPage extends Component {
               content=""
               icon="upload"
               tooltip="Loads preset"
-              onClick={() => {
-                this.loadDataFromPreset(presetIndex);
+              onClick={() => { // Line break to meet line length reqs
+                this.loadDataFromPreset(presetIndex, this.context);
               }} />
             <Button
               inline
@@ -1110,23 +1109,23 @@ const Timing = (props, context) => {
             color="transparent"
             tooltip={multiline`
             Toggle Reverse Delays
-            Note: Top set is
-            normal delays, bottom set
+            Note: Top set is  
+            normal delays, bottom set 
             is reversing pod's delays`}
             tooltipOverrideLong
             tooltipPosition="bottom-right"
             onClick={() => act('toggleRevDelays')} />
         </Fragment>
       )}>
-      <DelayHelper
-        delay_list={DELAYS}
+      <DelayHelper 
+        delay_list={DELAYS} 
       />
       {data.custom_rev_delay && (
         <Fragment>
           <Divider horizontal />
-          <DelayHelper
-            delay_list={REV_DELAYS}
-            reverse
+          <DelayHelper 
+            delay_list={REV_DELAYS} 
+            reverse 
           />
         </Fragment>
       )||""}
@@ -1155,7 +1154,7 @@ const DelayHelper = (props, context) => {
             unit={"s"}
             format={value => toFixed(value, 2)}
             maxValue={10}
-            color={((reverse ? data.rev_delays[i+1] : data.delays[i+1]) / 10)
+            color={((reverse ? data.rev_delays[i+1] : data.delays[i+1]) / 10) 
               > 10 ? "orange" : "default"}
             onDrag={(e, value) => {
               act('editTiming', {

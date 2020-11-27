@@ -339,6 +339,18 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 0
 	embedding = list("pain_mult" = 0, "jostle_pain_mult" = 0, "embed_chance" = 100, "fall_chance" = 0)
 
+/obj/item/throwing_star/magspear
+	name = "magnetic spear"
+	desc = "A reusable spear that is typically loaded into kinetic spearguns."
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "magspear"
+	throwforce = 25 //kills regular carps in one hit
+	force = 10
+	throw_range = 0 //throwing these invalidates the speargun
+	attack_verb_continuous = list("stabs", "rips", "gores", "impales")
+	attack_verb_simple = list("stab", "rip", "gore", "impale")
+	embedding = list("pain_mult" = 8, "embed_chance" = 100, "fall_chance" = 0, "impact_pain_mult" = 15) //55 damage+embed on hit
+
 /obj/item/switchblade
 	name = "switchblade"
 	icon_state = "switchblade"
@@ -525,7 +537,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 /obj/item/statuebust/Initialize()
 	. = ..()
 	AddElement(/datum/element/art, impressiveness)
-	AddComponent(/datum/component/beauty, 1000)
+	INVOKE_ASYNC(src, /datum.proc/_AddComponent, list(/datum/component/beauty, 1000))
 
 /obj/item/statuebust/hippocratic
 	name = "hippocrates bust"
@@ -586,7 +598,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	icon_state = "skateboard2"
 	inhand_icon_state = "skateboard2"
 	board_item_type = /obj/vehicle/ridden/scooter/skateboard/pro
-	custom_premium_price = PAYCHECK_HARD * 5
+	custom_premium_price = 500
 
 /obj/item/melee/skateboard/hoverboard
 	name = "hoverboard"
@@ -594,7 +606,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	icon_state = "hoverboard_red"
 	inhand_icon_state = "hoverboard_red"
 	board_item_type = /obj/vehicle/ridden/scooter/skateboard/hoverboard
-	custom_premium_price = PAYCHECK_COMMAND * 5.4 //If I can't make it a meme I'll make it RAD
+	custom_premium_price = 2015
 
 /obj/item/melee/skateboard/hoverboard/admin
 	name = "Board Of Directors"

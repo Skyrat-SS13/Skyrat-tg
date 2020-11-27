@@ -8,11 +8,11 @@
 		changed++
 		ntransform.TurnTo(lying_prev , lying_angle)
 		if(!lying_angle) //Lying to standing
-			final_pixel_y = base_pixel_y
+			final_pixel_y = base_pixel_y + get_standard_pixel_y_offset()
 		else //if(lying != 0)
 			if(lying_prev == 0) //Standing to lying
-				pixel_y = base_pixel_y
-				final_pixel_y = base_pixel_y + PIXEL_Y_OFFSET_LYING
+				pixel_y = base_pixel_y + get_standard_pixel_y_offset()
+				final_pixel_y = base_pixel_y + get_standard_pixel_y_offset(lying_angle)
 				if(dir & (EAST|WEST)) //Facing east or west
 					final_dir = pick(NORTH, SOUTH) //So you fall on your side rather than your face or ass
 	if(resize != RESIZE_DEFAULT_SIZE)
@@ -113,7 +113,7 @@
 		return
 
 	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1])
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_MASK) + 1]
 		inv.update_icon()
 
 	if(wear_mask)
@@ -129,7 +129,7 @@
 	remove_overlay(NECK_LAYER)
 
 	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1])
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1]
 		inv.update_icon()
 
 	if(wear_neck)
@@ -143,7 +143,7 @@
 	remove_overlay(BACK_LAYER)
 
 	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1]
 		inv.update_icon()
 
 	if(back)
@@ -161,7 +161,7 @@
 		return
 
 	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
-		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_HEAD) + 1]
+		var/obj/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_HEAD) + 1]
 		inv.update_icon()
 
 	if(head)
@@ -186,7 +186,7 @@
 /mob/living/carbon/proc/update_hud_handcuffed()
 	if(hud_used)
 		for(var/hand in hud_used.hand_slots)
-			var/atom/movable/screen/inventory/hand/H = hud_used.hand_slots[hand]
+			var/obj/screen/inventory/hand/H = hud_used.hand_slots[hand]
 			if(H)
 				H.update_icon()
 

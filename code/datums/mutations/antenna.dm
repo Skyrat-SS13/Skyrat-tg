@@ -27,7 +27,8 @@
 /datum/mutation/human/antenna/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	QDEL_NULL(linked_radio)
+	if(linked_radio)
+		linked_radio.Destroy()
 
 /datum/mutation/human/antenna/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
 	..()

@@ -271,6 +271,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		eavesdrop_range = EAVESDROP_EXTRA_RANGE
 	var/list/listening = get_hearers_in_view(message_range+eavesdrop_range, source)
 	var/list/the_dead = list()
+	//SKYRAT EDIT ADDITION BEGIN - YELLING ECHOES
+	var/list/yellareas
+	if(say_test(message) == "2")
+		yellareas = get_areas_in_range(message_range,src)
+	//SKYRAT EDIT ADDITION END
 	if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
 		var/mob/living/carbon/mute = src
 		if(istype(mute))
@@ -295,6 +300,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 			if(QDELETED(M))	//Some times nulls and deleteds stay in this list. This is a workaround to prevent ic chat breaking for everyone when they do.
 				continue	//Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
 			if(M.stat != DEAD) //not dead, not important
+				//SKYRAT EDIT ADDITION BEGIN - YELLING ECHOES
+				if(yellareas)
+					var/area/A = get_area(M)
+					if(istype(A) && A.ambientsounds != SPACE && (A in yellareas))
+						listening |= M
+				//SKYRAT EDIT ADDITION END
 				continue
 			if(get_dist(M, src) > 7 || M.z != z) //they're out of range of normal hearing
 				if(eavesdrop_range)

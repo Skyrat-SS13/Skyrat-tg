@@ -133,18 +133,7 @@
 /obj/machinery/mineral/processing_unit/Initialize()
 	. = ..()
 	proximity_monitor = new(src, 1)
-	var/list/allowed_materials = list(/datum/material/iron,
-									/datum/material/glass,
-									/datum/material/silver,
-									/datum/material/gold,
-									/datum/material/diamond,
-									/datum/material/plasma,
-									/datum/material/uranium,
-									/datum/material/bananium,
-									/datum/material/titanium,
-									/datum/material/bluespace
-									)
-	AddComponent(/datum/component/material_container, allowed_materials, INFINITY, MATCONTAINER_EXAMINE|BREAKDOWN_FLAGS_ORE_PROCESSOR, /obj/item/stack)
+	AddComponent(/datum/component/material_container, list(/datum/material/iron, /datum/material/glass, /datum/material/silver, /datum/material/gold, /datum/material/diamond, /datum/material/plasma, /datum/material/uranium, /datum/material/bananium, /datum/material/titanium, /datum/material/bluespace), INFINITY, TRUE, /obj/item/stack, _breakdown_flags=BREAKDOWN_FLAGS_ORE_PROCESSOR)
 	stored_research = new /datum/techweb/specialized/autounlocking/smelter
 	selected_material = SSmaterials.GetMaterialRef(/datum/material/iron)
 

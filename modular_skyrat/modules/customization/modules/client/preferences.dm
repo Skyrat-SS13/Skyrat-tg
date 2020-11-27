@@ -195,9 +195,9 @@
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
-			unlock_content = GLOB.donator_list[C.ckey] || C.IsByondMember()
+			unlock_content = C.IsByondMember()
 			if(unlock_content)
-				max_save_slots = 30
+				max_save_slots = 8
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
@@ -2531,7 +2531,7 @@
 				if("ambientocclusion")
 					ambientocclusion = !ambientocclusion
 					if(parent && parent.screen && parent.screen.len)
-						var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in parent.screen
+						var/obj/screen/plane_master/game_world/PM = locate(/obj/screen/plane_master/game_world) in parent.screen
 						PM.backdrop(parent.mob)
 
 				if("auto_fit_viewport")

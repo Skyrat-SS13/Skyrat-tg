@@ -8,7 +8,8 @@
 	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/space_ninja
 	gloves = /obj/item/clothing/gloves/space_ninja
-	l_pocket = /obj/item/grenade/c4/ninja
+	back = /obj/item/tank/jetpack/carbondioxide
+	l_pocket = /obj/item/grenade/c4/x4
 	r_pocket = /obj/item/tank/internals/emergency_oxygen
 	internals_slot = ITEM_SLOT_RPOCKET
 	belt = /obj/item/energy_katana
@@ -20,3 +21,5 @@
 		var/obj/item/clothing/suit/space/space_ninja/S = H.wear_suit
 		if(istype(H.belt, belt))
 			S.energyKatana = H.belt
+		S.randomize_param()
+

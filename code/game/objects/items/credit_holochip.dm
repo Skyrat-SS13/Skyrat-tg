@@ -82,10 +82,10 @@
 		qdel(H)
 
 /obj/item/holochip/AltClick(mob/user)
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	var/split_amount = round(input(user,"How many credits do you want to extract from the holochip?") as null|num)
-	if(split_amount == null || split_amount <= 0 || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
+	if(split_amount == null || split_amount <= 0 || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	else
 		var/new_credits = spend(split_amount, TRUE)

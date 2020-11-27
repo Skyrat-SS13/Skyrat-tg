@@ -146,50 +146,29 @@
 
 /obj/item/pen/afterattack(obj/O, mob/living/user, proximity)
 	. = ..()
-	//Changing name/description of items. Only works if they have the UNIQUE_RENAME object flag set
+	//Changing Name/Description of items. Only works if they have the 'unique_rename' flag set
 	if(isobj(O) && proximity && (O.obj_flags & UNIQUE_RENAME))
-		var/penchoice = input(user, "What would you like to edit?", "Rename, change description or reset both?") as null|anything in list("Rename","Change description","Reset")
+		var/penchoice = input(user, "What would you like to edit?", "Rename or change description?") as null|anything in list("Rename","Change description")
 		if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 			return
 		if(penchoice == "Rename")
-			var/input = stripped_input(user,"What do you want to name [O]?", ,"[O.name]", MAX_NAME_LEN)
+			var/input = stripped_input(user,"What do you want to name \the [O.name]?", ,"", MAX_NAME_LEN)
 			var/oldname = O.name
 			if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 				return
-			if(oldname == input || input == "")
-				to_chat(user, "<span class='notice'>You changed [O] to... well... [O].</span>")
+			if(oldname == input)
+				to_chat(user, "<span class='notice'>You changed \the [O.name] to... well... \the [O.name].</span>")
 			else
 				O.name = input
-				var/datum/component/label/label = O.GetComponent(/datum/component/label)
-				if(label)
-					label.remove_label()
-					label.apply_label()
-				to_chat(user, "<span class='notice'>You have successfully renamed \the [oldname] to [O].</span>")
+				to_chat(user, "<span class='notice'>\The [oldname] has been successfully been renamed to \the [input].</span>")
 				O.renamedByPlayer = TRUE
 
 		if(penchoice == "Change description")
-			var/input = stripped_input(user,"Describe [O] here:", ,"[O.desc]", 140)
-			var/olddesc = O.desc
+			var/input = stripped_input(user,"Describe \the [O.name] here", ,"", 100)
 			if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 				return
-			if(olddesc == input || input == "")
-				to_chat(user, "<span class='notice'>You decide against changing [O]'s description.</span>")
-			else
-				O.desc = input
-				to_chat(user, "<span class='notice'>You have successfully changed [O]'s description.</span>")
-				O.renamedByPlayer = TRUE
-
-		if(penchoice == "Reset")
-			if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
-				return
-			O.desc = initial(O.desc)
-			O.name = initial(O.name)
-			var/datum/component/label/label = O.GetComponent(/datum/component/label)
-			if(label)
-				label.remove_label()
-				label.apply_label()
-			to_chat(user, "<span class='notice'>You have successfully reset [O]'s name and description.</span>")
-			O.renamedByPlayer = FALSE
+			O.desc = input
+			to_chat(user, "<span class='notice'>You have successfully changed \the [O.name]'s description.</span>")
 
 /*
  * Sleepypens

@@ -19,7 +19,7 @@
 
 /mob/dead/new_player/Initialize()
 	if(client && SSticker.state == GAME_STATE_STARTUP)
-		var/atom/movable/screen/splash/S = new(client, TRUE, TRUE)
+		var/obj/screen/splash/S = new(client, TRUE, TRUE)
 		S.Fade(TRUE)
 
 	if(length(GLOB.newplayer_start))
@@ -243,7 +243,6 @@
 		observer.client.init_verbs()
 	observer.update_icon()
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
-	deadchat_broadcast(" has observed.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
 	QDEL_NULL(mind)
 	qdel(src)
 	return TRUE
@@ -334,7 +333,7 @@
 	if(job && !job.override_latejoin_spawn(character))
 		SSjob.SendToLateJoin(character)
 		if(!arrivals_docked)
-			var/atom/movable/screen/splash/Spl = new(character.client, TRUE)
+			var/obj/screen/splash/Spl = new(character.client, TRUE)
 			Spl.Fade(TRUE)
 			character.playsound_local(get_turf(character), 'sound/voice/ApproachingTG.ogg', 25)
 
@@ -465,6 +464,7 @@
 
 	client.prefs.copy_to(H, antagonist = is_antag, is_latejoiner = transfer_after)
 
+	client.prefs.copy_to(H, antagonist = is_antag)
 	H.dna.update_dna_identity()
 	if(mind)
 		if(transfer_after)

@@ -3,7 +3,6 @@
 	icon_state = "cbbolt"
 	damage = 6
 	embedding = null
-	shrapnel_type = null
 	var/piercing = FALSE
 
 /obj/projectile/bullet/dart/Initialize()

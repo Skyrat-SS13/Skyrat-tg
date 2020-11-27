@@ -4,6 +4,9 @@
 	say_mod = "buzzes"
 	species_traits = list(NOEYESPRITES,HAS_FLESH,HAS_BONE)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
+	mutanttongue = /obj/item/organ/tongue/fly
+	mutantliver = /obj/item/organ/liver/fly
+	mutantstomach = /obj/item/organ/stomach/fly
 	meat = /obj/item/food/meat/slab/human/mutant/fly
 	disliked_food = null
 	liked_food = GROSS
@@ -11,7 +14,6 @@
 	species_language_holder = /datum/language_holder/fly
 	payday_modifier = 0.75
 
-	mutanttongue = /obj/item/organ/tongue/fly
 	mutantheart = /obj/item/organ/heart/fly
 	mutantlungs = /obj/item/organ/lungs/fly
 	mutantliver = /obj/item/organ/liver/fly
@@ -71,7 +73,7 @@
 	if(locate(/datum/reagent/consumable) in reagents.reagent_list)
 		var/mob/living/carbon/body = owner
 		// we do not loss any nutrition as a fly when vomiting out food
-		body.vomit(0, FALSE, FALSE, 2, TRUE, force=TRUE, purge_ratio = 0.67)
+		body.vomit(0, FALSE, FALSE, 2, TRUE, force=TRUE, purge=TRUE)
 		playsound(get_turf(owner), 'sound/effects/splat.ogg', 50, TRUE)
 		body.visible_message("<span class='danger'>[body] vomits on the floor!</span>", \
 					"<span class='userdanger'>You throw up on the floor!</span>")

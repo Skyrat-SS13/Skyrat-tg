@@ -63,7 +63,7 @@
 	/// see [/datum/reagents/proc/metabolize] for usage
 	var/addiction_tick = 1
 	/// currently addicted reagents
-	var/list/datum/reagent/addiction_list
+	var/list/datum/reagent/addiction_list = new/list()
 	/// various flags, see code\__DEFINES\reagents.dm
 	var/flags
 
@@ -81,11 +81,13 @@
 /datum/reagents/Destroy()
 	. = ..()
 	//We're about to delete all reagents, so lets cleanup
-	addiction_list = null
-	for(var/reagent in reagent_list)
+	addiction_list.Cut()
+	var/list/cached_reagents = reagent_list
+	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
 		qdel(R)
-	reagent_list = null
+	cached_reagents.Cut()
+	cached_reagents = null
 	if(my_atom && my_atom.reagents == src)
 		my_atom.reagents = null
 	my_atom = null
@@ -250,7 +252,7 @@
 				trans_data = copy_data(T)
 			R.add_reagent(T.type, transfer_amount * multiplier, trans_data, chem_temp, no_react = 1) //we only handle reaction after every reagent has been transfered.
 			if(methods)
-				if(istype(target_atom, /obj/item/organ))
+				if(istype(target_atom, /obj/item/organ/stomach))
 					R.expose_single(T, target, methods, part, show_message)
 				else
 					R.expose_single(T, target_atom, methods, part, show_message)
@@ -273,7 +275,7 @@
 			R.add_reagent(T.type, transfer_amount * multiplier, trans_data, chem_temp, no_react = 1)
 			to_transfer = max(to_transfer - transfer_amount , 0)
 			if(methods)
-				if(istype(target_atom, /obj/item/organ))
+				if(istype(target_atom, /obj/item/organ/stomach))
 					R.expose_single(T, target, methods, transfer_amount, show_message)
 				else
 					R.expose_single(T, target_atom, methods, transfer_amount, show_message)
@@ -411,17 +413,15 @@
 							R.overdosed = TRUE
 							need_mob_update += R.overdose_start(C)
 							log_game("[key_name(C)] has started overdosing on [R.name] at [R.volume] units.")
-					var/is_addicted_to = cached_addictions && is_type_in_list(R, cached_addictions)
 					if(R.addiction_threshold)
-						if(R.volume >= R.addiction_threshold && !is_addicted_to)
+						if(R.volume >= R.addiction_threshold && !is_type_in_list(R, cached_addictions))
 							var/datum/reagent/new_reagent = new R.addiction_type()
-							LAZYADD(cached_addictions, new_reagent)
-							is_addicted_to = TRUE
+							cached_addictions.Add(new_reagent)
 							log_game("[key_name(C)] has become addicted to [R.name] at [R.volume] units.")
 					if(R.overdosed)
 						need_mob_update += R.overdose_process(C)
 					var/datum/reagent/addiction_type = new R.addiction_type()
-					if(is_addicted_to)
+					if(is_type_in_list(addiction_type ,cached_addictions))
 						for(var/addiction in cached_addictions)
 							var/datum/reagent/A = addiction
 							if(istype(addiction_type, A))
@@ -433,22 +433,21 @@
 			addiction_tick = 1
 			for(var/addiction in cached_addictions)
 				var/datum/reagent/R = addiction
-				if(!C)
-					break
-				R.addiction_stage++
-				switch(R.addiction_stage)
-					if(1 to 10)
-						need_mob_update += R.addiction_act_stage1(C)
-					if(10 to 20)
-						need_mob_update += R.addiction_act_stage2(C)
-					if(20 to 30)
-						need_mob_update += R.addiction_act_stage3(C)
-					if(30 to 40)
-						need_mob_update += R.addiction_act_stage4(C)
-					if(40 to INFINITY)
-						remove_addiction(R)
-					else
-						SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
+				if(C && R)
+					R.addiction_stage++
+					switch(R.addiction_stage)
+						if(1 to 10)
+							need_mob_update += R.addiction_act_stage1(C)
+						if(10 to 20)
+							need_mob_update += R.addiction_act_stage2(C)
+						if(20 to 30)
+							need_mob_update += R.addiction_act_stage3(C)
+						if(30 to 40)
+							need_mob_update += R.addiction_act_stage4(C)
+						if(40 to INFINITY)
+							remove_addiction(R)
+						else
+							SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
 		addiction_tick++
 	if(C && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		C.updatehealth()
@@ -459,7 +458,7 @@
 /datum/reagents/proc/remove_addiction(datum/reagent/R)
 	to_chat(my_atom, "<span class='notice'>You feel like you've gotten over your need for [R.name].</span>")
 	SEND_SIGNAL(my_atom, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
-	LAZYREMOVE(addiction_list, R)
+	addiction_list.Remove(R)
 	qdel(R)
 
 /// Signals that metabolization has stopped, triggering the end of trait-based effects
@@ -637,14 +636,22 @@
 	for(var/_reagent in cached_reagents)
 		var/datum/reagent/R = _reagent
 		if(R.type == reagent)
-			if(isliving(my_atom))
+			var/mob/living/mob_consumer
+
+			if (isliving(my_atom))
+				mob_consumer = my_atom
+			else if (istype(my_atom, /obj/item/organ))
+				var/obj/item/organ/organ = my_atom
+				mob_consumer = organ.owner
+
+			if (mob_consumer)
 				if(R.metabolizing)
 					R.metabolizing = FALSE
-					R.on_mob_end_metabolize(my_atom)
-				R.on_mob_delete(my_atom)
+					R.on_mob_end_metabolize(mob_consumer)
+				R.on_mob_delete(mob_consumer)
 
 			//Clear from relevant lists
-			LAZYREMOVE(addiction_list, R)
+			addiction_list -= R
 			reagent_list -= R
 			qdel(R)
 			update_total()
@@ -658,7 +665,7 @@
 	total_volume = 0
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
-		if(R.volume < 0.05)
+		if(R.volume < 0.1)
 			del_reagent(R.type)
 		else
 			total_volume += R.volume
@@ -800,8 +807,11 @@
 		R.on_new(data)
 
 	if(isliving(my_atom))
-		R.on_mob_add(my_atom) //Must occur before it could posibly run on_mob_delete
-
+		R.on_mob_add(my_atom) //Must occur befor it could posibly run on_mob_delete
+	else if(istype(my_atom, /obj/item/organ/stomach))
+		var/obj/item/organ/stomach/belly = my_atom
+		var/mob/living/carbon/body = belly.owner
+		R.on_mob_add(body)
 	update_total()
 	if(my_atom)
 		my_atom.on_reagent_change(ADD_REAGENT)

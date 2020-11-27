@@ -34,7 +34,7 @@
 	var/oindex = active_hand_index
 	active_hand_index = held_index
 	if(hud_used)
-		var/atom/movable/screen/inventory/hand/H
+		var/obj/screen/inventory/hand/H
 		H = hud_used.hand_slots["[oindex]"]
 		if(H)
 			H.update_icon()
@@ -98,8 +98,8 @@
 			take_bodypart_damage(10 + 5 * extra_speed, check_armor = TRUE, wound_bonus = extra_speed * 5)
 			victim.Paralyze(20)
 			Paralyze(20)
-			visible_message("<span class='danger'>[src] crashes into [victim][extra_speed ? " really hard" : ""], knocking them both over!</span>",\
-				"<span class='userdanger'>You violently crash into [victim][extra_speed ? " extra hard" : ""]!</span>")
+			visible_message("<span class='danger'>[src] crashes into [victim] [extra_speed ? "really hard" : ""], knocking them both over!</span>",\
+				"<span class='userdanger'>You violently crash into [victim] [extra_speed ? "extra hard" : ""]!</span>")
 		playsound(src,'sound/weapons/punch1.ogg',50,TRUE)
 
 
@@ -133,7 +133,7 @@
 	throw_mode_off()
 	if(!target || !isturf(loc))
 		return
-	if(istype(target, /atom/movable/screen))
+	if(istype(target, /obj/screen))
 		return
 
 	var/atom/movable/thrown_thing
@@ -406,6 +406,12 @@
 			update_inv_legcuffed()
 			return TRUE
 
+/mob/living/carbon/get_standard_pixel_y_offset(lying = FALSE)
+	if(lying)
+		return -6
+	else
+		return initial(pixel_y)
+
 /mob/living/carbon/proc/accident(obj/item/I)
 	if(!I || (I.item_flags & ABSTRACT) || HAS_TRAIT(I, TRAIT_NODROP))
 		return
@@ -451,7 +457,7 @@
 		return 0
 	return ..()
 
-/mob/living/carbon/proc/vomit(lost_nutrition = 10, blood = FALSE, stun = TRUE, distance = 1, message = TRUE, vomit_type = VOMIT_TOXIC, harm = TRUE, force = FALSE, purge_ratio = 0.1)
+/mob/living/carbon/proc/vomit(lost_nutrition = 10, blood = FALSE, stun = TRUE, distance = 1, message = TRUE, toxic = FALSE, harm = TRUE, force = FALSE, purge = FALSE)
 	if((HAS_TRAIT(src, TRAIT_NOHUNGER) || HAS_TRAIT(src, TRAIT_TOXINLOVER)) && !force)
 		return TRUE
 
@@ -484,6 +490,7 @@
 		adjust_nutrition(-lost_nutrition)
 		adjustToxLoss(-3)
 
+	var/obj/item/organ/stomach/belly = getorganslot(ORGAN_SLOT_STOMACH)
 	for(var/i=0 to distance)
 		if(blood)
 			if(T)
@@ -491,8 +498,12 @@
 			if(harm)
 				adjustBruteLoss(3)
 		else
-			if(T)
-				T.add_vomit_floor(src, vomit_type, purge_ratio) //toxic barf looks different || call purge when doing detoxicfication to pump more chems out of the stomach.
+			if(belly?.reagents.has_reagent(/datum/reagent/consumable/ethanol/blazaam, needs_metabolizing = TRUE))
+				if(T)
+					T.add_vomit_floor(src, VOMIT_PURPLE)
+			else
+				if(T)
+					T.add_vomit_floor(src, VOMIT_TOXIC, purge) //toxic barf looks different || call purge when doing detoxicfication to pump more chems out of the stomach.
 		T = get_step(T, dir)
 		if (T?.is_blocked_turf())
 			break
@@ -508,7 +519,7 @@
  * * bite: /atom the reagents to expel
  * * amount: int The amount of reagent
  */
-/mob/living/carbon/proc/expel_ingested(atom/bite, amount)
+/mob/living/carbon/proc/expel_ingested(var/atom/bite, amount)
 	visible_message("<span class='danger'>[src] throws up all over [p_them()]self!</span>", \
 					"<span class='userdanger'>You are unable to keep the [bite] down without a stomach!</span>")
 
@@ -640,7 +651,7 @@
 		become_blind(EYES_COVERED)
 	else if(tinttotal >= TINT_DARKENED)
 		cure_blind(EYES_COVERED)
-		overlay_fullscreen("tint", /atom/movable/screen/fullscreen/impaired, 2)
+		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, 2)
 	else
 		cure_blind(EYES_COVERED)
 		clear_fullscreen("tint", 0)
@@ -715,10 +726,10 @@
 					visionseverity = 9
 				if(-INFINITY to -24)
 					visionseverity = 10
-			overlay_fullscreen("critvision", /atom/movable/screen/fullscreen/crit/vision, visionseverity)
+			overlay_fullscreen("critvision", /obj/screen/fullscreen/crit/vision, visionseverity)
 		else
 			clear_fullscreen("critvision")
-		overlay_fullscreen("crit", /atom/movable/screen/fullscreen/crit, severity)
+		overlay_fullscreen("crit", /obj/screen/fullscreen/crit, severity)
 	else
 		clear_fullscreen("crit")
 		clear_fullscreen("critvision")
@@ -741,7 +752,7 @@
 				severity = 6
 			if(45 to INFINITY)
 				severity = 7
-		overlay_fullscreen("oxy", /atom/movable/screen/fullscreen/oxy, severity)
+		overlay_fullscreen("oxy", /obj/screen/fullscreen/oxy, severity)
 	else
 		clear_fullscreen("oxy")
 
@@ -762,7 +773,7 @@
 				severity = 5
 			if(85 to INFINITY)
 				severity = 6
-		overlay_fullscreen("brute", /atom/movable/screen/fullscreen/brute, severity)
+		overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
 	else
 		clear_fullscreen("brute")
 
@@ -840,7 +851,7 @@
 	if(handcuffed)
 		drop_all_held_items()
 		stop_pulling()
-		throw_alert("handcuffed", /atom/movable/screen/alert/restrained/handcuffed, new_master = src.handcuffed)
+		throw_alert("handcuffed", /obj/screen/alert/restrained/handcuffed, new_master = src.handcuffed)
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "handcuffed", /datum/mood_event/handcuffed)
 	else
 		clear_alert("handcuffed")
@@ -851,10 +862,6 @@
 
 
 /mob/living/carbon/fully_heal(admin_revive = FALSE)
-	if(reagents)
-		reagents.clear_reagents()
-		for(var/addi in reagents.addiction_list)
-			reagents.remove_addiction(addi)
 	for(var/O in internal_organs)
 		var/obj/item/organ/organ = O
 		organ.setOrganDamage(0)
@@ -873,8 +880,7 @@
 		for(var/obj/item/restraints/R in contents) //actually remove cuffs from inventory
 			qdel(R)
 		update_handcuffed()
-		if(reagents)
-			reagents.addiction_list = list()
+	clear_addictions()
 	cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
 	..()
 
@@ -930,7 +936,6 @@
 			O.forceMove(drop_location())
 	if(organs_amt)
 		to_chat(user, "<span class='notice'>You retrieve some of [src]\'s internal organs!</span>")
-	remove_all_embedded_objects()
 
 /mob/living/carbon/extinguish_mob()
 	for(var/X in get_equipped_items())

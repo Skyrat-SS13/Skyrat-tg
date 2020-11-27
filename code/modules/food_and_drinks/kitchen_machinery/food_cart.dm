@@ -69,14 +69,13 @@
 			qdel(DG)
 			glasses++
 			to_chat(user, "<span class='notice'>[src] accepts the drinking glass, sterilizing it.</span>")
-	else if(IS_EDIBLE(O))
+	else if(istype(O, /obj/item/reagent_containers/food/snacks))
 		if(isFull())
 			to_chat(user, "<span class='warning'>[src] is at full capacity.</span>")
 		else
-			var/obj/item/S = O
+			var/obj/item/reagent_containers/food/snacks/S = O
 			if(!user.transferItemToLoc(S, src))
 				return
-			food_stored++
 			if(stored_food[sanitize(S.name)])
 				stored_food[sanitize(S.name)]++
 			else
@@ -89,15 +88,12 @@
 			to_chat(user, "<span class='notice'>[src] accepts a sheet of glass.</span>")
 	else if(istype(O, /obj/item/storage/bag/tray))
 		var/obj/item/storage/bag/tray/T = O
-		for(var/obj/item/S in T.contents)
+		for(var/obj/item/reagent_containers/food/snacks/S in T.contents)
 			if(isFull())
 				to_chat(user, "<span class='warning'>[src] is at full capacity.</span>")
 				break
 			else
-				if(!IS_EDIBLE(S))
-					continue
 				if(SEND_SIGNAL(T, COMSIG_TRY_STORAGE_TAKE, S, src))
-					food_stored++
 					if(stored_food[sanitize(S.name)])
 						stored_food[sanitize(S.name)]++
 					else
@@ -122,7 +118,6 @@
 			for(var/obj/O in contents)
 				if(sanitize(O.name) == href_list["dispense"])
 					O.forceMove(drop_location())
-					food_stored--
 					break
 				log_combat(usr, src, "dispensed [O] from", null, "with [stored_food[href_list["dispense"]]] remaining")
 

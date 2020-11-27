@@ -10,7 +10,6 @@
 	damage = 27
 	armour_penetration = 40
 	embedding = null
-	shrapnel_type = null
 
 /obj/projectile/bullet/c9mm_hp
 	name = "9mm hollow-point bullet"

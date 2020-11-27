@@ -305,8 +305,6 @@ GLOBAL_LIST_EMPTY(vending_products)
   * * startempty - should we set vending_product record amount from the product list (so it's prefilled at roundstart)
   */
 /obj/machinery/vending/proc/build_inventory(list/productlist, list/recordlist, start_empty = FALSE)
-	default_price = round(initial(default_price) * SSeconomy.inflation_value())
-	extra_price = round(initial(extra_price) * SSeconomy.inflation_value())
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
 		if(isnull(amount))
@@ -320,7 +318,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		if(!start_empty)
 			R.amount = amount
 		R.max_amount = amount
-		///Prices of vending machines are all increased uniformly.
 		R.custom_price = round(initial(temp.custom_price) * SSeconomy.inflation_value())
 		R.custom_premium_price = round(initial(temp.custom_premium_price) * SSeconomy.inflation_value())
 		R.age_restricted = initial(temp.age_restricted)
@@ -335,8 +332,6 @@ GLOBAL_LIST_EMPTY(vending_products)
   * * premiumlist - the list of premium product datums in the vendor to refresh their prices.
   */
 /obj/machinery/vending/proc/reset_prices(list/recordlist, list/premiumlist)
-	default_price = round(initial(default_price) * SSeconomy.inflation_value())
-	extra_price = round(initial(extra_price) * SSeconomy.inflation_value())
 	for(var/R in recordlist)
 		var/datum/data/vending_product/record = R
 		var/atom/potential_product = record.product_path
@@ -532,8 +527,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 		for(var/mob/living/L in get_turf(fatty))
 			var/was_alive = (L.stat != DEAD)
 			var/mob/living/carbon/C = L
-
-			SEND_SIGNAL(L, COMSIG_ON_VENDOR_CRUSH)
 
 			if(istype(C))
 				var/crit_rebate = 0 // lessen the normal damage we deal for some of the crits
@@ -736,7 +729,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 	. = list()
 	.["onstation"] = onstation
 	.["department"] = payment_department
-	.["jobDiscount"] = VENDING_DISCOUNT
 	.["product_records"] = list()
 	for (var/datum/data/vending_product/R in product_records)
 		var/list/data = list(
@@ -772,20 +764,21 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/machinery/vending/ui_data(mob/user)
 	. = list()
+	var/mob/living/carbon/human/H
 	var/obj/item/card/id/C
-	if(isliving(user))
-		var/mob/living/L = user
-		C = L.get_idcard(TRUE)
-	if(C?.registered_account)
-		.["user"] = list()
-		.["user"]["name"] = C.registered_account.account_holder
-		.["user"]["cash"] = C.registered_account.account_balance
-		if(C.registered_account.account_job)
-			.["user"]["job"] = C.registered_account.account_job.title
-			.["user"]["department"] = C.registered_account.account_job.paycheck_department
-		else
-			.["user"]["job"] = "No Job"
-			.["user"]["department"] = "No Department"
+	if(ishuman(user))
+		H = user
+		C = H.get_idcard(TRUE)
+		if(C?.registered_account)
+			.["user"] = list()
+			.["user"]["name"] = C.registered_account.account_holder
+			.["user"]["cash"] = C.registered_account.account_balance
+			if(C.registered_account.account_job)
+				.["user"]["job"] = C.registered_account.account_job.title
+				.["user"]["department"] = C.registered_account.account_job.paycheck_department
+			else
+				.["user"]["job"] = "No Job"
+				.["user"]["department"] = "No Department"
 	.["stock"] = list()
 	for (var/datum/data/vending_product/R in product_records + coin_records + hidden_records)
 		.["stock"][R.name] = R.amount
@@ -827,11 +820,10 @@ GLOBAL_LIST_EMPTY(vending_products)
 				flick(icon_deny,src)
 				vend_ready = TRUE
 				return
-			if(onstation)
-				var/obj/item/card/id/C
-				if(isliving(usr))
-					var/mob/living/L = usr
-					C = L.get_idcard(TRUE)
+			if(onstation && ishuman(usr))
+				var/mob/living/carbon/human/H = usr
+				var/obj/item/card/id/C = H.get_idcard(TRUE)
+
 				if(!C)
 					say("No card found.")
 					flick(icon_deny,src)
@@ -846,14 +838,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 					say("You are not of legal age to purchase [R.name].")
 					if(!(usr in GLOB.narcd_underages))
 						Radio.set_frequency(FREQ_SECURITY)
-						Radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
-						GLOB.narcd_underages += usr
+						Radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [H] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
+						GLOB.narcd_underages += H
 					flick(icon_deny,src)
 					vend_ready = TRUE
 					return
 				var/datum/bank_account/account = C.registered_account
 				if(account.account_job && account.account_job.paycheck_department == payment_department)
-					price_to_use = max(round(price_to_use * VENDING_DISCOUNT), 1) //No longer free, but signifigantly cheaper.
+					price_to_use = 0
 				if(coin_records.Find(R) || hidden_records.Find(R))
 					price_to_use = R.custom_premium_price ? R.custom_premium_price : extra_price
 				if(price_to_use && !account.adjust_money(-price_to_use))
@@ -1020,12 +1012,13 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/machinery/vending/custom/compartmentLoadAccessCheck(mob/user)
 	. = FALSE
-	if(!isliving(user))
-		return FALSE
-	var/mob/living/L = user
-	var/obj/item/card/id/C = L.get_idcard(FALSE)
-	if(C?.registered_account && C.registered_account == private_a)
-		return TRUE
+	var/mob/living/carbon/human/H
+	var/obj/item/card/id/C
+	if(ishuman(user))
+		H = user
+		C = H.get_idcard(FALSE)
+		if(C?.registered_account && C.registered_account == private_a)
+			return TRUE
 
 /obj/machinery/vending/custom/canLoadItem(obj/item/I, mob/user)
 	. = FALSE
@@ -1075,63 +1068,66 @@ GLOBAL_LIST_EMPTY(vending_products)
 			var/N = params["item"]
 			var/obj/S
 			vend_ready = FALSE
-			var/obj/item/card/id/C
-			if(isliving(usr))
-				var/mob/living/L = usr
-				C = L.get_idcard(TRUE)
-			if(!C)
-				say("No card found.")
-				flick(icon_deny,src)
-				vend_ready = TRUE
-				return
-			else if (!C.registered_account)
-				say("No account found.")
-				flick(icon_deny,src)
-				vend_ready = TRUE
-				return
-			var/datum/bank_account/account = C.registered_account
-			for(var/obj/O in contents)
-				if(O.name == N)
-					S = O
-					break
-			if(S)
-				if(compartmentLoadAccessCheck(usr))
-					vending_machine_input[N] = max(vending_machine_input[N] - 1, 0)
-					S.forceMove(drop_location())
-					loaded_items--
-					use_power(5)
+			if(ishuman(usr))
+				var/mob/living/carbon/human/H = usr
+				var/obj/item/card/id/C = H.get_idcard(TRUE)
+
+				if(!C)
+					say("No card found.")
+					flick(icon_deny,src)
 					vend_ready = TRUE
-					updateUsrDialog()
 					return
-				if(account.has_money(S.custom_price))
-					account.adjust_money(-S.custom_price)
-					var/datum/bank_account/owner = private_a
-					if(owner)
-						owner.adjust_money(S.custom_price)
-						SSblackbox.record_feedback("amount", "vending_spent", S.custom_price)
-						log_econ("[S.custom_price] credits were spent on [src] buying a [S] by [owner.account_holder], owned by [private_a.account_holder].")
-					vending_machine_input[N] = max(vending_machine_input[N] - 1, 0)
-					S.forceMove(drop_location())
-					loaded_items--
-					use_power(5)
-					if(last_shopper != usr || purchase_message_cooldown < world.time)
-						say("Thank you for buying local and purchasing [S]!")
-						purchase_message_cooldown = world.time + 5 SECONDS
-						last_shopper = usr
+				else if (!C.registered_account)
+					say("No account found.")
+					flick(icon_deny,src)
 					vend_ready = TRUE
-					updateUsrDialog()
 					return
-				else
-					say("You do not possess the funds to purchase this.")
+				var/datum/bank_account/account = C.registered_account
+				for(var/obj/O in contents)
+					if(O.name == N)
+						S = O
+						break
+				if(S)
+					if(compartmentLoadAccessCheck(usr))
+						vending_machine_input[N] = max(vending_machine_input[N] - 1, 0)
+						S.forceMove(drop_location())
+						loaded_items--
+						use_power(5)
+						vend_ready = TRUE
+						updateUsrDialog()
+						return
+					if(account.has_money(S.custom_price))
+						account.adjust_money(-S.custom_price)
+						var/datum/bank_account/owner = private_a
+						if(owner)
+							owner.adjust_money(S.custom_price)
+							SSblackbox.record_feedback("amount", "vending_spent", S.custom_price)
+							log_econ("[S.custom_price] credits were spent on [src] buying a [S] by [owner.account_holder], owned by [private_a.account_holder].")
+						vending_machine_input[N] = max(vending_machine_input[N] - 1, 0)
+						S.forceMove(drop_location())
+						loaded_items--
+						use_power(5)
+						if(last_shopper != usr || purchase_message_cooldown < world.time)
+							say("Thank you for buying local and purchasing [S]!")
+							purchase_message_cooldown = world.time + 5 SECONDS
+							last_shopper = usr
+						vend_ready = TRUE
+						updateUsrDialog()
+						return
+					else
+						say("You do not possess the funds to purchase this.")
 			vend_ready = TRUE
 
 /obj/machinery/vending/custom/attackby(obj/item/I, mob/user, params)
-	if(!private_a && isliving(user))
-		var/mob/living/L = user
-		var/obj/item/card/id/C = L.get_idcard(TRUE)
-		if(C?.registered_account)
-			private_a = C.registered_account
-			say("\The [src] has been linked to [C].")
+	if(!private_a)
+		var/mob/living/carbon/human/H
+		var/obj/item/card/id/C
+		if(ishuman(user))
+			H = user
+			C = H.get_idcard(TRUE)
+			if(C?.registered_account)
+				private_a = C.registered_account
+				say("\The [src] has been linked to [C].")
 
 	if(compartmentLoadAccessCheck(user))
 		if(istype(I, /obj/item/pen))
@@ -1171,14 +1167,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 /obj/item/vending_refill/custom
 	machine_name = "Custom Vendor"
 	icon_state = "refill_custom"
-	custom_premium_price = PAYCHECK_ASSISTANT
+	custom_premium_price = 100
 
 /obj/item/price_tagger
 	name = "price tagger"
 	desc = "This tool is used to set a price for items used in custom vendors."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "pricetagger"
-	custom_premium_price = PAYCHECK_ASSISTANT * 0.5
+	custom_premium_price = 25
 	///the price of the item
 	var/price = 1
 

@@ -31,9 +31,8 @@
 	uniform = /obj/item/clothing/under/rank/rnd/roboticist
 	suit = /obj/item/clothing/suit/toggle/labcoat/roboticist
 
-	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
-	satchel = /obj/item/storage/backpack/satchel/tox/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
-	duffelbag = /obj/item/storage/backpack/duffel/robo //SKYRAT CHANGE - Roboticist Bags (ADDITION)
+	backpack = /obj/item/storage/backpack/science
+	satchel = /obj/item/storage/backpack/satchel/tox
 
 	pda_slot = ITEM_SLOT_LPOCKET
 

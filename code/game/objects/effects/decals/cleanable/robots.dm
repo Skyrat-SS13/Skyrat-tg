@@ -12,14 +12,10 @@
 	mergeable_decal = FALSE
 	beauty = -50
 
-/obj/effect/decal/cleanable/robot_debris/Initialize()
-	. = ..()
-	RegisterSignal(src, COMSIG_MOVABLE_PIPE_EJECTING, .proc/on_pipe_eject)
-
 /obj/effect/decal/cleanable/robot_debris/proc/streak(list/directions, mapload=FALSE)
 	set waitfor = FALSE
 	var/direction = pick(directions)
-	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4, 17; 50), i++) //the 3% chance of 50 steps is intentional and played for laughs.
+	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50), i++)
 		if (!mapload)
 			sleep(2)
 		if (i > 0)
@@ -31,17 +27,6 @@
 				s.start()
 		if (!step_to(src, get_step(src, direction), 0))
 			break
-
-/obj/effect/decal/cleanable/robot_debris/proc/on_pipe_eject(atom/source, direction)
-	SIGNAL_HANDLER
-
-	var/list/dirs
-	if(direction)
-		dirs = list(direction, turn(direction, -45), turn(direction, 45))
-	else
-		dirs = GLOB.alldirs.Copy()
-
-	streak(dirs)
 
 /obj/effect/decal/cleanable/robot_debris/ex_act()
 	return

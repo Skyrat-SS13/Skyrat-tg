@@ -14,7 +14,7 @@
 	. = ..()
 
 /obj/item/computer_hardware/card_slot/Destroy()
-	try_eject(forced = TRUE)
+	try_eject()
 	return ..()
 
 /obj/item/computer_hardware/card_slot/GetAccess()

@@ -26,12 +26,6 @@
 		M.adjust_bodytemperature(-40 * TEMPERATURE_DAMAGE_COEFFICIENT, M.get_body_temp_normal(apply_change=FALSE))
 	else if(M.bodytemperature < (M.get_body_temp_normal(apply_change=FALSE) + 1))
 		M.adjust_bodytemperature(40 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, M.get_body_temp_normal(apply_change=FALSE))
-	if(ishuman(M))
-		var/mob/living/carbon/human/humi = M
-		if(humi.coretemperature > humi.get_body_temp_normal(apply_change=FALSE))
-			humi.adjust_coretemperature(-40 * TEMPERATURE_DAMAGE_COEFFICIENT, humi.get_body_temp_normal(apply_change=FALSE))
-		else if(humi.coretemperature < (humi.get_body_temp_normal(apply_change=FALSE) + 1))
-			humi.adjust_coretemperature(40 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, humi.get_body_temp_normal(apply_change=FALSE))
 	..()
 
 /datum/reagent/medicine/adminordrazine //An OP chemical for admins
@@ -117,8 +111,8 @@
 	M.AdjustUnconscious(-20)
 	M.AdjustImmobilized(-20)
 	M.AdjustParalyzed(-20)
-	if(holder.has_reagent(/datum/reagent/toxin/mindbreaker))
-		holder.remove_reagent(/datum/reagent/toxin/mindbreaker, 5)
+	if(M.has_reagent(/datum/reagent/toxin/mindbreaker))
+		M.remove_reagent(/datum/reagent/toxin/mindbreaker, 5)
 	M.hallucination = max(0, M.hallucination - 10)
 	if(prob(30))
 		M.adjustToxLoss(1, 0)
@@ -132,10 +126,10 @@
 
 /datum/reagent/medicine/synaphydramine/on_mob_life(mob/living/carbon/M)
 	M.drowsyness = max(M.drowsyness-5, 0)
-	if(holder.has_reagent(/datum/reagent/toxin/mindbreaker))
-		holder.remove_reagent(/datum/reagent/toxin/mindbreaker, 5)
-	if(holder.has_reagent(/datum/reagent/toxin/histamine))
-		holder.remove_reagent(/datum/reagent/toxin/histamine, 5)
+	if(M.has_reagent(/datum/reagent/toxin/mindbreaker))
+		M.remove_reagent(/datum/reagent/toxin/mindbreaker, 5)
+	if(M.has_reagent(/datum/reagent/toxin/histamine))
+		M.remove_reagent(/datum/reagent/toxin/histamine, 5)
 	M.hallucination = max(0, M.hallucination - 10)
 	if(prob(30))
 		M.adjustToxLoss(1, 0)
@@ -576,7 +570,7 @@
 	if(prob(10))
 		M.drowsyness += 1
 	M.jitteriness -= 1
-	holder.remove_reagent(/datum/reagent/toxin/histamine,3)
+	M.remove_reagent(/datum/reagent/toxin/histamine,3)
 	..()
 
 /datum/reagent/medicine/morphine
@@ -732,11 +726,11 @@
 
 /datum/reagent/medicine/epinephrine/on_mob_life(mob/living/carbon/M)
 	. = TRUE
-	if(holder.has_reagent(/datum/reagent/toxin/lexorin))
-		holder.remove_reagent(/datum/reagent/toxin/lexorin, 2)
-		holder.remove_reagent(/datum/reagent/medicine/epinephrine, 1)
+	if(M.has_reagent(/datum/reagent/toxin/lexorin))
+		M.remove_reagent(/datum/reagent/toxin/lexorin, 2)
+		M.remove_reagent(/datum/reagent/medicine/epinephrine, 1)
 		if(prob(20))
-			holder.add_reagent(/datum/reagent/toxin/histamine, 4)
+			M.reagents.add_reagent(/datum/reagent/toxin/histamine, 4)
 		..()
 		return
 	if(M.health <= M.crit_threshold)
@@ -830,8 +824,8 @@
 	color = "#C0C0C0" //ditto
 
 /datum/reagent/medicine/neurine/on_mob_life(mob/living/carbon/C)
-	if(holder.has_reagent(/datum/reagent/consumable/ethanol/neurotoxin))
-		holder.remove_reagent(/datum/reagent/consumable/ethanol/neurotoxin, 5)
+	if(C.has_reagent(/datum/reagent/consumable/ethanol/neurotoxin))
+		C.remove_reagent(/datum/reagent/consumable/ethanol/neurotoxin, 5)
 	if(prob(15))
 		C.cure_trauma_type(resilience = TRAUMA_RESILIENCE_BASIC)
 	..()
@@ -914,7 +908,7 @@
 /datum/reagent/medicine/insulin/on_mob_life(mob/living/carbon/M)
 	if(M.AdjustSleeping(-20))
 		. = 1
-	holder.remove_reagent(/datum/reagent/consumable/sugar, 3)
+	M.remove_reagent(/datum/reagent/consumable/sugar, 3)
 	..()
 
 //Trek Chems, used primarily by medibots. Only heals a specific damage type, but is very efficient.

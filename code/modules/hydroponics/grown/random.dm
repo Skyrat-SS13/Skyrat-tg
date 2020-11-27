@@ -6,12 +6,11 @@
 	icon_state = "seed-x"
 	species = "?????"
 	plantname = "strange plant"
-	product = /obj/item/food/grown/random
+	product = /obj/item/reagent_containers/food/snacks/grown/random
 	icon_grow = "xpod-grow"
 	icon_dead = "xpod-dead"
 	icon_harvest = "xpod-harvest"
 	growthstages = 4
-	custom_premium_price = PAYCHECK_EASY * 2
 
 /obj/item/seeds/random/Initialize()
 	. = ..()
@@ -22,14 +21,14 @@
 		add_random_traits(1, 2)
 	add_random_plant_type(35)
 
-/obj/item/food/grown/random
+/obj/item/reagent_containers/food/snacks/grown/random
 	seed = /obj/item/seeds/random
 	name = "strange plant"
 	desc = "What could this even be?"
 	icon_state = "crunchy"
-	bite_consumption_mod = 2
+	bitesize_mod = 2
 
-/obj/item/food/grown/random/Initialize()
+/obj/item/reagent_containers/food/snacks/grown/random/Initialize()
 	. = ..()
 	wine_power = rand(10,150)
 	if(prob(1))

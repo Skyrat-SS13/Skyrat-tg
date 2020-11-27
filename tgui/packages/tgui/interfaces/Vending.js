@@ -14,7 +14,6 @@ const VendingRow = (props, context) => {
     onstation,
     department,
     user,
-    jobDiscount,
   } = data;
   const free = (
     !onstation
@@ -23,10 +22,9 @@ const VendingRow = (props, context) => {
       !product.premium
       && department
       && user
+      && department === user.department
     )
   );
-  const discount = department === user?.department;
-  const redPrice = Math.round(product.price * jobDiscount);
   return (
     <Table.Row>
       <Table.Cell collapsing>
@@ -81,8 +79,7 @@ const VendingRow = (props, context) => {
                 || product.price > data.user.cash
               )
             )}
-            content={(free && discount)
-              ? `${redPrice} cr` : `${product.price} cr`}
+            content={free ? 'FREE' : product.price + ' cr'}
             onClick={() => act('vend', {
               'ref': product.ref,
             })} />
@@ -105,7 +102,7 @@ export const Vending = (props, context) => {
   let inventory;
   let custom = false;
   if (data.vending_machine_input) {
-    inventory = data.vending_machine_input;
+    inventory = data.vending_machine_input || [];
     custom = true;
   }
   else {

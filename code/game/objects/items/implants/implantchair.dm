@@ -143,7 +143,7 @@
 
 
 /obj/machinery/implantchair/MouseDrop_T(mob/target, mob/user)
-	if(user.stat || !Adjacent(user) || !user.Adjacent(target) || !isliving(target) || !ISADVANCEDTOOLUSER(user))
+	if(user.stat || !Adjacent(user) || !user.Adjacent(target) || !isliving(target) || !user.IsAdvancedToolUser())
 		return
 	if(isliving(user))
 		var/mob/living/L = user

@@ -74,16 +74,15 @@
 	icon = 'icons/obj/food/donuts.dmi'
 	icon_state = "donutbox_inner"
 	icon_type = "donut"
-	spawn_type = /obj/item/food/donut
+	spawn_type = /obj/item/reagent_containers/food/snacks/donut
 	fancy_open = TRUE
 	appearance_flags = KEEP_TOGETHER
-	custom_premium_price = PAYCHECK_HARD * 1.75
 
 /obj/item/storage/fancy/donut_box/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 6
-	STR.set_holdable(list(/obj/item/food/donut))
+	STR.set_holdable(list(/obj/item/reagent_containers/food/snacks/donut))
 
 /obj/item/storage/fancy/donut_box/PopulateContents()
 	. = ..()
@@ -104,7 +103,7 @@
 	var/donuts = 0
 
 	for (var/_donut in contents)
-		var/obj/item/food/donut/donut = _donut
+		var/obj/item/reagent_containers/food/snacks/donut/donut = _donut
 		if (!istype(donut))
 			continue
 
@@ -180,7 +179,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	icon_type = "cigarette"
 	spawn_type = /obj/item/clothing/mask/cigarette/space_cigarette
-	custom_price = PAYCHECK_MEDIUM
+	custom_price = 75
 	age_restricted = TRUE
 	///for cigarette overlay
 	var/candy = FALSE
@@ -217,8 +216,8 @@
 	if(spawn_coupon)
 		. += "<span class='notice'>There's a coupon on the back of the pack! You can tear it off once it's empty.</span>"
 
-/obj/item/storage/fancy/cigarettes/AltClick(mob/user)
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
+/obj/item/storage/fancy/cigarettes/AltClick(mob/living/carbon/user)
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	var/obj/item/clothing/mask/cigarette/W = locate(/obj/item/clothing/mask/cigarette) in contents
 	if(W && contents.len > 0)
@@ -362,7 +361,7 @@
 	///The value in here has NOTHING to do with icons. It needs to be this for the proper examine.
 	icon_type = "rolling paper"
 	spawn_type = /obj/item/rollingpaper
-	custom_price = PAYCHECK_PRISONER
+	custom_price = 25
 
 /obj/item/storage/fancy/rollingpapers/ComponentInitialize()
 	. = ..()
@@ -439,13 +438,13 @@
 	icon_type = "chocolate"
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
-	spawn_type = /obj/item/food/tinychocolate
+	spawn_type = /obj/item/reagent_containers/food/snacks/tinychocolate
 
 /obj/item/storage/fancy/heart_box/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 8
-	STR.set_holdable(list(/obj/item/food/tinychocolate))
+	STR.set_holdable(list(/obj/item/reagent_containers/food/snacks/tinychocolate))
 
 
 /obj/item/storage/fancy/nugget_box

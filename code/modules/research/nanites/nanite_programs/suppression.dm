@@ -136,8 +136,7 @@
 	rogue_types = list(/datum/nanite_program/brain_misfire, /datum/nanite_program/brain_decay)
 	var/static/list/blacklist = list(
 		"*surrender",
-		"*collapse",
-		"*faint",
+		"*collapse"
 	)
 
 /datum/nanite_program/comm/speech/register_extra_settings()

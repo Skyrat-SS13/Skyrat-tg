@@ -7,4 +7,3 @@
 	resistance_flags = FLAMMABLE
 	max_amount = 50
 	grind_results = list(/datum/reagent/ammonia = 10)
-	merge_type = /obj/item/stack/ammonia_crystals

@@ -31,7 +31,7 @@
 	icon_state = "plasma"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = BODY_ZONE_CHEST
-	slot = ORGAN_SLOT_XENO_PLASMAVESSEL
+	slot = "plasmavessel"
 	alien_powers = list(/obj/effect/proc_holder/alien/plant, /obj/effect/proc_holder/alien/transfer)
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/toxin/plasma = 10)
 
@@ -101,7 +101,7 @@
 	name = "hive node"
 	icon_state = "hivenode"
 	zone = BODY_ZONE_HEAD
-	slot = ORGAN_SLOT_XENO_HIVENODE
+	slot = "hivenode"
 	w_class = WEIGHT_CLASS_TINY
 	///Indicates if the queen died recently, aliens are heavily weakened while this is active.
 	var/recent_queen_death = FALSE
@@ -137,7 +137,7 @@
 	owner.stuttering += 30
 
 	recent_queen_death = TRUE
-	owner.throw_alert("alien_noqueen", /atom/movable/screen/alert/alien_vulnerable)
+	owner.throw_alert("alien_noqueen", /obj/screen/alert/alien_vulnerable)
 	addtimer(CALLBACK(src, .proc/clear_queen_death), QUEEN_DEATH_DEBUFF_DURATION)
 
 
@@ -156,7 +156,7 @@
 	name = "resin spinner"
 	icon_state = "stomach-x"
 	zone = BODY_ZONE_PRECISE_MOUTH
-	slot = ORGAN_SLOT_XENO_RESINSPINNER
+	slot = "resinspinner"
 	alien_powers = list(/obj/effect/proc_holder/alien/resin)
 
 
@@ -164,7 +164,7 @@
 	name = "acid gland"
 	icon_state = "acid"
 	zone = BODY_ZONE_PRECISE_MOUTH
-	slot = ORGAN_SLOT_XENO_ACIDGLAND
+	slot = "acidgland"
 	alien_powers = list(/obj/effect/proc_holder/alien/acid)
 
 
@@ -172,7 +172,7 @@
 	name = "neurotoxin gland"
 	icon_state = "neurotox"
 	zone = BODY_ZONE_PRECISE_MOUTH
-	slot = ORGAN_SLOT_XENO_NEUROTOXINGLAND
+	slot = "neurotoxingland"
 	alien_powers = list(/obj/effect/proc_holder/alien/neurotoxin)
 
 
@@ -180,6 +180,6 @@
 	name = "egg sac"
 	icon_state = "eggsac"
 	zone = BODY_ZONE_PRECISE_GROIN
-	slot = ORGAN_SLOT_XENO_EGGSAC
+	slot = "eggsac"
 	w_class = WEIGHT_CLASS_BULKY
 	alien_powers = list(/obj/effect/proc_holder/alien/lay_egg)

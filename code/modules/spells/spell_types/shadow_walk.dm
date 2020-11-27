@@ -35,33 +35,23 @@
 			to_chat(user, "<span class='warning'>It isn't dark enough here!</span>")
 
 /obj/effect/dummy/phased_mob/shadow
+	name = "darkness"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "nothing"
+	var/canmove = TRUE
 	var/mob/living/jaunter
-
-/obj/effect/dummy/phased_mob/shadow/Initialize(mapload)
-	. = ..()
-	START_PROCESSING(SSobj, src)
-
-/obj/effect/dummy/phased_mob/shadow/Destroy()
-	jaunter = null
-	STOP_PROCESSING(SSobj, src)
-	. = ..()
-
-/obj/effect/dummy/phased_mob/shadow/process()
-	if(!jaunter || jaunter.loc != src)
-		qdel(src)
-	check_light_level()
+	density = FALSE
+	anchored = TRUE
+	invisibility = 60
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/effect/dummy/phased_mob/shadow/relaymove(mob/living/user, direction)
-	var/turf/oldloc = loc
-	. = ..()
-	if(loc != oldloc)
-		check_light_level()
-
-/obj/effect/dummy/phased_mob/shadow/phased_check(mob/living/user, direction)
-	. = ..()
-	if(. && isspaceturf(.))
+	var/turf/newLoc = get_step(src,direction)
+	if(isspaceturf(newLoc))
 		to_chat(user, "<span class='warning'>It really would not be wise to go into space.</span>")
-		return FALSE
+		return
+	forceMove(newLoc)
+	check_light_level()
 
 /obj/effect/dummy/phased_mob/shadow/proc/check_light_level()
 	var/turf/T = get_turf(src)
@@ -77,5 +67,32 @@
 			visible_message("<span class='boldwarning'>[jaunter] is revealed by the light!</span>")
 		else
 			visible_message("<span class='boldwarning'>[jaunter] emerges from the darkness!</span>")
-		playsound(loc, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
+		jaunter.forceMove(get_turf(src))
+		playsound(get_turf(jaunter), 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
+		jaunter = null
 	qdel(src)
+
+/obj/effect/dummy/phased_mob/shadow/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/effect/dummy/phased_mob/shadow/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	. = ..()
+
+/obj/effect/dummy/phased_mob/shadow/process()
+	if(!jaunter)
+		qdel(src)
+	if(jaunter.loc != src)
+		qdel(src)
+	check_light_level()
+
+/obj/effect/dummy/phased_mob/shadow/ex_act()
+	return
+
+/obj/effect/dummy/phased_mob/shadow/bullet_act()
+	return BULLET_ACT_FORCE_PIERCE
+
+/obj/effect/dummy/phased_mob/shadow/singularity_act()
+	return
+

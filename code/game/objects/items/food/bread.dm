@@ -29,7 +29,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10)
 	tastes = list("bread" = 10)
 	foodtypes = GRAIN
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/bread/plain/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/plain, 5, 30)
@@ -48,11 +47,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/mold = 10)
 	tastes = list("decaying fungus" = 1)
 	foodtypes = GROSS
-
-/obj/item/food/breadslice/moldy/Initialize()
-	. = ..()
-	AddElement(/datum/element/swabable, CELL_LINE_TABLE_MOLD, CELL_VIRUS_TABLE_GENERIC, rand(2,4), 25)
-
 
 /obj/item/food/bread/meat
 	name = "meatbread loaf"
@@ -294,7 +288,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 1)
 	tastes = list("butter" = 1, "biscuit" = 1)
 	foodtypes = GRAIN | BREAKFAST
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/butterdog
 	name = "butterdog"
@@ -305,7 +298,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 1)
 	tastes = list("butter" = 1, "exotic butter" = 1)
 	foodtypes = GRAIN | DAIRY
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/butterdog/ComponentInitialize()
 	. = ..()

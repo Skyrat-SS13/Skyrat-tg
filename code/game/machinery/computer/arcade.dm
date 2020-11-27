@@ -560,9 +560,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		playsound(loc, 'sound/arcade/lose.ogg', 50, TRUE)
 		xp_gained += 10//pity points
 		if(obj_flags & EMAGGED)
-			var/mob/living/living_user = user
-			if (istype(living_user))
-				living_user.gib()
+			user.gib()
 		SSblackbox.record_feedback("nested tally", "arcade_results", 1, list("loss", "hp", (obj_flags & EMAGGED ? "emagged":"normal")))
 
 	if(gameover)
@@ -777,11 +775,8 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 					R.fields["m_stat"] = "*Unstable*"
 					return
 
-/obj/machinery/computer/arcade/orion_trail/ui_interact(mob/_user)
+/obj/machinery/computer/arcade/orion_trail/ui_interact(mob/user)
 	. = ..()
-	if (!isliving(_user))
-		return
-	var/mob/living/user = _user
 	if(fuel <= 0 || food <=0 || settlers.len == 0)
 		gameStatus = ORION_STATUS_GAMEOVER
 		event = null
@@ -1030,12 +1025,11 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			playsound(loc,'sound/weapons/gun/pistol/shot.ogg', 100, TRUE)
 			killed_crew++
 
-			var/mob/living/user = usr
-
 			if(settlers.len == 0 || alive == 0)
 				say("The last crewmember [sheriff], shot themselves, GAME OVER!")
 				if(obj_flags & EMAGGED)
-					user.death()
+					usr.death(0)
+					obj_flags &= EMAGGED
 				gameStatus = ORION_STATUS_GAMEOVER
 				event = null
 
@@ -1045,7 +1039,7 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			else if(obj_flags & EMAGGED)
 				if(usr.name == sheriff)
 					say("The crew of the ship chose to kill [usr.name]!")
-					user.death()
+					usr.death(0)
 
 			if(event == ORION_TRAIL_LING) //only ends the ORION_TRAIL_LING event, since you can do this action in multiple places
 				event = null

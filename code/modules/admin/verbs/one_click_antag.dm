@@ -230,8 +230,8 @@
 	return TRUE
 
 /datum/admins/proc/makeSpaceNinja()
-	new /datum/round_event/ghost_role/space_ninja()
-	return TRUE
+	new /datum/round_event/ghost_role/ninja()
+	return 1
 
 // DEATH SQUADS
 /datum/admins/proc/makeDeathsquad()

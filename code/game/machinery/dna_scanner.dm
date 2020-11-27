@@ -140,7 +140,7 @@
 	toggle_open(user)
 
 /obj/machinery/dna_scannernew/MouseDrop_T(mob/target, mob/user)
-	if(user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_UI_BLOCKED) || !Adjacent(user) || !user.Adjacent(target) || !iscarbon(target) || !ISADVANCEDTOOLUSER(user))
+	if(user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_UI_BLOCKED) || !Adjacent(user) || !user.Adjacent(target) || !iscarbon(target) || !user.IsAdvancedToolUser())
 		return
 	close_machine(target)
 

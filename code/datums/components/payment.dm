@@ -34,10 +34,8 @@
 		return
 	if(!ismob(target))
 		return COMPONENT_OBJ_CANCEL_CHARGE
-	var/mob/living/user = target
-	var/obj/item/card/id/card
-	if(istype(user))
-		card = user.get_idcard(TRUE)
+	var/mob/user = target
+	var/obj/item/card/id/card = user.get_idcard(TRUE)
 	if(!card)
 		switch(transaction_style)
 			if(PAYMENT_FRIENDLY)

@@ -477,12 +477,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["augments"] , augments)
 	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
-	READ_FILE(S["undershirt_color"], undershirt_color)
-	undershirt_color			= sanitize_hexcolor(undershirt_color, 3, 0)
-
-	READ_FILE(S["socks_color"], socks_color)
-	socks_color			= sanitize_hexcolor(socks_color, 3, 0)
-
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
 	body_markings = SANITIZE_LIST(body_markings)
@@ -539,9 +533,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			augments -= aug_slot
 	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
 	//validating limb styles
-	for(var/limb_slot in augment_limb_styles)
-		if(!GLOB.robotic_styles_list[augment_limb_styles[limb_slot]])
-			augment_limb_styles -= limb_slot
+	for(var/key in augment_limb_styles)
+		if(!GLOB.robotic_styles_list[key])
+			augment_limb_styles -= key
 
 	validate_species_parts()
 
@@ -639,9 +633,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["augments"] , augments)
 	WRITE_FILE(S["augment_limb_styles"] , augment_limb_styles)
-
-	WRITE_FILE(S["undershirt_color"], undershirt_color)
-	WRITE_FILE(S["socks_color"], socks_color)
 
 	return TRUE
 

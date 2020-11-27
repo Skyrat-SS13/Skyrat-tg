@@ -113,19 +113,20 @@
 
 /obj/machinery/mineral/equipment_vendor/ui_data(mob/user)
 	. = list()
+	var/mob/living/carbon/human/H
 	var/obj/item/card/id/C
-	if(isliving(user))
-		var/mob/living/L = user
-		C = L.get_idcard(TRUE)
-	if(C)
-		.["user"] = list()
-		.["user"]["points"] = C.mining_points
-		if(C.registered_account)
-			.["user"]["name"] = C.registered_account.account_holder
-			if(C.registered_account.account_job)
-				.["user"]["job"] = C.registered_account.account_job.title
-			else
-				.["user"]["job"] = "No Job"
+	if(ishuman(user))
+		H = user
+		C = H.get_idcard(TRUE)
+		if(C)
+			.["user"] = list()
+			.["user"]["points"] = C.mining_points
+			if(C.registered_account)
+				.["user"]["name"] = C.registered_account.account_holder
+				if(C.registered_account.account_job)
+					.["user"]["job"] = C.registered_account.account_job.title
+				else
+					.["user"]["job"] = "No Job"
 
 /obj/machinery/mineral/equipment_vendor/ui_act(action, params)
 	. = ..()
@@ -134,10 +135,8 @@
 
 	switch(action)
 		if("purchase")
-			var/obj/item/card/id/I
-			if(isliving(usr))
-				var/mob/living/L = usr
-				I = L.get_idcard(TRUE)
+			var/mob/M = usr
+			var/obj/item/card/id/I = M.get_idcard(TRUE)
 			if(!istype(I))
 				to_chat(usr, "<span class='alert'>Error: An ID is required!</span>")
 				flick(icon_deny, src)

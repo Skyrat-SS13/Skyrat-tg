@@ -1,8 +1,6 @@
 /datum/species/moth
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM)
-	species_traits = list(LIPS, NOEYESPRITES, HAS_FLESH, HAS_BONE, HAS_MARKINGS, MUTCOLORS)
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/moth_parts_greyscale.dmi'
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"

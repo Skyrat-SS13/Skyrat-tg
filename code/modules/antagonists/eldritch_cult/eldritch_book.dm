@@ -1,6 +1,6 @@
 /obj/item/forbidden_book
 	name = "Codex Cicatrix"
-	desc = "This book describes the secrets of the veil between worlds."
+	desc = "Book describing the secrets of the veil."
 	icon = 'icons/obj/eldritch.dmi'
 	icon_state = "book"
 	worn_icon_state = "book"

@@ -88,7 +88,7 @@ export const NtosMain = (props, context) => {
                 <Table.Cell>
                   <Button
                     fluid
-                    color={program.alert ? 'yellow' : 'transparent'}
+                    color="transparent"
                     icon={program.icon}
                     content={program.desc}
                     onClick={() => act('PC_runprogram', {

@@ -1525,7 +1525,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						playtime_reward_cloak = !playtime_reward_cloak
 
 				if("ai_core_icon")
-					var/ai_core_icon = input(user, "Choose your preferred AI core display screen:", "AI Core Display Screen Selection") as null|anything in GLOB.ai_core_display_screens - "Portrait"
+					var/ai_core_icon = input(user, "Choose your preferred AI core display screen:", "AI Core Display Screen Selection") as null|anything in GLOB.ai_core_display_screens
 					if(ai_core_icon)
 						preferred_ai_core_display = ai_core_icon
 
@@ -1670,7 +1670,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					save_preferences()
 
 				if("keybindings_reset")
-					var/choice = tgui_alert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))
+					var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
 					if(choice == "Cancel")
 						ShowChoices(user)
 						return
@@ -1798,7 +1798,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("ambientocclusion")
 					ambientocclusion = !ambientocclusion
 					if(parent?.screen && parent.screen.len)
-						var/atom/movable/screen/plane_master/game_world/PM = locate(/atom/movable/screen/plane_master/game_world) in parent.screen
+						var/obj/screen/plane_master/game_world/PM = locate(/obj/screen/plane_master/game_world) in parent.screen
 						PM.backdrop(parent.mob)
 
 				if("auto_fit_viewport")

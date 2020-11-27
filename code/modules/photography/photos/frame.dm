@@ -6,7 +6,7 @@
 	icon = 'icons/obj/decals.dmi'
 	custom_materials = list(/datum/material/wood = 2000)
 	flags_1 = 0
-	icon_state = "frame-overlay"
+	icon_state = "frame-empty"
 	result_path = /obj/structure/sign/picture_frame
 	var/obj/item/photo/displayed
 
@@ -63,7 +63,7 @@
 	name = "picture frame"
 	desc = "Every time you look it makes you laugh."
 	icon = 'icons/obj/decals.dmi'
-	icon_state = "frame-overlay"
+	icon_state = "frame-empty"
 	custom_materials = list(/datum/material/wood = 2000)
 	var/obj/item/photo/framed
 	var/persistence_id

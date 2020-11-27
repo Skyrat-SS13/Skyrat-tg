@@ -118,12 +118,14 @@
 	else
 		return ..()
 
+
+
 /obj/machinery/gibber/verb/eject()
 	set category = "Object"
-	set name = "Empty gibber"
+	set name = "empty gibber"
 	set src in oview(1)
 
-	if (usr.stat != CONSCIOUS || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
+	if(usr.incapacitated())
 		return
 	src.go_out()
 	add_fingerprint(usr)
@@ -228,9 +230,9 @@
 
 /obj/machinery/gibber/autogibber/Bumped(atom/movable/AM)
 	var/atom/input = get_step(src, input_dir)
-	if(isliving(AM))
-		var/mob/living/victim = AM
+	if(ismob(AM))
+		var/mob/M = AM
 
-		if(victim.loc == input)
-			victim.forceMove(src)
-			victim.gib()
+		if(M.loc == input)
+			M.forceMove(src)
+			M.gib()

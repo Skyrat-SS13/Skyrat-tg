@@ -42,7 +42,7 @@
 	switch(action)
 		if("ejectid")
 			if(id_card)
-				card_slot.try_eject(usr, TRUE)
+				card_slot.try_eject(TRUE, usr)
 		if("selectid")
 			if(!id_card)
 				return

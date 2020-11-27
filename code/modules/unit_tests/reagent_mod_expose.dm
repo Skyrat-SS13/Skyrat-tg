@@ -22,8 +22,6 @@
 	drink.reagents.add_reagent(/datum/reagent/phlogiston, 10)
 	drink.attack(human, human)
 	TEST_ASSERT_EQUAL(human.fire_stacks, 1, "Human does not have fire stacks after taking phlogiston")
-	human.Life()
-	TEST_ASSERT_EQUAL(human.fire_stacks, 2, "Human fire stacks did not increase after life tick")
 
 	// TOUCH
 	dropper.reagents.add_reagent(/datum/reagent/water, 1)

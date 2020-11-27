@@ -1,7 +1,7 @@
 /obj/item/flashlight
 	name = "flashlight"
 	desc = "A hand-held emergency light."
-	custom_price = PAYCHECK_EASY
+	custom_price = 100
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flashlight"
 	inhand_icon_state = "flashlight"
@@ -59,7 +59,7 @@
 		if((HAS_TRAIT(user, TRAIT_CLUMSY) || HAS_TRAIT(user, TRAIT_DUMB)) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
 
-		if(!ISADVANCEDTOOLUSER(user))
+		if(!user.IsAdvancedToolUser())
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return
 
@@ -449,7 +449,7 @@
 /obj/item/flashlight/glowstick
 	name = "glowstick"
 	desc = "A military-grade glowstick."
-	custom_price = PAYCHECK_PRISONER
+	custom_price = 50
 	w_class = WEIGHT_CLASS_SMALL
 	light_range = 4
 	light_system = MOVABLE_LIGHT

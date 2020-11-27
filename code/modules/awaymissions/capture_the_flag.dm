@@ -297,15 +297,14 @@
 			victory()
 
 /obj/machinery/capture_the_flag/proc/victory()
-	for(var/mob/_competitor in GLOB.mob_living_list)
-		var/mob/living/competitor = _competitor
-		var/area/mob_area = get_area(competitor)
+	for(var/mob/M in GLOB.mob_list)
+		var/area/mob_area = get_area(M)
 		if(istype(mob_area, /area/ctf))
-			to_chat(competitor, "<span class='narsie [team_span]'>[team] team wins!</span>")
-			to_chat(competitor, "<span class='userdanger'>Teams have been cleared. Click on the machines to vote to begin another round.</span>")
-			for(var/obj/item/ctf/W in competitor)
-				competitor.dropItemToGround(W)
-			competitor.dust()
+			to_chat(M, "<span class='narsie [team_span]'>[team] team wins!</span>")
+			to_chat(M, "<span class='userdanger'>Teams have been cleared. Click on the machines to vote to begin another round.</span>")
+			for(var/obj/item/ctf/W in M)
+				M.dropItemToGround(W)
+			M.dust()
 	for(var/obj/machinery/control_point/control in GLOB.machines)
 		control.icon_state = "dominator"
 		control.controlling = null
@@ -360,10 +359,10 @@
 	ctf_enabled = FALSE
 	arena_reset = FALSE
 	var/area/A = get_area(src)
-	for(var/_competitor in GLOB.mob_living_list)
-		var/mob/living/competitor = _competitor
-		if((get_area(A) == A) && (competitor.ckey in team_members))
-			competitor.dust()
+	for(var/i in GLOB.mob_list)
+		var/mob/M = i
+		if((get_area(A) == A) && (M.ckey in team_members))
+			M.dust()
 	team_members.Cut()
 	spawned_mobs.Cut()
 	recently_dead_ckeys.Cut()

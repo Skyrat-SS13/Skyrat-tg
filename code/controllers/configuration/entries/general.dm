@@ -77,8 +77,6 @@
 
 /datum/config_entry/flag/log_emote	// log emotes
 
-/datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
-
 /datum/config_entry/flag/log_econ	// log economy actions
 
 /datum/config_entry/flag/log_adminchat	// log admin chat messages
@@ -219,7 +217,7 @@
 	config_entry_value = "http://www.tgstation13.org/wiki/Rules"
 
 /datum/config_entry/string/githuburl
-	config_entry_value = "https://www.github.com/tgstation/tgstation"
+	config_entry_value = "https://www.github.com/tgstation/-tg-station"
 
 /datum/config_entry/string/roundstatsurl
 
@@ -501,8 +499,3 @@
 /datum/config_entry/string/centcom_ban_db	// URL for the CentCom Galactic Ban DB API
 
 /datum/config_entry/string/centcom_source_whitelist
-
-//SKYRAT EDIT ADDITION BEGIN
-/datum/config_entry/string/servertagline
-	config_entry_value = "We forgot to set the server's tagline in config.txt"
-//SKYRAT EDIT END

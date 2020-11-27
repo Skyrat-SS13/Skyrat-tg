@@ -74,13 +74,14 @@
 	data["HouseBalance"] = my_card?.registered_account.account_balance
 	data["LastSpin"] = last_spin
 	data["Spinning"] = playing
-	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/C = H.get_idcard(TRUE)
-	if(C)
-		data["AccountBalance"] = C.registered_account.account_balance
-	else
-		data["AccountBalance"] = 0
-	data["CanUnbolt"] = (C == my_card)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/obj/item/card/id/C = H.get_idcard(TRUE)
+		if(C)
+			data["AccountBalance"] = C.registered_account.account_balance
+		else
+			data["AccountBalance"] = 0
+		data["CanUnbolt"] = (H.get_idcard() == my_card)
 
 	return data
 

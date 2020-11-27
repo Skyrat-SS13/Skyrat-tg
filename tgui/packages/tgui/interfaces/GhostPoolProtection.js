@@ -1,6 +1,5 @@
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, Flex, NoticeBox, Section } from '../components';
+import { Button, Flex, Fragment, Section, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const GhostPoolProtection = (props, context) => {

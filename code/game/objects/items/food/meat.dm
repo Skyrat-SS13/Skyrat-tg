@@ -12,7 +12,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 6,  /datum/reagent/consumable/capsaicin = 1, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("fish" = 4, "batter" = 1, "hot peppers" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/carpmeat
 	name = "carp fillet"
@@ -23,7 +22,6 @@
 	tastes = list("fish" = 1)
 	foodtypes = MEAT
 	eatverbs = list("bite","chew","gnaw","swallow","chomp")
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/carpmeat/Initialize()
 	. = ..()
@@ -42,7 +40,6 @@
 	bite_consumption = 1
 	tastes = list("fish" = 1, "breadcrumbs" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/fishandchips
 	name = "fish and chips"
@@ -59,7 +56,6 @@
 	food_reagents = list (/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 3)
 	tastes = list("fish" = 1, "pan seared vegtables" = 1)
 	foodtypes = MEAT | VEGETABLES | FRIED
-	w_class = WEIGHT_CLASS_SMALL
 
 ////////////////////////////////////////////MEATS AND ALIKE////////////////////////////////////////////
 
@@ -70,7 +66,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2)
 	tastes = list("tofu" = 1)
 	foodtypes = VEGETABLES
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/tofu/prison
 	name = "soggy tofu"
@@ -86,7 +81,6 @@
 	microwaved_type = /obj/item/food/boiledspiderleg
 	tastes = list("cobwebs" = 1)
 	foodtypes = MEAT | TOXIC
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/cornedbeef
 	name = "corned beef and cabbage"
@@ -96,7 +90,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("meat" = 1, "cabbage" = 1)
 	foodtypes = MEAT | VEGETABLES
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/bearsteak
 	name = "Filet migrawr"
@@ -106,7 +99,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 9, /datum/reagent/consumable/ethanol/manly_dorf = 5)
 	tastes = list("meat" = 1, "salmon" = 1)
 	foodtypes = MEAT | ALCOHOL
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/meatball
 	name = "meatball"
@@ -115,7 +107,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/nutriment/vitamin = 1)
 	tastes = list("meat" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/sausage
 	name = "sausage"
@@ -126,7 +117,6 @@
 	foodtypes = MEAT | BREAKFAST
 	eatverbs = list("bite","chew","nibble","deep throat","gobble","chomp")
 	var/roasted = FALSE
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/sausage/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/salami, 6, 30)
@@ -138,7 +128,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
 	tastes = list("meat" = 1, "smoke" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/rawkhinkali
 	name = "raw khinkali"
@@ -148,7 +137,6 @@
 	microwaved_type = /obj/item/food/khinkali
 	tastes = list("meat" = 1, "onions" = 1, "garlic" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/khinkali
 	name = "khinkali"
@@ -158,7 +146,6 @@
 	bite_consumption = 3
 	tastes = list("meat" = 1, "onions" = 1, "garlic" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/monkeycube
 	name = "monkey cube"
@@ -230,7 +217,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/protein = 7, /datum/reagent/consumable/capsaicin = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("hot peppers" = 1, "meat" = 3, "cheese" = 1, "sour cream" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/stewedsoymeat
 	name = "stewed soy meat"
@@ -241,7 +227,6 @@
 	tastes = list("soy" = 1, "vegetables" = 1)
 	eatverbs = list("slurp","sip","inhale","drink")
 	foodtypes = VEGETABLES
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/stewedsoymeat/Initialize()
 	. = ..()
@@ -255,7 +240,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/capsaicin = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("hot peppers" = 1, "cobwebs" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/spidereggsham
 	name = "green eggs and ham"
@@ -266,7 +250,6 @@
 	bite_consumption = 4
 	tastes = list("meat" = 1, "the colour green" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/sashimi
 	name = "carp sashimi"
@@ -275,7 +258,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 10, /datum/reagent/consumable/capsaicin = 9, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("fish" = 1, "hot peppers" = 1)
 	foodtypes = MEAT | TOXIC
-	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/food/sashimi/Initialize()
 	. = ..()
@@ -286,7 +268,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
 	tastes = list("\"chicken\"" = 1)
 	foodtypes = MEAT
-	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/food/nugget/Initialize()
 	. = ..()
@@ -301,7 +282,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("meat" = 1, "butter" = 1)
 	foodtypes = MEAT | DAIRY
-	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/food/bbqribs
 	name = "bbq ribs"
@@ -318,7 +298,6 @@
 	icon_state = "meatclown"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/banana = 2)
 	tastes = list("meat" = 5, "clowns" = 3, "sixteen teslas" = 1)
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/meatclown/ComponentInitialize()
 	. = ..()
@@ -340,7 +319,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 14)
 	tastes = list("meat" = 3, "metal" = 1)
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/kebab/human
 	name = "human-kebab"
@@ -396,12 +374,12 @@
 	material_flags = MATERIAL_NO_EFFECTS
 	var/subjectname = ""
 	var/subjectjob = null
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/meat/slab
 	name = "meat"
 	desc = "A slab of meat."
 	icon_state = "meat"
+	//dried_type = /obj/item/food/sosjerky/healthy Re-add this when I figure out how to make drying an element
 	bite_consumption = 3
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/cooking_oil = 2) //Meat has fats that a food processor can process into cooking oil
 	microwaved_type = /obj/item/food/meat/steak/plain
@@ -409,10 +387,6 @@
 	foodtypes = MEAT | RAW
 	///Legacy code, handles the coloring of the overlay of the cutlets made from this.
 	var/slab_color = "#FF0000"
-
-/obj/item/food/meat/slab/Initialize()
-	. = ..()
-	AddElement(/datum/element/dryable,  /obj/item/food/sosjerky/healthy)
 
 /obj/item/food/meat/slab/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE,  /obj/item/food/meat/rawcutlet/plain, 3, 30)
@@ -968,7 +942,6 @@
 	tastes = list("chicken" = 3, "fried batter" = 1)
 	foodtypes = MEAT | FRIED
 	junkiness = 25
-	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/fried_chicken/Initialize()
 	. = ..()

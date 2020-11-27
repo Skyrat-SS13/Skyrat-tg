@@ -42,8 +42,7 @@
 	if(!can_run_emote(user))
 		return FALSE
 
-	var/prefix_log_message = "(SUBTLE) [message]"
-	user.log_message(prefix_log_message, LOG_EMOTE)
+	user.log_message(message, LOG_EMOTE)
 	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
 
 	for(var/mob/M in GLOB.dead_mob_list)

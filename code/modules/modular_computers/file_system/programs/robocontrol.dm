@@ -1,10 +1,10 @@
 
 /datum/computer_file/program/robocontrol
 	filename = "botkeeper"
-	filedesc = "BotKeeper"
+	filedesc = "Botkeeper"
 	program_icon_state = "robot"
 	extended_desc = "A remote controller used for giving basic commands to non-sentient robots."
-	transfer_access = null
+	transfer_access = ACCESS_ROBOTICS
 	requires_ntnet = TRUE
 	size = 12
 	tgui_id = "NtosRoboControl"
@@ -37,13 +37,7 @@
 	for(var/B in GLOB.bots_list)
 		var/mob/living/simple_animal/bot/Bot = B
 		if(!Bot.on || Bot.z != zlevel || Bot.remote_disabled) //Only non-emagged bots on the same Z-level are detected!
-			continue
-		else if(computer) //Also, the inserted ID must have access to the bot type
-			var/obj/item/card/id/id_card = card_slot ? card_slot.stored_card : null
-			if(!id_card && !Bot.bot_core.allowed(current_user))
-				continue
-			else if(id_card && !Bot.bot_core.check_access(id_card))
-				continue
+			continue //Also, the PDA must have access to the bot type.
 		var/list/newbot = list("name" = Bot.name, "mode" = Bot.get_mode_ui(), "model" = Bot.model, "locat" = get_area(Bot), "bot_ref" = REF(Bot), "mule_check" = FALSE)
 		if(Bot.bot_type == MULE_BOT)
 			var/mob/living/simple_animal/bot/mulebot/MULE = Bot

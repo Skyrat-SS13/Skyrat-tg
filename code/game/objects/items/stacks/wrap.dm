@@ -13,7 +13,6 @@
 	amount = 25
 	max_amount = 25
 	resistance_flags = FLAMMABLE
-	merge_type = /obj/item/stack/wrapping_paper
 
 /obj/item/stack/wrapping_paper/use(used, transfer)
 	var/turf/T = get_turf(src)
@@ -24,7 +23,6 @@
 /obj/item/stack/wrapping_paper/small
 	desc = "Wrap packages with this festive paper to make gifts. This roll looks a bit skimpy."
 	amount = 10
-	merge_type = /obj/item/stack/wrapping_paper/small
 
 /*
  * Package Wrap
@@ -41,7 +39,6 @@
 	max_amount = 25
 	resistance_flags = FLAMMABLE
 	grind_results = list(/datum/reagent/cellulose = 5)
-	merge_type = /obj/item/stack/package_wrap
 
 /obj/item/stack/package_wrap/suicide_act(mob/living/user)
 	user.visible_message("<span class='suicide'>[user] begins wrapping [user.p_them()]self in \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -131,7 +128,6 @@
 	desc = "You can use this to wrap items in. This roll looks a bit skimpy."
 	w_class = WEIGHT_CLASS_SMALL
 	amount = 5
-	merge_type = /obj/item/stack/package_wrap/small
 
 /obj/item/c_tube
 	name = "cardboard tube"

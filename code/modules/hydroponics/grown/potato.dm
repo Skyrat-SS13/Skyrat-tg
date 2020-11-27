@@ -5,7 +5,7 @@
 	icon_state = "seed-potato"
 	species = "potato"
 	plantname = "Potato Plants"
-	product = /obj/item/food/grown/potato
+	product = /obj/item/reagent_containers/food/snacks/grown/potato
 	lifespan = 30
 	maturation = 10
 	production = 1
@@ -19,27 +19,29 @@
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 	graft_gene = /datum/plant_gene/trait/battery
 
-/obj/item/food/grown/potato
+/obj/item/reagent_containers/food/snacks/grown/potato
 	seed = /obj/item/seeds/potato
 	name = "potato"
 	desc = "Boil 'em! Mash 'em! Stick 'em in a stew!"
 	icon_state = "potato"
-	bite_consumption = 100
-	foodtypes = VEGETABLES
+	filling_color = "#E9967A"
+	bitesize = 100
+	foodtype = VEGETABLES
 	juice_results = list(/datum/reagent/consumable/potato_juice = 0)
 	distill_reagent = /datum/reagent/consumable/ethanol/vodka
 
-/obj/item/food/grown/potato/wedges
+/obj/item/reagent_containers/food/snacks/grown/potato/wedges
 	name = "potato wedges"
 	desc = "Slices of neatly cut potato."
 	icon_state = "potato_wedges"
-	bite_consumption = 100
+	filling_color = "#E9967A"
+	bitesize = 100
 
 
-/obj/item/food/grown/potato/attackby(obj/item/W, mob/user, params)
+/obj/item/reagent_containers/food/snacks/grown/potato/attackby(obj/item/W, mob/user, params)
 	if(W.get_sharpness())
 		to_chat(user, "<span class='notice'>You cut the potato into wedges with [W].</span>")
-		var/obj/item/food/grown/potato/wedges/Wedges = new /obj/item/food/grown/potato/wedges
+		var/obj/item/reagent_containers/food/snacks/grown/potato/wedges/Wedges = new /obj/item/reagent_containers/food/snacks/grown/potato/wedges
 		remove_item_from_storage(user)
 		qdel(src)
 		user.put_in_hands(Wedges)
@@ -54,11 +56,11 @@
 	icon_state = "seed-sweetpotato"
 	species = "sweetpotato"
 	plantname = "Sweet Potato Plants"
-	product = /obj/item/food/grown/potato/sweet
+	product = /obj/item/reagent_containers/food/snacks/grown/potato/sweet
 	mutatelist = list()
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.1, /datum/reagent/consumable/sugar = 0.1, /datum/reagent/consumable/nutriment = 0.1)
 
-/obj/item/food/grown/potato/sweet
+/obj/item/reagent_containers/food/snacks/grown/potato/sweet
 	seed = /obj/item/seeds/potato/sweet
 	name = "sweet potato"
 	desc = "It's sweet."

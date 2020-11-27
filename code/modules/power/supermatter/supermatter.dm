@@ -776,15 +776,12 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 	//Tells the engi team to get their butt in gear
 	if(damage > warning_point) // while the core is still damaged and it's still worth noting its status
-		if(damage_archived < warning_point) //If damage_archive is under the warning point, this is the very first cycle that we've reached said point.
-			SEND_SIGNAL(src, COMSIG_SUPERMATTER_DELAM_START_ALARM)
 		if((REALTIMEOFDAY - lastwarning) / 10 >= WARNING_DELAY)
 			alarm()
 
 			//Oh shit it's bad, time to freak out
 			if(damage > emergency_point)
 				radio.talk_into(src, "[emergency_alert] Integrity: [get_integrity()]%", common_channel)
-				SEND_SIGNAL(src, COMSIG_SUPERMATTER_DELAM_ALARM)
 				lastwarning = REALTIMEOFDAY
 				if(!has_reached_emergency)
 					investigate_log("has reached the emergency point for the first time.", INVESTIGATE_SUPERMATTER)
@@ -792,7 +789,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 					has_reached_emergency = TRUE
 			else if(damage >= damage_archived) // The damage is still going up
 				radio.talk_into(src, "[warning_alert] Integrity: [get_integrity()]%", engineering_channel)
-				SEND_SIGNAL(src, COMSIG_SUPERMATTER_DELAM_ALARM)
 				lastwarning = REALTIMEOFDAY - (WARNING_DELAY * 5)
 
 			else                                                 // Phew, we're safe
@@ -1085,7 +1081,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 				continue //You can't pull someone nailed to the deck
 		step_towards(P,center)
 
-/* - SKYRAT EDIT CHANGE - QOL - ORIGINAL
 /obj/machinery/power/supermatter_crystal/proc/supermatter_anomaly_gen(turf/anomalycenter, type = FLUX_ANOMALY, anomalyrange = 5)
 	var/turf/L = pick(orange(anomalyrange, anomalycenter))
 	if(L)
@@ -1097,27 +1092,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 				new /obj/effect/anomaly/grav(L, 250, FALSE)
 			if(PYRO_ANOMALY)
 				new /obj/effect/anomaly/pyro(L, 200, FALSE)
-*/
-
-/obj/machinery/power/supermatter_crystal/proc/supermatter_anomaly_gen(turf/anomalycenter, type = FLUX_ANOMALY, anomalyrange = 5)
-	var/turf/L = pick(orange(anomalyrange, anomalycenter))
-	// BEGIN SKYRAT CHANGE - High Energy Anomaly Core Generation
-	var/drops_core = FALSE
-	// Every 334 EER above POWER_PENALTY_THRESHOLD adds 10% chance for the anomalies to leave behind a core when neutralized
-	var/chance_bonus = clamp((10 * (power - POWER_PENALTY_THRESHOLD) / 334), 0, 95)
-	if(prob(5 + round(chance_bonus))) // 5% base chance to drop a core
-		drops_core = TRUE
-
-	if(L)
-		switch(type)
-			if(FLUX_ANOMALY)
-				var/obj/effect/anomaly/flux/A = new(L, 300, drops_core)
-				A.explosive = FALSE
-			if(GRAVITATIONAL_ANOMALY)
-				new /obj/effect/anomaly/grav(L, 250, drops_core)
-			if(PYRO_ANOMALY)
-				new /obj/effect/anomaly/pyro(L, 200, drops_core)
-	// END SKYRAT CHANGE
 
 /obj/machinery/power/supermatter_crystal/proc/supermatter_zap(atom/zapstart = src, range = 5, zap_str = 4000, zap_flags = ZAP_SUPERMATTER_FLAGS, list/targets_hit = list())
 	if(QDELETED(zapstart))

@@ -34,12 +34,11 @@
 	qdel(src)
 
 /obj/effect/baseturf_helper/proc/replace_baseturf(turf/thing)
-	if(length(thing.baseturfs))
-		var/list/baseturf_cache = thing.baseturfs.Copy()
+	var/list/baseturf_cache = thing.baseturfs
+	if(length(baseturf_cache))
 		for(var/i in baseturf_cache)
 			if(baseturf_to_replace[i])
 				baseturf_cache -= i
-		thing.baseturfs = baseturfs_string_list(baseturf_cache, thing)
 		if(!baseturf_cache.len)
 			thing.assemble_baseturfs(baseturf)
 		else

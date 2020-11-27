@@ -68,9 +68,9 @@
 /mob/living/carbon/monkey/on_reagent_change()
 	. = ..()
 	var/amount
-	if(reagents.has_reagent(/datum/reagent/medicine/morphine))
+	if(has_reagent(/datum/reagent/medicine/morphine))
 		amount = -1
-	if(reagents.has_reagent(/datum/reagent/consumable/nuka_cola))
+	if(has_reagent(/datum/reagent/consumable/nuka_cola))
 		amount = -1
 	if(amount)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/monkey_reagent_speedmod, TRUE, amount)
@@ -107,6 +107,12 @@
 	set category = "IC"
 	internal = null
 	return
+
+
+/mob/living/carbon/monkey/IsAdvancedToolUser()//Unless its monkey mode monkeys can't use advanced tools
+	if(mind && is_monkey(mind))
+		return TRUE
+	return FALSE
 
 /mob/living/carbon/monkey/can_use_guns(obj/item/G)
 	if(G.trigger_guard == TRIGGER_GUARD_NONE)

@@ -382,7 +382,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 
 /obj/item/stack/cable_coil
 	name = "cable coil"
-	custom_price = PAYCHECK_PRISONER * 0.8
+	custom_price = 75
 	gender = NEUTER //That's a cable coil sounds better than that's some cable coils
 	icon = 'icons/obj/power.dmi'
 	icon_state = "coil"
@@ -399,7 +399,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 5
-	mats_per_unit = list(/datum/material/iron=10, /datum/material/glass=5)
+	custom_materials = list(/datum/material/iron=10, /datum/material/glass=5)
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb_continuous = list("whips", "lashes", "disciplines", "flogs")
@@ -408,8 +408,6 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	full_w_class = WEIGHT_CLASS_SMALL
 	grind_results = list(/datum/reagent/copper = 2) //2 copper per cable in the coil
 	usesound = 'sound/items/deconstruct.ogg'
-	cost = 1
-	source = /datum/robot_energy_storage/wire
 	var/cable_color = "yellow"
 	var/obj/structure/cable/target_type = /obj/structure/cable
 	var/target_layer = CABLE_LAYER_2
@@ -442,7 +440,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 /obj/item/stack/cable_coil/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
-	if(!ISADVANCEDTOOLUSER(user))
+	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return FALSE
 	if(user.incapacitated() || !user.Adjacent(src))
@@ -599,6 +597,11 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	pixel_y = base_pixel_y + rand(-2, 2)
 	update_icon()
 
+/obj/item/stack/cable_coil/cyborg
+	is_cyborg = 1
+	custom_materials = list()
+	cost = 1
+
 #undef CABLE_RESTRAINTS_COST
 #undef UNDER_SMES
 #undef UNDER_TERMINAL
@@ -735,7 +738,7 @@ GLOBAL_LIST(hub_radial_layer_list)
 /obj/structure/cable/multilayer/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
-	if(!ISADVANCEDTOOLUSER(user))
+	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return FALSE
 	if(user.incapacitated() || !user.Adjacent(src))

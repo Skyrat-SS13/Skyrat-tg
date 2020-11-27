@@ -73,12 +73,11 @@
 	singular_name = "uranium ore chunk"
 	points = 30
 	material_flags = MATERIAL_NO_EFFECTS
-	mats_per_unit = list(/datum/material/uranium=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/uranium=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/uranium
 	mine_experience = 6
 	scan_state = "rock_Uranium"
 	spreadChance = 5
-	merge_type = /obj/item/stack/ore/uranium
 
 /obj/item/stack/ore/iron
 	name = "iron ore"
@@ -86,12 +85,11 @@
 	inhand_icon_state = "Iron ore"
 	singular_name = "iron ore chunk"
 	points = 1
-	mats_per_unit = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/metal
 	mine_experience = 1
 	scan_state = "rock_Iron"
 	spreadChance = 20
-	merge_type = /obj/item/stack/ore/iron
 
 /obj/item/stack/ore/glass
 	name = "sand pile"
@@ -99,11 +97,10 @@
 	inhand_icon_state = "Glass ore"
 	singular_name = "sand pile"
 	points = 1
-	mats_per_unit = list(/datum/material/glass=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/glass=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/glass
 	w_class = WEIGHT_CLASS_TINY
 	mine_experience = 0 //its sand
-	merge_type = /obj/item/stack/ore/glass
 
 GLOBAL_LIST_INIT(sand_recipes, list(\
 		new /datum/stack_recipe("sandstone", /obj/item/stack/sheet/mineral/sandstone, 1, 1, 50),\
@@ -138,7 +135,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	inhand_icon_state = "volcanic_sand"
 	singular_name = "volcanic ash pile"
 	mine_experience = 0
-	merge_type = /obj/item/stack/ore/glass/basalt
 
 /obj/item/stack/ore/plasma
 	name = "plasma ore"
@@ -146,16 +142,16 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	inhand_icon_state = "Plasma ore"
 	singular_name = "plasma ore chunk"
 	points = 15
-	mats_per_unit = list(/datum/material/plasma=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/plasma=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/plasma
 	mine_experience = 5
 	scan_state = "rock_Plasma"
 	spreadChance = 8
-	merge_type = /obj/item/stack/ore/plasma
 
 /obj/item/stack/ore/plasma/welder_act(mob/living/user, obj/item/I)
 	to_chat(user, "<span class='warning'>You can't hit a high enough temperature to smelt [src] properly!</span>")
 	return TRUE
+
 
 /obj/item/stack/ore/silver
 	name = "silver ore"
@@ -164,11 +160,10 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	singular_name = "silver ore chunk"
 	points = 16
 	mine_experience = 3
-	mats_per_unit = list(/datum/material/silver=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/silver=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/silver
 	scan_state = "rock_Silver"
 	spreadChance = 5
-	merge_type = /obj/item/stack/ore/silver
 
 /obj/item/stack/ore/gold
 	name = "gold ore"
@@ -177,11 +172,10 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	singular_name = "gold ore chunk"
 	points = 18
 	mine_experience = 5
-	mats_per_unit = list(/datum/material/gold=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/gold=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/gold
 	scan_state = "rock_Gold"
 	spreadChance = 5
-	merge_type = /obj/item/stack/ore/gold
 
 /obj/item/stack/ore/diamond
 	name = "diamond ore"
@@ -189,11 +183,10 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	inhand_icon_state = "Diamond ore"
 	singular_name = "diamond ore chunk"
 	points = 50
-	mats_per_unit = list(/datum/material/diamond=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/diamond=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/diamond
 	mine_experience = 10
 	scan_state = "rock_Diamond"
-	merge_type = /obj/item/stack/ore/diamond
 
 /obj/item/stack/ore/bananium
 	name = "bananium ore"
@@ -201,11 +194,10 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	inhand_icon_state = "Bananium ore"
 	singular_name = "bananium ore chunk"
 	points = 60
-	mats_per_unit = list(/datum/material/bananium=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/bananium=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/bananium
 	mine_experience = 15
 	scan_state = "rock_Bananium"
-	merge_type = /obj/item/stack/ore/bananium
 
 /obj/item/stack/ore/titanium
 	name = "titanium ore"
@@ -213,12 +205,11 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	inhand_icon_state = "Titanium ore"
 	singular_name = "titanium ore chunk"
 	points = 50
-	mats_per_unit = list(/datum/material/titanium=MINERAL_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/titanium=MINERAL_MATERIAL_AMOUNT)
 	refined_type = /obj/item/stack/sheet/mineral/titanium
 	mine_experience = 3
 	scan_state = "rock_Titanium"
 	spreadChance = 5
-	merge_type = /obj/item/stack/ore/titanium
 
 /obj/item/stack/ore/slag
 	name = "slag"
@@ -226,7 +217,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	icon_state = "slag"
 	inhand_icon_state = "slag"
 	singular_name = "slag chunk"
-	merge_type = /obj/item/stack/ore/slag
 
 /obj/item/gibtonite
 	name = "gibtonite ore"

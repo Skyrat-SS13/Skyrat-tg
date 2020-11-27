@@ -585,10 +585,9 @@
 /proc/KillEveryoneOnZLevel(z)
 	if(!z)
 		return
-	for(var/_victim in GLOB.mob_living_list)
-		var/mob/living/victim = _victim
-		if(victim.stat != DEAD && victim.z == z)
-			victim.gib()
+	for(var/mob/M in GLOB.mob_list)
+		if(M.stat != DEAD && M.z == z)
+			M.gib()
 
 /*
 This is here to make the tiles around the station mininuke change when it's armed.
