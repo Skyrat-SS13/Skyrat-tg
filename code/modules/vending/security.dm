@@ -10,12 +10,14 @@
 					/obj/item/restraints/handcuffs/cable/zipties = 10,
 					/obj/item/grenade/flashbang = 4,
 					/obj/item/assembly/flash/handheld = 5,
-					/obj/item/reagent_containers/food/snacks/donut = 12,
+					/obj/item/food/donut = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/flashlight/seclite = 4,
 					/obj/item/restraints/legcuffs/bola/energy = 7,
 					/obj/item/clothing/head/helmet/sec = 5,
-					/obj/item/clothing/suit/armor/vest/alt = 5)
+					/obj/item/clothing/suit/armor/vest/alt = 5,
+					/obj/item/storage/bag/ammo = 2, // SKYRAT EDIT - Ammo Pouches
+					/obj/item/restraints/legcuffs/bola/energy = 7)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
 					  /obj/item/storage/fancy/donut_box = 2)
 	premium = list(/obj/item/storage/belt/security/webbing = 5,
@@ -25,8 +27,8 @@
 				   /obj/item/clothing/gloves/tackler = 5,
 				   /obj/item/grenade/stingbang = 1)
 	refill_canister = /obj/item/vending_refill/security
-	default_price = 650
-	extra_price = 700
+	default_price = PAYCHECK_MEDIUM
+	extra_price = PAYCHECK_HARD * 1.5
 	payment_department = ACCOUNT_SEC
 
 /obj/machinery/vending/security/pre_throw(obj/item/I)

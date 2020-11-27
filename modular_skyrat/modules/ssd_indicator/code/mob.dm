@@ -22,6 +22,11 @@ GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('modular_skyrat/module
 	set_ssd_indicator(TRUE)
 	. = ..()
 
+//Temporary, look below for the reason
+/mob/living/ghostize(can_reenter_corpse = TRUE)
+	. = ..()
+	set_ssd_indicator(FALSE)
+
 /*
 //EDIT - TRANSFER CKEY IS NOT A THING ON THE TG CODEBASE, if things break too bad because of it, consider implementing it
 //This proc should stop mobs from having the overlay when someone keeps jumping control of mobs, unfortunately it causes Aghosts to have their character without the SSD overlay, I wasn't able to find a better proc unfortunately

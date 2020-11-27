@@ -26,7 +26,7 @@
 	if(stat == DEAD && module.has_snowflake_deadsprite)
 		icon_state = "[module.cyborg_base_icon]-wreck"
 
-	if(module.cyborg_pixel_offset)
+	if(module.cyborg_pixel_offset != null)
 		pixel_x = module.cyborg_pixel_offset
 
 	if(module.cyborg_base_icon == "robot")

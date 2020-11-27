@@ -21,7 +21,6 @@
 	if(!(C.mob_biotypes & MOB_ROBOTIC))
 		C.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
 		if(prob(25))
-			C.reagents.remove_reagent(type, 15)
 			C.vomit(5, FALSE, FALSE)
 	return ..()
 
