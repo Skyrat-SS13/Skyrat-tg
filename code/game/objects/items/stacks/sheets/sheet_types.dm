@@ -622,7 +622,7 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	icon_state = "sheet-lessergem"
 	inhand_icon_state = "sheet-lessergem"
 	novariants = TRUE
-
+	merge_type = /obj/item/stack/sheet/lessergem
 
 /obj/item/stack/sheet/greatergem
 	name = "greater gems"
@@ -631,8 +631,9 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	icon_state = "sheet-greatergem"
 	inhand_icon_state = "sheet-greatergem"
 	novariants = TRUE
+	merge_type = /obj/item/stack/sheet/greatergem
 
-	/*
+/*
  * Bones
  */
 /obj/item/stack/sheet/bone
