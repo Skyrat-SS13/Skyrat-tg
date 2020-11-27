@@ -489,3 +489,8 @@
 	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+
+/datum/emote/living/headtilt
+	key = "tilt"
+	key_third_person = "tilts"
+	message = "tilts their head."
