@@ -76,7 +76,7 @@
 	affected_bodyparts = HEAD
 	always_color_customizable = TRUE
 	
-/datum/body_marking/other/drake_eyes
+/datum/body_marking/other/big_eyes
 	name = "Big Eyes"
 	icon_state = "bigeyes"
 	default_color = "F00"
