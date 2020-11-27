@@ -98,14 +98,54 @@
 /obj/item/clothing/head/bandana
 	mutant_variants = NONE
 
+/obj/item/clothing/head/hunter
+	mutant_variants = NONE
+
+/obj/item/clothing/head/scarecrow_hat
+	mutant_variants = NONE
+
+/obj/item/clothing/head/intern
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/space/hardsuit/ert/jani
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/blueshirt
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/space/space_ninja
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/space/beret
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/space/hardsuit/carp
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/police
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/swat
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //MASK>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+/obj/item/clothing/mask/gas/hunter
+	mutant_variants = NONE
 /obj/item/clothing/mask/fakemoustache
 	flags_inv = NONE
+
+/obj/item/clothing/mask/gas/tiki_mask/yalp_elor
+	mutant_variants = NONE
+
+/obj/item/clothing/mask/gas/carp
+	mutant_variants = NONE
+
+/obj/item/clothing/mask/gas/sechailer/swat/spacepol
+	mutant_variants = NONE
 
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -117,6 +157,55 @@
 
 /obj/item/clothing/under/costume/schoolgirl
 	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/centcom/intern
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/bouncer
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/engineering/engineer/hazard
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/security/officer/beatcop
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/security/officer/spacepol
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/medical/doctor/nurse
+	mutant_variants = NONE
+
+/obj/item/clothing/under/syndicate/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/syndicate/tacticool/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/captain/suit/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/black/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/female/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/red/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/color/jumpskirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/dress/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/suit/black/skirt
+	mutant_variants = NONE
+
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/toggle/chef
@@ -145,5 +234,36 @@
 
 /obj/item/clothing/suit/poncho
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/wizrobe
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/bee_costume
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/space/hunter
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/chaplainsuit/holidaypriest
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/hazardvest
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/space/hardsuit/ert/jani
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/security/officer/russian
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/pirate/captain
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/space/officer
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/chaplain_hoodie
+	mutant_variants = NONE
+
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

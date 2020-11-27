@@ -237,7 +237,7 @@
 		return
 	obj_flags |= EMAGGED
 	locked = FALSE
-	playsound(src, "sparks", 100, TRUE)
+	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	to_chat(user, "<span class='warning'>You short out the access controller.</span>")
 
 /obj/machinery/shieldgen/update_icon_state()
@@ -251,7 +251,7 @@
 /obj/machinery/power/shieldwallgen
 	name = "shield wall generator"
 	desc = "A shield generator."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/stationobjs.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "shield_wall_gen"
 	anchored = FALSE
 	density = TRUE
@@ -429,7 +429,7 @@
 		return
 	obj_flags |= EMAGGED
 	locked = FALSE
-	playsound(src, "sparks", 100, TRUE)
+	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	to_chat(user, "<span class='warning'>You short out the access controller.</span>")
 
 //////////////Containment Field START

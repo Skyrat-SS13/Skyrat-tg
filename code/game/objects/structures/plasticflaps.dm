@@ -2,7 +2,7 @@
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps. Definitely can't get past those. No way."
 	gender = PLURAL
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/stationobjs.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "plasticflaps"
 	armor = list(MELEE = 100, BULLET = 80, LASER = 80, ENERGY = 100, BOMB = 50, BIO = 100, RAD = 100, FIRE = 50, ACID = 50)
 	density = FALSE
@@ -65,13 +65,14 @@
 		if(!M.ventcrawler && M.mob_size != MOB_SIZE_TINY)
 			return FALSE
 	var/atom/movable/M = caller
-	if(M && M.pulling)
+	if(M?.pulling)
 		return CanAStarPass(ID, to_dir, M.pulling)
 	return TRUE //diseases, stings, etc can pass
 
 /obj/structure/plasticflaps/CanAllowThrough(atom/movable/A, turf/T)
 	. = ..()
-
+	if(A.pass_flags & PASSFLAPS) //For anything specifically engineered to cross plastic flaps.
+		return TRUE
 	if(istype(A) && (A.pass_flags & PASSGLASS))
 		return prob(60)
 
@@ -89,8 +90,6 @@
 
 	else if(isliving(A)) // You Shall Not Pass!
 		var/mob/living/M = A
-		if(isbot(A)) //Bots understand the secrets
-			return TRUE
 		if(M.buckled && istype(M.buckled, /mob/living/simple_animal/bot/mulebot)) // mulebot passenger gets a free pass.
 			return TRUE
 		if(M.body_position == STANDING_UP && !M.ventcrawler && M.mob_size != MOB_SIZE_TINY)	//If your not laying down, or a ventcrawler or a small creature, no pass.

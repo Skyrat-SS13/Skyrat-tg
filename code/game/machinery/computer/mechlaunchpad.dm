@@ -83,7 +83,7 @@
   * * user - The user of the proc
   * * where - The mechpad that the connected mechpad will try to send a supply pod to
   */
-/obj/machinery/computer/mechpad/proc/try_launch(var/mob/user, var/obj/machinery/mechpad/where)
+/obj/machinery/computer/mechpad/proc/try_launch(mob/user, obj/machinery/mechpad/where)
 	if(!connected_mechpad)
 		to_chat(user, "<span class='warning'>[src] has no connected pad!</span>")
 		return
@@ -108,6 +108,11 @@
 	return pad
 
 /obj/machinery/computer/mechpad/ui_interact(mob/user, datum/tgui/ui)
+	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
+	if(clicksound && world.time > next_clicksound && isliving(user))
+		next_clicksound = world.time + rand(50, 100)
+		playsound(src, get_sfx_skyrat(clicksound), clickvol)
+	//SKYRAT EDIT END
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MechpadConsole", name)

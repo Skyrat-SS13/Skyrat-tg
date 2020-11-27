@@ -278,7 +278,7 @@
 	desc = "A bunch of hair without a head attached. This one changes color to match the hair of the wearer. Nothing natural about that."
 	color = "#FFF"
 	adjustablecolor = FALSE
-	custom_price = 100
+	custom_price = PAYCHECK_HARD
 
 /obj/item/clothing/head/wig/natural/Initialize(mapload)
 	hairstyle = pick(GLOB.hairstyles_list - "Bald")
@@ -326,6 +326,9 @@
 	if(paranoia)
 		QDEL_NULL(paranoia)
 	paranoia = new()
+	//SKYRAT EDIT ADDITION BEGIN - CLONING
+	paranoia.clonable = FALSE
+	//SKYRAT EDIT END
 
 	user.gain_trauma(paranoia, TRAUMA_RESILIENCE_MAGIC)
 	to_chat(user, "<span class='warning'>As you don the foiled hat, an entire world of conspiracy theories and seemingly insane ideas suddenly rush into your mind. What you once thought unbelievable suddenly seems.. undeniable. Everything is connected and nothing happens just by accident. You know too much and now they're out to get you. </span>")

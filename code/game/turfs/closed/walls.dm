@@ -3,7 +3,7 @@
 /turf/closed/wall
 	name = "wall"
 	desc = "A huge chunk of metal used to separate rooms."
-	icon = 'icons/turf/walls/wall.dmi'
+	icon = 'icons/turf/walls/wall.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	explosion_block = 1
@@ -178,7 +178,7 @@
 
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
-	if (!user.IsAdvancedToolUser())
+	if (!ISADVANCEDTOOLUSER(user))
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 

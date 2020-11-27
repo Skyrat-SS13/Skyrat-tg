@@ -1,9 +1,9 @@
 /mob/living/silicon/robot/update_icons()
+	icon = (module.cyborg_icon_override ? module.cyborg_icon_override : initial(icon))
 	. = ..()
 	update_dogborg_icons()
 
 /mob/living/silicon/robot/proc/update_dogborg_icons()
-	icon = (module.cyborg_icon_override ? module.cyborg_icon_override : initial(icon))
 	var/extra_overlay
 	for(var/i in held_items)
 		var/obj/item/O = i

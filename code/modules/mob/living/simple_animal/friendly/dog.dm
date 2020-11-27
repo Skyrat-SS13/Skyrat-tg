@@ -140,7 +140,7 @@
 
 /mob/living/simple_animal/pet/dog/pug/mcgriff
 	name = "McGriff"
-	desc = "This dog can tell someting smells around here, and that something is CRIME!"
+	desc = "This dog can tell something smells around here, and that something is CRIME!"
 
 /mob/living/simple_animal/pet/dog/bullterrier
 	name = "\improper bull terrier"
@@ -169,8 +169,7 @@
 	. = ..()
 	var/dog_area = get_area(src)
 	for(var/obj/structure/bed/dogbed/D in dog_area)
-		if(!D.owner)
-			D.update_owner(src)
+		if(D.update_owner(src)) //No muscling in on my turf you fucking parrot
 			break
 
 /mob/living/simple_animal/pet/dog/corgi/Initialize()
@@ -399,11 +398,11 @@
 	desc = initial(desc)
 	set_light(0)
 
-	if(inventory_head && inventory_head.dog_fashion)
+	if(inventory_head?.dog_fashion)
 		var/datum/dog_fashion/DF = new inventory_head.dog_fashion(src)
 		DF.apply(src)
 
-	if(inventory_back && inventory_back.dog_fashion)
+	if(inventory_back?.dog_fashion)
 		var/datum/dog_fashion/DF = new inventory_back.dog_fashion(src)
 		DF.apply(src)
 

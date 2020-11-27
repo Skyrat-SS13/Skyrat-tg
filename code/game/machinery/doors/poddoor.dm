@@ -1,7 +1,7 @@
 /obj/machinery/door/poddoor
 	name = "blast door"
 	desc = "A heavy duty blast door that opens mechanically."
-	icon = 'icons/obj/doors/blastdoor.dmi'
+	icon = 'icons/obj/doors/blastdoor.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "closed"
 	var/id = 1
 	layer = BLASTDOOR_LAYER
@@ -16,8 +16,8 @@
 	damage_deflection = 70
 	poddoor = TRUE
 
-/obj/machinery/door/poddoor/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
-	id = "[idnum][id]"
+/obj/machinery/door/poddoor/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	id = "[port.id]_[id]"
 
 /obj/machinery/door/poddoor/preopen
 	icon_state = "open"
@@ -61,11 +61,26 @@
 	name = "combustion chamber vent"
 	id = INCINERATOR_SYNDICATELAVA_AUXVENT
 
+/obj/machinery/door/poddoor/massdriver_toxins
+	name = "Toxins Launcher Bay Door"
+	id = MASSDRIVER_TOXINS
+
+/obj/machinery/door/poddoor/massdriver_chapel
+	name = "Chapel Launcher Bay Door"
+	id = MASSDRIVER_CHAPEL
+
+/obj/machinery/door/poddoor/massdriver_trash
+	name = "Disposals Launcher Bay Door"
+	id = MASSDRIVER_DISPOSALS
+
 /obj/machinery/door/poddoor/Bumped(atom/movable/AM)
 	if(density)
 		return 0
 	else
 		return ..()
+
+/obj/machinery/door/poddoor/shutters/bumpopen()
+	return
 
 //"BLAST" doors are obviously stronger than regular doors when it comes to BLASTS.
 /obj/machinery/door/poddoor/ex_act(severity, target)
@@ -77,10 +92,12 @@
 	switch(animation)
 		if("opening")
 			flick("opening", src)
-			playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE)
+			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
+			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 		if("closing")
 			flick("closing", src)
-			playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE)
+			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
+			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 
 /obj/machinery/door/poddoor/update_icon_state()
 	if(density)
@@ -107,7 +124,7 @@
 		if(hasPower())
 			time_to_open = 15 SECONDS
 
-		if(do_after(user, time_to_open, TRUE, src))
+		if(do_after(user, time_to_open, src))
 			if(density && !open(TRUE)) //The airlock is still closed, but something prevented it opening. (Another player noticed and bolted/welded the airlock in time!)
 				to_chat(user, "<span class='warning'>Despite your efforts, [src] managed to resist your attempts to open it!</span>")
 

@@ -126,6 +126,8 @@
 			cyborg_base_icon = "medical"
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_med"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+			has_snowflake_deadsprite = TRUE
 		if("Droid")
 			cyborg_base_icon = "medical"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
@@ -231,6 +233,8 @@
 			cyborg_base_icon = "engineer"
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_engi"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+			has_snowflake_deadsprite = TRUE
 		if("Default - Treads")
 			cyborg_base_icon = "engi-tread"
 			special_light_key = "engineer"
@@ -336,6 +340,7 @@
 			cyborg_base_icon = "sec"
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_sec"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 		if("Default - Treads")
 			cyborg_base_icon = "sec-tread"
 			special_light_key = "sec"
@@ -494,6 +499,8 @@
 			cyborg_base_icon = "janitor"
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_jani"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+			has_snowflake_deadsprite = TRUE
 		if("Marina")
 			cyborg_base_icon = "marinajan"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
@@ -739,6 +746,7 @@
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_miner"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+			has_snowflake_deadsprite = TRUE
 		//Dogborgs
 		if("Blade")
 			cyborg_base_icon = "blade"
@@ -773,14 +781,14 @@
 		/obj/item/wirecutters/cyborg,
 		/obj/item/multitool/cyborg,
 		/obj/item/lightreplacer/cyborg,
-		/obj/item/stack/sheet/metal/cyborg,
-		/obj/item/stack/sheet/glass/cyborg,
+		/obj/item/stack/sheet/metal,
+		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/plasteel/cyborg,
-		/obj/item/stack/cable_coil/cyborg,
+		/obj/item/stack/tile/plasteel,
+		/obj/item/stack/cable_coil,
 		/obj/item/restraints/handcuffs/cable/zipties,
-		/obj/item/stack/medical/gauze/cyborg,
+		/obj/item/stack/medical/gauze,
 		/obj/item/shockpaddles/cyborg,
 		/obj/item/healthanalyzer/advanced,
 		/obj/item/retractor/advanced,

@@ -121,10 +121,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		if(SOFT_CRIT)
 			message_mods[WHISPER_MODE] = MODE_WHISPER
 		if(UNCONSCIOUS)
-			if(!(message_mods[MODE_CHANGELING] || message_mods[MODE_ALIEN]))
+			if(!message_mods[MODE_ALIEN])
 				return
 		if(HARD_CRIT)
-			if(!(message_mods[WHISPER_MODE] || message_mods[MODE_CHANGELING] || message_mods[MODE_ALIEN]))
+			if(!(message_mods[WHISPER_MODE] || message_mods[MODE_ALIEN]))
 				return
 		if(DEAD)
 			say_dead(original_message)
@@ -384,13 +384,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return message
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
-	//SKYRAT EDIT ADDITION BEGIN
-	if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE)) // If can't use items, you can't press the button
-		to_chat(src, "<span class='warning'>You can't use the radio right now!</span>")
-		return ITALICS | REDUCE_RANGE
-	//SKYRAT EDIT END
 	var/obj/item/implant/radio/imp = locate() in src
-	if(imp && imp.radio.on)
+	if(imp?.radio.on)
 		if(message_mods[MODE_HEADSET])
 			imp.radio.talk_into(src, message, , spans, language, message_mods)
 			return ITALICS | REDUCE_RANGE

@@ -77,6 +77,8 @@
 
 /datum/config_entry/flag/log_emote	// log emotes
 
+/datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
+
 /datum/config_entry/flag/log_econ	// log economy actions
 
 /datum/config_entry/flag/log_adminchat	// log admin chat messages
@@ -217,7 +219,7 @@
 	config_entry_value = "http://www.tgstation13.org/wiki/Rules"
 
 /datum/config_entry/string/githuburl
-	config_entry_value = "https://www.github.com/tgstation/-tg-station"
+	config_entry_value = "https://www.github.com/tgstation/tgstation"
 
 /datum/config_entry/string/roundstatsurl
 
@@ -311,6 +313,11 @@
 /datum/config_entry/flag/byond_member_bypass_popcap
 
 /datum/config_entry/flag/panic_bunker	// prevents people the server hasn't seen before from connecting
+
+/datum/config_entry/number/panic_bunker_living // living time in minutes that a player needs to pass the panic bunker
+
+/// Flag for requiring players who would otherwise be denied access by the panic bunker to complete a written interview
+/datum/config_entry/flag/panic_bunker_interview
 
 /datum/config_entry/string/panic_bunker_message
 	config_entry_value = "Sorry but the server is currently not accepting connections from never before seen players."
@@ -495,3 +502,7 @@
 
 /datum/config_entry/string/centcom_source_whitelist
 
+//SKYRAT EDIT ADDITION BEGIN
+/datum/config_entry/string/servertagline
+	config_entry_value = "We forgot to set the server's tagline in config.txt"
+//SKYRAT EDIT END

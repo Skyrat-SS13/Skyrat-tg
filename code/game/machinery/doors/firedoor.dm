@@ -5,7 +5,7 @@
 /obj/machinery/door/firedoor
 	name = "firelock"
 	desc = "Apply crowbar."
-	icon = 'icons/obj/doors/Doorfireglass.dmi'
+	icon = 'icons/obj/doors/Doorfireglass.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "door_open"
 	opacity = FALSE
 	density = FALSE
@@ -17,7 +17,7 @@
 	explosion_block = 1
 	safe = FALSE
 	layer = BELOW_OPEN_DOOR_LAYER
-	closingLayer = CLOSED_FIREDOOR_LAYER
+	closingLayer = BELOW_OPEN_DOOR_LAYER //SKYRAT EDIT CHANGE - AESTHETICS - ORIGINAL: CLOSED_FIREDOOR_LAYER
 	assemblytype = /obj/structure/firelock_frame
 	armor = list(MELEE = 10, BULLET = 30, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 100, RAD = 100, FIRE = 95, ACID = 70)
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
@@ -125,6 +125,7 @@
 	if(W.use_tool(src, user, DEFAULT_STEP_TIME, volume=50))
 		welded = !welded
 		to_chat(user, "<span class='danger'>[user] [welded?"welds":"unwelds"] [src].</span>", "<span class='notice'>You [welded ? "weld" : "unweld"] [src].</span>")
+		log_game("[key_name(user)] [welded ? "welded":"unwelded"] firedoor [src] with [W] at [AREACOORD(src)]")
 		update_icon()
 
 /obj/machinery/door/firedoor/try_to_crowbar(obj/item/I, mob/user)
@@ -248,7 +249,7 @@
 
 /obj/machinery/door/firedoor/heavy
 	name = "heavy firelock"
-	icon = 'icons/obj/doors/Doorfire.dmi'
+	icon = 'icons/obj/doors/Doorfire.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	glass = FALSE
 	explosion_block = 2
 	assemblytype = /obj/structure/firelock_frame/heavy
@@ -257,14 +258,13 @@
 
 /obj/item/electronics/firelock
 	name = "firelock circuitry"
-	custom_price = 50
 	desc = "A circuit board used in construction of firelocks."
 	icon_state = "mainboard"
 
 /obj/structure/firelock_frame
 	name = "firelock frame"
 	desc = "A partially completed firelock."
-	icon = 'icons/obj/doors/Doorfire.dmi'
+	icon = 'icons/obj/doors/Doorfire.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "frame1"
 	anchored = FALSE
 	density = TRUE

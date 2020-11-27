@@ -47,7 +47,7 @@
 // controls power to devices in that area
 // may be opened to change power cell
 // three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
-
+//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area's electrical systems."
@@ -337,7 +337,8 @@
 			if(APC_NOT_CHARGING)
 				set_light_color(COLOR_SOFT_RED)
 			if(APC_CHARGING)
-				set_light_color(LIGHT_COLOR_BLUE)
+			//	set_light_color(LIGHT_COLOR_BLUE) ORIGINAL
+				set_light_color(LIGHT_COLOR_ORANGE)//SKYRAT EDIT CHANGE - AESTHETICS
 			if(APC_FULLY_CHARGED)
 				set_light_color(LIGHT_COLOR_GREEN)
 		set_light(lon_range)
@@ -780,7 +781,7 @@
 			to_chat(user, "<span class='warning'>Nothing happens!</span>")
 		else
 			flick("apc-spark", src)
-			playsound(src, "sparks", 75, TRUE)
+			playsound(src, "sparks", 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 			obj_flags |= EMAGGED
 			locked = FALSE
 			to_chat(user, "<span class='notice'>You emag the APC interface.</span>")
@@ -1056,8 +1057,8 @@
 	malf.malfhack = src
 	malf.malfhacking = addtimer(CALLBACK(malf, /mob/living/silicon/ai/.proc/malfhacked, src), 600, TIMER_STOPPABLE)
 
-	var/obj/screen/alert/hackingapc/A
-	A = malf.throw_alert("hackingapc", /obj/screen/alert/hackingapc)
+	var/atom/movable/screen/alert/hackingapc/A
+	A = malf.throw_alert("hackingapc", /atom/movable/screen/alert/hackingapc)
 	A.target = src
 
 /obj/machinery/power/apc/proc/malfoccupy(mob/living/silicon/ai/malf)
@@ -1168,7 +1169,7 @@
 		return 0
 
 /obj/machinery/power/apc/add_load(amount)
-	if(terminal && terminal.powernet)
+	if(terminal?.powernet)
 		terminal.add_load(amount)
 
 /obj/machinery/power/apc/avail(amount)
@@ -1182,7 +1183,7 @@
 		update_icon()
 	if(machine_stat & (BROKEN|MAINT))
 		return
-	if(!area.requires_power)
+	if(!area || !area.requires_power)
 		return
 	if(failure_timer)
 		update()
@@ -1490,5 +1491,4 @@
 /obj/item/electronics/apc
 	name = "power control module"
 	icon_state = "power_mod"
-	custom_price = 50
 	desc = "Heavy-duty switching circuits for power control."

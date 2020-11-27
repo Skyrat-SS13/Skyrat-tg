@@ -86,10 +86,10 @@
 				if(M_turf && M_turf.z == src.z)
 					var/dist = get_dist(M_turf, src)
 					if(dist <= 7) //source of sound very close
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency, falloff = 2)
+						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency)
 					else
 						var/vol = clamp(100-((dist-7)*5), 10, 100) //Every tile decreases sound volume by 5
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency, falloff = 5)
+						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency)
 				if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
 					M.show_message(message)
 		audible_message(message)
@@ -160,7 +160,7 @@
 	var/mob/living/simple_animal/hostile/true_changeling/T = owner
 	if(T.devouring)
 		T << "<span class='warning'>We are already feasting on a human!</span>"
-		return 0
+		return FALSE
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/H in range(1, usr))
 		if(H == T.stored_changeling || (H.mind && H.mind.has_antag_datum(/datum/antagonist/changeling))) //You can't eat changelings in human form
@@ -168,24 +168,24 @@
 		potential_targets.Add(H)
 	if(!potential_targets.len)
 		T << "<span class='warning'>There are no humans nearby!</span>"
-		return 0
+		return FALSE
 	var/mob/living/carbon/human/lunch
 	if(potential_targets.len == 1)
 		lunch = potential_targets[1]
 	else
 		lunch = input(T, "Choose a human to devour.", "Lunch") as null|anything in potential_targets
 	if(!lunch && !ishuman(lunch))
-		return 0
+		return FALSE
 	if(lunch.getBruteLoss() + lunch.getFireLoss() >= 200) //Overall physical damage, basically
 		T.visible_message("<span class='warning'>[lunch] provides no further nutrients for [T]!</span>", \
 						"<span class='danger'>[lunch] has no more useful flesh for us to consume!!</span>")
-		return 0
+		return FALSE
 	T.devouring = TRUE
 	T.visible_message("<span class='warning'>[T] begins ripping apart and feasting on [lunch]!</span>", \
 					"<span class='danger'>We begin to feast upon [lunch]...</span>")
 	if(!do_mob(usr, 50, target = lunch))
 		T.devouring = FALSE
-		return 0
+		return FALSE
 	T.devouring = FALSE
 	lunch.adjustBruteLoss(60)
 	T.visible_message("<span class='warning'>[T] tears a chunk from [lunch]'s flesh!</span>", \

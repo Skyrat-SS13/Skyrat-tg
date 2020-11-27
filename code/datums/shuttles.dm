@@ -68,7 +68,9 @@
 			continue
 		if(length(place.baseturfs) < 2) // Some snowflake shuttle shit
 			continue
-		place.baseturfs.Insert(3, /turf/baseturf_skipover/shuttle)
+		var/list/sanity = place.baseturfs.Copy()
+		sanity.Insert(3, /turf/baseturf_skipover/shuttle)
+		place.baseturfs = baseturfs_string_list(sanity, place)
 
 		for(var/obj/docking_port/mobile/port in place)
 			if(register)
@@ -101,7 +103,7 @@
 /datum/map_template/shuttle/post_load(obj/docking_port/mobile/M)
 	if(movement_force)
 		M.movement_force = movement_force.Copy()
-	M.linkup(src)
+	M.linkup()
 
 /datum/map_template/shuttle/emergency
 	port_id = "emergency"
@@ -521,7 +523,10 @@
 	name = "Tr%nPo2r& Z3TA"
 	description = "A glitch appears on your monitor, flickering in and out of the options laid before you. \
 	It seems strange and alien, you may need a special technology to access the signal.."
-	admin_notes = "Has alien surgery tools, and a void core that provides unlimited power."
+	//SKYRAT EDIT CHANGE BEGIN - CLONING
+	//admin_notes = "Has alien surgery tools, and a void core that provides unlimited power." - ORIGINAL
+	admin_notes = "Has an on-board experimental cloner that creates copies of its user, alien surgery tools, and a void core that provides unlimited power."
+	//SKYRAT EDIT CHANGE END
 	credit_cost = 8000
 
 /datum/map_template/shuttle/emergency/zeta/prerequisites_met()

@@ -1,7 +1,7 @@
 /obj/structure/extinguisher_cabinet
 	name = "extinguisher cabinet"
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
-	icon = 'icons/obj/wallmounts.dmi'
+	icon = 'icons/obj/wallmounts.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "extinguisher_closed"
 	anchored = TRUE
 	density = FALSE
@@ -17,7 +17,8 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -27 : 27)
 		pixel_y = (dir & 3)? (dir ==1 ? -30 : 30) : 0
 		opened = TRUE
-		icon_state = "extinguisher_empty"
+		//icon_state = "extinguisher_empty" ORIGINAL
+		icon_state = "extinguisher_empty_open"	//SKYRAT EDIT CHANGE - AESTHETICS
 	else
 		stored_extinguisher = new /obj/item/extinguisher(src)
 
@@ -93,22 +94,23 @@
 
 
 /obj/structure/extinguisher_cabinet/attack_tk(mob/user)
+	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	if(stored_extinguisher)
 		stored_extinguisher.forceMove(loc)
 		to_chat(user, "<span class='notice'>You telekinetically remove [stored_extinguisher] from [src].</span>")
 		stored_extinguisher = null
-		opened = 1
+		opened = TRUE
 		playsound(loc, 'sound/machines/click.ogg', 15, TRUE, -3)
 		update_icon()
-	else
-		toggle_cabinet(user)
+		return
+	toggle_cabinet(user)
 
 
 /obj/structure/extinguisher_cabinet/attack_paw(mob/user)
 	return attack_hand(user)
 
 /obj/structure/extinguisher_cabinet/AltClick(mob/living/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	toggle_cabinet(user)
 
@@ -120,6 +122,7 @@
 		opened = !opened
 		update_icon()
 
+/* SKYRAT EDIT REMOVAL BEGIN - AESTHETICS - MOVED TO MODULAR.
 /obj/structure/extinguisher_cabinet/update_icon_state()
 	if(!opened)
 		icon_state = "extinguisher_closed"
@@ -130,6 +133,7 @@
 			icon_state = "extinguisher_full"
 	else
 		icon_state = "extinguisher_empty"
+*/
 
 /obj/structure/extinguisher_cabinet/obj_break(damage_flag)
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))

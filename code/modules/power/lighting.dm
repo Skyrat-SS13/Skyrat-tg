@@ -9,11 +9,14 @@
 #define LIGHT_BROKEN 2
 #define LIGHT_BURNED 3
 
-#define BROKEN_SPARKS_MIN (30 SECONDS)
-#define BROKEN_SPARKS_MAX (90 SECONDS)
+#define BROKEN_SPARKS_MIN (3 MINUTES)
+#define BROKEN_SPARKS_MAX (9 MINUTES)
 
 #define LIGHT_DRAIN_TIME 25
 #define LIGHT_POWER_GAIN 35
+
+//How many reagents the lights can hold
+#define LIGHT_REAGENT_CAPACITY 5
 
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
@@ -94,12 +97,16 @@
 		cell = null
 		add_fingerprint(user)
 
+
 /obj/structure/light_construct/attack_tk(mob/user)
-	if(cell)
-		to_chat(user, "<span class='notice'>You telekinetically remove [cell].</span>")
-		cell.forceMove(drop_location())
-		cell.attack_tk(user)
-		cell = null
+	if(!cell)
+		return
+	to_chat(user, "<span class='notice'>You telekinetically remove [cell].</span>")
+	var/obj/item/stock_parts/cell/cell_reference = cell
+	cell = null
+	cell_reference.forceMove(drop_location())
+	return cell_reference.attack_tk(user)
+
 
 /obj/structure/light_construct/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
@@ -204,8 +211,8 @@
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-	icon = 'icons/obj/lighting.dmi'
-	var/overlayicon = 'icons/obj/lighting_overlay.dmi'
+	icon = 'icons/obj/lighting.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	var/overlayicon = 'icons/obj/lighting_overlay.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube"
 	desc = "A lighting fixture."
@@ -339,7 +346,7 @@
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
 			var/area/A = get_area(src)
-			if(emergency_mode || (A && A.fire))
+			if(emergency_mode || (A?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
@@ -357,6 +364,11 @@
 	else
 		glowybit.alpha = 0
 
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#define LIGHT_ON_DELAY_UPPER 3 SECONDS
+#define LIGHT_ON_DELAY_LOWER 1 SECONDS
+//SKYRAT EDIT END
+
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE)
 	switch(status)
@@ -364,13 +376,14 @@
 			on = FALSE
 	emergency_mode = FALSE
 	if(on)
+	/* SKYRAT EDIT ORIGINAL
 		var/BR = brightness
 		var/PO = bulb_power
 		var/CO = bulb_colour
 		if(color)
 			CO = color
 		var/area/A = get_area(src)
-		if (A && A.fire)
+		if (A?.fire)
 			CO = bulb_emergency_colour
 		else if (nightshift_enabled)
 			BR = nightshift_brightness
@@ -389,6 +402,15 @@
 			else
 				use_power = ACTIVE_POWER_USE
 				set_light(BR, PO, CO)
+		*/
+		//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
+		if(maploaded)
+			turn_on(trigger)
+			maploaded = FALSE
+		else if(!turning_on)
+			turning_on = TRUE
+			addtimer(CALLBACK(src, .proc/turn_on, trigger), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+		//SKYRAT EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
 		emergency_mode = TRUE
@@ -408,6 +430,11 @@
 			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
 
 	broken_sparks(start_only=TRUE)
+
+//SKYRAT EDIT ADDITION BEGIN - AESTHETICS
+#undef LIGHT_ON_DELAY_UPPER
+#undef LIGHT_ON_DELAY_LOWER
+//SKYRAT EDIT END
 
 /obj/machinery/light/update_atom_colour()
 	..()
@@ -730,8 +757,8 @@
 
 	to_chat(user, "<span class='notice'>You telekinetically remove the light [fitting].</span>")
 	// create a light tube/bulb item and put it in the user's hand
-	var/obj/item/light/L = drop_light_tube()
-	L.attack_tk(user)
+	var/obj/item/light/light_tube = drop_light_tube()
+	return light_tube.attack_tk(user)
 
 
 // break the light and make sparks if was on
@@ -820,6 +847,7 @@
 	base_state = "ltube"
 	inhand_icon_state = "c_tube"
 	brightness = 8
+	custom_price = PAYCHECK_EASY * 0.5
 
 /obj/item/light/tube/broken
 	status = LIGHT_BROKEN
@@ -833,6 +861,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	brightness = 4
+	custom_price = PAYCHECK_EASY * 0.4
 
 /obj/item/light/bulb/broken
 	status = LIGHT_BROKEN
@@ -857,6 +886,7 @@
 
 /obj/item/light/Initialize()
 	. = ..()
+	create_reagents(LIGHT_REAGENT_CAPACITY, INJECTABLE | DRAINABLE)
 	update()
 
 /obj/item/light/ComponentInitialize()
@@ -875,21 +905,11 @@
 
 // attack bulb/tube with object
 // if a syringe, can inject plasma to make it explode
-/obj/item/light/attackby(obj/item/I, mob/user, params)
-	..()
-	if(istype(I, /obj/item/reagent_containers/syringe))
-		var/obj/item/reagent_containers/syringe/S = I
-
-		to_chat(user, "<span class='notice'>You inject the solution into \the [src].</span>")
-
-		if(S.reagents.has_reagent(/datum/reagent/toxin/plasma, 5))
-
-			rigged = TRUE
-
-		S.reagents.clear_reagents()
-	else
-		..()
-	return
+/obj/item/light/on_reagent_change(changetype)
+	rigged = (reagents.has_reagent(/datum/reagent/toxin/plasma, LIGHT_REAGENT_CAPACITY)) //has_reagent returns the reagent datum
+	return ..()
+	
+#undef LIGHT_REAGENT_CAPACITY
 
 /obj/item/light/attack(mob/living/M, mob/living/user, def_zone)
 	..()

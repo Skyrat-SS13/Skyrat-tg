@@ -48,7 +48,7 @@
  */
 /obj/structure/bed/roller
 	name = "roller bed"
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "down"
 	anchored = FALSE
 	resistance_flags = NONE
@@ -90,7 +90,8 @@
 /obj/structure/bed/roller/post_buckle_mob(mob/living/M)
 	density = TRUE
 	icon_state = "up"
-	M.pixel_y = initial(M.pixel_y)
+	//Push them up from the normal lying position
+	M.pixel_y = M.base_pixel_y
 
 /obj/structure/bed/roller/Moved()
 	. = ..()
@@ -101,14 +102,14 @@
 /obj/structure/bed/roller/post_unbuckle_mob(mob/living/M)
 	density = FALSE
 	icon_state = "down"
-	M.pixel_x = M.get_standard_pixel_x_offset(M.body_position == LYING_DOWN)
-	M.pixel_y = M.get_standard_pixel_y_offset(M.body_position == LYING_DOWN)
+	//Set them back down to the normal lying position
+	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
 
 
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "folded"
 	w_class = WEIGHT_CLASS_NORMAL // No more excuses, stop getting blood everywhere
 
@@ -170,7 +171,7 @@
 	anchored = FALSE
 	buildstacktype = /obj/item/stack/sheet/mineral/wood
 	buildstackamount = 10
-	var/mob/living/owner = null
+	var/owned = FALSE
 
 /obj/structure/bed/dogbed/ian
 	desc = "Ian's bed! Looks comfy."
@@ -201,10 +202,14 @@
 	name = "Runtime's bed"
 	anchored = TRUE
 
+///Used to set the owner of a dogbed, returns FALSE if called on an owned bed or an invalid one, TRUE if the possesion succeeds
 /obj/structure/bed/dogbed/proc/update_owner(mob/living/M)
-	owner = M
+	if(owned || type != /obj/structure/bed/dogbed) //Only marked beds work, this is hacky but I'm a hacky man
+		return FALSE //Failed
+	owned = TRUE
 	name = "[M]'s bed"
 	desc = "[M]'s bed! Looks comfy."
+	return TRUE //Let any callers know that this bed is ours now
 
 /obj/structure/bed/dogbed/buckle_mob(mob/living/M, force, check_loc)
 	. = ..()

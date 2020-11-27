@@ -19,7 +19,7 @@
 /obj/machinery/status_display
 	name = "status display"
 	desc = null
-	icon = 'icons/obj/status_display.dmi'
+	icon = 'icons/obj/status_display.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "frame"
 	density = FALSE
 	use_power = IDLE_POWER_USE
@@ -292,8 +292,8 @@
 		if(NAMEOF(src, shuttle_id))
 			update()
 
-/obj/machinery/status_display/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override)
-	if (port && (shuttle_id == initial(shuttle_id) || override))
+/obj/machinery/status_display/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	if(port)
 		shuttle_id = port.id
 	update()
 

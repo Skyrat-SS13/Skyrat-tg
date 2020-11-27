@@ -35,13 +35,12 @@
 
 /obj/item/electronics/airalarm
 	name = "air alarm electronics"
-	custom_price = 50
 	icon_state = "airalarm_electronics"
 
 /obj/item/wallframe/airalarm
 	name = "air alarm frame"
 	desc = "Used for building Air Alarms."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/monitors.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "alarm_bitem"
 	result_path = /obj/machinery/airalarm
 
@@ -60,7 +59,7 @@
 /obj/machinery/airalarm
 	name = "air alarm"
 	desc = "A machine that monitors atmosphere levels. Goes off if the area is dangerous."
-	icon = 'icons/obj/monitors.dmi'
+	icon = 'icons/obj/monitors.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "alarm0"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 4
@@ -105,8 +104,9 @@
 		/datum/gas/healium			= new/datum/tlv/dangerous,
 		/datum/gas/proto_nitrate	= new/datum/tlv/dangerous,
 		/datum/gas/zauker			= new/datum/tlv/dangerous,
-		/datum/gas/halon			= new/datum/tlv/dangerous,
-		/datum/gas/hexane			= new/datum/tlv/dangerous
+		/datum/gas/helium			= new/datum/tlv/dangerous,
+		/datum/gas/antinoblium		= new/datum/tlv/dangerous,
+		/datum/gas/halon			= new/datum/tlv/dangerous
 	)
 
 /obj/machinery/airalarm/server // No checks here.
@@ -131,8 +131,9 @@
 		/datum/gas/healium			= new/datum/tlv/dangerous,
 		/datum/gas/proto_nitrate	= new/datum/tlv/dangerous,
 		/datum/gas/zauker			= new/datum/tlv/dangerous,
-		/datum/gas/halon			= new/datum/tlv/dangerous,
-		/datum/gas/hexane			= new/datum/tlv/dangerous
+		/datum/gas/helium			= new/datum/tlv/dangerous,
+		/datum/gas/antinoblium		= new/datum/tlv/dangerous,
+		/datum/gas/halon			= new/datum/tlv/dangerous
 	)
 
 /obj/machinery/airalarm/kitchen_cold_room // Kitchen cold rooms start off at -14°C or 259.15°K.
@@ -157,8 +158,9 @@
 		/datum/gas/healium			= new/datum/tlv/dangerous,
 		/datum/gas/proto_nitrate	= new/datum/tlv/dangerous,
 		/datum/gas/zauker			= new/datum/tlv/dangerous,
-		/datum/gas/halon			= new/datum/tlv/dangerous,
-		/datum/gas/hexane			= new/datum/tlv/dangerous
+		/datum/gas/helium			= new/datum/tlv/dangerous,
+		/datum/gas/antinoblium		= new/datum/tlv/dangerous,
+		/datum/gas/halon			= new/datum/tlv/dangerous
 	)
 
 /obj/machinery/airalarm/unlocked
@@ -552,8 +554,9 @@
 						/datum/gas/healium,
 						/datum/gas/proto_nitrate,
 						/datum/gas/zauker,
+						/datum/gas/helium,
+						/datum/gas/antinoblium,
 						/datum/gas/halon,
-						/datum/gas/hexane,
 					),
 					"scrubbing" = 1,
 					"widenet" = 1
@@ -854,7 +857,7 @@
 		return
 	obj_flags |= EMAGGED
 	visible_message("<span class='warning'>Sparks fly out of [src]!</span>", "<span class='notice'>You emag [src], disabling its safeties.</span>")
-	playsound(src, "sparks", 50, TRUE)
+	playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 
 /obj/machinery/airalarm/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))

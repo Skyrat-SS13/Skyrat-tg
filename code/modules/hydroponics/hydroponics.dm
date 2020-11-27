@@ -310,7 +310,7 @@
 		update_icon_lights()
 
 	if(!self_sustaining)
-		if(myseed && myseed.get_gene(/datum/plant_gene/trait/glow))
+		if(myseed?.get_gene(/datum/plant_gene/trait/glow))
 			var/datum/plant_gene/trait/glow/G = myseed.get_gene(/datum/plant_gene/trait/glow)
 			set_light(G.glow_range(myseed), G.glow_power(myseed), G.glow_color)
 		else
@@ -702,7 +702,7 @@
 
 	else if(istype(O, /obj/item/storage/bag/plants))
 		attack_hand(user)
-		for(var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
+		for(var/obj/item/food/grown/G in locate(user.x,user.y,user.z))
 			SEND_SIGNAL(O, COMSIG_TRY_STORAGE_INSERT, G, user, TRUE)
 		return
 
