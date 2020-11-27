@@ -170,6 +170,9 @@
 /obj/item/clothing/under/rank/security/officer/spacepol
 	mutant_variants = NONE
 
+/obj/item/clothing/under/rank/medical/doctor/nurse
+	mutant_variants = NONE
+
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/toggle/chef
 	mutant_variants = NONE
