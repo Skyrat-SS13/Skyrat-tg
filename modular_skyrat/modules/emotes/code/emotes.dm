@@ -474,6 +474,10 @@
 	user.nextsoundemote = world.time + 7
 	var/mob/living/carbon/H = user
 	var/sound = pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.gender == FEMALE)
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg')
 	if(H.dna.species.id == "moth")
 		sound = 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
 	playsound(user, sound, 50, 1, -1)
