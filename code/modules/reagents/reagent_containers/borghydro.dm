@@ -28,7 +28,7 @@ Borg Hypospray
 
 	var/list/datum/reagents/reagent_list = list()
 	//var/list/reagent_ids = list(/datum/reagent/medicine/c2/convermol, /datum/reagent/medicine/c2/libital, /datum/reagent/medicine/c2/multiver, /datum/reagent/medicine/c2/aiuri, /datum/reagent/medicine/epinephrine, /datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/salglu_solution) //Skyrat Edit - Fuck Cobbychem.
-	var/list/reagent_ids = list(/datum/reagent/medicine/dexalin, /datum/reagent/medicine/bicaridine, /datum/reagent/medicine/kelotane, /datum/reagent/medicine/c2/multiver, /datum/reagent/medicine/epinephrine, /datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/salglu_solution)
+	var/list/reagent_ids = list(/datum/reagent/medicine/dexalin, /datum/reagent/medicine/bicaridine, /datum/reagent/medicine/kelotane, /datum/reagent/medicine/c2/multiver, /datum/reagent/medicine/epinephrine, /datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/salglu_solution) //SKYRAT EDIT CHANGE
 	var/accepts_reagent_upgrades = TRUE //If upgrades can increase number of reagents dispensed.
 	var/list/modes = list() //Basically the inverse of reagent_ids. Instead of having numbers as "keys" and strings as values it has strings as keys and numbers as values.
 								//Used as list for input() in shakers.
