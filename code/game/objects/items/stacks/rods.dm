@@ -28,12 +28,9 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	embedding = list()
 	novariants = TRUE
 	matter_amount = 2
-<<<<<<< HEAD
-=======
 	cost = 250
 	source = /datum/robot_energy_storage/metal
 	merge_type = /obj/item/stack/rods
->>>>>>> ead0e859db6... Merge type variable fixes and unit test (#55173)
 
 /obj/item/stack/rods/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to stuff \the [src] down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide!</span>")//it looks like theyre ur mum
@@ -74,14 +71,6 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	else
 		return ..()
 
-<<<<<<< HEAD
-/obj/item/stack/rods/cyborg
-	mats_per_unit = null
-	is_cyborg = 1
-	cost = 250
-
-=======
->>>>>>> ead0e859db6... Merge type variable fixes and unit test (#55173)
 /obj/item/stack/rods/cyborg/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_blocker)
