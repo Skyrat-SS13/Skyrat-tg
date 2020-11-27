@@ -125,6 +125,9 @@
 /obj/item/clothing/head/helmet/police
 	mutant_variants = NONE
 
+/obj/item/clothing/head/helmet/swat
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -169,6 +172,40 @@
 
 /obj/item/clothing/under/rank/security/officer/spacepol
 	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/medical/doctor/nurse
+	mutant_variants = NONE
+
+/obj/item/clothing/under/syndicate/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/syndicate/tacticool/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/captain/suit/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/black/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/female/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/red/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/color/jumpskirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/dress/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/suit/black/skirt
+	mutant_variants = NONE
+
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/toggle/chef
