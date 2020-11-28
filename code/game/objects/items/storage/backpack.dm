@@ -344,7 +344,7 @@
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
 	//slowdown = 1 //ORIGINAL
-	slowdown = 0.5
+	slowdown = 0.5 //SKYRAT EDIT CHANGE
 
 /obj/item/storage/backpack/duffelbag/ComponentInitialize()
 	. = ..()
