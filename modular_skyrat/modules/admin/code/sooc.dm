@@ -59,12 +59,6 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 
 	var/list/listeners = list()
 
-	for(var/mind in get_antag_minds(/datum/antagonist))
-		var/datum/mind/M = mind
-		if(!M.current || !M.current.client || isnewplayer(M.current))
-			continue
-		listeners[M.current.client] = SOOC_LISTEN_PLAYER
-
 	for(var/m in GLOB.player_list)
 		var/mob/M = m
 		//Admins with muted OOC do not get to listen to SOOC, but normal players do, as it could be admins talking important stuff to them
@@ -95,16 +89,16 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	else //otherwise just toggle it
 		GLOB.sooc_allowed = !GLOB.sooc_allowed
 	var/list/listeners = list()
-	for(var/mind in get_antag_minds(/datum/antagonist))
-		var/datum/mind/M = mind
-		if(!M.current || !M.current.client || isnewplayer(M.current))
-			continue
-		listeners[M.current.client] = TRUE
 
 	for(var/m in GLOB.player_list)
 		var/mob/M = m
 		if(M.client && M.client.holder && !M.client.holder.deadmined)
 			listeners[M.client] = TRUE
+		else
+			if(M.mind)
+				var/datum/mind/MIND = M.mind
+				if(job_lookup[MIND.assigned_role])
+					listeners[M.client] = TRUE
 	for(var/c in listeners)
 		var/client/C = c
 		to_chat(C, "<B>The SOOC channel has been globally [GLOB.sooc_allowed ? "enabled" : "disabled"].</B>")
