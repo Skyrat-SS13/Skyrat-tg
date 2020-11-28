@@ -471,8 +471,7 @@
 			else
 				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
 		if(client)
-			if(length(client.prefs.ooc_prefs))
-				line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+			line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
 		if(line)
 			. += line
 	//Temporary flavor text addition:
