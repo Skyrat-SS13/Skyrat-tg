@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	else //otherwise just toggle it
 		GLOB.sooc_allowed = !GLOB.sooc_allowed
 	var/list/listeners = list()
-
+	var/static/list/job_lookup = list("Security Officer"=TRUE, "Warden"=TRUE, "Detective"=TRUE, "Head of Security"=TRUE, "Captain"=TRUE, "Blueshield"=TRUE)
 	for(var/m in GLOB.player_list)
 		var/mob/M = m
 		if(M.client && M.client.holder && !M.client.holder.deadmined)
