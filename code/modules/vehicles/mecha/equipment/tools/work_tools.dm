@@ -14,7 +14,8 @@
 	harmful = TRUE
 	mech_flags = EXOSUIT_MODULE_RIPLEY
 	///Bool for whether we beat the hell out of things we punch (and tear off their arms)
-	var/killer_clamp = FALSE
+	//var/killer_clamp = FALSE -------SKYRAT EDIT - A clamp is a clamp, just like it was on the oldbase.
+	var/killer_clamp = TRUE
 	///How much base damage this clamp does
 	var/clamp_damage = 20
 	///Var for the chassis we are attached to, needed to access ripley contents and such
