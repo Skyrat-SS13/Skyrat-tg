@@ -1,4 +1,4 @@
-//Skyrats Edit Begin Removes Split Personality
+//SKYRATS EDIT BEGIN REMOVES SPLIT PERSONALITY
 /*
 #define OWNER 0
 #define STRANGER 1
@@ -238,4 +238,4 @@
 #undef OWNER
 #undef STRANGER
 */
-// Skyrats Edit End Remove Split Personality
+// SKYRATS EDIT END REMOVE SPLIT PERSONALITY
