@@ -130,7 +130,6 @@
 		vial.attack_self(user)
 		return TRUE
 
-// Gunna allow this for now, still really don't approve - Pooj
 /obj/item/hypospray/mkii/emag_act(mob/user)
 	. = ..()
 	if(obj_flags & EMAGGED)
@@ -176,7 +175,7 @@
 		return
 
 	var/fp_verb = mode == HYPO_SPRAY ? "spray" : "inject"
-	var/method = mode == HYPO_SPRAY ? TOUCH : INJECT
+	//var/method = mode == HYPO_SPRAY ? TOUCH : INJECT
 
 	if(L != user)
 		L.visible_message("<span class='danger'>[user] is trying to [fp_verb] [L] with [src]!</span>", \
@@ -192,11 +191,11 @@
 	else
 		L.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", INDIVIDUAL_ATTACK_LOG)
 
-	var/fraction = min(vial.amount_per_transfer_from_this/vial.reagents.total_volume, 1)
-	vial.reagents.reaction(L, method, fraction)
+	//var/fraction = min(vial.amount_per_transfer_from_this/vial.reagents.total_volume, 1)
+	//vial.reagents.reaction(L, method, fraction)
 	vial.reagents.trans_to(target, vial.amount_per_transfer_from_this)
 	var/long_sound = vial.amount_per_transfer_from_this >= 15
-	playsound(loc, long_sound ? 'sound/items/hypospray_long.ogg' : pick('sound/items/hypospray.ogg','sound/items/hypospray2.ogg'), 50, 1, -1)
+	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
 	to_chat(user, "<span class='notice'>You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units.</span>")
 
 /obj/item/hypospray/mkii/attack_self(mob/living/user)

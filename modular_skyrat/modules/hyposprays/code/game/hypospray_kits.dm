@@ -1,6 +1,7 @@
 /obj/item/storage/hypospraykit
 	name = "hypospray kit"
 	desc = "It's a kit containing a hypospray and specific treatment chemical-filled vials."
+	icon = 'modular_skyrat/modules/hyposprays/icons/hypokits.dmi'
 	icon_state = "firstaid-mini"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
@@ -15,6 +16,17 @@
 	STR.can_hold = typecacheof(list(
 	/obj/item/hypospray/mkii,
 	/obj/item/reagent_containers/glass/bottle/vial))
+
+/obj/item/storage/hypospraykit/empty
+	desc = "A hypospray kit with general use vials."
+
+/obj/item/storage/hypospraykit/empty/PopulateContents()
+	if(empty)
+		return
+	new /obj/item/hypospray/mkii(src)
+	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
+	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
+	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
 
 /obj/item/storage/hypospraykit/regular
 	icon_state = "firstaid-mini"
