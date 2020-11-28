@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
 			"Station Time: [station_time_timestamp()]",
-			" ",
+			" ", //SKYRAT EDIT ADDITION
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			"Real Round Time: [time2text(real_round_time, "hh:mm:ss")]", //SKYRAT EDIT ADDITION
 			"Connected Players: [GLOB.clients.len]" //SKYRAT EDIT ADDITION
