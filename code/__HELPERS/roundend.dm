@@ -563,7 +563,7 @@
 			for(var/stri in AMB.objectives)
 				result += "<br>* [stri]"
 			var/intensity = "NOT SET"
-			switch(AMB.intesity)
+			switch(AMB.intensity)
 				if(AMBITION_INTENSITY_STEALTH)
 					intensity = "Stealth"
 				if(AMBITION_INTENSITY_MILD)
