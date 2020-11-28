@@ -128,6 +128,10 @@
 	description = "<span class='warning'>It sure is dark around here...</span>\n"
 	mood_change = -3
 
+/datum/mood_event/brightlight
+	description = "<span class='warning'>The light feels unbearable...</span>\n"
+	mood_change = -3
+
 /datum/mood_event/family_heirloom_missing
 	description = "<span class='warning'>I'm missing my family heirloom...</span>\n"
 	mood_change = -4
