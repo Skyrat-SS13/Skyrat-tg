@@ -674,6 +674,40 @@
 	lose_text = "<span class='notice'>Your mind finally feels calm.</span>"
 	medical_record_text = "Patient's mind is in a vulnerable state, and cannot recover from traumatic events."
 	hardcore_value = 9
+	
+/datum/quirk/monophobia
+	name = "Monophobia"
+	desc = "You will become increasingly stressed when not in company of others, triggering panic reactions ranging from sickness to heart attacks."
+	value = -3 // Might change it to 4.
+	gain_text = "<span class='danger'>You feel really lonely...</span>"
+	lose_text = "<span class='notice'>You feel like you could be safe on your own.</span>"
+	medical_record_text = "Patient feels sick and distressed when not around other people, leading to potentially lethal levels of stress."
+
+/datum/quirk/monophobia/post_add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.gain_trauma(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/monophobia/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H?.cure_trauma_type(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/lightless
+	name = "Light Sensitivity"
+	desc = "Bright lights irritate you. Your eyes start to water, your skin feels itchy against the photon radiation, and your hair gets dry and frizzy. Maybe it's a medical condition. If only Nanotrasen was more considerate of your needs..."
+	value = -1
+	gain_text = "<span class='danger'>The safty of light feels off...</span>"
+	lose_text = "<span class='notice'>Enlightening.</span>"
+	medical_record_text = "Despite my warnings, the patient refuses turn on the lights, only to end up rolling down a full flight of stairs and into the cellar."
+
+/datum/quirk/lightless/on_process()
+	var/turf/T = get_turf(quirk_holder)
+	var/lums = T.get_lumcount()
+	if(lums >= 0.8)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "brightlight", /datum/mood_event/brightlight)
+	else
+		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "brightlight")
 
 /datum/quirk/allergic
 	name = "Extreme Medicine Allergy"
