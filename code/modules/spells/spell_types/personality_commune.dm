@@ -1,4 +1,4 @@
-//Skyrats edit begin Removes Split personality
+//Skyrats Edit Begin Removes Split Personality
 /*
 /obj/effect/proc_holder/spell/targeted/personality_commune
 	name = "Personality Commune"
@@ -33,4 +33,4 @@
 			continue
 		to_chat(ded, "[FOLLOW_LINK(ded, user)] <span class='boldnotice'>[user] [name]:</span> <span class='notice'>\"[msg]\" to</span> <span class='name'>[trauma]</span>")
 */
-//Skyrats edit end
+//Skyrats Edit End Remove Split Personality
