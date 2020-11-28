@@ -82,6 +82,13 @@
 	default_color = "F00"
 	affected_bodyparts = HEAD
 	always_color_customizable = TRUE
+	
+/datum/body_marking/other/big_eyes
+	name = "Bigger Eyes"
+	icon_state = "biggereyes"
+	default_color = "F00"
+	affected_bodyparts = HEAD
+	always_color_customizable = TRUE
 
 /datum/body_marking/secondary
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/secondary_markings.dmi'
