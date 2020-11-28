@@ -32330,6 +32330,8 @@
 	req_access_txt = "30"
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plasteel/dark,
 /area/science/server)
 "byi" = (
@@ -32649,10 +32651,15 @@
 /area/maintenance/aft)
 "bzu" = (
 /obj/machinery/rnd/server,
-/turf/open/floor/circuit/telecomms/server,
+/obj/structure/lattice/catwalk,
+/turf/open/openspace,
 /area/science/server)
 "bzv" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
 "bzw" = (
@@ -32666,7 +32673,12 @@
 /area/science/server)
 "bzx" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on,
+/obj/machinery/airalarm{
+	pixel_y = 25
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
 "bzy" = (
@@ -32682,6 +32694,9 @@
 	pixel_y = 23
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
 "bzz" = (
@@ -33126,27 +33141,19 @@
 /area/maintenance/aft)
 "bAy" = (
 /obj/effect/landmark/blobstart,
-/obj/machinery/atmospherics/pipe/simple{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark/telecomms,
+/obj/structure/lattice/catwalk,
+/turf/open/openspace,
 /area/science/server)
 "bAz" = (
-/obj/machinery/airalarm/server{
-	dir = 4;
-	pixel_x = -22
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/passive_vent{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark/telecomms,
+/obj/structure/lattice/catwalk,
+/turf/open/openspace,
 /area/science/server)
 "bAA" = (
-/obj/machinery/atmospherics/pipe/simple{
-	dir = 4
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
@@ -33156,25 +33163,19 @@
 	name = "Server Room";
 	req_access_txt = "30"
 	},
-/obj/machinery/atmospherics/pipe/simple{
-	dir = 4
-	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
 "bAC" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple{
-	dir = 9
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
 "bAD" = (
 /obj/structure/chair/office/light,
-/obj/machinery/atmospherics/pipe/simple{
-	dir = 4
-	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
 "bAE" = (
@@ -33666,7 +33667,8 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "bBS" = (
-/turf/open/floor/circuit/telecomms/server,
+/obj/structure/lattice/catwalk,
+/turf/open/openspace,
 /area/science/server)
 "bBT" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -55402,6 +55404,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/nanite)
+"uzn" = (
+/obj/machinery/camera{
+	c_tag = "Science - Server Room";
+	dir = 8;
+	name = "science camera";
+	network = list("ss13","rd")
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/openspace,
+/area/science/server)
 "uzB" = (
 /obj/structure/displaycase/labcage,
 /obj/effect/turf_decal/stripes/end{
@@ -99781,7 +99793,7 @@ buT
 byf
 bBS
 bAy
-bBS
+uzn
 vwd
 soJ
 qWJ
@@ -100291,7 +100303,7 @@ bqa
 cIe
 box
 bWr
-aRU
+bve
 byh
 bzv
 bAA
