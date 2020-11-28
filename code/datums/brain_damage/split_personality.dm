@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 #define OWNER 0
 #define STRANGER 1
 
@@ -235,3 +237,5 @@
 
 #undef OWNER
 #undef STRANGER
+*/
+// SKYRAT EDIT REMOVAL END
