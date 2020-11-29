@@ -90,11 +90,11 @@
 
 /datum/emote/living/peep
 	key = "peep"
-	key_third_person = "peeps like a bird"
+	key_third_person = "peeps"
 	message = "peeps like a bird!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/peep_once.ogg'
 
 /datum/emote/living/peep/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -102,15 +102,14 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/peep_once.ogg', 50, 1, -1)
 
 /datum/emote/living/peep2
 	key = "peep2"
-	key_third_person = "peeps twice like a bird"
+	key_third_person = "peeps twice"
 	message = "peeps twice like a bird!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/peep.ogg'
 
 /datum/emote/living/peep2/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -118,7 +117,6 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/peep.ogg', 50, 1, -1)
 
 /mob
 	var/nextsoundemote = 1
@@ -482,6 +480,7 @@
 	key = "tilt"
 	key_third_person = "tilts"
 	message = "tilts their head."
+	message_AI = "tilts the image on their display."
 
 /datum/emote/living/beeps
 	key = "beeps"
@@ -500,3 +499,28 @@
 	user.nextsoundemote = world.time + 7
 	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
 	playsound(user, sound, 50, 1, -1)
+
+// Avian revolution
+/datum/emote/living/bawk
+	key = "bawk"
+	key_third_person = "bawks"
+	message = "bawks like a chicken."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/bawk.ogg'
+
+/datum/emote/living/caw
+	key = "caw"
+	key_third_person = "caws"
+	message = "caws!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/caw.ogg'
+
+/datum/emote/living/caw2
+	key = "caw2"
+	key_third_person = "caws twice"
+	message = "caws twice!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/caw2.ogg'
