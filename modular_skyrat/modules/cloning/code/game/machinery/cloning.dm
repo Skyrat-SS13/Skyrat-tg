@@ -188,7 +188,7 @@
 	H.real_name = clonename
 
 	H.hardset_dna(ui, mutation_index, H.dna.default_mutation_genes, H.real_name, blood_type, mrace, features, H.dna.mutations, FALSE)
-	H.set_species(mrace, TRUE, null, features, mutantparts, markings)
+	H.set_species(mrace, TRUE, null, features.Copy(), mutantparts.Copy(), markings.Copy())
 
 	if(!HAS_TRAIT(H, TRAIT_RADIMMUNE))//dont apply mutations if the species is Mutation proof.
 		if(efficiency > 2)

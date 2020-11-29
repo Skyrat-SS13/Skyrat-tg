@@ -1702,18 +1702,17 @@
 				if("penis_taur_mode")
 					features["penis_taur_mode"] = !features["penis_taur_mode"]
 				if("penis_size")
-					var/new_length = input(user, "Choose your penis length:\n(2-20 in inches)", "Character Preference") as num|null
+					var/new_length = input(user, "Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] in inches)", "Character Preference") as num|null
 					if(new_length)
-						features["penis_size"] = clamp(round(new_length, 1), 2, 20)
+						features["penis_size"] = clamp(round(new_length, 1), PENIS_MIN_LENGTH, PENIS_MAX_LENGTH)
 						if(features["penis_girth"] >= new_length)
 							features["penis_girth"] = new_length - 1
 				if("penis_sheath")
-					var/list/sheath_choice_list = list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
-					var/new_sheath = input(user, "Choose your penis sheath", "Character Preference") as null|anything in sheath_choice_list
+					var/new_sheath = input(user, "Choose your penis sheath", "Character Preference") as null|anything in SHEATH_MODES
 					if(new_sheath)
 						features["penis_sheath"] = new_sheath
 				if("penis_girth")
-					var/max_girth = 15
+					var/max_girth = PENIS_MAX_GIRTH
 					if(features["penis_size"] >= max_girth)
 						max_girth = features["penis_size"]
 					var/new_girth = input(user, "Choose your penis girth:\n(1-[max_girth] (based on length) in inches)", "Character Preference") as num|null
