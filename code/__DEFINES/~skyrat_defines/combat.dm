@@ -109,6 +109,8 @@
 	if(!affecting)
 		return FALSE
 	. = FALSE
+	if(HAS_TRAIT(user, TRAIT_PACIFISM)) //They're mostly violent acts
+		return
 	switch(user.a_intent)
 		if(INTENT_HARM)
 			switch(user.zone_selected)
@@ -116,24 +118,35 @@
 					//Head slam
 					if(target.body_position == LYING_DOWN)
 						. = TRUE
-						target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!</span>", \
-							"<span class='userdanger'>[user.name] holds your head and tries to overpower you!</span>", ignored_mobs=user)
-						to_chat(user, "<span class='danger'>You grasp [target.name]'s head and try to overpower [target.p_them()]...</span>")
-						user.changeNext_move(4 SECONDS)
-						if(do_mob(user, target, 4 SECONDS))
-							target.visible_message("<span class='danger'>[user.name] violently slams [target.name]'s head into the floor!</span>", \
-								"<span class='userdanger'>[user.name] slams your head against the floor, knocking you out cold!</span>", ignored_mobs=user)
-							to_chat(user, "<span class='danger'>You slam [target.name] head against the floor, knocking him out cold!</span>")
-
-							//Check to see if our head is protected by atleast 20 melee armor
+						var/time_doing = 4 SECONDS
+						if(target.stat != CONSCIOUS)
+							time_doing = 2 SECONDS
+							target.visible_message("<span class='danger'>[user.name] holds [target.name]'s tight and slams it down!</span>", ignored_mobs=user)
+							to_chat(user, "<span class='danger'>You grasp [target.name]'s head and slam it down!</span>")
+						else
+							target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!</span>", \
+								"<span class='userdanger'>You struggle as [user.name] holds your head and tries to overpower you!</span>", ignored_mobs=user)
+							to_chat(user, "<span class='danger'>You grasp [target.name]'s head and try to overpower [target.p_them()]...</span>")
+						user.changeNext_move(time_doing)
+						if(do_mob(user, target, time_doing))
 							var/armor_block = target.run_armor_check(affecting, MELEE)
+							var/head_knock = FALSE
 							if(armor_block < HEADSMASH_BLOCK_ARMOR)
-								target.Unconscious(400)
+								head_knock = TRUE
+
+							target.visible_message("<span class='danger'>[user.name] violently slams [target.name]'s head into the floor!</span>", \
+								"<span class='userdanger'>[user.name] slams your head against the floor[head_knock ? ", knocking you out cold" : ""]!</span>", ignored_mobs=user)
+							to_chat(user, "<span class='danger'>You slam [target.name] head against the floor[head_knock ? ", knocking him out cold" : ""]!</span>")
+							
+							//Check to see if our head is protected by atleast 20 melee armor
+							if(head_knock)
+								if(target.stat == CONSCIOUS)
+									target.Unconscious(400)
 								target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15)
 
 							target.apply_damage(15, BRUTE, affecting, armor_block)
 							playsound(target, 'sound/effects/hit_kick.ogg', 70)
-							log_combat(user, target, "headsmashes", "against the floor (knocking unconscious)")
+							log_combat(user, target, "headsmashes", "against the floor (trying to knock unconscious)")
 
 		//Chances are, no matter what you do on disarm you're gonna break your grip by accident because of shoving, let make a good use of disarm intent for maneuvers then
 		if(INTENT_DISARM)
