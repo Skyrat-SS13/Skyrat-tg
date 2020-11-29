@@ -60,9 +60,10 @@
 		/datum/reagent/sulfur,
 		/datum/reagent/toxin/acid,
 		/datum/reagent/water,
-		/datum/reagent/fuel
+		/datum/reagent/fuel,
+		///datum/reagent/silver //Skyrat Addition - Something something silver surfer.  //ADDENDUM - Azarak said no because ???, yell at him if you don't like it, don't scream at me.
 	)
-	//these become available once the manipulator has been upgraded to tier 4 (femto)
+	/*//these become available once the manipulator has been upgraded to tier 4 (femto)    //SKYRAT CHANGE - No more gimped dispeners.
 	var/list/upgrade_reagents = list(
 		/datum/reagent/acetone,
 		/datum/reagent/ammonia,
@@ -77,6 +78,32 @@
 		/datum/reagent/medicine/morphine,
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
+	)*/
+	// !!!!!THESE ARE THE NEW SKYRAT CHEMICALS!!!!!
+	var/list/upgrade_reagents = list(
+		/datum/reagent/oil,
+		/datum/reagent/ammonia,
+		/datum/reagent/ash
+	)
+
+	var/list/upgrade_reagents2 = list(
+		/datum/reagent/acetone,
+		/datum/reagent/phenol,
+		/datum/reagent/diethylamine
+	)
+
+	var/list/upgrade_reagents3 = list(
+		/datum/reagent/medicine/mine_salve,
+		/datum/reagent/toxin
+	)
+
+	var/list/emagged_reagents = list(
+		/datum/reagent/drug/space_drugs,
+		/datum/reagent/toxin/plasma,
+		/datum/reagent/consumable/frostoil,
+		/datum/reagent/toxin/carpotoxin,
+		/datum/reagent/toxin/histamine,
+		/datum/reagent/medicine/morphine
 	)
 
 	var/list/recording_recipe
@@ -86,7 +113,7 @@
 	var/list/transferAmounts = list()
 	var/customTransferAmount
 	//SKYRAT EDIT END
-/obj/machinery/chem_dispenser/Initialize()
+/*/obj/machinery/chem_dispenser/Initialize() //SKYRAT CHANGE - No more gimped chemistry dispenser
 	. = ..()
 	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
 	if(emagged_reagents)
@@ -95,6 +122,20 @@
 		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
 	if(is_operational)
 		begin_processing()
+	update_icon()*/
+
+/obj/machinery/chem_dispenser/Initialize()
+	. = ..()
+	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
+	if(emagged_reagents)
+		emagged_reagents = sortList(emagged_reagents, /proc/cmp_reagents_asc)
+	if(upgrade_reagents)
+		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
+	if(upgrade_reagents2)
+		upgrade_reagents2 = sortList(upgrade_reagents2, /proc/cmp_reagents_asc)
+	if(upgrade_reagents3)
+		upgrade_reagents3 = sortList(upgrade_reagents3, /proc/cmp_reagents_asc)
+	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
 	update_icon()
 
 /obj/machinery/chem_dispenser/Destroy()
