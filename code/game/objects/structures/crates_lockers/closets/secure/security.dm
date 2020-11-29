@@ -97,6 +97,7 @@
 	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
+	new /obj/item/clothing/suit/space/hardsuit/security_armor/hos(src) //Skyrat Addition - Techarmor
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
@@ -130,8 +131,9 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/clothing/head/helmet/sec(src)
+	/*new /obj/item/clothing/suit/armor/vest(src)
+	new /obj/item/clothing/head/helmet/sec(src)*/ //Skyrat removal - Techarmor
+	new /obj/item/clothing/suit/space/hardsuit/security_armor(src) //Skyrat Addition - Techarmor
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
