@@ -30289,6 +30289,12 @@
 /area/science/robotics/lab)
 "bsP" = (
 /obj/structure/closet/secure_closet/medical2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
 "bsQ" = (
@@ -30299,16 +30305,17 @@
 /obj/item/mmi,
 /obj/item/mmi,
 /obj/item/mmi,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
 "bsS" = (
-/obj/machinery/mechpad,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "bsT" = (
@@ -48426,6 +48433,12 @@
 /obj/item/tank/internals/anesthetic,
 /obj/item/clothing/mask/breath/medical,
 /obj/item/clothing/mask/breath/medical,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
 "cIf" = (
@@ -48436,6 +48449,12 @@
 	},
 /obj/machinery/computer/mechpad{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
@@ -55761,6 +55780,10 @@
 	},
 /turf/open/floor/engine,
 /area/science/scichem)
+"uEj" = (
+/obj/machinery/mechpad,
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
 "uES" = (
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
@@ -56209,6 +56232,11 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"vKJ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/plasteel/white,
+/area/science/robotics/lab)
 "vLr" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
@@ -56497,6 +56525,10 @@
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/white,
 /area/medical/cryo)
+"wuF" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/plasteel/white,
+/area/science/robotics/lab)
 "wuY" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -100209,8 +100241,8 @@ cHN
 blv
 bfT
 bov
-bsQ
-bsQ
+wuF
+vKJ
 bsP
 bfV
 btw
@@ -101495,7 +101527,7 @@ cHO
 blG
 blG
 cHV
-biL
+uEj
 jFl
 bfV
 cIb
