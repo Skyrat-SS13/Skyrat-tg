@@ -1,4 +1,4 @@
-insert link here
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/1929
 
 ## Title: Hyposprays
 
