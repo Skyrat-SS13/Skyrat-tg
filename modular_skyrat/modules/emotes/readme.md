@@ -30,4 +30,4 @@ Edit (Avunia): Also adds some new emotes.
 ### Credits:
 Gandalf2k15 - porting and refactoring
 
-Avunia Takiya - refactoring and adding *bawk, *caw, *caw2, also adjusting existing sound files
+Avunia Takiya - refactoring code and adjusting existing sound files, adding *bawk, *caw, *caw2
