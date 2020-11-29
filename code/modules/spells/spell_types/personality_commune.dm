@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /obj/effect/proc_holder/spell/targeted/personality_commune
 	name = "Personality Commune"
 	desc = "Sends thoughts to your alternate consciousness."
@@ -30,3 +32,5 @@
 		if(!isobserver(ded))
 			continue
 		to_chat(ded, "[FOLLOW_LINK(ded, user)] <span class='boldnotice'>[user] [name]:</span> <span class='notice'>\"[msg]\" to</span> <span class='name'>[trauma]</span>")
+*/
+//SKYRATS EDIT REMOVAL END
