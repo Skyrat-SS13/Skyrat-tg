@@ -534,7 +534,8 @@
 
 	if(current_cycle >= cycles_to_turn)
 		var/datum/species/species_type = race
-		H.set_species(species_type)
+		//H.set_species(species_type) //ORIGINAL
+		H.set_species(species_type, TRUE, null, null, null, null, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		holder.del_reagent(type)
 		to_chat(H, "<span class='warning'>You've become \a [lowertext(initial(species_type.name))]!</span>")
 		return
@@ -596,7 +597,8 @@
 		return TRUE
 	if(current_cycle >= cycles_to_turn) //overwrite since we want subtypes of jelly
 		var/datum/species/species_type = pick(subtypesof(race))
-		H.set_species(species_type)
+		//H.set_species(species_type) //ORIGINAL
+		H.set_species(species_type, TRUE, null, null, null, null, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		holder.del_reagent(type)
 		to_chat(H, "<span class='warning'>You've become \a [initial(species_type.name)]!</span>")
 		return TRUE
