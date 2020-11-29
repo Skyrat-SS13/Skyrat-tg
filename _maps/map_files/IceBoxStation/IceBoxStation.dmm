@@ -1994,6 +1994,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aeo" = (
@@ -2001,6 +2002,10 @@
 	c_tag = "Permabrig Central";
 	dir = 8;
 	network = list("ss13","prison")
+	},
+/obj/machinery/cryopod,
+/obj/machinery/computer/cryopod{
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -50827,6 +50832,18 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
+"iQJ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/shower{
+	dir = 4;
+	name = "emergency shower"
+	},
+/obj/effect/turf_decal/stripes/end{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "iTj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plasteel/dark,
@@ -89358,7 +89375,7 @@ bUK
 bVT
 bWR
 bXQ
-bQj
+iQJ
 bZF
 bPc
 bVQ

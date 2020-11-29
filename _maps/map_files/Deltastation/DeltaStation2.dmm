@@ -12754,12 +12754,14 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/plasteel,
 /area/engine/atmospherics_engine)
 "aCp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/plasteel,
 /area/engine/atmospherics_engine)
 "aCr" = (
@@ -16590,6 +16592,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/structure/closet/crate/trashcart,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aJA" = (
@@ -17968,12 +17971,14 @@
 /turf/open/floor/plasteel,
 /area/security/prison/safe)
 "aMh" = (
-/obj/structure/closet/crate/trashcart,
 /obj/structure/sign/poster/official/random{
 	pixel_x = 30
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/effect/spawner/randomarcade{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aMi" = (
@@ -18619,9 +18624,6 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aND" = (
-/obj/effect/spawner/randomarcade{
-	dir = 8
-	},
 /obj/machinery/status_display/evac{
 	pixel_x = 32
 	},
@@ -18633,6 +18635,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
 	dir = 4
+	},
+/obj/effect/spawner/randomarcade{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -19521,11 +19526,15 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aPl" = (
-/obj/effect/spawner/randomarcade{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aPn" = (
@@ -19533,9 +19542,6 @@
 	dir = 8
 	},
 /obj/item/caution,
-/obj/structure/sign/poster/official/no_erp{
-	pixel_x = -30
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -20575,6 +20581,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
 	dir = 4
+	},
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -77356,19 +77365,19 @@
 /obj/item/radio/intercom{
 	pixel_y = 26
 	},
-/obj/machinery/dna_scannernew,
 /obj/machinery/camera{
 	c_tag = "Medbay - Cloning Lab";
 	name = "medbay camera";
 	network = list("ss13","medbay")
 	},
 /obj/structure/cable,
+/obj/machinery/computer/cloning,
 /turf/open/floor/plasteel/dark,
 /area/medical/genetics/cloning)
 "cSR" = (
-/obj/machinery/computer/cloning,
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable,
+/obj/machinery/dna_scannernew,
 /turf/open/floor/plasteel/dark,
 /area/medical/genetics/cloning)
 "cSS" = (
@@ -107853,11 +107862,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
-"eui" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/structure/bookcase/random,
-/turf/open/floor/wood,
-/area/library/abandoned)
 "exE" = (
 /obj/machinery/air_sensor/atmos/toxins_mixing_tank,
 /turf/open/floor/engine/vacuum,
