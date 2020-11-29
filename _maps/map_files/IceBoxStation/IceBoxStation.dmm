@@ -5046,6 +5046,9 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "akF" = (
@@ -34769,7 +34772,7 @@
 /area/science/mixing)
 "bED" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/portable_atmospherics/canister/tier_1,
+/obj/machinery/portable_atmospherics/canister/tier_2,
 /turf/open/floor/plasteel/white,
 /area/science/mixing)
 "bEE" = (
@@ -43194,7 +43197,7 @@
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "ciu" = (
-/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/engine/atmos)
@@ -49609,7 +49612,8 @@
 /area/quartermaster/office)
 "eQV" = (
 /obj/machinery/door/window/eastleft{
-	name = "Monkey Pen"
+	name = "Monkey Pen";
+	req_one_access_txt = "47"
 	},
 /turf/open/floor/grass,
 /area/science/nanite)
@@ -50008,7 +50012,8 @@
 /area/medical/break_room)
 "ghh" = (
 /obj/machinery/door/window/eastright{
-	name = "Monkey Pen"
+	name = "Monkey Pen";
+	req_one_access_txt = "47"
 	},
 /turf/open/floor/grass,
 /area/science/nanite)
@@ -51834,7 +51839,6 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "kKU" = (
-/mob/living/carbon/monkey,
 /obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/grass,
 /area/science/nanite)
@@ -54890,8 +54894,12 @@
 /turf/open/floor/plasteel,
 /area/science/nanite)
 "srU" = (
-/turf/open/floor/grass,
-/area/science/nanite)
+/obj/structure/cable,
+/obj/machinery/light_switch{
+	pixel_x = 20
+	},
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "ssk" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -54978,6 +54986,14 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/hor)
+"sEZ" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+	dir = 4
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/engine/atmos)
 "sGs" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -92507,15 +92523,15 @@ bPh
 bQy
 bRI
 bSP
-bPh
+sEZ
 bQy
 bRI
 cCF
-bPh
+sEZ
 bQy
 bRI
 bQy
-bPh
+sEZ
 bQy
 bRI
 ceA
@@ -103054,7 +103070,7 @@ pTj
 nyR
 hhU
 kKU
-srU
+stP
 stP
 xMA
 caK
@@ -105590,7 +105606,7 @@ bki
 bma
 gNQ
 bnl
-bnl
+srU
 vdl
 kXt
 yiW
