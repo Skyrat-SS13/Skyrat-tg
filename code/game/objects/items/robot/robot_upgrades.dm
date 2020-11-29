@@ -590,7 +590,7 @@
 		R.set_anchored(FALSE)
 		R.notransform = FALSE
 		//R.resize = 2 //ORIGINAL
-		R.resize = 1.25 //SKYRAT EDIT CHANGE
+		R.resize = 1.25 //SKYRAT EDIT CHANGE - CYBORG
 		R.hasExpanded = TRUE
 		R.update_transform()
 
@@ -600,7 +600,7 @@
 		if (R.hasExpanded)
 			R.hasExpanded = FALSE
 			//R.resize = 0.5 //ORIGINAL
-			R.resize = 0.8 //SKYRAT EDIT CHANGE
+			R.resize = 0.8 //SKYRAT EDIT CHANGE - CYBORG
 			R.update_transform()
 
 /obj/item/borg/upgrade/rped
