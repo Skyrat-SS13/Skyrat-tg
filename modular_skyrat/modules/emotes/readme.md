@@ -1,4 +1,5 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/892
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/1925
 
 ## Title: All the emotes.
 
@@ -7,6 +8,8 @@ MODULE ID: EMOTES
 ### Description:
 
 Adds all the emotes we once had on the oldbase, and shoves them right into here.
+
+Edit (Avunia): Also adds some new emotes.
 
 ### TG Proc Changes:
 
@@ -26,3 +29,5 @@ Adds all the emotes we once had on the oldbase, and shoves them right into here.
 
 ### Credits:
 Gandalf2k15 - porting and refactoring
+
+Avunia Takiya - refactoring and adding *bawk, *caw, *caw2, also adjusting existing sound files
