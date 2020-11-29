@@ -91,7 +91,8 @@
 /obj/item/organ/proc/on_death(delta_time = 2)	//runs decay when outside of a person
 	if(organ_flags & (ORGAN_SYNTHETIC | ORGAN_FROZEN))
 		return
-	applyOrganDamage(maxHealth * decay_factor * 0.5 * delta_time)
+	//applyOrganDamage(maxHealth * decay_factor * 0.5 * delta_time) //ORIGINAL
+	applyOrganDamage(maxHealth * decay_factor * 0.4 * delta_time) //SKYRAT EDIT CHANGE
 
 /obj/item/organ/proc/on_life()	//repair organ damage if the organ is not failing
 	if(organ_flags & ORGAN_FAILING)

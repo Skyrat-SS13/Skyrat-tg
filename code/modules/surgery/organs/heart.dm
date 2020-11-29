@@ -6,7 +6,8 @@
 	slot = ORGAN_SLOT_HEART
 
 	healing_factor = STANDARD_ORGAN_HEALING
-	decay_factor = 3.5 * STANDARD_ORGAN_DECAY		//designed to fail a little under 4 minutes after death
+	//decay_factor = 3.5 * STANDARD_ORGAN_DECAY		//designed to fail a little under 4 minutes after death //ORIGINAL
+	decay_factor = 2 * STANDARD_ORGAN_DECAY	//SKYRAT EDIT CHANGE - designed to fail in ~7.5 minutes
 
 	low_threshold_passed = "<span class='info'>Prickles of pain appear then die out from within your chest...</span>"
 	high_threshold_passed = "<span class='warning'>Something inside your chest hurts, and the pain isn't subsiding. You notice yourself breathing far faster than before.</span>"
