@@ -1,6 +1,5 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
-
-## Title: <!--Title of your addition-->
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/1950
+## Title: Mining QoL changes
 
 MODULE ID: MINING_QOL
 
