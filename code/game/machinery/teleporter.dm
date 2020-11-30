@@ -76,9 +76,9 @@
 			use_power(5000)
 			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
 				if(ishuman(M))//don't remove people from the round randomly you jerks
+					var/mob/living/carbon/human/human = M
 					//SKYRAT EDIT REMOVAL BEGIN
 					/*
-					var/mob/living/carbon/human/human = M
 					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
 						if(human.dna && human.dna.species.id != "fly")
 							to_chat(M, "<span class='hear'>You hear a buzzing in your ears.</span>")
