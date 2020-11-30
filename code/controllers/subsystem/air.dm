@@ -83,6 +83,10 @@ SUBSYSTEM_DEF(air)
 		var/list/pipenet_rebuilds = pipenets_needing_rebuilt
 		for(var/thing in pipenet_rebuilds)
 			var/obj/machinery/atmospherics/AT = thing
+			//SKYRAT EDIT CHANGE BEGIN - MISC
+			if(!istype(AT))
+				continue
+			//SKYRAT EDIT CHANGE BEGIN - MISC
 			AT.build_network()
 		cached_cost += TICK_USAGE_REAL - timer
 		pipenets_needing_rebuilt.Cut()

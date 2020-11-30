@@ -575,12 +575,12 @@
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/ready(forced = FALSE)
 	if (required_candidates > (dead_players.len + list_observers.len))
 		return FALSE
-	new_team = new
-	if(new_team.team_number > ABDUCTOR_MAX_TEAMS)
-		return MAP_ERROR
 	return ..()
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/finish_setup(mob/new_character, index)
+	new_team = new
+	if(new_team.team_number > ABDUCTOR_MAX_TEAMS)
+		return MAP_ERROR
 	if (index == 1) // Our first guy is the scientist.
 		var/datum/antagonist/abductor/scientist/new_role = new
 		new_character.mind.add_antag_datum(new_role, new_team)
@@ -644,6 +644,7 @@
 	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
 	var/list/spawn_locs = list()
+	minimum_players = 999 //SKYRAT EDIT ADDITION - EVENTS
 
 /datum/dynamic_ruleset/midround/from_ghosts/space_ninja/execute()
 	for(var/obj/effect/landmark/carpspawn/carp_spawn in GLOB.landmarks_list)

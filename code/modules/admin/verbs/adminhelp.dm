@@ -107,6 +107,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		L[++L.len] = list("Disconnected:", "[astatclick.update("[num_disconnected]")]", null, REF(astatclick))
 	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
 	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
+
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+	for(var/key in GLOB.ambitions_to_review)
+		var/datum/ambitions/AMBI = key
+		var/reviewer = GLOB.ambitions_to_review[key]
+		L[++L.len] = list("[reviewer ? "H-[reviewer]. " : ""]AMB: [AMBI.owner_name]:", "[AMBI.narrative]", REF(AMBI))
+	L[++L.len] = list("Ambitions intensity:", "STL:[GLOB.intensity_counts["[AMBITION_INTENSITY_STEALTH]"]] MLD:[GLOB.intensity_counts["[AMBITION_INTENSITY_MILD]"]] MED:[GLOB.intensity_counts["[AMBITION_INTENSITY_MEDIUM]"]] SEV:[GLOB.intensity_counts["[AMBITION_INTENSITY_SEVERE]"]] EXT:[GLOB.intensity_counts["[AMBITION_INTENSITY_EXTREME]"]] (HAVOC: [GLOB.total_intensity])", null)
+	//SKYRAT EDIT ADDITION END
 	return L
 
 //Reassociate still open ticket if one exists
@@ -343,6 +351,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/Close(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
+	//SKYRAT EDIT ADDITION BEGIN - ADMIN
+	if(handler && handler != usr.ckey)
+		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
+		if(!response || response == "No")
+			return
+	//SKYRAT EDIT ADDITION END
 	RemoveActive()
 	state = AHELP_CLOSED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -358,6 +372,14 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/Resolve(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != AHELP_ACTIVE)
 		return
+
+	//SKYRAT EDIT ADDITION BEGIN - ADMIN
+	if(handler && handler != usr.ckey)
+		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
+		if(!response || response == "No")
+			return
+	//SKYRAT EDIT ADDITION END
+
 	RemoveActive()
 	state = AHELP_RESOLVED
 	GLOB.ahelp_tickets.ListInsert(src)
@@ -377,6 +399,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/Reject(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
 		return
+
+	//SKYRAT EDIT ADDITION BEGIN - ADMIN
+	if(handler && handler != usr.ckey)
+		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
+		if(!response || response == "No")
+			return
+	//SKYRAT EDIT ADDITION END
 
 	if(initiator)
 		initiator.giveadminhelpverb()
@@ -399,6 +428,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/ICIssue(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
 		return
+
+	//SKYRAT EDIT ADDITION BEGIN - ADMIN
+	if(handler && handler != usr.ckey)
+		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
+		if(!response || response == "No")
+			return
+	//SKYRAT EDIT ADDITION END
 
 	var/msg = "<font color='red' size='4'><b>- AdminHelp marked as IC issue! -</b></font><br>"
 	msg += "<font color='red'>Your issue has been determined by an administrator to be an in character issue and does NOT require administrator intervention at this time. For further resolution you should pursue options that are in character.</font>"

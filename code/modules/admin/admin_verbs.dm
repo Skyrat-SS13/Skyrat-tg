@@ -80,6 +80,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/resetasaycolor,
 	/client/proc/toggleadminhelpsound,
 	/client/proc/respawn_character,
+	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
+	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/open_borgopanel
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))

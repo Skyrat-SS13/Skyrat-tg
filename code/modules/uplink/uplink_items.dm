@@ -441,11 +441,15 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	include_modes = list(/datum/game_mode/nuclear)
 	illegal_tech = FALSE
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/uplink_item/dangerous/rapid
 	name = "Gloves of the North Star"
 	desc = "These gloves let the user punch people very fast. Does not improve weapon attack speed or the meaty fists of a hulk."
 	item = /obj/item/clothing/gloves/rapid
 	cost = 8
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/dangerous/guardian
 	name = "Holoparasites"
@@ -637,7 +641,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			On death, these nodules take control of the dead body, causing limited revivification, \
 			along with slurred speech, aggression, and the ability to infect others with this agent."
 	item = /obj/item/storage/box/syndie_kit/romerol
-	cost = 25
+	//cost = 25 //ORIGINAL
+	cost = 45 //SKYRAT EDIT CHANGE
 	cant_discount = TRUE
 
 /datum/uplink_item/stealthy_weapons/sleepy_pen
@@ -989,6 +994,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear/clown_ops)
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix PDA Cartridge"
 	desc = "When inserted into a personal digital assistant, this cartridge gives you four opportunities to \
@@ -997,6 +1004,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/cartridge/virus/syndicate
 	cost = 6
 	restricted = TRUE
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"
@@ -1047,7 +1056,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			be defused, and some crew may attempt to do so. \
 			The bomb core can be pried out and manually detonated with other explosives."
 	item = /obj/item/sbeacondrop/bomb
-	cost = 11
+	//cost = 11 //ORIGINAL
+	cost = 18 //SKYRAT EDIT CHANGE
+	cant_discount = TRUE //SKYRAT EDIT ADDITION
 
 /datum/uplink_item/explosives/syndicate_bomb/emp
 	name = "Syndicate EMP Bomb"
