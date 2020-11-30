@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/music = list()
 	var/use_rare_music = prob(1)
 
-	real_round_start_time = world.timeofday //SKYRAT EDIT ADDITION
+	real_round_start_time = world.realtime //SKYRAT EDIT ADDITION
 
 	for(var/S in provisional_title_music)
 		var/lower = lowertext(S)
