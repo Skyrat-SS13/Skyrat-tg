@@ -77,13 +77,27 @@
 			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
 				if(ishuman(M))//don't remove people from the round randomly you jerks
 					var/mob/living/carbon/human/human = M
+					/* - SKRYAT EDIT CHANGE ORIGINAL
 					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
 						if(human.dna && human.dna.species.id != "fly")
 							to_chat(M, "<span class='hear'>You hear a buzzing in your ears.</span>")
 							human.set_species(/datum/species/fly)
 							log_game("[human] ([key_name(human)]) was turned into a fly person")
+					*/ //SKYRAT EDIT REMOVAL END
+					//SKRYAT EDIT CHANGE BEGIN
+					var/dismembered = 0
+					to_chat(human, "<span class='danger'>Your limbs lose molecular cohesion as you teleport!</span>")
+					for(var/obj/item/bodypart/BP in human.bodyparts)
+						if(dismembered <= 2) //Remove two body parts.
+							if(BP.name == "chest" || BP.name == "head")
+								continue
+							BP.dismember()
+							qdel(BP) //WHEEEEE LOST TO SPACE N' TIME
+							dismembered++
 
-					human.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0)
+					//SKYRAT EDIT CHANGE END
+					//human.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0) - ORIGINAL
+					human.apply_effect((rand(780 - accuracy * 40, 1040 - accuracy * 60)), EFFECT_IRRADIATE, 0) //SKYRAT EDIT CHANGE
 			calibrated = FALSE
 	return
 
