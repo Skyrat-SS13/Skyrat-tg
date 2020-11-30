@@ -142,22 +142,13 @@
 #define LETTERS_DETECTED 4
 
 /**
-<<<<<<< HEAD
-  * Filters out undesirable characters from names.
-  *
-  * * strict - return null immidiately instead of filtering out
-  * * allow_numbers - allows numbers and common special characters - used for silicon/other weird things names
-  */
-///proc/reject_bad_name(t_in, allow_numbers = FALSE, max_length = MAX_NAME_LEN, ascii_only = TRUE, strict = FALSE) //ORIGINAL
-/proc/reject_bad_name(t_in, allow_numbers = TRUE, max_length = MAX_NAME_LEN, ascii_only = TRUE, strict = FALSE) //SKYRAT EDIT CHANGE
-=======
  * Filters out undesirable characters from names.
  *
  * * strict - return null immidiately instead of filtering out
  * * allow_numbers - allows numbers and common special characters - used for silicon/other weird things names
  */
-/proc/reject_bad_name(t_in, allow_numbers = FALSE, max_length = MAX_NAME_LEN, ascii_only = TRUE, strict = FALSE)
->>>>>>> 0eaab0bc542... Grep for space indentation (#54850)
+///proc/reject_bad_name(t_in, allow_numbers = FALSE, max_length = MAX_NAME_LEN, ascii_only = TRUE, strict = FALSE) //ORIGINAL
+/proc/reject_bad_name(t_in, allow_numbers = TRUE, max_length = MAX_NAME_LEN, ascii_only = TRUE, strict = FALSE) //SKYRAT EDIT CHANGE
 	if(!t_in)
 		return //Rejects the input if it is null
 

@@ -84,14 +84,10 @@ require only minor tweaks.
 
 // must correspond to _basemap.dm for things to work correctly
 #define DEFAULT_MAP_TRAITS list(\
-<<<<<<< HEAD
     DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
     /* SKYRAT EDIT ADDITION BEGIN - MODULAR_MAPS */\
     DECLARE_LEVEL("Offstation_skyrat", ZTRAITS_CENTCOM),\
     /* SKYRAT EDIT ADDITION END - MODULAR_MAPS */\
-=======
-	DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
->>>>>>> 0eaab0bc542... Grep for space indentation (#54850)
 )
 
 // Camera lock flags
