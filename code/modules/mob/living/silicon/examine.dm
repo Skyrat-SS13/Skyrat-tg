@@ -5,7 +5,7 @@
 		for(var/law in laws.get_law_list(include_zeroth = TRUE))
 			. += law
 
-	// BEGIN SKYRAT EDIT: OOC Notes for sillicons
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(client)
 		var/line
 		if(length(client.prefs.features["silicon_flavor_text"]))
