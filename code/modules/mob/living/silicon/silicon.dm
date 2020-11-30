@@ -228,7 +228,7 @@
 					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s flavor text", replacetext(client.prefs.features["silicon_flavor_text"], "\n", "<BR>")))
 					popup.open()
 					return
-	// END SKYRAT EDIT
+	//SKYRAT EDIT ADDITION END
 	return
 
 /mob/living/silicon/proc/statelaws(force = 0)
