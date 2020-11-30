@@ -16,11 +16,11 @@
 	move_to_delay = 30
 	ranged = TRUE
 	ranged_cooldown_time = 50
-	maxHealth = 350
-	health = 350
-	obj_damage = 45
+	maxHealth = 300
+	health = 300
+	obj_damage = 40
 	// Again, way too damn common and does enough damage as it is.
-	// armour_penetration = 20
+	armour_penetration = 5
 	melee_damage_lower = 20
 	melee_damage_upper = 20
 	attack_verb_continuous = "chomps"
