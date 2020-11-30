@@ -474,7 +474,7 @@
 					"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
-			if(dna.species.can_wag_tail() && !dna.species.is_wagging_tail())
+			if(!src.dna.species.is_wagging_tail(src))
 				src.emote("wag")
 		//SKYRAT EDIT ADDITION END
 
