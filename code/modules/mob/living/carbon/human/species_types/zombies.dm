@@ -29,10 +29,12 @@
 	id = "memezombies"
 	limbs_id = "zombie"
 	mutanthands = /obj/item/zombie_hand
-	armor = 20 // 120 damage to KO a zombie, which kills it
-	speedmod = 1.6
+	//armor = 20 // 120 damage to KO a zombie, which kills it
+	armor = 50 //SKYRAT EDIT CHANGE
+	//speedmod = 1.6
+	speedmod = 1.2 //SKYRAT EDIT CHANGE
 	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
-	var/heal_rate = 1
+	var/heal_rate = 2 //SKYRAT EDIT CHANGE - ORIGINAL 2
 	var/regen_cooldown = 0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 
