@@ -37,6 +37,8 @@
 	var/heal_rate = 2 //SKYRAT EDIT CHANGE - ORIGINAL 2
 	var/regen_cooldown = 0
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	stunmod = 0
+
 
 /// Zombies do not stabilize body temperature they are the walking dead and are cold blooded
 /datum/species/zombie/body_temperature_core(mob/living/carbon/human/humi)
