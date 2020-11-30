@@ -881,6 +881,10 @@
 	. = ..()
 	if(!getorgan(/obj/item/organ/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)))
 		return FALSE
+//Begin Skyrat Addition
+	if(HAS_TRAIT(src, TRAIT_DNR))
+		return 0
+//End Skyrat Addition
 
 /mob/living/carbon/proc/can_defib()
 	if (suiciding)
