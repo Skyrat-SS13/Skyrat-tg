@@ -210,7 +210,7 @@
 			return
 		to_chat(usr, href_list["printlawtext"])
 
-	// BEGIN SKYRAT EDIT: Silicon OOC Notes and Flavor Text
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(href_list["lookup_info"])
 		switch(href_list["lookup_info"])
 			if("ooc_prefs")
