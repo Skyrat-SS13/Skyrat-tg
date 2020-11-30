@@ -1,5 +1,5 @@
-//SKYRAT EDIT REMOVAL BEGIN - MINING_QOL - (Moved to modular_skyrat/modules/mining_qol/code/ice_simplemobs.dm)
-/*
+// code/modules/mob/living/simple_animal/hostile/mining_mobs/ice demon.dm
+//
 /mob/living/simple_animal/hostile/asteroid/ice_demon
 	name = "demonic watcher"
 	desc = "A creature formed entirely out of ice, bluespace energy emanates from inside of it."
@@ -28,7 +28,7 @@
 	attack_verb_continuous = "slices"
 	attack_verb_simple = "slice"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	vision_range = 9
+	vision_range = 5
 	aggro_vision_range = 9
 	move_force = MOVE_FORCE_VERY_STRONG
 	move_resist = MOVE_FORCE_VERY_STRONG
@@ -83,5 +83,3 @@
 	if(prob(5))
 		new /obj/item/assembly/signaler/anomaly/bluespace(loc)
 	return ..()
-*/
-//SKYRAT EDIT REMOVAL END
