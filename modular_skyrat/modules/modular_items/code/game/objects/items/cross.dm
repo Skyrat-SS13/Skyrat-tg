@@ -3,14 +3,23 @@
 	desc = "An ornate golden crucifix, adorned with various gemstones and tiny carvings. For some reason, it always feels warm to the touch."
 	icon = 'modular_skyrat/modules/modular_items/icons/obj/items/crucifix.dmi'
 	icon_state = "cross_ornate"
-	lefthand_file = 'modular_skyrat/modules/modular_items/icons/mob/objmelee_lefthand.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_items/icons/mob/objmelee_righthand.dmi'
-	force = 1 //Bashing someone with a cross is not only blasphemy, but pretty useless all things considered.
+	lefthand_file = 'modular_skyrat/modules/modular_items/icons/mob/inhands/cross_left.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_items/icons/mob/inhands/cross_right.dmi'
+	force = 10 //Gem-encrusted and reinforced with GOD
 	throw_speed = 3
 	throw_range = 4
-	throwforce = 5 //Throwing it is slightly better, because a metal object with gems flying at your face through the air is going to hurt. A lot.
+	throwforce = 15
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/crucifix/Initialize()
 	. = ..()
-	AddComponent(/datum/component/anti_magic, FALSE, TRUE, FALSE, ITEM_SLOT_HANDS, null, FALSE) //Its a cross, so of course its Holy.
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, ITEM_SLOT_HANDS, null, FALSE) //Its a cross, so of course its Holy.
+
+/datum/crafting_recipe/cross
+	name = "Ornate Cross"
+	result = /obj/item/crucifix
+	reqs = list(/obj/item/stack/sheet/mineral/gold = 1,
+				/obj/item/stack/sheet/mineral/diamond = 1)
+	tools = list(/obj/item/chisel)
+	time = 20
+	category = CAT_MISC

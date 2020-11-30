@@ -168,3 +168,9 @@
 	path = /obj/item/toy/plush/narplush
 	cost = 5
 	restricted_roles = list("Chaplain")
+
+datum/loadout_item/backpack/cross
+	name = "Ornate Cross"
+	path = /obj/item/crucifix
+	cost = 2
+	restricted_roles = list("Chaplain")
