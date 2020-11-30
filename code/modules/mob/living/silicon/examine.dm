@@ -16,4 +16,4 @@
 				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=silicon_flavor_text'>More...</a></span>"
 		line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
 		. += line
-	// END SKYRAT EDIT
+	//SKYRAT EDIT ADDITION END
