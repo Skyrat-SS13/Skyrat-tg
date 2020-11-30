@@ -106,7 +106,7 @@
 //SKYRAT EDIT REMOVAL END
 
 /*
- Lizard subspecies: ASHWALKERS
+Lizard subspecies: ASHWALKERS
 */
 /datum/species/lizard/ashwalker
 	name = "Ash Walker"
