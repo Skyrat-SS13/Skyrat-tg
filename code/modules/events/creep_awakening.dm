@@ -1,7 +1,8 @@
 /datum/round_event_control/obsessed
 	name = "Obsession Awakening"
 	typepath = /datum/round_event/obsessed
-	max_occurrences = 1
+	//max_occurrences = 1 //ORIGINAL
+	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
 	min_players = 20
 
 /datum/round_event/obsessed
