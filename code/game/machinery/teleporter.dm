@@ -95,7 +95,7 @@
 							qdel(BP) //WHEEEEE LOST TO SPACE N' TIME
 							dismembered++
 					//SKYRAT EDIT CHANGE END
-					//human.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0) - SKYRAT EDIT REMOVAL
+					human.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0)
 			calibrated = FALSE
 	return
 
