@@ -61,7 +61,6 @@
 		/datum/reagent/toxin/acid,
 		/datum/reagent/water,
 		/datum/reagent/fuel,
-		///datum/reagent/silver //Skyrat Addition - Something something silver surfer.  //ADDENDUM - Azarak said no because ???, yell at him if you don't like it, don't scream at me.
 	)
 	/*//these become available once the manipulator has been upgraded to tier 4 (femto)    //SKYRAT CHANGE - No more gimped dispeners.
 	var/list/upgrade_reagents = list(
