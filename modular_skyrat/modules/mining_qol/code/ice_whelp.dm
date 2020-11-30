@@ -19,10 +19,8 @@
 	maxHealth = 300
 	health = 300
 	obj_damage = 40
-	// Again, way too damn common and does enough damage as it is.
-	armour_penetration = 5
-	melee_damage_lower = 20
-	melee_damage_upper = 20
+	melee_damage_lower = 30
+	melee_damage_upper = 30
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomp"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
