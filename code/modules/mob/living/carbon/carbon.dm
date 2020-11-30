@@ -883,7 +883,7 @@
 		return FALSE
 //SKYRAT EDIT ADDITION BEGIN - TRAIT_DNR
 	if(HAS_TRAIT(src, TRAIT_DNR))
-		return 0
+		return FALSE
 //SKYRAT EDIT ADDITION END
 
 /mob/living/carbon/proc/can_defib()
