@@ -62,15 +62,9 @@
 #define BODY_SIZE_MAX			1.5
 #define BODY_SIZE_MIN			0.8
 
-//In inches
-#define PENIS_MAX_GIRTH 		15
-#define PENIS_MIN_LENGTH 		1
-#define PENIS_MAX_LENGTH 		20
-
 #define SHEATH_NONE			"None"
 #define SHEATH_NORMAL		"Sheath"
 #define SHEATH_SLIT			"Slit"
-#define SHEATH_MODES list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
 
 #define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL, "custom_species" = null, "uses_skintones" = FALSE)
 

@@ -124,7 +124,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = MELEE, actuallydamage = TRUE)
+/mob/living/simple_animal/proc/attack_threshold_check(damage, damagetype = BRUTE, armorcheck = MELEE)
 	var/temp_damage = damage
 	if(!damage_coeff[damagetype])
 		temp_damage = 0
@@ -135,8 +135,7 @@
 		visible_message("<span class='warning'>[src] looks unharmed!</span>")
 		return FALSE
 	else
-		if(actuallydamage)
-			apply_damage(damage, damagetype, null, getarmor(null, armorcheck))
+		apply_damage(damage, damagetype, null, getarmor(null, armorcheck))
 		return TRUE
 
 /mob/living/simple_animal/bullet_act(obj/projectile/Proj)

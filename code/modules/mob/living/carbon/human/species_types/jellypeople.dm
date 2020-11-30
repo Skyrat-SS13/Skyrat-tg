@@ -11,7 +11,6 @@
 	exotic_blood = /datum/reagent/toxin/slimejelly
 	damage_overlay_type = ""
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
-	var/datum/action/innate/slime_change/slime_change //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	liked_food = MEAT
 	coldmod = 6   // = 3x cold damage
 	heatmod = 0.5 // = 1/4x heat damage
@@ -25,10 +24,6 @@
 /datum/species/jelly/on_species_loss(mob/living/carbon/C)
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(C)
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(slime_change)
-		slime_change.Remove(C)
-	//SKYRAT EDIT ADDITION END
 	..()
 
 /datum/species/jelly/on_species_gain(mob/living/carbon/C, datum/species/old_species)
@@ -36,10 +31,6 @@
 	if(ishuman(C))
 		regenerate_limbs = new
 		regenerate_limbs.Grant(C)
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		slime_change = new
-		slime_change.Grant(C)
-		//SKYRAT EDIT ADDITION END
 
 /datum/species/jelly/spec_life(mob/living/carbon/human/H)
 	if(H.stat == DEAD) //can't farm slime jelly from a dead slime/jelly person indefinitely

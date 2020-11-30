@@ -146,7 +146,7 @@
 		return TRUE //successful attack
 
 /mob/living/simple_animal/attacked_by(obj/item/I, mob/living/user)
-	if(attack_threshold_check(I.force, I.damtype, MELEE, FALSE))
+	if(I.force < force_threshold || I.damtype == STAMINA)
 		playsound(loc, 'sound/weapons/tap.ogg', I.get_clamped_volume(), TRUE, -1)
 	else
 		return ..()

@@ -326,14 +326,8 @@
 		check_antagonists()
 
 	else if(href_list["delay_round_end"])
-		//SKYRAT EDIT CHANGE BEGIN
-		/*
 		if(!check_rights(R_SERVER))
 			return
-		*/
-		if(!check_rights(R_ADMIN))
-			return
-		//SKYRAT EDIT CHANGE END
 		if(!SSticker.delay_end)
 			SSticker.admin_delay_notice = input(usr, "Enter a reason for delaying the round end", "Round Delay Reason") as null|text
 			if(isnull(SSticker.admin_delay_notice))

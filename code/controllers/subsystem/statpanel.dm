@@ -13,7 +13,6 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		var/datum/map_config/cached = SSmapping.next_map_config
 		var/round_time = world.time - SSticker.round_start_time
-		var/real_round_time = world.realtime - SSticker.real_round_start_time
 		var/list/global_data = list(
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
@@ -21,10 +20,8 @@ SUBSYSTEM_DEF(statpanels)
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
 			"Station Time: [station_time_timestamp()]",
-			" ", //SKYRAT EDIT ADDITION
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
-			"Real Round Time: [time2text(real_round_time, "hh:mm:ss")]", //SKYRAT EDIT ADDITION
-			"Connected Players: [GLOB.clients.len]" //SKYRAT EDIT ADDITION
+			"Connected Players: [GLOB.clients.len]"
 		)
 
 		if(SSshuttle.emergency)

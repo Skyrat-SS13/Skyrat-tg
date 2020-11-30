@@ -72,13 +72,3 @@
 	name = "Project: Zul-E"
 	path = /obj/item/clothing/suit/hooded/cloak/zuliecloak
 	ckeywhitelist = list("asky")
-
-/datum/loadout_item/uniform/donator/lanese
-	name = "Lanese Dress"
-	path = /obj/item/clothing/under/custom/lanese
-	ckeywhitelist = list("kathrinbailey")
-
-/datum/loadout_item/uniform/donator/lanese/vambrace
-	name = "Lanese Dress w/ Vambraces"
-	path = /obj/item/clothing/under/custom/lanese/vambrace
-	ckeywhitelist = list("kathrinbailey")

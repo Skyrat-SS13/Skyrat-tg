@@ -188,7 +188,7 @@
 	H.real_name = clonename
 
 	H.hardset_dna(ui, mutation_index, H.dna.default_mutation_genes, H.real_name, blood_type, mrace, features, H.dna.mutations, FALSE)
-	H.set_species(mrace, TRUE, null, features.Copy(), mutantparts.Copy(), markings.Copy())
+	H.set_species(mrace, TRUE, null, features, mutantparts, markings)
 
 	if(!HAS_TRAIT(H, TRAIT_RADIMMUNE))//dont apply mutations if the species is Mutation proof.
 		if(efficiency > 2)
@@ -219,7 +219,6 @@
 
 		if(grab_ghost_when == CLONER_FRESH_CLONE)
 			H.grab_ghost()
-			to_chat(H, "<span class='boldwarning'>[CONFIG_GET(string/blackoutpolicy)]</span>")
 			to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
 
 		if(grab_ghost_when == CLONER_MATURE_CLONE)

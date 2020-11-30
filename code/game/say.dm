@@ -14,7 +14,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_AI_PRIVATE]" = "aiprivradio",
 	"[FREQ_SYNDICATE]" = "syndradio",
 	"[FREQ_CENTCOM]" = "centcomradio",
-	"[FREQ_FACTION]" = "suppradio", //SKYRAT EDIT ADDITIION - FACTION
 	"[FREQ_CTF_RED]" = "redteamradio",
 	"[FREQ_CTF_BLUE]" = "blueteamradio"
 	))

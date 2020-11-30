@@ -48,8 +48,7 @@
 	destination.dna.unique_enzymes = unique_enzymes
 	destination.dna.uni_identity = uni_identity
 	destination.dna.blood_type = blood_type
-	//destination.set_species(species.type, icon_update=0) //ORIGINAL
-	destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+	destination.set_species(species.type, icon_update=0)
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.temporary_mutations = temporary_mutations.Copy()
@@ -64,11 +63,6 @@
 	new_dna.uni_identity = uni_identity
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	new_dna.mutant_bodyparts = mutant_bodyparts.Copy()
-	new_dna.body_markings = body_markings.Copy()
-	new_dna.update_body_size()
-	//SKYRAT EDIT ADDITION END
 	new_dna.species = new species.type
 	new_dna.real_name = real_name
 	new_dna.mutations = mutations.Copy()

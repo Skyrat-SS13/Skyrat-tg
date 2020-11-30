@@ -62,8 +62,8 @@
 	name = "\improper APLU MK-II \"Ripley\""
 	icon_state = "ripleymkii"
 	fast_pressure_step_in = 2 //step_in while in low pressure conditions
-	slow_pressure_step_in = 3 //step_in while in normal pressure conditions //SKYRAT EDIT - Movedelay is now 3, from 4.
-	movedelay = 3 //SKYRAT EDIT - Movedelay is now 3, from 4.
+	slow_pressure_step_in = 4 //step_in while in normal pressure conditions
+	movedelay = 4
 	max_temperature = 30000
 	max_integrity = 250
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 60, BIO = 0, RAD = 70, FIRE = 100, ACID = 100)

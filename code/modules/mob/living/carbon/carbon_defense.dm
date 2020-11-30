@@ -266,7 +266,7 @@
 			do_ass_slap_animation(target)
 			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
 			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
-				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
+				"<span class='notice'>You slap [src] on the ass, how satisfying.</span>",\
 				"You hear a slap.")
 			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
