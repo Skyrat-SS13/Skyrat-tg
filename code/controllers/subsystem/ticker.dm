@@ -65,6 +65,8 @@ SUBSYSTEM_DEF(ticker)
 	/// Why an emergency shuttle was called
 	var/emergency_reason
 
+	var/real_round_start_time = 0 //SKYRAT EDIT ADDITION
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
@@ -86,6 +88,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/provisional_title_music = flist("[global.config.directory]/title_music/sounds/")
 	var/list/music = list()
 	var/use_rare_music = prob(1)
+
+	real_round_start_time = world.timeofday //SKYRAT EDIT ADDITION
 
 	for(var/S in provisional_title_music)
 		var/lower = lowertext(S)
