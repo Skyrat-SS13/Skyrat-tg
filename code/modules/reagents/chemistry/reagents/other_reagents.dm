@@ -592,7 +592,8 @@
 	if(isjellyperson(H))
 		to_chat(H, "<span class='warning'>Your jelly shifts and morphs, turning you into another subspecies!</span>")
 		var/species_type = pick(subtypesof(/datum/species/jelly))
-		H.set_species(species_type)
+		//H.set_species(species_type) //ORIGINAL
+		H.set_species(species_type, TRUE, null, null, null, null, TRUE, TRUE) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		holder.del_reagent(type)
 		return TRUE
 	if(current_cycle >= cycles_to_turn) //overwrite since we want subtypes of jelly
