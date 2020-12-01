@@ -88,12 +88,14 @@
 					var/dismembered = 0
 					to_chat(human, "<span class='danger'>Your limbs lose molecular cohesion as you teleport!</span>")
 					for(var/obj/item/bodypart/BP in human.bodyparts)
-						if(dismembered <= 1) //Remove 3 body parts.
-							if(BP.name == "chest" || BP.name == "head")
+						if(dismembered < 2) //Remove 2 body parts.
+							if(BP.body_zone == BODY_ZONE_CHEST || BP.body_zone== BODY_ZONE_HEAD)
 								continue
 							BP.dismember()
 							qdel(BP) //WHEEEEE LOST TO SPACE N' TIME
 							dismembered++
+						else
+							break
 					//SKYRAT EDIT CHANGE END
 					human.apply_effect((rand(480 - accuracy * 40, 880 - accuracy * 60)), EFFECT_IRRADIATE, 0)
 			calibrated = FALSE
