@@ -483,15 +483,16 @@
 	key_third_person = "tilts"
 	message = "tilts their head."
 
-/datum/emote/living/beep
+/datum/emote/living/beeps
 	key = "beep"
 	key_third_person = "beeps"
 	message = "beeps."
-	message_mime = "beeps silently!"
+	message_param = "beeps at %t."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 
-/datum/emote/living/beep/run_emote(mob/living/user, params)
+
+/datum/emote/living/beeps/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
