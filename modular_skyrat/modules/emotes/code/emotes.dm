@@ -95,7 +95,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/peep/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -112,7 +111,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/peep2/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -135,8 +133,6 @@
 	message = "snaps their fingers."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	hands_use_check = TRUE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -153,8 +149,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-
 /datum/emote/living/snap2/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
@@ -170,7 +164,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/snap3/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -187,7 +180,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/awoo/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -204,7 +196,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/nya/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -221,7 +212,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/weh/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -245,7 +235,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/mothsqueak/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -262,7 +251,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/merp/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -279,7 +267,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/bark/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -297,7 +284,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/squish/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -315,7 +301,6 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	hands_use_check = FALSE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/meow/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -446,7 +431,6 @@
 	message = "claps once."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon)
 
 /datum/emote/living/clap1/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -498,3 +482,20 @@
 	key = "tilt"
 	key_third_person = "tilts"
 	message = "tilts their head."
+
+/datum/emote/living/beep
+	key = "beep"
+	key_third_person = "beeps"
+	message = "beeps."
+	message_mime = "beeps silently!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/beep/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
+	playsound(user, sound, 50, 1, -1)
