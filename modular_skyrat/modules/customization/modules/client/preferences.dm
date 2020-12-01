@@ -1579,7 +1579,7 @@
 			else //We attempt to buy it
 				if(LI.cost > loadout_points)
 					return
-				if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
+				if(LI.ckeywhitelist && !(user.ckey in LI.ckeywhitelist) && !user.client.holder)
 					return
 				loadout_points -= LI.cost
 				loadout[LI.path] = LI.default_customization() //As in "No extra information associated"
