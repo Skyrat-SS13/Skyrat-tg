@@ -138,7 +138,8 @@
 	timeout = 3 MINUTES
 
 /datum/mood_event/religiously_comforted
-	description = "<span class='nicegreen'>I feel comforted by the presence of a holy person.</span>\n"
+	//description = "<span class='nicegreen'>You are comforted by the presence of a holy person.</span>\n" //SKYRAT CHANGE - ORIGINAL
+	description = "<span class='nicegreen'>I feel comforted by the presence of a holy person.</span>\n" //SKYRAT CHANGE
 	mood_change = 3
 	timeout = 5 MINUTES
 
