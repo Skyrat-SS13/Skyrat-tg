@@ -7,7 +7,7 @@
 	set name = "Shift Layer Upwards"
 	set category = "IC"
 
-	if(incapacitated() || body_position == LYING_DOWN))
+	if(incapacitated() || body_position == LYING_DOWN)
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return
 
@@ -23,7 +23,7 @@
 	set name = "Shift Layer Downwards"
 	set category = "IC"
 
-	if(incapacitated() || body_position == LYING_DOWN))
+	if(incapacitated() || body_position == LYING_DOWN)
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return
 
