@@ -27,4 +27,5 @@ This takes a few sprites from TauCeti station and ports them over to us. With a 
 
 
 ### Credits:
-Floof Ball#0798 / Kathrin Morrison
+- TauCeti station
+- Gandalf2k15
