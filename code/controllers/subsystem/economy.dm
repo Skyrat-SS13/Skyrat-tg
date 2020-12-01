@@ -36,6 +36,7 @@ SUBSYSTEM_DEF(economy)
 	/// Contains the message to send to newscasters about price inflation and earnings, updated on price_update()
 	var/earning_report
 	var/market_crashing = FALSE
+	var/fire_counter_for_paycheck = 0 //SKYRAT EDIT ADDITION
 
 /datum/controller/subsystem/economy/Initialize(timeofday)
 	var/budget_to_hand_out = round(budget_pool / department_accounts.len)
@@ -44,16 +45,25 @@ SUBSYSTEM_DEF(economy)
 	return ..()
 
 /datum/controller/subsystem/economy/fire(resumed = 0)
+	fire_counter_for_paycheck++ //SKYRAT EDIT ADDITION
 	var/temporary_total = 0
 	departmental_payouts()
 	station_total = 0
 	station_target_buffer += STATION_TARGET_BUFFER
 	for(var/account in bank_accounts_by_id)
 		var/datum/bank_account/bank_account = bank_accounts_by_id[account]
+		//SKYRAT EDIT ADDITION BEGIN
+		if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT)
+			bank_account.payday(PAYCHECK_CYCLE_AMOUNT)
+		//SKYRAT EDIT ADDITION END
 		if(bank_account?.account_job)
 			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
 		if(!istype(bank_account, /datum/bank_account/department))
 			station_total += bank_account.account_balance
+	//SKYRAT EDIT ADDITION BEGIN
+	if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT) //30 minutes per each paycheck
+		fire_counter_for_paycheck = 0
+	//SKYRAT EDIT ADDITION END
 	station_target = max(round(temporary_total / max(bank_accounts_by_id.len * 2, 1)) + station_target_buffer, 1)
 	if(!market_crashing)
 		price_update()
