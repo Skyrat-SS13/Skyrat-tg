@@ -617,17 +617,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	H.apply_overlay(HAIR_LAYER)
 
 /**
-<<<<<<< HEAD
-  * Handles the body of a human
-  *
-  * Handles lipstick, having no eyes, eye color, undergarnments like underwear, undershirts, and socks, and body layers.
-  * Calls [handle_mutant_bodyparts][/datum/species/proc/handle_mutant_bodyparts]
-  * Arguments:
-  * * H - Human, whoever we're handling the body for
-  */
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-=======
  * Handles the body of a human
  *
  * Handles lipstick, having no eyes, eye color, undergarnments like underwear, undershirts, and socks, and body layers.
@@ -635,7 +624,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  * Arguments:
  * * H - Human, whoever we're handling the body for
  */
->>>>>>> 0eaab0bc542... Grep for space indentation (#54850)
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/species/proc/handle_body(mob/living/carbon/human/H)
 	H.remove_overlay(BODY_LAYER)
 
@@ -738,18 +728,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //SKYRAT EDIT REMOVAL END
 
 /**
-<<<<<<< HEAD
-  * Handles the mutant bodyparts of a human
-  *
-  * Handles the adding and displaying of, layers, colors, and overlays of mutant bodyparts and accessories.
-  * Handles digitigrade leg displaying and squishing.
-  * Arguments:
-  * * H - Human, whoever we're handling the body for
-  * * forced_colour - The forced color of an accessory. Leave null to use mutant color.
-  */
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-=======
  * Handles the mutant bodyparts of a human
  *
  * Handles the adding and displaying of, layers, colors, and overlays of mutant bodyparts and accessories.
@@ -758,7 +736,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  * * H - Human, whoever we're handling the body for
  * * forced_colour - The forced color of an accessory. Leave null to use mutant color.
  */
->>>>>>> 0eaab0bc542... Grep for space indentation (#54850)
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+/*
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
