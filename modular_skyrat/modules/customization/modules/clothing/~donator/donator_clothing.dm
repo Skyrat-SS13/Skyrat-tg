@@ -408,6 +408,7 @@
 	mutant_variants = NONE
 	inhand_icon_state = "lanese"
 	can_adjust = TRUE
+	fitted = FEMALE_UNIFORM_TOP
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 
 /obj/item/clothing/under/custom/lanese/vambrace
