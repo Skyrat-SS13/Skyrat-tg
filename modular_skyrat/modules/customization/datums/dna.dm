@@ -51,7 +51,7 @@
 			if(!retain_features)
 				dna.features = override_features || new_race.get_random_features()
 			if(retain_mutantparts)
-				var/list/new_list = new_race.get_random_mutant_bodyparts(dna.features)
+				var/list/list/new_list = new_race.get_random_mutant_bodyparts(dna.features)
 				var/list/compiled_list = list()
 				for(var/key in new_list)
 					if(dna.mutant_bodyparts[key])
