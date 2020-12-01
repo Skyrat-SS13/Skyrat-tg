@@ -484,7 +484,7 @@
 	message = "tilts their head."
 
 /datum/emote/living/beeps
-	key = "beep"
+	key = "beeps"
 	key_third_person = "beeps"
 	message = "beeps."
 	message_param = "beeps at %t."
