@@ -57,8 +57,24 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	"â" = MODE_ADMIN,
 
 	// Misc
+<<<<<<< HEAD
 	"ù" = RADIO_CHANNEL_AI_PRIVATE,
 	"÷" = MODE_VOCALCORDS
+=======
+	"ù" = RADIO_CHANNEL_AI_PRIVATE
+))
+
+/**
+ * Whitelist of saymodes or radio extensions that can be spoken through even if not fully conscious.
+ * Associated values are their maximum allowed mob stats.
+ */
+GLOBAL_LIST_INIT(message_modes_stat_limits, list(
+	MODE_INTERCOM = HARD_CRIT,
+	MODE_ALIEN = HARD_CRIT,
+	MODE_BINARY = HARD_CRIT, //extra stat check on human/binarycheck()
+	MODE_MONKEY = HARD_CRIT,
+	MODE_MAFIA = HARD_CRIT
+>>>>>>> af4a88cbb66... Calms down the linter. (#55312)
 ))
 
 /mob/living/proc/Ellipsis(original_msg, chance = 50, keep_words)
