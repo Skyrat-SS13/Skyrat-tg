@@ -108,8 +108,14 @@
 		return
 	//SKYRAT EDIT ADDITION BEGIN
 	if(user.a_intent == INTENT_DISARM)
-		message_verb_continuous = "<font color='#ee00ff'>glance</font>"
-		message_verb_simple = "<font color='#ee00ff'>glance</font>"
+		var/random = rand(1,2)
+		switch(random)
+			if(1)
+				message_verb_continuous = "<font color='#ee00ff'>glances</font>"
+				message_verb_simple = "<font color='#ee00ff'>glance</font>"
+			if(2)
+				message_verb_continuous = "<font color='#ee00ff'>maims</font>"
+				message_verb_simple = "<font color='#ee00ff'>maim</font>"
 	//SKYRAT EDIT ADDITION END
 
 	var/extra_wound_details = ""
