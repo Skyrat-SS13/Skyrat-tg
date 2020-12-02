@@ -31,3 +31,4 @@ Adds more stuff to cargo.
 ### Credits:
 
 Porting some of my stuff from the old base. - Owai-Seek
+Citadel Station, and Ghommie, for some of the packs that aren't mine.
