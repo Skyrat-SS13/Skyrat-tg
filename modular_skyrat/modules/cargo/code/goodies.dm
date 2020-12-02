@@ -89,4 +89,3 @@
 	desc = "Paper Package"
 	cost = 100
 	contains = list(/obj/item/paper_bin)
-    
