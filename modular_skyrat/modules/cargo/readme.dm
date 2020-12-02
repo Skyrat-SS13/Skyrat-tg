@@ -1,6 +1,6 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/2003
 
-## Title: Owai Cargo Additions
+## Title: Adds a bunch of crates to cargo.
 
 MODULE ID: N/A
 
