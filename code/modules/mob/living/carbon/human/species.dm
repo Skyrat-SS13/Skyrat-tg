@@ -1343,7 +1343,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(atk_verb == ATTACK_EFFECT_KICK || HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER)) //kicks never miss (provided your species deals more than 0 damage)
 				miss_chance = 0
 			else
-				miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) /*+ user.getStaminaLoss()*/ + (user.getBruteLoss()*0.3), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
+				miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + (user.getStaminaLoss()*0.2) + (user.getBruteLoss()*0.2), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
 
 		if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
 			playsound(target.loc, user.dna.species.miss_sound, 25, TRUE, -1)
@@ -1370,10 +1370,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		if(atk_verb == ATTACK_EFFECT_KICK)//kicks deal 1.5x raw damage
 			target.apply_damage(damage*1.5, user.dna.species.attack_type, affecting, armor_block)
+			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block)
 			log_combat(user, target, "kicked")
 		else//other attacks deal full raw damage + 1.5x in stamina damage
 			target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block)
-			target.apply_damage(damage*PUNCH_EXTRA_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block)
+			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block)
 			log_combat(user, target, "punched")
 
 		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
@@ -1470,7 +1471,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	H.send_item_attack_message(I, user, hit_area, affecting)
 
-	apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
+	//SKYRAT EDIT CHANGE BEGIN
+	//apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness()) //ORIGINAL
+	var/effec_damage
+	var/effec_stam
+	//While on a disarm intent, our hits are glancing, doing less normal damage but more stamina damage
+	if(intent == INTENT_DISARM)
+		effec_damage = I.force * TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER
+		effec_stam = effec_damage * TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
+	else
+		effec_damage = I.force * TISSUE_DAMAGE_STAMINA_MULTIPLIER
+		effec_stam = effec_damage
+	apply_damage(effec_damage * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
+	apply_damage(effec_stam, STAMINA, def_zone, armor_block, H)
+	//SKYRAT EDIT CHANGE END
 
 	if(!I.force)
 		return FALSE //item force is zero

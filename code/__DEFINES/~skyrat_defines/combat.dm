@@ -1,30 +1,34 @@
-#define MAX_HUMAN_LIFE 170
+#define MAX_HUMAN_LIFE 150
 
 //APPLICATION OF STAM DAMAGE
-#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.8
+//Should maybe wounds do it too?
+//This one is applied on non-glancing melee attacks aswell as normal projectiles.
+#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 1
 
-#define TISSUE_DAMAGE_APPLY_THRESHOLD 8/TISSUE_DAMAGE_STAMINA_MULTIPLIER
+//Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
+#define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5
+#define TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 3.8 //This is also multiplied by the glancing damage multiplier, so usually less
 
-#define PUNCH_EXTRA_STAMINA_MULTIPLIER 0.75
+#define PUNCH_STAMINA_MULTIPLIER 1.75
 
 //STAMINA REGEN
-#define STAMINA_STATIC_REGEN_MULTIPLIER 0.3
+#define STAMINA_STATIC_REGEN_MULTIPLIER 0.5
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
 #define STAMINA_STATIC_REGEN_FLAT 2
 //This increases the multiplier in relation to current stamina (staminaloss/THIS)
-#define STAMINALOSS_REGEN_COEFF 40
+#define STAMINALOSS_REGEN_COEFF 50
 
 //Thresholds for detrimental effects from stamina
-#define STAMINA_THRESHOLD_SLOWDOWN 70
+#define STAMINA_THRESHOLD_SLOWDOWN 60
 
-#define STAMINA_THRESHOLD_KNOCKDOWN 130
+#define STAMINA_THRESHOLD_KNOCKDOWN 120
 
-#define STAMINA_THRESHOLD_SOFTCRIT 170
+#define STAMINA_THRESHOLD_SOFTCRIT 150
 
-#define STAMINA_THRESHOLD_HARDCRIT 170
+#define STAMINA_THRESHOLD_HARDCRIT 150
 
 //Stamina threshold from which resisting a grab becomes hard
-#define STAMINA_THRESHOLD_HARD_RESIST 100
+#define STAMINA_THRESHOLD_HARD_RESIST 80
 
 //A coefficient for doing the change of random CC's on a person (staminaloss/THIS)
 #define STAMINA_CROWD_CONTROL_COEFF 200
@@ -57,10 +61,9 @@
 /mob/living/carbon
 	var/next_pain_message = 0
 
-//Stamina crit threshold is MAX_HUMAN_LIFE - HEALTH_THRESHOLD_CRIT so 200 - 40 = 160
 //MOVE THOSE LATER
 /datum/movespeed_modifier/stamina_slowdown
-	multiplicative_slowdown = 1.2
+	multiplicative_slowdown = 1.15
 
 /datum/mood_event/stamina_mild
 	description = "<span class='boldwarning'>Oh god it hurts!.</span>\n"

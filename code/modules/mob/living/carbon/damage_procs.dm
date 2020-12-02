@@ -70,8 +70,6 @@
 		return FALSE
 	if(amount > 0)
 		take_overall_damage(amount, 0, 0, updating_health, required_status)
-		if(amount > TISSUE_DAMAGE_APPLY_THRESHOLD)
-			adjustStaminaLoss(amount * TISSUE_DAMAGE_STAMINA_MULTIPLIER)
 	else
 		heal_overall_damage(abs(amount), 0, 0, required_status ? required_status : BODYPART_ORGANIC, updating_health)
 	return amount
@@ -81,8 +79,6 @@
 		return FALSE
 	if(amount > 0)
 		take_overall_damage(0, amount, 0, updating_health, required_status)
-		if(amount > TISSUE_DAMAGE_APPLY_THRESHOLD)
-			adjustStaminaLoss(amount * TISSUE_DAMAGE_STAMINA_MULTIPLIER)
 	else
 		heal_overall_damage(0, abs(amount), 0, required_status ? required_status : BODYPART_ORGANIC, updating_health)
 	return amount

@@ -106,6 +106,11 @@
 	var/message_verb_simple = length(I.attack_verb_simple) ? "[pick(I.attack_verb_simple)]" : "attack"
 	if(!I.force)
 		return
+	//SKYRAT EDIT ADDITION BEGIN
+	if(user.a_intent == INTENT_DISARM)
+		message_verb_continuous = "<font color='#ee00ff'>glance</font>"
+		message_verb_simple = "<font color='#ee00ff'>glance</font>"
+	//SKYRAT EDIT ADDITION END
 
 	var/extra_wound_details = ""
 	if(I.damtype == BRUTE && hit_bodypart.can_dismember())
