@@ -90,6 +90,11 @@
 /mob/living/carbon/human/species/dwarf
 	race = /datum/species/dwarf
 
+/mob/living/carbon/human/species/hydra
+	race = /datum/species/human/hydra
+
+/mob/living/carbon/human/species/synthhydra
+	race = /datum/species/robotic/synthhydra
 /mob/living/carbon/human/species/roundstartslime
 	race = /datum/species/jelly/roundstartslime
 
@@ -126,4 +131,4 @@
 /mob/living/carbon/human/revive(full_heal = 0, admin_revive = 0)
 	if(..())
 		if(dna && dna.species)
-			dna.species.spec_revival(src) 
+			dna.species.spec_revival(src)
