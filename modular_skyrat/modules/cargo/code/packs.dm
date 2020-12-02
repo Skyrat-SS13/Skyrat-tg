@@ -164,20 +164,6 @@
 	crate_name = "wildcard food crate"
 	crate_type = /obj/structure/closet/crate/freezer
 
-/datum/supply_pack/organic/randomized/chef/vegetables
-	name = "Vegetable Crate"
-	desc = "Grown in vats. Contains 15 assorted vegetables."
-	cost = 1300
-	contains = list(/obj/item/food/grown/chili,
-					/obj/item/food/grown/corn,
-					/obj/item/food/grown/tomato,
-					/obj/item/food/grown/potato,
-					/obj/item/food/grown/carrot,
-					/obj/item/food/grown/mushroom/chanterelle,
-					/obj/item/food/grown/onion,
-					/obj/item/food/grown/pumpkin)
-	crate_name = "veggie crate"
-
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Pack Type ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -191,6 +177,8 @@
                     /obj/item/storage/part_replacer/cargo,
 					/obj/item/stack/sheet/metal/ten,
 					/obj/item/stack/sheet/metal/five,
+                    /obj/item/stock_parts/cell/high,
+                    /obj/item/stock_parts/cell/high,
 					/obj/item/stack/cable_coil,
 					/obj/item/book/manual/wiki/barman_recipes,
 					/obj/item/reagent_containers/food/drinks/shaker,
