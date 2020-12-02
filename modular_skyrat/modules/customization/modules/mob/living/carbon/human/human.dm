@@ -92,9 +92,6 @@
 
 /mob/living/carbon/human/species/hydra
 	race = /datum/species/human/hydra
-
-/mob/living/carbon/human/species/synthhydra
-	race = /datum/species/robotic/synthhydra
 /mob/living/carbon/human/species/roundstartslime
 	race = /datum/species/jelly/roundstartslime
 
