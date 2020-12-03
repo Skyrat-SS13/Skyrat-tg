@@ -139,6 +139,7 @@
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	w_class = WEIGHT_CLASS_BULKY
 	can_suppress = FALSE
+
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	name = "'Caracal' anti-materiel rifle"  //we flop out
 	desc = "A sleek, light bullpup .50 BMG sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension."
@@ -152,6 +153,7 @@
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	weapon_weight = WEAPON_LIGHT
+
 /obj/item/gun/ballistic/automatic/sniper_rifle/blackmarket  //New variant of the sniper rifle, adminspawn only for now
 	name = "SA-107 anti-materiel rifle"
 	desc = "An illegal Scarborough Arms rendition of an Aussec Armory sniper rifle. This one has been fitted with red hardlight sights, a collapsible stock, and has a removable muzzle brake that allows easy attachment of suppressors."
