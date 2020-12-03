@@ -154,7 +154,7 @@
 	damage_multiplier = 1.15
 	weapon_weight = WEAPON_LIGHT
 /obj/item/gun/ballistic/automatic/sniper_rifle/blackmarket  //New variant of the sniper rifle, adminspawn only for now
-    name = "SA-107 anti-materiel rifle"
+	name = "SA-107 anti-materiel rifle"
 	desc = "An illegal Scarborough Arms rendition of an Aussec Armory sniper rifle. This one has been fitted with red hardlight sights, a collapsible stock, and has a removable muzzle brake that allows easy attachment of suppressors."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = sniper2
@@ -188,7 +188,7 @@
 	inhand_icon_state = "arg"
 	
 /obj/item/gun/ballistic/automatic/solrifle
-    name = "MCRS-5B combat rifle"
+	name = "MCRS-5B combat rifle"
 	desc = "State of the art, expensive combat rifle used by the SolFed Marine Corps and other branches. This one is a lighter model that fires 5.56, designed for use by pilots."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "arg"
