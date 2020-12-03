@@ -16,7 +16,7 @@
 	var/pressure_decrease_active = FALSE
 	//SKYRAT EDIT ADDITION END
 
-//SKYRAT EDIT ADDITION
+//SKYRAT EDIT ADDITION BEGIN
 /obj/projectile/plasma/Initialize()
 	. = ..()
 	if(!lavaland_equipment_pressure_check(get_turf(src)))
