@@ -137,13 +137,13 @@
 	icon_state = sniper
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
-	w_class = WEIGHT_CLASS_HEAVY
+	w_class = 'WEIGHT_CLASS_HEAVY'
 	can_suppress = FALSE
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	name = "'Caracal' anti-materiel rifle"  //we flop out
 	desc = "A sleek, light bullpup .50 BMG sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
-	icon_state = sysniper
+	icon_state = 'sysniper'
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	fire_delay = 20 //Delay halved thanks to recoil absorption
@@ -157,7 +157,7 @@
 	name = "SA-107 anti-materiel rifle"
 	desc = "An illegal Scarborough Arms rendition of an Aussec Armory sniper rifle. This one has been fitted with red hardlight sights, a collapsible stock, and has a removable muzzle brake that allows easy attachment of suppressors."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
-	icon_state = sniper2
+	icon_state = 'sniper2'
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	fire_sound_volume = 90
@@ -172,7 +172,6 @@
 	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
 	fire_delay = 35 //Slightly smaller than standard sniper
 	burst_size = 1
-	w_class = WEIGHT_CLASS_NORMAL
 	zoomable = TRUE
 	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
 	zoom_out_amt = 5
