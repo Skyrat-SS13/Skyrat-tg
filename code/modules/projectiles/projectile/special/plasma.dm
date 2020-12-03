@@ -38,7 +38,7 @@
 			return BULLET_ACT_FORCE_PIERCE
 
 /obj/projectile/plasma/adv
-	damage = 25 //SKYRAT EDIT CAHNGE - ORIGINAL: 7
+	damage = 25 //SKYRAT EDIT CHANGE - ORIGINAL: 7
 	range = 5
 	mine_range = 5
 
