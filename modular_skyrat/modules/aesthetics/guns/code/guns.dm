@@ -189,7 +189,7 @@
 	
 /obj/item/gun/ballistic/automatic/solrifle
     name = "MCRS-5B combat rifle"
-	desc = "State of the art, expensive combat rifle used by SolFed's Marine Corps and other branches. This one is a lighter model that fires 5.56, designed for use by pilots."
+	desc = "State of the art, expensive combat rifle used by the SolFed Marine Corps and other branches. This one is a lighter model that fires 5.56, designed for use by pilots."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "arg"
 	inhand_icon_state = "arg"
