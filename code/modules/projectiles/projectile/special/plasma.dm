@@ -11,6 +11,21 @@
 	muzzle_type = /obj/effect/projectile/muzzle/plasma_cutter
 	impact_type = /obj/effect/projectile/impact/plasma_cutter
 
+	//SKYRAT EDIT ADDITION
+	var/pressure_decrease = 0.25
+	var/pressure_decrease_active = FALSE
+	//SKYRAT EDIT ADDITION END
+
+//SKYRAT EDIT ADDITION
+/obj/projectile/plasma/Initialize()
+	. = ..()
+	if(!lavaland_equipment_pressure_check(get_turf(src)))
+		name = "weakened [name]"
+		damage = damage * pressure_decrease
+		dismemberment = dismemberment * pressure_decrease
+		pressure_decrease_active = TRUE
+//SKYRAT EDIT END
+
 /obj/projectile/plasma/on_hit(atom/target)
 	. = ..()
 	if(ismineralturf(target))
