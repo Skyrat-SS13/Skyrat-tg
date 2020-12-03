@@ -41,5 +41,5 @@
 	icon_state = "unicorn_thick"
 
 /datum/sprite_accessory/horns/unicorn/holes
-	name = "Holes"
+	name = "Unicorn Holes"
 	icon_state = "unicorn_holes"

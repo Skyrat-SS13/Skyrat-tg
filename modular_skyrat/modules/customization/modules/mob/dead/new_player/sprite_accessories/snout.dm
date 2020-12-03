@@ -152,7 +152,7 @@
 	color_src = USE_ONE_COLOR*/
 
 /datum/sprite_accessory/snouts/mammal/concorde		//yes, it is really what you think it is.
-	name = "concorde"
+	name = "Concorde"
 	icon_state = "concorde"
 
 /datum/sprite_accessory/snouts/mammal/toucan
