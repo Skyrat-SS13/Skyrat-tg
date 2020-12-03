@@ -137,7 +137,7 @@
 	icon_state = sniper
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
-	w_class = 'WEIGHT_CLASS_HEAVY'
+	w_class = WEIGHT_CLASS_BULKY
 	can_suppress = FALSE
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	name = "'Caracal' anti-materiel rifle"  //we flop out
@@ -164,7 +164,7 @@
 	vary_fire_sound = FALSE
 	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
 	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
-	w_class = WEIGHT_CLASS_MEDIUM
+	w_class = WEIGHT_CLASS_NORMAL
 	can_suppress = TRUE
 	can_unsuppress = TRUE
 	recoil = 1.8
@@ -198,3 +198,6 @@
 	burst_size = 5
 	fire_delay = 1.2
 	spread = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	can_suppress = FALSE
+	weapon_weight = WEAPON_HEAVY
