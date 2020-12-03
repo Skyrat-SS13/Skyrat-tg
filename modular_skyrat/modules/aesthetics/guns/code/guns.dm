@@ -130,3 +130,69 @@
 /obj/item/ammo_casing/energy/laser/accelerator
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser_cannon_fire.ogg'
 
+/obj/item/gun/ballistic/automatic/sniper_rifle
+	name = "AUS-107 anti-materiel rifle"
+	desc = "A long ranged Aussec Armory sniper rifle that does significant damage, features adaptive green hardlight sights instead of a bulky scope."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
+	icon_state = sniper
+	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	w_class = WEIGHT_CLASS_HEAVY
+	can_suppress = FALSE
+/obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
+	name = "'Caracal' anti-materiel rifle"  //we flop out | at yo party
+	desc = "A sleek, light bullpup .50 BMG sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
+	icon_state = sysniper
+	fire_delay = 20 //Delay halved thanks to recoil absorption
+	burst_size = 0.5
+	recoil = 1
+	can_suppress = TRUE
+	can_unsuppress = TRUE
+	damage_multiplier = 1.15
+	weapon_weight = WEAPON_LIGHT
+/obj/item/gun/ballistic/automatic/sniper_rifle/blackmarket  //New variant of the sniper rifle, adminspawn only for now
+    name = "SA-107 anti-materiel rifle"
+	desc = "An illegal Scarborough Arms rendition of an Aussec Armory sniper rifle. This one has been fitted with red hardlight sights, a collapsible stock, and has a removable muzzle brake that allows easy attachment of suppressors."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
+	icon_state = sniper2
+	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	fire_sound_volume = 90
+	vary_fire_sound = FALSE
+	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
+	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	w_class = WEIGHT_CLASS_MEDIUM
+	can_suppress = TRUE
+	can_unsuppress = TRUE
+	recoil = 1.8
+	weapon_weight = WEAPON_HEAVY
+	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	fire_delay = 35 //Slightly smaller than standard sniper
+	burst_size = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	zoomable = TRUE
+	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
+	zoom_out_amt = 5
+	slot_flags = ITEM_SLOT_BACK
+	actions_types = list()
+	mag_display = TRUE
+	
+/obj/item/gun/ballistic/automatic/ar
+	name = "ARG-63 infantry rifle"
+	desc = "Nanotrasen's prime ballistic option based on the Stoner design, fitted with a light polymer frame and other tactical furniture - nicknamed 'Boarder' by Special Operations teams."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
+	icon_state = "arg"
+	inhand_icon_state = "arg"
+	
+/obj/item/gun/ballistic/automatic/solrifle
+    name = "MCRS-5B combat rifle"
+	desc = "State of the art, expensive combat rifle used by SolFed's Marine Corps and other branches. This one is a lighter model that fires 5.56, designed for use by pilots."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
+	icon_state = "arg"
+	inhand_icon_state = "arg"
+	selector_switch_icon = TRUE
+	mag_type = /obj/item/ammo_box/magazine/m556
+	can_suppress = FALSE
+	burst_size = 5
+	fire_delay = 1.2
+	spread = 1
