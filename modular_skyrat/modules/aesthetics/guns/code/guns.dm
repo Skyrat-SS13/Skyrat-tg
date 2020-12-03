@@ -135,14 +135,17 @@
 	desc = "A long ranged Aussec Armory sniper rifle that does significant damage, features adaptive green hardlight sights instead of a bulky scope."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = sniper
-	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	w_class = WEIGHT_CLASS_HEAVY
 	can_suppress = FALSE
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
-	name = "'Caracal' anti-materiel rifle"  //we flop out | at yo party
+	name = "'Caracal' anti-materiel rifle"  //we flop out
 	desc = "A sleek, light bullpup .50 BMG sniper rifle with a reciprocating barrel, nicknamed 'Caracal' by Scarborough Arms. Its compact folding parts make it able to fit into a backpack, and its modular barrel can have a suppressor installed within it rather than as a muzzle extension."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = sysniper
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	fire_delay = 20 //Delay halved thanks to recoil absorption
 	burst_size = 0.5
 	recoil = 1
@@ -155,12 +158,12 @@
 	desc = "An illegal Scarborough Arms rendition of an Aussec Armory sniper rifle. This one has been fitted with red hardlight sights, a collapsible stock, and has a removable muzzle brake that allows easy attachment of suppressors."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = sniper2
-	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
 	fire_sound_volume = 90
 	vary_fire_sound = FALSE
 	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
 	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
-	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	w_class = WEIGHT_CLASS_MEDIUM
 	can_suppress = TRUE
 	can_unsuppress = TRUE
