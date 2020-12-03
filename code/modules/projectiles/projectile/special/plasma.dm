@@ -2,7 +2,7 @@
 	name = "plasma blast"
 	icon_state = "plasmacutter"
 	damage_type = BRUTE
-	damage = 10 //SKYRAT EDIT CHANGE - ORIGINAL: 5
+	damage = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 5
 	range = 4
 	dismemberment = 20
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
