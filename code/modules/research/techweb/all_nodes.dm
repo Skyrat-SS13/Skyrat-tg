@@ -707,7 +707,8 @@
 	display_name = "Simple Exosuit Modules"
 	description = "An advanced piece of mech weaponry"
 	prereq_ids = list("adv_mecha", "bluespace_power")
-	design_ids = list("mech_energy_relay", "mech_ccw_armor", "mech_proj_armor", "mech_generator_nuclear", "ripleyupgradef")
+	//design_ids = list("mech_energy_relay", "mech_ccw_armor", "mech_proj_armor", "mech_generator_nuclear") - ORIGINAL
+	design_ids = list("mech_energy_relay", "mech_ccw_armor", "mech_proj_armor", "mech_generator_nuclear", "ripleyupgradef") //SKYRAT EDIT CHANGE MKF
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/mech_scattershot
