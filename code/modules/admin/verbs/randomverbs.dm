@@ -65,7 +65,8 @@
 		return
 
 	if (!sender)
-		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
+		//sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE) //ORIGINAL
+		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE,RADIO_CHANNEL_FACTION) //SKYRAT EDIT CHANGE
 		if(!sender)
 			return
 
@@ -1348,17 +1349,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	target.forceMove(bread)
 
 /**
-  * firing_squad is a proc for the :B:erforate smite to shoot each individual bullet at them, so that we can add actual delays without sleep() nonsense
-  *
-  * Hilariously, if you drag someone away mid smite, the bullets will still chase after them from the original spot, possibly hitting other people. Too funny to fix imo
-  *
-  * Arguments:
-  * * target- guy we're shooting obviously
-  * * source_turf- where the bullet begins, preferably on a turf next to the target
-  * * body_zone- which bodypart we're aiming for, if there is one there
-  * * wound_bonus- the wounding power we're assigning to the bullet, since we don't care about the base one
-  * * damage- the damage we're assigning to the bullet, since we don't care about the base one
-  */
+ * firing_squad is a proc for the :B:erforate smite to shoot each individual bullet at them, so that we can add actual delays without sleep() nonsense
+ *
+ * Hilariously, if you drag someone away mid smite, the bullets will still chase after them from the original spot, possibly hitting other people. Too funny to fix imo
+ *
+ * Arguments:
+ * * target- guy we're shooting obviously
+ * * source_turf- where the bullet begins, preferably on a turf next to the target
+ * * body_zone- which bodypart we're aiming for, if there is one there
+ * * wound_bonus- the wounding power we're assigning to the bullet, since we don't care about the base one
+ * * damage- the damage we're assigning to the bullet, since we don't care about the base one
+ */
 /proc/firing_squad(mob/living/carbon/target, turf/source_turf, body_zone, wound_bonus, damage)
 	if(!target.get_bodypart(body_zone))
 		return
