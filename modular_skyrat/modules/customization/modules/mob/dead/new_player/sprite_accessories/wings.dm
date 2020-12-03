@@ -129,3 +129,7 @@
 /datum/sprite_accessory/wings/mammal/bee
 	name = "Bee"
 	icon_state = "bee"
+
+/datum/sprite_accessory/wings/aero
+	name = "Delta Canadair"
+	icon_state = "cadarrow"

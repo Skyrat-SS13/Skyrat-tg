@@ -90,8 +90,6 @@
 /mob/living/carbon/human/species/dwarf
 	race = /datum/species/dwarf
 
-/mob/living/carbon/human/species/hydra
-	race = /datum/species/human/hydra
 /mob/living/carbon/human/species/roundstartslime
 	race = /datum/species/jelly/roundstartslime
 
