@@ -14,3 +14,5 @@
 		. += "The current alert level is red!"
 	if(GLOB.security_level == SEC_LEVEL_DELTA)
 		. += "The current alert level is delta! Evacuate!"
+	if(GLOB.security_level == SEC_LEVEL_GAMMA)
+		. += "Gamma alert! All crew to stations!"
