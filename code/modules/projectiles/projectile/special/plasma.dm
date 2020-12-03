@@ -11,7 +11,7 @@
 	muzzle_type = /obj/effect/projectile/muzzle/plasma_cutter
 	impact_type = /obj/effect/projectile/impact/plasma_cutter
 
-	//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT ADDITION BEGIN
 	var/pressure_decrease = 0.25
 	var/pressure_decrease_active = FALSE
 	//SKYRAT EDIT ADDITION END
