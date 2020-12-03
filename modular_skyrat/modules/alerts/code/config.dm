@@ -23,4 +23,4 @@
 	config_entry_value = "Destruction of the station is still imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
 
 /datum/config_entry/string/alert_gamma
-	config_entry_value = "The Solar Federation has placed this system under Gamma Alert status. This galactic system is facing a ZK-Class Reality Failure Scenario. Security Personnel are authorized full access to lethal equipment to enforce Martial Law. Failure to follow emergency procedures is punishable by death. This is not a drill."
+	config_entry_value = "The Solar Federation has placed this system under Gamma Alert status. This galactic system is facing a ZK-Class Reality Failure Scenario. Security Personnel is authorized full access to lethal equipment to enforce Martial Law. Failure to follow emergency procedures is punishable by death. This is not a drill."
