@@ -5,13 +5,13 @@
 	. = ..()
 	can_hold = typecacheof(list(
 	/obj/item/food/cookie,
-	/obj/item/reagent_containers/food/snacks/sugarcookie))
+	/obj/item/food/cookie/sugar))
 
 /datum/component/storage/concrete/pockets/small/collar/locked/Initialize()
 	. = ..()
 	can_hold = typecacheof(list(
 	/obj/item/food/cookie,
-	/obj/item/reagent_containers/food/snacks/sugarcookie,
+	/obj/item/food/cookie/sugar,
 	/obj/item/key/collar))
 
 /obj/item/clothing/neck/human_petcollar
