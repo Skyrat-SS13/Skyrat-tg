@@ -298,3 +298,32 @@
 	)
 	H.equip_in_one_of_slots(camera, camera_slots , qdel_on_fail = TRUE)
 	H.regenerate_icons()
+
+/datum/quirk/hydra
+	name = "Switch Mind"
+	desc = "As a hydra, you speak through your independant heads. Or rather, as yourselves. (Seperate the names like [Name] - [Name2] - [Name3] without the brackets.)"
+	value = 0
+	mob_trait = TRAIT_HYDRA_HEADS
+	gain_text = "<span class='notice'>You have minds that can speak independantly.</span>"
+	lose_text = "<span class='danger'>All your minds has merged into one.</span>"
+	medical_record_text = "There are multiple minds inhabiting one body."
+
+/datum/quirk/hydra/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/mob/living/carbon/human/H += head_names/list(name1 = "", name2 = "", name3 = "")
+	var/mob/living/carbon/human/H += selected_head
+	var/mob/living/carbon/human/H.selected_head = head_names/list(name2)		//defualts to the central mind.
+
+
+	if(var/mob/living/carbon/human/H != roundstart_quirks/list(/datum/quirk/hydra))
+		log_admin("[key_name(src)]'s hydra trait failed to initialize. Invalid name.'.")	//Temporary debug alert so I can keep track.
+		return			//Failed to initialize.
+	else
+		for(istext(" ") in real_name)
+
+
+/datum/action/innate/hydra				//I would hope putting this here is fine.
+	name = "Switch head"
+	desc = "Switch between each of the heads on your body."
+	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	button_icon_state = "art_summon"
