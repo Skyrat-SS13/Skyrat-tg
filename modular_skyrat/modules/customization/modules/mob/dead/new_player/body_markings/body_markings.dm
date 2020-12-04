@@ -49,7 +49,7 @@
 	name = "Drake Bone"
 	icon_state = "drakebone"
 	default_color = "CCC"
-	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT 
+	affected_bodyparts = CHEST | HAND_LEFT | HAND_RIGHT
 
 /datum/body_marking/other/tonage
 	name = "Body Tonage"
@@ -67,11 +67,31 @@
 	name = "Pilot Jaw"
 	icon_state = "pilot_jaw"
 	default_color = "CCC"
-	affected_bodyparts = HEAD 
+	affected_bodyparts = HEAD
 
 /datum/body_marking/other/drake_eyes
 	name = "Drake Eyes"
 	icon_state = "drakeeyes"
+	default_color = "F00"
+	affected_bodyparts = HEAD
+	always_color_customizable = TRUE
+
+/datum/body_marking/other/hydra_left_head
+	name = "Hydra Left Head"
+	icon_state = "hydraleft"
+	default_color = "F00"
+	affected_bodyparts = HEAD
+	always_color_customizable = TRUE
+
+/datum/body_marking/other/hydra_middle_head
+	name = "Hydra Middle Head"
+	icon_state = "hydramiddle"
+	default_color = "F00"
+	affected_bodyparts = HEAD
+	always_color_customizable = TRUE
+/datum/body_marking/other/hydra_right_head
+	name = "Hydra Right Head"
+	icon_state = "hydraright"
 	default_color = "F00"
 	affected_bodyparts = HEAD
 	always_color_customizable = TRUE
@@ -88,7 +108,7 @@
 /datum/body_marking/secondary/sergal
 	name = "Sergal"
 	icon_state = "sergal"
-	affected_bodyparts = HEAD | CHEST 
+	affected_bodyparts = HEAD | CHEST
 
 /datum/body_marking/secondary/husky
 	name = "Husky"
@@ -118,7 +138,7 @@
 /datum/body_marking/secondary/wolf
 	name = "Wolf"
 	icon_state = "wolf"
-	affected_bodyparts = HEAD | CHEST 
+	affected_bodyparts = HEAD | CHEST
 
 /datum/body_marking/secondary/fox
 	name = "Fox"
@@ -388,7 +408,7 @@
 /datum/body_marking/tertiary/floofer
 	name = "Floofer Sock"
 	icon_state = "floofer"
-	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT | HAND_LEFT | HAND_RIGHT 
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT | HAND_LEFT | HAND_RIGHT
 
 /datum/body_marking/tertiary/rat
 	name = "Rat Spot"

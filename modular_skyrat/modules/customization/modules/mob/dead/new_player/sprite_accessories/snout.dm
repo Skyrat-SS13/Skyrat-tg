@@ -151,6 +151,10 @@
 	icon_state = "sharplight"
 	color_src = USE_ONE_COLOR*/
 
+/datum/sprite_accessory/snouts/mammal/hydra
+	name = "Hydra"
+	icon_state = "hydra"
+
 /datum/sprite_accessory/snouts/mammal/toucan
 	name = "Toucan"
 	icon_state = "toucan"
