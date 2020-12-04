@@ -212,3 +212,7 @@
 /datum/sprite_accessory/ears/mutant/cobrahoodears
 	name = "Cobra Hood (Ears)"
 	icon_state = "cobraears"
+
+/datum/sprite_accessory/ears/mutant/miqote
+	name = "Miqo'te"
+	icon_state = "miqote"
