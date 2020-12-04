@@ -62,8 +62,8 @@
 	name = "\improper APLU MK-II \"Ripley\""
 	icon_state = "ripleymkii"
 	fast_pressure_step_in = 2 //step_in while in low pressure conditions
-	slow_pressure_step_in = 4 //step_in while in normal pressure conditions
-	movedelay = 4
+	slow_pressure_step_in = 3 //step_in while in normal pressure conditions //SKYRAT EDIT - Movedelay is now 3, from 4.
+	movedelay = 3 //SKYRAT EDIT - Movedelay is now 3, from 4.
 	max_temperature = 30000
 	max_integrity = 250
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 60, BIO = 0, RAD = 70, FIRE = 100, ACID = 100)
@@ -188,10 +188,10 @@
 			to_chat(user, "<span class='warning'>You fail to push [O] out of [src]!</span>")
 
 /**
-  * Makes the mecha go faster and halves the mecha drill cooldown if in Lavaland pressure.
-  *
-  * Checks for Lavaland pressure, if that works out the mech's speed is equal to fast_pressure_step_in and the cooldown for the mecha drill is halved. If not it uses slow_pressure_step_in and drill cooldown is normal.
-  */
+ * Makes the mecha go faster and halves the mecha drill cooldown if in Lavaland pressure.
+ *
+ * Checks for Lavaland pressure, if that works out the mech's speed is equal to fast_pressure_step_in and the cooldown for the mecha drill is halved. If not it uses slow_pressure_step_in and drill cooldown is normal.
+ */
 /obj/vehicle/sealed/mecha/working/ripley/proc/update_pressure()
 	var/turf/T = get_turf(loc)
 

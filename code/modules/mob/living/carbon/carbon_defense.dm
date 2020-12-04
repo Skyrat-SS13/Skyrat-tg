@@ -266,7 +266,7 @@
 			do_ass_slap_animation(target)
 			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
 			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
-				"<span class='notice'>You slap [src] on the ass, how satisfying.</span>",\
+				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
 				"You hear a slap.")
 			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
@@ -474,7 +474,7 @@
 					"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
-			if(dna.species.can_wag_tail() && !dna.species.is_wagging_tail())
+			if(!src.dna.species.is_wagging_tail(src))
 				src.emote("wag")
 		//SKYRAT EDIT ADDITION END
 

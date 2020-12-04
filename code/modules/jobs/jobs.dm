@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Head of Security",
 	"Chief Engineer",
 	"Research Director",
+	"Quartermaster", //SKYRAT EDIT ADDITION
 	"Chief Medical Officer"))
 
 
