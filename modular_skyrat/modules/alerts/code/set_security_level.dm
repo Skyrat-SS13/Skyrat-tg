@@ -7,7 +7,6 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_GAMMA && level != GLOB.security_level)
-		play_security_alert_sound(level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				minor_announce(CONFIG_GET(string/alert_green), "Attention! Alert level lowered to green:")
@@ -112,6 +111,7 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
 			if(is_station_level(FA.z))
 				FA.update_icon()
+		play_security_alert_sound(level)
 	else
 		return
 
@@ -154,7 +154,7 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 			return "gamma"
 
 /proc/seclevel2num(seclevel)
-	switch( lowertext(seclevel) )
+	switch(lowertext(seclevel))
 		if("green")
 			return SEC_LEVEL_GREEN
 		if("blue")
