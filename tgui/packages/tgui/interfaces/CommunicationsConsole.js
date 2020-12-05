@@ -368,6 +368,7 @@ const PageMain = (props, context) => {
               />
 
               <AlertButton
+                // SKYRAT EDIT ADDTION BEGIN - ALERTS
                 alertLevel="violet"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
@@ -383,6 +384,7 @@ const PageMain = (props, context) => {
                 alertLevel="amber"
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+                // SKYRAT EDIT END
               />
             </Flex.Item>
           </Flex>
