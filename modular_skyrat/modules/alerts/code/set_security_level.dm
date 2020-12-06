@@ -1,9 +1,12 @@
+GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound effect is currently playing
+
+#define GAMMA_LOOP_LENGTH 1236 //2.06 minutes in deciseconds
+
 /proc/set_security_level(level)
 	level = seclevel2num(level) || level
 
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_GAMMA && level != GLOB.security_level)
-		play_security_alert_sound(level)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				minor_announce(CONFIG_GET(string/alert_green), "Attention! Alert level lowered to green:")
@@ -108,6 +111,7 @@
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
 			if(is_station_level(FA.z))
 				FA.update_icon()
+		play_security_alert_sound(level)
 	else
 		return
 
@@ -150,7 +154,7 @@
 			return "gamma"
 
 /proc/seclevel2num(seclevel)
-	switch( lowertext(seclevel) )
+	switch(lowertext(seclevel))
 		if("green")
 			return SEC_LEVEL_GREEN
 		if("blue")
@@ -183,7 +187,7 @@
 		if(SEC_LEVEL_DELTA)
 			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/deltaklaxon.ogg')
 		if(SEC_LEVEL_GAMMA)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
+			gamma_loop() //Gamma has a looping sound effect
 
 /proc/alert_sound_to_playing(soundin, volume = 100, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
 	if(!S)
@@ -193,3 +197,15 @@
 			var/mob/M = m
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
 				M.playsound_local(M, null, volume, vary, frequency, falloff, channel, pressure_affected, S)
+
+//ALERT ALERT ALERT SHITCODE
+/proc/gamma_loop() //Loops gamma sound
+	if(GLOB.gamma_looping)
+		return
+	GLOB.gamma_looping = TRUE
+	while(GLOB.security_level == SEC_LEVEL_GAMMA)
+		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
+		sleep(GAMMA_LOOP_LENGTH)
+	GLOB.gamma_looping = FALSE
+
+#undef GAMMA_LOOP_LENGTH
