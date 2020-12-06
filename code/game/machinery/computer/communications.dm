@@ -127,7 +127,8 @@
 					return
 
 			var/new_sec_level = seclevel2num(params["newSecurityLevel"])
-			if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE)
+			//if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE) - ORIGINAL
+			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_AMBER) //SKYRAT EDIT CHANGE - ALERTS
 				return
 			if (GLOB.security_level == new_sec_level)
 				return
