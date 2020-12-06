@@ -258,7 +258,7 @@
 				src.update_damage_overlays()
 			visible_message("<span class='danger'>[src] tried slapping [target]'s ass, however it was much harder than expected!</span>",
 			"<span class='danger'>You tried slapping [target]'s ass, but it felt like metal, ouch!</span>",\
-			"You hear a sore sounding slap.")
+			"You hear a sore sounding slap.", ignored_mobs = list(target))
 			playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, -1)
 			to_chat(target, "<span class='danger'>[src] tried slapping your ass, but it was deflected!")
 			return
@@ -267,7 +267,7 @@
 			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
 			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
 				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
-				"You hear a slap.")
+				"You hear a slap.", ignored_mobs = list(target))
 			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
 	//SKYRAT EDIT END
