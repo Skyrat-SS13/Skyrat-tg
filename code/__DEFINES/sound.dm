@@ -2,30 +2,20 @@
 #define CHANNEL_LOBBYMUSIC 1024
 #define CHANNEL_ADMIN 1023
 #define CHANNEL_VOX 1022
-<<<<<<< HEAD
 /* SKYRAT EDIT CHANGE BEGIN - JUKEBOX - ORIGINAL
-#define CHANNEL_JUSTICAR_ARK 1020
-#define CHANNEL_HEARTBEAT 1019 //sound channel for heartbeats
-#define CHANNEL_AMBIENCE 1018
-#define CHANNEL_BUZZ 1017
-#define CHANNEL_BICYCLE 1016
-*/
-#define CHANNEL_JUKEBOX 1021
-#define CHANNEL_JUKEBOX_START 1016
-#define CHANNEL_JUSTICAR_ARK 1015
-#define CHANNEL_HEARTBEAT 1014 //sound channel for heartbeats
-#define CHANNEL_AMBIENCE 1013
-#define CHANNEL_BUZZ 1012
-#define CHANNEL_BICYCLE 1011
-//SKYRAT EDIT CHANGE END
-=======
 #define CHANNEL_JUKEBOX 1021
 #define CHANNEL_HEARTBEAT 1020 //sound channel for heartbeats
 #define CHANNEL_AMBIENCE 1019
 #define CHANNEL_BUZZ 1018
 #define CHANNEL_BICYCLE 1017
->>>>>>> 4650a5d7ee7... Sound Environments - Adds reverb and echo to rooms (#55333)
-
+*/
+#define CHANNEL_JUKEBOX 1021
+#define CHANNEL_JUKEBOX_START 1016
+#define CHANNEL_HEARTBEAT 1015 //sound channel for heartbeats
+#define CHANNEL_AMBIENCE 1014
+#define CHANNEL_BUZZ 1013
+#define CHANNEL_BICYCLE 1012
+//SKYRAT EDIT CHANGE END
 ///Default range of a sound.
 #define SOUND_RANGE 17
 ///default extra range for sounds considered to be quieter
