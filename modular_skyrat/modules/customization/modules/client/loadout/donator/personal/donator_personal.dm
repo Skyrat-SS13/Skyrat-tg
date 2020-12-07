@@ -9,7 +9,7 @@
 	ckeywhitelist = list("thedragmeme")
 
 /datum/loadout_item/uniform/donator/black_turtleneck
-	name = "Dragon Undergarment"
+	name = "Black turtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool/black
 	ckeywhitelist = list("thedragmeme")
 
@@ -24,17 +24,17 @@
 	ckeywhitelist = list("grunnyyy")
 
 /datum/loadout_item/shoes/donator/britches_shoes
-	name = "Cute clown shoes"
+	name = "Britches' shoes"
 	path = /obj/item/clothing/shoes/clown_shoes/britches
 	ckeywhitelist = list("bloodrite")
 
 /datum/loadout_item/uniform/donator/britches_dress
-	name = "Cute clown dress"
+	name = "Britches' dress"
 	path = /obj/item/clothing/under/rank/civilian/clown/britches
 	ckeywhitelist = list("bloodrite")
 
 /datum/loadout_item/mask/donator/britches_mask
-	name = "The Hollow Heart"
+	name = "Britches' mask"
 	path = /obj/item/clothing/mask/gas/britches
 	ckeywhitelist = list("bloodrite")
 
