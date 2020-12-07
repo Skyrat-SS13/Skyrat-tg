@@ -109,13 +109,8 @@ SUBSYSTEM_DEF(jukeboxes)
 				M.stop_sound_channel(jukeinfo[2])
 				continue
 
-			var/inrange = FALSE
 			if(jukebox.z == M.z)	//todo - expand this to work with mining planet z-levels when robust jukebox audio gets merged to master
 				song_played.status = SOUND_UPDATE
-				if(get_area(M) == currentarea)
-					inrange = TRUE
-				else if(M in hearerscache)
-					inrange = TRUE
 			else
 				song_played.status = SOUND_MUTE | SOUND_UPDATE	//Setting volume = 0 doesn't let the sound properties update at all, which is lame.
 
