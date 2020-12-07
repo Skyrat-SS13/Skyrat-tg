@@ -65,7 +65,8 @@
 		return
 
 	if (!sender)
-		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
+		//sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE) //ORIGINAL
+		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE,RADIO_CHANNEL_FACTION) //SKYRAT EDIT CHANGE
 		if(!sender)
 			return
 
@@ -882,7 +883,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/level = input("Select security level to change to","Set Security Level") as null|anything in list("green","blue","red","delta")
+	var/level = input("Select security level to change to","Set Security Level") as null|anything in list("green","blue","violet","amber","red","delta","gamma")
 	if(level)
 		set_security_level(level)
 
@@ -1168,7 +1169,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			var/turf/endT = spaceDebrisFinishLoc(startside, T.z)
 			new /obj/effect/immovablerod(startT, endT,target)
 		if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK)
-			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/reagent_containers/food/snacks/grown/harebell") as null|text
+			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/food/grown/harebell") as null|text
 			var/obj/structure/closet/supplypod/centcompod/pod = new()
 			pod.damage = 40
 			pod.explosionSize = list(0,0,0,2)
@@ -1348,17 +1349,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	target.forceMove(bread)
 
 /**
-  * firing_squad is a proc for the :B:erforate smite to shoot each individual bullet at them, so that we can add actual delays without sleep() nonsense
-  *
-  * Hilariously, if you drag someone away mid smite, the bullets will still chase after them from the original spot, possibly hitting other people. Too funny to fix imo
-  *
-  * Arguments:
-  * * target- guy we're shooting obviously
-  * * source_turf- where the bullet begins, preferably on a turf next to the target
-  * * body_zone- which bodypart we're aiming for, if there is one there
-  * * wound_bonus- the wounding power we're assigning to the bullet, since we don't care about the base one
-  * * damage- the damage we're assigning to the bullet, since we don't care about the base one
-  */
+ * firing_squad is a proc for the :B:erforate smite to shoot each individual bullet at them, so that we can add actual delays without sleep() nonsense
+ *
+ * Hilariously, if you drag someone away mid smite, the bullets will still chase after them from the original spot, possibly hitting other people. Too funny to fix imo
+ *
+ * Arguments:
+ * * target- guy we're shooting obviously
+ * * source_turf- where the bullet begins, preferably on a turf next to the target
+ * * body_zone- which bodypart we're aiming for, if there is one there
+ * * wound_bonus- the wounding power we're assigning to the bullet, since we don't care about the base one
+ * * damage- the damage we're assigning to the bullet, since we don't care about the base one
+ */
 /proc/firing_squad(mob/living/carbon/target, turf/source_turf, body_zone, wound_bonus, damage)
 	if(!target.get_bodypart(body_zone))
 		return

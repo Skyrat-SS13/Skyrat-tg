@@ -193,6 +193,22 @@
 	name = "Simple Ponytail"
 	icon_state = "hair_simple_ponytail"
 
+/datum/sprite_accessory/hair/loose_slicked
+	name = "Loose Slicked"
+	icon_state = "hair_loose_slicked"
+
+/datum/sprite_accessory/hair/diagonal_bangs
+	name = "Diagonal Bangs"
+	icon_state = "hair_diagonal_bangs"
+
+/datum/sprite_accessory/hair/gloomy_medium
+	name = "Medium Gloomy Bangs"
+	icon_state = "hair_gloomy_medium"
+
+/datum/sprite_accessory/hair/gloomy_long
+	name = "Long Gloomy Bangs"
+	icon_state = "hair_gloomy_long"
+
 /datum/sprite_accessory/facial_hair/skyrat
 	icon = 'modular_skyrat/modules/customization//icons/mob/sprite_accessory/facialhair.dmi'
 

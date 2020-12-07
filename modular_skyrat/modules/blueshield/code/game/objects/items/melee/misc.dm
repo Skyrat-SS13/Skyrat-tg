@@ -1,6 +1,6 @@
 //blueshield's baton
 /obj/item/melee/baton/blueshieldprod
-	name = "\improper The electrifryer"
+	name = "stun baton"
 	desc = "A non-lethal takedown is always the most silent way to eliminate resistance."
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/stunprod.dmi'
 	icon_state = "bsprod"

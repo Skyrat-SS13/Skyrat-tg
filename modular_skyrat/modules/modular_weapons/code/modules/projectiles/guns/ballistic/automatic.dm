@@ -46,17 +46,17 @@
 
 /obj/item/ammo_box/magazine/smg32/rubber
 	name = "smg magazine (.32 rubber)"
-	icon_state = "smg32_rubber"
+	icon_state = "smg32"
 	ammo_type = /obj/item/ammo_casing/c32_rubber
 
 /obj/item/ammo_box/magazine/smg32/ap
 	name = "smg magazine (.32 armor-piercing)"
-	icon_state = "smg32_ap"
+	icon_state = "smg32"
 	ammo_type = /obj/item/ammo_casing/c32_ap
 
 /obj/item/ammo_box/magazine/smg32/incendiary
 	name = "smg magazine (.32 incendiary)"
-	icon_state = "smg32_incendiary"
+	icon_state = "smg32"
 	ammo_type = /obj/item/ammo_casing/c32_incendiary
 
 /obj/item/ammo_box/magazine/smg32/empty
@@ -83,5 +83,5 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_HEAVY
 
-/obj/item/gun/ballistic/automatic/mp5
+/obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE

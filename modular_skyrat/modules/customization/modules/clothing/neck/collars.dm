@@ -4,14 +4,14 @@
 /datum/component/storage/concrete/pockets/small/collar/Initialize()
 	. = ..()
 	can_hold = typecacheof(list(
-	/obj/item/reagent_containers/food/snacks/cookie,
-	/obj/item/reagent_containers/food/snacks/sugarcookie))
+	/obj/item/food/cookie,
+	/obj/item/food/cookie/sugar))
 
 /datum/component/storage/concrete/pockets/small/collar/locked/Initialize()
 	. = ..()
 	can_hold = typecacheof(list(
-	/obj/item/reagent_containers/food/snacks/cookie,
-	/obj/item/reagent_containers/food/snacks/sugarcookie,
+	/obj/item/food/cookie,
+	/obj/item/food/cookie/sugar,
 	/obj/item/key/collar))
 
 /obj/item/clothing/neck/human_petcollar
@@ -24,7 +24,7 @@
 	var/poly_states = 1
 	var/poly_colors = list("#00BBBB")
 	var/tagname = null
-	var/treat_path = /obj/item/reagent_containers/food/snacks/cookie
+	var/treat_path = /obj/item/food/cookie
 
 /obj/item/clothing/neck/human_petcollar/Initialize()
 	. = ..()

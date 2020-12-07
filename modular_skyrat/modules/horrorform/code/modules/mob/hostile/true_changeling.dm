@@ -160,7 +160,7 @@
 	var/mob/living/simple_animal/hostile/true_changeling/T = owner
 	if(T.devouring)
 		T << "<span class='warning'>We are already feasting on a human!</span>"
-		return 0
+		return FALSE
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/H in range(1, usr))
 		if(H == T.stored_changeling || (H.mind && H.mind.has_antag_datum(/datum/antagonist/changeling))) //You can't eat changelings in human form
@@ -168,24 +168,24 @@
 		potential_targets.Add(H)
 	if(!potential_targets.len)
 		T << "<span class='warning'>There are no humans nearby!</span>"
-		return 0
+		return FALSE
 	var/mob/living/carbon/human/lunch
 	if(potential_targets.len == 1)
 		lunch = potential_targets[1]
 	else
 		lunch = input(T, "Choose a human to devour.", "Lunch") as null|anything in potential_targets
 	if(!lunch && !ishuman(lunch))
-		return 0
+		return FALSE
 	if(lunch.getBruteLoss() + lunch.getFireLoss() >= 200) //Overall physical damage, basically
 		T.visible_message("<span class='warning'>[lunch] provides no further nutrients for [T]!</span>", \
 						"<span class='danger'>[lunch] has no more useful flesh for us to consume!!</span>")
-		return 0
+		return FALSE
 	T.devouring = TRUE
 	T.visible_message("<span class='warning'>[T] begins ripping apart and feasting on [lunch]!</span>", \
 					"<span class='danger'>We begin to feast upon [lunch]...</span>")
 	if(!do_mob(usr, 50, target = lunch))
 		T.devouring = FALSE
-		return 0
+		return FALSE
 	T.devouring = FALSE
 	lunch.adjustBruteLoss(60)
 	T.visible_message("<span class='warning'>[T] tears a chunk from [lunch]'s flesh!</span>", \
