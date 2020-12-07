@@ -535,12 +535,12 @@
 	if(!instant)
 		if(get_up_speed == GET_UP_SLOW) //Slow getups are easily noticable
 			visible_message("<span class='notice'>[src] weakily attempts to stand up.</span>", "<span class='notice'>You weakily attempt to stand up.</span>")
-			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP)))
+			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
 				if(!body_position == STANDING_UP)
 					visible_message("<span class='warning'>[src] fails to stand up.</span>", "<span class='warning'>You fail to stand up.</span>")
 				return
 		else
-			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP)))
+			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
 				return
 	if(pulledby && pulledby.grab_state)
 		to_chat(src, "<span class='warning'>You fail to stand up, you're restrained!</span>")
