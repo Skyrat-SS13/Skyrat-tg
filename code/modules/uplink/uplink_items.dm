@@ -1818,6 +1818,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 10
 	restricted_roles = list("Research Director", "Scientist", "Roboticist")
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/uplink_item/role_restricted/clowncar
 	name = "Clown Car"
 	desc = "The Clown Car is the ultimate transportation method for any worthy clown! \
@@ -1829,6 +1831,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/vehicle/sealed/car/clowncar
 	cost = 20
 	restricted_roles = list("Clown")
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/role_restricted/concealed_weapon_bay
 	name = "Concealed Weapon Bay"
