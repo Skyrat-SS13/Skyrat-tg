@@ -587,6 +587,7 @@ SUBSYSTEM_DEF(ticker)
 	if(news_message && length(CONFIG_GET(keyed_list/cross_server))) //SKYRAT EDIT - CONFIG CHECK MOVED FROM ROUNDEND.DM
 		send2otherserver(news_source, news_message,"News_Report")
 	//SKYRAT EDIT - START
+	if(news_message)
 		return news_message
 	else
 		return "We regret to inform you that shit be whack, yo. None of our reporters have any idea of what may or may not have gone on."
