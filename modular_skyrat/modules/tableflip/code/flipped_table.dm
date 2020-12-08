@@ -6,6 +6,7 @@
 	anchored = TRUE
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	opacity = FALSE
 	var/table_type = /obj/structure/table
 
 /obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, turf/target)
@@ -50,7 +51,7 @@
 		if(do_after(user, max_integrity/4))
 			var/obj/structure/flippedtable/T = new flipped_table_type(src.loc)
 			T.name = "flipped [src.name]"
-			T.desc += " It is flipped!"
+			T.desc = "[src.desc] It is flipped!"
 			T.icon_state = src.base_icon_state
 			T.dir = user.dir
 			T.max_integrity = src.max_integrity
