@@ -178,8 +178,8 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 		if(use_reverb && S.environment != SOUND_ENVIRONMENT_NONE) //We have reverb, reset our echo setting
 			//S.echo[3] = 0 //Room setting, 0 means normal reverb //ORIGINAL
 			//S.echo[4] = 0 //RoomHF setting, 0 means normal reverb. //ORIGINAL
-			S.echo[3] = -1000 //Room setting, 0 means normal reverb //SKYRAT EDIT CHANGE
-			S.echo[4] = -1000 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
+			S.echo[3] = -1400 //Room setting, 0 means normal reverb //SKYRAT EDIT CHANGE
+			S.echo[4] = -1400 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
 
 	SEND_SOUND(src, S)
 
