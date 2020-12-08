@@ -32,8 +32,10 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/flippedtable/AltClick(mob/user)
+/obj/structure/flippedtable/AltClick(mob/living/user)
 	. = ..()
+	if(!istype(user) || !user.can_interact_with(src))
+		return FALSE
 	user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
 	if(do_after(user, max_integrity/4))
 		var/obj/structure/table/T = new table_type(src.loc)
@@ -44,8 +46,10 @@
 
 //TABLES
 
-/obj/structure/table/AltClick(mob/user)
+/obj/structure/table/AltClick(mob/living/user)
 	. = ..()
+	if(!istype(user) || !user.can_interact_with(src))
+		return
 	if(can_flip)
 		user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
 		if(do_after(user, max_integrity/4))
