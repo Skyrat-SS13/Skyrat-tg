@@ -106,8 +106,7 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 
 */
 
-///mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE) //ORIGINAL
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1,envwet = -10000, envdry = 0, use_reverb = TRUE)  //SKYRAT EDIT CHANGE - SOUND ECHO
+/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent = SOUND_FALLOFF_EXPONENT, channel = 0, pressure_affected = TRUE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE)
 	if(!client || !can_hear())
 		return
 
@@ -150,8 +149,6 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 			else //space
 				pressure_factor = 0
 
-			S.echo = list(envdry, null, envwet, null, null, null, null, null, null, null, null, null, null, 1, 1, 1, null, null) //SKYRAT CHANGE ADDITION - SOUND ECHO
-
 			if(distance <= 1)
 				pressure_factor = max(pressure_factor, 0.15) //touching the source of the sound
 
@@ -179,8 +176,10 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 					S.environment = A.sound_environment
 
 		if(use_reverb && S.environment != SOUND_ENVIRONMENT_NONE) //We have reverb, reset our echo setting
-			S.echo[3] = 0 //Room setting, 0 means normal reverb
-			S.echo[4] = 0 //RoomHF setting, 0 means normal reverb.
+			//S.echo[3] = 0 //Room setting, 0 means normal reverb //ORIGINAL
+			//S.echo[4] = 0 //RoomHF setting, 0 means normal reverb. //ORIGINAL
+			S.echo[3] = -1000 //Room setting, 0 means normal reverb //SKYRAT EDIT CHANGE
+			S.echo[4] = -1000 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
 
 	SEND_SOUND(src, S)
 
