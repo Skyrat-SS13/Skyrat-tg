@@ -96,9 +96,7 @@ SUBSYSTEM_DEF(jukeboxes)
 			stack_trace("Nonexistant or invalid object associated with jukebox.")
 			continue
 		var/sound/song_played = sound(juketrack.song_path)
-		var/area/currentarea = get_area(jukebox)
 		var/turf/currentturf = get_turf(jukebox)
-		var/list/hearerscache = hearers(7, jukebox)
 
 		song_played.falloff = jukeinfo[4]
 
