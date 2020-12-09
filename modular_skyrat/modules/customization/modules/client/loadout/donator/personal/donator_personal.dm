@@ -1,3 +1,8 @@
+/datum/loadout_item/backpack/donator/drawingtablet
+	name = "Drawing Tablet"
+	path = /obj/item/drawingtablet
+	ckeywhitelist = list("thedragmeme")
+
 /datum/loadout_item/shoes/donator/heeled_jackboots
 	name = "High-heel Jackboots"
 	path = /obj/item/clothing/shoes/jackboots/heel
@@ -12,6 +17,11 @@
 	name = "Black turtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool/black
 	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/suit/donator/ryddid
+	name = "The Ryddid"
+	path = /obj/item/clothing/suit/jacket/ryddid
+	ckeywhitelist = list("grunnyyy")
 
 /datum/loadout_item/uniform/donator/draculass
 	name = "Draculass Dress"
