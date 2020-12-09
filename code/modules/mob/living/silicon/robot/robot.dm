@@ -852,7 +852,8 @@
 		hud_used.update_robot_modules_display()
 
 	if (hasExpanded)
-		resize = 0.5
+		//resize = 0.5 //ORIGINAL
+		resize = 0.8 //SKYRAT EDIT CHANGE - CYBORG
 		hasExpanded = FALSE
 		update_transform()
 	//SKYRAT EDIT ADDITION BEGIN - CYBORG
