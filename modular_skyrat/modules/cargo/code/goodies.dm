@@ -85,7 +85,7 @@
                     /obj/item/clothing/mask/breath)
 
 /datum/supply_pack/goody/paperbin
-	name = "Pushing paperwork is always easier when you have paper to push!"
-	desc = "Paper Package"
+	name = "Paper Package"
+	desc = "Pushing paperwork is always easier when you have paper to push!"
 	cost = 100
 	contains = list(/obj/item/paper_bin)

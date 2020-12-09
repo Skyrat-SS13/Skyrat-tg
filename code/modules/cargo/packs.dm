@@ -550,6 +550,8 @@
 					/obj/item/ammo_box/c38/trac)
 	crate_name = "tracking implant crate"
 
+/datum/supply_pack/security/armory/riotshotguns //Skyrat Addition + Organization.
+
 /datum/supply_pack/security/armory/laserarmor
 	name = "Reflector Vest Crate"
 	desc = "Contains two vests of highly reflective material. Each armor piece diffuses a laser's energy by over half, as well as offering a good chance to reflect the laser entirely. Requires Armory access to open."
@@ -612,6 +614,8 @@
 		var/item = pick(contains)
 		new item(C)
 
+/datum/supply_pack/security/armory/mafia //Skyrat addition + organization. Requires Emag.
+
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
 	desc = "Contains two fullbody sets of tough, fireproof, pressurized suits designed in a joint effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
@@ -627,6 +631,8 @@
 					/obj/item/clothing/gloves/tackler/combat,
 					/obj/item/clothing/gloves/tackler/combat)
 	crate_name = "swat crate"
+
+/datum/supply_pack/security/armory/woodstock //Skyrat addition + organization.
 
 /datum/supply_pack/security/armory/wt550
 	name = "WT-550 Auto Rifle Crate"
@@ -645,6 +651,7 @@
 					/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9)
 
+/datum/supply_pack/security/armory/wt550ammovariety //Skyrat addition + organization
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Engineering /////////////////////////////////////
@@ -1416,6 +1423,8 @@
 	crate_name = "shield generators crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 
+/datum/supply_pack/science/techshellpack //Skyrat addition + organization.
+
 /datum/supply_pack/science/transfer_valves
 	name = "Tank Transfer Valves Crate"
 	desc = "The key ingredient for making a lot of people very angry very fast. Contains two tank transfer valves. Requires RD access to open."
@@ -1474,6 +1483,8 @@
 	access_view = ACCESS_JANITOR
 	contains = list(/obj/item/stack/tile/noslip/thirty)
 	crate_name = "high-traction floor tiles crate"
+
+/datum/supply_pack/service/hydrohelper //Skyrat addition + organization
 
 /datum/supply_pack/service/janitor
 	name = "Janitorial Supplies Crate"
