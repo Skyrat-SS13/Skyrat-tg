@@ -27,7 +27,7 @@
 /datum/supply_pack/security/armory/wt550ammovariety
 	name = "WT-550 Auto Rifle Ammo Variety Crate"
 	desc = "AI Gone rogue and blow the Security Lathe? Anti-Corporate scum steal it? Doesn't matter, we got you covered. Contains 2 of each magazine type for the WT550 Auto Rifle."
-	cost = 4000
+	cost = 5000
 	contains = list(/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9/wtap,
