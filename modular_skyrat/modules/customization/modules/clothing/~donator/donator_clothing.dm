@@ -196,6 +196,70 @@
 	poly_colors = list("FFF", "8CF", "FFF")
 
 /**************CKEY EXCLUSIVES*************/
+// Donation reward for Grunnyyy
+/obj/item/clothing/neck/cloak/grunnyyy
+	name = "black and red cloak"
+	desc = "The design on this seems a little too familiar."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/custom.dmi'
+	icon_state = "infcloak"
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/custom_w.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+
+//Donation reward for Thedragmeme
+/obj/item/clothing/suit/furcoat
+	name = "leather coat"
+	desc = "A thick, comfy looking leather coat. It's got some fluffy fur at the collar and sleeves."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	icon_state = "furcoat"
+	inhand_icon_state = "furcoat"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+
+//Donation reward for Thedragmeme
+/obj/item/clothing/under/syndicate/tacticool/black
+	name = "black turtleneck"
+	desc = "Tacticool as fug. Comfy too."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	icon_state = "black_turtleneck"
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+
+//Donation reward for Thedragmeme
+/obj/item/clothing/shoes/jackboots/heel
+	name = "high-heeled jackboots"
+	desc = "Almost like regular jackboots... why are they on a high heel?"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
+	icon_state = "heel-jackboots"
+
+//Donation reward for Bloodrite
+/obj/item/clothing/shoes/clown_shoes/britches
+	desc = "The prankster's standard-issue clowning shoes. They look extraordinarily cute. Ctrl-click to toggle waddle dampeners."
+	name = "Britches' shoes"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
+	icon_state = "clown_shoes_cute"
+
+//Donation reward for Bloodrite
+/obj/item/clothing/under/rank/civilian/clown/britches
+	name = "Britches' dress"
+	desc = "<i>'HONK!' (but cute)</i>"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "clowndress"
+
+//Donation reward for Bloodrite
+/obj/item/clothing/mask/gas/britches
+	name = "Britches' mask"
+	desc = "A true prankster's facial attire. Cute."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/mask.dmi'
+	icon_state = "cute_mask"
+	inhand_icon_state = "clown_hat"
+	dye_color = "clown"
+
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
 	name = "skull of an ashdrake"
