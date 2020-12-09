@@ -104,8 +104,8 @@ GLOBAL_LIST_INIT(food, list(
 	var/phobia = "spiders"
 	var/list/foodlikes = list()
 	var/list/fooddislikes = list()
-	var/maxlikes = 3
-	var/maxdislikes = 3
+	var/maxlikes = 4
+	var/maxdislikes = 6
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
