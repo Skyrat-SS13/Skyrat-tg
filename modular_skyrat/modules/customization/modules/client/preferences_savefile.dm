@@ -483,6 +483,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["socks_color"], socks_color)
 	socks_color			= sanitize_hexcolor(socks_color, 3, 0)
 
+	READ_FILE(S["foodlikes"], foodlikes)
+	READ_FILE(S["fooddislikes"], fooddislikes)
+
+	foodlikes = SANITIZE_LIST(foodlikes)
+	fooddislikes = SANITIZE_LIST(fooddislikes)
 	features = SANITIZE_LIST(features)
 	mutant_bodyparts = SANITIZE_LIST(mutant_bodyparts)
 	body_markings = SANITIZE_LIST(body_markings)
@@ -599,6 +604,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["scars3"]						, scars_list["3"])
 	WRITE_FILE(S["scars4"]						, scars_list["4"])
 	WRITE_FILE(S["scars5"]						, scars_list["5"])
+	WRITE_FILE(S["foodlikes"]					, foodlikes)
+	WRITE_FILE(S["fooddislikes"]				, fooddislikes)
 
 
 	//Custom names
