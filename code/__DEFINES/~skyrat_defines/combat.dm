@@ -3,18 +3,18 @@
 //APPLICATION OF STAM DAMAGE
 //Should maybe wounds do it too?
 //This one is applied on non-glancing melee attacks aswell as normal projectiles.
-#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 1
+#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 0.9
 
 //Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
 #define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5
-#define TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 3.8 //This is also multiplied by the glancing damage multiplier, so usually less
+#define TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 3.6 //This is also multiplied by the glancing damage multiplier, so usually less
 
 #define PUNCH_STAMINA_MULTIPLIER 1.75
 
 //STAMINA REGEN
-#define STAMINA_STATIC_REGEN_MULTIPLIER 0.5
+#define STAMINA_STATIC_REGEN_MULTIPLIER 0.4
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
-#define STAMINA_STATIC_REGEN_FLAT 2
+#define STAMINA_STATIC_REGEN_FLAT 1.8
 //This increases the multiplier in relation to current stamina (staminaloss/THIS)
 #define STAMINALOSS_REGEN_COEFF 50
 
@@ -63,7 +63,7 @@
 
 //MOVE THOSE LATER
 /datum/movespeed_modifier/stamina_slowdown
-	multiplicative_slowdown = 1.15
+	multiplicative_slowdown = 0.6
 
 /datum/mood_event/stamina_mild
 	description = "<span class='boldwarning'>Oh god it hurts!.</span>\n"

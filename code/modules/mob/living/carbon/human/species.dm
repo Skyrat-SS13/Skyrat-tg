@@ -1481,8 +1481,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		effec_damage = I.force * TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER
 		effec_stam = effec_damage * TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
 	else
-		effec_damage = I.force * TISSUE_DAMAGE_STAMINA_MULTIPLIER
-		effec_stam = effec_damage
+		effec_damage = I.force
+		effec_stam = effec_damage * TISSUE_DAMAGE_STAMINA_MULTIPLIER
 	apply_damage(effec_damage * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
 	apply_damage(effec_stam, STAMINA, def_zone, armor_block, H)
 	//SKYRAT EDIT CHANGE END
@@ -1597,14 +1597,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.adjustCloneLoss(damage_amount)
 		if(STAMINA)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.stamina_mod
-			/*
 			if(BP)
 				if(BP.receive_damage(0, 0, damage_amount))
 					H.update_stamina()
 			else
 				H.adjustStaminaLoss(damage_amount)
-			*/
-			H.adjustStaminaLoss(damage_amount)
 		if(BRAIN)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.brain_mod
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
