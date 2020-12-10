@@ -43,7 +43,8 @@
 	cost = 100000
 	contains = list(/obj/item/gun/ballistic/automatic/tommygun,
 					/obj/item/clothing/head/fedora,
-					/obj/item/clothing/under/color/black,
+					/obj/item/clothing/under/rank/civilian/bartender,
+					/obj/item/clothing/accessory/waistcoat,
 					/obj/item/clothing/neck/tie/black,
 					/obj/item/clothing/shoes/jackboots,
 					/obj/item/clothing/suit/det_suit/grey,
@@ -71,6 +72,8 @@
 /////////////////////////////// Service //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
+//disabled temporarily, expect to be back later.
+/*
 /datum/supply_pack/service/hydrohelper
 	name = "Hydro-Helper Circuit Pack"
 	desc = "Botany being lazy with something? Being refused circuit boards? Wanting to start your own Gaiatic garden? This pack contains 3 Hydroponic tray circuit boards, a biogenerator circuit board, and a seed extractor circuit board! (Parts and matterials not included)"
@@ -82,6 +85,7 @@
 					/obj/item/circuitboard/machine/seed_extractor)
 	crate_name = "hydro-helper circuit pack"
 	crate_type = /obj/structure/closet/crate/hydroponics
+*/
 
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////////////// Goodies //////////////////////////////////////
