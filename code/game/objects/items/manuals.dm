@@ -318,7 +318,7 @@
 	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
 	//title = "Space Law" //ORIGINAL
-	title = "CorporateRegulations" //SKYRAT EDIT CHANGE
+	title = "Corporate Regulations" //SKYRAT EDIT CHANGE
 	//page_link = "Space_Law" //ORIGINAL
 	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
 	skyrat_wiki = TRUE //SKYRAT EDIT ADDITION
