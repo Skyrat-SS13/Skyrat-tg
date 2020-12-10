@@ -111,6 +111,9 @@
 	var/helmettype = /obj/item/clothing/head/helmet/space/hardsuit
 	var/obj/item/tank/jetpack/suit/jetpack = null
 	var/hardsuit_type
+	
+	var/hardsuit_has_tailsprite = FALSE // SKYRAT EDIT
+	var/hardsuit_tail_colors			// SKYRAT EDIT
 
 
 /obj/item/clothing/suit/space/hardsuit/Initialize()
