@@ -52,6 +52,90 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">10 December 2020</h2>
+			<h3 class="author">SkyratBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">only anchored windows call move_update_turf()</li>
+				<li class="tweak">singularities from stage 2 and over will unanchor windows</li>
+				<li class="balance">Vehicles no longer open firelocks when bumped into them.</li>
+				<li class="tweak">Acclimator will now idle when emptying, to prevent overcooking in laggy and sensitive situations</li>
+				<li class="bugfix">The roulette wheel now actually works and no longer just crashes every time you try to place a bet on a single.</li>
+				<li class="bugfix">jitteriness, melee attack animations and resting/standing up should no longer momentarily remove the floating movement type.</li>
+				<li class="refactor">projectiles now use a new hit detection system that doesn't rely on quirks in movement code to work, and is easier(?) to work with</li>
+				<li class="refactor">pass_flags_self now handles determining if something with specific pass_flags can cross something, by default.</li>
+				<li class="bugfix">piercing projectiles (see: penetrating snipers) work again</li>
+				<li class="tweak">projectile permutated/impacted list is reset on ricochets, meaning reflected projectiles can potentially hit something again if it pierced it the first time.</li>
+				<li class="bugfix">removes stray lightswitch from icebox mining base</li>
+			</ul>
+
+			<h2 class="date">09 December 2020</h2>
+			<h3 class="author">Azarak updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">echo was tweaked</li>
+			</ul>
+			<h3 class="author">Investigator77 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">"Sniper Rifle" renamed to "AUS-107 anti-materiel rifle"</li>
+				<li class="tweak">"Syndicate Sniper Rifle" renamed to "'Caracal' anti-materiel rifle"</li>
+				<li class="tweak">"NT-ARG 'Boarder'" renamed to "ARG-63 infantry rifle"</li>
+				<li class="rscadd">Added "SA-107 anti-materiel rifle"</li>
+				<li class="rscadd">Added "MCRS-5B combat rifle", for SolFed.</li>
+				<li class="balance">Syndicate Sniper Rifle now has less recoil and half the firing delay of a normal sniper rifle.</li>
+				<li class="soundadd">New sniper rifle sound</li>
+				<li class="soundadd">New suppressed sniper rifle sound</li>
+			</ul>
+			<h3 class="author">SkyratBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">ClF3 can no longer melt through walls.</li>
+				<li class="bugfix">Dynamic abductors should no longer be split up between two different ships.</li>
+				<li class="refactor">The singularity, tesla, Nar'Sie, and similar have been refactored to separate behavior.</li>
+				<li class="tweak">The alerts for singularities being loose are now handled by the singularity itself, meaning the icon will no longer be the containment field.</li>
+			</ul>
+			<h3 class="author">itseasytosee updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Jaunting nightmares should heal at a consistent rate weather they are moving or not</li>
+			</ul>
+
+			<h2 class="date">08 December 2020</h2>
+			<h3 class="author">Cornelius Bogfrollup Fitzgerald updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">new jukebox sprites</li>
+			</ul>
+			<h3 class="author">Fikou updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes hiero staff recall message not working</li>
+				<li class="balance">Champion's hardsuit has been reworked. spriteadd: fixes spears on suit storages not having icons</li>
+			</ul>
+			<h3 class="author">KathrinBailey updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Pools! Ask your local admin to spawn them, they're under water/overlay.</li>
+				<li class="rscadd">Dungeon stuff!</li>
+				<li class="rscadd">Hand drills now have the sprite they had just before rebase, you'll be  able to tell if you're in screw or wrench mode by looking at the sprite now!</li>
+			</ul>
+			<h3 class="author">Qustinnus updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="refactor">Refactors now keep an assoc list to keep track of how much specific do afters are running at once</li>
+			</ul>
+			<h3 class="author">Takiya updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed securityborg Otie sprite pointing right when standing left</li>
+			</ul>
+			<h3 class="author">That REALLY Good Soda Flavor updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Holidays appearing on the nth day of the month like Thanksgiving will work now.</li>
+				<li class="tweak">Columbus day is now called Indigenous Peoples' Day.</li>
+			</ul>
+			<h3 class="author">Zenitheevee updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Smugglers have decided to stuff caches a bit more.</li>
+				<li class="tweak">Smugglers have decided to venture into more lucrative caches.</li>
+				<li class="code_imp">Removes super call from with_tools variant of smuggler satchels.</li>
+			</ul>
+			<h3 class="author">thatREALLYgoodsodaflavor, StyleMistake, Qustinnus updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Implements sound environments into the game. Reverb time.</li>
+			</ul>
+
 			<h2 class="date">07 December 2020</h2>
 			<h3 class="author">Foxtrot (Funce) updated:</h3>
 			<ul class="changes bgimages16">
