@@ -530,3 +530,73 @@
 	key_third_person = "whistles"
 	message = "whistles."
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/blep
+	key = "blep"
+	key_third_person = "bleps"
+	message = "bleps their tongue out. Blep."
+
+/datum/emote/living/bork
+	key = "bork"
+	key_third_person = "borks"
+	message = "lets out a bork."
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/bork.ogg'
+
+/datum/emote/living/hoot
+	key = "hoot"
+	key_third_person = "hoots"
+	message = "hoots!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
+
+/datum/emote/living/growl
+	key = "growl"
+	key_third_person = "growls"
+	message = "lets out a growl."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/growl.ogg'
+
+/datum/emote/living/woof
+	key = "woof"
+	key_third_person = "woofs"
+	message = "lets out a woof."
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
+
+/datum/emote/living/baa
+	key = "baa"
+	key_third_person = "baas"
+	message = "lets out a baa."
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/baa.ogg'
+
+/datum/emote/living/baa2
+	key = "baa2"
+	key_third_person = "baas"
+	message = "bleats."
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/baa2.ogg'
+
+/datum/emote/living/wurble
+	key = "wurble"
+	key_third_person = "wurbles"
+	message = "lets out a wurble."
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/wurble.ogg'
+
+/datum/emote/living/awoo2
+	key = "awoo2"
+	key_third_person = "awoos"
+	message = "lets out an awoo!"
+	emote_type = EMOTE_AUDIBLE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
+
+/datum/emote/living/rattle
+	key = "rattle"
+	key_third_person = "rattles"
+	message = "rattles!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/rattle.ogg'
