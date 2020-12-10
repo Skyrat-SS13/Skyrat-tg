@@ -30,7 +30,7 @@
 		R.set_anchored(FALSE)
 		R.notransform = FALSE
 		R.resize = 0.75
-		R.hasExpanded = TRUE
+		R.hasShrunk = TRUE
 		R.update_transform()
 
 /obj/item/borg/upgrade/shrink/deactivate(mob/living/silicon/robot/R, user = usr)

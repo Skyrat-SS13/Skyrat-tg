@@ -5,4 +5,5 @@
 #define TRAIT_OXYIMMUNE				"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
 #define TRAIT_IRONASS				"ironass"
 #define TRAIT_MOOD_NOEXAMINE        "mood_noexamine" // Can't assess your own mood
-
+#define TRAIT_DNC		"cant_clone"
+#define TRAIT_DNR		"cant_revive" //You just can't be revived without supernatural means

@@ -14,6 +14,11 @@
 	name = "Jackboots"
 	path = /obj/item/clothing/shoes/jackboots
 
+// Thedragmeme's donator reward, they've decided to make them available to everybody.
+/datum/loadout_item/shoes/jackboots/heel
+	name = "High-heel Jackboots"
+	path = /obj/item/clothing/shoes/jackboots/heel
+
 /datum/loadout_item/shoes/winterboots
 	name = "Winter boots"
 	path = /obj/item/clothing/shoes/winterboots
