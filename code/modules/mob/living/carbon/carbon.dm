@@ -1295,7 +1295,7 @@
 /// Special carbon interaction on lying down, to transform its sprite by a rotation.
 /mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)
 	if(!new_lying_angle)
-		//SKYRAT EDIT ADDITION BEGIN - SOUNDS
+		//SKYRAT EDIT ADDITION BEGIN
 		if(dir == WEST)
 			set_lying_angle(270)
 			return
