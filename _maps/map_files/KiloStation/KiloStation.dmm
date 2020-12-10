@@ -16339,13 +16339,19 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/personal/patient,
 /obj/machinery/camera{
 	c_tag = "Medbay Aux Storage";
 	name = "medical camera";
 	network = list("ss13","medical")
 	},
 /obj/effect/turf_decal/bot,
+/obj/machinery/vending/clothing{
+	default_price = 0;
+	desc = "An ode to capitalism and crime to fashion, a clothing vending machine. A little bit of tact has been taken here, the clothes are free as a courtesy to those who have been cloned so they don't have to walk out into the world completely naked.";
+	extra_price = 0;
+	name = "Courtesy Clothing";
+	slogan_delay = 60000
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aAP" = (
@@ -16764,7 +16770,10 @@
 /obj/item/radio/intercom{
 	pixel_y = 22
 	},
-/obj/structure/closet/wardrobe/pjs,
+/obj/machinery/computer/cloning,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aBB" = (
@@ -17471,9 +17480,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/obj/machinery/door/airlock/medical/glass{
-	name = "Storage";
-	req_access_txt = "5"
+/obj/machinery/door/airlock/medical{
+	name = "Cloning";
+	req_one_access_txt = "5;68"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
@@ -21673,6 +21685,13 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
+/obj/machinery/button/door{
+	id = "cloningshutters";
+	name = "shutter Control";
+	pixel_x = -24;
+	pixel_y = -16;
+	req_one_access_txt = "68;5"
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aJV" = (
@@ -23369,11 +23388,14 @@
 /area/engine/atmos)
 "aME" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical{
-	name = "Storage";
-	req_access_txt = "5"
-	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/medical{
+	name = "Cloning";
+	req_one_access_txt = "5;68"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aMF" = (
@@ -23934,7 +23956,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/wardrobe/pjs,
+/obj/machinery/clonepod,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aNw" = (
@@ -25190,6 +25212,7 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/wardrobe/pjs,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aPs" = (
@@ -29630,7 +29653,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 24
 	},
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/machinery/dna_scannernew,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aVL" = (
@@ -29853,6 +29876,9 @@
 	name = "medical camera";
 	network = list("ss13","medical")
 	},
+/obj/structure/noticeboard{
+	pixel_y = 26
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
 "aWa" = (
@@ -30043,14 +30069,31 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar/atrium)
 "aWo" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
+/obj/effect/turf_decal/bot,
+/obj/structure/closet,
+/obj/item/storage/backpack,
+/obj/item/storage/backpack,
+/obj/item/storage/backpack,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/brown,
+/obj/item/clothing/under/color/brown,
+/obj/item/clothing/under/color/maroon,
+/obj/item/clothing/under/color/maroon,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/vending/clothing,
-/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aWp" = (
@@ -30138,10 +30181,6 @@
 	},
 /obj/machinery/light_switch{
 	pixel_x = -24
-	},
-/obj/structure/noticeboard{
-	dir = 1;
-	pixel_y = -27
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -42806,6 +42845,9 @@
 "bpD" = (
 /obj/structure/girder,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/official/help_others{
+	pixel_y = -32
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -46470,9 +46512,6 @@
 /obj/structure/table,
 /obj/structure/sign/departments/medbay/alt{
 	pixel_x = 32
-	},
-/obj/structure/sign/poster/official/help_others{
-	pixel_y = -32
 	},
 /obj/item/storage/box/bodybags{
 	pixel_y = 5
@@ -55101,6 +55140,8 @@
 	dir = 4;
 	pixel_x = -26
 	},
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
 "bIX" = (
@@ -55110,6 +55151,8 @@
 	dir = 8
 	},
 /obj/structure/closet/wardrobe/grey,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
 "bIY" = (
@@ -55122,6 +55165,8 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
 "bIZ" = (
@@ -55169,13 +55214,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
-/obj/machinery/airalarm{
-	pixel_y = 22
+/obj/machinery/cryopod,
+/obj/machinery/computer/cryopod{
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
@@ -55185,14 +55226,13 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 24
 	},
+/obj/machinery/airalarm{
+	pixel_y = 22
+	},
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
 "bJf" = (
@@ -60032,17 +60072,13 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
 "bQF" = (
@@ -78509,8 +78545,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
-	dir = 8;
-	name = "scrubbers pipe"
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -79001,7 +79036,6 @@
 	environment_smash = 0;
 	health = 160;
 	maxHealth = 160;
-	melee_damage_lower = 15;
 	melee_damage_upper = 25;
 	name = "hungry show bear"
 	},
@@ -88502,6 +88536,14 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/security/prison)
+"dfM" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "cloningshutters";
+	name = "privacy shutters"
+	},
+/turf/open/floor/plating,
+/area/medical/storage)
 "dgX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -88625,6 +88667,10 @@
 /obj/structure/table,
 /obj/item/storage/fancy/egg_box,
 /obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_x = 9;
+	pixel_y = 3
+	},
 /obj/item/reagent_containers/food/condiment/rice,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -88716,6 +88762,13 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -88781,6 +88834,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/effect/spawner/lootdrop/donkpockets,
 /turf/open/floor/plasteel/white,
 /area/security/prison)
 "eUZ" = (
@@ -89525,6 +89579,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/structure/janitorialcart{
+	dir = 4
+	},
 /turf/open/floor/plasteel/grimy,
 /area/security/prison/safe)
 "kDo" = (
@@ -89810,7 +89867,6 @@
 "mIK" = (
 /obj/structure/table,
 /obj/structure/cable,
-/obj/item/food/spiderleg,
 /turf/open/floor/plasteel/white,
 /area/security/prison)
 "mJj" = (
@@ -90316,17 +90372,15 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/reagent_containers/food/condiment/enzyme{
-	pixel_x = 9;
-	pixel_y = 3
-	},
 /obj/item/radio/intercom{
 	desc = "A station intercom. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
 	pixel_y = 24;
 	prison_radio = 1
 	},
-/obj/effect/spawner/lootdrop/donkpockets,
+/obj/machinery/microwave{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/security/prison)
 "qgG" = (
@@ -90627,9 +90681,6 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "rQc" = (
-/obj/machinery/firealarm{
-	pixel_x = -32
-	},
 /obj/item/reagent_containers/glass/bottle/ammonia,
 /obj/structure/rack,
 /obj/item/reagent_containers/glass/bucket,
@@ -90659,6 +90710,13 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/port/aft)
+"sqp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/security/prison)
 "sqU" = (
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -90674,7 +90732,7 @@
 	dir = 1
 	},
 /obj/effect/spawner/lootdrop/prison_contraband,
-/turf/open/floor/vault,
+/turf/open/floor/plating,
 /area/security/prison)
 "swn" = (
 /obj/structure/sign/warning/electricshock,
@@ -91196,6 +91254,9 @@
 	},
 /mob/living/simple_animal/mouse/brown/tom{
 	name = "Jerm"
+	},
+/obj/machinery/firealarm{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel/grimy,
 /area/security/prison/safe)
@@ -101325,7 +101386,7 @@ aau
 eEc
 pDh
 etx
-uNu
+sqp
 chR
 cFO
 aav
@@ -112331,7 +112392,7 @@ aNN
 asi
 aPc
 aOW
-aPx
+dfM
 aCI
 aOZ
 aOZ
@@ -112591,7 +112652,7 @@ aNv
 aOH
 aOB
 aJU
-aPx
+dfM
 aQh
 aQX
 aQb
