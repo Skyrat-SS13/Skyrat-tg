@@ -3,7 +3,8 @@
 	if(locate(/obj/structure/table/optable, T))
 		return 1
 	else if(locate(/obj/machinery/stasis, T))
-		return 0.9
+		//return 0.9 //ORIGINAL
+		return 0.8 //SKYRAT EDIT CHANGE - drops success chance on stasis beds by 10%. Use a damn operating table
 	else if(locate(/obj/structure/table, T))
 		return 0.8
 	else if(locate(/obj/structure/bed, T))
