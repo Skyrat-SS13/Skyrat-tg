@@ -488,3 +488,11 @@
 	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/rattle.ogg'
+
+/datum/emote/living/cackle
+	key = "cackle"
+	key_third_person = "cackles"
+	message = "cackles hysterically!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/YeenCackle.ogg'
