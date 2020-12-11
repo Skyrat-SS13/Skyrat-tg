@@ -8,13 +8,20 @@
 	var/general_type = "undefined" 		// A generalisation of the tail-type, e.g. lizard or feline, for hardsuit or other sprites
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H, icon_state)
+	icon = initial(icon)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
 
 	// Hardsuit tail spriting
 	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
+		if(HS.hardsuit_tail_colors)
+			icon = TODO
+			icon_state = [general_type] + "_hardsuit"
+			return icon_state
 
 	if(T && T.wagging)
 		icon_state += "_wagging"
+
 	return icon_state
 
 /datum/sprite_accessory/tails/lizard
