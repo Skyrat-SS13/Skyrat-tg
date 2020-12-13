@@ -522,7 +522,7 @@ RLD
 	if(!rcd_results)
 		return FALSE
 	var/delay = rcd_results["delay"] * delay_mod
-	var/obj/effect/constructing_effect/rcd_effect = new(get_turf(A), delay, src.mode)
+	var/obj/effect/constructing_effect/rcd_effect = new(get_turf(A), delay, src.mode, mode)
 	if(checkResource(rcd_results["cost"], user))
 		if(do_after(user, delay, target = A))
 			if(checkResource(rcd_results["cost"], user))
@@ -530,6 +530,7 @@ RLD
 					rcd_effect.end_animation()
 					useResource(rcd_results["cost"], user)
 					activate()
+					investigate_log("used by [key_name(usr)]) with [mode] mode selected.", INVESTIGATE_CONSTRUCTION)
 					playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 					return TRUE
 	qdel(rcd_effect)
