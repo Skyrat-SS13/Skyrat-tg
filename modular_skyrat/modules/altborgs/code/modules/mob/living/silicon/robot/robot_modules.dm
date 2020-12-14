@@ -53,7 +53,7 @@
 		wide.pixel_x = -16
 		standard_icons[a] = wide
 	standard_icons = sortList(standard_icons)
-	var/standard_borg_icon = show_radial_menu(R, R , standard_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/standard_borg_icon = show_radial_menu(R, R , standard_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(standard_borg_icon)
 		if("Default")
 			cyborg_base_icon = "robot"
@@ -120,7 +120,7 @@
 			wide.pixel_x = -16
 			med_icons[a] = wide
 		med_icons = sortList(med_icons)
-	var/med_borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/med_borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(med_borg_icon)
 		if("Default")
 			cyborg_base_icon = "medical"
@@ -227,7 +227,7 @@
 			wide.pixel_x = -16
 			engi_icons[a] = wide
 		engi_icons = sortList(engi_icons)
-	var/engi_borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/engi_borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(engi_borg_icon)
 		if("Default")
 			cyborg_base_icon = "engineer"
@@ -334,7 +334,7 @@
 			wide.pixel_x = -16
 			sec_icons[a] = wide
 		sec_icons = sortList(sec_icons)
-	var/sec_borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/sec_borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(sec_borg_icon)
 		if("Default")
 			cyborg_base_icon = "sec"
@@ -429,7 +429,7 @@
 			wide.pixel_x = -16
 			peace_icons[a] = wide
 		peace_icons = sortList(peace_icons)
-	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
 		if("Default")
 			cyborg_base_icon = "peace"
@@ -493,7 +493,7 @@
 			wide.pixel_x = -16
 			janitor_icons[a] = wide
 		janitor_icons = sortList(janitor_icons)
-	var/janitor_robot_icon = show_radial_menu(R, R , janitor_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/janitor_robot_icon = show_radial_menu(R, R , janitor_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(janitor_robot_icon)
 		if("Default")
 			cyborg_base_icon = "janitor"
@@ -557,7 +557,7 @@
 		"Robot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "clownbot"),
 		"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "clownman")
 		))
-	var/clown_borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/clown_borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(clown_borg_icon)
 		if("Default")
 			cyborg_base_icon = "clown"
@@ -613,7 +613,7 @@
 			wide.pixel_x = -16
 			service_icons[a] = wide
 		service_icons = sortList(service_icons)
-	var/service_robot_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/service_robot_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
 		if("Waitress")
 			cyborg_base_icon = "service_f"
@@ -705,7 +705,7 @@
 			wide.pixel_x = -16
 			mining_icons[a] = wide
 		mining_icons = sortList(mining_icons)
-	var/mining_borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/mining_borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(mining_borg_icon)
 		if("Lavaland")
 			cyborg_base_icon = "miner"
@@ -820,7 +820,7 @@
 		"Male Booty Striker" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootynukie"),
 		"Male Booty Syndicate" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootysyndie"),
 		))
-	var/syndiejack_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/syndiejack_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, R, old_module), radius = 42, require_near = TRUE)
 	switch(syndiejack_icon)
 		if("Saboteur")
 			cyborg_base_icon = "synd_engi"
