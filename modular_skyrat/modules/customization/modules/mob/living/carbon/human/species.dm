@@ -97,6 +97,8 @@
 		else
 			render_state = "m_[key]_[render_state]"
 
+		var/list/special_colour_list = S.get_special_render_colour
+
 		for(var/layer in S.relevent_layers)
 			var/layertext = mutant_bodyparts_layertext(layer)
 
@@ -106,9 +108,18 @@
 
 			if(S.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
-
+		
 			if(!forced_colour)
-				if(!S.special_colorize || S.do_colorize(H))
+				if(special_colour_list) // Currently only used for hardsuit tails rendering
+					var/list/finished_list = list()
+					finished_list += ReadRGB("[special_colour_list[1]]0")
+					finished_list += ReadRGB("[special_colour_list[2]]0")
+					finished_list += ReadRGB("[special_colour_list[3]]0")
+					finished_list += list(0,0,0,255)
+					for(var/index in 1 to finished_list.len)
+						finished_list[index] /= 255
+					accessory_overlay.color = finished_list
+				else
 					if(HAS_TRAIT(H, TRAIT_HUSK))
 						if(S.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
 							accessory_overlay.color = HUSK_COLOR_LIST

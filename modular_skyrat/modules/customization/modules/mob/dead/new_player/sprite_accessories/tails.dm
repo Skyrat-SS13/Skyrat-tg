@@ -24,6 +24,13 @@
 
 	return icon_state
 
+/datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H)
+	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
+		if(HS.hardsuit_tail_colors)
+			return HS.hardsuit_tail_colors
+	return null
+
 /datum/sprite_accessory/tails/lizard
 	recommended_species = list("lizard", "ashlizard", "mammal", "unathi")
 	organ_type = /obj/item/organ/tail/lizard
@@ -35,7 +42,10 @@
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-		if(general_type != "undefined" && )
+		if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+			var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
+				if(!HS.hardsuit_tail_colors)
+					return FALSE
 		return TRUE
 	return FALSE
 

@@ -58,6 +58,9 @@
 /datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	return null
 
+/datum/sprite_accessory/proc/get_special_render_colour(mob/living/carbon/human/H)
+	return null
+
 /datum/sprite_accessory/proc/get_special_icon(mob/living/carbon/human/H)
 	return null
 
