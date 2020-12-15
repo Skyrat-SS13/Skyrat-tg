@@ -169,7 +169,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/kitsune
 	name = "Kitsune"
 	icon_state = "kitsune"
-	general_type = "kitsune"
+	general_type = "vulpine" // vulpine until I can be bothered to make kitsune hardsuit tailsprite!
 
 /datum/sprite_accessory/tails/mammal/wagging/lab
 	name = "Lab"
