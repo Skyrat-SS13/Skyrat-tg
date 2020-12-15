@@ -61,11 +61,3 @@
 
 /obj/item/clothing/suit/space/hardsuit/ert/debug
 	hardsuit_tail_colors = list("037", "222", "2AF")
-
-
-
-
-
-
-
-
