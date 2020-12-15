@@ -434,7 +434,7 @@
 /datum/body_marking/tattoo
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/tattoo_markings.dmi'
 	recommended_species = null
-	default_color = "#112525" //slightly faded black ink.
+	default_color = "122" //slightly faded ink.
 	always_color_customizable = TRUE
 	gendered = FALSE
 
