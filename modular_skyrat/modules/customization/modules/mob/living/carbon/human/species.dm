@@ -97,7 +97,7 @@
 		else
 			render_state = "m_[key]_[render_state]"
 
-		var/list/special_colour_list = S.get_special_render_colour
+		var/list/special_colour_list = S.get_special_render_colour(H)
 
 		for(var/layer in S.relevent_layers)
 			var/layertext = mutant_bodyparts_layertext(layer)

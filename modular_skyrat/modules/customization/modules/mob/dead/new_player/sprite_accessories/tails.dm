@@ -15,8 +15,8 @@
 	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
 		if(HS.hardsuit_tail_colors)
-			icon = TODO
-			icon_state = [general_type] + "_hardsuit"
+			icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/tails_hardsuit.dmi'
+			icon_state = general_type + "_hardsuit"
 			return icon_state
 
 	if(T && T.wagging)
@@ -44,8 +44,8 @@
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 		if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 			var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-				if(!HS.hardsuit_tail_colors)
-					return FALSE
+			if(HS.hardsuit_tail_colors)
+				return FALSE
 		return TRUE
 	return FALSE
 

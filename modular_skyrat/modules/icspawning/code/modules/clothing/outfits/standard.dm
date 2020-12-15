@@ -21,6 +21,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	armor = list("melee" = 98, "bullet" = 98, "laser" = 98, "energy" = 98, "bomb" = 98, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
 	w_class = WEIGHT_CLASS_TINY
+	hardsuit_tail_colors = list("641", "C95", "443")
 
 /obj/item/clothing/head/helmet/space/hardsuit/ert/debug
 	name = "Bluespace Tech helmet"
