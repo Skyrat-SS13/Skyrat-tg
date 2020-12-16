@@ -5,7 +5,8 @@
 	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
-	var/general_type = "undefined" 		// A generalisation of the tail-type, e.g. lizard or feline, for hardsuit or other sprites
+	/// A generalisation of the tail-type, e.g. lizard or feline, for hardsuit or other sprites
+	var/general_type
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H, icon_state)
 	icon = initial(icon)
