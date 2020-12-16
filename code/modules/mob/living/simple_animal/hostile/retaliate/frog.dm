@@ -1,3 +1,4 @@
+/*
 /mob/living/simple_animal/hostile/retaliate/frog
 	name = "frog"
 	desc = "It seems a little sad."
@@ -47,3 +48,4 @@
 		var/mob/living/L = AM
 		if(L.mob_size > MOB_SIZE_TINY)
 			playsound(src, stepped_sound, 50, TRUE)
+*/
