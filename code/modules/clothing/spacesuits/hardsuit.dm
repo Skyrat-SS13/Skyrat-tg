@@ -112,7 +112,7 @@
 	var/obj/item/tank/jetpack/suit/jetpack = null
 	var/hardsuit_type
 	
-	var/list/hardsuit_tail_colors			// SKYRAT EDIT - Hardsuit tails
+	var/list/hardsuit_tail_colors			//SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 
 /obj/item/clothing/suit/space/hardsuit/Initialize()
