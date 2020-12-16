@@ -40,7 +40,6 @@
 /obj/item/clothing/suit/space/hardsuit/shielded/swat
 	hardsuit_tail_colors = list("222", "454", "443")
 
-
 /obj/item/clothing/suit/space/hardsuit/deathsquad
 	hardsuit_tail_colors = list("222", "510", "443")
 
