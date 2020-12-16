@@ -4,32 +4,46 @@
 	organ_type = /obj/item/organ/tail
 	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
+	special_icon_case = TRUE
+	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	/// A generalisation of the tail-type, e.g. lizard or feline, for hardsuit or other sprites
 	var/general_type
 
-/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H, icon_state)
-	icon = initial(icon)
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
-
+/datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/H)
 	// Hardsuit tail spriting
-	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+	if(general_type && H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
 		if(HS.hardsuit_tail_colors)
-			icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/tails_hardsuit.dmi'
-			icon_state = general_type + "_hardsuit"
-			return icon_state
+			return "[general_type]_hardsuit"
 
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
 	if(T && T.wagging)
-		icon_state += "_wagging"
+		return "[icon_state]_wagging"
 
 	return icon_state
 
-/datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H)
-	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+/datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/H, passed_state)
+	var/returned = icon
+	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a hardsuit, skip checks
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
 		if(HS.hardsuit_tail_colors)
-			return HS.hardsuit_tail_colors
+			returned = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/tails_hardsuit.dmi'
+	return returned
+
+/datum/sprite_accessory/tails/get_special_render_colour(mob/living/carbon/human/H, passed_state)
+	if(passed_state == "[general_type]_hardsuit") //Guarantees we're wearing a hardsuit, skip checks
+		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
+		if(HS.hardsuit_tail_colors)
+			//Currently this way, when I have more time I'll write a hex -> matrix converter to pre-bake them instead
+			var/list/finished_list = list()
+			finished_list += ReadRGB("[HS.hardsuit_tail_colors[1]]0")
+			finished_list += ReadRGB("[HS.hardsuit_tail_colors[2]]0")
+			finished_list += ReadRGB("[HS.hardsuit_tail_colors[3]]0")
+			finished_list += list(0,0,0,255)
+			for(var/index in 1 to finished_list.len)
+				finished_list[index] /= 255
+			return finished_list
 	return null
 
 /datum/sprite_accessory/tails/lizard
@@ -77,7 +91,6 @@
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
 	recommended_species = list("mammal", "human", "akula", "aquatic", "humanoid")
-	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
@@ -111,7 +124,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/corvid
 	name = "Corvid"
 	icon_state = "crow"
-	general_type = "avian"
 
 /datum/sprite_accessory/tails/mammal/wagging/cow
 	name = "Cow"
@@ -136,7 +148,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/fish
 	name = "Fish"
 	icon_state = "fish"
-	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox
 	name = "Fox"
@@ -146,7 +157,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/hawk
 	name = "Hawk"
 	icon_state = "hawk"
-	general_type = "avian"
 
 /datum/sprite_accessory/tails/mammal/wagging/horse
 	name = "Horse"
@@ -157,7 +167,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/husky
 	name = "Husky"
 	icon_state = "husky"
-	general_type = "canid"
 
 /datum/sprite_accessory/tails/mammal/wagging/insect
 	name = "Insect"
@@ -175,7 +184,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/lab
 	name = "Lab"
 	icon_state = "lab"
-	general_type = "canid"
 
 /*/datum/sprite_accessory/tails/mammal/wagging/ltiger //icon = 'icons/mob/mutant_bodyparts.dmi'
 	name = "Light Tiger"
@@ -190,12 +198,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/orca
 	name = "Orca"
 	icon_state = "orca"
-	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/otie
 	name = "Otusian"
 	icon_state = "otie"
-	general_type = "canid"
 
 /datum/sprite_accessory/tails/mammal/wagging/rabbit
 	name = "Rabbit"
@@ -205,7 +211,6 @@
 	name = "Red Panda"
 	icon_state = "wah"
 	extra = TRUE
-	general_type = "panda"
 
 /datum/sprite_accessory/tails/mammal/wagging/pede
 	name = "Scolipede"
@@ -214,17 +219,14 @@
 /datum/sprite_accessory/tails/mammal/wagging/sergal
 	name = "Sergal"
 	icon_state = "sergal"
-	general_type = "canid"
 
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
-	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/shepherd
 	name = "Shepherd"
 	icon_state = "shepherd"
-	general_type = "canid"
 
 /datum/sprite_accessory/tails/mammal/wagging/skunk
 	name = "Skunk"
@@ -234,18 +236,15 @@
 /datum/sprite_accessory/tails/mammal/wagging/stripe
 	name = "Stripe"
 	icon_state = "stripe"
-	general_type = "canid"
 
 /datum/sprite_accessory/tails/mammal/wagging/straighttail
 	name = "Straight Tail"
 	icon_state = "straighttail"
-	general_type = "canid"
 
 /datum/sprite_accessory/tails/mammal/wagging/squirrel
 	name = "Squirrel"
 	icon_state = "squirrel"
 	color_src = USE_ONE_COLOR
-	general_type = "panda"
 
 /datum/sprite_accessory/tails/mammal/wagging/tamamo_kitsune
 	name = "Tamamo Kitsune Tails"
@@ -264,7 +263,6 @@
 	name = "Wolf"
 	icon_state = "wolf"
 	color_src = USE_ONE_COLOR
-	general_type = "canid"
 
 /datum/sprite_accessory/tails/mammal/wagging/guilmon
 	name = "Guilmon"
@@ -274,7 +272,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/akula/sharknofin
 	name = "Shark no fin"
 	icon_state = "sharknofin"
-	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/raptor
     name = "Raptor"
