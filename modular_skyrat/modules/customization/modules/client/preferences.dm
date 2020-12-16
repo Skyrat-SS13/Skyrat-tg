@@ -394,7 +394,7 @@
 							dat += "[html_encode(features["flavor_text"])]"
 					else
 						dat += "[copytext(html_encode(features["flavor_text"]), 1, 40)]..."
-						
+
 					dat += "<br>"
 
 					// Silicon flavor text
@@ -1657,7 +1657,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && !(pref_species.id in BD.unaccepted_species)))
 								possible_candidates -= name
 
 					if(possible_candidates.len == 0)
@@ -1689,7 +1689,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && !(pref_species.id in BD.unaccepted_species)))
 								possible_candidates -= name
 					if(possible_candidates.len == 0)
 						return
@@ -1903,7 +1903,7 @@
 					if(!isnull(msg))
 						exploitable_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 
-				if("uses_skintones")	
+				if("uses_skintones")
 					needs_update = TRUE
 					features["uses_skintones"] = !features["uses_skintones"]
 

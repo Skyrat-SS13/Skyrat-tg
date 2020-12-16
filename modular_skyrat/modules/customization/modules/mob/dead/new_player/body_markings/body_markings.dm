@@ -14,6 +14,8 @@
 	var/affected_bodyparts
 	///Which species is this marking recommended to. Important for randomisations.
 	var/recommended_species = list("mammal")
+	///More or less the opposite of the above.
+	var/unaccepted_species = null
 	///If this is on the color customization will show up despite the pref settings, it will also cause the marking to not reset colors to match the defaults
 	var/always_color_customizable
 	///Whether the body marking sprite is the same for both sexes or not. Only relevant for chest right now.
@@ -434,6 +436,7 @@
 /datum/body_marking/tattoo
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/tattoo_markings.dmi'
 	recommended_species = null
+	unaccepted_species = list("vox") //Vox have their own versions in body_markings_vox.dm
 	default_color = "122" //slightly faded ink.
 	always_color_customizable = TRUE
 	gendered = FALSE
