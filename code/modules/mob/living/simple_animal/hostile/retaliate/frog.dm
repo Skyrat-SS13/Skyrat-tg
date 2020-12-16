@@ -24,12 +24,12 @@
 	density = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	faction = list("hostile")
-	attack_sound = 'sound/effects/reee.ogg'
+	//attack_sound = 'sound/effects/reee.ogg'
 	butcher_results = list(/obj/item/food/nugget = 1)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
 	gold_core_spawnable = FRIENDLY_SPAWN
-	var/stepped_sound = 'sound/effects/huuu.ogg'
+	//var/stepped_sound = 'sound/effects/huuu.ogg'
 
 /mob/living/simple_animal/hostile/retaliate/frog/Initialize()
 	. = ..()
