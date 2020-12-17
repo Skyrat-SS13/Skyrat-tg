@@ -24,7 +24,7 @@
 	density = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	faction = list("hostile")
-	//attack_sound = 'sound/effects/reee.ogg'
+	//attack_sound = 'sound/effects/reee.ogg' //SKYRAT EDIT REMOVAL 
 	butcher_results = list(/obj/item/food/nugget = 1)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
