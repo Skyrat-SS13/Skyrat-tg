@@ -50,3 +50,4 @@
 		if(L.mob_size > MOB_SIZE_TINY)
 			playsound(src, stepped_sound, 50, TRUE)
 */
+//SKYRAT EDIT REMOVAL END
