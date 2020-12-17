@@ -29,7 +29,7 @@
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
 	gold_core_spawnable = FRIENDLY_SPAWN
-	//var/stepped_sound = 'sound/effects/huuu.ogg'
+	//var/stepped_sound = 'sound/effects/huuu.ogg' //SKYRAT EDIT REMOVAL 
 
 /mob/living/simple_animal/hostile/retaliate/frog/Initialize()
 	. = ..()
