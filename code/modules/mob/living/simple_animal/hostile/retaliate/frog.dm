@@ -40,6 +40,8 @@
 		icon_living = "rare_frog"
 		icon_dead = "rare_frog_dead"
 		butcher_results = list(/obj/item/food/nugget = 5)
+
+//SKYRAT EDIT REMOVAL BEGIN
 /*
 /mob/living/simple_animal/hostile/retaliate/frog/Crossed(AM as mob|obj)
 	. = ..()
