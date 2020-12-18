@@ -427,7 +427,7 @@
 	key_third_person = "hoots"
 	message = "hoots!"
 	emote_type = EMOTE_AUDIBLE
-	cooldown = 1 SECONDS
+	cooldown = 1.4 SECONDS
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
 
