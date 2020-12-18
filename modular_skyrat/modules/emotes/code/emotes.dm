@@ -479,6 +479,7 @@
 	key_third_person = "awoos"
 	message = "lets out an awoo!"
 	emote_type = EMOTE_AUDIBLE
+	cooldown = 2.5 SECONDS
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
 
