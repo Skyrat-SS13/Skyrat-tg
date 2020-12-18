@@ -497,5 +497,6 @@
 	key_third_person = "cackles"
 	message = "cackles hysterically!"
 	emote_type = EMOTE_AUDIBLE
+	cooldown = 1.2 SECONDS
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/YeenCackle.ogg'
+	sound = 'modular_skyrat/modules/emotes/sound/voice/cackle_yeen.ogg'
