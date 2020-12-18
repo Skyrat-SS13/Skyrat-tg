@@ -9,11 +9,15 @@ MODULE ID: EMOTES
 
 Adds all the emotes we once had on the oldbase, and shoves them right into here.
 
-Edit (Avunia): Also adds some new emotes.
+Edit (Avunia): Also adds some new emotes, and adjusted sound files.
 
 ### TG Proc Changes:
 
 - Skyrat-tg\code\modules\mob\living\carbon\carbon_defense.dm > /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
+
+### TG File Changes:
+
+- code\modules\mob\living\emote.dm
 
 ### Defines:
 
@@ -30,4 +34,5 @@ Edit (Avunia): Also adds some new emotes.
 ### Credits:
 Gandalf2k15 - porting and refactoring
 
-Avunia Takiya - refactoring code and adjusting existing sound files, adding *bawk, *caw, *caw2
+Avunia Takiya - refactoring code and adjusting existing sound files, adding more emotes
+VOREstation - a couple of the soundfiles and emote texts
