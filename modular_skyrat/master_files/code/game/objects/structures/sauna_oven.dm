@@ -24,6 +24,7 @@
 /obj/structure/sauna_oven/Destroy()
 	if(lit)
 		STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/structure/sauna_oven/attack_hand(mob/user)
 	. = ..()
