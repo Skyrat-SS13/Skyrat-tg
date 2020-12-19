@@ -93,6 +93,7 @@
 			</span>")
 		fuel_amount += SAUNA_PAPER_FUEL
 		qdel(T)
+	return ..()
 
 /obj/structure/sauna_oven/process()
 	if(water_amount)
