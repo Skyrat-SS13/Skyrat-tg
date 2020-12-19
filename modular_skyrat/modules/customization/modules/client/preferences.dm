@@ -1704,9 +1704,13 @@
 						if(!body_markings[zone] || !body_markings[zone][changing_name])
 							return
 						var/held_index = LAZYFIND(body_markings[zone], changing_name)
-						body_markings[zone] -= changing_name
 						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
-						var/marking_content = BD.get_default_color(features, pref_species)
+						var/marking_content
+						if(allow_advanced_colors)
+							marking_content = body_markings[zone][changing_name]
+						else
+							marking_content = BD.get_default_color(features, pref_species)
+						body_markings[zone] -= changing_name
 						body_markings[zone].Insert(held_index, desired_marking)
 						body_markings[zone][desired_marking] = marking_content
 		if("change_genitals")
