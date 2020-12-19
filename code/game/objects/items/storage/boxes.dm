@@ -132,6 +132,7 @@
 	else
 		new /obj/item/tank/internals/emergency_oxygen(src)
 	//SKYRAT EDIT END
+	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
@@ -838,6 +839,7 @@
 	else
 		new /obj/item/tank/internals/emergency_oxygen(src)
 	//SKYRAT EDIT END
+	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
 /obj/item/storage/box/rubbershot
 	name = "box of rubber shots"
