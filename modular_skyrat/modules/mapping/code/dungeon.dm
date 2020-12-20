@@ -15,7 +15,7 @@
 	base_icon_state = "wall-corner"
 
 //////////////////////
-//       Tufs       //
+//       Turfs       //
 //////////////////////
 
 /turf/open/floor/plating/cobblestone
@@ -31,13 +31,19 @@
 	planetary_atmos = TRUE
 
 /turf/open/floor/plating/cobblestone/dungeon
-	gender = PLURAL
-	name = "cobblestone"
-	desc = "Cobbled stone that makes a permanent pathway. A bit old-fashioned."
-	icon = 'modular_skyrat/modules/mapping/icons/dungeon.dmi'
 	icon_state = "cobble-dungeon"
 	baseturfs = /turf/open/floor/plating/cobblestone/dungeon
 	planetary_atmos = FALSE
+
+// This one has a rocky texture to it.
+/turf/open/floor/plating/cobblestone/sparse
+	icon_state = "cobble_sparse"
+	baseturfs = /turf/open/floor/plating/cobblestone/sparse
+
+/turf/open/floor/plating/cobblestone/sparse/planet
+	icon_state = "cobble_sparse"
+	baseturfs = /turf/open/floor/plating/cobblestone/sparse/planet
+	planetary_atmos = TRUE
 
 //////////////////////
 //    Fake Walls    //
