@@ -57,7 +57,10 @@
 	name = "Syndicate Lava Base"
 	id = "lava-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
-	suffix = "lavaland_surface_syndicate_base1.dmm"
+	//SKYRAT EDIT CHANGE BEGIN - Syndie Bases
+	//suffix = "lavaland_surface_syndicate_base1.dmm" - SKYRAT EDIT - ORIGINAL
+	suffix = "lavaland_surface_syndicate_base1_skyrat.dmm"
+	//SKYRAT EDIT CHANGE END
 	cost = 20
 	allow_duplicates = FALSE
 

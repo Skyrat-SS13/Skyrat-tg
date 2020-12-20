@@ -81,6 +81,7 @@
 
 /area/ruin/unpowered/syndicate_lava_base/testlab
 	name = "Syndicate Lavaland Experimentation Lab"
+	area_flags = XENOBIOLOGY_COMPATIBLE //Skyrat Addition, Syndie Bases
 
 /area/ruin/unpowered/syndicate_lava_base/dormitories
 	name = "Syndicate Lavaland Dormitories"
