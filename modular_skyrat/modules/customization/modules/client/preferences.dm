@@ -138,6 +138,8 @@
 
 	/// If we have persistent scars enabled
 	var/persistent_scars = TRUE
+	///If we want to broadcast deadchat connect/disconnect messages
+	var/broadcast_login_logout = FALSE
 	/// We have 5 slots for persistent scars, if enabled we pick a random one to load (empty by default) and scars at the end of the shift if we survived as our original person
 	var/list/scars_list = list("1" = "", "2" = "", "3" = "", "4" = "", "5" = "")
 	/// Which of the 5 persistent scar slots we randomly roll to load for this round, if enabled. Actually rolled in [/datum/preferences/proc/load_character(slot)]
@@ -932,6 +934,10 @@
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
 			dat += "<br>"
 
+			dat += "<b>Broadcast Login/Logout:</b> <a href='?_src_=prefs;preference=broadcast_login_logout'>[broadcast_login_logout ? "Broadcast" : "Silent"]</a><br>"
+			dat += "<b>See Login/Logout Messages:</b> <a href='?_src_=prefs;preference=hear_login_logout'>[(chat_toggles & CHAT_LOGIN_LOGOUT) ? "Allowed" : "Muted"]</a><br>"
+			dat += "<br>"
+
 			dat += "<b>Income Updates:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
 			dat += "<br>"
 
@@ -1698,9 +1704,13 @@
 						if(!body_markings[zone] || !body_markings[zone][changing_name])
 							return
 						var/held_index = LAZYFIND(body_markings[zone], changing_name)
-						body_markings[zone] -= changing_name
 						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
-						var/marking_content = BD.get_default_color(features, pref_species)
+						var/marking_content
+						if(allow_advanced_colors)
+							marking_content = body_markings[zone][changing_name]
+						else
+							marking_content = BD.get_default_color(features, pref_species)
+						body_markings[zone] -= changing_name
 						body_markings[zone].Insert(held_index, desired_marking)
 						body_markings[zone][desired_marking] = marking_content
 		if("change_genitals")
@@ -2525,6 +2535,12 @@
 
 				if("ghost_laws")
 					chat_toggles ^= CHAT_GHOSTLAWS
+
+				if("hear_login_logout")
+					chat_toggles ^= CHAT_LOGIN_LOGOUT
+
+				if("broadcast_login_logout")
+					broadcast_login_logout = !broadcast_login_logout
 
 				if("income_pings")
 					chat_toggles ^= CHAT_BANKCARD

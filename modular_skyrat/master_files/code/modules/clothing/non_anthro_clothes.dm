@@ -128,6 +128,12 @@
 /obj/item/clothing/head/helmet/swat
 	mutant_variants = NONE
 
+/obj/item/clothing/head/spacepolice
+	mutant_variants = NONE
+
+/obj/item/clothing/head/sombrero
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -165,9 +171,6 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/engineering/engineer/hazard
-	mutant_variants = NONE
-
-/obj/item/clothing/under/rank/security/officer/beatcop
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/security/officer/spacepol
