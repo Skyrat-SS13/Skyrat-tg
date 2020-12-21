@@ -1,9 +1,9 @@
-#define MAX_HUMAN_LIFE 150
+#define MAX_HUMAN_LIFE 125
 
 //APPLICATION OF STAM DAMAGE
 //Should maybe wounds do it too?
 //This one is applied on non-glancing melee attacks aswell as normal projectiles.
-#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 0.9
+#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 0.8
 
 //Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
 #define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5
