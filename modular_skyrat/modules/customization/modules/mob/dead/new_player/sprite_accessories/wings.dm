@@ -130,6 +130,10 @@
 	name = "Bee"
 	icon_state = "bee"
 
-/datum/sprite_accessory/wings/aero
-	name = "Canadair Arrow Parade Scheme"
-	icon_state = "cadarrow"
+/datum/sprite_accessory/wings/mammal/aerosynth
+	name = "Aerosynth"
+	icon_state = "aerosynth"
+
+/datum/sprite_accessory/wings/mammal/animated_aerosynth
+	name = "Aerosynth with navigation"
+	icon_state = "animaerosynth"

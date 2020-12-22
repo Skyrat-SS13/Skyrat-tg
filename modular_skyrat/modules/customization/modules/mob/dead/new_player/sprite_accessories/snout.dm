@@ -341,3 +341,8 @@
 	icon_state = "stubby"
 	color_src = USE_MATRIXED_COLORS
 	use_muzzled_sprites = FALSE
+
+/datum/sprite_accessory/snouts/mammal/aerosynth
+	name = "Aerosynth"
+	icon_state = "aerosynth"
+	color_src = USE_MATRIXED_COLORS
