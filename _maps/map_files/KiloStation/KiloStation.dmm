@@ -16346,13 +16346,19 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/personal/patient,
 /obj/machinery/camera{
 	c_tag = "Medbay Aux Storage";
 	name = "medical camera";
 	network = list("ss13","medical")
 	},
 /obj/effect/turf_decal/bot,
+/obj/machinery/vending/clothing{
+	default_price = 0;
+	desc = "An ode to capitalism and crime to fashion, a clothing vending machine. A little bit of tact has been taken here, the clothes are free as a courtesy to those who have been cloned so they don't have to walk out into the world completely naked.";
+	extra_price = 0;
+	name = "Courtesy Clothing";
+	slogan_delay = 60000
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aAP" = (
@@ -16771,7 +16777,7 @@
 /obj/item/radio/intercom{
 	pixel_y = 22
 	},
-/obj/structure/closet/wardrobe/pjs,
+/obj/machinery/computer/cloning,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aBB" = (
@@ -23942,7 +23948,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/wardrobe/pjs,
+/obj/machinery/clonepod,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aNw" = (
@@ -25185,7 +25191,6 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/heads/cmo)
 "aPr" = (
-/obj/structure/closet/wardrobe/pjs,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
@@ -25198,6 +25203,16 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/storage/backpack,
+/obj/item/storage/backpack,
+/obj/item/storage/backpack,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aPs" = (
@@ -29639,7 +29654,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 24
 	},
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/machinery/dna_scannernew,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aVL" = (
@@ -30052,14 +30067,22 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar/atrium)
 "aWo" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
+/obj/effect/turf_decal/bot,
+/obj/structure/closet,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/black,
+/obj/item/clothing/under/color/brown,
+/obj/item/clothing/under/color/brown,
+/obj/item/clothing/under/color/maroon,
+/obj/item/clothing/under/color/maroon,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/vending/clothing,
-/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "aWp" = (
@@ -42812,6 +42835,9 @@
 "bpD" = (
 /obj/structure/girder,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/official/help_others{
+	pixel_y = -32
+	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -46477,9 +46503,6 @@
 /obj/structure/table,
 /obj/structure/sign/departments/medbay/alt{
 	pixel_x = 32
-	},
-/obj/structure/sign/poster/official/help_others{
-	pixel_y = -32
 	},
 /obj/item/storage/box/bodybags{
 	pixel_y = 5
@@ -55178,13 +55201,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
-/obj/machinery/airalarm{
-	pixel_y = 22
+/obj/machinery/cryopod,
+/obj/machinery/computer/cryopod{
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
@@ -55194,13 +55213,12 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 24
+	},
+/obj/machinery/cryopod,
+/obj/machinery/airalarm{
+	pixel_y = 22
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
@@ -60032,17 +60050,13 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
 "bQF" = (
@@ -89423,6 +89437,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/port)
+"jQj" = (
+/obj/structure/cable,
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/cryopod,
+/turf/open/floor/plating,
+/area/security/prison)
 "jSw" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
@@ -91558,6 +91581,7 @@
 	dir = 4;
 	network = list("ss13","prison")
 	},
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "xFp" = (
@@ -98011,7 +98035,7 @@ aeu
 aeU
 aeU
 anu
-cTl
+jQj
 cuQ
 cQs
 qKa
