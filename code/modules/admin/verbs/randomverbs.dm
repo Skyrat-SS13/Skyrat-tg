@@ -883,7 +883,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/level = input("Select security level to change to","Set Security Level") as null|anything in list("green","blue","violet","amber","red","delta","gamma")
+	var/level = input("Select security level to change to","Set Security Level") as null|anything in list("green","blue","violet","orange","amber","red","delta","gamma")
 	if(level)
 		set_security_level(level)
 

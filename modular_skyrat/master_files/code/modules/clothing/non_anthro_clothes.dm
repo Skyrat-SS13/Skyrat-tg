@@ -134,6 +134,9 @@
 /obj/item/clothing/head/sombrero
 	mutant_variants = NONE
 
+/obj/item/clothing/head/santa
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
