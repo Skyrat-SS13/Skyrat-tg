@@ -7,7 +7,7 @@
 /datum/supply_pack/security/armory/riotshotguns
 	name = "Peacekeeper Shotgun Crate"
 	desc = "For when the peace needs kept, and you're all out of gum. Contains 3 Peacekeeper shotguns and some non-lethal shells."
-	cost = 5500
+	cost = CARGO_CRATE_VALUE * 13.25
 	contains = list(/obj/item/gun/ballistic/shotgun/riot,
 					/obj/item/gun/ballistic/shotgun/riot,
 					/obj/item/gun/ballistic/shotgun/riot,
@@ -18,7 +18,7 @@
 /datum/supply_pack/security/armory/woodstock
 	name = "Woodstock Originals Crate"
 	desc = "For when Oldschool is Cool... Or the Bartender looses their gun. again. Contains 3 woodstock shotguns"
-	cost = 3000
+	cost = CARGO_CRATE_VALUE * 9.5
 	contains = list(/obj/item/gun/ballistic/shotgun,
 					/obj/item/gun/ballistic/shotgun,
 					/obj/item/gun/ballistic/shotgun)
@@ -27,7 +27,7 @@
 /datum/supply_pack/security/armory/wt550ammovariety
 	name = "WT-550 Auto Rifle Ammo Variety Crate"
 	desc = "AI Gone rogue and blow the Security Lathe? Anti-Corporate scum steal it? Doesn't matter, we got you covered. Contains 2 of each magazine type for the WT550 Auto Rifle."
-	cost = 5000
+	cost = CARGO_CRATE_VALUE * 4.5
 	contains = list(/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9/wtap,
@@ -40,7 +40,7 @@
 	name = "Secretkeeper Supply Crate"
 	desc = "Aye... Lend an ear... Send us the money, And we do you a favour... A Tommygun, a set of clothing to dissapear, and a bodybag for a... Shallow grave... Keep it a secret, Capiche?"
 	hidden = TRUE
-	cost = 100000
+	cost = 100000 //this is going to stay 100000, As it is implied to be used with the traitor cash briefcase
 	contains = list(/obj/item/gun/ballistic/automatic/tommygun,
 					/obj/item/clothing/head/fedora,
 					/obj/item/clothing/under/rank/civilian/bartender,
@@ -61,7 +61,7 @@
 /datum/supply_pack/science/techshellpack
 	name = "Techshell Value Pack"
 	desc = "Are beanbags, rubbershot, lethals and slugs not doing it for you? This pack contains 3 boxes of 7 unloaded techshells, just begging to be loaded with various dangerous materials!"
-	cost = 2150
+	cost = CARGO_CRATE_VALUE * 10.5 //this should be rougly 2100 if my calculations are correct
 	contains = list(/obj/item/storage/box/techshell,
 					/obj/item/storage/box/techshell,
 					/obj/item/storage/box/techshell)
@@ -94,28 +94,28 @@
 /datum/supply_pack/goody/wt550ammoic
 	name = "WT-550 Auto Rifle Incendiary Ammo Single Pack"
 	desc = "Contains a 20-round magazine of Incendiary bullets for the WT-550 Auto Rifle. Just dont tell anyone you bought this."
-	cost = 950
+	cost = PAYCHECK_HARD * 7
 	contraband = TRUE
 	contains = list(/obj/item/ammo_box/magazine/wt550m9/wtic)
 
 /datum/supply_pack/goody/wt550ammoap
 	name = "WT-550 Auto Rifle Armor-Piercing Ammo Single Pack"
 	desc = "Contains a 20-round magazine of Armor-Piercing bullets for the WT-550 Auto Rifle. Just dont tell anyone you bought this."
-	cost = 950
+	cost = PAYCHECK_HARD * 7
 	contraband = TRUE
 	contains = list(/obj/item/ammo_box/magazine/wt550m9/wtap)
 
 /datum/supply_pack/goody/EgunPDW
 	name = "Energy PDW Single Pack"
 	desc = "Maintenance a bit shady? Want a personal gun for when assistants get rowdy? This pack contains 1 Miniature Energy Gun, Perfect for detering absolutely no one, But its a mini Energy gun, Cmon!"
-	cost = 1000
+	cost = PAYCHECK_HARD * 9
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/energy/e_gun/mini)
 
 /datum/supply_pack/goody/techbox
 	name = "Techshell Single Pack"
 	desc = "Are beanbags, rubbershot, lethals and slugs not doing it for you? This contains 1 box of 7 unloaded techshells. Have fun wrecking havoc!"
-	cost = 850
+	cost = PAYCHECK_HARD * 8.5
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/storage/box/techshell)
 
