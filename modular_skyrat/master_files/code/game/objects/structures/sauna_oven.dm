@@ -33,11 +33,11 @@
 	if(lit)
 		lit = FALSE
 		STOP_PROCESSING(SSobj, src)
-		user.visible_message("<span class='notice'>[user] turns on [src].</span>", "<span class='notice'>You turn on [src].</span>")
+		user.visible_message("<span class='notice'>[user] turns off [src].</span>", "<span class='notice'>You turn off [src].</span>")
 	else if (fuel_amount)
 		lit = TRUE
 		START_PROCESSING(SSobj, src)
-		user.visible_message("<span class='notice'>[user] turns off [src].</span>", "<span class='notice'>You turn off [src].</span>")
+		user.visible_message("<span class='notice'>[user] turns on [src].</span>", "<span class='notice'>You turn on [src].</span>")
 	update_icon()
 
 /obj/structure/sauna_oven/update_overlays()
@@ -99,7 +99,7 @@
 	if(water_amount)
 		water_amount--
 		var/turf/pos = get_turf(src)
-		if(pos)
+		if(pos && pos.air.return_pressure() < 2*ONE_ATMOSPHERE)
 			pos.atmos_spawn_air("water_vapor=10;TEMP=[SAUNA_H2O_TEMP]")
 	fuel_amount--
 	if(fuel_amount <= 0)
