@@ -3,7 +3,7 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 #define GAMMA_LOOP_LENGTH 1236 //2.06 minutes in deciseconds
 
 /proc/set_security_level(level)
-	level = seclevel2num(level) || level
+	level = isnum(level) ? level : seclevel2num(level)
 
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_GAMMA && level != GLOB.security_level)
