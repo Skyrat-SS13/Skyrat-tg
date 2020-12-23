@@ -15,29 +15,9 @@
 	pickup_sound =  'sound/items/handling/drinkglass_pickup.ogg'
 	custom_price = PAYCHECK_PRISONER
 
-<<<<<<< HEAD
-/obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change(changetype)
-	cut_overlays()
-	if(reagents.reagent_list.len)
-		var/datum/reagent/R = reagents.get_master_reagent()
-		if(!renamedByPlayer)
-			name = R.glass_name
-			desc = R.glass_desc
-		if(R.glass_icon_state)
-			icon = R.glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
-			icon_state = R.glass_icon_state
-		else
-			var/mutable_appearance/reagent_overlay = mutable_appearance(icon, "glassoverlay")
-			icon_state = "glass_empty"
-			reagent_overlay.color = mix_color_from_reagents(reagents.reagent_list)
-			add_overlay(reagent_overlay)
-	else
-		icon_state = "glass_empty"
-=======
 /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change(datum/reagents/holder, ...)
 	. = ..()
 	if(!length(reagents.reagent_list))
->>>>>>> 863977e5fa9... Makes reagent updates more event based, also makes plasma boil properly. (#54790)
 		renamedByPlayer = FALSE //so new drinks can rename the glass
 		return
 
@@ -57,6 +37,7 @@
 	var/datum/reagent/largest_reagent = reagents.get_master_reagent()
 	if(largest_reagent.glass_icon_state)
 		icon_state = largest_reagent.glass_icon_state
+		icon = largest_reagent.glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	return NONE
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/update_overlays()
