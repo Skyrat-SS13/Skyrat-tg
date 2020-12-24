@@ -27,8 +27,46 @@
 	our_core = the_core
 	blob_type = passedtype
 	our_core.our_controller = src
+	SpawnExpansion()
 	START_PROCESSING(SSobj, src)
 	return ..()
+
+/datum/biohazard_blob_controller/proc/SpawnExpansion()
+	var/list/turfs = list()
+	var/hatcheries_to_spawn = 2
+	var/bulbs_to_spawn = 1
+	var/spread_radius = 3
+	var/our_turf = get_turf(our_core)
+	turfs[our_turf] = TRUE
+	for(var/i in 1 to spread_radius)
+		for(var/tr in turfs)
+			var/turf/T = tr
+			for(var/tr2 in T.atmos_adjacent_turfs)
+				turfs[tr2] = TRUE
+	for(var/tr in turfs)
+		var/turf/T = tr
+		SpawnResin(T)
+		if(T == our_turf)
+			continue
+		if(hatcheries_to_spawn && prob(40))
+			hatcheries_to_spawn--
+			SpawnStructureLoc(2, T)
+		else if(bulbs_to_spawn && prob(40))
+			bulbs_to_spawn--
+			SpawnStructureLoc(1, T)
+
+/datum/biohazard_blob_controller/proc/SpawnStructureLoc(index, location)
+	var/spawn_type
+	switch(index)
+		if(1)
+			spawn_type = /obj/structure/biohazard_blob/structure/bulb
+		if(2)
+			spawn_type = /obj/structure/biohazard_blob/structure/spawner
+	var/struct = new spawn_type(location, blob_type)
+	other_structures[struct] = TRUE
+	our_core.max_integrity += 10
+	our_core.obj_integrity += 10
+	return struct
 
 /datum/biohazard_blob_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -67,13 +105,7 @@
 			structure_progression -= PROGRESSION_FOR_STRUCTURE
 			var/spawn_type
 			var/random = rand(1,2)
-			switch(random)
-				if(1)
-					spawn_type = /obj/structure/biohazard_blob/structure/bulb
-				if(2)
-					spawn_type = /obj/structure/biohazard_blob/structure/spawner
-			var/struct = new spawn_type(ownturf, blob_type)
-			other_structures[struct] = TRUE
+			SpawnStructureLoc(random, ownturf)
 
 	//Check if we can attack an airlock
 	for(var/a in get_adjacent_open_turfs(spreaded_resin))
@@ -130,7 +162,9 @@
 	all_resin[new_resin] = TRUE
 	active_resin[new_resin] = TRUE
 	new_resin.CalcDir()
-	return
+	our_core.max_integrity += 2
+	our_core.obj_integrity += 2
+	return new_resin
 
 /datum/biohazard_blob_controller/proc/ActivateAdjacentResinRecursive(turf/centrum_turf, iterations = 1)
 	var/list/turfs = list()
