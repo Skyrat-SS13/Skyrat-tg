@@ -103,7 +103,6 @@
 				break
 		if(!forbidden)
 			structure_progression -= PROGRESSION_FOR_STRUCTURE
-			var/spawn_type
 			var/random = rand(1,2)
 			SpawnStructureLoc(random, ownturf)
 
