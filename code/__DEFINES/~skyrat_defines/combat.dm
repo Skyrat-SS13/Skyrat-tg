@@ -3,7 +3,7 @@
 //APPLICATION OF STAM DAMAGE
 //Should maybe wounds do it too?
 //This one is applied on non-glancing melee attacks aswell as normal projectiles.
-#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 0.8
+#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 0.85
 
 //Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
 #define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5
@@ -19,7 +19,7 @@
 #define STAMINALOSS_REGEN_COEFF 50
 
 //Thresholds for detrimental effects from stamina
-#define STAMINA_THRESHOLD_SLOWDOWN 60
+#define STAMINA_THRESHOLD_WEAK 60
 
 #define STAMINA_THRESHOLD_KNOCKDOWN 120
 
@@ -60,10 +60,6 @@
 
 /mob/living/carbon
 	var/next_pain_message = 0
-
-//MOVE THOSE LATER
-/datum/movespeed_modifier/stamina_slowdown
-	multiplicative_slowdown = 0.6
 
 /datum/mood_event/stamina_mild
 	description = "<span class='boldwarning'>Oh god it hurts!.</span>\n"

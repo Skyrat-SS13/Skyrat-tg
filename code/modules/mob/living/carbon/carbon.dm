@@ -570,8 +570,8 @@
 
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
-	if(stam > STAMINA_THRESHOLD_SLOWDOWN)
-		add_movespeed_modifier(/datum/movespeed_modifier/stamina_slowdown)
+	//TODO: Make this much more cleaner
+	if(stam > STAMINA_THRESHOLD_WEAK)
 		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
 			//SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina mild", /datum/mood_event/stamina_mild)
 			if(!HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
@@ -600,7 +600,6 @@
 			filters -= FILTER_STAMINACRIT
 
 	else
-		remove_movespeed_modifier(/datum/movespeed_modifier/stamina_slowdown)
 		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 		if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
