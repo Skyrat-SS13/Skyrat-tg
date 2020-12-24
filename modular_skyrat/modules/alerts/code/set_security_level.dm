@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 					minor_announce(CONFIG_GET(string/alert_orange_downto), "Attention! Alert level set to orange:")
 			if(SEC_LEVEL_AMBER)
 				if(GLOB.security_level < SEC_LEVEL_AMBER)
-					minor_announce(CONFIG_GET(string/alert_amber_upto), "Attention! Alert level set to amber:",1) //Skyrat change
+					minor_announce(CONFIG_GET(string/alert_amber_upto), "Attention! Alert level set to amber:",1)
 				else
 					minor_announce(CONFIG_GET(string/alert_amber_downto), "Attention! Alert level set to amber:")
 			if(SEC_LEVEL_RED)
