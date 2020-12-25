@@ -102,7 +102,7 @@
 		for(var/i in GLOB.assaultops_targets)
 			var/mob/living/carbon/human/H = i
 			antag_memory += "\n [H.name]"
-		antag_memory += "\n Kill them all."
+		antag_memory += "\n<b>Kill them all.</b>\n"
 		to_chat(owner, "You have been given a list of command and security staff that must be killed, check your notes!")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
