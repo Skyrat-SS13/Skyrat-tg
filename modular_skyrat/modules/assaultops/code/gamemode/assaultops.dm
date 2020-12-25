@@ -58,16 +58,6 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 				GLOB.assaultops_targets.Add(H)
 	return ..()
 
-/*
-/datum/game_mode/assaultops/check_finished()
-	//Keep the round going if ops are dead but bomb is ticking.
-	if(assault_team.operatives_dead())
-		for(var/obj/machinery/assaultopsbomb/N in GLOB.nuke_list)
-			if(N.proper_bomb && (N.timing || N.exploding))
-				return FALSE
-	return ..()
-*/
-
 /datum/game_mode/assaultops/set_round_result()
 	..()
 	var/result = assault_team.get_result()
@@ -200,7 +190,6 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	W.implant(H)
 	var/obj/item/implant/explosive/E = new/obj/item/implant/explosive(H)
 	E.implant(H)
-	H.faction |= ROLE_SYNDICATE
 	H.update_icons()
 
 

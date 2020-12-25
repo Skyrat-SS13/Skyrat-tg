@@ -31,6 +31,8 @@
 	if(H.dna.species.id == "plasmaman" )
 		H.set_species(/datum/species/human)
 
+	H.faction |= ROLE_SYNDICATE
+
 	var/list/loadouts = list(
 		"cqb" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "cqb"),
 		"demoman" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "demoman"),
@@ -101,7 +103,7 @@
 		for(var/i in GLOB.assaultops_targets)
 			var/mob/living/carbon/human/H = i
 			antag_memory += "\n [H.name]"
-		antag_memory += "\n<b>Kill them all.</b>\n"
+		antag_memory += "\n <b>Kill them all.</b>\n"
 		to_chat(owner, "You have been given a list of command and security staff that must be killed, check your notes!")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
@@ -137,8 +139,8 @@
 /datum/antagonist/assaultops/admin_add(datum/mind/new_owner,mob/admin)
 	new_owner.assigned_role = ROLE_SYNDICATE
 	new_owner.add_antag_datum(src)
-	message_admins("[key_name_admin(admin)] has nuke op'ed [key_name_admin(new_owner)].")
-	log_admin("[key_name(admin)] has nuke op'ed [key_name(new_owner)].")
+	message_admins("[key_name_admin(admin)] has assault op'ed [key_name_admin(new_owner)].")
+	log_admin("[key_name(admin)] has assault op'ed [key_name(new_owner)].")
 
 /datum/antagonist/assaultops/get_admin_commands()
 	. = ..()
@@ -187,7 +189,7 @@
 
 /datum/antagonist/assaultops/leader/proc/ask_name()
 	var/randomname = pick(GLOB.last_names)
-	var/newname = stripped_input(owner.current,"You are the nuke operative [title]. Please choose a last name for your family.", "Name change",randomname)
+	var/newname = stripped_input(owner.current,"You are the assault operative [title]. Please choose a last name for your family.", "Name change",randomname)
 	if (!newname)
 		newname = randomname
 	else
