@@ -17,7 +17,7 @@
 
 /datum/round_event/spider_infestation/start()
 	create_midwife_eggs(spawncount)
-
+	
 /proc/create_midwife_eggs(amount)
 	var/list/spawn_locs = list()
 	for(var/x in GLOB.xeno_spawn)
