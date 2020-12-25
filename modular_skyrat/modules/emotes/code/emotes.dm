@@ -309,6 +309,7 @@
 	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+	cooldown = EMOTE_DELAY
 
 
 /datum/emote/living/clap/run_emote(mob/living/user, params)
@@ -326,6 +327,7 @@
 	message = "claps once."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
+	cooldown = EMOTE_DELAY
 
 /datum/emote/living/clap1/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -344,6 +346,7 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+	cooldown = EMOTE_DELAY
 
 /datum/emote/living/laugh/run_emote(mob/living/user, params)
 	if(!(. = ..()))
