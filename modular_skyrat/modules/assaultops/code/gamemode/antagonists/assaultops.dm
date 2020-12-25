@@ -105,6 +105,7 @@
 			antag_memory += "\n - [H.name]: [H.job]"
 		antag_memory += "\n <b>Try to kill only your targets, we need the crew.</b>"
 		to_chat(owner, "You have been given a list of command and security staff that must be killed, check your notes!")
+		to_chat(owner, "<span class='danger'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS HOSTILE TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED</span>")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
 	if(assault_team)
