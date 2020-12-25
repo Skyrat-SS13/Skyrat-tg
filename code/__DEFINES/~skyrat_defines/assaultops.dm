@@ -1,0 +1,5 @@
+#define ROLE_ASSAULTOPS			"Assault Operative"
+
+#define ASSAULT_RESULT_FLUKE 0
+#define ASSAULT_RESULT_ASSAULT_WIN 1
+#define ASSAULT_RESULT_CREW_WIN 2
