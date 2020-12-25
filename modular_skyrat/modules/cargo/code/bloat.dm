@@ -105,13 +105,6 @@
 	contraband = TRUE
 	contains = list(/obj/item/ammo_box/magazine/wt550m9/wtap)
 
-/datum/supply_pack/goody/EgunPDW
-	name = "Energy PDW Single Pack"
-	desc = "Maintenance a bit shady? Want a personal gun for when assistants get rowdy? This pack contains 1 Miniature Energy Gun, Perfect for detering absolutely no one, But its a mini Energy gun, Cmon!"
-	cost = PAYCHECK_HARD * 9
-	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/gun/energy/e_gun/mini)
-
 /datum/supply_pack/goody/techbox
 	name = "Techshell Single Pack"
 	desc = "Are beanbags, rubbershot, lethals and slugs not doing it for you? This contains 1 box of 7 unloaded techshells. Have fun wrecking havoc!"
