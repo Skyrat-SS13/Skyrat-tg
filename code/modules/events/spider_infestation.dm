@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/spider_infestation
 	weight = 10
 	max_occurrences = 1
-	min_players = 20
+	//min_players = 20 - SKYRAT EDIT - moved to modular_skyrat/master_files
 
 /datum/round_event/spider_infestation
 	announceWhen = 400
@@ -17,7 +17,7 @@
 
 /datum/round_event/spider_infestation/start()
 	create_midwife_eggs(spawncount)
-	
+
 /proc/create_midwife_eggs(amount)
 	var/list/spawn_locs = list()
 	for(var/x in GLOB.xeno_spawn)
