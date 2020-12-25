@@ -331,7 +331,7 @@
 		sound = pick('modular_skyrat/modules/emotes/sound/emotes/claponceecho1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/claponceecho2.ogg')
 		user.apply_damage(10, BRUTE, BODY_ZONE_L_ARM)
 		user.apply_damage(10, BRUTE, BODY_ZONE_R_ARM)
-		user.nextsoundemote += 43
+		user.nextsoundemote += 53
 		volume = 100
 	playsound(user, sound, volume, vary)
 
