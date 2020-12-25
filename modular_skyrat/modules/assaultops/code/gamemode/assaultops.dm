@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/game_mode/assaultops
-	name = "incursion operatives"
+	name = "assault operatives"
 	config_tag = "assaultops"
 	report_type = "assaultops"
 	false_report_weight = 10
@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	if(cqc)
 		//ADD CQC SHIT
-		H._AddComponent(/datum/martial_art/cqc)
+		H.AddComponent(/datum/martial_art/cqc)
 
 	var/obj/item/implant/weapons_auth/W = new/obj/item/implant/weapons_auth(H)
 	W.implant(H)

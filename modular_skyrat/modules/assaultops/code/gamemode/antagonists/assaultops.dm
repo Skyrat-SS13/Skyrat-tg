@@ -76,10 +76,11 @@
 	give_alias()
 	forge_objectives()
 	. = ..()
-	equip_op()
-	memorise_kills()
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
+	equip_op()
+	memorise_kills()
+
 
 /datum/antagonist/assaultops/get_team()
 	return assault_team
