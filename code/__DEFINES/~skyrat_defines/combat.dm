@@ -1,4 +1,4 @@
-#define MAX_HUMAN_LIFE 125
+#define MAX_HUMAN_LIFE 135
 
 //APPLICATION OF STAM DAMAGE
 //Should maybe wounds do it too?
