@@ -300,6 +300,7 @@
 	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+	hands_use_check = TRUE
 
 /datum/emote/living/clap/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -316,6 +317,7 @@
 	message = "claps once."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
+	hands_use_check = TRUE
 
 /datum/emote/living/clap1/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -324,7 +326,14 @@
 		return
 	user.nextsoundemote = world.time + 7
 	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/claponce1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/claponce2.ogg')
-	playsound(user, sound, 50, vary)
+	var/volume = 50
+	if(prob(1))
+		sound = pick('modular_skyrat/modules/emotes/sound/emotes/claponceecho1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/claponceecho2.ogg')
+		user.apply_damage(10, BRUTE, BODY_ZONE_L_ARM)
+		user.apply_damage(10, BRUTE, BODY_ZONE_R_ARM)
+		user.nextsoundemote += 43
+		volume = 100
+	playsound(user, sound, volume, vary)
 
 /datum/emote/living/laugh
 	key = "laugh"
