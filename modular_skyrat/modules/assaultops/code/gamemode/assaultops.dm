@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	false_report_weight = 10
 	required_players = 30 // 30 players - 3 players to be the nuke ops = 27 players remaining
 	required_enemies = 2
-	recommended_enemies = 5
+	recommended_enemies = 7
 	antag_flag = ROLE_ASSAULTOPS
 	enemy_minimum_age = 14
 
@@ -16,8 +16,8 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	<span class='danger'>Operatives</span>: Subdue all security forces and occupy the station.\n\
 	<span class='notice'>Crew</span>: Defend the station from all syndicate assault members and ensure you survive."
 
-	var/const/agents_possible = 5 //If we ever need more syndicate agents.
-	var/operatives_left = 1 // Call 3714-PRAY right now and order more nukes! Limited offer!
+	var/const/agents_possible = 7 //If we ever need more syndicate agents.
+	var/operatives_left = 1
 	var/list/pre_operatives = list()
 
 	var/datum/team/assaultops/assault_team
@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		/obj/item/kitchen/knife/combat/survival,\
 		/obj/item/gun/ballistic/automatic/c20r,\
 		/obj/item/ammo_box/magazine/smgm45=4,\
-		/obj/item/clothing/suit/armor)
+		)
 
 	cqc = TRUE
 
@@ -136,10 +136,18 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		/obj/item/kitchen/knife/combat/survival,\
 		/obj/item/gun/ballistic/automatic/gyropistol,\
 		/obj/item/ammo_box/magazine/m75=4,\
-		/obj/item/grenade/syndieminibomb=4,\
-		/obj/item/grenade/c4=2,\
-		/obj/item/implant/explosive/macro,\
-		/obj/item/clothing/suit/space/hardsuit/rd)
+		/obj/item/implant/explosive/macro, \
+		/obj/item/storage/box/assaultops/demoman
+		)
+	l_hand = /obj/item/clothing/suit/space/hardsuit/rd
+
+/obj/item/storage/box/assaultops/demoman
+	name = "Assault Operative - Demolitions"
+
+/obj/item/storage/box/assaultops/demoman/PopulateContents()
+	for(var/i in 1 to 4)
+		new /obj/item/grenade/syndieminibomb(src)
+		new /obj/item/grenade/c4(src)
 
 /datum/outfit/assaultops/medic
 	name = "Assault Operative - Medic"
@@ -159,9 +167,12 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
-		/obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34,\
+		/obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34/assaultops,\
 		/obj/item/ammo_box/magazine/mg34=4,\
 		/obj/item/grenade/syndieminibomb)
+
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34/assaultops
+	w_class = WEIGHT_CLASS_NORMAL
 
 /datum/outfit/assaultops/assault
 	name = "Assault Operative - Assault"

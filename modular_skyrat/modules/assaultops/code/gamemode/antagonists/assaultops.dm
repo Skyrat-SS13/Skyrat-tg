@@ -7,7 +7,6 @@
 	antag_hud_name = "synd"
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
-	hijack_speed = 2 //If you can't take out the station, take the shuttle instead.
 	var/datum/team/assaultops/assault_team
 	var/always_new_team = FALSE //If not assigned a team by default ops will try to join existing ones, set this to TRUE to always create new team.
 	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
@@ -23,11 +22,6 @@
 	var/mob/living/M = mob_override || owner.current
 	remove_antag_hud(antag_hud_type, M)
 	REMOVE_TRAIT(owner, TRAIT_DISK_VERIFIER, NUKEOP_TRAIT)
-
-//RADIAL MENU STUFF
-/datum/radial_menu/assaultops
-	icon_path = 'modular_skyrat/modules/gunpoint/icons/radial_gunpoint.dmi'
-
 
 /datum/antagonist/assaultops/proc/equip_op()
 	if(!ishuman(owner.current))
@@ -50,21 +44,26 @@
 	switch(chosen_loadout)
 		if("cqb")
 			chosen_loadout = /datum/outfit/assaultops/cqb
+			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to deal with hand-to-hand combat!")
 		if("demoman")
 			chosen_loadout = /datum/outfit/assaultops/demoman
+			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!")
 		if("medic")
 			chosen_loadout = /datum/outfit/assaultops/medic
+			to_chat(H, "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!")
 		if("heavy")
 			chosen_loadout = /datum/outfit/assaultops/heavy
+			to_chat(H, "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!")
 		if("assault")
 			chosen_loadout = /datum/outfit/assaultops/assault
+			to_chat(H, "<span class='notice'>You have chosen the Assault class, your role is general combat!")
 		else
 			chosen_loadout = pick(list(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault))
 
 	if(!chosen_loadout)
 		chosen_loadout = /datum/outfit/assaultops
 
-	H.equipOutfit(chosen_loadout,)
+	H.equipOutfit(chosen_loadout)
 	return TRUE
 
 /datum/antagonist/assaultops/greet()
