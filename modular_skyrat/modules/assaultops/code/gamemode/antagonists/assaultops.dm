@@ -103,7 +103,7 @@
 		for(var/i in GLOB.assaultops_targets)
 			var/mob/living/carbon/human/H = i
 			antag_memory += "\n - [H.name]: [H.job]"
-		antag_memory += "\n <b>Kill them all.</b>"
+		antag_memory += "\n <b>Try to kill only your targets, we need the crew.</b>"
 		to_chat(owner, "You have been given a list of command and security staff that must be killed, check your notes!")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
@@ -165,7 +165,7 @@
 
 /datum/antagonist/assaultops/leader/greet()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0, use_reverb = FALSE)
-	to_chat(owner, "<B>You are the Syndicate [title] for this mission. You are responsible for the distribution of telecrystals and your ID is the only one who can open the launch bay doors.</B>")
+	to_chat(owner, "<B>You are the Syndicate [title] for this mission. You are responsible for coordination and your ID is the only one who can open the launch bay doors.</B>")
 	to_chat(owner, "<B>If you feel you are not up to this task, give your ID to another operative.</B>")
 	owner.announce_objectives()
 	addtimer(CALLBACK(src, .proc/assaultops_name_assign), 1)
