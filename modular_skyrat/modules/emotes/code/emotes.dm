@@ -82,11 +82,11 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/male_sneeze.ogg')
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/male/male_sneeze.ogg'
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.gender == FEMALE)
-			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg')
+			sound = 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
 	if(isvox(user))
 		sound = 'modular_skyrat/modules/emotes/sound/emotes/voxsneeze.ogg'
 	playsound(user, sound, 50, 1, -1)
@@ -199,7 +199,7 @@
 	message = "barks!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = pick(list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg', 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'))
+	sound = 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'
 	cooldown = EMOTE_DELAY
 
 /datum/emote/living/squish
@@ -285,7 +285,7 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/snore.ogg')
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/snore.ogg'
 	playsound(user, sound, 50, 1, -1)
 
 /datum/emote/living/burp/run_emote(mob/living/user, params)
@@ -294,11 +294,11 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/burp_m.ogg')
+	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/male/burp_m.ogg'
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.gender == FEMALE)
-			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/burp_f.ogg')
+			sound = 'modular_skyrat/modules/emotes/sound/emotes/female/burp_f.ogg'
 	playsound(user, sound, 50, 1, -1)
 
 /datum/emote/living/clap
@@ -352,11 +352,11 @@
 		return
 	user.nextsoundemote = world.time + EMOTE_DELAY
 	var/mob/living/carbon/H = user
-	var/sound = pick(list('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'))
+	var/sound = pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.gender == FEMALE)
-			sound = pick(list('modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg'))
+			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg')
 	if(H.dna.species.id == "moth")
 		sound = 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
 	playsound(user, sound, 50, vary)
