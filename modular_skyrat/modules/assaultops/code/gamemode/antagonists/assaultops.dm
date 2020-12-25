@@ -99,11 +99,11 @@
 
 /datum/antagonist/assaultops/proc/memorise_kills()
 	if(assault_team)
-		antag_memory += "Your currently assigned targets are:"
+		antag_memory += "Your currently assigned targets are: \n"
 		for(var/i in GLOB.assaultops_targets)
 			var/mob/living/carbon/human/H = i
-			antag_memory += "\n [H.name]"
-		antag_memory += "\n <b>Kill them all.</b>\n"
+			antag_memory += "\n - [H.name]: [H.job]"
+		antag_memory += "\n <b>Kill them all.</b>"
 		to_chat(owner, "You have been given a list of command and security staff that must be killed, check your notes!")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
