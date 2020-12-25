@@ -146,6 +146,7 @@
 
 /datum/antagonist/assaultops/proc/admin_send_to_base(mob/admin)
 	owner.current.forceMove(pick(GLOB.nukeop_start))
+
 /datum/antagonist/assaultops/leader
 	name = "Assault Operative Leader"
 	assaultop_outfit = /datum/outfit/syndicate/leader
