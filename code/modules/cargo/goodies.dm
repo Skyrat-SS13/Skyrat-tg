@@ -52,8 +52,6 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/gun/energy/e_gun)
 
-/datum/supply_pack/goody/EgunPDW //Skyrat Addition + Organization
-
 /datum/supply_pack/goody/hell_single
 	name = "Hellgun Single-Pack"
 	desc = "Contains one hellgun, an old pattern of laser gun infamous for its ability to horribly disfigure targets with burns. Technically violates the Space Geneva Convention when used on humanoids."
@@ -75,11 +73,11 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/wt550m9)
 
-/datum/supply_pack/goody/wt550ammoap //Skyrat addition + organization. Requires hacking.
+/datum/supply_pack/goody/wt550ammoap //Skyrat Edit
 
-/datum/supply_pack/goody/wt550ammoic //Skyrat addition + organization. Requires hacking.
+/datum/supply_pack/goody/wt550ammoic //Skyrat Edit
 
-/datum/supply_pack/goody/techbox //Skyrat addition + organization.
+/datum/supply_pack/goody/techbox //Skyrat Edit
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"

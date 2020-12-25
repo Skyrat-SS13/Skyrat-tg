@@ -551,7 +551,7 @@
 					/obj/item/ammo_box/c38/trac)
 	crate_name = "tracking implant crate"
 
-/datum/supply_pack/security/armory/riotshotguns //Skyrat Addition + Organization.
+/datum/supply_pack/security/armory/riotshotguns //Skyrat Edit
 
 /datum/supply_pack/security/armory/laserarmor
 	name = "Reflector Vest Crate"
@@ -615,7 +615,7 @@
 		var/item = pick(contains)
 		new item(C)
 
-/datum/supply_pack/security/armory/mafia //Skyrat addition + organization. Requires Emag.
+/datum/supply_pack/security/armory/mafia //Skyrat Edit
 
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
@@ -633,7 +633,7 @@
 					/obj/item/clothing/gloves/tackler/combat)
 	crate_name = "swat crate"
 
-/datum/supply_pack/security/armory/woodstock //Skyrat addition + organization.
+/datum/supply_pack/security/armory/woodstock //Skyrat Edit
 
 /datum/supply_pack/security/armory/wt550
 	name = "WT-550 Auto Rifle Crate"
@@ -652,7 +652,7 @@
 					/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9)
 
-/datum/supply_pack/security/armory/wt550ammovariety //Skyrat addition + organization
+/datum/supply_pack/security/armory/wt550ammovariety //Skyrat Edit
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Engineering /////////////////////////////////////
@@ -1420,7 +1420,7 @@
 	crate_name = "shield generators crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 
-/datum/supply_pack/science/techshellpack //Skyrat addition + organization.
+/datum/supply_pack/science/techshellpack //Skyrat Edit
 
 /datum/supply_pack/science/transfer_valves
 	name = "Tank Transfer Valves Crate"
