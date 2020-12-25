@@ -32,7 +32,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/flippedtable/AltClick(mob/living/user)
+/obj/structure/flippedtable/CtrlShiftClick(mob/user)
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src))
 		return FALSE
@@ -46,7 +46,7 @@
 
 //TABLES
 
-/obj/structure/table/AltClick(mob/living/user)
+/obj/structure/table/CtrlShiftClick(mob/living/user)
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src))
 		return
