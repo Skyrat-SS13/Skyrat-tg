@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	back = /obj/item/storage/backpack/fireproof
 	ears = /obj/item/radio/headset/syndicate/alt
 	l_pocket = /obj/item/modular_computer/tablet/nukeops
-	id = /obj/item/card/id/syndicate
+	id = /obj/item/card/id/syndicate/nuke_leader
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
@@ -187,6 +187,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		H.AddComponent(/datum/martial_art/cqc)
 
 	var/obj/item/implant/weapons_auth/W = new/obj/item/implant/weapons_auth(H)
+
 	W.implant(H)
 	H.update_icons()
 
