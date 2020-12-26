@@ -47,9 +47,9 @@
 	regen_ticks_current++
 	if(victim.body_position == LYING_DOWN)
 		if(prob(50))
-			regen_ticks_current += 0.2
-		if(victim.IsSleeping() && prob(50))
 			regen_ticks_current += 0.5
+		if(victim.IsSleeping() && prob(50))
+			regen_ticks_current += 1
 
 	if(limb.current_splint)
 		regen_ticks_current += (1-limb.current_splint.splint_factor)
@@ -137,10 +137,10 @@
 	desc = "Patient's muscle has torn, causing serious pain and reduced limb functionality."
 	treat_text = "Recommended rest and sleep, or splinting the limb."
 	examine_desc = "appears unnaturallly red and swollen"
-	occur_text = "spasms and swells up with skin turning red"
+	occur_text = "swells up, it's skin turning red"
 	severity = WOUND_SEVERITY_MODERATE
 	interaction_efficiency_penalty = 1.5
-	limp_slowdown = 3
+	limp_slowdown = 2
 	threshold_minimum = 35
 	threshold_penalty = 15
 	status_effect_type = /datum/status_effect/wound/muscle/moderate
@@ -159,7 +159,7 @@
 	occur_text = "twists in pain and goes limp, it's tendon ruptured"
 	severity = WOUND_SEVERITY_SEVERE
 	interaction_efficiency_penalty = 2
-	limp_slowdown = 6
+	limp_slowdown = 5
 	threshold_minimum = 80
 	threshold_penalty = 35
 	disabling = TRUE

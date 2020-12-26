@@ -288,7 +288,7 @@
 		if(BIO_FLESH_BONE)
 			//SKYRAT EDIT ADDITION BEGIN - MEDICAL
 			//We do a body zone check here because muscles dont have any variants for head or chest, and rolling a muscle wound on them wound end up on a wasted wound roll
-			if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(40))
+			if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(35))
 				wounding_type = WOUND_MUSCLE
 			//SKYRAT EDIT ADDITION END
 			// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate

@@ -54,6 +54,7 @@
 	icon_state = "splint_tribal"
 	amount = 1
 	splint_type = /datum/bodypart_aid/splint/tribal
+	merge_type = /obj/item/stack/medical/splint/tribal
 
 /obj/item/stack/medical/splint/improvised
 	name = "improvised splint"
@@ -62,3 +63,4 @@
 	icon_state = "splint_improv"
 	amount = 1
 	splint_type = /datum/bodypart_aid/splint/improvised
+	merge_type = /obj/item/stack/medical/splint/improvised
