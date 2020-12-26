@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	false_report_weight = 10
 	required_players = 30 // 30 players - 3 players to be the nuke ops = 27 players remaining
 	required_enemies = 2
-	recommended_enemies = 7
+	recommended_enemies = 10
 	antag_flag = ROLE_ASSAULTOPS
 	enemy_minimum_age = 14
 
@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	var/leader_antag_datum_type = /datum/antagonist/assaultops/leader
 
 /datum/game_mode/assaultops/pre_setup()
-	var/n_agents = min(round(num_players() / 10), antag_candidates.len, agents_possible)
+	var/n_agents = recommended_enemies
 	if(n_agents >= required_enemies)
 		for(var/i = 0, i < n_agents, ++i)
 			var/datum/mind/new_op = pick_n_take(antag_candidates)
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	for(var/i in GLOB.player_list)
 		if(ishuman(i))
 			var/mob/living/carbon/human/H = i
-			if(H.job == "Captain" || "Head of Personnel" || "Quartermaster" || "Head of Security" || "Chief Engineer" || "Research Director" || "Blueshield" || "Security Officer" || "Warden") //UGH SHITCODE!!
+			if(H.job == ("Captain" || "Head of Personnel" || "Quartermaster" || "Head of Security" || "Chief Engineer" || "Research Director" || "Blueshield" || "Security Officer" || "Warden")) //UGH SHITCODE!!
 				GLOB.assaultops_targets.Add(H)
 	return ..()
 
@@ -188,14 +188,12 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	var/obj/item/implant/weapons_auth/W = new/obj/item/implant/weapons_auth(H)
 	W.implant(H)
-	var/obj/item/implant/explosive/E = new/obj/item/implant/explosive(H)
-	E.implant(H)
 	H.update_icons()
 
 
 /datum/objective/assaultops
 	name = "assaultops"
-	explanation_text = "Commence a hostile takeover of the station, kill all loyalist nanotrasen crew members."
+	explanation_text = "Commence a hostile takeover of the station. Occupy the station and initiate Syndicate rule."
 	martyr_compatible = TRUE
 
 /datum/objective/assaultops/check_completion()

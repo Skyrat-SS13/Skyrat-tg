@@ -235,7 +235,7 @@
 	var/crew_is_dead = crew_dead()
 	var/assaultops_is_dead = assaultops_dead()
 
-	if(crew_is_dead && assaultops_is_dead)
+	if(!crew_is_dead && !assaultops_is_dead)
 		return ASSAULT_RESULT_FLUKE
 	else if(crew_is_dead)
 		return ASSAULT_RESULT_ASSAULT_WIN
@@ -250,8 +250,8 @@
 
 	switch(get_result())
 		if(ASSAULT_RESULT_FLUKE)
-			parts += "<span class='redtext big'>Humiliating Syndicate Defeat</span>"
-			parts += "Somehow the syndicate assault team and the loyalist nanotrasen crew have been defeated!"
+			parts += "<span class='redtext big'>Stalemate</span>"
+			parts += "Somehow the syndicate assault team and the loyalist nanotrasen crew have reached a stalemate!"
 		if(ASSAULT_RESULT_ASSAULT_WIN)
 			parts += "<span class='greentext big'>Syndicate Major Victory!</span>"
 			parts += "<B>[syndicate_name] assault team have taken over [station_name()], leaving no loyalist NT crew!</B>"
