@@ -109,6 +109,7 @@
 	name = "tribal splint"
 	splint_factor = 0.5
 	stack_to_drop = /obj/item/stack/medical/splint/tribal
+	overlay_prefix = "splint_tribal"
 
 /datum/bodypart_aid/gauze
 	name = "gauze"
