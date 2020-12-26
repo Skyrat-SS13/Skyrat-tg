@@ -756,6 +756,15 @@
 			else
 				combined_msg += "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
 
+		//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+		if(LB.current_gauze)
+			var/datum/bodypart_aid/current_gauze = LB.current_gauze
+			combined_msg += "\t <span class='notice'>Your [LB.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.</span>"
+		if(LB.current_splint)
+			var/datum/bodypart_aid/current_splint = LB.current_splint
+			combined_msg += "\t <span class='notice'>Your [LB.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.</span>"
+		//SKYRAT EDIT END
+
 	for(var/t in missing)
 		combined_msg += "<span class='boldannounce'>Your [parse_zone(t)] is missing!</span>"
 

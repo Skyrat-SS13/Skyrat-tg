@@ -1,5 +1,3 @@
-//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
-/*
 
 /*
 	Piercing wounds
@@ -32,8 +30,8 @@
 	if(victim.stat == DEAD || wounding_dmg < 5)
 		return
 	if(victim.blood_volume && prob(internal_bleeding_chance + wounding_dmg))
-		if(limb.current_gauze && limb.current_gauze.splint_factor)
-			wounding_dmg *= (1 - limb.current_gauze.splint_factor)
+		if(limb.current_splint && limb.current_splint.splint_factor)
+			wounding_dmg *= (1 - limb.current_splint.splint_factor)
 		var/blood_bled = rand(1, wounding_dmg * internal_bleeding_coefficient) // 12 brute toolbox can cause up to 15/18/21 bloodloss on mod/sev/crit
 		switch(blood_bled)
 			if(1 to 6)
@@ -62,9 +60,8 @@
 	if(victim.reagents.has_reagent(/datum/reagent/toxin/heparin))
 		blood_flow += 0.5 // old herapin used to just add +2 bleed stacks per tick, this adds 0.5 bleed flow to all open cuts which is probably even stronger as long as you can cut them first
 
-	if(limb.current_gauze)
+	if(limb.current_gauze && limb.current_gauze.seep_gauze(limb.current_gauze.absorption_rate, GAUZE_STAIN_BLOOD))
 		blood_flow -= limb.current_gauze.absorption_rate * gauzed_clot_rate
-		limb.current_gauze.absorption_capacity -= limb.current_gauze.absorption_rate
 
 	if(blood_flow <= 0)
 		qdel(src)
@@ -137,7 +134,7 @@
 	sound_effect = 'sound/effects/wounds/pierce1.ogg'
 	severity = WOUND_SEVERITY_MODERATE
 	initial_flow = 1.5
-	gauzed_clot_rate = 0.8
+	gauzed_clot_rate = 0.6
 	internal_bleeding_chance = 30
 	internal_bleeding_coefficient = 1.25
 	threshold_minimum = 30
@@ -154,7 +151,7 @@
 	sound_effect = 'sound/effects/wounds/pierce2.ogg'
 	severity = WOUND_SEVERITY_SEVERE
 	initial_flow = 2.25
-	gauzed_clot_rate = 0.6
+	gauzed_clot_rate = 0.4
 	internal_bleeding_chance = 60
 	internal_bleeding_coefficient = 1.5
 	threshold_minimum = 50
@@ -171,7 +168,7 @@
 	sound_effect = 'sound/effects/wounds/pierce3.ogg'
 	severity = WOUND_SEVERITY_CRITICAL
 	initial_flow = 3
-	gauzed_clot_rate = 0.4
+	gauzed_clot_rate = 0.3
 	internal_bleeding_chance = 80
 	internal_bleeding_coefficient = 1.75
 	threshold_minimum = 100
@@ -179,4 +176,3 @@
 	status_effect_type = /datum/status_effect/wound/pierce/critical
 	scar_keyword = "piercecritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
-*/

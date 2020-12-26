@@ -1,5 +1,3 @@
-//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
-/*
 
 /*
 	Slashing wounds
@@ -80,9 +78,14 @@
 	// compare with being at 100 brute damage before, where you bled (brute/100 * 2), = 2 blood per tile
 	var/bleed_amt = min(blood_flow * 0.1, 1) // 3 * 3 * 0.1 = 0.9 blood total, less than before! the share here is .3 blood of course.
 
+	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
+	/*
 	if(limb.current_gauze) // gauze stops all bleeding from dragging on this limb, but wears the gauze out quicker
 		limb.seep_gauze(bleed_amt * 0.33)
+	*/
+	if(limb.current_gauze && limb.current_gauze.seep_gauze(bleed_amt * 0.33, GAUZE_STAIN_BLOOD)) // gauze stops all bleeding from dragging on this limb, but wears the gauze out quicker
 		return
+	//SKYRAT EDIT CHANGE END
 
 	return bleed_amt
 
@@ -104,8 +107,14 @@
 	if(limb.current_gauze)
 		if(clot_rate > 0)
 			blood_flow -= clot_rate
+		//SKYRAT EDIT CHANGE BEGIN - MEDICAL
+		/*
 		blood_flow -= limb.current_gauze.absorption_rate
 		limb.seep_gauze(limb.current_gauze.absorption_rate)
+		*/
+		if(limb.current_gauze && limb.current_gauze.seep_gauze(limb.current_gauze.absorption_rate, GAUZE_STAIN_BLOOD))
+			blood_flow -= limb.current_gauze.absorption_rate
+		//SKYRAT EDIT CHANGE END
 	else
 		blood_flow -= clot_rate
 
@@ -257,7 +266,7 @@
 	initial_flow = 2
 	minimum_flow = 0.5
 	max_per_type = 3
-	clot_rate = 0.12
+	clot_rate = 0.9
 	threshold_minimum = 20
 	threshold_penalty = 10
 	status_effect_type = /datum/status_effect/wound/slash/moderate
@@ -273,7 +282,7 @@
 	severity = WOUND_SEVERITY_SEVERE
 	initial_flow = 3.25
 	minimum_flow = 2.75
-	clot_rate = 0.06
+	clot_rate = 0.04
 	max_per_type = 4
 	threshold_minimum = 50
 	threshold_penalty = 25
@@ -299,4 +308,3 @@
 	status_effect_type = /datum/status_effect/wound/slash/critical
 	scar_keyword = "slashcritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
-*/

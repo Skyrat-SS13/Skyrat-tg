@@ -1,5 +1,3 @@
-//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
-/*
 
 /*
 	Burn wounds
@@ -51,11 +49,11 @@
 			sanitization += 0.3
 			flesh_healing += 0.5
 
-	if(limb.current_gauze)
-		limb.seep_gauze(WOUND_BURN_SANITIZATION_RATE)
+	var/bandage_factor = 1
+	if(limb.current_gauze && limb.current_gauze.seep_gauze(WOUND_BURN_SANITIZATION_RATE, GAUZE_STAIN_PUS))
+		bandage_factor = limb.current_gauze.sanitisation_factor
 
 	if(flesh_healing > 0)
-		var/bandage_factor = (limb.current_gauze ? limb.current_gauze.splint_factor : 1)
 		flesh_damage = max(0, flesh_damage - 1)
 		flesh_healing = max(0, flesh_healing - bandage_factor) // good bandages multiply the length of flesh healing
 
@@ -67,7 +65,6 @@
 
 	// sanitization is checked after the clearing check but before the rest, because we freeze the effects of infection while we have sanitization
 	if(sanitization > 0)
-		var/bandage_factor = (limb.current_gauze ? limb.current_gauze.splint_factor : 1)
 		infestation = max(0, infestation - WOUND_BURN_SANITIZATION_RATE)
 		sanitization = max(0, sanitization - (WOUND_BURN_SANITIZATION_RATE * bandage_factor))
 		return
@@ -268,7 +265,7 @@
 	threshold_minimum = 40
 	threshold_penalty = 30 // burns cause significant decrease in limb integrity compared to other wounds
 	status_effect_type = /datum/status_effect/wound/burn/moderate
-	flesh_damage = 5
+	flesh_damage = 10
 	scar_keyword = "burnmoderate"
 
 /datum/wound/burn/severe
@@ -284,7 +281,7 @@
 	status_effect_type = /datum/status_effect/wound/burn/severe
 	treatable_by = list(/obj/item/flashlight/pen/paramedic, /obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh)
 	infestation_rate = 0.05 // appx 13 minutes to reach sepsis without any treatment
-	flesh_damage = 12.5
+	flesh_damage = 20
 	scar_keyword = "burnsevere"
 
 /datum/wound/burn/critical
@@ -301,6 +298,5 @@
 	status_effect_type = /datum/status_effect/wound/burn/critical
 	treatable_by = list(/obj/item/flashlight/pen/paramedic, /obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh)
 	infestation_rate = 0.15 // appx 4.33 minutes to reach sepsis without any treatment
-	flesh_damage = 20
+	flesh_damage = 30
 	scar_keyword = "burncritical"
-*/
