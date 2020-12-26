@@ -266,7 +266,7 @@
 	initial_flow = 2
 	minimum_flow = 0.5
 	max_per_type = 3
-	clot_rate = 0.9
+	clot_rate = 0.12
 	threshold_minimum = 20
 	threshold_penalty = 10
 	status_effect_type = /datum/status_effect/wound/slash/moderate
@@ -282,7 +282,7 @@
 	severity = WOUND_SEVERITY_SEVERE
 	initial_flow = 3.25
 	minimum_flow = 2.75
-	clot_rate = 0.04
+	clot_rate = 0.06
 	max_per_type = 4
 	threshold_minimum = 50
 	threshold_penalty = 25

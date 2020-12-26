@@ -54,8 +54,8 @@
 		bandage_factor = limb.current_gauze.sanitisation_factor
 
 	if(flesh_healing > 0)
-		flesh_damage = max(0, flesh_damage - 1)
-		flesh_healing = max(0, flesh_healing - bandage_factor) // good bandages multiply the length of flesh healing
+		flesh_damage = max(0, flesh_damage - 0.5)
+		flesh_healing = max(0, flesh_healing - (0.5 * bandage_factor)) // good bandages multiply the length of flesh healing
 
 	// here's the check to see if we're cleared up
 	if((flesh_damage <= 0) && (infestation <= 1))
@@ -265,7 +265,7 @@
 	threshold_minimum = 40
 	threshold_penalty = 30 // burns cause significant decrease in limb integrity compared to other wounds
 	status_effect_type = /datum/status_effect/wound/burn/moderate
-	flesh_damage = 10
+	flesh_damage = 5
 	scar_keyword = "burnmoderate"
 
 /datum/wound/burn/severe
@@ -281,7 +281,7 @@
 	status_effect_type = /datum/status_effect/wound/burn/severe
 	treatable_by = list(/obj/item/flashlight/pen/paramedic, /obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh)
 	infestation_rate = 0.05 // appx 13 minutes to reach sepsis without any treatment
-	flesh_damage = 20
+	flesh_damage = 12.5
 	scar_keyword = "burnsevere"
 
 /datum/wound/burn/critical
@@ -298,5 +298,5 @@
 	status_effect_type = /datum/status_effect/wound/burn/critical
 	treatable_by = list(/obj/item/flashlight/pen/paramedic, /obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh)
 	infestation_rate = 0.15 // appx 4.33 minutes to reach sepsis without any treatment
-	flesh_damage = 30
+	flesh_damage = 20
 	scar_keyword = "burncritical"

@@ -118,7 +118,7 @@
 	/// How much more can we absorb
 	var/absorption_capacity = 5
 	/// How fast do we absorb
-	var/absorption_rate = 0.15
+	var/absorption_rate = 0.12
 	/// How much does the gauze help with keeping infections clean
 	var/sanitisation_factor = 0.4
 	/// How much sanitisation we've got after we become fairly stained and worn
@@ -181,5 +181,5 @@
 /datum/bodypart_aid/gauze/improvised
 	name = "improvised gauze"
 	stack_to_drop = /obj/item/stack/medical/gauze/improvised
-	absorption_rate = 0.15
+	absorption_rate = 0.09
 	absorption_capacity = 3
