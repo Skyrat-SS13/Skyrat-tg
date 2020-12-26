@@ -38,7 +38,9 @@
 		"demoman" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "demoman"),
 		"medic" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "medic"),
 		"heavy" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "heavy"),
-		"assault" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "assault")
+		"assault" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "assault"),
+		"sniper" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "sniper"),
+		"tech" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "tech"),
 		)
 
 	var/chosen_loadout = show_radial_menu(H, H, loadouts, radius = 40)
@@ -46,21 +48,27 @@
 	switch(chosen_loadout)
 		if("cqb")
 			chosen_loadout = /datum/outfit/assaultops/cqb
-			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to deal with hand-to-hand combat!")
+			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to deal with hand-to-hand combat!</span>")
 		if("demoman")
 			chosen_loadout = /datum/outfit/assaultops/demoman
-			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!")
+			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>")
 		if("medic")
 			chosen_loadout = /datum/outfit/assaultops/medic
-			to_chat(H, "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!")
+			to_chat(H, "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>")
 		if("heavy")
 			chosen_loadout = /datum/outfit/assaultops/heavy
-			to_chat(H, "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!")
+			to_chat(H, "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>")
 		if("assault")
 			chosen_loadout = /datum/outfit/assaultops/assault
-			to_chat(H, "<span class='notice'>You have chosen the Assault class, your role is general combat!")
+			to_chat(H, "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>")
+		if("sniper")
+			chosen_loadout = /datum/outfit/assaultops/sniper
+			to_chat(H, "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>")
+		if("tech")
+			chosen_loadout = /datum/outfit/assaultops/tech
+			to_chat(H, "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>")
 		else
-			chosen_loadout = pick(list(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault))
+			chosen_loadout = pick(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault, /datum/outfit/assaultops/sniper, /datum/outfit/assaultops/tech)
 
 	if(!chosen_loadout)
 		chosen_loadout = /datum/outfit/assaultops

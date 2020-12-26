@@ -174,6 +174,29 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		/obj/item/ammo_box/magazine/akm=4,\
 		/obj/item/grenade/syndieminibomb=2)
 
+/datum/outfit/assaultops/sniper
+	name = "Assault Operative - Sniper"
+
+	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
+	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
+		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/ballistic/automatic/sniper_rifle/syndicate,\
+		/obj/item/ammo_box/magazine/sniper_rounds=4,\
+		/obj/item/grenade/syndieminibomb=2)
+
+/datum/outfit/assaultops/tech
+	name = "Assault Operative - Tech"
+
+	suit = /obj/item/clothing/suit/space/hardsuit/shielded
+
+	belt = /obj/item/storage/belt/military/abductor/full
+
+	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
+		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/ballistic/automatic/battle_rifle/fg42,\
+		/obj/item/ammo_box/magazine/fg42=4,\
+		/obj/item/card/emag,\
+		/obj/item/card/emag/doorjack)
 
 /datum/outfit/assaultops/post_equip(mob/living/carbon/human/H)
 	var/obj/item/radio/R = H.ears
