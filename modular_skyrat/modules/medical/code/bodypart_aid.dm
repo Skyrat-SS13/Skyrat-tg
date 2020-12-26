@@ -104,6 +104,7 @@
 	splint_factor = 0.6
 	helps_disabled= FALSE
 	stack_to_drop = /obj/item/stack/medical/splint/improvised
+	overlay_prefix = "splint_improv"
 
 /datum/bodypart_aid/splint/tribal
 	name = "tribal splint"
