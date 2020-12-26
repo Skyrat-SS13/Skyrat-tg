@@ -7,6 +7,7 @@
 //Disables the custom emote blacklist from TG that normally applies to slimes.
 /datum/emote/living/custom
 	mob_type_blacklist_typecache = list(/mob/living/brain)
+
 /datum/emote/living/quill
 	key = "quill"
 	key_third_person = "quills"
@@ -141,6 +142,7 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap3.ogg'
 	cooldown = EMOTE_DELAY
+
 /datum/emote/living/awoo
 	key = "awoo"
 	key_third_person = "awoos"
@@ -306,37 +308,42 @@
 	key_third_person = "claps"
 	message = "claps."
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	cooldown = EMOTE_DELAY
 
+/datum/emote/living/clap/get_sound(mob/living/user)
+	return pick('modular_skyrat/modules/emotes/sound/emotes/clap1.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/clap2.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/clap3.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/clap4.ogg')
 
-/datum/emote/living/clap/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/clap1.ogg','modular_skyrat/modules/emotes/sound/emotes/clap2.ogg','modular_skyrat/modules/emotes/sound/emotes/clap3.ogg','modular_skyrat/modules/emotes/sound/emotes/clap4.ogg')
-	playsound(user, sound, 50, vary)
+/datum/emote/living/clap/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
+	if(user.usable_hands < 2)
+		return FALSE
+	return ..()
 
 /datum/emote/living/clap1
 	key = "clap1"
 	key_third_person = "claps once"
 	message = "claps once."
 	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+	hands_use_check = TRUE
 	vary = TRUE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	cooldown = EMOTE_DELAY
 
-/datum/emote/living/clap1/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/claponce1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/claponce2.ogg')
-	playsound(user, sound, 50, vary)
+/datum/emote/living/clap1/get_sound(mob/living/user)
+	return pick('modular_skyrat/modules/emotes/sound/emotes/claponce1.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/claponce2.ogg')
+
+/datum/emote/living/clap1/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
+	if(user.usable_hands < 2)
+		return FALSE
+	return ..()
 
 /datum/emote/living/laugh
 	key = "laugh"
@@ -440,7 +447,8 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
-	cooldown = 1.4 SECONDS
+	cooldown = EMOTE_DELAY
+
 /datum/emote/living/growl
 	key = "growl"
 	key_third_person = "growls"
@@ -494,8 +502,8 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
-	cooldown = EMOTE_DELAY
-	cooldown = 2.5 SECONDS
+	cooldown = 3 SECONDS
+
 /datum/emote/living/rattle
 	key = "rattle"
 	key_third_person = "rattles"
@@ -513,7 +521,7 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/cackle_yeen.ogg'
-	cooldown = 1.2 SECONDS
+	cooldown = EMOTE_DELAY
 
 /mob/living/proc/do_ass_slap_animation(atom/slapped)
 	do_attack_animation(slapped, no_effect=TRUE)
