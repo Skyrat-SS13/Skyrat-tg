@@ -1105,8 +1105,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/turf/L = pick(orange(anomalyrange, anomalycenter))
 	// BEGIN SKYRAT CHANGE - High Energy Anomaly Core Generation
 	var/drops_core = FALSE
-	// Every 250 EER above POWER_PENALTY_THRESHOLD adds 10% chance for the anomalies to leave behind a core when neutralized
-	var/chance_bonus = clamp((10 * (power - POWER_PENALTY_THRESHOLD) / 250), 0, 95)
+	// Every 334 EER above POWER_PENALTY_THRESHOLD adds 10% chance for the anomalies to leave behind a core when neutralized
+	var/chance_bonus = clamp((10 * (power - POWER_PENALTY_THRESHOLD) / 334), 0, 95)
 	if(prob(25 + round(chance_bonus))) // 25% base chance to drop a core
 		drops_core = TRUE
 
