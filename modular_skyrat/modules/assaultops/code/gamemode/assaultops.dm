@@ -189,7 +189,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	suit = /obj/item/clothing/suit/space/hardsuit/shielded
 
-	belt = /obj/item/storage/belt/military/abductor/full
+	belt = /obj/item/storage/belt/military/abductor/full/assaultops
 
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
@@ -197,6 +197,10 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		/obj/item/ammo_box/magazine/fg42=4,\
 		/obj/item/card/emag,\
 		/obj/item/card/emag/doorjack)
+
+/obj/item/storage/belt/military/abductor/full/assaultops
+	name = "Assault Belt"
+	desc = "A tactical belt full of highly advanced hacking equipment."
 
 /datum/outfit/assaultops/post_equip(mob/living/carbon/human/H)
 	var/obj/item/radio/R = H.ears
