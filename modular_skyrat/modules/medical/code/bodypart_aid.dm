@@ -21,6 +21,8 @@
 			return
 		if(!iscarbon(usr))
 			return
+		if(!in_range(usr, bodypart.owner))
+			return
 		var/mob/living/carbon/C = usr
 		var/self = (C == bodypart.owner)
 		C.visible_message("<span class='notice'>[C] begins removing [name] from [self ? "[bodypart.owner.p_their(TRUE)]" : "[bodypart.owner]'s" ] [bodypart.name]...</span>", "<span class='notice'>You begin to remove [name] from [self ? "your" : "[bodypart.owner]'s"] [bodypart.name]...</span>")
