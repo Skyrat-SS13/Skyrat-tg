@@ -2868,7 +2868,7 @@
 	for(var/id in playables)
 		even = !even
 		var/datum/species/S = GLOB.species_list[id]
-		background_cl = (even ? "#a81e14" : "#bf3126")
+		background_cl = (even ? "#13171C" : "#19232C")
 		dat += "<tr style='background-color: [background_cl]'>"
 		dat += "<td><b>[initial(S.name)]</b></td>"
 		dat += "<td><i>[initial(S.flavor_text)]</i></td>"
@@ -2886,7 +2886,7 @@
 	for(var/id in unplayables)
 		even = !even
 		var/datum/species/S = GLOB.species_list[id]
-		background_cl = (even ? "#c26565" : "#b35656")
+		background_cl = (even ? "#a81e14" : "#bf3126")
 		dat += "<tr style='background-color: [background_cl]'>"
 		dat += "<td><b>[initial(S.name)]</b></td>"
 		dat += "<td><i>[initial(S.flavor_text)]</i></td>"
