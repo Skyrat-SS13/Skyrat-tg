@@ -21,7 +21,7 @@
 			if(76 to 100)
 				status += LB.heavy_brute_msg
 
-		if(burndamage>19 && status)
+		if(burndamage >= 20 && status)
 			status += "and "
 			switch(burndamage)
 				if(20 to 50)
