@@ -84,14 +84,6 @@
 	description = "A place of shelter for a lone hermit, scraping by to live another day."
 	suffix = "icemoon_underground_hermit.dmm"
 
-/datum/map_template/ruin/icemoon/underground/syndicate_base
-	name = "Syndicate Ice Base"
-	id = "ice-base"
-	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
-	suffix = "icemoon_underground_syndicate_base1_skyrat.dmm"
-	cost = 20
-	allow_duplicates = FALSE
-
 /datum/map_template/ruin/icemoon/underground/lavaland
 	name = "Lavaland Site"
 	id = "lavalandsite"

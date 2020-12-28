@@ -52,18 +52,15 @@
 	suffix = "lavaland_surface_ash_walker1.dmm"
 	cost = 20
 	allow_duplicates = FALSE
-
+/* Skyrat Edit Removal Begin - Mapping
 /datum/map_template/ruin/lavaland/syndicate_base
 	name = "Syndicate Lava Base"
 	id = "lava-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
-	//SKYRAT EDIT CHANGE BEGIN - Syndie Bases
-	//suffix = "lavaland_surface_syndicate_base1.dmm" - SKYRAT EDIT - ORIGINAL
-	suffix = "lavaland_surface_syndicate_base1_skyrat.dmm"
-	//SKYRAT EDIT CHANGE END
+	suffix = "lavaland_surface_syndicate_base1.dmm"
 	cost = 20
 	allow_duplicates = FALSE
-
+*/
 /datum/map_template/ruin/lavaland/free_golem
 	name = "Free Golem Ship"
 	id = "golem-ship"
