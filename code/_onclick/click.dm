@@ -285,8 +285,13 @@
  * Middle click
  * Mainly used for swapping hands
  */
+<<<<<<< HEAD
 /mob/proc/MiddleClickOn(atom/A)
 	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A)
+=======
+/mob/proc/MiddleClickOn(atom/A, params)
+	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A, params)
+>>>>>>> c6fbd3ed73d (Fixes linter (#55784))
 	if(. & COMSIG_MOB_CANCEL_CLICKON)
 		return
 	swap_hand()
