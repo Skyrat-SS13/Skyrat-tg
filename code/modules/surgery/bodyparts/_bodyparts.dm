@@ -95,9 +95,9 @@
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
 	*/
-	/// If we have a gauze wrapping currently applied (not including splints)
+	/// If we have a gauze wrapping currently applied
 	var/datum/bodypart_aid/gauze/current_gauze
-	/// If we have a gauze wrapping currently applied (not including splints)
+	/// If we have a splint currently applied
 	var/datum/bodypart_aid/splint/current_splint
 	//SKYRAT EDIT CHANGE END
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
