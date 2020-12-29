@@ -315,6 +315,8 @@
 	. = ..()
 
 /obj/structure/biohazard_blob/structure/bulb/Destroy()
+	if(our_controller)
+		our_controller.other_structures -= src
 	for(var/t in registered_turfs)
 		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
 	registered_turfs = null
@@ -364,6 +366,11 @@
 	var/monster_types = list()
 	var/max_spawns = 1
 	var/spawn_cooldown = 600 //In deciseconds
+
+/obj/structure/biohazard_blob/structure/spawner/Destroy()
+	if(our_controller)
+		our_controller.other_structures -= src
+	return ..()
 
 /obj/structure/biohazard_blob/structure/spawner/Initialize()
 	. = ..()

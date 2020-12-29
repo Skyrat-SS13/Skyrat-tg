@@ -39,20 +39,9 @@
 	/**
 	  * In case you have multiple types, you automatically use the most useful one.
 	  * IE: Skating on ice, flippers on water, flying over chasm/space, etc.
-	  * Should be added/removed through the ADD_MOVE_TRAIT and REMOVE_TRAIT (and variant) macros.
+	  * I reccomend you use the movetype_handler system and not modify this directly, especially for living mobs.
 	  */
 	var/movement_type = GROUND
-	/// Whether the movable has movement_type signals registered or not. See the ADD_MOVE_TRAIT macro on __DEFINES/traits.dm
-	var/has_movement_type_signals = FALSE
-	/// Whether the movable is floating, not floating or is queued for update.
-	var/floating_anim_status = NO_FLOATING_ANIM
-	/**
-	  * Stores the timer id for the floating anim update.
-	  * Used to avoid the timed event from being overridden by others that would run sooner.
-	  */
-	var/floating_halt_timerid
-	/// Stores the timer id for the next half of the floating anim loop
-	var/floating_anim_timerid
 
 	var/atom/movable/pulling
 	var/grab_state = 0
@@ -227,15 +216,6 @@
 			. = TRUE
 		if(NAMEOF(src, glide_size))
 			set_glide_size(var_value)
-			. = TRUE
-		if(NAMEOF(src, floating_anim_status))
-			if(var_value != floating_anim_status)
-				switch(var_value)
-					if(HAS_FLOATING_ANIM)
-						floating_anim_status = HAS_FLOATING_ANIM
-						do_floating_anim()
-					else
-						halt_floating_anim(var_value)
 			. = TRUE
 
 	if(!isnull(.))
@@ -620,23 +600,6 @@
 		var/atom/movable/AM = item
 		AM.onTransitZ(old_z,new_z)
 
-/// Called when movement_type trait is added to the mob.
-/atom/movable/proc/on_movement_type_trait_gain(datum/source, trait)
-	SIGNAL_HANDLER
-	var/old_movement_type = movement_type
-	movement_type |= GLOB.movement_type_trait_to_flag[trait]
-	if(!(old_movement_type & (FLOATING|FLYING)) && (trait == TRAIT_MOVE_FLYING || trait == TRAIT_MOVE_FLOATING))
-		floating_anim_check()
-
-/// Called when a movement_type trait is removed from the mob.
-/atom/movable/proc/on_movement_type_trait_loss(datum/source, trait)
-	SIGNAL_HANDLER
-	var/flag = GLOB.movement_type_trait_to_flag[trait]
-	if(!(initial(movement_type) & flag))
-		movement_type &= ~(GLOB.movement_type_trait_to_flag[trait])
-		if(trait == TRAIT_MOVE_FLYING || trait == TRAIT_MOVE_FLOATING && !(movement_type & (FLOATING|FLYING)))
-			halt_floating_anim(NO_FLOATING_ANIM)
-
 /**
  * Called whenever an object moves and by mobs when they attempt to move themselves through space
  * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
@@ -775,7 +738,6 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 
-	halt_floating_anim(NO_FLOATING_ANIM, animate = !spin)
 	throwing = TT
 	if(spin)
 		SpinAnimation(5, 1)
@@ -863,7 +825,6 @@
 
 	if(A == src)
 		return //don't do an animation if attacking self
-	halt_floating_anim(animate = FALSE)
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/turn_dir = 1
@@ -884,8 +845,8 @@
 
 	var/matrix/initial_transform = matrix(transform)
 	var/matrix/rotated_transform = transform.Turn(15 * turn_dir)
-	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, transform=rotated_transform, time = 1, easing=BACK_EASING|EASE_IN)
-	animate(pixel_x = pixel_x - pixel_x_diff, pixel_y = pixel_y - pixel_y_diff, transform=initial_transform, time = 2, easing=SINE_EASING)
+	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, transform=rotated_transform, time = 1, easing=BACK_EASING|EASE_IN, flags = ANIMATION_PARALLEL)
+	animate(pixel_x = pixel_x - pixel_x_diff, pixel_y = pixel_y - pixel_y_diff, transform=initial_transform, time = 2, easing=SINE_EASING, flags = ANIMATION_PARALLEL)
 
 /atom/movable/proc/do_item_attack_animation(atom/A, visual_effect_icon, obj/item/used_item)
 	var/image/I
@@ -938,41 +899,6 @@
 		return FALSE
 	acted_explosions += ex_id
 	return TRUE
-
-///The bouncing animation loop that stops once halt_floating_anim is called.
-/atom/movable/proc/do_floating_anim(shift = 2)
-	if(floating_anim_status == HAS_FLOATING_ANIM)
-		animate(src, pixel_y = pixel_y + shift, time = 1 SECONDS)
-		floating_anim_timerid = addtimer(CALLBACK(src, .proc/do_floating_anim, -shift), 1.1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
-
-///Restarts the floating animation if conditions are met.
-/atom/movable/proc/floating_anim_check(timed = FALSE)
-	if(timed)
-		floating_halt_timerid = null
-	if(floating_anim_status == HAS_FLOATING_ANIM || floating_anim_status == NEVER_FLOATING_ANIM || floating_halt_timerid)
-		return
-	if(throwing || !(movement_type & (FLOATING|FLYING)))
-		floating_anim_status = NO_FLOATING_ANIM
-	else
-		floating_anim_status = HAS_FLOATING_ANIM
-		do_floating_anim()
-
-/// Stops the floating anim. If the update arg is TRUE, floating_anim_check(TRUE) will be a invoked after a set time indicated by the timer arg.
-/atom/movable/proc/halt_floating_anim(new_status = UPDATE_FLOATING_ANIM, timer = 1 SECONDS, animate = TRUE)
-	if(floating_anim_status == HAS_FLOATING_ANIM)
-		if(animate)
-			animate(src, pixel_y = base_pixel_y, time = 1 SECONDS)
-		else
-			pixel_y = base_pixel_y
-	if(new_status == UPDATE_FLOATING_ANIM)
-		if(!floating_halt_timerid || timeleft(floating_halt_timerid) < timer)
-			floating_halt_timerid = addtimer(CALLBACK(src, .proc/floating_anim_check, TRUE), timer, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
-	else if(floating_anim_timerid)
-		deltimer(floating_anim_timerid)
-		floating_anim_timerid = null
-
-	if(floating_anim_status != NEVER_FLOATING_ANIM)
-		floating_anim_status = new_status
 
 /* 	Language procs
 *	Unless you are doing something very specific, these are the ones you want to use.
@@ -1100,7 +1026,43 @@
 			if(. <= GRAB_AGGRESSIVE)
 				ADD_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 
+/**
+ * Adds the deadchat_plays component to this atom with simple movement commands.
+ *
+ * Returns the component added.
+ * Arguments:
+ * * mode - Either ANARCHY_MODE or DEMOCRACY_MODE passed to the deadchat_control component. See [/datum/component/deadchat_control] for more info.
+ * * cooldown - The cooldown between command inputs passed to the deadchat_control component. See [/datum/component/deadchat_control] for more info.
+ */
+/atom/movable/proc/deadchat_plays(mode = ANARCHY_MODE, cooldown = 12 SECONDS)
+	return AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(), cooldown)
 
+/atom/movable/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_DEADCHAT_PLAYS, "Start/Stop Deadchat Plays")
+
+/atom/movable/vv_do_topic(list/href_list)
+	. = ..()
+
+	if(!.)
+		return
+
+	if(href_list[VV_HK_DEADCHAT_PLAYS] && check_rights(R_FUN))
+		if(alert(usr, "Allow deadchat to control [src] via chat commands?", "Deadchat Plays [src]", "Allow", "Cancel") == "Cancel")
+			return
+
+		// Alert is async, so quick sanity check to make sure we should still be doing this.
+		if(QDELETED(src))
+			return
+
+		// This should never happen, but if it does it should not be silent.
+		if(deadchat_plays() == COMPONENT_INCOMPATIBLE)
+			to_chat(usr, "<span class='warning'>Deadchat control not compatible with [src].</span>")
+			CRASH("deadchat_control component incompatible with object of type: [type]")
+
+		to_chat(usr, "<span class='notice'>Deadchat now control [src].</span>")
+		log_admin("[key_name(usr)] has added deadchat control to [src]")
+		message_admins("<span class='notice'>[key_name(usr)] has added deadchat control to [src]</span>")
 
 /obj/item/proc/do_pickup_animation(atom/target)
 	set waitfor = FALSE
@@ -1133,3 +1095,11 @@
 	animate(I, alpha = 175, pixel_x = to_x, pixel_y = to_y, time = 3, transform = M, easing = CUBIC_EASING)
 	sleep(1)
 	animate(I, alpha = 0, transform = matrix(), time = 1)
+
+/**
+* A wrapper for setDir that should only be able to fail by living mobs.
+*
+* Called from [/atom/movable/proc/keyLoop], this exists to be overwritten by living mobs with a check to see if we're actually alive enough to change directions
+*/
+/atom/movable/proc/keybind_face_direction(direction)
+	setDir(direction)

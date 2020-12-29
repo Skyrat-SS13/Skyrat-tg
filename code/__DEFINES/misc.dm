@@ -296,6 +296,7 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define DEADCHAT_DEATHRATTLE "deathrattle"
 #define DEADCHAT_LAWCHANGE "lawchange"
 #define DEADCHAT_REGULAR "regular-deadchat"
+#define DEADCHAT_LOGIN_LOGOUT "loginlogout"
 
 // Bluespace shelter deploy checks
 #define SHELTER_DEPLOY_ALLOWED "allowed"
@@ -460,6 +461,9 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 // Used by PDA and cartridge code to reduce repetitiveness of spritesheets
 #define PDAIMG(what) {"<span class="pda16x16 [#what]"></span>"}
 
+/// Prepares a text to be used for maptext. Use this so it doesn't look hideous.
+#define MAPTEXT(text) {"<span class='maptext'>[##text]</span>"}
+
 //Filters
 #define AMBIENT_OCCLUSION filter(type="drop_shadow", x=0, y=-2, size=4, color="#04080FAA")
 #define GAUSSIAN_BLUR(filter_size) filter(type="blur", size=filter_size)
@@ -540,14 +544,3 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define IGNORE_TARGET_LOC_CHANGE (1<<1)
 #define IGNORE_HELD_ITEM (1<<2)
 #define IGNORE_INCAPACITATED (1<<3)
-
-// Floating status defines. Used for the floating animation loop code.
-///The mob will never ever bob up and down when floating. (eg. Colossus, winged flying humanoids)
-#define NEVER_FLOATING_ANIM			-1
-///Isn't currently bobbing.
-#define NO_FLOATING_ANIM			0
-///Is currently bobbing.
-#define HAS_FLOATING_ANIM			1
-///The bobbing animation has been halted and will be updated by a timed callback.
-#define UPDATE_FLOATING_ANIM		2
-
