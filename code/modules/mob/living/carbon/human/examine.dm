@@ -6,6 +6,7 @@
 	var/t_him = p_them()
 	var/t_has = p_have()
 	var/t_is = p_are()
+	var/t_es = p_es()
 	var/obscure_name
 
 	if(isliving(user))
@@ -141,9 +142,15 @@
 		if(!just_sleeping)
 			if(suiciding)
 				. += "<span class='warning'>[t_He] appear[p_s()] to have committed suicide... there is no hope of recovery.</span>"
-			. += ""
-			if(getorgan(/obj/item/organ/brain) && !key && !get_ghost(FALSE, TRUE))
-				. += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...</span>"
+
+			var/mob/dead/observer/ghost = get_ghost(TRUE, TRUE)
+			if(getorgan(/obj/item/organ/brain))
+				if(!ghost && !client) //There's no ghost with a mind matching the body's (and there's no client still in the body, if they haven't left the body once yet), the ghost has likely disconnected
+					. += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...</span>"
+				else if (!ghost.can_reenter_corpse || ghost.pushed_do_not_resuscitate) //There is a ghost with a matching mind but they pushed DNR or otherwise can't reenter
+					. += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has lost the will to live...</span>"
+				else
+					. += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life...</span>"
 			else
 				. += "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life...</span>"
 
@@ -373,6 +380,8 @@
 				if(HAS_TRAIT(src, TRAIT_DUMB))
 					msg += "[t_He] [t_has] a stupid expression on [t_his] face.\n"
 		if(getorgan(/obj/item/organ/brain))
+			if(ai_controller?.ai_status == AI_STATUS_ON)
+				msg += "<span class='deadsay'>[t_He] do[t_es]n't appear to be [t_him]self.</span>\n"
 			if(!key)
 				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 			else if(!client)
@@ -452,7 +461,7 @@
 	if(length(gunpointed))
 		for(var/datum/gunpoint/GP in gunpointed)
 			. += "<span class='warning'><b>[GP.source.name] [GP.source.p_are()] holding [t_him] at gunpoint with [GP.aimed_gun.name]!</b></span>\n"
-  //SKYRAT EDIT ADDITION END
+	//SKYRAT EDIT ADDITION END
 
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	for(var/genital in list("penis", "testicles", "vagina", "breasts"))
@@ -471,8 +480,7 @@
 			else
 				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
 		if(client)
-			if(length(client.prefs.ooc_prefs))
-				line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+			line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
 		if(line)
 			. += line
 	//Temporary flavor text addition:

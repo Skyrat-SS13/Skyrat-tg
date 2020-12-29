@@ -80,6 +80,9 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/resetasaycolor,
 	/client/proc/toggleadminhelpsound,
 	/client/proc/respawn_character,
+	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
+	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
+	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/open_borgopanel
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
@@ -259,6 +262,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/toggle_nuke,
 	/client/proc/cmd_display_del_log,
 	/client/proc/toggle_combo_hud,
+	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
 	/client/proc/debug_huds
 	))
 GLOBAL_PROTECT(admin_verbs_hideable)
@@ -417,13 +421,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(holder)
 		holder.Game()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Game Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/secrets()
-	set name = "Secrets"
-	set category = "Admin.Game"
-	if (holder)
-		holder.Secrets()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Secrets Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/poll_panel()
 	set name = "Server Poll Management"

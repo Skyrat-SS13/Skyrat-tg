@@ -48,6 +48,37 @@
 	name = "polychromic shroud"
 	icon_state = "polyshroud"
 
+/obj/item/clothing/neck/cloak/rscloak
+	name = "black cape"
+	desc = "A black cape with a purple finish at the end."
+	icon_state = "black"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
+
+/obj/item/clothing/neck/cloak/rscloak_cross
+	name = "black cape"
+	desc = "A black cape with a grey cross pattern on the back."
+	icon_state = "black_cross"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
+
+/obj/item/clothing/neck/cloak/rscloak_champion
+	name = "champion cape"
+	desc = "A regal blue and gold cape!"
+	icon_state = "champion"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
+
+/obj/item/clothing/neck/cloak/polychromic/rscloak
+	name = "polychromic cape"
+	desc = "A cape with a polychromic finish. It can be recoloured to the user's personal preference."
+	icon_state = "polycape"
+
+/obj/item/clothing/neck/cloak/polychromic/rscloak_cross
+	name = "polychromic cape"
+	desc = "A cape with a polychromic finish. It can be recoloured to the user's personal preference. This one has across pattern."
+	icon_state = "polycape_cross"
+
 //UNIFORMS
 /obj/item/clothing/under/dress/skirt/polychromic
 	name = "polychromic skirt"
@@ -165,6 +196,101 @@
 	poly_colors = list("FFF", "8CF", "FFF")
 
 /**************CKEY EXCLUSIVES*************/
+
+// Donation reward for Grunnyyy
+/obj/item/clothing/suit/jacket/ryddid
+	name = "Ryddid"
+	desc = "An old worn out piece of clothing belonging to a certain small demon."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	icon_state = "darkcoat"
+	inhand_icon_state = "darkcoat"
+	mutant_variants = NONE
+
+// Donation reward for Grunnyyy
+/obj/item/clothing/neck/cloak/grunnyyy
+	name = "black and red cloak"
+	desc = "The design on this seems a little too familiar."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/custom.dmi'
+	icon_state = "infcloak"
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/custom_w.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	mutant_variants = NONE
+
+//Donation reward for Thedragmeme
+// might make it have some flavour functionality in future, a'la rewritable piece of paper
+/obj/item/drawingtablet
+	name = "drawing tablet"
+	desc = "A portable tablet that allows you to draw. Legends say these can earn the owner a fortune in some sectors of space."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/custom.dmi'
+	icon_state = "drawingtablet"
+	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	inhand_icon_state = "electronic"
+	item_flags = NOBLUDGEON
+	w_class = WEIGHT_CLASS_TINY
+
+//Donation reward for Thedragmeme
+/obj/item/clothing/suit/furcoat
+	name = "leather coat"
+	desc = "A thick, comfy looking leather coat. It's got some fluffy fur at the collar and sleeves."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	icon_state = "furcoat"
+	inhand_icon_state = "hostrench"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	mutant_variants = NONE
+
+//Donation reward for Thedragmeme
+/obj/item/clothing/under/syndicate/tacticool/black
+	name = "black turtleneck"
+	desc = "Tacticool as fug. Comfy too."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	icon_state = "black_turtleneck"
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	mutant_variants = NONE
+
+//Donation reward for Thedragmeme
+/obj/item/clothing/shoes/jackboots/heel
+	name = "high-heeled jackboots"
+	desc = "Almost like regular jackboots... why are they on a high heel?"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
+	icon_state = "heel-jackboots"
+	mutant_variants = NONE
+
+//Donation reward for Bloodrite
+/obj/item/clothing/shoes/clown_shoes/britches
+	desc = "The prankster's standard-issue clowning shoes. They look extraordinarily cute. Ctrl-click to toggle waddle dampeners."
+	name = "Britches' shoes"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
+	icon_state = "clown_shoes_cute"
+	mutant_variants = NONE
+
+//Donation reward for Bloodrite
+/obj/item/clothing/under/rank/civilian/clown/britches
+	name = "Britches' dress"
+	desc = "<i>'HONK!' (but cute)</i>"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "clowndress"
+	mutant_variants = NONE
+
+//Donation reward for Bloodrite
+/obj/item/clothing/mask/gas/britches
+	name = "Britches' mask"
+	desc = "A true prankster's facial attire. Cute."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/mask.dmi'
+	icon_state = "cute_mask"
+	inhand_icon_state = "clown_hat"
+	dye_color = "clown"
+	mutant_variants = NONE
+
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
 	name = "skull of an ashdrake"
@@ -346,6 +472,7 @@
 		ooser.update_action_buttons_icon()
 		to_chat(ooser, "<span class='notice'>You toggle the [src] to [possible_colors[c_color_index]].</span>")
 
+//Donation reward for asky / Zulie
 /obj/item/clothing/suit/hooded/cloak/zuliecloak
 	name = "Project: Zul-E"
 	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
@@ -365,3 +492,22 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
 	flags_inv = HIDEEARS|HIDEHAIR
 	mutant_variants = NONE
+
+//Donation reward for Kathrin Bailey / Floof Ball
+/obj/item/clothing/under/custom/lanese
+	name = "Lanese Dress"
+	desc = "An alien cultural garment for women, coming from a distant planet named Cantalan."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	icon_state = "lanese"
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	mutant_variants = NONE
+	inhand_icon_state = "lanese"
+	can_adjust = TRUE
+	fitted = FEMALE_UNIFORM_TOP
+	body_parts_covered = CHEST|GROIN|LEGS|FEET
+
+/obj/item/clothing/under/custom/lanese/vambrace
+	desc = "An alien cultural garment for women, coming from a distant planet named Cantalan. Shiny vambraces included!"
+	icon_state = "lanese_vambrace"
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET

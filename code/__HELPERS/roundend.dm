@@ -241,8 +241,14 @@
 
 	send2adminchat("Server", "Round just ended.")
 
+	/* //SKYRAT EDIT - START (DISCORD Updates)
+	MOVED CHECK INTO TICKER.DM
 	if(length(CONFIG_GET(keyed_list/cross_server)))
 		send_news_report()
+	*/
+	send2chat("The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!", CONFIG_GET(string/chat_announce_new_game))
+	send2chat(send_news_report(), CONFIG_GET(string/chat_announce_new_game))
+	//SKYRAT EDIT - END
 
 	CHECK_TICK
 
@@ -482,7 +488,7 @@
 		parts += "An average of [station_vault/total_players] credits were collected.<br>"
 		log_econ("Roundend credit total: [station_vault] credits. Average Credits: [station_vault/total_players]")
 	if(mr_moneybags)
-		parts += "The most affulent crew member at shift end was <b>[mr_moneybags.account_holder] with [mr_moneybags.account_balance]</b> cr!</div>"
+		parts += "The most affluent crew member at shift end was <b>[mr_moneybags.account_holder] with [mr_moneybags.account_balance]</b> cr!</div>"
 	else
 		parts += "Somehow, nobody made any money this shift! This'll result in some budget cuts...</div>"
 	return parts
@@ -555,6 +561,27 @@
 			currrent_category = A.roundend_category
 			previous_category = A
 		result += A.roundend_report()
+		//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+		if(A.owner && A.owner.my_ambitions)
+			var/datum/ambitions/AMB = A.owner.my_ambitions
+			result += "<br>Narrative: [AMB.narrative]"
+			result += "<br>Objectives:"
+			for(var/stri in AMB.objectives)
+				result += "<br>* [stri]"
+			var/intensity = "NOT SET"
+			switch(AMB.intensity)
+				if(AMBITION_INTENSITY_STEALTH)
+					intensity = "Stealth"
+				if(AMBITION_INTENSITY_MILD)
+					intensity = "Mild"
+				if(AMBITION_INTENSITY_MEDIUM)
+					intensity = "Medium"
+				if(AMBITION_INTENSITY_SEVERE)
+					intensity = "Severe"
+				if(AMBITION_INTENSITY_EXTREME)
+					intensity = "Extreme"
+			result += "<br>Intensity: [intensity]"
+		//SKYRAT EDIT ADDITION END - AMBITIONS
 		result += "<br><br>"
 		CHECK_TICK
 

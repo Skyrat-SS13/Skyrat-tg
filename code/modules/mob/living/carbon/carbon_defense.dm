@@ -102,10 +102,10 @@
 		return TRUE //successful attack
 
 /mob/living/carbon/send_item_attack_message(obj/item/I, mob/living/user, hit_area, obj/item/bodypart/hit_bodypart)
+	if(!I.force && !length(I.attack_verb_simple) && !length(I.attack_verb_continuous))
+		return
 	var/message_verb_continuous = length(I.attack_verb_continuous) ? "[pick(I.attack_verb_continuous)]" : "attacks"
 	var/message_verb_simple = length(I.attack_verb_simple) ? "[pick(I.attack_verb_simple)]" : "attack"
-	if(!I.force)
-		return
 
 	var/extra_wound_details = ""
 	if(I.damtype == BRUTE && hit_bodypart.can_dismember())
@@ -142,6 +142,8 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user)
 
+	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		. = TRUE
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
 		if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
@@ -258,7 +260,7 @@
 				src.update_damage_overlays()
 			visible_message("<span class='danger'>[src] tried slapping [target]'s ass, however it was much harder than expected!</span>",
 			"<span class='danger'>You tried slapping [target]'s ass, but it felt like metal, ouch!</span>",\
-			"You hear a sore sounding slap.")
+			"You hear a sore sounding slap.", ignored_mobs = list(target))
 			playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, -1)
 			to_chat(target, "<span class='danger'>[src] tried slapping your ass, but it was deflected!")
 			return
@@ -266,8 +268,8 @@
 			do_ass_slap_animation(target)
 			playsound(target.loc, 'sound/weapons/slap.ogg', 50, TRUE, -1)
 			visible_message("<span class='danger'>[src] slaps [target] right on the ass!</span>",\
-				"<span class='notice'>You slap [src] on the ass, how satisfying.</span>",\
-				"You hear a slap.")
+				"<span class='notice'>You slap [target] on the ass, how satisfying.</span>",\
+				"You hear a slap.", ignored_mobs = list(target))
 			to_chat(target, "<span class='danger'>[src] slaps your ass!")
 			return
 	//SKYRAT EDIT END
@@ -474,7 +476,8 @@
 					"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
-			src.emote("wag")
+			if(!src.dna.species.is_wagging_tail(src))
+				src.emote("wag")
 		//SKYRAT EDIT ADDITION END
 
 	else
@@ -526,7 +529,7 @@
 	// Shake animation
 	if (incapacitated())
 		var/direction = prob(50) ? -1 : 1
-		animate(src, pixel_x = pixel_x + SHAKE_ANIMATION_OFFSET * direction, time = 1, easing = QUAD_EASING | EASE_OUT)
+		animate(src, pixel_x = pixel_x + SHAKE_ANIMATION_OFFSET * direction, time = 1, easing = QUAD_EASING | EASE_OUT, flags = ANIMATION_PARALLEL)
 		animate(pixel_x = pixel_x - (SHAKE_ANIMATION_OFFSET * 2 * direction), time = 1)
 		animate(pixel_x = pixel_x + SHAKE_ANIMATION_OFFSET * direction, time = 1, easing = QUAD_EASING | EASE_IN)
 

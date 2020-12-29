@@ -3,31 +3,31 @@
 GLOBAL_VAR(restart_counter)
 
 /**
-  * World creation
-  *
-  * Here is where a round itself is actually begun and setup.
-  * * db connection setup
-  * * config loaded from files
-  * * loads admins
-  * * Sets up the dynamic menu system
-  * * and most importantly, calls initialize on the master subsystem, starting the game loop that causes the rest of the game to begin processing and setting up
-  *
-  *
-  * Nothing happens until something moves. ~Albert Einstein
-  *
-  * For clarity, this proc gets triggered later in the initialization pipeline, it is not the first thing to happen, as it might seem.
-  *
-  * Initialization Pipeline:
-  *		Global vars are new()'ed, (including config, glob, and the master controller will also new and preinit all subsystems when it gets new()ed)
-  *		Compiled in maps are loaded (mainly centcom). all areas/turfs/objs/mobs(ATOMs) in these maps will be new()ed
-  *		world/New() (You are here)
-  *		Once world/New() returns, client's can connect.
-  *		1 second sleep
-  *		Master Controller initialization.
-  *		Subsystem initialization.
-  *			Non-compiled-in maps are maploaded, all atoms are new()ed
-  *			All atoms in both compiled and uncompiled maps are initialized()
-  */
+ * World creation
+ *
+ * Here is where a round itself is actually begun and setup.
+ * * db connection setup
+ * * config loaded from files
+ * * loads admins
+ * * Sets up the dynamic menu system
+ * * and most importantly, calls initialize on the master subsystem, starting the game loop that causes the rest of the game to begin processing and setting up
+ *
+ *
+ * Nothing happens until something moves. ~Albert Einstein
+ *
+ * For clarity, this proc gets triggered later in the initialization pipeline, it is not the first thing to happen, as it might seem.
+ *
+ * Initialization Pipeline:
+ *		Global vars are new()'ed, (including config, glob, and the master controller will also new and preinit all subsystems when it gets new()ed)
+ *		Compiled in maps are loaded (mainly centcom). all areas/turfs/objs/mobs(ATOMs) in these maps will be new()ed
+ *		world/New() (You are here)
+ *		Once world/New() returns, client's can connect.
+ *		1 second sleep
+ *		Master Controller initialization.
+ *		Subsystem initialization.
+ *			Non-compiled-in maps are maploaded, all atoms are new()ed
+ *			All atoms in both compiled and uncompiled maps are initialized()
+ */
 /world/New()
 	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
 	if (fexists(extools))
@@ -274,7 +274,7 @@ GLOBAL_VAR(restart_counter)
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	..()
-
+/* SKYRAT EDIT CHANGE - MOVED TO MODULAR
 /world/proc/update_status()
 
 	var/list/features = list()
@@ -326,6 +326,7 @@ GLOBAL_VAR(restart_counter)
 		s += ": [jointext(features, ", ")]"
 
 	status = s
+*/ //SKYRAT EDIT END
 
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)

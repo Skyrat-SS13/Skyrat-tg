@@ -138,6 +138,8 @@
 
 	/// If we have persistent scars enabled
 	var/persistent_scars = TRUE
+	///If we want to broadcast deadchat connect/disconnect messages
+	var/broadcast_login_logout = FALSE
 	/// We have 5 slots for persistent scars, if enabled we pick a random one to load (empty by default) and scars at the end of the shift if we survived as our original person
 	var/list/scars_list = list("1" = "", "2" = "", "3" = "", "4" = "", "5" = "")
 	/// Which of the 5 persistent scar slots we randomly roll to load for this round, if enabled. Actually rolled in [/datum/preferences/proc/load_character(slot)]
@@ -385,6 +387,7 @@
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
 					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
+					// Carbon flavor text
 					dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 					if(length(features["flavor_text"]) <= 40)
 						if(!length(features["flavor_text"]))
@@ -393,6 +396,18 @@
 							dat += "[html_encode(features["flavor_text"])]"
 					else
 						dat += "[copytext(html_encode(features["flavor_text"]), 1, 40)]..."
+
+					dat += "<br>"
+
+					// Silicon flavor text
+					dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
+					if(length(features["silicon_flavor_text"]) <= 40)
+						if(!length(features["silicon_flavor_text"]))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(features["silicon_flavor_text"])]"
+					else
+						dat += "[copytext(html_encode(features["silicon_flavor_text"]), 1, 40)]..."
 
 					dat +=	"<h2>OOC Preferences</h2>"
 					dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
@@ -917,6 +932,10 @@
 					button_name = GHOST_OTHERS_SIMPLE_NAME
 
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
+			dat += "<br>"
+
+			dat += "<b>Broadcast Login/Logout:</b> <a href='?_src_=prefs;preference=broadcast_login_logout'>[broadcast_login_logout ? "Broadcast" : "Silent"]</a><br>"
+			dat += "<b>See Login/Logout Messages:</b> <a href='?_src_=prefs;preference=hear_login_logout'>[(chat_toggles & CHAT_LOGIN_LOGOUT) ? "Allowed" : "Muted"]</a><br>"
 			dat += "<br>"
 
 			dat += "<b>Income Updates:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
@@ -1566,7 +1585,7 @@
 			else //We attempt to buy it
 				if(LI.cost > loadout_points)
 					return
-				if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
+				if(LI.ckeywhitelist && !(user.ckey in LI.ckeywhitelist) && !user.client.holder)
 					return
 				loadout_points -= LI.cost
 				loadout[LI.path] = LI.default_customization() //As in "No extra information associated"
@@ -1644,7 +1663,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
 								possible_candidates -= name
 
 					if(possible_candidates.len == 0)
@@ -1676,7 +1695,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
 								possible_candidates -= name
 					if(possible_candidates.len == 0)
 						return
@@ -1685,9 +1704,13 @@
 						if(!body_markings[zone] || !body_markings[zone][changing_name])
 							return
 						var/held_index = LAZYFIND(body_markings[zone], changing_name)
-						body_markings[zone] -= changing_name
 						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
-						var/marking_content = BD.get_default_color(features, pref_species)
+						var/marking_content
+						if(allow_advanced_colors)
+							marking_content = body_markings[zone][changing_name]
+						else
+							marking_content = BD.get_default_color(features, pref_species)
+						body_markings[zone] -= changing_name
 						body_markings[zone].Insert(held_index, desired_marking)
 						body_markings[zone][desired_marking] = marking_content
 		if("change_genitals")
@@ -1702,18 +1725,17 @@
 				if("penis_taur_mode")
 					features["penis_taur_mode"] = !features["penis_taur_mode"]
 				if("penis_size")
-					var/new_length = input(user, "Choose your penis length:\n(2-20 in inches)", "Character Preference") as num|null
+					var/new_length = input(user, "Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] in inches)", "Character Preference") as num|null
 					if(new_length)
-						features["penis_size"] = clamp(round(new_length, 1), 2, 20)
+						features["penis_size"] = clamp(round(new_length, 1), PENIS_MIN_LENGTH, PENIS_MAX_LENGTH)
 						if(features["penis_girth"] >= new_length)
 							features["penis_girth"] = new_length - 1
 				if("penis_sheath")
-					var/list/sheath_choice_list = list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
-					var/new_sheath = input(user, "Choose your penis sheath", "Character Preference") as null|anything in sheath_choice_list
+					var/new_sheath = input(user, "Choose your penis sheath", "Character Preference") as null|anything in SHEATH_MODES
 					if(new_sheath)
 						features["penis_sheath"] = new_sheath
 				if("penis_girth")
-					var/max_girth = 15
+					var/max_girth = PENIS_MAX_GIRTH
 					if(features["penis_size"] >= max_girth)
 						max_girth = features["penis_size"]
 					var/new_girth = input(user, "Choose your penis girth:\n(1-[max_girth] (based on length) in inches)", "Character Preference") as num|null
@@ -1856,6 +1878,11 @@
 					if(!isnull(msg))
 						features["flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 
+				if("silicon_flavor_text")
+					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null
+					if(!isnull(msg))
+						features["silicon_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
 				if("ooc_prefs")
 					var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
 					if(!isnull(msg))
@@ -1886,7 +1913,7 @@
 					if(!isnull(msg))
 						exploitable_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 
-				if("uses_skintones")	
+				if("uses_skintones")
 					needs_update = TRUE
 					features["uses_skintones"] = !features["uses_skintones"]
 
@@ -2508,6 +2535,12 @@
 
 				if("ghost_laws")
 					chat_toggles ^= CHAT_GHOSTLAWS
+
+				if("hear_login_logout")
+					chat_toggles ^= CHAT_LOGIN_LOGOUT
+
+				if("broadcast_login_logout")
+					broadcast_login_logout = !broadcast_login_logout
 
 				if("income_pings")
 					chat_toggles ^= CHAT_BANKCARD

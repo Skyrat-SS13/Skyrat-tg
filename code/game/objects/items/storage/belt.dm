@@ -405,7 +405,7 @@
 	STR.max_items = 6
 	STR.max_w_class = WEIGHT_CLASS_SMALL
 	STR.set_holdable(list(
-		/obj/item/reagent_containers/food/snacks,
+		/obj/item/food,
 		/obj/item/reagent_containers/food/drinks
 		))
 
@@ -694,7 +694,7 @@
 		. += "<span class='notice'>Alt-click it to quickly draw the blade.</span>"
 
 /obj/item/storage/belt/sabre/AltClick(mob/user)
-	if(!iscarbon(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	if(length(contents))
 		var/obj/item/I = contents[1]

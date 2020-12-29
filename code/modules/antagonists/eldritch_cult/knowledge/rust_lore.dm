@@ -69,7 +69,7 @@
 	gain_text = "Rusted Hills help those in dire need at a cost."
 	cost = 2
 	next_knowledge = list(/datum/eldritch_knowledge/spell/area_conversion)
-	banned_knowledge = list(/datum/eldritch_knowledge/ash_mark,/datum/eldritch_knowledge/flesh_mark)
+	banned_knowledge = list(/datum/eldritch_knowledge/ash_mark,/datum/eldritch_knowledge/flesh_mark,/datum/eldritch_knowledge/void_mark)
 	route = PATH_RUST
 
 /datum/eldritch_knowledge/rust_mark/on_mansus_grasp(atom/target, mob/user, proximity_flag, click_parameters)
@@ -85,7 +85,7 @@
 	desc = "Your blade of choice will now poison your enemies on hit."
 	cost = 2
 	next_knowledge = list(/datum/eldritch_knowledge/spell/entropic_plume)
-	banned_knowledge = list(/datum/eldritch_knowledge/ash_blade_upgrade,/datum/eldritch_knowledge/flesh_blade_upgrade)
+	banned_knowledge = list(/datum/eldritch_knowledge/ash_blade_upgrade,/datum/eldritch_knowledge/flesh_blade_upgrade,/datum/eldritch_knowledge/void_blade_upgrade)
 	route = PATH_RUST
 
 /datum/eldritch_knowledge/rust_blade_upgrade/on_eldritch_blade(atom/target, mob/user, proximity_flag, click_parameters)
@@ -153,12 +153,12 @@
 	human_user.AdjustAllImmobility(-10)
 
 /**
-  * #Rust spread datum
-  *
-  * Simple datum that automatically spreads rust around it
-  *
-  * Simple implementation of automatically growing entity
-  */
+ * #Rust spread datum
+ *
+ * Simple datum that automatically spreads rust around it
+ *
+ * Simple implementation of automatically growing entity
+ */
 /datum/rust_spread
 	var/list/edge_turfs = list()
 	var/list/turfs = list()
@@ -196,10 +196,10 @@
 
 
 /**
-  * Compile turfs
-  *
-  * Recreates all edge_turfs as well as normal turfs.
-  */
+ * Compile turfs
+ *
+ * Recreates all edge_turfs as well as normal turfs.
+ */
 /datum/rust_spread/proc/compile_turfs()
 	edge_turfs = list()
 	var/list/removal_list = list()

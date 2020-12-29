@@ -6,6 +6,13 @@
 	if(state != AHELP_ACTIVE)
 		return
 
+	//SKYRAT EDIT ADDITION BEGIN - ADMIN
+	if(handler && handler != usr.ckey)
+		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
+		if(!response || response == "No")
+			return
+	//SKYRAT EDIT ADDITION END
+
 	var/msg = "<span class ='adminhelp'>Your ticket is now being handled by [usr?.client?.holder?.fakekey? usr.client.holder.fakekey : "an administrator"]! Please wait while they type their response and/or gather relevant information.</span>"
 
 	if(initiator)

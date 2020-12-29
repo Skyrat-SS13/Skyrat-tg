@@ -13,6 +13,7 @@
 					/obj/item/food/donut = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/flashlight/seclite = 4,
+					/obj/item/storage/bag/ammo = 2, // SKYRAT EDIT - Ammo Pouches
 					/obj/item/restraints/legcuffs/bola/energy = 7)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
 					  /obj/item/storage/fancy/donut_box = 2)
@@ -30,7 +31,7 @@
 /obj/machinery/vending/security/pre_throw(obj/item/I)
 	if(istype(I, /obj/item/grenade))
 		var/obj/item/grenade/G = I
-		G.preprime()
+		G.arm_grenade()
 	else if(istype(I, /obj/item/flashlight))
 		var/obj/item/flashlight/F = I
 		F.on = TRUE
