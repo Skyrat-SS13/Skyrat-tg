@@ -551,8 +551,19 @@
 	id = "cruiserexternalhatch";
 	name = "Cruiser Starboard Hatch"
 	},
-/obj/docking_port/mobile/syndicate_cruiser,
 /obj/structure/fans/tiny,
+/obj/docking_port/mobile{
+	dheight = 0;
+	dir = 8;
+	dwidth = 6;
+	height = 19;
+	hidden = 1;
+	id = "syndicate_cruiser";
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "syndicate cruiser";
+	port_direction = 4;
+	width = 27
+	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "bl" = (

@@ -32,22 +32,6 @@
 	shuttleId = "syndicate_cruiser"
 	jumpto_ports = list("syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1, "whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1)
 	view_range = 5.5
-	x_offset = -7
-	y_offset = -1
 	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral)
 	see_hidden = TRUE
 
-/obj/docking_port/mobile/syndicate_cruiser
-	name = "syndicate cruiser"
-	id = "syndicate_cruiser"
-	port_direction = 4
-	dir = 8
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
-	hidden = TRUE
-
-/obj/docking_port/stationary/picked/syndicate_cruiser
-	name = "Suspicious Deep Space"
-	id = "syndicate_cruiser_away"
-	dir = 8
-	shuttlekeys = list("syndicate_cruiser")
-	hidden = TRUE
