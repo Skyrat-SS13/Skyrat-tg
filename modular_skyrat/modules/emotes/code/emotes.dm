@@ -2,7 +2,16 @@
 #define EMOTE_DELAY 2 SECONDS //To prevent spam emotes.
 
 /mob
-	var/nextsoundemote = 1
+	var/nextsoundemote = 1 //Time at which the next emote can be played
+
+//GLOBAL cooldown pool that is shared with all emotes instead of each seperately
+/datum/emote/check_cooldown(mob/user, intentional)
+	if(!intentional)
+		return TRUE
+	if(user.nextsoundemote > world.time)
+		return FALSE
+	user.nextsoundemote = world.time + cooldown
+	return TRUE
 
 //Disables the custom emote blacklist from TG that normally applies to slimes.
 /datum/emote/living/custom
@@ -19,78 +28,80 @@
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg'
 	cooldown = EMOTE_DELAY
 
-/datum/emote/living/scream/run_emote(mob/living/user, params) //I can't not port this shit, come on.
-	if(user.nextsoundemote >= world.time || user.stat != CONSCIOUS)
+/datum/emote/living/scream
+	message = "screams!"
+	mob_type_blacklist_typecache = list(/mob/living/simple_animal/slime, /mob/living/brain)
+	cooldown = EMOTE_DELAY
+
+/datum/emote/living/scream/run_emote(mob/user, params)
+	if(!(. = ..()))
 		return
-	var/sound
-	var/miming = user.mind ? user.mind.miming : 0
-	if(!user.is_muzzled() && !miming)
-		user.nextsoundemote = world.time + EMOTE_DELAY
-		if(issilicon(user))
-			sound = 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
-			if(iscyborg(user))
-				var/mob/living/silicon/robot/S = user
-				if(S.cell?.charge < 20)
-					to_chat(S, "<span class='warning'>Scream module deactivated. Please recharge.</span>")
-					return
-				S.cell.use(200)
-		if(ismonkey(user))
-			sound = 'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg'
-		if(istype(user, /mob/living/simple_animal/hostile/gorilla))
-			sound = 'sound/creatures/gorilla.ogg'
+	if(!user.is_muzzled() && !(user.mind && user.mind.miming))
 		if(ishuman(user))
 			user.adjustOxyLoss(5)
-			var/mob/living/carbon/human/H = user
-			var/datum/species/userspecies = H.dna.species
-			if(H)
-				if(H.gender == FEMALE && length(userspecies.femalescreamsounds))
-					sound = pick(userspecies.femalescreamsounds)
-				else
-					sound = pick(userspecies.screamsounds)
-		if(isalien(user))
-			sound = 'sound/voice/hiss6.ogg'
-		/* TO DO - REINDEX SCREAMS
-		LAZYINITLIST(user.alternate_screams)
-		if(LAZYLEN(user.alternate_screams))
-			sound = pick(user.alternate_screams)
-		*/
+		var/sound = get_sound(user, TRUE)
 		playsound(user.loc, sound, 50, 1, 4, 1.2)
-		message = "screams!"
-	else if(miming)
-		message = "acts out a scream."
-	else
-		message = "makes a very loud noise."
+
+/datum/emote/living/scream/select_message_type(mob/user, intentional)
+	if(!intentional && isanimal(user))
+		return "makes a loud and pained whimper."
+	if(user.is_muzzled())
+		return "makes a very loud noise."
 	. = ..()
 
-/datum/emote/living/cough/run_emote(mob/living/user, params)
-	if(!(. = ..()))
+/datum/emote/living/scream/get_sound(mob/user, override = FALSE)
+	if(!override)
 		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/male_cough_1.ogg','modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg','modular_skyrat/modules/emotes/sound/emotes/male/male_cough_3.ogg')
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.gender == FEMALE)
-			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg','modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg')
-	if(isvox(user))
-		sound = 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
-	playsound(user, sound, 50, 1, -1)
+	if(iscyborg(user))
+		return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
+	if(ismonkey(user))
+		return 'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg'
+	if(istype(user, /mob/living/simple_animal/hostile/gorilla))
+		return 'sound/creatures/gorilla.ogg'
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/datum/species/userspecies = H.dna.species
+		if(H)
+			if(H.gender == FEMALE && length(userspecies.femalescreamsounds))
+				return pick(userspecies.femalescreamsounds)
+			else
+				return pick(userspecies.screamsounds)
+	if(isalien(user))
+		return 'sound/voice/hiss6.ogg'
+	return
 
-/datum/emote/living/sneeze/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/male/male_sneeze.ogg'
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.gender == FEMALE)
-			sound = 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
+/datum/emote/living/scream/can_run_emote(mob/user, status_check, intentional)
+	. = ..()
+	if(iscyborg(user))
+		var/mob/living/silicon/robot/R = user
+		if(R.cell?.charge < 200)
+			to_chat(R, "<span class='warning'>Scream module deactivated. Please recharge.</span>")
+			return FALSE
+		R.cell.use(200)
+
+/datum/emote/living/cough
+	cooldown = EMOTE_DELAY
+
+/datum/emote/living/cough/get_sound(mob/living/user)
+	if(iscarbon(user) && user.gender == FEMALE)
+		return pick('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg')
 	if(isvox(user))
-		sound = 'modular_skyrat/modules/emotes/sound/emotes/voxsneeze.ogg'
-	playsound(user, sound, 50, 1, -1)
+		return 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
+	return pick('modular_skyrat/modules/emotes/sound/emotes/male/male_cough_1.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/male/male_cough_2.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/male/male_cough_3.ogg')
+
+/datum/emote/living/sneeze
+	cooldown = EMOTE_DELAY
+
+/datum/emote/living/sneeze/get_sound(mob/living/user)
+	if(iscarbon(user) && user.gender == FEMALE)
+		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
+	if(isvox(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/voxsneeze.ogg'
+	return 'modular_skyrat/modules/emotes/sound/emotes/male/male_sneeze.ogg'
 
 /datum/emote/living/peep
 	key = "peep"
@@ -242,66 +253,58 @@
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
 	cooldown = EMOTE_DELAY
 
-/datum/emote/living/sigh/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/male/male_sigh.ogg'
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.gender == FEMALE)
-			sound = 'modular_skyrat/modules/emotes/sound/emotes/female/female_sigh.ogg'
-	playsound(user, sound, 50, 1, -1)
+/datum/emote/living/sigh/get_sound(mob/living/user)
+	if(iscarbon(user) && user.gender == FEMALE)
+		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sigh.ogg'
+	return 'modular_skyrat/modules/emotes/sound/emotes/male/male_sigh.ogg'
 
-/datum/emote/living/sniff/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/male/male_sniff.ogg'
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.gender == FEMALE)
-			sound = 'modular_skyrat/modules/emotes/sound/emotes/female/female_sniff.ogg'
-	playsound(user, sound, 50, 1, -1)
 
-/datum/emote/living/gasp/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/male/gasp_m1.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m2.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m3.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m4.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m5.ogg','modular_skyrat/modules/emotes/sound/emotes/male/gasp_m6.ogg')
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.gender == FEMALE)
-			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/gasp_f1.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f2.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f3.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f4.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f5.ogg','modular_skyrat/modules/emotes/sound/emotes/female/gasp_f6.ogg')
-	playsound(user, sound, 50, 1, -1)
+/datum/emote/living/sniff/get_sound(mob/living/user)
+	if(iscarbon(user) && user.gender == FEMALE)
+		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sniff.ogg'
+	return 'modular_skyrat/modules/emotes/sound/emotes/male/male_sniff.ogg'
 
-/datum/emote/living/snore/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/snore.ogg'
-	playsound(user, sound, 50, 1, -1)
 
+/datum/emote/living/gasp/get_sound(mob/living/user)
+	if(iscarbon(user) && user.gender == FEMALE)
+		return pick('modular_skyrat/modules/emotes/sound/emotes/female/gasp_f1.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/gasp_f2.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/gasp_f3.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/gasp_f4.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/gasp_f5.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/gasp_f6.ogg')
+	return pick('modular_skyrat/modules/emotes/sound/emotes/male/gasp_m1.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/male/gasp_m2.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/male/gasp_m3.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/male/gasp_m4.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/male/gasp_m5.ogg',
+				'modular_skyrat/modules/emotes/sound/emotes/male/gasp_m6.ogg')
+
+
+/datum/emote/living/snore
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/snore.ogg'
+	cooldown = EMOTE_DELAY
+
+/*
 /datum/emote/living/burp/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
 	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/male/burp_m.ogg'
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.gender == FEMALE)
 			sound = 'modular_skyrat/modules/emotes/sound/emotes/female/burp_f.ogg'
 	playsound(user, sound, 50, 1, -1)
+*/
+/datum/emote/living/burp
+	vary = TRUE
+	cooldown = EMOTE_DELAY
+
+/datum/emote/living/burp/get_sound(mob/living/user)
+	if(iscarbon(user) && user.gender == FEMALE)
+		return 'modular_skyrat/modules/emotes/sound/emotes/female/burp_f.ogg'
+	return 'modular_skyrat/modules/emotes/sound/emotes/male/burp_m.ogg'
 
 /datum/emote/living/clap
 	key = "clap"
@@ -355,21 +358,16 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	cooldown = EMOTE_DELAY
 
-/datum/emote/living/laugh/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + EMOTE_DELAY
+/datum/emote/living/laugh/get_sound(mob/living/user)
 	var/mob/living/carbon/H = user
-	var/sound = pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.gender == FEMALE)
-			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg')
+	if(iscarbon(user) && H.gender == FEMALE)
+		//var/mob/living/carbon/C = user
+		return pick('modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg',
+					'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg')
 	if(H.dna.species.id == "moth")
-		sound = 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
-	playsound(user, sound, 50, vary)
+		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
+	return pick('sound/voice/human/manlaugh1.ogg',
+				'sound/voice/human/manlaugh2.ogg')
 
 /datum/emote/living/headtilt
 	key = "tilt"
@@ -522,6 +520,10 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/cackle_yeen.ogg'
 	cooldown = EMOTE_DELAY
+
+// No more monkey screeching ear rape
+/datum/emote/living/carbon/screech/get_sound(mob/living/user)
+	return
 
 /mob/living/proc/do_ass_slap_animation(atom/slapped)
 	do_attack_animation(slapped, no_effect=TRUE)
