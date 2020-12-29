@@ -16,6 +16,10 @@
 		if(istype(mover) && (mover.pass_flags & PASSGLASS))
 			return TRUE
 	if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
+		//Lets through bullets shot from behind the cover of the table
+		if(P.trajectory && angle2dir_cardinal(P.trajectory.angle) == dir)
+			return TRUE
 		return FALSE
 	if(attempted_dir == dir)
 		return FALSE
