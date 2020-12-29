@@ -61,7 +61,10 @@
 			T.name = "flipped [src.name]"
 			T.desc = "[src.desc] It is flipped!"
 			T.icon_state = src.base_icon_state
-			T.dir = user.dir
+			var/new_dir = get_dir(user, T)
+			T.dir = new_dir
+			if(new_dir == NORTH)
+				T.layer = BELOW_MOB_LAYER
 			T.max_integrity = src.max_integrity
 			T.obj_integrity = src.obj_integrity
 			T.table_type = src.type
