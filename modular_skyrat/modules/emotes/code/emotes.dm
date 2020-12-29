@@ -33,7 +33,7 @@
 	mob_type_blacklist_typecache = list(/mob/living/simple_animal/slime, /mob/living/brain)
 	cooldown = EMOTE_DELAY
 
-/datum/emote/living/scream/run_emote(mob/user, params)
+/datum/emote/living/scream/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
 	if(!user.is_muzzled() && !(user.mind && user.mind.miming))
@@ -49,7 +49,7 @@
 		return "makes a very loud noise."
 	. = ..()
 
-/datum/emote/living/scream/get_sound(mob/user, override = FALSE)
+/datum/emote/living/scream/get_sound(mob/living/user, override = FALSE)
 	if(!override)
 		return
 	if(iscyborg(user))
@@ -70,7 +70,7 @@
 		return 'sound/voice/hiss6.ogg'
 	return
 
-/datum/emote/living/scream/can_run_emote(mob/user, status_check, intentional)
+/datum/emote/living/scream/can_run_emote(mob/living/user, status_check, intentional)
 	. = ..()
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
