@@ -309,9 +309,6 @@
 	if(burn)
 		set_burn_dam(burn_dam + burn)
 
-	if(owner)
-		owner.adjustStaminaLoss((burn + brute) * TISSUE_DAMAGE_STAMINA_MULTIPLIER)
-
 	//We've dealt the physical damages, if there's room lets apply the stamina damage.
 	if(stamina)
 		set_stamina_dam(stamina_dam + round(clamp(stamina, 0, max_stamina_damage - stamina_dam), DAMAGE_PRECISION))

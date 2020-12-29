@@ -54,7 +54,7 @@
 		apply_damage(P.damage, P.damage_type, def_zone, armor, wound_bonus=P.wound_bonus, bare_wound_bonus=P.bare_wound_bonus, sharpness = P.sharpness)
 		//SKYRAT EDIT ADDITION BEGIN
 		if(P.damage_type == BRUTE || P.damage_type == BURN)
-			apply_damage((P.damage*TISSUE_DAMAGE_STAMINA_MULTIPLIER), STAMINA, def_zone, armor)
+			apply_damage((P.damage*PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER), STAMINA, def_zone, armor)
 		//SKYRAT EDIT ADDITION END
 		apply_effects(P.stun, P.knockdown, P.unconscious, P.irradiate, P.slur, P.stutter, P.eyeblur, P.drowsy, armor, P.stamina, P.jitter, P.paralyze, P.immobilize)
 		if(P.dismemberment)

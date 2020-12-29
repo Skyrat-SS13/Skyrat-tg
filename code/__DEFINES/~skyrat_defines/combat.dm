@@ -3,13 +3,17 @@
 //APPLICATION OF STAM DAMAGE
 //Should maybe wounds do it too?
 //This one is applied on non-glancing melee attacks aswell as normal projectiles.
-#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 0.85
+#define SIMPLE_MOB_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.2 //Fights with simple mobs are usually more sustained, so apply a bit less
+#define BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.8 //Brute that isnt sharp, knocks the wind outta you real good
+#define OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.5 //Burns, sharp implements
+#define PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.6
 
 //Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
 #define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5
-#define TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 3.6 //This is also multiplied by the glancing damage multiplier, so usually less
+#define BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 4.2 //This is also multiplied by the glancing damage multiplier, so usually less
+#define OTHER_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 3.6
 
-#define PUNCH_STAMINA_MULTIPLIER 1.75
+#define PUNCH_STAMINA_MULTIPLIER 2.6
 
 //STAMINA REGEN
 #define STAMINA_STATIC_REGEN_MULTIPLIER 0.4

@@ -1475,12 +1475,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/effec_damage
 	var/effec_stam
 	//While on a disarm intent, our hits are glancing, doing less normal damage but more stamina damage
-	if(intent == INTENT_DISARM)
+	if(user.a_intent == INTENT_DISARM)
 		effec_damage = I.force * TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER
-		effec_stam = effec_damage * TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
+		if(I.damtype == BRUTE && !I.get_sharpness())
+			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
+			if(Iwound_bonus)
+				Iwound_bonus += effec_damage
+		else
+			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
 	else
 		effec_damage = I.force
-		effec_stam = effec_damage * TISSUE_DAMAGE_STAMINA_MULTIPLIER
+		if(I.damtype == BRUTE && !I.get_sharpness())
+			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER
+		else
+			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER
 	apply_damage(effec_damage * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
 	apply_damage(effec_stam, STAMINA, def_zone, armor_block, H)
 	//SKYRAT EDIT CHANGE END
