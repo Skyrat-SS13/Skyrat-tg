@@ -36,15 +36,22 @@
 			gotten.forceMove(get_turf(C))
 
 /datum/bodypart_aid/New(obj/item/bodypart/BP)
-	bodypart = BP
+	//'bodypart == BP' is set in subtypes to ensure some proper signals and behaviours
 	if(overlay_prefix && bodypart.owner)
-		bodypart.owner.update_wound_overlays()
+		bodypart.owner.update_bandage_overlays()
 
 /datum/bodypart_aid/Destroy()
 	if(overlay_prefix && bodypart.owner)
-		bodypart.owner.update_wound_overlays()
+		bodypart.owner.update_bandage_overlays()
 	bodypart = null
-	return ..()
+	..()
+
+/**
+ * take_damage() called when the bandage gets damaged
+ *
+ * This proc will subtract integrity and delete the bandage with a to_chat message to whoever was bandaged
+ *
+ */
 
 /datum/bodypart_aid/proc/take_damage()
 	integrity--
@@ -53,13 +60,34 @@
 			to_chat(bodypart.owner, "<span class='warning'>The [name] on your [bodypart.name] tears and falls off!</span>")
 		qdel(src)
 
+/**
+ * rip_off() called when someone rips it off
+ *
+ * It will return the bandage if it's considered pristine
+ *
+ */
+
 /datum/bodypart_aid/proc/rip_off()
 	if(is_pristine())
 		. = new stack_to_drop(null, 1)
 	qdel(src)
 
+/**
+ * get_description() called by examine procs
+ *
+ * It will returns a description of the bandage
+ *
+ */
+
 /datum/bodypart_aid/proc/get_description()
 	return "[name]"
+
+/**
+ * is_pristine() called by rip_off()
+ *
+ * Used to determine whether the bandage can be re-used and won't qdel itself
+ *
+ */
 
 /datum/bodypart_aid/proc/is_pristine()
 	return (integrity == initial(integrity))
@@ -96,8 +124,10 @@
 	return ..()
 
 /datum/bodypart_aid/splint/New(obj/item/bodypart/BP)
+	bodypart = BP
 	BP.current_splint = src
-	return ..()
+	SEND_SIGNAL(BP, COMSIG_BODYPART_SPLINTED, src)
+	..()
 
 /datum/bodypart_aid/splint/improvised
 	name = "improvised splint"
@@ -149,8 +179,10 @@
 	return desc
 
 /datum/bodypart_aid/gauze/New(obj/item/bodypart/BP)
+	bodypart = BP
 	BP.current_gauze = src
-	return ..()
+	SEND_SIGNAL(BP, COMSIG_BODYPART_GAUZED, src)
+	..()
 
 /datum/bodypart_aid/gauze/Destroy()
 	SEND_SIGNAL(bodypart, COMSIG_BODYPART_GAUZE_DESTROYED)
@@ -161,6 +193,18 @@
 	. = ..()
 	if(.)
 		return (absorption_capacity == initial(absorption_capacity))
+
+/**
+ * seep_gauze() is for when a gauze wrapping absorbs blood or pus from wounds, lowering its absorption capacity.
+ *
+ * The passed amount of seepage is deducted from the bandage's absorption capacity, and if we reach a negative absorption capacity, the bandage won't help our wounds.
+ * When the bandage is left with a low amount of absorption, it'll notify user and act worse as a sanitiser for infections
+ * Returns TRUE if the bandage absorbed anything, FALSE if it's fully stained.
+ *
+ * Arguments:
+ * * seep_amt - How much absorption capacity we're removing from our current bandages (think, how much blood or pus are we soaking up this tick?)
+ * * type - Is it blood or pus we're being stained with? GAUZE_STAIN_BLOOD, GAUZE_STAIN_PUS defines from wounds.dm
+ */
 
 /datum/bodypart_aid/gauze/proc/seep_gauze(amount, type)
 	if(absorption_capacity > 0)

@@ -48,8 +48,8 @@
 	if(victim.body_position == LYING_DOWN)
 		if(prob(50))
 			regen_ticks_current += 0.5
-		if(victim.IsSleeping() && prob(50))
-			regen_ticks_current += 1
+		if(victim.IsSleeping())
+			regen_ticks_current += 0.5
 
 	if(limb.current_splint)
 		regen_ticks_current += (1-limb.current_splint.splint_factor)
@@ -68,10 +68,10 @@
 	if(victim.get_active_hand() != limb || victim.a_intent == INTENT_HELP || !ismob(target) || severity <= WOUND_SEVERITY_MODERATE)
 		return
 
-	// With a severe or critical wound, you have a 15% or 30% chance to proc pain on hit
-	if(prob((severity - 1) * 15))
+	// 15% of 30% chance to proc pain on hit
+	if(prob(severity * 15))
 		// And you have a 70% or 50% chance to actually land the blow, respectively
-		if(prob(70 - 20 * (severity - 1)))
+		if(prob(70 - 20 * severity))
 			to_chat(victim, "<span class='userdanger'>The damaged muscle in your [limb.name] shoots with pain as you strike [target]!</span>")
 			limb.receive_damage(brute=rand(1,5))
 		else

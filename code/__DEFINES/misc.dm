@@ -20,8 +20,8 @@
 #define BODY_LAYER				25		//underwear, undershirts, socks, eyes, lips(makeup)
 #define FRONT_MUTATIONS_LAYER	24		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
 #define DAMAGE_LAYER			23		//damage indicators (cuts and burns)
-#define WOUNDS_LAYER			22		//Overlays related to wounds, bandages and splints too
-#define UNIFORM_LAYER			21
+#define UNIFORM_LAYER			22
+#define BANDAGE_LAYER			21		//Overlays related to wounds, bandages and splints too //SKYRAT EDIT ADDITION - MEDICAL
 #define ID_LAYER				20 //lmao at the idiot who put both ids and hands on the same layer
 #define HANDS_PART_LAYER		19
 #define GLOVES_LAYER			18
@@ -42,7 +42,7 @@
 #define BODY_FRONT_LAYER		3
 #define HALO_LAYER				2		//blood cult ascended halo, because there's currently no better solution for adding/removing
 #define FIRE_LAYER				1		//If you're on fire
-#define TOTAL_LAYERS			29		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS			29		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; //SKYRAT EDIT CHANGE - 29 from 28. Added BANDAGE_LAYER
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"

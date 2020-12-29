@@ -23,6 +23,16 @@
 	/// If we let off blood when hit, the max blood lost is this * the incoming damage
 	var/internal_bleeding_coefficient
 
+/datum/wound/slash/show_wound_topic(mob/user)
+	return (user == victim && blood_flow)
+
+/datum/wound/slash/Topic(href, href_list)
+	. = ..()
+	if(href_list["wound_topic"])
+		if(!usr == victim)
+			return
+		victim.self_grasp_bleeding_limb(limb)
+
 /datum/wound/pierce/wound_injury(datum/wound/old_wound)
 	blood_flow = initial_flow
 

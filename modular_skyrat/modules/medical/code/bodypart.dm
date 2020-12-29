@@ -3,11 +3,9 @@
 		return
 	current_gauze = new new_gauze.gauze_type(src)
 	new_gauze.use(1)
-	SEND_SIGNAL(src, COMSIG_BODYPART_GAUZED, current_gauze)
 
 /obj/item/bodypart/proc/apply_splint(obj/item/stack/medical/splint/new_splint)
 	if(!istype(new_splint) || current_splint)
 		return
 	current_splint = new new_splint.splint_type(src)
 	new_splint.use(1)
-	SEND_SIGNAL(src, COMSIG_BODYPART_SPLINTED, current_splint)

@@ -40,13 +40,13 @@
 			var/datum/wound/W = thing
 			switch(W.severity)
 				if(WOUND_SEVERITY_TRIVIAL)
-					msg += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>"
+					msg += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)].</span>"
 				if(WOUND_SEVERITY_MODERATE)
-					msg += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</span>"
+					msg += "\t<span class='warning'>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!</span>"
 				if(WOUND_SEVERITY_SEVERE)
-					msg += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>"
+					msg += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!</b></span>"
 				if(WOUND_SEVERITY_CRITICAL)
-					msg += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>"
+					msg += "\t<span class='warning'><b>[t_His] [LB.name] is suffering [W.a_or_from] [W.get_topic_name(user)]!!</b></span>"
 		if(LB.current_gauze)
 			var/datum/bodypart_aid/current_gauze = LB.current_gauze
 			msg += "\t<span class='notice'><i>[t_His] [LB.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.</i></span>"

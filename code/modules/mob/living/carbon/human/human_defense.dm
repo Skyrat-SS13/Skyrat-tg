@@ -741,13 +741,17 @@
 			var/msg
 			switch(W.severity)
 				if(WOUND_SEVERITY_TRIVIAL)
-					msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>"
+					//msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>" //ORIGINAL
+					msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)].</span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_MODERATE)
-					msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</span>"
+					//msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</span>" //ORIGINAL
+					msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_SEVERE)
-					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>"
+					//msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>" //ORIGINAL
+					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_CRITICAL)
-					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>"
+					//msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>" //ORIGINAL
+					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
 			combined_msg += msg
 
 		for(var/obj/item/I in LB.embedded_objects)
