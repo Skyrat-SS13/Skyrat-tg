@@ -31,8 +31,16 @@
 	shuttlePortId = "syndicate_cruiser_dock"
 	shuttleId = "syndicate_cruiser"
 	jumpto_ports = list("syndicate_n" = 1, "whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1)
-	view_range = 10
+	view_range = 14
 	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral)
 	see_hidden = TRUE
 	x_offset = -10
-	y_offset = -5
+	y_offset = 5
+
+/datum/map_template/shuttle/syndicate_cruiser
+	name = "syndicate cruiser"
+	prefix = "_maps/skyrat/shuttles"
+	suffix = "syndicate_cruiser"
+	port_id = "syndicate_cruiser_dock"
+	can_be_bought = FALSE
+

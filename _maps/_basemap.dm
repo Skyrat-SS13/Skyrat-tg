@@ -2,6 +2,8 @@
 
 #include "map_files\generic\CentCom.dmm"
 
+#include "skyrat\maps\CentCom_Skyrat.dmm" //SKYRAT EDIT ADDITION - SMMS
+
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
 		#include "map_files\Mining\Lavaland.dmm"

@@ -64,9 +64,6 @@
 /area/shuttle/syndicate/cruiser/bridge)
 "aj" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/item/reagent_containers/food/drinks/bottle/whiskey{
 	desc = "A bottle of whiskey. There's a label that reads 'tears' taped to the front.";
 	name = "Bottle of Tears";
@@ -94,6 +91,11 @@
 	pixel_x = 0;
 	pixel_y = -30
 	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/spawner/lootdrop/gloves,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "am" = (
@@ -115,6 +117,7 @@
 /area/shuttle/syndicate/cruiser/engineering)
 "ao" = (
 /obj/structure/table/reinforced,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "ap" = (
@@ -278,7 +281,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
@@ -318,7 +321,7 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "aM" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/bridge)
@@ -344,7 +347,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/door/airlock/command/glass{
 	name = "Bridge";
@@ -360,11 +363,15 @@
 	icon_state = "ast_warn";
 	dir = 9
 	},
-/obj/structure/table/reinforced,
 /obj/item/radio/intercom{
 	freerange = 1;
 	name = "Syndicate Radio Intercom";
 	pixel_y = 22
+	},
+/obj/machinery/vending/assaultops_ammo,
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
@@ -377,6 +384,7 @@
 	icon_state = "ast_warn";
 	dir = 1
 	},
+/obj/machinery/vending/assaultops_ammo,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "aV" = (
@@ -384,7 +392,10 @@
 	icon_state = "ast_warn";
 	dir = 5
 	},
-/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/vending/assaultops_ammo,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "aW" = (
@@ -418,7 +429,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -498,7 +509,6 @@
 	icon_state = "ast_warn";
 	dir = 8
 	},
-/obj/structure/table/reinforced,
 /obj/machinery/light/red{
 	icon_state = "tube";
 	dir = 8
@@ -507,21 +517,47 @@
 	icon_state = "tube";
 	dir = 8
 	},
+/obj/machinery/door/window{
+	dir = 2;
+	icon_state = "leftsecure";
+	name = "ammo dispensary";
+	req_access_txt = "150"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bh" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/door/window{
+	dir = 2;
+	icon_state = "leftsecure";
+	name = "ammo dispensary";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bi" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
 	},
-/obj/structure/table/reinforced,
 /obj/machinery/light/red{
 	icon_state = "tube";
 	dir = 4
 	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/window{
+	dir = 2;
+	icon_state = "leftsecure";
+	name = "ammo dispensary";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bj" = (
@@ -548,7 +584,7 @@
 /obj/docking_port/mobile{
 	dheight = 0;
 	dir = 8;
-	dwidth = 6;
+	dwidth = 8;
 	height = 19;
 	hidden = 1;
 	id = "syndicate_cruiser";
@@ -585,7 +621,6 @@
 	icon_state = "ast_warn";
 	dir = 8
 	},
-/obj/structure/table/reinforced,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
 	},
@@ -593,7 +628,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bq" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
@@ -604,7 +639,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/door/airlock/hatch{
 	name = "Armory";
@@ -621,7 +656,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -635,7 +670,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -651,6 +686,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/machinery/vending/medical/syndicate_access,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "bw" = (
@@ -687,9 +723,14 @@
 	icon_state = "tube";
 	dir = 8
 	},
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bA" = (
@@ -735,7 +776,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -744,7 +785,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -774,7 +815,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
@@ -783,12 +824,12 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "bJ" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "bK" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "bL" = (
@@ -819,6 +860,15 @@
 	},
 /obj/structure/table/reinforced,
 /obj/structure/cable,
+/obj/item/storage/box/syndie_kit/imp_stealth,
+/obj/item/storage/box/syndie_kit/imp_stealth,
+/obj/item/suppressor,
+/obj/item/suppressor,
+/obj/item/suppressor,
+/obj/item/suppressor,
+/obj/item/implanter/adrenalin,
+/obj/item/implanter/adrenalin,
+/obj/item/implanter/adrenalin,
 /obj/item/storage/box/syndie_kit/imp_stealth,
 /obj/item/storage/box/syndie_kit/imp_stealth,
 /turf/open/floor/mineral/plastitanium/red,
@@ -858,6 +908,11 @@
 /obj/item/melee/classic_baton,
 /obj/item/melee/classic_baton,
 /obj/item/melee/powerfist,
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bU" = (
@@ -874,7 +929,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/door/poddoor/shutters{
 	id = "cruiserhallshutters";
@@ -889,7 +944,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/brig)
 "bX" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/brig)
 "bY" = (
@@ -899,7 +954,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/machinery/door/airlock/security{
 	name = "Brig";
 	req_access_txt = "150"
@@ -1099,6 +1154,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/effect/landmark/start/assaultop,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "cv" = (
@@ -1120,6 +1176,7 @@
 	layer = 2.9
 	},
 /obj/structure/table/reinforced,
+/obj/item/storage/backpack/duffelbag/syndie/surgery,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/cruiser/medical)
 "cx" = (
@@ -1238,13 +1295,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "cK" = (
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/effect/turf_decal/bot,
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/button/door{
 	id = "cruiserexternalhatch";
@@ -1287,7 +1344,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/door/airlock/engineering{
 	name = "Engine";
@@ -1329,6 +1386,7 @@
 /obj/structure/sign/warning/electricshock{
 	pixel_y = 32
 	},
+/obj/machinery/vending/syndichem,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
 "cW" = (
@@ -1414,6 +1472,7 @@
 	dir = 1
 	},
 /obj/item/construction/rcd/loaded,
+/obj/item/inducer/syndicate,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/engineering)
 "df" = (
@@ -1487,6 +1546,18 @@
 	},
 /turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/syndicate/cruiser/engineering)
+"dq" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/syndicate/cruiser/hallway)
 "dy" = (
 /obj/machinery/atmospherics/components/unary/tank/air{
 	dir = 8
@@ -1501,16 +1572,6 @@
 /obj/machinery/light/red,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/engineering)
-"fc" = (
-/obj/machinery/turretid{
-	control_area = null;
-	name = "Internal Turret Control";
-	pixel_y = 30;
-	req_access = null;
-	req_access_txt = "150"
-	},
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/hallway)
 "gS" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/dark,
@@ -1583,7 +1644,7 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/eva)
 "ha" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/eva)
@@ -1627,7 +1688,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/eva)
@@ -1648,7 +1709,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1667,7 +1728,7 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "hn" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/machinery/light/dim{
 	icon_state = "tube";
 	dir = 8
@@ -1708,7 +1769,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1720,7 +1781,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/corner,
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1729,18 +1790,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/door/poddoor/shutters{
 	id = "cruiserhallshutters";
 	name = "Hall Shutters"
 	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/hallway)
-"hv" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
-/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "hw" = (
@@ -1751,14 +1806,14 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "hz" = (
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/effect/turf_decal/bot,
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -1781,6 +1836,7 @@
 	icon_state = "tube";
 	dir = 1
 	},
+/obj/effect/spawner/lootdrop/crate_spawner,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/hallway)
 "hE" = (
@@ -1789,12 +1845,12 @@
 	name = "Syndicate Radio Intercom";
 	pixel_y = 22
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/hallway)
 "hF" = (
 /obj/machinery/power/apc/auto_name/north,
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1805,13 +1861,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 "hH" = (
-/obj/effect/mapping_helpers/simple_pipes/supply/hidden,
+/obj/effect/mapping_helpers/simple_pipes/supplymain,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1861,6 +1917,7 @@
 "hT" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/armory_contraband,
+/obj/item/storage/backpack/snail,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/hallway)
 "hU" = (
@@ -1888,6 +1945,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/effect/spawner/lootdrop/crate_spawner,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/hallway)
 "hZ" = (
@@ -1968,7 +2026,7 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
-"Fq" = (
+"kX" = (
 /obj/machinery/turretid{
 	control_area = null;
 	name = "Internal Turret Control";
@@ -1976,6 +2034,52 @@
 	req_access = null;
 	req_access_txt = "150"
 	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
+"xh" = (
+/obj/effect/spawner/scatter/grime,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/syndicate/cruiser/brig)
+"zc" = (
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/armory_contraband,
+/obj/item/pushbroom,
+/turf/open/floor/plating,
+/area/shuttle/syndicate/cruiser/hallway)
+"Bh" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/item/storage/fancy/cigarettes/cigars/havana,
+/obj/item/lighter,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/bridge)
+"NK" = (
+/obj/machinery/turretid{
+	control_area = null;
+	name = "Internal Turret Control";
+	pixel_y = 30;
+	req_access = null;
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
+"Pu" = (
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/turf/open/floor/plating,
+/area/shuttle/syndicate/cruiser/hallway)
+"QD" = (
+/obj/machinery/light/warm/no_nightlight,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/spawner/randomsnackvend,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/bridge)
+"Vg" = (
+/obj/effect/landmark/start/assaultop,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/hallway)
 
@@ -2056,7 +2160,7 @@ bq
 bz
 bP
 ca
-aK
+xh
 aK
 aK
 aK
@@ -2069,7 +2173,7 @@ ca
 hE
 hO
 hP
-hT
+Pu
 dj
 dj
 aa
@@ -2102,7 +2206,7 @@ hF
 hP
 hN
 hP
-hT
+zc
 dj
 hZ
 ih
@@ -2183,11 +2287,11 @@ aY
 bs
 aY
 bU
-aY
+Vg
 cu
-aY
-aY
-aY
+Vg
+Vg
+Vg
 cJ
 aY
 aY
@@ -2242,16 +2346,16 @@ ay
 ax
 aN
 ac
-fc
+NK
 aY
 aY
 bE
 bU
-aY
-aY
-aY
-aY
-aY
+Vg
+Vg
+Vg
+Vg
+Vg
 aY
 aY
 aY
@@ -2336,7 +2440,7 @@ ae
 ao
 ax
 ax
-ax
+Bh
 ac
 bc
 bn
@@ -2385,7 +2489,7 @@ gS
 ha
 hg
 hj
-hv
+dq
 aY
 dk
 cV
@@ -2400,7 +2504,7 @@ ae
 ar
 aC
 ax
-aH
+QD
 ac
 be
 bo
@@ -2418,7 +2522,7 @@ cT
 cI
 hl
 hw
-Fq
+kX
 dk
 de
 cY

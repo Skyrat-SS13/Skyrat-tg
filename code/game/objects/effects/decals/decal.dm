@@ -38,7 +38,8 @@
 
 /obj/effect/turf_decal/Initialize()
 	..()
-	return INITIALIZE_HINT_QDEL
+	if(!isarea(src, /area/shuttle))
+		return INITIALIZE_HINT_QDEL
 
 /obj/effect/turf_decal/ComponentInitialize()
 	. = ..()

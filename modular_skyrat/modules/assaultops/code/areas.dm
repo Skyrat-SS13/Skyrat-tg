@@ -1,4 +1,4 @@
-GLOBAL_LIST(assaultop_start)
+GLOBAL_LIST_EMPTY(assaultop_start)
 
 /area/shuttle/syndicate/cruiser
 	name = "Syndicate Cruiser"
@@ -46,5 +46,19 @@ GLOBAL_LIST(assaultop_start)
 
 /obj/effect/landmark/start/assaultop/Initialize()
 	..()
-	GLOB.assaultop_start += loc
-	return INITIALIZE_HINT_QDEL
+	GLOB.assaultop_start += src
+
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics
+	name = "gun spawner"
+	loot = list(
+				/obj/item/gun/ballistic/automatic/ar/modular/solrifle,
+				/obj/item/gun/ballistic/automatic/assault_rifle/m16,
+				/obj/item/gun/ballistic/automatic/battle_rifle/fg42,
+				/obj/item/gun/ballistic/automatic/pistol/deagle,
+				/obj/item/gun/ballistic/automatic/submachine_gun/ppsh,
+				/obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate,
+				/obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket,
+				/obj/item/gun/ballistic/automatic/l6_saw,
+				/obj/item/gun/ballistic/automatic/c20r,
+				/obj/item/gun/ballistic/automatic/m90
+				)

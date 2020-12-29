@@ -12,6 +12,7 @@
 	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
 	var/assaultop_outfit = /datum/outfit/assaultops
 	var/borg_chosen = FALSE
+	var/loadout //The chosen loaduout of the op
 
 
 /datum/antagonist/assaultops/apply_innate_effects(mob/living/mob_override)
@@ -75,10 +76,12 @@
 		chosen_loadout = /datum/outfit/assaultops
 
 	H.equipOutfit(chosen_loadout)
+
+	loadout = chosen_loadout
 	return TRUE
 
 /datum/antagonist/assaultops/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assaultops/sound/assaultops_start.ogg',40,0, use_reverb = FALSE)
 	to_chat(owner, "<span class='notice'>You are a [assault_team ? assault_team.syndicate_name : "syndicate"] agent!</span>")
 	owner.announce_objectives()
 
@@ -124,7 +127,9 @@
 	var/team_number = 1
 	if(assault_team)
 		team_number = assault_team.members.Find(owner)
-	owner.current.forceMove(GLOB.assaultop_start[((team_number - 1) % GLOB.assaultop_start.len) + 1])
+	var/assop_start = GLOB.assaultop_start[((team_number - 1) % GLOB.assaultop_start.len) + 1]
+	var/turf/turf_loc = get_turf(assop_start)
+	owner.current.forceMove(turf_loc)
 
 /datum/antagonist/assaultops/create_team(datum/team/assaultops/new_team)
 	if(!new_team)
