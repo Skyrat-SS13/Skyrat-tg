@@ -4,16 +4,9 @@
 	message = "rustles their quills."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-
-/datum/emote/living/quill/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg'
 
 /datum/emote/living/scream/run_emote(mob/living/user, params) //I can't not port this shit, come on.
 	if(user.nextsoundemote >= world.time || user.stat != CONSCIOUS)
@@ -90,35 +83,19 @@
 
 /datum/emote/living/peep
 	key = "peep"
-	key_third_person = "peeps like a bird"
+	key_third_person = "peeps"
 	message = "peeps like a bird!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/peep/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/peep_once.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/peep_once.ogg'
 
 /datum/emote/living/peep2
 	key = "peep2"
-	key_third_person = "peeps twice like a bird"
+	key_third_person = "peeps twice"
 	message = "peeps twice like a bird!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/peep2/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/peep.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/peep.ogg'
 
 /mob
 	var/nextsoundemote = 1
@@ -133,14 +110,9 @@
 	message = "snaps their fingers."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
-
-/datum/emote/living/snap/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/snap.ogg', 50, 1, -1)
+	hands_use_check = TRUE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/snap.ogg'
 
 /datum/emote/living/snap2
 	key = "snap2"
@@ -149,13 +121,8 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
-/datum/emote/living/snap2/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/snap2.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/snap2.ogg'
 
 /datum/emote/living/snap3
 	key = "snap3"
@@ -164,66 +131,36 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
-
-/datum/emote/living/snap3/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/snap3.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/snap3.ogg'
 
 /datum/emote/living/awoo
 	key = "awoo"
-	key_third_person = "lets out an awoo"
+	key_third_person = "awoos"
 	message = "lets out an awoo!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/awoo/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/awoo.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/awoo.ogg'
 
 /datum/emote/living/nya
 	key = "nya"
-	key_third_person = "lets out a nya"
+	key_third_person = "nyas"
 	message = "lets out a nya!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/nya/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/nya.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/nya.ogg'
 
 /datum/emote/living/weh
 	key = "weh"
-	key_third_person = "lets out a weh"
+	key_third_person = "wehs"
 	message = "lets out a weh!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/weh/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/weh.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/weh.ogg'
 
 /datum/emote/living/dab
 	key = "dab"
-	key_third_person = "suddenly hits a dab"
+	key_third_person = "dabs"
 	message = "suddenly hits a dab!"
 	emote_type = EMOTE_AUDIBLE
 	hands_use_check = TRUE
@@ -233,40 +170,23 @@
 	key_third_person = "lets out a tiny squeak"
 	message = "lets out a tiny squeak!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/mothsqueak/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg'
 
 /datum/emote/living/merp
 	key = "merp"
 	key_third_person = "merps"
 	message = "merps!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/merp/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_skyrat/modules/emotes/sound/voice/merp.ogg', 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/merp.ogg'
 
 /datum/emote/living/bark
 	key = "bark"
 	key_third_person = "barks"
 	message = "barks!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
+	vary = TRUE
 
 /datum/emote/living/bark/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -275,77 +195,41 @@
 		return
 	user.nextsoundemote = world.time + 7
 	var/sound = pick('modular_skyrat/modules/emotes/sound/voice/bark1.ogg', 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg')
-	playsound(user, sound, 50, 1, -1)
+	playsound(user, sound, 50, vary)
 
 /datum/emote/living/squish
 	key = "squish"
 	key_third_person = "squishes"
 	message = "squishes!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/squish/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	var/sound = pick('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg')
-	playsound(user, sound, 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg'
 
 /datum/emote/living/meow
 	key = "meow"
 	key_third_person = "meows"
 	message = "meows!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
-
-/datum/emote/living/meow/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
-	playsound(user, sound, 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
 
 /datum/emote/living/hiss
 	key = "hiss"
 	key_third_person = "hisses"
 	message = "hisses!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-
-/datum/emote/living/hiss/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
-	playsound(user, sound, 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
 
 /datum/emote/living/chitter
 	key = "chitter"
 	key_third_person = "chitters"
 	message = "chitters!"
 	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	hands_use_check = FALSE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-
-/datum/emote/living/chitter/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
-	playsound(user, sound, 50, 1, -1)
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
 
 /datum/emote/living/sigh/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -413,6 +297,7 @@
 	key_third_person = "claps"
 	message = "claps."
 	emote_type = EMOTE_AUDIBLE
+	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
@@ -423,7 +308,7 @@
 		return
 	user.nextsoundemote = world.time + 7
 	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/clap1.ogg','modular_skyrat/modules/emotes/sound/emotes/clap2.ogg','modular_skyrat/modules/emotes/sound/emotes/clap3.ogg','modular_skyrat/modules/emotes/sound/emotes/clap4.ogg')
-	playsound(user, sound, 50, 1, -1)
+	playsound(user, sound, 50, vary)
 
 /datum/emote/living/clap1
 	key = "clap1"
@@ -439,7 +324,7 @@
 		return
 	user.nextsoundemote = world.time + 7
 	var/sound = pick('modular_skyrat/modules/emotes/sound/emotes/claponce1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/claponce2.ogg')
-	playsound(user, sound, 50, 1, -1)
+	playsound(user, sound, 50, vary)
 
 /datum/emote/living/laugh
 	key = "laugh"
@@ -464,7 +349,7 @@
 			sound = pick('modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_1.ogg', 'modular_skyrat/modules/emotes/sound/emotes/female/female_giggle_2.ogg')
 	if(H.dna.species.id == "moth")
 		sound = 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
-	playsound(user, sound, 50, 1, -1)
+	playsound(user, sound, 50, vary)
 
 /mob/living/proc/do_ass_slap_animation(atom/slapped)
 	do_attack_animation(slapped, no_effect=TRUE)
@@ -482,6 +367,7 @@
 	key = "tilt"
 	key_third_person = "tilts"
 	message = "tilts their head."
+	message_AI = "tilts the image on their display."
 
 /datum/emote/living/beeps
 	key = "beeps"
@@ -490,13 +376,127 @@
 	message_param = "beeps at %t."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
 
+// Avian revolution
+/datum/emote/living/bawk
+	key = "bawk"
+	key_third_person = "bawks"
+	message = "bawks like a chicken."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/bawk.ogg'
 
-/datum/emote/living/beeps/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	var/sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
-	playsound(user, sound, 50, 1, -1)
+/datum/emote/living/caw
+	key = "caw"
+	key_third_person = "caws"
+	message = "caws!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/caw.ogg'
+
+/datum/emote/living/caw2
+	key = "caw2"
+	key_third_person = "caws twice"
+	message = "caws twice!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/caw2.ogg'
+
+/datum/emote/living/whistle
+	key = "whistle"
+	key_third_person = "whistles"
+	message = "whistles."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/blep
+	key = "blep"
+	key_third_person = "bleps"
+	message = "bleps their tongue out. Blep."
+	message_AI = "shows an image of a random blepping animal. Blep."
+	message_robot = "bleps their robo-tongue out. Blep."
+
+/datum/emote/living/bork
+	key = "bork"
+	key_third_person = "borks"
+	message = "lets out a bork."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/bork.ogg'
+
+/datum/emote/living/hoot
+	key = "hoot"
+	key_third_person = "hoots"
+	message = "hoots!"
+	emote_type = EMOTE_AUDIBLE
+	cooldown = 1.4 SECONDS
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
+
+/datum/emote/living/growl
+	key = "growl"
+	key_third_person = "growls"
+	message = "lets out a growl."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/growl.ogg'
+
+/datum/emote/living/woof
+	key = "woof"
+	key_third_person = "woofs"
+	message = "lets out a woof."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
+
+/datum/emote/living/baa
+	key = "baa"
+	key_third_person = "baas"
+	message = "lets out a baa."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/baa.ogg'
+
+/datum/emote/living/baa2
+	key = "baa2"
+	key_third_person = "baas"
+	message = "bleats."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/baa2.ogg'
+
+/datum/emote/living/wurble
+	key = "wurble"
+	key_third_person = "wurbles"
+	message = "lets out a wurble."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/wurble.ogg'
+
+/datum/emote/living/awoo2
+	key = "awoo2"
+	key_third_person = "awoos"
+	message = "lets out an awoo!"
+	emote_type = EMOTE_AUDIBLE
+	cooldown = 2.5 SECONDS
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
+
+/datum/emote/living/rattle
+	key = "rattle"
+	key_third_person = "rattles"
+	message = "rattles!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/rattle.ogg'
+
+/datum/emote/living/cackle
+	key = "cackle"
+	key_third_person = "cackles"
+	message = "cackles hysterically!"
+	emote_type = EMOTE_AUDIBLE
+	cooldown = 1.2 SECONDS
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/cackle_yeen.ogg'

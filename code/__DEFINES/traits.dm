@@ -180,7 +180,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define	TRAIT_MAGIC_CHOKE		"magic_choke"
 #define TRAIT_SOOTHED_THROAT    "soothed-throat"
 #define TRAIT_LAW_ENFORCEMENT_METABOLISM "law-enforcement-metabolism"
-#define TRAIT_ALWAYS_CLEAN      "always-clean"
 #define TRAIT_BOOZE_SLIDER      "booze-slider"
 #define TRAIT_QUICK_CARRY		"quick-carry"
 #define TRAIT_QUICKER_CARRY		"quicker-carry"
@@ -211,6 +210,16 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SIGN_LANG				"sign_language" //Galactic Common Sign Language
 #define TRAIT_NANITE_MONITORING	"nanite_monitoring" //The mob's nanites are sending a monitoring signal visible on diag HUD
 
+// You can stare into the abyss, but it does not stare back.
+// You're immune to the hallucination effect of the supermatter, either
+// through force of will, or equipment.
+#define TRAIT_SUPERMATTER_MADNESS_IMMUNE "supermatter_madness_immune"
+
+// You can stare into the abyss, and it turns pink.
+// Being close enough to the supermatter makes it heal at higher temperatures
+// and emit less heat. A trait applied to a mind.
+#define TRAIT_SUPERMATTER_SOOTHER "supermatter_soother"
+
 //SKILLS
 #define TRAIT_UNDERWATER_BASKETWEAVING_KNOWLEDGE "underwater_basketweaving"
 #define TRAIT_WINE_TASTER "wine_taster"
@@ -219,34 +228,14 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_KNOW_CYBORG_WIRES "know_cyborg_wires"
 #define TRAIT_KNOW_ENGI_WIRES "know_engi_wires"
 
-///Movement type traits for movables.
-
-/**
- * Registers movement trait signals on the movable the first time the macro is used on it,
- * These are necessary to add and remove bit flags, as well as the floating animation.
- * Overall it's a better alternative than doing so on init for every movable.
- */
-#define ADD_MOVE_TRAIT(AM, trait, source)\
-	if(!AM.has_movement_type_signals){\
-		if(!GLOB.movement_type_trait_add_signals){\
-			GLOB.movement_type_trait_add_signals = list();\
-			GLOB.movement_type_trait_remove_signals = list();\
-			for(var/_trait in GLOB.movement_type_trait_to_flag){\
-				GLOB.movement_type_trait_add_signals += SIGNAL_ADDTRAIT(_trait);\
-				GLOB.movement_type_trait_remove_signals += SIGNAL_REMOVETRAIT(_trait)\
-			};\
-		};\
-		AM.RegisterSignal(AM, GLOB.movement_type_trait_add_signals, /atom/movable/.proc/on_movement_type_trait_gain);\
-		AM.RegisterSignal(AM, GLOB.movement_type_trait_remove_signals, /atom/movable/.proc/on_movement_type_trait_loss);\
-		AM.has_movement_type_signals = TRUE\
-	};\
-	ADD_TRAIT(AM, trait, source)
-
+///Movement type traits for movables. See elements/movetype_handler.dm
 #define TRAIT_MOVE_GROUND		"move_ground"
 #define TRAIT_MOVE_FLYING		"move_flying"
 #define TRAIT_MOVE_VENTCRAWLING	"move_ventcrawling"
 #define TRAIT_MOVE_FLOATING		"move_floating"
 #define TRAIT_MOVE_PHASING		"move_phasing"
+/// Disables the floating animation. See above.
+#define TRAIT_NO_FLOATING_ANIM		"no-floating-animation"
 
 //non-mob traits
 /// Used for limb-based paralysis, where replacing the limb will fix it.
@@ -256,6 +245,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 ///Used for managing KEEP_TOGETHER in [/atom/var/appearance_flags]
 #define TRAIT_KEEP_TOGETHER 	"keep-together"
+
+///Marks the item as having been transmuted. Functionally blacklists the item from being recycled or sold for materials.
+#define TRAIT_MAT_TRANSMUTED	"transmuted"
 
 // item traits
 #define TRAIT_NODROP			"nodrop"
@@ -289,6 +281,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GRABWEAKNESS		"grab_weakness"
 #define TRAIT_SNOB				"snob"
 #define TRAIT_BALD				"bald"
+#define TRAIT_BADTOUCH			"bad_touch"
 ///Trait for dryable items
 #define TRAIT_DRYABLE "trait_dryable"
 ///Trait for dried items
