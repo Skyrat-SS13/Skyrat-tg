@@ -1,5 +1,3 @@
-//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
-/*
 
 /*
 	Burn wounds
@@ -51,13 +49,13 @@
 			sanitization += 0.3
 			flesh_healing += 0.5
 
-	if(limb.current_gauze)
-		limb.seep_gauze(WOUND_BURN_SANITIZATION_RATE)
+	var/bandage_factor = 1
+	if(limb.current_gauze && limb.current_gauze.seep_gauze(WOUND_BURN_SANITIZATION_RATE, GAUZE_STAIN_PUS))
+		bandage_factor = limb.current_gauze.sanitisation_factor
 
 	if(flesh_healing > 0)
-		var/bandage_factor = (limb.current_gauze ? limb.current_gauze.splint_factor : 1)
-		flesh_damage = max(0, flesh_damage - 1)
-		flesh_healing = max(0, flesh_healing - bandage_factor) // good bandages multiply the length of flesh healing
+		flesh_damage = max(0, flesh_damage - 0.5)
+		flesh_healing = max(0, flesh_healing - (0.5 * bandage_factor)) // good bandages multiply the length of flesh healing
 
 	// here's the check to see if we're cleared up
 	if((flesh_damage <= 0) && (infestation <= 1))
@@ -67,7 +65,6 @@
 
 	// sanitization is checked after the clearing check but before the rest, because we freeze the effects of infection while we have sanitization
 	if(sanitization > 0)
-		var/bandage_factor = (limb.current_gauze ? limb.current_gauze.splint_factor : 1)
 		infestation = max(0, infestation - WOUND_BURN_SANITIZATION_RATE)
 		sanitization = max(0, sanitization - (WOUND_BURN_SANITIZATION_RATE * bandage_factor))
 		return
@@ -303,4 +300,3 @@
 	infestation_rate = 0.15 // appx 4.33 minutes to reach sepsis without any treatment
 	flesh_damage = 20
 	scar_keyword = "burncritical"
-*/

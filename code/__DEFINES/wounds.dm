@@ -32,6 +32,10 @@
 #define WOUND_PIERCE	3
 /// any concentrated burn attack (lasers really). rolls for burning wounds
 #define WOUND_BURN		4
+//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+/// any brute attacks, rolled on a chance
+#define WOUND_MUSCLE 5
+//SKYRAT EDIT ADDITION END
 
 
 // ~determination second wind defines
@@ -49,14 +53,15 @@
 GLOBAL_LIST_INIT(global_wound_types, list(WOUND_BLUNT = list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate),
 		WOUND_SLASH = list(/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate),
 		WOUND_PIERCE = list(/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate),
-		WOUND_BURN = list(/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate)
+		WOUND_BURN = list(/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate),
+		WOUND_MUSCLE = list(/datum/wound/muscle/severe, /datum/wound/muscle/moderate)
 		))
 
 // every single type of wound that can be rolled naturally, in case you need to pull a random one
 GLOBAL_LIST_INIT(global_all_wound_types, list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate,
 	/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate,
 	/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate,
-	/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate))
+	/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate, /datum/wound/muscle/severe, /datum/wound/muscle/moderate))
 
 
 // ~burn wound infection defines
@@ -118,6 +123,10 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(/datum/wound/blunt/critical, /datu
 #define MANGLES_BONE	(1<<3)
 /// If this wound marks the limb as being allowed to have gauze applied
 #define ACCEPTS_GAUZE	(1<<4)
+//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+/// If this wound marks the limb as being allowed to have splints applied
+#define ACCEPTS_SPLINT	(1<<5)
+//SKYRAT EDIT ADDITION END
 
 
 // ~scar persistence defines
