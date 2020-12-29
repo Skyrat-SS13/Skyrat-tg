@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	false_report_weight = 10
 	required_players = 30 // 30 players - 3 players to be the nuke ops = 27 players remaining
 	required_enemies = 2
-	recommended_enemies = 10
+	recommended_enemies = 7
 	antag_flag = ROLE_ASSAULTOPS
 	enemy_minimum_age = 14
 
@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	<span class='danger'>Operatives</span>: Subdue all security forces and occupy the station.\n\
 	<span class='notice'>Crew</span>: Defend the station from all syndicate assault members and ensure you survive."
 
-	var/const/agents_possible = 7 //If we ever need more syndicate agents.
+	var/const/agents_possible = 10 //If we ever need more syndicate agents.
 	var/operatives_left = 1
 	var/list/pre_operatives = list()
 
@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	var/leader_antag_datum_type = /datum/antagonist/assaultops/leader
 
 /datum/game_mode/assaultops/pre_setup()
-	var/n_agents = recommended_enemies
+	var/n_agents = min(round(num_players() / 10), antag_candidates.len, agents_possible)
 	if(n_agents >= required_enemies)
 		for(var/i = 0, i < n_agents, ++i)
 			var/datum/mind/new_op = pick_n_take(antag_candidates)
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	for(var/i in GLOB.player_list)
 		if(ishuman(i))
 			var/mob/living/carbon/human/H = i
-			if(H.job == ("Captain" || "Head of Personnel" || "Quartermaster" || "Head of Security" || "Chief Engineer" || "Research Director" || "Blueshield" || "Security Officer" || "Warden")) //UGH SHITCODE!!
+			if(H.job == "Captain" || H.job == "Head of Personnel" || H.job == "Quartermaster" || H.job == "Head of Security" || H.job == "Chief Engineer" || H.job == "Research Director" || H.job == "Blueshield" || H.job == "Security Officer" || H.job == "Warden") //UGH SHITCODE!!
 				GLOB.assaultops_targets.Add(H)
 	return ..()
 
@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 /obj/item/storage/box/assaultops/demoman/PopulateContents()
 	for(var/i in 1 to 4)
 		new /obj/item/grenade/syndieminibomb(src)
-		new /obj/item/grenade/c4(src)
+		new /obj/item/grenade/c4/x4(src)
 
 /datum/outfit/assaultops/medic
 	name = "Assault Operative - Medic"
@@ -210,12 +210,12 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		R.command = TRUE
 
 	if(cqc)
-		//ADD CQC SHIT
-		H.AddComponent(/datum/martial_art/cqc)
+		var/datum/martial_art/cqc/MA = new
+		MA.teach(H)
 
 	var/obj/item/implant/weapons_auth/W = new/obj/item/implant/weapons_auth(H)
-
 	W.implant(H)
+
 	H.update_icons()
 
 
@@ -238,9 +238,9 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for an assault team being sent in?", ROLE_ASSAULTOPS, temp)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
+	var/numagents = text2num(input(src, "How many operatives do you wish to send?", "Number of Ops"))
 
 	if(candidates.len)
-		var/numagents = 5
 		var/agentcount = 0
 
 		for(var/i = 0, i<numagents,i++)
@@ -273,3 +273,11 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		return TRUE
 	else
 		return FALSE
+
+/obj/machinery/porta_turret/assaultops
+	use_power = NO_POWER_USE
+	req_access = list(ACCESS_SYNDICATE)
+	faction = list(ROLE_SYNDICATE)
+
+/obj/machinery/porta_turret/assaultops/assess_perp(mob/living/carbon/human/perp)
+	return 10

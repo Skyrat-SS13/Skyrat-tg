@@ -11,6 +11,7 @@
 	var/always_new_team = FALSE //If not assigned a team by default ops will try to join existing ones, set this to TRUE to always create new team.
 	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
 	var/assaultop_outfit = /datum/outfit/assaultops
+	var/borg_chosen = FALSE
 
 
 /datum/antagonist/assaultops/apply_innate_effects(mob/living/mob_override)
@@ -48,7 +49,7 @@
 	switch(chosen_loadout)
 		if("cqb")
 			chosen_loadout = /datum/outfit/assaultops/cqb
-			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to deal with hand-to-hand combat!</span>")
+			to_chat(H, "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>")
 		if("demoman")
 			chosen_loadout = /datum/outfit/assaultops/demoman
 			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>")
@@ -110,10 +111,10 @@
 		antag_memory += "Your currently assigned targets are: \n"
 		for(var/i in GLOB.assaultops_targets)
 			var/mob/living/carbon/human/H = i
-			antag_memory += "\n - [H.name]: [H.job]"
-		antag_memory += "\n <b>Try to kill only your targets, we need the crew.</b>"
-		to_chat(owner, "You have been given a list of command and security staff that must be killed, check your notes!")
-		to_chat(owner, "<span class='danger'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS HOSTILE TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED</span>")
+			antag_memory += "- [H.name]: [H.job] \n"
+		antag_memory += "<b>Try to subdue only your targets, we need the crew.</b> \n"
+		to_chat(owner, "You have been given a list of command and security staff that must be subdued, check your notes!")
+		to_chat(owner, "<span class='redtext'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS HOSTILE TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED</span>")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
 	if(assault_team)
@@ -123,10 +124,7 @@
 	var/team_number = 1
 	if(assault_team)
 		team_number = assault_team.members.Find(owner)
-	owner.current.forceMove(GLOB.nukeop_start[((team_number - 1) % GLOB.nukeop_start.len) + 1])
-
-/datum/antagonist/assaultops/leader/move_to_spawnpoint()
-	owner.current.forceMove(pick(GLOB.nukeop_leader_start))
+	owner.current.forceMove(GLOB.assaultop_start[((team_number - 1) % GLOB.assaultop_start.len) + 1])
 
 /datum/antagonist/assaultops/create_team(datum/team/assaultops/new_team)
 	if(!new_team)
@@ -156,7 +154,7 @@
 	.["Send to base"] = CALLBACK(src,.proc/admin_send_to_base)
 
 /datum/antagonist/assaultops/proc/admin_send_to_base(mob/admin)
-	owner.current.forceMove(pick(GLOB.nukeop_start))
+	owner.current.forceMove(pick(GLOB.assaultop_start))
 
 /datum/antagonist/assaultops/leader
 	name = "Assault Operative Leader"
