@@ -5,7 +5,6 @@
 	var/nextsoundemote = 1 //Time at which the next emote can be played
 
 //GLOBAL cooldown pool that is shared with all emotes instead of each seperately
-/* UNITTEST CHECK -- DO NOT MERGE WITH THIS
 /datum/emote/check_cooldown(mob/user, intentional)
 	if(!intentional)
 		return TRUE
@@ -13,7 +12,6 @@
 		return FALSE
 	user.nextsoundemote = world.time + cooldown
 	return TRUE
-*/
 
 //Disables the custom emote blacklist from TG that normally applies to slimes.
 /datum/emote/living/custom
