@@ -2,7 +2,7 @@
 	name = "syndicate cruiser helm"
 	desc = "The terminal used to control the syndicate cruiser."
 	shuttleId = "syndicate_cruiser"
-	possible_destinations = "syndicate_cruiser_away;syndicate_away;syndicate_z5;syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s;syndicate_cruiser_dock"
+	possible_destinations = "syndicate_cruiser_away;syndicate_away;syndicate_z5;syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s;syndicate_cruiser_dock;whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;whiteship_custom"
 	circuit = /obj/item/circuitboard/computer/syndicate_shuttle
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
@@ -30,8 +30,9 @@
 	icon_keyboard = "syndie_key"
 	shuttlePortId = "syndicate_cruiser_dock"
 	shuttleId = "syndicate_cruiser"
-	jumpto_ports = list("syndicate_ne" = 1, "syndicate_nw" = 1, "syndicate_n" = 1, "syndicate_se" = 1, "syndicate_sw" = 1, "syndicate_s" = 1, "whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1)
-	view_range = 5.5
+	jumpto_ports = list("syndicate_n" = 1, "whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1)
+	view_range = 14
 	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral)
 	see_hidden = TRUE
-
+	x_offset = -15
+	y_offset = -8
