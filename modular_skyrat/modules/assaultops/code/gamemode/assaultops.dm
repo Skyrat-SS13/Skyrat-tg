@@ -283,10 +283,13 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	use_power = NO_POWER_USE
 	req_access = list(ACCESS_SYNDICATE)
 	faction = list(ROLE_SYNDICATE)
+	max_integrity = 200
 
 /obj/machinery/porta_turret/assaultops/assess_perp(mob/living/carbon/human/perp)
 	return 10
 
+/obj/machinery/porta_turret/syndicate/shuttle/assaultops
+	scan_range = 7
 
 //VENDING MACHINES>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/machinery/vending/assaultops_ammo

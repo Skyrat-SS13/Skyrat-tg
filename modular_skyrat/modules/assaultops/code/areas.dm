@@ -33,6 +33,15 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	name = "Syndicate Cruiser Engineering"
 	color = COLOR_YELLOW
 
+/area/cruiser_dock
+	name = "Cruiser Dock"
+	icon_state = "syndie-ship"
+	requires_power = FALSE
+	has_gravity = STANDARD_GRAVITY
+	area_flags = VALID_TERRITORY | UNIQUE_AREA | NOTELEPORT
+	flags_1 = NONE
+	ambientsounds = SPOOKY
+
 /obj/machinery/door/poddoor/shutters
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS)
 
@@ -43,6 +52,7 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	name = "assaultop"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "snukeop_spawn"
+	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/assaultop/Initialize()
 	..()

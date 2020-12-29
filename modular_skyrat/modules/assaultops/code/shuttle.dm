@@ -2,7 +2,7 @@
 	name = "syndicate cruiser helm"
 	desc = "The terminal used to control the syndicate cruiser."
 	shuttleId = "syndicate_cruiser"
-	possible_destinations = "syndicate_cruiser_away;syndicate_away;syndicate_z5;syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s;syndicate_cruiser_dock;whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;whiteship_custom"
+	possible_destinations = "syndicate_cruiser_away;syndicate_away;syndicate_z5;syndicate_ne;syndicate_nw;syndicate_n;syndicate_se;syndicate_sw;syndicate_s;syndicate_cruiser_dock;whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;ferry_away"
 	circuit = /obj/item/circuitboard/computer/syndicate_shuttle
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
@@ -39,8 +39,7 @@
 
 /datum/map_template/shuttle/syndicate_cruiser
 	name = "syndicate cruiser"
-	prefix = "_maps/skyrat/shuttles"
-	suffix = "syndicate_cruiser"
-	port_id = "syndicate_cruiser_dock"
+	prefix = "_maps/skyrat/shuttles/"
+	port_id = "syndicate"
+	suffix = "cruiser"
 	can_be_bought = FALSE
-
