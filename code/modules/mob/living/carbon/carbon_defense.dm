@@ -474,18 +474,14 @@
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
 		SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
 		M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better!</span>", \
-<<<<<<< HEAD
-					"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
+							null, "<span class='hear'>You hear a soft patter.</span>", DEFAULT_MESSAGE_RANGE, list(M, src))
+		to_chat(M, "<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
+		to_chat(src, "<span class='notice'>[M] gives you a pat on the head to make you feel better! </span>")
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			if(!src.dna.species.is_wagging_tail(src))
 				src.emote("wag")
 		//SKYRAT EDIT ADDITION END
-=======
-					null, "<span class='hear'>You hear a soft patter.</span>", DEFAULT_MESSAGE_RANGE, list(M, src))
-		to_chat(M, "<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
-		to_chat(src, "<span class='notice'>[M] gives you a pat on the head to make you feel better! </span>")
->>>>>>> 32c267d5b0b (Adds a minor negative quirk: Bad Touch (for the anti-huggers) (#55334))
 
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
