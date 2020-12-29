@@ -1,3 +1,11 @@
+/datum/emote/silicon/check_cooldown(mob/user, intentional)
+	if(!intentional)
+		return TRUE
+	if(user.nextsoundemote > world.time)
+		return FALSE
+	user.nextsoundemote = world.time + cooldown
+	return TRUE
+
 /datum/emote/silicon/dwoop
 	key = "dwoop"
 	key_third_person = "dwoops"
