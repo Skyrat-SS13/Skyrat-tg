@@ -12,6 +12,7 @@ Adds digitigrade bloody soles overlays.
 
 - ./code/modules/clothing/shoes/_shoes.dm > /obj/item/clothing/shoes/worn_overlays()
 - ./code/datums/components/bloodysoles.dm > /datum/component/bloodysoles/feet/Initialize()
+- ./code/datums/components/bloodysoles.dm > /datum/component/bloodysoles/feet/on_step_blood()
 
 ### Defines:
 

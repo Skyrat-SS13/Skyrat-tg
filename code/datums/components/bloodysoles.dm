@@ -225,16 +225,12 @@
 		return COMPONENT_INCOMPATIBLE
 	parent_atom = parent
 	wielder = parent
-	message_admins("why [parent] [!bloody_feet]")
+	//SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE
+	/*
 	if(!bloody_feet)
-		//SKYRAT EDIT CHANGE BEGIN - DIGI_BLOODSOLE
-		var/mob/living/carbon/human/H = parent
-		message_admins("[ishuman(parent)]")
-		message_admins("[parent]")
-		var/shoeiconfile = (ishuman(parent) && H.dna.species.mutant_bodyparts["legs"] && H.dna.features["legs"] == "Digitigrade Legs") ? 'modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi' : 'icons/effects/blood.dmi'
-		message_admins("[icon_file]")
-		bloody_feet = mutable_appearance(shoeiconfile, "shoeblood", SHOES_LAYER)
-		//SKYRAT EDIT CHANGE END
+		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+	*/
+	//SKYRAT EDIT REMOVAL END
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/on_clean)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_moved)
 	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, .proc/on_step_blood)
@@ -281,6 +277,14 @@
 	..()
 
 /datum/component/bloodysoles/feet/on_step_blood(datum/source, obj/effect/decal/cleanable/pool)
+	//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
+	if(!bloody_feet)
+		var/mob/living/carbon/H = parent
+		if (DIGITIGRADE in H.dna.species.species_traits)
+			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+		else
+			bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+	//SKYRAT EDIT ADDITION END
 	if(wielder.num_legs < 2)
 		return
 
