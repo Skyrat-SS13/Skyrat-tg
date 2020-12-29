@@ -31,8 +31,8 @@
 	shuttlePortId = "syndicate_cruiser_dock"
 	shuttleId = "syndicate_cruiser"
 	jumpto_ports = list("syndicate_n" = 1, "whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1)
-	view_range = 14
+	view_range = 10
 	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral)
 	see_hidden = TRUE
-	x_offset = -15
-	y_offset = -8
+	x_offset = -10
+	y_offset = -5

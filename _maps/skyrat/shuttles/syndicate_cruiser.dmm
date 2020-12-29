@@ -325,13 +325,6 @@
 "aN" = (
 /obj/structure/cable,
 /obj/machinery/light/warm/no_nightlight,
-/obj/machinery/turretid{
-	control_area = "Syndicate Cruiser";
-	name = "Internal Turret Control";
-	pixel_y = -30;
-	req_access = null;
-	req_access_txt = "150"
-	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/bridge)
 "aO" = (
@@ -1086,11 +1079,6 @@
 	pixel_y = 2
 	},
 /obj/item/clothing/head/helmet/space/syndicate,
-/obj/machinery/turretid{
-	control_area = "Syndicate Cruiser";
-	name = "Internal Turret Control";
-	pixel_y = -30
-	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/airlock)
 "ct" = (
@@ -1513,6 +1501,16 @@
 /obj/machinery/light/red,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/engineering)
+"fc" = (
+/obj/machinery/turretid{
+	control_area = null;
+	name = "Internal Turret Control";
+	pixel_y = 30;
+	req_access = null;
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 "gS" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/dark,
@@ -1970,6 +1968,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
+"Fq" = (
+/obj/machinery/turretid{
+	control_area = null;
+	name = "Internal Turret Control";
+	pixel_y = -30;
+	req_access = null;
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
 
 (1,1,1) = {"
 aa
@@ -2234,7 +2242,7 @@ ay
 ax
 aN
 ac
-aY
+fc
 aY
 aY
 bE
@@ -2410,7 +2418,7 @@ cT
 cI
 hl
 hw
-aY
+Fq
 dk
 de
 cY
