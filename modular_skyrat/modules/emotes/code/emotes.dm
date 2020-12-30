@@ -1,17 +1,11 @@
 
-#define EMOTE_DELAY 2 SECONDS //To prevent spam emotes.
+#define EMOTE_DELAY 15 SECONDS //To prevent spam emotes.
 
 /mob
 	var/nextsoundemote = 1 //Time at which the next emote can be played
 
-//GLOBAL cooldown pool that is shared with all emotes instead of each seperately
-/datum/emote/check_cooldown(mob/user, intentional)
-	if(!intentional)
-		return TRUE
-	if(user.nextsoundemote > world.time)
-		return FALSE
-	user.nextsoundemote = world.time + cooldown
-	return TRUE
+/datum/emote
+	cooldown = EMOTE_DELAY
 
 //Disables the custom emote blacklist from TG that normally applies to slimes.
 /datum/emote/living/custom
@@ -26,12 +20,10 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/scream
 	message = "screams!"
 	mob_type_blacklist_typecache = list(/mob/living/simple_animal/slime, /mob/living/brain)
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/scream/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -85,9 +77,6 @@
 		R.cell.use(200)
 	return ..()
 
-/datum/emote/living/cough
-	cooldown = EMOTE_DELAY
-
 /datum/emote/living/cough/get_sound(mob/living/user)
 	if(isvox(user))
 		return 'modular_skyrat/modules/emotes/sound/emotes/voxcough.ogg'
@@ -109,7 +98,6 @@
 
 /datum/emote/living/sneeze
 	vary = TRUE
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/sneeze/get_sound(mob/living/user)
 	if(isvox(user))
@@ -129,7 +117,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/peep_once.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/peep2
 	key = "peep2"
@@ -138,7 +125,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/peep.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/snap
 	key = "snap"
@@ -149,7 +135,6 @@
 	hands_use_check = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/snap2
 	key = "snap2"
@@ -160,7 +145,6 @@
 	hands_use_check = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap2.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/snap3
 	key = "snap3"
@@ -171,7 +155,6 @@
 	hands_use_check = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap3.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/awoo
 	key = "awoo"
@@ -188,7 +171,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/nya.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/weh
 	key = "weh"
@@ -197,7 +179,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/weh.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/dab
 	key = "dab"
@@ -205,7 +186,6 @@
 	message = "suddenly hits a dab!"
 	emote_type = EMOTE_AUDIBLE
 	hands_use_check = TRUE
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/mothsqueak
 	key = "msqueak"
@@ -214,7 +194,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/merp
 	key = "merp"
@@ -223,7 +202,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/merp.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/bark
 	key = "bark"
@@ -232,7 +210,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/squish
 	key = "squish"
@@ -241,7 +218,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/meow
 	key = "meow"
@@ -250,7 +226,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/hiss
 	key = "hiss"
@@ -260,7 +235,6 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/chitter
 	key = "chitter"
@@ -270,7 +244,6 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/mothchitter.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/sigh/get_sound(mob/living/user)
 	if(iscarbon(user))
@@ -327,11 +300,9 @@
 /datum/emote/living/snore
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/snore.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/burp
 	vary = TRUE
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/burp/get_sound(mob/living/user)
 	if(iscarbon(user))
@@ -351,7 +322,6 @@
 	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/clap/get_sound(mob/living/user)
 	return pick('modular_skyrat/modules/emotes/sound/emotes/clap1.ogg',
@@ -373,7 +343,6 @@
 	hands_use_check = TRUE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/clap1/get_sound(mob/living/user)
 	return pick('modular_skyrat/modules/emotes/sound/emotes/claponce1.ogg',
@@ -392,7 +361,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/laugh/get_sound(mob/living/user)
 	if(ismoth(user))
@@ -414,14 +382,12 @@
 	key_third_person = "tilts"
 	message = "tilts their head."
 	message_AI = "tilts the image on their display."
-	cooldown = EMOTE_DELAY
 
 /datum/emote/beep
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
-	mob_type_allowed_typecache = list(/mob/living)
-	cooldown = EMOTE_DELAY
+	mob_type_allowed_typecache = list(/mob/living) //Beep already exists on brains and silicons
 
 // Avian revolution
 /datum/emote/living/bawk
@@ -431,7 +397,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/bawk.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/caw
 	key = "caw"
@@ -440,7 +405,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/caw.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/caw2
 	key = "caw2"
@@ -449,14 +413,12 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/caw2.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/whistle
 	key = "whistle"
 	key_third_person = "whistles"
 	message = "whistles."
 	emote_type = EMOTE_AUDIBLE
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/blep
 	key = "blep"
@@ -464,7 +426,6 @@
 	message = "bleps their tongue out. Blep."
 	message_AI = "shows an image of a random blepping animal. Blep."
 	message_robot = "bleps their robo-tongue out. Blep."
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/bork
 	key = "bork"
@@ -473,7 +434,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/bork.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/hoot
 	key = "hoot"
@@ -482,7 +442,7 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
-	cooldown = EMOTE_DELAY
+	//cooldown = 2 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/growl
 	key = "growl"
@@ -492,7 +452,6 @@
 	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/growl.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/woof
 	key = "woof"
@@ -501,7 +460,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/baa
 	key = "baa"
@@ -510,7 +468,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/baa.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/baa2
 	key = "baa2"
@@ -519,7 +476,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/baa2.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/wurble
 	key = "wurble"
@@ -528,7 +484,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/wurble.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/awoo2
 	key = "awoo2"
@@ -537,7 +492,7 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
-	cooldown = 3 SECONDS
+	//cooldown = 3 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/rattle
 	key = "rattle"
@@ -547,7 +502,6 @@
 	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/rattle.ogg'
-	cooldown = EMOTE_DELAY
 
 /datum/emote/living/cackle
 	key = "cackle"
@@ -556,11 +510,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/cackle_yeen.ogg'
-	cooldown = EMOTE_DELAY
-
-// No more monkey screeching ear rape
-/datum/emote/living/carbon/screech/get_sound(mob/living/user)
-	return
 
 /mob/living/proc/do_ass_slap_animation(atom/slapped)
 	do_attack_animation(slapped, no_effect=TRUE)
