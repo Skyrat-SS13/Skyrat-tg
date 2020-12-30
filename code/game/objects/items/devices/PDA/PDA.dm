@@ -438,6 +438,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/mob/living/U = usr
 	//Looking for master was kind of pointless since PDAs don't appear to have one.
 	//SKYRAT EDIT CHANGE BEGIN
+	//if(usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) && !href_list["close"]) - SKYRAT EDIT - ORIGINAL
 	if(usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK,floor_okay=TRUE) && !href_list["close"])
 	//SKYRAT EDIT CHANGE END
 		add_fingerprint(U)
