@@ -24,6 +24,7 @@
 /datum/emote/living/scream
 	message = "screams!"
 	mob_type_blacklist_typecache = list(/mob/living/simple_animal/slime, /mob/living/brain)
+	vary = TRUE
 
 /datum/emote/living/scream/run_emote(mob/living/user, params)
 	if(!(. = ..()))
@@ -32,7 +33,7 @@
 		if(ishuman(user))
 			user.adjustOxyLoss(5)
 		var/sound = get_sound(user, TRUE)
-		playsound(user.loc, sound, 50, 1, 4, 1.2)
+		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
 
 /datum/emote/living/scream/select_message_type(mob/user, intentional)
 	if(!intentional && isanimal(user))
