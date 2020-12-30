@@ -15,6 +15,8 @@
 	key = "blink_r"
 	message = "blinks rapidly."
 
+//SKYRAT EDIT REMOVAL BEGIN - EMOTES - (Moved to modular_skyrat/modules/emotes/code/emotes.dm as /datum/emote/living/clap)
+/*
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
@@ -33,6 +35,8 @@
 							'sound/misc/clap2.ogg',
 							'sound/misc/clap3.ogg',
 							'sound/misc/clap4.ogg')
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/emote/living/carbon/crack
 	key = "crack"
@@ -80,6 +84,8 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon/monkey)
 	emote_type = EMOTE_AUDIBLE
 
+//SKYRAT EDIT REMOVAL BEGIN - EMOTES - begone with the annoying screech
+/*
 /datum/emote/living/carbon/screech/get_sound(mob/living/user)
 	return pick('sound/creatures/monkey/monkey_screech_1.ogg',
 				'sound/creatures/monkey/monkey_screech_2.ogg',
@@ -88,6 +94,9 @@
 				'sound/creatures/monkey/monkey_screech_5.ogg',
 				'sound/creatures/monkey/monkey_screech_6.ogg',
 				'sound/creatures/monkey/monkey_screech_7.ogg')
+*/
+//SKYRAT EDIT REMOVAL END
+
 /datum/emote/living/carbon/screech/roar
 	key = "roar"
 	key_third_person = "roars"
