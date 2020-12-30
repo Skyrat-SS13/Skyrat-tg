@@ -72,7 +72,7 @@
 
 	H.equipOutfit(chosen_loadout_type)
 
-	to_chat(H, chosen_loadout_type.desc)
+	to_chat(H, chosen_loadout_type.loadout_desc)
 
 	loadout = chosen_loadout
 	return TRUE

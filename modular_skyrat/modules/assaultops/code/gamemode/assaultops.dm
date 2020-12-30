@@ -205,14 +205,15 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	var/command_radio = FALSE
 	var/cqc = FALSE
-	var/desc = "I'm dumb!"
+	var/loadout_desc = "I'm dumb!"
 
 /datum/outfit/assaultops/cqb
 	name = "Assault Operative - CQB"
-	desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
+	loadout_desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
 
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/c20r,\
 		/obj/item/ammo_box/magazine/smgm45=4,\
 		)
@@ -221,11 +222,12 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/demoman
 	name = "Assault Operative - Demolitions"
-	desc = "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>"
+	loadout_desc = "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>"
 
 	belt = /obj/item/storage/belt/grenade/full
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/gyropistol,\
 		/obj/item/ammo_box/magazine/m75=4,\
 		/obj/item/implant/explosive/macro, \
@@ -243,12 +245,13 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/medic
 	name = "Assault Operative - Medic"
-	desc = "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>"
+	loadout_desc = "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>"
 
 	glasses = /obj/item/clothing/glasses/hud/health
 	belt = /obj/item/storage/belt/medical/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/submachine_gun/pps,\
 		/obj/item/ammo_box/magazine/pps=4,\
 		/obj/item/storage/firstaid/tactical=2,\
@@ -256,11 +259,12 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
-	desc = "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>"
+	loadout_desc = "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34/assaultops,\
 		/obj/item/ammo_box/magazine/mg34=4,\
 		/obj/item/grenade/syndieminibomb)
@@ -270,29 +274,31 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/assault
 	name = "Assault Operative - Assault"
-	desc = "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>"
+	loadout_desc = "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/assault_rifle/akm,\
 		/obj/item/ammo_box/magazine/akm=4,\
 		/obj/item/grenade/syndieminibomb=2)
 
 /datum/outfit/assaultops/sniper
 	name = "Assault Operative - Sniper"
-	desc = "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>"
+	loadout_desc = "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket,\
 		/obj/item/ammo_box/magazine/sniper_rounds=4,\
 		/obj/item/grenade/syndieminibomb=2)
 
 /datum/outfit/assaultops/tech
 	name = "Assault Operative - Tech"
-	desc = "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>"
+	loadout_desc = "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/shielded
 
@@ -300,6 +306,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
+		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/battle_rifle/fg42,\
 		/obj/item/ammo_box/magazine/fg42=4,\
 		/obj/item/card/emag,\
