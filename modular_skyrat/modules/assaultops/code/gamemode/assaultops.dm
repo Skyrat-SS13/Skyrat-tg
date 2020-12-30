@@ -250,7 +250,6 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	glasses = /obj/item/clothing/glasses/hud/health
 	belt = /obj/item/storage/belt/medical/paramedic
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
-		/obj/item/kitchen/knife/combat/survival,\
 		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/submachine_gun/pps,\
 		/obj/item/ammo_box/magazine/pps=4,\
