@@ -2963,6 +2963,9 @@ GLOBAL_LIST_INIT(food, list(
 	dat += "<table>"
 
 	var/datum/browser/popup = new(user, "species_menu", "<div align='center'>Species Choice</div>", 900, 600)
+	popup.set_window_options("can_close=0")
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
 
 // old bobcode copypaste, handle with caution
 /datum/preferences/proc/SetFood(mob/user)
