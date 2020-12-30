@@ -244,7 +244,7 @@
 	var/list/alive = get_alive_targets()
 	var/list/captured = list()
 	for(var/mob/living/carbon/human/H in alive)
-		var/area/loc_area = get_area(H)
+		var/area/loc_area = get_area(H.loc)
 		if(loc_area == /area/cruiser_dock/brig)
 			captured.Add(H)
 	return captured
@@ -253,7 +253,7 @@
 	var/list/alive = get_alive_assaultops()
 	var/list/captured = list()
 	for(var/mob/living/carbon/human/H in alive)
-		var/area/loc_area = get_area(H)
+		var/area/loc_area = get_area(H.loc)
 		if(HAS_TRAIT(H, TRAIT_RESTRAINED) && istype(loc_area, /area/security))
 			captured.Add(H)
 	return captured

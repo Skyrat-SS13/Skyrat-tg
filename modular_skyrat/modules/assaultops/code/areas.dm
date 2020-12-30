@@ -44,6 +44,7 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 /area/cruiser_dock/brig
 	name = "Dock Holding Facility"
 	color = COLOR_BLUE
+
 /obj/machinery/door/poddoor/shutters
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS)
 
@@ -57,7 +58,7 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/assaultop/Initialize()
-	..()
+	. = ..()
 	GLOB.assaultop_start += src
 
 /obj/effect/spawner/lootdrop/gun/assaultops/ballistics

@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	if(!isliving(user))
 		return FALSE
 	var/datum/mind/owner = user.mind
-	if(owner.assigned_role == "Captain" || owner.assigned_role == "Head of Personnel" || owner.assigned_role == "Quartermaster" || owner.assigned_role == "Head of Security" || owner.assigned_role == "Chief Engineer" || owner.assigned_role == "Research Director" || owner.assigned_role == "Blueshield" || owner.assigned_role == "Security Officer" || owner.assigned_role == "Warden")
+	if(owner.assigned_role == "Captain" || owner.assigned_role == "Head of Personnel" || owner.assigned_role == "Quartermaster" || owner.assigned_role == "Head of Security" || owner.assigned_role == "Chief Engineer" || owner.assigned_role == "Research Director" || owner.assigned_role == "Blueshield" || owner.assigned_role == "Security Officer" || owner.assigned_role == "Warden" || owner.assigned_role == "Detective")
 		return TRUE
 	return FALSE
 
