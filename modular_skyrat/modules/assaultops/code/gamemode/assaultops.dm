@@ -252,7 +252,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/submachine_gun/pps,\
-		/obj/item/ammo_box/magazine/pps=4,\
+		/obj/item/ammo_box/magazine/pps=2,\
 		/obj/item/storage/firstaid/tactical=2,\
 		/obj/item/gun/medbeam)
 
