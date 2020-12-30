@@ -212,6 +212,9 @@
 /obj/item/clothing/under/suit/black/skirt
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/toggle/labcoat/roboticist
+	mutant_variants = NONE
+
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/toggle/chef

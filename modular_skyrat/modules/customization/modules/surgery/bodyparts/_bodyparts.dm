@@ -87,8 +87,9 @@
 						if(use_digitigrade)
 							render_limb_string = "digitigrade_[use_digitigrade]_[render_limb_string]"
 					if(BODY_ZONE_CHEST)
-						var/gendaar = (H.body_type == FEMALE) ? "f" : "m"
-						render_limb_string = "[render_limb_string]_[gendaar]"
+						if(BM.gendered)
+							var/gendaar = (H.body_type == FEMALE) ? "f" : "m"
+							render_limb_string = "[render_limb_string]_[gendaar]"
 
 				var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
 				if(override_color)
@@ -100,9 +101,9 @@
 			if(aux_zone)
 				for(var/key in H.dna.species.body_markings[aux_zone])
 					var/datum/body_marking/BM = GLOB.body_markings[key]
-	
+
 					var/render_limb_string = aux_zone
-	
+
 					var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
 					if(override_color)
 						accessory_overlay.color = "#[override_color]"

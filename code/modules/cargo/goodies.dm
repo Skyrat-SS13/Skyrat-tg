@@ -73,6 +73,12 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/wt550m9)
 
+/datum/supply_pack/goody/wt550ammoap //SKYRAT EDIT ADDITION
+
+/datum/supply_pack/goody/wt550ammoic //SKYRAT EDIT ADDITION
+
+/datum/supply_pack/goody/techbox //SKYRAT EDIT ADDITION
+
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
 	desc = "The backbone of modern society. Barely ever ordered for actual engineering."
