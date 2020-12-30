@@ -10,6 +10,11 @@
 //Disables the custom emote blacklist from TG that normally applies to slimes.
 /datum/emote/living/custom
 	mob_type_blacklist_typecache = list(/mob/living/brain)
+	cooldown = 0
+
+//me-verb emotes should not have a cooldown check
+/datum/emote/living/custom/check_cooldown(mob/user, intentional)
+	return TRUE
 
 /datum/emote/living/quill
 	key = "quill"
