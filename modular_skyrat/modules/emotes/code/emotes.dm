@@ -376,14 +376,11 @@
 	message_AI = "tilts the image on their display."
 	cooldown = EMOTE_DELAY
 
-/datum/emote/living/beeps
-	key = "beeps"
-	key_third_person = "beeps"
-	message = "beeps."
-	message_param = "beeps at %t."
+/datum/emote/beep
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
+	mob_type_allowed_typecache = list(/mob/living)
 	cooldown = EMOTE_DELAY
 
 // Avian revolution
