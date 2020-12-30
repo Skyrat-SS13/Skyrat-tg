@@ -854,7 +854,7 @@
 	name = "Shield Generator Satellite"
 	desc = "Protect the very existence of this station with these Anti-Meteor defenses. Contains three Shield Generator Satellites."
 	cost = CARGO_CRATE_VALUE * 6
-	special = TRUE
+	// special = TRUE 			// SKYRAT EDIT - Shield sats always available
 	access_view = ACCESS_HEADS
 	contains = list(
 					/obj/machinery/satellite/meteor_shield,
@@ -868,7 +868,7 @@
 	name = "Shield System Control Board"
 	desc = "A control system for the Shield Generator Satellite system."
 	cost = CARGO_CRATE_VALUE * 10
-	special = TRUE
+	// special = TRUE 			// SKYRAT EDIT - Shield sats always available
 	access_view = ACCESS_HEADS
 	contains = list(/obj/item/circuitboard/computer/sat_control)
 	crate_name= "shield control board crate"

@@ -14,6 +14,7 @@
 	announceWhen	= 1
 	var/list/wave_type
 	var/wave_name = "normal"
+	var/direction // SKYRAT EDIT - DIRECTION
 
 /datum/round_event/meteor_wave/New()
 	..()
@@ -21,6 +22,7 @@
 		determine_wave_type()
 
 /datum/round_event/meteor_wave/proc/determine_wave_type()
+	direction = pick(GLOB.cardinals)
 	if(!wave_name)
 		wave_name = pickweight(list(
 			"normal" = 50,
@@ -48,11 +50,11 @@
 
 /datum/round_event/meteor_wave/announce(fake)
 	//priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/meteors.ogg') //ORIGINAL
-	priority_announce("Meteors have been detected on collision course with the station. Estimated time until impact: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds.", "Meteor Alert", 'sound/ai/meteors.ogg') //ORIGINAL
+	priority_announce(generateMeteorString(startWhen,direction), "Meteor Alert", 'sound/ai/meteors.ogg') // SKYRAT EDIT - Directional Meteors
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
-		spawn_meteors(5, wave_type) //meteor list types defined in gamemode/meteor/meteors.dm
+		spawn_meteors(5, wave_type, direction) //meteor list types defined in gamemode/meteor/meteors.dm
 
 /datum/round_event_control/meteor_wave/threatening
 	name = "Meteor Wave: Threatening"
@@ -77,3 +79,18 @@
 
 /datum/round_event/meteor_wave/catastrophic
 	wave_name = "catastrophic"
+
+// SKYRAT EDIT ADDITION BEGIN - Directional Meteor Waves
+/proc/generateMeteorString(startWhen,direction)
+	var/directionstring
+	switch(direction)
+		if(NORTH)
+			directionstring = " towards the fore"
+		if(SOUTH)
+			directionstring = " towards the aft"
+		if(EAST)
+			directionstring = " towards starboard"
+		if(WEST)
+			directionstring = " towards port"
+	return "Meteors have been detected on a collision course with the station[directionstring]. Estimated time until impact: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds."
+// SKYRAT EDIT END
