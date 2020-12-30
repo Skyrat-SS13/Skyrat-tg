@@ -437,8 +437,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 	..()
 	var/mob/living/U = usr
 	//Looking for master was kind of pointless since PDAs don't appear to have one.
-
-	if(usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) && !href_list["close"])
+	//SKYRAT EDIT CHANGE BEGIN
+	if(usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK,floor_okay=TRUE) && !href_list["close"])
+	//SKYRAT EDIT CHANGE END
 		add_fingerprint(U)
 		U.set_machine(src)
 
@@ -712,7 +713,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/t = stripped_input(U, "Please enter message", name)
 	if (!t || toff)
 		return
-	if(!U.canUseTopic(src, BE_CLOSE))
+	//SKYRAT EDIT CHANGE BEGIN
+	if(!U.canUseTopic(src, BE_CLOSE,floor_okay=TRUE))
+	//SKYRAT EDIT CHANGE END
 		return
 	if(emped)
 		t = Gibberish(t, TRUE)
