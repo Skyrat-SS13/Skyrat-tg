@@ -715,6 +715,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (!t || toff)
 		return
 	//SKYRAT EDIT CHANGE BEGIN
+	//if(!U.canUseTopic(src, BE_CLOSE)) - SKYRAT EDIT - ORIGINAL
 	if(!U.canUseTopic(src, BE_CLOSE,floor_okay=TRUE))
 	//SKYRAT EDIT CHANGE END
 		return
