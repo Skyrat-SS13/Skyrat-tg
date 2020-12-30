@@ -351,7 +351,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for an assault team being sent in?", ROLE_ASSAULTOPS, temp)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
-	var/numagents = text2num(input(src, "Please enter the desired number of assault team members.", "Member Count"))
+	var/numagents = 5
 
 	if(candidates.len)
 		var/agentcount = 0
