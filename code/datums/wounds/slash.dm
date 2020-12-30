@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
+/*
 
 /*
 	Slashing wounds
@@ -297,3 +299,4 @@
 	status_effect_type = /datum/status_effect/wound/slash/critical
 	scar_keyword = "slashcritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
+*/
