@@ -36,3 +36,12 @@
 /obj/effect/mob_spawn/human/lavaland_syndicate
 	can_use_alias = TRUE
 	any_station_species = TRUE
+
+/obj/effect/mob_spawn/human/oldsec
+	any_station_species = TRUE
+
+/obj/effect/mob_spawn/human/oldeng
+	any_station_species = TRUE
+
+/obj/effect/mob_spawn/human/oldsci
+	any_station_species = TRUE
