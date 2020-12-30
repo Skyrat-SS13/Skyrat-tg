@@ -23,3 +23,4 @@ GLOBAL_LIST_EMPTY(turret_id_refs)
 			var/obj/machinery/porta_turret/T = i
 			turrets |= T
 			T.cp = src
+
