@@ -114,10 +114,10 @@
 		return TRUE
 	return FALSE
 
-/datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H, icon_state)
+/datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
 	if(T && T.wagging)
-		icon_state += "_wagging"
+		return "[icon_state]_wagging"
 	return icon_state
 
 /datum/sprite_accessory/caps

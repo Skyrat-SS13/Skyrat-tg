@@ -134,6 +134,9 @@
 /obj/item/clothing/head/sombrero
 	mutant_variants = NONE
 
+/obj/item/clothing/head/santa
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -207,6 +210,9 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/suit/black/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/labcoat/roboticist
 	mutant_variants = NONE
 
 
