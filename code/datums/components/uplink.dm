@@ -29,13 +29,7 @@
 
 	var/list/previous_attempts
 
-<<<<<<< HEAD
-///datum/component/uplink/Initialize(_owner, _lockable = TRUE, _enabled = FALSE, datum/game_mode/_gamemode, starting_tc = 20)
-/datum/component/uplink/Initialize(_owner, _lockable = TRUE, _enabled = FALSE, datum/game_mode/_gamemode, starting_tc = 30) //SKYRAT EDIT CHANGE
-
-=======
 /datum/component/uplink/Initialize(_owner, _lockable = TRUE, _enabled = FALSE, datum/game_mode/_gamemode, starting_tc = TELECRYSTALS_DEFAULT)
->>>>>>> 5b2febfac0e (Add "Implant" to list of uplink locations (#51828))
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
