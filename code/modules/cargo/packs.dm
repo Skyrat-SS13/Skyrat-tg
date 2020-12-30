@@ -853,8 +853,8 @@
 /datum/supply_pack/engineering/shield_sat
 	name = "Shield Generator Satellite"
 	desc = "Protect the very existence of this station with these Anti-Meteor defenses. Contains three Shield Generator Satellites."
-	cost = CARGO_CRATE_VALUE * 6
-	// special = TRUE 			// SKYRAT EDIT - Shield sats always available
+	cost = CARGO_CRATE_VALUE * 50 	// SKYRAT EDIT - 10k for shield sat crate
+	// special = TRUE 				// SKYRAT EDIT - Shield sats always available
 	access_view = ACCESS_HEADS
 	contains = list(
 					/obj/machinery/satellite/meteor_shield,
