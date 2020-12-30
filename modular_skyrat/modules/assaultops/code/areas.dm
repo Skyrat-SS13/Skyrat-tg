@@ -34,14 +34,16 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	color = COLOR_YELLOW
 
 /area/cruiser_dock
-	name = "Cruiser Dock"
+	name = "Cruiser Holding Facility"
 	icon_state = "syndie-ship"
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | NOTELEPORT
-	flags_1 = NONE
 	ambientsounds = SPOOKY
 
+/area/cruiser_dock/brig
+	name = "Dock Holding Facility"
+	color = COLOR_BLUE
 /obj/machinery/door/poddoor/shutters
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS)
 
@@ -61,7 +63,6 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 /obj/effect/spawner/lootdrop/gun/assaultops/ballistics
 	name = "gun spawner"
 	loot = list(
-				/obj/item/gun/ballistic/automatic/ar/modular/solrifle,
 				/obj/item/gun/ballistic/automatic/assault_rifle/m16,
 				/obj/item/gun/ballistic/automatic/battle_rifle/fg42,
 				/obj/item/gun/ballistic/automatic/pistol/deagle,

@@ -13,8 +13,8 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	announce_span = "danger"
 	announce_text = "Syndicate forces are approaching the station in an attempt to occupy it!\n\
-	<span class='danger'>Operatives</span>: Subdue all security forces and occupy the station.\n\
-	<span class='notice'>Crew</span>: Defend the station from all syndicate assault members and ensure you survive."
+	<span class='danger'>Operatives</span>: Capture all of your assigned targets and transport them to the holding facility!\n\
+	<span class='notice'>Crew</span>: Defend the station and capture the operatives, we need them for information!"
 
 	var/const/agents_possible = 10 //If we ever need more syndicate agents.
 	var/operatives_left = 1
@@ -52,25 +52,49 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		assault_mind.add_antag_datum(operative_antag_datum_type)
 	//Assign the targets
 	for(var/i in GLOB.player_list)
-		if(ishuman(i))
-			var/mob/living/carbon/human/H = i
-			if(H.job == "Captain" || H.job == "Head of Personnel" || H.job == "Quartermaster" || H.job == "Head of Security" || H.job == "Chief Engineer" || H.job == "Research Director" || H.job == "Blueshield" || H.job == "Security Officer" || H.job == "Warden") //UGH SHITCODE!!
-				GLOB.assaultops_targets.Add(H)
+		if(check_assaultops_target(i))
+			GLOB.assaultops_targets.Add(i)
 	return ..()
+
+/proc/check_assaultops_target(mob/user)
+	if(!isliving(user))
+		return FALSE
+	var/datum/mind/owner = user.mind
+	if(owner.assigned_role == "Captain" || owner.assigned_role == "Head of Personnel" || owner.assigned_role == "Quartermaster" || owner.assigned_role == "Head of Security" || owner.assigned_role == "Chief Engineer" || owner.assigned_role == "Research Director" || owner.assigned_role == "Blueshield" || owner.assigned_role == "Security Officer" || owner.assigned_role == "Warden")
+		return TRUE
+	return FALSE
 
 /datum/game_mode/assaultops/set_round_result()
 	..()
 	var/result = assault_team.get_result()
 	switch(result)
-		if(NUKE_RESULT_FLUKE)
-			SSticker.mode_result = "loss - takeover failed - crew secured"
-			SSticker.news_report = NUKE_SYNDICATE_BASE
+		if(ASSAULT_RESULT_STALEMATE)
+			SSticker.mode_result = "stalemate - mission failure - crew and operatives dead"
+			SSticker.news_report = ASSAULTOPS_STALEMATE
+		if(ASSAULT_RESULT_ASSAULT_FLAWLESS_WIN)
+			SSticker.mode_result = "flawless operatives win - all crew captured"
+			SSticker.news_report = ASSAULTOPS_ASSAULT_WIN
+		if(ASSAULT_RESULT_ASSAULT_MAJOR_WIN)
+			SSticker.mode_result = "major operatives win - all crew captured - some operatives dead"
+			SSticker.news_report = ASSAULTOPS_ASSAULT_WIN
 		if(ASSAULT_RESULT_ASSAULT_WIN)
-			SSticker.mode_result = "win - syndicate takeover"
-			SSticker.news_report = STATION_NUKED
+			SSticker.mode_result = "operatives win - some crew captured"
+			SSticker.news_report = ASSAULTOPS_ASSAULT_WIN
+		if(ASSAULT_RESULT_CREW_FLAWLESS_WIN)
+			SSticker.mode_result = "flawless crew win - all operatives captured"
+			SSticker.news_report = ASSAULTOPS_CREW_WIN
+		if(ASSAULT_RESULT_CREW_MAJOR_WIN)
+			SSticker.mode_result = "major crew win - all operatives captured - but some crew dead"
+			SSticker.news_report = ASSAULTOPS_CREW_WIN
 		if(ASSAULT_RESULT_CREW_WIN)
-			SSticker.mode_result = "loss - evacuation - no takeover"
-			SSticker.news_report = OPERATIVES_KILLED
+			SSticker.mode_result = "crew win - some operatives captured"
+			SSticker.news_report = ASSAULTOPS_CREW_WIN
+		if(ASSAULT_RESULT_CREW_LOSS)
+			SSticker.mode_result = "crew loss - all operatives dead"
+			SSticker.news_report = ASSAULTOPS_CREW_WIN
+		if(ASSAULT_RESULT_ASSAULT_LOSS)
+			SSticker.mode_result = "operatives loss - all crew dead"
+			SSticker.news_report = ASSAULTOPS_CREW_WIN
 		else
 			SSticker.mode_result = "halfwin - interrupted"
 			SSticker.news_report = OPERATIVE_SKIRMISH
@@ -80,6 +104,77 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
            They are heavily armed and dangerous, and we recommend you fortify any defensible positions immediately. They may attempt to communicate or negotiate. Stall for as long as possible. \
             Our ERT force is stretched thin in this sector, so there are no guarantee of reinforcements. As a result, the crew is permitted to aid security as a militia under the directive of the captain . Do not give up control of the station, unless you are unable to resist effectively any further. \
             In which case, surrender to keep costs to a minimal. We will come back eventually to retake the station."
+
+/datum/game_mode/assaultops/check_finished(force_ending)
+	if(!SSticker.setup_done || !gamemode_ready)
+		return FALSE
+	if(replacementmode && round_converted == 2)
+		return replacementmode.check_finished()
+	if(SSshuttle.emergency && (SSshuttle.emergency.mode == SHUTTLE_ENDGAME))
+		return TRUE
+	if(station_was_nuked)
+		return TRUE
+	var/list/continuous = CONFIG_GET(keyed_list/continuous)
+	var/list/midround_antag = CONFIG_GET(keyed_list/midround_antag)
+	if(!round_converted && (!continuous[config_tag] || (continuous[config_tag] && midround_antag[config_tag]))) //Non-continuous or continous with replacement antags
+		if(!continuous_sanity_checked) //make sure we have antags to be checking in the first place
+			for(var/mob/Player in GLOB.mob_list)
+				if(Player.mind)
+					if(Player.mind.special_role || LAZYLEN(Player.mind.antag_datums))
+						continuous_sanity_checked = 1
+						return FALSE
+			if(!continuous_sanity_checked)
+				message_admins("The roundtype ([config_tag]) has no antagonists, continuous round has been defaulted to on and midround_antag has been defaulted to off.")
+				continuous[config_tag] = TRUE
+				midround_antag[config_tag] = FALSE
+				SSshuttle.clearHostileEnvironment(src)
+				return FALSE
+
+		var/list/targets_alive = assault_team.get_alive_targets()
+		var/list/assaultops_alive = assault_team.get_alive_assaultops()
+		var/list/targets_alive_captured = assault_team.get_captured_targets()
+		var/list/assaultops_alive_captured = assault_team.get_captured_assaultops()
+
+		if(!targets_alive.len)
+			return TRUE //All of the targets have died
+
+		if(!assaultops_alive.len)
+			return TRUE //All of the assault team is dead
+
+		if(targets_alive_captured.len >= targets_alive.len)
+			return TRUE //We got em boys!
+
+		if(assaultops_alive_captured.len >= targets_alive.len)
+			return TRUE //The assault team have been captured!
+
+
+		if(living_antag_player && living_antag_player.mind && isliving(living_antag_player) && living_antag_player.stat != DEAD && !isnewplayer(living_antag_player) &&!isbrain(living_antag_player) && (living_antag_player.mind.special_role || LAZYLEN(living_antag_player.mind.antag_datums)))
+			return FALSE //A resource saver: once we find someone who has to die for all antags to be dead, we can just keep checking them, cycling over everyone only when we lose our mark.
+
+		for(var/mob/Player in GLOB.alive_mob_list)
+			if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) &&!isbrain(Player) && Player.client && (Player.mind.special_role || LAZYLEN(Player.mind.antag_datums))) //Someone's still antagging but is their antagonist datum important enough to skip mulligan?
+				for(var/datum/antagonist/antag_types in Player.mind.antag_datums)
+					if(antag_types.prevent_roundtype_conversion)
+						living_antag_player = Player //they were an important antag, they're our new mark
+						return FALSE
+
+		if(!are_special_antags_dead())
+			return FALSE
+
+		if(!continuous[config_tag] || force_ending)
+			return TRUE
+
+		else
+			round_converted = convert_roundtype()
+			if(!round_converted)
+				if(round_ends_with_antag_death)
+					return TRUE
+				else
+					midround_antag[config_tag] = 0
+					return FALSE
+
+	return FALSE
+
 
 /proc/is_assault_operative(mob/M)
 	return M && istype(M) && M.mind && M.mind.has_antag_datum(/datum/antagonist/assaultops)
@@ -110,9 +205,11 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	var/command_radio = FALSE
 	var/cqc = FALSE
+	var/desc = "I'm dumb!"
 
 /datum/outfit/assaultops/cqb
 	name = "Assault Operative - CQB"
+	desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
 
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
@@ -124,6 +221,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/demoman
 	name = "Assault Operative - Demolitions"
+	desc = "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>"
 
 	belt = /obj/item/storage/belt/grenade/full
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -145,6 +243,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/medic
 	name = "Assault Operative - Medic"
+	desc = "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>"
 
 	glasses = /obj/item/clothing/glasses/hud/health
 	belt = /obj/item/storage/belt/medical/paramedic
@@ -157,6 +256,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
+	desc = "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -170,6 +270,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/assault
 	name = "Assault Operative - Assault"
+	desc = "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -180,6 +281,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/sniper
 	name = "Assault Operative - Sniper"
+	desc = "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -190,6 +292,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/tech
 	name = "Assault Operative - Tech"
+	desc = "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>"
 
 	suit = /obj/item/clothing/suit/space/hardsuit/shielded
 
@@ -225,7 +328,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/objective/assaultops
 	name = "assaultops"
-	explanation_text = "Commence a hostile takeover of the station. Occupy the station and initiate Syndicate rule."
+	explanation_text = "Capture all of the security and command team and transport them to the holding facility."
 	martyr_compatible = TRUE
 
 /datum/objective/assaultops/check_completion()

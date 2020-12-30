@@ -47,35 +47,32 @@
 
 	var/chosen_loadout = show_radial_menu(H, H, loadouts, radius = 40)
 
+	var/datum/outfit/assaultops/chosen_loadout_type
+
 	switch(chosen_loadout)
 		if("cqb")
-			chosen_loadout = /datum/outfit/assaultops/cqb
-			to_chat(H, "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>")
+			chosen_loadout_type = /datum/outfit/assaultops/cqb
 		if("demoman")
-			chosen_loadout = /datum/outfit/assaultops/demoman
-			to_chat(H, "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>")
+			chosen_loadout_type = /datum/outfit/assaultops/demoman
 		if("medic")
-			chosen_loadout = /datum/outfit/assaultops/medic
-			to_chat(H, "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>")
+			chosen_loadout_type = /datum/outfit/assaultops/medic
 		if("heavy")
-			chosen_loadout = /datum/outfit/assaultops/heavy
-			to_chat(H, "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>")
+			chosen_loadout_type = /datum/outfit/assaultops/heavy
 		if("assault")
-			chosen_loadout = /datum/outfit/assaultops/assault
-			to_chat(H, "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>")
+			chosen_loadout_type = /datum/outfit/assaultops/assault
 		if("sniper")
-			chosen_loadout = /datum/outfit/assaultops/sniper
-			to_chat(H, "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>")
+			chosen_loadout_type = /datum/outfit/assaultops/sniper
 		if("tech")
-			chosen_loadout = /datum/outfit/assaultops/tech
-			to_chat(H, "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>")
+			chosen_loadout_type = /datum/outfit/assaultops/tech
 		else
-			chosen_loadout = pick(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault, /datum/outfit/assaultops/sniper, /datum/outfit/assaultops/tech)
+			chosen_loadout_type = pick(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault, /datum/outfit/assaultops/sniper, /datum/outfit/assaultops/tech)
 
 	if(!chosen_loadout)
-		chosen_loadout = /datum/outfit/assaultops
+		chosen_loadout_type = /datum/outfit/assaultops
 
-	H.equipOutfit(chosen_loadout)
+	H.equipOutfit(chosen_loadout_type)
+
+	to_chat(H, chosen_loadout_type.desc)
 
 	loadout = chosen_loadout
 	return TRUE
@@ -111,13 +108,15 @@
 
 /datum/antagonist/assaultops/proc/memorise_kills()
 	if(assault_team)
-		antag_memory += "Your currently assigned targets are: \n"
+		antag_memory += "Your currently assigned targets to CAPTURE are: \n"
 		for(var/i in GLOB.assaultops_targets)
 			var/mob/living/carbon/human/H = i
 			antag_memory += "- [H.name]: [H.job] \n"
-		antag_memory += "<b>Try to subdue only your targets, we need the crew.</b> \n"
-		to_chat(owner, "You have been given a list of command and security staff that must be subdued, check your notes!")
-		to_chat(owner, "<span class='redtext'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS HOSTILE TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED</span>")
+		antag_memory += "<b>You only need to capture these people, the others are not relevant.</b> \n"
+		to_chat(owner, "You have been given a list of command and security staff that must be <b>CAPTURED</b>, do not kill them!")
+		to_chat(owner, "<span class='redtext'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS CAPTURE AND TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED!</span>")
+		to_chat(owner, "<span class='notice'>For a target to be considered captured, they must be alive and kept in the <b>holding facility</b> that you are currently docked to.</span>")
+
 
 /datum/antagonist/assaultops/proc/forge_objectives()
 	if(assault_team)
@@ -225,56 +224,120 @@
 		O.team = src
 		objectives += O
 
-
-/datum/team/assaultops/proc/assaultops_dead()
+//WIN SENARIO CALCULATIONS >>>>>>>>>>>>>>>>
+/datum/team/assaultops/proc/get_alive_assaultops()
+	var/list/alive = list()
 	for(var/I in members)
 		var/datum/mind/operative_mind = I
-		if(ishuman(operative_mind.current) && (operative_mind.current.stat != DEAD))
-			return FALSE
-	return TRUE
+		if(ishuman(operative_mind.current) && is_assault_operative(operative_mind.current) && (operative_mind.current.stat != DEAD))
+			alive.Add(I)
+	return alive
 
-/datum/team/assaultops/proc/crew_dead()
-	var/finished = TRUE
+/datum/team/assaultops/proc/get_alive_targets()
+	var/list/alive = list()
 	for(var/mob/living/carbon/human/H in GLOB.assaultops_targets)
 		if(H.stat != DEAD)
-			finished = FALSE
-	if(finished)
-		return TRUE
-	return FALSE
+			alive.Add(H)
+	return alive
+
+/datum/team/assaultops/proc/get_captured_targets()
+	var/list/alive = get_alive_targets()
+	var/list/captured = list()
+	for(var/mob/living/carbon/human/H in alive)
+		var/area/loc_area = get_area(H)
+		if(loc_area == /area/cruiser_dock/brig)
+			captured.Add(H)
+	return captured
+
+/datum/team/assaultops/proc/get_captured_assaultops()
+	var/list/alive = get_alive_assaultops()
+	var/list/captured = list()
+	for(var/mob/living/carbon/human/H in alive)
+		var/area/loc_area = get_area(H)
+		if(HAS_TRAIT(H, TRAIT_RESTRAINED) && istype(loc_area, /area/security))
+			captured.Add(H)
+	return captured
 
 /datum/team/assaultops/proc/get_result()
-	var/crew_is_dead = crew_dead()
-	var/assaultops_is_dead = assaultops_dead()
+	var/list/targets_alive = get_alive_targets()
+	var/list/assaultops_alive = get_alive_assaultops()
+	var/list/targets_alive_captured = get_captured_targets()
+	var/list/assaultops_alive_captured = get_captured_assaultops()
 
-	if(!crew_is_dead && !assaultops_is_dead)
-		return ASSAULT_RESULT_FLUKE
-	else if(crew_is_dead)
+	if(!assaultops_alive.len && !targets_alive.len)
+		return ASSAULT_RESULT_STALEMATE
+
+	if(!assaultops_alive.len)
+		return ASSAULT_RESULT_CREW_LOSS
+
+	if(!targets_alive.len)
+		return ASSAULT_RESULT_ASSAULT_LOSS
+
+	if(assaultops_alive.len >= members.len && targets_alive_captured.len >= GLOB.assaultops_targets.len)
+		return ASSAULT_RESULT_ASSAULT_FLAWLESS_WIN
+
+	if(assaultops_alive.len && targets_alive_captured.len >= GLOB.assaultops_targets.len)
+		return ASSAULT_RESULT_ASSAULT_MAJOR_WIN
+
+	if(assaultops_alive.len && targets_alive_captured.len >= targets_alive.len)
 		return ASSAULT_RESULT_ASSAULT_WIN
-	else if (assaultops_is_dead)
+
+	if(targets_alive.len >= GLOB.assaultops_targets.len && assaultops_alive_captured.len >= members.len)
+		return ASSAULT_RESULT_CREW_FLAWLESS_WIN
+
+	if(targets_alive.len && assaultops_alive_captured.len >= members.len)
+		return ASSAULT_RESULT_CREW_MAJOR_WIN
+
+	if(targets_alive.len && assaultops_alive_captured.len >= assaultops_alive.len)
 		return ASSAULT_RESULT_CREW_WIN
-	else
-		return	//Undefined result
+
+	return //Oh no, fuck.
 
 /datum/team/assaultops/roundend_report()
 	var/list/parts = list()
+
+	if(!syndicate_name)
+		syndicate_name = "Syndicate"
+
 	parts += "<span class='header'>[syndicate_name] Assault Operatives:</span>"
 
 	switch(get_result())
-		if(ASSAULT_RESULT_FLUKE)
+		if(ASSAULT_RESULT_STALEMATE)
 			parts += "<span class='redtext big'>Stalemate</span>"
 			parts += "Somehow the syndicate assault team and the loyalist nanotrasen crew have reached a stalemate!"
-		if(ASSAULT_RESULT_ASSAULT_WIN)
+		if(ASSAULT_RESULT_ASSAULT_FLAWLESS_WIN)
+			parts += "<span class='greentext big'>Flawless Syndicate Victory!</span>"
+			parts += "<B>All of the [syndicate_name] assault team have survived, and have safely captured the entirety of Security and Command, well done!</B>"
+		if(ASSAULT_RESULT_ASSAULT_MAJOR_WIN)
 			parts += "<span class='greentext big'>Syndicate Major Victory!</span>"
-			parts += "<B>[syndicate_name] assault team have taken over [station_name()], leaving no loyalist NT crew!</B>"
+			parts += "<B>Most of the [syndicate_name] assault team have survived, and have safely captured the entierty of Security and Command!</B>"
+		if(ASSAULT_RESULT_ASSAULT_WIN)
+			parts += "<span class='greentext'>Syndicate Victory!</span>"
+			parts += "<B>The [syndicate_name] assault team have safely captured some of Security and Command, but some of them were killed!</B>"
+		if(ASSAULT_RESULT_ASSAULT_LOSS)
+			parts += "<span class='redtext big'>Syndicate Failure!</span>"
+			parts += "<B>The [syndicate_name] assault team brutally murdered all of their targets, shame on them!</B>"
+		if(ASSAULT_RESULT_CREW_FLAWLESS_WIN)
+			parts += "<span class='greentext big'>Flawless Crew Victory!</span>"
+			parts += "<B>The entirety of the Security and Command have surived, and have safely captured all of the [syndicate_name] assault team, well done!</B>"
+		if(ASSAULT_RESULT_CREW_MAJOR_WIN)
+			parts += "<span class='greentext big'>Major Crew Victory!</span>"
+			parts += "<B>Most of Security and Command have survived, and have safely captured all of the [syndicate_name] assault team!</B>"
 		if(ASSAULT_RESULT_CREW_WIN)
-			parts += "<span class='redtext big'>Crew Major Victory</span>"
-			parts += "<B>The Research Staff has stopped the [syndicate_name] Assault Operatives!</B>"
+			parts += "<span class='greentext'>Crew Victory</span>"
+			parts +="<B>The crew of [station_name()] have safely captured some of the [syndicate_name] assault team, but some were killed!</B>"
+		if(ASSAULT_RESULT_CREW_LOSS)
+			parts += "<span class='redtext big'>Crew Failure!</span>"
+			parts += "<B>The crew of [station_name()] have brutally murdered all of the [syndicate_name] assault team, shame on them!</B>"
 		else
 			parts += "<span class='neutraltext big'>Neutral Victory</span>"
 			parts += "<B>Mission aborted!</B>"
 
 	var/text = "<br><span class='header'>The syndicate assault operatives were:</span>"
 	text += printplayerlist(members)
+	text += "<br>"
+	text += "<br><span class='header'>The syndicate assault operatives targets were:</span>"
+	text += printplayerlist(GLOB.assaultops_targets)
 	text += "<br>"
 	parts += text
 
@@ -289,3 +352,4 @@
 
 /datum/team/assaultops/is_gamemode_hero()
 	return SSticker.mode.name == "assault incursion"
+
