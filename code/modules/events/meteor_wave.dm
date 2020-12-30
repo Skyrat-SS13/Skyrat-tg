@@ -14,7 +14,7 @@
 	announceWhen	= 1
 	var/list/wave_type
 	var/wave_name = "normal"
-	var/direction // SKYRAT EDIT - DIRECTION
+	var/direction // SKYRAT EDIT - Directional Meteors
 
 /datum/round_event/meteor_wave/New()
 	..()
@@ -22,7 +22,7 @@
 		determine_wave_type()
 
 /datum/round_event/meteor_wave/proc/determine_wave_type()
-	direction = pick(GLOB.cardinals)
+	direction = pick(GLOB.cardinals) // SKYRAT EDIT - Directional Meteors
 	if(!wave_name)
 		wave_name = pickweight(list(
 			"normal" = 50,
@@ -93,4 +93,4 @@
 		if(WEST)
 			directionstring = " towards port"
 	return "Meteors have been detected on a collision course with the station[directionstring]. Estimated time until impact: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds."
-// SKYRAT EDIT END
+// SKYRAT EDIT ADDITION END

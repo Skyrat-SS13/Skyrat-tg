@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 
 /proc/spawn_meteors(number = 10, list/meteortypes, dir) // SKYRAT EDIT - Directional Meteors
 	for(var/i = 0; i < number; i++)
-		spawn_meteor(meteortypes, dir)
+		spawn_meteor(meteortypes, dir) // SKYRAT EDIT - Directional Meteors
 
 /proc/spawn_meteor(list/meteortypes, dir) // SKYRAT EDIT - Directional Meteors
 	var/turf/pickedstart
