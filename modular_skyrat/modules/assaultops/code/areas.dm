@@ -36,13 +36,13 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 /area/cruiser_dock
 	name = "Cruiser Holding Facility"
 	icon_state = "syndie-ship"
-	requires_power = FALSE
+	requires_power = TRUE
 	has_gravity = STANDARD_GRAVITY
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | NOTELEPORT
 	ambientsounds = SPOOKY
 
 /area/cruiser_dock/brig
-	name = "Dock Holding Facility"
+	name = "Cruiser Dock Prison"
 	color = COLOR_BLUE
 
 /obj/machinery/door/poddoor/shutters

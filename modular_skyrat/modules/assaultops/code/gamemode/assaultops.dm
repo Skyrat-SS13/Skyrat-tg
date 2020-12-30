@@ -345,7 +345,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for an assault team being sent in?", ROLE_ASSAULTOPS, temp)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
-	var/numagents = text2num(input(src, "How many operatives do you wish to send?", "Number of Ops"))
+	var/numagents = 7
 
 	if(candidates.len)
 		var/agentcount = 0
@@ -383,16 +383,36 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 //TURRETS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/machinery/porta_turret/assaultops
-	use_power = NO_POWER_USE
+	use_power = IDLE_POWER_USE
 	req_access = list(ACCESS_SYNDICATE)
 	faction = list(ROLE_SYNDICATE)
 	max_integrity = 200
+	base_icon_state = "syndie"
 
 /obj/machinery/porta_turret/assaultops/assess_perp(mob/living/carbon/human/perp)
 	return 10
 
-/obj/machinery/porta_turret/syndicate/shuttle/assaultops
+/obj/machinery/porta_turret/assaultops/shuttle
 	scan_range = 7
+	req_access = list(ACCESS_SYNDICATE)
+	mode = TURRET_STUN
+	lethal_projectile = /obj/projectile/bullet/p50/penetrator/shuttle
+	lethal_projectile_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
+	stun_projectile = /obj/projectile/energy/electrode
+	stun_projectile_sound = 'sound/weapons/taser.ogg'
+	base_icon_state = "syndie"
+	max_integrity = 600
+	armor = list(MELEE = 50, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 0, RAD = 0, FIRE = 90, ACID = 90)
+
+/obj/machinery/porta_turret/assaultops/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_WIRES)
+
+/obj/machinery/porta_turret/assaultops/setup(obj/item/gun/turret_gun)
+	return
+
+/obj/machinery/porta_turret/syndicate/assess_perp(mob/living/carbon/human/perp)
+	return 10 //Syndicate turrets shoot everything not in their faction
 
 //VENDING MACHINES>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/machinery/vending/assaultops_ammo

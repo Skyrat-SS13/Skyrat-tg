@@ -227,12 +227,13 @@
 //WIN SENARIO CALCULATIONS >>>>>>>>>>>>>>>>
 /datum/team/assaultops/proc/get_alive_assaultops()
 	var/list/alive = list()
-	for(var/I in members)
-		var/datum/mind/operative_mind = I
+	for(var/i in members)
+		var/datum/mind/operative_mind = i
 		if(ishuman(operative_mind.current) && is_assault_operative(operative_mind.current) && (operative_mind.current.stat != DEAD))
-			alive.Add(I)
+			alive.Add(i)
 	return alive
 
+//Returns any targets that are alive
 /datum/team/assaultops/proc/get_alive_targets()
 	var/list/alive = list()
 	for(var/mob/living/carbon/human/H in GLOB.assaultops_targets)
@@ -240,20 +241,24 @@
 			alive.Add(H)
 	return alive
 
+//Returns any targets that are alive and captured
 /datum/team/assaultops/proc/get_captured_targets()
 	var/list/alive = get_alive_targets()
 	var/list/captured = list()
-	for(var/mob/living/carbon/human/H in alive)
-		var/area/loc_area = get_area(H.loc)
-		if(loc_area == /area/cruiser_dock/brig)
+	for(var/i in alive)
+		var/mob/living/carbon/human/H = i
+		var/area/loc_area = get_area(H)
+		if(istype(loc_area, /area/cruiser_dock/brig))
 			captured.Add(H)
 	return captured
 
+//Returns any ops that are alive and captured
 /datum/team/assaultops/proc/get_captured_assaultops()
 	var/list/alive = get_alive_assaultops()
 	var/list/captured = list()
-	for(var/mob/living/carbon/human/H in alive)
-		var/area/loc_area = get_area(H.loc)
+	for(var/i in alive)
+		var/mob/living/carbon/human/H = i
+		var/area/loc_area = get_area(H)
 		if(HAS_TRAIT(H, TRAIT_RESTRAINED) && istype(loc_area, /area/security))
 			captured.Add(H)
 	return captured
@@ -299,7 +304,7 @@
 	if(!syndicate_name)
 		syndicate_name = "Syndicate"
 
-	parts += "<span class='header'>[syndicate_name] Assault Operatives:</span>"
+	parts += "<span class='header'>[syndicate_name] Assault Operative Incursion:</span>"
 
 	switch(get_result())
 		if(ASSAULT_RESULT_STALEMATE)
@@ -309,7 +314,7 @@
 			parts += "<span class='greentext big'>Flawless Syndicate Victory!</span>"
 			parts += "<B>All of the [syndicate_name] assault team have survived, and have safely captured the entirety of Security and Command, well done!</B>"
 		if(ASSAULT_RESULT_ASSAULT_MAJOR_WIN)
-			parts += "<span class='greentext big'>Syndicate Major Victory!</span>"
+			parts += "<span class='greentext big'>Major Syndicate Victory!</span>"
 			parts += "<B>Most of the [syndicate_name] assault team have survived, and have safely captured the entierty of Security and Command!</B>"
 		if(ASSAULT_RESULT_ASSAULT_WIN)
 			parts += "<span class='greentext'>Syndicate Victory!</span>"
@@ -333,11 +338,16 @@
 			parts += "<span class='neutraltext big'>Neutral Victory</span>"
 			parts += "<B>Mission aborted!</B>"
 
-	var/text = "<br><span class='header'>The syndicate assault operatives were:</span>"
+	var/text = "<br><span class='header'>The [syndicate_name] assault operatives were:</span>"
 	text += printplayerlist(members)
 	text += "<br>"
-	text += "<br><span class='header'>The syndicate assault operatives targets were:</span>"
-	text += printplayerlist(GLOB.assaultops_targets)
+	text += "<br><span class='header'>The command and security team targets were:</span>"
+	var/list/datum/mind/target_minds = list()
+	for(var/i in GLOB.assaultops_targets)
+		var/mob/living/carbon/human/H = i
+		var/datum/mind = H.mind
+		target_minds.Add(mind)
+	text += printplayerlist(target_minds)
 	text += "<br>"
 	parts += text
 
