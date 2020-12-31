@@ -468,10 +468,10 @@ SUBSYSTEM_DEF(job)
 	to_chat(M, "<b>You are the [rank].</b>")
 	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
-		//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if (job.no_dresscode && job.loadout && M.client)
 			packed_items = M.client.prefs.equip_preference_loadout(living_mob,FALSE,job)
-		//SKYRAT EDIT CHANGE END
+		//SKYRAT EDIT ADDITION END
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)//silicons override this proc to return a mob
 		if(ismob(new_mob))
 			living_mob = new_mob
