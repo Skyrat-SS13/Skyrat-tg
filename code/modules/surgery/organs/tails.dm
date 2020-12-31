@@ -83,10 +83,8 @@
 
 	new_tail.tail_type = tail_type
 	new_tail.spines = spines
-<<<<<<< HEAD
 */
 //SKYRAT EDIT REMOVAL END
-=======
 
 /obj/item/organ/tail/monkey
 	name = "monkey tail"
@@ -94,6 +92,8 @@
 	tail_type = "Monkey"
 	icon_state = "severedmonkeytail"
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+/*
 /obj/item/organ/tail/monkey/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
 	..()
 	if(istype(H))
@@ -108,4 +108,5 @@
 		H.dna.features["tail_monkey"] = "None"
 		H.dna.species.mutant_bodyparts -= "tail_monkey"
 		H.update_body()
->>>>>>> f66ca346263 (Refactors monkeys into a species (#55614))
+*/
+//SKYRAT EDIT REMOVAL END

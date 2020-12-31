@@ -40,12 +40,9 @@ GLOBAL_LIST_EMPTY(moth_wings_list)
 GLOBAL_LIST_EMPTY(moth_antennae_list)
 GLOBAL_LIST_EMPTY(moth_markings_list)
 GLOBAL_LIST_EMPTY(caps_list)
-<<<<<<< HEAD
+GLOBAL_LIST_EMPTY(tails_list_monkey)
 */
 //SKYRAT EDIT REMOVAL END
-=======
-GLOBAL_LIST_EMPTY(tails_list_monkey)
->>>>>>> f66ca346263 (Refactors monkeys into a species (#55614))
 
 GLOBAL_LIST_INIT(color_list_ethereal, list(
 	"Red" = "ff4d4d",

@@ -1016,9 +1016,7 @@
 		owner.visible_message("<span class='danger'>\The [current_gauze] on [owner]'s [name] fall away in rags.</span>", "<span class='warning'>\The [current_gauze] on your [name] fall away in rags.</span>", vision_distance=COMBAT_MESSAGE_RANGE)
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
-<<<<<<< HEAD
 */
-=======
 
 
 ///Proc to turn bodypart into another.
@@ -1028,4 +1026,3 @@
 	var/obj/item/bodypart/new_part = new new_type()
 	new_part.attach_limb(our_owner, TRUE)
 	qdel(src)
->>>>>>> f66ca346263 (Refactors monkeys into a species (#55614))
