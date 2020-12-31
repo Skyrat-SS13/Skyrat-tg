@@ -1017,3 +1017,12 @@
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
 */
+
+
+///Proc to turn bodypart into another.
+/obj/item/bodypart/proc/change_bodypart(obj/item/bodypart/new_type)
+	var/mob/living/carbon/our_owner = owner //dropping nulls the limb
+	drop_limb(TRUE)
+	var/obj/item/bodypart/new_part = new new_type()
+	new_part.attach_limb(our_owner, TRUE)
+	qdel(src)
