@@ -360,7 +360,7 @@
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 			L.emote("scream")
 			//L.Paralyze(100) //ORIGINAL
-      L.StaminaKnockdown(20, TRUE, TRUE)
+			L.StaminaKnockdown(20, TRUE, TRUE)
 		else //for simple_animals & borgs
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 		var/turf/location = get_turf(src)
