@@ -25,6 +25,9 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	var/operative_antag_datum_type = /datum/antagonist/assaultops
 	var/leader_antag_datum_type = /datum/antagonist/assaultops/leader
 
+	waittime_l = 180 SECONDS
+	waittime_h = 300 SECONDS
+
 /datum/game_mode/assaultops/pre_setup()
 	var/n_agents = min(round(num_players() / 10), antag_candidates.len, agents_possible)
 	if(n_agents >= required_enemies)
@@ -55,6 +58,16 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		if(check_assaultops_target(i))
 			GLOB.assaultops_targets.Add(i)
 	return ..()
+
+/datum/game_mode/assaultops/send_intercept()
+	var/intercepttext = "<b><i>Central Command Status Summary</i></b><hr>"
+	intercepttext += "<b>Central Command has intercepted a rogue transmission emitted from an incoming vessel, we have managed to decript most of it, message reads:</b><hr>"
+	intercepttext += "Team in 3531%32 to location, 581224$% for further information regarding the extraction 53£^2£$ and targets-... £&*)&<hr>"
+	intercepttext += "<b><i>End of Transmission</i></b><hr>"
+	intercepttext += "We believe an assault group of some kind is enroute to your station, we want you to capture them. <b>Alive.</b>"
+
+	print_command_report(intercepttext, "Priority Intercept", announce=TRUE)
+	priority_announce("Hostile intervention in progress, do not panic.", "General alert", 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
 
 /proc/check_assaultops_target(mob/user)
 	if(!isliving(user))

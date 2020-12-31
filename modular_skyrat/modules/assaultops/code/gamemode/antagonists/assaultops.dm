@@ -117,15 +117,17 @@
 
 /datum/antagonist/assaultops/proc/memorise_kills()
 	if(assault_team)
-		antag_memory += "Your currently assigned targets to CAPTURE are: \n"
+		antag_memory += "Your currently assigned targets to <b>CAPTURE</b> are: <br>"
 		for(var/i in GLOB.assaultops_targets)
 			var/mob/living/carbon/human/H = i
-			antag_memory += "- [H.name]: [H.job] \n"
-		antag_memory += "<b>You only need to capture these people, the others are not relevant.</b> \n"
+			antag_memory += "- <b>[H.name]</b>: [H.job]<br>"
+		antag_memory += "<b>You only need to capture these people, the others are not relevant.</b><br>"
+		antag_memory += "<br>"
 		to_chat(owner, "You have been given a list of command and security staff that must be <b>CAPTURED</b>, do not kill them!")
 		to_chat(owner, "<span class='redtext'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS CAPTURE AND TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED!</span>")
 		to_chat(owner, "<span class='notice'>For a target to be considered captured, they must be alive and kept in the <b>holding facility</b> that you are currently docked to.</span>")
-
+		sleep(200)
+		to_chat(owner, "<span class='userdanger'>Your watch buzzes, telling you that there is between <b>3 to 5 minutes</b> left before you are detected and a report is sent!</span>")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
 	if(assault_team)
@@ -174,7 +176,6 @@
 	assaultop_outfit = /datum/outfit/syndicate/leader
 	always_new_team = TRUE
 	var/title
-	var/challengeitem = /obj/item/nuclear_challenge
 
 /datum/antagonist/assaultops/leader/give_alias()
 	title = pick("Czar", "Boss", "Commander", "Chief", "Kingpin", "Director", "Overlord")
