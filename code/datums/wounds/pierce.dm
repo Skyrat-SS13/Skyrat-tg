@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
+/*
 
 /*
 	Piercing wounds
@@ -177,3 +179,4 @@
 	status_effect_type = /datum/status_effect/wound/pierce/critical
 	scar_keyword = "piercecritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
+*/

@@ -179,7 +179,7 @@
 	return FALSE
 
 
-/mob/living/carbon/attack_paw(mob/living/carbon/monkey/M)
+/mob/living/carbon/attack_paw(mob/living/carbon/human/M)
 
 	if(can_inject(M, TRUE))
 		for(var/thing in diseases)
@@ -719,6 +719,8 @@
 		return ..()
 
 	var/obj/item/bodypart/grasped_part = get_bodypart(zone_selected)
+	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
+	/*
 	if(!grasped_part?.get_bleed_rate())
 		return
 	var/starting_hand_index = active_hand_index
@@ -737,6 +739,9 @@
 		QDEL_NULL(grasp)
 		return
 	grasp.grasp_limb(grasped_part)
+	*/
+	self_grasp_bleeding_limb(grasped_part, supress_message)
+	//SKYRAT EDIT CHANGE END
 
 /// an abstract item representing you holding your own limb to staunch the bleeding, see [/mob/living/carbon/proc/grabbedby] will probably need to find somewhere else to put this.
 /obj/item/self_grasp

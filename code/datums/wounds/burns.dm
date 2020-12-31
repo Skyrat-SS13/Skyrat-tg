@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
+/*
 
 /*
 	Burn wounds
@@ -301,3 +303,4 @@
 	infestation_rate = 0.15 // appx 4.33 minutes to reach sepsis without any treatment
 	flesh_damage = 20
 	scar_keyword = "burncritical"
+*/

@@ -613,7 +613,7 @@
 					H.revive(full_heal = FALSE, admin_revive = FALSE)
 					H.emote("gasp")
 					H.Jitter(100)
-					to_chat(H, "<span class='boldwarning'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
+					to_chat(H, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
 					SEND_SIGNAL(H, COMSIG_LIVING_MINOR_SHOCK)
 					SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "saved_life", /datum/mood_event/saved_life)
 					log_combat(user, H, "revived", defib)
