@@ -20,6 +20,8 @@
 	var/extra_info
 	///Whether the item is restricted to supporters
 	var/donator_only
+	///The slot the item fits into
+	var/item_slot
 
 /datum/loadout_item/New()
 	if(!description && path)

@@ -1,5 +1,6 @@
 /datum/loadout_item/gloves
 	category = LOADOUT_CATEGORY_GLOVES
+	item_slot = ITEM_SLOT_GLOVES
 
 //MISC
 /datum/loadout_item/gloves/fingerless

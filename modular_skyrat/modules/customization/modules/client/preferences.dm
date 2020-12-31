@@ -184,6 +184,8 @@
 	var/show_body_size = FALSE
 	///The arousal state of the previewed character, can be toggled by the user
 	var/arousal_preview = AROUSAL_NONE
+	///Whether or not the job clothing should be overridden by the loadout, ie. place the job uniform in the bag rather than the loadout uniform
+	var/override_job_clothing = FALSE
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -283,10 +285,11 @@
 			dat += "</td>"
 			switch(character_settings_tab)
 				if(4) //Loadout
-					dat += "<td width=50%>"
+					dat += "<td width=35%>"
 					dat += "<b>Remaining loadout points: [loadout_points]</b>"
 					dat += "</td>"
 					dat += "<td width=15%>"
+					dat += "<b>Override Job Clothing:</b> <a href='?_src_=prefs;preference=override_job_clothing'>[(override_job_clothing) ? "Enabled" : "Disabled"]</a>"
 					dat += "<a href='?_src_=prefs;preference=reset_loadout'>Reset Loadout</a>"
 					dat += "</td>"
 				if(5) //Augments
@@ -1886,7 +1889,7 @@
 					if(!isnull(msg))
 						exploitable_info = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 
-				if("uses_skintones")	
+				if("uses_skintones")
 					needs_update = TRUE
 					features["uses_skintones"] = !features["uses_skintones"]
 
@@ -2301,7 +2304,8 @@
 						return
 					loadout = list()
 					loadout_points = initial_loadout_points()
-
+				if("override_job_clothing")
+					override_job_clothing = !override_job_clothing
 				if("mismatch")
 					mismatched_customization = !mismatched_customization
 

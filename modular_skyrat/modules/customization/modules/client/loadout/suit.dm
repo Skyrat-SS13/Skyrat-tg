@@ -1,5 +1,6 @@
 /datum/loadout_item/suit
 	category = LOADOUT_CATEGORY_SUIT
+	item_slot = ITEM_SLOT_OCLOTHING
 
 //MISC
 /datum/loadout_item/suit/poncho

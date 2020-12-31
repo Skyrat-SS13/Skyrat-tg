@@ -1,5 +1,6 @@
 /datum/loadout_item/neck
 	category = LOADOUT_CATEGORY_NECK
+	item_slot = ITEM_SLOT_NECK
 
 //MISC
 /datum/loadout_item/neck/headphones

@@ -1,5 +1,6 @@
 /datum/loadout_item/glasses
 	category = LOADOUT_CATEGORY_GLASSES
+	item_slot = ITEM_SLOT_EYES
 
 //MISC
 /datum/loadout_item/glasses/blindfold

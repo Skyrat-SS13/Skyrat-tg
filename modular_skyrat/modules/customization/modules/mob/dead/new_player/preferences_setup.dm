@@ -169,12 +169,27 @@
 	if(!ishuman(H))
 		return
 	var/list/items_to_pack = list()
+	var/slots_overridden = list()
 	for(var/item_name in loadout)
 		var/datum/loadout_item/LI = GLOB.loadout_items[item_name]
 		var/obj/item/ITEM = LI.get_spawned_item(loadout[item_name])
 		//Skip the item if the job doesn't match, but only if that not used for the preview
 		if(!just_preview && (choosen_job && LI.restricted_roles && !(choosen_job.title in LI.restricted_roles)))
 			continue
+		var/obj/item/suit_storage_item
+		var/obj/item/ID
+		var/obj/item/belt
+		if (LI.item_slot == ITEM_SLOT_OCLOTHING)
+			suit_storage_item = H.get_item_by_slot(ITEM_SLOT_SUITSTORE)
+		if (LI.item_slot == ITEM_SLOT_ICLOTHING)
+			ID = H.get_item_by_slot(ITEM_SLOT_ID)
+			belt = H.get_item_by_slot(ITEM_SLOT_BELT)
+		if (override_job_clothing && LI.item_slot)
+			var/obj/item/item_in_slot = H.get_item_by_slot(LI.item_slot)
+			if (item_in_slot && !(LI.item_slot in slots_overridden))
+				slots_overridden += LI.item_slot
+				H.dropItemToGround(item_in_slot)
+				items_to_pack += item_in_slot
 		if(!H.equip_to_appropriate_slot(ITEM))
 			if(!just_preview)
 				items_to_pack += ITEM
@@ -184,11 +199,19 @@
 					ITEM.forceMove(get_turf(H))
 			else
 				qdel(ITEM)
+		//They shouldn't ever need to be packed into the bag because they were just dropped and the slots should be empty but best to be prepared
+		if (suit_storage_item && !H.equip_to_appropriate_slot(suit_storage_item))
+			items_to_pack += suit_storage_item
+		if (LI.item_slot == ITEM_SLOT_ICLOTHING)
+			if (ID && !H.equip_to_appropriate_slot(ID)) //ID gets equipped first otherwise the PDA will take its place
+				items_to_pack += ID
+			if (belt && !H.equip_to_appropriate_slot(belt))
+				items_to_pack += belt
 	return items_to_pack
 
 //This needs to be a seperate proc because the character could not have the proper backpack during the moment of loadout equip
 /datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)
-	//Here we stick loadout items that couldn't be equipped into a bag. 
+	//Here we stick loadout items that couldn't be equipped into a bag.
 	var/obj/item/back_item = H.back
 	for(var/item in packed_items)
 		var/obj/item/ITEM = item

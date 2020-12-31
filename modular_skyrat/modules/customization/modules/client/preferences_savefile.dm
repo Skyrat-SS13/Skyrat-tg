@@ -460,6 +460,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["body_markings"], body_markings)
 
 	READ_FILE(S["loadout"], loadout)
+	READ_FILE(S["override_job_clothing"] , override_job_clothing)
 
 	READ_FILE(S["ooc_prefs"], ooc_prefs)
 	READ_FILE(S["erp_pref"], erp_pref)
@@ -502,6 +503,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		loadout = list()
 	else
 		loadout_points -= accumulated_cost //We got enough points, subtract the cost
+	override_job_clothing = sanitize_integer(override_job_clothing, FALSE, TRUE, initial(override_job_clothing))
 
 	ooc_prefs = sanitize_text(ooc_prefs)
 	if(!length(erp_pref))
@@ -623,6 +625,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["body_markings"] , body_markings)
 
 	WRITE_FILE(S["loadout"] , loadout)
+	WRITE_FILE(S["override_job_clothing"] , override_job_clothing)
 
 	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
 	WRITE_FILE(S["erp_pref"] , erp_pref)

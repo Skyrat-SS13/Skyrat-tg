@@ -1,5 +1,6 @@
 /datum/loadout_item/head
 	category = LOADOUT_CATEGORY_HEAD
+	item_slot = ITEM_SLOT_HEAD
 
 //MISC
 /datum/loadout_item/head/baseball

@@ -1,5 +1,6 @@
 /datum/loadout_item/shoes
 	category = LOADOUT_CATEGORY_SHOES
+	item_slot = ITEM_SLOT_FEET
 
 //MISC
 /datum/loadout_item/shoes/laceup

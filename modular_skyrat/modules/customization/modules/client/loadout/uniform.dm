@@ -1,5 +1,6 @@
 /datum/loadout_item/uniform
 	category = LOADOUT_CATEGORY_UNIFORM
+	item_slot = ITEM_SLOT_ICLOTHING
 
 //MISC
 /datum/loadout_item/uniform/assistantformal

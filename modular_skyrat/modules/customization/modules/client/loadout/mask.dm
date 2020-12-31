@@ -1,5 +1,6 @@
 /datum/loadout_item/mask
 	category = LOADOUT_CATEGORY_MASK
+	item_slot = ITEM_SLOT_MASK
 
 //MISC
 /datum/loadout_item/mask/balaclava
