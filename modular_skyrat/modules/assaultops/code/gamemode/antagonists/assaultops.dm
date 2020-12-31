@@ -49,21 +49,30 @@
 
 	var/datum/outfit/assaultops/chosen_loadout_type
 
+	var/loadout_desc = ""
+
 	switch(chosen_loadout)
 		if("cqb")
 			chosen_loadout_type = /datum/outfit/assaultops/cqb
+			loadout_desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
 		if("demoman")
 			chosen_loadout_type = /datum/outfit/assaultops/demoman
+			loadout_desc = "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>"
 		if("medic")
 			chosen_loadout_type = /datum/outfit/assaultops/medic
+			loadout_desc = "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>"
 		if("heavy")
 			chosen_loadout_type = /datum/outfit/assaultops/heavy
+			loadout_desc = "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>"
 		if("assault")
 			chosen_loadout_type = /datum/outfit/assaultops/assault
+			loadout_desc = "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>"
 		if("sniper")
 			chosen_loadout_type = /datum/outfit/assaultops/sniper
+			loadout_desc = "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>"
 		if("tech")
 			chosen_loadout_type = /datum/outfit/assaultops/tech
+			loadout_desc = "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>"
 		else
 			chosen_loadout_type = pick(/datum/outfit/assaultops/cqb, /datum/outfit/assaultops/demoman, /datum/outfit/assaultops/medic, /datum/outfit/assaultops/heavy, /datum/outfit/assaultops/assault, /datum/outfit/assaultops/sniper, /datum/outfit/assaultops/tech)
 
@@ -72,7 +81,7 @@
 
 	H.equipOutfit(chosen_loadout_type)
 
-	to_chat(H, chosen_loadout_type.loadout_desc)
+	to_chat(H, loadout_desc)
 
 	loadout = chosen_loadout
 	return TRUE

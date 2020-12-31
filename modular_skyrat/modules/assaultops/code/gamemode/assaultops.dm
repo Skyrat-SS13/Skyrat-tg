@@ -205,11 +205,9 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 	var/command_radio = FALSE
 	var/cqc = FALSE
-	var/loadout_desc = "I'm dumb!"
 
 /datum/outfit/assaultops/cqb
 	name = "Assault Operative - CQB"
-	loadout_desc = "<span class='notice'>You have chosen the CQB class, your role is to deal with hand-to-hand combat!</span>"
 
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
@@ -222,7 +220,6 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/demoman
 	name = "Assault Operative - Demolitions"
-	loadout_desc = "<span class='notice'>You have chosen the Demolitions class, your role is to blow shit up!</span>"
 
 	belt = /obj/item/storage/belt/grenade/full
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -245,7 +242,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/medic
 	name = "Assault Operative - Medic"
-	loadout_desc = "<span class='notice'>You have chosen the Medic class, your role is providing medical aid to fellow operatives!</span>"
+
 
 	glasses = /obj/item/clothing/glasses/hud/health
 	belt = /obj/item/storage/belt/medical/paramedic
@@ -258,7 +255,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/heavy
 	name = "Assault Operative - Heavy Gunner"
-	loadout_desc = "<span class='notice'>You have chosen the Heavy class, your role is continuous suppression!</span>"
+
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -273,7 +270,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/assault
 	name = "Assault Operative - Assault"
-	loadout_desc = "<span class='notice'>You have chosen the Assault class, your role is general combat!</span>"
+
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -285,7 +282,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/sniper
 	name = "Assault Operative - Sniper"
-	loadout_desc = "<span class='notice'>You have chosen the Sniper class, your role is suppressive fire!</span>"
+
 
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
@@ -297,7 +294,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/outfit/assaultops/tech
 	name = "Assault Operative - Tech"
-	loadout_desc = "<span class='notice'>You have chosen the Tech class, your role is hacking!</span>"
+
 
 	suit = /obj/item/clothing/suit/space/hardsuit/shielded
 
@@ -392,21 +389,23 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 	use_power = IDLE_POWER_USE
 	req_access = list(ACCESS_SYNDICATE)
 	faction = list(ROLE_SYNDICATE)
+	mode = TURRET_STUN
 	max_integrity = 200
 	base_icon_state = "syndie"
+	stun_projectile = /obj/projectile/energy/electrode
+	stun_projectile_sound = 'sound/weapons/taser.ogg'
+	lethal_projectile = /obj/projectile/beam/laser/heavylaser
+	lethal_projectile_sound = 'sound/weapons/lasercannonfire.ogg'
 
 /obj/machinery/porta_turret/assaultops/assess_perp(mob/living/carbon/human/perp)
 	return 10
 
 /obj/machinery/porta_turret/assaultops/shuttle
-	scan_range = 7
-	req_access = list(ACCESS_SYNDICATE)
-	mode = TURRET_STUN
+	scan_range = 9
 	lethal_projectile = /obj/projectile/bullet/p50/penetrator/shuttle
 	lethal_projectile_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	stun_projectile = /obj/projectile/energy/electrode
 	stun_projectile_sound = 'sound/weapons/taser.ogg'
-	base_icon_state = "syndie"
 	max_integrity = 600
 	armor = list(MELEE = 50, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 0, RAD = 0, FIRE = 90, ACID = 90)
 

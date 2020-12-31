@@ -616,11 +616,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
 	},
-/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bq" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
 	icon_state = "pipe11-3";
 	dir = 6
@@ -758,6 +756,7 @@
 	icon_state = "tube";
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bB" = (
@@ -939,6 +938,8 @@
 /obj/item/storage/belt/military,
 /obj/item/storage/belt/military,
 /obj/item/storage/belt/military,
+/obj/machinery/power/apc/auto_name/south,
+/obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/armory)
 "bU" = (
@@ -1593,10 +1594,13 @@
 /obj/machinery/light/red,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/engineering)
-"eV" = (
-/obj/structure/cable,
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/hallway)
+"fV" = (
+/obj/machinery/porta_turret/assaultops/shuttle{
+	name = "Defense System Turret";
+	system_id = "cruiser_turrets_outer"
+	},
+/turf/closed/wall/r_wall/syndicate/cruiser,
+/area/shuttle/syndicate/cruiser/bridge)
 "gS" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/dark,
@@ -2037,6 +2041,9 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
+"ie" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/shuttle/syndicate/cruiser/engineering)
 "if" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/line{
@@ -2072,17 +2079,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
-"iH" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
-	icon_state = "pipe11-3";
-	dir = 9
-	},
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/hallway)
-"kd" = (
-/turf/open/floor/plating,
-/area/shuttle/syndicate/cruiser/engineering)
 "kX" = (
 /obj/machinery/turretid{
 	control_area = null;
@@ -2093,138 +2089,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/cruiser/hallway)
-"mg" = (
-/obj/effect/decal/cleanable/blood/old,
-/obj/structure/cable,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/brig)
-"mR" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/manifold/supplymain/hidden{
-	icon_state = "manifold-3";
-	dir = 1
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/hallway)
-"qc" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
-	icon_state = "pipe11-3";
-	dir = 4
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/armory)
-"qr" = (
-/obj/structure/cable,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/brig)
-"qP" = (
-/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
-	icon_state = "pipe11-3";
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/hallway)
-"rf" = (
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/shuttle/syndicate/cruiser/bridge)
-"xh" = (
-/obj/effect/spawner/scatter/grime,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/syndicate/cruiser/brig)
-"zc" = (
-/obj/structure/rack,
-/obj/effect/spawner/lootdrop/armory_contraband,
-/obj/item/pushbroom,
-/turf/open/floor/plating,
-/area/shuttle/syndicate/cruiser/hallway)
-"Bh" = (
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/item/storage/fancy/cigarettes/cigars/havana,
-/obj/item/lighter,
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/bridge)
-"CV" = (
-/obj/machinery/power/terminal,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
-	icon_state = "pipe11-3";
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/cruiser/engineering)
-"HE" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
-	name = "Defense System Turret";
-	system_id = "cruiser_turrets_outer"
-	},
-/turf/closed/wall/r_wall/syndicate/cruiser,
-/area/shuttle/syndicate/cruiser/bridge)
-"IQ" = (
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/shuttle/syndicate/cruiser/engineering)
-"KT" = (
+"py" = (
 /obj/machinery/porta_turret/assaultops/shuttle{
 	name = "Defense System Turret";
 	system_id = "cruiser_turrets_outer"
 	},
 /turf/closed/wall/r_wall/syndicate/cruiser,
 /area/shuttle/syndicate/cruiser/hallway)
-"Le" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
-	name = "Defense System Turret";
-	system_id = "cruiser_turrets_outer"
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/shuttle/syndicate/cruiser/engineering)
-"NK" = (
-/obj/machinery/turretid{
-	control_area = null;
-	name = "Internal Turret Control";
-	pixel_y = 30;
-	req_access = null;
-	req_access_txt = "150"
-	},
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/hallway)
-"Pq" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/mob/living/simple_animal/bot/medbot{
-	faction = list("Syndicate");
-	name = "Kahn"
-	},
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/medical)
-"Pu" = (
-/obj/structure/rack,
-/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
-/turf/open/floor/plating,
-/area/shuttle/syndicate/cruiser/hallway)
-"PL" = (
-/obj/machinery/porta_turret/assaultops/shuttle{
-	name = "Defense System Turret";
-	system_id = "cruiser_turrets_outer"
-	},
-/turf/closed/wall/r_wall/syndicate/cruiser,
-/area/shuttle/syndicate/cruiser/brig)
-"QD" = (
-/obj/machinery/light/warm/no_nightlight,
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/effect/spawner/randomsnackvend,
-/turf/open/floor/plasteel/dark,
-/area/shuttle/syndicate/cruiser/bridge)
-"RH" = (
+"pX" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -2238,11 +2110,57 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
-"Vg" = (
-/obj/effect/landmark/start/assaultop,
+"rQ" = (
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/syndicate/cruiser/engineering)
+"tM" = (
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/syndicate/cruiser/bridge)
+"vn" = (
+/obj/machinery/porta_turret/assaultops/shuttle{
+	name = "Defense System Turret";
+	system_id = "cruiser_turrets_outer"
+	},
+/turf/closed/wall/r_wall/syndicate/cruiser,
+/area/shuttle/syndicate/cruiser/brig)
+"vu" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
+	icon_state = "pipe11-3";
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/syndicate/cruiser/armory)
+"wa" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
+	icon_state = "pipe11-3";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/syndicate/cruiser/engineering)
+"xh" = (
+/obj/effect/spawner/scatter/grime,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/syndicate/cruiser/brig)
+"za" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/mob/living/simple_animal/bot/medbot{
+	faction = list("Syndicate");
+	name = "Kahn"
+	},
 /turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/medical)
+"zc" = (
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/armory_contraband,
+/obj/item/pushbroom,
+/turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/hallway)
-"Vt" = (
+"zm" = (
 /obj/machinery/turretid{
 	name = "DANGER: Outer Turret Control";
 	pixel_x = -32;
@@ -2259,13 +2177,93 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/bridge)
-"VL" = (
+"zG" = (
+/obj/structure/cable,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
+"Bh" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/item/storage/fancy/cigarettes/cigars/havana,
+/obj/item/lighter,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/bridge)
+"BP" = (
 /obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
 	icon_state = "pipe11-3";
 	dir = 10
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/cruiser/engineering)
+"EF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
+	icon_state = "pipe11-3";
+	dir = 9
+	},
+/obj/machinery/power/apc/auto_name/south,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
+"KF" = (
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/syndicate/cruiser/brig)
+"NK" = (
+/obj/machinery/turretid{
+	control_area = null;
+	name = "Internal Turret Control";
+	pixel_y = 30;
+	req_access = null;
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
+"Od" = (
+/turf/open/floor/plating,
+/area/shuttle/syndicate/cruiser/engineering)
+"Ox" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/syndicate/cruiser/brig)
+"Pu" = (
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/turf/open/floor/plating,
+/area/shuttle/syndicate/cruiser/hallway)
+"QD" = (
+/obj/machinery/light/warm/no_nightlight,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/spawner/randomsnackvend,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/bridge)
+"TR" = (
+/obj/machinery/atmospherics/pipe/simple/supplymain/hidden{
+	icon_state = "pipe11-3";
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
+"Vg" = (
+/obj/effect/landmark/start/assaultop,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/cruiser/hallway)
+"Yq" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold/supplymain/hidden{
+	icon_state = "manifold-3";
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/syndicate/cruiser/hallway)
 
 (1,1,1) = {"
 aa
@@ -2273,13 +2271,13 @@ aa
 aa
 aa
 ac
-HE
+fV
 as
 as
 as
 as
 as
-PL
+vn
 ca
 bj
 bj
@@ -2289,7 +2287,7 @@ ca
 ca
 bj
 ca
-PL
+vn
 hC
 hC
 dj
@@ -2304,8 +2302,8 @@ aa
 aa
 aa
 ac
-rf
-rf
+tM
+tM
 aS
 bg
 bp
@@ -2313,9 +2311,9 @@ by
 bO
 ca
 aw
-mg
+Ox
 bH
-qr
+KF
 bH
 ce
 ca
@@ -2326,7 +2324,7 @@ hD
 hN
 hT
 dj
-KT
+py
 aa
 aa
 aa
@@ -2335,9 +2333,9 @@ aa
 aa
 aa
 ac
-rf
-Vt
-rf
+tM
+zm
+tM
 aU
 bh
 bq
@@ -2366,13 +2364,13 @@ aa
 (4,1,1) = {"
 aa
 ac
-rf
+tM
 ax
 aH
 ac
 aV
 bi
-qc
+vu
 bA
 bT
 ca
@@ -2456,7 +2454,7 @@ dk
 dk
 dk
 dk
-Le
+ie
 do
 "}
 (7,1,1) = {"
@@ -2481,8 +2479,8 @@ aY
 aY
 bU
 aY
-qP
-iH
+TR
+EF
 dk
 ad
 ad
@@ -2504,7 +2502,7 @@ bt
 bD
 bV
 aZ
-RH
+pX
 aZ
 aZ
 aZ
@@ -2514,7 +2512,7 @@ aZ
 bV
 hj
 hs
-eV
+zG
 dk
 cS
 bF
@@ -2584,7 +2582,7 @@ an
 cU
 gU
 dk
-Le
+ie
 do
 "}
 (11,1,1) = {"
@@ -2612,7 +2610,7 @@ bU
 hu
 hJ
 dk
-kd
+Od
 da
 hd
 dk
@@ -2641,11 +2639,11 @@ dc
 gZ
 cI
 hl
-mR
+Yq
 hK
 dk
 bS
-CV
+wa
 hd
 dk
 if
@@ -2677,7 +2675,7 @@ dq
 aY
 dk
 cV
-CV
+wa
 hd
 dk
 ib
@@ -2692,7 +2690,7 @@ QD
 ac
 be
 bo
-Pq
+za
 bL
 bn
 cm
@@ -2712,7 +2710,7 @@ de
 cY
 he
 dn
-Le
+ie
 do
 "}
 (15,1,1) = {"
@@ -2741,7 +2739,7 @@ cK
 hk
 dk
 df
-VL
+BP
 cZ
 dk
 hZ
@@ -2753,7 +2751,7 @@ ac
 aE
 aE
 aE
-HE
+fV
 aR
 aR
 aR
@@ -2772,7 +2770,7 @@ cO
 aF
 di
 cO
-IQ
+rQ
 dy
 ho
 dk

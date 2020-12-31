@@ -200,8 +200,11 @@
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
 "aL" = (
-/obj/machinery/power/smes/magical,
 /obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/super,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 50
+	},
 /turf/open/floor/plating,
 /area/cruiser_dock)
 "aM" = (
@@ -524,6 +527,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/cruiser_dock/brig)
+"bI" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"bJ" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock)
 "bK" = (
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock/brig)
@@ -1637,13 +1652,6 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/brig)
-"ey" = (
-/obj/machinery/power/terminal{
-	dir = 8
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/cruiser_dock)
 "ez" = (
 /obj/structure/railing{
 	dir = 1
@@ -16774,9 +16782,9 @@ aa
 aa
 aa
 ak
-ab
 aL
-ab
+aL
+aL
 ak
 af
 af
@@ -17032,7 +17040,7 @@ aa
 aa
 ak
 ab
-ey
+ba
 ab
 ak
 af
@@ -18059,8 +18067,8 @@ aa
 aa
 aa
 ak
-ab
-ba
+bI
+bJ
 ab
 ak
 af
