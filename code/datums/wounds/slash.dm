@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL - MOVED - MEDICINE
+/*
 
 /*
 	Slashing wounds
@@ -145,7 +147,7 @@
 /datum/wound/slash/try_handling(mob/living/carbon/human/user)
 	if(user.pulling != victim || user.zone_selected != limb.body_zone || user.a_intent == INTENT_GRAB || !isfelinid(user) || !victim.can_inject(user, TRUE))
 		return FALSE
-	if(INTERACTING_WITH(user, victim))
+	if(DOING_INTERACTION_WITH_TARGET(user, victim))
 		to_chat(user, "<span class='warning'>You're already interacting with [victim]!</span>")
 		return
 	if(user.is_mouth_covered())
@@ -297,3 +299,4 @@
 	status_effect_type = /datum/status_effect/wound/slash/critical
 	scar_keyword = "slashcritical"
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE | MANGLES_FLESH)
+*/

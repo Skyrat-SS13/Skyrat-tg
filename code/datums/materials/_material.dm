@@ -34,16 +34,15 @@ Simple datum which is instanced once per type and is used for every object of sa
 	var/turf_sound_override
 	///what texture icon state to overlay
 	var/texture_layer_icon_state
-	///a cached filter for the texture icon
-	var/cached_texture_filter
+	///a cached icon for the texture filter
+	var/cached_texture_filter_icon
 	///What type of shard the material will shatter to
 	var/obj/item/shard_type
 
 /datum/material/New()
 	. = ..()
 	if(texture_layer_icon_state)
-		var/texture_icon = icon('icons/materials/composite.dmi', texture_layer_icon_state)
-		cached_texture_filter = filter(type="layer", icon=texture_icon, blend_mode = BLEND_INSET_OVERLAY)
+		cached_texture_filter_icon = icon('icons/materials/composite.dmi', texture_layer_icon_state)
 
 
 
@@ -56,7 +55,7 @@ Simple datum which is instanced once per type and is used for every object of sa
 			source.alpha = alpha
 		if(texture_layer_icon_state)
 			ADD_KEEP_TOGETHER(source, MATERIAL_SOURCE(src))
-			source.filters += cached_texture_filter
+			source.add_filter("material_texture_[name]",1,layering_filter(icon=cached_texture_filter_icon,blend_mode=BLEND_INSET_OVERLAY))
 
 	if(alpha < 255)
 		source.opacity = FALSE
@@ -125,7 +124,7 @@ Simple datum which is instanced once per type and is used for every object of sa
 		if(color)
 			source.remove_atom_colour(FIXED_COLOUR_PRIORITY, color)
 		if(texture_layer_icon_state)
-			source.filters -= cached_texture_filter
+			source.remove_filter("material_texture_[name]")
 			REMOVE_KEEP_TOGETHER(source, MATERIAL_SOURCE(src))
 		source.alpha = initial(source.alpha)
 
@@ -154,21 +153,21 @@ Simple datum which is instanced once per type and is used for every object of sa
 		RemoveElement(/datum/element/turf_z_transparency, FALSE)
 
 /**
-  *	This proc is called when the mat is found in an item that's consumed by accident. see /obj/item/proc/on_accidental_consumption.
-  * Arguments
-  * * M - person consuming the mat
-  * * S - (optional) item the mat is contained in (NOT the item with the mat itself)
-  */
+ *	This proc is called when the mat is found in an item that's consumed by accident. see /obj/item/proc/on_accidental_consumption.
+ * Arguments
+ * * M - person consuming the mat
+ * * S - (optional) item the mat is contained in (NOT the item with the mat itself)
+ */
 /datum/material/proc/on_accidental_mat_consumption(mob/living/carbon/M, obj/item/S)
 	return FALSE
 
 /** Returns the composition of this material.
-  *
-  * Mostly used for alloys when breaking down materials.
-  *
-  * Arguments:
-  * - amount: The amount of the material to break down.
-  * - breakdown_flags: Some flags dictating how exactly this material is being broken down.
-  */
+ *
+ * Mostly used for alloys when breaking down materials.
+ *
+ * Arguments:
+ * - amount: The amount of the material to break down.
+ * - breakdown_flags: Some flags dictating how exactly this material is being broken down.
+ */
 /datum/material/proc/return_composition(amount=1, breakdown_flags=NONE)
 	return list((src) = amount) // Yes we need the parenthesis, without them BYOND stringifies src into "src" and things break.

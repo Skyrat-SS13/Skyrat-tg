@@ -48,7 +48,8 @@
 	destination.dna.unique_enzymes = unique_enzymes
 	destination.dna.uni_identity = uni_identity
 	destination.dna.blood_type = blood_type
-	destination.set_species(species.type, icon_update=0)
+	//destination.set_species(species.type, icon_update=0) //ORIGINAL
+	destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.temporary_mutations = temporary_mutations.Copy()
@@ -63,6 +64,11 @@
 	new_dna.uni_identity = uni_identity
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	new_dna.mutant_bodyparts = mutant_bodyparts.Copy()
+	new_dna.body_markings = body_markings.Copy()
+	new_dna.update_body_size()
+	//SKYRAT EDIT ADDITION END
 	new_dna.species = new species.type
 	new_dna.real_name = real_name
 	new_dna.mutations = mutations.Copy()
@@ -225,9 +231,15 @@
 		update_instability(FALSE)
 		return
 
-/datum/dna/proc/is_same_as(datum/dna/D)
-	if(uni_identity == D.uni_identity && mutation_index == D.mutation_index && real_name == D.real_name)
-		if(species.type == D.species.type && features == D.features && blood_type == D.blood_type)
+/**
+ * Checks if two DNAs are practically the same by comparing their most defining features
+ *
+ * Arguments:
+ * * target_dna The DNA that we are comparing to
+ */
+/datum/dna/proc/is_same_as(datum/dna/target_dna)
+	if(uni_identity == target_dna.uni_identity && mutation_index == target_dna.mutation_index && real_name == target_dna.real_name)
+		if(species.type == target_dna.species.type && compare_list(features, target_dna.features) && blood_type == target_dna.blood_type)
 			return TRUE
 	return FALSE
 

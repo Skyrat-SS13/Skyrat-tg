@@ -2,7 +2,8 @@
 /obj/item/storage/box/syndicate
 
 /obj/item/storage/box/syndicate/bundle_a/PopulateContents()
-	switch (pickweight(list("recon" = 2, "bloodyspai" = 3, "stealth" = 2, "screwed" = 2, "sabotage" = 3, "guns" = 2, "murder" = 2, "implant" = 1, "hacker" = 3, "sniper" = 1, "metaops" = 1)))
+	//switch (pickweight(list("recon" = 2, "bloodyspai" = 3, "stealth" = 2, "screwed" = 2, "sabotage" = 3, "guns" = 2, "murder" = 2, "implant" = 1, "hacker" = 3, "sniper" = 1, "metaops" = 1))) //ORIGINAL
+	switch (pickweight(list("recon" = 2, "bloodyspai" = 3, "stealth" = 2, "screwed" = 2, "guns" = 2, "murder" = 2, "implant" = 1, "hacker" = 3, "sniper" = 1, "metaops" = 1))) //SKYRAT EDIT CHANGE
 		if("recon")
 			new /obj/item/clothing/glasses/thermal/xray(src) // ~8 tc?
 			new /obj/item/storage/briefcase/launchpad(src) //6 tc

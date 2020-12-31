@@ -5,7 +5,8 @@
 	name = "wall"
 	desc = "A huge chunk of metal used to separate rooms."
 	anchored = TRUE
-	icon = 'icons/turf/walls/wall.dmi'
+	//icon = 'icons/turf/walls/wall.dmi' //ORIGINAL
+	icon = 'modular_skyrat/modules/aesthetics/walls/icons/wall.dmi' //SKYRAT EDIT CHANGE - AESTHETICS
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	layer = LOW_OBJ_LAYER
@@ -133,7 +134,8 @@
 /obj/structure/falsewall/reinforced
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
-	icon = 'icons/turf/walls/reinforced_wall.dmi'
+	//icon = 'icons/turf/walls/reinforced_wall.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/walls/icons/reinforced_wall.dmi' //SKYRAT EDIT CHANGE - AESTHETICS
 	icon_state = "reinforced_wall-0"
 	base_icon_state = "reinforced_wall"
 	walltype = /turf/closed/wall/r_wall
@@ -304,7 +306,7 @@
 	mineral = /obj/item/stack/rods
 	mineral_amount = 5
 	walltype = /turf/closed/wall/mineral/iron
-	base_icon_state = "icerock_wall"
+	base_icon_state = "iron_wall"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_IRON_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_IRON_WALLS)

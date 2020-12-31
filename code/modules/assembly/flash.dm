@@ -123,16 +123,16 @@
 	set_light_on(FALSE)
 
 /**
-  * Handles actual flashing part of the attack
-  *
-  *	This proc is awful in every sense of the way, someone should definately refactor this whole code.
-  * Arguments:
-  * * M - Victim
-  * * user - Attacker
-  *	* power - handles the amount of confusion it gives you
-  * * targeted - determines if it was aoe or targeted
-  * * generic_message - checks if it should display default message.
-  */
+ * Handles actual flashing part of the attack
+ *
+ *	This proc is awful in every sense of the way, someone should definately refactor this whole code.
+ * Arguments:
+ * * M - Victim
+ * * user - Attacker
+ *	* power - handles the amount of confusion it gives you
+ * * targeted - determines if it was aoe or targeted
+ * * generic_message - checks if it should display default message.
+ */
 /obj/item/assembly/flash/proc/flash_carbon(mob/living/carbon/M, mob/user, power = 15, targeted = TRUE, generic_message = FALSE)
 	if(!istype(M))
 		return
@@ -157,25 +157,19 @@
 			if(M.get_confusion() < power)
 				var/diff = power * CONFUSION_STACK_MAX_MULTIPLIER - M.get_confusion()
 				M.add_confusion(min(power, diff))
-				// Special check for if we're a revhead. Special cases to attempt conversion.
-				if(converter)
-					// Did we try to flash them from behind?
-					if(deviation == DEVIATION_FULL)
-						// If we did and we're on help intent, fail with a feedback message and return.
-						if(converter.owner.current.a_intent == INTENT_HELP)
-							to_chat(user, "<span class='notice'>You try to use the tacticool tier, lean over the shoulder technique to blind [M] from behind but your poor combat stance causes you to stumble!</span>")
-							visible_message("<span class='warning'>[user] fails to blind [M] with the flash!</span>","<span class='danger'>[user] fails to blind you with the flash!</span>")
-							return
-						// Otherwise, tacticool leaning technique engaged for sideways-stun power.
-						to_chat(user, "<span class='notice'>You use the tacticool tier, lean over the shoulder technique to blind [M] with a flash!</span>")
-						deviation = DEVIATION_PARTIAL
-					// Convert them. Terribly.
-					terrible_conversion_proc(M, user)
-					visible_message("<span class='danger'>[user] blinds [M] with the flash!</span>","<span class='userdanger'>[user] blinds you with the flash!</span>")
+			// Special check for if we're a revhead. Special cases to attempt conversion.
+			if(converter)
+				// Did we try to flash them from behind?
+				if(deviation == DEVIATION_FULL)
+					// Headrevs can use a tacticool leaning technique so that they don't have to worry about facing for their conversions.
+					to_chat(user, "<span class='notice'>You use the tacticool tier, lean over the shoulder technique to blind [M] with a flash!</span>")
+					deviation = DEVIATION_PARTIAL
+				// Convert them. Terribly.
+				terrible_conversion_proc(M, user)
+				visible_message("<span class='danger'>[user] blinds [M] with the flash!</span>","<span class='userdanger'>[user] blinds you with the flash!</span>")
 			//easy way to make sure that you can only long stun someone who is facing in your direction
 			M.adjustStaminaLoss(rand(80,120)*(1-(deviation*0.5)))
 			M.Paralyze(rand(25,50)*(1-(deviation*0.5)))
-
 		else if(user)
 			visible_message("<span class='warning'>[user] fails to blind [M] with the flash!</span>","<span class='danger'>[user] fails to blind you with the flash!</span>")
 		else
@@ -186,13 +180,13 @@
 			M.add_confusion(min(power, diff))
 
 /**
-  * Handles the directionality of the attack
-  *
-  *	Returns the amount of 'deviation', 0 being facing eachother, 1 being sideways, 2 being facing away from eachother.
-  * Arguments:
-  * * victim - Victim
-  * * attacker - Attacker
-  */
+ * Handles the directionality of the attack
+ *
+ *	Returns the amount of 'deviation', 0 being facing eachother, 1 being sideways, 2 being facing away from eachother.
+ * Arguments:
+ * * victim - Victim
+ * * attacker - Attacker
+ */
 /obj/item/assembly/flash/proc/calculate_deviation(mob/victim, atom/attacker)
 	// Tactical combat emote-spinning should not counter intended gameplay mechanics.
 	// This trumps same-loc checks to discourage floor spinning in general to counter flashes.
@@ -271,12 +265,12 @@
 	AOE_flash()
 
 /**
-  * Converts the victim to revs
-  *
-  * Arguments:
-  * * victim - Victim
-  * * aggressor - Attacker
-  */
+ * Converts the victim to revs
+ *
+ * Arguments:
+ * * victim - Victim
+ * * aggressor - Attacker
+ */
 /obj/item/assembly/flash/proc/terrible_conversion_proc(mob/living/carbon/victim, mob/aggressor)
 	if(!istype(victim) || victim.stat == DEAD)
 		return

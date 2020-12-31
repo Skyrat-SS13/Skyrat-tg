@@ -18,7 +18,7 @@
 		else
 			return TRUE
 
-/datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/H, icon_state)
+/datum/sprite_accessory/genital/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
 	if(gen)
 		return  "[gen.sprite_suffix]"
@@ -168,7 +168,7 @@
 	. = ..()
 
 
-/datum/sprite_accessory/genital/vagina/get_special_render_state(mob/living/carbon/human/H, icon_state)
+/datum/sprite_accessory/genital/vagina/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/genital/gen = H.getorganslot(associated_organ_slot)
 	if(gen)
 		return "[gen.sprite_suffix]"

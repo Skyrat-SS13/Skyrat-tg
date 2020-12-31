@@ -13,8 +13,10 @@
 	visible = FALSE
 	flags_1 = ON_BORDER_1
 	opacity = FALSE
+	pass_flags_self = PASSGLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
+	network_id = NETWORK_DOOR_AIRLOCKS
 	var/obj/item/electronics/airlock/electronics = null
 	var/reinf = 0
 	var/shards = 2
@@ -37,9 +39,7 @@
 	if(cable)
 		debris += new /obj/item/stack/cable_coil(src, cable)
 
-/obj/machinery/door/window/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/ntnet_interface)
+	RegisterSignal(src, COMSIG_COMPONENT_NTNET_RECEIVE, .proc/ntnet_receive)
 
 /obj/machinery/door/window/Destroy()
 	density = FALSE
@@ -101,8 +101,8 @@
 
 /obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
-	if(istype(mover) && (mover.pass_flags & PASSGLASS))
-		return TRUE
+	if(.)
+		return
 	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
 		return
 	if(istype(mover, /obj/structure/window))
@@ -128,13 +128,12 @@
 /obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
 	return !density || (dir != to_dir) || (check_access(ID) && hasPower())
 
-/obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target)
-	if(istype(mover) && (mover.pass_flags & PASSGLASS))
-		return 1
+/obj/machinery/door/window/CheckExit(atom/movable/mover, turf/target)
+	if((pass_flags_self & mover.pass_flags) || ((pass_flags_self & LETPASSTHROW) && mover.throwing))
+		return TRUE
 	if(get_dir(loc, target) == dir)
 		return !density
-	else
-		return 1
+	return TRUE
 
 /obj/machinery/door/window/open(forced=FALSE)
 	if (operating) //doors can still open when emag-disabled
@@ -235,7 +234,7 @@
 		if(I.tool_behaviour == TOOL_CROWBAR)
 			if(panel_open && !density && !operating)
 				user.visible_message("<span class='notice'>[user] removes the electronics from the [name].</span>", \
-									 "<span class='notice'>You start to remove electronics from the [name]...</span>")
+					"<span class='notice'>You start to remove electronics from the [name]...</span>")
 				if(I.use_tool(src, user, 40, volume=50))
 					if(panel_open && !density && !operating && loc)
 						var/obj/structure/windoor_assembly/WA = new /obj/structure/windoor_assembly(loc)
@@ -309,18 +308,14 @@
 /obj/machinery/door/window/check_access_ntnet(datum/netdata/data)
 	return !requiresID() || ..()
 
-/obj/machinery/door/window/ntnet_receive(datum/netdata/data)
+/obj/machinery/door/window/proc/ntnet_receive(datum/source, datum/netdata/data)
 	// Check if the airlock is powered.
 	if(!hasPower())
 		return
 
-	// Check packet access level.
-	if(!check_access_ntnet(data))
-		return
-
 	// Handle received packet.
-	var/command = lowertext(data.data["data"])
-	var/command_value = lowertext(data.data["data_secondary"])
+	var/command = data.data["data"]
+	var/command_value = data.data["data_secondary"]
 	switch(command)
 		if("open")
 			if(command_value == "on" && !density)

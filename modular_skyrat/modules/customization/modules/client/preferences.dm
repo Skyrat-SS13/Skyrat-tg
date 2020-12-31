@@ -1,3 +1,22 @@
+// i shall taint your pretty preferences file with bobcode
+GLOBAL_LIST_INIT(food, list(
+		"Meat" = MEAT,
+		"Vegetables" = VEGETABLES,
+		"Raw" = RAW,
+		"Junk Food" = JUNKFOOD,
+		"Grain" = GRAIN,
+		"Fruit" = FRUIT,
+		"Dairy" = DAIRY,
+		"Fried" = FRIED,
+		"Alcohol" = ALCOHOL,
+		"Sugar" = SUGAR,
+		"Gross" = GROSS,
+		"Toxic" = TOXIC,
+		"Pineapple" = PINEAPPLE,
+		"Breakfast" = BREAKFAST,
+		"Cloth" = CLOTH
+	))
+
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -83,6 +102,10 @@
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/list/randomise = list(RANDOM_UNDERWEAR = FALSE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = FALSE, RANDOM_SOCKS = FALSE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
+	var/list/foodlikes = list()
+	var/list/fooddislikes = list()
+	var/maxlikes = 4
+	var/maxdislikes = 6
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -138,6 +161,8 @@
 
 	/// If we have persistent scars enabled
 	var/persistent_scars = TRUE
+	///If we want to broadcast deadchat connect/disconnect messages
+	var/broadcast_login_logout = FALSE
 	/// We have 5 slots for persistent scars, if enabled we pick a random one to load (empty by default) and scars at the end of the shift if we survived as our original person
 	var/list/scars_list = list("1" = "", "2" = "", "3" = "", "4" = "", "5" = "")
 	/// Which of the 5 persistent scar slots we randomly roll to load for this round, if enabled. Actually rolled in [/datum/preferences/proc/load_character(slot)]
@@ -320,6 +345,12 @@
 						dat += "<center><h2>Quirk Setup</h2>"
 						dat += "<a href='?_src_=prefs;preference=trait;task=menu'>Configure Quirks</a><br></center>"
 						dat += "<center><b>Current Quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
+
+					dat += "<center><h2>Food Setup</h2>"
+					dat += "<a href='?_src_=prefs;preference=food;task=menu'>Configure Foods</a></center>"
+					dat += "<center><b>Current Likings:</b> [foodlikes.len ? foodlikes.Join(", ") : "None"]</center>"
+					dat += "<center><b>Current Dislikings:</b> [fooddislikes.len ? fooddislikes.Join(", ") : "None"]</center>"
+
 					dat += "<h2>Identity</h2>"
 					dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 					if(is_banned_from(user.ckey, "Appearance"))
@@ -388,6 +419,7 @@
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
 					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
+					// Carbon flavor text
 					dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 					if(length(features["flavor_text"]) <= 40)
 						if(!length(features["flavor_text"]))
@@ -396,6 +428,18 @@
 							dat += "[html_encode(features["flavor_text"])]"
 					else
 						dat += "[copytext(html_encode(features["flavor_text"]), 1, 40)]..."
+
+					dat += "<br>"
+
+					// Silicon flavor text
+					dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
+					if(length(features["silicon_flavor_text"]) <= 40)
+						if(!length(features["silicon_flavor_text"]))
+							dat += "\[...\]"
+						else
+							dat += "[html_encode(features["silicon_flavor_text"])]"
+					else
+						dat += "[copytext(html_encode(features["silicon_flavor_text"]), 1, 40)]..."
 
 					dat +=	"<h2>OOC Preferences</h2>"
 					dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
@@ -920,6 +964,10 @@
 					button_name = GHOST_OTHERS_SIMPLE_NAME
 
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
+			dat += "<br>"
+
+			dat += "<b>Broadcast Login/Logout:</b> <a href='?_src_=prefs;preference=broadcast_login_logout'>[broadcast_login_logout ? "Broadcast" : "Silent"]</a><br>"
+			dat += "<b>See Login/Logout Messages:</b> <a href='?_src_=prefs;preference=hear_login_logout'>[(chat_toggles & CHAT_LOGIN_LOGOUT) ? "Allowed" : "Muted"]</a><br>"
 			dat += "<br>"
 
 			dat += "<b>Income Updates:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
@@ -1508,6 +1556,45 @@
 				SetQuirks(user)
 		return TRUE
 
+	else if(href_list["preference"] == "food")
+		switch(href_list["task"])
+			if("close")
+				user << browse(null, "window=mob_occupation")
+				ShowChoices(user)
+			if("update")
+				if(href_list["like"])
+					for(var/F in GLOB.food)
+						if(F == href_list["like"])
+							if(!foodlikes[F])
+								if(foodlikes.len < maxlikes)
+									foodlikes[F] = GLOB.food[F]
+								if(fooddislikes[F])
+									fooddislikes.Remove(F)
+							else
+								foodlikes.Remove(F)
+				if(href_list["dislike"])
+					for(var/F in GLOB.food)
+						if(F == href_list["dislike"])
+							if(!fooddislikes[F])
+								if(fooddislikes.len < maxdislikes)
+									fooddislikes[F] = GLOB.food[F]
+								if(foodlikes[F])
+									foodlikes.Remove(F)
+							else
+								fooddislikes.Remove(F)
+				if(foodlikes.len > maxlikes)
+					foodlikes.Cut(maxlikes+1)
+				if(fooddislikes.len > maxdislikes)
+					foodlikes.Cut(maxdislikes+1)
+				SetFood(user)
+			if("reset")
+				foodlikes = list()
+				fooddislikes = list()
+				SetFood(user)
+			else
+				SetFood(user)
+		return TRUE
+
 	switch(href_list["task"])
 		if("augment_style")
 			needs_update = TRUE
@@ -1569,7 +1656,7 @@
 			else //We attempt to buy it
 				if(LI.cost > loadout_points)
 					return
-				if(LI.ckeywhitelist && !LI.ckeywhitelist[user.ckey] && !user.client.holder)
+				if(LI.ckeywhitelist && !(user.ckey in LI.ckeywhitelist) && !user.client.holder)
 					return
 				loadout_points -= LI.cost
 				loadout[LI.path] = LI.default_customization() //As in "No extra information associated"
@@ -1647,7 +1734,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
 								possible_candidates -= name
 
 					if(possible_candidates.len == 0)
@@ -1679,7 +1766,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
 								possible_candidates -= name
 					if(possible_candidates.len == 0)
 						return
@@ -1688,9 +1775,13 @@
 						if(!body_markings[zone] || !body_markings[zone][changing_name])
 							return
 						var/held_index = LAZYFIND(body_markings[zone], changing_name)
-						body_markings[zone] -= changing_name
 						var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
-						var/marking_content = BD.get_default_color(features, pref_species)
+						var/marking_content
+						if(allow_advanced_colors)
+							marking_content = body_markings[zone][changing_name]
+						else
+							marking_content = BD.get_default_color(features, pref_species)
+						body_markings[zone] -= changing_name
 						body_markings[zone].Insert(held_index, desired_marking)
 						body_markings[zone][desired_marking] = marking_content
 		if("change_genitals")
@@ -1705,18 +1796,17 @@
 				if("penis_taur_mode")
 					features["penis_taur_mode"] = !features["penis_taur_mode"]
 				if("penis_size")
-					var/new_length = input(user, "Choose your penis length:\n(2-20 in inches)", "Character Preference") as num|null
+					var/new_length = input(user, "Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] in inches)", "Character Preference") as num|null
 					if(new_length)
-						features["penis_size"] = clamp(round(new_length, 1), 2, 20)
+						features["penis_size"] = clamp(round(new_length, 1), PENIS_MIN_LENGTH, PENIS_MAX_LENGTH)
 						if(features["penis_girth"] >= new_length)
 							features["penis_girth"] = new_length - 1
 				if("penis_sheath")
-					var/list/sheath_choice_list = list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
-					var/new_sheath = input(user, "Choose your penis sheath", "Character Preference") as null|anything in sheath_choice_list
+					var/new_sheath = input(user, "Choose your penis sheath", "Character Preference") as null|anything in SHEATH_MODES
 					if(new_sheath)
 						features["penis_sheath"] = new_sheath
 				if("penis_girth")
-					var/max_girth = 15
+					var/max_girth = PENIS_MAX_GIRTH
 					if(features["penis_size"] >= max_girth)
 						max_girth = features["penis_size"]
 					var/new_girth = input(user, "Choose your penis girth:\n(1-[max_girth] (based on length) in inches)", "Character Preference") as num|null
@@ -1858,6 +1948,11 @@
 					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Flavor Text", features["flavor_text"]) as message|null //Skyrat edit, removed stripped_multiline_input()
 					if(!isnull(msg))
 						features["flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+
+				if("silicon_flavor_text")
+					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null
+					if(!isnull(msg))
+						features["silicon_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("ooc_prefs")
 					var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
@@ -2513,6 +2608,12 @@
 				if("ghost_laws")
 					chat_toggles ^= CHAT_GHOSTLAWS
 
+				if("hear_login_logout")
+					chat_toggles ^= CHAT_LOGIN_LOGOUT
+
+				if("broadcast_login_logout")
+					broadcast_login_logout = !broadcast_login_logout
+
 				if("income_pings")
 					chat_toggles ^= CHAT_BANKCARD
 
@@ -2812,3 +2913,45 @@
 		return TRUE
 	else
 		return FALSE
+
+// old bobcode copypaste, handle with caution
+/datum/preferences/proc/SetFood(mob/user)
+	var/list/dat = list()
+	dat += "<center><b>Choose food setup</b></center><br>"
+	dat += "<div align='center'>Click on \"like\" to add a food type to your likings. Click on \"dislike\" to add it to your dislikings.<br>"
+	dat += "Food types cannot be liked and disliked at the same time.<br>"
+	dat += "If a food type is already liked or disliked, simply click the appropriate button again to remove it from your like or dislike list.<br>"
+	dat += "Having no food preferences means you'll just default your species' standard instead.</div><br>"
+	dat += "<center><a href='?_src_=prefs;preference=food;task=close'>Done</a></center>"
+	dat += "<hr>"
+	dat += "<center><b>Current Likings:</b> [foodlikes.len ? foodlikes.Join(", ") : "None"] ([foodlikes.len]/[maxlikes])</center><br>"
+	dat += "<center><b>Current Dislikings:</b> [fooddislikes.len ? fooddislikes.Join(", ") : "None"] ([fooddislikes.len]/[maxdislikes])</center>"
+	dat += "<hr>"
+	for(var/F in GLOB.food)
+		var/likes = FALSE
+		var/dislikes = FALSE
+		for(var/food in foodlikes)
+			if(food == F)
+				likes = TRUE
+		for(var/food in fooddislikes)
+			if(food == F)
+				dislikes = TRUE
+		var/font_color = "#8686ff"
+		if(likes)
+			dat += "<center><p style='color: [font_color];'><b>[F]: </p></b>"
+			dat += "<a style='background-color: #32c232;' href='?_src_=prefs;preference=food;task=update;like=[F]'>Like</a>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;dislike=[F]'>Dislike</a></center>"
+		else if(dislikes)
+			dat += "<center><p style='color: [font_color];'><b>[F]: </p></b>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;like=[F]'>Like</a>"
+			dat += "<a style='background-color: #ff1a1a;' href='?_src_=prefs;preference=food;task=update;dislike=[F]'>Dislike</a></center>"
+		else
+			dat += "<center><p style='color: [font_color];'><b>[F]: </p></b>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;like=[F]'>Like</a>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;dislike=[F]'>Dislike</a></center>"
+	dat += "<br><center><a href='?_src_=prefs;preference=food;task=reset'>Reset Food Preferences</a></center>"
+
+	var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>Food Preferences</div>", 900, 600) //no reason not to reuse the occupation window, as it's cleaner that way
+	popup.set_window_options("can_close=0")
+	popup.set_content(dat.Join())
+	popup.open(FALSE)

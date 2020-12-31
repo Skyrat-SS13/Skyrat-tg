@@ -117,6 +117,11 @@
 	var/mob/living/old_current = current
 	if(current)
 		current.transfer_observers_to(new_character)	//transfer anyone observing the old character to the new one
+	//SKYRAT CHANGE ADDITION BEGIN - AMBITIONS
+	if(my_ambitions)
+		remove_verb(current, /mob/proc/view_ambitions)
+		add_verb(new_character, /mob/proc/view_ambitions)
+	//SKYRAT CHANGE ADDITION END
 	current = new_character								//associate ourself with our new body
 	new_character.mind = src							//and associate our new body with ourself
 	for(var/a in antag_datums)	//Makes sure all antag datums effects are applied in the new body
@@ -258,6 +263,15 @@
 		antag_team.add_member(src)
 	INVOKE_ASYNC(A, /datum/antagonist.proc/on_gain)
 	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+	if(A.uses_ambitions)
+		if(!my_ambitions)
+			my_ambitions = new(src)
+			add_verb(current, /mob/proc/view_ambitions)
+		//If we already have ambitions done, call the add proc to give us the proper powers/uplinks
+		if(my_ambitions.submitted)
+			A.ambitions_add()
+	//SKYRAT EDIT ADDITION END
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -266,6 +280,10 @@
 	var/datum/antagonist/A = has_antag_datum(datum_type)
 	if(A)
 		A.on_removal()
+		//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+		if(A.uses_ambitions && my_ambitions.submitted)
+			A.ambitions_removal()
+		//SKYRAT EDIT ADDITION END
 		return TRUE
 
 
@@ -346,6 +364,10 @@
 	var/mob/living/carbon/human/traitor_mob = current
 	if (!istype(traitor_mob))
 		return
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS (no doubling uplinks)
+	if(find_syndicate_uplink())
+		return
+	//SKYRAT EDIT ADDITION END
 
 	var/list/all_contents = traitor_mob.GetAllContents()
 	var/obj/item/pda/PDA = locate() in all_contents
@@ -358,6 +380,7 @@
 		P = locate() in all_contents
 
 	var/obj/item/uplink_loc
+	var/implant = FALSE
 
 	if(traitor_mob.client && traitor_mob.client.prefs)
 		switch(traitor_mob.client.prefs.uplink_spawn_loc)
@@ -375,20 +398,13 @@
 					uplink_loc = P
 			if(UPLINK_PEN)
 				uplink_loc = P
+			if(UPLINK_IMPLANT)
+				implant = TRUE
 
-	if(!uplink_loc) // We've looked everywhere, let's just give you a pen
-		if(istype(traitor_mob.back,/obj/item/storage)) //ok buddy you better have a backpack!
-			P = new /obj/item/pen(traitor_mob.back)
-		else
-			P = new /obj/item/pen(traitor_mob.loc)
-			traitor_mob.put_in_hands(P) // I hope you don't have arms and your traitor pen gets stolen for all this trouble you've caused.
-		uplink_loc = P
+	if(!uplink_loc) // We've looked everywhere, let's just implant you
+		implant = TRUE
 
-	if (!uplink_loc)
-		if(!silent)
-			to_chat(traitor_mob, "<span class='boldwarning'>Unfortunately, [employer] wasn't able to get you an Uplink.</span>")
-		. = 0
-	else
+	if (!implant)
 		. = uplink_loc
 		var/datum/component/uplink/U = uplink_loc.AddComponent(/datum/component/uplink, traitor_mob.key)
 		if(!U)
@@ -406,6 +422,13 @@
 			uplink_owner.antag_memory += U.unlock_note + "<br>"
 		else
 			traitor_mob.mind.store_memory(U.unlock_note)
+	else
+		var/obj/item/implant/uplink/starting/I = new(traitor_mob)
+		I.implant(traitor_mob, null, silent = TRUE)
+		if(!silent)
+			to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly implanted you with a Syndicate Uplink (although uplink implants cost valuable TC, so you will have slightly less). Simply trigger the uplink to access it.</span>")
+		return I
+
 
 
 //Link a new mobs mind to the creator of said mob. They will join any team they are currently on, and will only switch teams when their creator does.
@@ -611,7 +634,7 @@
 		switch(href_list["common"])
 			if("undress")
 				for(var/obj/item/W in current)
-					current.dropItemToGround(W, TRUE) //The 1 forces all items to drop, since this is an admin undress.
+					current.dropItemToGround(W, TRUE) //The TRUE forces all items to drop, since this is an admin undress.
 			if("takeuplink")
 				take_uplink()
 				memory = null//Remove any memory they may have had.
@@ -634,6 +657,13 @@
 
 	else if (href_list["obj_announce"])
 		announce_objectives()
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+	if (href_list["ambitions"])
+		if(!my_ambitions)
+			return
+		//It's admin viewing the user's ambitions. The user can view them through a verb.
+		my_ambitions.ShowPanel(usr, TRUE)
+	//SKYRAT EDIT ADDITION END
 
 	//Something in here might have changed your mob
 	if(self_antagging && (!usr || !usr.client) && current.client)

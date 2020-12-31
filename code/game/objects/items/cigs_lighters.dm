@@ -137,7 +137,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/chem_volume = 30
 	var/smoke_all = FALSE /// Should we smoke all of the chems in the cig before it runs out. Splits each puff to take a portion of the overall chems so by the end you'll always have consumed all of the chems inside.
 	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
-	var/lung_harm = 1 //How bad it is for you
+	//var/lung_harm = 1 //How bad it is for you //ORIGINAL
+	var/lung_harm = 0.5 //How bad it is for you //SKYRAT EDIT CHANGE
 
 /obj/item/clothing/mask/cigarette/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is huffing [src] as quickly as [user.p_they()] can! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer.</span>")
@@ -336,10 +337,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A Carp Classic brand cigarette. A small label on its side indicates that it does NOT contain carpotoxin."
 
 /obj/item/clothing/mask/cigarette/carp/Initialize()
-    . = ..()
-    if(!prob(5))
-        return
-    reagents?.add_reagent(/datum/reagent/toxin/carpotoxin , 3) // They lied
+	. = ..()
+	if(!prob(5))
+		return
+	reagents?.add_reagent(/datum/reagent/toxin/carpotoxin , 3) // They lied
 
 /obj/item/clothing/mask/cigarette/syndicate
 	desc = "An unknown brand cigarette."

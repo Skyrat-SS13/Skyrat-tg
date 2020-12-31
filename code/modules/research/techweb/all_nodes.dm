@@ -10,7 +10,7 @@
 	// Default research tech, prevents bricking
 	design_ids = list("basic_matter_bin", "basic_cell", "basic_scanning", "basic_capacitor", "basic_micro_laser", "micro_mani", "basic_electrolite", "c-reader", "desttagger", "salestagger", "handlabel", "packagewrap",
 					"destructive_analyzer", "circuit_imprinter", "experimentor", "rdconsole", "bepis", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab",
-					"paystand", "space_heater", "bucket", "sec_rshot", "sec_beanbag_slug", "sec_bshot", "sec_slug", "sec_Islug", "sec_dart", "sec_38", "rglass", "plasteel",
+					"paystand", "space_heater", "bucket", "sec_rshot", "sec_beanbag_slug", "sec_Islug", "sec_dart", "sec_38", "rglass", "plasteel",
 					"plastitanium", "plasmaglass", "plasmareinforcedglass", "titaniumglass", "plastitaniumglass", "plastic_knife", "plastic_fork", "plastic_spoon", "conveyor_belt", "conveyor_switch")
 
 /datum/techweb_node/mmi
@@ -83,7 +83,7 @@
 	display_name = "Biological Processing"
 	description = "From slimes to kitchens."
 	prereq_ids = list("biotech")
-	design_ids = list("smartfridge", "gibber", "deepfryer", "monkey_recycler", "processor", "gibber", "microwave", "reagentgrinder", "dish_drive", "fat_sucker")
+	design_ids = list("smartfridge", "gibber", "deepfryer", "monkey_recycler", "processor", "gibber", "microwave", "reagentgrinder", "dish_drive", "fat_sucker", "griddle")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /////////////////////////Advanced Surgery/////////////////////////
@@ -288,7 +288,8 @@
 	display_name = "Cyborg Upgrades: Utility"
 	description = "Utility upgrades for cyborgs."
 	prereq_ids = list("adv_robotics")
-	design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_disablercooler", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt")
+	//design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_disablercooler", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //ORIGINAL
+	design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_shrink", "borg_upgrade_disablercooler", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //SKYRAT EDIT CHANGE - CYBORG
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
 /datum/techweb_node/cyborg_upg_engiminer
@@ -492,7 +493,8 @@
 	display_name = "Advanced Mining Technology"
 	description = "Efficiency Level 127"	//dumb mc references
 	prereq_ids = list("basic_mining", "adv_engi", "adv_power", "adv_plasma")
-	design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv")
+	//design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv") - ORIGINAL
+	design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv", "ripleyupgradef") //SKYRAT EDIT CHANGE - MKF
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/janitor
@@ -576,14 +578,6 @@
 	design_ids = list("nuclear_gun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
-/datum/techweb_node/medical_weapons
-	id = "medical_weapons"
-	display_name = "Medical Weaponry"
-	description = "Weapons using medical technology."
-	prereq_ids = list("adv_biotech", "weaponry")
-	design_ids = list("rapidsyringe")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-
 /datum/techweb_node/beam_weapons
 	id = "beam_weapons"
 	display_name = "Beam Weaponry"
@@ -620,7 +614,7 @@
 	id = "exotic_ammo"
 	display_name = "Exotic Ammunition"
 	description = "They won't know what hit em."
-	prereq_ids = list("adv_weaponry", "medical_weapons")
+	prereq_ids = list("adv_weaponry")
 	design_ids = list("techshotshell", "c38_hotshot", "c38_iceblox")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -962,7 +956,7 @@
 	display_name = "Illegal Technology"
 	description = "Dangerous research used to create dangerous objects."
 	prereq_ids = list("adv_engi", "adv_weaponry", "explosive_weapons")
-	design_ids = list("decloner", "borg_syndicate_module", "ai_cam_upgrade", "suppressor", "largecrossbow", "donksofttoyvendor", "donksoft_refill", "advanced_camera")
+	design_ids = list("decloner", "borg_syndicate_module", "ai_cam_upgrade", "suppressor", "largecrossbow", "donksofttoyvendor", "donksoft_refill", "advanced_camera", "rapidsyringe")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	hidden = TRUE
 

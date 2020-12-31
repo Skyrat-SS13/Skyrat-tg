@@ -500,6 +500,8 @@
 	UnregisterSignal(quirk_holder, list(COMSIG_MOB_EYECONTACT, COMSIG_MOB_EXAMINATE))
 
 /datum/quirk/social_anxiety/on_process(delta_time)
+	if(HAS_TRAIT(quirk_holder, TRAIT_FEARLESS))
+		return
 	var/nearby_people = 0
 	for(var/mob/living/carbon/human/H in oview(3, quirk_holder))
 		if(H.client)
@@ -579,7 +581,7 @@
 	if (!reagent_type)
 		reagent_type = pick(drug_list)
 	reagent_instance = new reagent_type()
-	H.reagents.addiction_list.Add(reagent_instance)
+	LAZYADD(H.reagents.addiction_list, reagent_instance)
 	var/current_turf = get_turf(quirk_holder)
 	if (!drug_container_type)
 		drug_container_type = /obj/item/storage/pill_bottle
@@ -628,7 +630,7 @@
 				reagent_instance = new reagent_type()
 			else
 				reagent_instance.addiction_stage = 0
-			H.reagents.addiction_list += reagent_instance
+			LAZYADD(H.reagents.addiction_list, reagent_instance)
 			to_chat(quirk_holder, "<span class='danger'>You thought you kicked it, but you suddenly feel like you need [reagent_instance.name] again...</span>")
 
 /datum/quirk/junkie/smoker
@@ -732,6 +734,32 @@
 		if(DT_PROB(10, delta_time))
 			carbon_quirk_holder.vomit()
 			carbon_quirk_holder.adjustOrganLoss(pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_APPENDIX,ORGAN_SLOT_LUNGS,ORGAN_SLOT_HEART,ORGAN_SLOT_LIVER,ORGAN_SLOT_STOMACH),10)
+
+/datum/quirk/bad_touch
+	name = "Bad Touch"
+	desc = "You don't like hugs. You'd really prefer if people just left you alone."
+	mob_trait = TRAIT_BADTOUCH
+	value = -1
+	gain_text = "<span class='danger'>You just want people to leave you alone.</span>"
+	lose_text = "<span class='notice'>You could use a big hug.</span>"
+	medical_record_text = "Patient has disdain for being touched. Potentially has undiagnosed haphephobia."
+	mood_quirk = TRUE
+	hardcore_value = 1
+
+/datum/quirk/bad_touch/add()
+	RegisterSignal(quirk_holder, list(COMSIG_LIVING_GET_PULLED, COMSIG_CARBON_HUGGED, COMSIG_CARBON_HEADPAT), .proc/uncomfortable_touch)
+
+/datum/quirk/bad_touch/remove()
+	UnregisterSignal(quirk_holder, list(COMSIG_LIVING_GET_PULLED, COMSIG_CARBON_HUGGED, COMSIG_CARBON_HEADPAT))
+
+/datum/quirk/bad_touch/proc/uncomfortable_touch()
+	SIGNAL_HANDLER
+
+	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
+	if(mood.sanity <= SANITY_NEUTRAL)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "bad_touch", /datum/mood_event/very_bad_touch)
+	else
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "bad_touch", /datum/mood_event/bad_touch)
 
 #undef LOCATION_LPOCKET
 #undef LOCATION_RPOCKET
