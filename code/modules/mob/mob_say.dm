@@ -28,7 +28,10 @@
 	say(message, language) //only living mobs actually whisper, everything else just talks
 
 ///The me emote verb
-/mob/verb/me_verb(message as text)
+//SKYRAT EDIT CHANGE BEGIN
+// /mob/verb/me_verb(message as text) - SKYRAT EDIT - ORIGINAL
+/mob/verb/me_verb(message as message)
+//SKYRAT EDIT CHANGE END
 	set name = "Me"
 	set category = "IC"
 	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR

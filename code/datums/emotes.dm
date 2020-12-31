@@ -25,6 +25,9 @@
 	var/vary = FALSE	//used for the honk borg emote
 	var/only_forced_audio = FALSE //can only code call this event instead of the player.
 	var/cooldown = 0.8 SECONDS
+	//SKYRAT EDIT ADDITION BEGIN - EMOTES
+	var/sound_volume = 25 //Emote volume
+	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()
 	if (ispath(mob_type_allowed_typecache))
@@ -63,7 +66,10 @@
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && (!only_forced_audio || !intentional))
-		playsound(user, tmp_sound, 50, vary)
+		//SKYRAT EDIT CHANGE BEGIN
+		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
+		playsound(user, tmp_sound, sound_volume, vary)
+		//SKYRAT EDIT CHANGE END
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -81,11 +87,15 @@
 /datum/emote/proc/check_cooldown(mob/user, intentional)
 	if(!intentional)
 		return TRUE
-	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
+	//SKYRAT EDIT CHANGE BEGIN - EMOTES - GLOBAL COOLDOWN
+	//if(user.emotes_used && user.emotes_used[src] + cooldown > world.time) - SKYRAT EDIT - ORIGINAL
+	if(user.nextsoundemote > world.time)
 		return FALSE
-	if(!user.emotes_used)
-		user.emotes_used = list()
-	user.emotes_used[src] = world.time
+	//if(!user.emotes_used)
+	//	user.emotes_used = list()
+	//user.emotes_used[src] = world.time - SKYRAT EDIT - ORIGINAL
+	user.nextsoundemote = world.time + cooldown
+	//SKYRAT EDIT CHANGE END
 	return TRUE
 
 /datum/emote/proc/get_sound(mob/living/user)

@@ -290,6 +290,10 @@
 	inhand_icon_state = "clown_hat"
 	dye_color = "clown"
 	mutant_variants = NONE
+	clothing_flags = MASKINTERNALS
+	w_class = WEIGHT_CLASS_SMALL
+	flags_cover = MASKCOVERSEYES
+	resistance_flags = FLAMMABLE
 
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
