@@ -341,13 +341,6 @@
 						string = "Extreme"
 						//message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has set their ambition intensity to [string]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 				log_action("INTENSITY: set to [string]")
-				/*if(submitted)
-					GLOB.total_intensity -= intensity
-					if(intensity)
-						GLOB.intensity_counts["[intensity]"] -= 1
-					GLOB.total_intensity += new_intensity
-					if(new_intensity)
-						GLOB.intensity_counts["[new_intensity]"] += 1*/
 				un_submit()
 				intensity = new_intensity
 			if("edit_admin_note")
