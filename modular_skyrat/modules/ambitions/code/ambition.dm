@@ -316,7 +316,7 @@
 			if("submit")
 				submit()
 				log_action("SUBMIT: Submitted their ambitions", FALSE)
-				if(intensity >= AMBITION_INTENSITY_MEDIUM)
+				if(intensity >= AMBITION_INTENSITY_SEVERE)
 					admin_review_requested = TRUE
 					GLOB.ambitions_to_review[src] = 0
 					message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has submitted high-intensity ambitions, which have been automatically flagged for review.(<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
