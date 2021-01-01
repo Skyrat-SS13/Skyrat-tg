@@ -57,9 +57,9 @@
 				if(STAMINA_THRESHOLD_MESSAGE_HIGH to STAMINA_THRESHOLD_MESSAGE_SEVERE)
 					to_chat(src, "<span class='warning'>You feel worn-out!</span>")
 				if(STAMINA_THRESHOLD_MESSAGE_SEVERE to STAMINA_THRESHOLD_MESSAGE_OHGOD)
-					to_chat(src, "<span class='boldwarning'>You feel exhausted!</span>")
+					to_chat(src, "<span class='warning'>You feel exhausted!</span>")
 				if(STAMINA_THRESHOLD_MESSAGE_OHGOD to INFINITY)
-					to_chat(src, "<span class='boldwarning'>You feel fatigued!</span>")
+					to_chat(src, "<span class='warning'>You feel fatigued!</span>")
 	if(stat != DEAD)
 		return 1
 
