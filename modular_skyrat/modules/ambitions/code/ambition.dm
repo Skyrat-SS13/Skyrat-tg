@@ -336,10 +336,8 @@
 						string = "Medium"
 					if(AMBITION_INTENSITY_SEVERE)
 						string = "Severe"
-						//message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has set their ambition intensity to [string]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 					if(AMBITION_INTENSITY_EXTREME)
 						string = "Extreme"
-						//message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has set their ambition intensity to [string]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 				log_action("INTENSITY: set to [string]")
 				un_submit()
 				intensity = new_intensity
