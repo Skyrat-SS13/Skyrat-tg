@@ -29,16 +29,26 @@
 		send_to_assaultops_watch("<span class='redtext'>Newly assigned target: [user] - [user.mind.assigned_role], capture them!</span>")
 	if(notify_target)
 		to_chat(user, "<span class='danger'>An intense feeling of dread washes over you!</span>")
+
+	forge_assaultops_targets()
+
 	return TRUE
 
-/proc/remove_assaultops_target(datum/mind/M, notify=TRUE)
+/proc/remove_assaultops_target(datum/mind/M, notify=TRUE, original=FALSE)
 	GLOB.assaultops_targets.Remove(M)
 
 	if(notify)
-		send_to_assaultops_watch("<span class='greentext'>[M.current] has been removed from your targets list! You no longer need to care about them!</span>")
+		send_to_assaultops_watch("<span class='greentext'>[original ? M.original_character : M.current] has been removed from your targets list! You no longer need to care about them!</span>")
 		to_chat(M.current, "<span class='notice'>You feel at ease.</span>")
-/proc/forge_assaultops_targets()
 
+	forge_assaultops_targets()
+
+/proc/forge_assaultops_targets()
+	var/datum/team/assaultops/team = get_assaultops_team()
+	for(var/i in team.members)
+		var/datum/mind/M = i
+		var/datum/antagonist/assaultops/assops = M.has_antag_datum(/datum/antagonist/assaultops)
+		assops.memorise_kills()
 
 /proc/send_to_assaultops_watch(message, buzz=TRUE)
 	if(!SSticker.mode.name == "assaultops")
@@ -74,6 +84,13 @@
 		if(!check_assaultops_target(M.current))
 			if(!check_assaultops_target(M.original_character))
 				remove_assaultops_target(M)
+
+/proc/is_assaultops_target(datum/mind/M)
+	for(var/i in GLOB.assaultops_targets)
+		var/datum/mind/them = i
+		if(them == M)
+			return TRUE
+	return FALSE
 
 /proc/is_assault_operative(mob/user)
 	if(!ishuman(user))

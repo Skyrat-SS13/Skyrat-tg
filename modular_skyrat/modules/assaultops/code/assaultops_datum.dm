@@ -99,7 +99,7 @@
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
 	equip_op()
-	memorise_kills()
+	memorise_kills(TRUE)
 
 /datum/antagonist/assaultops/get_team()
 	return assault_team
@@ -115,7 +115,7 @@
 			number = assault_team.members.Find(owner)
 			owner.current.real_name = "[assault_team.syndicate_name] Operative #[number]"
 
-/datum/antagonist/assaultops/proc/memorise_kills(startup=TRUE)
+/datum/antagonist/assaultops/proc/memorise_kills(startup=FALSE)
 	if(assault_team)
 		antag_memory += "Your currently assigned targets to <b>CAPTURE</b> are: <br>"
 		for(var/i in GLOB.assaultops_targets)
@@ -123,9 +123,11 @@
 			antag_memory += "- <b>[M.current.name]</b>: [M.assigned_role]<br>"
 		antag_memory += "<b>You only need to capture these people, the others are not relevant.</b><br>"
 		antag_memory += " <br>"
-		to_chat(owner, "You have been given a list of command and security staff that must be <b>CAPTURED</b>, do not kill them!")
-		to_chat(owner, "<span class='redtext'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS CAPTURE AND TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED!</span>")
-		to_chat(owner, "<span class='notice'>For a target to be considered captured, they must be alive and kept in the <b>holding facility</b> that you are currently docked to.</span>")
+
+		if(startup)
+			to_chat(owner, "You have been given a list of command and security staff that must be <b>CAPTURED</b>, do not kill them!")
+			to_chat(owner, "<span class='redtext'>YOU ARE NOT NUCLEAR OPERATIVES, YOUR ASSIGNMENT IS CAPTURE AND TAKEOVER, DO NOT KILL BYSTANDERS UNLESS PROVOKED!</span>")
+			to_chat(owner, "<span class='notice'>For a target to be considered captured, they must be alive and kept in the <b>holding facility</b> that you are currently docked to.</span>")
 
 /datum/antagonist/assaultops/proc/forge_objectives()
 	if(assault_team)

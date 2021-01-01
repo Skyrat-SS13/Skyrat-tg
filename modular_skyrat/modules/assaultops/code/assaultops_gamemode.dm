@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(assaultops_targets)
 
 /datum/game_mode/assaultops
-	name = "assaultops"
+	name = "assaultops" //DO NOT CHANGE THIS, "assaultops"
 	config_tag = "assaultops"
 	report_type = "assaultops"
 	false_report_weight = 10

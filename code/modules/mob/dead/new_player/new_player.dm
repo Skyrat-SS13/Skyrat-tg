@@ -345,8 +345,11 @@
 	var/mob/living/carbon/human/humanc
 
 	//SKRYAT EDIT ADDITION BEGIN - ASSAULTOPS
-	if(check_assaultops_target(character))
-		add_assaultops_target(character, notifu_target = TRUE)
+	if(SSticker.mode.name == "assaultops")
+		if(is_assaultops_target(character.mind))
+			remove_assaultops_target(M, original=TRUE)
+		if(check_assaultops_target(character))
+			add_assaultops_target(character, notify_target = TRUE)
 	//SKYRAT EDIT ADDITION END
 
 	if(ishuman(character))
