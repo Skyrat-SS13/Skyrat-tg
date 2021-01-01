@@ -347,7 +347,7 @@
 	//SKRYAT EDIT ADDITION BEGIN - ASSAULTOPS
 	if(SSticker.mode.name == "assaultops")
 		if(is_assaultops_target(character.mind))
-			remove_assaultops_target(M, original=TRUE)
+			remove_assaultops_target(character.mind, original=TRUE)
 		if(check_assaultops_target(character))
 			add_assaultops_target(character, notify_target = TRUE)
 	//SKYRAT EDIT ADDITION END
