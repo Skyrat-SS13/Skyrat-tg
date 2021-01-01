@@ -80,7 +80,7 @@
 	)*/
 	// !!!!!THESE ARE THE NEW SKYRAT CHEMICALS!!!!!
 	var/list/upgrade_reagents = list(
-		/datum/reagent/oil,
+		/datum/reagent/fuel/oil,
 		/datum/reagent/ammonia,
 		/datum/reagent/ash
 	)
@@ -445,8 +445,12 @@
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		recharge_amount *= C.rating
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		if (M.rating > 3)
+		if (M.rating > 1)
 			dispensable_reagents |= upgrade_reagents
+		if (M.rating > 2)
+			dispensable_reagents |= upgrade_reagents2
+		if (M.rating > 3)
+			dispensable_reagents |= upgrade_reagents3
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/proc/replace_beaker(mob/living/user, obj/item/reagent_containers/new_beaker)
@@ -538,7 +542,23 @@
 		/datum/reagent/consumable/lemonjuice,
 		/datum/reagent/consumable/menthol
 	)
-	upgrade_reagents = null
+	//SKYRAT ADDITION START
+	upgrade_reagents = list(
+		/datum/reagent/consumable/applejuice,
+		/datum/reagent/consumable/pumpkinjuice,
+		/datum/reagent/consumable/vanilla
+	)
+	upgrade_reagents2 = list(
+		/datum/reagent/consumable/banana,
+		/datum/reagent/consumable/berryjuice,
+		/datum/reagent/consumable/blumpkinjuice
+	)
+	upgrade_reagents3 = list(
+		/datum/reagent/consumable/watermelonjuice,
+		/datum/reagent/consumable/peachjuice,
+		/datum/reagent/consumable/sol_dry
+	)
+	//SKYRAT ADDITION END
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/whiskey_cola,
