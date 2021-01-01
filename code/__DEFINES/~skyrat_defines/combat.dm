@@ -1,3 +1,6 @@
+#define TRAIT_ALREADYSTAMINAFLOORED    	"alreadystaminafloored" //Trait to keep track whether someone was floored recently by stamina damage.
+#define STAMINA_KNOCKDOWN_COOLDOWN 10 SECONDS
+
 #define MAX_HUMAN_LIFE 135
 
 //APPLICATION OF STAM DAMAGE
@@ -19,6 +22,8 @@
 #define STAMINA_STATIC_REGEN_MULTIPLIER 0.4
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
 #define STAMINA_STATIC_REGEN_FLAT 1.8
+//Extra flat of regeneration while we're in crit
+#define STAMINA_EXTRA_FLAT_IN_CRIT 0.5
 //This increases the multiplier in relation to current stamina (staminaloss/THIS)
 #define STAMINALOSS_REGEN_COEFF 50
 
@@ -47,33 +52,23 @@
 #define GET_UP_SLOW 3
 
 //Stamina threshold for attacking slower with items
-#define STAMINA_THRESHOLD_TIRED_CLICK_CD 130
+#define STAMINA_THRESHOLD_TIRED_CLICK_CD 120
 #define CLICK_CD_MELEE_TIRED 11 //#define CLICK_CD_MELEE 8, so 38% slower
 #define CLICK_CD_RANGE_TIRED 5 //#define CLICK_CD_RANGE 4, so 25% slower
 
-#define PAIN_THRESHOLD_MESSAGE_ACHE 30
-#define PAIN_THRESHOLD_MESSAGE_MILD 70
-#define PAIN_THRESHOLD_MESSAGE_MEDIUM 100
-#define PAIN_THRESHOLD_MESSAGE_HIGH 130
-#define PAIN_THRESHOLD_MESSAGE_SEVERE 160
-#define PAIN_THRESHOLD_MESSAGE_OHGOD 190
+#define STAMINA_THRESHOLD_MESSAGE_ACHE 40
+#define STAMINA_THRESHOLD_MESSAGE_MILD 60
+#define STAMINA_THRESHOLD_MESSAGE_MEDIUM 80
+#define STAMINA_THRESHOLD_MESSAGE_HIGH 100
+#define STAMINA_THRESHOLD_MESSAGE_SEVERE 120
+#define STAMINA_THRESHOLD_MESSAGE_OHGOD 190
 
-#define PAIN_MESSAGE_COOLDOWN 20 SECONDS
+#define STAMINA_MESSAGE_COOLDOWN 20 SECONDS
 
 #define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
 /mob/living/carbon
-	var/next_pain_message = 0
-
-/datum/mood_event/stamina_mild
-	description = "<span class='boldwarning'>Oh god it hurts!.</span>\n"
-	mood_change = -3
-	timeout = 1 MINUTES
-
-/datum/mood_event/stamina_severe
-	description = "<span class='boldwarning'>AAAAGHHH THE PAIN!.</span>\n"
-	mood_change = -3
-	timeout = 1 MINUTES
+	var/next_stamina_message = 0
 
 //Force mob to rest, does NOT do stamina damage.
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.

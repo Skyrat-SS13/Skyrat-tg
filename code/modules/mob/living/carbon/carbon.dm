@@ -580,41 +580,35 @@
 	//TODO: Make this much more cleaner
 	if(stam > STAMINA_THRESHOLD_WEAK)
 		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
-			//SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina mild", /datum/mood_event/stamina_mild)
-			if(!HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
+			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
 				//When you get floored by stamina, you also get a brief stun and disarm
 				to_chat(src, "<span class='boldwarning'>You feel weak and collapse!</span>")
-				Stun(0.5 SECONDS)
-				drop_all_held_items()
-				ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
+				ADD_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED, src)
+				addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_ALREADYSTAMINAFLOORED, src), STAMINA_KNOCKDOWN_COOLDOWN)
+				Paralyze(0.5 SECONDS)
+				Knockdown(5 SECONDS)
 		else
 			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+			if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+				REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+				REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+				filters -= FILTER_STAMINACRIT
 
-		if(stam > STAMINA_THRESHOLD_SOFTCRIT)
-			//SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "stamina severe", /datum/mood_event/stamina_severe)
-			if(!HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, STAMINA))
-				ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-		else
-			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 
 		if(stam > STAMINA_THRESHOLD_HARDCRIT)
 			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 				to_chat(src, "<span class='boldwarning'>You're too exhausted to keep going...</span>")
 				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+				ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+				ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
 				filters += FILTER_STAMINACRIT
-		else
-			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-			filters -= FILTER_STAMINACRIT
 
 	else
 		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-		if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, STAMINA))
-			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-		if(HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, STAMINA))
 			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
 		filters -= FILTER_STAMINACRIT //Temporary tweak to fix aheals bugging this
 	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
 		enter_stamcrit()
