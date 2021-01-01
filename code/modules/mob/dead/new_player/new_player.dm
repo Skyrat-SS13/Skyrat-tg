@@ -346,7 +346,7 @@
 
 	//SKRYAT EDIT ADDITION BEGIN - ASSAULTOPS
 	if(check_assaultops_target(character))
-		GLOB.assaultops_targets.Add(character)
+		add_assaultops_target(character, notifu_target = TRUE)
 	//SKYRAT EDIT ADDITION END
 
 	if(ishuman(character))
