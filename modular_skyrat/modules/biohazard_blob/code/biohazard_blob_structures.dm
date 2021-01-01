@@ -35,7 +35,7 @@
 	density = TRUE
 
 /datum/looping_sound/core_heartbeat
-	mid_length = 51
+	mid_length = 51 SECONDS
 	mid_sounds = list('sound/effects/heart_beat.ogg'=1)
 	volume = 20
 
