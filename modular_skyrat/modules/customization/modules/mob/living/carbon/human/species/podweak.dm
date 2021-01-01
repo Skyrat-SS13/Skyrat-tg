@@ -1,3 +1,6 @@
+/datum/species/pod
+	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
+
 /datum/species/pod/podweak
 	name = "Podperson"
 	id = "podweak"
