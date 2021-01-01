@@ -108,9 +108,11 @@
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list("lizard", "unathi", "ashlizard")
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(!T || (H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT)))
 		return TRUE
 	return FALSE
 
