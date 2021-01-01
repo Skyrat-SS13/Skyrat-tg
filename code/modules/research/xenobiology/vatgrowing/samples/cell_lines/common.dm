@@ -412,6 +412,8 @@
 	resulting_atoms[random_result] = 1
 	return ..()
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/micro_organism/cell_line/clown/fuck_up_growing(obj/machinery/plumbing/growing_vat/vat)
 	vat.visible_message("<span class='warning'>The biological sample in [vat] seems to have created something horrific!</span>")
 	QDEL_NULL(vat.biological_sample) //Kill off the sample, we're done
@@ -443,5 +445,7 @@
 	supplementary_reagents = list(/datum/reagent/consumable/laughter = 4)
 
 	resulting_atoms = list(/mob/living/simple_animal/hostile/retaliate/clown/longface = 1)
+*/
+//SKYRAT EDIT REMOVAL END
 
 #undef VAT_GROWTH_RATE
