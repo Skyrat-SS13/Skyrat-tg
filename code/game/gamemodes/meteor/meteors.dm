@@ -23,16 +23,27 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 //Meteor spawning global procs
 ///////////////////////////////
 
-/proc/spawn_meteors(number = 10, list/meteortypes, dir) // SKYRAT EDIT - Directional Meteors
+/* SKYRAT EDIT ORIGINAL
+/proc/spawn_meteors(number = 10, list/meteortypes)
 	for(var/i = 0; i < number; i++)
-		spawn_meteor(meteortypes, dir) // SKYRAT EDIT - Directional Meteors
+		spawn_meteor(meteortypes)
+*/
 
-/proc/spawn_meteor(list/meteortypes, dir) // SKYRAT EDIT - Directional Meteors
+// SKYRAT EDIT CHANGE - Directional Meteors
+/proc/spawn_meteors(number = 10, list/meteortypes, dir)
+	for(var/i = 0; i < number; i++)
+		spawn_meteor(meteortypes, dir)
+// SKYRAT EDIT END
+
+
+// proc/spawn_meteor(list/meteortypes) // ORIGINAL
+/proc/spawn_meteor(list/meteortypes, dir) // SKYRAT EDIT CHANGE - Directional Meteors
 	var/turf/pickedstart
 	var/turf/pickedgoal
 	var/max_i = 10//number of tries to spawn meteor.
 	while(!isspaceturf(pickedstart))
-		var/startSide = dir || pick(GLOB.cardinals) // SKYRAT EDIT - Directional Meteors
+		//var/startSide = pick(GLOB.cardinals) // ORIGINAL
+		var/startSide = dir || pick(GLOB.cardinals) // SKYRAT EDIT CHANGE - Directional Meteors
 		var/startZ = pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
 		pickedstart = spaceDebrisStartLoc(startSide, startZ)
 		pickedgoal = spaceDebrisFinishLoc(startSide, startZ)

@@ -14,7 +14,7 @@
 	announceWhen	= 1
 	var/list/wave_type
 	var/wave_name = "normal"
-	var/direction // SKYRAT EDIT - Directional Meteors
+	var/direction // SKYRAT EDIT ADDITION - Directional Meteors
 
 /datum/round_event/meteor_wave/New()
 	..()
@@ -22,7 +22,7 @@
 		determine_wave_type()
 
 /datum/round_event/meteor_wave/proc/determine_wave_type()
-	direction = pick(GLOB.cardinals) // SKYRAT EDIT - Directional Meteors
+	direction = pick(GLOB.cardinals) // SKYRAT EDIT ADDITION - Directional Meteors
 	if(!wave_name)
 		wave_name = pickweight(list(
 			"normal" = 50,
@@ -49,12 +49,13 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
-	//priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/meteors.ogg') //ORIGINAL
-	priority_announce(generateMeteorString(startWhen,direction), "Meteor Alert", 'sound/ai/meteors.ogg') // SKYRAT EDIT - Directional Meteors
+	//priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/meteors.ogg') // ORIGINAL
+	priority_announce(generateMeteorString(startWhen,direction), "Meteor Alert", 'sound/ai/meteors.ogg') // SKYRAT EDIT CHANGE - Directional Meteors
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
-		spawn_meteors(5, wave_type, direction) //meteor list types defined in gamemode/meteor/meteors.dm
+		//spawn_meteors(5, wave_type) //meteor list types defined in gamemode/meteor/meteors.dm // ORIGINAL
+		spawn_meteors(5, wave_type, direction) // SKYRAT EDIT CHANGE - Directional Meteors
 
 /datum/round_event_control/meteor_wave/threatening
 	name = "Meteor Wave: Threatening"

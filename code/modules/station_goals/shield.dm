@@ -12,7 +12,7 @@
 		You can order the satellites and control systems at cargo.
 		"}
 
-/* SKYRAT EDIT - Shield Sats always available
+/* SKYRAT EDIT REMOVAL - Shield Sats always available
 /datum/station_goal/station_shield/on_report()
 
 	//Unlock
