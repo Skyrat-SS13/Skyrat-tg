@@ -119,6 +119,8 @@
 	hands_use_check = TRUE
 	var/wing_time = 20
 
+//SKYRAT EDIT REMOVAL BEGIN - EMOTES - Not working due to modified mutant code, will be fixed later
+/*
 /datum/emote/living/flap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && ishuman(user))
@@ -131,6 +133,8 @@
 			else
 				H.OpenWings()
 			addtimer(CALLBACK(H, open ? /mob/living/carbon/human.proc/OpenWings : /mob/living/carbon/human.proc/CloseWings), wing_time)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/emote/living/flap/aflap
 	key = "aflap"
