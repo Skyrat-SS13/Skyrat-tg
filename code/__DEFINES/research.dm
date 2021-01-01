@@ -83,7 +83,7 @@
 #define CELL_LINE_TABLE_MOLD "cell_line_mold_table"
 #define CELL_LINE_TABLE_MOIST "cell_line_moist_table"
 #define CELL_LINE_TABLE_BLOB "cell_line_blob_table"
-#define CELL_LINE_TABLE_CLOWN "cell_line_clown_table"
+//#define CELL_LINE_TABLE_CLOWN "cell_line_clown_table" //SKYRAT EDIT REMOVAL - if lack of this fails the travis, comment whatever uses this
 
 //! Biopsy cell line types
 #define CELL_LINE_TABLE_BEAR "cell_line_bear_table"

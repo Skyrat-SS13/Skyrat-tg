@@ -90,3 +90,12 @@
 		return TRUE
 	target.attack_paw(user)
 	return TRUE
+
+//SKYRAT EDIT REMOVAL BEGIN
+/*
+/datum/species/monkey/check_roundstart_eligible()
+	if(SSevents.holidays && SSevents.holidays[MONKEYDAY])
+		return TRUE
+	return ..()
+*/
+//SKYRAT EDIT REMOVAL END

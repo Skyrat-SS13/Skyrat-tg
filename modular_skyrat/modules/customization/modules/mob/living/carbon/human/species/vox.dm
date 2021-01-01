@@ -13,7 +13,7 @@
 	mutantbrain = /obj/item/organ/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("legs" = "Digitigrade Legs", "snout" = "Vox", "tail" = "Vox", "spines" = ACC_RANDOM)
+	default_mutant_bodyparts = list("tail" = "Vox Tail", "legs" = "Digitigrade Legs", "snout" = "Vox Snout", "spines" = ACC_RANDOM)
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -47,7 +47,7 @@
 	return returned
 
 /datum/species/vox/get_random_body_markings(list/passed_features)
-	var/name = pick("Vox", "Vox Hive", "Vox Nightling", "Vox Heart", "Vox Tiger")
+	var/name = pick(list("Vox", "Vox Hive", "Vox Nightling", "Vox Heart", "Vox Tiger"))
 	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
 	var/list/markings = list()
 	if(BMS)
