@@ -231,7 +231,10 @@
 		if(is_taur && (BP.body_part == LEG_LEFT || BP.body_part == LEG_RIGHT))
 			continue
 
-		new_limbs += BP.get_limb_icon()
+		var/list/image/limb_icon = BP.get_limb_icon()
+		for (var/image/x in limb_icon)
+			x.alpha = dna?.species.specific_alpha
+		new_limbs += limb_icon
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
 

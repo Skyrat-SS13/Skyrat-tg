@@ -12,6 +12,10 @@
 	var/reagent_flags = PROCESS_ORGANIC
 	///Whether a species can use augmentations in preferences
 	var/can_augment = TRUE
+	///If the species needs to have the bodyparts be transparent and what that should be, 255 is opaque
+	var/specific_alpha = 255
+	///The alpha value of any markings, should be lower than the above value if the above value is not 255 ie. slimepeople
+	var/markings_alpha = 255
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/standing	= list()
@@ -129,7 +133,7 @@
 							finished_list += ReadRGB("[color_list[1]]0")
 							finished_list += ReadRGB("[color_list[2]]0")
 							finished_list += ReadRGB("[color_list[3]]0")
-							finished_list += list(0,0,0,255)
+							finished_list += list(0,0,0,specific_alpha)
 							for(var/index in 1 to finished_list.len)
 								finished_list[index] /= 255
 							accessory_overlay.color = finished_list
@@ -224,6 +228,10 @@
 							extra2_accessory_overlay.color = "#[H.hair_color]"
 
 				standing += extra2_accessory_overlay
+			if (specific_alpha != 255)
+				for (var/image/overlay in standing)
+					if (!istype(overlay.color,/list))
+						overlay.alpha = specific_alpha
 
 			H.overlays_standing[layer] += standing
 			standing = list()

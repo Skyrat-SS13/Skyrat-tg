@@ -1,6 +1,6 @@
 /datum/species/jelly
 	species_traits = list(MUTCOLORS,EYECOLOR,NOBLOOD,HAIR,FACEHAIR)
-	default_mutant_bodyparts = list("tail" = "None", "snout" = "None", "ears" = "None", "taur" = "None", "wings" = "None")
+	default_mutant_bodyparts = list("tail" = "None", "snout" = "None", "ears" = "None", "taur" = "None", "wings" = "None", "legs" = "Normal Legs")
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
@@ -9,11 +9,14 @@
 	name = "Xenobiological Slime Hybrid"
 	id = "slimeperson"
 	limbs_id = "slime"
+	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/slime_parts_greyscale.dmi'
 	default_color = "00FFFF"
 	say_mod = "says"
 	coldmod = 3
 	heatmod = 1
 	burnmod = 1
+	specific_alpha = 155
+	markings_alpha = 1 //this is so low because it still colours it the same way, but if we set the markings to an alpha of 1, they don't alter the transparency much since they're stacked
 
 /datum/action/innate/slime_change
 	name = "Alter Form"
