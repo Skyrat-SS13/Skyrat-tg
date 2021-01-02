@@ -31,9 +31,13 @@
 	inhand_icon_state = "clown"
 	species_exception = list(/datum/species/golem/bananium)
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /obj/item/clothing/under/rank/civilian/clown/Initialize()
 	. = ..()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CLOWN, CELL_VIRUS_TABLE_GENERIC, rand(2,3), 0)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/clothing/under/rank/civilian/clown/blue
 	name = "blue clown suit"
