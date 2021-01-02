@@ -71,23 +71,19 @@
 			if(aux_zone)
 				aux.color = "#[draw_color]"
 
-	if (!owner)
+	if (!owner || is_pseudopart || !ishuman(owner))
 		return
 
 	var/mob/living/carbon/human/H = owner
 	//set specific alpha before setting the markings alpha
-	if (H?.dna.species.specific_alpha != 255)
-		for (var/image/overlay in .)
+	if (H.dna.species.specific_alpha)
+		for (var/ov in .)
+			var/image/overlay = ov
 			overlay.alpha = H.dna.species.specific_alpha
 	//Markings!
-	if(is_pseudopart)
-		return
-
 	var/override_color
 	if(HAS_TRAIT(H, TRAIT_HUSK))
 		override_color = "888"
-	if(!istype(H))
-		return
 
 	for(var/key in H.dna.species.body_markings[body_zone])
 		var/datum/body_marking/BM = GLOB.body_markings[key]
