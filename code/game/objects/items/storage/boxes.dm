@@ -132,6 +132,7 @@
 	else
 		new /obj/item/tank/internals/emergency_oxygen(src)
 	//SKYRAT EDIT END
+	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
@@ -838,6 +839,7 @@
 	else
 		new /obj/item/tank/internals/emergency_oxygen(src)
 	//SKYRAT EDIT END
+	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
 /obj/item/storage/box/rubbershot
 	name = "box of rubber shots"
@@ -1056,7 +1058,8 @@
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/matter_bin = 2,
-		/obj/item/screwdriver = 1)
+		/obj/item/screwdriver = 1,
+		/obj/item/wrench = 1)
 	generate_items_inside(items_inside,src)
 
 /obj/item/storage/box/material

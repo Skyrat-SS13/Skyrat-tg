@@ -205,7 +205,7 @@ SUBSYSTEM_DEF(vote)
 					return FALSE
 				for(var/map in config.maplist)
 					var/datum/map_config/VM = config.maplist[map]
-					if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps))
+					if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps) || GLOB.clients.len >= VM.config_max_users || GLOB.clients.len <= VM.config_min_users) //SKYRAT EDIT CHANGE - ORIGINAL: if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps))
 						continue
 					choices.Add(VM.map_name)
 			if("custom")
@@ -333,6 +333,8 @@ SUBSYSTEM_DEF(vote)
 			return
 		if("cancel")
 			if(usr.client.holder)
+				usr.log_message("[key_name_admin(usr)] cancelled a vote.", LOG_ADMIN)
+				message_admins("[key_name_admin(usr)] has cancelled the current vote.")
 				reset()
 		if("toggle_restart")
 			if(usr.client.holder && trialmin)

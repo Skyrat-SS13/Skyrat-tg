@@ -60,7 +60,7 @@
 	cost = CARGO_CRATE_VALUE * 4
 	contraband = TRUE
 	contains = list(/obj/vehicle/ridden/atv,
-					/obj/item/key,
+					/obj/item/key/atv,
 					/obj/item/clothing/suit/jacket/leather/overcoat,
 					/obj/item/clothing/gloves/color/black,
 					/obj/item/clothing/head/soft,
@@ -260,14 +260,11 @@
 
 /datum/supply_pack/security/ammo
 	name = "Ammo Crate"
-	desc = "Contains two 20-round magazines for the WT-550 Auto Rifle, three boxes of buckshot ammo, three boxes of rubber ammo and special .38 speedloarders. Requires Security access to open."
+	desc = "Contains two 20-round magazines for the WT-550 Auto Rifle, three boxes of rubber ammo and special .38 speedloarders. Requires Security access to open."
 	cost = CARGO_CRATE_VALUE * 8
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9,
-					/obj/item/storage/box/lethalshot,
-					/obj/item/storage/box/lethalshot,
-					/obj/item/storage/box/lethalshot,
 					/obj/item/storage/box/rubbershot,
 					/obj/item/storage/box/rubbershot,
 					/obj/item/storage/box/rubbershot,
@@ -551,6 +548,8 @@
 					/obj/item/ammo_box/c38/trac)
 	crate_name = "tracking implant crate"
 
+/datum/supply_pack/security/armory/riotshotguns //SKYRAT EDIT ADDITION
+
 /datum/supply_pack/security/armory/laserarmor
 	name = "Reflector Vest Crate"
 	desc = "Contains two vests of highly reflective material. Each armor piece diffuses a laser's energy by over half, as well as offering a good chance to reflect the laser entirely. Requires Armory access to open."
@@ -613,6 +612,8 @@
 		var/item = pick(contains)
 		new item(C)
 
+/datum/supply_pack/security/armory/mafia //SKYRAT EDIT ADDITION
+
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
 	desc = "Contains two fullbody sets of tough, fireproof, pressurized suits designed in a joint effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
@@ -628,6 +629,8 @@
 					/obj/item/clothing/gloves/tackler/combat,
 					/obj/item/clothing/gloves/tackler/combat)
 	crate_name = "swat crate"
+
+/datum/supply_pack/security/armory/woodstock //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/security/armory/wt550
 	name = "WT-550 Auto Rifle Crate"
@@ -646,6 +649,7 @@
 					/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9)
 
+/datum/supply_pack/security/armory/wt550ammovariety //SKYRAT EDIT ADDITION
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Engineering /////////////////////////////////////
@@ -1413,6 +1417,8 @@
 	crate_name = "shield generators crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 
+/datum/supply_pack/science/techshellpack //SKYRAT EDIT ADDITION
+
 /datum/supply_pack/science/transfer_valves
 	name = "Tank Transfer Valves Crate"
 	desc = "The key ingredient for making a lot of people very angry very fast. Contains two tank transfer valves. Requires RD access to open."
@@ -1700,7 +1706,7 @@
 					/obj/item/seeds/bamboo,
 					/obj/item/seeds/eggplant/eggy,
 					/obj/item/seeds/rainbow_bunch,
-					/obj/item/seeds/rainbow_bunch,
+					/obj/item/seeds/shrub,
 					/obj/item/seeds/random,
 					/obj/item/seeds/random)
 	crate_name = "exotic seeds crate"

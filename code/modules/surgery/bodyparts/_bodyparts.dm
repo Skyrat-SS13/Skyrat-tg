@@ -90,8 +90,16 @@
 	var/last_maxed
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
+	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
+	/*
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
+	*/
+	/// If we have a gauze wrapping currently applied
+	var/datum/bodypart_aid/gauze/current_gauze
+	/// If we have a splint currently applied
+	var/datum/bodypart_aid/splint/current_splint
+	//SKYRAT EDIT CHANGE END
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
 	var/obj/item/self_grasp/grasped_by
 	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
@@ -114,6 +122,12 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
+	//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+	if(current_gauze)
+		qdel(current_gauze)
+	if(current_splint)
+		qdel(current_splint)
+	//SKYRAT EDIT ADDITION END
 	return ..()
 
 
@@ -181,7 +195,11 @@
 	var/turf/T = get_turf(src)
 	if(status != BODYPART_ROBOTIC)
 		playsound(T, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	seep_gauze(9999) // destroy any existing gauze if any exists
+	//seep_gauze(9999) // destroy any existing gauze if any exists
+	if(current_gauze)
+		qdel(current_gauze)
+	if(current_splint)
+		qdel(current_splint)
 	for(var/obj/item/organ/drop_organ in get_organs())
 		drop_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/I in src)
@@ -268,6 +286,11 @@
 		// note that there's no handling for BIO_JUST_FLESH since we don't have any that are that right now (slimepeople maybe someday)
 		// standard humanoids
 		if(BIO_FLESH_BONE)
+			//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+			//We do a body zone check here because muscles dont have any variants for head or chest, and rolling a muscle wound on them wound end up on a wasted wound roll
+			if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(35))
+				wounding_type = WOUND_MUSCLE
+			//SKYRAT EDIT ADDITION END
 			// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
 			// So a big sharp weapon is still all you need to destroy a limb
 			if(mangled_state == BODYPART_MANGLED_FLESH && sharpness)
@@ -282,6 +305,12 @@
 
 	// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 	if(owner && wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
+		//SKYRAT EDIT ADDITION - MEDICAL
+		if(current_gauze)
+			current_gauze.take_damage()
+		if(current_splint)
+			current_splint.take_damage()
+		//SKYRAT EDIT ADDITION - MEDICAL
 		check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus)
 
 	for(var/i in wounds)
@@ -424,11 +453,10 @@
 			var/datum/wound/new_wound
 			if(replaced_wound)
 				new_wound = replaced_wound.replace_wound(possible_wound)
-				log_wound(owner, new_wound, damage, wound_bonus, bare_wound_bonus, base_roll) // dismembering wounds are logged in the apply_wound() for loss wounds since they delete themselves immediately, these will be immediately returned
 			else
 				new_wound = new possible_wound
 				new_wound.apply_wound(src)
-				log_wound(owner, new_wound, damage, wound_bonus, bare_wound_bonus, base_roll)
+			log_wound(owner, new_wound, damage, wound_bonus, bare_wound_bonus, base_roll) // dismembering wounds are logged in the apply_wound() for loss wounds since they delete themselves immediately, these will be immediately returned
 			return new_wound
 
 // try forcing a specific wound, but only if there isn't already a wound of that severity or greater for that type on this bodypart
@@ -907,9 +935,11 @@
 		var/datum/wound/iter_wound = i
 		dam_mul *= iter_wound.damage_mulitplier_penalty
 
+	/*
 	if(!LAZYLEN(wounds) && current_gauze && !replaced) // no more wounds = no need for the gauze anymore
 		owner.visible_message("<span class='notice'>\The [current_gauze] on [owner]'s [name] fall away.</span>", "<span class='notice'>The [current_gauze] on your [name] fall away.</span>")
 		QDEL_NULL(current_gauze)
+	*/
 
 	wound_damage_multiplier = dam_mul
 
@@ -954,6 +984,7 @@
  * Arguments:
  * * gauze- Just the gauze stack we're taking a sheet from to apply here
  */
+/*
 /obj/item/bodypart/proc/apply_gauze(obj/item/stack/gauze)
 	if(!istype(gauze) || !gauze.absorption_capacity)
 		return
@@ -965,6 +996,7 @@
 	gauze.use(1)
 	if(newly_gauzed)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZED, gauze)
+*/
 
 /**
  * seep_gauze() is for when a gauze wrapping absorbs blood or pus from wounds, lowering its absorption capacity.
@@ -974,6 +1006,7 @@
  * Arguments:
  * * seep_amt - How much absorption capacity we're removing from our current bandages (think, how much blood or pus are we soaking up this tick?)
  */
+/*
 /obj/item/bodypart/proc/seep_gauze(seep_amt = 0)
 	if(!current_gauze)
 		return
@@ -982,3 +1015,13 @@
 		owner.visible_message("<span class='danger'>\The [current_gauze] on [owner]'s [name] fall away in rags.</span>", "<span class='warning'>\The [current_gauze] on your [name] fall away in rags.</span>", vision_distance=COMBAT_MESSAGE_RANGE)
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
+*/
+
+
+///Proc to turn bodypart into another.
+/obj/item/bodypart/proc/change_bodypart(obj/item/bodypart/new_type)
+	var/mob/living/carbon/our_owner = owner //dropping nulls the limb
+	drop_limb(TRUE)
+	var/obj/item/bodypart/new_part = new new_type()
+	new_part.attach_limb(our_owner, TRUE)
+	qdel(src)
