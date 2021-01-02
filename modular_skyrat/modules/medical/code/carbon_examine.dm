@@ -22,7 +22,7 @@
 				status += LB.heavy_brute_msg
 
 		if(burndamage >= 20 && status)
-			status += "and "
+			status += " and "
 			switch(burndamage)
 				if(20 to 50)
 					status += LB.light_burn_msg
