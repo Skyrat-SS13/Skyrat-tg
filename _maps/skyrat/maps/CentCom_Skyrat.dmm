@@ -7,8 +7,8 @@
 /area/cruiser_dock)
 "ac" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
-	icon_state = "ast_warn";
-	dir = 9
+	dir = 9;
+	icon_state = "ast_warn"
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
@@ -45,14 +45,15 @@
 /turf/open/floor/engine,
 /area/cruiser_dock/brig)
 "ai" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/item/food/cakeslice/hardware_cake_slice,
-/turf/open/floor/engine,
-/area/cruiser_dock/brig)
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "aj" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
-	icon_state = "ast_warn";
-	dir = 8
+	dir = 8;
+	icon_state = "ast_warn"
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
@@ -60,18 +61,23 @@
 /turf/closed/indestructible/syndicate,
 /area/cruiser_dock)
 "al" = (
-/obj/structure/bed/maint,
-/obj/effect/spawner/scatter/grime,
+/obj/structure/guncase,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/obj/machinery/light/small/red{
+	dir = 4
+	},
 /turf/open/floor/engine,
-/area/cruiser_dock/brig)
+/area/cruiser_dock)
 "am" = (
 /obj/machinery/vending/sovietsoda,
 /turf/open/floor/engine,
 /area/cruiser_dock/brig)
 "an" = (
 /obj/effect/turf_decal/caution{
-	icon_state = "caution";
-	dir = 8
+	dir = 8;
+	icon_state = "caution"
 	},
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
@@ -84,15 +90,8 @@
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
 "aq" = (
-/obj/structure/bodycontainer/morgue{
-	dir = 8
-	},
-/obj/machinery/light/dim{
-	icon_state = "tube";
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
 "ar" = (
 /obj/structure/table/wood,
 /obj/item/ship_in_a_bottle,
@@ -100,18 +99,17 @@
 /area/cruiser_dock)
 "as" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
-	icon_state = "ast_warn";
-	dir = 1
+	dir = 1;
+	icon_state = "ast_warn"
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
 "at" = (
-/obj/machinery/light/dim{
-	icon_state = "tube";
+/obj/effect/turf_decal/stripes/red/line{
 	dir = 4
 	},
-/turf/open/floor/engine,
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
 "au" = (
 /obj/structure/window/plasma/reinforced/plastitanium,
 /obj/structure/grille,
@@ -121,42 +119,43 @@
 /turf/open/floor/engine,
 /area/cruiser_dock/brig)
 "aw" = (
-/obj/structure/table,
-/obj/item/kitchen/knife/combat,
-/obj/item/scalpel,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
+/obj/item/storage/pill_bottle/floorpill/full,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "ax" = (
 /obj/structure/chair/office{
 	dir = 8
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
-"ay" = (
-/obj/item/flashlight/lamp,
-/obj/structure/table,
+"az" = (
+/obj/machinery/turretid{
+	pixel_y = 25
+	},
+/obj/effect/turf_decal/stripes/red/full,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"az" = (
-/obj/structure/bodycontainer/morgue{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock/brig)
 "aA" = (
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "aB" = (
-/obj/machinery/vending/medical/syndicate_access,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock/brig)
+/obj/machinery/door/airlock/security/glass{
+	name = "Secure Airlock";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark/airless,
+/area/cruiser_dock)
 "aC" = (
 /obj/effect/turf_decal/stripes/asteroid/line,
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
 "aD" = (
-/obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor/plasteel/checker,
+/obj/machinery/door/window{
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/stripes/red/full,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "aE" = (
 /obj/machinery/door/airlock/security/glass{
@@ -185,13 +184,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/engine,
 /area/cruiser_dock/brig)
-"aJ" = (
-/obj/machinery/light/dim{
-	icon_state = "tube";
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "aK" = (
 /obj/structure/table,
 /obj/item/restraints/handcuffs/energy,
@@ -213,13 +205,15 @@
 /area/cruiser_dock/brig)
 "aN" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
-	icon_state = "ast_warn";
-	dir = 5
+	dir = 5;
+	icon_state = "ast_warn"
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
 "aO" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "aP" = (
@@ -227,15 +221,15 @@
 /area/cruiser_dock/brig)
 "aQ" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
-	icon_state = "ast_warn";
-	dir = 10
+	dir = 10;
+	icon_state = "ast_warn"
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
 "aR" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
-	icon_state = "ast_warn";
-	dir = 6
+	dir = 6;
+	icon_state = "ast_warn"
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
@@ -243,11 +237,9 @@
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "aT" = (
-/obj/structure/chair{
-	dir = 8
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 4
 	},
-/obj/effect/turf_decal/bot_red,
-/obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "aU" = (
@@ -261,30 +253,31 @@
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
 "aW" = (
-/obj/effect/decal/cleanable/blood/old,
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "aX" = (
 /obj/machinery/light/dim{
-	icon_state = "tube";
+	dir = 8;
+	icon_state = "tube"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
 "aY" = (
-/obj/structure/bodycontainer/morgue{
-	dir = 8
+/obj/effect/turf_decal/tile/red,
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_y = 32
 	},
-/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "aZ" = (
-/obj/machinery/door/airlock/security{
-	name = "Brig";
-	req_access_txt = "150"
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
 	},
-/obj/effect/decal/cleanable/blood/tracks,
-/turf/open/floor/plasteel/dark/airless,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "ba" = (
 /obj/structure/cable,
@@ -321,16 +314,15 @@
 /turf/open/floor/plating,
 /area/cruiser_dock)
 "bg" = (
-/obj/machinery/door/airlock/security{
-	name = "Brig";
-	req_access_txt = "150"
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
 	},
-/turf/open/floor/plasteel/dark/airless,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "bh" = (
 /obj/machinery/light/small/red{
-	icon_state = "bulb";
-	dir = 1
+	dir = 1;
+	icon_state = "bulb"
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock)
@@ -373,8 +365,8 @@
 /area/cruiser_dock/brig)
 "bo" = (
 /obj/machinery/shower{
-	icon_state = "shower";
-	dir = 1
+	dir = 1;
+	icon_state = "shower"
 	},
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plasteel,
@@ -393,8 +385,8 @@
 /area/cruiser_dock/brig)
 "br" = (
 /obj/machinery/light/small/red{
-	icon_state = "bulb";
-	dir = 1
+	dir = 1;
+	icon_state = "bulb"
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
@@ -644,12 +636,12 @@
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "ca" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+/obj/effect/spawner/randomcolavend,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
 	},
-/obj/machinery/door/airlock/glass,
-/turf/open/floor/plasteel,
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "cb" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -667,19 +659,16 @@
 /turf/open/floor/plasteel,
 /area/cruiser_dock/brig)
 "cd" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "permabolt3";
-	name = "Cell 5"
+/obj/structure/table/wood,
+/obj/item/storage/box/drinkingglasses,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey{
+	pixel_y = 5
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "permashut5"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel,
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "ce" = (
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel,
@@ -814,19 +803,14 @@
 /turf/open/floor/plasteel,
 /area/cruiser_dock/brig)
 "cz" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "permabolt3";
-	name = "Cell 4"
+/obj/structure/table/wood,
+/obj/item/folder/syndicate,
+/obj/item/storage/secure/briefcase,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "permashut4"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel,
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "cA" = (
 /obj/structure/table,
 /obj/machinery/computer/bookmanagement,
@@ -1049,19 +1033,13 @@
 /turf/open/floor/plasteel,
 /area/cruiser_dock/brig)
 "dd" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "permabolt3";
-	name = "Cell 3"
+/obj/structure/table/wood,
+/obj/item/folder/syndicate/blue,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "permashut3"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel,
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "de" = (
 /obj/structure/closet/crate/trashcart,
 /obj/structure/sign/poster/official/random{
@@ -1289,19 +1267,12 @@
 /turf/open/floor/plasteel,
 /area/cruiser_dock/brig)
 "dF" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "permabolt2";
-	name = "Cell 2"
+/obj/effect/spawner/randomsnackvend,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "permashut2"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel,
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "dG" = (
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/plasteel,
@@ -1362,24 +1333,20 @@
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "dN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 1
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
-/area/cruiser_dock/brig)
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "dO" = (
-/obj/structure/bed,
-/obj/item/bedsheet/orange,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
 	},
-/obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel,
-/area/cruiser_dock/brig)
+/obj/machinery/light/cold/no_nightlight{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "dP" = (
 /obj/structure/table/glass,
 /obj/item/storage/firstaid/regular,
@@ -1401,19 +1368,9 @@
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "dR" = (
-/obj/machinery/door/airlock/public/glass{
-	id_tag = "permabolt1";
-	name = "Cell 1"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "permashut1"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel,
-/area/cruiser_dock/brig)
+/obj/effect/turf_decal/caution/red,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "dS" = (
 /obj/structure/weightmachine/weightlifter,
 /obj/effect/decal/cleanable/dirt,
@@ -1448,7 +1405,7 @@
 "dW" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Sanitarium";
-	req_access_txt = "63"
+	req_access_txt = "150"
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 1
@@ -1480,6 +1437,9 @@
 "eb" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/spawner/scatter/grime,
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "ec" = (
@@ -1499,7 +1459,7 @@
 "ee" = (
 /obj/effect/turf_decal/tile/red,
 /turf/closed/indestructible/syndicate,
-/area/cruiser_dock/brig)
+/area/cruiser_dock)
 "ef" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -1518,7 +1478,7 @@
 	dir = 1
 	},
 /turf/closed/indestructible/syndicate,
-/area/cruiser_dock/brig)
+/area/cruiser_dock)
 "ei" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/red,
@@ -1637,8 +1597,8 @@
 	dir = 8
 	},
 /obj/machinery/light/small/red{
-	icon_state = "bulb";
-	dir = 4
+	dir = 4;
+	icon_state = "bulb"
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/brig)
@@ -1669,6 +1629,14 @@
 /obj/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
+"eD" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/vending/assaultops_ammo,
+/obj/machinery/light/cold/no_nightlight,
+/turf/open/floor/engine,
+/area/cruiser_dock)
 "eE" = (
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock/brig)
@@ -1676,6 +1644,3032 @@
 /obj/effect/spawner/scatter/grime,
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock/brig)
+"eK" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"eL" = (
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/donkpockets,
+/obj/item/storage/box/donkpockets,
+/obj/item/clothing/head/chefhat,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plasteel,
+/area/cruiser_dock)
+"eM" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"fa" = (
+/obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"fc" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/cruiser_dock)
+"fv" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 6
+	},
+/obj/machinery/vending/medical{
+	pixel_x = -2
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"fx" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/machinery/light/warm{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"fG" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/under/syndicate/camo,
+/obj/item/clothing/under/syndicate/camo,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/clothing/under/syndicate/soviet,
+/obj/item/clothing/under/syndicate/soviet,
+/obj/item/clothing/under/syndicate/coldres,
+/obj/item/clothing/under/syndicate/coldres,
+/obj/item/clothing/under/syndicate/rus_army,
+/obj/item/clothing/under/syndicate/rus_army,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"fL" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"fO" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"fR" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 9
+	},
+/obj/structure/table/glass,
+/obj/item/storage/backpack/duffelbag/syndie/surgery,
+/obj/item/storage/firstaid/tactical,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"fW" = (
+/obj/structure/chair/sofa/corp/corner,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"fX" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"gb" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/structure/bed/roller,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"gc" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 1
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"gl" = (
+/obj/structure/table/reinforced,
+/obj/item/grenade/syndieminibomb{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/grenade/syndieminibomb{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/grenade/syndieminibomb{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/grenade/syndieminibomb{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/grenade/syndieminibomb{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/grenade/syndieminibomb{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/grenade/syndieminibomb{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/grenade/syndieminibomb{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"gm" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"gs" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"gt" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"gx" = (
+/obj/structure/table,
+/obj/structure/bedsheetbin,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"gA" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"gE" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/belt/grenade/full,
+/obj/item/gun/ballistic/rocketlauncher,
+/obj/item/gun/ballistic/rocketlauncher,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"gW" = (
+/obj/structure/chair/sofa/corp{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"gZ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"hb" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"hg" = (
+/obj/machinery/door/airlock/glass_large,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"hh" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/machinery/stasis,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"hj" = (
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"hm" = (
+/obj/structure/table,
+/obj/structure/bedsheetbin,
+/obj/item/clothing/under/syndicate/bloodred/sleepytime,
+/obj/machinery/light/warm{
+	dir = 8
+	},
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"hq" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"hv" = (
+/obj/structure/chair/sofa/bench{
+	dir = 8
+	},
+/obj/machinery/light/warm/no_nightlight{
+	dir = 4
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"hw" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"hz" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"hD" = (
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate,
+/turf/open/floor/plasteel,
+/area/cruiser_dock/brig)
+"hN" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/fun_police{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"hO" = (
+/obj/machinery/button/door{
+	id = "sdorm2";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = -26;
+	pixel_y = 7;
+	specialfunctions = 4
+	},
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"hZ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ia" = (
+/obj/machinery/deepfryer,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"ii" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"iq" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/machinery/photocopier,
+/obj/structure/sign/poster/contraband/cc64k_ad,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"iv" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
+/obj/item/storage/belt/military,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"iz" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"iK" = (
+/obj/structure/chair/sofa/corp{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"iN" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin/carbon,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"iS" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/glass/rag,
+/obj/item/book/manual/wiki/barman_recipes,
+/obj/machinery/light/warm{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"jc" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"jf" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/cooking_to_serve_man,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"jg" = (
+/obj/structure/sign/warning/securearea{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
+	},
+/obj/machinery/light/small/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"jn" = (
+/obj/structure/kitchenspike,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"jq" = (
+/obj/structure/rack,
+/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/brute,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"jt" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"jz" = (
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"jB" = (
+/obj/structure/chair/sofa/bench{
+	dir = 4
+	},
+/obj/machinery/light/warm/no_nightlight{
+	dir = 8
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"jD" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"jN" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"jT" = (
+/turf/open/floor/light,
+/area/cruiser_dock)
+"jV" = (
+/obj/structure/chair/sofa/bench/corner,
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"jZ" = (
+/obj/structure/chair/sofa/corp{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"kc" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/suit/armor/laserproof,
+/obj/item/clothing/suit/armor/laserproof,
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/heavy,
+/obj/item/clothing/suit/armor/heavy,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"kg" = (
+/obj/structure/sign/poster/contraband/communist_state{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/machinery/light/warm/no_nightlight{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"kj" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ko" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor{
+	dir = 1;
+	req_access_txt = "150"
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"kD" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"kT" = (
+/obj/effect/turf_decal/trimline/blue/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ln" = (
+/obj/structure/sign/poster/contraband/lusty_xenomorph{
+	pixel_y = 32
+	},
+/obj/machinery/light/warm{
+	dir = 1
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"lw" = (
+/obj/structure/table/wood/poker,
+/obj/item/storage/fancy/cigarettes/cigars/havana,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"lI" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"lJ" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"lO" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"lP" = (
+/obj/machinery/vending/boozeomat,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"lY" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/warm{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"mf" = (
+/obj/machinery/door/airlock/freezer,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"ml" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"mu" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"mG" = (
+/obj/structure/table/wood/poker,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"nm" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"np" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/chem_heater,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/light/cold{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"nF" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"nG" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/item/wrench/combat,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"nH" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"nQ" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"nV" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -8
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"nZ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 5
+	},
+/obj/machinery/light/cold{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"oa" = (
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"oe" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"oo" = (
+/obj/machinery/button/door{
+	id = "sdorm1";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = -26;
+	pixel_y = 7;
+	specialfunctions = 4
+	},
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"os" = (
+/obj/effect/turf_decal/caution/red,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/obj/structure/sign/warning/securearea{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"oB" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/door/airlock/security/glass,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"oF" = (
+/obj/structure/table,
+/obj/item/restraints/handcuffs/energy,
+/obj/item/restraints/handcuffs/energy,
+/obj/item/restraints/handcuffs/energy,
+/obj/item/clothing/neck/human_petcollar,
+/obj/item/clothing/neck/human_petcollar,
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"oH" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/structure/table/glass,
+/obj/item/stack/medical/gauze{
+	pixel_x = 8
+	},
+/obj/item/clothing/neck/stethoscope,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"oP" = (
+/obj/machinery/computer/slot_machine,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"oV" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light/cold{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"oY" = (
+/obj/structure/chair/sofa/bench/corner{
+	dir = 8
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"pc" = (
+/obj/structure/closet/syndicate/personal,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"pf" = (
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ph" = (
+/obj/structure/chair/sofa/corp,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"pk" = (
+/obj/effect/turf_decal/trimline/blue/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"pq" = (
+/obj/machinery/computer/camera_advanced/syndie{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"pw" = (
+/obj/structure/rack,
+/obj/item/storage/firstaid/advanced,
+/obj/item/storage/firstaid/advanced,
+/obj/item/storage/firstaid/advanced,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"px" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 9
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"pI" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/door/airlock/security/glass{
+	name = "Secure Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"qa" = (
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"qb" = (
+/obj/structure/bodycontainer/morgue,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"qu" = (
+/obj/machinery/dna_scannernew,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"qC" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"qS" = (
+/obj/effect/spawner/randomcolavend,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"qU" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/structure/table/glass,
+/obj/item/reagent_containers/chem_pack{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/chem_pack{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"qV" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/structure/sign/warning/bodysposal{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"rc" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"rg" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/structure/table/optable,
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ri" = (
+/obj/machinery/sleeper/syndie,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ro" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/chem_dispenser/fullupgrade,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"rv" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"rw" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"rz" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin/carbon,
+/obj/effect/turf_decal/trimline/red/filled/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"rE" = (
+/obj/structure/table/wood,
+/obj/item/razor,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"rI" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"rN" = (
+/obj/machinery/door/airlock{
+	id_tag = "sdorm3";
+	name = "Cabin 3"
+	},
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"rS" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/suit/space/hardsuit/shielded/syndi,
+/obj/item/clothing/suit/space/hardsuit/shielded/syndi,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"rW" = (
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = 32
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"sa" = (
+/obj/effect/turf_decal/stripes/red/line,
+/obj/effect/turf_decal/caution/red{
+	dir = 1
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"sc" = (
+/obj/structure/guncase,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"se" = (
+/obj/structure/table/wood/poker,
+/obj/item/toy/cards/deck/cas,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"sf" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/energy/disabler,
+/obj/item/storage/box/contractor/fulton_extraction,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"so" = (
+/obj/structure/chair/sofa/bench/right,
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"su" = (
+/obj/structure/table/reinforced,
+/obj/item/crowbar/power/syndicate,
+/obj/item/crowbar/power/syndicate,
+/obj/item/crowbar/power/syndicate,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"sG" = (
+/obj/machinery/light/dim{
+	dir = 8;
+	icon_state = "tube"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"sH" = (
+/obj/machinery/light/cold{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"sO" = (
+/obj/structure/table,
+/obj/item/clothing/suit/furcoat,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"sV" = (
+/obj/structure/table/wood,
+/obj/item/clipboard,
+/turf/open/floor/plasteel,
+/area/cruiser_dock)
+"sW" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/machinery/light/cold/no_nightlight{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"te" = (
+/obj/structure/sign/poster/contraband/free_key{
+	pixel_y = 32
+	},
+/obj/machinery/light/cold/no_nightlight{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"tg" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "security airlock";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"tk" = (
+/obj/structure/table/wood,
+/obj/item/folder/blue,
+/obj/item/pen/blue,
+/obj/machinery/button/door{
+	id = "sdorm3";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = -26;
+	pixel_y = 7;
+	specialfunctions = 4
+	},
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"tv" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution/red{
+	dir = 4
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"tA" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"tD" = (
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"tH" = (
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"tZ" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/obj/machinery/smartfridge/organ,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ud" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"uh" = (
+/obj/structure/table/wood,
+/obj/item/storage/briefcase{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/briefcase,
+/obj/item/cane,
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"uk" = (
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
+"uz" = (
+/obj/structure/table/wood,
+/obj/item/folder/red,
+/obj/item/pen,
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"uD" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"uK" = (
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_y = 32
+	},
+/obj/machinery/light/cold/no_nightlight{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"uL" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/structure/sign/poster/contraband/fun_police{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"uO" = (
+/obj/structure/bodycontainer/morgue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"uW" = (
+/obj/effect/turf_decal/trimline/red/corner,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"uX" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/door/airlock/vault{
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"vj" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"vn" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 5
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"vo" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"vC" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"vF" = (
+/obj/structure/table,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"vJ" = (
+/obj/machinery/light/warm,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"vO" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle/large,
+/turf/open/floor/plasteel,
+/area/cruiser_dock)
+"vT" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"vU" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"wi" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/light/cold{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"wz" = (
+/obj/machinery/light/small/red{
+	dir = 1
+	},
+/turf/open/floor/circuit/red/anim,
+/area/cruiser_dock)
+"wD" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "netrunner";
+	name = "Door Lockdown";
+	normaldoorcontrol = 1;
+	pixel_x = -26;
+	pixel_y = 7;
+	specialfunctions = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"wG" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/papersack{
+	icon_state = "paperbag_NanotrasenStandard_closed"
+	},
+/obj/item/storage/box/papersack{
+	icon_state = "paperbag_NanotrasenStandard_closed"
+	},
+/obj/item/storage/box/papersack{
+	icon_state = "paperbag_NanotrasenStandard_closed"
+	},
+/obj/item/storage/box/papersack{
+	icon_state = "paperbag_NanotrasenStandard_closed"
+	},
+/obj/item/storage/box/papersack{
+	icon_state = "paperbag_NanotrasenStandard_closed"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"wS" = (
+/obj/machinery/food_cart,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"wZ" = (
+/obj/structure/railing{
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"xj" = (
+/obj/machinery/door/airlock/security{
+	name = "Secure Airlock";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"xt" = (
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"xB" = (
+/obj/machinery/computer/cloning{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"xG" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"xK" = (
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"xM" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/obj/machinery/light/warm{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"yt" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin/carbon,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"yu" = (
+/obj/machinery/processor,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"yz" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	desc = "Cooks and boils stuff, somehow.";
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"yL" = (
+/obj/structure/fluff/hedge/opaque,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"yX" = (
+/obj/effect/turf_decal/trimline/red/corner,
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"zl" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"zn" = (
+/obj/machinery/vending/dinnerware,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"zo" = (
+/obj/effect/spawner/randomarcade,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"zp" = (
+/obj/machinery/door/airlock{
+	id_tag = "sdorm1";
+	name = "Cabin 1"
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"zA" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"zQ" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/machinery/stasis{
+	dir = 1
+	},
+/obj/machinery/light/cold{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"zS" = (
+/obj/effect/spawner/randomsnackvend,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"zV" = (
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Ae" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Al" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"An" = (
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
+"AG" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"AN" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"AR" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/obj/machinery/computer/operating,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"AW" = (
+/obj/machinery/dna_scannernew{
+	name = "\improper Death Machine"
+	},
+/obj/effect/turf_decal/delivery/red,
+/obj/effect/turf_decal/stripes/red/full,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"AZ" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate/freezer{
+	name = "universal blood storage"
+	},
+/obj/machinery/iv_drip,
+/obj/item/reagent_containers/blood/universal{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/blood/universal,
+/obj/item/reagent_containers/blood/universal{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 4
+	},
+/obj/item/reagent_containers/blood/universal,
+/obj/item/reagent_containers/blood/universal,
+/obj/item/reagent_containers/blood/universal,
+/obj/item/reagent_containers/blood/universal,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Bb" = (
+/obj/structure/table/wood,
+/obj/item/toy/cards/deck/syndicate,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"Bw" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"By" = (
+/obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"BA" = (
+/obj/structure/table/reinforced,
+/obj/item/kitchen/rollingpin,
+/obj/item/kitchen/rollingpin,
+/obj/item/kitchen/rollingpin,
+/obj/item/kitchen/rollingpin,
+/obj/item/kitchen/knife,
+/obj/item/kitchen/knife,
+/obj/item/kitchen/knife,
+/obj/item/kitchen/knife,
+/obj/item/kitchen/knife,
+/obj/item/clothing/suit/apron/chef,
+/obj/item/clothing/suit/apron/chef,
+/obj/item/clothing/suit/apron/chef,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"BB" = (
+/obj/structure/table/reinforced,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"BD" = (
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"BG" = (
+/obj/machinery/porta_turret/assaultops{
+	system_id = "syndiebase"
+	},
+/obj/effect/turf_decal/stripes/red/full,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"BN" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/cruiser_dock)
+"BT" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/storage/pill_bottle/mannitol{
+	pixel_y = 10
+	},
+/obj/item/storage/pill_bottle/mannitol{
+	pixel_y = 10
+	},
+/obj/item/storage/pill_bottle/mannitol{
+	pixel_y = 10
+	},
+/obj/item/storage/pill_bottle/mutadone,
+/obj/item/storage/pill_bottle/mutadone,
+/obj/item/storage/pill_bottle/mutadone,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"BV" = (
+/obj/effect/turf_decal/trimline/blue/line,
+/obj/machinery/light/cold{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Cd" = (
+/obj/machinery/light/small/blacklight,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ce" = (
+/obj/machinery/light/cold,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"Ct" = (
+/obj/structure/table/wood/poker,
+/obj/item/toy/cards/deck/cas/black,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Cx" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/machinery/light/small/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"CD" = (
+/obj/machinery/door/airlock/hatch{
+	id_tag = "netrunner";
+	name = "netrunner chamber";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"CP" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/machinery/light/cold/no_nightlight{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"CQ" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"CR" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/caution/red,
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"CU" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/structure/fluff/hedge/opaque,
+/obj/machinery/light/warm/no_nightlight,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"CW" = (
+/obj/structure/chair/sofa/corp,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Dp" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/line,
+/obj/structure/sign/warning/securearea{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"DB" = (
+/obj/machinery/gibber,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"DI" = (
+/obj/structure/sign/warning/securearea{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/obj/machinery/light/small/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"DU" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"DV" = (
+/obj/structure/chair/sofa/bench/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"DY" = (
+/obj/structure/sign/warning/gasmask{
+	pixel_x = 32
+	},
+/turf/open/floor/circuit/red/anim,
+/area/cruiser_dock)
+"Ei" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 8
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"Ek" = (
+/obj/machinery/chem_master/condimaster,
+/obj/machinery/light/cold{
+	dir = 4
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"En" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ev" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Ez" = (
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"EI" = (
+/obj/structure/table/wood/poker,
+/obj/item/storage/pill_bottle/dice,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"EL" = (
+/obj/structure/table/reinforced,
+/obj/item/autosurgeon/organ/syndicate/laser_arm,
+/obj/item/autosurgeon/organ/syndicate/laser_arm,
+/obj/item/autosurgeon/organ/syndicate/anti_stun,
+/obj/item/autosurgeon/organ/syndicate/anti_stun,
+/obj/item/autosurgeon/organ/syndicate/xray_eyes,
+/obj/item/autosurgeon/organ/syndicate/xray_eyes,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/autosurgeon/organ/syndicate/reviver,
+/obj/item/autosurgeon/organ/syndicate/reviver,
+/obj/item/autosurgeon/skillchip/syndicate/chameleon_chip,
+/obj/item/autosurgeon/skillchip/syndicate/chameleon_chip,
+/obj/item/autosurgeon/skillchip/syndicate/chameleon_chip,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"EQ" = (
+/turf/open/water/overlay/hotspring/planet,
+/area/cruiser_dock)
+"ES" = (
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"EY" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Fk" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/item/storage/backpack/duffelbag/syndie/surgery,
+/obj/item/storage/firstaid/tactical,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Fl" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Fm" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Fx" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 8
+	},
+/obj/machinery/light/warm{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/cruiser_dock)
+"Fz" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/machinery/stasis{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"FA" = (
+/obj/structure/reagent_dispensers/cooking_oil,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"FC" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"FJ" = (
+/obj/structure/chair/sofa/bench,
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"FL" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"FN" = (
+/obj/structure/sign/poster/contraband/energy_swords{
+	pixel_y = 33
+	},
+/obj/machinery/light/cold/no_nightlight{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"FT" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"FY" = (
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"FZ" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"Ga" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"Gc" = (
+/obj/effect/spawner/randomcolavend,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"Ge" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/item/stack/medical/gauze{
+	pixel_x = 8
+	},
+/obj/item/clothing/neck/stethoscope,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Gf" = (
+/obj/structure/closet/syndicate/resources/everything,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"Gh" = (
+/obj/machinery/shuttle_manipulator,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"Gu" = (
+/obj/machinery/computer,
+/obj/effect/turf_decal/bot,
+/obj/machinery/light/small/red{
+	dir = 1
+	},
+/turf/open/floor/circuit/red/anim,
+/area/cruiser_dock)
+"Gv" = (
+/obj/structure/table/wood/poker,
+/obj/item/toy/eightball/haunted,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Gz" = (
+/obj/structure/sign/poster/contraband/revolver{
+	pixel_y = 31
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"GC" = (
+/obj/structure/fluff/hedge/opaque,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"GD" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 1
+	},
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"GG" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"GI" = (
+/obj/structure/table/glass,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"GO" = (
+/obj/structure/table/wood/poker,
+/obj/item/toy/cards/deck/syndicate,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"GY" = (
+/obj/structure/table/wood/poker,
+/obj/item/paicard,
+/obj/item/paicard,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Hf" = (
+/obj/machinery/skill_station,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Hk" = (
+/obj/machinery/computer/crew/syndie,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Hr" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/turf_decal/box,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Hs" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/glass/rag,
+/obj/item/reagent_containers/food/drinks/shaker,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Hv" = (
+/obj/effect/spawner/randomsnackvend,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"HB" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"HG" = (
+/obj/structure/bed,
+/obj/machinery/light,
+/obj/machinery/status_display/evac{
+	pixel_y = -32
+	},
+/obj/item/bedsheet/dorms,
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"HH" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/sign/warning/securearea{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"HI" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 10
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"HO" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/skillchips/engineering,
+/obj/item/storage/box/skillchips/engineering,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"HS" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"HU" = (
+/obj/machinery/porta_turret/assaultops{
+	system_id = "syndiebase"
+	},
+/obj/effect/turf_decal/stripes/red/full,
+/obj/structure/sign/warning/testchamber{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ia" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/item/clothing/under/syndicate/bloodred/sleepytime,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Ig" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 4
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"Ik" = (
+/obj/effect/spawner/randomsnackvend,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"Iq" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Iw" = (
+/obj/structure/chair/sofa/bench/corner{
+	dir = 1
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"Ix" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/vending/assaultops_ammo,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Iy" = (
+/obj/structure/chair/sofa/bench{
+	dir = 1
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"IB" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/clothing/suit/jacket/letterman_nanotrasen,
+/obj/item/clothing/suit/toggle/lawyer,
+/obj/item/clothing/under/costume/maid,
+/obj/item/clothing/head/kitty,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"ID" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 8
+	},
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"IJ" = (
+/obj/structure/table/wood,
+/obj/item/food/grown/poppy/lily,
+/obj/item/food/grown/poppy/lily,
+/obj/item/food/grown/poppy/lily,
+/obj/item/clothing/under/syndicate/bloodred/sleepytime,
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"IR" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/obj/structure/table/glass,
+/obj/item/storage/backpack/duffelbag/syndie/surgery,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"IY" = (
+/obj/machinery/light,
+/obj/machinery/status_display/evac{
+	pixel_y = -32
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Jj" = (
+/obj/machinery/vending/medical/syndicate_access,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Jl" = (
+/obj/structure/rack,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Jq" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ju" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"JC" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/melee/transforming/energy/sword/saber/blue,
+/obj/item/melee/transforming/energy/sword/saber/blue,
+/obj/item/melee/transforming/energy/sword/saber/blue,
+/obj/item/melee/transforming/energy/sword/saber/green,
+/obj/item/melee/transforming/energy/sword/saber/green,
+/obj/item/melee/transforming/energy/sword/saber/green,
+/obj/item/melee/transforming/energy/sword/saber/purple,
+/obj/item/melee/transforming/energy/sword/saber/purple,
+/obj/item/melee/transforming/energy/sword/saber/purple,
+/obj/item/melee/transforming/energy/sword/saber/red,
+/obj/item/melee/transforming/energy/sword/saber/red,
+/obj/item/melee/transforming/energy/sword/saber/red,
+/obj/item/shield/energy,
+/obj/item/shield/energy,
+/obj/item/shield/energy,
+/obj/item/shield/energy,
+/obj/item/shield/energy,
+/obj/item/shield/energy,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"JI" = (
+/obj/structure/sign/poster/contraband/have_a_puff,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"JR" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"Ka" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/obj/machinery/light/warm{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Kb" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/door/airlock/security{
+	name = "Secure Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Kk" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Kq" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/machinery/iv_drip,
+/obj/machinery/light/cold{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Kr" = (
+/obj/structure/dresser,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Ky" = (
+/obj/effect/spawner/randomcolavend,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"KD" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"KE" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"KH" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/corner,
+/obj/machinery/light/cold/no_nightlight,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"KJ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"KV" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ld" = (
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ln" = (
+/obj/structure/sign/warning/coldtemp{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Lp" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ly" = (
+/obj/structure/table/wood,
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 5
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"LA" = (
+/obj/structure/chair/sofa/corp{
+	dir = 8
+	},
+/obj/effect/landmark/start/assaultop,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"LI" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"LJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"LM" = (
+/obj/machinery/door/airlock/security{
+	name = "Brig";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Md" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"Mj" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/machinery/light/cold{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ml" = (
+/obj/structure/table/glass,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"My" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"MC" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/structure/bed/roller,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"MD" = (
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"MK" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/structure/table/glass,
+/obj/item/storage/firstaid/tactical,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"MM" = (
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"MU" = (
+/obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6{
+	pixel_y = 32
+	},
+/obj/machinery/light/warm{
+	dir = 1
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"MZ" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"Nc" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Nl" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Np" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/handcuffs,
+/obj/item/melee/baton/loaded,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Ns" = (
+/obj/structure/table/glass,
+/obj/item/instrument/guitar,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Nt" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"NA" = (
+/obj/item/flashlight/lamp,
+/obj/structure/table,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"NB" = (
+/obj/structure/table/reinforced,
+/obj/item/syndicatedetonator,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"NV" = (
+/obj/structure/rack,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/obj/item/storage/firstaid/toxin,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"NW" = (
+/obj/structure/table/reinforced,
+/obj/item/food/pie/cream,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"NX" = (
+/obj/structure/chair/sofa/corp,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"NZ" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/machinery/light/cold,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ol" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/item/clothing/suit/jacket{
+	desc = "All the class of a trenchcoat without the security fibers.";
+	icon_state = "detective";
+	name = "trenchcoat"
+	},
+/obj/item/clothing/suit/toggle/lawyer/purple,
+/obj/item/clothing/head/fedora{
+	icon_state = "detective"
+	},
+/obj/item/clothing/under/rank/civilian/lawyer/female,
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"Os" = (
+/obj/structure/chair/sofa/bench/left,
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"Oy" = (
+/obj/structure/table/wood,
+/obj/item/storage/photo_album/syndicate,
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"Oz" = (
+/obj/structure/sauna_oven,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/turf/open/water/overlay/hotspring/planet,
+/area/cruiser_dock)
+"OF" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/machinery/stasis,
+/obj/machinery/light/cold{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"OG" = (
+/obj/effect/spawner/randomarcade{
+	dir = 1
+	},
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"OQ" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Pb" = (
+/obj/machinery/light/small/red{
+	dir = 4
+	},
+/turf/open/floor/circuit/red/anim,
+/area/cruiser_dock)
+"Pg" = (
+/obj/structure/table,
+/obj/item/kitchen/knife/combat,
+/obj/item/scalpel,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Pp" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/machinery/light,
+/obj/item/clothing/suit/jacket{
+	desc = "All the class of a trenchcoat without the security fibers.";
+	icon_state = "greydet";
+	name = "trenchcoat"
+	},
+/obj/item/clothing/suit/toggle/lawyer/black,
+/obj/machinery/status_display/evac{
+	pixel_y = -32
+	},
+/obj/item/clothing/head/fedora,
+/obj/item/clothing/under/dress/redeveninggown,
+/obj/item/clothing/head/rabbitears,
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"Pq" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/melee/classic_baton/telescopic,
+/obj/item/melee/classic_baton/telescopic,
+/obj/item/melee/classic_baton/telescopic,
+/obj/item/melee/classic_baton/telescopic,
+/obj/item/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Pw" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/structure/sign/warning/securearea{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Px" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Py" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/water/overlay/hotspring/planet,
+/area/cruiser_dock)
+"Pz" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"PH" = (
+/obj/effect/turf_decal/trimline/red/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"PM" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 6
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"PP" = (
+/obj/machinery/door/airlock{
+	id_tag = "sdorm2";
+	name = "Cabin 2"
+	},
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"PQ" = (
+/obj/structure/bed,
+/obj/item/bedsheet/dorms,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"PT" = (
+/turf/open/floor/circuit/red/anim,
+/area/cruiser_dock)
+"Qc" = (
+/turf/open/floor/plasteel,
+/area/cruiser_dock)
+"Qq" = (
+/obj/structure/table/wood,
+/obj/item/language_manual/codespeak_manual/unlimited,
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"Qv" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Qx" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/bag/tray,
+/obj/item/storage/bag/tray,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/food/dough,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"Qy" = (
+/obj/machinery/icecream_vat,
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"QC" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 11
+	},
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"QF" = (
+/obj/structure/table,
+/obj/item/folder/syndicate/blue,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"QN" = (
+/obj/structure/chair/sofa/corp{
+	dir = 1
+	},
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"QS" = (
+/obj/machinery/light/cold/no_nightlight,
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"QT" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 11
+	},
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"QZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/chem_master,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Rf" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/chem_heater,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/light/cold{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Rv" = (
+/obj/structure/rack,
+/obj/item/storage/firstaid/tactical,
+/obj/item/storage/firstaid/tactical,
+/obj/item/storage/firstaid/tactical,
+/obj/item/storage/firstaid/tactical,
+/obj/item/storage/firstaid/tactical,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ry" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"RB" = (
+/obj/structure/railing,
+/obj/machinery/light/warm{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"RU" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 1
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"RV" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Sd" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/effect/spawner/randomsnackvend,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Si" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Sm" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/structure/fluff/hedge/opaque,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"SA" = (
+/obj/machinery/light/warm{
+	dir = 8
+	},
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"SD" = (
+/obj/machinery/computer/cryopod{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
+"SK" = (
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	name = "sink";
+	pixel_y = 28
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"SN" = (
+/obj/structure/table,
+/obj/item/gun/energy/decloner/unrestricted,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"SS" = (
+/obj/structure/sign/departments/medbay,
+/turf/closed/indestructible/syndicate,
+/area/cruiser_dock)
+"SW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"SZ" = (
+/obj/machinery/vending/cigarette/syndicate,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Td" = (
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"Tk" = (
+/obj/structure/table/reinforced,
+/obj/item/radio/headset/syndicate/alt,
+/obj/item/radio/headset/syndicate/alt,
+/obj/item/radio/headset/syndicate/alt,
+/obj/item/radio/headset/syndicate/alt,
+/obj/item/radio/headset/syndicate/alt,
+/obj/item/radio/headset/syndicate/alt,
+/obj/item/radio/headset/syndicate/alt,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Tq" = (
+/obj/structure/table,
+/obj/item/storage/firstaid/tactical,
+/obj/item/kitchen/knife/rainbowknife,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"TJ" = (
+/obj/effect/turf_decal/trimline/red/line,
+/obj/structure/sign/warning/bodysposal{
+	pixel_y = -32
+	},
+/obj/machinery/light/cold,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"TL" = (
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"TQ" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"TR" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_x = -28
+	},
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"Uf" = (
+/obj/structure/table/wood,
+/obj/item/clothing/mask/balaclava{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"Ui" = (
+/obj/structure/sign/poster/contraband/syndicate_pistol{
+	pixel_y = 34
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Un" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 8
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"UI" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"UJ" = (
+/obj/machinery/computer/message_monitor{
+	dir = 1
+	},
+/obj/item/paper/monitorkey,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/turf_decal/trimline/red/filled/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"UO" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_red,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"UR" = (
+/obj/structure/chair/sofa/corp/corner,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"UW" = (
+/obj/machinery/chem_master/condimaster{
+	name = "HoochMaster 2000"
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"UY" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Va" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/sign/warning/securearea{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Vf" = (
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution/red{
+	dir = 8
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"Vj" = (
+/obj/structure/sign/poster/contraband/communist_state{
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/warm/no_nightlight{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Vp" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/gun/energy/disabler,
+/obj/item/storage/box/contractor/fulton_extraction,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Vr" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 8
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"Vt" = (
+/obj/machinery/light/cold{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"VD" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"VO" = (
+/obj/structure/dresser,
+/turf/open/floor/carpet,
+/area/cruiser_dock)
+"VP" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"VZ" = (
+/obj/structure/bed,
+/obj/item/bedsheet/dorms,
+/turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"Wp" = (
+/obj/structure/railing,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Wu" = (
+/obj/structure/chair/office,
+/obj/effect/turf_decal/box,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Wv" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 4
+	},
+/turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"Wx" = (
+/obj/structure/closet/syndicate/personal,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"WJ" = (
+/obj/machinery/door/airlock/hatch,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"WW" = (
+/obj/structure/table/wood,
+/obj/item/coin/silver,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"Xf" = (
+/obj/structure/chair/sofa/corp{
+	dir = 4
+	},
+/obj/effect/landmark/start/assaultop,
+/turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"Xi" = (
+/obj/machinery/clonepod,
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Xm" = (
+/obj/machinery/light/small/red,
+/turf/open/floor/circuit/red/anim,
+/area/cruiser_dock)
+"Xn" = (
+/obj/machinery/washing_machine,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"Xo" = (
+/obj/machinery/griddle,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"Xr" = (
+/obj/structure/chair/sofa/corp/corner{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"XC" = (
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 5
+	},
+/obj/structure/table/glass,
+/obj/item/reagent_containers/chem_pack{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/chem_pack{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"XE" = (
+/obj/structure/fluff/hedge/opaque,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"XJ" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"XN" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/door/airlock/security/glass{
+	name = "Secure Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark/airless,
+/area/cruiser_dock)
+"XP" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"XS" = (
+/obj/machinery/porta_turret/assaultops,
+/obj/effect/turf_decal/stripes/red/full,
+/obj/structure/sign/poster/contraband/c20r{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"XX" = (
+/obj/structure/chair/stool/bar,
+/turf/open/floor/wood,
+/area/cruiser_dock)
+"Yl" = (
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/corner,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Ym" = (
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Yu" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"Yy" = (
+/obj/structure/rack,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
+/obj/machinery/light/cold{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"YV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"YX" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"Zl" = (
+/obj/effect/turf_decal/trimline/red/filled/corner,
+/turf/open/floor/plasteel/checker,
+/area/cruiser_dock)
+"Zn" = (
+/obj/structure/table/wood,
+/obj/item/toy/cards/deck/syndicate,
+/obj/item/clothing/under/syndicate/bloodred/sleepytime,
+/turf/open/floor/eighties,
+/area/cruiser_dock)
+"Zt" = (
+/obj/structure/closet/syndicate/personal,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock)
+"Zu" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"Zv" = (
+/obj/effect/turf_decal/trimline/red/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"Zx" = (
+/obj/structure/chair/sofa/bench{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/line,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ZE" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ZL" = (
+/obj/effect/turf_decal/caution/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 8
+	},
+/obj/machinery/light/cold/no_nightlight,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ZZ" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
 
 (1,1,1) = {"
 aa
@@ -16022,28 +19016,28 @@ aa
 aa
 aa
 aa
-aa
 ak
+MM
 ae
 ak
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -16279,28 +19273,28 @@ aa
 aa
 aa
 aa
-aa
 ak
+aA
 aA
 ak
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+pw
+jq
+Yy
+Jl
+NV
+Rv
+Ld
+fO
+fO
+Vt
+aA
+SN
+ak
 aa
 aa
 aa
@@ -16518,12 +19512,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
 ak
 ak
 ak
@@ -16545,19 +19539,19 @@ ak
 ak
 ak
 ak
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+pk
+aA
+aA
+aA
+aA
+aA
 ak
-ak
-ak
-ak
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -16775,46 +19769,46 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 ak
 aL
 aL
 aL
+aL
+aL
+aL
+aL
+aL
+aL
 ak
-af
-af
-af
+nm
+jN
+jN
+aX
+jN
+jN
+TR
+jN
 aX
 af
-af
-af
-af
 aX
-af
-aX
-af
-af
-af
-af
-aX
-af
-af
-af
+jN
+TR
+jN
+sG
 ak
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Jj
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+Jj
+ak
 aa
 aa
 aa
@@ -17032,18 +20026,18 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 ak
+ab
+ab
+ab
+ab
+ab
+ab
 ab
 ba
 ab
 ak
-af
+nF
 af
 af
 af
@@ -17057,21 +20051,21 @@ aj
 aQ
 af
 af
-af
-af
-af
-af
-af
+rw
+SS
+ak
+ak
+ak
+Kb
 ak
 ak
 ak
 ak
 ak
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -17289,46 +20283,46 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
 ak
 bh
 ba
 ab
 bb
 af
-af
+oF
 af
 aU
 af
-af
+aK
 af
 as
 ag
-ap
+Qq
 ar
 aC
 af
 af
-af
-aU
-af
-af
-af
-ak
+rw
+be
 aO
-aJ
+MC
+Kq
+xK
+aO
+aO
+aO
+ml
+ak
+eM
+aA
 aA
 ak
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -17557,7 +20551,7 @@ et
 ba
 ab
 ak
-af
+nF
 aK
 af
 af
@@ -17565,27 +20559,27 @@ af
 aK
 af
 as
-ap
+Oy
 ax
 ap
 aC
 af
-aK
 af
-af
-af
-aK
-aD
-aZ
+Ga
+XN
 aA
 aA
-ay
+aA
+aA
+aA
+aA
+aA
+Zv
+Kb
+aA
+aA
+NA
 ak
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -17803,18 +20797,18 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+aP
+aP
+aP
+aP
+aP
 aa
 ak
 ab
 ba
 ab
 ak
-af
+nF
 af
 af
 af
@@ -17828,21 +20822,21 @@ aV
 aR
 af
 af
-af
-af
-af
-af
-af
+rw
+be
+Pz
+Pz
+Pz
+gt
+gb
+aT
+aA
+Zv
 ak
 aA
-aT
-aw
+UO
+Pg
 ak
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -18060,46 +21054,46 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+aP
+aW
+SD
+An
+aP
 aa
 ak
 bI
 bJ
 ab
 ak
-af
+lO
 an
-af
-af
-af
+GG
+GG
+GG
 an
+GG
+GG
+kD
 af
 af
-af
-an
-af
-af
-af
-an
-af
-af
-af
-an
-af
+Zl
+GG
+GG
+zl
+SS
+ak
+ak
+ak
+ak
+ak
+bg
+aA
+NZ
 ak
 aA
 aA
 aA
 ak
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -18317,11 +21311,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+aP
+aW
+aS
+An
+aP
 aa
 ak
 ak
@@ -18336,27 +21330,27 @@ be
 bf
 be
 be
-be
-bf
-be
-be
-be
-bf
-be
-be
-be
-bf
-be
+nF
+af
+af
+rw
 ak
+ak
+ak
+ak
+hb
+hZ
+wi
+AZ
 ak
 bg
+aA
+Zv
 ak
+be
+LM
+be
 ak
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -18574,11 +21568,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+aP
+aW
+aS
+An
+aP
 aa
 aP
 aG
@@ -18592,28 +21586,28 @@ au
 aI
 av
 av
-au
-aI
-av
-av
-au
-aI
-av
-av
-au
-aI
-av
-av
-aP
-aW
-aS
-aS
-aP
-aa
-aa
-aa
-aa
-aa
+be
+nF
+af
+af
+rw
+be
+ro
+QZ
+np
+Nl
+MK
+gZ
+KJ
+be
+bg
+aA
+Zv
+ak
+aZ
+Qv
+XJ
+ak
 aa
 aa
 aa
@@ -18833,7 +21827,7 @@ aP
 aP
 aP
 aP
-aP
+uk
 aP
 aP
 aa
@@ -18849,28 +21843,28 @@ au
 av
 av
 av
-au
-av
-av
-av
-au
-av
-av
-av
-au
-av
-av
-av
-aP
+be
+nF
+af
+af
+rw
+be
+Ml
+nH
+aA
+Nl
+rg
+VD
+KJ
 aB
-aS
-aS
-aP
-aa
-aa
-aa
-aa
-aa
+pf
+aA
+Yl
+Kb
+rI
+Tq
+KV
+ak
 aa
 aa
 aa
@@ -19106,28 +22100,28 @@ aF
 av
 ah
 av
-aF
-av
-al
-av
-aF
-av
-ah
-av
-aF
-av
-al
-av
-aP
-aW
-aS
-aW
-aP
-aa
-aa
-aa
-aa
-aa
+be
+nF
+af
+af
+rw
+be
+Ml
+rv
+aA
+Nl
+AR
+IR
+KJ
+be
+bg
+aA
+Zv
+ak
+dN
+Cx
+xG
+ak
 aa
 aa
 aa
@@ -19332,7 +22326,7 @@ aa
 aa
 aP
 ao
-aG
+aw
 aG
 aG
 aG
@@ -19363,37 +22357,37 @@ au
 aM
 av
 am
-au
-av
+be
+jg
 at
-am
-au
-av
-av
-am
-au
+at
+DI
+be
+ro
+QZ
+Rf
 ai
-at
-am
-aP
-aY
-aq
-az
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Lp
+Lp
+uD
+ak
+bg
+aA
+Zv
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -19592,7 +22586,7 @@ bl
 aG
 aG
 aG
-aG
+aw
 aG
 aP
 da
@@ -19620,37 +22614,37 @@ aP
 aP
 aF
 aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+tg
+tg
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+bg
+aA
+tD
+MC
+MC
+aO
+ml
+ak
+qb
+qb
+qb
+qb
+qb
+qb
+qb
+qb
+ak
 aa
 aa
 aa
@@ -19874,40 +22868,40 @@ ew
 eE
 ez
 aP
-bi
+hD
 aG
 bk
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+BG
+dR
+Jq
+BG
+ak
+fR
+zQ
+Fl
+Fz
+qU
+zQ
+Fl
+oH
+FY
+aA
+aA
+aA
+aA
+aA
+TJ
+ak
+UI
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+ak
 aa
 aa
 aa
@@ -20134,37 +23128,37 @@ aP
 bj
 aG
 bo
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+kj
+aA
+aA
+KH
+ak
+bg
+aA
+qa
+LJ
+LJ
+LJ
+vo
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+Yl
+Kb
+aA
+aA
+aA
+aA
+aA
+aA
+UI
+Cd
+ak
 aa
 aa
 aa
@@ -20391,37 +23385,37 @@ aP
 bk
 bm
 bi
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+bg
+aA
+aA
+FT
+ak
+tZ
+aA
+Nt
+ri
+ri
+ri
+YV
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+qV
+ak
+aA
+aA
+UI
+aA
+aA
+aA
+aA
+aA
+ak
 aa
 aa
 aa
@@ -20617,21 +23611,21 @@ aa
 aa
 aP
 aP
-ca
+ek
 aP
 aP
-ca
+ek
 aP
 aP
-ca
+ek
 aP
 aP
-ca
+ek
 aP
+bi
+bi
 aP
-ca
-aP
-ea
+aY
 ef
 ek
 em
@@ -20648,37 +23642,37 @@ aP
 bl
 bn
 aG
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+qS
+aA
+aA
+Zx
+ak
+bg
+aA
+fX
+SW
+SW
+SW
+HB
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+Zv
+ak
+uO
+uO
+uO
+uO
+uO
+uO
+uO
+uO
+ak
 aa
 aa
 aa
@@ -20885,57 +23879,57 @@ aP
 ct
 dE
 aP
-bL
-bv
-aP
+bp
+bp
+ak
 ee
 eh
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+FY
+aA
+aA
+Zx
+ak
+XC
+OF
+gt
+hh
+Ge
+OF
+gt
+Fk
+gb
+gb
+Mj
+yX
+Pz
+Pz
+fv
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -21142,48 +24136,48 @@ aP
 bM
 aG
 aP
-dN
+cu
 bp
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+aZ
+hq
+hq
+Vj
+hq
+hq
+hq
+hq
+hq
+Vj
+hq
+EY
+ak
+BG
+dR
+aA
+aA
+CP
+aA
+aA
+aA
+Zx
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+pI
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -21399,48 +24393,48 @@ aP
 cv
 cc
 aP
-dO
-cy
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+bp
+bp
+ak
+ca
+aA
+VP
+Xf
+Xf
+Xf
+Xf
+Xf
+Xf
+Xf
+GD
+KV
+ak
+lJ
+aA
+aA
+aA
+Zv
+aA
+aA
+aA
+Ry
+ak
+Xn
+hm
+Xn
+gx
+Xn
+SA
+Gc
+ak
+fa
+eK
+aA
+aA
+BT
+kT
+qu
+ak
 aa
 aa
 aa
@@ -21645,59 +24639,59 @@ aa
 aa
 aP
 aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+bi
+bi
+ak
 cd
-aP
-aP
-cz
-aP
-aP
-dd
-aP
-aP
-dF
-aP
-aP
-dR
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aA
+ph
+QF
+QF
+QF
+QF
+QF
+QF
+QF
+QN
+KV
+ak
+uL
+Pz
+Pz
+Pz
+Iq
+aA
+aA
+aA
+Sd
+ak
+JI
+hj
+hj
+hj
+hj
+hj
+Wx
+ak
+Ln
+fL
+XP
+XP
+jc
+kT
+xB
+ak
 aa
 aa
 aa
@@ -21915,46 +24909,46 @@ cO
 aG
 bi
 bi
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+cz
+aA
+ph
+tA
+vF
+vF
+Gh
+vF
+vF
+sO
+QN
+aA
+hg
+Yu
+Yu
+Yu
+Yu
+PH
+aA
+aA
+aA
+tD
+hg
+hj
+hj
+Zn
+rE
+Uf
+hj
+Wx
+ak
+By
+oV
+RV
+nG
+nG
+BV
+Xi
+ak
 aa
 aa
 aa
@@ -22172,46 +25166,46 @@ dG
 bi
 bi
 dS
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+dd
+aA
+ph
+vF
+vF
+vF
+jz
+vF
+vF
+tA
+QN
+aA
+ES
+FL
+FL
+FL
+FL
+PH
+aA
+aA
+aA
+uW
+ES
+hj
+hj
+Uf
+Bb
+WW
+hj
+Wx
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -22429,38 +25423,38 @@ aP
 dJ
 bp
 dT
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+cd
+aA
+ph
+QF
+QF
+QF
+QF
+QF
+QF
+QF
+QN
+KV
+ak
+hN
+aO
+aO
+aO
+ml
+aA
+aA
+aA
+Zv
+ak
+zo
+hj
+hj
+hj
+hj
+hj
+Wx
+ak
 aa
 aa
 aa
@@ -22686,38 +25680,38 @@ aP
 dK
 bi
 dU
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+dF
+aA
+UR
+LA
+LA
+LA
+LA
+LA
+LA
+LA
+ID
+KV
+ak
+My
+aA
+aA
+aA
+Zv
+aA
+aA
+aA
+ZL
+ak
+AN
+hj
+hj
+hj
+hj
+hj
+Ik
+ak
 aa
 aa
 aa
@@ -22943,44 +25937,44 @@ aP
 aP
 aP
 aP
-aP
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+dN
+Fm
+Fm
+kg
+Fm
+Fm
+Fm
+Fm
+Fm
+kg
+Fm
+DU
+ak
+BG
+dR
+aA
+aA
+sW
+aA
+aA
+Jq
+BG
+ak
+be
+MD
+be
+MD
+be
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -23200,44 +26194,44 @@ aP
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+oB
+ak
+oB
+ak
+ak
+Td
+hj
+Gc
+hj
+Td
+ak
+oo
+Ia
+OQ
+BD
+HS
+aq
+lI
+ak
 aa
 aa
 aa
@@ -23455,46 +26449,46 @@ dn
 du
 aP
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+aO
+dO
+aO
+aO
+aO
+aO
+aO
+dO
+aO
+aO
+aO
+aO
+aO
+dO
+aO
+aO
+ak
+Td
+bg
+aA
+Zv
+Td
+ak
+Td
+hj
+hj
+hj
+Td
+zp
+BD
+BD
+ZZ
+IY
+ak
+aq
+vJ
+ak
 aa
 aa
 aa
@@ -23712,46 +26706,46 @@ aG
 dg
 aP
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+az
+aD
+dR
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+aA
+hg
+aO
+FY
+aA
+Zv
+Td
+ak
+MU
+hj
+hj
+hj
+Td
+ak
+Kr
+PQ
+BD
+IB
+ak
+vU
+QT
+ak
 aa
 aa
 aa
@@ -23969,46 +26963,46 @@ do
 dv
 aP
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+aA
+aA
+aA
+aA
+aA
+My
+aA
+aA
+aA
+My
+aA
+aA
+aA
+aA
+aA
+aA
+ES
+Pz
+aT
+aA
+Zv
+QS
+ak
+Td
+hj
+hj
+hj
+Td
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -24228,44 +27222,44 @@ aP
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+Pz
+Pz
+Pz
+Pz
+Pz
+XS
+Pw
+Pz
+Pw
+XS
+Pz
+Pz
+Pw
+Pz
+Pw
+Pz
+ak
+Td
+bg
+aA
+Zv
+Td
+ak
+Td
+hj
+hj
+hj
+Td
+ak
+hO
+uh
+TL
+TL
+HS
+aq
+lI
+ak
 aa
 aa
 aa
@@ -24485,44 +27479,44 @@ aP
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+xj
+ak
+ak
+ak
+ak
+ak
+Si
+ak
+ak
+ak
+ak
+ak
+CD
+ak
+ak
+ak
+Td
+bg
+aA
+Zv
+Td
+ak
+Td
+hj
+hj
+hj
+Td
+PP
+TL
+hw
+TL
+HG
+ak
+aq
+vJ
+ak
 aa
 aa
 aa
@@ -24742,44 +27736,44 @@ aP
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ab
+ab
+ab
+ab
+ak
+iz
+Np
+xt
+xt
+NB
+ak
+Kk
+wD
+aA
+hq
+Hv
+ak
+rW
+bg
+aA
+Zv
+Td
+ak
+Td
+hj
+hj
+hj
+Td
+ak
+hz
+uz
+VO
+Ol
+ak
+vU
+QT
+ak
 aa
 aa
 aa
@@ -24999,44 +27993,44 @@ aP
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+Gf
+ab
+ab
+ab
+ak
+te
+xt
+xt
+xt
+su
+ak
+iq
+aA
+aA
+aA
+rz
+ak
+Td
+bg
+aA
+Zv
+Td
+ak
+Td
+hj
+hj
+hj
+Td
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -25256,44 +28250,44 @@ aP
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+Gf
+ab
+ab
+ab
+ak
+Zt
+Vp
+xt
+xt
+fG
+ak
+Hk
+Hr
+aA
+Wu
+UJ
+ak
+Td
+bg
+aA
+Zv
+QS
+ak
+ln
+hj
+hj
+hj
+Td
+ak
+tk
+Md
+oa
+oa
+HS
+aq
+lI
+ak
 aa
 aa
 aa
@@ -25513,51 +28507,51 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ab
+ab
+ab
+ab
+ak
+iz
+Np
+xt
+xt
+gs
+ak
+iN
+aA
+En
+aA
+KV
+ak
+Un
+bg
+aA
+Zv
+Un
+ak
+Td
+hj
+hj
+hj
+Td
+rN
+oa
+oa
+oa
+Pp
+ak
+aq
+vJ
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -25770,51 +28764,51 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
+Gz
+xt
+xt
+xt
+EL
+ak
+Ky
+Fm
+pq
+yt
+zS
+ak
+HU
+os
+My
+Dp
+HU
+ak
+Td
+hj
+Ik
+hj
+Td
+ak
+FZ
+AG
+VZ
+IJ
+ak
+vU
+QT
+ak
+LI
+Ez
+nZ
+yz
+yz
+yu
+ak
 aa
 aa
 aa
@@ -26032,46 +29026,46 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+Zt
+Vp
+xt
+xt
+JC
+ak
+ak
+ZE
+ak
+ak
+ak
+ak
+ak
+ak
+uX
+ak
+ak
+ak
+be
+MD
+be
+MD
+be
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+LI
+Ez
+Ez
+Ez
+Ez
+Ez
+ak
 aa
 aa
 aa
@@ -26289,46 +29283,46 @@ aa
 aa
 aa
 aa
+ak
+iz
+Np
+xt
+xt
+Pq
+ak
+lI
+aq
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+PT
+Px
+lJ
+oe
+PT
+ak
+Wp
+BD
+Al
+BD
+KD
+be
+DV
+jB
+Wv
+BD
+Ig
+jB
+Iw
+ak
+SK
+Ez
+Ez
+Ez
+Ez
+Ez
+ak
 aa
 aa
 aa
@@ -26546,46 +29540,46 @@ aa
 aa
 aa
 aa
+ak
+FN
+xt
+xt
+xt
+iv
+ak
+Ju
+QC
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+wz
+Px
+aA
+oe
+Xm
+ak
+Wp
+BD
+Al
+BD
+KD
+be
+FJ
+KE
+KE
+BD
+KE
+KE
+Iy
+be
+Ez
+TQ
+BA
+zA
+Ez
+eL
+ak
 aa
 aa
 aa
@@ -26803,46 +29797,46 @@ aa
 aa
 aa
 aa
+ak
+Zt
+Vp
+xt
+xt
+Tk
+ak
+ak
+ak
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+DY
+Va
+My
+HH
+DY
+ak
+RB
+BD
+Al
+BD
+Ae
+be
+Os
+nV
+tH
+BD
+tH
+JR
+gc
+be
+Ez
+ia
+Qx
+Ez
+Ez
+zn
+ak
 aa
 aa
 aa
@@ -27060,46 +30054,46 @@ aa
 aa
 aa
 aa
+ak
+iz
+Np
+xt
+xt
+xt
+xt
+ko
+Ix
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+uX
+ak
+ak
+ak
+Wp
+BD
+Al
+BD
+BD
+zV
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+NW
+Ez
+ia
+jf
+Xo
+Ez
+MZ
+ak
 aa
 aa
 aa
@@ -27317,46 +30311,46 @@ aa
 aa
 aa
 aa
+ak
+Ui
+xt
+xt
+xt
+xt
+xt
+ko
+Ix
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+PT
+PT
+aA
+PT
+PT
+ak
+Wp
+BD
+Al
+BD
+BD
+be
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+vj
+Ez
+Ez
+Ez
+Ez
+Ez
+YX
+ak
 aa
 aa
 aa
@@ -27574,46 +30568,46 @@ aa
 aa
 aa
 aa
+ak
+Zt
+Vp
+xt
+xt
+xt
+xt
+ko
+eD
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+PT
+PM
+tv
+vn
+PT
+ak
+Wp
+BD
+Al
+BD
+BD
+zV
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+vj
+Ez
+ia
+wG
+Xo
+Ez
+YX
+ak
 aa
 aa
 aa
@@ -27831,46 +30825,46 @@ aa
 aa
 aa
 aa
+ak
+iz
+Np
+xt
+xt
+xt
+xt
+ko
+Ix
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+Gu
+CR
+AW
+sa
+Xm
+ak
+RB
+BD
+Al
+BD
+wZ
+be
+so
+nV
+tH
+BD
+tH
+JR
+RU
+be
+Ez
+ia
+BB
+Ez
+Ez
+Ez
+ak
 aa
 aa
 aa
@@ -28088,46 +31082,46 @@ aa
 aa
 aa
 aa
+ak
+uK
+xt
+xt
+xt
+xt
+xt
+ko
+Ix
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+PT
+HI
+Vf
+px
+PT
+ak
+Wp
+BD
+Al
+BD
+KD
+be
+FJ
+KE
+KE
+BD
+KE
+KE
+Iy
+be
+Ez
+MZ
+MZ
+MZ
+Ez
+Ez
+ak
 aa
 aa
 aa
@@ -28345,46 +31339,46 @@ aa
 aa
 aa
 aa
+ak
+pc
+sf
+xt
+HO
+Hf
+xt
+ko
+Ix
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+PT
+PT
+Pb
+PT
+PT
+ak
+Wp
+BD
+Al
+BD
+KD
+be
+jV
+hv
+Ei
+BD
+Vr
+hv
+oY
+ak
+Ez
+Ez
+sH
+Ez
+Ez
+Ez
+ak
 aa
 aa
 aa
@@ -28602,46 +31596,46 @@ aa
 aa
 aa
 aa
+ak
+ak
+ak
+WJ
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+be
+zV
+be
+zV
+be
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+mf
+ak
+ak
+ak
+mf
+ak
+ak
 aa
 aa
 aa
@@ -28859,45 +31853,45 @@ aa
 aa
 aa
 aa
+ak
+gE
+rS
+xt
+gl
+kc
+ak
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+Xr
+gW
+gW
+gW
+Nc
+yL
+gA
+BD
+gA
+BD
+gA
+lY
+vC
+vC
+SZ
+vC
+lY
+vC
+UY
+ak
+aq
+DB
+jn
+FA
+aq
+ak
 aa
 aa
 aa
@@ -29116,45 +32110,45 @@ aa
 aa
 aa
 aa
+ak
+xt
+xt
+xt
+xt
+xt
+ak
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+NX
+GI
+GI
+GI
+iK
+XE
+BD
+BD
+BD
+BD
+BD
+BD
+FC
+FC
+BD
+FC
+FC
+BD
+Bw
+gm
+aq
+aq
+aq
+aq
+aq
+ak
 aa
 aa
 aa
@@ -29373,45 +32367,45 @@ aa
 aa
 aa
 aa
+ak
+sc
+sc
+al
+sc
+sc
+ak
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+CW
+GI
+jT
+GI
+iK
+XE
+BD
+XX
+OG
+oP
+XX
+BD
+GO
+Ct
+BD
+mG
+lw
+BD
+Sm
+ak
+aq
+jn
+Ek
+wS
+Qy
+ak
 aa
 aa
 aa
@@ -29630,45 +32624,45 @@ aa
 aa
 aa
 aa
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+NX
+GI
+jT
+xt
+rc
+XE
+BD
+XX
+OG
+oP
+XX
+BD
+se
+GO
+BD
+Gv
+mG
+BD
+Sm
+ak
+Zu
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa
@@ -29899,29 +32893,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+NX
+xt
+xt
+xt
+xt
+BD
+BD
+XX
+OG
+oP
+XX
+BD
+nQ
+nQ
+BD
+nQ
+nQ
+BD
+Sm
+ak
+ab
+ak
 aa
 aa
 aa
@@ -30156,29 +33150,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+NX
+xt
+xt
+xt
+ud
+Ev
+BD
+XX
+OG
+oP
+XX
+BD
+FC
+FC
+BD
+FC
+FC
+BD
+CU
+ak
+ab
+ak
 aa
 aa
 aa
@@ -30413,29 +33407,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+NX
+xt
+xt
+xt
+xt
+BD
+BD
+XX
+OG
+oP
+XX
+BD
+GY
+lw
+BD
+GO
+mG
+BD
+Sm
+ak
+ab
+ak
 aa
 aa
 aa
@@ -30670,29 +33664,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+NX
+GI
+jT
+xt
+jt
+XE
+BD
+XX
+OG
+oP
+XX
+BD
+lw
+EI
+BD
+mG
+GO
+BD
+Sm
+ak
+ab
+ak
 aa
 aa
 aa
@@ -30927,29 +33921,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+CW
+GI
+jT
+GI
+iK
+XE
+BD
+XX
+OG
+oP
+XX
+BD
+nQ
+nQ
+BD
+nQ
+nQ
+BD
+Bw
+ak
+ab
+ak
 aa
 aa
 aa
@@ -31184,29 +34178,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+NX
+Ns
+GI
+GI
+iK
+XE
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+BD
+Bw
+ak
+Ce
+ak
 aa
 aa
 aa
@@ -31441,29 +34435,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+fW
+jZ
+jZ
+jZ
+mu
+GC
+XX
+XX
+XX
+XX
+XX
+XX
+fx
+CQ
+CQ
+CQ
+CQ
+BD
+xM
+ak
+ab
+ak
 aa
 aa
 aa
@@ -31698,29 +34692,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+gm
+ak
+ak
+ak
+vT
+vO
+vT
+fc
+jD
+fc
+ak
+ak
+ak
+ak
+ak
+gm
+ak
+ak
+ab
+ak
 aa
 aa
 aa
@@ -31955,29 +34949,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+BD
+BD
+BD
+BD
+BD
+ak
+Qc
+aA
+Qc
+aA
+Qc
+aA
+ak
+BD
+BD
+BD
+BD
+BD
+BD
+ak
+ab
+ak
 aa
 aa
 aa
@@ -32212,29 +35206,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+EQ
+EQ
+EQ
+EQ
+EQ
+ak
+Hs
+Qc
+aA
+Qc
+aA
+Qc
+gm
+BD
+BD
+BD
+BD
+BD
+BD
+Zu
+ab
+ak
 aa
 aa
 aa
@@ -32469,29 +35463,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+EQ
+Oz
+EQ
+Oz
+EQ
+ak
+Qc
+aA
+Qc
+aA
+Qc
+aA
+ak
+BD
+BD
+BD
+BD
+BD
+BD
+ak
+ab
+ak
 aa
 aa
 aa
@@ -32726,29 +35720,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+EQ
+EQ
+Py
+EQ
+EQ
+ak
+lP
+Fx
+ii
+BN
+iS
+sV
+ak
+UW
+qC
+Ka
+Ly
+BD
+BD
+ak
+ab
+ak
 aa
 aa
 aa
@@ -32983,29 +35977,29 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
+ak
 aa
 aa
 aa

@@ -18,12 +18,10 @@
 /datum/antagonist/assaultops/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
 	add_antag_hud(antag_hud_type, antag_hud_name, M)
-	ADD_TRAIT(owner, TRAIT_DISK_VERIFIER, NUKEOP_TRAIT)
 
 /datum/antagonist/assaultops/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
 	remove_antag_hud(antag_hud_type, M)
-	REMOVE_TRAIT(owner, TRAIT_DISK_VERIFIER, NUKEOP_TRAIT)
 
 /datum/antagonist/assaultops/proc/equip_op()
 	if(!ishuman(owner.current))

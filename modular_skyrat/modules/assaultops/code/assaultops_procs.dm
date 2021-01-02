@@ -1,6 +1,9 @@
 //These are sort of shitcode right now
 
 /proc/check_assaultops_target(mob/user) //Should only be passed mobs
+	if(!istype(user))
+		stack_trace("Check assaultops target was passed an incorrect type.")
+		return FALSE
 	if(isnull(user))
 		stack_trace("Check assaultops target was passed a null value.")
 		return FALSE
