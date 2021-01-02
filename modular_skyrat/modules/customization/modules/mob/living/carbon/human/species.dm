@@ -252,6 +252,10 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
 
+/datum/species/human/monkey
+	mutant_bodyparts = list()
+	default_mutant_bodyparts = list("tail" = "Monkey")
+
 /datum/species/human
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")

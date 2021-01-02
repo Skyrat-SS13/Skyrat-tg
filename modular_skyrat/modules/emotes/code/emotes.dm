@@ -1,5 +1,5 @@
 
-#define EMOTE_DELAY 15 SECONDS //To prevent spam emotes.
+#define EMOTE_DELAY 5 SECONDS //To prevent spam emotes.
 
 /mob
 	var/nextsoundemote = 1 //Time at which the next emote can be played

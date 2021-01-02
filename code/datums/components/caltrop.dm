@@ -47,6 +47,11 @@
 			if ((H.wear_suit?.body_parts_covered | H.w_uniform?.body_parts_covered | H.shoes?.body_parts_covered) & FEET)
 				return
 
+		// SKYRAT EDIT ADDITION BEGIN - Hardened Soles Quirk
+		if(HAS_TRAIT(H, TRAIT_HARD_SOLES) && !(flags & CALTROP_BYPASS_SHOES))
+			return
+		// SKYRAT EDIT ADDITION END
+
 		var/damage = rand(min_damage, max_damage)
 		if(HAS_TRAIT(H, TRAIT_LIGHT_STEP))
 			damage *= 0.75

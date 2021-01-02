@@ -7,3 +7,4 @@
 #define TRAIT_MOOD_NOEXAMINE        "mood_noexamine" // Can't assess your own mood
 #define TRAIT_DNC		"cant_clone"
 #define TRAIT_DNR		"cant_revive" //You just can't be revived without supernatural means
+#define TRAIT_HARD_SOLES		"hard_soles" // No step on glass

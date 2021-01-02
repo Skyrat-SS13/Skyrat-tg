@@ -55,6 +55,14 @@
 	recommended_species = list("human", "felinid", "mammal")
 	organ_type = /obj/item/organ/tail/cat
 
+/datum/sprite_accessory/tails/monkey/default
+	name = "Monkey"
+	icon_state = "monkey"
+	icon = 'icons/mob/mutant_bodyparts.dmi'
+	recommended_species = list("human", "felinid", "mammal", "monkey")
+	color_src = FALSE
+	organ_type = /obj/item/organ/tail/monkey
+
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 		if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))

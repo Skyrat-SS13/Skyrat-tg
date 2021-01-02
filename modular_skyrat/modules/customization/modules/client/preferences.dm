@@ -1731,7 +1731,7 @@ GLOBAL_LIST_INIT(food, list(
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)))
 								possible_candidates -= name
 
 					if(possible_candidates.len == 0)
@@ -1763,7 +1763,7 @@ GLOBAL_LIST_INIT(food, list(
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
+							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
 								possible_candidates -= name
 					if(possible_candidates.len == 0)
 						return
