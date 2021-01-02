@@ -1,7 +1,8 @@
 /datum/round_event_control/blob
 	name = "Blob"
 	typepath = /datum/round_event/ghost_role/blob
-	weight = 10
+	//weight = 10 //ORIGINAL
+	weight = 5 //SKYRAT EDIT CHANGE
 	max_occurrences = 1
 
 	min_players = 20
