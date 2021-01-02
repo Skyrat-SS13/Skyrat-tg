@@ -1,9 +1,9 @@
 /datum/round_event_control/spider_infestation
 	name = "Spider Infestation"
 	typepath = /datum/round_event/spider_infestation
-	//weight = 10 //ORIGINAL
-	weight = 3 //SKYRAT EDIT CHANGE
-	max_occurrences = 1
+	weight = 10
+	//max_occurrences = 1 //ORIGINAL
+	max_occurrences = 0 //SKYRAT EDIT CHANGE
 	//min_players = 20 - SKYRAT EDIT - moved to modular_skyrat/master_files
 
 /datum/round_event/spider_infestation
