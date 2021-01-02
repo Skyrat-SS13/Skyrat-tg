@@ -278,6 +278,7 @@
 
 /datum/component/bloodysoles/feet/on_step_blood(datum/source, obj/effect/decal/cleanable/pool)
 	//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
+	//this is done in on_step_blood because both update_icon() and initialize() are called before copy_to() is called, which means we wouldn't be able to see if they had digitigrade legs
 	if(!bloody_feet)
 		var/mob/living/carbon/H = parent
 		if (DIGITIGRADE in H.dna.species.species_traits)
