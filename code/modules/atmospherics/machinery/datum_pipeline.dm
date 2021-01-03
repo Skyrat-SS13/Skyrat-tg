@@ -177,9 +177,15 @@
 			var/self_temperature_delta = 0
 			var/sharer_temperature_delta = 0
 
+<<<<<<< HEAD
 			if((sharer_heat_capacity>0) && (partial_heat_capacity>0))
 				var/heat = thermal_conductivity*delta_temperature* \
 					(partial_heat_capacity*sharer_heat_capacity/(partial_heat_capacity+sharer_heat_capacity))
+=======
+			if((sharer_heat_capacity <= 0) || (partial_heat_capacity <= 0))
+				return TRUE
+			var/heat = thermal_conductivity * delta_temperature * (partial_heat_capacity * sharer_heat_capacity / (partial_heat_capacity + sharer_heat_capacity))
+>>>>>>> e9280ec4529 (Fixes an issue in pipenet code caused by poor conversion, we want to return if either sharer or partial is equal to or less then 0, not if they both are (#55918))
 
 				self_temperature_delta = -heat/total_heat_capacity
 				sharer_temperature_delta = heat/sharer_heat_capacity
