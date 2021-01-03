@@ -366,7 +366,8 @@
  *
  * returns 0 if it cannot, 1 if successful
  */
-/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE)
+///mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE) (original) SKYRAT EDIT CHANGE - CUSTOMIZATION
+/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, blacklist)
 	if(!istype(W))
 		return FALSE
 	var/slot_priority = W.slot_equipment_priority
@@ -382,7 +383,10 @@
 			ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,\
 			ITEM_SLOT_DEX_STORAGE\
 		)
-
+	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
+	if (blacklist)
+		slot_priority -= blacklist
+	//SKYRAT EDIT CHANGE END
 	for(var/slot in slot_priority)
 		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, FALSE)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
 			return TRUE
