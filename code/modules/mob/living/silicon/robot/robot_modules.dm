@@ -707,3 +707,35 @@
 	max_energy = 50
 	recharge_rate = 2
 	name = "Pipe Cleaner Synthesizer"
+
+/obj/item/robot_module/roleplay
+	name = "Roleplay"
+	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/extinguisher/mini,
+		/obj/item/weldingtool/largetank/cyborg,
+		/obj/item/screwdriver/cyborg,
+		/obj/item/wrench/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/wirecutters/cyborg,
+		/obj/item/multitool/cyborg,
+		/obj/item/stack/sheet/metal/cyborg,
+		/obj/item/stack/sheet/glass/cyborg,
+		/obj/item/stack/sheet/rglass/cyborg,
+		/obj/item/stack/rods/cyborg,
+		/obj/item/stack/tile/plasteel/cyborg,
+		/obj/item/stack/cable_coil/cyborg,
+		/obj/item/restraints/handcuffs/cable/zipties,
+		/obj/item/rsf/cyborg,
+		/obj/item/reagent_containers/food/drinks/drinkingglass,
+		/obj/item/reagent_containers/borghypo/borgshaker/beershaker,
+		/obj/item/reagent_containers/borghypo/borgshaker/juiceshaker,
+		/obj/item/reagent_containers/borghypo/borgshaker/sodashaker,
+		/obj/item/reagent_containers/borghypo/borgshaker/miscshaker,
+		/obj/item/soap/nanotrasen,
+		/obj/item/borg/cyborghug,
+		/obj/item/dogborg_nose,
+		/obj/item/dogborg_tongue,
+		/obj/item/borg_shapeshifter/stable)
+	moduleselect_icon = "standard"
+	hat_offset = -3

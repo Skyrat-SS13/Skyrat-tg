@@ -43,4 +43,6 @@
 			for(var/mob/living/carbon/C in GLOB.alive_mob_list)
 				if(C.z in SSmapping.levels_by_trait(ZTRAIT_CENTCOM))//not for admin/ooc stuff
 					continue
+				if (HAS_TRAIT(C,TRAIT_EXEMPT_HEALTH_EVENTS))
+					continue
 				new picked_hallucination(C, TRUE)

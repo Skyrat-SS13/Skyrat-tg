@@ -139,6 +139,18 @@
 		current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state))
 		current_button.button_icon_state = button_icon_state
 
+/datum/action/ghost
+	icon_icon = 'icons/mob/mob.dmi'
+	button_icon_state = "ghost"
+	name = "Ghostize"
+	desc = "Turn into a ghost and freely come back to your body."
+
+/datum/action/ghost/Trigger()
+	if(!..())
+		return 0
+	var/mob/M = target
+	M.ghostize(can_reenter_corpse = TRUE, voluntary = TRUE)
+
 /datum/action/proc/OnUpdatedIcon()
 	SIGNAL_HANDLER
 

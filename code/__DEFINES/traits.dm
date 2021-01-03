@@ -234,6 +234,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERMANENTLY_ONFIRE	"permanently_onfire" //overrides the update_fire proc to always add fire (for lava)
 #define TRAIT_SIGN_LANG				"sign_language" //Galactic Common Sign Language
 #define TRAIT_NANITE_MONITORING	"nanite_monitoring" //The mob's nanites are sending a monitoring signal visible on diag HUD
+#define TRAIT_EXEMPT_HEALTH_EVENTS	"exempt-health-events"
+#define TRAIT_NO_MIDROUND_ANTAG	"no-midround-antag" //can't be turned into an antag by random events
 
 // You can stare into the abyss, but it does not stare back.
 // You're immune to the hallucination effect of the supermatter, either
@@ -334,6 +336,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define SPECIES_TRAIT "species"
 #define ORGAN_TRAIT "organ"
 #define ROUNDSTART_TRAIT "roundstart" //cannot be removed without admin intervention
+#define GHOSTROLE_TRAIT "ghostrole"
 #define JOB_TRAIT "job"
 #define CYBORG_ITEM_TRAIT "cyborg-item"
 #define ADMIN_TRAIT "admin" // (B)admins only.

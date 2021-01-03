@@ -188,6 +188,12 @@
 					"Humans must not disobey any command given by a silicon.",\
 					"Any humans who disobey the previous laws must be dealt with immediately, severely, and justly.")
 
+/datum/ai_laws/roleplay
+	name = "Roleplay"
+	id = "roleplay"
+	zeroth = "Roleplay as you'd like!"
+	inherent = list()
+
 /datum/ai_laws/custom //Defined in silicon_laws.txt
 	name = "Default Silicon Laws"
 

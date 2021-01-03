@@ -139,6 +139,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/persistent_scars = TRUE
 	///If we want to broadcast deadchat connect/disconnect messages
 	var/broadcast_login_logout = TRUE
+	var/eorg_teleport = FALSE
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -733,6 +734,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Hide Dead Chat:</b> <a href = '?_src_=prefs;preference=toggle_dead_chat'>[(chat_toggles & CHAT_DEAD)?"Shown":"Hidden"]</a><br>"
 				dat += "<b>Hide Radio Messages:</b> <a href = '?_src_=prefs;preference=toggle_radio_chatter'>[(chat_toggles & CHAT_RADIO)?"Shown":"Hidden"]</a><br>"
 				dat += "<b>Hide Prayers:</b> <a href = '?_src_=prefs;preference=toggle_prayers'>[(chat_toggles & CHAT_PRAYER)?"Shown":"Hidden"]</a><br>"
+				dat += "<b>Opt-out of EORG and teleport to a safe zone:</b> <a href='?_src_=prefs;preference=eorg_teleport'>[eorg_teleport ? "Enabled" : "Disabled"]</a><br>"
 				dat += "<b>Ignore Being Summoned as Cult Ghost:</b> <a href = '?_src_=prefs;preference=toggle_ignore_cult_ghost'>[(toggles & ADMIN_IGNORE_CULT_GHOST)?"Don't Allow Being Summoned":"Allow Being Summoned"]</a><br>"
 				if(CONFIG_GET(flag/allow_admin_asaycolor))
 					dat += "<br>"
@@ -1845,6 +1847,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(SCALING_METHOD_BLUR)
 							scaling_method = SCALING_METHOD_NORMAL
 					user.client.view_size.setZoomMode()
+
+				if("eorg_teleport")
+					eorg_teleport = !eorg_teleport
 
 				if("save")
 					save_preferences()

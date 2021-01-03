@@ -37,6 +37,8 @@
 			continue
 		if(!H.client)
 			continue
+		if(HAS_TRAIT(H,TRAIT_EXEMPT_HEALTH_EVENTS))
+			continue
 		if(H.stat == DEAD)
 			continue
 		if(HAS_TRAIT(H, TRAIT_VIRUSIMMUNE)) //Don't pick someone who's virus immune, only for it to not do anything.
