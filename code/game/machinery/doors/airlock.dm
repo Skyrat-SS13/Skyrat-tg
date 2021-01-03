@@ -119,6 +119,10 @@
 
 /obj/machinery/door/airlock/Initialize()
 	. = ..()
+	//SKYRAT EDIT ADDITION BEGIN
+	if(multi_tile)
+		SetBounds()
+	//SKYRAT EDIT END
 	wires = set_wires()
 	if(frequency)
 		set_frequency(frequency)
@@ -616,8 +620,6 @@
 			add_overlay(I)
 
 /* - SKYRAT ORIGINAL
-=======
->>>>>>> 56345975ba6 (The Great Radio Rework: NTNET Part 1 of many. (#54462))
 /obj/machinery/door/airlock/proc/check_unres() //unrestricted sides. This overlay indicates which directions the player can access even without an ID
 	if(hasPower() && unres_sides)
 		if(unres_sides & NORTH)
