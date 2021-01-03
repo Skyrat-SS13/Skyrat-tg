@@ -56,7 +56,7 @@
 	assemblytype = /obj/structure/door_assembly/multi_tile/metal
 
 /obj/airlock_filler_object
-	name = "test"
+	name = ""
 	density = TRUE
 	opacity = TRUE
 	anchored = TRUE
