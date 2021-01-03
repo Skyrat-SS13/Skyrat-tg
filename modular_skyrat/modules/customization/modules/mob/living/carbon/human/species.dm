@@ -316,6 +316,8 @@
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
 
+	fix_non_native_limbs(C)
+
 	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
 	if(C.dna.species.mutant_bodyparts["legs"] && C.dna.species.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
 		species_traits += DIGITIGRADE
