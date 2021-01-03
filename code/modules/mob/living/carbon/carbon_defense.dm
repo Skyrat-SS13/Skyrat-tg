@@ -254,7 +254,9 @@
 			return
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	if(zone_selected == BODY_ZONE_PRECISE_GROIN && target.dir == src.dir)
-		if(HAS_TRAIT(target, TRAIT_IRONASS))
+		if(target?.client?.prefs?.lewd_pref == "No")
+			return
+		else if(HAS_TRAIT(target, TRAIT_IRONASS))
 			var/obj/item/bodypart/affecting = src.get_bodypart("[(src.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 			if(affecting?.receive_damage(2))
 				src.update_damage_overlays()

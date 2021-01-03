@@ -469,6 +469,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["erp_pref"], erp_pref)
 	READ_FILE(S["noncon_pref"], noncon_pref)
 	READ_FILE(S["vore_pref"], vore_pref)
+	READ_FILE(S["lewd_pref"], lewd_pref)
 	READ_FILE(S["general_record"], general_record)
 	READ_FILE(S["security_record"], security_record)
 	READ_FILE(S["medical_record"], medical_record)
@@ -519,6 +520,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		noncon_pref = "Ask"
 	if(!length(vore_pref))
 		vore_pref = "Ask"
+	if(!length(lewd_pref))
+		lewd_pref = "Ask"
 
 	general_record = sanitize_text(general_record)
 	security_record = sanitize_text(security_record)
@@ -639,6 +642,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["erp_pref"] , erp_pref)
 	WRITE_FILE(S["noncon_pref"] , noncon_pref)
 	WRITE_FILE(S["vore_pref"] , vore_pref)
+	WRITE_FILE(S["lewd_pref"], lewd_pref)
 	WRITE_FILE(S["general_record"] , general_record)
 	WRITE_FILE(S["security_record"] , security_record)
 	WRITE_FILE(S["medical_record"] , medical_record)

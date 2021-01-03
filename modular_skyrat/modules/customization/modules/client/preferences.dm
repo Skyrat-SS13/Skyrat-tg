@@ -189,6 +189,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/erp_pref = "Ask"
 	var/noncon_pref = "Ask"
 	var/vore_pref = "Ask"
+	var/lewd_pref = "Ask"
 
 	//BACKGROUND STUFF
 	var/general_record = ""
@@ -442,6 +443,7 @@ GLOBAL_LIST_INIT(food, list(
 					dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
 					dat += 	"<b>Non-Con:</b><a href='?_src_=prefs;preference=noncon_pref;task=input'>[noncon_pref]</a> "
 					dat += 	"<b>Vore:</b><a href='?_src_=prefs;preference=vore_pref;task=input'>[vore_pref]</a><br>"
+					dat +=  "<b>Lewd Verbs:</b><a href='?_src_=prefs;preference=lewd_pref;task=input'>[lewd_pref]</a><br>"
 					dat += "<a href='?_src_=prefs;preference=ooc_prefs;task=input'><b>Set OOC prefs</b></a><br>"
 					if(length(ooc_prefs) <= 40)
 						if(!length(ooc_prefs))
@@ -2009,6 +2011,14 @@ GLOBAL_LIST_INIT(food, list(
 							vore_pref = "No"
 						if("No")
 							vore_pref = "Yes"
+				if("lewd_pref")
+					switch(lewd_pref)
+						if("Yes")
+							lewd_pref = "Ask"
+						if("Ask")
+							lewd_pref = "No"
+						if("No")
+							lewd_pref = "Yes"
 
 				if("change_arousal_preview")
 					var/list/gen_arous_trans = list("Not aroused" = AROUSAL_NONE,
