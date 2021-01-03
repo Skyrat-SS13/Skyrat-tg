@@ -1159,9 +1159,17 @@
 	update_icon(AIRLOCK_OPENING, 1)
 	sleep(1)
 	set_opacity(0)
+	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+	if(multi_tile)
+		filler.set_opacity(FALSE)
+	//SKYRAT EDIT END
 	update_freelook_sight()
 	sleep(4)
 	density = FALSE
+	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+	if(multi_tile)
+		filler.density = FALSE
+	//SKYRAT EDIT END
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(1)
 	sleep(1)
@@ -1210,16 +1218,26 @@
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(1)
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		if(multi_tile)
+			filler.density = TRUE
+		//SKYRAT EDIT END
 	sleep(1)
 	if(!air_tight)
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		air_update_turf(1)
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		if(multi_tile)
+			filler.density = TRUE
+		//SKYRAT EDIT END
 	sleep(4)
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
 		set_opacity(1)
+		if(multi_tile)
+			filler.set_opacity(TRUE)
 	update_freelook_sight()
 	sleep(1)
 	update_icon(AIRLOCK_CLOSED, 1)
