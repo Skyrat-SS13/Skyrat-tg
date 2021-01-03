@@ -377,7 +377,7 @@
 					/obj/item/clothing/head/beanie/rasta = 1,
 					/obj/item/clothing/suit/nemes,
 					/obj/item/clothing/head/nemes,
-					/obj/item/clothing/head/pharoah)
+					/obj/item/clothing/head/pharaoh)
 					//SKYRAT EDIT ADDITION END
 	contraband = list(/obj/item/toy/plush/ratplush = 1,
 					/obj/item/toy/plush/narplush = 1,
