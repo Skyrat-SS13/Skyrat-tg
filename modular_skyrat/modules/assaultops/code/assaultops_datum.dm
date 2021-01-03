@@ -115,6 +115,7 @@
 
 /datum/antagonist/assaultops/proc/memorise_kills(startup=FALSE)
 	if(assault_team)
+		antag_memory = ""
 		antag_memory += "Your currently assigned targets to <b>CAPTURE</b> are: <br>"
 		for(var/i in GLOB.assaultops_targets)
 			var/datum/mind/M = i
