@@ -4,7 +4,7 @@
 	var/obj/airlock_filler_object/filler
 
 /obj/machinery/door/airlock/Initialize()
-	..()
+	. = ..()
 	if(multi_tile)
 		SetBounds()
 
