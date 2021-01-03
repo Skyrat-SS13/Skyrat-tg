@@ -1,3 +1,5 @@
+#define maint_holiday_weight 3500 // When holiday loot is enabled, it'll give every loot item a 25% chance of being a holiday item SKYRAT CHANGE, THIS DEFINE MUST BE HERE.
+
 /datum/holiday
 	var/name = "If you see this the holiday calendar code is broken"
 
