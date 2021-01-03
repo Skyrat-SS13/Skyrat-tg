@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(assaultops_targets)
 		assault_mind.add_antag_datum(operative_antag_datum_type)
 	//Assign the targets
 	for(var/i in GLOB.player_list)
-		if(GLOB.assaultops_targets >= MAX_ASSAULTOPS_TARGETS)
+		if(GLOB.assaultops_targets.len >= MAX_ASSAULTOPS_TARGETS)
 			break
 		if(!check_assaultops_target(i))
 			continue
