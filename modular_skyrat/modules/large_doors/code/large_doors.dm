@@ -93,8 +93,8 @@
 
 /obj/structure/door_assembly/multi_tile/glass
 	name = "Large Glass Airlock Assembly"
-	icon = 'modular_skyrat/modules/large_doors/icons/metal/multi_tile.dmi'
+	icon = 'modular_skyrat/modules/large_doors/icons/glass/multi_tile.dmi'
 	base_name = "Large Glass Airlock"
-	overlays_file = 'modular_skyrat/modules/large_doors/icons/metal/overlays.dmi'
+	overlays_file = 'modular_skyrat/modules/large_doors/icons/glass/overlays.dmi'
 	airlock_type = /obj/machinery/door/airlock/multi_tile/glass
 
