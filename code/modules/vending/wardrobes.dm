@@ -373,8 +373,8 @@
 					/obj/item/clothing/head/taqiyahwhite = 1,
 					/obj/item/clothing/head/taqiyahred = 3,
 					/obj/item/clothing/suit/chaplainsuit/monkrobeeast = 1,
-					//SKYRAT EDIT ADDITION BEGIN
 					/obj/item/clothing/head/beanie/rasta = 1,
+					//SKYRAT EDIT ADDITION BEGIN
 					/obj/item/clothing/suit/nemes,
 					/obj/item/clothing/head/nemes,
 					/obj/item/clothing/head/pharaoh)
