@@ -211,7 +211,9 @@ sues//IMPORTANT: Multiple animate() calls do not stack well, so try to do them a
 //Overlays for the worn overlay so you can overlay while you overlay
 //eg: ammo counters, primed grenade flashing, etc.
 //"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
-/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file)
+//SKYRAT EDIT CHANGE - CUSTOMIZATION
+///obj/item/proc/worn_overlays(isinhands = FALSE, icon_file) (original)
+/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file, mutant_styles = NONE)
 	. = list()
 
 
