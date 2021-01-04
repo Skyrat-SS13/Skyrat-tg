@@ -85,7 +85,7 @@
 	return TRUE
 
 /datum/antagonist/assaultops/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assaultops/sound/assaultops_start.ogg',40,0, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assaultops/sound/assaultops_start.ogg',20,0, use_reverb = FALSE)
 	to_chat(owner, "<span class='notice'>You are a [assault_team ? assault_team.syndicate_name : "syndicate"] agent!</span>")
 
 	owner.announce_objectives()
@@ -176,7 +176,7 @@
 		owner.current.real_name = "Syndicate [title]"
 
 /datum/antagonist/assaultops/leader/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assaultops/sound/assaultops_start.ogg',5,0, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_skyrat/modules/assaultops/sound/assaultops_start.ogg',20,0, use_reverb = FALSE)
 	to_chat(owner, "<B>You are the Syndicate [title] for this mission. You are responsible for coordination and your ID is the only one who can open the launch bay doors.</B>")
 	to_chat(owner, "<B>If you feel you are not up to this task, give your ID to another operative.</B>")
 	owner.announce_objectives()
