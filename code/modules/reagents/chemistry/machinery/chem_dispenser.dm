@@ -62,7 +62,9 @@
 		/datum/reagent/water,
 		/datum/reagent/fuel,
 	)
-	/*//these become available once the manipulator has been upgraded to tier 4 (femto)    //SKYRAT CHANGE - No more gimped dispeners.
+	//these become available once the manipulator has been upgraded to tier 4 (femto)
+	//SKYRAT EDIT REMOVAL BEGIN - Skyrat-SS13/Skyrat-tg#1931
+	/*
 	var/list/upgrade_reagents = list(
 		/datum/reagent/acetone,
 		/datum/reagent/ammonia,
@@ -77,8 +79,10 @@
 		/datum/reagent/medicine/morphine,
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin
-	)*/
-	// !!!!!THESE ARE THE NEW SKYRAT CHEMICALS!!!!!
+	)
+	*/
+	//SKYRAT EDIT REMOVAL END
+	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
 	var/list/upgrade_reagents = list(
 		/datum/reagent/fuel/oil,
 		/datum/reagent/ammonia,
@@ -104,6 +108,7 @@
 		/datum/reagent/toxin/histamine,
 		/datum/reagent/medicine/morphine
 	)
+	//SKYRAT EDIT ADDITION END
 
 	var/list/recording_recipe
 
@@ -112,16 +117,6 @@
 	var/list/transferAmounts = list()
 	var/customTransferAmount
 	//SKYRAT EDIT END
-/*/obj/machinery/chem_dispenser/Initialize() //SKYRAT CHANGE - No more gimped chemistry dispenser
-	. = ..()
-	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
-	if(emagged_reagents)
-		emagged_reagents = sortList(emagged_reagents, /proc/cmp_reagents_asc)
-	if(upgrade_reagents)
-		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
-	if(is_operational)
-		begin_processing()
-	update_icon()*/
 
 /obj/machinery/chem_dispenser/Initialize()
 	. = ..()
@@ -130,11 +125,16 @@
 		emagged_reagents = sortList(emagged_reagents, /proc/cmp_reagents_asc)
 	if(upgrade_reagents)
 		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
+	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
+	if(upgrade_reagents)
+		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
 	if(upgrade_reagents2)
 		upgrade_reagents2 = sortList(upgrade_reagents2, /proc/cmp_reagents_asc)
 	if(upgrade_reagents3)
 		upgrade_reagents3 = sortList(upgrade_reagents3, /proc/cmp_reagents_asc)
-	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
+	//SKYRAT EDIT ADDITION END
+	if(is_operational)
+		begin_processing()
 	update_icon()
 
 /obj/machinery/chem_dispenser/Destroy()
@@ -384,7 +384,7 @@
 				transferAmounts -= customTransferAmount
 			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
 			transferAmounts += customTransferAmount
-		//SKYRAT EDIT END
+		//SKYRAT EDIT ADDITION END
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
 		return
@@ -542,7 +542,7 @@
 		/datum/reagent/consumable/lemonjuice,
 		/datum/reagent/consumable/menthol
 	)
-	//SKYRAT ADDITION START
+	//SKYRAT CHANGE ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#2429
 	upgrade_reagents = list(
 		/datum/reagent/consumable/applejuice,
 		/datum/reagent/consumable/pumpkinjuice,
@@ -558,7 +558,7 @@
 		/datum/reagent/consumable/peachjuice,
 		/datum/reagent/consumable/sol_dry
 	)
-	//SKYRAT ADDITION END
+	//SKYRAT CHANGE ADDITION END
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/whiskey_cola,
