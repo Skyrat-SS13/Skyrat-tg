@@ -26,3 +26,4 @@
 
 /datum/species/lizard/ashwalker
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR)
+	always_customizable = TRUE
