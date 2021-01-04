@@ -84,7 +84,19 @@
 			return default
 		return crunch + repeat_string(desired_format, "0")
 
+<<<<<<< HEAD
 	return crunch + .
+=======
+	if(length_char(.) == desired_format)
+		return crunch + .
+	switch(format_input_ratio) //add or remove alpha channel depending on desired format.
+		if("3:8", "3:4", "6:4")
+			return crunch + copytext(., 1, desired_format+1)
+		if("4:6", "4:3", "8:3")
+			return crunch + . + ((desired_format == 4) ? "f" : "ff")
+		else //not a supported hex color format.
+			return default ? default : crunch + repeat_string(desired_format, "0")
+>>>>>>> fe283ed2d39 (Readds hashes to sanitize_hexcolor() return values. (#55948))
 
 /// Makes sure the input color is text with a # at the start followed by 6 hexadecimal characters. Examples: "#ff1234", "#A38321", COLOR_GREEN_GRAY
 /proc/sanitize_ooccolor(color)
