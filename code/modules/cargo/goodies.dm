@@ -3,7 +3,8 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -76,6 +77,8 @@
 /datum/supply_pack/goody/wt550ammoap //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/goody/wt550ammoic //SKYRAT EDIT ADDITION
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/goody/techbox //SKYRAT EDIT ADDITION
 
