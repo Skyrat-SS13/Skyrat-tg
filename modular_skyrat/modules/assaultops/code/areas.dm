@@ -65,9 +65,7 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	name = "gun spawner"
 	loot = list(
 				/obj/item/gun/ballistic/automatic/assault_rifle/m16,
-				/obj/item/gun/ballistic/automatic/battle_rifle/fg42,
 				/obj/item/gun/ballistic/automatic/pistol/deagle,
-				/obj/item/gun/ballistic/automatic/submachine_gun/ppsh,
 				/obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate,
 				/obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket,
 				/obj/item/gun/ballistic/automatic/l6_saw,
