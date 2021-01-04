@@ -1,3 +1,17 @@
+GLOBAL_LIST_EMPTY(customizable_races)
+
+/proc/generate_selectable_species()
+	for(var/I in subtypesof(/datum/species))
+		var/datum/species/S = new I
+		if(S.check_roundstart_eligible())
+			GLOB.roundstart_races[S.id] = TRUE
+			GLOB.customizable_races[S.id] = TRUE
+		else if (S.always_customizable)
+			GLOB.customizable_races[S.id] = TRUE
+		qdel(S)
+	if(!GLOB.roundstart_races.len)
+		GLOB.roundstart_races["human"] = TRUE
+
 /datum/species
 	mutant_bodyparts = list()
 	///Self explanatory
@@ -12,6 +26,10 @@
 	var/reagent_flags = PROCESS_ORGANIC
 	///Whether a species can use augmentations in preferences
 	var/can_augment = TRUE
+	///If a species can always be picked in prefs for the purposes of customizing it for ghost roles or events
+	var/always_customizable = FALSE
+	///Flavor text of the species displayed on character creation screeen
+	var/flavor_text = "No description."
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/standing	= list()
@@ -275,6 +293,10 @@
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
+
+/datum/species/pod
+	name = "Primal Podperson"
+	always_customizable = TRUE
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

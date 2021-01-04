@@ -208,6 +208,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  * This proc generates which species are available to pick from in character setup.
  * If there are no available roundstart species, defaults to human.
  */
+//SKYRAT EDIT REMOVAL BEGIN - MOVED - CUSTOMIZATION
+/*
 /proc/generate_selectable_species()
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
@@ -216,6 +218,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			qdel(S)
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "human"
+*/
+//SKYRAT EDIT REMOVAL END
 
 /**
  * Checks if a species is eligible to be picked at roundstart.
