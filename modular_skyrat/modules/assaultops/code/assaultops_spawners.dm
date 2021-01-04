@@ -1,6 +1,6 @@
 /obj/effect/mob_spawn/human/syndicate/assops
 	name = "Syndicate Assault Guard"
-	roundstart = FALSE
+	roundstart = TRUE
 	death = FALSE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
@@ -9,6 +9,8 @@
 	permanent = FALSE
 	can_use_alias = TRUE
 	any_station_species = TRUE
+
+
 
 /obj/effect/mob_spawn/human/syndicate/assops/prison_guard
 	name = "Syndicate Prison Guard"
