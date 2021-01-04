@@ -2,7 +2,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/1356
 
 ## Title: Mold - Advanced PvE Blob-Vine Encounter
 
-MODULE ID: BIOHAZ_MOLD
+MODULE ID: `BIOHAZ_MOLD`
 
 ### Description:
 
@@ -26,7 +26,7 @@ When the core dies, everything slowly decays away.
 
 |File Location|Defines|
 |-------------|-------|
-|modular_skyrat/modules/biohazard_blob/code/_biohazard_blob_defines.dm|BIO_BLOB_TYPE_FUNGUS  BIO_BLOB_TYPE_FIRE BIO_BLOB_TYPE_EMP BIO_BLOB_TYPE_TOXIC  ALL_BIO_BLOB_TYPES  MOLD_FACTION|
+|`modular_skyrat/modules/biohazard_blob/code/_biohazard_blob_defines.dm`|`BIO_BLOB_TYPE_FUNGUS`<br>`BIO_BLOB_TYPE_FIRE`<br>`BIO_BLOB_TYPE_EMP`<br>`BIO_BLOB_TYPE_TOXIC`<br>`ALL_BIO_BLOB_TYPES`<br>`MOLD_FACTION`|
 
 ### Master file additions
 
