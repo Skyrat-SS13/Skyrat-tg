@@ -1,6 +1,6 @@
 /obj/effect/mob_spawn/human/syndicate/assops
 	name = "Syndicate Assault Guard"
-	roundstart = TRUE
+	roundstart = FALSE
 	death = FALSE
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
