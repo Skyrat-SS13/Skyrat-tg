@@ -1825,9 +1825,9 @@ GLOBAL_LIST_INIT(food, list(
 						return
 					var/new_name
 					if(mismatched_customization)
-						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in GLOB.sprite_accessories[key]
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key, pref_species, TRUE, parent.ckey)
 					else
-						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key,pref_species)
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key, pref_species, FALSE, parent.ckey)
 					if(new_name && mutant_bodyparts[key])
 						mutant_bodyparts[key][MUTANT_INDEX_NAME] = new_name
 						validate_color_keys_for_part(key)
