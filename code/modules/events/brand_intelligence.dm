@@ -4,7 +4,8 @@
 	weight = 5
 
 	min_players = 15
-	max_occurrences = 1
+	//max_occurrences = 1 //ORIGINAL
+	max_occurrences = 0 //SKYRAT EDIT CHANGE
 
 /datum/round_event/brand_intelligence
 	announceWhen	= 21
