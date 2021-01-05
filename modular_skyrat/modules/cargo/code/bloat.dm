@@ -35,7 +35,7 @@
 					/obj/item/ammo_box/magazine/wt550m9/wtic,
 					/obj/item/ammo_box/magazine/wt550m9/wtic)
 	crate_name = "WT550 Ammo Variety Pack"
-
+/*
 /datum/supply_pack/security/armory/mafia //I am a bit iffy on this one. The tommy gun has a fairly good shot-rate. Pack is designed to be used as a bundle of 22 5k briefcases, emag + agent ID with 2 TC to spare
 	name = "Secretkeeper Supply Crate"
 	desc = "Aye... Lend an ear... Send us the money, And we do you a favour... A Tommygun, a set of clothing to dissapear, and a bodybag for a... Shallow grave... Keep it a secret, Capiche?"
@@ -53,7 +53,7 @@
 					/obj/item/bodybag/bluespace)
 	crate_name = "unmarked crate"
 	crate_type = /obj/structure/closet/crate/secure/weapon
-
+*/
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
