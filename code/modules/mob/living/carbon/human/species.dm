@@ -208,6 +208,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  * This proc generates which species are available to pick from in character setup.
  * If there are no available roundstart species, defaults to human.
  */
+//SKYRAT EDIT REMOVAL BEGIN - MOVED - CUSTOMIZATION
+/*
 /proc/generate_selectable_species()
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
@@ -216,6 +218,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			qdel(S)
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "human"
+*/
+//SKYRAT EDIT REMOVAL END
 
 /**
  * Checks if a species is eligible to be picked at roundstart.
@@ -359,13 +363,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
 
+	fix_non_native_limbs(C)
+
 	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
 	if(C.dna.species.mutant_bodyparts["legs"] && C.dna.features["legs"] == "Digitigrade Legs")
 		species_traits += DIGITIGRADE
 	if(DIGITIGRADE in species_traits)
 		C.Digitigrade_Leg_Swap(FALSE)
-
-	fix_non_native_limbs(C)
 
 	C.mob_biotypes = inherent_biotypes
 
