@@ -272,24 +272,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(!U.welded)
 			pump_location = get_turf(U)
 			break
-<<<<<<< HEAD
-	if(pump)
-		feedback_details += "Vent Coords: [pump.x],[pump.y],[pump.z]"
-		xeno = new(pump.loc,target)
-		sleep(10)
-		xeno.update_icon("alienh_leap",'icons/mob/alienleap.dmi',-32,-32)
-		xeno.throw_at(target, 7, 1, spin = FALSE, diagonals_first = TRUE)
-		sleep(10)
-		xeno.update_icon("alienh_leap",'icons/mob/alienleap.dmi',-32,-32)
-		xeno.throw_at(pump, 7, 1, spin = FALSE, diagonals_first = TRUE)
-		sleep(10)
-		var/xeno_name = xeno.name
-		to_chat(target, "<span class='notice'>[xeno_name] begins climbing into the ventilation system...</span>")
-		sleep(30)
-		qdel(xeno)
-		to_chat(target, "<span class='notice'>[xeno_name] scrambles into the ventilation ducts!</span>")
-	qdel(src)
-=======
 
 	if(pump_location)
 		feedback_details += "Vent Coords: [pump_location.x],[pump_location.y],[pump_location.z]"
@@ -329,7 +311,6 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 #undef XENO_ATTACK_STAGE_LEAP_AT_PUMP
 #undef XENO_ATTACK_STAGE_CLIMB
 #undef XENO_ATTACK_STAGE_FINISH
->>>>>>> b0a54c9dd7c (Remove sleep() from hallucinations (#55927))
 
 /obj/effect/hallucination/simple/clown
 	image_icon = 'icons/mob/animal.dmi'
