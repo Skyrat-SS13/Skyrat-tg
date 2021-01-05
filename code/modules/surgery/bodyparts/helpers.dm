@@ -132,9 +132,17 @@
 		if(BODY_ZONE_HEAD)
 			L = new /obj/item/bodypart/head()
 		if(BODY_ZONE_L_LEG)
-			L = new /obj/item/bodypart/l_leg()
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+			if (dna?.species && (DIGITIGRADE in dna.species.species_traits))
+				L = new /obj/item/bodypart/l_leg/digitigrade()
+			else
+				L = new /obj/item/bodypart/l_leg()
 		if(BODY_ZONE_R_LEG)
-			L = new /obj/item/bodypart/r_leg()
+			if (dna?.species && (DIGITIGRADE in dna.species.species_traits))
+				L = new /obj/item/bodypart/r_leg/digitigrade()
+			else
+				L = new /obj/item/bodypart/r_leg()
+		//SKYRAT EDIT ADDITION END
 		if(BODY_ZONE_CHEST)
 			L = new /obj/item/bodypart/chest()
 	if(L)
@@ -146,7 +154,8 @@
 /mob/living/carbon/human/newBodyPart(zone, robotic, fixed_icon)
 	var/obj/item/bodypart/L
 	var/datum/species/species = dna.species
-	var/obj/item/bodypart/selected_type = species.bodypart_overides[zone]
+	//SKYRAT EDIT ADDITION - CUSTOMIZATION
+	var/obj/item/bodypart/selected_type = (species.mutant_bodyparts["legs"] && species.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs" && species.digitigrade_bodypart_overrides[zone]) ? species.digitigrade_bodypart_overrides[zone] : species.bodypart_overides[zone]
 	L = new selected_type()
 	if(L)
 		L.update_limb(fixed_icon, src)

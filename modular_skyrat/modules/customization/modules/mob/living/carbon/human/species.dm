@@ -24,6 +24,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/eyes_icon
 	///How are we treated regarding processing reagents, by default we process them as if we're organic
 	var/reagent_flags = PROCESS_ORGANIC
+	///Alternate digitigrade bodyparts for bodypart_overides
+	var/digitigrade_bodypart_overrides = list(
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/digitigrade,\
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/digitigrade)
 	///Whether a species can use augmentations in preferences
 	var/can_augment = TRUE
 	///If a species can always be picked in prefs for the purposes of customizing it for ghost roles or events
