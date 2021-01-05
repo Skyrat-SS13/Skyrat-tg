@@ -90,7 +90,7 @@
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////////////// Goodies //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
-
+/*
 /datum/supply_pack/goody/wt550ammoic
 	name = "WT-550 Auto Rifle Incendiary Ammo Single Pack"
 	desc = "Contains a 20-round magazine of Incendiary bullets for the WT-550 Auto Rifle. Just dont tell anyone you bought this."
@@ -112,3 +112,4 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/storage/box/techshell)
 
+*/
