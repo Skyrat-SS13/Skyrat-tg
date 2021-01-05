@@ -32,7 +32,7 @@
 	hardsuit_tail_colors = list("212", "C32", "234")
 
 /obj/item/clothing/suit/space/hardsuit/swat
-	hardsuit_tail_colors = list("368", "CA0", "030")
+	hardsuit_tail_colors = list("333", "345", "335")
 
 /obj/item/clothing/suit/space/hardsuit/swat/captain
 	hardsuit_tail_colors = list("368", "CA0", "030")
