@@ -76,7 +76,7 @@
 
 	var/mob/living/carbon/human/H = owner
 	//set specific alpha before setting the markings alpha
-	if (H.dna.species.specific_alpha)
+	if (H.dna.species.specific_alpha && H.dna.species.limbs_id == species_id)
 		for (var/ov in .)
 			var/image/overlay = ov
 			overlay.alpha = H.dna.species.specific_alpha

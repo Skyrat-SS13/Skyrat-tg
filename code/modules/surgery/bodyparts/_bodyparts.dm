@@ -780,6 +780,7 @@
 		var/datum/species/S = H.dna.species
 		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
 			species_id = S.limbs_id
+			alpha = S.specific_alpha
 			rendered_bp_icon = S.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		species_flags_list = H.dna.species.species_traits
 

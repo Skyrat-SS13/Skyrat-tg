@@ -129,7 +129,7 @@
 							accessory_overlay.color = "#"+mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
 							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-							var/alpha_value = !specific_alpha ? 255 : specific_alpha //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
+							var/alpha_value = specific_alpha ? specific_alpha : 255 //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
 							var/list/finished_list = list()
 							finished_list += ReadRGB("[color_list[1]]0")
 							finished_list += ReadRGB("[color_list[2]]0")
