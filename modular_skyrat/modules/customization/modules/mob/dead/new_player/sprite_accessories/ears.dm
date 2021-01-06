@@ -103,6 +103,11 @@
 	icon_state = "eevee"
 	color_src = USE_ONE_COLOR
 
+/datum/sprite_accessory/ears/mutant/eevee_alt
+	name = "Eevee ALT"
+	icon_state = "eevee_alt"
+	color_src = USE_MATRIXED_COLORS
+
 /datum/sprite_accessory/ears/mutant/elf
 	name = "Elf"
 	icon_state = "elf"
