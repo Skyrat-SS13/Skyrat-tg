@@ -20,7 +20,9 @@
 
 /obj/item/gun/ballistic/shotgun/riot
 	name = "peacekeeper shotgun"
+	desc = "An Aussec-made 12 gauge riot control pump shotgun fitted with an extended tube and a fixed tactical stock."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	inhand_icon_state = "riot_shotgun"
@@ -31,6 +33,17 @@
 	suppressed_volume = 100
 	vary_fire_sound = TRUE
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
+	
+/obj/item/gun/ballistic/shotgun/automatic/combat
+	name = "PK12 Mod 2 shotgun"
+	desc = "A modified Aussec Peacekeeper shotgun, this one has a pistol grip with a guard, hardlight front sight, and fitted with a heavier pin and parts for sustained fire, sadly it cannot be suppressed like its cousin. Atleast you can slamfire with it."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	inhand_icon_state = "shotgun_combat"
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
 
 /obj/item/gun/grenadelauncher
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
