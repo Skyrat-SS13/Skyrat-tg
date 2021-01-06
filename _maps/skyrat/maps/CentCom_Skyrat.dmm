@@ -86,6 +86,10 @@
 /area/cruiser_dock)
 "ao" = (
 /obj/effect/spawner/lootdrop/armory_contraband,
+/obj/structure/sign/warning/securearea{
+	name = "\improper ABANDONED AREA sign";
+	pixel_y = 32
+	},
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "ap" = (
@@ -1762,9 +1766,10 @@
 /obj/machinery/light/warm,
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"eS" = (
-/mob/living/simple_animal/hostile/rat,
-/turf/open/floor/plating,
+"eV" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "fa" = (
 /obj/machinery/atmospherics/components/unary/cryo_cell,
@@ -1809,8 +1814,8 @@
 /turf/open/floor/wood,
 /area/cruiser_dock)
 "fA" = (
-/mob/living/simple_animal/hostile/nanotrasen,
-/turf/open/floor/plasteel/dark,
+/obj/structure/trap/chill,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "fG" = (
 /obj/structure/table/reinforced,
@@ -1848,10 +1853,6 @@
 /obj/item/storage/firstaid/tactical,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"fT" = (
-/obj/structure/trap/stun,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "fW" = (
 /obj/structure/chair/sofa/corp/corner,
 /turf/open/floor/engine,
@@ -1983,10 +1984,6 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
-"gD" = (
-/obj/structure/mineral_door/dungeon,
-/turf/closed/indestructible/dungeon,
-/area/cruiser_dock/brig)
 "gE" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/belt/grenade/full,
@@ -1994,10 +1991,18 @@
 /obj/item/gun/ballistic/rocketlauncher,
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"gV" = (
-/obj/structure/fluff/divine/shrine,
+"gK" = (
+/obj/structure/mineral_door/dungeon,
+/turf/closed/indestructible/dungeon,
+/area/cruiser_dock/brig)
+"gP" = (
+/obj/structure/mineral_door/dungeon,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
+"gV" = (
+/obj/structure/sign/warning/xeno_mining,
+/turf/closed/indestructible/syndicate,
+/area/cruiser_dock)
 "gW" = (
 /obj/structure/chair/sofa/corp{
 	dir = 4
@@ -2015,11 +2020,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/corner,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"hc" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/scatter/grime,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "hf" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -2087,12 +2087,6 @@
 /obj/item/storage/fancy/cigarettes/cigpack_syndicate,
 /turf/open/floor/plasteel,
 /area/cruiser_dock/brig)
-"hI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/scatter/grime,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "hN" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 8
@@ -2119,17 +2113,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"hQ" = (
+/obj/item/flashlight/seclite,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "hT" = (
 /obj/effect/turf_decal/caution/red{
 	dir = 4
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"hY" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/space/cashmoney,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "hZ" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -2146,10 +2139,6 @@
 /obj/effect/mob_spawn/human/corpse/syndicatesoldier,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"ih" = (
-/mob/living/simple_animal/hostile/alien/queen/large,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "ii" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
@@ -2202,6 +2191,10 @@
 /obj/machinery/suit_storage_unit/syndicate,
 /turf/open/floor/engine,
 /area/cruiser_dock)
+"iG" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "iK" = (
 /obj/structure/chair/sofa/corp{
 	dir = 1
@@ -2237,27 +2230,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"iW" = (
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/space/fancytool,
-/obj/effect/spawner/lootdrop/space/fancytool,
-/obj/effect/spawner/lootdrop/space/fancytool,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
-"iY" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/cruiser_dock)
 "jc" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 5
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"je" = (
-/obj/structure/mineral_door/transparent/plasma,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "jf" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/cooking_to_serve_man,
@@ -2274,11 +2252,6 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/checker,
-/area/cruiser_dock)
-"jl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "jn" = (
 /obj/structure/kitchenspike,
@@ -2362,6 +2335,10 @@
 /obj/structure/chair/sofa/bench/corner,
 /turf/open/floor/carpet/donk,
 /area/cruiser_dock)
+"jW" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "jZ" = (
 /obj/structure/chair/sofa/corp{
 	dir = 8
@@ -2412,6 +2389,10 @@
 /obj/effect/turf_decal/stripes/red/box,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"km" = (
+/obj/structure/closet/crate/grave,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "ko" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -2422,22 +2403,29 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock)
+"ku" = (
+/obj/machinery/door/airlock/multi_tile/metal,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "kw" = (
 /obj/effect/turf_decal/loading_area/red{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"ky" = (
+/mob/living/simple_animal/hostile/syndicate{
+	name = "Deranged Syndicate Operative"
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "kD" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 4
 	},
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
-"kE" = (
-/obj/structure/trap/chill,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "kI" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -2445,30 +2433,39 @@
 /obj/structure/chair,
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
-"kJ" = (
-/obj/structure/closet/crate,
-/obj/item/gun/ballistic/automatic/tommygun,
-/obj/item/ammo_box/magazine/tommygunm45,
-/obj/item/ammo_box/magazine/tommygunm45,
-/obj/item/ammo_box/magazine/tommygunm45,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "kK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"kL" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/three_course_meal,
+/obj/effect/spawner/lootdrop/three_course_meal,
+/obj/effect/spawner/lootdrop/three_course_meal,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
+"kN" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/maintenance/eight,
+/obj/effect/spawner/lootdrop/maintenance/eight,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "kR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/spider/stickyweb,
 /turf/open/floor/plating,
 /area/cruiser_dock)
+"kS" = (
+/obj/item/flashlight/seclite,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "kT" = (
 /obj/effect/turf_decal/trimline/blue/line,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"kZ" = (
+"kX" = (
 /obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
+/obj/effect/spawner/lootdrop/minor/beret_or_rabbitears,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "la" = (
@@ -2477,6 +2474,17 @@
 /obj/item/gun/ballistic/automatic/cfa_rifle,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"lg" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/syndicate{
+	name = "Deranged Syndicate Operative"
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
+"lh" = (
+/mob/living/simple_animal/hostile/venus_human_trap,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "li" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 1
@@ -2525,10 +2533,6 @@
 /obj/effect/mob_spawn/human/syndicate/assops/prison_warden,
 /turf/open/floor/mineral/plastitanium/red,
 /area/cruiser_dock)
-"lE" = (
-/obj/structure/tank_dispenser/oxygen,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "lI" = (
 /obj/structure/toilet{
 	dir = 4
@@ -2552,6 +2556,17 @@
 /obj/machinery/vending/boozeomat,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"lU" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/obj/effect/spawner/lootdrop/space/fancytool,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
+"lW" = (
+/obj/structure/closet/crate,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "lY" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -2569,11 +2584,6 @@
 /obj/machinery/door/airlock/freezer,
 /turf/open/floor/plasteel/showroomfloor,
 /area/cruiser_dock)
-"mh" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "mj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/yellow/filled/warning,
@@ -2585,13 +2595,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"mq" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/syndicate{
-	name = "Deranged Syndicate Operative"
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "mu" = (
 /obj/structure/chair/sofa/corp/corner{
 	dir = 8
@@ -2603,6 +2606,11 @@
 /obj/structure/table/wood/poker,
 /turf/open/floor/wood,
 /area/cruiser_dock)
+"mI" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/suit/armor/reactive/repulse,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "mL" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -2626,10 +2634,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"mM" = (
-/mob/living/simple_animal/hostile/skeleton/eskimo,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "mN" = (
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/plasteel,
@@ -2643,10 +2647,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/cruiser_dock)
-"mS" = (
-/obj/structure/mineral_door/sandstone,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "mW" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 9
@@ -2662,6 +2662,10 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
+"na" = (
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "nm" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
@@ -2687,6 +2691,10 @@
 /obj/machinery/porta_turret/assaultops,
 /obj/effect/turf_decal/stripes/red/full,
 /turf/open/floor/glass/reinforced,
+/area/cruiser_dock)
+"nE" = (
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "nF" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -2758,6 +2766,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"of" = (
+/mob/living/simple_animal/hostile/poison/giant_spider/ice,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "oh" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/condiment/sugar,
@@ -2816,6 +2828,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"oG" = (
+/mob/living/simple_animal/hostile/statue,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "oH" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 8
@@ -2827,6 +2843,15 @@
 /obj/item/clothing/neck/stethoscope,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"oJ" = (
+/obj/structure/mineral_door/sandstone,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
+"oM" = (
+/obj/structure/spider/stickyweb,
+/obj/structure/spacevine,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "oP" = (
 /obj/machinery/computer/slot_machine,
 /turf/open/floor/eighties,
@@ -2901,10 +2926,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"pg" = (
-/obj/structure/closet/crate/grave/lead_researcher,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "ph" = (
 /obj/structure/chair/sofa/corp,
 /turf/open/floor/carpet/royalblack,
@@ -2982,9 +3003,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"pO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
+"pT" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	dir = 8;
+	req_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "pU" = (
@@ -2994,11 +3018,6 @@
 /obj/machinery/vending/cigarette/syndicate,
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
-"pZ" = (
-/obj/structure/spider/stickyweb,
-/obj/structure/closet/crate,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "qa" = (
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel/dark,
@@ -3013,11 +3032,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"qj" = (
-/obj/structure/closet/crate,
-/obj/item/clothing/suit/armor/heavy,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "qk" = (
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 8
@@ -3028,20 +3042,18 @@
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"qp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate,
-/obj/item/gun/ballistic/automatic/assault_rifle/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
-/turf/open/floor/plating,
+"qm" = (
+/obj/structure/mineral_door/gold,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
-"qt" = (
-/obj/machinery/door/airlock/multi_tile/metal,
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plasteel/dark,
+"qo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"qp" = (
+/mob/living/simple_animal/hostile/rat,
+/turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "qu" = (
 /obj/machinery/dna_scannernew,
@@ -3051,10 +3063,8 @@
 /obj/effect/turf_decal/stripes/red/corner,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"qA" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/flashlight/seclite,
-/turf/open/floor/plasteel/dark,
+"qB" = (
+/turf/closed/indestructible/dungeon,
 /area/cruiser_dock)
 "qC" = (
 /obj/structure/reagent_dispensers/beerkeg,
@@ -3075,7 +3085,11 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
-"qQ" = (
+"qN" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/cruiser_dock)
+"qO" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/lootdrop/snowdin/dungeonmid,
@@ -3111,8 +3125,8 @@
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "ra" = (
-/obj/structure/alien/weeds/node,
-/turf/open/floor/plating/cobblestone/dungeon,
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/indestructible/syndicate,
 /area/cruiser_dock/brig)
 "rc" = (
 /obj/structure/chair/sofa/corp/left{
@@ -3136,10 +3150,6 @@
 /obj/machinery/sleeper/syndie,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"rk" = (
-/obj/structure/mineral_door/uranium,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "ro" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -3156,6 +3166,10 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
+/area/cruiser_dock/brig)
+"rt" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "rv" = (
 /obj/structure/chair/office{
@@ -3200,17 +3214,16 @@
 /obj/item/clothing/suit/space/hardsuit/shielded/syndi,
 /turf/open/floor/engine,
 /area/cruiser_dock)
+"rT" = (
+/obj/effect/spawner/scatter/grime,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
 "rW" = (
 /obj/structure/sign/poster/contraband/random{
 	pixel_y = 32
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
-"rZ" = (
-/obj/structure/spider/stickyweb,
-/obj/structure/spacevine,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "sa" = (
 /obj/effect/turf_decal/stripes/red/line,
 /obj/effect/turf_decal/caution/red{
@@ -3240,13 +3253,6 @@
 /obj/item/gun/energy/disabler,
 /obj/item/storage/box/contractor/fulton_extraction,
 /turf/open/floor/engine,
-/area/cruiser_dock)
-"sg" = (
-/obj/structure/sign/warning/securearea{
-	name = "\improper ABANDONED AREA sign";
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "sh" = (
 /obj/effect/turf_decal/tile/red{
@@ -3378,10 +3384,6 @@
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant,
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"tj" = (
-/obj/structure/mineral_door/iron,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "tk" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue,
@@ -3396,6 +3398,11 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
+"tn" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "tp" = (
 /obj/machinery/light/red{
 	dir = 8;
@@ -3405,10 +3412,6 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"tq" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/tarantula,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "tu" = (
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 4
@@ -3435,17 +3438,9 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"tG" = (
-/mob/living/simple_animal/hostile/rat,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock/brig)
 "tH" = (
 /turf/open/floor/carpet/donk,
 /area/cruiser_dock)
-"tO" = (
-/obj/item/flashlight/seclite,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "tR" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/glass/reinforced,
@@ -3481,6 +3476,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/cruiser_dock)
+"ug" = (
+/obj/structure/mecha_wreckage/durand,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "uh" = (
 /obj/structure/table/wood,
 /obj/item/storage/briefcase{
@@ -3502,6 +3501,15 @@
 /obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"ur" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
+"uy" = (
+/mob/living/simple_animal/hostile/alien/queen/large,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "uz" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
@@ -3555,14 +3563,8 @@
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "uP" = (
-/obj/item/flashlight/seclite,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
-"uV" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
-/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
-/turf/open/floor/plating/cobblestone/dungeon,
+/mob/living/simple_animal/hostile/russian/ranged/trooper,
+/turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "uW" = (
 /obj/effect/turf_decal/trimline/red/corner,
@@ -3583,23 +3585,10 @@
 /obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
-"vb" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/space/languagebook,
-/obj/effect/spawner/lootdrop/space/rareseed,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
-"ve" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/space/material,
-/obj/effect/spawner/lootdrop/space/material,
-/obj/effect/spawner/lootdrop/space/material,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
-"vi" = (
-/mob/living/simple_animal/hostile/true_changeling,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+"vh" = (
+/obj/machinery/door/airlock/multi_tile/metal,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "vj" = (
 /obj/structure/table/reinforced,
@@ -3629,6 +3618,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"vs" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "vC" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -3672,6 +3666,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"vR" = (
+/obj/structure/fluff/divine/shrine,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "vT" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/stripes/line{
@@ -3737,6 +3735,9 @@
 /obj/effect/mob_spawn/human/corpse/syndicatesoldier,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"wB" = (
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "wD" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -3770,20 +3771,28 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
+"wI" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "wL" = (
 /obj/effect/turf_decal/trimline/red/warning{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"wQ" = (
-/obj/structure/trap/stun,
+"wP" = (
+/obj/structure/trap/eldritch/mad,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "wS" = (
 /obj/machinery/food_cart,
 /turf/open/floor/plasteel/showroomfloor,
 /area/cruiser_dock)
+"wZ" = (
+/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
 "xc" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 8;
@@ -3791,6 +3800,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"xg" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "xh" = (
 /obj/effect/turf_decal/stripes/red/line,
 /turf/open/floor/plasteel/dark,
@@ -3836,9 +3849,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"xH" = (
-/obj/effect/spawner/lootdrop/crate_spawner,
-/turf/open/floor/plasteel/dark,
+"xJ" = (
+/obj/structure/closet/crate/wooden,
+/obj/item/clothing/suit/armor/reactive/tesla,
+/obj/item/clothing/suit/armor/vest/russian_coat,
+/turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "xK" = (
 /obj/effect/turf_decal/trimline/red/corner{
@@ -3859,15 +3874,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"xQ" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
-"xW" = (
-/mob/living/simple_animal/hostile/zombie,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "ya" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 4
@@ -3883,15 +3889,9 @@
 "ye" = (
 /turf/closed/indestructible/dungeon,
 /area/cruiser_dock/brig)
-"yj" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/rat,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
-"yq" = (
-/obj/machinery/door/airlock/vault,
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plating,
+"yl" = (
+/obj/structure/closet/crate/grave/lead_researcher,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "yt" = (
 /obj/structure/table/wood,
@@ -3921,6 +3921,10 @@
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"yJ" = (
+/mob/living/simple_animal/hostile/asteroid/hivelord/legion/dwarf,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "yL" = (
 /obj/structure/fluff/hedge/opaque,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -3928,6 +3932,11 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock)
+"yM" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/rat,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "yX" = (
 /obj/effect/turf_decal/trimline/red/corner,
 /obj/effect/turf_decal/trimline/red/corner{
@@ -3935,6 +3944,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"yZ" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/space/cashmoney,
+/obj/effect/spawner/lootdrop/space/cashmoney,
+/obj/effect/spawner/lootdrop/space/cashmoney,
+/obj/effect/spawner/lootdrop/space/cashmoney,
+/obj/effect/spawner/lootdrop/space/cashmoney,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "zb" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
@@ -3944,6 +3962,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"zd" = (
+/obj/structure/spacevine,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "zl" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
@@ -3993,9 +4015,13 @@
 /obj/item/reagent_containers/food/condiment/mayonnaise,
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
-"zJ" = (
-/mob/living/simple_animal/hostile/russian/ranged/trooper,
-/turf/open/floor/plating,
+"zE" = (
+/obj/structure/mineral_door/transparent/plasma,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
+"zG" = (
+/obj/structure/mineral_door/iron,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "zM" = (
 /obj/effect/turf_decal/trimline/red/filled/warning{
@@ -4032,16 +4058,9 @@
 /obj/machinery/door/airlock/glass,
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"zZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate,
-/obj/item/gun/ballistic/automatic/c20r,
-/obj/item/ammo_box/magazine/smgm45/ap,
-/obj/item/ammo_box/magazine/smgm45/ap,
-/obj/item/ammo_box/magazine/smgm45/ap,
-/obj/item/ammo_box/magazine/smgm45/ap,
-/turf/open/floor/plating,
+"Af" = (
+/obj/structure/mineral_door/uranium,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "Ai" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
@@ -4061,6 +4080,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"AA" = (
+/mob/living/simple_animal/hostile/syndicate{
+	name = "Deranged Syndicate Operative"
+	},
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "AE" = (
 /obj/structure/closet/crate,
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket,
@@ -4129,8 +4154,8 @@
 /turf/open/floor/eighties,
 /area/cruiser_dock)
 "Bc" = (
-/mob/living/simple_animal/hostile/venus_human_trap,
-/turf/open/floor/plating/cobblestone/dungeon,
+/obj/structure/mineral_door/dungeon,
+/turf/open/space/basic,
 /area/cruiser_dock/brig)
 "Bf" = (
 /obj/structure/table/reinforced,
@@ -4142,9 +4167,10 @@
 /obj/item/reagent_containers/food/condiment/milk,
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
-"Bi" = (
+"Bk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/scatter/grime,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "Bp" = (
@@ -4246,6 +4272,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/cruiser_dock)
+"BO" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "BP" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -4269,11 +4299,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"BQ" = (
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "BT" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
@@ -4329,13 +4354,10 @@
 /obj/machinery/light/cold,
 /turf/open/floor/plating,
 /area/cruiser_dock)
-"Cg" = (
-/mob/living/simple_animal/hostile/asteroid/hivelord/legion/dwarf,
+"Co" = (
+/mob/living/simple_animal/hostile/retaliate/poison/snake,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
-"Cm" = (
-/turf/closed/indestructible/dungeon,
-/area/cruiser_dock)
 "Ct" = (
 /obj/structure/table/wood/poker,
 /obj/item/toy/cards/deck/cas/black,
@@ -4363,6 +4385,10 @@
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"CF" = (
+/mob/living/simple_animal/hostile/poison/giant_spider/tarantula,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "CG" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -4416,12 +4442,6 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"CX" = (
-/obj/structure/closet/crate/wooden,
-/obj/item/clothing/suit/armor/reactive/tesla,
-/obj/item/clothing/suit/armor/vest/russian_coat,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "CZ" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -4445,6 +4465,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/cruiser_dock)
+"Di" = (
+/mob/living/simple_animal/hostile/skeleton/eskimo,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Dp" = (
 /obj/effect/turf_decal/caution/red{
 	dir = 1
@@ -4455,6 +4479,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"Dq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/gun/ballistic/automatic/c20r,
+/obj/item/ammo_box/magazine/smgm45/ap,
+/obj/item/ammo_box/magazine/smgm45/ap,
+/obj/item/ammo_box/magazine/smgm45/ap,
+/obj/item/ammo_box/magazine/smgm45/ap,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "Ds" = (
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
@@ -4499,10 +4534,6 @@
 /obj/structure/railing,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Du" = (
-/obj/structure/trap/damage,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "Dv" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4536,20 +4567,12 @@
 	},
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
-"DM" = (
-/mob/living/simple_animal/hostile/skeleton,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "DR" = (
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 10
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"DS" = (
-/mob/living/simple_animal/hostile/retaliate/poison/snake,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "DT" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/machinery/conveyor{
@@ -4597,16 +4620,16 @@
 /obj/effect/turf_decal/box,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"Er" = (
+/obj/structure/trap/stun,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "Ev" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"Ex" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/indestructible/syndicate,
-/area/cruiser_dock/brig)
 "Ez" = (
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
@@ -4619,10 +4642,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"EB" = (
-/obj/structure/spacevine,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "EH" = (
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 10
@@ -4757,16 +4776,16 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"FO" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "FP" = (
 /obj/item/ammo_box/magazine/m45,
 /obj/item/ammo_box/magazine/m45,
 /obj/structure/closet/crate,
 /obj/item/storage/belt/utility/full/engi,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
+"FS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "FT" = (
@@ -4780,10 +4799,6 @@
 /obj/effect/turf_decal/caution/red,
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"FV" = (
-/mob/living/simple_animal/hostile/alien,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "FW" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -4870,17 +4885,23 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Gk" = (
-/obj/structure/closet/crate,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "Gm" = (
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant,
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
-"Gr" = (
-/obj/structure/trap/eldritch/tentacle,
+"Gp" = (
+/mob/living/simple_animal/hostile/asteroid/fugu,
 /turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
+"Gq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate,
+/obj/item/gun/ballistic/automatic/assault_rifle/m16,
+/obj/item/ammo_box/magazine/m16,
+/obj/item/ammo_box/magazine/m16,
+/obj/item/ammo_box/magazine/m16,
+/obj/item/ammo_box/magazine/m16,
+/turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "Gs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4900,6 +4921,11 @@
 /obj/item/toy/eightball/haunted,
 /turf/open/floor/wood,
 /area/cruiser_dock)
+"Gx" = (
+/mob/living/simple_animal/hostile/true_changeling,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "Gz" = (
 /obj/structure/sign/poster/contraband/revolver{
 	pixel_y = 31
@@ -4945,10 +4971,6 @@
 /obj/item/toy/cards/deck/syndicate,
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"GT" = (
-/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock/brig)
 "GY" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -4973,12 +4995,8 @@
 /obj/machinery/skill_station,
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"Hh" = (
-/obj/structure/closet/crate,
-/obj/item/clothing/suit/space/hostile_environment,
-/obj/item/clothing/head/helmet/space/hostile_environment,
-/obj/item/chainsaw,
-/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
+"Hj" = (
+/mob/living/simple_animal/hostile/zombie,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "Hk" = (
@@ -4989,7 +5007,8 @@
 /area/cruiser_dock)
 "Ho" = (
 /obj/structure/spider/stickyweb,
-/turf/open/floor/plating,
+/obj/structure/closet/crate,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "Hq" = (
 /obj/machinery/computer/secure_data/syndie{
@@ -5032,12 +5051,6 @@
 /obj/effect/mob_spawn/human/syndicate/assops/facility_staff,
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
-"Hz" = (
-/mob/living/simple_animal/hostile/syndicate{
-	name = "Deranged Syndicate Operative"
-	},
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "HB" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -5116,7 +5129,7 @@
 /turf/open/floor/eighties,
 /area/cruiser_dock)
 "In" = (
-/obj/structure/mineral_door/gold,
+/mob/living/simple_animal/hostile/skeleton/templar,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "Iq" = (
@@ -5125,10 +5138,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"It" = (
-/obj/effect/spawner/scatter/grime,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock/brig)
 "Iv" = (
 /turf/open/floor/mineral/plastitanium/red,
 /area/cruiser_dock)
@@ -5171,10 +5180,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock)
-"II" = (
-/obj/structure/mecha_wreckage/durand,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "IJ" = (
 /obj/structure/table/wood,
 /obj/item/food/grown/poppy/lily,
@@ -5183,15 +5188,6 @@
 /obj/item/clothing/under/syndicate/bloodred/sleepytime,
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
-"IO" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/space/cashmoney,
-/obj/effect/spawner/lootdrop/space/cashmoney,
-/obj/effect/spawner/lootdrop/space/cashmoney,
-/obj/effect/spawner/lootdrop/space/cashmoney,
-/obj/effect/spawner/lootdrop/space/cashmoney,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "IR" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -5214,10 +5210,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"Jd" = (
-/obj/structure/spider/stickyweb,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "Je" = (
 /obj/machinery/firealarm,
 /turf/open/floor/plating,
@@ -5267,11 +5259,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/cruiser_dock)
-"Jy" = (
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/minor/beret_or_rabbitears,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "JC" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -5297,12 +5284,6 @@
 /obj/item/shield/energy,
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"JF" = (
-/mob/living/simple_animal/hostile/syndicate{
-	name = "Deranged Syndicate Operative"
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "JH" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -5326,10 +5307,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"JP" = (
-/mob/living/simple_animal/hostile/statue,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "JR" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/condiment/peppermill{
@@ -5363,14 +5340,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Kl" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	dir = 8;
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "Kq" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 8
@@ -5415,6 +5384,13 @@
 	},
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
+"KD" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/space/material,
+/obj/effect/spawner/lootdrop/space/material,
+/obj/effect/spawner/lootdrop/space/material,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "KE" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet/donk,
@@ -5424,6 +5400,13 @@
 	dir = 1
 	},
 /turf/open/floor/engine,
+/area/cruiser_dock)
+"KI" = (
+/obj/structure/sign/warning/securearea{
+	name = "\improper ABANDONED AREA sign";
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "KJ" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -5441,6 +5424,12 @@
 /obj/effect/mob_spawn/human/syndicate/assops/facility_staff,
 /turf/open/floor/plasteel,
 /area/cruiser_dock)
+"KT" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
+/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "KU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -5451,6 +5440,10 @@
 /obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"KW" = (
+/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "KY" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -5496,6 +5489,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"Lo" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/suit/armor/heavy,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Lp" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
@@ -5544,6 +5542,11 @@
 "LU" = (
 /turf/closed/wall/mineral/titanium/interior,
 /area/cruiser_dock)
+"Mc" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Md" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -5556,6 +5559,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"Mh" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/suit/space/hostile_environment,
+/obj/item/clothing/head/helmet/space/hostile_environment,
+/obj/item/chainsaw,
+/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Mi" = (
 /obj/effect/spawner/scatter/grime,
 /turf/open/floor/plasteel/dark,
@@ -5573,15 +5584,24 @@
 /obj/structure/table/glass,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Mn" = (
-/obj/structure/mineral_door/wood,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "Mq" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
+/area/cruiser_dock/brig)
+"Mt" = (
+/obj/structure/closet/crate,
+/obj/item/gun/ballistic/automatic/tommygun,
+/obj/item/ammo_box/magazine/tommygunm45,
+/obj/item/ammo_box/magazine/tommygunm45,
+/obj/item/ammo_box/magazine/tommygunm45,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
+"Mx" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "My" = (
 /obj/effect/turf_decal/caution/red{
@@ -5600,9 +5620,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/open/floor/eighties,
 /area/cruiser_dock)
-"MH" = (
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "MK" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
@@ -5615,14 +5632,6 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/cruiser_dock)
-"MQ" = (
-/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
-"MR" = (
-/mob/living/simple_animal/hostile/poison/giant_spider/ice,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "MU" = (
 /obj/structure/sign/poster/contraband/busty_backdoor_xeno_babes_6{
 	pixel_y = 32
@@ -5632,10 +5641,6 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
-"MV" = (
-/obj/structure/closet/crate/grave,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "MX" = (
 /obj/machinery/portable_atmospherics/scrubber/huge/movable,
 /obj/machinery/light/red{
@@ -5653,6 +5658,10 @@
 /obj/item/reagent_containers/food/condiment/flour,
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
+"Na" = (
+/obj/structure/trap/stun,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Nc" = (
 /obj/structure/chair/sofa/corp/corner{
 	dir = 1
@@ -5660,11 +5669,15 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/cruiser_dock)
+"Nd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "Nh" = (
-/obj/machinery/door/airlock/multi_tile/metal,
-/obj/structure/barricade/wooden/crude,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
+/obj/structure/mineral_door/wood,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Nl" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/plasteel/dark,
@@ -5686,13 +5699,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Nx" = (
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/three_course_meal,
-/obj/effect/spawner/lootdrop/three_course_meal,
-/obj/effect/spawner/lootdrop/three_course_meal,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "NA" = (
 /obj/item/flashlight/lamp,
 /obj/structure/table,
@@ -5744,9 +5750,9 @@
 /obj/machinery/light/cold,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Og" = (
-/obj/structure/mineral_door/dungeon,
-/turf/open/floor/plating/cobblestone/dungeon,
+"Oc" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
 "Oh" = (
 /obj/effect/turf_decal/trimline/red/line{
@@ -5808,10 +5814,6 @@
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock)
-"Ou" = (
-/obj/structure/barricade/wooden/crude,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "Ov" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
@@ -5857,6 +5859,11 @@
 	},
 /turf/open/floor/eighties,
 /area/cruiser_dock)
+"OM" = (
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
 "OQ" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
@@ -5896,11 +5903,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock)
-"Po" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/cruiser_dock)
 "Pp" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/machinery/light,
@@ -5933,10 +5935,6 @@
 /obj/item/melee/baton/loaded,
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"Pt" = (
-/obj/structure/barricade/wooden/crude,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "Pw" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 4
@@ -6002,9 +6000,8 @@
 "PT" = (
 /turf/open/floor/circuit/red/anim,
 /area/cruiser_dock)
-"PU" = (
-/obj/structure/spider/stickyweb,
-/obj/structure/spider/stickyweb,
+"PZ" = (
+/obj/structure/trap/damage,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "Qb" = (
@@ -6019,6 +6016,15 @@
 "Qc" = (
 /turf/open/floor/plasteel,
 /area/cruiser_dock)
+"Qe" = (
+/obj/structure/spider/stickyweb,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
+"Qf" = (
+/obj/structure/trap/eldritch/tentacle,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Qp" = (
 /obj/effect/turf_decal/loading_area/red,
 /turf/open/floor/plasteel/dark,
@@ -6071,6 +6077,10 @@
 /obj/item/folder/syndicate/blue,
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock)
+"QG" = (
+/mob/living/simple_animal/hostile/skeleton,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "QH" = (
 /obj/effect/turf_decal/caution/stand_clear,
 /obj/effect/turf_decal/bot,
@@ -6086,10 +6096,6 @@
 /obj/machinery/light/cold/no_nightlight,
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
-"QT" = (
-/obj/effect/spawner/scatter/grime,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "QU" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_access_txt = "150"
@@ -6134,6 +6140,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"Rh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/scatter/grime,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "Ru" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/scatter/grime,
@@ -6153,16 +6164,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/red/line,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
-"Rz" = (
-/obj/structure/closet/crate/wooden,
-/obj/effect/spawner/lootdrop/maintenance/eight,
-/obj/effect/spawner/lootdrop/maintenance/eight,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
-"RQ" = (
-/obj/structure/holosign/barrier,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "RS" = (
@@ -6191,6 +6192,10 @@
 /obj/effect/spawner/randomsnackvend,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"Se" = (
+/mob/living/simple_animal/hostile/nanotrasen,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
 "Si" = (
 /obj/machinery/door/airlock/hatch{
 	req_access_txt = "151"
@@ -6208,15 +6213,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"So" = (
-/obj/structure/closet/crate,
-/obj/item/clothing/suit/armor/reactive/repulse,
+"Sz" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/space/languagebook,
+/obj/effect/spawner/lootdrop/space/rareseed,
 /turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
-"Su" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/spider/stickyweb,
-/turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "SA" = (
 /obj/machinery/light/warm{
@@ -6255,14 +6256,14 @@
 /obj/item/gun/energy/decloner/unrestricted,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"SR" = (
-/obj/structure/trap/eldritch/mad,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "SS" = (
 /obj/structure/sign/departments/medbay,
 /turf/closed/indestructible/syndicate,
 /area/cruiser_dock)
+"SU" = (
+/obj/structure/alien/weeds/node,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "SW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -6278,19 +6279,9 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Tc" = (
-/obj/structure/barricade/wooden,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
 "Td" = (
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
-"Te" = (
-/obj/structure/closet/crate/silvercrate,
-/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
-/obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "Tj" = (
 /obj/machinery/light/cold/no_nightlight{
 	dir = 4
@@ -6310,6 +6301,10 @@
 	dir = 4
 	},
 /turf/open/floor/engine,
+/area/cruiser_dock)
+"Tl" = (
+/obj/structure/holosign/barrier,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "Tq" = (
 /obj/structure/table,
@@ -6346,6 +6341,11 @@
 "TL" = (
 /turf/open/floor/carpet,
 /area/cruiser_dock)
+"TM" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "TO" = (
 /obj/machinery/status_display/ai,
 /turf/closed/indestructible/syndicate,
@@ -6452,6 +6452,10 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"UQ" = (
+/obj/structure/sign/warning/biohazard,
+/turf/closed/indestructible/syndicate,
+/area/cruiser_dock)
 "UR" = (
 /obj/structure/chair/sofa/corp/corner,
 /turf/open/floor/carpet/royalblack,
@@ -6543,10 +6547,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"VK" = (
-/obj/structure/mineral_door/dungeon,
-/turf/open/space/basic,
-/area/cruiser_dock/brig)
+"VH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "VO" = (
 /obj/structure/dresser,
 /turf/open/floor/carpet,
@@ -6557,10 +6562,9 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock)
-"VQ" = (
-/obj/machinery/door/airlock/vault,
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plasteel/dark,
+"VS" = (
+/obj/effect/spawner/scatter/grime,
+/turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "VX" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
@@ -6629,6 +6633,10 @@
 /obj/structure/closet/syndicate/personal,
 /turf/open/floor/eighties,
 /area/cruiser_dock)
+"Wz" = (
+/mob/living/simple_animal/hostile/rat,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock/brig)
 "WB" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 4
@@ -6638,6 +6646,11 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"WF" = (
+/obj/machinery/door/airlock/vault,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "WJ" = (
 /obj/machinery/door/airlock/hatch{
 	req_access_txt = "151"
@@ -6686,11 +6699,6 @@
 /obj/effect/landmark/start/assaultop,
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock)
-"Xg" = (
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/snowdin/dungeonmid,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "Xh" = (
 /mob/living/simple_animal/hostile/poison/giant_spider/ice,
 /turf/open/floor/plasteel/dark,
@@ -6718,10 +6726,6 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"Xw" = (
-/mob/living/simple_animal/hostile/asteroid/fugu,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "XC" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 5
@@ -6801,6 +6805,12 @@
 "XY" = (
 /turf/open/floor/plasteel/stairs/medium,
 /area/cruiser_dock)
+"Yf" = (
+/obj/structure/closet/crate/silvercrate,
+/obj/effect/spawner/lootdrop/gun/assaultops/ballistics,
+/obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
 "Yh" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/condimentbottles,
@@ -6829,10 +6839,6 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
-"Yv" = (
-/mob/living/simple_animal/hostile/skeleton/templar,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "Yy" = (
 /obj/structure/rack,
 /obj/item/storage/firstaid/fire,
@@ -6869,10 +6875,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"YL" = (
-/obj/effect/spawner/lootdrop/crate_spawner,
-/turf/open/floor/plating/cobblestone/dungeon,
-/area/cruiser_dock/brig)
 "YT" = (
 /obj/vehicle/sealed/mecha/working/ripley/deathripley/real,
 /obj/effect/turf_decal/stripes/red/full,
@@ -6888,6 +6890,11 @@
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/cafeteria,
+/area/cruiser_dock)
+"Zc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/flashlight/seclite,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "Zl" = (
 /obj/effect/turf_decal/trimline/red/filled/corner,
@@ -6947,6 +6954,11 @@
 /obj/effect/spawner/lootdrop/space/fancytech,
 /obj/effect/spawner/lootdrop/space/fancytech,
 /obj/effect/spawner/lootdrop/space/fancytech,
+/turf/open/floor/plating/cobblestone/dungeon,
+/area/cruiser_dock/brig)
+"ZM" = (
+/obj/structure/closet/crate/wooden,
+/obj/effect/spawner/lootdrop/space/cashmoney,
 /turf/open/floor/plating/cobblestone/dungeon,
 /area/cruiser_dock/brig)
 "ZZ" = (
@@ -24865,9 +24877,9 @@ aa
 aa
 aP
 aG
-Tc
+jW
 Zo
-mh
+tn
 aG
 aG
 aG
@@ -25379,7 +25391,7 @@ aa
 aa
 aP
 aG
-eS
+qp
 aP
 bK
 bY
@@ -26150,7 +26162,7 @@ aa
 aa
 aP
 aG
-aG
+VS
 aP
 bL
 cb
@@ -26663,7 +26675,7 @@ aP
 aP
 aP
 aG
-eS
+qp
 aG
 aP
 bN
@@ -26910,15 +26922,15 @@ aa
 aa
 aa
 aP
-Su
+ur
 aG
 bv
-Bi
-Su
+Nd
+ur
 aG
 aP
 kj
-eS
+qp
 aG
 aG
 aw
@@ -27424,12 +27436,12 @@ aa
 aa
 aa
 aP
-MQ
+KW
 aP
-qp
-vi
+Gq
+Gx
 aP
-Ho
+xg
 aP
 aG
 aP
@@ -27681,9 +27693,9 @@ aa
 aa
 aa
 aP
-Su
+ur
 aP
-zZ
+Dq
 bv
 aP
 aG
@@ -27940,7 +27952,7 @@ aa
 aP
 aG
 aP
-hI
+Bk
 bv
 aP
 bv
@@ -28195,12 +28207,12 @@ aa
 aa
 aa
 aP
-yj
+yM
 aP
 bv
 aP
 aP
-Bi
+Nd
 aP
 aG
 aP
@@ -28452,12 +28464,12 @@ aa
 aa
 aa
 aP
-Ho
+xg
 aP
 bv
-Su
+ur
 bv
-Su
+ur
 aP
 aG
 aP
@@ -28953,14 +28965,14 @@ aP
 aG
 aG
 aG
-zJ
+uP
 aG
 aG
 aG
 aG
 aP
 aG
-eS
+qp
 aP
 aG
 aG
@@ -28968,7 +28980,7 @@ aG
 aG
 aG
 aG
-Ho
+xg
 aG
 aG
 aG
@@ -29207,30 +29219,30 @@ aa
 aa
 aa
 aP
-CX
-zJ
+xJ
+uP
 aG
 aG
 aG
-QT
+VS
 aG
 aG
-yq
+WF
 aG
 aG
-yq
+WF
 aG
 aG
-JF
+ky
 aG
-Ho
+xg
 aG
 aG
 aG
 aG
 aG
 aP
-tO
+hQ
 aP
 aP
 aP
@@ -29467,13 +29479,13 @@ aP
 aG
 aG
 aG
-zJ
+uP
 aG
 aG
 aG
 aG
 aP
-eS
+qp
 aG
 aP
 aG
@@ -29484,8 +29496,8 @@ aG
 bv
 aG
 aG
-QT
-Ho
+VS
+xg
 aP
 aG
 aG
@@ -29744,9 +29756,9 @@ bv
 aG
 aG
 aP
-eS
-aG
-eS
+qp
+VS
+qp
 aw
 aG
 aP
@@ -29983,18 +29995,18 @@ aG
 aG
 aP
 aG
-eS
+qp
 aP
 aS
 aS
 aS
 aS
-fA
+Se
 aS
 aP
 aG
 bv
-Su
+ur
 aG
 aP
 aG
@@ -30242,20 +30254,20 @@ aP
 aG
 aG
 aP
-xH
+Oc
 aS
-GT
+wZ
 aS
 aS
 aS
 aP
-Ho
+xg
 aG
 bv
 aG
 aP
 aG
-MQ
+KW
 aG
 aP
 FP
@@ -30495,23 +30507,23 @@ aG
 aG
 aG
 aG
-VQ
+OM
 aG
 aS
 aP
-fA
+Se
 aS
 aS
 aS
-xH
+Oc
 aS
 aP
 aG
 bv
-pO
+FS
 bv
 aP
-kJ
+Mt
 aG
 aG
 ak
@@ -30749,13 +30761,13 @@ aa
 aa
 aP
 aG
-QT
+VS
 aG
 aG
 aP
 aG
 aS
-qt
+vh
 aS
 aS
 aS
@@ -30769,7 +30781,7 @@ bv
 aG
 aP
 aG
-Ho
+xg
 aG
 ak
 oq
@@ -31006,22 +31018,22 @@ aa
 aa
 aP
 aG
-JF
+ky
 aG
 aG
-VQ
+OM
 aG
 aS
 aS
 aS
 aS
-It
+rT
 aS
 aS
 aS
 aP
 au
-mq
+lg
 au
 aP
 aP
@@ -31267,12 +31279,12 @@ aP
 aP
 aP
 aP
-tG
+Wz
 aS
 aP
 aS
 aS
-xH
+Oc
 aS
 aS
 aS
@@ -31283,7 +31295,7 @@ bv
 aG
 aP
 aG
-JF
+ky
 aG
 ak
 vE
@@ -31531,15 +31543,15 @@ aS
 aS
 aS
 aS
-GT
+wZ
 aS
 aP
 aG
-Ho
+xg
 bv
 aG
 aP
-Ho
+xg
 aG
 aG
 ak
@@ -31579,7 +31591,7 @@ lI
 aq
 ak
 pe
-lE
+BO
 ak
 PT
 Px
@@ -31781,31 +31793,31 @@ aa
 aa
 aa
 aP
-eS
+qp
 aS
 aP
 aS
-fA
+Se
 aS
-xH
+Oc
 aS
 aS
 aP
 bv
-hc
+Rh
 aG
 aG
 aP
 aG
-QT
+VS
 aG
-ak
+UQ
 la
 kK
 aA
 vE
 kK
-qA
+Zc
 ab
 aA
 ak
@@ -32046,17 +32058,17 @@ aS
 aS
 aS
 aS
-fA
+Se
 aP
 aG
 aG
 bv
-Ho
+xg
 aP
 aG
 bv
 aG
-ak
+gV
 kK
 Gs
 ab
@@ -32296,7 +32308,7 @@ aa
 aa
 aP
 aG
-Kl
+pT
 aP
 aP
 aP
@@ -32307,14 +32319,14 @@ aP
 aP
 aG
 aP
-Ex
+ra
 aP
 aP
 aP
-Tc
+jW
 aP
 ak
-sg
+KI
 Yi
 ab
 aA
@@ -32556,22 +32568,22 @@ aG
 aG
 aG
 aG
-QT
+VS
 aG
 aG
 aG
-MQ
+KW
 aG
 aG
 aG
-Ho
+xg
 aG
 aG
 aG
 aG
-Ho
-Nh
-RQ
+xg
+ku
+Tl
 ab
 Yi
 wa
@@ -32820,15 +32832,15 @@ aG
 aG
 aG
 aG
-Ho
+xg
 aG
 aG
 aG
-Ho
+xg
 aG
-Ho
-Ou
-RQ
+xg
+nE
+Tl
 Jw
 ab
 kK
@@ -33069,7 +33081,7 @@ aP
 aP
 aP
 aP
-Pt
+na
 aP
 aP
 aP
@@ -33085,10 +33097,10 @@ aP
 aP
 aP
 ak
-sg
+KI
 kR
 aA
-uP
+kS
 Mi
 aA
 aA
@@ -33328,20 +33340,20 @@ aa
 aP
 aG
 aG
-eS
-eS
-Ho
-Ho
-Ho
-Ho
-Ho
-Ho
-Ho
+qp
+qp
+xg
+xg
+xg
+xg
+xg
+xg
+xg
 aG
 aP
 aG
 aG
-ak
+gV
 wA
 aA
 Xh
@@ -33583,7 +33595,7 @@ aa
 aa
 aa
 aP
-QT
+VS
 aG
 aP
 aP
@@ -33596,10 +33608,10 @@ aP
 aP
 aP
 aP
-Pt
+na
 aP
-ak
-uP
+UQ
+kS
 ab
 oq
 kK
@@ -33872,7 +33884,7 @@ tp
 aA
 oq
 aA
-jl
+VH
 vE
 Yi
 Yi
@@ -34101,16 +34113,16 @@ ye
 ye
 aP
 aP
-Pt
+na
 aP
 aP
-Pt
+na
 aP
 aP
-Pt
+na
 aP
 aP
-Pt
+na
 aP
 ak
 oq
@@ -34129,7 +34141,7 @@ Jw
 kK
 kK
 Ru
-Po
+qo
 kR
 kR
 vE
@@ -34354,26 +34366,26 @@ ye
 ye
 ye
 ye
-MH
+wB
 ye
 ye
 aP
-Ho
+xg
 aG
 aP
 aG
-MH
+wB
 aP
 aG
-MH
+wB
 aP
-MH
-MH
+wB
+wB
 ak
 AE
 oq
 kK
-uP
+kS
 wA
 oq
 aA
@@ -34386,7 +34398,7 @@ Wh
 vE
 kK
 Jw
-iY
+qN
 oq
 oq
 oq
@@ -34599,33 +34611,33 @@ aa
 aa
 ye
 ZL
-Jd
-gD
-MH
-MH
-MH
-MH
-kE
-MH
-MH
-MH
-MH
-VK
-MH
-MH
+iG
+gK
+wB
+wB
+wB
+wB
+fA
+wB
+wB
+wB
+wB
+Bc
+wB
+wB
 ye
 aP
-MH
+wB
 aP
 aP
 aP
-Ho
+xg
 aP
 aG
-Jd
+iG
 aP
-fT
-MH
+Er
+wB
 ak
 ak
 ak
@@ -34855,34 +34867,34 @@ aa
 aa
 aa
 ye
-Jd
-Bc
+iG
+lh
 ye
-EB
-ye
-ye
+zd
 ye
 ye
 ye
 ye
 ye
-EB
 ye
-Jd
-MH
+ye
+zd
+ye
+iG
+wB
 ye
 aP
 aG
-MH
+wB
 aG
 aP
-MH
+wB
 aP
-JF
-MH
+ky
+wB
 aP
 aG
-MH
+wB
 aP
 ye
 ye
@@ -35112,40 +35124,40 @@ aa
 aa
 aa
 ye
-iW
-Jd
-gD
-MH
-Jd
-MH
-MH
-MH
-MH
-MH
+lU
+iG
+gK
+wB
+iG
+wB
+wB
+wB
+wB
+wB
 ye
-MH
+wB
 ye
-MH
-Jd
+wB
+iG
 ye
 aP
 aP
 aP
-MH
+wB
 aP
-MH
+wB
 aG
-Ho
-MH
+xg
+wB
 aP
 aG
 aG
 aP
 ye
-MH
-Og
-MH
-MH
+wB
+gP
+wB
+wB
 ye
 ak
 aA
@@ -35378,17 +35390,17 @@ ye
 ye
 ye
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-Bc
-MH
+lh
+wB
 ye
 aP
-JF
-Jd
-MH
+ky
+iG
+wB
 aP
 aP
 aP
@@ -35396,13 +35408,13 @@ aP
 aP
 aP
 aP
-Hz
+AA
 aP
 ye
-Jd
+iG
 ye
-MH
-MH
+wB
+wB
 ye
 ak
 aA
@@ -35635,31 +35647,31 @@ aa
 ye
 ye
 ye
-Bc
+lh
 ye
-Jd
+iG
 ye
-Jd
-MH
+iG
+wB
 ye
 aP
 aG
 aP
 aP
 aP
-Ho
-Ho
-Jd
-Jd
-Ho
+xg
+xg
+iG
+iG
+xg
 aP
-MV
+km
 aP
 ye
-MR
+of
 ye
-MR
-Jd
+of
+iG
 ye
 ak
 aA
@@ -35890,33 +35902,33 @@ aa
 aa
 aa
 ye
-MH
-MH
-MH
+wB
+wB
+wB
 ye
-MH
+wB
 ye
-So
-qj
+mI
+Lo
 ye
 aP
-Jd
-Ho
-Ho
-Jd
-Ho
-Ho
-Jd
-Jd
-Ho
+iG
+xg
+xg
+iG
+xg
+xg
+iG
+iG
+xg
 aP
 aP
 aP
 ye
-Jd
+iG
 ye
-MH
-Jd
+wB
+iG
 ye
 ak
 aA
@@ -36147,33 +36159,33 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
-EB
+zd
 ye
-ye
-ye
-ye
-aP
-aP
-aP
-aP
-ye
-ye
-ye
-Og
-Og
 ye
 ye
 ye
 aP
+aP
+aP
+aP
 ye
-MH
 ye
-MH
-Jd
+ye
+gP
+gP
+ye
+ye
+ye
+aP
+ye
+wB
+ye
+wB
+iG
 ye
 ak
 aA
@@ -36404,33 +36416,33 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
 ye
-DS
-MH
-DS
-MH
-MH
-gV
+Co
+wB
+Co
+wB
+wB
+vR
 ye
 ye
 ye
-Jd
+iG
 ye
-Jd
-MH
+iG
+wB
 ye
 ak
 aA
@@ -36661,33 +36673,33 @@ aa
 aa
 aa
 ye
-Jd
+iG
 ye
-Og
-ye
-ye
-ye
-ye
-Og
+gP
 ye
 ye
 ye
 ye
-EB
+gP
 ye
-Jd
-MH
-MH
-MH
-DS
-Jd
 ye
-MH
 ye
-Nx
 ye
-MH
-MH
+zd
+ye
+iG
+wB
+wB
+wB
+Co
+iG
+ye
+wB
+ye
+kL
+ye
+wB
+wB
 ye
 ak
 aA
@@ -36918,33 +36930,33 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
-kE
-MH
-MH
-EB
-MH
-MH
-MH
+fA
+wB
+wB
+zd
+wB
+wB
+wB
 ye
-MH
-MH
-Bc
+wB
+wB
+lh
 ye
-MH
-gV
-Jd
-MH
-MH
-DS
-Og
-MH
+wB
+vR
+iG
+wB
+wB
+Co
+gP
+wB
 ye
 ye
 ye
-MH
-MH
+wB
+wB
 ye
 ak
 aA
@@ -37175,7 +37187,7 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
@@ -37183,25 +37195,25 @@ ye
 ye
 ye
 ye
-Jd
+iG
 ye
-Jd
+iG
 ye
 ye
 ye
-DS
-MH
-DS
-MH
-Jd
-MH
-Og
-MH
-Mn
-MH
-Mn
-MR
-MH
+Co
+wB
+Co
+wB
+iG
+wB
+gP
+wB
+Nh
+wB
+Nh
+of
+wB
 ye
 ak
 aA
@@ -37432,33 +37444,33 @@ aa
 aa
 aa
 ye
-MH
-Og
-MH
-MH
-MH
-MH
-SR
+wB
+gP
+wB
+wB
+wB
+wB
+wP
 ye
-MH
+wB
 ye
-Jd
-Jd
-MH
+iG
+iG
+wB
 ye
-DS
-Jd
-MH
-DS
-DS
-gV
+Co
+iG
+wB
+Co
+Co
+vR
 ye
-MH
+wB
 ye
 ye
 ye
-MH
-Jd
+wB
+iG
 ye
 ak
 Hd
@@ -37689,33 +37701,33 @@ aa
 aa
 aa
 ye
-EB
+zd
 ye
 ye
 ye
 ye
 ye
-MH
+wB
 ye
-EB
+zd
 ye
-MH
-MH
-Jd
+wB
+wB
+iG
 ye
-gV
-MH
-DS
-MH
-MH
-Jd
+vR
+wB
+Co
+wB
+wB
+iG
 ye
 ye
 ye
-MH
+wB
 ye
-MH
-MH
+wB
+wB
 ye
 ak
 ak
@@ -37946,35 +37958,33 @@ aa
 aa
 aa
 ye
-MH
-Og
-MH
-MH
-MH
+wB
+gP
+wB
+wB
+wB
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-Og
-Og
-ye
-ye
-ye
-ye
-Og
-Og
+gP
+gP
 ye
 ye
 ye
-MR
-MH
-Jd
 ye
-MH
-Jd
+gP
+gP
 ye
 ye
+ye
+of
+wB
+iG
+ye
+wB
+iG
 ye
 ye
 ye
@@ -37985,9 +37995,11 @@ ye
 ye
 ye
 ye
-Cm
-Cm
-Cm
+ye
+ye
+qB
+qB
+qB
 ak
 dN
 Fm
@@ -38205,42 +38217,42 @@ aa
 ye
 ye
 ye
-Og
+gP
 ye
-Og
+gP
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-Jd
-Jd
+iG
+iG
 ye
-Jd
-MH
-MH
-MH
-MH
-MH
-MH
+iG
+wB
+wB
+wB
+wB
+wB
+wB
 ye
-pZ
-Jd
-Jd
-Og
-Jd
-MH
+Ho
+iG
+iG
+gP
+iG
+wB
 ye
-ve
-Jd
-MH
-MH
-MH
-MH
-DM
-MH
-Jd
-MH
+KD
+iG
+wB
+wB
+wB
+wB
+QG
+wB
+iG
+wB
 ye
 ak
 ak
@@ -38462,26 +38474,24 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-rZ
+oM
 ye
-Bc
-EB
+lh
+zd
 ye
-MH
-MH
-Xw
-MH
-MH
-Du
-MH
-ye
-ye
+wB
+wB
+Gp
+wB
+wB
+PZ
+wB
 ye
 ye
 ye
@@ -38492,12 +38502,14 @@ ye
 ye
 ye
 ye
-Og
+ye
+ye
+gP
 ye
 ye
 ye
 ye
-MH
+wB
 ye
 ak
 ab
@@ -38719,42 +38731,42 @@ aa
 aa
 aa
 ye
-EB
+zd
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-EB
+zd
 ye
-pg
-pg
+yl
+yl
 ye
-MH
-MH
-MH
-MH
-MH
-MH
-Jd
+wB
+wB
+wB
+wB
+wB
+wB
+iG
 ye
-MH
-MH
-MH
+wB
+wB
+wB
 ye
-DM
-Jy
-Og
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
+QG
+kX
+gP
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
 ye
-MH
+wB
 ye
 ak
 ab
@@ -38976,42 +38988,42 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-Bc
+lh
 ye
-MH
-ye
-ye
+wB
 ye
 ye
 ye
-Og
-ye
-Og
-ye
-Og
 ye
 ye
-Jd
-MH
-MH
+gP
 ye
-Jd
-MH
+gP
+ye
+gP
 ye
 ye
+iG
+wB
+wB
+ye
+iG
+wB
 ye
 ye
 ye
 ye
 ye
 ye
-Jd
 ye
-MH
+ye
+iG
+ye
+wB
 ye
 ak
 ab
@@ -39233,42 +39245,42 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-Jd
-MH
-MH
-EB
-EB
-EB
-EB
+iG
+wB
+wB
+zd
+zd
+zd
+zd
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-BQ
-MH
-MH
-MH
+Mx
+wB
+wB
+wB
 ye
-Mn
+Nh
 ye
 ye
-xQ
-Jd
-Jd
-Jd
-Jd
-MH
+vs
+iG
+iG
+iG
+iG
+wB
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
 ak
 ab
@@ -39490,13 +39502,11 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
-EB
+zd
 ye
-MH
-ye
-ye
+wB
 ye
 ye
 ye
@@ -39504,28 +39514,30 @@ ye
 ye
 ye
 ye
-MH
 ye
-MH
 ye
-MH
-MH
-MH
-MH
+wB
 ye
-MH
-MH
+wB
 ye
-MH
-Jd
-Jd
-Jd
-Jd
-DM
+wB
+wB
+wB
+wB
 ye
-MH
+wB
+wB
 ye
-MH
+wB
+iG
+iG
+iG
+iG
+QG
+ye
+wB
+ye
+wB
 ye
 ak
 ab
@@ -39747,42 +39759,42 @@ aa
 aa
 aa
 ye
-Bc
+lh
 ye
-MH
+wB
 ye
-EB
-MH
-MH
-MH
-MH
-Gr
-MH
-MH
-MH
-Og
-Jd
+zd
+wB
+wB
+wB
+wB
+Qf
+wB
+wB
+wB
+gP
+iG
 ye
-Jd
+iG
 ye
-MH
-MH
-Jd
-MH
+wB
+wB
+iG
+wB
 ye
 ye
-Mn
+Nh
 ye
-MH
-Jd
-Jd
-Jd
-Jd
-MH
+wB
+iG
+iG
+iG
+iG
+wB
 ye
-xW
+Hj
 ye
-MH
+wB
 ye
 ak
 ab
@@ -40004,11 +40016,9 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
-MH
-ye
-ye
+wB
 ye
 ye
 ye
@@ -40018,28 +40028,30 @@ ye
 ye
 ye
 ye
-MH
 ye
-MH
 ye
-Jd
-MH
-Jd
-MH
+wB
 ye
-MH
-DM
+wB
 ye
-MH
-Yv
-MH
-MH
-MH
-Jd
+iG
+wB
+iG
+wB
 ye
-MH
+wB
+QG
 ye
-MH
+wB
+In
+wB
+wB
+wB
+iG
+ye
+wB
+ye
+wB
 ye
 ak
 ab
@@ -40261,42 +40273,42 @@ aa
 aa
 aa
 ye
-EB
+zd
 ye
-MH
-Jd
-MH
-MH
-SR
-MH
-MH
-Jd
-MH
-MH
-Gk
+wB
+iG
+wB
+wB
+wP
+wB
+wB
+iG
+wB
+wB
+lW
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-MH
-MH
-Jd
-MH
+wB
+wB
+iG
+wB
 ye
-Mn
+Nh
 ye
 ye
-MH
-MH
-MH
-Jd
-MH
-Jd
+wB
+wB
+wB
+iG
+wB
+iG
 ye
-MH
+wB
 ye
-MH
+wB
 ye
 ak
 ab
@@ -40518,7 +40530,7 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
@@ -40526,34 +40538,34 @@ ye
 ye
 ye
 ye
-Og
-Og
+gP
+gP
 ye
-Og
-Og
+gP
+gP
 ye
-Og
+gP
 ye
-Gr
+Qf
 ye
-MH
-Jd
-MH
-MH
-Og
-MH
-MH
+wB
+iG
+wB
+wB
+gP
+wB
+wB
 ye
-MH
-Jd
-MH
-MH
-MH
-Jd
+wB
+iG
+wB
+wB
+wB
+iG
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
 ak
 ab
@@ -40775,42 +40787,42 @@ aa
 aa
 aa
 ye
-MH
-tj
-MH
-MH
-Bc
-MH
-Xg
+wB
+zG
+wB
+wB
+lh
+wB
+Mc
 ye
-EB
-MH
+zd
+wB
 ye
-MH
-MH
+wB
+wB
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-MH
-Jd
-MH
-MH
+wB
+iG
+wB
+wB
 ye
 ye
-Mn
+Nh
 ye
-MH
-MH
-Jd
-DM
-MH
-MH
+wB
+wB
+iG
+QG
+wB
+wB
 ye
-MH
+wB
 ye
-MH
+wB
 ye
 ak
 ak
@@ -41032,7 +41044,7 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
@@ -41040,34 +41052,34 @@ ye
 ye
 ye
 ye
-EB
-MH
+zd
+wB
 ye
-MH
-wQ
+wB
+Na
 ye
-tq
+CF
 ye
-MH
+wB
 ye
-Cg
-MH
-MH
-MH
+yJ
+wB
+wB
+wB
 ye
-DM
-MH
+QG
+wB
 ye
-MH
-MH
-Jd
-MH
-MH
-qQ
+wB
+wB
+iG
+wB
+wB
+qO
 ye
-MH
+wB
 ye
-MH
+wB
 ye
 aa
 aa
@@ -41289,42 +41301,42 @@ aa
 aa
 aa
 ye
-Gr
-je
-EB
-MH
-MH
-MH
-Xg
+Qf
+zE
+zd
+wB
+wB
+wB
+Mc
 ye
-wQ
-MH
+Na
+wB
 ye
-EB
-EB
+zd
+zd
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-MH
-MH
-Cg
-MH
+wB
+wB
+yJ
+wB
 ye
-Mn
-ye
-ye
-ye
-Og
+Nh
 ye
 ye
 ye
+gP
 ye
 ye
-xW
 ye
-Jd
+ye
+ye
+Hj
+ye
+iG
 ye
 aa
 aa
@@ -41546,7 +41558,7 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
@@ -41554,34 +41566,34 @@ ye
 ye
 ye
 ye
-EB
-EB
+zd
+zd
 ye
-EB
-EB
+zd
+zd
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-MH
-Jd
-BQ
-Jd
+wB
+iG
+Mx
+iG
 ye
-MH
-MH
+wB
+wB
 ye
-MH
-MH
-wQ
-MH
-MH
-Jd
-MH
-MH
+wB
+wB
+Na
+wB
+wB
+iG
+wB
+wB
 ye
-MH
+wB
 ye
 aa
 aa
@@ -41803,42 +41815,42 @@ aa
 aa
 aa
 ye
-MH
-rk
-MH
-EB
-Bc
-MH
-kZ
+wB
+Af
+wB
+zd
+lh
+wB
+TM
 ye
-EB
-EB
+zd
+zd
 ye
-MH
-EB
+wB
+zd
 ye
-Og
+gP
 ye
-MH
-ye
-ye
-ye
-ye
-ye
-ye
-ye
-Mn
-ye
-ye
-ye
-Jd
+wB
 ye
 ye
 ye
 ye
 ye
 ye
-MH
+ye
+Nh
+ye
+ye
+ye
+iG
+ye
+ye
+ye
+ye
+ye
+ye
+wB
 ye
 aa
 aa
@@ -42060,7 +42072,7 @@ aa
 aa
 aa
 ye
-EB
+zd
 ye
 ye
 ye
@@ -42068,34 +42080,34 @@ ye
 ye
 ye
 ye
-MH
-MH
+wB
+wB
 ye
-MH
-MH
+wB
+wB
 ye
-MH
+wB
 ye
-Jd
-MH
-MH
-MH
-wQ
-Jd
-MH
-MH
-MH
+iG
+wB
+wB
+wB
+Na
+iG
+wB
+wB
+wB
 ye
-hY
+ZM
 ye
-MH
+wB
 ye
-IO
-MH
-DM
-MH
+yZ
+wB
+QG
+wB
 ye
-MH
+wB
 ye
 aa
 aa
@@ -42317,23 +42329,21 @@ aa
 aa
 aa
 ye
-MH
-mS
-MH
-EB
-MH
-MH
-Xg
+wB
+oJ
+wB
+zd
+wB
+wB
+Mc
 ye
-MH
-MH
+wB
+wB
 ye
-MH
-MH
+wB
+wB
 ye
-Jd
-ye
-ye
+iG
 ye
 ye
 ye
@@ -42343,16 +42353,18 @@ ye
 ye
 ye
 ye
-Mn
 ye
-MH
 ye
-MH
-mM
-MH
-MH
+Nh
 ye
-Jd
+wB
+ye
+wB
+Di
+wB
+wB
+ye
+iG
 ye
 aa
 aa
@@ -42582,34 +42594,34 @@ ye
 ye
 ye
 ye
-In
-In
+qm
+qm
 ye
-In
-In
+qm
+qm
 ye
-MH
+wB
 ye
-Xg
-xW
-Jd
-Jd
-xW
+Mc
+Hj
+iG
+iG
+Hj
 ye
-Jd
-MH
-MH
-MH
-MH
+iG
+wB
+wB
+wB
+wB
 ye
-MH
+wB
 ye
-MH
-MH
-MH
-MH
-Og
-Jd
+wB
+wB
+wB
+wB
+gP
+iG
 ye
 aa
 aa
@@ -42832,41 +42844,41 @@ aa
 aa
 aa
 ye
-YL
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
+wI
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
 ye
-MH
+wB
 ye
-Jd
-MH
-MH
-MH
-MH
+iG
+wB
+wB
+wB
+wB
 ye
-MH
-DM
-MH
-Jd
-MH
+wB
+QG
+wB
+iG
+wB
 ye
-MH
+wB
 ye
-MH
-MH
-MH
-MH
+wB
+wB
+wB
+wB
 ye
-MH
+wB
 ye
 aa
 aa
@@ -43089,41 +43101,41 @@ aa
 aa
 aa
 ye
-MH
-MH
-ih
-ra
-MH
+wB
+wB
+uy
+SU
+wB
 ye
-MH
-FV
-MH
-MH
-FV
-MH
+wB
+rt
+wB
+wB
+rt
+wB
 ye
-Jd
+iG
 ye
-MH
-xW
-MH
-Jd
-MH
+wB
+Hj
+wB
+iG
+wB
 ye
-Og
-ye
-ye
+gP
 ye
 ye
 ye
-Jd
 ye
-vb
-MH
-DM
-MH
 ye
-MH
+iG
+ye
+Sz
+wB
+QG
+wB
+ye
+wB
 ye
 aa
 aa
@@ -43346,41 +43358,41 @@ ye
 ye
 ye
 ye
-MH
-MH
-MH
-MH
-MH
+wB
+wB
+wB
+wB
+wB
 ye
-MH
-MH
-II
-MH
-MH
-MH
+wB
+wB
+ug
+wB
+wB
+wB
 ye
-Og
+gP
 ye
-Xg
-MH
-Jd
-Jd
-MH
-Og
-MH
-MH
-MH
-MH
-wQ
-MH
-MH
-ye
-ye
+Mc
+wB
+iG
+iG
+wB
+gP
+wB
+wB
+wB
+wB
+Na
+wB
+wB
 ye
 ye
 ye
 ye
-MH
+ye
+ye
+wB
 ye
 aa
 aa
@@ -43600,25 +43612,23 @@ aa
 aa
 aa
 ye
-Te
-MH
-In
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
+Yf
+wB
+qm
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
 ye
-MH
-ra
+wB
+SU
 ye
-Jd
-ye
-ye
+iG
 ye
 ye
 ye
@@ -43630,14 +43640,16 @@ ye
 ye
 ye
 ye
-MH
 ye
-MH
-MH
-MH
-MH
-MH
-MH
+ye
+wB
+ye
+wB
+wB
+wB
+wB
+wB
+wB
 ye
 aa
 aa
@@ -43857,41 +43869,41 @@ aa
 aa
 aa
 ye
-Te
-MH
-In
-MH
-MH
-YL
-II
-MH
-MH
-MH
-MH
-MH
+Yf
+wB
+qm
+wB
+wB
+wI
+ug
+wB
+wB
+wB
+wB
+wB
 ye
-MH
-MH
+wB
+wB
 ye
-MH
+wB
 ye
-DM
-MH
-MH
-MH
-MH
-MH
-MH
-Jd
-Jd
-Jd
-MH
+QG
+wB
+wB
+wB
+wB
+wB
+wB
+iG
+iG
+iG
+wB
 ye
-Og
+gP
 ye
 ye
 ye
-Og
+gP
 ye
 ye
 ye
@@ -44117,41 +44129,41 @@ ye
 ye
 ye
 ye
-MH
-MH
-ih
-MH
-MH
+wB
+wB
+uy
+wB
+wB
 ye
-MH
-ra
-MH
-MH
-MH
-FV
+wB
+SU
+wB
+wB
+wB
+rt
 ye
-tq
+CF
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-MH
-ye
-ye
+wB
 ye
 ye
 ye
-MH
 ye
-MH
-MH
-Jd
 ye
-MH
+wB
 ye
-MH
-Rz
+wB
+wB
+iG
+ye
+wB
+ye
+wB
+kN
 ye
 aa
 aa
@@ -44374,41 +44386,41 @@ aa
 aa
 aa
 ye
-MH
-MH
-MH
-FV
-MH
+wB
+wB
+wB
+rt
+wB
 ye
-MH
-MH
-FV
-MH
-MH
-MH
+wB
+wB
+rt
+wB
+wB
+wB
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-DM
+QG
 ye
-Og
+gP
 ye
-MH
-Jd
-Jd
-Jd
-MH
+wB
+iG
+iG
+iG
+wB
 ye
-MH
-Yv
-MH
+wB
+In
+wB
 ye
-MH
+wB
 ye
-DM
-MH
+QG
+wB
 ye
 aa
 aa
@@ -44631,41 +44643,41 @@ aa
 aa
 aa
 ye
-MH
-ra
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-MH
-YL
+wB
+SU
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wB
+wI
 ye
-Jd
+iG
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-MH
+wB
 ye
 ye
 ye
-MH
+wB
 ye
-Jd
-MH
-MH
+iG
+wB
+wB
 ye
-MH
+wB
 ye
-MH
-MH
+wB
+wB
 ye
 aa
 aa
@@ -44901,28 +44913,28 @@ ye
 ye
 ye
 ye
-Og
+gP
 ye
-Jd
-uV
-Jd
+iG
+KT
+iG
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-kZ
+TM
 ye
-MH
+wB
 ye
 ye
-MH
-MH
+wB
+wB
 ye
-xW
+Hj
 ye
-MH
-DM
+wB
+QG
 ye
 aa
 aa
@@ -45145,41 +45157,41 @@ aa
 aa
 aa
 ye
-tq
-MH
-Jd
-Jd
-Jd
-MH
-MH
-Jd
-MH
-tq
-MH
-Jd
-MH
-MH
+CF
+wB
+iG
+iG
+iG
+wB
+wB
+iG
+wB
+CF
+wB
+iG
+wB
+wB
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-JP
+oG
 ye
-MH
-MH
+wB
+wB
 ye
-MH
-Jd
+wB
+iG
 ye
-MH
+wB
 ye
-DM
-MH
+QG
+wB
 ye
 aa
 aa
@@ -45402,7 +45414,7 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
@@ -45417,26 +45429,26 @@ ye
 ye
 ye
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
 ye
-MH
+wB
 ye
-MH
-MH
+wB
+wB
 ye
-Jd
+iG
 ye
-MH
-Jd
+wB
+iG
 ye
 aa
 aa
@@ -45659,41 +45671,41 @@ aa
 aa
 aa
 ye
-MH
-Jd
-MH
-MH
-MH
-Jd
-tq
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-MH
+wB
+iG
+wB
+wB
+wB
+iG
+CF
+iG
+iG
+iG
+iG
+iG
+iG
+wB
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-MH
-MH
-MH
-MH
+wB
+wB
+wB
+wB
 ye
-mM
+Di
 ye
-MH
-MH
+wB
+wB
 ye
-MH
+wB
 ye
-MH
-MH
+wB
+wB
 ye
 aa
 aa
@@ -45929,28 +45941,28 @@ ye
 ye
 ye
 ye
-Og
+gP
 ye
-DM
-uV
-Jd
+QG
+KT
+iG
 ye
-mM
-ye
-ye
+Di
 ye
 ye
 ye
 ye
-Jd
 ye
-Jd
-MH
 ye
-MH
-Og
-MH
-BQ
+iG
+ye
+iG
+wB
+ye
+wB
+gP
+wB
+Mx
 ye
 aa
 aa
@@ -46173,36 +46185,36 @@ aa
 aa
 aa
 ye
-MH
-MH
-Jd
-Jd
-MH
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-MH
+wB
+wB
+iG
+iG
+wB
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+wB
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-Jd
-MH
-MH
-MH
-MH
-Jd
+iG
+wB
+wB
+wB
+wB
+iG
 ye
-MH
-MH
+wB
+wB
 ye
 ye
 ye
@@ -46430,7 +46442,7 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
@@ -46445,26 +46457,26 @@ ye
 ye
 ye
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-Jd
-ye
-ye
+iG
 ye
 ye
-MH
 ye
-MH
-DM
-MH
-MH
-MH
-MH
-MH
+ye
+wB
+ye
+wB
+QG
+wB
+wB
+wB
+wB
+wB
 ye
 aa
 aa
@@ -46687,41 +46699,41 @@ aa
 aa
 aa
 ye
-MH
-Jd
-Jd
-PU
-Jd
-tq
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-MH
+wB
+iG
+iG
+Qe
+iG
+CF
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+wB
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-MH
+wB
 ye
-Jd
+iG
 ye
-MH
-MH
-Jd
-MH
+wB
+wB
+iG
+wB
 ye
-Jd
-MH
-MH
-MH
-Jd
-MH
-MH
+iG
+wB
+wB
+wB
+iG
+wB
+wB
 ye
 aa
 aa
@@ -46957,19 +46969,17 @@ ye
 ye
 ye
 ye
-Og
+gP
 ye
-DM
-MH
-MH
+QG
+wB
+wB
 ye
-FO
+eV
 ye
-Jd
+iG
 ye
-Og
-ye
-ye
+gP
 ye
 ye
 ye
@@ -46977,8 +46987,10 @@ ye
 ye
 ye
 ye
-Og
-Og
+ye
+ye
+gP
+gP
 ye
 aa
 aa
@@ -47201,20 +47213,20 @@ aa
 aa
 aa
 ye
-MH
-Jd
-Jd
-tq
-Jd
-tq
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-MH
-MH
+wB
+iG
+iG
+CF
+iG
+CF
+iG
+iG
+iG
+iG
+iG
+iG
+wB
+wB
 ye
 ye
 ye
@@ -47222,20 +47234,20 @@ ye
 ye
 ye
 ye
-MH
+wB
 ye
-MH
-MH
-MH
-Jd
-MH
-MH
-MH
-DM
-MH
-MH
-Jd
-MH
+wB
+wB
+wB
+iG
+wB
+wB
+wB
+QG
+wB
+wB
+iG
+wB
 ye
 aa
 aa
@@ -47458,7 +47470,7 @@ aa
 aa
 aa
 ye
-MH
+wB
 ye
 ye
 ye
@@ -47473,26 +47485,26 @@ ye
 ye
 ye
 ye
-kZ
-Jd
-Jd
-Jd
-MH
-MH
-MH
+TM
+iG
+iG
+iG
+wB
+wB
+wB
 ye
-MH
-MH
-DM
-MH
-MH
-Jd
-MH
-MH
-Jd
-MH
-MH
-DM
+wB
+wB
+QG
+wB
+wB
+iG
+wB
+wB
+iG
+wB
+wB
+QG
 ye
 aa
 aa
@@ -47715,20 +47727,20 @@ aa
 aa
 aa
 ye
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-Jd
-MH
-MH
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+iG
+wB
+wB
 ye
 ye
 ye
@@ -47985,7 +47997,7 @@ ye
 ye
 ye
 ye
-Og
+gP
 ye
 aa
 aa
@@ -48229,20 +48241,20 @@ aa
 aa
 aa
 ye
-Hh
-MH
-Jd
-Jd
-Jd
-Jd
-Jd
-tq
-Jd
-Jd
-MH
-Jd
-MH
-MH
+Mh
+wB
+iG
+iG
+iG
+iG
+iG
+CF
+iG
+iG
+wB
+iG
+wB
+wB
 ye
 aa
 aa
