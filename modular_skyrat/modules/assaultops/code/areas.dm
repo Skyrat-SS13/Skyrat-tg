@@ -67,8 +67,7 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 				/obj/item/gun/ballistic/automatic/assault_rifle/m16,
 				/obj/item/gun/ballistic/automatic/pistol/deagle,
 				/obj/item/gun/ballistic/automatic/sniper_rifle/modular/syndicate,
-				/obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket,
-				/obj/item/gun/ballistic/automatic/l6_saw,
+				/obj/item/gun/ballistic/automatic/submachine_gun/mp40,
 				/obj/item/gun/ballistic/automatic/c20r,
 				/obj/item/gun/ballistic/automatic/m90
 				)
