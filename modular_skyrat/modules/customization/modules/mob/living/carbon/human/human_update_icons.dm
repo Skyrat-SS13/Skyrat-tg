@@ -234,10 +234,9 @@
 			continue
 
 		var/list/image/limb_icon = BP.get_limb_icon()
-		if (dna && dna.species.specific_alpha)
-			for (var/x in limb_icon)
-				var/image/IX = x
-				IX.alpha = dna.species.specific_alpha
+		for (var/x in limb_icon)
+			var/image/IX = x
+			IX.alpha = BP.alpha
 		new_limbs += limb_icon
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
