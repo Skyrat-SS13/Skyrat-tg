@@ -61,7 +61,7 @@
 		return
 
 	// No decay if formaldehyde in corpse or when the corpse is charred
-	if(C.reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 1) || HAS_TRAIT(C, TRAIT_HUSK) || C.reagents.has_reagent(/datum/reagent/medicine/preservahyde, 1)) //Skyrat Edit - Preservahyde, Formaldehyde decrease
+	if(C.reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 15) || HAS_TRAIT(C, TRAIT_HUSK))
 		return
 
 	// Also no decay if corpse chilled or not organic/undead
