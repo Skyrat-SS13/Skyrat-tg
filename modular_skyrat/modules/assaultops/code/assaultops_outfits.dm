@@ -76,7 +76,7 @@
 		/obj/item/kitchen/knife/combat/survival,\
 		/obj/item/gun/energy/disabler,\
 		/obj/item/gun/ballistic/automatic/l6_saw/assaultops,\
-		/obj/item/ammo_box/magazine/mg34=4,\
+		/obj/item/ammo_box/magazine/mm712x82=2,\
 		/obj/item/grenade/syndieminibomb)
 
 /obj/item/gun/ballistic/automatic/l6_saw/assaultops

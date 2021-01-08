@@ -41,12 +41,14 @@
 	back = /obj/item/storage/backpack
 	belt = /obj/item/storage/belt/security/full
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate
+	id = /obj/item/card/id/syndicate/prison_guard
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
 		/obj/item/melee/baton/loaded
 	)
+/obj/item/card/id/syndicate/prison_guard
+	assignment = "Syndicate Prison Guard"
 
 /obj/effect/mob_spawn/human/syndicate/assops/prison_warden
 	name = "Syndicate Prison Warden"
@@ -66,12 +68,15 @@
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/security/full
-	id = /obj/item/card/id/syndicate
+	id = /obj/item/card/id/syndicate/prison_warden
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
 		/obj/item/melee/baton/loaded
 	)
+
+/obj/item/card/id/syndicate/prison_warden
+	assignment = "Syndicate Prison Warden"
 
 /obj/effect/mob_spawn/human/syndicate/assops/facility_staff
 	name = "Syndicate Facility Staff"
@@ -89,7 +94,10 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate
+	id = /obj/item/card/id/syndicate/prison_staff
+
+/obj/item/card/id/syndicate/prison_staff
+	assignment = "SYndicate Staff"
 
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant
 	name = "Syndicate Assistant"
@@ -108,5 +116,5 @@
 	implants = list(/obj/item/implant/weapons_auth)
 	id = /obj/item/card/id/syndicate
 
-
-
+/obj/item/card/id/syndicate/assistant
+	assignment = "Syndicate Assistant"
