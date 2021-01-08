@@ -1219,28 +1219,19 @@
 	if(air_tight)
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-<<<<<<< HEAD
-		air_update_turf(1)
 		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
 		if(multi_tile)
 			filler.density = TRUE
-		//SKYRAT EDIT END
-=======
 		air_update_turf(TRUE, TRUE)
->>>>>>> 6d1cb94ffb5 (LINDA Reforged (#55604))
 	sleep(1)
 	if(!air_tight)
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-<<<<<<< HEAD
-		air_update_turf(1)
 		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
 		if(multi_tile)
 			filler.density = TRUE
 		//SKYRAT EDIT END
-=======
 		air_update_turf(TRUE, TRUE)
->>>>>>> 6d1cb94ffb5 (LINDA Reforged (#55604))
 	sleep(4)
 	if(dangerous_close)
 		crush()
