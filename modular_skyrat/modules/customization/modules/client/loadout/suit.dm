@@ -24,7 +24,7 @@
 	path = /obj/item/clothing/suit/ianshirt
 
 /datum/loadout_item/suit/wornshirt
-	name = "Colorable Worn Shirt"
+	name = "Worn Shirt"
 	path = /obj/item/clothing/suit/wornshirt
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
