@@ -55,7 +55,7 @@
 	..()
 	rack()
 
-/obj/item/gun/ballistic/shotgun/automatic/combat
+/obj/item/gun/ballistic/shotgun/automatic/combat        //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "combat shotgun"
 	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
 	icon_state = "cshotgun"
