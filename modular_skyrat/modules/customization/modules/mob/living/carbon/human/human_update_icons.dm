@@ -234,9 +234,10 @@
 			continue
 
 		var/list/image/limb_icon = BP.get_limb_icon()
-		for (var/x in limb_icon)
-			var/image/IX = x
-			IX.alpha = BP.alpha
+		if(BP.alpha != 255)
+			for (var/x in limb_icon)
+				var/image/IX = x
+				IX.alpha = BP.alpha
 		new_limbs += limb_icon
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
