@@ -1764,7 +1764,6 @@
 		output += atom_orbiter.get_all_orbiters(processed, source = FALSE)
 	return output
 
-
 /**
 * Instantiates the AI controller of this atom. Override this if you want to assign variables first.
 *
