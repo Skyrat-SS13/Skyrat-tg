@@ -64,12 +64,15 @@
 	organ_type = /obj/item/organ/tail/monkey
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-		if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
-			var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-			if(HS.hardsuit_tail_colors)
-				return FALSE
-		return TRUE
+	if(H.wear_suit)
+		if(H.try_hide_mutant_parts)
+			return TRUE
+		if(H.wear_suit.flags_inv & HIDEJUMPSUIT)
+			if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+				var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
+				if(HS.hardsuit_tail_colors)
+					return FALSE
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/tails/none

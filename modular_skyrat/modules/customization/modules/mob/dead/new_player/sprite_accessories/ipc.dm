@@ -141,6 +141,11 @@
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)
 
+/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+		return TRUE
+	return FALSE
+
 /datum/sprite_accessory/antenna/none
 	name = "None"
 	icon_state = "None"
