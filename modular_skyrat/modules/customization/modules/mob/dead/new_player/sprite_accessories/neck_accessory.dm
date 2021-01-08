@@ -11,7 +11,7 @@
 	factual = FALSE
 
 /datum/sprite_accessory/neck_accessory/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+	if(H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT))
 		return TRUE
 	return FALSE
 
