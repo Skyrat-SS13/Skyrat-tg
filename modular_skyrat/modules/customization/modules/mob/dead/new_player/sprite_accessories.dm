@@ -37,6 +37,8 @@
 	var/extra_color_src
 	var/extra2 = FALSE
 	var/extra2_color_src
+	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
+	var/list/ckey_whitelist
 
 /datum/sprite_accessory/New()
 	if(!default_color)

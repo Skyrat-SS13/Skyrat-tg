@@ -29,7 +29,7 @@
 
 /area/shuttle/syndicate
 	name = "Syndicate Infiltrator"
-	ambientsounds = HIGHSEC
+	ambience_index = AMBIENCE_DANGER
 	area_limited_icon_smoothing = /area/shuttle/syndicate
 
 /area/shuttle/syndicate/bridge
@@ -143,6 +143,12 @@
 /area/shuttle/escape/luxury
 	name = "Luxurious Emergency Shuttle"
 	area_flags = NOTELEPORT
+
+/area/shuttle/escape/simulation
+	name = "Medieval Reality Simulation Dome"
+	icon_state = "shuttlectf"
+	area_flags = NOTELEPORT
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/shuttle/escape/arena
 	name = "The Arena"

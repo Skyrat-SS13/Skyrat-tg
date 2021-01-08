@@ -435,7 +435,7 @@
 				else //just delete the cabin gas, we're in space or some shit
 					qdel(removed)
 
-	if(occupants)
+	if(LAZYLEN(occupants))
 		for(var/i in occupants)
 			var/mob/living/occupant = i
 			if(cell)
@@ -694,7 +694,13 @@
 	if(phasing && get_charge() >= phasing_energy_drain && !throwing)
 		if(phase_state)
 			flick(phase_state, src)
-		forceMove(get_step(src,dir))//This is jank I hate it thanks, this should be done thrugh move not this dumb shit
+		var/turf/destination = get_step(src,dir)
+		var/area/destination_area = destination.loc
+		if(destination_area.area_flags & NOTELEPORT)
+			to_chat(occupants, "[icon2html(src, occupants)]<span class='warning'>A dull, universal force is preventing you from phasing here!</span>")
+			spark_system.start()
+		else
+			forceMove(destination)//This is jank I hate it thanks, this should be done thrugh move not this dumb shit
 		use_power(phasing_energy_drain)
 		addtimer(VARSET_CALLBACK(src, movedelay, TRUE), movedelay*3)
 		return
@@ -862,13 +868,14 @@
 
 ///Handles an actual AI (simple_animal mecha pilot) entering the mech
 /obj/vehicle/sealed/mecha/proc/aimob_enter_mech(mob/living/simple_animal/hostile/syndicate/mecha_pilot/pilot_mob)
-	if(pilot_mob?.Adjacent(src))
-		if(occupants)
-			return
-		LAZYADD(occupants, src)
-		pilot_mob.mecha = src
-		pilot_mob.forceMove(src)
-		update_icon()
+	if(!pilot_mob?.Adjacent(src))
+		return
+	if(LAZYLEN(occupants))
+		return
+	LAZYSET(occupants, pilot_mob, NONE)
+	pilot_mob.mecha = src
+	pilot_mob.forceMove(src)
+	update_icon()
 
 ///Handles an actual AI (simple_animal mecha pilot) exiting the mech
 /obj/vehicle/sealed/mecha/proc/aimob_exit_mech(mob/living/simple_animal/hostile/syndicate/mecha_pilot/pilot_mob)
