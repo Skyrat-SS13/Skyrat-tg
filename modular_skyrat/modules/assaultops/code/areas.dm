@@ -39,12 +39,12 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	requires_power = TRUE
 	has_gravity = STANDARD_GRAVITY
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | NOTELEPORT
-	ambientsounds = SPOOKY
+	ambientsounds = AMBIENCE_GENERIC
 
 /area/cruiser_dock/brig
 	name = "Cruiser Dock Prison"
 	color = COLOR_BLUE
-
+	ambientsounds = AMBIENCE_CREEPY
 /obj/machinery/door/poddoor/shutters
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS)
 
