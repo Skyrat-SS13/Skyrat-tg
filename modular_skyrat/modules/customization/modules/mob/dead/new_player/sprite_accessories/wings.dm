@@ -8,7 +8,7 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT))
+	if(H.wear_suit && H.try_hide_mutant_parts)
 		return TRUE
 	return FALSE
 
