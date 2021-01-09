@@ -74,5 +74,5 @@
 		return
 	prefs.skyrat_toggles ^= CHAT_LOOC_ADMIN
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.skyrat_toggles ^= CHAT_LOOC_ADMIN) ? "now" : "no longer"] hear LOOC globally.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Togle Admin LOOC", "[usr.client.prefs.skyrat_toggles ^= CHAT_LOOC_ADMIN ? "Enabled" : "Disabled"]"))
+	to_chat(usr, "You will [(prefs.skyrat_toggles & CHAT_LOOC_ADMIN) ? "now" : "no longer"] hear LOOC globally.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Togle Admin LOOC", "[usr.client.prefs.skyrat_toggles & CHAT_LOOC_ADMIN ? "Enabled" : "Disabled"]"))
