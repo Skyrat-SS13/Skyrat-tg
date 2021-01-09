@@ -63,5 +63,16 @@
 		if(C.prefs.skyrat_toggles & CHAT_LOOC)
 			if (C.mob in heard)
 				to_chat(C, "<span class='looc'>[ADMIN_FLW(usr)] <span class='prefix'>LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
-			else if (!(C.prefs.skyrat_toggles & CHAT_LOOC_ADMIN))
-				to_chat(C, "<span class='looc'>[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
+			else if (C.prefs.skyrat_toggles & CHAT_LOOC_ADMIN)
+				to_chat(C, "<span class='rlooc'>[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
+
+/client/proc/toggle_admin_looc_global()
+	set name = "See/Hide Global LOOC"
+	set category = "Preferences.Admin"
+	set desc = "Show Global LOOC"
+	if(!holder)
+		return
+	prefs.skyrat_toggles ^= CHAT_LOOC_ADMIN
+	prefs.save_preferences()
+	to_chat(usr, "You will [(prefs.skyrat_toggles ^= CHAT_LOOC_ADMIN) ? "now" : "no longer"] hear LOOC globally.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Togle Admin LOOC", "[usr.client.prefs.skyrat_toggles ^= CHAT_LOOC_ADMIN ? "Enabled" : "Disabled"]"))
