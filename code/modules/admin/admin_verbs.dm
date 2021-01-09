@@ -76,6 +76,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/deadchat,
 	/client/proc/toggleprayers,
 	/client/proc/toggle_prayer_sound,
+	/client/proc/toggle_admin_looc_global, //SKYRAT EDIT ADDITION - LOOC
 	/client/proc/colorasay,
 	/client/proc/resetasaycolor,
 	/client/proc/toggleadminhelpsound,

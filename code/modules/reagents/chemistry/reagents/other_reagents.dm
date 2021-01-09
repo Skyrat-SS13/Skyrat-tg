@@ -100,7 +100,7 @@
 	description = "You don't even want to think about what's in here."
 	taste_description = "gross iron"
 	shot_glass_icon_state = "shotglassred"
-	material = /datum/material/meat
+	//material = /datum/material/meat //SKYRAT EDIT REMOVAL
 
 /datum/reagent/vaccine
 	//data must contain virus type

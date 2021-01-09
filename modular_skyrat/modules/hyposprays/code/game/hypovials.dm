@@ -46,58 +46,9 @@
 	volume = 120
 	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,100,120)
 
-/obj/item/reagent_containers/glass/bottle/vial/small/bicaridine
-	name = "red hypovial (bicaridine)"
-	icon_state = "hypovial-b"
-	list_reagents = list(/datum/reagent/medicine/bicaridine = 30)
-
-/obj/item/reagent_containers/glass/bottle/vial/small/antitoxin
-	name = "green hypovial (Anti-Tox)"
-	icon_state = "hypovial-a"
-	list_reagents = list(/datum/reagent/medicine/antitoxin = 30)
-
-/obj/item/reagent_containers/glass/bottle/vial/small/kelotane
-	name = "orange hypovial (kelotane)"
-	icon_state = "hypovial-k"
-	list_reagents = list(/datum/reagent/medicine/kelotane = 30)
-
-/obj/item/reagent_containers/glass/bottle/vial/small/dexalin
-	name = "blue hypovial (dexalin)"
-	icon_state = "hypovial-d"
-	list_reagents = list(/datum/reagent/medicine/dexalin = 30)
-
-/obj/item/reagent_containers/glass/bottle/vial/small/tricord
-	name = "hypovial (tricordrazine)"
-	icon_state = "hypovial"
-	list_reagents = list(/datum/reagent/medicine/tricordrazine = 30)
-
 /obj/item/reagent_containers/glass/bottle/vial/large/cmo
 	name = "deluxe hypovial"
 	list_reagents = list(/datum/reagent/medicine/omnizine = 20, /datum/reagent/medicine/leporazine = 20, /datum/reagent/medicine/atropine = 20)
-
-/obj/item/reagent_containers/glass/bottle/vial/large/bicaridine
-	name = "large red hypovial (bicaridine)"
-	list_reagents = list(/datum/reagent/medicine/bicaridine = 60)
-
-/obj/item/reagent_containers/glass/bottle/vial/large/antitoxin
-	name = "large green hypovial (anti-tox)"
-	list_reagents = list(/datum/reagent/medicine/antitoxin = 60)
-
-/obj/item/reagent_containers/glass/bottle/vial/large/kelotane
-	name = "large orange hypovial (kelotane)"
-	list_reagents = list(/datum/reagent/medicine/kelotane = 60)
-
-/obj/item/reagent_containers/glass/bottle/vial/large/dexalin
-	name = "large blue hypovial (dexalin)"
-	list_reagents = list(/datum/reagent/medicine/dexalin = 60)
-
-/obj/item/reagent_containers/glass/bottle/vial/large/charcoal
-	name = "large black hypovial (multiver)"
-	list_reagents = list(/datum/reagent/medicine/c2/multiver = 60)
-
-/obj/item/reagent_containers/glass/bottle/vial/large/tricord
-	name = "large hypovial (tricord)"
-	list_reagents = list(/datum/reagent/medicine/tricordrazine = 60)
 
 /obj/item/reagent_containers/glass/bottle/vial/large/salglu
 	name = "large green hypovial (salglu)"
@@ -106,3 +57,7 @@
 /obj/item/reagent_containers/glass/bottle/vial/large/synthflesh
 	name = "large orange hypovial (synthflesh)"
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 60)
+
+/obj/item/reagent_containers/glass/bottle/vial/large/multiver
+	name = "large black hypovial (multiver)"
+	list_reagents = list(/datum/reagent/medicine/c2/multiver = 60)

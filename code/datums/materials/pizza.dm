@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/material/pizza
 	name = "pizza"
 	desc = "~Jamme, jamme, n'coppa, jamme ja! Jamme, jamme, n'coppa jamme ja, funi-culi funi-cala funi-culi funi-cala!! Jamme jamme ja funiculi funicula!~"
@@ -28,3 +30,5 @@
 	var/nutriment_count = 3 * (amount / MINERAL_MATERIAL_AMOUNT)
 	var/oil_count = 2 * (amount / MINERAL_MATERIAL_AMOUNT)
 	source.AddComponent(/datum/component/edible, list(/datum/reagent/consumable/nutriment = nutriment_count, /datum/reagent/consumable/cooking_oil = oil_count), null, GRAIN | MEAT | DAIRY | VEGETABLES, null, 30, list("crust", "tomato", "cheese", "meat"))
+*/
+//SKYRAT EDIT REMOVAL END
