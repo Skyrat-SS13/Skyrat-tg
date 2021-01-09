@@ -384,6 +384,10 @@
 			ITEM_SLOT_DEX_STORAGE\
 		)
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
+	/*
+	for(var/slot in slot_priority)
+		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, FALSE)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
+	*/
 	if (blacklist)
 		slot_priority -= blacklist
 	for(var/slot in slot_priority)
