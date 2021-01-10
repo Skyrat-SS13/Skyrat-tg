@@ -14,19 +14,9 @@
 	if(!msg)
 		return
 
-	if(!(prefs.skyrat_toggles & CHAT_LOOC))
-		to_chat(src, "<span class='danger'> You have LOOC muted.</span>")
-		return
-	if(is_banned_from(mob, "OOC"))
-		to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
-		return
-
 	if(!holder)
 		if(!GLOB.looc_allowed)
 			to_chat(src, "<span class='danger'> LOOC is globally muted</span>")
-			return
-		if(prefs.muted & MUTE_OOC)
-			to_chat(src, "<span class='danger'> You cannot use OOC (muted).</span>")
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
@@ -56,15 +46,13 @@
 		if (isobserver(M))
 			continue //Also handled later.
 
-		if(C.prefs.skyrat_toggles & CHAT_LOOC)
-			to_chat(C, "<span class='looc'><span class='prefix'>LOOC:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
+		to_chat(C, "<span class='looc'><span class='prefix'>LOOC:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
 
 	for(var/client/C in GLOB.admins)
-		if(C.prefs.skyrat_toggles & CHAT_LOOC)
-			if (C.mob in heard)
-				to_chat(C, "<span class='looc'>[ADMIN_FLW(usr)] <span class='prefix'>LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
-			else if (C.prefs.skyrat_toggles & CHAT_LOOC_ADMIN)
-				to_chat(C, "<span class='rlooc'>[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
+		if (C.mob in heard)
+			to_chat(C, "<span class='looc'>[ADMIN_FLW(usr)] <span class='prefix'>LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
+		else if (C.prefs.skyrat_toggles & CHAT_LOOC_ADMIN)
+			to_chat(C, "<span class='rlooc'>[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
 
 /client/proc/toggle_admin_looc_global()
 	set name = "See/Hide Global LOOC"
