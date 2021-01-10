@@ -17,6 +17,8 @@
 	var/should_equip = TRUE
 	var/traitor_kind = TRAITOR_HUMAN //Set on initial assignment
 	var/datum/contractor_hub/contractor_hub
+	///A check to see if they have already been given there gear
+	var/has_been_antag_geared = FALSE
 
 /datum/antagonist/traitor/on_gain()
 	if(owner.current && isAI(owner.current))
@@ -259,8 +261,9 @@
 	killer.add_malf_picker()
 
 /datum/antagonist/traitor/proc/equip(silent = FALSE)
-	if(traitor_kind == TRAITOR_HUMAN)
+	if(traitor_kind == TRAITOR_HUMAN && !/var/has_been_antag_geared)
 		owner.equip_traitor(employer, silent, src)
+		/var/has_been_antag_geared = TRUE
 
 //TODO Collate
 /datum/antagonist/traitor/roundend_report()
