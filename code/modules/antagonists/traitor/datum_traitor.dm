@@ -261,9 +261,9 @@
 	killer.add_malf_picker()
 
 /datum/antagonist/traitor/proc/equip(silent = FALSE)
-	if(traitor_kind == TRAITOR_HUMAN && !/var/has_been_antag_geared)
+	if(traitor_kind == TRAITOR_HUMAN && !has_been_antag_geared)
 		owner.equip_traitor(employer, silent, src)
-		/var/has_been_antag_geared = TRUE
+		has_been_antag_geared = TRUE
 
 //TODO Collate
 /datum/antagonist/traitor/roundend_report()
