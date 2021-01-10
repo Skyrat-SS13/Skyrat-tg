@@ -36,11 +36,13 @@
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
 
 	var/list/heard = get_hearers_in_view(7, get_top_level_mob(src.mob))
+	var/list/admin_seen = list()
 	for(var/mob/M in heard)
 		if(!M.client)
 			continue
 		var/client/C = M.client
-		if (C in GLOB.admins)
+		if (C.holder)
+			admin_seen[C] = TRUE
 			continue //they are handled after that
 
 		if (isobserver(M))
@@ -48,8 +50,9 @@
 
 		to_chat(C, "<span class='looc'><span class='prefix'>LOOC:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
 
-	for(var/client/C in GLOB.admins)
-		if (C.mob in heard)
+	for(var/cli in GLOB.admins)
+		var/client/C = cli
+		if (admin_seen[C])
 			to_chat(C, "<span class='looc'>[ADMIN_FLW(usr)] <span class='prefix'>LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
 		else if (C.prefs.skyrat_toggles & CHAT_LOOC_ADMIN)
 			to_chat(C, "<span class='rlooc'>[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span></span>")
