@@ -16,7 +16,7 @@
 	heatmod = 1
 	burnmod = 1
 	specific_alpha = 155
-	markings_alpha = 1 //this is so low because it still colours it the same way, but if we set the markings to an alpha of 1, they don't alter the transparency much since they're stacked
+	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
 
 /datum/action/innate/slime_change
 	name = "Alter Form"

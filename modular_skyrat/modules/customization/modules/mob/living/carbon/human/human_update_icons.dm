@@ -233,12 +233,7 @@
 		if(is_taur && (BP.body_part == LEG_LEFT || BP.body_part == LEG_RIGHT))
 			continue
 
-		var/list/image/limb_icon = BP.get_limb_icon()
-		if(BP.alpha != 255)
-			for (var/x in limb_icon)
-				var/image/IX = x
-				IX.alpha = BP.alpha
-		new_limbs += limb_icon
+		new_limbs += BP.get_limb_icon()
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
 

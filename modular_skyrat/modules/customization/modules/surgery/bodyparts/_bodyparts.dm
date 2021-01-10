@@ -76,9 +76,10 @@
 
 	var/mob/living/carbon/human/H = owner
 	//set specific alpha before setting the markings alpha
-	for (var/ov in .)
-		var/image/overlay = ov
-		overlay.alpha = alpha
+	if (alpha != 255)
+		for (var/ov in .)
+			var/image/overlay = ov
+			overlay.alpha = alpha
 	//Markings!
 	var/override_color
 	if(HAS_TRAIT(H, TRAIT_HUSK))
