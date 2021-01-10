@@ -100,7 +100,7 @@
 	description = "You don't even want to think about what's in here."
 	taste_description = "gross iron"
 	shot_glass_icon_state = "shotglassred"
-	material = /datum/material/meat
+	//material = /datum/material/meat //SKYRAT EDIT REMOVAL
 
 /datum/reagent/vaccine
 	//data must contain virus type
@@ -2015,7 +2015,7 @@
 
 /datum/reagent/magillitis/on_mob_life(mob/living/carbon/M)
 	..()
-	if((ismonkey(M) || ishuman(M)) && current_cycle >= 10)
+	if((ishuman(M)) && current_cycle >= 10)
 		M.gorillize()
 
 /datum/reagent/growthserum
@@ -2326,13 +2326,6 @@
 	reagent_state = SOLID
 	color = "#E6E6DA"
 	taste_mult = 0
-
-/datum/reagent/consumable/gravy
-	name = "Gravy"
-	description = "A mixture of flour, water, and the juices of cooked meat."
-	taste_description = "gravy"
-	color = "#623301"
-	taste_mult = 1.2
 
 /datum/reagent/determination
 	name = "Determination"

@@ -3,7 +3,8 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -72,6 +73,11 @@
 	cost = PAYCHECK_HARD * 6
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/wt550m9)
+
+*/
+//SKYRAT EDIT REMOVAL END
+
+/datum/supply_pack/goody/techbox //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"

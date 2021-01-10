@@ -186,8 +186,6 @@
 	var/datum/gas_mixture/internal_fusion
 	///Stores the information of the moderators gasmix
 	var/datum/gas_mixture/moderator_internal
-	///Stores the information of the output gasmix
-	var/datum/gas_mixture/internal_output
 	///Set the filtering type of the waste remove
 	var/filter_type = null
 
@@ -311,7 +309,6 @@
 	internal_fusion = new
 	internal_fusion.assert_gases(/datum/gas/hydrogen, /datum/gas/tritium)
 	moderator_internal = new
-	internal_output = new
 
 	radio = new(src)
 	radio.keyslot = new radio_key
@@ -325,8 +322,6 @@
 		internal_fusion = null
 	if(moderator_internal)
 		moderator_internal = null
-	if(internal_output)
-		internal_output = null
 	if(linked_input)
 		QDEL_NULL(linked_input)
 	if(linked_output)
@@ -584,7 +579,7 @@
 	if(moderator_internal.total_moles() > 0)
 		remove_moderator = moderator_internal.remove(moderator_moles)
 		loc.assume_air(remove_moderator)
-	air_update_turf()
+	air_update_turf(FALSE, FALSE)
 	qdel(src)
 
 /obj/machinery/atmospherics/components/unary/hypertorus/core/process_atmos()
@@ -930,6 +925,7 @@
 	else
 		internal_fusion.temperature -= heat_limiter_modifier * 0.01 * delta_time
 
+	var/datum/gas_mixture/internal_output = new
 	//gas consumption and production
 	if(check_fuel())
 		var/fuel_consumption = clamp((fuel_injection_rate * 0.001) * 5 * power_level, 0.05, 30) * delta_time
@@ -1093,8 +1089,8 @@
 				filtering = FALSE
 		if(filtering && moderator_internal.gases[filter_type])
 			var/datum/gas_mixture/removed = moderator_internal.remove_specific(filter_type, 20)
-			removed.temperature = moderator_internal.temperature
-			linked_output.airs[1].merge(removed)
+			if(removed)
+				linked_output.airs[1].merge(removed)
 
 		var/datum/gas_mixture/internal_remove
 		if(internal_fusion.gases[/datum/gas/helium][MOLES] > 0)
@@ -1104,6 +1100,7 @@
 			internal_remove = internal_fusion.remove_specific(/datum/gas/antinoblium, internal_fusion.gases[/datum/gas/antinoblium][MOLES] * 0.05)
 			linked_output.airs[1].merge(internal_remove)
 		internal_fusion.garbage_collect()
+		moderator_internal.garbage_collect()
 
 
 	//Update pipenets

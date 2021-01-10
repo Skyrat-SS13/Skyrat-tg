@@ -119,6 +119,8 @@
 	hands_use_check = TRUE
 	var/wing_time = 20
 
+//SKYRAT EDIT REMOVAL BEGIN - EMOTES - Not working due to modified mutant code, will be fixed later
+/*
 /datum/emote/living/flap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && ishuman(user))
@@ -131,6 +133,8 @@
 			else
 				H.OpenWings()
 			addtimer(CALLBACK(H, open ? /mob/living/carbon/human.proc/OpenWings : /mob/living/carbon/human.proc/CloseWings), wing_time)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/emote/living/flap/aflap
 	key = "aflap"
@@ -438,7 +442,10 @@
 		to_chat(user, "<span class='boldwarning'>You cannot send IC messages (muted).</span>")
 		return FALSE
 	else if(!params)
-		var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
+		//SKYRAT EDIT CHANGE BEGIN
+		//var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN) - SKYRAT EDIT - ORIGINAL
+		var/custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
+		//SKYRAT EDIT CHANGE END
 		if(custom_emote && !check_invalid(user, custom_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)

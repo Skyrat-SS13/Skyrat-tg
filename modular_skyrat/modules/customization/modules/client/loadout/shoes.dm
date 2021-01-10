@@ -36,7 +36,7 @@
 	path = /obj/item/clothing/shoes/sneakers/brown
 
 /datum/loadout_item/shoes/whiteshoes
-	name = "Colorable shoes"
+	name = "White shoes"
 	path = /obj/item/clothing/shoes/sneakers/white
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
@@ -57,7 +57,7 @@
 	path= /obj/item/clothing/shoes/wraps/blue
 
 /datum/loadout_item/shoes/high_heels
-	name = "Colorable High Heels"
+	name = "High Heels"
 	path = /obj/item/clothing/shoes/high_heels
 	extra_info = LOADOUT_INFO_ONE_COLOR
 

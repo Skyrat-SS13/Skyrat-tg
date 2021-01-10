@@ -16,7 +16,6 @@
 
 /datum/export/stack/skin/human
 	cost = CARGO_CRATE_VALUE * 0.5
-	export_category = EXPORT_CONTRABAND
 	unit_name = "piece"
 	message = "of human skin"
 	export_types = list(/obj/item/stack/sheet/animalhide/human)
@@ -28,13 +27,11 @@
 
 /datum/export/stack/skin/cat
 	cost = CARGO_CRATE_VALUE * 0.75
-	export_category = EXPORT_CONTRABAND
 	unit_name = "cat hide"
 	export_types = list(/obj/item/stack/sheet/animalhide/cat)
 
 /datum/export/stack/skin/corgi
 	cost = CARGO_CRATE_VALUE
-	export_category = EXPORT_CONTRABAND
 	unit_name = "corgi hide"
 	export_types = list(/obj/item/stack/sheet/animalhide/corgi)
 
@@ -115,6 +112,8 @@
 	unit_name = "of ammonia crystal"
 	export_types = list(/obj/item/stack/ammonia_crystals)
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/export/stack/pizza
 	cost = CARGO_CRATE_VALUE * 0.06
 	unit_name = "of sheetza"
@@ -124,6 +123,8 @@
 	cost = CARGO_CRATE_VALUE * 0.04
 	unit_name = "of meat"
 	export_types = list(/obj/item/stack/sheet/meat)
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 // Weird Stuff

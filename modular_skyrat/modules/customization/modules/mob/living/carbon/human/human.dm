@@ -127,3 +127,17 @@
 	if(..())
 		if(dna && dna.species)
 			dna.species.spec_revival(src) 
+
+/mob/living/carbon/human/verb/toggle_mutant_part_visibility()
+	set category = "IC"
+	set name = "Show/Hide Mutant Parts"
+	set desc = "Allows you to choose to try and hide your mutant bodyparts under your clothes."
+
+	if(stat != CONSCIOUS)
+		to_chat(usr, "<span class='warning'>You can't do this right now...</span>")
+		return
+	if(!try_hide_mutant_parts && !do_after(src, 3 SECONDS,target = src))
+		return
+	try_hide_mutant_parts = !try_hide_mutant_parts
+	to_chat(usr, "<span class='notice'>[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]</span>")
+	update_mutant_bodyparts()
