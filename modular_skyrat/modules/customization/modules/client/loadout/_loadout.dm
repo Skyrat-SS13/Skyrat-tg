@@ -79,4 +79,4 @@
 			else
 				return default_customization()
 		else
-			return TRUE
+			return "None"
