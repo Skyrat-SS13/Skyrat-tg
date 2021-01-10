@@ -72,12 +72,7 @@
 		AttemptGrow()
 
 
-<<<<<<< HEAD
-
-/obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow()
-=======
 /obj/item/organ/body_egg/alien_embryo/proc/AttemptGrow(gib_on_success=TRUE)
->>>>>>> 4eed35fd745 (Xenomorph embryos now grow based on consistent timers instead of 100% RNG (3% chance every 2s) (#55755))
 	if(!owner || bursting)
 		return
 
