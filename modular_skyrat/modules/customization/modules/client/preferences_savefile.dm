@@ -152,6 +152,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	READ_FILE(S["default_slot"], default_slot)
 	READ_FILE(S["chat_toggles"], chat_toggles)
+	READ_FILE(S["skyrat_toggles"], skyrat_toggles) //SKYRAT EDIT
 	READ_FILE(S["toggles"], toggles)
 	READ_FILE(S["ghost_form"], ghost_form)
 	READ_FILE(S["ghost_orbit"], ghost_orbit)
@@ -253,6 +254,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["default_slot"], default_slot)
 	WRITE_FILE(S["toggles"], toggles)
 	WRITE_FILE(S["chat_toggles"], chat_toggles)
+	WRITE_FILE(S["skyrat_toggles"], skyrat_toggles) //SKYRAT EDIT
 	WRITE_FILE(S["ghost_form"], ghost_form)
 	WRITE_FILE(S["ghost_orbit"], ghost_orbit)
 	WRITE_FILE(S["ghost_accs"], ghost_accs)
@@ -506,6 +508,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(!LI)
 			loadout -= path
 			continue
+		loadout[path] = LI.get_valid_information(loadout[path])//Savefile validation
 		accumulated_cost += LI.cost
 	if(accumulated_cost > loadout_points) //Not enough points, reset loadout
 		loadout = list()
