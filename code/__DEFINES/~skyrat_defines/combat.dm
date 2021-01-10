@@ -135,7 +135,7 @@
 							target.visible_message("<span class='danger'>[user.name] violently slams [target.name]'s head into the floor!</span>", \
 								"<span class='userdanger'>[user.name] slams your head against the floor[head_knock ? ", knocking you out cold" : ""]!</span>", ignored_mobs=user)
 							to_chat(user, "<span class='danger'>You slam [target.name] head against the floor[head_knock ? ", knocking him out cold" : ""]!</span>")
-							
+
 							//Check to see if our head is protected by atleast 20 melee armor
 							if(head_knock)
 								if(target.stat == CONSCIOUS)
@@ -187,14 +187,14 @@
 						target.visible_message("<span class='danger'>[user.name] suplexes [target.name] down to the ground!</span>", \
 							"<span class='userdanger'>[user.name] suplexes you!</span>", ignored_mobs=user)
 						to_chat(user, "<span class='danger'>You suplex [target.name]!</span>")
-						target.forceMove(moved_turf)
 						user.StaminaKnockdown(30, TRUE, TRUE)
-						target.StaminaKnockdown(90)
+						user.SpinAnimation(7,1)
+						target.SpinAnimation(7,1)
+						target.throw_at(moved_turf, 1, 1)
+						target.StaminaKnockdown(80)
 						target.Paralyze(2 SECONDS)
-						user.emote("flip")
-						target.emote("flip")
 						log_combat(user, target, "suplexes", "down on the ground (knocking down both)")
-				else 
+				else
 					var/datum/wound/blunt/blute_wound = affecting.get_wound_type(/datum/wound/blunt)
 					if(blute_wound && blute_wound.severity >= WOUND_SEVERITY_MODERATE)
 						//At this point we'll be doing the medical action that's not a grab manevour
