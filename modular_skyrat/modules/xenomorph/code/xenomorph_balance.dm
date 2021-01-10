@@ -22,8 +22,8 @@
 ///////////////////////////////////////////
 /////////////   XENO QUEEN    /////////////
 /mob/living/carbon/alien/humanoid/royal/queen
-	maxHealth = 600				//TG: 400
-	health = 600				//TG: 400
+	maxHealth = 500				//TG: 400
+	health = 500				//TG: 400
 	melee_damage_lower = 50		//TG: 20
 	melee_damage_upper = 50		//TG: 20
 	next_move_modifier = 0.75
@@ -31,8 +31,8 @@
 ///////////////////////////////////////////
 /////////////   PRAETORIAN    /////////////
 /mob/living/carbon/alien/humanoid/royal/praetorian
-	maxHealth = 400				//TG: 250
-	health = 400				//TG: 250
+	maxHealth = 350				//TG: 250
+	health = 350				//TG: 250
 	melee_damage_lower = 40		//TG: 20
 	melee_damage_upper = 40		//TG: 20
 	next_move_modifier = 0.75
