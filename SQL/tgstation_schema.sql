@@ -592,6 +592,20 @@ CREATE TABLE `discord_links` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
+---
+---Table structure for table `game_log`
+---
+CREATE TABLE `game_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `datetime` datetime NOT NULL,
+  `round_id` int(11) NOT NULL,
+  `ckey` varchar(32) NOT NULL,
+  `loc` varchar(60) NOT NULL,
+  `type` varchar(10) NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
