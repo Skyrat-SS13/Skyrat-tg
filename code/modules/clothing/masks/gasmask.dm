@@ -214,6 +214,28 @@
 	desc = "Gnash gnash."
 	icon_state = "carp_mask"
 
+/obj/item/clothing/mask/gas/bdsm_mask
+	name = "Latex gasmask"
+	desc = "Toned gas mask. Completely muffles the wearer, making even breathing really hard with this on." //That's some fetish stuff
+	icon_state = "bdsm_mask"
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS | MASKCOVERSMOUTH
+	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	w_class = WEIGHT_CLASS_NORMAL
+	inhand_icon_state = "bdsm_mask"
+	gas_transfer_coefficient = 0.005
+	permeability_coefficient = 0.005 //because it's purpose is block 90% of air. It's good at filtrating because its almost chokes the user
+	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH | PEPPERPROOF
+	resistance_flags = NONE
+
+/obj/item/clothing/mask/gas/bdsm_mask/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(src == C.wear_mask)
+			to_chat(user, "<span class='warning'>You need help taking this off!</span>")
+			return
+
+ 	. = ..()
+
 /obj/item/clothing/mask/gas/tiki_mask
 	name = "tiki mask"
 	desc = "A creepy wooden mask. Surprisingly expressive for a poorly carved bit of wood."
