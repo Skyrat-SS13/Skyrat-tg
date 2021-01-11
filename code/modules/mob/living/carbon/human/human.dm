@@ -21,7 +21,7 @@
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, .proc/clean_face)
 	AddComponent(/datum/component/personal_crafting)
 	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, -6) //ORIGINAL
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS 
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS
 	AddComponent(/datum/component/bloodysoles/feet)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
 	GLOB.human_list += src
@@ -812,8 +812,11 @@
 		changeNext_move(CLICK_CD_BREAKOUT)
 		last_special = world.time + CLICK_CD_BREAKOUT
 		cuff_resist(wear_suit)
-	else
-		..()
+
+	if(gloves?.breakouttime)
+		changeNext_move(CLICK_CD_BREAKOUT)
+		last_special = world.time + CLICK_CD_BREAKOUT
+		cuff_resist(gloves)
 
 /mob/living/carbon/human/clear_cuffs(obj/item/I, cuff_break)
 	. = ..()
@@ -821,7 +824,7 @@
 		return
 	if(!I.loc || buckled)
 		return FALSE
-	if(I == wear_suit)
+	if(I == wear_suit || I == gloves)
 		visible_message("<span class='danger'>[src] manages to [cuff_break ? "break" : "remove"] [I]!</span>")
 		to_chat(src, "<span class='notice'>You successfully [cuff_break ? "break" : "remove"] [I].</span>")
 		return TRUE
