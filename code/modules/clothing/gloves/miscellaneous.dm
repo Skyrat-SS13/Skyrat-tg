@@ -187,3 +187,36 @@
 	name = "CentCom intern envirogloves"
 	icon_state = "internplasma"
 	inhand_icon_state = "internplasma"
+
+/obj/item/clothing/gloves/ball_mittens
+	name = "Ball mittens"//For erotic games
+	desc = "Nice and comfortable pair of inflatable ball gloves"
+	icon_state = "ballmittens"
+	inhand_icon_state = "ballmittens"
+	clothing_flags = DANGEROUS_OBJECT
+	equip_delay_other = 60
+	equip_delay_self = 60
+	strip_delay = 60
+	breakouttime = 10
+
+/obj/item/clothing/gloves/ball_mittens/attackby(obj/item/I, mob/user, params)
+    if(istype(I, /obj/item/restraints/handcuffs))
+        var/obj/item/clothing/gloves/ball_mittens_rape/W = new /obj/item/clothing/gloves/ball_mittens_rape
+        remove_item_from_storage(user)
+        user.put_in_hands(W)
+        to_chat(user, "<span class='notice'>You reinforce belts with using [src] on [I].</span>")
+        qdel(I)
+        qdel(src)
+        return
+    . = ..()
+
+/obj/item/clothing/gloves/ball_mittens_rape
+	name = "Reinforced ball mittens"//For raping and BDSM
+	desc = "Do not put these on. Its REALLY hard to put them off... But they looks so comfortable"
+	icon_state = "ballmittens"
+	inhand_icon_state = "ballmittens"
+	clothing_flags = DANGEROUS_OBJECT
+	equip_delay_other = 80
+	equip_delay_self = 80
+	strip_delay = 80
+	breakouttime = 20
