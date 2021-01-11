@@ -271,6 +271,9 @@
 /mob/living/carbon/is_muzzled()
 	return(istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
 
+/mob/living/carbon/is_muzzled()
+	return(istype(src.wear_mask, /obj/item/clothing/mask/gas/bdsm_mask))//The same thing, but for fetish gasmask
+
 /mob/living/carbon/hallucinating()
 	if(hallucination)
 		return TRUE
