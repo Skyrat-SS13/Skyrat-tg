@@ -518,3 +518,21 @@
 	desc = "For when you're stepping on up to the plate."
 	icon_state = "JackFrostShoes"
 	inhand_icon_state = "JackFrostShoes_worn"
+
+/obj/item/clothing/shoes/latexheels
+	name = "Latex heels"
+	desc = "Lace up before use. Pretty hard to walk in these."
+	icon_state = "latexheels"
+	inhand_icon_state = "latexheels"
+	equip_delay_other = 120
+	equip_delay_self = 120
+	strip_delay = 120
+	slowdown = 4
+
+/obj/item/clothing/shoes/latexheels/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(src == C.shoes)
+			if(!do_after(C, 20, target = src))
+				return
+	. = ..()
