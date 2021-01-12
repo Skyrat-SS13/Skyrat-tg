@@ -592,9 +592,9 @@ CREATE TABLE `discord_links` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
----
----Table structure for table `game_log`
----
+--
+-- Table structure for table `game_log`
+--
 DROP TABLE IF EXISTS `game_log`;
 CREATE TABLE `game_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
