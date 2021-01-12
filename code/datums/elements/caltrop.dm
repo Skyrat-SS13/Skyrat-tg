@@ -66,6 +66,10 @@
 		return
 
 	if (!(flags & CALTROP_BYPASS_SHOES))
+		// SKYRAT EDIT ADDITION BEGIN - Hardened Soles Quirk
+		if(HAS_TRAIT(H, TRAIT_HARD_SOLES))
+			return
+		// SKYRAT EDIT ADDITION END
 		if ((H.wear_suit?.body_parts_covered | H.w_uniform?.body_parts_covered | H.shoes?.body_parts_covered) & FEET)
 			return
 
