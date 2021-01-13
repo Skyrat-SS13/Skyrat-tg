@@ -63,21 +63,3 @@
 	damage = 35
 	wound_bonus = -35
 	wound_falloff_tile = 0
-//
-
-// 9mm rubber (USP)
-
-/obj/projectile/bullet/c9mm/rubber
-	name = "9mm rubber bullet"
-	desc = "Vacate, citizen."
-	damage = 0
-	stamina = 32
-
-/obj/item/ammo_casing/c9mm/rubber
-	name = "9mm rubber bullet casing"
-	desc = "A 9mm rubber bullet casing."
-	icon = 'modular_skyrat/modules/gunsgalore/icons/ammo/ammo copy.dmi'
-	icon_state = "9mmr-casing"
-	caliber = "9mm"
-	projectile_type = /obj/projectile/bullet/c9mm/rubber
-//
