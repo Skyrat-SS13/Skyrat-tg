@@ -152,6 +152,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	READ_FILE(S["default_slot"], default_slot)
 	READ_FILE(S["chat_toggles"], chat_toggles)
+	READ_FILE(S["skyrat_toggles"], skyrat_toggles) //SKYRAT EDIT
 	READ_FILE(S["toggles"], toggles)
 	READ_FILE(S["ghost_form"], ghost_form)
 	READ_FILE(S["ghost_orbit"], ghost_orbit)
@@ -204,6 +205,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	windowflashing	= sanitize_integer(windowflashing, FALSE, TRUE, initial(windowflashing))
 	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, (2**24)-1, initial(toggles))
+	skyrat_toggles	= sanitize_integer(skyrat_toggles, 0, (2**24)-1, initial(skyrat_toggles)) //SKYRAT EDIT
 	clientfps		= sanitize_integer(clientfps, 0, 1000, 40)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	ambientocclusion	= sanitize_integer(ambientocclusion, FALSE, TRUE, initial(ambientocclusion))
@@ -253,6 +255,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["default_slot"], default_slot)
 	WRITE_FILE(S["toggles"], toggles)
 	WRITE_FILE(S["chat_toggles"], chat_toggles)
+	WRITE_FILE(S["skyrat_toggles"], skyrat_toggles) //SKYRAT EDIT
 	WRITE_FILE(S["ghost_form"], ghost_form)
 	WRITE_FILE(S["ghost_orbit"], ghost_orbit)
 	WRITE_FILE(S["ghost_accs"], ghost_accs)
@@ -506,6 +509,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(!LI)
 			loadout -= path
 			continue
+		loadout[path] = LI.get_valid_information(loadout[path])//Savefile validation
 		accumulated_cost += LI.cost
 	if(accumulated_cost > loadout_points) //Not enough points, reset loadout
 		loadout = list()

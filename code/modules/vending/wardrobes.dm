@@ -375,9 +375,9 @@
 					/obj/item/clothing/suit/chaplainsuit/monkrobeeast = 1,
 					/obj/item/clothing/head/beanie/rasta = 1,
 					//SKYRAT EDIT ADDITION BEGIN
-					/obj/item/clothing/suit/nemes,
-					/obj/item/clothing/head/nemes,
-					/obj/item/clothing/head/pharaoh)
+					/obj/item/clothing/suit/nemes = 1,
+					/obj/item/clothing/head/nemes = 1,
+					/obj/item/clothing/head/pharaoh = 1)
 					//SKYRAT EDIT ADDITION END
 	contraband = list(/obj/item/toy/plush/ratplush = 1,
 					/obj/item/toy/plush/narplush = 1,

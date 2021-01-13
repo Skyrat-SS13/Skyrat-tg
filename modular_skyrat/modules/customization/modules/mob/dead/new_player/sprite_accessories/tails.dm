@@ -64,12 +64,15 @@
 	organ_type = /obj/item/organ/tail/monkey
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-		if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
-			var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
-			if(HS.hardsuit_tail_colors)
-				return FALSE
-		return TRUE
+	if(H.wear_suit)
+		if(H.try_hide_mutant_parts)
+			return TRUE
+		if(H.wear_suit.flags_inv & HIDEJUMPSUIT)
+			if(istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+				var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
+				if(HS.hardsuit_tail_colors)
+					return FALSE
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/tails/none
@@ -99,6 +102,7 @@
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
 	recommended_species = list("mammal", "human", "akula", "aquatic", "humanoid")
+	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
@@ -132,6 +136,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/corvid
 	name = "Corvid"
 	icon_state = "crow"
+	general_type = "avian"
 
 /datum/sprite_accessory/tails/mammal/wagging/cow
 	name = "Cow"
@@ -156,6 +161,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/fish
 	name = "Fish"
 	icon_state = "fish"
+	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox
 	name = "Fox"
@@ -165,6 +171,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/hawk
 	name = "Hawk"
 	icon_state = "hawk"
+	general_type = "avian"
 
 /datum/sprite_accessory/tails/mammal/wagging/horse
 	name = "Horse"
@@ -175,6 +182,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/husky
 	name = "Husky"
 	icon_state = "husky"
+	general_type = "shepherdlike"
 
 /datum/sprite_accessory/tails/mammal/wagging/insect
 	name = "Insect"
@@ -183,6 +191,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/kangaroo
 	name = "kangaroo"
 	icon_state = "kangaroo"
+	general_type = "straighttail"
 
 /datum/sprite_accessory/tails/mammal/wagging/kitsune
 	name = "Kitsune"
@@ -206,10 +215,12 @@
 /datum/sprite_accessory/tails/mammal/wagging/orca
 	name = "Orca"
 	icon_state = "orca"
+	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/otie
 	name = "Otusian"
 	icon_state = "otie"
+	general_type = "straighttail"
 
 /datum/sprite_accessory/tails/mammal/wagging/rabbit
 	name = "Rabbit"
@@ -227,14 +238,17 @@
 /datum/sprite_accessory/tails/mammal/wagging/sergal
 	name = "Sergal"
 	icon_state = "sergal"
+	general_type = "shepherdlike"
 
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
+	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/shepherd
 	name = "Shepherd"
 	icon_state = "shepherd"
+	general_type = "shepherdlike"
 
 /datum/sprite_accessory/tails/mammal/wagging/skunk
 	name = "Skunk"
@@ -248,6 +262,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/straighttail
 	name = "Straight Tail"
 	icon_state = "straighttail"
+	general_type = "straighttail"
 
 /datum/sprite_accessory/tails/mammal/wagging/squirrel
 	name = "Squirrel"
@@ -271,6 +286,7 @@
 	name = "Wolf"
 	icon_state = "wolf"
 	color_src = USE_ONE_COLOR
+	general_type = "shepherdlike"
 
 /datum/sprite_accessory/tails/mammal/wagging/guilmon
 	name = "Guilmon"
@@ -280,6 +296,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/akula/sharknofin
 	name = "Shark no fin"
 	icon_state = "sharknofin"
+	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/raptor
     name = "Raptor"

@@ -1080,7 +1080,7 @@
 		/obj/item/stack/sheet/mineral/gold=50,\
 		/obj/item/stack/sheet/mineral/silver=50,\
 		/obj/item/stack/sheet/mineral/plasma=50,\
-		/obj/item/stack/sheet/mineral/uranium=20,\
+		///obj/item/stack/sheet/mineral/uranium=20,\ //SKYRAT EDIT REMOVAL
 		/obj/item/stack/sheet/mineral/diamond=50,\
 		/obj/item/stack/sheet/bluespace_crystal=50,\
 		/obj/item/stack/sheet/mineral/bananium=50,\

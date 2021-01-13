@@ -816,6 +816,9 @@ GLOBAL_LIST_INIT(food, list(
 											customization_button = "<center><span style='border: 1px solid #161616; background-color: ["#[custom_info]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path]'>Change</a></center>"
 										if(LOADOUT_INFO_THREE_COLORS)
 											var/list/color_list = splittext(custom_info, "|")
+											if(length(color_list) != 3)
+												stack_trace("WARNING! Loadout item information of [LI.name] for ckey [user.ckey] has invalid amount of entries.")
+												continue
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[1]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=1'>Change</a></center>"
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[2]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=2'>Change</a></center>"
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[3]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=3'>Change</a></center>"
@@ -826,6 +829,14 @@ GLOBAL_LIST_INIT(food, list(
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
+								if(!loadout[LI.path]) //Let the user know if something is colorable, so we can avoid mentioning it in the titles
+									switch(LI.extra_info)
+										if(LOADOUT_INFO_ONE_COLOR)
+											customization_button = "<i>Colorable</i>"
+										if(LOADOUT_INFO_THREE_COLORS)
+											customization_button += "<i>Polychromic</i>"
+										if(LOADOUT_INFO_STYLE)
+											customization_button = "" //TODO
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
 								dat += "<td><font size=2>[customization_button]</font></td>"
