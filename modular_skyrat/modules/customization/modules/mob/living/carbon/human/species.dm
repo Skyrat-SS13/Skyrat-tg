@@ -345,9 +345,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/obj/item/thing = C.get_item_by_slot(slot_id)
 		if(thing && (!thing.species_exception || !is_type_in_list(src,thing.species_exception)))
 			C.dropItemToGround(thing)
-	for (var/B in C.bodyparts)
-		var/obj/item/bodypart/BP = B
-		BP.alpha = specific_alpha
 
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
@@ -413,6 +410,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	if(ROBOTIC_LIMBS in species_traits)
 		robotic_limbs = TRUE
 	for(var/obj/item/bodypart/B in C.bodyparts)
+		B.alpha = specific_alpha
 		if(robotic_limbs)
 			B.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
 			B.organic_render = TRUE
