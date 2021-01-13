@@ -345,6 +345,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/obj/item/thing = C.get_item_by_slot(slot_id)
 		if(thing && (!thing.species_exception || !is_type_in_list(src,thing.species_exception)))
 			C.dropItemToGround(thing)
+	for (var/B in C.bodyparts)
+		var/obj/item/bodypart/BP = B
+		if (specific_alpha)
+			BP.alpha = specific_alpha
+		else
+			BP.alpha = 255
+
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
 
