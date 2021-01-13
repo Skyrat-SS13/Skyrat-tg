@@ -1,9 +1,9 @@
 //Loot pool used by default maintenance loot spawners
 GLOBAL_LIST_INIT(maintenance_loot, list(
-	GLOB.trash_loot = maint_trash_weight,
-	GLOB.common_loot = maint_common_weight,
-	GLOB.uncommon_loot = maint_uncommon_weight,
-	GLOB.oddity_loot = maint_oddity_weight,
+	GLOB.trash_loot = MAINT_TRASH_WEIGHT,
+	GLOB.common_loot = MAINT_COMMON_WEIGHT,
+	GLOB.uncommon_loot = MAINT_UNCOMMON_WEIGHT,
+	GLOB.oddity_loot = MAINT_ODD_WEIGHT,
 ))
 
 GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when spawning garbage.

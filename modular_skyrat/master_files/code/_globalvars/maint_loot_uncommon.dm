@@ -277,11 +277,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/belt/holster = 25,
 		/obj/item/storage/box/fakesyndiesuit = 25
 	) = 100,
-	list( //Weapons that are good but not that good.
-		/obj/item/claymore/weak/ceremonial = 5,
-		/obj/item/chainsaw = 10,
-		/obj/item/reagent_containers/glass/bottle/random_virus = 5,
-		/obj/item/flamethrower/full/tank = 5,
+	list( //Improvised weapons and tools that are weapons.
 		/obj/item/gun/ballistic/revolver/rifle/improvised = 100,
 		/obj/item/gun/ballistic/shotgun/doublebarrel/improvised = 100,
 		/obj/item/scythe = 25,
