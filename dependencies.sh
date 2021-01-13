@@ -20,11 +20,4 @@ export NODE_VERSION=12
 export SPACEMAN_DMM_VERSION=suite-1.6
 
 # Extools git tag
-<<<<<<< HEAD
-export EXTOOLS_VERSION=v0.0.6
-=======
 export EXTOOLS_VERSION=v0.0.7
-
-# Python version for mapmerge and other tools
-export PYTHON_VERSION=3.6.8
->>>>>>> 34f0cc6394a (Upgrade extools version (#56104))
