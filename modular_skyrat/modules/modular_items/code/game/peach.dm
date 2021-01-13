@@ -24,6 +24,6 @@
 	icon_state = "peach"
 	filling_color = "#FF4500"
 	bite_consumption_mod = 2
-	foodtype = FRUIT
+	foodtypes = FRUIT
 	juice_results = list(/datum/reagent/consumable/peachjuice = 0)
 	tastes = list("peach" = 1)
