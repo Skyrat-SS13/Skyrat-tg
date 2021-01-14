@@ -16,6 +16,7 @@
 		/obj/item/gun/energy,
 		/obj/item/melee/baton,
 		/obj/item/ammo_box/magazine/recharge,
+		/obj/item/ammo_box/magazine/hybrid,  //SKYRAT ADDITION
 		/obj/item/modular_computer))
 
 /obj/machinery/recharger/RefreshParts()
@@ -144,7 +145,7 @@
 				use_power(100 * recharge_coeff * delta_time)
 				using_power = TRUE
 			update_icon()
-
+//SKYRAT ADDITION START
 		if(istype(charging, /obj/item/ammo_box/magazine/hybrid))
 			var/obj/item/ammo_box/magazine/hybrid/R = charging
 			if(R.stored_ammo.len < R.max_ammo)
@@ -152,6 +153,7 @@
 				use_power(100 * recharge_coeff * delta_time)
 				using_power = TRUE
 			update_icon()
+//SKYRAT ADDITION END
 			return
 	else
 		return PROCESS_KILL
