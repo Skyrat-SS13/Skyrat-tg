@@ -711,6 +711,8 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 /obj/item/stack/sheet/paperframes/fifty
 	amount = 50
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /obj/item/stack/sheet/meat
 	name = "meat sheets"
 	desc = "Something's bloody meat compressed into a nice solid sheet."
@@ -728,7 +730,11 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	amount = 20
 /obj/item/stack/sheet/meat/five
 	amount = 5
+*/
+//SKYRAT EDIT REMOVAL END
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /obj/item/stack/sheet/pizza
 	name = "pepperoni sheetzzas"
 	desc = "It's a delicious pepperoni sheetzza!"
@@ -745,6 +751,8 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	amount = 20
 /obj/item/stack/sheet/pizza/five
 	amount = 5
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/stack/sheet/sandblock
 	name = "blocks of sand"

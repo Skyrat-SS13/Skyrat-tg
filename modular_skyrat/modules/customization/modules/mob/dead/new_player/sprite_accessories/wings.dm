@@ -7,6 +7,11 @@
 	organ_type = /obj/item/organ/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
+/datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.wear_suit && H.try_hide_mutant_parts)
+		return TRUE
+	return FALSE
+
 /datum/sprite_accessory/wings/none
 	name = "None"
 	icon_state = "none"
@@ -30,6 +35,11 @@
 	recommended_species = list("moth", "mammal", "insect") //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/wings/moth
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/wings/moth/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if((H.wear_suit && (H.try_hide_mutant_parts || (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(H.dna.species, H.wear_suit.species_exception)))))
+		return TRUE
+	return FALSE
 
 /datum/sprite_accessory/wings/moth/plain
 	name = "Plain"

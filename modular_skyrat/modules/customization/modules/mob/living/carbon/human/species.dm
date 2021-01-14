@@ -1,3 +1,17 @@
+GLOBAL_LIST_EMPTY(customizable_races)
+
+/proc/generate_selectable_species()
+	for(var/I in subtypesof(/datum/species))
+		var/datum/species/S = new I
+		if(S.check_roundstart_eligible())
+			GLOB.roundstart_races[S.id] = TRUE
+			GLOB.customizable_races[S.id] = TRUE
+		else if (S.always_customizable)
+			GLOB.customizable_races[S.id] = TRUE
+		qdel(S)
+	if(!GLOB.roundstart_races.len)
+		GLOB.roundstart_races["human"] = TRUE
+
 /datum/species
 	mutant_bodyparts = list()
 	///Self explanatory
@@ -12,6 +26,14 @@
 	var/reagent_flags = PROCESS_ORGANIC
 	///Whether a species can use augmentations in preferences
 	var/can_augment = TRUE
+	///Override for the alpha of bodyparts and mutant parts. Will not take effect if not defined.
+	var/specific_alpha
+	///Override for alpha value of markings, should be much lower than the above value if the above value is defined.
+	var/markings_alpha
+	///If a species can always be picked in prefs for the purposes of customizing it for ghost roles or events
+	var/always_customizable = FALSE
+	///Flavor text of the species displayed on character creation screeen
+	var/flavor_text = "No description."
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/standing	= list()
@@ -125,11 +147,12 @@
 							accessory_overlay.color = "#"+mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
 							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
+							var/alpha_value = specific_alpha ? specific_alpha : 255 //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
 							var/list/finished_list = list()
 							finished_list += ReadRGB("[color_list[1]]0")
 							finished_list += ReadRGB("[color_list[2]]0")
 							finished_list += ReadRGB("[color_list[3]]0")
-							finished_list += list(0,0,0,255)
+							finished_list += list(0,0,0,alpha_value)
 							for(var/index in 1 to finished_list.len)
 								finished_list[index] /= 255
 							accessory_overlay.color = finished_list
@@ -224,6 +247,11 @@
 							extra2_accessory_overlay.color = "#[H.hair_color]"
 
 				standing += extra2_accessory_overlay
+			if (specific_alpha && !override_color)
+				for (var/ov in standing)
+					var/image/overlay = ov
+					if (!istype(overlay.color,/list)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
+						overlay.alpha = specific_alpha
 
 			H.overlays_standing[layer] += standing
 			standing = list()
@@ -276,6 +304,10 @@
 	can_have_genitals = FALSE
 	can_augment = FALSE
 
+/datum/species/pod
+	name = "Primal Podperson"
+	always_customizable = TRUE
+
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	returned["mcolor"] = random_short_color()
@@ -315,6 +347,8 @@
 			C.dropItemToGround(thing)
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
+
+	fix_non_native_limbs(C)
 
 	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
 	if(C.dna.species.mutant_bodyparts["legs"] && C.dna.species.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")

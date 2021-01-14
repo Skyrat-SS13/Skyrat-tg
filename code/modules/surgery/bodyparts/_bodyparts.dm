@@ -404,6 +404,9 @@
  * * bare_wound_bonus- The bare_wound_bonus of an attack
  */
 /obj/item/bodypart/proc/check_wounding(woundtype, damage, wound_bonus, bare_wound_bonus)
+	if(HAS_TRAIT(owner, TRAIT_NEVER_WOUNDED))
+		return
+
 	// note that these are fed into an exponent, so these are magnified
 	if(HAS_TRAIT(owner, TRAIT_EASILY_WOUNDED))
 		damage *= 1.5
@@ -779,6 +782,7 @@
 		var/datum/species/S = H.dna.species
 		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
 			species_id = S.limbs_id
+			alpha = S.specific_alpha
 			rendered_bp_icon = S.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		species_flags_list = H.dna.species.species_traits
 
@@ -945,6 +949,8 @@
 
 
 /obj/item/bodypart/proc/get_bleed_rate()
+	if(HAS_TRAIT(owner, TRAIT_NOBLEED))
+		return
 	if(status != BODYPART_ORGANIC) // maybe in the future we can bleed oil from aug parts, but not now
 		return
 

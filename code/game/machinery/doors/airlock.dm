@@ -119,6 +119,10 @@
 
 /obj/machinery/door/airlock/Initialize()
 	. = ..()
+	//SKYRAT EDIT ADDITION BEGIN
+	if(multi_tile)
+		SetBounds()
+	//SKYRAT EDIT END
 	wires = set_wires()
 	if(frequency)
 		set_frequency(frequency)
@@ -616,8 +620,6 @@
 			add_overlay(I)
 
 /* - SKYRAT ORIGINAL
-=======
->>>>>>> 56345975ba6 (The Great Radio Rework: NTNET Part 1 of many. (#54462))
 /obj/machinery/door/airlock/proc/check_unres() //unrestricted sides. This overlay indicates which directions the player can access even without an ID
 	if(hasPower() && unres_sides)
 		if(unres_sides & NORTH)
@@ -1159,11 +1161,19 @@
 	update_icon(AIRLOCK_OPENING, 1)
 	sleep(1)
 	set_opacity(0)
+	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+	if(multi_tile)
+		filler.set_opacity(FALSE)
+	//SKYRAT EDIT END
 	update_freelook_sight()
 	sleep(4)
 	density = FALSE
+	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+	if(multi_tile)
+		filler.density = FALSE
+	//SKYRAT EDIT END
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
-	air_update_turf(1)
+	air_update_turf(TRUE, FALSE)
 	sleep(1)
 	layer = OPEN_DOOR_LAYER
 	update_icon(AIRLOCK_OPEN, 1)
@@ -1209,17 +1219,26 @@
 	if(air_tight)
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		air_update_turf(1)
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		if(multi_tile)
+			filler.density = TRUE
+		air_update_turf(TRUE, TRUE)
 	sleep(1)
 	if(!air_tight)
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		air_update_turf(1)
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		if(multi_tile)
+			filler.density = TRUE
+		//SKYRAT EDIT END
+		air_update_turf(TRUE, TRUE)
 	sleep(4)
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
 		set_opacity(1)
+		if(multi_tile)
+			filler.set_opacity(TRUE)
 	update_freelook_sight()
 	sleep(1)
 	update_icon(AIRLOCK_CLOSED, 1)

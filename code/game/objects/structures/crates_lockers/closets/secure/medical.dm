@@ -119,6 +119,8 @@
 	new /obj/item/storage/box/pillbottles(src)
 	new /obj/item/storage/box/medigels(src)
 	new /obj/item/storage/box/medigels(src)
+	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
+	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
 
 /obj/structure/closet/secure_closet/chemical/heisenberg //contains one of each beaker, syringe etc.
 	name = "advanced chemical closet"
