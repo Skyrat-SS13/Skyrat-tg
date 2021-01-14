@@ -26,10 +26,10 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/reagent_flags = PROCESS_ORGANIC
 	///Whether a species can use augmentations in preferences
 	var/can_augment = TRUE
-	///Override for the alpha of bodyparts and mutant parts. Will not take effect if not defined.
-	var/specific_alpha
-	///Override for alpha value of markings, should be much lower than the above value if the above value is defined.
-	var/markings_alpha
+	///Override for the alpha of bodyparts and mutant parts.
+	var/specific_alpha = 255
+	///Override for alpha value of markings, should be much lower than the above value.
+	var/markings_alpha = 255
 	///If a species can always be picked in prefs for the purposes of customizing it for ghost roles or events
 	var/always_customizable = FALSE
 	///Flavor text of the species displayed on character creation screeen
@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = "#"+mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
 							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-							var/alpha_value = specific_alpha ? specific_alpha : 255 //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
+							var/alpha_value = specific_alpha //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
 							var/list/finished_list = list()
 							finished_list += ReadRGB("[color_list[1]]0")
 							finished_list += ReadRGB("[color_list[2]]0")
@@ -247,7 +247,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							extra2_accessory_overlay.color = "#[H.hair_color]"
 
 				standing += extra2_accessory_overlay
-			if (specific_alpha && !override_color)
+			if (specific_alpha != 255 && !override_color)
 				for (var/ov in standing)
 					var/image/overlay = ov
 					if (!istype(overlay.color,/list)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
@@ -345,6 +345,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		var/obj/item/thing = C.get_item_by_slot(slot_id)
 		if(thing && (!thing.species_exception || !is_type_in_list(src,thing.species_exception)))
 			C.dropItemToGround(thing)
+
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
 
@@ -409,6 +410,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	if(ROBOTIC_LIMBS in species_traits)
 		robotic_limbs = TRUE
 	for(var/obj/item/bodypart/B in C.bodyparts)
+		B.alpha = specific_alpha
 		if(robotic_limbs)
 			B.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
 			B.organic_render = TRUE
