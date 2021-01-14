@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/zosruin/icons/projectile.dmi'
 	icon_state = "hybrid"
 	inhand_icon_state = "arg"
+	spawnwithmagazine = FALSE
 	mag_type = /obj/item/ammo_box/magazine/hybrid
 	fire_delay = 2
 	can_suppress = FALSE

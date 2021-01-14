@@ -16,7 +16,7 @@
 		/obj/item/gun/energy,
 		/obj/item/melee/baton,
 		/obj/item/ammo_box/magazine/recharge,
-		/obj/item/ammo_box/magazine/hybrid,  //SKYRAT ADDITION
+		/obj/item/ammo_box/magazine/hybrid/laser,  //SKYRAT ADDITION
 		/obj/item/modular_computer))
 
 /obj/machinery/recharger/RefreshParts()
@@ -146,7 +146,7 @@
 				using_power = TRUE
 			update_icon()
 //SKYRAT ADDITION START
-		if(istype(charging, /obj/item/ammo_box/magazine/hybrid))
+		if(istype(charging, /obj/item/ammo_box/magazine/hybrid/laser))
 			var/obj/item/ammo_box/magazine/hybrid/R = charging
 			if(R.stored_ammo.len < R.max_ammo)
 				R.stored_ammo += new R.ammo_type(R)
