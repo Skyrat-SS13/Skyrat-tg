@@ -144,6 +144,14 @@
 				use_power(100 * recharge_coeff * delta_time)
 				using_power = TRUE
 			update_icon()
+
+		if(istype(charging, /obj/item/ammo_box/magazine/hybrid))
+			var/obj/item/ammo_box/magazine/hybrid/R = charging
+			if(R.stored_ammo.len < R.max_ammo)
+				R.stored_ammo += new R.ammo_type(R)
+				use_power(100 * recharge_coeff * delta_time)
+				using_power = TRUE
+			update_icon()
 			return
 	else
 		return PROCESS_KILL
