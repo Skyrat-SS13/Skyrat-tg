@@ -60,9 +60,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/sheet/paperframes/five = 25,
 		/obj/item/stack/sheet/paperframes/twenty = 25,
 		/obj/item/stack/sheet/paperframes/fifty = 25,
-		/obj/item/stack/sheet/pizza/fifty = 10,
-		/obj/item/stack/sheet/pizza/five = 10,
-		/obj/item/stack/sheet/pizza/twenty = 10,
 		/obj/item/stack/sheet/plasmaglass = 25,
 		/obj/item/stack/sheet/plasmaglass/fifty = 25,
 		/obj/item/stack/sheet/plasmarglass = 25,
@@ -95,7 +92,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/sheet/sinew = 10
 	) = 50,
 	list( //Medical stuff
-		/obj/item/hypospray/mkii/tricord = 5,
 		/obj/item/healthanalyzer = 25,
 		/obj/item/healthanalyzer/wound = 50,
 		/obj/item/reagent_containers/blood/random = 50,
