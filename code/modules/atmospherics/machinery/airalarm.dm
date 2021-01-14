@@ -85,7 +85,8 @@
 
 	var/list/TLV = list( // Breathable air.
 		"pressure"					= new/datum/tlv(HAZARD_LOW_PRESSURE, WARNING_LOW_PRESSURE, WARNING_HIGH_PRESSURE, HAZARD_HIGH_PRESSURE), // kPa. Values are min2, min1, max1, max2
-		"temperature"				= new/datum/tlv(T0C, T0C+10, T0C+40, T0C+66),
+		//"temperature"				= new/datum/tlv(T0C, T0C+10, T0C+40, T0C+66), // SKYRAT EDIT - ORIGINAL
+		"temperature"				= new/datum/tlv(T0C-70, T0C-13, T0C+40, T0C+66) // SKYRAT EDIT - Makes firealarms less whiney about cold
 		/datum/gas/oxygen			= new/datum/tlv(16, 19, 135, 140), // Partial pressure, kpa
 		/datum/gas/nitrogen			= new/datum/tlv(-1, -1, 1000, 1000),
 		/datum/gas/carbon_dioxide	= new/datum/tlv(-1, -1, 5, 10),
