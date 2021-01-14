@@ -119,8 +119,14 @@
 		if(!mob_gender)
 			mob_gender = pick(MALE, FEMALE)
 		M.gender = mob_gender
+<<<<<<< HEAD
 	*/
 	//SKYRAT EDIT CHANGE END
+=======
+		if(ishuman(M))
+			var/mob/living/carbon/human/hoomie = M
+			hoomie.body_type = mob_gender
+>>>>>>> e652d3f0b1e (Fixes ghost_roles spawning as transgenders. (#56151))
 	if(faction)
 		M.faction = list(faction)
 	if(disease)
