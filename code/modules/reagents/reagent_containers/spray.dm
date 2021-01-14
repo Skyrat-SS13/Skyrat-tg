@@ -198,7 +198,7 @@
 
 //pepperspray
 /obj/item/reagent_containers/spray/pepper
-	name = "pepperspray"
+	name = "Assistant Away!"
 	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "pepperspray"
