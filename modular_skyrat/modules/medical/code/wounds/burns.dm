@@ -204,26 +204,6 @@
 	else
 		try_treating(I, user)
 
-/// if someone is using mesh on our burns
-/datum/wound/burn/proc/mesh(obj/item/stack/medical/mesh/I, mob/user)
-	if(!I.is_open)
-		to_chat(user, "<span class='warning'>You need to open [I] first.</span>")
-		return
-	user.visible_message("<span class='notice'>[user] begins wrapping [victim]'s [limb.name] with [I]...</span>", "<span class='notice'>You begin wrapping [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
-	if(!do_after(user, (user == victim ? I.self_delay : I.other_delay), target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
-		return
-
-	limb.heal_damage(I.heal_brute, I.heal_burn)
-	user.visible_message("<span class='green'>[user] applies [I] to [victim].</span>", "<span class='green'>You apply [I] to [user == victim ? "your" : "[victim]'s"] [limb.name].</span>")
-	I.use(1)
-	sanitization += I.sanitization
-	flesh_healing += I.flesh_regeneration
-
-	if(sanitization >= infestation && flesh_healing > flesh_damage)
-		to_chat(user, "<span class='notice'>You've done all you can with [I], now you must wait for the flesh on [victim]'s [limb.name] to recover.</span>")
-	else
-		try_treating(I, user)
-
 /// Paramedic UV penlights
 /datum/wound/burn/proc/uv(obj/item/flashlight/pen/paramedic/I, mob/user)
 	if(!COOLDOWN_FINISHED(I, uv_cooldown))
@@ -239,9 +219,13 @@
 
 /datum/wound/burn/treat(obj/item/I, mob/user)
 	if(istype(I, /obj/item/stack/medical/ointment))
-		ointment(I, user)
+		ointmentmesh(I, user)
 	else if(istype(I, /obj/item/stack/medical/mesh))
-		mesh(I, user)
+		var/obj/item/stack/medical/mesh/mesh_check = I
+		if(!mesh_check.is_open)
+			to_chat(user, "<span class='warning'>You need to open [mesh_check] first.</span>")
+			return
+		ointmentmesh(mesh_check, user)
 	else if(istype(I, /obj/item/flashlight/pen/paramedic))
 		uv(I, user)
 
