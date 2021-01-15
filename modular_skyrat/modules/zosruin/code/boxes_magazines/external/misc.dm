@@ -3,7 +3,7 @@
 	desc = "An experimental ballistic magazine for the V-X PDW"
 	icon = 'modular_skyrat/modules/zosruin/icons/ammo.dmi'
 	icon_state = "hybridballistic"
-	custom_materials = list(/datum/material/iron = 7500)
+	custom_materials = list(/datum/material/iron = 6000)
 	ammo_type = /obj/item/ammo_casing/caseless/mass
 	caliber = "hybrid"
 	max_ammo = 12
