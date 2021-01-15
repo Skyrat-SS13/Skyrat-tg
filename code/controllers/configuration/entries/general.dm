@@ -511,6 +511,7 @@
 
 /datum/config_entry/flag/sql_game_log
 	protection = CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/flag/file_game_log
 	protection = CONFIG_ENTRY_LOCKED
 //SKYRAT EDIT END

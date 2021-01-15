@@ -1386,7 +1386,6 @@
 		return
 	//SKYRAT EDIT ADDITION BEGIN
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
-		//Build SQL Query to insert log into the DB, and catch errors
 		var/datum/db_query/query_sql_log_messages = SSdbcore.NewQuery({"
 			INSERT INTO [format_table_name("game_log")] (datetime, round_id, ckey, loc, type, message)
 			VALUES (:time, :round_id, :ckey, :loc, :type, :message)
