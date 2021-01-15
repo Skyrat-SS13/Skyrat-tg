@@ -45,3 +45,9 @@
 
 /obj/effect/mob_spawn/human/oldsci
 	any_station_species = TRUE
+
+/obj/effect/mob_spawn/human/oldmed
+	any_station_species = TRUE
+
+/obj/effect/mob_spawn/human/oldmine
+	any_station_species = TRUE

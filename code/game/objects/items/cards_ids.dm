@@ -712,6 +712,22 @@ update_label()
 	assignment = "Charlie Station Engineer"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_ENGINE)
 
+//SKYRAT ADDITION START
+
+/obj/item/card/id/away/old/med
+	name = "Charlie Station Medic's ID card"
+	desc = "A faded Charlie Station ID card. You can make out the rank \"Medic\"."
+	assignment = "Charlie Station Medic"
+	access = list(ACCESS_AWAY_GENERAL)
+
+/obj/item/card/id/away/old/mine
+	name = "Charlie Station Miner's ID card"
+	desc = "A faded Charlie Station ID card. You can make out the rank \"Miner\"."
+	assignment = "Carlie Station Miner"
+	access = list(ACCESS_AWAY_GENERAL)
+
+//SKYRAT ADDITION END
+
 /obj/item/card/id/away/old/apc
 	name = "APC Access ID"
 	desc = "A special ID card that allows access to APC terminals."

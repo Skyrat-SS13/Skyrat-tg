@@ -578,6 +578,61 @@
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
 
+//SKYRAT ADDITION START
+
+/obj/effect/mob_spawn/human/oldmed
+	name = "old cryogenics pod"
+	desc = "A humming cryo pod. You can barely recognize a medical uniform underneath the built up ice. The machine is attempting to wake its occupant."
+	mob_name = "a medic"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	mob_species = /datum/species/human
+	short_desc = "You are a medic working for Nanotransen, stationed onboard a state of the art research station"
+	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
+	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. As you open \
+	your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod."
+	important_info = "Work as a team with your fellow survivors and do not abandon them."
+	uniform = /obj/item/clothing/under/rank/medical/doctor
+	shoes = /obj/item/clothing/shoes/laceup
+	id = /obj/item/card/id/away/old/med
+	gloves = /obj/item/clothing/gloves/color/latex
+	l_pocket = /obj/item/stack/medical/suture
+	assignedrole = "Ancient Crew"
+
+/obj/effect/mob_spawn/human/oldmed/Destroy()
+	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
+	return ..()
+
+/obj/effect/mob_spawn/human/oldmine
+	name = "old cryogenics pod"
+	desc = "A humming cryo pod. You can barely recognize a mining uniform underneath the built up ice. The machine is attempting to wake its occupant."
+	mob_name = "a miner"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	mob_species = /datum/species/human
+	short_desc = "You are a miner working for Nanotransen, stationed onboard a state of the art research station"
+	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
+	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. As you open \
+	your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod."
+	important_info = "Work as a team with your fellow survivors and do not abandon them."
+	uniform = /obj/item/clothing/under/rank/cargo/miner
+	shoes = /obj/item/clothing/shoes/workboots/mining
+	id = /obj/item/card/id/away/old/mine
+	belt = /obj/item/pickaxe/mini
+	assignedrole = "Ancient Crew"
+
+/obj/effect/mob_spawn/human/oldmine/Destroy()
+	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
+	return ..()
+
+//SKYRAT ADDITION END
+
 /obj/effect/mob_spawn/human/pirate
 	name = "space pirate sleeper"
 	desc = "A cryo sleeper smelling faintly of rum."
