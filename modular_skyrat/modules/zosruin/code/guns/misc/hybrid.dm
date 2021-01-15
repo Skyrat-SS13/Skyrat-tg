@@ -1,10 +1,11 @@
 /obj/item/gun/ballistic/automatic/hybrid
-	name = "Experimental PDW"
+	name = "Experimental V-X PDW"
 	desc = "An experimental personal defense weapon designed to be able to switch between ballistic and energy-based ammo based on magazine"
 	icon = 'modular_skyrat/modules/zosruin/icons/projectile.dmi'
 	icon_state = "hybrid"
 	inhand_icon_state = "arg"
 	spawnwithmagazine = FALSE
+	custom_materials = list()
 	mag_type = /obj/item/ammo_box/magazine/hybrid
 	fire_delay = 2
 	can_suppress = FALSE

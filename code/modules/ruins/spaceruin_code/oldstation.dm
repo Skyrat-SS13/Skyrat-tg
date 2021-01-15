@@ -63,3 +63,34 @@
 	I have no fucking idea what they are, all I know is that they don't like me. On occasion I hear them hissing and clawing on the airlock... good idea I barricaded the way in. Bad news: the transit tube is still broken, the damn engineers never fixed it. \
 	So basically, I'm stuck here until someone comes to rescue us. And I have no food or water. <br>If you're reading this, I'm probably dead. These things have taken over part of Delta station, and I think they somehow came from the AI core... \
 	Whatever you do, DON'T OPEN THE FIRELOCKS unless you have something to kill them. Look in security, maybe there might be some gear left in there. <br><br>So hungry... I don't want to go out like this..."
+
+//SKYRAT ADDITION START
+
+/obj/item/paper/fluff/ruins/oldstation/vxnote
+	name = "V-X Research Notes"
+	info = "<b>*V-X Prototype PDW*</b><br><br>The V-X Prototype is a... Its a fucking mess... The laser magazines are too expensive to be commerially viable, The ballistic magazines are useless once spent, and the gun itself hates me.<br> \
+	God and what even the fuck did i think when i named it? V-X? This is suppose to be a marvel, Some ideallistic piece of fine tuned machinery that even the fucking Research Director would be proud to come up with, But its fucking trash! \
+	The laser magazine doesn't hold as much as that prototype he was working on, And why did i bother making it built to keep its charge longer? ITS A PROTOTYPE! I'M NOT PLANNING ON MAKING SOMETHING THAT'LL STAY A PROTOTYPE FOR A HUNDRED YEARS! \
+	The Ballistic magazines work somewhat but after you print and use the damn thing, it might be half as light, But its dead fucking weight. I cant just make it use bullets either, I have to use 'a fancy railgun system', Fuck that man. \
+	Its never hitting the commercial market, And i'll be fucking lucky if ANYONE even see's this ugly piece of shit worth taking apart to reverse engineer... I cant make it work enough for people to be proud of.. I'll just throw it in with my other mistakes."
+
+/obj/item/paper/fluff/ruins/oldstation/slimecore
+	name = "Slime Core Research Notes"
+	info = "Right, Start log, Day... actually, what day is it? Infact what year? Maybe being out in space is getting to me.. er, Lets skip this then, i'm sure no historian is going to look back for something a miner will get credit for. \
+	Right, The find... A few days ago i was doing some research after one of our miners brought something back. It was... Odd. Squishy, But.. It seemed to really... well... Enjoy meat. I'll cut some small bits and put into it, \
+	and it'll just... Eat it, spit out a... Much smaller version of itself. I dont know what research hell i'm getting myself into, But i should probably stop taking all the meat from the kitchen to feed this thing.. Maybe there's a better way?"
+
+/obj/item/paper/fluff/ruins/oldstation/scrawledr
+	name = "Scrawled ramblings"
+	info = "I can hear them... The clicks, the clicks, the scratches, THE SCRATCHES, OH THESE HORRIBLE NOISES! First it was just one set, As if a mouse scurrying in the vents, Or some diseased monkey tapping at the wall, But every day every night it gets worse, AND WORSE! \
+	Then i hear the reports from the station's sensors. Asteroid field? Its wrong, Wrong, WRONG! ITS ALL WRONG! Maybe the nearby star's gravity is fluctuating? Maybe its just a misread? It has to be, OH IT HAS TO BE! I was a good boy, god, I swear! Why must you torment me so!? \
+	First you get me in kahoots with some salvage operation, Then the ship dies and I have to take refuge in this spaced out cargo bay! I dont know how long this oxygen tank can last but please god... Was it the thing with the pastors daughter? Was it the drinking? \
+	Just please for give me i'll be a good boy i swear! I'll swear fealty with a thousand souls just please have mercy on me!"
+
+/obj/item/paper/fluff/ruins/oldstation/cargomanifest
+	name = "Cargo Manifest - Delivery 163"
+	info = "<b>*Automated Manifest Begin.*</b><br><br>This delivery to cargo contains: <br>1x Hydroponic Seed Cache, As order by the station cargo lead. <br>1x Hydroponic Supply Cache, As order by the station cargo lead. <br>2x Universal Vendor Boards, As order by the station cargo lead. \
+	5x Cubic Centimeter of Diamond, As order by the station research lead. <br>1x Meat Cryocrate, As collective order by the station crew. <br>5x Toolbelt, As order by the station engineering lead. <br> 2x Universal Medkit, As collective order by the station medical staff. \
+	<br><b>*Automated Manifest End*</b>"
+
+//SKYRIM ADDITION END

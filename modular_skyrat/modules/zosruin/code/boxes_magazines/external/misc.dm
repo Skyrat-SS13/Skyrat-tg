@@ -1,8 +1,9 @@
 /obj/item/ammo_box/magazine/hybrid
-	name = "ZenPlaceholder Magazine (Ballistic)"
-	desc = "An experimental magazine for the ZenPlaceholder"
+	name = "V-X Magazine (Ballistic)"
+	desc = "An experimental ballistic magazine for the V-X PDW"
 	icon = 'modular_skyrat/modules/zosruin/icons/ammo.dmi'
 	icon_state = "hybridballistic"
+	custom_materials = list(/datum/material/iron = 7500)
 	ammo_type = /obj/item/ammo_casing/caseless/mass
 	caliber = "hybrid"
 	max_ammo = 12
@@ -15,7 +16,8 @@
 	return
 
 /obj/item/ammo_box/magazine/hybrid/laser
-	name = "ZenPlaceholder Magazine (Laser)"
-	desc = "An experimental magazine for the ZenPlaceholder"
+	name = "V-X Magazine (Laser)"
+	desc = "An experimental laser-based magazine for the V-X PDW"
 	icon_state = "hybridlaser"
+	custom_materials = list()
 	ammo_type = /obj/item/ammo_casing/caseless/laser
