@@ -74,7 +74,7 @@
 	if (ismovable(M))
 		if(do_teleport(M, com.target, channel = TELEPORT_CHANNEL_BLUESPACE))
 			use_power(5000)
-			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
+			if(!calibrated) //oh dear a problem SKYRAT CHANGE: 100% chance to delimb if uncalibrated.
 				if(ishuman(M))//don't remove people from the round randomly you jerks
 					var/mob/living/carbon/human/human = M
 					/* - SKRYAT EDIT CHANGE ORIGINAL
@@ -104,7 +104,27 @@
 					human.apply_effect((rand(480 + rad_mod - accuracy * 40, 880 + rad_mod - accuracy * 60)), EFFECT_IRRADIATE, 0)
 					//SKYRAT EDIT CHANGE END
 			calibrated = FALSE
+			//SKYRAT CHANGE START, remove target, unless emagged.
+			if(!(obj_flags & EMAGGED)) //If we're emagged, don't uncalibrate.
+				if(power_station)
+					power_station.engaged = FALSE
+					if(power_station.teleporter_console)
+						power_station.teleporter_console.target = null
+						power_station.teleporter_console.update_icon()
+					power_station.update_icon()
+				update_icon()
+			//END OF SKYRAT CHANGE
+
 	return
+
+//SKYRAT CHANGE, emagged teleporter.
+/obj/machinery/teleport/hub/emag_act(mob/user)
+	if(obj_flags & EMAGGED)
+		return
+	obj_flags |= EMAGGED
+	playsound(src, "sparks", 75, TRUE, SILENCED_SOUND_EXTRARANGE)
+	to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src] to short the calibration safeties!</span>")
+//Skyrat change end.
 
 /obj/machinery/teleport/hub/update_icon_state()
 	if(panel_open)
