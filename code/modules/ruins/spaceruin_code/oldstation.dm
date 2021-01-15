@@ -90,7 +90,7 @@
 /obj/item/paper/fluff/ruins/oldstation/cargomanifest
 	name = "Cargo Manifest - Delivery 163"
 	info = "<b>*Automated Manifest Begin.*</b><br><br>This delivery to cargo contains: <br>1x Hydroponic Seed Cache, As order by the station cargo lead. <br>1x Hydroponic Supply Cache, As order by the station cargo lead. <br>2x Universal Vendor Boards, As order by the station cargo lead. \
-	5x Cubic Centimeter of Diamond, As order by the station research lead. <br>1x Meat Cryocrate, As collective order by the station crew. <br>5x Toolbelt, As order by the station engineering lead. <br> 2x Universal Medkit, As collective order by the station medical staff. \
+	5x Cubic Centimeter of Diamond, As order by the station research lead. <br>1x Meat Cryocrate, As collective order by the station crew. <br>3x Toolbelt, As order by the station engineering lead. <br> 2x Universal Medkit, As collective order by the station medical staff. \
 	<br><b>*Automated Manifest End*</b>"
 
 //SKYRIM ADDITION END

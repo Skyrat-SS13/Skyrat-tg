@@ -285,6 +285,13 @@
 	name = "Beta Station Storage"
 	icon_state = "storage"
 
+//SKYRAT ADDITION START
+/area/ruin/space/has_grav/ancientstation/cargo
+	name = "Charlie Station Cargo"
+	icon_state = "cargo_bay"
+
+//SKYRAT ADDITION END
+
 /area/solar/ancientstation
 	name = "Charlie Station Solar Array"
 	icon_state = "panelsP"
