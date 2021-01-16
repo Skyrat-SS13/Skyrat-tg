@@ -4,7 +4,14 @@
 #define SHOWER_NORMAL_TEMP 300
 #define SHOWER_BOILING "boiling"
 #define SHOWER_BOILING_TEMP 400
+<<<<<<< HEAD
 #define SHOWER_REACTION_MULTIPLIER 0.05
+=======
+/// The volume of it's internal reagents the shower applies to everything it sprays.
+#define SHOWER_SPRAY_VOLUME 5
+/// How much the volume of the shower's spay reagents are amplified by when it sprays something.
+#define SHOWER_EXPOSURE_MULTIPLIER 2	// Showers effectively double exposed reagents
+>>>>>>> b3d66908a83 (Fixes showers overexposing washed targets (#55894))
 
 
 /obj/machinery/shower
@@ -117,14 +124,15 @@
 	if(on)
 		wash_atom(AM)
 
-/obj/machinery/shower/proc/wash_atom(atom/A)
-	A.wash(CLEAN_RAD | CLEAN_TYPE_WEAK) // Clean radiation non-instantly
-	A.wash(CLEAN_WASH)
-	SEND_SIGNAL(A, COMSIG_ADD_MOOD_EVENT, "shower", /datum/mood_event/nice_shower)
-	reagents.expose(A, TOUCH)
-	if(isliving(A))
-		check_heat(A)
+/obj/machinery/shower/proc/wash_atom(atom/target)
+	target.wash(CLEAN_RAD | CLEAN_TYPE_WEAK) // Clean radiation non-instantly
+	target.wash(CLEAN_WASH)
+	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "shower", /datum/mood_event/nice_shower)
+	reagents.expose(target, (TOUCH), SHOWER_EXPOSURE_MULTIPLIER * SHOWER_SPRAY_VOLUME / max(reagents.total_volume, SHOWER_SPRAY_VOLUME))
+	if(isliving(target))
+		check_heat(target)
 
+<<<<<<< HEAD
 /obj/machinery/shower/process()
 	if(on && reagents.total_volume >= 5)
 		reagents.remove_any(5)
@@ -140,6 +148,24 @@
 		soundloop.stop()
 		handle_mist()
 		update_icon()
+=======
+/obj/machinery/shower/process(delta_time)
+	if(on && reagents.total_volume)
+		wash_atom(loc)
+		for(var/am in loc)
+			var/atom/movable/movable_content = am
+			if(!ismopable(movable_content)) // Mopables will be cleaned anyways by the turf wash above
+				wash_atom(movable_content)	// Reagent exposure is handled in wash_atom
+
+		reagents.remove_any(SHOWER_SPRAY_VOLUME)
+		return
+	on = FALSE
+	soundloop.stop()
+	handle_mist()
+	if(can_refill)
+		reagents.add_reagent(reagent_id, refill_rate * delta_time)
+	update_icon()
+>>>>>>> b3d66908a83 (Fixes showers overexposing washed targets (#55894))
 	if(reagents.total_volume == reagents.maximum_volume)
 		return PROCESS_KILL
 
@@ -194,4 +220,15 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+<<<<<<< HEAD
 #undef SHOWER_REACTION_MULTIPLIER
+=======
+#undef SHOWER_SPRAY_VOLUME
+#undef SHOWER_EXPOSURE_MULTIPLIER
+#undef SHOWER_BOILING_TEMP
+#undef SHOWER_BOILING
+#undef SHOWER_NORMAL_TEMP
+#undef SHOWER_NORMAL
+#undef SHOWER_FREEZING_TEMP
+#undef SHOWER_FREEZING
+>>>>>>> b3d66908a83 (Fixes showers overexposing washed targets (#55894))
