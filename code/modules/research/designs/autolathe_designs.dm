@@ -417,7 +417,7 @@
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/glass/bowl
 	category = list("initial", "Tool Designs", "Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/drinking_glass
 	name = "Drinking Glass"
@@ -426,7 +426,7 @@
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass
 	category = list("initial", "Tool Designs", "Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/shot_glass
 	name = "Shot Glass"
@@ -435,7 +435,7 @@
 	materials = list(/datum/material/glass = 100)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
 	category = list("initial", "Tool Designs", "Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/shaker
 	name = "Shaker"
