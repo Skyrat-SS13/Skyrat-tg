@@ -413,10 +413,10 @@
 /datum/design/bowl
 	name = "Bowl"
 	id = "bowl"
-	build_type = AUTOLATHE | PROTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/glass/bowl
-	category = list("initial", "Tool Designs", "Dinnerware")
+	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/drinking_glass
@@ -431,10 +431,10 @@
 /datum/design/shot_glass
 	name = "Shot Glass"
 	id = "shot_glass"
-	build_type = AUTOLATHE | PROTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 100)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
-	category = list("initial", "Tool Designs", "Dinnerware")
+	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/shaker
