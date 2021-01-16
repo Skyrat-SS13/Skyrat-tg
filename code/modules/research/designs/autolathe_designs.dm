@@ -422,10 +422,12 @@
 /datum/design/drinking_glass
 	name = "Drinking Glass"
 	id = "drinking_glass"
-	build_type = AUTOLATHE | PROTOLATHE
+	//build_type = AUTOLATHE	SKYRAT EDIT: Original Line
+	build_type = AUTOLATHE | PROTOLATHE	// SKRAT EDIT
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass
-	category = list("initial", "Tool Designs", "Dinnerware")
+	//category = list("initial","Dinnerware")	SKYRAT EDIT: Original line
+	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/shot_glass
