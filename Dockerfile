@@ -33,9 +33,14 @@ FROM dm_base as build
 
 COPY . .
 
+<<<<<<< HEAD
 RUN DreamMaker -max_errors 0 tgstation.dme \
     && tools/deploy.sh /deploy \
 	&& rm /deploy/*.dll
+=======
+RUN env TG_BOOTSTRAP_NODE_LINUX=1 tools/build/build \
+    && tools/deploy.sh /deploy
+>>>>>>> 8ca761670d1 (Fix Docker build failing on a clean checkout (#56190))
 
 FROM dm_base
 
