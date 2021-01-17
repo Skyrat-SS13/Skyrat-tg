@@ -4,14 +4,10 @@
 #define SHOWER_NORMAL_TEMP 300
 #define SHOWER_BOILING "boiling"
 #define SHOWER_BOILING_TEMP 400
-<<<<<<< HEAD
-#define SHOWER_REACTION_MULTIPLIER 0.05
-=======
 /// The volume of it's internal reagents the shower applies to everything it sprays.
 #define SHOWER_SPRAY_VOLUME 5
 /// How much the volume of the shower's spay reagents are amplified by when it sprays something.
 #define SHOWER_EXPOSURE_MULTIPLIER 2	// Showers effectively double exposed reagents
->>>>>>> b3d66908a83 (Fixes showers overexposing washed targets (#55894))
 
 
 /obj/machinery/shower
@@ -30,12 +26,18 @@
 	///What reagent should the shower be filled with when initially built.
 	var/reagent_id = /datum/reagent/water
 	///How much reagent capacity should the shower begin with when built.
-	var/reaction_volume = 200
+	var/reagent_capacity = 200
+	///How many units the shower refills every second.
+	var/refill_rate = 0.5
+	/// Whether or not the shower's water reclaimer is operating.
+	var/can_refill = TRUE
+	/// Whether to allow players to toggle the water reclaimer.
+	var/can_toggle_refill = TRUE
 
 /obj/machinery/shower/Initialize()
 	. = ..()
-	create_reagents(reaction_volume)
-	reagents.add_reagent(reagent_id, reaction_volume)
+	create_reagents(reagent_capacity)
+	reagents.add_reagent(reagent_id, reagent_capacity)
 	soundloop = new(list(src), FALSE)
 	AddComponent(/datum/component/plumbing/simple_demand)
 
@@ -71,6 +73,17 @@
 		to_chat(user, "<span class='notice'>The water temperature seems to be [current_temperature].</span>")
 	else
 		return ..()
+
+/obj/machinery/shower/multitool_act(mob/living/user, obj/item/I)
+	. = ..()
+	if(. || !can_toggle_refill)
+		return
+
+	can_refill = !can_refill
+	to_chat(user, "<span class=notice>You [can_refill ? "en" : "dis"]able the shower's water recycler.</span>")
+	playsound(src, 'sound/machines/click.ogg', 20, TRUE)
+	return TRUE
+
 
 /obj/machinery/shower/wrench_act(mob/living/user, obj/item/I)
 	..()
@@ -121,7 +134,7 @@
 
 /obj/machinery/shower/Crossed(atom/movable/AM)
 	..()
-	if(on)
+	if(on && reagents.total_volume)
 		wash_atom(AM)
 
 /obj/machinery/shower/proc/wash_atom(atom/target)
@@ -132,23 +145,6 @@
 	if(isliving(target))
 		check_heat(target)
 
-<<<<<<< HEAD
-/obj/machinery/shower/process()
-	if(on && reagents.total_volume >= 5)
-		reagents.remove_any(5)
-		wash_atom(loc)
-		for(var/am in loc)
-			var/atom/movable/movable_content = am
-			reagents.expose(movable_content, TOUCH, SHOWER_REACTION_MULTIPLIER) //There's not many reagents leaving the sink at once! This should make for a 10 unit reaction
-			if(!ismopable(movable_content)) // Mopables will be cleaned anyways by the turf wash above
-				wash_atom(movable_content)
-	else
-		reagents.add_reagent(reagent_id, 1)
-		on = FALSE
-		soundloop.stop()
-		handle_mist()
-		update_icon()
-=======
 /obj/machinery/shower/process(delta_time)
 	if(on && reagents.total_volume)
 		wash_atom(loc)
@@ -165,7 +161,6 @@
 	if(can_refill)
 		reagents.add_reagent(reagent_id, refill_rate * delta_time)
 	update_icon()
->>>>>>> b3d66908a83 (Fixes showers overexposing washed targets (#55894))
 	if(reagents.total_volume == reagents.maximum_volume)
 		return PROCESS_KILL
 
@@ -220,9 +215,6 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-<<<<<<< HEAD
-#undef SHOWER_REACTION_MULTIPLIER
-=======
 #undef SHOWER_SPRAY_VOLUME
 #undef SHOWER_EXPOSURE_MULTIPLIER
 #undef SHOWER_BOILING_TEMP
@@ -231,4 +223,3 @@
 #undef SHOWER_NORMAL
 #undef SHOWER_FREEZING_TEMP
 #undef SHOWER_FREEZING
->>>>>>> b3d66908a83 (Fixes showers overexposing washed targets (#55894))
