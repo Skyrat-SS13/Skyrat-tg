@@ -11,7 +11,7 @@
 	icon_state = "none"
 
 /datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT))
+	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
 		return TRUE
 	return FALSE
 
