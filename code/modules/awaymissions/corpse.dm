@@ -118,7 +118,9 @@
 			M.real_name = mob_name ? mob_name : M.name
 		if(!mob_gender)
 			mob_gender = pick(MALE, FEMALE)
-		M.gender = mob_gender
+		if(ishuman(M))
+			var/mob/living/carbon/human/hoomie = M
+			hoomie.body_type = mob_gender
 	*/
 	//SKYRAT EDIT CHANGE END
 	if(faction)
@@ -270,6 +272,7 @@
 			if(!mob_gender)
 				mob_gender = pick(MALE, FEMALE)
 			H.gender = mob_gender
+			H.body_type = mob_gender
 		if(mob_species)
 			H.set_species(mob_species)
 		H.underwear = "Nude"
