@@ -101,3 +101,4 @@
 	name = "Insect female (Tertiary)"
 	icon_state = "insectf"
 	default_color = DEFAULT_TERTIARY
+	
