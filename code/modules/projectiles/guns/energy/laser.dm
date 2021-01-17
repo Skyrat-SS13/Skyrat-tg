@@ -125,7 +125,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/xray)
-	pin = null
 	ammo_x_offset = 3
 	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 ////////Laser Tag////////////////////
