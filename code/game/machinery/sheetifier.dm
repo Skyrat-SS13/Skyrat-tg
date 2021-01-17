@@ -13,12 +13,8 @@
 
 /obj/machinery/sheetifier/Initialize()
 	. = ..()
-<<<<<<< HEAD
-	//AddComponent(/datum/component/material_container, list(/datum/material/meat), MINERAL_MATERIAL_AMOUNT * MAX_STACK_SIZE * 2, MATCONTAINER_EXAMINE|BREAKDOWN_FLAGS_SHEETIFIER, /obj/item/food/meat/slab, CALLBACK(src, .proc/CanInsertMaterials), CALLBACK(src, .proc/AfterInsertMaterials)) //SKYRAT EDIT REMOVAL
-=======
 
-	AddComponent(/datum/component/material_container, list(/datum/material/meat), MINERAL_MATERIAL_AMOUNT * MAX_STACK_SIZE * 2, MATCONTAINER_EXAMINE|BREAKDOWN_FLAGS_SHEETIFIER, typesof(/datum/material/meat), /obj/item/food/meat, null, CALLBACK(src, .proc/CanInsertMaterials), CALLBACK(src, .proc/AfterInsertMaterials))
->>>>>>> 976c1fcb8c8 ([READY] Bespoke Datum Mats (#55296))
+	//AddComponent(/datum/component/material_container, list(/datum/material/meat), MINERAL_MATERIAL_AMOUNT * MAX_STACK_SIZE * 2, MATCONTAINER_EXAMINE|BREAKDOWN_FLAGS_SHEETIFIER, typesof(/datum/material/meat), /obj/item/food/meat, null, CALLBACK(src, .proc/CanInsertMaterials), CALLBACK(src, .proc/AfterInsertMaterials)) //SKYRAT EDIT REMOVAL
 
 /obj/machinery/sheetifier/update_overlays()
 	. = ..()
