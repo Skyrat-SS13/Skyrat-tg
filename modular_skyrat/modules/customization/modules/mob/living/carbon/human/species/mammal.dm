@@ -6,7 +6,7 @@
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "wings" = "None", "head_acc" = "None", "neck_acc" = "None")
+	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "fluff" = "None", "wings" = "None", "head_acc" = "None", "neck_acc" = "None")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'

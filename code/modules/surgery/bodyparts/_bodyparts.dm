@@ -306,6 +306,14 @@
 	// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 	if(owner && wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
 		//SKYRAT EDIT ADDITION - MEDICAL
+		//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
+		//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
+		if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
+			var/damaged_percent = (brute_dam + burn_dam)/max_damage
+			if(damaged_percent > DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD)
+				damaged_percent = DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD
+			wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg+(damaged_percent*DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
+
 		if(current_gauze)
 			current_gauze.take_damage()
 		if(current_splint)
@@ -404,6 +412,9 @@
  * * bare_wound_bonus- The bare_wound_bonus of an attack
  */
 /obj/item/bodypart/proc/check_wounding(woundtype, damage, wound_bonus, bare_wound_bonus)
+	if(HAS_TRAIT(owner, TRAIT_NEVER_WOUNDED))
+		return
+
 	// note that these are fed into an exponent, so these are magnified
 	if(HAS_TRAIT(owner, TRAIT_EASILY_WOUNDED))
 		damage *= 1.5
@@ -779,6 +790,7 @@
 		var/datum/species/S = H.dna.species
 		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
 			species_id = S.limbs_id
+			alpha = S.specific_alpha
 			rendered_bp_icon = S.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		species_flags_list = H.dna.species.species_traits
 
@@ -945,6 +957,8 @@
 
 
 /obj/item/bodypart/proc/get_bleed_rate()
+	if(HAS_TRAIT(owner, TRAIT_NOBLEED))
+		return
 	if(status != BODYPART_ORGANIC) // maybe in the future we can bleed oil from aug parts, but not now
 		return
 

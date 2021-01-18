@@ -4,6 +4,7 @@
 /datum/material/meat
 	name = "meat"
 	desc = "Meat"
+	id = /datum/material/meat	// So the bespoke versions are categorized under this
 	color = rgb(214, 67, 67)
 	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE)
 	sheet_type = /obj/item/stack/sheet/meat
@@ -21,7 +22,6 @@
 
 /datum/material/meat/on_applied_obj(obj/O, amount, material_flags)
 	. = ..()
-	O.obj_flags |= UNIQUE_RENAME //So you can name it after the person its made from, a depressing comprimise.
 	make_edible(O, amount, material_flags)
 
 /datum/material/meat/on_applied_turf(turf/T, amount, material_flags)
@@ -35,3 +35,23 @@
 */
 //SKYRAT EDIT REMOVAL END
 
+
+/datum/material/meat/mob_meat
+	init_flags = MATERIAL_INIT_BESPOKE
+
+/datum/material/meat/mob_meat/Initialize(_id, mob/living/source)
+	if(!istype(source))
+		return FALSE
+
+	name = "[source?.name ? "[source.name]'s" : "mystery"] [initial(name)]"
+	return ..()
+
+/datum/material/meat/species_meat
+	init_flags = MATERIAL_INIT_BESPOKE
+
+/datum/material/meat/species_meat/Initialize(_id, datum/species/source)
+	if(!istype(source))
+		return FALSE
+
+	name = "[source?.name || "mystery"] [initial(name)]"
+	return ..()
