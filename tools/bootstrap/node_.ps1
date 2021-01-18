@@ -11,6 +11,10 @@ $host.ui.RawUI.WindowTitle = "starting :: node $args"
 $ErrorActionPreference = "Stop"
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
+# This forces UTF-8 encoding across all powershell built-ins
+$OutputEncoding = [System.Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+
 function ExtractVersion {
 	param([string] $Path, [string] $Key)
 	foreach ($Line in Get-Content $Path) {
@@ -20,7 +24,6 @@ function ExtractVersion {
 	}
 	throw "Couldn't find value for $Key in $Path"
 }
-
 # Convenience variables
 $Bootstrap = Split-Path $script:MyInvocation.MyCommand.Path
 $Cache = "$Bootstrap/.cache"
@@ -32,23 +35,18 @@ $NodeFullVersion = "node-v$NodeVersion-win-x64"
 $NodeDir = "$Cache/$NodeFullVersion"
 $NodeExe = "$NodeDir/node.exe"
 $Log = "$Cache/last-command.log"
-
 # Download and unzip Node
 if (!(Test-Path $NodeExe -PathType Leaf)) {
 	$host.ui.RawUI.WindowTitle = "Downloading Node $NodeVersion..."
 	New-Item $Cache -ItemType Directory -ErrorAction silentlyContinue | Out-Null
-
 	$Archive = "$Cache/node-v$NodeVersion.zip"
 	Invoke-WebRequest `
 		"https://nodejs.org/download/release/v$NodeVersion/$NodeFullVersion.zip" `
 		-OutFile $Archive `
 		-ErrorAction Stop
-
 	[System.IO.Compression.ZipFile]::ExtractToDirectory($Archive, $Cache)
-
 	Remove-Item $Archive
 }
-
 # Invoke Node with all command-line arguments
 Write-Output $NodeExe | Out-File -Encoding utf8 $Log
 [System.String]::Join([System.Environment]::NewLine, $args) | Out-File -Encoding utf8 -Append $Log
