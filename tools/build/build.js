@@ -21,8 +21,11 @@ const taskTgui = new Task('tgui')
   .depends('tgui/**/package.json')
   .depends('tgui/packages/**/*.js')
   .depends('tgui/packages/**/*.jsx')
-  .provides('tgui/public/*.bundle.*')
-  .provides('tgui/public/*.chunk.*')
+  .provides('tgui/public/tgui.bundle.css')
+  .provides('tgui/public/tgui.bundle.js')
+  .provides('tgui/public/tgui-common.bundle.js')
+  .provides('tgui/public/tgui-panel.bundle.css')
+  .provides('tgui/public/tgui-panel.bundle.js')
   .build(async () => {
     // Instead of calling `tgui/bin/tgui`, we reproduce the whole pipeline
     // here for maximum compilation speed.
@@ -36,9 +39,11 @@ const taskTgui = new Task('tgui')
   });
 
 const taskDm = new Task('dm')
+  .depends('_maps/map_files/generic/**')
   .depends('code/**')
   .depends('goon/**')
   .depends('html/**')
+  .depends('icons/**')
   .depends('interface/**')
   .depends('tgui/public/tgui.html')
   .depends('tgui/public/*.bundle.*')
