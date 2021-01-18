@@ -86,6 +86,10 @@
 	name = "Hotel Pool Room"
 	icon_state = "fitness"
 
+/area/ruin/space/has_grav/hotel/sauna
+	name = "Hotel Sauna Room"
+	icon_state = "sauna"
+
 /area/ruin/space/has_grav/hotel/bar
 	name = "Hotel Bar"
 	icon_state = "cafeteria"

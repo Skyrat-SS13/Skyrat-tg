@@ -411,6 +411,7 @@
 	head = /obj/item/clothing/head/helmet/blueshirt
 	back = /obj/item/storage/backpack/security
 	belt = /obj/item/storage/belt/security/full
+	r_hand = /obj/item/gun/energy/laser/scatter/shotty
 
 /obj/effect/mob_spawn/human/hotel_staff/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
