@@ -512,7 +512,7 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
-						dat += "<br><a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
+						dat += "<br> <a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIR_COLOR]'>[(randomise[RANDOM_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
 
 						dat += "<BR><h3>Facial Hairstyle</h3>"
@@ -521,7 +521,7 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIRSTYLE]'>[(randomise[RANDOM_FACIAL_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
-						dat += "<br><a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
+						dat += "<br> <a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIR_COLOR]'>[(randomise[RANDOM_FACIAL_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
 						dat += "<br></td>"
 
@@ -816,6 +816,9 @@ GLOBAL_LIST_INIT(food, list(
 											customization_button = "<center><span style='border: 1px solid #161616; background-color: ["#[custom_info]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path]'>Change</a></center>"
 										if(LOADOUT_INFO_THREE_COLORS)
 											var/list/color_list = splittext(custom_info, "|")
+											if(length(color_list) != 3)
+												stack_trace("WARNING! Loadout item information of [LI.name] for ckey [user.ckey] has invalid amount of entries.")
+												continue
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[1]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=1'>Change</a></center>"
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[2]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=2'>Change</a></center>"
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[3]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=3'>Change</a></center>"
@@ -826,6 +829,14 @@ GLOBAL_LIST_INIT(food, list(
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
+								if(!loadout[LI.path]) //Let the user know if something is colorable, so we can avoid mentioning it in the titles
+									switch(LI.extra_info)
+										if(LOADOUT_INFO_ONE_COLOR)
+											customization_button = "<i>Colorable</i>"
+										if(LOADOUT_INFO_THREE_COLORS)
+											customization_button += "<i>Polychromic</i>"
+										if(LOADOUT_INFO_STYLE)
+											customization_button = "" //TODO
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
 								dat += "<td><font size=2>[customization_button]</font></td>"
@@ -1264,6 +1275,9 @@ GLOBAL_LIST_INIT(food, list(
 				continue
 			if(job.has_banned_quirk(src))
 				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD QUIRKS\]</font></td></tr>"
+				continue
+			if(job.has_banned_species(src))
+				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD SPECIES\]</font></td></tr>"
 				continue
 			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
@@ -1822,9 +1836,9 @@ GLOBAL_LIST_INIT(food, list(
 						return
 					var/new_name
 					if(mismatched_customization)
-						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in GLOB.sprite_accessories[key]
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key, pref_species, TRUE, parent.ckey)
 					else
-						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key,pref_species)
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key, pref_species, FALSE, parent.ckey)
 					if(new_name && mutant_bodyparts[key])
 						mutant_bodyparts[key][MUTANT_INDEX_NAME] = new_name
 						validate_color_keys_for_part(key)
@@ -1896,6 +1910,17 @@ GLOBAL_LIST_INIT(food, list(
 
 
 			switch(href_list["preference"])
+				if("set_species")
+					needs_update = TRUE
+					var/species = href_list["selected_species"]
+					var/newtype = GLOB.species_list[species]
+					if(newtype)
+						set_new_species(newtype)
+						user << browse(null, "window=species_menu")
+
+				if("close_species")
+					user << browse(null, "window=species_menu")
+
 				if("ghostform")
 					if(unlock_content)
 						var/new_form = input(user, "Thanks for supporting BYOND - Choose your ghostly form:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
@@ -2168,18 +2193,8 @@ GLOBAL_LIST_INIT(food, list(
 						features["custom_species"] = null
 
 				if("species")
-					needs_update = TRUE
-					var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
-
-					if(result)
-						var/newtype = GLOB.species_list[result]
-						set_new_species(newtype)
-						/*//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color*/
-						if(randomise[RANDOM_NAME])
-							real_name = pref_species.random_name(gender)
+					ShowSpeciesMenu(user)
+					return TRUE
 
 				if("mutant_color")
 					needs_update = TRUE
@@ -2790,7 +2805,7 @@ GLOBAL_LIST_INIT(food, list(
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
-	if(roundstart_checks && !(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
+	if(roundstart_checks && !(pref_species.id in GLOB.customizable_races))
 		chosen_species = /datum/species/human
 		set_new_species(/datum/species/human)
 		save_character()
@@ -2882,7 +2897,7 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<BR>"
 			var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 			for(var/i in 1 to shown_colors)
-				dat += "<a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'><span class='color_holder_box' style='background-color:["#[colorlist[i]]"]'></span></a>"
+				dat += " <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'><span class='color_holder_box' style='background-color:["#[colorlist[i]]"]'></span></a>"
 	return dat
 
 /datum/preferences/proc/set_skin_tone(new_skin_tone)
@@ -2909,6 +2924,59 @@ GLOBAL_LIST_INIT(food, list(
 		return TRUE
 	else
 		return FALSE
+
+/datum/preferences/proc/ShowSpeciesMenu(mob/user)
+	var/list/dat = list()
+	dat += "<center><b>Choose your character's species:</b></center>"
+	dat += "<center><a href='?_src_=prefs;preference=close_species;task=input'>Back</a></center>"
+	dat += "<hr>"
+	var/list/playables = list()
+	var/list/unplayables = list()
+	for(var/id in GLOB.customizable_races)
+		if(GLOB.roundstart_races[id])
+			playables += id
+		else
+			unplayables += id
+	var/even = TRUE
+	var/background_cl
+	dat += "<table width='100%' align='center'><tr>"
+	dat += "<td width=20%></td>"
+	dat += "<td width=65%></td>"
+	dat += "<td width=15%></td>"
+	dat += "</tr>"
+	for(var/id in playables)
+		even = !even
+		var/datum/species/S = GLOB.species_list[id]
+		background_cl = (even ? "#13171C" : "#19232C")
+		dat += "<tr style='background-color: [background_cl]'>"
+		dat += "<td><b>[initial(S.name)]</b></td>"
+		dat += "<td><i>[initial(S.flavor_text)]</i></td>"
+		dat += "<td><a href='?_src_=prefs;selected_species=[id];preference=set_species;task=input'>Choose</a></td>"
+		dat += "</tr>"
+	dat += "<table>"
+	dat += "<hr>"
+	dat += "<center><b>Below you have species which you cannot play on station, however you can customize them and join as an event or ghost role</b></center>"
+	dat += "<hr>"
+	dat += "<table width='100%' align='center'><tr>"
+	dat += "<td width=20%></td>"
+	dat += "<td width=65%></td>"
+	dat += "<td width=15%></td>"
+	dat += "</tr>"
+	for(var/id in unplayables)
+		even = !even
+		var/datum/species/S = GLOB.species_list[id]
+		background_cl = (even ? "#852119" : "#9c2a21")
+		dat += "<tr style='background-color: [background_cl]'>"
+		dat += "<td><b>[initial(S.name)]</b></td>"
+		dat += "<td><i>[initial(S.flavor_text)]</i></td>"
+		dat += "<td><a href='?_src_=prefs;selected_species=[id];preference=set_species;task=input'>Choose</a></td>"
+		dat += "</tr>"
+	dat += "<table>"
+
+	var/datum/browser/popup = new(user, "species_menu", "<div align='center'>Species Choice</div>", 900, 600)
+	popup.set_window_options("can_close=0")
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
 
 // old bobcode copypaste, handle with caution
 /datum/preferences/proc/SetFood(mob/user)

@@ -70,8 +70,9 @@
 		dat += "<BR><center><b>You've requested admin approval, ambitions will automatically be submitted after approval.</b></center>"
 	else if(!submitted)
 		submit_link = "href='?src=[REF(src)];pref=submit'"
+		dat += "<BR><b><font color='#FF0000'>Your current ambitions or edits have not been submitted yet.</font></b>"
 	else
-		dat += "<BR><center><b>You've already submitted your ambitions, but feel free to edit them.</b></center>"
+		dat += "<BR><center><b>You've already submitted your ambitions, but feel free to edit them. Editing will require you to re-submit afterwards.</b></center>"
 	dat += "<center><a [submit_link]>Submit</a> <a href='?src=[REF(src)];pref=template'>Choose template</a> <a [review_link]>Request admin review (optional)</a></center>"
 	dat += "<HR>"
 	if(changed_after_approval)
@@ -110,6 +111,7 @@
 	dat += "<BR>"
 	dat += "<h3>Intensity:</h3>"
 	dat += "<i>Set the estimated intensity of your ambitions, this helps the admins gauge on how chaotic a round may be. Please set it accordingly.</i>"
+	dat += "<BR><i>Submitting ambitions with an intensity of 'Medium' or higher will automatically request an admin review.</i>"
 	if(intensity == 0)
 		dat += "<BR><center><font color='#CCCCFF'><b>Please set your intensity!</b></font></center>"
 	dat += "<table>"
@@ -314,7 +316,12 @@
 			if("submit")
 				submit()
 				log_action("SUBMIT: Submitted their ambitions", FALSE)
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has submitted their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				if(intensity >= AMBITION_INTENSITY_SEVERE)
+					admin_review_requested = TRUE
+					GLOB.ambitions_to_review[src] = 0
+					message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has submitted high-intensity ambitions, which have been automatically flagged for review.(<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				else
+					message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has submitted their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("spice")
 				var/new_intensity = text2num(href_list["amount"])
 				if(intensity == new_intensity)
@@ -332,13 +339,7 @@
 					if(AMBITION_INTENSITY_EXTREME)
 						string = "Extreme"
 				log_action("INTENSITY: set to [string]")
-				if(submitted)
-					GLOB.total_intensity -= intensity
-					if(intensity)
-						GLOB.intensity_counts["[intensity]"] -= 1
-					GLOB.total_intensity += new_intensity
-					if(new_intensity)
-						GLOB.intensity_counts["[new_intensity]"] += 1
+				un_submit()
 				intensity = new_intensity
 			if("edit_admin_note")
 				var/msg = input(usr, "Set your note to admins!", "Note to admins", note_to_admins) as message|null
@@ -350,11 +351,13 @@
 				if(msg)
 					narrative = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 					log_action("NARRATIVE - change: [narrative]")
+					un_submit()
 			if("remove_objective")
 				var/index = text2num(href_list["index"])
 				if(length(objectives) < index)
 					return
 				log_action("OBJ - removed: [objectives[index]]")
+				un_submit()
 				objectives.Remove(objectives[index])
 			if("edit_objective")
 				var/index = text2num(href_list["index"])
@@ -366,6 +369,7 @@
 					if(length(objectives) < index)
 						return
 					objectives[index] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+					un_submit()
 					log_action("OBJ - edit: [old_obj] TO-> [objectives[index]]")
 			if("add_objective")
 				var/msg = input(usr, "Add new objective:", "Objectives", "") as message|null
@@ -373,6 +377,7 @@
 					var/new_obj = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 					objectives += new_obj
 					log_action("OBJ - add: [new_obj]")
+					un_submit()
 
 		ShowPanel(usr)
 		return TRUE
@@ -395,6 +400,13 @@
 	my_mind.ambition_submit()
 	GLOB.total_intensity += intensity
 	GLOB.intensity_counts["[intensity]"] += 1
+
+/datum/ambitions/proc/un_submit()
+	if(!submitted)
+		return
+	submitted = FALSE
+	GLOB.total_intensity -= intensity
+	GLOB.intensity_counts["[intensity]"] -= 1
 
 /mob/proc/view_ambitions()
 	set name = "View Ambitions"

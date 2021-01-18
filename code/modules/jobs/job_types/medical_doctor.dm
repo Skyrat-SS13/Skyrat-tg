@@ -14,6 +14,8 @@
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_MED
 
+	liver_traits = list(TRAIT_MEDICAL_METABOLISM)
+
 	display_order = JOB_DISPLAY_ORDER_MEDICAL_DOCTOR
 	bounty_types = CIV_JOB_MED
 
@@ -28,11 +30,12 @@
 	suit =  /obj/item/clothing/suit/toggle/labcoat
 	l_hand = /obj/item/storage/firstaid/medical
 	suit_store = /obj/item/flashlight/pen
-	backpack_contents = list(/obj/item/storage/hypospraykit/regular=1) //SKYRAT ADDITION - Hypospray Kit addition
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
 	box = /obj/item/storage/box/survival/medical
+
+	skillchips = list(/obj/item/skillchip/entrails_reader)
 
 	chameleon_extras = /obj/item/gun/syringe

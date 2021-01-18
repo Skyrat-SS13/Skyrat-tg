@@ -55,7 +55,7 @@
 	..()
 	rack()
 
-/obj/item/gun/ballistic/shotgun/automatic/combat
+/obj/item/gun/ballistic/shotgun/automatic/combat        //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "combat shotgun"
 	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
 	icon_state = "cshotgun"
@@ -121,7 +121,6 @@
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
-	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
 	mag_type = /obj/item/ammo_box/magazine/m12g
 	can_suppress = FALSE

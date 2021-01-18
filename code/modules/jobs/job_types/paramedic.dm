@@ -16,6 +16,8 @@
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_MED
 
+	liver_traits = list(TRAIT_MEDICAL_METABOLISM)
+
 	display_order = JOB_DISPLAY_ORDER_PARAMEDIC
 	bounty_types = CIV_JOB_MED
 
@@ -33,7 +35,7 @@
 	id = /obj/item/card/id
 	l_pocket = /obj/item/pda/medical
 	suit_store = /obj/item/flashlight/pen/paramedic
-	backpack_contents = list(/obj/item/roller=1,/obj/item/storage/hypospraykit/regular=1) //SKYRAT EDIT - Hypospray Kit addition
+	backpack_contents = list(/obj/item/roller=1)
 	pda_slot = ITEM_SLOT_LPOCKET
 
 	backpack = /obj/item/storage/backpack/medic

@@ -19,8 +19,10 @@
 
 /datum/round_event/ghost_role/alien_infestation
 	announceWhen	= 400
-
-	minimum_required = 1
+	//SKYRAT EDIT CHANGE BEGIN
+	//minimum_required = 1 - SKYRAT EDIT - ORIGINAL
+	minimum_required = 2
+	//SKYRAT EDIT CHANGE END
 	role_name = "alien larva"
 
 	// 50% chance of being incremented by one
