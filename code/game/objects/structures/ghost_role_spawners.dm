@@ -590,7 +590,7 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You are a medic working for Nanotransen, stationed onboard a state of the art research station"
+	short_desc = "You are a medic working for Nanotrasen, stationed onboard a state of the art research station"
 	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
 	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. As you open \
 	your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod."
@@ -616,7 +616,7 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	short_desc = "You are a miner working for Nanotransen, stationed onboard a state of the art research station"
+	short_desc = "You are a miner working for Nanotrasen, stationed onboard a state of the art research station"
 	flavour_text = "You vaguely recall rushing into a cryogenics pod due to an oncoming radiation storm. \
 	The last thing you remember is the station's Artificial Program telling you that you would only be asleep for eight hours. As you open \
 	your eyes, everything seems rusted and broken, a dark feeling swells in your gut as you climb out of your pod."
