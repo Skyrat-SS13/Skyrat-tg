@@ -2,6 +2,12 @@
 //Please make sure you double check a sprite before adding an entry into this as some clothing items do require alternate sprites.area
 
 //HEAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/obj/item/clothing/head/festive
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/gladiator
+    mutant_variants = NONE
+
 /obj/item/clothing/head/chefhat
     mutant_variants = NONE
 
@@ -119,6 +125,23 @@
 /obj/item/clothing/head/helmet/space/beret
 	mutant_variants = NONE
 
+/obj/item/clothing/head/helmet/space/hardsuit/carp
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/police
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/swat
+	mutant_variants = NONE
+
+/obj/item/clothing/head/spacepolice
+	mutant_variants = NONE
+
+/obj/item/clothing/head/sombrero
+	mutant_variants = NONE
+
+/obj/item/clothing/head/santa
+	mutant_variants = NONE
 
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -133,8 +156,16 @@
 /obj/item/clothing/mask/gas/tiki_mask/yalp_elor
 	mutant_variants = NONE
 
+/obj/item/clothing/mask/gas/carp
+	mutant_variants = NONE
+
+/obj/item/clothing/mask/gas/sechailer/swat/spacepol
+	mutant_variants = NONE
 
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+/obj/item/clothing/under/costume/gladiator/ash_walker
+	mutant_variants = NONE
 
 /obj/item/clothing/under/misc/gear_harness
 	mutant_variants = NONE
@@ -154,8 +185,45 @@
 /obj/item/clothing/under/rank/engineering/engineer/hazard
 	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/security/officer/beatcop
+/obj/item/clothing/under/rank/security/officer/spacepol
 	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/medical/doctor/nurse
+	mutant_variants = NONE
+
+/obj/item/clothing/under/syndicate/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/syndicate/tacticool/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/captain/suit/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/black/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/female/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/red/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/color/jumpskirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/dress/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/suit/black/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/labcoat/roboticist
+	mutant_variants = NONE
+
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/toggle/chef
@@ -211,4 +279,9 @@
 
 /obj/item/clothing/suit/space/officer
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/hooded/chaplain_hoodie
+	mutant_variants = NONE
+
+
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

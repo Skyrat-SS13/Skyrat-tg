@@ -38,6 +38,8 @@
 		SIGNAL_REMOVETRAIT(TRAIT_NODEATH),
 	), .proc/update_succumb_action)
 
+	RegisterSignal(src, COMSIG_MOVETYPE_FLAG_ENABLED, .proc/on_movement_type_flag_enabled)
+	RegisterSignal(src, COMSIG_MOVETYPE_FLAG_DISABLED, .proc/on_movement_type_flag_disabled)
 
 /// Called when [TRAIT_KNOCKEDOUT] is added to the mob.
 /mob/living/proc/on_knockedout_trait_gain(datum/source)
@@ -170,13 +172,23 @@
 
 
 /**
-  * Called when traits that alter succumbing are added/removed.
-  *
-  * Will show or hide the succumb alert prompt.
-  */
+ * Called when traits that alter succumbing are added/removed.
+ *
+ * Will show or hide the succumb alert prompt.
+ */
 /mob/living/proc/update_succumb_action()
 	SIGNAL_HANDLER
 	if (CAN_SUCCUMB(src))
 		throw_alert("succumb", /atom/movable/screen/alert/succumb)
 	else
 		clear_alert("succumb")
+
+///From [element/movetype_handler/on_movement_type_trait_gain()]
+/mob/living/proc/on_movement_type_flag_enabled(datum/source, trait)
+	SIGNAL_HANDLER
+	update_movespeed(FALSE)
+
+///From [element/movetype_handler/on_movement_type_trait_loss()]
+/mob/living/proc/on_movement_type_flag_disabled(datum/source, trait)
+	SIGNAL_HANDLER
+	update_movespeed(FALSE)

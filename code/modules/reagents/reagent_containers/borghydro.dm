@@ -54,7 +54,6 @@ Borg Hypospray
 		regenerate_reagents()
 		charge_timer = 0
 
-	//update_icon()
 	return 1
 
 // Use this to add more chemicals for the borghypo to produce.
@@ -181,12 +180,17 @@ Borg Hypospray
 
 /obj/item/reagent_containers/borghypo/syndicate
 	name = "syndicate cyborg hypospray"
-	desc = "An experimental piece of Syndicate technology used to produce powerful restorative nanites used to very quickly restore injuries of all types. Also metabolizes potassium iodide, for radiation poisoning, and morphine, for offense."
+	desc = "An experimental piece of Syndicate technology used to produce powerful restorative nanites used to very quickly restore injuries of all types. Also metabolizes potassium iodide for radiation poisoning, inacusiate for ear damage and morphine for offense."
 	icon_state = "borghypo_s"
 	charge_cost = 20
 	recharge_time = 2
-	reagent_ids = list(/datum/reagent/medicine/syndicate_nanites, /datum/reagent/medicine/potass_iodide, /datum/reagent/medicine/morphine)
-	bypass_protection = 1
+	reagent_ids = list(
+		/datum/reagent/medicine/syndicate_nanites,
+		/datum/reagent/medicine/inacusiate,
+		/datum/reagent/medicine/potass_iodide,
+		/datum/reagent/medicine/morphine,
+	)
+	bypass_protection = TRUE
 	accepts_reagent_upgrades = FALSE
 
 /*
@@ -217,7 +221,11 @@ Borg Shaker
 	/datum/reagent/consumable/ethanol/creme_de_cacao, /datum/reagent/consumable/ethanol/gin, /datum/reagent/consumable/ethanol/kahlua,
 	/datum/reagent/consumable/ethanol/rum, /datum/reagent/consumable/ethanol/sake, /datum/reagent/consumable/ethanol/tequila,
 	/datum/reagent/consumable/ethanol/triple_sec, /datum/reagent/consumable/ethanol/vermouth, /datum/reagent/consumable/ethanol/vodka,
-	/datum/reagent/consumable/ethanol/whiskey, /datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/creme_de_coconut)
+	/datum/reagent/consumable/ethanol/whiskey, /datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/creme_de_coconut,
+	//SKYRAT EDIT ADDITION BEGIN
+	/datum/reagent/consumable/berryjuice, /datum/reagent/consumable/blumpkinjuice, /datum/reagent/consumable/watermelonjuice,
+	/datum/reagent/consumable/pumpkinjuice, /datum/reagent/consumable/vanilla)
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/reagent_containers/borghypo/borgshaker/attack(mob/M, mob/user)
 	return //Can't inject stuff with a shaker, can we? //not with that attitude

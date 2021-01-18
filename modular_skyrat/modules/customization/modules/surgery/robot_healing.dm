@@ -6,7 +6,7 @@
 				/datum/surgery_step/robot_heal,
 				/datum/surgery_step/mechanic_close)
 
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
+	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_CHEST)
 	replaced_by = /datum/surgery
 	requires_bodypart_type = BODYPART_ROBOTIC
@@ -126,4 +126,4 @@
 	name = "repair damage"
 	brutehealing = 10
 	burnhealing = 10
-	missinghpbonus = 15 
+	missinghpbonus = 15

@@ -8,7 +8,6 @@
  */
 
 import { classes } from 'common/react';
-import { Fragment } from 'inferno';
 import { Component } from 'inferno';
 import marked from 'marked';
 import { useBackend } from '../backend';
@@ -47,7 +46,7 @@ const createIDHeader = index => {
 // the exact amount of spaces
 const field_regex = /\[(_+)\]/g;
 const field_tag_regex = /\[<input\s+(?!disabled)(.*?)\s+id="(?<id>paperfield_\d+)"(.*?)\/>\]/gm;
-const sign_regex = /%s(?:ign)?(?=\\s|$)/igm;
+const sign_regex = /%s(?:ign)?(?=\\s|$)?/igm;
 
 const createInputField = (length, width, font,
   fontsize, color, id) => {
@@ -345,7 +344,7 @@ class PaperSheetStamper extends Component {
       rotate: this.state.rotate,
     };
     return (
-      <Fragment>
+      <>
         <PaperSheetView
           readOnly
           value={value}
@@ -353,7 +352,7 @@ class PaperSheetStamper extends Component {
         <Stamp
           active_stamp
           opacity={0.5} image={current_pos} />
-      </Fragment>
+      </>
     );
   }
 }

@@ -65,6 +65,8 @@ SUBSYSTEM_DEF(ticker)
 	/// Why an emergency shuttle was called
 	var/emergency_reason
 
+	var/real_round_start_time = 0 //SKYRAT EDIT ADDITION
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
@@ -86,6 +88,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/provisional_title_music = flist("[global.config.directory]/title_music/sounds/")
 	var/list/music = list()
 	var/use_rare_music = prob(1)
+
+	real_round_start_time = world.realtime //SKYRAT EDIT ADDITION
 
 	for(var/S in provisional_title_music)
 		var/lower = lowertext(S)
@@ -155,7 +159,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
+			send2chat("<@&656268126253744152> New round starting on [SSmapping.config.map_name]! \nIf you wish to be pinged for game related stuff, go to a text channel and type $assignrole Game-Alert", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role ping
 			current_state = GAME_STATE_PREGAME
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
@@ -571,8 +575,23 @@ SUBSYSTEM_DEF(ticker)
 		if(GANG_DESTROYED)
 			news_message = "The crew of [station_name()] would like to thank the Spinward Stellar Coalition Police Department for quickly resolving a minor terror threat to the station."
 
-	if(news_message)
+	//SKYRAT EDIT - START
+	if(SSblackbox.first_death)
+		var/list/ded = SSblackbox.first_death
+		if(ded.len)
+			news_message += " NT Sanctioned Psykers picked up faint traces of someone near the station, allegedly having had died. Their name was: [ded["name"]], [ded["role"]], at [ded["area"]].[ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""]" // " // An Extra quote and comment because highlighting goes weird
+		else
+			news_message += " NT Sanctioned Psykers proudly confirm reports that nobody died this shift!"
+	//SKYRAT EDIT - END
+
+	if(news_message && length(CONFIG_GET(keyed_list/cross_server))) //SKYRAT EDIT - CONFIG CHECK MOVED FROM ROUNDEND.DM
 		send2otherserver(news_source, news_message,"News_Report")
+	//SKYRAT EDIT - START
+	if(news_message)
+		return news_message
+	else
+		return "We regret to inform you that shit be whack, yo. None of our reporters have any idea of what may or may not have gone on."
+	//SKYRAT EDIT - END
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.timeLeft))
@@ -605,6 +624,10 @@ SUBSYSTEM_DEF(ticker)
 	var/F = file("data/mode.txt")
 	fdel(F)
 	WRITE_FILE(F, the_mode)
+
+/// Returns if either the master mode or the forced secret ruleset matches the mode name.
+/datum/controller/subsystem/ticker/proc/is_mode(mode_name)
+	return GLOB.master_mode == mode_name || GLOB.secret_force_mode == mode_name
 
 /datum/controller/subsystem/ticker/proc/SetRoundEndSound(the_sound)
 	set waitfor = FALSE

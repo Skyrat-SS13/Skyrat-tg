@@ -77,13 +77,32 @@
 			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
 				if(ishuman(M))//don't remove people from the round randomly you jerks
 					var/mob/living/carbon/human/human = M
+					/* - SKRYAT EDIT CHANGE ORIGINAL
 					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
 						if(human.dna && human.dna.species.id != "fly")
 							to_chat(M, "<span class='hear'>You hear a buzzing in your ears.</span>")
 							human.set_species(/datum/species/fly)
 							log_game("[human] ([key_name(human)]) was turned into a fly person")
-
 					human.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0)
+					*/ //SKYRAT EDIT REMOVAL END
+					//SKRYAT EDIT CHANGE BEGIN
+					to_chat(human, "<span class='danger'>Your limbs lose molecular cohesion as you teleport!</span>")
+					var/list/bodyparts_dismember = list()
+					var/rad_mod = 0
+					for(var/obj/item/bodypart/BP in human.bodyparts)
+						if(BP.body_zone == BODY_ZONE_CHEST || BP.body_zone== BODY_ZONE_HEAD)
+							continue
+						bodyparts_dismember.Add(BP)
+					for(var/i in 1 to 2) //Removing two bodyparts.
+						var/obj/item/bodypart/BP = pick(bodyparts_dismember)
+						if(!istype(BP))
+							rad_mod += 300 //Bad snowflake, take more rads!
+							break
+						BP.dismember()
+						bodyparts_dismember.Remove(BP) //GC optimisation
+						qdel(BP)
+					human.apply_effect((rand(480 + rad_mod - accuracy * 40, 880 + rad_mod - accuracy * 60)), EFFECT_IRRADIATE, 0)
+					//SKYRAT EDIT CHANGE END
 			calibrated = FALSE
 	return
 

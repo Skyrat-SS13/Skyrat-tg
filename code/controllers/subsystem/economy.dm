@@ -36,6 +36,7 @@ SUBSYSTEM_DEF(economy)
 	/// Contains the message to send to newscasters about price inflation and earnings, updated on price_update()
 	var/earning_report
 	var/market_crashing = FALSE
+	var/fire_counter_for_paycheck = 0 //SKYRAT EDIT ADDITION
 
 /datum/controller/subsystem/economy/Initialize(timeofday)
 	var/budget_to_hand_out = round(budget_pool / department_accounts.len)
@@ -44,32 +45,41 @@ SUBSYSTEM_DEF(economy)
 	return ..()
 
 /datum/controller/subsystem/economy/fire(resumed = 0)
+	fire_counter_for_paycheck++ //SKYRAT EDIT ADDITION
 	var/temporary_total = 0
 	departmental_payouts()
 	station_total = 0
 	station_target_buffer += STATION_TARGET_BUFFER
 	for(var/account in bank_accounts_by_id)
 		var/datum/bank_account/bank_account = bank_accounts_by_id[account]
+		//SKYRAT EDIT ADDITION BEGIN
+		if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT)
+			bank_account.payday(PAYCHECK_CYCLE_AMOUNT)
+		//SKYRAT EDIT ADDITION END
 		if(bank_account?.account_job)
 			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
 		if(!istype(bank_account, /datum/bank_account/department))
 			station_total += bank_account.account_balance
+	//SKYRAT EDIT ADDITION BEGIN
+	if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT) //30 minutes per each paycheck
+		fire_counter_for_paycheck = 0
+	//SKYRAT EDIT ADDITION END
 	station_target = max(round(temporary_total / max(bank_accounts_by_id.len * 2, 1)) + station_target_buffer, 1)
 	if(!market_crashing)
 		price_update()
 
 /**
-  * Handy proc for obtaining a department's bank account, given the department ID, AKA the define assigned for what department they're under.
-  */
+ * Handy proc for obtaining a department's bank account, given the department ID, AKA the define assigned for what department they're under.
+ */
 /datum/controller/subsystem/economy/proc/get_dep_account(dep_id)
 	for(var/datum/bank_account/department/D in generated_accounts)
 		if(D.department_id == dep_id)
 			return D
 
 /**
-  * Departmental income payments are kept static and linear for every department, and paid out once every 5 minutes, as determined by MAX_GRANT_DPT.
-  * Iterates over every department account for the same payment.
-  */
+ * Departmental income payments are kept static and linear for every department, and paid out once every 5 minutes, as determined by MAX_GRANT_DPT.
+ * Iterates over every department account for the same payment.
+ */
 /datum/controller/subsystem/economy/proc/departmental_payouts()
 	for(var/iteration in department_accounts)
 		var/datum/bank_account/dept_account = get_dep_account(iteration)
@@ -78,10 +88,10 @@ SUBSYSTEM_DEF(economy)
 		dept_account.adjust_money(MAX_GRANT_DPT)
 
 /**
-  * Updates the prices of all station vendors with the inflation_value, increasing/decreasing costs across the station, and alerts the crew.
-  *
-  * Iterates over the machines list for vending machines, resets their regular and premium product prices (Not contraband), and sends a message to the newscaster network.
-  **/
+ * Updates the prices of all station vendors with the inflation_value, increasing/decreasing costs across the station, and alerts the crew.
+ *
+ * Iterates over the machines list for vending machines, resets their regular and premium product prices (Not contraband), and sends a message to the newscaster network.
+ **/
 /datum/controller/subsystem/economy/proc/price_update()
 	for(var/obj/machinery/vending/V in GLOB.machines)
 		if(istype(V, /obj/machinery/vending/custom))
@@ -93,12 +103,12 @@ SUBSYSTEM_DEF(economy)
 	GLOB.news_network.SubmitArticle(earning_report, "Station Earnings Report", "Station Announcements", null, update_alert = FALSE)
 
 /**
-  * Proc that returns a value meant to shift inflation values in vendors, based on how much money exists on the station.
-  *
-  * If crew are somehow aquiring far too much money, this value will dynamically cause vendables across the station to skyrocket in price until some money is spent.
-  * Additionally, civilain bounties will cost less, and cargo goodies will increase in price as well.
-  * The goal here is that if you want to spend money, you'll have to get it, and the most efficient method is typically from other players.
-  **/
+ * Proc that returns a value meant to shift inflation values in vendors, based on how much money exists on the station.
+ *
+ * If crew are somehow aquiring far too much money, this value will dynamically cause vendables across the station to skyrocket in price until some money is spent.
+ * Additionally, civilain bounties will cost less, and cargo goodies will increase in price as well.
+ * The goal here is that if you want to spend money, you'll have to get it, and the most efficient method is typically from other players.
+ **/
 /datum/controller/subsystem/economy/proc/inflation_value()
 	if(!bank_accounts_by_id.len)
 		return 1
