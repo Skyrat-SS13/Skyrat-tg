@@ -306,6 +306,14 @@
 	// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 	if(owner && wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
 		//SKYRAT EDIT ADDITION - MEDICAL
+		//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
+		//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
+		if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
+			var/damaged_percent = (brute_dam + burn_dam)/max_damage
+			if(damaged_percent > DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD)
+				damaged_percent = DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD
+			wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg+(damaged_percent*DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
+
 		if(current_gauze)
 			current_gauze.take_damage()
 		if(current_splint)
