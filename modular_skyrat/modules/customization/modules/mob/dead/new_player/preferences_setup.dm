@@ -165,7 +165,7 @@
 	parent.show_character_previews(new /mutable_appearance(mannequin))
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 
-/datum/preferences/proc/equip_preference_loadout(mob/living/carbon/human/H, just_preview = FALSE, datum/job/choosen_job)
+/datum/preferences/proc/equip_preference_loadout(mob/living/carbon/human/H, just_preview = FALSE, datum/job/choosen_job, blacklist, initial)
 	if(!ishuman(H))
 		return
 	var/list/items_to_pack = list()
@@ -175,24 +175,28 @@
 		//Skip the item if the job doesn't match, but only if that not used for the preview
 		if(!just_preview && (choosen_job && LI.restricted_roles && !(choosen_job.title in LI.restricted_roles)))
 			continue
-		if(!H.equip_to_appropriate_slot(ITEM))
+		if(!H.equip_to_appropriate_slot(ITEM,blacklist=blacklist,initial=initial))
 			if(!just_preview)
 				items_to_pack += ITEM
 				//Here we stick it into a bag, if possible
-				if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
+				if(!H.equip_to_slot_if_possible(ITEM, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE, initial=initial))
 					//Otherwise - on the ground
 					ITEM.forceMove(get_turf(H))
 			else
 				qdel(ITEM)
 	return items_to_pack
 
+
+
 //This needs to be a seperate proc because the character could not have the proper backpack during the moment of loadout equip
-/datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items)
-	//Here we stick loadout items that couldn't be equipped into a bag. 
+/datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items, del_on_fail = TRUE)
+	//Here we stick loadout items that couldn't be equipped into a bag.
 	var/obj/item/back_item = H.back
 	for(var/item in packed_items)
 		var/obj/item/ITEM = item
 		if(back_item)
 			ITEM.forceMove(back_item)
-		else
+		else if (del_on_fail)
 			qdel(ITEM)
+		else
+			ITEM.forceMove(get_turf(H))

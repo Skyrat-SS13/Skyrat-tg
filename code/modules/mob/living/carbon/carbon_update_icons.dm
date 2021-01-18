@@ -21,8 +21,8 @@
 		resize = RESIZE_DEFAULT_SIZE
 
 	if(changed)
+		SEND_SIGNAL(src, COMSIG_PAUSE_FLOATING_ANIM, 0.3 SECONDS)
 		animate(src, transform = ntransform, time = (lying_prev == 0 || lying_angle == 0) ? 2 : 0, pixel_y = final_pixel_y, dir = final_dir, easing = (EASE_IN|EASE_OUT))
-		setMovetype(movement_type & ~FLOATING)  // If we were without gravity, the bouncing animation got stopped, so we make sure we restart it in next life().
 
 /mob/living/carbon
 	var/list/overlays_standing[TOTAL_LAYERS]
@@ -211,7 +211,9 @@
 //Overlays for the worn overlay so you can overlay while you overlay
 //eg: ammo counters, primed grenade flashing, etc.
 //"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
-/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file)
+//SKYRAT EDIT CHANGE - CUSTOMIZATION
+///obj/item/proc/worn_overlays(isinhands = FALSE, icon_file) (original)
+/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file, mutant_styles = NONE)
 	. = list()
 
 

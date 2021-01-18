@@ -185,7 +185,7 @@
 
 /obj/item/canvas/proc/try_rename(mob/user)
 	var/new_name = stripped_input(user,"What do you want to name the painting?")
-	if(painting_name != initial(painting_name) && new_name && user.canUseTopic(src,BE_CLOSE))
+	if(new_name != painting_name && new_name && user.canUseTopic(src,BE_CLOSE))
 		painting_name = new_name
 		SStgui.update_uis(src)
 
@@ -238,7 +238,7 @@
 
 /obj/structure/sign/painting
 	name = "Painting"
-	desc = "Art or \"Art\"? You decide."
+	desc = "Art or \"Art\"? You decide. Use wirecutters to remove the painting."
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "frame-empty"
 	custom_materials = list(/datum/material/wood = 2000)
@@ -324,6 +324,8 @@
 	var/author = chosen["ckey"]
 	var/png = "data/paintings/[persistence_id]/[chosen["md5"]].png"
 	if(!title)
+		title = "Untitled Artwork" //Should prevent NULL named art from loading as NULL, if you're still getting the admin log chances are persistence is broken
+	if(!title)
 		message_admins("<span class='notice'>Painting with NO TITLE loaded on a [persistence_id] frame in [get_area(src)]. Please delete it, it is saved in the database with no name and will create bad assets.</span>")
 	if(!fexists(png))
 		stack_trace("Persistent painting [chosen["md5"]].png was not found in [persistence_id] directory.")
@@ -353,7 +355,7 @@
 		stack_trace("Invalid persistence_id - [persistence_id]")
 		return
 	if(!C.painting_name)
-		return
+		C.painting_name = "Untitled Artwork"
 	var/data = C.get_data_string()
 	var/md5 = md5(lowertext(data))
 	var/list/current = SSpersistence.paintings[persistence_id]
@@ -378,12 +380,18 @@
 
 //Presets for art gallery mapping, for paintings to be shared across stations
 /obj/structure/sign/painting/library
+	name = "Public Painting Exhibit"
+	desc = "Art or \"Art\"? You decide. Part of the Public Painting Exhibit. Any painting placed here will be archived at the end of the shift. Use wirecutters to remove the painting."
 	persistence_id = "library"
 
 /obj/structure/sign/painting/library_secure
+	name = "Secure Painting Exhibit"
+	desc = "A masterpiece hand-picked by the curator, supposedly. Part of the Secure Painting Exhibit. Any painting placed here will be archived at the end of the shift. Use wirecutters to remove the painting."
 	persistence_id = "library_secure"
 
 /obj/structure/sign/painting/library_private // keep your smut away from prying eyes, or non-librarians at least
+	name = "Private Painting Exhibit"
+	desc = "An art piece deemed too subversive or too illegal for prying eyes. Part of the Private Painting Exhibit. Any painting placed here will be archived at the end of the shift. Use wirecutters to remove the painting."
 	persistence_id = "library_private"
 
 /obj/structure/sign/painting/vv_get_dropdown()

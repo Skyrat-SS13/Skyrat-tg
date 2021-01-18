@@ -208,7 +208,7 @@
 	STR.max_combined_w_class = 100
 	STR.max_items = 100
 	STR.set_holdable(list(
-		/obj/item/reagent_containers/food/snacks/grown,
+		/obj/item/food/grown,
 		/obj/item/seeds,
 		/obj/item/grown,
 		/obj/item/reagent_containers/honeycomb,
@@ -346,7 +346,7 @@
 	else
 		playsound(M, 'sound/items/trayhit2.ogg', 50, TRUE)
 
-	if(ishuman(M) || ismonkey(M))
+	if(ishuman(M))
 		if(prob(10))
 			M.Paralyze(40)
 	update_icon()
@@ -434,10 +434,12 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/blood,
 		/obj/item/reagent_containers/hypospray/medipen,
-		/obj/item/reagent_containers/food/snacks/deadmouse,
+		/obj/item/food/deadmouse,
 		/obj/item/food/monkeycube,
 		/obj/item/organ,
-		/obj/item/bodypart
+		/obj/item/bodypart,
+		/obj/item/petri_dish,
+		/obj/item/swab
 		))
 
 /*

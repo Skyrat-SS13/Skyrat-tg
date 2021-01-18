@@ -31,7 +31,8 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 /obj/machinery/monkey_recycler/RefreshParts()	//Ranges from 0.2 to 0.8 per monkey recycled
 	cube_production = 0
 	for(var/obj/item/stock_parts/manipulator/B in component_parts)
-		cube_production += B.rating * 0.1
+		//cube_production += B.rating * 0.1 //ORIGINAL
+		cube_production += B.rating * 0.2 //SKYRAT EDIT CHANGE - buffs to allow 1.2 cubes per monkey at T4
 	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
 		cube_production += M.rating * 0.1
 
@@ -65,7 +66,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	if(ismonkey(target))
 		stuff_monkey_in(target, user)
 
-/obj/machinery/monkey_recycler/proc/stuff_monkey_in(mob/living/carbon/monkey/target, mob/living/user)
+/obj/machinery/monkey_recycler/proc/stuff_monkey_in(mob/living/carbon/human/target, mob/living/user)
 	if(!istype(target))
 		return
 	if(target.stat == CONSCIOUS)

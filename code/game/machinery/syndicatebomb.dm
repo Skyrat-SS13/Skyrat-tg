@@ -267,10 +267,18 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FLAMMABLE //Burnable (but the casing isn't)
 	var/adminlog = null
+	//SKYRAT EDIT CHANGE BEGIN
+	/*
 	var/range_heavy = 3
 	var/range_medium = 9
 	var/range_light = 17
 	var/range_flame = 17
+	*/
+	var/range_heavy = 2
+	var/range_medium = 6
+	var/range_light = 12
+	var/range_flame = 12
+	//SKYRAT EDIT CHANGE END
 
 /obj/item/bombcore/ex_act(severity, target) // Little boom can chain a big boom.
 	detonate()
@@ -342,7 +350,7 @@
 	qdel(src)
 
 /obj/item/bombcore/badmin/summon
-	var/summon_path = /obj/item/reagent_containers/food/snacks/cookie
+	var/summon_path = /obj/item/food/cookie
 	var/amt_summon = 1
 
 /obj/item/bombcore/badmin/summon/detonate()

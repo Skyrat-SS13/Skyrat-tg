@@ -14,10 +14,12 @@
 /datum/loadout_item/neck/collar
 	name = "Collar"
 	path = /obj/item/clothing/neck/human_petcollar
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/neck/leathercollar
 	name = "Leather collar"
 	path = /obj/item/clothing/neck/human_petcollar/leather
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/neck/poly_cloak
 	name = "Polychromic Cloak"
@@ -49,7 +51,7 @@
 	subcategory = LOADOUT_SUBCATEGORY_NECK_SCARVES
 
 /datum/loadout_item/neck/scarf/scarf
-	name = "Colorable scarf"
+	name = "White Scarf"
 	path = /obj/item/clothing/neck/scarf
 	extra_info = LOADOUT_INFO_ONE_COLOR
 

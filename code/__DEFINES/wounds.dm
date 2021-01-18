@@ -32,6 +32,10 @@
 #define WOUND_PIERCE	3
 /// any concentrated burn attack (lasers really). rolls for burning wounds
 #define WOUND_BURN		4
+//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+/// any brute attacks, rolled on a chance
+#define WOUND_MUSCLE 5
+//SKYRAT EDIT ADDITION END
 
 
 // ~determination second wind defines
@@ -43,20 +47,23 @@
 /// the max amount of determination you can have
 #define WOUND_DETERMINATION_MAX			10
 
+/// While someone has determination in their system, their bleed rate is slightly reduced
+#define WOUND_DETERMINATION_BLEED_MOD	0.85
 
 // ~wound global lists
 // list in order of highest severity to lowest
 GLOBAL_LIST_INIT(global_wound_types, list(WOUND_BLUNT = list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate),
 		WOUND_SLASH = list(/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate),
 		WOUND_PIERCE = list(/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate),
-		WOUND_BURN = list(/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate)
+		WOUND_BURN = list(/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate),
+		WOUND_MUSCLE = list(/datum/wound/muscle/severe, /datum/wound/muscle/moderate)
 		))
 
 // every single type of wound that can be rolled naturally, in case you need to pull a random one
 GLOBAL_LIST_INIT(global_all_wound_types, list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate,
 	/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate,
 	/datum/wound/pierce/critical, /datum/wound/pierce/severe, /datum/wound/pierce/moderate,
-	/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate))
+	/datum/wound/burn/critical, /datum/wound/burn/severe, /datum/wound/burn/moderate, /datum/wound/muscle/severe, /datum/wound/muscle/moderate))
 
 
 // ~burn wound infection defines
@@ -118,6 +125,10 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(/datum/wound/blunt/critical, /datu
 #define MANGLES_BONE	(1<<3)
 /// If this wound marks the limb as being allowed to have gauze applied
 #define ACCEPTS_GAUZE	(1<<4)
+//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+/// If this wound marks the limb as being allowed to have splints applied
+#define ACCEPTS_SPLINT	(1<<5)
+//SKYRAT EDIT ADDITION END
 
 
 // ~scar persistence defines
@@ -143,3 +154,14 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(/datum/wound/blunt/critical, /datu
 #define SCAR_CURRENT_VERSION		3
 /// how many scar slots, per character slot, we have to cycle through for persistent scarring, if enabled in character prefs
 #define PERSISTENT_SCAR_SLOTS		3
+
+// ~blood_flow rates of change, these are used by [/datum/wound/proc/get_bleed_rate_of_change] from [/mob/living/carbon/proc/bleed_warn] to let the player know if their bleeding is getting better/worse/the same
+/// Our wound is clotting and will eventually stop bleeding if this continues
+#define BLOOD_FLOW_DECREASING	-1
+/// Our wound is bleeding but is holding steady at the same rate.
+#define BLOOD_FLOW_STEADY		0
+/// Our wound is bleeding and actively getting worse, like if we're a critical slash or if we're afflicted with heparin
+#define BLOOD_FLOW_INCREASING	1
+
+/// How often can we annoy the player about their bleeding? This duration is extended if it's not serious bleeding
+#define BLEEDING_MESSAGE_BASE_CD	10 SECONDS

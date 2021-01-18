@@ -18,7 +18,7 @@
 	var/singular_name
 	var/amount = 1
 	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
-	var/is_cyborg = 0 // It's 1 if module is used by a cyborg, and uses its storage
+	var/is_cyborg = FALSE // It's TRUE if module is used by a cyborg, and uses its storage
 	var/datum/robot_energy_storage/source
 	var/cost = 1 // How much energy from storage it costs
 	var/merge_type = null // This path and its children should merge with this stack, defaults to src.type
@@ -40,7 +40,7 @@
 	/// Amount of matter for RCD
 	var/matter_amount = 0
 
-/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
+/obj/item/stack/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
 	if(new_amount != null)
 		amount = new_amount
 	while(amount > max_amount)
@@ -49,7 +49,9 @@
 	if(!merge_type)
 		merge_type = type
 
-	if(LAZYLEN(mats_per_unit))
+	if(LAZYLEN(mat_override))
+		set_mats_per_unit(mat_override, mat_amt)
+	else if(LAZYLEN(mats_per_unit))
 		set_mats_per_unit(mats_per_unit, 1)
 	else if(LAZYLEN(custom_materials))
 		set_mats_per_unit(custom_materials, amount ? 1/amount : 1)
@@ -62,7 +64,7 @@
 	var/list/temp_recipes = get_main_recipes()
 	recipes = temp_recipes.Copy()
 	if(material_type)
-		var/datum/material/M = SSmaterials.GetMaterialRef(material_type) //First/main material
+		var/datum/material/M = GET_MATERIAL_REF(material_type) //First/main material
 		for(var/i in M.categories)
 			switch(i)
 				if(MAT_CATEGORY_BASE_RECIPES)
@@ -75,21 +77,29 @@
 	update_icon()
 
 /** Sets the amount of materials per unit for this stack.
-  *
-  * Arguments:
-  * - [mats][/list]: The value to set the mats per unit to.
-  * - multiplier: The amount to multiply the mats per unit by. Defaults to 1.
-  */
+ *
+ * Arguments:
+ * - [mats][/list]: The value to set the mats per unit to.
+ * - multiplier: The amount to multiply the mats per unit by. Defaults to 1.
+ */
 /obj/item/stack/proc/set_mats_per_unit(list/mats, multiplier=1)
 	mats_per_unit = SSmaterials.FindOrCreateMaterialCombo(mats, multiplier)
 	update_custom_materials()
 
 /** Updates the custom materials list of this stack.
-  */
+ */
 /obj/item/stack/proc/update_custom_materials()
-	set_custom_materials(mats_per_unit, amount)
+	set_custom_materials(mats_per_unit, amount, is_update=TRUE)
+
+/**
+ * Override to make things like metalgen accurately set custom materials
+ */
+/obj/item/stack/set_custom_materials(list/materials, multiplier=1, is_update=FALSE)
+	return is_update ? ..() : set_mats_per_unit(materials, multiplier/(amount || 1))
+
 
 /obj/item/stack/on_grind()
+	. = ..()
 	for(var/i in 1 to length(grind_results)) //This should only call if it's ground, so no need to check if grind_results exists
 		grind_results[grind_results[i]] *= get_amount() //Gets the key at position i, then the reagent amount of that key, then multiplies it by stack size
 
@@ -123,7 +133,7 @@
 
 /obj/item/stack/examine(mob/user)
 	. = ..()
-	if (is_cyborg)
+	if(is_cyborg)
 		if(singular_name)
 			. += "There is enough energy for [get_amount()] [singular_name]\s."
 		else
@@ -147,11 +157,11 @@
 		. = (amount)
 
 /**
-  * Builds all recipes in a given recipe list and returns an association list containing them
-  *
-  * Arguments:
-  * * recipe_to_iterate - The list of recipes we are using to build recipes
-  */
+ * Builds all recipes in a given recipe list and returns an association list containing them
+ *
+ * Arguments:
+ * * recipe_to_iterate - The list of recipes we are using to build recipes
+ */
 /obj/item/stack/proc/recursively_build_recipes(list/recipe_to_iterate)
 	var/list/L = list()
 	for(var/recipe in recipe_to_iterate)
@@ -164,11 +174,11 @@
 	return L
 
 /**
-  * Returns a list of properties of a given recipe
-  *
-  * Arguments:
-  * * R - The stack recipe we are using to get a list of properties
-  */
+ * Returns a list of properties of a given recipe
+ *
+ * Arguments:
+ * * R - The stack recipe we are using to get a list of properties
+ */
 /obj/item/stack/proc/build_recipe(datum/stack_recipe/R)
 	return list(
 		"res_amount" = R.res_amount,
@@ -178,12 +188,12 @@
 	)
 
 /**
-  * Checks if the recipe is valid to be used
-  *
-  * Arguments:
-  * * R - The stack recipe we are checking if it is valid
-  * * recipe_list - The list of recipes we are using to check the given recipe
-  */
+ * Checks if the recipe is valid to be used
+ *
+ * Arguments:
+ * * R - The stack recipe we are checking if it is valid
+ * * recipe_list - The list of recipes we are using to check the given recipe
+ */
 /obj/item/stack/proc/is_valid_recipe(datum/stack_recipe/R, list/recipe_list)
 	for(var/S in recipe_list)
 		if(S == R)
@@ -345,7 +355,7 @@
 /obj/item/stack/use(used, transfer = FALSE, check = TRUE) // return 0 = borked; return 1 = had enough
 	if(check && zero_amount())
 		return FALSE
-	if (is_cyborg)
+	if(is_cyborg)
 		return source.use_charge(used * cost)
 	if (amount < used)
 		return FALSE
@@ -381,12 +391,12 @@
 	return FALSE
 
 /** Adds some number of units to this stack.
-  *
-  * Arguments:
-  * - _amount: The number of units to add to this stack.
-  */
+ *
+ * Arguments:
+ * - _amount: The number of units to add to this stack.
+ */
 /obj/item/stack/proc/add(_amount)
-	if (is_cyborg)
+	if(is_cyborg)
 		source.add_charge(_amount * cost)
 	else
 		amount += _amount
@@ -396,25 +406,28 @@
 	update_weight()
 
 /** Checks whether this stack can merge itself into another stack.
-  *
-  * Arguments:
-  * - [check][/obj/item/stack]: The stack to check for mergeability.
-  */
+ *
+ * Arguments:
+ * - [check][/obj/item/stack]: The stack to check for mergeability.
+ */
 /obj/item/stack/proc/can_merge(obj/item/stack/check)
 	if(!istype(check, merge_type))
 		return FALSE
 	if(mats_per_unit != check.mats_per_unit)
 		return FALSE
+	if(is_cyborg)	// No merging cyborg stacks into other stacks
+		return FALSE
 	return TRUE
 
-/obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
+///Merges src into S, as much as possible. If present, the limit arg overrides S.max_amount for transfer.
+/obj/item/stack/proc/merge(obj/item/stack/S, limit)
 	if(QDELETED(S) || QDELETED(src) || S == src) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
 	if(S.is_cyborg)
 		transfer = min(transfer, round((S.source.max_energy - S.source.energy) / S.cost))
 	else
-		transfer = min(transfer, S.max_amount - S.amount)
+		transfer = min(transfer, (limit ? limit : S.max_amount) - S.amount)
 	if(pulledby)
 		pulledby.start_pulling(S)
 	S.copy_evidences(src)
@@ -445,36 +458,29 @@
 	. = ..()
 	if(isturf(loc)) // to prevent people that are alt clicking a tile to see its content from getting undesidered pop ups
 		return
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(is_cyborg || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)) || zero_amount())
 		return
-	if(is_cyborg)
+	//get amount from user
+	var/max = get_amount()
+	var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
+	max = get_amount()
+	stackmaterial = min(max, stackmaterial)
+	if(stackmaterial == null || stackmaterial <= 0 || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
 		return
-	else
-		if(zero_amount())
-			return
-		//get amount from user
-		var/max = get_amount()
-		var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
-		max = get_amount()
-		stackmaterial = min(max, stackmaterial)
-		if(stackmaterial == null || stackmaterial <= 0 || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
-			return
-		else
-			split_stack(user, stackmaterial)
-			to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack.</span>")
+	split_stack(user, stackmaterial)
+	to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack.</span>")
 
 /** Splits the stack into two stacks.
-  *
-  * Arguments:
-  * - [user][/mob]: The mob splitting the stack.
-  * - amount: The number of units to split from this stack.
-  */
+ *
+ * Arguments:
+ * - [user][/mob]: The mob splitting the stack.
+ * - amount: The number of units to split from this stack.
+ */
 /obj/item/stack/proc/split_stack(mob/user, amount)
 	if(!use(amount, TRUE, FALSE))
 		return null
-	var/obj/item/stack/F = new type(user? user : drop_location(), amount, FALSE)
+	var/obj/item/stack/F = new type(user? user : drop_location(), amount, FALSE, mats_per_unit)
 	. = F
-	F.set_mats_per_unit(mats_per_unit, 1) // Required for greyscale sheets and tiles.
 	F.copy_evidences(src)
 	if(user)
 		if(!user.put_in_hands(F, merge_stacks = FALSE))

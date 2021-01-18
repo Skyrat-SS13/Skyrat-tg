@@ -4,7 +4,7 @@
 	/datum/surgery_step/weld_plating,
 	/datum/surgery_step/restore_paintjob)
 
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
+	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_CHEST)
 	requires_bodypart_type = BODYPART_ROBOTIC
 	desc = "A procedure that welds the robotic limbs back into the patient's preferred state aswell as re-applying their paintjob."
@@ -46,4 +46,4 @@
 /datum/surgery_step/restore_paintjob/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, "<span class='notice'>You begin to spray paint on [target]...</span>",
 			"[user] begins to spray paint on [target]'s [parse_zone(target_zone)].",
-			"[user] begins to spray paint on [target]'s [parse_zone(target_zone)].") 
+			"[user] begins to spray paint on [target]'s [parse_zone(target_zone)].")

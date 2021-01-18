@@ -3,7 +3,7 @@
 /datum/asset/simple/tgui_common
 	keep_local_name = TRUE
 	assets = list(
-		"tgui-common.chunk.js" = 'tgui/public/tgui-common.chunk.js',
+		"tgui-common.bundle.js" = 'tgui/public/tgui-common.bundle.js',
 	)
 
 /datum/asset/simple/tgui
@@ -511,3 +511,8 @@
 
 /datum/asset/simple/portraits/library_private
 	tab = "library_private"
+
+/datum/asset/simple/safe
+	assets = list(
+		"safe_dial.png" = 'html/safe_dial.png'
+	)
