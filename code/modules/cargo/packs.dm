@@ -623,6 +623,14 @@
                     /obj/item/gun/ballistic/rifle/boltaction)
     crate_name = "surplus armoury crate"
 
+/datum/supply_pack/security/armory/mosin_ammo
+    name = "Surplus Ammo Crate"
+    desc = "Contains two budget 7.62 ammo boxes. Perfect for cheap warfare, or when the shuttle vote is too democratic."
+    cost = CARGO_CRATE_VALUE * 12
+	contains = list(/obj/item/storage/toolbox/ammo,
+	                /obj/item/storage/toolbox/ammo)
+    crate_name = "surplus ammo crate"
+
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
 	desc = "Contains two fullbody sets of tough, fireproof, pressurized suits designed in a joint effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
