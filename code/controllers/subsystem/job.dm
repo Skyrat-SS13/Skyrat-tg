@@ -30,11 +30,13 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/new_overflow = GetJob(new_overflow_role)
 	var/cap = CONFIG_GET(number/overflow_cap)
 
+	new_overflow.allow_bureaucratic_error = FALSE
 	new_overflow.spawn_positions = cap
 	new_overflow.total_positions = cap
 
 	if(new_overflow_role != overflow_role)
 		var/datum/job/old_overflow = GetJob(overflow_role)
+		old_overflow.allow_bureaucratic_error = initial(old_overflow.allow_bureaucratic_error)
 		old_overflow.spawn_positions = initial(old_overflow.spawn_positions)
 		old_overflow.total_positions = initial(old_overflow.total_positions)
 		overflow_role = new_overflow_role
@@ -88,6 +90,8 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(job.has_banned_quirk(player.client.prefs))
 			return FALSE
+		if(job.has_banned_species(player.client.prefs))
+			return FALSE
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			return FALSE
@@ -116,6 +120,9 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(job.has_banned_quirk(player.client.prefs))
 			JobDebug("FOC job not compatible with quirks, Player: [player]")
+			continue
+		if(job.has_banned_species(player.client.prefs))
+			JobDebug("FOC job not compatible with species, Player: [player]")
 			continue
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
@@ -159,6 +166,9 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(job.has_banned_quirk(player.client.prefs))
 			JobDebug("GRJ player has incompatible quirk, Player: [player]")
+			continue
+		if(job.has_banned_species(player.client.prefs))
+			JobDebug("GRJ player has incompatible species, Player: [player]")
 			continue
 		//SKYRAT EDIT END
 
@@ -346,6 +356,9 @@ SUBSYSTEM_DEF(job)
 				if(job.has_banned_quirk(player.client.prefs))
 					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
 					continue
+				if(job.has_banned_species(player.client.prefs))
+					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					continue
 				//SKYRAT EDIT END
 
 				if(job.required_playtime_remaining(player.client))
@@ -468,6 +481,10 @@ SUBSYSTEM_DEF(job)
 	to_chat(M, "<b>You are the [rank].</b>")
 	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if (M.client && job.no_dresscode && job.loadout)
+			packed_items = M.client.prefs.equip_preference_loadout(living_mob,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
+		//SKYRAT EDIT ADDITION END
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)//silicons override this proc to return a mob
 		if(ismob(new_mob))
 			living_mob = new_mob
@@ -500,9 +517,9 @@ SUBSYSTEM_DEF(job)
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-		if(job.loadout)
+		if(!job.no_dresscode && job.loadout)
 			if(M.client)
-				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job)
+				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job,initial=TRUE)
 		if(packed_items)
 			M.client.prefs.add_packed_items(living_mob, packed_items)
 		//SKYRAT CHANGE ADDITION END

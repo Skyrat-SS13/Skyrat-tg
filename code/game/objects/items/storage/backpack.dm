@@ -322,18 +322,28 @@
 	STR.set_holdable(null, list(/obj/item/storage/backpack/satchel/flat)) //muh recursive backpacks)
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
-	var/datum/supply_pack/costumes_toys/randomised/contraband/C = new
+	//SKYRAT EDIT CHANGE BEGIN
+	/*
+	/datum/supply_pack/costumes_toys/randomised/contraband/C = new
 	for(var/i in 1 to 2)
 		var/ctype = pick(C.contains)
 		new ctype(src)
 
 	qdel(C)
+	*/
+	var/contraband_list = list(/obj/item/storage/bag/ammo=4, /obj/item/storage/belt/utility/syndicate=1, /obj/item/storage/toolbox/syndicate=7, /obj/item/card/id/syndicate=6, /obj/item/storage/secure/briefcase/syndie=3, /obj/item/stack/telecrystal=2, /obj/item/storage/belt/military=12, /obj/item/storage/pill_bottle/aranesp=11, /obj/item/storage/pill_bottle/happy=12, /obj/item/storage/pill_bottle/stimulant=9, /obj/item/storage/pill_bottle/lsd=10, /obj/item/storage/fancy/cigarettes/cigpack_syndicate=8, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims=10, /obj/item/reagent_containers/food/drinks/bottle/absinthe=12, /obj/item/storage/box/fireworks/dangerous=11, /obj/item/food/grown/cannabis/white=9, /obj/item/food/grown/cannabis=13, /obj/item/food/grown/cannabis/rainbow=8, /obj/item/food/grown/mushroom/libertycap=11, /obj/item/clothing/mask/gas/syndicate=10, /obj/item/vending_refill/donksoft=13, /obj/item/ammo_box/foambox/riot=11, /obj/item/soap/syndie=7)
+	for(var/i in 1 to 3)
+		var/contraband_type = pickweight(contraband_list)
+		contraband_list -= contraband_type
+		new contraband_type(src)
+
+	//SKYRAT EDIT CHANGE END
 
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
 	new /obj/item/stack/tile/plasteel(src)
 	new /obj/item/crowbar(src)
 
-	..()
+//	..() SKYRAT EDIT REMOVAL
 
 /obj/item/storage/backpack/satchel/flat/empty/PopulateContents()
 	return
@@ -350,6 +360,64 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 30
+
+/obj/item/storage/backpack/duffelbag/cursed
+	name = "living duffel bag"
+	desc = "A cursed clown duffel bag that hungers for food of any kind. Putting some food for it to eat inside of it should distract it from eating you for a while. A warning label on one of the duffel bag's sides cautions against feeding your \"new pet\" anything poisonous..."
+	icon_state = "duffel-curse"
+	inhand_icon_state = "duffel-curse"
+	slowdown = 1.3
+	max_integrity = 100
+	///counts time passed since it ate food
+	var/hunger = 0
+
+/obj/item/storage/backpack/duffelbag/cursed/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj,src)
+	ADD_TRAIT(src, TRAIT_NODROP, "duffelbag")
+
+/obj/item/storage/backpack/duffelbag/cursed/process()
+	///don't process if it's somehow on the floor
+	if(!iscarbon(src.loc))
+		return
+	var/mob/living/carbon/user = src.loc
+	///check hp
+	if(obj_integrity < 0)
+		user.dropItemToGround(src, TRUE)
+		var/datum/component/storage/ST = GetComponent(/datum/component/storage)
+		ST.do_quick_empty()
+		var/turf/T = get_turf(user)
+		playsound(T, 'sound/effects/splat.ogg', 50, TRUE)
+		new /obj/effect/decal/cleanable/vomit(T)
+		qdel(src)
+	hunger++
+	///check hunger
+	if((hunger > 50) && prob(20))
+		for(var/obj/item/I in contents)
+			if(IS_EDIBLE(I))
+				var/obj/item/food/F = I
+				F.forceMove(user.loc)
+				playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
+				///poisoned food damages it
+				if(F.reagents.has_reagent(/datum/reagent/toxin))
+					to_chat(user, "<span class='warning'>The [name] grumbles!</span>")
+					obj_integrity -= 20
+				else
+					to_chat(user, "<span class='notice'>The [name] eats your [F]!</span>")
+				qdel(F)
+				hunger = 0
+				return
+		///no food found: it bites you and loses some hp
+		var/affecting = user.get_bodypart(BODY_ZONE_CHEST)
+		user.apply_damage(40, BRUTE, affecting)
+		hunger = 5
+		playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
+		to_chat(user, "<span class='warning'>The [name] eats your back!</span>")
+		obj_integrity -= 15
+
+/obj/item/storage/backpack/duffelbag/cursed/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSobj,src)
 
 /obj/item/storage/backpack/duffelbag/captain
 	name = "captain's duffel bag"

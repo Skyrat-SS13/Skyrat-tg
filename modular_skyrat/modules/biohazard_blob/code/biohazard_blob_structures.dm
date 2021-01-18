@@ -35,8 +35,8 @@
 	density = TRUE
 
 /datum/looping_sound/core_heartbeat
-	mid_length = 51
-	mid_sounds = list('sound/effects/heart_beat.ogg'=1)
+	mid_length = 3 SECONDS
+	mid_sounds = list('modular_skyrat/master_files/sound/effects/heart_beat_loop3.ogg'=1)
 	volume = 20
 
 #define CORE_RETALIATION_COOLDOWN 30 SECONDS
@@ -192,7 +192,7 @@
 
 	for(var/i=1,i<=16,i <<= 1)
 		if(direction & i)
-			dirList += i 
+			dirList += i
 
 	if(dirList.len)
 		var/newDir = pick(dirList)
@@ -315,6 +315,8 @@
 	. = ..()
 
 /obj/structure/biohazard_blob/structure/bulb/Destroy()
+	if(our_controller)
+		our_controller.other_structures -= src
 	for(var/t in registered_turfs)
 		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
 	registered_turfs = null
@@ -364,6 +366,11 @@
 	var/monster_types = list()
 	var/max_spawns = 1
 	var/spawn_cooldown = 600 //In deciseconds
+
+/obj/structure/biohazard_blob/structure/spawner/Destroy()
+	if(our_controller)
+		our_controller.other_structures -= src
+	return ..()
 
 /obj/structure/biohazard_blob/structure/spawner/Initialize()
 	. = ..()

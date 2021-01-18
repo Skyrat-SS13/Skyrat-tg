@@ -9,7 +9,7 @@
 				/datum/surgery_step/revive,
 				/datum/surgery_step/close)
 
-	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
+	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_HEAD)
 	requires_bodypart_type = 0
 
@@ -69,7 +69,7 @@
 		target.visible_message("<span class='notice'>...[target] wakes up, alive and aware!</span>")
 		target.emote("gasp")
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 50, 199) //MAD SCIENCE
-		to_chat(target, "<span class='boldwarning'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
+		to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
 		return TRUE
 	else
 		target.visible_message("<span class='warning'>...[target.p_they()] convulses, then lies still.</span>")

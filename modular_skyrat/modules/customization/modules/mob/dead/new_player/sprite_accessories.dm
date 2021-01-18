@@ -30,13 +30,15 @@
 	var/special_x_dimension
 	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
-	///Special case of possibly not applying color to the accessory, important for hardsuit styles
+	///Special case of applying a different color, like hardsuit tails
 	var/special_colorize
 	///Whether it has any extras to render, and their appropriate color sources
 	var/extra = FALSE
 	var/extra_color_src
 	var/extra2 = FALSE
 	var/extra2_color_src
+	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
+	var/list/ckey_whitelist
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -55,17 +57,17 @@
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return FALSE
 
-/datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H, icon_state)
+/datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H)
 	return null
 
-/datum/sprite_accessory/proc/get_special_icon(mob/living/carbon/human/H)
+/datum/sprite_accessory/proc/get_special_render_colour(mob/living/carbon/human/H, passed_state)
 	return null
 
-/datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H)
+/datum/sprite_accessory/proc/get_special_icon(mob/living/carbon/human/H, passed_state)
+	return null
+
+/datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
-
-/datum/sprite_accessory/proc/do_colorize(mob/living/carbon/human/H)
-	return TRUE
 
 /datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information
 	var/list/colors
@@ -88,18 +90,13 @@
 
 	return colors
 
-/datum/sprite_accessory/moth_wings
-	key = "moth_wings"
-	generic = "Moth wings"
-
-/datum/sprite_accessory/moth_wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(H.dna.species, H.wear_suit.species_exception))))
-		return TRUE
-	return FALSE
-
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
 	generic = "Moth markings"
+
+/datum/sprite_accessory/moth_antennae/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/spines
 	key = "spines"
@@ -108,16 +105,18 @@
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list("lizard", "unathi", "ashlizard")
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(!T || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT)))
 		return TRUE
 	return FALSE
 
-/datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H, icon_state)
+/datum/sprite_accessory/spines/get_special_render_state(mob/living/carbon/human/H)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
 	if(T && T.wagging)
-		icon_state += "_wagging"
+		return "[icon_state]_wagging"
 	return icon_state
 
 /datum/sprite_accessory/caps

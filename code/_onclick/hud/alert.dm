@@ -148,6 +148,17 @@
 	name = "Choking (Plasma)"
 	desc = "There's highly flammable, toxic plasma in the air and you're breathing it in. Find some fresh air. The box in your backpack has an oxygen tank and gas mask in it."
 	icon_state = "too_much_tox"
+
+/atom/movable/screen/alert/not_enough_n2o
+	name = "Choking (No N2O)"
+	desc = "You're not getting enough N2O. Find some good air before you pass out!"
+	icon_state = "not_enough_n2o"
+
+/atom/movable/screen/alert/too_much_n2o
+	name = "Choking (N2O)"
+	desc = "There's semi-toxic sleeping gas in the air and you're breathing it in. Find some fresh air. The box in your backpack has an oxygen tank and gas mask in it."
+	icon_state = "too_much_n2o"
+
 //End gas alerts
 
 
@@ -300,7 +311,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	add_overlay(receiving)
 	src.receiving = receiving
 	src.giver = giver
-	RegisterSignal(taker, COMSIG_MOVABLE_MOVED, .proc/check_in_range, taker)
+	RegisterSignal(taker, COMSIG_MOVABLE_MOVED, .proc/check_in_range)
 
 /atom/movable/screen/alert/give/proc/check_in_range(atom/taker)
 	SIGNAL_HANDLER

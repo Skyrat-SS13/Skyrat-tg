@@ -53,7 +53,7 @@
 		dna.species.on_hit(P, src)
 
 
-/mob/living/carbon/human/bullet_act(obj/projectile/P, def_zone)
+/mob/living/carbon/human/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
 	if(dna?.species)
 		var/spec_return = dna.species.bullet_act(P, src)
 		if(spec_return)
@@ -74,7 +74,7 @@
 				// Find a turf near or on the original location to bounce to
 				if(!isturf(loc)) //Open canopy mech (ripley) check. if we're inside something and still got hit
 					P.force_hit = TRUE //The thing we're in passed the bullet to us. Pass it back, and tell it to take the damage.
-					loc.bullet_act(P)
+					loc.bullet_act(P, def_zone, piercing_hit)
 					return BULLET_ACT_HIT
 				if(P.starting)
 					var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
@@ -95,10 +95,11 @@
 				return BULLET_ACT_FORCE_PIERCE // complete projectile permutation
 
 		if(check_shields(P, P.damage, "the [P.name]", PROJECTILE_ATTACK, P.armour_penetration))
-			P.on_hit(src, 100, def_zone)
+			P.on_hit(src, 100, def_zone, piercing_hit)
 			return BULLET_ACT_HIT
 
-	return ..(P, def_zone)
+	return ..()
+
 ///Reflection checks for anything in your l_hand, r_hand, or wear_suit based on the reflection chance of the object
 /mob/living/carbon/human/proc/check_reflect(def_zone)
 	if(wear_suit)
@@ -131,6 +132,10 @@
 	if(wear_neck)
 		var/final_block_chance = wear_neck.block_chance - (clamp((armour_penetration-wear_neck.armour_penetration)/2,0,100)) + block_chance_modifier
 		if(wear_neck.hit_reaction(src, AM, attack_text, final_block_chance, damage, attack_type))
+			return TRUE
+	if(head)
+		var/final_block_chance = head.block_chance - (clamp((armour_penetration-head.armour_penetration)/2,0,100)) + block_chance_modifier
+		if(head.hit_reaction(src, AM, attack_text, final_block_chance, damage, attack_type))
 			return TRUE
 	return FALSE
 
@@ -208,7 +213,7 @@
 		var/mob/living/carbon/human/H = user
 		dna.species.spec_attack_hand(H, src)
 
-/mob/living/carbon/human/attack_paw(mob/living/carbon/monkey/M)
+/mob/living/carbon/human/attack_paw(mob/living/carbon/human/M)
 	var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 	if(!affecting)
@@ -244,7 +249,9 @@
 
 	if(can_inject(M, 1, affecting))//Thick suits can stop monkey bites.
 		if(..()) //successful monkey bite, this handles disease contraction.
-			var/damage = rand(1, 3)
+			var/damage = rand(M.dna.species.punchdamagelow, M.dna.species.punchdamagehigh)
+			if(!damage)
+				return
 			if(check_shields(M, damage, "the [M.name]"))
 				return FALSE
 			if(stat != DEAD)
@@ -263,7 +270,7 @@
 	if(M.a_intent == INTENT_HARM)
 		if (w_uniform)
 			w_uniform.add_fingerprint(M)
-		var/damage = prob(90) ? 20 : 0
+		var/damage = prob(90) ? rand(M.melee_damage_lower, M.melee_damage_upper) : 0
 		if(!damage)
 			playsound(loc, 'sound/weapons/slashmiss.ogg', 50, TRUE, -1)
 			visible_message("<span class='danger'>[M] lunges at [src]!</span>", \
@@ -304,7 +311,9 @@
 	. = ..()
 	if(!.)
 		return //successful larva bite.
-	var/damage = rand(1, 3)
+	var/damage = rand(L.melee_damage_lower, L.melee_damage_upper)
+	if(!damage)
+		return
 	if(check_shields(L, damage, "the [L.name]"))
 		return FALSE
 	if(stat != DEAD)
@@ -337,10 +346,12 @@
 	. = ..()
 	if(!.) // slime attack failed
 		return
-	var/damage = rand(5, 25)
+	var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
+	if(!damage)
+		return
 	var/wound_mod = -45 // 25^1.4=90, 90-45=45
 	if(M.is_adult)
-		damage = rand(10, 35)
+		damage += rand(5, 10)
 		wound_mod = -90 // 35^1.4=145, 145-90=55
 
 	if(check_shields(M, damage, "the [M.name]"))
@@ -730,13 +741,17 @@
 			var/msg
 			switch(W.severity)
 				if(WOUND_SEVERITY_TRIVIAL)
-					msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>"
+					//msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>" //ORIGINAL
+					msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)].</span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_MODERATE)
-					msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</span>"
+					//msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</span>" //ORIGINAL
+					msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_SEVERE)
-					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>"
+					//msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>" //ORIGINAL
+					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_CRITICAL)
-					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>"
+					//msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>" //ORIGINAL
+					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
 			combined_msg += msg
 
 		for(var/obj/item/I in LB.embedded_objects)
@@ -744,6 +759,15 @@
 				combined_msg += "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>"
 			else
 				combined_msg += "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
+
+		//SKYRAT EDIT ADDITION BEGIN - MEDICAL
+		if(LB.current_gauze)
+			var/datum/bodypart_aid/current_gauze = LB.current_gauze
+			combined_msg += "\t <span class='notice'>Your [LB.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.</span>"
+		if(LB.current_splint)
+			var/datum/bodypart_aid/current_splint = LB.current_splint
+			combined_msg += "\t <span class='notice'>Your [LB.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.</span>"
+		//SKYRAT EDIT END
 
 	for(var/t in missing)
 		combined_msg += "<span class='boldannounce'>Your [parse_zone(t)] is missing!</span>"

@@ -1,6 +1,6 @@
 // tgstation-server DMAPI
 
-#define TGS_DMAPI_VERSION "5.2.9"
+#define TGS_DMAPI_VERSION "5.2.10"
 
 // All functions and datums outside this document are subject to change with any version and should not be relied on.
 
@@ -67,7 +67,7 @@
 #define TGS_EVENT_REPO_CHECKOUT 1
 /// When the repository performs a fetch operation. No parameters
 #define TGS_EVENT_REPO_FETCH 2
-/// When the repository merges a pull request. Parameters: PR Number, PR Sha, (Nullable) Comment made by TGS user
+/// When the repository test merges. Parameters: PR Number, PR Sha, (Nullable) Comment made by TGS user
 #define TGS_EVENT_REPO_MERGE_PULL_REQUEST 3
 /// Before the repository makes a sychronize operation. Parameters: Absolute repostiory path
 #define TGS_EVENT_REPO_PRE_SYNCHRONIZE 4
@@ -190,21 +190,21 @@
 
 /// Represents a merge of a GitHub pull request.
 /datum/tgs_revision_information/test_merge
-	/// The pull request number.
+	/// The test merge number.
 	var/number
-	/// The pull request title when it was merged.
+	/// The test merge source's title when it was merged.
 	var/title
-	/// The pull request body when it was merged.
+	/// The test merge source's body when it was merged.
 	var/body
-	/// The GitHub username of the pull request's author.
+	/// The Username of the test merge source's author.
 	var/author
-	/// An http URL to the pull request.
+	/// An http URL to the test merge source.
 	var/url
-	/// The SHA of the pull request when that was merged.
+	/// The SHA of the test merge when that was merged.
 	var/pull_request_commit
-	/// ISO 8601 timestamp of when the pull request was merged.
+	/// ISO 8601 timestamp of when the test merge was created on TGS.
 	var/time_merged
-	/// (Nullable) Comment left by the TGS user who initiated the merge..
+	/// Optional comment left by the TGS user who initiated the merge.
 	var/comment
 
 /// Represents a connected chat channel.
@@ -346,9 +346,7 @@
 
 /*
 The MIT License
-
 Copyright (c) 2017 Jordan Brown
-
 Permission is hereby granted, free of charge,
 to any person obtaining a copy of this software and
 associated documentation files (the "Software"), to
@@ -358,10 +356,8 @@ merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom
 the Software is furnished to do so,
 subject to the following conditions:
-
 The above copyright notice and this permission notice
 shall be included in all copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
 OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.

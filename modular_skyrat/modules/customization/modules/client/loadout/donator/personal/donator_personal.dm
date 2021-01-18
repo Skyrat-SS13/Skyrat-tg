@@ -1,3 +1,53 @@
+/datum/loadout_item/backpack/donator/drawingtablet
+	name = "Drawing Tablet"
+	path = /obj/item/drawingtablet
+	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/shoes/donator/heeled_jackboots
+	name = "High-heel Jackboots"
+	path = /obj/item/clothing/shoes/jackboots/heel
+	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/suit/donator/furcoat
+	name = "Leather coat with fur"
+	path = /obj/item/clothing/suit/furcoat
+	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/uniform/donator/black_turtleneck
+	name = "Black turtleneck"
+	path = /obj/item/clothing/under/syndicate/tacticool/black
+	ckeywhitelist = list("thedragmeme")
+
+/datum/loadout_item/suit/donator/ryddid
+	name = "The Ryddid"
+	path = /obj/item/clothing/suit/jacket/ryddid
+	ckeywhitelist = list("grunnyyy")
+
+/datum/loadout_item/uniform/donator/draculass
+	name = "Draculass Dress"
+	path = /obj/item/clothing/under/costume/draculass
+	ckeywhitelist = list("grunnyyy")
+
+/datum/loadout_item/neck/donator/grunnyyycloak
+	name = "Black and Red cloak"
+	path = /obj/item/clothing/neck/cloak/grunnyyy
+	ckeywhitelist = list("grunnyyy")
+
+/datum/loadout_item/shoes/donator/britches_shoes
+	name = "Britches' shoes"
+	path = /obj/item/clothing/shoes/clown_shoes/britches
+	ckeywhitelist = list("bloodrite")
+
+/datum/loadout_item/uniform/donator/britches_dress
+	name = "Britches' dress"
+	path = /obj/item/clothing/under/rank/civilian/clown/britches
+	ckeywhitelist = list("bloodrite")
+
+/datum/loadout_item/mask/donator/britches_mask
+	name = "Britches' mask"
+	path = /obj/item/clothing/mask/gas/britches
+	ckeywhitelist = list("bloodrite")
+
 /datum/loadout_item/head/donator/drake_skull
 	name = "Skull of an ashdrake"
 	path = /obj/item/clothing/head/drake_skull

@@ -288,7 +288,7 @@
 		//Drop all worn head items
 		for(var/X in list(owner.glasses, owner.ears, owner.wear_mask, owner.head))
 			var/obj/item/I = X
-			owner.dropItemToGround(I, TRUE)
+			owner.dropItemToGround(I, force = TRUE)
 
 	qdel(owner.GetComponent(/datum/component/creamed)) //clean creampie overlay
 
@@ -465,6 +465,8 @@
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(dna?.species && (ROBOTIC_LIMBS in dna.species.species_traits))
 			L.change_bodypart_status(BODYPART_ROBOTIC)
+		if(dna?.mutant_bodyparts["legs"] && dna.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
+			L.use_digitigrade = FULL_DIGITIGRADE
 		//SKYRAT EDIT ADDITION END
 		if(!L.attach_limb(src, 1))
 			qdel(L)
