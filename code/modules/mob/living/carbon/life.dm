@@ -41,22 +41,25 @@
 
 	if(staminaloss)
 		//Stamina regeneration: Regens faster, the more health you have, and the more staminaloss you have
-		adjustStaminaLoss(-(STAMINA_STATIC_REGEN_FLAT+(staminaloss/STAMINALOSS_REGEN_COEFF)) * (STAMINA_STATIC_REGEN_MULTIPLIER + (max(health/maxHealth, 0))))
-		if(staminaloss > PAIN_THRESHOLD_MESSAGE_ACHE && world.time > next_pain_message && stat != DEAD)
-			next_pain_message = world.time + PAIN_MESSAGE_COOLDOWN
+		var/flat = STAMINA_STATIC_REGEN_FLAT
+		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+			flat += STAMINA_EXTRA_FLAT_IN_CRIT
+		adjustStaminaLoss(-(flat+(staminaloss/STAMINALOSS_REGEN_COEFF)) * (STAMINA_STATIC_REGEN_MULTIPLIER + (max(health/maxHealth, 0))))
+		if(staminaloss > STAMINA_THRESHOLD_MESSAGE_ACHE && world.time > next_stamina_message && stat != DEAD)
+			next_stamina_message = world.time + STAMINA_MESSAGE_COOLDOWN
 			switch(FLOOR(staminaloss,1))
-				if(PAIN_THRESHOLD_MESSAGE_ACHE to PAIN_THRESHOLD_MESSAGE_MILD)
+				if(STAMINA_THRESHOLD_MESSAGE_ACHE to STAMINA_THRESHOLD_MESSAGE_MILD)
 					to_chat(src, "<span class='warning'>Your feel winded.</span>")
-				if(PAIN_THRESHOLD_MESSAGE_MILD to PAIN_THRESHOLD_MESSAGE_MEDIUM)
+				if(STAMINA_THRESHOLD_MESSAGE_MILD to STAMINA_THRESHOLD_MESSAGE_MEDIUM)
 					to_chat(src, "<span class='warning'>Your feel tired!</span>")
-				if(PAIN_THRESHOLD_MESSAGE_MEDIUM to PAIN_THRESHOLD_MESSAGE_HIGH)
+				if(STAMINA_THRESHOLD_MESSAGE_MEDIUM to STAMINA_THRESHOLD_MESSAGE_HIGH)
 					to_chat(src, "<span class='warning'>Your have trouble standing on your legs!</span>")
-				if(PAIN_THRESHOLD_MESSAGE_HIGH to PAIN_THRESHOLD_MESSAGE_SEVERE)
+				if(STAMINA_THRESHOLD_MESSAGE_HIGH to STAMINA_THRESHOLD_MESSAGE_SEVERE)
 					to_chat(src, "<span class='warning'>You feel worn-out!</span>")
-				if(PAIN_THRESHOLD_MESSAGE_SEVERE to PAIN_THRESHOLD_MESSAGE_OHGOD)
-					to_chat(src, "<span class='boldwarning'>You feel exhausted!</span>")
-				if(PAIN_THRESHOLD_MESSAGE_OHGOD to INFINITY)
-					to_chat(src, "<span class='boldwarning'>You feel fatigued!</span>")
+				if(STAMINA_THRESHOLD_MESSAGE_SEVERE to STAMINA_THRESHOLD_MESSAGE_OHGOD)
+					to_chat(src, "<span class='warning'>You feel exhausted!</span>")
+				if(STAMINA_THRESHOLD_MESSAGE_OHGOD to INFINITY)
+					to_chat(src, "<span class='warning'>You feel fatigued!</span>")
 	if(stat != DEAD)
 		return 1
 

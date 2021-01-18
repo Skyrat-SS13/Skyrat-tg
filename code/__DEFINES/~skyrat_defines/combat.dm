@@ -1,28 +1,43 @@
-#define MAX_HUMAN_LIFE 180
+#define TRAIT_ALREADYSTAMINAFLOORED    	"alreadystaminafloored" //Trait to keep track whether someone was floored recently by stamina damage.
+#define STAMINA_KNOCKDOWN_COOLDOWN 10 SECONDS
+
+#define MAX_HUMAN_LIFE 135
 
 //APPLICATION OF STAM DAMAGE
-#define TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.8
+//Should maybe wounds do it too?
+//This one is applied on non-glancing melee attacks aswell as normal projectiles.
+#define SIMPLE_MOB_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.7 //Fights with simple mobs are usually more sustained, so apply a bit less
+#define BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.8 //Brute that isnt sharp, knocks the wind outta you real good
+#define OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.5 //Burns, sharp implements
+#define PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.6
 
-#define PUNCH_EXTRA_STAMINA_MULTIPLIER 0.75
+//Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
+#define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5
+#define BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 4.2 //This is also multiplied by the glancing damage multiplier, so usually less
+#define OTHER_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER 3.6
+
+#define PUNCH_STAMINA_MULTIPLIER 2.6
 
 //STAMINA REGEN
-#define STAMINA_STATIC_REGEN_MULTIPLIER 0.3
+#define STAMINA_STATIC_REGEN_MULTIPLIER 0.4
 //Flat amount regenerated per 2 seconds, multiplied by a lot of variables
-#define STAMINA_STATIC_REGEN_FLAT 2
+#define STAMINA_STATIC_REGEN_FLAT 1.8
+//Extra flat of regeneration while we're in crit
+#define STAMINA_EXTRA_FLAT_IN_CRIT 0.5
 //This increases the multiplier in relation to current stamina (staminaloss/THIS)
-#define STAMINALOSS_REGEN_COEFF 40
+#define STAMINALOSS_REGEN_COEFF 50
 
 //Thresholds for detrimental effects from stamina
-#define STAMINA_THRESHOLD_SLOWDOWN 70
+#define STAMINA_THRESHOLD_WEAK 60
 
-#define STAMINA_THRESHOLD_KNOCKDOWN 130
+#define STAMINA_THRESHOLD_KNOCKDOWN 120
 
-#define STAMINA_THRESHOLD_SOFTCRIT 170
+#define STAMINA_THRESHOLD_SOFTCRIT 150
 
-#define STAMINA_THRESHOLD_HARDCRIT 170
+#define STAMINA_THRESHOLD_HARDCRIT 150
 
 //Stamina threshold from which resisting a grab becomes hard
-#define STAMINA_THRESHOLD_HARD_RESIST 100
+#define STAMINA_THRESHOLD_HARD_RESIST 80
 
 //A coefficient for doing the change of random CC's on a person (staminaloss/THIS)
 #define STAMINA_CROWD_CONTROL_COEFF 200
@@ -37,59 +52,44 @@
 #define GET_UP_SLOW 3
 
 //Stamina threshold for attacking slower with items
-#define STAMINA_THRESHOLD_TIRED_CLICK_CD 130
+#define STAMINA_THRESHOLD_TIRED_CLICK_CD 120
 #define CLICK_CD_MELEE_TIRED 11 //#define CLICK_CD_MELEE 8, so 38% slower
 #define CLICK_CD_RANGE_TIRED 5 //#define CLICK_CD_RANGE 4, so 25% slower
 
-#define PAIN_THRESHOLD_MESSAGE_ACHE 30
-#define PAIN_THRESHOLD_MESSAGE_MILD 70
-#define PAIN_THRESHOLD_MESSAGE_MEDIUM 100
-#define PAIN_THRESHOLD_MESSAGE_HIGH 130
-#define PAIN_THRESHOLD_MESSAGE_SEVERE 160
-#define PAIN_THRESHOLD_MESSAGE_OHGOD 190
+#define STAMINA_THRESHOLD_MESSAGE_ACHE 40
+#define STAMINA_THRESHOLD_MESSAGE_MILD 60
+#define STAMINA_THRESHOLD_MESSAGE_MEDIUM 80
+#define STAMINA_THRESHOLD_MESSAGE_HIGH 100
+#define STAMINA_THRESHOLD_MESSAGE_SEVERE 120
+#define STAMINA_THRESHOLD_MESSAGE_OHGOD 190
 
-#define PAIN_MESSAGE_COOLDOWN 20 SECONDS
+#define STAMINA_MESSAGE_COOLDOWN 20 SECONDS
 
 #define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
 /mob/living/carbon
-	var/next_pain_message = 0
-
-//Stamina crit threshold is MAX_HUMAN_LIFE - HEALTH_THRESHOLD_CRIT so 200 - 40 = 160
-//MOVE THOSE LATER
-/datum/movespeed_modifier/stamina_slowdown
-	multiplicative_slowdown = 1.2
-
-/datum/mood_event/stamina_mild
-	description = "<span class='boldwarning'>Oh god it hurts!.</span>\n"
-	mood_change = -3
-	timeout = 1 MINUTES
-
-/datum/mood_event/stamina_severe
-	description = "<span class='boldwarning'>AAAAGHHH THE PAIN!.</span>\n"
-	mood_change = -3
-	timeout = 1 MINUTES
+	var/next_stamina_message = 0
 
 //Force mob to rest, does NOT do stamina damage.
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
-/mob/living/carbon/proc/KnockToFloor(silent = TRUE, ignore_canknockdown = FALSE)
+/mob/living/carbon/proc/KnockToFloor(silent = TRUE, ignore_canknockdown = FALSE, knockdown_amt = 1)
 	if(!silent && body_position != LYING_DOWN)
 		to_chat(src, "<span class='warning'>You are knocked to the floor!</span>")
-	Knockdown(1, ignore_canknockdown)
+	Knockdown(knockdown_amt, ignore_canknockdown)
 
-/mob/living/proc/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+/mob/living/proc/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount, knockdown_amt = 1)
 	if(!stamina_damage)
 		return
 	return Paralyze((paralyze_amount ? paralyze_amount : stamina_damage))
 
-/mob/living/carbon/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount)
+/mob/living/carbon/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount, knockdown_amt = 1)
 	if(!stamina_damage)
 		return
 	if(!ignore_canknockdown && !(status_flags & CANKNOCKDOWN))
 		return FALSE
 	if(istype(buckled, /obj/vehicle/ridden))
 		buckled.unbuckle_mob(src)
-	KnockToFloor(TRUE, ignore_canknockdown)
+	KnockToFloor(TRUE, ignore_canknockdown, knockdown_amt)
 	adjustStaminaLoss(stamina_damage)
 	if(disarm)
 		drop_all_held_items()
@@ -107,6 +107,8 @@
 	if(!affecting)
 		return FALSE
 	. = FALSE
+	if(HAS_TRAIT(user, TRAIT_PACIFISM)) //They're mostly violent acts
+		return
 	switch(user.a_intent)
 		if(INTENT_HARM)
 			switch(user.zone_selected)
@@ -114,24 +116,35 @@
 					//Head slam
 					if(target.body_position == LYING_DOWN)
 						. = TRUE
-						target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!</span>", \
-							"<span class='userdanger'>[user.name] holds your head and tries to overpower you!</span>", ignored_mobs=user)
-						to_chat(user, "<span class='danger'>You grasp [target.name]'s head and try to overpower [target.p_them()]...</span>")
-						user.changeNext_move(4 SECONDS)
-						if(do_mob(user, target, 4 SECONDS))
+						var/time_doing = 4 SECONDS
+						if(target.stat != CONSCIOUS)
+							time_doing = 2 SECONDS
+							target.visible_message("<span class='danger'>[user.name] holds [target.name]'s tight and slams it down!</span>", ignored_mobs=user)
+							to_chat(user, "<span class='danger'>You grasp [target.name]'s head and slam it down!</span>")
+						else
+							target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!</span>", \
+								"<span class='userdanger'>You struggle as [user.name] holds your head and tries to overpower you!</span>", ignored_mobs=user)
+							to_chat(user, "<span class='danger'>You grasp [target.name]'s head and try to overpower [target.p_them()]...</span>")
+						user.changeNext_move(time_doing)
+						if(do_mob(user, target, time_doing))
+							var/armor_block = target.run_armor_check(affecting, MELEE)
+							var/head_knock = FALSE
+							if(armor_block < HEADSMASH_BLOCK_ARMOR)
+								head_knock = TRUE
+
 							target.visible_message("<span class='danger'>[user.name] violently slams [target.name]'s head into the floor!</span>", \
-								"<span class='userdanger'>[user.name] slams your head against the floor, knocking you out cold!</span>", ignored_mobs=user)
-							to_chat(user, "<span class='danger'>You slam [target.name] head against the floor, knocking him out cold!</span>")
+								"<span class='userdanger'>[user.name] slams your head against the floor[head_knock ? ", knocking you out cold" : ""]!</span>", ignored_mobs=user)
+							to_chat(user, "<span class='danger'>You slam [target.name] head against the floor[head_knock ? ", knocking him out cold" : ""]!</span>")
 
 							//Check to see if our head is protected by atleast 20 melee armor
-							var/armor_block = target.run_armor_check(affecting, MELEE)
-							if(armor_block < HEADSMASH_BLOCK_ARMOR)
-								target.Unconscious(400)
+							if(head_knock)
+								if(target.stat == CONSCIOUS)
+									target.Unconscious(400)
 								target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15)
 
 							target.apply_damage(15, BRUTE, affecting, armor_block)
 							playsound(target, 'sound/effects/hit_kick.ogg', 70)
-							log_combat(user, target, "headsmashes", "against the floor (knocking unconscious)")
+							log_combat(user, target, "headsmashes", "against the floor (trying to knock unconscious)")
 
 		//Chances are, no matter what you do on disarm you're gonna break your grip by accident because of shoving, let make a good use of disarm intent for maneuvers then
 		if(INTENT_DISARM)
@@ -174,14 +187,14 @@
 						target.visible_message("<span class='danger'>[user.name] suplexes [target.name] down to the ground!</span>", \
 							"<span class='userdanger'>[user.name] suplexes you!</span>", ignored_mobs=user)
 						to_chat(user, "<span class='danger'>You suplex [target.name]!</span>")
-						target.forceMove(moved_turf)
 						user.StaminaKnockdown(30, TRUE, TRUE)
-						target.StaminaKnockdown(90)
+						user.SpinAnimation(7,1)
+						target.SpinAnimation(7,1)
+						target.throw_at(moved_turf, 1, 1)
+						target.StaminaKnockdown(80)
 						target.Paralyze(2 SECONDS)
-						user.emote("flip")
-						target.emote("flip")
 						log_combat(user, target, "suplexes", "down on the ground (knocking down both)")
-				else 
+				else
 					var/datum/wound/blunt/blute_wound = affecting.get_wound_type(/datum/wound/blunt)
 					if(blute_wound && blute_wound.severity >= WOUND_SEVERITY_MODERATE)
 						//At this point we'll be doing the medical action that's not a grab manevour

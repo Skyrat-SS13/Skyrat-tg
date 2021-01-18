@@ -340,6 +340,7 @@
 		affecting = get_bodypart(BODY_ZONE_CHEST)
 	var/armor = run_armor_check(affecting, MELEE, armour_penetration = M.armour_penetration)
 	apply_damage(damage, M.melee_damage_type, affecting, armor, wound_bonus = M.wound_bonus, bare_wound_bonus = M.bare_wound_bonus, sharpness = M.sharpness)
+	apply_damage(damage*SIMPLE_MOB_TISSUE_DAMAGE_STAMINA_MULTIPLIER, STAMINA, affecting, armor) //SKYRAT EDIT ADDITION
 
 
 /mob/living/carbon/human/attack_slime(mob/living/simple_animal/slime/M)

@@ -21,18 +21,18 @@
 
 	var/obj/item/stock_parts/cell/cell
 	var/preload_cell_type //if not empty the baton starts with this type of cell
-	var/cell_hit_cost = 500
+	var/cell_hit_cost = 650
 	var/can_remove_cell = TRUE
 
 	var/turned_on = FALSE
 	var/activate_sound = "sparks"
 
 	var/attack_cooldown_check = 0 SECONDS
-	var/attack_cooldown = 0 SECONDS
+	var/attack_cooldown = 1 SECONDS
 	var/stun_sound = 'sound/weapons/egloves.ogg'
 
 	var/confusion_amt = 10
-	var/stamina_loss_amt = 33
+	var/stamina_loss_amt = 45
 	var/apply_stun_delay = 2 SECONDS
 	var/stun_time = 5 SECONDS
 
@@ -233,7 +233,7 @@
 	L.stuttering = max(8, L.stuttering)
 	//L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST)
 	if(harmy) //Less extra stamina damage for harm batons
-		L.StaminaKnockdown(stamina_loss_amt-force)
+		L.StaminaKnockdown(5)
 	else
 		L.StaminaKnockdown(stamina_loss_amt)
 
