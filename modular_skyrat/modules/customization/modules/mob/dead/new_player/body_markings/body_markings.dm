@@ -275,6 +275,21 @@
 	icon_state = "bellyslim"
 	affected_bodyparts = HEAD | CHEST | LEG_RIGHT | LEG_LEFT
 
+/datum/body_marking/secondary/bellyslimalt
+	name = "Belly Slim Alternative"
+	icon_state = "bellyslim_alt"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/secondary/bellyandbutt
+	name = "Belly and Butt"
+	icon_state = "bellyandbutt"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/secondary/butt
+	name = "Butt"
+	icon_state = "butt"
+	affected_bodyparts = CHEST
+
 /datum/body_marking/secondary/handsfeet
 	name = "Hands Feet"
 	icon_state = "handsfeet"
