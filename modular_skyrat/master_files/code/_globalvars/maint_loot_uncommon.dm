@@ -163,7 +163,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/a_gift = 200,
 		/obj/item/banhammer = 25,
 		/obj/item/bikehorn/airhorn = 25,
-		/obj/item/blackmarket_uplink = 100,
 		/obj/item/book/granter/spell/smoke/lesser = 5,
 		/obj/item/bountytrap = 25,
 		/obj/item/camera/spooky = 5,
