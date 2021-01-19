@@ -94,10 +94,6 @@
 	key = "moth_markings"
 	generic = "Moth markings"
 
-/datum/sprite_accessory/moth_antennae/none
-	name = "None"
-	icon_state = "none"
-
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"
