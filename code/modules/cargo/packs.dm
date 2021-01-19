@@ -621,7 +621,7 @@
     contains = list(/obj/item/gun/ballistic/rifle/boltaction,
                     /obj/item/gun/ballistic/rifle/boltaction,
                     /obj/item/gun/ballistic/rifle/boltaction)
-    crate_name = "surplus armoury crate" //SKYRAT EDIT END 
+    crate_name = "surplus armoury crate" //SKYRAT EDIT END
 
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
