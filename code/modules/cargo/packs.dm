@@ -615,10 +615,10 @@
 /datum/supply_pack/security/armory/mafia //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/security/armory/mosin //SKYRAT EDIT START
-    name = "Surplus Armoury Crate"
-    desc = "Contains three budget Mosin-Nagants, chambered in 7.62. Perfect for cheap warfare, or when the shuttle vote is too democratic."
-    cost = CARGO_CRATE_VALUE * 15
-    contains = list(/obj/item/gun/ballistic/rifle/boltaction,
+	name = "Surplus Armoury Crate"
+	desc = "Contains three budget Mosin-Nagants, chambered in 7.62. Perfect for cheap warfare, or when the shuttle vote is too democratic."
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(/obj/item/gun/ballistic/rifle/boltaction,
 					/obj/item/gun/ballistic/rifle/boltaction,
 					/obj/item/gun/ballistic/rifle/boltaction)
 	crate_name = "surplus armoury crate" //SKYRAT EDIT END
