@@ -7,7 +7,7 @@
     contains = list(/obj/item/gun/ballistic/rifle/boltaction,
                     /obj/item/gun/ballistic/rifle/boltaction,
                     /obj/item/gun/ballistic/rifle/boltaction)
-    crate_name = "surplus armoury crate" //SKYRAT EDIT END
+	crate_name = "surplus armoury crate" //SKYRAT EDIT END
 
 Let's be honest here. /TG/'s done nothing but nerf security. First it was buckshot and slugs, now it's our printed guns. These budget weapons should help tip the odds a little, and also means security has to interact with cargo more, which is an upside for the maintainers.
 
