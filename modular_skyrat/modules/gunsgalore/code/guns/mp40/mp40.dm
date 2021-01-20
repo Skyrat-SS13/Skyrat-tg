@@ -26,3 +26,12 @@
 	caliber = "c9mm"
 	max_ammo = 32
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern
+	name = "\improper Mil Spec Maschinenpistole 40"
+	desc = "The MP 40 (Maschinenpistole 40) is a submachine gun chambered for the 9×19mm Parabellum cartridge. It was developed in Nazi Germany and used extensively by the Axis powers during World War II. This is the 25th century version."
+	icon_state = "mp40_modern"
+	inhand_icon_state = "mp40"
+	worn_icon_state = "mp40"
+	burst_size = 4
+	fire_delay = 1.5
