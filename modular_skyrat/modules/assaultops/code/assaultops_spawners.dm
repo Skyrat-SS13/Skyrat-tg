@@ -41,14 +41,14 @@
 	back = /obj/item/storage/backpack
 	belt = /obj/item/storage/belt/security/full
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate/prison_guard
+	id = /obj/item/card/id/syndicate_command/prison_guard
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
 		/obj/item/melee/baton/loaded
 	)
-/obj/item/card/id/syndicate/prison_guard
-	assignment = "Syndicate Prison Guard"
+/obj/item/card/id/syndicate_command/prison_guard
+	assignment = "Brig Officer"
 
 /obj/effect/mob_spawn/human/syndicate/assops/prison_warden
 	name = "Syndicate Prison Warden"
@@ -68,15 +68,15 @@
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/security/full
-	id = /obj/item/card/id/syndicate/prison_warden
+	id = /obj/item/card/id/syndicate_command/prison_warden
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
 		/obj/item/melee/baton/loaded
 	)
 
-/obj/item/card/id/syndicate/prison_warden
-	assignment = "Syndicate Prison Warden"
+/obj/item/card/id/syndicate_command/prison_warden
+	assignment = "Master At Arms"
 
 /obj/effect/mob_spawn/human/syndicate/assops/facility_staff
 	name = "Syndicate Facility Staff"
@@ -94,9 +94,9 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate/facility_staff
+	id = /obj/item/card/id/syndicate_command/facility_staff
 
-/obj/item/card/id/syndicate/facility_staff
+/obj/item/card/id/syndicate_command/facility_staff
 	assignment = "Syndicate Staff"
 
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant
@@ -114,10 +114,10 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate/assistant
+	id = /obj/item/card/id/syndicate_command/assistant
 
-/obj/item/card/id/syndicate/assistant
-	assignment = "Syndicate Assistant"
+/obj/item/card/id/syndicate_command/assistant
+	assignment = "Operative"
 
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist
 	name = "Syndicate Scientist"
@@ -135,7 +135,7 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate/scientist
+	id = /obj/item/card/id/syndicate_command/scientist
 
-/obj/item/card/id/syndicate/scientist
-	assignment = "Syndicate Scientist"
+/obj/item/card/id/syndicate_command/scientist
+	assignment = "Researcher"
