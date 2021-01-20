@@ -33,6 +33,9 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	name = "Syndicate Cruiser Engineering"
 	color = COLOR_YELLOW
 
+/area/shuttle/syndicate/frigate
+	name = "Syndicate Frigate"
+
 /area/cruiser_dock
 	name = "Cruiser Holding Facility"
 	icon_state = "syndie-ship"

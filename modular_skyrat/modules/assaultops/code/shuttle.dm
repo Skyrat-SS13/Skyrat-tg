@@ -43,3 +43,36 @@
 	port_id = "syndicate"
 	suffix = "cruiser"
 	can_be_bought = FALSE
+
+/////////////FRIGATE
+/obj/machinery/computer/shuttle/syndicate_frigate
+	name = "syndicate frigate helm"
+	desc = "The terminal used to control the syndicate frigate."
+	shuttleId = "syndicate_frigate"
+	possible_destinations = "syndicate_frigate_away;syndicate_frigate_dock;whiteship_lavaland"
+	circuit = /obj/item/circuitboard/computer/syndicate_shuttle
+	icon_screen = "syndishuttle"
+	icon_keyboard = "syndie_key"
+	light_color = COLOR_SOFT_RED
+	req_access = list(ACCESS_SYNDICATE)
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+
+/obj/machinery/computer/shuttle/syndicate_frigate/launch_check(mob/user)
+	return TRUE
+
+/obj/machinery/computer/shuttle/syndicate_frigate/allowed(mob/M)
+	if(issilicon(M) && !(ROLE_SYNDICATE in M.faction))
+		return FALSE
+	return ..()
+
+/obj/machinery/computer/shuttle/syndicate_frigate/recall
+	name = "syndicate shuttle recall terminal"
+	desc = "Use this if your friends left you behind."
+	possible_destinations = "syndicate_frigate_away"
+
+/datum/map_template/shuttle/syndicate_frigate
+	name = "syndicate frigate"
+	prefix = "_maps/skyrat/shuttles/"
+	port_id = "syndicate"
+	suffix = "frigate"
+	can_be_bought = FALSE

@@ -94,10 +94,10 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate/prison_staff
+	id = /obj/item/card/id/syndicate/facility_staff
 
-/obj/item/card/id/syndicate/prison_staff
-	assignment = "SYndicate Staff"
+/obj/item/card/id/syndicate/facility_staff
+	assignment = "Syndicate Staff"
 
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant
 	name = "Syndicate Assistant"
@@ -114,7 +114,28 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate
+	id = /obj/item/card/id/syndicate/assistant
 
 /obj/item/card/id/syndicate/assistant
 	assignment = "Syndicate Assistant"
+
+/obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist
+	name = "Syndicate Scientist"
+	short_desc = "You are a scientist aboard the Syndicate facility DS-1."
+	flavour_text = "Your job is that of research and development! You should further your scientific research and utilise the given tools."
+	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
+	outfit = /datum/outfit/syndicate_empty/syndicate_scientist
+
+/datum/outfit/syndicate_empty/syndicate_scientist
+	name = "Syndicate Scientist"
+	uniform = /obj/item/clothing/under/syndicate
+	suit = /obj/item/clothing/suit/toggle/labcoat
+	shoes = /obj/item/clothing/shoes/combat
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	ears = /obj/item/radio/headset/syndicate/alt
+	back = /obj/item/storage/backpack
+	implants = list(/obj/item/implant/weapons_auth)
+	id = /obj/item/card/id/syndicate/scientist
+
+/obj/item/card/id/syndicate/scientist
+	assignment = "Syndicate Scientist"
