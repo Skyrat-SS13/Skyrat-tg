@@ -14,6 +14,28 @@
 	if(message)
 		say(message)
 
+//SKYRAT custom sayverb EDIT
+
+/mob/say_mod(input, message_mods)
+	if(message_mods == MODE_WHISPER_CRIT)
+		return ..()
+	if((input[1] == "!") && (length_char(input) > 1))
+		message_mods = MODE_CUSTOM_SAY
+		return copytext_char(input, 3)
+	var/customsayverb = findtext(input, "*")
+	if(customsayverb)
+		message_mods = MODE_CUSTOM_SAY
+		return lowertext(copytext_char(input, 1, customsayverb))
+	return ..()
+
+/proc/uncostumize_say(input, list/message_mods = list())
+	. = input
+	if(message_mods == MODE_CUSTOM_SAY)
+		var/customsayverb = findtext(input, "*")
+		return lowertext(copytext_char(input, 1, customsayverb))
+
+//SKYRAT EDIT END
+
 ///Whisper verb
 /mob/verb/whisper_verb(message as text)
 	set name = "Whisper"
@@ -157,3 +179,4 @@
 		if(!message)
 			return
 	return message
+

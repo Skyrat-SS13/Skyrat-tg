@@ -97,23 +97,31 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		spans |= SPAN_YELL
 
 	var/spanned = attach_spans(input, spans)
-	return "[say_mod(input, message_mods)], \"[spanned]\""
+	return "[say_mod(input, message_mods)][spanned ? ", \"[spanned]\"" : ""]"
+// SKYRAT custom verb edit. [spanned ? ", \"[spanned]\"" : ""]"
+
+// SKYRAT custom sayverb
+/atom/movable/proc/quoteless_say_quote(input, list/spans = list(speech_span), message_mods)
+	if((input[1] == "!") && (length_char(input) > 1))
+		return ""
+	var/pos = findtext(input, "*")
+	return pos? copytext(input, pos + 1) : input
 
 /atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, list/message_mods = list(), no_quote = FALSE)
 	if(has_language(language))
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM) //Basically means "if the speaker is virtual"
-			return no_quote ? raw_message : AM.say_quote(raw_message, spans, message_mods)
+			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mods) : AM.say_quote(raw_message, spans, message_mods)
 		else
-			return no_quote ? raw_message : speaker.say_quote(raw_message, spans, message_mods)
+			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mods) : speaker.say_quote(raw_message, spans, message_mods)
 	else if(language)
 		var/atom/movable/AM = speaker.GetSource()
 		var/datum/language/D = GLOB.language_datum_instances[language]
 		raw_message = D.scramble(raw_message)
 		if(AM)
-			return no_quote ? raw_message : AM.say_quote(raw_message, spans, message_mods)
+			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mods) : AM.say_quote(raw_message, spans, message_mods)
 		else
-			return no_quote ? raw_message : speaker.say_quote(raw_message, spans, message_mods)
+			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mods) : speaker.say_quote(raw_message, spans, message_mods)
 	else
 		return "makes a strange sound."
 
@@ -129,8 +137,16 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return returntext
 	return "[copytext_char("[freq]", 1, 4)].[copytext_char("[freq]", 4, 5)]"
 
-/proc/attach_spans(input, list/spans)
-	return "[message_spans_start(spans)][input]</span>"
+/atom/movable/proc/attach_spans(input, list/spans)
+	if((input[1] == "!") && (length(input) > 2))
+		return
+	var/customsayverb = findtext(input, "*")
+	if(customsayverb)
+		input = capitalize(copytext(input, customsayverb + length(input[customsayverb])))
+	if(input)
+		return "[message_spans_start(spans)][input]</span>"
+	else
+		return
 
 /proc/message_spans_start(list/spans)
 	var/output = "<span class='"
