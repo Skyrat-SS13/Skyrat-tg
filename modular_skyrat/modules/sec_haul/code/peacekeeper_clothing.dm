@@ -36,6 +36,12 @@
 	icon_state = "peacekeeper_beret_warden"
 	mutant_variants = NONE
 
+/obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
+	name = "peacekeeper hud glasses"
+	icon_state = "peacekeeperglasses"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_helmets.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+
 //PEACEKEEPER UNIFORM
 /obj/item/clothing/under/rank/security/peacekeeper
 	name = "peacekeeper uniform"
