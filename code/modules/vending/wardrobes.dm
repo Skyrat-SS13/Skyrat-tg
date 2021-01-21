@@ -21,7 +21,7 @@
 					/obj/item/storage/backpack/security = 3,
 					/obj/item/storage/backpack/satchel/sec = 3,
 					/obj/item/storage/backpack/duffelbag/sec = 3,
-					/obj/item/clothing/under/rank/security/officer = 3,
+					/obj/item/clothing/under/rank/security/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
 					/obj/item/clothing/under/rank/security/peacekeeper/blue = 3, //SKRYAT EDIT ADDITON - SEC_HAUL
 					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
@@ -29,7 +29,7 @@
 					/obj/item/clothing/mask/bandana/red = 3,
 					/obj/item/clothing/gloves/color/black = 3,
 					/obj/item/clothing/under/rank/security/officer/skirt = 3,
-					/obj/item/clothing/under/rank/security/officer/grey = 3,
+					///obj/item/clothing/under/rank/security/officer/grey = 3, - SKYRAT EDIT REMOVAL - SEC_HAUL
 					/obj/item/clothing/under/pants/khaki = 3,
 					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
