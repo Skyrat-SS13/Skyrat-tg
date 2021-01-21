@@ -214,8 +214,8 @@
 
 //all that shit
 /obj/structure/closet/crate/secure/weapon/ww2
-	desc = "A secure weapons crate. Looks like it's from the old-era world war 2."
 	name = "ww2 weapons crate"
+	desc = "A secure weapons crate. Looks like it's from the old-era world war 2."
 	icon_state = "weaponcrate"
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
@@ -236,6 +236,26 @@
 	new /obj/item/ammo_box/magazine/ppsh(src)
 	new /obj/item/gun/ballistic/automatic/submachine_gun/pps(src)
 	new /obj/item/ammo_box/magazine/pps(src)
+
+/obj/structure/closet/crate/secure/weapon/ww2
+	name = "Modern weapons crate"
+	desc = "A secure weapons crate. Looks like it's from the 25th century."
+	icon_state = "weaponcrate"
+
+/obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern(src)
+	new /obj/item/ammo_box/magazine/fg42(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern(src)
+	new /obj/item/ammo_box/magazine/akm(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern(src)
+	new /obj/item/ammo_box/magazine/m16(src)
+	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern(src)
+	new /obj/item/ammo_box/magazine/mp40(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/stg/modern(src)
+	new /obj/item/ammo_box/magazine/stg(src)
+	new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern(src)
+	new /obj/item/ammo_box/magazine/ppsh(src)
 
 /obj/effect/temp_visual/dir_setting/firing_effect
 	light_system = MOVABLE_LIGHT

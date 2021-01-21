@@ -26,3 +26,22 @@
 	caliber = "a556"
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/gun/ballistic/automatic/assault_rifle/m16/modern
+	name = "\improper Mil Spec M16 Rifle"
+	desc = "The M16 rifle, officially designated Rifle, Caliber 5.56 mm, M16, is a family of military rifles adapted from the ArmaLite AR-15 rifle for the United States military. The original M16 rifle was a 5.56mm automatic rifle with a 20-round magazine. This is the 25th century version."
+	icon_state = "m16_modern"
+	inhand_icon_state = "m16"
+	worn_icon_state = "m16"
+	spread = 0.5
+	burst_size = 3
+	fire_delay = 2
+
+/obj/item/gun/ballistic/automatic/assault_rifle/m16/modern/v2
+	name = "\improper Mil Spec M16 Rifle R-APID"
+	desc = "The M16 rifle, officially designated Rifle, Caliber 5.56 mm, M16, is a family of military rifles adapted from the ArmaLite AR-15 rifle for the United States military. The original M16 rifle was a 5.56mm automatic rifle with a 20-round magazine. This is the 25th century rapid fire version."
+	icon_state = "m16_modern2"
+	inhand_icon_state = "m16"
+	worn_icon_state = "m16"
+	burst_size = 4
+	fire_delay = 1

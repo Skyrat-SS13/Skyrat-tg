@@ -25,3 +25,11 @@
 	caliber = "a762x39"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/gun/ballistic/automatic/assault_rifle/akm/modern
+	name = "\improper Mil Spec Automatic Kalashnikov Rifle"
+	desc = "Introduced into service with the Soviet Army in 1959, the AKM is the prevalent variant of the entire AK series of firearms and it has found widespread use with most member states of the former Warsaw Pact and its African and Asian allies as well as being widely exported and produced in many other countries. This is the 25th century version."
+	icon_state = "akm_modern"
+	inhand_icon_state = "akm"
+	worn_icon_state = "akm"
+	fire_delay = 1
