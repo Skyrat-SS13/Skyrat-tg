@@ -115,17 +115,17 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/security/officer
-	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/helmet/sec
-	suit = /obj/item/clothing/suit/armor/vest/alt
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: uniform = /obj/item/clothing/under/rank/security/officer
+	gloves = /obj/item/clothing/gloves/color/black/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/helmet/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: head = /obj/item/clothing/head/helmet/sec
+	suit = /obj/item/clothing/suit/armor/vest/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: suit = /obj/item/clothing/suit/armor/vest/alt
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/gun/energy/disabler
-	backpack_contents = list(/obj/item/melee/classic_baton) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/clothing/head/beret/sec/peacekeeper) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
 
-	backpack = /obj/item/storage/backpack/security
+	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 	box = /obj/item/storage/box/survival/security
