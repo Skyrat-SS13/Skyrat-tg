@@ -715,15 +715,15 @@ update_label()
 //SKYRAT ADDITION START
 
 /obj/item/card/id/away/old/med
-	name = "Charlie Station Medic's ID card"
-	desc = "A faded Charlie Station ID card. You can make out the rank \"Medic\"."
-	assignment = "Charlie Station Medic"
+	name = "Charlie Station Medical Doctor's ID card"
+	desc = "A faded Charlie Station ID card. You can make out the rank \"Medical Doctor\"."
+	assignment = "Charlie Station Medical Doctor"
 	access = list(ACCESS_AWAY_GENERAL)
 
 /obj/item/card/id/away/old/mine
-	name = "Charlie Station Miner's ID card"
-	desc = "A faded Charlie Station ID card. You can make out the rank \"Miner\"."
-	assignment = "Carlie Station Miner"
+	name = "Charlie Station Shaft Miner's ID card"
+	desc = "A faded Charlie Station ID card. You can make out the rank \"Shaft Miner\"."
+	assignment = "Carlie Station Shaft Miner"
 	access = list(ACCESS_AWAY_GENERAL)
 
 //SKYRAT ADDITION END
