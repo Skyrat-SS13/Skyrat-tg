@@ -17,6 +17,9 @@
 	icon_state = "peacekeeper_beret"
 	mutant_variants = NONE
 
+/obj/item/clothing/head/beret/sec/peacekeeper/black
+	icon_state = "peacekeeper_beret_black"
+
 /obj/item/clothing/head/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
