@@ -22,6 +22,7 @@
 					/obj/item/storage/backpack/satchel/sec = 3,
 					/obj/item/storage/backpack/duffelbag/sec = 3,
 					/obj/item/clothing/under/rank/security/officer = 3,
+					/obj/item/clothing/under/rank/security/peacekeeper/blue = 3, //SKRYAT EDIT ADDITON - SEC_HAUL
 					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
 					/obj/item/clothing/head/soft/sec = 3,

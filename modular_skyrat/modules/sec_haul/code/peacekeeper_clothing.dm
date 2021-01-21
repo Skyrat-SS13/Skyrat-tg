@@ -49,7 +49,8 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/security/officer
+/obj/item/clothing/under/rank/security/peacekeeper/blue
+	name = "blue peacekeeper uniform"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms_digi.dmi'
 
@@ -89,6 +90,11 @@
 	worn_icon_state = "peacekeeper"
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/armor/vest/peacekeeper/black
+	name = "black peacekeeper vest"
+	icon_state = "peacekeeper_black"
+	worn_icon_state = "peacekeeper_black"
+
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper
 	name = "armored peacekeeper trenchcoat"
 	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
@@ -123,5 +129,4 @@
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
 	icon_state = "peacekeeper_riot"
 
-/obj/item/clothing/suit/armor/vest
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
+

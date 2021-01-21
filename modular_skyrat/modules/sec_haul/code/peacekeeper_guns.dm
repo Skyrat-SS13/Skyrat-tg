@@ -49,7 +49,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/pcr
-	name = "A-3 Peacekeeper Cyclic Rifle"
+	name = "\improper AR-3 'Peacekeeper' Cyclic Rifle"
 	desc = "A cheaply made PCR, it's fairly accurate and has a decent rate of fire. This model is the Automatik-3, meaning 3 round burst. It is chambered in 4.6x30mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pcr.dmi'
 	icon_state = "pcr"
