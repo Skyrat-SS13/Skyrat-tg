@@ -8,6 +8,22 @@
 	icon_state = "peacekeeper_helmet"
 	worn_icon_state = "peacekeeper"
 	mutant_variants = NONE
+	var/visor = TRUE
+
+/obj/item/clothing/head/helmet/sec/peacekeeper/AltClick(mob/user)
+	. = ..()
+	if(visor)
+		visor = FALSE
+
+	else
+		visor = TRUE
+		update_icon()
+
+/obj/item/clothing/head/helmet/sec/peacekeeper/update_overlays()
+	. = ..()
+	cut_overlays()
+	if(visor)
+		add_overlay(worn_icon, "peacekeeper_visor")
 
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "security peacekeeper beret"

@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/automatic/pistol/g17
 	name = "\improper Glock 17"
 	desc = "A somewhat reliable 9mm sidearm."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/g17
@@ -24,7 +24,7 @@
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Glock 18 Mil Spec"
 	desc = "A somewhat reliable 9mm sidearm, this one is in the mil spec class. It has an extended mag."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/g18
@@ -41,7 +41,7 @@
 
 /obj/item/ammo_box/magazine/g18
 	name = "g18 handgun magazine (9x19mm)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/guns/glock.dmi'
 	icon_state = "g18"
 	ammo_type = /obj/item/ammo_casing/c9x19mm
 	caliber = "9x19mm"
@@ -51,7 +51,7 @@
 /obj/item/gun/ballistic/automatic/pcr
 	name = "\improper AR-3 'Peacekeeper' Cyclic Rifle"
 	desc = "A cheaply made PCR, it's fairly accurate and has a decent rate of fire. This model is the Automatik-3, meaning 3 round burst. It is chambered in 4.6x30mm."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pcr.dmi'
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/guns/pcr.dmi'
 	icon_state = "pcr"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "arg"
