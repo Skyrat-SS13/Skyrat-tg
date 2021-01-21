@@ -68,3 +68,8 @@
 	empty_indicator = TRUE
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/pps/pps.ogg'
+
+/obj/item/gun/energy/e_gun/Initialize(mapload)
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pcr(src.loc) //JANKY
+	qdel(src)

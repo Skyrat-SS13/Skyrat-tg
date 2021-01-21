@@ -11,14 +11,14 @@
 
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "security peacekeeper beret"
-	desc = "A robust beret with the security insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_helmets.dmi'
 	icon_state = "peacekeeper_beret"
 	mutant_variants = NONE
 
-/obj/item/clothing/head/beret/sec/peacekeeper/black
-	icon_state = "peacekeeper_beret_black"
+/obj/item/clothing/head/beret/sec/peacekeeper/white
+	icon_state = "peacekeeper_beret_white"
 
 /obj/item/clothing/head/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
@@ -49,6 +49,10 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
+/obj/item/clothing/under/rank/security/officer
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms_digi.dmi'
+
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
 	desc = "A formal security suit for officers complete with Nanotrasen belt buckle."
@@ -58,6 +62,10 @@
 	icon_state = "peacekeeper_warden"
 	inhand_icon_state = "peacekeeper_warden"
 
+/obj/item/clothing/under/rank/security/warden
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms_digi.dmi'
+
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper
 	name = "head of security's peacekeeper jumpsuit"
 	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
@@ -66,6 +74,10 @@
 	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_uniforms_digi.dmi'
 	icon_state = "peacekeeper_hos"
 	inhand_icon_state = "peacekeeper_hos"
+
+/obj/item/clothing/under/rank/security/head_of_security
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms_digi.dmi'
 
 //PEACEKEEPER ARMOR
 /obj/item/clothing/suit/armor/vest/peacekeeper
@@ -103,3 +115,13 @@
 	icon_state = "peacekeeper_gloves"
 	worn_icon_state = "peacekeeper"
 	cut_type = null
+
+//OVERRIDES
+/obj/item/clothing/suit/armor/riot
+	name = "peacekeeper riotsuit"
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
+	icon_state = "peacekeeper_riot"
+
+/obj/item/clothing/suit/armor/vest
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
