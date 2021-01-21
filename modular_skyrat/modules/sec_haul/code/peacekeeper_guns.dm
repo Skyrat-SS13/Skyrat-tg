@@ -73,3 +73,17 @@
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pcr(src.loc) //JANKY
 	qdel(src)
+
+/datum/design/c9x19mm
+	name = "Ammo Box (9x19mm) (GLOCK)"
+	id = "c9x19mm"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/c9x19mm
+	category = list("hacked", "Security")
+
+/obj/item/ammo_box/c9x19mm
+	name = "ammo box (9x19mm)"
+	icon_state = "9mmbox"
+	ammo_type = /obj/item/ammo_casing/c9x19mm
+	max_ammo = 30

@@ -7,6 +7,7 @@
 	light_mask = "sec-light-mask"
 	req_access = list(ACCESS_SECURITY)
 	products = list(/obj/item/restraints/handcuffs = 8,
+					/obj/item/ammo_box/magazine/g17 = 10,
 					/obj/item/restraints/handcuffs/cable/zipties = 10,
 					/obj/item/grenade/flashbang = 4,
 					/obj/item/assembly/flash/handheld = 5,

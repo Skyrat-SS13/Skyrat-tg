@@ -113,6 +113,18 @@
 	icon_state = "peacekeeper_trench_warden"
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "coatpeacekeeper"
+	inhand_icon_state = "coatpeacekeeper"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/peacekeeper
+
+/obj/item/clothing/head/hooded/winterhood/security/peacekeeper
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "winterhood_peacekeeper"
+
 //PEACEKEEPER GLOVES
 /obj/item/clothing/gloves/color/black/peacekeeper
 	name = "peacekeeper gloves"
@@ -129,5 +141,4 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
 	icon_state = "peacekeeper_riot"
-
 
