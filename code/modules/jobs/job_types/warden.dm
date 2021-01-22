@@ -36,19 +36,19 @@
 	belt = /obj/item/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/warden/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/under/rank/security/warden
-	shoes = /obj/item/clothing/shoes/jackboots
+	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
 	suit = /obj/item/clothing/suit/armor/vest/warden/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/suit/armor/vest/warden/alt
-	gloves = /obj/item/clothing/gloves/color/black/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
+	gloves = /obj/item/clothing/gloves/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/beret/sec/navywarden/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/head/warden
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/g17 //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/gun/energy/disabler
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/clothing/head/beret/sec/peacekeeper, /obj/item/ammo_box/magazine/g17=3) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/clothing/head/beret/sec/peacekeeper, /obj/item/ammo_box/magazine/g17/rubber=3) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
-	satchel = /obj/item/storage/backpack/satchel/sec
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
 	box = /obj/item/storage/box/survival/security
 
 	implants = list(/obj/item/implant/mindshield)

@@ -10,21 +10,6 @@
 	mutant_variants = NONE
 	var/visor = TRUE
 
-/obj/item/clothing/head/helmet/sec/peacekeeper/AltClick(mob/user)
-	. = ..()
-	if(visor)
-		visor = FALSE
-
-	else
-		visor = TRUE
-		update_icon()
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/update_overlays()
-	. = ..()
-	cut_overlays()
-	if(visor)
-		add_overlay(worn_icon, "peacekeeper_visor")
-
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "security peacekeeper beret"
 	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
@@ -70,6 +55,12 @@
 	can_adjust = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+
+/obj/item/clothing/under/rank/security/peacekeeper/tactical
+	name = "tactical peacekeeper uniform"
+	desc = "A tactical peackeeper uniform, we'll get em boys."
+	icon_state = "peacekeeper_tac"
+	armor = list(MELEE = 15, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
 
 /obj/item/clothing/under/rank/security/peacekeeper/blue
 	name = "blue peacekeeper uniform"
@@ -148,14 +139,119 @@
 	icon_state = "winterhood_peacekeeper"
 
 //PEACEKEEPER GLOVES
-/obj/item/clothing/gloves/color/black/peacekeeper
+/obj/item/clothing/gloves/combat/peacekeeper
 	name = "peacekeeper gloves"
-	desc = "These gloves are clearly made to a price, but, they are fire resistant!"
+	desc = "These tactical gloves are fireproof and electrically insulated."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_gloves.dmi'
 	icon_state = "peacekeeper_gloves"
 	worn_icon_state = "peacekeeper"
 	cut_type = null
+
+/obj/item/clothing/gloves/tackler/peacekeeper
+	name = "peacekeeper gripper gloves"
+	desc = "Special gloves that manipulate the blood vessels in the wearer's hands, granting them the ability to launch headfirst into walls."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_gloves.dmi'
+	icon_state = "peacekeeper_gripper_gloves"
+	inhand_icon_state = "peacekeeper"
+
+/obj/item/clothing/gloves/krav_maga/sec/peacekeeper
+	name = "peacekeeper krav maga gloves"
+	desc = "These gloves can teach you to perform Krav Maga using nanochips."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_gloves.dmi'
+	icon_state = "peacekeeper_gripper_gloves"
+
+//PEACEKEEPER BELTS
+/obj/item/storage/belt/security/peacekeeper
+	name = "peacekeeper belt"
+	desc = "Can hold security gear like handcuffs and flashes. Has a holster for a gun."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_belts.dmi'
+	icon_state = "peacekeeperbelt"
+	worn_icon_state = "peacekeeperbelt"
+	content_overlays = TRUE
+
+/obj/item/storage/belt/security/peacekeeper/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 5
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.set_holdable(list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/melee/baton,
+		/obj/item/melee/classic_baton,
+		/obj/item/grenade,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/restraints/handcuffs,
+		/obj/item/assembly/flash/handheld,
+		/obj/item/clothing/glasses,
+		/obj/item/ammo_casing/shotgun,
+		/obj/item/ammo_box,
+		/obj/item/food/donut,
+		/obj/item/kitchen/knife/combat,
+		/obj/item/flashlight/seclite,
+		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/radio,
+		/obj/item/clothing/gloves,
+		/obj/item/restraints/legcuffs/bola,
+		/obj/item/holosign_creator/security
+		))
+
+/obj/item/storage/belt/security/peacekeeper/full/PopulateContents()
+	new /obj/item/reagent_containers/spray/pepper(src)
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/assembly/flash/handheld(src)
+	update_icon()
+
+/obj/item/storage/belt/security/webbing/peacekeeper
+	name = "peacekeeper webbing"
+	desc = "Unique and versatile chest rig, can hold security gear."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_belts.dmi'
+	icon_state = "peacekeeper_webbing"
+	worn_icon_state = "peacekeeper_webbing"
+	content_overlays = FALSE
+	custom_premium_price = PAYCHECK_HARD * 3
+
+/obj/item/storage/belt/security/webbing/peacekeeper/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 7
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.set_holdable(list(
+		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/melee/baton,
+		/obj/item/melee/classic_baton,
+		/obj/item/grenade,
+		/obj/item/reagent_containers/spray/pepper,
+		/obj/item/restraints/handcuffs,
+		/obj/item/assembly/flash/handheld,
+		/obj/item/clothing/glasses,
+		/obj/item/ammo_casing/shotgun,
+		/obj/item/ammo_box,
+		/obj/item/food/donut,
+		/obj/item/kitchen/knife/combat,
+		/obj/item/flashlight/seclite,
+		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/radio,
+		/obj/item/clothing/gloves,
+		/obj/item/restraints/legcuffs/bola,
+		/obj/item/holosign_creator/security
+		))
+
+//BOOTS
+/obj/item/clothing/shoes/combat/peacekeeper
+	name = "peacekeeper boots"
+	desc = "High speed, low drag combat boots."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_boots.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_boots_digi.dmi'
+	icon_state = "peacekeeper_boots"
+	inhand_icon_state = "jackboots"
+	worn_icon_state = "peacekeeper"
 
 //OVERRIDES
 /obj/item/clothing/suit/armor/riot

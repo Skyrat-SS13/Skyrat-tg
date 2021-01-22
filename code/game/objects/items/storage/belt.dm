@@ -240,7 +240,7 @@
 	new /obj/item/restraints/handcuffs(src)
 	new /obj/item/grenade/flashbang(src)
 	new /obj/item/assembly/flash/handheld(src)
-	//new /obj/item/melee/baton/loaded(src) - SKYRAT EDIT REMOVAL - SEC_HAUL
+	new /obj/item/melee/baton/loaded(src)
 	update_icon()
 
 /obj/item/storage/belt/security/webbing
