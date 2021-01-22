@@ -1041,11 +1041,6 @@
 	category = CAT_MISC
 // Skyrat addition end
 
-/datum/crafting_recipe/New()
-	if(!(result in reqs))
-		blacklist += result
-
-
 /datum/crafting_recipe/underwater_basket
 	name = "Underwater Basket (Bamboo)"
 	reqs = list(
