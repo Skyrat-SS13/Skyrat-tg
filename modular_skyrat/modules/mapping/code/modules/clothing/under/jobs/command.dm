@@ -4,6 +4,7 @@
 	icon_state = "pilot"
 	icon = 'modular_skyrat/modules/mapping/icons/obj/clothing/under/captain.dmi'
 	worn_icon = 'modular_skyrat/modules/mapping/icons/mob/clothing/under/captain.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/mapping/icons/mob/clothing/under/captain_digi.dmi'
 
 /obj/item/clothing/under/rank/captain/pilot/skirt
 	name = "shuttle pilot's jumpskirt"

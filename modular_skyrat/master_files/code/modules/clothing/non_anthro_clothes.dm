@@ -221,9 +221,6 @@
 /obj/item/clothing/under/suit/black/skirt
 	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/captain/pilot
-	mutant_variants = NONE
-
 /obj/item/clothing/under/rank/captain/pilot/skirt
 	mutant_variants = NONE
 
