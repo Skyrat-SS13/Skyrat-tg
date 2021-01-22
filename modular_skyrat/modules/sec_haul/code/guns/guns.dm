@@ -161,7 +161,7 @@
 
 /////////////////DMR
 /obj/item/gun/ballistic/automatic/dmr
-	name = "\improper DMR 'Ripper' Gen-2"
+	name = "\improper DMR 'Ripper' Gen-2" //TBA
 	desc = "An incredibly powerful rifle, with an internal stabalisation gymbal. It's chambered in .577 Snider."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dmr.dmi'
 	icon_state = "dmr"
