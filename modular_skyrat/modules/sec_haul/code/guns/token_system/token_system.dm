@@ -18,7 +18,10 @@
 		return
 
 /obj/machinery/gun_vendor/proc/RedeemToken(obj/item/armament_token/token, mob/redeemer)
-	var/obj/item/storage/box/gunset/chosen_gunset = show_radial_menu(redeemer, src, token.available_gunsets, radius = 40)
+	var/list/radial_build = token.get_available_gunsets()
+	var/obj/item/storage/box/gunset/chosen_gunset = show_radial_menu(redeemer, src, radial_build, radius = 40)
+	if(!chosen_gunset)
+		return
 	var/obj/item/storage/box/gunset/dispensed = new chosen_gunset(src.loc)
 
 	if(redeemer.CanReach(src) && redeemer.put_in_hands(dispensed))
@@ -41,29 +44,52 @@
 	var/level
 	var/list/available_gunsets = list()
 
-/obj/item/armament_token/typelist(key, list/values)
-	. = ..()
-
-/obj/item/armament_token/Initialize()
-	. = ..()
-	for(var/i in available_gunsets)
-		var/obj/item/storage/box/gunset/gset = i
-		available_gunsets[i] = image(icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi', icon_state = gset.radial_icon)
-
+/obj/item/armament_token/proc/get_available_gunsets()
+  return FALSE
 
 //Sidearm
 /obj/item/armament_token/sidearm
-	name = "Sidearm Security Armament Token"
+	name = "sidearm armament token"
 	desc = "A token used in any armament vendor, this is for sidearms. Do not bend."
 	level = 1
 	available_gunsets = list(
 		/obj/item/storage/box/gunset/glock17
 	)
 
+/obj/item/armament_token/sidearm/get_available_gunsets()
+  return list(
+    /obj/item/storage/box/gunset/glock17 = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "g17"
+     )
+  )
+
 //Primary
 /obj/item/armament_token/primary
-	name = "Primary Security Armament Token"
+	name = "primary armament token"
 	desc = "A token used in any armament vendor, this is for main arms. Do not bend."
 	icon_state = "token_primary"
 	level = 2
 
+/obj/item/storage/box/armament_tokens_sidearm
+	name = "security sidearm tokens"
+	desc = "A box full of sidearm armament tokens!"
+	illustration = "writing_syndie"
+
+/obj/item/storage/box/armament_tokens_sidearm/PopulateContents()
+	. = ..()
+	new /obj/item/armament_token/sidearm(src)
+	new /obj/item/armament_token/sidearm(src)
+	new /obj/item/armament_token/sidearm(src)
+
+/obj/item/storage/box/armament_tokens_primary
+	name = "security primary tokens"
+	desc = "A box full of primary armament tokens!"
+	illustration = "writing_syndie"
+
+/obj/item/storage/box/armament_tokens_sidearm/PopulateContents()
+	. = ..()
+	new /obj/item/armament_token/primary(src)
+	new /obj/item/armament_token/primary(src)
+	new /obj/item/armament_token/primary(src)
+	new /obj/item/armament_token/primary(src)

@@ -1,5 +1,5 @@
 /datum/job/hos
-	title = "Security Commander" //SKYRAT EDIT CHANGE
+	title = "Head of Security"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("Captain")
 	head_announce = list(RADIO_CHANNEL_SECURITY)
@@ -34,7 +34,7 @@
 	bounty_types = CIV_JOB_SEC
 
 /datum/outfit/job/hos
-	name = "Security Commander"  //SKYRAT EDIT CHANGE
+	name = "Head of Security"
 	jobtype = /datum/job/hos
 
 	id = /obj/item/card/id/silver

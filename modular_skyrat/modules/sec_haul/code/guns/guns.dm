@@ -23,21 +23,16 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/hp
-	name = "g17 handgun magazine (9mm)"
-	icon_state = "g17_h"
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
-	current_type_desc = "hollowpoint"
+	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/rubber
-	name = "g17 handgun magazine (9mm)"
-	icon_state = "g17_r"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	current_type_desc = "rubber"
+	round_type = AMMO_TYPE_RUBBER
+
 /obj/item/ammo_box/magazine/multi_sprite/g17/ihdf
-	name = "g17 handgun magazine (9mm)"
-	icon_state = "g17_i"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-	current_type_desc = "ihdf"
+	round_type = AMMO_TYPE_IHDF
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Glock 18 Mil Spec"
@@ -67,22 +62,16 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/hp
-	name = "g18 handgun magazine (9mm)"
-	icon_state = "g18_h"
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
-	current_type_desc = "hollowpoint"
+	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/rubber
-	name = "g18 handgun magazine (9mm)"
-	icon_state = "g18_r"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	current_type_desc = "rubber"
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf
-	name = "g18 handgun magazine (9mm)"
-	icon_state = "g18_i"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-	current_type_desc = "ihdf"
+	round_type = AMMO_TYPE_IHDF
 
 
 ////////////////PDH
@@ -128,22 +117,16 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/hp
-	name = "pdh handgun magazine (10mm)"
-	icon_state = "pdh_h"
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	current_type_desc = "hollowpoint"
+	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber
-	name = "pdh handgun magazine (10mm)"
-	icon_state = "pdh_r"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	current_type_desc = "rubber"
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/ihdf
-	name = "pdh handgun magazine (10mm)"
-	icon_state = "pdh_i"
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
-	current_type_desc = "ihdf"
+	round_type = AMMO_TYPE_IHDF
 
 /////////////////////PCR
 

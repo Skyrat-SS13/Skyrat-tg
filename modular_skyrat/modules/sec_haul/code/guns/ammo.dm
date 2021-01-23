@@ -125,34 +125,36 @@
 ////////////////////
 //MULTI SPRITE MAGS
 ///////////////////
+/obj/item/ammo_box/magazine
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ammo_box/magazine/multi_sprite
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
-	var/current_type_desc = "lethal"
-	var/current_type = ""
+	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
-	var/list/possible_types = list("lethal" = "", "hollowpoint" = "h", "rubber" = "r", "idhf" = "i")
+	var/list/possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER, "ihdf" = AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize()
 	. = ..()
 	base_name = name
-	name = "[base_name] [current_type_desc]"
+	name = "[base_name] [round_type]"
+	update_icon()
 
 /obj/item/ammo_box/magazine/multi_sprite/AltClick(mob/user)
 	. = ..()
 	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
-	current_type = possible_types[new_type]
-	current_type_desc = new_type
-	name = "[base_name] [current_type_desc]"
+	round_type = new_type
+	name = "[base_name] [round_type]"
+	update_icon()
 
 /obj/item/ammo_box/magazine/multi_sprite/update_icon()
 	var/shells_left = stored_ammo.len
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)
-			icon_state = "[initial(icon_state)]_[current_type]-[shells_left]"
+			icon_state = "[initial(icon_state)]_[round_type]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
-			icon_state = "[initial(icon_state)]_[current_type]-[shells_left ? "[max_ammo]" : "0"]"
+			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "[max_ammo]" : "0"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	if(length(bullet_cost))
 		var/temp_materials = custom_materials.Copy()

@@ -17,7 +17,6 @@
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
 	foldable = FALSE
 	illustration = null
-	var/radial_icon = ""
 
 /obj/item/storage/box/gunset/glock17/PopulateContents()
 	. = ..()
@@ -51,19 +50,63 @@
 //GUN SETS
 //////////////////
 
+///////////////////////////////SECURITY
+
 //Glock 17
 /obj/item/storage/box/gunset/glock17
-	name = "Glock-17 Gun Supply"
-	radial_icon = "g17"
+	name = "glock-17 supply box"
 
 /obj/item/gun/ballistic/automatic/pistol/g17/nomag
 	spawnwithmagazine = FALSE
 
 /obj/item/storage/box/gunset/glock17/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/g17/nomag
-	new /obj/item/ammo_box/magazine/multi_sprite/g17
-	new /obj/item/ammo_box/magazine/multi_sprite/g17
-	new /obj/item/ammo_box/magazine/multi_sprite/g17
+	new /obj/item/gun/ballistic/automatic/pistol/g17/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
 
-//
+/obj/item/storage/box/gunset/glock18_hos
+	name = "glock-18 supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/g18/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/glock17/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/g18/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/rubber(src)
+
+/////////////////////////////COMMAND
+
+//CAPTAIN
+/obj/item/storage/box/gunset/pdh_captain
+	name = "pdh 'socom' supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/pdh/alt/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pdh_captain/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pdh/alt/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/ihdf(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/ihdf(src)
+
+//HOP
+/obj/item/storage/box/gunset/pdh_hop
+	name = "pdh 'osprey' supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/pdh/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pdh_hop/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pdh/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
