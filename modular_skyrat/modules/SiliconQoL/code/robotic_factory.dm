@@ -56,13 +56,13 @@
 /obj/machinery/transformer_rp/Bumped(atom/movable/AM)
 	if(cooldown == 1)
 		return
-
 	// Crossed didn't like people lying down.
 	if(iscyborg(AM))
 		// Only humans can enter from the west side, while lying down.
 		var/move_dir = get_dir(loc, AM.loc)
 		var/mob/living/silicon/robot/cyborg = AM
 		if(move_dir == EAST || move_dir == WEST)
+			return
 
 /obj/machinery/transformer_rp/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
