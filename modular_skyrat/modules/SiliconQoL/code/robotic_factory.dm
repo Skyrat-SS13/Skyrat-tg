@@ -89,14 +89,12 @@
 	var/cyborg_ask = alert("Become a cyborg?", "Are you a terminator?", "Yes", "No")
 	if(cyborg_ask == "No" || !src || QDELETED(src) || stored_cyborgs < 1)
 		return FALSE
-	var/mob/living/carbon/human/human = new /mob/living/carbon/human(loc)
-	human.key = user.key
-	if(!human.mind)
-		human.mind = user.mind
-	//cyborg.set_connected_ai(masterAI)
-	//cyborg.lawsync()
-	//cyborg.lawupdate = TRUE
-	//stored_cyborgs--
+	var/mob/living/silicon/robot/cyborg = new/mob/living/silicon/robot(loc)
+	cyborg.key = user.key
+	cyborg.set_connected_ai(masterAI)
+	cyborg.lawsync()
+	cyborg.lawupdate = TRUE
+	stored_cyborgs--
 	// Activate the cooldown
 	cooldown = 1
 	cooldown_timer = world.time + cooldown_duration
