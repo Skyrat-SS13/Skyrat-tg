@@ -128,7 +128,7 @@
 	cost = CARGO_CRATE_VALUE * 15
 	crate_name = "material pouches crate"
 
-/datum/supply_pack/engineering/material_pouches
+/datum/supply_pack/engineering/doublecap_tanks
 	name = "Double extended emergency tank Crate"
 	desc = "Contains four double extended-capacity emergency tanks."
 	access_view = ACCESS_ENGINE_EQUIP
