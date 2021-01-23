@@ -27,3 +27,12 @@
 	caliber = "a792x57"
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern
+	name = "\improper Mil Spec Fallschirmjägergewehr 42"
+	desc = "The FG 42 (German: Fallschirmjägergewehr 42, paratrooper rifle 42) is a selective-fire 7.92×57mm Mauser automatic rifle produced in Nazi Germany during World War II. The weapon was developed specifically for the use of the Fallschirmjäger airborne infantry in 1942 and was used in very limited numbers until the end of the war. This is the 25th century version."
+	icon_state = "fg42_modern"
+	inhand_icon_state = "fg42"
+	worn_icon_state = "fg42"
+	burst_size = 3
+	fire_delay = 1
