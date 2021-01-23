@@ -45,6 +45,7 @@ const taskDm = new Task('dm')
   .depends('html/**')
   .depends('icons/**')
   .depends('interface/**')
+  .depends('modular_skyrat/**') // SKYRAT EDIT ADDITION -- check modular_skyrat too pls, build.js
   .depends('tgui/public/tgui.html')
   .depends('tgui/public/*.bundle.*')
   .depends('tgui/public/*.chunk.*')
