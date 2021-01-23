@@ -218,8 +218,8 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
 	icon_state = "smartgun"
 	embedding = list(embed_chance=100, fall_chance=2, jostle_chance=0, ignore_throwspeed_threshold=TRUE, pain_stam_pct=20, pain_mult=4, rip_time=40)
-	damage = 70
-	damage_type = STAMINA
+	damage = 10
+	stamina = 70
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130

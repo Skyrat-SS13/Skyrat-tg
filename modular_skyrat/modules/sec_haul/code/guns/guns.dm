@@ -259,8 +259,6 @@
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
 	worn_icon_state = "smartgun_worn"
 	mag_type = /obj/item/ammo_box/magazine/smartgun
-	burst_size = 1
-	fire_delay = 10
 	can_suppress = FALSE
 	can_bayonet = FALSE
 	mag_display = TRUE
