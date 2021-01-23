@@ -75,10 +75,40 @@
 /obj/item/storage/box/gunset/glock18_hos/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/g18/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
+
+//HOP
+/obj/item/storage/box/gunset/pcr
+	name = "a-3 pcr supply box"
+
+/obj/item/gun/ballistic/automatic/pcr/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pcr/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pcr/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+
+/obj/item/storage/box/gunset/norwind
+	name = "lg-2 norwind supply box"
+
+/obj/item/gun/ballistic/automatic/norwind/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/norwind/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/norwind/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+
 
 /////////////////////////////COMMAND
 

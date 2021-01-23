@@ -132,22 +132,90 @@
 
 /obj/item/gun/ballistic/automatic/pcr
 	name = "\improper AR-3 'Peacekeeper' Cyclic Rifle"
-	desc = "A robustly made PCR, it's fairly accurate and has a decent rate of fire. This model is the Automatik-3, meaning 3 round burst. It is chambered in 4.6x30mm."
+	desc = "A robustly made PCR, it's fairly accurate and has a decent rate of fire. This model is the Automatik-3, meaning 3 round burst. It is chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pcr.dmi'
 	icon_state = "pcr"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "arg"
-	mag_type = /obj/item/ammo_box/magazine/wt550m9
-	fire_delay = 1
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pcr
+	fire_delay = 1.5
 	can_suppress = FALSE
 	burst_size = 3
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
-	empty_indicator = TRUE
 	realistic = TRUE
-	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/pps/pps.ogg'
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
+
+/obj/item/ammo_box/magazine/multi_sprite/pcr
+	name = "pcr smg magazine (9mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pcr"
+	ammo_type = /obj/item/ammo_casing/b9mm
+	caliber = "9mm"
+	max_ammo = 25
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/ammo_box/magazine/multi_sprite/pcr/hp
+	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
+/obj/item/ammo_box/magazine/multi_sprite/pcr/ihdf
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	round_type = AMMO_TYPE_IHDF
+
+/////////////////////NORWIND
+
+/obj/item/gun/ballistic/automatic/norwind
+	name = "\improper LG-2 'Norwind' Rifle"
+	desc = "The Norwind is one of the rarer rifle types, it's chambered in 12mm but has a low magazine capacity and firerate. Scoped to zoom."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	icon_state = "norwind"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	inhand_icon_state = "norwind"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
+	worn_icon_state = "norwind_worn"
+	alt_icons = TRUE
+	alt_icon_state = "norwind_worn"
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/norwind
+	fire_delay = 4
+	can_suppress = FALSE
+	burst_size = 2
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+	can_bayonet = FALSE
+	mag_display = TRUE
+	mag_display_ammo = TRUE
+	realistic = TRUE
+	zoomable = TRUE
+	zoom_amt = 7
+	zoom_out_amt = 5
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
+
+/obj/item/ammo_box/magazine/multi_sprite/norwind
+	name = "norwind rifle magazine (12mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "norwind"
+	ammo_type = /obj/item/ammo_casing/b12mm
+	caliber = "12mm"
+	max_ammo = 8
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/ammo_box/magazine/multi_sprite/norwind/hp
+	ammo_type = /obj/item/ammo_casing/b12mm/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/norwind/rubber
+	ammo_type = /obj/item/ammo_casing/b12mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
 
 /////////////////DMR
 /obj/item/gun/ballistic/automatic/dmr
@@ -165,16 +233,66 @@
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
-	empty_indicator = TRUE
 	realistic = TRUE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/batrifle_fire.ogg'
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
 
 /obj/item/ammo_box/magazine/dmr
 	name = "dmr magazine (.557 Snider)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "dmr_mag"
 	ammo_type = /obj/item/ammo_casing/b577
 	caliber = ".557 Snider"
 	max_ammo = 15
+
+/////////////////SMARTGUN
+/obj/item/gun/ballistic/automatic/smartgun
+	name = "\improper ArmaTek 'S-M-A-R-T-GUN'"
+	desc = "The SMARTGUN is one of ArmaTek finest creations in regards to law enforcement and shredding things. Some say they use thses to shred paper."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
+	icon_state = "smartgun"
+	w_class = WEIGHT_CLASS_HUGE
+	weapon_weight = WEAPON_HEAVY
+	slot_flags = ITEM_SLOT_BACK
+	inhand_icon_state = "smartgun_worn"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
+	worn_icon_state = "smartgun_worn"
+	mag_type = /obj/item/ammo_box/magazine/smartgun
+	burst_size = 1
+	fire_delay = 10
+	can_suppress = FALSE
+	can_bayonet = FALSE
+	mag_display = TRUE
+	mag_display_ammo = TRUE
+	empty_alarm = TRUE
+	tac_reloads = FALSE
+	bolt_type = BOLT_TYPE_STANDARD
+	semi_auto = FALSE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_fire.ogg'
+	rack_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_cock.ogg'
+	lock_back_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_open.ogg'
+	bolt_drop_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_cock.ogg'
+	load_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magout.ogg'
+	load_empty_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magout.ogg'
+
+/obj/item/gun/ballistic/automatic/smartgun/update_icon()
+	. = ..()
+	if(!magazine)
+		icon_state = "smartgun_open"
+	else
+		icon_state = "smartgun_closed"
+
+/obj/item/ammo_box/magazine/smartgun
+	name = "smartgun magazine (smartgun)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "smartgun"
+	ammo_type = /obj/item/ammo_casing/smartgun
+	caliber = "smartgun"
+	max_ammo = 5
+	multiple_sprites = AMMO_BOX_PER_BULLET
 
 /obj/item/gun/energy/e_gun/Initialize(mapload)
 	. = ..()

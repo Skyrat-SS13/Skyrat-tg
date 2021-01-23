@@ -71,6 +71,18 @@
 	icon_state = "token_primary"
 	level = 2
 
+/obj/item/armament_token/primary/get_available_gunsets()
+  return list(
+    /obj/item/storage/box/gunset/pcr = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "pcr"
+     ),
+	/obj/item/storage/box/gunset/norwind = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "norwind"
+     )
+  )
+
 /obj/item/storage/box/armament_tokens_sidearm
 	name = "security sidearm tokens"
 	desc = "A box full of sidearm armament tokens!"

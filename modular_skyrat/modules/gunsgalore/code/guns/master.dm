@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic
 	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
+	var/alt_icon_state //What the icon state is for the on-back guns
 	var/realistic = FALSE //realistic guns that use reliability and dirt
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is.
@@ -18,11 +19,19 @@
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
 		if(!magazine)
-			inhand_icon_state = "[initial(icon_state)]_nomag"
-			worn_icon_state = "[initial(icon_state)]_nomag"
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]_nomag"
+				worn_icon_state = "[alt_icon_state]_nomag"
+			else
+				inhand_icon_state = "[initial(icon_state)]_nomag"
+				worn_icon_state = "[initial(icon_state)]_nomag"
 		else
-			inhand_icon_state = "[initial(icon_state)]"
-			worn_icon_state = "[initial(icon_state)]"
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]"
+				worn_icon_state = "[alt_icon_state]"
+			else
+				inhand_icon_state = "[initial(icon_state)]"
+				worn_icon_state = "[initial(icon_state)]"
 	. = ..()
 
 //gun pickup message
