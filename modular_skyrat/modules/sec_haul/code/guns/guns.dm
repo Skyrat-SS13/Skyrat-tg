@@ -293,13 +293,6 @@
 	max_ammo = 5
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
-
-/obj/item/shrapnel/bullet/smartgun
-	name = "smartgun shredder"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
-	icon_state = "smartgun_embed"
-	embedding = null
-
 /obj/item/gun/ballistic/automatic/smartgun/nomag
 	spawnwithmagazine = FALSE
 
