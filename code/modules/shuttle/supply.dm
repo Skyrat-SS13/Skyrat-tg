@@ -31,7 +31,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		/obj/item/hilbertshotel,
 		/obj/machinery/camera,
 		/obj/item/gps,
-		/obj/structure/checkoutmachine
+		/obj/structure/checkoutmachine,
+		/obj/structure/closet/bluespace // SKYRAT EDIT ADDTION -- Bluespace Locker
 	)))
 
 /// How many goody orders we can fit in a lockbox before we upgrade to a crate
