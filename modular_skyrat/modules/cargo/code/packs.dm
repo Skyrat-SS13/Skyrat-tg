@@ -75,7 +75,7 @@
 /datum/supply_pack/medical/hardsuit_medical
 	name = "Medical Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard medical specifications."
-	cost = CARGO_CRATE_VALUE * 10
+	cost = CARGO_CRATE_VALUE * 13
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/clothing/suit/space/hardsuit/medical)
 	crate_name = "medical hardsuit crate"
@@ -154,7 +154,7 @@
 	desc = "Contains a single hardsuit, built to standard engineering specifications."
 	access_view = ACCESS_ENGINE_EQUIP
 	contains = list(/obj/item/clothing/suit/space/hardsuit/engine)
-	cost = CARGO_CRATE_VALUE * 10
+	cost = CARGO_CRATE_VALUE * 13
 	crate_name = "engineering hardsuit crate"
 
 /datum/supply_pack/engineering/hardsuit_atmospherics
@@ -162,7 +162,7 @@
 	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
 	access_view = ACCESS_ENGINE_EQUIP
 	contains = list(/obj/item/clothing/suit/space/hardsuit/engine/atmos)
-	cost = CARGO_CRATE_VALUE * 13
+	cost = CARGO_CRATE_VALUE * 16
 	crate_name = "atmospherics hardsuit crate"
 
 /datum/supply_pack/engineering/engi_inducers
