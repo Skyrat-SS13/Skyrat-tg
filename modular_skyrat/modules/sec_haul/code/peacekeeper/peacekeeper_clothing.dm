@@ -171,7 +171,48 @@
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_belts.dmi'
 	icon_state = "peacekeeperbelt"
 	worn_icon_state = "peacekeeperbelt"
-	content_overlays = TRUE
+	content_overlays = FALSE
+	component_type = /datum/component/storage/concrete/peacekeeper
+
+/datum/component/storage/concrete/peacekeeper/on_alt_click(datum/source, mob/user)
+	SIGNAL_HANDLER_DOES_SLEEP
+
+	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
+		return
+	if(locked)
+		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		return
+
+	var/atom/A = parent
+
+	var/obj/item/gun/ballistic/automatic/pistol/P = locate() in real_location()
+	if(!P)
+		return
+	A.add_fingerprint(user)
+	remove_from_storage(P, get_turf(user))
+	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
+	if(!user.put_in_hands(P))
+		to_chat(user, "<span class='notice'>You fumble for [P] and it falls on the floor.</span>")
+		return
+	user.visible_message("<span class='warning'>[user] draws [P] from [parent]!</span>", "<span class='notice'>You draw [P] from [parent].</span>")
+
+
+/datum/component/storage/concrete/peacekeeper/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
+	if(silent && !override)
+		return
+	if(rustle_sound)
+		if(istype(I, /obj/item/gun/ballistic/automatic/pistol))
+			playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterin.ogg', 50, TRUE, -5)
+		else
+			playsound(parent, "rustle", 50, TRUE, -5)
+
+	for(var/mob/viewing in viewers(user, null))
+		if(M == viewing)
+			to_chat(usr, "<span class='notice'>You put [I] [insert_preposition]to [parent].</span>")
+		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
+			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
+		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
+			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
 
 /obj/item/storage/belt/security/peacekeeper/ComponentInitialize()
 	. = ..()
@@ -215,6 +256,7 @@
 	worn_icon_state = "peacekeeper_webbing"
 	content_overlays = FALSE
 	custom_premium_price = PAYCHECK_HARD * 3
+	component_type = /datum/component/storage/concrete/peacekeeper
 
 /obj/item/storage/belt/security/webbing/peacekeeper/ComponentInitialize()
 	. = ..()
