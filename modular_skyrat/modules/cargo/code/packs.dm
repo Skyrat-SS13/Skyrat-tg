@@ -72,6 +72,108 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
+/datum/supply_pack/medical/hardsuit_medical
+	name = "Medical Hardsuit Crate"
+	desc = "Contains a single hardsuit, built to standard medical specifications."
+	cost = CARGO_CRATE_VALUE * 10
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/clothing/suit/space/hardsuit/medical)
+	crate_name = "medical hardsuit crate"
+
+/datum/supply_pack/medical/advanced_defib
+	name = "Advanced Defibrillator Crate"
+	desc = "Contains a single high-tech NT defibrillator, capable of self-charging and applying reviving shocks through thick clothing materials."
+	cost = CARGO_CRATE_VALUE * 25
+	access = ACCESS_CMO
+	contains = list(/obj/item/defibrillator/compact/combat/loaded/nanotrasen)
+	crate_name = "advanced defibrillator crate"
+
+/datum/supply_pack/medical/advanced_defib
+	name = "Experimental Medical Beam Crate"
+	desc = "Contains a single experimental NT-tech Medical Beam Gun, a highly experimenal device capable of sending temporary healing nanites across a short distance."
+	cost = CARGO_CRATE_VALUE * 50
+	access = ACCESS_CMO
+	contains = list(/obj/item/gun/medbeam)
+	crate_name = "medical beam gun crate"
+
+//////////////////////////////////////////////////////////////////////////////
+///////////////////////////// Engineering ////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+/datum/supply_pack/engineering/industrial_rcd
+	name = "Industrial RCD Crate"
+	desc = "Manufactured at a high-tech NT production facility, this pack contains 2 industrial RCDs with expanded matter reserves and upgraded deconstructors."
+	access_view = ACCESS_ENGINE_EQUIP
+	contains = list(/obj/item/construction/rcd/combat,
+					/obj/item/construction/rcd/combat)
+	cost = CARGO_CRATE_VALUE * 40
+	crate_name = "industrial RCD crate"
+
+/datum/supply_pack/engineering/experimental_rcd
+	name = "Experimental RCD Crate"
+	desc = "Contains a single highly advanced RCD, capable of projecting its improved construction nanites at an increased range."
+	access = ACCESS_CE
+	access_view = ACCESS_ENGINE_EQUIP
+	contains = list(/obj/item/construction/rcd/arcd)
+	cost = CARGO_CRATE_VALUE * 50
+	crate_name = "experimental RCD crate"
+
+/datum/supply_pack/engineering/material_pouches
+	name = "Material Pouches Crate"
+	desc = "Contains three material pouches."
+	access_view = ACCESS_ENGINE_EQUIP
+	contains = list(/obj/item/storage/bag/material,
+					/obj/item/storage/bag/material,
+					/obj/item/storage/bag/material)
+	cost = CARGO_CRATE_VALUE * 15
+	crate_name = "material pouches crate"
+
+/datum/supply_pack/engineering/material_pouches
+	name = "Double extended emergency tank Crate"
+	desc = "Contains four double extended-capacity emergency tanks."
+	access_view = ACCESS_ENGINE_EQUIP
+	contains = list(/obj/item/tank/internals/emergency_oxygen/double,
+					/obj/item/tank/internals/emergency_oxygen/double,
+					/obj/item/tank/internals/emergency_oxygen/double,
+					/obj/item/tank/internals/emergency_oxygen/double)
+	cost = CARGO_CRATE_VALUE * 15
+	crate_name = "double extended emergency tank crate"
+
+/datum/supply_pack/engineering/advanced_extinguisher
+	name = "Advanced Foam Extinguisher Crate"
+	desc = "Contains advanced fire extinguishers which use foam as extinguishing agent."
+	access_view = ACCESS_ENGINE_EQUIP
+	contains = list(/obj/item/extinguisher/advanced,
+					/obj/item/extinguisher/advanced,
+					/obj/item/extinguisher/advanced)
+	cost = CARGO_CRATE_VALUE * 18
+	crate_name = "advanced extinguisher crate"
+
+/datum/supply_pack/engineering/hardsuit_engineering
+	name = "Engineering Hardsuit Crate"
+	desc = "Contains a single hardsuit, built to standard engineering specifications."
+	access_view = ACCESS_ENGINE_EQUIP
+	contains = list(/obj/item/clothing/suit/space/hardsuit/engine)
+	cost = CARGO_CRATE_VALUE * 10
+	crate_name = "engineering hardsuit crate"
+
+/datum/supply_pack/engineering/hardsuit_atmospherings
+	name = "Atmospherics Hardsuit Crate"
+	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
+	access_view = ACCESS_ENGINE_EQUIP
+	contains = list(/obj/item/clothing/suit/space/hardsuit/engine/atmos)
+	cost = CARGO_CRATE_VALUE * 13
+	crate_name = "atmospherics hardsuit crate"
+
+/datum/supply_pack/engineering/engi_inducers
+	name = "NT-150 Industrial Power Inducers Crate"
+	desc = "An improveed model over the NT-75 EPI, the NT-150 charges at double the rate and contains an improved powercell. Contains two engineering-spec Inducers."
+	cost = CARGO_CRATE_VALUE * 6
+	contains = list(/obj/item/inducer,
+					/obj/item/inducer)
+	crate_name = "engineering inducer crate"
+	crate_type = /obj/structure/closet/crate/engineering/electrical
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Misc Crates /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
