@@ -130,7 +130,7 @@
 ///////////////////
 /obj/item/ammo_box/magazine/multi_sprite
 	w_class = WEIGHT_CLASS_SMALL
-	custom_materials = list(0)
+
 /obj/item/ammo_box/magazine/multi_sprite
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."

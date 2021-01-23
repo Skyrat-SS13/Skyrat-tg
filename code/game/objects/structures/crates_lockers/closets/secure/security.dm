@@ -134,6 +134,7 @@
 	..()
 	new /obj/item/clothing/suit/armor/vest/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src) //SKYRAT EDIT ADDITON - SEC_HAUL
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
