@@ -10,4 +10,4 @@
 	slot_flags = ITEM_SLOT_BELT
 	force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	cooldown = 60
+	cooldown = 30

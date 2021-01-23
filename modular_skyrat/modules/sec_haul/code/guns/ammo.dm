@@ -1,13 +1,16 @@
+/obj/item/ammo_box/advanced
+	w_class = WEIGHT_CLASS_BULKY
+
 //////////////////////9MM
 /datum/design/b9mm
 	name = "Peacekeeper Ammo Box (9mm)"
 	id = "b9mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)
-	build_path = /obj/item/ammo_box/b9mm
+	build_path = /obj/item/ammo_box/advanced/b9mm
 	category = list("Security")
 
-/obj/item/ammo_box/b9mm
+/obj/item/ammo_box/advanced/b9mm
 	name = "peacekeeper ammo box (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol_l"
@@ -20,10 +23,10 @@
 	id = "b9mm_r"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/b9mm/rubber
+	build_path = /obj/item/ammo_box/advanced/b9mm/rubber
 	category = list("Security")
 
-/obj/item/ammo_box/b9mm/rubber
+/obj/item/ammo_box/advanced/b9mm/rubber
 	name = "ammo box (9mm rubber)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol_r"
@@ -35,10 +38,10 @@
 	id = "b9mm_hp"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/b9mm/hp
+	build_path = /obj/item/ammo_box/advanced/b9mm/hp
 	category = list("hacked", "Security")
 
-/obj/item/ammo_box/b9mm/hp
+/obj/item/ammo_box/advanced/b9mm/hp
 	name = "peacekeeper ammo box (9mm hollowpoint)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol"
@@ -50,10 +53,10 @@
 	id = "b9mm_ihdf"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/b9mm/ihdf
+	build_path = /obj/item/ammo_box/advanced/b9mm/ihdf
 	category = list("hacked", "Security")
 
-/obj/item/ammo_box/b9mm/ihdf
+/obj/item/ammo_box/advanced/b9mm/ihdf
 	name = "peacekeeper ammo box (9mm ihdf)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol_hv"
@@ -66,10 +69,10 @@
 	id = "b10mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)
-	build_path = /obj/item/ammo_box/b10mm
+	build_path = /obj/item/ammo_box/advanced/b10mm
 	category = list("Security")
 
-/obj/item/ammo_box/b10mm
+/obj/item/ammo_box/advanced/b10mm
 	name = "peacekeeper ammo box (10mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50"
@@ -81,10 +84,10 @@
 	id = "b10mm_r"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/b10mm/rubber
+	build_path = /obj/item/ammo_box/advanced/b10mm/rubber
 	category = list("Security")
 
-/obj/item/ammo_box/b10mm/rubber
+/obj/item/ammo_box/advanced/b10mm/rubber
 	name = "peacekeeper ammo box (10mm rubber)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-rubber"
@@ -96,10 +99,10 @@
 	id = "b10mm_hp"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/silver = 10000, /datum/material/iron = 10000, /datum/material/glass = 10000)
-	build_path = /obj/item/ammo_box/b10mm/hp
+	build_path = /obj/item/ammo_box/advanced/b10mm/hp
 	category = list("hacked", "Security")
 
-/obj/item/ammo_box/b10mm/hp
+/obj/item/ammo_box/advanced/b10mm/hp
 	name = "peacekeeper ammo box (10mm hollowpoint)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-lethal"
@@ -111,10 +114,10 @@
 	id = "b10mm_ihdf"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 15000, /datum/material/gold = 15000)
-	build_path = /obj/item/ammo_box/b10mm/ihdf
+	build_path = /obj/item/ammo_box/advanced/b10mm/ihdf
 	category = list("hacked", "Security")
 
-/obj/item/ammo_box/b10mm/ihdf
+/obj/item/ammo_box/advanced/b10mm/ihdf
 	name = "peacekeeper ammo box (10mm ihdf)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-hv"
@@ -125,9 +128,9 @@
 ////////////////////
 //MULTI SPRITE MAGS
 ///////////////////
-/obj/item/ammo_box/magazine
+/obj/item/ammo_box/magazine/multi_sprite
 	w_class = WEIGHT_CLASS_SMALL
-
+	custom_materials = list(0)
 /obj/item/ammo_box/magazine/multi_sprite
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
