@@ -88,7 +88,7 @@
 	contains = list(/obj/item/defibrillator/compact/combat/loaded/nanotrasen)
 	crate_name = "advanced defibrillator crate"
 
-/datum/supply_pack/medical/advanced_defib
+/datum/supply_pack/medical/medigun
 	name = "Experimental Medical Beam Crate"
 	desc = "Contains a single experimental NT-tech Medical Beam Gun, a highly experimental device capable of sending temporary healing nanites across a short distance."
 	cost = CARGO_CRATE_VALUE * 50
@@ -157,7 +157,7 @@
 	cost = CARGO_CRATE_VALUE * 10
 	crate_name = "engineering hardsuit crate"
 
-/datum/supply_pack/engineering/hardsuit_atmospherings
+/datum/supply_pack/engineering/hardsuit_atmospherics
 	name = "Atmospherics Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
 	access_view = ACCESS_ENGINE_EQUIP
