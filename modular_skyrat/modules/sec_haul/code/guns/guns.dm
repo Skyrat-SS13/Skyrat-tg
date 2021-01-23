@@ -207,6 +207,7 @@
 	caliber = "12mm"
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
@@ -291,6 +292,28 @@
 	caliber = "smartgun"
 	max_ammo = 5
 	multiple_sprites = AMMO_BOX_PER_BULLET
+
+
+/obj/item/shrapnel/bullet/smartgun
+	name = "smartgun shredder"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
+	icon_state = "smartgun_embed"
+	embedding = null
+
+/obj/item/gun/ballistic/automatic/smartgun/nomag
+	spawnwithmagazine = FALSE
+
+/obj/structure/closet/secure_closet/smartgun
+	name = "Smartgun Locker"
+	req_access = list(ACCESS_ARMORY)
+	icon_state = "shotguncase"
+
+/obj/structure/closet/secure_closet/smartgun/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/smartgun/nomag(src)
+	new /obj/item/ammo_box/magazine/smartgun(src)
+	new /obj/item/ammo_box/magazine/smartgun(src)
+	new /obj/item/ammo_box/magazine/smartgun(src)
 
 /obj/item/gun/energy/e_gun/Initialize(mapload)
 	. = ..()
