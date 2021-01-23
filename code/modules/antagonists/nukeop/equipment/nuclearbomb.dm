@@ -629,8 +629,8 @@ This is here to make the tiles around the station mininuke change when it's arme
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 30, BIO = 0, RAD = 0, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	var/fake = FALSE
-	var/turf/lastlocation
-	var/last_disk_move
+	//var/turf/lastlocation SKYRAT CHANGE
+	//var/last_disk_move SKYRAT CHANGE
 
 /obj/item/disk/nuclear/Initialize()
 	. = ..()
@@ -638,13 +638,14 @@ This is here to make the tiles around the station mininuke change when it's arme
 
 	if(!fake)
 		AddElement(/datum/element/point_of_interest)
-		last_disk_move = world.time
-		START_PROCESSING(SSobj, src)
+		//last_disk_move = world.time SKYRAT CHANGE
+		//START_PROCESSING(SSobj, src) SKYRAT CHANGE
 
 /obj/item/disk/nuclear/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/stationloving, !fake)
 
+/* SKYRAT CHANGE. No more nuke disk processing
 /obj/item/disk/nuclear/process()
 	if(fake)
 		STOP_PROCESSING(SSobj, src)
@@ -679,6 +680,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 			if(loneop.weight % 5 == 0 && SSticker.totalPlayers > 1)
 				message_admins("[src] is on the move (currently in [ADMIN_VERBOSEJMP(newturf)]). The weight of Lone Operative is now [loneop.weight].")
 			log_game("[src] being on the move has reduced the weight of the Lone Operative event to [loneop.weight].")
+*/
 
 /obj/item/disk/nuclear/examine(mob/user)
 	. = ..()
