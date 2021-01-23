@@ -307,8 +307,3 @@
 	new /obj/item/ammo_box/magazine/smartgun(src)
 	new /obj/item/ammo_box/magazine/smartgun(src)
 	new /obj/item/ammo_box/magazine/smartgun(src)
-
-/obj/item/gun/energy/e_gun/Initialize(mapload)
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/pcr(src.loc) //JANKY
-	qdel(src)
