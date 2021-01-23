@@ -49,7 +49,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/transformer_rp/attack_ghost(mob/dead/observer/user)
+/obj/machinery/transformer_rp/attack_ghost(mob/user)
 	. = ..()
 	create_a_cyborg(user)
 
@@ -81,23 +81,22 @@
 			return
 		stored_cyborgs++
 
-/obj/machinery/transformer_rp/proc/create_a_cyborg(mob/dead/observer/target_ghost)
+/obj/machinery/transformer_rp/proc/create_a_cyborg(mob/user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(cooldown == 1)
 		return
 	var/cyborg_ask = alert("Become a cyborg?", "Are you a terminator?", "Yes", "No")
-	if(cyborg_ask == "No" || !src || QDELETED(src) || isliving(target_ghost))
+	if(cyborg_ask == "No" || !src || QDELETED(src) || stored_cyborgs < 1)
 		return FALSE
-	var/mob/living/silicon/robot/cyborg = new /mob/living/silicon/robot(loc)
-	cyborg.mind = target_ghost.mind
-	cyborg.set_connected_ai(masterAI)
-	cyborg.lawsync()
-	cyborg.lawupdate = TRUE
-	stored_cyborgs--
+	var/mob/living/carbon/human/human = new /mob/living/carbon/human(loc)
+	human.key = user.key
+	if(!human.mind)
+		human.mind = user.mind
+	//cyborg.set_connected_ai(masterAI)
+	//cyborg.lawsync()
+	//cyborg.lawupdate = TRUE
+	//stored_cyborgs--
 	// Activate the cooldown
 	cooldown = 1
 	cooldown_timer = world.time + cooldown_duration
-
-
-
