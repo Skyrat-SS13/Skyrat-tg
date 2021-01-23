@@ -81,7 +81,7 @@
 			return
 		stored_cyborgs++
 
-/obj/machinery/transformer_rp/proc/create_a_cyborg(mob/user)
+/obj/machinery/transformer_rp/proc/create_a_cyborg(mob/dead/observer/target_ghost)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(cooldown == 1)
@@ -90,7 +90,7 @@
 	if(cyborg_ask == "No" || !src || QDELETED(src) || stored_cyborgs < 1)
 		return FALSE
 	var/mob/living/silicon/robot/cyborg = new /mob/living/silicon/robot(loc)
-	cyborg.key = user.key
+	target_ghost.mind.transfer_to(cyborg,1)
 	cyborg.set_connected_ai(masterAI)
 	cyborg.lawsync()
 	cyborg.lawupdate = TRUE
