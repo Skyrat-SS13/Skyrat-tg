@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/g17
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -13,7 +13,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 
-/obj/item/ammo_box/magazine/g17
+/obj/item/ammo_box/magazine/multi_sprite/g17
 	name = "g17 handgun magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
@@ -22,20 +22,22 @@
 	max_ammo = 17
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/obj/item/ammo_box/magazine/g17/hp
-	name = "g17 handgun magazine (9mm hollowpoint)"
+/obj/item/ammo_box/magazine/multi_sprite/g17/hp
+	name = "g17 handgun magazine (9mm)"
 	icon_state = "g17_h"
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	current_type_desc = "hollowpoint"
 
-/obj/item/ammo_box/magazine/g17/rubber
-	name = "g17 handgun magazine (9mm rubber)"
+/obj/item/ammo_box/magazine/multi_sprite/g17/rubber
+	name = "g17 handgun magazine (9mm)"
 	icon_state = "g17_r"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-
-/obj/item/ammo_box/magazine/g17/ihdf
-	name = "g17 handgun magazine (9mm ihdf)"
+	current_type_desc = "rubber"
+/obj/item/ammo_box/magazine/multi_sprite/g17/ihdf
+	name = "g17 handgun magazine (9mm)"
 	icon_state = "g17_i"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	current_type_desc = "ihdf"
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Glock 18 Mil Spec"
@@ -43,7 +45,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/g18
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g18
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -55,7 +57,7 @@
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 
-/obj/item/ammo_box/magazine/g18
+/obj/item/ammo_box/magazine/multi_sprite/g18
 	name = "g18 handgun magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
@@ -64,21 +66,23 @@
 	max_ammo = 33
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/obj/item/ammo_box/magazine/g18/hp
-	name = "g18 handgun magazine (9mm hollowpoint)"
+/obj/item/ammo_box/magazine/multi_sprite/g18/hp
+	name = "g18 handgun magazine (9mm)"
 	icon_state = "g18_h"
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	current_type_desc = "hollowpoint"
 
-/obj/item/ammo_box/magazine/g18/rubber
-	name = "g18 handgun magazine (9mm rubber)"
+/obj/item/ammo_box/magazine/multi_sprite/g18/rubber
+	name = "g18 handgun magazine (9mm)"
 	icon_state = "g18_r"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	current_type_desc = "rubber"
 
-/obj/item/ammo_box/magazine/g18/ihdf
-	name = "g18 handgun magazine (9mm ihdf)"
+/obj/item/ammo_box/magazine/multi_sprite/g18/ihdf
+	name = "g18 handgun magazine (9mm)"
 	icon_state = "g18_i"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-
+	current_type_desc = "ihdf"
 
 
 ////////////////PDH
@@ -88,7 +92,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
 	icon_state = "pdh"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/pdh
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -102,7 +106,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
 	icon_state = "pdh_alt"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/pdh
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
@@ -114,7 +118,7 @@
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 
-/obj/item/ammo_box/magazine/pdh
+/obj/item/ammo_box/magazine/multi_sprite/pdh
 	name = "pdh handgun magazine (10mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
@@ -123,20 +127,23 @@
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/obj/item/ammo_box/magazine/pdh/hp
-	name = "pdh handgun magazine (10mm hollowpoint)"
+/obj/item/ammo_box/magazine/multi_sprite/pdh/hp
+	name = "pdh handgun magazine (10mm)"
 	icon_state = "pdh_h"
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
+	current_type_desc = "hollowpoint"
 
-/obj/item/ammo_box/magazine/pdh/rubber
-	name = "pdh handgun magazine (10mm rubber)"
+/obj/item/ammo_box/magazine/multi_sprite/pdh/rubber
+	name = "pdh handgun magazine (10mm)"
 	icon_state = "pdh_r"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	current_type_desc = "rubber"
 
-/obj/item/ammo_box/magazine/pdh/ihdf
-	name = "pdh handgun magazine (10mm ihdf)"
+/obj/item/ammo_box/magazine/multi_sprite/pdh/ihdf
+	name = "pdh handgun magazine (10mm)"
 	icon_state = "pdh_i"
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
+	current_type_desc = "ihdf"
 
 /////////////////////PCR
 
