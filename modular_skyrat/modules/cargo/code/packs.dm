@@ -90,7 +90,7 @@
 
 /datum/supply_pack/medical/advanced_defib
 	name = "Experimental Medical Beam Crate"
-	desc = "Contains a single experimental NT-tech Medical Beam Gun, a highly experimenal device capable of sending temporary healing nanites across a short distance."
+	desc = "Contains a single experimental NT-tech Medical Beam Gun, a highly experimental device capable of sending temporary healing nanites across a short distance."
 	cost = CARGO_CRATE_VALUE * 50
 	access = ACCESS_CMO
 	contains = list(/obj/item/gun/medbeam)
@@ -167,7 +167,7 @@
 
 /datum/supply_pack/engineering/engi_inducers
 	name = "NT-150 Industrial Power Inducers Crate"
-	desc = "An improveed model over the NT-75 EPI, the NT-150 charges at double the rate and contains an improved powercell. Contains two engineering-spec Inducers."
+	desc = "An improved model over the NT-75 EPI, the NT-150 charges at double the rate and contains an improved powercell. Contains two engineering-spec Inducers."
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/inducer,
 					/obj/item/inducer)
