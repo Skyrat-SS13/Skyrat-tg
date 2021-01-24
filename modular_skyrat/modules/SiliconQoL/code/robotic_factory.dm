@@ -1,48 +1,42 @@
 /obj/machinery/transformer_rp
 	name = "\improper Automatic Robotic Factory 5000"
 	desc = "A large metallic machine with an entrance and an exit. A sign on \
-		the side reads, 'human go in, robot come out'. The human must be \
-		lying down and alive. Has to cooldown between each use."
+		the side reads, 'Mass robot production facility'"
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "separator-AO1"
 	layer = ABOVE_ALL_MOB_LAYER // Overhead
-	density = FALSE
+	density = TRUE
 	/// How many cyborgs are we storing
-	var/stored_cyborgs
+	var/stored_cyborgs = 1
 	/// How many cyborgs can we store?
-	var/max_stored_cyborgs
+	var/max_stored_cyborgs = 4
 	/// How much between the construction of a cyborg?
-	var/cooldown_duration = 600 // 1 minute
-	/// Used to check if we are cooling down
-	var/cooldown = 0
+	var/cooldown_duration = 3000 // 5 minutes
 	/// Handles the timer , shouldn't touch.
 	var/cooldown_timer
-	/// The amount of charge in the cell
-	var/robot_cell_charge = 10000
 	/// The countdown itself
 	var/obj/effect/countdown/transformer/countdown
+	/// The master AI , assigned when placed down with the ability.
 	var/mob/living/silicon/ai/masterAI
 
 /obj/machinery/transformer_rp/Initialize()
 	// On us
 	. = ..()
-	new /obj/machinery/conveyor/auto(locate(x - 1, y, z), WEST)
 	new /obj/machinery/conveyor/auto(loc, WEST)
-	new /obj/machinery/conveyor/auto(locate(x + 1, y, z), WEST)
 	countdown = new(src)
 	countdown.start()
 
 /obj/machinery/transformer_rp/examine(mob/user)
 	. = ..()
-	if(cooldown && (issilicon(user) || isobserver(user)))
-		. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
+	if(issilicon(user) || isobserver(user))
+		. += "It will create a new cyborg in [DisplayTimeText(cooldown_timer - world.time)]."
 
 /obj/machinery/transformer_rp/Destroy()
 	QDEL_NULL(countdown)
 	. = ..()
 
 /obj/machinery/transformer_rp/update_icon_state()
-	if(machine_stat & (BROKEN|NOPOWER) || cooldown == 1)
+	if(machine_stat & (BROKEN|NOPOWER))
 		icon_state = "separator-AO0"
 	else
 		icon_state = initial(icon_state)
@@ -52,8 +46,8 @@
 	create_a_cyborg(target_ghost)
 
 /obj/machinery/transformer_rp/process()
-	if(cooldown && (cooldown_timer <= world.time))
-		cooldown = FALSE
+	if(cooldown_timer <= world.time)
+		cooldown_timer = world.time + cooldown_duration
 		update_icon()
 		if(stored_cyborgs > max_stored_cyborgs)
 			return
@@ -62,10 +56,10 @@
 /obj/machinery/transformer_rp/proc/create_a_cyborg(mob/dead/observer/target_ghost)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
-	if(cooldown == 1)
+	if(stored_cyborgs<1)
 		return
 	var/cyborg_ask = alert("Become a cyborg?", "Are you a terminator?", "Yes", "No")
-	if(cyborg_ask == "No" || !src || QDELETED(src) || stored_cyborgs < 1)
+	if(cyborg_ask == "No" || !src || QDELETED(src))
 		return FALSE
 	var/mob/living/silicon/robot/cyborg = new /mob/living/silicon/robot(loc)
 	cyborg.key = target_ghost.key
@@ -73,6 +67,3 @@
 	cyborg.lawsync()
 	cyborg.lawupdate = TRUE
 	stored_cyborgs--
-	// Activate the cooldown
-	cooldown = 1
-	cooldown_timer = world.time + cooldown_duration
