@@ -9,8 +9,6 @@
 	density = FALSE
 	/// How many cyborgs are we storing
 	var/stored_cyborgs
-	/// How many cyborg syndicate upgrades do we have ? the AI can purchase them.
-	var/syndicate_upgrades
 	/// How many cyborgs can we store?
 	var/max_stored_cyborgs
 	/// How much between the construction of a cyborg?
@@ -49,29 +47,9 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/transformer_rp/attack_ghost(mob/user)
+/obj/machinery/transformer_rp/attack_ghost(mob/dead/observer/target_ghost)
 	. = ..()
-	create_a_cyborg(user)
-
-/obj/machinery/transformer_rp/Bumped(atom/movable/AM)
-	if(cooldown == 1)
-		return
-	// Crossed didn't like people lying down.
-	if(iscyborg(AM))
-		// Only humans can enter from the west side, while lying down.
-		var/move_dir = get_dir(loc, AM.loc)
-		var/mob/living/silicon/robot/cyborg = AM
-		if(move_dir == EAST || move_dir == WEST)
-			return
-
-/obj/machinery/transformer_rp/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	// Allows items to go through,
-	// to stop them from blocking the conveyor belt.
-	if(!iscyborg(mover))
-		if(get_dir(src, mover) == EAST)
-			return
-	return FALSE
+	create_a_cyborg(target_ghost)
 
 /obj/machinery/transformer_rp/process()
 	if(cooldown && (cooldown_timer <= world.time))
@@ -90,7 +68,7 @@
 	if(cyborg_ask == "No" || !src || QDELETED(src) || stored_cyborgs < 1)
 		return FALSE
 	var/mob/living/silicon/robot/cyborg = new /mob/living/silicon/robot(loc)
-	target_ghost.mind.transfer_to(cyborg,1)
+	cyborg.key = target_ghost.key
 	cyborg.set_connected_ai(masterAI)
 	cyborg.lawsync()
 	cyborg.lawupdate = TRUE
