@@ -157,4 +157,3 @@
 		if(!message)
 			return
 	return message
-

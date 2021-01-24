@@ -429,7 +429,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			return ITALICS | REDUCE_RANGE
 
 	return 0
-// SKYRAT EDIT START
+//SKYRAT custom sayverb
 /mob/living/say_mod(input, message_mods)
 	if(message_mods == MODE_WHISPER_CRIT)
 		return ..()
@@ -458,8 +458,15 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			. = "gibbers"
 	else
 		. = ..()
-//SKYRAT EDIT END
-/* ORIGINAL CODE
+
+/proc/uncostumize_say(input, message_mods)
+	. = input
+	if(message_mods == MODE_CUSTOM_SAY)
+		var/customsayverb = findtext(input, "*")
+		return lowertext(copytext_char(input, 1, customsayverb))
+
+//SKYRAT custom sayverb end.
+/* original code:
 /mob/living/say_mod(input, list/message_mods = list())
 	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
 		. = verb_whisper
@@ -480,12 +487,6 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	else
 		. = ..()
 */
-
-/proc/uncostumize_say(input, message_mods)
-	. = input
-	if(message_mods == MODE_CUSTOM_SAY)
-		var/customsayverb = findtext(input, "*")
-		return lowertext(copytext_char(input, 1, customsayverb))
 
 /mob/living/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(!message)
