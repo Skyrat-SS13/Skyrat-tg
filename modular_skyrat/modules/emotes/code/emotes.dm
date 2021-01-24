@@ -62,7 +62,7 @@
 		var/mob/living/carbon/human/H = user
 		var/datum/species/userspecies = H.dna.species
 
-		if(user.gender == MALE || !length(userspecies.femalescreamsounds))
+		if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
 			return pick(userspecies.screamsounds)
 		else
 			return pick(userspecies.femalescreamsounds)
