@@ -52,6 +52,7 @@
 	icon_state = "bullet_i"
 	damage = 30
 	damage_type = STAMINA
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
 ///////////////////////////9mm
 //RUBBER | LETHAL | HP | IHDF
@@ -119,6 +120,7 @@
 	icon_state = "bullet_i"
 	damage = 35
 	damage_type = STAMINA
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
 
 ///////////////////////////10mm
@@ -187,6 +189,7 @@
 	icon_state = "bullet_i"
 	damage = 40
 	damage_type = STAMINA
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
 
 //////////////////12mm

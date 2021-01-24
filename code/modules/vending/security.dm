@@ -16,7 +16,8 @@
 					/obj/item/storage/bag/ammo = 3, // SKYRAT EDIT - Ammo Pouches
 					/obj/item/restraints/legcuffs/bola/energy = 7)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
-					  /obj/item/storage/fancy/donut_box = 2)
+					  /obj/item/storage/fancy/donut_box = 2,
+					  /obj/item/armament_token/sidearm_blackmarket = 2)
 	premium = list(/obj/item/storage/belt/security/webbing/peacekeeper = 5, //SKYRAT EDIT ADDITON - SEC_HAUL
 				   /obj/item/coin/antagtoken = 1,
 				   /obj/item/clothing/head/helmet/blueshirt = 1,

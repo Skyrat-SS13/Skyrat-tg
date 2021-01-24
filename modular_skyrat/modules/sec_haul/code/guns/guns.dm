@@ -1,7 +1,24 @@
+/obj/item/gun/ballistic
+	var/emp_damageable = FALSE
+	var/armatek = FALSE
+
+/obj/item/gun/ballistic/automatic/emp_act(severity)
+	. = ..()
+	if(emp_damageable)
+		magazine.forceMove(src.loc)
+		playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+
+/obj/item/gun/ballistic/automatic/examine(mob/user)
+	. = ..()
+	if(!emp_damageable)
+		. += "It has an EMP prevention system."
+	if(armatek)
+		. +=  "It has an <p style='color:red'>ArmaTek</p> embroidery on the grip."
+
 //////////////////GLOCK
 /obj/item/gun/ballistic/automatic/pistol/g17
-	name = "\improper Glock 17"
-	desc = "A somewhat reliable 9mm sidearm."
+	name = "\improper ArmaTek Glock-17"
+	desc = "A weapon from bygone times, this has been made to feel and look exactly like the 21st century version. Let's hope it's more reliable. Chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -13,6 +30,8 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	dirt_modifier = 1.7
+	emp_damageable = TRUE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
 	name = "g17 handgun magazine (9mm)"
@@ -20,7 +39,7 @@
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = "9mm"
-	max_ammo = 17
+	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/hp
@@ -36,8 +55,8 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/gun/ballistic/automatic/pistol/g18
-	name = "\improper Glock 18 Mil Spec"
-	desc = "A somewhat reliable 9mm sidearm, this one is in the mil spec class. It has an extended mag."
+	name = "\improper ArmaTek Glock-18 Mil Spec"
+	desc = "A special anniversary edition of the Glock-18 from ArmaTek, it has a 3 round burst mode and extended mag."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -79,8 +98,8 @@
 
 ////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
-	name = "\improper PDH 'Osprey'"
-	desc = "A modern ballistics sidearm, used by Nanotrasen and given to their command staff. It is chambered in 12mm."
+	name = "\improper ArmaTek PDH 'Osprey'"
+	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match command. It's chambered in 12mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
@@ -94,19 +113,16 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
+	armatek = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt
-	name = "\improper PDH 'Socom'"
-	desc = "A pristegious ballistics sidearm, issued to only the highest ranking Nanotrasen employees, namely Captains. It has a 3 round burst mode. Uses 12mm."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
+	name = "\improper ArmaTek PDH 'Socom'"
+	desc = "A pristegious ballistics sidearm, from ArmaTek's military division, normally given to Captains. It has a 3 round burst mode and uses 12mm."
 	icon_state = "pdh_alt"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
 	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
-	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
-	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
-	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	burst_size = 3
 	fire_delay = 1
 	spread = 10
@@ -132,10 +148,40 @@
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
+///////////////////////////PDH PEACEKEEPER
+/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
+	name = "\improper ArmaTek PDH 'Peacekeeper'"
+	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match the peacekeeper theme."
+	icon_state = "pdh_peacekeeper"
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
+	realistic = TRUE
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
+	name = "pdh handgun magazine (9mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pdh"
+	ammo_type = /obj/item/ammo_casing/b9mm
+	caliber = "9mm"
+	max_ammo = 14
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/hp
+	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/ihdf
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	round_type = AMMO_TYPE_IHDF
+
 ///////////////////////LADON 40x32
 /obj/item/gun/ballistic/automatic/pistol/ladon
 	name = "\improper ArmaTek P-3 'Ladon'"
-	desc = "A well built all round decent 10mm pistol, it's got a few nice features, feels good in the hand, this is a nice gun!"
+	desc = "A well built all round decent 10mm pistol, it's got a few nice features, feels good in the hand, this is a nice gun! It has an <p style='color:red'>ArmaTek</p> embroidery on the grip."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
@@ -149,8 +195,10 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
+	can_flashlight = TRUE
 	dirt_modifier = 0.8
-
+	emp_damageable = TRUE
+	armatek = TRUE
 /obj/item/ammo_box/magazine/multi_sprite/ladon
 	name = "ladon handgun magazine (10mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
@@ -186,6 +234,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	dirt_modifier = 0.7
+	emp_damageable = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
 	name = "makarov handgun magazine (10mm)"
@@ -211,7 +260,7 @@
 ////////////////////////////MK58
 
 /obj/item/gun/ballistic/automatic/pistol/mk58
-	name = "\improper MK-58 Semi-Auto"
+	name = "\improper Cyberdyne MK-58 Semi-Auto"
 	desc = "This gun feels very military to the touch, makes you feel like you're in the army, or something. It uses 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mk58.dmi'
 	icon_state = "mk58"
@@ -224,32 +273,33 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	dirt_modifier = 0.4
+	emp_damageable = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
-	name = "ladon handgun magazine (10mm)"
+	name = "ladon handgun magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10mm"
+	ammo_type = /obj/item/ammo_casing/b9mm
+	caliber = "9mm"
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/hp
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
+	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_IHDF
 
 //////////////////////FIREFLY
 /obj/item/gun/ballistic/automatic/pistol/firefly
-	name = "\improper PMC 'Firefly'"
-	desc = "A slightly lacking 9mm pistol, generally issued to security medics."
+	name = "\improper ArmaTek PMC 'Firefly'"
+	desc = "This nifty litle sidarm is from ArmaTek's medical directive, brought right into your capable hands. NOT A SURGERY TOOL. Chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/firefly.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -259,6 +309,9 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
 	can_suppress = FALSE
 	realistic = TRUE
+	can_flashlight = FALSE
+	emp_damageable = TRUE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly
 	name = "firefly handgun magazine (9mm)"
@@ -284,7 +337,7 @@
 /////////////////////PCR
 
 /obj/item/gun/ballistic/automatic/pcr
-	name = "\improper AR-3 'Peacekeeper' Cyclic Rifle"
+	name = "\improper ArmaTek AR-3 'Peacekeeper' Cyclic Rifle"
 	desc = "A robustly made PCR, it's fairly accurate and has a decent rate of fire. This model is the Automatik-3, meaning 3 round burst. It is chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pcr.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -296,12 +349,15 @@
 	fire_delay = 1.5
 	can_suppress = FALSE
 	burst_size = 3
+	spread = 10
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
+	emp_damageable = TRUE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr
 	name = "pcr smg magazine (9mm)"
@@ -325,8 +381,8 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/gun/ballistic/automatic/pitbull
-	name = "\improper Pitbull Auto Rifle"
-	desc = "A very standard automatic rifle, mostly used by the military, but it's been retrofitted for law-enforcement work. It uses 10mm rounds."
+	name = "\improper ArmaTek 'Pitbull' Auto Rifle"
+	desc = "A sturdy feeling rifle, it's part of ArmaTek's military divsion used in peacekeeping. It's chambered in 10mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pitbull.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -337,12 +393,16 @@
 	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 3
+	fire_delay = 3
+	spread = 15
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
+	emp_damageable = FALSE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull
 	name = "pitbull smg magazine (10mm)"
@@ -365,8 +425,9 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/////////////////DTR
 /obj/item/gun/ballistic/automatic/ostwind
-	name = "\improper DTR 'Ostwind' Rapid Rifle"
+	name = "\improper ArmaTek DTR 'Ostwind' Rapid Rifle"
 	desc = "The DTR Ostwind is a rapid fire rifle chambered in 6mm, it's decent at crowd control, if your aim is maximum collateral damage."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -388,6 +449,8 @@
 	mag_display_ammo = TRUE
 	realistic = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
+	emp_damageable = TRUE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
 	name = "ostwind smg magazine (6mm)"
@@ -410,8 +473,8 @@
 
 /////////////////////CROON 40x32
 /obj/item/gun/ballistic/automatic/croon
-	name = "\improper ArmaTek DT-4 'Croon' SMG"
-	desc = "The DT-4. A bad ripoff of one of ArmaTek's parent companies, this thing loves to jam. It's crude but gets the job done. Chambered in 6mm."
+	name = "\improper DT-4 'Croon' SMG"
+	desc = "The DT-4. A bad ripoff of one of ArmaTek's sub companies, this thing loves to jam. It's crude but gets the job done. Chambered in 6mm. Not made by ArmaTek."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/croon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
@@ -432,6 +495,8 @@
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 	dirt_modifier = 1.7
+	emp_damageable = TRUE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/croon
 	name = "croon smg magazine (6mm)"
@@ -453,7 +518,7 @@
 
 ///////////////////////////Dozer
 /obj/item/gun/ballistic/automatic/dozer
-	name = "\improper DZR 'Dozer' Semi-Auto"
+	name = "\improper ArmaTek 'Dozer' Semi-Auto"
 	desc = "The DZR, it's quite literally only good for dozing people down. It's chambered in 10mm for a reason."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -471,6 +536,8 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
+	emp_damageable = TRUE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
 	name = "dozer smg magazine (10mm)"
@@ -497,8 +564,8 @@
 /////////////////////NORWIND
 
 /obj/item/gun/ballistic/automatic/norwind
-	name = "\improper LG-2 'Norwind' Rifle"
-	desc = "The Norwind is one of the rarer rifle types, it's chambered in 12mm but has a low magazine capacity and firerate. Scoped to zoom."
+	name = "\improper ArmaTek LG-2 'Norwind' Rifle"
+	desc = "The Norwind is one of ArmaTek's rarer weapons, it's chambered in 12mm but has a low magazine capacity and firerate. Scoped to zoom."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -521,6 +588,8 @@
 	zoom_amt = 7
 	zoom_out_amt = 5
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
+	emp_damageable = TRUE
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
 	name = "norwind rifle magazine (12mm)"
@@ -558,12 +627,15 @@
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	realistic = TRUE
-	burst_size = 3
+	burst_size = 2
+	fire_delay = 4
+	spread = 10
 	zoomable = TRUE
 	zoom_amt = 7
 	zoom_out_amt = 5
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
-
+	emp_damageable = TRUE
+	armatek = TRUE
 /obj/item/ammo_box/magazine/multi_sprite/vintorez
 	name = "vintorez rifle magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
@@ -614,25 +686,9 @@
 	caliber = ".557 Snider"
 	max_ammo = 15
 
+/////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
-	name = "\improper Zeta-6 'Spurchamber'"
-	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with a 6 round cylinder."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
-	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	icon_state = "zeta"
-	inhand_icon_state = "zeta"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/b10mm
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
-
-/obj/item/ammo_box/magazine/internal/cylinder/b10mm
-	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10mm"
-	max_ammo = 6
-
-/obj/item/gun/ballistic/revolver/zeta
-	name = "\improper Zeta-6 'Spurchamber'"
+	name = "\improper ArmaTek Zeta-6 'Spurchamber'"
 	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with a 6 round cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -641,6 +697,7 @@
 	inhand_icon_state = "zeta"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "revolver cylinder"
@@ -669,8 +726,9 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
-	name = "\improper Revolution-8 'Spurmaster'"
+	name = "\improper ArmaTek Revolution-8 'Spurmaster'"
 	desc = "A surprisingly premium feeling revolver, even though it uses 9mm, it seems to have a nice weight to it. This handle feels nice too. 8 rounds."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -679,13 +737,13 @@
 	inhand_icon_state = "revolution"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
+	armatek = TRUE
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = "9mm"
 	max_ammo = 8
-	start_empty = TRUE
 
 /obj/item/ammo_box/revolver/multi_sprite/revolution
 	name = "revolution speed loader(9mm)"
@@ -741,6 +799,7 @@
 	load_empty_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magout.ogg'
 	var/recharge_time = 5 SECONDS
 	var/recharging = FALSE
+	armatek = TRUE
 
 /obj/item/gun/ballistic/automatic/smartgun/process_chamber()
 	. = ..()

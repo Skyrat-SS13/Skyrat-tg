@@ -18,7 +18,7 @@
 	foldable = FALSE
 	illustration = null
 
-/obj/item/storage/box/gunset/glock17/PopulateContents()
+/obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
 	new /obj/item/storage/bag/ammo(src)
 
@@ -82,6 +82,20 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
+
+//PDH
+/obj/item/storage/box/gunset/pdh_peacekeeper
+	name = "pdh peacekeeper supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pdh_peacekeeper/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber(src)
 
 // MK-58
 /obj/item/storage/box/gunset/ladon
