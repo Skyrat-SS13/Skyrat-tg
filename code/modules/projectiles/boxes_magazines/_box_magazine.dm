@@ -144,6 +144,10 @@
 			icon_state = "[initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
+		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
+		if(AMMO_BOX_FULL_EMPTY_BASIC)
+			icon_state = "[initial(icon_state)]-[shells_left ? "full" : "empty"]"
+		//SKYRAT EDIT END
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	if(length(bullet_cost))
 		var/temp_materials = custom_materials.Copy()

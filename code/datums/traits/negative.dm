@@ -212,6 +212,8 @@
 				heirloom_type = /obj/item/clipboard
 			if("Shaft Miner")
 				heirloom_type = pick(/obj/item/pickaxe/mini, /obj/item/shovel)
+			if("Brig Physician")
+				heirloom_type = pick(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law) //SKYRAT EDIT ADDITION - SEC_HAUL
 
 	if(!heirloom_type)
 		heirloom_type = pick(

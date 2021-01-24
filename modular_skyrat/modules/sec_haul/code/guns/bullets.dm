@@ -2,6 +2,57 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
 	icon_state = "bullet"
 
+///////////////////////////6mm
+//RUBBER | LETHAL | IHDF
+///////////////////////////////
+/obj/item/ammo_casing/b6mm
+	name = "6mm bullet casing"
+	desc = "A 6mm bullet casing."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "sl-casing"
+	caliber = "6mm"
+	projectile_type = /obj/projectile/bullet/advanced/b6mm
+
+/obj/projectile/bullet/advanced/b6mm
+	name = "6mm bullet"
+	damage = 15
+	speed = 0.5
+
+/obj/item/ammo_casing/b6mm/rubber
+	name = "6mm rubber bullet casing"
+	desc = "A 6mm rubber bullet casing."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "sr-casing"
+	caliber = "6mm"
+	projectile_type = /obj/projectile/bullet/advanced/b6mm/rubber
+
+/obj/projectile/bullet/advanced/b6mm/rubber
+	name = "6mm rubber bullet"
+	icon_state = "bullet_r"
+	damage = 5
+	stamina = 20
+	ricochets_max = 6
+	ricochet_incidence_leeway = 0
+	ricochet_chance = 130
+	ricochet_decay_damage = 0.8
+	shrapnel_type = null
+	sharpness = SHARP_NONE
+	embedding = null
+
+/obj/item/ammo_casing/b6mm/ihdf
+	name = "6mm IHDF bullet casing"
+	desc = "A 6mm intelligent high-impact dispersal foam bullet casing."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "si-casing"
+	caliber = "6mm"
+	projectile_type = /obj/projectile/bullet/advanced/b6mm/ihdf
+
+/obj/projectile/bullet/advanced/b6mm/ihdf
+	name = "6mm ihdf bullet"
+	icon_state = "bullet_i"
+	damage = 30
+	damage_type = STAMINA
+
 ///////////////////////////9mm
 //RUBBER | LETHAL | HP | IHDF
 ///////////////////////////////

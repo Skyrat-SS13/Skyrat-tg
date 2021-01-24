@@ -8,7 +8,6 @@
 	icon_state = "peacekeeper_helmet"
 	worn_icon_state = "peacekeeper"
 	mutant_variants = NONE
-	var/visor = TRUE
 
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "security peacekeeper beret"

@@ -50,9 +50,12 @@
 //GUN SETS
 //////////////////
 
-///////////////////////////////SECURITY
 
-//Glock 17
+/////////////////
+//SIDEARM TOKEN GUNSETS
+////////////////
+
+//G-17
 /obj/item/storage/box/gunset/glock17
 	name = "glock-17 supply box"
 
@@ -66,21 +69,100 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
 
-/obj/item/storage/box/gunset/glock18_hos
-	name = "glock-18 supply box"
+//LADON
+/obj/item/storage/box/gunset/ladon
+	name = "p-3 ladon supply box"
 
-/obj/item/gun/ballistic/automatic/pistol/g18/nomag
+/obj/item/gun/ballistic/automatic/pistol/ladon/nomag
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/box/gunset/glock18_hos/PopulateContents()
+/obj/item/storage/box/gunset/ladon/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/g18/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
+	new /obj/item/gun/ballistic/automatic/pistol/ladon/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
 
-//HOP
+// MK-58
+/obj/item/storage/box/gunset/ladon
+	name = "mk-58 supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/mk58/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/mk58/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/mk58/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber(src)
+
+//CROON
+/obj/item/storage/box/gunset/croon
+	name = "mk-58 supply box"
+
+/obj/item/gun/ballistic/automatic/croon/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/croon/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/croon/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/rubber(src)
+
+//MAKAROV
+/obj/item/storage/box/gunset/makarov
+	name = "makarov supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/makarov/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/makarov/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/makarov/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber(src)
+
+//DOZER
+/obj/item/storage/box/gunset/dozer
+	name = "dozer supply box"
+
+/obj/item/gun/ballistic/automatic/dozer/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/dozer/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/dozer/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber(src)
+
+//ZETA
+/obj/item/storage/box/gunset/zeta
+	name = "zeta supply box"
+
+/obj/item/storage/box/gunset/revolution/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/revolver/zeta(src)
+	new /obj/item/ammo_box/revolver/multi_sprite/zeta/rubber(src)
+	new /obj/item/ammo_box/revolver/multi_sprite/zeta/rubber(src)
+
+//REVOLUTION
+/obj/item/storage/box/gunset/revolution
+	name = "revolution supply box"
+
+/obj/item/storage/box/gunset/revolution/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/multi_sprite/revolution/rubber(src)
+	new /obj/item/ammo_box/revolver/multi_sprite/revolution/rubber(src)
+
+
+/////////////////
+//PRIMARY TOKEN GUNSETS
+////////////////
 /obj/item/storage/box/gunset/pcr
 	name = "a-3 pcr supply box"
 
@@ -109,8 +191,51 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
 
+/obj/item/storage/box/gunset/ostwind
+	name = "ostwind supply box"
 
-/////////////////////////////COMMAND
+/obj/item/gun/ballistic/automatic/ostwind/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/ostwind/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/ostwind/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+
+/obj/item/storage/box/gunset/vintorez
+	name = "vintorez supply box"
+
+/obj/item/gun/ballistic/automatic/vintorez/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/vintorez/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/vintorez/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
+
+/obj/item/storage/box/gunset/pitbull
+	name = "pitbull supply box"
+
+/obj/item/gun/ballistic/automatic/pitbull/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pitbull/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pitbull/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+
+/////////////////
+//JOB SPECIFIC GUNSETS
+////////////////
 
 //CAPTAIN
 /obj/item/storage/box/gunset/pdh_captain
@@ -124,8 +249,23 @@
 	new /obj/item/gun/ballistic/automatic/pistol/pdh/alt/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pdh/ihdf(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pdh/ihdf(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+
+//HOS
+/obj/item/storage/box/gunset/glock18_hos
+	name = "glock-18 supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/g18/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/glock18_hos/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/g18/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
 
 //HOP
 /obj/item/storage/box/gunset/pdh_hop
@@ -140,3 +280,19 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+
+//SECURITY MEDIC
+/obj/item/storage/box/gunset/security_medic
+	name = "firefly supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/firefly/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/security_medic/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/firefly/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
+
+

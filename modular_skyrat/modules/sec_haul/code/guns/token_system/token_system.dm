@@ -61,6 +61,34 @@
     /obj/item/storage/box/gunset/glock17 = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "g17"
+     ),
+    /obj/item/storage/box/gunset/ladon = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "ladon"
+     ),
+    /obj/item/storage/box/gunset/mk58 = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "mk58"
+     ),
+    /obj/item/storage/box/gunset/croon = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "croon"
+     ),
+	/obj/item/storage/box/gunset/dozer = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "dozer"
+     ),
+    /obj/item/storage/box/gunset/makarov = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "makarov"
+     ),
+    /obj/item/storage/box/gunset/zeta = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "zeta"
+     ),
+    /obj/item/storage/box/gunset/revolution = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "revolution"
      )
   )
 
@@ -80,6 +108,18 @@
 	/obj/item/storage/box/gunset/norwind = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "norwind"
+     ),
+	/obj/item/storage/box/gunset/ostwind = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "ostwind"
+     ),
+	/obj/item/storage/box/gunset/vintorez = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "vintorez"
+     ),
+	 /obj/item/storage/box/gunset/pitbull = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "pitbull"
      )
   )
 
@@ -99,7 +139,7 @@
 	desc = "A box full of primary armament tokens!"
 	illustration = "writing_syndie"
 
-/obj/item/storage/box/armament_tokens_sidearm/PopulateContents()
+/obj/item/storage/box/armament_tokens_primary/PopulateContents()
 	. = ..()
 	new /obj/item/armament_token/primary(src)
 	new /obj/item/armament_token/primary(src)

@@ -2,9 +2,58 @@
 	w_class = WEIGHT_CLASS_BULKY
 
 //////////////////////
-//9mm
+//6mm
 //////////////////////
-/datum/design/b9mm
+/datum/design/b6mm
+	name = "Peacekeeper Ammo Box (6mm)"
+	id = "b6mm"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/advanced/b6mm
+	category = list("intial", "Security", "Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/ammo_box/advanced/b6mm
+	name = "peacekeeper ammo box (6mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon_state = "box10mm"
+	ammo_type = /obj/item/ammo_casing/b6mm
+	max_ammo = 30
+
+/datum/design/b6mm/rubber
+	name = "Peacekeeper Ammo Box (6mm rubber)"
+	id = "b6mm_rubber"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron = 15000)
+	build_path = /obj/item/ammo_box/advanced/b6mm/rubber
+	category = list("intial", "Security", "Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/ammo_box/advanced/b6mm/rubber
+	name = "ammo box (6mm rubber)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon_state = "box10mm_rubber"
+	ammo_type = /obj/item/ammo_casing/b6mm/rubber
+
+/datum/design/b6mm/ihdf
+	name = "Peacekeeper Ammo Box (6mm ihdf)"
+	id = "b6mm_ihdf"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 15000, /datum/material/gold = 15000)
+	build_path = /obj/item/ammo_box/advanced/b6mm/ihdf
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/ammo_box/advanced/b6mm/ihdf
+	name = "peacekeeper ammo box (6mm ihdf)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon_state = "box10mm-hv"
+	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
+
+//////////////////////
+//6mm
+//////////////////////
+/datum/design/b6mm
 	name = "Peacekeeper Ammo Box (9mm)"
 	id = "b9mm"
 	build_type = AUTOLATHE | PROTOLATHE
@@ -181,11 +230,10 @@
 //MULTI SPRITE MAGS
 ///////////////////
 /obj/item/ammo_box/magazine/multi_sprite
-	w_class = WEIGHT_CLASS_SMALL
-
-/obj/item/ammo_box/magazine/multi_sprite
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
+	w_class = WEIGHT_CLASS_SMALL
+	item_flags = NO_MAT_REDEMPTION
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
 	var/list/possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER, "ihdf" = AMMO_TYPE_IHDF)
@@ -199,6 +247,8 @@
 /obj/item/ammo_box/magazine/multi_sprite/AltClick(mob/user)
 	. = ..()
 	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
+	if(!new_type)
+		new_type = AMMO_TYPE_LETHAL
 	round_type = new_type
 	name = "[base_name] [round_type]"
 	update_icon()
@@ -210,6 +260,44 @@
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "[max_ammo]" : "0"]"
+		if(AMMO_BOX_FULL_EMPTY_BASIC)
+			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
+	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
+	if(length(bullet_cost))
+		var/temp_materials = custom_materials.Copy()
+		for (var/material in bullet_cost)
+			var/material_amount = bullet_cost[material]
+			material_amount = (material_amount*stored_ammo.len) + base_cost[material]
+			temp_materials[material] = material_amount
+		set_custom_materials(temp_materials)
+
+/obj/item/ammo_box/revolver/multi_sprite
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	desc = "An advanced revolver speedloader with smart type displays. Alt+click to reskin it."
+	w_class = WEIGHT_CLASS_SMALL
+	item_flags = NO_MAT_REDEMPTION
+	var/round_type = AMMO_TYPE_LETHAL
+	var/base_name = ""
+	var/list/possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER, "ihdf" = AMMO_TYPE_IHDF)
+
+/obj/item/ammo_box/revolver/multi_sprite/AltClick(mob/user)
+	. = ..()
+	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
+	if(!new_type)
+		new_type = AMMO_TYPE_LETHAL
+	round_type = new_type
+	name = "[base_name] [round_type]"
+	update_icon()
+
+/obj/item/ammo_box/revolver/multi_sprite/update_icon()
+	var/shells_left = stored_ammo.len
+	switch(multiple_sprites)
+		if(AMMO_BOX_PER_BULLET)
+			icon_state = "[initial(icon_state)]_[round_type]-[shells_left]"
+		if(AMMO_BOX_FULL_EMPTY)
+			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "[max_ammo]" : "0"]"
+		if(AMMO_BOX_FULL_EMPTY_BASIC)
+			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	if(length(bullet_cost))
 		var/temp_materials = custom_materials.Copy()

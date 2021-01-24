@@ -57,6 +57,7 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Detective",
 	"Security Officer",
 //SKYRAT EDIT ADDITION BEGIN - BLUESHIELD
+	"Security Medic",
 	"Blueshield")) //Skyrat addition
 //SKYRAT EDIT ADDITION END
 
