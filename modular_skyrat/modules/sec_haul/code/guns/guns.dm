@@ -29,6 +29,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
+	can_flashlight = TRUE
 	dirt_modifier = 1.7
 	emp_damageable = TRUE
 	armatek = TRUE
@@ -73,6 +74,7 @@
 	realistic = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
+	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g18
 	name = "g18 handgun magazine (9mm)"
@@ -114,6 +116,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	armatek = TRUE
+	can_flashlight = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt
 	name = "\improper ArmaTek PDH 'Socom'"
@@ -129,6 +132,7 @@
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 	dirt_modifier = 0.1
+	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh
 	name = "pdh handgun magazine (12mm)"
@@ -156,6 +160,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	realistic = TRUE
+	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	name = "pdh handgun magazine (9mm)"
@@ -199,6 +204,7 @@
 	dirt_modifier = 0.8
 	emp_damageable = TRUE
 	armatek = TRUE
+
 /obj/item/ammo_box/magazine/multi_sprite/ladon
 	name = "ladon handgun magazine (10mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
@@ -235,6 +241,7 @@
 	realistic = TRUE
 	dirt_modifier = 0.7
 	emp_damageable = TRUE
+
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
 	name = "makarov handgun magazine (10mm)"
