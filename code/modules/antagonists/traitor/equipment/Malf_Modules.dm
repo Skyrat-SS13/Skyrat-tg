@@ -547,16 +547,16 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 /// Robotic Factory: Places a large machine that converts humans that go through it into cyborgs. Unlocking this ability removes shunting.
 /datum/ai_module/utility/place_cyborg_transformer
 	name = "Robotic Factory (Removes Shunting)"
-	description = "Build a machine anywhere, using expensive nanomachines, that can convert a living human into a loyal cyborg slave when placed inside."
+	description = "Build a machine anywhere, using expensive nanomachines, that will slowly create loyal cyborgs for you." // Skyrat edit
 	cost = 100
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/place_transformer
-	unlock_text = "<span class='notice'>You make contact with Space Amazon and request a robotics factory for delivery.</span>"
+	unlock_text = "<span class='notice'>You make contact with Space Amazon and request a robot factory for delivery.</span>"
 	unlock_sound = 'sound/machines/ping.ogg'
 
 /datum/action/innate/ai/place_transformer
 	name = "Place Robotics Factory"
-	desc = "Places a machine that converts humans into cyborgs. Conveyor belts included!"
+	desc = "Places a machine that creates cyborgs efficiently. Conveyor belts included!" // Skyrat edit
 	button_icon_state = "robotic_factory"
 	uses = 1
 	auto_use_uses = FALSE //So we can attempt multiple times
@@ -579,7 +579,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		active = FALSE
 		return
 	var/turf/T = get_turf(owner_AI.eyeobj)
-	var/obj/machinery/transformer/conveyor = new(T)
+	var/obj/machinery/transformer_rp/conveyor = new(T) // Skyrat edit , replaced with our own transformer version.
 	conveyor.masterAI = owner
 	playsound(T, 'sound/effects/phasein.ogg', 100, TRUE)
 	owner_AI.can_shunt = FALSE
