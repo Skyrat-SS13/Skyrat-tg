@@ -231,10 +231,17 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/syndicate/frigate)
 "EF" = (
-/obj/machinery/button/door{
-	id = "frigaterightshutters"
+/obj/machinery/door/poddoor/shutters{
+	id = "frigateleftshutters"
 	},
-/turf/closed/wall/r_wall/syndicate/cruiser,
+/obj/effect/turf_decal/delivery/red,
+/obj/structure/fans/tiny,
+/obj/machinery/button/door{
+	id = "frigateleftshutters";
+	pixel_y = -32;
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating,
 /area/shuttle/syndicate/frigate)
 "Gp" = (
 /obj/machinery/suit_storage_unit/syndicate,
@@ -301,6 +308,14 @@
 "PQ" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/structure/fans/tiny,
+/obj/machinery/button/door{
+	id = "frigaterightshutters";
+	pixel_y = -32;
+	req_access_txt = "150"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "frigaterightshutters"
+	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/frigate)
 "PS" = (
@@ -344,6 +359,9 @@
 	width = 22
 	},
 /obj/structure/fans/tiny,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "frigaterightshutters"
+	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/frigate)
 "Wl" = (
@@ -408,8 +426,8 @@ nt
 br
 br
 br
-br
 EF
+nt
 nt
 nt
 Tw
@@ -695,9 +713,9 @@ Tw
 nt
 NU
 VV
+NU
 PQ
-PQ
-EF
+nt
 nt
 nt
 Tw
