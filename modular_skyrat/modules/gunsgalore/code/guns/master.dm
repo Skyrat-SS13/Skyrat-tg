@@ -211,7 +211,7 @@
 	if(realistic)
 		if(istype(A, /obj/item/stack/sheet/cloth))
 			var/obj/item/stack/sheet/cloth/C = A
-			if(dirt_level = 0)
+			if(!dirt_level)
 				to_chat(user, "The [src] is already spotless!")
 			else
 				if(C.amount < 5)
