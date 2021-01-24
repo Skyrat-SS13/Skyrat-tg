@@ -265,7 +265,7 @@
 	projectile_type = /obj/projectile/bullet/advanced/smartgun
 
 /obj/projectile/bullet/advanced/smartgun
-	name = "smartgun bullet"
+	name = "smartgun dart"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
 	icon_state = "smartgun"
 	embedding = list(embed_chance=100, fall_chance=2, jostle_chance=0, ignore_throwspeed_threshold=TRUE, pain_stam_pct=20, pain_mult=4, rip_time=40)

@@ -143,7 +143,7 @@
 /obj/item/storage/box/gunset/zeta
 	name = "zeta supply box"
 
-/obj/item/storage/box/gunset/revolution/PopulateContents()
+/obj/item/storage/box/gunset/zeta/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/zeta(src)
 	new /obj/item/ammo_box/revolver/multi_sprite/zeta/rubber(src)

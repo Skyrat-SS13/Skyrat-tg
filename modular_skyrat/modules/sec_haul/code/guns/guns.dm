@@ -722,6 +722,7 @@
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
 	worn_icon_state = "smartgun_worn"
 	mag_type = /obj/item/ammo_box/magazine/smartgun
+	actions_types = null
 	can_suppress = FALSE
 	can_bayonet = FALSE
 	mag_display = TRUE
@@ -738,6 +739,22 @@
 	load_empty_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magout.ogg'
 	load_empty_sound = 'modular_skyrat/modules/sec_haul/sound/chaingun_magout.ogg'
+	var/recharge_time = 5 SECONDS
+	var/recharging = FALSE
+
+/obj/item/gun/ballistic/automatic/smartgun/process_chamber()
+	. = ..()
+	recharging = TRUE
+	addtimer(CALLBACK(src, .proc/recharge), recharge_time)
+
+/obj/item/gun/ballistic/automatic/smartgun/proc/recharge()
+	recharging = FALSE
+	playsound(src, 'sound/weapons/kenetic_reload.ogg', 60, 1)
+
+/obj/item/gun/ballistic/automatic/smartgun/can_shoot()
+	. = ..()
+	if(recharging)
+		return FALSE
 
 /obj/item/gun/ballistic/automatic/smartgun/update_icon()
 	. = ..()
