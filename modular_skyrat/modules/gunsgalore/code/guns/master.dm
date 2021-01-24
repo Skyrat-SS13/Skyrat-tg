@@ -209,14 +209,21 @@
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
 	if(realistic)
-		if(istype(A, /obj/item/soap))
-			var/obj/item/soap/S = A
-			to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
-			if(do_after(user, (1000/S.cleanspeed) SECONDS))
-				dirt_level -= S.cleanspeed
-				if(dirt_level < 0)
-					dirt_level = 0
-				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
+		if(istype(A, /obj/item/stack/sheet/cloth))
+			var/obj/item/stack/sheet/cloth/C = A
+			if(dirt_level = 0)
+				to_chat(user, "The [src] is already spotless!")
+			else
+				if(C.amount < 5)
+					to_chat(user, "There's not enough [C] to clean the gun with!")
+				else
+					to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
+					if(do_after(user, 20 SECONDS))
+						dirt_level -= 35
+						if(dirt_level < 0)
+							dirt_level = 0
+						C.use(5)
+						to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
 
 
 //CRATES

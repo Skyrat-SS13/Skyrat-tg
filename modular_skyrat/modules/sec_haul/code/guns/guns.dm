@@ -5,8 +5,11 @@
 /obj/item/gun/ballistic/automatic/emp_act(severity)
 	. = ..()
 	if(emp_damageable)
-		magazine.forceMove(src.loc)
-		playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+		jammed = TRUE
+		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
+		if(magazine)
+			magazine.forceMove(src.loc)
+			playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
 
 /obj/item/gun/ballistic/automatic/examine(mob/user)
 	. = ..()
@@ -403,13 +406,13 @@
 	fire_delay = 3
 	spread = 15
 	actions_types = list(/datum/action/item_action/toggle_firemode)
-	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 	emp_damageable = FALSE
 	armatek = TRUE
+	can_bayonet = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull
 	name = "pitbull smg magazine (10mm)"
@@ -451,13 +454,13 @@
 	can_suppress = FALSE
 	burst_size = 4
 	actions_types = list(/datum/action/item_action/toggle_firemode)
-	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	emp_damageable = TRUE
 	armatek = TRUE
+	can_bayonet = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
 	name = "ostwind smg magazine (6mm)"
@@ -586,7 +589,7 @@
 	alt_icon_state = "norwind_worn"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/norwind
 	can_suppress = FALSE
-	can_bayonet = FALSE
+	can_bayonet = TRUE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	actions_types = null
