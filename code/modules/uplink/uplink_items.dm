@@ -1510,6 +1510,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/sbeacondrop
 	cost = 10
 
+/* SKYRAT CHANGE, REMOVAL
 /datum/uplink_item/device_tools/powersink
 	name = "Power Sink"
 	desc = "When screwed to wiring attached to a power grid and activated, this large device lights up and places excessive \
@@ -1517,6 +1518,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
 	cost = 10
+/*
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
