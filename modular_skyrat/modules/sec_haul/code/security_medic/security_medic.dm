@@ -1,11 +1,11 @@
 /datum/job/security_medic
 	title = "Security Medic"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Head of Security", "Chief Medical Officer")
+	department_head = list("Head of Security")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of security and chief medical officer"
+	supervisors = "the head of security and any security sergeants"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
