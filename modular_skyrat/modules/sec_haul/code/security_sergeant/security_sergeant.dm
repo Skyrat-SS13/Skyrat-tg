@@ -36,7 +36,6 @@
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
-	l_hand = /obj/item/storage/firstaid/advanced
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
 
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm)
