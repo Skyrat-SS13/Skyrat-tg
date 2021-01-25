@@ -714,7 +714,6 @@
 	ammo_type = /obj/item/ammo_casing/b10mm
 	caliber = "10mm"
 	max_ammo = 8
-	start_empty = TRUE
 
 /obj/item/ammo_box/revolver/multi_sprite/zeta
 	name = "zeta speed loader(10mm)"
