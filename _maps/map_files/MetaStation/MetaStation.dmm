@@ -47749,7 +47749,6 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "cEK" = (
-/obj/structure/grille,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -48475,8 +48474,13 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "cJr" = (
+/obj/structure/disposalpipe/junction{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
+	},
 /obj/structure/cable,
-/obj/effect/loot_site_spawner,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "cJs" = (
@@ -52017,6 +52021,16 @@
 	},
 /turf/open/floor/wood,
 /area/library)
+"cVn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/loot_site_spawner,
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "cVx" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -64100,26 +64114,12 @@
 /turf/open/floor/plasteel,
 /area/science/research)
 "jIt" = (
-/obj/effect/turf_decal/tile/blue,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
+/obj/structure/lattice,
+/obj/structure/disposalpipe/junction{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/sign/poster/official/get_your_legs{
-	pixel_y = 32
-	},
-/obj/structure/chair/sofa/right,
-/obj/item/toy/plush/moth{
-	name = "Mender Moff"
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/turf/closed/wall,
+/area/maintenance/aft)
 "jIy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -65056,13 +65056,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/rack,
-/obj/item/reagent_containers/pill/maintenance,
-/obj/item/reagent_containers/pill/maintenance,
-/obj/item/storage/box/gum,
-/obj/item/surgicaldrill,
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
 /area/medical/abandoned)
 "kuW" = (
 /obj/machinery/light{
@@ -100454,7 +100451,7 @@ hcY
 hcY
 hcY
 hcY
-fUj
+jIt
 fUj
 lMJ
 aaa
@@ -100710,8 +100707,8 @@ lEV
 dlP
 dlP
 dlP
-cEI
-jNL
+cJr
+cLd
 bTs
 fUj
 bTs
@@ -104307,7 +104304,7 @@ wWt
 eyo
 ljG
 oLd
-jIt
+mjT
 kta
 tay
 cGJ
@@ -104571,7 +104568,7 @@ cGK
 cHA
 tay
 diR
-cKs
+cVn
 cLa
 cLY
 cMH
@@ -105598,7 +105595,7 @@ czW
 cGN
 cHD
 pdN
-cJr
+diR
 cKu
 cLd
 cLa
