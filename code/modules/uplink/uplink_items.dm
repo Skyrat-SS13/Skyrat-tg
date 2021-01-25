@@ -1518,7 +1518,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
 	cost = 10
-/*
+*/
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
