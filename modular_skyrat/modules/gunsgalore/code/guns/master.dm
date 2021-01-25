@@ -208,7 +208,12 @@
 				if(dirt_level < 0)
 					dirt_level = 0
 				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
-
+		if(istype(A, /obj/item/gun_maintenance_supplies))
+			to_chat(user, "<span class='notice'>You start maintaining the [src].</span>")
+			if(do_after(user, 10 SECONDS, target = src))
+				user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
+				dirt_level = 0
+				qdel(A)
 
 //CRATES
 
