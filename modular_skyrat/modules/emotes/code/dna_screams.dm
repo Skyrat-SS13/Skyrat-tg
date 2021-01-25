@@ -30,6 +30,10 @@
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
 	femalescreamsounds = null
 
+/datum/species/insect
+	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
+	femalescreamsounds = null
+
 /datum/species/ethereal
 	screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
 	femalescreamsounds = null

@@ -66,6 +66,9 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define iszombie(A) (is_species(A, /datum/species/zombie))
 #define isskeleton(A) (is_species(A, /datum/species/skeleton))
 #define ismoth(A) (is_species(A, /datum/species/moth))
+//SKYRAT add
+#define isinsect(A) (is_species(A, /datum/species/insect))
+//SKYRAT add
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
 #define isfelinid(A) (is_species(A, /datum/species/human/felinid))
 #define isethereal(A) (is_species(A, /datum/species/ethereal))

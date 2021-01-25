@@ -4,11 +4,13 @@
 	key = "fluff"
 	generic = "Fluff"
 	recommended_species = list("moth", "mammal", "insect")
-	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/fluff/moth/none
 	name = "None"
 	icon_state = "none"
+	color_src = null
+	factual = FALSE
 
 /datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
@@ -101,4 +103,4 @@
 	name = "Insect female (Tertiary)"
 	icon_state = "insectf"
 	default_color = DEFAULT_TERTIARY
-	
+

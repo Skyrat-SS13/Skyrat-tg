@@ -338,6 +338,8 @@
 /datum/emote/living/laugh/get_sound(mob/living/user)
 	if(ismoth(user))
 		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
+	if(isinsect(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)
 			return pick('sound/voice/human/manlaugh1.ogg',
