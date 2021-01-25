@@ -124,7 +124,7 @@
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
-	recommended_species = list("mammal", "lizard")
+	recommended_species = list("mammal", "lizard", "insect")
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one

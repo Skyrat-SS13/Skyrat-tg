@@ -9,8 +9,6 @@
 /datum/sprite_accessory/fluff/moth/none
 	name = "None"
 	icon_state = "none"
-	color_src = null
-	factual = FALSE
 
 /datum/sprite_accessory/fluff/moth/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD || HD.status == BODYPART_ROBOTIC)
