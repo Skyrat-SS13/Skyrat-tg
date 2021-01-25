@@ -13,3 +13,8 @@ MetaStation.dmm > MetaStation_skyrat.dmm
 KiloStaton.dmm > KiloStation_skyrat.dmm
 IceBoxStation.dmm > IceBoxStation_skyrat.dmm
 DeltaStation.dmm > DeltaStation_skyrat.dmm
+
+PLEASE REMEMBER TO LOG ANY CHANGES YOU MAKE HERE.
+
+UPDATE LOG:
+21:26 25/01/2021 - Gandalf2k15 - Updated all maps to our previous versions, bar cloning. I did not move that over.
