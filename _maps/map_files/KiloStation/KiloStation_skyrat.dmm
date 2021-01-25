@@ -20778,7 +20778,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/hallway/primary/aft)
+/area/blueshield)
 "aIS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -23107,12 +23107,16 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	name = "Security Checkpoint";
-	req_access_txt = "63"
+/obj/machinery/door/airlock/command{
+	name = "Blueshield Office";
+	req_access_txt = "73"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/hallway/primary/aft)
+/area/blueshield)
 "aMB" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -53468,11 +53472,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/port)
-"bGU" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/maintenance/aft)
 "bGV" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -54106,7 +54105,7 @@
 "bHU" = (
 /obj/machinery/status_display/evac,
 /turf/closed/wall,
-/area/hallway/primary/aft)
+/area/blueshield)
 "bHV" = (
 /turf/closed/wall/rust,
 /area/storage/tech)
@@ -54144,7 +54143,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "bIa" = (
@@ -54242,7 +54244,7 @@
 "bIj" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/hallway/primary/aft)
+/area/blueshield)
 "bIk" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -54254,25 +54256,19 @@
 /turf/open/floor/plasteel/dark,
 /area/security/processing)
 "bIl" = (
-/obj/machinery/computer/secure_data{
-	dir = 8
-	},
-/obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/obj/machinery/light/small{
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
+/obj/machinery/power/apc/auto_name/south,
+/obj/structure/cable,
+/obj/structure/chair/office{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/hallway/primary/aft)
+/area/blueshield)
 "bIm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -54777,13 +54773,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
-/obj/machinery/airalarm{
-	pixel_y = 22
+/obj/machinery/cryopod,
+/obj/machinery/computer/cryopod{
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
@@ -54793,13 +54785,12 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 24
+	},
+/obj/machinery/cryopod,
+/obj/machinery/airalarm{
+	pixel_y = 22
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
@@ -57505,19 +57496,17 @@
 /turf/closed/wall/rust,
 /area/janitor)
 "bNy" = (
-/obj/machinery/computer/security{
-	dir = 8
-	},
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/status_display/ai{
-	pixel_x = 32
+/obj/effect/landmark/start/blueshield,
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/hallway/primary/aft)
+/area/blueshield)
 "bNz" = (
 /obj/structure/girder/displaced,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -59592,17 +59581,13 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/storage/backpack,
-/obj/item/storage/backpack/satchel,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/cryopod,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/locker)
 "bQF" = (
@@ -63929,18 +63914,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
-"bXV" = (
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/delivery,
-/obj/machinery/door/firedoor,
-/obj/item/folder/red,
-/obj/item/pen,
-/obj/machinery/door/window/southleft{
-	name = "Security Desk";
-	req_one_access_txt = "63"
-	},
-/turf/open/floor/plating,
-/area/hallway/primary/aft)
 "bXW" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/yellow,
@@ -74084,11 +74057,12 @@
 	dir = 10
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/chair/office{
-	dir = 1
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/hallway/primary/aft)
+/area/blueshield)
 "cpN" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -87979,6 +87953,10 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/port)
+"ejK" = (
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "emv" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/structure/table/wood,
@@ -88873,6 +88851,18 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/security/prison/safe)
+"kCl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/blueshield,
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/plasteel/dark,
+/area/blueshield)
 "kDo" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12"
@@ -89262,6 +89252,9 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/port/aft)
+"nrd" = (
+/turf/closed/wall,
+/area/blueshield)
 "nyz" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -89710,6 +89703,29 @@
 /obj/effect/spawner/lootdrop/donkpockets,
 /turf/open/floor/plasteel/white,
 /area/security/prison)
+"qdW" = (
+/obj/machinery/computer/secure_data{
+	dir = 8
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
+	},
+/turf/open/floor/plasteel/dark,
+/area/blueshield)
 "qgG" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -91018,6 +91034,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/security/prison)
+"xFr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall,
+/area/maintenance/aft)
 "xGF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/line{
@@ -116012,7 +116032,7 @@ aaY
 clK
 chd
 cnG
-bXV
+bIj
 cpK
 aIR
 aMM
@@ -116526,9 +116546,9 @@ bBk
 clK
 chd
 cpW
-axF
-axF
-bBB
+nrd
+kCl
+qdW
 bFa
 aFM
 aFM
@@ -116784,8 +116804,8 @@ ckW
 cpd
 cqU
 bFa
-bGf
-bRT
+bFa
+xFr
 bET
 aFM
 aGk
@@ -117041,7 +117061,7 @@ cFB
 ceS
 cFC
 bFa
-bFa
+bGf
 bFS
 bFa
 aIG
@@ -117298,7 +117318,7 @@ ckX
 cpN
 csp
 bFa
-cnz
+bFa
 bGG
 bET
 aFM
@@ -117556,7 +117576,7 @@ chd
 csD
 coq
 cpS
-cBr
+ejK
 bFa
 aIG
 aMT
@@ -117813,7 +117833,7 @@ cpU
 cya
 bFa
 cpS
-bGU
+cBr
 bET
 awu
 brZ
