@@ -579,7 +579,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		active = FALSE
 		return
 	var/turf/T = get_turf(owner_AI.eyeobj)
-	var/obj/machinery/transformer_rp/conveyor = new(T) // Skyrat edit , replaced with our own transformer version.
+	var/obj/machinery/transformer_rp/conveyor = new(T) //SKYRAT EDIT CHANGE - SILLICONQOL - ORIGINAL: var/obj/machinery/transformer/conveyor = new(T)
 	conveyor.masterAI = owner
 	playsound(T, 'sound/effects/phasein.ogg', 100, TRUE)
 	owner_AI.can_shunt = FALSE
