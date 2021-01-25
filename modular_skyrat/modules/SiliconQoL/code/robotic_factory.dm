@@ -11,7 +11,7 @@
 	/// How many cyborgs can we store?
 	var/max_stored_cyborgs = 4
 	/// How much between the construction of a cyborg?
-	var/cooldown_duration = 3000 // 5 minutes
+	var/cooldown_duration = 5 MINUTES
 	/// Handles the timer , shouldn't touch.
 	var/cooldown_timer
 	/// The countdown itself
