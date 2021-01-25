@@ -111,11 +111,7 @@
 /datum/quirk/friendly
 	name = "Friendly"
 	desc = "You give the best hugs, especially when you're in the right mood."
-<<<<<<< HEAD
-	value = 1
-=======
 	value = 2
->>>>>>> baa149800ea (Lower Friendly cost from 4 to 2 (#56342))
 	mob_trait = TRAIT_FRIENDLY
 	gain_text = "<span class='notice'>You want to hug someone.</span>"
 	lose_text = "<span class='danger'>You no longer feel compelled to hug others.</span>"
