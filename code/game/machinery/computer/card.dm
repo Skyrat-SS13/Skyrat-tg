@@ -34,6 +34,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Chief Engineer",
 		"Research Director",
 		"Chief Medical Officer",
+		"Security Medic", //SKYRAT EDIT ADDITION - SEC_HUAL
+		"Blueshield", //SKYRAT EDIT ADDITION - SEC_HUAL
 		"Prisoner")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %

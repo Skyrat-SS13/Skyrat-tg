@@ -10,7 +10,7 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/sec/peacekeeper
-	name = "security peacekeeper beret"
+	name = "peacekeeper beret"
 	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_helmets.dmi'
@@ -45,7 +45,7 @@
 //PEACEKEEPER UNIFORM
 /obj/item/clothing/under/rank/security/peacekeeper
 	name = "peacekeeper uniform"
-	desc = "A sleek white peackeeper uniform, made to a price."
+	desc = "A sleek peackeeper uniform, made to a price."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_uniforms.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_uniforms_digi.dmi'
@@ -69,7 +69,7 @@
 
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
-	desc = "A formal security suit for officers complete with Nanotrasen belt buckle."
+	desc = "A formal security suit for officers complete with ArmaDyne belt buckle."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_uniforms.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_uniforms_digi.dmi'

@@ -9,7 +9,7 @@
 	announce_span = "danger"
 	announce_text = "Grove For Lyfe!"
 	reroll_friendly = FALSE
-	restricted_jobs = list("Cyborg", "AI", "Prisoner","Security Officer", "Security Medic", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel") //SKYRAT EDIT ADDITION - SEC_HAUL
+	restricted_jobs = list("Cyborg", "AI", "Prisoner","Security Officer", "Security Medic", "Securty Sergeant", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel") //SKYRAT EDIT ADDITION - SEC_HAUL
 	protected_jobs = list()
 
 	/// A reference to the handler that is used to run pre_setup(), post_setup(), etc..
