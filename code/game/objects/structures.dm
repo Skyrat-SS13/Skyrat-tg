@@ -8,6 +8,7 @@
 	flags_ricochet = RICOCHET_HARD
 	receive_ricochet_chance_mod = 0.6
 	pass_flags_self = PASSSTRUCTURE
+<<<<<<< HEAD
 
 	var/climb_time = 20
 	var/climb_stun = 20
@@ -15,6 +16,11 @@
 	var/mob/living/structureclimber
 	var/broken = 0 //similar to machinery's stat BROKEN
 
+=======
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	emissive_blocker_plane = STRUCTURE_EMISSIVE_BLOCKER_PLANE
+	var/broken = FALSE
+>>>>>>> 1f1b58bb268 (Adds Neon Carpet (#55782))
 
 /obj/structure/Initialize()
 	if (!armor)
