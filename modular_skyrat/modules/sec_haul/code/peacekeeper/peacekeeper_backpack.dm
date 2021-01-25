@@ -21,3 +21,6 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_backpack.dmi'
 	inhand_icon_state = "duffel-sec"
+
+
+

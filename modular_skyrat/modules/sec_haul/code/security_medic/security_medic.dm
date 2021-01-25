@@ -32,7 +32,7 @@
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper
+	gloves = /obj/item/clothing/gloves/color/latex
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
