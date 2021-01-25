@@ -35,7 +35,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Research Director",
 		"Chief Medical Officer",
 		"Security Medic", //SKYRAT EDIT ADDITION - SEC_HUAL
-		"Blueshield", //SKYRAT EDIT ADDITION - SEC_HUAL
+		"Security Sergeant", //SKYRAT EDIT ADDITION - SEC_HAUL
+		"Blueshield",	//SKYRAT EDIT: Blueshield slots should never be above 1.
 		"Prisoner")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
