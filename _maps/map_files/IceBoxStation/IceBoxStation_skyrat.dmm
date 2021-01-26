@@ -1318,6 +1318,9 @@
 	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "adg" = (
@@ -12418,6 +12421,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/item/soap/nanotrasen,
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
 "aDQ" = (
@@ -31108,6 +31112,7 @@
 	dir = 8
 	},
 /obj/structure/closet/secure_closet/medical3,
+/obj/item/storage/box/medipens,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "bBL" = (
@@ -49591,6 +49596,16 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/genetics)
+"kxD" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/item/soap,
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/toilet/locker)
 "kyo" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -53445,6 +53460,7 @@
 	pixel_y = 1
 	},
 /obj/structure/closet/secure_closet/medical3,
+/obj/item/storage/box/medipens,
 /turf/open/floor/plasteel/dark,
 /area/medical/storage)
 "rMf" = (
@@ -54497,6 +54513,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
 /area/maintenance/aft)
+"tJF" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
 "tJO" = (
 /obj/structure/bed/dogbed/runtime,
 /mob/living/simple_animal/pet/cat/runtime,
@@ -73593,7 +73619,7 @@ aZt
 aXQ
 aZt
 aXQ
-aZt
+kxD
 aXQ
 aZt
 aXQ
@@ -78924,7 +78950,7 @@ bBM
 bBM
 boP
 aak
-aaw
+tJF
 adU
 aeL
 agk

@@ -10670,6 +10670,7 @@
 	},
 /obj/machinery/light/small,
 /obj/effect/turf_decal/bot,
+/obj/item/soap/nanotrasen,
 /turf/open/floor/plasteel,
 /area/crew_quarters/toilet/auxiliary)
 "aAo" = (
@@ -108471,6 +108472,9 @@
 /obj/item/storage/pill_bottle/dice,
 /obj/item/toy/cards/deck/tarot,
 /obj/machinery/light,
+/obj/machinery/firealarm{
+	pixel_y = -28
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "lrz" = (
@@ -111908,6 +111912,8 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/structure/closet/crate/bin,
+/obj/effect/spawner/lootdrop/prison_contraband,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "stQ" = (
@@ -112864,9 +112870,10 @@
 /area/maintenance/port/fore)
 "urA" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/closet/crate/bin,
-/obj/effect/spawner/lootdrop/prison_contraband,
-/obj/machinery/firealarm{
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/obj/machinery/computer/cryopod{
 	dir = 8;
 	pixel_x = 24
 	},
@@ -112880,6 +112887,9 @@
 	c_tag = "Permabrig - Kitchen Entrance";
 	dir = 8;
 	network = list("ss13","prison")
+	},
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
