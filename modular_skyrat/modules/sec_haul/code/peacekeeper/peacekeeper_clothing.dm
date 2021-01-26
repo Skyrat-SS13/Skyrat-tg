@@ -69,7 +69,7 @@
 
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
-	desc = "A formal security suit for officers complete with ArmaDyne belt buckle."
+	desc = "A formal security suit for officers complete with Armadyne belt buckle."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_uniforms.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_uniforms_digi.dmi'
