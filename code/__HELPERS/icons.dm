@@ -1124,7 +1124,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	fdel("tmp/dummySave.sav") //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
 
 /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
-	if (!thing)
+	/*if (!thing) - SKYRAT EDIT REMOVAL BEGIN - ICON2HTML
 		return
 
 	var/key
@@ -1185,7 +1185,8 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		SSassets.transport.send_assets(thing2, key)
 	if(sourceonly)
 		return SSassets.transport.get_asset_url(key)
-	return "<img class='icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
+	return "<img class='icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"*/ //- SKYRAT EDIT REMOVAL END
+	return ""
 
 /proc/icon2base64html(thing)
 	if (!thing)
@@ -1222,14 +1223,15 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 //Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target, sourceonly = FALSE)
-	if (!thing)
+	/*if (!thing) SKYRAT EDIT REMOVAL BEGIN - ICON2HTML
 		return
 
 	if (isicon(thing))
 		return icon2html(thing, target)
 
 	var/icon/I = getFlatIcon(thing)
-	return icon2html(I, target, sourceonly = sourceonly)
+	return icon2html(I, target, sourceonly = sourceonly)*/ //SKYRAT EDIT REMOVAL END
+	return ""
 
 GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
