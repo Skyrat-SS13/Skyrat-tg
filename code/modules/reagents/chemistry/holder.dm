@@ -281,7 +281,7 @@
 			amount = clamp(amount, 0, cached_reagent.volume)
 			cached_reagent.volume -= amount
 			update_total()
-			if(!safety)//So it does not handle reactions when it need not to
+			if(!safety || !no_react)//So it does not handle reactions when it need not to
 				handle_reactions()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(cached_reagent) ? reagent : cached_reagent, amount)
 
@@ -482,11 +482,18 @@
 				if(istype(target_atom, /obj/item/organ))
 					R.expose_single(reagent, target, methods, part, show_message)
 				else
+<<<<<<< HEAD
 					R.expose_single(reagent, target_atom, methods, part, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
 			remove_reagent(reagent.type, transfer_amount)
 			transfer_log[reagent.type] = transfer_amount
 
+=======
+					R.expose_single(T, target_atom, methods, part, show_message)
+				T.on_transfer(target_atom, methods, transfer_amount * multiplier)
+			remove_reagent(T.type, transfer_amount, no_react)
+			transfer_log[T.type] = transfer_amount
+>>>>>>> f1f4adcbc5... a
 	else
 		var/to_transfer = amount
 		for(var/datum/reagent/reagent as anything in cached_reagents)
@@ -507,10 +514,17 @@
 				if(istype(target_atom, /obj/item/organ))
 					R.expose_single(reagent, target, methods, transfer_amount, show_message)
 				else
+<<<<<<< HEAD
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
 			remove_reagent(reagent.type, transfer_amount)
 			transfer_log[reagent.type] = transfer_amount
+=======
+					R.expose_single(T, target_atom, methods, transfer_amount, show_message)
+				T.on_transfer(target_atom, methods, transfer_amount * multiplier)
+			remove_reagent(T.type, transfer_amount, no_react)
+			transfer_log[T.type] = transfer_amount
+>>>>>>> f1f4adcbc5... a
 
 	if(transfered_by && target_atom)
 		target_atom.add_hiddenprint(transfered_by) //log prints so admins can figure out who touched it last.
@@ -562,7 +576,7 @@
 	return amount
 
 /// Copies the reagents to the target object
-/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1)
+/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, no_react=0)
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -584,16 +598,22 @@
 	for(var/datum/reagent/reagent as anything in cached_reagents)
 		var/copy_amount = reagent.volume * part
 		if(preserve_data)
+<<<<<<< HEAD
 			trans_data = reagent.data
 		R.add_reagent(reagent.type, copy_amount * multiplier, trans_data, added_purity = reagent.purity, added_ph = reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
 
 	//pass over previous ongoing reactions before handle_reactions is called
 	transfer_reactions(R)
+=======
+			trans_data = T.data
+		R.add_reagent(T.type, copy_amount * multiplier, trans_data, no_react = 1)
+>>>>>>> f1f4adcbc5... a
 
 	src.update_total()
 	R.update_total()
-	R.handle_reactions()
-	src.handle_reactions()
+	if(!no_react)
+		R.handle_reactions()
+		src.handle_reactions()
 	return amount
 
 ///Multiplies the reagents inside this holder by a specific amount

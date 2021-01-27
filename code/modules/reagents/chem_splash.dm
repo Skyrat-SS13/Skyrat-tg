@@ -58,6 +58,9 @@
 					break
 		var/list/reactable = accessible
 		for(var/turf/T in accessible)
+			for(var/datum/reagent/R in splash_holder.reagent_list)
+				T.add_liquid(R.type, R.volume * 0.3)
+
 			for(var/atom/A in T.GetAllContents())
 				if(!(A in viewable))
 					continue
