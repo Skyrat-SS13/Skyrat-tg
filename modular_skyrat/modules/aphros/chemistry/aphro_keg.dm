@@ -1,7 +1,7 @@
 /obj/structure/reagent_dispensers/keg/aphro
 	name = "keg of aphrodisiac"
 	desc = "A keg of aphrodisiac."
-	icon = 'modular_skyrat/modules/reagents/aphrokeg.dmi'
+	icon = 'modular_skyrat/modules/aphros/aphrokeg.dmi'
 	icon_state = "aphro"
 	reagent_id = /datum/reagent/drug/aphrodisiac
 	tank_volume = 150
