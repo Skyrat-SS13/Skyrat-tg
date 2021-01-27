@@ -72,6 +72,41 @@
 		can_bayonet = FALSE
 		update_icon()
 
+<<<<<<< HEAD
+=======
+/obj/item/gun/ballistic/rifle/boltaction/attack_self(mob/user)
+	if(can_jam)
+		if(jammed)
+			if(prob(unjam_chance))
+				jammed = FALSE
+				unjam_chance = 10
+			else
+				unjam_chance += 10
+				to_chat(user, "<span class='warning'>[src] is jammed!</span>")
+				playsound(user,'sound/weapons/jammed.ogg', 75, TRUE)
+				return FALSE
+	..()
+
+/obj/item/gun/ballistic/rifle/boltaction/process_fire(mob/user)
+	if(can_jam)
+		if(chambered.BB)
+			if(prob(jamming_chance))
+				jammed = TRUE
+			jamming_chance  += jamming_increment
+			jamming_chance = clamp (jamming_chance, 0, 100)
+	return ..()
+
+/obj/item/gun/ballistic/rifle/boltaction/attackby(obj/item/item, mob/user, params)
+	. = ..()
+	if(can_jam)
+		if(bolt_locked)
+			if(istype(item, /obj/item/gun_maintenance_supplies))
+				if(do_after(user, 10 SECONDS, target = src))
+					user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
+					jamming_chance = 10
+					qdel(item)
+
+>>>>>>> ba63b9832ec (fixing the beginners mistake (#56439))
 /obj/item/gun/ballistic/rifle/boltaction/blow_up(mob/user)
 	. = 0
 	if(chambered?.BB)
