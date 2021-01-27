@@ -119,6 +119,10 @@
 	icon_state = "bats"
 	general_type = "feline"
 
+/datum/sprite_accessory/tails/mammal/wagging/cable
+	name = "Cable"
+	icon_state = "cable"
+
 /datum/sprite_accessory/tails/mammal/wagging/bee
 	name = "Bee"
 	icon_state = "bee"
@@ -168,9 +172,29 @@
 	icon_state = "fox"
 	general_type = "vulpine"
 
+/datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox2
+	name = "Fox (Alt 2)"
+	icon_state = "fox2"
+	general_type = "vulpine"
+
+/datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox3
+	name = "Fox (Alt 3)"
+	icon_state = "fox3"
+	general_type = "vulpine"
+
 /datum/sprite_accessory/tails/mammal/wagging/hawk
 	name = "Hawk"
 	icon_state = "hawk"
+	general_type = "avian"
+
+/datum/sprite_accessory/tails/mammal/wagging/avian1
+	name = "Avian (alt 1)"
+	icon_state = "avian1"
+	general_type = "avian"
+
+/datum/sprite_accessory/tails/mammal/wagging/avian2
+	name = "Avian (alt 2)"
+	icon_state = "avian2"
 	general_type = "avian"
 
 /datum/sprite_accessory/tails/mammal/wagging/horse
@@ -280,6 +304,11 @@
 /datum/sprite_accessory/tails/mammal/wagging/tiger
 	name = "Tiger"
 	icon_state = "tiger"
+	general_type = "feline"
+
+/datum/sprite_accessory/tails/mammal/wagging/leopard
+	name = "Leopard"
+	icon_state = "leopard"
 	general_type = "feline"
 
 /datum/sprite_accessory/tails/mammal/wagging/wolf
