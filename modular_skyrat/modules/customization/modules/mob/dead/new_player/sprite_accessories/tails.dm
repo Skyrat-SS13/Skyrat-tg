@@ -147,11 +147,6 @@
 	name = "Cat, Double"
 	icon_state = "twocat"
 
-/datum/sprite_accessory/tails/mammal/wagging/cheetah
-	name = "Cheetah"
-	icon_state = "cheetah"
-	general_type = "feline"
-
 /datum/sprite_accessory/tails/mammal/wagging/corvid
 	name = "Corvid"
 	icon_state = "crow"
