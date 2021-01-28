@@ -51,7 +51,7 @@
 
 /obj/effect/turf_decal/trimline/darkblue
 	color = "#486091"
-	alpha = 150
+	alpha = 160
 
 /obj/effect/turf_decal/trimline/darkblue/line
 	icon_state = "trimline"
