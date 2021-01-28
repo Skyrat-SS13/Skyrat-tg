@@ -8,7 +8,7 @@
 	//can_synth = FALSE
 
 /datum/reagent/drug/aphrodisiac/on_mob_life(mob/living/M)
-	if(M/*insert check for aphro client setting here*/)
+	if(M && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if((prob(min(current_cycle/2,5))))
 			M.emote(pick("moan","blush"))
 		if(prob(min(current_cycle/4,10)))
@@ -33,7 +33,7 @@
 	//can_synth = FALSE
 
 /datum/reagent/drug/aphrodisiacplus/on_mob_life(mob/living/M)
-	if(M/*&& insert check for aphro client setting here*/)
+	if(M && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(prob(5))
 			if(prob(current_cycle))
 				M.say(pick("Hnnnnngghh...", "Ohh...", "Mmnnn..."))
@@ -70,7 +70,7 @@
 	..()
 
 /datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
-	if(M/*&& insert check for aphro client setting here*/ && prob(33))
+	if(M && (M.client.prefs.skyrat_toggles & APHRO_PREF) && prob(33))
 		if(prob(5) && ishuman(M)/* && M.has_dna() && some shit about bimbofication*/)
 			to_chat(M, "<span class='notice'>Your libido is going haywire!</span>")
 	..()

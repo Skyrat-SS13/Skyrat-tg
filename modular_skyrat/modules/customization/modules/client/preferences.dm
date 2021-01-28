@@ -76,6 +76,9 @@ GLOBAL_LIST_INIT(food, list(
 	var/pda_style = MONO
 	var/pda_color = "#808000"
 
+	//aphrodisiac preference
+	var/aphrodisiacs_pref = 1
+
 	var/uses_glasses_colour = 0
 
 	//character preferences
@@ -979,6 +982,10 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<br>"
 
 			dat += "<b>Income Updates:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
+			dat += "<br>"
+
+			//aphrodisiac pref
+			dat += "<b>Be affected by aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
 			dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
@@ -2633,6 +2640,10 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
+
+				//aphro pref
+				if("aphrodisiacs_pref")
+					skyrat_toggles ^= APHRO_PREF
 
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
