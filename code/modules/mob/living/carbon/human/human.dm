@@ -605,9 +605,11 @@
 	if(istype(head, /obj/item/clothing/head/wizard) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
 		threatcount += 2
 
+	/* SKYRAT EDIT - REMOVAL
 	//Check for nonhuman scum
 	if(dna && dna.species.id && dna.species.id != "human")
 		threatcount += 1
+	*/
 
 	//mindshield implants imply trustworthyness
 	if(HAS_TRAIT(src, TRAIT_MINDSHIELD))
