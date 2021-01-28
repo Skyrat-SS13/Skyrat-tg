@@ -281,6 +281,7 @@
 			amount = clamp(amount, 0, cached_reagent.volume)
 			cached_reagent.volume -= amount
 			update_total()
+			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(R) ? reagent : R, amount)
 			if(!safety || !no_react)//So it does not handle reactions when it need not to
 				handle_reactions()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(cached_reagent) ? reagent : cached_reagent, amount)
