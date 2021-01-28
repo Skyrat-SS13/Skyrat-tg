@@ -6,7 +6,7 @@
 	display_name = "Advanced Peaeckeeper Ammunition"
 	description = "Alternate round types for the peacekeeper weapon designs."
 	prereq_ids = list("weaponry"  , "adv_weaponry")
-	design_ids = list("b6mm","b6mm_rubber","b6mm_ihdf","b9mm","b9mm_rubber","b9mm_hollowpoint","b9mm_ihdf","10mm","10mm_rubber","10mm_hollowpoint","10mm_ihdf","b12mm","b12mm_rubber","b12mm_ihdf",)
+	design_ids = list("b6mm","b6mm_rubber","b6mm_ihdf","b9mm","b9mm_rubber","b9mm_hollowpoint","b9mm_ihdf","10mm","b10mm_rubber","b10mm_hollowpoint","b10mm_ihdf","b12mm","b12mm_rubber","b12mm_hollowpoint",)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
 /datum/techweb_node/peacekeeper_ammo_advanced
@@ -15,7 +15,7 @@
 	prereq_ids = list("weaponry"  , "adv_weaponry", "advanced_peacekeeper_ammo")
 	design_ids = list("smartgun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
-
+/datum/design/knight_armour
 //////////////////////
 //6mm
 //////////////////////

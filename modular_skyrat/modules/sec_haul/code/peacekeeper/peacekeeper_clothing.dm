@@ -294,8 +294,7 @@
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"
 
-//OVERRIDES
-/obj/item/clothing/suit/armor/riot
+/obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'

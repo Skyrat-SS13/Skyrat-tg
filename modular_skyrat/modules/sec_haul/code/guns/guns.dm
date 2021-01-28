@@ -120,6 +120,7 @@
 	realistic = TRUE
 	armadyne = TRUE
 	can_flashlight = TRUE
+	emp_damageable = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt
 	name = "\improper Armadyne PDH 'Socom'"
