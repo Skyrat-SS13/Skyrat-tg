@@ -1385,6 +1385,7 @@
 	if(!log_globally)
 		return
 	//SKYRAT EDIT ADDITION BEGIN
+	#ifndef SPACEMAN_DMM
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
 		var/datum/db_query/query_sql_log_messages = SSdbcore.NewQuery({"
 			INSERT INTO [format_table_name("game_log")] (datetime, round_id, ckey, loc, type, message)
@@ -1396,6 +1397,7 @@
 		qdel(query_sql_log_messages)
 		if(!CONFIG_GET(flag/file_game_log))
 			return
+	#endif
 	//SKYRAT EDIT ADDITION END
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
 	switch(message_type)
