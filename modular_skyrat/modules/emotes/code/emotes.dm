@@ -221,7 +221,7 @@
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
 
 /datum/emote/living/hiss
-	key = "hiss"
+	key = "hiss1"
 	key_third_person = "hisses"
 	message = "hisses!"
 	emote_type = EMOTE_AUDIBLE
