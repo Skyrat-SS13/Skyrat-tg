@@ -283,6 +283,7 @@
 					/obj/item/clothing/suit/armor/vest)
 	crate_name = "armor crate"
 
+/* - SKYRAT EDIT REMOVAL - SEC_HAUL
 /datum/supply_pack/security/disabler
 	name = "Disabler Crate"
 	desc = "Three stamina-draining disabler weapons. Requires Security access to open."
@@ -292,6 +293,7 @@
 					/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler)
 	crate_name = "disabler crate"
+*/
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
@@ -315,6 +317,7 @@
 					/obj/item/clothing/head/helmet/sec)
 	crate_name = "helmet crate"
 
+/* - SKYRAT EDIT REMOVAL - SEC_HAUL
 /datum/supply_pack/security/laser
 	name = "Lasers Crate"
 	desc = "Contains three lethal, high-energy laser guns. Requires Security access to open."
@@ -324,7 +327,7 @@
 					/obj/item/gun/energy/laser,
 					/obj/item/gun/energy/laser)
 	crate_name = "laser crate"
-
+*/
 
 
 /datum/supply_pack/security/securitybarriers
@@ -338,6 +341,7 @@
 	cost = CARGO_CRATE_VALUE * 2
 	crate_name = "security barriers crate"
 
+/* - SKYRAT EDIT REMOVAL - SEC_HUAL
 /datum/supply_pack/security/securityclothes
 	name = "Security Clothing Crate"
 	desc = "Contains appropriate outfits for the station's private security force. Contains outfits for the Warden, Head of Security, and two Security Officers. Each outfit comes with a rank-appropriate jumpsuit, suit, and beret. Requires Security access to open."
@@ -356,6 +360,7 @@
 					/obj/item/clothing/suit/security/hos,
 					/obj/item/clothing/head/beret/sec/navyhos)
 	crate_name = "security clothing crate"
+*/
 
 /datum/supply_pack/security/stingpack
 	name = "Stingbang Grenade Pack"
@@ -406,7 +411,7 @@
 /datum/supply_pack/security/baton
 	name = "Stun Batons Crate"
 	desc = "Arm the Civil Protection Forces with three stun batons. Batteries included. Requires Security access to open."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 5 //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: 2
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/loaded,
 					/obj/item/melee/baton/loaded,
@@ -499,6 +504,7 @@
 					/obj/item/gun/energy/e_gun/dragnet)
 	crate_name = "\improper DRAGnet crate"
 
+/* - SKYRAT EDIT REMOVAL - SEC_HUAL
 /datum/supply_pack/security/armory/energy
 	name = "Energy Guns Crate"
 	desc = "Contains two Energy Guns, capable of firing both nonlethal and lethal blasts of light. Requires Armory access to open."
@@ -507,6 +513,7 @@
 					/obj/item/gun/energy/e_gun)
 	crate_name = "energy gun crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
+*/
 
 /datum/supply_pack/security/armory/exileimp
 	name = "Exile Implants Crate"
@@ -2666,6 +2673,7 @@
 	contains = list(/obj/item/vending_refill/cart)
 	crate_name = "ptech supply crate"
 
+/* - SKYRAT EDIT REMOVAL - SEC_HAUL - MOVED TO PACKS.DM
 /datum/supply_pack/vending/sectech
 	name = "SecTech Supply Crate"
 	desc = "Officer Paul bought all the donuts? Then refill the security vendor with ths crate."
@@ -2674,6 +2682,7 @@
 	contains = list(/obj/item/vending_refill/security)
 	crate_name = "SecTech supply crate"
 	crate_type = /obj/structure/closet/crate/secure/gear
+*/
 
 /datum/supply_pack/vending/snack
 	name = "Snack Supply Crate"
@@ -2758,6 +2767,7 @@
 					/obj/item/vending_refill/wardrobe/science_wardrobe)
 	crate_name = "science department wardrobe supply crate"
 
+/* - SKYRAT EDIT REMOVAL - SEC_HAUL - MOVED TO PACKS.DM
 /datum/supply_pack/vending/wardrobes/security
 	name = "Security Wardrobe Supply Crate"
 	desc = "This crate contains refills for the SecDrobe and LawDrobe."
@@ -2765,3 +2775,4 @@
 	contains = list(/obj/item/vending_refill/wardrobe/sec_wardrobe,
 					/obj/item/vending_refill/wardrobe/law_wardrobe)
 	crate_name = "security department supply crate"
+*/

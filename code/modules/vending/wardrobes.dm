@@ -17,20 +17,18 @@
 	icon_state = "secdrobe"
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
-	products = list(/obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper = 4, //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/suit/hooded/wintercoat/security = 3,
-					/obj/item/storage/backpack/security/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
-					/obj/item/storage/backpack/satchel/sec/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
-					/obj/item/storage/backpack/duffelbag/sec/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
-					/obj/item/clothing/under/rank/security/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
-					/obj/item/clothing/under/rank/security/peacekeeper/blue = 3, //SKRYAT EDIT ADDITON - SEC_HAUL
-					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 3, //SKRYAT EDIT ADDITON - SEC_HAUL
-					/obj/item/clothing/shoes/combat/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
-					/obj/item/clothing/head/beret/sec/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
+	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 3,
+					/obj/item/storage/backpack/security = 3,
+					/obj/item/storage/backpack/satchel/sec = 3,
+					/obj/item/storage/backpack/duffelbag/sec = 3,
+					/obj/item/clothing/under/rank/security/officer = 3,
+					/obj/item/clothing/shoes/jackboots = 3,
+					/obj/item/clothing/head/beret/sec = 3,
 					/obj/item/clothing/head/soft/sec = 3,
-					/obj/item/clothing/mask/bandana/black = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
-					/obj/item/clothing/gloves/combat/peacekeeper = 3, //SKYRAT EDIT CHANGE - SEC_HAUL
-					///obj/item/clothing/under/rank/security/officer/skirt = 3, - SKYRAT EDIT REMOVAL - SEC_HAUL
-					///obj/item/clothing/under/rank/security/officer/grey = 3, - SKYRAT EDIT REMOVAL - SEC_HAUL
+					/obj/item/clothing/mask/bandana/red = 3,
+					/obj/item/clothing/gloves/color/black = 3,
+					/obj/item/clothing/under/rank/security/officer/skirt = 3,
+					/obj/item/clothing/under/rank/security/officer/grey = 3,
 					/obj/item/clothing/under/pants/khaki = 3,
 					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,

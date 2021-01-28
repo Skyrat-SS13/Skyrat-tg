@@ -1,6 +1,6 @@
 /obj/machinery/vending/security
-	name = "\improper PeaceTech" //SKYRAT EDIT CHANGE - SEC_HAUL
-	desc = "A peacekeeper equipment vendor."
+	name = "\improper SecTech"
+	desc = "A security equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
@@ -13,16 +13,15 @@
 					/obj/item/food/donut = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/flashlight/seclite = 4,
-					/obj/item/storage/bag/ammo = 3) // SKYRAT EDIT - Ammo Pouches
-				//	/obj/item/restraints/legcuffs/bola/energy = 7) - SKYRAT EDIT REMOVAL - SEC_HUAL
+					/obj/item/storage/bag/ammo = 2, // SKYRAT EDIT - Ammo Pouches
+					/obj/item/restraints/legcuffs/bola/energy = 7)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
-					  /obj/item/storage/fancy/donut_box = 2,
-					  /obj/item/armament_token/sidearm_blackmarket = 2)
-	premium = list(/obj/item/storage/belt/security/webbing/peacekeeper = 5, //SKYRAT EDIT ADDITON - SEC_HAUL
+					  /obj/item/storage/fancy/donut_box = 2)
+	premium = list(/obj/item/storage/belt/security/webbing = 5,
 				   /obj/item/coin/antagtoken = 1,
 				   /obj/item/clothing/head/helmet/blueshirt = 1,
 				   /obj/item/clothing/suit/armor/vest/blueshirt = 1,
-				  // /obj/item/clothing/gloves/tackler/peacekeeper = 5, //SKYRAT EDIT REMOVAL - SEC_HAUL
+				   /obj/item/clothing/gloves/tackler = 5,
 				   /obj/item/grenade/stingbang = 1)
 	refill_canister = /obj/item/vending_refill/security
 	default_price = PAYCHECK_MEDIUM

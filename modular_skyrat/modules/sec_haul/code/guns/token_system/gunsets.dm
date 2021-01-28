@@ -6,12 +6,12 @@
 	name = "gun supply box"
 	desc = "A box with gun and ammo in. Remind me why you're seeing this again?"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
-	icon_state = "box_1"
-	var/box_state = "box_1"
+	icon_state = "box"
+	var/box_state = "box"
 	var/opened = FALSE
-	inhand_icon_state = "syringe_kit"
-	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
+	inhand_icon_state = "sec-case"
+	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
 	resistance_flags = FLAMMABLE
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
@@ -21,12 +21,6 @@
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
 	new /obj/item/storage/bag/ammo(src)
-
-/obj/item/storage/box/gunset/Initialize(mapload)
-	. = ..()
-	var/box_type = rand(1, 5)
-	box_state = "box_[box_type]"
-	update_icon()
 
 /obj/item/storage/box/gunset/update_icon()
 	. = ..()

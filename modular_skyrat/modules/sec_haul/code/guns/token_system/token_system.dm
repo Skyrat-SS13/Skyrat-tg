@@ -4,7 +4,7 @@
 /////////////////
 
 /obj/machinery/gun_vendor
-	name = "Peacekeeper Aramanet Vendor"
+	name = "Armadyne Weapons Dispensary"
 	desc = "This accepts armament tokens in exchange for weapons, please present your token for redemption."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	icon_state = "gunvend"
@@ -135,8 +135,10 @@
 
 /obj/item/storage/box/armament_tokens_sidearm
 	name = "security sidearm tokens"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	desc = "A box full of sidearm armament tokens!"
-	illustration = "writing_syndie"
+	icon_state = "armadyne_sidearm"
+	illustration = null
 
 /obj/item/storage/box/armament_tokens_sidearm/PopulateContents()
 	. = ..()
@@ -146,11 +148,14 @@
 
 /obj/item/storage/box/armament_tokens_primary
 	name = "security primary tokens"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
+	icon_state = "armadyne_primary"
 	desc = "A box full of primary armament tokens!"
-	illustration = "writing_syndie"
+	illustration = null
 
 /obj/item/storage/box/armament_tokens_primary/PopulateContents()
 	. = ..()
+	new /obj/item/armament_token/primary(src)
 	new /obj/item/armament_token/primary(src)
 	new /obj/item/armament_token/primary(src)
 	new /obj/item/armament_token/primary(src)

@@ -1,6 +1,21 @@
 /obj/item/ammo_box/advanced
 	w_class = WEIGHT_CLASS_BULKY
 
+/datum/techweb_node/peacekeeper_ammo
+	id = "advanced_peacekeeper_ammo"
+	display_name = "Advanced Peaeckeeper Ammunition"
+	description = "Alternate round types for the peacekeeper weapon designs."
+	prereq_ids = list("weaponry"  , "adv_weaponry")
+	design_ids = list("b6mm","b6mm_rubber","b6mm_ihdf","b9mm","b9mm_rubber","b9mm_hollowpoint","b9mm_ihdf","10mm","10mm_rubber","10mm_hollowpoint","10mm_ihdf","b12mm","b12mm_rubber","b12mm_ihdf",)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
+/datum/techweb_node/peacekeeper_ammo_advanced
+	display_name = "Experimental SMARTGUN Ammunition"
+	description = "Standard ammo for a non-standard SMARTGUN."
+	prereq_ids = list("weaponry"  , "adv_weaponry", "advanced_peacekeeper_ammo")
+	design_ids = list("smartgun")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
 //////////////////////
 //6mm
 //////////////////////
@@ -51,9 +66,9 @@
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
 
 //////////////////////
-//6mm
+//9mm
 //////////////////////
-/datum/design/b6mm
+/datum/design/b9mm
 	name = "Peacekeeper Ammo Box (9mm)"
 	id = "b9mm"
 	build_type = AUTOLATHE | PROTOLATHE
@@ -211,6 +226,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "magnum_r"
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
+
 /datum/design/b12mm/hp
 	name = "Peacekeeper Ammo Box (12mm hollowpoint)"
 	id = "b12mm_hollowpoint"
@@ -225,6 +241,26 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "magnum_p"
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
+
+//////////////////////
+//SMARTGUN
+//////////////////////
+/datum/design/smartgun
+	name = "Peacekeeper Ammo Box (SMARTGUN)"
+	id = "smartgun"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
+	build_path = /obj/item/ammo_box/advanced/smartgun
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/ammo_box/advanced/smartgun
+	name = "peacekeeper ammo box (smartgun)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon_state = "smartgun_chain"
+	ammo_type = /obj/item/ammo_casing/smartgun
+	multiple_sprites = AMMO_BOX_PER_BULLET
+	max_ammo = 4
 
 ////////////////////
 //MULTI SPRITE MAGS
