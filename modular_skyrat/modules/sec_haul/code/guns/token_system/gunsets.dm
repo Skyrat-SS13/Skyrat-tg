@@ -289,6 +289,22 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 
+//CORPO
+/obj/item/storage/box/gunset/pdh_corpo
+	name = "pdh 'corporate' supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/pdh_corpo/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pdh_corpo/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pdh_corpo/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
+
+
 //SECURITY MEDIC
 /obj/item/storage/box/gunset/security_medic
 	name = "firefly supply box"

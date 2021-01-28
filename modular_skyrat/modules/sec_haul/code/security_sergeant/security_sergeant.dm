@@ -44,6 +44,8 @@
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
 
+	l_pocket = /obj/item/megaphone/sec
+
 	box = /obj/item/storage/box/survival/security
 
 	implants = list(/obj/item/implant/mindshield)

@@ -47,7 +47,7 @@
 /obj/item/ammo_box/advanced/b6mm/rubber
 	name = "ammo box (6mm rubber)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box10mm_rubber"
+	icon_state = "box10mm-rubber"
 	ammo_type = /obj/item/ammo_casing/b6mm/rubber
 
 /datum/design/b6mm/ihdf

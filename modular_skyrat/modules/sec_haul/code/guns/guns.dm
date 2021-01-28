@@ -155,6 +155,33 @@
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
+/obj/item/gun/ballistic/automatic/pistol/pdh/corpo
+	name = "\improper Armadyne PDH 'Corporate'"
+	desc = "A pristegious ballistics sidearm, from Armadyne's military division, normally given to Armadyne Corporate. It has a 3 round burst mode and uses .357."
+	icon_state = "pdh_corpo"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
+	can_suppress = FALSE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
+	burst_size = 3
+	fire_delay = 1
+	spread = 5
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+	realistic = TRUE
+	dirt_modifier = 0.1
+	can_flashlight = TRUE
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
+	name = "pdh handgun magazine (12mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pdh"
+	ammo_type = /obj/item/ammo_casing/a357
+	caliber = "12mm"
+	max_ammo = 14
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list("lethal" = AMMO_TYPE_LETHAL)
+
+
 ///////////////////////////PDH PEACEKEEPER
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
 	name = "\improper Armadyne PDH 'Peacekeeper'"

@@ -78,10 +78,10 @@
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/holster/detective/armadyne
 	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/pdh_captain, /obj/item/card/id/debug, /obj/item/card/id/syndicate/anyone)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/pdh_corpo, /obj/item/card/id/debug, /obj/item/card/id/syndicate/anyone)
 	back = /obj/item/storage/backpack/satchel/leather
 	box = /obj/item/storage/box/survival/security
-
+	l_pocket = /obj/item/megaphone/command
 	implants = list(/obj/item/implant/mindshield)
 
 
