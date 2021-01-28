@@ -52,73 +52,10 @@ SUBSYSTEM_DEF(liquids)
 			T.lgroup.amount_of_active_turfs++
 
 /datum/controller/subsystem/liquids/proc/remove_active_turf(turf/T)
-	/*if(active_turfs.Remove(T) && T.lgroup)
-		T.lgroup.amount_of_active_turfs-*/
 	if(active_turfs[T])
 		active_turfs -= T
 		if(T.lgroup)
 			T.lgroup.amount_of_active_turfs--
-/*
-/datum/controller/subsystem/liquids/proc/process_liquid_spread(list/spread_list)
-	var/datum/reagents/tempr = new(10000)
-	var/any_share = FALSE
-	for(var/t in spread_list)
-		var/share_type = spread_list[t]
-		var/turf/T = t
-		if(T.liquids && share_type == LIQUID_MUTUAL_SHARE)
-			any_share = TRUE
-			T.liquids.reagents.trans_to(tempr, T.liquids.reagents.total_volume*PARTIAL_TRANSFER_AMOUNT, no_react = TRUE)
-	if(!any_share)
-		return
-	/*
-	var/fraction = 1 / spread_list.len
-	var/mixed_color = mix_color_from_reagents(tempr.reagent_list)
-	var/height = CEILING(tempr.total_volume/spread_list.len/LIQUID_HEIGHT_DIVISOR, 1)
-	*/
-	var/fraction = 1 / spread_list.len
-	for(var/t in spread_list)
-		var/turf/T = t
-		if(!T.liquids)
-			T.liquids = new(T)
-		var/obj/effect/abstract/liquid_turf/cached_liquids = T.liquids
-		tempr.copy_to(cached_liquids.reagents, tempr.total_volume, fraction, no_react = TRUE)
-		/*
-		cached_liquids.set_height(height)
-		cached_liquids.color = mixed_color
-		*/
-		cached_liquids.calculate_height()
-		cached_liquids.color = mix_color_from_reagents(cached_liquids.reagents.reagent_list)
-
-/turf/proc/process_liquid_cell()
-	//Try sharing the liquids
-	var/any_spread = FALSE
-	var/list/share_list = list()
-	share_list[src] = LIQUID_MUTUAL_SHARE
-	for(var/tur in GetAtmosAdjacentTurfs())
-		var/turf/T = tur
-		if(T.z != src.z) //No Z handling currently
-			continue
-		var/my_liquid_height = liquids ? liquids.height : 0
-		if(liquid_height + my_liquid_height < T.liquid_height)
-			continue
-		var/target_height = T.liquid_height + (T.liquids ? T.liquids.height : 0)
-		var/difference = abs(target_height - my_liquid_height)
-		if(difference > 1) //SHOULD BE >= 1 or > 1? '>= 1' can lead into a lot of unnessecary processes, while ' > 1' will lead to a "piling" phenomena
-			//Idea: bundle sharing, height calculations and color calculations togehter, would have to be done up to 2 times due to non mutual shares
-			if(liquid_height + my_liquid_height > target_height)
-				//spread_liquid_to_turf(T, FALSE)
-				share_list[T] = LIQUID_NOT_MUTUAL_SHARE
-			else
-				//spread_liquid_to_turf(T)
-				share_list[T] = LIQUID_MUTUAL_SHARE
-			//share_list[T] = LIQUID_MUTUAL_SHARE
-			SSliquids.active_turfs[T] = TRUE
-			//return //Do we want it to spread once per process or many times?
-			any_spread = TRUE
-	//Make sure to handle up/down z levels on adjacency properly
-	SSliquids.active_turfs -= src //May become active again from adjacency
-	SSliquids.process_liquid_spread(share_list)
-*/
 
 /turf
 	var/obj/effect/abstract/liquid_turf/liquids
@@ -208,121 +145,6 @@ SUBSYSTEM_DEF(liquids)
 	layer = FLY_LAYER
 	randomdir = FALSE
 
-/********************GROUPED PROCESSING******************/
-
-/*
-/datum/controller/subsystem/liquids/proc/process_liquid_spread(list/spread_list)
-	var/datum/reagents/tempr = new(10000)
-	var/any_share = FALSE
-	for(var/t in spread_list)
-		var/share_type = spread_list[t]
-		var/turf/T = t
-		if(T.liquids && share_type == LIQUID_MUTUAL_SHARE)
-			any_share = TRUE
-			T.liquids.reagents.trans_to(tempr, T.liquids.reagents.total_volume*PARTIAL_TRANSFER_AMOUNT, no_react = TRUE)
-	if(!any_share)
-		return
-	/*
-	var/fraction = 1 / spread_list.len
-	var/mixed_color = mix_color_from_reagents(tempr.reagent_list)
-	var/height = CEILING(tempr.total_volume/spread_list.len/LIQUID_HEIGHT_DIVISOR, 1)
-	*/
-	var/fraction = 1 / spread_list.len
-	for(var/t in spread_list)
-		var/turf/T = t
-		if(!T.liquids)
-			T.liquids = new(T)
-		var/obj/effect/abstract/liquid_turf/cached_liquids = T.liquids
-		tempr.copy_to(cached_liquids.reagents, tempr.total_volume, fraction, no_react = TRUE)
-		/*
-		cached_liquids.set_height(height)
-		cached_liquids.color = mixed_color
-		*/
-		cached_liquids.calculate_height()
-		cached_liquids.color = mix_color_from_reagents(cached_liquids.reagents.reagent_list)
-	qdel(tempr)
-
-/turf/proc/process_liquid_cell()
-	//Try sharing the liquids
-	var/any_spread = FALSE
-	var/list/share_list = list()
-	share_list[src] = LIQUID_MUTUAL_SHARE
-	for(var/tur in GetAtmosAdjacentTurfs())
-		var/turf/T = tur
-		if(T.z != src.z) //No Z handling currently
-			continue
-		var/my_liquid_height = liquids ? liquids.height : 0
-		if(liquid_height + my_liquid_height < T.liquid_height)
-			continue
-		var/target_height = T.liquid_height + (T.liquids ? T.liquids.height : 0)
-		var/difference = abs(target_height - my_liquid_height)
-		if(difference > 1) //SHOULD BE >= 1 or > 1? '>= 1' can lead into a lot of unnessecary processes, while ' > 1' will lead to a "piling" phenomena
-			//Idea: bundle sharing, height calculations and color calculations togehter, would have to be done up to 2 times due to non mutual shares
-			if(liquid_height + my_liquid_height > target_height)
-				//spread_liquid_to_turf(T, FALSE)
-				share_list[T] = LIQUID_NOT_MUTUAL_SHARE
-			else
-				//spread_liquid_to_turf(T)
-				share_list[T] = LIQUID_MUTUAL_SHARE
-			//share_list[T] = LIQUID_MUTUAL_SHARE
-			SSliquids.active_turfs[T] = TRUE
-			//return //Do we want it to spread once per process or many times?
-			any_spread = TRUE
-	//Make sure to handle up/down z levels on adjacency properly
-	SSliquids.active_turfs -= src //May become active again from adjacency
-	SSliquids.process_liquid_spread(share_list)
-*/
-
-/****************************************************************/
-/********************CELL PROCESSING***********************/
-/*
-/turf/proc/process_liquid_cell()
-	//Try sharing the liquids
-	var/did_process = FALSE
-	for(var/tur in GetAtmosAdjacentTurfs())
-		var/turf/T = tur
-		if(T.z != src.z) //No Z handling currently
-			continue
-		var/my_liquid_height = liquids ? liquids.height : 0
-		if(liquid_height + my_liquid_height < T.liquid_height)
-			continue
-		var/target_height = T.liquid_height + (T.liquids ? T.liquids.height : 0)
-		var/difference = abs(target_height - my_liquid_height)
-		if(difference > 1) //SHOULD BE >= 1 or > 1? '>= 1' can lead into a lot of unnessecary processes, while ' > 1' will lead to a "piling" phenomena
-			//Idea: bundle sharing, height calculations and color calculations togehter, would have to be done up to 2 times due to non mutual shares
-			if(liquid_height + my_liquid_height > target_height)
-				spread_liquid_to_turf(T, FALSE)
-			else
-				spread_liquid_to_turf(T)
-			SSliquids.active_turfs[T] = TRUE
-			did_process = TRUE
-			//return //Do we want it to spread once per process or many times?
-	if(!did_process)
-		SSliquids.active_turfs -= src
-	//Make sure to handle up/down z levels on adjacency properly
-	//SSliquids.active_turfs -= src //May become active again from adjacency
-
-/turf/proc/spread_liquid_to_turf(turf/T, mutual = TRUE)
-	if(!T.liquids)
-		T.liquids = new(T)
-	if(!liquids && mutual)
-		liquids = new(src)
-	var/obj/effect/abstract/liquid_turf/liquids2 = T.liquids //cache speed
-	var/datum/reagents/tempr = new(10000)
-	liquids.reagents.trans_to(tempr, liquids.reagents.total_volume*PARTIAL_TRANSFER_AMOUNT, no_react = TRUE)
-	if(mutual)
-		liquids2.reagents.trans_to(tempr, liquids2.reagents.total_volume*PARTIAL_TRANSFER_AMOUNT, no_react = TRUE)
-	tempr.copy_to(liquids.reagents, tempr.total_volume, 0.5, no_react = TRUE)
-	tempr.copy_to(liquids2.reagents, tempr.total_volume, 0.5, no_react = TRUE)
-
-	// !!! Catch differences here and do "pressure" movements
-	liquids.calculate_height()
-	liquids.set_reagent_color_for_liquid()
-	liquids2.calculate_height()
-	liquids2.set_reagent_color_for_liquid()
-
-	qdel(tempr)
-*/
 /***************************************************/
 /********************PROPER GROUPING**************/
 
@@ -391,10 +213,6 @@ SUBSYSTEM_DEF(liquids)
 		
 		cached_liquids.set_height(height)
 		cached_liquids.color = mixed_color
-		/*
-		cached_liquids.calculate_height()
-		cached_liquids.color = mix_color_from_reagents(cached_liquids.reagents.reagent_list)
-		*/
 	qdel(tempr)
 
 /datum/liquid_group/proc/process_cell(turf/T)
@@ -407,10 +225,8 @@ SUBSYSTEM_DEF(liquids)
 			SSliquids.add_active_turf(T2)
 	if(.)
 		dirty = TRUE
-			//spread_liquid_to_turf(T2)
 			//return //Do we want it to spread once per process or many times?
 	//Make sure to handle up/down z levels on adjacency properly
-	//SSliquids.active_turfs -= src //May become active again from adjacency
 
 /turf
 	var/datum/liquid_group/lgroup
@@ -423,6 +239,7 @@ SUBSYSTEM_DEF(liquids)
 	var/my_liquid_height = liquids ? liquids.height : 0
 	var/target_height = T.liquids ? T.liquids.height : 0
 	var/difference = abs(target_height - my_liquid_height)
+	//The: sand effect or "piling" Very good for performance
 	if(difference > 1) //SHOULD BE >= 1 or > 1? '>= 1' can lead into a lot of unnessecary processes, while ' > 1' will lead to a "piling" phenomena
 		return TRUE
 	return FALSE
@@ -438,17 +255,6 @@ SUBSYSTEM_DEF(liquids)
 		SSliquids.remove_active_turf(src)
 		return
 	if(!lgroup)
-		/*
-		//Check liquids
-		var/any_liquids = FALSE
-		for(var/tur in GetAtmosAdjacentTurfs())
-			var/turf/T = tur
-			if(T.liquids)
-				any_liquids = TRUE
-				break
-		if(!any_liquids)
-			return
-		*/
 		lgroup = new(src)
 		lgroup.add_to_group(src)
 	var/shared = lgroup.process_cell(src)
