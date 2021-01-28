@@ -104,6 +104,16 @@
 	recommended_species = list("mammal", "human", "akula", "aquatic", "humanoid")
 	general_type = "marine"
 
+/datum/sprite_accessory/tails/mammal/wagging/avian1
+	name = "Avian (alt 1)"
+	icon_state = "avian1"
+	general_type = "avian"
+
+/datum/sprite_accessory/tails/mammal/wagging/avian2
+	name = "Avian (alt 2)"
+	icon_state = "avian2"
+	general_type = "avian"
+
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
@@ -136,6 +146,11 @@
 /datum/sprite_accessory/tails/mammal/wagging/twocat
 	name = "Cat, Double"
 	icon_state = "twocat"
+
+/datum/sprite_accessory/tails/mammal/wagging/cheetah
+	name = "Cheetah"
+	icon_state = "cheetah"
+	general_type = "feline"
 
 /datum/sprite_accessory/tails/mammal/wagging/corvid
 	name = "Corvid"
@@ -187,15 +202,6 @@
 	icon_state = "hawk"
 	general_type = "avian"
 
-/datum/sprite_accessory/tails/mammal/wagging/avian1
-	name = "Avian (alt 1)"
-	icon_state = "avian1"
-	general_type = "avian"
-
-/datum/sprite_accessory/tails/mammal/wagging/avian2
-	name = "Avian (alt 2)"
-	icon_state = "avian2"
-	general_type = "avian"
 
 /datum/sprite_accessory/tails/mammal/wagging/horse
 	name = "Horse"
@@ -225,6 +231,11 @@
 /datum/sprite_accessory/tails/mammal/wagging/lab
 	name = "Lab"
 	icon_state = "lab"
+
+/datum/sprite_accessory/tails/mammal/wagging/leopard
+	name = "Leopard"
+	icon_state = "leopard"
+	general_type = "feline"
 
 /*/datum/sprite_accessory/tails/mammal/wagging/ltiger //icon = 'icons/mob/mutant_bodyparts.dmi'
 	name = "Light Tiger"
@@ -306,10 +317,6 @@
 	icon_state = "tiger"
 	general_type = "feline"
 
-/datum/sprite_accessory/tails/mammal/wagging/leopard
-	name = "Leopard"
-	icon_state = "leopard"
-	general_type = "feline"
 
 /datum/sprite_accessory/tails/mammal/wagging/wolf
 	name = "Wolf"
