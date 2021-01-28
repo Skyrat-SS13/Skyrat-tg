@@ -508,4 +508,10 @@
 //SKYRAT EDIT ADDITION BEGIN
 /datum/config_entry/string/servertagline
 	config_entry_value = "We forgot to set the server's tagline in config.txt"
+
+/datum/config_entry/flag/sql_game_log
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/file_game_log
+	protection = CONFIG_ENTRY_LOCKED
 //SKYRAT EDIT END
