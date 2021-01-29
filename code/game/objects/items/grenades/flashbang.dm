@@ -33,10 +33,10 @@
 
 //Bang
 	if(!distance || loc == M || loc == M.loc)	//Stop allahu akbarring rooms with this.
-		//M.Paralyze(20)
-		//M.Knockdown(200)
+		//M.Paralyze(20)  - SKYRAT EDIT REMOVAL - COMBAT
+		//M.Knockdown(200) - SKYRAT EDIT REMOVAL - COMBAT
 		M.StaminaKnockdown(40, TRUE, TRUE, knockdown_amt = 5 SECONDS)
-		//M.soundbang_act(1, 200, 10, 15)
+		//M.soundbang_act(1, 200, 10, 15) - SKYRAT EDIT REMOVAL - COMBAT
 		M.soundbang_act(2, 0, 10, 15)
 	else
 		var/target_intensity = 1
