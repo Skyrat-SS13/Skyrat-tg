@@ -291,12 +291,12 @@ Auto Patrol: []"},
 		weapon.attack(C, src)
 	if(ishuman(C))
 		C.stuttering = 5
-		//C.Paralyze(100)
+		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
 		C.StaminaKnockdown(60,TRUE)
 		var/mob/living/carbon/human/H = C
 		threat = H.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
 	else
-		//C.Paralyze(100)
+		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
 		C.StaminaKnockdown(60,TRUE)
 		C.stuttering = 5
 		threat = C.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
@@ -337,7 +337,7 @@ Auto Patrol: []"},
 						stun_attack(target)
 
 					target_lastloc = target.loc
-					if(target.incapacitated())
+					if(target.incapacitated()) //SKYRAT EDIT ADDITION
 						mode = BOT_PREP_ARREST
 						set_anchored(TRUE)
 					return
@@ -355,7 +355,7 @@ Auto Patrol: []"},
 		if(BOT_PREP_ARREST)		// preparing to arrest target
 
 			// see if he got away. If he's no no longer adjacent or inside a closet or about to get up, we hunt again.
-			if( !Adjacent(target) || !isturf(target.loc) ||  (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT))
+			if( !Adjacent(target) || !isturf(target.loc) ||  (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
 				back_to_hunt()
 				return
 

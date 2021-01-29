@@ -582,7 +582,8 @@
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
 	//TODO: Make this much more cleaner
-	if(stam > STAMINA_THRESHOLD_WEAK)
+	//SKYRAT EDIT - ORIGINAL: if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
+	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN 
 		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
 			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
 				//When you get floored by stamina, you also get a brief stun and disarm
@@ -613,15 +614,15 @@
 			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-		filters -= FILTER_STAMINACRIT //Temporary tweak to fix aheals bugging this
-	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
+		filters -= FILTER_STAMINACRIT //Temporary tweak to fix aheals bugging this - SKYRAT EDIT CHANGE END
+	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat) SKYRAT EDIT REMOVAL BEGIN
 		enter_stamcrit()
 	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
 	else
-		return*/
+		return*/ //SKYRAT EDIT REMOVAL END
 	update_health_hud()
 
 /mob/living/carbon/update_sight()

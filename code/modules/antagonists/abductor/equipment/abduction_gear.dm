@@ -560,7 +560,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 
 /obj/item/melee/baton/abductor/proc/SleepAttack(mob/living/L,mob/living/user)
 	playsound(src, stun_sound, 50, TRUE, -1)
-	if(L.incapacitated(TRUE, TRUE) || (L.staminaloss > STAMINA_THRESHOLD_WEAK))
+	if(L.incapacitated(TRUE, TRUE) || (L.staminaloss > STAMINA_THRESHOLD_WEAK)) //SKYRAT EDIT CHANGE - ORIGINAL: if(L.incapacitated(TRUE, TRUE))
 		if(L.anti_magic_check(FALSE, FALSE, TRUE))
 			to_chat(user, "<span class='warning'>The specimen's tinfoil protection is interfering with the sleep inducement!</span>")
 			L.visible_message("<span class='danger'>[user] tried to induced sleep in [L] with [src], but [L.p_their()] tinfoil protection [L.p_them()]!</span>", \

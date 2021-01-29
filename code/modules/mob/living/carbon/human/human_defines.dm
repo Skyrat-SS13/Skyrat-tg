@@ -15,8 +15,8 @@
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	can_be_shoved_into = TRUE
 
-	maxHealth = MAX_HUMAN_LIFE
-	health = MAX_HUMAN_LIFE
+	maxHealth = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
+	health = MAX_HUMAN_LIFE //SKYRAT EDIT ADDITION
 
 	//Hair colour and style
 	var/hair_color = "000"

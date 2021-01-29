@@ -39,7 +39,7 @@
 	//Updates the number of stored chemicals for powers
 	handle_changeling()
 
-	if(staminaloss)
+	if(staminaloss) //SKYRAT EDIT ADDITION bEGIN
 		//Stamina regeneration: Regens faster, the more health you have, and the more staminaloss you have
 		var/flat = STAMINA_STATIC_REGEN_FLAT
 		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
@@ -60,6 +60,7 @@
 					to_chat(src, "<span class='warning'>You feel exhausted!</span>")
 				if(STAMINA_THRESHOLD_MESSAGE_OHGOD to INFINITY)
 					to_chat(src, "<span class='warning'>You feel fatigued!</span>")
+					//SKYRAT EDIT END
 	if(stat != DEAD)
 		return 1
 
@@ -350,8 +351,8 @@
 	return
 
 /mob/living/carbon/proc/handle_bodyparts()
-	return
-	/*
+	return //SKYRAT EDIT ADDITION
+	/* SKYRAT EDIT REMVOAL
 	var/stam_regen = FALSE
 	if(stam_regen_start_time <= world.time)
 		stam_regen = TRUE
@@ -363,7 +364,7 @@
 		var/obj/item/bodypart/BP = I
 		if(BP.needs_processing)
 			. |= BP.on_life(stam_regen)
-	*/
+	*/ //SKYRAT EDIT END
 
 /mob/living/carbon/proc/handle_organs()
 	if(stat != DEAD)
