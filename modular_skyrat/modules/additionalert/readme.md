@@ -1,12 +1,12 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/2946
+https://github.com/Skyrat-SS13/Skyrat-tg/pulls
 
-## Title: Admin
+## Title: Trauma Team ERT
 
-MODULE ID: ADMIN
+MODULE ID: additionalert
 
-### Description:
+### Description: 
 
-Adds multuple admin features, loud asay. As well as bold/itallics/underline.
+- Adds a specialized medical team ERT that allows for a better response.
 
 ### TG Proc Changes:
 
@@ -18,13 +18,13 @@ Adds multuple admin features, loud asay. As well as bold/itallics/underline.
 
 ### Master file additions
 
-- 
+- master_files/icons/mob/clothing/suit_digi.dmi // Added Trauma Digi Team Suit
+- master_files/icons/mob/clothing/head_muzzled.dmi // Added Trauma Muzzled Team Helmet
+- master_files/icons/mob/clothing/vox
 
 ### Included files that are not contained in this module:
 
 - N/A
 
 ### Credits:
-pinkblossom6 - Sprites & Code
-Tyger - Code
-ranged66 - PR help
+- pinkblossom6 - Sprites & Code
