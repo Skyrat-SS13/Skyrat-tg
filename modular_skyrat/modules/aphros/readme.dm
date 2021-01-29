@@ -23,7 +23,6 @@ Adds aphrodisiacs back into the game, along with their respective kegs and clien
 ### Included files that are not contained in this module:
 
 - N/A
-<!-- Likewise, be it a non-modular file or a modular one that's not contained within the folder belonging to this specific module, it should be mentioned here -->
 
 ### Credits:
 
