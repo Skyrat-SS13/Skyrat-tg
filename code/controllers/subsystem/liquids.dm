@@ -112,6 +112,8 @@ SUBSYSTEM_DEF(liquids)
 	var/liquid_state = LIQUID_STATE_PUDDLE
 	var/has_cached_share = FALSE
 
+	var/attrition = 0
+
 /obj/effect/abstract/liquid_turf/update_overlays()
 	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
@@ -326,6 +328,7 @@ SUBSYSTEM_DEF(liquids)
 		T.liquids.create_reagents(1000) //Computing nice way to clean the old ones
 		tempr.copy_to(cached_liquids.reagents, tempr.total_volume, no_react = TRUE)
 		T.liquids.has_cached_share = TRUE
+		T.liquids.attrition = 0
 
 		cached_liquids.set_height(height)
 		cached_liquids.color = mixed_color
@@ -406,6 +409,7 @@ SUBSYSTEM_DEF(liquids)
 					var/datum/liquid_group/new_group = new(liquid_height)
 					new_group.add_to_group(T2)
 				T2.lgroup.add_to_group(src)
+				SSliquids.add_active_turf(T2)
 				break
 	if(!liquids)
 		SSliquids.remove_active_turf(src)
@@ -415,6 +419,8 @@ SUBSYSTEM_DEF(liquids)
 		lgroup.add_to_group(src)
 	var/shared = lgroup.process_cell(src)
 	if(!shared)
+		liquids.attrition++
+	if(liquids.attrition >= LIQUID_ATTRITION_TO_STOP_ACTIVITY)
 		SSliquids.remove_active_turf(src)
 
 /***************************************************/
