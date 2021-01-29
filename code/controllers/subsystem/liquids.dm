@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(liquids)
 	name = "Liquid Turfs"
-	wait = 1 SECONDS
+	wait = 0.5 SECONDS
 	flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(liquids)
 			else if(!LG.amount_of_active_turfs)
 				LG.decay_counter++
 				if(LG.decay_counter >= LIQUID_GROUP_DECAY_TIME)
-					active_groups -= LG
+					//Perhaps check if any turfs in here can spread before removing it? It's not unlikely they would
 					LG.break_group()
 			if(MC_TICK_CHECK)
 				run_type = SSLIQUIDS_RUN_TYPE_TURFS //No currentrun here for now
@@ -61,10 +61,34 @@ SUBSYSTEM_DEF(liquids)
 	var/obj/effect/abstract/liquid_turf/liquids
 	var/liquid_height = 0
 
-/turf/proc/add_liquid(reagent, amount)
+/turf/proc/liquid_fraction_share(turf/T, fraction)
+	if(!liquids)
+		return
+	for(var/r in liquids.reagents.reagent_list)
+		var/datum/reagent/R = r
+		var/volume_change = R.volume * fraction
+		liquids.reagents.remove_reagent(R.type, volume_change)
+		T.add_liquid(R.type, volume_change, TRUE)
+
+/turf/proc/liquid_update_turf()
+	//Check atmos adjacency to cut off any disconnected groups
+	if(lgroup)
+		var/assoc_atmos_turfs = list()
+		for(var/tur in GetAtmosAdjacentTurfs())
+			assoc_atmos_turfs[tur] = TRUE
+		//Check any cardinals that may have a matching group
+		for(var/direction in GLOB.cardinals)
+			var/turf/T = get_step(src, direction)
+			//Same group of which we do not share atmos adjacency
+			if(!assoc_atmos_turfs[T] && T.lgroup && T.lgroup == lgroup)
+				T.lgroup.check_adjacency(T)
+
+	SSliquids.add_active_turf(src)
+
+/turf/proc/add_liquid(reagent, amount, no_react = FALSE)
 	if(!liquids)
 		liquids = new(src)
-	liquids.reagents.add_reagent(reagent, amount)
+	liquids.reagents.add_reagent(reagent, amount, no_react = no_react)
 	liquids.calculate_height()
 	liquids.set_reagent_color_for_liquid()
 	SSliquids.add_active_turf(src)
@@ -84,6 +108,7 @@ SUBSYSTEM_DEF(liquids)
 	var/height = 1
 	var/only_big_diffs = 1
 	var/turf/my_turf
+	var/liquid_state = LIQUID_STATE_PUDDLE
 
 /obj/effect/abstract/liquid_turf/update_overlays()
 	. = ..()
@@ -133,7 +158,10 @@ SUBSYSTEM_DEF(liquids)
 
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
+		if(my_turf.lgroup)
+			my_turf.lgroup.remove_from_group(my_turf)
 		SSliquids.remove_active_turf(my_turf)
+		my_turf.liquids = null
 		my_turf = null
 		return ..()
 	else
@@ -168,10 +196,31 @@ SUBSYSTEM_DEF(liquids)
 	if(SSliquids.active_turfs[T])
 		amount_of_active_turfs++
 
-/datum/liquid_group/New(turf/origin_turf)
+/datum/liquid_group/proc/remove_from_group(turf/T)
+	members -= T
+	T.lgroup = null
+	if(SSliquids.active_turfs[T])
+		amount_of_active_turfs--
+
+/datum/liquid_group/New(height)
 	SSliquids.active_groups[src] = TRUE
 	color = "#[random_short_color()]"
-	expected_turf_height = origin_turf.liquid_height
+	expected_turf_height = height
+
+/datum/liquid_group/proc/can_merge_group(datum/liquid_group/otherg)
+	if(expected_turf_height == otherg.expected_turf_height)
+		return TRUE
+	return FALSE
+
+/datum/liquid_group/proc/merge_group(datum/liquid_group/otherg)
+	amount_of_active_turfs += otherg.amount_of_active_turfs
+	for(var/t in otherg.members)
+		var/turf/T = t
+		T.lgroup = src
+		members[T] = TRUE
+	otherg.members = list()
+	qdel(otherg)
+	share()
 
 /datum/liquid_group/proc/break_group()
 	share(TRUE)
@@ -185,6 +234,33 @@ SUBSYSTEM_DEF(liquids)
 	members = null
 	not_enough_height_sharers = null
 	return ..()
+
+/datum/liquid_group/proc/check_adjacency(turf/T)
+	var/list/recursive_adjacent = list()
+	var/list/current_adjacent = list()
+	current_adjacent[T] = TRUE
+	recursive_adjacent[T] = TRUE
+	var/getting_new_turfs = TRUE
+	while(getting_new_turfs)
+		getting_new_turfs = FALSE
+		var/list/new_adjacent = list()
+		for(var/t in current_adjacent)
+			var/turf/T2 = t
+			for(var/y in T2.GetAtmosAdjacentTurfs())
+				if(!recursive_adjacent[y])
+					new_adjacent[y] = TRUE
+					recursive_adjacent[y] = TRUE
+					getting_new_turfs = TRUE
+		current_adjacent = new_adjacent
+	//All adjacent, somehow
+	if(recursive_adjacent.len == members.len)
+		CRASH("All liquid turfs in a group are adjacent despite being called for adjacent calculation")
+		return
+	var/datum/liquid_group/new_group = new(expected_turf_height)
+	for(var/t in members)
+		if(!recursive_adjacent[t])
+			remove_from_group(t)
+			new_group.add_to_group(t)
 
 /datum/liquid_group/proc/share(use_liquids_color = FALSE)
 	var/datum/reagents/tempr = new(1000000)
@@ -218,11 +294,26 @@ SUBSYSTEM_DEF(liquids)
 /datum/liquid_group/proc/process_cell(turf/T)
 	for(var/tur in T.GetAtmosAdjacentTurfs())
 		var/turf/T2 = tur
-		if(T.can_share_liquids_to(T2))
-			if(!T2.lgroup)
-				add_to_group(T2)
-			. = TRUE
-			SSliquids.add_active_turf(T2)
+		if(T.z != T2.z)
+			var/turf/Z_turf_below = SSmapping.get_turf_below(T)
+			var/turf/Z_turf_above = SSmapping.get_turf_above(T)
+			if(T2 == Z_turf_below)
+				if(!(T2.liquids && T2.liquids.height >= LIQUID_HEIGHT_CONSIDER_FULL_TILE))
+					T.liquid_fraction_share(T2, 1)
+					qdel(T.liquids, TRUE)
+					. = TRUE
+					continue
+			else if(T2 == Z_turf_above)
+				continue
+		if(!T.can_share_liquids_with(T2))
+			continue
+		if(!T2.lgroup)
+			add_to_group(T2)
+		//Try merge groups if possible
+		else if(T2.lgroup != T.lgroup && T.lgroup.can_merge_group(T2.lgroup))
+			T.lgroup.merge_group(T2.lgroup)
+		. = TRUE
+		SSliquids.add_active_turf(T2)
 	if(.)
 		dirty = TRUE
 			//return //Do we want it to spread once per process or many times?
@@ -231,11 +322,13 @@ SUBSYSTEM_DEF(liquids)
 /turf
 	var/datum/liquid_group/lgroup
 
-/turf/proc/can_share_liquids_to(turf/T)
-	if(T.z != z) //No Z handling currently
+/turf/proc/can_share_liquids_with(turf/T)
+	if(T.z != z) //No Z here handling currently
 		return FALSE
+	/*
 	if(T.lgroup && T.lgroup != lgroup) //TEMPORARY@!!!!!!!!
 		return FALSE
+	*/
 	var/my_liquid_height = liquids ? liquids.height : 0
 	var/target_height = T.liquids ? T.liquids.height : 0
 	var/difference = abs(target_height - my_liquid_height)
@@ -246,16 +339,20 @@ SUBSYSTEM_DEF(liquids)
 
 /turf/proc/process_liquid_cell()
 	if(!lgroup)
+		//Check if anything adjacent has liquids that we can share with
 		for(var/tur in GetAtmosAdjacentTurfs())
 			var/turf/T2 = tur
-			if(T2.lgroup && T2.can_share_liquids_to(src))
+			if(T2.liquids && T2.can_share_liquids_with(src))
+				if(!T2.lgroup)
+					var/datum/liquid_group/new_group = new(liquid_height)
+					new_group.add_to_group(T2)
 				T2.lgroup.add_to_group(src)
 				break
 	if(!liquids)
 		SSliquids.remove_active_turf(src)
 		return
 	if(!lgroup)
-		lgroup = new(src)
+		lgroup = new(liquid_height)
 		lgroup.add_to_group(src)
 	var/shared = lgroup.process_cell(src)
 	if(!shared)
