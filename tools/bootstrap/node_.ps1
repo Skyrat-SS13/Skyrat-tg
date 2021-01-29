@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 #Requires -Version 4.0
->>>>>>> 4ea16463a3e (Adds powershell require command to node boostrap script. (#56429))
 
 # bootstrap/node_.ps1
 #
