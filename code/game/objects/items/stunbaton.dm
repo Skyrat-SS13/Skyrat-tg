@@ -32,7 +32,7 @@
 	var/stun_sound = 'sound/weapons/egloves.ogg'
 
 	var/confusion_amt = 10
-	var/stamina_loss_amt = 45
+	var/stamina_loss_amt = 45 //SKYRAT EDIT CHANGE - ORIGINAL: 60
 	var/apply_stun_delay = 2 SECONDS
 	var/stun_time = 5 SECONDS
 
