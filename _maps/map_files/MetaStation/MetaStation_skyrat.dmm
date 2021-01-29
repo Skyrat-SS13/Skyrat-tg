@@ -41746,14 +41746,14 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
 "ccY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "ccZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/engine,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
 /area/engine/atmos)
 "cda" = (
 /obj/structure/lattice/catwalk,
@@ -57923,11 +57923,10 @@
 	},
 /area/maintenance/port/aft)
 "eTm" = (
-/obj/effect/turf_decal/arrows/white{
-	dir = 4
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine,
+/turf/open/floor/plasteel,
 /area/engine/atmos)
 "eTx" = (
 /obj/machinery/light/small{
@@ -58182,9 +58181,9 @@
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "fdP" = (
-/obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
 /area/engine/atmos)
 "fdX" = (
 /obj/structure/table/glass,
@@ -59548,6 +59547,13 @@
 	},
 /turf/open/floor/carpet/red,
 /area/quartermaster/qm)
+"gdy" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/space)
 "gdG" = (
 /obj/machinery/computer/nanite_cloud_controller,
 /obj/machinery/airalarm/directional/north,
@@ -59582,16 +59588,11 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/theatre)
 "gdQ" = (
-/obj/effect/turf_decal/box/white{
-	color = "#9FED58"
-	},
-/obj/effect/turf_decal/arrows/white{
-	color = "#FF0000";
-	dir = 4;
-	pixel_x = -15
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
 /area/engine/atmos)
 "ged" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -59859,6 +59860,21 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"gmU" = (
+/obj/structure/table,
+/obj/item/circuitboard/machine/HFR_corner,
+/obj/item/circuitboard/machine/HFR_corner,
+/obj/item/circuitboard/machine/HFR_corner,
+/obj/item/circuitboard/machine/HFR_corner,
+/obj/item/stack/cable_coil{
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/obj/effect/turf_decal/bot,
+/obj/item/stack/sheet/plasteel/fifty,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "gna" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
@@ -60979,10 +60995,8 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "hfE" = (
-/obj/effect/turf_decal/arrows/white{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/engine,
 /area/engine/atmos)
 "hfJ" = (
@@ -61397,10 +61411,13 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
-"hvF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/atmospheric_technician,
-/turf/open/floor/engine,
+"hxh" = (
+/obj/machinery/light,
+/obj/machinery/camera{
+	c_tag = "Atmospherics - Testing Room";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
 /area/engine/atmos)
 "hxH" = (
 /obj/structure/disposalpipe/sorting/mail{
@@ -61554,6 +61571,10 @@
 	},
 /turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
 /area/crew_quarters/kitchen/coldroom)
+"hEz" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "hEP" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 4
@@ -64435,6 +64456,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
+"jTU" = (
+/obj/effect/turf_decal/arrows/red{
+	pixel_y = 15
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/engine/atmos)
 "jUu" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -65163,11 +65191,9 @@
 /turf/open/floor/plasteel,
 /area/science/lab)
 "kAu" = (
-/obj/effect/turf_decal/box/white{
-	color = "#EFB341"
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/engine,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
 /area/engine/atmos)
 "kBb" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
@@ -65318,6 +65344,12 @@
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos)
+"kGu" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "kGE" = (
 /obj/machinery/camera{
 	c_tag = "Prison Central";
@@ -69614,8 +69646,8 @@
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)
 "oca" = (
-/obj/effect/turf_decal/arrows/red{
-	pixel_y = 15
+/obj/effect/turf_decal/arrows/white{
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
@@ -70235,6 +70267,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
+"oGQ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "oGS" = (
 /obj/machinery/plate_press,
 /obj/effect/turf_decal/bot,
@@ -72549,6 +72585,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/mixing)
+"qpp" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "qqf" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -73003,6 +73046,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
+"qDi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "qDO" = (
 /obj/machinery/computer/nanite_chamber_control{
 	dir = 4
@@ -74232,8 +74282,9 @@
 /turf/open/floor/plasteel/dark/telecomms,
 /area/science/server)
 "rBn" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
 /area/engine/atmos)
 "rBy" = (
 /obj/machinery/biogenerator,
@@ -74360,19 +74411,16 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "rID" = (
-/obj/structure/table,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/stack/cable_coil{
-	pixel_x = 3;
-	pixel_y = -7
+/obj/effect/turf_decal/box/white{
+	color = "#9FED58"
 	},
-/obj/effect/turf_decal/bot,
-/obj/item/stack/sheet/plasteel/fifty,
+/obj/effect/turf_decal/arrows/white{
+	color = "#FF0000";
+	dir = 4;
+	pixel_x = -15
+	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
+/turf/open/floor/engine,
 /area/engine/atmos)
 "rJk" = (
 /obj/machinery/door/window/southleft{
@@ -75232,12 +75280,11 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "snH" = (
-/obj/machinery/light,
-/obj/machinery/camera{
-	c_tag = "Atmospherics - Testing Room";
-	dir = 1
+/obj/effect/turf_decal/arrows/white{
+	dir = 8
 	},
-/turf/open/floor/plasteel,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
 /area/engine/atmos)
 "snP" = (
 /obj/effect/turf_decal/tile/red{
@@ -75830,6 +75877,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
+"sMP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "sMV" = (
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance/two,
@@ -77319,10 +77373,6 @@
 /obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/plasteel,
 /area/science/mixing)
-"tWl" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
-/turf/open/floor/plasteel,
-/area/engine/atmos)
 "tXF" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/airalarm/directional/north,
@@ -77717,7 +77767,9 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "unx" = (
-/obj/machinery/light,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "uow" = (
@@ -78105,6 +78157,13 @@
 /obj/structure/cable,
 /turf/open/floor/grass,
 /area/medical/virology)
+"uFy" = (
+/obj/effect/turf_decal/box/white{
+	color = "#EFB341"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/engine/atmos)
 "uFZ" = (
 /obj/machinery/nanite_programmer,
 /turf/open/floor/circuit/green,
@@ -78245,6 +78304,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"uJc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "uJl" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/blue/filled/warning,
@@ -80017,12 +80082,12 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "weu" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/space)
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/plasteel,
+/area/engine/atmos)
 "wfd" = (
 /obj/effect/spawner/lootdrop/donkpockets,
 /obj/machinery/light/small{
@@ -80470,6 +80535,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"wxC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/atmospheric_technician,
+/turf/open/floor/engine,
+/area/engine/atmos)
 "wyf" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/bar{
@@ -127695,7 +127765,7 @@ oSx
 oSx
 bCi
 oSx
-rID
+gmU
 bxc
 anT
 aaf
@@ -127945,14 +128015,14 @@ bxc
 wxc
 vBQ
 bKx
-bAO
-bCi
-bCi
-bCi
-bCi
-oSx
-bCi
-snH
+weu
+unx
+unx
+unx
+unx
+gdQ
+kGu
+hxh
 bxc
 aaa
 aai
@@ -128202,13 +128272,13 @@ bxc
 ccQ
 bxc
 vvQ
-oSx
+kAu
 mML
 rUZ
-eTm
-hvF
+oca
+wxC
 tqM
-oSx
+sMP
 oSx
 bza
 aaa
@@ -128459,13 +128529,13 @@ bxc
 ccQ
 bxc
 vvQ
-oSx
+kAu
 mML
 wRM
 ckK
 ubj
 tqM
-bCi
+uJc
 oSx
 bza
 aaf
@@ -128716,13 +128786,13 @@ bxc
 ccQ
 bxc
 wOf
-bCi
+ccY
 tqM
 cjm
-fdP
-kAu
-oca
-bCi
+rBn
+uFy
+jTU
+uJc
 bCi
 bza
 aaa
@@ -128973,13 +129043,13 @@ bxc
 ccQ
 bxc
 tnI
-bCi
+ccY
 mML
 ubj
-gdQ
+rID
 wRM
 tqM
-bCi
+uJc
 bCi
 bza
 aaa
@@ -129230,16 +129300,16 @@ bxc
 ccQ
 bxc
 jql
-oSx
+kAu
 tqM
-ccZ
 hfE
+snH
 tqM
 tqM
-rBn
-tWl
+qpp
+oGQ
 cVy
-weu
+gdy
 aaf
 aaf
 aaa
@@ -129487,14 +129557,14 @@ bxc
 tje
 bxc
 bCi
-bCi
-bCi
-bCi
-bCi
-bCi
-bCi
-oSx
-unx
+ccZ
+eTm
+eTm
+eTm
+eTm
+eTm
+qDi
+hEz
 bxc
 aaa
 lMJ
@@ -129745,8 +129815,8 @@ bSh
 bxc
 bTk
 bCi
-ccY
-ccY
+fdP
+fdP
 oSx
 oSx
 oSx
