@@ -11,6 +11,8 @@
 	cell_hit_cost = 400
 	slot_flags = null //you'll have to put it on a belt or whatever
 	force = 11
+	//apply_stun_delay = 1 SECONDS //Buff intead of stamina SKYRAT EDIT REMOVAL
+	//attack_cooldown = 2 SECONDS SKYRAT EDIT REMOVAL
 	w_class = WEIGHT_CLASS_SMALL //small but packs a PUNCH.
 	preload_cell_type = /obj/item/stock_parts/cell/high/plus
 	convertible = FALSE
