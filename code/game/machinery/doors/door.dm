@@ -362,7 +362,13 @@
 		else if(ishuman(L)) //For humans
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 			L.emote("scream")
-			L.Paralyze(100)
+			//L.Paralyze(100) //SKYRAT EDIT CHANGE - COMBAT - ORIGINAL
+			L.StaminaKnockdown(20, TRUE, TRUE)
+		else if(ismonkey(L)) //For monkeys
+			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
+			//L.Paralyze(100) //ORIGINAL
+			L.StaminaKnockdown(20, TRUE, TRUE)
+			//SKYRAT EDIT END
 		else //for simple_animals & borgs
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 		var/turf/location = get_turf(src)
