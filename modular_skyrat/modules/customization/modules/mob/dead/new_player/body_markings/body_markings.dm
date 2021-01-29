@@ -159,6 +159,11 @@
 	icon_state = "corgi"
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
+/datum/body_marking/secondary/leopard
+	name = "Leopard"
+	icon_state = "leopard"
+	affected_bodyparts = CHEST
+
 /datum/body_marking/secondary/skunk
 	name = "Skunk"
 	icon_state = "skunk"
