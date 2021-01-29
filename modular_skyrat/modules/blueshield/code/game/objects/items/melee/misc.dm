@@ -15,7 +15,7 @@
 	//attack_cooldown = 2 SECONDS SKYRAT EDIT REMOVAL
 	w_class = WEIGHT_CLASS_SMALL //small but packs a PUNCH.
 	preload_cell_type = /obj/item/stock_parts/cell/high/plus
-	convertible = FALSE
+	convertible = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/melee/baton/blueshieldprod/attack(mob/M, mob/living/carbon/human/user)
 	if(!HAS_TRAIT(user, TRAIT_MINDSHIELD))
