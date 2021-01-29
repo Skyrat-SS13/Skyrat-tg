@@ -240,7 +240,7 @@
 		//SKYRAT EDIT CHANGE END
 
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
-	//addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay)
+	//addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay) SKYRAT EDIT REMOVAL
 
 	if(user)
 		L.lastattacker = user.real_name
