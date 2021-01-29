@@ -11,7 +11,6 @@ Adds aphrodisiacs back into the game, along with their respective kegs and clien
 ### TG Proc/File Changes:
 
 - modular_skyrat\modules\customization\modules\client\preferences.dm
-<!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. APPEND: Also, please include any files that you've changed. .DM files that is. -->
 
 ### Defines:
 
