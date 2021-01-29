@@ -211,7 +211,7 @@
 		..()
 
 
-/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user, harmy = FALSE)
+/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user, harmy = FALSE) //SKYRAT EDIT CHANGE  - ORIGINAL: /obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
 	if(shields_blocked(L, user))
 		return FALSE
 	/*
