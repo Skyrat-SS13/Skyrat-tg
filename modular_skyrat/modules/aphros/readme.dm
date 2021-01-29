@@ -2,7 +2,7 @@ https://github.com/Skyrat-SS13/Skyrat-tg/pull/2914
 
 ## Title: Aphrodisiacs
 
-MODULE ID: N/A
+MODULE ID: APHROS
 
 ### Description:
 
