@@ -19,7 +19,6 @@ Adds aphrodisiacs back into the game, along with their respective kegs and clien
 ### Master file additions
 
 - N/A
-<!-- Any master file changes you've made to existing master files or if you've added a new master file. Please mark either as #NEW or #CHANGE -->
 
 ### Included files that are not contained in this module:
 
