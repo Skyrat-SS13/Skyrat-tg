@@ -67,7 +67,7 @@
 
 /obj/projectile/bullet/advanced/b9mm
 	name = "9mm bullet"
-	damage = 20
+	damage = 25
 	speed = 0.7
 
 /obj/item/ammo_casing/b9mm/hp
@@ -81,7 +81,7 @@
 /obj/projectile/bullet/advanced/b9mm/hp
 	name = "9mm hollowpoint bullet"
 	icon_state = "bullet_h"
-	damage = 20
+	damage = 25
 	wound_bonus = 30
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	armour_penetration = -30
@@ -98,7 +98,7 @@
 	name = "9mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 5
-	stamina = 30
+	stamina = 35
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -118,7 +118,7 @@
 /obj/projectile/bullet/advanced/b9mm/ihdf
 	name = "9mm ihdf bullet"
 	icon_state = "bullet_i"
-	damage = 35
+	damage = 40
 	damage_type = STAMINA
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
@@ -136,7 +136,7 @@
 
 /obj/projectile/bullet/advanced/b10mm
 	name = "10mm bullet"
-	damage = 30
+	damage = 35
 	speed = 0.9
 
 /obj/item/ammo_casing/b10mm/hp
@@ -150,7 +150,7 @@
 /obj/projectile/bullet/advanced/b10mm/hp
 	name = "10mm hollowpoint bullet"
 	icon_state = "bullet_h"
-	damage = 27
+	damage = 35
 	wound_bonus = 30
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	armour_penetration = -30
@@ -167,7 +167,7 @@
 	name = "10mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 10
-	stamina = 35
+	stamina = 45
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -187,7 +187,7 @@
 /obj/projectile/bullet/advanced/b10mm/ihdf
 	name = "10mm ihdf bullet"
 	icon_state = "bullet_i"
-	damage = 40
+	damage = 45
 	damage_type = STAMINA
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
@@ -205,7 +205,7 @@
 
 /obj/projectile/bullet/advanced/b12mm
 	name = "12mm bullet"
-	damage = 35
+	damage = 45
 	speed = 1.2
 
 /obj/item/ammo_casing/b12mm/hp
@@ -219,7 +219,7 @@
 /obj/projectile/bullet/advanced/b12mm/hp
 	name = "12mm hollowpoint bullet"
 	icon_state = "bullet_h"
-	damage = 35
+	damage = 45
 	wound_bonus = 35
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	armour_penetration = -25
@@ -236,7 +236,7 @@
 	name = "12mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 13
-	stamina = 35
+	stamina = 50
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
