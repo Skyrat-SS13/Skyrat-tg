@@ -214,11 +214,11 @@
 /obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user, harmy = FALSE) //SKYRAT EDIT CHANGE  - ORIGINAL: /obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
 	if(shields_blocked(L, user))
 		return FALSE
-	/*
+	/* SKYRAT EDIT REMOVAL BEGIN
 	if(HAS_TRAIT_FROM(L, TRAIT_IWASBATONED, user)) //no doublebaton abuse anon!
 		to_chat(user, "<span class='danger'>[L] manages to avoid the attack!</span>")
 		return FALSE
-	*/
+	*/ //SKYRAT EDIT REMOVAL END
 	if(iscyborg(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(!R || !R.cell || !R.cell.use(cell_hit_cost))
