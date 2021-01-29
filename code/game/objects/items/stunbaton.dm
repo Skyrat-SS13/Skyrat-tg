@@ -253,7 +253,7 @@
 
 	attack_cooldown_check = world.time + attack_cooldown
 
-	/*
+	/* SKYRAT EDIT REMOVAL
 	ADD_TRAIT(L, TRAIT_IWASBATONED, user)
 	addtimer(TRAIT_CALLBACK_REMOVE(L, TRAIT_IWASBATONED, user), attack_cooldown)
 	*/
