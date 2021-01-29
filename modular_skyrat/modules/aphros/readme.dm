@@ -15,7 +15,6 @@ Adds aphrodisiacs back into the game, along with their respective kegs and clien
 ### Defines:
 
 - code\__DEFINES\~skyrat_defines\preferences.dm
-<!-- If you needed to add any defines, mention the files you added those defines in -->
 
 ### Master file additions
 
