@@ -207,7 +207,7 @@
 	else
 		if(turned_on)
 			if(attack_cooldown_check <= world.time)
-				baton_effect(M, user, TRUE)
+				baton_effect(M, user, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: baton_effect(M, user)
 		..()
 
 
