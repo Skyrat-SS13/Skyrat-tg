@@ -367,6 +367,7 @@
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 			//L.Paralyze(100) //ORIGINAL
 			L.StaminaKnockdown(20, TRUE, TRUE)
+			//SKYRAT EDIT END
 		else //for simple_animals & borgs
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 		var/turf/location = get_turf(src)
