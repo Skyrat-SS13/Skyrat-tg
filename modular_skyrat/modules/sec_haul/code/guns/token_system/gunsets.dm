@@ -21,6 +21,7 @@
 /obj/item/storage/box/gunset/PopulateContents()
 	. = ..()
 	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/gun_maintenance_supplies(src)
 
 /obj/item/storage/box/gunset/update_icon()
 	. = ..()
@@ -62,6 +63,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/rubber(src)
 
 //LADON
 /obj/item/storage/box/gunset/ladon
@@ -73,6 +75,7 @@
 /obj/item/storage/box/gunset/ladon/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/ladon/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber(src)
@@ -90,6 +93,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber(src)
 
 // MK-58
 /obj/item/storage/box/gunset/ladon
@@ -101,6 +105,7 @@
 /obj/item/storage/box/gunset/mk58/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/mk58/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber(src)
@@ -118,6 +123,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/croon/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/croon/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/croon/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/rubber(src)
 
 //MAKAROV
 /obj/item/storage/box/gunset/makarov
@@ -132,6 +138,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber(src)
 
 //DOZER
 /obj/item/storage/box/gunset/dozer
@@ -143,6 +150,7 @@
 /obj/item/storage/box/gunset/dozer/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/dozer/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber(src)
