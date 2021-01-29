@@ -255,7 +255,7 @@
 		/* - SKYRAT EDIT REMOVAL BEGIN
 		user.Paralyze(knockdown_time_carbon * force)
 		user.apply_damage(stamina_damage, STAMINA, BODY_ZONE_HEAD)
-		*/
+		*/ //SKYRAT EDIT REMOVAL END
 		user.apply_damage(force*0.5, BRUTE, BODY_ZONE_HEAD)
 		user.StaminaKnockdown(stamina_damage)
 
