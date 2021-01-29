@@ -50,6 +50,7 @@
 				M.StaminaKnockdown(30, TRUE, TRUE, knockdown_amt = 5 SECONDS)
 			else
 				M.StaminaKnockdown(25, knockdown_amt = 3 SECONDS)
+				//SKYRAT EDIT CHANGES END
 
 /obj/item/grenade/stingbang
 	name = "stingbang"
