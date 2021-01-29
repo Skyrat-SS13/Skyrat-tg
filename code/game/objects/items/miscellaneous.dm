@@ -415,3 +415,4 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "plasticbox"
 	w_class = WEIGHT_CLASS_SMALL
+	custom_price = PAYCHECK_HARD * 3 //SKYRAT EDIT ADDITION

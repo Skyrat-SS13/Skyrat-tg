@@ -14,7 +14,9 @@
 					/obj/item/food/donut = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/flashlight/seclite = 4,
-					/obj/item/storage/bag/ammo = 3)
+					/obj/item/storage/bag/ammo = 3,
+					/obj/item/gun_maintenance_supplies = 10
+					)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
 					  /obj/item/storage/fancy/donut_box = 2,
 					  /obj/item/armament_token/sidearm_blackmarket = 2)
