@@ -28,7 +28,7 @@
 	var/activate_sound = "sparks"
 
 	var/attack_cooldown_check = 0 SECONDS
-	var/attack_cooldown = 1 SECONDS
+	var/attack_cooldown = 1 SECONDS //SKYRAT EDIT CHANGE - ORIGINAL: 2.5 SECONDS
 	var/stun_sound = 'sound/weapons/egloves.ogg'
 
 	var/confusion_amt = 10
