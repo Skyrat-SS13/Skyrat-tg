@@ -480,17 +480,15 @@
 					null, "<span class='hear'>You hear a soft patter.</span>", DEFAULT_MESSAGE_RANGE, list(M, src))
 		to_chat(M, "<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>")
 		to_chat(src, "<span class='notice'>[M] gives you a pat on the head to make you feel better! </span>")
-<<<<<<< HEAD
+
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			if(!src.dna.species.is_wagging_tail(src))
 				src.emote("wag")
 		//SKYRAT EDIT ADDITION END
-=======
 		
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
 			to_chat(M, "<span class='warning'>[src] looks visibly upset as you pat [p_them()] on the head.</span>")
->>>>>>> 75da4a0b700 (Visual Indicator for Bad Touch Quirk (#56474))
 
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
