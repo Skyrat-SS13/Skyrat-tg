@@ -39,7 +39,7 @@
 		//M.soundbang_act(1, 200, 10, 15) - SKYRAT EDIT REMOVAL - COMBAT
 		M.soundbang_act(2, 0, 10, 15)
 	else
-		var/target_intensity = 1
+		var/target_intensity = 1 //SKYRAT EDIT ADDITION - COMBAT
 		if(distance <= 1) // Adds more stun as to not prime n' pull (#45381)
 			//M.Paralyze(5)
 			//M.Knockdown(30)
