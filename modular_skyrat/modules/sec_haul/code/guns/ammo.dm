@@ -15,7 +15,7 @@
 	prereq_ids = list("weaponry"  , "adv_weaponry", "advanced_peacekeeper_ammo")
 	design_ids = list("smartgun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
-/datum/design/knight_armour
+
 //////////////////////
 //6mm
 //////////////////////

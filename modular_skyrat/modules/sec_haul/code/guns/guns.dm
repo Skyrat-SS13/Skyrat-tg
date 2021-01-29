@@ -173,11 +173,11 @@
 	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
-	name = "pdh handgun magazine (12mm)"
+	name = "pdh handgun magazine (357)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/a357
-	caliber = "12mm"
+	caliber = "357"
 	max_ammo = 14
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list("lethal" = AMMO_TYPE_LETHAL)

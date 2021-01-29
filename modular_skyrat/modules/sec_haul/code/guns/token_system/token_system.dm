@@ -68,7 +68,7 @@
 	/obj/item/storage/box/gunset/dozer = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "dozer"
-     ),
+   /* ),
     /obj/item/storage/box/gunset/zeta = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "zeta"
@@ -76,7 +76,7 @@
     /obj/item/storage/box/gunset/revolution = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "revolution"
-     )
+     */)
   )
 
 //BAD BOY!
