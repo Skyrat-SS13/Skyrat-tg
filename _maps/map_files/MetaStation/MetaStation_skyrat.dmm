@@ -29839,12 +29839,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -23
-	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
+	},
+/obj/machinery/pipedispenser/disposal,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark/corner{
 	dir = 1
@@ -30450,10 +30450,6 @@
 /area/ai_monitored/storage/satellite)
 "byZ" = (
 /obj/structure/table,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/grenade/chem_grenade/smart_metal_foam,
-/obj/item/grenade/chem_grenade/smart_metal_foam,
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
@@ -30461,6 +30457,12 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/grenade/chem_grenade/smart_metal_foam,
+/obj/item/grenade/chem_grenade/smart_metal_foam,
+/obj/item/grenade/chem_grenade/smart_metal_foam,
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
 "bza" = (
@@ -33991,15 +33993,11 @@
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
 "bIN" = (
-/obj/structure/table,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/rods/fifty,
-/obj/item/stack/rods/fifty,
-/obj/effect/turf_decal/bot{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/obj/machinery/pipedispenser,
+/obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
 /turf/open/floor/plasteel{
@@ -34025,7 +34023,6 @@
 	},
 /area/engine/atmos)
 "bIP" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
@@ -35263,6 +35260,10 @@
 	},
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/engine/atmos)
@@ -38298,18 +38299,6 @@
 /turf/open/floor/plasteel/dark/corner{
 	dir = 1
 	},
-/area/engine/atmos)
-"bUA" = (
-/obj/machinery/pipedispenser,
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/plasteel,
-/area/engine/atmos)
-"bUB" = (
-/obj/machinery/pipedispenser/disposal,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plasteel,
 /area/engine/atmos)
 "bUC" = (
 /obj/machinery/pipedispenser/disposal/transit_tube,
@@ -124127,7 +124116,7 @@ bDR
 xfp
 bIN
 bxg
-bCi
+bUC
 bMa
 bNP
 bPo
@@ -124643,7 +124632,7 @@ nNB
 bKw
 oGQ
 bIP
-bHu
+oGQ
 aLp
 aLp
 bHu
@@ -124898,13 +124887,13 @@ fHp
 eCs
 bIQ
 aLh
-bCi
+bKx
 bMd
 bCi
+bFI
 bCi
 bCi
 bCi
-bUA
 bVK
 bXk
 bIS
@@ -125161,7 +125150,7 @@ bCi
 bQT
 bCi
 bCi
-bUB
+bCi
 bFO
 bXl
 bIS
@@ -125418,7 +125407,7 @@ bPs
 bPp
 bCi
 bCi
-bUC
+bCi
 bVK
 bXm
 bIS
