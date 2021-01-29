@@ -347,7 +347,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
 	can_suppress = FALSE
 	realistic = TRUE
-	can_flashlight = FALSE
+	can_flashlight = TRUE
 	emp_damageable = TRUE
 	armadyne = TRUE
 
