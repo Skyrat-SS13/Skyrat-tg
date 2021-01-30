@@ -286,7 +286,7 @@
 					confidential = TRUE)
 
 				// admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>") // SKYRAT EDIT ORIGINAL
-				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src, null, FALSE)]: [keywordparsedmsg]</font>", FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
+				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src, FALSE)]: [keywordparsedmsg]</font>", FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
 
 				if(!already_logged) //Reply to an existing ticket
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
