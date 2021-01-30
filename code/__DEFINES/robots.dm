@@ -40,7 +40,6 @@
 #define FIRE_BOT			(1<<6)  // Firebots
 #define HYGIENE_BOT			(1<<7)  // Hygienebots
 #define VIBE_BOT			(1<<8)  //vibe bots
-#define BULLET_BOT			(1<<9)	// Bullet bots
 
 //AI notification defines
 #define		NEW_BORG     1

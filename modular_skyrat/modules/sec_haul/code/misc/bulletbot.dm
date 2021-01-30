@@ -10,7 +10,7 @@
 	maxHealth = 40
 	radio_key = /obj/item/encryptionkey/headset_sec
 	radio_channel = RADIO_CHANNEL_SECURITY
-	bot_type = BULLET_BOT
+	bot_type = SEC_BOT
 	model = "Bulletbot"
 	bot_core_type = /obj/machinery/bot_core/bulletbot
 	window_id = "autoclean"
@@ -371,3 +371,33 @@ Maintenance panel panel is [open ? "opened" : "closed"]"})
 				ammo_boxes = !ammo_boxes
 		get_targets()
 		update_controls()
+
+
+/obj/item/bot_assembly/bulletbot
+	desc = "It's a bucket with a sensor attached."
+	name = "incomplete bulletbot assembly"
+	icon = 'modular_skyrat/modules/sec_haul/icons/misc/bulletbot.dmi'
+	icon_state = "bucket_proxy"
+	throwforce = 5
+	created_name = "Bulletbot"
+
+/obj/item/bot_assembly/bulletbot/attackby(obj/item/W, mob/user, params)
+	..()
+	if(istype(W, /obj/item/bodypart/l_arm/robot) || istype(W, /obj/item/bodypart/r_arm/robot))
+		if(!can_finish_build(W, user))
+			return
+		var/mob/living/simple_animal/bot/bulletbot/A = new(drop_location())
+		A.name = created_name
+		A.robot_arm = W.type
+		to_chat(user, "<span class='notice'>You add [W] to [src]. Beep boop!</span>")
+		qdel(W)
+		qdel(src)
+
+/datum/design/bulletbot
+	name = "bulletbot chassis"
+	id = "bulletbot"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/bot_assembly/bulletbot
+	category = list("intial", "Security", "Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
