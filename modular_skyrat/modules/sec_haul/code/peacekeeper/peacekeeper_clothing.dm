@@ -140,12 +140,13 @@
 //PEACEKEEPER GLOVES
 /obj/item/clothing/gloves/combat/peacekeeper
 	name = "peacekeeper gloves"
-	desc = "These tactical gloves are fireproof and electrically insulated."
+	desc = "These tactical gloves are fireproof."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_gloves.dmi'
 	icon_state = "peacekeeper_gloves"
 	worn_icon_state = "peacekeeper"
 	cut_type = null
+	siemens_coefficient = 0.5
 
 /obj/item/clothing/gloves/tackler/peacekeeper
 	name = "peacekeeper gripper gloves"
