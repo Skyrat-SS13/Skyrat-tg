@@ -50,7 +50,7 @@
 /obj/effect/mob_spawn/robot/equip(mob/living/silicon/robot/R)
 	. = ..()
 
-/*/obj/effect/mob_spawn/robot/ghostcafe
+/obj/effect/mob_spawn/robot/ghostcafe
 	name = "Cafe Sleeper"
 	uses = -1
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -63,4 +63,4 @@
 	assignedrole = "Cafe Cyborg Visitor"
 	short_desc = "You are a Cafe Visitor!"
 	flavour_text = "Who would have thought? This awesome local cafe accepts cyborgs, too!"
-*/ //Reimplement when binary comms can be stripped and the RP module is in-game. Cyborg code is too much for my dumb brain.
+	mob_type = /mob/living/silicon/robot/modules/roleplay
