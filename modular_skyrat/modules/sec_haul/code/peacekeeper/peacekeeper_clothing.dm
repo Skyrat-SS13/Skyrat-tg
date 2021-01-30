@@ -154,7 +154,6 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_gloves.dmi'
 	icon_state = "peacekeeper_gripper_gloves"
-	inhand_icon_state = "peacekeeper"
 
 /obj/item/clothing/gloves/krav_maga/sec/peacekeeper
 	name = "peacekeeper krav maga gloves"
