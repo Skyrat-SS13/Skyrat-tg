@@ -13,6 +13,7 @@
 		/obj/item/reagent_containers/hypospray/combat/nanites,\
 		/obj/item/gun/medbeam,\
 		/obj/item/storage/firstaid/tactical/ntrauma,\
+		/obj/item/roller,\
 		)
 
 /obj/item/storage/belt/military/ntrauma
