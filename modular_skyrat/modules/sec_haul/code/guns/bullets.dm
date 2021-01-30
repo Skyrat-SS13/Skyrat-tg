@@ -166,7 +166,7 @@
 /obj/projectile/bullet/advanced/b10mm/rubber
 	name = "10mm rubber bullet"
 	icon_state = "bullet_r"
-	damage = 10
+	damage = 7
 	stamina = 35
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
