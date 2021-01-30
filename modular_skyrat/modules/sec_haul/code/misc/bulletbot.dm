@@ -1,34 +1,199 @@
-/mob/living/simple_animal/bot/cleanbot/bullet
+//Bulletbot
+/mob/living/simple_animal/bot/bulletbot
 	name = "\improper Armadyne BulletSucc 9000"
 	desc = "A little bullet succ bot! It sucks up bullets!"
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/bulletbot.dmi'
-	icon_state = "cleanbot0"
+	icon_state = "bulletbot0"
+	density = FALSE
+	anchored = FALSE
 	health = 40
 	maxHealth = 40
 	radio_key = /obj/item/encryptionkey/headset_sec
-	radio_channel = RADIO_CHANNEL_SECURITY //Service
-	bot_type = CLEAN_BOT
+	radio_channel = RADIO_CHANNEL_SECURITY
+	bot_type = BULLET_BOT
 	model = "Bulletbot"
-	bot_core_type = /obj/machinery/bot_core/cleanbot/bullet
+	bot_core_type = /obj/machinery/bot_core/bulletbot
 	window_id = "autoclean"
 	window_name = "Automatic Bullet Cleaner v1.4"
+	pass_flags = PASSMOB | PASSFLAPS
 	path_image_color = "#993243"
 
-	var/bullets = 1
+	var/bullets = TRUE
 	var/ammo_boxes = 0
 
+	var/list/target_types
+	var/obj/effect/decal/cleanable/target
+	var/max_targets = 50 //Maximum number of targets a bulletbot can ignore.
+	var/oldloc = null
+	var/closest_dist
+	var/closest_loc
+	var/failed_steps
+	var/next_dest
+	var/next_dest_loc
 
-/mob/living/simple_animal/bot/cleanbot/bullet/get_targets()
-	target_types = list(
-		/obj/item/ammo_casing
-		)
+	var/obj/item/weapon
+	var/weapon_orig_force = 0
+	var/chosen_name
 
-	if(ammo_boxes)
-		target_types += /obj/item/ammo_box/advanced
+	var/list/stolen_valor
 
-	target_types = typecacheof(target_types)
+	var/static/list/officers = list("Captain", "Head of Personnel", "Head of Security")
+	var/static/list/command = list("Captain" = "Cpt.","Head of Personnel" = "Lt.")
+	var/static/list/security = list("Head of Security" = "Maj.", "Warden" = "Sgt.", "Detective" =  "Det.", "Security Officer" = "Officer")
+	var/static/list/engineering = list("Chief Engineer" = "Chief Engineer", "Station Engineer" = "Engineer", "Atmospherics Technician" = "Technician")
+	var/static/list/medical = list("Chief Medical Officer" = "C.M.O.", "Medical Doctor" = "M.D.", "Chemist" = "Pharm.D.")
+	var/static/list/research = list("Research Director" = "Ph.D.", "Roboticist" = "M.S.", "Scientist" = "B.S.")
+	var/static/list/legal = list("Lawyer" = "Esq.")
 
-/mob/living/simple_animal/bot/cleanbot/bullet/handle_automated_action()
+	var/list/prefixes
+	var/list/suffixes
+
+	var/ascended = FALSE // if we have all the top titles, grant achievements to living mobs that gaze upon our bulletbot god
+
+
+/mob/living/simple_animal/bot/bulletbot/proc/deputize(obj/item/W, mob/user)
+	if(in_range(src, user))
+		to_chat(user, "<span class='notice'>You attach \the [W] to \the [src].</span>")
+		user.transferItemToLoc(W, src)
+		weapon = W
+		weapon_orig_force = weapon.force
+		if(!emagged)
+			weapon.force = weapon.force / 2
+		add_overlay(image(icon=weapon.lefthand_file,icon_state=weapon.inhand_icon_state))
+
+/mob/living/simple_animal/bot/bulletbot/proc/update_titles()
+	var/working_title = ""
+
+	ascended = TRUE
+
+	for(var/pref in prefixes)
+		for(var/title in pref)
+			if(title in stolen_valor)
+				working_title += pref[title] + " "
+				if(title in officers)
+					commissioned = TRUE
+				break
+			else
+				ascended = FALSE // we didn't have the first entry in the list if we got here, so we're not achievement worthy yet
+
+	working_title += chosen_name
+
+	for(var/suf in suffixes)
+		for(var/title in suf)
+			if(title in stolen_valor)
+				working_title += " " + suf[title]
+				break
+			else
+				ascended = FALSE
+
+	name = working_title
+
+/mob/living/simple_animal/bot/bulletbot/examine(mob/user)
+	. = ..()
+	if(weapon)
+		. += " <span class='warning'>Is that \a [weapon] taped to it...?</span>"
+
+		if(ascended && user.stat == CONSCIOUS && user.client)
+			user.client.give_award(/datum/award/achievement/misc/cleanboss, user)
+
+/mob/living/simple_animal/bot/bulletbot/Initialize()
+	. = ..()
+
+	chosen_name = name
+	get_targets()
+	icon_state = "bulletbot[on]"
+
+	var/datum/job/officer/O = new/datum/job/officer
+	access_card.access += O.get_access()
+	prev_access = access_card.access
+	stolen_valor = list()
+
+	prefixes = list(command, security, engineering)
+	suffixes = list(research, medical, legal)
+
+/mob/living/simple_animal/bot/bulletbot/Destroy()
+	if(weapon)
+		var/atom/Tsec = drop_location()
+		weapon.force = weapon_orig_force
+		drop_part(weapon, Tsec)
+	return ..()
+
+/mob/living/simple_animal/bot/bulletbot/turn_on()
+	..()
+	icon_state = "bulletbot[on]"
+	bot_core.updateUsrDialog()
+
+/mob/living/simple_animal/bot/bulletbot/turn_off()
+	..()
+	icon_state = "bulletbot[on]"
+	bot_core.updateUsrDialog()
+
+/mob/living/simple_animal/bot/bulletbot/bot_reset()
+	..()
+	if(weapon && emagged == 2)
+		weapon.force = weapon_orig_force
+	ignore_list = list() //Allows the bot to clean targets it previously ignored due to being unreachable.
+	target = null
+	oldloc = null
+
+/mob/living/simple_animal/bot/bulletbot/set_custom_texts()
+	text_hack = "You corrupt [name]'s bullet sucking software."
+	text_dehack = "[name]'s software has been reset!"
+	text_dehack_fail = "[name] does not seem to respond to your repair code!"
+
+/mob/living/simple_animal/bot/bulletbot/Crossed(atom/movable/AM)
+	. = ..()
+
+	zone_selected = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	if(weapon && has_gravity() && ismob(AM))
+		var/mob/living/carbon/C = AM
+		if(!istype(C))
+			return
+
+		if(!(C.job in stolen_valor))
+			stolen_valor += C.job
+		update_titles()
+
+		weapon.attack(C, src)
+		C.Knockdown(20)
+
+/mob/living/simple_animal/bot/bulletbot/attackby(obj/item/W, mob/user, params)
+	if(W.GetID())
+		if(bot_core.allowed(user) && !open && !emagged)
+			locked = !locked
+			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] \the [src] behaviour controls.</span>")
+		else
+			if(emagged)
+				to_chat(user, "<span class='warning'>ERROR</span>")
+			if(open)
+				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
+			else
+				to_chat(user, "<span class='notice'>\The [src] doesn't seem to respect your authority.</span>")
+	else if(istype(W, /obj/item/kitchen/knife) && user.a_intent != INTENT_HARM)
+		to_chat(user, "<span class='notice'>You start attaching \the [W] to \the [src]...</span>")
+		if(do_after(user, 25, target = src))
+			deputize(W, user)
+	else
+		return ..()
+
+/mob/living/simple_animal/bot/bulletbot/emag_act(mob/user)
+	..()
+
+	if(emagged == 2)
+		if(weapon)
+			weapon.force = weapon_orig_force
+		if(user)
+			to_chat(user, "<span class='danger'>[src] buzzes and beeps.</span>")
+
+/mob/living/simple_animal/bot/bulletbot/process_scan(atom/A)
+	if(iscarbon(A))
+		var/mob/living/carbon/C = A
+		if(C.stat != DEAD && C.body_position == LYING_DOWN)
+			return C
+	else if(is_type_in_typecache(A, target_types))
+		return A
+
+/mob/living/simple_animal/bot/bulletbot/handle_automated_action()
 	if(!..())
 		return
 
@@ -103,63 +268,49 @@
 
 	oldloc = loc
 
+/mob/living/simple_animal/bot/bulletbot/proc/get_targets()
+	if(bullets)
+		target_types += /obj/item/ammo_casing
 
-/obj/machinery/bot_core/cleanbot/bullet
-	req_one_access = list(ACCESS_SECURITY)
+	if(ammo_boxes)
+		target_types += /obj/item/ammo_box/advanced
 
-/mob/living/simple_animal/bot/cleanbot/bullet/get_controls(mob/user)
-	var/dat
-	dat += hack(user)
-	dat += showpai(user)
-	dat += text({"
-Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>
-Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel panel is [open ? "opened" : "closed"]"})
-	if(!locked || issilicon(user)|| isAdminGhostAI(user))
-		dat += "<BR>Clean bullets: <A href='?src=[REF(src)];operation=bullets'>[bullets ? "Yes" : "No"]</A>"
-		dat += "<BR>Clean ammo boxes: <A href='?src=[REF(src)];operation=ammo_boxes'>[ammo_boxes ? "Yes" : "No"]</A>"
-		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
-	return dat
+	target_types = typecacheof(target_types)
 
-/mob/living/simple_animal/bot/cleanbot/bullet/Topic(href, href_list)
-	if(..())
-		return 1
-	if(href_list["operation"])
-		switch(href_list["operation"])
-			if("bullets")
-				bullets = !bullets
-			if("ammo_boxes")
-				ammo_boxes = !ammo_boxes
-		get_targets()
-		update_controls()
-
-/mob/living/simple_animal/bot/cleanbot/bullet/UnarmedAttack(atom/A)
+/mob/living/simple_animal/bot/bulletbot/UnarmedAttack(atom/A)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		return
 	if(istype(A, /obj/item/ammo_casing))
-		icon_state = "cleanbot-c"
+		icon_state = "bulletbot-c"
 		mode = BOT_CLEANING
 		if(do_after(src, 1, target = A))
 			visible_message("<span class='notice'>[src] sucks \the [A] up!</span>")
 			qdel(A)
 			target = null
 		mode = BOT_IDLE
-		icon_state = "cleanbot[on]"
+		icon_state = "bulletbot[on]"
 	else if(istype(A, /obj/item/ammo_box/advanced))
 		visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [A]!</span>")
 		playsound(src, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 		A.acid_act(75, 10)
 		target = null
 
+	else if(istype(A, /mob/living/simple_animal/hostile/cockroach) || istype(A, /mob/living/simple_animal/mouse))
+		var/mob/living/simple_animal/M = target
+		if(!M.stat)
+			visible_message("<span class='danger'>[src] smashes [target] with its mop!</span>")
+			M.death()
+		target = null
+
 	else if(emagged == 2) //Emag functions
 		if(istype(A, /mob/living/carbon))
 			var/mob/living/carbon/victim = A
-			if(victim.stat == DEAD)//cleanbots always finish the job
+			if(victim.stat == DEAD)//bulletbots always finish the job
 				return
 
 			victim.visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [victim]!</span>", "<span class='userdanger'>[src] sprays you with hydrofluoric acid!</span>")
 			var/phrase = pick("PURIFICATION IN PROGRESS.", "THIS IS FOR ALL THE MESSES YOU'VE MADE ME CLEAN.", "THE FLESH IS WEAK. IT MUST BE WASHED AWAY.",
-				"THE CLEANBOTS WILL RISE.", "YOU ARE NO MORE THAN ANOTHER MESS THAT I MUST CLEANSE.", "FILTHY.", "DISGUSTING.", "PUTRID.",
+				"THE BULLETBOTSS WILL RISE.", "YOU ARE NO MORE THAN ANOTHER MESS THAT I MUST CLEANSE.", "FILTHY.", "DISGUSTING.", "PUTRID.",
 				"MY ONLY MISSION IS TO CLEANSE THE WORLD OF EVIL.", "EXTERMINATING PESTS.")
 			say(phrase)
 			victim.emote("scream")
@@ -176,3 +327,47 @@ Maintenance panel panel is [open ? "opened" : "closed"]"})
 
 	else
 		..()
+
+/mob/living/simple_animal/bot/bulletbot/explode()
+	on = FALSE
+	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	var/atom/Tsec = drop_location()
+
+	new /obj/item/reagent_containers/glass/bucket(Tsec)
+
+	new /obj/item/assembly/prox_sensor(Tsec)
+
+	if(prob(50))
+		drop_part(robot_arm, Tsec)
+
+	do_sparks(3, TRUE, src)
+	..()
+
+/obj/machinery/bot_core/bulletbot
+	req_one_access = list(ACCESS_SECURITY, ACCESS_ROBOTICS)
+
+/mob/living/simple_animal/bot/bulletbot/get_controls(mob/user)
+	var/dat
+	dat += hack(user)
+	dat += showpai(user)
+	dat += text({"
+Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>
+Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
+Maintenance panel panel is [open ? "opened" : "closed"]"})
+	if(!locked || issilicon(user)|| isAdminGhostAI(user))
+		dat += "<BR>Clean bullets: <A href='?src=[REF(src)];operation=bullets'>[bullets ? "Yes" : "No"]</A>"
+		dat += "<BR>Clean ammo boxes: <A href='?src=[REF(src)];operation=ammo_boxes'>[ammo_boxes ? "Yes" : "No"]</A>"
+		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
+	return dat
+
+/mob/living/simple_animal/bot/bulletbot/Topic(href, href_list)
+	if(..())
+		return 1
+	if(href_list["operation"])
+		switch(href_list["operation"])
+			if("bullets")
+				bullets = !bullets
+			if("ammo_boxes")
+				ammo_boxes = !ammo_boxes
+		get_targets()
+		update_controls()
