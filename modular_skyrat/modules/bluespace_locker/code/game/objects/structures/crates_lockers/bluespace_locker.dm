@@ -133,7 +133,7 @@
 		internal_origin = get_turf(L)
 		break
 	mirage_whitelist.len = 0
-	for(var/turf/T in view(11, external_origin))
+	for(var/turf/T in view(12, external_origin))
 		mirage_whitelist[T] = TRUE
 	for(var/turf/open/space/bluespace_locker_mirage/T in A)
 		T.internal_origin = internal_origin
@@ -186,6 +186,7 @@
 	name = "holographic projection"
 	desc = "A holographic projection of the area surrounding the bluespace locker"
 	flags_1 = NOJAUNT_1
+	plane = FLOOR_PLANE // this makes it work don't ask why, none of this code was commented. Without this it only shows overlays.
 	var/turf/internal_origin
 	var/turf/external_origin
 	var/turf/external_origin_prev
@@ -212,10 +213,10 @@
 	var/turf/target_turf = locate(external_origin.x + x - internal_origin.x, external_origin.y + y - internal_origin.y, external_origin.z)
 	if(!target_turf || (turf_whitelist && !turf_whitelist[target_turf]))
 		vis_contents = list()
-		var/mutable_appearance/M = mutable_appearance('icons/turf/space.dmi', "black")
-		M.layer = TURF_LAYER
-		M.plane = FLOOR_PLANE
-		add_overlay(M)
+		//var/mutable_appearance/M = mutable_appearance('icons/turf/space.dmi', "black")
+		//M.layer = TURF_LAYER
+		//M.plane = FLOOR_PLANE
+		//add_overlay(M)
 	else
 		vis_contents = list(target_turf)
 		if(glide_dir)
@@ -267,7 +268,7 @@
 				F.pixel_y -= py
 			add_overlay(fullbrights)
 			if(add_reset_timer)
-				reset_timer_id = addtimer(CALLBACK(src, /turf/open/space/bluespace_locker_mirage.proc/reset_to_self), world.tick_lag * 4, TIMER_UNIQUE | TIMER_NO_HASH_WAIT | TIMER_OVERRIDE)
+				reset_timer_id = addtimer(CALLBACK(src, /turf/open/space/bluespace_locker_mirage.proc/reset_to_self), world.tick_lag * 4, TIMER_UNIQUE | TIMER_NO_HASH_WAIT | TIMER_OVERRIDE | TIMER_STOPPABLE)
 			else if(reset_timer_id)
 				deltimer(reset_timer_id)
 			pixel_x = px + dx*32
