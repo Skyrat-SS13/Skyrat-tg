@@ -13,9 +13,7 @@
 					/obj/item/assembly/flash/handheld = 5,
 					/obj/item/food/donut = 12,
 					/obj/item/storage/box/evidence = 6,
-					/obj/item/flashlight/seclite = 4,
-					/obj/item/storage/bag/ammo = 3,
-					/obj/item/gun_maintenance_supplies = 10
+					/obj/item/flashlight/seclite = 4
 					)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
 					  /obj/item/storage/fancy/donut_box = 2,
@@ -72,3 +70,28 @@
 /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	machine_name = "Peacekeeper Outfitting Station"
 
+
+/obj/machinery/vending/security_ammo
+	name = "\improper Armadyne Ammunition Station"
+	desc = "An Armadyne brand ammunition station."
+	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
+	icon_state = "ammo"
+	icon_deny = "ammo-deny"
+	light_mask = "ammo-light-mask"
+	req_access = list(ACCESS_SECURITY)
+	products = list(/obj/item/ammo_box/advanced/b6mm/rubber = 10,
+					/obj/item/ammo_box/advanced/b9mm/rubber = 10,
+					/obj/item/ammo_box/advanced/b10mm/rubber = 10,
+					/obj/item/storage/bag/ammo = 3,
+					/obj/item/gun_maintenance_supplies = 10
+					)
+	premium = list(/obj/item/ammo_box/advanced/b6mm/ihdf = 2,
+					/obj/item/ammo_box/advanced/b9mm/ihdf = 2,
+					/obj/item/ammo_box/advanced/b10mm/ihdf = 2)
+	refill_canister = /obj/item/vending_refill/security_ammo
+	default_price = PAYCHECK_MEDIUM
+	extra_price = PAYCHECK_HARD * 2
+	payment_department = ACCOUNT_SEC
+/obj/item/vending_refill/security_ammo
+	icon_state = "refill_sec"

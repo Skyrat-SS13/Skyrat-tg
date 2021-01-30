@@ -84484,16 +84484,6 @@
 /area/science/robotics/lab)
 "dCu" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
@@ -98944,11 +98934,10 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "eEL" = (
-/obj/structure/table/reinforced,
-/obj/machinery/recharger,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
+/obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "eEX" = (
@@ -99991,6 +99980,8 @@
 	dir = 4
 	},
 /obj/machinery/power/apc/auto_name/north,
+/obj/structure/closet/secure_closet/security/sec,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "gjC" = (
@@ -100859,7 +100850,6 @@
 /obj/machinery/newscaster/security_unit{
 	pixel_y = 32
 	},
-/obj/item/kirbyplants/random,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "hAI" = (
@@ -101375,6 +101365,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+"isW" = (
+/obj/machinery/vending/security_ammo,
+/turf/open/floor/plasteel/dark,
+/area/security/brig)
 "isY" = (
 /obj/item/radio/intercom{
 	desc = "A station intercom. It looks like it has been modified to not broadcast.";
@@ -104285,10 +104279,10 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "mjF" = (
-/obj/structure/table/reinforced,
-/obj/item/restraints/handcuffs,
-/obj/item/assembly/flash/handheld,
 /obj/structure/cable,
+/obj/machinery/dish_drive/bullet{
+	succrange = 6
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "mkm" = (
@@ -105832,6 +105826,8 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/security/sec,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "oyZ" = (
@@ -105945,6 +105941,22 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
+"oKH" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/mob/living/simple_animal/bot/cleanbot/bullet,
+/turf/open/floor/plasteel/dark,
+/area/security/brig)
 "oKQ" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
@@ -106346,6 +106358,9 @@
 	pixel_x = -26;
 	pixel_y = -26
 	},
+/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld,
+/obj/item/restraints/handcuffs,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "pfG" = (
@@ -106607,16 +106622,6 @@
 "pvT" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/loading_area,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
@@ -107608,9 +107613,8 @@
 /turf/open/floor/plasteel/dark,
 /area/science/nanite)
 "qUm" = (
-/obj/machinery/rnd/production/techfab/department/security,
 /obj/structure/cable,
-/obj/effect/turf_decal/stripes/box,
+/obj/item/kirbyplants/random,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "qUN" = (
@@ -108544,11 +108548,10 @@
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "rZi" = (
-/obj/structure/closet/secure_closet/security/sec,
 /obj/machinery/status_display/ai{
 	pixel_y = -32
 	},
-/obj/effect/turf_decal/bot,
+/obj/machinery/vending/security_ammo,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "saw" = (
@@ -110894,10 +110897,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/machinery/dish_drive/bullet{
+	succrange = 6
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "vym" = (
-/obj/machinery/dish_drive/bullet,
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "vyv" = (
@@ -164162,7 +164168,7 @@ rCc
 lPa
 lgd
 lPa
-lPa
+oKH
 lPa
 rCs
 yfZ
@@ -166455,8 +166461,8 @@ aFm
 aad
 bhd
 stS
-byM
-byM
+nkQ
+nkQ
 vym
 rCw
 gmv
@@ -166997,7 +167003,7 @@ cbL
 bLs
 npK
 oxC
-npK
+isW
 bgZ
 aaa
 aad

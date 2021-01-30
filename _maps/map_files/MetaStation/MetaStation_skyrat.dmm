@@ -6927,9 +6927,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
-	},
 /obj/effect/turf_decal/tile/blue,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
@@ -57173,6 +57170,16 @@
 	},
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
+"gYK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "gYQ" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -57267,7 +57274,9 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos)
 "hbs" = (
-/obj/machinery/dish_drive/bullet,
+/obj/machinery/dish_drive/bullet{
+	succrange = 6
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "hbK" = (
@@ -58563,6 +58572,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
+"hUT" = (
+/obj/structure/lattice,
+/turf/closed/wall/r_wall,
+/area/security/range)
 "hUU" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 10
@@ -58896,7 +58909,7 @@
 "ijs" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/bot_blue,
-/obj/machinery/gun_vendor,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "ijD" = (
@@ -58927,15 +58940,7 @@
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
 "ike" = (
-/mob/living/simple_animal/bot/secbot{
-	arrest_type = 1;
-	health = 45;
-	icon_state = "secbot1";
-	idcheck = 1;
-	name = "Sergeant-at-Armsky";
-	weaponscheck = 1
-	},
-/obj/effect/turf_decal/bot_blue,
+/obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "ikv" = (
@@ -59237,14 +59242,12 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "ixj" = (
-/obj/machinery/flasher/portable,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "ixE" = (
@@ -59526,8 +59529,22 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/plasteel,
 /area/science/mixing)
+"iHF" = (
+/obj/machinery/power/apc/auto_name/north,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/vending/security_ammo,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "iHI" = (
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/security/range)
 "iIM" = (
@@ -59889,6 +59906,22 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
+"iTh" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	pixel_y = 28
+	},
+/obj/machinery/gun_vendor,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "iTC" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
@@ -60829,6 +60862,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/research)
+"jxY" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/flasher/portable,
+/turf/open/floor/plasteel/dark,
+/area/security/main)
 "jyc" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/purple/corner{
@@ -61598,6 +61638,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"jZz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "jZA" = (
 /obj/structure/table/reinforced,
 /obj/machinery/power/apc/auto_name/east,
@@ -61717,29 +61764,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plasteel,
 /area/science/research)
-"kdA" = (
-/obj/structure/rack,
-/obj/item/gun/energy/laser/practice{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/item/gun/energy/laser/practice{
-	pixel_x = 2;
-	pixel_y = 1
-	},
-/obj/item/gun/energy/laser/practice{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/plasteel/dark,
-/area/security/range)
 "kex" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -62473,6 +62497,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+"kFm" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Firing Range";
+	req_one_access_txt = "1;4"
+	},
+/obj/effect/turf_decal/delivery/blue,
+/turf/open/floor/plasteel/dark,
+/area/security/main)
 "kFW" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating{
@@ -63218,6 +63250,11 @@
 /obj/item/gavelhammer,
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
+"ljm" = (
+/obj/structure/training_machine,
+/obj/item/target/syndicate,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "ljn" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
@@ -63340,6 +63377,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+"lpV" = (
+/obj/effect/turf_decal/delivery/blue,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "lqa" = (
 /obj/structure/table/reinforced,
 /obj/item/kitchen/fork/plastic,
@@ -63461,23 +63502,6 @@
 /obj/effect/turf_decal/trimline/darkblue/filled/line{
 	dir = 10
 	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/computer/med_data{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
 /obj/machinery/button/door{
 	desc = "A remote control switch for the medbay foyer.";
 	id = "MedbayFoyer";
@@ -63485,23 +63509,6 @@
 	normaldoorcontrol = 1;
 	pixel_x = -24;
 	pixel_y = -16
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/computer/med_data{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/medical)
@@ -66069,6 +66076,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
+"nlr" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/delivery/blue,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "nmr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -66656,6 +66674,7 @@
 /obj/machinery/firealarm{
 	pixel_y = -28
 	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/security/range)
 "nIk" = (
@@ -67587,7 +67606,6 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "ohS" = (
-/obj/machinery/rnd/production/techfab/department/security,
 /obj/effect/turf_decal/trimline/darkblue/filled/line{
 	dir = 6
 	},
@@ -68051,6 +68069,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grass,
 /area/security/prison)
+"oBs" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "oBT" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/lootdrop/memeorgans,
@@ -70098,6 +70122,14 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
+"pPT" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/vending/security_ammo,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "pPZ" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -71358,30 +71390,14 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/hallway/secondary/entry)
 "qBy" = (
-/obj/item/target,
-/obj/item/target,
-/obj/item/target/alien,
-/obj/item/target/alien,
-/obj/item/target/clown,
-/obj/item/target/clown,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
-/obj/structure/closet/crate/secure{
-	desc = "A secure crate containing various materials for building a customised test-site.";
-	name = "Firing Range Gear Crate";
-	req_access_txt = "1"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/airalarm{
-	pixel_y = 28
+/obj/machinery/dish_drive/bullet{
+	succrange = 2
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/range)
@@ -74849,6 +74865,10 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/white,
 /area/security/prison)
+"sWW" = (
+/mob/living/simple_animal/bot/cleanbot/bullet,
+/turf/open/floor/plasteel/dark,
+/area/security/main)
 "sWX" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Chemistry Maintenance";
@@ -75003,6 +75023,20 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"tcg" = (
+/obj/effect/turf_decal/trimline/darkblue/filled/corner{
+	dir = 1
+	},
+/mob/living/simple_animal/bot/secbot{
+	arrest_type = 1;
+	health = 45;
+	icon_state = "secbot1";
+	idcheck = 1;
+	name = "Sergeant-at-Armsky";
+	weaponscheck = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/security/armory)
 "tcR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -77174,19 +77208,14 @@
 /turf/open/floor/plating,
 /area/quartermaster/qm)
 "uGy" = (
-/obj/machinery/power/apc/auto_name/north,
 /obj/structure/table,
-/obj/machinery/recharger{
-	pixel_y = 4
-	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/structure/cable,
+/obj/item/clothing/ears/earmuffs{
+	pixel_y = 7
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/range)
 "uGO" = (
@@ -77503,6 +77532,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
+"uQC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/gun_vendor,
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "uRe" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -80227,6 +80266,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/security/range)
 "wFk" = (
@@ -81199,6 +81239,22 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+"xpd" = (
+/obj/item/target,
+/obj/item/target,
+/obj/item/target/alien,
+/obj/item/target/alien,
+/obj/item/target/clown,
+/obj/item/target/clown,
+/obj/item/target/syndicate,
+/obj/item/target/syndicate,
+/obj/structure/closet/crate/secure{
+	desc = "A secure crate containing various materials for building a customised test-site.";
+	name = "Firing Range Gear Crate";
+	req_access_txt = "1"
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/range)
 "xpf" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=1-BrigCells";
@@ -81440,7 +81496,6 @@
 /area/crew_quarters/cafeteria)
 "xzM" = (
 /obj/effect/turf_decal/box,
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 10
 	},
@@ -109858,7 +109913,7 @@ aeq
 ajv
 dQC
 alW
-dQC
+tcg
 alW
 dQC
 wFR
@@ -111129,12 +111184,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
+lMJ
+lMJ
 aaf
 aaa
 aqa
-agS
+jxY
 aEW
 ixj
 qRr
@@ -111386,14 +111441,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
-aav
 lMJ
+aaa
+hUT
+aiJ
+aiJ
 agS
-aiD
-aiD
+aqa
+kFm
 agS
 aqa
 aqa
@@ -111643,12 +111698,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
 lMJ
-lMJ
+aaa
 aiJ
+iTh
+uQC
+xpd
 qBy
 oCD
 eeq
@@ -111900,13 +111955,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
-aav
+lMJ
 aaa
 ejL
-kdA
+nlr
+lpV
+dkm
+dkm
 xzM
 cZZ
 nkQ
@@ -112157,12 +112212,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
+lMJ
 aaf
-aaf
-aaa
-aaa
 aiJ
+iHF
+pPT
+uGy
 uGy
 uBx
 nIg
@@ -112414,13 +112469,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
-aaa
+lMJ
 aaa
 aiJ
 ovE
+oBs
+dkm
+dkm
 kiH
 wEY
 aey
@@ -112671,13 +112726,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
-aaa
+lMJ
 aaa
 aiJ
 sTz
+dkm
+dkm
+dkm
 dkm
 iHI
 aey
@@ -112928,13 +112983,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
-aaf
 lMJ
+aaa
 aiJ
 sTz
+dkm
+dkm
+dkm
 dkm
 iHI
 aey
@@ -112943,7 +112998,7 @@ vNC
 nKg
 dZy
 xZm
-vKV
+sWW
 uvC
 hDy
 ajD
@@ -113185,14 +113240,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
-aaa
+lMJ
 aaa
 akW
 sTz
+dkm
+ljm
 eMG
+dkm
 iHI
 aey
 moc
@@ -113442,13 +113497,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
+lMJ
 aaf
-aaf
-aaa
-aaa
 aiJ
 oap
+gYK
+jZz
+jZz
 neC
 ndt
 aey
@@ -113699,13 +113754,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaf
-aaa
+lMJ
 aaa
 aiJ
 akW
+aiJ
+aiJ
+aiJ
 aiJ
 akW
 aiJ
@@ -113956,7 +114011,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+lMJ
 aaa
 aaf
 aaa
@@ -114213,7 +114268,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+lMJ
 aaf
 aaf
 aaf
