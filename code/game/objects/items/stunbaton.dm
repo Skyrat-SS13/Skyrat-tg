@@ -21,18 +21,18 @@
 
 	var/obj/item/stock_parts/cell/cell
 	var/preload_cell_type //if not empty the baton starts with this type of cell
-	var/cell_hit_cost = 1000
+	var/cell_hit_cost = 650 //SKYRAT EDIT CHANGE - ORIGINAL: 1000
 	var/can_remove_cell = TRUE
 
 	var/turned_on = FALSE
 	var/activate_sound = "sparks"
 
 	var/attack_cooldown_check = 0 SECONDS
-	var/attack_cooldown = 2.5 SECONDS
+	var/attack_cooldown = 1 SECONDS //SKYRAT EDIT CHANGE - ORIGINAL: 2.5 SECONDS
 	var/stun_sound = 'sound/weapons/egloves.ogg'
 
 	var/confusion_amt = 10
-	var/stamina_loss_amt = 60
+	var/stamina_loss_amt = 45 //SKYRAT EDIT CHANGE - ORIGINAL: 60
 	var/apply_stun_delay = 2 SECONDS
 	var/stun_time = 5 SECONDS
 
@@ -207,16 +207,18 @@
 	else
 		if(turned_on)
 			if(attack_cooldown_check <= world.time)
-				baton_effect(M, user)
+				baton_effect(M, user, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: baton_effect(M, user)
 		..()
 
 
-/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
+/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user, harmy = FALSE) //SKYRAT EDIT CHANGE  - ORIGINAL: /obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
 	if(shields_blocked(L, user))
 		return FALSE
+	/* SKYRAT EDIT REMOVAL BEGIN
 	if(HAS_TRAIT_FROM(L, TRAIT_IWASBATONED, user)) //no doublebaton abuse anon!
 		to_chat(user, "<span class='danger'>[L] manages to avoid the attack!</span>")
 		return FALSE
+	*/ //SKYRAT EDIT REMOVAL END
 	if(iscyborg(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(!R || !R.cell || !R.cell.use(cell_hit_cost))
@@ -227,12 +229,18 @@
 	/// After a target is hit, we do a chunk of stamina damage, along with other effects.
 	/// After a period of time, we then check to see what stun duration we give.
 	L.Jitter(20)
-	L.set_confusion(max(confusion_amt, L.get_confusion()))
+	//L.set_confusion(max(confusion_amt, L.get_confusion())) //SKYRAT EDIT REMOVAL
 	L.stuttering = max(8, L.stuttering)
-	L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST)
+	//L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST) - SKYRAT EDIT REMOVAL
+	//SKYRAT EDIT CHANGE BEGIN
+	if(harmy) //Less extra stamina damage for harm batons
+		L.StaminaKnockdown(5)
+	else
+		L.StaminaKnockdown(stamina_loss_amt)
+		//SKYRAT EDIT CHANGE END
 
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
-	addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay)
+	//addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay) SKYRAT EDIT REMOVAL
 
 	if(user)
 		L.lastattacker = user.real_name
@@ -245,8 +253,10 @@
 
 	attack_cooldown_check = world.time + attack_cooldown
 
+	/* SKYRAT EDIT REMOVAL
 	ADD_TRAIT(L, TRAIT_IWASBATONED, user)
 	addtimer(TRAIT_CALLBACK_REMOVE(L, TRAIT_IWASBATONED, user), attack_cooldown)
+	*/
 
 	return 1
 

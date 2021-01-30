@@ -347,6 +347,15 @@
 	SSticker.minds += character.mind
 	character.client.init_verbs() // init verbs for the late join
 	var/mob/living/carbon/human/humanc
+
+	//SKRYAT EDIT ADDITION BEGIN - ASSAULTOPS
+	if(SSticker.mode.name == "assaultops")
+		if(is_assaultops_target(character.mind))
+			remove_assaultops_target(character.mind, original=TRUE)
+		if(check_assaultops_target(character))
+			add_assaultops_target(character, notify_target = TRUE)
+	//SKYRAT EDIT ADDITION END
+
 	if(ishuman(character))
 		humanc = character	//Let's retypecast the var to be human,
 

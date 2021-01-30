@@ -11,7 +11,7 @@
 	var/mob/living/carbon/owner = null
 	var/mob/living/carbon/original_owner = null
 	var/status = BODYPART_ORGANIC
-	var/needs_processing = FALSE
+	//var/needs_processing = FALSE SKYRAT EDIT REMOVAL
 
 	var/body_zone //BODY_ZONE_CHEST, BODY_ZONE_L_ARM, etc , used for def_zone
 	var/aux_zone // used for hands
@@ -25,7 +25,8 @@
 	///If disabled, limb is as good as missing.
 	var/bodypart_disabled = FALSE
 	///Multiplied by max_damage it returns the threshold which defines a limb being disabled or not. From 0 to 1. 0 means no disable thru damage
-	var/disable_threshold = 0
+	//var/disable_threshold = 0 //ORIGINAL
+	var/disable_threshold = 1 //SKYRAT EDIT CHANGE - COMBAT
 	///Controls whether bodypart_disabled makes sense or not for this limb.
 	var/can_be_disabled = FALSE
 	var/body_damage_coeff = 1 //Multiplier of the limb's damage that gets applied to the mob
@@ -219,11 +220,13 @@
 	return bodypart_organs
 
 
+/* SKYRAT EDIT REMOVAL
 //Return TRUE to get whatever mob this is in to update health.
 /obj/item/bodypart/proc/on_life(stam_regen)
 	if(stamina_dam > DAMAGE_PRECISION && stam_regen)					//DO NOT update health here, it'll be done in the carbon's life.
 		heal_damage(0, 0, INFINITY, null, FALSE)
 		. |= BODYPART_LIFE_UPDATE_HEALTH
+*/ //SKYRAT REMOVAL END
 
 //Applies brute and burn damage to the organ. Returns 1 if the damage-icon states changed at all.
 //Damage will not exceed max_damage using this proc
@@ -579,10 +582,12 @@
 		return
 	. = stamina_dam
 	stamina_dam = new_value
+	/* SKYRAT EDIT REMOVAL BEGIN
 	if(stamina_dam > DAMAGE_PRECISION)
 		needs_processing = TRUE
 	else
 		needs_processing = FALSE
+	*/ //SKYRAT EDIT END
 
 
 //Returns total damage.
