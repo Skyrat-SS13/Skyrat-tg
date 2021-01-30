@@ -18,7 +18,12 @@
 		return
 
 /obj/machinery/gun_vendor/proc/RedeemToken(obj/item/armament_token/token, mob/redeemer)
+	if(seclevel2num(get_security_level()) < token.minimum_sec_level)
+		to_chat(redeemer, "<span class='redtext'>Warning, this holochip is locked to [num2seclevel(token.minimum_sec_level)]!</span>")
+		message_admins("ARMAMENT LOG: [redeemer] attempted to redeem a [token] on the incorrect security level!")
+		return
 	var/list/radial_build = token.get_available_gunsets()
+	seclevel2num()
 	var/obj/item/storage/box/gunset/chosen_gunset = show_radial_menu(redeemer, src, radial_build, radius = 40)
 	if(!chosen_gunset)
 		return
@@ -41,14 +46,15 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	icon_state = "token_sidearm"
 	w_class = WEIGHT_CLASS_TINY
+	var/minimum_sec_level = SEC_LEVEL_GREEN
 
 /obj/item/armament_token/proc/get_available_gunsets()
   return FALSE
 
 //Sidearm
 /obj/item/armament_token/sidearm
-	name = "sidearm armament token"
-	desc = "A token used in any armament vendor, this is for sidearms. Do not bend."
+	name = "sidearm armament holochip"
+	desc = "A holochip used in any armament vendor, this is for sidearms. Do not bend."
 	icon_state = "token_sidearm"
 
 /obj/item/armament_token/sidearm/get_available_gunsets()
@@ -81,8 +87,8 @@
 
 //BAD BOY!
 /obj/item/armament_token/sidearm_blackmarket
-	name = "blackmarket armament token"
-	desc = "A token used in any armament vendor, this is for |bad people|. Do not bend."
+	name = "blackmarket armament holochip"
+	desc = "A holochip used in any armament vendor, this is for |bad people|. Do not bend."
 	icon_state = "token_blackmarket"
 	custom_premium_price = PAYCHECK_HARD * 3
 
@@ -105,9 +111,10 @@
 
 //Primary
 /obj/item/armament_token/primary
-	name = "primary armament token"
-	desc = "A token used in any armament vendor, this is for main arms. Do not bend."
+	name = "primary armament holochip"
+	desc = "A holochip used in any armament vendor, this is for main arms. Do not bend."
 	icon_state = "token_primary"
+	minimum_sec_level = SEC_LEVEL_RED
 
 /obj/item/armament_token/primary/get_available_gunsets()
   return list(
