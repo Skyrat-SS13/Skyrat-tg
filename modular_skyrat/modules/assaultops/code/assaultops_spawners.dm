@@ -12,6 +12,7 @@
 
 /obj/effect/mob_spawn/human/assops_prisoner
 	name = "Syndicate Prisoner"
+	roundstart = FALSE
 	short_desc = "You are the syndicate prisoner aboard an unknown station."
 	flavour_text = "You don't know where you are, but you know you are a prisoner. Perhaps that guard knows more?"
 	important_info = "Admin-help before you provoke the Syndicate."
