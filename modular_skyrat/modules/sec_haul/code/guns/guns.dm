@@ -555,7 +555,7 @@
 	round_type = AMMO_TYPE_IHDF
 
 ///////////////////////////Dozer
-/obj/item/gun/ballistic/automatic/dozer
+/obj/item/gun/ballistic/automatic/pistol/dozer
 	name = "\improper Armadyne 'Dozer' Semi-Auto"
 	desc = "The DZR, it's quite literally only good for dozing people down. It's chambered in 10mm for a reason."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'

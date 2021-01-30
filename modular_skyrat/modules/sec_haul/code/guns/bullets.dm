@@ -30,7 +30,7 @@
 	name = "6mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 5
-	stamina = 15
+	stamina = 10
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -50,7 +50,7 @@
 /obj/projectile/bullet/advanced/b6mm/ihdf
 	name = "6mm ihdf bullet"
 	icon_state = "bullet_i"
-	damage = 20
+	damage = 15
 	damage_type = STAMINA
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
@@ -98,7 +98,7 @@
 	name = "9mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 5
-	stamina = 30
+	stamina = 20
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -118,7 +118,7 @@
 /obj/projectile/bullet/advanced/b9mm/ihdf
 	name = "9mm ihdf bullet"
 	icon_state = "bullet_i"
-	damage = 30
+	damage = 25
 	damage_type = STAMINA
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
@@ -167,7 +167,7 @@
 	name = "10mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 7
-	stamina = 35
+	stamina = 25
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -187,7 +187,7 @@
 /obj/projectile/bullet/advanced/b10mm/ihdf
 	name = "10mm ihdf bullet"
 	icon_state = "bullet_i"
-	damage = 35
+	damage = 30
 	damage_type = STAMINA
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
