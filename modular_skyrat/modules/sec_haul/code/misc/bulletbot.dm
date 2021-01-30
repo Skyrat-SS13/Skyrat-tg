@@ -118,6 +118,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"})
 	if(!locked || issilicon(user)|| isAdminGhostAI(user))
 		dat += "<BR>Clean bullets: <A href='?src=[REF(src)];operation=bullets'>[bullets ? "Yes" : "No"]</A>"
 		dat += "<BR>Clean ammo boxes: <A href='?src=[REF(src)];operation=ammo_boxes'>[ammo_boxes ? "Yes" : "No"]</A>"
+		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
 	return dat
 
 /mob/living/simple_animal/bot/cleanbot/bullet/Topic(href, href_list)
