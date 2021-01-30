@@ -36,7 +36,7 @@
 	report_type = "cult"
 	antag_flag = ROLE_CULTIST
 	false_report_weight = 10
-	restricted_jobs = list("Prisoner","Chaplain","AI", "Cyborg", "Security Officer", "Security Medic", "Security Sergeant", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel") //SKYRAT EDIT ADDITION - SEC_HAUL
+	restricted_jobs = list("Prisoner","Chaplain","AI", "Cyborg", "Security Officer", "Blueshield", "Security Medic", "Security Sergeant", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel") //SKYRAT EDIT ADDITION - SEC_HAUL
 	protected_jobs = list()
 	required_players = 29
 	required_enemies = 4
