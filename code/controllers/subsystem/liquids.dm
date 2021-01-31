@@ -9,6 +9,8 @@ SUBSYSTEM_DEF(liquids)
 
 	var/list/active_groups = list()
 
+	var/list/active_immutables = list()
+
 	var/run_type = SSLIQUIDS_RUN_TYPE_TURFS
 
 
@@ -41,8 +43,13 @@ SUBSYSTEM_DEF(liquids)
 					//Perhaps check if any turfs in here can spread before removing it? It's not unlikely they would
 					LG.break_group()
 			if(MC_TICK_CHECK)
-				run_type = SSLIQUIDS_RUN_TYPE_TURFS //No currentrun here for now
+				run_type = SSLIQUIDS_RUN_TYPE_IMMUTABLES //No currentrun here for now
 				return
+		run_type = SSLIQUIDS_RUN_TYPE_IMMUTABLES
+	if(run_type == SSLIQUIDS_RUN_TYPE_IMMUTABLES)
+		for(var/t in active_immutables)
+			var/turf/T = t
+			T.process_immutable_liquid()
 		run_type = SSLIQUIDS_RUN_TYPE_TURFS
 
 /datum/controller/subsystem/liquids/proc/add_active_turf(turf/T)
@@ -60,10 +67,19 @@ SUBSYSTEM_DEF(liquids)
 /turf
 	var/obj/effect/abstract/liquid_turf/liquids
 	var/liquid_height = 0
+	var/turf_height = 0
+
+/turf/proc/liquid_fraction_delete(fraction)
+	for(var/r in liquids.reagents.reagent_list)
+		var/datum/reagent/R = r
+		var/volume_change = R.volume * fraction
+		liquids.reagents.remove_reagent(R.type, volume_change)
 
 /turf/proc/liquid_fraction_share(turf/T, fraction)
 	if(!liquids)
 		return
+	if(fraction > 1)
+		CRASH("Fraction share more than 100%")
 	for(var/r in liquids.reagents.reagent_list)
 		var/datum/reagent/R = r
 		var/volume_change = R.volume * fraction
@@ -72,6 +88,9 @@ SUBSYSTEM_DEF(liquids)
 	liquids.has_cached_share = FALSE
 
 /turf/proc/liquid_update_turf()
+	if(liquids && liquids.immutable)
+		SSliquids.active_immutables[src] = TRUE
+		return
 	//Check atmos adjacency to cut off any disconnected groups
 	if(lgroup)
 		var/assoc_atmos_turfs = list()
@@ -89,6 +108,8 @@ SUBSYSTEM_DEF(liquids)
 /turf/proc/add_liquid(reagent, amount, no_react = FALSE)
 	if(!liquids)
 		liquids = new(src)
+	if(liquids.immutable)
+		return
 	liquids.reagents.add_reagent(reagent, amount, no_react = no_react)
 	liquids.calculate_height()
 	liquids.set_reagent_color_for_liquid()
@@ -113,6 +134,8 @@ SUBSYSTEM_DEF(liquids)
 	var/has_cached_share = FALSE
 
 	var/attrition = 0
+
+	var/immutable = FALSE
 
 /obj/effect/abstract/liquid_turf/update_overlays()
 	. = ..()
@@ -158,13 +181,15 @@ SUBSYSTEM_DEF(liquids)
 	. = ..()
 	my_turf = loc
 	create_reagents(10000)
-	SSliquids.add_active_turf(my_turf)
+	if(!immutable)
+		SSliquids.add_active_turf(my_turf)
 
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
 		if(my_turf.lgroup)
 			my_turf.lgroup.remove_from_group(my_turf)
-		SSliquids.remove_active_turf(my_turf)
+		if(!immutable)
+			SSliquids.remove_active_turf(my_turf)
 		my_turf.liquids = null
 		my_turf = null
 		return ..()
@@ -225,6 +250,8 @@ SUBSYSTEM_DEF(liquids)
 		var/turf/T = t
 		T.lgroup = src
 		members[T] = TRUE
+		if(T.liquids)
+			T.liquids.has_cached_share = FALSE
 	otherg.members = list()
 	qdel(otherg)
 	share()
@@ -282,11 +309,11 @@ SUBSYSTEM_DEF(liquids)
 		var/turf/T = t
 		if(T.liquids/* && share_type == LIQUID_MUTUAL_SHARE*/)
 			any_share = TRUE
-			
+
 			if(T.liquids.has_cached_share && last_cached_fraction_share)
 				cached_shares++
 				continue
-			
+
 			//T.liquids.reagents.trans_to(tempr, T.liquids.reagents.total_volume, no_react = TRUE)
 			//log_game("LIQUIDS FROM MEMBER:.")
 			for(var/r in T.liquids.reagents.reagent_list)
@@ -299,13 +326,13 @@ SUBSYSTEM_DEF(liquids)
 		return
 	decay_counter = 0
 
-	
+
 	if(cached_shares)
 		for(var/reagent_type in last_cached_fraction_share)
 			if(!cached_add[reagent_type])
 				cached_add[reagent_type] = 0
 			cached_add[reagent_type] += last_cached_fraction_share[reagent_type] * cached_shares
-	
+
 	/*
 	log_game("TOTAL REAGENTS:.")
 	for(var/reagent_type in cached_add)
@@ -339,6 +366,33 @@ SUBSYSTEM_DEF(liquids)
 		return FALSE
 	for(var/tur in T.GetAtmosAdjacentTurfs())
 		var/turf/T2 = tur
+		//Immutable check thing
+		if(T2.liquids && T2.liquids.immutable)
+			if(T.z != T2.z)
+				var/turf/Z_turf_below = SSmapping.get_turf_below(T)
+				if(T2 == Z_turf_below)
+					qdel(T.liquids, TRUE)
+					return
+				else
+					continue
+
+			//CHECK DIFFERENT TURF HEIGHT THING
+			if(T.liquid_height != T2.liquid_height)
+				var/my_liquid_height = T.liquid_height + T.liquids.height
+				var/target_liquid_height = T2.liquid_height + T2.liquids.height
+				if(my_liquid_height > target_liquid_height+2)
+					var/coeff = (T.liquids.height / (T.liquids.height + abs(T.liquid_height)))
+					var/height_diff = min(0.4,abs((target_liquid_height / my_liquid_height)-1)*coeff)
+					T.liquid_fraction_delete(height_diff)
+					. = TRUE
+				continue
+
+			if(T2.liquids.height > T.liquids.height + 1)
+				SSliquids.active_immutables[T2] = TRUE
+				. = TRUE
+				continue
+		//END OF IMMUTABLE MADNESS
+
 		if(T.z != T2.z)
 			var/turf/Z_turf_below = SSmapping.get_turf_below(T)
 			if(T2 == Z_turf_below)
@@ -352,7 +406,8 @@ SUBSYSTEM_DEF(liquids)
 			var/my_liquid_height = T.liquid_height + T.liquids.height
 			var/target_liquid_height = T2.liquid_height + (T2.liquids ? T2.liquids.height : 0)
 			if(my_liquid_height > target_liquid_height+1)
-				var/height_diff = abs((target_liquid_height / my_liquid_height)-1)
+				var/coeff = (T.liquids.height / (T.liquids.height + abs(T.liquid_height)))
+				var/height_diff = min(0.4,abs((target_liquid_height / my_liquid_height)-1)*coeff)
 				T.liquid_fraction_share(T2, height_diff)
 				. = TRUE
 			continue
@@ -381,6 +436,9 @@ SUBSYSTEM_DEF(liquids)
 	if(T.lgroup && T.lgroup != lgroup) //TEMPORARY@!!!!!!!!
 		return FALSE
 	*/
+	if(T.liquids && T.liquids.immutable)
+		return FALSE
+
 	var/my_liquid_height = liquids ? liquids.height : 0
 	if(my_liquid_height < 1)
 		return FALSE
@@ -400,27 +458,123 @@ SUBSYSTEM_DEF(liquids)
 	return FALSE
 
 /turf/proc/process_liquid_cell()
-	if(!lgroup)
-		//Check if anything adjacent has liquids that we can share with
-		for(var/tur in GetAtmosAdjacentTurfs())
-			var/turf/T2 = tur
-			if(T2.liquids && T2.can_share_liquids_with(src) && liquid_height == T2.liquid_height)
-				if(!T2.lgroup)
-					var/datum/liquid_group/new_group = new(liquid_height)
-					new_group.add_to_group(T2)
-				T2.lgroup.add_to_group(src)
-				SSliquids.add_active_turf(T2)
-				break
 	if(!liquids)
+		if(!lgroup)
+			for(var/tur in GetAtmosAdjacentTurfs())
+				var/turf/T2 = tur
+				if(T2.liquids)
+					if(T2.liquids.immutable)
+						SSliquids.active_immutables[T2] = TRUE
+					else if (T2.can_share_liquids_with(src))
+						if(T2.lgroup)
+							lgroup = new(liquid_height)
+							lgroup.add_to_group(src)
+						SSliquids.add_active_turf(T2)
+						SSliquids.remove_active_turf(src)
+						break
 		SSliquids.remove_active_turf(src)
 		return
 	if(!lgroup)
 		lgroup = new(liquid_height)
 		lgroup.add_to_group(src)
 	var/shared = lgroup.process_cell(src)
+	if(QDELETED(liquids)) //Liquids may be deleted in process cell
+		SSliquids.remove_active_turf(src)
+		return
 	if(!shared)
 		liquids.attrition++
 	if(liquids.attrition >= LIQUID_ATTRITION_TO_STOP_ACTIVITY)
 		SSliquids.remove_active_turf(src)
 
 /***************************************************/
+
+/obj/effect/abstract/liquid_turf/immutable
+	immutable = TRUE
+	var/starting_mixture = list(/datum/reagent/water = 600)
+
+/obj/effect/abstract/liquid_turf/immutable/Initialize()
+	..()
+	reagents.add_reagent_list(starting_mixture)
+	calculate_height()
+	set_reagent_color_for_liquid()
+	SSliquids.active_immutables[my_turf] = TRUE
+
+/obj/effect/abstract/liquid_turf/immutable/Destroy(force)
+	if(force)
+		SSliquids.active_immutables -= my_turf
+	. = ..()
+
+/turf/proc/process_immutable_liquid()
+	var/any_share = FALSE
+	var/list/sharing_list = list()
+	for(var/r in liquids.reagents.reagent_list)
+		var/datum/reagent/R = r
+		sharing_list[R.type] = R.volume * IMMUTABLE_LIQUID_SHARE
+	for(var/tur in GetAtmosAdjacentTurfs())
+		var/turf/T = tur
+		if(can_share_liquids_with(T))
+			//Move this elsewhere sometime later?
+			if(T.liquids && T.liquids.height > liquids.height)
+				continue
+
+			any_share = TRUE
+			for(var/type in sharing_list)
+				T.add_liquid(type, sharing_list[type], TRUE)
+	if(!any_share)
+		SSliquids.active_immutables -= src
+
+
+/turf/open/floor/plating/ocean
+	gender = PLURAL
+	name = "ocean sand"
+	baseturfs = /turf/open/floor/plating/ocean
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "asteroid"
+	base_icon_state = "asteroid"
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+/turf/open/floor/plating/ocean/Initialize()
+	. = ..()
+	if(liquids)
+		qdel(liquids, TRUE)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable(src)
+
+/obj/effect/abstract/liquid_turf/immutable/canal
+	starting_mixture = list(/datum/reagent/water = 100)
+
+/turf/open/floor/plating/canal
+	gender = PLURAL
+	name = "canal"
+	baseturfs = /turf/open/floor/plating/canal
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "asteroid"
+	base_icon_state = "asteroid"
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	liquid_height = -30
+	turf_height = -30
+
+/turf/open/floor/plating/canal/Initialize()
+	. = ..()
+	if(liquids)
+		qdel(liquids, TRUE)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/canal(src)
+
+/turf/open/floor/plating/canal_mutable
+	gender = PLURAL
+	name = "canal"
+	baseturfs = /turf/open/floor/plating/canal_mutable
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "asteroid"
+	base_icon_state = "asteroid"
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	liquid_height = -30
+	turf_height = -30

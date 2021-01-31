@@ -7,6 +7,55 @@
 	var/clawfootstep = null
 	var/heavyfootstep = null
 
+/turf/open/CanPass(atom/movable/A, turf/T)
+	if(isliving(A) && A.has_gravity())
+		var/turf/AT = get_turf(A)
+		if(AT && AT.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+			return FALSE
+	return ..()
+
+/turf/open/Exit(atom/movable/mover, atom/newloc)
+	. = ..()
+	if(. && isliving(mover) && mover.has_gravity() && isturf(newloc))
+		var/mob/living/L = mover
+		var/turf/T = get_turf(newloc)
+		if(T && T.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+			L.visible_message("<span class='warning'>[L] falls down into [Ta]", \
+						"<span class='userdanger'>You fall down into [T].</span>")
+			L.Knockdown(40)
+
+
+/turf/open/MouseDrop_T(mob/living/M, mob/living/user)
+	if(!isliving(M) || !isliving(user) || !M.has_gravity() || !Adjacent(user) || !M.Adjacent(user) || !(user.stat == CONSCIOUS) || user.body_position == LYING_DOWN)
+		return
+	if(!M.has_gravity())
+		return
+	var/turf/T = get_turf(M)
+	if(!T)
+		return
+	if(T.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+		//Climb up
+		if(user == M)
+			M.visible_message("<span class='notice'>[user] is climbing onto [src]", \
+								"<span class='notice'>You start climbing onto [src].</span>")
+		else
+			M.visible_message("<span class='notice'>[user] is pulling [M] onto [src]", \
+								"<span class='notice'>You start pulling [M] onto [src].</span>")
+		if(do_mob(user, M, 2 SECONDS))
+			M.forceMove(src)
+		return
+	if(turf_height - T.turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+		//Climb down
+		if(user == M)
+			M.visible_message("<span class='notice'>[user] is descending down to [src]", \
+								"<span class='notice'>You start lowering yourself to [src].</span>")
+		else
+			M.visible_message("<span class='notice'>[user] is lowering [M] down to [src]", \
+								"<span class='notice'>You start lowering [M] down to [src].</span>")
+		if(do_mob(user, M, 2 SECONDS))
+			M.forceMove(src)
+		return
+
 //direction is direction of travel of A
 /turf/open/zPassIn(atom/movable/A, direction, turf/source)
 	if(direction == DOWN)
