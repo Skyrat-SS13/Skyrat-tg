@@ -1,4 +1,6 @@
+#define WATER_HEIGH_DIFFERENCE_SOUND_CHANCE 5
 #define WATER_HEIGH_DIFFERENCE_DELTA_SPLASH 7 //Delta needed for the splash effect to be made in 1 go
+
 
 #define PARTIAL_TRANSFER_AMOUNT 0.3
 

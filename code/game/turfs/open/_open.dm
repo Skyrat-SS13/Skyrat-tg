@@ -7,6 +7,8 @@
 	var/clawfootstep = null
 	var/heavyfootstep = null
 
+//Consider making all of these behaviours a smart component/element? Something that's only applied wherever it needs to be
+//Could probably have the variables on the turf level, and the behaviours being activated/deactived on the component level as the vars are updated
 /turf/open/CanPass(atom/movable/A, turf/T)
 	if(isliving(A) && A.has_gravity())
 		var/turf/AT = get_turf(A)
@@ -20,7 +22,7 @@
 		var/mob/living/L = mover
 		var/turf/T = get_turf(newloc)
 		if(T && T.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
-			L.visible_message("<span class='warning'>[L] falls down into [Ta]", \
+			L.visible_message("<span class='warning'>[L] falls down into [T]", \
 						"<span class='userdanger'>You fall down into [T].</span>")
 			L.Knockdown(40)
 

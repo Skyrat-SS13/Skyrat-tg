@@ -258,7 +258,9 @@
 /datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null, no_react = FALSE)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
-		add_reagent(r_id, amt, data, no_react = no_react)
+		add_reagent(r_id, amt, data, no_react = TRUE)
+	if(!no_react)
+		handle_reactions()
 
 
 /// Remove a specific reagent

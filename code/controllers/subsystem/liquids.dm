@@ -70,21 +70,21 @@ SUBSYSTEM_DEF(liquids)
 	var/turf_height = 0
 
 /turf/proc/liquid_fraction_delete(fraction)
-	for(var/r in liquids.reagents.reagent_list)
-		var/datum/reagent/R = r
-		var/volume_change = R.volume * fraction
-		liquids.reagents.remove_reagent(R.type, volume_change)
+	for(var/r_type in liquids.reagent_list)
+		var/volume_change = liquids.reagent_list[r_type] * fraction
+		liquids.reagent_list[r_type] -= volume_change
+		liquids.total_reagents -= volume_change
 
 /turf/proc/liquid_fraction_share(turf/T, fraction)
 	if(!liquids)
 		return
 	if(fraction > 1)
 		CRASH("Fraction share more than 100%")
-	for(var/r in liquids.reagents.reagent_list)
-		var/datum/reagent/R = r
-		var/volume_change = R.volume * fraction
-		liquids.reagents.remove_reagent(R.type, volume_change)
-		T.add_liquid(R.type, volume_change, TRUE)
+	for(var/r_type in liquids.reagent_list)
+		var/volume_change = liquids.reagent_list[r_type] * fraction
+		liquids.reagent_list[r_type] -= volume_change
+		liquids.total_reagents -= volume_change
+		T.add_liquid(r_type, volume_change, TRUE)
 	liquids.has_cached_share = FALSE
 
 /turf/proc/liquid_update_turf()
@@ -105,12 +105,68 @@ SUBSYSTEM_DEF(liquids)
 
 	SSliquids.add_active_turf(src)
 
+//More efficient than add_liquid for multiples
+/turf/proc/add_liquid_list(reagent_list, no_react = FALSE)
+	if(!liquids)
+		liquids = new(src)
+	if(liquids.immutable)
+		return
+
+	for(var/reagent in reagent_list)
+		if(!liquids.reagent_list[reagent])
+			liquids.reagent_list[reagent] = 0
+		liquids.reagent_list[reagent] += reagent_list[reagent]
+		liquids.total_reagents += reagent_list[reagent]
+
+	if(!no_react)
+		//We do react so, make a simulation
+		create_reagents(10000)
+		reagents.add_reagent_list(liquids.reagent_list, no_react = TRUE)
+		if(reagents.handle_reactions())//Any reactions happened, so re-calculate our reagents
+			liquids.reagent_list = list()
+			liquids.total_reagents = 0
+			for(var/r in reagents.reagent_list)
+				var/datum/reagent/R = r
+				liquids.reagent_list[R.type] = R.volume
+				liquids.total_reagents += R.volume
+
+			if(!liquids.total_reagents) //Our reaction exerted all of our reagents, remove self
+				qdel(reagents)
+				qdel(liquids)
+				return
+		qdel(reagents)
+
+	liquids.calculate_height()
+	liquids.set_reagent_color_for_liquid()
+	liquids.has_cached_share = FALSE
+	SSliquids.add_active_turf(src)
+	if(lgroup)
+		lgroup.dirty = TRUE
+
 /turf/proc/add_liquid(reagent, amount, no_react = FALSE)
 	if(!liquids)
 		liquids = new(src)
 	if(liquids.immutable)
 		return
-	liquids.reagents.add_reagent(reagent, amount, no_react = no_react)
+	
+	if(!liquids.reagent_list[reagent])
+		liquids.reagent_list[reagent] = 0
+	liquids.reagent_list[reagent] += amount
+	liquids.total_reagents += amount
+
+	if(!no_react)
+		//We do react so, make a simulation
+		create_reagents(10000)
+		reagents.add_reagent_list(liquids.reagent_list, no_react = TRUE)
+		if(reagents.handle_reactions())//Any reactions happened, so re-calculate our reagents
+			liquids.reagent_list = list()
+			liquids.total_reagents = 0
+			for(var/r in reagents.reagent_list)
+				var/datum/reagent/R = r
+				liquids.reagent_list[R.type] = R.volume
+				liquids.total_reagents += R.volume
+		qdel(reagents)
+
 	liquids.calculate_height()
 	liquids.set_reagent_color_for_liquid()
 	liquids.has_cached_share = FALSE
@@ -137,6 +193,9 @@ SUBSYSTEM_DEF(liquids)
 
 	var/immutable = FALSE
 
+	var/list/reagent_list = list()
+	var/total_reagents = 0
+
 /obj/effect/abstract/liquid_turf/update_overlays()
 	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
@@ -160,16 +219,16 @@ SUBSYSTEM_DEF(liquids)
 
 
 /obj/effect/abstract/liquid_turf/proc/set_reagent_color_for_liquid()
-	color = mix_color_from_reagents(reagents.reagent_list)
+	color = mix_color_from_reagent_list(reagent_list)
 
 /obj/effect/abstract/liquid_turf/proc/calculate_height()
-	var/new_height = CEILING(reagents.total_volume, 1)/LIQUID_HEIGHT_DIVISOR
+	var/new_height = CEILING(total_reagents, 1)/LIQUID_HEIGHT_DIVISOR
 	set_height(new_height)
 
 /obj/effect/abstract/liquid_turf/proc/set_height(new_height)
 	var/prev_height = height
 	height = new_height
-	if(height - prev_height > WATER_HEIGH_DIFFERENCE_DELTA_SPLASH)
+	if(abs(height - prev_height) > WATER_HEIGH_DIFFERENCE_DELTA_SPLASH)
 		//Splash
 		var/obj/splashy = new /obj/effect/temp_visual/liquid_splash(get_turf(src))
 		splashy.color = color
@@ -180,7 +239,7 @@ SUBSYSTEM_DEF(liquids)
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
 	. = ..()
 	my_turf = loc
-	create_reagents(10000)
+	//create_reagents(10000)
 	if(!immutable)
 		SSliquids.add_active_turf(my_turf)
 
@@ -219,6 +278,8 @@ SUBSYSTEM_DEF(liquids)
 	var/decay_counter = 0
 	var/expected_turf_height = 0
 	var/list/last_cached_fraction_share
+	var/last_cached_total_volume = 0
+	//Color cache too? For when all "taken" members are cached
 
 /datum/liquid_group/proc/add_to_group(turf/T)
 	members[T] = TRUE
@@ -303,10 +364,12 @@ SUBSYSTEM_DEF(liquids)
 	var/any_share = FALSE
 	var/cached_shares = 0
 	var/list/cached_add = list()
+	var/cached_volume = 0
 	//log_game("BEGIN SHARE:.")
+	var/turf/T
 	for(var/t in members)
 		//var/share_type = members[t]
-		var/turf/T = t
+		T = t
 		if(T.liquids/* && share_type == LIQUID_MUTUAL_SHARE*/)
 			any_share = TRUE
 
@@ -316,12 +379,12 @@ SUBSYSTEM_DEF(liquids)
 
 			//T.liquids.reagents.trans_to(tempr, T.liquids.reagents.total_volume, no_react = TRUE)
 			//log_game("LIQUIDS FROM MEMBER:.")
-			for(var/r in T.liquids.reagents.reagent_list)
-				var/datum/reagent/R = r
-				if(!cached_add[R.type])
-					cached_add[R.type] = 0
+			for(var/r_type in T.liquids.reagent_list)
+				if(!cached_add[r_type])
+					cached_add[r_type] = 0
 				//log_game("[R.type] += [R.volume].")
-				cached_add[R.type] += R.volume
+				cached_add[r_type] += T.liquids.reagent_list[r_type]
+			cached_volume += T.liquids.total_reagents
 	if(!any_share)
 		return
 	decay_counter = 0
@@ -332,6 +395,7 @@ SUBSYSTEM_DEF(liquids)
 			if(!cached_add[reagent_type])
 				cached_add[reagent_type] = 0
 			cached_add[reagent_type] += last_cached_fraction_share[reagent_type] * cached_shares
+		cached_volume += last_cached_total_volume * cached_shares
 
 	/*
 	log_game("TOTAL REAGENTS:.")
@@ -340,25 +404,31 @@ SUBSYSTEM_DEF(liquids)
 	log_game("FRACTIONED REAGENTS (MEMBERS: [members.len]):.")*/
 	for(var/reagent_type in cached_add)
 		cached_add[reagent_type] = cached_add[reagent_type] / members.len
+	cached_volume = cached_volume / members.len
 		//log_game("[reagent_type] = [cached_add[reagent_type]].")
 	last_cached_fraction_share = cached_add
-	tempr.add_reagent_list(cached_add, no_react = TRUE)
-	var/mixed_color = use_liquids_color ? mix_color_from_reagents(tempr.reagent_list) : color
-	var/height = CEILING(tempr.total_volume/LIQUID_HEIGHT_DIVISOR, 1)
+	last_cached_total_volume = cached_volume
+	//tempr.add_reagent_list(cached_add, no_react = TRUE)
+	var/mixed_color = use_liquids_color ? mix_color_from_reagent_list(cached_add) : color
+	var/height = CEILING(cached_volume/LIQUID_HEIGHT_DIVISOR, 1)
 
 	//message_admins("shared")
+	var/obj/effect/abstract/liquid_turf/cached_liquids
 	for(var/t in members)
-		var/turf/T = t
+		T = t
 		if(!T.liquids)
 			T.liquids = new(T)
-		var/obj/effect/abstract/liquid_turf/cached_liquids = T.liquids
-		T.liquids.create_reagents(1000) //Computing nice way to clean the old ones
-		tempr.copy_to(cached_liquids.reagents, tempr.total_volume, no_react = TRUE)
-		T.liquids.has_cached_share = TRUE
-		T.liquids.attrition = 0
+		cached_liquids = T.liquids
+		//T.liquids.create_reagents(1000) //Computing nice way to clean the old ones
+		//tempr.copy_to(cached_liquids.reagents, tempr.total_volume, no_react = TRUE)
+		cached_liquids.reagent_list = cached_add.Copy()
+		cached_liquids.total_reagents = cached_volume
 
-		cached_liquids.set_height(height)
+		cached_liquids.has_cached_share = TRUE
+		cached_liquids.attrition = 0
+
 		cached_liquids.color = mixed_color
+		cached_liquids.set_height(height)
 	qdel(tempr)
 
 /datum/liquid_group/proc/process_cell(turf/T)
@@ -490,11 +560,14 @@ SUBSYSTEM_DEF(liquids)
 
 /obj/effect/abstract/liquid_turf/immutable
 	immutable = TRUE
-	var/starting_mixture = list(/datum/reagent/water = 600)
+	var/list/starting_mixture = list(/datum/reagent/water = 600)
 
 /obj/effect/abstract/liquid_turf/immutable/Initialize()
 	..()
-	reagents.add_reagent_list(starting_mixture)
+	reagent_list = starting_mixture.Copy()
+	total_reagents = 0
+	for(var/key in reagent_list)
+		total_reagents += reagent_list[key]
 	calculate_height()
 	set_reagent_color_for_liquid()
 	SSliquids.active_immutables[my_turf] = TRUE
@@ -506,10 +579,6 @@ SUBSYSTEM_DEF(liquids)
 
 /turf/proc/process_immutable_liquid()
 	var/any_share = FALSE
-	var/list/sharing_list = list()
-	for(var/r in liquids.reagents.reagent_list)
-		var/datum/reagent/R = r
-		sharing_list[R.type] = R.volume * IMMUTABLE_LIQUID_SHARE
 	for(var/tur in GetAtmosAdjacentTurfs())
 		var/turf/T = tur
 		if(can_share_liquids_with(T))
@@ -518,8 +587,8 @@ SUBSYSTEM_DEF(liquids)
 				continue
 
 			any_share = TRUE
-			for(var/type in sharing_list)
-				T.add_liquid(type, sharing_list[type], TRUE)
+			for(var/type in liquids.reagent_list)
+				T.add_liquid(type, liquids.reagent_list[type], TRUE)
 	if(!any_share)
 		SSliquids.active_immutables -= src
 
