@@ -50,7 +50,7 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message = "You note the following because of your <span class='red'><b>[special_desc_affiliation ? special_desc_affiliation : "Syndicate Affiliation"]</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
-					else if(HAS_TRAIT(user, TRAIT_DETECTIVE))  //Useful detective!
+					else if(HAS_TRAIT(M, TRAIT_DETECTIVE))  //Useful detective!
 						composed_message = "You note the following because of your brilliant <span class='blue'><b>Detective skills</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
@@ -62,7 +62,7 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message = "You note the following because of your <span class='red'><b>[special_desc_affiliation ? special_desc_affiliation : "Syndicate Affiliation"]</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
-					else if(HAS_TRAIT(user, TRAIT_DETECTIVE)) //Useful detective!
+					else if(HAS_TRAIT(M, TRAIT_DETECTIVE)) //Useful detective!
 						composed_message = "You note the following because of your brilliant <span class='blue'><b>detective skills</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
