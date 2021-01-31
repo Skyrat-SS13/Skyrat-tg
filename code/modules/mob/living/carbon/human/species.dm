@@ -67,6 +67,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/list/mutant_bodyparts = list() //SKYRAT EDIT CHANGE - CUSTOMIZATION (typed list)
 	///Internal organs that are unique to this race, like a tail.
 	var/list/mutant_organs = list()
+	///The bodyparts this species uses. assoc of bodypart string - bodypart type. Make sure all the fucking entries are in or I'll skin you alive.
+	var/list/bodypart_overides = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm,\
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm,\
+		BODY_ZONE_HEAD = /obj/item/bodypart/head,\
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg,\
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg,\
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest)
 	///Multiplier for the race's speed. Positive numbers make it move slower, negative numbers make it move faster.
 	var/speedmod = 0
 	///Percentage modifier for overall defense of the race, or less defense, if it's negative.
@@ -129,7 +137,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	///Species-only traits. Can be found in [code/__DEFINES/DNA.dm]
 	var/list/species_traits = list()
 	///Generic traits tied to having the species.
-	var/list/inherent_traits = list()
+	var/list/inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
 	/// List of biotypes the mob belongs to. Used by diseases.
 	var/inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	///List of factions the mob gain upon gaining this species.
@@ -143,6 +151,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	///What gas does this species breathe? Used by suffocation screen alerts, most of actual gas breathing is handled by mutantlungs. See [life.dm][code/modules/mob/living/carbon/human/life.dm]
 	var/breathid = "o2"
+
+	///What anim to use for dusting
+	var/dust_anim = "dust-h"
+	///What anim to use for gibbing
+	var/gib_anim = "gibbed-h"
 
 
 	//Do NOT remove by setting to null. use OR make a RESPECTIVE TRAIT (removing stomach? add the NOSTOMACH trait to your species)
@@ -168,14 +181,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/obj/item/organ/appendix/mutantappendix = /obj/item/organ/appendix
 	///Forces an item into this species' hands. Only an honorary mutantthing because this is not an organ and not loaded in the same way, you've been warned to do your research.
 	var/obj/item/mutanthands
-	///Allows the species to not give a single F about gravity. Used by wings.
-	var/override_float = FALSE
 
 	///Bitflag that controls what in game ways something can select this species as a spawnable source, such as magic mirrors. See [mob defines][code/__DEFINES/mobs.dm] for possible sources.
 	var/changesource_flags = NONE
 
 	///For custom overrides for species ass images
 	var/icon/ass_image
+
+	///List of results you get from knife-butchering. null means you cant butcher it. Associated by resulting type - value of amount
+	var/list/knife_butcher_results
 
 ///////////
 // PROCS //
@@ -194,6 +208,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  * This proc generates which species are available to pick from in character setup.
  * If there are no available roundstart species, defaults to human.
  */
+//SKYRAT EDIT REMOVAL BEGIN - MOVED - CUSTOMIZATION
+/*
 /proc/generate_selectable_species()
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
@@ -202,6 +218,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			qdel(S)
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "human"
+*/
+//SKYRAT EDIT REMOVAL END
 
 /**
  * Checks if a species is eligible to be picked at roundstart.
@@ -344,6 +362,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			C.dropItemToGround(thing)
 	if(C.hud_used)
 		C.hud_used.update_locked_slots()
+
+	fix_non_native_limbs(C)
 
 	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
 	if(C.dna.species.mutant_bodyparts["legs"] && C.dna.features["legs"] == "Digitigrade Legs")
@@ -754,6 +774,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 			bodyparts_to_add -= "tail_human"
 
+	if("tail_monkey" in mutant_bodyparts)
+		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "tail_monkey"
+
 
 	if(mutant_bodyparts["waggingtail_human"])
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
@@ -870,13 +894,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.moth_antennae_list[H.dna.features["moth_antennae"]]
 				if("caps")
 					S = GLOB.caps_list[H.dna.features["caps"]]
+				if("tail_monkey")
+					S = GLOB.tails_list_monkey[H.dna.features["tail_monkey"]]
 			if(!S || S.icon_state == "none")
 				continue
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(S.icon, layer = -layer)
 
 			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
-			if(bodypart == "tail_lizard" || bodypart == "tail_human")
+			if(bodypart == "tail_lizard" || bodypart == "tail_human" || bodypart == "tail_monkey")
 				bodypart = "tail"
 			else if(bodypart == "waggingtail_lizard" || bodypart == "waggingtail_human")
 				bodypart = "waggingtail"
@@ -1332,6 +1358,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				user.do_attack_animation(target, ATTACK_EFFECT_CLAW)
 			if(ATTACK_EFFECT_SMASH)
 				user.do_attack_animation(target, ATTACK_EFFECT_SMASH)
+			if(ATTACK_EFFECT_BITE)
+				if(user.is_mouth_covered(FALSE, TRUE))
+					to_chat(user, "<span class='warning'>You can't bite with your mouth covered!</span>")
+					return FALSE
+				user.do_attack_animation(target, ATTACK_EFFECT_BITE)
 			else
 				user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
 
@@ -1344,7 +1375,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(atk_verb == ATTACK_EFFECT_KICK || HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER)) //kicks never miss (provided your species deals more than 0 damage)
 				miss_chance = 0
 			else
-				miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
+				miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + (user.getStaminaLoss()*0.2) + (user.getBruteLoss()*0.2), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob() //SKYRAT EDIT CHANGE: miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
 
 		if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
 			playsound(target.loc, user.dna.species.miss_sound, 25, TRUE, -1)
@@ -1371,18 +1402,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		if(atk_verb == ATTACK_EFFECT_KICK)//kicks deal 1.5x raw damage
 			target.apply_damage(damage*1.5, user.dna.species.attack_type, affecting, armor_block)
+			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT ADDITION
 			log_combat(user, target, "kicked")
 		else//other attacks deal full raw damage + 1.5x in stamina damage
 			target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block)
-			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
+			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			log_combat(user, target, "punched")
 
 		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
 			target.visible_message("<span class='danger'>[user] knocks [target] down!</span>", \
 							"<span class='userdanger'>You're knocked down by [user]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, "<span class='danger'>You knock [target] down!</span>")
-			var/knockdown_duration = 40 + (target.getStaminaLoss() + (target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
-			target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block)
+			//var/knockdown_duration = 40 + (/*target.getStaminaLoss() + */(target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
+			//target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block) -SKYRAT EDIT REMOVAL ABOVE TOO
+			target.StaminaKnockdown(20) //SKYRAT EDIT ADDITION
 			log_combat(user, target, "got a stun punch with their previous punch")
 
 /datum/species/proc/spec_unarmedattacked(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -1425,6 +1458,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		to_chat(M, "<span class='warning'>You attempt to touch [H]!</span>")
 		return
 	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
+	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
+	if(H.pulledby && H.pulledby == M && M.grab_state && try_grab_maneuver(M, H))
+		return //SKYRAT EDIT END
 	switch(M.a_intent)
 		if("help")
 			help(M, H, attacker_style)
@@ -1467,7 +1503,28 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	H.send_item_attack_message(I, user, hit_area, affecting)
 
-	apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
+	//SKYRAT EDIT CHANGE BEGIN
+	//apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness()) //ORIGINAL
+	var/effec_damage
+	var/effec_stam
+	//While on a disarm intent, our hits are glancing, doing less normal damage but more stamina damage
+	if(user.a_intent == INTENT_DISARM)
+		effec_damage = I.force * TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER
+		if(I.damtype == BRUTE && !I.get_sharpness())
+			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
+			if(Iwound_bonus)
+				Iwound_bonus += effec_damage
+		else
+			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
+	else
+		effec_damage = I.force
+		if(I.damtype == BRUTE && !I.get_sharpness())
+			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER
+		else
+			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER
+	apply_damage(effec_damage * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
+	apply_damage(effec_stam, STAMINA, def_zone, armor_block, H)
+	//SKYRAT EDIT CHANGE END
 
 	if(!I.force)
 		return FALSE //item force is zero
@@ -1517,10 +1574,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			if(BODY_ZONE_CHEST)
 				if(H.stat == CONSCIOUS && !I.get_sharpness() && armor_block < 50)
-					if(prob(I.force))
+					if(prob((I.force/2))) //SKYRAT EDIT CHANGE: if(prob(I.force))
 						H.visible_message("<span class='danger'>[H] is knocked down!</span>", \
 									"<span class='userdanger'>You're knocked down!</span>")
-						H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
+						//H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
+						H.StaminaKnockdown(10) //SKYRAT EDIT CHANGE ABOVE
 
 				if(bloody)
 					if(H.wear_suit)
@@ -1802,15 +1860,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		// Apply the damage to all body parts
 		humi.apply_damage(burn_damage, BURN, spread_damage = TRUE)
 
-	// Apply some burn damage to the body
-	if(humi.coretemperature < bodytemp_cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
+	// Apply some burn / brute damage to the body (Dependent if the person is hulk or not)
+	var/is_hulk = HAS_TRAIT(humi, TRAIT_HULK)
+
+	var/cold_damage_limit = bodytemp_cold_damage_limit + (is_hulk ? BODYTEMP_HULK_COLD_DAMAGE_LIMIT_MODIFIER : 0)
+
+	if(humi.coretemperature < cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
+		var/damage_type = is_hulk ? BRUTE : BURN
+		var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
 		switch(humi.coretemperature)
-			if(201 to bodytemp_cold_damage_limit)
-				humi.apply_damage(COLD_DAMAGE_LEVEL_1 * coldmod * humi.physiology.cold_mod, BURN)
+			if(201 to cold_damage_limit)
+				humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod, damage_type)
 			if(120 to 200)
-				humi.apply_damage(COLD_DAMAGE_LEVEL_2 * coldmod * humi.physiology.cold_mod, BURN)
+				humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod, damage_type)
 			else
-				humi.apply_damage(COLD_DAMAGE_LEVEL_3 * coldmod * humi.physiology.cold_mod, BURN)
+				humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod, damage_type)
 
 /**
  * Used to apply burn wounds on random limbs
@@ -2080,18 +2144,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 //UNSAFE PROC, should only be called through the Activate or other sources that check for CanFly
 /datum/species/proc/ToggleFlight(mob/living/carbon/human/H)
-	if(!(H.movement_type & FLYING))
+	if(!HAS_TRAIT_FROM(H, TRAIT_MOVE_FLYING, SPECIES_FLIGHT_TRAIT))
 		stunmod *= 2
 		speedmod -= 0.35
-		H.setMovetype(H.movement_type | FLYING)
-		override_float = TRUE
+		ADD_TRAIT(H, TRAIT_NO_FLOATING_ANIM, SPECIES_FLIGHT_TRAIT)
+		ADD_TRAIT(H, TRAIT_MOVE_FLYING, SPECIES_FLIGHT_TRAIT)
 		passtable_on(H, SPECIES_TRAIT)
 		H.OpenWings()
 	else
 		stunmod *= 0.5
 		speedmod += 0.35
-		H.setMovetype(H.movement_type & ~FLYING)
-		override_float = FALSE
+		REMOVE_TRAIT(H, TRAIT_NO_FLOATING_ANIM, SPECIES_FLIGHT_TRAIT)
+		REMOVE_TRAIT(H, TRAIT_MOVE_FLYING, SPECIES_FLIGHT_TRAIT)
 		passtable_off(H, SPECIES_TRAIT)
 		H.CloseWings()
 
@@ -2121,3 +2185,19 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		. |= BIO_JUST_FLESH
 	if(HAS_BONE in species_traits)
 		. |= BIO_JUST_BONE
+
+///Species override for unarmed attacks because the attack_hand proc was made by a mouth-breathing troglodyte on a tricycle. Also to whoever thought it would be a good idea to make it so the original spec_unarmedattack was not actually linked to unarmed attack needs to be checked by a doctor because they clearly have a vast empty space in their head.
+/datum/species/proc/spec_unarmedattack(mob/living/carbon/human/user, atom/target)
+	return FALSE
+
+
+///Removes any non-native limbs from the mob
+/datum/species/proc/fix_non_native_limbs(mob/living/carbon/human/H)
+	for(var/X in H.bodyparts)
+		var/obj/item/bodypart/current_part = X
+		var/obj/item/bodypart/species_part = bodypart_overides[current_part.body_zone]
+
+		if(current_part.type == species_part)
+			continue
+
+		current_part.change_bodypart(species_part)

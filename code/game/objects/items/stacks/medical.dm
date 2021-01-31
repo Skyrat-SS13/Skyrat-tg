@@ -119,7 +119,8 @@
 
 /obj/item/stack/medical/gauze
 	name = "medical gauze"
-	desc = "A roll of elastic cloth, perfect for stabilizing all kinds of wounds, from cuts and burns, to broken bones. "
+	//desc = "A roll of elastic cloth, perfect for stabilizing all kinds of wounds, from cuts and burns, to broken bones. " //ORIGINAL
+	desc = "A roll of elastic cloth, perfect for stabilizing all kinds of slashes, punctures and burns. " //SKYRAT EDIT CHANGE - MEDICAL
 	gender = PLURAL
 	singular_name = "medical gauze"
 	icon_state = "gauze"
@@ -133,6 +134,7 @@
 	absorption_capacity = 5
 	splint_factor = 0.35
 	merge_type = /obj/item/stack/medical/gauze
+	var/gauze_type = /datum/bodypart_aid/gauze //SKYRAT EDIT ADDITION - MEDICAL
 
 // gauze is only relevant for wounds, which are handled in the wounds themselves
 /obj/item/stack/medical/gauze/try_heal(mob/living/M, mob/user, silent)
@@ -154,15 +156,22 @@
 		to_chat(user, "<span class='notice'>There's no wounds that require bandaging on [user==M ? "your" : "[M]'s"] [limb.name]!</span>") // good problem to have imo
 		return
 
+	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
+	/*
 	if(limb.current_gauze && (limb.current_gauze.absorption_capacity * 0.8 > absorption_capacity)) // ignore if our new wrap is < 20% better than the current one, so someone doesn't bandage it 5 times in a row
 		to_chat(user, "<span class='warning'>The bandage currently on [user==M ? "your" : "[M]'s"] [limb.name] is still in good condition!</span>")
 		return
+	*/
+	if(limb.current_gauze)
+		to_chat(user, "<span class='warning'>[user==M ? "Your" : "[M]'s"] [limb.name] is already bandaged!</span>")
+		return
+	//SKYRAT EDIT CHANGE END
 
 	user.visible_message("<span class='warning'>[user] begins wrapping the wounds on [M]'s [limb.name] with [src]...</span>", "<span class='warning'>You begin wrapping the wounds on [user == M ? "your" : "[M]'s"] [limb.name] with [src]...</span>")
 	if(!do_after(user, (user == M ? self_delay : other_delay), target=M))
 		return
 
-	user.visible_message("<span class='green'>[user] applies [src] to [M]'s [limb.name].</span>", "<span class='green'>You bandage the wounds on [user == M ? "yourself" : "[M]'s"] [limb.name].</span>")
+	user.visible_message("<span class='green'>[user] applies [src] to [M]'s [limb.name].</span>", "<span class='green'>You bandage the wounds on [user == M ? "your" : "[M]'s"] [limb.name].</span>")
 	limb.apply_gauze(src)
 
 /obj/item/stack/medical/gauze/twelve
@@ -194,6 +203,7 @@
 	absorption_rate = 0.15
 	absorption_capacity = 4
 	merge_type = /obj/item/stack/medical/gauze/improvised
+	gauze_type = /datum/bodypart_aid/gauze/improvised //SKYRAT EDIT ADDITION - MEDICAL
 
 	/*
 	The idea is for the following medical devices to work like a hybrid of the old brute packs and tend wounds,
@@ -278,7 +288,7 @@
 	grind_results = list(/datum/reagent/medicine/spaceacillin = 2)
 	merge_type = /obj/item/stack/medical/mesh
 
-/obj/item/stack/medical/mesh/Initialize()
+/obj/item/stack/medical/mesh/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
 	. = ..()
 	if(amount == max_amount)	 //only seal full mesh packs
 		is_open = FALSE

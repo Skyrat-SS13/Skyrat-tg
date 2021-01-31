@@ -265,6 +265,8 @@
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(JOB_UNAVAILABLE_QUIRK)
 			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "[jobtitle] is restricted from your species."
 		//SKYRAT EDIT END
 	return "Error: Unknown job availability."
 
@@ -292,6 +294,8 @@
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(job.has_banned_quirk(client.prefs))
 		return JOB_UNAVAILABLE_QUIRK
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
 	//SKYRAT EDIT END
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
@@ -343,6 +347,15 @@
 	SSticker.minds += character.mind
 	character.client.init_verbs() // init verbs for the late join
 	var/mob/living/carbon/human/humanc
+
+	//SKRYAT EDIT ADDITION BEGIN - ASSAULTOPS
+	if(SSticker.mode.name == "assaultops")
+		if(is_assaultops_target(character.mind))
+			remove_assaultops_target(character.mind, original=TRUE)
+		if(check_assaultops_target(character))
+			add_assaultops_target(character, notify_target = TRUE)
+	//SKYRAT EDIT ADDITION END
+
 	if(ishuman(character))
 		humanc = character	//Let's retypecast the var to be human,
 
@@ -366,6 +379,8 @@
 			give_magic(humanc)
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)
+
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CREWMEMBER_JOINED, humanc, rank)
 
 	GLOB.joined_player_list += character.ckey
 
@@ -455,15 +470,15 @@
 		client.prefs.random_character()
 		client.prefs.real_name = client.prefs.pref_species.random_name(gender,1)
 
-	if(admin_anon_names)//overrides random name because it achieves the same effect and is an admin enabled event tool
-		client.prefs.random_character()
-		client.prefs.real_name = anonymous_name(src)
-
 	var/is_antag
 	if(mind in GLOB.pre_setup_antags)
 		is_antag = TRUE
 
 	client.prefs.copy_to(H, antagonist = is_antag, is_latejoiner = transfer_after)
+
+	if(admin_anon_names)//overrides random name because it achieves the same effect and is an admin enabled event tool
+		randomize_human(H)
+		H.fully_replace_character_name(null, SSticker.anonymousnames.anonymous_name(H))
 
 	H.dna.update_dna_identity()
 	if(mind)

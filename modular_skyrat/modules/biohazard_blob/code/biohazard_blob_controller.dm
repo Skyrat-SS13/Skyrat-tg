@@ -127,7 +127,7 @@
 			if(!locate(/obj/structure/biohazard_blob/structure/wall, ownturf))
 				var/the_wall = new /obj/structure/biohazard_blob/structure/wall(ownturf, blob_type)
 				other_structures[the_wall] = TRUE
-				CALCULATE_ADJACENT_TURFS(T)
+				CALCULATE_ADJACENT_TURFS(T, NORMAL_TURF)
 		else
 			possible_locs += T
 

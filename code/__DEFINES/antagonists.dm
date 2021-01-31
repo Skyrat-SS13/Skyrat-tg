@@ -87,3 +87,13 @@ GLOBAL_LIST_INIT(heretic_start_knowledge,list(/datum/eldritch_knowledge/spell/ba
 
 /// How much does it cost to reroll strains?
 #define BLOB_REROLL_COST 40
+
+/// How many telecrystals a normal traitor starts with
+//#define TELECRYSTALS_DEFAULT 20 //ORIGINAL
+#define TELECRYSTALS_DEFAULT 30 //SKYRAT EDIT CHANGE
+/// How many telecrystals mapper/admin only "precharged" uplink implant
+#define TELECRYSTALS_PRELOADED_IMPLANT 10
+/// The normal cost of an uplink implant; used for calcuating how many
+/// TC to charge someone if they get a free implant through choice or
+/// because they have nothing else that supports an implant.
+#define UPLINK_IMPLANT_TELECRYSTAL_COST 4

@@ -65,3 +65,18 @@
 			return "FFF|FFF|FFF"
 		else
 			return "None"
+
+//Used to validate extra information from loadout on savefiles
+/datum/loadout_item/proc/get_valid_information(passed_string)
+	switch(extra_info)
+		if(LOADOUT_INFO_ONE_COLOR)
+			return sanitize_hexcolor(passed_string)
+		if(LOADOUT_INFO_THREE_COLORS)
+			//No way I need to sanitize colors themselves in this thing, right. Like it's too specific to fail this check by chance
+			var/list/color_list = splittext(passed_string, "|")
+			if(length(color_list) == 3)
+				return passed_string
+			else
+				return default_customization()
+		else
+			return "None"

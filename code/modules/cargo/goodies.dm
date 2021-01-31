@@ -3,7 +3,8 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -53,11 +54,11 @@
 	contains = list(/obj/item/gun/energy/e_gun)
 
 /datum/supply_pack/goody/hell_single
-	name = "Hellgun Single-Pack"
-	desc = "Contains one hellgun, an old pattern of laser gun infamous for its ability to horribly disfigure targets with burns. Technically violates the Space Geneva Convention when used on humanoids."
-	cost = PAYCHECK_HARD * 18
+	name = "Hellgun Kit Single-Pack"
+	desc = "Contains one hellgun degradation kit, an old pattern of laser gun infamous for its ability to horribly disfigure targets with burns. Technically violates the Space Geneva Convention when used on humanoids."
+	cost = PAYCHECK_MEDIUM * 2
 	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/gun/energy/laser/hellgun)
+	contains = list(/obj/item/weaponcrafting/gunkit/hellgun)
 
 /datum/supply_pack/goody/wt550_single
 	name = "WT-550 Auto Rifle Single-Pack"
@@ -73,9 +74,8 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/wt550m9)
 
-/datum/supply_pack/goody/wt550ammoap //SKYRAT EDIT ADDITION
-
-/datum/supply_pack/goody/wt550ammoic //SKYRAT EDIT ADDITION
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/goody/techbox //SKYRAT EDIT ADDITION
 

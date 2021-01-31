@@ -248,6 +248,10 @@
 				else
 					door = new airlock_type( loc )
 				door.setDir(dir)
+				//SKYRAT EDIT ADDITION BEGIN - LARGE_DOORS
+				if(door.multi_tile)
+					door.SetBounds()
+				//SKYRAT EDIT END
 				door.unres_sides = electronics.unres_sides
 				//door.req_access = req_access
 				door.electronics = electronics

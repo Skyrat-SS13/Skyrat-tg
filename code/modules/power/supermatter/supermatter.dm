@@ -702,18 +702,18 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		if(produces_gas)
 			removed.garbage_collect()
 			env.merge(removed)
-			air_update_turf()
+			air_update_turf(FALSE, FALSE)
 
 	//Makes em go mad and accumulate rads.
 	var/toAdd = -0.05
 	for(var/mob/living/carbon/human/l in view(src, HALLUCINATION_RANGE(power)))
 		// Someone (generally a Psychologist), when looking at the SM
 		// within hallucination range makes it easier to manage.
-		if(HAS_TRAIT(l.mind, TRAIT_SUPERMATTER_SOOTHER))
+		if(HAS_TRAIT(l, TRAIT_SUPERMATTER_SOOTHER) || (l.mind && HAS_TRAIT(l.mind, TRAIT_SUPERMATTER_SOOTHER)))
 			toAdd = 0.05
 			psy_overlay = TRUE
 		// If they can see it without being immune (mesons, Psychologist)
-		if (!(HAS_TRAIT(l, TRAIT_SUPERMATTER_MADNESS_IMMUNE) || HAS_TRAIT(l.mind, TRAIT_SUPERMATTER_MADNESS_IMMUNE)))
+		if (!(HAS_TRAIT(l, TRAIT_SUPERMATTER_MADNESS_IMMUNE) || (l.mind && HAS_TRAIT(l.mind, TRAIT_SUPERMATTER_MADNESS_IMMUNE))))
 			var/D = sqrt(1 / max(1, get_dist(l, src)))
 			l.hallucination += power * hallucination_power * D
 			l.hallucination = clamp(l.hallucination, 0, 200)
@@ -1107,7 +1107,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	var/drops_core = FALSE
 	// Every 334 EER above POWER_PENALTY_THRESHOLD adds 10% chance for the anomalies to leave behind a core when neutralized
 	var/chance_bonus = clamp((10 * (power - POWER_PENALTY_THRESHOLD) / 334), 0, 95)
-	if(prob(5 + round(chance_bonus))) // 5% base chance to drop a core
+	if(prob(25 + round(chance_bonus))) // 25% base chance to drop a core
 		drops_core = TRUE
 
 	if(L)

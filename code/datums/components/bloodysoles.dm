@@ -225,10 +225,12 @@
 		return COMPONENT_INCOMPATIBLE
 	parent_atom = parent
 	wielder = parent
-
+	//SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE
+	/*
 	if(!bloody_feet)
 		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-
+	*/
+	//SKYRAT EDIT REMOVAL END
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/on_clean)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_moved)
 	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, .proc/on_step_blood)
@@ -237,19 +239,17 @@
 
 /datum/component/bloodysoles/feet/update_icon()
 	if(ishuman(wielder))
-		// Monkeys get no bloody feet :(
+		var/mob/living/carbon/human/human = wielder
+		if(NOBLOODOVERLAY in human.dna.species.species_traits)
+			return
 		if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())
-			wielder.remove_overlay(SHOES_LAYER)
-			wielder.overlays_standing[SHOES_LAYER] = bloody_feet
-			wielder.apply_overlay(SHOES_LAYER)
+			human.remove_overlay(SHOES_LAYER)
+			human.overlays_standing[SHOES_LAYER] = bloody_feet
+			human.apply_overlay(SHOES_LAYER)
 		else
-			wielder.update_inv_shoes()
+			human.update_inv_shoes()
 
 /datum/component/bloodysoles/feet/add_parent_to_footprint(obj/effect/decal/cleanable/blood/footprints/FP)
-	if(ismonkey(wielder))
-		FP.species_types |= "monkey"
-		return
-
 	if(!ishuman(wielder))
 		FP.species_types |= "unknown"
 		return
@@ -275,6 +275,15 @@
 	..()
 
 /datum/component/bloodysoles/feet/on_step_blood(datum/source, obj/effect/decal/cleanable/pool)
+	//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
+	//this is done in on_step_blood because both update_icon() and initialize() are called before copy_to() is called, which means we wouldn't be able to see if they had digitigrade legs
+	if(!bloody_feet)
+		var/mob/living/carbon/H = parent
+		if (DIGITIGRADE in H.dna.species.species_traits)
+			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+		else
+			bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+	//SKYRAT EDIT ADDITION END
 	if(wielder.num_legs < 2)
 		return
 

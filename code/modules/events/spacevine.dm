@@ -1,7 +1,8 @@
 /datum/round_event_control/spacevine
 	name = "Spacevine"
 	typepath = /datum/round_event/spacevine
-	weight = 15
+	//weight = 15 //ORIGINAL
+	weight = 8 //SKYRAT EDIT CHANGE
 	max_occurrences = 3
 	min_players = 10
 
@@ -335,6 +336,10 @@
 	. = ..()
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
 
+/obj/structure/spacevine/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/atmos_sensitive)
+
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()
 	var/text = "This one is a"
@@ -569,10 +574,14 @@
 	if(!i && prob(100/severity))
 		qdel(src)
 
-/obj/structure/spacevine/temperature_expose(null, temp, volume)
+/obj/structure/spacevine/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
+	return TRUE
+
+/obj/structure/spacevine/atmos_expose(datum/gas_mixture/air, exposed_temperature)
+	var/volume = air.return_volume()
 	var/override = 0
 	for(var/datum/spacevine_mutation/SM in mutations)
-		override += SM.process_temperature(src, temp, volume)
+		override += SM.process_temperature(src, exposed_temperature, volume)
 	if(!override)
 		qdel(src)
 

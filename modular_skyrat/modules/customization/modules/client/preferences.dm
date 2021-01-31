@@ -1,3 +1,22 @@
+// i shall taint your pretty preferences file with bobcode
+GLOBAL_LIST_INIT(food, list(
+		"Meat" = MEAT,
+		"Vegetables" = VEGETABLES,
+		"Raw" = RAW,
+		"Junk Food" = JUNKFOOD,
+		"Grain" = GRAIN,
+		"Fruit" = FRUIT,
+		"Dairy" = DAIRY,
+		"Fried" = FRIED,
+		"Alcohol" = ALCOHOL,
+		"Sugar" = SUGAR,
+		"Gross" = GROSS,
+		"Toxic" = TOXIC,
+		"Pineapple" = PINEAPPLE,
+		"Breakfast" = BREAKFAST,
+		"Cloth" = CLOTH
+	))
+
 /datum/preferences
 	var/client/parent
 	//doohickeys for savefiles
@@ -83,6 +102,10 @@
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/list/randomise = list(RANDOM_UNDERWEAR = FALSE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = FALSE, RANDOM_SOCKS = FALSE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
 	var/phobia = "spiders"
+	var/list/foodlikes = list()
+	var/list/fooddislikes = list()
+	var/maxlikes = 4
+	var/maxdislikes = 6
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -319,6 +342,12 @@
 						dat += "<center><h2>Quirk Setup</h2>"
 						dat += "<a href='?_src_=prefs;preference=trait;task=menu'>Configure Quirks</a><br></center>"
 						dat += "<center><b>Current Quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
+
+					dat += "<center><h2>Food Setup</h2>"
+					dat += "<a href='?_src_=prefs;preference=food;task=menu'>Configure Foods</a></center>"
+					dat += "<center><b>Current Likings:</b> [foodlikes.len ? foodlikes.Join(", ") : "None"]</center>"
+					dat += "<center><b>Current Dislikings:</b> [fooddislikes.len ? fooddislikes.Join(", ") : "None"]</center>"
+
 					dat += "<h2>Identity</h2>"
 					dat += "<table width='100%'><tr><td width='75%' valign='top'>"
 					if(is_banned_from(user.ckey, "Appearance"))
@@ -483,7 +512,7 @@
 						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
-						dat += "<br><a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
+						dat += "<br> <a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIR_COLOR]'>[(randomise[RANDOM_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
 
 						dat += "<BR><h3>Facial Hairstyle</h3>"
@@ -492,7 +521,7 @@
 						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIRSTYLE]'>[(randomise[RANDOM_FACIAL_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
-						dat += "<br><a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
+						dat += "<br> <a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIR_COLOR]'>[(randomise[RANDOM_FACIAL_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
 						dat += "<br></td>"
 
@@ -787,6 +816,9 @@
 											customization_button = "<center><span style='border: 1px solid #161616; background-color: ["#[custom_info]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path]'>Change</a></center>"
 										if(LOADOUT_INFO_THREE_COLORS)
 											var/list/color_list = splittext(custom_info, "|")
+											if(length(color_list) != 3)
+												stack_trace("WARNING! Loadout item information of [LI.name] for ckey [user.ckey] has invalid amount of entries.")
+												continue
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[1]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=1'>Change</a></center>"
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[2]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=2'>Change</a></center>"
 											customization_button += "<center><span style='border: 1px solid #161616; background-color: ["#[color_list[3]]"];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;task=change_loadout_customization;item=[path];color_slot=3'>Change</a></center>"
@@ -797,6 +829,14 @@
 									loadout_button_class = "class='linkOff'"
 								else //We can buy it
 									loadout_button_class = "href='?_src_=prefs;task=change_loadout;item=[path]'"
+								if(!loadout[LI.path]) //Let the user know if something is colorable, so we can avoid mentioning it in the titles
+									switch(LI.extra_info)
+										if(LOADOUT_INFO_ONE_COLOR)
+											customization_button = "<i>Colorable</i>"
+										if(LOADOUT_INFO_THREE_COLORS)
+											customization_button += "<i>Polychromic</i>"
+										if(LOADOUT_INFO_STYLE)
+											customization_button = "" //TODO
 								dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
 								dat += "<td><font size=2><a [loadout_button_class]>[LI.name]</a></font></td>"
 								dat += "<td><font size=2>[customization_button]</font></td>"
@@ -1236,6 +1276,9 @@
 			if(job.has_banned_quirk(src))
 				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD QUIRKS\]</font></td></tr>"
 				continue
+			if(job.has_banned_species(src))
+				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD SPECIES\]</font></td></tr>"
+				continue
 			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
 				continue
@@ -1524,6 +1567,45 @@
 				SetQuirks(user)
 		return TRUE
 
+	else if(href_list["preference"] == "food")
+		switch(href_list["task"])
+			if("close")
+				user << browse(null, "window=mob_occupation")
+				ShowChoices(user)
+			if("update")
+				if(href_list["like"])
+					for(var/F in GLOB.food)
+						if(F == href_list["like"])
+							if(!foodlikes[F])
+								if(foodlikes.len < maxlikes)
+									foodlikes[F] = GLOB.food[F]
+								if(fooddislikes[F])
+									fooddislikes.Remove(F)
+							else
+								foodlikes.Remove(F)
+				if(href_list["dislike"])
+					for(var/F in GLOB.food)
+						if(F == href_list["dislike"])
+							if(!fooddislikes[F])
+								if(fooddislikes.len < maxdislikes)
+									fooddislikes[F] = GLOB.food[F]
+								if(foodlikes[F])
+									foodlikes.Remove(F)
+							else
+								fooddislikes.Remove(F)
+				if(foodlikes.len > maxlikes)
+					foodlikes.Cut(maxlikes+1)
+				if(fooddislikes.len > maxdislikes)
+					foodlikes.Cut(maxdislikes+1)
+				SetFood(user)
+			if("reset")
+				foodlikes = list()
+				fooddislikes = list()
+				SetFood(user)
+			else
+				SetFood(user)
+		return TRUE
+
 	switch(href_list["task"])
 		if("augment_style")
 			needs_update = TRUE
@@ -1663,7 +1745,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
+							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)))
 								possible_candidates -= name
 
 					if(possible_candidates.len == 0)
@@ -1695,7 +1777,7 @@
 					if(!mismatched_customization)
 						for(var/name in possible_candidates)
 							var/datum/body_marking/BD = GLOB.body_markings[name]
-							if((BD.recommended_species && !(pref_species.id in BD.recommended_species)) || (BD.unaccepted_species && (pref_species.id in BD.unaccepted_species)))
+							if(BD.recommended_species && !(pref_species.id in BD.recommended_species))
 								possible_candidates -= name
 					if(possible_candidates.len == 0)
 						return
@@ -1754,9 +1836,9 @@
 						return
 					var/new_name
 					if(mismatched_customization)
-						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in GLOB.sprite_accessories[key]
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key, pref_species, TRUE, parent.ckey)
 					else
-						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key,pref_species)
+						new_name = input(user, "Choose your character's [key]:", "Character Preference") as null|anything in accessory_list_of_key_for_species(key, pref_species, FALSE, parent.ckey)
 					if(new_name && mutant_bodyparts[key])
 						mutant_bodyparts[key][MUTANT_INDEX_NAME] = new_name
 						validate_color_keys_for_part(key)
@@ -1828,6 +1910,17 @@
 
 
 			switch(href_list["preference"])
+				if("set_species")
+					needs_update = TRUE
+					var/species = href_list["selected_species"]
+					var/newtype = GLOB.species_list[species]
+					if(newtype)
+						set_new_species(newtype)
+						user << browse(null, "window=species_menu")
+
+				if("close_species")
+					user << browse(null, "window=species_menu")
+
 				if("ghostform")
 					if(unlock_content)
 						var/new_form = input(user, "Thanks for supporting BYOND - Choose your ghostly form:","Thanks for supporting BYOND",null) as null|anything in GLOB.ghost_forms
@@ -2100,18 +2193,8 @@
 						features["custom_species"] = null
 
 				if("species")
-					needs_update = TRUE
-					var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
-
-					if(result)
-						var/newtype = GLOB.species_list[result]
-						set_new_species(newtype)
-						/*//Now that we changed our species, we must verify that the mutant colour is still allowed.
-						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-							features["mcolor"] = pref_species.default_color*/
-						if(randomise[RANDOM_NAME])
-							real_name = pref_species.random_name(gender)
+					ShowSpeciesMenu(user)
+					return TRUE
 
 				if("mutant_color")
 					needs_update = TRUE
@@ -2722,7 +2805,7 @@
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
-	if(roundstart_checks && !(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
+	if(roundstart_checks && !(pref_species.id in GLOB.customizable_races))
 		chosen_species = /datum/species/human
 		set_new_species(/datum/species/human)
 		save_character()
@@ -2814,7 +2897,7 @@
 			dat += "<BR>"
 			var/list/colorlist = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 			for(var/i in 1 to shown_colors)
-				dat += "<a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'><span class='color_holder_box' style='background-color:["#[colorlist[i]]"]'></span></a>"
+				dat += " <a href='?_src_=prefs;key=[key];color_index=[i];preference=change_color;task=change_bodypart'><span class='color_holder_box' style='background-color:["#[colorlist[i]]"]'></span></a>"
 	return dat
 
 /datum/preferences/proc/set_skin_tone(new_skin_tone)
@@ -2841,3 +2924,102 @@
 		return TRUE
 	else
 		return FALSE
+
+/datum/preferences/proc/ShowSpeciesMenu(mob/user)
+	var/list/dat = list()
+	dat += "<center><b>Choose your character's species:</b></center>"
+	dat += "<center><a href='?_src_=prefs;preference=close_species;task=input'>Back</a></center>"
+	dat += "<hr>"
+	var/list/playables = list()
+	var/list/unplayables = list()
+	for(var/id in GLOB.customizable_races)
+		if(GLOB.roundstart_races[id])
+			playables += id
+		else
+			unplayables += id
+	var/even = TRUE
+	var/background_cl
+	dat += "<table width='100%' align='center'><tr>"
+	dat += "<td width=20%></td>"
+	dat += "<td width=65%></td>"
+	dat += "<td width=15%></td>"
+	dat += "</tr>"
+	for(var/id in playables)
+		even = !even
+		var/datum/species/S = GLOB.species_list[id]
+		background_cl = (even ? "#13171C" : "#19232C")
+		dat += "<tr style='background-color: [background_cl]'>"
+		dat += "<td><b>[initial(S.name)]</b></td>"
+		dat += "<td><i>[initial(S.flavor_text)]</i></td>"
+		dat += "<td><a href='?_src_=prefs;selected_species=[id];preference=set_species;task=input'>Choose</a></td>"
+		dat += "</tr>"
+	dat += "<table>"
+	dat += "<hr>"
+	dat += "<center><b>Below you have species which you cannot play on station, however you can customize them and join as an event or ghost role</b></center>"
+	dat += "<hr>"
+	dat += "<table width='100%' align='center'><tr>"
+	dat += "<td width=20%></td>"
+	dat += "<td width=65%></td>"
+	dat += "<td width=15%></td>"
+	dat += "</tr>"
+	for(var/id in unplayables)
+		even = !even
+		var/datum/species/S = GLOB.species_list[id]
+		background_cl = (even ? "#852119" : "#9c2a21")
+		dat += "<tr style='background-color: [background_cl]'>"
+		dat += "<td><b>[initial(S.name)]</b></td>"
+		dat += "<td><i>[initial(S.flavor_text)]</i></td>"
+		dat += "<td><a href='?_src_=prefs;selected_species=[id];preference=set_species;task=input'>Choose</a></td>"
+		dat += "</tr>"
+	dat += "<table>"
+
+	var/datum/browser/popup = new(user, "species_menu", "<div align='center'>Species Choice</div>", 900, 600)
+	popup.set_window_options("can_close=0")
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+
+// old bobcode copypaste, handle with caution
+/datum/preferences/proc/SetFood(mob/user)
+	var/list/dat = list()
+	dat += "<center><b>Choose food setup</b></center><br>"
+	dat += "<div align='center'>Click on \"like\" to add a food type to your likings. Click on \"dislike\" to add it to your dislikings.<br>"
+	dat += "Food types cannot be liked and disliked at the same time.<br>"
+	dat += "If a food type is already liked or disliked, simply click the appropriate button again to remove it from your like or dislike list.<br>"
+	dat += "Having no food preferences means you'll just default your species' standard instead.</div><br>"
+	dat += "<center><a href='?_src_=prefs;preference=food;task=close'>Done</a></center>"
+	dat += "<hr>"
+	dat += "<center><b>Current Likings:</b> [foodlikes.len ? foodlikes.Join(", ") : "None"] ([foodlikes.len]/[maxlikes])</center><br>"
+	dat += "<center><b>Current Dislikings:</b> [fooddislikes.len ? fooddislikes.Join(", ") : "None"] ([fooddislikes.len]/[maxdislikes])</center>"
+	dat += "<hr>"
+	for(var/F in GLOB.food)
+		var/likes = FALSE
+		var/dislikes = FALSE
+		for(var/food in foodlikes)
+			if(food == F)
+				likes = TRUE
+		for(var/food in fooddislikes)
+			if(food == F)
+				dislikes = TRUE
+		var/font_color = "#8686ff"
+		if(likes)
+			dat += "<center><p style='color: [font_color];'><b>[F]: </p></b>"
+			dat += "<a style='background-color: #32c232;' href='?_src_=prefs;preference=food;task=update;like=[F]'>Like</a>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;dislike=[F]'>Dislike</a></center>"
+		else if(dislikes)
+			dat += "<center><p style='color: [font_color];'><b>[F]: </p></b>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;like=[F]'>Like</a>"
+			dat += "<a style='background-color: #ff1a1a;' href='?_src_=prefs;preference=food;task=update;dislike=[F]'>Dislike</a></center>"
+		else
+			dat += "<center><p style='color: [font_color];'><b>[F]: </p></b>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;like=[F]'>Like</a>"
+			dat += "<a href='?_src_=prefs;preference=food;task=update;dislike=[F]'>Dislike</a></center>"
+	dat += "<br><center><a href='?_src_=prefs;preference=food;task=reset'>Reset Food Preferences</a></center>"
+
+	var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>Food Preferences</div>", 900, 600) //no reason not to reuse the occupation window, as it's cleaner that way
+	popup.set_window_options("can_close=0")
+	popup.set_content(dat.Join())
+	popup.open(FALSE)
+
+/datum/preferences/proc/validate_quirks()
+	if(GetQuirkBalance() < 0)
+		all_quirks = list()

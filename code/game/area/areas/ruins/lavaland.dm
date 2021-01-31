@@ -46,12 +46,12 @@
 /area/ruin/unpowered/syndicate_lava_base
 	name = "Secret Base"
 	icon_state = "dk_yellow"
-	ambientsounds = HIGHSEC
+	ambience_index = AMBIENCE_DANGER
 
 /area/ruin/unpowered/cultaltar
 	name = "Cult Altar"
 	flags_1 = CULT_PERMITTED_1
-	ambientsounds = SPOOKY
+	ambience_index = AMBIENCE_SPOOKY
 
 //Syndicate lavaland base
 
@@ -81,6 +81,7 @@
 
 /area/ruin/unpowered/syndicate_lava_base/testlab
 	name = "Syndicate Lavaland Experimentation Lab"
+	area_flags = XENOBIOLOGY_COMPATIBLE //SKYRAT EDIT ADDITION - MAPPING
 
 /area/ruin/unpowered/syndicate_lava_base/dormitories
 	name = "Syndicate Lavaland Dormitories"

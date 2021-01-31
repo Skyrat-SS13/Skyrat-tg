@@ -20,7 +20,13 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	if(!quirks.len)
 		SetupQuirks()
 
-	quirk_blacklist = list(list("Blind","Nearsighted"),list("Jolly","Depression","Apathetic","Hypersensitive"),list("Ageusia","Vegetarian","Deviant Tastes"),list("Ananas Affinity","Ananas Aversion"),list("Alcohol Tolerance","Light Drinker"),list("Clown Fan","Mime Fan"))
+	quirk_blacklist = list(list("Blind","Nearsighted"), \
+							list("Jolly","Depression","Apathetic","Hypersensitive"), \
+							list("Ageusia","Vegetarian","Deviant Tastes"), \
+							list("Ananas Affinity","Ananas Aversion"), \
+							list("Alcohol Tolerance","Light Drinker"), \
+							list("Clown Fan","Mime Fan"), \
+							list("Bad Touch", "Friendly"))
 	return ..()
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
@@ -58,3 +64,18 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	// Assign wayfinding pinpointer granting quirk if they're new
 	if(cli.get_exp_living(TRUE) < EXP_ASSIGN_WAYFINDER && !user.has_quirk(/datum/quirk/needswayfinder))
 		user.add_quirk(/datum/quirk/needswayfinder, TRUE)
+
+
+	// SKYRAT EDIT ADDITION START - Customization (food prefs)
+	// This was done in this proc on old skyrat and i cba to find a better way
+	var/mob/living/carbon/human/H = user
+	if(istype(H))
+		if(cli.prefs.foodlikes.len)
+			H.dna.species.liked_food = 0
+			for(var/V in cli.prefs.foodlikes)
+				H.dna.species.liked_food |= cli.prefs.foodlikes[V]
+		if(cli.prefs.fooddislikes.len)
+			H.dna.species.disliked_food = 0
+			for(var/V in cli.prefs.fooddislikes)
+				H.dna.species.disliked_food |= cli.prefs.fooddislikes[V]
+	// SKYRAT EDIT ADDITION END

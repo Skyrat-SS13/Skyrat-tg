@@ -43,6 +43,10 @@
 	var/ghost_role = alert("Become [mob_name]? (Warning, You can no longer be revived!)",,"Yes","No")
 	if(ghost_role == "No" || !loc || QDELETED(user))
 		return
+	//SKYRAT EDIT ADDITION BEGIN
+	if(!extra_prompts(user))
+		return
+	//SKYRAT EDIT ADDITION END
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, "<span class='warning'>An admin has temporarily disabled non-admin ghost roles!</span>")
 		return
@@ -57,7 +61,8 @@
 	if(QDELETED(src) || QDELETED(user))
 		return
 	log_game("[key_name(user)] became [mob_name]")
-	create(ckey = user.ckey)
+	//create(ckey = user.ckey) //ORIGINAL
+	create(user.ckey, null, user) //SKYRAT EDIT CHANGE
 
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
@@ -74,16 +79,11 @@
 		GLOB.mob_spawners -= name
 	return ..()
 
-/obj/effect/mob_spawn/proc/allow_spawn(mob/user) //Override this to add spawn limits to a ghost role
+//SKYRAT EDIT ADDITION BEGIN
+/obj/effect/mob_spawn/proc/extra_prompts(mob/user)
 	return TRUE
 
-/obj/effect/mob_spawn/proc/special(mob/M)
-	return
-
-/obj/effect/mob_spawn/proc/equip(mob/M)
-	return
-
-/obj/effect/mob_spawn/proc/create(ckey, newname)
+/obj/effect/mob_spawn/proc/create_mob(mob/user, newname)
 	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
 	if(!random || newname)
 		if(newname)
@@ -93,6 +93,36 @@
 		if(!mob_gender)
 			mob_gender = pick(MALE, FEMALE)
 		M.gender = mob_gender
+	return M
+//SKYRAT EDIT ADDITION END
+
+/obj/effect/mob_spawn/proc/allow_spawn(mob/user) //Override this to add spawn limits to a ghost role
+	return TRUE
+
+/obj/effect/mob_spawn/proc/special(mob/M)
+	return
+
+/obj/effect/mob_spawn/proc/equip(mob/M)
+	return
+
+///obj/effect/mob_spawn/proc/create(ckey, newname) //ORIGINAL
+/obj/effect/mob_spawn/proc/create(ckey, newname, mob/user) //SKYRAT EDIT CHANGE
+	//SKYRAT EDIT CHANGE BEGIN
+	//var/mob/living/M = new mob_type(get_turf(src)) //ORIGINAL
+	var/mob/living/M = create_mob(user, newname)
+	/*
+	if(!random || newname)
+		if(newname)
+			M.real_name = newname
+		else
+			M.real_name = mob_name ? mob_name : M.name
+		if(!mob_gender)
+			mob_gender = pick(MALE, FEMALE)
+		if(ishuman(M))
+			var/mob/living/carbon/human/hoomie = M
+			hoomie.body_type = mob_gender
+	*/
+	//SKYRAT EDIT CHANGE END
 	if(faction)
 		M.faction = list(faction)
 	if(disease)
@@ -140,7 +170,8 @@
 /obj/effect/mob_spawn/human
 	mob_type = /mob/living/carbon/human
 	//Human specific stuff.
-	var/mob_species = null		//Set to make them a mutant race such as lizard or skeleton. Uses the datum typepath instead of the ID.
+	//var/mob_species = null		//Set to make them a mutant race such as lizard or skeleton. Uses the datum typepath instead of the ID. //ORIGINAL
+	var/mob_species = /datum/species/human //SKYRAT EDIT CHANGE
 	var/datum/outfit/outfit = /datum/outfit	//If this is a path, it will be instanced in Initialize()
 	var/disable_pda = TRUE
 	var/disable_sensors = TRUE
@@ -175,6 +206,94 @@
 	var/hairstyle
 	var/facial_hairstyle
 	var/skin_tone
+	//SKYRAT EDIT ADDITION BEGIN
+	var/can_use_pref_char = TRUE
+	var/can_use_alias = FALSE
+	var/any_station_species = FALSE
+	var/chosen_alias
+	var/is_pref_char
+	var/last_ckey //For validation of the user
+	//SKYRAT EDIT ADDITION END
+
+//SKYRAT EDIT ADDITION BEGIN
+/obj/effect/mob_spawn/human/extra_prompts(mob/user)
+	last_ckey = user.ckey
+	chosen_alias = null
+	is_pref_char = null
+	if(can_use_pref_char)
+		var/initial_string = "Would you like to spawn as a randomly created character, or use the one currently selected in your preferences?"
+		var/action = alert(user, initial_string, "", "Use Random Character", "Use Character From Preferences")
+		if(action && action == "Use Character From Preferences")
+			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
+			var/action2 = alert(user, warning_string, "", "Yes", "No")
+			if(action2 && action2 == "Yes")
+				is_pref_char = TRUE
+			else
+				return FALSE
+
+	if(can_use_alias)
+		var/action = alert(user, "Would you like to use an alias?\nIf you do, your name will be changed to that", "", "Dont Use Alias", "Use Alias")
+		if(action && action == "Use Alias")
+			var/msg = reject_bad_name(input(user, "Set your character's alias for this role", "Alias") as text|null)
+			if(!msg)
+				return FALSE
+			chosen_alias = msg
+
+	if(is_pref_char)
+		if(!any_station_species && user.client.prefs.pref_species.type != mob_species)
+			alert(user, "Sorry, This spawner is limited to those species: [mob_species]. Please switch your character.", "", "Ok")
+			return FALSE
+
+	if(QDELETED(src) || QDELETED(user))
+		return FALSE
+	//What's happening here?
+	//This function is fairly asynchronous and doesnt keep variables in context, so this check is for validation that we are using the correct user
+	if(last_ckey != user.ckey)
+		return FALSE
+	return TRUE
+
+/obj/effect/mob_spawn/human/create_mob(mob/user, newname)
+	var/mob/living/carbon/human/H = new mob_type(get_turf(src))
+	if(is_pref_char && user?.client)
+		user.client.prefs.copy_to(H)
+		H.dna.update_dna_identity()
+		if(chosen_alias)
+			H.name = chosen_alias
+			H.real_name = chosen_alias
+		//Pre-job equips so Voxes dont die
+		H.dna.species.before_equip_job(null, H)
+		H.regenerate_icons()
+	else
+		if(!random || newname)
+			if(newname)
+				H.real_name = newname
+			else
+				H.real_name = mob_name ? mob_name : H.name
+			if(!mob_gender)
+				mob_gender = pick(MALE, FEMALE)
+			H.gender = mob_gender
+			H.body_type = mob_gender
+		if(mob_species)
+			H.set_species(mob_species)
+		H.underwear = "Nude"
+		H.undershirt = "Nude"
+		H.socks = "Nude"
+		if(hairstyle)
+			H.hairstyle = hairstyle
+		else
+			H.hairstyle = random_hairstyle(H.gender)
+		if(facial_hairstyle)
+			H.facial_hairstyle = facial_hairstyle
+		else
+			H.facial_hairstyle = random_facial_hairstyle(H.gender)
+		if(skin_tone)
+			H.skin_tone = skin_tone
+		else
+			H.skin_tone = random_skin_tone()
+		H.update_hair()
+		H.update_body()
+	return H
+//SKYRAT EDIT ADDITION END
 
 /obj/effect/mob_spawn/human/Initialize()
 	if(ispath(outfit))
@@ -184,12 +303,18 @@
 	return ..()
 
 /obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
+	//SKYRAT EDIT REMOVAL BEGIN - MOVED
+	/*
 	if(mob_species)
 		H.set_species(mob_species)
+	*/
+	//SKYRAT EDIT REMOVAL END
 	if(husk)
 		H.Drain()
 	else //Because for some reason I can't track down, things are getting turned into husks even if husk = false. It's in some damage proc somewhere.
 		H.cure_husk()
+	//SKYRAT EDIT REMOVAL BEGIN - MOVED
+	/*
 	H.underwear = "Nude"
 	H.undershirt = "Nude"
 	H.socks = "Nude"
@@ -207,6 +332,8 @@
 		H.skin_tone = random_skin_tone()
 	H.update_hair()
 	H.update_body()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	if(outfit)
 		var/static/list/slots = list("uniform", "r_hand", "l_hand", "suit", "shoes", "gloves", "ears", "glasses", "mask", "head", "belt", "r_pocket", "l_pocket", "back", "id", "neck", "backpack_contents", "suit_store")
 		for(var/slot in slots)

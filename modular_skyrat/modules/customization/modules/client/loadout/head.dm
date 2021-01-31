@@ -3,17 +3,17 @@
 
 //MISC
 /datum/loadout_item/head/baseball
-	name = "Colorable ballcap"
+	name = "Ballcap"
 	path = /obj/item/clothing/head/soft/mime
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/head/beanie
-	name = "Colorable beanie"
+	name = "Beanie"
 	path = /obj/item/clothing/head/beanie
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/head/beret_white
-	name = "Colorable beret"
+	name = "Beret"
 	path = /obj/item/clothing/head/beret/white
 	extra_info = LOADOUT_INFO_ONE_COLOR
 

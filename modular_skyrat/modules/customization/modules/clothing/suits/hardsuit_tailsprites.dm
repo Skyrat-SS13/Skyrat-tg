@@ -31,6 +31,9 @@
 /obj/item/clothing/suit/space/hardsuit/security/hos
 	hardsuit_tail_colors = list("212", "C32", "234")
 
+/obj/item/clothing/suit/space/hardsuit/swat
+	hardsuit_tail_colors = list("333", "345", "335")
+
 /obj/item/clothing/suit/space/hardsuit/swat/captain
 	hardsuit_tail_colors = list("368", "CA0", "030")
 
@@ -44,19 +47,28 @@
 	hardsuit_tail_colors = list("222", "510", "443")
 
 /obj/item/clothing/suit/space/hardsuit/ert
-	hardsuit_tail_colors = list("28F", "553", "112")
+	hardsuit_tail_colors = list("112", "553", "28F")
 
 /obj/item/clothing/suit/space/hardsuit/ert/sec
-	hardsuit_tail_colors = list("D34", "411", "411")
+	hardsuit_tail_colors = list("411", "D34", "D34")
 
 /obj/item/clothing/suit/space/hardsuit/ert/engi
-	hardsuit_tail_colors = list("FA0", "333", "333")
+	hardsuit_tail_colors = list("333", "FA0", "FA0")
 
 /obj/item/clothing/suit/space/hardsuit/ert/med
-	hardsuit_tail_colors = list("FFF", "321", "321")
+	hardsuit_tail_colors = list("321", "FFF", "FFF")
 
 /obj/item/clothing/suit/space/hardsuit/ert/jani
-	hardsuit_tail_colors = list("93E", "112", "112")
+	hardsuit_tail_colors = list("112", "93E", "93E")
 
 /obj/item/clothing/suit/space/hardsuit/ert/debug
 	hardsuit_tail_colors = list("037", "222", "2AF")
+
+/obj/item/clothing/suit/space/hardsuit/ert/paranormal
+	hardsuit_tail_colors = list("9AA", "A23", "222")
+
+/obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor
+	hardsuit_tail_colors = list("223", "521", "721")
+
+/obj/item/clothing/suit/space/hardsuit/cybersun
+	hardsuit_tail_colors = list("333", "345", "335")

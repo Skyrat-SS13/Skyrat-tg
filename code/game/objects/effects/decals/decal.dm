@@ -38,11 +38,16 @@
 
 /obj/effect/turf_decal/Initialize()
 	..()
-	return INITIALIZE_HINT_QDEL
+	//SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: return INITIALIZE_HINT_QDEL
+	var/area/loc_area = get_area(src)
+	if(!istype(loc_area, /area/shuttle))
+		return INITIALIZE_HINT_QDEL
+	else
+		return INITIALIZE_HINT_NORMAL
 
 /obj/effect/turf_decal/ComponentInitialize()
 	. = ..()
 	var/turf/T = loc
 	if(!istype(T)) //you know this will happen somehow
 		CRASH("Turf decal initialized in an object/nullspace")
-	T.AddElement(/datum/element/decal, icon, icon_state, dir, FALSE, color, null, null, alpha)
+	T.AddElement(/datum/element/decal, icon, icon_state, dir, FALSE, color, null, null, null, alpha)

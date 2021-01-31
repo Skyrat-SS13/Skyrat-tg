@@ -23,7 +23,7 @@
 
 /datum/sprite_accessory/hair/skyrat/ziegler
 	name = "Ziegler"
-	icon_state = "hair_Ziegler"
+	icon_state = "hair_ziegler"
 
 /datum/sprite_accessory/hair/skyrat/hightight
 	name = "Hightight"
@@ -131,7 +131,7 @@
 
 /datum/sprite_accessory/hair/skyrat/rows1
 	name = "Rows 1"
-	icon_state = "hair_rows"
+	icon_state = "hair_rows1"
 
 /datum/sprite_accessory/hair/skyrat/rows2
 	name = "Rows 2"
@@ -167,7 +167,7 @@
 
 /datum/sprite_accessory/hair/skyrat/shorthair4
 	name = "Short Hair 4"
-	icon_state = "hair_dave"
+	icon_state = "hair_shorthair4"
 
 /datum/sprite_accessory/hair/skyrat/shortovereyealt
 	name = "Short Over Eye ALT"
@@ -193,19 +193,19 @@
 	name = "Simple Ponytail"
 	icon_state = "hair_simple_ponytail"
 
-/datum/sprite_accessory/hair/loose_slicked
+/datum/sprite_accessory/hair/skyrat/loose_slicked
 	name = "Loose Slicked"
 	icon_state = "hair_loose_slicked"
 
-/datum/sprite_accessory/hair/diagonal_bangs
+/datum/sprite_accessory/hair/skyrat/diagonal_bangs
 	name = "Diagonal Bangs"
 	icon_state = "hair_diagonal_bangs"
 
-/datum/sprite_accessory/hair/gloomy_medium
+/datum/sprite_accessory/hair/skyrat/gloomy_medium
 	name = "Medium Gloomy Bangs"
 	icon_state = "hair_gloomy_medium"
 
-/datum/sprite_accessory/hair/gloomy_long
+/datum/sprite_accessory/hair/skyrat/gloomy_long
 	name = "Long Gloomy Bangs"
 	icon_state = "hair_gloomy_long"
 

@@ -28,17 +28,6 @@
 	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
 	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
 
-/obj/item/storage/hypospraykit/regular
-	icon_state = "firstaid-mini"
-	desc = "A hypospray kit with general use vials."
-
-/obj/item/storage/hypospraykit/regular/PopulateContents()
-	if(empty)
-		return
-	new /obj/item/hypospray/mkii/tricord(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/small/tricord(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/small/tricord(src)
-
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"
 	desc = "A kit containing a Deluxe hypospray and Vials."
@@ -48,10 +37,8 @@
 	if(empty)
 		return
 	new /obj/item/hypospray/mkii/CMO(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/large/tricord(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/large/charcoal(src)
+	new /obj/item/reagent_containers/glass/bottle/vial/large/multiver(src)
 	new /obj/item/reagent_containers/glass/bottle/vial/large/salglu(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/large/dexalin(src)
 	new /obj/item/reagent_containers/glass/bottle/vial/large/synthflesh(src)
 
 /obj/item/storage/box/vials
@@ -60,3 +47,10 @@
 /obj/item/storage/box/vials/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_containers/glass/bottle/vial/small( src )
+
+/obj/item/storage/box/hypospray
+	name = "box of hypospray kits"
+
+/obj/item/storage/box/hypospray/PopulateContents()
+	for(var/i in 1 to 4)
+		new /obj/item/storage/hypospraykit/empty(src)

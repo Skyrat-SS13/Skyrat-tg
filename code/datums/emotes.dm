@@ -25,6 +25,9 @@
 	var/vary = FALSE	//used for the honk borg emote
 	var/only_forced_audio = FALSE //can only code call this event instead of the player.
 	var/cooldown = 0.8 SECONDS
+	//SKYRAT EDIT ADDITION BEGIN - EMOTES
+	var/sound_volume = 25 //Emote volume
+	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()
 	if (ispath(mob_type_allowed_typecache))
@@ -63,7 +66,10 @@
 
 	var/tmp_sound = get_sound(user)
 	if(tmp_sound && (!only_forced_audio || !intentional))
-		playsound(user, tmp_sound, 50, vary)
+		//SKYRAT EDIT CHANGE BEGIN
+		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
+		playsound(user, tmp_sound, sound_volume, vary)
+		//SKYRAT EDIT CHANGE END
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -73,19 +79,27 @@
 			M.show_message("[FOLLOW_LINK(M, user)] [dchatmsg]")
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message(msg, audible_message_flags = EMOTE_MESSAGE)
+		//SKYRAT EDIT CHANGE BEGIN
+		//user.audible_message(msg, audible_message_flags = EMOTE_MESSAGE) - SKYRAT EDIT - ORIGINAL
+		user.audible_message(msg, deaf_message = "You see how <b>[user]</b> [msg]", audible_message_flags = EMOTE_MESSAGE)
 	else
-		user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE)
+		//user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE) - SKYRAT EDIT - ORIGINAL
+		user.visible_message(msg, blind_message = "You hear how <b>[user]</b> [msg]", visible_message_flags = EMOTE_MESSAGE)
+		//SKYRAT EDIT CHANGE END
 
 /// For handling emote cooldown, return true to allow the emote to happen
 /datum/emote/proc/check_cooldown(mob/user, intentional)
 	if(!intentional)
 		return TRUE
-	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
+	//SKYRAT EDIT CHANGE BEGIN - EMOTES - GLOBAL COOLDOWN
+	//if(user.emotes_used && user.emotes_used[src] + cooldown > world.time) - SKYRAT EDIT - ORIGINAL
+	if(user.nextsoundemote > world.time)
 		return FALSE
-	if(!user.emotes_used)
-		user.emotes_used = list()
-	user.emotes_used[src] = world.time
+	//if(!user.emotes_used)
+	//	user.emotes_used = list()
+	//user.emotes_used[src] = world.time - SKYRAT EDIT - ORIGINAL
+	user.nextsoundemote = world.time + cooldown
+	//SKYRAT EDIT CHANGE END
 	return TRUE
 
 /datum/emote/proc/get_sound(mob/living/user)

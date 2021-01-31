@@ -108,6 +108,16 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a nuke team. Unfortunately, there were not enough candidates available.")
 					log_admin("[key_name(usr)] failed to create a nuke team.")
+			//SKYRAT EDIT ADDITION BEGIN - ASSAULT OPS
+			if("assaultops")
+				message_admins("[key_name(usr)] is creating an assault team...")
+				if(src.makeAssaultTeam())
+					message_admins("[key_name(usr)] created an assault team.")
+					log_admin("[key_name(usr)] created an assault team.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create an assault team. Unfortunately, there were not enough candidates available.")
+					log_admin("[key_name(usr)] failed to create an assault team.")
+			//SKYRAT EDIT END
 			if("ninja")
 				message_admins("[key_name(usr)] spawned a ninja.")
 				log_admin("[key_name(usr)] spawned a ninja.")
@@ -409,7 +419,7 @@
 			if("slime")
 				M.change_mob_type( /mob/living/simple_animal/slime , null, null, delmob )
 			if("monkey")
-				M.change_mob_type( /mob/living/carbon/monkey , null, null, delmob )
+				M.change_mob_type( /mob/living/carbon/human/species/monkey , null, null, delmob )
 			if("robot")
 				M.change_mob_type( /mob/living/silicon/robot , null, null, delmob )
 			if("cat")
@@ -631,7 +641,7 @@
 			return
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode.", null, null, null, null)
 		var/roundstart_rules = list()
 		for (var/rule in subtypesof(/datum/dynamic_ruleset/roundstart))
@@ -667,7 +677,7 @@
 
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		dynamic_mode_options(usr)
@@ -677,7 +687,7 @@
 			return
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		var/new_centre = input(usr,"Change the centre of the dynamic mode threat curve. A negative value will give a more peaceful round ; a positive value, a round with higher threat. Any number between -5 and +5 is allowed.", "Change curve centre", null) as num
@@ -694,7 +704,7 @@
 			return
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		var/new_width = input(usr,"Change the width of the dynamic mode threat curve. A higher value will favour extreme rounds ; a lower value, a round closer to the average. Any Number between 0.5 and 4 are allowed.", "Change curve width", null) as num
@@ -711,7 +721,7 @@
 			return
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 		var/new_min = input(usr,"Change the minimum delay of latejoin injection in minutes.", "Change latejoin injection delay minimum", null) as num
 		if(new_min <= 0)
@@ -729,7 +739,7 @@
 			return
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 		var/new_max = input(usr,"Change the maximum delay of latejoin injection in minutes.", "Change latejoin injection delay maximum", null) as num
 		if(new_max <= 0)
@@ -747,7 +757,7 @@
 			return
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 		var/new_min = input(usr,"Change the minimum delay of midround injection in minutes.", "Change midround injection delay minimum", null) as num
 		if(new_min <= 0)
@@ -765,7 +775,7 @@
 			return
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 		var/new_max = input(usr,"Change the maximum delay of midround injection in minutes.", "Change midround injection delay maximum", null) as num
 		if(new_max <= 0)
@@ -782,7 +792,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		GLOB.dynamic_forced_extended = !GLOB.dynamic_forced_extended
@@ -794,7 +804,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		GLOB.dynamic_no_stacking = !GLOB.dynamic_no_stacking
@@ -806,7 +816,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		GLOB.dynamic_classic_secret = !GLOB.dynamic_classic_secret
@@ -818,7 +828,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		GLOB.dynamic_stacking_limit = input(usr,"Change the threat limit at which round-endings rulesets will start to stack.", "Change stacking limit", null) as num
@@ -833,7 +843,7 @@
 		if(SSticker?.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
 
-		if(GLOB.master_mode != "dynamic")
+		if(!SSticker.is_mode("dynamic"))
 			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
 
 		var/new_value = input(usr, "Enter the forced threat level for dynamic mode.", "Forced threat level") as num
@@ -894,9 +904,9 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/mob/living/carbon/monkey/Mo = locate(href_list["humanone"])
-		if(!istype(Mo))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/monkey.", confidential = TRUE)
+		var/mob/living/carbon/human/Mo = locate(href_list["humanone"])
+		if(!ismonkey(Mo))
+			to_chat(usr, "This can only be used on monkeys.", confidential = TRUE)
 			return
 
 		log_admin("[key_name(usr)] attempting to humanize [key_name(Mo)].")
@@ -1105,9 +1115,18 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.", confidential = TRUE)
 			return
 
+		var/move = TRUE
+		switch(alert(usr,"Move new AI to AI spawn location?","Move AI?", "Yes", "No","Cancel"))
+			if("Cancel")
+				return
+			if("No")
+				move = FALSE
+		if(QDELETED(H))
+			to_chat(usr, "<span class='danger'>Subject was deleted already. Transform canceled.</span>")
+			return
 		message_admins("<span class='danger'>Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!</span>")
 		log_admin("[key_name(usr)] AIized [key_name(H)].")
-		H.AIize(TRUE, H.client)
+		H.AIize(TRUE, H.client, move)
 
 	else if(href_list["makealien"])
 		if(!check_rights(R_SPAWN))
@@ -2132,7 +2151,7 @@
 	else if(href_list["ctf_toggle"])
 		if(!check_rights(R_ADMIN))
 			return
-		toggle_all_ctf(usr)
+		toggle_id_ctf(usr, "centcom")
 
 	else if(href_list["rebootworld"])
 		if(!check_rights(R_ADMIN))

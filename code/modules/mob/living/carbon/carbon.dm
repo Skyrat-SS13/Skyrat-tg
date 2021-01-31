@@ -3,6 +3,10 @@
 	create_reagents(1000)
 	assign_bodypart_ownership()
 	update_body_parts() //to update the carbon's new bodyparts appearance
+
+	// Carbons cannot taste anything without a tongue; the tongue organ removes this on Insert
+	ADD_TRAIT(src, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
+
 	GLOB.carbon_list += src
 	if(!mapload)  //I don't want no gas leaks on my space ruin you hear?
 		RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/attach_rot)
@@ -577,14 +581,48 @@
 
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
-	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
+	//TODO: Make this much more cleaner
+	//SKYRAT EDIT - ORIGINAL: if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
+	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN 
+		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
+			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
+				//When you get floored by stamina, you also get a brief stun and disarm
+				to_chat(src, "<span class='boldwarning'>You feel weak and collapse!</span>")
+				ADD_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED, src)
+				addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_ALREADYSTAMINAFLOORED, src), STAMINA_KNOCKDOWN_COOLDOWN)
+				Paralyze(0.5 SECONDS)
+				Knockdown(5 SECONDS)
+		else
+			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+			if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+				REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+				REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+				filters -= FILTER_STAMINACRIT
+
+
+		if(stam > STAMINA_THRESHOLD_HARDCRIT)
+			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+				to_chat(src, "<span class='boldwarning'>You're too exhausted to keep going...</span>")
+				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+				ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+				ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
+				filters += FILTER_STAMINACRIT
+
+	else
+		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
+			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
+			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+		filters -= FILTER_STAMINACRIT //Temporary tweak to fix aheals bugging this - SKYRAT EDIT CHANGE END
+	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat) SKYRAT EDIT REMOVAL BEGIN
 		enter_stamcrit()
 	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
 	else
-		return
+		return*/ //SKYRAT EDIT REMOVAL END
 	update_health_hud()
 
 /mob/living/carbon/update_sight()
@@ -1332,6 +1370,14 @@
 		return
 
 	return ..()
+
+
+/mob/living/carbon/get_attack_type()
+	var/datum/species/species = dna?.species
+	if (species)
+		return species.attack_type
+	return ..()
+
 
 /mob/living/carbon/proc/attach_rot(mapload)
 	AddComponent(/datum/component/rot/corpse)

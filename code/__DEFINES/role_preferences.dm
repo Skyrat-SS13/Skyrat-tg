@@ -14,6 +14,7 @@
 #define ROLE_MALF				"Malf AI"
 #define ROLE_REV				"Revolutionary"
 #define ROLE_REV_HEAD			"Head Revolutionary"
+#define ROLE_REV_SUCCESSFUL		"Victorious Revolutionary"
 #define ROLE_ALIEN				"Xenomorph"
 #define ROLE_PAI				"pAI"
 #define ROLE_CULTIST			"Cultist"
@@ -41,6 +42,7 @@
 #define ROLE_FAMILIES			"Familes Antagonists"
 #define ROLE_SYNDICATE_CYBERSUN			"Cybersun Space Syndicate"		//Ghost role syndi from Forgottenship ruin
 #define ROLE_SYNDICATE_CYBERSUN_CAPTAIN	"Cybersun Space Syndicate Captain"		//Forgottenship captain syndie
+#define ROLE_ASSAULTOP 			"Assault Operatives" //SKYRAT EDIT ADDITION - ASSAULTOPS
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough
@@ -66,7 +68,8 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_INTERNAL_AFFAIRS = /datum/game_mode/traitor/internal_affairs,
 	ROLE_SENTIENCE,
 	ROLE_FAMILIES = /datum/game_mode/gang,
-	ROLE_HERETIC = /datum/game_mode/heretics
+	ROLE_HERETIC = /datum/game_mode/heretics,
+	ROLE_ASSAULTOP = /datum/game_mode/assaultops //SKYRAT EDIT ADDITION - ASSAULTOPS
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

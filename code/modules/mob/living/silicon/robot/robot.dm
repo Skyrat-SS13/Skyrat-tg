@@ -140,6 +140,9 @@
 
 	create_modularInterface()
 
+	module = new /obj/item/robot_module(src)
+	module.rebuild_modules()
+
 	if(lawupdate)
 		make_laws()
 		if(!TryConnectToAI())
@@ -152,8 +155,6 @@
 		builtInCamera.internal_light = FALSE
 		if(wires.is_cut(WIRE_CAMERA))
 			builtInCamera.status = 0
-	module = new /obj/item/robot_module(src)
-	module.rebuild_modules()
 	update_icons()
 	. = ..()
 
@@ -270,7 +271,7 @@
 	if(custom_name)
 		changed_name = custom_name
 	if(SSticker.anonymousnames) //only robotic renames will allow for anything other than the anonymous one
-		changed_name = anonymous_ai_name(is_ai = FALSE)
+		changed_name = SSticker.anonymousnames.anonymous_ai_name(FALSE)
 	if(!changed_name && C && C.prefs.custom_names["cyborg"] != DEFAULT_CYBORG_NAME)
 		apply_pref_name("cyborg", C)
 		return //built in camera handled in proc
@@ -408,8 +409,8 @@
 		//if they are holding or wearing a card that has access, that works
 		if(check_access(H.get_active_held_item()) || check_access(H.wear_id))
 			return TRUE
-	else if(ismonkey(M))
-		var/mob/living/carbon/monkey/george = M
+	else if(isalien(M))
+		var/mob/living/carbon/george = M
 		//they can only hold things :(
 		if(isitem(george.get_active_held_item()))
 			return check_access(george.get_active_held_item())
@@ -569,14 +570,14 @@
 		set_light_color(COLOR_RED) //This should only matter for doomsday borgs, as any other time the lamp will be off and the color not seen
 		set_light_range(1) //Again, like above, this only takes effect when the light is forced on by doomsday mode.
 		lamp_enabled = FALSE
-		lampButton.update_icon()
+		lampButton?.update_icon()
 		update_icons()
 		return
 	set_light_range(lamp_intensity)
 	set_light_color(lamp_doom? COLOR_RED : lamp_color) //Red for doomsday killborgs, borg's choice otherwise
 	set_light_on(TRUE)
 	lamp_enabled = TRUE
-	lampButton.update_icon()
+	lampButton?.update_icon()
 	update_icons()
 
 /mob/living/silicon/robot/proc/deconstruct()
@@ -886,10 +887,11 @@
 	designation = module.name
 	if(hands)
 		hands.icon_state = module.moduleselect_icon
-	if(module.can_be_pushed)
-		status_flags |= CANPUSH
-	else
-		status_flags &= ~CANPUSH
+
+	REMOVE_TRAITS_IN(src, MODULE_TRAIT)
+	if(module.module_traits)
+		for(var/trait in module.module_traits)
+			ADD_TRAIT(src, trait, MODULE_TRAIT)
 
 	if(module.clean_on_move)
 		AddElement(/datum/element/cleaning)

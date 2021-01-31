@@ -7,3 +7,5 @@
 	var/underwear_visibility = NONE
 	///Render key for mutant bodyparts, utilized to reduce the amount of re-rendering
 	var/mutant_renderkey = ""
+	///Whether the human is trying to hide their mutant bodyparts under their clothes intentially
+	var/try_hide_mutant_parts = FALSE

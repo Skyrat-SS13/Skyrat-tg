@@ -2,6 +2,12 @@
 //Please make sure you double check a sprite before adding an entry into this as some clothing items do require alternate sprites.area
 
 //HEAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/obj/item/clothing/head/festive
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/gladiator
+    mutant_variants = NONE
+
 /obj/item/clothing/head/chefhat
     mutant_variants = NONE
 
@@ -157,6 +163,9 @@
 	mutant_variants = NONE
 
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+/obj/item/clothing/under/costume/gladiator/ash_walker
+	mutant_variants = NONE
 
 /obj/item/clothing/under/misc/gear_harness
 	mutant_variants = NONE

@@ -35,21 +35,6 @@
 	var/quickload = FALSE
 	var/penetrates = FALSE
 
-/obj/item/hypospray/mkii/brute
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/bicaridine
-
-/obj/item/hypospray/mkii/toxin
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/antitoxin
-
-/obj/item/hypospray/mkii/oxygen
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/dexalin
-
-/obj/item/hypospray/mkii/burn
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/kelotane
-
-/obj/item/hypospray/mkii/tricord
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/tricord
-
 /obj/item/hypospray/mkii/enlarge
 	spawnwithvial = FALSE
 

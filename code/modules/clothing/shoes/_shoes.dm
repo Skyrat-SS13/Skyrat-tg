@@ -39,7 +39,8 @@
 			sleep(3)
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, TRUE)
 		return(BRUTELOSS)
-
+//SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE - (Moved to modular_skyrat/modules/digi_shoeblood/code/modules/clothing/shoes/_shoes.dm)
+/*
 /obj/item/clothing/shoes/worn_overlays(isinhands = FALSE)
 	. = list()
 	if(!isinhands)
@@ -50,7 +51,8 @@
 				. += mutable_appearance('icons/effects/64x64.dmi', "shoeblood_large")
 			else
 				. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
-
+*/
+//SKYRAT EDIT REMOVAL END
 /obj/item/clothing/shoes/examine(mob/user)
 	. = ..()
 

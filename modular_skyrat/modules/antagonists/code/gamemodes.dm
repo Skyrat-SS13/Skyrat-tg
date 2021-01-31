@@ -13,6 +13,9 @@
 /datum/game_mode/heretics
 	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 
+/datum/game_mode/gang
+	protected_jobs = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster") //i hate whoever just copy pasted this a bunch of times
+
 /datum/dynamic_ruleset/roundstart/traitor
 	protected_roles = list("Prisoner", "Blueshield", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 

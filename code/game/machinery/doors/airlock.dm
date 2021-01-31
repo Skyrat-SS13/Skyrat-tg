@@ -15,6 +15,20 @@
 	shock - has a chance of electrocuting its target.
 */
 
+/// Overlay cache.  Why isn't this just in /obj/machinery/door/airlock?  Because its used just a
+/// tiny bit in door_assembly.dm  Refactored so you don't have to make a null copy of airlock
+/// to get to the damn thing
+/// Someone, for the love of god, profile this.  Is there a reason to cache mutable_appearance
+/// if so, why are we JUST doing the airlocks when we can put this in mutable_appearance.dm for
+/// everything
+/proc/get_airlock_overlay(icon_state, icon_file)
+	var/static/list/airlock_overlays = list()
+	var/iconkey = "[icon_state][icon_file]"
+	if((!(. = airlock_overlays[iconkey])))
+		. = airlock_overlays[iconkey] = mutable_appearance(icon_file, icon_state)
+// Before you say this is a bad implmentation, look at what it was before then ask yourself
+// "Would this be better with a global var"
+
 // Wires for the airlock are located in the datum folder, inside the wires datum folder.
 
 #define AIRLOCK_CLOSED	1
@@ -79,6 +93,7 @@
 	var/obj/item/seal
 	var/detonated = FALSE
 	var/abandoned = FALSE
+	var/cutAiWire = FALSE
 	var/doorOpen = 'sound/machines/airlock.ogg'
 	var/doorClose = 'sound/machines/airlockclose.ogg'
 	var/doorDeni = 'sound/machines/deniedbeep.ogg' // i'm thinkin' Deni's
@@ -100,10 +115,14 @@
 	flags_1 = RAD_PROTECT_CONTENTS_1 | RAD_NO_CONTAMINATE_1
 	rad_insulation = RAD_MEDIUM_INSULATION
 
-	var/static/list/airlock_overlays = list()
+	network_id = NETWORK_DOOR_AIRLOCKS
 
 /obj/machinery/door/airlock/Initialize()
 	. = ..()
+	//SKYRAT EDIT ADDITION BEGIN
+	if(multi_tile)
+		SetBounds()
+	//SKYRAT EDIT END
 	wires = set_wires()
 	if(frequency)
 		set_frequency(frequency)
@@ -126,6 +145,7 @@
 	diag_hud_set_electrified()
 
 	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, .proc/on_break)
+	RegisterSignal(src, COMSIG_COMPONENT_NTNET_RECEIVE, .proc/ntnet_receive)
 
 	return INITIALIZE_HINT_LATELOAD
 
@@ -154,11 +174,10 @@
 				welded = TRUE
 			if(24 to 30)
 				panel_open = TRUE
+	if(cutAiWire)
+		wires.cut(WIRE_AI)
 	update_icon()
 
-/obj/machinery/door/airlock/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/ntnet_interface)
 
 /obj/machinery/door/airlock/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	if(id_tag)
@@ -201,18 +220,14 @@
 /obj/machinery/door/airlock/check_access_ntnet(datum/netdata/data)
 	return !requiresID() || ..()
 
-/obj/machinery/door/airlock/ntnet_receive(datum/netdata/data)
+/obj/machinery/door/airlock/proc/ntnet_receive(datum/source, datum/netdata/data)
 	// Check if the airlock is powered and can accept control packets.
 	if(!hasPower() || !canAIControl())
 		return
 
-	// Check packet access level.
-	if(!check_access_ntnet(data))
-		return
-
 	// Handle received packet.
-	var/command = lowertext(data.data["data"])
-	var/command_value = lowertext(data.data["data_secondary"])
+	var/command = data.data["data"]
+	var/command_value = data.data["data_secondary"]
 	switch(command)
 		if("open")
 			if(command_value == "on" && !density)
@@ -240,6 +255,7 @@
 
 		if("emergency")
 			if(command_value == "on" && emergency)
+
 				return
 
 			if(command_value == "off" && !emergency)
@@ -583,14 +599,6 @@
 	check_unres()
 */
 
-/proc/get_airlock_overlay(icon_state, icon_file)
-	var/obj/machinery/door/airlock/A
-	pass(A)	//suppress unused warning
-	var/list/airlock_overlays = A.airlock_overlays
-	var/iconkey = "[icon_state][icon_file]"
-	if((!(. = airlock_overlays[iconkey])))
-		. = airlock_overlays[iconkey] = mutable_appearance(icon_file, icon_state)
-
 //SKYRAT EDIT CHANGE BEGIN - AESTHETICS
 /obj/machinery/door/airlock/proc/check_unres() //unrestricted sides. This overlay indicates which directions the player can access even without an ID
 	if(hasPower() && unres_sides)
@@ -776,7 +784,8 @@
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
 				H.visible_message("<span class='danger'>[user] headbutts the airlock.</span>", \
 									"<span class='userdanger'>You headbutt the airlock!</span>")
-				H.Paralyze(100)
+				//H.Paralyze(100) - SKYRAT EDIT REMOVAL - COMBAT
+				H.StaminaKnockdown(10, TRUE, TRUE)
 				H.apply_damage(10, BRUTE, BODY_ZONE_HEAD)
 			else
 				visible_message("<span class='danger'>[user] headbutts the airlock. Good thing [user.p_theyre()] wearing a helmet.</span>")
@@ -1153,11 +1162,19 @@
 	update_icon(AIRLOCK_OPENING, 1)
 	sleep(1)
 	set_opacity(0)
+	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+	if(multi_tile)
+		filler.set_opacity(FALSE)
+	//SKYRAT EDIT END
 	update_freelook_sight()
 	sleep(4)
 	density = FALSE
+	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+	if(multi_tile)
+		filler.density = FALSE
+	//SKYRAT EDIT END
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
-	air_update_turf(1)
+	air_update_turf(TRUE, FALSE)
 	sleep(1)
 	layer = OPEN_DOOR_LAYER
 	update_icon(AIRLOCK_OPEN, 1)
@@ -1203,17 +1220,26 @@
 	if(air_tight)
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		air_update_turf(1)
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		if(multi_tile)
+			filler.density = TRUE
+		air_update_turf(TRUE, TRUE)
 	sleep(1)
 	if(!air_tight)
 		density = TRUE
 		flags_1 |= PREVENT_CLICK_UNDER_1
-		air_update_turf(1)
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		if(multi_tile)
+			filler.density = TRUE
+		//SKYRAT EDIT END
+		air_update_turf(TRUE, TRUE)
 	sleep(4)
 	if(dangerous_close)
 		crush()
 	if(visible && !glass)
 		set_opacity(1)
+		if(multi_tile)
+			filler.set_opacity(TRUE)
 	update_freelook_sight()
 	sleep(1)
 	update_icon(AIRLOCK_CLOSED, 1)

@@ -37,6 +37,8 @@
 	var/extra_color_src
 	var/extra2 = FALSE
 	var/extra2_color_src
+	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
+	var/list/ckey_whitelist
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -88,18 +90,13 @@
 
 	return colors
 
-/datum/sprite_accessory/moth_wings
-	key = "moth_wings"
-	generic = "Moth wings"
-
-/datum/sprite_accessory/moth_wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if((H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(H.dna.species, H.wear_suit.species_exception))))
-		return TRUE
-	return FALSE
-
 /datum/sprite_accessory/moth_markings
 	key = "moth_markings"
 	generic = "Moth markings"
+
+/datum/sprite_accessory/moth_antennae/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/spines
 	key = "spines"
@@ -108,9 +105,11 @@
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list("lizard", "unathi", "ashlizard")
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	if(!T || (H.wear_suit && (H.try_hide_mutant_parts || H.wear_suit.flags_inv & HIDEJUMPSUIT)))
 		return TRUE
 	return FALSE
 

@@ -19,9 +19,17 @@
 	assignedrole = "Lifebringer"
 
 /obj/effect/mob_spawn/human/seed_vault/special(mob/living/new_spawn)
+	//SKYRAT EDIT CHANGE BEGIN
+	/*
 	var/plant_name = pick("Tomato", "Potato", "Broccoli", "Carrot", "Ambrosia", "Pumpkin", "Ivy", "Kudzu", "Banana", "Moss", "Flower", "Bloom", "Root", "Bark", "Glowshroom", "Petal", "Leaf", \
 	"Venus", "Sprout","Cocoa", "Strawberry", "Citrus", "Oak", "Cactus", "Pepper", "Juniper")
 	new_spawn.fully_replace_character_name(null,plant_name)
+	*/
+	if(!is_pref_char)
+		var/plant_name = pick("Tomato", "Potato", "Broccoli", "Carrot", "Ambrosia", "Pumpkin", "Ivy", "Kudzu", "Banana", "Moss", "Flower", "Bloom", "Root", "Bark", "Glowshroom", "Petal", "Leaf", \
+		"Venus", "Sprout","Cocoa", "Strawberry", "Citrus", "Oak", "Cactus", "Pepper", "Juniper")
+		new_spawn.fully_replace_character_name(null,plant_name)
+	//SKYRAT EDIT CHANGE END
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
 		H.underwear = "Nude" //You're a plant, partner
@@ -99,7 +107,11 @@
 	return FALSE
 
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
-	new_spawn.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	//SKYRAT EDIT CHANGE BEGIN
+	//new_spawn.fully_replace_character_name(null,random_unique_lizard_name(gender)) //ORIGINAL
+	if(!is_pref_char)
+		new_spawn.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	//SKYRAT EDIT CHANGE END
 	to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")
 
 	new_spawn.mind.add_antag_datum(/datum/antagonist/ashwalker, team)

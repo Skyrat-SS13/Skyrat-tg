@@ -18,7 +18,7 @@
 		//if they are holding or wearing a card that has access, that works
 		if(check_access(H.get_active_held_item()) || src.check_access(H.wear_id))
 			return TRUE
-	else if(ismonkey(M) || isalienadult(M))
+	else if(isalienadult(M))
 		var/mob/living/carbon/george = M
 		//they can only hold things :(
 		if(check_access(george.get_active_held_item()))
@@ -90,8 +90,17 @@
 		return FALSE
 	return TRUE
 
-/obj/proc/check_access_ntnet(datum/netdata/data)
-	return check_access_list(data.passkey)
+/*
+ * Checks if this packet can access this device
+ *
+ * Normally just checks the access list however you can override it for
+ * hacking proposes or if wires are cut
+ *
+ * Arguments:
+ * * passkey - passkey from the datum/netdata packet
+ */
+/obj/proc/check_access_ntnet(list/passkey)
+	return check_access_list(passkey)
 
 /proc/get_centcom_access(job)
 	switch(job)
@@ -363,6 +372,7 @@
 		if(ACCESS_CENT_BAR)
 			return "Code Scotch"
 
+/*//SKYRAT EDIT - CARD - MOVED TO MODULAR
 /proc/get_all_jobs()
 	return list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
 				"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer",
@@ -374,6 +384,7 @@
 
 /proc/get_all_centcom_jobs()
 	return list("Central Command","VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Research Officer","Special Ops Officer","Admiral","CentCom Commander","CentCom Bartender","Private Security Force")
+*///Skyrat Edit End
 
 /obj/item/proc/GetJobName() //Used in secHUD icon generation
 	var/obj/item/card/id/I = GetID()

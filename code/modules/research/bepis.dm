@@ -4,9 +4,9 @@
 
 #define MACHINE_OPERATION 100000
 #define MACHINE_OVERLOAD 500000
-#define MAJOR_THRESHOLD 3000
-#define MINOR_THRESHOLD 2000
-#define STANDARD_DEVIATION 1000
+#define MAJOR_THRESHOLD 6*CARGO_CRATE_VALUE
+#define MINOR_THRESHOLD 4*CARGO_CRATE_VALUE
+#define STANDARD_DEVIATION 2*CARGO_CRATE_VALUE
 
 /obj/machinery/rnd/bepis
 	name = "\improper B.E.P.I.S. Chamber"
@@ -37,6 +37,7 @@
 		//To add a new minor reward, add it here.
 		/obj/item/stack/circuit_stack/full,
 		/obj/item/pen/survival,
+		/obj/item/flashlight/flashdark,//SKYRAT EDIT
 		/obj/item/circuitboard/machine/sleeper/party,
 		/obj/item/toy/sprayoncan,
 	)

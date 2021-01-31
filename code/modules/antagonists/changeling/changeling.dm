@@ -106,7 +106,7 @@
 	mimicing = ""
 
 /datum/antagonist/changeling/proc/remove_changeling_powers()
-	if(ishuman(owner.current) || ismonkey(owner.current))
+	if(ishuman(owner.current))
 		reset_properties()
 		for(var/datum/action/changeling/p in purchasedpowers)
 			purchasedpowers -= p
@@ -296,6 +296,9 @@
 	entry.icon_state = H.icon_state
 	entry.overlays = H.get_overlays_copy(list(HANDS_LAYER, HANDCUFF_LAYER, LEGCUFF_LAYER))
 	prof.profile_snapshot = entry
+
+	if(H.wear_id?.GetID())
+		prof.id_icon = "hud[ckey(H.wear_id.GetJobName())]"
 
 	var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
 	for(var/slot in slots)
@@ -517,6 +520,8 @@
 	var/list/stored_scars
 	/// Icon snapshot of the profile
 	var/datum/icon_snapshot/profile_snapshot
+	/// ID HUD icon associated with the profile
+	var/id_icon
 
 /datum/changelingprofile/Destroy()
 	qdel(dna)
@@ -543,6 +548,7 @@
 	newprofile.skillchips = skillchips.Copy()
 	newprofile.stored_scars = stored_scars.Copy()
 	newprofile.profile_snapshot = profile_snapshot
+	newprofile.id_icon = id_icon
 
 /datum/antagonist/changeling/xenobio
 	name = "Xenobio Changeling"

@@ -2,7 +2,7 @@
 /datum/sprite_accessory/snouts/vox
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_snouts.dmi'
 	default_color = DEFAULT_SECONDARY
-	name = "Vox"
+	name = "Vox Snout"
 	icon_state = "vox"
 	recommended_species = list("vox")
 
@@ -91,7 +91,7 @@
 //The tail
 /datum/sprite_accessory/tails/vox
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_tails.dmi'
-	name = "Vox"
+	name = "Vox Tail"
 	icon_state = "vox"
 	recommended_species = list("vox")
 
@@ -100,6 +100,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_spines.dmi'
 	default_color = DEFAULT_TERTIARY
 	recommended_species = list("vox")
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/spines/vox/vox_bands
 	name = "Vox Bands"

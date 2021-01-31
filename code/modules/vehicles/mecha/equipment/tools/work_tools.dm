@@ -17,7 +17,8 @@
 	//var/killer_clamp = FALSE -------SKYRAT EDIT - A clamp is a clamp, just like it was on the oldbase.
 	var/killer_clamp = TRUE
 	///How much base damage this clamp does
-	var/clamp_damage = 20
+	var/clamp_damage = 30	//SKYRAT EDIT - We've removed instant arm delimbs, so this is a buff to make up for it.
+//	var/clamp_damage = 20 SKYRAT EDIT - Original line
 	///Var for the chassis we are attached to, needed to access ripley contents and such
 	var/obj/vehicle/sealed/mecha/working/ripley/cargo_holder
 	///Audio for using the hydraulic clamp
@@ -102,7 +103,7 @@
 				chassis.visible_message("<span class='notice'>[chassis] pushes [target] out of the way.</span>", \
 				"<span class='notice'>[chassis] pushes you aside.</span>")
 			return ..()
-		else if(source.a_intent == INTENT_DISARM && iscarbon(M))//meme clamp here
+		/*else if(source.a_intent == INTENT_DISARM && iscarbon(M))//meme clamp here
 			if(!killer_clamp)
 				to_chat(source, "<span class='notice'>You longingly wish to tear [M]'s arms off.</span>")
 				return
@@ -124,7 +125,7 @@
 						   "<span class='userdanger'>[chassis] rips your arms off!</span>")
 			log_combat(source, M, "removed both arms with a real clamp,", "[name]", "(INTENT: [uppertext(source.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
 			return ..()
-
+*/	// SKYRAT REMOVAL - No instant arm-removals.
 		M.take_overall_damage(clamp_damage)
 		if(!M) //get gibbed stoopid
 			return
@@ -260,7 +261,7 @@
 				var/turf/closed/wall/W = target
 				if(!do_after_cooldown(W, source))
 					return
-				W.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+				W.ScrapeAway()
 			else if(isfloorturf(target))
 				var/turf/open/floor/F = target
 				if(!do_after_cooldown(target, source))
