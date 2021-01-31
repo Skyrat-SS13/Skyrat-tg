@@ -1,4 +1,4 @@
-/obj/structure/closet
+/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "closet"
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/closet.dmi'
