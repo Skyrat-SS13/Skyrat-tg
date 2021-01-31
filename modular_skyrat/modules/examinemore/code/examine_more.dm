@@ -41,7 +41,7 @@ would only be recognisable with someone that had the syndicate trait.
 			if(EXAMINE_CHECK_SYNDICATE)
 				if(user.mind)
 					var/datum/mind/M = user.mind
-					if(M.special_role == ROLE_TRAITOR || ROLE_SYNDICATE in user.faction)
+					if((M.special_role == ROLE_TRAITOR) || (ROLE_SYNDICATE in user.faction))
 						composed_message = "You note the following because of your <span class='red'><b>Syndicate affiliation</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
