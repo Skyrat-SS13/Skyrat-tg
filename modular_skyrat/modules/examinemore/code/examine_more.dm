@@ -7,7 +7,7 @@ would only be recognisable with someone that had the syndicate trait.
 */
 
 /obj/item
-	//The special description that is triggered when special_desc_requirements are met.
+	//The special description that is triggered when special_desc_requirements are met. Make sure you set the correct EXAMINE_CHECK!
 	var/special_desc = ""
 
 	//The requirement setting for special descriptions. See examine_defines.dm for more info.
@@ -29,38 +29,38 @@ would only be recognisable with someone that had the syndicate trait.
 		var/composed_message
 		switch(special_desc_requirement)
 			if(EXAMINE_CHECK_NONE)
-				composed_message = "You note the following: "
+				composed_message = "You note the following: <br>"
 				composed_message += special_desc
 				. += composed_message
 			if(EXAMINE_CHECK_MINDSHIELD)
 				if(ishuman(user))
 					if(HAS_TRAIT(user, TRAIT_MINDSHIELD))
-						composed_message = "You note the following because of your <b>mindshield</b>: "
+						composed_message = "You note the following because of your <b>mindshield</b>: <br>"
 						composed_message += special_desc
 						. += composed_message
 			if(EXAMINE_CHECK_SYNDICATE)
 				if(user.mind)
 					var/datum/mind/M = user.mind
 					if(M.special_role == ROLE_TRAITOR || ROLE_SYNDICATE in user.faction)
-						composed_message = "You note the following because of your <span class='red'><b>Syndicate affiliation</b></span>: "
+						composed_message = "You note the following because of your <span class='red'><b>Syndicate affiliation</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
 			if(EXAMINE_CHECK_SYNDICATE_TOY)
 				if(user.mind)
 					var/datum/mind/M = user.mind
 					if(M.special_role == ROLE_TRAITOR || ROLE_SYNDICATE in user.faction)
-						composed_message = "You note the following because of your <span class='red'><b>Syndicate affiliation</b></span>: "
+						composed_message = "You note the following because of your <span class='red'><b>Syndicate affiliation</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
 					else
 						composed_message = "The popular toy resembling a [src] from your local arcade, suitable for children and adults alike."
-						. += composed_messaage
+						. += composed_message
 			if(EXAMINE_CHECK_ROLE)
 				if(user.mind)
 					var/datum/mind/M = user.mind
 					for(var/role_i in special_desc_roles)
 						if(M.special_role == role_i)
-							composed_message = "You note the following because of your <b>[role_i]</b> role: "
+							composed_message = "You note the following because of your <b>[role_i]</b> role: <br>"
 							composed_message += special_desc
 							. += composed_message
 			if(EXAMINE_CHECK_JOB)
@@ -68,13 +68,13 @@ would only be recognisable with someone that had the syndicate trait.
 					var/mob/living/carbon/human/H = user
 					for(var/job_i in special_desc_jobs)
 						if(H.job == job_i)
-							composed_message = "You note the following because of your job as a <b>[job_i]</b>: "
+							composed_message = "You note the following because of your job as a <b>[job_i]</b>: <br>"
 							composed_message += special_desc
 							. += composed_message
 			if(EXAMINE_CHECK_FACTION)
 				for(var/faction_i in special_desc_factions)
 					if(faction_i in user.faction)
-						composed_message = "You note the following because of your loyalty to <b>[faction_i]</b>: "
+						composed_message = "You note the following because of your loyalty to <b>[faction_i]</b>: <br>"
 						composed_message += special_desc
 						. += composed_message
 
