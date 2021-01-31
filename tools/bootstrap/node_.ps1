@@ -1,3 +1,4 @@
+#Requires -Version 4.0
 
 # bootstrap/node_.ps1
 #

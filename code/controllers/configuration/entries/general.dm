@@ -86,6 +86,8 @@
 
 /datum/config_entry/flag/log_pda	// log pda messages
 
+/datum/config_entry/flag/log_uplink	// log uplink/spellbook/codex ciatrix purchases and refunds
+
 /datum/config_entry/flag/log_telecomms	// log telecomms messages
 
 /datum/config_entry/flag/log_twitter	// log certain expliotable parrots and other such fun things in a JSON file of twitter valid phrases.
@@ -508,4 +510,10 @@
 //SKYRAT EDIT ADDITION BEGIN
 /datum/config_entry/string/servertagline
 	config_entry_value = "We forgot to set the server's tagline in config.txt"
+
+/datum/config_entry/flag/sql_game_log
+	protection = CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/file_game_log
+	protection = CONFIG_ENTRY_LOCKED
 //SKYRAT EDIT END
