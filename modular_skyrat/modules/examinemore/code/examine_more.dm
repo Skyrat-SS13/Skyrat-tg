@@ -35,7 +35,7 @@ would only be recognisable with someone that had the syndicate trait.
 			if(EXAMINE_CHECK_MINDSHIELD)
 				if(ishuman(user))
 					if(HAS_TRAIT(user, TRAIT_MINDSHIELD))
-						composed_message = "You note the following because of your <b>mindshield</b>: <br>"
+						composed_message = "You note the following because of your <span class='blue'><b>mindshield</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
 			if(EXAMINE_CHECK_SYNDICATE)
@@ -45,6 +45,12 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message = "You note the following because of your <span class='red'><b>Syndicate affiliation</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
+					else if(ishuman(user))
+						var/mob/living/carbon/human/H = user
+						if(H.job == "Detective")  //Useful detective!
+							composed_message = "You note the following because of your brilliant <span class='blue'><b>Detective skills</b></span>: <br>"
+							composed_message += special_desc
+							. += composed_message
 			if(EXAMINE_CHECK_SYNDICATE_TOY)
 				if(user.mind)
 					var/datum/mind/M = user.mind
@@ -52,8 +58,14 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message = "You note the following because of your <span class='red'><b>Syndicate affiliation</b></span>: <br>"
 						composed_message += special_desc
 						. += composed_message
+					else if(ishuman(user))
+						var/mob/living/carbon/human/H = user
+						if(H.job == "Detective") //Useful detective!
+							composed_message = "You note the following because of your brilliant <span class='blue'><b>Detective skills</b></span>: <br>"
+							composed_message += special_desc
+							. += composed_message
 					else
-						composed_message = "The popular toy resembling a [src] from your local arcade, suitable for children and adults alike."
+						composed_message = "The popular toy resembling a [src.name] from your local arcade, suitable for children and adults alike."
 						. += composed_message
 			if(EXAMINE_CHECK_ROLE)
 				if(user.mind)
@@ -78,9 +90,9 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message += special_desc
 						. += composed_message
 
-		SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
-		if(!LAZYLEN(.)) // lol ..length
-			return list("<span class='notice'><i>You examine [src] closer, but find nothing of interest...</i></span>")
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
+	if(!LAZYLEN(.)) // lol ..length
+		return list("<span class='notice'><i>You examine [src] closer, but find nothing of interest...</i></span>")
 
 //////////
 //Examples:

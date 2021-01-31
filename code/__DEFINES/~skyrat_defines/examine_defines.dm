@@ -5,7 +5,7 @@ an items special description.
 See the examinemore module for information.
 */
 
-#define EXAMINE_CHECK_NONE			"none"			//Disables the extra exmaine function.
+#define EXAMINE_CHECK_NONE			"none"			//Displays the special_desc regardless if it's set.
 #define EXAMINE_CHECK_SYNDICATE 	"syndicate"		//For displaying descriptors for those with the SYNDICATE faction assigned.
 #define EXAMINE_CHECK_SYNDICATE_TOY "syndicate_toy" //Ditto, only instead of displaying nothing for heathens, it shows "The src looks like a toy, not the real thing."
 #define EXAMINE_CHECK_MINDSHIELD	"mindshield"	//For displaying descriptors for those with a mindshield implant.
