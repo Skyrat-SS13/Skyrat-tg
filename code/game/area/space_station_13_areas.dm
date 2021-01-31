@@ -472,6 +472,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "bar"
 	mood_bonus = 5
 	mood_message = "<span class='nicegreen'>I love being in the bar!\n</span>"
+	mood_trait = TRAIT_EXTROVERT
 	airlock_wires = /datum/wires/airlock/service
 	sound_environment = SOUND_AREA_WOODFLOOR
 
@@ -503,6 +504,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/library
 	name = "Library"
 	icon_state = "library"
+	mood_bonus = 5
+	mood_message = "<span class='nicegreen'>I love being in the library!</span>\n"
+	mood_trait = TRAIT_INTROVERT
 	flags_1 = CULT_PERMITTED_1
 	sound_environment = SOUND_AREA_LARGE_SOFTFLOOR
 
@@ -534,6 +538,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/chapel
 	icon_state = "chapel"
+	mood_bonus = 5
+	mood_message = "<span class='nicegreen'>Being in the chapel brings me peace.</span>\n"
+	mood_trait = TRAIT_SPIRITUAL
 	ambience_index = AMBIENCE_HOLY
 	flags_1 = NONE
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED

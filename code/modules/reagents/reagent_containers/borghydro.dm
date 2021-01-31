@@ -9,7 +9,7 @@ Nothing to do with hydroponics in here. Sorry to dissapoint you.
 /*
 Borg Hypospray
 */
-/obj/item/reagent_containers/borghypo
+/obj/item/reagent_containers/borghypo//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "cyborg hypospray"
 	desc = "An advanced chemical synthesizer and injection system, designed for heavy-duty medical equipment."
 	icon = 'icons/obj/syringe.dmi'

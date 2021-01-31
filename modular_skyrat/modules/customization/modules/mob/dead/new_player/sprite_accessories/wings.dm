@@ -33,7 +33,7 @@
 	default_color = "FFF"
 	recommended_species = list("moth", "mammal", "insect") //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/wings/moth
-	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/moth/none
 	name = "None"
@@ -124,7 +124,7 @@
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
-	recommended_species = list("mammal", "lizard")
+	recommended_species = list("mammal", "lizard", "insect")
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one

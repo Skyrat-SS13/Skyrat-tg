@@ -3030,3 +3030,7 @@ GLOBAL_LIST_INIT(food, list(
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
+
+/datum/preferences/proc/validate_quirks()
+	if(GetQuirkBalance() < 0)
+		all_quirks = list()
