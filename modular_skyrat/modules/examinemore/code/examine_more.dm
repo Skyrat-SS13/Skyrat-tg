@@ -17,13 +17,13 @@ would only be recognisable with someone that had the syndicate trait.
 	var/special_desc_requirement = EXAMINE_CHECK_NONE
 
 	//The ROLE requirement setting if EXAMINE_CHECK_ROLE is set. E.g. ROLE_SYNDICATE. As you can see, it's a list. So when setting it, ensure you do = list(shit1, shit2)
-	var/special_desc_roles = list()
+	var/list/special_desc_roles
 
 	//The JOB requirement setting if EXAMINE_CHECK_JOB is set. E.g. "Security Officer". As you can see, it's a list. So when setting it, ensure you do = list(shit1, shit2)
-	var/special_desc_jobs = list()
+	var/list/special_desc_jobs
 
 	//The FACTION requirement setting if EXAMINE_CHECK_FACTION is set. E.g. "Syndicate". As you can see, it's a list. So when setting it, ensure you do = list(shit1, shit2)
-	var/special_desc_factions = list()
+	var/list/special_desc_factions
 
 
 /obj/item/examine_more(mob/user)
