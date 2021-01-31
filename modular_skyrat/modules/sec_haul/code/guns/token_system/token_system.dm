@@ -27,6 +27,8 @@
 	var/obj/item/storage/box/gunset/chosen_gunset = show_radial_menu(redeemer, src, radial_build, radius = 40)
 	if(!chosen_gunset)
 		return
+	if(!redeemer.Adjacent(src))
+		return
 	var/obj/item/storage/box/gunset/dispensed = new chosen_gunset(src.loc)
 
 	if(redeemer.CanReach(src) && redeemer.put_in_hands(dispensed))
