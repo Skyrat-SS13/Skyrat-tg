@@ -1,7 +1,7 @@
 //////Kitchen Spike
 #define VIABLE_MOB_CHECK(X) (isliving(X) && !issilicon(X) && !isbot(X))
 
-/obj/structure/kitchenspike_frame
+/obj/structure/kitchenspike_frame//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "meatspike frame"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "spikeframe"
@@ -36,7 +36,7 @@
 	else
 		return ..()
 
-/obj/structure/kitchenspike
+/obj/structure/kitchenspike//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "meat spike"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "spike"

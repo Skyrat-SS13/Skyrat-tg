@@ -13405,6 +13405,13 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/button/door{
+	id = "Toilet1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = 25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
 "aGn" = (
@@ -13415,6 +13422,13 @@
 	dir = 8
 	},
 /obj/effect/landmark/blobstart,
+/obj/machinery/button/door{
+	id = "Toilet2";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = 25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
 "aGo" = (
@@ -14238,12 +14252,14 @@
 /area/crew_quarters/toilet)
 "aHV" = (
 /obj/machinery/door/airlock{
+	id_tag = "Toilet1";
 	name = "Unit 1"
 	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet)
 "aHW" = (
 /obj/machinery/door/airlock{
+	id_tag = "Toilet2";
 	name = "Unit 2"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -20608,6 +20624,14 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/button/door{
+	id = "AuxToilet4";
+	id_tag = null;
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/locker)
 "aZu" = (
@@ -20616,6 +20640,7 @@
 /area/bridge/meeting_room)
 "aZv" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet1";
 	name = "Unit 1"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -21408,6 +21433,7 @@
 /area/security/execution/transfer)
 "bbL" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet2";
 	name = "Unit 2"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -22071,6 +22097,7 @@
 /area/bridge/meeting_room)
 "bdJ" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet3";
 	name = "Unit 3"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -23020,6 +23047,7 @@
 /area/science/research)
 "bgr" = (
 /obj/machinery/door/airlock{
+	id_tag = "AuxToilet4";
 	name = "Unit 4"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -27444,7 +27472,14 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/item/soap,
+/obj/machinery/button/door{
+	id = "AuxToilet3";
+	id_tag = null;
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/toilet/locker)
 "brq" = (
@@ -50592,6 +50627,22 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/aft)
+"mrg" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "AuxToilet2";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/toilet/locker)
 "mrM" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -51759,6 +51810,22 @@
 /obj/structure/sign/warning/biohazard,
 /turf/closed/wall/r_wall,
 /area/science/xenobiology)
+"ohn" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "AuxToilet1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/toilet/locker)
 "olh" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -54808,6 +54875,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/white,
 /area/science/research)
+"tZr" = (
+/obj/machinery/posialert,
+/turf/closed/wall/r_wall,
+/area/science/robotics/lab)
 "uaq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -73844,9 +73915,9 @@ aPA
 aPA
 aPA
 aXQ
-aZt
+ohn
 aXQ
-aZt
+mrg
 aXQ
 brp
 aXQ
@@ -101605,7 +101676,7 @@ bbD
 aYV
 qXW
 aYV
-bfV
+tZr
 hKu
 cHM
 biL

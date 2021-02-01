@@ -376,6 +376,9 @@
 		if(mob_occupant.mind.assigned_role)
 			SSjob.FreeRole(mob_occupant.mind.assigned_role)
 		mob_occupant.mind.special_role = null
+		if(SSticker.mode.name == "assaultops")
+			if(is_assaultops_target(mob_occupant.mind))
+				remove_assaultops_target(mob_occupant.mind) //Remove them from the list of targets for the assops.
 
 	// Delete them from datacore.
 

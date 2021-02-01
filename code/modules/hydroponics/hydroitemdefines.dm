@@ -1,6 +1,6 @@
 
 // Plant analyzer
-/obj/item/plant_analyzer
+/obj/item/plant_analyzer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "plant analyzer"
 	desc = "A scanner used to evaluate a plant's various areas of growth, and genetic traits."
 	icon = 'icons/obj/device.dmi'
