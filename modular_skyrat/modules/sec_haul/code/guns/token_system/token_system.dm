@@ -18,9 +18,11 @@
 		return
 
 /obj/machinery/gun_vendor/proc/RedeemToken(obj/item/armament_token/token, mob/redeemer)
+	if(!token)
+		return
 	if(seclevel2num(get_security_level()) < token.minimum_sec_level)
 		to_chat(redeemer, "<span class='redtext'>Warning, this holochip is locked to [num2seclevel(token.minimum_sec_level)]!</span>")
-		message_admins("ARMAMENT LOG: [redeemer] attempted to redeem a [token] on the incorrect security level!")
+		message_admins("ARMAMENT LOG: [redeemer] attempted to redeem a [token.name] on the incorrect security level!")
 		return
 	var/list/radial_build = token.get_available_gunsets()
 	seclevel2num()
