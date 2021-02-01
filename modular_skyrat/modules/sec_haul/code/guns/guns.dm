@@ -399,6 +399,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 	emp_damageable = TRUE
 	armadyne = TRUE
+	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr
 	name = "pcr smg magazine (9mm)"
@@ -447,6 +448,7 @@
 	emp_damageable = FALSE
 	armadyne = TRUE
 	can_bayonet = TRUE
+	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull
 	name = "pitbull smg magazine (10mm)"
@@ -454,7 +456,7 @@
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b10mm
 	caliber = "10mm"
-	max_ammo = 20
+	max_ammo = 25
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/hp
@@ -629,6 +631,7 @@
 	can_suppress = FALSE
 	can_bayonet = TRUE
 	mag_display = TRUE
+	can_flashlight = TRUE
 	mag_display_ammo = TRUE
 	actions_types = null
 	realistic = TRUE
