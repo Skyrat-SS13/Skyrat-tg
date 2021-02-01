@@ -208,8 +208,11 @@
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
 "aL" = (
+/obj/machinery/power/smes/magical{
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Produces power through an unstable bluespace pocket.";
+	name = "bluespace-pocket power storage unit"
+	},
 /obj/structure/cable,
-/obj/machinery/power/rtg/advanced,
 /turf/open/floor/plating,
 /area/cruiser_dock)
 "aM" = (
@@ -319,6 +322,18 @@
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
+"be" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "bf" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "security airlock";
@@ -536,15 +551,12 @@
 /turf/open/floor/plasteel,
 /area/cruiser_dock/brig)
 "bI" = (
-/obj/structure/cable,
-/obj/machinery/power/smes/magical,
+/obj/machinery/power/port_gen/pacman/super,
 /turf/open/floor/plating,
 /area/cruiser_dock)
 "bJ" = (
 /obj/structure/cable,
-/obj/machinery/power/terminal{
-	dir = 1
-	},
+/obj/machinery/power/rtg/advanced,
 /turf/open/floor/plating,
 /area/cruiser_dock)
 "bK" = (
@@ -1759,6 +1771,15 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock)
+"fl" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "docklockdown"
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
 "fn" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible{
 	dir = 4
@@ -1770,6 +1791,15 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/white,
+/area/cruiser_dock)
+"fp" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "ft" = (
 /obj/machinery/door/airlock/maintenance{
@@ -1988,6 +2018,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"gq" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
 "gs" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -2076,6 +2112,17 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/white,
+/area/cruiser_dock)
+"gL" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "gS" = (
 /obj/effect/turf_decal/stripes/red/box,
@@ -2257,6 +2304,12 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock)
+"hV" = (
+/obj/structure/chair/sofa/corp{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock)
 "hX" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -2363,6 +2416,13 @@
 /obj/item/flashlight/seclite,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
+"im" = (
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock)
 "in" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/trimline/purple/filled/line,
@@ -2453,21 +2513,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
-"iM" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -2601,14 +2646,6 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"jv" = (
-/obj/machinery/door/window/northleft{
-	dir = 2;
-	name = "containment door";
-	req_access_txt = "150"
-	},
-/turf/open/floor/engine,
-/area/cruiser_dock)
 "jw" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 8;
@@ -2628,6 +2665,21 @@
 	dir = 8
 	},
 /turf/open/floor/carpet/donk,
+/area/cruiser_dock)
+"jC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "jD" = (
 /obj/structure/table/reinforced,
@@ -2966,13 +3018,6 @@
 /obj/effect/mob_spawn/human/syndicate/assops/prison_warden,
 /turf/open/floor/mineral/plastitanium/red,
 /area/cruiser_dock)
-"lE" = (
-/obj/machinery/light/warm{
-	dir = 1
-	},
-/obj/structure/table/wood,
-/turf/open/floor/wood,
-/area/cruiser_dock)
 "lI" = (
 /obj/structure/toilet{
 	dir = 4
@@ -3060,22 +3105,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"mm" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "mn" = (
 /obj/effect/mob_spawn/human/corpse/syndicatesoldier,
 /turf/open/floor/plasteel/dark,
@@ -3130,6 +3159,10 @@
 	id = "docklockdown"
 	},
 /turf/open/floor/plasteel,
+/area/cruiser_dock)
+"mO" = (
+/obj/structure/chair/sofa/corp/left,
+/turf/open/floor/wood,
 /area/cruiser_dock)
 "mP" = (
 /obj/structure/window/reinforced{
@@ -3374,6 +3407,22 @@
 "oq" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"or" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/light/cold/no_nightlight{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"ov" = (
+/obj/structure/chair/sofa/corp,
+/turf/open/floor/wood,
 /area/cruiser_dock)
 "oA" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -3906,29 +3955,6 @@
 /obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/plasteel/checker,
 /area/cruiser_dock)
-"ry" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "rz" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/dark,
@@ -4217,21 +4243,6 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
-"tn" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "tp" = (
 /obj/machinery/light/red{
 	dir = 8;
@@ -4268,12 +4279,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
-/area/cruiser_dock)
-"tL" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
-/turf/open/floor/wood,
 /area/cruiser_dock)
 "tN" = (
 /obj/structure/frame/computer{
@@ -4404,13 +4409,6 @@
 "uG" = (
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel/white,
-/area/cruiser_dock)
-"uH" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/uranium{
-	amount = 50
-	},
-/turf/open/floor/plating,
 /area/cruiser_dock)
 "uI" = (
 /obj/machinery/light/red{
@@ -4820,12 +4818,6 @@
 /obj/item/melee/baseball_bat/ablative,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
-"xq" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/cruiser_dock)
 "xr" = (
 /obj/machinery/computer/camera_advanced{
 	dir = 4
@@ -4846,6 +4838,22 @@
 /area/cruiser_dock)
 "xt" = (
 /turf/open/floor/engine,
+/area/cruiser_dock)
+"xx" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "xA" = (
 /obj/machinery/status_display,
@@ -5018,12 +5026,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"yH" = (
-/obj/machinery/light/warm{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "yO" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 10
@@ -5171,10 +5173,6 @@
 /obj/item/reagent_containers/food/condiment/mayonnaise,
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
-"zC" = (
-/obj/structure/chair/sofa/corp,
-/turf/open/floor/wood,
-/area/cruiser_dock)
 "zE" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible{
 	dir = 10
@@ -5293,6 +5291,22 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock/brig)
+"As" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "Aw" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
@@ -5322,6 +5336,12 @@
 "AG" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"AM" = (
+/obj/machinery/light/warm{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "AN" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -5650,16 +5670,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Cz" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "CA" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 8
@@ -5761,9 +5771,30 @@
 /obj/item/ammo_box/magazine/m16,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
+"Do" = (
+/obj/structure/chair/sofa/corp/right,
+/turf/open/floor/wood,
+/area/cruiser_dock)
 "Ds" = (
-/obj/machinery/power/port_gen/pacman/super,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "Dt" = (
 /obj/effect/turf_decal/trimline/red/line{
@@ -5994,18 +6025,6 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
-"Fb" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
@@ -6282,23 +6301,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/cruiser_dock)
-"Ha" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "Hc" = (
 /obj/machinery/nanite_programmer,
 /turf/open/floor/circuit/green,
@@ -6404,6 +6406,14 @@
 "HS" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/plasteel/showroomfloor,
+/area/cruiser_dock)
+"HX" = (
+/obj/machinery/door/window/northleft{
+	dir = 2;
+	name = "containment door";
+	req_access_txt = "150"
+	},
+/turf/open/floor/engine,
 /area/cruiser_dock)
 "Ia" = (
 /obj/structure/table/wood,
@@ -6749,15 +6759,6 @@
 	},
 /turf/open/floor/carpet/donk,
 /area/cruiser_dock)
-"JU" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/corner{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "JV" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -6782,18 +6783,6 @@
 /obj/machinery/door/airlock/security{
 	name = "Secure Airlock";
 	req_access_txt = "150"
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
-"Kf" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/machinery/light/cold/no_nightlight{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
@@ -7025,22 +7014,8 @@
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "Lt" = (
+/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
@@ -7143,6 +7118,29 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/cruiser_dock)
+"Me" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "Mf" = (
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -7230,10 +7228,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/cruiser_dock)
-"MI" = (
-/obj/structure/chair/sofa/corp/left,
-/turf/open/floor/wood,
-/area/cruiser_dock)
 "MK" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
@@ -7245,6 +7239,29 @@
 "MM" = (
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
+/area/cruiser_dock)
+"MQ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "MR" = (
 /mob/living/simple_animal/hostile/syndicate{
@@ -7272,7 +7289,6 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/cruiser_dock)
 "Nc" = (
-/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -7299,8 +7315,25 @@
 /area/cruiser_dock)
 "Ns" = (
 /obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "Nt" = (
@@ -7404,12 +7437,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"Of" = (
-/obj/structure/chair/sofa/corp{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/cruiser_dock)
 "Oh" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 5
@@ -7485,22 +7512,6 @@
 /obj/structure/table/wood,
 /obj/item/storage/photo_album/syndicate,
 /turf/open/floor/plasteel/grimy,
-/area/cruiser_dock)
-"Oz" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 10
-	},
-/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "OA" = (
 /obj/effect/turf_decal/siding/green/corner{
@@ -7682,29 +7693,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"PC" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "PD" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 4
@@ -7792,10 +7780,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -7805,10 +7789,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "Qn" = (
@@ -7905,10 +7885,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/cruiser_dock)
-"QP" = (
-/obj/structure/chair/sofa/corp/right,
-/turf/open/floor/wood,
-/area/cruiser_dock)
 "QS" = (
 /obj/machinery/light/cold/no_nightlight,
 /turf/open/floor/plasteel/dark,
@@ -7999,15 +7975,12 @@
 /obj/effect/turf_decal/trimline/red/line,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"RB" = (
-/obj/effect/turf_decal/tile/neutral,
+"RE" = (
 /obj/effect/turf_decal/tile/neutral{
-	dir = 4
+	dir = 8
 	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "RN" = (
@@ -8040,6 +8013,15 @@
 "RV" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
 	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"RW" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
@@ -8091,15 +8073,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"So" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "docklockdown"
-	},
-/turf/open/floor/wood,
-/area/cruiser_dock)
 "Sp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -8132,21 +8105,6 @@
 /obj/machinery/smartfridge/petri/preloaded,
 /obj/effect/turf_decal/tile/purple,
 /turf/open/floor/plasteel/white,
-/area/cruiser_dock)
-"Sz" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "SA" = (
 /obj/machinery/light/warm{
@@ -8316,6 +8274,14 @@
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"TF" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 50
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/cruiser_dock)
 "TH" = (
 /obj/structure/window/reinforced,
@@ -8563,15 +8529,6 @@
 /obj/item/storage/box/contractor/fulton_extraction,
 /turf/open/floor/engine,
 /area/cruiser_dock)
-"Vq" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "Vr" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 8
@@ -8649,6 +8606,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
+"VW" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
 "VX" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
@@ -8668,6 +8635,21 @@
 /obj/structure/bed,
 /obj/item/bedsheet/dorms,
 /turf/open/floor/plasteel/grimy,
+/area/cruiser_dock)
+"Wb" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "We" = (
 /mob/living/simple_animal/hostile/syndicate{
@@ -8748,14 +8730,6 @@
 /obj/item/pickaxe/drill/diamonddrill,
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
-"WA" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/trimline/red/filled/line,
-/turf/open/floor/plasteel/dark,
-/area/cruiser_dock)
 "WB" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 4
@@ -8768,6 +8742,23 @@
 "WD" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /obj/machinery/light/cold/no_nightlight,
+/turf/open/floor/plasteel/dark,
+/area/cruiser_dock)
+"WI" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/cruiser_dock)
 "WJ" = (
@@ -8811,6 +8802,12 @@
 "WN" = (
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant,
 /turf/open/floor/carpet,
+/area/cruiser_dock)
+"WP" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/turf/open/floor/wood,
 /area/cruiser_dock)
 "WR" = (
 /obj/structure/window/reinforced{
@@ -9229,6 +9226,13 @@
 /obj/structure/table,
 /obj/item/pen/fountain,
 /turf/open/floor/carpet/royalblack,
+/area/cruiser_dock)
+"ZR" = (
+/obj/machinery/light/warm{
+	dir = 1
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood,
 /area/cruiser_dock)
 "ZZ" = (
 /obj/structure/chair/office{
@@ -24336,15 +24340,15 @@ aa
 aa
 ak
 ab
-aL
-aL
-aL
-aL
+bJ
+bJ
+bJ
+bJ
 ba
 ak
-ab
-ab
-ab
+aL
+ba
+ba
 ak
 nm
 jN
@@ -24599,9 +24603,9 @@ ab
 ab
 ba
 ud
-ba
-ba
+im
 ab
+ba
 ak
 KA
 pJ
@@ -24850,15 +24854,15 @@ aa
 aa
 ak
 ab
-aL
-aL
-aL
-aL
+bJ
+bJ
+bJ
+bJ
 ba
 ak
 bh
-ba
 ab
+ba
 bb
 vV
 af
@@ -25115,7 +25119,7 @@ ab
 ak
 et
 ba
-ab
+ba
 ak
 kI
 af
@@ -25370,9 +25374,9 @@ aP
 aP
 ak
 ak
-Ds
-ba
 ab
+ab
+ba
 ak
 KA
 pJ
@@ -25628,8 +25632,8 @@ aP
 aa
 ak
 bI
-bJ
-uH
+ba
+TF
 ak
 lO
 an
@@ -34378,7 +34382,7 @@ aA
 ak
 aA
 aA
-yH
+AM
 aA
 aA
 ak
@@ -37451,15 +37455,15 @@ jZ
 Dy
 Dy
 Dy
-Kf
+or
 Dy
 Dy
-JU
+fp
 Fm
 Fm
 oS
 KV
-So
+fl
 BD
 BD
 BD
@@ -37471,9 +37475,9 @@ lS
 lS
 lS
 BD
-QP
+Do
 ig
-tL
+gq
 BD
 iT
 ig
@@ -37713,10 +37717,10 @@ SF
 SF
 SF
 SF
-Oz
+xx
 NL
 KV
-So
+fl
 BD
 BD
 BD
@@ -37728,9 +37732,9 @@ BD
 BD
 BD
 BD
-zC
+ov
 ig
-Of
+hV
 BD
 iT
 ig
@@ -37963,17 +37967,17 @@ KV
 pd
 YI
 BP
-RB
+gL
 sL
 sh
 sh
 YI
-RB
+gL
 sL
 Pm
 NL
 KV
-So
+fl
 BD
 BD
 BD
@@ -37985,9 +37989,9 @@ DP
 DP
 DP
 BD
-MI
+mO
 ig
-xq
+WP
 BD
 iT
 ig
@@ -38219,15 +38223,15 @@ PH
 KV
 pd
 JH
-Lt
-Sz
-PC
+Ds
+Qm
+MQ
 sL
 sh
 sh
-Fb
-ry
-WA
+be
+Me
+RE
 NL
 KV
 ak
@@ -38476,15 +38480,15 @@ NL
 KV
 iK
 KY
-Nc
+Lt
 sh
 JH
-iM
+jC
 sh
 sh
-Vq
-ry
-WA
+RW
+Me
+RE
 NL
 Fq
 ak
@@ -38733,19 +38737,19 @@ PH
 KV
 iK
 KY
-Nc
+Lt
 sh
-Vq
+RW
 KY
-Nc
+Lt
 sh
-Vq
-ry
-WA
+RW
+Me
+RE
 NL
 KV
 ak
-lE
+ZR
 BD
 BD
 BD
@@ -38990,15 +38994,15 @@ PH
 KV
 iK
 KY
-Ns
-Cz
-Vq
+Nc
+VW
+RW
 KY
 sL
 sh
-Vq
-ry
-WA
+RW
+Me
+RE
 NL
 KV
 ak
@@ -39247,13 +39251,13 @@ NL
 KV
 jt
 Oo
-Qm
+Ns
 zO
 sh
-Fb
-PC
+be
+MQ
 Gj
-Ha
+WI
 zO
 Pm
 NL
@@ -39504,12 +39508,12 @@ ET
 KV
 pd
 mu
-Sz
+Qm
 zO
 sh
 sh
-Fb
-tn
+be
+Wb
 zO
 sh
 Pm
@@ -39769,7 +39773,7 @@ rc
 rc
 rc
 rc
-mm
+As
 NL
 KV
 ak
@@ -47492,7 +47496,7 @@ Gq
 pa
 Nt
 jI
-jv
+HX
 xt
 xt
 xt
