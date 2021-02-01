@@ -33,7 +33,7 @@
 	var/list/mirage_whitelist = list()
 
 /obj/structure/closet/bluespace/internal/Initialize()
-	. = ..()
+	. = ..() 
 	if(SSbluespace_locker.internal_locker && SSbluespace_locker.internal_locker != src)
 		qdel(src)
 		return
