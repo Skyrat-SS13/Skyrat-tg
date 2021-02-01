@@ -1,7 +1,7 @@
 /*Power cells are in code\modules\power\cell.dm
 
 If you create T5+ please take a pass at mech_fabricator.dm. The parts being good enough allows it to go into minus values and create materials out of thin air when printing stuff.*/
-/obj/item/storage/part_replacer
+/obj/item/storage/part_replacer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "rapid part exchange device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
@@ -41,7 +41,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 	else
 		playsound(src, pshoom_or_beepboopblorpzingshadashwoosh, 40, TRUE)
 
-/obj/item/storage/part_replacer/bluespace
+/obj/item/storage/part_replacer/bluespace//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bluespace rapid part exchange device"
 	desc = "A version of the RPED that allows for replacement of parts and scanning from a distance, along with higher capacity for parts."
 	icon_state = "BS_RPED"
@@ -126,7 +126,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 		new /obj/item/stock_parts/matter_bin(src)
 		new /obj/item/stock_parts/electrolite(src)
 
-/obj/item/storage/part_replacer/cyborg
+/obj/item/storage/part_replacer/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "rapid part exchange device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "borgrped"
@@ -154,7 +154,7 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 
 //Rating 1
 
-/obj/item/stock_parts/capacitor
+/obj/item/stock_parts/capacitor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE ALL COMPONENTS!
 	name = "capacitor"
 	desc = "A basic capacitor used in the construction of a variety of devices."
 	icon_state = "capacitor"

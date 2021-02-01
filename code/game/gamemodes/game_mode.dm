@@ -41,8 +41,8 @@
 	var/announce_span = "warning" //The gamemode's name will be in this span during announcement.
 	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!" //Used to describe a gamemode when it's announced.
 
-	var/const/waittime_l = 600
-	var/const/waittime_h = 1800 // started at 1800
+	var/waittime_l = 600 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/const/waittime_l = 600
+	var/waittime_h = 1800 // started at 1800 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/waittime_h = 1800
 
 	var/list/datum/station_goal/station_goals = list()
 
@@ -478,7 +478,7 @@
 //Reports player logouts//
 //////////////////////////
 /proc/display_roundstart_logout_report()
-	var/list/msg = list("<span class='boldnotice'>Roundstart logout report\n\n</span>")
+	var/list/msg = list("<span class='boldnotice'>Roundstart logout report</span>\n\n")
 	for(var/i in GLOB.mob_living_list)
 		var/mob/living/L = i
 		var/mob/living/carbon/C = L

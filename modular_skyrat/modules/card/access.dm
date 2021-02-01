@@ -17,7 +17,7 @@
 	"Research Officer","Special Ops Officer","Private Security Force","CentCom Commander","Service Guest","Guest Comedian","Private Trader","Independent Technician","Long Term Patient","Research Subject","Independent Researcher","Security Contractor", "DonkCo Diplomat",
 	"Cybersun Diplomat","Interdyne Chemist","Syndicate","Syndicate Prisoner","Nuclear Operative","Assault Operative","Lizard","Moth","Kobold","Cutie","Station Admiral","Corporate Liaison","Chief Engineering Officer","Chief Research Officer","Chief Master At Arms",
 	"Investigative Officer","Brig Officer","Master At Arms","Corporate Lawyer","Station Medical Officer","Bioweapons Technician","Engine Technicinan","Genetics Researcher","Researcher","Robotics Technician","Chef","Counsel","Sanitation Technician","Deck Officer",
-	"Deck Crewman")
+	"Deck Crewman","Syndicate Staff","Comms Officer")
 
 /proc/get_all_centcom_jobs() //Admin-only jobs or jobs that nobody would care if it was a generic nanotrasen logo.
 	return list("Central Command","Thunderdome Overseer","CentCom Official")

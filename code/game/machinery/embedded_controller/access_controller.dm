@@ -37,7 +37,7 @@
 /obj/machinery/door_buttons/proc/removeMe()
 
 
-/obj/machinery/door_buttons/access_button
+/obj/machinery/door_buttons/access_button//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "access_button_standby"
 	name = "access button"
