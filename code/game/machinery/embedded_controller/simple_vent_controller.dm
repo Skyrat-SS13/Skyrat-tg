@@ -31,7 +31,7 @@
 	return 0
 
 
-/obj/machinery/embedded_controller/radio/simple_vent_controller
+/obj/machinery/embedded_controller/radio/simple_vent_controller//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 

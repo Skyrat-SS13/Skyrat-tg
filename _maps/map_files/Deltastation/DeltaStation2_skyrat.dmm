@@ -10292,7 +10292,8 @@
 /area/janitor)
 "azg" = (
 /obj/machinery/door/airlock{
-	name = "Toilet Unit"
+	id_tag = "AuxToilet1";
+	name = "Toilet Unit 1"
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -10658,6 +10659,13 @@
 	},
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/vomit,
+/obj/machinery/button/door{
+	id = "AuxToilet1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plating,
 /area/crew_quarters/toilet/auxiliary)
 "aAn" = (
@@ -10670,7 +10678,13 @@
 	},
 /obj/machinery/light/small,
 /obj/effect/turf_decal/bot,
-/obj/item/soap/nanotrasen,
+/obj/machinery/button/door{
+	id = "AuxToilet2";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/toilet/auxiliary)
 "aAo" = (
@@ -10684,6 +10698,13 @@
 /obj/machinery/light/small,
 /obj/effect/landmark/start/assistant,
 /obj/effect/turf_decal/bot,
+/obj/machinery/button/door{
+	id = "AuxToilet3";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/toilet/auxiliary)
 "aAp" = (
@@ -68866,7 +68887,8 @@
 "cGJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock{
-	name = "Toilet Unit"
+	id_tag = "Toilet1";
+	name = "Toilet Unit 1"
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -68874,12 +68896,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/plasteel{
-	heat_capacity = 1e+006
-	},
+/turf/open/floor/plasteel,
 /area/crew_quarters/toilet/restrooms)
 "cGK" = (
 /obj/machinery/door/airlock{
+	id_tag = "Toilet3";
 	name = "Toilet Unit"
 	},
 /turf/open/floor/plating,
@@ -69521,6 +69542,13 @@
 	pixel_x = -32
 	},
 /obj/machinery/light/small,
+/obj/machinery/button/door{
+	id = "Toilet1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plating,
 /area/crew_quarters/toilet/restrooms)
 "cIb" = (
@@ -69533,6 +69561,13 @@
 	},
 /obj/machinery/light/small,
 /obj/effect/turf_decal/bot,
+/obj/machinery/button/door{
+	id = "Toilet2";
+	name = "Lock control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/toilet/restrooms)
 "cIc" = (
@@ -69546,6 +69581,13 @@
 /obj/machinery/light/small,
 /obj/effect/landmark/start/assistant,
 /obj/effect/turf_decal/bot,
+/obj/machinery/button/door{
+	id = "Toilet3";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	pixel_y = -25;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/toilet/restrooms)
 "cId" = (
@@ -89319,7 +89361,7 @@
 /turf/open/floor/plating,
 /area/science/robotics/lab)
 "dye" = (
-/obj/structure/sign/departments/science,
+/obj/machinery/posialert,
 /turf/closed/wall,
 /area/science/robotics/lab)
 "dyf" = (
@@ -106950,6 +106992,17 @@
 /mob/living/simple_animal/mouse/brown/tom,
 /turf/open/floor/plasteel,
 /area/security/prison)
+"iiM" = (
+/obj/machinery/door/airlock{
+	id_tag = "AuxToilet3";
+	name = "Toilet Unit 3"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/toilet/auxiliary)
 "iiU" = (
 /obj/structure/sign/warning/radiation,
 /turf/closed/wall/r_wall,
@@ -112713,6 +112766,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
+"ubT" = (
+/obj/machinery/door/airlock{
+	id_tag = "AuxToilet2";
+	name = "Toilet Unit 2"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/toilet/auxiliary)
 "ucT" = (
 /obj/machinery/light{
 	dir = 4
@@ -114734,6 +114798,20 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
+"yhk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock{
+	id_tag = "Toilet2";
+	name = "Toilet Unit 2"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/toilet/restrooms)
 "yhJ" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
@@ -151874,7 +151952,7 @@ auj
 avI
 awK
 ayc
-azg
+ubT
 aAn
 auj
 aIK
@@ -152388,7 +152466,7 @@ auj
 auj
 awM
 aye
-azg
+iiM
 aAo
 auj
 aCJ
@@ -161452,7 +161530,7 @@ cAm
 cBP
 cDw
 cFk
-cGJ
+yhk
 cIb
 cAm
 cZX
