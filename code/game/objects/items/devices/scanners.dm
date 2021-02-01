@@ -18,7 +18,7 @@ GENE SCANNER
 #define SCANNER_CONDENSED 	0
 #define SCANNER_VERBOSE 	1
 
-/obj/item/t_scanner
+/obj/item/t_scanner//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "\improper T-ray scanner"
 	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
 	custom_price = PAYCHECK_ASSISTANT * 0.7
@@ -539,7 +539,7 @@ GENE SCANNER
 
 	woundscan(user, patient, src)
 
-/obj/item/analyzer
+/obj/item/analyzer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	desc = "A hand-held environmental scanner which reports current gas levels. Alt-Click to use the built in barometer function."
 	name = "analyzer"
 	custom_price = PAYCHECK_ASSISTANT * 0.9
@@ -802,7 +802,7 @@ GENE SCANNER
 	if(!response)
 		to_chat(user, "<span class='info'>No nanites detected in the subject.</span>")
 
-/obj/item/sequence_scanner
+/obj/item/sequence_scanner//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "genetic sequence scanner"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gene"
