@@ -300,3 +300,36 @@
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
 	icon_state = "peacekeeper_riot"
 
+//HARDSUITS
+/obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
+	name = "Armadyne SS-01 Voidsuit Helmet"
+	desc = "An Armadyne brand voidsuit helmet, with a decent layer of armor, this one comes in the peacekeeper colors."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_hardsuit.dmi'
+	worn_icon_muzzled = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_hardsuit_digi.dmi'
+	icon_state = "hardsuit0-peacekeeper"
+	inhand_icon_state = "sec_helm"
+	hardsuit_type = "peacekeeper"
+	armor = list(MELEE = 40, BULLET = 20, LASER = 35, ENERGY = 45, BOMB = 10, BIO = 100, RAD = 50, FIRE = 90, ACID = 75, WOUND = 20)
+	slowdown = 1
+
+/obj/item/clothing/suit/space/hardsuit/security_peacekeeper
+	icon_state = "hardsuit-sec"
+	name = "Armadyne SS-01 Voidsuit"
+	desc = "An Armadyne brand voidsuit, with a decent layer of armor, this one comes in the peacekeeper colors."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_hardsuit.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_hardsuit_digi.dmi'
+	icon_state = "hardsuit-peacekeeper"
+	inhand_icon_state = "sec_hardsuit"
+	armor = list(MELEE = 40, BULLET = 20, LASER = 35, ENERGY = 45, BOMB = 10, BIO = 100, RAD = 50, FIRE = 90, ACID = 75, WOUND = 20)
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
+	slowdown = 1
+
+/obj/machinery/suit_storage_unit/security_peacekeeper
+	suit_type = /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
+	mask_type = /obj/item/clothing/mask/gas/sechailer
+
+/obj/item/clothing/suit/space/hardsuit/security_peacekeeper/Initialize()
+	. = ..()
+	allowed = GLOB.security_hardsuit_allowed
