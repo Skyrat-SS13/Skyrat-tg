@@ -1,6 +1,6 @@
 //Microwaving doesn't use recipes, instead it calls the microwave_act of the objects. For food, this creates something based on the food's cooked_type
 
-/obj/machinery/microwave
+/obj/machinery/microwave//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "microwave oven"
 	desc = "Cooks and boils stuff."
 	icon = 'icons/obj/kitchen.dmi'
