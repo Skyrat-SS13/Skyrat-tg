@@ -311,7 +311,7 @@
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "peacekeeper"
 	armor = list(MELEE = 40, BULLET = 20, LASER = 35, ENERGY = 45, BOMB = 10, BIO = 100, RAD = 50, FIRE = 90, ACID = 75, WOUND = 20)
-	slowdown = 1
+	slowdown = 0.7
 
 /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
 	icon_state = "hardsuit-sec"
@@ -324,7 +324,7 @@
 	inhand_icon_state = "sec_hardsuit"
 	armor = list(MELEE = 40, BULLET = 20, LASER = 35, ENERGY = 45, BOMB = 10, BIO = 100, RAD = 50, FIRE = 90, ACID = 75, WOUND = 20)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
-	slowdown = 1
+	slowdown = 0.7
 	hardsuit_tail_colors = list("BBB", "444", "337")
 
 /obj/machinery/suit_storage_unit/security_peacekeeper
