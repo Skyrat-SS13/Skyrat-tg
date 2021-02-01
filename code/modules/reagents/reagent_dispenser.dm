@@ -62,7 +62,7 @@
 	else
 		qdel(src)
 
-/obj/structure/reagent_dispensers/watertank
+/obj/structure/reagent_dispensers/watertank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "water tank"
 	desc = "A water tank."
 	icon_state = "water"
@@ -73,14 +73,14 @@
 	icon_state = "water_high" //I was gonna clean my room...
 	tank_volume = 100000
 
-/obj/structure/reagent_dispensers/foamtank
+/obj/structure/reagent_dispensers/foamtank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "firefighting foam tank"
 	desc = "A tank full of firefighting foam."
 	icon_state = "foam"
 	reagent_id = /datum/reagent/firefighting_foam
 	tank_volume = 500
 
-/obj/structure/reagent_dispensers/fueltank
+/obj/structure/reagent_dispensers/fueltank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "fuel tank"
 	desc = "A tank full of industrial welding fuel. Do not consume."
 	icon_state = "fuel"
@@ -156,7 +156,7 @@
 		desc = "IT'S PEPPER TIME, BITCH!"
 
 
-/obj/structure/reagent_dispensers/water_cooler
+/obj/structure/reagent_dispensers/water_cooler//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "liquid cooler"
 	desc = "A machine that dispenses liquid to drink."
 	icon = 'icons/obj/vending.dmi'
@@ -222,7 +222,7 @@
 	anchored = TRUE
 	reagent_id = /datum/reagent/consumable/nutraslop
 
-/obj/structure/reagent_dispensers/plumbed
+/obj/structure/reagent_dispensers/plumbed//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "stationary water tank"
 	anchored = TRUE
 	icon_state = "water_stationary"

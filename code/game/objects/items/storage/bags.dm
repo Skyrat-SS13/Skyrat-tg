@@ -106,7 +106,7 @@
 //        Mining Satchel
 // -----------------------------
 
-/obj/item/storage/bag/ore
+/obj/item/storage/bag/ore//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "mining satchel"
 	desc = "This little bugger can be used to store and transport ores."
 	icon = 'icons/obj/mining.dmi'

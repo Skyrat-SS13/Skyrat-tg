@@ -1,5 +1,5 @@
 
-/obj/machinery/processor
+/obj/machinery/processor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "food processor"
 	desc = "An industrial grinder used to process meat and other foods. Keep hands clear of intake area while operating."
 	icon = 'icons/obj/kitchen.dmi'
