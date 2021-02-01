@@ -1473,11 +1473,11 @@
 	dir = 5
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 9
 	},
 /turf/open/floor/plasteel/white,
 /area/security/prison)
@@ -1880,7 +1880,6 @@
 /turf/open/floor/plasteel/dark/corner,
 /area/security/prison)
 "afN" = (
-/obj/machinery/suit_storage_unit/security,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -1891,10 +1890,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/suit_storage_unit/security_peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "afO" = (
-/obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -1911,7 +1910,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
 	},
-/obj/machinery/suit_storage_unit/security,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -1922,6 +1920,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "afQ" = (
@@ -43810,6 +43809,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"cEm" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/security/prison)
 "cEz" = (
 /obj/structure/closet/wardrobe/grey,
 /turf/open/floor/plating,
@@ -56828,16 +56839,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plasteel/white,
 /area/medical/surgery/room_b)
-"hyP" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/security/prison)
 "hzY" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -57001,6 +57002,17 @@
 /obj/item/reagent_containers/glass/rag,
 /turf/open/floor/plasteel/white,
 /area/medical/abandoned)
+"hFX" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/security/prison)
 "hGd" = (
 /obj/structure/chair{
 	pixel_y = -2
@@ -64818,24 +64830,6 @@
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
-"mRN" = (
-/obj/machinery/button/door{
-	id = "PermaLockdown";
-	name = "Panic Button";
-	pixel_x = -1;
-	pixel_y = -24;
-	req_access_txt = "2"
-	},
-/obj/structure/cable,
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/security/prison)
 "mRT" = (
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/plasteel/white,
@@ -67772,15 +67766,6 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/science/cytology)
-"oIO" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "PermaLockdown";
-	name = "Lockdown Shutters"
-	},
-/turf/open/floor/plating,
-/area/security/prison)
 "oJi" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -68857,6 +68842,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
+"poG" = (
+/obj/machinery/suit_storage_unit/security_peacekeeper,
+/turf/open/floor/plasteel/dark,
+/area/security/brig)
 "poP" = (
 /obj/machinery/power/apc/auto_name/east,
 /obj/structure/table/wood,
@@ -69010,6 +68999,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/hydroponics)
+"puC" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/prison)
 "puI" = (
 /obj/item/soap/nanotrasen,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -75443,6 +75442,16 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/science/storage)
+"tua" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/prison)
 "tuq" = (
 /obj/machinery/computer/security/labor{
 	dir = 8
@@ -75805,6 +75814,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"tGb" = (
+/obj/machinery/button/door{
+	id = "PermaLockdown";
+	name = "Panic Button";
+	pixel_x = -1;
+	pixel_y = -24;
+	req_access_txt = "2"
+	},
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/prison)
 "tGe" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 6
@@ -105969,7 +105996,7 @@ acv
 acI
 add
 vVP
-alL
+hFX
 aen
 gxF
 kNq
@@ -106226,8 +106253,8 @@ acv
 acJ
 lDT
 adw
-alL
-hyP
+cEm
+ajm
 ajm
 ajm
 ajm
@@ -106483,9 +106510,9 @@ acv
 aax
 aax
 ykb
-oIO
 wGf
 ajm
+poG
 afN
 gFy
 ajm
@@ -106740,9 +106767,9 @@ iGI
 acL
 aep
 adx
-vhW
 ryK
 ajm
+avk
 afO
 nMg
 ahx
@@ -106997,9 +107024,9 @@ gON
 jgM
 mYf
 wIK
-vhW
-ryK
-ahx
+puC
+ajm
+poG
 afP
 gFy
 ahx
@@ -107254,9 +107281,9 @@ acx
 acM
 aep
 klc
-vhW
-mRN
-ahx
+tGb
+ajm
+ajm
 ahx
 agJ
 ahx
@@ -107511,8 +107538,8 @@ aep
 aep
 aep
 ovf
-vhW
-ryK
+tua
+wIK
 mlG
 niI
 iAW

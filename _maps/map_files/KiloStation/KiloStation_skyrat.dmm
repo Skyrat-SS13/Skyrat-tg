@@ -56666,13 +56666,12 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -24
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/suit_storage_unit/security_peacekeeper,
+/turf/open/floor/plasteel/dark,
 /area/security/main)
 "bPh" = (
 /obj/structure/table,
@@ -73697,9 +73696,7 @@
 "cxp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/turf/open/floor/plasteel/dark,
 /area/security/main)
 "cxq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -74686,29 +74683,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/starboard/aft)
-"cze" = (
-/obj/machinery/suit_storage_unit/security,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/plasteel/dark,
-/area/security/main)
-"czf" = (
-/obj/machinery/suit_storage_unit/security,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/delivery,
-/obj/structure/cable,
-/turf/open/floor/plasteel/dark,
-/area/security/main)
 "czg" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -79048,6 +79022,14 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/disposal)
+"cHx" = (
+/obj/machinery/status_display/evac{
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/crew_quarters/heads/hos)
 "cHy" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -80097,13 +80079,12 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/table,
-/obj/machinery/recharger,
 /obj/machinery/computer/security/telescreen/prison{
 	dir = 4;
 	pixel_x = -24
 	},
 /obj/machinery/light/small,
+/obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "cJk" = (
@@ -82201,13 +82182,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard)
-"cNP" = (
-/obj/machinery/status_display/evac{
-	pixel_x = -32;
-	pixel_y = -32
-	},
-/turf/open/floor/carpet/red,
-/area/crew_quarters/heads/hos)
 "cNQ" = (
 /obj/structure/chair/comfy/brown{
 	buildstackamount = 0;
@@ -82881,6 +82855,11 @@
 	dir = 1
 	},
 /mob/living/simple_animal/bot/bulletbot,
+/turf/open/floor/plasteel/dark,
+/area/security/main)
+"dNb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/suit_storage_unit/security_peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "dNg" = (
@@ -83583,6 +83562,11 @@
 /obj/item/clothing/neck/tie/detective,
 /turf/open/floor/carpet/green,
 /area/maintenance/port)
+"fyv" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/dark,
+/area/security/main)
 "fzQ" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/stripes/line{
@@ -85268,6 +85252,10 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
+"kzc" = (
+/obj/structure/lattice,
+/turf/closed/wall/rust,
+/area/crew_quarters/heads/hos)
 "kzW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/bag/trash,
@@ -108103,10 +108091,10 @@ avM
 cJj
 ccv
 bPg
-cze
+dNb
+dNb
 aif
-aUz
-aaa
+uku
 aaa
 aaa
 acm
@@ -108360,9 +108348,9 @@ cto
 bEl
 oSM
 cxp
-czf
+fyv
+fyv
 aif
-aaa
 aaa
 aaa
 aaa
@@ -108619,7 +108607,7 @@ cmP
 cmP
 cmP
 cmO
-acm
+kzc
 acm
 acm
 acm
@@ -108875,7 +108863,7 @@ ctY
 als
 alJ
 bzD
-cmP
+cHx
 cmP
 aaa
 aaa
@@ -109131,7 +109119,7 @@ ctp
 cua
 cNG
 cNJ
-cNP
+cNJ
 bkU
 cmP
 aeU
