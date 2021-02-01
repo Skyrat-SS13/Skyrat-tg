@@ -28,3 +28,11 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 
+/obj/item/gun/ballistic/automatic/assault_rifle/stg/modern
+	name = "\improper Mil Spec Sturmgewehr 44"
+	desc = "The StG 44 (abbreviation of Sturmgewehr 44) is a German selective-fire assault rifle developed during World War II by Hugo Schmeisser. This is the 25th century version."
+	icon_state = "stg_modern"
+	inhand_icon_state = "stg"
+	worn_icon_state = "stg"
+	fire_delay = 1.2
+

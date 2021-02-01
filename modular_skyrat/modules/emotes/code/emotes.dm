@@ -62,7 +62,7 @@
 		var/mob/living/carbon/human/H = user
 		var/datum/species/userspecies = H.dna.species
 
-		if(user.gender == MALE || !length(userspecies.femalescreamsounds))
+		if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
 			return pick(userspecies.screamsounds)
 		else
 			return pick(userspecies.femalescreamsounds)
@@ -221,7 +221,7 @@
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
 
 /datum/emote/living/hiss
-	key = "hiss"
+	key = "hiss1"
 	key_third_person = "hisses"
 	message = "hisses!"
 	emote_type = EMOTE_AUDIBLE
@@ -337,6 +337,8 @@
 
 /datum/emote/living/laugh/get_sound(mob/living/user)
 	if(ismoth(user))
+		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
+	if(isinsect(user))
 		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
 	if(iscarbon(user))
 		if(user.gender == MALE)

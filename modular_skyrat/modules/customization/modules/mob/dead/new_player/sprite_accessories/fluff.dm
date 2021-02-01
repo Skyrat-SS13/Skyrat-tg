@@ -4,7 +4,7 @@
 	key = "fluff"
 	generic = "Fluff"
 	recommended_species = list("moth", "mammal", "insect")
-	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
+	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/fluff/moth/none
 	name = "None"
@@ -101,4 +101,8 @@
 	name = "Insect female (Tertiary)"
 	icon_state = "insectf"
 	default_color = DEFAULT_TERTIARY
-	
+
+/datum/sprite_accessory/fluff/moth/fsnow
+	name = "Snow (Top)"
+	icon_state = "fsnow"
+

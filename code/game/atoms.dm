@@ -652,6 +652,9 @@
 		. = TRUE
 
 	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_OVERLAYS))
+		if(LAZYLEN(managed_vis_overlays))
+			SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
+
 		var/list/new_overlays = update_overlays()
 		if(managed_overlays)
 			cut_overlay(managed_overlays)
@@ -1028,6 +1031,8 @@
  * * clean_types: any of the CLEAN_ constants
  */
 /atom/proc/wash(clean_types)
+	SHOULD_CALL_PARENT(TRUE)
+
 	. = FALSE
 	if(SEND_SIGNAL(src, COMSIG_COMPONENT_CLEAN_ACT, clean_types) & COMPONENT_CLEANED)
 		. = TRUE
@@ -1384,7 +1389,21 @@
 /atom/proc/log_message(message, message_type, color=null, log_globally=TRUE)
 	if(!log_globally)
 		return
-
+	//SKYRAT EDIT ADDITION BEGIN
+	#ifndef SPACEMAN_DMM
+	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
+		var/datum/db_query/query_sql_log_messages = SSdbcore.NewQuery({"
+			INSERT INTO [format_table_name("game_log")] (datetime, round_id, ckey, loc, type, message)
+			VALUES (:time, :round_id, :ckey, :loc, :type, :message)
+		"}, list("time" = SQLtime(), "round_id" = "[GLOB.round_id]", "ckey" = key_name(src), "loc" = loc_name(src), type = message_type, "message" = message))
+		if(!query_sql_log_messages.warn_execute())
+			qdel(query_sql_log_messages)
+			return
+		qdel(query_sql_log_messages)
+		if(!CONFIG_GET(flag/file_game_log))
+			return
+	#endif
+	//SKYRAT EDIT ADDITION END
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
 	switch(message_type)
 		if(LOG_ATTACK)
@@ -1847,7 +1866,7 @@
 
 +*/
 /atom/proc/InitializeAIController()
-	if(ai_controller)
+	if(ispath(ai_controller))
 		ai_controller = new ai_controller(src)
 
 /**

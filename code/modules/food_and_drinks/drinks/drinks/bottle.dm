@@ -111,7 +111,8 @@
 	if(affecting == BODY_ZONE_HEAD && istype(target, /mob/living/carbon/))
 		head_attack_message = " on the head"
 		if(armor_duration)
-			target.apply_effect(min(armor_duration, 200) , EFFECT_KNOCKDOWN)
+			//target.apply_effect(min(armor_duration, 200) , EFFECT_KNOCKDOWN)
+			target.StaminaKnockdown(20, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL ABOVE
 
 	//Display an attack message.
 	if(target != user)
@@ -635,5 +636,5 @@
 	name = "lean"
 	desc = "A cup of that purple drank, the stuff that makes you go WHEEZY BABY."
 	icon_state = "lean"
-	list_reagents = list(/datum/reagent/consumable/lean = 50)
+	list_reagents = list(/datum/reagent/consumable/lean = 20)
 	random_sprite = FALSE

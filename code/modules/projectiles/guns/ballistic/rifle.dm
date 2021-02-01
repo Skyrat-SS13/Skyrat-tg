@@ -63,6 +63,7 @@
 	knife_x_offset = 27
 	knife_y_offset = 13
 	can_be_sawn_off = TRUE
+	realistic = TRUE
 
 /obj/item/gun/ballistic/rifle/boltaction/sawoff(mob/user)
 	. = ..()
@@ -87,12 +88,19 @@
 	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	can_be_sawn_off = FALSE
 
+/obj/item/gun/ballistic/rifle/boltaction/brand_new
+	name = "Mosin Nagant"
+	desc = "Brand new Mosin Nagant issued by Nanotrasen for their interns. You would rather not to damage it."
+	can_be_sawn_off = FALSE
+	realistic = FALSE
+
 /obj/item/gun/ballistic/rifle/boltaction/enchanted
 	name = "enchanted bolt action rifle"
 	desc = "Careful not to lose your head."
 	var/guns_left = 30
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/enchanted
 	can_be_sawn_off = FALSE
+	realistic = FALSE
 
 /obj/item/gun/ballistic/rifle/boltaction/enchanted/arcane_barrage
 	name = "arcane barrage"
@@ -106,6 +114,7 @@
 	item_flags = NEEDS_PERMIT | DROPDEL | ABSTRACT | NOBLUDGEON
 	flags_1 = NONE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+	realistic = FALSE
 
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/enchanted/arcane_barrage
 
