@@ -548,7 +548,7 @@
  * Surgery Tables
  */
 
-/obj/structure/table/optable
+/obj/structure/table/optable//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "operating table"
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
