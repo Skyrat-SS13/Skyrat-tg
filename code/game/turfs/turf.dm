@@ -539,6 +539,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	return
 
 /turf/handle_fall(mob/faller)
+	SEND_SIGNAL(src, COMSIG_TURF_MOB_FALL, faller)
 	//SKYRAT EDIT REMOVAL BEGIN - SOUNDS - moved to other place, to make you thud when you voluntairly rest
 	/* SKYRAT EDIT REMOVAL BEGIN
 	if(has_gravity(src))

@@ -1184,3 +1184,5 @@
 // Exosca signals
 /// Sent on exoscan failure/manual interruption: ()
 #define COMSIG_EXOSCAN_INTERRUPTED "exoscan_interrupted"
+///from base of /turf/handle_fall(): (mob/faller)
+#define COMSIG_TURF_MOB_FALL "turf_mob_fall"

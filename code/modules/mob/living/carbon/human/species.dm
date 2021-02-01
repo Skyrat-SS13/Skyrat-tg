@@ -1777,6 +1777,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	// Get the temperature of the environment for area
 	var/area_temp = humi.get_temperature(environment)
 
+	//Special handling for getting liquids temperature
+	if(isturf(humi.loc))
+		var/turf/T = humi.loc
+		if(T.liquids && T.liquids.liquid_state > LIQUID_STATE_PUDDLE)
+			var/submergment_percent = min(1,(humi.body_position == LYING_DOWN ? T.liquids.liquid_state+LYING_DOWN_SUBMERGEMENT_STATE_BONUS : T.liquids.liquid_state)/TOTAL_LIQUID_STATES)
+			area_temp = (area_temp*(1-submergment_percent)) + (T.liquids.temp * submergment_percent)
 	// Get the insulation value based on the area's temp
 	var/thermal_protection = humi.get_insulation_protection(area_temp)
 

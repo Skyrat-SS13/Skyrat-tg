@@ -120,7 +120,7 @@ SUBSYSTEM_DEF(liquids)
 
 	if(!no_react)
 		//We do react so, make a simulation
-		create_reagents(10000)
+		create_reagents(10000) //Reagents are on turf level, should they be on liquids instead?
 		reagents.add_reagent_list(liquids.reagent_list, no_react = TRUE)
 		if(reagents.handle_reactions())//Any reactions happened, so re-calculate our reagents
 			liquids.reagent_list = list()
@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(liquids)
 		liquids = new(src)
 	if(liquids.immutable)
 		return
-	
+
 	if(!liquids.reagent_list[reagent])
 		liquids.reagent_list[reagent] = 0
 	liquids.reagent_list[reagent] += amount
@@ -183,6 +183,7 @@ SUBSYSTEM_DEF(liquids)
 	color = "#DDF"
 	//layer = MID_LANDMARK_LAYER
 	//invisibility = INVISIBILITY_ABSTRACT
+	mouse_opacity = FALSE
 	var/height = 1
 	var/only_big_diffs = 1
 	var/turf/my_turf
@@ -195,6 +196,45 @@ SUBSYSTEM_DEF(liquids)
 
 	var/list/reagent_list = list()
 	var/total_reagents = 0
+	var/temp = T20C
+
+/obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
+	liquid_state = new_state
+	cut_overlays()
+	switch(liquid_state)
+		if(LIQUID_STATE_ANKLES)
+			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage1_bottom")
+			var/mutable_appearance/underlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage1_top")
+			overlay.plane = GAME_PLANE
+			overlay.layer = ABOVE_MOB_LAYER
+			underlay.plane = GAME_PLANE
+			underlay.layer = GATEWAY_UNDERLAY_LAYER
+			add_overlay(overlay)
+			add_overlay(underlay)
+		if(LIQUID_STATE_WAIST)
+			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage2_bottom")
+			var/mutable_appearance/underlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage2_top")
+			overlay.plane = GAME_PLANE
+			overlay.layer = ABOVE_MOB_LAYER
+			underlay.plane = GAME_PLANE
+			underlay.layer = GATEWAY_UNDERLAY_LAYER
+			add_overlay(overlay)
+			add_overlay(underlay)
+		if(LIQUID_STATE_SHOULDERS)
+			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage3_bottom")
+			var/mutable_appearance/underlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage3_top")
+			overlay.plane = GAME_PLANE
+			overlay.layer = ABOVE_MOB_LAYER
+			underlay.plane = GAME_PLANE
+			underlay.layer = GATEWAY_UNDERLAY_LAYER
+			add_overlay(overlay)
+			add_overlay(underlay)
+		if(LIQUID_STATE_FULLTILE)
+			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage4_bottom")
+			overlay.plane = GAME_PLANE
+			overlay.layer = ABOVE_MOB_LAYER
+			add_overlay(overlay)
+
 
 /obj/effect/abstract/liquid_turf/update_overlays()
 	. = ..()
@@ -224,27 +264,103 @@ SUBSYSTEM_DEF(liquids)
 /obj/effect/abstract/liquid_turf/proc/calculate_height()
 	var/new_height = CEILING(total_reagents, 1)/LIQUID_HEIGHT_DIVISOR
 	set_height(new_height)
+	var/determined_new_state
+	switch(height)
+		if(0 to LIQUID_ANKLES_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_PUDDLE
+		if(LIQUID_ANKLES_LEVEL_HEIGHT to LIQUID_WAIST_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_ANKLES
+		if(LIQUID_WAIST_LEVEL_HEIGHT to LIQUID_SHOULDERS_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_WAIST
+		if(LIQUID_SHOULDERS_LEVEL_HEIGHT to LIQUID_FULLTILE_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_SHOULDERS
+		if(LIQUID_FULLTILE_LEVEL_HEIGHT to INFINITY)
+			determined_new_state = LIQUID_STATE_FULLTILE
+	if(determined_new_state != liquid_state)
+		set_new_liquid_state(determined_new_state)
 
 /obj/effect/abstract/liquid_turf/proc/set_height(new_height)
 	var/prev_height = height
 	height = new_height
 	if(abs(height - prev_height) > WATER_HEIGH_DIFFERENCE_DELTA_SPLASH)
 		//Splash
-		var/obj/splashy = new /obj/effect/temp_visual/liquid_splash(get_turf(src))
+		if(prob(WATER_HEIGH_DIFFERENCE_SOUND_CHANCE))
+			playsound(my_turf, PICK_WATER_WADE_NOISES, 60, 0)
+		var/obj/splashy = new /obj/effect/temp_visual/liquid_splash(my_turf)
 		splashy.color = color
-	update_overlays()
+		if(height >= LIQUID_WAIST_LEVEL_HEIGHT)
+			//Push things into some direction, like space wind
+			var/turf/dest_turf
+			var/last_height = height
+			for(var/turf in my_turf.atmos_adjacent_turfs)
+				var/turf/T = turf
+				if(T.z != my_turf.z)
+					continue
+				if(!T.liquids) //Automatic winner
+					dest_turf = T
+					break
+				if(T.liquids.height < last_height)
+					dest_turf = T
+					last_height = T.liquids.height
+			if(dest_turf)
+				var/dir = get_dir(my_turf, dest_turf)
+				var/atom/movable/AM
+				for(var/thing in my_turf)
+					AM = thing
+					if(!AM.anchored && !AM.pulledby)
+						step(AM, dir)
+						if(iscarbon(AM) && prob(60))
+							var/mob/living/carbon/C = AM
+							if(C.body_position != LYING_DOWN && !(C.shoes && C.shoes.clothing_flags & NOSLIP))
+								to_chat(C, "<span class='userdanger'>The current knocks you down!</span>")
+								C.Paralyze(60)
+
+	//update_overlays()
+
+/obj/effect/abstract/liquid_turf/proc/movable_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+	if(liquid_state >= LIQUID_STATE_ANKLES)
+		if(prob(30))
+			playsound(my_turf, PICK_WATER_WADE_NOISES, 50, 0)
+		if(iscarbon(AM))
+			var/mob/living/carbon/C = AM
+			C.apply_status_effect(/datum/status_effect/water_slowdown)
+	else if (iscarbon(AM))
+		var/mob/living/carbon/C = AM
+		if(prob(5) && !(C.movement_type & FLYING))
+			C.slip(60, my_turf, NO_SLIP_WHEN_WALKING, 20, TRUE)
+
+
+/obj/effect/abstract/liquid_turf/proc/mob_fall(datum/source, mob/M)
+	SIGNAL_HANDLER
+	if(liquid_state >= LIQUID_STATE_ANKLES && my_turf.has_gravity(my_turf))
+		playsound(my_turf, 'hrzn/sound/effects/splash.ogg', 50, 0)
+		if(iscarbon(M))
+			var/mob/living/carbon/C = M
+			if(C.wear_mask && C.wear_mask.flags_cover & MASKCOVERSMOUTH)
+				to_chat(C, "<span class='userdanger'>You fall in the water!</span>")
+			else
+				C.adjustOxyLoss(5)
+				C.emote("cough")
+				to_chat(C, "<span class='userdanger'>You fall in and swallow some water!</span>")
+		else
+			to_chat(M, "<span class='userdanger'>You fall in the water!</span>")
 
 /obj/effect/abstract/liquid_turf/Initialize()
 	if(!SSliquids)
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
 	. = ..()
 	my_turf = loc
+	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
+	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
 	//create_reagents(10000)
+	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR)
 	if(!immutable)
 		SSliquids.add_active_turf(my_turf)
 
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
+		UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL))
 		if(my_turf.lgroup)
 			my_turf.lgroup.remove_from_group(my_turf)
 		if(!immutable)
@@ -280,6 +396,7 @@ SUBSYSTEM_DEF(liquids)
 	var/list/last_cached_fraction_share
 	var/last_cached_total_volume = 0
 	//Color cache too? For when all "taken" members are cached
+	var/last_cached_overlay_state = LIQUID_STATE_PUDDLE
 
 /datum/liquid_group/proc/add_to_group(turf/T)
 	members[T] = TRUE
@@ -360,7 +477,6 @@ SUBSYSTEM_DEF(liquids)
 			new_group.add_to_group(t)
 
 /datum/liquid_group/proc/share(use_liquids_color = FALSE)
-	var/datum/reagents/tempr = new(1000000)
 	var/any_share = FALSE
 	var/cached_shares = 0
 	var/list/cached_add = list()
@@ -412,6 +528,19 @@ SUBSYSTEM_DEF(liquids)
 	var/mixed_color = use_liquids_color ? mix_color_from_reagent_list(cached_add) : color
 	var/height = CEILING(cached_volume/LIQUID_HEIGHT_DIVISOR, 1)
 
+	var/determined_new_state
+	switch(height)
+		if(0 to LIQUID_ANKLES_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_PUDDLE
+		if(LIQUID_ANKLES_LEVEL_HEIGHT to LIQUID_WAIST_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_ANKLES
+		if(LIQUID_WAIST_LEVEL_HEIGHT to LIQUID_SHOULDERS_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_WAIST
+		if(LIQUID_SHOULDERS_LEVEL_HEIGHT to LIQUID_FULLTILE_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_SHOULDERS
+		if(LIQUID_FULLTILE_LEVEL_HEIGHT to INFINITY)
+			determined_new_state = LIQUID_STATE_FULLTILE
+
 	//message_admins("shared")
 	var/obj/effect/abstract/liquid_turf/cached_liquids
 	for(var/t in members)
@@ -429,10 +558,12 @@ SUBSYSTEM_DEF(liquids)
 
 		cached_liquids.color = mixed_color
 		cached_liquids.set_height(height)
-	qdel(tempr)
+
+		if(determined_new_state != cached_liquids.liquid_state)
+			cached_liquids.set_new_liquid_state(determined_new_state)
 
 /datum/liquid_group/proc/process_cell(turf/T)
-	if(T.liquids.height <= 1)
+	if(T.liquids.height <= 1) //Causes a bug when the liquid hangs in the air and is supposed to fall down a level
 		return FALSE
 	for(var/tur in T.GetAtmosAdjacentTurfs())
 		var/turf/T2 = tur
@@ -561,6 +692,10 @@ SUBSYSTEM_DEF(liquids)
 /obj/effect/abstract/liquid_turf/immutable
 	immutable = TRUE
 	var/list/starting_mixture = list(/datum/reagent/water = 600)
+	var/starting_temp = T20C
+
+/obj/effect/abstract/liquid_turf/immutable/coldocean
+	starting_temp = T20C-170
 
 /obj/effect/abstract/liquid_turf/immutable/Initialize()
 	..()
@@ -568,6 +703,7 @@ SUBSYSTEM_DEF(liquids)
 	total_reagents = 0
 	for(var/key in reagent_list)
 		total_reagents += reagent_list[key]
+	temp = starting_temp
 	calculate_height()
 	set_reagent_color_for_liquid()
 	SSliquids.active_immutables[my_turf] = TRUE
@@ -587,11 +723,18 @@ SUBSYSTEM_DEF(liquids)
 				continue
 
 			any_share = TRUE
-			for(var/type in liquids.reagent_list)
-				T.add_liquid(type, liquids.reagent_list[type], TRUE)
+			T.add_liquid_list(liquids.reagent_list, TRUE)
 	if(!any_share)
 		SSliquids.active_immutables -= src
 
+/turf/open/openspace/ocean
+	name = "ocean"
+
+/turf/open/openspace/ocean/Initialize()
+	. = ..()
+	if(liquids)
+		qdel(liquids, TRUE)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
 
 /turf/open/floor/plating/ocean
 	gender = PLURAL
@@ -609,7 +752,26 @@ SUBSYSTEM_DEF(liquids)
 	. = ..()
 	if(liquids)
 		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable(src)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+
+/turf/open/floor/plasteel/ocean
+
+/turf/open/floor/plasteel/ocean/Initialize()
+	. = ..()
+	if(liquids)
+		qdel(liquids, TRUE)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+
+//extremely low chance of rare ores, meant mostly for populating stations with large amounts of asteroid
+/turf/closed/mineral/random/stationside
+	icon_state = "rock_nochance"
+	mineralChance = 4
+	mineralSpawnChanceList = list(
+		/obj/item/stack/ore/uranium = 1, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 3, /obj/item/stack/ore/titanium = 5,
+		/obj/item/stack/ore/silver = 4, /obj/item/stack/ore/plasma = 3, /obj/item/stack/ore/iron = 50)
+
+/turf/closed/mineral/random/stationside/ocean
+	baseturfs = /turf/open/floor/plating/ocean
 
 /obj/effect/abstract/liquid_turf/immutable/canal
 	starting_mixture = list(/datum/reagent/water = 100)
@@ -647,3 +809,34 @@ SUBSYSTEM_DEF(liquids)
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	liquid_height = -30
 	turf_height = -30
+
+/datum/status_effect/water_slowdown
+	id = "waterslowdown"
+	alert_type = null
+	duration = -1
+
+/datum/status_effect/water_slowdown/on_apply()
+	//We should be inside a liquid turf if this is applied
+	calculate_water_slow()
+	return TRUE
+
+/datum/status_effect/water_slowdown/proc/calculate_water_slow()
+	//Factor in swimming skill here?
+	var/turf/T = get_turf(owner)
+	var/slowdown_amount = T.liquids.liquid_state * 0.5
+	owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/water_slowdown, multiplicative_slowdown = slowdown_amount)
+
+/datum/status_effect/water_slowdown/tick()
+	var/turf/T = get_turf(owner)
+	if(!T || !T.liquids || T.liquids.liquid_state == LIQUID_STATE_PUDDLE)
+		qdel(src)
+		return
+	calculate_water_slow()
+	return ..()
+
+/datum/status_effect/water_slowdown/on_remove()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/water_slowdown)
+
+/datum/movespeed_modifier/status_effect/water_slowdown
+	variable = TRUE
+	blacklisted_movetypes = (FLYING|FLOATING)

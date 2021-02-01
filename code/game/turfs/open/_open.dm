@@ -22,9 +22,8 @@
 		var/mob/living/L = mover
 		var/turf/T = get_turf(newloc)
 		if(T && T.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
-			L.visible_message("<span class='warning'>[L] falls down into [T]", \
-						"<span class='userdanger'>You fall down into [T].</span>")
-			L.Knockdown(40)
+			L.on_fall()
+			L.onZImpact(T, 1)
 
 
 /turf/open/MouseDrop_T(mob/living/M, mob/living/user)

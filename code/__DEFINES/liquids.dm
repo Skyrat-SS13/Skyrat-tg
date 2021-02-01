@@ -1,4 +1,4 @@
-#define WATER_HEIGH_DIFFERENCE_SOUND_CHANCE 5
+#define WATER_HEIGH_DIFFERENCE_SOUND_CHANCE 50
 #define WATER_HEIGH_DIFFERENCE_DELTA_SPLASH 7 //Delta needed for the splash effect to be made in 1 go
 
 
@@ -16,10 +16,24 @@
 
 #define LIQUID_ATTRITION_TO_STOP_ACTIVITY 2
 
-#define LIQUID_STATE_PUDDLE 1
-#define LIQUID_STATE_KNEES 2
-#define LIQUID_STATE_SHOULDERS 3
-#define LIQUID_STATE_FULLTILE 4
+#define LIQUID_STATE_PUDDLE			1
+#define LIQUID_STATE_ANKLES			2
+#define LIQUID_STATE_WAIST			3
+#define LIQUID_STATE_SHOULDERS		4
+#define LIQUID_STATE_FULLTILE		5
+#define TOTAL_LIQUID_STATES			5
+#define LYING_DOWN_SUBMERGEMENT_STATE_BONUS			2
+
+#define LIQUID_ANKLES_LEVEL_HEIGHT 8
+#define LIQUID_WAIST_LEVEL_HEIGHT 19
+#define LIQUID_SHOULDERS_LEVEL_HEIGHT 29
+#define LIQUID_FULLTILE_LEVEL_HEIGHT 39
+
+//Threshold at which we "choke" on the water, instead of holding our breath
+#define OXYGEN_DAMAGE_CHOKING_THRESHOLD 15
+
+//Less overhead than using the helper
+#define PICK_WATER_WADE_NOISES pick('hrzn/sound/effects/water_wade1.ogg', 'hrzn/sound/effects/water_wade2.ogg', 'hrzn/sound/effects/water_wade3.ogg', 'hrzn/sound/effects/water_wade4.ogg')
 
 #define IMMUTABLE_LIQUID_SHARE 1
 
