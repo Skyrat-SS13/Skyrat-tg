@@ -1,11 +1,3 @@
-/obj/item/robot_model
-	var/icon/cyborg_icon_override
-	var/sleeper_overlay
-	var/has_snowflake_deadsprite
-	var/cyborg_pixel_offset
-	var/model_select_alternate_icon
-	var/dogborg = FALSE //Is this model a wider borg?
-
 /obj/item/robot_model/proc/dogborg_equip()
 	has_snowflake_deadsprite = TRUE
 	cyborg_pixel_offset = -16
@@ -586,10 +578,6 @@
 	return ..()
 
 //SERVICE
-/obj/item/robot_model/butler/skyrat
-	name = "Skyrat Service"
-	special_light_key = null
-
 /obj/item/robot_model/butler/skyrat/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/service_icons
@@ -676,10 +664,6 @@
 	return TRUE
 
 //MINING
-/obj/item/robot_model/miner/skyrat
-	name = "Skyrat Miner"
-	special_light_key = null
-
 /obj/item/robot_model/miner/skyrat/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/mining_icons

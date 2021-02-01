@@ -1,8 +1,3 @@
-/mob/living/silicon/robot
-	var/robot_resting = FALSE
-	var/robot_rest_style = ROBOT_REST_NORMAL
-	var/dogborg = FALSE
-
 /mob/living/silicon/robot/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	. = ..()
 	if(robot_resting)
@@ -71,12 +66,6 @@
 	..()
 	if(hands)
 		hands.icon = (model.model_select_alternate_icon ? model.model_select_alternate_icon : initial(hands.icon))
-
-/mob/living/silicon/robot/model/miner/skyrat
-	set_model = /obj/item/robot_model/miner/skyrat
-
-/mob/living/silicon/robot/model/butler/skyrat
-	set_model = /obj/item/robot_model/butler/skyrat
 
 /mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
 	. = ..()
