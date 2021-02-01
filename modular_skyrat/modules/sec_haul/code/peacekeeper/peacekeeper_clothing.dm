@@ -325,7 +325,7 @@
 	armor = list(MELEE = 40, BULLET = 20, LASER = 35, ENERGY = 45, BOMB = 10, BIO = 100, RAD = 50, FIRE = 90, ACID = 75, WOUND = 20)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
 	slowdown = 1
-	hardsuit_tail_colors =
+	hardsuit_tail_colors = list("BBB", "444", "337")
 
 /obj/machinery/suit_storage_unit/security_peacekeeper
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
