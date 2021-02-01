@@ -407,7 +407,7 @@
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = "9mm"
-	max_ammo = 25
+	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/hp
