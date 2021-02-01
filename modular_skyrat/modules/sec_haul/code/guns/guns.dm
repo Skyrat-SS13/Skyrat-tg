@@ -430,8 +430,8 @@
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
 	inhand_icon_state = "pitbull"
 	icon_state = "pitbull"
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/pitbull.dmi'
-	worn_icon_state = "pitbull_back"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
+	worn_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
