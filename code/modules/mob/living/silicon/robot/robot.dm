@@ -69,7 +69,6 @@
 	diag_hud_set_borgcell()
 	logevent("System brought online.")
 
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
 	if(!shell)
 		aiPDA = new/obj/item/pda/ai(src)
@@ -77,12 +76,11 @@
 		aiPDA.ownjob = "Cyborg"
 		aiPDA.name = real_name + " (" + aiPDA.ownjob + ")"
 	//SKYRAT EDIT ADDITION END
-=======
+
 /mob/living/silicon/robot/model/syndicate/Initialize()
 	. = ..()
 	laws = new /datum/ai_laws/syndicate_override()
 	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
->>>>>>> f837ce43970 (Cyborg modules renamed to models (#56312))
 
 /mob/living/silicon/robot/proc/create_modularInterface()
 	if(!modularInterface)
@@ -666,19 +664,14 @@
 		resize = 0.8 //SKYRAT EDIT CHANGE - CYBORG
 		hasExpanded = FALSE
 		update_transform()
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - CYBORG
 	if (hasShrunk)
 		hasShrunk = FALSE
 		resize = (4/3)
 		update_transform()
 	//SKYRAT EDIT ADDITION END
-	logevent("Chassis configuration has been reset.")
-	module.transform_to(/obj/item/robot_module)
-=======
 	logevent("Chassis model has been reset.")
 	model.transform_to(/obj/item/robot_model)
->>>>>>> f837ce43970 (Cyborg modules renamed to models (#56312))
 
 	// Remove upgrades.
 	for(var/obj/item/borg/upgrade/I in upgrades)
