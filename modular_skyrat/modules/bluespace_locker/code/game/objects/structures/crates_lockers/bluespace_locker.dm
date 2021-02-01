@@ -33,11 +33,11 @@
 	var/list/mirage_whitelist = list()
 
 /obj/structure/closet/bluespace/internal/Initialize()
+	. = ..()
 	if(SSbluespace_locker.internal_locker && SSbluespace_locker.internal_locker != src)
 		qdel(src)
 		return
 	SSbluespace_locker.internal_locker = src
-	..()
 
 /obj/structure/closet/bluespace/internal/get_other_locker()
 	return SSbluespace_locker.external_locker
@@ -142,11 +142,11 @@
 		T.update_mirage()
 
 /obj/structure/closet/bluespace/external/Initialize()
+	. = ..()
 	if(SSbluespace_locker.external_locker && SSbluespace_locker.external_locker != src)
 		qdel(src)
 		return
 	SSbluespace_locker.external_locker = src
-	..()
 
 /obj/structure/closet/bluespace/external/Destroy()
 	SSbluespace_locker.external_locker = null
