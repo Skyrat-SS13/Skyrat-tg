@@ -11,9 +11,3 @@
 #define ASSAULT_RESULT_CREW_MAJOR_WIN 6 //All ops are captured and alive but some targets are dead
 #define ASSAULT_RESULT_CREW_WIN 7 //Some ops are captured but some are dead
 #define ASSAULT_RESULT_CREW_LOSS 8 //All ops are dead
-
-#define RADIO_CHANNEL_ASSAULT "DS-1"
-#define RADIO_KEY_ASSAULT "r"
-#define RADIO_TOKEN_ASSAULT ":r"
-
-#define FREQ_ASSAULT 1207

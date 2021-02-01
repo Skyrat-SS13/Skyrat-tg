@@ -3,7 +3,7 @@
 #define MAX_CONVEYOR_ITEMS_MOVE 30
 GLOBAL_LIST_EMPTY(conveyors_by_id)
 
-/obj/machinery/conveyor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/machinery/conveyor
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "conveyor_map"
 	name = "conveyor belt"
@@ -241,7 +241,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 //
 //
 
-/obj/machinery/conveyor_switch//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/machinery/conveyor_switch
 	name = "conveyor switch"
 	desc = "A conveyor control switch."
 	icon = 'icons/obj/recycling.dmi'
@@ -380,7 +380,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if((dir == NORTH) || (dir == WEST))
 		invert_icon = TRUE
 
-/obj/item/conveyor_switch_construct//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/conveyor_switch_construct
 	name = "conveyor switch assembly"
 	desc = "A conveyor control switch assembly."
 	icon = 'icons/obj/recycling.dmi'

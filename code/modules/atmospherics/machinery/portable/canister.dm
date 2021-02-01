@@ -5,7 +5,7 @@
 #define CANISTER_TIER_2					2
 #define CANISTER_TIER_3					3
 
-/obj/machinery/portable_atmospherics/canister //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/machinery/portable_atmospherics/canister
 	name = "canister"
 	desc = "A canister for the storage of gas."
 	icon_state = "yellow"

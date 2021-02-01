@@ -1,5 +1,5 @@
 /**********************Mining Scanners**********************/
-/obj/item/mining_scanner//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/mining_scanner
 	desc = "A scanner that checks surrounding rock for useful minerals; it can also be used to stop gibtonite detonations."
 	name = "manual mining scanner"
 	icon = 'icons/obj/device.dmi'

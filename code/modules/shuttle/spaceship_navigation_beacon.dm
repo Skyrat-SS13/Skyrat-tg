@@ -4,7 +4,7 @@
 	req_components = list()
 
 
-/obj/machinery/spaceship_navigation_beacon//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/machinery/spaceship_navigation_beacon
 	name = "Bluespace Navigation Gigabeacon"
 	desc = "A device that creates a bluespace anchor that allow ships jump near to it."
 	icon = 'icons/obj/abductor.dmi'

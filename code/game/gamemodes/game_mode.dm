@@ -478,7 +478,7 @@
 //Reports player logouts//
 //////////////////////////
 /proc/display_roundstart_logout_report()
-	var/list/msg = list("<span class='boldnotice'>Roundstart logout report</span>\n\n")
+	var/list/msg = list("<span class='boldnotice'>Roundstart logout report\n\n</span>")
 	for(var/i in GLOB.mob_living_list)
 		var/mob/living/L = i
 		var/mob/living/carbon/C = L

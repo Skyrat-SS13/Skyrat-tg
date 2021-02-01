@@ -38,7 +38,7 @@
 		/obj/item/reagent_containers/hypospray/medipen = 1)
 	generate_items_inside(items_inside,src)
 
-/obj/item/storage/firstaid/emergency//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/firstaid/emergency
 	icon_state = "medbriefcase"
 	name = "emergency first-aid kit"
 	desc = "A very simple first aid kit meant to secure and stabilize serious wounds for later treatment."

@@ -31,12 +31,12 @@ export const Holodeck = (props, context) => {
           {default_programs.map(def_program => (
             <Button
               fluid
-              key={def_program.id}
+              key={def_program.type}
               content={def_program.name.substring(11)}
               textAlign="center"
-              selected={def_program.id === program}
+              selected={def_program.type === program}
               onClick={() => act('load_program', {
-                id: def_program.id,
+                type: def_program.type,
               })} />
           ))}
         </Section>
@@ -45,13 +45,13 @@ export const Holodeck = (props, context) => {
             {emag_programs.map(emag_program => (
               <Button
                 fluid
-                key={emag_program.id}
+                key={emag_program.type}
                 content={emag_program.name.substring(11)}
                 color="bad"
                 textAlign="center"
-                selected={emag_program.id === program}
+                selected={emag_program.type === program}
                 onClick={() => act('load_program', {
-                  id: emag_program.id,
+                  type: emag_program.type,
                 })} />
             ))}
           </Section>

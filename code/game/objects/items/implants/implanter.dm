@@ -1,4 +1,4 @@
-/obj/item/implanter//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/implanter
 	name = "implanter"
 	desc = "A sterile automatic implant injector."
 	icon = 'icons/obj/items_and_weapons.dmi'

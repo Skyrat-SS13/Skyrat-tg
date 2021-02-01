@@ -475,7 +475,7 @@
 			/obj/item/toy/xmas_cracker = 3,
 			/obj/item/clothing/head/santa = 1,
 			/obj/item/a_gift/anything = 1
-		) = MAINT_HOLIDAY_WEIGHT, //SKYRAT CHANGE
+		) = maint_holiday_weight,
 	)
 
 /datum/holiday/xmas/proc/roundstart_celebrate()
@@ -548,7 +548,7 @@
 		list(
 			/obj/item/food/egg/loaded = 15,
 			/obj/item/storage/basket/easter = 15
-		) = MAINT_HOLIDAY_WEIGHT, //SKYRAT CHANGE
+		) = maint_holiday_weight,
 	)
 
 /datum/holiday/easter/greet()

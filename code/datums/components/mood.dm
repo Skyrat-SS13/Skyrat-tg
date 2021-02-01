@@ -82,10 +82,10 @@
 	else
 		msg += "<span class='notice'>I don't really know.</span>\n"
 	//SKYRAT EDIT CHANGE END
-
+	
 	msg += "<span class='notice'>My current mood: </span>" //Short term
 	//ORIGINAL
-	/*
+	/* 
 	switch(mood_level)
 		if(1)
 			msg += "<span class='boldwarning'>I wish I was dead!</span>\n"
@@ -130,7 +130,8 @@
 	else
 		msg += "<span class='notice'>No clue.</span>\n"
 	//SKYRAT EDIT CHANGE END
-	msg += "<span class='notice'>Moodlets:</span>\n"//All moodlets
+
+	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
 	//if(mood_events.len) //ORIGINAL
 	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
 		for(var/i in mood_events)

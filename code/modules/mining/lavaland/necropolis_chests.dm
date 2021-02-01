@@ -416,7 +416,7 @@
 	name = "hook"
 	desc = "A hook."
 	projectile_type = /obj/projectile/hook
-	caliber = CALIBER_HOOK
+	caliber = "hook"
 	icon_state = "hook"
 
 /obj/projectile/hook

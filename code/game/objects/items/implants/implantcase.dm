@@ -1,4 +1,4 @@
-/obj/item/implantcase//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/implantcase
 	name = "implant case"
 	desc = "A glass case containing an implant."
 	icon = 'icons/obj/items_and_weapons.dmi'

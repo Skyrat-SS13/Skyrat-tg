@@ -193,7 +193,7 @@
 	return 1
 
 
-/obj/machinery/embedded_controller/radio/airlock_controller//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/machinery/embedded_controller/radio/airlock_controller
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 

@@ -2,7 +2,7 @@
 	name = "foam dart"
 	desc = "It's Donk or Don't! Ages 8 and up."
 	projectile_type = /obj/projectile/bullet/reusable/foam_dart
-	caliber = CALIBER_FOAM
+	caliber = "foam_force"
 	icon = 'icons/obj/guns/toy.dmi'
 	icon_state = "foamdart"
 	custom_materials = list(/datum/material/iron = 11.25)
