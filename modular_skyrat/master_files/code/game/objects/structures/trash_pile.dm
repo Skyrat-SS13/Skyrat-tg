@@ -6,7 +6,6 @@
 	density = TRUE
 	anchored = TRUE
 	layer = TABLE_LAYER
-	climbable = TRUE
 	obj_flags = CAN_BE_HIT
 	pass_flags = LETPASSTHROW
 
@@ -31,8 +30,9 @@
 
 	var/global/list/allocated_beta = list()
 
-/obj/structure/trash_pile/Initialize()
+/obj/structure/trash_pile/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/climbable)
 	icon_state = pick(
 		"pile1",
 		"pile2",
