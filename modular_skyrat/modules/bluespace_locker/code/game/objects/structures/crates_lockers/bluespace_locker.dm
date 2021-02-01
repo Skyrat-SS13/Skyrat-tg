@@ -4,7 +4,7 @@
 /obj/structure/closet/bluespace/proc/get_other_locker()
 	return SSbluespace_locker.internal_locker
 
-/obj/structure/closet/bluespace/open()
+/obj/structure/closet/bluespace/open(mob/living/user, force = FALSE)
 	var/obj/structure/closet/other = get_other_locker()
 	if(!other)
 		return ..()
@@ -13,7 +13,7 @@
 		other.close()
 		dump_contents()
 
-/obj/structure/closet/bluespace/close()
+/obj/structure/closet/bluespace/close(mob/living/user, force = FALSE)
 	var/obj/structure/closet/other = get_other_locker()
 	if(!other)
 		return ..()
