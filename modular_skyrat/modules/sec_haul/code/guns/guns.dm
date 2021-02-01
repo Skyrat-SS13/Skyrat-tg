@@ -555,7 +555,7 @@
 	round_type = AMMO_TYPE_IHDF
 
 ///////////////////////////Dozer
-/obj/item/gun/ballistic/automatic/pistol/dozer
+/obj/item/gun/ballistic/automatic/dozer
 	name = "\improper Armadyne 'Dozer' Semi-Auto"
 	desc = "The DZR, it's quite literally only good for dozing people down. It's chambered in 10mm for a reason."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'
@@ -568,7 +568,9 @@
 	can_suppress = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	actions_types = null
+	burst_size = 1
+	fire_delay = 0
+	actions_types = list()
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
