@@ -257,7 +257,8 @@
 
 	switch(animal_origin)
 		if(ALIEN_BODYPART,LARVA_BODYPART) //aliens take double burn //nothing can burn with so much snowflake code around
-			burn *= 2
+			//burn *= 2	// SKYRAT EDIT: Original line
+			burn *= 1.5	// SKYRAT EDIT: Xenomorphs no longer take double damage. Now 1.5 damage.
 
 	/*
 	// START WOUND HANDLING
