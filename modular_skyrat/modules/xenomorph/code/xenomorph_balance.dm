@@ -22,8 +22,8 @@
 ///////////////////////////////////////////
 /////////////   XENO QUEEN    /////////////
 /mob/living/carbon/alien/humanoid/royal/queen
-	maxHealth = 500				//TG: 400
-	health = 500				//TG: 400
+	maxHealth = 400				//TG: 400
+	health = 400				//TG: 400
 	melee_damage_lower = 50		//TG: 20
 	melee_damage_upper = 50		//TG: 20
 	next_move_modifier = 0.75
@@ -31,8 +31,8 @@
 ///////////////////////////////////////////
 /////////////   PRAETORIAN    /////////////
 /mob/living/carbon/alien/humanoid/royal/praetorian
-	maxHealth = 350				//TG: 250
-	health = 350				//TG: 250
+	maxHealth = 250				//TG: 250
+	health = 250				//TG: 250
 	melee_damage_lower = 40		//TG: 20
 	melee_damage_upper = 40		//TG: 20
 	next_move_modifier = 0.75
@@ -40,8 +40,8 @@
 ///////////////////////////////////////////
 /////////////    SENTINAL     /////////////
 /mob/living/carbon/alien/humanoid/sentinel
-	maxHealth = 200				//TG: 150
-	health = 200				//TG: 150
+	maxHealth = 150				//TG: 150
+	health = 150				//TG: 150
 	melee_damage_lower = 25		//TG: 20
 	melee_damage_upper = 25		//TG: 20
 	next_move_modifier = 0.75
@@ -49,8 +49,8 @@
 ///////////////////////////////////////////
 /////////////     HUNTER      /////////////
 /mob/living/carbon/alien/humanoid/hunter
-	maxHealth = 150				//TG: 125
-	health = 150				//TG: 125
+	maxHealth = 125				//TG: 125
+	health = 125				//TG: 125
 	melee_damage_lower = 25		//TG: 20
 	melee_damage_upper = 25		//TG: 20
 	next_move_modifier = 0.75
@@ -58,8 +58,8 @@
 ///////////////////////////////////////////
 /////////////   XENO  DRONE   /////////////
 /mob/living/carbon/alien/humanoid/drone
-	maxHealth = 150				//TG: 125
-	health = 150				//TG: 125
+	maxHealth = 125				//TG: 125
+	health = 125				//TG: 125
 	melee_damage_lower = 20		//TG: 20
 	melee_damage_upper = 20		//TG: 20
 	next_move_modifier = 0.75
@@ -74,3 +74,7 @@
 	to_chat(src, "<span class='warning'>Do not instantly attack the AI unless:<br>• Enemy threat is overwhelming (IE: multiple combat mechs)<br>• The AI has spotted you<br>• You wish to build a nest in their core.</span>")
 /////////////   FLAVOR TEXT   /////////////
 ///////////////////////////////////////////
+/////////////     READ ME     /////////////
+//	Q: Why do Xenomorphs take double burn damage?
+//	A: The answer? It's in here. For some reason: code\modules\surgery\bodyparts\_bodyparts.dm
+//	A: Search for this: ALIEN_BODYPART and you'll find the damage-doubler. Check PR 24655 on TG!
