@@ -52,6 +52,48 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">02 February 2021</h2>
+			<h3 class="author">Gamer025 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Wendigo will no longer runtimes when screaming</li>
+				<li class="bugfix">Wendigo will no longer runtime when it tries to teleport but has no location to teleport to</li>
+			</ul>
+			<h3 class="author">Nari Harimoto updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed the rod duplication bug using reinforced floors and disposals. disposal ejections now properly break floor reinforcement, dropping you just 1 rod.</li>
+				<li class="bugfix">fixed thermomachines still working even without power, apc off, in space etc...</li>
+			</ul>
+			<h3 class="author">SarmentiCampbell updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed the cyborg shapeshifting node.</li>
+			</ul>
+			<h3 class="author">SkyratBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">when u choose a sac target as heretic it ll also tell the job of the sac</li>
+				<li class="bugfix">handfeeding dead simplemobs no longer runtimes</li>
+				<li class="rscadd">Added a button to select how multiple rules applied in a single Nanite program (AND, OR logic)</li>
+				<li class="tweak">The chef's CQC (close quarters cooking) ability is now imparted by a skillchip in their brain, similar to Station Engineer's skillchip for wire colours.</li>
+				<li class="bugfix">Research points produced by BZ formation are now properly rate limited to a sane level.</li>
+				<li class="bugfix">Fixes a runtime with crates climbable element.</li>
+				<li class="bugfix">scaling coefficients for security and antagonists in the game_options.txt will now respect being disabled by being set to 0, instead of having 1 as their minimal possible value</li>
+				<li class="bugfix">dead guard spiders are now visible</li>
+				<li class="bugfix">tritium and h2 now uses burned_fuel for o2 consumption.</li>
+				<li class="code_imp">moved the burned_fuel amount around so its tidier.</li>
+				<li class="rscadd">The Pubbystation Monastery is now available as an emergency shuttle.</li>
+				<li class="bugfix">Plasmemes and ethereals will no longer have their head or torso disappear after being augmented with a robotic replacement.</li>
+				<li class="bugfix">Nanite programs based on triggers don't ignore rules now</li>
+				<li class="imageadd">Cooks have become better at baking breads.</li>
+				<li class="bugfix">Spiderbread slice is now visually distinct from the Xenobread one.</li>
+				<li class="bugfix">Space Heaters can now heat or cool to their full stated ranges, rather than being clamped to a minimum of 2.7°C.</li>
+				<li class="bugfix">holodeck doesnt absentmindedly forget to clear previous programs anymore when hit with the free lag hammer</li>
+			</ul>
+			<h3 class="author">unit0016 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Cybersun, Interdyne, and DS-1 Personnel now are given their own, seperate comms.</li>
+				<li class="tweak">Interdyne personnel now have more of their own headsets in place of field agent ones.</li>
+				<li class="rscadd">BoxStation has it's pool back! Splish.</li>
+			</ul>
+
 			<h2 class="date">01 February 2021</h2>
 			<h3 class="author">BurgerBB updated:</h3>
 			<ul class="changes bgimages16">
@@ -2097,79 +2139,6 @@
 			<ul class="changes bgimages16">
 				<li class="balance">Gives the monkey recycler more cubes per monkey per manipulator tier</li>
 				<li class="bugfix">adds missing sprite for laser carbine in right hand</li>
-			</ul>
-
-			<h2 class="date">01 December 2020</h2>
-			<h3 class="author">ATHATH updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The code for determining whether or not a simplemob no sells a melee attack because it uses a weapon that doesn't have a high enough force to damage it now uses a <= in its equation instead of a <, and factors in the simplemob's damage multipliers and resistances as well.</li>
-			</ul>
-			<h3 class="author">Azarak updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Welding tools no longer have a wound bonus</li>
-				<li class="admin">admins with R_ADMIN permission can now delay the round end</li>
-				<li class="rscadd">You now will be reminded about blackout policy after being revived/cloned</li>
-				<li class="config">Added an entry for blackout policy</li>
-				<li class="admin">Admins can now configure and spawns intricate character spawners to use for events.</li>
-				<li class="balance">QM is now a head of cargo, instead of the HoP. And while being a head he's also command and all that stuff.</li>
-			</ul>
-			<h3 class="author">Gandalf2k15 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">SERVER REALTIME?</li>
-				<li class="bugfix">Tailwagging!</li>
-				<li class="rscdel">Song names from de widgets</li>
-			</ul>
-			<h3 class="author">Investigator77 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">M90 sprite is now a proper top-loaded carbine with a grenade launcher, and not a flat-out P90. Inspired by the old design. Grenade mode includes one of those fancy distance measuring sights!</li>
-				<li class="tweak">C20r sprite is no longer squashed, and uses the sprite from Eris. Included a cool yellow holosight. The toy version of it also has a foamy grip instead of polymer.</li>
-				<li class="tweak">Detective standard revolver replaced with a modified rendition of Blade Runner's LAPD revolver.</li>
-				<li class="tweak">Detective alternate revolver sprites updated to modern (aesthetic overhaul) standards. Except uh, the leopard one. Does anyone actually use it?</li>
-			</ul>
-			<h3 class="author">KathrinBailey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Five new donator-exclusive cloaks! All donators have access to them.</li>
-				<li class="rscadd">Donators can now spawn with flowers in their hair!</li>
-				<li class="bugfix">Hey Zulie! Your hat had a stray pixel and now it doesn't anymore!</li>
-			</ul>
-			<h3 class="author">NotRanged updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added OOC notes and flavor text functionality for silicons.</li>
-			</ul>
-			<h3 class="author">ShadeAware updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Nanotrasen Software Engineers have finally fixed a software fault which prevented chemical dispensers from utilizing modern hardware parts.</li>
-				<li class="rscadd">The Chaplain can now pick up a classic Crucifix in the Loadout menu, backpack section. One can also be crafted, if you can find the materials.</li>
-				<li class="bugfix">GLASSES HAVE SPRITES NOW AAAAA</li>
-				<li class="rscadd">Every Medical Doctor now spawns with a Hypospray kit in their bag. More Hypovials can be produced at any Autolathe or Medical Protolathe.</li>
-				<li class="rscadd">The CMO's hypospray has been updated to the new Hypospray MKII Deluxe, courtesy of the Nanotrasen Medical Finance division and newly acquired grants from the Solar Federation.</li>
-				<li class="rscadd">Loads of new implants are now available to Robotics and Medical!</li>
-				<li class="balance">The cost of the Implants tech trees have been increased significantly.</li>
-			</ul>
-			<h3 class="author">SkyratBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The cryo pod now cools human core temperature</li>
-				<li class="bugfix">gas selling now use elasticity as all other exports (diminishing returns)</li>
-				<li class="bugfix">Nar'Sie summoning runes can be erased with a null rod, or by a cultist with a sacrificial dagger after a confirmation message.</li>
-				<li class="bugfix">The implosion compressor now properly gives a message when the bomb is too weak, and will give it back.</li>
-				<li class="spellcheck">Fixes a single typo with TB</li>
-				<li class="bugfix">Reskinned double-barrelled shotguns now appear properly on the back slot</li>
-				<li class="bugfix">Body temperature stabilizes to the room temp in statis beds</li>
-				<li class="bugfix">Body warms up a bit faster on the cold moon of ice</li>
-				<li class="bugfix">Food is now small, unless tagged to be bigger.</li>
-				<li class="bugfix">fixed issue with HFR core cooling that destroyed gas</li>
-				<li class="tweak">changed HFR core to use only one port for cooling</li>
-				<li class="bugfix">output temperature and coolant temperature now show the right values</li>
-				<li class="bugfix">pAIs are now able to fully utilise installed encryption keys through their integrated transciever's menu when they have the encryption key software upgrade. The issue where pAIs are only able to change integrated radio settings when in holochassis form still persists and will be fixed in a later PR.</li>
-				<li class="tweak">Security Terminal and Tooltips don't use jQuery anymore</li>
-			</ul>
-			<h3 class="author">bobbahbrown updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Nanotrasen have updated their control panels mounted on canisters and atmospheric tanks to include fancy new pressure gauges, wow!</li>
-			</ul>
-			<h3 class="author">tf-4 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Slapping someone's ass now tells you you slapped theirs, not your own.</li>
 			</ul>
 		</div>
 
