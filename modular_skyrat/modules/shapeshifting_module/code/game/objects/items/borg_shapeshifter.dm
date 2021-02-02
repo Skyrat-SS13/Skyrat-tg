@@ -894,7 +894,7 @@
 	else
 		return PROCESS_KILL
 
-/obj/item/borg_shapeshifter/proc/activate(mob/living/silicon/robot/user, disguisemodelName)
+/obj/item/borg_shapeshifter/proc/activate(mob/living/silicon/robot/user, disguiseModelName)
 	START_PROCESSING(SSobj, src)
 	src.user = user
 	savedIcon = user.model.cyborg_base_icon
@@ -904,7 +904,7 @@
 	savedModelName = user.model.name
 	savedDogborg = user.model.dogborg
 	savedSpecialLightKey = user.model.special_light_key
-	user.model.name = disguisemodelName
+	user.model.name = disguiseModelName
 	user.model.cyborg_base_icon = disguise
 	user.model.cyborg_icon_override = disguise_icon_override
 	user.model.cyborg_pixel_offset = disguise_pixel_offset
