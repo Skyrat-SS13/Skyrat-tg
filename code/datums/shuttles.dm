@@ -232,7 +232,7 @@
 	name = "Grand Corporate Monastery"
 	description = "Originally built for a public station, this grand edifice to religion, due to budget cuts, is now available as an escape shuttle for the right... donation. Due to its large size and callous owners, this shuttle may cause collateral damage."
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
-	credit_cost = CARGO_CRATE_VALUE * 250
+	credit_cost = CARGO_CRATE_VALUE * 2500 //SKYRAT EDIT
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
 
 /datum/map_template/shuttle/emergency/luxury
