@@ -34,16 +34,33 @@
 	for(var/obj/item/ammo_casing/A in dish_drive_contents)
 		if(!A.BB)
 			LAZYREMOVE(dish_drive_contents, A)
-			A.forceMove(bin)
+			qdel(A)
 			use_power(active_power_usage)
 			disposed++
 	if(disposed)
-		visible_message("<span class='notice'>[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")] and beams [disposed] stored item\s into the nearby [bin.name].</span>")
+		visible_message("<span class='notice'>[src] [pick("whooshes", "bwooms", "fwooms", "pshooms")] and demoleculizes [disposed] stored item\s into the nearby void.</span>")
 		playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
 		playsound(bin, 'sound/items/pshoom.ogg', 50, TRUE)
-		Beam(bin, icon_state = "rped_upgrade", time = 5)
-		bin.update_icon()
 		flick("synthesizer_beam", src)
 	else
 		visible_message("<span class='notice'>There are no disposable items in [src]!</span>")
 	time_since_dishes = world.time + 600
+
+/obj/machinery/dish_drive/bullet/process()
+	if(time_since_dishes <= world.time && transmit_enabled)
+		do_the_dishes()
+	if(!suction_enabled)
+		return
+	for(var/obj/item/I in view(succrange, src))
+		if(istype(I, /obj/machinery/dish_drive/bullet))
+			visible_message("<span class='userdanger'>[src] has detected another bullet drive nearby, and is sad!</span>")
+			break
+		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume))
+			if(I.Adjacent(src))
+				LAZYADD(dish_drive_contents, I)
+				visible_message("<span class='notice'>[src] beams up [I]!</span>")
+				I.moveToNullspace()
+				playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
+				flick("synthesizer_beam", src)
+			else
+				step_towards(I, src)

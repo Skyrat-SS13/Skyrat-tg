@@ -59,7 +59,7 @@
 		return
 
 	for(var/i = max(1, stored_ammo.len), i <= max_ammo, i++)
-		stored_ammo += new round_check(src)
+		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 	update_icon()
 
 ///gets a round from the magazine, if keep is TRUE the round will stay in the gun
@@ -81,7 +81,7 @@
 
 	if (stored_ammo.len < max_ammo)
 		stored_ammo += R
-		R.forceMove(src)
+		R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 		return TRUE
 
 	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
@@ -92,7 +92,7 @@
 				AC.forceMove(get_turf(src.loc))
 
 				stored_ammo += R
-				R.forceMove(src)
+				R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 				return TRUE
 	return FALSE
 
