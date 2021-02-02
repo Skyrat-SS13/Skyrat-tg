@@ -13,3 +13,4 @@
 ///aliens are immune to stamina damage.
 /mob/living/carbon/alien/setStaminaLoss(amount, updating_health = 1)
 	return FALSE
+// Want to find the source of Xenomorphs taking double / 1.5x burn damage? See: code/modules/surgery/bodyparts/bodyparts.dm and search for ALIEN_BODYPART don't ask why it's there.
