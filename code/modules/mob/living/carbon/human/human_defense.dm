@@ -300,12 +300,25 @@
 			to_chat(M, "<span class='danger'>You disarm [src]!</span>")
 		else
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, TRUE, -1)
+			Knockdown(50)
+			Paralyze(10)
+			var/obj/item/bodypart/affecting = get_bodypart(ran_zone(M.zone_selected))
+			if(!affecting)
+				affecting = get_bodypart(BODY_ZONE_CHEST)
+			var/armor_block = run_armor_check(affecting, MELEE)
+			apply_damage((rand(M.melee_damage_lower, M.melee_damage_upper)), STAMINA, affecting, armor_block)
+			log_combat(M, src, "tackled")
+			visible_message("<span class='danger'>[M] [pick("whacks","beats","wrestles")] [src] down!</span>", \
+							"<span class='userdanger'>[M] knocks you down!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", null, M)
+			to_chat(M, "<span class='danger'>You knock [src] down!</span>")
+		/*else
+			playsound(loc, 'sound/weapons/pierce.ogg', 25, TRUE, -1)
 			Paralyze(100)
 			log_combat(M, src, "tackled")
 			visible_message("<span class='danger'>[M] tackles [src] down!</span>", \
 							"<span class='userdanger'>[M] tackles you down!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", null, M)
 			to_chat(M, "<span class='danger'>You tackle [src] down!</span>")
-
+		*/	// SKYRAT EDIT - Original 'else'. Xenomorph tackle/disarm intent nerfed.
 
 /mob/living/carbon/human/attack_larva(mob/living/carbon/alien/larva/L)
 	. = ..()
