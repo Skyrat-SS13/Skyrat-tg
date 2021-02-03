@@ -287,6 +287,8 @@
 		/obj/item/melee/baton/loaded=1,\
 		/obj/item/grenade/clusterbuster/cleaner=3)
 
+//SKYRAT EDIT REMOVAL START
+/*
 /datum/outfit/centcom/ert/clown
 	name = "ERT Clown"
 
@@ -315,6 +317,8 @@
 	H.dna.add_mutation(CLOWNMUT)
 	for(var/datum/mutation/human/clumsy/M in H.dna.mutations)
 		M.mutadone_proof = TRUE
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/outfit/centcom/centcom_intern
 	name = "CentCom Intern"
@@ -351,6 +355,8 @@
 	l_hand = /obj/item/megaphone
 	head = /obj/item/clothing/head/intern
 
+//SKYRAT EDIT REMOVAL START
+/*
 /datum/outfit/centcom/ert/janitor/party
 	name = "ERP Cleaning Service"
 
@@ -424,3 +430,5 @@
 	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/storage/box/fireworks=3,\
 		/obj/item/food/cake/birthday=1)
+*/
+//SKYRAT EDIT REMOVAL END
