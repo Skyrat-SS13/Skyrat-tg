@@ -1,3 +1,4 @@
+
 /datum/controller/configuration
 	name = "Configuration"
 
@@ -115,6 +116,9 @@
 	log_config("Loading config file [filename]...")
 	var/list/lines = world.file2list("[directory]/[filename]")
 	var/list/results = list()
+	if(!lines.len) //Good job 4head you loaded a file that doesn't exist or doesn't contain anything in it
+		log_config("Error: We tried to load [directory]/[filename] but it doesn't have anything in it/it doesn't exist!")
+		CRASH("Error: We tried to load [directory]/[filename] but it doesn't have anything in it/it doesn't exist!")
 	for(var/L in lines)
 		L = trim(L)
 		if(!L)
@@ -158,6 +162,7 @@
 
 	return results
 
+///Takes the file name to load and a list of already loaded files as an argument, returns the amount of files loaded
 /datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
 	if(IsAdminAdvancedProcCall())
 		return
@@ -174,11 +179,11 @@
 	for(var/entry in parsed_entries)
 		var/value = parsed_entries[entry]
 		if(entry == CONFIGURATION_INCLUDE_TOKEN)
-			if(!value)
-				log_config("Warning: Invalid $include directive: [value]")
-			else
-				LoadEntries(value, stack)
-				++.
+			for(var/includedfile in value) //Value is a list of included files in this case
+				if(!includedfile)
+					log_config("Warning: Invalid $include directive: [includedfile]")
+				else
+					. += LoadEntries(includedfile, stack)
 			continue
 
 		var/firstchar = entry[1]
@@ -296,21 +301,18 @@
 /*
 Policy file should be a json file with a single object.
 Value is raw html.
-
 Possible keywords :
 Job titles / Assigned roles (ghost spawners for example) : Assistant , Captain , Ash Walker
 Mob types : /mob/living/simple_animal/hostile/carp
 Antagonist types : /datum/antagonist/highlander
 Species types : /datum/species/lizard
 special keywords defined in _DEFINES/admin.dm
-
 Example config:
 {
 	"Assistant" : "Don't kill everyone",
 	"/datum/antagonist/highlander" : "<b>Kill everyone</b>",
 	"Ash Walker" : "Kill all spacemans"
 }
-
 */
 /datum/controller/configuration/proc/LoadPolicy()
 	policy = list()
@@ -461,3 +463,4 @@ Example config:
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/message_admins, text), 0)
+	
