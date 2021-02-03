@@ -4,7 +4,7 @@
 
 /obj/item/storage/box/gunset
 	name = "gun supply box"
-	desc = "A box with gun and ammo in. Remind me why you're seeing this again?"
+	desc = "An Armadyne weapons supply box."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	icon_state = "box"
 	var/box_state = "box"
@@ -328,3 +328,11 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 
 
+//Blaster
+/obj/item/storage/box/gunset/blaster
+	name = "blaster supply box"
+
+
+/obj/item/storage/box/gunset/blaster/PopulateContents()
+	. = ..()
+	new /obj/item/gun/energy/laser/hitscan(src)

@@ -182,3 +182,10 @@
 /obj/item/ammo_box/magazine/handle_atom_del(atom/A)
 	stored_ammo -= A
 	update_icon()
+
+//SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
+/obj/item/ammo_box/Destroy()
+	. = ..()
+	for(var/i in stored_ammo)
+		qdel(i)
+//SKYRAT EDIT END

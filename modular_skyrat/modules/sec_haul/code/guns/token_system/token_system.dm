@@ -144,6 +144,22 @@
      )
   )
 
+//BAD BOY!
+/obj/item/armament_token/energy
+	name = "energy armament holochip"
+	desc = "A holochip used in any armament vendor, this is for energy weapons. Do not bend."
+	icon_state = "token_energy"
+	custom_premium_price = PAYCHECK_HARD * 3
+	minimum_sec_level = SEC_LEVEL_BLUE
+
+/obj/item/armament_token/energy/get_available_gunsets()
+  return list(
+    /obj/item/storage/box/gunset/blaster = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "blaster"
+     )
+  )
+
 /obj/item/storage/box/armament_tokens_sidearm
 	name = "security sidearm tokens"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
@@ -171,3 +187,16 @@
 	new /obj/item/armament_token/primary(src)
 	new /obj/item/armament_token/primary(src)
 	new /obj/item/armament_token/primary(src)
+
+/obj/item/storage/box/armament_tokens_energy
+	name = "security energy tokens"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
+	icon_state = "armadyne_energy"
+	desc = "A box full of energy armament tokens!"
+	illustration = null
+
+/obj/item/storage/box/armament_tokens_energy/PopulateContents()
+	. = ..()
+	new /obj/item/armament_token/energy(src)
+	new /obj/item/armament_token/energy(src)
+	new /obj/item/armament_token/energy(src)
