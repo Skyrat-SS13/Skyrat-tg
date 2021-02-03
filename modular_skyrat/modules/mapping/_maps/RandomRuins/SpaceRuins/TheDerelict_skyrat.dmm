@@ -81,6 +81,13 @@
 	},
 /turf/template_noop,
 /area/ruin/space/derelict/arrival)
+"aN" = (
+/obj/effect/turf_decal/trimline/purple/filled/line,
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "aO" = (
 /obj/machinery/door/airlock/shuttle{
 	welded = 1
@@ -248,7 +255,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plasteel/airless,
+/turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge/ai_upload)
 "bu" = (
 /obj/machinery/door/window{
@@ -256,7 +263,7 @@
 	dir = 4;
 	icon_state = "right"
 	},
-/turf/open/floor/plasteel/airless,
+/turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge/ai_upload)
 "bv" = (
 /obj/item/stack/sheet/glass,
@@ -339,6 +346,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
+"cy" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/toy/figure/geneticist,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "cA" = (
 /obj/structure/window/reinforced/spawner/west,
 /obj/structure/window/reinforced/spawner/east,
@@ -346,7 +362,9 @@
 /area/ruin/space/derelict/solar_control)
 "cO" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/eastright,
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
 "cU" = (
@@ -383,10 +401,40 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
+"do" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "dp" = (
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/arrival)
+"dD" = (
+/obj/structure/sign/directions/command{
+	dir = 4;
+	pixel_y = 45
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 1;
+	pixel_y = 39
+	},
+/obj/structure/sign/directions/evac{
+	dir = 8;
+	pixel_y = 33
+	},
+/obj/structure/sign/directions/medical{
+	dir = 1;
+	pixel_y = 27
+	},
+/obj/structure/sign/directions/science{
+	dir = 4;
+	pixel_y = 21
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary)
 "ea" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/middle,
 /turf/open/floor/plating,
@@ -399,6 +447,23 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
+"eo" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/machinery/door/window/northright,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
+"eu" = (
+/obj/structure/window/reinforced/spawner/east,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "eC" = (
@@ -450,10 +515,21 @@
 /obj/machinery/door/window/eastright,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/singularity_engine)
+"fy" = (
+/obj/structure/bodycontainer/morgue,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical/chapel)
 "fA" = (
 /obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/space/derelict/bridge/ai_upload)
+"fI" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "fL" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -471,7 +547,24 @@
 /obj/structure/window/reinforced/spawner/west,
 /obj/structure/window/reinforced/spawner/north,
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
 /turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
+"gh" = (
+/obj/structure/cable,
+/obj/structure/sign/departments/security{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary)
+"gi" = (
+/obj/machinery/door/window/eastright,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "gm" = (
 /obj/structure/window/reinforced/spawner/west,
@@ -579,6 +672,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"ij" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
+"il" = (
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary/port)
 "im" = (
 /obj/structure/foamedmetal/resin,
 /turf/open/floor/plating/airless,
@@ -597,10 +700,6 @@
 /obj/structure/rack,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge/ai_upload)
-"iG" = (
-/obj/structure/window/reinforced/spawner,
-/turf/open/floor/plasteel,
-/area/ruin/space/derelict/medical)
 "iL" = (
 /turf/open/floor/plating,
 /area/ruin/space/derelict/arrival)
@@ -627,12 +726,47 @@
 /obj/machinery/door/airlock/command,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/singularity_engine)
-"jA" = (
-/obj/item/clothing/suit/space/syndicate/black/orange,
-/obj/item/clothing/head/helmet/space/syndicate/black/orange,
-/obj/structure/rack,
+"ju" = (
+/obj/machinery/sleeper{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
+"jx" = (
+/obj/structure/bodycontainer/morgue,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
 /turf/open/floor/plasteel,
-/area/ruin/space/derelict/singularity_engine)
+/area/ruin/space/derelict/medical/chapel)
+"jA" = (
+/obj/structure/sign/directions/command{
+	pixel_y = 45
+	},
+/obj/structure/sign/directions/engineering{
+	pixel_y = 39
+	},
+/obj/structure/sign/directions/evac{
+	pixel_y = 33
+	},
+/obj/structure/sign/directions/medical{
+	pixel_y = 27
+	},
+/obj/structure/sign/directions/science{
+	pixel_y = 21
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/arrival)
+"jF" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/machinery/computer/cloning,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "jQ" = (
 /obj/structure/lattice,
 /turf/template_noop,
@@ -647,6 +781,12 @@
 	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
 	},
 /area/ruin/space/derelict/atmospherics)
+"jV" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "ka" = (
 /obj/structure/frame/computer,
 /turf/open/floor/plasteel,
@@ -664,9 +804,21 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"kC" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "kE" = (
-/obj/machinery/door/window/southleft,
-/turf/open/floor/plasteel/white,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Medbay"
+	},
+/turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "kI" = (
 /turf/open/floor/plasteel,
@@ -677,6 +829,7 @@
 	pixel_y = -23
 	},
 /obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "kK" = (
@@ -701,6 +854,13 @@
 /obj/item/bedsheet,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
+"lk" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 5
+	},
+/obj/structure/window/reinforced/spawner/north,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "lp" = (
 /obj/structure/table,
 /turf/open/floor/plasteel,
@@ -708,20 +868,36 @@
 "lu" = (
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
+"lz" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/machinery/door/window/northleft,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "lB" = (
 /obj/machinery/door/window/southright,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/secondary)
 "lF" = (
-/obj/structure/frame/computer,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/machinery/computer/crew/syndie,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "lG" = (
 /obj/machinery/door/window/eastright,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "lI" = (
 /obj/structure/table,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "lL" = (
@@ -733,6 +909,12 @@
 /obj/machinery/door/window/southright,
 /turf/open/floor/plasteel/airless,
 /area/ruin/space/derelict/singularity_engine)
+"lY" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical/chapel)
 "mf" = (
 /obj/machinery/portable_atmospherics/pump,
 /turf/open/floor/plasteel,
@@ -740,33 +922,50 @@
 "mi" = (
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
+"mj" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "mp" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/closet,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 5
+	},
+/obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "mr" = (
-/obj/structure/window/reinforced/spawner/north,
-/obj/machinery/computer/scan_consolenew,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/machinery/dna_scannernew,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "ms" = (
-/obj/machinery/dna_scannernew,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
+/obj/machinery/computer/scan_consolenew,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "mt" = (
 /obj/structure/table,
 /obj/item/dnainjector/dwarf,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 5
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "mw" = (
 /obj/structure/window/reinforced/spawner,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/solar_control)
-"mx" = (
-/obj/machinery/door/window/southleft,
-/turf/open/floor/plasteel,
-/area/ruin/space/derelict/medical)
 "my" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating/airless,
@@ -779,6 +978,12 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/solar_control)
+"mF" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "mK" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "derelict12"
@@ -824,6 +1029,10 @@
 /obj/structure/closet,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/arrival)
+"nv" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "ny" = (
 /obj/structure/table,
 /turf/open/floor/plasteel,
@@ -850,6 +1059,9 @@
 /area/ruin/space/derelict/atmospherics)
 "oe" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "og" = (
@@ -862,6 +1074,9 @@
 /area/ruin/space/derelict/hallway/primary/port)
 "ot" = (
 /obj/structure/window/reinforced/spawner/east,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "ov" = (
@@ -899,6 +1114,9 @@
 	pixel_y = -23
 	},
 /obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical/chapel)
 "oZ" = (
@@ -942,6 +1160,10 @@
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/hallway/secondary)
+"qt" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/end,
+/turf/open/floor/plating,
+/area/ruin/space/derelict/medical)
 "qJ" = (
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/plasteel,
@@ -962,8 +1184,18 @@
 "ri" = (
 /turf/closed/wall,
 /area/ruin/space/derelict/bridge)
+"ro" = (
+/obj/effect/turf_decal/trimline/purple/filled/end{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "rr" = (
 /obj/machinery/door/morgue,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical/chapel)
 "rz" = (
@@ -1031,6 +1263,20 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/solar_control)
+"th" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/structure/closet/l3closet,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "tl" = (
 /obj/structure/table,
 /obj/structure/window/reinforced{
@@ -1053,6 +1299,13 @@
 /obj/structure/tank_dispenser,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
+"tu" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "tw" = (
 /obj/machinery/door/window{
 	dir = 4
@@ -1071,6 +1324,12 @@
 "tG" = (
 /turf/closed/wall,
 /area/ruin/space/derelict/hallway/secondary)
+"tI" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "tK" = (
 /turf/open/floor/plasteel/chapel{
 	dir = 4
@@ -1090,6 +1349,12 @@
 "ud" = (
 /turf/template_noop,
 /area/template_noop)
+"um" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "up" = (
 /obj/structure/closet,
 /turf/open/floor/plasteel,
@@ -1105,9 +1370,14 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/singularity_engine)
 "uv" = (
-/obj/machinery/door/window/southright,
 /obj/structure/cable,
-/turf/open/floor/plasteel/white,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "ux" = (
 /obj/machinery/atmospherics/components/unary/portables_connector,
@@ -1119,6 +1389,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"uF" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
+"uJ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical/chapel)
 "uK" = (
 /obj/structure/window/reinforced/spawner/west,
 /turf/open/floor/plasteel,
@@ -1137,10 +1420,37 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
+"vl" = (
+/obj/machinery/teleport/station,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary/port)
 "vm" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/atmospherics)
+"vn" = (
+/obj/structure/sign/directions/command{
+	dir = 1;
+	pixel_y = 45
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 8;
+	pixel_y = 39
+	},
+/obj/structure/sign/directions/evac{
+	dir = 1;
+	pixel_y = 33
+	},
+/obj/structure/sign/directions/medical{
+	dir = 8;
+	pixel_y = 27
+	},
+/obj/structure/sign/directions/science{
+	dir = 4;
+	pixel_y = 21
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary)
 "vx" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -1163,6 +1473,9 @@
 /area/ruin/space/derelict/hallway/primary/port)
 "vU" = (
 /obj/structure/frame/computer,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "wb" = (
@@ -1180,6 +1493,12 @@
 /obj/machinery/atmospherics/components/unary/portables_connector,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/secondary)
+"wz" = (
+/obj/structure/table,
+/obj/structure/window/reinforced/spawner,
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "wA" = (
 /obj/structure/closet,
 /turf/open/floor/plasteel,
@@ -1193,6 +1512,9 @@
 /obj/structure/chair{
 	dir = 8
 	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "wL" = (
@@ -1202,6 +1524,17 @@
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/hallway/secondary)
 "wM" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/machinery/door/airlock/grunge,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical/chapel)
 "wO" = (
@@ -1223,6 +1556,19 @@
 /area/ruin/space/derelict/medical/chapel)
 "xs" = (
 /obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/machinery/door/airlock/research/glass{
+	name = "Med-Sci"
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "xC" = (
@@ -1244,6 +1590,12 @@
 /obj/machinery/door/airlock/command,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
+"xQ" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "xS" = (
 /obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/plasteel,
@@ -1274,6 +1626,9 @@
 "yh" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "yi" = (
@@ -1290,16 +1645,25 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
 "yr" = (
-/obj/machinery/door/window/southleft{
-	dir = 4
-	},
 /obj/structure/cable,
+/obj/machinery/door/airlock/public,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
 "yt" = (
 /obj/structure/table,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"yw" = (
+/obj/structure/sign/departments/science{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/secondary)
+"yD" = (
+/obj/structure/bed,
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "yG" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/derelict/hallway/primary/port)
@@ -1337,10 +1701,26 @@
 /obj/machinery/atmospherics/pipe/manifold/general/visible,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
+"zt" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "zu" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/structure/cable,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "zx" = (
 /obj/structure/closet/emcloset,
@@ -1369,6 +1749,12 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"zT" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical/chapel)
 "zU" = (
 /obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/plasteel,
@@ -1377,6 +1763,13 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
+"Ae" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "Ah" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -1392,7 +1785,6 @@
 /area/ruin/space/derelict/atmospherics)
 "Ar" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/eastleft,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
 "At" = (
@@ -1412,6 +1804,9 @@
 "Az" = (
 /obj/machinery/sleeper{
 	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
@@ -1469,6 +1864,9 @@
 "Cg" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/closet,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "Cm" = (
@@ -1477,11 +1875,15 @@
 /area/ruin/space/derelict/singularity_engine)
 "Cq" = (
 /obj/structure/closet,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "CH" = (
-/obj/machinery/door/window/eastright,
-/turf/open/floor/plasteel/airless,
+/turf/open/floor/plasteel/airless{
+	icon_state = "floorscorched1"
+	},
 /area/ruin/space/derelict/singularity_engine)
 "CK" = (
 /obj/structure/frame/computer{
@@ -1509,22 +1911,35 @@
 /obj/machinery/computer/card,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"Dc" = (
+/obj/structure/sign/departments/medbay/alt{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary)
 "Dj" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/end{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/ruin/space/derelict/hallway/primary)
-"Do" = (
-/obj/machinery/door/window/southleft,
-/obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/ruin/space/derelict/hallway/primary)
+"Dq" = (
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/derelict/medical)
 "Dr" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/arrival)
+"Dw" = (
+/obj/structure/sign/departments/court{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/secondary)
 "Dx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/plasteel/airless,
@@ -1558,6 +1973,16 @@
 /area/ruin/space/derelict/medical/chapel)
 "Ei" = (
 /obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "Em" = (
@@ -1567,6 +1992,9 @@
 "Eu" = (
 /obj/structure/table,
 /obj/item/storage/box/monkeycubes,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 10
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "ED" = (
@@ -1589,13 +2017,15 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
 "EY" = (
-/obj/machinery/teleport/station,
-/turf/open/floor/plasteel,
-/area/ruin/space/derelict/hallway/primary/port)
+/turf/open/floor/plasteel/airless{
+	icon_state = "damaged1"
+	},
+/area/ruin/space/derelict/singularity_engine)
 "Fb" = (
-/obj/machinery/door/window/southright,
-/turf/open/floor/plasteel,
-/area/ruin/space/derelict/hallway/primary/port)
+/turf/open/floor/plasteel/airless{
+	icon_state = "damaged2"
+	},
+/area/ruin/space/derelict/singularity_engine)
 "Ff" = (
 /turf/open/floor/plasteel/chapel{
 	dir = 1
@@ -1625,10 +2055,17 @@
 /area/ruin/space/derelict/medical/chapel)
 "Fv" = (
 /obj/machinery/door/morgue,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/derelict/medical/chapel)
 "Fz" = (
 /obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "FG" = (
@@ -1668,6 +2105,9 @@
 /area/ruin/space/derelict/singularity_engine)
 "FT" = (
 /obj/structure/bed,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "FX" = (
@@ -1774,6 +2214,11 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/secondary)
+"HJ" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/purple/filled/line,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "HQ" = (
 /obj/structure/frame/computer{
 	dir = 4
@@ -1869,6 +2314,13 @@
 /obj/structure/grille,
 /turf/template_noop,
 /area/ruin/space/derelict/medical/chapel)
+"Jv" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "JF" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/wood/fifty,
@@ -1889,6 +2341,9 @@
 /area/ruin/space/derelict/singularity_engine)
 "JK" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "JL" = (
@@ -1901,10 +2356,23 @@
 /obj/effect/spawner/structure/window/hollow/reinforced/end,
 /turf/open/floor/plating,
 /area/ruin/space/derelict/hallway/primary/port)
+"JZ" = (
+/obj/structure/bodycontainer/morgue,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical/chapel)
 "Kd" = (
 /obj/machinery/suit_storage_unit/open,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/singularity_engine)
+"Ke" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "Kh" = (
 /obj/machinery/door/window/southright,
 /turf/open/floor/plasteel,
@@ -1917,15 +2385,25 @@
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/hallway/secondary)
 "Kj" = (
-/obj/machinery/door/window/southleft{
-	dir = 4
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
 "Ku" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/eastright,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Med-Sci"
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "KB" = (
@@ -1935,6 +2413,9 @@
 "KD" = (
 /obj/structure/window/reinforced/spawner/west,
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 10
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "KE" = (
@@ -1963,6 +2444,9 @@
 "KZ" = (
 /obj/structure/table,
 /obj/structure/window/reinforced/spawner,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "Lh" = (
@@ -2000,6 +2484,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/secondary)
+"LE" = (
+/obj/machinery/teleport/hub,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary/port)
 "LK" = (
 /obj/structure/chair{
 	dir = 4
@@ -2015,8 +2503,38 @@
 /obj/machinery/suit_storage_unit/open,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary/port)
+"LX" = (
+/obj/machinery/computer/teleporter,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary/port)
+"Mc" = (
+/obj/structure/sign/directions/command{
+	dir = 1;
+	pixel_y = 45
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 8;
+	pixel_y = 39
+	},
+/obj/structure/sign/directions/evac{
+	dir = 1;
+	pixel_y = 33
+	},
+/obj/structure/sign/directions/medical{
+	dir = 8;
+	pixel_y = 27
+	},
+/obj/structure/sign/directions/science{
+	dir = 8;
+	pixel_y = 21
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary)
 "Md" = (
 /obj/structure/closet,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "Mi" = (
@@ -2031,8 +2549,8 @@
 	},
 /area/ruin/space/derelict/medical/chapel)
 "Mp" = (
-/obj/machinery/door/window/southleft,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/grunge,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical/chapel)
 "Mr" = (
@@ -2047,13 +2565,24 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/hallway/secondary)
+"Mu" = (
+/obj/structure/sign/departments/evac{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/singularity_engine)
 "MS" = (
-/obj/structure/window/reinforced/spawner,
 /obj/structure/closet,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 6
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "MV" = (
 /obj/structure/window/reinforced/spawner/north,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "MZ" = (
@@ -2067,18 +2596,31 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
 "Nb" = (
-/obj/machinery/door/window/southright,
+/obj/effect/turf_decal/trimline/purple/filled/line,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "Ne" = (
 /obj/structure/closet,
 /obj/item/clothing/head/helmet/space/syndicate/black/med,
 /obj/item/clothing/suit/space/syndicate/black/med,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "Ng" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "Nq" = (
@@ -2142,11 +2684,14 @@
 /obj/structure/table,
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/window/reinforced/spawner,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "Oj" = (
 /obj/structure/grille,
-/turf/open/floor/plating/airless,
+/turf/open/floor/plating,
 /area/ruin/space/derelict/bridge/ai_upload)
 "Ok" = (
 /obj/structure/rack,
@@ -2159,6 +2704,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/bridge/ai_upload)
+"OL" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary/port)
 "ON" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/directional{
 	dir = 6
@@ -2173,6 +2722,14 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/plating,
 /area/ruin/space/derelict/bridge)
+"OY" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/singularity_engine)
 "Pb" = (
 /obj/structure/rack,
 /obj/item/pickaxe,
@@ -2180,9 +2737,10 @@
 /turf/open/floor/mineral/titanium,
 /area/ruin/space/derelict/arrival)
 "Pg" = (
-/obj/machinery/computer/teleporter,
-/turf/open/floor/plasteel,
-/area/ruin/space/derelict/hallway/primary/port)
+/turf/open/floor/plasteel/airless{
+	icon_state = "damaged5"
+	},
+/area/ruin/space/derelict/singularity_engine)
 "Pi" = (
 /obj/machinery/door/airlock/vault/derelict,
 /turf/open/floor/plasteel/airless,
@@ -2241,16 +2799,35 @@
 "Qk" = (
 /turf/closed/wall,
 /area/ruin/space/derelict/arrival)
+"Qn" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "Qt" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plasteel/airless{
 	icon_state = "damaged2"
 	},
 /area/ruin/space/derelict/atmospherics)
+"Qu" = (
+/obj/machinery/door/window/eastright,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "QC" = (
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/atmospherics)
+"QT" = (
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "Ra" = (
 /obj/machinery/light/small,
 /turf/open/floor/plasteel/airless,
@@ -2265,14 +2842,25 @@
 "Rl" = (
 /turf/closed/wall,
 /area/ruin/space/derelict/bridge/ai_upload)
+"Rm" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "Rq" = (
 /obj/structure/grille,
-/turf/open/floor/plating/airless,
+/turf/open/floor/plating,
 /area/ruin/space/derelict/solar_control)
 "Rr" = (
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/storage/equipment)
+"Rv" = (
+/obj/structure/sign/departments/engineering{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary)
 "RE" = (
 /obj/structure/lattice,
 /turf/template_noop,
@@ -2283,10 +2871,39 @@
 /area/ruin/space/derelict/atmospherics)
 "RT" = (
 /obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/door/airlock/grunge,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical/chapel)
+"RY" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "Sh" = (
-/obj/machinery/door/window/eastright,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "Si" = (
@@ -2300,12 +2917,17 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
 "Sl" = (
-/obj/machinery/door/window/southleft{
-	dir = 4
-	},
 /obj/structure/cable,
+/obj/machinery/door/airlock/public,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
+"Ss" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "Sv" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "derelict6"
@@ -2319,6 +2941,13 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/derelict/hallway/secondary)
+"SC" = (
+/obj/structure/closet,
+/obj/structure/sign/departments/holy{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/primary/port)
 "SE" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating/airless,
@@ -2358,9 +2987,9 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/singularity_engine)
 "Tl" = (
-/obj/machinery/teleport/hub,
-/turf/open/floor/plasteel,
-/area/ruin/space/derelict/hallway/primary/port)
+/obj/structure/window/reinforced/spawner/east,
+/turf/open/floor/plating/airless,
+/area/ruin/space/derelict/singularity_engine)
 "Tp" = (
 /obj/structure/window/spawner/east,
 /obj/structure/window/reinforced/spawner/north,
@@ -2370,6 +2999,12 @@
 /obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/space/derelict/singularity_engine)
+"TD" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "TE" = (
 /obj/structure/closet/crate/internals,
 /turf/open/floor/plasteel,
@@ -2382,12 +3017,28 @@
 "TN" = (
 /obj/structure/table,
 /obj/structure/window/reinforced/spawner/east,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
+"TP" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
+/obj/structure/window/reinforced/spawner/north,
+/turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "TX" = (
 /obj/structure/window/spawner/east,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/primary)
+"TY" = (
+/obj/structure/sign/departments/science{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/secondary)
 "Ua" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "derelict1"
@@ -2404,9 +3055,17 @@
 "Us" = (
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/atmospherics)
+"Uw" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "UC" = (
 /obj/structure/window/reinforced/spawner/east,
-/turf/open/floor/plasteel/airless,
+/turf/open/floor/plasteel/airless{
+	icon_state = "damaged3"
+	},
 /area/ruin/space/derelict/singularity_engine)
 "UF" = (
 /obj/structure/window/reinforced{
@@ -2482,14 +3141,30 @@
 /obj/machinery/door/firedoor/heavy,
 /turf/open/floor/plasteel/airless,
 /area/ruin/space/derelict/atmospherics)
+"VN" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/machinery/clonepod,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "VO" = (
 /obj/structure/closet/l3closet,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "VY" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/middle,
 /turf/open/floor/plating,
 /area/ruin/space/derelict/bridge/access)
+"We" = (
+/obj/structure/sign/departments/engineering{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/singularity_engine)
 "Wi" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/southleft{
@@ -2507,6 +3182,12 @@
 /obj/structure/closet,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"Ws" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "Wt" = (
 /obj/machinery/door/window/southright,
 /obj/structure/cable,
@@ -2577,10 +3258,16 @@
 /area/ruin/space/derelict/singularity_engine)
 "WY" = (
 /obj/structure/table,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical)
 "Xa" = (
 /obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/medical/chapel)
 "Xc" = (
@@ -2615,10 +3302,14 @@
 /area/ruin/space/derelict/singularity_engine)
 "XB" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "XF" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/derelict/medical)
 "XG" = (
@@ -2665,6 +3356,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/secondary)
+"YE" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/floor/plasteel/white,
+/area/ruin/space/derelict/medical)
 "YG" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/airless,
@@ -2720,6 +3416,19 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/hallway/secondary)
+"ZB" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/north,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
+"ZG" = (
+/obj/structure/sign/departments/court{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/hallway/secondary)
 "ZJ" = (
 /obj/structure/frame/machine,
 /obj/item/circuitboard/machine/thermomachine,
@@ -2736,11 +3445,22 @@
 "ZM" = (
 /turf/template_noop,
 /area/space)
+"ZN" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical)
 "ZO" = (
 /obj/structure/table,
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/derelict/bridge)
+"ZV" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/turf/open/floor/plasteel,
+/area/ruin/space/derelict/medical/chapel)
 "ZW" = (
 /obj/machinery/door/window/southright,
 /turf/open/floor/plasteel,
@@ -3095,7 +3815,7 @@ Fu
 LK
 tK
 sH
-pT
+LX
 pT
 zO
 yG
@@ -3188,7 +3908,7 @@ Mk
 Pl
 Ff
 sH
-pT
+vl
 pT
 pT
 yG
@@ -3281,8 +4001,8 @@ Fu
 yH
 xp
 sH
+LE
 pT
-Pg
 pT
 yG
 ZM
@@ -3375,7 +4095,7 @@ ZK
 Xc
 sH
 pT
-EY
+pT
 pT
 yG
 ZM
@@ -3468,7 +4188,7 @@ EF
 am
 sH
 pT
-Tl
+pT
 pT
 yG
 ZM
@@ -3660,11 +4380,11 @@ yG
 ZM
 ZM
 pF
-Lh
 pT
-Lh
 pT
-Lh
+pT
+pT
+pT
 pF
 ZM
 pF
@@ -3753,11 +4473,11 @@ yG
 ZM
 ZM
 pF
-Lh
 pT
-Lh
 pT
-Lh
+pT
+pT
+pT
 pF
 ZM
 pF
@@ -3830,12 +4550,12 @@ ud
 Eh
 Ur
 Eh
-wO
-wO
-wO
-wO
-wO
-wO
+JZ
+fy
+fy
+fy
+fy
+jx
 Eh
 Ur
 sH
@@ -3846,11 +4566,11 @@ yG
 ZM
 ZM
 pF
-Lh
 pT
 pT
 pT
-Lh
+pT
+pT
 pF
 ZM
 pF
@@ -3923,12 +4643,12 @@ ud
 Eh
 Ur
 rr
+uJ
 Ur
 Ur
 Ur
 Ur
-Ur
-Ur
+ZV
 Eh
 Ur
 Eh
@@ -4016,22 +4736,22 @@ ud
 Eh
 Ur
 Eh
-Ur
+uJ
 wO
 wO
 wO
 wO
-Ur
+ZV
 Eh
 Ur
 Eh
-wA
+SC
 pT
 pT
 pT
 pT
 pT
-wQ
+il
 pT
 pT
 pT
@@ -4109,10 +4829,10 @@ ud
 Eh
 Eh
 Eh
-Ur
-Ur
-Ur
-Ur
+zT
+lY
+lY
+lY
 Xa
 oX
 Eh
@@ -4124,7 +4844,7 @@ pT
 pT
 pT
 pT
-Fb
+pT
 pT
 pT
 pT
@@ -4295,14 +5015,14 @@ ud
 ud
 ud
 Lm
-mi
-mi
-mi
+Uw
+jV
+jV
 Az
-xG
+mj
 ei
-xG
-Az
+mj
+ju
 Oa
 wA
 pT
@@ -4388,14 +5108,14 @@ ud
 ud
 ud
 Lm
-mi
+Ke
 DS
 mi
 mi
 mi
 mi
 xG
-mi
+fI
 Oa
 wA
 pT
@@ -4488,12 +5208,12 @@ mi
 mi
 mi
 xG
-mi
+fI
 Oa
 wA
 pT
 pT
-wQ
+OL
 pT
 wb
 fg
@@ -4574,14 +5294,14 @@ NO
 AQ
 ud
 Lm
-mi
+Ke
 Xl
 mi
 mi
 mi
 mi
 xG
-mi
+fI
 Oa
 wA
 pT
@@ -4669,12 +5389,12 @@ ud
 Oa
 Cg
 ot
-lG
+gi
 ot
-lG
+gi
 ot
 yh
-ot
+eu
 Oa
 wA
 pT
@@ -4761,12 +5481,12 @@ AQ
 AQ
 Oa
 Md
-mi
-mi
+jV
+jV
 KZ
-mi
-mi
-xG
+Uw
+jV
+mj
 FT
 Oa
 wA
@@ -4856,16 +5576,16 @@ Oa
 lF
 mi
 mi
-KZ
-mi
+wz
+Ke
 mi
 xG
-FT
+yD
 Oa
 wA
 pT
 pT
-wQ
+OL
 pT
 wb
 fg
@@ -4936,7 +5656,7 @@ eZ
 eZ
 ix
 AQ
-jA
+Gc
 ix
 ix
 ix
@@ -4946,14 +5666,14 @@ ix
 AQ
 ud
 Oa
-mi
+Ke
 mi
 oZ
-KZ
-mi
+wz
+Ke
 mi
 xG
-FT
+yD
 Oa
 UP
 UP
@@ -5041,12 +5761,12 @@ ud
 Oa
 lG
 TN
-lI
+Ss
 Oi
+Ke
 mi
-mi
-xG
-mi
+Rm
+um
 Oa
 fW
 fW
@@ -5126,22 +5846,22 @@ Ys
 AQ
 Yj
 ix
-ix
+Mu
 ix
 Oh
 AQ
 AQ
 Oa
-mi
-mi
-mi
-mi
-mi
+Uw
+jV
+jV
+jV
+ij
 mi
 kJ
 Oa
 Oa
-fW
+Dc
 fW
 fW
 fW
@@ -5223,15 +5943,15 @@ ix
 ix
 ur
 kY
-ur
+OY
 zu
+do
 xG
 xG
 xG
 xG
 xG
-xG
-xG
+YE
 Ei
 kE
 fW
@@ -5313,7 +6033,7 @@ AQ
 Em
 ix
 ix
-ix
+We
 ix
 AQ
 AQ
@@ -5324,7 +6044,7 @@ mi
 mi
 mi
 mi
-xG
+YE
 Ng
 uv
 uU
@@ -5420,11 +6140,11 @@ mi
 XB
 Oa
 Oa
-fW
+dD
 fW
 fW
 uU
-Do
+Sl
 iT
 iT
 nz
@@ -5504,12 +6224,12 @@ kP
 Ys
 ud
 Oa
-lI
-mi
+Jv
+mF
 wF
 wF
 wF
-mi
+mF
 XF
 Oa
 Oa
@@ -5691,12 +6411,12 @@ Ys
 ud
 Oa
 Ne
-lu
-lu
-lu
+Ws
+Ws
+TD
 Oa
 Sh
-lu
+th
 Oa
 Oa
 fW
@@ -5786,7 +6506,7 @@ Oa
 VO
 lu
 lu
-lu
+Nb
 Oa
 xs
 Oa
@@ -5879,11 +6599,11 @@ Oa
 JK
 lu
 lu
-lu
+Nb
 Oa
-iG
-lu
-lu
+ro
+TP
+TD
 Oa
 fW
 fW
@@ -5972,11 +6692,11 @@ Oa
 oe
 lu
 lu
-lu
+Nb
 MV
-mx
-lu
-lu
+aN
+lz
+Nb
 Oa
 fW
 fW
@@ -6054,7 +6774,7 @@ uK
 uK
 AQ
 ix
-Yj
+ix
 IM
 ix
 AQ
@@ -6065,11 +6785,11 @@ Oa
 vU
 lu
 lu
-iG
-MV
-iG
-lu
-lu
+Nb
+tu
+Nb
+ZB
+Nb
 Oa
 fW
 fW
@@ -6136,9 +6856,9 @@ JH
 WC
 lL
 Ys
+NO
 FP
-FP
-FP
+NO
 AQ
 iP
 iP
@@ -6155,14 +6875,14 @@ ix
 Ys
 NO
 Oa
+Qn
 lu
 lu
-lu
-mx
-lu
-iG
-lu
-lu
+Nb
+lz
+Nb
+lk
+tI
 Oa
 UP
 UP
@@ -6231,7 +6951,7 @@ WC
 NO
 NO
 Zt
-FP
+Pg
 AQ
 iP
 iP
@@ -6242,7 +6962,7 @@ ix
 ix
 ix
 ix
-Yj
+ix
 AQ
 ix
 Ys
@@ -6252,8 +6972,8 @@ vU
 lu
 lu
 Nb
-lu
-lu
+eo
+Nb
 gf
 KD
 Oa
@@ -6335,7 +7055,7 @@ ix
 ix
 ix
 ix
-Yj
+ix
 AQ
 ix
 Ys
@@ -6343,12 +7063,12 @@ ud
 Oa
 Cq
 lu
-lu
+nv
 MS
 mp
-Sh
-MV
-lu
+Qu
+tu
+QT
 Eu
 Oa
 UP
@@ -6417,12 +7137,12 @@ WC
 NO
 NO
 FP
-FP
+NO
 AQ
 Yt
 ix
 ix
-GM
+ix
 ix
 ix
 rZ
@@ -6436,13 +7156,13 @@ NO
 Oa
 WY
 lu
-lu
-iG
+Nb
+Oa
 ms
+Ws
+zt
 lu
-lu
-lu
-WY
+HJ
 Oa
 UP
 fW
@@ -6509,8 +7229,8 @@ JH
 Za
 Ys
 UC
-CH
-UC
+Gn
+Tl
 AQ
 AQ
 Dy
@@ -6529,13 +7249,13 @@ ud
 Oa
 WY
 lu
-lu
-lu
+Nb
+Oa
 mr
 lu
 lu
-lu
-WY
+kC
+HJ
 Oa
 fW
 fW
@@ -6602,8 +7322,8 @@ WC
 WC
 NO
 FP
-FP
-FP
+NO
+NO
 XY
 ix
 ix
@@ -6622,13 +7342,13 @@ ud
 Oa
 WY
 lu
+Nb
+Oa
+jF
 lu
+kC
 lu
-mr
-lu
-lu
-lu
-WY
+HJ
 Oa
 fW
 fW
@@ -6695,8 +7415,8 @@ WC
 WC
 NO
 FP
-FP
-FP
+EY
+NO
 XY
 ix
 ix
@@ -6715,13 +7435,13 @@ NO
 Oa
 WY
 PI
+Nb
+Oa
+VN
 lu
-iG
-ms
 lu
 lu
-lu
-WY
+HJ
 Oa
 fW
 fW
@@ -6788,7 +7508,7 @@ WC
 WC
 WC
 Zt
-FP
+NO
 FP
 XY
 ix
@@ -6806,15 +7526,15 @@ ix
 Ys
 ud
 Oa
-WY
-PI
-lu
-iG
+Ae
+RY
+tI
+Oa
 mt
-WY
-lu
-lu
-WY
+cy
+uF
+xQ
+ZN
 Oa
 xT
 xT
@@ -6881,8 +7601,8 @@ WC
 WC
 WC
 NO
-FP
-FP
+Fb
+NO
 AQ
 fx
 AQ
@@ -6904,9 +7624,9 @@ Oa
 Oa
 Oa
 Oa
-Oa
-Oa
-Oa
+Dq
+AJ
+qt
 Oa
 Oa
 fW
@@ -6975,7 +7695,7 @@ JH
 JH
 JH
 NO
-FP
+NO
 AQ
 ix
 Gc
@@ -7049,10 +7769,10 @@ Oj
 Vz
 cW
 aT
-aV
-aV
+cW
+cW
 bs
-bC
+eN
 Oj
 Oj
 Oj
@@ -7068,7 +7788,7 @@ WC
 WC
 NO
 FP
-FP
+NO
 lR
 ix
 ix
@@ -7079,6 +7799,13 @@ kK
 Ys
 UP
 fW
+Rv
+fW
+fW
+xT
+fW
+fW
+fW
 fW
 fW
 fW
@@ -7089,15 +7816,8 @@ fW
 fW
 fW
 fW
-xT
 fW
-fW
-fW
-fW
-fW
-fW
-fW
-uU
+gh
 Rj
 Na
 Na
@@ -7144,7 +7864,7 @@ Vz
 Vz
 Oj
 Oj
-aV
+cW
 Oj
 Oj
 Oj
@@ -7160,8 +7880,8 @@ WC
 WC
 Ys
 lL
-FP
-FP
+NO
+NO
 AQ
 Gc
 Gc
@@ -7237,7 +7957,7 @@ Oj
 Oj
 Oj
 Oj
-aV
+cW
 Oj
 Oj
 Oj
@@ -7252,9 +7972,9 @@ Za
 WC
 WC
 Ys
-FP
-FP
-FP
+CH
+NO
+Fb
 Ys
 Ys
 Ys
@@ -7276,7 +7996,7 @@ fW
 fW
 fW
 UP
-fW
+vn
 fW
 fW
 fW
@@ -7925,11 +8645,11 @@ ef
 ef
 rz
 HH
-HH
-HH
+ef
+ef
 ZJ
 rz
-ef
+TY
 ef
 ef
 ef
@@ -8019,8 +8739,8 @@ ef
 rz
 ef
 ef
-og
-zJ
+ef
+ef
 rz
 rz
 HR
@@ -8112,8 +8832,8 @@ ef
 rz
 mf
 ef
-og
-zJ
+ef
+ef
 rz
 tG
 VB
@@ -8206,7 +8926,7 @@ rz
 mf
 ef
 og
-zJ
+ef
 rz
 mA
 ef
@@ -8470,7 +9190,7 @@ kI
 bg
 Vj
 Vj
-fW
+Mc
 fW
 fW
 fW
@@ -8483,9 +9203,9 @@ ef
 ef
 rz
 ef
-zJ
-zJ
-zJ
+ef
+ef
+ef
 rz
 At
 ef
@@ -8576,9 +9296,9 @@ ef
 ef
 rz
 ef
-og
-og
-og
+ef
+ef
+ef
 rz
 lp
 ef
@@ -8665,13 +9385,13 @@ XU
 XU
 XU
 ri
-ef
+ZG
 ef
 rz
 zJ
-zJ
-zJ
-zJ
+ef
+ef
+ef
 rz
 lp
 ef
@@ -9047,7 +9767,7 @@ lB
 VB
 ef
 ef
-ef
+yw
 ef
 ef
 VB
@@ -9138,7 +9858,7 @@ gW
 ef
 tG
 tG
-ef
+Dw
 ef
 ef
 ef
@@ -9378,7 +10098,7 @@ Qk
 Qk
 Qk
 Qk
-jd
+jA
 Qk
 Qk
 Qk
