@@ -1,3 +1,4 @@
+
 /datum/controller/configuration
 	name = "Configuration"
 
@@ -43,11 +44,11 @@
 		CRASH("/datum/controller/configuration/Load() called more than once!")
 	InitEntries()
 	LoadModes()
-	if(fexists("[directory]/config.txt") && LoadEntries("config.txt") <= 1)
+	if(fexists("[directory]/[DEFAULT_CONFIGURATION_FILE]") && LoadEntries(DEFAULT_CONFIGURATION_FILE) <= 1)
 		var/list/legacy_configs = list("game_options.txt", "dbconfig.txt", "comms.txt")
 		for(var/I in legacy_configs)
 			if(fexists("[directory]/[I]"))
-				log_config("No $include directives found in config.txt! Loading legacy [legacy_configs.Join("/")] files...")
+				log_config("No [CONFIGURATION_INCLUDE_TOKEN] directives found in [DEFAULT_CONFIGURATION_FILE]! Loading legacy [legacy_configs.Join("/")] files...")
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
@@ -101,27 +102,39 @@
 	entries -= CE.name
 	entries_by_type -= CE.type
 
-/datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
+/****
+	* Breaks up a file into an associated list of lowercase entries and their values. The null entry represents a nested list of entries that are commented out
+	* filename - The filename in directory to load
+	*/
+/datum/controller/configuration/proc/ParseConfigFile(filename)
 	if(IsAdminAdvancedProcCall())
 		return
 
-	var/filename_to_test = world.system_type == MS_WINDOWS ? lowertext(filename) : filename
-	if(filename_to_test in stack)
-		log_config("Warning: Config recursion detected ([english_list(stack)]), breaking!")
-		return
-	stack = stack + filename_to_test
+	if(world.system_type == MS_WINDOWS)
+		filename = lowertext(filename)
 
 	log_config("Loading config file [filename]...")
 	var/list/lines = world.file2list("[directory]/[filename]")
-	var/list/_entries = entries
+	var/list/results = list()
+	if(!lines.len) //Good job 4head you loaded a file that doesn't exist or doesn't contain anything in it
+		log_config("Error: We tried to load [directory]/[filename] but it doesn't have anything in it/it doesn't exist!")
+		CRASH("Error: We tried to load [directory]/[filename] but it doesn't have anything in it/it doesn't exist!")
 	for(var/L in lines)
 		L = trim(L)
 		if(!L)
 			continue
 
 		var/firstchar = L[1]
+		var/disabled = FALSE
 		if(firstchar == "#")
-			continue
+			if(length(L) > 1 && L[2] == "#")
+				// comment
+				continue
+
+			// disabled entry
+			disabled = TRUE
+			L = trim(copytext(L, 2, length(L) + 1))
+			firstchar = L[1]
 
 		var/lockthis = firstchar == "@"
 		if(lockthis)
@@ -140,15 +153,45 @@
 		if(!entry)
 			continue
 
-		if(entry == "$include")
-			if(!value)
-				log_config("Warning: Invalid $include directive: [value]")
-			else
-				LoadEntries(value, stack)
-				++.
+		if(disabled)
+			LAZYADD(results[null], entry)
+		else if(entry == CONFIGURATION_INCLUDE_TOKEN)
+			LAZYADD(results[entry], value)
+		else
+			results[entry] = value
+
+	return results
+
+///Takes the file name to load and a list of already loaded files as an argument, returns the amount of files loaded
+/datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
+	if(IsAdminAdvancedProcCall())
+		return
+
+	var/filename_to_test = world.system_type == MS_WINDOWS ? lowertext(filename) : filename
+	if(filename_to_test in stack)
+		log_config("Warning: Config recursion detected ([english_list(stack)]), breaking!")
+		return
+	stack += filename_to_test
+
+	var/list/parsed_entries = ParseConfigFile(filename_to_test)
+	// Don't care about disabled entries here
+	parsed_entries -= null
+	for(var/entry in parsed_entries)
+		var/value = parsed_entries[entry]
+		if(entry == CONFIGURATION_INCLUDE_TOKEN)
+			for(var/includedfile in value) //Value is a list of included files in this case
+				if(!includedfile)
+					log_config("Warning: Invalid $include directive: [includedfile]")
+				else
+					. += LoadEntries(includedfile, stack)
 			continue
 
-		var/datum/config_entry/E = _entries[entry]
+		var/firstchar = entry[1]
+		var/lockthis = firstchar == "@"
+		if(lockthis)
+			entry = copytext(entry, length(firstchar) + 1)
+
+		var/datum/config_entry/E = entries[entry]
 		if(!E)
 			log_config("Unknown setting in configuration: '[entry]'")
 			continue
@@ -258,21 +301,18 @@
 /*
 Policy file should be a json file with a single object.
 Value is raw html.
-
 Possible keywords :
 Job titles / Assigned roles (ghost spawners for example) : Assistant , Captain , Ash Walker
 Mob types : /mob/living/simple_animal/hostile/carp
 Antagonist types : /datum/antagonist/highlander
 Species types : /datum/species/lizard
 special keywords defined in _DEFINES/admin.dm
-
 Example config:
 {
 	"Assistant" : "Don't kill everyone",
 	"/datum/antagonist/highlander" : "<b>Kill everyone</b>",
 	"Ash Walker" : "Kill all spacemans"
 }
-
 */
 /datum/controller/configuration/proc/LoadPolicy()
 	policy = list()
@@ -423,3 +463,4 @@ Example config:
 //Message admins when you can.
 /datum/controller/configuration/proc/DelayedMessageAdmins(text)
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/message_admins, text), 0)
+	
