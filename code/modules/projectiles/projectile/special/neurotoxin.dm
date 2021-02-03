@@ -8,8 +8,8 @@
 	nodamage = TRUE		// SKYRAT EDIT: Original line.
 	//nodamage = FALSE	// SKYRAT EDIT
 	//paralyze = 100	// SKYRAT EDIT: Original line.
-	paralyze = 5		// SKYRAT EDIT
-	knockdown = 10		// SKYRAT EDIT
+	paralyze = 50		// SKYRAT EDIT
+	knockdown = 100		// SKYRAT EDIT
 	flag = BIO
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
 
