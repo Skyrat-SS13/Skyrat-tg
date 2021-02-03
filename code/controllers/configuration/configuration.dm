@@ -113,7 +113,14 @@
 
 	log_config("Loading config file [filename]...")
 	var/list/lines = world.file2list("[directory]/[filename]")
+<<<<<<< HEAD
 	var/list/_entries = entries
+=======
+	var/list/results = list()
+	if(!lines.len) //Good job 4head you loaded a file that doesn't exist or doesn't contain anything in it
+		log_config("Error: We tried to load [directory]/[filename] but it doesn't have anything in it/it doesn't exist!")
+		CRASH("Error: We tried to load [directory]/[filename] but it doesn't have anything in it/it doesn't exist!")
+>>>>>>> 0749b322f65 (Fixes included config files not loading (#56602))
 	for(var/L in lines)
 		L = trim(L)
 		if(!L)
@@ -140,12 +147,46 @@
 		if(!entry)
 			continue
 
+<<<<<<< HEAD
 		if(entry == "$include")
 			if(!value)
 				log_config("Warning: Invalid $include directive: [value]")
 			else
 				LoadEntries(value, stack)
 				++.
+=======
+		if(disabled)
+			LAZYADD(results[null], entry)
+		else if(entry == CONFIGURATION_INCLUDE_TOKEN)
+			LAZYADD(results[entry], value)
+		else
+			results[entry] = value
+
+	return results
+
+///Takes the file name to load and a list of already loaded files as an argument, returns the amount of files loaded
+/datum/controller/configuration/proc/LoadEntries(filename, list/stack = list())
+	if(IsAdminAdvancedProcCall())
+		return
+
+	var/filename_to_test = world.system_type == MS_WINDOWS ? lowertext(filename) : filename
+	if(filename_to_test in stack)
+		log_config("Warning: Config recursion detected ([english_list(stack)]), breaking!")
+		return
+	stack += filename_to_test
+
+	var/list/parsed_entries = ParseConfigFile(filename_to_test)
+	// Don't care about disabled entries here
+	parsed_entries -= null
+	for(var/entry in parsed_entries)
+		var/value = parsed_entries[entry]
+		if(entry == CONFIGURATION_INCLUDE_TOKEN)
+			for(var/includedfile in value) //Value is a list of included files in this case
+				if(!includedfile)
+					log_config("Warning: Invalid $include directive: [includedfile]")
+				else
+					. += LoadEntries(includedfile, stack)
+>>>>>>> 0749b322f65 (Fixes included config files not loading (#56602))
 			continue
 
 		var/datum/config_entry/E = _entries[entry]
