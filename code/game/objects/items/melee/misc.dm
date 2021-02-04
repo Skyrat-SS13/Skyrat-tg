@@ -244,7 +244,7 @@
 /obj/item/melee/classic_baton/proc/additional_effects_silicon(mob/living/target, mob/living/user)
 	return
 
-/obj/item/melee/classic_baton/attack(mob/living/target, mob/living/user)
+/obj/item/melee/classic_baton/attack(mob/living/target, mob/living/user, params)
 	if(!on)
 		return ..()
 
@@ -268,7 +268,7 @@
 		return
 	if(iscyborg(target))
 		// We don't stun if we're on harm.
-		if (user.a_intent != INTENT_HARM)
+		if (!user.combat_mode)
 			if (affect_silicon)
 				var/list/desc = get_silicon_stun_description(target, user)
 
@@ -288,25 +288,29 @@
 		return
 	if(!isliving(target))
 		return
-	if (user.a_intent == INTENT_HARM)
-		if(!..())
+	var/list/modifiers = params2list(params)
+
+	if(modifiers && modifiers["right"])
+		..()
+		return
+	if(cooldown_check > world.time)
+		var/wait_desc = get_wait_description()
+		if (wait_desc)
+			to_chat(user, wait_desc)
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
 			return
-		if(!iscyborg(target))
+		if(check_martial_counter(H, user))
 			return
-	else
-		if(cooldown_check <= world.time)
-			if(ishuman(target))
-				var/mob/living/carbon/human/H = target
-				if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
-					return
-				if(check_martial_counter(H, user))
-					return
 
-			var/list/desc = get_stun_description(target, user)
+	var/list/desc = get_stun_description(target, user)
 
-			if (stun_animation)
-				user.do_attack_animation(target)
+	if (stun_animation)
+		user.do_attack_animation(target)
 
+<<<<<<< HEAD
 			playsound(get_turf(src), on_stun_sound, 75, TRUE, -1)
 			/* - SKYRAT EDIT REMOVAL BEGIN
 			target.Knockdown(knockdown_time_carbon)
@@ -317,21 +321,25 @@
 			target.StaminaKnockdown(stamina_damage)
 			//SKYRAT EDIT END
 			additional_effects_carbon(target, user)
+=======
+	playsound(get_turf(src), on_stun_sound, 75, TRUE, -1)
+	target.Knockdown(knockdown_time_carbon)
+	target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST)
+	additional_effects_carbon(target, user)
+>>>>>>> 707fc287b42 (Replaces intents with combat mode (#56601))
 
-			log_combat(user, target, "stunned", src)
-			add_fingerprint(user)
+	log_combat(user, target, "stunned", src)
+	add_fingerprint(user)
 
-			target.visible_message(desc["visible"], desc["local"])
+	target.visible_message(desc["visible"], desc["local"])
 
-			if(!iscarbon(user))
-				target.LAssailant = null
-			else
-				target.LAssailant = user
-			cooldown_check = world.time + cooldown
-		else
-			var/wait_desc = get_wait_description()
-			if (wait_desc)
-				to_chat(user, wait_desc)
+	if(!iscarbon(user))
+		target.LAssailant = null
+	else
+		target.LAssailant = user
+	cooldown_check = world.time + cooldown
+	return
+
 
 /obj/item/conversion_kit
 	name = "conversion kit"

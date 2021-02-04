@@ -61,6 +61,7 @@
 /mob/living/attackby(obj/item/I, mob/living/user, params)
 	if(..())
 		return TRUE
+<<<<<<< HEAD
 	//user.changeNext_move(CLICK_CD_MELEE) - SKYRAT EDIT CHANGE BEGIN - COMBAT
 	if(user.staminaloss > STAMINA_THRESHOLD_TIRED_CLICK_CD)
 		user.changeNext_move(CLICK_CD_MELEE_TIRED)
@@ -68,6 +69,10 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 	//SKYRAT EDIT END
 	return I.attack(src, user)
+=======
+	user.changeNext_move(CLICK_CD_MELEE)
+	return I.attack(src, user, params)
+>>>>>>> 707fc287b42 (Replaces intents with combat mode (#56601))
 
 /**
  * Called from [/mob/living/proc/attackby]
@@ -75,15 +80,16 @@
  * Arguments:
  * * mob/living/M - The mob being hit by this item
  * * mob/living/user - The mob hitting with this item
+ * * params - Click params of this attack
  */
-/obj/item/proc/attack(mob/living/M, mob/living/user)
-	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK, M, user)
+/obj/item/proc/attack(mob/living/M, mob/living/user, params)
+	var/signal_return = SEND_SIGNAL(src, COMSIG_ITEM_ATTACK, M, user, params)
 	if(signal_return & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
 	if(signal_return & COMPONENT_SKIP_ATTACK)
 		return
 
-	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK, M, user)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ATTACK, M, user, params)
 
 	if(item_flags & NOBLUDGEON)
 		return
@@ -111,7 +117,7 @@
 	user.do_attack_animation(M)
 	M.attacked_by(src, user)
 
-	log_combat(user, M, "attacked", src.name, "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+	log_combat(user, M, "attacked", src.name, "(COMBAT MODE: [uppertext(user.combat_mode)]) (DAMTYPE: [uppertext(damtype)])")
 	add_fingerprint(user)
 
 
