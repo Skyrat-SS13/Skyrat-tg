@@ -87,7 +87,7 @@
 	can_modify_ammo = TRUE
 	alternative_ammo_misfires = TRUE
 	can_misfire = FALSE
-	misfire_probability = 0 
+	misfire_probability = 0
 	misfire_percentage_increment = 25 //about 1 in 4 rounds, which increases rapidly every shot
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list("Default" = "detective",
@@ -101,7 +101,6 @@
 						"Black Panther" = "detective_panther"
 						)
 
-<<<<<<< HEAD
 	/// Used to avoid some redundancy on a revolver loaded with 357 regarding misfiring while being wrenched.
 	var/skip_357_missfire_check = FALSE
 
@@ -149,9 +148,6 @@
 
 
 /obj/item/gun/ballistic/revolver/mateba //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-/obj/item/gun/ballistic/revolver/mateba
->>>>>>> 1611aaa70a1 (Pipeguns: Elitism Edition (#56322))
 	name = "\improper Unica 6 auto-revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	icon_state = "mateba"

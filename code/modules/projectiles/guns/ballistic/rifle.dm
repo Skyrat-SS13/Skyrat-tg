@@ -142,10 +142,7 @@
 	var/guns_left = 30
 	mag_type = /obj/item/ammo_box/magazine/internal/enchanted
 	can_be_sawn_off = FALSE
-<<<<<<< HEAD
 	realistic = FALSE
-=======
->>>>>>> 1611aaa70a1 (Pipeguns: Elitism Edition (#56322))
 
 /obj/item/gun/ballistic/rifle/enchanted/arcane_barrage
 	name = "arcane barrage"
