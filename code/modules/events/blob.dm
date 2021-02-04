@@ -4,7 +4,8 @@
 	weight = 10
 	max_occurrences = 1
 
-	min_players = 20
+	// min_players = 20 // SKYRAT EDIT -- Original
+	min_players = 60 	// SKYRAT EDIT CHANGE -- Requires 60 alive non-afk players for blob
 
 	gamemode_blacklist = list("blob") //Just in case a blob survives that long
 

@@ -1,5 +1,4 @@
-// SKYRAT EDIT CHANGE -- Blob buff to balance it more around our pop.
-// Can't be moved to modular_skyrat since it's defines, and not having it here makes /everything/ throw errors.
+// SKYRAT EDIT CHANGES -- Many values changes to rebalance blob to our population
 // Overmind defines
 
 #define OVERMIND_MAX_POINTS_DEFAULT                 100         // Max point storage
