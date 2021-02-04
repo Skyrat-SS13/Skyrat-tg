@@ -80,6 +80,15 @@
 	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
 	icon_state = "detective"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38
+	initial_caliber = CALIBER_38
+	alternative_caliber = CALIBER_357
+	initial_fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
+	alternative_fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
+	can_modify_ammo = TRUE
+	alternative_ammo_misfires = TRUE
+	can_misfire = FALSE
+	misfire_probability = 0
+	misfire_percentage_increment = 25 //about 1 in 4 rounds, which increases rapidly every shot
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list("Default" = "detective",
 						"Fitz Special" = "detective_fitz",
