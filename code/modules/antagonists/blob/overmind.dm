@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		blob_points = INFINITY
 		addtimer(CALLBACK(src, .proc/victory), 450)
 	// SKYRAT EDIT ADDITION START -- Automated distress announcement
-	else if(!has_announced_emergency && (blobs_legit.len >= (0.5*blobwincount)))
+	else if(!has_announced_emergency && (blobs_legit.len >= (0.3*blobwincount)))
 		announce_blob_distress_signal()
 	// SKYRAT EDIT ADDITION END
 	else if(!free_strain_rerolls && (last_reroll_time + BLOB_POWER_REROLL_FREE_TIME<world.time))
