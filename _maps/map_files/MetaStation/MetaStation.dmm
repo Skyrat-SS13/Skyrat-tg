@@ -62019,7 +62019,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/burgundy,
 /obj/item/toy/plush/lizardplushie/space{
-	desc = "He stared into the void and listend. Only when he didn't expect an answer...";
+	desc = "He stared into the void and listened. He didn't expect an answer...";
 	name = "Void-Stares-Back"
 	},
 /turf/open/space/basic,
@@ -62845,6 +62845,10 @@
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "jHq" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -62852,7 +62856,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/obj/machinery/gun_vendor,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "jHw" = (
@@ -71405,7 +71408,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/item/storage/box/armament_tokens_primary,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "qey" = (
@@ -71780,13 +71782,18 @@
 /turf/open/floor/engine,
 /area/science/cytology)
 "qro" = (
+/obj/structure/table,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
-/obj/structure/closet/secure_closet/security_medic,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "qrp" = (
@@ -75794,12 +75801,15 @@
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "tss" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/obj/machinery/gun_vendor,
 /turf/open/floor/plasteel/dark,
 /area/security/main)
 "tsx" = (
@@ -75872,6 +75882,16 @@
 /turf/open/floor/plasteel/white,
 /area/science/storage)
 "tuc" = (
+/obj/structure/rack,
+/obj/item/gun/energy/e_gun{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/gun/energy/e_gun,
+/obj/item/gun/energy/e_gun{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = 28
@@ -75882,7 +75902,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/smartgun,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "tuW" = (
@@ -79322,10 +79341,6 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/plasteel/dark,
 /area/science/storage)
-"vZB" = (
-/obj/effect/landmark/start/security_sergeant,
-/turf/open/floor/plasteel/dark,
-/area/security/main)
 "vZX" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/disposalpipe/segment,
@@ -81263,7 +81278,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
-/obj/effect/landmark/start/security_medic,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "xwk" = (
@@ -112431,7 +112445,7 @@ lEI
 gjB
 vKV
 vKV
-vZB
+vKV
 sqf
 tll
 asH
@@ -112945,7 +112959,7 @@ lEI
 gjB
 uvg
 dZy
-vZB
+vKV
 vKV
 snP
 jxP
@@ -113459,7 +113473,7 @@ ajD
 jAo
 vKV
 vKV
-vZB
+vKV
 qze
 tll
 cZe
