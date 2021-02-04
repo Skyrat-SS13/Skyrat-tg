@@ -59,7 +59,7 @@
 		return
 
 	for(var/i = max(1, stored_ammo.len), i <= max_ammo, i++)
-		stored_ammo += new round_check(src)
+		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 	update_icon()
 
 ///gets a round from the magazine, if keep is TRUE the round will stay in the gun
@@ -81,7 +81,7 @@
 
 	if (stored_ammo.len < max_ammo)
 		stored_ammo += R
-		R.forceMove(src)
+		R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 		return TRUE
 
 	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
@@ -92,7 +92,7 @@
 				AC.forceMove(get_turf(src.loc))
 
 				stored_ammo += R
-				R.forceMove(src)
+				R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 				return TRUE
 	return FALSE
 
@@ -144,6 +144,10 @@
 			icon_state = "[initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
+		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
+		if(AMMO_BOX_FULL_EMPTY_BASIC)
+			icon_state = "[initial(icon_state)]-[shells_left ? "full" : "empty"]"
+		//SKYRAT EDIT END
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	if(length(bullet_cost))
 		var/temp_materials = custom_materials.Copy()
@@ -178,3 +182,10 @@
 /obj/item/ammo_box/magazine/handle_atom_del(atom/A)
 	stored_ammo -= A
 	update_icon()
+
+//SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
+/obj/item/ammo_box/Destroy()
+	. = ..()
+	for(var/i in stored_ammo)
+		qdel(i)
+//SKYRAT EDIT END
