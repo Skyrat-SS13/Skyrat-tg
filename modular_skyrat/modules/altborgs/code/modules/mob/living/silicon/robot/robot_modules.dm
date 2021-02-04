@@ -776,13 +776,14 @@
 		/obj/item/shockpaddles/cyborg,
 		/obj/item/healthanalyzer/advanced,
 		/obj/item/retractor/advanced,
-		/obj/item/surgicaldrill,
+		/obj/item/cautery/advanced,
 		/obj/item/scalpel/advanced,
 		/obj/item/gun/medbeam,
 		/obj/item/reagent_containers/borghypo/syndicate,
 		/obj/item/borg/lollipop,
 		/obj/item/holosign_creator/cyborg,
 		/obj/item/stamp/chameleon,
+		/obj/item/borg_shapeshifter,
 		)
 	cyborg_base_icon = "synd_engi"
 	model_select_icon = "malf"
