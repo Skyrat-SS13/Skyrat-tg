@@ -1,6 +1,10 @@
 /obj/item/melee/baton
 	name = "stun baton"
+<<<<<<< HEAD
 	desc = "A stun baton for incapacitating people with."
+=======
+	desc = "A stun baton for incapacitating people with. Left click to stun, right click to harm."
+>>>>>>> 63399f90eef (removes the test-merge only code from the combat mode commit (#56634))
 
 	icon_state = "stunbaton"
 	inhand_icon_state = "baton"
@@ -287,7 +291,11 @@
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/melee/baton/cattleprod
 	name = "stunprod"
+<<<<<<< HEAD
 	desc = "An improvised stun baton."
+=======
+	desc = "An improvised stun baton. Left click to stun, right click to harm."
+>>>>>>> 63399f90eef (removes the test-merge only code from the combat mode commit (#56634))
 	icon_state = "stunprod"
 	inhand_icon_state = "prod"
 	worn_icon_state = null
