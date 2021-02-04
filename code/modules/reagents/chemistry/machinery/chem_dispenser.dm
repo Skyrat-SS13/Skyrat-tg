@@ -375,7 +375,6 @@
 				return
 			recording_recipe = null
 			. = TRUE
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
 		if("custom_amount")
 			if(!beaker)
@@ -386,11 +385,8 @@
 			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
 			transferAmounts += customTransferAmount
 		//SKYRAT EDIT ADDITION END
-/obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
-=======
 
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/living/user, params)
->>>>>>> 707fc287b42 (Replaces intents with combat mode (#56601))
 	if(default_unfasten_wrench(user, I))
 		return
 	if(default_deconstruction_screwdriver(user, icon_state, icon_state, I))

@@ -57,7 +57,6 @@
 				to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
 				return
 
-<<<<<<< HEAD
 //SKYRAT EDIT CHANGE BEGIN - CHEMISTRY QOL
 /obj/item/reagent_containers/AltClick(mob/user)
 	. = ..()
@@ -67,12 +66,8 @@
 	return
 //SKYRAT EDIT END
 
-/obj/item/reagent_containers/attack(mob/M, mob/user, def_zone)
-	if(user.a_intent == INTENT_HARM)
-=======
 /obj/item/reagent_containers/attack(mob/M, mob/living/user, def_zone)
 	if(user.combat_mode)
->>>>>>> 707fc287b42 (Replaces intents with combat mode (#56601))
 		return ..()
 
 /obj/item/reagent_containers/proc/canconsume(mob/eater, mob/user)

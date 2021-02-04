@@ -61,18 +61,13 @@
 /mob/living/attackby(obj/item/I, mob/living/user, params)
 	if(..())
 		return TRUE
-<<<<<<< HEAD
 	//user.changeNext_move(CLICK_CD_MELEE) - SKYRAT EDIT CHANGE BEGIN - COMBAT
 	if(user.staminaloss > STAMINA_THRESHOLD_TIRED_CLICK_CD)
 		user.changeNext_move(CLICK_CD_MELEE_TIRED)
 	else
 		user.changeNext_move(CLICK_CD_MELEE)
 	//SKYRAT EDIT END
-	return I.attack(src, user)
-=======
-	user.changeNext_move(CLICK_CD_MELEE)
 	return I.attack(src, user, params)
->>>>>>> 707fc287b42 (Replaces intents with combat mode (#56601))
 
 /**
  * Called from [/mob/living/proc/attackby]

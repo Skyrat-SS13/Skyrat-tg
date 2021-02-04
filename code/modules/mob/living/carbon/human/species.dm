@@ -1457,19 +1457,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						"<span class='danger'>[M] attempts to touch you!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, M)
 		to_chat(M, "<span class='warning'>You attempt to touch [H]!</span>")
 		return
-<<<<<<< HEAD
-	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
 	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
-	if(H.pulledby && H.pulledby == M && M.grab_state && try_grab_maneuver(M, H))
+	if(H.pulledby && H.pulledby == M && M.grab_state && try_grab_maneuver(M, H, modifiers))
 		return //SKYRAT EDIT END
-	switch(M.a_intent)
-		if("help")
-			help(M, H, attacker_style)
-
-		if("grab")
-			grab(M, H, attacker_style)
-=======
->>>>>>> 707fc287b42 (Replaces intents with combat mode (#56601))
 
 	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
 
@@ -1515,7 +1505,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/effec_damage
 	var/effec_stam
 	//While on a disarm intent, our hits are glancing, doing less normal damage but more stamina damage
-	if(user.a_intent == INTENT_DISARM)
+	if(!user.combat_mode)
 		effec_damage = I.force * TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER
 		if(I.damtype == BRUTE && !I.get_sharpness())
 			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER

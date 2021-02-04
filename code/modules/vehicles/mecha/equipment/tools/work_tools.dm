@@ -94,7 +94,7 @@
 		if(M.stat == DEAD)
 			return
 
-		var/list/modifiers = params2list(params)
+		//var/list/modifiers = params2list(params) - SKYRAT EDIT REMOVAL
 
 		if(!source.combat_mode)
 			step_away(M,chassis)
@@ -106,11 +106,8 @@
 				chassis.visible_message("<span class='notice'>[chassis] pushes [target] out of the way.</span>", \
 				"<span class='notice'>[chassis] pushes you aside.</span>")
 			return ..()
-<<<<<<< HEAD
-		/*else if(source.a_intent == INTENT_DISARM && iscarbon(M))//meme clamp here
-=======
-		else if(modifiers && modifiers["right"] && iscarbon(M))//meme clamp here
->>>>>>> 707fc287b42 (Replaces intents with combat mode (#56601))
+
+		/*else if(modifiers && modifiers["right"] && iscarbon(M))//meme clamp here
 			if(!killer_clamp)
 				to_chat(source, "<span class='notice'>You longingly wish to tear [M]'s arms off.</span>")
 				return
