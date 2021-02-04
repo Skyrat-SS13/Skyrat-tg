@@ -40,7 +40,9 @@
 	desc = "A solid wall of slightly twitching tendrils with a reflective glow."
 	damaged_desc = "A wall of twitching tendrils with a reflective glow."
 	icon_state = "blob_glow"
-	flags_ricochet = RICOCHET_SHINY
+	// flags_ricochet = RICOCHET_SHINY // SKYRAT EDIT ORIGINAL
+	flags_ricochet = RICOCHET_SHINY | RICOCHET_HARD // SKYRAT EDIT CHANGE -- BLOB BUFF 
+	receive_ricochet_chance_mod = 2					// SKYRAT EDIT ADDITION -- BLOB BUFF
 	point_return = BLOB_REFUND_REFLECTOR_COST
 	explosion_block = 2
 	max_integrity = BLOB_REFLECTOR_MAX_HP
