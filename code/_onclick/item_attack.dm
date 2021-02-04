@@ -92,7 +92,11 @@
 	if(force && HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='warning'>You don't want to harm other living beings!</span>")
 		return
-
+	//SKYRAT EDIT ADDITION BEGIN
+	if(force && !user.combat_mode)
+		to_chat(user, "<span class='notice'>You go to attack [M] with [src], but refrain from doing so.</span>")
+		return
+	//SKRYAT EDIT END
 	if(item_flags & EYE_STAB && user.zone_selected == BODY_ZONE_PRECISE_EYES)
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 			M = user
