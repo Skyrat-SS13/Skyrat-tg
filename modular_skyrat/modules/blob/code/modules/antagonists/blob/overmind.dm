@@ -6,5 +6,5 @@
     has_announced_emergency = TRUE
     if(GLOB.security_level != SEC_LEVEL_RED) // Why the hell is it not red yet?!
         set_security_level("red")
-    priority_announce("Biohazard lifeform aboard [GLOB.station_name] is rapidly approaching critical mass. Off-station Response Teams are requested to aid immediately.", "Automated Biohazard Distress Signal")
+    priority_announce("Biohazard lifeform aboard [GLOB.station_name] is rapidly approaching critical mass. Off-station Response Teams are requested to aid immediately.", "Automated Biohazard Distress Signal", sender_override = "[GLOB.station_name]")
     
