@@ -17,7 +17,6 @@
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 	throwforce = 10
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
-	emissive_blocker_plane = MOB_EMISSIVE_BLOCKER_PLANE
 	pass_flags_self = PASSMOB
 
 	///when this be added to vis_contents of something it inherit something.plane, important for visualisation of mob in openspace.
@@ -229,3 +228,6 @@
 
 	///Override for sound_environments. If this is set the user will always hear a specific type of reverb (Instead of the area defined reverb)
 	var/sound_environment_override = SOUND_ENVIRONMENT_NONE
+
+	/// A mock client, provided by tests and friends
+	var/datum/client_interface/mock_client
