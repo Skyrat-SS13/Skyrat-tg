@@ -1,8 +1,8 @@
 // SKYRAT EDIT CHANGES -- Many values changes to rebalance blob to our population
 // Overmind defines
 
-#define OVERMIND_MAX_POINTS_DEFAULT                 150         // Max point storage
-#define OVERMIND_STARTING_POINTS                    90          // Points granted upon start
+#define OVERMIND_MAX_POINTS_DEFAULT                 100         // Max point storage
+#define OVERMIND_STARTING_POINTS                    80          // Points granted upon start
 #define OVERMIND_STARTING_REROLLS                   1           // Free strain rerolls at the start
 #define OVERMIND_STARTING_MIN_PLACE_TIME            1 MINUTES   // Minimum time before the core can be placed
 #define OVERMIND_STARTING_AUTO_PLACE_TIME           6 MINUTES   // After this time, randomly place the core somewhere viable
