@@ -66,17 +66,17 @@
 	icon_state = "darkyellowcorners"
 	base_icon_state = "darkyellowcorners"
 
-// Dark + Orange
-/turf/open/floor/plasteel/dark/orange
-	icon_state = "darkorangefull"
-	base_icon_state = "darkorangefull"
+// Dark + Brown
+/turf/open/floor/plasteel/dark/brown
+	icon_state = "darkbrownfull"
+	base_icon_state = "darkbrownfull"
 
-/turf/open/floor/plasteel/dark/orange/side
-	icon_state = "darkorange"
-	base_icon_state = "darkorange"
+/turf/open/floor/plasteel/dark/brown/side
+	icon_state = "darkbrown"
+	base_icon_state = "darkbrown"
 
-/turf/open/floor/plasteel/dark/orange/corner
-	icon_state = "darkorangecorners"
-	base_icon_state = "darkorangecorners"
+/turf/open/floor/plasteel/dark/brown/corner
+	icon_state = "darkbrowncorners"
+	base_icon_state = "darkbrowncorners"
 
 
