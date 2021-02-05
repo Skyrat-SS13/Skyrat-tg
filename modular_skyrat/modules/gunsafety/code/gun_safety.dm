@@ -27,6 +27,8 @@
 		..()
 
 /obj/item/gun/proc/toggle_safety(mob/user, override)
+	if(!has_gun_safety)
+		return
 	if(override)
 		safety = override
 	else
@@ -38,11 +40,11 @@
 	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>")
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
-	if(safety)
-		to_chat(user, "<span class='warning'>The safety is on!</span>")
-		return
-	else
-		. = ..()
+	if(has_gun_safety)
+		if(safety)
+			to_chat(user, "<span class='warning'>The safety is on!</span>")
+			return
+	. = ..()
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
