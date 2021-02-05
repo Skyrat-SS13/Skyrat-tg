@@ -1,4 +1,4 @@
-/obj/item/stack/telecrystal
+/obj/item/stack/telecrystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "telecrystal"
 	desc = "It seems to be pulsing with suspiciously enticing energies."
 	singular_name = "telecrystal"

@@ -54,12 +54,12 @@
 		load_type = ammo_type
 
 	var/obj/item/ammo_casing/round_check = load_type
-	if(!starting && (caliber && initial(round_check.caliber) != caliber) || (!caliber && load_type != ammo_type))
+	if(!starting && !(caliber ? (caliber == initial(round_check.caliber)) : (ammo_type == load_type)))
 		stack_trace("Tried loading unsupported ammocasing type [load_type] into ammo box [type].")
 		return
 
 	for(var/i = max(1, stored_ammo.len), i <= max_ammo, i++)
-		stored_ammo += new round_check(src)
+		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 	update_icon()
 
 ///gets a round from the magazine, if keep is TRUE the round will stay in the gun
@@ -76,12 +76,12 @@
 ///puts a round into the magazine
 /obj/item/ammo_box/proc/give_round(obj/item/ammo_casing/R, replace_spent = 0)
 	// Boxes don't have a caliber type, magazines do. Not sure if it's intended or not, but if we fail to find a caliber, then we fall back to ammo_type.
-	if(!R || (caliber && R.caliber != caliber) || (!caliber && R.type != ammo_type))
+	if(!R || !(caliber ? (caliber == R.caliber) : (ammo_type == R.type)))
 		return FALSE
 
 	if (stored_ammo.len < max_ammo)
 		stored_ammo += R
-		R.forceMove(src)
+		R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 		return TRUE
 
 	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
@@ -92,7 +92,7 @@
 				AC.forceMove(get_turf(src.loc))
 
 				stored_ammo += R
-				R.forceMove(src)
+				R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
 				return TRUE
 	return FALSE
 
@@ -144,6 +144,10 @@
 			icon_state = "[initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
+		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
+		if(AMMO_BOX_FULL_EMPTY_BASIC)
+			icon_state = "[initial(icon_state)]-[shells_left ? "full" : "empty"]"
+		//SKYRAT EDIT END
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	if(length(bullet_cost))
 		var/temp_materials = custom_materials.Copy()
@@ -178,3 +182,10 @@
 /obj/item/ammo_box/magazine/handle_atom_del(atom/A)
 	stored_ammo -= A
 	update_icon()
+
+//SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
+/obj/item/ammo_box/Destroy()
+	. = ..()
+	for(var/i in stored_ammo)
+		qdel(i)
+//SKYRAT EDIT END

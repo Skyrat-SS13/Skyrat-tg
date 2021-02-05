@@ -1,7 +1,7 @@
 //////Kitchen Spike
 #define VIABLE_MOB_CHECK(X) (isliving(X) && !issilicon(X) && !isbot(X))
 
-/obj/structure/kitchenspike_frame
+/obj/structure/kitchenspike_frame//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "meatspike frame"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "spikeframe"
@@ -30,13 +30,13 @@
 			visible_message("<span class='notice'>[user] slices apart \the [src].</span>",
 				"<span class='notice'>You cut \the [src] apart with \the [I].</span>",
 				"<span class='hear'>You hear welding.</span>")
-			new /obj/item/stack/sheet/metal(src.loc, 4)
+			new /obj/item/stack/sheet/iron(src.loc, 4)
 			qdel(src)
 		return
 	else
 		return ..()
 
-/obj/structure/kitchenspike
+/obj/structure/kitchenspike//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "meat spike"
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "spike"
@@ -61,8 +61,8 @@
 	return TRUE
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/structure/kitchenspike/attack_hand(mob/user)
-	if(VIABLE_MOB_CHECK(user.pulling) && user.a_intent == INTENT_GRAB && !has_buckled_mobs())
+/obj/structure/kitchenspike/attack_hand(mob/living/user)
+	if(VIABLE_MOB_CHECK(user.pulling) && user.combat_mode && !has_buckled_mobs())
 		var/mob/living/L = user.pulling
 		if(do_mob(user, src, 120))
 			if(has_buckled_mobs()) //to prevent spam/queing up attacks
@@ -142,7 +142,7 @@
 		var/obj/F = new /obj/structure/kitchenspike_frame(src.loc)
 		transfer_fingerprints_to(F)
 	else
-		new /obj/item/stack/sheet/metal(src.loc, 4)
+		new /obj/item/stack/sheet/iron(src.loc, 4)
 	new /obj/item/stack/rods(loc, 4)
 	qdel(src)
 

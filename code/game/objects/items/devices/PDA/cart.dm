@@ -16,7 +16,7 @@
 #define CART_DRONEPHONE			(1<<14)
 
 
-/obj/item/cartridge
+/obj/item/cartridge//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "generic cartridge"
 	desc = "A data cartridge for portable microcomputers."
 	icon = 'icons/obj/pda.dmi'
@@ -116,7 +116,7 @@
 	bot_access_flags = FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
 	access = CART_DRONEPHONE
 
-/obj/item/cartridge/signal
+/obj/item/cartridge/signal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "generic signaler cartridge"
 	desc = "A data cartridge with an integrated radio signaler module."
 

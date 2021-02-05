@@ -205,8 +205,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define	TRAIT_MAGIC_CHOKE		"magic_choke"
 #define TRAIT_SOOTHED_THROAT    "soothed-throat"
 #define TRAIT_BOOZE_SLIDER      "booze-slider"
-#define TRAIT_QUICK_CARRY		"quick-carry"
-#define TRAIT_QUICKER_CARRY		"quicker-carry"
+#define TRAIT_QUICK_CARRY		"quick-carry" //We place people into a fireman carry quicker than standard
+#define TRAIT_QUICKER_CARRY		"quicker-carry" //We place people into a fireman carry especially quickly compared to quick_carry
 #define TRAIT_QUICK_BUILD		"quick-build"
 #define TRAIT_UNINTELLIGIBLE_SPEECH "unintelligible-speech"
 #define TRAIT_UNSTABLE			"unstable"
@@ -235,6 +235,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SIGN_LANG				"sign_language" //Galactic Common Sign Language
 #define TRAIT_NANITE_MONITORING	"nanite_monitoring" //The mob's nanites are sending a monitoring signal visible on diag HUD
 #define TRAIT_MARTIAL_ARTS_IMMUNE "martial_arts_immune" // nobody can use martial arts on this mob
+#define TRAIT_DUFFEL_CURSED "duffel_cursed" //You've been cursed with a living duffelbag, and can't have more added
 /// Prevents mob from riding mobs when buckled onto something
 #define TRAIT_CANT_RIDE			"cant_ride"
 #define TRAIT_BLOODY_MESS		"bloody_mess" //from heparin, makes open bleeding wounds rapidly spill more blood
@@ -347,6 +348,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SNOB				"snob"
 #define TRAIT_BALD				"bald"
 #define TRAIT_BADTOUCH			"bad_touch"
+#define TRAIT_EXTROVERT			"extrovert"
+#define TRAIT_INTROVERT			"introvert"
 ///Trait for dryable items
 #define TRAIT_DRYABLE "trait_dryable"
 ///Trait for dried items
@@ -486,8 +489,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define NO_TONGUE_TRAIT "no_tongue_trait"
 
 /// Trait granted by [/mob/living/silicon/robot]
-/// Traits applied to a silicon mob by their module.
-#define MODULE_TRAIT "module_trait"
+/// Traits applied to a silicon mob by their model.
+#define MODEL_TRAIT "model_trait"
 
 /// Trait from [/datum/antagonist/nukeop/clownop]
 #define CLOWNOP_TRAIT "clownop"
