@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/127
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/3129
 
 ## Title: Ashwalker Re-Buff
 
