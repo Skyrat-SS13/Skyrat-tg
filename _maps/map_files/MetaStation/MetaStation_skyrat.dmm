@@ -69162,11 +69162,6 @@
 	id = "Prison Gate";
 	name = "Security Blast Door"
 	},
-/obj/machinery/door/airlock/security/glass{
-	desc = "The red door means be scared that you're here. Unless you're the person in red.";
-	name = "Brig";
-	req_access_txt = "63"
-	},
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
@@ -69174,6 +69169,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/delivery/blue,
+/obj/machinery/door/airlock/security/glass{
+	name = "Prison Wing";
+	req_access_txt = "1"
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "plu" = (
@@ -70342,16 +70341,15 @@
 	id = "Prison Gate";
 	name = "Security Blast Door"
 	},
-/obj/machinery/door/airlock/security/glass{
-	desc = "The red door means be scared that you're here. Unless you're the person in red.";
-	name = "Brig";
-	req_access_txt = "63"
-	},
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/turf_decal/delivery/blue,
+/obj/machinery/door/airlock/security/glass{
+	name = "Prison Wing";
+	req_access_txt = "1"
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "pYm" = (
@@ -82178,7 +82176,6 @@
 /area/security/checkpoint/science)
 "xjZ" = (
 /obj/machinery/door/airlock/security/glass{
-	desc = "The red door means be scared that you're here. Unless you're the person in red.";
 	name = "Prison";
 	req_access_txt = "63"
 	},
