@@ -2,8 +2,13 @@
 
 /turf/closed/wall
 	name = "wall"
+<<<<<<< HEAD
 	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/wall.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	desc = "A huge chunk of iron used to separate rooms."
+	icon = 'icons/turf/walls/wall.dmi'
+>>>>>>> 8d586a7cb08 (Rename metal sheets to iron sheets (#56643))
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	explosion_block = 1
@@ -22,7 +27,7 @@
 	///lower numbers are harder. Used to determine the probability of a hulk smashing through.
 	var/hardness = 40
 	var/slicing_duration = 100  //default time taken to slice the wall
-	var/sheet_type = /obj/item/stack/sheet/metal
+	var/sheet_type = /obj/item/stack/sheet/iron
 	var/sheet_amount = 2
 	var/girder_type = /obj/structure/girder
 
@@ -85,7 +90,7 @@
 /turf/closed/wall/proc/devastate_wall()
 	new sheet_type(src, sheet_amount)
 	if(girder_type)
-		new /obj/item/stack/sheet/metal(src)
+		new /obj/item/stack/sheet/iron(src)
 
 /turf/closed/wall/ex_act(severity, target)
 	if(target == src)
