@@ -1,4 +1,4 @@
-#define COMBAT_NOTICE_COOLDOWN 10 SECONDS 
+#define COMBAT_NOTICE_COOLDOWN 10 SECONDS
 GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /proc/GenerateCombatOverlay()
@@ -22,7 +22,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if(combat_indicator)
 		if(world.time > nextcombatpopup)
 			nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src, 'sound/machines/chime.ogg', 10)
+			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE)
 			flick_emote_popup_on_mob("combat", 20)
 			visible_message("<span class='boldwarning'>[src] gets ready for combat!</span>")
 		add_overlay(GLOB.combat_indicator_overlay)
