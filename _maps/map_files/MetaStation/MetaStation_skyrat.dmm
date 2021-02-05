@@ -1307,8 +1307,8 @@
 /area/security/prison/safe)
 "aeP" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/space)
+/turf/closed/wall/r_wall,
+/area/security/prison)
 "aeQ" = (
 /turf/open/floor/plating,
 /area/security/prison)
@@ -3908,8 +3908,8 @@
 /area/maintenance/port/fore)
 "aoj" = (
 /obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/space)
+/turf/closed/wall/r_wall,
+/area/security/brig)
 "aol" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/open/floor/plasteel/dark,
@@ -53947,8 +53947,11 @@
 /turf/open/floor/plating,
 /area/engine/storage_shared)
 "fML" = (
-/turf/closed/wall/mineral/plastitanium,
-/area/space)
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/security/brig)
 "fMS" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -63190,8 +63193,14 @@
 /turf/open/floor/plasteel/dark/corner,
 /area/engine/atmos)
 "lFH" = (
-/turf/closed/wall/r_wall,
-/area/space)
+/obj/machinery/light/small,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/security/brig)
 "lFU" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 8
@@ -80067,8 +80076,11 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "vSn" = (
-/turf/open/floor/plating,
-/area/space)
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Two"
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "vST" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plasteel/dark,
@@ -80205,12 +80217,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
-"vVP" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/space)
 "vWu" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
@@ -80572,12 +80578,6 @@
 /obj/effect/spawner/lootdrop/gross_decal_spawner,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"wih" = (
-/obj/machinery/light/small,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/space)
 "wij" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -83467,12 +83467,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
-"xXB" = (
-/obj/machinery/door/airlock/external{
-	name = "Escape Pod Two"
-	},
-/turf/open/floor/plasteel,
-/area/space)
 "xXL" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -107375,13 +107369,13 @@ abG
 acb
 mkN
 ufC
-aax
-lMJ
-lMJ
-lMJ
-lMJ
-lMJ
-lMJ
+aeP
+aoj
+aoj
+ajm
+ajm
+ajm
+ajm
 ajm
 ajm
 ajm
@@ -107632,13 +107626,13 @@ sDo
 xsq
 iGI
 ufC
-aax
+aeP
 aaa
 aaa
 aaa
 aaa
-lMJ
-aaa
+wOY
+fML
 ajm
 air
 scn
@@ -107889,14 +107883,14 @@ wQJ
 xsq
 iGI
 ufC
-aax
+aeP
+asn
 aaa
 aaa
 aaa
-aaa
-lMJ
-aaa
-ajm
+abu
+fML
+vSn
 avk
 vFX
 kqk
@@ -108146,13 +108140,13 @@ abJ
 okP
 iGI
 ufC
-aax
+aeP
 aaa
 aaa
 aaa
 aaa
-lMJ
-aaa
+wOY
+lFH
 ajm
 qoF
 kXk
@@ -108403,12 +108397,12 @@ aax
 ace
 iGI
 acM
-aax
+aeP
+aoj
+aoj
 ajm
-aiq
-aiq
-aiq
-aiq
+ajm
+ajm
 ajm
 ajm
 ajm
@@ -132016,14 +132010,14 @@ aaa
 aaa
 aaa
 aaa
-aeP
-aoj
-aeP
-fML
-lFH
-lFH
-lFH
-lFH
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -132273,14 +132267,14 @@ aaa
 aaa
 aaa
 aaa
-aeP
 aaa
 aaa
 aaa
 aaa
-wOY
-vSn
-lFH
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -132530,14 +132524,14 @@ aaa
 aaa
 aaa
 aaa
-aeP
-asn
 aaa
 aaa
 aaa
-abu
-vVP
-xXB
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -132787,14 +132781,14 @@ aaa
 aaa
 aaa
 aaa
-aeP
 aaa
 aaa
 aaa
 aaa
-wOY
-wih
-lFH
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -133044,14 +133038,14 @@ aaa
 aaa
 aaa
 aaa
-aeP
-aeP
-aeP
-fML
-lFH
-lFH
-lFH
-lFH
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
