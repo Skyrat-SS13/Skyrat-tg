@@ -25,7 +25,8 @@
 	. = ..()
 	if(. && obj_integrity > 0)
 		if(tank_volume && (damage_flag == BULLET || damage_flag == LASER))
-			boom()
+			var/guaranteed_violent = (damage_flag == BULLET || damage_flag == LASER)
+			boom(damage_type, guaranteed_violent)
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user, params)
 	if(W.is_refillable())
@@ -50,7 +51,7 @@
 		reagents.add_reagent(reagent_id, tank_volume)
 	. = ..()
 
-/obj/structure/reagent_dispensers/proc/boom()
+/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE)
 	visible_message("<span class='danger'>\The [src] ruptures!</span>")
 	chem_splash(loc, 5, list(reagents))
 	qdel(src)
@@ -86,30 +87,33 @@
 	icon_state = "fuel"
 	reagent_id = /datum/reagent/fuel
 
-/obj/structure/reagent_dispensers/fueltank/boom()
-	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
-	qdel(src)
+/obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE)
+	if(damage_type == BURN || guaranteed_violent)
+		explosion(get_turf(src), 0, 1, 5, flame_range = 5)
+		qdel(src)
+	else
+		. = ..()
 
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
-	boom()
+	boom(guaranteed_violent = TRUE)
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom()
+	boom(guaranteed_violent = TRUE)
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom()
+	boom(guaranteed_violent = TRUE)
 
 /obj/structure/reagent_dispensers/fueltank/zap_act(power, zap_flags)
 	. = ..() //extend the zap
 	if(ZAP_OBJ_DAMAGE & zap_flags)
-		boom()
+		boom(guaranteed_violent = TRUE)
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/P)
 	. = ..()
 	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
 		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
 			log_bomber(P.firer, "detonated a", src, "via projectile")
-			boom()
+			boom(guaranteed_violent = TRUE)
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
@@ -128,7 +132,7 @@
 		else
 			user.visible_message("<span class='danger'>[user] catastrophically fails at refilling [user.p_their()] [I.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
 			log_bomber(user, "detonated a", src, "via welding tool")
-			boom()
+			boom(guaranteed_violent = TRUE)
 		return
 	return ..()
 
@@ -138,9 +142,12 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-/obj/structure/reagent_dispensers/fueltank/large/boom()
-	explosion(get_turf(src), 1, 2, 7, flame_range = 12)
-	qdel(src)
+/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = TRUE)
+	if(damage_type == BURN || guaranteed_violent)
+		explosion(get_turf(src), 1, 2, 7, flame_range = 12)
+		qdel(src)
+	else
+		. = ..()
 
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"

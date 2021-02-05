@@ -81,6 +81,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lighting_object = lighting_object
 	var/old_corners = corners
 	var/old_directional_opacity = directional_opacity
+	var/obj/effect/abstract/liquid_turf/old_liquids = liquids
+	if(lgroup)
+		lgroup.remove_from_group(src)
 
 	var/old_bp = blueprint_data
 	blueprint_data = null
@@ -127,6 +130,16 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		for(var/turf/open/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 			S.update_starlight()
 
+	if(old_liquids)
+		if(W.liquids)
+			var/liquid_cache = W.liquids //Need to cache and re-set some vars due to the cleaning on Destroy(), and turf references
+			qdel(old_liquids, TRUE)
+			W.liquids = liquid_cache
+			W.liquids.my_turf = W
+		else
+			W.liquids = old_liquids
+			old_liquids.my_turf = W
+			W.reasses_liquids()
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	QUEUE_SMOOTH(src)
 

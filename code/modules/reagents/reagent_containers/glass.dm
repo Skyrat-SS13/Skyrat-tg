@@ -135,6 +135,21 @@
 /obj/item/reagent_containers/glass/beaker/Initialize()
 	. = ..()
 	update_appearance()
+	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
+
+/obj/item/reagent_containers/glass/beaker/proc/attack_on_liquids_turf(obj/item/reagent_containers/glass/beaker/my_beaker, turf/T, mob/user, obj/effect/abstract/liquid_turf/liquids)
+	var/free_space = my_beaker.reagents.maximum_volume - my_beaker.reagents.total_volume
+	if(free_space <= 0)
+		to_chat(user, "<span class='warning'>You can't fit any more liquids inside [my_beaker]!</span>")
+		return TRUE
+	var/desired_transfer = my_beaker.amount_per_transfer_from_this
+	if(desired_transfer > free_space)
+		desired_transfer = free_space
+	var/datum/reagents/tempr = liquids.take_reagents_flat(desired_transfer)
+	tempr.trans_to(my_beaker.reagents, tempr.total_volume)
+	to_chat(user, "<span class='notice'>You scoop up around [my_beaker.amount_per_transfer_from_this] units of liquids with [my_beaker].</span>")
+	qdel(tempr)
+	return TRUE
 
 /obj/item/reagent_containers/glass/beaker/get_part_rating()
 	return reagents.maximum_volume

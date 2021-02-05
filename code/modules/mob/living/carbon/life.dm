@@ -146,8 +146,10 @@
 					if(oxyloss <= OXYGEN_DAMAGE_CHOKING_THRESHOLD && stat == CONSCIOUS)
 						to_chat(src, "<span class='userdanger'>You hold in your breath!</span>")
 					else
-						//Try and drink water?
-						to_chat(src, "<span class='userdanger'>You're choking on water!</span>")
+						//Try and drink water
+						var/datum/reagents/tempr = T.liquids.take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_BREATH_AMOUNT)
+						tempr.trans_to(src, tempr.total_volume, methods = INGEST)
+						qdel(tempr)
 						visible_message("<span class='warning'>[src] chokes on water!</span>", \
 									"<span class='userdanger'>You're choking on water!</span>")
 					return FALSE

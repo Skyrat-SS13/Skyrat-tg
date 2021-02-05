@@ -193,7 +193,21 @@
 	var/target_temperature
 	var/target_heat_capacity
 
-	if(isopenturf(target))
+	if(target.liquids && target.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
+		target_temperature = target.liquids.temp
+		target_heat_capacity = target.liquids.total_reagents * REAGENT_HEAT_CAPACITY
+		var/delta_temperature = (air.temperature - target_temperature)
+
+		if(target_heat_capacity <= 0 || partial_heat_capacity <= 0)
+			return TRUE
+
+		var/heat = thermal_conductivity * delta_temperature * (partial_heat_capacity * target_heat_capacity / (partial_heat_capacity + target_heat_capacity))
+
+		air.temperature -= heat / total_heat_capacity
+		if(!target.liquids.immutable)
+			target.liquids.temp += heat / target_heat_capacity
+
+	else if(isopenturf(target))
 
 		var/turf/open/modeled_location = target
 		target_temperature = modeled_location.GetTemperature()

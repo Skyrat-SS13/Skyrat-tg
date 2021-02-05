@@ -11,11 +11,17 @@ SUBSYSTEM_DEF(liquids)
 
 	var/list/active_immutables = list()
 
+	var/list/evaporation_queue = list()
+	var/evaporation_counter = 0 //Only process evaporation on intervals
+
+	var/list/processing_fire = list()
+	var/fire_counter = 0 //Only process fires on intervals
+
 	var/run_type = SSLIQUIDS_RUN_TYPE_TURFS
 
 
 /datum/controller/subsystem/liquids/stat_entry(msg)
-	msg += "AT:[active_turfs.len] | AG:[active_groups.len]"
+	msg += "AT:[active_turfs.len]|AG:[active_groups.len]|AIM:[active_immutables.len]|EQ:[evaporation_queue.len]|PF:[processing_fire.len]"
 	return ..()
 
 
@@ -50,6 +56,29 @@ SUBSYSTEM_DEF(liquids)
 		for(var/t in active_immutables)
 			var/turf/T = t
 			T.process_immutable_liquid()
+		run_type = SSLIQUIDS_RUN_TYPE_EVAPORATION
+
+	if(run_type == SSLIQUIDS_RUN_TYPE_EVAPORATION)
+		evaporation_counter++
+		if(evaporation_counter >= REQUIRED_EVAPORATION_PROCESSES)
+			for(var/t in evaporation_queue)
+				var/turf/T = t
+				if(prob(EVAPORATION_CHANCE))
+					T.liquids.process_evaporation()
+				if(MC_TICK_CHECK)
+					return
+			evaporation_counter = 0
+		run_type = SSLIQUIDS_RUN_TYPE_FIRE
+
+	if(run_type == SSLIQUIDS_RUN_TYPE_FIRE)
+		fire_counter++
+		if(fire_counter >= REQUIRED_FIRE_PROCESSES)
+			for(var/t in processing_fire)
+				var/turf/T = t
+				T.liquids.process_fire()
+			if(MC_TICK_CHECK)
+				return
+			fire_counter = 0
 		run_type = SSLIQUIDS_RUN_TYPE_TURFS
 
 /datum/controller/subsystem/liquids/proc/add_active_turf(turf/T)
@@ -68,6 +97,13 @@ SUBSYSTEM_DEF(liquids)
 	var/obj/effect/abstract/liquid_turf/liquids
 	var/liquid_height = 0
 	var/turf_height = 0
+
+/turf/proc/reasses_liquids()
+	if(!liquids)
+		return
+	if(lgroup)
+		lgroup.remove_from_group(src)
+	SSliquids.add_active_turf(src)
 
 /turf/proc/liquid_fraction_delete(fraction)
 	for(var/r_type in liquids.reagent_list)
@@ -135,6 +171,8 @@ SUBSYSTEM_DEF(liquids)
 				qdel(liquids)
 				return
 		qdel(reagents)
+		//Expose turf
+		liquids.ExposeMyTurf()
 
 	liquids.calculate_height()
 	liquids.set_reagent_color_for_liquid()
@@ -166,6 +204,8 @@ SUBSYSTEM_DEF(liquids)
 				liquids.reagent_list[R.type] = R.volume
 				liquids.total_reagents += R.volume
 		qdel(reagents)
+		//Expose turf
+		liquids.ExposeMyTurf()
 
 	liquids.calculate_height()
 	liquids.set_reagent_color_for_liquid()
@@ -181,6 +221,12 @@ SUBSYSTEM_DEF(liquids)
 	anchored = TRUE
 	plane = FLOOR_PLANE
 	color = "#DDF"
+
+	//For being on fire
+	light_range = 0
+	light_power = 1
+	light_color = LIGHT_COLOR_FIRE
+
 	//layer = MID_LANDMARK_LAYER
 	//invisibility = INVISIBILITY_ABSTRACT
 	mouse_opacity = FALSE
@@ -197,6 +243,143 @@ SUBSYSTEM_DEF(liquids)
 	var/list/reagent_list = list()
 	var/total_reagents = 0
 	var/temp = T20C
+
+	var/fire_state = LIQUID_FIRE_STATE_NONE
+
+/obj/effect/abstract/liquid_turf/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	return
+
+/obj/effect/abstract/liquid_turf/proc/check_fire(hotspotted = FALSE)
+	var/my_burn_power = get_burn_power(hotspotted)
+	if(!my_burn_power)
+		if(fire_state)
+			//Set state to 0
+			set_fire_state(LIQUID_FIRE_STATE_NONE)
+		return FALSE
+	//Calculate appropriate state
+	var/new_state = LIQUID_FIRE_STATE_SMALL
+	switch(my_burn_power)
+		if(0 to 7)
+			new_state = LIQUID_FIRE_STATE_SMALL
+		if(7 to 8)
+			new_state = LIQUID_FIRE_STATE_MILD
+		if(8 to 9)
+			new_state = LIQUID_FIRE_STATE_MEDIUM
+		if(9 to 10)
+			new_state = LIQUID_FIRE_STATE_HUGE
+		if(10 to INFINITY)
+			new_state = LIQUID_FIRE_STATE_INFERNO
+
+	if(fire_state != new_state)
+		set_fire_state(new_state)
+
+	return TRUE
+
+/obj/effect/abstract/liquid_turf/proc/set_fire_state(new_state)
+	fire_state = new_state
+	switch(fire_state)
+		if(LIQUID_FIRE_STATE_NONE)
+			set_light_range(0)
+		if(LIQUID_FIRE_STATE_SMALL)
+			set_light_range(LIGHT_RANGE_FIRE)
+		if(LIQUID_FIRE_STATE_MILD)
+			set_light_range(LIGHT_RANGE_FIRE)
+		if(LIQUID_FIRE_STATE_MEDIUM)
+			set_light_range(LIGHT_RANGE_FIRE)
+		if(LIQUID_FIRE_STATE_HUGE)
+			set_light_range(LIGHT_RANGE_FIRE)
+		if(LIQUID_FIRE_STATE_INFERNO)
+			set_light_range(LIGHT_RANGE_FIRE)
+	update_overlays()
+
+/obj/effect/abstract/liquid_turf/proc/get_burn_power(hotspotted = FALSE)
+	//We are not on fire and werent ignited by a hotspot exposure, no fire pls
+	if(!hotspotted && !fire_state)
+		return FALSE
+	var/total_burn_power = 0
+	var/datum/reagent/R //Faster declaration
+	for(var/reagent_type in reagent_list)
+		R = reagent_type
+		total_burn_power += initial(R.liquid_fire_power) * reagent_list[reagent_type]
+	if(!total_burn_power)
+		return FALSE
+	total_burn_power /= total_reagents //We get burn power per unit.
+	if(total_burn_power <= REQUIRED_FIRE_POWER_PER_UNIT)
+		return FALSE
+	//Finally, we burn
+	return total_burn_power
+
+/obj/effect/abstract/liquid_turf/extinguish()
+	if(fire_state)
+		set_fire_state(fire_state-1)
+	
+/obj/effect/abstract/liquid_turf/proc/process_fire()
+	var/old_state = fire_state
+	if(!check_fire())
+		SSliquids.processing_fire -= my_turf
+	//Try spreading
+	if(fire_state == old_state) //If an extinguisher made our fire smaller, dont spread, else it's too hard to put out
+		for(var/t in my_turf.atmos_adjacent_turfs)
+			var/turf/T = t
+			if(T.liquids && !T.liquids.fire_state && T.liquids.check_fire(TRUE))
+				SSliquids.processing_fire[T] = TRUE
+	//Burn our resources
+	var/datum/reagent/R //Faster declaration
+	var/burn_rate
+	for(var/reagent_type in reagent_list)
+		R = reagent_type
+		burn_rate = initial(R.liquid_fire_burnrate)
+		if(burn_rate)
+			var/amt = reagent_list[reagent_type]
+			if(burn_rate >= amt)
+				reagent_list -= reagent_type
+				total_reagents -= amt
+			else
+				reagent_list[reagent_type] -= burn_rate
+				total_reagents -= burn_rate
+
+	for(var/A in my_turf.contents)
+		var/atom/AT = A
+		if(!QDELETED(AT))
+			AT.fire_act((T20C+50) + (50*fire_state), 125)
+
+	if(total_reagents <= 0)
+		qdel(src, TRUE)
+	else
+		has_cached_share = FALSE
+		if(!my_turf.lgroup)
+			calculate_height()
+			set_reagent_color_for_liquid()
+
+/obj/effect/abstract/liquid_turf/proc/process_evaporation()
+	//We're in a group. dont try and evaporate
+	if(my_turf.lgroup)
+		SSliquids.evaporation_queue -= my_turf
+		return
+	if(liquid_state != LIQUID_STATE_PUDDLE)
+		SSliquids.evaporation_queue -= my_turf
+		return
+	//See if any of our reagents evaporates
+	var/datum/reagent/R //Faster declaration
+	for(var/reagent_type in reagent_list)
+		R = reagent_type
+		//We evaporate. bye bye
+		if(initial(R.evaporates))
+			total_reagents -= reagent_list[reagent_type]
+			reagent_list -= reagent_type
+	//Reagents still left. Recalculte height and color and remove us from the queue
+	if(total_reagents)
+		has_cached_share = FALSE
+		SSliquids.evaporation_queue -= my_turf
+		calculate_height()
+		set_reagent_color_for_liquid()
+	//No total reagents. Commit death
+	else
+		qdel(src, TRUE)
+
+/obj/effect/abstract/liquid_turf/forceMove(atom/destination, no_tp=FALSE, harderforce = FALSE)
+	if(harderforce)
+		. = ..()
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
@@ -235,28 +418,53 @@ SUBSYSTEM_DEF(liquids)
 			overlay.layer = ABOVE_MOB_LAYER
 			add_overlay(overlay)
 
-
 /obj/effect/abstract/liquid_turf/update_overlays()
-	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR)
-	//cut_overlays()
-	//Helper overlay handling
-	if(height > 99) //Out of bounds for this lil system
-		return
-	var/height_text = num2text(height)
-	var/len = length(height_text)
-	if(len > 1)
-		var/pos1 = copytext(height_text,1,2)
-		var/pos2 = copytext(height_text,2,3)
-		//add_overlay("first[pos1]")
-		//add_overlay("second[pos2]")
-		SSvis_overlays.add_vis_overlay(src, icon, "first[pos1]", layer, plane, add_appearance_flags = RESET_COLOR)
-		SSvis_overlays.add_vis_overlay(src, icon, "second[pos2]", layer, plane, add_appearance_flags = RESET_COLOR)
-	else
-		//add_overlay("second[height_text]")
-		SSvis_overlays.add_vis_overlay(src, icon, "second[height_text]", layer, plane, add_appearance_flags = RESET_COLOR)
+	//Add a fire overlay too
+	switch(fire_state)
+		if(LIQUID_FIRE_STATE_SMALL)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+		if(LIQUID_FIRE_STATE_MILD)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+		if(LIQUID_FIRE_STATE_MEDIUM)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_medium", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+		if(LIQUID_FIRE_STATE_HUGE)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+		if(LIQUID_FIRE_STATE_INFERNO)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
 
+//Takes a flat of our reagents and returns it, possibly qdeling our liquids
+/obj/effect/abstract/liquid_turf/proc/take_reagents_flat(flat_amount)
+	var/datum/reagents/tempr = new(10000)
+	if(flat_amount >= total_reagents)
+		tempr.add_reagent_list(reagent_list, no_react = TRUE)
+		qdel(src, TRUE)
+	else
+		var/fraction = flat_amount/total_reagents
+		var/passed_list = list()
+		for(var/reagent_type in reagent_list)
+			var/amount = fraction * reagent_list[reagent_type]
+			reagent_list[reagent_type] -= amount
+			total_reagents -= amount
+			passed_list[reagent_type] = amount
+		tempr.add_reagent_list(passed_list, no_react = TRUE)
+		has_cached_share = FALSE
+	return tempr
+
+//Returns a flat of our reagents without any effects on the liquids
+/obj/effect/abstract/liquid_turf/proc/simulate_reagents_flat(flat_amount)
+	var/datum/reagents/tempr = new(10000)
+	if(flat_amount >= total_reagents)
+		tempr.add_reagent_list(reagent_list, no_react = TRUE)
+	else
+		var/fraction = flat_amount/total_reagents
+		var/passed_list = list()
+		for(var/reagent_type in reagent_list)
+			var/amount = fraction * reagent_list[reagent_type]
+			passed_list[reagent_type] = amount
+		tempr.add_reagent_list(passed_list, no_react = TRUE)
+	return tempr
 
 /obj/effect/abstract/liquid_turf/proc/set_reagent_color_for_liquid()
 	color = mix_color_from_reagent_list(reagent_list)
@@ -265,7 +473,10 @@ SUBSYSTEM_DEF(liquids)
 	var/new_height = CEILING(total_reagents, 1)/LIQUID_HEIGHT_DIVISOR
 	set_height(new_height)
 	var/determined_new_state
-	switch(height)
+	//We add the turf height if it's positive to state calculations
+	if(my_turf.turf_height > 0)
+		new_height += my_turf.turf_height
+	switch(new_height)
 		if(0 to LIQUID_ANKLES_LEVEL_HEIGHT-1)
 			determined_new_state = LIQUID_STATE_PUDDLE
 		if(LIQUID_ANKLES_LEVEL_HEIGHT to LIQUID_WAIST_LEVEL_HEIGHT-1)
@@ -324,12 +535,13 @@ SUBSYSTEM_DEF(liquids)
 			playsound(my_turf, PICK_WATER_WADE_NOISES, 50, 0)
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
-			C.apply_status_effect(/datum/status_effect/water_slowdown)
-	else if (iscarbon(AM))
-		var/mob/living/carbon/C = AM
-		if(prob(5) && !(C.movement_type & FLYING))
-			C.slip(60, my_turf, NO_SLIP_WHEN_WALKING, 20, TRUE)
-
+			C.apply_status_effect(/datum/status_effect/water_affected)
+	else if (isliving(AM))
+		var/mob/living/L = AM
+		if(prob(5) && !(L.movement_type & FLYING))
+			L.slip(60, my_turf, NO_SLIP_WHEN_WALKING, 20, TRUE)
+	if(fire_state)
+		AM.fire_act((T20C+50) + (50*fire_state), 125)
 
 /obj/effect/abstract/liquid_turf/proc/mob_fall(datum/source, mob/M)
 	SIGNAL_HANDLER
@@ -340,6 +552,9 @@ SUBSYSTEM_DEF(liquids)
 			if(C.wear_mask && C.wear_mask.flags_cover & MASKCOVERSMOUTH)
 				to_chat(C, "<span class='userdanger'>You fall in the water!</span>")
 			else
+				var/datum/reagents/tempr = take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_FALL_AMOUNT)
+				tempr.trans_to(C, tempr.total_volume, methods = INGEST)
+				qdel(tempr)
 				C.adjustOxyLoss(5)
 				C.emote("cough")
 				to_chat(C, "<span class='userdanger'>You fall in and swallow some water!</span>")
@@ -365,11 +580,42 @@ SUBSYSTEM_DEF(liquids)
 			my_turf.lgroup.remove_from_group(my_turf)
 		if(!immutable)
 			SSliquids.remove_active_turf(my_turf)
+		if(SSliquids.evaporation_queue[my_turf])
+			SSliquids.evaporation_queue -= my_turf
+		if(SSliquids.processing_fire[my_turf])
+			SSliquids.processing_fire -= my_turf
 		my_turf.liquids = null
 		my_turf = null
 		return ..()
 	else
 		return QDEL_HINT_LETMELIVE
+
+//Exposes my turf with simulated reagents
+/obj/effect/abstract/liquid_turf/proc/ExposeMyTurf()
+	var/datum/reagents/tempr = simulate_reagents_flat(total_reagents)
+	tempr.expose(my_turf, TOUCH, tempr.total_volume)
+	qdel(tempr)
+
+/obj/effect/abstract/liquid_turf/proc/ChangeToNewTurf(turf/NewT)
+	if(NewT.liquids)
+		stack_trace("Liquids tried to change to a new turf, that already had liquids on it!")
+
+	UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL))
+	if(SSliquids.active_turfs[my_turf])
+		SSliquids.active_turfs -= my_turf
+		SSliquids.active_turfs[NewT] = TRUE
+	if(SSliquids.evaporation_queue[my_turf])
+		SSliquids.evaporation_queue -= my_turf
+		SSliquids.evaporation_queue[NewT] = TRUE
+	if(SSliquids.processing_fire[my_turf])
+		SSliquids.processing_fire -= my_turf
+		SSliquids.processing_fire[NewT] = TRUE
+	my_turf.liquids = null
+	my_turf = NewT
+	NewT.liquids = src
+	loc = NewT
+	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
+	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
 
 /obj/effect/temp_visual/liquid_splash
 	icon = 'icons/horizon/obj/effects/splash.dmi'
@@ -386,7 +632,6 @@ SUBSYSTEM_DEF(liquids)
 
 /datum/liquid_group
 	var/list/members = list()
-	var/list/not_enough_height_sharers = list() //Just make this an association in members. No actually dont - performance
 	var/color
 	var/next_share = 0
 	var/dirty = TRUE
@@ -411,6 +656,8 @@ SUBSYSTEM_DEF(liquids)
 	T.lgroup = null
 	if(SSliquids.active_turfs[T])
 		amount_of_active_turfs--
+	if(!members.len)
+		qdel(src)
 
 /datum/liquid_group/New(height)
 	SSliquids.active_groups[src] = TRUE
@@ -435,6 +682,12 @@ SUBSYSTEM_DEF(liquids)
 	share()
 
 /datum/liquid_group/proc/break_group()
+	//Flag puddles to the evaporation queue
+	for(var/t in members)
+		var/turf/T = t
+		if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_PUDDLE)
+			SSliquids.evaporation_queue[T] = TRUE
+
 	share(TRUE)
 	qdel(src)
 
@@ -444,7 +697,6 @@ SUBSYSTEM_DEF(liquids)
 		var/turf/T = t
 		T.lgroup = null
 	members = null
-	not_enough_height_sharers = null
 	return ..()
 
 /datum/liquid_group/proc/check_adjacency(turf/T)
@@ -468,7 +720,6 @@ SUBSYSTEM_DEF(liquids)
 		current_adjacent = new_adjacent
 	//All adjacent, somehow
 	if(recursive_adjacent.len == members.len)
-		CRASH("All liquid turfs in a group are adjacent despite being called for adjacent calculation")
 		return
 	var/datum/liquid_group/new_group = new(expected_turf_height)
 	for(var/t in members)
@@ -529,7 +780,10 @@ SUBSYSTEM_DEF(liquids)
 	var/height = CEILING(cached_volume/LIQUID_HEIGHT_DIVISOR, 1)
 
 	var/determined_new_state
-	switch(height)
+	var/state_height = height
+	if(expected_turf_height > 0)
+		state_height += expected_turf_height
+	switch(state_height)
 		if(0 to LIQUID_ANKLES_LEVEL_HEIGHT-1)
 			determined_new_state = LIQUID_STATE_PUDDLE
 		if(LIQUID_ANKLES_LEVEL_HEIGHT to LIQUID_WAIST_LEVEL_HEIGHT-1)
@@ -543,9 +797,12 @@ SUBSYSTEM_DEF(liquids)
 
 	//message_admins("shared")
 	var/obj/effect/abstract/liquid_turf/cached_liquids
+	var/new_liquids = FALSE
 	for(var/t in members)
 		T = t
+		new_liquids = FALSE
 		if(!T.liquids)
+			new_liquids = TRUE
 			T.liquids = new(T)
 		cached_liquids = T.liquids
 		//T.liquids.create_reagents(1000) //Computing nice way to clean the old ones
@@ -561,6 +818,10 @@ SUBSYSTEM_DEF(liquids)
 
 		if(determined_new_state != cached_liquids.liquid_state)
 			cached_liquids.set_new_liquid_state(determined_new_state)
+
+		//Only simulate a turf exposure when we had to create a new liquid tile
+		if(new_liquids)
+			cached_liquids.ExposeMyTurf()
 
 /datum/liquid_group/proc/process_cell(turf/T)
 	if(T.liquids.height <= 1) //Causes a bug when the liquid hangs in the air and is supposed to fall down a level
@@ -597,7 +858,7 @@ SUBSYSTEM_DEF(liquids)
 		if(T.z != T2.z)
 			var/turf/Z_turf_below = SSmapping.get_turf_below(T)
 			if(T2 == Z_turf_below)
-				if(!(T2.liquids && T2.liquids.height >= LIQUID_HEIGHT_CONSIDER_FULL_TILE))
+				if(!(T2.liquids && T2.liquids.height + T2.liquid_height >= LIQUID_HEIGHT_CONSIDER_FULL_TILE))
 					T.liquid_fraction_share(T2, 1)
 					qdel(T.liquids, TRUE)
 					. = TRUE
@@ -810,31 +1071,36 @@ SUBSYSTEM_DEF(liquids)
 	liquid_height = -30
 	turf_height = -30
 
-/datum/status_effect/water_slowdown
-	id = "waterslowdown"
+/datum/status_effect/water_affected
+	id = "wateraffected"
 	alert_type = null
 	duration = -1
 
-/datum/status_effect/water_slowdown/on_apply()
+/datum/status_effect/water_affected/on_apply()
 	//We should be inside a liquid turf if this is applied
 	calculate_water_slow()
 	return TRUE
 
-/datum/status_effect/water_slowdown/proc/calculate_water_slow()
+/datum/status_effect/water_affected/proc/calculate_water_slow()
 	//Factor in swimming skill here?
 	var/turf/T = get_turf(owner)
 	var/slowdown_amount = T.liquids.liquid_state * 0.5
 	owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/water_slowdown, multiplicative_slowdown = slowdown_amount)
 
-/datum/status_effect/water_slowdown/tick()
+/datum/status_effect/water_affected/tick()
 	var/turf/T = get_turf(owner)
 	if(!T || !T.liquids || T.liquids.liquid_state == LIQUID_STATE_PUDDLE)
 		qdel(src)
 		return
 	calculate_water_slow()
+	//Make the reagents touch the person
+	var/fraction = SUBMERGEMENT_PERCENT(owner, T.liquids)
+	var/datum/reagents/tempr = T.liquids.simulate_reagents_flat(SUBMERGEMENT_REAGENTS_TOUCH_AMOUNT*fraction)
+	tempr.expose(owner, TOUCH)
+	qdel(tempr)
 	return ..()
 
-/datum/status_effect/water_slowdown/on_remove()
+/datum/status_effect/water_affected/on_remove()
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/water_slowdown)
 
 /datum/movespeed_modifier/status_effect/water_slowdown
