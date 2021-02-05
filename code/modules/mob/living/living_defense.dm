@@ -80,12 +80,19 @@
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_icon()
 	//SKYRAT EDIT ADDITION BEGIN
-	if(combat_mode)
-		set_combat_indicator(TRUE)
-
-	else
-		set_combat_indicator(FALSE)
-	//SKYRAT EDIT END
+	if(istype(get_active_held_item(), /obj/item/gun))
+		var/obj/item/gun/G = get_active_held_item()
+		if(G.has_gun_safety)
+			if(combat_mode)
+				G.toggle_safety(src, FALSE)
+			else
+				G.toggle_safety(src, TRUE)
+	if(!ishuman(src))
+		if(combat_mode)
+			set_combat_indicator(TRUE)
+		else
+			set_combat_indicator(FALSE)
+	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
 		return

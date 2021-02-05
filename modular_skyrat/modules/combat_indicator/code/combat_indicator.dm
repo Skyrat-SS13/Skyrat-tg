@@ -42,3 +42,16 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 #undef COMBAT_NOTICE_COOLDOWN
 
+/datum/keybinding/living/combat_indicator
+	hotkey_keys = list("C")
+	name = "combat_indicator"
+	full_name = "Combat Indicator"
+	description = "Indicates that you're escalating to mechanics. YOU NEED TO USE THIS"
+	keybind_signal = COMSIG_KB_LIVING_COMBAT_INDICATOR
+
+/datum/keybinding/living/combat_indicator/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/L = user.mob
+	L.user_toggle_combat_indicator()
