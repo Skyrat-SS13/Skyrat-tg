@@ -205,6 +205,7 @@
 			html = "<span class='notice'>PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span></span>",
 			confidential = TRUE)
 		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)]</b> to <i>External</i>: [keywordparsedmsg]</font>")
+		AH.AddInteractionPlayer("<font color='red'>Reply PM from-<b>[key_name(src, TRUE, FALSE)]</b> to <i>External</i>: [keywordparsedmsg]</font>") // SKYRAT EDIT ADDITION -- Player ticket viewing
 		externalreplyamount--
 		send2adminchat("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
 	else
@@ -223,13 +224,16 @@
 					confidential = TRUE)
 				//omg this is dumb, just fill in both their tickets
 				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, 1)]</b> to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
-				admin_ticket_log(src, interaction_message)
+				// admin_ticket_log(src, interaction_message) // SKYRAT EDIT ORIGINAL
+				admin_ticket_log(src, interaction_message, FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
 				if(recipient != src)	//reeee
-					admin_ticket_log(recipient, interaction_message)
+					// admin_ticket_log(recipient, interaction_message) // SKYRAT EDIT ORIGINAL
+					admin_ticket_log(recipient, interaction_message, FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
 				SSblackbox.LogAhelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 			else		//recipient is an admin but sender is not
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
-				admin_ticket_log(src, "<font color='red'>[replymsg]</font>")
+				// admin_ticket_log(src, "<font color='red'>[replymsg]</font>") // SKYRAT EDIT ORIGINAL
+				admin_ticket_log(src, "<font color='red'>[replymsg]</font>", FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
 					html = "<span class='danger'>[replymsg]</span>",
@@ -281,7 +285,8 @@
 					html = "<span class='notice'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span></span>",
 					confidential = TRUE)
 
-				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>")
+				// admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>") // SKYRAT EDIT ORIGINAL
+				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src, FALSE)]: [keywordparsedmsg]</font>", FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
 
 				if(!already_logged) //Reply to an existing ticket
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)

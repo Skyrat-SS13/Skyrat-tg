@@ -128,16 +128,6 @@
 #define ATTACK_EFFECT_MECHTOXIN	"mech_toxin"
 #define ATTACK_EFFECT_BOOP		"boop" //Honk
 
-//intent defines
-#define INTENT_HELP   "help"
-#define INTENT_GRAB   "grab"
-#define INTENT_DISARM "disarm"
-#define INTENT_HARM   "harm"
-//NOTE: INTENT_HOTKEY_* defines are not actual intents!
-//they are here to support hotkeys
-#define INTENT_HOTKEY_LEFT  "left"
-#define INTENT_HOTKEY_RIGHT "right"
-
 //the define for visible message range in combat
 #define COMBAT_MESSAGE_RANGE 3
 #define DEFAULT_MESSAGE_RANGE 7
@@ -221,6 +211,10 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define AMMO_BOX_PER_BULLET 1
 ///ammo box will have a different state for full and empty; <icon_state>-max_ammo and <icon_state>-0
 #define AMMO_BOX_FULL_EMPTY 2
+//SKYRAT EDIT ADDITON BEGIN - SEC_HAUL
+///ammo box will have a different state for full and empty; <icon_state>-full and <icon_state>-0
+#define AMMO_BOX_FULL_EMPTY_BASIC 3
+//SKYRAT EDIT END
 
 #define SUPPRESSED_NONE 0
 #define SUPPRESSED_QUIET 1 ///standard suppressed

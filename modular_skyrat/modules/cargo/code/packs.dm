@@ -214,6 +214,20 @@
 					/obj/item/storage/box/matches)
 	crate_name = "candle crate"
 
+/datum/supply_pack/misc/jukebox
+	name = "Jukebox Crate"
+	desc = "Contains a regular old jukebox. It can play music!"
+	cost = CARGO_CRATE_VALUE * 20
+	contains = list(/obj/machinery/jukebox)
+	crate_name = "jukebox crate"
+
+/datum/supply_pack/misc/jukebox_disco
+	name = "Radiant Dance Machine Crate"
+	desc = "Contains the new and improved Radiant Dance Machine Mark IV! Capable of playing a large selections of music, while projecting a fabulous lightshow."
+	cost = CARGO_CRATE_VALUE * 50
+	contains = list(/obj/machinery/jukebox/disco)
+	crate_name = "dance machine crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Food Stuff //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -262,10 +276,10 @@
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
-					/obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation)
+					/obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation)
 	crate_name = "meaty crate"
 	crate_type = /obj/structure/closet/crate/freezer
 
