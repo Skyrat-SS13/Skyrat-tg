@@ -1,6 +1,44 @@
 /turf/open/floor
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
 
+// Plasteel Kitchen
+/turf/open/floor/plasteel/kitchen
+	icon_state = "blackchecker"
+	base_icon_state = "blackchecker"
+
+// Plasteel + Red
+/turf/open/floor/plasteel/red
+	icon_state = "redfull"
+	base_icon_state = "redfull"
+/turf/open/floor/plasteel/red/side
+	icon_state = "red"
+	base_icon_state = "red"
+
+/turf/open/floor/plasteel/red/corner
+	icon_state = "redcorner"
+	base_icon_state = "redcorner"
+
+// Plasteel + Green
+/turf/open/floor/plasteel/green
+	icon_state = "greenfull"
+	base_icon_state = "greenfull"
+/turf/open/floor/plasteel/green/side
+	icon_state = "green"
+	base_icon_state = "green"
+
+/turf/open/floor/plasteel/green/corner
+	icon_state = "greencorner"
+	base_icon_state = "greencorner"
+
+// Plasteel + Brown
+/turf/open/floor/plasteel/brown/side
+	icon_state = "brown"
+	base_icon_state = "brown"
+
+/turf/open/floor/plasteel/brown/corner
+	icon_state = "browncorners"
+	base_icon_state = "browncorners"
+
 // Dark + Purple
 /turf/open/floor/plasteel/dark/purple
 	icon_state = "darkpurplefull"
