@@ -26,8 +26,11 @@
 	else
 		..()
 
-/obj/item/gun/proc/toggle_safety(mob/user)
-	safety = !safety
+/obj/item/gun/proc/toggle_safety(mob/user, override)
+	if(override)
+		safety = override
+	else
+		safety = !safety
 	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
 	tsafety.UpdateButtonIcon()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)

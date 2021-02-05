@@ -157,7 +157,7 @@
 		weapon.attack(C, src)
 		C.Knockdown(20)
 
-/mob/living/simple_animal/bot/bulletbot/attackby(obj/item/W, mob/user, params)
+/mob/living/simple_animal/bot/bulletbot/attackby(obj/item/W, mob/living/user, params)
 	if(W.GetID())
 		if(bot_core.allowed(user) && !open && !emagged)
 			locked = !locked
@@ -169,7 +169,7 @@
 				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
 			else
 				to_chat(user, "<span class='notice'>\The [src] doesn't seem to respect your authority.</span>")
-	else if(istype(W, /obj/item/kitchen/knife) && user.a_intent != INTENT_HARM)
+	else if(istype(W, /obj/item/kitchen/knife) && !user.combat_mode)
 		to_chat(user, "<span class='notice'>You start attaching \the [W] to \the [src]...</span>")
 		if(do_after(user, 25, target = src))
 			deputize(W, user)
