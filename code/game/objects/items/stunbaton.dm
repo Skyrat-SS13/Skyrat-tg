@@ -1,7 +1,6 @@
 /obj/item/melee/baton
 	name = "stun baton"
-	desc = "A stun baton for incapacitating people with. Left click to harm, right click to stun."
-
+	desc = "A stun baton for incapacitating people with. Left click to stun, right click to harm."
 	icon_state = "stunbaton"
 	inhand_icon_state = "baton"
 	worn_icon_state = "baton"
@@ -289,7 +288,7 @@
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/melee/baton/cattleprod
 	name = "stunprod"
-	desc = "An improvised stun baton. Left click to harm, right click to stun."
+	desc = "An improvised stun baton. Left click to stun, right click to harm."
 	icon_state = "stunprod"
 	inhand_icon_state = "prod"
 	worn_icon_state = null
