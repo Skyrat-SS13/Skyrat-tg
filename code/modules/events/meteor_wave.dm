@@ -47,8 +47,12 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
+<<<<<<< HEAD
 	//priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/meteors.ogg') //ORIGINAL
 	priority_announce("Meteors have been detected on collision course with the station. Estimated time until impact: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds.", "Meteor Alert", 'sound/ai/meteors.ogg') //ORIGINAL
+=======
+	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS)
+>>>>>>> 95731342b97 ([READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309))
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
