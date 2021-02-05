@@ -276,10 +276,10 @@
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
-					/obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation)
+					/obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation)
 	crate_name = "meaty crate"
 	crate_type = /obj/structure/closet/crate/freezer
 
