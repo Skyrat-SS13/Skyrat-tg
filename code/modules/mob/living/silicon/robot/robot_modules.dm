@@ -236,15 +236,10 @@
 		return FALSE
 	return TRUE
 
-<<<<<<< HEAD
-/obj/item/robot_module/medical
-	name = "Medical"
-=======
 // ------------------------------------------ Setting base model modules
 // --------------------- Clown
 /obj/item/robot_model/clown
 	name = "Clown"
->>>>>>> aa51207ddad (Makes borg organ bags into an apparatus (#56401))
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/healthanalyzer,
@@ -409,10 +404,6 @@
 	if(CL)
 		CL.reagents.add_reagent(/datum/reagent/lube, 2 * coeff)
 
-<<<<<<< HEAD
-/obj/item/robot_module/clown
-	name = "Clown"
-=======
 // --------------------- Medical
 /obj/item/robot_model/medical
 	name = "Medical"
@@ -500,7 +491,6 @@
 // --------------------- Peacekeeper
 /obj/item/robot_model/peacekeeper
 	name = "Peacekeeper"
->>>>>>> aa51207ddad (Makes borg organ bags into an apparatus (#56401))
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/toy/crayon/rainbow,
@@ -519,14 +509,6 @@
 		/obj/item/picket_sign/cyborg,
 		/obj/item/reagent_containers/borghypo/clown,
 		/obj/item/extinguisher/mini)
-<<<<<<< HEAD
-	emag_modules = list(
-		/obj/item/reagent_containers/borghypo/clown/hacked,
-		/obj/item/reagent_containers/spray/waterflower/cyborg/hacked)
-	moduleselect_icon = "service"
-	cyborg_base_icon = "clown"
-	hat_offset = -2
-=======
 	radio_channels = list(RADIO_CHANNEL_SECURITY)
 	emag_modules = list(/obj/item/gun/energy/laser/cyborg)
 	cyborg_base_icon = "sec"
@@ -549,7 +531,6 @@
 			T.update_icon()
 		else
 			T.charge_timer = 0
->>>>>>> aa51207ddad (Makes borg organ bags into an apparatus (#56401))
 
 /obj/item/robot_module/butler
 	name = "Service"
