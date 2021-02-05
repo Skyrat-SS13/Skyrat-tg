@@ -40,7 +40,7 @@
 		on_shield_block(owner, hitby, attack_text, damage, attack_type)
 
 /obj/item/shield/riot/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/melee/baton))
+	if(istype(W, /obj/item/melee/baton) || istype(W, /obj/item/melee/classic_baton)) //SKYRAT EDIT CHANGE - SEC_HAUL
 		if(cooldown < world.time - 25)
 			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, TRUE)

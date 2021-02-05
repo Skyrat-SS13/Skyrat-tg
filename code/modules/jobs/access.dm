@@ -372,7 +372,7 @@
 		if(ACCESS_CENT_BAR)
 			return "Code Scotch"
 
-/*//SKYRAT EDIT - CARD - MOVED TO MODULAR
+/*//SKYRAT EDIT - CARD - MOVED TO MODULAR - modules/card/access.dm
 /proc/get_all_jobs()
 	return list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
 				"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer",
