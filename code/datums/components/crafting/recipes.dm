@@ -1080,6 +1080,17 @@
 	result = /obj/item/pickaxe/improvised
 	category = CAT_MISC
 
+// Skryat addition start
+/datum/crafting_recipe/doubletank
+	name = "Double emergency oxygen tank"
+	reqs = list(
+		/obj/item/tank/internals/emergency_oxygen/engi = 2,
+		/obj/item/stack/sticky_tape = 1,
+	)
+	result = /obj/item/tank/internals/emergency_oxygen/double/empty
+	category = CAT_MISC
+// Skyrat addition end
+
 /datum/crafting_recipe/underwater_basket
 	name = "Underwater Basket (Bamboo)"
 	reqs = list(
