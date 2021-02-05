@@ -236,8 +236,15 @@
 		return FALSE
 	return TRUE
 
+<<<<<<< HEAD
 /obj/item/robot_module/medical
 	name = "Medical"
+=======
+// ------------------------------------------ Setting base model modules
+// --------------------- Clown
+/obj/item/robot_model/clown
+	name = "Clown"
+>>>>>>> aa51207ddad (Makes borg organ bags into an apparatus (#56401))
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/healthanalyzer,
@@ -402,8 +409,98 @@
 	if(CL)
 		CL.reagents.add_reagent(/datum/reagent/lube, 2 * coeff)
 
+<<<<<<< HEAD
 /obj/item/robot_module/clown
 	name = "Clown"
+=======
+// --------------------- Medical
+/obj/item/robot_model/medical
+	name = "Medical"
+	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/healthanalyzer,
+		/obj/item/reagent_containers/borghypo,
+		/obj/item/borg/apparatus/beaker,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/surgical_drapes,
+		/obj/item/retractor,
+		/obj/item/hemostat,
+		/obj/item/cautery,
+		/obj/item/surgicaldrill,
+		/obj/item/scalpel,
+		/obj/item/circular_saw,
+		/obj/item/bonesetter,
+		/obj/item/extinguisher/mini,
+		/obj/item/roller/robo,
+		/obj/item/borg/cyborghug/medical,
+		/obj/item/stack/medical/gauze,
+		/obj/item/stack/medical/bone_gel,
+		/obj/item/borg/apparatus/organ_storage,
+		/obj/item/borg/lollipop)
+	radio_channels = list(RADIO_CHANNEL_MEDICAL)
+	emag_modules = list(/obj/item/reagent_containers/borghypo/hacked)
+	cyborg_base_icon = "medical"
+	model_select_icon = "medical"
+	model_traits = list(TRAIT_PUSHIMMUNE)
+	hat_offset = 3
+
+// --------------------- Mining
+/obj/item/robot_model/miner
+	name = "Miner"
+	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/borg/sight/meson,
+		/obj/item/storage/bag/ore/cyborg,
+		/obj/item/pickaxe/drill/cyborg,
+		/obj/item/shovel,
+		/obj/item/crowbar/cyborg,
+		/obj/item/weldingtool/mini,
+		/obj/item/extinguisher/mini,
+		/obj/item/storage/bag/sheetsnatcher/borg,
+		/obj/item/gun/energy/kinetic_accelerator/cyborg,
+		/obj/item/gps/cyborg,
+		/obj/item/stack/marker_beacon)
+	radio_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_SUPPLY)
+	emag_modules = list(/obj/item/borg/stun)
+	cyborg_base_icon = "miner"
+	model_select_icon = "miner"
+	hat_offset = 0
+	var/obj/item/t_scanner/adv_mining_scanner/cyborg/mining_scanner //built in memes.
+
+/obj/item/robot_model/miner/be_transformed_to(obj/item/robot_model/old_model)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/miner_icons = list(
+		"Asteroid Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "minerOLD"),
+		"Spider Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "spidermin"),
+		"Lavaland Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner")
+		)
+	var/miner_robot_icon = show_radial_menu(cyborg, cyborg, miner_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
+	switch(miner_robot_icon)
+		if("Asteroid Miner")
+			cyborg_base_icon = "minerOLD"
+			special_light_key = "miner"
+		if("Spider Miner")
+			cyborg_base_icon = "spidermin"
+		if("Lavaland Miner")
+			cyborg_base_icon = "miner"
+		else
+			return FALSE
+	return ..()
+
+/obj/item/robot_model/miner/rebuild_modules()
+	. = ..()
+	if(!mining_scanner)
+		mining_scanner = new(src)
+
+/obj/item/robot_model/miner/Destroy()
+	QDEL_NULL(mining_scanner)
+	return ..()
+
+// --------------------- Peacekeeper
+/obj/item/robot_model/peacekeeper
+	name = "Peacekeeper"
+>>>>>>> aa51207ddad (Makes borg organ bags into an apparatus (#56401))
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/toy/crayon/rainbow,
@@ -422,12 +519,37 @@
 		/obj/item/picket_sign/cyborg,
 		/obj/item/reagent_containers/borghypo/clown,
 		/obj/item/extinguisher/mini)
+<<<<<<< HEAD
 	emag_modules = list(
 		/obj/item/reagent_containers/borghypo/clown/hacked,
 		/obj/item/reagent_containers/spray/waterflower/cyborg/hacked)
 	moduleselect_icon = "service"
 	cyborg_base_icon = "clown"
 	hat_offset = -2
+=======
+	radio_channels = list(RADIO_CHANNEL_SECURITY)
+	emag_modules = list(/obj/item/gun/energy/laser/cyborg)
+	cyborg_base_icon = "sec"
+	model_select_icon = "security"
+	model_traits = list(TRAIT_PUSHIMMUNE)
+	hat_offset = 3
+
+/obj/item/robot_model/security/do_transform_animation()
+	..()
+	to_chat(loc, "<span class='userdanger'>While you have picked the security model, you still have to follow your laws, NOT Space Law. \
+	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to.</span>")
+
+/obj/item/robot_model/security/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
+	..()
+	var/obj/item/gun/energy/e_gun/advtaser/cyborg/T = locate(/obj/item/gun/energy/e_gun/advtaser/cyborg) in basic_modules
+	if(T)
+		if(T.cell.charge < T.cell.maxcharge)
+			var/obj/item/ammo_casing/energy/S = T.ammo_type[T.select]
+			T.cell.give(S.e_cost * coeff)
+			T.update_icon()
+		else
+			T.charge_timer = 0
+>>>>>>> aa51207ddad (Makes borg organ bags into an apparatus (#56401))
 
 /obj/item/robot_module/butler
 	name = "Service"
@@ -590,7 +712,7 @@
 		/obj/item/pinpointer/syndicate_cyborg,
 		/obj/item/stack/medical/gauze,
 		/obj/item/gun/medbeam,
-		/obj/item/organ_storage)
+		/obj/item/borg/apparatus/organ_storage)
 
 	cyborg_base_icon = "synd_medical"
 	moduleselect_icon = "malf"
