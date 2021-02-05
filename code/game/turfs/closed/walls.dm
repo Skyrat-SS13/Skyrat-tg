@@ -2,13 +2,8 @@
 
 /turf/closed/wall
 	name = "wall"
-<<<<<<< HEAD
-	desc = "A huge chunk of metal used to separate rooms."
-	icon = 'icons/turf/walls/wall.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	desc = "A huge chunk of iron used to separate rooms."
+	desc = "A huge chunk of iron used to separate rooms." //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon = 'icons/turf/walls/wall.dmi'
->>>>>>> 8d586a7cb08 (Rename metal sheets to iron sheets (#56643))
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	explosion_block = 1

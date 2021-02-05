@@ -765,7 +765,7 @@
 		/obj/item/wirecutters/cyborg,
 		/obj/item/multitool/cyborg,
 		/obj/item/lightreplacer/cyborg,
-		/obj/item/stack/sheet/metal,
+		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
