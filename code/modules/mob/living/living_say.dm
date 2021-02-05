@@ -432,7 +432,44 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			return ITALICS | REDUCE_RANGE
 
 	return 0
+//SKYRAT custom sayverb
+/mob/living/say_mod(input, message_mods)
+	if(message_mods == MODE_WHISPER_CRIT)
+		return ..()
+	if((input[1] == "!") && (length_char(input) > 1))
+		message_mods = MODE_CUSTOM_SAY
+		return copytext_char(input, 3)
+	var/customsayverb = findtext(input, "*")
+	if(customsayverb)
+		message_mods = MODE_CUSTOM_SAY
+		return lowertext(copytext_char(input, 1, customsayverb))
+	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
+		. = verb_whisper
+	else if(message_mods[WHISPER_MODE] == MODE_WHISPER_CRIT)
+		. = "[verb_whisper] in [p_their()] last breath"
+	else if(message_mods[MODE_SING])
+		. = verb_sing
+	else if(stuttering)
+		if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
+			. = "shakily signs"
+		else
+			. = "stammers"
+	else if(derpspeech)
+		if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
+			. = "incoherently signs"
+		else
+			. = "gibbers"
+	else
+		. = ..()
 
+/proc/uncostumize_say(input, message_mods)
+	. = input
+	if(message_mods == MODE_CUSTOM_SAY)
+		var/customsayverb = findtext(input, "*")
+		return lowertext(copytext_char(input, 1, customsayverb))
+
+//SKYRAT custom sayverb end.
+/* original code:
 /mob/living/say_mod(input, list/message_mods = list())
 	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
 		. = verb_whisper
@@ -452,6 +489,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			. = "gibbers"
 	else
 		. = ..()
+*/
 
 /mob/living/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(!message)

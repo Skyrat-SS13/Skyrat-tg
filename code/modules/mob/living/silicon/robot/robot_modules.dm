@@ -305,7 +305,7 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
-		/obj/item/melee/baton/loaded,
+		/obj/item/melee/classic_baton/peacekeeper, //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/melee/baton/loaded
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/extinguisher/mini)
