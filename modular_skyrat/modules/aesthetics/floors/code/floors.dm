@@ -36,8 +36,8 @@
 	base_icon_state = "brown"
 
 /turf/open/floor/plasteel/brown/corner
-	icon_state = "browncorners"
-	base_icon_state = "browncorners"
+	icon_state = "browncorner"
+	base_icon_state = "browncorner"
 
 // Dark + Purple
 /turf/open/floor/plasteel/dark/purple
