@@ -91,8 +91,17 @@
 	target.attack_paw(user)
 	return TRUE
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
+=======
+/datum/species/monkey/handle_mutations_and_radiation(mob/living/carbon/human/H)
+	. = ..()
+	if(H.radiation > RAD_MOB_MUTATE * 2 && prob(50))	
+		H.gorillize()	
+		return
+
+>>>>>>> 622e7718dc3 (Fixes gorillification for radiated monkeys (#56633))
 /datum/species/monkey/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[MONKEYDAY])
 		return TRUE
