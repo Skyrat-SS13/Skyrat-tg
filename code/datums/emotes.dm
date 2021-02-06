@@ -170,7 +170,7 @@
 		var/check = FALSE
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(H.dna.species in allowed_species)
+			if(H.dna.species.type in allowed_species)
 				check = TRUE
 		return check
 	//SKYRAT EDIT END
