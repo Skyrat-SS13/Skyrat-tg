@@ -167,11 +167,12 @@
 			return FALSE
 	//SKYRAT EDIT BEGIN
 	if(allowed_species)
+		var/check = FALSE
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			return FALSE
-			if(H.dna.species.type in allowed_species)
-				return TRUE
+			if(H.dna.species in allowed_species)
+				check = TRUE
+		return check
 	//SKYRAT EDIT END
 
 /**
