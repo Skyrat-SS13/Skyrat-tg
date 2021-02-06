@@ -446,8 +446,8 @@
  * Subtype of Double-Bladed Energy Swords
  */
 /obj/item/dualsaber/toy
-	name = "double-bladed energy sword"
-	desc = "Handle with care!"
+	name = "double-bladed energy sword" // Skyrat edit , was double-bladed toy sword
+	desc = "Handle with care!" // Skyrat edit
 	force = 0
 	throwforce = 0
 	throw_speed = 3
@@ -455,8 +455,8 @@
 	two_hand_force = 0
 	attack_verb_continuous = list("attacks", "strikes", "hits")
 	attack_verb_simple = list("attack", "strike", "hit")
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY
-	special_desc = "A imitation of an double-bladed energy sword"
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY //  Skyrat edit
+	special_desc = "A imitation of an double-bladed energy sword" // Skyrat edit
 
 /obj/item/dualsaber/toy/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	return 0
