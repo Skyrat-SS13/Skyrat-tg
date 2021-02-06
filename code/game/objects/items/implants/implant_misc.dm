@@ -28,8 +28,8 @@
 /obj/item/implanter/emp
 	name = "implanter" // Skyrat edit, was implanter (EMP)
 	imp_type = /obj/item/implant/emp
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "A Syndicate implanter used for a EMP implant"
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "A Syndicate implanter used for a EMP implant" // Skyrat edit
 
 
 //Health Tracker Implant
