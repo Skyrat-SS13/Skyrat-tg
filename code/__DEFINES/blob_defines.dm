@@ -102,7 +102,7 @@
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_UPPER          20
 #define BLOBMOB_BLOBBERNAUT_DMG_LOWER               4           // Damage dealt with active overmind (most damage comes from strain chems)
 #define BLOBMOB_BLOBBERNAUT_DMG_UPPER               4
-#define BLOBMOB_BLOBBERNAUT_REAGENTATK_VOL          20          // Amounts of strain reagents applied on attack -- basically the main damage stat
+#define BLOBMOB_BLOBBERNAUT_REAGENTATK_VOL          15          // Amounts of strain reagents applied on attack -- basically the main damage stat
 #define BLOBMOB_BLOBBERNAUT_DMG_OBJ                 60          // Damage dealth to objects/machines
 #define BLOBMOB_BLOBBERNAUT_HEALING_CORE            0.1         // Percentage multiplier HP restored on Life() when within 2 tiles of the blob core
 #define BLOBMOB_BLOBBERNAUT_HEALING_NODE            0.05        // Same, but for a nearby node
