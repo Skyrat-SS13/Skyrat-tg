@@ -1,10 +1,10 @@
 #define WATER_HEIGH_DIFFERENCE_SOUND_CHANCE 50
 #define WATER_HEIGH_DIFFERENCE_DELTA_SPLASH 7 //Delta needed for the splash effect to be made in 1 go
 
-#define REQUIRED_EVAPORATION_PROCESSES 50
+#define REQUIRED_EVAPORATION_PROCESSES 80
 #define EVAPORATION_CHANCE 30
 
-#define REQUIRED_FIRE_PROCESSES 3
+#define REQUIRED_FIRE_PROCESSES 4
 #define REQUIRED_FIRE_POWER_PER_UNIT 5
 
 #define PARTIAL_TRANSFER_AMOUNT 0.3
@@ -14,6 +14,9 @@
 
 #define LIQUID_GIVER 1
 #define LIQUID_TAKER 2
+
+//Required amount of a reagent to be simulated on turf exposures from liquids (to prevent gaming the system with cheap dillutions)
+#define LIQUID_REAGENT_THRESHOLD_TURF_EXPOSURE 5
 
 //Threshold at which the difference of height makes us need to climb/blocks movement/allows to fall down
 #define TURF_HEIGHT_BLOCK_THRESHOLD 20

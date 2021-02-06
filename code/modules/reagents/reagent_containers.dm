@@ -186,12 +186,16 @@
 		return
 
 	else
-		if(isturf(target) && reagents.reagent_list.len && thrownby)
-			log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
-			log_game("[key_name(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
-			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
+		if(isturf(target))
+			var/turf/T = target
+			T.add_liquid_from_reagents(reagents)
+			if(reagents.reagent_list.len && thrownby)
+				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
+				log_game("[key_name(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
+				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
+		else
+			reagents.expose(target, TOUCH)
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
-		reagents.expose(target, TOUCH)
 		if(QDELETED(src))
 			return
 

@@ -58,9 +58,6 @@
 					break
 		var/list/reactable = accessible
 		for(var/turf/T in accessible)
-			for(var/datum/reagent/R in splash_holder.reagent_list)
-				T.add_liquid(R.type, R.volume * 0.3)
-
 			for(var/atom/A in T.GetAllContents())
 				if(!(A in viewable))
 					continue
@@ -75,6 +72,7 @@
 			var/fraction = 0.5/(2 ** distance) //50/25/12/6... for a 200u splash, 25/12/6/3... for a 100u, 12/6/3/1 for a 50u
 			splash_holder.expose(A, TOUCH, fraction)
 
+	epicenter.add_liquid_from_reagents(splash_holder)
 	qdel(splash_holder)
 	return 1
 

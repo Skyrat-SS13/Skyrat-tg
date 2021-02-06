@@ -135,4 +135,6 @@ DEFINE_BITFIELD(smoothing_flags, list(
 
 #define SMOOTH_GROUP_SHUTTERS S_OBJ(71) //SKYRAT EDIT ADDITION - ASSAULTOPS
 
-#define MAX_S_OBJ SMOOTH_GROUP_SHUTTERS //Always match this value with the one above it. //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: #define MAX_S_OBJ SMOOTH_GROUP_SHUTTERS
+#define SMOOTH_GROUP_WATER S_OBJ(72)			///obj/effect/abstract/liquid_turf
+
+#define MAX_S_OBJ SMOOTH_GROUP_WATER //Always match this value with the one above it.

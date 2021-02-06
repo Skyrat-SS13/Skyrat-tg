@@ -105,6 +105,19 @@ SUBSYSTEM_DEF(liquids)
 		lgroup.remove_from_group(src)
 	SSliquids.add_active_turf(src)
 
+/obj/effect/abstract/liquid_turf/proc/liquid_simple_delete_flat(flat_amount)
+	if(flat_amount >= total_reagents)
+		qdel(src, TRUE)
+		return
+	var/fraction = flat_amount/total_reagents
+	for(var/reagent_type in reagent_list)
+		var/amount = fraction * reagent_list[reagent_type]
+		reagent_list[reagent_type] -= amount
+		total_reagents -= amount
+	has_cached_share = FALSE
+	if(!my_turf.lgroup)
+		calculate_height()
+
 /turf/proc/liquid_fraction_delete(fraction)
 	for(var/r_type in liquids.reagent_list)
 		var/volume_change = liquids.reagent_list[r_type] * fraction
@@ -140,6 +153,13 @@ SUBSYSTEM_DEF(liquids)
 				T.lgroup.check_adjacency(T)
 
 	SSliquids.add_active_turf(src)
+
+/turf/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE)
+	var/list/compiled_list = list()
+	for(var/r in giver.reagent_list)
+		var/datum/reagent/R = r 
+		compiled_list[R.type] = R.volume
+	add_liquid_list(compiled_list, no_react)
 
 //More efficient than add_liquid for multiples
 /turf/proc/add_liquid_list(reagent_list, no_react = FALSE)
@@ -217,7 +237,8 @@ SUBSYSTEM_DEF(liquids)
 /obj/effect/abstract/liquid_turf
 	name = "liquid"
 	icon = 'icons/horizon/obj/effects/liquid.dmi'
-	icon_state = "liquid"
+	icon_state = "water-0"
+	base_icon_state = "water"
 	anchored = TRUE
 	plane = FLOOR_PLANE
 	color = "#DDF"
@@ -226,6 +247,10 @@ SUBSYSTEM_DEF(liquids)
 	light_range = 0
 	light_power = 1
 	light_color = LIGHT_COLOR_FIRE
+
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WATER)
+	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WATER)
 
 	//layer = MID_LANDMARK_LAYER
 	//invisibility = INVISIBILITY_ABSTRACT
@@ -290,6 +315,7 @@ SUBSYSTEM_DEF(liquids)
 			set_light_range(LIGHT_RANGE_FIRE)
 		if(LIQUID_FIRE_STATE_INFERNO)
 			set_light_range(LIGHT_RANGE_FIRE)
+	update_light()
 	update_overlays()
 
 /obj/effect/abstract/liquid_turf/proc/get_burn_power(hotspotted = FALSE)
@@ -338,12 +364,13 @@ SUBSYSTEM_DEF(liquids)
 				reagent_list[reagent_type] -= burn_rate
 				total_reagents -= burn_rate
 
+	my_turf.hotspot_expose((T20C+50) + (50*fire_state), 125)
 	for(var/A in my_turf.contents)
 		var/atom/AT = A
 		if(!QDELETED(AT))
 			AT.fire_act((T20C+50) + (50*fire_state), 125)
 
-	if(total_reagents <= 0)
+	if(reagent_list.len == 0)
 		qdel(src, TRUE)
 	else
 		has_cached_share = FALSE
@@ -360,6 +387,7 @@ SUBSYSTEM_DEF(liquids)
 		SSliquids.evaporation_queue -= my_turf
 		return
 	//See if any of our reagents evaporates
+	var/any_change = FALSE
 	var/datum/reagent/R //Faster declaration
 	for(var/reagent_type in reagent_list)
 		R = reagent_type
@@ -367,15 +395,19 @@ SUBSYSTEM_DEF(liquids)
 		if(initial(R.evaporates))
 			total_reagents -= reagent_list[reagent_type]
 			reagent_list -= reagent_type
+			any_change = TRUE
+	if(!any_change)
+		SSliquids.evaporation_queue -= my_turf
+		return
+	//No total reagents. Commit death
+	if(reagent_list.len == 0)
+		qdel(src, TRUE)
 	//Reagents still left. Recalculte height and color and remove us from the queue
-	if(total_reagents)
+	else
 		has_cached_share = FALSE
 		SSliquids.evaporation_queue -= my_turf
 		calculate_height()
 		set_reagent_color_for_liquid()
-	//No total reagents. Commit death
-	else
-		qdel(src, TRUE)
 
 /obj/effect/abstract/liquid_turf/forceMove(atom/destination, no_tp=FALSE, harderforce = FALSE)
 	if(harderforce)
@@ -420,19 +452,19 @@ SUBSYSTEM_DEF(liquids)
 
 /obj/effect/abstract/liquid_turf/update_overlays()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR)
+	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 	//Add a fire overlay too
 	switch(fire_state)
 		if(LIQUID_FIRE_STATE_SMALL)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 		if(LIQUID_FIRE_STATE_MILD)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_small", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 		if(LIQUID_FIRE_STATE_MEDIUM)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_medium", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_medium", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 		if(LIQUID_FIRE_STATE_HUGE)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 		if(LIQUID_FIRE_STATE_INFERNO)
-			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR)
+			SSvis_overlays.add_vis_overlay(src, icon, "fire_big", BELOW_MOB_LAYER, GAME_PLANE, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 
 //Takes a flat of our reagents and returns it, possibly qdeling our liquids
 /obj/effect/abstract/liquid_turf/proc/take_reagents_flat(flat_amount)
@@ -452,6 +484,18 @@ SUBSYSTEM_DEF(liquids)
 		has_cached_share = FALSE
 	return tempr
 
+//Returns a reagents holder with all the reagents with a higher volume than the threshold
+/obj/effect/abstract/liquid_turf/proc/simulate_reagents_threshold(amount_threshold)
+	var/datum/reagents/tempr = new(10000)
+	var/passed_list = list()
+	for(var/reagent_type in reagent_list)
+		var/amount = reagent_list[reagent_type]
+		if(amount_threshold && amount < amount_threshold)
+			continue
+		passed_list[reagent_type] = amount
+	tempr.add_reagent_list(passed_list, no_react = TRUE)
+	return tempr
+
 //Returns a flat of our reagents without any effects on the liquids
 /obj/effect/abstract/liquid_turf/proc/simulate_reagents_flat(flat_amount)
 	var/datum/reagents/tempr = new(10000)
@@ -465,6 +509,11 @@ SUBSYSTEM_DEF(liquids)
 			passed_list[reagent_type] = amount
 		tempr.add_reagent_list(passed_list, no_react = TRUE)
 	return tempr
+
+/obj/effect/abstract/liquid_turf/fire_act(temperature, volume)
+	if(!fire_state)
+		if(check_fire(TRUE))
+			SSliquids.processing_fire[my_turf] = TRUE
 
 /obj/effect/abstract/liquid_turf/proc/set_reagent_color_for_liquid()
 	color = mix_color_from_reagent_list(reagent_list)
@@ -538,7 +587,7 @@ SUBSYSTEM_DEF(liquids)
 			C.apply_status_effect(/datum/status_effect/water_affected)
 	else if (isliving(AM))
 		var/mob/living/L = AM
-		if(prob(5) && !(L.movement_type & FLYING))
+		if(prob(7) && !(L.movement_type & FLYING))
 			L.slip(60, my_turf, NO_SLIP_WHEN_WALKING, 20, TRUE)
 	if(fire_state)
 		AM.fire_act((T20C+50) + (50*fire_state), 125)
@@ -572,6 +621,9 @@ SUBSYSTEM_DEF(liquids)
 	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR)
 	if(!immutable)
 		SSliquids.add_active_turf(my_turf)
+	QUEUE_SMOOTH(src)
+	QUEUE_SMOOTH_NEIGHBORS(src)
+	SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
 
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
@@ -586,13 +638,14 @@ SUBSYSTEM_DEF(liquids)
 			SSliquids.processing_fire -= my_turf
 		my_turf.liquids = null
 		my_turf = null
+		QUEUE_SMOOTH_NEIGHBORS(src)
 		return ..()
 	else
 		return QDEL_HINT_LETMELIVE
 
 //Exposes my turf with simulated reagents
 /obj/effect/abstract/liquid_turf/proc/ExposeMyTurf()
-	var/datum/reagents/tempr = simulate_reagents_flat(total_reagents)
+	var/datum/reagents/tempr = simulate_reagents_threshold(LIQUID_REAGENT_THRESHOLD_TURF_EXPOSURE)
 	tempr.expose(my_turf, TOUCH, tempr.total_volume)
 	qdel(tempr)
 
