@@ -1,5 +1,27 @@
-/datum/emote/living/boop
-	key = "boop"
+/datum/emote/living/dwoop
+	key = "dwoop"
+	key_third_person = "dwoops"
+	message = "chirps happily!"
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/dwoop.ogg'
+	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
+
+/datum/emote/living/yes
+	key = "yes"
+	message = "emits an affirmative blip."
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg'
+	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
+
+/datum/emote/living/no
+	key = "no"
+	message = "emits a negative blip."
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg'
+	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
+
+/datum/emote/living/boops
+	key = "boops"
 	key_third_person = "boops"
 	message = "boops."
 	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
@@ -68,4 +90,3 @@
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/warning-buzzer.ogg'
 	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
-
