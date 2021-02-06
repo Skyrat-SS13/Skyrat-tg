@@ -258,8 +258,13 @@
  */
 /datum/wound/proc/try_treating(obj/item/I, mob/user)
 	// first we weed out if we're not dealing with our wound's bodypart, or if it might be an attack
-	if(QDELETED(I) || limb.body_zone != user.zone_selected || (I.force && user.a_intent != INTENT_HELP))
+	if(!I || limb.body_zone != user.zone_selected)
 		return FALSE
+
+	if(isliving(user))
+		var/mob/living/tendee = user
+		if(I.force && tendee.combat_mode)
+			return FALSE
 
 	var/allowed = FALSE
 
@@ -303,7 +308,7 @@
 	return FALSE
 
 /// Like try_treating() but for unhanded interactions from humans, used by joint dislocations for manual bodypart chiropractice for example. Ignores thick material checks since you can pop an arm into place through a thick suit unlike using sutures
-/datum/wound/proc/try_handling(mob/living/carbon/human/user)
+/datum/wound/proc/try_handling(mob/living/carbon/human/user, modifiers)
 	return FALSE
 
 /// Someone is using something that might be used for treating the wound on this limb

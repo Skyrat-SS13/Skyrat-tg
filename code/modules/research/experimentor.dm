@@ -17,7 +17,7 @@
 #define EFFECT_PROB_VERYHIGH 95
 
 #define FAIL 8
-/obj/machinery/rnd/experimentor
+/obj/machinery/rnd/experimentor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "\improper E.X.P.E.R.I-MENTOR"
 	desc = "A \"replacement\" for the destructive analyzer with a slight tendency to catastrophically fail."
 	icon = 'icons/obj/machines/heavy_lathe.dmi'
@@ -107,8 +107,8 @@
 			return FALSE
 	return TRUE
 
-/obj/machinery/rnd/experimentor/Insert_Item(obj/item/O, mob/user)
-	if(user.a_intent != INTENT_HARM)
+/obj/machinery/rnd/experimentor/Insert_Item(obj/item/O, mob/living/user)
+	if(!user.combat_mode)
 		. = 1
 		if(!is_insertion_ready(user))
 			return

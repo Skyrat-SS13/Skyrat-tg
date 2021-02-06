@@ -1,6 +1,6 @@
 #define MILK_TO_BUTTER_COEFF 15
 
-/obj/machinery/reagentgrinder
+/obj/machinery/reagentgrinder//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "\improper All-In-One Grinder"
 	desc = "From BlenderTech. Will It Blend? Let's test it out!"
 	icon = 'icons/obj/kitchen.dmi'
@@ -121,7 +121,7 @@
 	update_icon()
 	return TRUE
 
-/obj/machinery/reagentgrinder/attackby(obj/item/I, mob/user, params)
+/obj/machinery/reagentgrinder/attackby(obj/item/I, mob/living/user, params)
 	//You can only screw open empty grinder
 	if(!beaker && !length(holdingitems) && default_deconstruction_screwdriver(user, icon_state, icon_state, I))
 		return
@@ -162,7 +162,7 @@
 		return TRUE
 
 	if(!I.grind_results && !I.juice_results)
-		if(user.a_intent == INTENT_HARM)
+		if(user.combat_mode)
 			return ..()
 		else
 			to_chat(user, "<span class='warning'>You cannot grind [I] into reagents!</span>")

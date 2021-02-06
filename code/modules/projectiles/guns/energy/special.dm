@@ -84,8 +84,8 @@
 	ammo_x_offset = 2
 
 /obj/item/gun/energy/kinetic_accelerator/crossbow
-	name = "mini energy crossbow"
-	desc = "A weapon favored by syndicate stealth specialists."
+	name = "foam force crossbow" //SKYRAT EDIT, was mini energy crossbow
+	desc = "A weapon favored by many overactive children. Ages 8 and up." //SKYRAT EDIT
 	icon_state = "crossbow"
 	inhand_icon_state = "crossbow"
 	w_class = WEIGHT_CLASS_SMALL
@@ -99,6 +99,8 @@
 	unique_frequency = TRUE
 	can_flashlight = FALSE
 	max_mod_capacity = 0
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY //  SKYRAT EDIT
+	special_desc = "A syndicate weapon employed by infiltrators and assassins. Quietly shoots poison tipped darts which stun and slur the speech of its victims." //SKYRAT EDIT
 
 /obj/item/gun/energy/kinetic_accelerator/crossbow/halloween
 	name = "candy corn crossbow"

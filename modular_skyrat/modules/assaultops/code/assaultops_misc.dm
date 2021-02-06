@@ -112,3 +112,15 @@
 		R.age_restricted = FALSE
 		recordlist += R
 
+//ASSAULT OPS RADIO//
+/obj/item/encryptionkey/headset_assault
+	name = "ds-1 radio encryption key"
+	icon_state = "syn_cypherkey"
+	channels = list(RADIO_CHANNEL_ASSAULT = 1)
+	independent = TRUE
+
+/obj/item/radio/headset/syndicate/alt/assault
+	keyslot2 = new /obj/item/encryptionkey/headset_assault
+
+/obj/item/radio/headset/assault
+	keyslot = new /obj/item/encryptionkey/headset_assault
