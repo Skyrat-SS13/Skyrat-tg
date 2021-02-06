@@ -73,7 +73,7 @@
 #define BLOB_UPGRADE_STRONG_COST                    10          // Upgrade and build costs here
 #define BLOB_UPGRADE_REFLECTOR_COST                 5
 #define BLOB_STRUCTURE_RESOURCE_COST                40
-#define BLOB_STRUCTURE_FACTORY_COST                 60
+#define BLOB_STRUCTURE_FACTORY_COST                 50
 #define BLOB_STRUCTURE_NODE_COST                    50
 
 #define BLOB_REFUND_STRONG_COST                     8           // Points refunded when destroying the structure
@@ -96,8 +96,8 @@
 #define BLOBMOB_SPORE_SPAWN_COOLDOWN                8 SECONDS   
 #define BLOBMOB_SPORE_DMG_LOWER                     8
 #define BLOBMOB_SPORE_DMG_UPPER                     16
-#define BLOBMOB_BLOBBERNAUT_RESOURCE_COST           40          // Purchase price for making a blobbernaut
-#define BLOBMOB_BLOBBERNAUT_HEALTH                  200         // Base blobbernaut health
+#define BLOBMOB_BLOBBERNAUT_RESOURCE_COST           25          // Purchase price for making a blobbernaut
+#define BLOBMOB_BLOBBERNAUT_HEALTH                  150         // Base blobbernaut health
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_LOWER          20          // Damage without active overmind (core dead or xenobio mob)
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_UPPER          20
 #define BLOBMOB_BLOBBERNAUT_DMG_LOWER               4           // Damage dealt with active overmind (most damage comes from strain chems)
