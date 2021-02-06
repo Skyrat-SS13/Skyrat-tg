@@ -478,7 +478,7 @@
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A chameleon mask employed by the Syndicate in infiltration operations." // Skyrat edit
+	special_desc = "A chameleon mask employed by the Syndicate in infiltration operations, frequently used to mimic the voice of other crewmembers using fake id's." // Skyrat edit
 
 	var/voice_change = 1 ///This determines if the voice changer is on or off.
 
