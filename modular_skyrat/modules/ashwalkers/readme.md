@@ -6,7 +6,7 @@ MODULE ID: ASHWALKER_BUFF
 
 ### Description:
 
-Re-adds Ashwalker NV and Ash Immunity
+Re-adds Ashwalker NV and Ash Immunity, also adjusts their damage resistances
 
 ### TG Proc Changes:
 
