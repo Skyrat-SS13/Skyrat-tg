@@ -166,11 +166,11 @@
 		if(HAS_TRAIT(L, TRAIT_EMOTEMUTE))
 			return FALSE
 	//SKYRAT EDIT BEGIN
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(allowed_species)
+	if(allowed_species)
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
 			return FALSE
-			if(H.dna.species in allowed_species)
+			if(H.dna.species.type in allowed_species)
 				return TRUE
 	//SKYRAT EDIT END
 
