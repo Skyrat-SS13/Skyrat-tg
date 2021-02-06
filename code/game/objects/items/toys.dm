@@ -315,15 +315,15 @@
  * Toy swords
  */
 /obj/item/toy/sword
-	name = "energy sword"
-	desc = "May the force be with you."
+	name = "energy sword" // Skyrat edit , was Toy Sword
+	desc = "May the force be with you." // Skyrat edit
 	icon = 'icons/obj/transforming_energy.dmi'
 	icon_state = "sword0"
 	inhand_icon_state = "sword0"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY
-	special_desc = "A cheap imitation of an energy sword"
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // Skyrat edit
+	special_desc = "A cheap imitation of an energy sword" // Skyrat edit
 	var/active = 0
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb_continuous = list("attacks", "strikes", "hits")
