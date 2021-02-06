@@ -43,11 +43,13 @@
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz)
 	cooldown = 2 SECONDS
 
+
 /datum/emote/living/human/beeps
 	key = "beeps"
 	key_third_person = "beeps"
+	message = "beeps."
+	message_param = "beeps at %t."
 	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz)
 	cooldown = 2 SECONDS
