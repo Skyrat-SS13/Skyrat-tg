@@ -316,7 +316,7 @@ SUBSYSTEM_DEF(liquids)
 		if(LIQUID_FIRE_STATE_INFERNO)
 			set_light_range(LIGHT_RANGE_FIRE)
 	update_light()
-	update_overlays()
+	update_liquid_vis()
 
 /obj/effect/abstract/liquid_turf/proc/get_burn_power(hotspotted = FALSE)
 	//We are not on fire and werent ignited by a hotspot exposure, no fire pls
@@ -450,7 +450,7 @@ SUBSYSTEM_DEF(liquids)
 			overlay.layer = ABOVE_MOB_LAYER
 			add_overlay(overlay)
 
-/obj/effect/abstract/liquid_turf/update_overlays()
+/obj/effect/abstract/liquid_turf/proc/update_liquid_vis()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 	//Add a fire overlay too
@@ -578,8 +578,6 @@ SUBSYSTEM_DEF(liquids)
 								to_chat(C, "<span class='userdanger'>The current knocks you down!</span>")
 								C.Paralyze(60)
 
-	//update_overlays()
-
 /obj/effect/abstract/liquid_turf/proc/movable_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
 	if(liquid_state >= LIQUID_STATE_ANKLES)
@@ -596,7 +594,6 @@ SUBSYSTEM_DEF(liquids)
 		AM.fire_act((T20C+50) + (50*fire_state), 125)
 
 /obj/effect/abstract/liquid_turf/proc/mob_fall(datum/source, mob/M)
-	SIGNAL_HANDLER
 	if(liquid_state >= LIQUID_STATE_ANKLES && my_turf.has_gravity(my_turf))
 		playsound(my_turf, 'hrzn/sound/effects/splash.ogg', 50, 0)
 		if(iscarbon(M))
