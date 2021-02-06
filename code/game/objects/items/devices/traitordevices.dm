@@ -70,7 +70,7 @@ effective or pretty fucking useless.
 
 /obj/item/healthanalyzer/rad_laser
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
-	special_desc = "This syndicate-modified health analyzer will can emit delayed bursts of radiation to those it scans." //SKYRAT EDIT
+	special_desc = "This syndicate-modified health analyzer can emit delayed bursts of radiation to those it scans." //SKYRAT EDIT
 	custom_materials = list(/datum/material/iron=400)
 	var/irradiate = TRUE
 	var/stealth = FALSE
