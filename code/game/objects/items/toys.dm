@@ -315,13 +315,15 @@
  * Toy swords
  */
 /obj/item/toy/sword
-	name = "toy sword"
-	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
+	name = "energy sword"
+	desc = "May the force be with you."
 	icon = 'icons/obj/transforming_energy.dmi'
 	icon_state = "sword0"
 	inhand_icon_state = "sword0"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY
+	special_desc = "A cheap imitation of an energy sword"
 	var/active = 0
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb_continuous = list("attacks", "strikes", "hits")
@@ -444,8 +446,8 @@
  * Subtype of Double-Bladed Energy Swords
  */
 /obj/item/dualsaber/toy
-	name = "double-bladed toy sword"
-	desc = "A cheap, plastic replica of TWO energy swords.  Double the fun!"
+	name = "double-bladed energy sword"
+	desc = "Handle with care!"
 	force = 0
 	throwforce = 0
 	throw_speed = 3
@@ -453,6 +455,8 @@
 	two_hand_force = 0
 	attack_verb_continuous = list("attacks", "strikes", "hits")
 	attack_verb_simple = list("attack", "strike", "hit")
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY
+	special_desc = "A imitation of an double-bladed energy sword"
 
 /obj/item/dualsaber/toy/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	return 0
