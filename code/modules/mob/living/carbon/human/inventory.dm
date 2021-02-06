@@ -115,11 +115,19 @@
 			if(G.vision_flags || G.darkness_view || G.invis_override || G.invis_view || !isnull(G.lighting_alpha))
 				update_sight()
 			update_inv_glasses()
+
 		if(ITEM_SLOT_GLOVES)
 			if(gloves)
 				return
 			gloves = I
+
+			if(I.flags_inv)
+				update_inv_w_uniform()
+			if(gloves.breakouttime) //when equipping a ball mittens
+				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
+				update_action_buttons_icon() //certain action buttons will no longer be usable.
 			update_inv_gloves()
+
 		if(ITEM_SLOT_FEET)
 			if(shoes)
 				return
@@ -208,6 +216,12 @@
 		if(!QDELETED(src))
 			update_inv_w_uniform()
 	else if(I == gloves)
+		if(s_store && invdrop)
+			dropItemToGround(s_store, TRUE) //It makes no sense for your suit storage to stay on you if you drop your suit.
+		if(gloves.breakouttime) //when unequipping a ball mittens
+			REMOVE_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
+			drop_all_held_items() //mittens is restraining
+			update_action_buttons_icon() //certain action buttons may be usable again.
 		gloves = null
 		if(!QDELETED(src))
 			update_inv_gloves()
