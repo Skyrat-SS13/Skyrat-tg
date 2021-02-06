@@ -100,7 +100,7 @@
 	can_flashlight = FALSE
 	max_mod_capacity = 0
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY //  SKYRAT EDIT
-	special_desc = "A syndicate weapon employed by infiltrators and assassins. Quietly shoots poison tipped darts which stun and slur the speech of its victims."
+	special_desc = "A syndicate weapon employed by infiltrators and assassins. Quietly shoots poison tipped darts which stun and slur the speech of its victims." //SKYRAT EDIT
 
 /obj/item/gun/energy/kinetic_accelerator/crossbow/halloween
 	name = "candy corn crossbow"
