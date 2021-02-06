@@ -467,7 +467,7 @@ AI MODULES
 	name = "modified circuit board" //SKYRAT EDIT, was 'hacked law module'. 
 	desc = "A suspicious looking, modified circuit board." //SKYRAT EDIT, previously "An AI Module for hacking additional laws to an AI."
 	special_desc_requirement = list(job, faction) //SKYRAT EDIT
-	special_desc_jobs = list(Captain, Research Director, Scientist, Roboticist) //SKYRAT EDIT, only those familiar with AIs can tell what it really is
+	special_desc_jobs = list(Captain, RD, Scientist, Roboticist) //SKYRAT EDIT, only those familiar with AIs can tell what it really is
 	special_desc_faction = list(Syndicate) //SKYRAT EDIT, Bypasses Detective check
 	special_desc = "This appears to actually be an AI Module for hacking additional laws to an AI." //SKYRAT EDIT
 	laws = list("")
