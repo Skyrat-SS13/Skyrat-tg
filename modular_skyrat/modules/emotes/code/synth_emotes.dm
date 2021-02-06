@@ -23,8 +23,8 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
 	cooldown = 2 SECONDS
 
-/datum/emote/living/boops
-	key = "boops"
+/datum/emote/living/boop
+	key = "boop"
 	key_third_person = "boops"
 	message = "boops."
 	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
@@ -40,8 +40,8 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon/human/species/synth, /mob/living/carbon/human/species/synthliz, /mob/living/carbon/human/species/ipc)
 	cooldown = 2 SECONDS
 
-/datum/emote/living/beeps
-	key = "beeps"
+/datum/emote/living/beep
+	key = "beep"
 	key_third_person = "beeps"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
