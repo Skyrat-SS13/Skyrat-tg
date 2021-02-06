@@ -194,6 +194,9 @@
 /*
  * Sleepypens
  */
+/obj/item/pen/sleepy 
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
+	special_desc = "A Armour piercing syringe concealed in a pen , used by the Syndicate in covert operations."  // Skyrat edit
 
 /obj/item/pen/sleepy/attack(mob/living/M, mob/user)
 	if(!istype(M))
