@@ -42,7 +42,7 @@
 	return TRUE
 
 /obj/structure/drain/process()
-	if(!my_turf.liquids)
+	if(!my_turf.liquids || my_turf.liquids.immutable)
 		STOP_PROCESSING(SSobj, src)
 		processing = FALSE
 		return
