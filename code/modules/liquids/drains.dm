@@ -10,7 +10,7 @@
 	layer = GAS_SCRUBBER_LAYER
 	anchored = TRUE
 	var/processing = FALSE
-	var/drain_flat = 1
+	var/drain_flat = 2
 	var/drain_percent = 0.1
 	var/welded = FALSE
 	var/turf/my_turf //need to keep track of it for the signal, if in any bizarre cases something would be moving the drain
@@ -72,4 +72,5 @@
 /obj/structure/drain/big
 	desc = "Drainage inlet embedded in the floor to prevent flooding. This one seems large."
 	icon_state = "bigdrain"
-	drain_percent = 0.2
+	drain_percent = 0.3
+	drain_flat = 5

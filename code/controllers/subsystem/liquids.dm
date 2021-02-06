@@ -484,6 +484,9 @@ SUBSYSTEM_DEF(liquids)
 		has_cached_share = FALSE
 	return tempr
 
+/obj/effect/abstract/liquid_turf/immutable/take_reagents_flat(flat_amount)
+	return simulate_reagents_flat(flat_amount)
+
 //Returns a reagents holder with all the reagents with a higher volume than the threshold
 /obj/effect/abstract/liquid_turf/proc/simulate_reagents_threshold(amount_threshold)
 	var/datum/reagents/tempr = new(10000)
@@ -630,12 +633,13 @@ SUBSYSTEM_DEF(liquids)
 		UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL))
 		if(my_turf.lgroup)
 			my_turf.lgroup.remove_from_group(my_turf)
-		if(!immutable)
-			SSliquids.remove_active_turf(my_turf)
 		if(SSliquids.evaporation_queue[my_turf])
 			SSliquids.evaporation_queue -= my_turf
 		if(SSliquids.processing_fire[my_turf])
 			SSliquids.processing_fire -= my_turf
+		if(!immutable)
+			//Is added because it could invoke a change to neighboring liquids
+			SSliquids.add_active_turf(my_turf)
 		my_turf.liquids = null
 		my_turf = null
 		QUEUE_SMOOTH_NEIGHBORS(src)
