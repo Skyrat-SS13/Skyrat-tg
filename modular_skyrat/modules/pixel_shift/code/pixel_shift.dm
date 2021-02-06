@@ -34,7 +34,8 @@
 	if(is_shifted)
 		is_shifted = FALSE
 		pixel_x = body_position_pixel_x_offset
-		pixel_y = body_position_pixel_y_offset
+		//pixel_y = body_position_pixel_y_offset // SKYRAT EDIT ORIGINAL - SIZEPLAY
+		pixel_y = body_position_pixel_y_offset + body_size_pixel_y_offset // SKYRAT EDIT CHANGE - SIZEPLAY
 
 /mob/proc/pixel_shift(direction)
 	return

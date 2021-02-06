@@ -17,7 +17,7 @@
 #define PROCESS_SYNTHETIC 2		//Only processes reagents with "SYNTHETIC" or "ORGANIC | SYNTHETIC"
 
 #define REAGENT_ORGANIC 1
-#define REAGENT_SYNTHETIC 2	
+#define REAGENT_SYNTHETIC 2
 
 //Some defines for sprite accessories
 // Which color source we're using when the accessory is added
@@ -59,8 +59,6 @@
 #define PREVIEW_PREF_NAKED "Naked"
 
 #define BODY_SIZE_NORMAL 		1.00
-#define BODY_SIZE_MAX			1.5
-#define BODY_SIZE_MIN			0.8
 
 //In inches
 #define PENIS_MAX_GIRTH 		15

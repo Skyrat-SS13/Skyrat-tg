@@ -17,14 +17,9 @@
 	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
 
 /datum/dna/proc/update_body_size()
-	if(!holder || current_body_size == features["body_size"])
+	if(!holder)
 		return
-	var/change_multiplier = features["body_size"] / current_body_size
-	//We update the translation to make sure our character doesn't go out of the southern bounds of the tile
-	var/translate = ((change_multiplier-1) * 32)/2
-	holder.transform = holder.transform.Scale(change_multiplier)
-	holder.transform = holder.transform.Translate(0, translate)
-	current_body_size = features["body_size"]
+	holder.set_size(features["body_size"])
 
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, var/datum/preferences/pref_load, var/list/override_features, var/list/override_mutantparts, var/list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(mrace && has_dna())

@@ -211,9 +211,9 @@
 						if(avocados)
 							avocados.set_size(DNA.features["balls_size"])
 				if("Body Size")
-					var/new_body_size = input(H, "Choose your desired sprite size:\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%), Warning: May make your character look distorted", "Character Preference", DNA.features["body_size"]*100) as num|null
+					var/new_body_size = input(H, "Choose your desired sprite size:\n([CONFIG_GET(number/body_size_pref_min)*100]%-[CONFIG_GET(number/body_size_pref_max)*100]%), Warning: May make your character look distorted", "Character Preference", DNA.features["body_size"]*100) as num|null
 					if(new_body_size)
-						new_body_size = clamp(new_body_size * 0.01, BODY_SIZE_MIN, BODY_SIZE_MAX)
+						new_body_size = clamp(new_body_size * 0.01, CONFIG_GET(number/body_size_pref_min), CONFIG_GET(number/body_size_pref_max))
 						DNA.features["body_size"] = new_body_size
 						DNA.update_body_size()
 			H.mutant_renderkey = "" //Just in case
