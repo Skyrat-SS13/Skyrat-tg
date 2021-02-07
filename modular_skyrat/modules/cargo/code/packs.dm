@@ -214,6 +214,7 @@
 					/obj/item/storage/box/matches)
 	crate_name = "candle crate"
 
+/*
 /datum/supply_pack/misc/jukebox
 	name = "Jukebox Crate"
 	desc = "Contains a regular old jukebox. It can play music!"
@@ -227,6 +228,7 @@
 	cost = CARGO_CRATE_VALUE * 50
 	contains = list(/obj/machinery/jukebox/disco)
 	crate_name = "dance machine crate"
+*/
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Food Stuff //////////////////////////////////////
