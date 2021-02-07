@@ -445,15 +445,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	include_modes = list(/datum/game_mode/nuclear)
 	illegal_tech = FALSE
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/uplink_item/dangerous/rapid
 	name = "Gloves of the North Star"
 	desc = "These gloves let the user punch people very fast. Does not improve weapon attack speed or the meaty fists of a hulk."
 	item = /obj/item/clothing/gloves/rapid
-	cost = 8
-*/
-//SKYRAT EDIT REMOVAL END
+	cost = 12 //SKYRAT EDIT: Original Value (8)
 
 /datum/uplink_item/dangerous/guardian
 	name = "Holoparasites"
@@ -1339,6 +1335,16 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 	exclude_modes = list()
 
+//SKYRAT EDIT: ADDITION BEGIN
+/datum/uplink_item/suits/hardsuit/elite2
+	name = "Elite Syndicate Hardsuit"
+	desc = "An upgraded, elite version of the Syndicate hardsuit. It features fireproofing, and also \
+			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
+	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
+	cost = 14
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
+///SKYRAT EDIT: ADDITION END
+
 /datum/uplink_item/suits/hardsuit/shielded
 	name = "Shielded Syndicate Hardsuit"
 	desc = "An upgraded version of the standard Syndicate hardsuit. It features a built-in energy shielding system. \
@@ -1520,7 +1526,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			load on the grid, causing a station-wide blackout. The sink is large and cannot be stored in most \
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
-	cost = 10
+	cost = 18 //SKYRAT EDIT: Original value (10)
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
@@ -1546,7 +1552,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			and other supplies helpful for a field medic."
 	item = /obj/item/storage/firstaid/tactical
 	cost = 4
-	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	//include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //SKYRAT EDIT: Removal
 
 /datum/uplink_item/device_tools/soap
 	name = "Syndicate Soap"
@@ -1771,6 +1777,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Clown")
 	surplus = 0 //No fun unless you're the clown!
 
+/* // SKYRAT EDIT - REMOVAL BEGIN
 /datum/uplink_item/role_restricted/blastcannon
 	name = "Blast Cannon"
 	desc = "A highly specialized weapon, the Blast Cannon is actually relatively simple. It contains an attachment for a tank transfer valve mounted to an angled pipe specially constructed \
@@ -1780,6 +1787,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/gun/blastcannon
 	cost = 14							//High cost because of the potential for extreme damage in the hands of a skilled scientist.
 	restricted_roles = list("Research Director", "Scientist")
+*/ // SKYRAT EDIT - REMOVAL END
 
 /datum/uplink_item/role_restricted/gorillacubes
 	name = "Box of Gorilla Cubes"
@@ -1913,7 +1921,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Side-affects may include hypertrichosis, violent outbursts, and an unending affinity for bananas."
 	item = /obj/item/reagent_containers/hypospray/medipen/magillitis
 	cost = 15
-	restricted_roles = list("Geneticist", "Research Director")
+	//restricted_roles = list("Geneticist", "Research Director") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/modified_syringe_gun
 	name = "Modified Syringe Gun"
@@ -1927,7 +1935,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A heavily modified syringe gun which is capable of synthesizing its own chemical darts using input reagents. Can hold 100u of reagents."
 	item = /obj/item/gun/chem
 	cost = 12
-	restricted_roles = list("Chemist", "Chief Medical Officer", "Botanist")
+	//restricted_roles = list("Chemist", "Chief Medical Officer", "Botanist") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/reverse_bear_trap
 	name = "Reverse Bear Trap"
@@ -1936,7 +1944,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	head after three seconds uninterrupted."
 	cost = 5
 	item = /obj/item/reverse_bear_trap
-	restricted_roles = list("Clown")
+	//restricted_roles = list("Clown") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/reverse_revolver
 	name = "Reverse Revolver"
@@ -1967,7 +1975,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An implant that grants you a recharging laser gun inside your arm. Weak to EMPs. Comes with a syndicate autosurgeon for immediate self-application."
 	cost = 10
 	item = /obj/item/autosurgeon/organ/syndicate/laser_arm
-	restricted_roles = list("Roboticist", "Research Director")
+	//restricted_roles = list("Roboticist", "Research Director") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/ocd_device
 	name = "Organic Resources Disturbance Inducer"
@@ -1975,7 +1983,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 2
 	limited_stock = 1
 	item = /obj/item/devices/ocd_device
-	restricted_roles = list("Head of Personnel", "Quartermaster")
+	//restricted_roles = list("Head of Personnel", "Quartermaster") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/meathook
 	name = "Butcher's Meat Hook"
