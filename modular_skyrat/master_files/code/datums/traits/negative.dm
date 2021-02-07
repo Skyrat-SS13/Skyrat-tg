@@ -15,3 +15,4 @@
 	medical_record_text = "Patient's nose seems to have a cluster of nerves in the tip, would advise against direct contact."
 	value = -3
 	mob_trait = TRAIT_SENSITIVESNOUT
+	
