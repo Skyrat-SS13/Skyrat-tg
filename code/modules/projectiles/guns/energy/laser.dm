@@ -48,7 +48,11 @@
 	ammo_x_offset = 3
 	selfcharge = 1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+<<<<<<< HEAD
 	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
+=======
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/antique)
+>>>>>>> 694519e98bf (Change captain's gun to shoots hellfire lasers (#56625))
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
