@@ -49,11 +49,11 @@
 			next_stamina_message = world.time + STAMINA_MESSAGE_COOLDOWN
 			switch(FLOOR(staminaloss,1))
 				if(STAMINA_THRESHOLD_MESSAGE_ACHE to STAMINA_THRESHOLD_MESSAGE_MILD)
-					to_chat(src, "<span class='warning'>Your feel winded.</span>")
+					to_chat(src, "<span class='warning'>You feel winded.</span>") //SKYRAT EDIT Grammar
 				if(STAMINA_THRESHOLD_MESSAGE_MILD to STAMINA_THRESHOLD_MESSAGE_MEDIUM)
-					to_chat(src, "<span class='warning'>Your feel tired!</span>")
+					to_chat(src, "<span class='warning'>You feel tired!</span>") //SKYRAT EDIT Grammar
 				if(STAMINA_THRESHOLD_MESSAGE_MEDIUM to STAMINA_THRESHOLD_MESSAGE_HIGH)
-					to_chat(src, "<span class='warning'>Your have trouble standing on your legs!</span>")
+					to_chat(src, "<span class='warning'>You have trouble standing on your legs!</span>") //SKYRAT EDIT Grammar
 				if(STAMINA_THRESHOLD_MESSAGE_HIGH to STAMINA_THRESHOLD_MESSAGE_SEVERE)
 					to_chat(src, "<span class='warning'>You feel worn-out!</span>")
 				if(STAMINA_THRESHOLD_MESSAGE_SEVERE to STAMINA_THRESHOLD_MESSAGE_OHGOD)
