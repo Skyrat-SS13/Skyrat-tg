@@ -142,3 +142,23 @@
 /datum/sprite_accessory/wings/mammal/bee
 	name = "Bee"
 	icon_state = "bee"
+
+/datum/sprite_accessory/wings/mammal/succubus
+	name = "Succubus"
+	icon_state = "succubus"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/dragon_synth
+	name = "Dragon (synthetic alt)"
+	icon_state = "dragonsynth"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/dragon_alt1
+	name = "Dragon (alt 1)"
+	icon_state = "dragonalt1"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/dragon_alt2
+	name = "Dragon (alt 2)"
+	icon_state = "dragonalt2"
+	color_src = USE_MATRIXED_COLORS
