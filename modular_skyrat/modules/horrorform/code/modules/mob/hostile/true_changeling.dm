@@ -16,7 +16,6 @@
 	icon_dead = "horror_dead"
 	mob_biotypes = MOB_ORGANIC
 	speed = 1
-	a_intent = "harm"
 	stop_automated_movement = 1
 	status_flags = CANPUSH
 	ventcrawler = 2

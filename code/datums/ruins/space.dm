@@ -250,9 +250,16 @@
 	name = "Gondoland"
 	description = "Just an ordinary rock- wait, what's that thing?"
 
+// SKYRAT EDIT CHANGE START -- Reworked whiteship ruin
+/* SKYRAT EDIT CHANGE -- ORIGINAL COMMENTED OUT
 /datum/map_template/ruin/space/whiteshipruin_box
-	id = "whiteshipruin_box"
-	suffix = "whiteshipruin_box.dmm"
+id = "whiteshipruin_box"
+suffix = "whiteshipruin_box.dmm"*/
+
+/datum/map_template/ruin/space/whiteshipruin_box_skyrat//Skyrat Edit
+	id = "whiteshipruin_box_skyrat"
+	suffix = "whiteshipruin_box_skyrat.dmm"
+	// SKYRAT EDIT CHANGE END
 	name = "NT Medical Ship"
 	description = "An ancient ship, said to be among the first discovered derelicts near Space Station 13 that was still in working order. \
 	Aged and deprecated by time, this relic of a vessel is now broken beyond repair."

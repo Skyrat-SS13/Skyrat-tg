@@ -50,7 +50,7 @@
 
 /datum/surgery_step/add_plating/fullbody
 	time = 120
-	metalamount = 15
+	ironamount = 15
 
 /datum/surgery_step/add_plating/fullbody/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, "<span class='notice'>You begin to add plating to [target]...</span>",

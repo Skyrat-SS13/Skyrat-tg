@@ -39,6 +39,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Warden" = 11,
 		"Security Officer" = 12,
 		"Detective" = 13,
+		"Security Medic" = 14, //SKYRAT EDIT ADDITION - SEC_HAUL
+		"Security Sergeant" = 15, //SKYRAT EDIT ADDITION - SEC_HAUL
+		"Blueshield" = 16,
 		// 20-29: Medbay
 		"Chief Medical Officer" = 20,
 		"Chemist" = 21,
@@ -128,7 +131,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			stack_trace("Tracked mob has no loc and is likely in nullspace: [tracked_living_mob] ([tracked_living_mob.type])")
 			continue
 
-		if (pos.z != z)
+		// Machinery and the target should be on the same level or different levels of the same station
+		if(pos.z != z && (!is_station_level(pos.z) || !is_station_level(z)))
 			continue
 
 		var/sensor_mode
