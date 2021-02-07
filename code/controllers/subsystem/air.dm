@@ -94,10 +94,15 @@ SUBSYSTEM_DEF(air)
 		var/list/pipenet_rebuilds = pipenets_needing_rebuilt
 		for(var/thing in pipenet_rebuilds)
 			var/obj/machinery/atmospherics/AT = thing
+<<<<<<< HEAD
 			//SKYRAT EDIT CHANGE BEGIN - MISC
 			if(!istype(AT))
 				continue
 			//SKYRAT EDIT CHANGE BEGIN - MISC
+=======
+			if(!thing) //If a null somehow shows up here, this next line runtimes and the subsystem dies
+				continue
+>>>>>>> 3af72aa5f69 ( Fixes the atmos subsystem locking up on rare occasions (#56556))
 			AT.build_network()
 		cached_cost += TICK_USAGE_REAL - timer
 		pipenets_needing_rebuilt.Cut()
