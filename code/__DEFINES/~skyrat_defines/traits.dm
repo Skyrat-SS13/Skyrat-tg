@@ -9,5 +9,4 @@
 #define TRAIT_DNR		"cant_revive" //You just can't be revived without supernatural means
 #define TRAIT_HARD_SOLES		"hard_soles" // No step on glass
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
-
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
