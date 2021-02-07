@@ -264,6 +264,18 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 			G.on_report()
 			. += G.get_report()
 
+<<<<<<< HEAD
+=======
+	if(SSstation.station_traits.len)
+		. += "<hr><b>Identified shift divergencies:</b><BR>"
+		for(var/i in SSstation.station_traits)
+			var/datum/station_trait/station_trait_iterator = i
+			if(!station_trait_iterator.show_in_report)
+				continue
+			. += "[station_trait_iterator.get_report()]<BR>"
+
+
+>>>>>>> 6efbaafce2f (Fix certain station traits blocking reports (#56718))
 	print_command_report(., "Central Command Status Summary", announce=FALSE)
 	priority_announce("A summary has been copied and printed to all communications consoles.", "Security level elevated.", 'sound/ai/intercept.ogg')
 	if(GLOB.security_level < SEC_LEVEL_BLUE)
