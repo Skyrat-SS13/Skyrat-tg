@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/update_icons()
-	icon = (module.cyborg_icon_override ? module.cyborg_icon_override : initial(icon))
+	icon = (model.cyborg_icon_override ? model.cyborg_icon_override : initial(icon))
 	. = ..()
 	update_dogborg_icons()
 
@@ -18,33 +18,33 @@
 		add_overlay(extra_overlay)
 
 
-	//if(sleeper_g && module.sleeper_overlay)
-	//	add_overlay("[module.sleeper_overlay]_g[sleeper_nv ? "_nv" : ""]")
-	//if(sleeper_r && module.sleeper_overlay)
-	//	add_overlay("[module.sleeper_overlay]_r[sleeper_nv ? "_nv" : ""]")
+	//if(sleeper_g && model.sleeper_overlay)
+	//	add_overlay("[model.sleeper_overlay]_g[sleeper_nv ? "_nv" : ""]")
+	//if(sleeper_r && model.sleeper_overlay)
+	//	add_overlay("[model.sleeper_overlay]_r[sleeper_nv ? "_nv" : ""]")
 
-	if(stat == DEAD && module.has_snowflake_deadsprite)
-		icon_state = "[module.cyborg_base_icon]-wreck"
+	if(stat == DEAD && model.has_snowflake_deadsprite)
+		icon_state = "[model.cyborg_base_icon]-wreck"
 
-	if(module.cyborg_pixel_offset != null)
-		pixel_x = module.cyborg_pixel_offset
+	if(model.cyborg_pixel_offset != null)
+		pixel_x = model.cyborg_pixel_offset
 
-	if(module.cyborg_base_icon == "robot")
+	if(model.cyborg_base_icon == "robot")
 		icon = 'icons/mob/robots.dmi'
 		pixel_x = initial(pixel_x)
 
 	if(robot_resting)
-		if(stat != DEAD && module.dogborg)
+		if(stat != DEAD && model.dogborg)
 			switch(robot_resting)
 				if(ROBOT_REST_NORMAL)
-					icon_state = "[module.cyborg_base_icon]-rest"
+					icon_state = "[model.cyborg_base_icon]-rest"
 				if(ROBOT_REST_SITTING)
-					icon_state = "[module.cyborg_base_icon]-sit"
+					icon_state = "[model.cyborg_base_icon]-sit"
 				if(ROBOT_REST_BELLY_UP)
-					icon_state = "[module.cyborg_base_icon]-bellyup"
+					icon_state = "[model.cyborg_base_icon]-bellyup"
 				else
-					icon_state = "[module.cyborg_base_icon]"
+					icon_state = "[model.cyborg_base_icon]"
 			cut_overlays()
 	else
-		icon_state = "[module.cyborg_base_icon]"
+		icon_state = "[model.cyborg_base_icon]"
 	update_fire()

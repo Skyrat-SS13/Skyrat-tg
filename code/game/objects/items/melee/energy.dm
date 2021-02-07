@@ -104,6 +104,8 @@
 	embedding = list("embed_chance" = 75, "impact_pain_mult" = 10)
 	armour_penetration = 35
 	block_chance = 50
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // Skyrat edit
+	special_desc = "A energy sword employed by syndicate operatives" // Skyrat edit 
 
 /obj/item/melee/transforming/energy/sword/transform_weapon(mob/living/user, supress_message_text)
 	. = ..()
