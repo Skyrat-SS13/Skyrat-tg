@@ -511,6 +511,9 @@
 	desc = "One of the more successful achievements of the Nanotrasen Corporate Warfare Division, their nuclear fission explosives are renowned for being cheap to produce and devastatingly effective. Signs explain that though this particular device has been decommissioned, every Nanotrasen station is equipped with an equivalent one, just in case. All Captains carefully guard the disk needed to detonate them - at least, the sign says they do. There seems to be a tap on the back."
 	proper_bomb = FALSE
 	var/obj/structure/reagent_dispensers/beerkeg/keg
+	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
+	special_desc_jobs = list("Captain, Bartender") //SKYRAT EDIT
+	special_desc = "This bomb has been converted into a beer keg. With the nuclear authentication disk and the right codes, though, you could have a party..." //SKYRAT EDIT
 
 /obj/machinery/nuclearbomb/beer/Initialize()
 	. = ..()
