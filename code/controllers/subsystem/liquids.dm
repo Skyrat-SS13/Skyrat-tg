@@ -1042,6 +1042,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
 /turf/open/openspace/ocean
 	name = "ocean"
+	planetary_atmos = TRUE
 
 /turf/open/openspace/ocean/Initialize()
 	. = ..()
@@ -1060,6 +1061,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	planetary_atmos = TRUE
 
 /turf/open/floor/plating/ocean/Initialize()
 	. = ..()
@@ -1068,6 +1070,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
 
 /turf/open/floor/plasteel/ocean
+	planetary_atmos = TRUE
 
 /turf/open/floor/plasteel/ocean/Initialize()
 	. = ..()
