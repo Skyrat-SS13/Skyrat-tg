@@ -49,7 +49,7 @@
 #define BLOB_FACTORY_MAX_HP                         200
 #define BLOB_FACTORY_HP_REGEN                       1
 #define BLOB_FACTORY_MIN_DISTANCE                   7           // Minimum distance between factories
-#define BLOB_FACTORY_MAX_SPORES                     3
+#define BLOB_FACTORY_MAX_SPORES                     4
 
 #define BLOB_RESOURCE_MAX_HP                        60
 #define BLOB_RESOURCE_HP_REGEN                      15
@@ -96,13 +96,13 @@
 #define BLOBMOB_SPORE_SPAWN_COOLDOWN                8 SECONDS   
 #define BLOBMOB_SPORE_DMG_LOWER                     8
 #define BLOBMOB_SPORE_DMG_UPPER                     16
-#define BLOBMOB_BLOBBERNAUT_RESOURCE_COST           25          // Purchase price for making a blobbernaut
+#define BLOBMOB_BLOBBERNAUT_RESOURCE_COST           40          // Purchase price for making a blobbernaut
 #define BLOBMOB_BLOBBERNAUT_HEALTH                  150         // Base blobbernaut health
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_LOWER          20          // Damage without active overmind (core dead or xenobio mob)
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_UPPER          20
 #define BLOBMOB_BLOBBERNAUT_DMG_LOWER               4           // Damage dealt with active overmind (most damage comes from strain chems)
 #define BLOBMOB_BLOBBERNAUT_DMG_UPPER               4
-#define BLOBMOB_BLOBBERNAUT_REAGENTATK_VOL          15          // Amounts of strain reagents applied on attack -- basically the main damage stat
+#define BLOBMOB_BLOBBERNAUT_REAGENTATK_VOL          20          // Amounts of strain reagents applied on attack -- basically the main damage stat
 #define BLOBMOB_BLOBBERNAUT_DMG_OBJ                 60          // Damage dealth to objects/machines
 #define BLOBMOB_BLOBBERNAUT_HEALING_CORE            0.1         // Percentage multiplier HP restored on Life() when within 2 tiles of the blob core
 #define BLOBMOB_BLOBBERNAUT_HEALING_NODE            0.05        // Same, but for a nearby node
