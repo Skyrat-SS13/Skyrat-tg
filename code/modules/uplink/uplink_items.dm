@@ -1980,7 +1980,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/role_restricted/ocd_device
 	name = "Organic Resources Disturbance Inducer"
 	desc = "A device that raises hell in organic resources indirectly. Single use."
-	cost = 2
+	cost = 5 //SKYRAT EDIT: Original Value: 2
 	limited_stock = 1
 	item = /obj/item/devices/ocd_device
 	//restricted_roles = list("Head of Personnel", "Quartermaster") //SKYRAT EDIT: Removal
