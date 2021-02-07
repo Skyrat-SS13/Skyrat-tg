@@ -142,7 +142,7 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = TRUE)
+/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE)
 	if(damage_type == BURN || guaranteed_violent)
 		explosion(get_turf(src), 1, 2, 7, flame_range = 12)
 		qdel(src)

@@ -684,6 +684,8 @@ SUBSYSTEM_DEF(liquids)
 //Have the liquid turfs point to a partial liquids reference in the group for any interactions
 //Have the liquid group handle the total reagents datum, and reactions too (apply fraction?)
 
+GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
+
 /datum/liquid_group
 	var/list/members = list()
 	var/color
@@ -692,6 +694,7 @@ SUBSYSTEM_DEF(liquids)
 	var/amount_of_active_turfs = 0
 	var/decay_counter = 0
 	var/expected_turf_height = 0
+	var/cached_color
 	var/list/last_cached_fraction_share
 	var/last_cached_total_volume = 0
 	//Color cache too? For when all "taken" members are cached
@@ -786,30 +789,25 @@ SUBSYSTEM_DEF(liquids)
 	var/cached_shares = 0
 	var/list/cached_add = list()
 	var/cached_volume = 0
-	//log_game("BEGIN SHARE:.")
 	var/turf/T
 	for(var/t in members)
-		//var/share_type = members[t]
 		T = t
-		if(T.liquids/* && share_type == LIQUID_MUTUAL_SHARE*/)
+		if(T.liquids)
 			any_share = TRUE
 
 			if(T.liquids.has_cached_share && last_cached_fraction_share)
 				cached_shares++
 				continue
 
-			//T.liquids.reagents.trans_to(tempr, T.liquids.reagents.total_volume, no_react = TRUE)
-			//log_game("LIQUIDS FROM MEMBER:.")
 			for(var/r_type in T.liquids.reagent_list)
 				if(!cached_add[r_type])
 					cached_add[r_type] = 0
-				//log_game("[R.type] += [R.volume].")
 				cached_add[r_type] += T.liquids.reagent_list[r_type]
 			cached_volume += T.liquids.total_reagents
 	if(!any_share)
 		return
-	decay_counter = 0
 
+	decay_counter = 0
 
 	if(cached_shares)
 		for(var/reagent_type in last_cached_fraction_share)
@@ -818,19 +816,21 @@ SUBSYSTEM_DEF(liquids)
 			cached_add[reagent_type] += last_cached_fraction_share[reagent_type] * cached_shares
 		cached_volume += last_cached_total_volume * cached_shares
 
-	/*
-	log_game("TOTAL REAGENTS:.")
-	for(var/reagent_type in cached_add)
-		log_game("[reagent_type] = [cached_add[reagent_type]].")
-	log_game("FRACTIONED REAGENTS (MEMBERS: [members.len]):.")*/
 	for(var/reagent_type in cached_add)
 		cached_add[reagent_type] = cached_add[reagent_type] / members.len
 	cached_volume = cached_volume / members.len
-		//log_game("[reagent_type] = [cached_add[reagent_type]].")
 	last_cached_fraction_share = cached_add
 	last_cached_total_volume = cached_volume
-	//tempr.add_reagent_list(cached_add, no_react = TRUE)
 	var/mixed_color = use_liquids_color ? mix_color_from_reagent_list(cached_add) : color
+	if(use_liquids_color)
+		mixed_color = mix_color_from_reagent_list(cached_add)
+	else if (GLOB.liquid_debug_colors)
+		mixed_color = color
+	else
+		if(!cached_color)
+			cached_color = mix_color_from_reagent_list(cached_add)
+		mixed_color = cached_color
+
 	var/height = CEILING(cached_volume/LIQUID_HEIGHT_DIVISOR, 1)
 
 	var/determined_new_state
@@ -849,7 +849,6 @@ SUBSYSTEM_DEF(liquids)
 		if(LIQUID_FULLTILE_LEVEL_HEIGHT to INFINITY)
 			determined_new_state = LIQUID_STATE_FULLTILE
 
-	//message_admins("shared")
 	var/obj/effect/abstract/liquid_turf/cached_liquids
 	var/new_liquids = FALSE
 	for(var/t in members)
@@ -859,8 +858,7 @@ SUBSYSTEM_DEF(liquids)
 			new_liquids = TRUE
 			T.liquids = new(T)
 		cached_liquids = T.liquids
-		//T.liquids.create_reagents(1000) //Computing nice way to clean the old ones
-		//tempr.copy_to(cached_liquids.reagents, tempr.total_volume, no_react = TRUE)
+
 		cached_liquids.reagent_list = cached_add.Copy()
 		cached_liquids.total_reagents = cached_volume
 
@@ -1160,3 +1158,11 @@ SUBSYSTEM_DEF(liquids)
 /datum/movespeed_modifier/status_effect/water_slowdown
 	variable = TRUE
 	blacklisted_movetypes = (FLYING|FLOATING)
+
+/client/proc/toggle_liquid_debug()
+	set category = "Debug"
+	set name = "Liquid Groups Color Debug"
+	set desc = "Liquid Groups Color Debug."
+	if(!holder)
+		return
+	GLOB.liquid_debug_colors = !GLOB.liquid_debug_colors

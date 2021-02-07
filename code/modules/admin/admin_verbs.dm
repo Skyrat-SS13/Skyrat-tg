@@ -169,6 +169,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/generate_wikichem_list,
 	/client/proc/modify_goals,
 	/client/proc/debug_huds,
+	/client/proc/toggle_liquid_debug,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
