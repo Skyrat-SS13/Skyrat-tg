@@ -522,8 +522,7 @@ SUBSYSTEM_DEF(job)
 		var/mob/living/carbon/human/wageslave = living_mob
 		living_mob.add_memory("Your account ID is [wageslave.account_id].")
 	if(job && living_mob)
-<<<<<<< HEAD
-		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, living_mob might not.
 		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
 		if(!job.no_dresscode && job.loadout)
 			if(M.client)
@@ -531,9 +530,6 @@ SUBSYSTEM_DEF(job)
 		if(packed_items)
 			M.client.prefs.add_packed_items(living_mob, packed_items)
 		//SKYRAT CHANGE ADDITION END
-=======
-		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, living_mob might not.
->>>>>>> 95731342b97 ([READY] Adds station traits: Small modifiers that can randomly be chosen each round (#56309))
 
 	return living_mob
 
