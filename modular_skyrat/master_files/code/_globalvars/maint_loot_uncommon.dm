@@ -277,7 +277,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 	) = 100,
 	list( //Improvised weapons and tools that are weapons.
 		/obj/item/gun/ballistic/revolver/rifle/improvised = 100,
-		/obj/item/gun/ballistic/shotgun/doublebarrel/improvised = 100,
 		/obj/item/scythe = 25,
 		/obj/item/throwing_star = 5,
 		/obj/item/throwing_star/stamina = 5

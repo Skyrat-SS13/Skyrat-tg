@@ -1,8 +1,3 @@
-/mob/living/silicon/robot
-	var/robot_resting = FALSE
-	var/robot_rest_style = ROBOT_REST_NORMAL
-	var/dogborg = FALSE
-
 /mob/living/silicon/robot/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	. = ..()
 	if(robot_resting)
@@ -70,13 +65,7 @@
 /mob/living/silicon/robot/update_module_innate()
 	..()
 	if(hands)
-		hands.icon = (module.moduleselect_alternate_icon ? module.moduleselect_alternate_icon : initial(hands.icon))
-
-/mob/living/silicon/robot/modules/miner/skyrat
-	set_module = /obj/item/robot_module/miner/skyrat
-
-/mob/living/silicon/robot/modules/butler/skyrat
-	set_module = /obj/item/robot_module/butler/skyrat
+		hands.icon = (model.model_select_alternate_icon ? model.model_select_alternate_icon : initial(hands.icon))
 
 /mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
 	. = ..()
@@ -88,22 +77,22 @@
 	if(dogborg)
 		pixel_x = -16
 
-/mob/living/silicon/robot/pick_module()
-	if(module.type != /obj/item/robot_module)
+/mob/living/silicon/robot/pick_model()
+	if(model.type != /obj/item/robot_model)
 		return
 
-	if(wires.is_cut(WIRE_RESET_MODULE))
+	if(wires.is_cut(WIRE_RESET_MODEL))
 		to_chat(src,"<span class='userdanger'>ERROR: Module installer reply timeout. Please check internal connections.</span>")
 		return
 
-	var/list/skyratmodule = list(
+	var/list/skyratmodel = list(
 	"Departmental Modules" = "next",
-	"Skyrat Service(alt skins)" = /obj/item/robot_module/butler/skyrat,
-	"Skyrat Miner(alt skins)" = /obj/item/robot_module/miner/skyrat
+	"Skyrat Service(alt skins)" = /obj/item/robot_model/butler/skyrat,
+	"Skyrat Miner(alt skins)" = /obj/item/robot_model/miner/skyrat
 	)
-	var/input_module_sk = input("Please select a module, or choose a reskin.", "Robot", null, null) as null|anything in sortList(skyratmodule)
-	if(input_module_sk == "Departmental Modules" || !input_module_sk || module.type != /obj/item/robot_module)
+	var/input_model_sk = input("Please select a module, or choose a reskin.", "Robot", null, null) as null|anything in sortList(skyratmodel)
+	if(input_model_sk == "Departmental Modules" || !input_model_sk || model.type != /obj/item/robot_model)
 		return ..()
 	else
-		module.transform_to(skyratmodule[input_module_sk])
+		model.transform_to(skyratmodel[input_model_sk])
 		return

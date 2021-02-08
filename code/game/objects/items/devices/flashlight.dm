@@ -392,6 +392,8 @@
 	light_system = MOVABLE_LIGHT
 
 /obj/item/flashlight/emp
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
+	special_desc = "This flashlight is equipped with a miniature EMP generator." //SKYRAT EDIT
 	var/emp_max_charges = 4
 	var/emp_cur_charges = 4
 	var/charge_timer = 0

@@ -212,7 +212,12 @@
 				heirloom_type = /obj/item/clipboard
 			if("Shaft Miner")
 				heirloom_type = pick(/obj/item/pickaxe/mini, /obj/item/shovel)
-
+			//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
+			if("Brig Physician")
+				heirloom_type = pick(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
+			if("Security Sergeant")
+				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+			//SKYRAT EDIT END
 	if(!heirloom_type)
 		heirloom_type = pick(
 		/obj/item/toy/cards/deck,
@@ -488,6 +493,7 @@
 	lose_text = "<span class='notice'>You feel easier about talking again.</span>" //if only it were that easy!
 	medical_record_text = "Patient is usually anxious in social encounters and prefers to avoid them."
 	hardcore_value = 4
+	mob_trait = TRAIT_ANXIOUS
 	var/dumb_thing = TRUE
 
 /datum/quirk/social_anxiety/add()
