@@ -54,6 +54,9 @@
 		stack_trace("Drain structure initialized not on a turf")
 	my_turf = loc
 	RegisterSignal(my_turf, COMSIG_TURF_LIQUIDS_CREATION, .proc/liquids_signal)
+	if(my_turf.liquids)
+		START_PROCESSING(SSobj, src)
+		processing = TRUE
 
 /obj/structure/drain/proc/liquids_signal()
 	SIGNAL_HANDLER

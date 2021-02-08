@@ -627,6 +627,9 @@ SUBSYSTEM_DEF(liquids)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
 
+	if(isspaceturf(my_turf))
+		qdel(src, TRUE)
+
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
 		UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL))
