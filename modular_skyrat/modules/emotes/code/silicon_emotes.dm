@@ -15,7 +15,6 @@
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/buzz-sigh.ogg'
 
-
 /datum/emote/silicon/buzzes2
 	key = "buzzes2"
 	message = "buzzes twice."
@@ -56,3 +55,10 @@
 	message = "blares an alarm!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/warning-buzzer.ogg'
+
+/datum/emote/silicon/beep
+	key = "beep"
+	key_third_person = "beeps"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg'

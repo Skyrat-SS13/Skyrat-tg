@@ -1,5 +1,6 @@
 /obj/item/chameleon
-	name = "Strange object" // Skyrat edit , original was Chameleon projector
+	name = "chameleon projector"
+	desc = "A projector used to seamlessly camouflage the user as an inanimate object." // SKYRATE EDIT - This item had no description?
 	icon = 'icons/obj/device.dmi'
 	icon_state = "shield0"
 	flags_1 = CONDUCT_1
@@ -13,8 +14,6 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A projector used to seamlessly camouflage syndicate operatives into the background" // Skyrat edit
 	var/can_use = 1
 	var/obj/effect/dummy/chameleon/active_dummy = null
 	var/saved_appearance = null
