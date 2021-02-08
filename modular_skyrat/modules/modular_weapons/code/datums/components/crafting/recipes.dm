@@ -7,7 +7,7 @@
 				/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/stock = 1,
 				/obj/item/stack/package_wrap = 5,
-				/obj/item/stack/sheet/metal = 5,
+				/obj/item/stack/sheet/iron = 5,
 				/obj/item/stack/sheet/plasteel = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 100
@@ -21,7 +21,7 @@
 				/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/stock = 1,
 				/obj/item/stack/package_wrap = 5,
-				/obj/item/stack/sheet/metal = 10,
+				/obj/item/stack/sheet/iron = 10,
 				/obj/item/stack/sheet/mineral/wood = 5)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 100
@@ -35,7 +35,7 @@
 				/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/stock = 1,
 				/obj/item/stack/package_wrap = 5,
-				/obj/item/stack/sheet/metal = 5,
+				/obj/item/stack/sheet/iron = 5,
 				/obj/item/stack/sheet/plasteel = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 100

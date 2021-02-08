@@ -66,8 +66,8 @@
 	return
 //SKYRAT EDIT END
 
-/obj/item/reagent_containers/attack(mob/M, mob/user, def_zone)
-	if(user.a_intent == INTENT_HARM)
+/obj/item/reagent_containers/attack(mob/M, mob/living/user, def_zone)
+	if(user.combat_mode)
 		return ..()
 
 /obj/item/reagent_containers/proc/canconsume(mob/eater, mob/user)
