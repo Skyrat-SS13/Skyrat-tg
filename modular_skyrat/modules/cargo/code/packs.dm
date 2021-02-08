@@ -276,10 +276,10 @@
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
-					/obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation)
+					/obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation)
 	crate_name = "meaty crate"
 	crate_type = /obj/structure/closet/crate/freezer
 
@@ -305,8 +305,8 @@
 	contains = list(/obj/item/storage/box/drinkingglasses,
 					/obj/item/storage/box/drinkingglasses,
                     /obj/item/storage/part_replacer/cargo,
-					/obj/item/stack/sheet/metal/ten,
-					/obj/item/stack/sheet/metal/five,
+					/obj/item/stack/sheet/iron/ten,
+					/obj/item/stack/sheet/iron/five,
                     /obj/item/stock_parts/cell/high,
                     /obj/item/stock_parts/cell/high,
 					/obj/item/stack/cable_coil,
