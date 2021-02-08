@@ -26104,6 +26104,7 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "bgO" = (
+/obj/effect/landmark/start/shaft_miner,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "bgP" = (
@@ -26970,13 +26971,13 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "bir" = (
-/obj/structure/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/flashlight/lamp,
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/miner,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "bis" = (
@@ -27776,6 +27777,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/effect/turf_decal/loading_area,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "bjY" = (
@@ -27820,6 +27822,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/effect/turf_decal/loading_area,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "bkc" = (
@@ -28631,12 +28634,12 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "blY" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/airalarm{
 	dir = 1;
 	pixel_y = -22
 	},
 /obj/effect/turf_decal/delivery,
+/obj/structure/closet/secure_closet/miner,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningoffice)
 "blZ" = (
@@ -99527,6 +99530,12 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
+"fMw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/miner,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/quartermaster/miningoffice)
 "fMV" = (
 /obj/structure/chair/stool,
 /obj/structure/cable,
@@ -106621,6 +106630,22 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/engine/engineering)
+"pLd" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/quartermaster/miningoffice)
 "pLw" = (
 /obj/structure/cable,
 /turf/closed/wall,
@@ -110778,6 +110803,11 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+"vsQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/shaft_miner,
+/turf/open/floor/plasteel,
+/area/quartermaster/miningoffice)
 "vti" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/toilet{
@@ -157241,7 +157271,7 @@ bfy
 aCy
 bim
 bjX
-bgP
+fMw
 aig
 boY
 aig
@@ -158266,7 +158296,7 @@ aQP
 bcC
 bee
 bfC
-bgP
+vsQ
 biq
 bjZ
 blX
@@ -158781,7 +158811,7 @@ bcE
 beg
 bfE
 bfD
-bfD
+pLd
 bkc
 blZ
 aig
