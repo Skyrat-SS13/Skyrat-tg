@@ -326,7 +326,9 @@ SUBSYSTEM_DEF(liquids)
 	var/datum/reagent/R //Faster declaration
 	for(var/reagent_type in reagent_list)
 		R = reagent_type
-		total_burn_power += initial(R.liquid_fire_power) * reagent_list[reagent_type]
+		var/burn_power = initial(R.liquid_fire_power)
+		if(burn_power)
+			total_burn_power += burn_power * reagent_list[reagent_type]
 	if(!total_burn_power)
 		return FALSE
 	total_burn_power /= total_reagents //We get burn power per unit.
@@ -337,7 +339,7 @@ SUBSYSTEM_DEF(liquids)
 
 /obj/effect/abstract/liquid_turf/extinguish()
 	if(fire_state)
-		set_fire_state(fire_state-1)
+		set_fire_state(LIQUID_FIRE_STATE_NONE)
 	
 /obj/effect/abstract/liquid_turf/proc/process_fire()
 	var/old_state = fire_state
