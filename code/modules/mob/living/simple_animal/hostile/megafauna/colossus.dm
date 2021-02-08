@@ -662,7 +662,6 @@ SKYRAT REMOVAL EDIT END*/
 	density = FALSE
 	is_flying_animal = TRUE
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
-	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
 	gold_core_spawnable = HOSTILE_SPAWN
 	verb_say = "warps"
@@ -688,6 +687,8 @@ SKYRAT REMOVAL EDIT END*/
 	remove_verb(src, /mob/verb/me_verb)
 	var/datum/atom_hud/medsensor = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	medsensor.add_hud_to(src)
+
+	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/lightgeist/AttackingTarget()
 	if(isliving(target) && target != src)

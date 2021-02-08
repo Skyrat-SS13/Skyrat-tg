@@ -18,7 +18,6 @@
 	speed = 1
 	stop_automated_movement = 1
 	status_flags = CANPUSH
-	ventcrawler = 2
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -55,11 +54,12 @@
 
 /mob/living/simple_animal/hostile/true_changeling/Initialize()
 	. = ..()
-	src << playstyle_string
+	to_chat(src, playstyle_string)
 	turn_to_human = new /datum/action/innate/turn_to_human
 	devour = new /datum/action/innate/devour
 	turn_to_human.Grant(src)
 	devour.Grant(src)
+	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
