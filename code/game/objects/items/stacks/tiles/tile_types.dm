@@ -388,7 +388,7 @@
 	merge_type = /obj/item/stack/tile/pod/dark
 
 //Plasteel (normal)
-/obj/item/stack/tile/plasteel
+/obj/item/stack/tile/iron
 	name = "floor tile"
 	singular_name = "floor tile"
 	desc = "The ground you walk on."
@@ -399,14 +399,14 @@
 	//throwforce = 10 //ORIGINAL
 	throwforce = 6 //SKYRAT EDIT CHANGE
 	flags_1 = CONDUCT_1
-	turf_type = /turf/open/floor/plasteel
+	turf_type = /turf/open/floor/iron
 	mineralType = "iron"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
 	matter_amount = 1
 	cost = 125
 	source = /datum/robot_energy_storage/iron
-	merge_type = /obj/item/stack/tile/plasteel
+	merge_type = /obj/item/stack/tile/iron
 
 /obj/item/stack/tile/plastic
 	name = "plastic tile"
