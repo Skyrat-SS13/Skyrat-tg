@@ -30,7 +30,10 @@
 	if(!has_gun_safety)
 		return
 	if(override)
-		safety = override
+		if(override == "off")
+			safety = FALSE
+		else
+			safety = TRUE
 	else
 		safety = !safety
 	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"

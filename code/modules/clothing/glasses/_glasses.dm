@@ -388,6 +388,8 @@
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "chameleon thermals"
 	desc = "A pair of thermal optic goggles with an onboard chameleon generator."
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
+	special_desc = "Chameleon thermal goggles employed by the Syndicate in infiltration operations." //SKYRAT EDIT, I don't think the regular description persists through chameleon changes.
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
