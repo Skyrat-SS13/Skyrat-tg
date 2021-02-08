@@ -1,6 +1,6 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/3194
 
-## Title: Suicide verb removal <!--Title of your addition-->
+## Title: Suicide verb removal
 
 MODULE ID: SUICIDE_VERB
 
