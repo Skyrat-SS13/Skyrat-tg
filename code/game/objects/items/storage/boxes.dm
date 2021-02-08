@@ -138,6 +138,10 @@
 	//SKYRAT EDIT END
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/radio/off(src)
+
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
 	new /obj/item/radio/off(src)
@@ -851,6 +855,9 @@
 	//SKYRAT EDIT END
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/radio/off(src)
 /obj/item/storage/box/rubbershot
 	name = "box of rubber shots"
 	desc = "A box full of rubber shots, designed for riot shotguns."
