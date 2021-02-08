@@ -1,5 +1,6 @@
 /obj/item/chameleon
 	name = "chameleon projector"
+	desc = "A projector used to seamlessly camouflage the user as an inanimate object." // SKYRATE EDIT - This item had no description?
 	icon = 'icons/obj/device.dmi'
 	icon_state = "shield0"
 	flags_1 = CONDUCT_1
