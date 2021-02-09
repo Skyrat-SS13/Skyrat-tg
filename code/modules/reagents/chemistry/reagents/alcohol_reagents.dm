@@ -1562,7 +1562,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 			M.heal_bodypart_damage(brute = 1, burn = 1)
 			M.adjustBruteLoss(-2,0)
 			. = 1
-		return ..() // Skyrat edit - end
+		return ..() // SKYRAT EDIT: End - This line and the above few have only indentation changes.
 	return ..()
 
 /datum/reagent/consumable/ethanol/quintuple_sec
@@ -2337,4 +2337,3 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "godmother"
 	glass_name = "Godmother"
 	glass_desc = "A lovely fresh smelling cocktail, a true Sicilian delight."
-
