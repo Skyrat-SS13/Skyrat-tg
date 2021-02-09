@@ -519,7 +519,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 
 //SKYRAT EDIT: ADDITION START
-/datum/uplink_item/dangerous/aps
+/datum/uplink_item/dangerous/aps2
 	name = "Stechkin APS Machine Pistol"
 	desc = "An ancient Soviet machine pistol, refurbished for the modern age. Uses 9mm auto rounds in 15-round magazines and is compatible \
 			with suppressors. The gun fires in three round bursts."
@@ -546,7 +546,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/dangerous/foamsmg
 	name = "Toy Submachine Gun"
 	desc = "A fully-loaded Donksoft bullpup submachine gun that fires riot grade darts with a 20-round magazine."
-	item = /obj/item/gun/ballistic/automatic/c20r/toy
+	//item = /obj/item/gun/ballistic/automatic/c20r/toy //SKYRAT EDIT: Original object call
+	item = /obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot //SKYRAT EDIT: Addition
 	cost = 5
 	surplus = 0
 	//include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //SKYRAT EDIT: Removal
