@@ -485,12 +485,16 @@
 		to_chat(M, "<span class='notice'>You shake [src] trying to pick [p_them()] up!</span>")
 		to_chat(src, "<span class='notice'>[M] shakes you to get you up!</span>")
 
-	//SKYRAT EDIT ADDITION BEGIN - EMOTES
+	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
 	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
-		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
-					"<span class='notice'>You boop [src] on the nose.</span>")
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
+		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
+			to_chat(src, "<span class='warning'>[M] boops you on your sensitive nose, sending you to the ground!</span>")
+			src.Knockdown(20)
+			src.apply_damage(30, STAMINA, BODY_ZONE_CHEST)
+		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
+		"<span class='notice'>You boop [src] on the nose.</span>")
 	//SKYRAT EDIT ADDITION END
 
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!

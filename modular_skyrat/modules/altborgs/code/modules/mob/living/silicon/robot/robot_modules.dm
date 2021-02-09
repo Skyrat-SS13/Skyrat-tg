@@ -769,7 +769,7 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/plasteel,
+		/obj/item/stack/tile/iron,
 		/obj/item/stack/cable_coil,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/stack/medical/gauze,
