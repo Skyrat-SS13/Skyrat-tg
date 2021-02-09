@@ -55,7 +55,7 @@
 #define BLOB_RESOURCE_HP_REGEN                      15
 #define BLOB_RESOURCE_MIN_DISTANCE                  3           // Minimum distance between resource blobs
 #define BLOB_RESOURCE_GATHER_DELAY                  4 SECONDS   // Gather points when pulsed outside this interval
-#define BLOB_RESOURCE_GATHER_ADDED_DELAY            0.75 SECONDS// Every additional resource blob adds this amount to the gather delay
+#define BLOB_RESOURCE_GATHER_ADDED_DELAY            0.4 SECONDS// Every additional resource blob adds this amount to the gather delay
 #define BLOB_RESOURCE_GATHER_AMOUNT                 1           // The amount of points added to the overmind
 
 #define BLOB_REGULAR_MAX_HP                         30
