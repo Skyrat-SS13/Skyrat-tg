@@ -343,7 +343,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/shield/energy/bananium
 	cost = 16
 	surplus = 0
-	include_modes = list(/datum/game_mode/nuclear/clown_ops)
+	//include_modes = list(/datum/game_mode/nuclear/clown_ops) //skyrat edit: original
+	exclude_modes = list(/datum/game_mode/nuclear) //SKYRAT EDIT: Addition
+	restricted_roles = list("Clown") //SKYRAT EDIT: Addition
 
 /datum/uplink_item/dangerous/clownsword
 	name = "Bananium Energy Sword"
@@ -352,7 +354,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/melee/transforming/energy/sword/bananium
 	cost = 3
 	surplus = 0
-	include_modes = list(/datum/game_mode/nuclear/clown_ops)
+	//include_modes = list(/datum/game_mode/nuclear/clown_ops)
+	exclude_modes = list(/datum/game_mode/nuclear) //SKYRAT EDIT: Addition
+	restricted_roles = list("Clown") //SKYRAT EDIT: Addition
 
 /datum/uplink_item/dangerous/clownoppin
 	name = "Ultra Hilarious Firing Pin"
@@ -514,6 +518,16 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	include_modes = list(/datum/game_mode/nuclear)
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 
+//SKYRAT EDIT: ADDITION START
+/datum/uplink_item/dangerous/aps
+	name = "Stechkin APS Machine Pistol"
+	desc = "An ancient Soviet machine pistol, refurbished for the modern age. Uses 9mm auto rounds in 15-round magazines and is compatible \
+			with suppressors. The gun fires in three round bursts."
+	item = /obj/item/gun/ballistic/automatic/pistol/aps
+	cost = 13
+	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear) //They don't need this since it is just a version that costs more than the original.
+//SKYRAT EDIT: ADDITION END
+
 /datum/uplink_item/dangerous/surplus_smg
 	name = "Surplus SMG"
 	desc = "A horribly outdated automatic weapon. Why would you want to use this?"
@@ -535,7 +549,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/gun/ballistic/automatic/c20r/toy
 	cost = 5
 	surplus = 0
-	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	//include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //SKYRAT EDIT: Removal
 
 /datum/uplink_item/dangerous/foammachinegun
 	name = "Toy Machine Gun"
@@ -574,6 +588,16 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 	cost = 13
 	surplus = 0
+
+//SKYRAT EDIT: Addition START
+/datum/uplink_item/stealthy_weapons/cqc
+	name = "CQC Manual"
+	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
+	item = /obj/item/book/granter/martial/cqc
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //Blocked them because this just costs more than the version they get.
+	cost = 16
+	surplus = 0
+// SKYRAT EDIT: ADDITION END
 
 /datum/uplink_item/stealthy_weapons/dart_pistol
 	name = "Dart Pistol"
@@ -625,7 +649,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
 			perfectly aerodynamic (and potentially lethal) paper airplanes."
 	item = /obj/item/storage/box/syndie_kit/origami_bundle
-	cost = 14
+	cost = 12 //SKYRAT EDIT: Original value (14)
 	surplus = 0
 	exclude_modes = list(/datum/game_mode/nuclear) //clown ops intentionally left in, because that seems like some s-tier shenanigans.
 
@@ -715,7 +739,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An additional 15-round 9mm magazine, compatible with the Stechkin APS machine pistol."
 	item = /obj/item/ammo_box/magazine/m9mm_aps
 	cost = 2
-	include_modes = list(/datum/game_mode/nuclear)
+	//include_modes = list(/datum/game_mode/nuclear) //SKYRAT EDIT: Removal. Allows stechkin ammo purchasable by normal traitors.
+	exclude_modes = list(/datum/game_mode/nuclear/clown_ops) //SKYRAT EDIT: ADDITION. Disallows clown ops from purchasing still.
 
 /datum/uplink_item/ammo/shotgun
 	cost = 2
@@ -1227,6 +1252,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/chameleon
 	cost = 7
 
+//SKYRAT EDIT: ADDITION BEGIN
+/datum/uplink_item/stealthy_tools/infiltratormask
+	name = "Voice-Muffling Balaclava"
+	desc = "A balaclava that muffles your voice, masking your identity."
+	item = /obj/item/clothing/mask/infiltrator
+	cost = 1
+//SKYRAT EDIT: ADDITION END
+
 /datum/uplink_item/stealthy_tools/codespeak_manual
 	name = "Codespeak Manual"
 	desc = "Syndicate agents can be trained to use a series of codewords to convey complex information, which sounds like random concepts and drinks to anyone listening. \
@@ -1623,7 +1656,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Guerilla Gloves"
 	desc = "A pair of highly robust combat gripper gloves that excels at performing takedowns at close range, with an added lining of insulation. Careful not to hit a wall!"
 	item = /obj/item/clothing/gloves/tackler/combat/insulated
-	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	//include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)//SKYRAT EDIT: REMOVAL
 	cost = 2
 	illegal_tech = FALSE
 
@@ -1638,7 +1671,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/autosurgeon/organ/syndicate/anti_stun
 	cost = 12
 	surplus = 0
-	include_modes = list(/datum/game_mode/nuclear)
+	//include_modes = list(/datum/game_mode/nuclear)//SKYRAT EDIT: REMOVAL
+	exclude_modes = list(/datum/game_mode/nuclear/clown_ops) //SKYRAT EDIT: ADDITION. Again, clown ops don't need these.
 
 /datum/uplink_item/implants/freedom
 	name = "Freedom Implant"
@@ -1981,7 +2015,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Organic Resources Disturbance Inducer"
 	desc = "A device that raises hell in organic resources indirectly. Single use."
 	cost = 5 //SKYRAT EDIT: Original Value: (2)
-	limited_stock = 3 //SKYRAT EDIT: Original Value: (1)
+	limited_stock = 2 //SKYRAT EDIT: Original Value: (1)
 	item = /obj/item/devices/ocd_device
 	//restricted_roles = list("Head of Personnel", "Quartermaster") //SKYRAT EDIT: Removal
 
