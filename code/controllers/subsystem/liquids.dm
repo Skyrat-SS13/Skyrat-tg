@@ -133,7 +133,7 @@ SUBSYSTEM_DEF(liquids)
 		var/volume_change = liquids.reagent_list[r_type] * fraction
 		liquids.reagent_list[r_type] -= volume_change
 		liquids.total_reagents -= volume_change
-		T.add_liquid(r_type, volume_change, TRUE)
+		T.add_liquid(r_type, volume_change, TRUE, liquids.temp)
 	liquids.has_cached_share = FALSE
 
 /turf/proc/liquid_update_turf()
@@ -159,14 +159,17 @@ SUBSYSTEM_DEF(liquids)
 	for(var/r in giver.reagent_list)
 		var/datum/reagent/R = r 
 		compiled_list[R.type] = R.volume
-	add_liquid_list(compiled_list, no_react)
+	add_liquid_list(compiled_list, no_react, giver.chem_temp)
 
 //More efficient than add_liquid for multiples
-/turf/proc/add_liquid_list(reagent_list, no_react = FALSE)
+/turf/proc/add_liquid_list(reagent_list, no_react = FALSE, chem_temp = 300)
 	if(!liquids)
 		liquids = new(src)
 	if(liquids.immutable)
 		return
+
+	var/prev_total_reagents = liquids.total_reagents
+	var/prev_thermal_energy = prev_total_reagents * liquids.temp
 
 	for(var/reagent in reagent_list)
 		if(!liquids.reagent_list[reagent])
@@ -174,10 +177,14 @@ SUBSYSTEM_DEF(liquids)
 		liquids.reagent_list[reagent] += reagent_list[reagent]
 		liquids.total_reagents += reagent_list[reagent]
 
+	var/recieved_thermal_energy = (liquids.total_reagents - prev_total_reagents) * chem_temp
+	liquids.temp = (recieved_thermal_energy + prev_thermal_energy) / liquids.total_reagents
+
 	if(!no_react)
 		//We do react so, make a simulation
 		create_reagents(10000) //Reagents are on turf level, should they be on liquids instead?
 		reagents.add_reagent_list(liquids.reagent_list, no_react = TRUE)
+		reagents.chem_temp = liquids.temp
 		if(reagents.handle_reactions())//Any reactions happened, so re-calculate our reagents
 			liquids.reagent_list = list()
 			liquids.total_reagents = 0
@@ -201,16 +208,20 @@ SUBSYSTEM_DEF(liquids)
 	if(lgroup)
 		lgroup.dirty = TRUE
 
-/turf/proc/add_liquid(reagent, amount, no_react = FALSE)
+/turf/proc/add_liquid(reagent, amount, no_react = FALSE, chem_temp = 300)
 	if(!liquids)
 		liquids = new(src)
 	if(liquids.immutable)
 		return
 
+	var/prev_thermal_energy = liquids.total_reagents * liquids.temp
+
 	if(!liquids.reagent_list[reagent])
 		liquids.reagent_list[reagent] = 0
 	liquids.reagent_list[reagent] += amount
 	liquids.total_reagents += amount
+
+	liquids.temp = ((amount * chem_temp) + prev_thermal_energy) / liquids.total_reagents
 
 	if(!no_react)
 		//We do react so, make a simulation
@@ -484,6 +495,7 @@ SUBSYSTEM_DEF(liquids)
 			passed_list[reagent_type] = amount
 		tempr.add_reagent_list(passed_list, no_react = TRUE)
 		has_cached_share = FALSE
+	tempr.chem_temp = temp
 	return tempr
 
 /obj/effect/abstract/liquid_turf/immutable/take_reagents_flat(flat_amount)
@@ -499,6 +511,7 @@ SUBSYSTEM_DEF(liquids)
 			continue
 		passed_list[reagent_type] = amount
 	tempr.add_reagent_list(passed_list, no_react = TRUE)
+	tempr.chem_temp = temp
 	return tempr
 
 //Returns a flat of our reagents without any effects on the liquids
@@ -513,6 +526,7 @@ SUBSYSTEM_DEF(liquids)
 			var/amount = fraction * reagent_list[reagent_type]
 			passed_list[reagent_type] = amount
 		tempr.add_reagent_list(passed_list, no_react = TRUE)
+	tempr.chem_temp = temp
 	return tempr
 
 /obj/effect/abstract/liquid_turf/fire_act(temperature, volume)
@@ -573,12 +587,15 @@ SUBSYSTEM_DEF(liquids)
 				for(var/thing in my_turf)
 					AM = thing
 					if(!AM.anchored && !AM.pulledby)
-						step(AM, dir)
-						if(iscarbon(AM) && prob(60))
+						if(iscarbon(AM))
 							var/mob/living/carbon/C = AM
-							if(C.body_position != LYING_DOWN && !(C.shoes && C.shoes.clothing_flags & NOSLIP))
-								to_chat(C, "<span class='userdanger'>The current knocks you down!</span>")
-								C.Paralyze(60)
+							if(!(C.shoes && C.shoes.clothing_flags & NOSLIP))
+								step(C, dir)
+								if(prob(60) && C.body_position != LYING_DOWN)
+									to_chat(C, "<span class='userdanger'>The current knocks you down!</span>")
+									C.Paralyze(60)
+						else
+							step(AM, dir)
 
 /obj/effect/abstract/liquid_turf/proc/movable_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -627,8 +644,10 @@ SUBSYSTEM_DEF(liquids)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
 
+	/* //Cant do it immediately, hmhm
 	if(isspaceturf(my_turf))
 		qdel(src, TRUE)
+	*/
 
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
@@ -702,7 +721,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	var/cached_color
 	var/list/last_cached_fraction_share
 	var/last_cached_total_volume = 0
-	//Color cache too? For when all "taken" members are cached
+	var/last_cached_thermal = 0
 	var/last_cached_overlay_state = LIQUID_STATE_PUDDLE
 
 /datum/liquid_group/proc/add_to_group(turf/T)
@@ -794,21 +813,26 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	var/cached_shares = 0
 	var/list/cached_add = list()
 	var/cached_volume = 0
+	var/cached_thermal = 0
+
 	var/turf/T
+	var/obj/effect/abstract/liquid_turf/cached_liquids
 	for(var/t in members)
 		T = t
 		if(T.liquids)
 			any_share = TRUE
+			cached_liquids = T.liquids
 
-			if(T.liquids.has_cached_share && last_cached_fraction_share)
+			if(cached_liquids.has_cached_share && last_cached_fraction_share)
 				cached_shares++
 				continue
 
-			for(var/r_type in T.liquids.reagent_list)
+			for(var/r_type in cached_liquids.reagent_list)
 				if(!cached_add[r_type])
 					cached_add[r_type] = 0
-				cached_add[r_type] += T.liquids.reagent_list[r_type]
-			cached_volume += T.liquids.total_reagents
+				cached_add[r_type] += cached_liquids.reagent_list[r_type]
+			cached_volume += cached_liquids.total_reagents
+			cached_thermal += cached_liquids.total_reagents * cached_liquids.temp
 	if(!any_share)
 		return
 
@@ -820,10 +844,14 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 				cached_add[reagent_type] = 0
 			cached_add[reagent_type] += last_cached_fraction_share[reagent_type] * cached_shares
 		cached_volume += last_cached_total_volume * cached_shares
+		cached_thermal += cached_shares * last_cached_thermal
 
 	for(var/reagent_type in cached_add)
 		cached_add[reagent_type] = cached_add[reagent_type] / members.len
 	cached_volume = cached_volume / members.len
+	cached_thermal = cached_thermal / members.len
+	var/temp_to_set = cached_thermal / cached_volume
+	last_cached_thermal = cached_thermal
 	last_cached_fraction_share = cached_add
 	last_cached_total_volume = cached_volume
 	var/mixed_color = use_liquids_color ? mix_color_from_reagent_list(cached_add) : color
@@ -854,7 +882,6 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		if(LIQUID_FULLTILE_LEVEL_HEIGHT to INFINITY)
 			determined_new_state = LIQUID_STATE_FULLTILE
 
-	var/obj/effect/abstract/liquid_turf/cached_liquids
 	var/new_liquids = FALSE
 	for(var/t in members)
 		T = t
@@ -866,6 +893,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
 		cached_liquids.reagent_list = cached_add.Copy()
 		cached_liquids.total_reagents = cached_volume
+		cached_liquids.temp = temp_to_set
 
 		cached_liquids.has_cached_share = TRUE
 		cached_liquids.attrition = 0
@@ -1041,7 +1069,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 				continue
 
 			any_share = TRUE
-			T.add_liquid_list(liquids.reagent_list, TRUE)
+			T.add_liquid_list(liquids.reagent_list, TRUE, liquids.temp)
 	if(!any_share)
 		SSliquids.active_immutables -= src
 
