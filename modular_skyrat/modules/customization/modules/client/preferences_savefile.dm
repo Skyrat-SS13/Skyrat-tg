@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	36
+#define SAVEFILE_VERSION_MAX	39
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -55,11 +55,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				if(bind == "quick_equipbelt")
 					key -= "quick_equipbelt"
 					key |= "quick_equip_belt"
-
 				if(bind == "bag_equip")
 					key -= "bag_equip"
 					key |= "quick_equip_bag"
-
 				if(bind == "quick_equip_suit_storage")
 					newkey = TRUE
 		if(!newkey && !key_bindings["ShiftQ"])
@@ -69,6 +67,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(key_bindings["ShiftQ"] == "quick_equip_suit_storage")
 			key_bindings["ShiftQ"] = list("quick_equip_suit_storage")
 
+	if(current_version < 37)
+		if(clientfps == 0)
+			clientfps = -1
+
+	if (current_version < 38)
+		var/found_block_movement = FALSE
+		for (var/list/key in key_bindings)
+			for (var/bind in key)
+				if (bind == "block_movement")
+					found_block_movement = TRUE
+					break
+			if (found_block_movement)
+				break
+		if (!found_block_movement)
+			LAZYADD(key_bindings["Ctrl"], "block_movement")
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
 	return

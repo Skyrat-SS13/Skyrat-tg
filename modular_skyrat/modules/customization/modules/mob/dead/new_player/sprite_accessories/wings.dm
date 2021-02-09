@@ -3,7 +3,7 @@
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
-	recommended_species = list("human", "felinid", "lizard", "mammal")
+	recommended_species = list("human", "felinid", "lizard", "mammal", "synthliz")
 	organ_type = /obj/item/organ/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
@@ -124,7 +124,7 @@
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
-	recommended_species = list("mammal", "lizard", "insect")
+	recommended_species = list("mammal", "lizard", "insect", "synthliz")
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one
@@ -142,3 +142,23 @@
 /datum/sprite_accessory/wings/mammal/bee
 	name = "Bee"
 	icon_state = "bee"
+
+/datum/sprite_accessory/wings/mammal/succubus
+	name = "Succubus"
+	icon_state = "succubus"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/dragon_synth
+	name = "Dragon (synthetic alt)"
+	icon_state = "dragonsynth"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/dragon_alt1
+	name = "Dragon (alt 1)"
+	icon_state = "dragonalt1"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/dragon_alt2
+	name = "Dragon (alt 2)"
+	icon_state = "dragonalt2"
+	color_src = USE_MATRIXED_COLORS
