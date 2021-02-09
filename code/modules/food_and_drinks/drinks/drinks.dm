@@ -569,7 +569,7 @@
 	icon_state = "shaker"
 	custom_materials = list(/datum/material/iron=1500)
 	amount_per_transfer_from_this = 10
-	volume = 100
+	volume = 120 //SKYRAT EDIT: Original value: (100)
 	isGlass = FALSE
 
 /obj/item/reagent_containers/food/drinks/flask

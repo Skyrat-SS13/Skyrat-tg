@@ -27,8 +27,13 @@
 		..()
 
 /obj/item/gun/proc/toggle_safety(mob/user, override)
+	if(!has_gun_safety)
+		return
 	if(override)
-		safety = override
+		if(override == "off")
+			safety = FALSE
+		else
+			safety = TRUE
 	else
 		safety = !safety
 	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
@@ -38,11 +43,11 @@
 	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>")
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
-	if(safety)
-		to_chat(user, "<span class='warning'>The safety is on!</span>")
-		return
-	else
-		. = ..()
+	if(has_gun_safety)
+		if(safety)
+			to_chat(user, "<span class='warning'>The safety is on!</span>")
+			return
+	. = ..()
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
@@ -58,4 +63,7 @@
 	has_gun_safety = TRUE
 
 /obj/item/gun/energy/kinetic_accelerator/minebot
+	has_gun_safety = FALSE
+	
+/obj/item/gun/ballistic/rifle/enchanted
 	has_gun_safety = FALSE

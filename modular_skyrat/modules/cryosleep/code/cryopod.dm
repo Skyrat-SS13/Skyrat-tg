@@ -313,11 +313,11 @@
 		if(R.mmi?.brain)
 			cryo_items[R.mmi] = CRYO_DESTROY_LATER
 			cryo_items[R.mmi.brain] = CRYO_DESTROY_LATER
-		for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
+		for(var/obj/item/I in R.model) // the tools the borg has; metal, glass, guns etc
 			for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
 				cryo_items[O] = should_preserve_item(O)
 				O.forceMove(src)
-			R.module.remove_module(I, TRUE)	//delete the module itself so it doesn't transfer over.
+			R.model.remove_module(I, TRUE)	//delete the module itself so it doesn't transfer over.
 
 	//Drop all items into the pod.
 	for(var/obj/item/I in mob_occupant)

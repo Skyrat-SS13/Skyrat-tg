@@ -84,9 +84,9 @@
 		var/obj/item/gun/G = get_active_held_item()
 		if(G.has_gun_safety)
 			if(combat_mode)
-				G.toggle_safety(src, FALSE)
+				G.toggle_safety(src, "off")
 			else
-				G.toggle_safety(src, TRUE)
+				G.toggle_safety(src, "on")
 	if(!ishuman(src))
 		if(combat_mode)
 			set_combat_indicator(TRUE)

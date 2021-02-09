@@ -14,6 +14,9 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	set_combat_indicator(FALSE)
 
 /mob/living/proc/set_combat_indicator(state)
+	if(stat == DEAD)
+		combat_indicator = FALSE
+
 	if(combat_indicator == state)
 		return
 

@@ -62,7 +62,7 @@
 
 /datum/config_entry/flag/disable_human_mood
 
-/datum/config_entry/flag/disable_secborg	// disallow secborg module to be chosen.
+/datum/config_entry/flag/disable_secborg	// disallow secborg model to be chosen.
 
 /datum/config_entry/flag/disable_peaceborg
 
@@ -200,7 +200,12 @@
 
 /datum/config_entry/flag/ooc_during_round
 
+// deprecated for unclear name
 /datum/config_entry/number/commendations
+	integer = FALSE
+	deprecated_by = /datum/config_entry/number/commendation_percent_poll
+
+/datum/config_entry/number/commendation_percent_poll
 	integer = FALSE
 
 /datum/config_entry/flag/emojis

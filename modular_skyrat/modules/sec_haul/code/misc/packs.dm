@@ -23,10 +23,10 @@
 	contains = list(/obj/item/storage/box/armament_tokens_primary)
 	crate_name = "primary armory token crate"
 
-/datum/supply_pack/security/primary_case
+/datum/supply_pack/security/energy_case
 	name = "Energy Armory Token Crate"
 	desc = "Contains a box of energy armory tokens for the Armadyne weapons vendor."
 	cost = CARGO_CRATE_VALUE * 15
 	access_view = ACCESS_ARMORY
-	contains = list(/obj/item/storage/box/armament_tokens_primary)
-	crate_name = "primary armory token crate"
+	contains = list(/obj/item/storage/box/armament_tokens_energy)
+	crate_name = "energy armory token crate"

@@ -23,6 +23,8 @@
 	#define COMPONENT_GLOB_BLOCK_CINEMATIC (1<<0)
 /// ingame button pressed (/obj/machinery/button/button)
 #define COMSIG_GLOB_BUTTON_PRESSED "!button_pressed"
+/// job subsystem has spawned and equipped a new mob
+#define COMSIG_GLOB_JOB_AFTER_SPAWN "!job_after_spawn"
 /// crewmember joined the game (mob/living, rank)
 #define COMSIG_GLOB_CREWMEMBER_JOINED "!crewmember_joined"
 
@@ -52,6 +54,10 @@
 #define COMSIG_ELEMENT_ATTACH "element_attach"
 /// fires on the target datum when an element is attached to it  (/datum/element)
 #define COMSIG_ELEMENT_DETACH "element_detach"
+
+///Subsystem signals
+///From base of datum/controller/subsystem/Initialize: (start_timeofday)
+#define COMSIG_SUBSYSTEM_POST_INITIALIZE "subsystem_post_initialize"
 
 // /atom signals
 ///from base of atom/proc/Initialize(): sent any time a new atom is created
@@ -548,6 +554,10 @@
 ///from /obj/machinery/set_occupant(atom/movable/O): (new_occupant)
 #define COMSIG_MACHINERY_SET_OCCUPANT "machinery_set_occupant"
 
+// /obj/machinery/computer/teleporter
+/// from /obj/machinery/computer/teleporter/proc/set_target(target, old_target)
+#define COMSIG_TELEPORTER_NEW_TARGET "teleporter_new_target"
+
 // /obj/machinery/power/supermatter_crystal signals
 /// from /obj/machinery/power/supermatter_crystal/process_atmos(); when the SM delam reaches the point of sounding alarms
 #define COMSIG_SUPERMATTER_DELAM_START_ALARM "sm_delam_start_alarm"
@@ -801,6 +811,11 @@
 #define COMSIG_ITEM_USED_AS_INGREDIENT "item_used_as_ingredient"
 ///called when an edible ingredient is added: (datum/component/edible/ingredient)
 #define COMSIG_EDIBLE_INGREDIENT_ADDED "edible_ingredient_added"
+
+//Plants / Plant Traits
+
+///called when an action causes a plant to be squashed - slipping, throwing, attack_self.
+#define COMSIG_PLANT_SQUASH "plant_squash"
 
 //Gibs
 
