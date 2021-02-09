@@ -1558,7 +1558,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	//Securidrink in line with the Screwdriver for engineers or Nothing for mimes
 	var/obj/item/organ/liver/liver = M.getorganslot(ORGAN_SLOT_LIVER)
 	if(liver && HAS_TRAIT(liver, TRAIT_LAW_ENFORCEMENT_METABOLISM))
-		if(istype(/area/security, get_area(M)))
+		if(istype(get_area(M), /area/security))
 			M.heal_bodypart_damage(brute = 1, burn = 1)
 			M.adjustBruteLoss(-2,0)
 			. = 1
