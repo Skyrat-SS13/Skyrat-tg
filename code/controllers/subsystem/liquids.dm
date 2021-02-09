@@ -193,6 +193,7 @@ SUBSYSTEM_DEF(liquids)
 				liquids.reagent_list[R.type] = R.volume
 				liquids.total_reagents += R.volume
 
+			liquids.temp = reagents.chem_temp
 			if(!liquids.total_reagents) //Our reaction exerted all of our reagents, remove self
 				qdel(reagents)
 				qdel(liquids)
@@ -234,6 +235,7 @@ SUBSYSTEM_DEF(liquids)
 				var/datum/reagent/R = r
 				liquids.reagent_list[R.type] = R.volume
 				liquids.total_reagents += R.volume
+			liquids.temp = reagents.chem_temp
 		qdel(reagents)
 		//Expose turf
 		liquids.ExposeMyTurf()
@@ -636,7 +638,6 @@ SUBSYSTEM_DEF(liquids)
 	my_turf = loc
 	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
 	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
-	//create_reagents(10000)
 	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR)
 	if(!immutable)
 		SSliquids.add_active_turf(my_turf)
