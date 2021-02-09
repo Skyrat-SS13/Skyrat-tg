@@ -577,8 +577,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A pair of gloves that are fireproof and electrically insulated, however unlike the regular Combat Gloves these use nanotechnology \
 			to teach the martial art of krav maga to the wearer."
 	item = /obj/item/clothing/gloves/krav_maga/combatglovesplus
-	cost = 5
-	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	cost = 6 //SKYRAT EDIT: Original value (5)
+	//include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) SKYRAT EDIT: Removal. Allows purchases by normal traitors.
 	surplus = 0
 
 /datum/uplink_item/stealthy_weapons/cqc
