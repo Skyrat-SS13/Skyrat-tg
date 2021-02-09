@@ -598,7 +598,15 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //Blocked them because this just costs more than the version they get.
 	cost = 16
 	surplus = 0
-// SKYRAT EDIT: ADDITION END
+
+/datum/uplink_item/stealthy_weapons/telescopicbaton
+	name = "Telescopic Baton"
+	desc = "A telescoping baton, exactly like the ones heads are issued."
+	item = /obj/item/melee/classic_baton/telescopic
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //Blocked them because it would be silly for them to get this.
+	cost = 3
+	surplus = 0
+//SKYRAT EDIT: ADDITION END
 
 /datum/uplink_item/stealthy_weapons/dart_pistol
 	name = "Dart Pistol"
