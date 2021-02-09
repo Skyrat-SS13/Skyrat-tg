@@ -24,12 +24,16 @@
 		qdel(src)
 
 /obj/item/implanter/uplink
-	name = "implanter (uplink)"
+	name = "implanter" // Skyrat edit , original was implanter (uplink)
 	imp_type = /obj/item/implant/uplink
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "A Syndicate implanter for an uplink" // Skyrat edit
 
 /obj/item/implanter/uplink/precharged
-	name = "implanter (precharged uplink)"
+	name = "implanter" // Skyrat edit , original was implanter (precharged uplink)
 	imp_type = /obj/item/implant/uplink/precharged
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "A Syndicate implanter for a precharged uplink" // Skyrat edit
 
 /obj/item/implant/uplink/precharged
 	starting_tc = TELECRYSTALS_PRELOADED_IMPLANT
