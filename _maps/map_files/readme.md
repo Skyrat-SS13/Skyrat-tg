@@ -20,3 +20,4 @@ PLEASE REMEMBER TO LOG ANY CHANGES YOU MAKE HERE.
 UPDATE LOG:
 21:26 25/01/2021 - Gandalf2k15 - Updated all maps to our previous versions, bar cloning. I did not move that over.
 23:13 04/02/2021 - Gandalf2k15 - Updated metastation and added centcomm_skyrat_z2 and centcomm_skyrat, making the base centcomm modular.
+00:37 09/02/2021 - Gandalf2k15 - Hardset all non-modular maps to upstream.
