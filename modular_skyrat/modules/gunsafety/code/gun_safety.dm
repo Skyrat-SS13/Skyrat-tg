@@ -64,3 +64,6 @@
 
 /obj/item/gun/energy/kinetic_accelerator/minebot
 	has_gun_safety = FALSE
+	
+/obj/item/gun/ballistic/rifle/enchanted
+	has_gun_safety = FALSE
