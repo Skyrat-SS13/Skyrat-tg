@@ -591,7 +591,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 
 //SKYRAT EDIT: Addition START
-/datum/uplink_item/stealthy_weapons/cqc
+/datum/uplink_item/stealthy_weapons/cqc2
 	name = "CQC Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
 	item = /obj/item/book/granter/martial/cqc
