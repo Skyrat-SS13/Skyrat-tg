@@ -101,7 +101,6 @@
 	inhand_icon_state = "nucgun"
 	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	charge_delay = 10
-	pin = null
 	can_charge = FALSE
 	ammo_x_offset = 1
 	ammo_type = list(/obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/disabler)

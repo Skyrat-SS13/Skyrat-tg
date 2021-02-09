@@ -19,8 +19,10 @@
 
 /datum/round_event/ghost_role/alien_infestation
 	announceWhen	= 400
-
-	minimum_required = 1
+	//SKYRAT EDIT CHANGE BEGIN
+	//minimum_required = 1 - SKYRAT EDIT - ORIGINAL
+	minimum_required = 2
+	//SKYRAT EDIT CHANGE END
 	role_name = "alien larva"
 
 	// 50% chance of being incremented by one
@@ -40,7 +42,7 @@
 			living_aliens = TRUE
 
 	if(living_aliens || fake)
-		priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", 'sound/ai/aliens.ogg')
+		priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/ghost_role/alien_infestation/spawn_role()

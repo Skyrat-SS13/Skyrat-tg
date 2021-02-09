@@ -39,6 +39,28 @@
 	//Updates the number of stored chemicals for powers
 	handle_changeling()
 
+	if(staminaloss) //SKYRAT EDIT ADDITION bEGIN
+		//Stamina regeneration: Regens faster, the more health you have, and the more staminaloss you have
+		var/flat = STAMINA_STATIC_REGEN_FLAT
+		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+			flat += STAMINA_EXTRA_FLAT_IN_CRIT
+		adjustStaminaLoss(-(flat+(staminaloss/STAMINALOSS_REGEN_COEFF)) * (STAMINA_STATIC_REGEN_MULTIPLIER + (max(health/maxHealth, 0))))
+		if(staminaloss > STAMINA_THRESHOLD_MESSAGE_ACHE && world.time > next_stamina_message && stat != DEAD)
+			next_stamina_message = world.time + STAMINA_MESSAGE_COOLDOWN
+			switch(FLOOR(staminaloss,1))
+				if(STAMINA_THRESHOLD_MESSAGE_ACHE to STAMINA_THRESHOLD_MESSAGE_MILD)
+					to_chat(src, "<span class='warning'>You feel winded.</span>") //SKYRAT EDIT Grammar
+				if(STAMINA_THRESHOLD_MESSAGE_MILD to STAMINA_THRESHOLD_MESSAGE_MEDIUM)
+					to_chat(src, "<span class='warning'>You feel tired!</span>") //SKYRAT EDIT Grammar
+				if(STAMINA_THRESHOLD_MESSAGE_MEDIUM to STAMINA_THRESHOLD_MESSAGE_HIGH)
+					to_chat(src, "<span class='warning'>You have trouble standing on your legs!</span>") //SKYRAT EDIT Grammar
+				if(STAMINA_THRESHOLD_MESSAGE_HIGH to STAMINA_THRESHOLD_MESSAGE_SEVERE)
+					to_chat(src, "<span class='warning'>You feel worn-out!</span>")
+				if(STAMINA_THRESHOLD_MESSAGE_SEVERE to STAMINA_THRESHOLD_MESSAGE_OHGOD)
+					to_chat(src, "<span class='warning'>You feel exhausted!</span>")
+				if(STAMINA_THRESHOLD_MESSAGE_OHGOD to INFINITY)
+					to_chat(src, "<span class='warning'>You feel fatigued!</span>")
+					//SKYRAT EDIT END
 	if(stat != DEAD)
 		return 1
 
@@ -329,15 +351,20 @@
 	return
 
 /mob/living/carbon/proc/handle_bodyparts()
+	return //SKYRAT EDIT ADDITION
+	/* SKYRAT EDIT REMVOAL
 	var/stam_regen = FALSE
 	if(stam_regen_start_time <= world.time)
 		stam_regen = TRUE
 		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 			. |= BODYPART_LIFE_UPDATE_HEALTH //make sure we remove the stamcrit
+	*/
+	/*
 	for(var/I in bodyparts)
 		var/obj/item/bodypart/BP = I
 		if(BP.needs_processing)
 			. |= BP.on_life(stam_regen)
+	*/ //SKYRAT EDIT END
 
 /mob/living/carbon/proc/handle_organs()
 	if(stat != DEAD)

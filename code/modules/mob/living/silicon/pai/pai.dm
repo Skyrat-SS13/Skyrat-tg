@@ -22,6 +22,7 @@
 	head_icon = 'icons/mob/pai_item_head.dmi'
 	radio = /obj/item/radio/headset/silicon/pai
 	can_buckle_to = FALSE
+	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
 	var/network = "ss13"
 	var/obj/machinery/camera/current = null
 
@@ -65,6 +66,9 @@
 	var/obj/machinery/newscaster			//pAI Newscaster
 	var/obj/item/healthanalyzer/hostscan				//pAI healthanalyzer
 
+	/// Internal pAI GPS, enabled if pAI downloads GPS software, and then uses it.
+	var/obj/item/gps/pai/internal_gps = null
+
 	var/encryptmod = FALSE
 	var/holoform = FALSE
 	var/canholo = TRUE
@@ -102,6 +106,8 @@
 		signaler = null
 	if(A == hostscan)
 		hostscan = null
+	if(A == internal_gps)
+		internal_gps = null
 	return ..()
 
 /mob/living/silicon/pai/Destroy()
@@ -110,6 +116,7 @@
 	QDEL_NULL(newscaster)
 	QDEL_NULL(signaler)
 	QDEL_NULL(hostscan)
+	QDEL_NULL(internal_gps)
 	if(!QDELETED(card) && loc != card)
 		card.forceMove(drop_location())
 		card.pai = null //these are otherwise handled by paicard/handle_atom_del()

@@ -1375,7 +1375,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(atk_verb == ATTACK_EFFECT_KICK || HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER)) //kicks never miss (provided your species deals more than 0 damage)
 				miss_chance = 0
 			else
-				miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
+				miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + (user.getStaminaLoss()*0.2) + (user.getBruteLoss()*0.2), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob() //SKYRAT EDIT CHANGE: miss_chance = min((user.dna.species.punchdamagehigh/user.dna.species.punchdamagelow) + user.getStaminaLoss() + (user.getBruteLoss()*0.5), 100) //old base chance for a miss + various damage. capped at 100 to prevent weirdness in prob()
 
 		if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
 			playsound(target.loc, user.dna.species.miss_sound, 25, TRUE, -1)
@@ -1402,18 +1402,20 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		if(atk_verb == ATTACK_EFFECT_KICK)//kicks deal 1.5x raw damage
 			target.apply_damage(damage*1.5, user.dna.species.attack_type, affecting, armor_block)
+			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT ADDITION
 			log_combat(user, target, "kicked")
 		else//other attacks deal full raw damage + 1.5x in stamina damage
 			target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block)
-			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
+			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			log_combat(user, target, "punched")
 
 		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
 			target.visible_message("<span class='danger'>[user] knocks [target] down!</span>", \
 							"<span class='userdanger'>You're knocked down by [user]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, "<span class='danger'>You knock [target] down!</span>")
-			var/knockdown_duration = 40 + (target.getStaminaLoss() + (target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
-			target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block)
+			//var/knockdown_duration = 40 + (/*target.getStaminaLoss() + */(target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
+			//target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block) -SKYRAT EDIT REMOVAL ABOVE TOO
+			target.StaminaKnockdown(20) //SKYRAT EDIT ADDITION
 			log_combat(user, target, "got a stun punch with their previous punch")
 
 /datum/species/proc/spec_unarmedattacked(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -1439,7 +1441,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_hitby(atom/movable/AM, mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style)
+/datum/species/proc/spec_attack_hand(mob/living/carbon/human/M, mob/living/carbon/human/H, datum/martial_art/attacker_style, modifiers)
 	if(!istype(M))
 		return
 	CHECK_DNA_AND_SPECIES(M)
@@ -1449,27 +1451,27 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		return
 	if(M.mind)
 		attacker_style = M.mind.martial_art
-	if((M != H) && M.a_intent != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
+	if((M != H) && M.combat_mode && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
 		log_combat(M, H, "attempted to touch")
 		H.visible_message("<span class='warning'>[M] attempts to touch [H]!</span>", \
 						"<span class='danger'>[M] attempts to touch you!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, M)
 		to_chat(M, "<span class='warning'>You attempt to touch [H]!</span>")
 		return
+	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
+	if(H.pulledby && H.pulledby == M && M.grab_state && try_grab_maneuver(M, H, modifiers))
+		return //SKYRAT EDIT END
+
 	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
-	switch(M.a_intent)
-		if("help")
-			help(M, H, attacker_style)
 
-		if("grab")
-			grab(M, H, attacker_style)
+	if(modifiers && modifiers["right"])
+		disarm(M, H, attacker_style)
+		return // dont attack after
+	if(M.combat_mode)
+		harm(M, H, attacker_style)
+	else
+		help(M, H, attacker_style)
 
-		if("harm")
-			harm(M, H, attacker_style)
-
-		if("disarm")
-			disarm(M, H, attacker_style)
-
-/datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
+/datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
 		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armour_penetration))
@@ -1491,14 +1493,35 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/Iwound_bonus = I.wound_bonus
 
 	// this way, you can't wound with a surgical tool on help intent if they have a surgery active and are lying down, so a misclick with a circular saw on the wrong limb doesn't bleed them dry (they still get hit tho)
-	if((I.item_flags & SURGICAL_TOOL) && user.a_intent == INTENT_HELP && H.body_position == LYING_DOWN && (LAZYLEN(H.surgeries) > 0))
+	if((I.item_flags & SURGICAL_TOOL) && !user.combat_mode && H.body_position == LYING_DOWN && (LAZYLEN(H.surgeries) > 0))
 		Iwound_bonus = CANT_WOUND
 
 	var/weakness = check_species_weakness(I, user)
 
 	H.send_item_attack_message(I, user, hit_area, affecting)
 
-	apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
+	//SKYRAT EDIT CHANGE BEGIN
+	//apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness()) //ORIGINAL
+	var/effec_damage
+	var/effec_stam
+	//While on a disarm intent, our hits are glancing, doing less normal damage but more stamina damage
+	if(!user.combat_mode)
+		effec_damage = I.force * TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER
+		if(I.damtype == BRUTE && !I.get_sharpness())
+			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
+			if(Iwound_bonus)
+				Iwound_bonus += effec_damage
+		else
+			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
+	else
+		effec_damage = I.force
+		if(I.damtype == BRUTE && !I.get_sharpness())
+			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER
+		else
+			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER
+	apply_damage(effec_damage * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
+	apply_damage(effec_stam, STAMINA, def_zone, armor_block, H)
+	//SKYRAT EDIT CHANGE END
 
 	if(!I.force)
 		return FALSE //item force is zero
@@ -1548,10 +1571,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			if(BODY_ZONE_CHEST)
 				if(H.stat == CONSCIOUS && !I.get_sharpness() && armor_block < 50)
-					if(prob(I.force))
+					if(prob((I.force/2))) //SKYRAT EDIT CHANGE: if(prob(I.force))
 						H.visible_message("<span class='danger'>[H] is knocked down!</span>", \
 									"<span class='userdanger'>You're knocked down!</span>")
-						H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
+						//H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
+						H.StaminaKnockdown(10) //SKYRAT EDIT CHANGE ABOVE
 
 				if(bloody)
 					if(H.wear_suit)
@@ -1833,15 +1857,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		// Apply the damage to all body parts
 		humi.apply_damage(burn_damage, BURN, spread_damage = TRUE)
 
-	// Apply some burn damage to the body
-	if(humi.coretemperature < bodytemp_cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
+	// Apply some burn / brute damage to the body (Dependent if the person is hulk or not)
+	var/is_hulk = HAS_TRAIT(humi, TRAIT_HULK)
+
+	var/cold_damage_limit = bodytemp_cold_damage_limit + (is_hulk ? BODYTEMP_HULK_COLD_DAMAGE_LIMIT_MODIFIER : 0)
+
+	if(humi.coretemperature < cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
+		var/damage_type = is_hulk ? BRUTE : BURN
+		var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
 		switch(humi.coretemperature)
-			if(201 to bodytemp_cold_damage_limit)
-				humi.apply_damage(COLD_DAMAGE_LEVEL_1 * coldmod * humi.physiology.cold_mod, BURN)
+			if(201 to cold_damage_limit)
+				humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod, damage_type)
 			if(120 to 200)
-				humi.apply_damage(COLD_DAMAGE_LEVEL_2 * coldmod * humi.physiology.cold_mod, BURN)
+				humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod, damage_type)
 			else
-				humi.apply_damage(COLD_DAMAGE_LEVEL_3 * coldmod * humi.physiology.cold_mod, BURN)
+				humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod, damage_type)
 
 /**
  * Used to apply burn wounds on random limbs
@@ -2154,7 +2184,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		. |= BIO_JUST_BONE
 
 ///Species override for unarmed attacks because the attack_hand proc was made by a mouth-breathing troglodyte on a tricycle. Also to whoever thought it would be a good idea to make it so the original spec_unarmedattack was not actually linked to unarmed attack needs to be checked by a doctor because they clearly have a vast empty space in their head.
-/datum/species/proc/spec_unarmedattack(mob/living/carbon/human/user, atom/target)
+/datum/species/proc/spec_unarmedattack(mob/living/carbon/human/user, atom/target, modifiers)
 	return FALSE
 
 

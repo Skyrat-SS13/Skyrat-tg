@@ -38,7 +38,12 @@
 
 /obj/effect/turf_decal/Initialize()
 	..()
-	return INITIALIZE_HINT_QDEL
+	//SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: return INITIALIZE_HINT_QDEL
+	var/area/loc_area = get_area(src)
+	if(!istype(loc_area, /area/shuttle))
+		return INITIALIZE_HINT_QDEL
+	else
+		return INITIALIZE_HINT_NORMAL
 
 /obj/effect/turf_decal/ComponentInitialize()
 	. = ..()

@@ -1,6 +1,8 @@
 #define POPCOUNT_SURVIVORS "survivors"					//Not dead at roundend
 #define POPCOUNT_ESCAPEES "escapees"					//Not dead and on centcom/shuttles marked as escaped
 #define POPCOUNT_SHUTTLE_ESCAPEES "shuttle_escapees" 	//Emergency shuttle only.
+#define PERSONAL_LAST_ROUND "personal last round"
+#define SERVER_LAST_ROUND "server last round"
 
 /datum/controller/subsystem/ticker/proc/gather_roundend_feedback()
 	gather_antag_data()
@@ -55,7 +57,7 @@
 						mob_data["module"] = "pAI"
 					else if(iscyborg(L))
 						var/mob/living/silicon/robot/R = L
-						mob_data["module"] = R.module.name
+						mob_data["module"] = R.model.name
 				else
 					category = "others"
 					mob_data["typepath"] = M.type
@@ -356,7 +358,7 @@
 	if(istype(SSticker.mode, /datum/game_mode/dynamic))
 		var/datum/game_mode/dynamic/mode = SSticker.mode
 		parts += "[FOURSPACES]Threat level: [mode.threat_level]"
-		parts += "[FOURSPACES]Threat left: [mode.threat]"
+		parts += "[FOURSPACES]Threat left: [mode.mid_round_budget]"
 		parts += "[FOURSPACES]Executed rules:"
 		for(var/datum/dynamic_ruleset/rule in mode.executed_rules)
 			parts += "[FOURSPACES][FOURSPACES][rule.ruletype] - <b>[rule.name]</b>: -[rule.cost + rule.scaled_times * rule.scaling_cost] threat"
@@ -365,20 +367,48 @@
 /client/proc/roundend_report_file()
 	return "data/roundend_reports/[ckey].html"
 
-/datum/controller/subsystem/ticker/proc/show_roundend_report(client/C, previous = FALSE)
+/**
+ * Log the round-end report as an HTML file
+ *
+ * Composits the roundend report, and saves it in two locations.
+ * The report is first saved along with the round's logs
+ * Then, the report is copied to a fixed directory specifically for
+ * housing the server's last roundend report. In this location,
+ * the file will be overwritten at the end of each shift.
+ */
+/datum/controller/subsystem/ticker/proc/log_roundend_report()
+	var/filename = "[GLOB.log_directory]/round_end_data.html"
+	var/list/parts = list()
+	parts += "<div class='panel stationborder'>"
+	parts += GLOB.survivor_report
+	parts += "</div>"
+	parts += GLOB.common_report
+	var/content = parts.Join()
+	//Log the rendered HTML in the round log directory
+	fdel(filename)
+	text2file(content, filename)
+	//Place a copy in the root folder, to be overwritten each round.
+	filename = "data/server_last_roundend_report.html"
+	fdel(filename)
+	text2file(content, filename)
+
+/datum/controller/subsystem/ticker/proc/show_roundend_report(client/C, report_type = null)
 	var/datum/browser/roundend_report = new(C, "roundend")
 	roundend_report.width = 800
 	roundend_report.height = 600
 	var/content
 	var/filename = C.roundend_report_file()
-	if(!previous)
+	if(report_type == PERSONAL_LAST_ROUND) //Look at this player's last round
+		content = file2text(filename)
+	else if (report_type == SERVER_LAST_ROUND) //Look at the last round that this server has seen
+		content = file2text("data/server_last_roundend_report.html")
+	else //report_type is null, so make a new report based on the current round and show that to the player
 		var/list/report_parts = list(personal_report(C), GLOB.common_report)
 		content = report_parts.Join()
 		remove_verb(C, /client/proc/show_previous_roundend_report)
 		fdel(filename)
 		text2file(content, filename)
-	else
-		content = file2text(filename)
+
 	roundend_report.set_content(content)
 	roundend_report.stylesheets = list()
 	roundend_report.add_stylesheet("roundend", 'html/browser/roundend.css')
@@ -415,8 +445,9 @@
 /datum/controller/subsystem/ticker/proc/display_report(popcount)
 	GLOB.common_report = build_roundend_report()
 	GLOB.survivor_report = survivor_report(popcount)
+	log_roundend_report()
 	for(var/client/C in GLOB.clients)
-		show_roundend_report(C, FALSE)
+		show_roundend_report(C)
 		give_show_report_button(C)
 		CHECK_TICK
 
@@ -427,7 +458,10 @@
 	for (var/i in GLOB.ai_list)
 		var/mob/living/silicon/ai/aiPlayer = i
 		if(aiPlayer.mind)
-			parts += "<b>[aiPlayer.name]</b> (Played by: <b>[aiPlayer.mind.key]</b>)'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was <span class='redtext'>deactivated</span>"] were:"
+			//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
+			//parts += "<b>[aiPlayer.name]</b> (Played by: <b>[aiPlayer.mind.key]</b>)'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was <span class='redtext'>deactivated</span>"] were:" - SKYRAT EDIT - ORIGINAL
+			parts += "<b>[aiPlayer.name]</b>'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was <span class='redtext'>deactivated</span>"] were:"
+			//SKYRAT EDIT CHANGE END
 			parts += aiPlayer.laws.get_law_list(include_zeroth=TRUE)
 
 		parts += "<b>Total law changes: [aiPlayer.law_change_counter]</b>"
@@ -438,13 +472,19 @@
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				borg_num--
 				if(robo.mind)
-					parts += "<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " <span class='redtext'>(Deactivated)</span>" : ""][borg_num ?", ":""]"
+					//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
+					//parts += "<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " <span class='redtext'>(Deactivated)</span>" : ""][borg_num ?", ":""]" - SKYRAT EDIT - ORIGINAL
+					parts += "<b>[robo.name]</b> [robo.stat == DEAD ? " <span class='redtext'>(Deactivated)</span>" : ""][borg_num ?", ":""]"
+					//SKYRAT EDIT CHANGE END
 		if(!borg_spacer)
 			borg_spacer = TRUE
 
 	for (var/mob/living/silicon/robot/robo in GLOB.silicon_mobs)
 		if (!robo.connected_ai && robo.mind)
-			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>) [(robo.stat != DEAD)? "<span class='greentext'>survived</span> as an AI-less borg!" : "was <span class='redtext'>unable to survive</span> the rigors of being a cyborg without an AI."] Its laws were:"
+			//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
+			//parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>) [(robo.stat != DEAD)? "<span class='greentext'>survived</span> as an AI-less borg!" : "was <span class='redtext'>unable to survive</span> the rigors of being a cyborg without an AI."] Its laws were:" - SKYRAT EDIT - ORIGINAL
+			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> [(robo.stat != DEAD)? "<span class='greentext'>survived</span> as an AI-less borg!" : "was <span class='redtext'>unable to survive</span> the rigors of being a cyborg without an AI."] Its laws were:"
+			//SKYRAT EDIT CHANGE END
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				parts += robo.laws.get_law_list(include_zeroth=TRUE)
@@ -608,7 +648,7 @@
 
 /datum/action/report/Trigger()
 	if(owner && GLOB.common_report && SSticker.current_state == GAME_STATE_FINISHED)
-		SSticker.show_roundend_report(owner.client, FALSE)
+		SSticker.show_roundend_report(owner.client)
 
 /datum/action/report/IsAvailable()
 	return 1
@@ -625,7 +665,10 @@
 	var/jobtext = ""
 	if(ply.assigned_role)
 		jobtext = " the <b>[ply.assigned_role]</b>"
-	var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and"
+	//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
+	//var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and" - SKYRAT EDIT - ORIGINAL
+	var/text = "<b>[ply.name]</b>[jobtext]"
+	//SKYRAT EDIT CHANGE END
 	if(ply.current)
 		if(ply.current.stat == DEAD)
 			text += " <span class='redtext'>died</span>"

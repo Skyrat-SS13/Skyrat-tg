@@ -3,7 +3,7 @@
 #define GRILL_FUELUSAGE_IDLE 0.5
 #define GRILL_FUELUSAGE_ACTIVE 5
 
-/obj/machinery/grill
+/obj/machinery/grill//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "grill"
 	desc = "Just like the old days."
 	icon = 'icons/obj/kitchen.dmi'
@@ -111,7 +111,7 @@
 /obj/machinery/grill/deconstruct(disassembled = TRUE)
 	finish_grill()
 	if(!(flags_1 & NODECONSTRUCT_1))
-		new /obj/item/stack/sheet/metal(loc, 5)
+		new /obj/item/stack/sheet/iron(loc, 5)
 		new /obj/item/stack/rods(loc, 5)
 	..()
 

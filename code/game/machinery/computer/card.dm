@@ -34,6 +34,9 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Chief Engineer",
 		"Research Director",
 		"Chief Medical Officer",
+		"Security Medic", //SKYRAT EDIT ADDITION - SEC_HUAL
+		"Security Sergeant", //SKYRAT EDIT ADDITION - SEC_HAUL
+		"Blueshield",	//SKYRAT EDIT: Blueshield slots should never be above 1.
 		"Prisoner")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
@@ -448,14 +451,14 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 							inserted_modify_id.access += access_type
 							if(access_type in ACCESS_ALERT_ADMINS)
 								message_admins("[ADMIN_LOOKUPFLW(usr)] just added [get_access_desc(access_type)] to an ID card [ADMIN_VV(inserted_modify_id)] [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]")
-							log_game("[key_name(usr)] added [get_access_desc(access_type)] to an ID card [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]")
-							usr.log_message("added [get_access_desc(access_type)] to an ID card [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]", LOG_GAME)
+							LOG_ID_ACCESS_CHANGE(usr, inserted_modify_id, "added [get_access_desc(access_type)]")
+
 						playsound(src, "terminal_type", 50, FALSE)
 		if ("assign")
 			if (authenticated == 2)
 				var/t1 = href_list["assign_target"]
 				if(t1 == "Custom")
-					var/newJob = reject_bad_text(input("Enter a custom job assignment.", "Assignment", inserted_modify_id ? inserted_modify_id.assignment : "Unassigned"), MAX_NAME_LEN)
+					var/newJob = reject_bad_text(stripped_input("Enter a custom job assignment.", "Assignment", inserted_modify_id ? inserted_modify_id.assignment : "Unassigned"), MAX_NAME_LEN)
 					if(newJob)
 						t1 = newJob
 
@@ -486,8 +489,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						if(logged_access in inserted_modify_id.access)
 							message_admins("[ADMIN_LOOKUPFLW(usr)] assigned the job [jobdatum.title] to an ID card [ADMIN_VV(inserted_modify_id)] [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]")
 							break
-					log_game("[key_name(usr)] assigned the job [jobdatum.title] to an ID card [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]")
-					usr.log_message("assigned the job [jobdatum.title] to an ID card [(inserted_modify_id.registered_name) ? "belonging to [inserted_modify_id.registered_name]." : "with no registered name."]", LOG_GAME)
+					LOG_ID_ACCESS_CHANGE(usr, inserted_modify_id, "assigned the job [jobdatum.title]")
+
 				if (inserted_modify_id)
 					inserted_modify_id.assignment = t1
 					playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
@@ -509,9 +512,15 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						to_chat(usr, "<span class='alert'>Invalid age entered- age not updated.</span>")
 						updateUsrDialog()
 
-					var/newName = reject_bad_name(href_list["reg"])
-					if(newName)
-						inserted_modify_id.registered_name = newName
+
+					// Sanitize the name first. We're not using the full sanitize_name proc as ID cards can have a wider variety of things on them that
+					// would not pass as a formal character name, but would still be valid on an ID card created by a player.
+					var/new_name = sanitize(href_list["reg"])
+					// However, we are going to reject bad names overall including names with invalid characters in them, while allowing numbers.
+					new_name = reject_bad_name(new_name, allow_numbers = TRUE)
+
+					if(new_name)
+						inserted_modify_id.registered_name = new_name
 						playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 					else
 						to_chat(usr, "<span class='alert'>Invalid name entered.</span>")

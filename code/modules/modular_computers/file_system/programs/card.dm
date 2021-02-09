@@ -177,11 +177,25 @@
 		if("PRG_edit")
 			if(!computer || !authenticated || !target_id_card)
 				return
-			var/new_name = params["name"]
+
+			// Sanitize the name first. We're not using the full sanitize_name proc as ID cards can have a wider variety of things on them that
+			// would not pass as a formal character name, but would still be valid on an ID card created by a player.
+			var/new_name = sanitize(params["name"])
+			// However, we are going to reject bad names overall including names with invalid characters in them, while allowing numbers.
+			new_name = reject_bad_name(new_name, allow_numbers = TRUE)
+
 			if(!new_name)
+				to_chat(usr, "<span class='notice'>Software error: The ID card rejected the new name as it contains prohibited characters.</span>")
 				return
+
 			target_id_card.registered_name = new_name
 			target_id_card.update_label()
+			playsound(computer, "terminal_type", 50, FALSE)
+			return TRUE
+		if("PRG_age")
+			if(!computer || !authenticated || !target_id_card)
+				return
+			target_id_card.registered_age = params["id_age"]
 			playsound(computer, "terminal_type", 50, FALSE)
 			return TRUE
 		if("PRG_assign")
@@ -192,8 +206,14 @@
 				return
 
 			if(target == "Custom")
-				var/custom_name = params["custom_name"]
-				if(custom_name)
+				// Sanitize the custom assignment name first.
+				var/custom_name = sanitize(params["custom_name"])
+				// However, we are going to assignments containing bad text overall.
+				custom_name = reject_bad_text(custom_name)
+
+				if(!custom_name)
+					to_chat(usr, "<span class='notice'>Software error: The ID card rejected the new custom assignment as it contains prohibited characters.</span>")
+				else
 					target_id_card.assignment = custom_name
 					target_id_card.update_label()
 			else
@@ -217,8 +237,7 @@
 						if(logged_access in new_access)
 							message_admins("[ADMIN_LOOKUPFLW(user)] assigned the job [job.title] to an ID card [ADMIN_VV(target_id_card)] [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
 							break
-					log_game("[key_name(user)] assigned the job [job.title] to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
-					user.log_message("assigned the job [job.title] to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]", LOG_GAME)
+					LOG_ID_ACCESS_CHANGE(usr, target_id_card, "assigned the job [job.title]")
 				target_id_card.access -= get_all_centcom_access() + get_all_accesses()
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
@@ -236,8 +255,7 @@
 					target_id_card.access |= access_type
 					if(access_type in ACCESS_ALERT_ADMINS)
 						message_admins("[ADMIN_LOOKUPFLW(user)] just added [get_access_desc(access_type)] to an ID card [ADMIN_VV(target_id_card)] [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
-					log_game("[key_name(user)] added [get_access_desc(access_type)] to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
-					user.log_message("added [get_access_desc(access_type)] to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]", LOG_GAME)
+					LOG_ID_ACCESS_CHANGE(user, target_id_card, "added [get_access_desc(access_type)]")
 				playsound(computer, "terminal_type", 50, FALSE)
 				return TRUE
 		if("PRG_grantall")
@@ -245,9 +263,8 @@
 				return
 			target_id_card.access |= (is_centcom ? get_all_centcom_access() : get_all_accesses())
 
-			log_game("[key_name(user)] added All Access permissions to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
-			user.log_message("added All Access permissions to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]", LOG_GAME)
 			message_admins("[ADMIN_LOOKUPFLW(user)] just added All Access to an ID card [ADMIN_VV(target_id_card)] [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
+			LOG_ID_ACCESS_CHANGE(user, target_id_card, "added All Access")
 
 			playsound(computer, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 			return TRUE
@@ -263,11 +280,21 @@
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
-			target_id_card.access |= get_region_accesses(region)
 
-			log_game("[key_name(user)] added [get_region_accesses_name(region)] region access to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
-			user.log_message("added [get_region_accesses_name(region)] region access to an ID card [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]", LOG_GAME)
-			message_admins("[ADMIN_LOOKUPFLW(user)] just added [get_region_accesses_name(region)] region access to an ID card [ADMIN_VV(target_id_card)] [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
+			if(is_centcom)
+				target_id_card.access |= get_all_centcom_access()
+				message_admins("[ADMIN_LOOKUPFLW(user)] just added CentCom Access to an ID card [ADMIN_VV(target_id_card)] [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
+				LOG_ID_ACCESS_CHANGE(user, target_id_card, "added CentCom access")
+			else
+				var/list/region_accesses = get_region_accesses(region)
+				target_id_card.access |= region_accesses
+
+				for(var/logged_access in ACCESS_ALERT_ADMINS)
+					if(logged_access in region_accesses)
+						message_admins("[ADMIN_LOOKUPFLW(user)] just added [get_region_accesses_name(region)] region access to an ID card [ADMIN_VV(target_id_card)] [(target_id_card.registered_name) ? "belonging to [target_id_card.registered_name]." : "with no registered name."]")
+
+				LOG_ID_ACCESS_CHANGE(user, target_id_card, "added [get_region_accesses_name(region)] region access")
+
 
 			playsound(computer, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 			return TRUE
@@ -277,6 +304,8 @@
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
+			if(is_centcom)
+				target_id_card.access -= get_all_centcom_access()
 			target_id_card.access -= get_region_accesses(region)
 			playsound(computer, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 			return TRUE
@@ -317,23 +346,38 @@
 			data["jobs"][department] = department_jobs
 
 	var/list/regions = list()
-	for(var/i in 1 to 7)
-		if((minor || target_dept) && !(i in region_access))
-			continue
-
+	if(is_centcom)
 		var/list/accesses = list()
-		for(var/access in get_region_accesses(i))
-			if (get_access_desc(access))
+		for(var/access in get_all_centcom_access())
+			if (get_centcom_access_desc(access))
 				accesses += list(list(
-					"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
+					"desc" = replacetext(get_centcom_access_desc(access), "&nbsp", " "),
 					"ref" = access,
 				))
 
 		regions += list(list(
-			"name" = get_region_accesses_name(i),
-			"regid" = i,
+			"name" = "CentCom",
+			"regid" = 0,
 			"accesses" = accesses
 		))
+	else
+		for(var/i in 1 to 7)
+			if((minor || target_dept) && !(i in region_access))
+				continue
+
+			var/list/accesses = list()
+			for(var/access in get_region_accesses(i))
+				if (get_access_desc(access))
+					accesses += list(list(
+						"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
+						"ref" = access,
+					))
+
+			regions += list(list(
+				"name" = get_region_accesses_name(i),
+				"regid" = i,
+				"accesses" = accesses
+			))
 
 	data["regions"] = regions
 
@@ -367,6 +411,7 @@
 		data["id_rank"] = id_card.assignment ? id_card.assignment : "Unassigned"
 		data["id_owner"] = id_card.registered_name ? id_card.registered_name : "-----"
 		data["access_on_card"] = id_card.access
+		data["id_age"] = id_card.registered_age
 
 	return data
 

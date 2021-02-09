@@ -63,7 +63,7 @@
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
-	. += "Intent: [a_intent]"
+	. += "Combat mode: [combat_mode ? "On" : "Off"]"
 	. += "Move Mode: [m_intent]"
 	if (internal)
 		if (!internal.air_contents)
@@ -370,7 +370,7 @@
 			if(href_list["quirk"])
 				var/quirkstring = get_quirk_string(TRUE, CAT_QUIRK_ALL)
 				if(quirkstring)
-					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:\n</span><span class='notice ml-2'>[quirkstring]</span>")
+					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
 			return //Medical HUD ends here.
@@ -605,9 +605,11 @@
 	if(istype(head, /obj/item/clothing/head/wizard) || istype(head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
 		threatcount += 2
 
+	/* SKYRAT EDIT - REMOVAL
 	//Check for nonhuman scum
 	if(dna && dna.species.id && dna.species.id != "human")
 		threatcount += 1
+	*/
 
 	//mindshield implants imply trustworthyness
 	if(HAS_TRAIT(src, TRAIT_MINDSHIELD))
@@ -736,14 +738,28 @@
 	return TRUE
 
 /**
- * Cleans the lips of any lipstick. Returns TRUE if the lips had any lipstick and was thus cleaned
+ * Used to update the makeup on a human and apply/remove lipstick traits, then store/unstore them on the head object in case it gets severed
+ */
+/mob/living/carbon/human/proc/update_lips(new_style, new_colour, apply_trait)
+	lip_style = new_style
+	lip_color = new_colour
+	update_body()
+
+	var/obj/item/bodypart/head/hopefully_a_head = get_bodypart(BODY_ZONE_HEAD)
+	REMOVE_TRAITS_IN(src, LIPSTICK_TRAIT)
+	hopefully_a_head?.stored_lipstick_trait = null
+
+	if(new_style && apply_trait)
+		ADD_TRAIT(src, apply_trait, LIPSTICK_TRAIT)
+		hopefully_a_head?.stored_lipstick_trait = apply_trait
+
+/**
+ * A wrapper for [mob/living/carbon/human/proc/update_lips] that tells us if there were lip styles to change
  */
 /mob/living/carbon/human/proc/clean_lips()
 	if(isnull(lip_style) && lip_color == initial(lip_color))
 		return FALSE
-	lip_style = null
-	lip_color = initial(lip_color)
-	update_body()
+	update_lips(null)
 	return TRUE
 
 /**
@@ -1030,25 +1046,25 @@
 			message_admins(msg)
 			admin_ticket_log(src, msg)
 
-
-/mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
-	if(pulling != target || grab_state != GRAB_AGGRESSIVE || stat != CONSCIOUS || a_intent != INTENT_GRAB)
-		return ..()
-
-	//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
-	if(user == target)
-		if(can_piggyback(target))
-			piggyback(target)
-	//If you dragged them to you and you're aggressively grabbing try to fireman carry them
-	else if(can_be_firemanned(target))
-		fireman_carry(target)
-
 /mob/living/carbon/human/limb_attack_self()
 	var/obj/item/bodypart/arm = hand_bodyparts[active_hand_index]
 	if(arm)
 		arm.attack_self(src)
 	return ..()
 
+/mob/living/carbon/human/mouse_buckle_handling(mob/living/M, mob/living/user)
+	if(pulling != M || grab_state != GRAB_AGGRESSIVE || stat != CONSCIOUS)
+		return FALSE
+
+	//If they dragged themselves to you and you're currently aggressively grabbing them try to piggyback
+	if(user == M && can_piggyback(M))
+		piggyback(M)
+		return TRUE
+
+	//If you dragged them to you and you're aggressively grabbing try to fireman carry them
+	if(can_be_firemanned(M))
+		fireman_carry(M)
+		return TRUE
 
 //src is the user that will be carrying, target is the mob to be carried
 /mob/living/carbon/human/proc/can_piggyback(mob/living/carbon/target)
@@ -1062,7 +1078,7 @@
 		to_chat(src, "<span class='warning'>You can't fireman carry [target] while [target.p_they()] [target.p_are()] standing!</span>")
 		return
 
-	var/carrydelay = 5 SECONDS //if you have latex you are faster at grabbing
+	var/carrydelay = 5 SECONDS //This is augmented by traits from your skillchip
 	var/skills_space = "" //cobby told me to do this
 	if(HAS_TRAIT(src, TRAIT_QUICKER_CARRY))
 		carrydelay = 3 SECONDS
@@ -1073,8 +1089,8 @@
 
 	visible_message("<span class='notice'>[src] starts[skills_space] lifting [target] onto [p_their()] back..</span>",
 	//Joe Medic starts quickly/expertly lifting Grey Tider onto their back..
-	"<span class='notice'>[carrydelay < 3.5 SECONDS ? "Using your gloves' nanochips, you" : "You"][skills_space] start to lift [target] onto your back[carrydelay == 4 SECONDS ? ", while assisted by the nanochips in your gloves.." : "..."]</span>")
-	//(Using your gloves' nanochips, you/You) ( /quickly/expertly) start to lift Grey Tider onto your back(, while assisted by the nanochips in your gloves../...)
+	"<span class='notice'>[carrydelay < 3.5 SECONDS ? "Using your fireman carrying training, you" : "You"][skills_space] start to lift [target] onto your back[carrydelay == 4 SECONDS ? ", with ease thanks to your advanced knowledge.." : "..."]</span>")
+	//(Using your fireman carrying training, you/You) ( /quickly/expertly) start to lift Grey Tider onto your back(, with ease thanks to your advanced knowledge../...)
 	if(!do_after(src, carrydelay, target))
 		visible_message("<span class='warning'>[src] fails to fireman carry [target]!</span>")
 		return
@@ -1091,7 +1107,7 @@
 		density = old_density
 
 	if(target.loc == loc)
-		buckle_mob(target, TRUE, TRUE, CARRIER_NEEDS_ARM)
+		return buckle_mob(target, TRUE, TRUE, CARRIER_NEEDS_ARM)
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(!can_piggyback(target))
@@ -1107,7 +1123,7 @@
 		target.visible_message("<span class='warning'>[target] can't hang onto [src]!</span>")
 		return
 
-	buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
+	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
 
 /mob/living/carbon/human/buckle_mob(mob/living/target, force = FALSE, check_loc = TRUE, buckle_mob_flags= NONE)
 	if(!is_type_in_typecache(target, can_ride_typecache))
@@ -1126,7 +1142,7 @@
 		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
 		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
 		return
-	var/health_deficiency = max((maxHealth - health), staminaloss)
+	var/health_deficiency = max((maxHealth - health), staminaloss*0.75) //SKYRAT EDIT CHANGE: var/health_deficiency = max((maxHealth - health), staminaloss)
 	if(health_deficiency >= 40)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown, TRUE, multiplicative_slowdown = health_deficiency / 75)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying, TRUE, multiplicative_slowdown = health_deficiency / 25)
@@ -1278,11 +1294,11 @@
 /mob/living/carbon/human/species/lizard
 	race = /datum/species/lizard
 
-/mob/living/carbon/human/species/ethereal
-	race = /datum/species/ethereal
-
 /mob/living/carbon/human/species/lizard/ashwalker
 	race = /datum/species/lizard/ashwalker
+
+/mob/living/carbon/human/species/ethereal
+	race = /datum/species/ethereal
 
 /mob/living/carbon/human/species/moth
 	race = /datum/species/moth

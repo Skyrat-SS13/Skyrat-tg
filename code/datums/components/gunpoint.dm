@@ -45,7 +45,7 @@
 	target.apply_status_effect(STATUS_EFFECT_HELDUP)
 
 	if(istype(weapon, /obj/item/gun/ballistic/rocketlauncher) && weapon.chambered)
-		if(target.stat == CONSCIOUS && is_nuclear_operative(shooter) && !is_nuclear_operative(target) && (locate(/obj/item/disk/nuclear) in target.get_contents()) && shooter.client)
+		if(target.stat == CONSCIOUS && is_nuclear_operative(shooter) && !is_nuclear_operative(target) && is_assault_operative(shooter) && !is_assault_operative(target) && (locate(/obj/item/disk/nuclear) in target.get_contents()) && shooter.client)
 			shooter.client.give_award(/datum/award/achievement/misc/rocket_holdup, shooter)
 
 	target.do_alert_animation()
@@ -85,10 +85,10 @@
 	qdel(src)
 
 ///If the shooter shoves or grabs the target, cancel the holdup to avoid cheesing and forcing the charged shot
-/datum/component/gunpoint/proc/check_shove(mob/living/carbon/shooter, mob/shooter_again, mob/living/T)
+/datum/component/gunpoint/proc/check_shove(mob/living/carbon/shooter, mob/shooter_again, mob/living/T, datum/martial_art/attacker_style, modifiers)
 	SIGNAL_HANDLER
 
-	if(T != target || shooter.a_intent == INTENT_DISARM || shooter.a_intent == INTENT_GRAB)
+	if(T != target || (modifiers && modifiers["right"]))
 		return
 	shooter.visible_message("<span class='danger'>[shooter] bumps into [target] and fumbles [shooter.p_their()] aim!</span>", \
 		"<span class='danger'>You bump into [target] and fumble your aim!</span>", ignored_mobs = target)

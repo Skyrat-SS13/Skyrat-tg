@@ -27,8 +27,8 @@ SUBSYSTEM_DEF(ticker)
 	var/admin_delay_notice = ""				//a message to display to anyone who tries to restart the world after a delay
 	var/ready_for_reboot = FALSE			//all roundend preparation done with, all that's left is reboot
 
-	///If not set to ANON_DISABLED then people spawn with a themed anon name (see anonymousnames.dm)
-	var/anonymousnames = ANON_DISABLED
+	///If set to an anonymous theme datum then people spawn with said themed anon name (see anonymousnames.dm)
+	var/datum/anonymous_theme/anonymousnames
 	///Boolean to see if the game needs to set up a triumvirate ai (see tripAI.dm)
 	var/triai = FALSE
 
@@ -299,7 +299,7 @@ SUBSYSTEM_DEF(ticker)
 	SSdbcore.SetRoundStart()
 
 	to_chat(world, "<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
-	SEND_SOUND(world, sound('sound/ai/welcome.ogg'))
+	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
@@ -625,6 +625,10 @@ SUBSYSTEM_DEF(ticker)
 	fdel(F)
 	WRITE_FILE(F, the_mode)
 
+/// Returns if either the master mode or the forced secret ruleset matches the mode name.
+/datum/controller/subsystem/ticker/proc/is_mode(mode_name)
+	return GLOB.master_mode == mode_name || GLOB.secret_force_mode == mode_name
+
 /datum/controller/subsystem/ticker/proc/SetRoundEndSound(the_sound)
 	set waitfor = FALSE
 	round_end_sound_sent = FALSE
@@ -695,12 +699,3 @@ SUBSYSTEM_DEF(ticker)
 			SEND_SOUND(M.client, end_of_round_sound_ref)
 
 	text2file(login_music, "data/last_round_lobby_music.txt")
-
-/datum/controller/subsystem/ticker/Topic(href, list/href_list)
-	. = ..()
-	if(href_list["cancel_heart"] && usr.client.holder)
-		var/mob/heart_sender = locate(href_list["heart_source"])
-		var/mob/intended_recepient = locate(href_list["heart_target"])
-		log_admin("[usr.ckey] blocked commendation from [heart_sender] ([heart_sender.ckey]) to [intended_recepient] ([intended_recepient.ckey])")
-		message_admins("[usr.ckey] blocked commendation from [heart_sender] ([heart_sender.ckey]) to [intended_recepient] ([intended_recepient.ckey])")
-		hearts[intended_recepient] = null

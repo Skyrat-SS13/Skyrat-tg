@@ -11,9 +11,14 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define ALL_CARDINALS (NORTH|SOUTH|EAST|WEST)
 
 // for /datum/var/datum_flags
-#define DF_USE_TAG		(1<<0)
-#define DF_VAR_EDITED	(1<<1)
+#define DF_USE_TAG (1<<0)
+#define DF_VAR_EDITED (1<<1)
 #define DF_ISPROCESSING (1<<2)
+/**
+ * Is this datum capable of sending signals?
+ * Set when a signal has been registered.
+ */
+#define DF_SIGNAL_ENABLED (1<<3)
 
 //FLAGS BITMASK
 // scroll down before changing the numbers on these
@@ -174,8 +179,12 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define MOBILITY_STORAGE		(1<<5)
 /// can pull things
 #define MOBILITY_PULL			(1<<6)
+/// can rest
+#define MOBILITY_REST           (1<<7)
 
 #define MOBILITY_FLAGS_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL)
+#define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL | MOBILITY_REST)
+#define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL | MOBILITY_REST)
 
 //alternate appearance flags
 #define AA_TARGET_SEE_APPEARANCE (1<<0)

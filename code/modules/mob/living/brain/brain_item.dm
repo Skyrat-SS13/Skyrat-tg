@@ -12,7 +12,7 @@
 	attack_verb_simple = list("attack", "slap", "whack")
 
 	///The brain's organ variables are significantly more different than the other organs, with half the decay rate for balance reasons, and twice the maxHealth
-	decay_factor = STANDARD_ORGAN_DECAY	/ 2		//30 minutes of decaying to result in a fully damaged brain, since a fast decay rate would be unfun gameplay-wise
+	decay_factor = STANDARD_ORGAN_DECAY	* 0.5		//30 minutes of decaying to result in a fully damaged brain, since a fast decay rate would be unfun gameplay-wise
 
 	maxHealth = BRAIN_DAMAGE_DEATH
 	low_threshold = 45
@@ -110,7 +110,7 @@
 /obj/item/organ/brain/attackby(obj/item/O, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 
-	if(istype(O, /obj/item/organ_storage))
+	if(istype(O, /obj/item/borg/apparatus/organ_storage))
 		return //Borg organ bags shouldn't be killing brains
 
 	if((organ_flags & ORGAN_FAILING) && O.is_drainable() && O.reagents.has_reagent(/datum/reagent/medicine/mannitol)) //attempt to heal the brain
@@ -225,6 +225,8 @@
 	QDEL_LIST(traumas)
 
 	destroy_all_skillchips()
+	if(owner?.mind)	//You aren't allowed to return to brains that don't exist
+		owner.mind.current = null
 	return ..()
 
 /obj/item/organ/brain/on_life()

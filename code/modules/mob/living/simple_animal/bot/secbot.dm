@@ -21,7 +21,7 @@
 	data_hud_type = DATA_HUD_SECURITY_ADVANCED
 	path_image_color = "#FF0000"
 
-	a_intent = "harm"
+	combat_mode = TRUE
 
 	var/baton_type = /obj/item/melee/baton
 	var/obj/item/weapon
@@ -197,7 +197,7 @@ Auto Patrol: []"},
 	return
 
 /mob/living/simple_animal/bot/secbot/attack_hand(mob/living/carbon/human/H)
-	if((H.a_intent == INTENT_HARM) || (H.a_intent == INTENT_DISARM))
+	if(H.combat_mode)
 		retaliate(H)
 		if(special_retaliate_after_attack(H))
 			return
@@ -213,9 +213,9 @@ Auto Patrol: []"},
 
 	return ..()
 
-/mob/living/simple_animal/bot/secbot/attackby(obj/item/W, mob/user, params)
+/mob/living/simple_animal/bot/secbot/attackby(obj/item/W, mob/living/user, params)
 	..()
-	if(W.tool_behaviour == TOOL_WELDER && user.a_intent != INTENT_HARM) // Any intent but harm will heal, so we shouldn't get angry.
+	if(W.tool_behaviour == TOOL_WELDER && !user.combat_mode) // Any intent but harm will heal, so we shouldn't get angry.
 		return
 	if(W.tool_behaviour != TOOL_SCREWDRIVER && (W.force) && (!target) && (W.damtype != STAMINA) ) // Added check for welding tool to fix #2432. Welding tool behavior is handled in superclass.
 		retaliate(user)
@@ -291,11 +291,13 @@ Auto Patrol: []"},
 		weapon.attack(C, src)
 	if(ishuman(C))
 		C.stuttering = 5
-		C.Paralyze(100)
+		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
+		C.StaminaKnockdown(60,TRUE)
 		var/mob/living/carbon/human/H = C
 		threat = H.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
 	else
-		C.Paralyze(100)
+		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
+		C.StaminaKnockdown(60,TRUE)
 		C.stuttering = 5
 		threat = C.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
 
@@ -334,9 +336,10 @@ Auto Patrol: []"},
 					else
 						stun_attack(target)
 
-					mode = BOT_PREP_ARREST
-					set_anchored(TRUE)
 					target_lastloc = target.loc
+					if(target.incapacitated()) //SKYRAT EDIT ADDITION
+						mode = BOT_PREP_ARREST
+						set_anchored(TRUE)
 					return
 
 				else								// not next to perp
@@ -352,7 +355,7 @@ Auto Patrol: []"},
 		if(BOT_PREP_ARREST)		// preparing to arrest target
 
 			// see if he got away. If he's no no longer adjacent or inside a closet or about to get up, we hunt again.
-			if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
+			if( !Adjacent(target) || !isturf(target.loc) ||  (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
 				back_to_hunt()
 				return
 

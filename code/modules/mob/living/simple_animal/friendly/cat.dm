@@ -13,7 +13,6 @@
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	ventcrawler = VENTCRAWLER_ALWAYS
 	pass_flags = PASSTABLE
 	mob_size = MOB_SIZE_SMALL
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
@@ -29,6 +28,7 @@
 	response_disarm_simple = "gently push aside"
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
+	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
 	var/turns_since_scan = 0
 	var/mob/living/simple_animal/mouse/movement_target
 	///Limits how often cats can spam chasing mice.
@@ -48,6 +48,7 @@
 	. = ..()
 	add_verb(src, /mob/living/proc/toggle_resting)
 	add_cell_sample()
+	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/pet/cat/add_cell_sample()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CAT, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
@@ -316,6 +317,6 @@
 
 /mob/living/simple_animal/pet/cat/cak/attack_hand(mob/living/L)
 	..()
-	if(L.a_intent == INTENT_HARM && L.reagents && !stat)
+	if(L.combat_mode && L.reagents && !stat)
 		L.reagents.add_reagent(/datum/reagent/consumable/nutriment, 0.4)
 		L.reagents.add_reagent(/datum/reagent/consumable/nutriment/vitamin, 0.4)

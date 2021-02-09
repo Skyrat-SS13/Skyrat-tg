@@ -216,8 +216,8 @@
 /obj/machinery/door/proc/try_to_crowbar(obj/item/I, mob/user)
 	return
 
-/obj/machinery/door/attackby(obj/item/I, mob/user, params)
-	if(user.a_intent != INTENT_HARM && (I.tool_behaviour == TOOL_CROWBAR || istype(I, /obj/item/fireaxe)))
+/obj/machinery/door/attackby(obj/item/I, mob/living/user, params)
+	if(!user.combat_mode && (I.tool_behaviour == TOOL_CROWBAR || istype(I, /obj/item/fireaxe)))
 		var/forced_open = FALSE
 		if(istype(I, /obj/item/crowbar))
 			var/obj/item/crowbar/C = I
@@ -227,7 +227,7 @@
 	else if(I.tool_behaviour == TOOL_WELDER)
 		try_to_weld(I, user)
 		return TRUE
-	else if(!(I.item_flags & NOBLUDGEON) && user.a_intent != INTENT_HARM)
+	else if(!(I.item_flags & NOBLUDGEON) && !user.combat_mode)
 		try_to_activate_door(user)
 		return TRUE
 	return ..()
@@ -361,7 +361,13 @@
 		else if(ishuman(L)) //For humans
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 			L.emote("scream")
-			L.Paralyze(100)
+			//L.Paralyze(100) //SKYRAT EDIT CHANGE - COMBAT - ORIGINAL
+			L.StaminaKnockdown(20, TRUE, TRUE)
+		else if(ismonkey(L)) //For monkeys
+			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
+			//L.Paralyze(100) //ORIGINAL
+			L.StaminaKnockdown(20, TRUE, TRUE)
+			//SKYRAT EDIT END
 		else //for simple_animals & borgs
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 		var/turf/location = get_turf(src)

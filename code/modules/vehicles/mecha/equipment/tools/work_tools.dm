@@ -17,7 +17,8 @@
 	//var/killer_clamp = FALSE -------SKYRAT EDIT - A clamp is a clamp, just like it was on the oldbase.
 	var/killer_clamp = TRUE
 	///How much base damage this clamp does
-	var/clamp_damage = 20
+	var/clamp_damage = 30	//SKYRAT EDIT - We've removed instant arm delimbs, so this is a buff to make up for it.
+//	var/clamp_damage = 20 SKYRAT EDIT - Original line
 	///Var for the chassis we are attached to, needed to access ripley contents and such
 	var/obj/vehicle/sealed/mecha/working/ripley/cargo_holder
 	///Audio for using the hydraulic clamp
@@ -38,7 +39,7 @@
 	. = ..()
 	cargo_holder = null
 
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/action(mob/source, atom/target, params)
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/action(mob/living/source, atom/target, params)
 	if(!action_checks(target))
 		return
 	if(!cargo_holder)
@@ -92,7 +93,10 @@
 		var/mob/living/M = target
 		if(M.stat == DEAD)
 			return
-		if(source.a_intent == INTENT_HELP)
+
+		//var/list/modifiers = params2list(params) - SKYRAT EDIT REMOVAL
+
+		if(!source.combat_mode)
 			step_away(M,chassis)
 			if(killer_clamp)
 				target.visible_message("<span class='danger'>[chassis] tosses [target] like a piece of paper!</span>", \
@@ -102,7 +106,8 @@
 				chassis.visible_message("<span class='notice'>[chassis] pushes [target] out of the way.</span>", \
 				"<span class='notice'>[chassis] pushes you aside.</span>")
 			return ..()
-		else if(source.a_intent == INTENT_DISARM && iscarbon(M))//meme clamp here
+
+		/*else if(modifiers && modifiers["right"] && iscarbon(M))//meme clamp here
 			if(!killer_clamp)
 				to_chat(source, "<span class='notice'>You longingly wish to tear [M]'s arms off.</span>")
 				return
@@ -122,9 +127,9 @@
 			playsound(src, get_dismember_sound(), 80, TRUE)
 			target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off!</span>", \
 						   "<span class='userdanger'>[chassis] rips your arms off!</span>")
-			log_combat(source, M, "removed both arms with a real clamp,", "[name]", "(INTENT: [uppertext(source.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+			log_combat(source, M, "removed both arms with a real clamp,", "[name]", "(COMBAT MODE: [uppertext(source.combat_mode)] (DAMTYPE: [uppertext(damtype)])")
 			return ..()
-
+*/	// SKYRAT REMOVAL - No instant arm-removals.
 		M.take_overall_damage(clamp_damage)
 		if(!M) //get gibbed stoopid
 			return
@@ -133,7 +138,7 @@
 		target.visible_message("<span class='danger'>[chassis] squeezes [target]!</span>", \
 							"<span class='userdanger'>[chassis] squeezes you!</span>",\
 							"<span class='hear'>You hear something crack.</span>")
-		log_combat(source, M, "attacked", "[name]", "(INTENT: [uppertext(source.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+		log_combat(source, M, "attacked", "[name]", "(Combat mode: [source.combat_mode ? "On" : "Off"]) (DAMTYPE: [uppertext(damtype)])")
 	return ..()
 
 

@@ -253,7 +253,7 @@
 	return pick("Ayy","Truth","Tsoukalos","Mulder","Scully") //Yes it is!
 
 /datum/holiday/usa
-	name = "Independence Day"
+	name = "US Independence Day"
 	begin_day = 4
 	begin_month = JULY
 
@@ -475,7 +475,7 @@
 			/obj/item/toy/xmas_cracker = 3,
 			/obj/item/clothing/head/santa = 1,
 			/obj/item/a_gift/anything = 1
-		) = maint_holiday_weight,
+		) = MAINT_HOLIDAY_WEIGHT, //SKYRAT CHANGE
 	)
 
 /datum/holiday/xmas/proc/roundstart_celebrate()
@@ -548,7 +548,7 @@
 		list(
 			/obj/item/food/egg/loaded = 15,
 			/obj/item/storage/basket/easter = 15
-		) = maint_holiday_weight,
+		) = MAINT_HOLIDAY_WEIGHT, //SKYRAT CHANGE
 	)
 
 /datum/holiday/easter/greet()

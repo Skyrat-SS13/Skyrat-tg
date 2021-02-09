@@ -9,7 +9,7 @@
 	resistance_flags = ACID_PROOF
 
 
-/obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
+/obj/item/reagent_containers/glass/attack(mob/M, mob/living/user, obj/target)
 	if(!canconsume(M, user))
 		return
 
@@ -21,7 +21,7 @@
 		return
 
 	if(istype(M))
-		if(user.a_intent == INTENT_HARM)
+		if(user.combat_mode)
 			var/R
 			M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
 							"<span class='userdanger'>[user] splashes the contents of [src] onto you!</span>")
@@ -63,7 +63,7 @@
 					if(LAZYLEN(diseases_to_add))
 						AddComponent(/datum/component/infective, diseases_to_add)
 
-/obj/item/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
+/obj/item/reagent_containers/glass/afterattack(obj/target, mob/living/user, proximity)
 	. = ..()
 	if((!proximity) || !check_allowed_items(target,target_self=1))
 		return
@@ -96,7 +96,7 @@
 		to_chat(user, "<span class='notice'>You fill [src] with [trans] unit\s of the contents of [target].</span>")
 
 	else if(reagents.total_volume)
-		if(user.a_intent == INTENT_HARM)
+		if(user.combat_mode)
 			user.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [target]!</span>", \
 								"<span class='notice'>You splash the contents of [src] onto [target].</span>")
 			reagents.expose(target, TOUCH)
@@ -125,17 +125,19 @@
  */
 /obj/item/reagent_containers/glass/on_accidental_consumption(mob/living/carbon/M, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
 	if(!custom_materials)
-		set_custom_materials(list(SSmaterials.GetMaterialRef(/datum/material/glass) = 5))//sets it to glass so, later on, it gets picked up by the glass catch (hope it doesn't 'break' things lol)
+		set_custom_materials(list(GET_MATERIAL_REF(/datum/material/glass) = 5))//sets it to glass so, later on, it gets picked up by the glass catch (hope it doesn't 'break' things lol)
 	return ..()
 
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
-	desc = "A beaker. It can hold up to 50 units."
+	desc = "A beaker. It can hold up to 60 units." //SKYRAT EDIT: Used to say can hold up to 50 units.
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
 	worn_icon_state = "beaker"
 	custom_materials = list(/datum/material/glass=500)
+	volume = 60 //SKYRAT EDIT: Addition
+	possible_transfer_amounts = list(5,10,15,20,30,60) //SKYRAT EDIT: Addition
 	fill_icon_thresholds = list(0, 10, 25, 50, 75, 80, 90)
 
 /obj/item/reagent_containers/glass/beaker/Initialize()
@@ -153,22 +155,24 @@
 
 /obj/item/reagent_containers/glass/beaker/large
 	name = "large beaker"
-	desc = "A large beaker. Can hold up to 100 units."
+	desc = "A large beaker. Can hold up to 120 units." //SKYRAT EDIT: Used to say Can hold up to 100 units.
 	icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass=2500)
-	volume = 100
+	volume = 120 //SKYRAT EDIT: Original value (100)
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
+	//possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT: Original Values
+	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) //SKYRAT EDIT: New Values
 
 /obj/item/reagent_containers/glass/beaker/plastic
 	name = "x-large beaker"
-	desc = "An extra-large beaker. Can hold up to 120 units."
+	desc = "An extra-large beaker. Can hold up to 150 units." //SKYRAT EDIT: Used to say Can hold up to 120 units
 	icon_state = "beakerwhite"
 	fill_icon_state = "beakerlarge"
 	custom_materials = list(/datum/material/glass=2500, /datum/material/plastic=3000)
-	volume = 120
+	volume = 150 //SKYRAT EDIT: Original Value (120)
 	amount_per_transfer_from_this = 10
-	possible_transfer_amounts = list(5,10,15,20,25,30,60,120)
+	//possible_transfer_amounts = list(5,10,15,20,25,30,60,120) //SKYRAT EDIT: Original values
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,75,150) //SKYRAT EDIT: New Values
 
 /obj/item/reagent_containers/glass/beaker/meta
 	name = "metamaterial beaker"
@@ -229,7 +233,7 @@
 /obj/item/reagent_containers/glass/beaker/synthflesh
 	list_reagents = list(/datum/reagent/medicine/c2/synthflesh = 50)
 
-/obj/item/reagent_containers/glass/bucket
+/obj/item/reagent_containers/glass/bucket//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bucket"
 	desc = "It's a bucket."
 	icon = 'icons/obj/janitor.dmi'

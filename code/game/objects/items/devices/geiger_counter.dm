@@ -4,7 +4,7 @@
 #define RAD_LEVEL_VERY_HIGH 800
 #define RAD_LEVEL_CRITICAL 1500
 
-/obj/item/geiger_counter //DISCLAIMER: I know nothing about how real-life Geiger counters work. This will not be realistic. ~Xhuis
+/obj/item/geiger_counter //DISCLAIMER: I know nothing about how real-life Geiger counters work. This will not be realistic. ~Xhuis//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "\improper Geiger counter"
 	desc = "A handheld device used for detecting and measuring radiation pulses."
 	icon = 'icons/obj/device.dmi'
@@ -123,9 +123,9 @@
 	update_icon()
 	to_chat(user, "<span class='notice'>[icon2html(src, user)] You switch [scanning ? "on" : "off"] [src].</span>")
 
-/obj/item/geiger_counter/afterattack(atom/target, mob/user)
+/obj/item/geiger_counter/afterattack(atom/target, mob/living/user, params)
 	. = ..()
-	if(user.a_intent == INTENT_HELP)
+	if(!user.combat_mode)
 		if(!(obj_flags & EMAGGED))
 			user.visible_message("<span class='notice'>[user] scans [target] with [src].</span>", "<span class='notice'>You scan [target]'s radiation levels with [src]...</span>")
 			addtimer(CALLBACK(src, .proc/scan, target, user), 20, TIMER_UNIQUE) // Let's not have spamming GetAllContents

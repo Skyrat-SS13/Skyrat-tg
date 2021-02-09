@@ -2,11 +2,15 @@
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Small Fonts"
-#define MAX_TIMER 9000
+//#define MAX_TIMER 9000 //ORIGINAL
+#define MAX_TIMER 36000 //SKYRAT EDIT CHANGE
 
-#define PRESET_SHORT 1200
-#define PRESET_MEDIUM 1800
-#define PRESET_LONG 3000
+//#define PRESET_SHORT 1200 //ORIGINAL
+#define PRESET_SHORT 3000 //SKYRAT EDIT CHANGE
+//#define PRESET_MEDIUM 1800 //ORIGINAL
+#define PRESET_MEDIUM 6000 //SKYRAT EDIT CHANGE
+//#define PRESET_LONG 3000 //ORIGINAL
+#define PRESET_LONG 9000 //SKYRAT EDIT CHANGE
 
 
 
@@ -72,7 +76,8 @@
 		return
 
 	if(timing)
-		if(world.time - activation_time >= timer_duration)
+		//if(world.time - activation_time >= timer_duration) //ORIGINAL
+		if(world.realtime - activation_time >= timer_duration) //SKYRAT EDIT CHANGE
 			timer_end() // open doors, reset timer, clear status screen
 		update_icon()
 
@@ -82,7 +87,8 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 
-	activation_time = world.time
+	//activation_time = world.time //ORIGINAL
+	activation_time = world.realtime //SKYRAT EDIT CHANGE
 	timing = TRUE
 
 	for(var/obj/machinery/door/window/brigdoor/door in targets)
@@ -131,7 +137,8 @@
 
 
 /obj/machinery/door_timer/proc/time_left(seconds = FALSE)
-	. = max(0,timer_duration - (activation_time ? world.time - activation_time : 0))
+	//. = max(0,timer_duration - (activation_time ? world.time - activation_time : 0)) //ORIGINAL
+	. = max(0,timer_duration - (activation_time ? world.realtime - activation_time : 0)) //SKYRAT EDIT CHANGE
 	if(seconds)
 		. /= 10
 
@@ -238,7 +245,8 @@
 					preset_time = PRESET_LONG
 			. = set_timer(preset_time)
 			if(timing)
-				activation_time = world.time
+				//activation_time = world.time //ORIGINAL
+				activation_time = world.realtime
 		else
 			. = FALSE
 

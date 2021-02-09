@@ -19,17 +19,20 @@ $include interviews.txt
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
 # SERVERNAME tgstation
 
-## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
-# SERVERSQLNAME tgstation
-
 ## Server tagline: This will appear right below the server's title.
 # SERVERTAGLINE A generic TG-based server
+
+## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
+# SERVERSQLNAME tgstation
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
 STATIONNAME Space Station 13
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
 #HUB
+
+## Once the server population reaches this number, it will be taken off the byond hub. 0 disables.
+#MAX_HUB_POP 100
 
 ## Lobby time: This is the amount of time between rounds that players have to setup their characters and be ready.
 LOBBY_COUNTDOWN 120
@@ -111,6 +114,9 @@ LOG_ATTACK
 
 ## log pda messages
 LOG_PDA
+
+## log uplink purchases
+LOG_UPLINK
 
 ## log telecomms messages
 LOG_TELECOMMS
@@ -399,6 +405,9 @@ AUTOADMIN_RANK Game Master
 
 ## Uncomment to automatically deadmin players when the game starts.
 #AUTO_DEADMIN_PLAYERS
+
+## Number of game ticks before player-admins will be automatically deadminned.
+#AUTO_DEADMIN_TIMEGATE 600
 
 ## Uncomment to automatically deadmin antagonists when they gain the role.
 #AUTO_DEADMIN_ANTAGONISTS

@@ -159,6 +159,16 @@
 	icon_state = "corgi"
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
+/datum/body_marking/secondary/leopard1
+	name = "Leopard (alt 1)"
+	icon_state = "leopard1"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/secondary/leopard2
+	name = "Leopard (alt 2)"
+	icon_state = "leopard2"
+	affected_bodyparts = CHEST
+
 /datum/body_marking/secondary/skunk
 	name = "Skunk"
 	icon_state = "skunk"
@@ -274,6 +284,21 @@
 	name = "Belly Slim"
 	icon_state = "bellyslim"
 	affected_bodyparts = HEAD | CHEST | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/bellyslimalt
+	name = "Belly Slim Alternative"
+	icon_state = "bellyslim_alt"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/secondary/bellyandbutt
+	name = "Belly and Butt"
+	icon_state = "bellyandbutt"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/secondary/butt
+	name = "Butt"
+	icon_state = "butt"
+	affected_bodyparts = CHEST
 
 /datum/body_marking/secondary/handsfeet
 	name = "Hands Feet"

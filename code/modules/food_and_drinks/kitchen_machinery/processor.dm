@@ -1,5 +1,5 @@
 
-/obj/machinery/processor
+/obj/machinery/processor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "food processor"
 	desc = "An industrial grinder used to process meat and other foods. Keep hands clear of intake area while operating."
 	icon = 'icons/obj/kitchen.dmi'
@@ -28,10 +28,15 @@
 		. += "<span class='notice'>The status display reads: Outputting <b>[rating_amount]</b> item(s) at <b>[rating_speed*100]%</b> speed.</span>"
 
 /obj/machinery/processor/proc/process_food(datum/food_processor_process/recipe, atom/movable/what)
-	if (recipe.output && loc && !QDELETED(src))
-		for(var/i = 0, i < (rating_amount * recipe.multiplier), i++)
-			new recipe.output(drop_location())
-	if (isliving(what))
+	if(recipe.output && loc && !QDELETED(src))
+		var/list/cached_mats = recipe.preserve_materials && what.custom_materials
+		var/cached_multiplier = recipe.multiplier
+		for(var/i in 1 to cached_multiplier)
+			var/atom/processed_food = new recipe.output(drop_location())
+			if(cached_mats)
+				processed_food.set_custom_materials(cached_mats, 1 / cached_multiplier)
+
+	if(isliving(what))
 		var/mob/living/themob = what
 		themob.gib(TRUE,TRUE,TRUE)
 	else
@@ -45,7 +50,7 @@
 			continue
 		return recipe
 
-/obj/machinery/processor/attackby(obj/item/O, mob/user, params)
+/obj/machinery/processor/attackby(obj/item/O, mob/living/user, params)
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")
 		return TRUE
@@ -84,18 +89,17 @@
 		user.transferItemToLoc(O, src, TRUE)
 		LAZYADD(processor_contents, O)
 		return 1
+	else if(!user.combat_mode)
+		to_chat(user, "<span class='warning'>That probably won't blend!</span>")
+		return 1
 	else
-		if(user.a_intent != INTENT_HARM)
-			to_chat(user, "<span class='warning'>That probably won't blend!</span>")
-			return 1
-		else
-			return ..()
+		return ..()
 
 /obj/machinery/processor/interact(mob/user)
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")
 		return TRUE
-	if(user.a_intent == INTENT_GRAB && ismob(user.pulling) && select_recipe(user.pulling))
+	if(ismob(user.pulling) && select_recipe(user.pulling))
 		if(user.grab_state < GRAB_AGGRESSIVE)
 			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 			return

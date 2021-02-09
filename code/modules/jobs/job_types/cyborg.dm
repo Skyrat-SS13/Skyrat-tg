@@ -2,8 +2,8 @@
 	title = "Cyborg"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 1
+	total_positions = 3		// SKYRAT EDIT: Original value (0)
+	spawn_positions = 3		// SKYRAT EDIT: Original value (1)
 	supervisors = "your laws and the AI"	//Nodrak
 	selection_color = "#ddffdd"
 	minimal_player_age = 21

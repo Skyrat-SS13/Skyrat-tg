@@ -6,7 +6,6 @@
 	density = TRUE
 	anchored = TRUE
 	layer = TABLE_LAYER
-	climbable = TRUE
 	obj_flags = CAN_BE_HIT
 	pass_flags = LETPASSTHROW
 
@@ -31,8 +30,9 @@
 
 	var/global/list/allocated_beta = list()
 
-/obj/structure/trash_pile/Initialize()
+/obj/structure/trash_pile/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/climbable)
 	icon_state = pick(
 		"pile1",
 		"pile2",
@@ -148,8 +148,8 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/trash_pile/attackby(obj/item/I, mob/user, params)
-	if(user.a_intent == INTENT_HELP)
+/obj/structure/trash_pile/attackby(obj/item/I, mob/living/user, params)
+	if(!user.combat_mode)
 		if(can_hide_item(I))
 			to_chat(user,"<span class='notice'>You begin to stealthily hide [I] in the [src].</span>")
 			if(do_mob(user, user, hide_item_time))

@@ -1,5 +1,5 @@
 //Bluespace crystals, used in telescience and when crushed it will blink you to a random turf.
-/obj/item/stack/ore/bluespace_crystal
+/obj/item/stack/ore/bluespace_crystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bluespace crystal"
 	desc = "A glowing bluespace crystal, not much is known about how they work. It looks very delicate."
 	icon = 'icons/obj/telescience.dmi'
@@ -22,7 +22,7 @@
 	refined_type = null
 	merge_type = /obj/item/stack/ore/bluespace_crystal/refined
 
-/obj/item/stack/ore/bluespace_crystal/Initialize()
+/obj/item/stack/ore/bluespace_crystal/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
 	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
@@ -62,7 +62,7 @@
 	merge_type = /obj/item/stack/ore/bluespace_crystal/artificial
 
 //Polycrystals, aka stacks
-/obj/item/stack/sheet/bluespace_crystal
+/obj/item/stack/sheet/bluespace_crystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bluespace polycrystal"
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "polycrystal"

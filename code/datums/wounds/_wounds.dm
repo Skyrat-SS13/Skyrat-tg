@@ -258,8 +258,13 @@
  */
 /datum/wound/proc/try_treating(obj/item/I, mob/user)
 	// first we weed out if we're not dealing with our wound's bodypart, or if it might be an attack
-	if(QDELETED(I) || limb.body_zone != user.zone_selected || (I.force && user.a_intent != INTENT_HELP))
+	if(!I || limb.body_zone != user.zone_selected)
 		return FALSE
+
+	if(isliving(user))
+		var/mob/living/tendee = user
+		if(I.force && tendee.combat_mode)
+			return FALSE
 
 	var/allowed = FALSE
 
@@ -303,7 +308,7 @@
 	return FALSE
 
 /// Like try_treating() but for unhanded interactions from humans, used by joint dislocations for manual bodypart chiropractice for example. Ignores thick material checks since you can pop an arm into place through a thick suit unlike using sutures
-/datum/wound/proc/try_handling(mob/living/carbon/human/user)
+/datum/wound/proc/try_handling(mob/living/carbon/human/user, modifiers)
 	return FALSE
 
 /// Someone is using something that might be used for treating the wound on this limb
@@ -339,6 +344,16 @@
 /// Used when we're being dragged while bleeding, the value we return is how much bloodloss this wound causes from being dragged. Since it's a proc, you can let bandages soak some of the blood
 /datum/wound/proc/drag_bleed_amount()
 	return
+
+/**
+ * get_bleed_rate_of_change() is used in [/mob/living/carbon/proc/bleed_warn] to gauge whether this wound (if bleeding) is becoming worse, better, or staying the same over time
+ *
+ * Returns BLOOD_FLOW_STEADY if we're not bleeding or there's no change (like piercing), BLOOD_FLOW_DECREASING if we're clotting (non-critical slashes, gauzed, coagulant, etc), BLOOD_FLOW_INCREASING if we're opening up (crit slashes/heparin)
+ */
+/datum/wound/proc/get_bleed_rate_of_change()
+	if(blood_flow && HAS_TRAIT(victim, TRAIT_BLOODY_MESS))
+		return BLOOD_FLOW_INCREASING
+	return BLOOD_FLOW_STEADY
 
 /**
  * get_examine_description() is used in carbon/examine and human/examine to show the status of this wound. Useful if you need to show some status like the wound being splinted or bandaged.

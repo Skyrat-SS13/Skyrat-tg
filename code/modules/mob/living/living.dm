@@ -83,8 +83,11 @@
 		return TRUE
 
 	var/they_can_move = TRUE
+	var/their_combat_mode = FALSE
+
 	if(isliving(M))
 		var/mob/living/L = M
+		their_combat_mode = L.combat_mode
 		they_can_move = L.mobility_flags & MOBILITY_MOVE
 		//Also spread diseases
 		for(var/thing in diseases)
@@ -138,12 +141,12 @@
 				mob_swap = TRUE
 		else
 			//You can swap with the person you are dragging on grab intent, and restrained people in most cases
-			if(M.pulledby == src && a_intent == INTENT_GRAB && !too_strong)
+			if(M.pulledby == src && !too_strong)
 				mob_swap = TRUE
 			else if(
 				!(HAS_TRAIT(M, TRAIT_NOMOBSWAP) || HAS_TRAIT(src, TRAIT_NOMOBSWAP))&&\
-				((HAS_TRAIT(M, TRAIT_RESTRAINED) && !too_strong) || M.a_intent == INTENT_HELP) &&\
-				(HAS_TRAIT(src, TRAIT_RESTRAINED) || a_intent == INTENT_HELP)
+				((HAS_TRAIT(M, TRAIT_RESTRAINED) && !too_strong) || !their_combat_mode) &&\
+				(HAS_TRAIT(src, TRAIT_RESTRAINED) || !combat_mode)
 			)
 				mob_swap = TRUE
 		if(mob_swap)
@@ -184,8 +187,10 @@
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
 			return TRUE
 	//If they're a human, and they're not in help intent, block pushing
-	if(ishuman(M) && (M.a_intent != INTENT_HELP))
-		return TRUE
+	if(ishuman(M))
+		var/mob/living/carbon/human/human = M
+		if(human.combat_mode)
+			return TRUE
 	//anti-riot equipment is also anti-push
 	for(var/obj/item/I in M.held_items)
 		if(!istype(M, /obj/item/clothing))
@@ -199,7 +204,7 @@
 	if(len)
 		for(var/obj/item/I in held_items)
 			if(!holding.len)
-				holding += "They are holding \a [I]"
+				holding += "[p_they(TRUE)] [p_are()] holding \a [I]"
 			else if(held_items.Find(I) == len)
 				holding += ", and \a [I]."
 			else
@@ -221,13 +226,23 @@
 	if(!client && (mob_size < MOB_SIZE_SMALL))
 		return
 	now_pushing = TRUE
-	var/t = get_dir(src, AM)
+	var/dir_to_target = get_dir(src, AM)
+
+	// If there's no dir_to_target then the player is on the same turf as the atom they're trying to push.
+	// This can happen when a player is stood on the same turf as a directional window. All attempts to push
+	// the window will fail as get_dir will return 0 and the player will be unable to move the window when
+	// it should be pushable.
+	// In this scenario, we will use the facing direction of the /mob/living attempting to push the atom as
+	// a fallback.
+	if(!dir_to_target)
+		dir_to_target = dir
+
 	var/push_anchored = FALSE
 	if((AM.move_resist * MOVE_FORCE_CRUSH_RATIO) <= force)
-		if(move_crush(AM, move_force, t))
+		if(move_crush(AM, move_force, dir_to_target))
 			push_anchored = TRUE
 	if((AM.move_resist * MOVE_FORCE_FORCEPUSH_RATIO) <= force)			//trigger move_crush and/or force_push regardless of if we can push it normally
-		if(force_push(AM, move_force, t, push_anchored))
+		if(force_push(AM, move_force, dir_to_target, push_anchored))
 			push_anchored = TRUE
 	if((AM.anchored && !push_anchored) || (force < (AM.move_resist * MOVE_FORCE_PUSH_RATIO)))
 		now_pushing = FALSE
@@ -235,7 +250,7 @@
 	if (istype(AM, /obj/structure/window))
 		var/obj/structure/window/W = AM
 		if(W.fulltile)
-			for(var/obj/structure/window/win in get_step(W,t))
+			for(var/obj/structure/window/win in get_step(W, dir_to_target))
 				now_pushing = FALSE
 				return
 	if(pulling == AM)
@@ -243,8 +258,8 @@
 	var/current_dir
 	if(isliving(AM))
 		current_dir = AM.dir
-	if(AM.Move(get_step(AM.loc, t), t, glide_size))
-		Move(get_step(loc, t), t)
+	if(AM.Move(get_step(AM.loc, dir_to_target), dir_to_target, glide_size))
+		Move(get_step(loc, dir_to_target), dir_to_target)
 	if(current_dir)
 		AM.setDir(current_dir)
 	now_pushing = FALSE
@@ -311,6 +326,7 @@
 			M.LAssailant = usr
 		if(isliving(M))
 			var/mob/living/L = M
+
 			SEND_SIGNAL(M, COMSIG_LIVING_GET_PULLED, src)
 			//Share diseases that are spread by touch
 			for(var/thing in diseases)
@@ -363,7 +379,7 @@
 /mob/living/proc/reset_pull_offsets(mob/living/M, override)
 	if(!override && M.buckled)
 		return
-	animate(M, pixel_x = base_pixel_x, pixel_y = base_pixel_y, 1)
+	animate(M, pixel_x = M.base_pixel_x, pixel_y = M.base_pixel_y, 1)
 
 //mob verbs are a lot faster than object verbs
 //for more info on why this is not atom/pull, see examinate() in mob.dm
@@ -373,7 +389,7 @@
 
 	if(istype(AM) && Adjacent(AM))
 		start_pulling(AM)
-	else
+	else if(!combat_mode) //Don;'t cancel pulls if misclicking in combat mode.
 		stop_pulling()
 
 /mob/living/stop_pulling()
@@ -492,6 +508,8 @@
 
 ///Proc to hook behavior to the change of value in the resting variable.
 /mob/living/proc/set_resting(new_resting, silent = TRUE, instant = FALSE)
+	if(!(mobility_flags & MOBILITY_REST))
+		return
 	if(new_resting == resting)
 		return
 	. = resting
@@ -515,8 +533,8 @@
 			if(!silent)
 				to_chat(src, "<span class='notice'>You will now stand up as soon as you are able to.</span>")
 		else
-			if(!silent)
-				to_chat(src, "<span class='notice'>You stand up.</span>")
+			/*if(!silent) SKYRAT EDIT REMOVAL
+				to_chat(src, "<span class='notice'>You stand up.</span>")*/
 			get_up(instant)
 
 	update_resting()
@@ -530,10 +548,29 @@
 
 /mob/living/proc/get_up(instant = FALSE)
 	set waitfor = FALSE
-	if(!instant && !do_mob(src, src, 1 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+	var/get_up_speed = GET_UP_FAST //SKYRAT EDIT CHANGE : if(!instant && !do_mob(src, src, 1 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+	var/stam = getStaminaLoss()
+	switch(FLOOR(stam,1))
+		if(STAMINA_THRESHOLD_MEDIUM_GET_UP to STAMINA_THRESHOLD_SLOW_GET_UP)
+			get_up_speed = GET_UP_MEDIUM
+		if(STAMINA_THRESHOLD_SLOW_GET_UP+1 to INFINITY)
+			get_up_speed = GET_UP_SLOW
+	if(!instant)
+		if(get_up_speed == GET_UP_SLOW) //Slow getups are easily noticable
+			visible_message("<span class='notice'>[src] weakily attempts to stand up.</span>", "<span class='notice'>You weakily attempt to stand up.</span>")
+			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+				if(!body_position == STANDING_UP)
+					visible_message("<span class='warning'>[src] fails to stand up.</span>", "<span class='warning'>You fail to stand up.</span>")
+				return
+		else
+			if(!do_mob(src, src, get_up_speed SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM), extra_checks = CALLBACK(src, /mob/living/proc/rest_checks_callback), interaction_key = DOAFTER_SOURCE_GETTING_UP))
+				return
+	if(pulledby && pulledby.grab_state)
+		to_chat(src, "<span class='warning'>You fail to stand up, you're restrained!</span>") //SKYRAT EDIT ADDITION END
 		return
 	if(resting || body_position == STANDING_UP || HAS_TRAIT(src, TRAIT_FLOORED))
 		return
+	to_chat(src, "<span class='notice'>You stand up.</span>") //SKYRAT EDIT ADDITION
 	set_lying_angle(0)
 	set_body_position(STANDING_UP)
 
@@ -911,10 +948,17 @@
 
 /mob/living/resist_grab(moving_resist)
 	. = TRUE
-	if(pulledby.grab_state || resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS))
+	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || staminaloss > STAMINA_THRESHOLD_HARD_RESIST) //SKYRAT EDIT CHANGE: if(pulledby.grab_state || resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS))
 		var/altered_grab_state = pulledby.grab_state
-		if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
+		if(HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however - SKYRAT EDIT CHANGE: if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++
+		if(staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
+			altered_grab_state++
+		if(body_position == LYING_DOWN)
+			altered_grab_state++
+		var/mob/living/M = pulledby
+		if(M.staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
+			altered_grab_state-- //SKYRAT EDIT END
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
 		resist_chance = (resist_chance/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
 		if(prob(resist_chance))
@@ -925,7 +969,7 @@
 			pulledby.stop_pulling()
 			return FALSE
 		else
-			adjustStaminaLoss(rand(15,20))//failure to escape still imparts a pretty serious penalty
+			adjustStaminaLoss(rand(10,15))//failure to escape still imparts a pretty serious penalty //SKYRAT EDIT CHANGE: //adjustStaminaLoss(rand(15,20))//failure to escape still imparts a pretty serious penalty
 			visible_message("<span class='danger'>[src] struggles as they fail to break free of [pulledby]'s grip!</span>", \
 							"<span class='warning'>You struggle as you fail to break free of [pulledby]'s grip!</span>", null, null, pulledby)
 			to_chat(pulledby, "<span class='danger'>[src] struggles as they fail to break free of your grip!</span>")
@@ -1900,3 +1944,38 @@
 /mob/living/proc/on_handsblocked_end()
 	REMOVE_TRAIT(src, TRAIT_UI_BLOCKED, TRAIT_HANDS_BLOCKED)
 	REMOVE_TRAIT(src, TRAIT_PULL_BLOCKED, TRAIT_HANDS_BLOCKED)
+
+
+/// Returns the attack damage type of a living mob such as [BRUTE].
+/mob/living/proc/get_attack_type()
+	return BRUTE
+
+
+/**
+ * Apply a martial art move from src to target.
+ *
+ * This is used to process martial art attacks against nonhumans.
+ * It is also used to process martial art attacks by nonhumans, even against humans
+ * Human vs human attacks are handled in species code right now.
+ */
+/mob/living/proc/apply_martial_art(mob/living/target, modifiers, is_grab)
+	if(HAS_TRAIT(target, TRAIT_MARTIAL_ARTS_IMMUNE))
+		return FALSE
+	if(ishuman(target) && ishuman(src)) //Human vs human are handled in species code
+		return FALSE
+	var/datum/martial_art/style = mind?.martial_art
+	var/attack_result = FALSE
+	if (style)
+		if (is_grab)
+			attack_result = style.grab_act(src, target)
+		if(modifiers && modifiers["right"])
+			attack_result = style.disarm_act(src, target)
+		if(combat_mode)
+			if (HAS_TRAIT(src, TRAIT_PACIFISM))
+				return FALSE
+			attack_result = style.harm_act(src, target)
+		else
+			attack_result = style.help_act(src, target)
+
+
+	return attack_result

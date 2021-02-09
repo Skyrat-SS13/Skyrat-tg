@@ -454,8 +454,15 @@ SUBSYSTEM_DEF(job)
 
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
+		var/spawning_handled = FALSE
 		var/obj/S = null
-		if(length(GLOB.jobspawn_overrides[rank]))
+		if(HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS))
+			SendToLateJoin(living_mob)
+			spawning_handled = TRUE
+		else if(HAS_TRAIT(SSstation, STATION_TRAIT_RANDOM_ARRIVALS))
+			DropLandAtRandomHallwayPoint(living_mob)
+			spawning_handled = TRUE
+		else if(length(GLOB.jobspawn_overrides[rank]))
 			S = pick(GLOB.jobspawn_overrides[rank])
 		else
 			for(var/_sloc in GLOB.start_landmarks_list)
@@ -469,7 +476,7 @@ SUBSYSTEM_DEF(job)
 				break
 		if(S)
 			S.JoinPlayerHere(living_mob, FALSE)
-		if(!S) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
+		if(!S && !spawning_handled) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 			log_world("Couldn't find a round start spawn point for [rank]")
 			if(!SendToLateJoin(living_mob))
 				living_mob.move_to_error_room()
@@ -481,6 +488,10 @@ SUBSYSTEM_DEF(job)
 	to_chat(M, "<b>You are the [rank].</b>")
 	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
+		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+		if (M.client && job.no_dresscode && job.loadout)
+			packed_items = M.client.prefs.equip_preference_loadout(living_mob,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
+		//SKYRAT EDIT ADDITION END
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)//silicons override this proc to return a mob
 		if(ismob(new_mob))
 			living_mob = new_mob
@@ -511,11 +522,11 @@ SUBSYSTEM_DEF(job)
 		var/mob/living/carbon/human/wageslave = living_mob
 		living_mob.add_memory("Your account ID is [wageslave.account_id].")
 	if(job && living_mob)
-		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, living_mob might not.
 		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-		if(job.loadout)
+		if(!job.no_dresscode && job.loadout)
 			if(M.client)
-				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job)
+				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job,initial=TRUE)
 		if(packed_items)
 			M.client.prefs.add_packed_items(living_mob, packed_items)
 		//SKYRAT CHANGE ADDITION END
@@ -705,6 +716,13 @@ SUBSYSTEM_DEF(job)
 		message_admins(msg)
 		CRASH(msg)
 
+///Lands specified mob at a random spot in the hallways
+/datum/controller/subsystem/job/proc/DropLandAtRandomHallwayPoint(mob/living/living_mob)
+	var/turf/spawn_turf = get_safe_random_station_turf(typesof(/area/hallway))
+
+	var/obj/structure/closet/supplypod/centcompod/toLaunch = new()
+	living_mob.forceMove(toLaunch)
+	new /obj/effect/pod_landingzone(spawn_turf, toLaunch)
 
 ///////////////////////////////////
 //Keeps track of all living heads//

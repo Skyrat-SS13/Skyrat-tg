@@ -97,10 +97,10 @@
 				<li>Secure the mainboard with a screwdriver.</li>
 				<li>Install the peripherals control module (Not included. Use supplied datadisk to create one).</li>
 				<li>Secure the peripherals control module with a screwdriver</li>
-				<li>Install the internal armor plating (Not included due to Nanotrasen regulations. Can be made using 5 metal sheets.)</li>
+				<li>Install the internal armor plating (Not included due to Nanotrasen regulations. Can be made using 5 iron sheets.)</li>
 				<li>Secure the internal armor plating with a wrench</li>
 				<li>Weld the internal armor plating to the chassis</li>
-				<li>Install the external reinforced armor plating (Not included due to Nanotrasen regulations. Can be made using 5 reinforced metal sheets.)</li>
+				<li>Install the external reinforced armor plating (Not included due to Nanotrasen regulations. Can be made using 5 reinforced iron sheets.)</li>
 				<li>Secure the external reinforced armor plating with a wrench</li>
 				<li>Weld the external reinforced armor plating to the chassis</li>
 				</ol>
@@ -462,3 +462,10 @@
 	author = "Nanotrasen"
 	title = "Chemical Factories Without Narcotics"
 	page_link = "Guide_to_plumbing"
+
+/obj/item/book/manual/wiki/cytology
+	name = "Unethically Grown Organics"
+	icon_state ="cytologybook"
+	author = "Kryson"
+	title = "Unethically Grown Organics"
+	page_link = "Guide_to_cytology"

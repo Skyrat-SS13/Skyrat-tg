@@ -118,12 +118,12 @@
 
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	var/t =	"<span class='notice'>Coordinates: [x],[y] \n</span>"
-	t +=	"<span class='danger'>Temperature: [environment.temperature] \n</span>"
+	var/t =	"<span class='notice'>Coordinates: [x],[y] </span>\n"
+	t +=	"<span class='danger'>Temperature: [environment.temperature] </span>\n"
 	for(var/id in environment.gases)
 		var/gas = environment.gases[id]
 		if(gas[MOLES])
-			t+="<span class='notice'>[gas[GAS_META][META_GAS_NAME]]: [gas[MOLES]] \n</span>"
+			t+="<span class='notice'>[gas[GAS_META][META_GAS_NAME]]: [gas[MOLES]] </span>\n"
 
 	to_chat(usr, t)
 
@@ -296,7 +296,7 @@
  * Mostly tries to put the item into the slot if possible, or call attack hand
  * on the item in the slot if the users active hand is empty
  */
-/mob/proc/attack_ui(slot)
+/mob/proc/attack_ui(slot, params)
 	var/obj/item/W = get_active_held_item()
 
 	if(istype(W))
@@ -307,7 +307,8 @@
 		// Activate the item
 		var/obj/item/I = get_item_by_slot(slot)
 		if(istype(I))
-			I.attack_hand(src)
+			var/list/modifiers = params2list(params)
+			I.attack_hand(src, modifiers)
 
 	return FALSE
 
@@ -366,7 +367,8 @@
  *
  * returns 0 if it cannot, 1 if successful
  */
-/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE)
+///mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE) (original) SKYRAT EDIT CHANGE - CUSTOMIZATION
+/mob/proc/equip_to_appropriate_slot(obj/item/W, qdel_on_fail = FALSE, blacklist, initial)
 	if(!istype(W))
 		return FALSE
 	var/slot_priority = W.slot_equipment_priority
@@ -382,9 +384,16 @@
 			ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,\
 			ITEM_SLOT_DEX_STORAGE\
 		)
-
+	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
+	/*
 	for(var/slot in slot_priority)
 		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, FALSE)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
+	*/
+	if (blacklist)
+		slot_priority -= blacklist
+	for(var/slot in slot_priority)
+		if(equip_to_slot_if_possible(W, slot, FALSE, TRUE, TRUE, FALSE, initial)) //qdel_on_fail = FALSE; disable_warning = TRUE; redraw_mob = TRUE;
+	//SKYRAT EDIT CHANGE END
 			return TRUE
 
 	if(qdel_on_fail)
@@ -515,10 +524,10 @@
 
 	//now we touch the thing we're examining
 	/// our current intent, so we can go back to it after touching
-	var/previous_intent = a_intent
-	a_intent = INTENT_HELP
+	var/previous_combat_mode = combat_mode
+	set_combat_mode(FALSE)
 	INVOKE_ASYNC(examined_thing, /atom/proc/attack_hand, src)
-	a_intent = previous_intent
+	set_combat_mode(previous_combat_mode)
 	return TRUE
 
 
@@ -573,20 +582,12 @@
 	set name = "Point To"
 	set category = "Object"
 
-	if(!src || !isturf(src.loc))
-		return FALSE
 	if(client && !(A in view(client.view, src)))
 		return FALSE
 	if(istype(A, /obj/effect/temp_visual/point))
 		return FALSE
 
-	var/turf/tile = get_turf(A)
-	if (!tile)
-		return FALSE
-
-	var/turf/our_tile = get_turf(src)
-	var/obj/visual = new /obj/effect/temp_visual/point(our_tile, invisibility)
-	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y, time = 1.7, easing = EASE_OUT)
+	point_at(A)
 
 	return TRUE
 
@@ -819,10 +820,20 @@
  */
 /mob/MouseDrop_T(atom/dropping, atom/user)
 	. = ..()
+
+	// Our mouse drop has already been handled by something else. Most likely buckling code.
+	// Since it has already been handled, we don't need to show inventory.
+	if(.)
+		return
+
 	if(ismob(dropping) && src == user && dropping != user)
 		var/mob/M = dropping
 		var/mob/U = user
-		if(!iscyborg(U) || U.a_intent == INTENT_HARM)
+		if(iscyborg(U))
+			var/mob/living/silicon/robot/cyborg = U
+			if(cyborg.combat_mode)
+				M.show_inv(cyborg)
+		else
 			M.show_inv(U)
 
 ///Is the mob muzzled (default false)

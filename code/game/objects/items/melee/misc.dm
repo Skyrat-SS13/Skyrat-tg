@@ -173,7 +173,7 @@
 
 /obj/item/melee/classic_baton
 	name = "police baton"
-	desc = "A wooden truncheon for beating criminal scum."
+	desc = "A wooden truncheon for beating criminal scum. Left click to stun, right click to harm."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "classic_baton"
 	inhand_icon_state = "classic_baton"
@@ -186,10 +186,10 @@
 
 	var/cooldown_check = 0 // Used interally, you don't want to modify
 
-	var/cooldown = 40 // Default wait time until can stun again.
+	var/cooldown = 1 SECONDS // Default wait time until can stun again. - SKYRAT EDIT CHANGE - ORIGINAL: 40
 	var/knockdown_time_carbon = (1.5 SECONDS) // Knockdown length for carbons.
 	var/stun_time_silicon = (5 SECONDS) // If enabled, how long do we stun silicons.
-	var/stamina_damage = 55 // Do we deal stamina damage.
+	var/stamina_damage = 30 // Do we deal stamina damage. - SKYRAT EDIT CHANGE - ORIGINAL: 55
 	var/affect_silicon = FALSE // Does it stun silicons.
 	var/on_sound // "On" sound, played when switching between able to stun or not.
 	var/on_stun_sound = 'sound/effects/woodhit.ogg' // Default path to sound for when we stun.
@@ -244,7 +244,7 @@
 /obj/item/melee/classic_baton/proc/additional_effects_silicon(mob/living/target, mob/living/user)
 	return
 
-/obj/item/melee/classic_baton/attack(mob/living/target, mob/living/user)
+/obj/item/melee/classic_baton/attack(mob/living/target, mob/living/user, params)
 	if(!on)
 		return ..()
 
@@ -252,8 +252,12 @@
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
 		to_chat(user, "<span class ='userdanger'>You hit yourself over the head!</span>")
 
+		/* - SKYRAT EDIT REMOVAL BEGIN
 		user.Paralyze(knockdown_time_carbon * force)
 		user.apply_damage(stamina_damage, STAMINA, BODY_ZONE_HEAD)
+		*/ //SKYRAT EDIT REMOVAL END
+		user.apply_damage(force*0.5, BRUTE, BODY_ZONE_HEAD) //SKYRAT EDIT ADDITION
+		user.StaminaKnockdown(stamina_damage) //SKYRAT EDIT ADDITION
 
 		additional_effects_carbon(user) // user is the target here
 		if(ishuman(user))
@@ -264,7 +268,7 @@
 		return
 	if(iscyborg(target))
 		// We don't stun if we're on harm.
-		if (user.a_intent != INTENT_HARM)
+		if (!user.combat_mode)
 			if (affect_silicon)
 				var/list/desc = get_silicon_stun_description(target, user)
 
@@ -284,44 +288,51 @@
 		return
 	if(!isliving(target))
 		return
-	if (user.a_intent == INTENT_HARM)
-		if(!..())
+	var/list/modifiers = params2list(params)
+
+	if(modifiers && modifiers["right"])
+		..()
+		return
+	if(cooldown_check > world.time)
+		var/wait_desc = get_wait_description()
+		if (wait_desc)
+			to_chat(user, wait_desc)
+		return
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
 			return
-		if(!iscyborg(target))
+		if(check_martial_counter(H, user))
 			return
+
+	var/list/desc = get_stun_description(target, user)
+
+	if (stun_animation)
+		user.do_attack_animation(target)
+
+	playsound(get_turf(src), on_stun_sound, 75, TRUE, -1)
+	/* - SKYRAT EDIT REMOVAL BEGIN
+	target.Knockdown(knockdown_time_carbon)
+	target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST)
+	*/ //SKYRAT EDIT END
+	//SKYRAT EDIT ADDITION - BEGIN
+	target.apply_damage(force*0.5, BRUTE, BODY_ZONE_CHEST)
+	target.StaminaKnockdown(stamina_damage)
+	//SKYRAT EDIT END
+	additional_effects_carbon(target, user)
+
+	log_combat(user, target, "stunned", src)
+	add_fingerprint(user)
+
+	target.visible_message(desc["visible"], desc["local"])
+
+	if(!iscarbon(user))
+		target.LAssailant = null
 	else
-		if(cooldown_check <= world.time)
-			if(ishuman(target))
-				var/mob/living/carbon/human/H = target
-				if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
-					return
-				if(check_martial_counter(H, user))
-					return
+		target.LAssailant = user
+	cooldown_check = world.time + cooldown
+	return
 
-			var/list/desc = get_stun_description(target, user)
-
-			if (stun_animation)
-				user.do_attack_animation(target)
-
-			playsound(get_turf(src), on_stun_sound, 75, TRUE, -1)
-			target.Knockdown(knockdown_time_carbon)
-			target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST)
-			additional_effects_carbon(target, user)
-
-			log_combat(user, target, "stunned", src)
-			add_fingerprint(user)
-
-			target.visible_message(desc["visible"], desc["local"])
-
-			if(!iscarbon(user))
-				target.LAssailant = null
-			else
-				target.LAssailant = user
-			cooldown_check = world.time + cooldown
-		else
-			var/wait_desc = get_wait_description()
-			if (wait_desc)
-				to_chat(user, wait_desc)
 
 /obj/item/conversion_kit
 	name = "conversion kit"
@@ -411,7 +422,7 @@
 	force = 5
 
 	cooldown = 25
-	stamina_damage = 85
+	stamina_damage = 30 //SKYRAT EDIT CHANGE - ORIGINAL: 85
 	affect_silicon = TRUE
 	on_sound = 'sound/weapons/contractorbatonextend.ogg'
 	on_stun_sound = 'sound/effects/contractorbatonhit.ogg'

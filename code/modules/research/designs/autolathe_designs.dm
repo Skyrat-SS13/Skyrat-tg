@@ -164,7 +164,7 @@
 	name = "Toolbox"
 	id = "tool_box"
 	build_type = AUTOLATHE
-	materials = list(MAT_CATEGORY_RIGID = 500)
+	materials = list(MAT_CATEGORY_ITEM_MATERIAL = 500)
 	build_path = /obj/item/storage/toolbox
 	category = list("initial","Tools")
 
@@ -299,12 +299,12 @@
 	category = list("initial","Misc","Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
 
-/datum/design/metal
-	name = "Metal"
-	id = "metal"
+/datum/design/iron
+	name = "Iron"
+	id = "iron"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/metal
+	build_path = /obj/item/stack/sheet/iron
 	category = list("initial","Construction")
 	maxstack = 50
 
@@ -327,7 +327,7 @@
 	maxstack = 50
 
 /datum/design/rods
-	name = "Metal Rod"
+	name = "Iron Rod"
 	id = "rods"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 1000)
@@ -413,26 +413,31 @@
 /datum/design/bowl
 	name = "Bowl"
 	id = "bowl"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/glass/bowl
-	category = list("initial","Dinnerware")
+	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/drinking_glass
 	name = "Drinking Glass"
 	id = "drinking_glass"
-	build_type = AUTOLATHE
+	//build_type = AUTOLATHE	SKYRAT EDIT: Original Line
+	build_type = AUTOLATHE | PROTOLATHE	// SKRAT EDIT
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass
-	category = list("initial","Dinnerware")
+	//category = list("initial","Dinnerware")	SKYRAT EDIT: Original line
+	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/shot_glass
 	name = "Shot Glass"
 	id = "shot_glass"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 100)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
-	category = list("initial","Dinnerware")
+	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
 
 /datum/design/shaker
 	name = "Shaker"
@@ -867,7 +872,7 @@
 	name = "Foam Riot Dart"
 	id = "riot_dart"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000) //Discount for making individually - no box = less metal!
+	materials = list(/datum/material/iron = 1000) //Discount for making individually - no box = less iron!
 	build_path = /obj/item/ammo_casing/caseless/foam_dart/riot
 	category = list("hacked", "Security")
 
@@ -1203,3 +1208,11 @@
 	materials = list(/datum/material/iron = 75)
 	build_path = /obj/item/chisel
 	category = list("initial","Tools")
+
+/datum/design/control
+	name = "Blast Door Controller"
+	id = "blast"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 100, /datum/material/glass = 50)
+	build_path = /obj/item/assembly/control
+	category = list("initial","Misc")

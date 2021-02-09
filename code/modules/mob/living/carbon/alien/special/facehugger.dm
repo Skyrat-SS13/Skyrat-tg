@@ -13,7 +13,9 @@
 	desc = "It has some sort of a tube at the end of its tail."
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "facehugger"
+	base_icon_state = "facehugger"
 	inhand_icon_state = "facehugger"
+	worn_icon_state = "facehugger"
 	w_class = WEIGHT_CLASS_TINY //note: can be picked up by aliens unlike most other items of w_class below 4
 	clothing_flags = MASKINTERNALS
 	throw_range = 5
@@ -22,6 +24,9 @@
 	layer = MOB_LAYER
 	max_integrity = 100
 	item_flags = XENOMORPH_HOLDABLE
+	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
+	special_desc_jobs = list("Scientist, Research Director") //SKYRAT EDIT
+	special_desc = "This alien is an extremely dangerous life form capable of creating a xenomorph. You would know well not to approach without full body biological protection." //SKYRAT EDIT
 	var/stat = CONSCIOUS //UNCONSCIOUS is the idle state in this case
 
 	var/sterile = FALSE
@@ -37,17 +42,21 @@
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
 	desc = "The Research Director's pet, a domesticated and debeaked xenomorph facehugger. Friendly, but may still try to couple with your head."
+	special_desc_requirement = EXAMINE_CHECK_ROLE //SKYRAT EDIT
+	special_desc_roles = list("ROLE_ALIEN") //SKYRAT EDIT
+	special_desc = "This young one has been cruelly mutilated. It lacks the capability to fill a host with our sisters." //SKYRAT EDIT
 	sterile = 1
 
 /obj/item/clothing/mask/facehugger/dead
 	icon_state = "facehugger_dead"
 	inhand_icon_state = "facehugger_inactive"
+	worn_icon_state = "facehugger_dead"
 	stat = DEAD
 
 /obj/item/clothing/mask/facehugger/impregnated
 	icon_state = "facehugger_impregnated"
 	inhand_icon_state = "facehugger_impregnated"
-	worn_icon_state = "facehugger_dead"
+	worn_icon_state = "facehugger_impregnated"
 	stat = DEAD
 
 /obj/item/clothing/mask/facehugger/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
@@ -109,17 +118,17 @@
 	if(!.)
 		return
 	if(stat == CONSCIOUS)
-		icon_state = "[initial(icon_state)]_thrown"
+		icon_state = "[base_icon_state]_thrown"
 		addtimer(CALLBACK(src, .proc/clear_throw_icon_state), 15)
 
 /obj/item/clothing/mask/facehugger/proc/clear_throw_icon_state()
-	if(icon_state == "[initial(icon_state)]_thrown")
-		icon_state = "[initial(icon_state)]"
+	if(icon_state == "[base_icon_state]_thrown")
+		icon_state = "[base_icon_state]"
 
 /obj/item/clothing/mask/facehugger/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
 	if(stat == CONSCIOUS)
-		icon_state = "[initial(icon_state)]"
+		icon_state = "[base_icon_state]"
 		Leap(hit_atom)
 
 /obj/item/clothing/mask/facehugger/proc/valid_to_attach(mob/living/M)
@@ -210,7 +219,8 @@
 								"<span class='userdanger'>[src] falls limp after violating your face!</span>")
 
 		Die()
-		icon_state = "[initial(icon_state)]_impregnated"
+		icon_state = "[base_icon_state]_impregnated"
+		worn_icon_state = "[base_icon_state]_impregnated"
 
 		var/obj/item/bodypart/chest/LC = target.get_bodypart(BODY_ZONE_CHEST)
 		if((!LC || LC.status != BODYPART_ROBOTIC) && !target.getorgan(/obj/item/organ/body_egg/alien_embryo))
@@ -227,14 +237,16 @@
 		return
 
 	stat = CONSCIOUS
-	icon_state = "[initial(icon_state)]"
+	icon_state = "[base_icon_state]"
+	worn_icon_state = "[base_icon_state]"
 
 /obj/item/clothing/mask/facehugger/proc/GoIdle()
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
 	stat = UNCONSCIOUS
-	icon_state = "[initial(icon_state)]_inactive"
+	icon_state = "[base_icon_state]_inactive"
+	worn_icon_state = "[base_icon_state]_inactive"
 
 	addtimer(CALLBACK(src, .proc/GoActive), rand(MIN_ACTIVE_TIME, MAX_ACTIVE_TIME))
 
@@ -242,7 +254,8 @@
 	if(stat == DEAD)
 		return
 
-	icon_state = "[initial(icon_state)]_dead"
+	icon_state = "[base_icon_state]_dead"
+	worn_icon_state = "[base_icon_state]_dead"
 	inhand_icon_state = "facehugger_inactive"
 	stat = DEAD
 

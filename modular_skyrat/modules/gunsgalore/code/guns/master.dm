@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic
 	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
+	var/alt_icon_state //What the icon state is for the on-back guns
 	var/realistic = FALSE //realistic guns that use reliability and dirt
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is.
@@ -18,11 +19,19 @@
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
 		if(!magazine)
-			inhand_icon_state = "[initial(icon_state)]_nomag"
-			worn_icon_state = "[initial(icon_state)]_nomag"
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]_nomag"
+				worn_icon_state = "[alt_icon_state]_nomag"
+			else
+				inhand_icon_state = "[initial(icon_state)]_nomag"
+				worn_icon_state = "[initial(icon_state)]_nomag"
 		else
-			inhand_icon_state = "[initial(icon_state)]"
-			worn_icon_state = "[initial(icon_state)]"
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]"
+				worn_icon_state = "[alt_icon_state]"
+			else
+				inhand_icon_state = "[initial(icon_state)]"
+				worn_icon_state = "[initial(icon_state)]"
 	. = ..()
 
 //gun pickup message
@@ -200,22 +209,34 @@
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
 	if(realistic)
-		if(istype(A, /obj/item/soap))
-			var/obj/item/soap/S = A
-			to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
-			if(do_after(user, (1000/S.cleanspeed) SECONDS))
-				dirt_level -= S.cleanspeed
-				if(dirt_level < 0)
-					dirt_level = 0
-				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
-
+		if(istype(A, /obj/item/stack/sheet/cloth))
+			var/obj/item/stack/sheet/cloth/C = A
+			if(!dirt_level)
+				to_chat(user, "The [src] is already spotless!")
+			else
+				if(C.amount < 5)
+					to_chat(user, "There's not enough [C] to clean the gun with!")
+				else
+					to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
+					if(do_after(user, 20 SECONDS))
+						dirt_level -= 35
+						if(dirt_level < 0)
+							dirt_level = 0
+						C.use(5)
+						to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
+		if(istype(A, /obj/item/gun_maintenance_supplies))
+			to_chat(user, "<span class='notice'>You start maintaining the [src].</span>")
+			if(do_after(user, 10 SECONDS, target = src))
+				user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
+				dirt_level = 0
+				qdel(A)
 
 //CRATES
 
 //all that shit
 /obj/structure/closet/crate/secure/weapon/ww2
-	desc = "A secure weapons crate. Looks like it's from the old-era world war 2."
 	name = "ww2 weapons crate"
+	desc = "A secure weapons crate. Looks like it's from the old-era world war 2."
 	icon_state = "weaponcrate"
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
@@ -236,6 +257,26 @@
 	new /obj/item/ammo_box/magazine/ppsh(src)
 	new /obj/item/gun/ballistic/automatic/submachine_gun/pps(src)
 	new /obj/item/ammo_box/magazine/pps(src)
+
+/obj/structure/closet/crate/secure/weapon/ww2
+	name = "Modern weapons crate"
+	desc = "A secure weapons crate. Looks like it's from the 25th century."
+	icon_state = "weaponcrate"
+
+/obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern(src)
+	new /obj/item/ammo_box/magazine/fg42(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern(src)
+	new /obj/item/ammo_box/magazine/akm(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern(src)
+	new /obj/item/ammo_box/magazine/m16(src)
+	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern(src)
+	new /obj/item/ammo_box/magazine/mp40(src)
+	new /obj/item/gun/ballistic/automatic/assault_rifle/stg/modern(src)
+	new /obj/item/ammo_box/magazine/stg(src)
+	new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern(src)
+	new /obj/item/ammo_box/magazine/ppsh(src)
 
 /obj/effect/temp_visual/dir_setting/firing_effect
 	light_system = MOVABLE_LIGHT

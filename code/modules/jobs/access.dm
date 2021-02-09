@@ -372,6 +372,7 @@
 		if(ACCESS_CENT_BAR)
 			return "Code Scotch"
 
+/*//SKYRAT EDIT - CARD - MOVED TO MODULAR - modules/card/access.dm
 /proc/get_all_jobs()
 	return list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
 				"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer",
@@ -383,6 +384,7 @@
 
 /proc/get_all_centcom_jobs()
 	return list("Central Command","VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Research Officer","Special Ops Officer","Admiral","CentCom Commander","CentCom Bartender","Private Security Force")
+*///Skyrat Edit End
 
 /obj/item/proc/GetJobName() //Used in secHUD icon generation
 	var/obj/item/card/id/I = GetID()

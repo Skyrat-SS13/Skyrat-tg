@@ -19,7 +19,10 @@
 	if(click_cooldown_override)
 		user.changeNext_move(click_cooldown_override)
 	else
-		user.changeNext_move(CLICK_CD_RANGE)
+		if(user.staminaloss > STAMINA_THRESHOLD_TIRED_CLICK_CD) //SKYRAT EDIT CHANGE BEGIN: user.changeNext_move(CLICK_CD_RANGE)
+			user.changeNext_move(CLICK_CD_RANGE_TIRED)
+		else
+			user.changeNext_move(CLICK_CD_RANGE) //SKYRAT EDIT END
 	user.newtonian_move(get_dir(target, user))
 	update_icon()
 	return TRUE
@@ -35,6 +38,10 @@
 	else
 		BB.def_zone = user.zone_selected
 	BB.suppressed = quiet
+
+	if(isgun(fired_from))
+		var/obj/item/gun/G = fired_from
+		BB.damage *= G.projectile_damage_multiplier
 
 	if(reagents && BB.reagents)
 		reagents.trans_to(BB, reagents.total_volume, transfered_by = user) //For chemical darts/bullets
