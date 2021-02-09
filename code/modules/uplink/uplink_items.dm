@@ -343,9 +343,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/shield/energy/bananium
 	cost = 16
 	surplus = 0
-	//include_modes = list(/datum/game_mode/nuclear/clown_ops) //skyrat edit: original
-	exclude_modes = list(/datum/game_mode/nuclear) //SKYRAT EDIT: Addition
-	restricted_roles = list("Clown") //SKYRAT EDIT: Addition
+	include_modes = list(/datum/game_mode/nuclear/clown_ops)
 
 /datum/uplink_item/dangerous/clownsword
 	name = "Bananium Energy Sword"
@@ -354,9 +352,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/melee/transforming/energy/sword/bananium
 	cost = 3
 	surplus = 0
-	//include_modes = list(/datum/game_mode/nuclear/clown_ops)
-	exclude_modes = list(/datum/game_mode/nuclear) //SKYRAT EDIT: Addition
-	restricted_roles = list("Clown") //SKYRAT EDIT: Addition
+	include_modes = list(/datum/game_mode/nuclear/clown_ops)
 
 /datum/uplink_item/dangerous/clownoppin
 	name = "Ultra Hilarious Firing Pin"
