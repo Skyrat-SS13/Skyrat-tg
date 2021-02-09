@@ -27,6 +27,7 @@
 	var/cooldown = 0.8 SECONDS
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	var/sound_volume = 25 //Emote volume
+	var/list/allowed_species
 	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()
@@ -164,6 +165,16 @@
 		var/mob/living/L = user
 		if(HAS_TRAIT(L, TRAIT_EMOTEMUTE))
 			return FALSE
+	//SKYRAT EDIT BEGIN
+	if(allowed_species)
+		var/check = FALSE
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			if(H.dna.species.type in allowed_species)
+				check = TRUE
+		return check
+	//SKYRAT EDIT END
+
 /**
 * Allows the intrepid coder to send a basic emote
 * Takes text as input, sends it out to those who need to know after some light parsing

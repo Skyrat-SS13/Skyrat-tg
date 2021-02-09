@@ -148,8 +148,8 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/trash_pile/attackby(obj/item/I, mob/user, params)
-	if(user.a_intent == INTENT_HELP)
+/obj/structure/trash_pile/attackby(obj/item/I, mob/living/user, params)
+	if(!user.combat_mode)
 		if(can_hide_item(I))
 			to_chat(user,"<span class='notice'>You begin to stealthily hide [I] in the [src].</span>")
 			if(do_mob(user, user, hide_item_time))
