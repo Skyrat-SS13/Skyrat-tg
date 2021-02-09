@@ -350,7 +350,8 @@
 	overheat = FALSE
 
 /obj/item/assembly/flash/hypnotic
-	desc = "A modified flash device, programmed to emit a sequence of subliminal flashes that can send a vulnerable target into a hypnotic trance."
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
+	special_desc = "A modified flash device, programmed to emit a sequence of subliminal flashes that can send a vulnerable target into a hypnotic trance." //SKYRAT EDIT
 	flashing_overlay = "flash-hypno"
 	light_color = LIGHT_COLOR_PINK
 	cooldown = 20

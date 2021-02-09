@@ -21,6 +21,8 @@
 		if(mmi.brainmob)
 			mmi.brainmob.suiciding = suicide_state
 
+//SKYRAT EDIT REMOVAL BEGIN - SUICIDE_VERB
+/*
 /mob/living/carbon/human/verb/suicide()
 	set hidden = TRUE
 	if(!canSuicide())
@@ -214,6 +216,8 @@
 
 		death(FALSE)
 		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+*/
+//SKYRAT EDIT REMOVAL END
 
 /mob/living/proc/suicide_log()
 	log_message("committed suicide as [src.type]", LOG_ATTACK)

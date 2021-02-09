@@ -23,9 +23,9 @@
 				affected_mob.emote("twitch")
 				to_chat(affected_mob, "<span class='danger'>You twitch.</span>")
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>Your feel tired</span>")
+				to_chat(affected_mob, "<span class='danger'>You feel tired</span>") //SKYRAT EDIT Grammar
 			if(prob(5))
-				to_chat(affected_mob, "<span class='danger'>You head hurts.</span>")
+				to_chat(affected_mob, "<span class='danger'>Your head hurts.</span>") //SKYRAT EDIT Grammar
 		if(3,4)
 			if(prob(2))
 				to_chat(affected_mob, "<span class='userdanger'>You see four of everything!</span>")
