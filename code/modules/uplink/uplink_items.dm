@@ -1256,9 +1256,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 //SKYRAT EDIT: ADDITION BEGIN
 /datum/uplink_item/stealthy_tools/infiltratormask
 	name = "Voice-Muffling Balaclava"
-	desc = "A balaclava that muffles your voice, masking your identity."
+	desc = "A balaclava that muffles your voice, masking your identity. Also provides flash immunity!"
 	item = /obj/item/clothing/mask/infiltrator
-	cost = 1
+	cost = 2
 //SKYRAT EDIT: ADDITION END
 
 /datum/uplink_item/stealthy_tools/codespeak_manual
