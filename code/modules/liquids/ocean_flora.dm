@@ -30,5 +30,5 @@
 /obj/structure/flora/ocean/coral
 	name = "coral"
 	icon_state = "coral"
-	desc = "Beatiful coral."
+	desc = "Beautiful coral."
 	random_variants = 3
