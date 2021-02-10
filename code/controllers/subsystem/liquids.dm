@@ -1097,6 +1097,16 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	planetary_atmos = TRUE
 
+/turf/open/floor/plating/ocean_plating
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plating/ocean_plating
+
+/turf/open/floor/plating/ocean_plating/Initialize()
+	. = ..()
+	if(liquids)
+		qdel(liquids, TRUE)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+
 /turf/open/floor/plating/ocean/Initialize()
 	. = ..()
 	if(liquids)
@@ -1105,12 +1115,16 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 
 /turf/open/floor/plasteel/ocean
 	planetary_atmos = TRUE
+	baseturfs = /turf/open/floor/plasteel/ocean
 
 /turf/open/floor/plasteel/ocean/Initialize()
 	. = ..()
 	if(liquids)
 		qdel(liquids, TRUE)
 	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+
+/turf/closed/mineral/random/low_chance/ocean
+	baseturfs = /turf/open/floor/plating/ocean
 
 //extremely low chance of rare ores, meant mostly for populating stations with large amounts of asteroid
 /turf/closed/mineral/random/stationside
