@@ -8,12 +8,12 @@
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/sizeray)
 
-	var/size_setting = 0.5
+	var/size_setting = 50
 
 /obj/item/gun/energy/sizegun/attack_self(mob/living/user as mob)
-	var/setting_min = CONFIG_GET(number/body_size_sizegun_min)
-	var/setting_max = CONFIG_GET(number/body_size_sizegun_max)
-	var/sizeinput = input(user, "Input desired size ([setting_min]-[setting_max]). Current setting: [size_setting]", "Size ray power") as null|num
+	var/setting_min = CONFIG_GET(number/body_size_sizegun_min)*100
+	var/setting_max = CONFIG_GET(number/body_size_sizegun_max)*100
+	var/sizeinput = input(user, "Input desired size ([setting_min]%-[setting_max]%). Current setting: [size_setting]%", "Size ray power") as null|num
 
 	if(isnull(sizeinput))
 		return
@@ -25,7 +25,7 @@
 	var/ratio = get_charge_ratio()
 	var/temp_icon_to_use = initial(icon_state)
 
-	temp_icon_to_use += (size_setting>1) ? "-grow" : "-shrink"
+	temp_icon_to_use += (size_setting>100) ? "-grow" : "-shrink"
 	icon_state = temp_icon_to_use
 	temp_icon_to_use += "[ratio]"
 	inhand_icon_state = temp_icon_to_use
@@ -59,8 +59,8 @@
 /obj/projectile/beam/sizeray/on_hit(atom/target)
 	if(!isliving(target))
 		return
-	if(is_type_in_typecache(src, GLOB.mob_type_sizeplay_blacklist))
-		return FALSE
+	if(is_type_in_typecache(target, GLOB.mob_type_sizeplay_blacklist))
+		return
 	if(QDELETED(fired_from))
 		return
 
@@ -70,6 +70,6 @@
 	var/resize_to = CONFIG_GET(number/body_size_sizegun_min)
 	if(istype(fired_from, /obj/item/gun/energy/sizegun))
 		var/obj/item/gun/energy/sizegun/SG = fired_from
-		resize_to = SG.size_setting
+		resize_to = SG.size_setting/100
 
 	L.set_size(resize_to)
