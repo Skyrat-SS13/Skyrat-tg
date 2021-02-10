@@ -103,7 +103,7 @@
 
 ////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
-	name = "\improper Armadyne PDH 'Osprey'"
+	name = "\improper Armadyne PDH-6H 'Osprey'"
 	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match command. It's chambered in 12mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
@@ -120,23 +120,23 @@
 	realistic = TRUE
 	armadyne = TRUE
 	can_flashlight = TRUE
-	emp_damageable = FALSE
+	emp_damageable = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt
-	name = "\improper Armadyne PDH 'Socom'"
-	desc = "A pristegious ballistics sidearm, from Armadyne's military division, normally given to Captains. It has a 3 round burst mode and uses 12mm."
+	name = "\improper Armadyne PDH-6C 'SOCOM'"
+	desc = "A prestigious 12mm sidearm normally seen in the hands of Sol special operation units due to its reliable and time-tested design. Now's one of those times that pays to be the strong, silent type."
 	icon_state = "pdh_alt"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
 	can_suppress = FALSE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
-	burst_size = 3
-	fire_delay = 1
-	spread = 10
-	actions_types = list(/datum/action/item_action/toggle_firemode)
+	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
+	fire_delay = 8
+	fire_sound_volume = 30
+	spread = 1
 	realistic = TRUE
 	dirt_modifier = 0.1
 	can_flashlight = TRUE
+	emp_damageable = FALSE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh
 	name = "pdh handgun magazine (12mm)"
@@ -157,8 +157,8 @@
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
-	name = "\improper Armadyne PDH 'Corporate'"
-	desc = "A pristegious ballistics sidearm, from Armadyne's military division, normally given to Armadyne Corporate. It has a 3 round burst mode and uses .357."
+	name = "\improper Armadyne PDH-6M 'Corporate'"
+	desc = "A prestigious ballistic sidearm, from Armadyne's military division, normally given to corporate agents. It has a 3 round burst mode and uses .357 Magnum ammunition."
 	icon_state = "pdh_corpo"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
@@ -185,8 +185,8 @@
 
 ///////////////////////////PDH PEACEKEEPER
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
-	name = "\improper Armadyne PDH 'Peacekeeper'"
-	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match the peacekeeper theme."
+	name = "\improper Armadyne PDH-6B 'Peacekeeper'"
+	desc = "A modern ballistic sidearm, used primarily by law enforcement, however this one has had a paintjob to match the peacekeeper theme."
 	icon_state = "pdh_peacekeeper"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
