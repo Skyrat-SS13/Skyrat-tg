@@ -246,7 +246,7 @@ SUBSYSTEM_DEF(vote)
 			/*
 				SEND_SOUND(C, sound('sound/misc/bloop.ogg'))
 			*/
-				SEND_SOUND(C, sound('sound/misc/notice2.ogg'))
+				SEND_SOUND(C, sound('sound/misc/announce_dig.ogg'))
 			//SKYRAT EDIT END
 		return TRUE
 	return FALSE
