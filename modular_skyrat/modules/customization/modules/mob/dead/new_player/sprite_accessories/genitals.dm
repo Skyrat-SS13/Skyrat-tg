@@ -212,6 +212,9 @@
 	icon_state = "gaping"
 	name = "Gaping"
 
+/datum/sprite_accessory/genital/vagina/cloaca
+	icon_state = "cloaca"
+	name = "Cloaca"
 
 /datum/sprite_accessory/genital/womb
 	organ_type = /obj/item/organ/genital/womb
