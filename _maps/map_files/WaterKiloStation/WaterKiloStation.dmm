@@ -30893,6 +30893,7 @@
 	name = "chamber igniter";
 	pixel_x = -16
 	},
+/obj/structure/drain/big,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "aXL" = (
@@ -32708,6 +32709,7 @@
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/blood/old,
+/obj/structure/drain/big,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "bar" = (
@@ -80208,6 +80210,9 @@
 	pixel_x = -32;
 	pixel_y = -32
 	},
+/obj/structure/drain/big{
+	pixel_y = -10
+	},
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "czq" = (
@@ -88382,6 +88387,20 @@
 	},
 /turf/open/floor/plating/rust/plasma,
 /area/maintenance/space_hut/plasmaman)
+"dAt" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/drain/big,
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "dEI" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
 	dir = 1
@@ -88743,10 +88762,6 @@
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
-"fQP" = (
-/obj/structure/drain/big,
-/turf/open/floor/plasteel/showroomfloor,
-/area/crew_quarters/toilet/restrooms)
 "fSn" = (
 /turf/closed/wall/r_wall/rust,
 /area/medical/psychology)
@@ -88800,20 +88815,6 @@
 "gpw" = (
 /turf/closed/wall/rust,
 /area/maintenance/space_hut/plasmaman)
-"gtN" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/drain/big,
-/turf/open/floor/plasteel,
-/area/hallway/primary/starboard)
 "gwd" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
@@ -88967,6 +88968,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/grimy,
 /area/security/prison)
+"hUT" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/drain/big,
+/turf/open/floor/plasteel,
+/area/hallway/primary/port)
 "hVl" = (
 /obj/structure/sign/warning/fire,
 /turf/closed/wall,
@@ -89175,22 +89191,6 @@
 	},
 /turf/open/floor/plating/rust,
 /area/security/prison)
-"iHi" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable,
-/obj/structure/drain/big,
-/turf/open/floor/plasteel,
-/area/hallway/primary/port)
 "iHr" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -89277,55 +89277,11 @@
 "jtY" = (
 /turf/closed/wall/rust,
 /area/medical/psychology)
-"jxb" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/drain/big,
-/turf/open/floor/plasteel,
-/area/hallway/primary/aft)
 "jBG" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison)
-"jJG" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/structure/drain/big,
-/turf/open/floor/plasteel,
-/area/hallway/primary/port)
-"jOi" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/structure/drain/big,
-/turf/open/floor/plasteel,
-/area/hallway/primary/starboard)
 "jOl" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -89714,24 +89670,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/security/prison)
-"mme" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/structure/drain/big,
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
 "moP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/glowstick,
@@ -90102,6 +90040,22 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/maintenance/port)
+"oUu" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/structure/drain/big,
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "oUy" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/structure/cable,
@@ -90663,6 +90617,21 @@
 /obj/item/watertank/janitor,
 /turf/open/floor/plasteel/grimy,
 /area/security/prison/safe)
+"rYq" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/drain/big,
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "sbe" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -90773,22 +90742,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/port)
-"sKu" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable,
-/obj/structure/drain/big,
-/turf/open/floor/plasteel,
-/area/hallway/primary/starboard)
 "sLz" = (
 /obj/structure/table,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
@@ -90831,6 +90784,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/port)
+"tac" = (
+/obj/structure/drain/big,
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/toilet/restrooms)
 "thU" = (
 /mob/living/simple_animal/hostile/asteroid/goliath,
 /turf/open/floor/plating/ocean,
@@ -91050,6 +91007,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/showroomfloor,
 /area/medical/chemistry)
+"uBR" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/drain/big,
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
 "uDc" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
 	dir = 1
@@ -91376,6 +91347,24 @@
 /obj/item/plant_analyzer,
 /turf/open/floor/grass,
 /area/security/prison)
+"wbM" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/structure/drain/big,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "weO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -91647,6 +91636,22 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
+"xzX" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/structure/drain/big,
+/turf/open/floor/plasteel,
+/area/hallway/primary/port)
 "xFp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -110967,7 +110972,7 @@ bLn
 brD
 brD
 bJh
-fQP
+tac
 bKx
 brD
 bLn
@@ -115328,7 +115333,7 @@ aYs
 bjQ
 bnY
 bqE
-iHi
+xzX
 byo
 bnY
 bAe
@@ -115855,7 +115860,7 @@ bEB
 bEB
 bEW
 aYs
-jJG
+hUT
 bHj
 bHH
 ajd
@@ -120744,7 +120749,7 @@ bVC
 ceI
 bZe
 bfy
-mme
+wbM
 cbq
 bHn
 aIw
@@ -124607,7 +124612,7 @@ bhF
 bBn
 axF
 ccs
-jxb
+uBR
 cgV
 bHo
 aCc
@@ -126909,7 +126914,7 @@ bmM
 aZd
 bGh
 bZI
-gtN
+dAt
 bJJ
 bYV
 aJZ
@@ -127928,7 +127933,7 @@ bGW
 bIM
 brz
 bPm
-jOi
+rYq
 bJJ
 bKR
 bGx
@@ -128171,7 +128176,7 @@ aXH
 aYY
 baF
 baF
-sKu
+oUu
 baF
 bhe
 bjr
