@@ -98,6 +98,17 @@ SUBSYSTEM_DEF(liquids)
 	var/liquid_height = 0
 	var/turf_height = 0
 
+/turf/proc/convert_immutable_liquids()
+	if(!liquids || !liquids.immutable)
+		return
+	var/datum/reagents/tempr = liquids.take_reagents_flat(liquids.total_reagents)
+	var/cached_height = liquids.height
+	qdel(liquids, TRUE)
+	liquids = new(src)
+	liquids.height = cached_height //Prevent height effects
+	add_liquid_from_reagents(tempr)
+	qdel(tempr)
+
 /turf/proc/reasses_liquids()
 	if(!liquids)
 		return

@@ -139,7 +139,10 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		else
 			W.liquids = old_liquids
 			old_liquids.my_turf = W
-			W.reasses_liquids()
+			if(old_liquids.immutable)
+				W.convert_immutable_liquids()
+			else
+				W.reasses_liquids()
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	QUEUE_SMOOTH(src)
 

@@ -1,3 +1,4 @@
+//Mostly a copypaste of the jungle generator
 /datum/map_generator/ocean_generator
 	///2D list of all biomes based on heat and humidity combos.
 	var/list/possible_biomes = list(
@@ -70,7 +71,7 @@
 				if(0.75 to 1)
 					humidity_level = BIOME_HIGH_HUMIDITY
 			selected_biome = possible_biomes[heat_level][humidity_level]
-		else //Over 0.85; It's a mountain
+		else //Over 0.85; It's a wall
 			selected_biome = /datum/biome/ocean_wall
 		selected_biome = SSmapping.biomes[selected_biome] //Get the instance of this biome from SSmapping
 		selected_biome.generate_turf(gen_turf)
