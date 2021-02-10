@@ -1084,6 +1084,31 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		qdel(liquids, TRUE)
 	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
 
+/turf/open/floor/plating/ocean/ironsand
+	baseturfs = /turf/open/floor/plating/ocean/ironsand
+	icon_state = "ironsand"
+	base_icon_state = "ironsand"
+	rand_variants = 15
+	rand_chance = 100
+
+/turf/open/floor/plating/ocean/rock
+	name = "rock"
+	baseturfs = /turf/open/floor/plating/ocean/rock
+	icon = 'icons/turf/mining.dmi'
+	icon_state = "rockyash"
+	base_icon_state = "rockyash"
+	rand_variants = 0
+
+/turf/open/floor/plating/ocean/rock/medium
+	icon_state = "rock2"
+	base_icon_state = "rock2"
+	baseturfs = /turf/open/floor/plating/ocean/rock/medium
+
+/turf/open/floor/plating/ocean/rock/heavy
+	icon_state = "wateryrock"
+	base_icon_state = "wateryrock"
+	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
+
 /turf/open/floor/plating/ocean
 	gender = PLURAL
 	name = "ocean sand"
@@ -1096,18 +1121,24 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	planetary_atmos = TRUE
+	var/rand_variants = 12
+	var/rand_chance = 30
+
+/turf/open/floor/plating/ocean/Initialize()
+	. = ..()
+	if(liquids)
+		qdel(liquids, TRUE)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+	if(rand_variants && prob(rand_chance))
+		var/random = rand(1,rand_variants)
+		icon_state = "[icon_state][random]"
+		base_icon_state = "[icon_state][random]"
 
 /turf/open/floor/plating/ocean_plating
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/floor/plating/ocean_plating
 
 /turf/open/floor/plating/ocean_plating/Initialize()
-	. = ..()
-	if(liquids)
-		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
-
-/turf/open/floor/plating/ocean/Initialize()
 	. = ..()
 	if(liquids)
 		qdel(liquids, TRUE)
@@ -1231,3 +1262,6 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	ambience_index = AMBIENCE_SPACE
 	flags_1 = CAN_BE_DIRTY_1
 	sound_environment = SOUND_AREA_SPACE
+
+/area/ocean/generated
+	map_generator = /datum/map_generator/ocean_generator
