@@ -6,6 +6,9 @@
 /mob/living/proc/can_be_picked_up(mob/living/carbon/human/picker)
 	. = TRUE
 
+	if(is_type_in_typecache(src, GLOB.mob_type_sizeplay_blacklist))
+		return FALSE
+
 	//Hope it will be generic enough. Pocket corgis here I go.
 	//Also you can pick up small mobs like mice and stuff without making them tiny.
 	var/relative_size = ((picker.mob_size+1) * picker.body_size_multiplier) / ((mob_size+1) * body_size_multiplier)

@@ -1,6 +1,9 @@
 /mob/living/proc/can_be_stepped_on(mob/living/stepper)
 	. = TRUE
 
+	if(is_type_in_typecache(src, GLOB.mob_type_sizeplay_blacklist))
+		return FALSE
+
 	var/relative_size = ((stepper.mob_size+1) * stepper.body_size_multiplier) / ((mob_size+1) * body_size_multiplier)
 	if(relative_size < CONFIG_GET(number/mob_step_on_relative_size))
 		return FALSE

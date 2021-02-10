@@ -59,6 +59,8 @@
 /obj/projectile/beam/sizeray/on_hit(atom/target)
 	if(!isliving(target))
 		return
+	if(is_type_in_typecache(src, GLOB.mob_type_sizeplay_blacklist))
+		return FALSE
 	if(QDELETED(fired_from))
 		return
 

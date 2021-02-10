@@ -14,6 +14,9 @@ The PR introduces:
 - slowdowns for micros
 
 Be careful. The configs are not designed for being reloaded mid-game, so if you do so, things will get wonky.
+
+This PR is by no means exhaustive in terms of features nor perfect in terms of code quality.
+It's just the first iteration that will go live.
 ### TG Proc/File Changes
 
 - code/game/atoms.dm, /atom/proc/set_base_pixel_y() - added an animation
