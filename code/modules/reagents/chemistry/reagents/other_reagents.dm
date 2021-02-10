@@ -2028,15 +2028,23 @@
 		if(200 to INFINITY)
 			newsize = 3.5*RESIZE_DEFAULT_SIZE
 
-	H.resize = newsize/current_size
+	//SKYRAT EDIT CHANGE BEGIN - SIZEPLAY
+	//H.resize = newsize/current_size //
+	//current_size = newsize //
+	//H.update_transform() // -- SKYRAT EDIT - ORIGINAL
+	H.set_size(H.body_size_multiplier * (newsize/current_size))
 	current_size = newsize
-	H.update_transform()
+	//SKYRAT EDIT CHANGE END
 	..()
 
 /datum/reagent/growthserum/on_mob_end_metabolize(mob/living/M)
-	M.resize = RESIZE_DEFAULT_SIZE/current_size
+	//SKYRAT EDIT CHANGE BEGIN - SIZEPLAY
+	//M.resize = RESIZE_DEFAULT_SIZE/current_size //
+	//current_size = RESIZE_DEFAULT_SIZE //
+	//M.update_transform() // -- SKYRAT EDIT - ORIGINA
+	M.set_size(M.body_size_multiplier * (RESIZE_DEFAULT_SIZE/current_size))
 	current_size = RESIZE_DEFAULT_SIZE
-	M.update_transform()
+	//SKYRAT EDIT CHANGE END
 	..()
 
 /datum/reagent/plastic_polymers

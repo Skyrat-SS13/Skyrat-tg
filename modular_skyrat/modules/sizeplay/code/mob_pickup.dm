@@ -1,3 +1,8 @@
+#define COOLDOWN_INTERACT_WITH_HELD_MOB	interact_held_mob
+
+/mob/living/carbon
+	 COOLDOWN_DECLARE(COOLDOWN_INTERACT_WITH_HELD_MOB)
+
 /mob/living/proc/can_be_picked_up(mob/living/carbon/human/picker)
 	. = TRUE
 
@@ -18,33 +23,36 @@
 		RegisterSignal(src, COMSIG_LIVING_GET_PULLED, .proc/attempt_pickup)
 
 /mob/living/proc/attempt_pickup(atom/source, mob/living/puller)
-	SIGNAL_HANDLER_DOES_SLEEP
+	SIGNAL_HANDLER
 
 	if(!iscarbon(puller))
-		return FALSE
+		return
 	var/mob/living/carbon/picker = puller
 	if(!can_be_picked_up(picker))
-		return FALSE
+		return
 	if(picker.get_active_held_item())
 		to_chat(picker, "<span class='warning'>Your hands are full!</span>")
-		return FALSE
+		return
 	if(buckled)
 		to_chat(picker, "<span class='warning'>[src] is buckled to [buckled] and cannot be picked up!</span>")
-		return FALSE
+		return
 
+	INVOKE_ASYNC(src, .proc/start_pickup, puller)
+
+/mob/living/proc/start_pickup(mob/living/carbon/human/picker)
 	visible_message("<span class='warning'>[picker] starts picking up [src].</span>", "<span class='userdanger'>[picker] starts picking you up!</span>")
 	if(!do_after(picker, 20, target = src))
-		return FALSE
+		return
 
 	if(picker.grab_state > GRAB_PASSIVE)
-		return FALSE
+		return
 
 	visible_message("<span class='warning'>[picker] picks up [src]!</span>", "<span class='userdanger'>[picker] picks you up!</span>")
 	to_chat(picker, "<span class='notice'>You pick [src] up.</span>")
 	var/obj/item/mob_holder/MH = new(get_turf(src), src)
 	picker.put_in_hands(MH)
 	Stun(10)
-	return TRUE
+
 /obj/item/mob_holder
 	name = "bugged mob"
 	desc = "You shouldn't be seeing this."
@@ -82,15 +90,14 @@
 
 /obj/item/mob_holder/attack_self(mob/living/carbon/user)
 	. = ..()
-	if(user.combat_mode)
-		visible_message("<span class='warning'>[user] squeezes [held_mob] in \his grip.</span>", "<span class='userdanger'>[user] crushes you in \his grip.</span>")
-	else
-		held_mob.attack_hand(user)
-
-/obj/item/mob_holder/dropped()
-	..()
-	if(held_mob && isturf(loc))
-		release()
+	if(COOLDOWN_FINISHED(user, COOLDOWN_INTERACT_WITH_HELD_MOB))
+		if(user.combat_mode)
+			to_chat(held_mob, "<span class='userdanger'>[user] crushes you in \his grip.</span>")
+			user.visible_message("<span class='warning'>[user] squeezes [held_mob] in \his grip.</span>")
+			held_mob.apply_damage(damage = 20, damagetype = BRUTE, spread_damage = TRUE, wound_bonus = 10)
+		else
+			held_mob.attack_hand(user)
+		COOLDOWN_START(user, COOLDOWN_INTERACT_WITH_HELD_MOB, 15)
 
 /obj/item/mob_holder/proc/release(del_on_release = TRUE, display_messages = TRUE)
 	if(!held_mob)
@@ -100,17 +107,27 @@
 	if(isliving(loc))
 		var/mob/living/L = loc
 		if(display_messages)
-			to_chat(L, "<span class='warning'>[held_mob] wriggles free!</span>")
+			to_chat(L, "<span class='warning'>[held_mob] slips out of your grip!</span>")
 		L.dropItemToGround(src)
 	held_mob.forceMove(get_turf(held_mob))
 	held_mob.reset_perspective()
 	held_mob.setDir(SOUTH)
-	if(display_messages)
-		held_mob.visible_message("<span class='warning'>[held_mob] uncurls!</span>")
 	held_mob = null
 	if(del_on_release && !destroying)
 		qdel(src)
 	return TRUE
+
+/obj/item/mob_holder/examine(mob/user)
+	if(held_mob)
+		return held_mob.examine(user)
+	else
+		. = ..()
+
+/obj/item/mob_holder/examine_more(mob/user)
+	if(held_mob)
+		return held_mob.examine_more(user)
+	else
+		. = ..()
 
 /obj/item/mob_holder/relaymove(mob/living/user, direction)
 	release()
@@ -118,9 +135,10 @@
 /obj/item/mob_holder/container_resist_act()
 	release()
 
-/obj/item/mob_holder/on_found(mob/finder)
-	if(held_mob?.will_escape_storage())
-		to_chat(finder, "<span class='warning'>\A [held_mob.name] pops out! </span>")
-		finder.visible_message("<span class='warning'>\A [held_mob.name] pops out of the container [finder] is opening!</span>", ignored_mobs = finder)
-		release(TRUE, FALSE)
-		return
+/obj/item/mob_holder/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(..())
+		release()
+
+/obj/item/mob_holder/dropped()
+	. = ..()
+	release()

@@ -24,4 +24,13 @@
 	config_entry_value = 2.5
 	min_val = 1
 
-
+/datum/config_entry/number/body_size_slowdown_start
+	integer = FALSE
+	config_entry_value = 0
+	max_val = 1
+	min_val = 0
+/datum/config_entry/number/body_size_slowdown_factor
+	integer = FALSE
+	config_entry_value = 4
+	max_val = 1
+	min_val = 0.1

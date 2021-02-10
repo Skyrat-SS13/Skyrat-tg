@@ -11,7 +11,7 @@
 	if(CONFIG_GET(flag/mob_step_on))
 		RegisterSignal(src, list(COMSIG_ATOM_BUMPED, COMSIG_MOVABLE_CROSSED), .proc/attempt_step_on)
 
-/mob/living/proc/attempt_step_on(SIGNAL_HANDLERatom/source, mob/living/stepper)
+/mob/living/proc/attempt_step_on(atom/source, mob/living/stepper)
 	SIGNAL_HANDLER
 
 	if(!iscarbon(stepper))

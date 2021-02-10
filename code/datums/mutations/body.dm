@@ -93,9 +93,12 @@
 	if(..())
 		return
 	ADD_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
-	var/matrix/new_transform = matrix()
-	new_transform.Scale(1, 0.8)
-	owner.transform = new_transform.Multiply(owner.transform)
+	//SKYRAT EDIT CHANGE BEGIN - SIZEPLAY
+	//var/matrix/new_transform = matrix() //
+	//new_transform.Scale(1, 0.8) //
+	//owner.transform = new_transform.Multiply(owner.transform) // - SKYRAT EDIT - ORIGINAL
+	owner.set_size(owner.body_size_multiplier*0.8)
+	//SKYRAT EDIT CHANGE END
 	passtable_on(owner, GENETIC_MUTATION)
 	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
 
@@ -103,9 +106,12 @@
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_DWARF, GENETIC_MUTATION)
-	var/matrix/new_transform = matrix()
-	new_transform.Scale(1, 1.25)
-	owner.transform = new_transform.Multiply(owner.transform)
+	//SKYRAT EDIT CHANGE BEGIN - SIZEPLAY
+	//var/matrix/new_transform = matrix() //
+	//new_transform.Scale(1, 1.25) //
+	//owner.transform = new_transform.Multiply(owner.transform) // - SKYRAT EDIT - ORIGINAL
+	owner.set_size(owner.body_size_multiplier*1.25)
+	//SKYRAT EDIT CHANGE END
 	passtable_off(owner, GENETIC_MUTATION)
 	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
 
@@ -359,16 +365,22 @@
 	if(..())
 		return
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-	owner.resize = 1.25
-	owner.update_transform()
+	//SKYRAT EDIT CHANGE BEGIN - SIZEPLAY
+	//owner.resize = 1.25 //
+	//owner.update_transform() // - SKYRAT EDIT - ORIGINAL
+	owner.set_size(owner.body_size_multiplier*1.25)
+	//SKYRAT EDIT CHANGE END
 	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
 
 /datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-	owner.resize = 0.8
-	owner.update_transform()
+	//SKYRAT EDIT CHANGE BEGIN - SIZEPLAY
+	//owner.resize = 0.8 //
+	//owner.update_transform() // - SKYRAT EDIT - ORIGINAL
+	owner.set_size(owner.body_size_multiplier*0.8)
+	//SKYRAT EDIT CHANGE END
 	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
 
 /datum/mutation/human/spastic
