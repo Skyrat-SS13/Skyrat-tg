@@ -27,7 +27,7 @@
 	if(stepper.combat_mode)
 		if(prob(80))
 			visible_message("<span class='warning'>[stepper] violently steps on [src]!</span>", "<span class='userdanger'>[stepper] crushes you with \his foot!</span>")
-			apply_damage(damage = 20, damagetype = BRUTE, spread_damage = TRUE, wound_bonus = 10)
+			apply_damage(damage = 20, damagetype = BRUTE, wound_bonus = 10)
 			Knockdown(20)
 		else
 			visible_message("<span class='warning'>[stepper] narrowly misses stepping on [src]!</span>", "<span class='userdanger'>You narrowly avoid being crushed by [stepper] \s foot!</span>")

@@ -97,7 +97,7 @@
 		if(user.combat_mode)
 			to_chat(held_mob, "<span class='userdanger'>[user] crushes you in \his grip.</span>")
 			user.visible_message("<span class='warning'>[user] squeezes [held_mob] in \his grip.</span>")
-			held_mob.apply_damage(damage = 20, damagetype = BRUTE, spread_damage = TRUE, wound_bonus = 10)
+			held_mob.apply_damage(damage = 20, damagetype = BRUTE, wound_bonus = 10)
 		else
 			held_mob.attack_hand(user)
 		COOLDOWN_START(user, COOLDOWN_INTERACT_WITH_HELD_MOB, 15)
