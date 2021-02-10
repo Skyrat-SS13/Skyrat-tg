@@ -87,11 +87,10 @@
 				G.toggle_safety(src, "off")
 			else
 				G.toggle_safety(src, "on")
-	if(!ishuman(src))
-		if(combat_mode)
-			set_combat_indicator(TRUE)
-		else
-			set_combat_indicator(FALSE)
+	if(combat_mode)
+		set_combat_indicator(TRUE)
+	else
+		set_combat_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
