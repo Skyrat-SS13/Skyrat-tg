@@ -1166,7 +1166,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
 
 /turf/closed/mineral/random/low_chance/ocean
-	baseturfs = /turf/open/floor/plating/ocean
+	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
 
 //extremely low chance of rare ores, meant mostly for populating stations with large amounts of asteroid
 /turf/closed/mineral/random/stationside
