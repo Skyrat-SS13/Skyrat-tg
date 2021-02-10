@@ -52,7 +52,7 @@
 	report_message = "Something seems to be wrong with the PDAs issues to you all this shift. Nothing too bad though."
 	trait_to_give = STATION_TRAIT_PDA_GLITCHED
 
-/* /datum/station_trait/announcement_intern -- SKYRAT EDIT REMOVAL BEGIN
+/* /datum/station_trait/announcement_intern // -- SKYRAT EDIT REMOVAL BEGIN
 	name = "Announcement Intern"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
@@ -61,4 +61,4 @@
 
 /datum/station_trait/announcement_intern/New()
 	. = ..()
-	SSstation.announcer = /datum/centcom_announcer/intern*/ -- SKYRAT EDIT REMOVAL END
+	SSstation.announcer = /datum/centcom_announcer/intern*/ // -- SKYRAT EDIT REMOVAL END
