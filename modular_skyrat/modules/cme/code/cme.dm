@@ -189,13 +189,13 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/Initialize()
 	. = ..()
-	playsound(src,'sound/weapons/resonator_fire.ogg',50,TRUE)
 	addtimer(CALLBACK(src, .proc/burst), timeleft)
 
 /obj/effect/cme/proc/burst()
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
+	playsound(src,'sound/weapons/resonator_fire.ogg',50,TRUE)
 	qdel(src)
 
 /obj/effect/cme/singularity_pull()
