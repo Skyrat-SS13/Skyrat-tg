@@ -20,3 +20,8 @@
 		to_chat(user, "<span class='notice'>The circuitry of [src] fries from the strain of neutralizing [A]!</span>")
 		A.anomalyNeutralize()
 		qdel(src)
+	if(istype(target, /obj/effect/cme))
+		var/obj/effect/cme/C = target
+		to_chat(user, "<span class='notice'>The circuitry of [src] fries from the strain of neutralizing [C]!</span>")
+		C.anomalyNeutralize()
+		qdel(src)

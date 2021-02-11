@@ -194,6 +194,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/cme_light_range_upper = CME_MINIMAL_LIGHT_RANGE_UPPER
 	var/cme_heavy_range_lower = CME_MINIMAL_HEAVY_RANGE_LOWER
 	var/cme_heavy_range_upper = CME_MINIMAL_HEAVY_RANGE_UPPER
+	var/neutralized = FALSE
 
 /obj/effect/cme/moderate
 	name = "MODERATE SOLAR EJECTION"
@@ -231,6 +232,10 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	addtimer(CALLBACK(src, .proc/burst), timeleft)
 
 /obj/effect/cme/proc/burst()
+	if(neutralized)
+		visible_message("<span class='notice'>[src] fizzles out into nothingness.")
+		new /obj/effect/particle_effect/smoke/bad(loc)
+		qdel(src)
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
@@ -244,6 +249,10 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	qdel(src)
 
 /obj/effect/cme/armageddon/burst()
+	if(neutralized)
+		visible_message("<span class='notice'>[src] fizzles out into nothingness.")
+		new /obj/effect/particle_effect/smoke/bad(loc)
+		qdel(src)
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
@@ -258,3 +267,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/singularity_pull()
 	return
+
+/obj/effect/cme/proc/anomalyNeutralize()
+	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	color = COLOR_WHITE
+	neutralized = TRUE
