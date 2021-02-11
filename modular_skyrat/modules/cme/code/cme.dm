@@ -270,5 +270,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/proc/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	minor_announce("[src.name] NEUTRALIZED.", "Solar Flare Log:")
 	color = COLOR_WHITE
 	neutralized = TRUE
