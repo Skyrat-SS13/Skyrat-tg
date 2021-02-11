@@ -28,7 +28,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/cme_frequency_lower
 	var/cme_frequency_upper
 	var/list/cme_start_locs = list()
-	var/sound/cme_sound = sound('modular_skyrat/modules/cme/sound/cme.ogg')
 
 /datum/round_event_control/cme/random
 	name = "Coronal Mass Ejection: Random"
@@ -80,7 +79,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
 			startWhen = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
-			endWhen = startWhen + CME_MODERATE_END
+			endWhen = startWhen + rand(CME_MINIMAL_END, CME_EXTREME_END)
 		if(CME_MINIMAL)
 			cme_frequency_lower = CME_MINIMAL_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MINIMAL_FREQUENCY_UPPER
@@ -152,8 +151,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		var/mob/M = i
 		if(M.client)
 			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
-			SEND_SOUND(M, cme_sound)
-			shake_camera(M, 15, 1)
 	switch(intensity)
 		if(CME_MINIMAL)
 			var/obj/effect/cme/spawnedcme = new(spawnpoint)
@@ -238,6 +235,11 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	explosion(src, 0, 0, 2, flame_range = 3)
+	for(var/i in GLOB.mob_list)
+		var/mob/M = i
+		if(M.client)
+			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme.ogg'))
+			shake_camera(M, 15, 1)
 	qdel(src)
 
 /obj/effect/cme/armageddon/burst()
@@ -246,6 +248,11 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	explosion(src, 0, 0, 10, flame_range = 10)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	for(var/i in GLOB.mob_list)
+		var/mob/M = i
+		if(M.client)
+			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme.ogg'))
+			shake_camera(M, 15, 1)
 	qdel(src)
 
 /obj/effect/cme/singularity_pull()
