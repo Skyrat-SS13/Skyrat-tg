@@ -237,7 +237,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	explosion(src, 0, 0, 2, flame_range = 5)
+	explosion(src, 0, 0, 2, flame_range = 3)
 	qdel(src)
 
 /obj/effect/cme/armageddon/burst()
