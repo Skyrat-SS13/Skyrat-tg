@@ -2,6 +2,7 @@
 //CME DEFINES FILE!
 ///////////////////////
 
+#define CME_RANDOM			"random"
 #define CME_MINIMAL			"minimal"
 #define CME_MODERATE		"moderate"
 #define CME_EXTREME 		"extreme"
