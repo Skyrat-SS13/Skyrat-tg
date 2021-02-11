@@ -39,8 +39,10 @@
 			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_fantastic)
 		if (FOOD_AMAZING)
 			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_food", /datum/mood_event/amazingtaste)
+		// SKYRAT ADDITION BEGIN
 		if (RACE_DRINK)
 			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/race_drink)
+		// SKYRAT ADDITION END
 
 /datum/reagent/consumable/nutriment
 	name = "Nutriment"
