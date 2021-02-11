@@ -227,6 +227,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/Initialize()
 	. = ..()
+	playsound(src,'sound/weapons/resonator_fire.ogg',75,TRUE)
 	addtimer(CALLBACK(src, .proc/burst), timeleft)
 
 /obj/effect/cme/proc/burst()
