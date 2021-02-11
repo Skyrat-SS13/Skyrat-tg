@@ -1,4 +1,6 @@
-GLOBAL_LIST_EMPTY(cme_spawn)//Coronal mass ejection spawn point. E.g. The EMP origin point.
+////////////////////////
+//CME DEFINES FILE!
+///////////////////////
 
 #define CME_MINIMAL			"minimal"
 #define CME_MODERATE		"moderate"
