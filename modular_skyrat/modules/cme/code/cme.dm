@@ -59,7 +59,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	max_occurrences = 0
 
 /datum/round_event/cme/armageddon
-	cme_intensity = CME_EXTREME
+	cme_intensity = CME_ARMAGEDDON
 
 /datum/round_event/cme/setup()
 	if(!cme_intensity)
