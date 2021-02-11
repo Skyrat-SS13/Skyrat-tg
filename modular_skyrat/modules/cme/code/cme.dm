@@ -151,6 +151,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
 		if(M.client)
+			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			SEND_SOUND(M, cme_sound)
 			shake_camera(M, 15, 1)
 	switch(intensity)
@@ -236,7 +237,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	explosion(src, 0, 0, 2, flame_range = 10)
+	explosion(src, 0, 0, 2, flame_range = 5)
 	qdel(src)
 
 /obj/effect/cme/armageddon/burst()
