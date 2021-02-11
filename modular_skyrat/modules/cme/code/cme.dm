@@ -96,7 +96,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event/cme/announce(fake)
 	priority_announce("Coronal mass ejection detected! Expected intensity: [cme_intensity]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
 	All synthetic and non-organic lifeforms should seek shelter immediately! \
-	Ensure all sensitive equipment is shielded.", "Solar Ejection Detected", 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
+	Ensure all sensitive equipment is shielded.", "Solar Ejection Detected", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
 
 /datum/round_event/cme/tick()
 	if(ISMULTIPLE(activeFor, rand(cme_frequency_lower, cme_frequency_upper)))
@@ -106,6 +106,11 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event/cme/proc/spawn_cme(spawnpoint, intensity)
 	var/area/loc_area_name = get_area(spawnpoint)
 	minor_announce("WARNING! PULSE EXPECTED IN: [loc_area_name.name]", "Solar Event Log:")
+	for(var/i in GLOB.mob_list)
+		var/mob/M = i
+		if(M.client)
+			SEND_SOUND(M, cme_sound)
+			shake_camera(M, 15, 1)
 	switch(intensity)
 		if(CME_MINIMAL)
 			var/obj/effect/cme/spawnedcme = new(spawnpoint)
@@ -120,14 +125,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 			var/obj/effect/cme/armageddon/spawnedcme = new(spawnpoint)
 			announce_to_ghosts(spawnedcme)
 
-	for(var/i in GLOB.mob_list)
-		var/mob/M = i
-		if(!SSmapping.level_trait(M.z, ZTRAITS_STATION))
-			continue
-		if(M.client)
-			SEND_SOUND(M, cme_sound)
-			SEND_SOUND(M, 'sound/effects/alert.ogg')
-			shake_camera(M, 15, 1)
 
 /datum/round_event/cme/end()
 	minor_announce("The station has cleared the solar flare, please proceed to repair electronic failures.", "CME cleared:")
@@ -146,6 +143,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	light_range = 5
 	light_power = 2
 	light_color = COLOR_BLUE_LIGHT
+	pixel_x = -32
+	pixel_y = -32
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
@@ -195,7 +194,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
-
 	qdel(src)
 
 /obj/effect/cme/singularity_pull()
