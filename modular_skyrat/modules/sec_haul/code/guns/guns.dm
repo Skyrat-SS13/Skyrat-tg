@@ -59,8 +59,8 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/gun/ballistic/automatic/pistol/g18
-	name = "\improper Armadyne Glock-18 Mil Spec"
-	desc = "A special anniversary edition of the Glock-18 from Armadyne, it has a 3 round burst mode and extended mag."
+	name = "\improper Armadyne Glock-18"
+	desc = "A special anniversary edition of the Glock-18 from Armadyne, it has a 3 round burst mode and accepts extended magazines."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -217,7 +217,7 @@
 ///////////////////////LADON 40x32
 /obj/item/gun/ballistic/automatic/pistol/ladon
 	name = "\improper Armadyne P-3 'Ladon'"
-	desc = "A well built all round decent 10mm pistol, it's got a few nice features, feels good in the hand, this is a nice gun! It has an <p style='color:red'>Armadyne</p> embroidery on the grip."
+	desc = "A modern ballistic sidearm based off the PDH models, chambered in 10mm and quite recent on the market. It has an <p style='color:red'>Armadyne</p> embroidery on the grip."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
@@ -260,7 +260,7 @@
 /////////////////////MAKAROV
 /obj/item/gun/ballistic/automatic/pistol/makarov
 	name = "\improper RusCo 'Makarov' Pistol"
-	desc = "This gun is really small, it would likely fit in your pocket. It feels russian. It uses 10mm."
+	desc = "A mediocre pocket-sized handgun of seemingly Russian origin, chambered in 10mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/makarov.dmi'
 	icon_state = "makarov"
 	w_class = WEIGHT_CLASS_SMALL
@@ -298,8 +298,8 @@
 ////////////////////////////MK58
 
 /obj/item/gun/ballistic/automatic/pistol/mk58
-	name = "\improper Cyberdyne MK-58 Semi-Auto"
-	desc = "This gun feels very military to the touch, makes you feel like you're in the army, or something. It uses 9mm."
+	name = "\improper Cyberdyne MK-58"
+	desc = "A modern 9mm handgun with an olive polymer lower frame. Looks like a generic 21st century military sidearm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mk58.dmi'
 	icon_state = "mk58"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -314,7 +314,7 @@
 	emp_damageable = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
-	name = "ladon handgun magazine (9mm)"
+	name = "mk-58 handgun magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -336,8 +336,8 @@
 
 //////////////////////FIREFLY
 /obj/item/gun/ballistic/automatic/pistol/firefly
-	name = "\improper Armadyne PMC 'Firefly'"
-	desc = "This nifty litle sidarm is from Armadyne's medical directive, brought right into your capable hands. NOT A SURGERY TOOL. Chambered in 9mm."
+	name = "\improper Armadyne P-92 'Firefly'"
+	desc = "A 9mm sidearm made by Armadyne's Medical Directive, with a heavy front for weak wrists. A small warning label on the back says it's not fit for surgical work."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/firefly.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -375,8 +375,8 @@
 /////////////////////PCR
 
 /obj/item/gun/ballistic/automatic/pcr
-	name = "\improper Armadyne AR-3 'Peacekeeper' Cyclic Rifle"
-	desc = "A robustly made PCR, it's fairly accurate and has a decent rate of fire. This model is the Automatik-3, meaning 3 round burst. It is chambered in 9mm."
+	name = "\improper Armadyne PCR-9 'Mitrailleuse'"
+	desc = "A standard PCR, accurate and fast-firing. It fires three-round bursts of 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pcr.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -423,15 +423,15 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/gun/ballistic/automatic/pitbull
-	name = "\improper Armadyne 'Pitbull' Auto Rifle"
-	desc = "A sturdy feeling rifle, it's part of Armadyne's military divsion used in peacekeeping. It's chambered in 10mm."
+	name = "\improper Armadyne 'Pitbull' Battle Rifle"
+	desc = "A sturdy battle rifle normally issued to Armadyne's military division. Rechambered for peacekeeping work, it fires three-round bursts of 10mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pitbull.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
 	inhand_icon_state = "pitbull"
 	icon_state = "pitbull"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
-	worn_icon_state = "ostwind_worn"
+	worn_icon_state = "pitbull_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
@@ -451,7 +451,7 @@
 	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull
-	name = "pitbull smg magazine (10mm)"
+	name = "pitbull br magazine (10mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -473,8 +473,8 @@
 
 /////////////////DTR
 /obj/item/gun/ballistic/automatic/ostwind
-	name = "\improper Armadyne DTR 'Ostwind' Rapid Rifle"
-	desc = "The DTR Ostwind is a rapid fire rifle chambered in 6mm, it's decent at crowd control, if your aim is maximum collateral damage."
+	name = "\improper Armadyne DTR-6 'Ostwind' Rifle"
+	desc = "The DTR-6 is a fast-firing infantry rifle chambered in 6mm, for a more collateral approach to crowd control."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -499,7 +499,7 @@
 	can_bayonet = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
-	name = "ostwind smg magazine (6mm)"
+	name = "ostwind rifle magazine (6mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b6mm
@@ -520,7 +520,7 @@
 /////////////////////CROON 40x32
 /obj/item/gun/ballistic/automatic/croon
 	name = "\improper DT-4 'Croon' SMG"
-	desc = "The DT-4. A bad ripoff of one of Armadyne's sub companies, this thing loves to jam. It's crude but gets the job done. Chambered in 6mm. Not made by Armadyne."
+	desc = "A low-quality 6mm reproduction of one of Armadyne's popular SMG models, jams like a bitch. Although crude and unofficial, it gets the job done."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/croon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
@@ -564,8 +564,8 @@
 
 ///////////////////////////Dozer
 /obj/item/gun/ballistic/automatic/dozer
-	name = "\improper Armadyne 'Dozer' Semi-Auto"
-	desc = "The DZR, it's quite literally only good for dozing people down. It's chambered in 10mm for a reason."
+	name = "\improper Armadyne DZR-10 'Dozer'"
+	desc = "The DZR-10, a notorious 10mm PDW that lives up to its nickname. For safety concerns, this peacekeeping model has been locked to semi-automatic."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -588,7 +588,7 @@
 	armadyne = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
-	name = "dozer smg magazine (10mm)"
+	name = "dozer pdw magazine (10mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -612,8 +612,8 @@
 /////////////////////NORWIND
 
 /obj/item/gun/ballistic/automatic/norwind
-	name = "\improper Armadyne LG-2 'Norwind' Rifle"
-	desc = "The Norwind is one of Armadyne's rarer weapons, it's chambered in 12mm but has a low magazine capacity and firerate. Scoped to zoom."
+	name = "\improper Armadyne M112 'Norwind' Designated Marksman Rifle"
+	desc = "A rare M112 DMR rechambered to 12mm for peacekeeping work, it comes with a scope for medium-long range engagements. Comes with a bayonet lug if you want to make it personal."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -643,7 +643,7 @@
 	armadyne = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
-	name = "norwind rifle magazine (12mm)"
+	name = "norwind dmr magazine (12mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b12mm
@@ -662,8 +662,8 @@
 
 
 /obj/item/gun/ballistic/automatic/vintorez
-	name = "\improper Armadyne LSR 'Vintorez'"
-	desc = "The LSR Vintorez is a light-weight long-range scoped rifle, it is chambered in 9mm, you won't be dealing much damage, but, at least you won't be in danger. It also has a built in suppressor."
+	name = "\improper Armadyne VKC 'Vintorez'"
+	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9mm for peacekeeping work."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/vintorez.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -819,8 +819,8 @@
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun
-	name = "\improper Armadyne 'S-M-A-R-T-GUN'"
-	desc = "The SMARTGUN is one of Armadyne finest creations in regards to law enforcement and shredding things. Some say they use thses to shred paper."
+	name = "\improper Armadyne 'S.M.A.R.T.' Rifle"
+	desc = "Suppressive Multitarget Accurate Rotating Trajectory rifle. A modified version of an Armadyne heavy machine gun fitted to fire miniature shock-bolts."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
