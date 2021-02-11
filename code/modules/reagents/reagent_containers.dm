@@ -57,7 +57,6 @@
 				to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
 				return
 
-<<<<<<< HEAD
 //SKYRAT EDIT CHANGE BEGIN - CHEMISTRY QOL
 /obj/item/reagent_containers/AltClick(mob/user)
 	. = ..()
@@ -70,7 +69,6 @@
 /obj/item/reagent_containers/attack(mob/M, mob/living/user, def_zone)
 	if(user.combat_mode)
 		return ..()
-=======
 /obj/item/reagent_containers/pre_attack_secondary(atom/target, mob/living/user, params)
 	if (try_splash(user, target))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -114,7 +112,6 @@
 	reagents.clear_reagents()
 
 	return TRUE
->>>>>>> 1ca55b75b62 (Generalize splashing reagent containers code, put it on right click (#56813))
 
 /obj/item/reagent_containers/proc/canconsume(mob/eater, mob/user)
 	if(!iscarbon(eater))
