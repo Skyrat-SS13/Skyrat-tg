@@ -94,11 +94,29 @@ Armageddon is truly going to fuck the station, use it sparingly.
 			cme_start_locs += T
 
 /datum/round_event/cme/announce(fake)
-	if(cme_intensity == CME_EXTREME)
-		set_security_level(SEC_LEVEL_RED)
-	priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
-	All synthetic and non-organic lifeforms should seek shelter immediately! \
-	Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
+	if(fake)
+		priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [rand(200, 300)] seconds. \
+		All synthetic and non-organic lifeforms should seek shelter immediately! \
+		Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
+	else
+		switch(cme_intensity)
+			if(CME_MINIMAL)
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				All synthetic and non-organic lifeforms should seek shelter immediately! \
+				Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
+			if(CME_MODERATE)
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				All synthetic and non-organic lifeforms should seek shelter immediately! \
+				Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
+			if(CME_EXTREME)
+				set_security_level(SEC_LEVEL_RED)
+				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				All synthetic and non-organic lifeforms should seek shelter immediately! \
+				Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
+			if(CME_EXTREME)
+				set_security_level(SEC_LEVEL_GAMMA)
+				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
 
 /datum/round_event/cme/tick()
 	if(ISMULTIPLE(activeFor, rand(cme_frequency_lower, cme_frequency_upper)))
@@ -195,7 +213,16 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
-	playsound(src,'sound/weapons/resonator_fire.ogg',50,TRUE)
+	playsound(T,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	explosion(src, 0, 0, 2, flame_range = 10)
+	qdel(src)
+
+/obj/effect/cme/armageddon/burst()
+	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
+	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
+	empulse(src, pulse_range_heavy, pulse_range_light)
+	explosion(src, 0, 0, 10, flame_range = 10)
+	playsound(T,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	qdel(src)
 
 /obj/effect/cme/singularity_pull()

@@ -15,7 +15,7 @@
 #define CME_MINIMAL_HEAVY_RANGE_UPPER		5			//The highest range for the emp pulse heavy range.
 #define CME_MINIMAL_FREQUENCY_LOWER 		20 / 2		//The lower time range for cme bubbles to appear.
 #define CME_MINIMAL_FREQUENCY_UPPER 		30 / 2		//The higher time range for cme bubbles to appear.
-#define CME_MINIMAL_BUBBLE_BURST_TIME 		15 SECONDS		//The time taken for a cme bubble to pop.
+#define CME_MINIMAL_BUBBLE_BURST_TIME 		30 SECONDS		//The time taken for a cme bubble to pop.
 #define CME_MINIMAL_START_LOWER 			300 / 2		//The lowest amount of time for the event to start from the announcement. - Prep time
 #define CME_MINIMAL_START_UPPER				600 / 2		//The highest amount of time for the event to start from the announcement. - Prep time
 #define CME_MINIMAL_END						300 / 2		//The amount of time starting from THE MINIMAL START TIME for the event to end. - How long it actually lasts.
@@ -26,7 +26,7 @@
 #define CME_MODERATE_HEAVY_RANGE_UPPER 		7
 #define CME_MODERATE_FREQUENCY_LOWER 		15 / 2
 #define CME_MODERATE_FREQUENCY_UPPER 		25 / 2
-#define CME_MODERATE_BUBBLE_BURST_TIME 		10 SECONDS
+#define CME_MODERATE_BUBBLE_BURST_TIME 		20 SECONDS
 #define CME_MODERATE_START_LOWER 			300 / 2
 #define CME_MODERATE_START_UPPER			420 / 2
 #define CME_MODERATE_END					420 / 2
@@ -37,7 +37,7 @@
 #define CME_EXTREME_HEAVY_RANGE_UPPER 		10
 #define CME_EXTREME_FREQUENCY_LOWER 		10 / 2
 #define CME_EXTREME_FREQUENCY_UPPER 		20 / 2
-#define CME_EXTREME_BUBBLE_BURST_TIME 		5 SECONDS
+#define CME_EXTREME_BUBBLE_BURST_TIME 		10 SECONDS
 #define CME_EXTREME_START_LOWER 			180 /2
 #define CME_EXTREME_START_UPPER				300 / 2
 #define CME_EXTREME_END						600 / 2
@@ -48,7 +48,7 @@
 #define CME_ARMAGEDDON_HEAVY_RANGE_UPPER 	20
 #define CME_ARMAGEDDON_FREQUENCY_LOWER 		5 / 2
 #define CME_ARMAGEDDON_FREQUENCY_UPPER 		10 / 2
-#define CME_ARMAGEDDON_BUBBLE_BURST_TIME 	2 SECONDS
+#define CME_ARMAGEDDON_BUBBLE_BURST_TIME 	5 SECONDS
 #define CME_ARMAGEDDON_START_LOWER 			60 / 2
 #define CME_ARMAGEDDON_START_UPPER			180 / 2
 #define CME_ARMAGEDDON_END					1200 / 2
