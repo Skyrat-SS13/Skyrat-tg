@@ -16,6 +16,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ruins_templates = list()
 	var/list/space_ruins_templates = list()
 	var/list/lava_ruins_templates = list()
+	var/list/ocean_ruins_templates = list()
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
 
@@ -98,6 +99,11 @@ SUBSYSTEM_DEF(mapping)
 		seedRuins(lava_ruins, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), lava_ruins_templates)
 		for (var/lava_z in lava_ruins)
 			spawn_rivers(lava_z)
+
+	//Ocean ruins
+	var/list/ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS)
+	if (ocean_ruins.len)
+		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated), ocean_ruins_templates)
 
 	var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 	if (ice_ruins.len)
@@ -186,6 +192,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	ruins_templates = SSmapping.ruins_templates
 	space_ruins_templates = SSmapping.space_ruins_templates
 	lava_ruins_templates = SSmapping.lava_ruins_templates
+	ocean_ruins_templates = SSmapping.ocean_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
 	shuttle_templates = SSmapping.shuttle_templates
@@ -426,6 +433,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ice_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
+		else if (istype(R, /datum/map_template/ruin/ocean))
+			ocean_ruins_templates[R.name] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")

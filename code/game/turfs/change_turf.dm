@@ -137,12 +137,15 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			W.liquids = liquid_cache
 			W.liquids.my_turf = W
 		else
-			W.liquids = old_liquids
-			old_liquids.my_turf = W
-			if(old_liquids.immutable)
-				W.convert_immutable_liquids()
+			if(flags & CHANGETURF_INHERIT_AIR)
+				W.liquids = old_liquids
+				old_liquids.my_turf = W
+				if(old_liquids.immutable)
+					W.convert_immutable_liquids()
+				else
+					W.reasses_liquids()
 			else
-				W.reasses_liquids()
+				qdel(old_liquids, TRUE)
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	QUEUE_SMOOTH(src)
 
