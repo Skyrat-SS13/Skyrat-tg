@@ -276,8 +276,6 @@ SUBSYSTEM_DEF(liquids)
 	smoothing_groups = list(SMOOTH_GROUP_WATER)
 	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WATER)
 
-	//layer = MID_LANDMARK_LAYER
-	//invisibility = INVISIBILITY_ABSTRACT
 	mouse_opacity = FALSE
 	var/height = 1
 	var/only_big_diffs = 1
@@ -294,6 +292,8 @@ SUBSYSTEM_DEF(liquids)
 	var/temp = T20C
 
 	var/fire_state = LIQUID_FIRE_STATE_NONE
+	
+	var/no_effects = FALSE
 
 /obj/effect/abstract/liquid_turf/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
 	return
@@ -441,6 +441,8 @@ SUBSYSTEM_DEF(liquids)
 
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
+	if(no_effects)
+		return
 	cut_overlays()
 	switch(liquid_state)
 		if(LIQUID_STATE_ANKLES)
@@ -477,6 +479,8 @@ SUBSYSTEM_DEF(liquids)
 			add_overlay(overlay)
 
 /obj/effect/abstract/liquid_turf/proc/update_liquid_vis()
+	if(no_effects)
+		return
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR|RESET_ALPHA)
 	//Add a fire overlay too
@@ -649,7 +653,7 @@ SUBSYSTEM_DEF(liquids)
 	my_turf = loc
 	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
 	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
-	SSvis_overlays.add_vis_overlay(src, icon, "shine", layer, plane, add_appearance_flags = RESET_COLOR)
+	update_liquid_vis()
 	if(!immutable)
 		SSliquids.add_active_turf(my_turf)
 	QUEUE_SMOOTH(src)
@@ -1052,10 +1056,16 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	var/list/starting_mixture = list(/datum/reagent/water = 600)
 	var/starting_temp = T20C
 
-/obj/effect/abstract/liquid_turf/immutable/coldocean
-	starting_temp = T20C-170
+/obj/effect/abstract/liquid_turf/immutable/ocean
+	smoothing_flags = NONE
+	icon_state = "ocean"
+	base_icon_state = "ocean"
+	plane = BLACKNESS_PLANE //Same as weather, etc.
+	layer = ABOVE_MOB_LAYER
+	starting_temp = T20C-150
+	no_effects = TRUE
 
-/obj/effect/abstract/liquid_turf/immutable/warmocean
+/obj/effect/abstract/liquid_turf/immutable/ocean/warm
 	starting_temp = T20C+20
 
 /obj/effect/abstract/liquid_turf/immutable/Initialize()

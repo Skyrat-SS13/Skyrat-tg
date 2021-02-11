@@ -32,3 +32,4 @@
 	icon_state = "coral"
 	desc = "Beautiful coral."
 	random_variants = 3
+	density = TRUE

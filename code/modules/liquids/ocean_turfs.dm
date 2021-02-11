@@ -6,7 +6,7 @@
 	. = ..()
 	if(liquids)
 		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/ocean(src)
 
 /turf/open/floor/plating/ocean/ironsand
 	baseturfs = /turf/open/floor/plating/ocean/ironsand
@@ -24,7 +24,7 @@
 	rand_variants = 0
 
 /turf/open/floor/plating/ocean/rock/warm
-	liquid_type = /obj/effect/abstract/liquid_turf/immutable/warmocean
+	liquid_type = /obj/effect/abstract/liquid_turf/immutable/ocean/warm
 
 /turf/open/floor/plating/ocean/rock/warm/fissure
 	name = "fissure"
@@ -61,7 +61,7 @@
 	planetary_atmos = TRUE
 	var/rand_variants = 12
 	var/rand_chance = 30
-	var/liquid_type = /obj/effect/abstract/liquid_turf/immutable/coldocean
+	var/liquid_type = /obj/effect/abstract/liquid_turf/immutable/ocean
 
 /turf/open/floor/plating/ocean/Initialize()
 	. = ..()
@@ -81,7 +81,7 @@
 	. = ..()
 	if(liquids)
 		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/ocean(src)
 
 /turf/open/floor/plasteel/ocean
 	planetary_atmos = TRUE
@@ -91,7 +91,7 @@
 	. = ..()
 	if(liquids)
 		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/coldocean(src)
+	liquids = new /obj/effect/abstract/liquid_turf/immutable/ocean(src)
 
 /turf/closed/mineral/random/low_chance/ocean
 	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
