@@ -94,6 +94,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 			cme_start_locs += T
 
 /datum/round_event/cme/announce(fake)
+	if(cme_intensity == CME_EXTREME)
+		set_security_level(SEC_LEVEL_RED)
 	priority_announce("Coronal mass ejection detected! Expected intensity: [cme_intensity]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
 	All synthetic and non-organic lifeforms should seek shelter immediately! \
 	Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
@@ -105,7 +107,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/proc/spawn_cme(spawnpoint, intensity)
 	var/area/loc_area_name = get_area(spawnpoint)
-	minor_announce("WARNING! PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
+	minor_announce("WARNING! [uppertext(intensity)] PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
 		if(M.client)
