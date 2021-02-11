@@ -236,11 +236,10 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	explosion(src, 0, 0, 2, flame_range = 3)
-	var/turf/T = get_turf(src)
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
 		if(M.client)
-			M.playsound_local(T, 'modular_skyrat/modules/cme/sound/cme.ogg', 100, TRUE)
+			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme.ogg'))
 			shake_camera(M, 15, 1)
 	qdel(src)
 
@@ -250,11 +249,10 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	explosion(src, 0, 0, 10, flame_range = 10)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	var/turf/T = get_turf(src)
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
 		if(M.client)
-			M.playsound_local(T, 'modular_skyrat/modules/cme/sound/cme.ogg', 100, TRUE)
+			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme.ogg'))
 			shake_camera(M, 15, 1)
 	qdel(src)
 
