@@ -96,7 +96,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event/cme/announce(fake)
 	if(cme_intensity == CME_EXTREME)
 		set_security_level(SEC_LEVEL_RED)
-	priority_announce("Coronal mass ejection detected! Expected intensity: [cme_intensity]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+	priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
 	All synthetic and non-organic lifeforms should seek shelter immediately! \
 	Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/alerts/sound/misc/voyalert.ogg'))
 
