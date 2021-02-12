@@ -7,7 +7,8 @@
 		/obj/item/gun/ballistic/revolver/grenadelauncher/cyborg,
 		/obj/item/card/emag,
 		/obj/item/crowbar/cyborg,
-		/obj/item/extinguisher/mini)
+		/obj/item/extinguisher/mini
+		)
 	cyborg_base_icon = "ninja_sec"
 	cyborg_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
 	model_select_icon = "ninjaborg"
@@ -87,7 +88,9 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/stack/medical/gauze,
 		/obj/item/gun/medbeam,
-		/obj/item/borg/apparatus/organ_storage)
+		/obj/item/borg/apparatus/organ_storage,
+		/obj/item/surgical_processor
+		)
 	cyborg_base_icon = "ninja_medical"
 	cyborg_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
 	model_select_icon = "ninjaborg"
@@ -126,6 +129,10 @@
 	magpulsing = TRUE
 	hat_offset = -4
 	canDispose = TRUE
+
+/obj/item/robot_model/ninja_saboteur/do_transform_animation()
+	..()
+	to_chat(loc, "<span class='userdanger'>While you have picked the saboteur model, that doesn't mean you are allowed to sabotage the station by delaminating the supermatter or opening all the doors to the armory, you should still ahelp to ask the permission to do that and the reason for it.</span>")
 
 
 /obj/item/robot_model/ninja_saboteur/be_transformed_to(obj/item/robot_model/old_model)

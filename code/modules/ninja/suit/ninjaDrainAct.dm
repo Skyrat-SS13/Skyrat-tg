@@ -285,10 +285,11 @@
 		UnlinkSelf()
 		ionpulse = TRUE
 		laws = new /datum/ai_laws/ninja_override()
-		//SKYRAT EDIT: ADDITION START
-		var/choice = input(src,"To what model do you wish to turn into?","Select Role") in sortList(modelselected)
+		//SKYRAT EDIT CHANGE BEGIN - Role Selection
+		//model.transform_to(pick(/obj/item/robot_model/syndicate, /obj/item/robot_model/syndicate_medical, /obj/item/robot_model/saboteur)) - SKYRAT EDIT - ORIGINAL
+		var/choice = input(src,"What role do you wish to become?","Select Role") in sortList(modelselected)
 		model.transform_to(modelselected[choice])
-		//SKYRAT EDIT: ADDITION END
+		//SKYRAT EDIT CHANGE END
 
 		var/datum/antagonist/ninja/ninja_antag = ninja.mind.has_antag_datum(/datum/antagonist/ninja)
 		if(!ninja_antag)

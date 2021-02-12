@@ -25,7 +25,7 @@
 		/datum/reagent/medicine/inacusiate,
 		/datum/reagent/medicine/potass_iodide,
 		/datum/reagent/medicine/morphine,
-		/datum/reagent/consumable/nutriment
+		/datum/reagent/consumable/nutriment //That is for Ninja.
 	)
-	bypass_protection = TRUE
+	bypass_protection = TRUE //They still wearing suits, don't they?
 	accepts_reagent_upgrades = FALSE
