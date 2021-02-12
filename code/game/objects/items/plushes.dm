@@ -619,4 +619,4 @@
 	inhand_icon_state = "plushie_borb"
 	attack_verb_continuous = list("pecks", "peeps")
 	attack_verb_simple = list("peck", "peep")
-	squeak_override = list('Skyrat-tg/modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
