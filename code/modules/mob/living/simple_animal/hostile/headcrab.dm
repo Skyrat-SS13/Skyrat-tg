@@ -22,6 +22,7 @@
 	speak_emote = list("squeaks")
 	var/datum/mind/origin
 	var/egg_lain = 0
+	gold_core_spawnable = HOSTILE_SPAWN //SKYRAT EDIT ADDITION
 
 /mob/living/simple_animal/hostile/headcrab/Initialize()
 	. = ..()
