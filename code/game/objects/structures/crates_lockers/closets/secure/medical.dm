@@ -121,14 +121,11 @@
 	new /obj/item/storage/box/pillbottles(src)
 	new /obj/item/storage/box/medigels(src)
 	new /obj/item/storage/box/medigels(src)
-<<<<<<< HEAD
 	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
 	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
-=======
 	new /obj/item/ph_booklet(src)
 	new /obj/item/reagent_containers/dropper(src)
 	new /obj/item/reagent_containers/glass/bottle/acidic_buffer(src) //hopefully they get the hint
->>>>>>> 56f7ac0c0a2 (Reaction rates, pH, purity and more! Brings a heavily improved, less explosive and optimised fermichem to tg. (#56019))
 
 /obj/structure/closet/secure_closet/chemical/heisenberg //contains one of each beaker, syringe etc.
 	name = "advanced chemical closet"

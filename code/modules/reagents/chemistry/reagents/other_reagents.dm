@@ -95,12 +95,8 @@
 	description = "You don't even want to think about what's in here."
 	taste_description = "gross iron"
 	shot_glass_icon_state = "shotglassred"
-<<<<<<< HEAD
-	//material = /datum/material/meat //SKYRAT EDIT REMOVAL
-=======
 	material = /datum/material/meat
 	ph = 7.45
->>>>>>> 56f7ac0c0a2 (Reaction rates, pH, purity and more! Brings a heavily improved, less explosive and optimised fermichem to tg. (#56019))
 
 /datum/reagent/vaccine
 	//data must contain virus type
