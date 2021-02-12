@@ -3,7 +3,7 @@
 	desc = "A mechanical door that permits one-way access and prevents tailgating."
 	icon = 'modular_skyrat/modules/mapping/icons/turnstile.dmi'
 	icon_state = "turnstile_map"
-	density = FALSE
+	density = TRUE
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 10, bio = 100, rad = 100, fire = 90, acid = 70)
 	anchored = TRUE
 	use_power = FALSE
