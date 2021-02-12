@@ -113,7 +113,7 @@
 	if(QDELETED(src))
 		return
 
-	if(generation>2) /// Skyrat edit start , fuck you mushrooms
+	if(generation>2) /// Skyrat edit start, hardcapped glowshroom spread.
 		return /// Skyrat edit end
 
 	var/turf/ownturf = get_turf(src)
