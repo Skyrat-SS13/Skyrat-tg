@@ -9,3 +9,4 @@
 	attack_verb_continuous = list("pecks", "peeps")
 	attack_verb_simple = list("peck", "peep")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
+	
