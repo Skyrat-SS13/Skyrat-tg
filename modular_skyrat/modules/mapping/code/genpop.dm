@@ -96,7 +96,7 @@
 	if(user.body_position == LYING_DOWN && get_dist(src, user) > 0)
 		return
 
-	if(!broken && registered_id != null && registered_id in user.held_items)
+	if(!broken && registered_id != null && (registered_id in user.held_items))
 		handle_prisoner_id(user)
 		return
 
