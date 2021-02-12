@@ -1173,6 +1173,7 @@
 	materials = list(/datum/material/plastic = 500)
 	build_path = /obj/item/stack/sticky_tape
 	category = list("initial", "Misc")
+	maxstack = 5
 
 /datum/design/sticky_tape/surgical
 	name = "Surgical Tape"
