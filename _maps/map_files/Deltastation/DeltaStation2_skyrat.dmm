@@ -8567,6 +8567,9 @@
 /area/engineering/supermatter)
 "awh" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/machinery/atmospherics/pipe/manifold/green/visible{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/engineering/supermatter)
 "awi" = (
@@ -9813,10 +9816,6 @@
 /area/ai_monitored/security/armory)
 "ayK" = (
 /obj/machinery/power/supermatter_crystal/engine,
-/obj/machinery/atmospherics/pipe/manifold/general/visible/layer4,
-/obj/machinery/atmospherics/pipe/manifold/general/visible/layer2{
-	dir = 1
-	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "ayQ" = (
@@ -55954,12 +55953,6 @@
 	name = "Supermatter Chamber";
 	req_one_access_txt = "10;24"
 	},
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer4{
-	dir = 4
-	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "ctt" = (
@@ -98655,8 +98648,9 @@
 /area/medical/chemistry)
 "ens" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 4
+/obj/machinery/atmospherics/components/binary/valve/digital{
+	dir = 4;
+	name = "Exhaust to Waste"
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
@@ -99168,6 +99162,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/security/prison)
+"eXg" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "faI" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/camera{
@@ -99231,7 +99231,9 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "ffn" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "ffO" = (
@@ -99326,8 +99328,11 @@
 /turf/open/floor/iron,
 /area/engineering/main)
 "frC" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /turf/open/space/basic,
 /area/space/nearstation)
 "fsE" = (
@@ -99386,6 +99391,9 @@
 	},
 /obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 5
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "fAi" = (
@@ -99425,13 +99433,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
-"fBG" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 5
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/space/nearstation)
 "fCE" = (
 /obj/machinery/washing_machine,
 /obj/structure/sign/warning/electricshock{
@@ -99999,9 +100000,7 @@
 /turf/open/floor/iron,
 /area/engineering/main)
 "gEg" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 1
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "gEN" = (
@@ -100527,6 +100526,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/medical)
+"hof" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "hos" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin,
@@ -100697,16 +100703,12 @@
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "hCb" = (
-/obj/machinery/atmospherics/components/binary/pump/layer2{
-	dir = 8;
-	name = "Gas to Chamber"
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 10
 	},
-/obj/machinery/atmospherics/components/binary/pump/layer4{
-	dir = 4;
-	name = "Chamber to Cooling"
-	},
-/turf/open/floor/engine,
-/area/engineering/supermatter)
+/turf/open/space/basic,
+/area/space/nearstation)
 "hCV" = (
 /obj/item/radio/intercom{
 	pixel_y = 26
@@ -100807,10 +100809,13 @@
 /turf/open/floor/plating,
 /area/engineering/main)
 "hIH" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
 	},
-/obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
 "hKg" = (
@@ -100988,6 +100993,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
+"hWK" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	dir = 5
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "hWW" = (
 /obj/machinery/status_display/ai{
 	pixel_y = -32
@@ -101074,7 +101085,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/obj/machinery/atmospherics/pipe/simple/green/visible,
 /turf/open/floor/iron,
 /area/engineering/main)
 "ibY" = (
@@ -101132,6 +101143,13 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/engine,
 /area/engineering/main)
+"ifa" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 6
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "igE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
@@ -101199,6 +101217,9 @@
 /area/security/prison)
 "iiU" = (
 /obj/structure/sign/warning/radiation,
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	dir = 4
+	},
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "ilu" = (
@@ -102417,8 +102438,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer2,
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "jRy" = (
@@ -102752,6 +102774,9 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "kvX" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -103024,10 +103049,13 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "kXq" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},
-/obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
 "kXz" = (
@@ -103666,6 +103694,12 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"lOQ" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 6
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "lOS" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 6
@@ -105395,6 +105429,15 @@
 /obj/effect/landmark/start/prisoner,
 /turf/open/floor/iron,
 /area/security/prison/safe)
+"nZE" = (
+/obj/structure/window/plasma/reinforced/spawner/west{
+	dir = 1
+	},
+/obj/machinery/power/rad_collector/anchored,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "oaQ" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
@@ -106462,11 +106505,10 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "pDb" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible/layer4,
-/obj/machinery/atmospherics/pipe/manifold/general/visible/layer2{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	dir = 6
 	},
-/turf/open/floor/engine,
+/turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "pDg" = (
 /obj/structure/cable,
@@ -106830,8 +106872,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/green/visible,
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer4,
+/obj/machinery/atmospherics/pipe/manifold/green/visible{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "qdc" = (
@@ -107559,7 +107602,9 @@
 "rho" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/binary/valve/digital{
-	dir = 4
+	dir = 4;
+	name = "Exhaust to Space";
+	on = 1
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
@@ -107773,8 +107818,10 @@
 /turf/open/floor/iron/dark,
 /area/hallway/primary/starboard)
 "rxf" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 5
+	},
 /turf/open/space/basic,
 /area/space/nearstation)
 "rxo" = (
@@ -108507,6 +108554,12 @@
 /obj/effect/spawner/lootdrop/prison_contraband,
 /turf/open/floor/iron,
 /area/security/prison)
+"ssD" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	dir = 10
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "ssK" = (
 /obj/machinery/light,
 /obj/structure/cable,
@@ -108528,7 +108581,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/layer_manifold/visible,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/iron,
 /area/engineering/main)
 "svv" = (
@@ -108580,6 +108633,14 @@
 /obj/effect/landmark/start/prisoner,
 /turf/open/floor/iron,
 /area/security/prison/safe)
+"sAd" = (
+/obj/machinery/light/small,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Gas to Chamber"
+	},
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "sAm" = (
 /obj/machinery/light_switch{
 	pixel_x = 26
@@ -109151,12 +109212,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer2{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer4{
-	dir = 9
-	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "trL" = (
@@ -109371,10 +109426,10 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "tGf" = (
+/obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
 "tGU" = (
@@ -110056,13 +110111,10 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "uCM" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer2{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/green/visible{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer4{
-	dir = 5
-	},
-/turf/open/floor/engine,
+/turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "uCU" = (
 /obj/structure/cable,
@@ -110179,12 +110231,6 @@
 	heat_proof = 1;
 	name = "Supermatter Chamber";
 	req_one_access_txt = "10;24"
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible/layer4{
-	dir = 4
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
@@ -110516,6 +110562,10 @@
 "vam" = (
 /obj/machinery/airalarm/engine{
 	pixel_y = 23
+	},
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4;
+	name = "Chamber to Cooling"
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
@@ -112771,6 +112821,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/starboard)
+"xXe" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 9
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "xXn" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/engine/vacuum,
@@ -130585,14 +130641,14 @@ aaa
 qYo
 uKa
 rxf
+ifa
 rxf
+ifa
 rxf
+ifa
 rxf
+ifa
 rxf
-rxf
-rxf
-rxf
-fBG
 aaa
 aaa
 rSK
@@ -131106,7 +131162,7 @@ frC
 kvX
 frC
 kvX
-fBG
+rxf
 qYo
 qYo
 qYo
@@ -131620,7 +131676,7 @@ frC
 kvX
 frC
 kvX
-fBG
+rxf
 qYo
 aaa
 rSK
@@ -131869,15 +131925,15 @@ qYo
 aaa
 aaa
 ksq
-vVc
-vVc
-vVc
-vVc
-vVc
-vVc
-vVc
-vVc
-ksq
+hCb
+tGf
+hCb
+tGf
+hCb
+tGf
+hCb
+tGf
+hof
 iFx
 aaa
 cnI
@@ -133925,9 +133981,9 @@ nKl
 cnC
 lll
 olO
-awg
+pDb
 ffn
-uCM
+axz
 gEg
 fzu
 guR
@@ -134186,7 +134242,7 @@ awh
 ffn
 ayK
 gEg
-fzu
+nZE
 swe
 fPR
 sCe
@@ -134439,11 +134495,11 @@ nKl
 cnC
 pjq
 fOu
-awg
+uCM
 ffn
-pDb
+axz
 gEg
-fzu
+nZE
 oFc
 crI
 stQ
@@ -134696,11 +134752,11 @@ ckw
 ulV
 kwv
 pMq
-awg
-awg
+ssD
+hWK
 cto
-awg
-awg
+lOQ
+xXe
 awg
 awi
 gAB
@@ -134955,8 +135011,8 @@ cnB
 bSm
 awg
 vam
-hCb
-nvY
+axz
+sAd
 awg
 mtp
 mtp
@@ -135213,7 +135269,7 @@ oOw
 awi
 iiU
 uGH
-awg
+eXg
 awg
 nDz
 nDz
