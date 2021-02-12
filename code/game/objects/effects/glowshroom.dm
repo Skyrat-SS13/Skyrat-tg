@@ -113,6 +113,9 @@
 	if(QDELETED(src))
 		return
 
+	if(generation>2) /// Skyrat edit start , fuck you mushrooms
+		return /// Skyrat edit end
+
 	var/turf/ownturf = get_turf(src)
 	if(!TURF_SHARES(ownturf)) //If we are in a 1x1 room
 		addtimer(CALLBACK(src, .proc/Spread), delay_spread, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
