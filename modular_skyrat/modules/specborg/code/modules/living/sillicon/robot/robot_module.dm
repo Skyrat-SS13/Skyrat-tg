@@ -12,7 +12,8 @@
 	cyborg_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
 	model_select_icon = "ninjaborg"
 	model_select_alternate_icon = 'modular_skyrat/modules/specborg/icons/hud/screen_cyborg.dmi'
-	model_traits = list(TRAIT_PUSHIMMUNE, TRAIT_NOFLASH)
+	model_traits = list(TRAIT_PUSHIMMUNE, TRAIT_NOFLASH) //No more charging them with a flash and thinking it is a good idea
+	hat_offset = 3
 
 /obj/item/robot_model/ninja/rebuild_modules()
 	..()
@@ -121,6 +122,11 @@
 	cyborg_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
 	model_select_icon = "ninjaborg"
 	model_select_alternate_icon = 'modular_skyrat/modules/specborg/icons/hud/screen_cyborg.dmi'
+	model_traits = list(TRAIT_PUSHIMMUNE, TRAIT_NOFLASH)
+	magpulsing = TRUE
+	hat_offset = -4
+	canDispose = TRUE
+
 
 /obj/item/robot_model/ninja_saboteur/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
