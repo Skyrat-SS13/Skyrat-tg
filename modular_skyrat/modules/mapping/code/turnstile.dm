@@ -27,9 +27,7 @@
 	else
 		return allowed(B)
 
-/obj/machinery/turnstile/Cross(atom/movable/AM)
-	. = ..()
-	(atom/movable/AM, turf/T)
+/obj/machinery/turnstile/Cross(atom/movable/AM, turf/T)
 	if(ismob(AM))
 		var/mob/B = AM
 		if(isliving(AM))
