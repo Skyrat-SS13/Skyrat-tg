@@ -66,7 +66,7 @@
 
 	return TRUE
 
-/obj/structure/closet/secure_closet/genpop/togglelock(mob/living/user)
+/obj/structure/closet/secure_closet/genpop/togglelock(mob/living/user, silent)
 	if(!allowed(user))
 		return ..()
 

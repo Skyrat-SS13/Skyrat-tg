@@ -18,7 +18,7 @@
 /obj/machinery/turnstile/CanAtmosPass(turf/T)
 	return TRUE
 
-/obj/machinery/turnstile/bullet_act(obj/item/projectile/P, def_zone)
+/obj/machinery/turnstile/bullet_act(obj/projectile/P, def_zone)
 	return -1 //Pass through!
 
 /obj/machinery/turnstile/proc/allowed_access(var/mob/B)
@@ -28,6 +28,7 @@
 		return allowed(B)
 
 /obj/machinery/turnstile/CanPass(atom/movable/AM, turf/T)
+	..()
 	if(ismob(AM))
 		var/mob/B = AM
 		if(isliving(AM))
@@ -54,10 +55,7 @@
 				flick("deny", src)
 				playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
 				return FALSE
-	if(ispath(AM, /obj/item/))
-		return TRUE
-	else
-		return FALSE
+	return..()
 
 /obj/machinery/turnstile/CheckExit(atom/movable/AM as mob|obj, target)
 	if(isliving(AM))
