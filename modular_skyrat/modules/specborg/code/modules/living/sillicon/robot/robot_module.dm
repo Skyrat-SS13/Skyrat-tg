@@ -75,7 +75,7 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/katana/ninja_blade,
-		/obj/item/reagent_containers/borghypo/syndicate,
+		/obj/item/reagent_containers/borghypo/syndicate/ninja,
 		/obj/item/shockpaddles/syndicate/cyborg/ninja,
 		/obj/item/healthanalyzer/advanced,
 		/obj/item/surgical_drapes,
