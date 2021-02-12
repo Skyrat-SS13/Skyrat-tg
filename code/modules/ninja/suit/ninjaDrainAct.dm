@@ -267,9 +267,9 @@
 /mob/living/silicon/robot/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
 	//SKYRAT EDIT: ADDITION START
 	var/list/modelselected = list()
-	modelselected["Assault"] = "/obj/item/robot_model/syndicate/ninja"
-	modelselected["Saboteur"] = "/obj/item/robot_model/saboteur/ninja"
-	modelselected["Medical"] = "/obj/item/robot_model/syndicate_medical/ninja"
+	modelselected["Assault"] = "/obj/item/robot_model/ninja"
+	modelselected["Medical"] = "/obj/item/robot_model/ninja/ninja_medical"
+	modelselected["Saboteur"] = "/obj/item/robot_model/ninja_saboteur"
 	//SKYRAT EDIT: ADDITION END
 
 	if(!ninja_suit || !ninja || !ninja_gloves || (ROLE_NINJA in faction))
