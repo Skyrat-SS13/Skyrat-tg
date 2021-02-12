@@ -1,3 +1,5 @@
+/* //SKYRAT EDIT: Made modular. in ert_skyrat.dm
+
 /datum/outfit/centcom/ert
 	name = "ERT Common"
 
@@ -427,3 +429,5 @@
 	backpack_contents = list(/obj/item/storage/box/survival/engineer=1,\
 		/obj/item/storage/box/fireworks=3,\
 		/obj/item/food/cake/birthday=1)
+
+*/ //SKYRAT EDIT END
