@@ -654,6 +654,21 @@ update_label()
 /obj/item/card/id/prisoner/attack_self(mob/user)
 	to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
 */
+/obj/item/card/id/prisoner/process()
+	if(!sentence)
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(world.time >= sentence)
+		if(prob(90))
+			playsound(loc, 'sound/machines/ping.ogg', 50, 1)
+			if(isliving(loc))
+				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'> buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+		else
+			playsound(loc, 'modular_skyrat/modules/mapping/code/quest_succeeded.ogg', 50, 1)
+			if(isliving(loc))
+				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'><b>Quest Completed!</b> <i>Serve your prison sentence</i>. You may now leave the prison through the turnstiles and return this ID to the locker to retrieve your belongings.</span>")
+		STOP_PROCESSING(SSobj, src)
+	return
 	// SKYRAT EDIT: End - Genpop IDs
 
 /obj/item/card/id/prisoner/one

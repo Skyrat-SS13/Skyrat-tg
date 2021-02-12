@@ -109,6 +109,7 @@
 			update_icon()
 			registered_id.forceMove(src.loc)
 			new /obj/item/clothing/under/rank/prisoner(src.loc)
+			new /obj/item/clothing/shoes/sneakers/orange(src.loc)
 		else
 			qdel(registered_id)
 			registered_id = null
