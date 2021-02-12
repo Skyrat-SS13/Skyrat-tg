@@ -1,6 +1,3 @@
-/datum/loadout_item/neck/donator/public
-	donator_only = TRUE
-
 /datum/loadout_item/neck/donator/public/rscloak
 	name = "Black Cape"
 	path = /obj/item/clothing/neck/cloak/rscloak

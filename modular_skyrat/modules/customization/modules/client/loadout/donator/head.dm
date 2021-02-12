@@ -1,6 +1,3 @@
-/datum/loadout_item/head/donator
-	donator_only = TRUE
-	
 /datum/loadout_item/head/donator/public/poppy
 	name = "Poppy Flower"
 	path = /obj/item/food/grown/poppy
