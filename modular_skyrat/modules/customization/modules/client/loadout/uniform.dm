@@ -320,9 +320,16 @@
 	name =  "Navy Commando Sweater"
 	path = /obj/item/clothing/under/sweater/blue
 
+/datum/loadout_item/uniform/sweater/polysweater
+	name = "Polychromic Commando Sweater"
+	path = /obj/item/clothing/under/misc/polysweater	
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
 /datum/loadout_item/uniform/sweater/keyholesweater
 	name =  "Keyhole Sweater"
 	path = /obj/item/clothing/under/sweater/keyhole
+
 
 //SWEATERS
 /datum/loadout_item/uniform/job
