@@ -7,7 +7,7 @@
 	var/dogborg = FALSE //Is this model a wider borg?
 
 //SERVICE
-/obj/item/robot_model/butler/skyrat
+/obj/item/robot_model/service/skyrat
 	name = "Skyrat Service"
 	special_light_key = null
 
