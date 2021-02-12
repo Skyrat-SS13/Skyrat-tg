@@ -296,6 +296,10 @@
 	name = "Tactitool Turtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool
 
+/datum/loadout_item/uniform/sweater/turtleneck/skirt
+	name = "Tactitool Skirtleneck"
+	path = /obj/item/clothing/under/syndicate/tacticool/skirt
+
 /datum/loadout_item/uniform/sweater/creamsweater
 	name = "Cream Commando Sweater"
 	path = /obj/item/clothing/under/sweater
