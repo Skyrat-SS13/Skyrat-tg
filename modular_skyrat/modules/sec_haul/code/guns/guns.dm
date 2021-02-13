@@ -820,7 +820,7 @@
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun
 	name = "\improper Armadyne 'S.M.A.R.T.' Rifle"
-	desc = "Suppressive Multitarget Accurate Rotating Trajectory rifle. A modified version of an Armadyne heavy machine gun fitted to fire miniature shock-bolts."
+	desc = "Suppressive Multitarget Action Reciprocating Taser rifle. A modified version of an Armadyne heavy machine gun fitted to fire miniature shock-bolts."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
