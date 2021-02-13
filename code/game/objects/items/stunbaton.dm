@@ -193,7 +193,7 @@
 			return
 
 	var/list/modifiers = params2list(params)
-	if(modifiers && modifiers["right"])
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(turned_on)
 			if(attack_cooldown_check <= world.time)
 				baton_effect(M, user, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: baton_effect(M, user)
