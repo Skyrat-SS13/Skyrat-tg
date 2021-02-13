@@ -290,4 +290,3 @@
 	path = /obj/item/clothing/head/beret/job/hop/alt
 	restricted_roles = list("Head of Personnel")
 	restricted_desc = "Head of Personnel"
-	
