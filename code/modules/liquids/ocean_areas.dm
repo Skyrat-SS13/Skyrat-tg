@@ -6,25 +6,26 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	area_flags = UNIQUE_AREA | NO_ALERTS
+	area_flags = NO_ALERTS
 	outdoors = TRUE
 	ambience_index = AMBIENCE_SPACE
 	flags_1 = CAN_BE_DIRTY_1
 	sound_environment = SOUND_AREA_SPACE
 
 /area/ocean/generated
-	map_generator = /datum/map_generator/ocean_generator
+	//map_generator = /datum/map_generator/ocean_generator
 
 /area/ocean/trench
 	name = "The Trench"
 
 /area/ocean/trench/generated
-	map_generator = /datum/map_generator/trench_generator
+	//map_generator = /datum/map_generator/trench_generator
 
 /area/ruin/ocean
 	has_gravity = TRUE
-	area_flags = UNIQUE_AREA
 
 /area/ruin/ocean/listening_outpost
+	area_flags = UNIQUE_AREA
 
 /area/ruin/ocean/bunker
+	area_flags = UNIQUE_AREA

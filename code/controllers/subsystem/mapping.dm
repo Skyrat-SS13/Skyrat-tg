@@ -384,6 +384,17 @@ Used by the AI doomsday and the self-destruct nuke.
 		query_round_map_name.Execute()
 		qdel(query_round_map_name)
 
+#ifndef LOWMEMORYMODE
+	// TODO: remove this when the DB is prepared for the z-levels getting reordered
+	while (world.maxz < (5 - 1) && space_levels_so_far < config.space_ruin_levels)
+		++space_levels_so_far
+		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
+
+	if(config.minetype == "lavaland")
+		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+	else if (!isnull(config.minetype) && config.minetype != "none")
+		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+
 	var/list/ocean_station_levels = levels_by_trait(ZTRAIT_OCEAN_STATION)
 	if (ocean_station_levels.len)
 		var/datum/space_level/ocean_station_level = z_list[ocean_station_levels[1]]
@@ -423,16 +434,17 @@ Used by the AI doomsday and the self-destruct nuke.
 			if(extra_level > extra_ocean_levels)
 				break
 
-			/*
+			
 			LoadGroup(null, "Ocean Level [extra_level]", "map_files/ocean", "ocean.dmm", default_traits = ZTRAITS_OCEAN_LEVEL)
 			var/datum/space_level/extra_ocean_level = z_list[world.maxz]
 			LoadGroup(null, "Trench Level [extra_level]", "map_files/ocean", "trench.dmm", default_traits = ZTRAITS_TRENCH_LEVEL)
 			var/datum/space_level/extra_trench_level = z_list[world.maxz]
-			*/
-
+			
+			/*
 			var/datum/space_level/extra_ocean_level = add_new_zlevel("Ocean Level [extra_level]", ZTRAITS_OCEAN_LEVEL)
 			var/datum/space_level/extra_trench_level = add_new_zlevel("Trench Level [extra_level]", ZTRAITS_TRENCH_LEVEL)
-
+			*/
+	
 			extra_ocean_level.traits["Down"] = 1
 			extra_trench_level.traits["Up"] = -1
 			var/direction_from = dir_reversal[text_dir]
@@ -476,16 +488,6 @@ Used by the AI doomsday and the self-destruct nuke.
 				//T.loc = mirage_area
 				T.ChangeTurf(/turf/open/space/mirage, list(/turf/open/space/mirage), CHANGETURF_IGNORE_AIR)
 
-#ifndef LOWMEMORYMODE
-	// TODO: remove this when the DB is prepared for the z-levels getting reordered
-	while (world.maxz < (5 - 1) && space_levels_so_far < config.space_ruin_levels)
-		++space_levels_so_far
-		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
-
-	if(config.minetype == "lavaland")
-		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-	else if (!isnull(config.minetype) && config.minetype != "none")
-		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
