@@ -31,6 +31,7 @@
 		transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5
 		add_juice()
 
+<<<<<<< HEAD
 /obj/item/grown/attackby(obj/item/O, mob/user, params)
 	..()
 	if (istype(O, /obj/item/plant_analyzer))
@@ -42,6 +43,8 @@
 	SEND_SIGNAL(src, COMSIG_PLANT_SQUASH, user)
 	..()
 
+=======
+>>>>>>> 4f7a73c3e02 (Moves the plant analyzer chem mode to right click + lets you read out a tray's chemical contents (#56836))
 /obj/item/grown/proc/add_juice()
 	if(reagents)
 		return TRUE

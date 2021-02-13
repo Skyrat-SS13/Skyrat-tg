@@ -71,6 +71,7 @@
 /obj/item/food/grown/proc/make_dryable()
 	AddElement(/datum/element/dryable, type)
 
+<<<<<<< HEAD
 /obj/item/food/grown/examine(user)
 	. = ..()
 	if(seed)
@@ -89,6 +90,8 @@
 				T.on_attackby(src, O, user)
 
 
+=======
+>>>>>>> 4f7a73c3e02 (Moves the plant analyzer chem mode to right click + lets you read out a tray's chemical contents (#56836))
 /obj/item/food/grown/MakeLeaveTrash()
 	if(trash_type)
 		AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_OPENABLE, /obj/item/food/grown/.proc/generate_trash)
