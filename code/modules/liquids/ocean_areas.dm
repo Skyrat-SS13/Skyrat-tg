@@ -15,6 +15,12 @@
 /area/ocean/generated
 	map_generator = /datum/map_generator/ocean_generator
 
+/area/ocean/trench
+	name = "The Trench"
+
+/area/ocean/trench/generated
+	map_generator = /datum/map_generator/trench_generator
+
 /area/ruin/ocean
 	has_gravity = TRUE
 	area_flags = UNIQUE_AREA

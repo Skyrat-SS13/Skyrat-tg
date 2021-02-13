@@ -105,7 +105,7 @@
 		/obj/item/stack/ore/silver = 4, /obj/item/stack/ore/plasma = 3, /obj/item/stack/ore/iron = 50)
 
 /turf/closed/mineral/random/stationside/ocean
-	baseturfs = /turf/open/floor/plating/ocean
+	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
 
 /obj/effect/abstract/liquid_turf/immutable/canal
 	starting_mixture = list(/datum/reagent/water = 100)
@@ -143,3 +143,58 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	liquid_height = -30
 	turf_height = -30
+
+/turf/open/floor/plasteel/submarine
+	name = "submarine floor"
+	icon = 'icons/horizon/turf/submarine.dmi'
+	base_icon_state = "submarine_floor"
+	icon_state = "submarine_floor"
+	liquid_height = -30
+	turf_height = -30
+
+/turf/open/floor/plasteel/submarine/setup_broken_states()
+	return list("submarine_floor")
+
+/turf/open/floor/plasteel/submarine/setup_burnt_states()
+	return list("submarine_floor")
+
+/turf/open/floor/plasteel/submarine/rust_heretic_act()
+	return
+
+/turf/open/floor/plasteel/submarine_vents
+	name = "submarine floor"
+	icon = 'icons/horizon/turf/submarine.dmi'
+	base_icon_state = "submarine_vents"
+	icon_state = "submarine_vents"
+	liquid_height = -30
+	turf_height = -30
+
+/turf/open/floor/plasteel/submarine_vents/setup_broken_states()
+	return list("submarine_vents")
+
+/turf/open/floor/plasteel/submarine_vents/setup_burnt_states()
+	return list("submarine_vents")
+
+/turf/open/floor/plasteel/submarine_vents/rust_heretic_act()
+	return
+
+/turf/open/floor/plasteel/submarine_perf
+	name = "submarine floor"
+	icon = 'icons/horizon/turf/submarine.dmi'
+	base_icon_state = "submarine_perf"
+	icon_state = "submarine_perf"
+	liquid_height = -30
+	turf_height = -30
+
+/turf/open/floor/plasteel/submarine_perf/setup_broken_states()
+	return list("submarine_perf")
+
+/turf/open/floor/plasteel/submarine_perf/setup_burnt_states()
+	return list("submarine_perf")
+
+/turf/open/floor/plasteel/submarine_perf/rust_heretic_act()
+	return
+
+//For now just a titanium wall. I'll make sprites for it later
+/turf/closed/wall/mineral/titanium/submarine
+	name = "submarine wall"

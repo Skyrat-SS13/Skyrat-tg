@@ -24,6 +24,9 @@
 	//This is used to optimize the map loader
 	return
 
+/turf/open/space/mirage
+	blocks_air = TRUE
+
 /**
  * Space Initialize
  *

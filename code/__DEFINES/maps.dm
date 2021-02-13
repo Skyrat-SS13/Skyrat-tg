@@ -36,6 +36,8 @@ require only minor tweaks.
 #define ZTRAIT_SPACE_RUINS "Space Ruins"
 #define ZTRAIT_LAVA_RUINS "Lava Ruins"
 #define ZTRAIT_OCEAN_RUINS "Ocean Ruins"
+#define ZTRAIT_OCEAN_RUINS_NEARSTATION "Nearstation Ocean Ruins"
+#define ZTRAIT_OCEAN_STATION "Ocean Station" //If a station level has this, the SSmapping will try and spawn adjacent ocean levels
 #define ZTRAIT_ICE_RUINS "Ice Ruins"
 #define ZTRAIT_ICE_RUINS_UNDERGROUND "Ice Ruins Underground"
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
@@ -78,6 +80,9 @@ require only minor tweaks.
 	ZTRAIT_LAVA_RUINS = TRUE, \
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
 	ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
+
+#define ZTRAITS_OCEAN_LEVEL list(ZTRAIT_BASETURF = /turf/open/floor/plating/asteroid, ZTRAIT_OCEAN_RUINS = TRUE)
+#define ZTRAITS_TRENCH_LEVEL list(ZTRAIT_BASETURF = /turf/open/floor/plating/asteroid, ZTRAIT_OCEAN_RUINS = TRUE)
 
 #define DL_NAME "name"
 #define DL_TRAITS "traits"
