@@ -174,13 +174,15 @@
 	name = "DJ Station"
 	description = "Until very recently this pirate radio station was used to harangue local space stations over a variety of perceived \"ethics violations\". \
 	It seems like someone finally got sick of it, but the equipment still works."
-
+//SKYRAT EDIT REMOVAL BEGIN - MAPPING
+/*
 /datum/map_template/ruin/space/thederelict
 	id = "thederelict"
 	suffix = "thederelict.dmm"
 	name = "Kosmicheskaya Stantsiya 13"
 	description = "The true fate of Kosmicheskaya Stantsiya 13 is an open question to this day. Most corporations deny its existence, for fear of questioning on what became of its crew."
-
+*/
+//SKYRAT EDIT REMOVAL END
 /datum/map_template/ruin/space/abandonedteleporter
 	id = "abandonedteleporter"
 	suffix = "abandonedteleporter.dmm"
