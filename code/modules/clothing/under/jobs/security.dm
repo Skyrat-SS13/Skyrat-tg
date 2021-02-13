@@ -177,12 +177,14 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
 
+/* //SKYRAT EDIT CHANGE - OVERRIDDEN BY modular_skyrat/modules/customization/modules/clothing/under/security.dm
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	name = "head of security's parade uniform"
 	desc = "A male head of security's luxury-wear, for special occasions."
 	icon_state = "hos_parade_male"
 	inhand_icon_state = "r_suit"
 	can_adjust = FALSE
+*/
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/female
 	name = "head of security's parade uniform"
