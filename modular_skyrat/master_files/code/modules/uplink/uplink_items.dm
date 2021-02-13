@@ -4,6 +4,7 @@
 
 //Place any new uplink items in this file, and explain what they do
 
+//DANGEROUS
 /datum/uplink_item/dangerous/aps2
 	name = "Stechkin APS Machine Pistol"
 	desc = "An ancient Soviet machine pistol, refurbished for the modern age. Uses 9mm auto rounds in 15-round magazines and is compatible \
@@ -19,6 +20,8 @@
 	cost = 5
 	surplus = 0
 
+
+//STEALTHY WEAPONS
 /datum/uplink_item/stealthy_weapons/cqc2
 	name = "CQC Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
@@ -35,27 +38,14 @@
 	cost = 2
 	surplus = 0
 
-/datum/uplink_item/ammo/pistolaps_traitor
-	name = "9mm Stechkin APS Magazine"
-	desc = "An additional 15-round 9mm magazine, compatible with the Stechkin APS machine pistol."
-	item = /obj/item/ammo_box/magazine/m9mm_aps
-	cost = 2
-	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
-
+//STEALTHY TOOOLS
 /datum/uplink_item/stealthy_tools/infiltratormask
 	name = "Voice-Muffling Balaclava"
 	desc = "A balaclava that muffles your voice, masking your identity. Also provides flash immunity!"
 	item = /obj/item/clothing/mask/infiltrator
 	cost = 2
 
-/datum/uplink_item/suits/hardsuit/elite2
-	name = "Elite Syndicate Hardsuit"
-	desc = "An upgraded, elite version of the Syndicate hardsuit. It features fireproofing, and also \
-			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
-	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
-	cost = 14
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
-
+//DEVICE TOOLS
 /datum/uplink_item/device_tools/medkit_traitor
 	name = "Syndicate Combat Medic Kit"
 	desc = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \
@@ -79,6 +69,25 @@
 	item = /obj/item/storage/bag/ammo
 	cost = 1
 
+
+//AMMO
+/datum/uplink_item/ammo/pistolaps_traitor
+	name = "9mm Stechkin APS Magazine"
+	desc = "An additional 15-round 9mm magazine, compatible with the Stechkin APS machine pistol."
+	item = /obj/item/ammo_box/magazine/m9mm_aps
+	cost = 2
+	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
+
+//SUITS
+/datum/uplink_item/suits/hardsuit/elite_traitor
+	name = "Elite Syndicate Hardsuit"
+	desc = "An upgraded, elite version of the Syndicate hardsuit. It features fireproofing, and also \
+			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
+	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
+	cost = 14
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
+
+//IMPLANTS
 /datum/uplink_item/implants/antistun_traitor
 	name = "CNS Rebooter Implant"
 	desc = "This implant will help you get back up on your feet faster after being stunned. Comes with an autosurgeon."
