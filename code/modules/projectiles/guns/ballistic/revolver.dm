@@ -276,7 +276,6 @@
 /obj/item/gun/ballistic/revolver/cosmonaut
 	name = "Cosmonaut's Revolver"
 	desc = "You know what? Fuck you. *bullpups your revolver*"
-  icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cosmonaut"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/cosmonaut
 //SKYRAT ADDITION END
