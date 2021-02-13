@@ -89,10 +89,6 @@
 	icon_state = "peacekeeper_hos"
 	inhand_icon_state = "peacekeeper_hos"
 
-/obj/item/clothing/under/rank/security/head_of_security
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/sol/peacekeeper_uniforms_digi.dmi'
-
 //PEACEKEEPER ARMOR
 /obj/item/clothing/suit/armor/vest/peacekeeper
 	name = "peacekeeper armor vest"
