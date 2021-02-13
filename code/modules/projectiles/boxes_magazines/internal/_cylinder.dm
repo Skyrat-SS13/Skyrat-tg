@@ -5,7 +5,7 @@
 	max_ammo = 7
 
 /obj/item/ammo_box/magazine/internal/cylinder/cosmonaut
-	name = "revolver cylinder"
+	name = "cosmonaut revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/cosmonaut
 	caliber = CALIBER_357x29
 	max_ammo = 5
