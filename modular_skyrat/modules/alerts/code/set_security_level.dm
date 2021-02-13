@@ -175,6 +175,6 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 		return
 	GLOB.gamma_looping = TRUE
 	alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
-	addtimer(CALLBACK(src, .proc/gamma_loop), GAMMA_LOOP_LENGTH)
+	addtimer(CALLBACK(.proc/gamma_loop), GAMMA_LOOP_LENGTH)
 
 #undef GAMMA_LOOP_LENGTH
