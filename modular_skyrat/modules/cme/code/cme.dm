@@ -237,6 +237,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		visible_message("<span class='notice'>[src] fizzles out into nothingness.")
 		new /obj/effect/particle_effect/smoke/bad(loc)
 		qdel(src)
+		return
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
@@ -254,6 +255,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		visible_message("<span class='notice'>[src] fizzles out into nothingness.")
 		new /obj/effect/particle_effect/smoke/bad(loc)
 		qdel(src)
+		return
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
