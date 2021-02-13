@@ -209,7 +209,7 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	backpack = /obj/item/storage/backpack/science
+	back = /obj/item/storage/backpack/science
 	id = /obj/item/card/id/syndicate_command/chief_research_officer
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
@@ -230,7 +230,7 @@
 	head = /obj/item/clothing/head/hardhat/white
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
-	backpack = /obj/item/storage/backpack/industrial
+	back = /obj/item/storage/backpack/industrial
 	id = /obj/item/card/id/syndicate_command/chief_research_officer
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
