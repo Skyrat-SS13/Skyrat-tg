@@ -134,7 +134,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
 				set_security_level(SEC_LEVEL_GAMMA)
-				spawn(10)
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
