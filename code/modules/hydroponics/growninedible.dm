@@ -32,10 +32,6 @@
 		transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5
 		add_juice()
 
-/obj/item/grown/attack_self(mob/user)
-	SEND_SIGNAL(src, COMSIG_PLANT_SQUASH, user)
-	..()
-
 /obj/item/grown/proc/add_juice()
 	if(reagents)
 		return TRUE
