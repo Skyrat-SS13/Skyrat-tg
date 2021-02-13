@@ -53,6 +53,7 @@
 					/obj/item/storage/backpack/medic = 4,
 					/obj/item/storage/backpack/satchel/med = 4,
 					/obj/item/clothing/suit/hooded/wintercoat/medical = 4,
+					/obj/item/clothing/suit/hooded/wintercoat/medical/paramedic = 4,
 					/obj/item/clothing/under/rank/medical/paramedic = 4,
 					/obj/item/clothing/under/rank/medical/paramedic/skirt = 4,
 					/obj/item/clothing/under/rank/medical/doctor/nurse = 4,
@@ -91,6 +92,7 @@
 					/obj/item/clothing/under/rank/engineering/engineer = 3,
 					/obj/item/clothing/under/rank/engineering/engineer/skirt = 3,
 					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
 					/obj/item/clothing/under/utility/haz_green = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hazardvest = 3,
@@ -161,6 +163,7 @@
 					/obj/item/clothing/under/rank/rnd/roboticist/skirt = 2,
 					/obj/item/clothing/under/utility/robo_sleek = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/roboticist = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/science/robotics = 3,
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
@@ -314,6 +317,7 @@
 	products = list(/obj/item/clothing/under/rank/civilian/janitor = 2,
 					/obj/item/cartridge/janitor = 2,
 					/obj/item/clothing/under/rank/civilian/janitor/skirt = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/janitor = 2,
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/head/soft/purple = 2,
 					/obj/item/pushbroom = 2,
@@ -420,10 +424,12 @@
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
 					/obj/item/clothing/head/beret/job/med/chem = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/hooded/wintercoat/medical/chemistry = 2,
 					/obj/item/storage/backpack/chemistry = 2,
 					/obj/item/storage/backpack/satchel/chem = 2,
 					/obj/item/storage/backpack/duffelbag/chemistry = 2,
-					/obj/item/storage/bag/chemistry = 2)
+					/obj/item/storage/bag/chemistry = 2,
+					/obj/item/ph_booklet = 3)
 	contraband = list(/obj/item/reagent_containers/spray/syndicate = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/chem_wardrobe
 	payment_department = ACCOUNT_MED
@@ -440,6 +446,7 @@
 					/obj/item/clothing/under/rank/rnd/geneticist/skirt = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/genetics = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/science/genetics = 2,
 					/obj/item/storage/backpack/genetics = 2,
 					/obj/item/storage/backpack/satchel/gen = 2,
 					/obj/item/storage/backpack/duffelbag/genetics = 2)
@@ -459,6 +466,7 @@
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/virologist = 2,
 					/obj/item/clothing/head/beret/job/med/viro = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 2,
 					/obj/item/clothing/mask/surgical = 2,
 					/obj/item/storage/backpack/virology = 2,
 					/obj/item/storage/backpack/satchel/vir = 2,
