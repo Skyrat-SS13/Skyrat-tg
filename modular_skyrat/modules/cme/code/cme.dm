@@ -293,3 +293,16 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
+
+/client/proc/manual_events_mode()
+	set name = "Manual Event Mode Toggle"
+	set category = "Admin"
+	set desc = "Toggle manual event mode."
+
+	if(!holder)
+		return
+
+	SSevents.manual_mode = !SSevents.manual_mode
+
+	log_admin("EVENT MODE SWITCHED.")
+	message_admins("EVENT SYSTEM NOW IN [SSevents.manual_mode ? "MANUAL OPERATION" : "AUTOMATIC OPERATION"]. TRIGGERED BY: [src]")
