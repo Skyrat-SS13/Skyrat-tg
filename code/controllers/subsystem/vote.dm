@@ -242,7 +242,12 @@ SUBSYSTEM_DEF(vote)
 			V.Grant(C.mob)
 			generated_actions += V
 			if(C.prefs.toggles & SOUND_ANNOUNCEMENTS)
+			//SKYRAT EDIT START
+			/*
 				SEND_SOUND(C, sound('sound/misc/bloop.ogg'))
+			*/
+				SEND_SOUND(C, sound('sound/misc/announce_dig.ogg'))
+			//SKYRAT EDIT END
 		return TRUE
 	return FALSE
 
