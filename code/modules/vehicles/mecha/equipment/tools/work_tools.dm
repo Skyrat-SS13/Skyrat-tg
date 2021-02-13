@@ -106,12 +106,8 @@
 				chassis.visible_message("<span class='notice'>[chassis] pushes [target] out of the way.</span>", \
 				"<span class='notice'>[chassis] pushes you aside.</span>")
 			return ..()
-<<<<<<< HEAD
 
-		/*else if(modifiers && modifiers["right"] && iscarbon(M))//meme clamp here
-=======
-		else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M))//meme clamp here
->>>>>>> f4160f26db4 (Converts all uses of modifiers to lazy access to avoid memes in future (#56846))
+		/*else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M))//meme clamp here
 			if(!killer_clamp)
 				to_chat(source, "<span class='notice'>You longingly wish to tear [M]'s arms off.</span>")
 				return
