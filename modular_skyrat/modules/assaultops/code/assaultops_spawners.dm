@@ -17,12 +17,21 @@
 	important_info = "Admin-help before you provoke the Syndicate."
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	outfit = /datum/outfit/prisoner
+	outfit = /datum/outfit/assops/prisoner
 	roundstart = FALSE
 	permanent = FALSE
 	death = FALSE
 	can_use_alias = TRUE
 	any_station_species = TRUE
+
+/datum/outfit/assops/prisoner
+	name = "Syndicate Prisoner"
+	uniform = /obj/item/clothing/under/rank/prisoner
+	shoes = /obj/item/clothing/shoes/sneakers/orange
+	id = /obj/item/card/id/prisoner/syndicate
+
+/obj/item/card/id/prisoner/syndicate
+	assignment = "Syndicate Prisoner"
 
 /obj/effect/mob_spawn/human/syndicate/assops/prison_guard
 	name = "Syndicate Brig Officer"
@@ -231,7 +240,7 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/industrial
-	id = /obj/item/card/id/syndicate_command/chief_research_officer
+	id = /obj/item/card/id/syndicate_command/chief_engineering_officer
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 /obj/item/card/id/syndicate_command/chief_engineering_officer
