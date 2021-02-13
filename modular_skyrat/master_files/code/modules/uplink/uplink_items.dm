@@ -81,7 +81,7 @@
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
 	item = /obj/item/book/granter/martial/cqc
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //Blocked them because this just costs more than the version they get.
-	cost = 20
+	cost = 25
 	surplus = 0
 
 /datum/uplink_item/stealthy_weapons/telescopicbaton
@@ -148,7 +148,6 @@
 	desc = "A small yet large enough pouch that can fit in your pocket, and has room for three magazines."
 	item = /obj/item/storage/bag/ammo
 	cost = 1
-
 
 //AMMO
 /datum/uplink_item/ammo/pistolaps_traitor
