@@ -29,10 +29,10 @@
 	//Nanites without hosts are non-interactive through normal means
 	if(isliving(parent))
 		host_mob = parent
-
+//SKYRAT EDIT START - FIXING THIS
 		if(!(host_mob.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD|MOB_HUMANOID))) //Shouldn't happen, but this avoids HUD runtimes in case a silicon gets them somehow.
 			return COMPONENT_INCOMPATIBLE
-
+//SKYRAT EDIT END
 		start_time = world.time
 
 		host_mob.hud_set_nanite_indicator()
@@ -319,10 +319,10 @@
 
 /datum/component/nanites/proc/check_viable_biotype()
 	SIGNAL_HANDLER
-
+//SKYRAT EDIT START - FIXING THIS
 	if(!(host_mob.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD|MOB_HUMANOID)))
 		qdel(src) //bodytype no longer sustains nanites
-
+//SKYRAT EDIT END
 /datum/component/nanites/proc/check_access(datum/source, obj/O)
 	SIGNAL_HANDLER
 
