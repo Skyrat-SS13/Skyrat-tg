@@ -965,7 +965,7 @@
 	. = TRUE
 	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || staminaloss > STAMINA_THRESHOLD_HARD_RESIST) //SKYRAT EDIT CHANGE: if(pulledby.grab_state || resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS))
 		var/altered_grab_state = pulledby.grab_state
-		if(HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however - SKYRAT EDIT CHANGE: if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
+		if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If prone, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however - SKYRAT EDIT CHANGE: if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++
 		if(staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
 			altered_grab_state++
@@ -1983,7 +1983,7 @@
 	if (style)
 		if (is_grab)
 			attack_result = style.grab_act(src, target)
-		if(modifiers && modifiers["right"])
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
 			attack_result = style.disarm_act(src, target)
 		if(combat_mode)
 			if (HAS_TRAIT(src, TRAIT_PACIFISM))
