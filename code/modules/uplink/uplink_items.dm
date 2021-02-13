@@ -239,9 +239,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Super Surplus Crate"
 	desc = "A dusty SUPER-SIZED from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
 			but you never know. Contents are sorted to always be worth 125 TC."
-	cost = 40
+	cost = 50 //SKYRAT EDIT CHANGE - ORIGINAL: 40
 	player_minimum = 40
-	starting_crate_value = 125
+	starting_crate_value = 145 //SKYRAT EDIT CHANGE - ORIGINAL: 125
 
 /datum/uplink_item/bundles_tc/surplus/purchase(mob/user, datum/component/uplink/U)
 	var/list/uplink_items = get_uplink_items(SSticker && SSticker.mode? SSticker.mode : null, FALSE)
