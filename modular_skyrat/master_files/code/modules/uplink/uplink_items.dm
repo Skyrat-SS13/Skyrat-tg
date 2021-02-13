@@ -18,6 +18,15 @@
 	item = /obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot
 	cost = 5
 
+/datum/uplink_item/dangerous/revolver_alt
+	name = "Unica Six Revolver"
+	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
+	item = /obj/item/gun/ballistic/revolver/mateba
+	cost = 13
+	surplus = 50
+	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
+
+
 /datum/uplink_item/dangerous/smgc20r_traitor
 	name = "C-20r Submachine Gun"
 	desc = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a \
