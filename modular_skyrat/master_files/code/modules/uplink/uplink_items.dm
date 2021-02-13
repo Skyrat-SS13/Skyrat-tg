@@ -215,7 +215,7 @@
 	name = "Standard Armor Vest"
 	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
 	item = /obj/item/clothing/suit/armor/vest
-	cost = 3
+	cost = 1
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
 
 
@@ -224,7 +224,7 @@
 	name = "Syndicate Helmet"
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
-	cost = 6
+	cost = 64
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
 
 //IMPLANTS
