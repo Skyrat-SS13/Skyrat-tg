@@ -39,7 +39,7 @@
 	desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
 			against other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
-	cost = 15
+	cost = 5
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
 
 //BUNDLES
@@ -65,7 +65,7 @@
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
 	item = /obj/item/book/granter/martial/cqc
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //Blocked them because this just costs more than the version they get.
-	cost = 24
+	cost = 20
 	surplus = 0
 
 /datum/uplink_item/stealthy_weapons/telescopicbaton
@@ -82,6 +82,32 @@
 	desc = "A balaclava that muffles your voice, masking your identity. Also provides flash immunity!"
 	item = /obj/item/clothing/mask/infiltrator
 	cost = 2
+
+//EXPLOSIVES
+/datum/uplink_item/explosives/buzzkill_traitor
+	name = "Buzzkill Grenade Box"
+	desc = "A box with three grenades that release a swarm of angry bees upon activation. These bees indiscriminately attack friend or foe \
+			with random toxins. Courtesy of the BLF and Tiger Cooperative."
+	item = /obj/item/storage/box/syndie_kit/bee_grenades
+	cost = 15
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+
+/datum/uplink_item/explosives/viscerators_traitor
+	name = "Viscerator Delivery Grenade"
+	desc = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred \
+			any non-operatives in the area."
+	item = /obj/item/grenade/spawnergrenade/manhacks
+	cost = 7
+	surplus = 35
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+
+/datum/uplink_item/device_tools/syndie_jaws_of_life_traitor
+	name = "Syndicate Jaws of Life"
+	desc = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
+	In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
+	item = /obj/item/crowbar/power/syndicate
+	cost = 4
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 
 //DEVICE TOOLS
 /datum/uplink_item/device_tools/medkit_traitor
@@ -174,6 +200,22 @@
 			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
 	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	cost = 14
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
+
+/datum/uplink_item/suits/armor/standard_armor
+	name = "Standard Armor Vest"
+	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
+	item = /obj/item/clothing/suit/armor/vest
+	cost = 3
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
+
+
+//HELMETS
+/datum/uplink_item/suits/hardsuit/swathelmet_traitor
+	name = "Syndicate Helmet"
+	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
+	item = /obj/item/clothing/head/helmet/swat
+	cost = 6
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
 
 //IMPLANTS

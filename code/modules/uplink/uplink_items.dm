@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
 			against other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
-	cost = 16
+	cost = 5 //SKYRAT EDIT CHANGE: ORIGINAL: 16
 	surplus = 20
 	include_modes = list(/datum/game_mode/nuclear)
 
