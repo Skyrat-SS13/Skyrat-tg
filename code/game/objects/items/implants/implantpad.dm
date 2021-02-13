@@ -1,4 +1,4 @@
-/obj/item/implantpad
+/obj/item/implantpad//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "implant pad"
 	desc = "Used to modify implants."
 	icon = 'icons/obj/items_and_weapons.dmi'

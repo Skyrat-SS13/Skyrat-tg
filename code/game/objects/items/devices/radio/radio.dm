@@ -264,7 +264,7 @@
 
 	// Independent radios, on the CentCom frequency, reach all independent radios
 	//if (independent && (freq == FREQ_CENTCOM || freq == FREQ_CTF_RED || freq == FREQ_CTF_BLUE)) //ORIGINAL
-	if (independent && (freq == FREQ_CENTCOM || freq == FREQ_CTF_RED || freq == FREQ_CTF_BLUE || freq == FREQ_FACTION)) //SKYRAT EDIT CHANGE - FACTION
+	if (independent && (freq == FREQ_CENTCOM || freq == FREQ_CTF_RED || freq == FREQ_CTF_BLUE || freq == FREQ_FACTION || freq == FREQ_CYBERSUN || freq == FREQ_INTERDYNE || freq == FREQ_ASSAULT)) //SKYRAT EDIT CHANGE - FACTION, MAPPING, ASSAULT OPS
 		signal.data["compression"] = 0
 		signal.transmission_method = TRANSMISSION_SUPERSPACE
 		signal.levels = list(0)  // reaches all Z-levels
@@ -392,7 +392,7 @@
 
 	var/mob/living/silicon/robot/R = loc
 	if(istype(R))
-		for(var/ch_name in R.module.radio_channels)
+		for(var/ch_name in R.model.radio_channels)
 			channels[ch_name] = 1
 
 /obj/item/radio/borg/syndicate

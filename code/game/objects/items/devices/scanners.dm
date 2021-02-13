@@ -12,13 +12,13 @@ GENE SCANNER
 */
 
 // Describes the three modes of scanning available for health analyzers
-#define SCANMODE_HEALTH		0
-#define SCANMODE_CHEMICAL 	1
-#define SCANMODE_WOUND	 	2
-#define SCANNER_CONDENSED 	0
-#define SCANNER_VERBOSE 	1
+#define SCANMODE_HEALTH 0
+#define SCANMODE_WOUND 1
+#define SCANMODE_COUNT 2 // Update this to be the number of scan modes if you add more
+#define SCANNER_CONDENSED 0
+#define SCANNER_VERBOSE 1
 
-/obj/item/t_scanner
+/obj/item/t_scanner//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "\improper T-ray scanner"
 	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
 	custom_price = PAYCHECK_ASSISTANT * 0.7
@@ -85,7 +85,7 @@ GENE SCANNER
 	worn_icon_state = "healthanalyzer"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	desc = "A hand-held body scanner capable of distinguishing vital signs of the subject."
+	desc = "A hand-held body scanner capable of distinguishing vital signs of the subject. Has a side button to scan for chemicals, and can be toggled to scan wounds."
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
 	slot_flags = ITEM_SLOT_BELT
@@ -104,12 +104,10 @@ GENE SCANNER
 	return BRUTELOSS
 
 /obj/item/healthanalyzer/attack_self(mob/user)
-	scanmode = (scanmode + 1) % 3
+	scanmode = (scanmode + 1) % SCANMODE_COUNT
 	switch(scanmode)
 		if(SCANMODE_HEALTH)
 			to_chat(user, "<span class='notice'>You switch the health analyzer to check physical health.</span>")
-		if(SCANMODE_CHEMICAL)
-			to_chat(user, "<span class='notice'>You switch the health analyzer to scan chemical contents.</span>")
 		if(SCANMODE_WOUND)
 			to_chat(user, "<span class='notice'>You switch the health analyzer to report extra info on wounds.</span>")
 
@@ -133,15 +131,17 @@ GENE SCANNER
 	user.visible_message("<span class='notice'>[user] analyzes [M]'s vitals.</span>", \
 						"<span class='notice'>You analyze [M]'s vitals.</span>")
 
-	if(scanmode == SCANMODE_HEALTH)
-		healthscan(user, M, mode, advanced)
-	else if(scanmode == SCANMODE_CHEMICAL)
-		chemscan(user, M)
-	else
-		woundscan(user, M, src)
+	switch (scanmode)
+		if (SCANMODE_HEALTH)
+			healthscan(user, M, mode, advanced)
+		if (SCANMODE_WOUND)
+			woundscan(user, M, src)
 
 	add_fingerprint(user)
 
+/obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
+	chemscan(user, victim)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 // Used by the PDA medical scanner too
 /proc/healthscan(mob/user, mob/living/M, mode = SCANNER_VERBOSE, advanced = FALSE)
@@ -430,6 +430,8 @@ GENE SCANNER
 			render_list += "<span class='notice ml-1'>Subject contains the following reagents in their blood:</span>\n"
 			for(var/r in M.reagents.reagent_list)
 				var/datum/reagent/reagent = r
+				if(reagent.chemical_flags & REAGENT_INVISIBLE) //Don't show hidden chems on scanners
+					continue
 				render_list += "<span class='notice ml-2'>[round(reagent.volume, 0.001)] units of [reagent.name][reagent.overdosed ? "</span> - <span class='boldannounce'>OVERDOSING</span>" : ".</span>"]\n"
 		else
 			render_list += "<span class='notice ml-1'>Subject contains no reagents in their blood.</span>\n"
@@ -439,6 +441,8 @@ GENE SCANNER
 				render_list += "<span class='notice ml-1'>Subject contains the following reagents in their stomach:</span>\n"
 				for(var/bile in belly.reagents.reagent_list)
 					var/datum/reagent/bit = bile
+					if(bit.chemical_flags & REAGENT_INVISIBLE) //Don't show hidden chems on scanners
+						continue
 					if(!belly.food_reagents[bit.type])
 						render_list += "<span class='notice ml-2'>[round(bit.volume, 0.001)] units of [bit.name][bit.overdosed ? "</span> - <span class='boldannounce'>OVERDOSING</span>" : ".</span>"]\n"
 					else
@@ -539,7 +543,7 @@ GENE SCANNER
 
 	woundscan(user, patient, src)
 
-/obj/item/analyzer
+/obj/item/analyzer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	desc = "A hand-held environmental scanner which reports current gas levels. Alt-Click to use the built in barometer function."
 	name = "analyzer"
 	custom_price = PAYCHECK_ASSISTANT * 0.9
@@ -802,7 +806,7 @@ GENE SCANNER
 	if(!response)
 		to_chat(user, "<span class='info'>No nanites detected in the subject.</span>")
 
-/obj/item/sequence_scanner
+/obj/item/sequence_scanner//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "genetic sequence scanner"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gene"
@@ -945,7 +949,7 @@ GENE SCANNER
 	return returned_target
 
 #undef SCANMODE_HEALTH
-#undef SCANMODE_CHEMICAL
 #undef SCANMODE_WOUND
+#undef SCANMODE_COUNT
 #undef SCANNER_CONDENSED
 #undef SCANNER_VERBOSE

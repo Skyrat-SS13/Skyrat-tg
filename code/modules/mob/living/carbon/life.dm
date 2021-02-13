@@ -49,11 +49,11 @@
 			next_stamina_message = world.time + STAMINA_MESSAGE_COOLDOWN
 			switch(FLOOR(staminaloss,1))
 				if(STAMINA_THRESHOLD_MESSAGE_ACHE to STAMINA_THRESHOLD_MESSAGE_MILD)
-					to_chat(src, "<span class='warning'>Your feel winded.</span>")
+					to_chat(src, "<span class='warning'>You feel winded.</span>") //SKYRAT EDIT Grammar
 				if(STAMINA_THRESHOLD_MESSAGE_MILD to STAMINA_THRESHOLD_MESSAGE_MEDIUM)
-					to_chat(src, "<span class='warning'>Your feel tired!</span>")
+					to_chat(src, "<span class='warning'>You feel tired!</span>") //SKYRAT EDIT Grammar
 				if(STAMINA_THRESHOLD_MESSAGE_MEDIUM to STAMINA_THRESHOLD_MESSAGE_HIGH)
-					to_chat(src, "<span class='warning'>Your have trouble standing on your legs!</span>")
+					to_chat(src, "<span class='warning'>You have trouble standing on your legs!</span>") //SKYRAT EDIT Grammar
 				if(STAMINA_THRESHOLD_MESSAGE_HIGH to STAMINA_THRESHOLD_MESSAGE_SEVERE)
 					to_chat(src, "<span class='warning'>You feel worn-out!</span>")
 				if(STAMINA_THRESHOLD_MESSAGE_SEVERE to STAMINA_THRESHOLD_MESSAGE_OHGOD)
@@ -242,21 +242,22 @@
 	if(breath_gases[/datum/gas/nitrous_oxide])
 		var/SA_partialpressure = (breath_gases[/datum/gas/nitrous_oxide][MOLES]/breath.total_moles())*breath_pressure
 		if(SA_partialpressure > SA_para_min)
+			throw_alert("too_much_n2o", /atom/movable/screen/alert/too_much_n2o)
+			SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "chemical_euphoria")
 			Unconscious(60)
 			if(SA_partialpressure > SA_sleep_min)
 				Sleeping(max(AmountSleeping() + 40, 200))
 		else if(SA_partialpressure > 0.01)
+			clear_alert("too_much_n2o")
 			if(prob(20))
 				emote(pick("giggle","laugh"))
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "chemical_euphoria", /datum/mood_event/chemical_euphoria)
-		if(SA_partialpressure > safe_tox_max*3)
-			var/ratio = (breath_gases[/datum/gas/nitrous_oxide][MOLES]/safe_tox_max)
-			adjustToxLoss(clamp(ratio, MIN_TOXIC_GAS_DAMAGE, MAX_TOXIC_GAS_DAMAGE))
-			throw_alert("too_much_tox", /atom/movable/screen/alert/too_much_tox)
 		else
-			clear_alert("too_much_tox")
+			SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "chemical_euphoria")
+			clear_alert("too_much_n2o")
 	else
 		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "chemical_euphoria")
+		clear_alert("too_much_n2o")
 
 	//BZ (Facepunch port of their Agent B)
 	if(breath_gases[/datum/gas/bz])

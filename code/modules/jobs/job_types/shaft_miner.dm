@@ -2,8 +2,8 @@
 	title = "Shaft Miner"
 	department_head = list("Head of Personnel")
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 5		//SKYRAT EDIT: Original value (3)
+	spawn_positions = 5		//SKYRAT EDIT: Original value (3)
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
 
@@ -36,7 +36,7 @@
 
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
-	duffelbag = /obj/item/storage/backpack/duffelbag
+	duffelbag = /obj/item/storage/backpack/duffelbag/explorer
 	box = /obj/item/storage/box/survival/mining
 
 	chameleon_extras = /obj/item/gun/energy/kinetic_accelerator

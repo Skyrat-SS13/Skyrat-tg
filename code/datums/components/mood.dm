@@ -82,10 +82,10 @@
 	else
 		msg += "<span class='notice'>I don't really know.</span>\n"
 	//SKYRAT EDIT CHANGE END
-	
+
 	msg += "<span class='notice'>My current mood: </span>" //Short term
 	//ORIGINAL
-	/* 
+	/*
 	switch(mood_level)
 		if(1)
 			msg += "<span class='boldwarning'>I wish I was dead!</span>\n"
@@ -130,8 +130,7 @@
 	else
 		msg += "<span class='notice'>No clue.</span>\n"
 	//SKYRAT EDIT CHANGE END
-
-	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
+	msg += "<span class='notice'>Moodlets:</span>\n"//All moodlets
 	//if(mood_events.len) //ORIGINAL
 	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
 		for(var/i in mood_events)
@@ -248,6 +247,15 @@
 		if(9)
 			setSanity(sanity+0.6*delta_time, SANITY_NEUTRAL, SANITY_MAXIMUM)
 	HandleNutrition()
+
+	// 0.416% is 15 successes / 3600 seconds. Calculated with 2 minute
+	// mood runtime, so 50% average uptime across the hour.
+	if(HAS_TRAIT(parent, TRAIT_DEPRESSION) && DT_PROB(0.416, delta_time))
+		add_event(null, "depression_mild", /datum/mood_event/depression_mild)
+
+	if(HAS_TRAIT(parent, TRAIT_JOLLY) && DT_PROB(0.416, delta_time))
+		add_event(null, "jolly", /datum/mood_event/jolly)
+
 
 ///Sets sanity to the specified amount and applies effects.
 /datum/component/mood/proc/setSanity(amount, minimum=SANITY_INSANE, maximum=SANITY_GREAT, override = FALSE)

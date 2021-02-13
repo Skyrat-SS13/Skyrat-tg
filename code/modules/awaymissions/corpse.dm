@@ -205,6 +205,8 @@
 
 	var/hairstyle
 	var/facial_hairstyle
+	var/haircolor
+	var/facial_haircolor
 	var/skin_tone
 	//SKYRAT EDIT ADDITION BEGIN
 	var/can_use_pref_char = TRUE
@@ -326,6 +328,14 @@
 		H.facial_hairstyle = facial_hairstyle
 	else
 		H.facial_hairstyle = random_facial_hairstyle(H.gender)
+	if(haircolor)
+		H.hair_color = haircolor
+	else
+		H.hair_color = random_short_color()
+	if(facial_haircolor)
+		H.facial_hair_color = facial_haircolor
+	else
+		H.facial_hair_color = random_short_color()
 	if(skin_tone)
 		H.skin_tone = skin_tone
 	else
@@ -351,6 +361,7 @@
 			var/obj/item/clothing/under/C = H.w_uniform
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
+				H.update_suit_sensors()
 
 	var/obj/item/card/id/W = H.wear_id
 	if(W)
