@@ -5,7 +5,7 @@
 //Place any new uplink items in this file, and explain what they do
 
 //DANGEROUS
-/datum/uplink_item/dangerous/aps2
+/datum/uplink_item/dangerous/aps_traitor
 	name = "Stechkin APS Machine Pistol"
 	desc = "An ancient Soviet machine pistol, refurbished for the modern age. Uses 9mm auto rounds in 15-round magazines and is compatible \
 			with suppressors. The gun fires in three round bursts."
@@ -22,7 +22,7 @@
 
 
 //STEALTHY WEAPONS
-/datum/uplink_item/stealthy_weapons/cqc2
+/datum/uplink_item/stealthy_weapons/cqc_traitor
 	name = "CQC Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
 	item = /obj/item/book/granter/martial/cqc
