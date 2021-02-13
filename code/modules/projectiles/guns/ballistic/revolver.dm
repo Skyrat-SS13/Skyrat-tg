@@ -271,11 +271,3 @@
 		user.emote("scream")
 		user.drop_all_held_items()
 		user.Paralyze(80)
-
-//SKYRAT ADDITION START
-/obj/item/gun/ballistic/revolver/cosmonaut
-	name = "Cosmonaut's Revolver"
-	desc = "You know what? Fuck you. *bullpups your revolver*"
-	icon_state = "cosmonaut"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/cosmonaut
-//SKYRAT ADDITION END

@@ -52,3 +52,9 @@
 	armour_penetration = 10
 	stamina = 30
 	wound_bonus = -50
+
+// .357x29
+/obj/projectile/bullet/cosmonaut
+	name = ".357x29 bullet"
+	damage = 70
+	wound_bonus = -10

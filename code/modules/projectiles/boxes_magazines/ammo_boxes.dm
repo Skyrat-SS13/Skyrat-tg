@@ -102,14 +102,3 @@
 	icon_state = "foambox_riot"
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/riot
 	custom_materials = list(/datum/material/iron = 50000)
-
-//SKYRAT ADDITION BEGIN
-/obj/item/ammo_box/cosmonaut
-	name = "speed loader (.357x29)"
-	desc = "Designed to quickly reload revolvers."
-	icon_state = "357x29"
-	ammo_type = /obj/item/ammo_casing/cosmonaut
-	max_ammo = 5
-	multiple_sprites = AMMO_BOX_PER_BULLET
-	item_flags = NO_MAT_REDEMPTION
-//SKYRAT ADDITION END
