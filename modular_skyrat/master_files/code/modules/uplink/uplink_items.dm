@@ -51,6 +51,13 @@
 	cost = 5
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
 
+/datum/uplink_item/dangerous/shield_traitor
+	name = "Katana"
+	desc = "An incredibly sharp sword used by Samurais. Woefully underpowered in D20."
+	item = /obj/item/katana
+	cost = 12
+	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
+
 //BUNDLES
 
 /datum/uplink_item/bundles_tc/bulldog
