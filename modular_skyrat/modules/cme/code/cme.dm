@@ -189,6 +189,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
+	layer = LIGHTING_LAYER
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/timeleft = CME_MINIMAL_BUBBLE_BURST_TIME
 	var/cme_light_range_lower = CME_MINIMAL_LIGHT_RANGE_LOWER
@@ -230,6 +231,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /obj/effect/cme/Initialize()
 	. = ..()
 	playsound(src,'sound/weapons/resonator_fire.ogg',75,TRUE)
+	var/turf/open/T = get_turf(src)
+	if(istype(T))
+		T.atmos_spawn_air("o2=15;plasma=15;TEMP=5778")
 	addtimer(CALLBACK(src, .proc/burst), timeleft)
 
 /obj/effect/cme/proc/burst()
@@ -259,7 +263,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
-	explosion(src, 0, 0, 10, flame_range = 10)
+	explosion(src, 0, 3, 10, flame_range = 10)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
@@ -274,6 +278,16 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /obj/effect/cme/proc/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	minor_announce("[src.name] NEUTRALIZED.", "Solar Flare Log:")
+	color = COLOR_WHITE
+	light_color = COLOR_WHITE
+	neutralized = TRUE
+
+/obj/effect/cme/extreme/anomalyNeutralize()
+	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	minor_announce("[src.name] NEUTRALIZED.", "Solar Flare Log:")
+	var/turf/open/T = get_turf(src)
+	if(istype(T))
+		T.atmos_spawn_air("o2=15;plasma=15;TEMP=5778")
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
