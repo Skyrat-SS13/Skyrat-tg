@@ -4,6 +4,12 @@
 	caliber = CALIBER_357
 	max_ammo = 7
 
+/obj/item/ammo_box/magazine/internal/cylinder/cosmonaut
+	name = "revolver cylinder"
+	ammo_type = /obj/item/ammo_casing/cosmonaut
+	caliber = CALIBER_357x29
+	max_ammo = 5
+
 /obj/item/ammo_box/magazine/internal/cylinder/get_round(keep = 0)
 	rotate()
 

@@ -109,7 +109,15 @@
 	damage = 60
 	wound_bonus = -30
 
+// .357x29 (Cosmonaut revolver)
+
+/obj/projectile/bullet/cosmonaut
+	name = ".357x29 bullet"
+	damage = 70
+	wound_bonus = -10
+
 // admin only really, for ocelot memes
+
 /obj/projectile/bullet/a357/match
 	name = ".357 match bullet"
 	ricochets_max = 5

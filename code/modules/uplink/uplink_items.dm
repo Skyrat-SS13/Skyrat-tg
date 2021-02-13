@@ -1907,12 +1907,31 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
 
+//SKYRAT EDIT ADDITION BEGIN
+/datum/uplink_item/role_restricted/cosmonauts_revolver
+	name = "Cosmonauts Revolver"
+	desc = "A highly complex Soviet Space Gun, this incredible weapon fired a longer round than its competition, but featured an ingenious (If overly complicated) per-chamber hammer \
+			system, and a recoiless design to boot. However, the complexity of this gun was also its undoing, as the Soviet Space agency could not afford to arm every Cosmonaut with such an \
+			expensive weapon. This one is museum-grade, and in perfect running condition"
+	item = /obj/item/gun/ballistic/revolver/cosmonaut
+	cost = 15
+	restricted_roles = list("Curator")
+	limited_stock = 1
+
+/datum/uplink_item/role_restricted/cosmonauts_revolver/ammo
+	name = "Cosmonauts Reloader"
+	desc = "Extra-special ammo for your extra-special gun"
+	item = /obj/item/ammo_box/cosmonaut
+	cost = 5
+	restricted_roles = list("Curator")
+//SKYRAT EDIT ADDITION END
+
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
-	His Grace grants gradual regeneration and complete stun immunity to His wielder, but be wary: if He gets too hungry, He will become impossible to drop and eventually kill you if not fed. \
-	However, if left alone for long enough, He will fall back to slumber. \
-	To activate His Grace, simply unlatch Him."
+			His Grace grants gradual regeneration and complete stun immunity to His wielder, but be wary: if He gets too hungry, He will become impossible to drop and eventually kill you if not fed. \
+			However, if left alone for long enough, He will fall back to slumber. \
+			To activate His Grace, simply unlatch Him."
 	item = /obj/item/his_grace
 	cost = 20
 	restricted_roles = list("Chaplain")

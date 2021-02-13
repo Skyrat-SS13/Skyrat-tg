@@ -6,6 +6,14 @@
 	caliber = CALIBER_357
 	projectile_type = /obj/projectile/bullet/a357
 
+// .357x29 (Cosmonaut Revolver)
+
+/obj/item/ammo_casing/cosmonaut
+	name = ".357x29 bullet casing"
+	desc = "A .357x29 bullet casing."
+	caliber = CALIBER_357x29
+	projectile_type = /obj/projectile/bullet/cosmonaut
+
 /obj/item/ammo_casing/a357/match
 	name = ".357 match bullet casing"
 	desc = "A .357 bullet casing, manufactured to exceedingly high standards."

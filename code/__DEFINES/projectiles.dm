@@ -21,6 +21,10 @@
 #define CALIBER_10MM		"10mm"
 /// The caliber used by most revolver variants.
 #define CALIBER_357			".357"
+//SKYRAT ADDITION START
+/// The Caliber used by the Cosmonaut's revolver
+#define CALIBER_357x29		".357x29"
+//SKYRAT ADDITION END
 /// The caliber used by the detective's revolver.
 #define CALIBER_38			".38"
 /// The caliber used by the C-20r SMG, the tommygun, and the M1911 pistol.
