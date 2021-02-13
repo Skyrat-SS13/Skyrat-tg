@@ -124,3 +124,9 @@
 
 /obj/item/radio/headset/assault
 	keyslot = new /obj/item/encryptionkey/headset_assault
+
+/obj/item/radio/headset/assault/command
+	name = "ds-1 command headset"
+	desc = "The headset of the boss. Or maybe his boss."
+	keyslot = new /obj/item/encryptionkey/headset_assault
+	command = TRUE
