@@ -71,3 +71,12 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	name = "beret"
 	icon_state = "beret_white"
+
+//Cyberpunk PI Costume - Sprites from https://github.com/VOREStation/VOREStation/commit/a23605c9fd39b7123218d56250f7aaaeaefd929c
+/obj/item/clothing/head/cybergoggles
+	name = "type-34C semi-enclosed headwear"
+	desc = "Civilian model of a popular helmet used by certain law enforcement agencies. It does not have any armor plating, but has a neo-laminated fiber lining."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "cyberpunkgoggle"
+	mutant_variants = NONE

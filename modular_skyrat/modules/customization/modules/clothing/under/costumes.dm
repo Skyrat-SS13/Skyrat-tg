@@ -44,3 +44,18 @@
 	desc = "A cheongsam, traditionally worn in ancient Earth China by men during social events and lunar new years. This one is red.."
 	icon_state = "cheongr"
 	body_parts_covered = CHEST|GROIN
+
+//Cyberpunk PI Costume - Sprites from https://github.com/VOREStation/VOREStation/commit/a23605c9fd39b7123218d56250f7aaaeaefd929c
+/obj/item/clothing/under/costume/cybersleek
+	name = "sleek modern coat"
+	desc = "A modern-styled coat typically worn on more urban planets."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "cyberpunksleek"
+	body_parts_covered = CHEST|ARMS|GROIN|LEGS
+	mutant_variants = NONE
+	can_adjust = FALSE
+
+/obj/item/clothing/under/costume/cybersleek/long
+	name = "long modern coat"
+	icon_state = "cyberpunksleek_long"

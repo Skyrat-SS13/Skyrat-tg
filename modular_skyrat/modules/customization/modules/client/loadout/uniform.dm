@@ -161,6 +161,14 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/uniform/suit/cybersleek
+	name = "Sleek Modern Coat"
+	path = /obj/item/clothing/under/costume/cybersleek
+
+/datum/loadout_item/uniform/suit/cybersleek_long
+	name = "Long Modern Coat"
+	path = /obj/item/clothing/under/costume/cybersleek/long
+
 /datum/loadout_item/uniform/suit/victorian
 	name = "Victorian Vest, Black Shirt"
 	path = /obj/item/clothing/under/costume/vic_vest
