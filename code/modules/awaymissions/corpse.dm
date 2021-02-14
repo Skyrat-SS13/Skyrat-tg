@@ -48,7 +48,7 @@
 	if(!extra_prompts(user))
 		return
 
-	if(SSticker.mode in excluded_gamemodes)
+	if(SSticker.mode.type in excluded_gamemodes)
 		to_chat(user, "span class='warning'>Error, unable to spawn.</span>")
 		return
 	//SKYRAT EDIT ADDITION END
