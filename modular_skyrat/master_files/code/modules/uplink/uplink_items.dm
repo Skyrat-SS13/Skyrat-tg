@@ -31,7 +31,7 @@
 	name = "C-20r Submachine Gun"
 	desc = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a \
 			24-round magazine and is compatible with suppressors."
-	item = /obj/item/gun/ballistic/automatic/c20r
+	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
 	cost = 17
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
 
@@ -39,7 +39,7 @@
 	name = "Bulldog Shotgun"
 	desc = "A fully-loaded semi-automatic drum-fed shotgun. Compatible with all 12g rounds. Designed for close \
 			quarter anti-personnel engagements."
-	item = /obj/item/gun/ballistic/shotgun/bulldog
+	item = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
 	cost = 15
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
 
@@ -56,23 +56,6 @@
 	desc = "An incredibly sharp sword used by Samurais. Woefully underpowered in D20."
 	item = /obj/item/katana
 	cost = 12
-	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
-
-//BUNDLES
-
-/datum/uplink_item/bundles_tc/bulldog
-	name = "Bulldog bundle"
-	desc = "Lean and mean: Optimized for people that want to get up close and personal. Contains the popular \
-			Bulldog shotgun, two 12g buckshot drums, and a pair of Thermal imaging goggles."
-	item = /obj/item/storage/backpack/duffelbag/syndie/bulldogbundle
-	cost = 20 // normally 16
-	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
-
-/datum/uplink_item/bundles_tc/c20r_traitor
-	name = "C-20r bundle"
-	desc = "Old Faithful: The classic C-20r, bundled with two magazines and a (surplus) suppressor at discount price."
-	item = /obj/item/storage/backpack/duffelbag/syndie/c20rbundle
-	cost = 25
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
 
 //STEALTHY WEAPONS
