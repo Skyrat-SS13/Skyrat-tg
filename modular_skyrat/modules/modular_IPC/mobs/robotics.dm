@@ -14,8 +14,8 @@
     var/adjusted_pressure = H.calculate_affecting_pressure(pressure) //FUCK
     switch(adjusted_pressure)
         if(HAZARD_LOW_PRESSURE to WARNING_LOW_PRESSURE)
-            H.adjust_bodytemperature(15) //Cooling isnt as effective here..
-            if(prob(5))
+            H.adjust_bodytemperature(5) //Cooling isnt as effective here..
+            if(prob(1))
                 to_chat(H, "<span class='warning'>Alert: Low Pressure Enviroment, Cooling At Risk of Failure. Seek shelter. </span>")
         else
             H.adjust_bodytemperature(60) //We're overheating RAPIDLY.
