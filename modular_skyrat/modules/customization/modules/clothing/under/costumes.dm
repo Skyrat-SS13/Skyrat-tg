@@ -48,7 +48,7 @@
 //Cyberpunk PI Costume - Sprites from https://github.com/VOREStation/VOREStation/commit/a23605c9fd39b7123218d56250f7aaaeaefd929c
 /obj/item/clothing/under/costume/cybersleek
 	name = "sleek modern coat"
-	desc = "A modern-styled coat typically worn on more urban planets."
+	desc = "A modern-styled coat typically worn on more urban planets, made with a neo-laminated fiber lining."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "cyberpunksleek"
