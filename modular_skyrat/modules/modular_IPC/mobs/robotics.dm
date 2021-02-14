@@ -18,6 +18,6 @@
             if(prob(5))
                 to_chat(H, "<span class='warning'>Alert: Low Pressure Enviroment, Cooling At Risk of Failure. Seek shelter. </span>")
         else
-            H.adjust_bodytemperature(13) //We're overheating RAPIDLY.
+            H.adjust_bodytemperature(20) //We're overheating RAPIDLY.
             if(prob(10))
                 to_chat(H, "<span class='warning'>Alert: Extreme Low Pressure Enviroment, Cooling offline. Seek Pressure or Cooling Source Immediately!</span>")
