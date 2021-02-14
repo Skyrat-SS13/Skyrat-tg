@@ -28,14 +28,19 @@
 
 /obj/item/coolingpack/Initialize() //starts without a cell for rnd
     . = ..()
+    START_PROCESSING(SSobj, src)
     update_power()
     return
 
-/obj/item/coolingpack/Initialize() //starts with hicap
+/obj/item/coolingpack/initial/Initialize() //starts with hicap
     . = ..()
     cell = new(src)
     update_power()
     return
+
+/obj/item/coolingpack/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/coolingpack/attack_self(mob/user)
     . = ..()
