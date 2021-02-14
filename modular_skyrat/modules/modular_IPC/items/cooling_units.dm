@@ -54,7 +54,7 @@
     ..()
     if((slot_flags == ITEM_SLOT_BACK) && powered == TRUE && on == TRUE)
         update_power()
-        user.adjust_bodytemperature(-25)//Enough to sustain you indefinitely in space, but not while on fire.
+        user.adjust_bodytemperature(-65)//Enough to sustain you indefinitely in space, but not while on fire.
         cell.charge =  (cell.charge - coolingcost)
 
 
