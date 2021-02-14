@@ -19,6 +19,7 @@
         if(cell.charge < coolingcost)
             powered = FALSE
             icon_state = "suitcooler0"
+            STOP_PROCESSING(SSobj, src)
         else
             powered = TRUE
             icon_state = "suitcooler1"
@@ -28,7 +29,6 @@
 
 /obj/item/coolingpack/Initialize() //starts without a cell for rnd
     . = ..()
-    START_PROCESSING(SSobj, src)
     update_power()
     return
 
@@ -40,16 +40,17 @@
 
 /obj/item/coolingpack/Destroy()
 	. = ..()
-	STOP_PROCESSING(SSobj, src)
 
 /obj/item/coolingpack/attack_self(mob/user)
     . = ..()
     if(on == TRUE)
         on = FALSE
         update_power()
+        STOP_PROCESSING(SSobj, src)
     else
         on = TRUE //im so fucking lazy
         update_power()
+        START_PROCESSING(SSobj, src)
 
 /obj/item/coolingpack/examine(mob/user)
     . = ..()
