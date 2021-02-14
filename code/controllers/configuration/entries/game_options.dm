@@ -342,7 +342,7 @@
 	min_val = 0
 
 /datum/config_entry/number/ocean_levels
-	config_entry_value = 2
+	config_entry_value = 1
 	integer = TRUE
 	min_val = 0
 
