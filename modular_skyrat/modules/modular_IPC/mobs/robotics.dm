@@ -24,6 +24,7 @@
 
 /datum/species/robotic/body_temperature_skin(mob/living/carbon/human/humi)
     . = ..()
+    var/datum/gas_mixture/environment = humi.loc.return_air()
     var/pressure = environment.return_pressure()
     var/adjusted_pressure = humi.calculate_affecting_pressure(pressure) //FUCK
     // change the core based on the skin temp
@@ -35,7 +36,6 @@
         humi.adjust_coretemperature(skin_core_change)
 
 	// get the enviroment details of where the mob is standing
-    var/datum/gas_mixture/environment = humi.loc.return_air()
     if(!environment) // if there is no environment (nullspace) drop out here
         return
 
