@@ -4,6 +4,7 @@
 	req_access = list(ACCESS_SYNDICATE)
 	faction = list(ROLE_SYNDICATE)
 	mode = TURRET_STUN
+	uses_stored = FALSE
 	max_integrity = 200
 	base_icon_state = "syndie"
 	stun_projectile = /obj/projectile/energy/electrode
@@ -26,9 +27,6 @@
 /obj/machinery/porta_turret/assaultops/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_WIRES)
-
-/obj/machinery/porta_turret/assaultops/setup(obj/item/gun/turret_gun)
-	return
 
 /obj/machinery/porta_turret/syndicate/assess_perp(mob/living/carbon/human/perp)
 	return 10 //Syndicate turrets shoot everything not in their faction
