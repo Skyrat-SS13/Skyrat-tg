@@ -431,11 +431,12 @@
 /obj/structure/bed/dogbed/mcgriff{
 	name = "Halmant's bed"
 	},
-/mob/living/simple_animal/pet/dog/pug/mcgriff{
-	name = "Halmant"
-	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
+	},
+/mob/living/simple_animal/pet/dog/pug{
+	name = "Halmant";
+	real_name = null
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
@@ -4227,7 +4228,9 @@
 /obj/structure/bed/dogbed/runtime{
 	name = "Lin's bed"
 	},
-/mob/living/simple_animal/pet/cat/runtime,
+/mob/living/simple_animal/pet/cat{
+	name = "Lin"
+	},
 /turf/open/floor/carpet,
 /area/cruiser_dock)
 "py" = (
@@ -5790,6 +5793,9 @@
 /obj/item/storage/belt/utility/chief/full{
 	name = "\improper Chief Engineering Officer's toolbelt"
 	},
+/obj/machinery/light/warm{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "vN" = (
@@ -6223,6 +6229,9 @@
 /obj/item/clothing/mask/gas{
 	icon_state = "gas_mask";
 	inhand_icon_state = "gas_mask"
+	},
+/obj/machinery/light/warm{
+	dir = 1
 	},
 /turf/open/floor/iron{
 	icon = 'icons/turf/floors.dmi'
@@ -11102,6 +11111,16 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"UL" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/machinery/light/warm{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock)
 "UN" = (
 /obj/structure/barricade/wooden,
 /obj/effect/decal/cleanable/dirt,
@@ -11671,7 +11690,7 @@
 /obj/structure/bed/dogbed/renault{
 	name = "Rhials' bed"
 	},
-/mob/living/simple_animal/pet/fox/renault{
+/mob/living/simple_animal/pet/fox{
 	name = "Rhials"
 	},
 /turf/open/floor/wood,
@@ -31697,7 +31716,7 @@ Al
 yE
 uX
 Xc
-Td
+UL
 Td
 FR
 ak
