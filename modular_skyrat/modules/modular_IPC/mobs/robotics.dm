@@ -18,11 +18,11 @@
             if(prob(1))
                 to_chat(H, "<span class='warning'>Alert: Low Pressure Enviroment, Cooling At Risk of Failure. Seek shelter. </span>")
         if(HAZARD_LOW_PRESSURE)
-            H.adjust_bodytemperature(160) //We're overheating RAPIDLY.
+            H.adjust_bodytemperature(60) //We're overheating RAPIDLY.
             if(prob(10))
                 to_chat(H, "<span class='warning'>Alert: Extreme Low Pressure Enviroment, Cooling offline. Seek Pressure or Cooling Source Immediately!</span>")
 
-/datum/species/robotic/body_temperature_skin(datum/gas_mixture/environment, mob/living/carbon/human/humi)
+/datum/species/robotic/body_temperature_skin(mob/living/carbon/human/humi)
     . = ..()
     var/pressure = environment.return_pressure()
     var/adjusted_pressure = humi.calculate_affecting_pressure(pressure) //FUCK
