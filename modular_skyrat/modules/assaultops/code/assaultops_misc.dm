@@ -15,6 +15,9 @@
 /obj/machinery/porta_turret/assaultops/assess_perp(mob/living/carbon/human/perp)
 	return 10
 
+/obj/machinery/porta_turret/assaultops/setup(obj/item/gun/turret_gun)
+	return
+
 /obj/machinery/porta_turret/assaultops/shuttle
 	scan_range = 9
 	lethal_projectile = /obj/projectile/bullet/p50/penetrator/shuttle
@@ -28,8 +31,6 @@
 	. = ..()
 	AddElement(/datum/element/empprotection, EMP_PROTECT_SELF | EMP_PROTECT_WIRES)
 
-/obj/machinery/porta_turret/syndicate/assess_perp(mob/living/carbon/human/perp)
-	return 10 //Syndicate turrets shoot everything not in their faction
 
 //VENDING MACHINES>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/machinery/vending/assaultops_ammo
