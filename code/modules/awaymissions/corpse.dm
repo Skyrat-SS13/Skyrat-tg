@@ -35,6 +35,7 @@
 	var/show_flavour = TRUE
 	var/banType = ROLE_LAVALAND
 	var/ghost_usable = TRUE
+	var/list/excluded_gamemodes
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/effect/mob_spawn/attack_ghost(mob/user)
@@ -46,7 +47,12 @@
 	//SKYRAT EDIT ADDITION BEGIN
 	if(!extra_prompts(user))
 		return
+
+	if(SSticker.mode.type in excluded_gamemodes)
+		to_chat(user, "<span class='warning'>Error, unable to spawn.</span>")
+		return
 	//SKYRAT EDIT ADDITION END
+
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, "<span class='warning'>An admin has temporarily disabled non-admin ghost roles!</span>")
 		return
