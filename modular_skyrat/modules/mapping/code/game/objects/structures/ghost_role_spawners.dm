@@ -39,3 +39,4 @@
 
 /obj/item/card/id/scavengecrew
 	assignment = "Scavenge Crew"
+	access = list(ACCESS_AWAY_GENERIC4, ACCESS_ROBOTICS)
