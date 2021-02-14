@@ -19,21 +19,21 @@
 
 	var/list/stored_profiles = list() //list of datum/changelingprofile
 	var/datum/changelingprofile/first_prof = null
-	var/dna_max = 6 //How many extra DNA strands the changeling can store for transformation.
+	var/dna_max = 8 //How many extra DNA strands the changeling can store for transformation. // SKYRAT EDIT CHANGE : ORIGINAL: 6
 	var/absorbedcount = 0
 	var/trueabsorbs = 0//dna gained using absorb, not dna sting
-	var/chem_charges = 20
-	var/chem_storage = 75
-	var/chem_recharge_rate = 1
+	var/chem_charges = 75 //SKYRAT EDIT CHANGE - ORIGINAL: 25
+	var/chem_storage = 150 //SKYRAT EDIT CHANGE - ORIGINAL: 75
+	var/chem_recharge_rate = 3 //SKYRAT EDIT CHANGE - ORIGINAL: 1
 	var/chem_recharge_slowdown = 0
 	var/sting_range = 2
 	var/geneticdamage = 0
 	var/was_absorbed = FALSE //if they were absorbed by another ling already.
 	var/isabsorbing = FALSE
 	var/islinking = FALSE
-	var/geneticpoints = 10
+	var/geneticpoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
 	var/total_geneticspoints = 10
-	var/total_chem_storage = 75
+	var/total_chem_storage = 150 //SKYRAT EDIT CHANGE - ORIGINAL: 75
 	var/purchasedpowers = list()
 
 	var/mimicing = ""
