@@ -11,15 +11,6 @@
 	inhand_icon_state = "hos_parade_male"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/rank/security/head_of_security/parade/female
-	name = "head of security's female parade uniform"
-	desc = "A luxurious uniform for the head of security, woven in a deep red. This one comes with white trousers. On the lapel is a small pin in the shape of a deer's head."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/under/security.dmi'
-	icon_state = "hos_parade_fem"
-	inhand_icon_state = "hos_parade_fem"
-	can_adjust = FALSE
-
 /obj/item/clothing/suit/armor/hos/parade
 	name = "head of security's parade jacket"
 	desc = "A luxurious deep red jacket for the head of security, woven with a golden trim. It smells of gunpowder and authority."
