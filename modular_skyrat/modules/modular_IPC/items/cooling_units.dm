@@ -50,7 +50,7 @@
     . = ..()
     . += "<span class='warning'>Charge Left: [cell.charge]/[cell.maxcharge]</span>"
 
-/obj/item/coolingpack/equipped(mob/user, slot)
+/obj/item/coolingpack/process(mob/user, slot)
     ..()
     if((slot_flags == ITEM_SLOT_BACK) && powered == TRUE && on == TRUE)
         update_power()
