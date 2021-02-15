@@ -345,11 +345,7 @@
 	results = list(/datum/reagent/ammonia = 3)
 	required_reagents = list(/datum/reagent/hydrogen = 3, /datum/reagent/nitrogen = 1)
 	optimal_ph_min = 1  // Lets increase our range for this basic chem
-<<<<<<< HEAD
-	optimal_ph_max = 12	
-=======
 	optimal_ph_max = 12
->>>>>>> 9281f1dcec1 (Tweak N2O reaction so people don't surprise blow up (#56901))
 	H_ion_release = -0.02 //handmade is more neutral
 
 /datum/chemical_reaction/diethylamine
