@@ -62,7 +62,7 @@ PROCESSING_SUBSYSTEM_DEF(circuit)
 		/obj/item/electronic_assembly/medium/box,
 		/obj/item/electronic_assembly/medium/clam,
 		/obj/item/electronic_assembly/medium/medical,
-		/obj/item/electronic_assembly/medium/gun,
+		///obj/item/electronic_assembly/medium/gun,
 		/obj/item/electronic_assembly/medium/radio,
 		/obj/item/electronic_assembly/large/default,
 		/obj/item/electronic_assembly/large/scope,

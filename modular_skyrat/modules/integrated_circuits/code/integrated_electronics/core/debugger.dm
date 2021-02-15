@@ -2,7 +2,7 @@
 	name = "circuit debugger"
 	desc = "This small tool allows one working with custom machinery to directly set data to a specific pin, useful for writing \
 	settings to specific circuits, or for debugging purposes.  It can also pulse activation pins."
-	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
+	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
 	icon_state = "debugger"
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON

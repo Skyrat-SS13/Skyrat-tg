@@ -1,7 +1,7 @@
 /obj/item/integrated_electronics/detailer
 	name = "assembly detailer"
 	desc = "A combination autopainter and flash anodizer designed to give electronic assemblies a colorful, wear-resistant finish."
-	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
+	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
 	icon_state = "detailer"
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
@@ -34,7 +34,7 @@
 
 /obj/item/integrated_electronics/detailer/update_icon()
 	cut_overlays()
-	var/mutable_appearance/detail_overlay = mutable_appearance('/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi', "detailer-color")
+	var/mutable_appearance/detail_overlay = mutable_appearance('modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi', "detailer-color")
 	detail_overlay.color = detail_color
 	add_overlay(detail_overlay)
 

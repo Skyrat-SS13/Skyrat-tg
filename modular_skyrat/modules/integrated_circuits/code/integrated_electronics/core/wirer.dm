@@ -8,7 +8,7 @@
 	desc = "It's a small wiring tool, with a wire roll, electric soldering iron, wire cutter, and more in one package. \
 	The wires used are generally useful for small electronics, such as circuitboards and breadboards, as opposed to larger wires \
 	used for power or data transmission."
-	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
+	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
 	icon_state = "wirer-wire"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_SMALL

@@ -1,7 +1,7 @@
 /obj/item/integrated_electronics/analyzer
 	name = "circuit analyzer"
 	desc = "A tool that scans assemblies and gives the user a printout to recreate it in a circuit printer."
-	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
+	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
 	icon_state = "analyzer"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_SMALL

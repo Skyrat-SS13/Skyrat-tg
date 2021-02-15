@@ -15,7 +15,7 @@
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
-/obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/living/user, intent)
+/obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/living/user)
 	var/obj/item/card/id/card = I.GetID()
 	var/list/access = I.GetAccess()
 	var/passkey = strtohex(XorEncrypt(json_encode(access), SScircuit.cipherkey))

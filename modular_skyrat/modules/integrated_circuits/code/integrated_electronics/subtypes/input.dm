@@ -261,7 +261,7 @@
 		set_pin_data(IC_OUTPUT, 12, H.pestlevel)
 		set_pin_data(IC_OUTPUT, 13, H.toxic)
 		set_pin_data(IC_OUTPUT, 14, H.waterlevel)
-		set_pin_data(IC_OUTPUT, 15, H.nutrilevel)
+		set_pin_data(IC_OUTPUT, 15, H.reagents.total_volume)
 		set_pin_data(IC_OUTPUT, 16, H.harvest)
 		set_pin_data(IC_OUTPUT, 17, H.dead)
 		set_pin_data(IC_OUTPUT, 18, H.plant_health)
@@ -781,6 +781,7 @@
 	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
 	playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 
+/* SKYRAT PORT -- Disables NTNetworking for now, since tg changed completely how it works
 /obj/item/integrated_circuit/input/ntnet_packet
 	name = "NTNet networking circuit"
 	desc = "Enables the sending and receiving of messages over NTNet via packet data protocol."
@@ -882,6 +883,7 @@
 	set_pin_data(IC_OUTPUT, 2, data.broadcast)
 	push_data()
 	activate_pin(2)
+*/
 
 //This circuit gives information on where the machine is.
 /obj/item/integrated_circuit/input/gps
@@ -1011,7 +1013,7 @@
 	name = "scanner"
 	desc = "Scans and obtains a reference for any objects you use on the assembly."
 	extended_desc = "If the 'put down' pin is set to true, the assembly will take the scanned object from your hands to its location. \
-	Useful for interaction with the grabber. The scanner only works using the help intent."
+	Useful for interaction with the grabber. It only works on help intent."
 	icon_state = "recorder"
 	complexity = 4
 	inputs = list("put down" = IC_PINTYPE_BOOLEAN)
@@ -1020,8 +1022,8 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 20
 
-/obj/item/integrated_circuit/input/obj_scanner/attackby_react(var/atom/A,var/mob/user,intent)
-	if(intent!=INTENT_HELP)
+/obj/item/integrated_circuit/input/obj_scanner/attackby_react(var/atom/A,var/mob/living/user)
+	if(user.combat_mode)
 		return FALSE
 	if(!check_then_do_work())
 		return FALSE
@@ -1274,8 +1276,10 @@
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
-/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/living/user, intent)
-	var/obj/item/card/data/card = I.GetCard()
+/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/living/user)
+	if(!istype(I, obj/item/card/data))
+		return FALSE
+	var/obj/item/card/data/card = I
 	var/write_mode = get_pin_data(IC_INPUT, 3)
 	if(card)
 		if(write_mode == TRUE)
@@ -1300,7 +1304,7 @@
 		update_icon()
 	return ..()
 
-
+/* SKYRAT PORT -- Commented out because we don't have the backend code for this (yet)
 //Interceptor
 //Intercepts a telecomms signal, aka a radio message (;halp getting griff)
 //Inputs:
@@ -1389,7 +1393,7 @@
 	set_pin_data(IC_INPUT, 1, 0)
 	set_pin_data(IC_INPUT, 2, 0)
 	..()
-
+*/
 
 // -Inputlist- //
 /obj/item/integrated_circuit/input/selection
