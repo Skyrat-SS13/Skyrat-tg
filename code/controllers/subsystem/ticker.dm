@@ -299,7 +299,7 @@ SUBSYSTEM_DEF(ticker)
 	SSdbcore.SetRoundStart()
 
 	to_chat(world, "<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
-	SEND_SOUND(world, sound('sound/ai/welcome.ogg'))
+	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
@@ -690,7 +690,8 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/yeehaw.ogg',
 		'sound/roundend/disappointed.ogg',
 		'sound/roundend/scrunglartiy.ogg',
-		'sound/roundend/petersondisappointed.ogg'\
+		'sound/roundend/petersondisappointed.ogg',
+		'sound/roundend/bully2.ogg'\
 		)
 	///The reference to the end of round sound that we have chosen.
 	var/sound/end_of_round_sound_ref = sound(round_end_sound)

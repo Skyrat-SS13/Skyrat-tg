@@ -15,7 +15,7 @@
 		I.icon_state = "sleeperb"
 	if(istype(src, /obj/item/robot_model/medical))
 		I.icon_state = "sleeper"
-	if(istype(src, /obj/item/robot_model/butler))
+	if(istype(src, /obj/item/robot_model/service))
 		I.icon_state = "servicer"
 		if(cyborg_base_icon == "scrubpup")
 			I.icon_state = "compactor"
@@ -578,7 +578,7 @@
 	return ..()
 
 //SERVICE
-/obj/item/robot_model/butler/skyrat/be_transformed_to(obj/item/robot_model/old_model)
+/obj/item/robot_model/service/skyrat/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/service_icons
 	if(!service_icons)
@@ -769,7 +769,7 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/plasteel,
+		/obj/item/stack/tile/iron,
 		/obj/item/stack/cable_coil,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/stack/medical/gauze,

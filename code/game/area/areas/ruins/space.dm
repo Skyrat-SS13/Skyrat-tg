@@ -289,7 +289,7 @@
 	name = "Beta Station Storage"
 	icon_state = "storage"
 
-/area/solar/ancientstation
+/area/solars/ancientstation
 	name = "Charlie Station Solar Array"
 	icon_state = "panelsP"
 
@@ -346,11 +346,11 @@
 	name = "Derelict Chapel"
 	icon_state = "chapel"
 
-/area/solar/derelict_starboard
+/area/solars/derelict_starboard
 	name = "Derelict Starboard Solar Array"
 	icon_state = "panelsS"
 
-/area/solar/derelict_aft
+/area/solars/derelict_aft
 	name = "Derelict Aft Solar Array"
 	icon_state = "yellow"
 
