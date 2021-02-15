@@ -11,7 +11,7 @@
 	back = /obj/item/storage/backpack/fireproof
 	ears = /obj/item/radio/headset/syndicate/alt/assault
 	l_pocket = /obj/item/modular_computer/tablet/nukeops
-	id = /obj/item/card/id/syndicate/nuke_leader
+	id = /obj/item/card/id/syndicate_command/assault_operative
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
@@ -20,6 +20,8 @@
 	var/command_radio = FALSE
 	var/cqc = FALSE
 
+/obj/item/card/id/syndicate_command/assault_operative
+	assignment = "Assault Operative"
 /datum/outfit/assaultops/cqb
 	name = "Assault Operative - CQB"
 
