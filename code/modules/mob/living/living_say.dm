@@ -50,14 +50,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	"м" = RADIO_CHANNEL_SERVICE,
 
 	// Faction
-<<<<<<< HEAD
-	"å" = RADIO_CHANNEL_SYNDICATE,
-	"í" = RADIO_CHANNEL_CENTCOM,
-	//"a" = RADIO_CHANNEL_FACTION, //SKYRAT EDIT ADDITION - FACTION
-=======
 	"е" = RADIO_CHANNEL_SYNDICATE,
 	"н" = RADIO_CHANNEL_CENTCOM,
->>>>>>> cfa136f75db (Updating russian localization for radio prefixes (#56882))
 
 	// Admin
 	"з" = MODE_ADMIN,
