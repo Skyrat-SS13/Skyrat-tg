@@ -77,13 +77,9 @@
 
 /datum/config_entry/flag/log_emote // log emotes
 
-<<<<<<< HEAD
 /datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
 
-/datum/config_entry/flag/log_econ	// log economy actions
-=======
 /datum/config_entry/flag/log_econ // log economy actions
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 
 /datum/config_entry/flag/log_adminchat // log admin chat messages
 	protection = CONFIG_ENTRY_LOCKED

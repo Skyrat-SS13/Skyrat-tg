@@ -211,15 +211,9 @@
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
-<<<<<<< HEAD
 	icon = 'icons/obj/lighting.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	var/overlayicon = 'icons/obj/lighting_overlay.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	var/base_state = "tube"		// base description and icon_state
-=======
-	icon = 'icons/obj/lighting.dmi'
-	var/overlayicon = 'icons/obj/lighting_overlay.dmi'
-	var/base_state = "tube" // base description and icon_state
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
+	var/base_state = "tube"	// base description and icon_state
 	icon_state = "tube"
 	desc = "A lighting fixture."
 	layer = WALL_OBJ_LAYER

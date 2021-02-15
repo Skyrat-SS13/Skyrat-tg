@@ -119,22 +119,15 @@
 	var/datum/atom_hud/antag/hud_to_transfer = antag_hud//we need this because leave_hud() will clear this list
 	var/mob/living/old_current = current
 	if(current)
-<<<<<<< HEAD
-		current.transfer_observers_to(new_character)	//transfer anyone observing the old character to the new one
+		current.transfer_observers_to(new_character) //transfer anyone observing the old character to the new one
 	//SKYRAT CHANGE ADDITION BEGIN - AMBITIONS
 	if(my_ambitions)
 		remove_verb(current, /mob/proc/view_ambitions)
 		add_verb(new_character, /mob/proc/view_ambitions)
 	//SKYRAT CHANGE ADDITION END
-	current = new_character								//associate ourself with our new body
-	new_character.mind = src							//and associate our new body with ourself
-	for(var/a in antag_datums)	//Makes sure all antag datums effects are applied in the new body
-=======
-		current.transfer_observers_to(new_character) //transfer anyone observing the old character to the new one
 	current = new_character //associate ourself with our new body
 	new_character.mind = src //and associate our new body with ourself
 	for(var/a in antag_datums) //Makes sure all antag datums effects are applied in the new body
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 		var/datum/antagonist/A = a
 		A.on_body_transfer(old_current, current)
 	if(iscarbon(new_character))

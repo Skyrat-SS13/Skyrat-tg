@@ -1485,23 +1485,13 @@
 	name = "Invisible Powder"
 	colorname = "invisible"
 	color = "#FFFFFF00" // white + no alpha
-<<<<<<< HEAD
-	random_color_list = list(null)	//because using the powder color turns things invisible
-=======
 	random_color_list = list(null) //because using the powder color turns things invisible
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 
 /datum/reagent/colorful_reagent/powder/black
 	name = "Black Powder"
 	colorname = "black"
 	color = "#1C1C1C" // not quite black
-<<<<<<< HEAD
-	random_color_list = list("#8D8D8D")	//more grey than black, not enough to hide your true colors
-=======
 	random_color_list = list("#8D8D8D") //more grey than black, not enough to hide your true colors
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 
 /datum/reagent/colorful_reagent/powder/white
 	name = "White Powder"

@@ -176,14 +176,9 @@
 /obj/effect/mob_spawn/human
 	mob_type = /mob/living/carbon/human
 	//Human specific stuff.
-<<<<<<< HEAD
-	//var/mob_species = null		//Set to make them a mutant race such as lizard or skeleton. Uses the datum typepath instead of the ID. //ORIGINAL
+	//var/mob_species = null //Set to make them a mutant race such as lizard or skeleton. Uses the datum typepath instead of the ID. //ORIGINAL
 	var/mob_species = /datum/species/human //SKYRAT EDIT CHANGE
 	var/datum/outfit/outfit = /datum/outfit	//If this is a path, it will be instanced in Initialize()
-=======
-	var/mob_species = null //Set to make them a mutant race such as lizard or skeleton. Uses the datum typepath instead of the ID.
-	var/datum/outfit/outfit = /datum/outfit //If this is a path, it will be instanced in Initialize()
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 	var/disable_pda = TRUE
 	var/disable_sensors = TRUE
 	//All of these only affect the ID that the outfit has placed in the ID slot

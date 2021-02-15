@@ -215,13 +215,9 @@
 		suicide_log()
 
 		death(FALSE)
-<<<<<<< HEAD
 		ghostize(FALSE)	// Disallows reentering body and disassociates mind
 */
 //SKYRAT EDIT REMOVAL END
-=======
-		ghostize(FALSE) // Disallows reentering body and disassociates mind
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 
 /mob/living/proc/suicide_log()
 	log_message("committed suicide as [src.type]", LOG_ATTACK)

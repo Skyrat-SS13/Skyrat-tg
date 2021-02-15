@@ -31,15 +31,11 @@
 /// any brute weapon/attack with sharpness = SHARP_POINTY. rolls for piercing wounds
 #define WOUND_PIERCE 3
 /// any concentrated burn attack (lasers really). rolls for burning wounds
-<<<<<<< HEAD
-#define WOUND_BURN		4
+#define WOUND_BURN 4
 //SKYRAT EDIT ADDITION BEGIN - MEDICAL
 /// any brute attacks, rolled on a chance
 #define WOUND_MUSCLE 5
 //SKYRAT EDIT ADDITION END
-=======
-#define WOUND_BURN 4
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 
 
 // ~determination second wind defines
@@ -128,16 +124,11 @@ GLOBAL_LIST_INIT(global_all_wound_types, list(/datum/wound/blunt/critical, /datu
 /// If having this wound counts as mangled bone for dismemberment
 #define MANGLES_BONE (1<<3)
 /// If this wound marks the limb as being allowed to have gauze applied
-<<<<<<< HEAD
-#define ACCEPTS_GAUZE	(1<<4)
+#define ACCEPTS_GAUZE (1<<4)
 //SKYRAT EDIT ADDITION BEGIN - MEDICAL
 /// If this wound marks the limb as being allowed to have splints applied
-#define ACCEPTS_SPLINT	(1<<5)
+#define ACCEPTS_SPLINT (1<<5)
 //SKYRAT EDIT ADDITION END
-=======
-#define ACCEPTS_GAUZE (1<<4)
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
-
 
 // ~scar persistence defines
 // The following are the order placements for persistent scar save formats

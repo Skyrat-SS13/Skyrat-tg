@@ -91,13 +91,8 @@
 
 /datum/species/monkey/handle_mutations_and_radiation(mob/living/carbon/human/H)
 	. = ..()
-<<<<<<< HEAD
 	if(H.radiation > RAD_MOB_MUTATE * 2 && prob(50))
 		H.gorillize()
-=======
-	if(H.radiation > RAD_MOB_MUTATE * 2 && prob(50)) 
-		H.gorillize() 
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 		return
 
 /datum/species/monkey/check_roundstart_eligible()

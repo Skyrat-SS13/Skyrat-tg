@@ -1,11 +1,7 @@
 //This is the lowest supported version, anything below this is completely obsolete and the entire savefile will be wiped.
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
-#define SAVEFILE_VERSION_MIN	32
-=======
 #define SAVEFILE_VERSION_MIN 32
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 
 //This is the current version, anything below this will attempt to update (if it's not obsolete)
 // You do not need to raise this if you are adding new values that have sane defaults.

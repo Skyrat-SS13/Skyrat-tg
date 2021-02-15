@@ -4,22 +4,13 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 GLOBAL_PROTECT(admin_verbs_default)
 /world/proc/AVerbsDefault()
 	return list(
-<<<<<<< HEAD
-	/client/proc/deadmin,				/*destroys our own admin datum so we can play as a regular player*/
-	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
-	/client/proc/cmd_loud_admin_say,	/*ditto except its annoying - SKYRAT EDIT ADDITION - ADMIN*/
-	/client/proc/hide_verbs,			/*hides all our adminverbs*/
-	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
-	/client/proc/dsay,					/*talk in deadchat using our ckey/fakekey*/
-	/client/proc/investigate_show,		/*various admintools for investigation. Such as a singulo grief-log*/
-=======
 	/client/proc/deadmin, /*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/cmd_admin_say, /*admin-only ooc chat*/
+	/client/proc/cmd_loud_admin_say, /*ditto except its annoying - SKYRAT EDIT ADDITION - ADMIN*/
 	/client/proc/hide_verbs, /*hides all our adminverbs*/
 	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/dsay, /*talk in deadchat using our ckey/fakekey*/
 	/client/proc/investigate_show, /*various admintools for investigation. Such as a singulo grief-log*/
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 	/client/proc/secrets,
 	/client/proc/toggle_hear_radio, /*allows admins to hide all radio output*/
 	/client/proc/reload_admins,
@@ -29,13 +20,9 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/stop_sounds,
 	/client/proc/mark_datum_mapview,
 	/client/proc/debugstatpanel,
-<<<<<<< HEAD
-	/client/proc/fix_air,				/*resets air in designated radius to its default atmos composition*/
+	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
 	/client/proc/revokebunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/addbunkerbypass //SKYRAT EDIT ADDITION - PANICBUNKER
-=======
-	/client/proc/fix_air /*resets air in designated radius to its default atmos composition*/
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)

@@ -224,17 +224,11 @@
 					confidential = TRUE)
 				//omg this is dumb, just fill in both their tickets
 				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, 1)]</b> to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
-<<<<<<< HEAD
 				// admin_ticket_log(src, interaction_message) // SKYRAT EDIT ORIGINAL
 				admin_ticket_log(src, interaction_message, FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
-				if(recipient != src)	//reeee
+				if(recipient != src)//reeee
 					// admin_ticket_log(recipient, interaction_message) // SKYRAT EDIT ORIGINAL
 					admin_ticket_log(recipient, interaction_message, FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
-=======
-				admin_ticket_log(src, interaction_message)
-				if(recipient != src) //reeee
-					admin_ticket_log(recipient, interaction_message)
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 				SSblackbox.LogAhelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 			else //recipient is an admin but sender is not
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"

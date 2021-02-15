@@ -4,15 +4,11 @@
 /mob/verb/say_verb(message as text)
 	set name = "Say"
 	set category = "IC"
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
 	if(typing_indicator)
 		set_typing_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
-	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-=======
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
->>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	if(message)
