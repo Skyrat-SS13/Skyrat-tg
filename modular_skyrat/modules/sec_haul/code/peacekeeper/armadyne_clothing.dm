@@ -164,3 +164,20 @@
 
 /obj/item/card/id/armadyne/corpo/security
 	assignment = "Armadyne Corporate Security"
+
+/datum/antagonist/ert/armadyne
+    name = "Armadyne Corporate Security"
+    outfit = /datum/outfit/armadyne_security
+    role = "Security"
+
+/datum/antagonist/ert/armadyne/leader
+    name = "Armadyne Corporate Agent"
+    outfit = /datum/outfit/armadyne_rep
+    role = "Agent"
+
+/datum/ert/armadyne
+    roles = list(/datum/antagonist/ert/armadyne)
+    leader_role = /datum/antagonist/ert/armadyne/leader
+    rename_team = "Armadyne PMC"
+    mission = "Assist any Armadyne corporate entities."
+    polldesc = "an Armadyne PMC."
