@@ -502,7 +502,7 @@
 	name = "Lannese Dress"
 	desc = "An alien cultural garment for women, coming from a distant planet named Cantalan."
 	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
-	icon_state = "lanese"
+	icon_state = "lannese"
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
 	inhand_icon_state = "lannese"

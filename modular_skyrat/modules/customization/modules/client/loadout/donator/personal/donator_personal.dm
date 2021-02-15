@@ -128,7 +128,7 @@
 	path = /obj/item/clothing/under/custom/lannese
 	ckeywhitelist = list("kathrinbailey")
 
-/datum/loadout_item/uniform/donator/lanese/vambrace
-	name = "Lanese Dress w/ Vambraces"
-	path = /obj/item/clothing/under/custom/lanese/vambrace
+/datum/loadout_item/uniform/donator/lannese/vambrace
+	name = "Lannese Dress w/ Vambraces"
+	path = /obj/item/clothing/under/custom/lannese/vambrace
 	ckeywhitelist = list("kathrinbailey")
