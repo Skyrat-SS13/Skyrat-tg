@@ -4,6 +4,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 GLOBAL_PROTECT(admin_verbs_default)
 /world/proc/AVerbsDefault()
 	return list(
+	/client/proc/manual_events_mode, //SKYRAT EDIT, ENABLES MANUAL EVENT MODE!
 	/client/proc/deadmin, /*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/cmd_admin_say, /*admin-only ooc chat*/
 	/client/proc/cmd_loud_admin_say, /*ditto except its annoying - SKYRAT EDIT ADDITION - ADMIN*/
@@ -11,6 +12,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/dsay, /*talk in deadchat using our ckey/fakekey*/
 	/client/proc/investigate_show, /*various admintools for investigation. Such as a singulo grief-log*/
+
 	/client/proc/secrets,
 	/client/proc/toggle_hear_radio, /*allows admins to hide all radio output*/
 	/client/proc/reload_admins,
