@@ -219,7 +219,7 @@
 	name = "Syndicate Helmet"
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
-	cost = 64
+	cost = 4
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
 
 //IMPLANTS
