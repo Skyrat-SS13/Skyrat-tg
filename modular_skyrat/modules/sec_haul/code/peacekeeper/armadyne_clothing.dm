@@ -83,14 +83,12 @@
 	worn_icon_state = "armadyne_webbing"
 
 /obj/item/storage/belt/security/peacekeeper/armadyne
-	name = "peacekeeper belt"
+	name = "armadyne belt"
 	desc = "Can hold security gear like handcuffs and flashes. Has a holster for a gun."
-	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_belts.dmi'
-	icon_state = "peacekeeperbelt"
-	worn_icon_state = "peacekeeperbelt"
-	content_overlays = FALSE
-	component_type = /datum/component/storage/concrete/peacekeeper
+	icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_clothing.dmi'
+	icon_state = "armadyne_belt"
+	worn_icon_state = "armadyne_belt"
 
 /datum/outfit/armadyne_rep
 	name = "Armadyne Corporate Representative"
