@@ -714,16 +714,21 @@
 /////////////////DMR 40x32
 
 /obj/item/gun/ballistic/automatic/dmr
-	name = "\improper DMR 'Ripper' Gen-2" //TBA
-	desc = "An incredibly powerful rifle, with an internal stabalisation gymbal. It's chambered in .577 Snider."
+	name = "\improper Armadyne DMR 'Ripper' Gen-2"
+	desc = "An incredibly powerful autorifle, with an internal stabalisation gymbal. It's chambered in .577 Snider."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dmr.dmi'
 	icon_state = "dmr"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/dmr.dmi'
+	worn_icon_state = "dmr_worn"
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
+	inhand_icon_state = "dmr"
 	w_class = WEIGHT_CLASS_BULKY
-	inhand_icon_state = "arg"
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	mag_type = /obj/item/ammo_box/magazine/dmr
-	fire_delay = 2
+	fire_delay = 1.7
 	can_suppress = FALSE
-	burst_size = 2
+	burst_size = 3
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
@@ -737,7 +742,7 @@
 	icon_state = "dmr_mag"
 	ammo_type = /obj/item/ammo_casing/b577
 	caliber = ".557 Snider"
-	max_ammo = 15
+	max_ammo = 25
 
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
