@@ -4,6 +4,7 @@
 	icon_state = "armadyne_shirt"
 	icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_clothing.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_clothing_digi.dmi'
 	worn_icon_state = "armadyne_shirt"
 
 /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
@@ -69,6 +70,7 @@
 	desc = "Tactical and sleek. Worn by Armadyne representatives."
 	icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_clothing.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_clothing_digi.dmi'
 	icon_state = "armadyne_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "armadyne_boots"
