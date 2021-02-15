@@ -2527,8 +2527,5 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "godmother"
 	glass_name = "Godmother"
 	glass_desc = "A lovely fresh smelling cocktail, a true Sicilian delight."
-<<<<<<< HEAD
-=======
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
->>>>>>> 3b333e5987f (moves can_synth to chemical_flags (#56891))
