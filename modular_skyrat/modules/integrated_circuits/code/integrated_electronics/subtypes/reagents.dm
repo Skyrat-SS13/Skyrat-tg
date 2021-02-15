@@ -156,8 +156,6 @@
 								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
 			busy = TRUE
 			if(do_atom(src, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,null,0)))
-				var/fraction = min(transfer_amount/reagents.total_volume, 1)
-				reagents.reaction(L, INJECT, fraction)
 				reagents.trans_to(L, transfer_amount)
 				log_combat(src, L, "injected", addition="which had [contained]")
 				L.visible_message("<span class='danger'>[acting_object] injects [L] with its needle!</span>", \
@@ -355,10 +353,6 @@
 		return FALSE
 	var/obj/item/I = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
 	if(istype(I)&&(I.grind_results)&&check_target(I)&&(I.on_grind(src) != -1))
-		if(istype(I, /obj/item/reagent_containers))
-			var/obj/item/reagent_containers/p = I
-			if(p.prevent_grinding)
-				return FALSE
 		reagents.add_reagent_list(I.grind_results)
 		if(I.reagents)
 			I.reagents.trans_to(src, I.reagents.total_volume)
@@ -690,9 +684,6 @@
 		step_towards(W,my_target)
 		if(!W.reagents)
 			continue
-		W.reagents.reaction(get_turf(W))
-		for(var/A in get_turf(W))
-			W.reagents.reaction(A)
 		if(W.loc == my_target)
 			break
 	if(repetitions < 4)
@@ -743,7 +734,6 @@
 			activate_pin(3)
 			return
 		// Put the reagents on the floortile the assembly is on
-		reagents.reaction(get_turf(src))
 		reagents.clear_reagents()
 		push_data()
 		activate_pin(2)

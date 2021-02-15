@@ -100,8 +100,8 @@
 	var/multi = 1
 	var/lfwb =TRUE
 
-/obj/item/integrated_circuit/passive/power/chemical_cell/New()
-	..()
+/obj/item/integrated_circuit/passive/power/chemical_cell/Initialize()
+	. = ..()
 	create_reagents(volume, OPENCONTAINER)
 	extended_desc +="But no fuel can be compared with blood of living human."
 
@@ -110,10 +110,23 @@
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 	..()
+	
+/obj/item/integrated_circuit/passive/power/chemical_cell/create_reagents(max_vol, flags)
+	. = ..()
+	RegisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT), .proc/on_reagent_change)
+	RegisterSignal(reagents, COMSIG_PARENT_QDELETING, .proc/on_reagents_del)
 
-/obj/item/integrated_circuit/passive/power/chemical_cell/on_reagent_change(changetype)
+/// Handles properly detaching signal hooks.
+/obj/item/integrated_circuit/passive/power/chemical_cell/proc/on_reagents_del(datum/reagents/reagents)
+	SIGNAL_HANDLER
+	UnregisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT, COMSIG_PARENT_QDELETING))
+	return NONE
+
+/obj/item/integrated_circuit/passive/power/chemical_cell/proc/on_reagent_change(datum/reagents/holder, ...)
+	SIGNAL_HANDLER	
 	set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
 	push_data()
+	return NONE
 
 /obj/item/integrated_circuit/passive/power/chemical_cell/make_energy()
 	if(assembly)
