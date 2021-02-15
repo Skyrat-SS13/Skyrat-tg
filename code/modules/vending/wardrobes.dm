@@ -30,7 +30,8 @@
 					/obj/item/clothing/under/rank/security/officer/skirt = 3,
 					/obj/item/clothing/under/rank/security/officer/grey = 3,
 					/obj/item/clothing/under/pants/khaki = 3,
-					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
+					/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
+					/obj/item/clothing/under/utility/sec = 3)	//SKYRAT EDIT ADDITION
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
@@ -62,10 +63,13 @@
 					/obj/item/clothing/under/rank/medical/doctor/green = 4,
 					/obj/item/clothing/under/rank/medical/doctor/purple = 4,
 					/obj/item/clothing/under/rank/medical/doctor = 4,
+					/obj/item/clothing/under/utility/med = 4,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/utility/haz_white = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat = 4,
 					/obj/item/clothing/suit/toggle/labcoat/paramedic = 4,
 					/obj/item/clothing/shoes/sneakers/white = 4,
 					/obj/item/clothing/head/soft/paramedic = 4,
+					/obj/item/clothing/head/beret/job/med = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/apron/surgical = 4,
 					/obj/item/clothing/mask/surgical = 4)
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
@@ -87,10 +91,13 @@
 					/obj/item/clothing/suit/hooded/wintercoat/engineering = 3,
 					/obj/item/clothing/under/rank/engineering/engineer = 3,
 					/obj/item/clothing/under/rank/engineering/engineer/skirt = 3,
-					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT
+					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
+					/obj/item/clothing/under/utility/haz_green = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/shoes/workboots = 3,
+					/obj/item/clothing/head/beret/job/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/hardhat = 3,
 					/obj/item/clothing/head/hardhat/weldhat = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
@@ -113,6 +120,9 @@
 					/obj/item/clothing/suit/hooded/wintercoat/engineering/atmos = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician/skirt = 3,
+					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/shoes/sneakers/black = 3,
+					/obj/item/clothing/head/beret/job/atmos = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/shoes/sneakers/black = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/atmos_wardrobe
 	payment_department = ACCOUNT_ENG
@@ -130,6 +140,8 @@
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/cargo = 3,
 					/obj/item/clothing/under/rank/cargo/tech = 3,
 					/obj/item/clothing/under/rank/cargo/tech/skirt = 3,
+					/obj/item/clothing/under/misc/cargo_long = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/utility/cargo = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/shoes/sneakers/black = 3,
 					/obj/item/clothing/gloves/fingerless = 3,
 					/obj/item/clothing/head/soft = 3,
@@ -149,11 +161,13 @@
 	products = list(/obj/item/clothing/glasses/hud/diagnostic = 2,
 					/obj/item/clothing/under/rank/rnd/roboticist = 2,
 					/obj/item/clothing/under/rank/rnd/roboticist/skirt = 2,
+					/obj/item/clothing/under/utility/robo_sleek = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/roboticist = 2,
 					/obj/item/clothing/suit/hooded/wintercoat/science/robotics = 3,
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
+					/obj/item/clothing/head/beret/job/sci/robo = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/mask/bandana/skull = 2)
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2,
 					/obj/item/organ/tongue/robot = 2)
@@ -174,9 +188,11 @@
 					/obj/item/storage/backpack/satchel/tox = 3,
 					/obj/item/storage/backpack/duffelbag/toxins = 3,
 					/obj/item/clothing/head/beret/science = 3,
+					/obj/item/clothing/head/beret/job/sci = 3,	//SKYRAT EDIT ADDITION (alt-sprite)
 					/obj/item/clothing/suit/hooded/wintercoat/science = 3,
 					/obj/item/clothing/under/rank/rnd/scientist = 3,
 					/obj/item/clothing/under/rank/rnd/scientist/skirt = 3,
+					/obj/item/clothing/under/utility/sci = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/science = 3,
 					/obj/item/clothing/shoes/sneakers/white = 3,
 					/obj/item/radio/headset/headset_sci = 3,
@@ -407,6 +423,7 @@
 					/obj/item/clothing/under/rank/medical/chemist/skirt = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
+					/obj/item/clothing/head/beret/job/med/chem = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hooded/wintercoat/medical/chemistry = 2,
 					/obj/item/storage/backpack/chemistry = 2,
 					/obj/item/storage/backpack/satchel/chem = 2,
@@ -448,6 +465,7 @@
 					/obj/item/clothing/under/rank/medical/virologist/skirt = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/virologist = 2,
+					/obj/item/clothing/head/beret/job/med/viro = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 2,
 					/obj/item/clothing/mask/surgical = 2,
 					/obj/item/storage/backpack/virology = 2,
@@ -471,6 +489,8 @@
 					/obj/item/clothing/head/fedora/det_hat = 2,
 					/obj/item/clothing/under/rank/security/detective/grey = 2,
 					/obj/item/clothing/under/rank/security/detective/grey/skirt = 2,
+					/obj/item/clothing/under/rank/security/detective/undersuit = 2, // SKYRAT EDIT ADD
+					/obj/item/clothing/suit/det_bomber = 2, // SKYRAT EDIT ADD
 					/obj/item/clothing/accessory/waistcoat = 2,
 					/obj/item/clothing/shoes/laceup = 2,
 					/obj/item/clothing/suit/det_suit/grey = 1,
