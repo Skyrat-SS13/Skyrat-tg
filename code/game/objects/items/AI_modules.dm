@@ -464,9 +464,12 @@ AI MODULES
 /******************** Hacked AI Module ******************/
 
 /obj/item/ai_module/syndicate // This one doesn't inherit from ion boards because it doesn't call ..() in transmitInstructions. ~Miauw
-	name = "Hacked AI Module"
-	desc = "An AI Module for hacking additional laws to an AI."
+	name = "hacked circuitry" //SKYRAT CHANGE
+	desc = "A suspicious circuit board modified beyond recognition. It appears to be a module for bleeding edge technology." //SKYRAT CHANGE 
 	laws = list("")
+	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
+	special_desc_jobs = list("Scientist, Roboticist, Research Director, Cyborg, AI") //SKYRAT CHANGE
+	special_desc = "An AI law module hacked to upload priority laws." // Skyrat edit
 
 /obj/item/ai_module/syndicate/attack_self(mob/user)
 	var/targName = stripped_input(user, "Please enter a new law for the AI.", "Freeform Law Entry", laws[1], CONFIG_GET(number/max_law_len))
