@@ -114,7 +114,7 @@
 	var/brightness = get_pin_data(IC_INPUT, 2)
 
 	if(new_color && isnum_safe(brightness))
-		brightness = CLAMP(brightness, 0, 4)
+		brightness = clamp(brightness, 0, 4)
 		light_rgb = new_color
 		light_brightness = brightness
 
@@ -154,7 +154,7 @@
 		var/selected_sound = sounds[ID]
 		if(!selected_sound)
 			return
-		vol = CLAMP(vol ,0 , 100)
+		vol = clamp(vol ,0 , 100)
 		playsound(get_turf(src), selected_sound, vol, freq, -1)
 		var/atom/A = get_object()
 		A.investigate_log("played a sound ([selected_sound]) as [type].", INVESTIGATE_CIRCUIT)

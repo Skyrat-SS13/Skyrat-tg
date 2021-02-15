@@ -1,7 +1,7 @@
 /obj/item/integrated_circuit
 	name = "integrated circuit"
 	desc = "It's a tiny chip!  This one doesn't seem to do much, however."
-	icon = 'icons/obj/assemblies/electronic_components.dmi'
+	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_components.dmi'
 	icon_state = "template"
 	w_class = WEIGHT_CLASS_TINY
 	materials = list()				// To be filled later

@@ -52,7 +52,7 @@
 
 /obj/item/integrated_circuit/input/numberpad/ask_for_input(mob/user)
 	var/new_input = input(user, "Enter a number, please.",displayed_name) as null|num
-	if(isnum_safe(new_input) && user.IsAdvancedToolUser())
+	if(isnum_safe(new_input) && ISADVANCEDTOOLUSER(user))
 		set_pin_data(IC_OUTPUT, 1, new_input)
 		push_data()
 		activate_pin(1)
@@ -71,7 +71,7 @@
 
 /obj/item/integrated_circuit/input/textpad/ask_for_input(mob/user)
 	var/new_input = stripped_multiline_input(user, "Enter some words, please.",displayed_name)
-	if(istext(new_input) && user.IsAdvancedToolUser())
+	if(istext(new_input) && ISADVANCEDTOOLUSER(user))
 		set_pin_data(IC_OUTPUT, 1, new_input)
 		push_data()
 		activate_pin(1)
@@ -90,7 +90,7 @@
 
 /obj/item/integrated_circuit/input/colorpad/ask_for_input(mob/user)
 	var/new_color = input(user, "Enter a color, please.", "Color", "#ffffff") as color|null
-	if(new_color && user.IsAdvancedToolUser())
+	if(new_color && ISADVANCEDTOOLUSER(user))
 		set_pin_data(IC_OUTPUT, 1, new_color)
 		push_data()
 		activate_pin(1)
@@ -388,8 +388,8 @@
 		activate_pin(3)
 		return
 	var/turf/T = get_turf(assembly)
-	var/target_x = CLAMP(get_pin_data(IC_INPUT, 1), 0, world.maxx)
-	var/target_y = CLAMP(get_pin_data(IC_INPUT, 2), 0, world.maxy)
+	var/target_x = clamp(get_pin_data(IC_INPUT, 1), 0, world.maxx)
+	var/target_y = clamp(get_pin_data(IC_INPUT, 2), 0, world.maxy)
 	var/turf/A = locate(target_x, target_y, T.z)
 	set_pin_data(IC_OUTPUT, 1, null)
 	if(!A || !(A in view(T)))
@@ -464,8 +464,8 @@
 		activate_pin(3)
 		return
 	var/turf/T = get_turf(assembly)
-	var/target_x = CLAMP(get_pin_data(IC_INPUT, 1), 0, world.maxx)
-	var/target_y = CLAMP(get_pin_data(IC_INPUT, 2), 0, world.maxy)
+	var/target_x = clamp(get_pin_data(IC_INPUT, 1), 0, world.maxx)
+	var/target_y = clamp(get_pin_data(IC_INPUT, 2), 0, world.maxy)
 	var/turf/A = locate(target_x, target_y, T.z)
 	set_pin_data(IC_OUTPUT, 1, null)
 	if(!A || !(A in view(T)))
@@ -604,7 +604,7 @@
 	var/rad = get_pin_data(IC_INPUT, 2)
 
 	if(isnum_safe(rad))
-		rad = CLAMP(rad, 0, 8)
+		rad = clamp(rad, 0, 8)
 		radius = rad
 
 /obj/item/integrated_circuit/input/advanced_locator_list/do_work()
@@ -666,7 +666,7 @@
 /obj/item/integrated_circuit/input/advanced_locator/on_data_written()
 	var/rad = get_pin_data(IC_INPUT, 2)
 	if(isnum_safe(rad))
-		rad = CLAMP(rad, 0, 8)
+		rad = clamp(rad, 0, 8)
 		radius = rad
 
 /obj/item/integrated_circuit/input/advanced_locator/do_work()

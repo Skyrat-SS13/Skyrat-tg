@@ -3,7 +3,7 @@
 /obj/item/integrated_circuit_printer
 	name = "integrated circuit printer"
 	desc = "A portable(ish) machine made to print tiny modular circuitry out of iron."
-	icon = 'icons/obj/assemblies/electronic_tools.dmi'
+	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
 	icon_state = "circuit_printer"
 	w_class = WEIGHT_CLASS_BULKY
 	var/upgraded = FALSE		// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
@@ -336,7 +336,7 @@
 /obj/item/disk/integrated_circuit/upgrade
 	name = "integrated circuit printer upgrade disk"
 	desc = "Install this into your integrated circuit printer to enhance it."
-	icon = 'icons/obj/assemblies/electronic_tools.dmi'
+	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
 	icon_state = "upgrade_disk"
 	item_state = "card-id"
 	w_class = WEIGHT_CLASS_SMALL

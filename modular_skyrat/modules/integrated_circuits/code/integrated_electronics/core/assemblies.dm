@@ -6,7 +6,7 @@
 	obj_flags = CAN_BE_HIT | UNIQUE_RENAME
 	desc = "A case designed for building small electronics."
 	w_class = WEIGHT_CLASS_SMALL
-	icon = 'icons/obj/assemblies/electronic_setups.dmi'
+	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_setups.dmi'
 	icon_state = "setup_small"
 	item_flags = NOBLUDGEON
 	materials = list()		// To be filled later
@@ -59,7 +59,7 @@
 	else
 		to_chat(user, "<span class='notice'>The maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>")
 
-	if((isobserver(user) && ckeys_allowed_to_scan[user.ckey]) || IsAdminGhost(user))
+	if((isobserver(user) && ckeys_allowed_to_scan[user.ckey]) || isAdminGhostAI(user))
 		to_chat(user, "You can <a href='?src=[REF(src)];ghostscan=1'>scan</a> this circuit.")
 
 	for(var/obj/item/integrated_circuit/I in assembly_components)
@@ -297,7 +297,7 @@
 		return 1
 
 	if(href_list["ghostscan"])
-		if((isobserver(usr) && ckeys_allowed_to_scan[usr.ckey]) || IsAdminGhost(usr))
+		if((isobserver(usr) && ckeys_allowed_to_scan[usr.ckey]) || isAdminGhostAI(usr))
 			if(assembly_components.len)
 				var/saved = "On circuit printers with cloning enabled, you may use the code below to clone the circuit:<br><br><code>[SScircuit.save_electronic_assembly(src)]</code>"
 				usr << browse(saved, "window=circuit_scan;size=500x600;border=1;can_resize=1;can_close=1;can_minimize=1")
@@ -428,7 +428,7 @@
 	cut_overlays()
 	if(detail_color == COLOR_ASSEMBLY_BLACK) //Black colored overlay looks almost but not exactly like the base sprite, so just cut the overlay and avoid it looking kinda off.
 		return
-	var/mutable_appearance/detail_overlay = mutable_appearance('icons/obj/assemblies/electronic_setups.dmi', "[icon_state]-color")
+	var/mutable_appearance/detail_overlay = mutable_appearance('/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_setups.dmi', "[icon_state]-color")
 	detail_overlay.color = detail_color
 	add_overlay(detail_overlay)
 
@@ -896,6 +896,7 @@
 	icon_state = "setup_medium_med"
 	desc = "A case designed for building medium-sized electonics. This one resembles medical apparatus."
 
+/* SKYRAT PORT temp removal
 /obj/item/electronic_assembly/medium/gun
 	name = "type-e electronic mechanism"
 	icon_state = "setup_medium_gun"
@@ -904,6 +905,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	can_fire_equipped = TRUE
+*/
 
 /obj/item/electronic_assembly/medium/radio
 	name = "type-f electronic mechanism"

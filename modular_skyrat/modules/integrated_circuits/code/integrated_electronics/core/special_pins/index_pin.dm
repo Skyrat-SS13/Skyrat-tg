@@ -14,7 +14,7 @@
 		new_data = 0
 
 	if(isnum_safe(new_data))
-		data = CLAMP(round(new_data), 0, IC_MAX_LIST_LENGTH)
+		data = clamp(round(new_data), 0, IC_MAX_LIST_LENGTH)
 		holder.on_data_written()
 
 /datum/integrated_io/index/display_pin_type()

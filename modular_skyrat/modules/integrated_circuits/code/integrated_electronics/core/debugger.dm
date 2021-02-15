@@ -2,7 +2,7 @@
 	name = "circuit debugger"
 	desc = "This small tool allows one working with custom machinery to directly set data to a specific pin, useful for writing \
 	settings to specific circuits, or for debugging purposes.  It can also pulse activation pins."
-	icon = 'icons/obj/assemblies/electronic_tools.dmi'
+	icon = '/modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi'
 	icon_state = "debugger"
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
@@ -15,7 +15,7 @@
 
 /obj/item/integrated_electronics/debugger/attack_self(mob/user)
 	var/type_to_use = input("Please choose a type to use.","[src] type setting") as null|anything in list("string","number","ref","copy","null","id lock")
-	if(!user.IsAdvancedToolUser())
+	if(!ISADVANCEDTOOLUSER(user))
 		return
 
 	var/new_data = null
@@ -25,7 +25,7 @@
 			copy_values = FALSE
 			copy_id = FALSE
 			new_data = stripped_input(user, "Now type in a string.","[src] string writing", no_trim = TRUE)
-			if(istext(new_data) && user.IsAdvancedToolUser())
+			if(istext(new_data) && ISADVANCEDTOOLUSER(user))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to \"[new_data]\".</span>")
 		if("number")
@@ -33,7 +33,7 @@
 			copy_values = FALSE
 			copy_id = FALSE
 			new_data = input(user, "Now type in a number.","[src] number writing") as null|num
-			if(isnum_safe(new_data) && user.IsAdvancedToolUser())
+			if(isnum_safe(new_data) && ISADVANCEDTOOLUSER(user))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [new_data].</span>")
 		if("ref")
