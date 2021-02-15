@@ -20,7 +20,7 @@
 	qdel(src)
 
 /obj/item/grenade/flashbang/proc/bang(turf/T , mob/living/M)
-	if(M.stat == DEAD)	//They're dead!
+	if(M.stat == DEAD) //They're dead!
 		return
 	M.show_message("<span class='warning'>BANG</span>", MSG_AUDIBLE)
 	var/distance = max(0,get_dist(get_turf(src),T))
@@ -32,12 +32,19 @@
 		M.add_confusion(max(30/max(1,distance), 10))
 
 //Bang
+<<<<<<< HEAD
 	if(!distance || loc == M || loc == M.loc)	//Stop allahu akbarring rooms with this.
 		//M.Paralyze(20)  - SKYRAT EDIT REMOVAL - COMBAT
 		//M.Knockdown(200) - SKYRAT EDIT REMOVAL - COMBAT
 		M.StaminaKnockdown(40, TRUE, TRUE, knockdown_amt = 5 SECONDS)
 		//M.soundbang_act(1, 200, 10, 15) - SKYRAT EDIT REMOVAL - COMBAT
 		M.soundbang_act(2, 0, 10, 15)
+=======
+	if(!distance || loc == M || loc == M.loc) //Stop allahu akbarring rooms with this.
+		M.Paralyze(20)
+		M.Knockdown(200)
+		M.soundbang_act(1, 200, 10, 15)
+>>>>>>> 0f435d5dff0 (Remove hideous inline tab indentation, and bans it in contributing guidelines (#56912))
 	else
 		var/target_intensity = 1 //SKYRAT EDIT ADDITION - COMBAT
 		if(distance <= 1) // Adds more stun as to not prime n' pull (#45381)
@@ -91,7 +98,7 @@
 	qdel(src)
 
 /obj/item/grenade/stingbang/proc/pop(turf/T , mob/living/M)
-	if(M.stat == DEAD)	//They're dead!
+	if(M.stat == DEAD) //They're dead!
 		return
 	M.show_message("<span class='warning'>POP</span>", MSG_AUDIBLE)
 	var/distance = max(0,get_dist(get_turf(src),T))
