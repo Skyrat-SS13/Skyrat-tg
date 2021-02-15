@@ -51,3 +51,9 @@
 // SS circuits
 #define INIT_ORDER_CIRCUIT			15
 
+// For the injection circuit
+#define CIRCUIT_SYRINGE_DRAW 0
+#define CIRCUIT_SYRINGE_INJECT 1
+
+//Sets the max string size that can be put in for circuit cloning
+#define MAX_SIZE_CIRCUIT		15000

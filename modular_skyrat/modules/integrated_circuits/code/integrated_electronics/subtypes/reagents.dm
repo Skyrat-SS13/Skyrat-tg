@@ -5,20 +5,38 @@
 	resistance_flags = UNACIDABLE | FIRE_PROOF
 	cooldown_per_use = 10
 	var/volume = 0
+	var/reagent_flags = OPENCONTAINER
 
 /obj/item/integrated_circuit/reagent/Initialize()
 	. = ..()
 	if(volume)
-		create_reagents(volume, OPENCONTAINER)
+		create_reagents(volume, reagent_flags)
 		push_vol()
 
 /obj/item/integrated_circuit/reagent/proc/push_vol()
 	set_pin_data(IC_OUTPUT, 1, reagents.total_volume)
 	push_data()
 
+/obj/item/integrated_circuit/reagent/create_reagents(max_vol, flags)
+	. = ..()
+	RegisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT), .proc/on_reagent_change)
+	RegisterSignal(reagents, COMSIG_PARENT_QDELETING, .proc/on_reagents_del)
+
+/// Handles properly detaching signal hooks.
+/obj/item/integrated_circuit/reagent/proc/on_reagents_del(datum/reagents/reagents)
+	SIGNAL_HANDLER
+	UnregisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT, COMSIG_PARENT_QDELETING))
+	return NONE
+
+/obj/item/integrated_circuit/reagent/proc/on_reagent_change(datum/reagents/holder, ...)
+	SIGNAL_HANDLER	
+	push_vol()
+	return NONE
+
 // Hydroponics trays have no reagents holder and handle reagents in their own snowflakey way.
 // This is a dirty hack to make injecting reagents into them work.
 // TODO: refactor that.
+/* SKYRAT PORT -- TODO make it work with new hydro
 /obj/item/integrated_circuit/reagent/proc/inject_tray(obj/machinery/hydroponics/tray, atom/movable/source, amount)
 	var/atom/movable/acting_object = get_object()
 	var/list/trays = list(tray)
@@ -43,6 +61,7 @@
 
 		temp_reagents.clear_reagents()
 		qdel(temp_reagents)
+*/
 
 /obj/item/integrated_circuit/reagent/injector
 	name = "integrated hypo-injector"
@@ -76,20 +95,18 @@
 		)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 15
-	var/direction_mode = SYRINGE_INJECT
+	var/direction_mode = CIRCUIT_SYRINGE_INJECT
 	var/transfer_amount = 10
 	var/busy = FALSE
 
-/obj/item/integrated_circuit/reagent/injector/on_reagent_change(changetype)
-	push_vol()
 
 /obj/item/integrated_circuit/reagent/injector/on_data_written()
 	var/new_amount = get_pin_data(IC_INPUT, 2)
 	if(new_amount < 0)
 		new_amount = -new_amount
-		direction_mode = SYRINGE_DRAW
+		direction_mode = CIRCUIT_SYRINGE_DRAW
 	else
-		direction_mode = SYRINGE_INJECT
+		direction_mode = CIRCUIT_SYRINGE_INJECT
 	if(isnum_safe(new_amount))
 		new_amount = clamp(new_amount, 0, volume)
 		transfer_amount = new_amount
@@ -113,14 +130,15 @@
 		return
 
 	if(!AM.reagents)
-		if(istype(AM, /obj/machinery/hydroponics) && direction_mode == SYRINGE_INJECT && reagents.total_volume && transfer_amount)//injection into tray.
-			inject_tray(AM, src, transfer_amount)
-			activate_pin(2)
-			return
+		// SKYRAT PORT -- TODO make hydro work again
+		//if(istype(AM, /obj/machinery/hydroponics) && direction_mode == CIRCUIT_SYRINGE_INJECT && reagents.total_volume && transfer_amount)//injection into tray.
+			//inject_tray(AM, src, transfer_amount)
+			//activate_pin(2)
+			//return
 		activate_pin(3)
 		return
 
-	if(direction_mode == SYRINGE_INJECT)
+	if(direction_mode == CIRCUIT_SYRINGE_INJECT)
 		if(!reagents.total_volume || !AM.is_injectable() || AM.reagents.holder_full())
 			activate_pin(3)
 			return
@@ -153,7 +171,7 @@
 		else
 			reagents.trans_to(AM, transfer_amount)
 
-	if(direction_mode == SYRINGE_DRAW)
+	if(direction_mode == CIRCUIT_SYRINGE_DRAW)
 		if(reagents.total_volume >= reagents.maximum_volume)
 			acting_object.visible_message("[acting_object] tries to draw from [AM], but the injector is full.")
 			activate_pin(3)
@@ -208,16 +226,16 @@
 	activators = list("transfer reagents" = IC_PINTYPE_PULSE_IN, "on transfer" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/transfer_amount = 10
-	var/direction_mode = SYRINGE_INJECT
+	var/direction_mode = CIRCUIT_SYRINGE_INJECT
 	power_draw_per_use = 10
 
 /obj/item/integrated_circuit/reagent/pump/on_data_written()
 	var/new_amount = get_pin_data(IC_INPUT, 3)
 	if(new_amount < 0)
 		new_amount = -new_amount
-		direction_mode = SYRINGE_DRAW
+		direction_mode = CIRCUIT_SYRINGE_DRAW
 	else
-		direction_mode = SYRINGE_INJECT
+		direction_mode = CIRCUIT_SYRINGE_INJECT
 	if(isnum_safe(new_amount))
 		new_amount = clamp(new_amount, 0, 50)
 		transfer_amount = new_amount
@@ -242,9 +260,11 @@
 	if(!target.reagents)
 		// Hydroponics trays have no reagents holder and handle reagents in their own snowflakey way.
 		// This is a dirty hack to make injecting reagents into them work.
+		/* SKYRAT PORT -- hydro tray injecting disabled for now
 		if(istype(target, /obj/machinery/hydroponics) && source.reagents.total_volume)
 			inject_tray(target, source, transfer_amount)
 			activate_pin(2)
+		*/
 		return
 
 	if(!source.is_drainable() || !target.is_refillable())
@@ -277,9 +297,6 @@
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 
-/obj/item/integrated_circuit/reagent/storage/on_reagent_change(changetype)
-	push_vol()
-
 /obj/item/integrated_circuit/reagent/storage/big
 	name = "big reagent storage"
 	icon_state = "reagent_storage_big"
@@ -298,10 +315,7 @@
 
 	complexity = 8
 	spawn_flags = IC_SPAWN_RESEARCH
-
-/obj/item/integrated_circuit/reagent/storage/cryo/Initialize()
-	. = ..()
-	ENABLE_BITFIELD(reagents.flags, NO_REACT)
+	reagent_flags = OPENCONTAINER | NO_REACT
 
 /obj/item/integrated_circuit/reagent/storage/grinder
 	name = "reagent grinder"
@@ -456,16 +470,16 @@
 		)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	var/transfer_amount = 10
-	var/direction_mode = SYRINGE_INJECT
+	var/direction_mode = CIRCUIT_SYRINGE_INJECT
 	power_draw_per_use = 10
 
 /obj/item/integrated_circuit/reagent/filter/on_data_written()
 	var/new_amount = get_pin_data(IC_INPUT, 3)
 	if(new_amount < 0)
 		new_amount = -new_amount
-		direction_mode = SYRINGE_DRAW
+		direction_mode = CIRCUIT_SYRINGE_DRAW
 	else
-		direction_mode = SYRINGE_INJECT
+		direction_mode = CIRCUIT_SYRINGE_INJECT
 	if(isnum_safe(new_amount))
 		new_amount = clamp(new_amount, 0, 50)
 		transfer_amount = new_amount
@@ -568,11 +582,6 @@
 	var/smoke_radius = 5
 	var/notified = FALSE
 
-/obj/item/integrated_circuit/reagent/smoke/on_reagent_change(changetype)
-	//reset warning only if we have reagents now
-	if(changetype == ADD_REAGENT)
-		notified = FALSE
-	push_vol()
 /obj/item/integrated_circuit/reagent/smoke/do_work(ord)
 	switch(ord)
 		if(1)
@@ -626,9 +635,6 @@
 /obj/item/integrated_circuit/reagent/extinguisher/Initialize()
 	.=..()
 	set_pin_data(IC_OUTPUT,2, src)
-
-/obj/item/integrated_circuit/reagent/extinguisher/on_reagent_change(changetype)
-	push_vol()
 
 /obj/item/integrated_circuit/reagent/extinguisher/do_work()
 	//Check if enough volume
@@ -760,11 +766,6 @@
 			qdel(drainedchems)
 	push_data()
 	activate_pin(2)
-
-
-/obj/item/integrated_circuit/reagent/drain/on_reagent_change(changetype)
-	push_vol()
-
 
 // - Beaker Connector - //
 /obj/item/integrated_circuit/input/beaker_connector

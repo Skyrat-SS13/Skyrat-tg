@@ -231,9 +231,7 @@
 		"harvest"			= IC_PINTYPE_NUMBER,
 		"dead"			= IC_PINTYPE_NUMBER,
 		"plant health"			= IC_PINTYPE_NUMBER,
-		"self sustaining"		= IC_PINTYPE_NUMBER,
-		"using irrigation" 		= IC_PINTYPE_NUMBER,
-		"connected trays"		= IC_PINTYPE_LIST
+		"self sustaining"		= IC_PINTYPE_NUMBER
 	)
 	activators = list("scan" = IC_PINTYPE_PULSE_IN, "on scanned" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_RESEARCH
@@ -266,8 +264,6 @@
 		set_pin_data(IC_OUTPUT, 17, H.dead)
 		set_pin_data(IC_OUTPUT, 18, H.plant_health)
 		set_pin_data(IC_OUTPUT, 19, H.self_sustaining)
-		set_pin_data(IC_OUTPUT, 20, H.using_irrigation)
-		set_pin_data(IC_OUTPUT, 21, H.FindConnected())
 	push_data()
 	activate_pin(2)
 
@@ -1235,12 +1231,12 @@
 		activate_pin(3)
 		return
 
-	var/list/gases = air_contents.get_gases()
+	var/list/gases = air_contents.gases
 	var/list/gas_names = list()
 	var/list/gas_amounts = list()
 	for(var/id in gases)
-		var/name = GLOB.meta_gas_info[id][META_GAS_NAME]
-		var/amt = round(air_contents.get_moles(id), 0.001)
+		var/name = GLOB.meta_gas_names[id]
+		var/amt = round(gases[id], 0.001)
 		gas_names.Add(name)
 		gas_amounts.Add(amt)
 
@@ -1248,7 +1244,7 @@
 	set_pin_data(IC_OUTPUT, 2, gas_amounts)
 	set_pin_data(IC_OUTPUT, 3, round(air_contents.total_moles(), 0.001))
 	set_pin_data(IC_OUTPUT, 4, round(air_contents.return_pressure(), 0.001))
-	set_pin_data(IC_OUTPUT, 5, round(air_contents.return_temperature(), 0.001))
+	set_pin_data(IC_OUTPUT, 5, round(air_contents.temperature, 0.001))
 	set_pin_data(IC_OUTPUT, 6, round(air_contents.return_volume(), 0.001))
 	push_data()
 	activate_pin(2)
@@ -1277,7 +1273,7 @@
 	)
 
 /obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/living/user)
-	if(!istype(I, obj/item/card/data))
+	if(!istype(I, /obj/item/card/data))
 		return FALSE
 	var/obj/item/card/data/card = I
 	var/write_mode = get_pin_data(IC_INPUT, 3)

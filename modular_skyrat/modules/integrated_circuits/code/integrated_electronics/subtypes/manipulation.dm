@@ -1,6 +1,7 @@
 /obj/item/integrated_circuit/manipulation
 	category_text = "Manipulation"
 
+/* SKYRAT PORT -- Comments out weapon firing mechanism
 /obj/item/integrated_circuit/manipulation/weapon_firing
 	name = "weapon firing mechanism"
 	desc = "This somewhat complicated system allows one to slot in a gun, direct it towards a position, and remotely fire it."
@@ -137,6 +138,7 @@
 	A.fire()
 	log_attack("[assembly] [REF(assembly)] made by [assembly.creator] has fired [installed_gun].")
 	return A
+*/
 
 /obj/item/integrated_circuit/manipulation/locomotion
 	name = "locomotion circuit"
@@ -234,7 +236,7 @@
 			dt = clamp(detonation_time.data, 1, 12)*10
 		else
 			dt = 15
-		addtimer(CALLBACK(attached_grenade, /obj/item/grenade.proc/prime), dt)
+		addtimer(CALLBACK(attached_grenade, /obj/item/grenade.proc/detonate), dt)
 		var/atom/holder = loc
 		message_admins("activated a grenade assembly. Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")
 
@@ -387,7 +389,7 @@
 				drop(contents[1])
 
 	var/obj/item/AM = get_pin_data_as_type(IC_INPUT, 1, /obj/item)
-	if(!QDELETED(AM) && !istype(AM, /obj/item/electronic_assembly) && !istype(AM, /obj/item/transfer_valve) && !istype(AM, /obj/item/twohanded) && !istype(assembly.loc, /obj/item/implant/storage))
+	if(!QDELETED(AM) && !istype(AM, /obj/item/electronic_assembly) && !istype(AM, /obj/item/transfer_valve) && !istype(assembly.loc, /obj/item/implant/storage))
 		switch(mode)
 			if(1)
 				grab(AM)

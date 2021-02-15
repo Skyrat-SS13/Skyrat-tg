@@ -10,6 +10,7 @@
 	icon_state = "setup_small"
 	item_flags = NOBLUDGEON
 	datum_flags = DF_USE_TAG
+	var/materials
 	var/list/assembly_components = list()
 	var/list/ckeys_allowed_to_scan = list() // Players who built the circuit can scan it as a ghost.
 	var/max_components = IC_MAX_SIZE_BASE
@@ -82,6 +83,8 @@
 /obj/item/electronic_assembly/Initialize()
 	.=..()
 	START_PROCESSING(SScircuit, src)
+
+	materials = round((max_complexity + max_components) / 4) * SScircuit.cost_multiplier
 
 	//sets up diagnostic hud view
 	prepare_huds()

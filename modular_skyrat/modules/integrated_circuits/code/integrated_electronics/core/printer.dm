@@ -153,26 +153,24 @@
 	else
 		HTML += "None | Reset<br>"
 
-	if(CONFIG_GET(flag/ic_printing) || debug)
-		HTML += "Assembly cloning: [can_clone ? (fast_clone ? "Instant" : "Available") : "Unavailable"].<br>"
+	HTML += "Assembly cloning: [can_clone ? (fast_clone ? "Instant" : "Available") : "Unavailable"].<br>"
 
 	HTML += "Circuits available: [upgraded || debug ? "Advanced":"Regular"]."
 	if(!upgraded)
 		HTML += "<br>Crossed out circuits mean that the printer is not sufficiently upgraded to create that circuit."
 
 	HTML += "<hr>"
-	if((can_clone && CONFIG_GET(flag/ic_printing)) || debug)
-		HTML += "Here you can load script for your assembly.<br>"
-		if(!cloning)
-			HTML += " <A href='?src=[REF(src)];print=load'>Load Program</a> "
-		else
-			HTML += " Load Program"
-		if(!program)
-			HTML += " [fast_clone ? "Print" : "Begin Printing"] Assembly"
-		else if(cloning)
-			HTML += " <A href='?src=[REF(src)];print=cancel'>Cancel Print</a>"
-		else
-			HTML += " <A href='?src=[REF(src)];print=print'>[fast_clone ? "Print" : "Begin Printing"] Assembly</a>"
+	HTML += "Here you can load script for your assembly.<br>"
+	if(!cloning)
+		HTML += " <A href='?src=[REF(src)];print=load'>Load Program</a> "
+	else
+		HTML += " Load Program"
+	if(!program)
+		HTML += " [fast_clone ? "Print" : "Begin Printing"] Assembly"
+	else if(cloning)
+		HTML += " <A href='?src=[REF(src)];print=cancel'>Cancel Print</a>"
+	else
+		HTML += " <A href='?src=[REF(src)];print=print'>[fast_clone ? "Print" : "Begin Printing"] Assembly</a>"
 
 		HTML += "<br><hr>"
 	HTML += "Categories:"
@@ -226,7 +224,6 @@
 			var/obj/item/integrated_circuit/IC = SScircuit.cached_components[build_type]
 			cost = IC.materials[/datum/material/iron]
 		else if(!(build_type in SScircuit.circuit_fabricator_recipe_list["Tools"]))
-			log_href_exploit(usr)
 			return
 
 		var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
@@ -254,9 +251,11 @@
 		playsound(src, 'sound/items/jaws_pry.ogg', 50, TRUE)
 
 	if(href_list["print"])
+		/*
 		if(!CONFIG_GET(flag/ic_printing) && !debug)
 			to_chat(usr, "<span class='warning'>CentCom has disabled printing of custom circuitry due to recent allegations of copyright infringement.</span>")
 			return
+		*/
 		if(!can_clone) // Copying and printing ICs is cloning
 			to_chat(usr, "<span class='warning'>This printer does not have the cloning upgrade.</span>")
 			return
@@ -264,7 +263,7 @@
 			if("load")
 				if(cloning)
 					return
-				var/input = capped_multiline_input(usr, "Put your code there:", "loading", max_length = MAX_SIZE_CIRCUIT)
+				var/input = stripped_multiline_input(usr, "Put your code there:", "loading", max_length = MAX_SIZE_CIRCUIT)
 				if(!check_interactivity(usr) || cloning)
 					return
 				if(!input)
