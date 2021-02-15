@@ -505,7 +505,6 @@
 	diag_hud_set_circuitstat()
 	diag_hud_set_circuittracking()
 
-
 /obj/item/electronic_assembly/proc/try_remove_component(obj/item/integrated_circuit/IC, mob/user, silent)
 	if(!opened)
 		if(!silent)
