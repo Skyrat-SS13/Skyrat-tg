@@ -166,7 +166,7 @@
 
 /obj/item/clothing/under/misc/polysweater/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "FFF", "FFF"))
+	AddElement(/datum/element/polychromic, list("FFF"))
 
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"

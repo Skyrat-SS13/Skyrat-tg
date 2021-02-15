@@ -323,7 +323,7 @@
 /datum/loadout_item/uniform/sweater/polysweater
 	name = "Polychromic Commando Sweater"
 	path = /obj/item/clothing/under/misc/polysweater	
-	extra_info = LOADOUT_INFO_THREE_COLORS
+	extra_info = LOADOUT_INFO_ONE_COLOR
 	cost = 3
 
 /datum/loadout_item/uniform/sweater/keyholesweater
