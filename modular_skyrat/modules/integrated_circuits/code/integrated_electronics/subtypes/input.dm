@@ -1179,7 +1179,7 @@
 		return
 	if(H in view(T)) // This is a camera. It can't examine thngs,that it can't see.
 		for(var/I in 1 to mtypes.len)
-			var/amount = mt.materials[mtypes[I]]
+			var/amount = mt.materials
 			if(amount)
 				set_pin_data(IC_OUTPUT, I, amount)
 			else
