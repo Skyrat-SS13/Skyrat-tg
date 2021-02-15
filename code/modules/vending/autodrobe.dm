@@ -122,7 +122,20 @@
 					/obj/item/clothing/suit/changshan_blue = 1,
 					/obj/item/clothing/suit/cheongsam_red = 1,
 					/obj/item/clothing/suit/cheongsam_blue = 1,
-					/obj/item/gohei = 1)
+					/obj/item/gohei = 1,
+					/obj/item/clothing/under/costume/kimono = 1,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/under/costume/kimono/dark = 1, 
+					/obj/item/clothing/under/costume/kimono/sakura = 1, 
+					/obj/item/clothing/under/costume/kimono/fancy = 1, 
+					/obj/item/clothing/under/costume/kamishimo = 1, 
+					/obj/item/clothing/under/costume/vic_vest = 1, 
+					/obj/item/clothing/under/costume/vic_vest/red = 1, 
+					/obj/item/clothing/under/costume/vic_vest/blue = 1, 
+					/obj/item/clothing/under/costume/vic_vest/red_alt = 1, 
+					/obj/item/clothing/under/costume/vic_dress = 1, 
+					/obj/item/clothing/under/costume/vic_dress/red = 1, 
+					/obj/item/clothing/under/costume/dutch = 1)	//SKYRAT EDIT ADDITION END
+
 	contraband = list(/obj/item/clothing/suit/judgerobe = 1,
 					  /obj/item/clothing/head/powdered_wig = 1,
 					  /obj/item/gun/magic/wand/nothing = 2,

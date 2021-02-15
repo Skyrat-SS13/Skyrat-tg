@@ -9,6 +9,7 @@
 	permanent = FALSE
 	can_use_alias = TRUE
 	any_station_species = TRUE
+	excluded_gamemodes = list(/datum/game_mode/assaultops)
 
 /obj/effect/mob_spawn/human/assops_prisoner
 	name = "Syndicate Prisoner"
@@ -18,10 +19,12 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/prisoner
+	roundstart = FALSE
 	permanent = FALSE
 	death = FALSE
 	can_use_alias = TRUE
 	any_station_species = TRUE
+	excluded_gamemodes = list(/datum/game_mode/assaultops)
 
 /obj/effect/mob_spawn/human/syndicate/assops/prison_guard
 	name = "Syndicate Prison Guard"
@@ -29,6 +32,7 @@
 	flavour_text = "Your job is to keep the prisoners in check and ensure they do not cause trouble. Patrol the prison, DO NOT TAKE ITEMS FROM THE ARMORY."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
 	outfit = /datum/outfit/syndicate_empty/prison_guard
+	excluded_gamemodes = list(/datum/game_mode/assaultops)
 
 /datum/outfit/syndicate_empty/prison_guard
 	name = "Syndicate Prison Guard"
@@ -56,6 +60,8 @@
 	flavour_text = "Your job is to oversee facility operations and ensure a smooth running prison. You deal with executions and sentencing."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
 	outfit = /datum/outfit/syndicate_empty/prison_warden
+	excluded_gamemodes = list()
+
 
 /datum/outfit/syndicate_empty/prison_warden
 	name = "Syndicate Prison Warden"
