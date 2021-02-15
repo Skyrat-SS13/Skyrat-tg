@@ -1,4 +1,4 @@
-SUBSYSTEM_DEF(bluespace_locker)
+SUBSYSTEM_DEF(bluespace_locker) 
 	name = "Bluespace Locker"
 	flags = SS_NO_FIRE
 	var/obj/structure/closet/bluespace/internal/internal_locker = null
