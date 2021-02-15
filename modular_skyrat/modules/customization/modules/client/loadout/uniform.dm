@@ -161,11 +161,11 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
-/datum/loadout_item/uniform/suit/cybersleek
+/datum/loadout_item/uniform/suit/cybersleek	//Cyberpunk P.I. Outfit
 	name = "Sleek Modern Coat"
 	path = /obj/item/clothing/under/costume/cybersleek
 
-/datum/loadout_item/uniform/suit/cybersleek_long
+/datum/loadout_item/uniform/suit/cybersleek_long	//Alt of above
 	name = "Long Modern Coat"
 	path = /obj/item/clothing/under/costume/cybersleek/long
 

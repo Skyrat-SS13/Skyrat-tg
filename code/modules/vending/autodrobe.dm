@@ -134,10 +134,7 @@
 					/obj/item/clothing/under/costume/vic_vest/red_alt = 1, 
 					/obj/item/clothing/under/costume/vic_dress = 1, 
 					/obj/item/clothing/under/costume/vic_dress/red = 1, 
-					/obj/item/clothing/under/costume/dutch = 1,	//SKYRAT EDIT ADDITION END
-					/obj/item/clothing/head/cybergoggles = 2,	//SKYRAT EDIT ADDITION START - Cyberpunk PI Costume
-					/obj/item/clothing/under/costume/cybersleek = 1,
-					/obj/item/clothing/under/costume/cybersleek/long = 1)	//SKYRAT EDIT ADDITION END
+					/obj/item/clothing/under/costume/dutch = 1)	//SKYRAT EDIT ADDITION END
 
 	contraband = list(/obj/item/clothing/suit/judgerobe = 1,
 					  /obj/item/clothing/head/powdered_wig = 1,

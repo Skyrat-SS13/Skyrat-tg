@@ -45,7 +45,7 @@
 	icon_state = "cheongr"
 	body_parts_covered = CHEST|GROIN
 
-//Cyberpunk PI Costume - Sprites from https://github.com/VOREStation/VOREStation/commit/a23605c9fd39b7123218d56250f7aaaeaefd929c
+//Cyberpunk PI Costume - Sprites from Eris, slightly modified
 /obj/item/clothing/under/costume/cybersleek
 	name = "sleek modern coat"
 	desc = "A modern-styled coat typically worn on more urban planets, made with a neo-laminated fiber lining."
