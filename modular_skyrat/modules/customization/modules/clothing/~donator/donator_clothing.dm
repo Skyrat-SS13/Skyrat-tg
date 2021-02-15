@@ -494,24 +494,24 @@
 	icon_state = "zuliecap"
 	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/neck.dmi'
-	flags_inv = HIDEEARS|HIDEHAIR
+	flags_inv = null
 	mutant_variants = NONE
 
 //Donation reward for Kathrin Bailey / Floof Ball
-/obj/item/clothing/under/custom/lanese
-	name = "Lanese Dress"
+/obj/item/clothing/under/custom/lannese
+	name = "Lannese Dress"
 	desc = "An alien cultural garment for women, coming from a distant planet named Cantalan."
 	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
 	icon_state = "lanese"
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
-	inhand_icon_state = "lanese"
+	inhand_icon_state = "lannese"
 	can_adjust = TRUE
 	fitted = FEMALE_UNIFORM_TOP
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 
-/obj/item/clothing/under/custom/lanese/vambrace
+/obj/item/clothing/under/custom/lannese/vambrace
 	desc = "An alien cultural garment for women, coming from a distant planet named Cantalan. Shiny vambraces included!"
-	icon_state = "lanese_vambrace"
+	icon_state = "lannese_vambrace"
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET
