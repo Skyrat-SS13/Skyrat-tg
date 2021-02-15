@@ -23,8 +23,8 @@
 	var/absorbedcount = 0
 	var/trueabsorbs = 0//dna gained using absorb, not dna sting
 	var/chem_charges = 75 //SKYRAT EDIT CHANGE - ORIGINAL: 20
-	var/chem_storage = 150 //SKYRAT EDIT CHANGE - ORIGINAL: 75
-	var/chem_recharge_rate = 3 //SKYRAT EDIT CHANGE - ORIGINAL: 1
+	var/chem_storage = 125 //SKYRAT EDIT CHANGE - ORIGINAL: 75
+	var/chem_recharge_rate = 2 //SKYRAT EDIT CHANGE - ORIGINAL: 1
 	var/chem_recharge_slowdown = 0
 	var/sting_range = 2
 	var/geneticdamage = 0
@@ -33,7 +33,7 @@
 	var/islinking = FALSE
 	var/geneticpoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
 	var/total_geneticspoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
-	var/total_chem_storage = 150 //SKYRAT EDIT CHANGE - ORIGINAL: 75
+	var/total_chem_storage = 125 //SKYRAT EDIT CHANGE - ORIGINAL: 75
 	var/purchasedpowers = list()
 
 	var/mimicing = ""
