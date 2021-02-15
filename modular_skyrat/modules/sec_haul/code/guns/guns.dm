@@ -734,15 +734,17 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
+	fire_sound_volume = 75
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
 
 /obj/item/ammo_box/magazine/dmr
 	name = "dmr magazine (.557 Snider)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "dmr_mag"
+	icon_state = "dmr"
 	ammo_type = /obj/item/ammo_casing/b577
 	caliber = ".557 Snider"
 	max_ammo = 25
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
