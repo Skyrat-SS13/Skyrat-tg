@@ -62,8 +62,10 @@ SUBSYSTEM_DEF(events)
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
+//SKYRAT EDIT ADDITION
 	if(manual_mode)
 		return
+//SKYRAT EDIT END
 	var/gamemode = SSticker.mode.config_tag
 	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	// Only alive, non-AFK human players count towards this.
