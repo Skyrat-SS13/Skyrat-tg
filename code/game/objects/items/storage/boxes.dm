@@ -1,24 +1,24 @@
 /*
- *	Everything derived from the common cardboard box.
- *	Basically everything except the original is a kit (starts full).
+ * Everything derived from the common cardboard box.
+ * Basically everything except the original is a kit (starts full).
  *
- *	Contains:
- *		Empty box, starter boxes (survival/engineer),
- *		Latex glove and sterile mask boxes,
- *		Syringe, beaker, dna injector boxes,
- *		Blanks, flashbangs, and EMP grenade boxes,
- *		Tracking and chemical implant boxes,
- *		Prescription glasses and drinking glass boxes,
- *		Condiment bottle and silly cup boxes,
- *		Donkpocket and monkeycube boxes,
- *		ID and security PDA cart boxes,
- *		Handcuff, mousetrap, and pillbottle boxes,
- *		Snap-pops and matchboxes,
- *		Replacement light boxes.
- *		Action Figure Boxes
- *		Various paper bags.
+ * Contains:
+ * Empty box, starter boxes (survival/engineer),
+ * Latex glove and sterile mask boxes,
+ * Syringe, beaker, dna injector boxes,
+ * Blanks, flashbangs, and EMP grenade boxes,
+ * Tracking and chemical implant boxes,
+ * Prescription glasses and drinking glass boxes,
+ * Condiment bottle and silly cup boxes,
+ * Donkpocket and monkeycube boxes,
+ * ID and security PDA cart boxes,
+ * Handcuff, mousetrap, and pillbottle boxes,
+ * Snap-pops and matchboxes,
+ * Replacement light boxes.
+ * Action Figure Boxes
+ * Various paper bags.
  *
- *		For syndicate call-ins see uplink_kits.dm
+ * For syndicate call-ins see uplink_kits.dm
  */
 
 /obj/item/storage/box
@@ -137,6 +137,10 @@
 		new /obj/item/tank/internals/emergency_oxygen(src)
 	//SKYRAT EDIT END
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
+
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
@@ -552,7 +556,7 @@
 		new /obj/item/pda(src)
 	new /obj/item/cartridge/head(src)
 
-	var/newcart = pick(	/obj/item/cartridge/engineering,
+	var/newcart = pick( /obj/item/cartridge/engineering,
 						/obj/item/cartridge/security,
 						/obj/item/cartridge/medical,
 						/obj/item/cartridge/signal/toxins,
@@ -652,7 +656,7 @@
 
 /obj/item/storage/box/alienhandcuffs/PopulateContents()
 	for(var/i in 1 to 7)
-		new	/obj/item/restraints/handcuffs/alien(src)
+		new /obj/item/restraints/handcuffs/alien(src)
 
 /obj/item/storage/box/fakesyndiesuit
 	name = "boxed space suit and helmet"
@@ -851,6 +855,9 @@
 	//SKYRAT EDIT END
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
+		new /obj/item/flashlight/flare(src)
+		new /obj/item/radio/off(src)
 /obj/item/storage/box/rubbershot
 	name = "box of rubber shots"
 	desc = "A box full of rubber shots, designed for riot shotguns."
@@ -1076,7 +1083,7 @@
 	name = "box of materials"
 	illustration = "implant"
 
-/obj/item/storage/box/material/PopulateContents() 	//less uranium because radioactive
+/obj/item/storage/box/material/PopulateContents() //less uranium because radioactive
 	var/static/items_inside = list(
 		/obj/item/stack/sheet/iron/fifty=1,\
 		/obj/item/stack/sheet/glass/fifty=1,\

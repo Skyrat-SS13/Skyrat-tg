@@ -36,7 +36,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 /obj/item/ammo_casing/b6mm/ihdf
@@ -103,7 +103,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 /obj/item/ammo_casing/b9mm/ihdf
@@ -171,7 +171,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 /obj/item/ammo_casing/b10mm/ihdf
@@ -239,7 +239,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 
@@ -252,8 +252,9 @@
 /obj/projectile/bullet/advanced/b577
 	name = "577 bullet"
 	damage = 40
-	wound_bonus = 10
-	bare_wound_bonus = 15
+	wound_bonus = 15
+	bare_wound_bonus = 30
+	dismemberment = 15
 
 //SMARTGUN
 /obj/item/ammo_casing/smartgun

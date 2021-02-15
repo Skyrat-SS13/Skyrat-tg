@@ -103,7 +103,7 @@
 
 ////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
-	name = "\improper Armadyne PDH 'Osprey'"
+	name = "\improper Armadyne PDH-6H 'Osprey'"
 	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match command. It's chambered in 12mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
@@ -120,23 +120,23 @@
 	realistic = TRUE
 	armadyne = TRUE
 	can_flashlight = TRUE
-	emp_damageable = FALSE
+	emp_damageable = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt
-	name = "\improper Armadyne PDH 'Socom'"
-	desc = "A pristegious ballistics sidearm, from Armadyne's military division, normally given to Captains. It has a 3 round burst mode and uses 12mm."
+	name = "\improper Armadyne PDH-6C 'SOCOM'"
+	desc = "A prestigious 12mm sidearm normally seen in the hands of Sol special operation units due to its reliable and time-tested design. Now's one of those times that pays to be the strong, silent type."
 	icon_state = "pdh_alt"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
 	can_suppress = FALSE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/hpistol_fire.ogg'
-	burst_size = 3
-	fire_delay = 1
-	spread = 10
-	actions_types = list(/datum/action/item_action/toggle_firemode)
+	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
+	fire_delay = 8
+	fire_sound_volume = 30
+	spread = 1
 	realistic = TRUE
 	dirt_modifier = 0.1
 	can_flashlight = TRUE
+	emp_damageable = FALSE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh
 	name = "pdh handgun magazine (12mm)"
@@ -157,8 +157,8 @@
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
-	name = "\improper Armadyne PDH 'Corporate'"
-	desc = "A pristegious ballistics sidearm, from Armadyne's military division, normally given to Armadyne Corporate. It has a 3 round burst mode and uses .357."
+	name = "\improper Armadyne PDH-6M 'Corporate'"
+	desc = "A prestigious ballistic sidearm, from Armadyne's military division, normally given to corporate agents. It has a 3 round burst mode and uses .357 Magnum ammunition."
 	icon_state = "pdh_corpo"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
@@ -185,8 +185,8 @@
 
 ///////////////////////////PDH PEACEKEEPER
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
-	name = "\improper Armadyne PDH 'Peacekeeper'"
-	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match the peacekeeper theme."
+	name = "\improper Armadyne PDH-6B 'Peacekeeper'"
+	desc = "A modern ballistic sidearm, used primarily by law enforcement, however this one has had a paintjob to match the peacekeeper theme."
 	icon_state = "pdh_peacekeeper"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
@@ -714,30 +714,37 @@
 /////////////////DMR 40x32
 
 /obj/item/gun/ballistic/automatic/dmr
-	name = "\improper DMR 'Ripper' Gen-2" //TBA
-	desc = "An incredibly powerful rifle, with an internal stabalisation gymbal. It's chambered in .577 Snider."
+	name = "\improper Armadyne DMR 'Ripper' Gen-2"
+	desc = "An incredibly powerful autorifle, with an internal stabalisation gymbal. It's chambered in .577 Snider."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dmr.dmi'
 	icon_state = "dmr"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/dmr.dmi'
+	worn_icon_state = "dmr_worn"
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
+	inhand_icon_state = "dmr"
 	w_class = WEIGHT_CLASS_BULKY
-	inhand_icon_state = "arg"
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	mag_type = /obj/item/ammo_box/magazine/dmr
-	fire_delay = 2
+	fire_delay = 1.7
 	can_suppress = FALSE
-	burst_size = 2
+	burst_size = 3
 	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
+	fire_sound_volume = 60
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
 
 /obj/item/ammo_box/magazine/dmr
 	name = "dmr magazine (.557 Snider)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "dmr_mag"
+	icon_state = "dmr"
 	ammo_type = /obj/item/ammo_casing/b577
 	caliber = ".557 Snider"
-	max_ammo = 15
+	max_ammo = 25
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta

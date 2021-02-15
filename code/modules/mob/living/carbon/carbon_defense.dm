@@ -86,7 +86,7 @@
 				I.add_mob_blood(src)
 				var/turf/location = get_turf(src)
 				add_splatter_floor(location)
-				if(get_dist(user, src) <= 1)	//people with TK won't get smeared with blood
+				if(get_dist(user, src) <= 1) //people with TK won't get smeared with blood
 					user.add_mob_blood(src)
 				if(affecting.body_zone == BODY_ZONE_HEAD)
 					if(wear_mask)
@@ -184,7 +184,7 @@
 
 /mob/living/carbon/attack_paw(mob/living/carbon/human/M, modifiers)
 
-	if(can_inject(M, TRUE))
+	if(try_inject(M, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))
 		for(var/thing in diseases)
 			var/datum/disease/D = thing
 			if((D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN) && prob(85))
@@ -485,12 +485,16 @@
 		to_chat(M, "<span class='notice'>You shake [src] trying to pick [p_them()] up!</span>")
 		to_chat(src, "<span class='notice'>[M] shakes you to get you up!</span>")
 
-	//SKYRAT EDIT ADDITION BEGIN - EMOTES
+	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
 	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
-		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
-					"<span class='notice'>You boop [src] on the nose.</span>")
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
+		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
+			to_chat(src, "<span class='warning'>[M] boops you on your sensitive nose, sending you to the ground!</span>")
+			src.Knockdown(20)
+			src.apply_damage(30, STAMINA, BODY_ZONE_CHEST)
+		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
+		"<span class='notice'>You boop [src] on the nose.</span>")
 	//SKYRAT EDIT ADDITION END
 
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
