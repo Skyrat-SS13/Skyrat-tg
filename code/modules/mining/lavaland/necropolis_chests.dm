@@ -240,6 +240,9 @@
 		ADD_TRAIT(user, TRAIT_NODEATH, "memento_mori")
 		ADD_TRAIT(user, TRAIT_NOHARDCRIT, "memento_mori")
 		ADD_TRAIT(user, TRAIT_NOCRITDAMAGE, "memento_mori")
+		//Skyrat Edit. Once you put it on, it wont be coming back off, not without great effort.
+		ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+		//Skyrat Edit End
 		icon_state = "memento_mori_active"
 		active_owner = user
 
