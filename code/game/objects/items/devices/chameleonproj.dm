@@ -15,7 +15,7 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A projector used to seamlessly camouflage Syndicate infiltrators to appear as whatever the scanner touches." // Skyrat edit
+	special_desc = "A hardlight projector used to seamlessly camouflage Syndicate infiltrators to appear as whatever the scanner touches." // Skyrat edit
 	var/can_use = 1
 	var/obj/effect/dummy/chameleon/active_dummy = null
 	var/saved_appearance = null
