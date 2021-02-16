@@ -45,4 +45,3 @@
 		action_circuit = null // Will get deleted by qdel-ing the integrated_circuit assembly.
 		qdel(integrated_circuit)
 	return ..()
-    
