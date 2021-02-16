@@ -61,6 +61,12 @@
 	affected_bodyparts = CHEST
 	gendered = FALSE
 
+/datum/body_marking/other/weight
+	name = "Body Weight"
+	icon_state = "weight"
+	default_color = DEFAULT_PRIMARY
+	affected_bodyparts = CHEST
+
 /datum/body_marking/other/pilot
 	name = "Pilot"
 	icon_state = "pilot"
