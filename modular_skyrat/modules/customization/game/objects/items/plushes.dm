@@ -10,7 +10,7 @@
 	attack_verb_simple = list("peck", "peep")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
 
-	/obj/item/toy/plush/deer
+/obj/item/toy/plush/deer
 	name = "deer plushie"
 	desc = "An adorable stuffed toy that resembles a deer."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
