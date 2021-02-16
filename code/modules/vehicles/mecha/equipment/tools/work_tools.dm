@@ -107,7 +107,7 @@
 				"<span class='notice'>[chassis] pushes you aside.</span>")
 			return ..()
 
-		/*else if(modifiers && modifiers["right"] && iscarbon(M))//meme clamp here
+		/*else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M))//meme clamp here
 			if(!killer_clamp)
 				to_chat(source, "<span class='notice'>You longingly wish to tear [M]'s arms off.</span>")
 				return
@@ -228,9 +228,9 @@
 		return FALSE
 
 
-#define MODE_DECONSTRUCT	0
-#define MODE_WALL			1
-#define MODE_AIRLOCK		2
+#define MODE_DECONSTRUCT 0
+#define MODE_WALL 1
+#define MODE_AIRLOCK 2
 
 /obj/item/mecha_parts/mecha_equipment/rcd
 	name = "mounted RCD"
