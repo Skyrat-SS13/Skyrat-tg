@@ -18,7 +18,8 @@
 	inhand_icon_state = "plushie_deer"
 	attack_verb_continuous = list("headbutts", "boops", "bapps", "bumps")
 	attack_verb_simple = list("headbutt", "boop", "bap", "bump")
-	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1) //need to transfer the sound probably
+	//this ogg isn't working for some reason . the plush will use the basic squeak
+	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1) 
 
 /obj/item/toy/plush/fermis
 	name = "medcat plushie"
@@ -92,6 +93,7 @@
 	inhand_icon_state = "plushie_fox"
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
-	squeak_override = list('sound/machines/beep.ogg' = 1)
+		//this ogg isn't working for some reason . the plush will use the basic squeak
+	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1) 
 
 
