@@ -252,8 +252,9 @@
 /obj/projectile/bullet/advanced/b577
 	name = "577 bullet"
 	damage = 40
-	wound_bonus = 10
-	bare_wound_bonus = 15
+	wound_bonus = 15
+	bare_wound_bonus = 30
+	dismemberment = 15
 
 //SMARTGUN
 /obj/item/ammo_casing/smartgun

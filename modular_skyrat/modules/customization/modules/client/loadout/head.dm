@@ -176,6 +176,12 @@
 	path = /obj/item/clothing/head/beret/sec/navywarden
 	restricted_roles = list("Warden")
 
+/datum/loadout_item/head/job/cybergoggles	//Cyberpunk-P.I. Outfit
+	name = "Type-34C Forensics Headwear"
+	path = /obj/item/clothing/head/fedora/det_hat/cybergoggles
+	restricted_roles = list("Detective")
+	restricted_desc = "Detective"
+
 /datum/loadout_item/head/job/nursehat
 	name = "Nurse Hat"
 	path = /obj/item/clothing/head/nursehat
