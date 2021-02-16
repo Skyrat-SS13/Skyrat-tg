@@ -77,7 +77,7 @@
 	name = "modified ID card"
 	icon_state = "doorjack"
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell. Used often by Syndicate agents.// Skyrat edit
+	special_desc = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell. Used often by Syndicate agents."// Skyrat edit
 	var/type_whitelist //List of types
 	var/charges = 3
 	var/max_charges = 3
