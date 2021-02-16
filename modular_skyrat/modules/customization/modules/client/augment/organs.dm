@@ -14,11 +14,32 @@
 /datum/augment_item/organ/heart/cybernetic
 	name = "Cybernetic heart"
 	path = /obj/item/organ/heart/cybernetic
-
+a
 //LUNGS
 /datum/augment_item/organ/lungs
 	slot = AUGMENT_SLOT_LUNGS
 
+/datum/augment_item/organ/lungs/hot
+	name = "Lungs Adapted to Heat"
+	slot = AUGMENT_SLOT_LUNGS
+	path = /obj/item/organ/lungs/hot
+	cost = 1
+
+/datum/augment_item/organ/lungs/cold
+	name = "Cold-Adapted Lungs"
+	slot = AUGMENT_SLOT_LUNGS
+	path = /obj/item/organ/lungs/snow
+	cost = 1
+/datum/augment_item/organ/lungs/toxin
+	name = "Lungs Adapted to Toxins"
+	slot = AUGMENT_SLOT_LUNGS
+	path = /obj/item/organ/lungs/toxin
+	cost = 1
+/datum/augment_item/organ/lungs/big
+	name = "Low-Pressure Adapted Lungs"
+	slot = AUGMENT_SLOT_LUNGS
+	path = /obj/item/organ/lungs/oxy
+	cost = 1
 /datum/augment_item/organ/lungs/cybernetic
 	name = "Cybernetic lungs"
 	path = /obj/item/organ/lungs/cybernetic
