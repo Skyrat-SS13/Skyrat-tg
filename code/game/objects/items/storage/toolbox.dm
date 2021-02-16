@@ -150,12 +150,14 @@
 		new /obj/item/stack/cable_coil(src,MAXCOIL,pickedcolor)
 
 /obj/item/storage/toolbox/syndicate
-	name = "suspicious looking toolbox"
+	name = "tactical toolbox" //SKYRAT EDIT
 	icon_state = "syndicate"
 	inhand_icon_state = "toolbox_syndi"
 	force = 15
 	throwforce = 18
 	material_flags = NONE
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "A toolbox manufactured by the Syndicate containing extra tactical tools. Made of more robust materials than the average toolbox." // Skyrat edit
 
 /obj/item/storage/toolbox/syndicate/ComponentInitialize()
 	. = ..()
