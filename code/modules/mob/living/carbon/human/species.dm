@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	///To use MUTCOLOR with a fixed color that's independent of the mcolor feature in DNA.
 	var/fixed_mut_color = ""
 	///Special mutation that can be found in the genepool exclusively in this species. Dont leave empty or changing species will be a headache
-	var/inert_mutation 	= DWARFISM
+	var/inert_mutation = DWARFISM
 	///Used to set the mob's deathsound upon species change
 	var/deathsound
 	///Sounds to override barefeet walking
@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/New()
 
-	if(!limbs_id)	//if we havent set a limbs id to use, just use our own id
+	if(!limbs_id) //if we havent set a limbs id to use, just use our own id
 		limbs_id = id
 	..()
 
@@ -390,7 +390,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			var/obj/item/I = V
 			if(istype(I))
 				C.dropItemToGround(I)
-			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
+			else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
 				C.put_in_hands(new mutanthands())
 
 	for(var/X in inherent_traits)
@@ -749,7 +749,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	var/list/bodyparts_to_add = mutant_bodyparts.Copy()
 	var/list/relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
-	var/list/standing	= list()
+	var/list/standing = list()
 
 	H.remove_overlay(BODY_BEHIND_LAYER)
 	H.remove_overlay(BODY_ADJ_LAYER)
@@ -1294,7 +1294,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			addtimer(CALLBACK(src, .proc/go_bald, H), 50)
 
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
-	if(QDELETED(H))	//may be called from a timer
+	if(QDELETED(H)) //may be called from a timer
 		return
 	H.facial_hairstyle = "Shaved"
 	H.hairstyle = "Bald"
@@ -1529,13 +1529,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/bloody = FALSE
 	if(((I.damtype == BRUTE) && I.force && prob(25 + (I.force * 2))))
 		if(affecting.status == BODYPART_ORGANIC)
-			I.add_mob_blood(H)	//Make the weapon bloody, not the person.
-			if(prob(I.force * 2))	//blood spatter!
+			I.add_mob_blood(H) //Make the weapon bloody, not the person.
+			if(prob(I.force * 2)) //blood spatter!
 				bloody = TRUE
 				var/turf/location = H.loc
 				if(istype(location))
 					H.add_splatter_floor(location)
-				if(get_dist(user, H) <= 1)	//people with TK won't get smeared with blood
+				if(get_dist(user, H) <= 1) //people with TK won't get smeared with blood
 					user.add_mob_blood(H)
 
 		switch(hit_area)
@@ -1558,7 +1558,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						if(rev)
 							rev.remove_revolutionary(FALSE, user)
 
-				if(bloody)	//Apply blood
+				if(bloody) //Apply blood
 					if(H.wear_mask)
 						H.wear_mask.add_mob_blood(H)
 						H.update_inv_wear_mask()
@@ -2103,7 +2103,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/CanFly(mob/living/carbon/human/H)
 	if(H.stat || H.body_position == LYING_DOWN)
 		return FALSE
-	if(H.wear_suit && ((H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception))))	//Jumpsuits have tail holes, so it makes sense they have wing holes too
+	if(H.wear_suit && ((H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception)))) //Jumpsuits have tail holes, so it makes sense they have wing holes too
 		to_chat(H, "<span class='warning'>Your suit blocks your wings from extending!</span>")
 		return FALSE
 	var/turf/T = get_turf(H)

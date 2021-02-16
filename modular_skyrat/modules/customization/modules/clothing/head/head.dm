@@ -71,3 +71,12 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	name = "beret"
 	icon_state = "beret_white"
+
+//Cyberpunk PI Costume - Sprites from Eris
+/obj/item/clothing/head/fedora/det_hat/cybergoggles //Subset of detective fedora so that detectives dont have to sacrifice candycorns for style
+	name = "type-34C semi-enclosed headwear"
+	desc = "Civilian model of a popular helmet used by certain law enforcement agencies. It does not have any armor plating, but has a neo-laminated fiber lining."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "cyberpunkgoggle"
+	mutant_variants = NONE
