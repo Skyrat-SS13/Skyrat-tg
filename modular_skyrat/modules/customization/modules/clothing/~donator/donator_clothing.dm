@@ -235,6 +235,7 @@
 	pixel_y = 0
 	width = 28
 	height = 26
+	nooverlayupdates = TRUE
 	var/currentcolor = "#ffffff"
 	var/list/colors = list("Eraser" = "#ffffff")
 
@@ -279,9 +280,6 @@
 /obj/item/canvas/drawingtablet/get_paint_tool_color()
 	return currentcolor
 
-/obj/item/canvas/drawingtablet/update_overlays()
-	return // no bitch but this might be buggy as fuck
-
 /obj/item/canvas/drawingtablet/finalize()
 	return // no finalizing this piece
 
@@ -290,6 +288,13 @@
 		return
 	else
 		..()
+
+/obj/item/canvas/var/nooverlayupdates = FALSE
+
+/obj/item/canvas/update_overlays()
+	if(nooverlayupdates)
+		return
+	. = ..()
 
 /datum/action/item_action/dtselectcolor
 	name = "Change Color"
