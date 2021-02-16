@@ -150,7 +150,8 @@
 		"Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
 		"Peacekeeper" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
 		"Clown" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
-		"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec")
+		"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+		"Spider Clan" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_engi")
 		))
 		var/model_selection = show_radial_menu(R, R , model_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 		if(!model_selection)
@@ -855,6 +856,49 @@
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					else
 						return FALSE
+			if("Spider Clan")
+				var/static/list/ninja_icons = sortList(list(
+					"Saboteur" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_engi"),
+					"Medical" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_medical"),
+					"Assault" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_sec"),
+					"Heavy" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaheavy"),
+					"Miss m" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
+					"Spider" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaspider"),
+					"BootyBorg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "bootyninja"),
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "male_bootyninja")
+				))
+				var/borg_icon = show_radial_menu(R, R , ninja_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				if(!borg_icon)
+					return FALSE
+				switch(borg_icon)
+					if("Saboteur")
+						disguise = "ninja_engi"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Medical")
+						disguise = "ninja_medical"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Assault")
+						disguise = "ninja_sec"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Heavy")
+						disguise = "ninjaheavy"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Miss m")
+						disguise = "missm_ninja"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Spider")
+						disguise = "ninjaspider"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("BootyBorg")
+						disguise = "bootyninja"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Male Bootyborg")
+						disguise = "male_bootyninja"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					//Dogborgs
+					else
+						return FALSE
+
 			else
 				return FALSE
 

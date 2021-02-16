@@ -46,7 +46,9 @@
 		            /obj/item/storage/belt/fannypack = 3,
 		            /obj/item/storage/belt/fannypack/blue = 3,
 		            /obj/item/storage/belt/fannypack/red = 3,
+					/obj/item/clothing/under/misc/greyshirt = 3,	//SKYRAT EDIT ADDITION
 		            /obj/item/clothing/under/misc/overalls = 2,
+					/obj/item/clothing/under/misc/mechanic = 2,	//SKYRAT EDIT ADDITION
 		            /obj/item/clothing/under/pants/jeans = 2,
 		            /obj/item/clothing/under/pants/classicjeans = 2,
 		            /obj/item/clothing/under/pants/camo = 2,
@@ -70,6 +72,8 @@
 		            /obj/item/clothing/under/suit/white/skirt = 2,
 		            /obj/item/clothing/under/rank/captain/suit/skirt = 2,
 		            /obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt = 2,
+					/obj/item/clothing/under/dress/littleblack = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/dress/pinktutu = 2,	//SKYRAT EDIT ADDITION
 		            /obj/item/clothing/suit/jacket = 2,
 					/obj/item/clothing/suit/hooded/wintercoat = 2,
 		            /obj/item/clothing/suit/jacket/puffer/vest = 2,
@@ -109,7 +113,8 @@
 		            /obj/item/clothing/suit/apron/purple_bartender = 2,
 		            /obj/item/clothing/under/rank/civilian/bartender/purple = 2,
 		            /obj/item/clothing/suit/toggle/suspenders/blue = 2,
-		            /obj/item/clothing/suit/toggle/suspenders/gray = 2)
+		            /obj/item/clothing/suit/toggle/suspenders/gray = 2,
+					/obj/item/clothing/under/costume/bathrobe = 5)	//SKYRAT EDIT ADDITION
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 1,
 		              /obj/item/clothing/mask/balaclava = 1,
