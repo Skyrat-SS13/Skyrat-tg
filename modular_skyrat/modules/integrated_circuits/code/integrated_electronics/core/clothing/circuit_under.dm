@@ -3,9 +3,10 @@
 	name = "electronic jumpsuit"
 	desc = "It's a wearable case for electronics. This on is a black jumpsuit with wiring weaved into the fabric. \
 	Control-shift-click on this with an item in hand to use it on the integrated circuit."
+	can_adjust = FALSE
 	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/clothing/circuit_under.dmi'
 	icon_state = "circuitry"
-	worn_state = "circuitry"
+	worn_icon = 'modular_skyrat/modules/integrated_circuits/icons/mob/clothing/under/circuit_under.dmi'
 
 /obj/item/clothing/under/circuitry/Initialize()
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing)

@@ -6,7 +6,7 @@
 	Control-shift-click on this with an item in hand to use it on the integrated circuit." // Sadly it won't, or at least not yet.
 	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/clothing/circuit_glasses.dmi'
 	icon_state = "circuitry"
-	item_state = "night" // The on-mob sprite would be identical anyways.
+	worn_icon = 'modular_skyrat/modules/integrated_circuits/icons/mob/clothing/circuit_glasses.dmi'
 
 /obj/item/clothing/glasses/circuitry/Initialize()
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)

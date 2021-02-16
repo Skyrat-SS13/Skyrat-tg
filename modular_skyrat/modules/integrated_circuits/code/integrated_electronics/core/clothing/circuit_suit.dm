@@ -6,7 +6,8 @@
 	Control-shift-click on this with an item in hand to use it on the integrated circuit."
 	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/clothing/circuit_suit.dmi'
 	icon_state = "circuitry"
-	item_state = "circuitry"
+	worn_icon = 'modular_skyrat/modules/integrated_circuits/icons/mob/clothing/circuit_suit.dmi'
+	mutant_variants = FALSE
 
 /obj/item/clothing/suit/circuitry/Initialize()
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/large)
