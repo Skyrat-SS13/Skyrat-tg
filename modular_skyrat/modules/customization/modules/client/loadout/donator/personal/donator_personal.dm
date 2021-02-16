@@ -132,3 +132,9 @@
 	name = "Lannese Dress w/ Vambraces"
 	path = /obj/item/clothing/under/custom/lannese/vambrace
 	ckeywhitelist = list("kathrinbailey")
+
+//FOR DEV INTERNS!
+/datum/loadout_item/backpack/donator/intern_hat
+	name = "Intern Hat"
+	path = /obj/item/clothing/head/intern/developer
+	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz")
