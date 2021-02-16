@@ -11,4 +11,4 @@
 	display_name = "Integrated Electronic Clothing"
 	description = "The technology to produce various types of clothing with integrated electronics."
 	design_ids = list("integrated_circuit_uniform", "integrated_circuit_suit", "integrated_circuit_shoes", "integrated_circuit_head", "integrated_circuit_gloves", \
-						"integrated_circuit_gloves", "integrated_circuit_glasses", "integrated_circuit_ears")
+						"integrated_circuit_glasses", "integrated_circuit_ears")

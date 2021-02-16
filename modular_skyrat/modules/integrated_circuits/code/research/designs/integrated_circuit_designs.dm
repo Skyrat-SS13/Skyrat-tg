@@ -75,7 +75,7 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
-/datum/design/integrated_circuit_glasses
+/datum/design/integrated_circuit_ears
 	name = "Integrated Circuit Earpiece"
 	desc = "An earpiece that contains a built in electronic assembly. The wiring interferes with standard encryption keys."
 	id = "integrated_circuit_ears"

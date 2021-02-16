@@ -5,7 +5,9 @@
 
 /obj/item/electronic_assembly/clothing
 	name = "electronic clothing"
-	icon_state = "circuitry" // Needs to match the clothing's base icon_state.
+	icon_state = "circuitry"
+	worn_icon_state = "circuitry" // Needed since icon_state gets updated by the assembly
+ // Needs to match the clothing's base icon_state.
 	desc = "It's a case, for building machines attached to clothing."
 	w_class = WEIGHT_CLASS_SMALL
 	max_components = IC_MAX_SIZE_BASE
