@@ -1,9 +1,9 @@
 /* Cards
  * Contains:
- *		DATA CARD
- *		ID CARD
- *		FINGERPRINT CARD HOLDER
- *		FINGERPRINT CARD
+ * DATA CARD
+ * ID CARD
+ * FINGERPRINT CARD HOLDER
+ * FINGERPRINT CARD
  */
 
 
@@ -630,9 +630,46 @@ update_label()
 	var/goal = 0 //How far from freedom?
 	var/points = 0
 	registered_age = null
+	// SKYRAT EDIT: Start - Genpop IDs
+	access = list(ACCESS_ENTER_GENPOP)
+	var/sentence = 0	//When world.time is greater than this number, the card will have its ACCESS_ENTER_GENPOP access replaced with ACCESS_LEAVE_GENPOP the next time it's checked, unless this value is 0/null
+	var/crime= "\[REDACTED\]"
 
+/obj/item/card/id/prisoner/GetAccess()
+	if((sentence && world.time >= sentence) || (goal && points >= goal))
+		access = list(ACCESS_LEAVE_GENPOP)
+	return ..()
+
+/obj/item/card/id/prisoner/examine(mob/user)
+	. = ..()
+	if(sentence && world.time < sentence)
+		to_chat(user, "<span class='notice'>You're currently serving a sentence for [crime]. <b>[DisplayTimeText(sentence - world.time)]</b> left.</span>")
+	else if(goal)
+		to_chat(user, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
+	else if(!sentence)
+		to_chat(user, "<span class='warning'>You are currently serving a permanent sentence for [crime].</span>")
+	else
+		to_chat(user, "<span class='notice'>Your sentence is up! You're free!</span>")
+/*
 /obj/item/card/id/prisoner/attack_self(mob/user)
 	to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
+*/
+/obj/item/card/id/prisoner/process()
+	if(!sentence)
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(world.time >= sentence)
+		if(prob(90))
+			playsound(loc, 'sound/machines/ping.ogg', 50, 1)
+			if(isliving(loc))
+				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'> buzzes: You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+		else
+			playsound(loc, 'modular_skyrat/modules/mapping/code/quest_succeeded.ogg', 50, 1)
+			if(isliving(loc))
+				to_chat(loc, "<span class='boldnotice'>[src]</span><span class='notice'><b>Quest Completed!</b> <i>Serve your prison sentence</i>. You may now leave the prison through the turnstiles and return this ID to the locker to retrieve your belongings.</span>")
+		STOP_PROCESSING(SSobj, src)
+	return
+	// SKYRAT EDIT: End - Genpop IDs
 
 /obj/item/card/id/prisoner/one
 	name = "Prisoner #13-001"
