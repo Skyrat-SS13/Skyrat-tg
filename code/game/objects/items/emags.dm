@@ -16,7 +16,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "An specially modified ID card used to break machinery and disable safeties." // Skyrat edit
+	special_desc = "An specially modified ID card used to break machinery and disable safeties. Notoriously used by Syndicate agents." // Skyrat edit
 	var/prox_check = TRUE //If the emag requires you to be in range
 	var/type_blacklist //List of types that require a specialized emag
 
@@ -77,7 +77,7 @@
 	name = "modified ID card"
 	icon_state = "doorjack"
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell.// Skyrat edit
+	special_desc = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell. Used often by Syndicate agents.// Skyrat edit
 	var/type_whitelist //List of types
 	var/charges = 3
 	var/max_charges = 3
