@@ -3,7 +3,7 @@
 	var/voremode = FALSE
 
 /mob/living/carbon/proc/toggle_vore_mode()
-	if(SEND_SIGNAL(src, COMSIG_COMBAT_MODE_CHECK, COMBAT_MODE_TOGGLED))
+	if(combat_mode)
 		return FALSE //let's not override the main draw of the game these days
 	voremode = !voremode
 	var/obj/screen/voretoggle/T = locate() in hud_used?.static_inventory
