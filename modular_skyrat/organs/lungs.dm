@@ -51,7 +51,7 @@
 	safe_toxins_max = 27
 	safe_co2_max = 27
 
-	cold_message = "Your face is melting due to the freezing temperature!"
+	cold_message = "You can't stand the freezing cold with every breath you take!"
 	cold_level_1_threshold = 248
 	cold_level_2_threshold = 220
 	cold_level_3_threshold = 170
