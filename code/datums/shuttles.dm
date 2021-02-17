@@ -212,12 +212,15 @@
 	admin_notes = "For player punishment."
 	can_be_bought = FALSE
 
+//SKYRAT EDIT REMOVAL START
+/* Sidenote, this COULD be accomplished by setting these shuttles' can_be_bought to false. Buuuut this is faster.
 /datum/map_template/shuttle/emergency/russiafightpit
 	suffix = "russiafightpit"
 	name = "Mother Russia Bleeds"
 	description = "Dis is a high-quality shuttle, da. Many seats, lots of space, all equipment! Even includes entertainment! Such as lots to drink, and a fighting arena for drunk crew to have fun! If arena not fun enough, simply press button of releasing bears. Do not worry, bears trained not to break out of fighting pit, so totally safe so long as nobody stupid or drunk enough to leave door open. Try not to let asimov babycons ruin fun!"
 	admin_notes = "Includes a small variety of weapons. And bears. Only captain-access can release the bears. Bears won't smash the windows themselves, but they can escape if someone lets them."
 	credit_cost = CARGO_CRATE_VALUE * 10 // While the shuttle is rusted and poorly maintained, trained bears are costly.
+
 
 /datum/map_template/shuttle/emergency/meteor
 	suffix = "meteor"
@@ -234,6 +237,7 @@
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
 	credit_cost = CARGO_CRATE_VALUE * 250
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
+*/
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
@@ -243,6 +247,7 @@
 	admin_notes = "Due to the limited space for non paying crew, this shuttle may cause a riot."
 	credit_cost = CARGO_CRATE_VALUE * 20
 
+/*
 /datum/map_template/shuttle/emergency/medisim
 	suffix = "medisim"
 	name = "Medieval Reality Simulation Dome"
@@ -283,6 +288,7 @@
 /datum/map_template/arena
 	name = "The Arena"
 	mappath = "_maps/templates/the_arena.dmm"
+*/
 
 /datum/map_template/shuttle/emergency/birdboat
 	suffix = "birdboat"
@@ -303,6 +309,7 @@
 	admin_notes = "Has airlocks on both sides of the shuttle and will probably intersect near the front on some stations that build past departures."
 	credit_cost = CARGO_CRATE_VALUE * 5
 
+/*
 /datum/map_template/shuttle/emergency/clown
 	suffix = "clown"
 	name = "Snappop(tm)!"
@@ -313,6 +320,8 @@
 	Have a fun ride!"
 	admin_notes = "Brig is replaced by anchored greentext book surrounded by lavaland chasms, stationside door has been removed to prevent accidental dropping. No brig."
 	credit_cost = CARGO_CRATE_VALUE * 16
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/map_template/shuttle/emergency/cramped
 	suffix = "cramped"
