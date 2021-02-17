@@ -237,6 +237,7 @@
 	items_preserved.Cut()
 	owner.update_icons()
 
+/*NO FUCKING SOUNDS
 	if(!silent)
 		if(release_sound && !recent_sound)
 			if((world.time + NORMIE_HEARCHECK) > last_hearcheck)
@@ -246,7 +247,6 @@
 						continue
 					LAZYADD(hearing_mobs, H)
 				last_hearcheck = world.time
-/*NO FUCKING SOUNDS
 			for(var/mob/living/H in hearing_mobs)
 				if(H && H.client && (isturf(H.loc) || (H.loc != src.contents)))
 					var/sound/releasement = GLOB.pred_release_sounds[release_sound]
@@ -255,10 +255,10 @@
 					var/sound/releasement = GLOB.prey_release_sounds[release_sound]
 					SEND_SOUND(H,releasement)
 				recent_sound = TRUE
-*/ //NO SOUNDS!
-		owner.visible_message("<font color='green'><b>[owner] expels everything from their [lowertext(name)]!</b></font>")
 
+		owner.visible_message("<font color='green'><b>[owner] expels everything from their [lowertext(name)]!</b></font>")
 	return count
+*/ //nope
 
 // Release a specific atom from the contents of this belly into the owning mob's location.
 // If that location is another mob, the atom is transferred into whichever of its bellies the owning mob is in.
@@ -294,7 +294,7 @@
 
 	//Clean up our own business
 	owner.update_icons()
-
+/* no sound
 	if(!silent)
 		if(release_sound && !recent_sound)
 			if((world.time + NORMIE_HEARCHECK) > last_hearcheck)
@@ -304,7 +304,6 @@
 						continue
 					LAZYADD(hearing_mobs, H)
 					last_hearcheck = world.time
-/* nope, not happening
 			for(var/mob/living/H in hearing_mobs)
 				if(H && H.client && (isturf(H.loc) || (H.loc != src.contents)))
 					var/sound/releasement = GLOB.pred_release_sounds[release_sound]
@@ -360,6 +359,7 @@
 		return
 	content.forceMove(target)
 
+/*nope no sounds.
 	if(vore_sound && !recent_sound && !silent)
 		if((world.time + NORMIE_HEARCHECK) > last_hearcheck)
 			LAZYCLEARLIST(hearing_mobs)
@@ -368,7 +368,6 @@
 					continue
 				LAZYADD(hearing_mobs, H)
 				last_hearcheck = world.time
-/*NOPE
 		for(var/mob/living/H in hearing_mobs)
 			if(H && H.client && (isturf(H.loc) || (H.loc != src.contents)))
 				var/sound/eating = GLOB.pred_vore_sounds[vore_sound]
