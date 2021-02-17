@@ -17,8 +17,9 @@
 		/datum/gas/miasma=1.2,
 		/datum/gas/water_vapor=0.1,
 	)
-	restricted_chance = 30
-
+	//SKYRAT EDIT. REMOVE RESTRICTED GASES FROM SPAWNING
+	restricted_chance = 0
+	//EDIT END
 	minimum_pressure = HAZARD_LOW_PRESSURE + 10
 	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
 
@@ -35,15 +36,16 @@
 	normal_gases = list(
 		/datum/gas/oxygen=10,
 		/datum/gas/nitrogen=10,
-		/datum/gas/carbon_dioxide=1, //turned this down so it hopefully doesnt nuke our air alarms. Still dangerous.
+		/datum/gas/carbon_dioxide=10,
 	)
 	restricted_gases = list(
-		///datum/gas/plasma=0.1, removed temporarily to see if this helps
+		/datum/gas/plasma=0.1,
 		/datum/gas/water_vapor=0.1,
-		/datum/gas/miasma=0.1,//Changed so disease spam is no longer as high, also should reduce TIDI lag from miasma spamming diseases and other nasty stuff
+		/datum/gas/miasma=1.2,
 	)
-	restricted_chance = 0 //changed on maintainer request. Skyrat edit
-
+	//SKYRAT EDIT. REMOVES RESTRICTED GASES
+	restricted_chance = 0
+	//EDIT END
 	minimum_pressure = HAZARD_LOW_PRESSURE + 10
 	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
 
