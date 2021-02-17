@@ -72,7 +72,7 @@
 
 /obj/item/organ/lungs/oxy
 	name = "Low-Oxygen Adapted Lungs"
-	desc = "These lungs seem to be adapted to Low Oxygen environments. These lungs seem fairly less resistant to low temperatures and high ones."
+	desc = "A set of lungs adapted to lower-pressure environments, though more susceptible to extreme temperatures."
 	icon_state = "lungs_toxin"
 	safe_oxygen_min = 5
 
