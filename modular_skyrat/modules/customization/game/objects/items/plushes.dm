@@ -2,7 +2,7 @@
 
 /obj/item/toy/plush/borbplushie
 	name = "borb plushie"
-	desc = "An adorable stuffed toy that resembles a round , fluffy looking bird. Not to be mistaken for his friend , the birb plushie."
+	desc = "An adorable stuffed toy that resembles a round, fluffy looking bird. Not to be mistaken for his friend, the birb plushie."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_borb"
 	inhand_icon_state = "plushie_borb"
@@ -33,7 +33,7 @@
 
 /obj/item/toy/plush/sechound
 	name = "Sechound plushie"
-	desc = "An adorable stuffed toy of a SecHound , the trusty Nanotrasen sponsored security borg!."
+	desc = "An adorable stuffed toy of a SecHound, the trusty Nanotrasen sponsored security borg!"
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_securityk9"
 	inhand_icon_state = "plushie_securityk9"
@@ -54,7 +54,7 @@
 
 /obj/item/toy/plush/scrubpuppy
 	name = "Scrubpuppy plushie"
-	desc = "An adorable stuffed toy of a Scrubpuppy , the hard-working pup who keeps the station clean !."
+	desc = "An adorable stuffed toy of a Scrubpuppy, the hard-working pup who keeps the station clean!"
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_scrubpuppy"
 	inhand_icon_state = "plushie_scrubpuppy"
@@ -87,7 +87,7 @@
 
 /obj/item/toy/plush/mammal/fox
 	name = "Fox plushie"
-	desc = "An adorable stuffed toy of an Fox."
+	desc = "An adorable stuffed toy of a Fox."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_fox"
 	inhand_icon_state = "plushie_fox"
