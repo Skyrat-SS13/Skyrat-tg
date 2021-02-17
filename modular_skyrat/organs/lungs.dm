@@ -3,7 +3,7 @@
 	icon_state = "lungs"
 	desc = "A set of lungs adapted to low temperatures, though they are more susceptible to high temperatures"
 	icon_state = "lungs_cold"
-	cold_message = "Your face is freezing and a warm sensation of coldness is forming"
+	cold_message = "There is a slightly painful, though bearable, cold sensation with every breath you take"
 	cold_level_1_threshold = 208
 	cold_level_2_threshold = 200
 	cold_level_3_threshold = 170
