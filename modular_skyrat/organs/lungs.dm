@@ -1,7 +1,7 @@
 /obj/item/organ/lungs/cold
 	name = "Cold Adapted Lungs"
 	icon_state = "lungs"
-	desc = "These lungs seem to be adapted to low temperatures. These lungs seem fairly less resistant to high temperatures"
+	desc = "A set of lungs adapted to low temperatures, though they are more susceptible to high temperatures"
 	icon_state = "lungs_cold"
 	cold_message = "Your face is freezing and a warm sensation of coldness is forming"
 	cold_level_1_threshold = 208
