@@ -26,7 +26,7 @@
 	name = "Heat Adapted Lungs"
 	desc = "A set of lungs adapted to high temperatures, though they are more susceptible to low temperatures"
 	icon_state = "lungs_heat"
-	cold_message = "Your face is melting due to the freezing temperature!"
+	cold_message = "You can't stand the freezing cold with every breath you take!"
 	cold_level_1_threshold = 248
 	cold_level_2_threshold = 220
 	cold_level_3_threshold = 170
