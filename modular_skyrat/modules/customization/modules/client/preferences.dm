@@ -21,6 +21,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/client/parent
 	//doohickeys for savefiles
 	var/path
+	var/vr_path //SKYRAT EDIT: ADDITION
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
 	var/max_save_slots = 20
 
