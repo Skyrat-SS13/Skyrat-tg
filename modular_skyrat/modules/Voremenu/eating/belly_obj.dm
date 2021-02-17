@@ -179,6 +179,7 @@
 	//Generic entered message
 	to_chat(owner,"<span class='notice'>[thing] slides into your [lowertext(name)].</span>")
 
+/* I SAID NO SOUNDS
 	//Sound w/ antispam flag setting
 	if(vore_sound && !recent_sound)
 		if((world.time + NORMIE_HEARCHECK) > last_hearcheck)
@@ -196,6 +197,7 @@
 				var/sound/eating = GLOB.prey_vore_sounds[vore_sound]
 				SEND_SOUND(H,eating)
 			recent_sound = TRUE
+*///NO SOUNDS!!!!
 
 	if(L && desc)
 		to_chat(L, "<span class='notice'><B>[desc]</B></span>")
@@ -244,6 +246,7 @@
 						continue
 					LAZYADD(hearing_mobs, H)
 				last_hearcheck = world.time
+/*NO FUCKING SOUNDS
 			for(var/mob/living/H in hearing_mobs)
 				if(H && H.client && (isturf(H.loc) || (H.loc != src.contents)))
 					var/sound/releasement = GLOB.pred_release_sounds[release_sound]
@@ -252,6 +255,7 @@
 					var/sound/releasement = GLOB.prey_release_sounds[release_sound]
 					SEND_SOUND(H,releasement)
 				recent_sound = TRUE
+*/ //NO SOUNDS!
 		owner.visible_message("<font color='green'><b>[owner] expels everything from their [lowertext(name)]!</b></font>")
 
 	return count
@@ -300,6 +304,7 @@
 						continue
 					LAZYADD(hearing_mobs, H)
 					last_hearcheck = world.time
+/* nope, not happening
 			for(var/mob/living/H in hearing_mobs)
 				if(H && H.client && (isturf(H.loc) || (H.loc != src.contents)))
 					var/sound/releasement = GLOB.pred_release_sounds[release_sound]
@@ -308,6 +313,7 @@
 					var/sound/releasement = GLOB.prey_release_sounds[release_sound]
 					SEND_SOUND(H,releasement)
 				recent_sound = TRUE
+*/ //nope NOT HAPPENING
 		owner.visible_message("<font color='green'><b>[owner] expels [M] from their [lowertext(name)]!</b></font>")
 
 	return TRUE
@@ -362,6 +368,7 @@
 					continue
 				LAZYADD(hearing_mobs, H)
 				last_hearcheck = world.time
+/*NOPE
 		for(var/mob/living/H in hearing_mobs)
 			if(H && H.client && (isturf(H.loc) || (H.loc != src.contents)))
 				var/sound/eating = GLOB.pred_vore_sounds[vore_sound]
@@ -370,6 +377,7 @@
 				var/sound/eating = GLOB.prey_vore_sounds[vore_sound]
 				SEND_SOUND(H,eating)
 			recent_sound = TRUE
+*/ //NO SOUND
 
 	owner.updateVRPanel()
 	for(var/mob/living/M in contents)
