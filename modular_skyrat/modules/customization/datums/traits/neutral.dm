@@ -1,6 +1,6 @@
 /datum/quirk/hypnotic_stupor
 	name = "Hypnotic Stupor"
-	desc = "Your prone to episodes of extreme stupor that leaves you extremely suggestible."
+	desc = "You're prone to episodes of extreme stupor that leave you extremely suggestible."
 	value = 0
 	human_only = TRUE
 	gain_text = null // Handled by trauma.
