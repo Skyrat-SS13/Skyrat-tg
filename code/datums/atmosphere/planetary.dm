@@ -42,7 +42,7 @@
 		/datum/gas/water_vapor=0.1,
 		/datum/gas/miasma=0.1,//Changed so disease spam is no longer as high, also should reduce TIDI lag from miasma spamming diseases and other nasty stuff
 	)
-	restricted_chance = 20
+	restricted_chance = 0 //changed on maintainer request. Skyrat edit
 
 	minimum_pressure = HAZARD_LOW_PRESSURE + 10
 	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
