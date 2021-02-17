@@ -1,6 +1,6 @@
 /obj/item/chameleon
-	name = "illegal tech" //skyrat edit
-	desc = "A clandestine device with a scanner and large projector." // SKYRAT EDIT
+	name = "clandestine device" //skyrat edit
+	desc = "A vaguely insidious device with a scanner and large projector." // SKYRAT EDIT
 	icon = 'icons/obj/device.dmi'
 	icon_state = "shield0"
 	flags_1 = CONDUCT_1
