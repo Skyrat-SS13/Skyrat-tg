@@ -78,6 +78,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if (CONFIG_GET(flag/log_adminchat))
 		WRITE_LOG(GLOB.world_game_log, "ADMIN: DSAY: [text]")
 
+//SKYRAT EDIT: ADDITION START
+/proc/log_consent(text)
+	WRITE_LOG(GLOB.world_game_log, "CONSENT: [text]")
+//SKYRATE EDIT: ADDITION END
 
 /* All other items are public. */
 /proc/log_game(text)
