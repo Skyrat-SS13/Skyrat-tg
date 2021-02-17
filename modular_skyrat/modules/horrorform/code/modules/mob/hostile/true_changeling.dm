@@ -109,6 +109,8 @@
 		stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
 		stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
 		stored_changeling.status_flags &= ~GODMODE
+		var/datum/antagonist/changeling/C = mind.has_antag_datum(/datum/antagonist/changeling)
+		C.true_form_death = world.time
 		qdel(src)
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")

@@ -36,6 +36,8 @@
 	var/total_chem_storage = 125 //SKYRAT EDIT CHANGE - ORIGINAL: 75
 	var/purchasedpowers = list()
 
+	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
+
 	var/mimicing = ""
 	var/canrespec = FALSE//set to TRUE in absorb.dm
 	var/changeling_speak = 0

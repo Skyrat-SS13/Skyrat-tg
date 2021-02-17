@@ -17,6 +17,11 @@
 /datum/action/changeling/horror_form/sting_action(mob/living/carbon/human/user)
 	if(!user || user.notransform)
 		return FALSE
+	var/datum/antagonist/changeling/cdatum = user.mind.has_antag_datum(/datum/antagonist/changeling)
+	if(world.time - cdatum.true_form_death < 1800)
+		var/timeleft = (cdatum.true_form_death + 1800) - world.time
+		to_chat(user,"<span class='warning'>We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes.</span>")
+		return FALSE
 	user.visible_message("<span class='warning'>[user] grows into an abomination and lets out an awful scream!</span>", \
 						"<span class='userdanger'>We cast off our petty shell and enter our true form!</span>")
 	if(user.handcuffed)
