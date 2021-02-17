@@ -33,7 +33,7 @@
 
 /obj/item/toy/plush/sechound
 	name = "Sechound plushie"
-	desc = "An adorable stuffed toy of a SecHound."
+	desc = "An adorable stuffed toy of a SecHound , the trusty Nanotrasen sponsored security borg!."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_securityk9"
 	inhand_icon_state = "plushie_securityk9"
@@ -54,7 +54,7 @@
 
 /obj/item/toy/plush/scrubpuppy
 	name = "SecHound plushie"
-	desc = "An adorable stuffed toy of a scrubpuppy."
+	desc = "An adorable stuffed toy of a Scrubpuppy , the hard-working pup who keeps the stations clean !."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_scrubpuppy"
 	inhand_icon_state = "plushie_scrubpuppy"
@@ -87,12 +87,12 @@
 
 /obj/item/toy/plush/mammal/fox
 	name = "Fox plushie"
-	desc = "An adorable stuffed toy of a SecHound."
+	desc = "An adorable stuffed toy of an Fox."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_fox"
 	inhand_icon_state = "plushie_fox"
-	attack_verb_continuous = list("beeps", "boops", "pings")
-	attack_verb_simple = list("beep", "boop", "ping")
+	attack_verb_continuous = list("geckers", "boops","nuzzles")
+	attack_verb_simple = list("gecker", "boop", "nuzzle")
 		//this ogg isn't working for some reason . the plush will use the basic squeak
 	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1) 
 
