@@ -35,7 +35,7 @@
 	slot = AUGMENT_SLOT_LUNGS
 	path = /obj/item/organ/lungs/toxin
 	cost = 1
-/datum/augment_item/organ/lungs/big
+/datum/augment_item/organ/lungs/oxy
 	name = "Low-Pressure Adapted Lungs"
 	slot = AUGMENT_SLOT_LUNGS
 	path = /obj/item/organ/lungs/oxy
