@@ -53,8 +53,8 @@
 
 
 /obj/item/toy/plush/scrubpuppy
-	name = "SecHound plushie"
-	desc = "An adorable stuffed toy of a Scrubpuppy , the hard-working pup who keeps the stations clean !."
+	name = "Scrubpuppy plushie"
+	desc = "An adorable stuffed toy of a Scrubpuppy , the hard-working pup who keeps the station clean !."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_scrubpuppy"
 	inhand_icon_state = "plushie_scrubpuppy"
