@@ -80,3 +80,6 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "cyberpunkgoggle"
 	mutant_variants = NONE
+
+/obj/item/clothing/head/intern/developer
+	name = "\improper Intern beancap"
