@@ -343,14 +343,9 @@
 	var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 	if(!affecting)
 		affecting = get_bodypart(BODY_ZONE_CHEST)
-<<<<<<< HEAD
-	var/armor = run_armor_check(affecting, MELEE, armour_penetration = M.armour_penetration)
-	apply_damage(damage, M.melee_damage_type, affecting, armor, wound_bonus = M.wound_bonus, bare_wound_bonus = M.bare_wound_bonus, sharpness = M.sharpness)
-	apply_damage(damage*SIMPLE_MOB_TISSUE_DAMAGE_STAMINA_MULTIPLIER, STAMINA, affecting, armor) //SKYRAT EDIT ADDITION
-=======
 	var/armor = run_armor_check(affecting, MELEE, armour_penetration = user.armour_penetration)
 	apply_damage(damage, user.melee_damage_type, affecting, armor, wound_bonus = user.wound_bonus, bare_wound_bonus = user.bare_wound_bonus, sharpness = user.sharpness)
->>>>>>> 5c22a0cfc10 (Converts many proc overrides to properly use list/modifiers, lots of other smaller things (#56847))
+	apply_damage(damage*SIMPLE_MOB_TISSUE_DAMAGE_STAMINA_MULTIPLIER, STAMINA, affecting, armor) //SKYRAT EDIT ADDITION
 
 
 /mob/living/carbon/human/attack_slime(mob/living/simple_animal/slime/M)
