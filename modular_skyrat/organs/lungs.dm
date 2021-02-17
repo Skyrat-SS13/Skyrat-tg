@@ -76,7 +76,7 @@
 	icon_state = "lungs_toxin"
 	safe_oxygen_min = 5
 
-	hot_message = "You cant stand the searing heat on your face!"
+	hot_message = "You can't stand the searing heat with every breath you take!"
 	heat_level_1_threshold = 318
 	heat_level_2_threshold = 348
 	heat_level_3_threshold = 1000
