@@ -1,5 +1,4 @@
-/obj/item/organ/lungs/snow
-
+/obj/item/organ/lungs/cold
 	name = "Cold Adapted Lungs"
 	icon_state = "lungs"
 	desc = "These lungs seem to be adapted to low temperatures. These lungs seem fairly less resistant to high temperatures"
@@ -24,7 +23,6 @@
 
 
 /obj/item/organ/lungs/hot
-
 	name = "Heat Adapted Lungs"
 	desc = "These lungs seem to be adapted to high temperatures. These lungs seem fairly less resistant to low temperatures"
 	icon_state = "lungs_heat"
@@ -47,7 +45,6 @@
 	heat_damage_type = BURN
 
 /obj/item/organ/lungs/toxin
-
 	name = "Toxic Adapted Lungs"
 	desc = "These lungs seem to be adapted to Toxic environments. These lungs seem fairly less resistant to low temperatures and high ones."
 	icon_state = "lungs_toxin"
@@ -74,7 +71,6 @@
 	heat_damage_type = BURN
 
 /obj/item/organ/lungs/oxy
-
 	name = "Low-Oxygen Adapted Lungs"
 	desc = "These lungs seem to be adapted to Low Oxygen environments. These lungs seem fairly less resistant to low temperatures and high ones."
 	icon_state = "lungs_toxin"

@@ -28,7 +28,7 @@
 /datum/augment_item/organ/lungs/cold
 	name = "Cold-Adapted Lungs"
 	slot = AUGMENT_SLOT_LUNGS
-	path = /obj/item/organ/lungs/snow
+	path = /obj/item/organ/lungs/cold
 	cost = 1
 /datum/augment_item/organ/lungs/toxin
 	name = "Lungs Adapted to Toxins"
