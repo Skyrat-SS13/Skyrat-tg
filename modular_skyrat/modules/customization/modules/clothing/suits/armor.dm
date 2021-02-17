@@ -9,6 +9,7 @@
 	desc = "This jacket is for those special occasions when a security officer isn't required to wear their armor."
 	icon_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
+	mutant_variants = NONE
 
 // HEAD OF SECURITY
 
