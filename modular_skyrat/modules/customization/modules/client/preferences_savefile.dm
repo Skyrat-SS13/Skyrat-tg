@@ -147,6 +147,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//general preferences
 	READ_FILE(S["asaycolor"], asaycolor)
 	READ_FILE(S["ooccolor"], ooccolor)
+	READ_FILE(S["screentip_color"], screentip_color)
 	READ_FILE(S["lastchangelog"], lastchangelog)
 	READ_FILE(S["UI_style"], UI_style)
 	READ_FILE(S["hotkeys"], hotkeys)
