@@ -35,12 +35,12 @@
 	normal_gases = list(
 		/datum/gas/oxygen=10,
 		/datum/gas/nitrogen=10,
-		/datum/gas/carbon_dioxide=10,
+		/datum/gas/carbon_dioxide=1, //turned this down so it hopefully doesnt nuke our air alarms. Still dangerous.
 	)
 	restricted_gases = list(
-		/datum/gas/plasma=0.1,
+		///datum/gas/plasma=0.1, removed temporarily to see if this helps
 		/datum/gas/water_vapor=0.1,
-		/datum/gas/miasma=1.2,
+		/datum/gas/miasma=0.1,//Changed so disease spam is no longer as high, also should reduce TIDI lag from miasma spamming diseases and other nasty stuff
 	)
 	restricted_chance = 20
 
