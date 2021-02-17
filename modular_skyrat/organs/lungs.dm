@@ -35,7 +35,7 @@
 	cold_level_3_damage = COLD_GAS_DAMAGE_LEVEL_3
 	cold_damage_type = BURN
 
-	hot_message = "The warmth on your face is comfortable but still hurts!"
+	hot_message = "There is a slightly painful, though bearable, warmth with every breath you take"
 	heat_level_1_threshold = 373
 	heat_level_2_threshold = 473
 	heat_level_3_threshold = 523
