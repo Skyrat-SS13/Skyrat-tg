@@ -46,7 +46,7 @@
 
 /obj/item/organ/lungs/toxin
 	name = "Toxic Adapted Lungs"
-	desc = "These lungs seem to be adapted to Toxic environments. These lungs seem fairly less resistant to low temperatures and high ones."
+	desc = "A set of lungs adapted to toxic environments, though more susceptible to extreme temperatures."
 	icon_state = "lungs_toxin"
 	safe_toxins_max = 27
 	safe_co2_max = 27
