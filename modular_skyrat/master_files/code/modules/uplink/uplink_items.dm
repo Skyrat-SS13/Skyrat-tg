@@ -207,7 +207,7 @@
 	cost = 1
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
 
-/datum/uplink_item/suits/standard_armor
+/datum/uplink_item/suits/standard_armor_traitor
 	name = "Bulletproof Armor Vest"
 	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
 	item = /obj/item/clothing/suit/armor/bulletproof
