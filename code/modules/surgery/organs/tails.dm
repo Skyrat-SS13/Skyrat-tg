@@ -21,13 +21,9 @@
 	desc = "A severed cat tail. Who's wagging now?"
 	tail_type = "Cat"
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
-/obj/item/organ/tail/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
-=======
 /obj/item/organ/tail/cat/Insert(mob/living/carbon/human/H, special = FALSE, drop_if_replaced = TRUE)
->>>>>>> f9a140facbe (Tailed species now gain a negative moodlet for having their tail lost (#56959))
 	..()
 	if(istype(H))
 		var/default_part = H.dna.species.mutant_bodyparts["tail_human"]
@@ -99,13 +95,9 @@
 	tail_type = "Monkey"
 	icon_state = "severedmonkeytail"
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
-/obj/item/organ/tail/monkey/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
-=======
 /obj/item/organ/tail/monkey/Insert(mob/living/carbon/human/H, special = FALSE, drop_if_replaced = TRUE)
->>>>>>> f9a140facbe (Tailed species now gain a negative moodlet for having their tail lost (#56959))
 	..()
 	if(istype(H))
 		if(!("tail_monkey" in H.dna.species.mutant_bodyparts))
