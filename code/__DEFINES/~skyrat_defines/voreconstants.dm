@@ -13,6 +13,8 @@
 
 #define CHANNEL_PREYLOOP 1008
 
+#define FIRE_PRIORITY_VORE			5
+
 #define ENABLE_BITFIELD(variable, flag) (variable |= (flag))
 #define DISABLE_BITFIELD(variable, flag) (variable &= ~(flag))
 #define CHECK_BITFIELD(variable, flag) (variable & (flag))

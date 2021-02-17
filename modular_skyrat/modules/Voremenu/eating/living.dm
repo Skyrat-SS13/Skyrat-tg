@@ -237,6 +237,7 @@
 			SA.update_icons()
 
 	//You're in a dogborg!
+	/*Yeah fuck this I'll do it later
 	else if(istype(loc, /obj/item/dogborg/sleeper))
 		var/obj/item/dogborg/sleeper/belly = loc //The belly!
 
@@ -249,7 +250,7 @@
 		log_consent("[src] used OOC escape from a dogborg sleeper.")
 	else
 		to_chat(src,"<span class='alert'>You aren't inside anyone, though, is the thing.</span>")
-
+	*/
 /mob/living/proc/copy_to_prefs_vr()
 	if(!client || !client.prefs)
 		to_chat(src,"<span class='warning'>You attempted to save your vore prefs but somehow you're in this character without a client.prefs variable. Tell a dev.</span>")
@@ -317,9 +318,8 @@
 /mob/living/carbon/human/show_pudge()
 	//A uniform could hide it.
 	if(istype(w_uniform,/obj/item/clothing))
-		var/obj/item/clothing/under = w_uniform
-		if(under.hides_bulges)
-			return FALSE
+		//if(under.hides_bulges) I DON'T KNOW WHERE THIS IS DEFINED AAAAAAA
+		return FALSE
 
 	//We return as soon as we find one, no need for 'else' really.
 	if(istype(wear_suit,/obj/item/clothing))

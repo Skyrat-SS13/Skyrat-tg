@@ -472,7 +472,6 @@
 		var/new_desc = html_encode(input(usr,"Belly Description ([BELLIES_DESC_MAX] char limit):","New Description",selected.desc) as message|null)
 
 		if(new_desc)
-			new_desc = readd_quotes(new_desc)
 			if(length(new_desc) > BELLIES_DESC_MAX)
 				alert("Entered belly desc too long. [BELLIES_DESC_MAX] character limit.","Error")
 				return FALSE
@@ -680,7 +679,6 @@
 		if(!new_flavor)
 			return FALSE
 
-		new_flavor = readd_quotes(new_flavor)
 		if(length(new_flavor) > MAX_TASTE_LEN)
 			alert("Entered flavor/taste text too long. [MAX_TASTE_LEN] character limit.","Error!")
 			return FALSE
