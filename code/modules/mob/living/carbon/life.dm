@@ -39,6 +39,7 @@
 	//Updates the number of stored chemicals for powers
 	handle_changeling()
 
+<<<<<<< HEAD
 	if(staminaloss) //SKYRAT EDIT ADDITION bEGIN
 		//Stamina regeneration: Regens faster, the more health you have, and the more staminaloss you have
 		var/flat = STAMINA_STATIC_REGEN_FLAT
@@ -61,6 +62,12 @@
 				if(STAMINA_THRESHOLD_MESSAGE_OHGOD to INFINITY)
 					to_chat(src, "<span class='warning'>You feel fatigued!</span>")
 					//SKYRAT EDIT END
+=======
+	if(mind)
+		for(var/key in mind.addiction_points)
+			var/datum/addiction/addiction = SSaddiction.all_addictions[key]
+			addiction.process_addiction(src)
+>>>>>>> ef80ed19352 (Addiction rework (#56923))
 	if(stat != DEAD)
 		return 1
 
