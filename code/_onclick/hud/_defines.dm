@@ -60,6 +60,7 @@
 #define ui_building "EAST-4:22,SOUTH:21"
 #define ui_language_menu "EAST-4:6,SOUTH:21"
 #define ui_skill_menu "EAST-4:22,SOUTH:5"
+#define ui_voremode	"EAST-5:20,SOUTH:5" //SKYRAT EDIT: addition
 
 //Upper-middle right (alerts)
 #define ui_alert1 "EAST-1:28,CENTER+5:27"
@@ -177,3 +178,5 @@
 #define ui_ghost_mafia "SOUTH: 6, CENTER+2:24"
 
 #define ui_wanted_lvl "NORTH,11"
+
+#define ui_boxvore	"EAST-5:22,SOUTH+1:6"

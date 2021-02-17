@@ -1,1 +1,2 @@
-#define MAX_FLAVOR_LEN			4096		//double the maximum message length.
+#define MAX_FLAVOR_LEN			4096 //double the maximum message length.
+#define MAX_TASTE_LEN			40 //lick... vore... ew...

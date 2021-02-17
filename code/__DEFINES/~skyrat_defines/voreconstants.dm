@@ -9,8 +9,13 @@
 
 #define EATING_NOISES		(1<<1)
 #define DIGESTION_NOISES	(1<<2)
+#define NORMIE_HEARCHECK 4
 
 #define CHANNEL_PREYLOOP 1008
+
+#define ENABLE_BITFIELD(variable, flag) (variable |= (flag))
+#define DISABLE_BITFIELD(variable, flag) (variable &= ~(flag))
+#define CHECK_BITFIELD(variable, flag) (variable & (flag))
 
 #define DIGESTABLE 		(1<<0)
 #define SHOW_VORE_PREFS (1<<1)
