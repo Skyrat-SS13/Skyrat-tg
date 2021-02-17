@@ -13,6 +13,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
 	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_BULKY
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
 	foldable = FALSE
