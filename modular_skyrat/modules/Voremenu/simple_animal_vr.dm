@@ -54,7 +54,7 @@
 		return
 	if(!vore_active || CHECK_BITFIELD(vore_flags, NO_VORE)) //If it can't vore, let's not give it a stomach.
 		return
-	if(vore_active && !IsAdvancedToolUser()) //vore active, but doesn't have thumbs to grab people with.
+	if(vore_active && !ISADVANCEDTOOLUSER(src)) //vore active, but doesn't have thumbs to grab people with.
 		verbs |= /mob/living/simple_animal/proc/animal_nom
 
 /mob/living/simple_animal/lazy_init_belly()
