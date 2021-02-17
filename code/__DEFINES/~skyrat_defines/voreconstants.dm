@@ -47,6 +47,7 @@ GLOBAL_LIST_INIT(player_sizes_list, list("Macro" = SIZESCALE_HUGE, "Big" = SIZES
 // Edited to make the new travis check go away
 */
 
+/* CRAB DANCE NO VORE SOUNDS NO VORE SOUNDS CRAB DANCE
 GLOBAL_LIST_INIT(pred_vore_sounds, list(
 		"Gulp" = 'sound/vore/pred/swallow_01.ogg',
 		"Swallow" = 'sound/vore/pred/swallow_02.ogg',
@@ -110,3 +111,4 @@ GLOBAL_LIST_INIT(prey_release_sounds, list(
 		"Splatter" = 'sound/effects/splat.ogg',
 		"None" = null
 		))
+*/
