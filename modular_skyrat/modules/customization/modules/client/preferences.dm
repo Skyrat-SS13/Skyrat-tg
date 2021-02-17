@@ -154,6 +154,15 @@ GLOBAL_LIST_INIT(food, list(
 
 	var/action_buttons_screen_locs = list()
 
+	//bad stuff
+	var/vore_flags = 0
+	var/list/belly_prefs = list()
+	var/vore_taste = "nothing in particular"
+	var/toggleeatingnoise = TRUE
+	var/toggledigestionnoise = TRUE
+	var/hound_sleeper = TRUE
+	var/cit_toggles = TOGGLES_CITADEL
+
 	///This var stores the amount of points the owner will get for making it out alive.
 	var/hardcore_survival_score = 0
 

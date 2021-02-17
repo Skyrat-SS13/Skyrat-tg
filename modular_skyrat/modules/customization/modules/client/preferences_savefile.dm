@@ -84,6 +84,39 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			LAZYADD(key_bindings["Ctrl"], "block_movement")
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
+
+	if(current_version < 26)
+		var/vr_path = "data/player_saves/[parent.ckey[1]]/[parent.ckey]/vore/character[default_slot].json"
+		if(fexists(vr_path))
+			var/list/json_from_file = json_decode(file2text(vr_path))
+			if(json_from_file)
+				if(json_from_file["digestable"])
+					ENABLE_BITFIELD(vore_flags,DIGESTABLE)
+				if(json_from_file["devourable"])
+					ENABLE_BITFIELD(vore_flags,DEVOURABLE)
+				if(json_from_file["feeding"])
+					ENABLE_BITFIELD(vore_flags,FEEDING)
+				if(json_from_file["lickable"])
+					ENABLE_BITFIELD(vore_flags,LICKABLE)
+				belly_prefs = json_from_file["belly_prefs"]
+				vore_taste = json_from_file["vore_taste"]
+	if(current_version < 29)
+		var/digestable
+		var/devourable
+		var/feeding
+		var/lickable
+		S["digestable"]						>> digestable
+		S["devourable"]						>> devourable
+		S["feeding"]						>> feeding
+		S["lickable"]						>> lickable
+		if(digestable)
+			ENABLE_BITFIELD(vore_flags,DIGESTABLE)
+		if(devourable)
+			ENABLE_BITFIELD(vore_flags,DEVOURABLE)
+		if(feeding)
+			ENABLE_BITFIELD(vore_flags,FEEDING)
+		if(lickable)
+			ENABLE_BITFIELD(vore_flags,LICKABLE)
 	return
 
 /// checks through keybindings for outdated unbound keys and updates them
@@ -128,6 +161,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(!ckey)
 		return
 	path = "data/player_saves/[ckey[1]]/[ckey]/[filename]"
+	vr_path = "data/player_saves/[ckey[1]]/[ckey]/vore"
 
 /datum/preferences/proc/load_preferences()
 	if(!path)

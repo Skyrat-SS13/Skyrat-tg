@@ -63,6 +63,7 @@
 		client.perspective = EYE_PERSPECTIVE
 		client.eye = card
 	var/turf/T = drop_location()
+	release_vore_contents() //SKYRAT EDIT: ADDITION
 	card.forceMove(T)
 	forceMove(card)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, PAI_FOLDED)

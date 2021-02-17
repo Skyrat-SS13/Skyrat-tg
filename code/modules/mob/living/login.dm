@@ -28,6 +28,11 @@
 	if(ranged_ability)
 		ranged_ability.add_ranged_ability(src, "<span class='notice'>You currently have <b>[ranged_ability]</b> active!</span>")
 
+//SKYRAT EDIT: ADDITION START
+	if((vore_flags & VORE_INIT) && !(vore_flags & VOREPREF_INIT)) //Vore's been initialized, voreprefs haven't. If this triggers then that means that voreprefs failed to load due to the client being missing.
+		copy_from_prefs_vr()
+//SKYRAT EDIT: Addition end
+
 	var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 	if(changeling)
 		changeling.regain_powers()
