@@ -85,7 +85,7 @@
 	heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_damage_type = BURN
 
-	cold_message = "Your face is melting due to the freezing temperature!"
+	cold_message = "You can't stand the freezing cold with every breath you take!"
 	cold_level_1_threshold = 248
 	cold_level_2_threshold = 220
 	cold_level_3_threshold = 170
