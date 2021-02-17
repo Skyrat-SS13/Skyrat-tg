@@ -434,7 +434,6 @@
 			raw_list.Cut(i,i)
 			testing("[owner] tried to set [lowertext(name)] with >121 or <10 char message")
 		else
-			raw_list[i] = readd_quotes(raw_list[i])
 			//Also fix % sign for var replacement
 			raw_list[i] = replacetext(raw_list[i],"&#37;","%")
 

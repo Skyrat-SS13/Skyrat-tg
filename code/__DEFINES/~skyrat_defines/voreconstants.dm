@@ -7,13 +7,15 @@
 #define DM_ABSORB "Absorb"
 #define DM_UNABSORB "Un-absorb"
 
-#define EATING_NOISES		(1<<1)
-#define DIGESTION_NOISES	(1<<2)
+#define EATING_NOISES (1<<1)
+#define DIGESTION_NOISES (1<<2)
 #define NORMIE_HEARCHECK 4
 
 #define CHANNEL_PREYLOOP 1008
 
-#define FIRE_PRIORITY_VORE			5
+#define TOGGLES_CITADEL 0
+
+#define FIRE_PRIORITY_VORE 5
 
 #define ENABLE_BITFIELD(variable, flag) (variable |= (flag))
 #define DISABLE_BITFIELD(variable, flag) (variable &= ~(flag))

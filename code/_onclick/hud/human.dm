@@ -75,10 +75,7 @@
 
 	//SKYRAT EDIT: ADDITION: vore
 	using = new /obj/screen/voretoggle() //We fancy Vore now
-	using.icon = tg_ui_icon_to_cit_ui(ui_style)
 	using.screen_loc = ui_voremode
-	if(!widescreenlayout)
-		using.screen_loc = ui_boxvore
 	using.hud = src
 	static_inventory += using
 	//SKYRAT EDIT: ADDITION: vorend
