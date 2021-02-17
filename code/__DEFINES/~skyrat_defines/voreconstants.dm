@@ -10,6 +10,8 @@
 #define EATING_NOISES		(1<<1)
 #define DIGESTION_NOISES	(1<<2)
 
+#define CHANNEL_PREYLOOP 1008
+
 #define DIGESTABLE 		(1<<0)
 #define SHOW_VORE_PREFS (1<<1)
 #define DEVOURABLE		(1<<2)
