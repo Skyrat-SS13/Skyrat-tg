@@ -14,7 +14,7 @@
 /datum/augment_item/organ/heart/cybernetic
 	name = "Cybernetic heart"
 	path = /obj/item/organ/heart/cybernetic
-a
+
 //LUNGS
 /datum/augment_item/organ/lungs
 	slot = AUGMENT_SLOT_LUNGS
