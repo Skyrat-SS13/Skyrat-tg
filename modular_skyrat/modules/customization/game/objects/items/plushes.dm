@@ -23,7 +23,7 @@
 
 /obj/item/toy/plush/fermis
 	name = "medcat plushie"
-	desc = "An affectionate stuffed toy that resembles a certain medcat, comes complete with battery operated wagging tail!! You get the impression she's cheering you on to to find happiness and be kind to people."
+	desc = "An affectionate stuffed toy that resembles a certain medcat, comes complete with battery operated wagging tail!! You get the impression she's cheering you on to find happiness and be kind to people."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_fermis"
 	inhand_icon_state = "plushie_fermis"
