@@ -27,19 +27,19 @@
 		/obj/item/flashlight=1,\
 		/obj/item/storage/box/handcuffs=1)
 
-/datum/outfit/centcom/asset_protection/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/centcom/asset_protection/post_equip(mob/living/carbon/human/person, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/radio/R = H.ears
-	R.set_frequency(FREQ_CENTCOM)
-	R.freqlock = TRUE
-	var/obj/item/card/id/W = H.wear_id
-	W.access = get_all_accesses()//They get full station access.
-	W.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
-	W.assignment = "Asset Protection"
-	W.registered_name = H.real_name
-	W.update_label()
+	var/obj/item/radio/Radio = person.ears
+	Radio.set_frequency(FREQ_CENTCOM)
+	Radio.freqlock = TRUE
+	var/obj/item/card/id/ID = person.wear_id
+	ID.access = get_all_accesses()//They get full station access.
+	ID.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
+	ID.assignment = "Asset Protection"
+	ID.registered_name = person.real_name
+	ID.update_label()
 	..()
 
 /datum/outfit/centcom/asset_protection/leader
