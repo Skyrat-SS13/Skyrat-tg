@@ -119,9 +119,9 @@ GENE SCANNER
 		user.visible_message("<span class='warning'>[user] analyzes the floor's vitals!</span>", \
 							"<span class='notice'>You stupidly try to analyze the floor's vitals!</span>")
 		to_chat(user, "<span class='info'>Analyzing results for The floor:\n\tOverall status: <b>Healthy</b></span>\
-				\n<span class='info'>Key: <font color='blue'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FF8000'>Burn</font>/<font color='red'>Brute</font></span>\
-				\n<span class='info'>\tDamage specifics: <font color='blue'>0</font>-<font color='green'>0</font>-<font color='#FF8000'>0</font>-<font color='red'>0</font></span>\
-				\n<span class='info'>Body temperature: ???</span>")
+				\n<span class='info'>Key: <font color='purple'>Suffocation</font>/<font color='green'>Toxin</font>/<font color='#FF8000'>Burn</font>/<font color='red'>Brute</font></span>\
+				\n<span class='info'>\tDamage specifics: <font color='purple'>0</font>-<font color='green'>0</font>-<font color='#FF8000'>0</font>-<font color='red'>0</font></span>\
+				\n<span class='info'>Body temperature: ???</span>") // Skyrat color change, suffocation and specifics was blue
 		return
 
 	if(ispodperson(M)&& !advanced)
@@ -252,24 +252,27 @@ GENE SCANNER
 		if(length(damaged)>0 || oxy_loss>0 || tox_loss>0 || fire_loss>0)
 			var/dmgreport = "<span class='info ml-1'>General status:</span>\
 							<table class='ml-2'><tr><font face='Verdana'>\
-							<td style='width:7em;'><font color='#0000CC'>Damage:</font></td>\
+							<td style='width:7em;'><font color='#660066'>Damage:</font></td>\
 							<td style='width:5em;'><font color='red'><b>Brute</b></font></td>\
 							<td style='width:4em;'><font color='orange'><b>Burn</b></font></td>\
 							<td style='width:4em;'><font color='green'><b>Toxin</b></font></td>\
 							<td style='width:8em;'><font color='purple'><b>Suffocation</b></font></td></tr>\
-							<tr><td><font color='#0000CC'>Overall:</font></td>\
+							<tr><td><font color='#660066'>Overall:</font></td>\
 							<td><font color='red'>[CEILING(brute_loss,1)]</font></td>\
 							<td><font color='orange'>[CEILING(fire_loss,1)]</font></td>\
 							<td><font color='green'>[CEILING(tox_loss,1)]</font></td>\
-							<td><font color='blue'>[CEILING(oxy_loss,1)]</font></td></tr>"
+							<td><font color='purple'>[CEILING(oxy_loss,1)]</font></td></tr>"
+
+							// ^ Skyrat color change, oxy_loss and suffocation was blue, #660066 was #0000CC
 
 			for(var/o in damaged)
 				var/obj/item/bodypart/org = o //head, left arm, right arm, etc.
-				dmgreport += "<tr><td><font color='#0000CC'>[capitalize(org.name)]:</font></td>\
+				dmgreport += "<tr><td><font color='#660066'>[capitalize(org.name)]:</font></td>\
 								<td><font color='red'>[(org.brute_dam > 0) ? "[CEILING(org.brute_dam,1)]" : "0"]</font></td>\
 								<td><font color='orange'>[(org.burn_dam > 0) ? "[CEILING(org.burn_dam,1)]" : "0"]</font></td></tr>"
 			dmgreport += "</font></table>"
 			render_list += dmgreport // tables do not need extra linebreak
+				// Skyrat color change, #660066 was #0000CC
 
 	//Eyes and ears
 	if(advanced && iscarbon(M))
@@ -318,9 +321,9 @@ GENE SCANNER
 			var/render = FALSE
 			var/toReport = "<span class='info ml-1'>Organs:</span>\
 				<table class='ml-2'><tr>\
-				<td style='width:6em;'><font color='#0000CC'><b>Organ</b></font></td>\
-				[advanced ? "<td style='width:3em;'><font color='#0000CC'><b>Dmg</b></font></td>" : ""]\
-				<td style='width:12em;'><font color='#0000CC'><b>Status</b></font></td>"
+				<td style='width:6em;'><font color='#660066'><b>Organ</b></font></td>\
+				[advanced ? "<td style='width:3em;'><font color='#660066'><b>Dmg</b></font></td>" : ""]\
+				<td style='width:12em;'><font color='#660066'><b>Status</b></font></td>"
 
 			for(var/obj/item/organ/organ in H.internal_organs)
 				var/status = ""
@@ -329,9 +332,10 @@ GENE SCANNER
 				else if (organ.damage > organ.low_threshold) status = "<font color='#F28F1F'>Mildly Damaged</font>"
 				if (status != "")
 					render = TRUE
-					toReport += "<tr><td><font color='#0000CC'>[organ.name]</font></td>\
-						[advanced ? "<td><font color='#0000CC'>[CEILING(organ.damage,1)]</font></td>" : ""]\
+					toReport += "<tr><td><font color='#660066'>[organ.name]</font></td>\
+						[advanced ? "<td><font color='#660066'>[CEILING(organ.damage,1)]</font></td>" : ""]\
 						<td>[status]</td></tr>"
+		// ^ Skyrat color change, #0000CC to #660066
 
 			if (render)
 				render_list += toReport + "</table>" // tables do not need extra linebreak
