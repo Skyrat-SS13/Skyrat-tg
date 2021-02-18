@@ -15,7 +15,7 @@
 
 /obj/projectile/bullet/advanced/b6mm
 	name = "6mm bullet"
-	damage = 15
+	damage = 10
 	speed = 0.5
 
 /obj/item/ammo_casing/b6mm/rubber
@@ -30,7 +30,7 @@
 	name = "6mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 5
-	stamina = 10
+	stamina = 5
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -66,7 +66,7 @@
 
 /obj/projectile/bullet/advanced/b9mm
 	name = "9mm bullet"
-	damage = 20
+	damage = 15
 	speed = 0.7
 
 /obj/item/ammo_casing/b9mm/hp
@@ -80,10 +80,10 @@
 /obj/projectile/bullet/advanced/b9mm/hp
 	name = "9mm hollowpoint bullet"
 	icon_state = "bullet_h"
-	damage = 20
-	wound_bonus = 30
-	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
-	armour_penetration = -30
+	damage = 15
+	wound_bonus = 15
+	embedding = list(embed_chance=30, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
+	armour_penetration = -60
 
 /obj/item/ammo_casing/b9mm/rubber
 	name = "9mm rubber bullet casing"
@@ -97,7 +97,7 @@
 	name = "9mm rubber bullet"
 	icon_state = "bullet_r"
 	damage = 5
-	stamina = 20
+	stamina = 10
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -117,7 +117,7 @@
 /obj/projectile/bullet/advanced/b9mm/ihdf
 	name = "9mm ihdf bullet"
 	icon_state = "bullet_i"
-	damage = 25
+	damage = 15
 	damage_type = STAMINA
 
 
@@ -134,7 +134,7 @@
 
 /obj/projectile/bullet/advanced/b10mm
 	name = "10mm bullet"
-	damage = 30
+	damage = 20
 	speed = 0.9
 
 /obj/item/ammo_casing/b10mm/hp
@@ -148,10 +148,10 @@
 /obj/projectile/bullet/advanced/b10mm/hp
 	name = "10mm hollowpoint bullet"
 	icon_state = "bullet_h"
-	damage = 30
-	wound_bonus = 30
-	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
-	armour_penetration = -30
+	damage = 20
+	wound_bonus = 15
+	embedding = list(embed_chance=30, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
+	armour_penetration = -60
 
 /obj/item/ammo_casing/b10mm/rubber
 	name = "10mm rubber bullet casing"
@@ -232,8 +232,8 @@
 /obj/projectile/bullet/advanced/b12mm/rubber
 	name = "12mm rubber bullet"
 	icon_state = "bullet_r"
-	damage = 13
-	stamina = 50
+	damage = 17
+	stamina = 30
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
