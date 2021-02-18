@@ -153,6 +153,21 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("888", "F33", "FFF"))
 
+/obj/item/clothing/under/misc/polysweater
+	name = "polychromic sweater"
+	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north, AND do it in whatever color you choose."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "poly_turtle"
+	worn_icon_state = "poly_turtle"
+	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
+	can_adjust = FALSE
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/polysweater/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF"))
+
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
 	desc = "For those lazy summer days."
