@@ -60,12 +60,13 @@
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
 "ar" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Hotel Staff Storage"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/grunge{
+	name = "Hotel Staff Storage";
+	req_access_txt = "200"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
 "as" = (
@@ -877,7 +878,10 @@
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/dock)
 "fR" = (
-/obj/machinery/door/airlock/grunge,
+/obj/machinery/door/airlock/grunge{
+	name = "Bar Backroom";
+	req_access_txt = "200"
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
 "fS" = (
@@ -3488,7 +3492,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
-	name = "Hotel Staff Room";
+	name = "Hotel Medical Storage";
 	req_access_txt = "200"
 	},
 /turf/open/floor/iron/showroomfloor,
@@ -4190,12 +4194,12 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
 "zj" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
 	req_access_txt = "200"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "zm" = (
@@ -4287,6 +4291,13 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel)
+"Ah" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Hydroponics";
+	req_access_txt = "200"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/hotel/bar)
 "Ai" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/machinery/light{
@@ -4462,11 +4473,11 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_3)
 "Ca" = (
+/obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
 	req_access_txt = "200"
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "Cb" = (
@@ -4474,8 +4485,11 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel/dock)
 "Cc" = (
-/obj/machinery/door/airlock/grunge,
-/turf/open/floor/plating,
+/obj/machinery/door/airlock/grunge{
+	name = "Kitchen";
+	req_access_txt = "200"
+	},
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
 "Ce" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -6354,9 +6368,10 @@
 /area/ruin/space/has_grav/hotel)
 "TA" = (
 /obj/machinery/door/airlock/grunge{
-	name = "Hotel Staff Storage"
+	name = "Disposals Access";
+	req_access_txt = "200"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/hotel/workroom)
 "TI" = (
 /obj/machinery/power/apc/highcap/five_k{
@@ -6745,7 +6760,7 @@
 "Xy" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
-	name = "Hotel Staff Room";
+	name = "Hotel Medical Storage";
 	req_access_txt = "200"
 	},
 /turf/open/floor/iron/showroomfloor,
@@ -6924,9 +6939,12 @@
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
 "ZG" = (
-/obj/machinery/door/airlock/grunge,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
+	},
+/obj/machinery/door/airlock/grunge{
+	name = "Hydroponics Storage";
+	req_access_txt = "200"
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/bar)
@@ -6937,10 +6955,13 @@
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
 "ZI" = (
-/obj/machinery/door/airlock/grunge,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/structure/cable,
-/turf/closed/wall,
+/obj/machinery/door/airlock/grunge{
+	name = "Hotel Cold Room";
+	req_access_txt = "200"
+	},
+/turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
 "ZL" = (
 /obj/machinery/computer/pod/old/mass_driver_controller/trash{
@@ -8271,7 +8292,7 @@ qA
 qA
 BX
 dT
-Cc
+Ah
 iA
 iA
 iA
@@ -9382,8 +9403,8 @@ II
 GU
 di
 rU
-am
-am
+at
+at
 am
 am
 jc
