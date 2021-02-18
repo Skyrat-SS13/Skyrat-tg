@@ -13,9 +13,9 @@
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	glasses = /obj/item/clothing/glasses/hud/toggle/thermal
 	back = /obj/item/storage/backpack/security
-	l_pocket = /obj/item/door_remote/captain //need to make an all access one
+	l_pocket = /obj/item/crowbar/power //this is their "all access" pass lmao
 	suit_store = /obj/item/tank/internals/emergency_oxygen/double
-	belt = /obj/item/storage/belt/security //probably change this to something other than security belt, eventually
+	belt = /obj/item/storage/belt/security/full
 	l_hand = /obj/item/gun/energy/pulse/carbine/loyalpin //if this is still bulky make it not bulky and storable on belt/back/bag/exosuit
 	id = /obj/item/card/id/ert
 	ears = /obj/item/radio/headset/headset_cent/alt
@@ -36,12 +36,12 @@
 	R.freqlock = TRUE
 	var/obj/item/card/id/W = H.wear_id
 	W.access = get_all_accesses()//They get full station access.
-	W.access += get_centcom_access("Asset_Protection")//Let's add their alloted CentCom access.
-	W.assignment = "Asset_Protection"
+	W.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
+	W.assignment = "Asset Protection"
 	W.registered_name = H.real_name
 	W.update_label()
 	..()
 
-/datum/outfit/centcom/asset_protection/officer
+/datum/outfit/centcom/asset_protection/leader
 	name = "Asset Protection Officer"
 	head = /obj/item/clothing/head/helmet/space/beret

@@ -10,5 +10,5 @@
 
 /datum/antagonist/ert/asset_protection/leader
 	name = "Asset Protection Officer"
-	outfit = /datum/outfit/centcom/asset_protection/officer
+	outfit = /datum/outfit/centcom/asset_protection
 	role = "Officer"
