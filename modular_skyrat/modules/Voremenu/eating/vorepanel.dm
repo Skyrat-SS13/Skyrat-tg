@@ -535,7 +535,7 @@
 			return FALSE
 
 		selected.vore_verb = new_verb
-
+	/*
 	if(href_list["b_release"])
 		var/choice = input(user,"Currently set to [selected.release_sound]","Select Sound") as null|anything in GLOB.pred_release_sounds
 
@@ -543,7 +543,8 @@
 			return
 
 		selected.release_sound = choice
-
+	*/
+	/*nope
 	if(href_list["b_releasesoundtest"])
 		var/sound/releasetest = GLOB.prey_release_sounds[selected.release_sound]
 		if(releasetest)
@@ -561,7 +562,7 @@
 		var/sound/voretest = GLOB.prey_vore_sounds[selected.vore_sound]
 		if(voretest)
 			SEND_SOUND(user, voretest)
-
+	*///nope
 	if(href_list["b_tastes"])
 		selected.can_taste = !selected.can_taste
 

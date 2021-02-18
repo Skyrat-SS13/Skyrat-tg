@@ -13,7 +13,7 @@
 /datum/belly
 	var/name								// Name of this location
 	var/inside_flavor						// Flavor text description of inside sight/sound/smells/feels.
-	var/vore_sound = 'sound/vore/pred/swallow_01.ogg'	// Sound when ingesting someone
+//	var/vore_sound = 'sound/vore/pred/swallow_01.ogg'	// Sound when ingesting someone
 	var/vore_verb = "ingest"				// Verb for eating with this in messages
 	var/human_prey_swallow_time = 10 SECONDS		// Time in deciseconds to swallow /mob/living/carbon/human
 	var/nonhuman_prey_swallow_time = 5 SECONDS		// Time in deciseconds to swallow anything else
@@ -104,7 +104,7 @@
 	//// Non-object variables
 	new_belly.name = name
 	new_belly.desc = inside_flavor
-	new_belly.vore_sound = vore_sound
+	//new_belly.vore_sound = vore_sound
 	new_belly.vore_verb = vore_verb
 	new_belly.human_prey_swallow_time = human_prey_swallow_time
 	new_belly.nonhuman_prey_swallow_time = nonhuman_prey_swallow_time

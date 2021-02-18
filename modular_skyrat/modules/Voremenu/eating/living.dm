@@ -206,7 +206,7 @@
 	set category = "Vore"
 	src.stop_sound_channel(CHANNEL_PREYLOOP) // sanity just in case
 	if(isbelly(loc))
-		var/sound/preyloop = sound('sound/vore/prey/loop.ogg')
+		var/sound/preyloop = sound('sound/effects/splat.ogg')
 		SEND_SOUND(src, preyloop)
 	else
 		to_chat(src, "<span class='alert'>You aren't inside anything, you clod.</span>")

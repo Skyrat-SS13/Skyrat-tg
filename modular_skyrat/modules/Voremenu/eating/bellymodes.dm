@@ -39,7 +39,7 @@
 						continue
 					M.stop_sound_channel(CHANNEL_PREYLOOP) // sanity just in case
 					if(M.client.prefs.cit_toggles & DIGESTION_NOISES)
-						var/sound/preyloop = sound('sound/vore/prey/loop.ogg')
+						var/sound/preyloop = sound('sound/effects/splat.ogg')
 						M.playsound_local(get_turf(src),preyloop, 80,0, channel = CHANNEL_PREYLOOP)
 						M.next_preyloop = (world.time + 52 SECONDS)
 
