@@ -26,6 +26,8 @@
 
 /turf/open/space/mirage
 	blocks_air = TRUE
+	light_power = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /**
  * Space Initialize

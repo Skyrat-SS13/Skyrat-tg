@@ -52,6 +52,8 @@
 
 	for(var/i in turfs) //Go through all the turfs and generate them
 		var/turf/gen_turf = i
+		if(istype(gen_turf, /turf/open/space/mirage))
+			continue
 
 		var/area/A = gen_turf.loc
 		if(!(A.area_flags & CAVES_ALLOWED))

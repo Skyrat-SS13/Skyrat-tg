@@ -17,7 +17,15 @@ SUBSYSTEM_DEF(liquids)
 	var/list/processing_fire = list()
 	var/fire_counter = 0 //Only process fires on intervals
 
+	var/list/singleton_immutables = list()
+
 	var/run_type = SSLIQUIDS_RUN_TYPE_TURFS
+
+/datum/controller/subsystem/liquids/proc/get_immutable(type)
+	if(!singleton_immutables[type])
+		var/obj/effect/abstract/liquid_turf/immutable/new_one = new type()
+		singleton_immutables[type] = new_one
+	return singleton_immutables[type]
 
 
 /datum/controller/subsystem/liquids/stat_entry(msg)
@@ -56,6 +64,10 @@ SUBSYSTEM_DEF(liquids)
 		for(var/t in active_immutables)
 			var/turf/T = t
 			T.process_immutable_liquid()
+			/*
+			if(MC_TICK_CHECK)
+				return
+			*/
 		run_type = SSLIQUIDS_RUN_TYPE_EVAPORATION
 
 	if(run_type == SSLIQUIDS_RUN_TYPE_EVAPORATION)
@@ -103,7 +115,7 @@ SUBSYSTEM_DEF(liquids)
 		return
 	var/datum/reagents/tempr = liquids.take_reagents_flat(liquids.total_reagents)
 	var/cached_height = liquids.height
-	qdel(liquids, TRUE)
+	liquids.remove_turf(src)
 	liquids = new(src)
 	liquids.height = cached_height //Prevent height effects
 	add_liquid_from_reagents(tempr)
@@ -405,6 +417,9 @@ SUBSYSTEM_DEF(liquids)
 			set_reagent_color_for_liquid()
 
 /obj/effect/abstract/liquid_turf/proc/process_evaporation()
+	if(immutable)
+		SSliquids.evaporation_queue -= my_turf
+		return
 	//We're in a group. dont try and evaporate
 	if(my_turf.lgroup)
 		SSliquids.evaporation_queue -= my_turf
@@ -575,6 +590,24 @@ SUBSYSTEM_DEF(liquids)
 	if(determined_new_state != liquid_state)
 		set_new_liquid_state(determined_new_state)
 
+/obj/effect/abstract/liquid_turf/immutable/calculate_height()
+	var/new_height = CEILING(total_reagents, 1)/LIQUID_HEIGHT_DIVISOR
+	set_height(new_height)
+	var/determined_new_state
+	switch(new_height)
+		if(0 to LIQUID_ANKLES_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_PUDDLE
+		if(LIQUID_ANKLES_LEVEL_HEIGHT to LIQUID_WAIST_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_ANKLES
+		if(LIQUID_WAIST_LEVEL_HEIGHT to LIQUID_SHOULDERS_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_WAIST
+		if(LIQUID_SHOULDERS_LEVEL_HEIGHT to LIQUID_FULLTILE_LEVEL_HEIGHT-1)
+			determined_new_state = LIQUID_STATE_SHOULDERS
+		if(LIQUID_FULLTILE_LEVEL_HEIGHT to INFINITY)
+			determined_new_state = LIQUID_STATE_FULLTILE
+	if(determined_new_state != liquid_state)
+		set_new_liquid_state(determined_new_state)
+
 /obj/effect/abstract/liquid_turf/proc/set_height(new_height)
 	var/prev_height = height
 	height = new_height
@@ -614,24 +647,29 @@ SUBSYSTEM_DEF(liquids)
 						else
 							step(AM, dir)
 
+/obj/effect/abstract/liquid_turf/immutable/set_height(new_height)
+	height = new_height
+
 /obj/effect/abstract/liquid_turf/proc/movable_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
+	var/turf/T = source
 	if(liquid_state >= LIQUID_STATE_ANKLES)
 		if(prob(30))
-			playsound(my_turf, PICK_WATER_WADE_NOISES, 50, 0)
+			playsound(T, PICK_WATER_WADE_NOISES, 50, 0)
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
 			C.apply_status_effect(/datum/status_effect/water_affected)
 	else if (isliving(AM))
 		var/mob/living/L = AM
 		if(prob(7) && !(L.movement_type & FLYING))
-			L.slip(60, my_turf, NO_SLIP_WHEN_WALKING, 20, TRUE)
+			L.slip(60, T, NO_SLIP_WHEN_WALKING, 20, TRUE)
 	if(fire_state)
 		AM.fire_act((T20C+50) + (50*fire_state), 125)
 
 /obj/effect/abstract/liquid_turf/proc/mob_fall(datum/source, mob/M)
-	if(liquid_state >= LIQUID_STATE_ANKLES && my_turf.has_gravity(my_turf))
-		playsound(my_turf, 'hrzn/sound/effects/splash.ogg', 50, 0)
+	var/turf/T = source
+	if(liquid_state >= LIQUID_STATE_ANKLES && T.has_gravity(T))
+		playsound(T, 'hrzn/sound/effects/splash.ogg', 50, 0)
 		if(iscarbon(M))
 			var/mob/living/carbon/C = M
 			if(C.wear_mask && C.wear_mask.flags_cover & MASKCOVERSMOUTH)
@@ -650,15 +688,18 @@ SUBSYSTEM_DEF(liquids)
 	if(!SSliquids)
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
 	. = ..()
-	my_turf = loc
-	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
-	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
-	update_liquid_vis()
 	if(!immutable)
+		my_turf = loc
+		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
+		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
 		SSliquids.add_active_turf(my_turf)
+
+		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
+
+	update_liquid_vis()
+
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
-	SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
 
 	/* //Cant do it immediately, hmhm
 	if(isspaceturf(my_turf))
@@ -674,15 +715,19 @@ SUBSYSTEM_DEF(liquids)
 			SSliquids.evaporation_queue -= my_turf
 		if(SSliquids.processing_fire[my_turf])
 			SSliquids.processing_fire -= my_turf
-		if(!immutable)
-			//Is added because it could invoke a change to neighboring liquids
-			SSliquids.add_active_turf(my_turf)
+		//Is added because it could invoke a change to neighboring liquids
+		SSliquids.add_active_turf(my_turf)
 		my_turf.liquids = null
 		my_turf = null
 		QUEUE_SMOOTH_NEIGHBORS(src)
 		return ..()
 	else
 		return QDEL_HINT_LETMELIVE
+
+/obj/effect/abstract/liquid_turf/immutable/Destroy(force)
+	if(force)
+		stack_trace("Something tried to hard destroy an immutable liquid.")
+	return QDEL_HINT_LETMELIVE
 
 //Exposes my turf with simulated reagents
 /obj/effect/abstract/liquid_turf/proc/ExposeMyTurf()
@@ -1056,6 +1101,20 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	var/list/starting_mixture = list(/datum/reagent/water = 600)
 	var/starting_temp = T20C
 
+//STRICTLY FOR IMMUTABLES DESPITE NOT BEING /immutable
+/obj/effect/abstract/liquid_turf/proc/add_turf(turf/T)
+	T.liquids = src
+	T.vis_contents += src
+	SSliquids.active_immutables[T] = TRUE
+	RegisterSignal(T, COMSIG_ATOM_ENTERED, .proc/movable_entered)
+	RegisterSignal(T, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+
+/obj/effect/abstract/liquid_turf/proc/remove_turf(turf/T)
+	SSliquids.active_immutables -= T
+	T.liquids = null
+	T.vis_contents -= src
+	UnregisterSignal(T, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL))
+
 /obj/effect/abstract/liquid_turf/immutable/ocean
 	smoothing_flags = NONE
 	icon_state = "ocean"
@@ -1064,6 +1123,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	layer = ABOVE_MOB_LAYER
 	starting_temp = T20C-150
 	no_effects = TRUE
+	vis_flags = NONE
 
 /obj/effect/abstract/liquid_turf/immutable/ocean/warm
 	starting_temp = T20C+20
@@ -1077,12 +1137,6 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 	temp = starting_temp
 	calculate_height()
 	set_reagent_color_for_liquid()
-	SSliquids.active_immutables[my_turf] = TRUE
-
-/obj/effect/abstract/liquid_turf/immutable/Destroy(force)
-	if(force)
-		SSliquids.active_immutables -= my_turf
-	. = ..()
 
 /turf/proc/process_immutable_liquid()
 	var/any_share = FALSE

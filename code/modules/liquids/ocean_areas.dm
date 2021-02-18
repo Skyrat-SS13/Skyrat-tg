@@ -13,13 +13,14 @@
 	sound_environment = SOUND_AREA_SPACE
 
 /area/ocean/generated
-	//map_generator = /datum/map_generator/ocean_generator
+	map_generator = /datum/map_generator/ocean_generator
 
 /area/ocean/trench
+	area_flags = NO_ALERTS | CAVES_ALLOWED | FLORA_ALLOWED
 	name = "The Trench"
 
 /area/ocean/trench/generated
-	//map_generator = /datum/map_generator/trench_generator
+	map_generator = /datum/map_generator/cave_generator/trench
 
 /area/ruin/ocean
 	has_gravity = TRUE

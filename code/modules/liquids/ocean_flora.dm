@@ -93,6 +93,9 @@
 	var/area/A = get_area(src)
 	if(!allowed_area_types[A.type])
 		return INITIALIZE_HINT_QDEL
+	var/turf/T = get_turf(src)
+	if(T.flags_1 & NO_RUINS_1)
+		return INITIALIZE_HINT_QDEL
 
 	var/to_spawn_path
 	
@@ -107,7 +110,7 @@
 				to_spawn_path = default_1
 			else
 				to_spawn_path = default_2
-	new to_spawn_path(get_turf(src))
+	new to_spawn_path(T)
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/spawner/ocean_curio/rock

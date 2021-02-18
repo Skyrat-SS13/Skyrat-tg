@@ -1,12 +1,33 @@
 /turf/open/openspace/ocean
 	name = "ocean"
 	planetary_atmos = TRUE
+	baseturfs = /turf/open/openspace/ocean
+	var/replacement_turf = /turf/open/floor/plating/ocean
+
+/turf/open/openspace/ocean/Initialize()
+	. = ..()
+	var/turf/T = below()
+	if(T.flags_1 & NO_RUINS_1)
+		ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
+		return
+	for(var/obj/structure/flora/plant in contents)
+		qdel(plant)
+	if(!ismineralturf(T))
+		return
+	var/turf/closed/mineral/M = T
+	M.mineralAmt = 0
+	M.gets_drilled()
+	baseturfs = /turf/open/openspace/ocean //This is to ensure that IF random turf generation produces a openturf, there won't be other turfs assigned other than openspace.
 
 /turf/open/openspace/ocean/Initialize()
 	. = ..()
 	if(liquids)
-		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/ocean(src)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
+	new_immmutable.add_turf(src)
 
 /turf/open/floor/plating/ocean/ironsand
 	baseturfs = /turf/open/floor/plating/ocean/ironsand
@@ -18,9 +39,9 @@
 /turf/open/floor/plating/ocean/rock
 	name = "rock"
 	baseturfs = /turf/open/floor/plating/ocean/rock
-	icon = 'icons/turf/mining.dmi'
-	icon_state = "rockyash"
-	base_icon_state = "rockyash"
+	icon = 'icons/horizon/turf/seafloor.dmi'
+	icon_state = "seafloor"
+	base_icon_state = "seafloor"
 	rand_variants = 0
 
 /turf/open/floor/plating/ocean/rock/warm
@@ -38,13 +59,13 @@
 	light_color = LIGHT_COLOR_LAVA
 
 /turf/open/floor/plating/ocean/rock/medium
-	icon_state = "rock2"
-	base_icon_state = "rock2"
+	icon_state = "seafloor_med"
+	base_icon_state = "seafloor_med"
 	baseturfs = /turf/open/floor/plating/ocean/rock/medium
 
 /turf/open/floor/plating/ocean/rock/heavy
-	icon_state = "wateryrock"
-	base_icon_state = "wateryrock"
+	icon_state = "seafloor_heavy"
+	base_icon_state = "seafloor_heavy"
 	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
 
 /turf/open/floor/plating/ocean
@@ -66,8 +87,13 @@
 /turf/open/floor/plating/ocean/Initialize()
 	. = ..()
 	if(liquids)
-		qdel(liquids, TRUE)
-	liquids = new liquid_type(src)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(liquid_type)
+	new_immmutable.add_turf(src)
+
 	if(rand_variants && prob(rand_chance))
 		var/random = rand(1,rand_variants)
 		icon_state = "[icon_state][random]"
@@ -80,8 +106,12 @@
 /turf/open/floor/plating/ocean_plating/Initialize()
 	. = ..()
 	if(liquids)
-		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/ocean(src)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
+	new_immmutable.add_turf(src)
 
 /turf/open/floor/plasteel/ocean
 	planetary_atmos = TRUE
@@ -90,11 +120,27 @@
 /turf/open/floor/plasteel/ocean/Initialize()
 	. = ..()
 	if(liquids)
-		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/ocean(src)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
+	new_immmutable.add_turf(src)
+
+/turf/closed/mineral/random/ocean
+	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
+	turf_type = /turf/open/floor/plating/ocean/rock/heavy
+	color = "#58606b"
+
+/turf/closed/mineral/random/high_chance/ocean
+	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
+	turf_type = /turf/open/floor/plating/ocean/rock/heavy
+	color = "#58606b"
 
 /turf/closed/mineral/random/low_chance/ocean
 	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
+	turf_type = /turf/open/floor/plating/ocean/rock/heavy
+	color = "#58606b"
 
 //extremely low chance of rare ores, meant mostly for populating stations with large amounts of asteroid
 /turf/closed/mineral/random/stationside
@@ -106,6 +152,8 @@
 
 /turf/closed/mineral/random/stationside/ocean
 	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
+	turf_type = /turf/open/floor/plating/ocean/rock/heavy
+	color = "#58606b"
 
 /obj/effect/abstract/liquid_turf/immutable/canal
 	starting_mixture = list(/datum/reagent/water = 100)
@@ -127,8 +175,12 @@
 /turf/open/floor/plating/canal/Initialize()
 	. = ..()
 	if(liquids)
-		qdel(liquids, TRUE)
-	liquids = new /obj/effect/abstract/liquid_turf/immutable/canal(src)
+		if(liquids.immutable)
+			liquids.remove_turf(src)
+		else
+			qdel(liquids, TRUE)
+	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/canal)
+	new_immmutable.add_turf(src)
 
 /turf/open/floor/plating/canal_mutable
 	gender = PLURAL

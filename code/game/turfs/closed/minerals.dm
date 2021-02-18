@@ -16,7 +16,8 @@
 	layer = EDGED_TURF_LAYER
 	base_icon_state = "smoothrocks"
 	temperature = TCMB
-	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
+	color = "#677"
+	var/smooth_icon = 'icons/horizon/turf/smoothrocks.dmi'
 	var/environment_type = "asteroid"
 	var/turf/open/floor/plating/turf_type = /turf/open/floor/plating/asteroid/airless
 	var/obj/item/stack/ore/mineralType = null
@@ -191,12 +192,14 @@
 		var/path = pickweight(mineralSpawnChanceList)
 		if(ispath(path, /turf))
 			var/stored_flags = 0
+			var/stored_color = color
 			if(turf_flags & NO_RUINS)
 				stored_flags |= NO_RUINS
 			var/turf/T = ChangeTurf(path,null,CHANGETURF_IGNORE_AIR)
 			T.flags_1 |= stored_flags
 
 			T.baseturfs = src.baseturfs
+			T.color = stored_color
 			if(ismineralturf(T))
 				var/turf/closed/mineral/M = T
 				M.turf_type = src.turf_type

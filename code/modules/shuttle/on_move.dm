@@ -59,7 +59,10 @@ All ShuttleMove procs go here
 	if(newT.lgroup)
 		newT.lgroup.remove_from_group(newT)
 	if(newT.liquids)
-		qdel(newT.liquids, TRUE)
+		if(newT.liquids.immutable)
+			newT.liquids.remove_turf(src)
+		else
+			qdel(newT.liquids, TRUE)
 
 	if(lgroup)
 		lgroup.remove_from_group(src)
