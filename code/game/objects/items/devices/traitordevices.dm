@@ -250,10 +250,13 @@ effective or pretty fucking useless.
 
 
 /obj/item/jammer
-	name = "radio jammer"
-	desc = "Device used to disrupt nearby radio communication."
+	name = "suspicious transmitter" //SKYRAT CHANGE
+	desc = "A suspicious device vaguely resembling a radio, but without a speaker or microphone." //SKYRAT CHANGE
 	icon = 'icons/obj/device.dmi'
 	icon_state = "jammer"
+	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
+	special_desc_jobs = list("Station Engineer, Chief Engineer, Cyborg, AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
+	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 12
 
