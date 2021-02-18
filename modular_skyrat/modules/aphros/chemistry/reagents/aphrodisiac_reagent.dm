@@ -5,7 +5,6 @@
 	description = "Naturally found in the crocus and gardenia flowers, this drug acts as a natural and safe aphrodisiac."
 	taste_description = "strawberries"
 	color = "#FFADFF"//PINK, rgb(255, 173, 255)
-	//can_synth = FALSE
 
 /datum/reagent/drug/aphrodisiac/on_mob_life(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
@@ -28,9 +27,8 @@
 					Addiction withdrawals can cause brain damage and shortness of breath. Overdosage can lead to brain damage."
 	taste_description = "liquid desire"
 	color = "#FF2BFF"//dark pink
-	addiction_threshold = 20
+	addiction_types = list(/datum/addiction/hallucinogens = 10)
 	overdose_threshold = 20
-	//can_synth = FALSE
 
 /datum/reagent/drug/aphrodisiacplus/on_mob_life(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
@@ -53,20 +51,6 @@
 					G.aroused = AROUSAL_FULL
 					G.update_sprite_suffix()
 			M.update_body()
-	..()
-
-/datum/reagent/drug/aphrodisiacplus/addiction_act_stage2(mob/living/M)
-	if(prob(30))
-		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2)
-	..()
-/datum/reagent/drug/aphrodisiacplus/addiction_act_stage3(mob/living/M)
-	if(prob(30))
-		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3)
-
-		..()
-/datum/reagent/drug/aphrodisiacplus/addiction_act_stage4(mob/living/M)
-	if(prob(30))
-		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 4)
 	..()
 
 /datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
