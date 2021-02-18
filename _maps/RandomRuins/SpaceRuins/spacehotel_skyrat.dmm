@@ -1068,26 +1068,34 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/obj/item/paper/fluff/ruins/spacehotel/notice,
+/obj/structure/table,
+/obj/machinery/microwave,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "gJ" = (
-/obj/structure/closet/secure_closet/freezer/kitchen/mining,
+/obj/structure/table,
+/obj/item/storage/box/donkpockets,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "gK" = (
-/obj/structure/table,
-/obj/machinery/microwave,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/human/hotel_staff/manager,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "gL" = (
-/obj/structure/table,
-/obj/item/storage/box/donkpockets,
 /obj/structure/sign/warning/nosmoking/circle{
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -2;
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "gM" = (
@@ -1605,9 +1613,6 @@
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
 "iB" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Hotel Staff Storage"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
@@ -1617,6 +1622,10 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/grunge{
+	name = "Manager's Office";
+	req_access_txt = "200"
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/workroom)
