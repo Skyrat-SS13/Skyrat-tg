@@ -72,8 +72,7 @@
 		can_bayonet = FALSE
 		update_icon()
 
-<<<<<<< HEAD
-=======
+/* - SKYRAT EDIT REMOVAL
 /obj/item/gun/ballistic/rifle/boltaction/attack_self(mob/user)
 	if(can_jam)
 		if(jammed)
@@ -105,8 +104,8 @@
 					user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
 					jamming_chance = 10
 					qdel(item)
+*/ //SKYRAT EDIT END
 
->>>>>>> 45ccba3809a (replaces all instances of ammo_casing/BB to loaded_projectile again without crashing this time (#56989))
 /obj/item/gun/ballistic/rifle/boltaction/blow_up(mob/user)
 	. = FALSE
 	if(chambered?.loaded_projectile)
