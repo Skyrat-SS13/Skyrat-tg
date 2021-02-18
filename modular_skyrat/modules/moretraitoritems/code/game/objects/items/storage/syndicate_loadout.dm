@@ -24,11 +24,6 @@
 
 /obj/item/storage/box/syndie_kit/loadout
 
-/obj/item/storage/box/syndie_kit/loadout/nt_impostor/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 14
-
 /obj/item/storage/backpack/duffelbag/syndie/loadout
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/recon/PopulateContents()
@@ -167,7 +162,6 @@
 
 /obj/item/storage/box/syndie_kit/loadout/nt_impostor/PopulateContents()
 	new /obj/item/clothing/under/rank/centcom/officer(src)
-	new /obj/item/clothing/shoes/sneakers/black(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/radio/headset/headset_cent/impostorsr(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
@@ -181,4 +175,4 @@
 	new /obj/item/stamp/centcom(src)
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/clothing/head/centhat(src)
+	new /obj/item/clothing/gloves/combat(src)

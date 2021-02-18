@@ -1,6 +1,6 @@
 /datum/uplink_item/bundles_tc/spaceassassin
 	name = "Space Assassin Bundle"
-	desc = "My god, what have i done"
+	desc = "A unique kit commonly used by military infiltrators and the like to get the drop on unsuspecting crew, perfect for the aspiring covert assassin and stealthy manipulator."
 	item = /obj/item/storage/box/syndie_kit/spaceassassin
 	cost = 30 //40 tc would have been better
 
@@ -18,7 +18,7 @@
 /datum/uplink_item/loadout_skyrat
 	category = "Loadout"
 	surplus = 0
-	cant_discount = TRUE //die, please no multiclass for you
+	cant_discount = TRUE //I honestly don't think discount is worth it for those things, sorry.
 
 /datum/uplink_item/loadout_skyrat/recon
 	name = "Reconnaisance bundle"
