@@ -79,7 +79,10 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/sniper/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket(src)
-	new /obj/item/ammo_box/magazine/sniper_rounds/penetrator(src)
+	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
+	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
+	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
+	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
