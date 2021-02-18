@@ -172,6 +172,7 @@
 	new /obj/item/gun/ballistic/revolver/mateba(src)
 	new /obj/item/ammo_box/a357(src)
 	new /obj/item/ammo_box/a357(src)
+	new /obj/item/ammo_box/a357(src)
 	new /obj/item/pda/heads(src)
 	new /obj/item/clipboard(src)
 	new /obj/item/card/id/syndicate(src)
