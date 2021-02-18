@@ -1,7 +1,7 @@
 
 /obj/item/storage/box/syndie_kit/spaceassassin/PopulateContents()
 	new /obj/item/kitchen/knife/combat(src)
-	new	/obj/item/book/granter/traitsr/amogusbook(src)
+	new	/obj/item/book/granter/traitsr/ventcrawl_book(src)
 	switch(pick(list("red", "green", "dgreen", "blue", "orange", "black")))
 		if("green")
 			new /obj/item/clothing/head/helmet/space/syndicate/green(src)

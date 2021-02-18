@@ -25,7 +25,7 @@
 	if(oneuse)
 		user.visible_message("<span class='warning'>You rip out the pages of the [src]!</span>")
 
-/obj/item/book/granter/traitsr/amogusbook
+/obj/item/book/granter/traitsr/ventcrawl_book
 	traits = TRAIT_VENTCRAWLER_ALWAYS
 	name = "Military Contortionist Guide"
 	traitname = "ventcrawling expert"
