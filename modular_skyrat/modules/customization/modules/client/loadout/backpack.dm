@@ -94,6 +94,11 @@
 	name = "Newspaper"
 	path = /obj/item/newspaper
 
+/datum/loadout_item/backpack/hhmirror
+	name = "Handheld Mirror"
+	path = /obj/item/hhmirror
+	cost = 3
+
 //TOYS
 /datum/loadout_item/backpack/toy
 	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_TOYS
