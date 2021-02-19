@@ -280,3 +280,4 @@
 	icon_state = "SwagOutfit"
 	inhand_icon_state = "SwagOutfit"
 	can_adjust = FALSE
+	mutant_variant = 0
