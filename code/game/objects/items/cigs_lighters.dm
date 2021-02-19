@@ -52,7 +52,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		attack_verb_continuous = string_list(list("burns", "sings"))
 		attack_verb_simple = string_list(list("burn", "sing"))
 		START_PROCESSING(SSobj, src)
-		update_icon()
+		update_appearance()
 
 /obj/item/match/proc/matchburnout()
 	if(lit)
@@ -169,10 +169,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	if(!proximity || lit) //can't dip if cigarette is lit (it will heat the reagents in the glass instead)
 		return
-	if(istype(glass))	//you can dip cigarettes into beakers
-		if(glass.reagents.trans_to(src, chem_volume, transfered_by = user))	//if reagents were transfered, show the message
+	if(istype(glass)) //you can dip cigarettes into beakers
+		if(glass.reagents.trans_to(src, chem_volume, transfered_by = user)) //if reagents were transfered, show the message
 			to_chat(user, "<span class='notice'>You dip \the [src] into \the [glass].</span>")
-		else			//if not, either the beaker was empty, or the cigarette was full
+		else //if not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume)
 				to_chat(user, "<span class='warning'>[glass] is empty!</span>")
 			else
@@ -549,7 +549,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		STOP_PROCESSING(SSobj, src)
 		return
 	open_flame()
-	if(reagents?.total_volume)	//	check if it has any reagents at all
+	if(reagents?.total_volume) // check if it has any reagents at all
 		handle_reagents()
 
 
@@ -643,7 +643,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	if(!overlay_state)
 		overlay_state = pick(overlay_list)
-	update_icon()
+	update_appearance()
 
 /obj/item/lighter/cyborg_unequip(mob/user)
 	if(!lit)
@@ -665,6 +665,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/lighter/update_icon_state()
 	icon_state = "[initial(icon_state)][lit ? "-on" : ""]"
+	return ..()
 
 /obj/item/lighter/proc/create_lighter_overlay()
 	return mutable_appearance(icon, "lighter_overlay_[overlay_state][lit ? "-on" : ""]")
@@ -691,7 +692,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		attack_verb_simple = null
 		STOP_PROCESSING(SSobj, src)
 	set_light_on(lit)
-	update_icon()
+	update_appearance()
 
 /obj/item/lighter/extinguish()
 	set_lit(FALSE)
@@ -790,7 +791,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. = ..()
 	if(!lighter_color)
 		lighter_color = pick(color_list)
-	update_icon()
+	update_appearance()
 
 /obj/item/lighter/greyscale/create_lighter_overlay()
 	var/mutable_appearance/lighter_overlay = ..()

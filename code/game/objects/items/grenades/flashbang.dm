@@ -20,7 +20,7 @@
 	qdel(src)
 
 /obj/item/grenade/flashbang/proc/bang(turf/T , mob/living/M)
-	if(M.stat == DEAD)	//They're dead!
+	if(M.stat == DEAD) //They're dead!
 		return
 	M.show_message("<span class='warning'>BANG</span>", MSG_AUDIBLE)
 	var/distance = max(0,get_dist(get_turf(src),T))
@@ -32,7 +32,7 @@
 		M.add_confusion(max(30/max(1,distance), 10))
 
 //Bang
-	if(!distance || loc == M || loc == M.loc)	//Stop allahu akbarring rooms with this.
+	if(!distance || loc == M || loc == M.loc) //Stop allahu akbarring rooms with this.
 		//M.Paralyze(20)  - SKYRAT EDIT REMOVAL - COMBAT
 		//M.Knockdown(200) - SKYRAT EDIT REMOVAL - COMBAT
 		M.StaminaKnockdown(40, TRUE, TRUE, knockdown_amt = 5 SECONDS)
@@ -91,7 +91,7 @@
 	qdel(src)
 
 /obj/item/grenade/stingbang/proc/pop(turf/T , mob/living/M)
-	if(M.stat == DEAD)	//They're dead!
+	if(M.stat == DEAD) //They're dead!
 		return
 	M.show_message("<span class='warning'>POP</span>", MSG_AUDIBLE)
 	var/distance = max(0,get_dist(get_turf(src),T))

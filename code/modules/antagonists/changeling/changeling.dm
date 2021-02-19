@@ -1,6 +1,6 @@
-#define LING_FAKEDEATH_TIME					400 //40 seconds
-#define LING_DEAD_GENETICDAMAGE_HEAL_CAP	50	//The lowest value of geneticdamage handle_changeling() can take it to while dead.
-#define LING_ABSORB_RECENT_SPEECH			8	//The amount of recent spoken lines to gain on absorbing a mob
+#define LING_FAKEDEATH_TIME 400 //40 seconds
+#define LING_DEAD_GENETICDAMAGE_HEAL_CAP 50 //The lowest value of geneticdamage handle_changeling() can take it to while dead.
+#define LING_ABSORB_RECENT_SPEECH 8 //The amount of recent spoken lines to gain on absorbing a mob
 
 /datum/antagonist/changeling
 	name = "Changeling"
@@ -78,7 +78,7 @@
 	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		forge_objectives()
-	owner.current.grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue. We are able to transform our body after all.
+	owner.current.grant_all_languages(FALSE, FALSE, TRUE) //Grants omnitongue. We are able to transform our body after all.
 	. = ..()
 
 /datum/antagonist/changeling/on_removal()
@@ -211,15 +211,15 @@
 		return FALSE
 
 //Called in life()
-/datum/antagonist/changeling/proc/regenerate()//grants the HuD in life.dm
+/datum/antagonist/changeling/proc/regenerate(delta_time, times_fired)//grants the HuD in life.dm
 	var/mob/living/carbon/the_ling = owner.current
 	if(istype(the_ling))
 		if(the_ling.stat == DEAD)
-			chem_charges = min(max(0, chem_charges + chem_recharge_rate - chem_recharge_slowdown), (chem_storage*0.5))
-			geneticdamage = max(LING_DEAD_GENETICDAMAGE_HEAL_CAP,geneticdamage-1)
+			chem_charges = min(max(0, chem_charges + ((chem_recharge_rate - chem_recharge_slowdown) * delta_time)), (chem_storage * 0.5))
+			geneticdamage = max(geneticdamage - (0.5 * delta_time), LING_DEAD_GENETICDAMAGE_HEAL_CAP)
 		else //not dead? no chem/geneticdamage caps.
-			chem_charges = min(max(0, chem_charges + chem_recharge_rate - chem_recharge_slowdown), chem_storage)
-			geneticdamage = max(0, geneticdamage-1)
+			chem_charges = min(max(0, chem_charges + ((chem_recharge_rate - chem_recharge_slowdown) * delta_time)), chem_storage)
+			geneticdamage = max(geneticdamage - (0.5 * delta_time), 0)
 
 
 /datum/antagonist/changeling/proc/get_dna(dna_owner)
@@ -360,7 +360,7 @@
 
 
 /datum/antagonist/changeling/proc/create_initial_profile()
-	var/mob/living/carbon/C = owner.current	//only carbons have dna now, so we have to typecaste
+	var/mob/living/carbon/C = owner.current //only carbons have dna now, so we have to typecaste
 	if(ishuman(C))
 		add_new_profile(C)
 
