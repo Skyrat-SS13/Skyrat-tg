@@ -28,13 +28,8 @@
 			var/obj/item/organ/appendix/A = affected_mob.getorgan(/obj/item/organ/appendix)
 			if(A)
 				A.inflamed = 1
-<<<<<<< HEAD
-				A.update_icon()
-			if(prob(3))
-=======
 				A.update_appearance()
 			if(DT_PROB(1.5, delta_time))
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 				to_chat(affected_mob, "<span class='warning'>You feel a stabbing pain in your abdomen!</span>")
 				affected_mob.adjustOrganLoss(ORGAN_SLOT_APPENDIX, 5)
 				affected_mob.Stun(rand(40, 60))
