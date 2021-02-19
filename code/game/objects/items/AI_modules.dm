@@ -468,7 +468,7 @@ AI MODULES
 	desc = "A suspicious circuit board modified beyond recognition. It appears to be a module for bleeding edge technology." //SKYRAT CHANGE 
 	laws = list("")
 	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
-	special_desc_jobs = list("Scientist, Roboticist, Research Director, Cyborg, AI") //SKYRAT CHANGE
+	special_desc_jobs = list("Scientist", "Roboticist", "Research Director", "Cyborg", "AI") //SKYRAT CHANGE
 	special_desc = "An AI law module hacked to upload priority laws." // Skyrat edit
 
 /obj/item/ai_module/syndicate/attack_self(mob/user)
