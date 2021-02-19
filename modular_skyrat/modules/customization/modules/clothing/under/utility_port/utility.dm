@@ -53,6 +53,7 @@
 	name = "red paramedic jumpsuit"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It's detailed with red stripes and medical symbols, denoting the wearer as a first-responder."
 	icon_state = "pmedred"
+	mutant_variants = NONE
 	permeability_coefficient = 0.5
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 0, ACID = 0) //Same stats as the paramedic uniform
 
