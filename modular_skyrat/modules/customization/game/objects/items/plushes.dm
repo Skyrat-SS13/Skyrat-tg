@@ -19,7 +19,7 @@
 	attack_verb_continuous = list("headbutts", "boops", "bapps", "bumps")
 	attack_verb_simple = list("headbutt", "boop", "bap", "bump")
 	//this ogg isn't working for some reason . the plush will use the basic squeak
-	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1) 
+	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/fermis
 	name = "medcat plushie"
@@ -94,6 +94,26 @@
 	attack_verb_continuous = list("geckers", "boops","nuzzles")
 	attack_verb_simple = list("gecker", "boop", "nuzzle")
 		//this ogg isn't working for some reason . the plush will use the basic squeak
-	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1) 
+	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 
+/obj/item/toy/plush/duffmoth
+  name = "Suspicious moth plushie"
+  desc = "A plushie depicting a certain moth. He probably got turned into a marketable plushie."
+  icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+  icon_state = "plushie_duffy"
+  inhand_icon_state = "plushie_duffy"
+  attack_verb_continuous = list("flutters", "flaps")
+  attack_verb_simple = list("flutter", "flap")
+  squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/mothsqueak.ogg'=1)
+
+
+/obj/item/toy/plush/leaplush
+	name = "Suspicious deer plushie"
+	desc = "A cute and all too familiar deer."
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "plushie_lea"
+	inhand_icon_state = "plushie_lea"
+	attack_verb_continuous = list("headbutts", "boops", "bapps", "bumps")
+	attack_verb_simple = list("headbutt", "boop", "bap", "bump")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/leaplush.ogg' = 1)
