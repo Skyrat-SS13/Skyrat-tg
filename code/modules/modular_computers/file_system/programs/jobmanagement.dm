@@ -21,12 +21,11 @@
 		"Head of Security",
 		"Chief Engineer",
 		"Research Director",
-		"Chief Medical Officer",
-		"Security Medic", //SKYRAT EDIT ADDITION - SEC_HUAL
-		"Clown", //SKYRAT EDIT: Host request
-		"Security Sergeant", //SKYRAT EDIT ADDITION - SEC_HAUL
-		"Blueshield",	//SKYRAT EDIT: Blueshield slots should never be above 1.
-		"Prisoner")
+		"Security Sergeant",
+		"Security Medic",
+		"Clown",
+		"Blueshield",
+		"Chief Medical Officer")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
 	var/max_relative_positions = 30 //30%: Seems reasonable, limit of 6 @ 20 players
