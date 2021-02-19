@@ -89,8 +89,6 @@
 		return
 	for(var/mob/M in viewers(5, location))
 		to_chat(M, notification)
-<<<<<<< HEAD
-=======
 
 ///Converts the pH into a tgui readable color - i.e. white and black text is readable over it. This is NOT the colourwheel for pHes however.
 /proc/convert_ph_to_readable_color(pH)
@@ -204,4 +202,3 @@
 		return
 	var/list/matching_reactions = GLOB.chemical_reactions_list_product_index[input_type]
 	return matching_reactions
->>>>>>> 864d6ca09b2 (Fermichem part 2.1: Adds a reaction/reagent lookup GUI! (#56868))
