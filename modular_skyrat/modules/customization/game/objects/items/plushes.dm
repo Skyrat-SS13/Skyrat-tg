@@ -114,6 +114,6 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_lea"
 	inhand_icon_state = "plushie_lea"
-	attack_verb_continuous = list("headbutts", "boops", "bapps", "bumps")
-	attack_verb_simple = list("headbutt", "boop", "bap", "bump")
+	attack_verb_continuous = list("headbutts", "plaps")
+	attack_verb_simple = list("headbutt", "plap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/leaplush.ogg' = 1)
