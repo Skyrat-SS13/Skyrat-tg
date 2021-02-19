@@ -78,6 +78,7 @@
 	. = combat_mode
 	combat_mode = new_mode
 	if(hud_used?.action_intent)
+<<<<<<< HEAD
 		hud_used.action_intent.update_icon()
 	//SKYRAT EDIT ADDITION BEGIN
 	if(istype(get_active_held_item(), /obj/item/gun))
@@ -94,6 +95,9 @@
 			set_combat_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
 
+=======
+		hud_used.action_intent.update_appearance()
+>>>>>>> e4079c87b85 (update_appearance (#55468))
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
 		return
 	if(combat_mode)

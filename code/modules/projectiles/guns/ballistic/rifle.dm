@@ -27,7 +27,7 @@
 		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 		process_chamber(FALSE, FALSE, FALSE)
 		bolt_locked = TRUE
-		update_icon()
+		update_appearance()
 		return
 	drop_bolt(user)
 
@@ -70,7 +70,7 @@
 	if(.)
 		spread = 36
 		can_bayonet = FALSE
-		update_icon()
+		update_appearance()
 
 /* - SKYRAT EDIT REMOVAL
 /obj/item/gun/ballistic/rifle/boltaction/attack_self(mob/user)
