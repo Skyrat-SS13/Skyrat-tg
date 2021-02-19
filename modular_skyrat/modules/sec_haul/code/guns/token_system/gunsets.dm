@@ -13,6 +13,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
 	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_BULKY
 	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
 	foldable = FALSE
@@ -256,6 +257,7 @@
 //CAPTAIN
 /obj/item/storage/box/gunset/pdh_captain
 	name = "pdh 'socom' supply box"
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt/nomag
 	spawnwithmagazine = FALSE
@@ -271,7 +273,7 @@
 //HOS
 /obj/item/storage/box/gunset/glock18_hos
 	name = "glock-18 supply box"
-
+	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/gun/ballistic/automatic/pistol/g18/nomag
 	spawnwithmagazine = FALSE
 
@@ -286,7 +288,7 @@
 //HOP
 /obj/item/storage/box/gunset/pdh_hop
 	name = "pdh 'osprey' supply box"
-
+	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/gun/ballistic/automatic/pistol/pdh/nomag
 	spawnwithmagazine = FALSE
 
@@ -300,7 +302,7 @@
 //CORPO
 /obj/item/storage/box/gunset/pdh_corpo
 	name = "pdh 'corporate' supply box"
-
+	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo/nomag
 	spawnwithmagazine = FALSE
 
@@ -316,7 +318,7 @@
 //SECURITY MEDIC
 /obj/item/storage/box/gunset/security_medic
 	name = "firefly supply box"
-
+	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/gun/ballistic/automatic/pistol/firefly/nomag
 	spawnwithmagazine = FALSE
 

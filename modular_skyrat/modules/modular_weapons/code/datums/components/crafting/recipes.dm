@@ -9,7 +9,7 @@
 				/obj/item/stack/package_wrap = 5,
 				/obj/item/stack/sheet/iron = 5,
 				/obj/item/stack/sheet/plasteel = 1)
-	tools = list(TOOL_SCREWDRIVER)
+	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
@@ -23,7 +23,7 @@
 				/obj/item/stack/package_wrap = 5,
 				/obj/item/stack/sheet/iron = 10,
 				/obj/item/stack/sheet/mineral/wood = 5)
-	tools = list(TOOL_SCREWDRIVER)
+	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
@@ -37,7 +37,7 @@
 				/obj/item/stack/package_wrap = 5,
 				/obj/item/stack/sheet/iron = 5,
 				/obj/item/stack/sheet/plasteel = 1)
-	tools = list(TOOL_SCREWDRIVER)
+	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
