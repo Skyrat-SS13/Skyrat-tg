@@ -43,8 +43,13 @@
 #define BLOB_NODE_PULSE_RANGE                       3           // The radius up to which the core activates structures, and up to which structures can be built
 #define BLOB_NODE_EXPAND_RANGE                      2           // Radius of automatic expansion
 #define BLOB_NODE_STRONG_REINFORCE_RANGE            0           // The radius of tiles surrounding the node that get upgraded
+<<<<<<< HEAD
 #define BLOB_NODE_REFLECTOR_REINFORCE_RANGE         0           
 #define BLOB_NODE_MAX_SPORES                        1           // Spores that nodes can maintain
+=======
+#define BLOB_NODE_REFLECTOR_REINFORCE_RANGE         0
+#define BLOB_NODE_MAX_SPORES                        0           // Spores that nodes can maintain
+>>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 
 #define BLOB_FACTORY_MAX_HP                         200
 #define BLOB_FACTORY_HP_REGEN                       1
@@ -65,7 +70,7 @@
 #define BLOB_STRONG_HP_REGEN                        2
 
 #define BLOB_REFLECTOR_MAX_HP                       150
-#define BLOB_REFLECTOR_HP_REGEN                     2  
+#define BLOB_REFLECTOR_HP_REGEN                     2
 
 
 // Structure purchasing
@@ -93,9 +98,15 @@
 
 #define BLOBMOB_HEALING_MULTIPLIER                  0.0125      // Multiplies by -maxHealth and heals the blob by this amount every blob_act
 #define BLOBMOB_SPORE_HEALTH                        30          // Base spore health
+<<<<<<< HEAD
 #define BLOBMOB_SPORE_SPAWN_COOLDOWN                8 SECONDS   
 #define BLOBMOB_SPORE_DMG_LOWER                     8
 #define BLOBMOB_SPORE_DMG_UPPER                     16
+=======
+#define BLOBMOB_SPORE_SPAWN_COOLDOWN                8 SECONDS
+#define BLOBMOB_SPORE_DMG_LOWER                     2
+#define BLOBMOB_SPORE_DMG_UPPER                     4
+>>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 #define BLOBMOB_BLOBBERNAUT_RESOURCE_COST           40          // Purchase price for making a blobbernaut
 #define BLOBMOB_BLOBBERNAUT_HEALTH                  150         // Base blobbernaut health
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_LOWER          20          // Damage without active overmind (core dead or xenobio mob)
@@ -104,6 +115,6 @@
 #define BLOBMOB_BLOBBERNAUT_DMG_UPPER               4
 #define BLOBMOB_BLOBBERNAUT_REAGENTATK_VOL          20          // Amounts of strain reagents applied on attack -- basically the main damage stat
 #define BLOBMOB_BLOBBERNAUT_DMG_OBJ                 60          // Damage dealth to objects/machines
-#define BLOBMOB_BLOBBERNAUT_HEALING_CORE            0.1         // Percentage multiplier HP restored on Life() when within 2 tiles of the blob core
-#define BLOBMOB_BLOBBERNAUT_HEALING_NODE            0.05        // Same, but for a nearby node
-#define BLOBMOB_BLOBBERNAUT_HEALTH_DECAY            0.025       // Percentage multiplier HP lost when not near blob tiles or without factory
+#define BLOBMOB_BLOBBERNAUT_HEALING_CORE            0.05        // Percentage multiplier HP restored on Life() when within 2 tiles of the blob core
+#define BLOBMOB_BLOBBERNAUT_HEALING_NODE            0.025       // Same, but for a nearby node
+#define BLOBMOB_BLOBBERNAUT_HEALTH_DECAY            0.0125      // Percentage multiplier HP lost when not near blob tiles or without factory

@@ -608,7 +608,11 @@
  * * can_overdose - Allows overdosing
  * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
  */
+<<<<<<< HEAD
 /datum/reagents/proc/metabolize(mob/living/carbon/C, can_overdose = FALSE, liverless = FALSE)
+=======
+/datum/reagents/proc/metabolize(mob/living/carbon/owner, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE)
+>>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 	var/list/cached_reagents = reagent_list
 	if(C)
 		expose_temperature(C.bodytemperature, 0.25)
@@ -644,14 +648,21 @@
 				continue
 		//SKYRAT EDIT ADDITION END
 
+<<<<<<< HEAD
 		if(C && R)
 			if(C.reagent_check(R) != TRUE)
 				if(liverless && !R.self_consuming) //need to be metabolized
+=======
+		if(owner && reagent)
+			if(owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
+				if(liverless && !reagent.self_consuming) //need to be metabolized
+>>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 					continue
 				if(!R.metabolizing)
 					R.metabolizing = TRUE
 					R.on_mob_metabolize(C)
 				if(can_overdose)
+<<<<<<< HEAD
 					if(R.overdose_threshold)
 						if(R.volume >= R.overdose_threshold && !R.overdosed)
 							R.overdosed = TRUE
@@ -667,6 +678,23 @@
 	if(C && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		C.updatehealth()
 		C.update_stamina()
+=======
+					if(reagent.overdose_threshold)
+						if(reagent.volume >= reagent.overdose_threshold && !reagent.overdosed)
+							reagent.overdosed = TRUE
+							need_mob_update += reagent.overdose_start(owner)
+							log_game("[key_name(owner)] has started overdosing on [reagent.name] at [reagent.volume] units.")
+					for(var/addiction in reagent.addiction_types)
+						owner.mind?.add_addiction_points(addiction, reagent.addiction_types[addiction] * REAGENTS_METABOLISM)
+
+					if(reagent.overdosed)
+						need_mob_update += reagent.overdose_process(owner, delta_time, times_fired)
+
+				need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
+	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
+		owner.updatehealth()
+		owner.update_stamina()
+>>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 	update_total()
 
 /// Signals that metabolization has stopped, triggering the end of trait-based effects
