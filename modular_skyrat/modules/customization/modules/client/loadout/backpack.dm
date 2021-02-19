@@ -174,3 +174,11 @@
 	path = /obj/item/crucifix
 	cost = 2
 	restricted_roles = list("Chaplain")
+
+/datum/loadout_item/backpack/toy/duffmoff
+	name = "Suspicious moth plushie"
+	path = /obj/item/toy/plush/duffmoth
+
+/datum/loadout_item/backpack/toy/leaplush
+	name = "Suspicious deer plushie"
+	path = /obj/item/toy/plush/leaplush
