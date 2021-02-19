@@ -15,15 +15,15 @@
 	icon_living = "horror"
 	icon_dead = "horror_dead"
 	mob_biotypes = MOB_ORGANIC
-	speed = 0
+	speed = 0.5
 	stop_automated_movement = FALSE
 	status_flags = CANPUSH
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	maxHealth = 1000 //Very durable
-	health = 1000
+	maxHealth = 500 //Very durable
+	health = 500
 	healable = 0
 	environment_smash = TRUE
 	melee_damage_lower = 40

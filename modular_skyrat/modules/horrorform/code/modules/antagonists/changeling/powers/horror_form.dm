@@ -1,4 +1,3 @@
-
 /datum/action/changeling/horror_form //Horror Form: turns the changeling into a terrifying abomination
 	name = "Horror Form"
 	desc = "We tear apart our human disguise, revealing our true form."
@@ -16,12 +15,13 @@
 
 /datum/action/changeling/horror_form/sting_action(mob/living/carbon/human/user)
 	if(!user || user.notransform)
-		return FALSE
-	var/datum/antagonist/changeling/cdatum = user.mind.has_antag_datum(/datum/antagonist/changeling)
-	if(world.time - cdatum.true_form_death < 1800)
-		var/timeleft = (cdatum.true_form_death + 1800) - world.time
-		to_chat(user,"<span class='warning'>We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes.</span>")
-		return FALSE
+		return 0
+	user.visible_message("<span class='warning'>[user] writhes and contorts, their body expanding to inhuman proportions!</span>", \
+						"<span class='danger'>We begin our transformation to our true form!</span>")
+	if(!do_after(user, 30, target = user, timed_action_flags = IGNORE_HELD_ITEM))
+		user.visible_message("<span class='warning'>[user]'s transformation abruptly reverts itself!</span>", \
+							"<span class='warning'>Our transformation has been interrupted!</span>")
+		return 0
 	user.visible_message("<span class='warning'>[user] grows into an abomination and lets out an awful scream!</span>", \
 						"<span class='userdanger'>We cast off our petty shell and enter our true form!</span>")
 	if(user.handcuffed)
