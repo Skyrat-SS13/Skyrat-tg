@@ -255,7 +255,7 @@ effective or pretty fucking useless.
 	icon = 'icons/obj/device.dmi'
 	icon_state = "jammer"
 	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
-	special_desc_jobs = list("Station Engineer, Chief Engineer, Cyborg, AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
+	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 12
