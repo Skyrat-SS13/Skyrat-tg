@@ -50,16 +50,8 @@
 	owner.derpspeech = min(owner.derpspeech + 5, 25)
 	if(DT_PROB(1.5, delta_time))
 		owner.emote("drool")
-<<<<<<< HEAD
-	//SKYRAT EDIT REMOVAL BEGIN - LRP
-	/*
-	else if(owner.stat == CONSCIOUS && prob(3))
-=======
 	else if(owner.stat == CONSCIOUS && DT_PROB(1.5, delta_time))
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 		owner.say(pick_list_replacements(BRAIN_DAMAGE_FILE, "brain_damage"), forced = "brain damage")
-	*/
-	//SKYRAT EDIT END
 	..()
 
 /datum/brain_trauma/mild/dumbness/on_lose()

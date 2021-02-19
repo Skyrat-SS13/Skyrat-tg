@@ -480,14 +480,9 @@
 	ADD_TRAIT(M, TRAIT_NOSOFTCRIT,type)
 	ADD_TRAIT(M, TRAIT_NOCRITDAMAGE,type)
 
-<<<<<<< HEAD
-/datum/reagent/medicine/c2/penthrite/on_mob_life(mob/living/carbon/human/H)
-	H.adjustStaminaLoss(-25 * REM) //SKYRAT EDIT ADDITION - COMBAT - makes your heart beat faster, fills you with energy. For miners
-	H.adjustOrganLoss(ORGAN_SLOT_STOMACH,0.25)
-=======
 /datum/reagent/medicine/c2/penthrite/on_mob_life(mob/living/carbon/human/H, delta_time, times_fired)
+	H.adjustStaminaLoss(-25 * REM) //SKYRAT EDIT ADDITION - COMBAT - makes your heart beat faster, fills you with energy. For miners
 	H.adjustOrganLoss(ORGAN_SLOT_STOMACH, 0.25 * REM * delta_time)
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 	if(H.health <= HEALTH_THRESHOLD_CRIT && H.health > (H.crit_threshold + HEALTH_THRESHOLD_FULLCRIT*2)) //we cannot save someone below our lowered crit threshold.
 
 		H.adjustToxLoss(-2 * REM * delta_time, 0)

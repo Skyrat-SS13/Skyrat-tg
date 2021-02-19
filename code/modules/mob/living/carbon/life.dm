@@ -352,13 +352,10 @@
 /mob/living/carbon/proc/handle_blood(delta_time, times_fired)
 	return
 
-<<<<<<< HEAD
-/mob/living/carbon/proc/handle_bodyparts()
+/mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired)
 	return //SKYRAT EDIT ADDITION
 	/* SKYRAT EDIT REMVOAL
-=======
 /mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired)
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 	var/stam_regen = FALSE
 	if(stam_regen_start_time <= world.time)
 		stam_regen = TRUE
@@ -369,12 +366,8 @@
 	for(var/I in bodyparts)
 		var/obj/item/bodypart/BP = I
 		if(BP.needs_processing)
-<<<<<<< HEAD
-			. |= BP.on_life(stam_regen)
-	*/ //SKYRAT EDIT END
-=======
 			. |= BP.on_life(delta_time, times_fired, stam_regen)
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
+	*/ //SKYRAT EDIT END
 
 /mob/living/carbon/proc/handle_organs(delta_time, times_fired)
 	if(stat != DEAD)
@@ -542,12 +535,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		handle_hallucinations(delta_time, times_fired)
 
 	if(drunkenness)
-<<<<<<< HEAD
-		//drunkenness = max(drunkenness - (drunkenness * 0.04) - 0.01, 0) //ORIGINAL
+		//drunkenness = max(drunkenness - ((0.005 + (drunkenness * 0.02)) * delta_time), 0) //ORIGINAL
 		drunkenness = max(drunkenness - (drunkenness * 0.01) - 0.01, 0) //SKYRAT EDIT CHANGE - booze
-=======
-		drunkenness = max(drunkenness - ((0.005 + (drunkenness * 0.02)) * delta_time), 0)
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 		if(drunkenness >= 6)
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
 			if(DT_PROB(16, delta_time))

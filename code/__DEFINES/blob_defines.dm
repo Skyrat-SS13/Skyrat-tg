@@ -43,13 +43,8 @@
 #define BLOB_NODE_PULSE_RANGE                       3           // The radius up to which the core activates structures, and up to which structures can be built
 #define BLOB_NODE_EXPAND_RANGE                      2           // Radius of automatic expansion
 #define BLOB_NODE_STRONG_REINFORCE_RANGE            0           // The radius of tiles surrounding the node that get upgraded
-<<<<<<< HEAD
-#define BLOB_NODE_REFLECTOR_REINFORCE_RANGE         0           
-#define BLOB_NODE_MAX_SPORES                        1           // Spores that nodes can maintain
-=======
 #define BLOB_NODE_REFLECTOR_REINFORCE_RANGE         0
-#define BLOB_NODE_MAX_SPORES                        0           // Spores that nodes can maintain
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
+#define BLOB_NODE_MAX_SPORES                        1           // Spores that nodes can maintain
 
 #define BLOB_FACTORY_MAX_HP                         200
 #define BLOB_FACTORY_HP_REGEN                       1
@@ -98,15 +93,9 @@
 
 #define BLOBMOB_HEALING_MULTIPLIER                  0.0125      // Multiplies by -maxHealth and heals the blob by this amount every blob_act
 #define BLOBMOB_SPORE_HEALTH                        30          // Base spore health
-<<<<<<< HEAD
-#define BLOBMOB_SPORE_SPAWN_COOLDOWN                8 SECONDS   
+#define BLOBMOB_SPORE_SPAWN_COOLDOWN                8 SECONDS
 #define BLOBMOB_SPORE_DMG_LOWER                     8
 #define BLOBMOB_SPORE_DMG_UPPER                     16
-=======
-#define BLOBMOB_SPORE_SPAWN_COOLDOWN                8 SECONDS
-#define BLOBMOB_SPORE_DMG_LOWER                     2
-#define BLOBMOB_SPORE_DMG_UPPER                     4
->>>>>>> e2e7ccdbdc4 (/mob/living/proc/Life(delta_time) (#55534))
 #define BLOBMOB_BLOBBERNAUT_RESOURCE_COST           40          // Purchase price for making a blobbernaut
 #define BLOBMOB_BLOBBERNAUT_HEALTH                  150         // Base blobbernaut health
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_LOWER          20          // Damage without active overmind (core dead or xenobio mob)
