@@ -591,7 +591,7 @@
  * * can_overdose - Allows overdosing
  * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
  */
-/datum/reagents/proc/metabolize(mob/living/carbon/owner, can_overdose = FALSE, liverless = FALSE)
+/datum/reagents/proc/metabolize(mob/living/carbon/owner, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE)
 	var/list/cached_reagents = reagent_list
 	if(owner)
 		expose_temperature(owner.bodytemperature, 0.25)
@@ -602,6 +602,7 @@
 
 		if(!owner)
 			owner = reagent.holder.my_atom
+
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(ishuman(owner))
 			var/mob/living/carbon/human/H = owner
@@ -625,11 +626,9 @@
 				reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
 				continue
 		//SKYRAT EDIT ADDITION END
-		if(!owner)
-			owner = reagent.holder.my_atom
 
 		if(owner && reagent)
-			if(owner.reagent_check(reagent) != TRUE)
+			if(owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
 				if(liverless && !reagent.self_consuming) //need to be metabolized
 					continue
 				if(!reagent.metabolizing)
@@ -645,9 +644,9 @@
 						owner.mind?.add_addiction_points(addiction, reagent.addiction_types[addiction] * REAGENTS_METABOLISM)
 
 					if(reagent.overdosed)
-						need_mob_update += reagent.overdose_process(owner)
+						need_mob_update += reagent.overdose_process(owner, delta_time, times_fired)
 
-				need_mob_update += reagent.on_mob_life(owner)
+				need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
 		owner.update_stamina()
