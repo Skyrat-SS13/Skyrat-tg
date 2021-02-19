@@ -36,6 +36,7 @@
 	. = ..()
 
 /obj/machinery/transformer_rp/update_icon_state()
+	. = ..()
 	if(machine_stat & (BROKEN|NOPOWER))
 		icon_state = "separator-AO0"
 	else
