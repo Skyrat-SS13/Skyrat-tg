@@ -58,13 +58,8 @@
 		return
 
 	for(var/i = max(1, stored_ammo.len), i <= max_ammo, i++)
-<<<<<<< HEAD
 		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
-	update_icon()
-=======
-		stored_ammo += new round_check(src)
 	update_ammo_count()
->>>>>>> e4079c87b85 (update_appearance (#55468))
 
 ///gets a round from the magazine, if keep is TRUE the round will stay in the gun
 /obj/item/ammo_box/proc/get_round(keep = FALSE)
@@ -163,20 +158,12 @@
 			icon_state = "[initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
 		if(AMMO_BOX_FULL_EMPTY_BASIC)
 			icon_state = "[initial(icon_state)]-[shells_left ? "full" : "empty"]"
 		//SKYRAT EDIT END
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	if(length(bullet_cost))
-		var/temp_materials = custom_materials.Copy()
-		for (var/material in bullet_cost)
-			var/material_amount = bullet_cost[material]
-			material_amount = (material_amount*stored_ammo.len) + base_cost[material]
-			temp_materials[material] = material_amount
-		set_custom_materials(temp_materials)
-=======
+	update_custom_materials()
 	return ..()
 
 /// Updates the amount of material in this ammo box according to how many bullets are left in it.
@@ -185,7 +172,6 @@
 	for(var/material in bullet_cost)
 		temp_materials[material] = (bullet_cost[material] * stored_ammo.len) + base_cost[material]
 	set_custom_materials(temp_materials)
->>>>>>> e4079c87b85 (update_appearance (#55468))
 
 ///Count of number of bullets in the magazine
 /obj/item/ammo_box/magazine/proc/ammo_count(countempties = TRUE)
@@ -211,8 +197,7 @@
 
 /obj/item/ammo_box/magazine/handle_atom_del(atom/A)
 	stored_ammo -= A
-<<<<<<< HEAD
-	update_icon()
+	update_ammo_count()
 
 //SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
 /obj/item/ammo_box/Destroy()
@@ -220,6 +205,3 @@
 	for(var/i in stored_ammo)
 		qdel(i)
 //SKYRAT EDIT END
-=======
-	update_ammo_count()
->>>>>>> e4079c87b85 (update_appearance (#55468))

@@ -122,6 +122,20 @@
 	//SKYRAT EDIT ADDITION BEGIN
 	if(multi_tile)
 		SetBounds()
+	//overlay2
+	vis_overlay1 = new()
+	vis_overlay1.icon = overlays_file
+	//overlay1
+	vis_overlay2 = new()
+	vis_overlay2.icon = overlays_file
+	vis_overlay2.layer = layer
+	vis_overlay2.plane = 1
+	vis_contents += vis_overlay1
+	vis_contents += vis_overlay2
+	if(multi_tile)
+		vis_overlay1.dir = src.dir
+		vis_overlay2.dir = src.dir
+	update_overlays()
 	//SKYRAT EDIT END
 	wires = set_wires()
 	if(frequency)
@@ -456,14 +470,10 @@
 		if(AIRLOCK_DENY, AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG)
 			icon_state = "nonexistenticonstate" //MADNESS
 
-<<<<<<< HEAD
 /* SKYRAT EDIT MOVED TO AIRLOCK.DM IN AESTHETICS MODULE
-/obj/machinery/door/airlock/proc/set_airlock_overlays(state)
-=======
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
 
->>>>>>> e4079c87b85 (update_appearance (#55468))
 	var/mutable_appearance/frame_overlay
 	var/mutable_appearance/filling_overlay
 	var/mutable_appearance/lights_overlay
@@ -598,43 +608,6 @@
 			if(note)
 				note_overlay = get_airlock_overlay("[notetype]_opening", note_overlay_file)
 
-<<<<<<< HEAD
-	cut_overlays()
-	add_overlay(frame_overlay)
-	add_overlay(filling_overlay)
-	add_overlay(lights_overlay)
-	add_overlay(panel_overlay)
-	add_overlay(weld_overlay)
-	add_overlay(sparks_overlay)
-	add_overlay(damag_overlay)
-	add_overlay(note_overlay)
-	add_overlay(seal_overlay)
-	check_unres()
-*/
-
-//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
-/obj/machinery/door/airlock/proc/check_unres() //unrestricted sides. This overlay indicates which directions the player can access even without an ID
-	if(hasPower() && unres_sides)
-		if(unres_sides & NORTH)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_n")
-			I.pixel_y = 32
-			add_overlay(I)
-		if(unres_sides & SOUTH)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_s")
-			I.pixel_y = -32
-			add_overlay(I)
-		if(unres_sides & EAST)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_e")
-			I.pixel_x = 32
-			add_overlay(I)
-		if(unres_sides & WEST)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_w")
-			I.pixel_x = -32
-			add_overlay(I)
-
-/* - SKYRAT ORIGINAL
-/obj/machinery/door/airlock/proc/check_unres() //unrestricted sides. This overlay indicates which directions the player can access even without an ID
-=======
 	. += frame_overlay
 	. += filling_overlay
 	. += lights_overlay
@@ -645,7 +618,6 @@
 	. += note_overlay
 	. += seal_overlay
 
->>>>>>> e4079c87b85 (update_appearance (#55468))
 	if(hasPower() && unres_sides)
 		if(unres_sides & NORTH)
 			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_n")
@@ -662,17 +634,9 @@
 		if(unres_sides & WEST)
 			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_w")
 			I.pixel_x = -32
-<<<<<<< HEAD
-			set_light(l_range = 2, l_power = 1)
-			add_overlay(I)
-	else
-		set_light(0)
-*/
-//SKYRAT EDIT END
-=======
 			. += I
+*/
 
->>>>>>> e4079c87b85 (update_appearance (#55468))
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
 		if("opening")

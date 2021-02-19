@@ -129,16 +129,13 @@
 		return ..()
 	if(!stored_extinguisher)
 		icon_state = "extinguisher_empty"
-<<<<<<< HEAD
-*/
-=======
 		return ..()
 	if(istype(stored_extinguisher, /obj/item/extinguisher/mini))
 		icon_state = "extinguisher_mini"
 		return ..()
 	icon_state = "extinguisher_full"
 	return ..()
->>>>>>> e4079c87b85 (update_appearance (#55468))
+*/
 
 /obj/structure/extinguisher_cabinet/obj_break(damage_flag)
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))

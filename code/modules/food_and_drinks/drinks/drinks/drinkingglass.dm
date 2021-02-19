@@ -42,12 +42,8 @@
 	var/datum/reagent/largest_reagent = reagents.get_master_reagent()
 	if(largest_reagent?.glass_icon_state)
 		icon_state = largest_reagent.glass_icon_state
-<<<<<<< HEAD
 		icon = largest_reagent.glass_icon || 'icons/obj/drinks.dmi' //SKYRAT EDIT ADDITION - CUSTOMIZATION
-	return NONE
-=======
 	return ..()
->>>>>>> e4079c87b85 (update_appearance (#55468))
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/update_overlays()
 	. = ..()
