@@ -388,7 +388,6 @@
 				return
 			recording_recipe = null
 			. = TRUE
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
 		if("custom_amount")
 			if(!beaker)
@@ -399,11 +398,9 @@
 			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
 			transferAmounts += customTransferAmount
 		//SKYRAT EDIT ADDITION END
-=======
 		if("reaction_lookup")
 			if(beaker)
 				beaker.reagents.ui_interact(usr)
->>>>>>> 864d6ca09b2 (Fermichem part 2.1: Adds a reaction/reagent lookup GUI! (#56868))
 
 /obj/machinery/chem_dispenser/attackby(obj/item/I, mob/living/user, params)
 	if(default_unfasten_wrench(user, I))
