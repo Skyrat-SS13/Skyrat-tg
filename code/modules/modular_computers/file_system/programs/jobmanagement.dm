@@ -1,6 +1,3 @@
-/// The time since the last job opening was created
-GLOBAL_VAR_INIT(time_last_changed_position, 0)
-
 /datum/computer_file/program/job_management
 	filename = "plexagoncore"
 	filedesc = "Plexagon HR Core"
@@ -24,7 +21,12 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Head of Security",
 		"Chief Engineer",
 		"Research Director",
-		"Chief Medical Officer")
+		"Chief Medical Officer",
+		"Security Medic", //SKYRAT EDIT ADDITION - SEC_HUAL
+		"Clown", //SKYRAT EDIT: Host request
+		"Security Sergeant", //SKYRAT EDIT ADDITION - SEC_HAUL
+		"Blueshield",	//SKYRAT EDIT: Blueshield slots should never be above 1.
+		"Prisoner")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
 	var/max_relative_positions = 30 //30%: Seems reasonable, limit of 6 @ 20 players
