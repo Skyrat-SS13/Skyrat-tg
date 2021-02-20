@@ -15,7 +15,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme
-	weight = 7
+	weight = 5
 	min_players = 15
 	max_occurrences = 2
 	earliest_start = 20 MINUTES
@@ -32,7 +32,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/random
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme/random
-	weight = 10
+	weight = 5
 	min_players = 15
 	max_occurrences = 3
 	earliest_start = 20 MINUTES
@@ -43,7 +43,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/moderate
 	name = "Coronal Mass Ejection: Moderate"
 	typepath = /datum/round_event/cme/moderate
-	weight = 7
+	weight = 5
 	min_players = 20
 	max_occurrences = 1
 	earliest_start = 35 MINUTES
@@ -54,7 +54,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/extreme
 	name = "Coronal Mass Ejection: Extreme"
 	typepath = /datum/round_event/cme/extreme
-	weight = 4
+	weight = 5
 	min_players = 25
 	max_occurrences = 1
 	earliest_start = 45 MINUTES
@@ -278,17 +278,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	minor_announce("[src.name] NEUTRALIZED.", "Solar Flare Log:")
 	new /obj/effect/particle_effect/smoke/bad(loc)
-	color = COLOR_WHITE
-	light_color = COLOR_WHITE
-	neutralized = TRUE
-
-/obj/effect/cme/extreme/anomalyNeutralize()
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	minor_announce("[src.name] NEUTRALIZED.", "Solar Flare Log:")
-	new /obj/effect/particle_effect/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
-		T.atmos_spawn_air("o2=15;plasma=15;TEMP=5778")
+		T.atmos_spawn_air("o2=30;plasma=30;TEMP=5778")
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
