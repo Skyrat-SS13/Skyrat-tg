@@ -175,10 +175,15 @@
 	cost = 2
 	restricted_roles = list("Chaplain")
 
-/datum/loadout_item/backpack/toy/duffmoff
+
+//Crew Plushies
+/datum/loadout_item/backpack/plushies
+	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_PLUSHIES
+
+/datum/loadout_item/backpack/plushies/duffmoff
 	name = "Suspicious moth plushie"
 	path = /obj/item/toy/plush/duffmoth
 
-/datum/loadout_item/backpack/toy/leaplush
+/datum/loadout_item/backpack/plushies/leaplush
 	name = "Suspicious deer plushie"
 	path = /obj/item/toy/plush/leaplush
