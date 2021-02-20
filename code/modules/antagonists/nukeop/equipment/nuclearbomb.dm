@@ -493,14 +493,7 @@
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
 
-	//SKYRAT EDIT ADDITION BEGIN
-	for(var/mob/living/M in GLOB.mob_living_list)
-		if(is_station_level(M.loc.z))
-			M.flash_act(100, TRUE, TRUE)
-			to_chat(M, "<span class='userdanger'>You feel your skin prickle with heat as you're ripped atom from atom in the raging inferno of a nuclear blast. Your last thought is 'Oh fuck.'</span>")
-			M.emote("scream")
-			M.gib()
-	//SKYRAT EDIT END
+	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) //SKYRAT EDIT ADDITION
 
 	//Cinematic
 	SSticker.mode.OnNukeExplosion(off_station)
@@ -597,6 +590,7 @@
 	disarm()
 	stationwide_foam()
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR NUCLEARBOMB.DM
 /proc/KillEveryoneOnZLevel(z)
 	if(!z)
 		return
@@ -604,6 +598,7 @@
 		var/mob/living/victim = _victim
 		if(victim.stat != DEAD && victim.z == z)
 			victim.gib()
+*/
 
 /*
 This is here to make the tiles around the station mininuke change when it's armed.
