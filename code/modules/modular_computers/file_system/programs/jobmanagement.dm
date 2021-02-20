@@ -24,6 +24,10 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Head of Security",
 		"Chief Engineer",
 		"Research Director",
+		"Security Sergeant",
+		"Security Medic",
+		"Clown",
+		"Blueshield",
 		"Chief Medical Officer")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
