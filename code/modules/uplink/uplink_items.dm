@@ -1968,17 +1968,13 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/autosurgeon/organ/syndicate/laser_arm
 	//restricted_roles = list("Roboticist", "Research Director") //SKYRAT EDIT: Removal
 
-// SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/uplink_item/role_restricted/ocd_device
 	name = "Organic Resources Disturbance Inducer"
 	desc = "A device that raises hell in organic resources indirectly. Single use."
-	cost = 5 //SKYRAT EDIT: Original Value: (2)
-	limited_stock = 2 //SKYRAT EDIT: Original Value: (1)
+	cost = 2
+	limited_stock = 1
 	item = /obj/item/devices/ocd_device
-	//restricted_roles = list("Head of Personnel", "Quartermaster") //SKYRAT EDIT: Removal
-*/
-// SKYRAT EDIT REMOVAL END
+	restricted_roles = list("Head of Personnel", "Quartermaster")
 
 /datum/uplink_item/role_restricted/meathook
 	name = "Butcher's Meat Hook"
