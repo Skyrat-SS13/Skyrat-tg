@@ -68,14 +68,15 @@
 	desc = "A simple leather covering. It's better than wearing nothing at least."
 	icon_state = "loincloth"
 	body_parts_covered = GROIN
-	can_adjust = FALSE
+	can_adjust = TRUE
 	mutant_variants = NONE
-	has_sensor = NONE
+	has_sensor = NO_SENSORS
+	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/under/costume/loincloth/sensor
 	name = "loincloth"
 	desc = "A synthetic leather covering. It's better than wearing nothing at least."
-	has_sensor = TRUE
+	has_sensor = HAS_SENSORS
 
 /obj/item/clothing/under/costume/loincloth/cloth
 	name = "loincloth"
@@ -85,4 +86,4 @@
 /obj/item/clothing/under/costume/loincloth/cloth/sensor
 	name = "loincloth"
 	desc = "A synthetic cloth covering. It's better than wearing nothing at least."
-	has_sensor = TRUE
+	has_sensor = HAS_SENSORS
