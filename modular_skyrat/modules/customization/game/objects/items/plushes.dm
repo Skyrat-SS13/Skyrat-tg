@@ -18,8 +18,7 @@
 	inhand_icon_state = "plushie_deer"
 	attack_verb_continuous = list("headbutts", "boops", "bapps", "bumps")
 	attack_verb_simple = list("headbutt", "boop", "bap", "bump")
-	//this ogg isn't working for some reason . the plush will use the basic squeak
-	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/fermis
 	name = "medcat plushie"
@@ -93,8 +92,7 @@
 	inhand_icon_state = "plushie_fox"
 	attack_verb_continuous = list("geckers", "boops","nuzzles")
 	attack_verb_simple = list("gecker", "boop", "nuzzle")
-		//this ogg isn't working for some reason . the plush will use the basic squeak
-	//squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 
 /obj/item/toy/plush/duffmoth
