@@ -18,7 +18,7 @@
 	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
 	new /obj/item/clothing/head/caphat(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
-	new /obj/item/clothing/under/rank/captain/parade/female(src) //SKYRAT EDIT ADD
+	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
 	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
 	new /obj/item/clothing/head/caphat/parade(src)
 	new /obj/item/clothing/suit/captunic(src)
@@ -76,7 +76,7 @@
 	new /obj/item/clothing/neck/cloak/hos(src)
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
+	new /obj/item/clothing/suit/armor/hos/parade/female(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
 	new /obj/item/clothing/suit/armor/hos/parade(src) // SKYRAT EDIT ADDITION
 	new /obj/item/clothing/suit/armor/vest/leather(src)
@@ -102,6 +102,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
+	new /obj/item/storage/box/gunset/glock18_hos(src)
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"

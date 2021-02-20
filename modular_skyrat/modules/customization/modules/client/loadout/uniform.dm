@@ -161,6 +161,14 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/uniform/suit/cybersleek	//Cyberpunk P.I. Outfit
+	name = "Sleek Modern Coat"
+	path = /obj/item/clothing/under/costume/cybersleek
+
+/datum/loadout_item/uniform/suit/cybersleek_long	//Alt of above
+	name = "Long Modern Coat"
+	path = /obj/item/clothing/under/costume/cybersleek/long
+
 /datum/loadout_item/uniform/suit/victorian
 	name = "Victorian Vest, Black Shirt"
 	path = /obj/item/clothing/under/costume/vic_vest
@@ -392,6 +400,12 @@
 /datum/loadout_item/uniform/sweater/bluesweater
 	name =  "Navy Commando Sweater"
 	path = /obj/item/clothing/under/sweater/blue
+
+/datum/loadout_item/uniform/sweater/polysweater
+	name = "Polychromic Commando Sweater"
+	path = /obj/item/clothing/under/misc/polysweater	
+	extra_info = LOADOUT_INFO_ONE_COLOR
+	cost = 3
 
 /datum/loadout_item/uniform/sweater/keyholesweater
 	name =  "Keyhole Sweater"
