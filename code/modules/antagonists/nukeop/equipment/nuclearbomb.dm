@@ -47,7 +47,7 @@
 		// If we're not exploding, set the alert level back to normal
 		set_safety()
 	GLOB.nuke_list -= src
-	explosion(src, 50, 70, 80, 100) //SKYRAT EDIT ADDITION
+	explosion(src, 50, 70, 80, 100, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	QDEL_NULL(countdown)
 	QDEL_NULL(core)
 	. = ..()
@@ -493,13 +493,6 @@
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
 
-	//Cinematic
-	SSticker.mode.OnNukeExplosion(off_station)
-	really_actually_explode(off_station)
-	SSticker.roundend_check_paused = FALSE
-
-/obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
-	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
 	//SKYRAT EDIT ADDITION BEGIN
 	for(var/mob/living/M in GLOB.mob_living_list)
 		if(is_station_level(M.loc.z))
@@ -509,6 +502,13 @@
 			M.gib()
 	//SKYRAT EDIT END
 
+	//Cinematic
+	SSticker.mode.OnNukeExplosion(off_station)
+	really_actually_explode(off_station)
+	SSticker.roundend_check_paused = FALSE
+
+/obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
+	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
 	//INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) SKYRAT EDIT REMOVAL
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
