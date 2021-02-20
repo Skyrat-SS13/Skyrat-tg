@@ -1,6 +1,6 @@
 /datum/loadout_item/backpack/donator/drawingtablet
 	name = "Drawing Tablet"
-	path = /obj/item/drawingtablet
+	path = /obj/item/canvas/drawingtablet
 	ckeywhitelist = list("thedragmeme")
 
 /datum/loadout_item/shoes/donator/heeled_jackboots

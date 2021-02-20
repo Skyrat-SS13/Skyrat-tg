@@ -399,10 +399,8 @@
 	. = ..()
 
 /obj/item/storage/backpack/duffelbag/cursed/process()
-	///don't process if it's somehow on the floor
-	if(!iscarbon(src.loc))
-		return
-	var/mob/living/carbon/user = src.loc
+
+	var/mob/living/carbon/user = loc
 	///check hp
 	if(obj_integrity == 0)
 		user.dropItemToGround(src, TRUE)
@@ -411,16 +409,16 @@
 	if((hunger > 50) && prob(20))
 		for(var/obj/item/I in contents)
 			if(IS_EDIBLE(I))
-				var/obj/item/food/F = I
-				F.forceMove(user.loc)
+				var/obj/item/food/hunger_breaks = I //If you fed them poundland microwave meals, it probably would kill them
+				hunger_breaks.forceMove(user.loc)
 				playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
 				///poisoned food damages it
-				if(istype(F, /obj/item/food/badrecipe))
+				if(istype(hunger_breaks, /obj/item/food/badrecipe))
 					to_chat(user, "<span class='warning'>The [name] grumbles!</span>")
 					obj_integrity -= 50
 				else
-					to_chat(user, "<span class='notice'>The [name] eats your [F]!</span>")
-				qdel(F)
+					to_chat(user, "<span class='notice'>The [name] eats your [hunger_breaks]!</span>")
+				QDEL_NULL(hunger_breaks)
 				hunger = 0
 				return
 		///no food found: it bites you and loses some hp
@@ -557,12 +555,14 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/syndie
-	name = "suspicious looking duffel bag"
+	name = "tactical duffel bag" //SKYRAT EDIT, was "suspicious-looking duffel bag". It's just a black duffel.
 	desc = "A large duffel bag for holding extra tactical supplies."
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	slowdown = 0
 	resistance_flags = FIRE_PROOF
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // Skyrat edit
 
 /obj/item/storage/backpack/duffelbag/syndie/ComponentInitialize()
 	. = ..()
@@ -591,7 +591,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery
 	name = "surgery duffel bag"
-	desc = "A suspicious looking duffel bag for holding surgery tools."
+	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools." //SKYRAT EDIT, to match the security surgery bag
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 

@@ -60,6 +60,14 @@
 	name = "Gear Harness"
 	path = /obj/item/clothing/under/misc/gear_harness
 
+/datum/loadout_item/uniform/loincloth	//Sensor version for station crew
+	name = "Leather Loincloth"
+	path = /obj/item/clothing/under/costume/loincloth/sensor
+
+/datum/loadout_item/uniform/loincloth/cloth	//Sensor version for station crew
+	name = "Cloth Loincloth"
+	path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
+
 /datum/loadout_item/uniform/pinkstripper
 	name = "Pink stripper outfit"
 	path = /obj/item/clothing/under/misc/stripper
@@ -400,6 +408,12 @@
 /datum/loadout_item/uniform/sweater/bluesweater
 	name =  "Navy Commando Sweater"
 	path = /obj/item/clothing/under/sweater/blue
+
+/datum/loadout_item/uniform/sweater/polysweater
+	name = "Polychromic Commando Sweater"
+	path = /obj/item/clothing/under/misc/polysweater	
+	extra_info = LOADOUT_INFO_ONE_COLOR
+	cost = 3
 
 /datum/loadout_item/uniform/sweater/keyholesweater
 	name =  "Keyhole Sweater"
