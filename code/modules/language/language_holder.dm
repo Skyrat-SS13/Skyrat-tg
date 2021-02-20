@@ -243,6 +243,14 @@ Key procs
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/narsie = list(LANGUAGE_ATOM))
 
+//SKYRAT EDIT: ADDS SYNTH LANGUAGE BACK
+/datum/language_holder/machine
+	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/machine = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+							/datum/language/machine = list(LANGUAGE_ATOM))
+//EDIT END
+
 /datum/language_holder/drone
 	understood_languages = list(/datum/language/drone = list(LANGUAGE_ATOM),
 								/datum/language/machine = list(LANGUAGE_ATOM))
