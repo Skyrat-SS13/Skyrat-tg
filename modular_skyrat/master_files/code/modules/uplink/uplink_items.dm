@@ -154,7 +154,7 @@
 	name = "Bulldog Operative bundle"
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops
-	cost = 25
+	cost = 28
 
 /datum/uplink_item/loadout_skyrat/bond
 	name = "Classic Spy bundle"
