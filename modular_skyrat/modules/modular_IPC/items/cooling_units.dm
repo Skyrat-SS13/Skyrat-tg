@@ -62,15 +62,3 @@
         update_power()
         user.adjust_bodytemperature(-65)//Enough to sustain you indefinitely in space, but not while on fire.
         cell.charge =  (cell.charge - coolingcost)
-
-
-
-
-
-
-
-
-
-
-
-
