@@ -60,6 +60,14 @@
 	name = "Gear Harness"
 	path = /obj/item/clothing/under/misc/gear_harness
 
+/datum/loadout_item/uniform/loincloth	//Sensor version for station crew
+	name = "Leather Loincloth"
+	path = /obj/item/clothing/under/costume/loincloth/sensor
+
+/datum/loadout_item/uniform/loincloth/cloth	//Sensor version for station crew
+	name = "Cloth Loincloth"
+	path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
+
 /datum/loadout_item/uniform/pinkstripper
 	name = "Pink stripper outfit"
 	path = /obj/item/clothing/under/misc/stripper
