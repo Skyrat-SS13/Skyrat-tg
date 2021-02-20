@@ -188,12 +188,15 @@
 	description = "In space construction the teleporter is often the first system brought online. \
 	This lonely, half-built teleporter is a sign of a proposed structure that for one reason or another just never got built."
 
+//SKYRAT EDIT REMOVAL BEGIN - Clownshit Removals
+/*
 /datum/map_template/ruin/space/crashedclownship
 	id = "crashedclownship"
 	suffix = "crashedclownship.dmm"
 	name = "Crashed Clown Ship"
 	description = "For centuries the promise of a new clown homeworld has been the siren call for countless clown vessels. \
 	Alas, the clown's lust for shenanigans means that successful voyages are almost unheard of, with most vessels falling to hilarious consequences almost immediately."
+*/
 
 /datum/map_template/ruin/space/crashedship
 	id = "crashedship"
@@ -283,11 +286,14 @@ suffix = "whiteshipruin_box.dmm"*/
 	name = "Hilbert Research Facility"
 	description = "A research facility of great bluespace discoveries. Long since abandoned, willingly or not..."
 
+//SKYRAT EDIT REMOVAL BEGIN - Clownshit Removals
+/*
 /datum/map_template/ruin/space/clownplanet
 	id = "clownplanet"
 	suffix = "clownplanet.dmm"
 	name = "Clown Planet"
 	description = "Thought lost in 2552, this minor planet has recently been rediscovered."
+*/
 
 /datum/map_template/ruin/space/clericden
 	id = "clericden"
