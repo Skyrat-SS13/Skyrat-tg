@@ -603,10 +603,15 @@ generate/load female uniform sprites matching all previously decided variables
 			. += "-digitigrade[BP.use_digitigrade]"
 		if(BP.dmg_overlay_type)
 			. += "-[BP.dmg_overlay_type]"
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(BP.organic_render)
 			. += "-OR"
 		//SKYRAT EDIT ADDITION END
+=======
+		if(HAS_TRAIT(BP, TRAIT_PLASMABURNT))
+			. += "-plasmaburnt"
+>>>>>>> c47ea136a9f (Fixes plasma lava limb conversion bug (#57031))
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"
