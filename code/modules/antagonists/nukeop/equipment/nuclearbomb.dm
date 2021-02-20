@@ -47,6 +47,7 @@
 		// If we're not exploding, set the alert level back to normal
 		set_safety()
 	GLOB.nuke_list -= src
+	explosion(src, 50, 70, 80, 100) //SKYRAT EDIT ADDITION
 	QDEL_NULL(countdown)
 	QDEL_NULL(core)
 	. = ..()
@@ -499,7 +500,16 @@
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
-	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z)
+	//SKYRAT EDIT ADDITION BEGIN
+	for(var/mob/living/M in GLOB.mob_living_list)
+		if(is_station_level(M.loc.z))
+			M.flash_act(100, TRUE, TRUE)
+			to_chat(M, "<span class='userdanger'>You feel your skin prickle with heat as you're ripped atom from atom in the raging inferno of a nuclear blast. Your last thought is 'Oh fuck.'</span>")
+			M.emote("scream")
+			M.gib()
+	//SKYRAT EDIT END
+
+	//INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) SKYRAT EDIT REMOVAL
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
 	if(off_station < 2)
