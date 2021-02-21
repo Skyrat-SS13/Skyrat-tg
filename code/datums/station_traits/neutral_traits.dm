@@ -21,7 +21,7 @@
 	show_in_report = TRUE
 	report_message = "For experimental purposes, this station AI might show divergence from default lawset. Do not meddle with this experiment."
 	trait_to_give = STATION_TRAIT_UNIQUE_AI
-*/	SKYRAT EDIT: End - DISABLES LAWSET RANDOMISATION
+*/	//SKYRAT EDIT: End - DISABLES LAWSET RANDOMISATION
 
 /datum/station_trait/ian_adventure
 	name = "Ian's Adventure"
