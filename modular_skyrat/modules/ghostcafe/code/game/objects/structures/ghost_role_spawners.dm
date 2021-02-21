@@ -11,7 +11,7 @@
 /obj/effect/mob_spawn/robot/ghostcafe
 	name = "Cafe Robotic Storage"
 	uses = -1
-	icon = 'modular_skyrat/icons/obj/machines/robot_storage.dmi'
+	icon = 'modular_skyrat/modules/ghostcafe/icons/obj/machines/robot_storage.dmi'
 	icon_state = "robostorage"
 	mob_name = "a cafe robot"
 	roundstart = FALSE
@@ -21,9 +21,7 @@
 	assignedrole = "Cafe Robot"
 	short_desc = "You are a Cafe Robot!"
 	flavour_text = "Who could have thought? This awesome local cafe accepts cyborgs too!"
-	skip_reentry_check = TRUE
-	banType = ROLE_GHOSTCAFE
-	mob_type = /mob/living/silicon/robot/modules/roleplay
+	mob_type = /mob/living/silicon/robot/model/roleplay
 
 /obj/effect/mob_spawn/robot/ghostcafe/special(mob/living/silicon/robot/new_spawn)
 	if(new_spawn.client)
