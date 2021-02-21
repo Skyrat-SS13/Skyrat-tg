@@ -3,11 +3,12 @@
 
 /obj/item/multitool/attack_self(mob/user)
 	if(selected_io)
-		selected_io = null
+		selected_io = nullhttps://github.com/Skyrat-SS13/Skyrat-tg/pull/3429/checks?check_run_id=1947822268
 		to_chat(user, "<span class='notice'>You clear the wired connection from the multitool.</span>")
 	update_icon()
 
 /obj/item/multitool/update_icon()
+	..()
 	if(selected_io)
 		icon_state = "multitool_red"
 	else
