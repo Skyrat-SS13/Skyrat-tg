@@ -157,10 +157,8 @@
 			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
 
 /obj/machinery/door/poddoor/update_icon_state()
-	if(density)
-		icon_state = "closed"
-	else
-		icon_state = "open"
+	. = ..()
+	icon_state = density ? "closed" : "open"
 
 /obj/machinery/door/poddoor/try_to_activate_door(mob/user)
 	return

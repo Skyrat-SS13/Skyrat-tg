@@ -174,3 +174,48 @@
 	path = /obj/item/crucifix
 	cost = 2
 	restricted_roles = list("Chaplain")
+
+
+//Plushies
+/datum/loadout_item/backpack/plushies
+	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_PLUSHIES
+
+/datum/loadout_item/backpack/plushies/sechound
+	name = "Sechound plushie"
+	path = /obj/item/toy/plush/sechound
+
+/datum/loadout_item/backpack/plushies/medihound
+	name = "Medihound plushie"
+	path = /obj/item/toy/plush/medihound
+
+/datum/loadout_item/backpack/plushies/scrubpuppy
+	name = "Scrubpuppy plushie"
+	path = /obj/item/toy/plush/scrubpuppy
+
+/datum/loadout_item/backpack/plushies/meddrake
+	name = "MediDrake Plushie"
+	path = /obj/item/toy/plush/meddrake
+
+/datum/loadout_item/backpack/plushies/secdrake
+	name = "SecDrake Plushie"
+	path = /obj/item/toy/plush/secdrake
+
+/datum/loadout_item/backpack/plushies/borbplushie
+	name = "Borb plushie"
+	path = /obj/item/toy/plush/borbplushie
+
+/datum/loadout_item/backpack/plushies/deer
+	name = "Deer plushie"
+	path = /obj/item/toy/plush/deer
+
+/datum/loadout_item/backpack/plushies/duffmoff
+	name = "Suspicious moth plushie"
+	path = /obj/item/toy/plush/duffmoth
+
+/datum/loadout_item/backpack/plushies/musicalduffy
+	name = "Suspicious musical moth"
+	path = /obj/item/instrument/musicalduffy
+
+/datum/loadout_item/backpack/plushies/leaplush
+	name = "Suspicious deer plushie"
+	path = /obj/item/toy/plush/leaplush
