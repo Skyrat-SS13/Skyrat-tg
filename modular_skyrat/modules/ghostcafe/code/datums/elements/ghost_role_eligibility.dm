@@ -1,3 +1,4 @@
+/* SKYRAT PORT Ghost Cafe -- Needs to be completely rewritten
 GLOBAL_LIST_EMPTY(ghost_eligible_mobs)
 
 GLOBAL_LIST_EMPTY(client_ghost_timeouts)
@@ -52,3 +53,4 @@ GLOBAL_LIST_EMPTY(client_ghost_timeouts)
 	if(free_ghost)
 		. |= COMPONENT_FREE_GHOSTING
 	return .
+*/

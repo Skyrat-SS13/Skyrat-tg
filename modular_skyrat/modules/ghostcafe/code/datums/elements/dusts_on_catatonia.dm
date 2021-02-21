@@ -20,7 +20,7 @@
 
 /datum/element/dusts_on_catatonia/process()
 	for(var/m in attached_mobs)
-		var/mob/M = m
+		var/mob/living/M = m
 		if(!M.key && !M.get_ghost())
 			M.dust(force = TRUE)
 			Detach(M)

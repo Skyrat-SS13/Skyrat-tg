@@ -15,6 +15,6 @@
 	UnregisterSignal(M,COMSIG_ENTER_AREA)
 
 /datum/element/dusts_on_leaving_area/proc/check_dust(datum/source, area/A)
-	var/mob/M = source
+	var/mob/living/M = source
 	if(istype(M) && !(A.type in area_types))
 		M.dust(force = TRUE)

@@ -28,13 +28,7 @@
 		new_spawn.updatename(new_spawn.client)
 		new_spawn.gender = NEUTER
 		var/area/A = get_area(src)
-		new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE)
+		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE) SKYRAT PORT -- Needs to be completely rewritten
 		new_spawn.AddElement(/datum/element/dusts_on_catatonia)
 		new_spawn.AddElement(/datum/element/dusts_on_leaving_area,list(A.type, /area/hilbertshotel, /area/centcom/holding/cafe, /area/centcom/holding/cafewar, /area/centcom/holding/cafebotany,
 		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark))
-		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
-		ADD_TRAIT(new_spawn, TRAIT_EXEMPT_HEALTH_EVENTS, GHOSTROLE_TRAIT)
-		ADD_TRAIT(new_spawn, TRAIT_NO_MIDROUND_ANTAG, GHOSTROLE_TRAIT) //The mob can't be made into a random antag, they are still eligible for ghost roles popups.
-		to_chat(new_spawn,"<span class='boldwarning'>Ghosting is free!</span>")
-		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
-		D.Grant(new_spawn)
