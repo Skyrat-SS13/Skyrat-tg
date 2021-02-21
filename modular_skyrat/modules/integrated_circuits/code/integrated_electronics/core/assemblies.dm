@@ -432,6 +432,7 @@
 	var/mutable_appearance/detail_overlay = mutable_appearance('modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_setups.dmi', "[icon_state]-color")
 	detail_overlay.color = detail_color
 	add_overlay(detail_overlay)
+	..()
 
 /obj/item/electronic_assembly/proc/return_total_complexity()
 	var/returnvalue = 0

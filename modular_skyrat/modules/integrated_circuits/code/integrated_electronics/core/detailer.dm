@@ -37,6 +37,7 @@
 	var/mutable_appearance/detail_overlay = mutable_appearance('modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_tools.dmi', "detailer-color")
 	detail_overlay.color = detail_color
 	add_overlay(detail_overlay)
+	..()
 
 /obj/item/integrated_electronics/detailer/attack_self(mob/user)
 	var/color_choice = input(user, "Select color.", "Assembly Detailer") as null|anything in color_list
