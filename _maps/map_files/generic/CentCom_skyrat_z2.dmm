@@ -1340,9 +1340,6 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "dT" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/machinery/door/poddoor/preopen{
 	id = "docklockdown"
 	},
@@ -1935,6 +1932,12 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/admiral)
+"fJ" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/machinery/syndicatebomb/training,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/security)
 "fL" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 1
@@ -2003,6 +2006,10 @@
 /area/cruiser_dock/research)
 "fY" = (
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/window{
+	name = "Genetics";
+	req_access_txt = "150"
+	},
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "fZ" = (
@@ -2144,6 +2151,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/structure/table/glass,
+/obj/item/storage/pill_bottle/mutadone,
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "gx" = (
@@ -2399,6 +2408,13 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/security/armory)
+"ho" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/obj/machinery/limbgrower,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical)
 "hp" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -3829,16 +3845,9 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "mM" = (
-/obj/effect/turf_decal/box/corners{
-	dir = 1
-	},
-/obj/effect/turf_decal/box/corners{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
-/obj/effect/turf_decal/box/corners{
-	dir = 4
-	},
-/obj/effect/turf_decal/box/corners,
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "mN" = (
@@ -5025,6 +5034,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
+/obj/structure/table/glass,
+/obj/item/sequence_scanner,
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "rc" = (
@@ -6295,6 +6306,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "vx" = (
@@ -6867,6 +6879,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/table/glass,
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "xl" = (
@@ -7262,6 +7275,9 @@
 /obj/item/clothing/glasses/welding,
 /obj/item/clothing/glasses/welding,
 /obj/effect/turf_decal/trimline/purple/filled/line,
+/obj/machinery/posialert{
+	pixel_y = 32
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "yP" = (
@@ -7278,6 +7294,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/machinery/dna_scannernew,
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "yS" = (
@@ -7448,17 +7465,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "zx" = (
-/obj/effect/turf_decal/tile/purple{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/purple{
-	dir = 8
-	},
-/obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/research)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/tank_holder/extinguisher,
+/turf/open/floor/plating,
+/area/cruiser_dock/maint)
 "zz" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -8504,7 +8514,6 @@
 /turf/open/floor/wood,
 /area/cruiser_dock/commons)
 "DN" = (
-/obj/structure/tank_holder/extinguisher,
 /obj/machinery/base_alarm{
 	pixel_y = 30
 	},
@@ -12119,6 +12128,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/research)
 "Sw" = (
@@ -12793,6 +12805,9 @@
 "Vh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/computer/scan_consolenew{
+	dir = 4
 	},
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
@@ -30590,7 +30605,7 @@ eF
 iG
 Ut
 LG
-ZG
+fJ
 Uq
 Ut
 LG
@@ -33183,7 +33198,7 @@ Ge
 OF
 go
 rX
-Ky
+ho
 IR
 Mj
 yX
@@ -36731,11 +36746,11 @@ aa
 aa
 aa
 Cj
-ab
-lI
-lI
-ab
-lI
+Cj
+Cj
+Cj
+Cj
+Cj
 QC
 ab
 XM
@@ -36987,11 +37002,11 @@ aa
 aa
 aa
 aa
-Cj
-Cj
-Cj
-Cj
-Cj
+aa
+aa
+aa
+aa
+aa
 Cj
 lI
 QC
@@ -50879,7 +50894,7 @@ aa
 aa
 aa
 Cj
-lI
+zx
 QC
 QC
 lI
@@ -51403,7 +51418,7 @@ FF
 SJ
 gK
 iH
-zx
+YU
 YU
 YU
 wy
