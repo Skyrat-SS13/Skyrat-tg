@@ -212,6 +212,10 @@
 	name = "Suspicious moth plushie"
 	path = /obj/item/toy/plush/duffmoth
 
+/datum/loadout_item/backpack/plushies/musicalduffy
+	name = "Suspicious musical moth"
+	path = /obj/item/instrument/musicalduffy
+
 /datum/loadout_item/backpack/plushies/leaplush
 	name = "Suspicious deer plushie"
 	path = /obj/item/toy/plush/leaplush
