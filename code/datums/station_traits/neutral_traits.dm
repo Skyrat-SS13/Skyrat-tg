@@ -13,7 +13,7 @@
 	report_message = "System's local planet has irregular atmospherical properties"
 	trait_to_give = STATION_TRAIT_UNNATURAL_ATMOSPHERE
 
-/* SKYRAT EDIT: DISABLES LAWSET RANDOMISATION
+/*	SKYRAT EDIT: Start - DISABLES LAWSET RANDOMISATION
 /datum/station_trait/unique_ai
 	name = "Unique AI"
 	trait_type = STATION_TRAIT_NEUTRAL
@@ -21,7 +21,7 @@
 	show_in_report = TRUE
 	report_message = "For experimental purposes, this station AI might show divergence from default lawset. Do not meddle with this experiment."
 	trait_to_give = STATION_TRAIT_UNIQUE_AI
-*///EDIT END
+*/	SKYRAT EDIT: End - DISABLES LAWSET RANDOMISATION
 
 /datum/station_trait/ian_adventure
 	name = "Ian's Adventure"
