@@ -209,13 +209,13 @@ SUBSYSTEM_DEF(mapping)
 	//Ocean ruins
 	var/list/ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS)
 	if (ocean_ruins.len)
-		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated), ocean_ruins_templates)
+		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_ruins_templates)
 		for (var/ocean_z in ocean_ruins)
 			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
 
 	var/list/station_ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS_NEARSTATION)
 	if (station_ocean_ruins.len)
-		seedRuins(station_ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated), ocean_station_ruins_templates)
+		seedRuins(station_ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_station_ruins_templates)
 		for (var/ocean_z in station_ocean_ruins)
 			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
 

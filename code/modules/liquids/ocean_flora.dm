@@ -80,6 +80,25 @@
 #undef SCRAP_METAL_YIELD_LOW
 #undef SCRAP_METAL_YIELD_HIGH
 
+/obj/effect/spawner/liquids_spawner
+	name = "Liquids Spawner"
+	var/reagent_list = list(/datum/reagent/water = ONE_LIQUIDS_HEIGHT*LIQUID_WAIST_LEVEL_HEIGHT)
+	var/temp = T20C
+
+/obj/effect/spawner/liquids_spawner/Initialize(mapload)
+	..()
+	if(!isturf(loc))
+		return INITIALIZE_HINT_QDEL
+	var/turf/T = loc
+	T.add_liquid_list(reagent_list, FALSE, temp)
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/spawner/liquids_spawner/acid_puddle
+	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT)
+
+/obj/effect/spawner/liquids_spawner/acid_waist
+	reagent_list = list(/datum/reagent/toxin/acid = ONE_LIQUIDS_HEIGHT*LIQUID_WAIST_LEVEL_HEIGHT)
+
 /obj/effect/spawner/ocean_curio
 	name = "Ocean Curio Spawner"
 	var/default_1 = /obj/structure/flora/ocean/seaweed

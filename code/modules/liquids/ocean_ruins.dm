@@ -22,6 +22,22 @@
 	cost = 10
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/ocean/mining_site
+	name = "Ocean Mining Site"
+	id = "ocean-miningsite"
+	description = "Ocean mining site."
+	suffix = "ocean_mining_above.dmm"
+	cost = 10
+	allow_duplicates = FALSE
+	always_spawn_with = list(/datum/map_template/ruin/ocean/mining_site_below = PLACE_BELOW)
+
+/datum/map_template/ruin/ocean/mining_site_below
+	name = "Ocean Mining Site Underground"
+	id = "ocean-miningsite-ug"
+	description = "Ocean mining site down."
+	suffix = "ocean_mining_below.dmm"
+	unpickable = TRUE
+
 //Some copypastas ahead, but it's how our ruins spawning system works
 /datum/map_template/ruin/ocean_station
 	prefix = "_maps/RandomRuins/OceanRuins/"
@@ -41,6 +57,14 @@
 
 /datum/map_template/ruin/trench
 	prefix = "_maps/RandomRuins/OceanRuins/"
+
+/datum/map_template/ruin/trench/biolab_research
+	name = "Ocean Biolab Research Station"
+	id = "ocean-biolab"
+	description = "Biolab in the ocean."
+	suffix = "ocean_bioweapon_lab.dmm"
+	cost = 10
+	allow_duplicates = FALSE
 
 /datum/map_template/ruin/trench/fissure
 	name = "Thermal Fissure"

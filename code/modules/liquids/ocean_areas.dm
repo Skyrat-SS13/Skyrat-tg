@@ -16,7 +16,7 @@
 	map_generator = /datum/map_generator/ocean_generator
 
 /area/ocean/trench
-	area_flags = NO_ALERTS | CAVES_ALLOWED | FLORA_ALLOWED
+	area_flags = NO_ALERTS | CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED
 	name = "The Trench"
 
 /area/ocean/trench/generated
@@ -29,4 +29,10 @@
 	area_flags = UNIQUE_AREA
 
 /area/ruin/ocean/bunker
+	area_flags = UNIQUE_AREA
+
+/area/ruin/ocean/bioweapon_research
+	area_flags = UNIQUE_AREA
+
+/area/ruin/ocean/mining_site
 	area_flags = UNIQUE_AREA

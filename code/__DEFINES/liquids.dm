@@ -23,6 +23,8 @@
 
 #define LIQUID_HEIGHT_DIVISOR 10
 
+#define ONE_LIQUIDS_HEIGHT LIQUID_HEIGHT_DIVISOR
+
 #define LIQUID_ATTRITION_TO_STOP_ACTIVITY 2
 
 //Percieved heat capacity for calculations with atmos sharing

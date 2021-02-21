@@ -85,8 +85,11 @@
 	name = "Trench Generator"
 	open_turf_types =  list(/turf/open/floor/plating/ocean/rock/heavy = 1)
 	closed_turf_types =  list(/turf/closed/mineral/random/ocean = 1)
-	flora_spawn_chance = 4
 
 	feature_spawn_list = null
-	mob_spawn_list = null
+
+	mob_spawn_list = list(/mob/living/simple_animal/hostile/carp = 1)
+	mob_spawn_chance = 1
+
+	flora_spawn_chance = 4
 	flora_spawn_list = list(/obj/structure/flora/rock = 1, /obj/structure/flora/rock/pile = 1)
