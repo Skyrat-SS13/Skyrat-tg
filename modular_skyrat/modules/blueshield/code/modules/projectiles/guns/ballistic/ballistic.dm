@@ -49,8 +49,6 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460
-	name = "ACA 460-10 modular magazine .460"
-	desc = "A hand-assembled custom sporting handgun by Alpha Centauri Armories, chambered in .460 Rowland Magnum. Loaded with 460 by default."
 	ammo_type = /obj/item/ammo_casing/b10mm/b460
 	round_type = AMMO_TYPE_460
 
