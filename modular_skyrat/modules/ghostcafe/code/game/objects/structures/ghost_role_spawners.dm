@@ -32,3 +32,77 @@
 		new_spawn.AddElement(/datum/element/dusts_on_catatonia)
 		new_spawn.AddElement(/datum/element/dusts_on_leaving_area,list(A.type, /area/hilbertshotel, /area/centcom/holding/cafe, /area/centcom/holding/cafewar, /area/centcom/holding/cafebotany,
 		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark))
+		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
+		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
+		to_chat(new_spawn,"<span class='boldwarning'>Ghosting is free!</span>")
+		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
+		D.Grant(new_spawn)
+
+
+/obj/effect/mob_spawn/human/ghostcafe
+	name = "Cafe Sleeper"
+	uses = -1
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	mob_name = "a cafe visitor"
+	roundstart = FALSE
+	anchored = TRUE
+	density = FALSE
+	death = FALSE
+	outfit = /datum/outfit/ghostcafe
+	assignedrole = "Cafe Visitor"
+	short_desc = "You are a Cafe Visitor!"
+	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
+
+/obj/effect/mob_spawn/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
+	if(new_spawn.client)
+		new_spawn.client.prefs.copy_to(new_spawn)
+		var/area/A = get_area(src)
+		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
+		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE)
+		new_spawn.AddElement(/datum/element/dusts_on_catatonia)
+		new_spawn.AddElement(/datum/element/dusts_on_leaving_area,list(A.type, /area/hilbertshotel, /area/centcom/holding/cafe, /area/centcom/holding/cafewar, /area/centcom/holding/cafebotany,
+		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark))
+		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
+		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
+		to_chat(new_spawn,"<span class='boldwarning'>Ghosting is free!</span>")
+		//to_chat(new_spawn,"<span class='narsiesmall'>Be warned: People who opt out of EORG will come here. Do not make the area uninhabitable and do NOT commit EORG. This is a safe-zone. If you attack people in EORG, you will be banned for griefing.</span>")
+		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
+		D.Grant(new_spawn)
+
+/datum/outfit/ghostcafe
+	name = "ID, jumpsuit and shoes"
+	uniform = /obj/item/clothing/under/color/random
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	r_hand = /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
+
+/datum/action/toggle_dead_chat_mob
+	icon_icon = 'icons/mob/mob.dmi'
+	button_icon_state = "ghost"
+	name = "Toggle deadchat"
+	desc = "Turn off or on your ability to hear ghosts."
+
+/datum/action/toggle_dead_chat_mob/Trigger()
+	if(!..())
+		return 0
+	var/mob/M = target
+	if(HAS_TRAIT_FROM(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT))
+		REMOVE_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
+		to_chat(M,"<span class='notice'>You're no longer hearing deadchat.</span>")
+	else
+		ADD_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
+		to_chat(M,"<span class='notice'>You're once again longer hearing deadchat.</span>")
+
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe
+	name = "cafe costuming kit"
+	desc = "Look just the way you did in life - or better!"
+
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe/PopulateContents() // Doesn't contain a PDA, for isolation reasons.
+	new /obj/item/clothing/under/chameleon(src)
+	new /obj/item/clothing/suit/chameleon(src)
+	new /obj/item/clothing/gloves/chameleon(src)
+	new /obj/item/clothing/shoes/chameleon(src)
+	new /obj/item/clothing/glasses/chameleon(src)
+	new /obj/item/clothing/head/chameleon(src)
+	new /obj/item/clothing/mask/chameleon(src)
+	new /obj/item/storage/backpack/chameleon(src)
