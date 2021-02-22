@@ -77,7 +77,7 @@
 /datum/outfit/syndicate_empty/prison_warden
 	name = "Syndicate Master At Arms"
 	head = /obj/item/clothing/head/hos/beret/syndicate
-	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated

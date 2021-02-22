@@ -41,6 +41,14 @@
 	icon_state = "wardenbluejacket"
 	body_parts_covered = CHEST|ARMS
 
+/obj/item/clothing/suit/armor/vest/warden/syndicate
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "master at arms's vest"
+	desc = "Stunning. Menacing. Perfect for the man who gets bullied for leaving the brig."
+	icon_state = "wardensyndie"
+
+
 // CAPTAIN
 
 /obj/item/clothing/suit/armor/captain/parade/female
