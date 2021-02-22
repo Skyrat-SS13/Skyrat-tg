@@ -143,11 +143,12 @@
 	desc = "A rugged, 10mm three-round burst modified SOCOM, usually found in the hands of CC Special Operatives. Supports extended magazines."
 	icon_state = "pdh_alt"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
-	fire_delay = 8
+	fire_delay = 3
 	fire_sound_volume = 30
+	burst_size = 3
 	spread = 1
 	realistic = TRUE
 	dirt_modifier = 0.1
