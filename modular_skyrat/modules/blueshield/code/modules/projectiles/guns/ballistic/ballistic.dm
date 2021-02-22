@@ -1,4 +1,9 @@
+#define AMMO_TYPE_LETHAL1 		"lethal"
+#define AMMO_TYPE_RUBBER1 		"rubber"
+#define AMMO_TYPE_HOLLOWPOINT1 	"hollowpoint"
+#define AMMO_TYPE_IHDF1 			"ihdf"
 #define AMMO_TYPE_460 			".460"
+//I HAVE TO DO THIS I AM SO SORRY OTHERWISE IT WONT COMPILE
 
 /obj/item/ammo_casing/b10mm/b460
 	name = "A .460 Rowland Magnum casing."
@@ -50,13 +55,13 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/hp
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
+	round_type = AMMO_TYPE_HOLLOWPOINT1
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/rubber
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
+	round_type = AMMO_TYPE_RUBBER1
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
-	round_type = AMMO_TYPE_IHDF
+	round_type = AMMO_TYPE_IHDF1
 
