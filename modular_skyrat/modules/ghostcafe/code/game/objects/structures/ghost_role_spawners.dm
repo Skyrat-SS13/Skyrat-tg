@@ -92,7 +92,7 @@
 		to_chat(M,"<span class='notice'>You're no longer hearing deadchat.</span>")
 	else
 		ADD_TRAIT(M,TRAIT_SIXTHSENSE,GHOSTROLE_TRAIT)
-		to_chat(M,"<span class='notice'>You're once again longer hearing deadchat.</span>")
+		to_chat(M,"<span class='notice'>You're once again hearing deadchat.</span>")
 
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
 	name = "cafe costuming kit"
