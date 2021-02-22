@@ -40,16 +40,5 @@
 	mat_container.bsm_insert((ore_rates[ore] * 1000), ore)
 
 /datum/component/material_container/proc/bsm_insert(amt, var/datum/material/mat)
-	if(!istype(mat))
-		mat = SSmaterials.GetMaterialRef(mat)
-	if(amt > 0 && has_space(amt))
-		var/total_amount_saved = total_amount
-		if(mat)
-			materials[mat] += amt
-			total_amount += amt
-		else
-			for(var/i in materials)
-				materials[i] += amt
-				total_amount += amt
-		return (total_amount - total_amount_saved)
-	return FALSE
+	materials.insert(amt,"Bluespace Miner",BREAKDOWN_FLAGS_ORM)
+		return
