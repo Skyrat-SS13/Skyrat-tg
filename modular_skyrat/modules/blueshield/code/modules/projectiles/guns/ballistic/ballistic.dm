@@ -46,20 +46,16 @@
 	name = "ACA 460-10 modular magazine .460"
 	desc = "A hand-assembled custom sporting handgun by Alpha Centauri Armories, chambered in .460 Rowland Magnum. Loaded with 460 by default."
 	ammo_type = /obj/item/ammo_casing/b10mm/b460
-	icon_state = "rowlandmodular_hollowpoint-full"
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/hp
 	name = "ACA 460-10 modular magazine Hollowpoint"
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	icon_state = "rowlandmodular_hollowpoint-full"
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/rubber
 	name = "ACA 460-10 modular magazine Rubber"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	icon_state = "rowlandmodular_rubber-full"
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/ihdf
 	name = "ACA 460-10 modular magazine IHDF"
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
-	icon_state = "rowlandmodular_ihdf-full"
 
