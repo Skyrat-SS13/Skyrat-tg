@@ -253,6 +253,19 @@
 /////////////////
 //JOB SPECIFIC GUNSETS
 ////////////////
+//BLUESHIELD
+/obj/item/storage/box/gunset/pdh_blueshield
+
+/obj/item/gun/ballistic/automatic/pistol/pdh/blueshield/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pdh_blueshield/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pdh/blueshield/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield/rubber(src)
 
 //CAPTAIN
 /obj/item/storage/box/gunset/pdh_captain
@@ -289,6 +302,7 @@
 /obj/item/storage/box/gunset/pdh_hop
 	name = "pdh 'osprey' supply box"
 	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/item/gun/ballistic/automatic/pistol/pdh/nomag
 	spawnwithmagazine = FALSE
 

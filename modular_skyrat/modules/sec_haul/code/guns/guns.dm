@@ -138,6 +138,40 @@
 	can_flashlight = TRUE
 	emp_damageable = FALSE
 
+/obj/item/gun/ballistic/automatic/pistol/pdh/blueshield
+	name = "\improper Armadyne PDH-6D 'SOCOM'"
+	desc = "A rugged, 10mm three-round burst modified SOCOM, usually found in the hands of CC Special Operatives. Supports extended magazines."
+	icon_state = "pdh_alt"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
+	can_suppress = FALSE
+	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
+	fire_delay = 8
+	fire_sound_volume = 30
+	spread = 1
+	realistic = TRUE
+	dirt_modifier = 0.1
+	can_flashlight = TRUE
+	emp_damageable = FALSE
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield
+	name = "pdh handgun magazine (10mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pdh"
+	ammo_type = /obj/item/ammo_casing/b10mm
+	caliber = "10mm"
+	max_ammo = 14
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield/hp
+	ammo_type = /obj/item/ammo_casing/b10mm/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_blueshield/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
 /obj/item/ammo_box/magazine/multi_sprite/pdh
 	name = "pdh handgun magazine (12mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
