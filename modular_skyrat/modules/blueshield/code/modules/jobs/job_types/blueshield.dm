@@ -30,7 +30,7 @@
 	id = /obj/item/card/id/silver
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/blueshield
-	gloves = /obj/item/clothing/gloves/krav_maga/combatglovesplus
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/heads/blueshield/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
