@@ -46,7 +46,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
 	name = "master at arms's vest"
 	desc = "Stunning. Menacing. Perfect for the man who gets bullied for leaving the brig."
-	icon_state = "wardensyndie"
+	icon_state = "warden_syndie"
 
 
 // CAPTAIN
