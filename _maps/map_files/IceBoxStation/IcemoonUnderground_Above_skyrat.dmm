@@ -5099,8 +5099,10 @@
 "AX" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/machinery/duct,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/camera{
+	c_tag = "Lower Dorms Southwest";
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/commons/dorms)
 "AY" = (
@@ -5232,18 +5234,19 @@
 "BQ" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/commons/dorms)
+"BR" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/machinery/duct,
 /obj/machinery/camera{
 	c_tag = "Lower Dorms Middle";
 	dir = 1
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
-"BR" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 9
-	},
-/turf/open/floor/iron,
-/area/commons/fitness)
 "Cc" = (
 /obj/machinery/atmospherics/components/binary/pump,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
@@ -5431,15 +5434,11 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "DG" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/machinery/door/airlock{
-	id_tag = "Dorm4";
-	name = "Dorm 4"
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 9
 	},
-/obj/machinery/duct,
-/turf/open/floor/wood,
-/area/commons/dorms)
+/turf/open/floor/iron,
+/area/commons/fitness)
 "DM" = (
 /obj/machinery/camera{
 	c_tag = "Xeno Test Chamber";
@@ -5595,12 +5594,13 @@
 /turf/open/floor/iron,
 /area/commons/dorms)
 "EE" = (
-/obj/machinery/computer/security/telescreen/entertainment{
-	pixel_x = -32;
-	pixel_y = 32
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/door/airlock{
+	id_tag = "Dorm4";
+	name = "Dorm 4"
 	},
-/obj/structure/table/wood,
-/obj/effect/spawner/lootdrop/donkpockets,
+/obj/machinery/duct,
 /turf/open/floor/wood,
 /area/commons/dorms)
 "EG" = (
@@ -5812,6 +5812,15 @@
 /turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 "Gb" = (
+/obj/machinery/computer/security/telescreen/entertainment{
+	pixel_x = -32;
+	pixel_y = 32
+	},
+/obj/structure/table/wood,
+/obj/effect/spawner/lootdrop/donkpockets,
+/turf/open/floor/wood,
+/area/commons/dorms)
+"Gc" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/button/door{
@@ -5823,10 +5832,6 @@
 	},
 /obj/machinery/duct,
 /turf/open/floor/wood,
-/area/commons/dorms)
-"Gc" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet/green,
 /area/commons/dorms)
 "Gl" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -6228,6 +6233,7 @@
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "IN" = (
+/obj/structure/dresser,
 /turf/open/floor/carpet/green,
 /area/commons/dorms)
 "IO" = (
@@ -6237,8 +6243,6 @@
 /turf/open/floor/wood,
 /area/commons/dorms)
 "IQ" = (
-/obj/item/bedsheet/dorms,
-/obj/structure/bed,
 /turf/open/floor/carpet/green,
 /area/commons/dorms)
 "IV" = (
@@ -6268,7 +6272,8 @@
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "Js" = (
-/obj/structure/table/wood,
+/obj/item/bedsheet/dorms,
+/obj/structure/bed,
 /turf/open/floor/carpet/green,
 /area/commons/dorms)
 "Jv" = (
@@ -6293,25 +6298,16 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "Jx" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/green,
+/area/commons/dorms)
+"Jz" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 5
 	},
 /obj/machinery/duct,
 /turf/open/floor/wood,
-/area/commons/dorms)
-"Jz" = (
-/obj/machinery/door/airlock/external{
-	req_access_txt = "19"
-	},
-/obj/effect/turf_decal/trimline/neutral/filled/warning,
-/obj/effect/turf_decal/trimline/neutral/filled/warning{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/turf/open/floor/iron,
 /area/commons/dorms)
 "JA" = (
 /obj/machinery/door/poddoor/preopen{
@@ -6336,6 +6332,19 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"JK" = (
+/obj/machinery/door/airlock/external{
+	req_access_txt = "19"
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/commons/dorms)
 "JM" = (
 /obj/structure/closet/crate/internals,
 /obj/item/tank/internals/emergency_oxygen,
@@ -35242,7 +35251,7 @@ QK
 ul
 vz
 Ob
-Jz
+JK
 Am
 Fp
 Fp
@@ -36265,7 +36274,7 @@ Lm
 Us
 Us
 Hc
-mf
+AX
 in
 in
 in
@@ -36524,7 +36533,7 @@ Us
 Hc
 mf
 in
-EE
+Gb
 oJ
 LP
 RQ
@@ -37036,11 +37045,11 @@ yt
 Us
 Us
 zO
-AX
-DG
-Gb
+BQ
+EE
+Gc
 lH
-Jx
+Jz
 cy
 cy
 in
@@ -37552,8 +37561,8 @@ Us
 Hc
 mf
 in
-Gc
 IN
+IQ
 lg
 ms
 pL
@@ -37809,8 +37818,8 @@ Us
 Hc
 mf
 in
-IN
-IN
+IQ
+IQ
 EN
 qD
 yj
@@ -38066,8 +38075,8 @@ Us
 Hc
 mf
 in
-IQ
 Js
+Jx
 lt
 nD
 LG
@@ -38578,7 +38587,7 @@ Lm
 Us
 Us
 Hc
-BQ
+BR
 in
 yf
 il
@@ -44232,7 +44241,7 @@ zK
 qs
 qs
 qs
-BR
+DG
 YU
 UR
 aA
