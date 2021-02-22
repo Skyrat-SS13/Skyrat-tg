@@ -230,15 +230,6 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
-/datum/design/hospital_gown	//SKYRAT EDIT ADDITION START
-	name = "Hospital Gown"
-	id = "hospital_gown"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 2500)
-	build_path = /obj/item/clothing/suit/toggle/labcoat/hospitalgown
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE	//SKYRAT EDIT ADDITION END
-
 /datum/design/laserscalpel
 	name = "Laser Scalpel"
 	desc = "A laser scalpel used for precise cutting."

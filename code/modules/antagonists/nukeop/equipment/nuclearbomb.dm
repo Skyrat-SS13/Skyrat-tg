@@ -47,7 +47,6 @@
 		// If we're not exploding, set the alert level back to normal
 		set_safety()
 	GLOB.nuke_list -= src
-	explosion(src, 50, 70, 80, 100, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	QDEL_NULL(countdown)
 	QDEL_NULL(core)
 	. = ..()
@@ -493,8 +492,6 @@
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
 
-	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) //SKYRAT EDIT ADDITION
-
 	//Cinematic
 	SSticker.mode.OnNukeExplosion(off_station)
 	really_actually_explode(off_station)
@@ -502,7 +499,7 @@
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
-	//INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) SKYRAT EDIT REMOVAL
+	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z)
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
 	if(off_station < 2)
@@ -590,7 +587,6 @@
 	disarm()
 	stationwide_foam()
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR NUCLEARBOMB.DM
 /proc/KillEveryoneOnZLevel(z)
 	if(!z)
 		return
@@ -598,7 +594,6 @@
 		var/mob/living/victim = _victim
 		if(victim.stat != DEAD && victim.z == z)
 			victim.gib()
-*/
 
 /*
 This is here to make the tiles around the station mininuke change when it's armed.

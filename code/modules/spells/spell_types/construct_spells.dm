@@ -1,19 +1,19 @@
 //////////////////////////////Construct Spells/////////////////////////
 
 /obj/effect/proc_holder/spell/aoe_turf/conjure/construct/lesser
-	charge_max = 3 MINUTES
+	charge_max = 1800
 	action_background_icon_state = "bg_demon"
 
 /obj/effect/proc_holder/spell/aoe_turf/conjure/construct/lesser/cult
 	clothes_req = TRUE
-	charge_max = 250 SECONDS
+	charge_max = 2500
 
 /obj/effect/proc_holder/spell/aoe_turf/area_conversion
 	name = "Area Conversion"
 	desc = "This spell instantly converts a small area around you."
 
 	school = "transmutation"
-	charge_max = 5 SECONDS
+	charge_max = 50
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -33,7 +33,7 @@
 	desc = "This spell constructs a cult floor."
 
 	school = "conjuration"
-	charge_max = 2 SECONDS
+	charge_max = 20
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -49,7 +49,7 @@
 	desc = "This spell constructs a cult wall."
 
 	school = "conjuration"
-	charge_max = 10 SECONDS
+	charge_max = 100
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -66,7 +66,7 @@
 	desc = "This spell constructs a reinforced metal wall."
 
 	school = "conjuration"
-	charge_max = 30 SECONDS
+	charge_max = 300
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -79,7 +79,7 @@
 	desc = "This spell reaches into Nar'Sie's realm, summoning one of the legendary fragments across time and space."
 
 	school = "conjuration"
-	charge_max = 4 MINUTES
+	charge_max = 2400
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -92,22 +92,19 @@
 
 /obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone/cult
 	clothes_req = TRUE
-	charge_max = 6 MINUTES
+	charge_max = 3600
 
 /obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone/noncult
 	summon_type = list(/obj/item/soulstone/anybody)
 
-/obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone/purified
+/obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone/noncult/purified
 	summon_type = list(/obj/item/soulstone/anybody/purified)
-
-/obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone/mystic
-	summon_type = list(/obj/item/soulstone/mystic)
 
 /obj/effect/proc_holder/spell/targeted/forcewall/cult
 	name = "Shield"
 	desc = "This spell creates a temporary forcefield to shield yourself and allies from incoming fire."
 	school = "transmutation"
-	charge_max = 40 SECONDS
+	charge_max = 400
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -123,16 +120,17 @@
 	desc = "This spell allows you to pass through walls."
 
 	school = "transmutation"
-	charge_max = 25 SECONDS
+	charge_max = 250
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
-	jaunt_duration = 5 SECONDS
+	range = -1
+	include_user = TRUE
+	jaunt_duration = 50 //in deciseconds
 	action_icon = 'icons/mob/actions/actions_cult.dmi'
 	action_icon_state = "phaseshift"
 	action_background_icon_state = "bg_demon"
-	jaunt_in_time = 0.6 SECONDS
-	jaunt_out_time = 0.6 SECONDS
+	jaunt_in_time = 6
 	jaunt_in_type = /obj/effect/temp_visual/dir_setting/wraith
 	jaunt_out_type = /obj/effect/temp_visual/dir_setting/wraith/out
 
@@ -143,16 +141,12 @@
 	jaunt_in_type = /obj/effect/temp_visual/dir_setting/wraith/angelic
 	jaunt_out_type = /obj/effect/temp_visual/dir_setting/wraith/out/angelic
 
-/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift/mystic
-	jaunt_in_type = /obj/effect/temp_visual/dir_setting/wraith/mystic
-	jaunt_out_type = /obj/effect/temp_visual/dir_setting/wraith/out/mystic
-
 /obj/effect/proc_holder/spell/targeted/projectile/magic_missile/lesser
 	name = "Lesser Magic Missile"
 	desc = "This spell fires several, slow moving, magic projectiles at nearby targets."
 
 	school = "evocation"
-	charge_max = 40 SECONDS
+	charge_max = 400
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -170,7 +164,7 @@
 	desc = "This spell spawns a cloud of paralysing smoke."
 
 	school = "conjuration"
-	charge_max = 20 SECONDS
+	charge_max = 200
 	clothes_req = FALSE
 	invocation = "none"
 	invocation_type = "none"
@@ -186,7 +180,7 @@
 /obj/effect/proc_holder/spell/pointed/abyssal_gaze
 	name = "Abyssal Gaze"
 	desc = "This spell instills a deep terror in your target, temporarily chilling and blinding it."
-	charge_max = 75 SECONDS
+	charge_max = 750
 	range = 5
 	stat_allowed = FALSE
 	school = "evocation"
@@ -246,7 +240,7 @@
 /obj/effect/proc_holder/spell/pointed/dominate
 	name = "Dominate"
 	desc = "This spell dominates the mind of a lesser creature to the will of Nar'Sie, allying it only to her direct followers."
-	charge_max = 1 MINUTES
+	charge_max = 600
 	range = 7
 	stat_allowed = FALSE
 	school = "evocation"
@@ -301,7 +295,7 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift/golem
-	charge_max = 80 SECONDS
+	charge_max = 800
 	jaunt_in_type = /obj/effect/temp_visual/dir_setting/cult/phase
 	jaunt_out_type = /obj/effect/temp_visual/dir_setting/cult/phase/out
 
@@ -309,7 +303,7 @@
 	name = "Gauntlet Echo"
 	desc = "Channels energy into your gauntlet - firing its essence forward in a slow moving, yet devastating, attack."
 	proj_type = /obj/projectile/magic/spell/juggernaut
-	charge_max = 35 SECONDS
+	charge_max = 350
 	clothes_req = FALSE
 	action_icon = 'icons/mob/actions/actions_cult.dmi'
 	action_icon_state = "cultfist"

@@ -7,14 +7,3 @@
 	inhand_icon_state = "labcoat"
 	body_parts_covered = CHEST|GROIN
 	mutant_variants = NONE
-
-/obj/item/clothing/suit/toggle/labcoat/hospitalgown
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
-	name = "hospital gown"
-	desc = "A complicated drapery with an assortment of velcros and strings, designed to keep a patient modest during medical stay and surgeries."
-	icon_state = "hgown"
-	togglename = "drapes"
-	body_parts_covered = NONE
-	armor = NONE
-	equip_delay_other = 8

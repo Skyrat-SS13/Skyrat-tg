@@ -114,19 +114,7 @@
 		            /obj/item/clothing/under/rank/civilian/bartender/purple = 2,
 		            /obj/item/clothing/suit/toggle/suspenders/blue = 2,
 		            /obj/item/clothing/suit/toggle/suspenders/gray = 2,
-					/obj/item/clothing/under/costume/bathrobe = 5, //SKYRAT EDIT ADDITION
-					/obj/item/clothing/under/misc/poly_shirt = 3, // SKYRAT EDIT BEGIN - Adds polychromic gear to ClothesMates
-					/obj/item/clothing/under/misc/poly_kilt = 3,
-					/obj/item/clothing/under/misc/poly_tanktop = 3,
-					/obj/item/clothing/under/misc/poly_tanktop/female = 3,
-					/obj/item/clothing/under/misc/polyjumpsuit = 3,
-					/obj/item/clothing/under/dress/skirt/polychromic = 3,
-					/obj/item/clothing/under/dress/skirt/polychromic/pleated = 3,
-					/obj/item/clothing/suit/hooded/wintercoat/polychromic = 5,
-					/obj/item/clothing/neck/cloak/polychromic = 3,
-					/obj/item/clothing/neck/cloak/polychromic/veil = 3,
-					/obj/item/clothing/neck/cloak/polychromic/shroud = 3,
-					/obj/item/clothing/neck/cloak/polychromic/boat = 3)	// SKYRAT EDIT END - Adds polychromic gear to ClothesMates
+					/obj/item/clothing/under/costume/bathrobe = 5)	//SKYRAT EDIT ADDITION
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 1,
 		              /obj/item/clothing/mask/balaclava = 1,

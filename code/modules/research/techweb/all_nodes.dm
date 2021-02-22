@@ -59,8 +59,8 @@
 	description = "Basic medical tools and equipment."
 	design_ids = list("cybernetic_liver", "cybernetic_heart", "cybernetic_lungs","cybernetic_stomach", "scalpel",
 					"blood_filter", "circular_saw", "bonesetter", "surgicaldrill", "retractor", "cautery", "hemostat",
-					"stethoscope", "surgical_drapes", "hospital_gown", "syringe", "plumbing_rcd", "beaker", "large_beaker", "xlarge_beaker",
-					"dropper", "defibmountdefault", "surgical_tape", "portable_chem_mixer")	//SKYRAT EDIT ADDITION: added "surgical_drapes"
+					"stethoscope", "surgical_drapes", "syringe", "plumbing_rcd", "beaker", "large_beaker", "xlarge_beaker",
+					"dropper", "defibmountdefault", "surgical_tape", "portable_chem_mixer")
 
 /////////////////////////Biotech/////////////////////////
 /datum/techweb_node/biotech
