@@ -29,12 +29,11 @@
 	uniform = /obj/item/clothing/under/rank/security/blueshield
 	id = /obj/item/card/id/silver
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
-	suit_store = /obj/item/gun/ballistic/automatic/pistol/m1911
-	gloves = /obj/item/clothing/gloves/krav_maga/combatglovesplus
+	gloves = /obj/item/clothing/gloves/combat
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/heads/blueshield/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	backpack_contents = list(/obj/item/ammo_box/magazine/m45 = 3,/obj/item/melee/baton/blueshieldprod = 1)
+	backpack_contents = list(/obj/item/melee/baton/blueshieldprod = 1)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -42,6 +41,11 @@
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/pda/security
+
+/datum/outfit/job/blueshield/post_equip(mob/living/carbon/human/H)
+	var/datum/martial_art/cqc/MA = new
+	MA.teach(H)
+
 
 /datum/outfit/plasmaman/blueshield
 	name = "Blueshield Plasmaman"
