@@ -75,6 +75,7 @@
 	uniform = /obj/item/clothing/under/color/random
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	r_hand = /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
+	id = /obj/item/card/id/ghost_cafe
 
 /datum/action/toggle_dead_chat_mob
 	icon_icon = 'icons/mob/mob.dmi'
@@ -106,3 +107,17 @@
 	new /obj/item/clothing/head/chameleon(src)
 	new /obj/item/clothing/mask/chameleon(src)
 	new /obj/item/storage/backpack/chameleon(src)
+
+/obj/item/card/id/ghost_cafe
+	name = "\improper Cafe ID"
+	id_type_name = "\improper Cafe ID"
+	desc = "An Cafe Visitor card."
+	icon_state = "silver_id"
+	registered_name = "Cafe Visitor"
+	assignment = "Cafe Visitor"
+	uses_overlays = FALSE
+	registered_age = null
+
+/obj/item/card/id/ghost_cafe/Initialize()
+	access = get_all_accesses()
+	. = ..()

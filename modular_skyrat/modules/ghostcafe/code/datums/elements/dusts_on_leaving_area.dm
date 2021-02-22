@@ -17,4 +17,4 @@
 /datum/element/dusts_on_leaving_area/proc/check_dust(datum/source, area/A)
 	var/mob/living/M = source
 	if(istype(M) && !(A.type in area_types))
-		M.dust(force = TRUE)
+		M.dust(TRUE, force = TRUE)

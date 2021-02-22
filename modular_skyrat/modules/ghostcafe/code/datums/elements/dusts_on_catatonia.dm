@@ -22,5 +22,5 @@
 	for(var/m in attached_mobs)
 		var/mob/living/M = m
 		if(!M.key && !M.get_ghost())
-			M.dust(force = TRUE)
+			M.dust(TRUE, force = TRUE)
 			Detach(M)
