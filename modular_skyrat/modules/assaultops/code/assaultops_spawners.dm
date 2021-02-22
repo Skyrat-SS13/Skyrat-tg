@@ -76,7 +76,7 @@
 
 /datum/outfit/syndicate_empty/prison_warden
 	name = "Syndicate Master At Arms"
-	head = /obj/item/clothing/head/hos/beret/syndicate
+	head = /obj/item/clothing/head/warden/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
@@ -170,7 +170,7 @@
 /datum/outfit/syndicate_empty/station_medical_officer
 	name = "Syndicate Medical Officer"
 	uniform = /obj/item/clothing/under/syndicate
-	suit = /obj/item/clothing/suit/toggle/labcoat
+	suit = /obj/item/clothing/suit/toggle/labcoat/medical
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	ears = /obj/item/radio/headset/assault
@@ -229,8 +229,9 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/security
+	belt = /obj/item/storage/belt/security/full
 	id = /obj/item/card/id/syndicate_command/chief_master_at_arms
-	backpack_contents = list(/obj/item/melee/baton/loaded)
+	backpack_contents = list(/obj/item/storage/box/handcuffs)
 
 /obj/item/card/id/syndicate_command/chief_master_at_arms
 	assignment = "Chief Master At Arms"
