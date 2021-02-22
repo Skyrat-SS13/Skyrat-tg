@@ -77,6 +77,7 @@
 	new /obj/item/clothing/suit/hazardvest/security_medic(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
+	new /obj/item/storage/backpack/duffelbag/med/surgery(src)
 	new /obj/item/radio/headset/headset_medsec(src)
 	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/clothing/suit/straight_jacket(src)

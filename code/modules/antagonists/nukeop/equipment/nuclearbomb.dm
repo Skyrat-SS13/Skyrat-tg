@@ -37,7 +37,7 @@
 	GLOB.nuke_list += src
 	core = new /obj/item/nuke_core(src)
 	STOP_PROCESSING(SSobj, core)
-	update_icon()
+	update_appearance()
 	AddElement(/datum/element/point_of_interest)
 	previous_level = get_security_level()
 
@@ -47,6 +47,7 @@
 		// If we're not exploding, set the alert level back to normal
 		set_safety()
 	GLOB.nuke_list -= src
+	explosion(src, 50, 70, 80, 100, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	QDEL_NULL(countdown)
 	QDEL_NULL(core)
 	. = ..()
@@ -108,7 +109,7 @@
 				if(I.use_tool(src, user, 60, volume=100))
 					deconstruction_state = NUKESTATE_UNSCREWED
 					to_chat(user, "<span class='notice'>You remove the screws from [src]'s front panel.</span>")
-					update_icon()
+					update_appearance()
 				return
 
 		if(NUKESTATE_PANEL_REMOVED)
@@ -119,7 +120,7 @@
 				if(I.use_tool(src, user, 80, volume=100, amount=1))
 					to_chat(user, "<span class='notice'>You cut [src]'s inner plate.</span>")
 					deconstruction_state = NUKESTATE_WELDED
-					update_icon()
+					update_appearance()
 				return
 		if(NUKESTATE_CORE_EXPOSED)
 			if(istype(I, /obj/item/nuke_core_container))
@@ -129,7 +130,7 @@
 					if(core_box.load(core, user))
 						to_chat(user, "<span class='notice'>You load the plutonium core into [core_box].</span>")
 						deconstruction_state = NUKESTATE_CORE_REMOVED
-						update_icon()
+						update_appearance()
 						core = null
 					else
 						to_chat(user, "<span class='warning'>You fail to load the plutonium core into [core_box]. [core_box] has already been used!</span>")
@@ -143,7 +144,7 @@
 					to_chat(user, "<span class='notice'>You repair [src]'s inner metal plate. The radiation is contained.</span>")
 					deconstruction_state = NUKESTATE_PANEL_REMOVED
 					STOP_PROCESSING(SSobj, core)
-					update_icon()
+					update_appearance()
 				return
 	. = ..()
 
@@ -155,14 +156,14 @@
 			if(tool.use_tool(src, user, 30, volume=100))
 				to_chat(user, "<span class='notice'>You remove [src]'s front panel.</span>")
 				deconstruction_state = NUKESTATE_PANEL_REMOVED
-				update_icon()
+				update_appearance()
 			return TRUE
 		if(NUKESTATE_WELDED)
 			to_chat(user, "<span class='notice'>You start prying off [src]'s inner plate...</span>")
 			if(tool.use_tool(src, user, 30, volume=100))
 				to_chat(user, "<span class='notice'>You pry off [src]'s inner plate. You can see the core's green glow!</span>")
 				deconstruction_state = NUKESTATE_CORE_EXPOSED
-				update_icon()
+				update_appearance()
 				START_PROCESSING(SSobj, core)
 			return TRUE
 
@@ -179,7 +180,7 @@
 /obj/machinery/nuclearbomb/update_icon_state()
 	if(deconstruction_state != NUKESTATE_INTACT)
 		icon_state = "nuclearbomb_base"
-		return
+		return ..()
 	switch(get_nuke_state())
 		if(NUKE_OFF_LOCKED, NUKE_OFF_UNLOCKED)
 			icon_state = "nuclearbomb_base"
@@ -187,6 +188,7 @@
 			icon_state = "nuclearbomb_timing"
 		if(NUKE_ON_EXPLODING)
 			icon_state = "nuclearbomb_exploding"
+	return ..()
 
 /obj/machinery/nuclearbomb/update_overlays()
 	. += ..()
@@ -406,7 +408,7 @@
 		timing = FALSE
 		detonation_timer = null
 		countdown.stop()
-	update_icon()
+	update_appearance()
 
 /obj/machinery/nuclearbomb/proc/set_active()
 	var/turf/our_turf = get_turf(src)
@@ -432,7 +434,7 @@
 			S.switch_mode_to(initial(S.mode))
 			S.alert = FALSE
 		countdown.stop()
-	update_icon()
+	update_appearance()
 
 /obj/machinery/nuclearbomb/proc/get_time_left()
 	if(timing)
@@ -459,7 +461,7 @@
 	exploding = TRUE
 	yes_code = FALSE
 	safety = TRUE
-	update_icon()
+	update_appearance()
 	sound_to_playing_players('sound/machines/alarm.ogg')
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
@@ -491,6 +493,8 @@
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
 
+	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) //SKYRAT EDIT ADDITION
+
 	//Cinematic
 	SSticker.mode.OnNukeExplosion(off_station)
 	really_actually_explode(off_station)
@@ -498,7 +502,7 @@
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
-	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z)
+	//INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) SKYRAT EDIT REMOVAL
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
 	if(off_station < 2)
@@ -555,7 +559,7 @@
 		S.switch_mode_to(initial(S.mode))
 		S.alert = FALSE
 	countdown.stop()
-	update_icon()
+	update_appearance()
 
 /obj/machinery/nuclearbomb/beer/proc/local_foam()
 	var/datum/reagents/R = new/datum/reagents(1000)
@@ -586,6 +590,7 @@
 	disarm()
 	stationwide_foam()
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR NUCLEARBOMB.DM
 /proc/KillEveryoneOnZLevel(z)
 	if(!z)
 		return
@@ -593,6 +598,7 @@
 		var/mob/living/victim = _victim
 		if(victim.stat != DEAD && victim.z == z)
 			victim.gib()
+*/
 
 /*
 This is here to make the tiles around the station mininuke change when it's armed.

@@ -291,6 +291,7 @@
 	update_icon()
 
 /obj/item/ammo_box/magazine/multi_sprite/update_icon()
+	. = ..()
 	var/shells_left = stored_ammo.len
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)
@@ -327,6 +328,7 @@
 	update_icon()
 
 /obj/item/ammo_box/revolver/multi_sprite/update_icon()
+	. = ..()
 	var/shells_left = stored_ammo.len
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)

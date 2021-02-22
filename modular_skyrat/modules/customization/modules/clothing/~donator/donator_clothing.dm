@@ -153,6 +153,21 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("888", "F33", "FFF"))
 
+/obj/item/clothing/under/misc/polysweater
+	name = "polychromic sweater"
+	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north, AND do it in whatever color you choose."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	icon_state = "poly_turtle"
+	worn_icon_state = "poly_turtle"
+	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
+	can_adjust = FALSE
+	mutant_variants = NONE
+
+/obj/item/clothing/under/misc/polysweater/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF"))
+
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
 	desc = "For those lazy summer days."
@@ -219,8 +234,8 @@
 	mutant_variants = NONE
 
 //Donation reward for Thedragmeme
-// might make it have some flavour functionality in future, a'la rewritable piece of paper
-/obj/item/drawingtablet
+// might make it have some flavour functionality in future, a'la rewritable piece of paper - JOKES ON YOU I'M MAKING IT DRAW
+/obj/item/canvas/drawingtablet
 	name = "drawing tablet"
 	desc = "A portable tablet that allows you to draw. Legends say these can earn the owner a fortune in some sectors of space."
 	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/custom.dmi'
@@ -230,6 +245,89 @@
 	inhand_icon_state = "electronic"
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
+	actions_types = list(/datum/action/item_action/dtselectcolor,/datum/action/item_action/dtcolormenu,/datum/action/item_action/dtcleargrid)
+	pixel_x = 0
+	pixel_y = 0
+	width = 28
+	height = 26
+	nooverlayupdates = TRUE
+	var/currentcolor = "#ffffff"
+	var/list/colors = list("Eraser" = "#ffffff")
+
+/obj/item/canvas/drawingtablet/ui_action_click(mob/user, action)
+	if(istype(action, /datum/action/item_action/dtselectcolor))
+		currentcolor = input(user, "", "Choose Color", currentcolor) as color|null
+	else if(istype(action, /datum/action/item_action/dtcolormenu))
+		var/list/selects = colors.Copy()
+		selects["Save"] = "Save"
+		selects["Delete"] = "Delete"
+		var/selection = input(user, "", "Color Menu", currentcolor) as null|anything in selects
+		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+			return
+		switch(selection)
+			if("Save")
+				var/name = input(user, "", "Name the color!", "Pastel Purple") as text|null
+				if(name)
+					colors[name] = currentcolor
+			if("Delete")
+				var/delet = input(user, "", "Color Menu", currentcolor) as null|anything in colors
+				if(delet)
+					colors.Remove(delet)
+			if(null)
+				return
+			else
+				currentcolor = colors[selection]
+	else if(istype(action, /datum/action/item_action/dtcleargrid))
+		var/yesnomaybe = alert("Are you sure you wanna clear the canvas?", ,"Yes","No","Maybe")
+		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+			return
+		switch(yesnomaybe)
+			if("Yes")
+				reset_grid()
+				SStgui.update_uis(src)
+			if("No")
+				return
+			if("Maybe")
+				playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
+				audible_message("<span class='warning'>The [src] buzzes!</span>")
+				return
+
+/obj/item/canvas/drawingtablet/get_paint_tool_color()
+	return currentcolor
+
+/obj/item/canvas/drawingtablet/finalize()
+	return // no finalizing this piece
+
+/obj/structure/sign/painting/frame_canvas(mob/user,obj/item/canvas/new_canvas)
+	if(istype(new_canvas, /obj/item/canvas/drawingtablet)) // NO FINALIZING THIS BITCH.
+		return
+	else
+		..()
+
+/obj/item/canvas/var/nooverlayupdates = FALSE
+
+/obj/item/canvas/update_overlays()
+	if(nooverlayupdates)
+		return
+	. = ..()
+
+/datum/action/item_action/dtselectcolor
+	name = "Change Color"
+	desc = "Change your color."
+	icon_icon = 'modular_skyrat/modules/customization/icons/~donator/obj/custom.dmi'
+	button_icon_state = "drawingtablet"
+
+/datum/action/item_action/dtcolormenu
+	name = "Color Menu"
+	desc = "Select, save, or delete a color in your tablet's color menu!"
+	icon_icon = 'modular_skyrat/modules/customization/icons/~donator/obj/custom.dmi'
+	button_icon_state = "drawingtablet"
+
+/datum/action/item_action/dtcleargrid
+	name = "Clear Canvas"
+	desc = "Clear the canvas of your drawing tablet."
+	icon_icon = 'modular_skyrat/modules/customization/icons/~donator/obj/custom.dmi'
+	button_icon_state = "drawingtablet"
 
 //Donation reward for Thedragmeme
 /obj/item/clothing/suit/furcoat
