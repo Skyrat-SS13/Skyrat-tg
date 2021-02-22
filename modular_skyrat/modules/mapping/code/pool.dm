@@ -81,6 +81,9 @@
 	baseturfs = /turf/open/floor/plating
 	planetary_atmos = FALSE
 
+/turf/open/water/overlay/hotspring/Initialize()
+	. = ..()
+
 /turf/open/water/overlay/hotspring/indestructible
 	baseturfs = /turf/open/water/overlay/hotspring/indestructible
 
