@@ -176,6 +176,6 @@
 	restricted_roles = list("Chaplain")
 
 /datum/loadout_item/backpack/toy/plushiebox
-	name = "Plushie Box"
+	name = "Plushie Selection Beacon"
 	path = /obj/item/choice_beacon/box/plushie
 	cost = 2
