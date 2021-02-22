@@ -36,7 +36,7 @@
 	name = "ACA 460-10 modular magazine"
 	desc = "A magazine normally chambered in .460, able to chamber Peacekeeper 10mm rounds as an alternative by its length switch. Made for the M45A5, as it's the only available sidearm with a smart multi-caliber mechanism."
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/guns/M45A5.dmi'
-	icon_state = "rowlandmodular_empty"
+	icon_state = "rowlandmodular"
 	ammo_type = /obj/item/ammo_casing/b10mm/b460
 	caliber = "10mm"
 	max_ammo = 15 //Tactical mags.
