@@ -44,7 +44,7 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460
 	ammo_type = /obj/item/ammo_casing/b10mm/b460
-	round_type = AMMO_TYPE_460
+	round_type = ".460"
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/hp
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
