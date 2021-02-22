@@ -255,6 +255,8 @@
 ////////////////
 //BLUESHIELD
 /obj/item/storage/box/gunset/pdh_blueshield
+	name = "PDH 'SOCOM-D' Supply Box"
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/blueshield/nomag
 	spawnwithmagazine = FALSE
