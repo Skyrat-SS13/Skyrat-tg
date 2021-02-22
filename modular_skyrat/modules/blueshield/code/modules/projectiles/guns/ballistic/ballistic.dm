@@ -1,5 +1,5 @@
 /obj/item/ammo_casing/b10mm/b460
-	name = "A .460 Rowland Magnum casing."
+	name = ".460 Rowland Magnum casing."
 	desc = "A .460 Rowland Magnum casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
