@@ -17,7 +17,7 @@
 ///////////////////////////////////////////
 /////////////   INITIALISE    /////////////
 /turf/open/water/overlay/Initialize()
-	..()
+	.  = ..()
 	var/obj/effect/overlay/water/water_overlay = new()
 	var/obj/effect/overlay/water/top/water_top_overlay = new()
 	vis_contents += water_overlay
@@ -80,9 +80,6 @@
 	icon_state = "hotspring_tile"
 	baseturfs = /turf/open/floor/plating
 	planetary_atmos = FALSE
-
-/turf/open/water/overlay/hotspring/Initialize()
-	. = ..()
 
 /turf/open/water/overlay/hotspring/indestructible
 	baseturfs = /turf/open/water/overlay/hotspring/indestructible
