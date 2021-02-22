@@ -31,8 +31,8 @@
 	fire_delay = 3
 	fire_sound_volume = 30
 	spread = 2
-	force = 10
-	recoil = 1
+	force = 12 //Not really meant to be used as a melee weapon; but heavy construction and extended mag.
+	recoil = 0.5
 	realistic = TRUE
 	dirt_modifier = 0.1
 	can_flashlight = TRUE
