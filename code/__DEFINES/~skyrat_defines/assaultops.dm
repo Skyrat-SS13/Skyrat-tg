@@ -13,7 +13,7 @@
 #define ASSAULT_RESULT_CREW_LOSS 8 //All ops are dead
 
 #define RADIO_CHANNEL_ASSAULT "DS-1"
-#define RADIO_KEY_ASSAULT "r"
-#define RADIO_TOKEN_ASSAULT ":r"
+#define RADIO_KEY_ASSAULT "z"
+#define RADIO_TOKEN_ASSAULT ":z"
 
 #define FREQ_ASSAULT 1207
