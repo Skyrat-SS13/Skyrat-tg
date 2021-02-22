@@ -849,7 +849,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 					say("You are not of legal age to purchase [R.name].")
 					if(!(usr in GLOB.narcd_underages))
 						Radio.set_frequency(FREQ_SECURITY)
-						Radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
+						// SKYRAT EDIT: Original - Radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
+						Radio.talk_into(src, "SECURITY ALERT: [usr] has attempted to purchase [R.name] in [get_area(src)] whilst not of legal age. Please watch for substance abuse.", FREQ_SECURITY)	// SKYRAT EDIT: Just worded slightly differently.
 						GLOB.narcd_underages += usr
 					flick(icon_deny,src)
 					vend_ready = TRUE
