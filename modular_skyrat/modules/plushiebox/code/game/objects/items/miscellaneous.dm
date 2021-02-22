@@ -6,7 +6,7 @@
 /obj/item/choice_beacon/box/spawn_option(choice,mob/living/M)
 	..()
 
-/obj/item/choice_beacon/box/plushie/generate_display_names() // Lol, I'm not touching that.
+/obj/item/choice_beacon/box/plushie/generate_display_names()
 	var/list/plushie_list = list()
 	//plushie list used for plushies, the other list is used to blacklist. It do work though.
 	var/list/more_plushies_list = subtypesof(/obj/item/toy/plush) - list(/obj/item/toy/plush/narplush, /obj/item/toy/plush/awakenedplushie, /obj/item/toy/plush/ratplush)
