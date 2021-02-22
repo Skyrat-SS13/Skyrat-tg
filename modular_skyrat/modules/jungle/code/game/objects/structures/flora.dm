@@ -8,7 +8,6 @@
 	light_power = 0.5
 	max_integrity = 50
 	var/variants = 9
-	var/chosen_light
 	var/base_icon
 	var/list/random_light = list("#6AFF00","#00FFEE", "#D9FF00", "#FFC800")
 
@@ -16,17 +15,17 @@
 	. = ..()
 	base_icon = "[initial(icon_state)][rand(1,variants)]"
 	icon_state = base_icon
-	chosen_light = pick(random_light)
-	light_color = chosen_light
-	update_icon()
+	if(random_light)
+		light_color = pick(random_light)
+	update_appearance()
 
 /obj/structure/flora/biolumi/update_overlays()
 	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	SSvis_overlays.add_vis_overlay(src, icon, "[base_icon]_light", ABOVE_LIGHTING_LAYER, ABOVE_LIGHTING_PLANE)
-	if(chosen_light)
+	if(light_color)
 		var/obj/effect/overlay/vis/overlay = managed_vis_overlays[1]
-		overlay.color = chosen_light
+		overlay.color = light_color
 
 /obj/structure/flora/biolumi/mine
 	name = "glowing plant"

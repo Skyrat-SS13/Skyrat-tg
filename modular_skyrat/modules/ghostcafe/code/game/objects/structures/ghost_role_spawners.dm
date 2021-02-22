@@ -46,9 +46,9 @@
 	icon_state = "sleeper"
 	mob_name = "a cafe visitor"
 	roundstart = FALSE
-	anchored = TRUE
 	density = FALSE
 	death = FALSE
+	any_station_species = TRUE
 	outfit = /datum/outfit/ghostcafe
 	assignedrole = "Cafe Visitor"
 	short_desc = "You are a Cafe Visitor!"
