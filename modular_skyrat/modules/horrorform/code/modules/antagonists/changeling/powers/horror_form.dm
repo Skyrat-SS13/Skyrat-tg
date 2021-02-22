@@ -1,4 +1,3 @@
-
 /datum/action/changeling/horror_form //Horror Form: turns the changeling into a terrifying abomination
 	name = "Horror Form"
 	desc = "We tear apart our human disguise, revealing our true form."
