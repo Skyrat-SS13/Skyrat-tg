@@ -25,6 +25,4 @@
 	name = "old but gold manual"
 	martialname = "close quarters combat plus"
 	desc = "A small, black manual. There are drawn instructions of tactical hand-to-hand combat. This includes how to defelct projectiles too."
-	greet = "<span class='boldannounce'>You've mastered the basics of CQC.</span>"
-	icon_state = "cqcmanual"
-	remarks = list("Kick... Slam...", "Lock... Kick...", "Strike their abdomen, neck and back for critical damage...", "Slam... Lock...", "I could probably combine this with some other martial arts!", "Words that kill...", "The last and final moment is yours...")
+	greet = "<span class='boldannounce'>You've mastered the basics of CQC+.</span>"
