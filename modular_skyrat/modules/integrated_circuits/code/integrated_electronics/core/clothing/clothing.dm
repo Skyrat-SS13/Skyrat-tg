@@ -68,7 +68,6 @@
 /obj/item/clothing/
 	var/obj/item/electronic_assembly/clothing/integrated_circuit = null
 	var/obj/item/integrated_circuit/built_in/action_button/action_circuit = null // This gets pulsed when someone clicks the button on the hud.
-	actions_types = list(/datum/action/item_action/toggle_circuit)
 
 // Does most of the repeatative setup.
 /obj/item/clothing/proc/setup_integrated_circuit(new_type)

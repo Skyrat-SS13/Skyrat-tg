@@ -7,6 +7,7 @@
 	icon_state = "circuitry"
 	worn_icon_state = "circuitry" // Needed since icon_state gets updated by the assembly
 	worn_icon = 'modular_skyrat/modules/integrated_circuits/icons/mob/clothing/circuit_gloves.dmi'
+	actions_types = list(/datum/action/item_action/toggle_circuit)
 
 /obj/item/clothing/gloves/circuitry/Initialize()
 	setup_integrated_circuit(/obj/item/electronic_assembly/clothing/small)
