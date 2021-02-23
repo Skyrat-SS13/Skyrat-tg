@@ -9,7 +9,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	hoodtype = /obj/item/clothing/head/hooded/explorer/seva
-	armor = list(MELEE = 15, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 35, BIO = 50, RAD = 25, FIRE = 100, ACID = 25, WOUND = 5)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, RAD = 15, FIRE = 100, ACID = 25, WOUND = 2)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/head/hooded/explorer/seva
@@ -19,7 +19,7 @@
 	worn_icon = 'modular_skyrat/modules/SEVA_suit/icons/equipped/seva_head.dmi'
 	icon_state = "seva"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 35, BIO = 50, RAD = 25, FIRE= 100, ACID = 25, WOUND = 5)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, RAD = 15, FIRE= 100, ACID = 25, WOUND = 1)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/mask/gas/seva
