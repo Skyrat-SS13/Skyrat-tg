@@ -84,7 +84,7 @@
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
 
-/obj/item/toy/plush/mammal/fox
+/obj/item/toy/plush/fox
 	name = "Fox plushie"
 	desc = "An adorable stuffed toy of a Fox."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
