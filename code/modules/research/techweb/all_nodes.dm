@@ -10,14 +10,9 @@
 	// Default research tech, prevents bricking
 	design_ids = list("basic_matter_bin", "basic_cell", "basic_scanning", "basic_capacitor", "basic_micro_laser", "micro_mani", "basic_electrolite", "c-reader", "desttagger", "salestagger", "handlabel", "packagewrap",
 					"destructive_analyzer", "circuit_imprinter", "experimentor", "rdconsole", "bepis", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab",
-<<<<<<< HEAD
-					"paystand", "space_heater", "bucket", "sec_rshot", "sec_beanbag_slug", "sec_Islug", "sec_dart", "sec_38", "rglass", "plasteel",
-					"plastitanium", "plasmaglass", "plasmareinforcedglass", "titaniumglass", "plastitaniumglass", "plastic_knife", "plastic_fork", "plastic_spoon", "conveyor_belt", "conveyor_switch",
-					"b6mm","b6mm_rubber","b9mm","b9mm_rubber","b10mm","b10mm_rubber","b12mm","b12mm_rubber") //SKYRAT EDIT CHANGE - SEC_HAUL
-=======
 					"paystand", "space_heater", "bucket", "sec_rshot", "sec_beanbag_slug", "sec_Islug", "sec_dart", "sec_38", "rglass", "plasteel", "experi_scanner", "destructive_scanner", "doppler_array",
-					"plastitanium", "plasmaglass", "plasmareinforcedglass", "titaniumglass", "plastitaniumglass", "plastic_knife", "plastic_fork", "plastic_spoon", "conveyor_belt", "conveyor_switch")
->>>>>>> 931a32ffb31 (Experi-Sci: Techweb nodes may now require you to perform "scientific" experiments (#54093))
+					"plastitanium", "plasmaglass", "plasmareinforcedglass", "titaniumglass", "plastitaniumglass", "plastic_knife", "plastic_fork", "plastic_spoon", "conveyor_belt", "conveyor_switch",
+					"b6mm","b6mm_rubber","b9mm","b9mm_rubber","b10mm","b10mm_rubber","b12mm","b12mm_rubber") //SKYRAT EDIT ADDITION - SEC_HAUL
 
 /datum/techweb_node/mmi
 	id = "mmi"
@@ -162,18 +157,12 @@
 	display_name = "Advanced Engineering"
 	description = "Pushing the boundaries of physics, one chainsaw-fist at a time."
 	prereq_ids = list("engineering", "emp_basic")
-<<<<<<< HEAD
 	//design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "sheetifier", "HFR_core", "HFR_fuel_input",
 	//"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface") //ORIGINAL
 	design_ids = list("engine_goggles", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "sheetifier", "HFR_core", "HFR_fuel_input",
 	"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface") //SKYRAT EDIT CHANGE - HUDS
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-=======
-	design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "sheetifier", "HFR_core", "HFR_fuel_input",
-	"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/random/material/medium/one = 4000)
->>>>>>> 931a32ffb31 (Experi-Sci: Techweb nodes may now require you to perform "scientific" experiments (#54093))
 
 /datum/techweb_node/anomaly
 	id = "anomaly_research"
@@ -519,15 +508,10 @@
 	display_name = "Advanced Mining Technology"
 	description = "Efficiency Level 127" //dumb mc references
 	prereq_ids = list("basic_mining", "adv_engi", "adv_power", "adv_plasma")
-<<<<<<< HEAD
 	//design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv") - ORIGINAL
 	design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv", "ripleyupgradef") //SKYRAT EDIT CHANGE - MKF
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-=======
-	design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)
->>>>>>> 931a32ffb31 (Experi-Sci: Techweb nodes may now require you to perform "scientific" experiments (#54093))
 
 /datum/techweb_node/janitor
 	id = "janitor"
