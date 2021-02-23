@@ -1,7 +1,7 @@
 /datum/martial_art/cqc/plus
 	name = "CQC+"
 	id = MARTIALART_CQC_PLUS
-	block_chance = 90
+	block_chance = 85
 
 /datum/martial_art/cqc/plus/on_projectile_hit(mob/living/A, obj/projectile/P, def_zone)
 	. = ..()
