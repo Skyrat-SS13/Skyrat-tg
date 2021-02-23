@@ -79,3 +79,4 @@
 
 /obj/item/card/id/debug/bst
 	icon_state = "bluespacetech"
+	uses_overlays = FALSE
