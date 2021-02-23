@@ -31,6 +31,7 @@
 	dirt_modifier = 0.1
 	can_flashlight = TRUE
 	emp_damageable = FALSE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/dp_fire.ogg'
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield
 	name = "ACA 460-10 modular magazine"
@@ -41,6 +42,7 @@
 	caliber = "10mm"
 	max_ammo = 15 //Tactical mags.
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF, ".460")
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460
 	ammo_type = /obj/item/ammo_casing/b10mm/b460
@@ -61,10 +63,10 @@
 /obj/item/storage/box/gunset/blueshield
 	name = "ACA E-M45A5 Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
-	
+
 /obj/item/gun/ballistic/automatic/pistol/blueshield/nomag
 	spawnwithmagazine = FALSE
-	
+
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/blueshield/nomag(src)
