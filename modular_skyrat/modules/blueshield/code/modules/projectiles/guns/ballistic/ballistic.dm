@@ -62,7 +62,7 @@
 	name = "ACA E-M45A5 Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 	
-/obj/item/storage/box/gunset/blueshield
+/obj/item/gun/ballistic/automatic/pistol/blueshield/nomag
 	spawnwithmagazine = FALSE
 
 /obj/item/storage/box/gunset/pdh_captain/PopulateContents()
