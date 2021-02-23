@@ -19,7 +19,7 @@
 	worn_icon = 'modular_skyrat/modules/SEVA_suit/icons/equipped/seva_head.dmi'
 	icon_state = "seva"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	armor = list("melee" = 10, "bullet" = 10, "laser" = 10, "energy" = 10, "bomb" = 35, "bio" = 50, "rad" = 25, "fire" = 100, "acid" = 25, "wound" = 5)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 35, BIO = 50, RAD = 25, FIRE= 100, ACID = 25, WOUND = 5)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/mask/gas/seva
