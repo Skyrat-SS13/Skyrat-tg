@@ -3,7 +3,7 @@
 	desc = "A .460 Rowland Magnum casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = "10mm"
+	caliber = "460"
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/b460
 
 /obj/projectile/bullet/advanced/b10mm/b460
