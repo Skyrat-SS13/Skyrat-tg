@@ -160,7 +160,7 @@
 	flick("station_explode_fade_red", screen)
 	cinematic_sound(sound('sound/effects/explosion_distant.ogg'))
 	special()
-screen.icon_state = "summary_selfdes"
+	screen.icon_state = "summary_selfdes"
 
 /datum/cinematic/nuke_selfdestruct_miss
 	id = CINEMATIC_SELFDESTRUCT_MISS
