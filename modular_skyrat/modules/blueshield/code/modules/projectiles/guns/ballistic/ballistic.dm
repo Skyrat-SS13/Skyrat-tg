@@ -61,6 +61,9 @@
 /obj/item/storage/box/gunset/blueshield
 	name = "ACA E-M45A5 Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
+	
+/obj/item/storage/box/gunset/blueshield
+	spawnwithmagazine = FALSE
 
 /obj/item/storage/box/gunset/pdh_captain/PopulateContents()
 	. = ..()
