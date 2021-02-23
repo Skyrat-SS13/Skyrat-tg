@@ -29,12 +29,11 @@
 	uniform = /obj/item/clothing/under/rank/security/blueshield
 	id = /obj/item/card/id/silver
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
-	suit_store = /obj/item/gun/ballistic/automatic/pistol/blueshield
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/heads/blueshield/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	backpack_contents = list(/obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460 = 3,/obj/item/melee/baton/blueshieldprod = 1)
+	backpack_contents = list(/obj/item/storage/box/gunset/blueshield,/obj/item/melee/baton/blueshieldprod = 1)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
