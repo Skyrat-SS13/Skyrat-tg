@@ -64,8 +64,8 @@
 	
 /obj/item/gun/ballistic/automatic/pistol/blueshield/nomag
 	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/pdh_captain/PopulateContents()
+	
+/obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/blueshield/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460(src)
