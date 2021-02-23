@@ -687,7 +687,7 @@
 	else if(mod < 1)
 		mod++
 		// yeah a value of 0 does nothing but replacing the trait in place is cheaper than removing and adding repeatedly
-		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/sepia, multiplicative_slowdown = 0.3) //SKYRAT EDIT: ORIGINAL VALUE (0)
+		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/sepia, multiplicative_slowdown = 0.2) //SKYRAT EDIT: ORIGINAL VALUE (0)
 	return ..()
 
 /datum/status_effect/stabilized/sepia/on_remove()
