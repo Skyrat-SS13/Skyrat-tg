@@ -198,6 +198,7 @@
 	isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/update_icon()
+	. = ..()
 	if(state)
 		icon_state = "door_open"
 	else

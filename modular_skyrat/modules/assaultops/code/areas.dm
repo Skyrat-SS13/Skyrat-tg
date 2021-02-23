@@ -48,6 +48,105 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	name = "Cruiser Dock Prison"
 	color = COLOR_BLUE
 	ambientsounds = AMBIENCE_CREEPY
+
+/area/cruiser_dock/heads
+	name = "Head Of Staff Office"
+
+/area/cruiser_dock/heads/admiral
+	name = "Station Admiral's Office"
+	icon_state = "captain"
+	sound_environment = SOUND_AREA_WOODFLOOR
+
+/area/cruiser_dock/heads/cmo
+	name = "Chief Medical Officer's Office"
+	icon_state = "cmo_office"
+
+/area/cruiser_dock/heads/ceo
+	name = "Chief Engineering Officer's Office"
+	icon_state = "ce_office"
+
+/area/cruiser_dock/heads/cl
+	name = "Corporate Liaison's Office"
+	icon_state = "hop_office"
+
+/area/cruiser_dock/heads/cmaa
+	name = "Chief Master At Arms' Office"
+	icon_state = "hos_office"
+
+/area/cruiser_dock/heads/cro
+	name = "Chief Research Officer's Office"
+	icon_state = "rd_office"
+
+/area/cruiser_dock/security
+	name = "Security"
+	icon_state = "security"
+	ambience_index = AMBIENCE_DANGER
+
+/area/cruiser_dock/security/armory
+	name = "Armory"
+
+/area/cruiser_dock/service
+	name = "Service Halls"
+	icon_state = "hall_service"
+
+/area/cruiser_dock/research
+	name = "Research And Development"
+	icon_state = "science"
+	sound_environment = SOUND_AREA_STANDARD_STATION
+
+/area/cruiser_dock/cargo
+	name = "Cargo"
+	icon_state = "cargo_bay"
+	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+
+/area/cruiser_dock/cargo/hangar
+	name = "Hangar"
+
+/area/cruiser_dock/vault
+	name = "Vault"
+	icon_state = "nuke_storage"
+
+/area/cruiser_dock/engineering
+	name = "Engineering"
+	ambience_index = AMBIENCE_ENGI
+	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+	icon_state = "engine"
+
+/area/cruiser_dock/commons
+	name = "Commons"
+	icon_state = "dorms"
+	sound_environment = SOUND_AREA_STANDARD_STATION
+
+/area/cruiser_dock/commons/dorms
+	name = "Dormitories"
+
+/area/cruiser_dock/maint
+	name = "Maintenance Tunnels"
+	ambience_index = AMBIENCE_MAINT
+	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
+	icon_state = "maint_electrical"
+
+/area/cruiser_dock/medical
+	name = "Medical"
+	icon_state = "medbay1"
+	ambience_index = AMBIENCE_MEDICAL
+	sound_environment = SOUND_AREA_STANDARD_STATION
+	min_ambience_cooldown = 90 SECONDS
+	max_ambience_cooldown = 180 SECONDS
+
+/area/cruiser_dock/medical/virology
+	name = "Virology"
+	icon_state = "virology"
+
+/area/cruiser_dock/bridge
+	name = "Bridge"
+	icon_state = "bridge_hallway"
+	ambientsounds = list('sound/ambience/signal.ogg')
+	sound_environment = SOUND_AREA_STANDARD_STATION
+
+/area/cruiser_dock/bridge/hallway
+	name = "Command Hallway"
+
 /obj/machinery/door/poddoor/shutters
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS)
 

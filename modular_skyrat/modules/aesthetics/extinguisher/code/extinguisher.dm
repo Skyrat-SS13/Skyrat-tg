@@ -15,6 +15,7 @@
 
 
 /obj/structure/extinguisher_cabinet/update_icon_state()
+	. = ..()
 	if(!opened)
 		if(stored_extinguisher)
 			if(istype(stored_extinguisher, /obj/item/extinguisher/mini))
