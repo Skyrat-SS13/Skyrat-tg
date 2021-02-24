@@ -21,6 +21,8 @@
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
+		/datum/language/machine, //SKYRAT EDIT - Gives synths the abiltiy to speak EAL
+		/datum/language/slime, //SKYRAT EDIT - Gives slimes the ability to speak slime once more.
 		/datum/language/beachbum,
 		/datum/language/aphasia,
 		/datum/language/piratespeak,

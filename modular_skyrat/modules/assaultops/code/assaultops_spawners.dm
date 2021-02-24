@@ -11,6 +11,7 @@
 	any_station_species = TRUE
 	excluded_gamemodes = list(/datum/game_mode/assaultops)
 
+//PRISONERS//
 /obj/effect/mob_spawn/human/assops_prisoner
 	name = "Syndicate Prisoner"
 	short_desc = "You are the syndicate prisoner aboard an unknown station."
@@ -35,6 +36,7 @@
 /obj/item/card/id/prisoner/syndicate
 	assignment = "Syndicate Prisoner"
 
+//SECURITY//
 /obj/effect/mob_spawn/human/syndicate/assops/prison_guard
 	name = "Syndicate Brig Officer"
 	short_desc = "You are a brig officer aboard the Syndicate facility DS-1."
@@ -74,8 +76,8 @@
 
 /datum/outfit/syndicate_empty/prison_warden
 	name = "Syndicate Master At Arms"
-	head = /obj/item/clothing/head/hos/beret/syndicate
-	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+	head = /obj/item/clothing/head/warden/syndicate
+	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
@@ -93,6 +95,7 @@
 /obj/item/card/id/syndicate_command/prison_warden
 	assignment = "Master At Arms"
 
+//SERVICE//
 /obj/effect/mob_spawn/human/syndicate/assops/facility_staff
 	name = "Syndicate Facility Staff"
 	short_desc = "You are a general purpose crewmember aboard the Syndicate facility DS-1."
@@ -134,6 +137,7 @@
 /obj/item/card/id/syndicate_command/assistant
 	assignment = "Operative"
 
+//SCIENCE//
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist
 	name = "Syndicate Researcher"
 	short_desc = "You are a scientist aboard the Syndicate facility DS-1."
@@ -154,6 +158,28 @@
 
 /obj/item/card/id/syndicate_command/scientist
 	assignment = "Researcher"
+
+//MEDICAL//
+/obj/effect/mob_spawn/human/syndicate/assops/station_medical_officer
+	name = "Syndicate Medical Officer"
+	short_desc = "You are a Medical Officer aboard the Syndicate facility DS-1."
+	flavour_text = "Your job is to maintain and improve the health and safety of the crew on-board."
+	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
+	outfit = /datum/outfit/syndicate_empty/station_medical_officer
+
+/datum/outfit/syndicate_empty/station_medical_officer
+	name = "Syndicate Medical Officer"
+	uniform = /obj/item/clothing/under/syndicate
+	suit = /obj/item/clothing/suit/toggle/labcoat/medical
+	shoes = /obj/item/clothing/shoes/combat
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	ears = /obj/item/radio/headset/assault
+	back = /obj/item/storage/backpack/medic
+	implants = list(/obj/item/implant/weapons_auth)
+	id = /obj/item/card/id/syndicate_command/medical_officer
+
+/obj/item/card/id/syndicate_command/medical_officer
+	assignment = "Station Medical Officer"
 
 //HEADS OF STAFF//
 /obj/effect/mob_spawn/human/syndicate/assops/heads
@@ -203,8 +229,9 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/security
+	belt = /obj/item/storage/belt/security/full
 	id = /obj/item/card/id/syndicate_command/chief_master_at_arms
-	backpack_contents = list(/obj/item/melee/baton/loaded)
+	backpack_contents = list(/obj/item/storage/box/handcuffs)
 
 /obj/item/card/id/syndicate_command/chief_master_at_arms
 	assignment = "Chief Master At Arms"
@@ -250,3 +277,4 @@
 
 /obj/item/card/id/syndicate_command/chief_engineering_officer
 	assignment = "Chief Engineering Officer"
+	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE)

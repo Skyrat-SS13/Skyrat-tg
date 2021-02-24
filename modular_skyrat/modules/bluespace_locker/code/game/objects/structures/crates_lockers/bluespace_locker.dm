@@ -33,7 +33,7 @@
 	var/list/mirage_whitelist = list()
 
 /obj/structure/closet/bluespace/internal/Initialize()
-	. = ..() 
+	. = ..()
 	if(SSbluespace_locker.internal_locker && SSbluespace_locker.internal_locker != src)
 		qdel(src)
 		return
@@ -89,6 +89,7 @@
 		return ..()
 
 /obj/structure/closet/bluespace/internal/update_icon()
+	. = ..()
 	cut_overlays()
 	var/obj/structure/closet/other = get_other_locker()
 	if(!other)

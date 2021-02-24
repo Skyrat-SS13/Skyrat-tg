@@ -542,6 +542,7 @@
 	flesh_number = unattached_flesh.len
 
 /obj/machinery/clonepod/update_icon_state()
+	. = ..()
 	if(mess)
 		icon_state = "pod_g"
 	else if(occupant)

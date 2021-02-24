@@ -78,7 +78,7 @@
 	. = combat_mode
 	combat_mode = new_mode
 	if(hud_used?.action_intent)
-		hud_used.action_intent.update_icon()
+		hud_used.action_intent.update_appearance()
 	//SKYRAT EDIT ADDITION BEGIN
 	if(istype(get_active_held_item(), /obj/item/gun))
 		var/obj/item/gun/G = get_active_held_item()
