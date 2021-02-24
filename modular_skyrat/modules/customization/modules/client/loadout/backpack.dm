@@ -110,22 +110,6 @@
 	name = "Playing cards"
 	path = /obj/item/toy/cards/deck
 
-/datum/loadout_item/backpack/toy/plushcarp
-	name = "Space carp plushie"
-	path = /obj/item/toy/plush/carpplushie
-
-/datum/loadout_item/backpack/toy/plushliz
-	name = "Lizard plushie"
-	path = /obj/item/toy/plush/lizardplushie
-
-/datum/loadout_item/backpack/toy/plushsnek
-	name = "Snake plushie"
-	path = /obj/item/toy/plush/snakeplushie
-
-/datum/loadout_item/backpack/toy/plushslime
-	name = "Slime plushie"
-	path = /obj/item/toy/plush/slimeplushie
-
 /datum/loadout_item/backpack/toy/tennis
 	name = "Classic Tennis Ball"
 	path = /obj/item/toy/tennis
@@ -163,12 +147,6 @@
 	name = "Box of crayons"
 	path = /obj/item/storage/crayons
 
-/datum/loadout_item/backpack/toy/narplush
-	name = "Narsie Plushie"
-	path = /obj/item/toy/plush/narplush
-	cost = 5
-	restricted_roles = list("Chaplain")
-
 /datum/loadout_item/backpack/cross
 	name = "Ornate Cross"
 	path = /obj/item/crucifix
@@ -179,6 +157,50 @@
 //Plushies
 /datum/loadout_item/backpack/plushies
 	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_PLUSHIES
+	
+/datum/loadout_item/backpack/plushies/plushcarp
+	name = "Space carp plushie"
+	path = /obj/item/toy/plush/carpplushie
+
+/datum/loadout_item/backpack/plushies/plushliz
+	name = "Lizard plushie"
+	path = /obj/item/toy/plush/lizardplushie
+
+/datum/loadout_item/backpack/plushies/plushsnek
+	name = "Snake plushie"
+	path = /obj/item/toy/plush/snakeplushie
+
+/datum/loadout_item/backpack/plushies/plushslime
+	name = "Slime plushie"
+	path = /obj/item/toy/plush/slimeplushie
+	
+/datum/loadout_item/backpack/plushies/bubbleplush
+	name = "Bubblegum plushie"
+	path = /obj/item/toy/plush/bubbleplush
+	
+/datum/loadout_item/backpack/plushies/nukeplushie
+	name = "Operative plushie"
+	path = /obj/item/toy/plush/nukeplushie
+	
+/datum/loadout_item/backpack/plushies/plasmamanplushie
+	name = "Plasmaman plushie"
+	path = /obj/item/toy/plush/plasmamanplushie
+	
+/datum/loadout_item/backpack/plushies/beeplushie //the best one
+	name = "Bee plushie"
+	path = /obj/item/toy/plush/beeplushie
+	
+/datum/loadout_item/backpack/plushies/goatplushie
+	name = "Strange Goat plushie"
+	path = /obj/item/toy/plush/goatplushie
+	
+/datum/loadout_item/backpack/plushies/moth
+	name = "Moth plushie"
+	path = /obj/item/toy/plush/moth
+	
+/datum/loadout_item/backpack/plushies/pkplush
+	name = "Peacekeeper plushie"
+	path = /obj/item/toy/plush/pkplush
 
 /datum/loadout_item/backpack/plushies/sechound
 	name = "Sechound plushie"
@@ -207,6 +229,14 @@
 /datum/loadout_item/backpack/plushies/deer
 	name = "Deer plushie"
 	path = /obj/item/toy/plush/deer
+	
+/datum/loadout_item/backpack/plushies/fermis
+	name = "Medcat plushie"
+	path = /obj/item/toy/plush/fermis
+	
+/datum/loadout_item/backpack/plushies/fox
+	name = "Fox plushie"
+	path = /obj/item/toy/plush/fox
 
 /datum/loadout_item/backpack/plushies/duffmoff
 	name = "Suspicious moth plushie"
@@ -219,3 +249,15 @@
 /datum/loadout_item/backpack/plushies/leaplush
 	name = "Suspicious deer plushie"
 	path = /obj/item/toy/plush/leaplush
+	
+/datum/loadout_item/backpack/plushies/narplush
+	name = "Narsie Plushie"
+	path = /obj/item/toy/plush/narplush
+	cost = 5
+	restricted_roles = list("Chaplain")
+	
+/datum/loadout_item/backpack/plushies/ratplush
+	name = "Ratvar Plushie"
+	path = /obj/item/toy/plush/ratplush
+	cost = 5
+	restricted_roles = list("Chaplain")

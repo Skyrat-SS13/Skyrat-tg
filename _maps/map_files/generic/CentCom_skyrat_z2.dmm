@@ -1588,6 +1588,10 @@
 	name = "\proper corporate liaison's locker";
 	req_access_txt = "150"
 	},
+/obj/item/clothing/neck/cloak/hop{
+	desc = "Worn by the Corporate Liaison. It smells faintly of bureaucracy.";
+	name = "corporate liaison's cloak"
+	},
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cl)
 "ez" = (
@@ -2537,6 +2541,11 @@
 /obj/machinery/chem_dispenser/drinks/beer,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
+"hQ" = (
+/obj/structure/table,
+/obj/item/toy/plush/sechound,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "hR" = (
 /obj/structure/window/reinforced/spawner/west,
 /obj/structure/flora/rock/pile,
@@ -2755,10 +2764,10 @@
 /turf/open/floor/iron/white,
 /area/cruiser_dock/research)
 "iC" = (
-/obj/structure/chair/office{
-	dir = 4
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/wood,
 /area/cruiser_dock/heads/cmaa)
 "iF" = (
 /obj/machinery/light,
@@ -4051,6 +4060,10 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons)
+"nB" = (
+/obj/structure/window/spawner/north,
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/heads/ceo)
 "nE" = (
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 1
@@ -4112,7 +4125,7 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "nM" = (
-/obj/structure/chair{
+/obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
@@ -4351,6 +4364,19 @@
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock/bridge)
 "oy" = (
+/obj/machinery/door/airlock/command{
+	name = "Chief Master At Arms' Quarters";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cmaa)
+"oA" = (
 /obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/cmaa)
@@ -4812,11 +4838,14 @@
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "qi" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
 	},
-/obj/structure/table,
-/turf/open/floor/iron/dark,
+/obj/machinery/light/dim{
+	dir = 8;
+	icon_state = "tube"
+	},
+/turf/open/floor/wood,
 /area/cruiser_dock/heads/cmaa)
 "qk" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -4846,6 +4875,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
 "qp" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 12
+	},
 /turf/open/floor/iron/green/corner{
 	dir = 1
 	},
@@ -5100,6 +5133,10 @@
 /obj/machinery/chem_dispenser/fullupgrade,
 /turf/open/floor/iron/dark/blue,
 /area/cruiser_dock/medical)
+"rp" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/ceo)
 "rq" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 4
@@ -5659,6 +5696,7 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
+/obj/item/toy/plush/scrubpuppy,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "tl" = (
@@ -5755,6 +5793,7 @@
 	name = "\proper station admiral's locker";
 	req_access_txt = "150"
 	},
+/obj/item/clothing/head/hos/syndicate,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/admiral)
 "tC" = (
@@ -5828,6 +5867,12 @@
 /obj/machinery/light/small,
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
+"tQ" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "tR" = (
 /obj/item/toy/beach_ball,
 /turf/open/floor/plating/dirt{
@@ -6427,6 +6472,7 @@
 	dir = 8;
 	icon_state = "tube"
 	},
+/obj/item/toy/plush/secdrake,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "vM" = (
@@ -6444,6 +6490,8 @@
 /obj/machinery/light/warm{
 	dir = 4
 	},
+/obj/item/construction/rcd/combat,
+/obj/item/pipe_dispenser,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/ceo)
 "vN" = (
@@ -6828,11 +6876,8 @@
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
 "wX" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 9
-	},
-/obj/machinery/suit_storage_unit/syndicate,
-/turf/open/floor/iron/dark,
+/obj/structure/dresser,
+/turf/open/floor/carpet/red,
 /area/cruiser_dock/heads/cmaa)
 "wZ" = (
 /obj/structure/chair/sofa/bench/left{
@@ -6957,6 +7002,21 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
+"xw" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/obj/structure/closet/secure_closet{
+	icon_state = "hos";
+	name = "\proper chief master at arms' locker";
+	req_access_txt = "150"
+	},
+/obj/item/storage/belt/security/full,
+/obj/item/clothing/neck/cloak/hos{
+	name = "chief master at arms' cloak"
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "xx" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -6967,6 +7027,12 @@
 /obj/effect/turf_decal/trimline/red/filled/warning,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
+"xA" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "xB" = (
 /obj/machinery/computer/cloning{
 	dir = 1
@@ -7002,6 +7068,14 @@
 /obj/structure/bed,
 /turf/open/floor/carpet,
 /area/cruiser_dock/heads/cmo)
+"xL" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/airlock/command{
+	name = "Chief Engineering Officer's Quarters";
+	req_access_txt = "150"
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/ceo)
 "xM" = (
 /obj/machinery/light/warm{
 	dir = 4
@@ -7431,6 +7505,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"zr" = (
+/obj/machinery/light/warm,
+/turf/open/floor/glass,
+/area/cruiser_dock/heads/ceo)
 "zt" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics"
@@ -7713,15 +7791,10 @@
 /turf/open/floor/engine,
 /area/cruiser_dock/research)
 "An" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
+/obj/machinery/door/window{
+	dir = 1
 	},
-/obj/machinery/computer/security{
-	dir = 4;
-	name = "syndicate camera console";
-	network = list("fsci")
-	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/heads/cmaa)
 "Ao" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -7873,7 +7946,7 @@
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "AU" = (
-/obj/machinery/door/airlock/command/glass{
+/obj/machinery/door/airlock/command{
 	name = "Station Admiral's Quarters";
 	req_access_txt = "150"
 	},
@@ -7941,6 +8014,13 @@
 /obj/effect/spawner/randomcolavend,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
+"Br" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/structure/window/spawner/north,
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/heads/cmaa)
 "Bt" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Administrative Offices";
@@ -8156,6 +8236,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"Cc" = (
+/obj/item/bedsheet/hos{
+	name = "chief master at arms' bedsheet"
+	},
+/obj/structure/bed,
+/turf/open/floor/carpet/red,
+/area/cruiser_dock/heads/cmaa)
 "Cd" = (
 /obj/machinery/power/rtg/advanced,
 /obj/effect/turf_decal/stripes/line,
@@ -8235,6 +8322,12 @@
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
+"Cv" = (
+/obj/machinery/door/window{
+	dir = 1
+	},
+/turf/open/floor/glass,
+/area/cruiser_dock/heads/ceo)
 "Cx" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8519,6 +8612,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/research)
+"DP" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/structure/window/spawner/north,
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/heads/ceo)
 "DR" = (
 /turf/closed/indestructible/abductor{
 	icon_state = "alien18";
@@ -8568,6 +8668,12 @@
 /obj/structure/table/wood,
 /turf/open/floor/carpet/donk,
 /area/cruiser_dock/heads/cl)
+"Ea" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/ceo)
 "Eb" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
@@ -8812,6 +8918,16 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood,
 /area/cruiser_dock/security)
+"EX" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 11
+	},
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/heads/cmaa)
 "EY" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -9185,6 +9301,15 @@
 	},
 /turf/open/floor/iron/vaporwave,
 /area/cruiser_dock/brig)
+"Gn" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/computer/crew/syndie{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "Gp" = (
 /obj/machinery/door/airlock/science/glass{
 	name = "airlock";
@@ -9811,6 +9936,11 @@
 	opacity = 0
 	},
 /area/bluespace_locker)
+"IX" = (
+/obj/structure/table,
+/obj/item/restraints/handcuffs,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "IY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -9951,6 +10081,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
+"Jx" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 6
+	},
+/obj/structure/table,
+/obj/item/toy/plush/fox{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/ceo)
 "Jz" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -10081,6 +10221,11 @@
 	name = "\proper chief medical officer's locker";
 	req_access_txt = "150"
 	},
+/obj/item/autosurgeon/organ/syndicate,
+/obj/item/organ/cyberimp/eyes/hud/medical,
+/obj/item/clothing/neck/cloak/cmo,
+/obj/item/clothing/suit/hooded/wintercoat/medical/cmo,
+/obj/item/clothing/suit/toggle/labcoat/cmo,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmo)
 "Ke" = (
@@ -10548,12 +10693,7 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "LK" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/structure/table,
-/obj/item/restraints/handcuffs,
-/turf/open/floor/iron/dark,
+/turf/open/floor/carpet/red,
 /area/cruiser_dock/heads/cmaa)
 "LL" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
@@ -10826,6 +10966,13 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/medical/virology)
+"MQ" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
+	},
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "MS" = (
 /turf/closed/indestructible/abductor{
 	icon_state = "alien14";
@@ -10847,6 +10994,11 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
 /area/cruiser_dock/commons)
+"MV" = (
+/obj/structure/table/wood,
+/obj/item/toy/plush/meddrake,
+/turf/open/floor/wood,
+/area/cruiser_dock/medical)
 "MX" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
@@ -11009,13 +11161,13 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/machinery/door/airlock/command/glass{
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/structure/cable,
+/obj/machinery/door/airlock/command{
 	id_tag = "sadmiral";
 	name = "Station Admiral";
 	req_access_txt = "150"
 	},
-/obj/effect/turf_decal/siding/wood/corner,
-/obj/structure/cable,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/admiral)
 "NZ" = (
@@ -11137,6 +11289,12 @@
 /obj/structure/closet/crate/wooden,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"Ow" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/heads/ceo)
 "Ox" = (
 /obj/structure/bookcase/manuals/medical,
 /turf/open/floor/wood,
@@ -11288,6 +11446,16 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/cafeteria,
 /area/cruiser_dock/service)
+"OV" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 11
+	},
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/heads/ceo)
 "OX" = (
 /obj/structure/toilet{
 	pixel_y = 8
@@ -11341,15 +11509,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
 "Pk" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 10
+/obj/structure/toilet{
+	dir = 4
 	},
-/obj/structure/closet/secure_closet{
-	icon_state = "hos";
-	name = "\proper chief master at arms' locker";
-	req_access_txt = "150"
-	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/heads/cmaa)
 "Pl" = (
 /obj/structure/table/reinforced,
@@ -12914,7 +13077,7 @@
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "VG" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 5
 	},
 /turf/open/floor/iron/dark,
@@ -13455,6 +13618,16 @@
 "XM" = (
 /turf/closed/indestructible/syndicate,
 /area/cruiser_dock/heads/cl)
+"XN" = (
+/obj/item/bedsheet/ce{
+	name = "chief engineering officer's bedsheet"
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 5
+	},
+/obj/structure/bed,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/ceo)
 "XO" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/hydroponics/constructable,
@@ -13789,6 +13962,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
+"Zh" = (
+/obj/structure/table/wood,
+/obj/item/toy/plush/medihound,
+/turf/open/floor/wood,
+/area/cruiser_dock/medical)
 "Zi" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -13819,6 +13997,17 @@
 /obj/item/clothing/under/syndicate/bloodred/sleepytime,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"Zq" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/computer/security{
+	dir = 4;
+	name = "syndicate camera console";
+	network = list("fsci")
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/cmaa)
 "Zt" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -13936,6 +14125,12 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/heads/ceo)
+"ZW" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 10
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/ceo)
 "ZX" = (
@@ -25705,11 +25900,11 @@ aa
 aa
 aa
 Ev
-zN
-vg
+Cc
+LK
 iC
-vg
-uv
+Br
+EX
 Ev
 aa
 aa
@@ -25962,12 +26157,12 @@ af
 af
 af
 Ev
-tw
+Ev
+Ev
 oy
-oy
-oy
-EF
-Cz
+Ev
+Ev
+Ev
 aa
 aa
 aa
@@ -26219,11 +26414,11 @@ Tr
 Lk
 rV
 Ev
-tw
-vg
+MQ
+Gn
 nM
-vg
-EF
+Zq
+xw
 Cz
 aa
 aa
@@ -26478,7 +26673,7 @@ dt
 TZ
 tw
 vg
-vg
+tQ
 vg
 EF
 Cz
@@ -26734,9 +26929,9 @@ lG
 dt
 TZ
 tw
-vg
-vg
-vg
+IX
+oA
+hQ
 EF
 Cz
 aa
@@ -26992,7 +27187,7 @@ dt
 Ev
 zN
 vg
-vg
+xA
 vg
 uv
 Ev
@@ -29356,7 +29551,7 @@ tL
 KJ
 WO
 Ms
-YL
+MV
 uN
 uN
 WO
@@ -31412,7 +31607,7 @@ QP
 is
 WO
 No
-YL
+Zh
 uN
 uN
 Qs
@@ -35274,7 +35469,7 @@ rL
 rL
 sZ
 xm
-RR
+xL
 RR
 RR
 RR
@@ -35531,11 +35726,11 @@ rL
 rL
 Pl
 xm
-aa
-aa
-aa
-aa
-aa
+Ea
+ZW
+nB
+Ow
+RR
 aa
 aa
 aa
@@ -35788,11 +35983,11 @@ rL
 rL
 Tc
 xm
-aa
-aa
-aa
-aa
-aa
+wR
+rp
+Cv
+zr
+RR
 aa
 aa
 aa
@@ -36045,11 +36240,11 @@ qZ
 Pu
 Pi
 xm
-aa
-aa
-aa
-aa
-aa
+XN
+Jx
+DP
+OV
+RR
 aa
 aa
 aa
@@ -36302,11 +36497,11 @@ xm
 xm
 xm
 xm
-aa
-aa
-aa
-aa
-aa
+RR
+RR
+RR
+RR
+RR
 aa
 aa
 aa
