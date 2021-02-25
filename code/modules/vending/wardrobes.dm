@@ -71,7 +71,8 @@
 					/obj/item/clothing/head/soft/paramedic = 4,
 					/obj/item/clothing/head/beret/job/med = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/apron/surgical = 4,
-					/obj/item/clothing/mask/surgical = 4)
+					/obj/item/clothing/mask/surgical = 4,
+					/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 4)	//SKYRAT EDIT ADDITION
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
 	payment_department = ACCOUNT_MED
 
