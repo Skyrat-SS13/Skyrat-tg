@@ -1,3 +1,4 @@
+/*SKYRAT EDIT: Removes spread infestation ability due to increasing NRP usage.
 /datum/action/changeling/spiders
 	name = "Spread Infestation"
 	desc = "Our form divides, creating a cluster of eggs which will grow into a deadly arachnid. Costs 45 chemicals."
@@ -12,3 +13,4 @@
 	..()
 	new /obj/structure/spider/eggcluster/bloody(user.loc)
 	return TRUE
+*/
