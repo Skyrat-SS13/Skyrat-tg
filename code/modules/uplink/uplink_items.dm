@@ -1517,12 +1517,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			load on the grid, causing a station-wide blackout. The sink is large and cannot be stored in most \
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
-<<<<<<< HEAD
 	cost = 18 //SKYRAT EDIT: Original value (10)
-=======
 	player_minimum = 25
-	cost = 11
->>>>>>> faad3607f71 (Powersink now needs 25 pop to buy and costs 11 tc. (#57142))
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
