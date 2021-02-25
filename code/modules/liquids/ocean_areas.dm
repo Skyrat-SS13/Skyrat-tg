@@ -16,7 +16,7 @@
 	map_generator = /datum/map_generator/ocean_generator
 
 /area/ocean/trench
-	area_flags = NO_ALERTS | CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED
+	area_flags = CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED | NO_ALERTS
 	name = "The Trench"
 
 /area/ocean/trench/generated

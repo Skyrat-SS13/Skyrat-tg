@@ -4581,9 +4581,10 @@
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
 "ahS" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/turf/open/floor/plating,
+/obj/machinery/door/airlock/public/glass{
+	name = "Trench E.V.A."
+	},
+/turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "ahT" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -51603,9 +51604,14 @@
 /turf/open/floor/plasteel/dark,
 /area/storage/tech)
 "bDr" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/storage/tech)
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "bDs" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
@@ -55419,10 +55425,12 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain)
 "bJE" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fernybush,
-/turf/open/floor/plating/asteroid,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small,
+/obj/structure/ladder,
+/turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "bJF" = (
 /obj/structure/dresser,
@@ -66506,6 +66514,7 @@
 /obj/structure/sign/warning/electricshock{
 	pixel_y = -32
 	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "cbs" = (
@@ -66530,6 +66539,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "cbu" = (
@@ -91802,6 +91814,9 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison)
+"xZJ" = (
+/turf/closed/wall,
+/area/ai_monitored/storage/eva)
 "yaF" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -121570,7 +121585,7 @@ bSf
 bZJ
 cbr
 bCM
-bDr
+bCM
 bCM
 aDK
 bCM
@@ -121825,10 +121840,10 @@ bMV
 bZg
 bSg
 bZR
-cbs
+bDr
 ahS
 bJE
-bDB
+xZJ
 bCU
 bDB
 bML
@@ -122084,7 +122099,7 @@ bSk
 bZS
 cbt
 bmc
-bDB
+bmc
 bCQ
 aDW
 bmc
