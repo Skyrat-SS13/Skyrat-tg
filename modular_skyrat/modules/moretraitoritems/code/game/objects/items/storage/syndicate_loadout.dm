@@ -115,7 +115,7 @@
 	new /obj/item/reagent_containers/glass/rag(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/ninja/PopulateContents()
-	new /obj/item/vibro_weapon(src)
+	new /obj/item/vibro_weapon/ninjasr(src)
 	new /obj/item/reagent_containers/hypospray/medipen/stimulants(src)
 	for(var/i in 1 to 3)
 		new /obj/item/throwing_star(src)
@@ -177,7 +177,7 @@
 	new /obj/item/ammo_box/a357(src)
 	new /obj/item/pda/heads(src)
 	new /obj/item/clipboard(src)
-	new /obj/item/card/id/syndicate(src)
+	new /obj/item/card/id/syndicate/impostorsr(src)
 	new /obj/item/stamp/centcom(src)
 	new /obj/item/storage/belt/sabre(src)
 	new /obj/item/clothing/gloves/combat(src)
