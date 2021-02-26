@@ -10,6 +10,9 @@
 /obj/item/clothing/glasses/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/glasses/changeling/attack_hand(mob/user, list/modifiers)
@@ -22,6 +25,9 @@
 /obj/item/clothing/under/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/under/changeling/attack_hand(mob/user, list/modifiers)
@@ -35,6 +41,9 @@
 	name = "flesh"
 	allowed = list(/obj/item/changeling)
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/suit/changeling/attack_hand(mob/user, list/modifiers)
@@ -48,6 +57,9 @@
 	name = "flesh"
 	icon_state = null
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/head/changeling/attack_hand(mob/user, list/modifiers)
@@ -60,6 +72,9 @@
 /obj/item/clothing/shoes/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/shoes/changeling/attack_hand(mob/user, list/modifiers)
@@ -72,6 +87,9 @@
 /obj/item/clothing/gloves/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/gloves/changeling/attack_hand(mob/user, list/modifiers)
@@ -84,6 +102,9 @@
 /obj/item/clothing/mask/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/mask/changeling/attack_hand(mob/user, list/modifiers)
@@ -98,6 +119,9 @@
 	slot_flags = ALL
 	allowed = list(/obj/item/changeling)
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/changeling/attack_hand(mob/user, list/modifiers)
