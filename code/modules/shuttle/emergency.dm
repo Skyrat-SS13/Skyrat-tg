@@ -601,7 +601,11 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
+	//SKYRAT EDIT START - Temporarily bandaids this so you can emag pods
+	locked = 0
+	//SKYRAT EDIT END.
 	to_chat(user, "<span class='warning'>You fry the pod's alert level checking system.</span>")
+
 
 /obj/machinery/computer/shuttle/pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	. = ..()
