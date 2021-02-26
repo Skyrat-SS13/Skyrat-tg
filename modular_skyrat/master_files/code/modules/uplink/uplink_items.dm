@@ -5,12 +5,12 @@
 //Place any new uplink items in this file, and explain what they do
 
 //BUNDLES
-/datum/uplink_item/bundles_tc/spaceassassin
+/* /datum/uplink_item/bundles_tc/spaceassassin
 	name = "Space Assassin Bundle"
 	desc = "A unique kit commonly used by military infiltrators and the like to get the drop on unsuspecting crew, perfect for the aspiring covert assassin and stealthy manipulator."
 	item = /obj/item/storage/box/syndie_kit/spaceassassin
 	cost = 30 //40 tc would have been better
-
+*/ //To be balanced
 //DANGEROUS
 /datum/uplink_item/dangerous/aps_traitor
 	name = "Stechkin APS Machine Pistol"
