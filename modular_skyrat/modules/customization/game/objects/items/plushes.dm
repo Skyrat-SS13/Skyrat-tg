@@ -115,3 +115,12 @@
 	attack_verb_continuous = list("headbutts", "plaps")
 	attack_verb_simple = list("headbutt", "plap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/leaplush.ogg' = 1)
+
+/obj/item/toy/plush/sarmie
+	name = "Cosplayer plushie"
+	desc = "A stuffed toy who look like a cosplayer, <b>He looks sad.</b>"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "plushie_sarmie"
+	inhand_icon_state = "plushie_sarmie"
+	attack_verb_continuous = list("baps")
+	attack_verb_simple = list("bap")

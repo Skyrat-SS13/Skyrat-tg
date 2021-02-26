@@ -219,3 +219,7 @@
 /datum/loadout_item/backpack/plushies/leaplush
 	name = "Suspicious deer plushie"
 	path = /obj/item/toy/plush/leaplush
+
+/datum/loadout_item/backpack/plushies/sarmie
+	name = "Cosplayer plushie"
+	path = /obj/item/toy/plush/sarmie
