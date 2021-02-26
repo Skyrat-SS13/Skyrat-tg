@@ -6,7 +6,7 @@ MODULE ID: `EXTRA_TOOLS`
 
 ### Description:
 
-Makeshift tools and the tools from oldbase for science to use
+Makeshift tools and the jaws of life from oldbase for science to use, the one that doesn't allow you to force open doors that easily. The Hand drill was also made printable for the science protolathe
 
 ### TG Proc/File Changes:
 
