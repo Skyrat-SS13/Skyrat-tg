@@ -602,7 +602,7 @@
 		return
 	obj_flags |= EMAGGED
 	//SKYRAT EDIT START - Temporarily bandaids this so you can emag pods
-	locked = 0
+	locked = FALSE
 	//SKYRAT EDIT END.
 	to_chat(user, "<span class='warning'>You fry the pod's alert level checking system.</span>")
 
