@@ -332,3 +332,9 @@
 	desc = "Don the identities of the most powerful men and women in Nanotrasen, and pull strings from the shadows as you please with this specialized kit."
 	item = /obj/item/storage/box/syndie_kit/loadout/nt_impostor
 	cost = 25
+
+/datum/uplink_item/loadout_skyrat/lasermanbundle
+	name = "Laserman Bundle"
+	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
+	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
+	cost = 25

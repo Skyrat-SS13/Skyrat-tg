@@ -181,3 +181,13 @@
 	new /obj/item/stamp/centcom(src)
 	new /obj/item/storage/belt/sabre(src)
 	new /obj/item/clothing/gloves/combat(src)
+
+/obj/item/storage/box/syndie_kit/loadout/lasermanbundle/PopulateContents()
+	new /obj/item/melee/transforming/energy/sword/saber(src)
+	new /obj/item/book/granter/martial/carp(src)
+	new /obj/item/clothing/under/syndicate/combat(src)
+	new /obj/item/clothing/shoes/combat/swat(src)
+	new /obj/item/clothing/mask/gas/syndicate(src)
+	new /obj/item/grenade/spawnergrenade/manhacks(src)
+	for(var/i in 1 to 6)
+		new /obj/item/pen/edagger(src)
