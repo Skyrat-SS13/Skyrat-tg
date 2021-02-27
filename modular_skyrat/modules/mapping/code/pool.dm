@@ -75,7 +75,7 @@
 
 // Hotpsrings! They give a positive mood event.
 /turf/open/water/overlay/hotspring
-	name = "hotpsring"
+	name = "hotspring"
 	desc = "A warm, steamy swimming pool."
 	icon_state = "hotspring_tile"
 	baseturfs = /turf/open/floor/plating

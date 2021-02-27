@@ -71,7 +71,8 @@
 					/obj/item/clothing/head/soft/paramedic = 4,
 					/obj/item/clothing/head/beret/job/med = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/apron/surgical = 4,
-					/obj/item/clothing/mask/surgical = 4)
+					/obj/item/clothing/mask/surgical = 4,
+					/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 4)	//SKYRAT EDIT ADDITION
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
 	payment_department = ACCOUNT_MED
 
@@ -491,6 +492,9 @@
 					/obj/item/clothing/under/rank/security/detective/grey/skirt = 2,
 					/obj/item/clothing/under/rank/security/detective/undersuit = 2, // SKYRAT EDIT ADD
 					/obj/item/clothing/suit/det_bomber = 2, // SKYRAT EDIT ADD
+					/obj/item/clothing/under/costume/cybersleek = 2,	//SKYRAT EDIT ADDITION START - Cyberpunk P.I. Outfit
+					/obj/item/clothing/under/costume/cybersleek/long = 2,
+					/obj/item/clothing/head/fedora/det_hat/cybergoggles = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/accessory/waistcoat = 2,
 					/obj/item/clothing/shoes/laceup = 2,
 					/obj/item/clothing/suit/det_suit/grey = 1,

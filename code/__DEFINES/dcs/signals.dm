@@ -27,6 +27,11 @@
 #define COMSIG_GLOB_JOB_AFTER_SPAWN "!job_after_spawn"
 /// crewmember joined the game (mob/living, rank)
 #define COMSIG_GLOB_CREWMEMBER_JOINED "!crewmember_joined"
+/// Random event is trying to roll. (/datum/round_event_control/random_event)
+/// Called by (/datum/round_event_control/preRunEvent).
+#define COMSIG_GLOB_PRE_RANDOM_EVENT "!pre_random_event"
+	/// Do not allow this random event to continue.
+	#define CANCEL_PRE_RANDOM_EVENT (1<<0)
 
 /// signals from globally accessible objects
 
@@ -49,6 +54,9 @@
 /// handler for vv_do_topic (usr, href_list)
 #define COMSIG_VV_TOPIC "vv_topic"
 	#define COMPONENT_VV_HANDLED (1<<0)
+/// from datum ui_act (usr, action)
+#define COMSIG_UI_ACT "COMSIG_UI_ACT"
+
 
 /// fires on the target datum when an element is attached to it (/datum/element)
 #define COMSIG_ELEMENT_ATTACH "element_attach"
@@ -82,13 +90,30 @@
 	#define EXAMINE_POSITION_BEFORE (1<<1)
 	//End positions
 	#define COMPONENT_EXNAME_CHANGED (1<<0)
-///from base of atom/update_icon(): ()
+
+///from base of [/atom/proc/update_appearance]: (updates)
+#define COMSIG_ATOM_UPDATE_APPEARANCE "atom_update_appearance"
+	/// If returned from [COMSIG_ATOM_UPDATE_APPEARANCE] it prevents the atom from updating its name.
+	#define COMSIG_ATOM_NO_UPDATE_NAME UPDATE_NAME
+	/// If returned from [COMSIG_ATOM_UPDATE_APPEARANCE] it prevents the atom from updating its desc.
+	#define COMSIG_ATOM_NO_UPDATE_DESC UPDATE_DESC
+	/// If returned from [COMSIG_ATOM_UPDATE_APPEARANCE] it prevents the atom from updating its icon.
+	#define COMSIG_ATOM_NO_UPDATE_ICON UPDATE_ICON
+///from base of [/atom/proc/update_name]: (updates)
+#define COMSIG_ATOM_UPDATE_NAME "atom_update_name"
+///from base of [/atom/proc/update_desc]: (updates)
+#define COMSIG_ATOM_UPDATE_DESC "atom_update_desc"
+///from base of [/atom/update_icon]: ()
 #define COMSIG_ATOM_UPDATE_ICON "atom_update_icon"
-	#define COMSIG_ATOM_NO_UPDATE_ICON_STATE (1<<0)
-	#define COMSIG_ATOM_NO_UPDATE_OVERLAYS (1<<1)
-///from base of atom/update_overlays(): (list/new_overlays)
+	/// If returned from [COMSIG_ATOM_UPDATE_ICON] it prevents the atom from updating its icon state.
+	#define COMSIG_ATOM_NO_UPDATE_ICON_STATE UPDATE_ICON_STATE
+	/// If returned from [COMSIG_ATOM_UPDATE_ICON] it prevents the atom from updating its overlays.
+	#define COMSIG_ATOM_NO_UPDATE_OVERLAYS UPDATE_OVERLAYS
+///from base of [atom/update_icon_state]: ()
+#define COMSIG_ATOM_UPDATE_ICON_STATE "atom_update_icon_state"
+///from base of [/atom/update_overlays]: (list/new_overlays)
 #define COMSIG_ATOM_UPDATE_OVERLAYS "atom_update_overlays"
-///from base of atom/update_icon(): (signalOut, did_anything)
+///from base of [/atom/update_icon]: (signalOut, did_anything)
 #define COMSIG_ATOM_UPDATED_ICON "atom_updated_icon"
 ///from base of atom/Entered(): (atom/movable/entering, /atom)
 #define COMSIG_ATOM_ENTERED "atom_entered"
@@ -130,8 +155,9 @@
 ///from obj/machinery/bsa/full/proc/fire(): ()
 #define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"
 	#define COMSIG_ATOM_BLOCKS_BSA_BEAM (1<<0)
-///from base of atom/set_light(): (l_range, l_power, l_color, l_on)
-#define COMSIG_ATOM_SET_LIGHT "atom_set_light"
+///from /obj/machinery/doppler_array/proc/sense_explosion(...): Runs when an explosion is succesfully detected by a doppler array(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)
+#define COMSIG_DOPPLER_ARRAY_EXPLOSION_DETECTED "atom_dopplerarray_explosion_detected"
+
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
 ///from base of atom/handle_atom_del(): (atom/deleted)
@@ -221,16 +247,32 @@
 ///from base of [/datum/component/personal_crafting/proc/del_reqs]: ()
 #define COMSIG_REAGENTS_CRAFTING_PING "reagents_crafting_ping"
 
-///Called right before the atom changes the value of light_range to a different one, from base atom/set_light_range(): (new_range)
-#define COMSIG_ATOM_SET_LIGHT_RANGE "atom_set_light_range"
-///Called right before the atom changes the value of light_power to a different one, from base atom/set_light_power(): (new_power)
+// Lighting:
+///from base of [atom/proc/set_light]: (l_range, l_power, l_color, l_on)
+#define COMSIG_ATOM_SET_LIGHT "atom_set_light"
+	/// Blocks [/atom/proc/set_light], [/atom/proc/set_light_power], [/atom/proc/set_light_range], [/atom/proc/set_light_color], [/atom/proc/set_light_on], and [/atom/proc/set_light_flags].
+	#define COMPONENT_BLOCK_LIGHT_UPDATE (1<<0)
+///Called right before the atom changes the value of light_power to a different one, from base [atom/proc/set_light_power]: (new_power)
 #define COMSIG_ATOM_SET_LIGHT_POWER "atom_set_light_power"
-///Called right before the atom changes the value of light_color to a different one, from base atom/set_light_color(): (new_color)
+///Called right after the atom changes the value of light_power to a different one, from base of [/atom/proc/set_light_power]: (old_power)
+#define COMSIG_ATOM_UPDATE_LIGHT_POWER "atom_update_light_power"
+///Called right before the atom changes the value of light_range to a different one, from base [atom/proc/set_light_range]: (new_range)
+#define COMSIG_ATOM_SET_LIGHT_RANGE "atom_set_light_range"
+///Called right after the atom changes the value of light_range to a different one, from base of [/atom/proc/set_light_range]: (old_range)
+#define COMSIG_ATOM_UPDATE_LIGHT_RANGE "atom_update_light_range"
+///Called right before the atom changes the value of light_color to a different one, from base [atom/proc/set_light_color]: (new_color)
 #define COMSIG_ATOM_SET_LIGHT_COLOR "atom_set_light_color"
-///Called right before the atom changes the value of light_on to a different one, from base atom/set_light_on(): (new_value)
+///Called right after the atom changes the value of light_color to a different one, from base of [/atom/proc/set_light_color]: (old_color)
+#define COMSIG_ATOM_UPDATE_LIGHT_COLOR "atom_update_light_color"
+///Called right before the atom changes the value of light_on to a different one, from base [atom/proc/set_light_on]: (new_value)
 #define COMSIG_ATOM_SET_LIGHT_ON "atom_set_light_on"
-///Called right before the atom changes the value of light_flags to a different one, from base atom/set_light_flags(): (new_value)
+///Called right after the atom changes the value of light_on to a different one, from base of [/atom/proc/set_light_on]: (old_value)
+#define COMSIG_ATOM_UPDATE_LIGHT_ON "atom_update_light_on"
+///Called right before the atom changes the value of light_flags to a different one, from base [atom/proc/set_light_flags]: (new_flags)
 #define COMSIG_ATOM_SET_LIGHT_FLAGS "atom_set_light_flags"
+///Called right after the atom changes the value of light_flags to a different one, from base of [/atom/proc/set_light_flags]: (old_flags)
+#define COMSIG_ATOM_UPDATE_LIGHT_FLAGS "atom_update_light_flags"
+
 ///called for each movable in a turf contents on /turf/zImpact(): (atom/movable/A, levels)
 #define COMSIG_ATOM_INTERCEPT_Z_FALL "movable_intercept_z_impact"
 ///called on a movable (NOT living) when it starts pulling (atom/movable/pulled, state, force)
@@ -239,6 +281,8 @@
 #define COMSIG_LIVING_START_PULL "living_start_pull"
 ///called on /living when someone is pulled (mob/living/puller)
 #define COMSIG_LIVING_GET_PULLED "living_start_pulled"
+///from base of [/atom/proc/interact]: (mob/user)
+#define COMSIG_ATOM_UI_INTERACT "atom_ui_interact"
 
 /// from /datum/component/singularity/proc/can_move(), as well as /obj/energy_ball/proc/can_move()
 /// if a callback returns `SINGULARITY_TRY_MOVE_BLOCK`, then the singularity will not move to that turf
@@ -248,9 +292,9 @@
 
 /////////////////
 
-///from base of area/Entered(): (/area)
+///from base of area/Entered(): (/area). Sent to "area-sensitive" movables, see __DEFINES/traits.dm for info.
 #define COMSIG_ENTER_AREA "enter_area"
-///from base of area/Exited(): (/area)
+///from base of area/Exited(): (/area). Sent to "area-sensitive" movables, see __DEFINES/traits.dm for info.
 #define COMSIG_EXIT_AREA "exit_area"
 ///from base of atom/Click(): (location, control, params, mob/user)
 #define COMSIG_CLICK "atom_click"
@@ -557,6 +601,16 @@
 #define COMSIG_MACHINERY_POWER_RESTORED "machinery_power_restored"
 ///from /obj/machinery/set_occupant(atom/movable/O): (new_occupant)
 #define COMSIG_MACHINERY_SET_OCCUPANT "machinery_set_occupant"
+///from /obj/machinery/destructive_scanner/proc/open(aggressive): Runs when the destructive scanner scans a group of objects. (list/scanned_atoms)
+#define COMSIG_MACHINERY_DESTRUCTIVE_SCAN "machinery_destructive_scan"
+///from /obj/machinery/computer/arcade/prizevend(mob/user, prizes = 1)
+#define COMSIG_ARCADE_PRIZEVEND "arcade_prizevend"
+
+///from obj/machinery/iv_drip/IV_attach(target, usr) : (attachee)
+#define COMSIG_IV_ATTACH "iv_attach"
+///from obj/machinery/iv_drip/IV_detach() : (detachee)
+#define COMSIG_IV_DETACH "iv_detach"
+
 
 // /obj/machinery/computer/teleporter
 /// from /obj/machinery/computer/teleporter/proc/set_target(target, old_target)
@@ -860,6 +914,8 @@
 ///called on an object by its NTNET connection component on a port distruction (port, list/data))
 #define COMSIG_COMPONENT_NTNET_PORT_UPDATED "ntnet_port_updated"
 
+///Restaurant
+#define COMSIG_ITEM_SOLD_TO_CUSTOMER "item_sold_to_customer"
 
 //Nanites
 
@@ -981,6 +1037,16 @@
 /// (atom/container, mob/user) - returns bool
 #define COMSIG_CONTAINER_TRY_ATTACH "container_try_attach"
 
+// /datum/element/light_eater
+///from base of [/datum/element/light_eater/proc/table_buffet]: (list/light_queue, datum/light_eater)
+#define COMSIG_LIGHT_EATER_QUEUE "light_eater_queue"
+///from base of [/datum/element/light_eater/proc/devour]: (datum/light_eater)
+#define COMSIG_LIGHT_EATER_ACT "light_eater_act"
+	///Prevents the default light eater behavior from running in case of immunity or custom behavior
+	#define COMPONENT_BLOCK_LIGHT_EATER (1<<0)
+///from base of [/datum/element/light_eater/proc/devour]: (atom/eaten_light)
+#define COMSIG_LIGHT_EATER_DEVOUR "light_eater_devour"
+
 /* Attack signals. They should share the returned flags, to standardize the attack chain. */
 /// tool_act -> pre_attack -> target.attackby (item.attack) -> afterattack
 	///Ends the attack chain. If sent early might cause posterior attacks not to happen.
@@ -1017,6 +1083,8 @@
 #define COMSIG_MOB_ATTACK_RANGED "mob_attack_ranged"
 ///From base of atom/ctrl_click(): (atom/A)
 #define COMSIG_MOB_CTRL_CLICKED "mob_ctrl_clicked"
+///From base of mob/update_movespeed():area
+#define COMSIG_MOB_MOVESPEED_UPDATED "mob_update_movespeed"
 ///from mob/living/carbon/human/UnarmedAttack(): (atom/target, proximity)
 #define COMSIG_HUMAN_EARLY_UNARMED_ATTACK "human_early_unarmed_attack"
 ///from mob/living/carbon/human/UnarmedAttack(): (atom/target, proximity)

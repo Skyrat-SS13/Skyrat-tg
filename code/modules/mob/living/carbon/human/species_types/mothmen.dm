@@ -16,7 +16,7 @@
 	mutanteyes = /obj/item/organ/eyes/moth
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/moth
-	wings_icon = "Megamoth"
+	wings_icons = list("Megamoth", "Mothra")
 	has_innate_wings = TRUE
 	payday_modifier = 0.75
 
@@ -37,7 +37,7 @@
 
 	return randname
 
-/datum/species/moth/handle_fire(mob/living/carbon/human/H, no_protection = FALSE)
+/datum/species/moth/handle_fire(mob/living/carbon/human/H, delta_time, times_fired, no_protection = FALSE)
 	. = ..()
 	if(.) //if the mob is immune to fire, don't burn wings off.
 		return
@@ -59,11 +59,11 @@
 			H.dna.features["wings"] = "None"
 		handle_mutant_bodyparts(H)
 
-/datum/species/moth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
+/datum/species/moth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	. = ..()
 	if(chem.type == /datum/reagent/toxin/pestkiller)
-		H.adjustToxLoss(3)
-		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM)
+		H.adjustToxLoss(3 * REAGENTS_EFFECT_MULTIPLIER * delta_time)
+		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 
 /datum/species/moth/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/melee/flyswatter))
