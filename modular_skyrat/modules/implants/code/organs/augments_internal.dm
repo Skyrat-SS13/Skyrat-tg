@@ -32,4 +32,10 @@
 
 /obj/item/organ/cyberimp/brain/anti_sleep/proc/reboot()
 	organ_flags &= ~ORGAN_FAILING
-	cooldown = FALSE 
+	cooldown = FALSE
+
+//Autosurgeon for anti-drop implant
+/obj/item/autosurgeon/organ/syndicate/no_drop
+	desc = "A single use autosurgeon that contains an anti-drop implant. A screwdriver can be used to remove it, but implants can't be placed back in."
+	uses = 1
+	starting_organ = /obj/item/organ/cyberimp/brain/anti_drop

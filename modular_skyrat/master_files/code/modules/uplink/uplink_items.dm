@@ -230,3 +230,11 @@
 	cost = 12
 	surplus = 0
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
+
+/datum/uplink_item/implants/anti_drop
+	name = "Anti-Drop Implant"
+	desc = "This cybernetic brain implant will allow you to force your hand muscles to contract, preventing item dropping at will. Comes in an autosurgeon."
+	item = /obj/item/autosurgeon/organ/syndicate/no_drop
+	cost = 5
+	surplus = 0
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
