@@ -92,16 +92,12 @@
 /datum/emote/proc/check_cooldown(mob/user, intentional)
 	if(!intentional)
 		return TRUE
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - EMOTES - GLOBAL COOLDOWN
 	//if(user.emotes_used && user.emotes_used[src] + cooldown > world.time) - SKYRAT EDIT - ORIGINAL
 	if(user.nextsoundemote > world.time)
-=======
-	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
 		var/datum/emote/default_emote = /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
 			to_chat(user, "<span class='danger'>You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote.</span>")
->>>>>>> c3e71c8e6a0 (Adds cooldown feedback to emotes (#57114))
 		return FALSE
 	//if(!user.emotes_used)
 	//	user.emotes_used = list()
