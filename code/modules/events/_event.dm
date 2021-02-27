@@ -1,4 +1,4 @@
-#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME 10
+#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME 60	// SKYRAT EDIT: Original value (10)
 
 //this singleton datum is used by the events controller to dictate how it selects events
 /datum/round_event_control
@@ -76,15 +76,8 @@
 
 	triggering = TRUE
 	if (alert_observers)
-<<<<<<< HEAD
-		//message_admins("Random Event triggering in 10 seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)") //ORIGINAL
-		//sleep(100) //ORIGINAL
-		message_admins("Random Event triggering in 60 seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)") //SKYRAT EDIT CHANGE - EVENTS
-		sleep(600) //SKYRAT EDIT CHANGE - EVENTS
-=======
 		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME SECONDS)
->>>>>>> d7382d0d108 (Dynamic now plays a part in controlling random event antagonists (#57175))
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!canSpawnEvent(players_amt, gamemode))
