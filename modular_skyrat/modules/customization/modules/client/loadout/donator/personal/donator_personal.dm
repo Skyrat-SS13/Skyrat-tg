@@ -1,6 +1,6 @@
 /datum/loadout_item/backpack/donator/drawingtablet
 	name = "Drawing Tablet"
-	path = /obj/item/drawingtablet
+	path = /obj/item/canvas/drawingtablet
 	ckeywhitelist = list("thedragmeme")
 
 /datum/loadout_item/shoes/donator/heeled_jackboots
@@ -132,3 +132,9 @@
 	name = "Lannese Dress w/ Vambraces"
 	path = /obj/item/clothing/under/custom/lannese/vambrace
 	ckeywhitelist = list("kathrinbailey")
+
+//FOR DEV INTERNS!
+/datum/loadout_item/backpack/donator/intern_hat
+	name = "Intern Hat"
+	path = /obj/item/clothing/head/intern/developer
+	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz", "tf4")

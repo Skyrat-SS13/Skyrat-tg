@@ -21,6 +21,8 @@
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
+		/datum/language/machine, //SKYRAT EDIT - Gives synths the abiltiy to speak EAL
+		/datum/language/slime, //SKYRAT EDIT - Gives slimes the ability to speak slime once more.
 		/datum/language/beachbum,
 		/datum/language/aphasia,
 		/datum/language/piratespeak,
@@ -244,7 +246,8 @@
 
 /obj/item/organ/tongue/abductor/examine(mob/M)
 	. = ..()
-	if(HAS_TRAIT(M, TRAIT_ABDUCTOR_TRAINING) || HAS_TRAIT(M.mind, TRAIT_ABDUCTOR_TRAINING) || isobserver(M))
+	if(HAS_TRAIT(M, TRAIT_ABDUCTOR_TRAINING) || (M.mind && HAS_TRAIT(M.mind, TRAIT_ABDUCTOR_TRAINING)) || isobserver(M))
+		. += "<span class='notice'>It can be attuned to a different channel by using it inhand.</span>"
 		if(!mothership)
 			. += "<span class='notice'>It is not attuned to a specific mothership.</span>"
 		else

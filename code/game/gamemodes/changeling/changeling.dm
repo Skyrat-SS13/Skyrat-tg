@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 	<span class='green'>Changelings</span>: Accomplish the objectives assigned to you.\n\
 	<span class='notice'>Crew</span>: Root out and eliminate the changeling menace."
 
-	var/const/changeling_amount = 4 //hard limit on changelings if scaling is turned off
+	var/const/changeling_amount = 6 //hard limit on changelings if scaling is turned off //SKYRAT EDIT CHANGE - ORIGINAL: 4
 	var/list/changelings = list()
 
 /datum/game_mode/changeling/pre_setup()

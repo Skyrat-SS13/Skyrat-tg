@@ -134,7 +134,9 @@
 					/obj/item/clothing/under/costume/vic_vest/red_alt = 1, 
 					/obj/item/clothing/under/costume/vic_dress = 1, 
 					/obj/item/clothing/under/costume/vic_dress/red = 1, 
-					/obj/item/clothing/under/costume/dutch = 1)	//SKYRAT EDIT ADDITION END
+					/obj/item/clothing/under/costume/dutch = 1,
+					/obj/item/clothing/under/costume/loincloth/sensor = 1,
+					/obj/item/clothing/under/costume/loincloth/cloth/sensor = 1)	//SKYRAT EDIT ADDITION END
 
 	contraband = list(/obj/item/clothing/suit/judgerobe = 1,
 					  /obj/item/clothing/head/powdered_wig = 1,
