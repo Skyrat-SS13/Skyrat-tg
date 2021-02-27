@@ -46,7 +46,7 @@
 
 ///Robots need robot gibs...!
 /mob/living/simple_animal/robot_customer/spawn_gibs()
-	new /obj/effect/gibspawner/robot(drop_location()
+	new /obj/effect/gibspawner/robot(drop_location(), src)
 
 /mob/living/simple_animal/robot_customer/MouseEntered(location, control, params)
 	. = ..()
