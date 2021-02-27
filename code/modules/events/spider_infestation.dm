@@ -2,15 +2,10 @@
 	name = "Spider Infestation"
 	typepath = /datum/round_event/spider_infestation
 	weight = 10
-<<<<<<< HEAD
 	//max_occurrences = 1 //ORIGINAL
 	max_occurrences = 0 //SKYRAT EDIT CHANGE
 	//min_players = 20 - SKYRAT EDIT - moved to modular_skyrat/master_files
-=======
-	max_occurrences = 1
-	min_players = 20
 	dynamic_should_hijack = TRUE
->>>>>>> d7382d0d108 (Dynamic now plays a part in controlling random event antagonists (#57175))
 
 /datum/round_event/spider_infestation
 	announceWhen = 400
