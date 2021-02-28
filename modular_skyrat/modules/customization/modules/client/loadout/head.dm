@@ -74,6 +74,14 @@
 	name = "Maid Headband"
 	path = /obj/item/clothing/head/maid
 
+/datum/loadout_item/head/widehat
+	name = "Wide Black Hat"
+	path = /obj/item/clothing/head/costume/widehat
+
+/datum/loadout_item/head/widehat_red
+	name = "Wide Red Hat"
+	path = /obj/item/clothing/head/costume/widehat/red
+
 /datum/loadout_item/head/cardboard
 	name = "Cardboard Helmet"
 	path = /obj/item/clothing/head/cardborg

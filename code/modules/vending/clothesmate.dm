@@ -75,6 +75,11 @@
 					/obj/item/clothing/under/dress/littleblack = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/dress/pinktutu = 2,	//SKYRAT EDIT ADDITION
 		            /obj/item/clothing/suit/jacket = 2,
+					/obj/item/clothing/suit/toggle/jacket = 2,	//SKYRAT EDIT ADDITION START - Jacket/Flannels Port
+					/obj/item/clothing/suit/toggle/jacket/flannel = 2,
+					/obj/item/clothing/suit/toggle/jacket/flannel/red = 2,
+					/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 2,
+					/obj/item/clothing/suit/toggle/jacket/flannel/brown = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/hooded/wintercoat = 2,
 		            /obj/item/clothing/suit/jacket/puffer/vest = 2,
 		            /obj/item/clothing/suit/jacket/puffer = 2,
