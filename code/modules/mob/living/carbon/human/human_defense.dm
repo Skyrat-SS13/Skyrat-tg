@@ -749,27 +749,17 @@
 			var/msg
 			switch(W.severity)
 				if(WOUND_SEVERITY_TRIVIAL)
-<<<<<<< HEAD
 					//msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>" //ORIGINAL
-					msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)].</span>" //SKYRAT EDIT CHANGE - MEDICAL
+					msg = "\t <span class='danger'>Your [body_part.name] is suffering [W.a_or_from] [W.get_topic_name(src)].</span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_MODERATE)
 					//msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</span>" //ORIGINAL
-					msg = "\t <span class='warning'>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</span>" //SKYRAT EDIT CHANGE - MEDICAL
+					msg = "\t <span class='warning'>Your [body_part.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_SEVERE)
 					//msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>" //ORIGINAL
-					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
+					msg = "\t <span class='warning'><b>Your [body_part.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_CRITICAL)
 					//msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>" //ORIGINAL
-					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
-=======
-					msg = "\t <span class='danger'>Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>"
-				if(WOUND_SEVERITY_MODERATE)
-					msg = "\t <span class='warning'>Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)]!</span>"
-				if(WOUND_SEVERITY_SEVERE)
-					msg = "\t <span class='warning'><b>Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>"
-				if(WOUND_SEVERITY_CRITICAL)
-					msg = "\t <span class='warning'><b>Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>"
->>>>>>> 5bfab4a84b8 (Fermichem 2.4 - C2 medicine recipe adaptations and atunements to the new mechanics (#57104))
+					msg = "\t <span class='warning'><b>Your [body_part.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
 			combined_msg += msg
 
 		for(var/obj/item/I in body_part.embedded_objects)
@@ -779,12 +769,12 @@
 				combined_msg += "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(body_part)]' class='warning'>There is \a [I] embedded in your [body_part.name]!</a>"
 
 		//SKYRAT EDIT ADDITION BEGIN - MEDICAL
-		if(LB.current_gauze)
-			var/datum/bodypart_aid/current_gauze = LB.current_gauze
-			combined_msg += "\t <span class='notice'>Your [LB.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.</span>"
-		if(LB.current_splint)
-			var/datum/bodypart_aid/current_splint = LB.current_splint
-			combined_msg += "\t <span class='notice'>Your [LB.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.</span>"
+		if(body_part.current_gauze)
+			var/datum/bodypart_aid/current_gauze = body_part.current_gauze
+			combined_msg += "\t <span class='notice'>Your [body_part.name] is [current_gauze.desc_prefix] with <a href='?src=[REF(current_gauze)];remove=1'>[current_gauze.get_description()]</a>.</span>"
+		if(body_part.current_splint)
+			var/datum/bodypart_aid/current_splint = body_part.current_splint
+			combined_msg += "\t <span class='notice'>Your [body_part.name] is [current_splint.desc_prefix] with <a href='?src=[REF(current_splint)];remove=1'>[current_splint.get_description()]</a>.</span>"
 		//SKYRAT EDIT END
 
 	for(var/t in missing)
