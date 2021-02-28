@@ -523,8 +523,8 @@
 /datum/loadout_item/uniform/job/para_red
 	name = "Red Paramedic Jumpsuit"
 	path = /obj/item/clothing/under/utility/para_red
-	restricted_roles = list("Paramedic")
-	restricted_desc = "Paramedic"
+	restricted_roles = list("Chief Medical Officer", "Paramedic")
+	restricted_desc = "Medical First Responders"
 
 /*// Trekie things
 //TOS
