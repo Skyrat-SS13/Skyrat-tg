@@ -35,6 +35,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Research Director",
 		"Chief Medical Officer",
 		"Security Medic", //SKYRAT EDIT ADDITION - SEC_HUAL
+		"Clown", //SKYRAT EDIT: Host request
 		"Security Sergeant", //SKYRAT EDIT ADDITION - SEC_HAUL
 		"Blueshield",	//SKYRAT EDIT: Blueshield slots should never be above 1.
 		"Prisoner")

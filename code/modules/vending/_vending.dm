@@ -849,7 +849,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 					say("You are not of legal age to purchase [R.name].")
 					if(!(usr in GLOB.narcd_underages))
 						Radio.set_frequency(FREQ_SECURITY)
-						Radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
+						// SKYRAT EDIT: Original - Radio.talk_into(src, "SECURITY ALERT: Underaged crewmember [usr] recorded attempting to purchase [R.name] in [get_area(src)]. Please watch for substance abuse.", FREQ_SECURITY)
+						Radio.talk_into(src, "SECURITY ALERT: [usr] has attempted to purchase [R.name] in [get_area(src)] whilst not of legal drinking age. Please watch for substance abuse.", FREQ_SECURITY)	// SKYRAT EDIT: Just worded slightly differently.
 						GLOB.narcd_underages += usr
 					flick(icon_deny,src)
 					vend_ready = TRUE
@@ -1038,11 +1039,14 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 /obj/machinery/vending/custom/canLoadItem(obj/item/I, mob/user)
 	. = FALSE
+	if(I.flags_1 & HOLOGRAM_1)
+		say("This vendor cannot accept nonexistent items.")
+		return
 	if(loaded_items >= max_loaded_items)
 		say("There are too many items in stock.")
 		return
 	if(istype(I, /obj/item/stack))
-		say("Loose items may cause problems, try use it inside wrapping paper.")
+		say("Loose items may cause problems, try to use it inside wrapping paper.")
 		return
 	if(I.custom_price)
 		return TRUE
@@ -1149,15 +1153,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			slogan_list += stripped_input(user,"Set slogan","Slogan","Epic", 60)
 			last_slogan = world.time + rand(0, slogan_delay)
 			return
-
-		if(canLoadItem(I))
-			loadingAttempt(I,user)
-			updateUsrDialog()
-			return
-
-	if(panel_open && is_wire_tool(I))
-		wires.interact(user)
-		return
 
 	return ..()
 

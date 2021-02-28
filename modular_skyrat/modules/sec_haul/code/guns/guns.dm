@@ -506,7 +506,7 @@
 	caliber = "6mm"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "rubber" = AMMO_TYPE_RUBBER, "ihdf" = AMMO_TYPE_IHDF)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber
 	ammo_type = /obj/item/ammo_casing/b6mm/rubber
@@ -552,7 +552,7 @@
 	caliber = "6mm"
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "rubber" = AMMO_TYPE_RUBBER, "ihdf" = AMMO_TYPE_IHDF)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/croon/rubber
 	ammo_type = /obj/item/ammo_casing/b6mm/rubber
@@ -650,7 +650,7 @@
 	caliber = "12mm"
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp

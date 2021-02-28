@@ -16,6 +16,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_SHAFT_MINER
 	bounty_types = CIV_JOB_MINE
+	departments = DEPARTMENT_CARGO
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"
@@ -32,7 +33,8 @@
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,\
 		/obj/item/mining_voucher=1,\
-		/obj/item/stack/marker_beacon/ten=1)
+		/obj/item/suit_voucher=1,\
+		/obj/item/stack/marker_beacon/ten=1) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
 
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer

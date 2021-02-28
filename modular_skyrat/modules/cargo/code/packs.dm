@@ -121,6 +121,7 @@
 	cost = CARGO_CRATE_VALUE * 40
 	crate_name = "industrial RCD crate"
 
+/* Removed pending rebalance
 /datum/supply_pack/engineering/experimental_rcd
 	name = "Experimental RCD Crate"
 	desc = "Contains a single highly advanced RCD, capable of projecting its improved construction nanites at an increased range."
@@ -129,6 +130,7 @@
 	contains = list(/obj/item/construction/rcd/arcd)
 	cost = CARGO_CRATE_VALUE * 50
 	crate_name = "experimental RCD crate"
+*/
 
 /datum/supply_pack/engineering/material_pouches
 	name = "Material Pouches Crate"

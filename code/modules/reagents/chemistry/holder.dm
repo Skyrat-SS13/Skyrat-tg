@@ -13,6 +13,8 @@
 	GLOB.chemical_reagents_list = list()
 
 	for(var/path in paths)
+		if(path in GLOB.fake_reagent_blacklist)
+			continue
 		var/datum/reagent/D = new path()
 		GLOB.chemical_reagents_list[path] = D
 
@@ -32,9 +34,9 @@
 
 	//Randomized need to go last since they need to check against conflicts with normal recipes
 	var/paths = subtypesof(/datum/chemical_reaction) - typesof(/datum/chemical_reaction/randomized) + subtypesof(/datum/chemical_reaction/randomized)
-	GLOB.chemical_reactions_list = list()
-	GLOB.chemical_reactions_results_lookup_list = list()
-	GLOB.chemical_reactions_list_product_index = list()
+	GLOB.chemical_reactions_list = list() //reagents to reaction list
+	GLOB.chemical_reactions_results_lookup_list = list() //UI glob
+	GLOB.chemical_reactions_list_product_index = list() //product to reaction list
 
 	for(var/path in paths)
 		var/datum/chemical_reaction/D = new path()
@@ -519,33 +521,37 @@
 	var/list/cached_reagents = reagent_list
 	if (!target)
 		return
-	if (!target.reagents || src.total_volume<=0 || !src.get_reagent_amount(reagent))
+
+	var/datum/reagents/holder
+	if(istype(target, /datum/reagents))
+		holder = target
+	else if(target.reagents && total_volume > 0 && get_reagent_amount(reagent))
+		holder = target.reagents
+	else
 		return
 	if(amount < 0)
 		return
-
 	var/cached_amount = amount
-	var/datum/reagents/R = target.reagents
-	if(src.get_reagent_amount(reagent)<amount)
-		amount = src.get_reagent_amount(reagent)
+	if(get_reagent_amount(reagent) < amount)
+		amount = get_reagent_amount(reagent)
 
-	amount = min(round(amount, CHEMICAL_VOLUME_ROUNDING), R.maximum_volume-R.total_volume)
+	amount = min(round(amount, CHEMICAL_VOLUME_ROUNDING), holder.maximum_volume - holder.total_volume)
 	var/trans_data = null
-	for (var/CR in cached_reagents)
-		var/datum/reagent/current_reagent = CR
+	for (var/looping_through_reagents in cached_reagents)
+		var/datum/reagent/current_reagent = looping_through_reagents
 		if(current_reagent.type == reagent)
 			if(preserve_data)
 				trans_data = current_reagent.data
-			if(current_reagent.intercept_reagents_transfer(R, cached_amount))//Use input amount instead.
+			if(current_reagent.intercept_reagents_transfer(holder, cached_amount))//Use input amount instead.
 				break
 			force_stop_reagent_reacting(current_reagent)
-			R.add_reagent(current_reagent.type, amount, trans_data, chem_temp, current_reagent.purity, current_reagent.ph, no_react = TRUE)
+			holder.add_reagent(current_reagent.type, amount, trans_data, chem_temp, current_reagent.purity, current_reagent.ph, no_react = TRUE)
 			remove_reagent(current_reagent.type, amount, 1)
 			break
 
-	src.update_total()
-	R.update_total()
-	R.handle_reactions()
+	update_total()
+	holder.update_total()
+	holder.handle_reactions()
 	return amount
 
 /// Copies the reagents to the target object
@@ -899,7 +905,6 @@
 				mix_message += temp_mix_message
 			continue
 		SSblackbox.record_feedback("tally", "chemical_reaction", 1, "[equilibrium.reaction.type] total reaction steps")
-
 	if(num_reactions)
 		SEND_SIGNAL(src, COMSIG_REAGENTS_REACTION_STEP, num_reactions, delta_time)
 
@@ -1017,7 +1022,6 @@
 	target.previous_reagent_list = LAZYLISTDUPLICATE(previous_reagent_list)
 	target.is_reacting = is_reacting
 
-
 ///Checks to see if the reagents has a difference in reagents_list and previous_reagent_list (I.e. if there's a difference between the previous call and the last)
 ///Also checks to see if the saved reactions in failed_but_capable_reactions can start as a result of temp/pH change
 /datum/reagents/proc/has_changed_state()
@@ -1121,7 +1125,6 @@
 	if (R.purity == 1)
 		return
 	if(R.chemical_flags & REAGENT_DONOTSPLIT)
-		R.purity = 1
 		return
 	if(R.purity < 0)
 		stack_trace("Purity below 0 for chem: [type]!")
@@ -1140,7 +1143,7 @@
 		if(!(R.chemical_flags & REAGENT_SPLITRETAINVOL))
 			remove_reagent(R.type, impureVol, FALSE)
 		add_reagent(R.impure_chem, impureVol, FALSE, added_purity = 1-R.creation_purity)
-	R.purity = 1 //prevent this process from repeating (this is why creation_purity exists)
+	R.chemical_flags |= REAGENT_DONOTSPLIT
 
 /// Updates [/datum/reagents/var/total_volume]
 /datum/reagents/proc/update_total()
@@ -1629,6 +1632,8 @@
 
 			if(reagent.chemical_flags & REAGENT_DEAD_PROCESS)
 				data["reagent_mode_reagent"] += list("deadProcess" = TRUE)
+	else
+		data["reagent_mode_reagent"] = null
 
 	//reaction lookup data
 	if (ui_reaction_id)
@@ -1728,6 +1733,8 @@
 					tooltip_bool = TRUE
 			data["reagent_mode_recipe"]["catalysts"] += list(list("name" = reagent.name, "id" = reagent.type, "ratio" = reaction.required_catalysts[reagent.type], "color" = color_r, "tooltipBool" = tooltip_bool, "tooltip" = tooltip))
 		data["reagent_mode_recipe"]["isColdRecipe"] = reaction.is_cold_recipe
+	else
+		data["reagent_mode_recipe"] = null
 
 	return data
 
