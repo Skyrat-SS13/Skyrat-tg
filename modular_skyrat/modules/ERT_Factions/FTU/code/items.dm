@@ -1,1 +1,21 @@
-TEST
+/obj/item/melee/transforming/energy/sword/ignis
+	name = "\improper FTU 'Ignis' plasma sword"
+	desc = "A mostly ceremonial energy sword seen in the hands of exclusively the highest ranking FTU officers. If you're the guy holding it, you mean business."
+	icon = modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi
+	icon_state = "ignis"
+	icon_state_on = "ignis_active"
+	lefthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/righthand.dmi'
+	force = 3
+	force_on = 48
+	block_chance = 70
+	throwforce = 5
+	throwforce_on = 40
+	wound_bonus = 50
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	throw_speed = 10
+	throw_range = 8
+	w_class = WEIGHT_CLASS_SMALL
+	w_class_on = WEIGHT_CLASS_HUGE
+	armour_penetration = 90
+	attack_verb_on = list("rips", "evaporates", "slices", "tears", "lacerates", "cuts")
