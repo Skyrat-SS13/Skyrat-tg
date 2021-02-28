@@ -10,3 +10,7 @@
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
+#define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
+
+// Trait sources
+#define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
