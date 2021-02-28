@@ -75,7 +75,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		to_chat(target, "<span class='warning'>You aren't able to activate \the [src] anymore!</span>")
 
 	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
-	if(!(get_atom_on_turf(src, /mob) == user))
+	// if(!(get_atom_on_turf(src, /mob) == user)) SKYRAT EDIT ORIGINAL
+	if(!Adjacent(user)) // SKYRAT EDIT -- Ghost Cafe Static Hilbertspawner
 		if(user == target)
 			to_chat(user, "<span class='warning'>\The [src] is no longer in your possession!</span>")
 		else
