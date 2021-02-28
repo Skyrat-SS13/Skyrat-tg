@@ -52,8 +52,6 @@
 	finale()
 	return ..()
 
-<<<<<<< HEAD
-=======
 /obj/projectile/curse_hand/on_hit(atom/target, blocked, pierce_hit)
 	. = ..()
 	if (. == BULLET_ACT_HIT)
@@ -66,5 +64,3 @@
 	speed = 1
 	range = 20
 	color = "#ff7e7e"//Tint it slightly
-
->>>>>>> 0de523f8530 (Move the curse hand's visual effects out of Destroy (#57271))
