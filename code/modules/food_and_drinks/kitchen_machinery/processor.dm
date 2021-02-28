@@ -57,7 +57,9 @@
 		var/mob/living/carbon/human/H = user
 		if(H.combat_mode)
 			var/obj/item/bodypart/limb = H.get_active_hand()
-			visible_message("<span class='danger'>[user] puts their hand in the [src] causing it to be brutally dismembered!</span>")
+			H.visible_message("<span class='danger'>[H] puts their hand in the [src] causing it to be brutally dismembered!</span>", \
+			"<span class='userdanger'>You put your hand in [src] causing it to be torn off, ouch!</span>")
+			playsound(src.loc, 'sound/machines/blender.ogg', 50, TRUE)
 			limb.dismember()
 //SKYRAT EDIT ADDITION END
 
