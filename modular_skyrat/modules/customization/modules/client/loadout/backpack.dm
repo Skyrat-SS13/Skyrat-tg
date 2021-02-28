@@ -222,4 +222,8 @@
 
 /datum/loadout_item/backpack/plushies/sarmie
 	name = "Cosplayer plushie"
-	path = /obj/item/toy/plush/sarmie
+	path = /obj/item/toy/plush/sarmieplush
+
+/datum/loadout_item/backpack/plushies/oglaplush
+	name = "Suspicious lizzy plush"
+	path = /obj/item/toy/plush/oglaplush
