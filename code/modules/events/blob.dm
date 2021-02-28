@@ -7,6 +7,8 @@
 	// min_players = 20 // SKYRAT EDIT -- Original
 	min_players = 60 	// SKYRAT EDIT CHANGE -- Requires 60 alive non-afk players for blob
 
+	dynamic_should_hijack = TRUE
+
 	gamemode_blacklist = list("blob") //Just in case a blob survives that long
 
 /datum/round_event_control/blob/canSpawnEvent(players, gamemode)
