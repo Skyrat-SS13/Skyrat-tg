@@ -334,6 +334,44 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_IHDF
 
+//////////////////////FIREFLY
+/obj/item/gun/ballistic/automatic/pistol/firefly
+	name = "\improper Armadyne P-92 'Firefly'"
+	desc = "A 9mm sidearm made by Armadyne's Medical Directive, with a heavy front for weak wrists. A small warning label on the back says it's not fit for surgical work."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/firefly.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	icon_state = "firefly"
+	inhand_icon_state = "firefly"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/firefly
+	can_suppress = FALSE
+	realistic = TRUE
+	can_flashlight = TRUE
+	emp_damageable = TRUE
+	armadyne = TRUE
+
+/obj/item/ammo_box/magazine/multi_sprite/firefly
+	name = "firefly handgun magazine (9mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pdh"
+	ammo_type = /obj/item/ammo_casing/b9mm
+	caliber = "9mm"
+	max_ammo = 10
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+
+/obj/item/ammo_box/magazine/multi_sprite/firefly/hp
+	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
+/obj/item/ammo_box/magazine/multi_sprite/firefly/ihdf
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	round_type = AMMO_TYPE_IHDF
+
 /////////////////////PCR
 
 /obj/item/gun/ballistic/automatic/pcr
