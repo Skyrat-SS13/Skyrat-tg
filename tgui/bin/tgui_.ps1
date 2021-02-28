@@ -51,8 +51,15 @@ function task-dev-server {
 }
 
 ## Run a linter through all packages
+<<<<<<< HEAD
 function task-eslint {
   yarn run eslint packages @Args
+=======
+function task-lint {
+  yarn run tsc
+  Write-Output "tgui: type check passed"
+  yarn run eslint packages --ext ".js,.jsx,.ts,.tsx,.cjs,.mjs" @Args
+>>>>>>> 9d17292c03a (Fix lint task in tgui powershell script (#57154))
   Write-Output "tgui: eslint check passed"
 }
 

@@ -17,7 +17,7 @@
 #define PROCESS_SYNTHETIC 2		//Only processes reagents with "SYNTHETIC" or "ORGANIC | SYNTHETIC"
 
 #define REAGENT_ORGANIC 1
-#define REAGENT_SYNTHETIC 2	
+#define REAGENT_SYNTHETIC 2
 
 //Some defines for sprite accessories
 // Which color source we're using when the accessory is added
@@ -58,27 +58,27 @@
 #define PREVIEW_PREF_LOADOUT "Loadout"
 #define PREVIEW_PREF_NAKED "Naked"
 
-#define BODY_SIZE_NORMAL 		1.00
-#define BODY_SIZE_MAX			1.5
-#define BODY_SIZE_MIN			0.8
+#define BODY_SIZE_NORMAL 1.00
+#define BODY_SIZE_MAX 1.5
+#define BODY_SIZE_MIN 0.8
 
 //In inches
-#define PENIS_MAX_GIRTH 		15
-#define PENIS_MIN_LENGTH 		1
-#define PENIS_MAX_LENGTH 		20
+#define PENIS_MAX_GIRTH 15
+#define PENIS_MIN_LENGTH 1
+#define PENIS_MAX_LENGTH 20
 
-#define SHEATH_NONE			"None"
-#define SHEATH_NORMAL		"Sheath"
-#define SHEATH_SLIT			"Slit"
+#define SHEATH_NONE	"None"
+#define SHEATH_NORMAL "Sheath"
+#define SHEATH_SLIT	"Slit"
 #define SHEATH_MODES list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
 
 #define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL, "custom_species" = null, "uses_skintones" = FALSE)
 
-#define UNDERWEAR_HIDE_SOCKS		(1<<0)
-#define UNDERWEAR_HIDE_SHIRT		(1<<1)
-#define UNDERWEAR_HIDE_UNDIES		(1<<2)
+#define UNDERWEAR_HIDE_SOCKS (1<<0)
+#define UNDERWEAR_HIDE_SHIRT (1<<1)
+#define UNDERWEAR_HIDE_UNDIES (1<<2)
 
-#define AROUSAL_CANT		0
-#define AROUSAL_NONE		1
-#define AROUSAL_PARTIAL		2
-#define AROUSAL_FULL		3
+#define AROUSAL_CANT 0
+#define AROUSAL_NONE 1
+#define AROUSAL_PARTIAL 2
+#define AROUSAL_FULL 3

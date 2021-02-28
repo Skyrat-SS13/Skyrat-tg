@@ -11,6 +11,7 @@
 	heatmod = 1.2
 	brutemod = 1.1
 	siemens_coeff = 1.2 //Not more because some shocks will outright crit you, which is very unfun
+	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/brain/ipc_positron
 	mutantstomach = /obj/item/organ/stomach/robot_ipc

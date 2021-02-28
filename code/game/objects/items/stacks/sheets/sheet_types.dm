@@ -310,6 +310,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("white jumpsuit", /obj/item/clothing/under/color/white, 3), \
 	new/datum/stack_recipe("white shoes", /obj/item/clothing/shoes/sneakers/white, 2), \
 	new/datum/stack_recipe("white scarf", /obj/item/clothing/neck/scarf, 1), \
+	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth/cloth, 2), /*SKYRAT EDIT ADDITION*/ \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
@@ -519,7 +520,7 @@ GLOBAL_LIST_INIT(runed_metal_recipes, list ( \
 	new /datum/stack_recipe("runed door (a weak door that stuns non-cultists who touch it))", /obj/machinery/door/airlock/cult, 1, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	new /datum/stack_recipe("runed girder (not a recommended usage of runed metal)", /obj/structure/girder/cult, 1, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	new /datum/stack_recipe("pylon (heals (and regenerates the blood of) nearby blood cultists and constructs, but also turns nearby floor tiles into engraved flooring)", /obj/structure/destructible/cult/pylon, 4, time = 4 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
-	new /datum/stack_recipe("daemon forge (can make shielded robes, flagellant's robes, and mirror shields)", /obj/structure/destructible/cult/forge, 3, time = 4 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
+	new /datum/stack_recipe("daemon forge (can make Nar'Sien hardened armor, flagellant's robes, and eldritch longswords)", /obj/structure/destructible/cult/forge, 3, time = 4 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	new /datum/stack_recipe("archives (can make zealot's blindfolds, shuttle curse orbs, and veil walker equipment)", /obj/structure/destructible/cult/tome, 3, time = 4 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	new /datum/stack_recipe("altar (can make eldritch whetstones, construct shells, and flasks of unholy water)", /obj/structure/destructible/cult/talisman, 3, time = 4 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	))

@@ -12,6 +12,10 @@ It also ports:
     Several departmental/head-of-staff berets;
 All items are avaliable through either the Loadout, Vendors, or Both. 
 
+
+PART 2!
+Ports the rest of what I was given with the utility uniforms, namely the Suits that go with all the previously added outfits. Also tweaks some of the previously added items (i.e., making the gas/chemical haz-uniform actually acidproof)
+
 ### TG Proc/File Changes:
 
 To show items in vendors:
