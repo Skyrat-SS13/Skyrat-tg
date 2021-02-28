@@ -118,4 +118,21 @@
 	icon_state = "darkbrowncorners"
 	base_icon_state = "darkbrowncorners"
 
+/turf/open/indestructible/cobble
+	name = "cobblestone path"
+	desc = "A simple but beautiful path made of various sized stones."
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
+	icon_state = "cobble"
+	baseturfs = /turf/open/indestructible/cobble
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+
+/turf/open/indestructible/cobble/side
+	icon_state = "cobble_side"
+
+/turf/open/indestructible/cobble/corner
+	icon_state = "cobble_corner"
 

@@ -6,7 +6,7 @@
  */
 
 const { resolve: resolvePath } = require('path');
-const { resolveGlob } = require('./cbt/fs');
+const { resolveGlob, stat } = require('./cbt/fs');
 const { exec } = require('./cbt/process');
 const { Task, runTasks } = require('./cbt/task');
 const { regQuery } = require('./cbt/winreg');
@@ -16,11 +16,11 @@ process.chdir(resolvePath(__dirname, '../../'));
 
 const taskTgui = new Task('tgui')
   .depends('tgui/.yarn/releases/*')
+  .depends('tgui/.yarn/install-state.gz')
   .depends('tgui/yarn.lock')
   .depends('tgui/webpack.config.js')
   .depends('tgui/**/package.json')
-  .depends('tgui/packages/**/*.js')
-  .depends('tgui/packages/**/*.jsx')
+  .depends('tgui/packages/**/*.+(js|jsx|ts|tsx|cjs|mjs|scss)')
   .provides('tgui/public/tgui.bundle.css')
   .provides('tgui/public/tgui.bundle.js')
   .provides('tgui/public/tgui-common.bundle.js')
@@ -29,9 +29,9 @@ const taskTgui = new Task('tgui')
   .build(async () => {
     // Instead of calling `tgui/bin/tgui`, we reproduce the whole pipeline
     // here for maximum compilation speed.
-    const yarnRelease = resolveGlob('./tgui/.yarn/releases/yarn-*.cjs')[0]
+    const yarnPath = resolveGlob('./tgui/.yarn/releases/yarn-*.cjs')[0]
       .replace('/tgui/', '/');
-    const yarn = args => exec('node', [yarnRelease, ...args], {
+    const yarn = args => exec('node', [yarnPath, ...args], {
       cwd: './tgui',
     });
     await yarn(['install']);
@@ -45,26 +45,12 @@ const taskDm = new Task('dm')
   .depends('html/**')
   .depends('icons/**')
   .depends('interface/**')
-  .depends('modular_skyrat/**') // SKYRAT EDIT ADDITION -- check modular_skyrat too pls, build.js
   .depends('tgui/public/tgui.html')
   .depends('tgui/public/*.bundle.*')
-  .depends('tgui/public/*.chunk.*')
   .depends('tgstation.dme')
   .provides('tgstation.dmb')
   .provides('tgstation.rsc')
   .build(async () => {
-<<<<<<< HEAD
-    let compiler = 'dm';
-    // Let's do some registry queries on Windows, because dm is not in PATH.
-    if (process.platform === 'win32') {
-      const installPath = (
-        await regQuery(
-          'HKLM\\Software\\Dantom\\BYOND',
-          'installpath')
-        || await regQuery(
-          'HKLM\\SOFTWARE\\WOW6432Node\\Dantom\\BYOND',
-          'installpath')
-=======
     const dmPath = await (async () => {
       // Search in array of paths
       const paths = [
@@ -106,15 +92,9 @@ const taskDm = new Task('dm')
       return (
         process.platform === 'win32' && 'dm.exe'
         || 'DreamMaker'
->>>>>>> c474392ff3c (More robust checking of DM paths (#57277))
       );
-      if (installPath) {
-        compiler = resolvePath(installPath, 'bin/dm.exe');
-      }
-    } else {
-      compiler = 'DreamMaker';
-    }
-    await exec(compiler, ['tgstation.dme']);
+    })();
+    await exec(dmPath, ['tgstation.dme']);
   });
 
 // Frontend
@@ -123,7 +103,7 @@ const tasksToRun = [
   taskDm,
 ];
 
-if (process.env['TG_BUILD_TGS_MODE']) {
+if (process.env.TG_BUILD_TGS_MODE) {
   tasksToRun.pop();
 }
 
