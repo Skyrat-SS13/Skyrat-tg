@@ -34,7 +34,7 @@ effective or pretty fucking useless.
 
 
 /obj/item/batterer/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
-	if(!user) 	return
+	if(!user) return
 	if(times_used >= max_uses)
 		to_chat(user, "<span class='danger'>The mind batterer has been burnt out!</span>")
 		return
@@ -69,6 +69,8 @@ effective or pretty fucking useless.
 */
 
 /obj/item/healthanalyzer/rad_laser
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
+	special_desc = "This syndicate-modified health analyzer can emit delayed bursts of radiation to those it scans." //SKYRAT EDIT
 	custom_materials = list(/datum/material/iron=400)
 	var/irradiate = TRUE
 	var/stealth = FALSE
@@ -248,10 +250,13 @@ effective or pretty fucking useless.
 
 
 /obj/item/jammer
-	name = "radio jammer"
-	desc = "Device used to disrupt nearby radio communication."
+	name = "suspicious transmitter" //SKYRAT CHANGE
+	desc = "A suspicious device vaguely resembling a radio, but without a speaker or microphone." //SKYRAT CHANGE
 	icon = 'icons/obj/device.dmi'
 	icon_state = "jammer"
+	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
+	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
+	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
 	var/range = 12
 
@@ -262,7 +267,7 @@ effective or pretty fucking useless.
 		GLOB.active_jammers |= src
 	else
 		GLOB.active_jammers -= src
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/toolbox/emergency/turret
 	desc = "You feel a strange urge to hit this with a wrench."
@@ -276,7 +281,7 @@ effective or pretty fucking useless.
 	new /obj/item/wirecutters(src)
 
 /obj/item/storage/toolbox/emergency/turret/attackby(obj/item/I, mob/living/user, params)
-	if(I.tool_behaviour == TOOL_WRENCH && user.a_intent == INTENT_HARM)
+	if(I.tool_behaviour == TOOL_WRENCH && user.combat_mode)
 		user.visible_message("<span class='danger'>[user] bashes [src] with [I]!</span>", \
 			"<span class='danger'>You bash [src] with [I]!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)

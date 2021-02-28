@@ -17,6 +17,7 @@
 	density = TRUE
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "dispenser"
+	base_icon_state = "dispenser"
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	interaction_flags_machine = INTERACT_MACHINE_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OFFLINE
@@ -29,6 +30,8 @@
 	var/amount = 30
 	var/recharge_amount = 10
 	var/recharge_counter = 0
+	///If the UI has the pH meter shown
+	var/show_ph = TRUE
 	var/mutable_appearance/beaker_overlay
 	var/working_state = "dispenser_working"
 	var/nopower_state = "dispenser_nopower"
@@ -135,7 +138,7 @@
 	//SKYRAT EDIT ADDITION END
 	if(is_operational)
 		begin_processing()
-	update_icon()
+	update_appearance()
 
 /obj/machinery/chem_dispenser/Destroy()
 	QDEL_NULL(beaker)
@@ -179,12 +182,13 @@
 		flick(working_state,src)
 
 /obj/machinery/chem_dispenser/update_icon_state()
-	icon_state = "[(nopower_state && !powered()) ? nopower_state : initial(icon_state)]"
+	icon_state = "[(nopower_state && !powered()) ? nopower_state : base_icon_state]"
+	return ..()
 
 /obj/machinery/chem_dispenser/update_overlays()
 	. = ..()
 	if(has_panel_overlay && panel_open)
-		. += mutable_appearance(icon, "[initial(icon_state)]_panel-o")
+		. += mutable_appearance(icon, "[base_icon_state]_panel-o")
 
 	if(beaker)
 		beaker_overlay = display_beaker()
@@ -234,23 +238,26 @@
 	data["energy"] = cell.charge ? cell.charge * powerefficiency : "0" //To prevent NaN in the UI.
 	data["maxEnergy"] = cell.maxcharge * powerefficiency
 	data["isBeakerLoaded"] = beaker ? 1 : 0
+	data["showpH"] = show_ph
 
 	var/beakerContents[0]
 	var/beakerCurrentVolume = 0
 	if(beaker && beaker.reagents && beaker.reagents.reagent_list.len)
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents.Add(list(list("name" = R.name, "volume" = R.volume))) // list in a list because Byond merges the first list...
+			beakerContents.Add(list(list("name" = R.name, "volume" = round(R.volume, 0.01), "pH" = R.ph, "purity" = R.purity))) // list in a list because Byond merges the first list...
 			beakerCurrentVolume += R.volume
 	data["beakerContents"] = beakerContents
 
 	if (beaker)
-		data["beakerCurrentVolume"] = beakerCurrentVolume
+		data["beakerCurrentVolume"] = round(beakerCurrentVolume, 0.01)
 		data["beakerMaxVolume"] = beaker.volume
 		data["beakerTransferAmounts"] = beaker.possible_transfer_amounts
+		data["beakerCurrentpH"] = round(beaker.reagents.ph, 0.01)
 	else
 		data["beakerCurrentVolume"] = null
 		data["beakerMaxVolume"] = null
 		data["beakerTransferAmounts"] = null
+		data["beakerCurrentpH"] = null
 
 	var/chemicals[0]
 	var/is_hallucinating = FALSE
@@ -262,11 +269,17 @@
 			var/chemname = temp.name
 			if(is_hallucinating && prob(5))
 				chemname = "[pick_list_replacements("hallucination.json", "chemicals")]"
-			chemicals.Add(list(list("title" = chemname, "id" = ckey(temp.name))))
+			chemicals.Add(list(list("title" = chemname, "id" = ckey(temp.name), "pH" = temp.ph, "pHCol" = convert_ph_to_readable_color(temp.ph))))
 	data["chemicals"] = chemicals
 	data["recipes"] = saved_recipes
 
 	data["recordingRecipe"] = recording_recipe
+	data["recipeReagents"] = list()
+	if(beaker?.reagents.ui_reaction_id)
+		var/datum/chemical_reaction/reaction = get_chemical_reaction(beaker.reagents.ui_reaction_id)
+		for(var/_reagent in reaction.required_reagents)
+			var/datum/reagent/reagent = find_reagent_object_from_type(_reagent)
+			data["recipeReagents"] += ckey(reagent.name)
 	return data
 
 /obj/machinery/chem_dispenser/ui_act(action, params)
@@ -385,11 +398,15 @@
 			customTransferAmount = clamp(input(usr, "Please enter your desired transfer amount.", "Transfer amount", 0) as num|null, 0, beaker.volume)
 			transferAmounts += customTransferAmount
 		//SKYRAT EDIT ADDITION END
-/obj/machinery/chem_dispenser/attackby(obj/item/I, mob/user, params)
+		if("reaction_lookup")
+			if(beaker)
+				beaker.reagents.ui_interact(usr)
+
+/obj/machinery/chem_dispenser/attackby(obj/item/I, mob/living/user, params)
 	if(default_unfasten_wrench(user, I))
 		return
 	if(default_deconstruction_screwdriver(user, icon_state, icon_state, I))
-		update_icon()
+		update_appearance()
 		return
 	if(default_deconstruction_crowbar(I))
 		return
@@ -406,7 +423,7 @@
 		replace_beaker(user, B)
 		to_chat(user, "<span class='notice'>You add [B] to [src].</span>")
 		updateUsrDialog()
-	else if(user.a_intent != INTENT_HARM && !istype(I, /obj/item/card/emag))
+	else if(!user.combat_mode && !istype(I, /obj/item/card/emag))
 		to_chat(user, "<span class='warning'>You can't load [I] into [src]!</span>")
 		return ..()
 	else
@@ -461,7 +478,7 @@
 		beaker = null
 	if(new_beaker)
 		beaker = new_beaker
-	update_icon()
+	update_appearance()
 	return TRUE
 
 /obj/machinery/chem_dispenser/on_deconstruction()
@@ -485,7 +502,7 @@
 	var/old = dir
 	. = ..()
 	if(dir != old)
-		update_icon()  // the beaker needs to be re-positioned if we rotate
+		update_appearance()  // the beaker needs to be re-positioned if we rotate
 
 /obj/machinery/chem_dispenser/drinks/display_beaker()
 	var/mutable_appearance/b_o = beaker_overlay || mutable_appearance(icon, "disp_beaker")
@@ -509,6 +526,7 @@
 	desc = "Contains a large reservoir of soft drinks."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "soda_dispenser"
+	base_icon_state = "soda_dispenser"
 	has_panel_overlay = FALSE
 	amount = 10
 	pixel_y = 6
@@ -517,6 +535,7 @@
 	working_state = null
 	nopower_state = null
 	pass_flags = PASSTABLE
+	show_ph = FALSE
 	dispensable_reagents = list(
 		/datum/reagent/water,
 		/datum/reagent/consumable/ice,
@@ -596,6 +615,7 @@
 	desc = "Contains a large reservoir of the good stuff."
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "booze_dispenser"
+	base_icon_state = "booze_dispenser"
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks/beer
 	dispensable_reagents = list(
 		/datum/reagent/consumable/ethanol/beer,
@@ -730,6 +750,7 @@
 	desc = "Synthesizes a variety of reagents using proto-matter."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "chem_dispenser"
+	base_icon_state = "chem_dispenser"
 	has_panel_overlay = FALSE
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/abductor
 	working_state = null

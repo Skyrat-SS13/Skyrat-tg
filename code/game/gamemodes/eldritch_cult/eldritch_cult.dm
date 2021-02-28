@@ -4,7 +4,7 @@
 	report_type = "heresy"
 	antag_flag = ROLE_HERETIC
 	false_report_weight = 5
-	protected_jobs = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+	protected_jobs = list("Prisoner", "Security Officer", "Security Medic", "Security Sergeant", "Warden", "Blueshield", "Detective", "Head of Security", "Captain") //SKYRAT EDIT ADDITION - SEC_HAUL
 	restricted_jobs = list("AI", "Cyborg")
 	required_players = 0
 	required_enemies = 1

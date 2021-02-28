@@ -54,7 +54,7 @@
 			for(var/i in 1 to 10)
 				new /obj/item/reagent_containers/food/drinks/waterbottle(src)
 		if(2)
-			new /obj/item/stack/sheet/metal/fifty(src)
+			new /obj/item/stack/sheet/iron/fifty(src)
 			new /obj/item/stack/rods/fifty(src)
 			new /obj/item/stack/sheet/glass/fifty(src)
 			new /obj/item/stack/sheet/mineral/wood/fifty(src)
@@ -132,7 +132,7 @@
 			new /obj/item/food/meat/rawbacon(src)
 			new /obj/item/food/meat/slab/penguin(src)
 			new /obj/item/food/spiderleg(src)
-			new /obj/item/food/carpmeat(src)
+			new /obj/item/food/fishmeat/carp(src)
 			new /obj/item/food/meat/slab/human(src)
 
 /obj/structure/closet/crate/secure/tradership_cargo_valuable

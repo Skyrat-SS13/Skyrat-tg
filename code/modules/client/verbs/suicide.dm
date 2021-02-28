@@ -21,6 +21,8 @@
 		if(mmi.brainmob)
 			mmi.brainmob.suiciding = suicide_state
 
+//SKYRAT EDIT REMOVAL BEGIN - SUICIDE_VERB
+/*
 /mob/living/carbon/human/verb/suicide()
 	set hidden = TRUE
 	if(!canSuicide())
@@ -67,7 +69,7 @@
 				if(damagetype & OXYLOSS)
 					adjustOxyLoss(200/damage_mod)
 
-				if(damagetype & MANUAL_SUICIDE)	//Assume the object will handle the death.
+				if(damagetype & MANUAL_SUICIDE) //Assume the object will handle the death.
 					return
 
 				//If something went wrong, just do normal oxyloss
@@ -75,23 +77,13 @@
 					adjustOxyLoss(max(200 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 
 				death(FALSE)
-				ghostize(FALSE)	// Disallows reentering body and disassociates mind
+				ghostize(FALSE) // Disallows reentering body and disassociates mind
 
 				return
 
 		var/suicide_message
 
-		if(a_intent == INTENT_DISARM)
-			if(prob(25))
-				disarm_suicide()	// Snowflake suicide for a tired joke.
-				return	//above proc handles logging and death
-			suicide_message = pick("[src] is attempting to push [p_their()] own head off [p_their()] shoulders! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is pushing [p_their()] thumbs into [p_their()] eye sockets! It looks like [p_theyre()] trying to commit suicide.")
-		else if(a_intent == INTENT_GRAB)
-			suicide_message = pick("[src] is attempting to pull [p_their()] own head off! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is aggressively grabbing [p_their()] own neck! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is pulling [p_their()] eyes out of their sockets! It looks like [p_theyre()] trying to commit suicide.")
-		else if(a_intent == INTENT_HELP)
+		if(!combat_mode)
 			var/obj/item/organ/brain/userbrain = getorgan(/obj/item/organ/brain)
 			if(userbrain?.damage >= 75)
 				suicide_message = "[src] pulls both arms outwards in front of [p_their()] chest and pumps them behind [p_their()] back, repeats this motion in a smaller range of motion \
@@ -116,7 +108,7 @@
 
 		adjustOxyLoss(max(200 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		death(FALSE)
-		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+		ghostize(FALSE) // Disallows reentering body and disassociates mind
 
 /mob/living/brain/verb/suicide()
 	set hidden = TRUE
@@ -133,7 +125,7 @@
 		suicide_log()
 
 		death(FALSE)
-		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+		ghostize(FALSE) // Disallows reentering body and disassociates mind
 
 /mob/living/silicon/ai/verb/suicide()
 	set hidden = TRUE
@@ -152,7 +144,7 @@
 		//put em at -175
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		death(FALSE)
-		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+		ghostize(FALSE) // Disallows reentering body and disassociates mind
 
 /mob/living/silicon/robot/verb/suicide()
 	set hidden = TRUE
@@ -171,7 +163,7 @@
 		//put em at -175
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		death(FALSE)
-		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+		ghostize(FALSE) // Disallows reentering body and disassociates mind
 
 /mob/living/silicon/pai/verb/suicide()
 	set hidden = TRUE
@@ -184,7 +176,7 @@
 		suicide_log()
 
 		death(FALSE)
-		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+		ghostize(FALSE) // Disallows reentering body and disassociates mind
 	else
 		to_chat(src, "Aborting suicide attempt.")
 
@@ -206,7 +198,7 @@
 		//put em at -175
 		adjustOxyLoss(max(200 - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		death(FALSE)
-		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+		ghostize(FALSE) // Disallows reentering body and disassociates mind
 
 /mob/living/simple_animal/verb/suicide()
 	set hidden = TRUE
@@ -224,6 +216,8 @@
 
 		death(FALSE)
 		ghostize(FALSE)	// Disallows reentering body and disassociates mind
+*/
+//SKYRAT EDIT REMOVAL END
 
 /mob/living/proc/suicide_log()
 	log_message("committed suicide as [src.type]", LOG_ATTACK)
@@ -250,7 +244,7 @@
 /mob/living/carbon/canSuicide()
 	if(!..())
 		return
-	if(!(mobility_flags & MOBILITY_USE))	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
+	if(!(mobility_flags & MOBILITY_USE)) //just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
 		to_chat(src, "<span class='warning'>You can't commit suicide whilst immobile! ((You can type Ghost instead however.))</span>")
 		return
 	return TRUE

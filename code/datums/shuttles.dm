@@ -61,7 +61,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/list/turfs = block(	locate(.[MAP_MINX], .[MAP_MINY], .[MAP_MINZ]),
+	var/list/turfs = block( locate(.[MAP_MINX], .[MAP_MINY], .[MAP_MINZ]),
 							locate(.[MAP_MAXX], .[MAP_MAXY], .[MAP_MAXZ]))
 	for(var/i in 1 to turfs.len)
 		var/turf/place = turfs[i]
@@ -234,6 +234,7 @@
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
 	credit_cost = CARGO_CRATE_VALUE * 250
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
+	can_be_bought = FALSE //SKYRAT EDIT: Addition
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
@@ -647,6 +648,14 @@
 /datum/map_template/shuttle/pirate/default
 	suffix = "default"
 	name = "pirate ship (Default)"
+
+/datum/map_template/shuttle/pirate/silverscale
+	suffix = "silverscale"
+	name = "pirate ship (Silver Scales)"
+
+/datum/map_template/shuttle/pirate/dutchman
+	suffix = "dutchman"
+	name = "pirate ship (Flying Dutchman)"
 
 /datum/map_template/shuttle/hunter/space_cop
 	suffix = "space_cop"

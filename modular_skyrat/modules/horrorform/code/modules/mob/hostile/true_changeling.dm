@@ -15,11 +15,9 @@
 	icon_living = "horror"
 	icon_dead = "horror_dead"
 	mob_biotypes = MOB_ORGANIC
-	speed = 1
-	a_intent = "harm"
-	stop_automated_movement = 1
+	speed = 0.5
+	stop_automated_movement = FALSE
 	status_flags = CANPUSH
-	ventcrawler = 2
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -27,9 +25,9 @@
 	maxHealth = 500 //Very durable
 	health = 500
 	healable = 0
-	environment_smash = 1
-	melee_damage_lower = 30
-	melee_damage_upper = 40
+	environment_smash = TRUE
+	melee_damage_lower = 40
+	melee_damage_upper = 50
 //	see_in_dark = 8
 //	see_invisible = SEE_INVISIBLE_MINIMUM
 	wander = 0
@@ -56,11 +54,12 @@
 
 /mob/living/simple_animal/hostile/true_changeling/Initialize()
 	. = ..()
-	src << playstyle_string
+	to_chat(src, playstyle_string)
 	turn_to_human = new /datum/action/innate/turn_to_human
 	devour = new /datum/action/innate/devour
 	turn_to_human.Grant(src)
 	devour.Grant(src)
+	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
@@ -110,6 +109,8 @@
 		stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
 		stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
 		stored_changeling.status_flags &= ~GODMODE
+		var/datum/antagonist/changeling/C = mind.has_antag_datum(/datum/antagonist/changeling)
+		C.true_form_death = world.time
 		qdel(src)
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")

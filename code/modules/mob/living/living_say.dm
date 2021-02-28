@@ -33,33 +33,32 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 
 	//kinda localization -- rastaf0
-	//same keys as above, but on russian keyboard layout. This file uses cp1251 as encoding.
+	//same keys as above, but on russian keyboard layout.
 	// Location
-	"ê" = MODE_R_HAND,
-	"ä" = MODE_L_HAND,
-	"ø" = MODE_INTERCOM,
+	"к" = MODE_R_HAND,
+	"л" = MODE_L_HAND,
+	"ш" = MODE_INTERCOM,
 
 	// Department
-	"ð" = MODE_DEPARTMENT,
-	"ñ" = RADIO_CHANNEL_COMMAND,
-	"ò" = RADIO_CHANNEL_SCIENCE,
-	"ü" = RADIO_CHANNEL_MEDICAL,
-	"ó" = RADIO_CHANNEL_ENGINEERING,
-	"û" = RADIO_CHANNEL_SECURITY,
-	"ã" = RADIO_CHANNEL_SUPPLY,
-	"ì" = RADIO_CHANNEL_SERVICE,
+	"р" = MODE_DEPARTMENT,
+	"с" = RADIO_CHANNEL_COMMAND,
+	"т" = RADIO_CHANNEL_SCIENCE,
+	"ь" = RADIO_CHANNEL_MEDICAL,
+	"у" = RADIO_CHANNEL_ENGINEERING,
+	"ы" = RADIO_CHANNEL_SECURITY,
+	"г" = RADIO_CHANNEL_SUPPLY,
+	"м" = RADIO_CHANNEL_SERVICE,
 
 	// Faction
-	"å" = RADIO_CHANNEL_SYNDICATE,
-	"í" = RADIO_CHANNEL_CENTCOM,
-	//"a" = RADIO_CHANNEL_FACTION, //SKYRAT EDIT ADDITION - FACTION
+	"е" = RADIO_CHANNEL_SYNDICATE,
+	"н" = RADIO_CHANNEL_CENTCOM,
 
 	// Admin
-	"ç" = MODE_ADMIN,
-	"â" = MODE_ADMIN,
+	"з" = MODE_ADMIN,
+	"в" = MODE_KEY_DEADMIN,
 
 	// Misc
-	"ù" = RADIO_CHANNEL_AI_PRIVATE
+	"щ" = RADIO_CHANNEL_AI_PRIVATE
 ))
 
 /**
@@ -314,8 +313,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(client) //client is so that ghosts don't have to listen to mice
 		for(var/_M in GLOB.player_list)
 			var/mob/M = _M
-			if(QDELETED(M))	//Some times nulls and deleteds stay in this list. This is a workaround to prevent ic chat breaking for everyone when they do.
-				continue	//Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
+			if(QDELETED(M)) //Some times nulls and deleteds stay in this list. This is a workaround to prevent ic chat breaking for everyone when they do.
+				continue //Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
 			if(M.stat != DEAD) //not dead, not important
 				continue
 			if(get_dist(M, src) > 7 || M.z != z) //they're out of range of normal hearing
@@ -432,7 +431,44 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			return ITALICS | REDUCE_RANGE
 
 	return 0
+//SKYRAT custom sayverb
+/mob/living/say_mod(input, message_mods)
+	if(message_mods == MODE_WHISPER_CRIT)
+		return ..()
+	if((input[1] == "!") && (length_char(input) > 1))
+		message_mods = MODE_CUSTOM_SAY
+		return copytext_char(input, 3)
+	var/customsayverb = findtext(input, "*")
+	if(customsayverb)
+		message_mods = MODE_CUSTOM_SAY
+		return lowertext(copytext_char(input, 1, customsayverb))
+	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
+		. = verb_whisper
+	else if(message_mods[WHISPER_MODE] == MODE_WHISPER_CRIT)
+		. = "[verb_whisper] in [p_their()] last breath"
+	else if(message_mods[MODE_SING])
+		. = verb_sing
+	else if(stuttering)
+		if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
+			. = "shakily signs"
+		else
+			. = "stammers"
+	else if(derpspeech)
+		if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
+			. = "incoherently signs"
+		else
+			. = "gibbers"
+	else
+		. = ..()
 
+/proc/uncostumize_say(input, message_mods)
+	. = input
+	if(message_mods == MODE_CUSTOM_SAY)
+		var/customsayverb = findtext(input, "*")
+		return lowertext(copytext_char(input, 1, customsayverb))
+
+//SKYRAT custom sayverb end.
+/* original code:
 /mob/living/say_mod(input, list/message_mods = list())
 	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
 		. = verb_whisper
@@ -452,6 +488,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			. = "gibbers"
 	else
 		. = ..()
+*/
 
 /mob/living/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(!message)

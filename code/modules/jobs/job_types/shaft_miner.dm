@@ -2,8 +2,8 @@
 	title = "Shaft Miner"
 	department_head = list("Head of Personnel")
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 5		//SKYRAT EDIT: Original value (3)
+	spawn_positions = 5		//SKYRAT EDIT: Original value (3)
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
 
@@ -27,12 +27,13 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	uniform = /obj/item/clothing/under/rank/cargo/miner/lavaland
 	l_pocket = /obj/item/reagent_containers/hypospray/medipen/survival
-	r_pocket = /obj/item/storage/bag/ore	//causes issues if spawned in backpack
+	r_pocket = /obj/item/storage/bag/ore //causes issues if spawned in backpack
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,\
 		/obj/item/mining_voucher=1,\
-		/obj/item/stack/marker_beacon/ten=1)
+		/obj/item/suit_voucher=1,\
+		/obj/item/stack/marker_beacon/ten=1) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
 
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer
