@@ -104,7 +104,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
-	recommended_species = list("lizard", "unathi", "ashlizard")
+	recommended_species = list("lizard", "unathi", "ashlizard", "silverlizard")
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)

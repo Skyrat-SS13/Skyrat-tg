@@ -261,6 +261,8 @@
 			. += I
 
 /obj/machinery/door/airlock/proc/update_vis_overlays(overlay_state)
+	if(QDELETED(src))
+		return
 	vis_overlay1.icon_state = overlay_state
 	vis_overlay2.icon_state = overlay_state
 	if(multi_tile)

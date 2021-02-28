@@ -50,6 +50,19 @@
 			continue
 		return recipe
 
+//SKYRAT EDIT ADDITION
+/obj/machinery/processor/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.combat_mode)
+			var/obj/item/bodypart/limb = H.get_active_hand()
+			H.visible_message("<span class='danger'>[H] puts their hand in the [src] causing it to be brutally dismembered!</span>", \
+			"<span class='userdanger'>You put your hand in [src] causing it to be torn off, ouch!</span>")
+			playsound(src.loc, 'sound/machines/blender.ogg', 50, TRUE)
+			limb.dismember()
+//SKYRAT EDIT ADDITION END
+
 /obj/machinery/processor/attackby(obj/item/O, mob/living/user, params)
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")

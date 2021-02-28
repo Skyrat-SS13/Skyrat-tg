@@ -120,8 +120,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/flying_species = FALSE
 	///The actual flying ability given to flying species
 	var/datum/action/innate/flight/fly
-	///The icon used for the wings
+	///Current wings icon
 	var/wings_icon = "Angel"
+	//Dictates which wing icons are allowed for a given species. If count is >1 a radial menu is used to choose between all icons in list
+	var/list/wings_icons = list("Angel")
 	///Used to determine what description to give when using a potion of flight, if false it will describe them as growing new wings
 	var/has_innate_wings = FALSE
 
@@ -200,6 +202,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	if(!limbs_id) //if we havent set a limbs id to use, just use our own id
 		limbs_id = id
+	wings_icons = string_list(wings_icons)
 	..()
 
 /**
@@ -1154,8 +1157,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
 		H.reagents.del_reagent(chem.type)
 		return TRUE
-	if(chem.overdose_threshold && chem.volume >= chem.overdose_threshold)
+	if(!chem.overdosed && chem.overdose_threshold && chem.volume >= chem.overdose_threshold)
 		chem.overdosed = TRUE
+		chem.overdose_start(H)
+		log_game("[key_name(H)] has started overdosing on [chem.name] at [chem.volume] units.")
 
 /datum/species/proc/check_species_weakness(obj/item, mob/living/attacker)
 	return 1 //This is not a boolean, it's the multiplier for the damage that the user takes from the item. The force of the item is multiplied by this value
@@ -2157,6 +2162,26 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(flying_species) //species that already have flying traits should not work with this proc
 		return
 	flying_species = TRUE
+	if(wings_icons.len > 1)
+		if(!H.client)
+			wings_icon = pick(wings_icons)
+		else
+			var/list/wings = list()
+			for(var/W in wings_icons)
+				//var/datum/sprite_accessory/S = GLOB.wings_list[W]	//Gets the datum for every wing this species has, then prompts user with a radial menu //ORIGINAL
+				var/datum/sprite_accessory/S = GLOB.sprite_accessories["wings"][W] //SKYRAT EDIT CHANGE
+				var/image/img = image(icon = 'icons/mob/clothing/wings.dmi', icon_state = "m_wingsopen_[S.icon_state]_BEHIND")	//Process the HUD elements
+				img.transform *= 0.5
+				img.pixel_x = -32
+				if(wings[S.name])
+					stack_trace("Different wing types with repeated names. Please fix as this may cause issues.")
+				else
+					wings[S.name] = img
+			wings_icon = show_radial_menu(H, H, wings, tooltips = TRUE)
+			if(!wings_icon)
+				wings_icon = pick(wings_icons)
+	else
+		wings_icon = wings_icons[1]
 	if(isnull(fly))
 		fly = new
 		fly.Grant(H)
