@@ -24,7 +24,7 @@
 /datum/job/prisoner/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
 	to_chat(M, "<span class='userdanger'>You <b><u>MUST</b></u> ahelp before attempting breakouts or rioting. Being a shitter = perma prisoner job-ban.")
-	to_chat(M, "<span class='warning'>Being a shitter encompasses: Randomly critting other prisoners, wordlessly constantly breaking stuff, occupying all of security's time. <b>Remember: You aren't an antagonist.</b>")
+	to_chat(M, "<span class='warning'>Being a shitter includes but is not limited to: Critting other prisoners, constantly breaking things, and occupying too much of security's time as a result. <b>Remember: You aren't an antagonist.</b>")
 	to_chat(M, "<b>You are a prisoner being held in Space Station 13, awaiting transfer to a secure prison facility or to the courthouse to stand trial.</b>")
 	to_chat(M, "It's up to you to decide why you're in here. Chances are, the case against you might not be strong enough to convict you. Or is it?<br>")
 // SKYRAT EDIT : End - Adds spawn text to prisoners.
