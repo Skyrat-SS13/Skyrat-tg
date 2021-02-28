@@ -53,6 +53,7 @@ const taskDm = new Task('dm')
   .provides('tgstation.dmb')
   .provides('tgstation.rsc')
   .build(async () => {
+<<<<<<< HEAD
     let compiler = 'dm';
     // Let's do some registry queries on Windows, because dm is not in PATH.
     if (process.platform === 'win32') {
@@ -63,6 +64,49 @@ const taskDm = new Task('dm')
         || await regQuery(
           'HKLM\\SOFTWARE\\WOW6432Node\\Dantom\\BYOND',
           'installpath')
+=======
+    const dmPath = await (async () => {
+      // Search in array of paths
+      const paths = [
+        ...(process.env.DM_EXE && process.env.DM_EXE.split(',')),
+        'C:\\Program Files\\BYOND\\bin\\dm.exe',
+        'C:\\Program Files (x86)\\BYOND\\bin\\dm.exe',
+        ['reg', 'HKLM\\Software\\Dantom\\BYOND', 'installpath'],
+        ['reg', 'HKLM\\SOFTWARE\\WOW6432Node\\Dantom\\BYOND', 'installpath'],
+      ];
+      const isFile = path => {
+        try {
+          const fstat = stat(path);
+          return fstat && fstat.isFile();
+        }
+        catch (err) {}
+        return false;
+      };
+      for (let path of paths) {
+        // Resolve a registry key
+        if (Array.isArray(path)) {
+          const [type, ...args] = path;
+          path = await regQuery(...args);
+        }
+        if (!path) {
+          continue;
+        }
+        // Check if path exists
+        if (isFile(path)) {
+          return path;
+        }
+        if (isFile(path + '/dm.exe')) {
+          return path + '/dm.exe';
+        }
+        if (isFile(path + '/bin/dm.exe')) {
+          return path + '/bin/dm.exe';
+        }
+      }
+      // Default paths
+      return (
+        process.platform === 'win32' && 'dm.exe'
+        || 'DreamMaker'
+>>>>>>> c474392ff3c (More robust checking of DM paths (#57277))
       );
       if (installPath) {
         compiler = resolvePath(installPath, 'bin/dm.exe');
