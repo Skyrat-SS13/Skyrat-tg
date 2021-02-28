@@ -279,7 +279,16 @@
 			to_chat(user, "<span class='danger'>You disarm [src]!</span>")
 		else
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, TRUE, -1)
-			Paralyze(100)
+			//Paralyze(100)	// SKYRAT EDIT: Original line
+			// SKYRAT EDIT: Start - Nerfs Xeno tackle intent
+			Knockdown(50)
+			Paralyze(10)
+			var/obj/item/bodypart/affecting = get_bodypart(ran_zone(M.zone_selected))
+			if(!affecting)
+				affecting = get_bodypart(BODY_ZONE_CHEST)
+			var/armor_block = run_armor_check(affecting, MELEE)
+			apply_damage((rand(M.melee_damage_lower, M.melee_damage_upper)), STAMINA, affecting, armor_block)
+			// SKYRAT EDIT: End - Nerfs Xeno tackle intent
 			log_combat(user, src, "tackled")
 			visible_message("<span class='danger'>[user] tackles [src] down!</span>", \
 							"<span class='userdanger'>[user] tackles you down!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", null, user)
