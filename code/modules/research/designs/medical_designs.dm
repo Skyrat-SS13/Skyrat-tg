@@ -71,6 +71,15 @@
 	build_path = /obj/item/reagent_containers/glass/beaker/meta
 	category = list("Medical Designs")
 
+/datum/design/ph_meter
+	name = "Chemical analyser"
+	id = "ph_meter"
+	build_type = PROTOLATHE
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	materials = list(/datum/material/glass = 2500, /datum/material/gold = 1000, /datum/material/titanium = 1000)
+	build_path = /obj/item/ph_meter
+	category = list("Medical Designs")
+
 /datum/design/bluespacesyringe
 	name = "Bluespace Syringe"
 	desc = "An advanced syringe that can hold 60 units of chemicals"
@@ -220,6 +229,15 @@
 	build_path = /obj/item/surgical_drapes
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/hospital_gown	//SKYRAT EDIT ADDITION START
+	name = "Hospital Gown"
+	id = "hospital_gown"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/plastic = 2500)
+	build_path = /obj/item/clothing/suit/toggle/labcoat/hospitalgown
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE	//SKYRAT EDIT ADDITION END
 
 /datum/design/laserscalpel
 	name = "Laser Scalpel"

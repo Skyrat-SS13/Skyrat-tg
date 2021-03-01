@@ -3,7 +3,7 @@
 	desc = "Didn't make sense not to live for fun, your brain gets smart but your head gets dumb."
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "default_human_head"
-	max_damage = 200
+	max_damage = 250 //SKYRAT EDIT CHANGE: max_damage = 200
 	body_zone = BODY_ZONE_HEAD
 	body_part = HEAD
 	w_class = WEIGHT_CLASS_BULKY //Quite a hefty load
@@ -36,6 +36,8 @@
 
 	var/lip_style = null
 	var/lip_color = "white"
+
+	var/stored_lipstick_trait
 
 
 /obj/item/bodypart/head/Destroy()
@@ -139,6 +141,7 @@
 		hairstyle = "Bald"
 		facial_hairstyle = "Shaved"
 		lip_style = null
+		stored_lipstick_trait = null
 
 	else if(!animal_origin)
 		var/mob/living/carbon/human/H = C

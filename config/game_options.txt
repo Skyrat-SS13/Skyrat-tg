@@ -20,8 +20,8 @@ OOC_DURING_ROUND
 EMOJIS
 
 ## HEART COMMENDATIONS ###
-## Uncomment this if you'd like to enable commendation pollings for this percentage of players near the end of the round (5% default)
-## COMMENDATIONS 0.05
+## Uncomment this if you'd like to enable commendation pollings for this percentage of players near the end of the round (5% suggested)
+COMMENDATION_PERCENT_POLL 0.05
 
 ## MOB MOVEMENT ###
 
@@ -93,6 +93,7 @@ PROBABILITY TRAITORBRO 2
 PROBABILITY TRAITORCHAN 4
 PROBABILITY INTERNAL_AFFAIRS 3
 PROBABILITY NUCLEAR 2
+PROBABILITY ASSAULTOPS 3
 PROBABILITY REVOLUTION 2
 PROBABILITY CULT 2
 PROBABILITY CHANGELING 2
@@ -117,6 +118,7 @@ CONTINUOUS TRAITOR
 CONTINUOUS TRAITORBRO
 CONTINUOUS TRAITORCHAN
 CONTINUOUS INTERNAL_AFFAIRS
+#CONTINUOUS ASSAULTOPS
 #CONTINUOUS NUCLEAR
 #CONTINUOUS REVOLUTION
 CONTINUOUS CULT
@@ -138,6 +140,7 @@ MIDROUND_ANTAG TRAITOR
 #MIDROUND_ANTAG TRAITORBRO
 MIDROUND_ANTAG TRAITORCHAN
 MIDROUND_ANTAG INTERNAL_AFFAIRS
+#MIDROUND_ANTAG ASSAULTOPS
 #MIDROUND_ANTAG  NUCLEAR
 #MIDROUND_ANTAG  REVOLUTION
 MIDROUND_ANTAG CULT
@@ -165,6 +168,9 @@ MIDROUND_ANTAG WIZARD
 
 #MIN_POP NUCLEAR 0
 #MAX_POP NUCLEAR -1
+
+#MIN_POP ASSAULTOPS 0
+#MAX_POP ASSAULTOPS -1
 
 #MIN_POP REVOLUTION 20
 #MAX_POP REVOLUTION -1
@@ -269,11 +275,11 @@ ALLOW_AI
 ALLOW_AI_MULTICAM
 
 ## Secborg ###
-## Uncomment to prevent the security cyborg module from being chosen
+## Uncomment to prevent the security cyborg model from being chosen
 #DISABLE_SECBORG
 
 ## Peacekeeper Borg ###
-## Uncomment to prevent the peacekeeper cyborg module from being chosen
+## Uncomment to prevent the peacekeeper cyborg model from being chosen
 #DISABLE_PEACEBORG
 
 ## AWAY MISSIONS ###
@@ -349,6 +355,7 @@ DEFAULT_LAWS 0
 ## See datums\ai_laws.dm for the full law lists
 
 ## standard-ish laws. These are fairly ok to run
+RANDOM_LAWS safeguard
 RANDOM_LAWS asimov
 RANDOM_LAWS asimovpp
 RANDOM_LAWS paladin
@@ -381,6 +388,7 @@ RANDOM_LAWS corporate
 LAW_WEIGHT custom,0
 
 ## standard-ish laws. These are fairly ok to run
+LAW_WEIGHT safeguard,40
 LAW_WEIGHT asimov,32
 LAW_WEIGHT asimovpp,12
 LAW_WEIGHT paladin,12

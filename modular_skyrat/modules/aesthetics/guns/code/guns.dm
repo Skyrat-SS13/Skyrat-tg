@@ -19,7 +19,7 @@
 	ammo_x_offset = 2
 
 /obj/item/gun/ballistic/shotgun/riot
-	name = "peacekeeper shotgun"
+	name = "\improper AS-1 'Peacekeeper' Shotgun"
 	desc = "An Aussec-made 12 gauge riot control pump shotgun fitted with an extended tube and a fixed tactical stock."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
@@ -33,9 +33,9 @@
 	suppressed_volume = 100
 	vary_fire_sound = TRUE
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
-	
+
 /obj/item/gun/ballistic/shotgun/automatic/combat
-	name = "PK12 Mod 2 shotgun"
+	name = "\improper PK12 Mod 2 shotgun"
 	desc = "A modified Aussec Peacekeeper shotgun, this one has a pistol grip with a guard, hardlight front sight, and fitted with a heavier pin and parts for sustained fire, sadly it cannot be suppressed like its cousin. Atleast you can slamfire with it."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'

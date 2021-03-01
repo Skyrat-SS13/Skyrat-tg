@@ -35,23 +35,6 @@
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
 
-/obj/machinery/door/airlock/Initialize()
-	//overlay2
-	vis_overlay1 = new()
-	vis_overlay1.icon = overlays_file
-	//overlay1
-	vis_overlay2 = new()
-	vis_overlay2.icon = overlays_file
-	vis_overlay2.layer = layer
-	vis_overlay2.plane = 1
-	vis_contents += vis_overlay1
-	vis_contents += vis_overlay2
-	if(multi_tile)
-		vis_overlay1.dir = src.dir
-		vis_overlay2.dir = src.dir
-	set_airlock_overlays()
-	. = ..()
-
 /obj/effect/overlay/vis_airlock
 	layer = EMISSIVE_LAYER
 	plane = EMISSIVE_PLANE
@@ -68,7 +51,9 @@
 	..()
 	update_icon()
 
-/obj/machinery/door/airlock/proc/set_airlock_overlays(state)
+/obj/machinery/door/airlock/update_overlays()
+	. = ..()
+
 	var/mutable_appearance/frame_overlay
 	var/mutable_appearance/filling_overlay
 	var/lights_overlay = ""
@@ -84,7 +69,7 @@
 	var/pre_light_power = 0
 	var/pre_light_color = ""
 
-	switch(state)
+	switch(airlock_state)
 		if(AIRLOCK_CLOSED)
 			frame_overlay = get_airlock_overlay("closed", icon)
 			if(airlock_material)
@@ -171,6 +156,26 @@
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
 
+		if(AIRLOCK_CLOSING)
+			frame_overlay = get_airlock_overlay("closing", icon)
+			if(airlock_material)
+				filling_overlay = get_airlock_overlay("[airlock_material]_closing", overlays_file)
+			else
+				filling_overlay = get_airlock_overlay("fill_closing", icon)
+			if(lights && hasPower())
+				pre_light_range = door_light_range
+				pre_light_power = door_light_power
+				//lights_overlay = get_airlock_overlay("lights_opening", overlays_file)
+				lights_overlay = "lights_closing"
+				pre_light_color = light_color_access
+			if(panel_open)
+				if(security_level)
+					panel_overlay = get_airlock_overlay("panel_closing_protected", overlays_file)
+				else
+					panel_overlay = get_airlock_overlay("panel_closing", overlays_file)
+			if(note)
+				note_overlay = get_airlock_overlay("[notetype]_closing", note_overlay_file)
+
 		if(AIRLOCK_OPEN)
 			frame_overlay = get_airlock_overlay("open", icon)
 			if(airlock_material)
@@ -199,26 +204,6 @@
 			if(note)
 				note_overlay = get_airlock_overlay("[notetype]_open", note_overlay_file)
 
-		if(AIRLOCK_CLOSING)
-			frame_overlay = get_airlock_overlay("closing", icon)
-			if(airlock_material)
-				filling_overlay = get_airlock_overlay("[airlock_material]_closing", overlays_file)
-			else
-				filling_overlay = get_airlock_overlay("fill_closing", icon)
-			if(lights && hasPower())
-				pre_light_range = door_light_range
-				pre_light_power = door_light_power
-				//lights_overlay = get_airlock_overlay("lights_opening", overlays_file)
-				lights_overlay = "lights_closing"
-				pre_light_color = light_color_access
-			if(panel_open)
-				if(security_level)
-					panel_overlay = get_airlock_overlay("panel_closing_protected", overlays_file)
-				else
-					panel_overlay = get_airlock_overlay("panel_closing", overlays_file)
-			if(note)
-				note_overlay = get_airlock_overlay("[notetype]_closing", note_overlay_file)
-
 		if(AIRLOCK_OPENING)
 			frame_overlay = get_airlock_overlay("opening", icon)
 			if(airlock_material)
@@ -240,23 +225,44 @@
 				note_overlay = get_airlock_overlay("[notetype]_opening", note_overlay_file)
 
 	cut_overlays()
+
 	if(has_environment_lights)
 		set_light(pre_light_range, pre_light_power, pre_light_color)
 		if(multi_tile)
 			filler.set_light(pre_light_range, pre_light_power, pre_light_color)
-	add_overlay(frame_overlay)
-	add_overlay(filling_overlay)
-	add_overlay(panel_overlay)
-	add_overlay(weld_overlay)
-	add_overlay(damag_overlay)
-	add_overlay(note_overlay)
-	add_overlay(seal_overlay)
-	add_overlay(sparks_overlay)
-	update_vis_overlays(lights_overlay)
-	check_unres()
 
+	. += frame_overlay
+	. += filling_overlay
+	. += panel_overlay
+	. += weld_overlay
+	. += sparks_overlay
+	. += damag_overlay
+	. += note_overlay
+	. += seal_overlay
+
+	update_vis_overlays(lights_overlay)
+
+	if(hasPower() && unres_sides)
+		if(unres_sides & NORTH)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_n")
+			I.pixel_y = 32
+			. += I
+		if(unres_sides & SOUTH)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_s")
+			I.pixel_y = -32
+			. += I
+		if(unres_sides & EAST)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_e")
+			I.pixel_x = 32
+			. += I
+		if(unres_sides & WEST)
+			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_w")
+			I.pixel_x = -32
+			. += I
 
 /obj/machinery/door/airlock/proc/update_vis_overlays(overlay_state)
+	if(QDELETED(src))
+		return
 	vis_overlay1.icon_state = overlay_state
 	vis_overlay2.icon_state = overlay_state
 	if(multi_tile)
@@ -274,6 +280,10 @@
 
 /obj/machinery/door/airlock/security
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/security.dmi'
+
+/obj/machinery/door/airlock/security/old
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/security2.dmi'
+	assemblytype = /obj/structure/door_assembly/door_assembly_sec/old
 
 /obj/machinery/door/airlock/engineering
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/engineering.dmi'
@@ -387,6 +397,9 @@
 
 /obj/structure/door_assembly/door_assembly_sec
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/security.dmi'
+
+/obj/structure/door_assembly/door_assembly_sec/old
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/security2.dmi'
 
 /obj/structure/door_assembly/door_assembly_eng
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/engineering.dmi'

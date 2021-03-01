@@ -7,6 +7,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("pie" = 1)
 	foodtypes = GRAIN
+	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/pieslice
 	name = "pie slice"
@@ -49,7 +50,8 @@
 	if(isliving(hit_atom))
 		var/mob/living/living_target_getting_hit = hit_atom
 		if(stunning)
-			living_target_getting_hit.Paralyze(20) //splat!
+			//living_target_getting_hit.Paralyze(20) //splat! //ORIGINAL
+			living_target_getting_hit.StaminaKnockdown(10, TRUE) //SKYRAT EDIT CHANGE - COMBAT
 		living_target_getting_hit.adjust_blurriness(1)
 		living_target_getting_hit.visible_message("<span class='warning'>[living_target_getting_hit] is creamed by [src]!</span>", "<span class='userdanger'>You've been creamed by [src]!</span>")
 		playsound(living_target_getting_hit, "desecration", 50, TRUE)
@@ -67,6 +69,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 11, /datum/reagent/consumable/berryjuice = 5, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("pie" = 1, "blackberries" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR
+	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/pie/bearypie
 	name = "beary pie"

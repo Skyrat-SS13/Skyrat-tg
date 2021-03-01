@@ -12,7 +12,7 @@
 	var/savedBubbleIcon
 	var/savedOverride
 	var/savedPixelOffset
-	var/savedModuleName
+	var/savedModelName
 	var/savedDogborg
 	var/savedSpecialLightKey
 	var/active = FALSE
@@ -141,7 +141,7 @@
 			to_chat(user, "<span class='notice'>\the [src] is recharging.</span>")
 			return
 		var/mob/living/silicon/robot/R = loc
-		var/static/list/module_icons = sortList(list(
+		var/static/list/model_icons = sortList(list(
 		"Standard" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
 		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
 		"Engineer" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
@@ -150,13 +150,14 @@
 		"Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
 		"Peacekeeper" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
 		"Clown" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
-		"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec")
+		"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+		"Spider Clan" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_engi")
 		))
-		var/module_selection = show_radial_menu(R, R , module_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
-		if(!module_selection)
+		var/model_selection = show_radial_menu(R, R , model_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+		if(!model_selection)
 			return FALSE
 
-		switch(module_selection)
+		switch(model_selection)
 			if("Standard")
 				var/static/list/standard_icons = sortList(list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
@@ -855,6 +856,49 @@
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					else
 						return FALSE
+			if("Spider Clan")
+				var/static/list/ninja_icons = sortList(list(
+					"Saboteur" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_engi"),
+					"Medical" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_medical"),
+					"Assault" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_sec"),
+					"Heavy" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaheavy"),
+					"Miss m" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
+					"Spider" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaspider"),
+					"BootyBorg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "bootyninja"),
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "male_bootyninja")
+				))
+				var/borg_icon = show_radial_menu(R, R , ninja_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				if(!borg_icon)
+					return FALSE
+				switch(borg_icon)
+					if("Saboteur")
+						disguise = "ninja_engi"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Medical")
+						disguise = "ninja_medical"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Assault")
+						disguise = "ninja_sec"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Heavy")
+						disguise = "ninjaheavy"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Miss m")
+						disguise = "missm_ninja"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Spider")
+						disguise = "ninjaspider"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("BootyBorg")
+						disguise = "bootyninja"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					if("Male Bootyborg")
+						disguise = "male_bootyninja"
+						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
+					//Dogborgs
+					else
+						return FALSE
+
 			else
 				return FALSE
 
@@ -877,7 +921,7 @@
 		if (do_after(user, 50, target=user) && user.cell.use(activationCost))
 			playsound(src, 'sound/effects/bamf.ogg', 100, TRUE, -6)
 			to_chat(user, "<span class='notice'>You are now disguised.</span>")
-			activate(user, module_selection)
+			activate(user, model_selection)
 		else
 			to_chat(user, "<span class='warning'>The chameleon field fizzles.</span>")
 			do_sparks(3, FALSE, user)
@@ -894,22 +938,22 @@
 	else
 		return PROCESS_KILL
 
-/obj/item/borg_shapeshifter/proc/activate(mob/living/silicon/robot/user, disguiseModuleName)
+/obj/item/borg_shapeshifter/proc/activate(mob/living/silicon/robot/user, disguiseModelName)
 	START_PROCESSING(SSobj, src)
 	src.user = user
-	savedIcon = user.module.cyborg_base_icon
+	savedIcon = user.model.cyborg_base_icon
 	savedBubbleIcon = user.bubble_icon //tf is that
-	savedOverride = user.module.cyborg_icon_override
-	savedPixelOffset = user.module.cyborg_pixel_offset
-	savedModuleName = user.module.name
-	savedDogborg = user.module.dogborg
-	savedSpecialLightKey = user.module.special_light_key
-	user.module.name = disguiseModuleName
-	user.module.cyborg_base_icon = disguise
-	user.module.cyborg_icon_override = disguise_icon_override
-	user.module.cyborg_pixel_offset = disguise_pixel_offset
-	user.module.dogborg = disguise_dogborg
-	user.module.special_light_key = disguise_special_light_key
+	savedOverride = user.model.cyborg_icon_override
+	savedPixelOffset = user.model.cyborg_pixel_offset
+	savedModelName = user.model.name
+	savedDogborg = user.model.dogborg
+	savedSpecialLightKey = user.model.special_light_key
+	user.model.name = disguiseModelName
+	user.model.cyborg_base_icon = disguise
+	user.model.cyborg_icon_override = disguise_icon_override
+	user.model.cyborg_pixel_offset = disguise_pixel_offset
+	user.model.dogborg = disguise_dogborg
+	user.model.special_light_key = disguise_special_light_key
 	user.bubble_icon = "robot"
 	active = TRUE
 	user.update_icons()
@@ -930,12 +974,12 @@
 		UnregisterSignal(listeningTo, signalCache)
 		listeningTo = null
 	do_sparks(5, FALSE, user)
-	user.module.name = savedModuleName
-	user.module.cyborg_base_icon = savedIcon
-	user.module.cyborg_icon_override = savedOverride
-	user.module.cyborg_pixel_offset = savedPixelOffset
-	user.module.dogborg = savedDogborg
-	user.module.special_light_key = savedSpecialLightKey
+	user.model.name = savedModelName
+	user.model.cyborg_base_icon = savedIcon
+	user.model.cyborg_icon_override = savedOverride
+	user.model.cyborg_pixel_offset = savedPixelOffset
+	user.model.dogborg = savedDogborg
+	user.model.special_light_key = savedSpecialLightKey
 	user.bubble_icon = savedBubbleIcon
 	active = FALSE
 	user.update_icons()

@@ -66,7 +66,7 @@
 	else
 		return ..()
 
-/obj/structure/flora/ash/attack_hand(mob/user)
+/obj/structure/flora/ash/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -183,6 +183,9 @@
 	pixel_y = base_pixel_y + rand(-4, 4)
 
 /obj/item/food/grown/ash_flora/shavings //So we can't craft bowls from everything.
+	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
+	special_desc_jobs = list("Botanist") //SKYRAT EDIT
+	special_desc = "You feel this flora would be unwise to consume while already full." //SKYRAT EDIT
 
 /obj/item/food/grown/ash_flora/mushroom_leaf
 	name = "mushroom leaf"
@@ -190,6 +193,9 @@
 	icon_state = "mushroom_leaf"
 	seed = /obj/item/seeds/lavaland/porcini
 	wine_power = 40
+	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
+	special_desc_jobs = list("Botanist") //SKYRAT EDIT
+	special_desc = "This flora is nutritious and healthy to eat, though slightly laced with nicotine." //SKYRAT EDIT
 
 /obj/item/food/grown/ash_flora/mushroom_cap
 	name = "mushroom cap"
@@ -197,6 +203,9 @@
 	icon_state = "mushroom_cap"
 	seed = /obj/item/seeds/lavaland/inocybe
 	wine_power = 70
+	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
+	special_desc_jobs = list("Botanist") //SKYRAT EDIT
+	special_desc = "This flora is poisonous and hallucinogenic." //SKYRAT EDIT
 
 /obj/item/food/grown/ash_flora/mushroom_stem
 	name = "mushroom stem"
@@ -204,6 +213,9 @@
 	icon_state = "mushroom_stem"
 	seed = /obj/item/seeds/lavaland/ember
 	wine_power = 60
+	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
+	special_desc_jobs = list("Botanist") //SKYRAT EDIT
+	special_desc = "This flora contains psychoactive drugs and will also make you glow." //SKYRAT EDIT
 
 /obj/item/food/grown/ash_flora/cactus_fruit
 	name = "cactus fruit"
@@ -211,6 +223,9 @@
 	icon_state = "cactus_fruit"
 	seed = /obj/item/seeds/lavaland/cactus
 	wine_power = 50
+	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
+	special_desc_jobs = list("Botanist") //SKYRAT EDIT
+	special_desc = "This flora is very nutritious and medicinal." //SKYRAT EDIT
 
 //SEEDS
 
@@ -335,11 +350,13 @@
 
 /obj/item/reagent_containers/glass/bowl/mushroom_bowl/update_overlays()
 	. = ..()
-	if(reagents?.total_volume)
-		var/mutable_appearance/filling = mutable_appearance('icons/obj/lavaland/ash_flora.dmi', "fullbowl")
-		filling.color = mix_color_from_reagents(reagents.reagent_list)
-		. += filling
+	if(!reagents?.total_volume)
+		return
+	var/mutable_appearance/filling = mutable_appearance('icons/obj/lavaland/ash_flora.dmi', "fullbowl")
+	filling.color = mix_color_from_reagents(reagents.reagent_list)
+	. += filling
 
 /obj/item/reagent_containers/glass/bowl/mushroom_bowl/update_icon_state()
 	if(!reagents || !reagents.total_volume)
 		icon_state = "mushroom_bowl"
+	return ..()

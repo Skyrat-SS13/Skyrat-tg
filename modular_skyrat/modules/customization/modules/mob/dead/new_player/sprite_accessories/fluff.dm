@@ -102,3 +102,7 @@
 	icon_state = "insectf"
 	default_color = DEFAULT_TERTIARY
 
+/datum/sprite_accessory/fluff/moth/fsnow
+	name = "Snow (Top)"
+	icon_state = "fsnow"
+

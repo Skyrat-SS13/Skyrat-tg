@@ -79,7 +79,7 @@
 	if(!n || !direct)
 		return FALSE
 	if(mob.notransform)
-		return FALSE	//This is sota the goto stop mobs from moving var
+		return FALSE //This is sota the goto stop mobs from moving var
 	if(mob.control_object)
 		return Move_object(direct)
 	if(!isliving(mob))
@@ -98,11 +98,11 @@
 	//SKYRAT EDIT ADDITION END
 
 	var/mob/living/L = mob  //Already checked for isliving earlier
-	if(L.incorporeal_move)	//Move though walls
+	if(L.incorporeal_move) //Move though walls
 		Process_Incorpmove(direct)
 		return FALSE
 
-	if(mob.remote_control)					//we're controlling something, our movement is relayed to it
+	if(mob.remote_control) //we're controlling something, our movement is relayed to it
 		return mob.remote_control.relaymove(mob, direct)
 
 	if(isAI(mob))
@@ -111,13 +111,13 @@
 	if(Process_Grab()) //are we restrained by someone's grip?
 		return
 
-	if(mob.buckled)							//if we're buckled to something, tell it we moved.
+	if(mob.buckled) //if we're buckled to something, tell it we moved.
 		return mob.buckled.relaymove(mob, direct)
 
 	if(!(L.mobility_flags & MOBILITY_MOVE))
 		return FALSE
 
-	if(isobj(mob.loc) || ismob(mob.loc))	//Inside an object, tell it we moved
+	if(isobj(mob.loc) || ismob(mob.loc)) //Inside an object, tell it we moved
 		var/atom/O = mob.loc
 		return O.relaymove(mob, direct)
 
@@ -491,7 +491,7 @@
 		m_intent = MOVE_INTENT_RUN
 	if(hud_used?.static_inventory)
 		for(var/atom/movable/screen/mov_intent/selector in hud_used.static_inventory)
-			selector.update_icon()
+			selector.update_appearance()
 
 ///Moves a mob upwards in z level
 /mob/verb/up()

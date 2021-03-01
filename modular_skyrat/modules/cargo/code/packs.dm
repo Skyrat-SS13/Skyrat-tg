@@ -121,6 +121,7 @@
 	cost = CARGO_CRATE_VALUE * 40
 	crate_name = "industrial RCD crate"
 
+/* Removed pending rebalance
 /datum/supply_pack/engineering/experimental_rcd
 	name = "Experimental RCD Crate"
 	desc = "Contains a single highly advanced RCD, capable of projecting its improved construction nanites at an increased range."
@@ -129,6 +130,7 @@
 	contains = list(/obj/item/construction/rcd/arcd)
 	cost = CARGO_CRATE_VALUE * 50
 	crate_name = "experimental RCD crate"
+*/
 
 /datum/supply_pack/engineering/material_pouches
 	name = "Material Pouches Crate"
@@ -214,6 +216,22 @@
 					/obj/item/storage/box/matches)
 	crate_name = "candle crate"
 
+/*
+/datum/supply_pack/misc/jukebox
+	name = "Jukebox Crate"
+	desc = "Contains a regular old jukebox. It can play music!"
+	cost = CARGO_CRATE_VALUE * 20
+	contains = list(/obj/machinery/jukebox)
+	crate_name = "jukebox crate"
+
+/datum/supply_pack/misc/jukebox_disco
+	name = "Radiant Dance Machine Crate"
+	desc = "Contains the new and improved Radiant Dance Machine Mark IV! Capable of playing a large selections of music, while projecting a fabulous lightshow."
+	cost = CARGO_CRATE_VALUE * 50
+	contains = list(/obj/machinery/jukebox/disco)
+	crate_name = "dance machine crate"
+*/
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Food Stuff //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -262,10 +280,10 @@
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
                     /obj/item/food/meat/slab/meatproduct,
-					/obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation,
-                    /obj/item/food/carpmeat/imitation)
+					/obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation,
+                    /obj/item/food/fishmeat/carp/imitation)
 	crate_name = "meaty crate"
 	crate_type = /obj/structure/closet/crate/freezer
 
@@ -291,8 +309,8 @@
 	contains = list(/obj/item/storage/box/drinkingglasses,
 					/obj/item/storage/box/drinkingglasses,
                     /obj/item/storage/part_replacer/cargo,
-					/obj/item/stack/sheet/metal/ten,
-					/obj/item/stack/sheet/metal/five,
+					/obj/item/stack/sheet/iron/ten,
+					/obj/item/stack/sheet/iron/five,
                     /obj/item/stock_parts/cell/high,
                     /obj/item/stock_parts/cell/high,
 					/obj/item/stack/cable_coil,

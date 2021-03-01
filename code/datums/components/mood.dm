@@ -29,6 +29,7 @@
 	RegisterSignal(parent, COMSIG_VOID_MASK_ACT, .proc/direct_sanity_drain)
 
 	var/mob/living/owner = parent
+	owner.become_area_sensitive(MOOD_COMPONENT_TRAIT)
 	if(owner.hud_used)
 		modify_hud()
 		var/datum/hud/hud = owner.hud_used
@@ -36,6 +37,7 @@
 
 /datum/component/mood/Destroy()
 	STOP_PROCESSING(SSmood, src)
+	REMOVE_TRAIT(parent, TRAIT_AREA_SENSITIVE, MOOD_COMPONENT_TRAIT)
 	unmodify_hud()
 	return ..()
 
@@ -82,10 +84,10 @@
 	else
 		msg += "<span class='notice'>I don't really know.</span>\n"
 	//SKYRAT EDIT CHANGE END
-	
+
 	msg += "<span class='notice'>My current mood: </span>" //Short term
 	//ORIGINAL
-	/* 
+	/*
 	switch(mood_level)
 		if(1)
 			msg += "<span class='boldwarning'>I wish I was dead!</span>\n"
@@ -130,8 +132,7 @@
 	else
 		msg += "<span class='notice'>No clue.</span>\n"
 	//SKYRAT EDIT CHANGE END
-
-	msg += "<span class='notice'>Moodlets:\n</span>"//All moodlets
+	msg += "<span class='notice'>Moodlets:</span>\n"//All moodlets
 	//if(mood_events.len) //ORIGINAL
 	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
 		for(var/i in mood_events)
@@ -248,6 +249,17 @@
 		if(9)
 			setSanity(sanity+0.6*delta_time, SANITY_NEUTRAL, SANITY_MAXIMUM)
 	HandleNutrition()
+
+	// 0.416% is 15 successes / 3600 seconds. Calculated with 2 minute
+	// mood runtime, so 50% average uptime across the hour.
+	if(HAS_TRAIT(parent, TRAIT_DEPRESSION) && DT_PROB(0.416, delta_time))
+		add_event(null, "depression_mild", /datum/mood_event/depression_mild)
+
+	if(HAS_TRAIT(parent, TRAIT_JOLLY) && DT_PROB(0.416, delta_time))
+		add_event(null, "jolly", /datum/mood_event/jolly)
+
+
+
 
 ///Sets sanity to the specified amount and applies effects.
 /datum/component/mood/proc/setSanity(amount, minimum=SANITY_INSANE, maximum=SANITY_GREAT, override = FALSE)
@@ -421,7 +433,7 @@
 	SIGNAL_HANDLER
 
 	update_beauty(A)
-	if(A.mood_bonus)
+	if(A.mood_bonus && (!A.mood_trait || HAS_TRAIT(source, A.mood_trait)))
 		add_event(null, "area", /datum/mood_event/area, A.mood_bonus, A.mood_message)
 	else
 		clear_event(null, "area")
@@ -469,6 +481,19 @@
 
 	add_event(null, "slipped", /datum/mood_event/slipped)
 
+
+/datum/component/mood/proc/HandleAddictions()
+	if(!iscarbon(parent))
+		return
+
+	var/mob/living/carbon/affected_carbon = parent
+
+	if(sanity < SANITY_GREAT) ///Sanity is low, stay addicted.
+		return
+
+	for(var/addiction_type in affected_carbon.mind.addiction_points)
+		var/datum/addiction/addiction_to_remove = SSaddiction.all_addictions[type]
+		affected_carbon.mind.remove_addiction_points(type, addiction_to_remove.high_sanity_addiction_loss) //If true was returned, we lost the addiction!
 
 #undef MINOR_INSANITY_PEN
 #undef MAJOR_INSANITY_PEN

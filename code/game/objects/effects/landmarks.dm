@@ -41,7 +41,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	. = ..()
 	GLOB.start_landmarks_list += src
 	if(jobspawn_override)
-		LAZYADDASSOC(GLOB.jobspawn_overrides, name, src)
+		LAZYADDASSOCLIST(GLOB.jobspawn_overrides, name, src)
 	if(name != "start")
 		tag = "start*[name]"
 
@@ -65,6 +65,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Prisoner"
 	icon_state = "Prisoner"
 
+// SKYRAT EDIT: Start - Latejoin prisoners!
+/obj/effect/landmark/start/prisoner/latejoin
+	name = "Latejoin Prisoner"
+	jobspawn_override = TRUE
+	delete_after_roundstart = FALSE
+// SKYRAT EDIT: End - Latejoin prisoners!
 /obj/effect/landmark/start/janitor
 	name = "Janitor"
 	icon_state = "Janitor"
@@ -374,7 +380,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 /obj/effect/landmark/thunderdome/one/Initialize(mapload)
 	..()
-	GLOB.tdome1	+= loc
+	GLOB.tdome1 += loc
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/thunderdome/two

@@ -19,6 +19,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/ears/headphones/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)]_[headphones_on? "on" : "off"]"
 	inhand_icon_state = "[initial(inhand_icon_state)]_[headphones_on? "on" : "off"]"
 

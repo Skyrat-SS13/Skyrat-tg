@@ -31,7 +31,7 @@
 	return 0
 
 
-/obj/machinery/embedded_controller/radio/simple_vent_controller
+/obj/machinery/embedded_controller/radio/simple_vent_controller//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 
@@ -55,10 +55,8 @@
 	program = new_prog
 
 /obj/machinery/embedded_controller/radio/simple_vent_controller/update_icon_state()
-	if(on && program)
-		icon_state = "airlock_control_standby"
-	else
-		icon_state = "airlock_control_off"
+	icon_state = "[base_icon_state]_[(on && program) ? "standby" : "off"]"
+	return ..()
 
 
 /obj/machinery/embedded_controller/radio/simple_vent_controller/return_text()

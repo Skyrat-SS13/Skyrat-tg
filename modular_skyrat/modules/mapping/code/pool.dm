@@ -17,7 +17,7 @@
 ///////////////////////////////////////////
 /////////////   INITIALISE    /////////////
 /turf/open/water/overlay/Initialize()
-	..()
+	.  = ..()
 	var/obj/effect/overlay/water/water_overlay = new()
 	var/obj/effect/overlay/water/top/water_top_overlay = new()
 	vis_contents += water_overlay
@@ -75,7 +75,7 @@
 
 // Hotpsrings! They give a positive mood event.
 /turf/open/water/overlay/hotspring
-	name = "hotpsring"
+	name = "hotspring"
 	desc = "A warm, steamy swimming pool."
 	icon_state = "hotspring_tile"
 	baseturfs = /turf/open/floor/plating

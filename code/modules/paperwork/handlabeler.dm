@@ -1,4 +1,4 @@
-/obj/item/hand_labeler
+/obj/item/hand_labeler//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "hand labeler"
 	desc = "A combined label printer, applicator, and remover, all in a single portable device. Designed to be easy to operate and use."
 	icon = 'icons/obj/bureaucracy.dmi'
@@ -39,7 +39,7 @@
 	. = ..()
 	if(!proximity)
 		return
-	if(!mode)	//if it's off, give up.
+	if(!mode) //if it's off, give up.
 		return
 
 	if(!labels_left)
@@ -85,7 +85,7 @@
 	if(istype(I, /obj/item/hand_labeler_refill))
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		qdel(I)
-		labels_left = initial(labels_left)	//Yes, it's capped at its initial value
+		labels_left = initial(labels_left) //Yes, it's capped at its initial value
 
 /obj/item/hand_labeler/borg
 	name = "cyborg-hand labeler"

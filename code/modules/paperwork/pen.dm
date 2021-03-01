@@ -1,9 +1,9 @@
-/*	Pens!
- *	Contains:
- *		Pens
- *		Sleepy Pens
- *		Parapens
- *		Edaggers
+/* Pens!
+ * Contains:
+ * Pens
+ * Sleepy Pens
+ * Parapens
+ * Edaggers
  */
 
 
@@ -25,10 +25,10 @@
 	custom_materials = list(/datum/material/iron=10)
 	pressure_resistance = 2
 	grind_results = list(/datum/reagent/iron = 2, /datum/reagent/iodine = 1)
-	var/colour = "black"	//what colour the ink is!
+	var/colour = "black" //what colour the ink is!
 	var/degrees = 0
 	var/font = PEN_FONT
-	embedding = list()
+	embedding = list(embed_chance = 50)
 	sharpness = SHARP_POINTY
 
 /obj/item/pen/suicide_act(mob/user)
@@ -133,7 +133,7 @@
 		return
 
 	if(!force)
-		if(M.can_inject(user, 1))
+		if(M.try_inject(user, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE))
 			to_chat(user, "<span class='warning'>You stab [M] with the pen.</span>")
 			if(!stealth)
 				to_chat(M, "<span class='danger'>You feel a tiny prick!</span>")
@@ -194,6 +194,9 @@
 /*
  * Sleepypens
  */
+/obj/item/pen/sleepy 
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
+	special_desc = "A Armour piercing syringe concealed in a pen , used by the Syndicate in covert operations."  // Skyrat edit
 
 /obj/item/pen/sleepy/attack(mob/living/M, mob/user)
 	if(!istype(M))
@@ -220,6 +223,8 @@
 	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts") //these won't show up if the pen is off
 	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
+	special_desc = "A concealed energy dagger , used by the Syndicate in covert operations."  // Skyrat edit
 	var/on = FALSE
 
 /obj/item/pen/edagger/ComponentInitialize()
@@ -262,7 +267,7 @@
 		playsound(user, 'sound/weapons/saberon.ogg', 5, TRUE)
 		to_chat(user, "<span class='warning'>[src] is now active.</span>")
 	updateEmbedding()
-	update_icon()
+	update_appearance()
 
 /obj/item/pen/edagger/update_icon_state()
 	if(on)
@@ -274,6 +279,7 @@
 		inhand_icon_state = initial(inhand_icon_state)
 		lefthand_file = initial(lefthand_file)
 		righthand_file = initial(righthand_file)
+	return ..()
 
 /obj/item/pen/survival
 	name = "survival pen"

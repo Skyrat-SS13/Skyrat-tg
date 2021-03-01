@@ -10,7 +10,7 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/dish_drive
 	pass_flags = PASSTABLE
-	var/static/list/collectable_items = list(/obj/item/trash/waffles,
+	var/list/collectable_items = list(/obj/item/trash/waffles,  //SKYRAT EDIT CHANGE: NO STATIC!
 		/obj/item/trash/plate,
 		/obj/item/trash/tray,
 		/obj/item/reagent_containers/glass/bowl,
@@ -18,7 +18,7 @@
 		/obj/item/kitchen/fork,
 		/obj/item/shard,
 		/obj/item/broken_bottle)
-	var/static/list/disposable_items = list(/obj/item/trash/waffles,
+	var/list/disposable_items = list(/obj/item/trash/waffles, //SKYRAT EDIT CHANGE: NO STATIC!
 		/obj/item/trash/plate,
 		/obj/item/trash/tray,
 		/obj/item/shard,
@@ -27,6 +27,8 @@
 	var/suction_enabled = TRUE
 	var/transmit_enabled = TRUE
 	var/list/dish_drive_contents
+	var/succrange = 4 //SKYRAT EDIT ADDITION - SEC_HAUL
+	var/binrange = 7 //SKYRAT EDIT ADDITION - SEC_HAUL
 
 /obj/machinery/dish_drive/Initialize()
 	. = ..()
@@ -37,7 +39,7 @@
 	if(user.Adjacent(src))
 		. += "<span class='notice'>Alt-click it to beam its contents to any nearby disposal bins.</span>"
 
-/obj/machinery/dish_drive/attack_hand(mob/living/user)
+/obj/machinery/dish_drive/attack_hand(mob/living/user, list/modifiers)
 	if(!LAZYLEN(dish_drive_contents))
 		to_chat(user, "<span class='warning'>There's nothing in [src]!</span>")
 		return
@@ -49,7 +51,7 @@
 	flick("synthesizer_beam", src)
 
 /obj/machinery/dish_drive/attackby(obj/item/I, mob/living/user, params)
-	if(is_type_in_list(I, collectable_items) && user.a_intent != INTENT_HARM)
+	if(is_type_in_list(I, collectable_items) && !user.combat_mode)
 		if(!user.transferItemToLoc(I, src))
 			return
 		LAZYADD(dish_drive_contents, I)
@@ -88,7 +90,7 @@
 		do_the_dishes()
 	if(!suction_enabled)
 		return
-	for(var/obj/item/I in view(4, src))
+	for(var/obj/item/I in view(succrange, src)) //SKYRAT EDIT CHANGE - ORIGINAL: for(var/obj/item/I in view(4, src))
 		if(is_type_in_list(I, collectable_items) && I.loc != src && (!I.reagents || !I.reagents.total_volume))
 			if(I.Adjacent(src))
 				LAZYADD(dish_drive_contents, I)
@@ -114,7 +116,7 @@
 		if(manual)
 			visible_message("<span class='notice'>[src] is empty!</span>")
 		return
-	var/obj/machinery/disposal/bin/bin = locate() in view(7, src)
+	var/obj/machinery/disposal/bin/bin = locate() in view(binrange, src) //SKYRAT EDIT CHANGE
 	if(!bin)
 		if(manual)
 			visible_message("<span class='warning'>[src] buzzes. There are no disposal bins in range!</span>")
@@ -132,7 +134,7 @@
 		playsound(src, 'sound/items/pshoom.ogg', 50, TRUE)
 		playsound(bin, 'sound/items/pshoom.ogg', 50, TRUE)
 		Beam(bin, icon_state = "rped_upgrade", time = 5)
-		bin.update_icon()
+		bin.update_appearance()
 		flick("synthesizer_beam", src)
 	else
 		visible_message("<span class='notice'>There are no disposable items in [src]!</span>")

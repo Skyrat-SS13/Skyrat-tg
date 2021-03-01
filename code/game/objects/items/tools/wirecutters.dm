@@ -41,7 +41,7 @@
 		icon_state = "cutters"
 		var/our_color = pick(wirecutter_colors)
 		add_atom_colour(wirecutter_colors[our_color], FIXED_COLOUR_PRIORITY)
-		update_icon()
+		update_appearance()
 
 /obj/item/wirecutters/update_overlays()
 	. = ..()
@@ -69,7 +69,7 @@
 	playsound(loc, usesound, 50, TRUE, -1)
 	return (BRUTELOSS)
 
-/obj/item/wirecutters/abductor
+/obj/item/wirecutters/abductor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "alien wirecutters"
 	desc = "Extremely sharp wirecutters, made out of a silvery-green metal."
 	icon = 'icons/obj/abductor.dmi'
@@ -77,7 +77,7 @@
 	toolspeed = 0.1
 	random_color = FALSE
 
-/obj/item/wirecutters/cyborg
+/obj/item/wirecutters/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "powered wirecutters"
 	desc = "Cuts wires with the power of ELECTRICITY. Faster than normal wirecutters."
 	icon = 'icons/obj/items_cyborg.dmi'

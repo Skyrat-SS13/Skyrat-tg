@@ -64,6 +64,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/hypospray/mkii/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)][vial ? "" : "-e"]"
 
 /obj/item/hypospray/mkii/examine(mob/user)
@@ -135,7 +136,7 @@
 /obj/item/hypospray/mkii/attack(obj/item/I, mob/user, params)
 	return
 
-/obj/item/hypospray/mkii/afterattack(atom/target, mob/user, proximity)
+/obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
 	if(!vial || !proximity || !isliving(target))
 		return
 	var/mob/living/L = target
@@ -169,7 +170,7 @@
 		return
 	if(!vial.reagents.total_volume)
 		return
-	log_attack("<font color='red'>[user.name] ([user.ckey]) applied [src] to [L.name] ([L.ckey]), which had [contained] (INTENT: [uppertext(user.a_intent)]) (MODE: [mode])</font>")
+	log_attack("<font color='red'>[user.name] ([user.ckey]) applied [src] to [L.name] ([L.ckey]), which had [contained] (COMBAT MODE: [uppertext(user.combat_mode)]) (MODE: [mode])</font>")
 	if(L != user)
 		L.visible_message("<span class='danger'>[user] uses the [src] on [L]!</span>", \
 						"<span class='userdanger'>[user] uses the [src] on you!</span>")

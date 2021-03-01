@@ -61,6 +61,12 @@
 	affected_bodyparts = CHEST
 	gendered = FALSE
 
+/datum/body_marking/other/weight
+	name = "Body Weight"
+	icon_state = "weight"
+	default_color = DEFAULT_PRIMARY
+	affected_bodyparts = CHEST
+
 /datum/body_marking/other/pilot
 	name = "Pilot"
 	icon_state = "pilot"
@@ -158,6 +164,16 @@
 	name = "Corgi"
 	icon_state = "corgi"
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/secondary/leopard1
+	name = "Leopard (alt 1)"
+	icon_state = "leopard1"
+	affected_bodyparts = CHEST
+
+/datum/body_marking/secondary/leopard2
+	name = "Leopard (alt 2)"
+	icon_state = "leopard2"
+	affected_bodyparts = CHEST
 
 /datum/body_marking/secondary/skunk
 	name = "Skunk"

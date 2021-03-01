@@ -230,8 +230,8 @@
 		var/olddir = C.dir
 		C.moving_diagonally = 0 //If this was part of diagonal move slipping will stop it.
 		if(!(lube & SLIDE_ICE))
-			C.Knockdown(knockdown_amount)
-			C.Paralyze(paralyze_amount)
+			C.StaminaKnockdown(10, TRUE) //SKYRAT EDIT CHANGE
+			//C.Paralyze(paralyze_amount) - SKYRAT EDIT REMOVAL
 			C.stop_pulling()
 		else
 			C.Knockdown(20)
@@ -245,7 +245,7 @@
 		else if(lube&SLIDE_ICE)
 			if(C.force_moving) //If we're already slipping extend it
 				qdel(C.force_moving)
-			new /datum/forced_movement(C, get_ranged_target_turf(C, olddir, 1), 1, FALSE)	//spinning would be bad for ice, fucks up the next dir
+			new /datum/forced_movement(C, get_ranged_target_turf(C, olddir, 1), 1, FALSE) //spinning would be bad for ice, fucks up the next dir
 		return TRUE
 
 /turf/open/proc/MakeSlippery(wet_setting = TURF_WET_WATER, min_wet_time = 0, wet_time_to_add = 0, max_wet_time = MAXIMUM_WET_TIME, permanent)
@@ -284,4 +284,3 @@
 	if(gas_change)
 		air.garbage_collect()
 		air_update_turf(FALSE, FALSE)
-

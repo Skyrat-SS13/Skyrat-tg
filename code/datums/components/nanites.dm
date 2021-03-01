@@ -4,12 +4,12 @@
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 
 	var/mob/living/host_mob
-	var/nanite_volume = 100		//amount of nanites in the system, used as fuel for nanite programs
-	var/max_nanites = 500		//maximum amount of nanites in the system
-	var/regen_rate = 0.5		//nanites generated per second
-	var/safety_threshold = 50	//how low nanites will get before they stop processing/triggering
-	var/cloud_id = 0 			//0 if not connected to the cloud, 1-100 to set a determined cloud backup to draw from
-	var/cloud_active = TRUE		//if false, won't sync to the cloud
+	var/nanite_volume = 100 //amount of nanites in the system, used as fuel for nanite programs
+	var/max_nanites = 500 //maximum amount of nanites in the system
+	var/regen_rate = 0.5 //nanites generated per second
+	var/safety_threshold = 50 //how low nanites will get before they stop processing/triggering
+	var/cloud_id = 0 //0 if not connected to the cloud, 1-100 to set a determined cloud backup to draw from
+	var/cloud_active = TRUE //if false, won't sync to the cloud
 	var/next_sync = 0
 	var/list/datum/nanite_program/programs = list()
 	var/max_programs = NANITE_PROGRAM_LIMIT
@@ -29,10 +29,10 @@
 	//Nanites without hosts are non-interactive through normal means
 	if(isliving(parent))
 		host_mob = parent
-
-		if(!(host_mob.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD))) //Shouldn't happen, but this avoids HUD runtimes in case a silicon gets them somehow.
+//SKYRAT EDIT START - FIXING THIS
+		if(!(host_mob.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD|MOB_HUMANOID))) //Shouldn't happen, but this avoids HUD runtimes in case a silicon gets them somehow.
 			return COMPONENT_INCOMPATIBLE
-
+//SKYRAT EDIT END
 		start_time = world.time
 
 		host_mob.hud_set_nanite_indicator()
@@ -196,7 +196,7 @@
 		qdel(src)
 
 /**
- *	Handles how nanites leave the host's body if they find out that they're currently exceeding the maximum supported amount
+ * Handles how nanites leave the host's body if they find out that they're currently exceeding the maximum supported amount
  *
  * IC explanation:
  * Normally nanites simply discard excess volume by slowing replication or 'sweating' it out in imperceptible amounts,
@@ -260,8 +260,8 @@
 /datum/component/nanites/proc/on_emp(datum/source, severity)
 	SIGNAL_HANDLER
 
-	nanite_volume *= (rand(60, 90) * 0.01)		//Lose 10-40% of nanites
-	adjust_nanites(null, -(rand(5, 50)))		//Lose 5-50 flat nanite volume
+	nanite_volume *= (rand(60, 90) * 0.01) //Lose 10-40% of nanites
+	adjust_nanites(null, -(rand(5, 50))) //Lose 5-50 flat nanite volume
 	if(prob(40/severity))
 		cloud_id = 0
 	for(var/X in programs)
@@ -276,8 +276,8 @@
 		return
 
 	if(!HAS_TRAIT_NOT_FROM(host_mob, TRAIT_SHOCKIMMUNE, "nanites"))//Another shock protection must protect nanites too, but nanites protect only host
-		nanite_volume *= (rand(45, 80) * 0.01)		//Lose 20-55% of nanites
-		adjust_nanites(null, -(rand(5, 50)))			//Lose 5-50 flat nanite volume
+		nanite_volume *= (rand(45, 80) * 0.01) //Lose 20-55% of nanites
+		adjust_nanites(null, -(rand(5, 50))) //Lose 5-50 flat nanite volume
 		for(var/X in programs)
 			var/datum/nanite_program/NP = X
 			NP.on_shock(shock_damage)
@@ -285,7 +285,7 @@
 /datum/component/nanites/proc/on_minor_shock(datum/source)
 	SIGNAL_HANDLER
 
-	adjust_nanites(null, -(rand(5, 15)))			//Lose 5-15 flat nanite volume
+	adjust_nanites(null, -(rand(5, 15))) //Lose 5-15 flat nanite volume
 	for(var/X in programs)
 		var/datum/nanite_program/NP = X
 		NP.on_minor_shock()
@@ -319,10 +319,10 @@
 
 /datum/component/nanites/proc/check_viable_biotype()
 	SIGNAL_HANDLER
-
-	if(!(host_mob.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD)))
+//SKYRAT EDIT START - FIXING THIS
+	if(!(host_mob.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD|MOB_HUMANOID)))
 		qdel(src) //bodytype no longer sustains nanites
-
+//SKYRAT EDIT END
 /datum/component/nanites/proc/check_access(datum/source, obj/O)
 	SIGNAL_HANDLER
 

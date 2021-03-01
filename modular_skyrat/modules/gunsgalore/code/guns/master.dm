@@ -1,5 +1,6 @@
 /obj/item/gun/ballistic
 	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
+	var/alt_icon_state //What the icon state is for the on-back guns
 	var/realistic = FALSE //realistic guns that use reliability and dirt
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is.
@@ -18,11 +19,19 @@
 /obj/item/gun/ballistic/update_overlays()
 	if(alt_icons)
 		if(!magazine)
-			inhand_icon_state = "[initial(icon_state)]_nomag"
-			worn_icon_state = "[initial(icon_state)]_nomag"
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]_nomag"
+				worn_icon_state = "[alt_icon_state]_nomag"
+			else
+				inhand_icon_state = "[initial(icon_state)]_nomag"
+				worn_icon_state = "[initial(icon_state)]_nomag"
 		else
-			inhand_icon_state = "[initial(icon_state)]"
-			worn_icon_state = "[initial(icon_state)]"
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]"
+				worn_icon_state = "[alt_icon_state]"
+			else
+				inhand_icon_state = "[initial(icon_state)]"
+				worn_icon_state = "[initial(icon_state)]"
 	. = ..()
 
 //gun pickup message
@@ -200,14 +209,21 @@
 /obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
 	if(realistic)
-		if(istype(A, /obj/item/soap))
-			var/obj/item/soap/S = A
-			to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
-			if(do_after(user, (1000/S.cleanspeed) SECONDS))
-				dirt_level -= S.cleanspeed
-				if(dirt_level < 0)
-					dirt_level = 0
-				to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
+		if(istype(A, /obj/item/stack/sheet/cloth))
+			var/obj/item/stack/sheet/cloth/C = A
+			if(!dirt_level)
+				to_chat(user, "The [src] is already spotless!")
+			else
+				if(C.amount < 5)
+					to_chat(user, "There's not enough [C] to clean the gun with!")
+				else
+					to_chat(user, "<span class='notice'>You start cleaning the [src].</span>")
+					if(do_after(user, 20 SECONDS))
+						dirt_level -= 35
+						if(dirt_level < 0)
+							dirt_level = 0
+						C.use(5)
+						to_chat(user, "<span class='notice'>You clean the [src], improving it's reliability!</span>")
 		if(istype(A, /obj/item/gun_maintenance_supplies))
 			to_chat(user, "<span class='notice'>You start maintaining the [src].</span>")
 			if(do_after(user, 10 SECONDS, target = src))

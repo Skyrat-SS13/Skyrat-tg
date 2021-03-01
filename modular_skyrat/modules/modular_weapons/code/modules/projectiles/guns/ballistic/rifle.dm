@@ -58,6 +58,11 @@
 	can_be_sawn_off = TRUE
 	bolt_wording = "barrel"
 
+/obj/item/ammo_box/magazine/internal/shot/improvised
+	name = "improvised shotgun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/improvised
+	max_ammo = 1
+
 /obj/item/gun/ballistic/rifle/ishotgun/examine(mob/user)
 	. = ..()
 	. += "The barrel is [bolt_locked ? "broke open" : "closed"]."

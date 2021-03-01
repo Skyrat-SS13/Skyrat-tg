@@ -10,9 +10,12 @@
 /obj/item/clothing/glasses/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/glasses/changeling/attack_hand(mob/user)
+/obj/item/clothing/glasses/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)
@@ -22,9 +25,12 @@
 /obj/item/clothing/under/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/under/changeling/attack_hand(mob/user)
+/obj/item/clothing/under/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)
@@ -35,9 +41,12 @@
 	name = "flesh"
 	allowed = list(/obj/item/changeling)
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/suit/changeling/attack_hand(mob/user)
+/obj/item/clothing/suit/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)
@@ -48,9 +57,12 @@
 	name = "flesh"
 	icon_state = null
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/head/changeling/attack_hand(mob/user)
+/obj/item/clothing/head/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)
@@ -60,9 +72,12 @@
 /obj/item/clothing/shoes/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/shoes/changeling/attack_hand(mob/user)
+/obj/item/clothing/shoes/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)
@@ -72,9 +87,12 @@
 /obj/item/clothing/gloves/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/gloves/changeling/attack_hand(mob/user)
+/obj/item/clothing/gloves/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)
@@ -84,9 +102,12 @@
 /obj/item/clothing/mask/changeling
 	name = "flesh"
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/mask/changeling/attack_hand(mob/user)
+/obj/item/clothing/mask/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)
@@ -98,9 +119,12 @@
 	slot_flags = ALL
 	allowed = list(/obj/item/changeling)
 	item_flags = DROPDEL
+	//SKYRAT EDIT START - FIXES CHANGELINGS BREAKING ON TRANSFORM
+	mutant_variants = NONE
+	//SKYRAT EDIT END
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/changeling/attack_hand(mob/user)
+/obj/item/changeling/attack_hand(mob/user, list/modifiers)
 	if(loc == user && user.mind && user.mind.has_antag_datum(/datum/antagonist/changeling))
 		to_chat(user, "<span class='notice'>You reabsorb [src] into your body.</span>")
 		qdel(src)

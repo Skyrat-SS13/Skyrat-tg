@@ -1,4 +1,4 @@
-/obj/item/implanter
+/obj/item/implanter//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "implanter"
 	desc = "A sterile automatic implant injector."
 	icon = 'icons/obj/items_and_weapons.dmi'
@@ -15,10 +15,8 @@
 
 
 /obj/item/implanter/update_icon_state()
-	if(imp)
-		icon_state = "implanter1"
-	else
-		icon_state = "implanter0"
+	icon_state = "implanter[imp ? 1 : 0]"
+	return ..()
 
 
 /obj/item/implanter/attack(mob/living/M, mob/user)
@@ -37,7 +35,7 @@
 					else
 						M.visible_message("<span class='notice'>[user] implants [M].</span>", "<span class='notice'>[user] implants you.</span>")
 					imp = null
-					update_icon()
+					update_appearance()
 				else
 					to_chat(user, "<span class='warning'>[src] fails to implant [M].</span>")
 
@@ -62,4 +60,4 @@
 	. = ..()
 	if(imp_type)
 		imp = new imp_type(src)
-	update_icon()
+	update_appearance()

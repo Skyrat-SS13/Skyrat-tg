@@ -338,6 +338,15 @@
 		/obj/item/stack/sheet/glass = 10,
 		/obj/item/stack/sheet/plasteel = 5)
 
+/obj/item/circuitboard/machine/crystallizer
+	name = "Crystallizer (Machine Board)"
+	icon_state = "engineering"
+	build_path = /obj/machinery/atmospherics/components/binary/crystallizer
+	req_components = list(
+		/obj/item/stack/cable_coil = 10,
+		/obj/item/stack/sheet/glass = 10,
+		/obj/item/stack/sheet/plasteel = 5)
+
 //Generic
 
 /obj/item/circuitboard/machine/circuit_imprinter
@@ -505,7 +514,7 @@
 		/obj/machinery/vending/cigarette = "ShadyCigs Deluxe",
 		/obj/machinery/vending/games = "\improper Good Clean Fun",
 		/obj/machinery/vending/autodrobe = "AutoDrobe",
-		/obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
+		/obj/machinery/vending/wardrobe/peacekeeper_wardrobe = "Peacekeeper Outfitting Station", //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/machinery/vending/wardrobe/sec_wardrobe = "SecDrobe",
 		/obj/machinery/vending/wardrobe/det_wardrobe = "DetDrobe",
 		/obj/machinery/vending/wardrobe/medi_wardrobe = "MediDrobe",
 		/obj/machinery/vending/wardrobe/engi_wardrobe = "EngiDrobe",
@@ -537,8 +546,9 @@
 		/obj/machinery/vending/robotics = "Robotech Deluxe",
 		/obj/machinery/vending/engineering = "Robco Tool Maker",
 		/obj/machinery/vending/sovietsoda = "BODA",
-		/obj/machinery/vending/security = "SecTech",
+		/obj/machinery/vending/security_peacekeeper = "Armadyne Peacekeeper Equipment Vendor", //SKYRAT EDIT CHANGE - SEC_HUAL - ORIGINAL: /obj/machinery/vending/security = "SecTech",
 		/obj/machinery/vending/modularpc = "Deluxe Silicate Selections",
+		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor")
 
 /obj/item/circuitboard/machine/vendor/attackby(obj/item/I, mob/user, params)
@@ -990,6 +1000,7 @@
 	build_path = /obj/machinery/deepfryer
 	req_components = list(/obj/item/stock_parts/micro_laser = 1)
 	needs_anchored = FALSE
+
 /obj/item/circuitboard/machine/griddle
 	name = "circuit board (Griddle)"
 	icon_state = "service"
@@ -1190,6 +1201,12 @@
 		/obj/item/stock_parts/matter_bin = 2)
 	needs_anchored = FALSE
 
+/obj/item/circuitboard/machine/restaurant_portal
+	name = "Restaurant Portal"
+	icon_state = "service"
+	build_path = /obj/machinery/restaurant_portal
+	needs_anchored = TRUE
+
 /obj/item/circuitboard/machine/abductor
 	name = "alien board (Report This)"
 	icon_state = "abductor_mod"
@@ -1234,3 +1251,19 @@
 		/obj/item/stock_parts/scanning_module = 2
 	)
 
+/obj/item/circuitboard/machine/destructive_scanner
+	name = "Experimental Destructive Scanner (Machine Board)"
+	icon_state = "science"
+	build_path = /obj/machinery/destructive_scanner
+	req_components = list(
+		/obj/item/stock_parts/micro_laser = 2,
+		/obj/item/stock_parts/matter_bin = 1,
+		/obj/item/stock_parts/manipulator = 2)
+
+/obj/item/circuitboard/machine/doppler_array
+	name = "Tachyon-Doppler Research Array (Machine Board)"
+	icon_state = "science"
+	build_path = /obj/machinery/doppler_array/research
+	req_components = list(
+		/obj/item/stock_parts/micro_laser = 2,
+		/obj/item/stock_parts/scanning_module = 4)

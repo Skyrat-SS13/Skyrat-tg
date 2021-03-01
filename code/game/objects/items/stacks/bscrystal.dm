@@ -1,5 +1,5 @@
 //Bluespace crystals, used in telescience and when crushed it will blink you to a random turf.
-/obj/item/stack/ore/bluespace_crystal
+/obj/item/stack/ore/bluespace_crystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bluespace crystal"
 	desc = "A glowing bluespace crystal, not much is known about how they work. It looks very delicate."
 	icon = 'icons/obj/telescience.dmi'
@@ -62,7 +62,7 @@
 	merge_type = /obj/item/stack/ore/bluespace_crystal/artificial
 
 //Polycrystals, aka stacks
-/obj/item/stack/sheet/bluespace_crystal
+/obj/item/stack/sheet/bluespace_crystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bluespace polycrystal"
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "polycrystal"
@@ -82,7 +82,7 @@
 	to_chat(user, "<span class='warning'>You cannot crush the polycrystal in-hand, try breaking one off.</span>")
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/stack/sheet/bluespace_crystal/attack_hand(mob/user)
+/obj/item/stack/sheet/bluespace_crystal/attack_hand(mob/user, list/modifiers)
 	if(user.get_inactive_held_item() == src)
 		if(zero_amount())
 			return

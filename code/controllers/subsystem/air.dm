@@ -94,10 +94,8 @@ SUBSYSTEM_DEF(air)
 		var/list/pipenet_rebuilds = pipenets_needing_rebuilt
 		for(var/thing in pipenet_rebuilds)
 			var/obj/machinery/atmospherics/AT = thing
-			//SKYRAT EDIT CHANGE BEGIN - MISC
-			if(!istype(AT))
+			if(!thing) //If a null somehow shows up here, this next line runtimes and the subsystem dies
 				continue
-			//SKYRAT EDIT CHANGE BEGIN - MISC
 			AT.build_network()
 		cached_cost += TICK_USAGE_REAL - timer
 		pipenets_needing_rebuilt.Cut()
@@ -504,8 +502,8 @@ SUBSYSTEM_DEF(air)
 		CHECK_TICK
 
 //this can't be done with setup_atmos_machinery() because
-//	all atmos machinery has to initalize before the first
-//	pipenet can be built.
+// all atmos machinery has to initalize before the first
+// pipenet can be built.
 /datum/controller/subsystem/air/proc/setup_pipenets()
 	for (var/obj/machinery/atmospherics/AM in atmos_machinery)
 		AM.build_network()

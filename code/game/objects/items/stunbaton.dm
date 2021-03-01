@@ -1,7 +1,6 @@
 /obj/item/melee/baton
 	name = "stun baton"
-	desc = "A stun baton for incapacitating people with."
-
+	desc = "A stun baton for incapacitating people with. Left click to stun, right click to harm."
 	icon_state = "stunbaton"
 	inhand_icon_state = "baton"
 	worn_icon_state = "baton"
@@ -21,18 +20,18 @@
 
 	var/obj/item/stock_parts/cell/cell
 	var/preload_cell_type //if not empty the baton starts with this type of cell
-	var/cell_hit_cost = 1000
+	var/cell_hit_cost = 650 //SKYRAT EDIT CHANGE - ORIGINAL: 1000
 	var/can_remove_cell = TRUE
 
 	var/turned_on = FALSE
 	var/activate_sound = "sparks"
 
 	var/attack_cooldown_check = 0 SECONDS
-	var/attack_cooldown = 2.5 SECONDS
+	var/attack_cooldown = 1 SECONDS //SKYRAT EDIT CHANGE - ORIGINAL: 2.5 SECONDS
 	var/stun_sound = 'sound/weapons/egloves.ogg'
 
 	var/confusion_amt = 10
-	var/stamina_loss_amt = 60
+	var/stamina_loss_amt = 45 //SKYRAT EDIT CHANGE - ORIGINAL: 60
 	var/apply_stun_delay = 2 SECONDS
 	var/stun_time = 5 SECONDS
 
@@ -57,7 +56,7 @@
 			log_mapping("[src] at [AREACOORD(src)] had an invalid preload_cell_type: [preload_cell_type].")
 		else
 			cell = new preload_cell_type(src)
-	update_icon()
+	update_appearance()
 	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/convert)
 
 
@@ -84,7 +83,7 @@
 	if(A == cell)
 		cell = null
 		turned_on = FALSE
-		update_icon()
+		update_appearance()
 	return ..()
 
 /obj/item/melee/baton/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -104,17 +103,19 @@
 		if(turned_on && cell.charge < cell_hit_cost)
 			//we're below minimum, turn off
 			turned_on = FALSE
-			update_icon()
+			update_appearance()
 			playsound(src, activate_sound, 75, TRUE, -1)
 
 
 /obj/item/melee/baton/update_icon_state()
 	if(turned_on)
 		icon_state = "[initial(icon_state)]_active"
-	else if(!cell)
+		return ..()
+	if(!cell)
 		icon_state = "[initial(icon_state)]_nocell"
-	else
-		icon_state = "[initial(icon_state)]"
+		return ..()
+	icon_state = "[initial(icon_state)]"
+	return ..()
 
 /obj/item/melee/baton/examine(mob/user)
 	. = ..()
@@ -136,7 +137,7 @@
 				return
 			cell = W
 			to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
-			update_icon()
+			update_appearance()
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER)
 		tryremovecell(user)
@@ -145,12 +146,12 @@
 
 /obj/item/melee/baton/proc/tryremovecell(mob/user)
 	if(cell && can_remove_cell)
-		cell.update_icon()
+		cell.update_appearance()
 		cell.forceMove(get_turf(src))
 		cell = null
 		to_chat(user, "<span class='notice'>You remove the cell from [src].</span>")
 		turned_on = FALSE
-		update_icon()
+		update_appearance()
 
 /obj/item/melee/baton/attack_self(mob/user)
 	toggle_on(user)
@@ -166,7 +167,7 @@
 			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
 		else
 			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
-	update_icon()
+	update_appearance()
 	add_fingerprint(user)
 
 /obj/item/melee/baton/proc/clumsy_check(mob/living/carbon/human/user)
@@ -179,7 +180,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/melee/baton/attack(mob/M, mob/living/carbon/human/user)
+/obj/item/melee/baton/attack(mob/M, mob/living/carbon/human/user, params)
 	if(clumsy_check(user))
 		return FALSE
 
@@ -193,30 +194,34 @@
 		if(check_martial_counter(L, user))
 			return
 
-	if(user.a_intent != INTENT_HARM)
+	var/list/modifiers = params2list(params)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(turned_on)
 			if(attack_cooldown_check <= world.time)
-				if(baton_effect(M, user))
-					user.do_attack_animation(M)
-					return
-			else
-				to_chat(user, "<span class='danger'>The baton is still charging!</span>")
-		else
-			M.visible_message("<span class='warning'>[user] prods [M] with [src]. Luckily it was off.</span>", \
-							"<span class='warning'>[user] prods you with [src]. Luckily it was off.</span>")
-	else
-		if(turned_on)
-			if(attack_cooldown_check <= world.time)
-				baton_effect(M, user)
+				baton_effect(M, user, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: baton_effect(M, user)
 		..()
+		return
+	else if(turned_on)
+		if(attack_cooldown_check <= world.time)
+			if(baton_effect(M, user))
+				user.do_attack_animation(M)
+				return
+		else
+			to_chat(user, "<span class='danger'>The baton is still charging!</span>")
+			return
+	else
+		M.visible_message("<span class='warning'>[user] prods [M] with [src]. Luckily it was off.</span>", \
+					"<span class='warning'>[user] prods you with [src]. Luckily it was off.</span>")
+		return
 
-
-/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
+/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user, harmy = FALSE) //SKYRAT EDIT CHANGE  - ORIGINAL: /obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
 	if(shields_blocked(L, user))
 		return FALSE
+	/* SKYRAT EDIT REMOVAL BEGIN
 	if(HAS_TRAIT_FROM(L, TRAIT_IWASBATONED, user)) //no doublebaton abuse anon!
 		to_chat(user, "<span class='danger'>[L] manages to avoid the attack!</span>")
 		return FALSE
+	*/ //SKYRAT EDIT REMOVAL END
 	if(iscyborg(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(!R || !R.cell || !R.cell.use(cell_hit_cost))
@@ -227,12 +232,18 @@
 	/// After a target is hit, we do a chunk of stamina damage, along with other effects.
 	/// After a period of time, we then check to see what stun duration we give.
 	L.Jitter(20)
-	L.set_confusion(max(confusion_amt, L.get_confusion()))
+	//L.set_confusion(max(confusion_amt, L.get_confusion())) //SKYRAT EDIT REMOVAL
 	L.stuttering = max(8, L.stuttering)
-	L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST)
+	//L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST) - SKYRAT EDIT REMOVAL
+	//SKYRAT EDIT CHANGE BEGIN
+	if(harmy) //Less extra stamina damage for harm batons
+		L.StaminaKnockdown(5)
+	else
+		L.StaminaKnockdown(stamina_loss_amt)
+		//SKYRAT EDIT CHANGE END
 
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
-	addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay)
+	//addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay) SKYRAT EDIT REMOVAL
 
 	if(user)
 		L.lastattacker = user.real_name
@@ -245,8 +256,10 @@
 
 	attack_cooldown_check = world.time + attack_cooldown
 
+	/* SKYRAT EDIT REMOVAL
 	ADD_TRAIT(L, TRAIT_IWASBATONED, user)
 	addtimer(TRAIT_CALLBACK_REMOVE(L, TRAIT_IWASBATONED, user), attack_cooldown)
+	*/
 
 	return 1
 
@@ -277,7 +290,7 @@
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/melee/baton/cattleprod
 	name = "stunprod"
-	desc = "An improvised stun baton."
+	desc = "An improvised stun baton. Left click to stun, right click to harm."
 	icon_state = "stunprod"
 	inhand_icon_state = "prod"
 	worn_icon_state = null
@@ -320,13 +333,6 @@
 	convertible = FALSE
 	custom_materials = list(/datum/material/iron = 10000, /datum/material/glass = 4000, /datum/material/silver = 10000, /datum/material/gold = 2000)
 
-/obj/item/melee/baton/boomerang/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
-	if(turned_on)
-		if(ishuman(thrower))
-			var/mob/living/carbon/human/H = thrower
-			H.throw_mode_off() //so they can catch it on the return.
-	return ..()
-
 /obj/item/melee/baton/boomerang/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(turned_on)
 		var/caught = hit_atom.hitby(src, FALSE, FALSE, throwingdatum=throwingdatum)
@@ -336,15 +342,6 @@
 			addtimer(CALLBACK(src, /atom/movable.proc/throw_at, thrownby, throw_range+2, throw_speed, null, TRUE), 1)
 	else
 		return ..()
-
-
-/obj/item/melee/baton/boomerang/update_icon_state()
-	if(turned_on)
-		icon_state = "[initial(icon_state)]_active"
-	else if(!cell)
-		icon_state = "[initial(icon_state)]_nocell"
-	else
-		icon_state = "[initial(icon_state)]"
 
 /obj/item/melee/baton/boomerang/loaded //Same as above, comes with a cell.
 	preload_cell_type = /obj/item/stock_parts/cell/high

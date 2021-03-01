@@ -455,6 +455,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	stamina_loss_amt = 0
 	apply_stun_delay = 0 SECONDS
 	stun_time = 14 SECONDS
+	stamina_loss_amt = 50 //SKYRAT EDIT ADDITION
 
 	preload_cell_type = /obj/item/stock_parts/cell/infinite //Any sufficiently advanced technology is indistinguishable from magic
 	activate_sound = null
@@ -487,9 +488,10 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	if(!turned_on)
 		toggle_on(user)
 	to_chat(usr, "<span class='notice'>You switch the baton to [txt] mode.</span>")
-	update_icon()
+	update_appearance()
 
 /obj/item/melee/baton/abductor/update_icon_state()
+	. = ..()
 	switch(mode)
 		if(BATON_STUN)
 			icon_state = "wonderprodStun"
@@ -559,7 +561,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 
 /obj/item/melee/baton/abductor/proc/SleepAttack(mob/living/L,mob/living/user)
 	playsound(src, stun_sound, 50, TRUE, -1)
-	if(L.incapacitated(TRUE, TRUE))
+	if(L.incapacitated(TRUE, TRUE) || (L.staminaloss > STAMINA_THRESHOLD_WEAK)) //SKYRAT EDIT CHANGE - ORIGINAL: if(L.incapacitated(TRUE, TRUE))
 		if(L.anti_magic_check(FALSE, FALSE, TRUE))
 			to_chat(user, "<span class='warning'>The specimen's tinfoil protection is interfering with the sleep inducement!</span>")
 			L.visible_message("<span class='danger'>[user] tried to induced sleep in [L] with [src], but [L.p_their()] tinfoil protection [L.p_them()]!</span>", \
@@ -800,7 +802,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	if(istype(I, /obj/item/stack/sheet/mineral/silver))
 		var/obj/item/stack/sheet/P = I
 		if(P.get_amount() < 1)
-			to_chat(user, "<span class='warning'>You need one sheet of silver to do	this!</span>")
+			to_chat(user, "<span class='warning'>You need one sheet of silver to do this!</span>")
 			return
 		to_chat(user, "<span class='notice'>You start adding [P] to [src]...</span>")
 		if(do_after(user, 50, target = src))
@@ -821,6 +823,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	smoothing_groups = list(SMOOTH_GROUP_ABDUCTOR_TABLES)
 	canSmoothWith = list(SMOOTH_GROUP_ABDUCTOR_TABLES)
 	frame = /obj/structure/table_frame/abductor
+	custom_materials = list(/datum/material/silver = 2000)
 
 /obj/structure/table/optable/abductor
 	name = "alien operating table"

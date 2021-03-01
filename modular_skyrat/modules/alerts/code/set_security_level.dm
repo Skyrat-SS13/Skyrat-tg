@@ -156,7 +156,8 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 		if(SEC_LEVEL_DELTA)
 			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/deltaklaxon.ogg')
 		if(SEC_LEVEL_GAMMA)
-			gamma_loop() //Gamma has a looping sound effect
+			if(!GLOB.gamma_looping)
+				gamma_loop() //Gamma has a looping sound effect
 
 /proc/alert_sound_to_playing(soundin, volume = 100, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
 	if(!S)
@@ -169,12 +170,11 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 
 //ALERT ALERT ALERT SHITCODE
 /proc/gamma_loop() //Loops gamma sound
-	if(GLOB.gamma_looping)
+	if(GLOB.security_level != SEC_LEVEL_GAMMA)
+		GLOB.gamma_looping = FALSE
 		return
 	GLOB.gamma_looping = TRUE
-	while(GLOB.security_level == SEC_LEVEL_GAMMA)
-		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
-		sleep(GAMMA_LOOP_LENGTH)
-	GLOB.gamma_looping = FALSE
+	alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
+	addtimer(CALLBACK(.proc/gamma_loop), GAMMA_LOOP_LENGTH)
 
 #undef GAMMA_LOOP_LENGTH
