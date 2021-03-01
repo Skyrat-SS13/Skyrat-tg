@@ -6,13 +6,8 @@
 #define RAD_COLLECTOR_OUTPUT min(stored_energy, (stored_energy*RAD_COLLECTOR_STORED_OUT)+1000) //Produces at least 1000 watts if it has more than that stored
 /obj/machinery/power/rad_collector
 	name = "Radiation Collector Array"
-<<<<<<< HEAD
-	desc = "A device which uses Hawking Radiation and plasma to produce power."
-	icon = 'icons/obj/singularity.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 	desc = "A device which uses radiation and plasma to produce power."
-	icon = 'icons/obj/singularity.dmi'
->>>>>>> bd711855cc6 (Replaces old array sprites (#57252))
+	icon = 'icons/obj/singularity.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "ca"
 	anchored = FALSE
 	density = TRUE
@@ -190,7 +185,7 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(active)
-		. += loaded_tank ? "on" : "error"
+		. += "on" // SKYRAT EDIT CHANGE - ORIGINAL. += loaded_tank ? "on" : "error"
 
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active
