@@ -11,13 +11,18 @@ GLOBAL_LIST_EMPTY(PDAs)
 #define PDA_SCANNER_GAS 5
 #define PDA_SPAM_DELAY     2 MINUTES
 
+<<<<<<< HEAD
 /obj/item/pda//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "\improper PDA"
+=======
+/obj/item/pda
+	name = "\improper standard PDA"
+>>>>>>> 890615856ef (Fully implements the ID Card design document (#56910))
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	inhand_icon_state = "electronic"
-	worn_icon_state = "electronic"
+	worn_icon_state = "pda"
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 	item_flags = NOBLUDGEON
@@ -150,6 +155,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return id.GetAccess()
 	else
 		return ..()
+
+/obj/item/pda/get_id_examine_strings(mob/user)
+	. = ..()
+	if(id)
+		. += "\The [src] is displaying [id]."
+		. += id.get_id_examine_strings(user)
 
 /obj/item/pda/GetID()
 	return id
@@ -488,8 +499,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 				id_check(U)
 			if("UpdateInfo")
 				ownjob = id.assignment
-				if(istype(id, /obj/item/card/id/syndicate))
-					owner = id.registered_name
 				update_label()
 				if(!silent)
 					playsound(src, 'sound/machines/terminal_processing.ogg', 15, TRUE)
@@ -708,6 +717,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/mob/living/carbon/human/H = loc
 		if(H.wear_id == src)
 			H.sec_hud_set_ID()
+
+	update_slot_icon()
 
 
 /obj/item/pda/proc/msg_input(mob/living/U = usr)
@@ -959,6 +970,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 			user.put_in_hands(old_id)
 		else
 			old_id.forceMove(get_turf(src))
+
+	update_slot_icon()
 
 
 /obj/item/pda/pre_attack(obj/target, mob/living/user, params)

@@ -102,6 +102,7 @@
 /obj/proc/check_access_ntnet(list/passkey)
 	return check_access_list(passkey)
 
+<<<<<<< HEAD
 /proc/get_centcom_access(job)
 	switch(job)
 		if("VIP Guest")
@@ -386,21 +387,27 @@
 				"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer",
 				"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Geneticist", "Virologist", "Psychologist",
 				"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Prisoner")
+=======
+/obj/item/proc/GetJobName() //Used in secHUD icon generation
+	var/obj/item/card/id/id_card = GetID()
 
-/proc/get_all_job_icons() //For all existing HUD icons
-	return get_all_jobs() + list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", "Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando")
+	if(!id_card)
+		return
+>>>>>>> 890615856ef (Fully implements the ID Card design document (#56910))
 
+	var/card_assignment = id_card.trim?.assignment
+
+<<<<<<< HEAD
 /proc/get_all_centcom_jobs()
 	return list("Central Command","VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Research Officer","Special Ops Officer","Admiral","CentCom Commander","CentCom Bartender","Private Security Force")
 *///Skyrat Edit End
+=======
+	if(!card_assignment)
+		card_assignment = id_card.assignment
+>>>>>>> 890615856ef (Fully implements the ID Card design document (#56910))
 
-/obj/item/proc/GetJobName() //Used in secHUD icon generation
-	var/obj/item/card/id/I = GetID()
-	if(!I)
-		return
-	var/jobName = I.assignment
-	if(jobName in get_all_job_icons()) //Check if the job has a hud icon
-		return jobName
-	if(jobName in get_all_centcom_jobs()) //Return with the NT logo if it is a CentCom job
+	if(card_assignment in (SSjob.station_jobs + SSjob.additional_jobs_with_icons)) //Check if the job has a hud icon
+		return card_assignment
+	if(card_assignment in SSjob.centcom_jobs) //Return with the NT logo if it is a CentCom job
 		return "CentCom"
 	return "Unknown" //Return unknown if none of the above apply
