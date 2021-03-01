@@ -31,7 +31,8 @@
 					/obj/item/clothing/under/rank/security/officer/grey = 3,
 					/obj/item/clothing/under/pants/khaki = 3,
 					/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
-					/obj/item/clothing/under/utility/sec = 3)	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/utility/sec/old = 3,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/suit/toggle/jacket/sec/old = 3)	//SKYRAT EDIT ADDITION END
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
@@ -63,8 +64,9 @@
 					/obj/item/clothing/under/rank/medical/doctor/green = 4,
 					/obj/item/clothing/under/rank/medical/doctor/purple = 4,
 					/obj/item/clothing/under/rank/medical/doctor = 4,
-					/obj/item/clothing/under/utility/med = 4,	//SKYRAT EDIT ADDITION
-					/obj/item/clothing/under/utility/haz_white = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/utility/med = 4,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/suit/toggle/jacket/med = 4,
+					/obj/item/clothing/under/utility/haz_white = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/toggle/labcoat = 4,
 					/obj/item/clothing/suit/toggle/labcoat/paramedic = 4,
 					/obj/item/clothing/shoes/sneakers/white = 4,
@@ -93,6 +95,7 @@
 					/obj/item/clothing/under/rank/engineering/engineer = 3,
 					/obj/item/clothing/under/rank/engineering/engineer/skirt = 3,
 					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/toggle/jacket/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
 					/obj/item/clothing/under/utility/haz_green = 3,	//SKYRAT EDIT ADDITION
@@ -141,8 +144,9 @@
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/cargo = 3,
 					/obj/item/clothing/under/rank/cargo/tech = 3,
 					/obj/item/clothing/under/rank/cargo/tech/skirt = 3,
-					/obj/item/clothing/under/misc/cargo_long = 3,	//SKYRAT EDIT ADDITION
-					/obj/item/clothing/under/utility/cargo = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/misc/cargo_long = 3,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/under/utility/cargo = 3,
+					/obj/item/clothing/suit/toggle/jacket/supply = 3,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/shoes/sneakers/black = 3,
 					/obj/item/clothing/gloves/fingerless = 3,
 					/obj/item/clothing/head/soft = 3,
@@ -194,6 +198,7 @@
 					/obj/item/clothing/under/rank/rnd/scientist = 3,
 					/obj/item/clothing/under/rank/rnd/scientist/skirt = 3,
 					/obj/item/clothing/under/utility/sci = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/toggle/jacket/sci = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/science = 3,
 					/obj/item/clothing/shoes/sneakers/white = 3,
 					/obj/item/radio/headset/headset_sci = 3,
@@ -267,6 +272,7 @@
 					/obj/item/clothing/suit/apron/purple_bartender = 2,
 					/obj/item/clothing/head/soft/black = 2,
 					/obj/item/clothing/shoes/sneakers/black = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/bartender = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/reagent_containers/glass/rag = 2,
 					/obj/item/storage/box/beanbag = 1,
 					/obj/item/clothing/suit/armor/vest/alt = 1,
@@ -499,6 +505,7 @@
 					/obj/item/clothing/shoes/laceup = 2,
 					/obj/item/clothing/suit/det_suit/grey = 1,
 					/obj/item/clothing/suit/det_suit/noir = 1,
+					/obj/item/clothing/suit/toggle/labcoat/highvis = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/fedora = 2,
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,

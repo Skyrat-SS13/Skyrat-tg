@@ -38,6 +38,9 @@
 	icon_state = "util_sec"
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10) //Same stats as default security jumpsuit
 
+/obj/item/clothing/under/utility/sec/old	//Oldsec (Red)
+	icon_state = "util_sec_old"
+
 /obj/item/clothing/under/utility/com
 	name = "command utility uniform"
 	desc = "A utility uniform worn by Station Command."
@@ -57,15 +60,17 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 0, ACID = 0) //Same stats as the paramedic uniform
 
 /obj/item/clothing/under/utility/haz_green
-	name = "gas hazard uniform"
+	name = "chemical hazard uniform"
 	desc = "A hazard uniform with additional protection from gas and chemical hazards, at the cost of less fire- and radiation-proofing."
 	icon_state = "hazard_green"
 	can_adjust = TRUE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 20, ACID = 60)
+	resistance_flags = ACID_PROOF
 
 /obj/item/clothing/under/utility/haz_white
-	name = "hazard EMT uniform"
+	name = "chem-hazard EMT uniform"
 	desc = "An EMT uniform used for first responders in situations involving gas and/or chemical hazards. The label reads, \"Not designed for prolonged exposure\"."
 	icon_state = "hazard_white"
 	can_adjust = TRUE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 10, ACID = 50) //Worse stats than the proper hazard uniform
+	resistance_flags = ACID_PROOF
