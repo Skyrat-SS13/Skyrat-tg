@@ -12,7 +12,7 @@
 		QDEL_NULL(builtInCamera)
 
 /mob/living/silicon/robot/model/roleplay/binarycheck()
-	return 0 //Roleplay borgs aren't truly borgs
+	return FALSE //Roleplay borgs aren't truly borgs
 
 /datum/ai_laws/roleplay
 	name = "Roleplay"
