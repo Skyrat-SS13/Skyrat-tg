@@ -3,7 +3,7 @@
 	scrambledcodes = TRUE // Roleplay borgs aren't real
 	set_model = /obj/item/robot_model/roleplay
 
-/mob/living/silicon/robot/modules/roleplay/Initialize()
+/mob/living/silicon/robot/model/roleplay/Initialize()
 	. = ..()
 	cell = new /obj/item/stock_parts/cell/infinite(src, 30000)
 	laws = new /datum/ai_laws/roleplay()
@@ -11,7 +11,7 @@
 	if(!QDELETED(builtInCamera))
 		QDEL_NULL(builtInCamera)
 
-/mob/living/silicon/robot/modules/roleplay/binarycheck()
+/mob/living/silicon/robot/model/roleplay/binarycheck()
 	return 0 //Roleplay borgs aren't truly borgs
 
 /datum/ai_laws/roleplay
