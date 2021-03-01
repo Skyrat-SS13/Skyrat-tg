@@ -1,3 +1,4 @@
+//HERE BE HOODIES. The hoodies and attached sprites are from https://github.com/Citadel-Station-13/Citadel-Station-13-RP
 /obj/item/clothing/suit/storage/toggle/hoodie
 	name = "grey hoodie"
 	desc = "A warm, grey sweatshirt."
