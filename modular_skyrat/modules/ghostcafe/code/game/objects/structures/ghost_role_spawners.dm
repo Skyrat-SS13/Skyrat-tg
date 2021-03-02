@@ -96,7 +96,7 @@
 
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
 	name = "cafe costuming kit"
-	desc = "Look just the way you did in life - or better!"
+	desc = "Clothing piracy, now in a conveinent box!"
 
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe/PopulateContents() // Doesn't contain a PDA, for isolation reasons.
 	new /obj/item/clothing/under/chameleon(src)
@@ -106,17 +106,16 @@
 	new /obj/item/clothing/glasses/chameleon(src)
 	new /obj/item/clothing/head/chameleon(src)
 	new /obj/item/clothing/mask/chameleon(src)
+	new /obj/item/clothing/neck/chameleon(src)
 	new /obj/item/storage/backpack/chameleon(src)
+	new /obj/item/storage/belt/chameleon(src)
 
 /obj/item/card/id/ghost_cafe
 	name = "\improper Cafe ID"
 	id_type_name = "\improper Cafe ID"
-	desc = "An Cafe Visitor card."
-	icon_state = "silver_id"
-	registered_name = "Cafe Visitor"
+	desc = "A budget ID card for off-duty employees."
+	icon_state = "retro"
 	assignment = "Cafe Visitor"
-	uses_overlays = FALSE
-	registered_age = null
 
 /obj/item/card/id/ghost_cafe/Initialize()
 	access = get_all_accesses()

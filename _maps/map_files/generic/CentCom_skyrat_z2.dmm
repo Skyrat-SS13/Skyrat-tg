@@ -1901,13 +1901,11 @@
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "fl" = (
-/obj/machinery/jukebox{
-	req_access = "0"
-	},
 /obj/structure/sign/barsign{
 	pixel_y = 32;
 	req_access = null
 	},
+/obj/machinery/chem_master/condimaster,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "fm" = (
@@ -3351,10 +3349,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/corner{
-	dir = 1
+	dir = 8
 	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
 	},
@@ -4347,8 +4345,7 @@
 /obj/machinery/door/window/westleft{
 	dir = 1;
 	name = "Monkey Pen";
-	pixel_y = 2;
-	req_access_txt = "9"
+	pixel_y = 2
 	},
 /obj/machinery/light{
 	dir = 8
@@ -4913,7 +4910,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/corner{
-	dir = 4
+	dir = 1
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -5970,8 +5967,7 @@
 	dir = 1;
 	icon_state = "right";
 	name = "Monkey Pen";
-	pixel_y = 2;
-	req_access_txt = "9"
+	pixel_y = 2
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -10338,7 +10334,9 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafepark)
 "Bl" = (
-/obj/item/construction/rcd/combat/admin,
+/obj/item/construction/rcd/combat/admin{
+	name = "Bluespace-Linked RCD"
+	},
 /turf/open/floor/plating/dirt/planet,
 /area/centcom/holding/cafepark)
 "Bn" = (
@@ -11135,10 +11133,10 @@
 	},
 /area/cruiser_dock/maint)
 "Dr" = (
-/obj/machinery/chem_master/condimaster,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/structure/table/wood,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "Ds" = (
@@ -11214,7 +11212,7 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "DC" = (
-/turf/closed/indestructible/opshuttle,
+/turf/closed/indestructible/syndicate,
 /area/centcom/holding/cafepark)
 "DD" = (
 /obj/effect/turf_decal/stripes/red/line{
@@ -11439,14 +11437,15 @@
 	},
 /area/centcom/holding/cafeplumbing)
 "Ep" = (
-/obj/structure/table/wood,
-/obj/machinery/smartfridge/disks{
-	pixel_y = 2
+/obj/machinery/button/door{
+	id = "ripweapons";
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_x = -25;
+	specialfunctions = 4
 	},
-/turf/open/indestructible/hoteltile{
-	icon_state = "darkfull"
-	},
-/area/centcom/holding/cafe)
+/turf/open/indestructible/hotelwood,
+/area/centcom/holding/cafedorms)
 "Eq" = (
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 5
@@ -12568,7 +12567,9 @@
 /obj/machinery/computer/operating{
 	dir = 8
 	},
-/obj/item/disk/surgery/debug,
+/obj/item/disk/surgery/debug{
+	name = "All-Encompassing Surgery Disk"
+	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
@@ -14312,7 +14313,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/corner{
-	dir = 8
+	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -16018,7 +16019,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner{
-	dir = 1
+	dir = 8
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -16235,7 +16236,6 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/item/radio/headset/headset_medsci,
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
 	},
@@ -16860,7 +16860,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/corner{
-	dir = 8
+	dir = 4
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "floor"
@@ -17974,7 +17974,7 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "Wg" = (
-/mob/living/simple_animal/crab,
+/obj/structure/bed,
 /turf/open/floor/plating/beach/sand,
 /area/centcom/holding/cafepark)
 "Wh" = (
@@ -18931,8 +18931,11 @@
 /area/cruiser_dock/engineering)
 "YO" = (
 /obj/structure/spacevine,
-/obj/structure/mineral_door/wood,
 /obj/structure/fans/tiny/invisible,
+/obj/machinery/door/airlock/wood{
+	id_tag = "ripweapons";
+	name = "Wooden Cabin"
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
 "YP" = (
@@ -19064,15 +19067,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"Zj" = (
-/obj/machinery/computer/med_data{
-	dir = 4;
-	pixel_x = -5
-	},
-/turf/open/indestructible/hoteltile{
-	icon_state = "white"
-	},
-/area/centcom/holding/cafe)
 "Zk" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/ceo)
@@ -55693,7 +55687,7 @@ Vo
 Wi
 Wi
 xY
-Wg
+Um
 jj
 Pf
 Pf
@@ -56975,9 +56969,9 @@ FP
 jj
 Um
 Fh
+Wg
 Um
-Um
-Um
+Wg
 Um
 jj
 Pf
@@ -62850,7 +62844,7 @@ Pf
 qf
 vI
 PB
-Zj
+LN
 Km
 ZY
 qf
@@ -64393,7 +64387,7 @@ qf
 sp
 JA
 It
-Ep
+It
 eW
 sp
 qf
@@ -75962,7 +75956,7 @@ Pf
 Pf
 Pf
 xA
-lb
+Nd
 OY
 IN
 IN
@@ -78796,7 +78790,7 @@ Pf
 xA
 Av
 tF
-tF
+Ep
 tF
 vt
 mk
