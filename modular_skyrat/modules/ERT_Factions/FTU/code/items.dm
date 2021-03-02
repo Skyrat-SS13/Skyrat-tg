@@ -1,6 +1,6 @@
 /obj/item/melee/transforming/energy/sword/ignis
 	name = "\improper FTU 'Ignis' plasma sword"
-	desc = "A mostly ceremonial energy sword seen in the hands of exclusively the highest ranking FTU officers. If you're the guy holding it, you mean business."
+	desc = "An expensive FTU design, the Ignis is one of many prototypes at making an energy sword out of plasma, rather than hardlight. This one has the FTU flag imprinted on its high-quality wooden hilt, and unlike earlier models, can sustain several hits without exhausting its battery. "
 	icon = modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi
 	icon_state = "ignis"
 	icon_state_on = "ignis_active"
@@ -9,13 +9,17 @@
 	force = 3
 	force_on = 48
 	block_chance = 70
+	sharpness = SHARP_EDGED
+	sword_color = null
 	throwforce = 5
 	throwforce_on = 40
 	wound_bonus = 50
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	throw_speed = 10
-	throw_range = 8
+	hitsound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_hit.ogg'
+	on_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_toggle.ogg'
+	throw_speed = 4
+	throw_range = 10
 	w_class = WEIGHT_CLASS_SMALL
 	w_class_on = WEIGHT_CLASS_HUGE
 	armour_penetration = 90
-	attack_verb_on = list("rips", "evaporates", "slices", "tears", "lacerates", "cuts")
+	attack_verb_on = list("rips", "evaporates", "penetrates", "tears", "lacerates", "impales", "masterfully brutalizes")
+	resistance_flags = FIRE_PROOF
