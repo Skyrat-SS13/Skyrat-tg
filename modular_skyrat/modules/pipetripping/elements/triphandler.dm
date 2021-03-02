@@ -1,10 +1,6 @@
 /datum/element/trippipes
 	element_flags = ELEMENT_DETACH
 
-/datum/element/trippipes/Attach(datum/target)
-  if(!ismovable(target))
-    return ELEMENT_INCOMPATIBLE
-
 /datum/element/trippipes/proc/on_examine(list/examine_list)
   examine_list += "<span class='warning'>That pipe looks rather dangerous untiled like that!</span>"
 
