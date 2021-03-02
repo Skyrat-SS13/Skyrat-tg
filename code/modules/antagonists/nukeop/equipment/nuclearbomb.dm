@@ -47,7 +47,6 @@
 		// If we're not exploding, set the alert level back to normal
 		set_safety()
 	GLOB.nuke_list -= src
-	explosion(src, 50, 70, 80, 100, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	QDEL_NULL(countdown)
 	QDEL_NULL(core)
 	. = ..()
