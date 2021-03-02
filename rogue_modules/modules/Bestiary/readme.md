@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/Pending <!--PR Number-->
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/26 <!--PR Number-->
 
 ## Title: <!--Title of your addition-->
 
