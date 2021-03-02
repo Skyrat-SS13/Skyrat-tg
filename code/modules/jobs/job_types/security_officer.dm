@@ -25,10 +25,14 @@
 	bounty_types = CIV_JOB_SEC
 	departments = DEPARTMENT_SECURITY
 
+<<<<<<< HEAD
 /datum/job/officer/get_access()
 	var/list/L = list()
 	L |= ..() | check_config_for_sec_maint()
 	return L
+=======
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+>>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))
 
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 

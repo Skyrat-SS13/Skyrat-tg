@@ -30,6 +30,16 @@
 	bounty_types = CIV_JOB_RANDOM
 	departments = DEPARTMENT_CARGO
 
+<<<<<<< HEAD
+=======
+/datum/job/quartermaster/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
+	..()
+	if(announce_captaincy)
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to extreme staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
+
+	family_heirlooms = list(/obj/item/stamp, /obj/item/stamp/denied)
+
+>>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/qm

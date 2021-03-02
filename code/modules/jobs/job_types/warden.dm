@@ -25,10 +25,14 @@
 	bounty_types = CIV_JOB_SEC
 	departments = DEPARTMENT_SECURITY
 
+<<<<<<< HEAD
 /datum/job/warden/get_access()
 	var/list/L = list()
 	L = ..() | check_config_for_sec_maint()
 	return L
+=======
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
+>>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))
 
 /datum/outfit/job/warden
 	name = "Warden"

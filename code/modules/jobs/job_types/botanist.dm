@@ -17,6 +17,8 @@
 	bounty_types = CIV_JOB_GROW
 	departments = DEPARTMENT_SERVICE
 
+	family_heirlooms = list(/obj/item/cultivator, /obj/item/reagent_containers/glass/bucket, /obj/item/toy/plush/beeplushie)
+
 /datum/outfit/job/botanist
 	name = "Botanist"
 	jobtype = /datum/job/hydro

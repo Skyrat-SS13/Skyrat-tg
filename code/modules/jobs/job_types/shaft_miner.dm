@@ -18,6 +18,8 @@
 	bounty_types = CIV_JOB_MINE
 	departments = DEPARTMENT_CARGO
 
+	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
+
 /datum/outfit/job/miner
 	name = "Shaft Miner"
 	jobtype = /datum/job/mining

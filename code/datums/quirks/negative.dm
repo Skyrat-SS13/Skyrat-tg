@@ -123,20 +123,25 @@
 	desc = "You are the current owner of an heirloom, passed down for generations. You have to keep it safe!"
 	value = -2
 	mood_quirk = TRUE
-	var/obj/item/heirloom
-	var/where
 	medical_record_text = "Patient demonstrates an unnatural attachment to a family heirloom."
 	hardcore_value = 1
+	/// A reference to our heirloom.
+	var/obj/item/heirloom
+	/// Where our heirloom is spawning.
+	var/heirloom_spawn_loc
 
 /datum/quirk/family_heirloom/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
+	/// The quirk holder, casted to human
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	/// The heirloom we will spawn
 	var/obj/item/heirloom_type
 
-	if(ismoth(H) && prob(50))
-		heirloom_type = /obj/item/flashlight/lantern/heirloom_moth
-	else if(isfelinid(H) && prob(50))
-		heirloom_type = /obj/item/toy/cattoy
+	/// The quirk holder's species - we have a 50% chance, if we have a species with a set heirloom, to choose a species heirloom.
+	var/datum/species/holder_species = human_holder.dna?.species
+	if(holder_species && LAZYLEN(holder_species.family_heirlooms) && prob(50))
+		heirloom_type = pick(holder_species.family_heirlooms)
 	else
+<<<<<<< HEAD
 		switch(quirk_holder.mind.assigned_role)
 			//Service jobs
 			if("Clown")
@@ -216,11 +221,17 @@
 			if("Security Sergeant")
 				heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 			//SKYRAT EDIT END
+=======
+		/// Our quirk holder's job
+		var/datum/job/holder_job = SSjob.GetJob(human_holder.mind?.assigned_role)
+		if(holder_job && LAZYLEN(holder_job.family_heirlooms))
+			heirloom_type = pick(holder_job.family_heirlooms)
+
+	// If we didn't find an heirloom somehow, throw them a generic one
+>>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))
 	if(!heirloom_type)
-		heirloom_type = pick(
-		/obj/item/toy/cards/deck,
-		/obj/item/lighter,
-		/obj/item/dice/d20)
+		heirloom_type = pick(/obj/item/toy/cards/deck, /obj/item/lighter, /obj/item/dice/d20)
+
 	heirloom = new heirloom_type(get_turf(quirk_holder))
 	var/list/slots = list(
 		LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
@@ -228,14 +239,14 @@
 		LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
 		LOCATION_HANDS = ITEM_SLOT_HANDS
 	)
-	where = H.equip_in_one_of_slots(heirloom, slots, FALSE) || "at your feet"
+	heirloom_spawn_loc = human_holder.equip_in_one_of_slots(heirloom, slots, FALSE) || "at your feet"
 
 /datum/quirk/family_heirloom/post_add()
-	if(where == LOCATION_BACKPACK)
+	if(heirloom_spawn_loc == LOCATION_BACKPACK)
 		var/mob/living/carbon/human/H = quirk_holder
 		SEND_SIGNAL(H.back, COMSIG_TRY_STORAGE_SHOW, H)
 
-	to_chat(quirk_holder, "<span class='boldnotice'>There is a precious family [heirloom.name] [where], passed down from generation to generation. Keep it safe!</span>")
+	to_chat(quirk_holder, "<span class='boldnotice'>There is a precious family [heirloom.name] [heirloom_spawn_loc], passed down from generation to generation. Keep it safe!</span>")
 
 	var/list/names = splittext(quirk_holder.real_name, " ")
 	var/family_name = names[names.len]

@@ -35,6 +35,16 @@
 	display_order = JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR
 	bounty_types = CIV_JOB_SCI
 
+<<<<<<< HEAD
+=======
+	family_heirlooms = list(/obj/item/toy/plush/slimeplushie)
+
+/datum/job/research_director/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
+	..()
+	if(announce_captaincy)
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
+
+>>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))
 /datum/outfit/job/rd
 	name = "Research Director"
 	jobtype = /datum/job/rd
