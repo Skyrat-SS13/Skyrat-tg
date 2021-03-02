@@ -88,7 +88,7 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/syndicate/skirt
-	mutant_variants = NONE
+	mutant_variants = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/rank/cargo/tech/skirt
 	mutant_variants = NONE
