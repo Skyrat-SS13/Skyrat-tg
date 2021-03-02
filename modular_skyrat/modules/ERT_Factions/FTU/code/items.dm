@@ -27,11 +27,11 @@
 	
 	///////40x32 R37 PULSE RIFLE
 	/obj/item/gun/ballistic/automatic/pitbull/pulse/r37
-	name = "\improper Xan-Jing 'Killer Hornet' Pulse Rifle"
+	name = "\improper Xan-Jing R37 'Killer Hornet' Pulse Rifle"
 	desc = "A Xan-Jing Armories pulse rifle, nicknamed 'Killer Hornet' by FTU Mercenaries and Expeditioners. This one has an integrated computer that displays an objective compass, ammo counter and comes with a HUD link for easy targetting."
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
-	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/lefthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/lefthand.dmi'
 	inhand_icon_state = "killerhornet_lefthand"
 	icon_state = "killerhornet"
 	worn_icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
@@ -52,6 +52,7 @@
 	armadyne = FALSE
 	can_bayonet = FALSE
 	can_flashlight = TRUE
+	mag_type = /obj/item/ammo_box/magazine/pulse/r37
 	
 	/obj/item/ammo_box/magazine/pulse/r37
 	name = "6.5mm XJP box magazine"
@@ -60,3 +61,41 @@
 	ammo_type = /obj/item/ammo_casing/pulse/65mm
 	caliber = "6.5mm"
 	max_ammo = 36
+	
+	
+	///////40x32 R40 MACHINE GUN
+	/obj/item/gun/ballistic/automatic/pitbull/pulse/r40
+	name = "\improper Xan-Jing R40 'Enforcer' Pulse MMG"
+	desc = "A Xan-Jing Armories medium machine gun, nicknamed 'Enforcer' by FTU Mercenaries and Private Militaries. This one has a custom wood furnishing and its batteries power up the sights."
+	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
+	righthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/righthand.dmi'
+	inhand_icon_state = "enforcer_righthand"
+	icon_state = "enforcer"
+	worn_icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
+	worn_icon_state = "killerhornet_worn"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	mag_type = /obj/item/ammo_box/magazine/pulse/r40
+	fire_delay = 1
+	can_suppress = FALSE
+	burst_size = 8
+	spread = 5
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+	mag_display = TRUE
+	mag_display_ammo = FALSE
+	realistic = TRUE
+	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/r37.ogg'
+	emp_damageable = FALSE
+	armadyne = FALSE
+	can_bayonet = FALSE
+	can_flashlight = TRUE
+	mag_type = /obj/item/ammo_box/magazine/pulse/r40
+	
+	/obj/item/ammo_box/magazine/pulse/r40
+	name = "7.2mm XJP belted box"
+	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/mags.dmi'
+	icon_state = "enforcer"
+	ammo_type = /obj/item/ammo_casing/pulse/72mm
+	caliber = "7.2mm"
+	max_ammo = 140
