@@ -94,6 +94,14 @@
 	if(front_id)
 		. += "<span class='notice'>Alt-click to remove the id.</span>"
 
+<<<<<<< HEAD
+=======
+/obj/item/storage/wallet/get_id_examine_strings(mob/user)
+	. = ..()
+	if(front_id)
+		. += front_id.get_id_examine_strings(user)
+
+>>>>>>> 3df1f0aa699 (Wallets no longer show redundant examine text for ID cards (#57314))
 /obj/item/storage/wallet/GetID()
 	return front_id
 
