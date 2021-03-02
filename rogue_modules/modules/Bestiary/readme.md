@@ -8,6 +8,12 @@ MODULE ID: BESTIARY
 
 The Rogue Life Managerie. Do not feed the animals.
 
+Contains the Following Critters:
+Opposum
+-Poppy
+Red Panda
+-Zesty
+
 <!-- Here, try to describe what your PR does, what features it provides and any other directly useful information -->
 
 ### TG Proc/File Changes:
