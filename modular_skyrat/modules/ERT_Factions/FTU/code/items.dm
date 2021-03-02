@@ -85,7 +85,7 @@
 	mag_display = TRUE
 	mag_display_ammo = FALSE
 	realistic = TRUE
-	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/r37.ogg'
+	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/r40.ogg'
 	emp_damageable = FALSE
 	armadyne = FALSE
 	can_bayonet = FALSE
@@ -99,3 +99,32 @@
 	ammo_type = /obj/item/ammo_casing/pulse/72mm
 	caliber = "7.2mm"
 	max_ammo = 140
+	
+	//////////12.7 SAPHE GOLDEN EAGLE
+	/obj/item/gun/ballistic/automatic/pistol/pdh/pulse/golden_eagle
+	name = "\improper FTU PDH-6G 'Sea Serpent' Magnum"
+	desc = "A custom-made high-power combat pistol seen in the hands of high ranking FTU Mercenaries and important executives, with a custom 24-karat gold finish and green laser sight. It has a chinese dragon engraved along its slide."
+	icon_state = "pdh_alt"
+	can_suppress = FALSE
+	mag_display = TRUE
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
+	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
+	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
+	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/pulse/12mm/SAPHE
+	can_suppress = FALSE
+	fire_delay = 6
+	fire_sound_volume = 110
+	rack_sound_volume = 110
+	spread = 1
+	realistic = TRUE
+	can_flashlight = FALSE
+	emp_damageable = FALSE
+
+/obj/item/ammo_box/magazine/pulse/12mm/SAPHE
+	name = "12.7x35mm SAP-HE Magnum magazine"
+	icon_state = "50ae"
+	ammo_type = /obj/item/ammo_casing/b12mm
+	caliber = "12mm SAP-HE"
+	max_ammo = 12
