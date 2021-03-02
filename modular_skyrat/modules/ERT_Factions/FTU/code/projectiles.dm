@@ -8,6 +8,14 @@
 	armour_penetration = 40
   damage_type = BRUTE | BURN
   
+  /obj/item/ammo_casing/pulse/65mm
+	name = "6.5mm biodegradable flechette"
+	desc = "A biodegradable 6.5mm pulse flechette, it seems to be encased in some sort of inert battery."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "si-casing"
+	caliber = "6.5mm"
+	projectile_type = /obj/projectile/bullet/pulse/65mm
+  
   
   /obj/projectile/bullet/pulse/72mm
   	name = "7.2mm XJ accelerated Pulse flechette"
@@ -19,6 +27,14 @@
 	armour_penetration = 60
   damage_type = BRUTE | BURN
   
+  /obj/item/ammo_casing/pulse/72mm
+	name = "7.2mm biodegradable flechette"
+	desc = "A biodegradable 7.2mm pulse flechette, it seems to be encased in some sort of inert battery with a heavy base."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "si-casing"
+	caliber = "7.2mm"
+	projectile_type = /obj/projectile/bullet/pulse/72mm
+  
   
   /obj/projectile/bullet/pulse/12mm/SAPHE
   	name = "12.7x35mm Saboted AP-HE bullet"
@@ -29,3 +45,11 @@
 	embedding = list(embed_chance=10, fall_chance=1, jostle_chance=6, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=5, rip_time=80)
 	armour_penetration = 40
   damage_type = BRUTE
+  
+  /obj/item/ammo_casing/pulse/12mm
+	name = "12.7x35mm biodegradable sabot"
+	desc = "A biodegradable .50 pulse sabot, it seems to be encased in some sort of inert battery."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "si-casing"
+	caliber = "12mm SAP-HE"
+	projectile_type = /obj/projectile/bullet/pulse/12mm/SAPHE
