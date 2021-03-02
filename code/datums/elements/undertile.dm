@@ -36,6 +36,7 @@
 	var/turf/T = get_turf(source)
 
 	if(covered)
+		src.RemoveElement(/datum/element/trippipes) //SKYRAT EDIT: Pipe tripping
 		if(invisibility_trait)
 			ADD_TRAIT(source, invisibility_trait, TRAIT_GENERIC)
 		if(tile_overlay)
@@ -46,6 +47,7 @@
 			source.set_anchored(TRUE)
 
 	else
+		src.AddElement(/datum/element/trippipes) //SKYRAT EDIT: Pipe tripping
 		if(invisibility_trait)
 			REMOVE_TRAIT(source, invisibility_trait, TRAIT_GENERIC)
 		if(tile_overlay)
