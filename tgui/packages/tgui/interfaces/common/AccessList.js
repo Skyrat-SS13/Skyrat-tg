@@ -1,52 +1,37 @@
 import { sortBy } from 'common/collections';
-import { useLocalState } from '../../backend';
-import { Button, Flex, Grid, Section, Tabs } from '../../components';
-
-const diffMap = {
-  0: {
-    icon: 'times-circle',
-    color: 'bad',
-  },
-  1: {
-    icon: 'stop-circle',
-    color: null,
-  },
-  2: {
-    icon: 'check-circle',
-    color: 'good',
-  },
-};
+import { useSharedState } from '../../backend';
+import { Button, Flex, Section, Tabs } from '../../components';
 
 export const AccessList = (props, context) => {
   const {
     accesses = [],
+    wildcardSlots = {},
     selectedList = [],
     accessMod,
-    grantAll,
-    denyAll,
-    grantDep,
-    denyDep,
+    trimAccess = [],
+    accessFlags = {},
+    accessFlagNames = {},
+    wildcardFlags = {},
+    extraButtons,
+    showBasic,
   } = props;
-  const [
-    selectedAccessName,
-    setSelectedAccessName,
-  ] = useLocalState(context, 'accessName', accesses[0]?.name);
-  const selectedAccess = accesses
-    .find(access => access.name === selectedAccessName);
-  const selectedAccessEntries = sortBy(
-    entry => entry.desc,
-  )(selectedAccess?.accesses || []);
 
-<<<<<<< HEAD
-  const checkAccessIcon = accesses => {
-    let oneAccess = false;
-    let oneInaccess = false;
-    for (let element of accesses) {
-      if (selectedList.includes(element.ref)) {
-        oneAccess = true;
-=======
+  const [
+    wildcardTab,
+    setWildcardTab,
+  ] = useSharedState(context, "wildcardSelected", showBasic ? "None" : Object.keys(wildcardSlots)[0]);
+
+  let selectedWildcard;
+
+  if ((wildcardTab !== "None") && !wildcardSlots[wildcardTab]) {
+    selectedWildcard = showBasic ? "None" : Object.keys(wildcardSlots)[0];
+    setWildcardTab(selectedWildcard);
+  }
+  else {
+    selectedWildcard = wildcardTab;
+  }
+
   const parsedRegions = [];
-  const selectedTrimAccess = [];
   accesses.forEach(region => {
     const regionName = region.name;
     const regionAccess = region.accesses;
@@ -56,21 +41,6 @@ export const AccessList = (props, context) => {
       hasSelected: false,
       allSelected: true,
     };
-
-    // If we're showing the basic accesses included as part of the trim,
-    // we want to figure out how many are selected for later formatting
-    // logic.
-    if (showBasic) {
-      regionAccess.forEach(access => {
-        if (trimAccess.includes(access.ref)
-          && selectedList.includes(access.ref)
-          && !selectedTrimAccess.includes(access.ref)
-        ) {
-          selectedTrimAccess.push(access.ref);
-        }
-      });
-    }
-
     // If there's no wildcard selected, grab accesses in
     // the trimAccess list as they require no wildcard.
     if (selectedWildcard === "None") {
@@ -97,115 +67,57 @@ export const AccessList = (props, context) => {
     regionAccess.forEach(access => {
       if (trimAccess.includes(access.ref)) {
         return;
->>>>>>> 3e63ce55fa1 (Tweak how the ID Console displays wildcard and trim information. (#57322))
       }
-      else {
-        oneInaccess = true;
+      if (accessFlags[access.ref] & wildcardFlags[selectedWildcard]) {
+        parsedRegion.accesses.push(access);
+        if (selectedList.includes(access.ref)) {
+          parsedRegion.hasSelected = true;
+        }
+        else {
+          parsedRegion.allSelected = false;
+        }
       }
+    });
+    if (parsedRegion.accesses.length) {
+      parsedRegions.push(parsedRegion);
     }
-    if (!oneAccess && oneInaccess) {
-      return 0;
-    }
-    else if (oneAccess && oneInaccess) {
-      return 1;
-    }
-    else {
-      return 2;
-    }
-  };
+  });
 
   return (
     <Section
       title="Access"
-<<<<<<< HEAD
-      buttons={(
-        <>
-          <Button
-            icon="check-double"
-            content="Grant All"
-            color="good"
-            onClick={() => grantAll()} />
-          <Button
-            icon="undo"
-            content="Deny All"
-            color="bad"
-            onClick={() => denyAll()} />
-        </>
-      )}>
-      <Flex>
-=======
       buttons={extraButtons} >
       <Flex wrap="wrap">
         <Flex.Item width="100%">
           <FormatWildcards
             wildcardSlots={wildcardSlots}
             selectedList={selectedList}
-            showBasic={showBasic}
-            basicUsed={selectedTrimAccess.length}
-            basicMax={trimAccess.length} />
+            showBasic={showBasic} />
         </Flex.Item>
->>>>>>> 3e63ce55fa1 (Tweak how the ID Console displays wildcard and trim information. (#57322))
         <Flex.Item>
-          <Tabs vertical>
-            {accesses.map(access => {
-              const entries = access.accesses || [];
-              const icon = diffMap[checkAccessIcon(entries)].icon;
-              const color = diffMap[checkAccessIcon(entries)].color;
-              return (
-                <Tabs.Tab
-                  key={access.name}
-                  altSelection
-                  color={color}
-                  icon={icon}
-                  selected={access.name === selectedAccessName}
-                  onClick={() => setSelectedAccessName(access.name)}>
-                  {access.name}
-                </Tabs.Tab>
-              );
-            })}
-          </Tabs>
+          <RegionTabList
+            accesses={parsedRegions} />
         </Flex.Item>
         <Flex.Item grow={1}>
-          <Grid>
-            <Grid.Column mr={0}>
-              <Button
-                fluid
-                icon="check"
-                content="Grant Region"
-                color="good"
-                onClick={() => grantDep(selectedAccess.regid)} />
-            </Grid.Column>
-            <Grid.Column ml={0}>
-              <Button
-                fluid
-                icon="times"
-                content="Deny Region"
-                color="bad"
-                onClick={() => denyDep(selectedAccess.regid)} />
-            </Grid.Column>
-          </Grid>
-          {selectedAccessEntries.map(entry => (
-            <Button.Checkbox
-              fluid
-              key={entry.desc}
-              content={entry.desc}
-              checked={selectedList.includes(entry.ref)}
-              onClick={() => accessMod(entry.ref)} />
-          ))}
+          <RegionAccessList
+            accesses={parsedRegions}
+            selectedList={selectedList}
+            accessMod={accessMod}
+            trimAccess={trimAccess}
+            accessFlags={accessFlags}
+            accessFlagNames={accessFlagNames}
+            wildcardSlots={wildcardSlots}
+            showBasic={showBasic} />
         </Flex.Item>
       </Flex>
     </Section>
   );
 };
-<<<<<<< HEAD
-=======
 
 export const FormatWildcards = (props, context) => {
   const {
     wildcardSlots = {},
     showBasic,
-    basicUsed = 0,
-    basicMax = 0,
   } = props;
 
   const [
@@ -229,25 +141,22 @@ export const FormatWildcards = (props, context) => {
         <Tabs.Tab
           selected={selectedWildcard === "None"}
           onClick={() => setWildcardTab("None")} >
-          Trim:<br />{basicUsed + "/" + basicMax}
+          Basic
         </Tabs.Tab>
       )}
 
       {Object.keys(wildcardSlots).map(wildcard => {
         const wcObj = wildcardSlots[wildcard];
-        let wcLimit = wcObj.limit;
+        const wcLimit = wcObj.limit;
         const wcUsage = wcObj.usage.length;
         const wcLeft = wcLimit - wcUsage;
-        if (wcLeft < 0) {
-          wcLimit = "∞";
-        }
-        const wcLeftStr = `${wcUsage}/${wcLimit}`;
+        const wcLeftStr = (wcLeft >= 0) ? "" + wcLeft + "/" + wcLimit : "∞";
         return (
           <Tabs.Tab
             key={wildcard}
             selected={selectedWildcard === wildcard}
             onClick={() => setWildcardTab(wildcard)} >
-            {wildcard + ":"}<br />{wcLeftStr}
+            {wildcard + ": " + (wcLeftStr)}
           </Tabs.Tab>
         );
       })}
@@ -362,4 +271,3 @@ const RegionAccessList = (props, context) => {
     })
   );
 };
->>>>>>> 3e63ce55fa1 (Tweak how the ID Console displays wildcard and trim information. (#57322))
