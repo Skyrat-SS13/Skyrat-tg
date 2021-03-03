@@ -25,16 +25,9 @@
 	display_order = JOB_DISPLAY_ORDER_CAPTAIN
 	departments = DEPARTMENT_COMMAND
 
-<<<<<<< HEAD
-/datum/job/captain/get_access()
-	return get_all_accesses()
-
-/datum/job/captain/announce(mob/living/carbon/human/H)
-=======
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/flask/gold)
 
 /datum/job/captain/announce(mob/living/carbon/human/H, announce_captaincy = TRUE)
->>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))
 	..()
 	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Captain [H.real_name] on deck!"))
 
