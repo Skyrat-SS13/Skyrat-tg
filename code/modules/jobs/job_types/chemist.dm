@@ -41,7 +41,4 @@
 
 	chameleon_extras = /obj/item/gun/syringe
 
-<<<<<<< HEAD
-=======
 	id_trim = /datum/id_trim/job/chemist
->>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))

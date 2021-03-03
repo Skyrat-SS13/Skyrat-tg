@@ -1,4 +1,4 @@
-/datum/job/hop
+/datum/job/head_of_personnel
 	title = "Head of Personnel"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list("Captain")
@@ -35,9 +35,9 @@
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"
-	jobtype = /datum/job/hop
+	jobtype = /datum/job/head_of_personnel
 
-	id = /obj/item/card/id/silver
+	id = /obj/item/card/id/advanced/silver
 	belt = /obj/item/pda/heads/hop
 	ears = /obj/item/radio/headset/heads/hop
 	uniform = /obj/item/clothing/under/rank/civilian/head_of_personnel
@@ -53,8 +53,6 @@
 	if(locate(/datum/holiday/ianbirthday) in SSevents.holidays)
 		undershirt = /datum/sprite_accessory/undershirt/ian
 
-<<<<<<< HEAD
-=======
 /obj/item/paper/fluff/ids_for_dummies
 	name = "Memo: New IDs and You"
 	desc = "It looks like this was left by the last Head of Personnel to man this station. It explains some information about new IDs."
@@ -77,4 +75,3 @@
 <li>Don't forget to set a custom occupation! SecHUDs now interface direct with the ID card's trim and display the trim's job icon even when a custom assignment is set.</li>
 </ol>
 	"}
->>>>>>> 54d9ef55f64 (Moves heirloom lists to job/species datums (#57329))

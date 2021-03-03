@@ -1,4 +1,4 @@
-/datum/job/cmo
+/datum/job/chief_medical_officer
 	title = "Chief Medical Officer"
 	department_head = list("Captain")
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
@@ -34,9 +34,9 @@
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
-	jobtype = /datum/job/cmo
+	jobtype = /datum/job/chief_medical_officer
 
-	id = /obj/item/card/id/silver
+	id = /obj/item/card/id/advanced/silver
 	belt = /obj/item/pda/heads/cmo
 	l_pocket = /obj/item/pinpointer/crew
 	ears = /obj/item/radio/headset/heads/cmo
@@ -56,10 +56,12 @@
 
 	chameleon_extras = list(/obj/item/gun/syringe, /obj/item/stamp/cmo)
 
+	id_trim = /datum/id_trim/job/chief_medical_officer
+
 /datum/outfit/job/cmo/hardsuit
 	name = "Chief Medical Officer (Hardsuit)"
 
 	mask = /obj/item/clothing/mask/breath/medical
 	suit = /obj/item/clothing/suit/space/hardsuit/medical
-	suit_store = /obj/item/tank/internals/oxygen
+suit_store = /obj/item/tank/internals/oxygen
 	r_pocket = /obj/item/flashlight/pen/paramedic

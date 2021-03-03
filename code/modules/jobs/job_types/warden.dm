@@ -49,3 +49,4 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
+	id_trim = /datum/id_trim/job/warden

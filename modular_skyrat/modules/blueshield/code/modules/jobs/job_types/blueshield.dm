@@ -16,7 +16,7 @@
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	outfit = /datum/outfit/job/blueshield
 
-	heirloom_type = pick(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"

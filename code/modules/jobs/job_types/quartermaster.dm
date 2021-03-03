@@ -1,4 +1,4 @@
-/datum/job/qm
+/datum/job/quartermaster
 	title = "Quartermaster"
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Captain") //SKYRAT EDIT CHANGE
@@ -12,8 +12,7 @@
 
 	outfit = /datum/outfit/job/quartermaster
 
-	//paycheck = PAYCHECK_MEDIUM //ORIGINAL
-	paycheck = PAYCHECK_COMMAND //SKYRAT EDIT CHANGE
+	paycheck = PAYCHECK_COMMAND //SKYRAT EDIT CHANGE - ORIGINAL: PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CAR
 
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
@@ -31,12 +30,12 @@
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
-	jobtype = /datum/job/qm
+	jobtype = /datum/job/quartermaster
 
 	belt = /obj/item/pda/quartermaster
 	//ears = /obj/item/radio/headset/headset_cargo //ORIGINAL
 	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE
-	id = /obj/item/card/id/silver //SKYRAT EDIT ADDITION
+	id = /obj/item/card/id/advanced/silver //SKYRAT EDIT CHANGE
 	uniform = /obj/item/clothing/under/rank/cargo/qm
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -46,3 +45,4 @@
 
 	chameleon_extras = /obj/item/stamp/qm
 
+	id_trim = /datum/id_trim/job/quartermaster
