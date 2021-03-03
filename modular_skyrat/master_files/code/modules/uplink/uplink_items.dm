@@ -308,7 +308,7 @@
 	name = "Cyborg Ninja bundle"
 	desc = "Become a force of nature with this customized kit featuring next-generation syndicate technology in an efficient package."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/ninja
-	cost = 25
+	cost = 45
 
 /datum/uplink_item/loadout_skyrat/darklord
 	name = "Dark Lord bundle"
