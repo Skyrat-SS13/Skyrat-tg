@@ -22,6 +22,7 @@
 	display_order = JOB_DISPLAY_ORDER_SECURITY_SERGEANT
 	bounty_types = CIV_JOB_SEC
 
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
 /datum/outfit/job/security_sergeant
 	name = "Security Sergeant"
