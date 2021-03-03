@@ -35,8 +35,15 @@
 	icon_living = "poppypossum"
 	icon_dead = "poppypossum_dead"
 	loot = list(/obj/item/clothing/head/hardhat = 1)
-	access_card = null
 
 /mob/living/simple_animal/opossum/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+
+/mob/living/simple_animal/opossum/poppy/Initialize()
+	. = ..()
+	access_card = new /obj/item/card/id(src)
+	var/datum/job/chief_engineer/A = new /datum/job/chief_engineer
+	access_card.access = A.get_access()
+
+	ADD_TRAIT(access_card, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
