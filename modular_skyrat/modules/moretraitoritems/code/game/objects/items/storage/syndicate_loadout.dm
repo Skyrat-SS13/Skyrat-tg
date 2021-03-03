@@ -145,7 +145,6 @@
 	new /obj/item/storage/belt/fannypack/yellow(src)
 	new /obj/item/grenade/spawnergrenade/buzzkill(src)
 	new /obj/item/grenade/spawnergrenade/buzzkill(src)
-	new /obj/item/reagent_containers/glass/bottle/beesease(src)
 	new /obj/item/melee/beesword(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/cryomancer/PopulateContents()
