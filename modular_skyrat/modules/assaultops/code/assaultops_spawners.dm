@@ -262,3 +262,5 @@
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/chiefengineeringofficer
+
+	skillchips = list(/obj/item/skillchip/job/engineer)
