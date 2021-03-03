@@ -275,6 +275,8 @@
 	id = /obj/item/card/id/syndicate_command/chief_engineering_officer
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
+	skillchips = list(/obj/item/skillchip/job/engineer)
+
 /obj/item/card/id/syndicate_command/chief_engineering_officer
 	assignment = "Chief Engineering Officer"
 	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE)
