@@ -51,6 +51,7 @@
 /datum/id_trim/syndicom/assault/chiefengineeringofficer
 	assignment = "Chief Engineering Officer"
 	trim_state = "trim_chiefengineeringofficer"
+	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE)
 
 /datum/id_trim/syndicom/assault/stationadmiral
 	assignment = "Station Admiral"

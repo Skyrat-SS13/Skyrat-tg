@@ -60,7 +60,7 @@
 		/obj/item/melee/baton/loaded
 	)
 /obj/item/card/id/advanced/black/syndicate_command/prison_guard
-	assignment = "Brig Officer"
+	trim = /datum/id_trim/syndicom/assault/brigofficer
 
 /obj/effect/mob_spawn/human/syndicate/assops/prison_warden
 	name = "Syndicate Master At Arms"
@@ -90,7 +90,7 @@
 	)
 
 /obj/item/card/id/advanced/black/syndicate_command/prison_warden
-	assignment = "Master At Arms"
+	trim = /datum/id_trim/syndicom/assault/masteratarms
 
 //SERVICE//
 /obj/effect/mob_spawn/human/syndicate/assops/facility_staff
@@ -112,7 +112,7 @@
 	id = /obj/item/card/id/advanced/black/syndicate_command/facility_staff
 
 /obj/item/card/id/advanced/black/syndicate_command/facility_staff
-	assignment = "Syndicate Staff"
+	trim = /datum/id_trim/syndicom/assault/syndicatestaff
 
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant
 	name = "Syndicate Assistant" //Changing this to 'Syndicate Operative' is a no go, that's nukies.
@@ -132,7 +132,7 @@
 	id = /obj/item/card/id/advanced/black/syndicate_command/assistant
 
 /obj/item/card/id/advanced/black/syndicate_command/assistant
-	assignment = "Operative"
+	trim = /datum/id_trim/syndicom/assault/assistant
 
 //SCIENCE//
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist
@@ -154,7 +154,7 @@
 	id = /obj/item/card/id/advanced/black/syndicate_command/scientist
 
 /obj/item/card/id/advanced/black/syndicate_command/scientist
-	assignment = "Researcher"
+	trim = /datum/id_trim/syndicom/assault/researcher
 
 //MEDICAL//
 /obj/effect/mob_spawn/human/syndicate/assops/station_medical_officer
@@ -176,7 +176,7 @@
 	id = /obj/item/card/id/advanced/black/syndicate_command/medical_officer
 
 /obj/item/card/id/advanced/black/syndicate_command/medical_officer
-	assignment = "Station Medical Officer"
+	trim = /datum/id_trim/syndicom/assault/stationmedicalofficer
 
 //HEADS OF STAFF//
 /obj/effect/mob_spawn/human/syndicate/assops/heads
@@ -208,7 +208,7 @@
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
 
 /obj/item/card/id/advanced/black/syndicate_command/admiral
-	assignment = "Station Admiral"
+	trim = /datum/id_trim/syndicom/assault/stationadmiral
 
 //Chief Master At Arms//
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_master_at_arms
@@ -231,7 +231,7 @@
 	backpack_contents = list(/obj/item/storage/box/handcuffs)
 
 /obj/item/card/id/advanced/black/syndicate_command/chief_master_at_arms
-	assignment = "Chief Master At Arms"
+	trim = /datum/id_trim/syndicom/assault/chiefmasteratarms
 
 //Chief Research Officer//
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_research_officer
@@ -252,7 +252,7 @@
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 /obj/item/card/id/advanced/black/syndicate_command/chief_research_officer
-	assignment = "Chief Research Officer"
+	trim = /datum/id_trim/syndicom/assault/chiefresearchofficer
 
 //Chief Engineering Officer//
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_engineering_officer
@@ -273,5 +273,4 @@
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 /obj/item/card/id/advanced/black/syndicate_command/chief_engineering_officer
-	assignment = "Chief Engineering Officer"
-	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE)
+	trim = /datum/id_trim/syndicom/assault/chiefengineeringofficer
