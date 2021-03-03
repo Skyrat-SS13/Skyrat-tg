@@ -23,26 +23,20 @@
 /obj/item/storage/box/syndicate
 
 /obj/item/storage/box/syndicate/bundle_a/PopulateContents()
-<<<<<<< HEAD
-	//switch (pickweight(list("recon" = 2, "bloodyspai" = 3, "stealth" = 2, "screwed" = 2, "sabotage" = 3, "guns" = 2, "murder" = 2, "implant" = 1, "hacker" = 3, "sniper" = 1, "metaops" = 1))) //ORIGINAL
-	switch (pickweight(list("recon" = 2, "bloodyspai" = 3, "stealth" = 2, "screwed" = 2, "guns" = 2, "murder" = 2, "implant" = 1, "hacker" = 3, "sniper" = 1, "metaops" = 1))) //SKYRAT EDIT CHANGE
-		if("recon")
-=======
 	switch (pickweight(list(
-		KIT_RECON = 2, 
-		KIT_BLOODY_SPAI = 3, 
-		KIT_STEALTHY = 2, 
-		KIT_SCREWED = 2, 
-		KIT_SABOTAGE = 3, 
-		KIT_GUN = 2, 
-		KIT_MURDER = 2, 
-		KIT_IMPLANTS = 1, 
-		KIT_HACKER = 3, 
-		KIT_SNIPER = 1, 
+		KIT_RECON = 2,
+		KIT_BLOODY_SPAI = 3,
+		KIT_STEALTHY = 2,
+		KIT_SCREWED = 2,
+		KIT_SABOTAGE = 0, //SKYRAT EDIT: ORIGINAL: 2
+		KIT_GUN = 2,
+		KIT_MURDER = 2,
+		KIT_IMPLANTS = 1,
+		KIT_HACKER = 3,
+		KIT_SNIPER = 1,
 		KIT_NUKEOPS_METAGAME = 1
 		)))
 		if(KIT_RECON)
->>>>>>> 3d8961cd8c4 (Adds new Special Syndicate Bundle, "Ancient" (#57239))
 			new /obj/item/clothing/glasses/thermal/xray(src) // ~8 tc?
 			new /obj/item/storage/briefcase/launchpad(src) //6 tc
 			new /obj/item/binoculars(src) // 2 tc?
@@ -157,14 +151,14 @@
 			new /obj/item/card/emag/doorjack(src) // 3 tc
 
 /obj/item/storage/box/syndicate/bundle_b/PopulateContents()
-	switch (pickweight(list( 
-		KIT_JAMES_BOND = 2, 
-		KIT_NINJA = 1, 
-		KIT_DARK_LORD = 1, 
-		KIT_WHITE_WHALE_HOLY_GRAIL = 2, 
-		KIT_MAD_SCIENTIST = 2, 
-		KIT_BEES = 1, 
-		KIT_MR_FREEZE = 2, 
+	switch (pickweight(list(
+		KIT_JAMES_BOND = 2,
+		KIT_NINJA = 1,
+		KIT_DARK_LORD = 1,
+		KIT_WHITE_WHALE_HOLY_GRAIL = 2,
+		KIT_MAD_SCIENTIST = 2,
+		KIT_BEES = 1,
+		KIT_MR_FREEZE = 2,
 		KIT_TRAITOR_2006 = 1
 		)))
 		if(KIT_JAMES_BOND)
@@ -238,12 +232,12 @@
 			new /obj/item/dnainjector/cryokinesis(src)
 			new /obj/item/gun/energy/temperature/security(src)
 			new /obj/item/melee/transforming/energy/sword/saber/blue(src) //see see it fits the theme bc its blue and ice is blue
-			
+
 		if(KIT_TRAITOR_2006) //A kit so old, it's probably older than you. //This bundle is filled with the entire unlink contents traitors had access to in 2006, from OpenSS13. Notably the esword was not a choice but existed in code.
 			/obj/item/storage/toolbox/emergency/old/ancientbundle //Items fit neatly into a classic toolbox just to remind you what the theme is.
-		
+
 /obj/item/storage/toolbox/emergency/old/ancientbundle/ //So the subtype works
-		
+
 /obj/item/storage/toolbox/emergency/old/ancientbundle/PopulateContents()
 	new /obj/item/card/emag(src)
 	new /obj/item/pen/sleepy(src)
@@ -632,7 +626,7 @@
 	for(var/i in implants)
 		group.register(i)
 	desc += " The implants are registered to the \"[group.name]\" group."
-	
+
 #undef KIT_RECON
 #undef KIT_BLOODY_SPAI
 #undef KIT_STEALTHY
