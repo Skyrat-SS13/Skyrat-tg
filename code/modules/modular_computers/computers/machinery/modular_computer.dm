@@ -73,11 +73,6 @@
 		. += "bsod"
 		. += "broken"
 
-/// Eats the "source" arg because update_icon actually expects args now.
-/obj/machinery/modular_computer/proc/relay_icon_update(datum/source, updates, updated)
-	SIGNAL_HANDLER
-	return update_icon(updates)
-
 /obj/machinery/modular_computer/AltClick(mob/user)
 	if(cpu)
 		cpu.AltClick(user)

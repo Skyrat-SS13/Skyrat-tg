@@ -110,7 +110,7 @@
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
 	implants = list(/obj/item/implant/mindshield)
-	id = /obj/item/card/id/advanced/armadyne/agent
+	id = /obj/item/card/id/armadyne/corpo
 
 
 /datum/outfit/armadyne_security
@@ -132,40 +132,21 @@
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
 	implants = list(/obj/item/implant/mindshield)
-	id = /obj/item/card/id/advanced/armadyne/security
+	id = /obj/item/card/id/armadyne/corpo/security
 
-/obj/item/card/id/advanced/armadyne
+/obj/item/card/id/armadyne/corpo
 	name = "\improper Armadyne ID"
+	id_type_name = "\improper Armadyne ID"
 	desc = "An Armadyne ID card."
-	icon_state = "card_centcom"
-	worn_icon_state = "card_centcom"
-	assigned_icon_state = "assigned_centcom"
-	registered_age = null
-	trim = /datum/id_trim/centcom/armadyne
-	wildcard_slots = WILDCARD_LIMIT_CENTCOM
-
-/datum/id_trim/centcom/armadyne
-	assignment = "Armadyne Corporate"
-	trim_state = "trim_ert_commander"
-
-/datum/id_trim/centcom/armadyne/New()
-	. = ..()
-	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
-
-/obj/item/card/id/advanced/armadyne/security
+	icon_state = "centcom"
 	registered_name = "Armadyne Corpo"
-	trim = /datum/id_trim/centcom/armadyne/security
+	assignment = "Armadyne Corporate Agent"
+	uses_overlays = FALSE
+	registered_age = null
 
-/datum/id_trim/centcom/armadyne/security
-	assignment = "Armadyne Corporate Security Detail"
-	trim_state = "trim_ert_commander"
-
-/obj/item/card/id/advanced/armadyne/agent
-	trim = /datum/id_trim/centcom/armadyne/agent
-
-/datum/id_trim/centcom/armadyne/agent
-	assignment = "Armadyne Corporate Directorate"
-	trim_state = "trim_ert_commander"
+/obj/item/card/id/armadyne/Initialize(mapload)
+	. = ..()
+	access = get_all_accesses()+get_ert_access("commander")-ACCESS_CHANGE_IDS
 
 /datum/outfit/armadyne_rep/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)

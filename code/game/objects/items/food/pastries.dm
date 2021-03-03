@@ -347,7 +347,6 @@
 	desc = "A delicious and spongy little cake, with berries."
 	tastes = list("muffin" = 3, "berry" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
-	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/muffin/booberry
 	name = "booberry muffin"
@@ -364,7 +363,6 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/protein = 3, /datum/reagent/consumable/nutriment/vitamin = 1)
 	tastes = list("custard" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES
-	venue_value = FOOD_PRICE_NORMAL
 
 ////////////////////////////////////////////WAFFLES////////////////////////////////////////////
 
@@ -627,7 +625,6 @@
 	tastes = list("bun" = 3, "meat" = 2)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
-	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/khachapuri
 	name = "khachapuri"

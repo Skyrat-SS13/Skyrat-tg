@@ -45,7 +45,6 @@
 	icon_state = "breadslice"
 	foodtypes = GRAIN
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	venue_value = FOOD_PRICE_TRASH
 
 /obj/item/food/breadslice/plain/Initialize()
 	. = ..()
@@ -145,7 +144,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/consumable/nutriment/vitamin = 10, /datum/reagent/consumable/nutriment/protein = 10)
 	tastes = list("bread" = 10, "tofu" = 10)
 	foodtypes = GRAIN | VEGETABLES
-	venue_value = FOOD_PRICE_TRASH
+	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/bread/tofu/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/breadslice/tofu, 5, 30)

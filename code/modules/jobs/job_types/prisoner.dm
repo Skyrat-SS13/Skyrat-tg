@@ -19,12 +19,9 @@
 
 	uniform = /obj/item/clothing/under/rank/prisoner
 	shoes = /obj/item/clothing/shoes/sneakers/orange
-	id = /obj/item/card/id/advanced/prisoner
+	id = /obj/item/card/id/prisoner
 	ears = null
 	belt = null
-
-	id_trim = /datum/id_trim/job/prisoner
-
 // SKYRAT EDIT: Start - Adds spawn text to prisoners.
 /datum/job/prisoner/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -33,4 +30,3 @@
 	to_chat(M, "<b>You are a prisoner being held in Space Station 13, awaiting transfer to a secure prison facility or to the courthouse to stand trial.</b>")
 	to_chat(M, "It's up to you to decide why you're in here. Chances are, the case against you might not be strong enough to convict you. Or is it?<br>")
 // SKYRAT EDIT : End - Adds spawn text to prisoners.
-
