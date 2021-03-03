@@ -63,5 +63,5 @@
 
 	mask = /obj/item/clothing/mask/breath/medical
 	suit = /obj/item/clothing/suit/space/hardsuit/medical
-suit_store = /obj/item/tank/internals/oxygen
+	suit_store = /obj/item/tank/internals/oxygen
 	r_pocket = /obj/item/flashlight/pen/paramedic
