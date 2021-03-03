@@ -17,7 +17,7 @@
 	suit_store = /obj/item/tank/internals/emergency_oxygen/double
 	belt = /obj/item/storage/belt/security/full
 	l_hand = /obj/item/gun/energy/pulse/carbine/loyalpin //if this is still bulky make it not bulky and storable on belt/back/bag/exosuit
-	id = /obj/item/card/id/ert
+	id = /obj/item/card/id/advanced/centcom/ert
 	ears = /obj/item/radio/headset/headset_cent/alt
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
@@ -35,8 +35,6 @@
 	Radio.set_frequency(FREQ_CENTCOM)
 	Radio.freqlock = TRUE
 	var/obj/item/card/id/ID = person.wear_id
-	ID.access = get_all_accesses()//They get full station access.
-	ID.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
 	ID.assignment = "Asset Protection"
 	ID.registered_name = person.real_name
 	ID.update_label()
