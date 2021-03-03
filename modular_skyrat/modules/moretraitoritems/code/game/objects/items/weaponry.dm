@@ -1,2 +1,2 @@
 /obj/item/vibro_weapon/ninjasr
-    block_chance = 20
+    block_chance = 25
