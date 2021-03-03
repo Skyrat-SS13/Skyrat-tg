@@ -22864,7 +22864,9 @@
 /area/hallway/secondary/exit)
 "bjc" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "bje" = (
@@ -23823,6 +23825,11 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/light_switch{
 	pixel_x = 27
+	},
+/obj/machinery/camera{
+	c_tag = "Cloning Laboratory";
+	dir = 8;
+	network = list("ss13","medbay")
 	},
 /turf/open/floor/iron/white,
 /area/medical/genetics/cloning)
@@ -27344,6 +27351,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "faE" = (
@@ -30584,6 +30594,9 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "kxZ" = (
@@ -33944,6 +33957,9 @@
 /obj/machinery/power/apc{
 	name = "Solar Maintenance APC";
 	pixel_y = -24
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars)
