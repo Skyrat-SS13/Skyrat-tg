@@ -16,6 +16,8 @@
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	outfit = /datum/outfit/job/blueshield
 
+	id_trim = /datum/id_trim/job/blueshield
+
 /datum/outfit/job/blueshield
 	name = "Blueshield"
 	jobtype = /datum/job/blueshield
@@ -35,7 +37,7 @@
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/pda/security
 
-	id_trim = /datum/id_trim/job/blueshield
+
 
 /datum/outfit/plasmaman/blueshield
 	name = "Blueshield Plasmaman"
