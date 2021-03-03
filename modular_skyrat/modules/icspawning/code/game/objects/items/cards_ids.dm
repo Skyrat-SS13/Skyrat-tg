@@ -5,7 +5,7 @@
 	icon_state = "card_centcom"
 	worn_icon_state = "card_centcom"
 	assigned_icon_state = "assigned_centcom"
-	trim = /datum/id_trim/admin
+	trim = /datum/id_trim/admin/bst
 	wildcard_slots = WILDCARD_LIMIT_ADMIN
 
 /datum/id_trim/admin/bst
