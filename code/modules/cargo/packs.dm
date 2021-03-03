@@ -331,11 +331,7 @@
 					/obj/item/gun/energy/laser,
 					/obj/item/gun/energy/laser)
 	crate_name = "laser crate"
-<<<<<<< HEAD
 */
-
-=======
->>>>>>> 890615856ef (Fully implements the ID Card design document (#56910))
 
 /datum/supply_pack/security/securitybarriers
 	name = "Security Barrier Grenades"

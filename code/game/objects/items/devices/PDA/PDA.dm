@@ -11,13 +11,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 #define PDA_SCANNER_GAS 5
 #define PDA_SPAM_DELAY     2 MINUTES
 
-<<<<<<< HEAD
 /obj/item/pda//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-	name = "\improper PDA"
-=======
-/obj/item/pda
 	name = "\improper standard PDA"
->>>>>>> 890615856ef (Fully implements the ID Card design document (#56910))
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"

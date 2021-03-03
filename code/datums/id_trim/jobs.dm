@@ -69,7 +69,7 @@
 	if(CONFIG_GET(flag/assistants_have_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
 
-/datum/id_trim/job/atmospheric_technician
+/datum/id_trim/job/atmospheric_technician //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
 	assignment = "Atmospheric Technician"
 	trim_state = "trim_atmospherictechnician"
 	access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
@@ -211,7 +211,7 @@
 	config_job = "geneticist"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/head_of_personnel
+/datum/id_trim/job/head_of_personnel //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
 	assignment = "Head of Personnel"
 	trim_state = "trim_headofpersonnel"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
@@ -233,7 +233,7 @@
 	config_job = "head_of_personnel"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/head_of_security
+/datum/id_trim/job/head_of_security //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
 	assignment = "Head of Security"
 	trim_state = "trim_headofsecurity"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY,
@@ -340,7 +340,7 @@
 	config_job = "psychologist"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CMO, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/quartermaster
+/datum/id_trim/job/quartermaster //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
 	assignment = "Quartermaster"
 	trim_state = "trim_quartermaster"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_VAULT, ACCESS_AUX_BASE)
@@ -389,7 +389,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 
 /// Sec officers have departmental variants. They each have their own trims with bonus departmental accesses.
-/datum/id_trim/job/security_officer
+/datum/id_trim/job/security_officer //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
 	assignment = "Security Officer"
 	trim_state = "trim_securityofficer"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MECH_SECURITY, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM)

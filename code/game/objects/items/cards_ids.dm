@@ -865,18 +865,25 @@
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	registered_name = "Scum"
 	registered_age = null
-<<<<<<< HEAD
+	trim = /datum/id_trim/job/prisoner
+
+	wildcard_slots = WILDCARD_LIMIT_PRISONER
+
+	/// Number of gulag points required to earn freedom.
+	var/goal = 0
+	/// Number of gulag points earned.
+	var/points = 0
 	// SKYRAT EDIT: Start - Genpop IDs
 	access = list(ACCESS_ENTER_GENPOP)
 	var/sentence = 0	//When world.time is greater than this number, the card will have its ACCESS_ENTER_GENPOP access replaced with ACCESS_LEAVE_GENPOP the next time it's checked, unless this value is 0/null
 	var/crime= "\[REDACTED\]"
 
-/obj/item/card/id/prisoner/GetAccess()
+/obj/item/card/id/advanced/prisoner/GetAccess()
 	if((sentence && world.time >= sentence) || (goal && points >= goal))
 		access = list(ACCESS_LEAVE_GENPOP)
 	return ..()
 
-/obj/item/card/id/prisoner/examine(mob/user)
+/obj/item/card/id/advanced/prisoner/examine(mob/user)
 	. = ..()
 	if(sentence && world.time < sentence)
 		to_chat(user, "<span class='notice'>You're currently serving a sentence for [crime]. <b>[DisplayTimeText(sentence - world.time)]</b> left.</span>")
@@ -886,23 +893,8 @@
 		to_chat(user, "<span class='warning'>You are currently serving a permanent sentence for [crime].</span>")
 	else
 		to_chat(user, "<span class='notice'>Your sentence is up! You're free!</span>")
-/*
-/obj/item/card/id/prisoner/attack_self(mob/user)
-=======
-	trim = /datum/id_trim/job/prisoner
 
-	wildcard_slots = WILDCARD_LIMIT_PRISONER
-
-	/// Number of gulag points required to earn freedom.
-	var/goal = 0
-	/// Number of gulag points earned.
-	var/points = 0
-
-/obj/item/card/id/advanced/prisoner/attack_self(mob/user)
->>>>>>> 890615856ef (Fully implements the ID Card design document (#56910))
-	to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
-*/
-/obj/item/card/id/prisoner/process()
+/obj/item/card/id/advanced/prisoner/process()
 	if(!sentence)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -918,6 +910,9 @@
 		STOP_PROCESSING(SSobj, src)
 	return
 	// SKYRAT EDIT: End - Genpop IDs
+
+/obj/item/card/id/advanced/prisoner/attack_self(mob/user)
+	to_chat(usr, "<span class='notice'>You have accumulated [points] out of the [goal] points you need for freedom.</span>")
 
 /obj/item/card/id/advanced/prisoner/one
 	name = "Prisoner #13-001"
