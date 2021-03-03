@@ -31,10 +31,7 @@
 	name = "Syndicate Prisoner"
 	uniform = /obj/item/clothing/under/rank/prisoner
 	shoes = /obj/item/clothing/shoes/sneakers/orange
-	id = /obj/item/card/id/prisoner/syndicate
-
-/obj/item/card/id/prisoner/syndicate
-	assignment = "Syndicate Prisoner"
+	id = /obj/item/card/id/advanced/prisoner
 
 //SECURITY//
 /obj/effect/mob_spawn/human/syndicate/assops/prison_guard
@@ -56,13 +53,13 @@
 	back = /obj/item/storage/backpack
 	belt = /obj/item/storage/belt/security/full
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate_command/prison_guard
+	id = /obj/item/card/id/advanced/black/syndicate_command/prison_guard
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
 		/obj/item/melee/baton/loaded
 	)
-/obj/item/card/id/syndicate_command/prison_guard
+/obj/item/card/id/advanced/black/syndicate_command/prison_guard
 	assignment = "Brig Officer"
 
 /obj/effect/mob_spawn/human/syndicate/assops/prison_warden
@@ -85,14 +82,14 @@
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
 	belt = /obj/item/storage/belt/security/full
-	id = /obj/item/card/id/syndicate_command/prison_warden
+	id = /obj/item/card/id/advanced/black/syndicate_command/prison_warden
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
 		/obj/item/melee/baton/loaded
 	)
 
-/obj/item/card/id/syndicate_command/prison_warden
+/obj/item/card/id/advanced/black/syndicate_command/prison_warden
 	assignment = "Master At Arms"
 
 //SERVICE//
@@ -112,9 +109,9 @@
 	ears = /obj/item/radio/headset/assault
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate_command/facility_staff
+	id = /obj/item/card/id/advanced/black/syndicate_command/facility_staff
 
-/obj/item/card/id/syndicate_command/facility_staff
+/obj/item/card/id/advanced/black/syndicate_command/facility_staff
 	assignment = "Syndicate Staff"
 
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant
@@ -132,9 +129,9 @@
 	ears = /obj/item/radio/headset/assault
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate_command/assistant
+	id = /obj/item/card/id/advanced/black/syndicate_command/assistant
 
-/obj/item/card/id/syndicate_command/assistant
+/obj/item/card/id/advanced/black/syndicate_command/assistant
 	assignment = "Operative"
 
 //SCIENCE//
@@ -154,9 +151,9 @@
 	ears = /obj/item/radio/headset/assault
 	back = /obj/item/storage/backpack
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate_command/scientist
+	id = /obj/item/card/id/advanced/black/syndicate_command/scientist
 
-/obj/item/card/id/syndicate_command/scientist
+/obj/item/card/id/advanced/black/syndicate_command/scientist
 	assignment = "Researcher"
 
 //MEDICAL//
@@ -176,9 +173,9 @@
 	ears = /obj/item/radio/headset/assault
 	back = /obj/item/storage/backpack/medic
 	implants = list(/obj/item/implant/weapons_auth)
-	id = /obj/item/card/id/syndicate_command/medical_officer
+	id = /obj/item/card/id/advanced/black/syndicate_command/medical_officer
 
-/obj/item/card/id/syndicate_command/medical_officer
+/obj/item/card/id/advanced/black/syndicate_command/medical_officer
 	assignment = "Station Medical Officer"
 
 //HEADS OF STAFF//
@@ -207,10 +204,10 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack
-	id = /obj/item/card/id/syndicate_command/admiral
+	id = /obj/item/card/id/advanced/black/syndicate_command/admiral
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
 
-/obj/item/card/id/syndicate_command/admiral
+/obj/item/card/id/advanced/black/syndicate_command/admiral
 	assignment = "Station Admiral"
 
 //Chief Master At Arms//
@@ -230,10 +227,10 @@
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/security
 	belt = /obj/item/storage/belt/security/full
-	id = /obj/item/card/id/syndicate_command/chief_master_at_arms
+	id = /obj/item/card/id/advanced/black/syndicate_command/chief_master_at_arms
 	backpack_contents = list(/obj/item/storage/box/handcuffs)
 
-/obj/item/card/id/syndicate_command/chief_master_at_arms
+/obj/item/card/id/advanced/black/syndicate_command/chief_master_at_arms
 	assignment = "Chief Master At Arms"
 
 //Chief Research Officer//
@@ -251,10 +248,10 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/science
-	id = /obj/item/card/id/syndicate_command/chief_research_officer
+	id = /obj/item/card/id/advanced/black/syndicate_command/chief_research_officer
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
-/obj/item/card/id/syndicate_command/chief_research_officer
+/obj/item/card/id/advanced/black/syndicate_command/chief_research_officer
 	assignment = "Chief Research Officer"
 
 //Chief Engineering Officer//
@@ -272,9 +269,9 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack/industrial
-	id = /obj/item/card/id/syndicate_command/chief_engineering_officer
+	id = /obj/item/card/id/advanced/black/syndicate_command/chief_engineering_officer
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
-/obj/item/card/id/syndicate_command/chief_engineering_officer
+/obj/item/card/id/advanced/black/syndicate_command/chief_engineering_officer
 	assignment = "Chief Engineering Officer"
 	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE)
