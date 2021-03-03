@@ -116,15 +116,11 @@
 #define ui_borg_store "CENTER+2:16,SOUTH:5"
 #define ui_borg_camera "CENTER+3:21,SOUTH:5"
 #define ui_borg_alerts "CENTER+4:21,SOUTH:5"
-<<<<<<< HEAD
-#define ui_borg_language_menu "CENTER+4:21,SOUTH+1:5"
+#define ui_borg_language_menu "CENTER+4:19,SOUTH+1:6"
 // SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
 #define ui_borg_pda_send "CENTER+5:21,SOUTH:5" // To the right of the alert panel
 #define ui_borg_pda_log "CENTER+6:21,SOUTH:5"
 // SKYRAT EDIT ADDITION END
-=======
-#define ui_borg_language_menu "CENTER+4:19,SOUTH+1:6"
->>>>>>> 6cee74d3476 (HUD cleanup and fixes (#57297))
 
 //Aliens
 #define ui_alien_health "EAST,CENTER-1:15"
