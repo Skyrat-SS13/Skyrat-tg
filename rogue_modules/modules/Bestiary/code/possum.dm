@@ -40,10 +40,9 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
-/mob/living/simple_animal/opossum/poppy/Initialize()
+/* /mob/living/simple_animal/opossum/poppy/Initialize()
 	. = ..()
-	access_card = new /obj/item/card/id(src)
-	var/datum/job/chief_engineer/A = new /datum/job/chief_engineer
-	access_card.access = A.get_access()
+	var/datum/id_trim/job/engi_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/station_engineer]
+	access_card.add_access(engi_trim.access + engi_trim.wildcard_access)
 
-	ADD_TRAIT(access_card, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
+	ADD_TRAIT(access_card, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT) */
