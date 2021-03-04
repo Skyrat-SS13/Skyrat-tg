@@ -17,7 +17,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pda"
 	inhand_icon_state = "electronic"
-	worn_icon_state = "pda"
+	worn_icon = 'modular_skyrat/modules/customization/icons/obj/blank.dmi' //SKYRAT EDIT: ADDITION
+	worn_icon_state = "none" //SKYRAT EDIT: ORIGINAL ("pda")
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 	item_flags = NOBLUDGEON

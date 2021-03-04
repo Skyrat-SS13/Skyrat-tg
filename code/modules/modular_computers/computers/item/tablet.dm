@@ -6,7 +6,8 @@
 	icon_state_powered = "tablet-red"
 	icon_state_menu = "menu"
 	base_icon_state = "tablet"
-	worn_icon_state = "tablet"
+	worn_icon = 'modular_skyrat/modules/customization/icons/obj/blank.dmi' //SKYRAT EDIT: ADDITION
+	worn_icon_state =  "none" //SKYRAT EDIT: ORIGINAL ("tablet")
 	hardware_flag = PROGRAM_TABLET
 	max_hardware_size = 1
 	w_class = WEIGHT_CLASS_SMALL
