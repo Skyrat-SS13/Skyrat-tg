@@ -19,7 +19,7 @@
 
 	gunner.put_in_hands(test_gun, forced=TRUE)
 	//SKYRAT EDIT ADDITION BEGIN
-	if(test_gun.has_safety)
+	if(test_gun.has_gun_safety)
 		test_gun.toggle_safety(gunner)
 	//SKYRAT EDIT ADDITION END
 	gunner.set_combat_mode(FALSE) // just to make sure we know we're not trying to pistol-whip them
