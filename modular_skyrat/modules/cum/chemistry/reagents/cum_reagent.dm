@@ -18,6 +18,9 @@
 		exposed_mob.visible_message("<span class='warning'>[exposed_mob] has been covered in cum!</span>", "<span class='userdanger'>You've been covered in cum!</span>")
 		playsound(exposed_mob, "desecration", 50, TRUE)
 		if(is_type_in_typecache(exposed_mob, GLOB.creamable))
-			exposed_mob.AddComponent(/datum/component/cumfaced, src)
+			if(reac_volume>10)
+				exposed_mob.AddComponent(/datum/component/cumfaced/big, src)
+			else
+				exposed_mob.AddComponent(/datum/component/cumfaced, src)
 		qdel(src)
 	}

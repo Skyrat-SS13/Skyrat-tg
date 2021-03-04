@@ -58,3 +58,43 @@
 	if(!(clean_types & CLEAN_TYPE_BLOOD))
 		qdel(src)
 		return COMPONENT_CLEANED
+
+/datum/component/cumfaced/big
+	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
+
+	var/mutable_appearance/bigcumface
+
+/datum/component/cumfaced/big/Initialize()
+	if(!is_type_in_typecache(parent, GLOB.creamable))
+		return COMPONENT_INCOMPATIBLE
+
+	SEND_SIGNAL(parent, COMSIG_MOB_CUMFACED)
+
+	bigcumface = mutable_appearance('modular_skyrat/modules/cum/bigcumface.dmi')
+
+	if(ishuman(parent))
+		var/mob/living/carbon/human/H = parent
+		if(H.dna.species.limbs_id == "lizard")
+			bigcumface.icon_state = "cumface_lizard"
+		else if(H.dna.species.limbs_id == "monkey")
+			bigcumface.icon_state = "cumface_monkey"
+		else if(H.dna.species.id == "vox")
+			bigcumface.icon_state = "cumface_vox"
+		else if(H.dna.species.mutant_bodyparts["snout"])
+			bigcumface.icon_state = "cumface_lizard"
+		else
+			bigcumface.icon_state = "cumface_human"
+//	else if(iscorgi(parent))
+//		creamface.icon_state = "cumface_corgi"
+//im not fucking letting people cum on the corgi
+	else if(isAI(parent))
+		bigcumface.icon_state = "cumface_ai"
+
+	var/atom/A = parent
+	A.add_overlay(bigcumface)
+
+/datum/component/cumfaced/big/Destroy(force, silent)
+	var/atom/A = parent
+	A.cut_overlay(bigcumface)
+	qdel(bigcumface)
+	return ..()
