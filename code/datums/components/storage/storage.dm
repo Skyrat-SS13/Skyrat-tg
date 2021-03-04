@@ -558,6 +558,12 @@
 
 	set waitfor = FALSE
 	. = COMPONENT_NO_MOUSEDROP
+	//SKYRAT EDIT ADDITON START - ITEM_OUTLINE
+	var/atom/A = parent
+	if(istype(A, /obj/item))
+		var/obj/item/I = A
+		I.remove_outline()	//Removes the outline when we drag
+	//SKRYAT EDIT END
 	if(!ismob(M))
 		return
 	if(!over_object)
@@ -566,7 +572,7 @@
 		return
 	if(M.incapacitated() || !M.canUseStorage())
 		return
-	var/atom/A = parent
+	//var/atom/A = parent SKYRAT EDIT REMOVAL
 	A.add_fingerprint(M)
 	// this must come before the screen objects only block, dunno why it wasn't before
 	if(over_object == M)
