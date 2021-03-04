@@ -658,60 +658,7 @@
 		expose_temperature(owner.bodytemperature, 0.25)
 	var/need_mob_update = FALSE
 	for(var/datum/reagent/reagent as anything in cached_reagents)
-<<<<<<< HEAD
-		if(QDELETED(reagent.holder))
-			continue
-
-		if(!owner)
-			owner = reagent.holder.my_atom
-
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(ishuman(owner))
-			var/mob/living/carbon/human/H = owner
-			//Check if this mob's species is set and can process this type of reagent
-			var/can_process = FALSE
-			//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
-			if(H.dna && H.dna.species.reagent_flags)
-				var/owner_flags = H.dna.species.reagent_flags
-				if((reagent.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
-					can_process = TRUE
-				if((reagent.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
-					can_process = TRUE
-
-			//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
-			if(!can_process)
-				reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-				continue
-		//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
-		else
-			if(reagent.process_flags == REAGENT_SYNTHETIC)
-				reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-				continue
-		//SKYRAT EDIT ADDITION END
-
-		if(owner && reagent)
-			if(owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
-				if(liverless && !reagent.self_consuming) //need to be metabolized
-					continue
-				if(!reagent.metabolizing)
-					reagent.metabolizing = TRUE
-					reagent.on_mob_metabolize(owner)
-				if(can_overdose)
-					if(reagent.overdose_threshold)
-						if(reagent.volume >= reagent.overdose_threshold && !reagent.overdosed)
-							reagent.overdosed = TRUE
-							need_mob_update += reagent.overdose_start(owner)
-							log_game("[key_name(owner)] has started overdosing on [reagent.name] at [reagent.volume] units.")
-					for(var/addiction in reagent.addiction_types)
-						owner.mind?.add_addiction_points(addiction, reagent.addiction_types[addiction] * REAGENTS_METABOLISM)
-
-					if(reagent.overdosed)
-						need_mob_update += reagent.overdose_process(owner, delta_time, times_fired)
-
-				need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
-=======
 		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose, liverless)
->>>>>>> 9aae9c68f5b (Tweaks cryostylane to use the new reaction mechanics, incorporating stasis iceblocks, freezing, temporary organ decay prevention and surgery speed modifiers. (#57315))
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
 		owner.update_stamina()
@@ -734,6 +681,30 @@
 
 	if(!owner)
 		owner = reagent.holder.my_atom
+
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		//Check if this mob's species is set and can process this type of reagent
+		var/can_process = FALSE
+		//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
+		if(H.dna && H.dna.species.reagent_flags)
+			var/owner_flags = H.dna.species.reagent_flags
+			if((reagent.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+				can_process = TRUE
+			if((reagent.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+				can_process = TRUE
+
+		//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
+		if(!can_process)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			continue
+	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+	else
+		if(reagent.process_flags == REAGENT_SYNTHETIC)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			continue
+	//SKYRAT EDIT ADDITION END
 
 	if(owner && reagent)
 		if(!owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
