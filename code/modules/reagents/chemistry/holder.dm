@@ -698,12 +698,12 @@
 		//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
 		if(!can_process)
 			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-			continue
+			return
 	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
 	else
 		if(reagent.process_flags == REAGENT_SYNTHETIC)
 			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-			continue
+			return
 	//SKYRAT EDIT ADDITION END
 
 	if(owner && reagent)
