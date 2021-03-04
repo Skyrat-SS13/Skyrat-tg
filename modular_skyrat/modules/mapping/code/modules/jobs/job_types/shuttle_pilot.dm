@@ -45,6 +45,7 @@
 	implants = list(/obj/item/implant/mindshield)
 
 	id_trim = /datum/id_trim/job/captain/shuttle_pilot
+
 /datum/outfit/plasmaman/shuttlepilot
 	name = "Shuttle Pilot Plasmaman"
 
