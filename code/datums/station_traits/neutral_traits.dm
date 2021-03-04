@@ -63,4 +63,4 @@
 /datum/station_trait/announcement_intern/New()
 	. = ..()
 	SSstation.announcer = /datum/centcom_announcer/intern
-*/ SKYRAT EDIT END.
+*/ //SKYRAT EDIT END.
