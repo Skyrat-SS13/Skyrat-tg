@@ -10,8 +10,11 @@
 
 /datum/reagent/cum/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
-	var/turf/T = get_turf(exposed_mob)
-	new/obj/effect/decal/cleanable/cum(T)
-	exposed_mob.adjust_blurriness(1)
-	exposed_mob.visible_message("<span class='warning'>[exposed_mob] has been covered in cum!</span>", "<span class='userdanger'>You've been covered in cum!</span>")
-	playsound(exposed_mob, "desecration", 50, TRUE)
+	if(methods & !(PATCH|VAPOR|INGEST|INJECT))
+	{
+		var/turf/T = get_turf(exposed_mob)
+		new/obj/effect/decal/cleanable/cum(T)
+		exposed_mob.adjust_blurriness(1)
+		exposed_mob.visible_message("<span class='warning'>[exposed_mob] has been covered in cum!</span>", "<span class='userdanger'>You've been covered in cum!</span>")
+		playsound(exposed_mob, "desecration", 50, TRUE)
+	}
