@@ -32,7 +32,11 @@
 	icon_state = "hack_o_lantern"
 
 /obj/item/card/emagfake
+<<<<<<< HEAD
 	desc = "It's a card with a magnetic strip attached to some circuitry." //SKYRAT EDIT
+=======
+	desc = "It's a card with a magnetic strip attached to some circuitry. Closer inspection shows that this card is a poorly made replica, with a \"Donk Co.\" logo stamped on the back."
+>>>>>>> 99ca79822e8 (Standardises Donk Co. stylisation (#57383))
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	inhand_icon_state = "card-id"
