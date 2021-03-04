@@ -103,8 +103,6 @@
 	result = /obj/item/food/butterdog
 	subcategory = CAT_BREAD
 
-<<<<<<< HEAD
-=======
 /datum/crafting_recipe/food/baguette
 	name = "Baguette"
 	time = 40
@@ -153,7 +151,6 @@
 	result = /obj/item/food/twobread
 	subcategory = CAT_BREAD
 
->>>>>>> 96b22aa94d9 (Fix syntax error in recipes_bread.dm (#57439))
 /datum/crafting_recipe/food/moldybread // why would you make this?
 	name = "Moldy Bread"
 	reqs = list(
