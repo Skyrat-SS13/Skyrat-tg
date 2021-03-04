@@ -152,11 +152,17 @@
 /atom/movable/screen/inventory/MouseEntered()
 	..()
 	add_overlays()
+	//SKYRAT EDIT ADDITION START - ITEM_OUTLINE - Apply the outline effect
+	add_stored_outline()
+	//SKYRAT EDIT END
 
 /atom/movable/screen/inventory/MouseExited()
 	..()
 	cut_overlay(object_overlay)
 	QDEL_NULL(object_overlay)
+	//SKYRAT EDIT ADDITION START - ITEM_OUTLINE - Remvoe the outline effect
+	remove_stored_outline()
+	//SKYRAT EDIT END
 
 /atom/movable/screen/inventory/update_icon_state()
 	if(!icon_empty)
