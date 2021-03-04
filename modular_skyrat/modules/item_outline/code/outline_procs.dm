@@ -14,7 +14,7 @@
 			inv_item.remove_outline()
 
 /obj/item/proc/apply_outline(colour = null)
-	if(!(item_flags & IN_INVENTORY || item_flags & IN_STORAGE) || QDELETED(src))
+	if(!Adjacent(usr) || QDELETED(src))
 		return
 	if(usr.client)
 		if(!usr.client.prefs.outline_enabled)
