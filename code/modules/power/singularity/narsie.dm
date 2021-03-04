@@ -232,16 +232,11 @@
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/cult_ending_helper, 2), 2 SECONDS)
 		return
 	priority_announce("Simulations on acausal dimensional event complete. Deploying solution package now. Deployment ETA: ONE MINUTE. ","Central Command Higher Dimensional Affairs")
-<<<<<<< HEAD
-	sleep(50)
-	set_security_level("gamma") //SKYRAT EDIT CHANGE - ALERTS - ORIGINAL "delta"
-=======
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/narsie_start_destroy_station), 5 SECONDS)
 
 ///security level and shuttle lockdowns for [/proc/begin_the_end()]
 /proc/narsie_start_destroy_station()
-	set_security_level("delta")
->>>>>>> fbf80847dcc (Remove narnar sleeps (#57353))
+	set_security_level("gamma") //SKYRAT EDIT CHANGE - ALERTS - ORIGINAL "delta"
 	SSshuttle.registerHostileEnvironment(GLOB.cult_narsie)
 	SSshuttle.lockdown = TRUE
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/narsie_apocalypse), 1 MINUTES)
