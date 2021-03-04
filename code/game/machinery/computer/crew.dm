@@ -38,10 +38,18 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Head of Security" = 10,
 		"Warden" = 11,
 		"Security Officer" = 12,
+<<<<<<< HEAD
 		"Detective" = 13,
 		"Security Medic" = 14, //SKYRAT EDIT ADDITION - SEC_HAUL
 		"Security Sergeant" = 15, //SKYRAT EDIT ADDITION - SEC_HAUL
 		"Blueshield" = 16,
+=======
+		"Security Officer (Medical)" = 13,
+		"Security Officer (Engineering)" = 14,
+		"Security Officer (Science)" = 15,
+		"Security Officer (Cargo)" = 16,
+		"Detective" = 17,
+>>>>>>> 21ff013ad0b (Update crew monitor job definitions (#57332))
 		// 20-29: Medbay
 		"Chief Medical Officer" = 20,
 		"Chemist" = 21,
