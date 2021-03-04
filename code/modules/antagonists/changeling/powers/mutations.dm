@@ -155,7 +155,7 @@
 	righthand_file = 'icons/mob/inhands/antag/changeling_righthand.dmi'
 	item_flags = NEEDS_PERMIT | ABSTRACT | DROPDEL
 	w_class = WEIGHT_CLASS_HUGE
-	force = 25
+	force = 30 //SKYRAT EDIT - ORIGINAL: 25
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0
@@ -163,8 +163,8 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
-	wound_bonus = -20
-	bare_wound_bonus = 20
+	wound_bonus = 20 //SKYRAT EDIT - ORIGINAL: -20
+	bare_wound_bonus = 30 //SKYRAT EDIT: ORIGINAL: 20
 	var/can_drop = FALSE
 	var/fake = FALSE
 
@@ -267,7 +267,7 @@
 	to_chat(user, "<span class='warning'>The [name] is not ready yet.</span>")
 
 /obj/item/gun/magic/tentacle/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
-	var/obj/projectile/tentacle/tentacle_shot = chambered.BB //Gets the actual projectile we will fire
+	var/obj/projectile/tentacle/tentacle_shot = chambered.loaded_projectile //Gets the actual projectile we will fire
 	tentacle_shot.fire_modifiers = params2list(params)
 	. = ..()
 	if(charges == 0)
@@ -465,7 +465,7 @@
 	helmet_type = /obj/item/clothing/head/helmet/space/changeling
 	suit_name_simple = "flesh shell"
 	helmet_name_simple = "space helmet"
-	recharge_slowdown = 0.5
+	recharge_slowdown = 0.25
 	blood_on_castoff = 1
 
 /obj/item/clothing/suit/space/changeling
@@ -520,7 +520,7 @@
 	chemical_cost = 20
 	dna_cost = 1
 	req_human = 1
-	recharge_slowdown = 0.25
+	recharge_slowdown = 0.125
 
 	suit_type = /obj/item/clothing/suit/armor/changeling
 	helmet_type = /obj/item/clothing/head/helmet/changeling

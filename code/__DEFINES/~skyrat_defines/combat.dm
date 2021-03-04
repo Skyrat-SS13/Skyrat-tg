@@ -118,7 +118,7 @@
 					var/time_doing = 4 SECONDS
 					if(target.stat != CONSCIOUS)
 						time_doing = 2 SECONDS
-						target.visible_message("<span class='danger'>[user.name] holds [target.name]'s tight and slams it down!</span>", ignored_mobs=user)
+						target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head tight and slams it down!</span>", ignored_mobs=user)
 						to_chat(user, "<span class='danger'>You grasp [target.name]'s head and slam it down!</span>")
 					else
 						target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!</span>", \
@@ -133,7 +133,7 @@
 
 						target.visible_message("<span class='danger'>[user.name] violently slams [target.name]'s head into the floor!</span>", \
 							"<span class='userdanger'>[user.name] slams your head against the floor[head_knock ? ", knocking you out cold" : ""]!</span>", ignored_mobs=user)
-						to_chat(user, "<span class='danger'>You slam [target.name] head against the floor[head_knock ? ", knocking him out cold" : ""]!</span>")
+						to_chat(user, "<span class='danger'>You slam [target.name] head against the floor[head_knock ? ", knocking [target.p_them()] out cold" : ""]!</span>")
 
 						//Check to see if our head is protected by atleast 20 melee armor
 						if(head_knock)
@@ -152,8 +152,8 @@
 				//Chokehold
 				. = TRUE
 				user.changeNext_move(1.5 SECONDS)
-				target.visible_message("<span class='danger'>[user.name] wraps his arm around [target.name]'s neck and chokes him!</span>", \
-						"<span class='userdanger'>[user.name] wraps his arm around your neck and chokes you!</span>", ignored_mobs=user)
+				target.visible_message("<span class='danger'>[user.name] wraps [user.p_their()] arm around [target.name]'s neck and chokes [target.p_them()]!</span>", \
+						"<span class='userdanger'>[user.name] wraps [user.p_their()] arm around your neck and chokes you!</span>", ignored_mobs=user)
 				to_chat(user, "<span class='danger'>You lock [target.name]'s neck with your arm and begin to choke [target.p_them()]...</span>")
 				if(do_mob(user, target, 1.5 SECONDS))
 					var/in_progress = TRUE
@@ -172,9 +172,9 @@
 				//Suplex!
 				. = TRUE
 				user.changeNext_move(3 SECONDS)
-				target.visible_message("<span class='danger'>[user.name] holds [target.name] tight and starts lifting him up!</span>", \
+				target.visible_message("<span class='danger'>[user.name] holds [target.name] tight and starts lifting [target.p_them()] up!</span>", \
 						"<span class='userdanger'>[user.name] holds you tight and lifts you up!</span>", ignored_mobs=user)
-				to_chat(user, "<span class='danger'>You hold [target.name] tight and lift him up...</span>")
+				to_chat(user, "<span class='danger'>You hold [target.name] tight and lift [target.p_them()] up...</span>")
 				if(do_mob(user, target, 3 SECONDS))
 					var/move_dir = get_dir(target, user)
 					var/moved_turf = get_turf(target)

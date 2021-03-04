@@ -102,11 +102,12 @@
 	. = ..()
 	pixel_x = base_pixel_x + rand(-9, 9)
 	pixel_y = base_pixel_y + rand(-8, 8)
-	update_icon()
+	update_appearance()
 
 /obj/item/paper/update_icon_state()
 	if(info && show_written_words)
 		icon_state = "[initial(icon_state)]_words"
+	return ..()
 
 /obj/item/paper/verb/rename()
 	set name = "Rename paper"
@@ -197,7 +198,11 @@
 		SStgui.close_uis(src)
 		return
 
-	if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
+	// Enable picking paper up by clicking on it with the clipboard or folder
+	if(istype(P, /obj/item/clipboard) || istype(P, /obj/item/folder))
+		P.attackby(src, user)
+		return
+	else if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		if(length(info) >= MAX_PAPER_LENGTH) // Sheet must have less than 1000 charaters
 			to_chat(user, "<span class='warning'>This sheet of paper is full!</span>")
 			return
@@ -338,7 +343,7 @@
 					update_static_data(usr,ui)
 
 
-			update_icon()
+			update_appearance()
 			. = TRUE
 
 /**
@@ -362,9 +367,6 @@
 	icon_state = "scrap"
 	slot_flags = null
 	show_written_words = FALSE
-
-/obj/item/paper/crumpled/update_icon_state()
-	return
 
 /obj/item/paper/crumpled/bloody
 	icon_state = "scrap_bloodied"

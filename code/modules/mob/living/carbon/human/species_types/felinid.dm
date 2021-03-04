@@ -14,6 +14,7 @@
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
 	payday_modifier = 0.75
 	ass_image = 'icons/ass/asscat.png'
+	family_heirlooms = list(/obj/item/toy/cattoy)
 
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
@@ -63,7 +64,7 @@
 			mutantears = /obj/item/organ/ears
 		if(H.dna.features["tail_human"] == "Cat")
 			var/obj/item/organ/tail/cat/tail = new
-			tail.Insert(H, drop_if_replaced = FALSE)
+			tail.Insert(H, special = TRUE, drop_if_replaced = FALSE)
 		else
 			mutant_organs = list()
 	return ..()

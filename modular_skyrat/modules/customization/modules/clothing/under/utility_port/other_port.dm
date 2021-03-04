@@ -127,6 +127,22 @@
 	icon_state = "bathrobe"
 	body_parts_covered = CHEST|GROIN
 
+/obj/item/clothing/suit/costume/samurai
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "samurai armor"
+	desc = "A set of ancient-Japan Samurai armor. Despite being a cheap replica, it's still remarkably heavy."
+	icon_state = "samurai"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/costume/kabuto
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	name = "kabuto"
+	desc = "An ancient-Japan armored helmet - or a replica of one, at least."
+	icon_state = "kabuto"
+	mutant_variants = NONE
+	
 //Victorian Clothes
 /obj/item/clothing/under/costume/vic_vest
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
@@ -167,6 +183,37 @@
 	desc = "A dapper Dutch suit, for when you gotta have faith."
 	icon_state = "dutch"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+
+/obj/item/clothing/suit/costume/tailcoat
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "victorian tailcoat"
+	desc = "A fancy tailcoat to make your suit seem even more lavish."
+	icon_state = "tailcoat"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/costume/vic_dresscoat
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "victorian dresscoat"
+	desc = "An elaborate coat to go over an old-Earth Victorian Period dress. Much thinner fabric than you'd expected."
+	icon_state = "vickyblack"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/costume/vic_dresscoat/red
+	icon_state = "vickyred"
+
+/obj/item/clothing/head/costume/widehat
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	name = "wide black hat"
+	desc = "A fancy old hat to match fancy old dresses."
+	icon_state = "widehat_black"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/costume/widehat/red
+	name = "wide red hat"
+	icon_state = "widehat_red"
 
 //Misc
 /obj/item/clothing/under/misc/greyshirt

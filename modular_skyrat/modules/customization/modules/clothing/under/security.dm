@@ -31,6 +31,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/under/security.dmi'
 	icon_state = "det_undersuit"
 	inhand_icon_state = "det_undersuit"
+	mutant_variants = NONE
 	can_adjust = FALSE
 
 /obj/item/clothing/suit/det_bomber
@@ -43,4 +44,5 @@
 	body_parts_covered = CHEST|ARMS
 	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 45)
 	cold_protection = CHEST|ARMS
+	mutant_variants = NONE
 	heat_protection = CHEST|ARMS

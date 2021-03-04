@@ -11,7 +11,7 @@
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	w_class = WEIGHT_CLASS_BULKY
 	custom_materials = list(/datum/material/iron=4000)
-	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/hitscan)
+	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
 	ammo_x_offset = 0
 	shaded_charge = 1
 

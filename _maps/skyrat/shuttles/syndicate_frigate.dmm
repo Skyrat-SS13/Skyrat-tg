@@ -195,14 +195,6 @@
 /obj/effect/turf_decal/stripes/red/box,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/frigate)
-"AQ" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "security airlock";
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/turf/open/floor/iron/dark,
-/area/shuttle/syndicate/frigate)
 "BX" = (
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/engine,
@@ -279,11 +271,10 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/frigate)
 "KN" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Secure Airlock";
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/door/airlock/mining/glass{
 	req_access_txt = "150"
 	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/frigate)
 "NU" = (
@@ -345,6 +336,13 @@
 "TC" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/shuttle/syndicate/frigate)
+"UA" = (
+/obj/structure/table/reinforced,
+/obj/item/toy/plush/moth{
+	pixel_y = 5
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/frigate)
 "VV" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/docking_port/mobile{
@@ -371,7 +369,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/frigate)
 "Wp" = (
-/obj/item/toy/plush/moth,
+/obj/structure/frame/computer{
+	anchored = 1
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/frigate)
 "WO" = (
@@ -532,7 +532,7 @@ HX
 "}
 (6,1,1) = {"
 Iw
-kS
+UA
 YC
 lr
 Iw
@@ -540,14 +540,14 @@ KC
 KC
 KC
 Wl
-AQ
+KN
 Wl
 PS
 Dy
 Yi
 Xo
 ak
-AQ
+KN
 PS
 PS
 tt
@@ -588,14 +588,14 @@ KC
 KC
 KC
 Wl
-AQ
+KN
 Wl
 PS
 Dy
 Yi
 Xo
 ak
-AQ
+KN
 PS
 PS
 tt

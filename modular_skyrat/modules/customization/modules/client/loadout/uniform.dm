@@ -60,6 +60,14 @@
 	name = "Gear Harness"
 	path = /obj/item/clothing/under/misc/gear_harness
 
+/datum/loadout_item/uniform/loincloth	//Sensor version for station crew
+	name = "Leather Loincloth"
+	path = /obj/item/clothing/under/costume/loincloth/sensor
+
+/datum/loadout_item/uniform/loincloth/cloth	//Sensor version for station crew
+	name = "Cloth Loincloth"
+	path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
+
 /datum/loadout_item/uniform/pinkstripper
 	name = "Pink stripper outfit"
 	path = /obj/item/clothing/under/misc/stripper
@@ -401,6 +409,12 @@
 	name =  "Navy Commando Sweater"
 	path = /obj/item/clothing/under/sweater/blue
 
+/datum/loadout_item/uniform/sweater/polysweater
+	name = "Polychromic Commando Sweater"
+	path = /obj/item/clothing/under/misc/polysweater	
+	extra_info = LOADOUT_INFO_ONE_COLOR
+	cost = 3
+
 /datum/loadout_item/uniform/sweater/keyholesweater
 	name =  "Keyhole Sweater"
 	path = /obj/item/clothing/under/sweater/keyhole
@@ -509,8 +523,8 @@
 /datum/loadout_item/uniform/job/para_red
 	name = "Red Paramedic Jumpsuit"
 	path = /obj/item/clothing/under/utility/para_red
-	restricted_roles = list("Paramedic")
-	restricted_desc = "Paramedic"
+	restricted_roles = list("Chief Medical Officer", "Paramedic")
+	restricted_desc = "Medical First Responders"
 
 /*// Trekie things
 //TOS

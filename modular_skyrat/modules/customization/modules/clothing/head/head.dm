@@ -80,3 +80,14 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "cyberpunkgoggle"
 	mutant_variants = NONE
+
+/obj/item/clothing/head/intern/developer
+	name = "\improper Intern beancap"
+
+/obj/item/clothing/head/warden/syndicate
+	name = "master at arms' beret"
+	desc = "Surprisingly stylish, if you lived in a silent impressionist film."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "syndwardenberet"
+	dog_fashion = null

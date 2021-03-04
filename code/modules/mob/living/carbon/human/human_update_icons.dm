@@ -104,7 +104,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ICLOTHING) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	if(istype(w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = w_uniform
@@ -147,10 +147,11 @@ There are several things that need to be remembered:
 
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
+	remove_overlay(ID_CARD_LAYER)
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ID) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER]
 
@@ -161,13 +162,24 @@ There are several things that need to be remembered:
 		update_observer_view(wear_id)
 
 		//TODO: add an icon file for ID slot stuff, so it's less snowflakey
-		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = 'icons/mob/mob.dmi')
+		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = 'icons/mob/clothing/id.dmi')
 		if(OFFSET_ID in dna.species.offset_features)
 			id_overlay.pixel_x += dna.species.offset_features[OFFSET_ID][1]
 			id_overlay.pixel_y += dna.species.offset_features[OFFSET_ID][2]
 		overlays_standing[ID_LAYER] = id_overlay
 
+		var/obj/item/card/id/shown_id = wear_id.GetID()
+		if(shown_id)
+			var/mutable_appearance/id_card_overlay = overlays_standing[ID_CARD_LAYER]
+			id_card_overlay = shown_id.build_worn_icon(default_layer = ID_CARD_LAYER, default_icon_file = 'icons/mob/clothing/id_card.dmi')
+			if(OFFSET_ID in dna.species.offset_features)
+				id_card_overlay.pixel_x += dna.species.offset_features[OFFSET_ID][1]
+				id_card_overlay.pixel_y += dna.species.offset_features[OFFSET_ID][2]
+
+			overlays_standing[ID_CARD_LAYER] = id_card_overlay
+
 	apply_overlay(ID_LAYER)
+	apply_overlay(ID_CARD_LAYER)
 
 
 /mob/living/carbon/human/update_inv_gloves()
@@ -175,9 +187,9 @@ There are several things that need to be remembered:
 
 	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1])
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
-	if(!gloves && blood_in_hands && !(NOBLOODOVERLAY in dna.species.species_traits))
+	if(!gloves && blood_in_hands && (num_hands > 0) && !(NOBLOODOVERLAY in dna.species.species_traits))
 		var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER)
 		if(num_hands < 2)
 			if(has_left_hand(FALSE))
@@ -213,7 +225,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_EYES) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	if(glasses)
 		glasses.screen_loc = ui_glasses //...draw the item in the inventory screen
@@ -243,7 +255,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_EARS) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	if(ears)
 		ears.screen_loc = ui_ears //move the item to the appropriate screen loc
@@ -270,7 +282,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_FEET) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	if(shoes)
 		shoes.screen_loc = ui_shoes //move the item to the appropriate screen loc
@@ -295,7 +307,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_SUITSTORE) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	if(s_store)
 		s_store.screen_loc = ui_sstore1
@@ -328,7 +340,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_BELT) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	if(belt)
 		belt.screen_loc = ui_belt
@@ -353,7 +365,7 @@ There are several things that need to be remembered:
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_OCLOTHING) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 	if(istype(wear_suit, /obj/item/clothing/suit))
 		wear_suit.screen_loc = ui_oclothing
@@ -380,10 +392,10 @@ There are several things that need to be remembered:
 		var/atom/movable/screen/inventory/inv
 
 		inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_LPOCKET) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 		inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_RPOCKET) + 1]
-		inv.update_icon()
+		inv.update_appearance()
 
 		if(l_store)
 			l_store.screen_loc = ui_storage1
@@ -603,10 +615,14 @@ generate/load female uniform sprites matching all previously decided variables
 			. += "-digitigrade[BP.use_digitigrade]"
 		if(BP.dmg_overlay_type)
 			. += "-[BP.dmg_overlay_type]"
+
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(BP.organic_render)
 			. += "-OR"
 		//SKYRAT EDIT ADDITION END
+
+		if(HAS_TRAIT(BP, TRAIT_PLASMABURNT))
+			. += "-plasmaburnt"
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"

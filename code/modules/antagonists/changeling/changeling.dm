@@ -19,22 +19,24 @@
 
 	var/list/stored_profiles = list() //list of datum/changelingprofile
 	var/datum/changelingprofile/first_prof = null
-	var/dna_max = 6 //How many extra DNA strands the changeling can store for transformation.
+	var/dna_max = 8 //How many extra DNA strands the changeling can store for transformation. // SKYRAT EDIT CHANGE : ORIGINAL: 6
 	var/absorbedcount = 0
 	var/trueabsorbs = 0//dna gained using absorb, not dna sting
-	var/chem_charges = 20
-	var/chem_storage = 75
-	var/chem_recharge_rate = 1
+	var/chem_charges = 75 //SKYRAT EDIT CHANGE - ORIGINAL: 20
+	var/chem_storage = 125 //SKYRAT EDIT CHANGE - ORIGINAL: 75
+	var/chem_recharge_rate = 2 //SKYRAT EDIT CHANGE - ORIGINAL: 1
 	var/chem_recharge_slowdown = 0
 	var/sting_range = 2
 	var/geneticdamage = 0
 	var/was_absorbed = FALSE //if they were absorbed by another ling already.
 	var/isabsorbing = FALSE
 	var/islinking = FALSE
-	var/geneticpoints = 10
-	var/total_geneticspoints = 10
-	var/total_chem_storage = 75
+	var/geneticpoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
+	var/total_geneticspoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
+	var/total_chem_storage = 125 //SKYRAT EDIT CHANGE - ORIGINAL: 75
 	var/purchasedpowers = list()
+
+	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 
 	var/mimicing = ""
 	var/canrespec = FALSE//set to TRUE in absorb.dm
@@ -209,15 +211,15 @@
 		return FALSE
 
 //Called in life()
-/datum/antagonist/changeling/proc/regenerate()//grants the HuD in life.dm
+/datum/antagonist/changeling/proc/regenerate(delta_time, times_fired)//grants the HuD in life.dm
 	var/mob/living/carbon/the_ling = owner.current
 	if(istype(the_ling))
 		if(the_ling.stat == DEAD)
-			chem_charges = min(max(0, chem_charges + chem_recharge_rate - chem_recharge_slowdown), (chem_storage*0.5))
-			geneticdamage = max(LING_DEAD_GENETICDAMAGE_HEAL_CAP,geneticdamage-1)
+			chem_charges = min(max(0, chem_charges + ((chem_recharge_rate - chem_recharge_slowdown) * delta_time)), (chem_storage * 0.5))
+			geneticdamage = max(geneticdamage - (0.5 * delta_time), LING_DEAD_GENETICDAMAGE_HEAL_CAP)
 		else //not dead? no chem/geneticdamage caps.
-			chem_charges = min(max(0, chem_charges + chem_recharge_rate - chem_recharge_slowdown), chem_storage)
-			geneticdamage = max(0, geneticdamage-1)
+			chem_charges = min(max(0, chem_charges + ((chem_recharge_rate - chem_recharge_slowdown) * delta_time)), chem_storage)
+			geneticdamage = max(geneticdamage - (0.5 * delta_time), 0)
 
 
 /datum/antagonist/changeling/proc/get_dna(dna_owner)

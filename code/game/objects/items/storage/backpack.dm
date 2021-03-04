@@ -331,7 +331,7 @@
 
 	qdel(C)
 	*/
-	var/contraband_list = list(/obj/item/storage/bag/ammo=4, /obj/item/storage/belt/utility/syndicate=1, /obj/item/storage/toolbox/syndicate=7, /obj/item/card/id/syndicate=6, /obj/item/storage/secure/briefcase/syndie=3, /obj/item/stack/telecrystal=2, /obj/item/storage/belt/military=12, /obj/item/storage/pill_bottle/aranesp=11, /obj/item/storage/pill_bottle/happy=12, /obj/item/storage/pill_bottle/stimulant=9, /obj/item/storage/pill_bottle/lsd=10, /obj/item/storage/fancy/cigarettes/cigpack_syndicate=8, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims=10, /obj/item/reagent_containers/food/drinks/bottle/absinthe=12, /obj/item/storage/box/fireworks/dangerous=11, /obj/item/food/grown/cannabis/white=9, /obj/item/food/grown/cannabis=13, /obj/item/food/grown/cannabis/rainbow=8, /obj/item/food/grown/mushroom/libertycap=11, /obj/item/clothing/mask/gas/syndicate=10, /obj/item/vending_refill/donksoft=13, /obj/item/ammo_box/foambox/riot=11, /obj/item/soap/syndie=7)
+	var/contraband_list = list(/obj/item/storage/bag/ammo=4, /obj/item/storage/belt/utility/syndicate=1, /obj/item/storage/toolbox/syndicate=7, /obj/item/card/id/advanced/chameleon=6, /obj/item/storage/secure/briefcase/syndie=3, /obj/item/stack/telecrystal=2, /obj/item/storage/belt/military=12, /obj/item/storage/pill_bottle/aranesp=11, /obj/item/storage/pill_bottle/happy=12, /obj/item/storage/pill_bottle/stimulant=9, /obj/item/storage/pill_bottle/lsd=10, /obj/item/storage/fancy/cigarettes/cigpack_syndicate=8, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims=10, /obj/item/reagent_containers/food/drinks/bottle/absinthe=12, /obj/item/storage/box/fireworks/dangerous=11, /obj/item/food/grown/cannabis/white=9, /obj/item/food/grown/cannabis=13, /obj/item/food/grown/cannabis/rainbow=8, /obj/item/food/grown/mushroom/libertycap=11, /obj/item/clothing/mask/gas/syndicate=10, /obj/item/vending_refill/donksoft=13, /obj/item/ammo_box/foambox/riot=11, /obj/item/soap/syndie=7)
 	for(var/i in 1 to 3)
 		var/contraband_type = pickweight(contraband_list)
 		contraband_list -= contraband_type
@@ -399,10 +399,8 @@
 	. = ..()
 
 /obj/item/storage/backpack/duffelbag/cursed/process()
-	///don't process if it's somehow on the floor
-	if(!iscarbon(src.loc))
-		return
-	var/mob/living/carbon/user = src.loc
+
+	var/mob/living/carbon/user = loc
 	///check hp
 	if(obj_integrity == 0)
 		user.dropItemToGround(src, TRUE)
@@ -411,16 +409,16 @@
 	if((hunger > 50) && prob(20))
 		for(var/obj/item/I in contents)
 			if(IS_EDIBLE(I))
-				var/obj/item/food/F = I
-				F.forceMove(user.loc)
+				var/obj/item/food/hunger_breaks = I //If you fed them poundland microwave meals, it probably would kill them
+				hunger_breaks.forceMove(user.loc)
 				playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
 				///poisoned food damages it
-				if(istype(F, /obj/item/food/badrecipe))
+				if(istype(hunger_breaks, /obj/item/food/badrecipe))
 					to_chat(user, "<span class='warning'>The [name] grumbles!</span>")
 					obj_integrity -= 50
 				else
-					to_chat(user, "<span class='notice'>The [name] eats your [F]!</span>")
-				qdel(F)
+					to_chat(user, "<span class='notice'>The [name] eats your [hunger_breaks]!</span>")
+				QDEL_NULL(hunger_breaks)
 				hunger = 0
 				return
 		///no food found: it bites you and loses some hp
@@ -494,6 +492,7 @@
 	new /obj/item/cautery(src)
 	new /obj/item/bonesetter(src)
 	new /obj/item/surgical_drapes(src)
+	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/razor(src)
 	new /obj/item/blood_filter(src)
@@ -517,6 +516,7 @@
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
 	new /obj/item/surgical_drapes(src)
+	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/blood_filter(src)
 
@@ -557,12 +557,14 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/syndie
-	name = "suspicious looking duffel bag"
+	name = "tactical duffel bag" //SKYRAT EDIT, was "suspicious-looking duffel bag". It's just a black duffel.
 	desc = "A large duffel bag for holding extra tactical supplies."
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	slowdown = 0
 	resistance_flags = FIRE_PROOF
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // Skyrat edit
 
 /obj/item/storage/backpack/duffelbag/syndie/ComponentInitialize()
 	. = ..()
@@ -591,7 +593,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery
 	name = "surgery duffel bag"
-	desc = "A suspicious looking duffel bag for holding surgery tools."
+	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools." //SKYRAT EDIT, to match the security surgery bag
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 

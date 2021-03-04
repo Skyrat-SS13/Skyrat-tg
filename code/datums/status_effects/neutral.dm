@@ -109,7 +109,7 @@
 		for(var/obj/effect/proc_holder/spell/spell in rewarded.mind.spell_list)
 			spell.charge_counter = spell.charge_max
 			spell.recharging = FALSE
-			spell.update_icon()
+			spell.update_appearance()
 		rewarded.adjustBruteLoss(-25)
 		rewarded.adjustFireLoss(-25)
 		rewarded.adjustToxLoss(-25)
@@ -130,11 +130,11 @@
 	icon_state = "aimed"
 
 /datum/status_effect/grouped/heldup/on_apply()
-	owner.apply_status_effect(STATUS_EFFECT_SURRENDER)
+	owner.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
 	return ..()
 
 /datum/status_effect/grouped/heldup/on_remove()
-	owner.remove_status_effect(STATUS_EFFECT_SURRENDER)
+	owner.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
 	return ..()
 
 // holdup is for the person aiming
@@ -322,6 +322,9 @@
 
 /atom/movable/screen/alert/status_effect/surrender/Click(location, control, params)
 	. = ..()
+	if(!.)
+		return
+
 	owner.emote("surrender")
 
 /*

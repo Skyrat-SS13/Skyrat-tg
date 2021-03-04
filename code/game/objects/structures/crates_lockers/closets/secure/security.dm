@@ -32,7 +32,6 @@
 	new /obj/item/storage/belt/sabre(src)
 	new /obj/item/storage/box/gunset/pdh_captain(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/captain(src)
-	new /obj/item/card/id/captains_spare(src)
 	new /obj/item/storage/photo_album/captain(src)
 
 /obj/structure/closet/secure_closet/hop
@@ -102,6 +101,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
+	new /obj/item/storage/box/gunset/glock18_hos(src)
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
