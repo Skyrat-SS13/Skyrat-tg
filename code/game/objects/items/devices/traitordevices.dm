@@ -69,12 +69,9 @@ effective or pretty fucking useless.
 */
 
 /obj/item/healthanalyzer/rad_laser
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "This syndicate-modified health analyzer can emit delayed bursts of radiation to those it scans." //SKYRAT EDIT
 	custom_materials = list(/datum/material/iron=400)
-=======
->>>>>>> 5dc49567ec0 ( patches out a radioactive microlaser tech, makes radioactive microlasers not knock out rad-immune creatures (#57380))
 	var/irradiate = TRUE
 	var/stealth = FALSE
 	var/used = FALSE // is it cooling down?
