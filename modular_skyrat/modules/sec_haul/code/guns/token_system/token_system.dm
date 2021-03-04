@@ -150,7 +150,7 @@
 	desc = "A holochip used in any armament vendor, this is for energy weapons. Do not bend."
 	icon_state = "token_energy"
 	custom_premium_price = PAYCHECK_HARD * 3
-	minimum_sec_level = SEC_LEVEL_AMBER
+	minimum_sec_level = SEC_LEVEL_RED
 
 /obj/item/armament_token/energy/get_available_gunsets()
   return list(
