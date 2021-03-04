@@ -15,15 +15,10 @@
 
 	outfit = /datum/outfit/job/shuttlepilot
 
-	access = list() 			//See get_access()
-	minimal_access = list() 	//See get_access()
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SEC
 
 	display_order = JOB_DISPLAY_ORDER_CAPTAIN
-
-/datum/job/shuttlepilot/get_access()
-	return get_all_accesses()
 
 /datum/job/shuttlepilot/announce(mob/living/carbon/human/H)
 	..()
@@ -33,7 +28,7 @@
 	name = "Shuttle Pilot"
 	jobtype = /datum/job/shuttlepilot
 
-	id = /obj/item/card/id/silver
+	id = /obj/item/card/id/advanced/silver
 	belt = /obj/item/pda/captain
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/heads/captain/alt
@@ -49,9 +44,12 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
+	id_trim = /datum/id_trim/job/captain/shuttle_pilot
+
 /datum/outfit/plasmaman/shuttlepilot
 	name = "Shuttle Pilot Plasmaman"
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/captain
 	uniform = /obj/item/clothing/under/plasmaman/captain
 	gloves = /obj/item/clothing/gloves/color/captain/pilot
+

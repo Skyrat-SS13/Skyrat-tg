@@ -103,9 +103,9 @@
 	get_targets()
 	icon_state = "bulletbot[on]"
 
-	var/datum/job/officer/O = new/datum/job/officer
-	access_card.access += O.get_access()
-	prev_access = access_card.access
+	var/datum/id_trim/job/sec_trim = SSid_access.trim_singletons_by_path[/datum/id_trim/job/security_officer]
+	access_card.add_access(sec_trim.access + sec_trim.wildcard_access)
+	prev_access = access_card.access.Copy()
 	stolen_valor = list()
 
 	prefixes = list(command, security, engineering)
