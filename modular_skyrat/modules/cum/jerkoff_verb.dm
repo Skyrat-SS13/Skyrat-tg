@@ -37,7 +37,7 @@
 	//if(!do_mob(user, M))
 	//	return
 	if(M==user)
-		user.visible_message("<span class='warning'>[user] starts masturbating onto themself![H.dna.species.mutant_bodyparts["testicles"].genital_size]</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
+		user.visible_message("<span class='warning'>[user] starts masturbating onto themself!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
 	else
 		user.visible_message("<span class='warning'>[user] starts masturbating onto [M]!</span>", "<span class='danger'>You start masturbating onto [M]!</span>")
 	if(do_after(user,60))
