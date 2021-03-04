@@ -122,7 +122,6 @@
 /obj/item/storage/wallet/get_id_examine_strings(mob/user)
 	. = ..()
 	if(front_id)
-		. += "\The [src] is displaying [front_id]."
 		. += front_id.get_id_examine_strings(user)
 
 /obj/item/storage/wallet/GetID()
@@ -155,3 +154,4 @@
 /obj/item/storage/wallet/random/PopulateContents()
 	new /obj/item/holochip(src, rand(5,30))
 	icon_state = "wallet"
+	

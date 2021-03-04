@@ -49,7 +49,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	belt = /obj/item/storage/belt/utility/chief/full/debug
 	shoes = /obj/item/clothing/shoes/combat/debug
-	id = /obj/item/card/id/debug/bst
+	id = /obj/item/card/id/advanced/debug/bst
 	back = /obj/item/storage/backpack/holding
 	box = /obj/item/storage/box/debugtools
 	suit_store = /obj/item/gun/energy/pulse
@@ -73,7 +73,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	belt = /obj/item/storage/belt/utility/chief/full/debug
 	shoes = /obj/item/clothing/shoes/combat/debug
-	id = /obj/item/card/id/debug/bst
+	id = /obj/item/card/id/advanced/debug/bst
 	back = /obj/item/storage/backpack/holding
 	box = /obj/item/storage/box/debugtools
 	suit_store = /obj/item/tank/internals/oxygen
