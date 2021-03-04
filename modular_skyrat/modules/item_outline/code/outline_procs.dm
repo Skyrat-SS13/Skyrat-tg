@@ -14,7 +14,7 @@
 			inv_item.remove_outline()
 
 /obj/item/proc/apply_outline(colour = null)
-	if(!Adjacent(usr) || QDELETED(src))
+	if(!Adjacent(usr) || QDELETED(src) || || isobserver(usr))
 		return
 	if(usr.client)
 		if(!usr.client.prefs.outline_enabled)
