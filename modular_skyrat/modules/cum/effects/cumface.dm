@@ -18,6 +18,10 @@
 			cumface.icon_state = "cumface_lizard"
 		else if(H.dna.species.limbs_id == "monkey")
 			cumface.icon_state = "cumface_monkey"
+		else if(H.dna.species.id == "vox")
+			cumface.icon_state = "cumface_vox"
+		else if(H.dna.species.mutant_bodyparts["snout"])
+			cumface.icon_state = "cumface_lizard"
 		else
 			cumface.icon_state = "cumface_human"
 //	else if(iscorgi(parent))
