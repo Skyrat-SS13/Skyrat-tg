@@ -1,5 +1,14 @@
 //MODULAR ID TRIM ACCESS OVERRIDES GO HERE!!
 
+/datum/id_trim/job/head_of_security
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+
+/datum/id_trim/job/warden
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+
+/datum/id_trim/job/security_officer
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+
 /datum/id_trim/job/head_of_security/New()
 	. = ..()
 
@@ -46,6 +55,7 @@
 
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_blueshield"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS, \
 			    ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_HEADS, \
@@ -61,12 +71,13 @@
 
 /datum/id_trim/job/captain/shuttle_pilot
 	assignment = "Shuttle Pilot"
-	trim_state = "trim_shuttle_pilot"
+	trim_state = "trim_shuttlepilot"
 	config_job = "shuttle pilot"
 
 /datum/id_trim/job/security_medic
 	assignment = "Security Medic"
-	trim_state = "trim_security_medic"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_securitymedic"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MECH_SECURITY, ACCESS_MORGUE, ACCESS_WEAPONS,
 				ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CHEMISTRY, ACCESS_GENETICS,
 				ACCESS_VIROLOGY, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
@@ -84,7 +95,8 @@
 
 /datum/id_trim/job/security_sergeant
 	assignment = "Security Sergeant"
-	trim_state = "trim_security_sergeant"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_securitysergeant"
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MECH_SECURITY, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE,
 				ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM, ACCESS_ENTER_GENPOP)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_MECH_SECURITY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM,
@@ -99,3 +111,4 @@
 	// Config check for if sec has maint access.
 	if(CONFIG_GET(flag/security_has_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
+

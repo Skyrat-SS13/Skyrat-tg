@@ -20,7 +20,7 @@
 	return ..()
 
 /obj/structure/closet/secure_closet/genpop/proc/handle_prisoner_id(mob/user)
-	var/obj/item/card/id/prisoner/prisoner_id = null
+	var/obj/item/card/id/advanced/prisoner/prisoner_id = null
 	for(prisoner_id in user.held_items)
 		if(prisoner_id != registered_id)
 			prisoner_id = null
@@ -102,7 +102,7 @@
 
 	if(!broken && opened && !locked && allowed(user) && !registered_id) //Genpop setup
 
-		registered_id = new /obj/item/card/id/prisoner/(src.contents)
+		registered_id = new /obj/item/card/id/advanced/prisoner(src.contents)
 		if(handle_edit_sentence(user))
 			close(user)
 			locked = TRUE
