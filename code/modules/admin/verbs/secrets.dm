@@ -361,6 +361,11 @@
 			for(var/obj/machinery/light/L in GLOB.machines)
 				L.fix()
 		if("customportal")
+			//SKYRAT EDIT BEGIN
+			if(!CONFIG_GET(flag/custom_portal_storms))
+				message_admins("[key_name_admin(holder)] attempted to cause a custom portal storm, however the config has this disabled.")
+				return
+			//SKRYAT EDIT END
 			if(!is_funmin)
 				return
 
