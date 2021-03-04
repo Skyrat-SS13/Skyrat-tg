@@ -14185,8 +14185,6 @@
 /area/security/brig)
 "aLG" = (
 /obj/structure/table/reinforced,
-/obj/item/restraints/handcuffs,
-/obj/item/assembly/flash/handheld,
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -26
@@ -14200,6 +14198,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/machinery/dish_drive/bullet{
+	succrange = 2
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
@@ -14226,6 +14227,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/item/restraints/handcuffs,
+/obj/item/assembly/flash/handheld,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "aLI" = (
@@ -27941,6 +27944,28 @@
 /obj/effect/turf_decal/tile/blue/darkblue{
 	dir = 4
 	},
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
 "fYN" = (
@@ -31328,6 +31353,10 @@
 	pixel_y = -3
 	},
 /obj/structure/table/reinforced,
+/obj/item/storage/box/firingpins,
+/obj/item/storage/box/firingpins,
+/obj/item/gun/energy/e_gun/dragnet,
+/obj/item/gun/energy/e_gun/dragnet,
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
 "lAs" = (
@@ -32960,20 +32989,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "nUk" = (
-/obj/structure/rack,
-/obj/item/gun/energy/e_gun{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/e_gun,
-/obj/item/gun/energy/e_gun{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/blue/darkblue{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/smartgun,
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
 "nVO" = (
@@ -35035,10 +35055,14 @@
 	pixel_x = -26
 	},
 /obj/structure/rack,
-/obj/item/storage/box/firingpins,
-/obj/item/storage/box/firingpins,
-/obj/item/gun/energy/e_gun/dragnet,
-/obj/item/gun/energy/e_gun/dragnet,
+/obj/effect/turf_decal/bot,
+/obj/item/storage/box/armament_tokens_primary{
+	pixel_x = -8
+	},
+/obj/item/storage/box/armament_tokens_sidearm{
+	pixel_x = 7
+	},
+/obj/item/storage/box/armament_tokens_energy,
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
 "qDU" = (
@@ -39156,28 +39180,6 @@
 /area/asteroid/nearstation)
 "tgp" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/bulletproof,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = 32
 	},
@@ -39185,6 +39187,9 @@
 /obj/effect/turf_decal/tile/blue/darkblue{
 	dir = 4
 	},
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
 "tif" = (
@@ -42368,6 +42373,9 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay)
 "xPz" = (
+/obj/machinery/dish_drive/bullet{
+	succrange = 2
+	},
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
 "xQw" = (
