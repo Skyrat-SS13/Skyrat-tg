@@ -12,15 +12,16 @@
 	. = ..()
 	if(!(methods & (INGEST|INJECT|PATCH))) //it is intentional that you can still cumshot people with vapor ;)
 	{
-		var/turf/T = get_turf(exposed_mob)
-		new/obj/effect/decal/cleanable/cum(T)
-		exposed_mob.adjust_blurriness(1)
-		exposed_mob.visible_message("<span class='warning'>[exposed_mob] has been covered in cum!</span>", "<span class='userdanger'>You've been covered in cum!</span>")
-		playsound(exposed_mob, "desecration", 50, TRUE)
-		if(is_type_in_typecache(exposed_mob, GLOB.creamable))
-			if(reac_volume>10)
-				exposed_mob.AddComponent(/datum/component/cumfaced/big, src)
-			else
-				exposed_mob.AddComponent(/datum/component/cumfaced, src)
+		if(exposed_mob.client && (exposed_mob.client.prefs.skyrat_toggles & CUMFACE_PREF))
+			var/turf/T = get_turf(exposed_mob)
+			new/obj/effect/decal/cleanable/cum(T)
+			exposed_mob.adjust_blurriness(1)
+			exposed_mob.visible_message("<span class='warning'>[exposed_mob] has been covered in cum!</span>", "<span class='userdanger'>You've been covered in cum!</span>")
+			playsound(exposed_mob, "desecration", 50, TRUE)
+			if(is_type_in_typecache(exposed_mob, GLOB.creamable))
+				if(reac_volume>10)
+					exposed_mob.AddComponent(/datum/component/cumfaced/big, src)
+				else
+					exposed_mob.AddComponent(/datum/component/cumfaced, src)
 		qdel(src)
 	}

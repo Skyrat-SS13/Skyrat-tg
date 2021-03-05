@@ -29,13 +29,14 @@
 /obj/item/coom/attack(mob/living/M, mob/user, proximity)
 	if(!proximity)
 		return
+	if(!(M.client && (M.client.prefs.skyrat_toggles & CUMFACE_PREF)))
+		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
+		return
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/cum_volume = G.genital_size*5+5
 	var/datum/reagents/R = new/datum/reagents(50)
 	R.add_reagent(/datum/reagent/cum, cum_volume)
-	//if(!do_mob(user, M))
-	//	return
 	if(M==user)
 		user.visible_message("<span class='warning'>[user] starts masturbating onto themself!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
 	else
@@ -63,19 +64,21 @@
 			return
 		var/datum/reagents/R = new/datum/reagents(50)
 		R.add_reagent(/datum/reagent/cum, cum_volume)
-		user.visible_message("<span class='warning'>[user] starts masturbating into the [target]!</span>", "<span class='danger'>You start masturbating into the [target]!</span>")
+		user.visible_message("<span class='warning'>[user] starts masturbating into [target]!</span>", "<span class='danger'>You start masturbating into [target]!</span>")
 		if(do_after(user,60))
-			user.visible_message("<span class='warning'>[user] cums into the [target]!</span>", "<span class='danger'>You cum into the [target]!</span>")
+			user.visible_message("<span class='warning'>[user] cums into [target]!</span>", "<span class='danger'>You cum into [target]!</span>")
 			playsound(target, "desecration", 50, TRUE)
 			R.trans_to(target, cum_volume)
 			if(prob(40))
 				user.emote("moan")
 			qdel(src)
 	else
-		user.visible_message("<span class='warning'>[user] starts masturbating onto the [target]!</span>", "<span class='danger'>You start masturbating onto the [target]!</span>")
+		if(ishuman(target))
+			return
+		user.visible_message("<span class='warning'>[user] starts masturbating onto [target]!</span>", "<span class='danger'>You start masturbating onto [target]!</span>")
 		if(do_after(user,60))
 			var/turf/T = get_turf(target)
-			user.visible_message("<span class='warning'>[user] cums on the [target]!</span>", "<span class='danger'>You cum on the [target]!</span>")
+			user.visible_message("<span class='warning'>[user] cums on [target]!</span>", "<span class='danger'>You cum on [target]!</span>")
 			playsound(target, "desecration", 50, TRUE)
 			new/obj/effect/decal/cleanable/cum(T)
 			if(prob(40))

@@ -80,6 +80,7 @@ GLOBAL_LIST_INIT(food, list(
 
 	//aphrodisiac preference
 	var/aphrodisiacs_pref = 1
+	var/cumfaced_pref = 0
 
 	var/uses_glasses_colour = 0
 
@@ -993,6 +994,8 @@ GLOBAL_LIST_INIT(food, list(
 
 			//aphrodisiac pref
 			dat += "<b>Be affected by aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
+			//cumface pref
+			dat += "<b>Be able to get covered in \"reproductive reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
 			dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
@@ -2668,6 +2671,10 @@ GLOBAL_LIST_INIT(food, list(
 				//aphro pref
 				if("aphrodisiacs_pref")
 					skyrat_toggles ^= APHRO_PREF
+
+				//cumface pref
+				if("cumfaced_pref")
+					skyrat_toggles ^= CUMFACE_PREF
 
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)

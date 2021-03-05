@@ -24,9 +24,6 @@
 			cumface.icon_state = "cumface_lizard"
 		else
 			cumface.icon_state = "cumface_human"
-//	else if(iscorgi(parent))
-//		creamface.icon_state = "cumface_corgi"
-//im not fucking letting people cum on the corgi
 	else if(isAI(parent))
 		cumface.icon_state = "cumface_ai"
 
@@ -84,9 +81,6 @@
 			bigcumface.icon_state = "cumface_lizard"
 		else
 			bigcumface.icon_state = "cumface_human"
-//	else if(iscorgi(parent))
-//		creamface.icon_state = "cumface_corgi"
-//im not fucking letting people cum on the corgi
 	else if(isAI(parent))
 		bigcumface.icon_state = "cumface_ai"
 
