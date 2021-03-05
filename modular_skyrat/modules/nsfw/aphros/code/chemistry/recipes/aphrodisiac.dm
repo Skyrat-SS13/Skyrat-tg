@@ -9,3 +9,4 @@
 	required_reagents = list(/datum/reagent/drug/aphrodisiac = 6, /datum/reagent/phenol = 1)
 	required_temp = 400
 	mix_message = "The mixture rapidly condenses and darkens in color..."
+
