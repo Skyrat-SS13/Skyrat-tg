@@ -44,7 +44,6 @@
 			else
 				aroused_message = pick("You feel a bit hot.", "You feel strong sexual urges.", "You feel in the mood.", "You're ready to go down on someone.")
 			to_chat(M, "<span class='notice'>[aroused_message]</span>")
-			//REMOVE_TRAIT(M,TRAIT_NEVERBONER,APHRO_TRAIT)
 		if(ishuman(M))
 			for(var/obj/item/organ/genital/G)
 				if(!G.aroused == AROUSAL_CANT)
@@ -55,6 +54,20 @@
 
 /datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF) && prob(33))
-		if(prob(5) && ishuman(M)/* && M.has_dna() && some shit about bimbofication*/)
+		if(prob(5) && ishuman(M))
 			to_chat(M, "<span class='notice'>Your libido is going haywire!</span>")
 	..()
+
+/obj/item/reagent_containers/pill/crocin
+	name = "crocin pill"
+	desc = "A safe aphrodisiac."
+	icon_state = "pill_happy"
+	list_reagents = list(/datum/reagent/drug/aphrodisiac = 20)
+	rename_with_volume = TRUE
+
+/obj/item/reagent_containers/pill/hexacrocin
+	name = "hexacrocin pill"
+	desc = "An extremely powerful and addictive aphrodisiac."
+	icon_state = "pill_happy"
+	list_reagents = list(/datum/reagent/drug/aphrodisiac = 20)
+	rename_with_volume = TRUE
