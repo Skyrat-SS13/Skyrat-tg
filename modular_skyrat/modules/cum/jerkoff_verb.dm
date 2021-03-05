@@ -83,4 +83,7 @@
 			new/obj/effect/decal/cleanable/cum(T)
 			if(prob(40))
 				user.emote("moan")
+
+			if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
+				target.icon = 'modular_skyrat/modules/cum/cumweb.dmi'
 			qdel(src)
