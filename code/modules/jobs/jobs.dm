@@ -55,15 +55,10 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Warden",
 	"Detective",
-<<<<<<< HEAD
 	"Security Officer",
-//SKYRAT EDIT ADDITION BEGIN - BLUESHIELD & SEC_HAUL
 	"Security Medic",
 	"Security Sergeant",
 	"Blueshield"))
-//SKYRAT EDIT ADDITION END
-=======
-	"Security Officer"))
 
 /// These aren't defacto jobs, but are the special departmental variants for sec officers.
 GLOBAL_LIST_INIT(security_sub_positions, list(
@@ -72,7 +67,6 @@ GLOBAL_LIST_INIT(security_sub_positions, list(
 	"Security Officer (Medical)",
 	"Security Officer (Science)",
 ))
->>>>>>> ac458da7cf6 (Departmental sec officers now appear on the crew manifest as sec. (#57407))
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",
