@@ -710,6 +710,11 @@
 		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
 		return
 
+	if(ckey)
+		if(is_banned_from(ckey, BAN_RESPAWN))
+			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
+			return
+
 	log_game("[key_name(usr)] used abandon mob.")
 
 	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly!</span>")
