@@ -4601,21 +4601,6 @@
 "ajC" = (
 /turf/closed/wall/r_wall/rust,
 /area/tcommsat/server)
-"ajD" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/structure/cable,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
-	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes, and looks abnormally thin and frail.";
-	environment_smash = 0;
-	health = 60;
-	maxHealth = 60;
-	melee_damage_lower = 5;
-	melee_damage_upper = 10;
-	name = "scrawny spider"
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/electrical)
 "ajE" = (
 /obj/machinery/porta_turret/ai{
 	dir = 4
@@ -53249,19 +53234,6 @@
 /obj/effect/loot_site_spawner,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"cME" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/poison/giant_spider/hunter{
-	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes, and looks abnormally thin and frail.";
-	environment_smash = 0;
-	health = 60;
-	maxHealth = 60;
-	melee_damage_lower = 5;
-	melee_damage_upper = 10;
-	name = "scrawny spider"
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/electrical)
 "cMF" = (
 /obj/structure/sign/warning/biohazard,
 /turf/closed/wall/rust,
@@ -55674,6 +55646,13 @@
 	},
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
+"eaM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/structure/cable,
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter/scrawny,
+/turf/open/floor/plating,
+/area/maintenance/department/electrical)
 "eaV" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/machinery/newscaster{
@@ -64135,6 +64114,15 @@
 "iKn" = (
 /turf/closed/wall/r_wall/rust,
 /area/engineering/gravity_generator)
+"iKW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/chef_order{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/central)
 "iLk" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -65513,20 +65501,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"jAW" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/item/food/dough,
-/obj/item/food/dough,
-/obj/item/kitchen/rollingpin,
-/obj/item/kitchen/rollingpin,
-/turf/open/floor/iron/dark,
-/area/service/kitchen)
 "jAY" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible,
 /obj/machinery/meter,
@@ -71093,21 +71067,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/commons/toilet/restrooms)
-"mzU" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/item/healthanalyzer,
-/obj/item/hand_labeler,
-/turf/open/floor/iron/dark,
-/area/command/bridge)
 "mzV" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -72376,6 +72335,25 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/service/bar/atrium)
+"nlJ" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/item/healthanalyzer,
+/obj/item/hand_labeler,
+/obj/item/storage/secure/safe/caps_spare{
+	pixel_x = 5;
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark,
+/area/command/bridge)
 "nmc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
@@ -72907,47 +72885,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/bar)
-"nEA" = (
-/obj/machinery/modular_computer/console/preset/id{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/machinery/button/door{
-	id = "hopqueue";
-	name = "Queue Shutters Toggle";
-	pixel_x = 24;
-	pixel_y = -6;
-	req_access_txt = "57"
-	},
-/obj/machinery/button/door{
-	id = "hop";
-	name = "Privacy Shutters Toggle";
-	pixel_x = 24;
-	pixel_y = 6;
-	req_access_txt = "57"
-	},
-/obj/machinery/button/flasher{
-	id = "hopflash";
-	pixel_x = 36;
-	pixel_y = 6
-	},
-/obj/machinery/light_switch{
-	pixel_x = 36;
-	pixel_y = -6
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/button/ticket_machine{
-	name = "Increment Ticket Counter";
-	pixel_x = 24;
-	pixel_y = 24
-	},
-/turf/open/floor/iron/dark,
-/area/command/heads_quarters/hop)
 "nFz" = (
 /obj/machinery/light{
 	dir = 8
@@ -76305,19 +76242,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
-"ptH" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
-/obj/structure/bed/dogbed/cayenne{
-	name = "Lia's bed"
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 24
-	},
-/mob/living/simple_animal/hostile/carp/cayenne/lia,
-/turf/open/floor/iron/dark,
-/area/command/heads_quarters/hos)
 "ptQ" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -77517,6 +77441,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/maintenance/disposal/incinerator)
+"qcc" = (
+/obj/machinery/modular_computer/console/preset/engineering{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/command/bridge)
 "qcj" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -78097,6 +78030,48 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
+"quj" = (
+/obj/machinery/modular_computer/console/preset/id{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/button/door{
+	id = "hopqueue";
+	name = "Queue Shutters Toggle";
+	pixel_x = 24;
+	pixel_y = -6;
+	req_access_txt = "57"
+	},
+/obj/machinery/button/door{
+	id = "hop";
+	name = "Privacy Shutters Toggle";
+	pixel_x = 24;
+	pixel_y = 6;
+	req_access_txt = "57"
+	},
+/obj/machinery/button/flasher{
+	id = "hopflash";
+	pixel_x = 36;
+	pixel_y = 6
+	},
+/obj/machinery/light_switch{
+	pixel_x = 36;
+	pixel_y = -6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/button/ticket_machine{
+	name = "Increment Ticket Counter";
+	pixel_x = 24;
+	pixel_y = 24
+	},
+/obj/item/paper/fluff/ids_for_dummies,
+/turf/open/floor/iron/dark,
+/area/command/heads_quarters/hop)
 "qur" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -81632,6 +81607,24 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/storage/primary)
+"ssk" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/food/dough,
+/obj/item/food/dough,
+/obj/item/kitchen/rollingpin,
+/obj/item/kitchen/rollingpin,
+/obj/item/paper/crumpled{
+	info = "Hey whoever designed this shithole didn't give us space to install the produce computer so it's in maintenance near the theatre.";
+	name = "hastily written note"
+	},
+/turf/open/floor/iron/dark,
+/area/service/kitchen)
 "ssH" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -85425,19 +85418,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
 /area/engineering/atmos)
-"uAo" = (
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/machinery/status_display/evac{
-	pixel_x = 32;
-	pixel_y = 32
-	},
-/turf/open/floor/iron/dark,
-/area/command/bridge)
 "uAx" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical{
@@ -87513,6 +87493,19 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/chemistry)
+"vFz" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/structure/bed/dogbed/cayenne{
+	name = "Lia's bed"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 24
+	},
+/mob/living/simple_animal/hostile/carp/lia,
+/turf/open/floor/iron/dark,
+/area/command/heads_quarters/hos)
 "vGA" = (
 /obj/machinery/camera{
 	c_tag = "Prison Recreation";
@@ -88161,6 +88154,11 @@
 /obj/structure/grille,
 /turf/closed/wall/r_wall/rust,
 /area/engineering/atmos)
+"vVQ" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/poison/giant_spider/hunter/scrawny,
+/turf/open/floor/plating,
+/area/maintenance/department/electrical)
 "vVX" = (
 /obj/structure/flora/ausbushes/palebush{
 	icon_state = "fullgrass_2"
@@ -112399,7 +112397,7 @@ lKu
 jbJ
 xKI
 nhS
-ptH
+vFz
 miz
 dUp
 aeu
@@ -121367,7 +121365,7 @@ dbG
 yfO
 vPR
 egY
-nEA
+quj
 ghb
 spu
 nQy
@@ -122897,7 +122895,7 @@ tPZ
 jyz
 wxl
 eJz
-uAo
+qcc
 bnA
 hCz
 egH
@@ -123154,7 +123152,7 @@ tPZ
 tPZ
 fno
 prS
-mzU
+nlJ
 bnA
 xoS
 kFu
@@ -124427,7 +124425,7 @@ aox
 aox
 buB
 ajq
-akM
+iKW
 uuQ
 sox
 ref
@@ -126489,7 +126487,7 @@ gJT
 eUX
 nYW
 lrp
-jAW
+ssk
 kzR
 vxV
 vLb
@@ -133141,7 +133139,7 @@ aeu
 cLs
 ahQ
 aiq
-ajD
+eaM
 cMq
 alW
 anl
@@ -133400,7 +133398,7 @@ cLs
 cLH
 cMg
 cMt
-cME
+vVQ
 cMr
 cLs
 akI
