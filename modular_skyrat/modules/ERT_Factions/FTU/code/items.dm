@@ -104,17 +104,19 @@
 	/obj/item/gun/ballistic/automatic/pistol/pdh/pulse/golden_eagle
 	name = "\improper FTU PDH-6G 'Sea Serpent' Magnum"
 	desc = "A custom-made high-power combat pistol seen in the hands of high ranking FTU Mercenaries and important executives, with a custom 24-karat gold finish and green laser sight. It has a chinese dragon engraved along its slide."
-	icon_state = "pdh_alt"
+	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
+	icon_state = "eagle"
 	can_suppress = FALSE
 	mag_display = TRUE
-	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
-	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
+	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/serpent_fire.ogg'
+	fire_sound_volume = 100
+	rack_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/magnum_slide.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/pulse/12mm/SAPHE
 	can_suppress = FALSE
-	fire_delay = 6
+	fire_delay = 25 //Mind your wrists.
 	fire_sound_volume = 110
 	rack_sound_volume = 110
 	spread = 1
