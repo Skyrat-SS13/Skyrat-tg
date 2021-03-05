@@ -147,13 +147,13 @@ There are several things that need to be remembered:
 
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
-	remove_overlay(ID_CARD_LAYER)
+	//remove_overlay(ID_CARD_LAYER) //SKYRAT EDIT REMOVAL - Ugly ID
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ID) + 1]
 		inv.update_appearance()
 
-	var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER]
+	//var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER] //SKYRAT EDIT REMOVAL - Ugly ID
 
 	if(wear_id)
 		wear_id.screen_loc = ui_id
@@ -161,6 +161,8 @@ There are several things that need to be remembered:
 			client.screen += wear_id
 		update_observer_view(wear_id)
 
+		//SKYRAT EDIT REMOVAL BEGIN - Ugly ID
+		/*
 		//TODO: add an icon file for ID slot stuff, so it's less snowflakey
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = 'icons/mob/clothing/id.dmi')
 		if(OFFSET_ID in dna.species.offset_features)
@@ -177,9 +179,11 @@ There are several things that need to be remembered:
 				id_card_overlay.pixel_y += dna.species.offset_features[OFFSET_ID][2]
 
 			overlays_standing[ID_CARD_LAYER] = id_card_overlay
+		*/
+		//SKYRAT EDIT REMOVAL END - Ugly ID
 
 	apply_overlay(ID_LAYER)
-	apply_overlay(ID_CARD_LAYER)
+	//apply_overlay(ID_CARD_LAYER) //SKYRAT EDIT REMOVAL - Ugly ID
 
 
 /mob/living/carbon/human/update_inv_gloves()
