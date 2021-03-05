@@ -290,7 +290,8 @@
 									ROLE_MONKEY, ROLE_NINJA, ROLE_OPERATIVE,
 									ROLE_OVERTHROW, ROLE_REV, ROLE_REVENANT,
 									ROLE_REV_HEAD, ROLE_SYNDICATE,
-									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE , ROLE_HERETIC), //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV
+									ROLE_TRAITOR, ROLE_WIZARD, ROLE_HIVE , ROLE_HERETIC,
+									ROLE_ASSAULTOP), //ROLE_REV_HEAD is excluded from this because rev jobbans are handled by ROLE_REV //SKYRAT EDIT ADDITION - EXTA_BANS
 									"Skyrat Banning Options" = list(BAN_PACIFICATION)) //SKYRAT EDIT ADDITION - EXTRA_BANS
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' [usr.client.prefs.tgui_fancy ? " onClick='toggle_checkboxes(this, \"_com\")'" : ""]>[department]</label><div class='content'>"
@@ -552,7 +553,7 @@
 		//SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
 		if(BAN_PACIFICATION in roles_to_ban)
 			if(ismob(C.mob))
-				ADD_TRAIT(C.mob, TRAIT_PACIFISM, TRAIT_GENERIC)
+				ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
 		//SKYRAT EDIT END
 	if(roles_to_ban[1] == "Server" && AH)
 		AH.Resolve()
