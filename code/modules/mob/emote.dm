@@ -60,6 +60,9 @@
 	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer, /mob/living/silicon/ai)
+	//SKYRAT EDIT ADDITION START
+	blacklisted = TRUE
+	//SKYRAT EDIT END
 
 /datum/emote/flip/run_emote(mob/user, params , type_override, intentional)
 	. = ..()
@@ -94,6 +97,9 @@
 	hands_use_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+	//SKYRAT EDIT ADDITION START
+	blacklisted = TRUE
+	//SKYRAT EDIT END
 
 /datum/emote/spin/run_emote(mob/user, params ,  type_override, intentional)
 	. = ..()

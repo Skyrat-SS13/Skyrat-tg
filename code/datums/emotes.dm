@@ -28,6 +28,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	var/sound_volume = 25 //Emote volume
 	var/list/allowed_species
+	var/blacklisted = FALSE
 	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()
@@ -48,6 +49,10 @@
 	. = TRUE
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
+	//SKYRAT EDIT ADDITION START
+	if(blacklisted && intentional)
+		return FALSE
+	//SKYRAT EDIT END
 	var/msg = select_message_type(user, intentional)
 	if(params && message_param)
 		msg = select_param(user, params)

@@ -173,13 +173,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/weh.ogg'
 
-/datum/emote/living/dab
-	key = "dab"
-	key_third_person = "dabs"
-	message = "suddenly hits a dab!"
-	emote_type = EMOTE_AUDIBLE
-	hands_use_check = TRUE
-
 /datum/emote/living/mothsqueak
 	key = "msqueak"
 	key_third_person = "lets out a tiny squeak"
@@ -394,9 +387,9 @@
 /datum/emote/living/blep
 	key = "blep"
 	key_third_person = "bleps"
-	message = "bleps their tongue out. Blep."
-	message_AI = "shows an image of a random blepping animal. Blep."
-	message_robot = "bleps their robo-tongue out. Blep."
+	message = "bleps their tongue out."
+	message_AI = "shows an image of a random blepping animal."
+	message_robot = "bleps their robo-tongue out."
 
 /datum/emote/living/bork
 	key = "bork"
