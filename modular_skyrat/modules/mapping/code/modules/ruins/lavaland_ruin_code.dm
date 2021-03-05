@@ -1,4 +1,7 @@
 //SPAWNERS//
+/obj/effect/mob_spawn/human/lavaland_syndicate
+	important_info = "The base is rigged with a self-destruct, DO NOT abandon it or let it fall into enemy hands!"
+
 /obj/effect/mob_spawn/human/lavaland_syndicate/shaftminer
 	name = "Syndicate Shaft Miner"
 	short_desc = "You are a syndicate shaft miner, employed in a top secret research facility developing biological weapons."
