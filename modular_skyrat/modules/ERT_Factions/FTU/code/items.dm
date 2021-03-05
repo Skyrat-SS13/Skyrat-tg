@@ -8,7 +8,7 @@
 	righthand_file = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/righthand.dmi'
 	force = 3
 	force_on = 48
-	block_chance = 70
+	block_chance = 65
 	sharpness = SHARP_EDGED
 	sword_color = null
 	throwforce = 5
@@ -23,6 +23,7 @@
 	armour_penetration = 90
 	attack_verb_on = list("rips", "evaporates", "penetrates", "tears", "lacerates", "impales", "masterfully brutalizes")
 	resistance_flags = FIRE_PROOF
+	damage_type = BURN
 	
 	
 	///////40x32 R37 PULSE RIFLE
