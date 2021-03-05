@@ -55,7 +55,7 @@
 /datum/station_trait/announcement_intern
 	name = "Announcement Intern"
 	trait_type = STATION_TRAIT_NEUTRAL
-	weight = 5
+	weight = 1 //SKYRAT EDIT: - CHANGES INTERN WEIGHT
 	show_in_report = TRUE
 	report_message = "Please be nice to him."
 
