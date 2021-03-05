@@ -221,7 +221,7 @@
 	throw_speed = 1
 	throw_range = 1
 	icon_state = "beartrap"
-	desc = "A trap used to catch bears and other legged creatures."
+	desc = "A trap for catching really big mice."
 	var/armed = 0
 	var/trap_damage = 20
 
