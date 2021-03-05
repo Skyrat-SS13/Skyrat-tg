@@ -11,7 +11,6 @@
 /datum/reagent/cum/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
 	if(!(methods & (INGEST|INJECT|PATCH))) //it is intentional that you can still cumshot people with vapor ;)
-	{
 		if(exposed_mob.client && (exposed_mob.client.prefs.skyrat_toggles & CUMFACE_PREF))
 			var/turf/T = get_turf(exposed_mob)
 			new/obj/effect/decal/cleanable/cum(T)
@@ -24,4 +23,3 @@
 				else
 					exposed_mob.AddComponent(/datum/component/cumfaced, src)
 		qdel(src)
-	}
