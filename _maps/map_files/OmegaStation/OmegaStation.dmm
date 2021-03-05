@@ -11711,20 +11711,6 @@
 	},
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
-"aEo" = (
-/obj/structure/rack,
-/obj/structure/sign/warning/nosmoking{
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/tile/blue/darkblue{
-	dir = 4
-	},
-/obj/item/storage/box/lethalshot,
-/obj/item/storage/box/lethalshot,
-/obj/item/storage/box/lethalshot,
-/turf/open/floor/holofloor/dark,
-/area/service/lawoffice)
 "aEp" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
 	dir = 8
@@ -22571,6 +22557,9 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "bir" = (
@@ -28775,22 +28764,10 @@
 /turf/open/floor/iron/dark,
 /area/security/execution/education)
 "hwT" = (
-/obj/machinery/door/airlock{
-	name = "Law Office";
-	req_access_txt = "38"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 4
+	dir = 10
 	},
-/obj/structure/cable,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron,
+/turf/closed/wall/r_wall,
 /area/service/lawoffice)
 "hxO" = (
 /obj/structure/table/wood,
@@ -29858,9 +29835,24 @@
 /area/science/genetics)
 "iYp" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/door/airlock{
+	name = "Law Office";
+	req_access_txt = "38"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/iron,
 /area/service/lawoffice)
 "iYD" = (
 /obj/structure/table/reinforced,
@@ -30388,6 +30380,20 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
+"jUN" = (
+/obj/structure/rack,
+/obj/structure/sign/warning/nosmoking{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/blue/darkblue{
+	dir = 4
+	},
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/turf/open/floor/holofloor/dark,
+/area/service/lawoffice)
 "jXO" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
@@ -33073,24 +33079,11 @@
 /turf/open/floor/iron,
 /area/science/robotics/mechbay)
 "nYF" = (
-/obj/structure/rack,
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
 	},
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/gun/ballistic/shotgun/riot,
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/tile/blue/darkblue{
-	dir = 1
-	},
-/turf/open/floor/holofloor/dark,
-/area/service/lawoffice)
+/turf/closed/wall/r_wall,
+/area/security/brig)
 "nZi" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
@@ -35718,12 +35711,10 @@
 /turf/open/floor/plating,
 /area/science/storage)
 "rED" = (
-/obj/structure/table/wood,
-/obj/item/paper_bin,
-/obj/item/pen,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "rFm" = (
@@ -38719,23 +38710,22 @@
 /turf/open/floor/iron/dark,
 /area/service/library)
 "sNX" = (
-/obj/machinery/firealarm{
-	pixel_y = 26
+/obj/structure/rack,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot{
+	pixel_x = 3;
+	pixel_y = -3
 	},
-/obj/machinery/camera/motion,
+/obj/item/storage/box/rubbershot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/gun/ballistic/shotgun/riot,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/blue/darkblue{
 	dir = 1
 	},
-/obj/structure/rack,
-/obj/item/storage/box/flashes{
-	pixel_x = 3
-	},
-/obj/item/storage/box/teargas{
-	pixel_x = 1;
-	pixel_y = -2
-	},
-/obj/item/gun/grenadelauncher,
 /turf/open/floor/holofloor/dark,
 /area/service/lawoffice)
 "sOb" = (
@@ -41988,6 +41978,26 @@
 /obj/machinery/nanite_program_hub,
 /turf/open/floor/iron/dark,
 /area/science/nanite)
+"xqQ" = (
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/machinery/camera/motion,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/blue/darkblue{
+	dir = 1
+	},
+/obj/structure/rack,
+/obj/item/storage/box/flashes{
+	pixel_x = 3
+	},
+/obj/item/storage/box/teargas{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/obj/item/gun/grenadelauncher,
+/turf/open/floor/holofloor/dark,
+/area/service/lawoffice)
 "xrf" = (
 /turf/closed/wall/r_wall,
 /area/asteroid/nearstation)
@@ -69849,7 +69859,7 @@ vyx
 qRe
 mcc
 niE
-nYF
+sNX
 qMr
 kiw
 nUk
@@ -70106,7 +70116,7 @@ agF
 aSA
 uoo
 niE
-sNX
+xqQ
 jkl
 tNO
 eew
@@ -70363,7 +70373,7 @@ jxx
 bio
 rED
 niE
-aEo
+jUN
 tgp
 dgV
 fYx
@@ -70619,7 +70629,7 @@ niE
 niE
 hwT
 iYp
-yba
+nYF
 yba
 xyo
 yba
