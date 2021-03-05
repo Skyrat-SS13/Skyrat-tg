@@ -55,6 +55,7 @@
 			changeling.special_role = ROLE_CHANGELING
 			changelings += changeling
 			changeling.restricted_roles = restricted_jobs
+			num_of_changelings++
 		message_admins("The number of changelings should be [num_changelings] and there are currently [num_of_changelings].") //SKYRAT EDIT ADDITION
 		. = ..()
 		if(.) //To ensure the game mode is going ahead
