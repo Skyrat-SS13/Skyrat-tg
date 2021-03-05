@@ -59,14 +59,14 @@
 	..()
 
 /obj/item/reagent_containers/pill/crocin
-	name = "hexacrocin pill"
+	name = "crocin pill"
 	desc = "A safe aphrodisiac."
 	icon_state = "pill_happy"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac = 20)
 	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/pill/hexacrocin
-	name = "crocin pill"
+	name = "hexacrocin pill"
 	desc = "An extremely powerful and addictive aphrodisiac."
 	icon_state = "pill_happy"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac = 20)
