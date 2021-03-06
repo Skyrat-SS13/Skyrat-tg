@@ -51,14 +51,17 @@
 	else
 		user.visible_message("<span class='warning'>[user] starts masturbating onto [M]!</span>", "<span class='danger'>You start masturbating onto [M]!</span>")
 	if(do_after(user,60))
-		if(M==user)
-			user.visible_message("<span class='warning'>[user] cums on themself!</span>", "<span class='danger'>You cum on yourself!</span>")
+		if(proximity)
+			if(M==user)
+				user.visible_message("<span class='warning'>[user] cums on themself!</span>", "<span class='danger'>You cum on yourself!</span>")
+			else
+				user.visible_message("<span class='warning'>[user] cums on [M]!</span>", "<span class='danger'>You cum on [M]!</span>")
+			R.expose(M, TOUCH)
+			if(prob(40))
+				user.emote("moan")
+			qdel(src)
 		else
-			user.visible_message("<span class='warning'>[user] cums on [M]!</span>", "<span class='danger'>You cum on [M]!</span>")
-		R.expose(M, TOUCH)
-		if(prob(40))
-			user.emote("moan")
-		qdel(src)
+			to_chat(user, "<span class='danger'>[M] moved out of the way!</span>")
 //jerk off into bottles
 /obj/item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
