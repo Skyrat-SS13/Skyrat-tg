@@ -1,7 +1,7 @@
 /datum/emote/living/cum
 	key = "cum"
 	key_third_person = "cums"
-	cooldown = 3 SECONDS
+	cooldown = 30 SECONDS
 
 /datum/emote/living/cum/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -10,11 +10,12 @@
 
 	var/obj/item/coomer = new /obj/item/coom(user)
 	var/mob/living/carbon/human/H = user
-	if(user.put_in_hands(coomer) && H.dna.species.mutant_bodyparts["testicles"])
+	if(user.put_in_hands(coomer) && H.dna.species.mutant_bodyparts["testicles"] && H.dna.species.mutant_bodyparts["penis"])
+
 		to_chat(user, "<span class='notice'>You mentally prepare yourself to masturbate.</span>")
 	else
 		qdel(coomer)
-		to_chat(user, "<span class='warning'>You're incapable of cumming.</span>")
+		to_chat(user, "<span class='warning'>You're incapable of masturbating.</span>")
 
 /obj/item/coom
 	name = "cum"
@@ -34,6 +35,14 @@
 		return
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
+	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
+	if(spriteP.is_hidden(H))
+		to_chat(user, "<span class='notice'>You need to expose your penis in order to masturbate.</span>")
+		return
+	else if(P.aroused != AROUSAL_FULL)
+		to_chat(user, "<span class='notice'>You need to be aroused in order to masturbate.</span>")
+		return
 	var/cum_volume = G.genital_size*5+5
 	var/datum/reagents/R = new/datum/reagents(50)
 	R.add_reagent(/datum/reagent/cum, cum_volume)
@@ -55,9 +64,17 @@
 	. = ..()
 	if(!proximity)
 		return
+	var/mob/living/carbon/human/H = user
+	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
+	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
+	if(spriteP.is_hidden(H))
+		to_chat(user, "<span class='notice'>You need to expose your penis out in order to masturbate.</span>")
+		return
+	else if(P.aroused != AROUSAL_FULL)
+		to_chat(user, "<span class='notice'>You need to be aroused in order to masturbate.</span>")
+		return
 	if(target.is_refillable() && target.is_drainable())
-		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
 		var/cum_volume = G.genital_size*5+5
 		if(target.reagents.holder_full())
 			to_chat(user, "<span class='warning'>[target] is full.</span>")
