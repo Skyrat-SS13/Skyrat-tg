@@ -1,3 +1,5 @@
+//SKYRAT EDIT START
+/*
 // Banana
 /obj/item/seeds/banana
 	name = "pack of banana seeds"
@@ -144,3 +146,5 @@
 /obj/item/grown/bananapeel/specialpeel/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
+*/
+//SKYRAT EDIT END
