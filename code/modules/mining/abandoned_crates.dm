@@ -220,7 +220,7 @@
 				mine.set_anchored(FALSE)
 				mine.move_resist = MOVE_RESIST_DEFAULT
 			*/
-			new /obj/item/broken_bottle(src)
+			new /obj/item/construction/rcd(src)
 			//SKYRAT EDIT END
 		if(97)
 			for(var/i in 1 to 4)
