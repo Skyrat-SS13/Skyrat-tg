@@ -184,7 +184,12 @@
 		if(77 to 78)
 			new /obj/item/toy/plush/lizardplushie(src)
 		if(79 to 80)
+			//SKYRAT EDIT REMOVAL START
+			/*
 			new /obj/item/stack/sheet/mineral/bananium(src, 10)
+			*/
+			new /obj/item/coin/titanium(src)
+			//SKYRAT EDIT REMOVAL END
 		if(81 to 82)
 			new /obj/item/bikehorn/airhorn(src)
 		if(83 to 84)
