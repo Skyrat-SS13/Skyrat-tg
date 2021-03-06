@@ -96,6 +96,13 @@ const setupApp = () => {
   // SKYRAT EDIT ADDITION - UI
   based_winset();
 
+  // Resize the panel to match the non-browser output
+  Byond.winget('output').then(output => {
+    Byond.winset('browseroutput', {
+      'size': output.size,
+    });
+  });
+
   // Enable hot module reloading
   if (module.hot) {
     setupHotReloading();
