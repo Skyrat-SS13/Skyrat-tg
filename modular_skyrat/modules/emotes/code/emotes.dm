@@ -395,7 +395,7 @@
 	key = "twirl"
 	key_third_person = "twirls"
 	message = "twirls around on their foot!"
-	mob_type_allowed_typecache = list(/mob/living/carbon))
+	mob_type_allowed_typecache = list(/mob/living/carbon)
 
 /datum/emote/living/bork
 	key = "bork"
