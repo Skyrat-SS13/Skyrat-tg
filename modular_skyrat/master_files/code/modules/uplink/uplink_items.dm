@@ -286,12 +286,6 @@
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/hacker
 	cost = 25
 
-/datum/uplink_item/loadout_skyrat/sniper
-	name = "Hitman bundle"
-	desc = "Carry out efficient and likely not-so-discreet assassinations with this unique sniping kit. Carrying case not included."
-	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/sniper
-	cost = 25
-
 /datum/uplink_item/loadout_skyrat/metaops
 	name = "Bulldog Operative bundle"
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
