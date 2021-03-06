@@ -188,7 +188,7 @@
 			/*
 			new /obj/item/stack/sheet/mineral/bananium(src, 10)
 			*/
-			new /obj/item/coin/titanium(src)
+			new /obj/item/stack/spacecash/c1000(src)
 			//SKYRAT EDIT REMOVAL END
 		if(81 to 82)
 			new /obj/item/bikehorn/airhorn(src)
