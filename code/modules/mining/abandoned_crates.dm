@@ -212,11 +212,16 @@
 		if(95)
 			new /obj/item/toy/plush/nukeplushie(src)
 		if(96)
+			//SKYRAT EDIT START
+			/*
 			new /obj/item/banhammer(src)
 			for(var/i in 1 to 3)
 				var/obj/effect/mine/sound/bwoink/mine = new (src)
 				mine.set_anchored(FALSE)
 				mine.move_resist = MOVE_RESIST_DEFAULT
+			*/
+			new /obj/item/broken_bottle(src)
+			//SKYRAT EDIT END
 		if(97)
 			for(var/i in 1 to 4)
 				new /obj/item/clothing/mask/balaclava(src)
