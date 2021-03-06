@@ -143,11 +143,22 @@ Charged extracts:
 
 /obj/item/slimecross/charged/pyrite
 	colour = "pyrite"
+	//SKYRAT EDIT START
+	/*
 	effect_desc = "Creates bananium. Oh no."
+	*/
+	effect_desc = "Creates a rainbow crayon."
+	//SKYRAT EDIT END
 
 /obj/item/slimecross/charged/pyrite/do_effect(mob/user)
+	//SKYRAT EDIT START
+	/*
 	new /obj/item/stack/sheet/mineral/bananium(get_turf(user), 10)
 	user.visible_message("<span class='warning'>[src] solidifies with a horrifying banana stench!</span>")
+	*/
+	new /obj/item/toy/crayon/rainbow(get_turf(user))
+	user.visible_message("<span class='notice'>[src] morphs it's shape into a narrow cylinder, gaining a rainbow color!</span>")
+	//SKYRAT EDIT END
 	..()
 
 /obj/item/slimecross/charged/red
