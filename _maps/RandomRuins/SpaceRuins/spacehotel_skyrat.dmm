@@ -308,6 +308,9 @@
 /obj/structure/chair/sofa/corp/right{
 	dir = 1
 	},
+/obj/structure/window/reinforced/spawner/north{
+	dir = 2
+	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel)
 "bQ" = (
@@ -892,16 +895,18 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel)
 "fI" = (
-/obj/machinery/button/door{
-	id = "Dorm3";
-	name = "privacy button";
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "Dorm3";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -26;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_4)
@@ -932,16 +937,18 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_4)
 "fW" = (
-/obj/machinery/button/door{
-	id = "Dorm4";
-	name = "privacy button";
-	pixel_y = 24
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "Dorm4";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = 26;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_1)
@@ -1218,16 +1225,18 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel/pool)
 "hp" = (
-/obj/machinery/button/door{
-	id = "Dorm2";
-	name = "privacy button";
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "Dorm2";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -26;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_5)
@@ -1278,16 +1287,18 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_6)
 "hy" = (
-/obj/machinery/button/door{
-	id = "Dorm1";
-	name = "privacy button";
-	pixel_y = -24
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "Dorm1";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -26;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_6)
@@ -3010,13 +3021,6 @@
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
-"nh" = (
-/obj/structure/cable,
-/obj/structure/sign/painting/library{
-	pixel_y = -32
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/hotel)
 "ni" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
 	dir = 8
@@ -3028,10 +3032,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/obj/effect/turf_decal/siding/wood,
 /obj/structure/sign/painting/library{
 	pixel_y = 32
 	},
-/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel)
 "nk" = (
@@ -3053,6 +3057,9 @@
 "nx" = (
 /obj/structure/chair/sofa/corp/left{
 	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/north{
+	dir = 2
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel)
@@ -3347,10 +3354,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/effect/turf_decal/siding/wood,
 /obj/structure/sign/painting/library{
 	pixel_y = 32
 	},
-/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel)
 "qf" = (
@@ -3777,12 +3784,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_3)
-"uI" = (
-/obj/structure/sign/painting/library{
-	pixel_y = 32
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/hotel)
 "uJ" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -3985,16 +3986,18 @@
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel)
 "wN" = (
-/obj/machinery/button/door{
-	id = "Dorm6";
-	name = "privacy button";
-	pixel_y = 24
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "Dorm6";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = 26;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_2)
@@ -4022,6 +4025,7 @@
 /area/ruin/space/has_grav/hotel/guestroom/room_2)
 "xd" = (
 /obj/structure/chair/sofa/corp/right,
+/obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel)
 "xe" = (
@@ -4195,11 +4199,11 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/security)
 "yw" = (
-/obj/structure/sign/painting/library{
-	pixel_y = -32
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
+	},
+/obj/structure/sign/painting/library{
+	pixel_y = -32
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel)
@@ -4328,6 +4332,7 @@
 /area/ruin/space/has_grav/hotel/sauna)
 "zr" = (
 /obj/structure/chair/sofa/corp/left,
+/obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel)
 "zv" = (
@@ -6552,6 +6557,15 @@
 /obj/machinery/biogenerator,
 /obj/machinery/light,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/hotel/bar)
+"Tv" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/light_switch{
+	pixel_x = 24
+	},
+/turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
 "Ty" = (
 /obj/structure/cable,
@@ -9307,7 +9321,7 @@ iA
 iA
 VK
 Kf
-Kf
+Tv
 Kf
 Kf
 nX
@@ -10408,14 +10422,14 @@ di
 WS
 Eq
 di
-nh
+KK
 am
 nj
 bP
 xd
 yw
 am
-uI
+fa
 eG
 eX
 gP
@@ -10485,7 +10499,7 @@ nx
 zr
 yw
 am
-uI
+fa
 eG
 eX
 fu
