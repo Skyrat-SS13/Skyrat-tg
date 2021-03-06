@@ -88,7 +88,7 @@
 	name = "CQC+ Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat and how to deflect projectiles before self-destructing."
 	item = /obj/item/book/granter/martial/cqc/plus
-	cost = 40
+	cost = 30
 	surplus = 0
 	cant_discount = TRUE
 
