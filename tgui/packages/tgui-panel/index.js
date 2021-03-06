@@ -93,8 +93,6 @@ const setupApp = () => {
     'pos': '0x0',
     'size': '0x0',
   });
-  // SKYRAT EDIT ADDITION - UI
-  based_winset();
 
   // Resize the panel to match the non-browser output
   Byond.winget('output').then(output => {
@@ -119,14 +117,6 @@ const setupApp = () => {
       renderApp();
     });
   }
-};
-
-// SKYRAT EDIT ADDITION - UI
-const based_winset = async (based_on_what = 'output') => {
-  const winget_output = await Byond.winget(based_on_what);
-  Byond.winset('browseroutput', {
-    'size': winget_output["size"],
-  });
 };
 
 setupApp();
