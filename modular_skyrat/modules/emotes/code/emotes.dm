@@ -391,6 +391,12 @@
 	message_AI = "shows an image of a random blepping animal."
 	message_robot = "bleps their robo-tongue out."
 
+/datum/emote/living/carbon/twirl
+	key = "twirl"
+	key_third_person = "twirls"
+	message = "twirls around on their foot!"
+	mob_type_allowed_typecache = list(/mob/living/carbon))
+
 /datum/emote/living/bork
 	key = "bork"
 	key_third_person = "borks"
