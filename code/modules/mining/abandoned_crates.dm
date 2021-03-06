@@ -196,7 +196,12 @@
 		if(88)
 			new /obj/item/reagent_containers/food/drinks/bottle/lizardwine(src)
 		if(89)
+			//SKYRAT EDIT START
+			/*
 			new /obj/item/melee/transforming/energy/sword/bananium(src)
+			*/
+			new /obj/item/stack/sheet/mineral/gold(src, 5)
+			//SKYRAT EDIT END
 		if(90)
 			new /obj/item/dnainjector/wackymut(src)
 		if(91)
