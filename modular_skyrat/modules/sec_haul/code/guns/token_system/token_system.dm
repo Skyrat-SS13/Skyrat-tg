@@ -38,7 +38,7 @@
 	else
 		to_chat(redeemer, "<span class='warning'>[dispensed] falls onto the floor!</span>")
 	playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
-	to_chat(redeemer, "Thank you for redeeming your token. Remember, you can reskin your magazines by alt+clicking them.")
+	to_chat(redeemer, "Thank you for redeeming your token. Remember. Do NOT take lethal ammo without permission or good reasoning.")
 	SSblackbox.record_feedback("tally", "armament_token_redeemed", 1, dispensed)
 	qdel(token)
 
@@ -118,7 +118,7 @@
 	name = "primary armament holochip"
 	desc = "A holochip used in any armament vendor, this is for main arms. Do not bend."
 	icon_state = "token_primary"
-	minimum_sec_level = SEC_LEVEL_RED
+	minimum_sec_level = SEC_LEVEL_AMBER
 
 /obj/item/armament_token/primary/get_available_gunsets()
   return list(
@@ -150,7 +150,7 @@
 	desc = "A holochip used in any armament vendor, this is for energy weapons. Do not bend."
 	icon_state = "token_energy"
 	custom_premium_price = PAYCHECK_HARD * 3
-	minimum_sec_level = SEC_LEVEL_BLUE
+	minimum_sec_level = SEC_LEVEL_RED
 
 /obj/item/armament_token/energy/get_available_gunsets()
   return list(

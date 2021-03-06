@@ -183,7 +183,7 @@
 	// These items are preserved when the process() despawn proc occurs.
 	var/static/list/preserve_items = typecacheof(list(
 		/obj/item/hand_tele,
-		/obj/item/card/id/captains_spare,
+		/obj/item/card/id/advanced/gold/captains_spare,
 		/obj/item/aicard,
 		/obj/item/mmi,
 		/obj/item/paicard,

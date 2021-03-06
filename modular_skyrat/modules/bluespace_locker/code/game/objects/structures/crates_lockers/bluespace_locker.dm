@@ -186,7 +186,7 @@
 	blocks_air = 1
 	name = "holographic projection"
 	desc = "A holographic projection of the area surrounding the bluespace locker"
-	flags_1 = NOJAUNT_1
+	turf_flags = NOJAUNT
 	plane = FLOOR_PLANE // this makes it work don't ask why, none of this code was commented. Without this it only shows overlays.
 	var/turf/internal_origin
 	var/turf/external_origin
