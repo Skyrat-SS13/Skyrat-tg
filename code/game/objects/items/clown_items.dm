@@ -220,6 +220,8 @@
 	icon_state = "gold_horn"
 	inhand_icon_state = "gold_horn"
 	worn_icon_state = "horn_gold"
+	//SKYRAT EDIT REMOVAL START
+	/*
 	COOLDOWN_DECLARE(golden_horn_cooldown)
 
 /obj/item/bikehorn/golden/attack()
@@ -238,6 +240,8 @@
 		if(M.can_hear())
 			M.emote("flip")
 	COOLDOWN_START(src, golden_horn_cooldown, 1 SECONDS)
+*/
+//SKYRAT EDIT REMOVAL END
 
 //canned laughter
 /obj/item/reagent_containers/food/drinks/soda_cans/canned_laughter
