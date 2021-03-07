@@ -338,6 +338,7 @@
 	desc = "A helmet made from durathread and leather."
 	icon_state = "durathread"
 	inhand_icon_state = "durathread"
+	mutant_variants = NONE
 	resistance_flags = FLAMMABLE
 	armor = list(MELEE = 20, BULLET = 10, LASER = 30, ENERGY = 40, BOMB = 15, BIO = 0, RAD = 0, FIRE = 40, ACID = 50, WOUND = 5)
 	strip_delay = 60
