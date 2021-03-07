@@ -6,51 +6,36 @@
 
 // Themes
 import './styles/main.scss';
-import './styles/themes/light.scss';
+import './styles/themes/abductor.scss';
+import './styles/themes/cardtable.scss';
+import './styles/themes/hackerman.scss';
+import './styles/themes/malfunction.scss';
+import './styles/themes/neutral.scss';
+import './styles/themes/ntos.scss';
+import './styles/themes/paper.scss';
+import './styles/themes/retro.scss';
+import './styles/themes/syndicate.scss';
+import './styles/themes/wizard.scss';
 
 import { perf } from 'common/perf';
-import { combineReducers } from 'common/redux';
 import { setupHotReloading } from 'tgui-dev-server/link/client';
-import { setupGlobalEvents } from 'tgui/events';
-import { captureExternalLinks } from 'tgui/links';
-import { createRenderer } from 'tgui/renderer';
-import { configureStore, StoreProvider } from 'tgui/store';
-import { audioMiddleware, audioReducer } from './audio';
-import { chatMiddleware, chatReducer } from './chat';
-import { gameMiddleware, gameReducer } from './game';
-import { setupPanelFocusHacks } from './panelFocus';
-import { pingMiddleware, pingReducer } from './ping';
-import { settingsMiddleware, settingsReducer } from './settings';
-import { telemetryMiddleware } from './telemetry';
+import { setupHotKeys } from './hotkeys';
+import { captureExternalLinks } from './links';
+import { createRenderer } from './renderer';
+import { configureStore, StoreProvider } from './store';
+import { setupGlobalEvents } from './events';
 
 perf.mark('inception', window.performance?.timing?.navigationStart);
 perf.mark('init');
 
-const store = configureStore({
-  reducer: combineReducers({
-    audio: audioReducer,
-    chat: chatReducer,
-    game: gameReducer,
-    ping: pingReducer,
-    settings: settingsReducer,
-  }),
-  middleware: {
-    pre: [
-      chatMiddleware,
-      pingMiddleware,
-      telemetryMiddleware,
-      settingsMiddleware,
-      audioMiddleware,
-      gameMiddleware,
-    ],
-  },
-});
+const store = configureStore();
 
 const renderApp = createRenderer(() => {
-  const { Panel } = require('./Panel');
+  const { getRoutedComponent } = require('./routes');
+  const Component = getRoutedComponent(store);
   return (
     <StoreProvider store={store}>
-      <Panel />
+      <Component />
     </StoreProvider>
   );
 });
@@ -62,16 +47,14 @@ const setupApp = () => {
     return;
   }
 
-  setupGlobalEvents({
-    ignoreWindowFocus: true,
-  });
-  setupPanelFocusHacks();
+  setupGlobalEvents();
+  setupHotKeys();
   captureExternalLinks();
 
-  // Subscribe for Redux state updates
+  // Subscribe for state updates
   store.subscribe(renderApp);
 
-  // Subscribe for bankend updates
+  // Dispatch incoming messages
   window.update = msg => store.dispatch(Byond.parseJson(msg));
 
   // Process the early update queue
@@ -83,36 +66,14 @@ const setupApp = () => {
     window.update(msg);
   }
 
-  // Unhide the panel
-  Byond.winset('output', {
-    'is-visible': false,
-  });
-  Byond.winset('browseroutput', {
-    'is-visible': true,
-    'is-disabled': false,
-    'pos': '0x0',
-    'size': '0x0',
-  });
-
-  // Resize the panel to match the non-browser output
-  Byond.winget('output').then(output => {
-    Byond.winset('browseroutput', {
-      'size': output.size,
-    });
-  });
-
   // Enable hot module reloading
   if (module.hot) {
     setupHotReloading();
     module.hot.accept([
-      './audio',
-      './chat',
-      './game',
-      './Notifications',
-      './Panel',
-      './ping',
-      './settings',
-      './telemetry',
+      './components',
+      './debug',
+      './layouts',
+      './routes',
     ], () => {
       renderApp();
     });
