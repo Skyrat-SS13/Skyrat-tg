@@ -141,6 +141,7 @@
 	. = ..()
 	if(.)
 		return
+	/* SKYRAT EDIT - removes flypeople eating vomit
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(isflyperson(H))
@@ -155,7 +156,7 @@
 							reagents.remove_reagent(nutri_check.type,nutri_check.volume)
 			reagents.trans_to(H, reagents.total_volume, transfered_by = user)
 			qdel(src)
-
+	*///SKYRAT EDIT END.
 /obj/effect/decal/cleanable/vomit/old
 	name = "crusty dried vomit"
 	desc = "You try not to look at the chunks, and fail."

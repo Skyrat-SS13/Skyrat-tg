@@ -70,6 +70,7 @@
 	name = odd_organ_name()
 	icon_state = pick("brain-x-d", "liver-x", "kidneys-x", "stomach-x", "lungs-x", "random_fly_1", "random_fly_2", "random_fly_3", "random_fly_4", "random_fly_5")
 
+/* SKYRAT EDIT BEGIN - REMOVES VOMIT SPAM.
 /obj/item/organ/stomach/fly/on_life(delta_time, times_fired)
 	if(locate(/datum/reagent/consumable) in reagents.reagent_list)
 		var/mob/living/carbon/body = owner
@@ -79,6 +80,7 @@
 		body.visible_message("<span class='danger'>[body] vomits on the floor!</span>", \
 					"<span class='userdanger'>You throw up on the floor!</span>")
 	return ..()
+*///SKYRAT EDIT END
 
 /obj/item/organ/appendix/fly
 	desc = "You have no idea what the hell this is, or how it manages to keep something alive in any capacity."
