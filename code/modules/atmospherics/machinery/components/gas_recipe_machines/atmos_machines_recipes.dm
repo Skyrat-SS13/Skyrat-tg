@@ -126,7 +126,7 @@ GLOBAL_LIST_INIT(gas_recipe_meta, gas_recipes_list())
 	max_temp = 140
 	reaction_type = ENDOTHERMIC_REACTION
 	energy_release = 15000
-	requirements = list(/datum/gas/plasma = 300)	// SKYRAT EDIT - ORIGINAL VALUE: 25
+	requirements = list(/datum/gas/plasma = 150, /datum/gas/bz = 15)	// SKYRAT EDIT - ORIGINAL: list(/datum/gas/plasma = 25)
 	products = list(/obj/item/stack/sheet/mineral/plasma = 1)
 
 /datum/gas_recipe/crystallizer/crystal_cell
