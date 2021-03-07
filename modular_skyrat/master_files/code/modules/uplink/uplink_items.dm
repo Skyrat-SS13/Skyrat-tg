@@ -89,8 +89,7 @@
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat and how to deflect projectiles before self-destructing."
 	item = /obj/item/book/granter/martial/cqc/plus
 	cost = 30
-	surplus = 0
-	cant_discount = TRUE
+	surplus = 20
 
 /datum/uplink_item/stealthy_weapons/telescopicbaton
 	name = "Telescopic Baton"

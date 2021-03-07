@@ -14,12 +14,11 @@
 		return BULLET_ACT_HIT
 	if(!isturf(A.loc)) //NO MOTHERFLIPPIN MECHS!
 		return BULLET_ACT_HIT
-	if(prob(20)) //Still got a chance to be hit.
-		return BULLET_ACT_HIT
 	if(A.in_throw_mode)
-		A.visible_message("<span class='danger'>[A] dodges the projectile!</span>", "<span class='userdanger'>You dodge out of the way of the projectile, That was close!</span>")
-		A.emote("spin")
+		A.visible_message("<span class='danger'>[A] effortlessly swats the projectile aside! They can block bullets with their bare hands!</span>", "<span class='userdanger'>You deflect the projectile!</span>")
 		playsound(get_turf(A), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
+		P.firer = A
+		P.set_angle(rand(0, 360))//SHING
 		return BULLET_ACT_FORCE_PIERCE
 	return BULLET_ACT_HIT
 
