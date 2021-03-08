@@ -76,7 +76,7 @@
 //Magazine stuff
 
 /obj/item/ammo_box/magazine/m14mm
-	name = "pistol magazine (14mm)"
+	name = "pistol magazine (14mm explosive)"
 	icon = 'modular_skyrat/modules/3516/icons/3516_mag.dmi'
 	icon_state = "14mm-10"
 	base_icon_state = "14mm-10"
@@ -86,13 +86,14 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_casing/c14mm
-	name = "14mm bullet casing"
+	name = "14mm explosive bullet casing"
 	desc = "A 14mm bullet casing. Badass."
 	caliber = CALIBRE_14MM
 	projectile_type = /obj/projectile/bullet/c14mm
 
+//These rounds are fucking explosive rounds, I won't be making mini explosions but I sure as hell will be removing your fuckin' limb.
 /obj/projectile/bullet/c14mm
-	name = "14mm bullet"
+	name = "14mm explosive bullet"
 	damage = 60
 	embedding = list(embed_chance=90, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=9, rip_time=10)
 	dismemberment = 50
