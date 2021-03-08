@@ -341,9 +341,9 @@
 	cost = 25
 
 //Badass section down here
-/datum/uplink_item/loadout_skyrat/silverhand
-	name = "Silverhand Bundle"
-	desc = "Themed after the infamous terrorist(or not), Johnny Silverhand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. \
+/datum/uplink_item/loadout_skyrat/robohand
+	name = "Robohand Bundle"
+	desc = "Themed after the infamous terrorist(or not), Johnny Robohand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. \
 			It comes with a robotic replacement arm. Wake the fuck up, samurai."
-	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/silverhand
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
 	cost = 45

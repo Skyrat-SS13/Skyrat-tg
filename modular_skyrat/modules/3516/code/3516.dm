@@ -30,7 +30,7 @@
 
 //The gun cannot shoot if you do not have a cyborg arm.
 /obj/item/gun/ballistic/automatic/pistol/j3516/afterattack(atom/target, mob/living/user, flag, params)
-	//This is where we are checking if the user has a cybernetic arm to USE the gun. SILVERHAND HAS A SILVER HAND
+	//This is where we are checking if the user has a cybernetic arm to USE the gun. ROBOHAND HAS A ROBO HAND
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/bodypart/selected_hand = H.get_active_hand()
@@ -40,7 +40,7 @@
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/j3516/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message)
-	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny silverhand woosh woosh twirl
+	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand woosh woosh twirl
 	animate(transform = turn(matrix(), 240), time = 2)
 	animate(transform = null, time = 2)
 	drop_bolt(user) //This gun automatically drops the bolt
@@ -69,7 +69,7 @@
 	if (display_message)
 		to_chat(user, "<span class='notice'>You pull the [magazine_wording] out of \the [src].</span>")
 	update_appearance()
-	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny silverhand again
+	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand again
 	animate(transform = turn(matrix(), 240), time = 2)
 	animate(transform = null, time = 2)
 
