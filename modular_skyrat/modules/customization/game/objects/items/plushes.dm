@@ -149,5 +149,5 @@
 	inhand_icon_state = "plushie_ole"
 	attack_verb_continuous = list("headbutts", "plaps")
 	attack_verb_simple = list("headbutt", "plap")
-	squeak_override = list('sound/weapons/punch1.ogg'=1, )
+	squeak_override = list('sound/weapons/punch1.ogg'= 1)
 	young = 1 //No.
