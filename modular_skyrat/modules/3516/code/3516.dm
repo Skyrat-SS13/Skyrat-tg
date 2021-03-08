@@ -24,7 +24,7 @@
 	vary_fire_sound = FALSE
 	rack_sound = 'modular_skyrat/modules/3516/sound/slide.ogg'
 	fire_sound_volume = 100
-	bolt_wording = "slide"
+	bolt_wording = "fuckin' slide"
 
 //Gun actions
 
