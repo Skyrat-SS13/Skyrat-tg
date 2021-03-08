@@ -78,7 +78,7 @@
 /obj/item/ammo_box/magazine/m14mm
 	name = "pistol magazine (14mm explosive)"
 	icon = 'modular_skyrat/modules/3516/icons/3516_mag.dmi'
-	icon_state = "14mm-10"
+	icon_state = "14mm"
 	base_icon_state = "14mm"
 	ammo_type = /obj/item/ammo_casing/c14mm
 	caliber = CALIBRE_14MM
@@ -98,3 +98,5 @@
 	embedding = list(embed_chance=90, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=9, rip_time=10)
 	dismemberment = 50
 	wound_bonus = 50
+	pierces = 1
+	projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
