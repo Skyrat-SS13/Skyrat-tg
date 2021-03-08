@@ -1,5 +1,3 @@
-
-
 /obj/item/skillchip/chameleon/reload
 	name = "Tactical Reload Training"
 	desc = "If used, allows the user to perform tactical and instant reloads on all weapons with a magazine."
