@@ -79,7 +79,7 @@
 	name = "pistol magazine (14mm explosive)"
 	icon = 'modular_skyrat/modules/3516/icons/3516_mag.dmi'
 	icon_state = "14mm-10"
-	base_icon_state = "14mm-10"
+	base_icon_state = "14mm"
 	ammo_type = /obj/item/ammo_casing/c14mm
 	caliber = CALIBRE_14MM
 	max_ammo = 10
