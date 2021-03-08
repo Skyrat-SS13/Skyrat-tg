@@ -347,3 +347,7 @@
 			It comes with a robotic replacement arm. Wake the fuck up, samurai."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
 	cost = 45
+
+/datum/uplink_item/loadout_skyrat/robohand/purchase(mob/user, datum/component/uplink/U)
+	. = ..()
+	notify_ghosts(message = "[user] has purchased the Johnny Robohand bundle, watch him be a badass!", ghost_sound = 'modular_skyrat/modules/3516/sound/wakeup.ogg', source = user) //Everyone needs to know he's a badass
