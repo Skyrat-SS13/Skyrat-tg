@@ -163,4 +163,4 @@
 	attack_verb_simple = list("scuttle", "chitter", "bite")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/spiderplush.ogg' = 1)
 	young = 1 //No.
-	
+
