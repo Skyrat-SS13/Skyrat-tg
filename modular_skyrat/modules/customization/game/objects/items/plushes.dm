@@ -99,7 +99,7 @@
 	inhand_icon_state = "plushie_duffy"
 	attack_verb_continuous = list("flutters", "flaps", "squeaks")
 	attack_verb_simple = list("flutter", "flap", "squeak")
-	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/mothsqueak.ogg'=1)
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/mothsqueak.ogg'= 1)
 
 /obj/item/toy/plush/leaplush
 	name = "Suspicious deer plushie"
