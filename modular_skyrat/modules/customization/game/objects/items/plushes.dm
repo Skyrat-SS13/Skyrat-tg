@@ -135,3 +135,13 @@
 	attack_verb_continuous = list("claws", "hisses", "tail slaps")
 	attack_verb_simple = list("claw", "hiss", "tail slap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+
+/obj/item/toy/plush/szaplush
+	name = "Suspicious spider"
+	desc = "A plushie of a shy looking drider, colored in floortile gray."
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "plushie_sza"
+	inhand_icon_state = "plushie_sza"
+	attack_verb_continuous = list("scuttles", "chitters", "bites")
+	attack_verb_simple = list("scuttle", "chitter", "bite")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/spiderplush.ogg' = 1)

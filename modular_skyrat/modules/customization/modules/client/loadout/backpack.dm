@@ -263,6 +263,10 @@
 	name = "Suspicious lizzy plush"
 	path = /obj/item/toy/plush/oglaplush
 
+/datum/loadout_item/backpack/plushies/szaplush
+	name = "Suspicious spider plushie"
+	path = /obj/item/toy/plush/szaplush
+
 /datum/loadout_item/backpack/plushies/narplush
 	name = "Narsie Plushie"
 	path = /obj/item/toy/plush/narplush
