@@ -140,6 +140,7 @@
 	attack_verb_continuous = list("claws", "bites", "wehs")
 	attack_verb_simple = list("claw", "bite", "weh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+	young = 1 //No.
 
 /obj/item/toy/plush/oleplush
 	name = "Irritable goat plushie"
