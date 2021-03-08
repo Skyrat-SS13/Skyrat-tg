@@ -12,5 +12,7 @@
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
 #define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
 
+#define TRAIT_WEAPON_RELOAD "instant_reload" //Allows the user to instantly reload.
+
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
