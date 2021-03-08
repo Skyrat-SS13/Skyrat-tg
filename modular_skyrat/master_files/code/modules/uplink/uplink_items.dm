@@ -339,3 +339,11 @@
 	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 25
+
+//Badass section down here
+/datum/uplink_item/loadout_skyrat/silverhand
+	name = "Silverhand Bundle"
+	desc = "Themed after the infamous terrorist(or not), Johnny Silverhand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. \
+			It comes with a robotic replacement arm. Wake the fuck up, samurai."
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/silverhand
+	cost = 45
