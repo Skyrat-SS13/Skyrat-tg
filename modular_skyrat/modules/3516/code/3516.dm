@@ -44,7 +44,7 @@
 	animate(transform = turn(matrix(), 240), time = 2)
 	animate(transform = null, time = 2)
 	drop_bolt(user) //This gun automatically drops the bolt
-	rack()
+	rack(user)
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/j3516/eject_magazine(mob/user, display_message, obj/item/ammo_box/magazine/tac_load)
