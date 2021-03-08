@@ -1,0 +1,55 @@
+/datum/action/chameleon_slowdown/
+	name = "Toggle Chameleon Slowdown"
+	button_icon_state = "chameleon_outfit"
+	var/savedslowdown = 0
+
+/datum/action/chameleon_slowdown/New(var/slowdown)
+	..()
+	savedslowdown = slowdown
+
+/datum/action/chameleon_slowdown/Trigger()
+	var/obj/item/clothing/T = target
+	var/slow = T.slowdown
+	T.slowdown = savedslowdown
+	savedslowdown = slow
+	owner.update_equipment_speed_mods()
+
+/datum/action/item_action/chameleon/change/
+	var/datum/action/chameleon_slowdown/slowtoggle
+
+/datum/action/item_action/chameleon/change/update_item(obj/item/picked_item)
+	. = ..()
+	if(istype(target, /obj/item/clothing/))
+		var/obj/item/clothing/T = target
+		var/obj/item/clothing/P = new picked_item
+		T.mutant_variants = P.mutant_variants
+		T.worn_icon_digi = P.worn_icon_digi
+		T.worn_icon_taur_snake = P.worn_icon_taur_snake
+		T.worn_icon_taur_paw = P.worn_icon_taur_paw
+		T.worn_icon_taur_hoof = P.worn_icon_taur_hoof
+		T.worn_icon_muzzled = P.worn_icon_muzzled
+		T.flags_inv = P.flags_inv
+		T.visor_flags_cover = P.visor_flags_cover
+		T.dynamic_hair_suffix = P.dynamic_hair_suffix
+		T.dynamic_fhair_suffix = P.dynamic_fhair_suffix
+		T.slowdown = 0
+		if(P.slowdown)
+			slowtoggle = new(P.slowdown, T)
+			slowtoggle.Grant(owner)
+			slowtoggle.target = T
+		else if(slowtoggle)
+			qdel(slowtoggle)
+		owner.regenerate_icons()
+		qdel(P)
+
+/datum/action/item_action/chameleon/change/Grant(mob/M)
+	. = ..()
+	if(M && (M == owner))
+		if(slowtoggle)
+			slowtoggle.Grant(M)
+
+/datum/action/item_action/chameleon/change/Remove(mob/M)
+	. = ..()
+	if(M && (M == owner))
+		if(slowtoggle)
+			slowtoggle.Remove(M)
