@@ -1,6 +1,6 @@
 #define PROCESSOR_SELECT_RECIPE(movable_input) LAZYACCESS(processor_inputs[type], movable_input.type)
 
-/obj/machinery/processor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/machinery/processor //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "food processor"
 	desc = "An industrial grinder used to process meat and other foods. Keep hands clear of intake area while operating."
 	icon = 'icons/obj/kitchen.dmi'
@@ -65,24 +65,13 @@
 		qdel(what)
 	LAZYREMOVE(processor_contents, what)
 
-//SKYRAT EDIT ADDITION
-/obj/machinery/processor/attack_hand(mob/living/user, list/modifiers)
-	. = ..()
-	if(ishuman(user) && user.Adjacent(src))
-		var/mob/living/carbon/human/H = user
-		if(H.combat_mode)
-			var/obj/item/bodypart/limb = H.get_active_hand()
-			H.visible_message("<span class='danger'>[H] puts their hand in the [src] causing it to be brutally dismembered!</span>", \
-			"<span class='userdanger'>You put your hand in [src] causing it to be torn off, ouch!</span>")
-			playsound(src.loc, 'sound/machines/blender.ogg', 50, TRUE)
-			limb.dismember()
-//SKYRAT EDIT ADDITION END
-
 /obj/machinery/processor/attackby(obj/item/O, mob/living/user, params)
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")
 		return TRUE
 	if(default_deconstruction_screwdriver(user, "processor", "processor1", O))
+		return
+
 	if(default_pry_open(O))
 		return
 
@@ -120,6 +109,19 @@
 		return 1
 	else
 		return ..()
+
+//SKYRAT EDIT ADDITION
+/obj/machinery/processor/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(ishuman(user) && user.Adjacent(src))
+		var/mob/living/carbon/human/H = user
+		if(H.combat_mode)
+			var/obj/item/bodypart/limb = H.get_active_hand()
+			H.visible_message("<span class='danger'>[H] puts their hand in the [src] causing it to be brutally dismembered!</span>", \
+			"<span class='userdanger'>You put your hand in [src] causing it to be torn off, ouch!</span>")
+			playsound(src.loc, 'sound/machines/blender.ogg', 50, TRUE)
+			limb.dismember()
+//SKYRAT EDIT ADDITION END
 
 /obj/machinery/processor/interact(mob/user)
 	if(processing)
