@@ -21,26 +21,26 @@
 	. = ..()
 	if(istype(target, /obj/item/clothing/))
 		var/obj/item/clothing/T = target
-		var/obj/item/clothing/P = new picked_item
-		T.mutant_variants = P.mutant_variants
-		T.worn_icon_digi = P.worn_icon_digi
-		T.worn_icon_taur_snake = P.worn_icon_taur_snake
-		T.worn_icon_taur_paw = P.worn_icon_taur_paw
-		T.worn_icon_taur_hoof = P.worn_icon_taur_hoof
-		T.worn_icon_muzzled = P.worn_icon_muzzled
-		T.flags_inv = P.flags_inv
-		T.visor_flags_cover = P.visor_flags_cover
-		T.dynamic_hair_suffix = P.dynamic_hair_suffix
-		T.dynamic_fhair_suffix = P.dynamic_fhair_suffix
+		var/obj/item/clothing/P = picked_item
+		T.mutant_variants = initial(P.mutant_variants)
+		T.worn_icon_digi = initial(P.worn_icon_digi)
+		T.worn_icon_taur_snake = initial(P.worn_icon_taur_snake)
+		T.worn_icon_taur_paw = initial(P.worn_icon_taur_paw)
+		T.worn_icon_taur_hoof = initial(P.worn_icon_taur_hoof)
+		T.worn_icon_muzzled = initial(P.worn_icon_muzzled)
+		T.flags_inv = initial(P.flags_inv)
+		T.visor_flags_cover = initial(P.visor_flags_cover)
+		T.dynamic_hair_suffix = initial(P.dynamic_hair_suffix)
+		T.dynamic_fhair_suffix = initial(P.dynamic_fhair_suffix)
 		T.slowdown = 0
-		if(P.slowdown)
-			slowtoggle = new(P.slowdown, T)
+		var/slow = initial(P.slowdown)
+		if(slow)
+			slowtoggle = new(slow, T)
 			slowtoggle.Grant(owner)
 			slowtoggle.target = T
 		else if(slowtoggle)
 			qdel(slowtoggle)
 		owner.regenerate_icons()
-		qdel(P)
 
 /datum/action/item_action/chameleon/change/Grant(mob/M)
 	. = ..()
