@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/4032
 
 ## Title: Stuff to accomodate multiple servers talking to the same database.
 
