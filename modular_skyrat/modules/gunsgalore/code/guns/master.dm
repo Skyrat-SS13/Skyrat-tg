@@ -43,6 +43,11 @@
 			return
 	. = ..()
 
+/obj/item/gun/ballistic/AltClick(mob/user)
+	. = ..()
+	if(!internal_magazine && magazine && user.Adjacent(src))
+		eject_magazine(user)
+
 //gun pickup message
 /obj/item/gun/pickup(mob/user)
 	. = ..()
