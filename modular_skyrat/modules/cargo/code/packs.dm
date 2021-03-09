@@ -80,13 +80,13 @@
 	contains = list(/obj/item/clothing/suit/space/hardsuit/medical)
 	crate_name = "medical hardsuit crate"
 
-/datum/supply_pack/medical/advanced_defib
-	name = "Advanced Defibrillator Crate"
-	desc = "Contains a single high-tech NT defibrillator, capable of self-charging and applying reviving shocks through thick clothing materials."
-	cost = CARGO_CRATE_VALUE * 25
-	access = ACCESS_CMO
-	contains = list(/obj/item/defibrillator/compact/combat/loaded/nanotrasen)
-	crate_name = "advanced defibrillator crate"
+/datum/supply_pack/medical/compact_defib
+	name = "Compact Defibrillator Crate"
+	desc = "Contains a single compact defibrillator. Capable of being worn as a belt."
+	cost = CARGO_CRATE_VALUE * 5
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/defibrillator/compact)
+	crate_name = "compact defibrillator crate"
 
 /datum/supply_pack/medical/medigun
 	name = "Experimental Medical Beam Crate"
