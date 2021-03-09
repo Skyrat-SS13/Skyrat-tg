@@ -65,18 +65,10 @@
 		qdel(what)
 	LAZYREMOVE(processor_contents, what)
 
-<<<<<<< HEAD
-/obj/machinery/processor/proc/select_recipe(X)
-	for (var/type in subtypesof(/datum/food_processor_process) - /datum/food_processor_process/mob)
-		var/datum/food_processor_process/recipe = new type()
-		if (!istype(X, recipe.input) || !istype(src, recipe.required_machine))
-			continue
-		return recipe
-
 //SKYRAT EDIT ADDITION
 /obj/machinery/processor/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	if(ishuman(user))
+	if(ishuman(user) && user.Adjacent(src))
 		var/mob/living/carbon/human/H = user
 		if(H.combat_mode)
 			var/obj/item/bodypart/limb = H.get_active_hand()
@@ -86,15 +78,11 @@
 			limb.dismember()
 //SKYRAT EDIT ADDITION END
 
-=======
->>>>>>> 3303894d648 (Processor recipes are now instantiated once and stored in a static list. (#57523))
 /obj/machinery/processor/attackby(obj/item/O, mob/living/user, params)
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")
 		return TRUE
 	if(default_deconstruction_screwdriver(user, "processor", "processor1", O))
-		return
-
 	if(default_pry_open(O))
 		return
 
