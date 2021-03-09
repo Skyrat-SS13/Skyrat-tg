@@ -1,6 +1,6 @@
 // .50 (Sniper)
 
-/obj/projectile/bullet/p50
+/obj/projectile/bullet/p50    /////OVERRIDEN IN MODULAR > BULLETREBALANCE
 	name =".50 bullet"
 	speed = 0.2 //SKYRAT EDIT: Original value (0.4)
 	damage = 70
