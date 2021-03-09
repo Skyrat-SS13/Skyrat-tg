@@ -271,6 +271,10 @@
 /datum/loadout_item/backpack/plushies/oleplush
 	name = "Irritable Goat plushie"
 	path = /obj/item/toy/plush/oleplush
+	
+/datum/loadout_item/backpack/plushies/szaplush
+	name = "Suspicious spider plushie"
+	path = /obj/item/toy/plush/szaplush
 
 /datum/loadout_item/backpack/plushies/narplush
 	name = "Narsie Plushie"
