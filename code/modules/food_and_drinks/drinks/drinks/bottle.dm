@@ -112,12 +112,8 @@
 	if(affecting == BODY_ZONE_HEAD && istype(target, /mob/living/carbon/))
 		head_attack_message = " on the head"
 		if(armor_duration)
-<<<<<<< HEAD
-			//target.apply_effect(min(armor_duration, 200) , EFFECT_KNOCKDOWN)
-			target.StaminaKnockdown(20, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL ABOVE
-=======
-			living_target.apply_effect(min(armor_duration, 200) , EFFECT_KNOCKDOWN)
->>>>>>> c17d046dd1a (glass bottles smash/splash on right click like the rest of bottles and beakers  (#57480))
+			//living_target.apply_effect(min(armor_duration, 200) , EFFECT_KNOCKDOWN)
+			living_target.StaminaKnockdown(20, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL ABOVE
 
 	//Display an attack message.
 	if(target != user)
