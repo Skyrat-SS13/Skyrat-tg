@@ -43,11 +43,6 @@
 			return
 	. = ..()
 
-/obj/item/gun/ballistic/AltClick(mob/user)
-	. = ..()
-	if(!internal_magazine && magazine && user.Adjacent(src))
-		eject_magazine(user)
-
 //gun pickup message
 /obj/item/gun/pickup(mob/user)
 	. = ..()
@@ -173,6 +168,8 @@
 		if(jammed)
 			jam(TRUE, user)
 			return
+	if(!internal_magazine && magazine && user.Adjacent(src))
+		eject_magazine(user)
 	. = ..()
 
 /obj/item/gun/ballistic/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
