@@ -21,6 +21,12 @@
 			"player_ckey" = player_ckey,
 			"must_apply_to_admins" = !!(GLOB.admin_datums[player_ckey] || GLOB.deadmins[player_ckey]),
 		)
+		var/ssqlname = CONFIG_GET(string/serversqlname)  // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+		var/server_check
+		if(CONFIG_GET(flag/respect_global_bans))
+			server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
+		else
+			server_check = "server_name = '[ssqlname]'" // SKYRAT EDIT ADDITION END - MULTISERVER
 		var/sql_roles
 		if(islist(roles))
 			var/list/sql_roles_list = list()
@@ -31,7 +37,7 @@
 		else
 			values["role"] = roles
 			sql_roles = ":role"
-		var/datum/db_query/query_check_ban = SSdbcore.NewQuery({"
+		var/datum/db_query/query_check_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 			SELECT 1
 			FROM [format_table_name("ban")]
 			WHERE
@@ -39,6 +45,7 @@
 				role IN ([sql_roles]) AND
 				unbanned_datetime IS NULL AND
 				(expiration_time IS NULL OR expiration_time > NOW())
+				AND [server_check]
 				AND (NOT :must_apply_to_admins OR applies_to_admins = 1)
 		"}, values)
 		if(!query_check_ban.warn_execute())
@@ -54,7 +61,13 @@
 /proc/is_banned_from_with_details(player_ckey, player_ip, player_cid, role)
 	if(!player_ckey && !player_ip && !player_cid)
 		return
-	var/datum/db_query/query_check_ban = SSdbcore.NewQuery({"
+	var/ssqlname = CONFIG_GET(string/serversqlname)   // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	var/server_check
+	if(CONFIG_GET(flag/respect_global_bans))
+		server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
+	else
+		server_check = "server_name = '[ssqlname]'"  // SKYRAT EDIT ADDITION END - MULTISERVER
+	var/datum/db_query/query_check_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 		SELECT
 			id,
 			bantime,
@@ -71,6 +84,7 @@
 		WHERE role = :role
 			AND (ckey = :ckey OR ip = INET_ATON(:ip) OR computerid = :computerid)
 			AND unbanned_datetime IS NULL
+			AND [server_check]
 			AND (expiration_time IS NULL OR expiration_time > NOW())
 		ORDER BY bantime DESC
 	"}, list("role" = role, "ckey" = player_ckey, "ip" = player_ip, "computerid" = player_cid))
@@ -90,8 +104,14 @@
 		var/is_admin = FALSE
 		if(GLOB.admin_datums[C.ckey] || GLOB.deadmins[C.ckey])
 			is_admin = TRUE
+		var/ssqlname = CONFIG_GET(string/serversqlname)   // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+		var/server_check
+		if(CONFIG_GET(flag/respect_global_bans))
+			server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
+		else
+			server_check = "server_name = '[ssqlname]'"  // SKYRAT EDIT ADDITION END - MULTISERVER
 		var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
-			"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())",
+			"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())  AND [server_check]",  // SKYRAT EDIT CHANGE - MULTISERVER
 			list("ckey" = C.ckey)
 		)
 		if(!query_build_ban_cache.warn_execute())
@@ -103,7 +123,7 @@
 			C.ban_cache[query_build_ban_cache.item[1]] = TRUE
 		qdel(query_build_ban_cache)
 
-/datum/admins/proc/ban_panel(player_key, player_ip, player_cid, role, duration = 1440, applies_to_admins, reason, edit_id, page, admin_key)
+/datum/admins/proc/ban_panel(player_key, player_ip, player_cid, role, duration = 1440, applies_to_admins, reason, edit_id, page, admin_key, global_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 	var/panel_height = 620
 	if(edit_id)
 		panel_height = 240
@@ -171,7 +191,7 @@
 			<input type='radio' id='role' name='radioban' value='role'[role == "Server" ? "" : " checked"][edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
 		</div>
-		<div class='column right'>
+		<div class='column middle'>
 			Severity
 			<br>
 			<label class='inputlabel radio'>None
@@ -188,6 +208,17 @@
 			<input type='radio' id='high' name='radioseverity' value='high'[edit_id ? " disabled" : ""]>
 			<div class='inputbox'></div></label>
 		</div>
+		<div class='column right'>
+			Location
+			<br>
+			<label class='inputlabel radio'>Local
+			<input type='radio' id='servban' name='radioservban' value='local'[isnull(global_ban) ? " checked" : ""]>
+			<div class='inputbox'></div></label>
+			<br>
+			<label class='inputlabel radio'>Global
+			<input type='radio' id='servban' name='radioservban' value='global'[(global_ban) ? " checked" : ""]>
+			<div class='inputbox'></div></label>
+		</div>
 		<div class='column'>
 			Reason
 			<br>
@@ -196,7 +227,7 @@
 	</div>
 	"}
 	if(edit_id)
-		output += {"<label class='inputlabel checkbox'>Mirror edits to matching bans
+		output += /* SKYRAT EDIT CHANGE - MULTISERVER */{"<label class='inputlabel checkbox'>Mirror edits to matching bans
 		<input type='checkbox' id='mirroredit' name='mirroredit' value='1'>
 		<div class='inputbox'></div></label>
 		<input type='hidden' name='editid' value='[edit_id]'>
@@ -206,6 +237,7 @@
 		<input type='hidden' name='oldapplies' value='[applies_to_admins]'>
 		<input type='hidden' name='oldduration' value='[duration]'>
 		<input type='hidden' name='oldreason' value='[reason]'>
+		<input type='hidden' name='old_globalban' value='[global_ban]'>
 		<input type='hidden' name='page' value='[page]'>
 		<input type='hidden' name='adminkey' value='[admin_key]'>
 		<br>
@@ -322,6 +354,7 @@
 	var/player_cid
 	var/use_last_connection = FALSE
 	var/applies_to_admins = FALSE
+	var/global_ban = FALSE // SKYRAT EDIT ADDITION - MULTISERVER
 	var/duration
 	var/interval
 	var/severity
@@ -332,6 +365,7 @@
 	var/old_ip
 	var/old_cid
 	var/old_applies
+	var/old_globalban // SKYRAT EDIT ADDITION - MULTISERVER
 	var/page
 	var/admin_key
 	var/list/changes = list()
@@ -362,6 +396,11 @@
 		error_state += "Use last connection was ticked, but neither IP nor CID was."
 	if(href_list["applyadmins"])
 		applies_to_admins = TRUE
+	switch(href_list["radioservban"])  // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+		if("local")
+			global_ban = FALSE
+		if("global")
+			global_ban = TRUE  // SKYRAT EDIT ADDITION END - MULTISERVER
 	switch(href_list["radioduration"])
 		if("permanent")
 			duration = null
@@ -382,10 +421,13 @@
 		old_key = href_list["oldkey"]
 		old_ip = href_list["oldip"]
 		old_cid = href_list["oldcid"]
+		old_globalban = href_list["old_globalban"]  // SKYRAT EDIT ADDITION - MULTISERVER
 		page = href_list["page"]
 		admin_key = href_list["adminkey"]
 		if(player_key != old_key)
 			changes += list("Key" = "[old_key] to [player_key]")
+		if(global_ban != old_globalban) // SKYRAT EDIT ADDITION - MULTISERVER
+			changes += list("Ban Location" = "[old_globalban] to [global_ban]") // SKYRAT EDIT ADDITION - MULTISERVER
 		if(player_ip != old_ip)
 			changes += list("IP" = "[old_ip] to [player_ip]")
 		if(player_cid != old_cid)
@@ -421,11 +463,11 @@
 		to_chat(usr, "<span class='danger'>Ban not [edit_id ? "edited" : "created"] because the following errors were present:\n[error_state.Join("\n")]</span>", confidential = TRUE)
 		return
 	if(edit_id)
-		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes)
+		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes) // SKYRAT EDIT CHANGE - MULTISERVER
 	else
-		create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, roles_to_ban)
+		create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, global_ban, roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 
-/datum/admins/proc/create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, list/roles_to_ban)
+/datum/admins/proc/create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, global_ban, reason, list/roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
@@ -524,11 +566,12 @@
 			"a_computerid" = admin_cid,
 			"who" = who,
 			"adminwho" = adminwho,
+			"global_ban" = global_ban // SKYRAT EDIT CHANGE - MULTISERVER
 		))
 	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
 		return
 	var/target = ban_target_string(player_key, player_ip, player_cid)
-	var/msg = "has created a [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][roles_to_ban[1] == "Server" ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]."
+	var/msg = "has created a [global_ban ? "global" : "local"] [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][roles_to_ban[1] == "Server" ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]." // SKYRAT EDIT CHANGE - MULTISERVER
 	log_admin_private("[kn] [msg][roles_to_ban[1] == "Server" ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
 	message_admins("[kna] [msg][roles_to_ban[1] == "Server" ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
 	if(applies_to_admins)
@@ -543,7 +586,7 @@
 	var/is_admin = FALSE
 	if(C)
 		build_ban_cache(C)
-		to_chat(C, "<span class='boldannounce'>You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].</span><br><span class='danger'>To appeal this ban go to [appeal_url]</span>", confidential = TRUE)
+		to_chat(C, "<span class='boldannounce'>You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] [global_ban ? "This ban applies to all of our servers." : "This is a single-server ban, and only applies to this server."] The round ID is [GLOB.round_id].</span><br><span class='danger'>To appeal this ban go to [appeal_url]</span>", confidential = TRUE) // SKYRAT EDIT CHANGE - MULTISERVER
 		if(GLOB.admin_datums[C.ckey] || GLOB.deadmins[C.ckey])
 			is_admin = TRUE
 		if(roles_to_ban[1] == "Server" && (!is_admin || (is_admin && applies_to_admins)))
@@ -553,7 +596,7 @@
 	for(var/client/i in GLOB.clients - C)
 		if(i.address == player_ip || i.computer_id == player_cid)
 			build_ban_cache(i)
-			to_chat(i, "<span class='boldannounce'>You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].</span><br><span class='danger'>To appeal this ban go to [appeal_url]</span>", confidential = TRUE)
+			to_chat(i, "<span class='boldannounce'>You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] [global_ban ? "This ban applies to all of our servers." : "This is a single-server ban, and only applies to this server."] The round ID is [GLOB.round_id].</span><br><span class='danger'>To appeal this ban go to [appeal_url]</span>", confidential = TRUE) // SKYRAT EDIT CHANGE - MULTISERVER
 			if(GLOB.admin_datums[i.ckey] || GLOB.deadmins[i.ckey])
 				is_admin = TRUE
 			if(roles_to_ban[1] == "Server" && (!is_admin || (is_admin && applies_to_admins)))
@@ -738,7 +781,7 @@
 			to_chat(i, "<span class='boldannounce'>[usr.client.key] has removed a ban from [role] for your IP or CID.</span>", confidential = TRUE)
 	unban_panel(player_key, admin_key, player_ip, player_cid, page)
 
-/datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, mirror_edit, old_key, old_ip, old_cid, old_applies, admin_key, page, list/changes)
+/datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, admin_key, page, list/changes) // SKYRAT EDIT CHANGE - MULTISERVER
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
@@ -818,6 +861,7 @@
 		"ip" = player_ip || null,
 		"cid" = player_cid || null,
 		"change_message" = change_message,
+		"global_ban" = global_ban //SKYRAT EDIT ADDITION - MULTISERVER
 	)
 	var/where
 	if(text2num(mirror_edit))
@@ -836,12 +880,13 @@
 		where = "id = :ban_id"
 		arguments["ban_id"] = ban_id
 
-	var/datum/db_query/query_edit_ban = SSdbcore.NewQuery({"
+	var/datum/db_query/query_edit_ban = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 		UPDATE [format_table_name("ban")]
 		SET
 			expiration_time = IF(:duration IS NULL, NULL, bantime + INTERVAL :duration [interval]),
 			applies_to_admins = :applies_to_admins,
 			reason = :reason,
+			global_ban = :global_ban,
 			ckey = :ckey,
 			ip = INET_ATON(:ip),
 			computerid = :cid,

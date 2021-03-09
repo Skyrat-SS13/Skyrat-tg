@@ -125,9 +125,9 @@ SUBSYSTEM_DEF(dbcore)
 /datum/controller/subsystem/dbcore/proc/SetRoundID()
 	if(!Connect())
 		return
-	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(
-		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_ip, server_port) VALUES (Now(), INET_ATON(:internet_address), :port)",
-		list("internet_address" = world.internet_address || "0", "port" = "[world.port]")
+	var/datum/db_query/query_round_initialize = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */
+		"INSERT INTO [format_table_name("round")] (initialize_datetime, server_name, server_ip, server_port) VALUES (Now(), :server_name, INET_ATON(:internet_address), :port)",
+		list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = "[world.port]") // SKYRAT EDIT CHANGE - MULTISERVER
 	)
 	query_round_initialize.Execute(async = FALSE)
 	GLOB.round_id = "[query_round_initialize.last_insert_id]"

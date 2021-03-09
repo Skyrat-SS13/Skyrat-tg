@@ -76,8 +76,8 @@
 		note_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("High", "Medium", "Minor", "None")
 		if(!note_severity)
 			return
-	var/datum/db_query/query_create_message = SSdbcore.NewQuery({"
-		INSERT INTO [format_table_name("messages")] (type, targetckey, adminckey, text, timestamp, server, server_ip, server_port, round_id, secret, expire_timestamp, severity, playtime)
+	var/datum/db_query/query_create_message = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
+		INSERT INTO [format_table_name("messages")] (type, targetckey, adminckey, text, timestamp, server_name, server, server_ip, server_port, round_id, secret, expire_timestamp, severity, playtime)
 		VALUES (:type, :target_ckey, :admin_ckey, :text, :timestamp, :server, INET_ATON(:internet_address), :port, :round_id, :secret, :expiry, :note_severity, (SELECT `minutes` FROM [format_table_name("role_time")] WHERE `ckey` = :target_ckey AND `job` = 'Living'))
 	"}, list(
 		"type" = type,
@@ -85,6 +85,7 @@
 		"admin_ckey" = admin_ckey,
 		"text" = text,
 		"timestamp" = timestamp,
+		"server_name" = CONFIG_GET(string/serversqlname), // SKYRAT EDIT ADDITION - MULTISERVER
 		"server" = server,
 		"internet_address" = world.internet_address || "0",
 		"port" = "[world.port]",
@@ -397,7 +398,7 @@
 			else
 				output += "<a href='?_src_=holder;[HrefToken()];showwatchfilter=1'>Filter offline clients</a></center>"
 		output += ruler
-		var/datum/db_query/query_get_type_messages = SSdbcore.NewQuery({"
+		var/datum/db_query/query_get_type_messages = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 			SELECT
 				id,
 				IFNULL((SELECT byond_key FROM [format_table_name("player")] WHERE ckey = targetckey), targetckey),
@@ -405,6 +406,7 @@
 				IFNULL((SELECT byond_key FROM [format_table_name("player")] WHERE ckey = adminckey), adminckey),
 				text,
 				timestamp,
+				server_name,
 				server,
 				IFNULL((SELECT byond_key FROM [format_table_name("player")] WHERE ckey = lasteditor), lasteditor),
 				expire_timestamp,
@@ -427,9 +429,9 @@
 			var/text = query_get_type_messages.item[5]
 			var/timestamp = query_get_type_messages.item[6]
 			var/server = query_get_type_messages.item[7]
-			var/editor_key = query_get_type_messages.item[8]
-			var/expire_timestamp = query_get_type_messages.item[9]
-			var/playtime = query_get_type_messages.item[10]
+			var/editor_key = query_get_type_messages.item[9] // SKYRAT EDIT CHANGE BEGIN - MULTISERVER
+			var/expire_timestamp = query_get_type_messages.item[10]
+			var/playtime = query_get_type_messages.item[11] // SKYRAT EDIT CHANGE END - MULTISERVER
 			output += "<b>"
 			if(type == "watchlist entry")
 				output += "[t_key] | "
@@ -448,7 +450,7 @@
 		qdel(query_get_type_messages)
 	if(target_ckey)
 		var/target_key
-		var/datum/db_query/query_get_messages = SSdbcore.NewQuery({"
+		var/datum/db_query/query_get_messages = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
 			SELECT
 				type,
 				secret,
@@ -456,6 +458,7 @@
 				IFNULL((SELECT byond_key FROM [format_table_name("player")] WHERE ckey = adminckey), adminckey),
 				text,
 				timestamp,
+				server_name,
 				server,
 				IFNULL((SELECT byond_key FROM [format_table_name("player")] WHERE ckey = lasteditor), lasteditor),
 				DATEDIFF(NOW(), timestamp),
@@ -486,12 +489,12 @@
 			var/text = query_get_messages.item[5]
 			var/timestamp = query_get_messages.item[6]
 			var/server = query_get_messages.item[7]
-			var/editor_key = query_get_messages.item[8]
-			var/age = text2num(query_get_messages.item[9])
-			target_key = query_get_messages.item[10]
-			var/expire_timestamp = query_get_messages.item[11]
-			var/severity = query_get_messages.item[12]
-			var/playtime = query_get_messages.item[13]
+			var/editor_key = query_get_messages.item[9] // SKYRAT EDIT CHANGE BEGIN - MULTISERVER
+			var/age = text2num(query_get_messages.item[10])
+			target_key = query_get_messages.item[11]
+			var/expire_timestamp = query_get_messages.item[12]
+			var/severity = query_get_messages.item[13]
+			var/playtime = query_get_messages.item[14] // SKYRAT EDIT CHANGE END - MULTISERVER
 			var/alphatext = ""
 			var/nsd = CONFIG_GET(number/note_stale_days)
 			var/nfd = CONFIG_GET(number/note_fresh_days)
