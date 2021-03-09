@@ -295,9 +295,10 @@
 /turf/open/floor/grass,
 /area/space)
 "alM" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable,
-/turf/open/floor/plating,
+/obj/machinery/computer/secure_data{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/space)
 "alW" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
@@ -2556,6 +2557,7 @@
 /area/space)
 "caX" = (
 /obj/machinery/computer/security{
+	dir = 8;
 	network = list("SS13","Research Outpost","Mining Outpost")
 	},
 /obj/machinery/camera{
@@ -11655,7 +11657,6 @@
 "joo" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater{
 	dir = 8;
-	icon_state = "freezer_0";
 	tag = ""
 	},
 /turf/open/floor/iron,
@@ -14956,6 +14957,12 @@
 	},
 /turf/open/floor/iron,
 /area/space)
+"lNP" = (
+/obj/machinery/computer/secure_data{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/space)
 "lOd" = (
 /obj/item/roller,
 /turf/open/floor/iron,
@@ -15442,7 +15449,9 @@
 /turf/open/floor/iron,
 /area/space)
 "mmO" = (
-/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/mech_bay_recharge_port{
+	dir = 2
+	},
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/space)
@@ -19328,10 +19337,11 @@
 /turf/open/floor/iron,
 /area/space)
 "phg" = (
-/obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+/obj/machinery/computer/security{
+	dir = 4;
+	network = list("SS13","Research Outpost","Mining Outpost")
 	},
-/turf/open/space/basic,
+/turf/open/floor/iron,
 /area/space)
 "phy" = (
 /obj/machinery/door/airlock/external{
@@ -24171,9 +24181,7 @@
 /area/space)
 "sVo" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/binary/volume_pump/on{
-	name = "Lounge Supply"
-	},
+/obj/machinery/atmospherics/components/binary/volume_pump/on/layer2,
 /turf/open/floor/plating,
 /area/space)
 "sVw" = (
@@ -30098,7 +30106,9 @@
 /turf/open/floor/iron,
 /area/space)
 "wQH" = (
-/obj/machinery/mech_bay_recharge_port,
+/obj/machinery/mech_bay_recharge_port{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/space)
 "wRt" = (
@@ -31964,6 +31974,7 @@
 /area/space)
 "xSn" = (
 /obj/machinery/computer/security{
+	dir = 8;
 	network = list("SS13","Research Outpost","Mining Outpost")
 	},
 /obj/structure/cable,
@@ -55290,7 +55301,7 @@ nHP
 cIr
 nHP
 uIe
-phg
+mfV
 eJW
 eJW
 eJW
@@ -59150,7 +59161,7 @@ hxc
 hxc
 wRt
 hxc
-alM
+hxc
 hxc
 xev
 udA
@@ -61641,8 +61652,8 @@ wcx
 vAy
 bRV
 wcx
-oWG
-xxR
+phg
+lNP
 pff
 wcx
 yiR
@@ -70112,7 +70123,7 @@ eZe
 eZe
 eZe
 dsH
-xxR
+alM
 xSn
 xCU
 qSG
