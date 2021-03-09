@@ -36,7 +36,7 @@
 	. = ..()
 
 /obj/item/gun/ballistic/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message)
-	if(reload_time && !HAS_TRAIT(user, TRAIT_WEAPON_RELOAD)) //funreloadtimes
+	if(reload_time && !HAS_TRAIT(user, TRAIT_WEAPON_RELOAD) && magazine) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
 		to_chat(user, "<span class='notice'>You start to insert the magazine into [src]!</span>")
 		if(!do_after(user, reload_time, src))
 			to_chat(user, "<span class='warning'>You fail to insert the magazine into [src]!</span>")
