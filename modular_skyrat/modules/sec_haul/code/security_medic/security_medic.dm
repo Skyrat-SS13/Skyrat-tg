@@ -33,14 +33,14 @@
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
-	gloves = /obj/item/clothing/gloves/color/latex
+	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
-	l_hand = /obj/item/storage/firstaid/advanced
+	l_hand = /obj/item/storage/firstaid/brute
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/security_medic, /obj/item/defibrillator/compact/loaded)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/security_medic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
@@ -79,7 +79,6 @@
 	new /obj/item/clothing/suit/hazardvest/security_medic(src)
 	new /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
-	new /obj/item/storage/backpack/duffelbag/med/surgery(src)
 	new /obj/item/radio/headset/headset_medsec(src)
 	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/clothing/suit/straight_jacket(src)

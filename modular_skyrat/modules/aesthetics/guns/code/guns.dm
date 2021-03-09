@@ -142,6 +142,9 @@
 
 /obj/item/ammo_casing/energy/laser/accelerator
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser_cannon_fire.ogg'
+	
+/obj/item/gun/ballistic/automatic/sniper_rifle
+	fire_delay = 60
 
 /obj/item/gun/ballistic/automatic/sniper_rifle/modular
 	name = "AUS-107 anti-materiel rifle"
@@ -159,7 +162,7 @@
 	icon_state = "sysniper"
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle.ogg'
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/sniperrifle_s.ogg'
-	fire_delay = 20 //Delay halved thanks to recoil absorption
+	fire_delay = 40 //Delay reduced thanks to recoil absorption
 	burst_size = 0.5
 	recoil = 1
 	can_suppress = TRUE
@@ -182,7 +185,7 @@
 	recoil = 1.8
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
-	fire_delay = 35 //Slightly smaller than standard sniper
+	fire_delay = 55 //Slightly smaller than standard sniper
 	burst_size = 1
 	zoomable = TRUE
 	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.

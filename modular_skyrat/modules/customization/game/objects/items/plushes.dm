@@ -50,7 +50,6 @@
 	attack_verb_simple = list("beep", "boop", "ping")
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
-
 /obj/item/toy/plush/scrubpuppy
 	name = "Scrubpuppy plushie"
 	desc = "An adorable stuffed toy of a Scrubpuppy, the hard-working pup who keeps the station clean!"
@@ -61,7 +60,6 @@
 	attack_verb_simple = list("beep", "boop", "ping")
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
-
 /obj/item/toy/plush/meddrake
 	name = "MediDrake Plushie"
 	desc = "An adorable stuffed toy of a Medidrake."
@@ -71,7 +69,6 @@
 	attack_verb_continuous = list("beeps", "boops", "pings")
 	attack_verb_simple = list("beep", "boop", "ping")
 	squeak_override = list('sound/machines/beep.ogg' = 1)
-
 
 /obj/item/toy/plush/secdrake
 	name = "SecDrake Plushie"
@@ -94,17 +91,15 @@
 	attack_verb_simple = list("gecker", "boop", "nuzzle")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
-
 /obj/item/toy/plush/duffmoth
-  name = "Suspicious moth plushie"
-  desc = "A plushie depicting a certain moth. He probably got turned into a marketable plushie."
-  icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
-  icon_state = "plushie_duffy"
-  inhand_icon_state = "plushie_duffy"
-  attack_verb_continuous = list("flutters", "flaps", "squeaks")
-  attack_verb_simple = list("flutter", "flap", "squeak")
-  squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/mothsqueak.ogg'=1)
-
+	name = "Suspicious moth plushie"
+	desc = "A plushie depicting a certain moth. He probably got turned into a marketable plushie."
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "plushie_duffy"
+	inhand_icon_state = "plushie_duffy"
+	attack_verb_continuous = list("flutters", "flaps", "squeaks")
+	attack_verb_simple = list("flutter", "flap", "squeak")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/mothsqueak.ogg'= 1)
 
 /obj/item/toy/plush/leaplush
 	name = "Suspicious deer plushie"
@@ -118,13 +113,13 @@
 
 /obj/item/toy/plush/sarmieplush
 	name = "Cosplayer plushie"
-	desc = "A stuffed toy who look like a cosplayer, <b>He looks sad.</b>"
+	desc = "A stuffed toy who look like a familiar cosplayer, <b>He looks sad.</b>"
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_sarmie"
 	inhand_icon_state = "plushie_sarmie"
 	attack_verb_continuous = list("baps")
 	attack_verb_simple = list("bap")
-
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 
 /obj/item/toy/plush/oglaplush
 	name = "Suspicious lizzy"
@@ -135,3 +130,37 @@
 	attack_verb_continuous = list("claws", "hisses", "tail slaps")
 	attack_verb_simple = list("claw", "hiss", "tail slap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+
+/obj/item/toy/plush/arcplush
+	name = "Familiar lizard plushie"
+	desc = "A small plushie that resembles a lizard-- Or, not a lizard, it's mouth seems to go horizontally too.. Are those limbs in it's maw?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "plushie_arc"
+	inhand_icon_state = "plushie_arc"
+	attack_verb_continuous = list("claws", "bites", "wehs")
+	attack_verb_simple = list("claw", "bite", "weh")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+	young = 1 //No.
+
+/obj/item/toy/plush/oleplush
+	name = "Irritable goat plushie"
+	desc = "A plush recreation of a purple ovine. Made with 100% real, all natural wool from the creator herself."
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "plushie_ole"
+	inhand_icon_state = "plushie_ole"
+	attack_verb_continuous = list("headbutts", "plaps")
+	attack_verb_simple = list("headbutt", "plap")
+	squeak_override = list('sound/weapons/punch1.ogg'= 1)
+	young = 1 //No.
+
+/obj/item/toy/plush/szaplush
+	name = "Suspicious spider"
+	desc = "A plushie of a shy looking drider, colored in floortile gray."
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "plushie_sza"
+	inhand_icon_state = "plushie_sza"
+	attack_verb_continuous = list("scuttles", "chitters", "bites")
+	attack_verb_simple = list("scuttle", "chitter", "bite")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/spiderplush.ogg' = 1)
+	young = 1 //No.
+
