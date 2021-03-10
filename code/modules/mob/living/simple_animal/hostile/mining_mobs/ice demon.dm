@@ -26,7 +26,7 @@
 	attack_verb_continuous = "slices"
 	attack_verb_simple = "slice"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-  vision_range = 7//SKYRAT EDIT: - Makes watchers no longer be able to aggro from off-screen or through walls.
+	vision_range = 7//SKYRAT EDIT: - Makes watchers no longer be able to aggro from off-screen or through walls.
 	aggro_vision_range = 7//SKYRAT EDIT: - Makes watchers no longer be able to aggro from off-screen or through walls.    
 	attack_vis_effect = ATTACK_EFFECT_SLASH
 	move_force = MOVE_FORCE_VERY_STRONG
