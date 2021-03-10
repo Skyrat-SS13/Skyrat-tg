@@ -78,6 +78,6 @@
 	move_resist = MOVE_RESIST_DEFAULT
 	pull_force = PULL_FORCE_DEFAULT
 	new /obj/item/stack/ore/bluespace_crystal(loc, 3)
-	if(prob(5))
-		new /obj/item/raw_anomaly_core/bluespace(loc)
+	//if(prob(5))//SKYRAT EDIT - REMOVES CHANCE TO SPAWN BLUESPACE CORES
+		//new /obj/item/raw_anomaly_core/bluespace(loc)//SKYRAT EDIT - REMOVES CHANCE TO SPAWN BLUESPACE CORES
 	return ..()
