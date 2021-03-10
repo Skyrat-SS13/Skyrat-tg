@@ -10,7 +10,7 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	speak_emote = list("telepathically cries")
 	speed = 2
-	move_to_delay = 3 //SKYRAT EDIT: - Makes Ice watchers move normally.
+	move_to_delay = 3 //SKYRAT EDIT: - Makes Ice watchers move normally. 
 	projectiletype = /obj/projectile/temp/basilisk/ice
 	projectilesound = 'sound/weapons/pierce.ogg'
 	ranged = TRUE
