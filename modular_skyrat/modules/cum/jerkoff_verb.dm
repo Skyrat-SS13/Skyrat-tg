@@ -8,11 +8,19 @@
 	if(!.)
 		return
 
+
 	var/obj/item/coomer = new /obj/item/coom(user)
 	var/mob/living/carbon/human/H = user
+	var/obj/item/held = user.get_active_held_item()
+	var/obj/item/unheld = user.get_inactive_held_item()
 	if(user.put_in_hands(coomer) && H.dna.species.mutant_bodyparts["testicles"] && H.dna.species.mutant_bodyparts["penis"])
-
-		to_chat(user, "<span class='notice'>You mentally prepare yourself to masturbate.</span>")
+		if(held || unheld)
+			if(!((held.name=="cum" && held.item_flags == DROPDEL | ABSTRACT | HAND_ITEM) || (unheld.name=="cum" && unheld.item_flags == DROPDEL | ABSTRACT | HAND_ITEM)))
+				to_chat(user, "<span class='notice'>You mentally prepare yourself to masturbate.</span>")
+			else
+				qdel(coomer)
+		else
+			to_chat(user, "<span class='notice'>You mentally prepare yourself to masturbate.</span>")
 	else
 		qdel(coomer)
 		to_chat(user, "<span class='warning'>You're incapable of masturbating.</span>")
