@@ -10,24 +10,24 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	speak_emote = list("telepathically cries")
 	speed = 2
-	move_to_delay = 2
+	move_to_delay = 3 //SKYRAT EDIT: - Makes Ice watchers move normally.
 	projectiletype = /obj/projectile/temp/basilisk/ice
 	projectilesound = 'sound/weapons/pierce.ogg'
 	ranged = TRUE
 	ranged_message = "manifests ice"
-	ranged_cooldown_time = 1.5 SECONDS
+	ranged_cooldown_time = 5 SECONDS //SKYRAT EDIT: - Makes ice-watchers spam attacks less often
 	minimum_distance = 3
-	retreat_distance = 3
+	retreat_distance = 1 //SKYRAT EDIT: - Makes ice-watchers less deadly to everything
 	maxHealth = 150
 	health = 150
-	obj_damage = 40
+	obj_damage = 20//SKYRAT EDIT: -Lowers their object damage
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	attack_verb_continuous = "slices"
 	attack_verb_simple = "slice"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	vision_range = 9
-	aggro_vision_range = 9
+	vision_range = 7//SKYRAT EDIT: - Makes watchers no longer be able to aggro from off-screen or through walls.
+	aggro_vision_range = 7//SKYRAT EDIT: - Makes watchers no longer be able to aggro from off-screen or through walls.
 	move_force = MOVE_FORCE_VERY_STRONG
 	move_resist = MOVE_FORCE_VERY_STRONG
 	pull_force = MOVE_FORCE_VERY_STRONG
@@ -41,14 +41,14 @@
 	robust_searching = TRUE
 	footstep_type = FOOTSTEP_MOB_CLAW
 	/// Distance the demon will teleport from the target
-	var/teleport_distance = 3
+	var/teleport_distance = 1 //SKYRAT EDIT: -Ice watchers no longer teleport until 1 tile away from the player.
 
 /obj/projectile/temp/basilisk/ice
 	name = "ice blast"
-	damage = 5
+	damage = 10 //SKYRAT EDIT: - Exchanges some cold into raw damage.
 	speed = 4
 	nodamage = FALSE
-	temperature = -75
+	temperature = -30 //SKYRAT EDIT: - Makes Demonic Ice Watchers less deadly to everyone
 
 /mob/living/simple_animal/hostile/asteroid/ice_demon/OpenFire()
 	ranged_cooldown = world.time + ranged_cooldown_time
@@ -71,7 +71,7 @@
 	. = ..()
 	if(!. || target)
 		return
-	adjustHealth(-0.0125 * maxHealth * delta_time)
+	//adjustHealth(-0.0125 * maxHealth * delta_time) SKYRAT EDIT: - Who thought this was acceptable? Disables regen.
 
 /mob/living/simple_animal/hostile/asteroid/ice_demon/death(gibbed)
 	move_force = MOVE_FORCE_DEFAULT
