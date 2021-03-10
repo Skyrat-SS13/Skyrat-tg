@@ -8695,6 +8695,13 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/door/window{
+	base_state = "right";
+	dir = 4;
+	icon_state = "right";
+	name = "Captain's Desk Door";
+	req_access_txt = "20"
+	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "aGx" = (
@@ -17356,6 +17363,7 @@
 /obj/structure/table/wood,
 /obj/item/folder/blue,
 /obj/item/stamp/captain,
+/obj/item/melee/chainofcommand,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "bfC" = (
@@ -17364,11 +17372,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 5
 	},
-/turf/open/floor/wood,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain)
 "bfD" = (
 /obj/structure/cable,
-/turf/open/floor/wood,
+/obj/structure/table/wood,
+/obj/item/clothing/mask/cigarette/cigar,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain)
 "bfE" = (
 /obj/structure/table/wood,
@@ -17827,15 +17837,15 @@
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "bgV" = (
-/obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/coin/plasma,
-/turf/open/floor/wood,
+/obj/machinery/photocopier,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain)
 "bgW" = (
 /obj/structure/cable,
 /obj/machinery/holopad/secure,
-/turf/open/floor/wood,
+/obj/structure/table/wood,
+/obj/machinery/computer/secure_data/laptop,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain)
 "bgX" = (
 /obj/structure/table/wood,
@@ -18432,10 +18442,8 @@
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "bim" = (
-/obj/structure/table/wood,
-/obj/machinery/recharger,
-/obj/item/melee/chainofcommand,
-/turf/open/floor/wood,
+/obj/structure/closet/secure_closet/blueshield,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain)
 "bin" = (
 /obj/structure/cable,
@@ -18916,22 +18924,6 @@
 	},
 /obj/machinery/keycard_auth{
 	pixel_y = -24
-	},
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
-"bjG" = (
-/obj/machinery/door/window{
-	base_state = "right";
-	dir = 4;
-	icon_state = "right";
-	name = "Captain's Desk Door";
-	req_access_txt = "20"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
@@ -37891,7 +37883,10 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/turf/open/floor/wood,
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/coin/plasma,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain)
 "cBp" = (
 /obj/effect/landmark/event_spawn,
@@ -47392,6 +47387,15 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"laS" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/effect/landmark/start/blueshield,
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain)
 "lbC" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/line,
 /obj/structure/cable,
@@ -49817,6 +49821,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"nxQ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain)
 "nxR" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/turf_decal/bot,
@@ -55213,6 +55222,22 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/service/theater)
+"thn" = (
+/obj/structure/cable,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/kahlua{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain)
 "thx" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
@@ -91426,7 +91451,7 @@ bcQ
 bfC
 bgV
 bim
-bjG
+bdj
 aZV
 bmB
 bnZ
@@ -91681,8 +91706,8 @@ baP
 bbZ
 bcP
 cBo
-bdk
-bdk
+laS
+nxQ
 aGv
 aZV
 bmA
@@ -91937,7 +91962,7 @@ bbv
 bcm
 bcm
 bem
-bfD
+thn
 bgW
 bfD
 aGw
