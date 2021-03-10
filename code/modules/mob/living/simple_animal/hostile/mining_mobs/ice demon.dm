@@ -20,7 +20,7 @@
 	retreat_distance = 1 //SKYRAT EDIT: - Makes ice-watchers less deadly to everything
 	maxHealth = 150
 	health = 150
-	obj_damage = 20//SKYRAT EDIT: -Lowers their object damage
+	obj_damage = 20 //SKYRAT EDIT: -Lowers their object damage
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	attack_verb_continuous = "slices"
