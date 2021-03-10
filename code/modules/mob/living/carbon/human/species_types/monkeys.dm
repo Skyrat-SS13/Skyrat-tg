@@ -3,6 +3,7 @@
 	id = "monkey"
 	say_mod = "chimpers"
 	attack_verb = "bite"
+	attack_effect = ATTACK_EFFECT_BITE
 	attack_sound = 'sound/weapons/bite.ogg'
 	miss_sound = 'sound/weapons/bite.ogg'
 	mutant_organs = list(/obj/item/organ/tail/monkey)
