@@ -23,6 +23,8 @@
 	maxHealth = 500 //Very durable
 	health = 500
 	healable = FALSE
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	environment_smash = TRUE
 	melee_damage_lower = 40
 	melee_damage_upper = 45
@@ -56,7 +58,6 @@
 	turn_to_human.Grant(src)
 	devour.Grant(src)
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-	ADD_TRAIT(src, TRAIT_NIGHT_VISION, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
