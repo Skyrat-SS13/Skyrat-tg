@@ -101,9 +101,9 @@
 	category = list("hacked", "Security")
 
 /datum/design/c45_rubber
-	name = ".45 Rubber Bullet"
+	name = ".45 Bouncy Rubber Bullet"
 	id = "c45_rubber"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/c45/rubber
+	build_path = /obj/projectile/bullet/c38/match/bouncy
 	category = list("initial", "Security")

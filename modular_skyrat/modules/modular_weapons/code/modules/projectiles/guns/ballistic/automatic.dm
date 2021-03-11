@@ -82,6 +82,7 @@
 	empty_indicator = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_HEAVY
+	has_gun_safety = FALSE
 
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
