@@ -6,8 +6,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/uses = 1
 
-/obj/item/syndie_glue/suicide_act(mob/living/carbon/M)
-	return //todo
 
 /obj/item/syndie_glue/afterattack(atom/target, mob/user, proximity)
 	. = ..()
