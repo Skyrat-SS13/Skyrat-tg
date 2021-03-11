@@ -75,7 +75,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/empty
-	start_empty = 1
+	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap
 	ammo_type = /obj/item/ammo_casing/c10mm/ap
