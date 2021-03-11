@@ -12,7 +12,7 @@
 	if(!proximity || !target)
 		return
 	else
-		if(uses == 0)
+		if(!uses)
 			to_chat(user, "<span class='warning'>The bottle of glue is empty!</span>")
 			return
 		if(istype(target, /obj/item))
