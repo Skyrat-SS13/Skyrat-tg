@@ -61,7 +61,7 @@
 	round_type = AMMO_TYPE_INCENDIARY
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_snub/empty
-	start_empty = 1
+	start_empty = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby
 	name = "CFA Ruby Magazine (10mm Magnum)"
