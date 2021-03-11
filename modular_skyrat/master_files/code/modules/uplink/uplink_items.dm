@@ -156,6 +156,15 @@
 	item = /obj/item/storage/bag/ammo
 	cost = 1
 
+/datum/uplink_item/device_tools/syndie_glue
+	name = "Glue"
+	desc = "A cheap bottle of one use syndicate brand super glue. \
+			Use on any item to make it undroppable. \
+			Be careful not to glue an item you're already holding!"
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	item = /obj/item/syndie_glue
+	cost = 3
+
 //AMMO
 /datum/uplink_item/ammo/pistolaps_traitor
 	name = "9mm Stechkin APS Magazine"
