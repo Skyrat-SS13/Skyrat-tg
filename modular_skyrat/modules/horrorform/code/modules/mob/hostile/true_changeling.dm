@@ -15,7 +15,7 @@
 	icon_living = "horror"
 	icon_dead = "horror_dead"
 	mob_biotypes = MOB_ORGANIC
-	speed = 1
+	speed = 0.5
 	stop_automated_movement = FALSE
 	status_flags = CANPUSH
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
