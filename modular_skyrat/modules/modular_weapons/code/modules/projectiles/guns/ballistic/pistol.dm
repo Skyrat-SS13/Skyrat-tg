@@ -71,7 +71,7 @@
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_INCENDIARY)
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
-	max_ammo = 12
+	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/empty

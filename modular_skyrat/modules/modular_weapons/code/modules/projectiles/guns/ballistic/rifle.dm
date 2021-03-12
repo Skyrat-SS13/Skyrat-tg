@@ -143,6 +143,7 @@
 	zoom_amt = 4
 	zoom_out_amt = 2
 	has_gun_safety = FALSE
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/empty
 	spawnwithmagazine = FALSE

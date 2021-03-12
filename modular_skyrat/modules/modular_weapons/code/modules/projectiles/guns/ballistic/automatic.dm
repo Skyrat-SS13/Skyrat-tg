@@ -46,13 +46,14 @@
 	mag_type = /obj/item/ammo_box/magazine/smg32
 	can_suppress = FALSE
 	burst_size = 3
-	fire_delay = 2
-	spread = 10
+	fire_delay = 1.25
+	spread = 5
 	mag_display = TRUE
-	empty_indicator = TRUE
+	empty_indicator = FALSE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
-	weapon_weight = WEAPON_HEAVY
+	weapon_weight = WEAPON_MEDIUM
 	has_gun_safety = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
