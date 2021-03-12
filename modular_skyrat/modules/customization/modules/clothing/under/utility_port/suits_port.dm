@@ -62,7 +62,7 @@
 	name = "security jacket"
 	desc = "A comfortable jacket in security blue. Probably against uniform regulations."
 	icon_state = "sec_dep_jacket"
-	armor = list(MELEE = 20, BULLET = 10, LASER = 25, ENERGY = 5, BOMB = 20, BIO = 0, RAD = 0, FIRE = 0, ACID = 40, WOUND = 0)
+	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 5, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 15, WOUND = 0)
 
 /obj/item/clothing/suit/toggle/jacket/sec/old	//Oldsec (Red)
 	icon_state = "sec_dep_jacket_old"
