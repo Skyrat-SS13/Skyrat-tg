@@ -131,6 +131,36 @@
 	name = "Flak Jacket"
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+	
+/datum/loadout_item/suit/job/security_jacket
+	name = "Security Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/sec
+	/* restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_desc = "All Security Personnel" */
+
+/datum/loadout_item/suit/job/engi_jacket
+	name = "Engineering Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/engi
+	/* restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician")
+	restricted_desc = "All Engineering Personnel" */
+
+/datum/loadout_item/suit/job/sci_jacket
+	name = "Science Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/sci
+	/* restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist")
+	restricted_desc = "All Science Personnel" */
+
+/datum/loadout_item/suit/job/med_jacket
+	name = "Medbay Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/med
+	/* restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Virologist")
+	restricted_desc = "All Medical Personnel" */
+
+/datum/loadout_item/suit/job/supply_jacket
+	name = "Supply Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/supply
+	/* restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
+	restricted_desc = "All Cargo Personnel" */
 
 //HOODIES
 /datum/loadout_item/suit/hoodie
@@ -256,36 +286,6 @@
 	name = "warden navyblue jacket"
 	path = /obj/item/clothing/suit/armor/vest/warden/navyblue
 	restricted_roles = list("Warden")
-
-/datum/loadout_item/suit/job/security_jacket
-	name = "Security Jacket"
-	path = /obj/item/clothing/suit/toggle/jacket/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
-	restricted_desc = "All Security Personnel"
-
-/datum/loadout_item/suit/job/engi_jacket
-	name = "Engineering Jacket"
-	path = /obj/item/clothing/suit/toggle/jacket/engi
-	restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician")
-	restricted_desc = "All Engineering Personnel"
-
-/datum/loadout_item/suit/job/sci_jacket
-	name = "Science Jacket"
-	path = /obj/item/clothing/suit/toggle/jacket/sci
-	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist")
-	restricted_desc = "All Science Personnel"
-
-/datum/loadout_item/suit/job/med_jacket
-	name = "Medbay Jacket"
-	path = /obj/item/clothing/suit/toggle/jacket/med
-	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Virologist")
-	restricted_desc = "All Medical Personnel"
-
-/datum/loadout_item/suit/job/supply_jacket
-	name = "Supply Jacket"
-	path = /obj/item/clothing/suit/toggle/jacket/supply
-	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
-	restricted_desc = "All Cargo Personnel"
 
 /datum/loadout_item/suit/job/supply_head_jacket
 	name = "Quartermaster's Jacket"
