@@ -38,11 +38,14 @@
 
 	var/csc = CONFIG_GET(number/changeling_scaling_coeff)
 	if(csc)
-		num_changelings = max(1, min(round(num_players() / (csc * 4)) + 2, round(num_players() / (csc * 2))))
+		//num_changelings = max(1, min(round(num_players() / (csc * 4)) + 2, round(num_players() / (csc * 2)))) ORIGINAL
+		num_changelings = max(1, round(num_players()/csc) + num_modifier) //SKYRAT EDIT CHANGE
+		message_admins("The roundtype is traitor-changeling, based off of coefficient calculations there should be [num_changelings] traitors/changelings.") //SKYRAT EDIT ADDITON
 	else
 		num_changelings = max(1, min(num_players(), changeling_amount/2))
 
 	if(possible_changelings.len>0)
+		var/num_of_changelings = 0 //SKYRAT EDIT ADDIDTION
 		for(var/j = 0, j < num_changelings, j++)
 			if(!possible_changelings.len)
 				break
@@ -52,6 +55,8 @@
 			changeling.special_role = ROLE_CHANGELING
 			changelings += changeling
 			changeling.restricted_roles = restricted_jobs
+			num_of_changelings++
+		message_admins("The number of changelings should be [num_changelings] and there are currently [num_of_changelings].") //SKYRAT EDIT ADDITION
 		. = ..()
 		if(.) //To ensure the game mode is going ahead
 			for(var/antag in changelings)
