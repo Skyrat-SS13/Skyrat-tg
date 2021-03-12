@@ -6565,15 +6565,14 @@
 /turf/open/floor/iron,
 /area/commons/storage/art)
 "anE" = (
-/obj/effect/turf_decal/tile/blue{
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/blue{
+/obj/machinery/cryopod{
 	dir = 8
 	},
-/obj/structure/closet/boxinggloves,
-/obj/item/radio/intercom/directional/east,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/dark,
 /area/commons/locker)
 "anF" = (
 /obj/machinery/door/firedoor,
@@ -8253,6 +8252,7 @@
 	dir = 8
 	},
 /obj/structure/table,
+/obj/structure/bedsheetbin,
 /turf/open/floor/iron/cafeteria,
 /area/commons/locker)
 "aqT" = (
@@ -11856,6 +11856,9 @@
 	dir = 8
 	},
 /obj/machinery/firealarm/directional/north,
+/obj/effect/turf_decal{
+	dir = 4
+	},
 /turf/open/floor/iron/cafeteria,
 /area/commons/locker)
 "ayb" = (
@@ -12001,10 +12004,8 @@
 	dir = 8
 	},
 /obj/machinery/light,
-/obj/machinery/computer/arcade/battle{
-	dir = 4
-	},
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/machinery/vending/modularpc,
 /turf/open/floor/iron/cafeteria,
 /area/commons/locker)
 "ayr" = (
@@ -12437,15 +12438,17 @@
 /turf/open/openspace/airless/planetary,
 /area/space)
 "azn" = (
-/obj/effect/turf_decal/tile/blue{
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/effect/turf_decal{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/blue{
+/obj/machinery/cryopod{
 	dir = 8
 	},
-/obj/structure/table,
-/obj/structure/bedsheetbin,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/dark,
 /area/commons/locker)
 "azo" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -14004,8 +14007,27 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/radshelter/service)
 "aCx" = (
-/obj/structure/extinguisher_cabinet/directional/east,
-/turf/open/floor/carpet,
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/food/drinks/bottle/tequila,
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain/private)
 "aCy" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -14665,14 +14687,13 @@
 /turf/open/floor/iron,
 /area/hallway/primary/tram/center)
 "aDF" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
+/obj/effect/turf_decal{
+	dir = 5
 	},
-/obj/effect/turf_decal/tile/blue{
+/obj/machinery/cryopod{
 	dir = 8
 	},
-/obj/machinery/vending/modularpc,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/dark,
 /area/commons/locker)
 "aDG" = (
 /obj/structure/disposalpipe/segment,
@@ -15154,14 +15175,13 @@
 /turf/open/floor/iron,
 /area/hallway/primary/tram/left)
 "aEA" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
+/obj/effect/turf_decal{
+	dir = 6
 	},
-/obj/effect/turf_decal/tile/blue{
+/obj/machinery/cryopod{
 	dir = 8
 	},
-/obj/structure/closet/crate/trashcart/laundry,
-/turf/open/floor/iron/cafeteria,
+/turf/open/floor/iron/dark,
 /area/commons/locker)
 "aEB" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
@@ -20630,6 +20650,9 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
+	},
+/obj/effect/turf_decal{
+	dir = 4
 	},
 /turf/open/floor/iron/cafeteria,
 /area/commons/locker)
@@ -30707,6 +30730,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/starboard/central)
+"fgf" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/camera{
+	c_tag = "Command - Captain's Office";
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/blueshield,
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain/private)
 "fgC" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -34685,6 +34720,18 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/atmos)
+"gRc" = (
+/obj/item/radio/intercom{
+	pixel_y = -26
+	},
+/obj/structure/table/wood,
+/obj/item/storage/backpack/duffel/blueshield,
+/obj/item/clothing/glasses/sunglasses{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain/private)
 "gRw" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/co2{
 	dir = 1
@@ -36590,6 +36637,8 @@
 "hOf" = (
 /obj/structure/window/reinforced,
 /obj/structure/closet/secure_closet/hop,
+/obj/item/clothing/suit/hooded/ian_costume,
+/obj/item/clothing/head/hooded/ian_hood,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
 "hPb" = (
@@ -37512,9 +37561,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port/central)
 "inq" = (
-/obj/structure/chair/comfy/brown{
-	dir = 1
-	},
 /obj/machinery/light,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
@@ -39621,12 +39667,12 @@
 /turf/closed/wall/r_wall,
 /area/medical/virology)
 "joH" = (
-/obj/item/radio/intercom{
-	pixel_y = -26
+/obj/machinery/door/window{
+	dir = 8;
+	name = "Captain's Desk";
+	req_access_txt = "20"
 	},
-/obj/structure/bed/dogbed/renault,
-/mob/living/simple_animal/pet/fox/renault,
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain/private)
 "jpo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40208,6 +40254,10 @@
 "jED" = (
 /turf/open/floor/iron,
 /area/engineering/main)
+"jEH" = (
+/obj/machinery/light,
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain/private)
 "jFb" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/green/visible{
@@ -40442,12 +40492,17 @@
 /turf/closed/wall,
 /area/cargo/sorting)
 "jJA" = (
-/obj/structure/table/wood,
-/obj/machinery/recharger{
-	pixel_y = 4
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
 	},
-/turf/open/floor/carpet,
-/area/command/heads_quarters/captain/private)
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
+/area/commons/locker)
 "jJO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -42301,10 +42356,14 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "kCS" = (
-/obj/structure/table/wood,
-/obj/item/storage/fancy/donut_box,
-/turf/open/floor/carpet,
-/area/command/heads_quarters/captain/private)
+/obj/effect/turf_decal{
+	dir = 4
+	},
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/commons/locker)
 "kDj" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
@@ -43692,7 +43751,6 @@
 /turf/open/floor/plating/asteroid,
 /area/maintenance/central)
 "lgX" = (
-/obj/structure/chair/comfy/brown,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
@@ -44843,6 +44901,16 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
+"lMO" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/landmark/start/blueshield,
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain/private)
 "lNm" = (
 /obj/structure/window/reinforced,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -45131,6 +45199,9 @@
 	pixel_y = 9
 	},
 /obj/item/pen,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private)
 "lVh" = (
@@ -48779,11 +48850,18 @@
 /turf/open/floor/plating,
 /area/maintenance/tram/right)
 "nIr" = (
-/obj/structure/chair/comfy/brown{
-	dir = 1
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
 	},
-/turf/open/floor/carpet,
-/area/command/heads_quarters/captain/private)
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/landmark/start/assistant,
+/obj/effect/turf_decal{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
+/area/commons/locker)
 "nIG" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
@@ -52636,6 +52714,8 @@
 	name = "Captain RC";
 	pixel_x = 32
 	},
+/obj/structure/bed/dogbed/renault,
+/mob/living/simple_animal/pet/fox/renault,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private)
 "pwj" = (
@@ -57162,6 +57242,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/ce)
+"ryf" = (
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/photocopier,
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain/private)
 "ryt" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -60794,6 +60879,9 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/ai_monitored/security/armory)
+"tjI" = (
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain/private)
 "tjR" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1
@@ -71434,15 +71522,17 @@
 /turf/open/floor/iron,
 /area/cargo/office)
 "yaj" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/obj/machinery/airalarm/directional/east,
-/obj/machinery/camera{
-	c_tag = "Command - Captain's Office";
+/obj/structure/table/wood,
+/obj/machinery/computer/secure_data/laptop{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/executive,
 /area/command/heads_quarters/captain/private)
 "yak" = (
 /turf/closed/wall/r_wall,
@@ -94648,9 +94738,9 @@ aSj
 aSt
 aRW
 aya
-aUD
-aUD
-aAh
+jJA
+jJA
+nIr
 aUL
 adR
 aRW
@@ -94905,7 +94995,7 @@ aSk
 aSx
 aRW
 aDF
-aqS
+kCS
 azn
 anE
 aEA
@@ -172734,7 +172824,7 @@ wpe
 ipY
 lUY
 lgX
-jJA
+wRV
 inq
 ezo
 aql
@@ -172991,8 +173081,8 @@ gQn
 ili
 sWR
 lgX
-kCS
-nIr
+wRV
+wRV
 ezo
 ajt
 aGD
@@ -173504,9 +173594,9 @@ ezo
 ezo
 ezo
 ezo
-ezo
-ezo
-ezo
+lMO
+tjI
+jEH
 ezo
 aae
 aae
@@ -173760,11 +173850,11 @@ aae
 aae
 aae
 aae
-aae
-aae
-aae
-aae
-aae
+ezo
+fgf
+ryf
+gRc
+ezo
 aae
 aae
 aBM
@@ -174017,11 +174107,11 @@ aae
 aae
 aae
 aae
-aae
-aae
-aae
-aae
-aae
+ezo
+ezo
+ezo
+ezo
+ezo
 aae
 aBM
 aBM
