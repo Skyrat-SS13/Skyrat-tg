@@ -80,9 +80,6 @@
 
 	var/mob/living/victim = target.loc
 
-	if(!ismob(victim))
-		return //RETURN TO ENTERPRISE!
-
 	var/mob/living/living_pawn = controller.pawn
 
 	victim.visible_message("<span class='warning'>[living_pawn] starts trying to take [target] from [victim]!</span>", "<span class='danger'>[living_pawn] tries to take [target]!</span>")
@@ -90,6 +87,11 @@
 	controller.blackboard[BB_MONKEY_PICKPOCKETING] = TRUE
 
 	var/success = FALSE
+
+	//SKYRAT EDIT ADDITION BEGIN - FOR SOME REASON THIS MONKEY WONT FUCK OFF
+	if(!ismob(victim))
+		finish_action(controller, success) //RETURN TO ENTERPRISE!
+	//SKYRAT EDIT END - HE HAS BEEN FUCKING SHIT UP FOR TOO LONG
 
 	if(do_mob(living_pawn, victim, MONKEY_ITEM_SNATCH_DELAY) && target)
 
