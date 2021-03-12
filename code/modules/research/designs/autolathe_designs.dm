@@ -893,7 +893,8 @@
 	category = list("hacked", "Security")
 
 /datum/design/c10mm
-	name = "Ammo Box (10mm)"
+//	name = "Ammo Box (10mm)"			// SKYRAT EDIT: Original
+	name = "Ammo Box (10mm Magnum)"		// SKYRAT EDIT: Calibre rename
 	id = "c10mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)
@@ -909,7 +910,8 @@
 	category = list("hacked", "Security")
 
 /datum/design/c9mm
-	name = "Ammo Box (9mm)"
+//	name = "Ammo Box (9mm)"				// SKYRAT EDIT: Original
+	name = "Ammo Box (9x25mm Mk.12)"	// SKYRAT EDIT: Calibre rename
 	id = "c9mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)
