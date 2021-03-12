@@ -851,6 +851,14 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 
 /obj/item/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
+<<<<<<< HEAD
+=======
+	remove_outline() //get rid of the hover effect in case the mouse exit isn't called if someone drags and drops an item and somthing goes wrong
+
+/obj/item/MouseExited()
+	deltimer(tip_timer) //delete any in-progress timer if the mouse is moved off the item before it finishes
+	closeToolTip(usr)
+>>>>>>> 4933a576e77 (removes rogue e (#57658))
 	remove_outline()
 //SKYRAT EDIT END
 
