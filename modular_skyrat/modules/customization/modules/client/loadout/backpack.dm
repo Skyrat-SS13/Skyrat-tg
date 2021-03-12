@@ -263,7 +263,6 @@
 	name = "Suspicious lizzy plush"
 	path = /obj/item/toy/plush/oglaplush
 
-
 /datum/loadout_item/backpack/plushies/arcplush
 	name = "Familiar Lizard plushie"
 	path = /obj/item/toy/plush/arcplush
@@ -271,10 +270,14 @@
 /datum/loadout_item/backpack/plushies/oleplush
 	name = "Irritable Goat plushie"
 	path = /obj/item/toy/plush/oleplush
-	
+
 /datum/loadout_item/backpack/plushies/szaplush
 	name = "Suspicious spider plushie"
 	path = /obj/item/toy/plush/szaplush
+
+/datum/loadout_item/backpack/plushies/riffplush
+	name = "Valid plushie"
+	path = /obj/item/toy/plush/riffplush
 
 /datum/loadout_item/backpack/plushies/narplush
 	name = "Narsie Plushie"
