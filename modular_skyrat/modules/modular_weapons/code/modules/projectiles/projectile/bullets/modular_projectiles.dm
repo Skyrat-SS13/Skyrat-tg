@@ -166,7 +166,7 @@
 /obj/projectile/bullet/a762/rubber
 	name = "7.62mm rubber bullet"
 	damage = 15
-	stamina = 50
+	stamina = 55
 	ricochets_max = 5
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
