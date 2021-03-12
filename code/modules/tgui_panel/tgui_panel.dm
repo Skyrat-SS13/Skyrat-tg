@@ -48,14 +48,6 @@
 	))
 	window.send_asset(get_asset_datum(/datum/asset/simple/namespaced/fontawesome))
 	window.send_asset(get_asset_datum(/datum/asset/spritesheet/chat))
-<<<<<<< HEAD
-	// Preload assets for /datum/tgui
-	var/datum/asset/asset_tgui = get_asset_datum(/datum/asset/simple/tgui)
-	var/flush_queue = asset_tgui.send(src.client)
-	if(flush_queue)
-		src.client.browse_queue_flush()
-=======
->>>>>>> d9836946d72 (Revert "Flush queue in preloading part of tgui_panel" - Part 2 (#57665))
 	// Other setup
 	request_telemetry()
 	addtimer(CALLBACK(src, .proc/on_initialize_timed_out), 5 SECONDS)
