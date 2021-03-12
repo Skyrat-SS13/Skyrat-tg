@@ -58,7 +58,7 @@
 
 /datum/design/a762_rubber
 	name = "7.62 Rubber Bullet"
-	id = "a762"
+	id = "a762_rubber"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/ammo_casing/a762/rubber
