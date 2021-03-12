@@ -140,11 +140,8 @@ GLOBAL_LIST_INIT(food, list(
 	var/screentip_pref = TRUE
 	///Color of screentips at top of screen
 	var/screentip_color = "#ffd391"
-
-	//Do we want to show item glow?
-	var/outline_enabled = TRUE
-	//Colour of said glow
-	var/outline_color = COLOR_BLUE_GRAY
+	///Do we show item hover outlines?
+	var/itemoutline_pref = TRUE
 
 	var/ambientocclusion = TRUE
 	///Should we automatically fit the viewport?
@@ -1018,9 +1015,8 @@ GLOBAL_LIST_INIT(food, list(
 
 			dat += "<b>Set screentip mode:</b> <a href='?_src_=prefs;preference=screentipmode'>[screentip_pref ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Screentip color:</b><span style='border: 1px solid #161616; background-color: [screentip_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=screentipcolor'>Change</a><BR>"
+			dat += "<b>Item Hover Outlines:</b> <a href='?_src_=prefs;preference=itemoutline_pref'>[itemoutline_pref ? "Enabled" : "Disabled"]</a><br>"
 
-			dat += "<b>Set item outline mode:</b> <a href='?_src_=prefs;preference=outline_enabled'>[outline_enabled ? "Enabled" : "Disabled"]</a><br>"
-			dat += "<b>Item outline Color:</b> <span style='border:1px solid #161616; background-color: [outline_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=outline_color'>Change</a><BR>"
 
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
@@ -2695,13 +2691,9 @@ GLOBAL_LIST_INIT(food, list(
 					if(new_screentipcolor)
 						screentip_color = sanitize_ooccolor(new_screentipcolor)
 
-				if("outline_enabled")
-					outline_enabled = !outline_enabled
+				if("itemoutline_pref")
+					itemoutline_pref = !itemoutline_pref
 
-				if("outline_color")
-					var/pickedOutlineColor = input(user, "Choose your outline color.", "General Preference", outline_color) as color|null
-					if(pickedOutlineColor)
-						outline_color = pickedOutlineColor
 
 				if("ambientocclusion")
 					ambientocclusion = !ambientocclusion
