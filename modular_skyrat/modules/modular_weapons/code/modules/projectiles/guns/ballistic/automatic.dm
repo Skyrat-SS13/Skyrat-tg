@@ -2,36 +2,6 @@
 //ID: MODULAR_WEAPONS //
 ////////////////////////
 
-///////////
-//.32 ACP//
-///////////
-
-// Ammo Casings
-
-/obj/item/ammo_casing/c32
-	name = ".32 bullet casing"
-	desc = "A .32 bullet casing."
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32
-
-/obj/item/ammo_casing/c32_rubber
-	name = ".32 rubber bullet casing"
-	desc = "A .32 rubber bullet casing."
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32_rubber
-
-/obj/item/ammo_casing/c32_ap
-	name = ".32 armor-piercing bullet"
-	desc = "A .32 armor-piercing bullet casing."
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32_ap
-
-/obj/item/ammo_casing/c32_incendiary
-	name = ".32 incendiary bullet"
-	desc = "A .32 incendiary bullet casing."
-	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/incendiary/c32_incendiary
-
 // Magazines
 
 /obj/item/ammo_box/magazine/smg32
