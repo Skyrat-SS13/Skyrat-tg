@@ -18,25 +18,23 @@
 	speed = 0.5
 	stop_automated_movement = FALSE
 	status_flags = CANPUSH
-	see_in_dark = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxHealth = 500 //Very durable
 	health = 500
-	healable = 0
+	healable = FALSE
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	environment_smash = TRUE
 	melee_damage_lower = 40
-	melee_damage_upper = 50
-//	see_in_dark = 8
-//	see_invisible = SEE_INVISIBLE_MINIMUM
-	wander = 0
+	melee_damage_upper = 45
+	wander = FALSE
 	attack_verb_continuous = "rips into"
 	attack_verb_simple = "rip into"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	next_move_modifier = 0.5 //Faster attacks
 	butcher_results = list(/obj/item/food/meat/slab/human = 15) //It's a pretty big dude. Actually killing one is a feat.
-	gold_core_spawnable = 0 //Should stay exclusive to changelings tbh, otherwise makes it much less significant to sight one
+	gold_core_spawnable = FALSE //Should stay exclusive to changelings tbh, otherwise makes it much less significant to sight one
 	var/datum/action/innate/turn_to_human
 	var/datum/action/innate/devour
 	var/transformed_time = 0
@@ -45,7 +43,7 @@
 	After several minutes, we will once again be able to revert into a human. Taking too much damage will also turn us back into a human in addition to knocking us out for a long time.</b>"
 	var/mob/living/carbon/human/stored_changeling = null //The changeling that transformed
 	var/devouring = FALSE //If the true changeling is currently devouring a human
-	var/spam_flag = 0 //To stop spam
+	var/spam_flag = FALSE //To stop spam
 
 /mob/living/simple_animal/hostile/true_changeling/New()
 	. = ..()
@@ -63,7 +61,7 @@
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
-	adjustBruteLoss(-TRUE_CHANGELING_PASSIVE_HEAL) //Uncomment for passive healing
+	adjustBruteLoss(-TRUE_CHANGELING_PASSIVE_HEAL)
 
 /mob/living/simple_animal/hostile/true_changeling/AttackingTarget()
 	..()
@@ -92,15 +90,16 @@
 				if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
 					M.show_message(message)
 		audible_message(message)
-		spam_flag = 1
+		spam_flag = TRUE
 		spawn(50)
-			spam_flag = 0
+			spam_flag = FALSE
 		return
 
-	..(act, m_type, message)
+	. = ..()
 
 /mob/living/simple_animal/hostile/true_changeling/death()
 	emote("scream")
+	spawn_gibs()
 	if(stored_changeling && mind)
 		visible_message("<span class='warning'>[src] lets out a furious scream as it shrinks into its human form.</span>", \
 						"<span class='userdanger'>We lack the power to maintain this form! We helplessly turn back into a human...</span>")
