@@ -164,3 +164,12 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/spiderplush.ogg' = 1)
 	young = 1 //No.
 
+/obj/item/toy/plush/riffplush
+  name = "Valid plushie"
+  desc = "A stuffed toy in the likeness of a peculiar demonic one. Likely turned into a plushie to sell such. They look quite alright about it."
+  icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+  icon_state = "plushie_riffy"
+  inhand_icon_state = "plushie_riffy"
+  attack_verb_continuous = list("slaps", "challenges")
+  attack_verb_simple = list("slap", "challenge")
+  squeak_override = list('sound/weapons/slap.ogg' = 1)
