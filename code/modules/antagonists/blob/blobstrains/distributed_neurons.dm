@@ -1,4 +1,5 @@
 //kills unconscious targets and turns them into blob zombies, produces fragile spores when killed.  Spore produced by factories are sentient.
+/* SKYRAT EDIT: - DISABLES DISTRIBUTED NEURONS DUE TO BALANCING
 /datum/blobstrain/reagent/distributed_neurons
 	name = "Distributed Neurons"
 	description = "will do medium-low toxin damage and turns unconscious targets into blob zombies."
@@ -39,3 +40,4 @@
 			spore.Zombify(exposed_mob)
 			overmind.add_points(-5)
 			to_chat(overmind, "<span class='notice'>Spent 5 resources for the zombification of [exposed_mob].</span>")
+*/
