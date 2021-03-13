@@ -143,6 +143,9 @@
 /obj/item/clothing/head/santa
 	mutant_variants = NONE
 
+/obj/item/clothing/head/helmet/durathread
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

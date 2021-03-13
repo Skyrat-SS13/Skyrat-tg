@@ -156,6 +156,15 @@
 	item = /obj/item/storage/bag/ammo
 	cost = 1
 
+/datum/uplink_item/device_tools/syndie_glue
+	name = "Glue"
+	desc = "A cheap bottle of one use syndicate brand super glue. \
+			Use on any item to make it undroppable. \
+			Be careful not to glue an item you're already holding!"
+	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
+	item = /obj/item/syndie_glue
+	cost = 3
+
 //AMMO
 /datum/uplink_item/ammo/pistolaps_traitor
 	name = "9mm Stechkin APS Magazine"
@@ -286,12 +295,6 @@
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/hacker
 	cost = 25
 
-/datum/uplink_item/loadout_skyrat/sniper
-	name = "Hitman bundle"
-	desc = "Carry out efficient and likely not-so-discreet assassinations with this unique sniping kit. Carrying case not included."
-	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/sniper
-	cost = 25
-
 /datum/uplink_item/loadout_skyrat/metaops
 	name = "Bulldog Operative bundle"
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
@@ -345,3 +348,15 @@
 	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 25
+
+//Badass section down here
+/datum/uplink_item/loadout_skyrat/robohand
+	name = "Robohand Bundle"
+	desc = "Themed after the infamous terrorist(or not), Johnny Robohand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. \
+			It comes with a robotic replacement arm. Wake the fuck up, samurai."
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
+	cost = 45
+
+/datum/uplink_item/loadout_skyrat/robohand/purchase(mob/user, datum/component/uplink/U)
+	. = ..()
+	notify_ghosts(message = "[user] has purchased the Johnny Robohand bundle, watch him be a badass!", ghost_sound = 'modular_skyrat/modules/3516/sound/wakeup.ogg', source = user) //Everyone needs to know he's a badass

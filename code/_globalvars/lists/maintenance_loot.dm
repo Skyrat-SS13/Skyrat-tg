@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		) = 1,
 
 	list(//equipment
-		/obj/item/clothing/mask/gas = 1,
+		/obj/item/clothing/mask/gas/alt = 1, //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas = 1,
 		/obj/item/radio/headset = 1,
 		/obj/item/storage/backpack = 1,
 		/obj/item/clothing/shoes/sneakers/black = 1,
