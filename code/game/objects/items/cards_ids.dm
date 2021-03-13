@@ -83,7 +83,7 @@
 	/// Linked paystand.
 	var/obj/machinery/paystand/my_store
 	/// Registered owner's age.
-	var/registered_age = 18 //SKYRAT EDIT - ORIGINAL (18)
+	var/registered_age = 18 //SKYRAT EDIT - ORIGINAL (13)
 
 	/// The job name registered on the card (for example: Assistant).
 	var/assignment
