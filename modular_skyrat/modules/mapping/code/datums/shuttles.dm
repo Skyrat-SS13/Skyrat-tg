@@ -7,3 +7,7 @@
 /datum/map_template/shuttle/whiteship/ship
 	suffix = "ship"
 	name = "NTSS 'Friendship'"
+
+/datum/map_template/shuttle/whiteship/outpost
+	suffix = "outpost"
+	name = "SciMed Transport Craft"
