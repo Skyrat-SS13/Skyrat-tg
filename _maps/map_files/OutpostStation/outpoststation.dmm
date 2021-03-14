@@ -12417,6 +12417,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/medical/morgue)
+"hyb" = (
+/obj/machinery/computer/pod/old/mass_driver_controller/chapelgun{
+	pixel_x = -24
+	},
+/turf/open/floor/carpet/royalblack,
+/area/service/chapel/main)
 "hyo" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/line,
 /turf/open/floor/iron/dark,
@@ -14090,6 +14096,14 @@
 /mob/living/carbon/human/species/monkey,
 /turf/open/floor/grass,
 /area/medical/virology)
+"iEy" = (
+/obj/machinery/mass_driver/chapelgun,
+/obj/item/gps,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/service/chapel/main)
 "iFn" = (
 /obj/structure/cable,
 /obj/machinery/light{
@@ -15659,6 +15673,14 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/service/bar/atrium)
+"jCM" = (
+/obj/machinery/door/window{
+	dir = 8;
+	name = "Mass Driver";
+	req_access_txt = "22"
+	},
+/turf/open/floor/iron/dark,
+/area/service/chapel/main)
 "jDf" = (
 /obj/structure/closet/crate,
 /obj/effect/turf_decal/tile/yellow{
@@ -17561,6 +17583,11 @@
 "kIQ" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
+/obj/item/soulstone/anybody/chaplain,
+/obj/item/organ/heart,
+/obj/item/book/granter/spell/smoke/lesser{
+	name = "mysterious old book of cloud-chasing"
+	},
 /turf/open/floor/iron/dark,
 /area/service/chapel/main)
 "kIY" = (
@@ -17705,6 +17732,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/execution/transfer)
+"kMZ" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron/dark,
+/area/service/chapel/main)
 "kNf" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 1
@@ -26211,6 +26242,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"pKb" = (
+/obj/machinery/light,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/service/chapel/main)
 "pKy" = (
 /obj/machinery/door/airlock{
 	name = "Private Restroom"
@@ -28696,8 +28734,9 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "rjd" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/iron/dark,
+/obj/machinery/door/poddoor/massdriver_chapel,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
 /area/service/chapel/main)
 "rjy" = (
 /turf/closed/wall/r_wall,
@@ -84087,8 +84126,8 @@ nah
 sco
 gkm
 xuP
-sco
-sco
+iEy
+kMZ
 rjd
 lXF
 lXF
@@ -84344,8 +84383,8 @@ xuP
 xuP
 gkm
 xuP
-sco
-deC
+jCM
+pKb
 xuP
 lXF
 lXF
@@ -84600,7 +84639,7 @@ wuJ
 xuP
 trh
 uip
-bbh
+hyb
 bbh
 bbh
 sZR
