@@ -225,11 +225,7 @@
 ///Subtype of CQC. Only used for the chef.
 /datum/martial_art/cqc/under_siege
 	name = "Close Quarters Cooking"
-<<<<<<< HEAD
-	var/list/valid_areas = list(/area/service/kitchen) //SKYRAT EDIT - Original (list(/area/service/kitchen, /area/service/cafeteria, /area/service/bar, /area/service/theater))
-=======
 	var/list/kitchen_areas
->>>>>>> a85e24c5201 (Moves chef's CQC area whitelist into the mapping config and better balances chef CQC as a result. (#57593))
 
 /// Refreshes the valid areas from the cook job singleton, otherwise uses the default kitchen area as a fallback option. See also [/datum/job/cook/New].
 /datum/martial_art/cqc/under_siege/proc/refresh_valid_areas()
