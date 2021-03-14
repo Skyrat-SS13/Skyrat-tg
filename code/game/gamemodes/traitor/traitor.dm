@@ -17,7 +17,7 @@
 	enemy_minimum_age = 0
 
 	announce_span = "danger"
-	announce_text = "There are Nanotrasen agents on the station!\n\
+	announce_text = "There are Syndicate agents on the station!\n\
 	<span class='danger'>Traitors</span>: Accomplish your objectives.\n\
 	<span class='notice'>Crew</span>: Do not let the traitors succeed!"
 
