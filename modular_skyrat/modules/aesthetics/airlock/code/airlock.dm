@@ -285,6 +285,10 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/security2.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_sec/old
 
+/obj/machinery/door/airlock/security/old/glass
+	opacity = FALSE
+	glass = TRUE
+
 /obj/machinery/door/airlock/engineering
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/engineering.dmi'
 

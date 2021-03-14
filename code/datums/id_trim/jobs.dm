@@ -75,7 +75,7 @@
 	return TRUE
 
 /datum/id_trim/job/assistant
-	assignment = "Assistant"
+	assignment = "Operative"
 	trim_state = "trim_assistant"
 	full_access = list(ACCESS_MAINT_TUNNELS)
 	minimal_access = list()
@@ -119,7 +119,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/captain
-	assignment = "Captain"
+	assignment = "Admiral"
 	trim_state = "trim_captain"
 	config_job = "captain"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
@@ -134,7 +134,7 @@
 	return ..()
 
 /datum/id_trim/job/cargo_technician
-	assignment = "Cargo Technician"
+	assignment = "Deck Crewmen"
 	trim_state = "trim_cargotechnician"
 	full_access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_CARGO, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM, ACCESS_MECH_MINING)
@@ -158,7 +158,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/chief_engineer
-	assignment = "Chief Engineer"
+	assignment = "Chief Engineering Officer"
 	trim_state = "trim_chiefengineer"
 	full_access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS,
 					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_ATMOSPHERICS, ACCESS_EVA, ACCESS_AUX_BASE,
@@ -212,7 +212,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/detective
-	assignment = "Detective"
+	assignment = "Investigative Officer"
 	trim_state = "trim_detective"
 	full_access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_SECURITY, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_SECURITY, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
@@ -238,7 +238,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/head_of_personnel //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
-	assignment = "Head of Personnel"
+	assignment = "Corporate Liasion"
 	trim_state = "trim_headofpersonnel"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
 						ACCESS_MEDICAL, ACCESS_PSYCHOLOGY, ACCESS_ENGINE, ACCESS_CHANGE_IDS, ACCESS_AI_UPLOAD, ACCESS_EVA, ACCESS_HEADS,
@@ -259,9 +259,9 @@
 	config_job = "head_of_personnel"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/head_of_security //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
-	assignment = "Head of Security"
-	trim_state = "trim_headofsecurity"
+/datum/id_trim/job/head_of_security
+	assignment = "Chief Master At Arms"
+	trim_state = "trim_chiefmasteratarms"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY,
 					ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_AUX_BASE,
 					ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_EVA, ACCESS_TELEPORTER,
@@ -370,7 +370,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CMO, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/quartermaster //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
-	assignment = "Quartermaster"
+	assignment = "Deck Officer"
 	trim_state = "trim_quartermaster"
 	full_access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_VAULT, ACCESS_AUX_BASE)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_VAULT, ACCESS_AUX_BASE)
@@ -378,7 +378,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/research_director
-	assignment = "Research Director"
+	assignment = "Chief Research Officer"
 	trim_state = "trim_researchdirector"
 	full_access = list(ACCESS_HEADS, ACCESS_RND, ACCESS_GENETICS, ACCESS_MORGUE,
 					ACCESS_TOXINS, ACCESS_TELEPORTER, ACCESS_SEC_DOORS, ACCESS_MECH_SCIENCE,
@@ -418,8 +418,8 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 
 /// Sec officers have departmental variants. They each have their own trims with bonus departmental accesses.
-/datum/id_trim/job/security_officer //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
-	assignment = "Security Officer"
+/datum/id_trim/job/security_officer
+	assignment = "Brig Officer"
 	trim_state = "trim_securityofficer"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MECH_SECURITY, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM)
@@ -489,7 +489,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/warden //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
-	assignment = "Warden"
+	assignment = "Master At Arms"
 	trim_state = "trim_warden"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_MECH_SECURITY, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_MECH_SECURITY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM) // See /datum/job/warden/get_access()
