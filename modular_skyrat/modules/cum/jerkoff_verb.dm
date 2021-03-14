@@ -38,7 +38,7 @@
 /obj/item/coom/attack(mob/living/M, mob/user, proximity)
 	if(!proximity)
 		return
-	if(!(M.client && (M.client.prefs.skyrat_toggles & CUMFACE_PREF)))
+	if(!(M.client && (M.client.prefs.skyrat_toggles & CUMFACE_PREF) && ishuman(M)))
 		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
 		return
 	var/mob/living/carbon/human/H = user
@@ -58,18 +58,17 @@
 		user.visible_message("<span class='warning'>[user] starts masturbating onto themself!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
 	else
 		user.visible_message("<span class='warning'>[user] starts masturbating onto [M]!</span>", "<span class='danger'>You start masturbating onto [M]!</span>")
-	if(do_after(user,60))
-		if(proximity)
-			if(M==user)
-				user.visible_message("<span class='warning'>[user] cums on themself!</span>", "<span class='danger'>You cum on yourself!</span>")
-			else
-				user.visible_message("<span class='warning'>[user] cums on [M]!</span>", "<span class='danger'>You cum on [M]!</span>")
-			R.expose(M, TOUCH)
-			if(prob(40))
-				user.emote("moan")
-			qdel(src)
+	if(do_after(user,M,60))
+		if(M==user)
+			user.visible_message("<span class='warning'>[user] cums on themself!</span>", "<span class='danger'>You cum on yourself!</span>")
 		else
-			to_chat(user, "<span class='danger'>[M] moved out of the way!</span>")
+			user.visible_message("<span class='warning'>[user] cums on [M]!</span>", "<span class='danger'>You cum on [M]!</span>")
+		R.expose(M, TOUCH)
+		log_combat(user, M, "came on")
+		if(prob(40))
+			user.emote("moan")
+		qdel(src)
+
 //jerk off into bottles
 /obj/item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
