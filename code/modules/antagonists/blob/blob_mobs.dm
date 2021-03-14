@@ -141,7 +141,7 @@
 	humanize_pod(user)
 
 /mob/living/simple_animal/hostile/blob/blobspore/proc/humanize_pod(mob/user)
-	if((!overmind || istype(src, /mob/living/simple_animal/hostile/blob/blobspore/weak) && !is_zombie)
+	if((!overmind || istype(src, /mob/living/simple_animal/hostile/blob/blobspore/weak)) && !is_zombie)
 		return
 	if(key || stat)
 		return
