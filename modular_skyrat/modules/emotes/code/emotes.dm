@@ -173,13 +173,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/weh.ogg'
 
-/datum/emote/living/dab
-	key = "dab"
-	key_third_person = "dabs"
-	message = "suddenly hits a dab!"
-	emote_type = EMOTE_AUDIBLE
-	hands_use_check = TRUE
-
 /datum/emote/living/mothsqueak
 	key = "msqueak"
 	key_third_person = "lets out a tiny squeak"

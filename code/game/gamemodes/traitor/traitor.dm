@@ -22,7 +22,7 @@
 	<span class='notice'>Crew</span>: Do not let the traitors succeed!"
 
 	var/list/datum/mind/pre_traitors = list()
-	var/traitors_possible = 4 //hard limit on traitors if scaling is turned off
+	var/traitors_possible = 10 //hard limit on traitors if scaling is turned off //SKYRAT EDIT CHANGE ORIGINAL: 4
 	var/num_modifier = 0 // Used for gamemodes, that are a child of traitor, that need more than the usual.
 	var/antag_datum = /datum/antagonist/traitor //what type of antag to create
 	var/traitors_required = TRUE //Will allow no traitors
@@ -40,10 +40,12 @@
 
 	var/tsc = CONFIG_GET(number/traitor_scaling_coeff)
 	if(tsc)
-		num_traitors = max(1, min(round(num_players() / (tsc * 2)) + 2 + num_modifier, round(num_players() / tsc) + num_modifier))
+		//num_traitors = max(1, min(round(num_players() / (tsc * 2)) + 2 + num_modifier, round(num_players() / tsc) + num_modifier)) - ORIGINAL
+		num_traitors = max(1, round(num_players()/tsc) + num_modifier) //SKYRAT EDIT CHANGE
+		message_admins("The roundtype is traitor, based off of coefficient calculations there should be [num_traitors] traitors.") //SKYRAT EDIT ADDITION
 	else
 		num_traitors = max(1, min(num_players(), traitors_possible))
-
+	var/num_of_traitors = 0 //SKYRAT EDIT ADDITION
 	for(var/j = 0, j < num_traitors, j++)
 		if (!antag_candidates.len)
 			break
@@ -53,6 +55,8 @@
 		traitor.restricted_roles = restricted_jobs
 		log_game("[key_name(traitor)] has been selected as a [traitor_name]")
 		antag_candidates.Remove(traitor)
+		num_of_traitors++
+	message_admins("The number of traitors should be [num_traitors] and there are currently [num_of_traitors].") //SKYRAT EDIT ADDITION
 
 	var/enough_tators = !traitors_required || pre_traitors.len > 0
 
