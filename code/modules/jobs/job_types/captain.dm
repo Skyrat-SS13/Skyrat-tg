@@ -1,11 +1,11 @@
 /datum/job/captain
-	title = "Admiral"
+	title = "Captain"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
-	department_head = list("HighCom")
+	department_head = list("CentCom")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Syndicate officials and Space law"
+	supervisors = "Nanotrasen officials and Space law"
 	selection_color = "#ccccff"
 	req_admin_notify = 1
 	minimal_player_age = 14
@@ -28,7 +28,7 @@
 /datum/job/captain/announce(mob/living/carbon/human/H, announce_captaincy = TRUE)
 	..()
 	if(announce_captaincy)
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Admiral [H.real_name] on deck!"))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Captain [H.real_name] on deck!"))
 
 /datum/outfit/job/captain
 	name = "Captain"
@@ -38,11 +38,11 @@
 	belt = /obj/item/pda/captain
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/heads/captain/alt
-	gloves = /obj/item/clothing/gloves/combat
-	uniform = /obj/item/clothing/under/syndicate/combat
-	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	shoes = /obj/item/clothing/shoes/combat
-	head = /obj/item/clothing/head/hos/beret/syndicate
+	gloves = /obj/item/clothing/gloves/color/captain
+	uniform =  /obj/item/clothing/under/rank/captain
+	suit = /obj/item/clothing/suit/armor/vest/capcarapace
+	shoes = /obj/item/clothing/shoes/sneakers/brown
+	head = /obj/item/clothing/head/caphat
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/station_charter=1)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)

@@ -1,12 +1,12 @@
 /datum/job/cargo_technician
-	title = "Deck Crewman"
+	title = "Cargo Technician"
 	//department_head = list("Head of Personnel") //ORIGINAL
-	department_head = list("Deck Officer") //SKYRAT EDIT CHANGE
+	department_head = list("Quartermaster") //SKYRAT EDIT CHANGE
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
 	//supervisors = "the quartermaster and the head of personnel" //ORIGINAL
-	supervisors = "the deck officer" //SKYRAT EDIT CHANGE
+	supervisors = "the quartermaster" //SKYRAT EDIT CHANGE
 	selection_color = "#dcba97"
 
 	outfit = /datum/outfit/job/cargo_tech

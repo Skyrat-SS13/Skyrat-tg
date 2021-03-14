@@ -1,10 +1,10 @@
 /datum/job/janitor
 	title = "Janitor"
-	department_head = list("Corporate Liasion")
+	department_head = list("Head of Personnel")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the corporate liasion"
+	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/janitor

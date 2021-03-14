@@ -1,10 +1,10 @@
 /datum/job/station_engineer
 	title = "Station Engineer"
-	department_head = list("Chief Engineering Officer")
+	department_head = list("Chief Engineer")
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the chief engineering officer"
+	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW

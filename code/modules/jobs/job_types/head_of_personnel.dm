@@ -1,13 +1,13 @@
 /datum/job/head_of_personnel
-	title = "Corporate Liasion"
+	title = "Head of Personnel"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
-	department_head = list("Admiral")
+	department_head = list("Captain")
 	//head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE) //ORIGINAL
 	head_announce = list(RADIO_CHANNEL_SERVICE) //SKYRAT EDIT CHANGE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the admiral"
+	supervisors = "the captain"
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 10
@@ -31,7 +31,7 @@
 /datum/job/head_of_personnel/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
 	..()
 	if(announce_captaincy)
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Admiral [H.real_name] on deck!"))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"

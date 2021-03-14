@@ -1,11 +1,11 @@
 /datum/job/security_officer
-	title = "Brig Officer"
+	title = "Security Officer"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Chief Master At Arms")
+	department_head = list("Head of Security")
 	faction = "Station"
 	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
 	spawn_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	supervisors = "the chief master at arms, security sergeants, and the head of your assigned department (if applicable)"	// SKYRAT EDIT: Adds mention of the security sergeant.
+	supervisors = "the head of security, security sergeants, and the head of your assigned department (if applicable)"	// SKYRAT EDIT: Adds mention of the security sergeant.
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 300

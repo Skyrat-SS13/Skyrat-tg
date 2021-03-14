@@ -1,11 +1,11 @@
 /datum/job/warden
-	title = "Master At Arms"
+	title = "Warden"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Chief Master At Arms")
+	department_head = list("Head of Security")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the chief master at arms"
+	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 300

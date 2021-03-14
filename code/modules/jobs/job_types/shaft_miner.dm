@@ -1,10 +1,10 @@
 /datum/job/shaft_miner
 	title = "Shaft Miner"
-	department_head = list("Deck Officer")
+	department_head = list("Head of Personnel")
 	faction = "Station"
 	total_positions = 5		//SKYRAT EDIT: Original value (3)
 	spawn_positions = 5		//SKYRAT EDIT: Original value (3)
-	supervisors = "the deck officer"
+	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
 
 	outfit = /datum/outfit/job/miner
