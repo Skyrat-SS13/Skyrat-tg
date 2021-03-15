@@ -489,7 +489,8 @@
 	description = "<span class='warning'>Sometimes eye contact makes me so nervous...</span>\n"
 	mood_change = -5
 	timeout = 3 MINUTES
-
+//Skyrat edit, temp disables addiction based quirks.
+/*
 /datum/quirk/junkie
 	name = "Junkie"
 	desc = "You can't get enough of hard drugs."
@@ -604,7 +605,7 @@
 			SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "wrong_cigs")
 			return
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "wrong_cigs", /datum/mood_event/wrong_brand)
-
+*/
 /datum/quirk/unstable
 	name = "Unstable"
 	desc = "Due to past troubles, you are unable to recover your sanity if you lose it. Be very careful managing your mood!"
