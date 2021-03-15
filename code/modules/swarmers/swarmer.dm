@@ -477,7 +477,8 @@
 	//Skyrat Addition Begin - Self-defence against lavaland fauna
 	if(isanimal(target))
 		to_chat(firer, "<span class='info'>Our teleportation beam is too weak to fully teleport the target; damaging it instead!</span>")
-		target.adjustBruteLoss(10)
+		var/mob/living/animal1 = target		
+		animal1.adjustBruteLoss(10)
 		return
 	//Skyrat Addition End
 	swarmer.teleport_target(target)
