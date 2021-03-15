@@ -6,7 +6,7 @@
 	taste_description = "strawberries"
 	color = "#FFADFF"//PINK, rgb(255, 173, 255)
 
-/datum/reagent/drug/aphrodisiac/on_mob_life(mob/living/M)
+/datum/reagent/drug/aphrodisiac/on_mob_life(mob/living/carbon/human/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if((prob(min(current_cycle/2,5))))
 			M.emote(pick("moan","blush"))
@@ -30,7 +30,7 @@
 	addiction_types = list(/datum/addiction/hallucinogens = 10)
 	overdose_threshold = 20
 
-/datum/reagent/drug/aphrodisiacplus/on_mob_life(mob/living/M)
+/datum/reagent/drug/aphrodisiacplus/on_mob_life(mob/living/carbon/human/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(prob(5))
 			if(prob(current_cycle))
