@@ -15,7 +15,7 @@
 		#include "map_files\IceBoxStation\IceBoxStation.dmm"
 		#include "map_files\tramstation\tramstation.dmm"
 		
-		##SKYRAT MAPS##
+		//SKYRAT MAPS
 		
 		#include "map_files\OmegaStation\OmegaStation.dmm"
 
