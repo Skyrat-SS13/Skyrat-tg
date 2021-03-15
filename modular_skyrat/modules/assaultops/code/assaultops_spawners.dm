@@ -46,8 +46,7 @@
 	outfit = /datum/outfit/syndicate_empty
 	excluded_gamemodes = list(/datum/game_mode/assaultops)
 
-/obj/effect/mob_spawn/human/syndicate/assops/empty/Destroy()
-	var/mob/living/carbon/human/syndienew = new /mob/living/carbon/human/(get_turf(src))
+/obj/effect/mob_spawn/human/syndicate/assops/empty/special(mob/living/new_spawn)
 	var/list/loadouts = list(
 		"cqb" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "cqb"),
 		"demoman" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "demoman"),
@@ -58,7 +57,7 @@
 		"tech" = image(icon = 'modular_skyrat/modules/assaultops/icons/radial.dmi', icon_state = "tech"),
 		)
 
-	var/chosen_loadout = show_radial_menu(syndienew, syndienew, loadouts, radius = 40)
+	var/chosen_loadout = show_radial_menu(new_spawn, new_spawn, loadouts, radius = 40)
 
 	var/datum/outfit/assaultops/chosen_loadout_type
 
@@ -92,9 +91,9 @@
 	if(!chosen_loadout)
 		chosen_loadout_type = /datum/outfit/assaultops
 
-	syndienew.equipOutfit(chosen_loadout_type)
+	new_spawn.equipOutfit(chosen_loadout_type)
 
-	to_chat(syndienew, loadout_desc)
+	to_chat(new_spawn, loadout_desc)
 
 	return TRUE
 
