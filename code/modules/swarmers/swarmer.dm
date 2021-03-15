@@ -41,6 +41,7 @@
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	hud_possible = list(ANTAG_HUD, DIAG_STAT_HUD, DIAG_HUD)
 	obj_damage = 0
+	weather_immunities = list("ash") //SKYRAT EDIT: - Makes swarmers immune to ash
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	attack_verb_continuous = "shocks"
 	attack_verb_simple = "shock"
@@ -48,7 +49,7 @@
 	friendly_verb_continuous = "pinches"
 	friendly_verb_simple = "pinch"
 	speed = 0
-	faction = list("swarmer")
+	faction = list("mining", "boss", "swarmer") //SKYRAT EDIT: - Makes swarmers unable to aggro lavaland fauna
 	AIStatus = AI_OFF
 	pass_flags = PASSTABLE
 	mob_size = MOB_SIZE_TINY
@@ -241,12 +242,20 @@
 			victim.set_handcuffed(new /obj/item/restraints/handcuffs/energy/used(victim))
 			victim.update_handcuffed()
 			log_combat(src, victim, "handcuffed")
+			//SKYRAT EDIT START: PREVENTS TELEPORTING NON-HUMAN INDIVIDUALS SUCH AS BORGS
+			var/datum/effect_system/spark_spread/sparks = new
+			sparks.set_up(4,0,get_turf(target))
+			sparks.start()
+			playsound(src, 'sound/effects/sparks4.ogg', 50, TRUE)
+			do_teleport(target, safe_turf , 0, channel = TELEPORT_CHANNEL_BLUESPACE)
+			//SKYRAT EDIT END
 
-	var/datum/effect_system/spark_spread/sparks = new
-	sparks.set_up(4,0,get_turf(target))
-	sparks.start()
-	playsound(src, 'sound/effects/sparks4.ogg', 50, TRUE)
-	do_teleport(target, safe_turf , 0, channel = TELEPORT_CHANNEL_BLUESPACE)
+//SKYRAT ADDITION START - Makes swarmers unable to teleport simplemobs, this could be used to grief.
+	if(!ishuman(target))
+		to_chat(src, "<span class='info'>This being is far too large to remove from our presence!</span>")
+		return
+//SKYRAT ADDITION END.
+
 
 /mob/living/simple_animal/hostile/swarmer/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE)
 	if(!(flags & SHOCK_TESLA))
@@ -455,6 +464,7 @@
 
 /obj/projectile/beam/disabler/swarmer/on_hit(atom/target, blocked = FALSE)
 	. = ..()
+	var/mob/living/simple_animal/hostile/swarmer/swarmer = firer //Skyrat Edit. Moves this here for clarities sake
 	if(!.)
 		return
 	if((!isanimal(target) && !ishuman(target)) || isswarmer(target))
@@ -463,5 +473,12 @@
 		var/mob/living/carbon/human/possibleHulk = target
 		if(!possibleHulk.dna || !possibleHulk.dna.check_mutation(HULK))
 			return
-	var/mob/living/simple_animal/hostile/swarmer/swarmer = firer
+
+	//Skyrat Addition Begin - Self-defence against lavaland fauna
+	if(isanimal(target))
+		to_chat(firer, "<span class='info'>Our teleportation beam is too weak to fully teleport the target; damaging it instead!</span>")
+		target.adjustBruteLoss(10)
+		return
+	//Skyrat Addition End
 	swarmer.teleport_target(target)
+
