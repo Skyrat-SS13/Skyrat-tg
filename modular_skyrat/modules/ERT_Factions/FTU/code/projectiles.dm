@@ -35,7 +35,7 @@
 	name = "7.2mm XJ accelerated Pulse flechette"
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/projectiles.dmi'
 	icon_state = "pulsebullet_mg"
-	damage = 22 //Applied Twice, once BRUTE, once BURN
+	damage = 11 //Applied Twice, once BRUTE, once BURN
 	speed = 0.8
 	wound_bonus = 60
 	embedding = list(embed_chance=80, fall_chance=1, jostle_chance=20, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=0.8, rip_time=20)
