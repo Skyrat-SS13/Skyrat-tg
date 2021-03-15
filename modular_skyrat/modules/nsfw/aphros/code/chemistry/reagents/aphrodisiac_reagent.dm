@@ -14,7 +14,7 @@
 			var/aroused_message = pick("You feel frisky.", "You're having trouble suppressing your urges.", "You feel in the mood.")
 			to_chat(M, "<span class='notice'>[aroused_message]</span>")
 		if(ishuman(M))
-			for(var/obj/item/organ/genital/G)
+			for(var/obj/item/organ/genital/G in M.internal_organs)
 				if(!G.aroused == AROUSAL_CANT)
 					G.aroused = AROUSAL_FULL
 					G.update_sprite_suffix()
@@ -45,7 +45,7 @@
 				aroused_message = pick("You feel a bit hot.", "You feel strong sexual urges.", "You feel in the mood.", "You're ready to go down on someone.")
 			to_chat(M, "<span class='notice'>[aroused_message]</span>")
 		if(ishuman(M))
-			for(var/obj/item/organ/genital/G)
+			for(var/obj/item/organ/genital/G in M.internal_organs)
 				if(!G.aroused == AROUSAL_CANT)
 					G.aroused = AROUSAL_FULL
 					G.update_sprite_suffix()
