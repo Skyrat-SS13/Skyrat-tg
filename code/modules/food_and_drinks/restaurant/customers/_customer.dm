@@ -231,7 +231,7 @@
 /datum/customer_data/moth/proc/get_wings(mob/living/simple_animal/robot_customer/customer)
 	var/customer_ref = WEAKREF(customer)
 	if (!LAZYACCESS(wings_chosen, customer_ref))
-		LAZYSET(wings_chosen, customer_ref, GLOB.moth_wings_list[pick(GLOB.moth_wings_list)])
+		LAZYSET(wings_chosen, customer_ref, pick(GLOB.sprite_accessories["wings"]))
 	return wings_chosen[customer_ref]
 
 /datum/customer_data/moth/get_underlays(mob/living/simple_animal/robot_customer/customer)
