@@ -88,6 +88,11 @@
 
 	var/success = FALSE
 
+	//SKYRAT EDIT ADDITION BEGIN - FOR SOME REASON THIS MONKEY WONT FUCK OFF
+	if(!ismob(victim))
+		finish_action(controller, success) //RETURN TO ENTERPRISE!
+	//SKYRAT EDIT END - HE HAS BEEN FUCKING SHIT UP FOR TOO LONG
+
 	if(do_mob(living_pawn, victim, MONKEY_ITEM_SNATCH_DELAY) && target)
 
 		for(var/obj/item/I in victim.held_items)

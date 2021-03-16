@@ -14,7 +14,7 @@
 		return BULLET_ACT_HIT
 	if(!isturf(A.loc)) //NO MOTHERFLIPPIN MECHS!
 		return BULLET_ACT_HIT
-	if(A.in_throw_mode)
+	if(A.throw_mode)
 		A.visible_message("<span class='danger'>[A] effortlessly swats the projectile aside! They can block bullets with their bare hands!</span>", "<span class='userdanger'>You deflect the projectile!</span>")
 		playsound(get_turf(A), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 		P.firer = A
@@ -26,5 +26,5 @@
 	martial = /datum/martial_art/cqc/plus
 	name = "old but gold manual"
 	martialname = "close quarters combat plus"
-	desc = "A small, black manual. There are drawn instructions of tactical hand-to-hand combat. This includes how to defelct projectiles too."
+	desc = "A small, black manual. There are drawn instructions of tactical hand-to-hand combat. This includes how to deflect projectiles too."
 	greet = "<span class='boldannounce'>You've mastered the basics of CQC+.</span>"
