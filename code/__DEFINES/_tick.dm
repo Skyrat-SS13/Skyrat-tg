@@ -7,7 +7,7 @@
 #define MAPTICK_LAST_INTERNAL_TICK_USAGE (world.map_cpu)
 #endif
 /// Tick limit while running normally
-#define TICK_BYOND_RESERVE 10
+#define TICK_BYOND_RESERVE 16
 #define TICK_LIMIT_RUNNING (max(100 - TICK_BYOND_RESERVE - MAPTICK_LAST_INTERNAL_TICK_USAGE, MAPTICK_MC_MIN_RESERVE))
 /// Tick limit used to resume things in stoplag
 #define TICK_LIMIT_TO_RUN 58 //SKYRAT EDIT ORIGINAL: 70
