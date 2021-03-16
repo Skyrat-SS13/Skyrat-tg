@@ -19,11 +19,11 @@
 
 /datum/id_trim/syndicom/skyrat/assault/assistant
 	assignment = "Operative"
-	trim_state = "trim_operative"
+	trim_state = "trim_syndicateassistant"
 
 /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 	assignment = "Syndicate Staff"
-	trim_state = "trim_syndicateassistant"
+	trim_state = "trim_syndicatestaff"
 
 /datum/id_trim/syndicom/skyrat/assault/researcher
 	assignment = "Researcher"
