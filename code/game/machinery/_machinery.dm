@@ -344,6 +344,7 @@
 	if(silicon || isAdminGhostAI(user)) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
+		return TRUE // SKYRAT EDIT - This allows AIs to interact with machines again.
 
 	var/is_dextrous = FALSE
 	if(isanimal(user))
