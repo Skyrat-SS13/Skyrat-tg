@@ -296,66 +296,6 @@ GLOBAL_LIST_INIT(food, list(
 
 			dat += "<HR>"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			dat += "<center>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=0' [character_settings_tab == 0 ? "class='linkOn'" : ""]>General</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=1' [character_settings_tab == 1 ? "class='linkOn'" : ""]>Appearance</a>"
@@ -468,10 +408,6 @@ GLOBAL_LIST_INIT(food, list(
 
 					dat += "</tr></table>"
 
-
-
-
-
 					//Adds a thing to select which phobia because I can't be assed to put that in the quirks window
 					if("Phobia" in all_quirks)
 						dat += "<h3>Phobia</h3>"
@@ -498,7 +434,6 @@ GLOBAL_LIST_INIT(food, list(
 							dat += "[html_encode(features["flavor_text"])]"
 					else
 						dat += "[copytext(html_encode(features["flavor_text"]), 1, 40)]..."
-
 
 					dat += "<br>"
 
@@ -532,7 +467,6 @@ GLOBAL_LIST_INIT(food, list(
 					var/use_skintones = pref_species.use_skintones
 					if(use_skintones)
 
-
 						dat += APPEARANCE_CATEGORY_COLUMN
 
 						dat += "<h3>Skin Tone</h3>"
@@ -551,10 +485,8 @@ GLOBAL_LIST_INIT(food, list(
 					dat += "<h3>Secondary Color</h3>"
 					dat += "<a href='?_src_=prefs;preference=mutant_color2;task=input'><span class='color_holder_box' style='background-color:#[features["mcolor2"]]'></span></a><BR>"
 
-
 					dat += "<h3>Tertiary Color</h3>"
 					dat += "<a href='?_src_=prefs;preference=mutant_color3;task=input'><span class='color_holder_box' style='background-color:#[features["mcolor3"]]'></span></a><BR>"
-
 
 					if(istype(pref_species, /datum/species/ethereal)) //not the best thing to do tbf but I dont know whats better.
 
@@ -566,28 +498,20 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<a href='?_src_=prefs;preference=color_ethereal;task=input'><span class='color_holder_box' style='background-color:#[features["ethcolor"]]'></span></a><BR>"
 
 
-
-
-
-
 					if((EYECOLOR in pref_species.species_traits) && !(NOEYESPRITES in pref_species.species_traits))
 
 						/*if(!use_skintones)
 							dat += APPEARANCE_CATEGORY_COLUMN*/
 
-
 						dat += "<h3>Eye Color</h3>"
 						dat += "<a href='?_src_=prefs;preference=eyes;task=input'><span class='color_holder_box' style='background-color:#[eye_color]'></span></a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_EYE_COLOR]'>[(randomise[RANDOM_EYE_COLOR]) ? "Lock" : "Unlock"]</A>"
-
 
 						dat += "<br></td>"
 					else if(use_skintones)
 						dat += "</td>"
 
 					if(HAIR in pref_species.species_traits)
-
-
 
 						dat += APPEARANCE_CATEGORY_COLUMN
 
@@ -597,10 +521,8 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
-
 						dat += "<br> <a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIR_COLOR]'>[(randomise[RANDOM_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
-
 
 						dat += "<BR><h3>Facial Hairstyle</h3>"
 
@@ -612,10 +534,8 @@ GLOBAL_LIST_INIT(food, list(
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIR_COLOR]'>[(randomise[RANDOM_FACIAL_HAIR_COLOR]) ? "Lock" : "Unlock"]</A>"
 						dat += "<br></td>"
 
-
 					//Mutant stuff
 					var/mutant_category = 0
-
 
 					var/list/generic_cache = GLOB.generic_accessories
 					for(var/key in mutant_bodyparts)
@@ -627,11 +547,6 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<h3>[generic_cache[key]]</h3>"
 
 						dat += print_bodypart_change_line(key)
-
-
-
-
-
 
 						dat += "<BR>"
 
@@ -647,12 +562,8 @@ GLOBAL_LIST_INIT(food, list(
 
 					dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
-
-
-
 					dat += "<BR><b>Underwear:</b><BR><a href ='?_src_=prefs;preference=underwear;task=input'>[underwear]</a>"
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR]'>[(randomise[RANDOM_UNDERWEAR]) ? "Lock" : "Unlock"]</A>"
-
 
 					dat += "<a href='?_src_=prefs;preference=underwear_color;task=input'><span class='color_holder_box' style='background-color:#[underwear_color]'></span></a>"
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_UNDERWEAR_COLOR]'>[(randomise[RANDOM_UNDERWEAR_COLOR]) ? "Lock" : "Unlock"]</A>"
@@ -665,10 +576,8 @@ GLOBAL_LIST_INIT(food, list(
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SOCKS]'>[(randomise[RANDOM_SOCKS]) ? "Lock" : "Unlock"]</A>"
 					dat += "<a href='?_src_=prefs;preference=socks_color;task=input'><span class='color_holder_box' style='background-color:#[socks_color]'></span></a>"
 
-
 					dat += "<br><b>Jumpsuit Style:</b><BR><a href ='?_src_=prefs;preference=suit;task=input'>[jumpsuit_style]</a>"
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_JUMPSUIT_STYLE]'>[(randomise[RANDOM_JUMPSUIT_STYLE]) ? "Lock" : "Unlock"]</A>"
-
 
 					dat += "<br><b>Backpack:</b><BR><a href ='?_src_=prefs;preference=bag;task=input'>[backpack]</a>"
 					//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BACKPACK]'>[(randomise[RANDOM_BACKPACK]) ? "Lock" : "Unlock"]</A>"
@@ -680,10 +589,6 @@ GLOBAL_LIST_INIT(food, list(
 					dat += "<br><b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
 					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN)
 						dat += "<br><b>Don The Ultimate Gamer Cloak?:</b><BR><a href ='?_src_=prefs;preference=playtime_reward_cloak'>[(playtime_reward_cloak) ? "Enabled" : "Disabled"]</a><BR></td>"
-
-
-
-
 
 
 					if(pref_species.can_have_genitals)
@@ -828,9 +733,6 @@ GLOBAL_LIST_INIT(food, list(
 					dat += "<br>"
 
 
-
-
-
 					dat += "<h2>Medical</h2>"
 					dat += "<a href='?_src_=prefs;preference=medical_record;task=input'><b>Set medical record</b></a><br>"
 					if(length(medical_record) <= 40)
@@ -841,7 +743,6 @@ GLOBAL_LIST_INIT(food, list(
 					else
 						dat += "[copytext(html_encode(medical_record), 1, 40)]..."
 					dat += "<br>"
-
 
 
 					dat += "<h2>Security</h2>"
@@ -855,10 +756,6 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "[copytext(html_encode(security_record), 1, 40)]..."
 					dat += "<br>"
 					dat += "</td>"
-
-
-
-
 
 
 					dat += "<td width=33%>"
@@ -884,16 +781,6 @@ GLOBAL_LIST_INIT(food, list(
 					dat += "</td>"
 					dat += "<td width=33%>"
 					//Empty column for future stuff here
-
-
-
-
-
-
-
-
-
-
 					dat += "</td>"
 					dat += "</tr></table>"
 				if(4) //Loadout
@@ -910,15 +797,6 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<HR>"
 						if(loadout_subcategory != "")
 							var/list/item_names = GLOB.loadout_category_to_subcategory_to_items[loadout_category][loadout_subcategory]
-
-
-
-
-
-
-
-
-
 
 							dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
 							dat += "<tr style='vertical-align:top'>"
@@ -1617,10 +1495,6 @@ GLOBAL_LIST_INIT(food, list(
 	for(var/q in all_quirks)
 		if(SSquirks.quirk_points[q] > 0)
 			.++
-
-
-
-
 
 /datum/preferences/Topic(href, href_list, hsrc) //yeah, gotta do this I guess..
 	. = ..()
@@ -2346,7 +2220,6 @@ GLOBAL_LIST_INIT(food, list(
 					needs_update = TRUE
 					var/new_mutantcolor = input(user, "Choose your character's primary color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
-
 						if(new_mutantcolor == "#000000")
 							features["mcolor"] = pref_species.default_color
 						else
@@ -2454,7 +2327,6 @@ GLOBAL_LIST_INIT(food, list(
 					new_moth_antennae = input(user, "Choose your character's antennae:", "Character Preference") as null|anything in GLOB.moth_antennae_list
 					if(new_moth_antennae)
 						features["moth_antennae"] = new_moth_antennae
-
 				if("moth_markings")
 					var/new_moth_markings
 					new_moth_markings = input(user, "Choose your character's markings:", "Character Preference") as null|anything in GLOB.moth_markings_list
@@ -2988,7 +2860,6 @@ GLOBAL_LIST_INIT(food, list(
 		chosen_species = /datum/species/human
 		set_new_species(/datum/species/human)
 		save_character()
-
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 	if(!character_setup || (character_setup && show_body_size))
