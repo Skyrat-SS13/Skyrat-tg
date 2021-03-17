@@ -57,6 +57,6 @@
 
 	id_trim = /datum/id_trim/job/junior_officer
 
-/obj/effect/landmark/start/security_sergeant
+/obj/effect/landmark/start/junior_officer
 	name = "Junior Security officer"
 	icon_state = "Security Officer"
