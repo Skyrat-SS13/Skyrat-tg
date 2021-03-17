@@ -19,19 +19,17 @@
 	button_icon_state = "art_summon"
 
 /datum/action/innate/hydra/Activate(mob/living/carbon/human/H)	//I would hope putting this here is fine.
-	var/list/names = splittext(H.real_name," - ") //FUCK FUCK FUCK FUCK
-	var/choice = alert(src, "Select Hydra Head", "", names[1], names[2], names[3])
-
-	if(choice == names[1])
-		H.name = names[1]
-
-	else if(choice == names[2])
-		H.name = names[2]
-
-	else if(choice == names[3]) //CODER NOTE. NEVER DO THIS UNLESS YOU DO NOT WANT THE ALTERNATIVE, WHICH IS STORING THIS IN A VARIABLE INSTEAD OF A LIST.
-		H.name = names[3]
-
-	else
-		to_chat(src, "<span class='notice'>You lack any other heads!</span>")
-
-
+	var/list/names = splittext(H.real_name,"-") //FUCK FUCK FUCK FUCK
+	var/selhead = input("Who would you like to speak as?","Heads:") in names
+	switch(names.Find(selhead))
+		if(1)
+			H.name = names[1]
+			return
+		if(2)
+			H.name = names[2]
+			return
+		if(3)
+			H.name = names[3]
+			return
+	//To explain what this does; it essentially returns before it reaches this line of code. Technically making this unselectable (unless) you lacked any other heads to switch to. Hacky.
+	to_chat(src, "<span class='notice'>You lack any other heads!</span>")
