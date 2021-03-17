@@ -36,6 +36,7 @@
 /obj/projectile/bullet/pepperball
 	name = "pepperball orb"
 	damage = 0
+	stamina = 5
 	nodamage = TRUE
 	shrapnel_type = null
 	sharpness = NONE
@@ -48,7 +49,6 @@
 	if(isliving(target))
 		var/mob/living/M = target
 		if(M.can_inject())
-			var/datum/reagent/R = new(contained_reagent)
-			R.volume = reagent_volume
-			R.expose_mob(M, VAPOR)
+			var/datum/reagent/R = new contained_reagent
+			R.expose_mob(M, VAPOR, reagent_volume)
 	. = ..()
