@@ -40,12 +40,6 @@
 	var/mob/living/carbon/human/hydra = owner
 	var/list/names = splittext(hydra.name_archive,"-")
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
-	switch(names.Find(selhead))
-		if(1)
-			hydra.real_name = names[1]
-		if(2)
-			hydra.real_name = names[2]
-		if(3)
-			hydra.real_name = names[3]
+	hydra.real_name = selhead
 	hydra.visible_message("<span class='notice'>[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
 							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
