@@ -339,17 +339,10 @@
 	if(isAdminGhostAI(user))
 		return TRUE //if you're an admin, you probably know what you're doing (or at least have permission to do what you're doing)
 
-<<<<<<< HEAD
-	if(silicon || isAdminGhostAI(user)) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
-		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
-			return FALSE
-		return TRUE // SKYRAT EDIT - This allows AIs to interact with machines again.
-=======
 	if(!isliving(user))
 		return FALSE //no ghosts in the machine allowed, sorry
 
 	var/mob/living/living_user = user
->>>>>>> 8655e327acf (silicons can now use machines again (#57756))
 
 	var/is_dextrous = FALSE
 	if(isanimal(user))
