@@ -2751,7 +2751,7 @@ GLOBAL_LIST_INIT(food, list(
 					else
 						needs_update = TRUE
 
-					if(istype(parent.mob, /mob/dead/new_player))
+					if(istype(parent.mob, /mob/dead/new_player)) //is this shitcode? probably - I DONT CAREEE~
 						var/mob/dead/new_player/NP = parent.mob
 						NP.new_player_panel()
 
