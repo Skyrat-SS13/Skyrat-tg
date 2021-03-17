@@ -29,16 +29,12 @@
 	switch(names.Find(selhead))
 		if(1)
 			H.real_name = names[1]
-			H.name = names[1]
 		if(2)
 			H.real_name = names[2]
-			H.name = names[2]
 		if(3)
 			H.real_name = names[3]
-			H.name = names[3]
-		if(3)
+		if(4)
 			H.real_name = names[4]
-			H.name = names[4]
 	return
 
 
