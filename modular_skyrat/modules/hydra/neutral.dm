@@ -33,6 +33,7 @@
 /datum/action/innate/hydrareset/Activate()
 	var/mob/living/carbon/human/H = owner
 	H.real_name = H.name_archive
+	to_chat(H, "<span class='warning'>You are now talking as [H.name_archive].</span>")
 
 /datum/action/innate/hydra/Activate() //Oops, all hydra!
 	var/mob/living/carbon/human/H = owner
@@ -45,6 +46,7 @@
 			H.real_name = names[2]
 		if(3)
 			H.real_name = names[3]
-	return
+
+	to_chat(H, "<span class='warning'>You are now talking as [selhead]</span>")
 
 
