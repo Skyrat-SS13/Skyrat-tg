@@ -8,6 +8,10 @@
 	medical_record_text = "There are multiple minds inhabiting one body."
 	var/selected_head
 
+/datum/quirk/hydra/add(mob/living/carbon/human/H)
+	var/datum/action/innate/augury/A = new
+	A.Grant(H)
+
 /datum/action/innate/hydra
 	name = "Switch head"
 	desc = "Switch between each of the heads on your body."
