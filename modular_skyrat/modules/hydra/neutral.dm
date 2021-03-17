@@ -37,7 +37,7 @@
 
 /datum/action/innate/hydra/Activate() //Oops, all hydra!
 	var/mob/living/carbon/human/H = owner
-	var/list/names = splittext(H.real_name,"-")
+	var/list/names = splittext(H.name_archive,"-")
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
 	switch(names.Find(selhead))
 		if(1)
