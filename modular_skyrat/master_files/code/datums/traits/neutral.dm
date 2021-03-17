@@ -1,3 +1,5 @@
+#define TRAIT_HYDRA_HEADS "hydrahead" //We still dont have a centralised trait file
+
 //SKYRAT NEUTRAL TRAITS
 /datum/quirk/excitable
 	name = "Excitable!"
@@ -7,8 +9,6 @@
 	medical_record_text = "Patient seems to get excited easily."
 	value = 0
 	mob_trait = TRAIT_EXCITABLE
-#define TRAIT_HYDRA_HEADS "hydrahead" //We still dont have a centralised trait file
-
 
 /datum/quirk/ironass
 	name = "Iron Ass"
@@ -36,3 +36,4 @@
 	medical_record_text = "Patient is a DNR, and cannot be revived in any way."
 	value = 0
 	mob_trait = TRAIT_DNR
+

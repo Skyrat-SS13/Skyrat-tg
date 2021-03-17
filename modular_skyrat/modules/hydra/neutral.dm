@@ -29,3 +29,5 @@
 
 	else
 		to_chat(src, "<span class='notice'>You lack any other heads!.</span>")
+
+
