@@ -7,11 +7,14 @@
 	lose_text = "<span class='danger'>All of your minds become singular.</span>"
 	medical_record_text = "There are multiple heads and personalities affixed to one body."
 
-/datum/quirk/hydra/add()
+/datum/quirk/hydra/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/innate/hydra/A = new
-	A.owner = H
+	var/datum/action/innate/hydrareset/B = new
 	A.Grant(H)
+	A.owner = H
+	B.Grant(H)
+	B.owner = H
 	H.name_archive = H.real_name
 
 
@@ -21,10 +24,19 @@
 	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "art_summon"
 
+/datum/action/innate/hydrareset
+	name = "Reset Speech"
+	desc = "Go back to speaking as a whole."
+	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	button_icon_state = "art_summon"
+
+/datum/action/innate/hydrareset/Activate()
+	var/mob/living/carbon/human/H = owner
+	H.real_name = H.name_archive
+
 /datum/action/innate/hydra/Activate() //Oops, all hydra!
 	var/mob/living/carbon/human/H = owner
-	var/list/names = splittext(H.real_name,"-") //FUCK FUCK FUCK FUCK
-	names[4]=H.name_archive
+	var/list/names = splittext(H.real_name,"-")
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
 	switch(names.Find(selhead))
 		if(1)
@@ -33,8 +45,6 @@
 			H.real_name = names[2]
 		if(3)
 			H.real_name = names[3]
-		if(4)
-			H.real_name = names[4]
 	return
 
 
