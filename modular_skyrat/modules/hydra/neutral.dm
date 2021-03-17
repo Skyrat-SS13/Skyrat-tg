@@ -1,10 +1,10 @@
 /datum/quirk/hydra
-	name = "Trio Hydra Heads!"
-	desc = "As a hydra, you speak through your independant heads. Or rather, as yourselves. (Seperate the names like Name - Name2 - Name3 without the brackets. MAKE SURE TO PRESERVE SPACING)"
+	name = "Hydra Heads"
+	desc = "You are a tri-headed creature. To use, format name like (Fucks-Sucks-Ducks)"
 	value = 0
 	mob_trait = TRAIT_HYDRA_HEADS
-	gain_text = "<span class='notice'>You have minds that can speak independantly.</span>"
-	lose_text = "<span class='danger'>All your minds has merged into one.</span>"
+	gain_text = "<span class='notice'>You hear two other voices inside of your head(s).</span>"
+	lose_text = "<span class='danger'>All of your minds become singular.</span>"
 	medical_record_text = "There are multiple minds inhabiting one body."
 	var/selected_head
 
