@@ -346,7 +346,7 @@
 /obj/item/gun/ballistic/automatic/pistol/pepperball/nomag
 	spawnwithmagazine = FALSE
 
-/obj/item/storage/box/gunset/security_medic/PopulateContents()
+/obj/item/storage/box/gunset/pepperball/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/pepperball/nomag(src)
 	new /obj/item/ammo_box/magazine/pepperball(src)
