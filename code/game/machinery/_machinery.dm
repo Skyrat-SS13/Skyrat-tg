@@ -344,8 +344,15 @@
 	if(silicon || isAdminGhostAI(user)) // If we are an AI or adminghsot, make sure the machine allows silicons to interact
 		if(!(interaction_flags_machine & INTERACT_MACHINE_ALLOW_SILICON))
 			return FALSE
+		return TRUE // SKYRAT EDIT - This allows AIs to interact with machines again.
 
-	else if(isliving(user)) // If we are a living human
+	var/is_dextrous = FALSE
+	if(isanimal(user))
+		var/mob/living/simple_animal/user_as_animal = user
+		if (user_as_animal.dextrous)
+			is_dextrous = TRUE
+
+	if(is_dextrous || user.can_hold_items()) // If we are a living mob with hand slots or a dextrous simple animal.
 		var/mob/living/L = user
 
 		if(interaction_flags_machine & INTERACT_MACHINE_REQUIRES_SILICON) // First make sure the machine doesn't require silicon interaction
