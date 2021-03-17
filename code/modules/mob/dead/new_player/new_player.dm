@@ -158,7 +158,7 @@
 		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
 		new_player_panel()
 
-	if(href_list["antagtoggle"])
+	if(href_list["midroundantag"])
 		client.prefs.toggles ^= MIDROUND_ANTAG
 		to_chat(usr, "<span class='notice'>You will now [(client.prefs.toggles & MIDROUND_ANTAG) ? "be considered" : "not be considered"] for any midround antagonist opportunities.</span>")
 		new_player_panel()
