@@ -8,8 +8,9 @@
 	medical_record_text = "There are multiple minds inhabiting one body."
 	var/selected_head
 
-/datum/quirk/hydra/add(mob/living/carbon/human/H)
+/datum/quirk/hydra/on_spawn(mob/living/carbon/human/H)
 	var/datum/action/innate/hydra/A = new
+	A.owner = H
 	A.Grant(H)
 
 /datum/action/innate/hydra
@@ -24,12 +25,8 @@
 	switch(names.Find(selhead))
 		if(1)
 			H.name = names[1]
-			return
 		if(2)
 			H.name = names[2]
-			return
 		if(3)
 			H.name = names[3]
-			return
-	//To explain what this does; it essentially returns before it reaches this line of code. Technically making this unselectable (unless) you lacked any other heads to switch to. Hacky.
-	to_chat(src, "<span class='notice'>You lack any other heads!</span>")
+	return

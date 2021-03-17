@@ -1,3 +1,4 @@
 /datum/sprite_accessory/snouts/mammal/hydra
 	name = "Hydra"
-	icon_state = "hydra"
+	icon = "modular_skyrat/modules/hydra/snouts.dmi"
+	icon_state = "m_snout_hydra_ADJ"
