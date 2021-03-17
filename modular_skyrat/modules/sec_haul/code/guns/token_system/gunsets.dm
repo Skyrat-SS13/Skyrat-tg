@@ -338,3 +338,17 @@
 /obj/item/storage/box/gunset/blaster/PopulateContents()
 	. = ..()
 	new /obj/item/gun/energy/laser/hitscan(src)
+
+//SECURITY MEDIC
+/obj/item/storage/box/gunset/pepperball
+	name = "pepperball supply box"
+	w_class = WEIGHT_CLASS_NORMAL
+/obj/item/gun/ballistic/automatic/pistol/pepperball/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/security_medic/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pepperball/nomag(src)
+	new /obj/item/ammo_box/magazine/pepperball(src)
+	new /obj/item/ammo_box/magazine/pepperball(src)
+	new /obj/item/ammo_box/magazine/pepperball(src)
