@@ -33,7 +33,8 @@
 /datum/action/innate/hydrareset/Activate()
 	var/mob/living/carbon/human/H = owner
 	H.real_name = H.name_archive
-	to_chat(H, "<span class='warning'>You are now talking as [H.name_archive].</span>")
+	H.visible_message("<span class='notice'>[H.name] pushes all three heads forwards; they seem to be talking as a collective.</span>", \
+							"<span class='notice'>You are now talking as [H.name_archive]!</span>", ignored_mobs=owner)
 
 /datum/action/innate/hydra/Activate() //Oops, all hydra!
 	var/mob/living/carbon/human/H = owner
@@ -48,5 +49,5 @@
 			H.real_name = names[3]
 
 	to_chat(H, "<span class='warning'>You are now talking as [selhead]</span>")
-
-
+	H.visible_message("<span class='notice'>[H.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
+							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
