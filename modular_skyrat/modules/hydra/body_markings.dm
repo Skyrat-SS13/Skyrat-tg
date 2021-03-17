@@ -13,6 +13,7 @@
 	default_color = "F00"
 	affected_bodyparts = HEAD
 	always_color_customizable = TRUE
+
 /datum/body_marking/other/hydra_right_head
 	name = "Hydra Right Head"
 	icon_state = "hydraright_head"
