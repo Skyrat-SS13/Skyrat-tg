@@ -8,14 +8,14 @@
 	medical_record_text = "There are multiple heads and personalities affixed to one body."
 
 /datum/quirk/hydra/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/innate/hydra/A = new
-	var/datum/action/innate/hydrareset/B = new
-	A.Grant(H)
-	A.owner = H
-	B.Grant(H)
-	B.owner = H
-	H.name_archive = H.real_name
+	var/mob/living/carbon/human/hydra = quirk_holder
+	var/datum/action/innate/hydra/spell = new
+	var/datum/action/innate/hydrareset/resetspell = new
+	spell.Grant(hydra)
+	spell.owner = hydra
+	resetspell.Grant(hydra)
+	resetspell.owner = hydra
+	hydra.name_archive = hydra.real_name
 
 
 /datum/action/innate/hydra
@@ -31,21 +31,21 @@
 	button_icon_state = "art_summon"
 
 /datum/action/innate/hydrareset/Activate()
-	var/mob/living/carbon/human/H = owner
-	H.real_name = H.name_archive
-	H.visible_message("<span class='notice'>[H.name] pushes all three heads forwards; they seem to be talking as a collective.</span>", \
-							"<span class='notice'>You are now talking as [H.name_archive]!</span>", ignored_mobs=owner)
+	var/mob/living/carbon/human/hydra = owner
+	hydra.real_name = hydra.name_archive
+	hydra.visible_message("<span class='notice'>[hydra.name] pushes all three heads forwards; they seem to be talking as a collective.</span>", \
+							"<span class='notice'>You are now talking as [hydra.name_archive]!</span>", ignored_mobs=owner)
 
 /datum/action/innate/hydra/Activate() //Oops, all hydra!
-	var/mob/living/carbon/human/H = owner
-	var/list/names = splittext(H.name_archive,"-")
+	var/mob/living/carbon/human/hydra = owner
+	var/list/names = splittext(hydra.name_archive,"-")
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
 	switch(names.Find(selhead))
 		if(1)
-			H.real_name = names[1]
+			hydra.real_name = names[1]
 		if(2)
-			H.real_name = names[2]
+			hydra.real_name = names[2]
 		if(3)
-			H.real_name = names[3]
-	H.visible_message("<span class='notice'>[H.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
+			hydra.real_name = names[3]
+	hydra.visible_message("<span class='notice'>[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
 							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
