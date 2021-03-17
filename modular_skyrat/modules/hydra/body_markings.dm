@@ -1,4 +1,5 @@
 //Manages Hydra heads.
+/*
 /datum/body_marking/other/hydra
 	name = "Hydra Head (nonspecific)"
 	icon_state = "hydramiddle_head"
@@ -24,3 +25,4 @@
 	default_color = "F00"
 	affected_bodyparts = HEAD
 	always_color_customizable = TRUE
+*/
