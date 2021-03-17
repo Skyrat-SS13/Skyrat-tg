@@ -8,7 +8,8 @@
 	medical_record_text = "There are multiple minds inhabiting one body."
 	var/selected_head
 
-/datum/quirk/hydra/on_spawn(mob/living/carbon/human/H)
+/datum/quirk/hydra/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/innate/hydra/A = new
 	A.owner = H
 	A.Grant(H)
@@ -19,14 +20,16 @@
 	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "art_summon"
 
-/datum/action/innate/hydra/Activate(mob/living/carbon/human/H)	//I would hope putting this here is fine.
-	var/list/names = splittext(H.real_name,"-") //FUCK FUCK FUCK FUCK
+/datum/action/innate/hydra/Activate()	//I would hope putting this here is fine.
+	var/list/names = splittext(owner.real_name,"-") //FUCK FUCK FUCK FUCK
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
 	switch(names.Find(selhead))
 		if(1)
-			H.name = names[1]
+			owner.name = names[1]
 		if(2)
-			H.name = names[2]
+			owner.name = names[2]
 		if(3)
-			H.name = names[3]
+			owner.name = names[3]
 	return
+
+
