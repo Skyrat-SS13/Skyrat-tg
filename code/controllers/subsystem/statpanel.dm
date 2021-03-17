@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(statpanels)
 			" ", //SKYRAT EDIT ADDITION
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			"Real Round Time: [time2text(real_round_time, "hh:mm:ss")]", //SKYRAT EDIT ADDITION
-			"Connected Players: [GLOB.clients.len]" //SKYRAT EDIT ADDITION
+			"Connected Players: [GLOB.clients.len]", //SKYRAT EDIT ADDITION
 			" ", //SKYRAT EDIT ADDITION
 			"OOC: [GLOB.ooc_allowed ? "Enabled" : "Disabled"]" //SKYRAT EDIT ADDITION
 		)
