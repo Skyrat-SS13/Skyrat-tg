@@ -9,7 +9,7 @@
 	var/selected_head
 
 /datum/quirk/hydra/add(mob/living/carbon/human/H)
-	var/datum/action/innate/augury/A = new
+	var/datum/action/innate/hydra/A = new
 	A.Grant(H)
 
 /datum/action/innate/hydra
