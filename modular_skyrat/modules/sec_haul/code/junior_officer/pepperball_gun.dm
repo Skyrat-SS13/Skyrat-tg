@@ -41,16 +41,14 @@
 	sharpness = NONE
 	embedding = null
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
-	var/list/contained_reagents = list(/datum/reagent/consumable/condensedcapsaicin = 50)
-
-/obj/projectile/bullet/pepperball/Initialize()
-	. = ..()
-	if(contained_reagents)
-		reagents.add_reagent_list(contained_reagents)
+	var/contained_reagent = /datum/reagent/consumable/condensedcapsaicin
+	var/reagent_volume = 50
 
 /obj/projectile/bullet/pepperball/on_hit(atom/target, blocked, pierce_hit)
 	if(isliving(target))
 		var/mob/living/M = target
 		if(M.can_inject())
-			reagents.expose(M, VAPOR)
+			var/datum/reagent/R = new(contained_reagent)
+			R.volume = reagent_volume
+			R.expose_mob(M, VAPOR)
 	. = ..()

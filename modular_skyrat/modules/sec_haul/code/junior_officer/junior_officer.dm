@@ -27,7 +27,7 @@
 
 
 /datum/outfit/job/junior_officer
-	name = "Security Sergeant"
+	name = "Junior Security Officer"
 	jobtype = /datum/job/junior_officer
 
 	belt = /obj/item/pda/security
@@ -35,11 +35,17 @@
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/junior
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
-	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
+	head = /obj/item/clothing/head/soft/black/junior_officer
 
 	suit = /obj/item/clothing/suit/toggle/labcoat/junior_officer
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/pepperball)
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/storage/box/gunset/pepperball, /obj/item/restraints/handcuffs/cable=2)
+
+	l_pocket = /obj/item/flashlight
+
+	r_pocket = /obj/item/assembly/flash/handheld
+
+	belt = /obj/item/storage/belt/security/peacekeeper
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
