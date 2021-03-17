@@ -21,15 +21,16 @@
 	button_icon_state = "art_summon"
 
 /datum/action/innate/hydra/Activate()	//I would hope putting this here is fine.
-	var/list/names = splittext(owner.real_name,"-") //FUCK FUCK FUCK FUCK
+	var/mob/living/carbon/human/H = owner
+	var/list/names = splittext(H.real_name,"-") //FUCK FUCK FUCK FUCK
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
 	switch(names.Find(selhead))
 		if(1)
-			owner.name = names[1]
+			H.name = names[1]
 		if(2)
-			owner.name = names[2]
+			H.name = names[2]
 		if(3)
-			owner.name = names[3]
+			H.name = names[3]
 	return
 
 
