@@ -32,6 +32,6 @@
 		H.name = names[3]
 
 	else
-		to_chat(src, "<span class='notice'>You lack any other heads!.</span>")
+		to_chat(src, "<span class='notice'>You lack any other heads!</span>")
 
 
