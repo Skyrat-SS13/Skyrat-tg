@@ -47,7 +47,5 @@
 			H.real_name = names[2]
 		if(3)
 			H.real_name = names[3]
-
-	to_chat(H, "<span class='warning'>You are now talking as [selhead]</span>")
 	H.visible_message("<span class='notice'>[H.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
 							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
