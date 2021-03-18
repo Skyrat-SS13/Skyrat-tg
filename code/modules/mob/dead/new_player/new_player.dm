@@ -60,11 +60,13 @@
 			if(PLAYER_READY_TO_OBSERVE)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
 		output += "<p><a href='byond://?src=[REF(src)];antagtoggle=1'>Be antagonist: [client.prefs.be_antag ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
+		output += "<p><a href='byond://?src=[REF(src)];midroundantag=1'>Be midround antagonist: [(client.prefs.toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
 	else
 		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a></p>"
 		output += "<p>[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]</p>"
-		output += "<p><a href='byond://?src=[REF(src)];midroundantag=1'>Be latejoin antagonist: [client.prefs.be_antag ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
+		output += "<p><a href='byond://?src=[REF(src)];antagtoggle=1'>Be latejoin antagonist: [client.prefs.be_antag ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
+		output += "<p><a href='byond://?src=[REF(src)];midroundantag=1'>Be midround antagonist: [(client.prefs.toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
 
 	if(!IsGuestKey(src.key))
 		output += playerpolls()
@@ -159,8 +161,8 @@
 		new_player_panel()
 
 	if(href_list["midroundantag"])
-		client.prefs.be_antag = !client.prefs.be_antag
-		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any latejoin antagonist opportunities.</span>")
+		client.prefs.toggles ^= MIDROUND_ANTAG
+		to_chat(usr, "<span class='notice'>You will now [(client.prefs.toggles & MIDROUND_ANTAG) ? "be considered" : "not be considered"] for any midround antagonist opportunities.</span>")
 		new_player_panel()
 	//SKYRAT EDIT END
 
