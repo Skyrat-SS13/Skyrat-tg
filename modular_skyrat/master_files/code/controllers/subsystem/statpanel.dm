@@ -24,10 +24,9 @@ SUBSYSTEM_DEF(statpanels)
 			"OOC: [GLOB.ooc_allowed ? "Enabled" : "Disabled"]",
 			" ",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Round Time(with time dilation): [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
 			"Station Time: [station_time_timestamp()]",
-			"Actual Round Time: [time2text(real_round_time, "hh:mm:ss")]"
-
+			"Round Timer(with time dilation): [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
+			"Actual Round Timer: [time2text(real_round_time, "hh:mm:ss")]"
 		)
 
 		if(SSshuttle.emergency)
