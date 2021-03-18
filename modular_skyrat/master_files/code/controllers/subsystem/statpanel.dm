@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(statpanels)
 			" ",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Station Time: [station_time_timestamp()]",
-			"Round Timer(with time dilation): [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
+			"Round Timer: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
 			"Actual Round Timer: [time2text(real_round_time, "hh:mm:ss")]"
 		)
 
