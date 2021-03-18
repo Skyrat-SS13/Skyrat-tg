@@ -43,7 +43,6 @@
 	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>"
 	var/mob/living/carbon/human/stored_changeling = null //The changeling that transformed
 	var/devouring = FALSE //If the true changeling is currently devouring a human
-	var/spam_flag = FALSE //To stop spam
 
 /mob/living/simple_animal/hostile/true_changeling/New()
 	. = ..()
@@ -65,21 +64,16 @@
 
 /mob/living/simple_animal/hostile/true_changeling/AttackingTarget()
 	..()
-	if(prob(5))
-		if(!spam_flag)
-			emote("scream")
+	if(prob(10))
+		emote("scream")
 
 /mob/living/simple_animal/hostile/true_changeling/emote(act, m_type=1, message = null, intentional = TRUE)
 	if(stat)
 		return
-	if(act == "scream" && !spam_flag)
+	if(act == "scream")
 		message = "<B>[src]</B> makes a loud, bone-chilling roar!"
 		act = "me"
 		scream(message)
-		audible_message(message)
-		spam_flag = TRUE
-		spawn(50)
-			spam_flag = FALSE
 		return
 	. = ..()
 
@@ -100,11 +94,11 @@
 					M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency)
 			if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
 				M.show_message(message)
+	audible_message(message)
 
 /mob/living/simple_animal/hostile/true_changeling/death()
 	. = ..()
-	emote("scream")
-	spam_flag = FALSE
+	scream()
 	spawn_gibs()
 	if(stored_changeling && mind)
 		visible_message("<span class='warning'>[src] lets out a furious scream as it reaches equilibrium, as it starts exploding into a shower of gore!</span>", \
@@ -118,7 +112,7 @@
 			if(src)
 				visible_message("<span class='warning'>[src] stumbles upright and begins to move!</span>")
 				revive() //Changelings can self-revive, and true changelings are no exception
-				emote("scream")
+				scream()
 
 /mob/living/simple_animal/hostile/true_changeling/proc/real_death()
 	for(var/i in 1 to 4)
