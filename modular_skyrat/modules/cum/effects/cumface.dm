@@ -10,7 +10,7 @@
 
 	SEND_SIGNAL(parent, COMSIG_MOB_CUMFACED)
 
-	cumface = mutable_appearance('modular_skyrat/modules/cum/cumface.dmi')
+	cumface = mutable_appearance('modular_skyrat/modules/cum/cum.dmi')
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
@@ -67,20 +67,20 @@
 
 	SEND_SIGNAL(parent, COMSIG_MOB_CUMFACED)
 
-	bigcumface = mutable_appearance('modular_skyrat/modules/cum/bigcumface.dmi')
+	bigcumface = mutable_appearance('modular_skyrat/modules/cum/cum.dmi')
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
 		if(H.dna.species.limbs_id == "lizard")
-			bigcumface.icon_state = "cumface_lizard"
+			bigcumface.icon_state = "bigcumface_lizard"
 		else if(H.dna.species.limbs_id == "monkey")
-			bigcumface.icon_state = "cumface_monkey"
+			bigcumface.icon_state = "bigcumface_monkey"
 		else if(H.dna.species.id == "vox")
-			bigcumface.icon_state = "cumface_vox"
+			bigcumface.icon_state = "bigcumface_vox"
 		else if(H.dna.species.mutant_bodyparts["snout"])
-			bigcumface.icon_state = "cumface_lizard"
+			bigcumface.icon_state = "bigcumface_lizard"
 		else
-			bigcumface.icon_state = "cumface_human"
+			bigcumface.icon_state = "bigcumface_human"
 	else if(isAI(parent))
 		bigcumface.icon_state = "cumface_ai"
 

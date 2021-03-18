@@ -46,7 +46,7 @@
 	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
 	if(spriteP.is_hidden(H))
-		to_chat(user, "<span class='notice'>You need to expose your penis in order to masturbate.</span>")
+		to_chat(user, "<span class='notice'>You need to expose your penis out in order to masturbate.</span>")
 		return
 	else if(P.aroused != AROUSAL_FULL)
 		to_chat(user, "<span class='notice'>You need to be aroused in order to masturbate.</span>")
@@ -112,5 +112,5 @@
 				user.emote("moan")
 
 			if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
-				target.icon = 'modular_skyrat/modules/cum/cumweb.dmi'
+				target.icon = 'modular_skyrat/modules/cum/cum.dmi'
 			qdel(src)
