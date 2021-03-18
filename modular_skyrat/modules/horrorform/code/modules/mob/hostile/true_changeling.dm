@@ -1,4 +1,4 @@
-#define TRUE_CHANGELING_REFORM_THRESHOLD 1800 //3 minutes by default
+#define TRUE_CHANGELING_REFORM_THRESHOLD 5 MINUTES
 #define TRUE_CHANGELING_PASSIVE_HEAL 3 //Amount of brute damage restored per tick
 
 //Changelings in their true form.
@@ -20,14 +20,14 @@
 	status_flags = CANPUSH
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	maxHealth = 500 //Very durable
+	maxHealth = 750 //Very durable
 	health = 500
 	healable = FALSE
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	environment_smash = TRUE
 	melee_damage_lower = 40
-	melee_damage_upper = 45
+	melee_damage_upper = 40
 	wander = FALSE
 	attack_verb_continuous = "rips into"
 	attack_verb_simple = "rip into"
@@ -40,7 +40,7 @@
 	var/transformed_time = 0
 	var/playstyle_string = "<b><font size=3 color='red'>We have entered our true form!</font> We are unbelievably powerful, and regenerate life at a steady rate. However, most of \
 	our abilities are useless in this form, and we must utilise the abilities that we have gained as a result of our transformation. Currently, we are incapable of returning to a human. \
-	After several minutes, we will once again be able to revert into a human. Taking too much damage will also turn us back into a human in addition to knocking us out for a long time.</b>"
+	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>"
 	var/mob/living/carbon/human/stored_changeling = null //The changeling that transformed
 	var/devouring = FALSE //If the true changeling is currently devouring a human
 	var/spam_flag = FALSE //To stop spam
@@ -101,13 +101,16 @@
 	emote("scream")
 	spawn_gibs()
 	if(stored_changeling && mind)
-		visible_message("<span class='warning'>[src] lets out a furious scream as it shrinks into its human form.</span>", \
-						"<span class='userdanger'>We lack the power to maintain this form! We helplessly turn back into a human...</span>")
+		visible_message("<span class='warning'>[src] lets out a furious scream as it reaches equilibrium, exploding into a shower of gore!</span>", \
+						"<span class='userdanger'>We lack the power to maintain our mass, we have reached critic-...</span>")
 		stored_changeling.loc = get_turf(src)
 		mind.transfer_to(stored_changeling)
 		stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
 		stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
 		stored_changeling.status_flags &= ~GODMODE
+		stored_changeling.emote("scream")
+		stored_changeling.gib()
+		stored_changeling = null
 		qdel(src)
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")
