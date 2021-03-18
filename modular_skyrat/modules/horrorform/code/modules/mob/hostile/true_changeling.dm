@@ -105,7 +105,7 @@
 						"<span class='userdanger'>We lack the power to maintain our mass, we have reached critic-...</span>")
 		anchored = TRUE
 		turn_to_human.Remove()
-		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=5)
+		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=7)
 		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")
@@ -139,7 +139,7 @@
 	icon = 'modular_skyrat/modules/horrorform/icons/bone_fragment.dmi'
 	icon_state = "bone_fragment"
 	damage = 8
-	ricochets_max = 2
+	ricochets_max = 3
 	ricochet_chance = 66
 	ricochet_decay_chance = 1
 	ricochet_decay_damage = 0.9
@@ -161,7 +161,6 @@
 	icon_state = "grenade_bone"
 	shrapnel_type = /obj/projectile/bullet/pellet/bone_fragment
 	shrapnel_radius = 8
-	var/diseases
 
 /obj/item/grenade/stingbang/bonebang/detonate(mob/living/lanced_by)
 	new /obj/effect/gibspawner/generic/animal(loc)
