@@ -105,7 +105,8 @@
 						"<span class='userdanger'>We lack the power to maintain our mass, we have reached critic-...</span>")
 		anchored = TRUE
 		turn_to_human.Remove()
-		addtimer(CALLBACK(src, .proc/real_death), 5 SECONDS)
+		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=5)
+		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")
 		spawn(450)
@@ -119,7 +120,7 @@
 		spawn_gibs()
 	scream()
 	icon_state = "horror_dead"
-	visible_message("<span class='warning'>[src] has surpassed equilibrium and can no longer support itself, exploding violently!</span>", \
+	visible_message("<span class='warning'>[src] has surpassed equilibrium and can no longer support itself, exploding in a shower of bone and gore!</span>", \
 						"<span class='userdanger'>ARRRRRRGHHHH!!!</span>")
 	stored_changeling.loc = get_turf(src)
 	mind.transfer_to(stored_changeling)
@@ -129,8 +130,30 @@
 	stored_changeling.emote("scream")
 	stored_changeling.gib()
 	stored_changeling = null
+	SEND_SIGNAL(src, COMSIG_HORRORFORM_EXPLODE)
 	explosion(src, 0, 0, 5, 5)
 	qdel(src)
+
+/obj/projectile/bullet/pellet/bone_fragment
+	name = "bone fragment"
+	icon = 'modular_skyrat/modules/horrorform/icons/bone_fragment.dmi'
+	icon_state = "bone_fragment"
+	damage = 8
+	ricochets_max = 2
+	ricochet_chance = 66
+	ricochet_decay_chance = 1
+	ricochet_decay_damage = 0.9
+	ricochet_auto_aim_angle = 10
+	ricochet_auto_aim_range = 2
+	ricochet_incidence_leeway = 0
+	embed_falloff_tile = -2
+	shrapnel_type = /obj/item/shrapnel/bone_fragment
+	embedding = list(embed_chance=55, fall_chance=2, jostle_chance=7, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.7, pain_mult=3, jostle_pain_mult=3, rip_time=15)
+
+/obj/item/shrapnel/bone_fragment
+	name = "bone fragment"
+	icon_state = "tiny"
+	sharpness = NONE
 
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
