@@ -117,7 +117,8 @@
 				emote("scream")
 
 /mob/living/simple_animal/hostile/true_changeling/proc/real_death()
-	spawn_gibs()
+	for(var/i in 1 to 4)
+		spawn_gibs()
 	emote("scream")
 	icon_state = "horror_dead"
 	visible_message("<span class='warning'>[src] has surpassed equilibrium and can no longer support itself, exploding violently!</span>", \
