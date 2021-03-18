@@ -105,7 +105,7 @@
 						"<span class='userdanger'>We lack the power to maintain our mass, we have reached critic-...</span>")
 		anchored = TRUE
 		turn_to_human.Remove()
-		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=7)
+		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=8)
 		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")
