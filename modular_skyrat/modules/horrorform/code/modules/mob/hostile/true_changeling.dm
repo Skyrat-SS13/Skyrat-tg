@@ -160,11 +160,13 @@
 	icon = 'modular_skyrat/modules/horrorform/icons/bone_fragment.dmi'
 	icon_state = "grenade_bone"
 	shrapnel_type = /obj/projectile/bullet/pellet/bone_fragment
-	shrapnel_radius = 7
+	shrapnel_radius = 8
+	var/diseases
 
 /obj/item/grenade/stingbang/bonebang/detonate(mob/living/lanced_by)
-	new /obj/effect/gibspawner/generic(drop_location(), src)
+	new /obj/effect/gibspawner/generic/animal(loc)
 	. = ..()
+
 
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
