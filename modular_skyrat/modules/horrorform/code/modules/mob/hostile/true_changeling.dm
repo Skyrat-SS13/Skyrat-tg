@@ -155,6 +155,17 @@
 	icon_state = "tiny"
 	sharpness = NONE
 
+/obj/item/grenade/stingbang/bonebang
+	name = "bonebang"
+	icon = 'modular_skyrat/modules/horrorform/icons/bone_fragment.dmi'
+	icon_state = "grenade_bone"
+	shrapnel_type = /obj/projectile/bullet/pellet/bone_fragment
+	shrapnel_radius = 5
+
+/obj/item/grenade/stingbang/bonebang/detonate(mob/living/lanced_by)
+	new /obj/effect/gibspawner/generic(src)
+	. = ..()
+
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
 	desc = "We turn back into a human. This takes considerable effort and will stun us for some time afterwards."
