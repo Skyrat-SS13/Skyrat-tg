@@ -859,6 +859,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "\improper E-Cigarette"
 	desc = "A classy and highly sophisticated electronic cigarette, for classy and dignified gentlemen. A warning label reads \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
 	icon = 'icons/obj/clothing/masks.dmi'
+	worn_icon_muzzled = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi' //SKYRAT EDIT: ADDITION
 	icon_state = "red_vape"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY

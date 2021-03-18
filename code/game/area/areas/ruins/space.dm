@@ -85,7 +85,11 @@
 /area/ruin/space/has_grav/hotel/pool
 	name = "Hotel Pool Room"
 	icon_state = "fitness"
-
+// SKYRAT ADDITION: Start
+/area/ruin/space/has_grav/hotel/sauna
+	name = "Hotel Sauna Room"
+	icon_state = "sauna"
+// SKYRAT ADDITION: End
 /area/ruin/space/has_grav/hotel/bar
 	name = "Hotel Bar"
 	icon_state = "cafeteria"

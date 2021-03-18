@@ -28,6 +28,35 @@
 	path = /obj/item/clothing/suit/wornshirt
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
+/datum/loadout_item/suit/tailcoat
+	name = "Tailcoat"
+	path = /obj/item/clothing/suit/costume/tailcoat
+
+/datum/loadout_item/suit/dresscoat
+	name = "Black Dresscoat"
+	path = /obj/item/clothing/suit/costume/vic_dresscoat
+
+/datum/loadout_item/suit/dresscoat_red
+	name = "Red Dresscoat"
+	path = /obj/item/clothing/suit/costume/vic_dresscoat/red
+
+/*Flannels go inside Misc*/
+/datum/loadout_item/suit/flannel_black
+	name = "Black Flannel"
+	path = /obj/item/clothing/suit/toggle/jacket/flannel
+
+/datum/loadout_item/suit/flannel_red
+	name = "Red Flannel"
+	path = /obj/item/clothing/suit/toggle/jacket/flannel/red
+
+/datum/loadout_item/suit/flannel_aqua
+	name = "Aqua Flannel"
+	path = /obj/item/clothing/suit/toggle/jacket/flannel/aqua
+
+/datum/loadout_item/suit/flannel_brown
+	name = "Brown Flannel"
+	path = /obj/item/clothing/suit/toggle/jacket/flannel/brown
+
 //COATS
 /datum/loadout_item/suit/coat
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_COATS
@@ -61,6 +90,10 @@
 /datum/loadout_item/suit/jacket/jacketbomber
 	name = "Bomber jacket"
 	path = /obj/item/clothing/suit/jacket
+
+/datum/loadout_item/suit/jacket/jacketbomber_alt
+	name = "Bomber Jacket w/ Zipper"
+	path = /obj/item/clothing/suit/toggle/jacket
 
 /datum/loadout_item/suit/jacket/jacketleather
 	name = "Leather jacket"
@@ -98,6 +131,62 @@
 	name = "Flak Jacket"
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+
+//HOODIES
+/datum/loadout_item/suit/hoodie
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_HOODIES
+
+/datum/loadout_item/suit/hoodie/grey
+	name = "Grey Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie
+
+/datum/loadout_item/suit/hoodie/black
+	name = "Black Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/black
+
+/datum/loadout_item/suit/hoodie/red
+	name = "Red Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/red
+
+/datum/loadout_item/suit/hoodie/blue
+	name = "Blue Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/blue
+
+/datum/loadout_item/suit/hoodie/green
+	name = "Green Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/green
+
+/datum/loadout_item/suit/hoodie/orange
+	name = "orange hoodies"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/orange
+
+/datum/loadout_item/suit/hoodie/yellow
+	name = "Yellow Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/yellow
+
+/datum/loadout_item/suit/hoodie/white
+	name = "White Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/white
+
+/datum/loadout_item/suit/hoodie/cti
+	name = "CTI Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/cti
+
+/datum/loadout_item/suit/hoodie/mu
+	name = "Mojave University Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/mu
+
+/datum/loadout_item/suit/hoodie/nt
+	name = "NT Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/nt
+
+/datum/loadout_item/suit/hoodie/smw
+	name = "SMW Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/smw
+
+/datum/loadout_item/suit/hoodie/nrti
+	name = "NRTI Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/nrti
 
 //JOB RELATED
 /datum/loadout_item/suit/job
@@ -138,6 +227,11 @@
 	path = /obj/item/clothing/suit/hooded/wintercoat/hydro
 	restricted_roles = list("Head of Personnel", "Botanist") // Reserve it to Botanists and their boss, the Head of Personnel
 
+/datum/loadout_item/suit/job/coat_bar
+	name = "Bartender winter coat"
+	path = /obj/item/clothing/suit/hooded/wintercoat/bartender
+	restricted_roles = list("Head of Personnel", "Bartender") //Reserved for Bartenders and their head-of-staff
+
 /datum/loadout_item/suit/job/coat_cargo
 	name = "Cargo winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/cargo
@@ -162,3 +256,51 @@
 	name = "warden navyblue jacket"
 	path = /obj/item/clothing/suit/armor/vest/warden/navyblue
 	restricted_roles = list("Warden")
+
+/datum/loadout_item/suit/job/security_jacket
+	name = "Security Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/sec
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_desc = "All Security Personnel"
+
+/datum/loadout_item/suit/job/engi_jacket
+	name = "Engineering Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/engi
+	restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician")
+	restricted_desc = "All Engineering Personnel"
+
+/datum/loadout_item/suit/job/sci_jacket
+	name = "Science Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/sci
+	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist")
+	restricted_desc = "All Science Personnel"
+
+/datum/loadout_item/suit/job/med_jacket
+	name = "Medbay Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/med
+	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Virologist")
+	restricted_desc = "All Medical Personnel"
+
+/datum/loadout_item/suit/job/supply_jacket
+	name = "Supply Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/supply
+	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
+	restricted_desc = "All Cargo Personnel"
+
+/datum/loadout_item/suit/job/supply_head_jacket
+	name = "Quartermaster's Jacket"
+	path = /obj/item/clothing/suit/toggle/jacket/supply/head
+	restricted_roles = list("Quartermaster")
+	restricted_desc = "Quartermaster Only"
+
+/datum/loadout_item/suit/job/labcoat_parared
+	name = "Red Paramedic Labcoat"
+	path = /obj/item/clothing/suit/toggle/labcoat/para_red
+	restricted_roles = list("Chief Medical Officer", "Paramedic")
+	restricted_desc = "Medical First Responders"
+
+/datum/loadout_item/suit/job/labcoat_highvis
+	name = "High-Vis Labcoat"
+	path = /obj/item/clothing/suit/toggle/labcoat/highvis
+	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective")
+	restricted_desc = "First Responders and Detective"

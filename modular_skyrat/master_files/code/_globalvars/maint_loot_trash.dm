@@ -121,7 +121,6 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/clothing/mask/luchador/tecnicos = 25,
 		/obj/item/clothing/mask/surgical = 75,
 		/obj/item/cultivator/rake = 25,
-		/obj/item/disk/data/cloning = 25,
 		/obj/item/extinguisher = 100,
 		/obj/item/extinguisher/mini = 200,
 		/obj/item/flashlight/flare = 200,

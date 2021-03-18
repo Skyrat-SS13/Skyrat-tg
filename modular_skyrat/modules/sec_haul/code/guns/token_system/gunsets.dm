@@ -191,8 +191,8 @@
 	new /obj/item/gun/ballistic/automatic/pcr/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
 
 /obj/item/storage/box/gunset/norwind
 	name = "lg-2 norwind supply box"
@@ -205,8 +205,8 @@
 	new /obj/item/gun/ballistic/automatic/norwind/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
 
 /obj/item/storage/box/gunset/ostwind
 	name = "ostwind supply box"
@@ -219,8 +219,8 @@
 	new /obj/item/gun/ballistic/automatic/ostwind/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
 
 /obj/item/storage/box/gunset/vintorez
 	name = "vintorez supply box"
@@ -233,8 +233,8 @@
 	new /obj/item/gun/ballistic/automatic/vintorez/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
 
 /obj/item/storage/box/gunset/pitbull
 	name = "pitbull supply box"
@@ -247,8 +247,8 @@
 	new /obj/item/gun/ballistic/automatic/pitbull/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
 
 /////////////////
 //JOB SPECIFIC GUNSETS

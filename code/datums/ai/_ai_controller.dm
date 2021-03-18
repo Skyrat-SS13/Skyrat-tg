@@ -16,8 +16,6 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	var/ai_status
 	///Current movement target of the AI, generally set by decision making.
 	var/atom/current_movement_target
-	///Delay between atom movements, if this is not a multiplication of the delay in
-	var/move_delay
 	///This is a list of variables the AI uses and can be mutated by actions. When an action is performed you pass this list and any relevant keys for the variables it can mutate.
 	var/list/blackboard = list()
 	///Tracks recent pathing attempts, if we fail too many in a row we fail our current plans.
@@ -32,6 +30,10 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	COOLDOWN_DECLARE(movement_cooldown)
 	///Delay between movements. This is on the controller so we can keep the movement datum singleton
 	var/movement_delay = 0.1 SECONDS
+	///A list for the path we're currently following, if we're using JPS pathing
+	var/list/movement_path
+	///Cooldown for JPS movement, how often we're allowed to try making a new path
+	COOLDOWN_DECLARE(repath_cooldown)
 
 /datum/ai_controller/New(atom/new_pawn)
 	ai_movement = SSai_movement.movement_types[ai_movement]
@@ -115,7 +117,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 				return
 
 			else if(ai_movement.moving_controllers[src] != current_movement_target) //We're too far, if we're not already moving start doing it.
-				ai_movement.start_moving_towards(src, current_movement_target) //Then start moving
+				ai_movement.start_moving_towards(src, current_movement_target, current_behavior.required_distance) //Then start moving
 
 			if(current_behavior.behavior_flags & AI_BEHAVIOR_MOVE_AND_PERFORM) //If we can move and perform then do so.
 				current_behavior.perform(delta_time, src)
@@ -162,3 +164,7 @@ have ways of interacting with a specific atom and control it. They posses a blac
 	UnregisterSignal(pawn, COMSIG_MOB_LOGOUT)
 	set_ai_status(AI_STATUS_ON) //Can't do anything while player is connected
 	RegisterSignal(pawn, COMSIG_MOB_LOGIN, .proc/on_sentience_gained)
+
+/// Use this proc to define how your controller defines what access the pawn has for the sake of pathfinding, likely pointing to whatever ID slot is relevant
+/datum/ai_controller/proc/get_access()
+	return

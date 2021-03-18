@@ -422,7 +422,7 @@
 	force = 5
 
 	cooldown = 25
-	stamina_damage = 30 //SKYRAT EDIT CHANGE - ORIGINAL: 85
+	stamina_damage = 65 //SKYRAT EDIT CHANGE - ORIGINAL: 85 // SKYRAT EDIT CHANGE - SKYRAT ORIGINAL POST-NERF: 30
 	affect_silicon = TRUE
 	on_sound = 'sound/weapons/contractorbatonextend.ogg'
 	on_stun_sound = 'sound/effects/contractorbatonhit.ogg'

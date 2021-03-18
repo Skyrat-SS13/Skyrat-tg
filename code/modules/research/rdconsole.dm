@@ -137,7 +137,7 @@ Nothing else in the console has ID requirements.
 /obj/machinery/computer/rdconsole/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Techweb")
+		ui = new(user, src, "Techweb", name)
 		ui.open()
 
 /obj/machinery/computer/rdconsole/ui_assets(mob/user)
@@ -328,7 +328,7 @@ Nothing else in the console has ID requirements.
 							autolathe_friendly = FALSE
 							design.category -= "Imported"
 
-				if(design.build_type & (AUTOLATHE|PROTOLATHE)) // Specifically excludes circuit imprinter and mechfab
+				if(design.build_type & (AUTOLATHE|PROTOLATHE|AWAY_LATHE)) // Specifically excludes circuit imprinter and mechfab
 					design.build_type = autolathe_friendly ? (design.build_type | AUTOLATHE) : design.build_type
 					design.category |= "Imported"
 				d_disk.blueprints[slot] = design

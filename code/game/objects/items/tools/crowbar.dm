@@ -64,14 +64,14 @@
 	custom_materials = list(/datum/material/iron=150,/datum/material/silver=50,/datum/material/titanium=25)
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 15
-	toolspeed = 0.7
+	toolspeed = 0.5	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
 	force_opens = TRUE
 
 /obj/item/crowbar/power/syndicate
 	name = "Syndicate jaws of life"
 	desc = "A re-engineered copy of Nanotrasen's standard jaws of life. Can be used to force open airlocks in its crowbar configuration."
 	icon_state = "jaws_pry_syndie"
-	toolspeed = 0.5
+	toolspeed = 0.25	// SKYRAT EDIT: Keeps this relevant, buffs to oldbase speed - Original value (0.5)
 	force_opens = TRUE
 
 /obj/item/crowbar/power/examine()
