@@ -87,10 +87,6 @@
 	name = "Vox Mange"
 	icon_state = "vox_mange"
 
-/datum/sprite_accessory/hair/vox/
-	name = "Vox "
-	icon_state = ""
-
 //The facial hairstyles
 /datum/sprite_accessory/facial_hair/vox
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_facial_hair.dmi'
