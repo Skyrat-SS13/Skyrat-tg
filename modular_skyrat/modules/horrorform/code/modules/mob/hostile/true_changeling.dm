@@ -75,27 +75,31 @@
 	if(act == "scream" && !spam_flag)
 		message = "<B>[src]</B> makes a loud, bone-chilling roar!"
 		act = "me"
-		var/frequency = get_rand_frequency() //so sound frequency is consistent
-		for(var/mob/M in range(35, src)) //You can hear the scream 7 screens away
-			// Double check for client
-			if(M && M.client)
-				var/turf/M_turf = get_turf(M)
-				if(M_turf && M_turf.z == src.z)
-					var/dist = get_dist(M_turf, src)
-					if(dist <= 7) //source of sound very close
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency)
-					else
-						var/vol = clamp(100-((dist-7)*5), 10, 100) //Every tile decreases sound volume by 5
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency)
-				if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
-					M.show_message(message)
+		scream(message)
 		audible_message(message)
 		spam_flag = TRUE
 		spawn(50)
 			spam_flag = FALSE
 		return
-
 	. = ..()
+
+/mob/living/simple_animal/hostile/true_changeling/proc/scream(message)
+	if(!message)
+		message = "<B>[src]</B> makes a loud, bone-chilling roar!"
+	var/frequency = get_rand_frequency() //so sound frequency is consistent
+	for(var/mob/M in range(35, src)) //You can hear the scream 7 screens away
+		// Double check for client
+		if(M && M.client)
+			var/turf/M_turf = get_turf(M)
+			if(M_turf && M_turf.z == src.z)
+				var/dist = get_dist(M_turf, src)
+				if(dist <= 7) //source of sound very close
+					M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency)
+				else
+					var/vol = clamp(100-((dist-7)*5), 10, 100) //Every tile decreases sound volume by 5
+					M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency)
+			if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
+				M.show_message(message)
 
 /mob/living/simple_animal/hostile/true_changeling/death()
 	. = ..()
@@ -119,7 +123,7 @@
 /mob/living/simple_animal/hostile/true_changeling/proc/real_death()
 	for(var/i in 1 to 4)
 		spawn_gibs()
-	emote("scream")
+	scream()
 	icon_state = "horror_dead"
 	visible_message("<span class='warning'>[src] has surpassed equilibrium and can no longer support itself, exploding violently!</span>", \
 						"<span class='userdanger'>ARRRRRRGHHHH!!!</span>")
