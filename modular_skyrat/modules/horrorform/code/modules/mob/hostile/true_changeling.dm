@@ -98,20 +98,16 @@
 	. = ..()
 
 /mob/living/simple_animal/hostile/true_changeling/death()
+	. = ..()
 	emote("scream")
+	spam_flag = FALSE
 	spawn_gibs()
 	if(stored_changeling && mind)
-		visible_message("<span class='warning'>[src] lets out a furious scream as it reaches equilibrium, exploding into a shower of gore!</span>", \
+		visible_message("<span class='warning'>[src] lets out a furious scream as it reaches equilibrium, as it starts exploding into a shower of gore!</span>", \
 						"<span class='userdanger'>We lack the power to maintain our mass, we have reached critic-...</span>")
-		stored_changeling.loc = get_turf(src)
-		mind.transfer_to(stored_changeling)
-		stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
-		stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
-		stored_changeling.status_flags &= ~GODMODE
-		stored_changeling.emote("scream")
-		stored_changeling.gib()
-		stored_changeling = null
-		qdel(src)
+		anchored = TRUE
+		turn_to_human.Remove()
+		addtimer(CALLBACK(src, .proc/real_death), 5 SECONDS)
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")
 		spawn(450)
@@ -119,7 +115,23 @@
 				visible_message("<span class='warning'>[src] stumbles upright and begins to move!</span>")
 				revive() //Changelings can self-revive, and true changelings are no exception
 				emote("scream")
-	. = ..()
+
+/mob/living/simple_animal/hostile/true_changeling/proc/real_death()
+	spawn_gibs()
+	emote("scream")
+	icon_state = "horror_dead"
+	visible_message("<span class='warning'>[src] has surpassed equilibrium and can no longer support itself, exploding violently!</span>", \
+						"<span class='userdanger'>ARRRRRRGHHHH!!!</span>")
+	stored_changeling.loc = get_turf(src)
+	mind.transfer_to(stored_changeling)
+	stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
+	stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
+	stored_changeling.status_flags &= ~GODMODE
+	stored_changeling.emote("scream")
+	stored_changeling.gib()
+	stored_changeling = null
+	explosion(src, 0, 0, 5, 5)
+	qdel(src)
 
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
