@@ -166,7 +166,6 @@
 	new /obj/effect/gibspawner/generic/animal(loc)
 	. = ..()
 
-
 /datum/action/innate/turn_to_human
 	name = "Re-Form Human Shell"
 	desc = "We turn back into a human. This takes considerable effort and will stun us for some time afterwards."
