@@ -1,4 +1,3 @@
-/* - SKYRAT EDIT REMOVAl, MOVED TO MASTER_FILES STATPANEL.DM
 SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
@@ -14,14 +13,21 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		var/datum/map_config/cached = SSmapping.next_map_config
 		var/round_time = world.time - SSticker.round_start_time
+		var/real_round_time = world.realtime - SSticker.real_round_start_time
 		var/list/global_data = list(
+			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
+			"Connected Players: [GLOB.clients.len]",
+			" ",
+			"OOC: [GLOB.ooc_allowed ? "Enabled" : "Disabled"]",
+			" ",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Round Time: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
+			"Round Time(with time dilation): [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
 			"Station Time: [station_time_timestamp()]",
-			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
+			"Actual Round Time: [time2text(real_round_time, "hh:mm:ss")]"
+
 		)
 
 		if(SSshuttle.emergency)
@@ -201,4 +207,3 @@ SUBSYSTEM_DEF(statpanels)
 
 	statbrowser_ready = TRUE
 	init_verbs()
-*/
