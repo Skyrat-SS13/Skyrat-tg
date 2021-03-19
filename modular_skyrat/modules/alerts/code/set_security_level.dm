@@ -171,6 +171,7 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 				var/area/A = get_area(M)
 				if(is_type_in_typecache(A, quiet_areas)) //These areas don't hear it as loudly
 					M.playsound_local(get_turf(M), S, min(10, M.client.prefs.announcement_volume), FALSE)
+					to_chat(M, "LOW SOUND MODE")
 				else
 					M.playsound_local(get_turf(M), S, M.client.prefs.announcement_volume, FALSE)
 
