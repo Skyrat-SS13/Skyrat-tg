@@ -212,7 +212,7 @@
 	icon_state = "hair_gloomy_long"
 
 /datum/sprite_accessory/hair/skyrat/halfshave
-	name = "Half-shaved"
+	name = "Half-shaved 2"
 	icon_state = "hair_halfshave"
 
 /datum/sprite_accessory/hair/skyrat/manbun
