@@ -1088,7 +1088,7 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Play End of Round Sounds:</b> <a href='?_src_=prefs;preference=endofround_sounds'>[(toggles & SOUND_ENDOFROUND) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Play Combat Mode Sounds:</b> <a href='?_src_=prefs;preference=combat_mode_sound'>[(toggles & SOUND_COMBATMODE) ? "Enabled":"Disabled"]</a><br>"
-			dat += "<b>Announcement Sound Volume:</b> <a href='?_src_=prefs;preference=announcement_volume_level'>[(toggles & SOUND_COMBATMODE) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Announcement Sound Volume:</b> <a href='?_src_=prefs;preference=announcement_volume_level'>[announcement_volume]</a><br>"
 			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
