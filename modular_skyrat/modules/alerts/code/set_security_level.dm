@@ -163,7 +163,7 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 /proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
 	if(!S)
 		S = sound(get_sfx(soundin))
-	var/list/quiet_areas = typecacheof(typesof(/area/maintenance) + typesof(/area/commons/storage) + typesof(/area/space) + typesof(/area/commons/dorms))
+	var/list/quiet_areas = typecacheof(typesof(/area/maintenance) + typesof(/area/space) + typesof(/area/commons/dorms))
 	for(var/m in GLOB.player_list)
 		if(ismob(m) && !isnewplayer(m))
 			var/mob/M = m
