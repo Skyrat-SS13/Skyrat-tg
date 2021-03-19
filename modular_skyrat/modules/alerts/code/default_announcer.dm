@@ -18,7 +18,7 @@
 		ANNOUNCER_SHUTTLEDOCK = 'modular_skyrat/modules/alerts/sound/ai/default/crew_s_docked.ogg',
 		ANNOUNCER_SHUTTLERECALLED = 'modular_skyrat/modules/alerts/sound/ai/default/crew_s_recalled.ogg',
 		ANNOUNCER_SHUTTLELEFT = 'modular_skyrat/modules/alerts/sound/ai/default/crew_s_left.ogg',
-		ANNOUNCER_GRANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/granomalies.ogg',
+		ANNOUNCER_GRAVANOMALIES= 'modular_skyrat/modules/alerts/sound/ai/default/gravanomalies.ogg',
 		ANNOUNCER_SPANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/wormholes.ogg',
 		ANNOUNCER_VORTEXANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/vortex.ogg',
 		ANNOUNCER_BSPACEANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/blusp_anomalies.ogg',
