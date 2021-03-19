@@ -275,8 +275,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	return
 
 /obj/effect/cme/proc/anomalyNeutralize()
-	playsound(src,'sound/weapons/resonator_blast.ogg',30,TRUE)
-	minor_announce("[src.name] NEUTRALIZED.", "Solar Flare Log:")
+	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
