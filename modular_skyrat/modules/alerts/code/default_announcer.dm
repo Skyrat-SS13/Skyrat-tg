@@ -1,5 +1,5 @@
 /datum/centcom_announcer/default
-	welcome_sounds = list('modular_skyrat/modules/alerts/sound/ai/default/cwelcome.ogg')
+	welcome_sounds = list('modular_skyrat/modules/alerts/sound/ai/default/welcome.ogg')
 	alert_sounds = list('sound/ai/default/attention.ogg')
 	command_report_sounds = list('modular_skyrat/modules/alerts/sound/ai/default/commandreport.ogg')
 	event_sounds = list(ANNOUNCER_AIMALF = 'sound/ai/default/aimalf.ogg',
@@ -8,7 +8,6 @@
 		ANNOUNCER_INTERCEPT = 'sound/ai/default/intercept.ogg',
 		ANNOUNCER_IONSTORM = 'modular_skyrat/modules/alerts/sound/ai/default/ionstorm.ogg',
 		ANNOUNCER_METEORS = list('modular_skyrat/modules/alerts/sound/ai/default/meteors1.ogg', 'modular_skyrat/modules/alerts/sound/ai/default/meteors2.ogg'),
-		ANNOUNCER_METEORSCLEARED = 'modular_skyrat/modules/alerts/sound/ai/default/meteorscleared.ogg',
 		ANNOUNCER_OUTBREAK5 = list('modular_skyrat/modules/alerts/sound/ai/default/outbreak5_1.ogg', 'modular_skyrat/modules/alerts/sound/ai/default/outbreak5_2.ogg'),
 		ANNOUNCER_OUTBREAK7 = 'modular_skyrat/modules/alerts/sound/ai/default/outbreak7.ogg',
 		ANNOUNCER_POWEROFF = list('modular_skyrat/modules/alerts/sound/ai/default/poweroff1.ogg', 'modular_skyrat/modules/alerts/sound/ai/default/poweroff2.ogg'),

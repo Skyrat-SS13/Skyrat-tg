@@ -170,9 +170,9 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 				var/list/quiet_areas = list(/area/maintenance, /area/commons/storage, /area/space, /area/commons/dorms)
 				var/area/A = get_area(M)
 				if(is_type_in_list(A, quiet_areas)) //These areas don't hear it as loudly
-					M.playsound_local(get_turf(M), sound, 20, FALSE)
+					M.playsound_local(get_turf(M), S, 20, FALSE)
 				else
-					M.playsound_local(get_turf(M), sound, 80, FALSE)
+					M.playsound_local(get_turf(M), S, 80, FALSE)
 
 
 //ALERT ALERT ALERT SHITCODE

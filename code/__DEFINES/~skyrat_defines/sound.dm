@@ -3,7 +3,6 @@
 #define ANNOUNCER_SHUTTLELEFT "announcer_shuttleleft"
 #define ANNOUNCER_SHUTTLELEFT "announcer_shuttleleft"
 #define ANNOUNCER_VORTEXANOMALIES "announcer_vortexanomalies"
-#define ANNOUNCER_METEORSCLEARED "announcer_meteorscleared"
 #define ANNOUNCER_CAPTAIN "announcer_captain"
 #define ANNOUNCER_MASSIVEBSPACEANOMALIES "announcer_massivebspaceanomalies"
 #define ANNOUNCER_PYROANOMALIES "announcer_pyroanomalies"
@@ -14,3 +13,5 @@
 #define ANNOUNCER_COMMSBLACKOUT "announcer_commsblackout"
 #define ANNOUNCER_ELECTRICALSTORM "announcer_electricalstorm"
 #define ANNOUNCER_BRANDINTELLIGENCE "announcer_brandintelligence"
+#define ANNOUNCER_RADIATIONPASSED "announcer_radiationpasssed"
+#define ANNOUNCER_BLUESPACEARTY "announcer_bluespacearty"
