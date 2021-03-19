@@ -412,7 +412,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			all energy projectiles, but requires two hands to wield."
 	item = /obj/item/dualsaber
 	player_minimum = 25
-	cost = 34
+	cost = 25
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 
 /datum/uplink_item/dangerous/doublesword/get_discount()
