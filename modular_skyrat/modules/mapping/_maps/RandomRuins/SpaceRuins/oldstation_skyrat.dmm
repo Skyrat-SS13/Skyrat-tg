@@ -880,15 +880,14 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "ec" = (
-/obj/structure/table,
-/obj/item/stack/sheet/glass,
-/obj/item/stack/sheet/glass,
-/obj/item/stock_parts/matter_bin,
-/obj/item/stock_parts/scanning_module{
-	pixel_x = 2;
-	pixel_y = 3
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Delta Station RnD APC";
+	pixel_y = 23;
+	start_charge = 0
 	},
-/turf/open/floor/iron,
+/obj/machinery/destructive_scanner,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "ed" = (
 /obj/machinery/portable_atmospherics/scrubber,
@@ -1311,7 +1310,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/rnd/production/protolathe/offstation,
+/obj/machinery/rnd/production/protolathe,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "fy" = (
@@ -2832,12 +2831,17 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/ancientstation/betastorage)
 "jW" = (
-/obj/structure/table,
-/obj/machinery/recharger,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "jX" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -4259,14 +4263,16 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/ancientstation/deltacorridor)
 "oe" = (
+/obj/structure/lattice/catwalk,
 /obj/structure/window/reinforced/spawner/north,
-/obj/structure/flora/ausbushes/grassybush,
-/turf/open/floor/grass,
+/turf/template_noop,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "of" = (
+/obj/structure/lattice/catwalk,
 /obj/structure/window/reinforced/spawner/north,
 /obj/structure/window/reinforced/spawner/east,
-/turf/open/floor/grass,
+/obj/machinery/rnd/server,
+/turf/template_noop,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "og" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -4280,14 +4286,23 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "oi" = (
-/obj/structure/window/reinforced/spawner/north,
-/obj/structure/window/reinforced/spawner/west,
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/grass,
+/obj/structure/table,
+/obj/item/stack/sheet/glass,
+/obj/item/stack/sheet/glass,
+/obj/item/stock_parts/matter_bin,
+/obj/item/stock_parts/scanning_module{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "oj" = (
-/obj/structure/window/reinforced/spawner/north,
-/turf/open/floor/grass,
+/obj/structure/table,
+/obj/item/stock_parts/manipulator,
+/obj/item/stock_parts/capacitor,
+/obj/item/stock_parts/micro_laser,
+/obj/item/stack/cable_coil,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "ok" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -4465,7 +4480,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/ancientstation/sec)
 "oG" = (
-/obj/machinery/rnd/production/circuit_imprinter/offstation,
+/obj/machinery/rnd/production/circuit_imprinter,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "oH" = (
@@ -4729,9 +4744,10 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/ancientstation/engi)
 "pz" = (
+/obj/structure/lattice/catwalk,
 /obj/structure/window/reinforced/spawner/north,
-/obj/structure/flora/rock/pile,
-/turf/open/floor/grass,
+/obj/machinery/rnd/server,
+/turf/template_noop,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "pE" = (
 /obj/machinery/light{
@@ -6135,14 +6151,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/ancientstation/deltacorridor)
-"JV" = (
-/obj/structure/table,
-/obj/item/stock_parts/manipulator,
-/obj/item/stock_parts/capacitor,
-/obj/item/stock_parts/micro_laser,
-/obj/item/stack/cable_coil,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/ancientstation/rnd)
 "Ka" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -6564,9 +6572,9 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/ancientstation/sec)
 "PR" = (
-/obj/structure/window/reinforced/spawner/north,
-/obj/structure/flora/grass/jungle,
-/turf/open/floor/grass,
+/obj/structure/table,
+/obj/machinery/recharger,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/ancientstation/rnd)
 "PV" = (
 /obj/structure/sign/departments/restroom{
@@ -10699,7 +10707,7 @@ bE
 oo
 ov
 eY
-fo
+ec
 fo
 kq
 fo
@@ -10948,7 +10956,7 @@ fo
 fo
 hE
 fo
-ec
+fo
 oi
 iu
 hF
@@ -10997,7 +11005,7 @@ oT
 fo
 FD
 fo
-JV
+fo
 oj
 iu
 hG
