@@ -219,6 +219,8 @@ GLOBAL_LIST_INIT(food, list(
 	var/show_body_size = FALSE
 	///The arousal state of the previewed character, can be toggled by the user
 	var/arousal_preview = AROUSAL_NONE
+	///The current volume setting for announcements
+	var/announcement_volume = 60
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -1086,6 +1088,7 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Play End of Round Sounds:</b> <a href='?_src_=prefs;preference=endofround_sounds'>[(toggles & SOUND_ENDOFROUND) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Play Combat Mode Sounds:</b> <a href='?_src_=prefs;preference=combat_mode_sound'>[(toggles & SOUND_COMBATMODE) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Announcement Sound Volume:</b> <a href='?_src_=prefs;preference=announcement_volume_level'>[(toggles & SOUND_COMBATMODE) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
@@ -2637,6 +2640,11 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("combat_mode_sound")
 					toggles ^= SOUND_COMBATMODE
+
+				if("announcement_volume_level")
+					var/new_annoumcenent_volume = clamp(input(user, "Please enter the new announcement volume(1-100)", "New volume setting", 0) as num|null, 1, 100)
+					if(new_announcment_volume)
+						announcement_volume = new_annoumcenent_volume
 
 				if("ghost_ears")
 					chat_toggles ^= CHAT_GHOSTEARS
