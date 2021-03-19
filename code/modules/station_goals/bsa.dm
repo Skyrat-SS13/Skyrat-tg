@@ -205,6 +205,7 @@
 	if(!blocker)
 		message_admins("[ADMIN_LOOKUPFLW(user)] has launched an artillery strike targeting [ADMIN_VERBOSEJMP(bullseye)].")
 		log_game("[key_name(user)] has launched an artillery strike targeting [AREACOORD(bullseye)].")
+		priority_announce("BLUESPACE ARTILLERY FIRE DETECTED!", "BLUESPACE ARTILLERY", ANNOUNCER_BLUESPACEARTY)
 		explosion(bullseye, ex_power, ex_power*2, ex_power*4)
 	else
 		message_admins("[ADMIN_LOOKUPFLW(user)] has launched an artillery strike targeting [ADMIN_VERBOSEJMP(bullseye)] but it was blocked by [blocker] at [ADMIN_VERBOSEJMP(target)].")

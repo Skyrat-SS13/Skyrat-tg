@@ -144,29 +144,36 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 /proc/play_security_alert_sound(level)
 	switch(level)
 		if(SEC_LEVEL_BLUE)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/voybluealert.ogg', volume = 50)
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/voybluealert.ogg')
 		if(SEC_LEVEL_VIOLET)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg', volume = 50)
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg')
 		if(SEC_LEVEL_ORANGE)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg', volume = 50)
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg')
 		if(SEC_LEVEL_AMBER)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg', volume = 50)
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg')
 		if(SEC_LEVEL_RED)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/redalert1.ogg', volume = 50)
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/redalert1.ogg')
 		if(SEC_LEVEL_DELTA)
 			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/deltaklaxon.ogg')
+			delta_alarm()
 		if(SEC_LEVEL_GAMMA)
 			if(!GLOB.gamma_looping)
 				gamma_loop() //Gamma has a looping sound effect
 
-/proc/alert_sound_to_playing(soundin, volume = 100, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
+/proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
 	if(!S)
 		S = sound(get_sfx(soundin))
 	for(var/m in GLOB.player_list)
 		if(ismob(m) && !isnewplayer(m))
 			var/mob/M = m
-			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
-				M.playsound_local(M, null, volume, vary, frequency, falloff, channel, pressure_affected, S)
+			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS && is_station_level(M.z))
+				var/list/quiet_areas = list(/area/maintenance, /area/commons/storage, /area/space, /area/commons/dorms)
+				var/area/A = get_area(M)
+				if(is_type_in_list(A, quiet_areas)) //These areas don't hear it as loudly
+					M.playsound_local(get_turf(M), sound, 20, FALSE)
+				else
+					M.playsound_local(get_turf(M), sound, 80, FALSE)
+
 
 //ALERT ALERT ALERT SHITCODE
 /proc/gamma_loop() //Loops gamma sound
@@ -175,6 +182,12 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 		return
 	GLOB.gamma_looping = TRUE
 	alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
-	addtimer(CALLBACK(.proc/gamma_loop), GAMMA_LOOP_LENGTH)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH)
+
+/proc/delta_alarm() //Delta alarm sounds every so often
+	alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
+	if(GLOB.security_level == SEC_LEVEL_DELTA)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm, FALSE), 8 SECONDS)
+
 
 #undef GAMMA_LOOP_LENGTH

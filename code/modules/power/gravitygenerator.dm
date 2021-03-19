@@ -372,6 +372,12 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 		if(M.client)
 			shake_camera(M, 15, 1)
 			M.playsound_local(T, null, 100, 1, 0.5, S = alert_sound)
+			//SKYRAT EDIT ADDITON BEGIN
+			if(on)
+				priority_announce("GRAVITATIONAL SYSTEMS OPERATIONAL", "Gravity Generator", ANNOUNCER_GRAVGENON)
+			else
+				priority_announce("GRAVITATIONAL SYSTEMS FAILURE", "Gravity Generator", ANNOUNCER_GRAVGENOFF)
+			//SKYRAT EDIT END
 
 /obj/machinery/gravity_generator/main/proc/gravity_in_level()
 	var/turf/T = get_turf(src)

@@ -462,9 +462,10 @@
 	safety = TRUE
 	update_appearance()
 	sound_to_playing_players('sound/machines/alarm.ogg')
+	sound_to_playing_players('modular_skyrat/modules/alerts/sounds/ai/default/DeltaBOOM.ogg') //SKYRAT EDIT ADDITION
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
-	addtimer(CALLBACK(src, .proc/actually_explode), 100)
+	addtimer(CALLBACK(src, .proc/actually_explode), 10 SECONDS)
 
 /obj/machinery/nuclearbomb/proc/actually_explode()
 	if(!core)
