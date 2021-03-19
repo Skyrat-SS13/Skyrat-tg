@@ -232,7 +232,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	playsound(src,'sound/weapons/resonator_fire.ogg',75,TRUE)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
-		T.atmos_spawn_air("o2=15;plasma=15;TEMP=5778")
+		T.atmos_spawn_air("o2=15;TEMP=5778")
 	addtimer(CALLBACK(src, .proc/burst), timeleft)
 
 /obj/effect/cme/proc/burst()
@@ -280,7 +280,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	new /obj/effect/particle_effect/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
-		T.atmos_spawn_air("o2=30;plasma=30;TEMP=5778")
+		T.atmos_spawn_air("o2=30;TEMP=5778")
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
