@@ -13,3 +13,4 @@
 #define ANNOUNCER_BRANDINTELLIGENCE "announcer_brandintelligence"
 #define ANNOUNCER_RADIATIONPASSED "announcer_radiationpasssed"
 #define ANNOUNCER_BLUESPACEARTY "announcer_bluespacearty"
+#define ANNOUNCER_SPOOKY "announcer_spooky"

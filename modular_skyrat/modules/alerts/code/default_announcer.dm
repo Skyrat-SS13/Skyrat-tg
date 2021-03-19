@@ -33,4 +33,5 @@
 		ANNOUNCER_GREYTIDE = 'modular_skyrat/modules/alerts/sound/ai/default/greytide.ogg',
 		ANNOUNCER_COMMSBLACKOUT = 'modular_skyrat/modules/alerts/sound/ai/default/commsblackout.ogg',
 		ANNOUNCER_ELECTRICALSTORM = 'modular_skyrat/modules/alerts/sound/ai/default/estorm.ogg',
-		ANNOUNCER_BRANDINTELLIGENCE = 'modular_skyrat/modules/alerts/sound/ai/default/rampant_brand_int.ogg')
+		ANNOUNCER_BRANDINTELLIGENCE = 'modular_skyrat/modules/alerts/sound/ai/default/rampant_brand_int.ogg',
+		ANNOUNCER_SPOOKY = 'modular_skyrat/modules/alerts/sound/ai/default/_admin_horror_music.ogg.ogg')
