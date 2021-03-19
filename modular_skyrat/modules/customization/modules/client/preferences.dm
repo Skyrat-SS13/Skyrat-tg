@@ -2643,7 +2643,7 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("announcement_volume_level")
 					var/new_annoumcenent_volume = clamp(input(user, "Please enter the new announcement volume(1-100)", "New volume setting", 0) as num|null, 1, 100)
-					if(new_announcment_volume)
+					if(new_annoumcenent_volume)
 						announcement_volume = new_annoumcenent_volume
 
 				if("ghost_ears")
