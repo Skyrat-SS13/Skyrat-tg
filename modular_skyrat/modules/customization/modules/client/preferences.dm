@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(food, list(
 	///The arousal state of the previewed character, can be toggled by the user
 	var/arousal_preview = AROUSAL_NONE
 	///The current volume setting for announcements
-	var/announcement_volume = 100
+	var/announcement_volume = 60
 
 /datum/preferences/New(client/C)
 	parent = C
