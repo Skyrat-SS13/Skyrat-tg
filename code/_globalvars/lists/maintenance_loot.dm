@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/clothing/mask/breath = 1,
 		/obj/item/shard = 1,
 
-		/obj/item/reagent_containers/pill/maintenance = 1,
+		/obj/item/reagent_containers/pill/maintenance/achievement = 1,
 		/obj/item/toy/eightball = 1,
 		) = 8,
 
@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		) = 1,
 
 	list(//equipment
-		/obj/item/clothing/mask/gas = 1,
+		/obj/item/clothing/mask/gas/alt = 1, //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas = 1,
 		/obj/item/radio/headset = 1,
 		/obj/item/storage/backpack = 1,
 		/obj/item/clothing/shoes/sneakers/black = 1,

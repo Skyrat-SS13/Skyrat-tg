@@ -53,6 +53,7 @@
 		new /datum/data/mining_equipment("Minebot Melee Upgrade", /obj/item/mine_bot_upgrade, 400),
 		new /datum/data/mining_equipment("Minebot Armor Upgrade", /obj/item/mine_bot_upgrade/health, 400),
 		new /datum/data/mining_equipment("Minebot Cooldown Upgrade", /obj/item/borg/upgrade/modkit/cooldown/minebot, 600),
+		new /datum/data/mining_equipment("Spare Suit Voucher", /obj/item/suit_voucher, 2000), //SKYRAT EDIT: ADDITION WITH SEVA SUIT
 		new /datum/data/mining_equipment("Minebot AI Upgrade", /obj/item/slimepotion/slime/sentience/mining, 1000),
 		new /datum/data/mining_equipment("KA Minebot Passthrough", /obj/item/borg/upgrade/modkit/minebot_passthrough, 100),
 		new /datum/data/mining_equipment("KA White Tracer Rounds", /obj/item/borg/upgrade/modkit/tracer, 100),
@@ -161,6 +162,9 @@
 	if(istype(I, /obj/item/mining_voucher))
 		RedeemVoucher(I, user)
 		return
+	if(istype(I, /obj/item/suit_voucher)) //skyrat edit addition start
+		RedeemSVoucher(I, user) //addition
+		return //skyrat edit addition end
 	if(default_deconstruction_screwdriver(user, "mining-open", "mining", I))
 		return
 	if(default_deconstruction_crowbar(I))
@@ -212,7 +216,7 @@
 /obj/machinery/mineral/equipment_vendor/golem/Initialize()
 	desc += "\nIt seems a few selections have been added."
 	prize_list += list(
-		new /datum/data/mining_equipment("Extra Id", /obj/item/card/id/mining, 250),
+		new /datum/data/mining_equipment("Extra Id", /obj/item/card/id/advanced/mining, 250),
 		new /datum/data/mining_equipment("Science Goggles", /obj/item/clothing/glasses/science, 250),
 		new /datum/data/mining_equipment("Monkey Cube", /obj/item/food/monkeycube, 300),
 		new /datum/data/mining_equipment("Toolbelt", /obj/item/storage/belt/utility, 350),
@@ -257,24 +261,6 @@
 	..()
 	to_chat(user, "<span class='alert'>There's [points] point\s on the card.</span>")
 
-///Conscript kit
-/obj/item/card/mining_access_card
-	name = "mining access card"
-	desc = "A small card, that when used on any ID, will add mining access."
-	icon_state = "data_1"
-
-/obj/item/card/mining_access_card/afterattack(atom/movable/AM, mob/user, proximity)
-	. = ..()
-	if(istype(AM, /obj/item/card/id) && proximity)
-		var/obj/item/card/id/I = AM
-		I.access |= ACCESS_MINING
-		I.access |= ACCESS_MINING_STATION
-		I.access |= ACCESS_MECH_MINING
-		I.access |= ACCESS_MINERAL_STOREROOM
-		I.access |= ACCESS_CARGO
-		to_chat(user, "<span class='notice'>You upgrade [I] with mining access.</span>")
-		qdel(src)
-
 /obj/item/storage/backpack/duffelbag/mining_conscript
 	name = "mining conscription kit"
 	desc = "A kit containing everything a crewmember needs to support a shaft miner in the field."
@@ -288,7 +274,7 @@
 	new /obj/item/clothing/suit/hooded/explorer(src)
 	new /obj/item/encryptionkey/headset_mining(src)
 	new /obj/item/clothing/mask/gas/explorer(src)
-	new /obj/item/card/mining_access_card(src)
+	new /obj/item/card/id/advanced/mining(src)
 	new /obj/item/gun/energy/kinetic_accelerator(src)
 	new /obj/item/kitchen/knife/combat/survival(src)
 	new /obj/item/flashlight/seclite(src)

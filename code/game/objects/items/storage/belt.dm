@@ -172,6 +172,7 @@
 		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/surgical_drapes, //for true paramedics
+		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
 		/obj/item/bonesetter,
@@ -406,7 +407,7 @@
 
 /obj/item/storage/belt/military/snack/Initialize()
 	. = ..()
-	var/sponsor = pick("DonkCo", "Waffle Co.", "Roffle Co.", "Gorlax Marauders", "Tiger Cooperative")
+	var/sponsor = pick("Donk Co.", "Waffle Co.", "Roffle Co.", "Gorlax Marauders", "Tiger Cooperative")
 	desc = "A set of snack-tical webbing worn by athletes of the [sponsor] VR sports division."
 
 /obj/item/storage/belt/military/snack/ComponentInitialize()
@@ -577,7 +578,10 @@
 		/obj/item/melee/flyswatter,
 		/obj/item/assembly/mousetrap,
 		/obj/item/paint/paint_remover,
-		/obj/item/pushbroom
+		/obj/item/pushbroom, //SKYRAT EDIT - Comma.....
+		/obj/item/mop, //SKYRAT EDIT - For when you're lazy to use soap
+		/obj/item/mop/advanced, //SKYRAT EDIT For when you're lazy to use a bucket
+		/obj/item/reagent_containers/glass/bucket //SKYRAT EDIT - Bucket
 		))
 
 /obj/item/storage/belt/janitor/full/PopulateContents()

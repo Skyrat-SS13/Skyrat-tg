@@ -1,5 +1,5 @@
 ///Makes the organ not pop out when dismembered
-#define ORGAN_NO_DISMEMBERMENT		(1<<7)
+#define ORGAN_NO_DISMEMBERMENT (1<<7)
 
 #define GENITAL_SKIP_VISIBILITY 0
 #define GENITAL_NEVER_SHOW 1

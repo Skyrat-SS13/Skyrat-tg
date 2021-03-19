@@ -49,7 +49,7 @@
 
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	asset_datum.send(client)
-	var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>")
+	var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character(<b>[client.prefs.real_name]</b>)</a></p>") //SKYRAT EDIT CHANGE - ORIGINAL: var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>")
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -59,10 +59,14 @@
 				output += "<p>\[ <b>Ready</b> | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
 			if(PLAYER_READY_TO_OBSERVE)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
+		output += "<p><a href='byond://?src=[REF(src)];antagtoggle=1'>Be antagonist: [client.prefs.be_antag ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
+		output += "<p><a href='byond://?src=[REF(src)];midroundantag=1'>Be midround antagonist: [(client.prefs.toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
 	else
 		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a></p>"
 		output += "<p>[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]</p>"
+		output += "<p><a href='byond://?src=[REF(src)];antagtoggle=1'>Be Latejoin Antagonist: <b>[client.prefs.be_antag ? "Enabled" : "Disabled"]</b></a></p>" //SKYRAT EDIT ADDITION
+		output += "<p><a href='byond://?src=[REF(src)];midroundantag=1'>Be Midround Antagonist: <b>[(client.prefs.toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</b></a></p>" //SKYRAT EDIT ADDITION
 
 	if(!IsGuestKey(src.key))
 		output += playerpolls()
@@ -149,6 +153,18 @@
 	if(href_list["refresh"])
 		src << browse(null, "window=playersetup") //closes the player setup window
 		new_player_panel()
+
+	//SKYRAT EDIT ADDITION BEGIN
+	if(href_list["antagtoggle"])
+		client.prefs.be_antag = !client.prefs.be_antag
+		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
+		new_player_panel()
+
+	if(href_list["midroundantag"])
+		client.prefs.toggles ^= MIDROUND_ANTAG
+		to_chat(usr, "<span class='notice'>You will now [(client.prefs.toggles & MIDROUND_ANTAG) ? "be considered" : "not be considered"] for any midround antagonist opportunities.</span>")
+		new_player_panel()
+	//SKYRAT EDIT END
 
 	if(href_list["late_join"])
 		if(!SSticker?.IsRoundInProgress())
@@ -329,7 +345,16 @@
 	SSjob.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(TRUE) //creates the human and transfers vars and mind
-	var/equip = SSjob.EquipRank(character, rank, TRUE)
+
+	var/is_captain = FALSE
+	// If we don't have an assigned cap yet, check if this person qualifies for some from of captaincy.
+	if(!SSjob.assigned_captain && ishuman(character) && SSjob.chain_of_command[rank] && !is_banned_from(ckey, list("Captain")))
+		is_captain = TRUE
+	// If we already have a captain, are they a "Captain" rank and are we allowing multiple of them to be assigned?
+	else if(SSjob.always_promote_captain_job && (rank == "Captain"))
+		is_captain = TRUE
+
+	var/equip = SSjob.EquipRank(character, rank, TRUE, is_captain)
 	if(isliving(equip)) //Borgs get borged in the equip, so we need to make sure we handle the new mob.
 		character = equip
 

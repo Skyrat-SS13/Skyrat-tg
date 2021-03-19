@@ -18,3 +18,10 @@
 	body_parts_covered = NONE
 	armor = NONE
 	equip_delay_other = 8
+
+/obj/item/clothing/suit/toggle/labcoat/medical
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "medical labcoat"
+	desc = "A modest labcoat with medical coloring, meant to distinguish personnel in the line of duty."
+	icon_state = "labcoat_gen"
