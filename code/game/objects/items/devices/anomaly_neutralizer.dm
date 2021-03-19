@@ -23,11 +23,8 @@
 	//SKYRAT EDIT ADDITON START - CME
 	if(istype(target, /obj/effect/cme))
 		var/obj/effect/cme/C = target
-		to_chat(user, "<span class='danger'>The circuitry of [src] fries from the strain of neutralizing [C] causing you to absorb the shock!</span>")
+		to_chat(user, "<span class='danger'>The circuitry of [src] fries from the strain of neutralizing [C]!</span>")
 		do_sparks(5, FALSE, src)
-		electrocute_mob(user, get_area(src), src, 1, TRUE)
-		user.adjust_fire_stacks(5)
-		user.IgniteMob()
 		C.anomalyNeutralize()
 		qdel(src)
 	//SKYRAT EDIT END
