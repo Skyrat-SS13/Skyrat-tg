@@ -129,10 +129,12 @@
 	icon = 'icons/obj/lavaland/cannon.dmi'
 	icon_state = "orbital_cannon1"
 	var/static/mutable_appearance/top_layer
+	use_power = NO_POWER_USE
 	var/ex_power = 5
-	var/power_used_per_shot = 200000000 //enough to kil standard apc - todo : make this use wires instead and scale explosion power with it
+	var/power_used_per_shot = 20000000 //enough to kil standard apc - todo : make this use wires instead and scale explosion power with it
 	var/ready
 	var/system_state = SYSTEM_OFFLINE
+	max_integrity = 2000
 	var/obj/machinery/computer/bsa_control/control_unit
 	pixel_y = -32
 	pixel_x = -192
@@ -231,6 +233,7 @@
 		return
 	system_state = SYSTEM_FIRING
 	reload()
+	use_power(power_used_per_shot)
 	var/turf/point = get_front_turf()
 	var/turf/target = get_target_turf()
 	var/atom/movable/blocker
@@ -265,8 +268,8 @@
 
 /obj/machinery/bsa/full/proc/reload()
 	system_state = SYSTEM_RELOADING
-	use_power(power_used_per_shot)
 	set_light(0)
+	STOP_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, .proc/ready_cannon), SUPERWEAPON_RELOAD_TIME)
 
 /obj/machinery/bsa/full/proc/ready_cannon()
