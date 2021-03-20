@@ -68,4 +68,4 @@
 		if(alert)
 			alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'))
 		else
-			alert_sound_to_playing(sound('sound/misc/notice2.ogg'))
+			alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert3.ogg'))
