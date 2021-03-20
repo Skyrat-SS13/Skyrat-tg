@@ -57,11 +57,11 @@ GLOBAL_VAR_INIT(delta_looping, FALSE) //This is so we know if the gamma sound ef
 					minor_announce(CONFIG_GET(string/alert_delta_downto), "Attention! Delta Alert level reached!",1)
 				alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/delta.ogg')
 				if(!GLOB.delta_looping)
-						delta_alarm()
+					delta_alarm()
 			if(SEC_LEVEL_GAMMA)
 				minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!",1)
 				if(!GLOB.gamma_looping)
-				gamma_loop() //Gamma has a looping sound effect
+					gamma_loop() //Gamma has a looping sound effect
 
 		GLOB.security_level = level
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
