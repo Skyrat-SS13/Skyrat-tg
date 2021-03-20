@@ -196,7 +196,9 @@
 	return system_state
 
 /obj/machinery/bsa/full/process()
-	. = ..()
+	if(machine_stat)
+		system_state = SYSTEM_INTERRUPTED
+		STOP_PROCESSING(SSobj, src)
 	if(system_state == SYSTEM_PREFIRE) //We drain this while either action is being performed.
 		var/obj/structure/cable/attached = control_unit.core.attached
 		var/datum/powernet/PN = attached.powernet
@@ -324,6 +326,10 @@
 		attached = null
 	update_appearance()
 	return TRUE
+
+/obj/machinery/bsa_powercore/Destroy()
+	attached = null
+	. = ..()
 
 /obj/machinery/bsa_powercore/update_icon(updates)
 	. = ..()

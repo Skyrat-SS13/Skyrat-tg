@@ -99,7 +99,10 @@
 	if(!core)
 		notice = "Core not detected!"
 		return
-	if(!cannon.machine_stat)
+	if((cannon.machine_stat & BROKEN))
+		notice = "Cannon integrity failure!"
+		return
+	if((cannon.machine_stat & NOPOWER))
 		notice = "Cannon unpowered!"
 		return
 	notice = cannon.pre_fire(user, get_impact_turf())
