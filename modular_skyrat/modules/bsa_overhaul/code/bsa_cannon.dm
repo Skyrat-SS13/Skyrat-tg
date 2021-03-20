@@ -201,6 +201,9 @@
 	if(machine_stat)
 		system_state = SYSTEM_INTERRUPTED
 		STOP_PROCESSING(SSobj, src)
+	if(!control_unit.core)
+		system_state = SYSTEM_INTERRUPTED
+		STOP_PROCESSING(SSobj, src)
 	if(system_state == SYSTEM_PREFIRE) //We drain this while either action is being performed.
 		var/obj/structure/cable/attached = control_unit.core.attached
 		var/datum/powernet/PN = attached.powernet
@@ -227,7 +230,7 @@
 		STOP_PROCESSING(SSobj, src)
 
 /obj/machinery/bsa/full/proc/fire(mob/user, turf/bullseye)
-	if(!system_state == SYSTEM_PREFIRE)
+	if(!system_state == SYSTEM_PREFIRE || !control_unit.core || machine_stat)
 		minor_announce("BLUESPACE ARTILLERY FIRE FAILURE!", "BLUESPACE ARTILLERY", TRUE)
 		system_state = SYSTEM_READY
 		return
