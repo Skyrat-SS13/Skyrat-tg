@@ -75,11 +75,31 @@
 					/obj/item/clothing/under/dress/littleblack = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/dress/pinktutu = 2,	//SKYRAT EDIT ADDITION
 		            /obj/item/clothing/suit/jacket = 2,
+					/obj/item/clothing/suit/toggle/jacket = 2,	//SKYRAT EDIT ADDITION START - Jacket/Flannels Port
+					/obj/item/clothing/suit/toggle/jacket/flannel = 2,
+					/obj/item/clothing/suit/toggle/jacket/flannel/red = 2,
+					/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 2,
+					/obj/item/clothing/suit/toggle/jacket/flannel/brown = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/hooded/wintercoat = 2,
 		            /obj/item/clothing/suit/jacket/puffer/vest = 2,
 		            /obj/item/clothing/suit/jacket/puffer = 2,
 		            /obj/item/clothing/suit/jacket/letterman = 2,
 		            /obj/item/clothing/suit/jacket/letterman_red = 2,
+					//SKYRAT EDIT: ADDITION: START - HOODIES
+					/obj/item/clothing/suit/storage/toggle/hoodie = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/black = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/red = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/blue = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/green = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/orange = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/yellow = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/white = 2,
+					/obj/item/clothing/suit/storage/toggle/hoodie/cti = 1,
+					/obj/item/clothing/suit/storage/toggle/hoodie/mu = 1,
+					/obj/item/clothing/suit/storage/toggle/hoodie/nt = 1,
+					/obj/item/clothing/suit/storage/toggle/hoodie/smw = 1,
+					/obj/item/clothing/suit/storage/toggle/hoodie/nrti = 1,
+					//SKYRAT EDIT: ADDITION: END - HOODIES
 		            /obj/item/clothing/glasses/regular = 2,
 		            /obj/item/clothing/glasses/regular/jamjar = 1,
 		            /obj/item/clothing/glasses/orange = 1,

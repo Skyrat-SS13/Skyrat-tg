@@ -98,13 +98,13 @@
 	return FALSE
 
 
-/mob/living/carbon/human/RangedAttack(atom/A, mouseparams)
+/mob/living/carbon/human/RangedAttack(atom/A, modifiers)
 	. = ..()
 	if(.)
 		return
 	if(gloves)
 		var/obj/item/clothing/gloves/G = gloves
-		if(istype(G) && G.Touch(A,0,mouseparams)) // for magic gloves
+		if(istype(G) && G.Touch(A,0,modifiers)) // for magic gloves
 			return TRUE
 
 	if(isturf(A) && get_dist(src,A) <= 1)
@@ -203,11 +203,11 @@
 /mob/living/simple_animal/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		return
-	if(!dextrous)
-		return ..()
-	if(!ismob(A))
+	if(dextrous && (isitem(A) || !combat_mode))
 		A.attack_hand(src, modifiers)
 		update_inv_hands()
+	else
+		return ..()
 
 
 /*
@@ -218,7 +218,7 @@
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		return
 	target = A
-	if(dextrous && !ismob(A))
+	if(dextrous && (isitem(A) || !combat_mode))
 		..()
 	else
 		AttackingTarget(A)
