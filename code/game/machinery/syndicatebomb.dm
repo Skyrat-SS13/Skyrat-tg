@@ -98,7 +98,7 @@
 
 /obj/machinery/syndicatebomb/examine(mob/user)
 	. = ..()
-	. += {"A digital display on it reads "[seconds_remaining()]"."}
+	// . += {"A digital display on it reads "[seconds_remaining()]"."} Skyrat change - commented out to make people fear it more.
 
 /obj/machinery/syndicatebomb/update_icon_state()
 	icon_state = "[initial(icon_state)][active ? "-active" : "-inactive"][open_panel ? "-wires" : ""]"
