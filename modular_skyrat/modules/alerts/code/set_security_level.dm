@@ -181,7 +181,7 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 	for(var/m in GLOB.player_list)
 		if(ismob(m) && !isnewplayer(m))
 			var/mob/M = m
-			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS && is_station_level(M.z))
+			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
 				var/area/A = get_area(M)
 				if(is_type_in_typecache(A, quiet_areas)) //These areas don't hear it as loudly
 					M.playsound_local(get_turf(M), S, min(10, M.client.prefs.announcement_volume), FALSE)
