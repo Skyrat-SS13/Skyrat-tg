@@ -224,6 +224,9 @@
 	can_suppress = FALSE
 	weapon_weight = WEAPON_HEAVY
 	
+/obj/item/gun/energy/kinetic_accelerator
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
+	
 /obj/item/borg/upgrade/modkit/chassis_mod
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 
