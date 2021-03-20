@@ -7,7 +7,8 @@
 	if(!sound)
 		sound = SSstation.announcer.get_rand_alert_sound()
 	else if(SSstation.announcer.event_sounds[sound])
-		sound = pick(SSstation.announcer.event_sounds[sound])
+		var/list/picked = SSstation.announcer.event_sounds[sound]
+		sound = pick(picked)
 
 	if(type == "Priority")
 		announcement += "<h1 class='alert'>Priority Announcement</h1>"

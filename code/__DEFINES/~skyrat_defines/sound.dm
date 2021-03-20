@@ -15,3 +15,4 @@
 #define ANNOUNCER_RADIATIONPASSED "announcer_radiationpasssed"
 #define ANNOUNCER_BLUESPACEARTY "announcer_bluespacearty"
 #define ANNOUNCER_SPOOKY "announcer_spooky"
+#define ANNOUNCER_ERTYES "announcer_ertyes"
