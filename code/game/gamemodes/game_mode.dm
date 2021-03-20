@@ -53,19 +53,6 @@
 	var/mob/living/living_antag_player = null
 	/// Matters more outside of dynamic, if a gamemode is converted mid-round due to a mulligan or due to admin action, the new mode is stored here.
 	var/datum/game_mode/replacementmode = null
-<<<<<<< HEAD
-	var/round_converted = 0 //0: round not converted, 1: round going to convert, 2: round converted
-	var/reroll_friendly //During mode conversion only these are in the running
-	var/continuous_sanity_checked //Catches some cases where config options could be used to suggest that modes without antagonists should end when all antagonists die
-	var/enemy_minimum_age = 7 //How many days must players have been playing before they can play this antagonist
-
-	var/announce_span = "warning" //The gamemode's name will be in this span during announcement.
-	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!" //Used to describe a gamemode when it's announced.
-
-	var/waittime_l = 600 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/const/waittime_l = 600
-	var/waittime_h = 1800 // started at 1800 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/waittime_h = 1800
-
-=======
 	///0: round not converted, 1: round going to convert, 2: round converted
 	var/round_converted = 0
 	///Can this game mode be re-rolled? If so, puts it up for a mulligan if the round ends early.
@@ -81,11 +68,10 @@
 	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!"
 
 	/// What is the lower bound of when the roundstart annoucement is sent out?
-	var/const/waittime_l = 600
+	var/waittime_l = 600 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/const/waittime_l = 600
 	/// What is the higher bound of when the roundstart annoucement is sent out?
-	var/const/waittime_h = 1800
+	var/waittime_h = 1800 // started at 1800 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/waittime_h = 1800
 	/// List of available station goals for the crew to be working on, built into the round-type.
->>>>>>> 12ef6b80b89 (Autodocs Game_Mode (#57790))
 	var/list/datum/station_goal/station_goals = list()
 	/// Does this gamemode allow the collection of persistance features? (Scars, etc.)
 	var/allow_persistence_save = TRUE
