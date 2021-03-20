@@ -211,7 +211,7 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/solrifle
 	name = "MCRS-5B ICWS"
-	desc = "State of the art expensive combat rifle used by the SolFed Marine Corps and other branches. This one is a lighter model that fires 5.56, designed for use by pilots. Do it for her."
+	desc = "State of the art expensive combat rifle used by the SFMC. This one is a lighter model that fires 5.56, designed for use by pilots. Do it for her."
 	icon_state = "mcrs"
 	inhand_icon_state = "arg"
 	selector_switch_icon = TRUE
