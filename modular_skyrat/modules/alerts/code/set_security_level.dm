@@ -1,5 +1,5 @@
-GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound effect is currently playing
-GLOBAL_VAR_INIT(delta_looping, FALSE) //This is so we know if the gamma sound effect is currently playing
+GLOBAL_VAR_INIT(gamma_timer_id, null)
+GLOBAL_VAR_INIT(delta_timer_id, null)
 
 #define GAMMA_LOOP_LENGTH 1236 //2.06 minutes in deciseconds
 
@@ -52,17 +52,21 @@ GLOBAL_VAR_INIT(delta_looping, FALSE) //This is so we know if the gamma sound ef
 			if(SEC_LEVEL_DELTA)
 				if(GLOB.security_level < SEC_LEVEL_DELTA)
 					minor_announce(CONFIG_GET(string/alert_delta_upto), "Attention! Delta Alert level reached!",1)
-					alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/delta.ogg')
 				else
 					minor_announce(CONFIG_GET(string/alert_delta_downto), "Attention! Delta Alert level reached!",1)
+				GLOB.security_level = level
 				alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/delta.ogg')
-				if(!GLOB.delta_looping)
-					delta_alarm()
+				if(GLOB.delta_timer_id)
+					deltimer(GLOB.delta_timer_id)
+					GLOB.delta_timer_id = null
+				delta_alarm()
 			if(SEC_LEVEL_GAMMA)
 				minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!",1)
-				if(!GLOB.gamma_looping)
-					gamma_loop() //Gamma has a looping sound effect
-
+				GLOB.security_level = level
+				if(GLOB.delta_timer_id)
+					deltimer(GLOB.delta_timer_id)
+					GLOB.delta_timer_id = null
+				gamma_loop() //Gamma has a looping sound effect
 		GLOB.security_level = level
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
 			if(is_station_level(FA.z))
@@ -82,6 +86,16 @@ GLOBAL_VAR_INIT(delta_looping, FALSE) //This is so we know if the gamma sound ef
 		SSnightshift.check_nightshift()
 	else
 		return
+
+/proc/gamma_loop() //Loops gamma sound
+	if(GLOB.security_level == SEC_LEVEL_GAMMA)
+		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
+		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH)
+
+/proc/delta_alarm() //Delta alarm sounds every so often
+	if(GLOB.security_level == SEC_LEVEL_DELTA)
+		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
+		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm, FALSE), 8 SECONDS)
 
 /proc/get_mod_timer(secLevel)
 	switch(secLevel)
@@ -172,21 +186,5 @@ GLOBAL_VAR_INIT(delta_looping, FALSE) //This is so we know if the gamma sound ef
 					M.playsound_local(get_turf(M), S, min(10, M.client.prefs.announcement_volume), FALSE)
 				else
 					M.playsound_local(get_turf(M), S, M.client.prefs.announcement_volume, FALSE)
-
-//ALERT ALERT ALERT SHITCODE
-/proc/gamma_loop() //Loops gamma sound
-	GLOB.gamma_looping = FALSE
-	if(GLOB.security_level == SEC_LEVEL_GAMMA)
-		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH)
-		GLOB.gamma_looping = TRUE
-
-/proc/delta_alarm() //Delta alarm sounds every so often
-	GLOB.delta_looping = FALSE
-	if(GLOB.security_level == SEC_LEVEL_DELTA)
-		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm, FALSE), 8 SECONDS)
-		GLOB.delta_looping = TRUE
-
 
 #undef GAMMA_LOOP_LENGTH
