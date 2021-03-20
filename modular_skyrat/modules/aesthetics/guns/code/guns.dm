@@ -226,10 +226,6 @@
 	
 /obj/item/borg/upgrade/modkit/chassis_mod
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	var/chassis_icon = "kineticgun_u"
-	var/chassis_name = "super-kinetic accelerator"
 
 /obj/item/borg/upgrade/modkit/chassis_mod/orange
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	chassis_icon = "kineticgun_h"
-	chassis_name = "hyper-kinetic accelerator"
