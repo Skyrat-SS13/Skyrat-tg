@@ -1,21 +1,26 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR BSA_OVERHAUL
 // Crew has to build a bluespace cannon
 // Cargo orders part for high price
 // Requires high amount of power
 // Requires high level stock parts
+
+#define SYSTEM_OFFLINE "SYSTEM OFFLINE"
+#define SYSTEM_READY "SYSTEM READY"
+#define SYSTEM_PREFIRE "SYSTEM PREFIRING"
+#define SYSTEM_FIRING "SYSTEM FIRING"
+#define SYSTEM_RELOADING "SYSTEM RELOADING"
+#define SYSTEM_INTERRUPTED "SYSTEM INTERRUPTED"
+
+#define SUPERWEAPON_RELOAD_TIME 30 SECONDS
+
 /datum/station_goal/bluespace_cannon
 	name = "Bluespace Artillery"
 
 /datum/station_goal/bluespace_cannon/get_report()
 	return {"Our military presence is inadequate in your sector.
 		We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.
+
 		Base parts are available for shipping via cargo.
 		-Nanotrasen Naval Command"}
-
-/datum/station_goal/bluespace_cannon/on_report()
-	//Unlock BSA parts
-	var/datum/supply_pack/engineering/bsa/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bsa]
-	P.special_enabled = TRUE
 
 /datum/station_goal/bluespace_cannon/check_completion()
 	if(..())
@@ -118,16 +123,17 @@
 	else if(front.x < x && back.x > x)
 		return WEST
 
-
 /obj/machinery/bsa/full
 	name = "Bluespace Artillery"
 	desc = "Long range bluespace artillery."
 	icon = 'icons/obj/lavaland/cannon.dmi'
 	icon_state = "orbital_cannon1"
 	var/static/mutable_appearance/top_layer
-	var/ex_power = 3
-	var/power_used_per_shot = 2000000 //enough to kil standard apc - todo : make this use wires instead and scale explosion power with it
+	var/ex_power = 5
+	var/power_used_per_shot = 200000000 //enough to kil standard apc - todo : make this use wires instead and scale explosion power with it
 	var/ready
+	var/system_state = SYSTEM_OFFLINE
+	var/obj/machinery/computer/bsa_control/control_unit
 	pixel_y = -32
 	pixel_x = -192
 	bound_width = 352
@@ -178,9 +184,51 @@
 	add_overlay(top_layer)
 	reload()
 
-/obj/machinery/bsa/full/proc/fire(mob/user, turf/bullseye)
-	reload()
+/obj/machinery/bsa/full/proc/pre_fire(mob/user, turf/bullseye)
+	if(system_state == SYSTEM_READY)
+		priority_announce("BLUESPACE TARGETING PARAMETERS SET, PREIGNITION STARTING... FIRING IN T-20 SECONDS!", "BLUESPACE ARTILLERY", ANNOUNCER_BLUESPACEARTY)
+		alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_prefire.ogg')
+		system_state = SYSTEM_PREFIRE
+		message_admins("[user] has started the fire cycle of [src]!")
+		set_light(5, 5, COLOR_BLUE_LIGHT)
+		START_PROCESSING(SSobj, src)
+		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 19 SECONDS)
+	return system_state
 
+/obj/machinery/bsa/full/process()
+	. = ..()
+	if(system_state == SYSTEM_PREFIRE) //We drain this while either action is being performed.
+		var/obj/structure/cable/attached = control_unit.core.attached
+		var/datum/powernet/PN = attached.powernet
+		if(PN)
+			// found a powernet, so drain up to max power from it
+			var/drained = min(power_used_per_shot, attached.newavail())
+			attached.add_delayedload(drained)
+			// if tried to drain more than available on powernet
+			// now look for APCs and drain their cells
+			if(drained < power_used_per_shot)
+				for(var/obj/machinery/power/terminal/T in PN.nodes)
+					if(istype(T.master, /obj/machinery/power/apc))
+						var/obj/machinery/power/apc/A = T.master
+						if(A.operating && A.cell)
+							A.cell.charge = max(0, A.cell.charge - 50)
+							if(A.charging == 2) // If the cell was full
+								A.charging = 1 // It's no longer full
+					if(drained >= power_used_per_shot)
+						break
+		else
+			system_state = SYSTEM_INTERRUPTED
+			STOP_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
+
+/obj/machinery/bsa/full/proc/fire(mob/user, turf/bullseye)
+	if(!system_state == SYSTEM_PREFIRE)
+		minor_announce("BLUESPACE ARTILLERY FIRE FAILURE!", "BLUESPACE ARTILLERY", TRUE)
+		system_state = SYSTEM_READY
+		return
+	system_state = SYSTEM_FIRING
+	reload()
 	var/turf/point = get_front_turf()
 	var/turf/target = get_target_turf()
 	var/atom/movable/blocker
@@ -205,19 +253,28 @@
 	if(!blocker)
 		message_admins("[ADMIN_LOOKUPFLW(user)] has launched an artillery strike targeting [ADMIN_VERBOSEJMP(bullseye)].")
 		log_game("[key_name(user)] has launched an artillery strike targeting [AREACOORD(bullseye)].")
+		minor_announce("BLUESPACE ARTILLERY FIRE SUCCESSFUL! DIRECT HIT!", "BLUESPACE ARTILLERY", TRUE)
 		explosion(bullseye, ex_power, ex_power*2, ex_power*4)
+		alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_firing.ogg')
 	else
 		message_admins("[ADMIN_LOOKUPFLW(user)] has launched an artillery strike targeting [ADMIN_VERBOSEJMP(bullseye)] but it was blocked by [blocker] at [ADMIN_VERBOSEJMP(target)].")
 		log_game("[key_name(user)] has launched an artillery strike targeting [AREACOORD(bullseye)] but it was blocked by [blocker] at [AREACOORD(target)].")
-
+		minor_announce("BLUESPACE ARTILLERY FIRE FAILURE!", "BLUESPACE ARTILLERY", TRUE)
 
 /obj/machinery/bsa/full/proc/reload()
-	ready = FALSE
+	system_state = SYSTEM_RELOADING
 	use_power(power_used_per_shot)
-	addtimer(CALLBACK(src,"ready_cannon"),600)
+	set_light(0)
+	addtimer(CALLBACK(src, .proc/ready_cannon), SUPERWEAPON_RELOAD_TIME)
 
 /obj/machinery/bsa/full/proc/ready_cannon()
-	ready = TRUE
+	system_state = SYSTEM_READY
+	STOP_PROCESSING(SSobj, src)
+
+/obj/machinery/bsa/full/Destroy()
+	control_unit.cannon = null
+	control_unit = null
+	. = ..()
 
 /obj/structure/filler
 	name = "big machinery part"
@@ -229,109 +286,65 @@
 /obj/structure/filler/ex_act()
 	return
 
-/obj/machinery/computer/bsa_control
-	name = "bluespace artillery control"
-	use_power = NO_POWER_USE
-	circuit = /obj/item/circuitboard/computer/bsa_control
-	icon = 'icons/obj/machines/particle_accelerator.dmi'
-	icon_state = "control_boxp"
-
-	var/obj/machinery/bsa/full/cannon
-	var/notice
-	var/target
-	var/area_aim = FALSE //should also show areas for targeting
-
-/obj/machinery/computer/bsa_control/ui_state(mob/user)
-	return GLOB.physical_state
-
-/obj/machinery/computer/bsa_control/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "BluespaceArtillery", name)
-		ui.open()
-
-/obj/machinery/computer/bsa_control/ui_data()
-	var/list/data = list()
-	data["ready"] = cannon ? cannon.ready : FALSE
-	data["connected"] = cannon
-	data["notice"] = notice
-	data["unlocked"] = GLOB.bsa_unlock
-	if(target)
-		data["target"] = get_target_name()
-	return data
-
-/obj/machinery/computer/bsa_control/ui_act(action, params)
+/obj/structure/filler/Destroy()
+	parent = null
 	. = ..()
-	if(.)
-		return
 
-	switch(action)
-		if("build")
-			cannon = deploy()
-			. = TRUE
-		if("fire")
-			fire(usr)
-			. = TRUE
-		if("recalibrate")
-			calibrate(usr)
-			. = TRUE
+/obj/machinery/bsa_powercore
+	name = "artillery powercore"
+	desc = "A core that transfers power from the local power net and transfers it to nearby artillery pieces."
+	icon = 'modular_skyrat/modules/bsa_overhaul/icons/bsa_parts.dmi'
+	icon_state = "powercore_off"
+	density = TRUE
+	///The attached power cable that the power core will SUCC energy from.
+	var/obj/structure/cable/attached
+
+/obj/machinery/bsa_powercore/multitool_act(mob/living/user, obj/item/I)
+	if(!multitool_check_buffer(user, I)) //make sure it has a data buffer
+		return
+	var/obj/item/multitool/M = I
+	M.buffer = src
+	to_chat(user, "<span class='notice'>You store linkage information in [I]'s buffer.</span>")
+	return TRUE
+
+/obj/machinery/bsa_powercore/wrench_act(mob/living/user, obj/item/I)
+	..()
+	default_unfasten_wrench(user, I, 10)
+	if(anchored)
+		var/turf/T = loc
+		if(isturf(T) && !T.intact)
+			attached = locate() in T
+			if(!attached)
+				set_light(0)
+				to_chat(user, "<span class='warning'>[src] must be placed over an exposed, powered cable node!</span>")
+			else
+				set_light(5)
+				to_chat(user, "<span class='notce'>You attach [src] to the cable below.")
+	else
+		attached = null
 	update_appearance()
+	return TRUE
 
-/obj/machinery/computer/bsa_control/proc/calibrate(mob/user)
-	if(!GLOB.bsa_unlock)
-		return
-	var/list/gps_locators = list()
-	for(var/datum/component/gps/G in GLOB.GPS_list) //nulls on the list somehow
-		if(G.tracking)
-			gps_locators[G.gpstag] = G
+/obj/machinery/bsa_powercore/update_icon(updates)
+	. = ..()
+	if(attached)
+		icon_state = "powercore_on"
+	else
+		icon_state = "powercore_off"
 
-	var/list/options = gps_locators
-	if(area_aim)
-		options += GLOB.teleportlocs
-	var/V = input(user,"Select target", "Select target",null) in options|null
-	target = options[V]
+/obj/item/circuitboard/machine/bsa/powercore
+	name = "Bluespace Artillery Powercore (Machine Board)"
+	icon_state = "command"
+	build_path = /obj/machinery/bsa_powercore
+	req_components = list(
+		/obj/item/stock_parts/capacitor/quadratic = 5,
+		/obj/item/stock_parts/cell/bluespace = 1,
+		/obj/item/stack/cable_coil = 2)
 
-
-/obj/machinery/computer/bsa_control/proc/get_target_name()
-	if(istype(target, /area))
-		return get_area_name(target, TRUE)
-	else if(istype(target, /datum/component/gps))
-		var/datum/component/gps/G = target
-		return G.gpstag
-
-/obj/machinery/computer/bsa_control/proc/get_impact_turf()
-	if(istype(target, /area))
-		return pick(get_area_turfs(target))
-	else if(istype(target, /datum/component/gps))
-		var/datum/component/gps/G = target
-		return get_turf(G.parent)
-
-/obj/machinery/computer/bsa_control/proc/fire(mob/user)
-	if(cannon.machine_stat)
-		notice = "Cannon unpowered!"
-		return
-	notice = null
-	cannon.fire(user, get_impact_turf())
-
-/obj/machinery/computer/bsa_control/proc/deploy(force=FALSE)
-	var/obj/machinery/bsa/full/prebuilt = locate() in range(7) //In case of adminspawn
-	if(prebuilt)
-		return prebuilt
-
-	var/obj/machinery/bsa/middle/centerpiece = locate() in range(7)
-	if(!centerpiece)
-		notice = "No BSA parts detected nearby."
-		return null
-	notice = centerpiece.check_completion()
-	if(notice)
-		return null
-	//Totally nanite construction system not an immersion breaking spawning
-	var/datum/effect_system/smoke_spread/s = new
-	s.set_up(4,get_turf(centerpiece))
-	s.start()
-	var/obj/machinery/bsa/full/cannon = new(get_turf(centerpiece),centerpiece.get_cannon_direction())
-	qdel(centerpiece.front)
-	qdel(centerpiece.back)
-	qdel(centerpiece)
-	return cannon
-*/
+#undef SYSTEM_OFFLINE
+#undef SYSTEM_READY
+#undef SYSTEM_PREFIRE
+#undef SYSTEM_FIRING
+#undef SYSTEM_RELOADING
+#undef SYSTEM_INTERRUPTED
+#undef SUPERWEAPON_RELOAD_TIME

@@ -1,7 +1,10 @@
 GLOBAL_VAR_INIT(gamma_timer_id, null)
 GLOBAL_VAR_INIT(delta_timer_id, null)
+GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 
 #define GAMMA_LOOP_LENGTH 1236 //2.06 minutes in deciseconds
+#define DELTA_LOOP_LENGTH 8 SECONDS
+#define SET_SEC_LEVEL_COOLDOWN 5 SECONDS
 
 /proc/set_security_level(level)
 	level = isnum(level) ? level : seclevel2num(level)
@@ -10,6 +13,9 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_GAMMA && level != GLOB.security_level)
+		if(GLOB.sec_level_cooldown)
+			message_admins("Attempt made to change security level while in cooldown!")
+			return "COOLDOWN"
 		if(GLOB.delta_timer_id)
 			deltimer(GLOB.delta_timer_id)
 			GLOB.delta_timer_id = null
@@ -26,7 +32,7 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 					alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/blue.ogg')
 				else
 					minor_announce(CONFIG_GET(string/alert_blue_downto), "Attention! Alert level lowered to blue:")
-					alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/downtoGREEN.ogg')
+					alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/downtoBLUE.ogg')
 			if(SEC_LEVEL_VIOLET)
 				if(GLOB.security_level < SEC_LEVEL_VIOLET)
 					minor_announce(CONFIG_GET(string/alert_violet_upto), "Attention! Alert level set to violet:",1)
@@ -85,8 +91,13 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 			SSshuttle.emergency.modTimer(modTimer)
 		SSblackbox.record_feedback("tally", "security_level_changes", 1, get_security_level())
 		SSnightshift.check_nightshift()
+		GLOB.sec_level_cooldown = TRUE
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/reset_sec_level_cooldown), SET_SEC_LEVEL_COOLDOWN)
 	else
 		return
+
+/proc/reset_sec_level_cooldown()
+	GLOB.sec_level_cooldown = FALSE
 
 /proc/gamma_loop() //Loops gamma sound
 	if(GLOB.security_level == SEC_LEVEL_GAMMA)
@@ -96,7 +107,7 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 /proc/delta_alarm() //Delta alarm sounds every so often
 	if(GLOB.security_level == SEC_LEVEL_DELTA)
 		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
-		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm, FALSE), 8 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm), DELTA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 /proc/get_mod_timer(secLevel)
 	switch(secLevel)
@@ -189,3 +200,5 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 					M.playsound_local(get_turf(M), S, M.client.prefs.announcement_volume, FALSE)
 
 #undef GAMMA_LOOP_LENGTH
+#undef SET_SEC_LEVEL_COOLDOWN
+#undef DELTA_LOOP_LENGTH
