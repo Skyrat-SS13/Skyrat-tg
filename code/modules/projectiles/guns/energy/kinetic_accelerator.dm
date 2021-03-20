@@ -555,8 +555,8 @@
 	desc = "Makes your KA yellow. All the fun of having a more powerful KA without actually having a more powerful KA."
 	cost = 0
 	denied_type = /obj/item/borg/upgrade/modkit/chassis_mod
-	var/chassis_icon = "kineticgun_u"
-	var/chassis_name = "super-kinetic accelerator"
+	//var/chassis_icon = "kineticgun_u"
+	//var/chassis_name = "super-kinetic accelerator"
 
 /obj/item/borg/upgrade/modkit/chassis_mod/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
 	. = ..()
@@ -572,8 +572,8 @@
 /obj/item/borg/upgrade/modkit/chassis_mod/orange                   /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
 	name = "hyper chassis"
 	desc = "Makes your KA orange. All the fun of having explosive blasts without actually having explosive blasts."
-	chassis_icon = "kineticgun_h"
-	chassis_name = "hyper-kinetic accelerator"
+	//chassis_icon = "kineticgun_h"
+	//chassis_name = "hyper-kinetic accelerator"
 
 /obj/item/borg/upgrade/modkit/tracer
 	name = "white tracer bolts"
