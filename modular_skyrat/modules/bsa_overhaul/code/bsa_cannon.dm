@@ -198,10 +198,7 @@
 	return system_state
 
 /obj/machinery/bsa/full/process()
-	if(machine_stat)
-		system_state = SYSTEM_INTERRUPTED
-		STOP_PROCESSING(SSobj, src)
-	if(!control_unit.core)
+	if(isnull(control_unit.core))
 		system_state = SYSTEM_INTERRUPTED
 		STOP_PROCESSING(SSobj, src)
 	if(system_state == SYSTEM_PREFIRE) //We drain this while either action is being performed.
