@@ -25,6 +25,7 @@
 				to_chat(user, "<span class='warning'>There is already a core linked to this control unit!</span>")
 				return FALSE
 			core = M.buffer
+			core.control_unit = src
 			M.buffer = null
 			to_chat(user, "<span class='notice'>You link [src] with [core].</span>")
 	else

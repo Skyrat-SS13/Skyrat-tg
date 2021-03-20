@@ -305,6 +305,7 @@
 	icon_state = "powercore_off"
 	density = TRUE
 	///The attached power cable that the power core will SUCC energy from.
+	var/obj/machinery/computer/bsa_control/control_unit
 	var/obj/structure/cable/attached
 
 /obj/machinery/bsa_powercore/multitool_act(mob/living/user, obj/item/I)
@@ -334,6 +335,8 @@
 	return TRUE
 
 /obj/machinery/bsa_powercore/Destroy()
+	control_unit.core = null
+	control_unit = null
 	attached = null
 	. = ..()
 
