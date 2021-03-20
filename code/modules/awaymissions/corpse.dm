@@ -267,6 +267,7 @@
 		//Pre-job equips so Voxes dont die
 		H.dna.species.before_equip_job(null, H)
 		H.regenerate_icons()
+		SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
 	else
 		if(!random || newname)
 			if(newname)

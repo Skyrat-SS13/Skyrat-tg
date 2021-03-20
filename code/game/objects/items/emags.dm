@@ -17,8 +17,15 @@
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "An specially modified ID card used to break machinery and disable safeties. Notoriously used by Syndicate agents." // Skyrat edit
+	slot_flags = ITEM_SLOT_ID
+	worn_icon_state = "emag"
 	var/prox_check = TRUE //If the emag requires you to be in range
 	var/type_blacklist //List of types that require a specialized emag
+
+/obj/item/card/emag/attack_self(mob/user) //for traitors with balls of plastitanium
+	if(Adjacent(user))
+		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [name].</span>", "<span class='notice'>You show [src].</span>")
+	add_fingerprint(user)
 
 /obj/item/card/emag/bluespace
 	name = "bluespace cryptographic sequencer"
@@ -36,10 +43,17 @@
 	name = "cryptographic sequencer"
 	icon_state = "emag"
 	inhand_icon_state = "card-id"
+	slot_flags = ITEM_SLOT_ID
+	worn_icon_state = "emag"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE_TOY // Skyrat edit. It's a toy, we're not hiding it.
 	special_desc = "Closer inspection shows that this card is a poorly made replica, with a \"DonkCo\" logo stamped on the back." // Skyrat edit
+
+/obj/item/card/emagfake/attack_self(mob/user) //for assistants with balls of plasteel
+	if(Adjacent(user))
+		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [name].</span>", "<span class='notice'>You show [src].</span>")
+	add_fingerprint(user)
 
 /obj/item/card/emagfake/afterattack()
 	. = ..()
@@ -78,6 +92,7 @@
 	icon_state = "doorjack"
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "Identifies commonly as a \"doorjack\", this illegally modified ID card can disrupt airlock electronics. Has a self recharging cell. Used often by Syndicate agents."// Skyrat edit
+	worn_icon_state = "doorjack"
 	var/type_whitelist //List of types
 	var/charges = 3
 	var/max_charges = 3
