@@ -492,7 +492,7 @@
 	if(off_station < 2)
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
-	explosion(src, 50, 70, 80, 100, TRUE, TRUE) //SKYRAT EDIT ADDITION
+	explosion(src, 20, 30, 40, 50, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) //SKYRAT EDIT ADDITION
 
 	//Cinematic
