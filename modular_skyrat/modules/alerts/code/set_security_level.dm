@@ -66,7 +66,8 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 			if(SEC_LEVEL_GAMMA)
 				minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!",1)
 				GLOB.security_level = level
-				gamma_loop() //Gamma has a looping sound effect
+				alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
+				gamma_loop()
 		GLOB.security_level = level
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
 			if(is_station_level(FA.z))
