@@ -68,8 +68,7 @@
 	for(var/mob/M in GLOB.player_list)
 		if(!isnewplayer(M) && M.can_hear())
 			to_chat(M, "<span class='minorannounce'><font color = red>[title]</font color><BR>[message]</span><BR>")
-			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
-				if(alert)
-					SEND_SOUND(M, sound('modular_skyrat/modules/alerts/sound/alert1.ogg'))
-				else
-					SEND_SOUND(M, sound('sound/misc/notice2.ogg'))
+			if(alert)
+				alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'))
+			else
+				alert_sound_to_playing(sound('sound/misc/notice2.ogg'))
