@@ -10,6 +10,12 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_GAMMA && level != GLOB.security_level)
+		if(GLOB.delta_timer_id)
+			deltimer(GLOB.delta_timer_id)
+			GLOB.delta_timer_id = null
+		if(GLOB.gamma_timer_id)
+			deltimer(GLOB.gamma_timer_id)
+			GLOB.gamma_timer_id = null
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				minor_announce(CONFIG_GET(string/alert_green), "Attention! Alert level lowered to green:")
@@ -56,16 +62,10 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 					minor_announce(CONFIG_GET(string/alert_delta_downto), "Attention! Delta Alert level reached!",1)
 				GLOB.security_level = level
 				alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/delta.ogg')
-				if(GLOB.delta_timer_id)
-					deltimer(GLOB.delta_timer_id)
-					GLOB.delta_timer_id = null
 				delta_alarm()
 			if(SEC_LEVEL_GAMMA)
 				minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!",1)
 				GLOB.security_level = level
-				if(GLOB.delta_timer_id)
-					deltimer(GLOB.delta_timer_id)
-					GLOB.delta_timer_id = null
 				gamma_loop() //Gamma has a looping sound effect
 		GLOB.security_level = level
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
