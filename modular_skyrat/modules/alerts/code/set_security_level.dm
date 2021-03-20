@@ -90,12 +90,12 @@ GLOBAL_VAR_INIT(delta_timer_id, null)
 /proc/gamma_loop() //Loops gamma sound
 	if(GLOB.security_level == SEC_LEVEL_GAMMA)
 		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
-		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH)
+		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 /proc/delta_alarm() //Delta alarm sounds every so often
 	if(GLOB.security_level == SEC_LEVEL_DELTA)
 		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
-		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm, FALSE), 8 SECONDS)
+		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm, FALSE), 8 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 /proc/get_mod_timer(secLevel)
 	switch(secLevel)
