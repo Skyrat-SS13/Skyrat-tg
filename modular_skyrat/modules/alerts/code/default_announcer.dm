@@ -5,7 +5,7 @@
 	event_sounds = list(ANNOUNCER_AIMALF = 'sound/ai/default/aimalf.ogg',
 		ANNOUNCER_ALIENS = list('modular_skyrat/modules/alerts/sound/ai/default/lifesigns1.ogg', 'modular_skyrat/modules/alerts/sound/ai/default/lifesigns1.ogg', 'modular_skyrat/modules/alerts/sound/ai/default/lifesigns1.ogg'),
 		ANNOUNCER_ANIMES = 'sound/ai/default/animes.ogg',
-		ANNOUNCER_INTERCEPT = 'sound/ai/default/intercept.ogg',
+		ANNOUNCER_INTERCEPT = 'modular_skyrat/modules/alerts/sound/alert2.ogg',
 		ANNOUNCER_IONSTORM = 'modular_skyrat/modules/alerts/sound/ai/default/ionstorm.ogg',
 		ANNOUNCER_METEORS = list('modular_skyrat/modules/alerts/sound/ai/default/meteors1.ogg', 'modular_skyrat/modules/alerts/sound/ai/default/meteors2.ogg'),
 		ANNOUNCER_OUTBREAK5 = list('modular_skyrat/modules/alerts/sound/ai/default/outbreak5_1.ogg', 'modular_skyrat/modules/alerts/sound/ai/default/outbreak5_2.ogg'),
