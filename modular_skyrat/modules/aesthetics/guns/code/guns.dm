@@ -226,9 +226,3 @@
 	
 /obj/item/gun/energy/kinetic_accelerator
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	
-/obj/item/borg/upgrade/modkit/chassis_mod
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-
-/obj/item/borg/upgrade/modkit/chassis_mod/orange
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
