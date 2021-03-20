@@ -198,10 +198,10 @@
 	return system_state
 
 /obj/machinery/bsa/full/process()
-	if(isnull(control_unit.core))
-		system_state = SYSTEM_INTERRUPTED
-		STOP_PROCESSING(SSobj, src)
 	if(system_state == SYSTEM_PREFIRE) //We drain this while either action is being performed.
+		if(isnull(control_unit.core))
+			system_state = SYSTEM_INTERRUPTED
+			STOP_PROCESSING(SSobj, src)
 		var/obj/structure/cable/attached = control_unit.core.attached
 		var/datum/powernet/PN = attached.powernet
 		if(PN)
