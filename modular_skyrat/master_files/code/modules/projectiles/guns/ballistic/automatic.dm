@@ -1,18 +1,15 @@
-/* SKRYAT EDIT - MOVED TO MODULAR AUTOMATIC.DM
 /obj/item/gun/ballistic/automatic
 	w_class = WEIGHT_CLASS_NORMAL
 	can_suppress = TRUE
 	burst_size = 3
 	fire_delay = 2
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	semi_auto = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	fire_sound_volume = 90
 	vary_fire_sound = FALSE
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	suppressed_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
-	var/select = 1 ///fire selector position. 1 = semi, 2 = burst. anything past that can vary between guns.
-	var/selector_switch_icon = FALSE ///if it has an icon for a selector switch indicating current firemode.
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT, SELECT_FULLY_AUTOMATIC)
 
 /obj/item/gun/ballistic/automatic/proto
 	name = "\improper Nanotrasen Saber SMG"
@@ -29,42 +26,7 @@
 /obj/item/gun/ballistic/automatic/proto/unrestricted
 	pin = /obj/item/firing_pin
 
-/obj/item/gun/ballistic/automatic/update_overlays()
-	. = ..()
-	if(!selector_switch_icon)
-		return
-
-	switch(select)
-		if(0)
-			. += "[initial(icon_state)]_semi"
-		if(1)
-			. += "[initial(icon_state)]_burst"
-
-/obj/item/gun/ballistic/automatic/ui_action_click(mob/user, actiontype)
-	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
-		burst_select()
-	else
-		..()
-
-/obj/item/gun/ballistic/automatic/proc/burst_select()
-	var/mob/living/carbon/human/user = usr
-	select = !select
-	if(!select)
-		burst_size = 1
-		fire_delay = 0
-		to_chat(user, "<span class='notice'>You switch to semi-automatic.</span>")
-	else
-		burst_size = initial(burst_size)
-		fire_delay = initial(fire_delay)
-		to_chat(user, "<span class='notice'>You switch to [burst_size]-round burst.</span>")
-
-	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
-	update_appearance()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
-
-/obj/item/gun/ballistic/automatic/c20r
+/obj/item/gun/ballistic/automatic/c20r //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper C-20r SMG"
 	desc = "A bullpup three-round burst .45 SMG, designated 'C-20r'. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp."
 	icon_state = "c20r"
@@ -103,7 +65,7 @@
 	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 0
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	can_bayonet = TRUE
 	knife_x_offset = 25
 	knife_y_offset = 12
@@ -120,7 +82,7 @@
 	burst_size = 5
 	spread = 25
 	can_suppress = FALSE
-	actions_types = list()
+
 	projectile_damage_multiplier = 0.35 //It's like 10.5 damage per bullet, it's close enough to 10 shots
 	mag_display = TRUE
 	empty_indicator = TRUE
@@ -137,7 +99,7 @@
 	mag_display = TRUE
 	rack_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 
-/obj/item/gun/ballistic/automatic/m90
+/obj/item/gun/ballistic/automatic/m90 //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper M-90gl Carbine"
 	desc = "A three-round burst 5.56 toploading carbine, designated 'M-90gl'. Has an attached underbarrel grenade launcher which can be fired using right click."
 	icon_state = "m90"
@@ -180,31 +142,6 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/m90/update_overlays()
-	. = ..()
-	switch(select)
-		if(0)
-			. += "[initial(icon_state)]_semi"
-		if(1)
-			. += "[initial(icon_state)]_burst"
-
-/obj/item/gun/ballistic/automatic/m90/burst_select()
-	var/mob/living/carbon/human/user = usr
-	switch(select)
-		if(0)
-			select = 1
-			burst_size = initial(burst_size)
-			fire_delay = initial(fire_delay)
-			to_chat(user, "<span class='notice'>You switch to [burst_size]-rnd burst.</span>")
-		if(1)
-			select = 0
-			burst_size = 1
-			fire_delay = 0
-			to_chat(user, "<span class='notice'>You switch to semi-auto.</span>")
-	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
-	update_appearance()
-	return
-
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Thompson SMG"
 	desc = "Based on the classic 'Chicago Typewriter'."
@@ -246,7 +183,7 @@
 	mag_type = /obj/item/ammo_box/magazine/mm712x82
 	weapon_weight = WEAPON_HEAVY
 	burst_size = 1
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	can_suppress = FALSE
 	spread = 7
 	pin = /obj/item/firing_pin/implant/pindicate
@@ -276,6 +213,7 @@
 
 
 /obj/item/gun/ballistic/automatic/l6_saw/AltClick(mob/user)
+	. = ..() //SKYRAT EDIT ADDITION - GUNSGALORE
 	if(!user.canUseTopic(src))
 		return
 	cover_open = !cover_open
@@ -343,7 +281,7 @@
 	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
 	zoom_out_amt = 5
 	slot_flags = ITEM_SLOT_BACK
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_display = TRUE
 	suppressor_x_offset = 3
 	suppressor_y_offset = 3
@@ -359,7 +297,8 @@
 
 /obj/item/gun/ballistic/automatic/surplus
 	name = "Surplus Rifle"
-	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
+//	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."	// SKYRAT EDIT: Original
+	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm Magnum ammo and its bulky frame prevents one-hand firing."	// SKYRAT EDIT: Calibre rename
 	icon_state = "surplus"
 	inhand_icon_state = "moistnugget"
 	worn_icon_state = null
@@ -371,7 +310,7 @@
 	can_suppress = TRUE
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = ITEM_SLOT_BACK
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_display = TRUE
 
 // Laser rifle (rechargeable magazine) //
@@ -387,7 +326,6 @@
 	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 0
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	fire_sound = 'sound/weapons/laser.ogg'
 	casing_ejector = FALSE
-*/

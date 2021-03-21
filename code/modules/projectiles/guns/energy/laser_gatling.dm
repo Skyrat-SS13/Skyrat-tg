@@ -109,6 +109,8 @@
 	item_flags = NEEDS_PERMIT | SLOWS_WHILE_IN_HAND
 	can_charge = FALSE
 	var/obj/item/minigunpack/ammo_pack
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)//SKYRAT EDIT ADDITION
+
 
 /obj/item/gun/energy/minigun/Initialize()
 	if(istype(loc, /obj/item/minigunpack)) //We should spawn inside an ammo pack so let's use that one.
@@ -121,7 +123,7 @@
 /obj/item/gun/energy/minigun/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_blocker)
-	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
+	//AddComponent(/datum/component/automatic_fire, 0.2 SECONDS) SKYRAT EDIT REMOVAL
 
 /obj/item/gun/energy/minigun/attack_self(mob/living/user)
 	return
