@@ -73,7 +73,6 @@
 	burst_size = 3
 	fire_delay = 1
 	spread = 10
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
@@ -167,7 +166,6 @@
 	burst_size = 3
 	fire_delay = 1
 	spread = 5
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 	dirt_modifier = 0.1
 	can_flashlight = TRUE
@@ -673,7 +671,6 @@
 	inhand_icon_state = "vintorez"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez
 	can_suppress = FALSE
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
@@ -727,7 +724,6 @@
 	fire_delay = 1.7
 	can_suppress = FALSE
 	burst_size = 3
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE

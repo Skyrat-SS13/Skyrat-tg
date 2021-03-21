@@ -199,7 +199,7 @@
 		to_chat(user, "<span class='warning'>[src] is not capable of switching firemodes!</span>")
 		return
 
-	fire_select_index = 1 + fire_select_index % length(max_mode) //Magic math to cycle through this shit!
+	fire_select_index = 1 + fire_select_index % max_mode //Magic math to cycle through this shit!
 
 	fire_select = fire_select_modes[fire_select_index]
 

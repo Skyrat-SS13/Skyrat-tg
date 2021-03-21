@@ -81,7 +81,7 @@
 	burst_size = 3
 	fire_delay = 1
 	spread = 10
-	actions_types = list(/datum/action/item_action/toggle_firemode)
+	//actions_types = list(/datum/action/item_action/toggle_firemode) SKYRAT EDIT REMOVAL
 	suppressor_x_offset = 6
 
 /obj/item/gun/ballistic/automatic/pistol/stickman
