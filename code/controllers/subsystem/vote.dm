@@ -336,8 +336,6 @@ SUBSYSTEM_DEF(vote)
 		if("transfer")
 			initiate_vote("transfer",usr.key)
 		//SKYRAT EDIT ADDITION END
-		else
-			submit_vote(round(text2num(href_list["vote"])))
 		if("vote")
 			submit_vote(round(text2num(params["index"])))
 	return TRUE
