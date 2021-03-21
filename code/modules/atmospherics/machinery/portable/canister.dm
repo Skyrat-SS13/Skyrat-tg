@@ -5,9 +5,6 @@
 #define CANISTER_TIER_2 2
 #define CANISTER_TIER_3 3
 
-<<<<<<< HEAD
-/obj/machinery/portable_atmospherics/canister //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
 ///List of all the gases, used in labelling the canisters
 GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 
@@ -39,7 +36,6 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	))
 
 /obj/machinery/portable_atmospherics/canister
->>>>>>> d71ce02c98d (Makes cargo canister listings get automatically generated at runtime (#57844))
 	name = "canister"
 	desc = "A canister for the storage of gas."
 	icon_state = "yellow"
