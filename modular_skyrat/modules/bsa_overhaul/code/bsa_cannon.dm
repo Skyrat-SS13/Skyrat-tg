@@ -194,7 +194,7 @@
 		message_admins("[user] has started the fire cycle of [src]!")
 		set_light(5, 5, COLOR_BLUE_LIGHT)
 		START_PROCESSING(SSobj, src)
-		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 19 SECONDS)
+		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 15 SECONDS)
 	return system_state
 
 /obj/machinery/bsa/full/process()
