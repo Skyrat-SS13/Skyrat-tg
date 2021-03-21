@@ -58,7 +58,7 @@
 
 	SScommunications.send_message(M)
 
-/proc/minor_announce(message, title = "Attention:", alert, html_encode = TRUE)
+/proc/minor_announce(message, title = "Attention:", alert, html_encode = TRUE, sound)
 	if(!message)
 		return
 
@@ -69,6 +69,13 @@
 	for(var/mob/M in GLOB.player_list)
 		if(!isnewplayer(M) && M.can_hear())
 			to_chat(M, "<span class='minorannounce'><font color = red>[title]</font color><BR>[message]</span><BR>")
+
+	if(sound)
+		if(SSstation.announcer.event_sounds[sound])
+			var/list/picked = SSstation.announcer.event_sounds[sound]
+			sound = pick(picked)
+		alert_sound_to_playing(sound)
+
 	if(alert)
 		alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'))
 	else
