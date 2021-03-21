@@ -270,6 +270,7 @@
 			//SKYRAT EDIT BEGIN: MAKES HERETICS NOT GIB PEOPLE
 			var/obj/item/organ/heart/heart = H.getorganslot(ORGAN_SLOT_HEART)
 			qdel(heart)
+			to_chat(H,"<span class='danger'>You feel a cold hand grasp your heart; and crush it!</span>")
 			//SKYRAT EDIT END
 			LH.target = null
 			var/datum/antagonist/heretic/EC = carbon_user.mind.has_antag_datum(/datum/antagonist/heretic)
