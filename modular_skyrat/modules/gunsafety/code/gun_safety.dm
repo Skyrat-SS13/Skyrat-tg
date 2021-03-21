@@ -1,30 +1,7 @@
-//WATCH YOUR TRIGGER FINGER FRANK
-/obj/item/gun
-	var/safety = FALSE //Internal variable for keeping track whether the safety is on or off
-	var/has_gun_safety = FALSE //Whether the gun actually has a gun safety
-	var/datum/action/item_action/toggle_safety/tsafety
-
-/obj/item/gun/Initialize()
-	. = ..()
-	if(has_gun_safety)
-		safety = TRUE
-		tsafety = new(src)
-
-/obj/item/gun/Destroy()
-	if(tsafety)
-		QDEL_NULL(tsafety)
-	. = ..()
-
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"
 	icon_icon = 'modular_skyrat/modules/gunsafety/icons/hud/actions.dmi'
 	button_icon_state = "safety_on"
-
-/obj/item/gun/ui_action_click(mob/user, actiontype)
-	if(istype(actiontype, tsafety))
-		toggle_safety(user)
-	else
-		. =..()
 
 /obj/item/gun/proc/toggle_safety(mob/user, override)
 	if(!has_gun_safety)

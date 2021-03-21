@@ -78,10 +78,12 @@
 	var/datum/action/toggle_scope_zoom/azoom
 	var/pb_knockback = 0
 
-	actions_types = list(/datum/action/item_action/toggle_firemode)
+	var/safety = FALSE ///Internal variable for keeping track whether the safety is on or off
+	var/has_gun_safety = FALSE ///Whether the gun actually has a gun safety
+	var/datum/action/item_action/toggle_safety/tsafety
 
-	///What is the full auto firerate?
-	var/full_auto_rate = 1
+
+	var/datum/action/item_action/toggle_firemode/firemode_action
 	///Current fire selection, can choose between burst, single, and full auto.
 	var/fire_select = SELECT_SEMI_AUTOMATIC
 	var/fire_select_index = 1
@@ -93,6 +95,8 @@
 /obj/item/gun/ui_action_click(mob/user, actiontype)
 	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
 		burst_select()
+	else if(istype(actiontype, tsafety))
+		toggle_safety(user)
 	else
 		..()
 
@@ -103,17 +107,25 @@
 	if(gun_light)
 		alight = new(src)
 	build_zooming()
+
+	if(has_gun_safety)
+		safety = TRUE
+		tsafety = new(src)
+
 	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Add(SELECT_BURST_SHOT)
 
 	sortList(fire_select_modes, /proc/cmp_numeric_asc)
 
+	if(fire_select_modes.len > 1)
+		firemode_action = new(src)
+		firemode_action.button_icon_state = "fireselect_[fire_select]"
+		firemode_action.UpdateButtonIcon()
+
 /obj/item/gun/ComponentInitialize()
 	. = ..()
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
-		if(!full_auto_rate)
-			full_auto_rate = 1
-		AddComponent(/datum/component/automatic_fire, full_auto_rate)
+		AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -181,7 +193,13 @@
 /obj/item/gun/proc/burst_select()
 	var/mob/living/carbon/human/user = usr
 
-	fire_select_index = 1 + fire_select_index % length(fire_select_modes) //Magic math to cycle through this shit!
+	var/max_mode = fire_select_modes.len
+
+	if(max_mode <= 1)
+		to_chat(user, "<span class='warning'>[src] is not capable of switching firemodes!</span>")
+		return
+
+	fire_select_index = 1 + fire_select_index % length(max_mode) //Magic math to cycle through this shit!
 
 	fire_select = fire_select_modes[fire_select_index]
 
@@ -200,9 +218,8 @@
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
+	firemode_action.button_icon_state = "fireselect_[fire_select]"
+	firemode_action.UpdateButtonIcon()
 	return TRUE
 
 //called after the gun has successfully fired its chambered ammo.
