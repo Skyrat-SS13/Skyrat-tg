@@ -76,7 +76,7 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
-		/obj/item/gun/energy/disabler,\)
+		/obj/item/gun/energy/disabler)
 
 	r_hand = /obj/item/minigunpack
 
