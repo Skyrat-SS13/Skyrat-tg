@@ -8,7 +8,7 @@
 	category = list("Cyborg Upgrade Modules")
 
 /datum/design/borg_upgrade_surgicaltools
-	name = "Cyborg Upgrade (Advannced Surgical Tools)"
+	name = "Cyborg Upgrade (Advanced Surgical Tools)"
 	id = "borg_upgrade_surgicaltools"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/surgerytools
