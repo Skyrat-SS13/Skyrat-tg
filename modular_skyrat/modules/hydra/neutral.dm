@@ -1,6 +1,6 @@
 /datum/quirk/hydra
 	name = "Hydra Heads"
-	desc = "You are a tri-headed creature. To use, format name like (Fucks-Sucks-Ducks)"
+	desc = "You are a tri-headed creature. To use, format name like (Rucks-Sucks-Ducks)"
 	value = 0
 	mob_trait = TRAIT_HYDRA_HEADS
 	gain_text = "<span class='notice'>You hear two other voices inside of your head(s).</span>"
