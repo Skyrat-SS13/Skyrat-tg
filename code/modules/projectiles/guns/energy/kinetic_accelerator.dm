@@ -569,7 +569,7 @@
 	KA.name = initial(KA.name)
 	..()
 
-/obj/item/borg/upgrade/modkit/chassis_mod/orange                   /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
+/obj/item/borg/upgrade/modkit/chassis_mod/orange /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
 	name = "hyper chassis"
 	desc = "Makes your KA orange. All the fun of having explosive blasts without actually having explosive blasts."
 	chassis_icon = "kineticgun_h"
