@@ -218,10 +218,7 @@
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
-	if(safety)
-		firemode_action.button_icon_state = "fireselect_no"
-	else
-		firemode_action.button_icon_state = "fireselect_[fire_select]"
+	firemode_action.button_icon_state = "fireselect_[fire_select]"
 	firemode_action.UpdateButtonIcon()
 	return TRUE
 
