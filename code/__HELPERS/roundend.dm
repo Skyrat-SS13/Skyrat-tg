@@ -458,7 +458,7 @@
 		var/mob/living/silicon/ai/aiPlayer = i
 		var/datum/mind/aiMind = aiPlayer.deployed_shell?.mind || aiPlayer.mind
 		if(aiMind)
-			parts += "<b>[aiPlayer.name]</b>'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was <span class='redtext'>deactivated</span>"] were:"
+			parts += "<b>[aiPlayer.name]</b>'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was <span class='redtext'>deactivated</span>"] were:" //SKYRAT EDIT CHANGE
 			parts += aiPlayer.laws.get_law_list(include_zeroth=TRUE)
 
 		parts += "<b>Total law changes: [aiPlayer.law_change_counter]</b>"
