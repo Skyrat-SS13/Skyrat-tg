@@ -267,7 +267,10 @@
 		if(LH.target && LH.target.stat == DEAD)
 			to_chat(carbon_user,"<span class='danger'>Your patrons accepts your offer..</span>")
 			var/mob/living/carbon/human/H = LH.target
-			H.gib()
+			//SKYRAT EDIT BEGIN: MAKES HERETICS NOT GIB PEOPLE
+			var/obj/item/organ/heart/heart = H.getorganslot(ORGAN_SLOT_HEART)
+			qdel(heart)
+			//SKYRAT EDIT END
 			LH.target = null
 			var/datum/antagonist/heretic/EC = carbon_user.mind.has_antag_datum(/datum/antagonist/heretic)
 
