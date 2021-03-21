@@ -1,5 +1,4 @@
-//Manages Hydra heads.
-/*
+/* COMMENTED OUT DUE TO SPRITE ISSUES AT THIS TIME. SPRITERS PLEASE RESOLVE - YAWET
 /datum/body_marking/other/hydra
 	name = "Hydra Head (nonspecific)"
 	icon_state = "hydramiddle_head"
