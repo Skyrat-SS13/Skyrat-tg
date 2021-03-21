@@ -201,7 +201,7 @@
 	name = "Toggle Hood"
 
 /datum/action/item_action/toggle_firemode
-	button_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_items.dmi' //SKYRAT EDIT ADDITION
+	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_items.dmi' //SKYRAT EDIT ADDITION
 	button_icon_state = "fireselect_no" //SKYRAT EDIT ADDITION
 	name = "Toggle Firemode"
 
