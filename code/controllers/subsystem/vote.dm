@@ -334,7 +334,8 @@ SUBSYSTEM_DEF(vote)
 				initiate_vote("custom",usr.key)
 		//SKYRAT EDIT ADDITION BEGIN - autotransfer
 		if("transfer")
-			initiate_vote("transfer",usr.key)
+			if(usr.client.holder && upper_admin)
+				initiate_vote("transfer",usr.key)
 		//SKYRAT EDIT ADDITION END
 		if("vote")
 			submit_vote(round(text2num(params["index"])))
