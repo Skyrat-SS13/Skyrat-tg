@@ -62,6 +62,8 @@
 		switch(seconds_remaining())
 			if(0 to 5)
 				volume = 50
+				for(var/i,i<3,i++)
+					addtimer(CALLBACK(src, .proc/play_fearsome_ping), i*10)
 			if(5 to 10)
 				volume = 40
 			if(10 to 15)
@@ -80,6 +82,9 @@
 		timer_set = initial(timer_set)
 		update_appearance()
 		try_detonate(TRUE)
+
+/obj/machinery/syndicatebomb/proc/play_fearsome_ping()
+	playsound(loc, beepsound, 80, FALSE)
 
 /obj/machinery/syndicatebomb/Initialize()
 	. = ..()
