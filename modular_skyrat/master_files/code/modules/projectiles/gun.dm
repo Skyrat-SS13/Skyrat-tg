@@ -117,9 +117,10 @@
 
 	sortList(fire_select_modes, /proc/cmp_numeric_asc)
 
-	if(fire_select_modes.len > 1)
-		firemode_action = new(src)
-		firemode_action.button_icon_state = "fireselect_[fire_select]"
+	firemode_action = new(src)
+
+	if(!(fire_select_modes.len > 1))
+		firemode_action.button_icon_state = "fireselect_no"
 		firemode_action.UpdateButtonIcon()
 
 /obj/item/gun/ComponentInitialize()
@@ -197,6 +198,8 @@
 
 	if(max_mode <= 1)
 		to_chat(user, "<span class='warning'>[src] is not capable of switching firemodes!</span>")
+		firemode_action.button_icon_state = "fireselect_no"
+		firemode_action.UpdateButtonIcon()
 		return
 
 	fire_select_index = 1 + fire_select_index % max_mode //Magic math to cycle through this shit!
