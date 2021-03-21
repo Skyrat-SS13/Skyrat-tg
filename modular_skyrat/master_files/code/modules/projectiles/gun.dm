@@ -117,7 +117,7 @@
 
 	sortList(fire_select_modes, /proc/cmp_numeric_asc)
 
-	if(!(fire_select_modes.len > 1))
+	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]]"
 		firemode_action.UpdateButtonIcon()
