@@ -300,41 +300,7 @@ SUBSYSTEM_DEF(vote)
 	if(.)
 		return
 
-<<<<<<< HEAD
-		. += "</li>"
-		//map
-		var/avmap = CONFIG_GET(flag/allow_vote_map)
-		if(trialmin || avmap)
-			. += "<a href='?src=[REF(src)];vote=map'>Map</a>"
-		else
-			. += "<font color='grey'>Map (Disallowed)</font>"
-		if(trialmin)
-			. += "\t(<a href='?src=[REF(src)];vote=toggle_map'>[avmap ? "Allowed" : "Disallowed"]</a>)"
-
-		. += "</li>"
-		//SKYRAT EDIT ADDITION - AUTOTRANSFER
-		if(trialmin)
-			. += "<a href='?src=[REF(src)];vote=transfer'>Transfer</a>"
-		else
-			. += "<font color='grey'>Transfer (Disallowed)</font>"
-		. += "</li>"
-		//SKYRAT EDIT ADDITION
-		//custom
-		if(trialmin)
-			. += "<li><a href='?src=[REF(src)];vote=custom'>Custom</a></li>"
-		. += "</ul><hr>"
-	. += "<a href='?src=[REF(src)];vote=close' style='position:absolute;right:50px'>Close</a>"
-	return .
-
-
-/datum/controller/subsystem/vote/Topic(href,href_list[],hsrc)
-	if(!usr || !usr.client)
-		return //not necessary but meh...just in-case somebody does something stupid
-
-	var/trialmin = FALSE
-=======
 	var/upper_admin = FALSE
->>>>>>> 90ed4672a65 (tgui: Vote Panel (#57775))
 	if(usr.client.holder)
 		if(check_rights_for(usr.client, R_ADMIN))
 			upper_admin = TRUE
@@ -366,19 +332,15 @@ SUBSYSTEM_DEF(vote)
 		if("custom")
 			if(usr.client.holder)
 				initiate_vote("custom",usr.key)
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - autotransfer
 		if("transfer")
 			initiate_vote("transfer",usr.key)
 		//SKYRAT EDIT ADDITION END
 		else
 			submit_vote(round(text2num(href_list["vote"])))
-	usr.vote()
-=======
 		if("vote")
 			submit_vote(round(text2num(params["index"])))
 	return TRUE
->>>>>>> 90ed4672a65 (tgui: Vote Panel (#57775))
 
 /datum/controller/subsystem/vote/proc/remove_action_buttons()
 	for(var/v in generated_actions)
