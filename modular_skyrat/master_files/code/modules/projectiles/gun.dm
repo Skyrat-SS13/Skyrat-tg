@@ -94,7 +94,7 @@
 
 /obj/item/gun/ui_action_click(mob/user, actiontype)
 	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
-		burst_select()
+		fire_select()
 	else if(istype(actiontype, tsafety))
 		toggle_safety(user)
 	else
@@ -190,7 +190,7 @@
 	if(zoomed && user.get_active_held_item() != src)
 		zoom(user, user.dir, FALSE) //we can only stay zoomed in if it's in our hands //yeah and we only unzoom if we're actually zoomed using the gun!!
 
-/obj/item/gun/proc/burst_select()
+/obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
 
 	var/max_mode = fire_select_modes.len
