@@ -76,13 +76,12 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/kitchen/knife/combat/survival,\
-		/obj/item/gun/energy/disabler,\
-		/obj/item/gun/ballistic/automatic/l6_saw/assaultops,\
-		/obj/item/ammo_box/magazine/mm712x82=2,\
-		/obj/item/grenade/syndieminibomb)
+		/obj/item/gun/energy/disabler,\)
 
-/obj/item/gun/ballistic/automatic/l6_saw/assaultops
-	w_class = WEIGHT_CLASS_NORMAL
+	r_hand = /obj/item/minigunpack
+
+	r_pocket = /obj/item/grenade/syndieminibomb
+
 
 /datum/outfit/assaultops/assault
 	name = "Assault Operative - Assault"
