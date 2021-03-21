@@ -104,6 +104,11 @@
 		autofire_on(source.client)
 
 /datum/component/automatic_fire/proc/on_mouse_down(client/source, atom/_target, turf/location, control, params)
+	if(istype(parent, /obj/item/gun/ballistic/automatic))
+		var/obj/item/gun/ballistic/automatic/pewpew = parent
+		if(pewpew.fire_select != SELECT_FULLY_AUTOMATIC)
+			return pewpew.afterattack(_target, source.mob, control, params)
+
 	var/list/modifiers = params2list(params) //If they're shift+clicking, for example, let's not have them accidentally shoot.
 
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))
@@ -244,7 +249,7 @@
 // Gun procs.
 
 /obj/item/gun/proc/on_autofire_start(mob/living/shooter)
-	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || semicd)
+	if(!can_shoot(shooter) || !can_trigger_gun(shooter) || semicd || safety) //SKYRAT EDIT CHANGE
 		return FALSE
 	var/obj/item/bodypart/other_hand = shooter.has_hand_for_held_index(shooter.get_inactive_hand_index())
 	if(weapon_weight == WEAPON_HEAVY && (shooter.get_inactive_held_item() || !other_hand))

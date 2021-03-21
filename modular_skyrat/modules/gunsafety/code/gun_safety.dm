@@ -13,7 +13,7 @@
 /obj/item/gun/Destroy()
 	if(tsafety)
 		QDEL_NULL(tsafety)
-	return ..()
+	. = ..()
 
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"
@@ -24,7 +24,7 @@
 	if(istype(actiontype, tsafety))
 		toggle_safety(user)
 	else
-		..()
+		. =..()
 
 /obj/item/gun/proc/toggle_safety(mob/user, override)
 	if(!has_gun_safety)
@@ -42,13 +42,6 @@
 	user.visible_message("<span class='notice'>[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].",
 	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>")
 
-/obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
-	if(has_gun_safety)
-		if(safety)
-			to_chat(user, "<span class='warning'>The safety is on!</span>")
-			return
-	. = ..()
-
 /obj/item/gun/examine(mob/user)
 	. = ..()
 	. += "<span>The safety is [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
@@ -64,6 +57,6 @@
 
 /obj/item/gun/energy/kinetic_accelerator/minebot
 	has_gun_safety = FALSE
-	
+
 /obj/item/gun/ballistic/rifle/enchanted
 	has_gun_safety = FALSE

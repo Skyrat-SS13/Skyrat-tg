@@ -78,6 +78,58 @@
 	var/datum/action/toggle_scope_zoom/azoom
 	var/pb_knockback = 0
 
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+
+	///What is the full auto firerate?
+	var/full_auto_rate = 1
+	///Current fire selection, can choose between burst, single, and full auto.
+	var/fire_select = SELECT_SEMI_AUTOMATIC
+	///What modes does this weapon have? Put SELECT_FULLY_AUTOMATIC in here to enable fully automatic behaviours.
+	var/list/fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	///if i`1t has an icon for a selector switch indicating current firemode.
+	var/selector_switch_icon = FALSE
+
+/obj/item/gun/ui_action_click(mob/user, actiontype)
+	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
+		burst_select()
+	else
+		..()
+
+/obj/item/gun/proc/burst_select()
+	var/mob/living/carbon/human/user = usr
+
+	if(fire_select == SELECT_SEMI_AUTOMATIC)
+		if(SELECT_BURST_SHOT in fire_select_modes)
+			fire_select = SELECT_BURST_SHOT
+		else if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
+			fire_select = SELECT_FULLY_AUTOMATIC
+	else if(fire_select == SELECT_BURST_SHOT)
+		if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
+			fire_select = SELECT_FULLY_AUTOMATIC
+		else
+			fire_select = SELECT_SEMI_AUTOMATIC
+	else
+		fire_select = SELECT_SEMI_AUTOMATIC
+
+	switch(fire_select)
+		if(SELECT_SEMI_AUTOMATIC)
+			burst_size = 1
+			fire_delay = 0
+			to_chat(user, "<span class='notice'>You switch to semi-automatic.</span>")
+		if(SELECT_BURST_SHOT)
+			burst_size = initial(burst_size)
+			fire_delay = initial(fire_delay)
+			to_chat(user, "<span class='notice'>You switch to [burst_size]-round burst.</span>")
+		if(SELECT_FULLY_AUTOMATIC)
+			burst_size = 1
+			to_chat(user, "<span class='notice'>You switch to automatic.</span>")
+
+	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
+	update_appearance()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
+
 /obj/item/gun/Initialize()
 	. = ..()
 	if(pin)
@@ -85,6 +137,13 @@
 	if(gun_light)
 		alight = new(src)
 	build_zooming()
+
+/obj/item/gun/ComponentInitialize()
+	. = ..()
+	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
+		if(!full_auto_rate)
+			full_auto_rate = 1
+		AddComponent(/datum/component/automatic_fire, full_auto_rate)
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -227,6 +286,10 @@
 		var/mob/living/L = user
 		if(!can_trigger_gun(L))
 			return
+		if(has_gun_safety)
+			if(safety)
+				to_chat(user, "<span class='warning'>The safety is on!</span>")
+				return
 
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
@@ -610,6 +673,14 @@
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset
 		. += knife_overlay
+
+	switch(fire_select)
+		if(SELECT_SEMI_AUTOMATIC)
+			. += "[initial(icon_state)]_semi"
+		if(SELECT_BURST_SHOT)
+			. += "[initial(icon_state)]_burst"
+		if(SELECT_FULLY_AUTOMATIC)
+			. += "[initial(icon_state)]_fullauto"
 
 /obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params, bypass_timer)
 	if(!ishuman(user) || !ishuman(target))
