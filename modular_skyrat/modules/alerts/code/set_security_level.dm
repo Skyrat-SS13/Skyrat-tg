@@ -22,7 +22,7 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 		if(GLOB.gamma_timer_id)
 			deltimer(GLOB.gamma_timer_id)
 			GLOB.gamma_timer_id = null
-		announce_security_level(level)
+		announce_security_level(level) //IF YOU ARE ADDING A NEW SECURITY LEVEL, UPDATE THIS PROC
 		GLOB.security_level = level
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
 			if(is_station_level(FA.z))
@@ -175,7 +175,7 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
 		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE)
 
-
+///This is quite franlky the most important proc relating to global sounds, it uses area definition to play sounds depending on your location, and respects the players announcement volume. Generally if you're sending an announcement you want to use priority_announce.
 /proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
 	if(!S)
 		S = sound(get_sfx(soundin))
@@ -183,7 +183,7 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 	for(var/m in GLOB.player_list)
 		if(ismob(m) && !isnewplayer(m))
 			var/mob/M = m
-			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
+			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS && M.can_hear())
 				var/area/A = get_area(M)
 				if(is_type_in_typecache(A, quiet_areas)) //These areas don't hear it as loudly
 					M.playsound_local(get_turf(M), S, min(10, M.client.prefs.announcement_volume), FALSE)

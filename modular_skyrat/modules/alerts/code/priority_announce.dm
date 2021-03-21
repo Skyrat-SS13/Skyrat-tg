@@ -1,3 +1,4 @@
+///Sends an announcement to all players and formats it accordingly. Use this for big bad shit.
 /proc/priority_announce(text, title = "", sound, type , sender_override, has_important_message)
 	if(!text)
 		return
@@ -58,6 +59,7 @@
 
 	SScommunications.send_message(M)
 
+///This proc sends an announcement to all currently playing mobs. Use alert to send a more ominious BEEP. Generally used for updating people on minor things, such as CME locaiton. Use priority_announce for large announcements.
 /proc/minor_announce(message, title = "Attention:", alert, html_encode = TRUE, sound)
 	if(!message)
 		return
