@@ -114,6 +114,8 @@
 
 	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Add(SELECT_BURST_SHOT)
+	else if(burst_size <= 1 && (SELECT_BURST_SHOT in fire_select_modes))
+		fire_select_modes.Remove(SELECT_BURST_SHOT)
 
 	sortList(fire_select_modes, /proc/cmp_numeric_asc)
 
