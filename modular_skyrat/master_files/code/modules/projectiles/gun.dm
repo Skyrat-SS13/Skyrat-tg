@@ -84,6 +84,7 @@
 	var/full_auto_rate = 1
 	///Current fire selection, can choose between burst, single, and full auto.
 	var/fire_select = SELECT_SEMI_AUTOMATIC
+	var/fire_select_index = 1
 	///What modes does this weapon have? Put SELECT_FULLY_AUTOMATIC in here to enable fully automatic behaviours.
 	var/list/fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	///if i`1t has an icon for a selector switch indicating current firemode.
@@ -95,7 +96,6 @@
 	else
 		..()
 
-
 /obj/item/gun/Initialize()
 	. = ..()
 	if(pin)
@@ -105,6 +105,8 @@
 	build_zooming()
 	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Add(SELECT_BURST_SHOT)
+
+	sortList(fire_select_modes, /proc/cmp_numeric_asc)
 
 /obj/item/gun/ComponentInitialize()
 	. = ..()
@@ -179,34 +181,22 @@
 /obj/item/gun/proc/burst_select()
 	var/mob/living/carbon/human/user = usr
 
-	if(fire_select == SELECT_SEMI_AUTOMATIC)
-		if(SELECT_BURST_SHOT in fire_select_modes)
-			fire_select = SELECT_BURST_SHOT
-		else if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
-			fire_select = SELECT_FULLY_AUTOMATIC
-		else
-			to_chat(user, "<span class='warning'>The [src] is not capable of switching firemodes.</span>")
-			return FALSE
-	else if(fire_select == SELECT_BURST_SHOT)
-		if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
-			fire_select = SELECT_FULLY_AUTOMATIC
-		else
-			fire_select = SELECT_SEMI_AUTOMATIC
-	else
-		fire_select = SELECT_SEMI_AUTOMATIC
+	fire_select_index = 1 + fire_select_index % length(fire_select_modes) //Magic math to cycle through this shit!
+
+	fire_select = fire_select_modes[fire_select_index]
 
 	switch(fire_select)
 		if(SELECT_SEMI_AUTOMATIC)
 			burst_size = 1
 			fire_delay = 0
-			to_chat(user, "<span class='notice'>You switch to semi-automatic.</span>")
+			to_chat(user, "<span class='notice'>You switch [src] to semi-automatic.</span>")
 		if(SELECT_BURST_SHOT)
 			burst_size = initial(burst_size)
 			fire_delay = initial(fire_delay)
-			to_chat(user, "<span class='notice'>You switch to [burst_size]-round burst.</span>")
+			to_chat(user, "<span class='notice'>You switch [src] to [burst_size]-round burst.</span>")
 		if(SELECT_FULLY_AUTOMATIC)
 			burst_size = 1
-			to_chat(user, "<span class='notice'>You switch to automatic.</span>")
+			to_chat(user, "<span class='notice'>You switch [src] to automatic.</span>")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
@@ -681,11 +671,6 @@
 		knife_overlay.pixel_y = knife_y_offset
 		. += knife_overlay
 
-	switch(fire_select)
-		if(SELECT_BURST_SHOT)
-			. += "[initial(icon_state)]_burst"
-		if(SELECT_FULLY_AUTOMATIC)
-			. += "[initial(icon_state)]_fullauto"
 
 /obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params, bypass_timer)
 	if(!ishuman(user) || !ishuman(target))
