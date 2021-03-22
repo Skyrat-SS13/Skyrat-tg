@@ -2,7 +2,7 @@
 	name = "Integrated Circuit Printer"
 	desc = "The printer for various integrated circuits and electronics."
 	id = "integrated_circuit_printer"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 13500, /datum/material/glass = 4500)
 	construction_time = 100
 	build_path = /obj/item/integrated_circuit_printer
@@ -13,7 +13,7 @@
 	name = "Integrated Circuit Jumpsuit"
 	desc = "A uniform that contains a built in electronic assembly."
 	id = "integrated_circuit_uniform"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 10000, /datum/material/glass = 4000)
 	construction_time = 100
 	build_path = /obj/item/clothing/under/circuitry
@@ -24,7 +24,7 @@
 	name = "Integrated Circuit Chestpiece"
 	desc = "A chestpiece that contains a built in electronic assembly."
 	id = "integrated_circuit_suit"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 12000, /datum/material/glass = 5000)
 	construction_time = 100
 	build_path = /obj/item/clothing/suit/circuitry
@@ -35,7 +35,7 @@
 	name = "Integrated Circuit Boots"
 	desc = "A pair of boots that contain a built in electronic assembly."
 	id = "integrated_circuit_shoes"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 4000, /datum/material/glass = 1000)
 	construction_time = 100
 	build_path = /obj/item/clothing/shoes/circuitry
@@ -46,7 +46,7 @@
 	name = "Integrated Circuit Headwear"
 	desc = "A piece of headwear that contains a built in electronic assembly."
 	id = "integrated_circuit_head"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 5000, /datum/material/glass = 1200)
 	construction_time = 100
 	build_path = /obj/item/clothing/head/circuitry
@@ -57,7 +57,7 @@
 	name = "Integrated Circuit Gloves"
 	desc = "A pair of gloves that contain a built in electronic assembly."
 	id = "integrated_circuit_gloves"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 3000, /datum/material/glass = 1000)
 	construction_time = 100
 	build_path = /obj/item/clothing/gloves/circuitry
@@ -68,7 +68,7 @@
 	name = "Integrated Circuit Goggles"
 	desc = "Goggles that contain a built in electronic assembly."
 	id = "integrated_circuit_glasses"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 2500, /datum/material/glass = 800)
 	construction_time = 100
 	build_path = /obj/item/clothing/glasses/circuitry
@@ -79,7 +79,7 @@
 	name = "Integrated Circuit Earpiece"
 	desc = "An earpiece that contains a built in electronic assembly. The wiring interferes with standard encryption keys."
 	id = "integrated_circuit_ears"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list (/datum/material/iron = 2500, /datum/material/glass = 800)
 	construction_time = 100
 	build_path = /obj/item/clothing/ears/circuitry
