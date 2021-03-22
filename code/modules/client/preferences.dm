@@ -650,6 +650,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Screentip color:</b><span style='border: 1px solid #161616; background-color: [screentip_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=screentipcolor'>Change</a><BR>"
 			dat += "<b>Item Hover Outlines:</b> <a href='?_src_=prefs;preference=itemoutline_pref'>[itemoutline_pref ? "Enabled" : "Disabled"]</a><br>"
 
+
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			if (CONFIG_GET(string/default_view) != CONFIG_GET(string/default_view_square))
