@@ -24,7 +24,7 @@
 	uniform = /obj/item/clothing/under/rank/security/blueshield
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	id = /obj/item/card/id/advanced/silver
+	id = /obj/item/card/id/advanced/gold
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/heads/blueshield/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses

@@ -578,7 +578,10 @@
 		/obj/item/melee/flyswatter,
 		/obj/item/assembly/mousetrap,
 		/obj/item/paint/paint_remover,
-		/obj/item/pushbroom
+		/obj/item/pushbroom, //SKYRAT EDIT - Comma.....
+		/obj/item/mop, //SKYRAT EDIT - For when you're lazy to use soap
+		/obj/item/mop/advanced, //SKYRAT EDIT For when you're lazy to use a bucket
+		/obj/item/reagent_containers/glass/bucket //SKYRAT EDIT - Bucket
 		))
 
 /obj/item/storage/belt/janitor/full/PopulateContents()

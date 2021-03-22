@@ -190,9 +190,9 @@
 			. = TRUE
 		if("buildMode")
 			var/mob/holder_mob = holder.mob
-			if (holder_mob)
+			if (holder_mob && (holder.holder?.rank?.rights & R_BUILD))
 				togglebuildmode(holder_mob)
-			SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Build Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+				SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Build Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 			. = TRUE
 		if("loadDataFromPreset")
 			var/list/savedData = params["payload"]
@@ -567,7 +567,8 @@
 		else if(picking_dropoff_turf)
 			holder.mouse_up_icon = 'icons/effects/mouse_pointers/supplypod_pickturf.dmi' //Icon for when mouse is released
 			holder.mouse_down_icon = 'icons/effects/mouse_pointers/supplypod_pickturf_down.dmi' //Icon for when mouse is pressed
-		holder.mouse_pointer_icon = holder.mouse_up_icon //Icon for idle mouse (same as icon for when released)
+		holder.mouse_override_icon = holder.mouse_up_icon //Icon for idle mouse (same as icon for when released)
+		holder.mouse_pointer_icon = holder.mouse_override_icon
 		holder.click_intercept = src //Create a click_intercept so we know where the user is clicking
 	else
 		var/mob/holder_mob = holder.mob
@@ -578,7 +579,7 @@
 
 /datum/centcom_podlauncher/proc/InterceptClickOn(user,params,atom/target) //Click Intercept so we know where to send pods where the user clicks
 	var/list/modifiers = params2list(params)
-	
+
 	var/left_click = LAZYACCESS(modifiers, LEFT_CLICK)
 
 	if (launcherActivated)

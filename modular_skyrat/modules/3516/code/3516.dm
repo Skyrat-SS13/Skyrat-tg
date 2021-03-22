@@ -40,12 +40,27 @@
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/j3516/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message)
-	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand woosh woosh twirl
-	animate(transform = turn(matrix(), 240), time = 2)
-	animate(transform = null, time = 2)
-	drop_bolt(user) //This gun automatically drops the bolt
-	rack(user)
-	. = ..()
+	if(!istype(AM, mag_type))
+		to_chat(user, "<span class='warning'>\The [AM] doesn't seem to fit into \the [src]...</span>")
+		return FALSE
+	if(user.transferItemToLoc(AM, src))
+		magazine = AM
+		if (display_message)
+			to_chat(user, "<span class='notice'>You load a new [magazine_wording] into \the [src].</span>")
+		playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+		if (bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
+			chamber_round(TRUE)
+		drop_bolt(user)
+		update_appearance()
+		animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand woosh woosh twirl
+		animate(transform = turn(matrix(), 240), time = 2)
+		animate(transform = null, time = 2)
+		return TRUE
+	else
+		to_chat(user, "<span class='warning'>You cannot seem to get \the [src] out of your hands!</span>")
+		return FALSE
+
+
 
 /obj/item/gun/ballistic/automatic/pistol/j3516/eject_magazine(mob/user, display_message, obj/item/ammo_box/magazine/tac_load)
 	if(bolt_type == BOLT_TYPE_OPEN)

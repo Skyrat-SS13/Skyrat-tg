@@ -83,7 +83,7 @@
 	/// Linked paystand.
 	var/obj/machinery/paystand/my_store
 	/// Registered owner's age.
-	var/registered_age = 13
+	var/registered_age = 18 //SKYRAT EDIT - ORIGINAL (13)
 
 	/// The job name registered on the card (for example: Assistant).
 	var/assignment
@@ -613,7 +613,7 @@
 	desc = "A staff ID used to access the hotel's doors."
 	trim = /datum/id_trim/away/hotel
 
-/obj/item/card/id/away/hotel/securty
+/obj/item/card/id/away/hotel/security
 	name = "Officer ID"
 	trim = /datum/id_trim/away/hotel/security
 
@@ -695,6 +695,8 @@
 	var/trim_icon_override
 	/// If this is set, will manually override the icon state for the trim. Intended for admins to VV edit and chameleon ID cards.
 	var/trim_state_override
+	/// If this is set, will manually override the trim's assignmment for SecHUDs. Intended for admins to VV edit and chameleon ID cards.
+	var/trim_assignment_override
 
 /obj/item/card/id/advanced/get_icon_source()
 	return get_cached_flat_icon()

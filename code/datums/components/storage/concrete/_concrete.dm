@@ -122,22 +122,12 @@
 	var/list/seeing_mobs = can_see_contents()
 	for(var/mob/M in seeing_mobs)
 		M.client.screen -= AM
-	/* SKYRAT EDIT CHANGE - ITEM_OUTLINE - ORIGINAL
-	if(ismob(parent.loc) && isitem(AM))
-		var/obj/item/I = AM
-		var/mob/M = parent.loc
-		I.dropped(M, TRUE)
-		I.item_flags &= ~IN_STORAGE
-	*/
-	//SKYRAT EDIT CHANGE START - ITEM_OUTLINE
 	if(isitem(AM))
-		var/obj/item/I = AM
-		I.item_flags &= ~IN_STORAGE
-		I.remove_outline()
+		var/obj/item/removed_item = AM
+		removed_item.item_flags &= ~IN_STORAGE
 		if(ismob(parent.loc))
-			var/mob/M = parent.loc
-			I.dropped(M)
-	//SKYRAT EDIT END
+			var/mob/carrying_mob = parent.loc
+			removed_item.dropped(carrying_mob, TRUE)
 	if(new_location)
 		//Reset the items values
 		_removal_reset(AM)
