@@ -6,8 +6,9 @@
 	if(!istype(parent, /obj/item/gun) || !istype(parent, /obj/item/weldingtool))
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
-	if(ismob(parent.loc))
-		var/mob/user = parent.loc
+	var/obj/item = parent
+	if(ismob(item.loc))
+		var/mob/user = item.loc
 		wake_up(src, user)
 
 /datum/component/ammo_hud/Destroy()
