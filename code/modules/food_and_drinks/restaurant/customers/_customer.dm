@@ -1,6 +1,4 @@
 /datum/customer_data
-	///Name of the robot's origin
-	var/nationality = "Generic"
 	///The types of food this robot likes in a assoc list of venue type | weighted list. does NOT include subtypes.
 	var/list/orderable_objects = list()
 	///The amount a robot pays for each food he likes in an assoc list type | payment
@@ -63,7 +61,6 @@
 	return
 
 /datum/customer_data/american
-	nationality = "Space-American"
 	orderable_objects = list(
 	/datum/venue/restaurant = list(/obj/item/food/burger/plain = 25, /obj/item/food/burger/cheese = 15, /obj/item/food/burger/superbite = 1, /obj/item/food/fries = 10, /obj/item/food/cheesyfries = 6, /obj/item/food/pie/applepie = 4, /obj/item/food/pie/pumpkinpie = 2, /obj/item/food/hotdog = 8, /obj/item/food/pizza/pineapple = 1, /obj/item/food/burger/baconburger = 10, /obj/item/food/pancakes = 4),
 	/datum/venue/bar = list(/datum/reagent/consumable/ethanol/b52 = 6, /datum/reagent/consumable/ethanol/manhattan = 3, /datum/reagent/consumable/ethanol/atomicbomb = 1, /datum/reagent/consumable/ethanol/beer = 25))
@@ -81,7 +78,6 @@
 
 
 /datum/customer_data/italian
-	nationality = "Space-Italian"
 	prefix_file = "strings/names/italian_prefix.txt"
 	base_icon = "italian"
 	clothing_sets = list("italian_pison", "italian_godfather")
@@ -96,12 +92,11 @@
 	second_warning_line = "Last warning! Do not touch my spaghet."
 	self_defense_line = "I'm going to knead you like mama kneaded her delicious meatballs!"
 	orderable_objects = list(
-	/datum/venue/restaurant = list(/obj/item/food/spaghetti/pastatomato = 20, /obj/item/food/spaghetti/copypasta = 6, /obj/item/food/spaghetti/meatballspaghetti = 4, /obj/item/food/pizza/vegetable = 2, /obj/item/food/pizza/mushroom = 2, /obj/item/food/pizza/meat = 2, /obj/item/food/pizza/margherita = 2),
-	/datum/venue/bar = list(/datum/reagent/consumable/ethanol/fanciulli = 5, /datum/reagent/consumable/ethanol/branca_menta = 3, /datum/reagent/consumable/ethanol/beer = 10, /datum/reagent/consumable/lemonade = 8, /datum/reagent/consumable/ethanol/godfather = 5))
+	/datum/venue/restaurant = list(/obj/item/food/spaghetti/pastatomato = 20, /obj/item/food/spaghetti/copypasta = 6, /obj/item/food/spaghetti/meatballspaghetti = 4, /obj/item/food/spaghetti/butternoodles = 4, /obj/item/food/pizza/vegetable = 2, /obj/item/food/pizza/mushroom = 2, /obj/item/food/pizza/meat = 2, /obj/item/food/pizza/margherita = 2, /obj/item/food/lasagna = 4, /obj/item/food/cannoli = 3, /obj/item/food/eggplantparm = 3, /obj/item/food/cornuto = 2),
+	/datum/venue/bar = list(/datum/reagent/consumable/ethanol/fanciulli = 5, /datum/reagent/consumable/ethanol/branca_menta = 3, /datum/reagent/consumable/ethanol/beer = 5, , /datum/reagent/consumable/lemonade = 8, /datum/reagent/consumable/ethanol/godfather = 5, /datum/reagent/consumable/ethanol/wine = 3, /datum/reagent/consumable/ethanol/grappa = 3, /datum/reagent/consumable/ethanol/amaretto = 3))
 
 
 /datum/customer_data/french
-	nationality = "Space-French"
 	prefix_file = "strings/names/french_prefix.txt"
 	base_icon = "french"
 	clothing_sets = list("french_fit")
@@ -117,7 +112,7 @@
 	speech_sound = 'sound/creatures/tourist/tourist_talk_french.ogg'
 	orderable_objects = list(
 	/datum/venue/restaurant = list(/obj/item/food/baguette = 20, /obj/item/food/garlicbread = 5, /obj/item/food/soup/onion = 4, /obj/item/food/pie/berryclafoutis = 2, /obj/item/food/omelette = 15),
-	/datum/venue/bar = list(/datum/reagent/consumable/ethanol/champagne = 15, /datum/reagent/consumable/ethanol/mojito = 5, /datum/reagent/consumable/ethanol/sidecar = 5, /datum/reagent/consumable/ethanol/between_the_sheets = 4, /datum/reagent/consumable/ethanol/beer = 10))
+	/datum/venue/bar = list(/datum/reagent/consumable/ethanol/champagne = 10, /datum/reagent/consumable/ethanol/cognac = 5, /datum/reagent/consumable/ethanol/mojito = 5, /datum/reagent/consumable/ethanol/sidecar = 5, /datum/reagent/consumable/ethanol/between_the_sheets = 4, /datum/reagent/consumable/ethanol/beer = 5, /datum/reagent/consumable/ethanol/wine = 5))
 
 /datum/customer_data/french/get_overlays(mob/living/simple_animal/robot_customer/customer)
 	if(customer.ai_controller.blackboard[BB_CUSTOMER_LEAVING])
@@ -128,7 +123,6 @@
 
 
 /datum/customer_data/japanese
-	nationality = "Space-Japanese"
 	prefix_file = "strings/names/japanese_prefix.txt"
 	base_icon = "japanese"
 	clothing_sets = list("japanese_animes")
@@ -172,7 +166,6 @@
 	/datum/venue/bar = list(/datum/reagent/consumable/ethanol/beer = 14, /datum/reagent/consumable/ethanol/sake = 9, /datum/reagent/consumable/cafe_latte = 3, /datum/reagent/consumable/coffee = 3, /datum/reagent/consumable/soy_latte = 3, /datum/reagent/consumable/ethanol/atomicbomb = 1))
 
 /datum/customer_data/moth
-	nationality = "Mothman"
 	prefix_file = "strings/names/moth_prefix.txt"
 	base_icon = "mothbot"
 	found_seat_lines = list("Give me your hat!", "Moth?", "Certainly an... interesting venue.")
@@ -267,7 +260,6 @@
 	return dynamic_order || ..()
 
 /datum/customer_data/mexican
-	nationality = "Space-Mexican"
 	base_icon = "mexican"
 	prefix_file = "strings/names/mexican_prefix.txt"
 	speech_sound = 'sound/creatures/tourist/tourist_talk_mexican.ogg'
@@ -288,7 +280,6 @@
 	self_defense_line = "Time for you to find out what kind of robot I am, eh?"
 
 /datum/customer_data/british
-	nationality = "Space-British"
 	base_icon = "british"
 	prefix_file = "strings/names/british_prefix.txt"
 	speech_sound = 'sound/creatures/tourist/tourist_talk_british.ogg'
@@ -321,7 +312,6 @@
 
 ///MALFUNCTIONING - only shows up once per venue, very rare
 /datum/customer_data/malfunction
-	nationality = "Malfunctioning"
 	base_icon = "defect"
 	prefix_file = "strings/names/malf_prefix.txt"
 	speech_sound = 'sound/effects/clang.ogg'
