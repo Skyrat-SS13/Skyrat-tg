@@ -129,7 +129,7 @@
 /obj/item/gun/ComponentInitialize()
 	. = ..()
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
-		AddComponent(/datum/component/automatic_fire, fire_delay)
+		//AddComponent(/datum/component/automatic_fire, fire_delay)
 //SKYRAT EDIT  END
 
 /obj/item/gun/Destroy()
