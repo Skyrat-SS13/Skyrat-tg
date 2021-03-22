@@ -94,6 +94,9 @@
 /datum/id_trim/away/hilbert
 	trim_state = "trim_command"
 
+/datum/id_trim/away/cat_surgeon
+	trim_state = "trim_medical"
+
 //JOBS//
 /datum/id_trim/job/atmospheric_technician
 	trim_state = "trim_engineering"
