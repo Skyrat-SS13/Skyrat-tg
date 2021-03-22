@@ -150,8 +150,7 @@
 
 /obj/item/gun/energy/ComponentInitialize()
 	. = ..()
-	if(cell)
-		AddComponent(/datum/component/ammo_hud)
+	AddComponent(/datum/component/ammo_hud)
 
 /obj/item/weldingtool/ComponentInitialize()
 	. = ..()
