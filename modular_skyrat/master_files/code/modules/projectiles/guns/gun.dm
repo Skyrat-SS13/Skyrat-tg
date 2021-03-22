@@ -125,8 +125,8 @@
 
 /obj/item/gun/ComponentInitialize()
 	. = ..()
-	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
-		AddComponent(/datum/component/automatic_fire, fire_delay)
+	//if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
+	//	AddComponent(/datum/component/automatic_fire, fire_delay)
 
 
 /obj/item/gun/Destroy()
@@ -302,10 +302,12 @@
 		var/mob/living/L = user
 		if(!can_trigger_gun(L))
 			return
+		/*
 		if(has_gun_safety)
 			if(safety)
 				to_chat(user, "<span class='warning'>The safety is on!</span>")
 				return
+		*/
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 			handle_suicide(user, target, params)
