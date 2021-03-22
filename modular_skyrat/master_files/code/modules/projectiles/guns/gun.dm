@@ -90,14 +90,6 @@
 	var/list/fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	///if i`1t has an icon for a selector switch indicating current firemode.
 	var/selector_switch_icon = FALSE
-	///Does this gun have mag and nomag on mob variance? Set the icon states to [icon_state] and [icon_state][_nomag] for no mag states.
-	var/alt_icons = FALSE
-	///What the base inhand icon state is for inhand sprites, only set this if it's different from icon_state
-	var/alt_icon_state
-	///The modifying nomag state for inhand sprites. Leave as don't change unless you need to.
-	var/alt_icon_nomag_state = "_nomag"
-	///The modifying mag state for inhand sprites. Leave as don't change unless you need to.
-	var/alt_icon_mag_state = ""
 
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"
@@ -144,8 +136,6 @@
 	. = ..()
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
 		AddComponent(/datum/component/automatic_fire, fire_delay)
-	if(alt_icons)
-		AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -729,22 +719,6 @@
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset
 		. += knife_overlay
-
-	if(alt_icons)
-		if(!magazine)
-			if(alt_icon_state)
-				inhand_icon_state = "[alt_icon_state][alt_icon_nomag_state]"
-				worn_icon_state = "[alt_icon_state][alt_icon_nomag_state]"
-			else
-				inhand_icon_state = "[initial(icon_state)][alt_icon_nomag_state]"
-				worn_icon_state = "[initial(icon_state)][alt_icon_nomag_state]"
-		else
-			if(alt_icon_state)
-				inhand_icon_state = "[alt_icon_state][alt_icon_mag_state]"
-				worn_icon_state = "[alt_icon_state][alt_icon_mag_state]"
-			else
-				inhand_icon_state = "[initial(icon_state)][alt_icon_mag_state]"
-				worn_icon_state = "[initial(icon_state)][alt_icon_mag_state]"
 
 /obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params, bypass_timer)
 	if(!ishuman(user) || !ishuman(target))

@@ -177,9 +177,6 @@
 	icon_state = "l6"
 	inhand_icon_state = "l6"
 	base_icon_state = "l6"
-	alt_icons = TRUE
-	alt_icon_nomag_state = "nomag"
-	alt_icon_mag_state = "mag"
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = 0
 	mag_type = /obj/item/ammo_box/magazine/mm712x82
@@ -201,6 +198,10 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/unrestricted
 	pin = /obj/item/firing_pin
+
+/obj/item/gun/ballistic/automatic/l6_saw/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/gun/ballistic/automatic/l6_saw/examine(mob/user)
 	. = ..()

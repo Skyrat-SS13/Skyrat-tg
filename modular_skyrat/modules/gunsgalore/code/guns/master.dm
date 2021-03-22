@@ -1,4 +1,6 @@
 /obj/item/gun/ballistic
+	var/alt_icons = FALSE //Does this gun have mag and nomag on mob variance?
+	var/alt_icon_state //What the icon state is for the on-back guns
 	var/realistic = FALSE //realistic guns that use reliability and dirt
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is.
@@ -9,11 +11,34 @@
 	var/durability = 100 //How used this gun is.
 	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
 
-/*
+
 /obj/item/gun/ballistic/Initialize()
 	. = ..()
 	if(realistic)
 		base_spread = spread
+
+/obj/item/gun/ballistic/ComponentInitialize()
+	. = ..()
+	if(alt_icons)
+		AddElement(/datum/element/update_icon_updates_onmob)
+
+/obj/item/gun/ballistic/update_overlays()
+	. = ..()
+	if(alt_icons)
+		if(!magazine)
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]_nomag"
+				worn_icon_state = "[alt_icon_state]_nomag"
+			else
+				inhand_icon_state = "[initial(icon_state)]_nomag"
+				worn_icon_state = "[initial(icon_state)]_nomag"
+		else
+			if(alt_icon_state)
+				inhand_icon_state = "[alt_icon_state]"
+				worn_icon_state = "[alt_icon_state]"
+			else
+				inhand_icon_state = "[initial(icon_state)]"
+				worn_icon_state = "[initial(icon_state)]"
 
 /obj/item/gun/ballistic/assault_rifle
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
@@ -50,7 +75,6 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 
-
 /obj/item/gun/ballistic/proc/jam(unjam = FALSE, mob/living/user)
 	if(unjam && jammed != TRUE)
 		unjam_time = clamp((jam_chance*10)/(durability/10), 0, 50)
@@ -64,6 +88,7 @@
 			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
 
+/*
 /obj/item/gun/ballistic/can_shoot()
 	if(realistic && jammed)
 		return FALSE
