@@ -77,11 +77,11 @@
 	var/zoom_out_amt = 0
 	var/datum/action/toggle_scope_zoom/azoom
 	var/pb_knockback = 0
-	//SKYRAT EDIT ADDITION BEGIN
+
+//SKYRAT EDIT ADDITION BEGIN
 	var/safety = FALSE ///Internal variable for keeping track whether the safety is on or off
 	var/has_gun_safety = FALSE ///Whether the gun actually has a gun safety
 	var/datum/action/item_action/toggle_safety/tsafety
-
 
 	var/datum/action/item_action/toggle_firemode/firemode_action
 	///Current fire selection, can choose between burst, single, and full auto.
@@ -312,7 +312,7 @@
 			if(safety)
 				to_chat(user, "<span class='warning'>The safety is on!</span>")
 				return
-
+		//SKYRAT EDIT END
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 			handle_suicide(user, target, params)

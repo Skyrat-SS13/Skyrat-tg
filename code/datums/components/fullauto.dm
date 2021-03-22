@@ -104,10 +104,12 @@
 		autofire_on(source.client)
 
 /datum/component/automatic_fire/proc/on_mouse_down(client/source, atom/_target, turf/location, control, params)
+	//SKYRAT EDIT ADDITION BEGIN
 	if(isgun(parent))
 		var/obj/item/gun/pewpew = parent
 		if(pewpew.fire_select != SELECT_FULLY_AUTOMATIC)
 			return pewpew.afterattack(_target, source.mob, control, params)
+	//SKYRAT EDIT END
 
 	var/list/modifiers = params2list(params) //If they're shift+clicking, for example, let's not have them accidentally shoot.
 
