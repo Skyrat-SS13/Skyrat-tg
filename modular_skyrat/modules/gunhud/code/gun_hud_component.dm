@@ -102,7 +102,7 @@
 		hud.maptext = "<span class='maptext'><div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div></span>"
 
 	else if(istype(parent, /obj/item/weldingtool))
-		var/obj.item/weldingtool/welder = parent
+		var/obj/item/weldingtool/welder = parent
 		hud.maptext = null
 		var/backing_color = COLOR_TAN_ORANGE
 		hud.icon_state = "backing"
