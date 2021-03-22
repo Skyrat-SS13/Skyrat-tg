@@ -202,7 +202,7 @@
 /obj/item/gun/ballistic/automatic/l6_saw/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
+	//AddComponent(/datum/component/automatic_fire, 0.2 SECONDS) SKYRAT EDIT REMOVAL
 
 /obj/item/gun/ballistic/automatic/l6_saw/examine(mob/user)
 	. = ..()
