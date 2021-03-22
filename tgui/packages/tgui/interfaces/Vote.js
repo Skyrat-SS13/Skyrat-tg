@@ -90,8 +90,8 @@ const VoteOptions = (props, context) => {
                 )}
                 <Button
                   disabled={!upper_admin || !allow_vote_restart}
-                  onClick={() => act("restart")}>
-                  Restart
+                  onClick={() => act("transfer")}>
+                  Transfer
                 </Button>
               </Stack.Item>
               <Stack.Item>
