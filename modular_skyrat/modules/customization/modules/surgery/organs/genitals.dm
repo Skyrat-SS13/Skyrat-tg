@@ -362,4 +362,4 @@
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
- */ Rogue Station Removal End
+ */ //Rogue Station Removal End
