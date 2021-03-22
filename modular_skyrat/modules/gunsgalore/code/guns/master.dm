@@ -88,7 +88,7 @@
 			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
 
-/*
+
 /obj/item/gun/ballistic/can_shoot()
 	if(realistic && jammed)
 		return FALSE
@@ -205,7 +205,7 @@
 				user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
 				dirt_level = 0
 				qdel(A)
-*/
+
 //CRATES
 
 //all that shit
