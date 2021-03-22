@@ -103,8 +103,10 @@
 	. = ..()
 	if(pin)
 		pin = new pin(src)
+
 	if(gun_light)
 		alight = new(src)
+
 	build_zooming()
 
 	if(has_gun_safety)
@@ -116,6 +118,8 @@
 	else if(burst_size <= 1 && (SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Remove(SELECT_BURST_SHOT)
 
+	burst_size = 1
+
 	sortList(fire_select_modes, /proc/cmp_numeric_asc)
 
 	if(fire_select_modes.len > 1)
@@ -125,8 +129,8 @@
 
 /obj/item/gun/ComponentInitialize()
 	. = ..()
-	//if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
-	//	AddComponent(/datum/component/automatic_fire, fire_delay)
+	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
+		AddComponent(/datum/component/automatic_fire, fire_delay)
 
 
 /obj/item/gun/Destroy()
@@ -142,6 +146,10 @@
 		QDEL_NULL(azoom)
 	if(suppressed)
 		QDEL_NULL(suppressed)
+	if(tsafety)
+		QDEL_NULL(tsafety)
+	if(firemode_action)
+		QDEL_NULL(firemode_action)
 	. = ..()
 
 /obj/item/gun/handle_atom_del(atom/A)
@@ -268,10 +276,10 @@
 			O.emp_act(severity)
 
 /obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
-	if (user.GetComponent(/datum/component/gunpoint))
+	if(user.GetComponent(/datum/component/gunpoint))
 		to_chat(user, "<span class='warning'>You are already holding someone up!</span>")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	if (user == victim)
+	if(user == victim)
 		to_chat(user,"<span class='warning'>You can't hold yourself up!</span>")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -657,9 +665,12 @@
 		A.UpdateButtonIcon()
 
 /obj/item/gun/pickup(mob/user)
-	..()
+	. = ..()
 	if(azoom)
 		azoom.Grant(user)
+	if(w_class > WEIGHT_CLASS_SMALL && !suppressed)
+		user.visible_message("<span class='warning'>[user] grabs <b>[src]</b>!</span>",
+		"<span class='warning'>You grab [src]!</span>")
 
 /obj/item/gun/dropped(mob/user)
 	. = ..()

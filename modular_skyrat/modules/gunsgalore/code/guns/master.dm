@@ -11,12 +11,14 @@
 	var/durability = 100 //How used this gun is.
 	var/durability_factor = 0.1 //How quickly a gun will degrade. 0.1 = 1000 shots. Edit this to change a guns base reliability.
 
+/*
 /obj/item/gun/ballistic/Initialize()
 	. = ..()
 	if(realistic)
 		base_spread = spread
 
 /obj/item/gun/ballistic/update_overlays()
+	. = ..()
 	if(alt_icons)
 		if(!magazine)
 			if(alt_icon_state)
@@ -32,14 +34,6 @@
 			else
 				inhand_icon_state = "[initial(icon_state)]"
 				worn_icon_state = "[initial(icon_state)]"
-	. = ..()
-
-//gun pickup message
-/obj/item/gun/pickup(mob/user)
-	. = ..()
-	if(w_class > WEIGHT_CLASS_SMALL && !suppressed)
-		user.visible_message("<span class='warning'>[user] grabs <b>[src]</b>!</span>",
-		"<span class='warning'>You grab [src]!</span>")
 
 /obj/item/gun/ballistic/assault_rifle
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
@@ -77,9 +71,9 @@
 	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 
 /obj/item/gun/ballistic/ComponentInitialize()
+	. = ..()
 	if(alt_icons)
 		AddElement(/datum/element/update_icon_updates_onmob)
-	. = ..()
 
 /obj/item/gun/ballistic/proc/jam(unjam = FALSE, mob/living/user)
 	if(unjam && jammed != TRUE)
@@ -95,29 +89,20 @@
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
 
 /obj/item/gun/ballistic/can_shoot()
-	if(realistic)
-		if(jammed)
-			return FALSE
-		else
-			. = ..()
-	else
-		. = ..()
+	if(realistic && jammed)
+		return FALSE
+	. = ..()
 
 /obj/item/gun/ballistic/process_burst(mob/living/user, atom/target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, iteration)
-	if(realistic)
-		if(jammed)
-			firing_burst = FALSE
-			return FALSE
-		else
-			. = ..()
-	else
-		. = ..()
+	if(realistic && jammed)
+		firing_burst = FALSE
+		return FALSE
+	. = ..()
 
 /obj/item/gun/ballistic/process_fire()
-	if(realistic)
-		if(jammed)
-			shoot_with_empty_chamber()
-			return
+	if(realistic && jammed)
+		shoot_with_empty_chamber()
+		return
 	. = ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
@@ -160,17 +145,6 @@
 			jam(TRUE, user)
 			return
 	. = ..()
-
-/obj/item/gun/ballistic/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
-	if(realistic)
-		if(jammed)
-			to_chat(user, "<span class='warning'>[src] is jammed, unjam it before firing!</span>")
-			return
-		else
-			. = ..()
-			update_icon()
-	else
-		. = ..()
 
 /obj/item/gun/ballistic/examine(mob/user)
 	. = ..()
@@ -230,7 +204,7 @@
 				user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
 				dirt_level = 0
 				qdel(A)
-
+*/
 //CRATES
 
 //all that shit
