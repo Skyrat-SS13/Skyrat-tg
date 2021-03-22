@@ -363,7 +363,8 @@
 	if(!handle_pins(user))
 		return FALSE
 	if(has_gun_safety)
-		to_chat(user, )
+		to_chat(user, "<span class='warning'>The safety is on!</span>")
+		return FALSE
 
 /obj/item/gun/proc/toggle_safety(mob/user, override)
 	if(!has_gun_safety)
