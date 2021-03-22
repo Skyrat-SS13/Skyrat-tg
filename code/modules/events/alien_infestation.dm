@@ -1,9 +1,14 @@
 /datum/round_event_control/alien_infestation
 	name = "Alien Infestation"
 	typepath = /datum/round_event/ghost_role/alien_infestation
-	weight = 5
+	//SKYRAT EDIT CHANGE BEGIN
+	//weight = 5 - SKYRAT EDIT - ORIGINAL
+	weight = 2
+	//SKYRAT EDIT CHANGE END
 
 	min_players = 10
+
+	dynamic_should_hijack = TRUE
 
 /datum/round_event_control/alien_infestation/canSpawnEvent()
 	. = ..()
@@ -15,9 +20,11 @@
 			return FALSE
 
 /datum/round_event/ghost_role/alien_infestation
-	announceWhen	= 400
-
-	minimum_required = 1
+	announceWhen = 400
+	//SKYRAT EDIT CHANGE BEGIN
+	//minimum_required = 1 - SKYRAT EDIT - ORIGINAL
+	minimum_required = 2
+	//SKYRAT EDIT CHANGE END
 	role_name = "alien larva"
 
 	// 50% chance of being incremented by one
@@ -37,7 +44,7 @@
 			living_aliens = TRUE
 
 	if(living_aliens || fake)
-		priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", 'sound/ai/aliens.ogg')
+		priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/ghost_role/alien_infestation/spawn_role()

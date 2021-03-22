@@ -1,3 +1,4 @@
+/* - SKYRAT EDIT REMOVAl, MOVED TO MASTER_FILES STATPANEL.DM
 SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
@@ -200,3 +201,4 @@ SUBSYSTEM_DEF(statpanels)
 
 	statbrowser_ready = TRUE
 	init_verbs()
+*/

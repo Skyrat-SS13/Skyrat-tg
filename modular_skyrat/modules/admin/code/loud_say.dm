@@ -1,6 +1,6 @@
 /client/proc/cmd_loud_admin_say(msg as text)
 	set category = "Admin"
-	set name = "Loud Asay"
+	set name = "loudAsay"
 	set hidden = TRUE
 	if(!check_rights(0))
 		return
@@ -26,4 +26,3 @@
 		window_flash(I, ignorepref = TRUE)
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "loudAsay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-

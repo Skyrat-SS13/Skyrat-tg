@@ -154,6 +154,8 @@
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
+//SKYRAT EDIT REMOVAL - MOVED - MEDICAL
+/*
 /mob/living/carbon/examine_more(mob/user)
 	if(!all_scars)
 		return ..()
@@ -175,3 +177,4 @@
 			msg += "[scar_text]"
 
 	return msg
+*/

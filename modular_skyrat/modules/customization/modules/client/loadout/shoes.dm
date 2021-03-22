@@ -14,6 +14,11 @@
 	name = "Jackboots"
 	path = /obj/item/clothing/shoes/jackboots
 
+// Thedragmeme's donator reward, they've decided to make them available to everybody.
+/datum/loadout_item/shoes/jackboots/heel
+	name = "High-heel Jackboots"
+	path = /obj/item/clothing/shoes/jackboots/heel
+
 /datum/loadout_item/shoes/winterboots
 	name = "Winter boots"
 	path = /obj/item/clothing/shoes/winterboots
@@ -31,7 +36,7 @@
 	path = /obj/item/clothing/shoes/sneakers/brown
 
 /datum/loadout_item/shoes/whiteshoes
-	name = "Colorable shoes"
+	name = "White shoes"
 	path = /obj/item/clothing/shoes/sneakers/white
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
@@ -52,7 +57,7 @@
 	path= /obj/item/clothing/shoes/wraps/blue
 
 /datum/loadout_item/shoes/high_heels
-	name = "Colorable High Heels"
+	name = "High Heels"
 	path = /obj/item/clothing/shoes/high_heels
 	extra_info = LOADOUT_INFO_ONE_COLOR
 

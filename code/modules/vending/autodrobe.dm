@@ -122,7 +122,29 @@
 					/obj/item/clothing/suit/changshan_blue = 1,
 					/obj/item/clothing/suit/cheongsam_red = 1,
 					/obj/item/clothing/suit/cheongsam_blue = 1,
-					/obj/item/gohei = 1)
+					/obj/item/gohei = 1,
+					/obj/item/clothing/under/costume/kimono = 1,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/under/costume/kimono/dark = 1, 
+					/obj/item/clothing/under/costume/kimono/sakura = 1, 
+					/obj/item/clothing/under/costume/kimono/fancy = 1, 
+					/obj/item/clothing/under/costume/kamishimo = 1, 
+					/obj/item/clothing/head/costume/kabuto = 1,
+					/obj/item/clothing/suit/costume/samurai = 1,
+					/obj/item/clothing/under/costume/vic_vest = 1, 
+					/obj/item/clothing/under/costume/vic_vest/red = 1, 
+					/obj/item/clothing/under/costume/vic_vest/blue = 1, 
+					/obj/item/clothing/under/costume/vic_vest/red_alt = 1, 
+					/obj/item/clothing/suit/costume/tailcoat = 3,
+					/obj/item/clothing/head/costume/widehat = 1,
+					/obj/item/clothing/under/costume/vic_dress = 1, 
+					/obj/item/clothing/suit/costume/vic_dresscoat = 1,
+					/obj/item/clothing/head/costume/widehat/red = 1,
+					/obj/item/clothing/under/costume/vic_dress/red = 1, 
+					/obj/item/clothing/suit/costume/vic_dresscoat/red = 1,
+					/obj/item/clothing/under/costume/dutch = 1,
+					/obj/item/clothing/under/costume/loincloth/sensor = 1,
+					/obj/item/clothing/under/costume/loincloth/cloth/sensor = 1)	//SKYRAT EDIT ADDITION END
+
 	contraband = list(/obj/item/clothing/suit/judgerobe = 1,
 					  /obj/item/clothing/head/powdered_wig = 1,
 					  /obj/item/gun/magic/wand/nothing = 2,
@@ -146,8 +168,8 @@
 				   /obj/item/clothing/head/weddingveil = 1,
 				   /obj/item/storage/belt/cummerbund = 1)
 	refill_canister = /obj/item/vending_refill/autodrobe
-	default_price = 180
-	extra_price = 360
+	default_price = PAYCHECK_ASSISTANT * 0.8 //Default of 40.
+	extra_price = PAYCHECK_HARD
 	payment_department = ACCOUNT_SRV
 	light_mask="theater-light-mask"
 

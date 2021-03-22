@@ -7,7 +7,7 @@
 	path = /obj/item/clothing/gloves/fingerless
 
 /datum/loadout_item/gloves/evening
-	name = "Colorable Evening Gloves"
+	name = "Evening Gloves"
 	path = /obj/item/clothing/gloves/evening
 	extra_info = LOADOUT_INFO_ONE_COLOR
 

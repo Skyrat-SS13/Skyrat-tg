@@ -1,7 +1,8 @@
 /datum/round_event_control/heart_attack
 	name = "Random Heart Attack"
 	typepath = /datum/round_event/heart_attack
-	weight = 20
+	//weight = 20 //ORIGINAL
+	weight = 10 //SKYRAT EDIT CHANGE
 	max_occurrences = 2
 	min_players = 40 // To avoid shafting lowpop
 

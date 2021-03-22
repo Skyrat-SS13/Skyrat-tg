@@ -1,5 +1,5 @@
 #define TRAITOR_HUMAN "human"
-#define TRAITOR_AI	  "AI"
+#define TRAITOR_AI   "AI"
 
 /datum/antagonist/traitor
 	name = "Traitor"
@@ -9,7 +9,7 @@
 	antag_moodlet = /datum/mood_event/focused
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "traitor"
-	hijack_speed = 0.5				//10 seconds per hijack stage by default
+	hijack_speed = 0.5 //10 seconds per hijack stage by default
 	var/special_role = ROLE_TRAITOR
 	var/employer = "The Syndicate"
 	var/give_objectives = TRUE
@@ -55,18 +55,23 @@
 	objectives -= O
 
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
+	add_objective(new /datum/objective/ambitions()) //SKYRAT EDIT ADDITION - AMBITIONS
+	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+	/*
 	switch(traitor_kind)
 		if(TRAITOR_AI)
 			forge_ai_objectives()
 		else
 			forge_human_objectives()
+	*/
+	//SKYRAT EDIT REMOVAL END
 
 /datum/antagonist/traitor/proc/forge_human_objectives()
 	var/is_hijacker = FALSE
 	if (GLOB.joined_player_list.len >= 30) // Less murderboning on lowpop thanks
 		is_hijacker = prob(10)
 	var/martyr_chance = prob(20)
-	var/objective_count = is_hijacker 			//Hijacking counts towards number of objectives
+	var/objective_count = is_hijacker //Hijacking counts towards number of objectives
 
 	var/toa = CONFIG_GET(number/traitor_objectives_amount)
 	for(var/i = objective_count, i < toa, i++)
@@ -187,17 +192,22 @@
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
+	..() //SKYRAT EDIT ADDITION - AMBITIONS
 
 /datum/antagonist/traitor/proc/finalize_traitor()
 	switch(traitor_kind)
 		if(TRAITOR_AI)
 			add_law_zero()
-			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE)
+			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 			owner.current.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MALF)
 		if(TRAITOR_HUMAN)
+			//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+			/*
 			if(should_equip)
 				equip(silent)
-			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE)
+			*/
+			//SKYRAT EDIT REMOVAL END
+			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()

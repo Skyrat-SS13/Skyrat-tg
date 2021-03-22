@@ -10,8 +10,10 @@ GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('modular_skyrat/module
 	ssd_indicator = state
 	if(ssd_indicator)
 		add_overlay(GLOB.ssd_indicator_overlay)
+		log_message("<font color='green'>has went SSD and got their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
 	else
 		cut_overlay(GLOB.ssd_indicator_overlay)
+		log_message("<font color='green'>is no longer SSD and lost their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
 
 /mob/living/Login()
 	. = ..()
@@ -21,6 +23,11 @@ GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('modular_skyrat/module
 	lastclienttime = world.time
 	set_ssd_indicator(TRUE)
 	. = ..()
+
+//Temporary, look below for the reason
+/mob/living/ghostize(can_reenter_corpse = TRUE)
+	. = ..()
+	set_ssd_indicator(FALSE)
 
 /*
 //EDIT - TRANSFER CKEY IS NOT A THING ON THE TG CODEBASE, if things break too bad because of it, consider implementing it

@@ -20,7 +20,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/brain/emp_act(severity)
+/obj/item/organ/brain/vox/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return

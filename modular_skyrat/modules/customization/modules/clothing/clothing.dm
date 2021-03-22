@@ -188,3 +188,6 @@
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt
 	mutant_variants = NONE
+
+/obj/item/clothing/under/costume/draculass
+	mutant_variants = NONE

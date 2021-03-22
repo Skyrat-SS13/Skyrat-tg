@@ -9,7 +9,6 @@
 	see_in_dark = 8
 	bubble_icon = "machine"
 	weather_immunities = list("ash")
-	possible_a_intents = list(INTENT_HELP, INTENT_HARM)
 	mob_biotypes = MOB_ROBOTIC
 	deathsound = 'sound/voice/borg_deathsound.ogg'
 	speech_span = SPAN_ROBOT
@@ -44,7 +43,7 @@
 	var/updating = FALSE //portable camera camerachunk update
 
 	var/hack_software = FALSE //Will be able to use hacking actions
-	var/interaction_range = 7			//wireless control range
+	var/interaction_range = 7 //wireless control range
 	var/obj/item/pda/ai/aiPDA
 
 /mob/living/silicon/Initialize()
@@ -58,6 +57,8 @@
 	diag_hud_set_status()
 	diag_hud_set_health()
 	add_sensors()
+	ADD_TRAIT(src, TRAIT_ADVANCEDTOOLUSER, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_MARTIAL_ARTS_IMMUNE, ROUNDSTART_TRAIT)
 
 /mob/living/silicon/Destroy()
 	QDEL_NULL(radio)
@@ -80,6 +81,9 @@
 /mob/living/silicon/proc/cancelAlarm()
 	return
 
+/mob/living/silicon/proc/freeCamera()
+	return
+	
 /mob/living/silicon/proc/triggerAlarm()
 	return
 
@@ -159,13 +163,13 @@
 	for(var/key in alarm_types_clear)
 		alarm_types_clear[key] = 0
 
-/mob/living/silicon/can_inject(mob/user, error_msg)
-	if(error_msg)
-		to_chat(user, "<span class='alert'>[p_their(TRUE)] outer shell is too tough.</span>")
+/mob/living/silicon/can_inject(mob/user, target_zone, injection_flags)
 	return FALSE
 
-/mob/living/silicon/IsAdvancedToolUser()
-	return TRUE
+/mob/living/silicon/try_inject(mob/user, target_zone, injection_flags)
+	. = ..()
+	if(!. && (injection_flags & INJECT_TRY_SHOW_ERROR_MESSAGE))
+		to_chat(user, "<span class='alert'>[p_their(TRUE)] outer shell is too tough.</span>")
 
 /proc/islinked(mob/living/silicon/robot/bot, mob/living/silicon/ai/ai)
 	if(!istype(bot) || !istype(ai))
@@ -212,6 +216,25 @@
 			return
 		to_chat(usr, href_list["printlawtext"])
 
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(href_list["lookup_info"])
+		switch(href_list["lookup_info"])
+			if("ooc_prefs")
+				if(client)
+					var/str = "[src]'s OOC Notes : <br> <b>ERP :</b> [client.prefs.erp_pref] <b>| Non-Con :</b> [client.prefs.noncon_pref] <b>| Vore :</b> [client.prefs.vore_pref]"
+					str += "<br>[html_encode(client.prefs.ooc_prefs)]"
+					var/datum/browser/popup = new(usr, "[name]'s ooc info", "[name]'s OOC Information", 500, 200)
+					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s OOC information", replacetext(str, "\n", "<BR>")))
+					popup.open()
+					return
+
+			if("silicon_flavor_text")
+				if(client && length(client.prefs.features["silicon_flavor_text"]))
+					var/datum/browser/popup = new(usr, "[name]'s flavor text", "[name]'s Flavor Text", 500, 200)
+					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s flavor text", replacetext(client.prefs.features["silicon_flavor_text"], "\n", "<BR>")))
+					popup.open()
+					return
+	//SKYRAT EDIT ADDITION END
 	return
 
 /mob/living/silicon/proc/statelaws(force = 0)
@@ -351,7 +374,7 @@
 		Autochan += " ([radio.frequency])"
 	else if(Autochan == "None") //Prevents use of the radio for automatic annoucements.
 		radiomod = ""
-	else	//For department channels, if any, given by the internal radio.
+	else //For department channels, if any, given by the internal radio.
 		for(var/key in GLOB.department_radio_keys)
 			if(GLOB.department_radio_keys[key] == Autochan)
 				radiomod = ":" + key
@@ -420,7 +443,7 @@
 /mob/living/silicon/get_inactive_held_item()
 	return FALSE
 
-/mob/living/silicon/handle_high_gravity(gravity)
+/mob/living/silicon/handle_high_gravity(gravity, delta_time, times_fired)
 	return
 
 /mob/living/silicon/rust_heretic_act()

@@ -1,8 +1,8 @@
 /* First aid storage
  * Contains:
- *		First Aid Kits
- * 		Pill Bottles
- *		Dice Pack (in a pill bottle)
+ * First Aid Kits
+ * Pill Bottles
+ * Dice Pack (in a pill bottle)
  */
 
 /*
@@ -32,12 +32,13 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
 		/obj/item/reagent_containers/hypospray/medipen = 1)
 	generate_items_inside(items_inside,src)
 
-/obj/item/storage/firstaid/emergency
+/obj/item/storage/firstaid/emergency//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	icon_state = "medbriefcase"
 	name = "emergency first-aid kit"
 	desc = "A very simple first aid kit meant to secure and stabilize serious wounds for later treatment."
@@ -48,6 +49,7 @@
 	var/static/items_inside = list(
 		/obj/item/healthanalyzer/wound = 1,
 		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/suture/emergency = 1,
 		/obj/item/stack/medical/ointment = 1,
 		/obj/item/reagent_containers/hypospray/medipen/ekit = 2,
@@ -124,6 +126,7 @@
 	var/static/items_inside = list(
 		/obj/item/healthanalyzer = 1,
 		/obj/item/stack/medical/gauze/twelve = 1,
+		/obj/item/stack/medical/splint/twelve = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
 		/obj/item/reagent_containers/hypospray/medipen = 1,
@@ -142,6 +145,7 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/bruise_pack = 3,
 		/obj/item/stack/medical/ointment= 3)
 	generate_items_inside(items_inside,src)
@@ -246,6 +250,7 @@
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/pill/patch/libital = 3,
 		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/storage/pill_bottle/probital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/salacid = 1)
 	generate_items_inside(items_inside,src)
@@ -255,7 +260,7 @@
 	desc = "An advanced kit to help deal with advanced wounds."
 	icon_state = "radfirstaid"
 	inhand_icon_state = "firstaid-rad"
-	custom_premium_price = 1100
+	custom_premium_price = PAYCHECK_HARD * 6
 	damagetype_healed = "all"
 
 /obj/item/storage/firstaid/advanced/PopulateContents()
@@ -265,6 +270,7 @@
 		/obj/item/reagent_containers/pill/patch/synthflesh = 3,
 		/obj/item/reagent_containers/hypospray/medipen/atropine = 2,
 		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/storage/pill_bottle/penacid = 1)
 	generate_items_inside(items_inside,src)
 
@@ -283,6 +289,7 @@
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)
+	new /obj/item/stack/medical/splint //SKYRAT EDIT ADDITION - MEDICAL
 	new /obj/item/defibrillator/compact/combat/loaded(src)
 	new /obj/item/reagent_containers/hypospray/combat(src)
 	new /obj/item/reagent_containers/pill/patch/libital(src)
@@ -488,22 +495,22 @@
 	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/neurine(src)
 
-/obj/item/storage/pill_bottle/floorpill
-	name = "bottle of floorpills"
+/obj/item/storage/pill_bottle/maintenance_pill
+	name = "bottle of maintenance pills"
 	desc = "An old pill bottle. It smells musty."
 
-/obj/item/storage/pill_bottle/floorpill/Initialize()
+/obj/item/storage/pill_bottle/maintenance_pill/Initialize()
 	. = ..()
 	var/obj/item/reagent_containers/pill/P = locate() in src
 	name = "bottle of [P.name]s"
 
-/obj/item/storage/pill_bottle/floorpill/PopulateContents()
+/obj/item/storage/pill_bottle/maintenance_pill/PopulateContents()
 	for(var/i in 1 to rand(1,7))
-		new /obj/item/reagent_containers/pill/floorpill(src)
+		new /obj/item/reagent_containers/pill/maintenance(src)
 
-/obj/item/storage/pill_bottle/floorpill/full/PopulateContents()
+/obj/item/storage/pill_bottle/maintenance_pill/full/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/pill/floorpill(src)
+		new /obj/item/reagent_containers/pill/maintenance(src)
 
 ///////////////////////////////////////// Psychologist inventory pillbottles
 /obj/item/storage/pill_bottle/happinesspsych
@@ -534,11 +541,12 @@
 	name = "organ transport box"
 	desc = "An advanced box with an cooling mechanism that uses cryostylane or other cold reagents to keep the organs or bodyparts inside preserved."
 	icon_state = "organbox"
+	base_icon_state = "organbox"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	throw_speed = 3
 	throw_range = 7
-	custom_premium_price = 1100
+	custom_premium_price = PAYCHECK_MEDIUM * 4
 	/// var to prevent it freezing the same things over and over
 	var/cooling = FALSE
 
@@ -550,7 +558,7 @@
 	STR.set_holdable(list(
 		/obj/item/organ,
 		/obj/item/bodypart,
-		/obj/item/reagent_containers/food/snacks/icecream
+		/obj/item/food/icecream
 		))
 
 /obj/item/storage/organbox/Initialize()
@@ -574,22 +582,19 @@
 			cool = TRUE
 	if(!cooling && cool)
 		cooling = TRUE
-		update_icon()
+		update_appearance()
 		for(var/C in contents)
 			freeze(C)
 		return
 	if(cooling && !cool)
 		cooling = FALSE
-		update_icon()
+		update_appearance()
 		for(var/C in contents)
 			unfreeze(C)
 
-/obj/item/storage/organbox/update_icon()
-	. = ..()
-	if(cooling)
-		icon_state = "organbox-working"
-	else
-		icon_state = "organbox"
+/obj/item/storage/organbox/update_icon_state()
+	icon_state = "[base_icon_state][cooling ? "-working" : null]"
+	return ..()
 
 ///freezes the organ and loops bodyparts like heads
 /obj/item/storage/organbox/proc/freeze(datum/source, obj/item/I)

@@ -97,10 +97,10 @@
 				<li>Secure the mainboard with a screwdriver.</li>
 				<li>Install the peripherals control module (Not included. Use supplied datadisk to create one).</li>
 				<li>Secure the peripherals control module with a screwdriver</li>
-				<li>Install the internal armor plating (Not included due to Nanotrasen regulations. Can be made using 5 metal sheets.)</li>
+				<li>Install the internal armor plating (Not included due to Nanotrasen regulations. Can be made using 5 iron sheets.)</li>
 				<li>Secure the internal armor plating with a wrench</li>
 				<li>Weld the internal armor plating to the chassis</li>
-				<li>Install the external reinforced armor plating (Not included due to Nanotrasen regulations. Can be made using 5 reinforced metal sheets.)</li>
+				<li>Install the external reinforced armor plating (Not included due to Nanotrasen regulations. Can be made using 5 reinforced iron sheets.)</li>
 				<li>Secure the external reinforced armor plating with a wrench</li>
 				<li>Weld the external reinforced armor plating to the chassis</li>
 				</ol>
@@ -215,7 +215,7 @@
 			<li>Insert the nuclear authorisation disk into slot.</li>
 			<li>Type numeric authorisation code into the keypad. This should have been provided. Note: If you make a mistake press R to reset the device.
 			<li>Press the E button to log onto the device.</li>
-			You now have activated the device. To deactivate the buttons at anytime for example when you've already prepped the bomb for detonation	remove the auth disk OR press the R on the keypad.<br>
+			You now have activated the device. To deactivate the buttons at anytime for example when you've already prepped the bomb for detonation remove the auth disk OR press the R on the keypad.<br>
 			Now the bomb CAN ONLY be detonated using the timer. Manual detonation is not an option.<br>
 			Note: Nanotrasen is a pain in the neck.<br>
 			Toggle off the SAFETY.<br>
@@ -239,6 +239,7 @@
 /obj/item/book/manual/wiki
 	var/page_link = ""
 	window_size = "970x710"
+	var/skyrat_wiki = FALSE //SKYRAT EDIT ADDITION - will point someone to skyrat wiki instead of TG one if enabled
 
 /obj/item/book/manual/wiki/attack_self()
 	if(!dat)
@@ -246,7 +247,14 @@
 	return ..()
 
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
-	var/wikiurl = CONFIG_GET(string/wikiurl)
+	//var/wikiurl = CONFIG_GET(string/wikiurl) //ORIGINAL
+	//SKYRAT EDIT CHANGE BEGIN
+	var/wikiurl
+	if(skyrat_wiki)
+		wikiurl = CONFIG_GET(string/wikiurlskyrat)
+	else
+		wikiurl = CONFIG_GET(string/wikiurl)
+	//SKYRAT EDIT CHANGE END
 	if(wikiurl)
 		dat = {"
 
@@ -264,7 +272,7 @@
 				function pageloaded(myframe) {
 					document.getElementById("loading").style.display = "none";
 					myframe.style.display = "inline";
-    			}
+			}
 			</script>
 			<p id='loading'>You start skimming through the manual...</p>
 			<iframe width='100%' height='97%' onload="pageloaded(this)" src="[wikiurl]/[page_link]?printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
@@ -303,12 +311,17 @@
 	page_link = "Singularity_and_Tesla_engines"
 
 /obj/item/book/manual/wiki/security_space_law
-	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	//name = "Space Law" //ORIGINAL
+	name = "Corporate Regulations" //SKYRAT EDIT CHANGE
+	//desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations." //ORIGINAL
+	desc = "A set of Nanotrasen regulations for keeping law and order on their space stations." //SKYRAT EDIT CHANGE
 	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
-	title = "Space Law"
-	page_link = "Space_Law"
+	//title = "Space Law" //ORIGINAL
+	title = "Corporate Regulations" //SKYRAT EDIT CHANGE
+	//page_link = "Space_Law" //ORIGINAL
+	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
+	skyrat_wiki = TRUE //SKYRAT EDIT ADDITION
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message("<span class='suicide'>[user] pretends to read \the [src] intently... then promptly dies of laughter!</span>")
@@ -449,3 +462,10 @@
 	author = "Nanotrasen"
 	title = "Chemical Factories Without Narcotics"
 	page_link = "Guide_to_plumbing"
+
+/obj/item/book/manual/wiki/cytology
+	name = "Unethically Grown Organics"
+	icon_state ="cytologybook"
+	author = "Kryson"
+	title = "Unethically Grown Organics"
+	page_link = "Guide_to_cytology"

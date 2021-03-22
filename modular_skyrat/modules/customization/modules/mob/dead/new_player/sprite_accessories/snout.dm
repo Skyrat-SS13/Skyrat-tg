@@ -3,7 +3,7 @@
 	generic = "Snout"
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/lizard_snouts.dmi'
 	var/use_muzzled_sprites = TRUE
-	recommended_species = list("mammal", "lizard", "unathi", "ashlizard")
+	recommended_species = list("mammal", "lizard", "unathi", "ashlizard", "silverlizard")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -114,6 +114,10 @@
 /datum/sprite_accessory/snouts/mammal/otie
 	name = "Otie"
 	icon_state = "otie"
+
+/datum/sprite_accessory/snouts/mammal/otiesmile
+	name = "Otie Smile"
+	icon_state = "otiesmile"
 
 /*/datum/sprite_accessory/snouts/mammal/round
 	name = "Mammal Round"
@@ -242,6 +246,10 @@
 	name = "Otie (Top)"
 	icon_state = "fotie"
 
+/datum/sprite_accessory/snouts/mammal/fotiesmile
+	name = "Otie Smile (Top)"
+	icon_state = "fotiesmile"
+
 /datum/sprite_accessory/snouts/mammal/frodent
 	name = "Rodent (Top)"
 	icon_state = "frodent"
@@ -332,3 +340,8 @@
 	icon_state = "rat"
 	color_src = USE_MATRIXED_COLORS
 
+/datum/sprite_accessory/snouts/mammal/stubby
+	name = "Stubby"
+	icon_state = "stubby"
+	color_src = USE_MATRIXED_COLORS
+	use_muzzled_sprites = FALSE

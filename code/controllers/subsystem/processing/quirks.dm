@@ -9,9 +9,9 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	runlevels = RUNLEVEL_GAME
 	wait = 1 SECONDS
 
-	var/list/quirks = list()		//Assoc. list of all roundstart quirk datum types; "name" = /path/
-	var/list/quirk_points = list()	//Assoc. list of quirk names and their "point cost"; positive numbers are good traits, and negative ones are bad
-	var/list/quirk_objects = list()	//A list of all quirk objects in the game, since some may process
+	var/list/quirks = list() //Assoc. list of all roundstart quirk datum types; "name" = /path/
+	var/list/quirk_points = list() //Assoc. list of quirk names and their "point cost"; positive numbers are good traits, and negative ones are bad
+	var/list/quirk_objects = list() //A list of all quirk objects in the game, since some may process
 	var/list/quirk_blacklist = list() //A list of quirks that can not be used with each other. Format: list(quirk1,quirk2),list(quirk3,quirk4)
 	///An assoc list of quirks that can be obtained as a hardcore character, and their hardcore value.
 	var/list/hardcore_quirks = list()
@@ -20,7 +20,14 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	if(!quirks.len)
 		SetupQuirks()
 
-	quirk_blacklist = list(list("Blind","Nearsighted"),list("Jolly","Depression","Apathetic","Hypersensitive"),list("Ageusia","Vegetarian","Deviant Tastes"),list("Ananas Affinity","Ananas Aversion"),list("Alcohol Tolerance","Light Drinker"),list("Clown Fan","Mime Fan"))
+	quirk_blacklist = list(list("Blind","Nearsighted"), \
+							list("Jolly","Depression","Apathetic","Hypersensitive"), \
+							list("Ageusia","Vegetarian","Deviant Tastes"), \
+							list("Ananas Affinity","Ananas Aversion"), \
+							list("Alcohol Tolerance","Light Drinker"), \
+							list("Clown Fan","Mime Fan"), \
+							list("Bad Touch", "Friendly"), \
+							list("Extrovert", "Introvert"))
 	return ..()
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
@@ -58,3 +65,18 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	// Assign wayfinding pinpointer granting quirk if they're new
 	if(cli.get_exp_living(TRUE) < EXP_ASSIGN_WAYFINDER && !user.has_quirk(/datum/quirk/needswayfinder))
 		user.add_quirk(/datum/quirk/needswayfinder, TRUE)
+
+
+	// SKYRAT EDIT ADDITION START - Customization (food prefs)
+	// This was done in this proc on old skyrat and i cba to find a better way
+	var/mob/living/carbon/human/H = user
+	if(istype(H))
+		if(cli.prefs.foodlikes.len)
+			H.dna.species.liked_food = 0
+			for(var/V in cli.prefs.foodlikes)
+				H.dna.species.liked_food |= cli.prefs.foodlikes[V]
+		if(cli.prefs.fooddislikes.len)
+			H.dna.species.disliked_food = 0
+			for(var/V in cli.prefs.fooddislikes)
+				H.dna.species.disliked_food |= cli.prefs.fooddislikes[V]
+	// SKYRAT EDIT ADDITION END

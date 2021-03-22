@@ -101,7 +101,8 @@
 
 /datum/sprite_accessory/screen/redtext
 	name = "Red Text"
-	icon_state = "retext"
+	icon_state = "redtext"
+	color_src = 0
 
 /datum/sprite_accessory/screen/sinewave
 	name = "Sine wave"
@@ -140,6 +141,11 @@
 	key = "ipc_antenna"
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)
+
+/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+		return TRUE
+	return FALSE
 
 /datum/sprite_accessory/antenna/none
 	name = "None"

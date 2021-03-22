@@ -26,18 +26,20 @@
 	//For now we will always return none for tail_human and ears.
 	return MANDATORY_FEATURE_LIST
 
-/proc/accessory_list_of_key_for_species(key, datum/species/S)
+/proc/accessory_list_of_key_for_species(key, datum/species/S, mismatched, ckey)
 	var/list/accessory_list = list()
 	for(var/name in GLOB.sprite_accessories[key])
 		var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][name]
-		if(SP.recommended_species && !(S.id in SP.recommended_species))
+		if(!mismatched && SP.recommended_species && !(S.id in SP.recommended_species))
+			continue
+		if(SP.ckey_whitelist && !SP.ckey_whitelist[ckey])
 			continue
 		accessory_list += SP.name
 	return accessory_list
 
 
-/proc/random_accessory_of_key_for_species(key, datum/species/S)
-	var/list/accessory_list = accessory_list_of_key_for_species(key, S)
+/proc/random_accessory_of_key_for_species(key, datum/species/S, mismatched=FALSE, ckey)
+	var/list/accessory_list = accessory_list_of_key_for_species(key, S, mismatched, ckey)
 	var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][pick(accessory_list)]
 	if(!SP)
 		CRASH("Cant find random accessory of [key] key, for species [S.id]")

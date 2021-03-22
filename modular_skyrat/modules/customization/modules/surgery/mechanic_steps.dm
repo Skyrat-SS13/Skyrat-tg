@@ -80,24 +80,24 @@
 //add plating
 /datum/surgery_step/add_plating
 	name = "add plating"
-	implements = list(/obj/item/stack/sheet/metal = 100)
+	implements = list(/obj/item/stack/sheet/iron = 100)
 	time = 24
-	var/metalamount = 5
+	var/ironamount = 5
 
 /datum/surgery_step/add_plating/tool_check(mob/user, obj/item/tool)
-	var/obj/item/stack/sheet/metal/plat = tool
-	if(plat.get_amount() < metalamount)
-		to_chat(user, "<span class='warning'>Not enough metal!</span>")
+	var/obj/item/stack/sheet/iron/plat = tool
+	if(plat.get_amount() < ironamount)
+		to_chat(user, "<span class='warning'>Not enough iron!</span>")
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/add_plating/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	var/obj/item/stack/sheet/metal/plat = tool
-	if(plat && !(plat.get_amount()<metalamount)) //failproof
-		plat.use(metalamount)
+	var/obj/item/stack/sheet/iron/plat = tool
+	if(plat && !(plat.get_amount()<ironamount)) //failproof
+		plat.use(ironamount)
 	return TRUE
 
 /datum/surgery_step/add_plating/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(user, target, "<span class='notice'>You begin to add plating to [target]'s [parse_zone(target_zone)]...</span>",
 			"[user] begins to add plating to [target]'s [parse_zone(target_zone)].",
-			"[user] begins to add plating to [target]'s [parse_zone(target_zone)].") 
+			"[user] begins to add plating to [target]'s [parse_zone(target_zone)].")

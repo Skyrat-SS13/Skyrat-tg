@@ -3,7 +3,7 @@
 	desc = "Didn't make sense not to live for fun, your brain gets smart but your head gets dumb."
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "default_human_head"
-	max_damage = 200
+	max_damage = 250 //SKYRAT EDIT CHANGE: max_damage = 200
 	body_zone = BODY_ZONE_HEAD
 	body_part = HEAD
 	w_class = WEIGHT_CLASS_BULKY //Quite a hefty load
@@ -36,6 +36,8 @@
 
 	var/lip_style = null
 	var/lip_color = "white"
+
+	var/stored_lipstick_trait
 
 
 /obj/item/bodypart/head/Destroy()
@@ -74,7 +76,7 @@
 		else if(brainmob?.health <= HEALTH_THRESHOLD_DEAD)
 			. += "<span class='info'>It's leaking some kind of... clear fluid? The brain inside must be in pretty bad shape.</span>"
 		else if(brainmob)
-			if(brainmob.get_ghost(FALSE, TRUE))
+			if(brainmob.key || brainmob.get_ghost(FALSE, TRUE))
 				. += "<span class='info'>Its muscles are twitching slightly... It seems to have some life still in it.</span>"
 			else
 				. += "<span class='info'>It's completely lifeless. Perhaps there'll be a chance for them later.</span>"
@@ -139,6 +141,7 @@
 		hairstyle = "Bald"
 		facial_hairstyle = "Shaved"
 		lip_style = null
+		stored_lipstick_trait = null
 
 	else if(!animal_origin)
 		var/mob/living/carbon/human/H = C

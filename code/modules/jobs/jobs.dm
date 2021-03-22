@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Head of Security",
 	"Chief Engineer",
 	"Research Director",
+	"Quartermaster", //SKYRAT EDIT ADDITION
 	"Chief Medical Officer"))
 
 
@@ -50,14 +51,29 @@ GLOBAL_LIST_INIT(service_positions, list(
 	"Prisoner",
 	"Assistant"))
 
+//we really need to split service into civillian positions officially, until then this is my solution
+GLOBAL_LIST_INIT(service_food_positions, list(
+	"Bartender",
+	"Botanist",
+	"Cook",
+))
+
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Warden",
 	"Detective",
 	"Security Officer",
-//SKYRAT EDIT ADDITION BEGIN - BLUESHIELD
-	"Blueshield")) //Skyrat addition
-//SKYRAT EDIT ADDITION END
+	"Security Medic",
+	"Security Sergeant",
+	"Blueshield"))
+
+/// These aren't defacto jobs, but are the special departmental variants for sec officers.
+GLOBAL_LIST_INIT(security_sub_positions, list(
+	"Security Officer (Cargo)",
+	"Security Officer (Engineering)",
+	"Security Officer (Medical)",
+	"Security Officer (Science)",
+))
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",

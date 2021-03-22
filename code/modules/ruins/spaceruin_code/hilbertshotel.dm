@@ -75,7 +75,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		to_chat(target, "<span class='warning'>You aren't able to activate \the [src] anymore!</span>")
 
 	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
-	if(!(get_atom_on_turf(src, /mob) == user))
+	// if(!(get_atom_on_turf(src, /mob) == user)) SKYRAT EDIT ORIGINAL
+	if(!Adjacent(user)) // SKYRAT EDIT -- Ghost Cafe Static Hilbertspawner
 		if(user == target)
 			to_chat(user, "<span class='warning'>\The [src] is no longer in your possession!</span>")
 		else
@@ -247,8 +248,9 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 /turf/open/space/bluespace
 	name = "\proper bluespace hyperzone"
 	icon_state = "bluespace"
+	base_icon_state = "bluespace"
 	baseturfs = /turf/open/space/bluespace
-	flags_1 = NOJAUNT_1
+	flags_1 = NOJAUNT
 	explosion_block = INFINITY
 	var/obj/item/hilbertshotel/parentSphere
 
@@ -257,7 +259,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	update_icon_state()
 
 /turf/open/space/bluespace/update_icon_state()
-	icon_state = "bluespace"
+	icon_state = base_icon_state
+	return ..()
 
 /turf/open/space/bluespace/Entered(atom/movable/A)
 	. = ..()
@@ -293,13 +296,13 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 /turf/closed/indestructible/hoteldoor/attack_tk(mob/user)
 	return //need to be close.
 
-/turf/closed/indestructible/hoteldoor/attack_hand(mob/user)
+/turf/closed/indestructible/hoteldoor/attack_hand(mob/user, list/modifiers)
 	promptExit(user)
 
-/turf/closed/indestructible/hoteldoor/attack_animal(mob/user)
+/turf/closed/indestructible/hoteldoor/attack_animal(mob/user, list/modifiers)
 	promptExit(user)
 
-/turf/closed/indestructible/hoteldoor/attack_paw(mob/user)
+/turf/closed/indestructible/hoteldoor/attack_paw(mob/user, list/modifiers)
 	promptExit(user)
 
 /turf/closed/indestructible/hoteldoor/attack_hulk(mob/living/carbon/human/user)
@@ -321,7 +324,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		to_chat(user, "<span class='notice'>You peak through the door's bluespace peephole...</span>")
 		user.reset_perspective(parentSphere)
 		var/datum/action/peephole_cancel/PHC = new
-		user.overlay_fullscreen("remote_view", /obj/screen/fullscreen/impaired, 1)
+		user.overlay_fullscreen("remote_view", /atom/movable/screen/fullscreen/impaired, 1)
 		PHC.Grant(user)
 		RegisterSignal(user, COMSIG_MOVABLE_MOVED, /atom/.proc/check_eye, user)
 
@@ -360,7 +363,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	. = ..()
 	if(istype(AM, /obj/item/hilbertshotel))
 		relocate(AM)
-	var/list/obj/item/hilbertshotel/hotels = AM.GetAllContents(/obj/item/hilbertshotel)
+	var/list/obj/item/hilbertshotel/hotels = AM.get_all_contents_type(/obj/item/hilbertshotel)
 	for(var/obj/item/hilbertshotel/H in hotels)
 		if(parentSphere == H)
 			relocate(H)
@@ -371,7 +374,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		return
 
 	// Prepare for...
-	var/mob/unforeseen_consequences = get_atom_on_turf(H, /mob)
+	var/mob/living/unforeseen_consequences = get_atom_on_turf(H, /mob/living)
 
 	// Turns out giving anyone who grabs a Hilbert's Hotel a free, complementary warp whistle is probably bad.
 	// Let's gib the last person to have selected a room number in it.
@@ -399,7 +402,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		var/mob/M = AM
 		if(M.mind)
 			var/stillPopulated = FALSE
-			var/list/currentLivingMobs = GetAllContents(/mob/living) //Got to catch anyone hiding in anything
+			var/list/currentLivingMobs = get_all_contents_type(/mob/living) //Got to catch anyone hiding in anything
 			for(var/mob/living/L in currentLivingMobs) //Check to see if theres any sentient mobs left.
 				if(L.mind)
 					stillPopulated = TRUE
@@ -494,15 +497,16 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	ghost_usable = FALSE
 	oxy_damage = 500
 	mob_species = /datum/species/skeleton
-	id_job = "Head Researcher"
-	id_access = ACCESS_RESEARCH
-	id_access_list = list(ACCESS_AWAY_GENERIC3, ACCESS_RESEARCH)
 	instant = TRUE
-	id = /obj/item/card/id/silver
-	uniform = /obj/item/clothing/under/rank/rnd/research_director
+	outfit = /datum/outfit/doctorhilbert
+
+/datum/outfit/doctorhilbert
+	id = /obj/item/card/id/advanced/silver
+	uniform = /obj/item/clothing/under/rank/rnd/research_director/doctor_hilbert
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	back = /obj/item/storage/backpack/satchel/leather
 	suit = /obj/item/clothing/suit/toggle/labcoat
+	id_trim = /datum/id_trim/away/hilbert
 
 /obj/item/paper/crumpled/docslogs
 	name = "Research Logs"

@@ -85,7 +85,11 @@
 /area/ruin/space/has_grav/hotel/pool
 	name = "Hotel Pool Room"
 	icon_state = "fitness"
-
+// SKYRAT ADDITION: Start
+/area/ruin/space/has_grav/hotel/sauna
+	name = "Hotel Sauna Room"
+	icon_state = "sauna"
+// SKYRAT ADDITION: End
 /area/ruin/space/has_grav/hotel/bar
 	name = "Hotel Bar"
 	icon_state = "cafeteria"
@@ -228,7 +232,7 @@
 /area/ruin/space/has_grav/ancientstation/atmo
 	name = "Beta Station Atmospherics"
 	icon_state = "red"
-	ambientsounds = ENGINEERING
+	ambience_index = AMBIENCE_ENGI
 	has_gravity = TRUE
 
 /area/ruin/space/has_grav/ancientstation/betacorridor
@@ -238,7 +242,7 @@
 /area/ruin/space/has_grav/ancientstation/engi
 	name = "Charlie Station Engineering"
 	icon_state = "engine"
-	ambientsounds = ENGINEERING
+	ambience_index = AMBIENCE_ENGI
 
 /area/ruin/space/has_grav/ancientstation/comm
 	name = "Charlie Station Command"
@@ -285,7 +289,7 @@
 	name = "Beta Station Storage"
 	icon_state = "storage"
 
-/area/solar/ancientstation
+/area/solars/ancientstation
 	name = "Charlie Station Solar Array"
 	icon_state = "panelsP"
 
@@ -342,11 +346,11 @@
 	name = "Derelict Chapel"
 	icon_state = "chapel"
 
-/area/solar/derelict_starboard
+/area/solars/derelict_starboard
 	name = "Derelict Starboard Solar Array"
 	icon_state = "panelsS"
 
-/area/solar/derelict_aft
+/area/solars/derelict_aft
 	name = "Derelict Aft Solar Array"
 	icon_state = "yellow"
 

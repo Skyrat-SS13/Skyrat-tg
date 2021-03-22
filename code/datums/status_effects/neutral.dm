@@ -39,7 +39,7 @@
 	get_kill()
 	. = ..()
 
-/obj/screen/alert/status_effect/in_love
+/atom/movable/screen/alert/status_effect/in_love
 	name = "In Love"
 	desc = "You feel so wonderfully in love!"
 	icon_state = "in_love"
@@ -48,18 +48,24 @@
 	id = "in_love"
 	duration = -1
 	status_type = STATUS_EFFECT_UNIQUE
-	alert_type = /obj/screen/alert/status_effect/in_love
-	var/mob/living/date
+	alert_type = /atom/movable/screen/alert/status_effect/in_love
+	var/hearts
 
-/datum/status_effect/in_love/on_creation(mob/living/new_owner, mob/living/love_interest)
+/datum/status_effect/in_love/on_creation(mob/living/new_owner, mob/living/date)
 	. = ..()
-	if(.)
-		date = love_interest
-		linked_alert.desc = "You're in love with [date.real_name]! How lovely."
+	if(!.)
+		return
 
-/datum/status_effect/in_love/tick()
-	if(date)
-		new /obj/effect/temp_visual/love_heart/invisible(date.drop_location(), owner)
+	linked_alert.desc = "You're in love with [date.real_name]! How lovely."
+	hearts = WEAKREF(date.add_alt_appearance(
+		/datum/atom_hud/alternate_appearance/basic/one_person,
+		"in_love",
+		image(icon = 'icons/effects/effects.dmi', icon_state = "love_hearts", loc = date),
+		new_owner,
+	))
+
+/datum/status_effect/in_love/on_remove()
+	QDEL_NULL(hearts)
 
 /datum/status_effect/throat_soothed
 	id = "throat_soothed"
@@ -103,7 +109,7 @@
 		for(var/obj/effect/proc_holder/spell/spell in rewarded.mind.spell_list)
 			spell.charge_counter = spell.charge_max
 			spell.recharging = FALSE
-			spell.update_icon()
+			spell.update_appearance()
 		rewarded.adjustBruteLoss(-25)
 		rewarded.adjustFireLoss(-25)
 		rewarded.adjustToxLoss(-25)
@@ -111,17 +117,25 @@
 		rewarded.adjustCloneLoss(-25)
 
 // heldup is for the person being aimed at
-/datum/status_effect/heldup
+/datum/status_effect/grouped/heldup
 	id = "heldup"
 	duration = -1
 	tick_interval = -1
 	status_type = STATUS_EFFECT_MULTIPLE
-	alert_type = /obj/screen/alert/status_effect/heldup
+	alert_type = /atom/movable/screen/alert/status_effect/heldup
 
-/obj/screen/alert/status_effect/heldup
+/atom/movable/screen/alert/status_effect/heldup
 	name = "Held Up"
 	desc = "Making any sudden moves would probably be a bad idea!"
 	icon_state = "aimed"
+
+/datum/status_effect/grouped/heldup/on_apply()
+	owner.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
+	return ..()
+
+/datum/status_effect/grouped/heldup/on_remove()
+	owner.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
+	return ..()
 
 // holdup is for the person aiming
 /datum/status_effect/holdup
@@ -129,9 +143,9 @@
 	duration = -1
 	tick_interval = -1
 	status_type = STATUS_EFFECT_UNIQUE
-	alert_type = /obj/screen/alert/status_effect/holdup
+	alert_type = /atom/movable/screen/alert/status_effect/holdup
 
-/obj/screen/alert/status_effect/holdup
+/atom/movable/screen/alert/status_effect/holdup
 	name = "Holding Up"
 	desc = "You're currently pointing a gun at someone."
 	icon_state = "aimed"
@@ -183,7 +197,7 @@
 
 /// Hook up the specified carbon mob for possible high-fiving, give them the alert and signals and all
 /datum/status_effect/high_fiving/proc/register_candidate(mob/living/carbon/possible_candidate)
-	var/obj/screen/alert/highfive/G = possible_candidate.throw_alert("[owner]", /obj/screen/alert/highfive)
+	var/atom/movable/screen/alert/highfive/G = possible_candidate.throw_alert("[owner]", /atom/movable/screen/alert/highfive)
 	if(!G)
 		return
 	LAZYADD(possible_takers, possible_candidate)
@@ -292,3 +306,39 @@
 /// Something fishy is going on here...
 /datum/status_effect/high_fiving/proc/dropped_slap(obj/item/source)
 	slap_item = null
+
+//this effect gives the user an alert they can use to surrender quickly
+/datum/status_effect/grouped/surrender
+	id = "surrender"
+	duration = -1
+	tick_interval = -1
+	status_type = STATUS_EFFECT_UNIQUE
+	alert_type = /atom/movable/screen/alert/status_effect/surrender
+
+/atom/movable/screen/alert/status_effect/surrender
+	name = "Surrender"
+	desc = "Looks like you're in trouble now, bud. Click here to surrender. (Warning: You will be incapacitated.)"
+	icon_state = "surrender"
+
+/atom/movable/screen/alert/status_effect/surrender/Click(location, control, params)
+	. = ..()
+	if(!.)
+		return
+
+	owner.emote("surrender")
+
+/*
+ * A status effect used for preventing caltrop message spam
+ *
+ * While a mob has this status effect, they won't recieve any messages about
+ * stepping on caltrops. But they will be stunned and damaged regardless.
+ *
+ * The status effect itself has no effect, other than to disappear after
+ * a second.
+ */
+/datum/status_effect/caltropped
+	id = "caltropped"
+	duration = 1 SECONDS
+	tick_interval = INFINITY
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = null

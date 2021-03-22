@@ -5,7 +5,7 @@
 	max_integrity = 140
 	material_drop = /obj/item/stack/sheet/mineral/wood
 	cutting_tool = /obj/item/screwdriver
-	req_access = list(ACCESS_BLUESHIELD)
+	req_access = list(ACCESS_CAPTAIN)
 
 /obj/structure/closet/secure_closet/blueshield/New()
 	..()
@@ -22,4 +22,3 @@
 	new /obj/item/clothing/suit/armor/vest/blueshield(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/under/rank/security/blueshield(src)
-	new /obj/item/choice_beacon/blueshield(src)

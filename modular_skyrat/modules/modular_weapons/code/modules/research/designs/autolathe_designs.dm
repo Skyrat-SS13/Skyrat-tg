@@ -48,13 +48,29 @@
 	build_path = /obj/item/ammo_box/magazine/smg32/empty
 	category = list("hacked", "Security")
 
+/datum/design/a762
+	name = "7.62 Bullet"
+	id = "a762"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 2000)
+	build_path = /obj/item/ammo_casing/a762
+	category = list("hacked", "Security")
+
+/datum/design/a762_rubber
+	name = "7.62 Rubber Bullet"
+	id = "a762_rubber"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 2000)
+	build_path = /obj/item/ammo_casing/a762/rubber
+	category = list("hacked", "Security")
+
 // 4.6x30mm - SMG round, used in the WT550 and in numerous modular guns as a weaker alternative to 9mm.
 
 /datum/design/c46x30mm
 	name = "4.6x30mm Bullet"
 	id = "c46x30mm"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
+	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/c46x30mm
 	category = list("hacked", "Security")
 
@@ -62,15 +78,15 @@
 	name = "4.6x30mm Rubber Bullet"
 	id = "c46x30mm_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/c46x30mm
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/ammo_casing/c46x30mm/rubber
 	category = list("initial", "Security")
 
 /datum/design/c46x30mm_ap
 	name = "4.6x30mm Armor-Piercing Bullet"
 	id = "c46x30mm_ap"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
+	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/c46x30mm/ap
 	category = list("hacked", "Security")
 
@@ -78,24 +94,41 @@
 	name = "4.6x30mm Incendiary Bullet"
 	id = "c46x30mm_incendiary"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
+	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/c46x30mm/inc
 	category = list("hacked", "Security")
 
 // .45
 
-/datum/design/c45
+/datum/design/c45_lethal
 	name = ".45 Bullet"
-	id = "c45"
+	id = "c45_lethal"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
+	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/c45
 	category = list("hacked", "Security")
 
 /datum/design/c45_rubber
-	name = ".45 Rubber Bullet"
+	name = ".45 Bouncy Rubber Ball"
 	id = "c45_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
+	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/c45/rubber
+	category = list("initial", "Security")
+
+// 10mm Magnum
+/datum/design/c10mm_lethal
+	name = "10mm Magnum bullet"
+	id = "c10mm_lethal"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/ammo_casing/c10mm
+	category = list("hacked", "Security")
+
+/datum/design/c10mm_rubber
+	name = "10mm Magnum rubber bullet"
+	id = "c10mm_rubber"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/ammo_casing/c10mm/rubber
 	category = list("initial", "Security")

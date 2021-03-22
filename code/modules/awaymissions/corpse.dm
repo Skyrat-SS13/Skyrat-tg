@@ -16,16 +16,16 @@
 	var/mob_gender = null
 	var/death = TRUE //Kill the mob
 	var/roundstart = TRUE //fires on initialize
-	var/instant = FALSE	//fires on New
+	var/instant = FALSE //fires on New
 	var/short_desc = "The mapper forgot to set this!"
 	var/flavour_text = ""
 	var/important_info = ""
 	var/faction = null
-	var/permanent = FALSE	//If true, the spawner will not disappear upon running out of uses.
-	var/random = FALSE		//Don't set a name or gender, just go random
+	var/permanent = FALSE //If true, the spawner will not disappear upon running out of uses.
+	var/random = FALSE //Don't set a name or gender, just go random
 	var/antagonist_type
 	var/objectives = null
-	var/uses = 1			//how many times can we spawn from it. set to -1 for infinite.
+	var/uses = 1 //how many times can we spawn from it. set to -1 for infinite.
 	var/brute_damage = 0
 	var/oxy_damage = 0
 	var/burn_damage = 0
@@ -35,11 +35,24 @@
 	var/show_flavour = TRUE
 	var/banType = ROLE_LAVALAND
 	var/ghost_usable = TRUE
+	var/list/excluded_gamemodes
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/effect/mob_spawn/attack_ghost(mob/user)
 	if(!SSticker.HasRoundStarted() || !loc || !ghost_usable)
 		return
+	var/ghost_role = alert("Become [mob_name]? (Warning, You can no longer be revived!)",,"Yes","No")
+	if(ghost_role == "No" || !loc || QDELETED(user))
+		return
+	//SKYRAT EDIT ADDITION BEGIN
+	if(!extra_prompts(user))
+		return
+
+	if(SSticker.mode.type in excluded_gamemodes)
+		to_chat(user, "<span class='warning'>Error, unable to spawn.</span>")
+		return
+	//SKYRAT EDIT ADDITION END
+
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, "<span class='warning'>An admin has temporarily disabled non-admin ghost roles!</span>")
 		return
@@ -53,28 +66,41 @@
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
-	var/ghost_role = alert("Become [mob_name]? (Warning, You can no longer be revived!)",,"Yes","No")
-
-	if(ghost_role == "No" || !loc)
-		return
 	log_game("[key_name(user)] became [mob_name]")
-	create(ckey = user.ckey)
+	//create(ckey = user.ckey) //ORIGINAL
+	create(user.ckey, null, user) //SKYRAT EDIT CHANGE
 
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
 	if(instant || (roundstart && (mapload || (SSticker && SSticker.current_state > GAME_STATE_SETTING_UP))))
 		INVOKE_ASYNC(src, .proc/create)
 	else if(ghost_usable)
-		GLOB.poi_list |= src
+		AddElement(/datum/element/point_of_interest)
 		LAZYADD(GLOB.mob_spawners[name], src)
 
 /obj/effect/mob_spawn/Destroy()
-	GLOB.poi_list -= src
 	var/list/spawners = GLOB.mob_spawners[name]
 	LAZYREMOVE(spawners, src)
 	if(!LAZYLEN(spawners))
 		GLOB.mob_spawners -= name
 	return ..()
+
+//SKYRAT EDIT ADDITION BEGIN
+/obj/effect/mob_spawn/proc/extra_prompts(mob/user)
+	return TRUE
+
+/obj/effect/mob_spawn/proc/create_mob(mob/user, newname)
+	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
+	if(!random || newname)
+		if(newname)
+			M.real_name = newname
+		else
+			M.real_name = mob_name ? mob_name : M.name
+		if(!mob_gender)
+			mob_gender = pick(MALE, FEMALE)
+		M.gender = mob_gender
+	return M
+//SKYRAT EDIT ADDITION END
 
 /obj/effect/mob_spawn/proc/allow_spawn(mob/user) //Override this to add spawn limits to a ghost role
 	return TRUE
@@ -85,8 +111,12 @@
 /obj/effect/mob_spawn/proc/equip(mob/M)
 	return
 
-/obj/effect/mob_spawn/proc/create(ckey, newname)
-	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
+///obj/effect/mob_spawn/proc/create(ckey, newname) //ORIGINAL
+/obj/effect/mob_spawn/proc/create(ckey, newname, mob/user) //SKYRAT EDIT CHANGE
+	//SKYRAT EDIT CHANGE BEGIN
+	//var/mob/living/M = new mob_type(get_turf(src)) //ORIGINAL
+	var/mob/living/M = create_mob(user, newname)
+	/*
 	if(!random || newname)
 		if(newname)
 			M.real_name = newname
@@ -94,7 +124,11 @@
 			M.real_name = mob_name ? mob_name : M.name
 		if(!mob_gender)
 			mob_gender = pick(MALE, FEMALE)
-		M.gender = mob_gender
+		if(ishuman(M))
+			var/mob/living/carbon/human/hoomie = M
+			hoomie.body_type = mob_gender
+	*/
+	//SKYRAT EDIT CHANGE END
 	if(faction)
 		M.faction = list(faction)
 	if(disease)
@@ -142,14 +176,11 @@
 /obj/effect/mob_spawn/human
 	mob_type = /mob/living/carbon/human
 	//Human specific stuff.
-	var/mob_species = null		//Set to make them a mutant race such as lizard or skeleton. Uses the datum typepath instead of the ID.
+	//var/mob_species = null //Set to make them a mutant race such as lizard or skeleton. Uses the datum typepath instead of the ID. //ORIGINAL
+	var/mob_species = /datum/species/human //SKYRAT EDIT CHANGE
 	var/datum/outfit/outfit = /datum/outfit	//If this is a path, it will be instanced in Initialize()
 	var/disable_pda = TRUE
 	var/disable_sensors = TRUE
-	//All of these only affect the ID that the outfit has placed in the ID slot
-	var/id_job = null			//Such as "Clown" or "Chef." This just determines what the ID reads as, not their access
-	var/id_access = null		//This is for access. See access.dm for which jobs give what access. Use "Captain" if you want it to be all access.
-	var/id_access_list = null	//Allows you to manually add access to an ID card.
 	assignedrole = "Ghost Role"
 
 	var/husk = null
@@ -176,7 +207,98 @@
 
 	var/hairstyle
 	var/facial_hairstyle
+	var/haircolor
+	var/facial_haircolor
 	var/skin_tone
+	//SKYRAT EDIT ADDITION BEGIN
+	var/can_use_pref_char = TRUE
+	var/can_use_alias = FALSE
+	var/any_station_species = FALSE
+	var/chosen_alias
+	var/is_pref_char
+	var/last_ckey //For validation of the user
+	//SKYRAT EDIT ADDITION END
+
+//SKYRAT EDIT ADDITION BEGIN
+/obj/effect/mob_spawn/human/extra_prompts(mob/user)
+	last_ckey = user.ckey
+	chosen_alias = null
+	is_pref_char = null
+	if(can_use_pref_char)
+		var/initial_string = "Would you like to spawn as a randomly created character, or use the one currently selected in your preferences?"
+		var/action = alert(user, initial_string, "", "Use Random Character", "Use Character From Preferences")
+		if(action && action == "Use Character From Preferences")
+			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
+			var/action2 = alert(user, warning_string, "", "Yes", "No")
+			if(action2 && action2 == "Yes")
+				is_pref_char = TRUE
+			else
+				return FALSE
+
+	if(can_use_alias)
+		var/action = alert(user, "Would you like to use an alias?\nIf you do, your name will be changed to that", "", "Dont Use Alias", "Use Alias")
+		if(action && action == "Use Alias")
+			var/msg = reject_bad_name(input(user, "Set your character's alias for this role", "Alias") as text|null)
+			if(!msg)
+				return FALSE
+			chosen_alias = msg
+
+	if(is_pref_char)
+		if(!any_station_species && user.client.prefs.pref_species.type != mob_species)
+			alert(user, "Sorry, This spawner is limited to those species: [mob_species]. Please switch your character.", "", "Ok")
+			return FALSE
+
+	if(QDELETED(src) || QDELETED(user))
+		return FALSE
+	//What's happening here?
+	//This function is fairly asynchronous and doesnt keep variables in context, so this check is for validation that we are using the correct user
+	if(last_ckey != user.ckey)
+		return FALSE
+	return TRUE
+
+/obj/effect/mob_spawn/human/create_mob(mob/user, newname)
+	var/mob/living/carbon/human/H = new mob_type(get_turf(src))
+	if(is_pref_char && user?.client)
+		user.client.prefs.copy_to(H)
+		H.dna.update_dna_identity()
+		if(chosen_alias)
+			H.name = chosen_alias
+			H.real_name = chosen_alias
+		//Pre-job equips so Voxes dont die
+		H.dna.species.before_equip_job(null, H)
+		H.regenerate_icons()
+		SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
+	else
+		if(!random || newname)
+			if(newname)
+				H.real_name = newname
+			else
+				H.real_name = mob_name ? mob_name : H.name
+			if(!mob_gender)
+				mob_gender = pick(MALE, FEMALE)
+			H.gender = mob_gender
+			H.body_type = mob_gender
+		if(mob_species)
+			H.set_species(mob_species)
+		H.underwear = "Nude"
+		H.undershirt = "Nude"
+		H.socks = "Nude"
+		if(hairstyle)
+			H.hairstyle = hairstyle
+		else
+			H.hairstyle = random_hairstyle(H.gender)
+		if(facial_hairstyle)
+			H.facial_hairstyle = facial_hairstyle
+		else
+			H.facial_hairstyle = random_facial_hairstyle(H.gender)
+		if(skin_tone)
+			H.skin_tone = skin_tone
+		else
+			H.skin_tone = random_skin_tone()
+		H.update_hair()
+		H.update_body()
+	return H
+//SKYRAT EDIT ADDITION END
 
 /obj/effect/mob_spawn/human/Initialize()
 	if(ispath(outfit))
@@ -186,12 +308,18 @@
 	return ..()
 
 /obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
+	//SKYRAT EDIT REMOVAL BEGIN - MOVED
+	/*
 	if(mob_species)
 		H.set_species(mob_species)
+	*/
+	//SKYRAT EDIT REMOVAL END
 	if(husk)
 		H.Drain()
 	else //Because for some reason I can't track down, things are getting turned into husks even if husk = false. It's in some damage proc somewhere.
 		H.cure_husk()
+	//SKYRAT EDIT REMOVAL BEGIN - MOVED
+	/*
 	H.underwear = "Nude"
 	H.undershirt = "Nude"
 	H.socks = "Nude"
@@ -203,12 +331,22 @@
 		H.facial_hairstyle = facial_hairstyle
 	else
 		H.facial_hairstyle = random_facial_hairstyle(H.gender)
+	if(haircolor)
+		H.hair_color = haircolor
+	else
+		H.hair_color = random_short_color()
+	if(facial_haircolor)
+		H.facial_hair_color = facial_haircolor
+	else
+		H.facial_hair_color = random_short_color()
 	if(skin_tone)
 		H.skin_tone = skin_tone
 	else
 		H.skin_tone = random_skin_tone()
 	H.update_hair()
 	H.update_body()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	if(outfit)
 		var/static/list/slots = list("uniform", "r_hand", "l_hand", "suit", "shoes", "gloves", "ears", "glasses", "mask", "head", "belt", "r_pocket", "l_pocket", "back", "id", "neck", "backpack_contents", "suit_store")
 		for(var/slot in slots)
@@ -226,25 +364,15 @@
 			var/obj/item/clothing/under/C = H.w_uniform
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
+				H.update_suit_sensors()
 
 	var/obj/item/card/id/W = H.wear_id
 	if(W)
 		if(H.age)
 			W.registered_age = H.age
-		if(id_access)
-			for(var/jobtype in typesof(/datum/job))
-				var/datum/job/J = new jobtype
-				if(J.title == id_access)
-					W.access = J.get_access()
-					break
-		if(id_access_list)
-			if(!islist(W.access))
-				W.access = list()
-			W.access |= id_access_list
-		if(id_job)
-			W.assignment = id_job
 		W.registered_name = H.real_name
 		W.update_label()
+		W.update_icon()
 
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
@@ -281,7 +409,7 @@
 	qdel(src)
 
 /obj/effect/mob_spawn/slime
-	mob_type = 	/mob/living/simple_animal/slime
+	mob_type = /mob/living/simple_animal/slime
 	var/mobcolour = "grey"
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey baby slime" //sets the icon in the map editor
@@ -328,6 +456,11 @@
 	outfit = /datum/outfit/job/doctor
 	icon_state = "corpsedoctor"
 
+/obj/effect/mob_spawn/human/geneticist
+	name = "Geneticist"
+	outfit = /datum/outfit/job/geneticist
+	icon_state = "corpsescientist"
+
 /obj/effect/mob_spawn/human/engineer
 	name = "Engineer"
 	outfit = /datum/outfit/job/engineer/gloved
@@ -335,6 +468,9 @@
 
 /obj/effect/mob_spawn/human/engineer/rig
 	outfit = /datum/outfit/job/engineer/gloved/rig
+
+/obj/effect/mob_spawn/human/engineer/rig/gunner
+	outfit = /datum/outfit/job/engineer/gloved/rig/gunner
 
 /obj/effect/mob_spawn/human/clown
 	name = "Clown"
@@ -363,8 +499,6 @@
 
 /obj/effect/mob_spawn/human/bartender
 	name = "Space Bartender"
-	id_job = "Bartender"
-	id_access_list = list(ACCESS_BAR)
 	outfit = /datum/outfit/spacebartender
 
 /obj/effect/mob_spawn/human/beach
@@ -374,8 +508,6 @@
 
 /obj/effect/mob_spawn/human/bridgeofficer
 	name = "Bridge Officer"
-	id_job = "Bridge Officer"
-	id_access_list = list(ACCESS_CENT_CAPTAIN)
 	outfit = /datum/outfit/nanotrasenbridgeofficercorpse
 
 /datum/outfit/nanotrasenbridgeofficercorpse
@@ -385,12 +517,11 @@
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	glasses = /obj/item/clothing/glasses/sunglasses
-	id = /obj/item/card/id
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/centcom/corpse/bridge_officer
 
 /obj/effect/mob_spawn/human/commander
 	name = "Commander"
-	id_job = "Commander"
-	id_access_list = list(ACCESS_CENT_CAPTAIN, ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_MEDICAL, ACCESS_CENT_STORAGE)
 	outfit = /datum/outfit/nanotrasencommandercorpse
 
 /datum/outfit/nanotrasencommandercorpse
@@ -404,12 +535,11 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat
 	shoes = /obj/item/clothing/shoes/combat/swat
 	r_pocket = /obj/item/lighter
-	id = /obj/item/card/id
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/centcom/corpse/commander
 
 /obj/effect/mob_spawn/human/nanotrasensoldier
 	name = "\improper Nanotrasen Private Security Officer"
-	id_job = "Private Security Force"
-	id_access_list = list(ACCESS_CENT_CAPTAIN, ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_MEDICAL, ACCESS_CENT_STORAGE, ACCESS_SECURITY, ACCESS_MECH_SECURITY)
 	outfit = /datum/outfit/nanotrasensoldiercorpse
 
 /datum/outfit/nanotrasensoldiercorpse
@@ -421,7 +551,14 @@
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	head = /obj/item/clothing/head/helmet/swat/nanotrasen
 	back = /obj/item/storage/backpack/security
-	id = /obj/item/card/id
+	id = /obj/item/card/id/advanced
+	id_trim = /datum/id_trim/centcom/corpse/private_security
+
+/obj/effect/mob_spawn/human/intern //this is specifically the comms intern from the event
+	name = "CentCom Intern"
+	outfit = /datum/outfit/centcom/centcom_intern/unarmed
+	mob_name = "Nameless Intern"
+	mob_gender = MALE
 
 /////////////////Spooky Undead//////////////////////
 //there are living variants of many of these, they're now in ghost_role_spawners.dm

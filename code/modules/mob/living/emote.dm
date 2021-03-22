@@ -119,6 +119,8 @@
 	hands_use_check = TRUE
 	var/wing_time = 20
 
+//SKYRAT EDIT REMOVAL BEGIN - EMOTES - Not working due to modified mutant code, will be fixed later
+/*
 /datum/emote/living/flap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && ishuman(user))
@@ -131,6 +133,8 @@
 			else
 				H.OpenWings()
 			addtimer(CALLBACK(H, open ? /mob/living/carbon/human.proc/OpenWings : /mob/living/carbon/human.proc/CloseWings), wing_time)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/emote/living/flap/aflap
 	key = "aflap"
@@ -169,7 +173,6 @@
 	key_third_person = "glares"
 	message = "glares."
 	message_param = "glares at %t."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/grin
 	key = "grin"
@@ -181,6 +184,7 @@
 	key_third_person = "groans"
 	message = "groans!"
 	message_mime = "appears to groan!"
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/grimace
 	key = "grimace"
@@ -196,9 +200,23 @@
 /datum/emote/living/kiss
 	key = "kiss"
 	key_third_person = "kisses"
-	message = "blows a kiss."
-	message_param = "blows a kiss to %t."
-	emote_type = EMOTE_AUDIBLE
+	cooldown = 3 SECONDS
+
+/datum/emote/living/kiss/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	var/kiss_type = /obj/item/kisser
+
+	if(HAS_TRAIT(user, TRAIT_KISS_OF_DEATH))
+		kiss_type = /obj/item/kisser/death
+
+	var/obj/item/kiss_blower = new kiss_type(user)
+	if(user.put_in_hands(kiss_blower))
+		to_chat(user, "<span class='notice'>You ready your kiss-blowing hand.</span>")
+	else
+		qdel(kiss_blower)
+		to_chat(user, "<span class='warning'>You're incapable of blowing a kiss in your current state.</span>")
 
 /* SKYRAT EDIT REMOVAL - EMOTES - MOVED TO EMOTES.DM MODULAR
 /datum/emote/living/laugh
@@ -256,13 +274,12 @@
 			else
 				message_param = "<span class='userdanger'>bumps [user.p_their()] head on the ground</span> trying to motion towards %t."
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
-	..()
+	return ..()
 
 /datum/emote/living/pout
 	key = "pout"
 	key_third_person = "pouts"
 	message = "pouts."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/scream
 	key = "scream"
@@ -281,19 +298,16 @@
 	key = "scowl"
 	key_third_person = "scowls"
 	message = "scowls."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/shake
 	key = "shake"
 	key_third_person = "shakes"
 	message = "shakes their head."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/shiver
 	key = "shiver"
 	key_third_person = "shiver"
 	message = "shivers."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/sigh
 	key = "sigh"
@@ -363,6 +377,7 @@
 	if(. && isliving(user))
 		var/mob/living/L = user
 		L.Paralyze(200)
+		L.remove_status_effect(STATUS_EFFECT_SURRENDER)
 
 /datum/emote/living/sway
 	key = "sway"
@@ -393,6 +408,7 @@
 	key_third_person = "whimpers"
 	message = "whimpers."
 	message_mime = "appears hurt."
+	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/wsmile
 	key = "wsmile"
@@ -438,7 +454,10 @@
 		to_chat(user, "<span class='boldwarning'>You cannot send IC messages (muted).</span>")
 		return FALSE
 	else if(!params)
-		var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
+		//SKYRAT EDIT CHANGE BEGIN
+		//var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN) - SKYRAT EDIT - ORIGINAL
+		var/custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
+		//SKYRAT EDIT CHANGE END
 		if(custom_emote && !check_invalid(user, custom_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
@@ -462,48 +481,23 @@
 /datum/emote/living/custom/replace_pronoun(mob/user, message)
 	return message
 
-/datum/emote/living/help
-	key = "help"
-
-/datum/emote/living/help/run_emote(mob/user, params, type_override, intentional)
-	var/list/keys = list()
-	var/list/message = list("Available emotes, you can use them with say \"*emote\": ")
-
-	for(var/key in GLOB.emote_list)
-		for(var/datum/emote/P in GLOB.emote_list[key])
-			if(P.key in keys)
-				continue
-			if(P.can_run_emote(user, status_check = FALSE , intentional = TRUE))
-				keys += P.key
-
-	keys = sortList(keys)
-
-	for(var/emote in keys)
-		if(LAZYLEN(message) > 1)
-			message += ", [emote]"
-		else
-			message += "[emote]"
-
-	message += "."
-
-	message = jointext(message, "")
-
-	to_chat(user, message)
-
-/datum/emote/beep
+/datum/emote/living/beep
 	key = "beep"
 	key_third_person = "beeps"
 	message = "beeps."
 	message_param = "beeps at %t."
 	sound = 'sound/machines/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon)
+	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/inhale
+/datum/emote/living/inhale
 	key = "inhale"
 	key_third_person = "inhales"
 	message = "breathes in."
+	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/exhale
+/datum/emote/living/exhale
 	key = "exhale"
 	key_third_person = "exhales"
 	message = "breathes out."
+	emote_type = EMOTE_AUDIBLE

@@ -1,7 +1,7 @@
 /obj/machinery/jukebox
 	name = "jukebox"
 	desc = "A classic music player."
-	icon = 'modular_skyrat/modules/jukebox/icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "jukebox"
 	verb_say = "states"
 	density = TRUE
@@ -19,7 +19,6 @@
 	desc = "The first three prototypes were discontinued after mass casualty incidents."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "disco"
-	req_access = list(ACCESS_ENGINE)
 	anchored = FALSE
 	var/list/spotlights = list()
 	var/list/sparkles = list()
@@ -27,7 +26,6 @@
 /obj/machinery/jukebox/disco/indestructible
 	name = "radiant dance machine mark V"
 	desc = "Now redesigned with data gathered from the extensive disco and plasma research."
-	req_access = null
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	flags_1 = NODECONSTRUCT_1

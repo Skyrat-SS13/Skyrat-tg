@@ -232,6 +232,7 @@
 		/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
 		/obj/item/storage/backpack/chemistry = 2,
 		/obj/item/storage/backpack/satchel/chem = 2,
+		/obj/item/storage/backpack/duffelbag/chemistry = 2,
 		/obj/item/storage/bag/chemistry = 2)
 	generate_items_inside(items_inside,src)
 	return
@@ -247,7 +248,8 @@
 		/obj/item/clothing/shoes/sneakers/white = 2,
 		/obj/item/clothing/suit/toggle/labcoat/genetics = 2,
 		/obj/item/storage/backpack/genetics = 2,
-		/obj/item/storage/backpack/satchel/gen = 2)
+		/obj/item/storage/backpack/satchel/gen = 2,
+		/obj/item/storage/backpack/duffelbag/genetics = 2)
 	generate_items_inside(items_inside,src)
 	return
 
@@ -263,7 +265,8 @@
 		/obj/item/clothing/suit/toggle/labcoat/virologist = 2,
 		/obj/item/clothing/mask/surgical = 2,
 		/obj/item/storage/backpack/virology = 2,
-		/obj/item/storage/backpack/satchel/vir = 2)
+		/obj/item/storage/backpack/satchel/vir = 2,
+		/obj/item/storage/backpack/duffelbag/virology = 2,)
 	generate_items_inside(items_inside,src)
 	return
 
@@ -276,12 +279,13 @@
 		/obj/item/clothing/accessory/pocketprotector = 1,
 		/obj/item/storage/backpack/science = 2,
 		/obj/item/storage/backpack/satchel/tox = 2,
+		/obj/item/storage/backpack/duffelbag/toxins = 2,
 		/obj/item/clothing/suit/hooded/wintercoat/science = 1,
 		/obj/item/clothing/under/rank/rnd/scientist = 3,
 		/obj/item/clothing/suit/toggle/labcoat/science = 3,
 		/obj/item/clothing/shoes/sneakers/white = 3,
 		/obj/item/radio/headset/headset_sci = 2,
-		/obj/item/clothing/mask/gas = 3)
+		/obj/item/clothing/mask/gas/alt = 3) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas = 3)
 	generate_items_inside(items_inside,src)
 	return
 
@@ -293,6 +297,7 @@
 	var/static/items_inside = list(
 		/obj/item/storage/backpack/botany = 2,
 		/obj/item/storage/backpack/satchel/hyd = 2,
+		/obj/item/storage/backpack/duffelbag/hydroponics = 2,
 		/obj/item/clothing/suit/hooded/wintercoat/hydro = 1,
 		/obj/item/clothing/suit/apron = 2,
 		/obj/item/clothing/suit/apron/overalls = 2,

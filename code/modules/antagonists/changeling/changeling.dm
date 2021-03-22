@@ -1,6 +1,6 @@
-#define LING_FAKEDEATH_TIME					400 //40 seconds
-#define LING_DEAD_GENETICDAMAGE_HEAL_CAP	50	//The lowest value of geneticdamage handle_changeling() can take it to while dead.
-#define LING_ABSORB_RECENT_SPEECH			8	//The amount of recent spoken lines to gain on absorbing a mob
+#define LING_FAKEDEATH_TIME 400 //40 seconds
+#define LING_DEAD_GENETICDAMAGE_HEAL_CAP 50 //The lowest value of geneticdamage handle_changeling() can take it to while dead.
+#define LING_ABSORB_RECENT_SPEECH 8 //The amount of recent spoken lines to gain on absorbing a mob
 
 /datum/antagonist/changeling
 	name = "Changeling"
@@ -19,22 +19,24 @@
 
 	var/list/stored_profiles = list() //list of datum/changelingprofile
 	var/datum/changelingprofile/first_prof = null
-	var/dna_max = 6 //How many extra DNA strands the changeling can store for transformation.
+	var/dna_max = 8 //How many extra DNA strands the changeling can store for transformation. // SKYRAT EDIT CHANGE : ORIGINAL: 6
 	var/absorbedcount = 0
 	var/trueabsorbs = 0//dna gained using absorb, not dna sting
-	var/chem_charges = 20
-	var/chem_storage = 75
-	var/chem_recharge_rate = 1
+	var/chem_charges = 75 //SKYRAT EDIT CHANGE - ORIGINAL: 20
+	var/chem_storage = 100 //SKYRAT EDIT CHANGE - ORIGINAL: 75
+	var/chem_recharge_rate = 1.5 //SKYRAT EDIT CHANGE - ORIGINAL: 1
 	var/chem_recharge_slowdown = 0
 	var/sting_range = 2
 	var/geneticdamage = 0
 	var/was_absorbed = FALSE //if they were absorbed by another ling already.
 	var/isabsorbing = FALSE
 	var/islinking = FALSE
-	var/geneticpoints = 10
-	var/total_geneticspoints = 10
-	var/total_chem_storage = 75
+	var/geneticpoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
+	var/total_geneticspoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
+	var/total_chem_storage = 100 //SKYRAT EDIT CHANGE - ORIGINAL: 75
 	var/purchasedpowers = list()
+
+	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 
 	var/mimicing = ""
 	var/canrespec = FALSE//set to TRUE in absorb.dm
@@ -67,12 +69,16 @@
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()
+	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+	/*
 	create_actions()
 	reset_powers()
 	create_initial_profile()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		forge_objectives()
-	owner.current.grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue. We are able to transform our body after all.
+	owner.current.grant_all_languages(FALSE, FALSE, TRUE) //Grants omnitongue. We are able to transform our body after all.
 	. = ..()
 
 /datum/antagonist/changeling/on_removal()
@@ -83,7 +89,11 @@
 		if(B && (B.decoy_override != initial(B.decoy_override)))
 			B.organ_flags |= ORGAN_VITAL
 			B.decoy_override = FALSE
+	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+	/*
 	remove_changeling_powers()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	. = ..()
 
 /datum/antagonist/changeling/proc/reset_properties()
@@ -98,7 +108,7 @@
 	mimicing = ""
 
 /datum/antagonist/changeling/proc/remove_changeling_powers()
-	if(ishuman(owner.current) || ismonkey(owner.current))
+	if(ishuman(owner.current))
 		reset_properties()
 		for(var/datum/action/changeling/p in purchasedpowers)
 			purchasedpowers -= p
@@ -201,15 +211,15 @@
 		return FALSE
 
 //Called in life()
-/datum/antagonist/changeling/proc/regenerate()//grants the HuD in life.dm
+/datum/antagonist/changeling/proc/regenerate(delta_time, times_fired)//grants the HuD in life.dm
 	var/mob/living/carbon/the_ling = owner.current
 	if(istype(the_ling))
 		if(the_ling.stat == DEAD)
-			chem_charges = min(max(0, chem_charges + chem_recharge_rate - chem_recharge_slowdown), (chem_storage*0.5))
-			geneticdamage = max(LING_DEAD_GENETICDAMAGE_HEAL_CAP,geneticdamage-1)
+			chem_charges = min(max(0, chem_charges + ((chem_recharge_rate - chem_recharge_slowdown) * delta_time)), (chem_storage * 0.5))
+			geneticdamage = max(geneticdamage - (0.5 * delta_time), LING_DEAD_GENETICDAMAGE_HEAL_CAP)
 		else //not dead? no chem/geneticdamage caps.
-			chem_charges = min(max(0, chem_charges + chem_recharge_rate - chem_recharge_slowdown), chem_storage)
-			geneticdamage = max(0, geneticdamage-1)
+			chem_charges = min(max(0, chem_charges + ((chem_recharge_rate - chem_recharge_slowdown) * delta_time)), chem_storage)
+			geneticdamage = max(geneticdamage - (0.5 * delta_time), 0)
 
 
 /datum/antagonist/changeling/proc/get_dna(dna_owner)
@@ -282,6 +292,15 @@
 		var/datum/scar/iter_scar = i
 		LAZYADD(prof.stored_scars, iter_scar.format())
 
+	var/datum/icon_snapshot/entry = new
+	entry.name = H.name
+	entry.icon = H.icon
+	entry.icon_state = H.icon_state
+	entry.overlays = H.get_overlays_copy(list(HANDS_LAYER, HANDCUFF_LAYER, LEGCUFF_LAYER))
+	prof.profile_snapshot = entry
+
+	prof.id_icon = H.wear_id?.get_sechud_job_icon_state()
+
 	var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
 	for(var/slot in slots)
 		if(slot in H.vars)
@@ -340,7 +359,7 @@
 
 
 /datum/antagonist/changeling/proc/create_initial_profile()
-	var/mob/living/carbon/C = owner.current	//only carbons have dna now, so we have to typecaste
+	var/mob/living/carbon/C = owner.current //only carbons have dna now, so we have to typecaste
 	if(ishuman(C))
 		add_new_profile(C)
 
@@ -368,9 +387,10 @@
 	if (you_are_greet)
 		to_chat(owner.current, "<span class='boldannounce'>You are a changeling! You have absorbed and taken the form of a human.</span>")
 	to_chat(owner.current, "<b>You must complete the following tasks:</b>")
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 	owner.announce_objectives()
+	..() //SKYRAT EDIT ADDITION - AMBITIONS
 
 /datum/antagonist/changeling/farewell()
 	to_chat(owner.current, "<span class='userdanger'>You grow weak and lose your powers! You are no longer a changeling and are stuck in your current form!</span>")
@@ -381,6 +401,10 @@
 	//No escape alone because changelings aren't suited for it and it'd probably just lead to rampant robusting
 	//If it seems like they'd be able to do it in play, add a 10% chance to have to escape alone
 
+
+	objectives += new /datum/objective/ambitions() //SKYRAT EDIT ADDITION - AMBITIONS
+	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
+	/*
 	var/escape_objective_possible = TRUE
 
 	switch(competitive_objectives ? rand(1,3) : 1)
@@ -447,6 +471,8 @@
 			identity_theft.find_target()
 			objectives += identity_theft
 		escape_objective_possible = FALSE
+	*/
+	//SKYRAT EDIT REMOVAL END
 
 
 /datum/antagonist/changeling/admin_add(datum/mind/new_owner,mob/admin)
@@ -493,6 +519,10 @@
 	var/list/skillchips = list()
 	/// What scars the target had when we copied them, in string form (like persistent scars)
 	var/list/stored_scars
+	/// Icon snapshot of the profile
+	var/datum/icon_snapshot/profile_snapshot
+	/// ID HUD icon associated with the profile
+	var/id_icon
 
 /datum/changelingprofile/Destroy()
 	qdel(dna)
@@ -518,6 +548,8 @@
 	newprofile.worn_icon_state_list = worn_icon_state_list.Copy()
 	newprofile.skillchips = skillchips.Copy()
 	newprofile.stored_scars = stored_scars.Copy()
+	newprofile.profile_snapshot = profile_snapshot
+	newprofile.id_icon = id_icon
 
 /datum/antagonist/changeling/xenobio
 	name = "Xenobio Changeling"

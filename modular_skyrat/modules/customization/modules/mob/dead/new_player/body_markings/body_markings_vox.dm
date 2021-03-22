@@ -5,9 +5,10 @@
 /datum/body_marking/secondary/vox/vox
 	name = "Vox Talon"
 	icon_state = "vox"
-	affected_bodyparts = ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT 
+	affected_bodyparts = ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/tertiary/vox
+	recommended_species = list("vox")
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/vox_tertiary.dmi'
 
 /datum/body_marking/tertiary/vox/tiger

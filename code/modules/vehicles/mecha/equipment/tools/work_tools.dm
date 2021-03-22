@@ -14,11 +14,15 @@
 	harmful = TRUE
 	mech_flags = EXOSUIT_MODULE_RIPLEY
 	///Bool for whether we beat the hell out of things we punch (and tear off their arms)
-	var/killer_clamp = FALSE
+	//var/killer_clamp = FALSE -------SKYRAT EDIT - A clamp is a clamp, just like it was on the oldbase.
+	var/killer_clamp = TRUE
 	///How much base damage this clamp does
-	var/clamp_damage = 20
+	var/clamp_damage = 30	//SKYRAT EDIT - We've removed instant arm delimbs, so this is a buff to make up for it.
+//	var/clamp_damage = 20 SKYRAT EDIT - Original line
 	///Var for the chassis we are attached to, needed to access ripley contents and such
 	var/obj/vehicle/sealed/mecha/working/ripley/cargo_holder
+	///Audio for using the hydraulic clamp
+	var/clampsound = 'sound/mecha/hydraulic.ogg'
 
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/can_attach(obj/vehicle/sealed/mecha/M)
 	. = ..()
@@ -35,7 +39,7 @@
 	. = ..()
 	cargo_holder = null
 
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/action(mob/source, atom/target, params)
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/action(mob/living/source, atom/target, params)
 	if(!action_checks(target))
 		return
 	if(!cargo_holder)
@@ -57,10 +61,12 @@
 		var/obj/clamptarget = target
 		if(istype(clamptarget, /obj/machinery/door/firedoor))
 			var/obj/machinery/door/firedoor/targetfiredoor = clamptarget
+			playsound(chassis, clampsound, 50, FALSE, -6)
 			targetfiredoor.try_to_crowbar(src, source)
 			return
 		if(istype(clamptarget, /obj/machinery/door/airlock/))
 			var/obj/machinery/door/airlock/targetairlock = clamptarget
+			playsound(chassis, clampsound, 50, FALSE, -6)
 			targetairlock.try_to_crowbar(src, source)
 			return
 		if(clamptarget.anchored)
@@ -69,6 +75,7 @@
 		if(LAZYLEN(cargo_holder.cargo) >= cargo_holder.cargo_capacity)
 			to_chat(source, "[icon2html(src, source)]<span class='warning'>Not enough room in cargo compartment!</span>")
 			return
+		playsound(chassis, clampsound, 50, FALSE, -6)
 		chassis.visible_message("<span class='notice'>[chassis] lifts [target] and starts to load it into cargo compartment.</span>")
 		clamptarget.set_anchored(TRUE)
 		if(!do_after_cooldown(target, source))
@@ -86,7 +93,10 @@
 		var/mob/living/M = target
 		if(M.stat == DEAD)
 			return
-		if(source.a_intent == INTENT_HELP)
+
+		//var/list/modifiers = params2list(params) - SKYRAT EDIT REMOVAL
+
+		if(!source.combat_mode)
 			step_away(M,chassis)
 			if(killer_clamp)
 				target.visible_message("<span class='danger'>[chassis] tosses [target] like a piece of paper!</span>", \
@@ -96,7 +106,8 @@
 				chassis.visible_message("<span class='notice'>[chassis] pushes [target] out of the way.</span>", \
 				"<span class='notice'>[chassis] pushes you aside.</span>")
 			return ..()
-		else if(source.a_intent == INTENT_DISARM && iscarbon(M))//meme clamp here
+
+		/*else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M))//meme clamp here
 			if(!killer_clamp)
 				to_chat(source, "<span class='notice'>You longingly wish to tear [M]'s arms off.</span>")
 				return
@@ -116,9 +127,9 @@
 			playsound(src, get_dismember_sound(), 80, TRUE)
 			target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off!</span>", \
 						   "<span class='userdanger'>[chassis] rips your arms off!</span>")
-			log_combat(source, M, "removed both arms with a real clamp,", "[name]", "(INTENT: [uppertext(source.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+			log_combat(source, M, "removed both arms with a real clamp,", "[name]", "(COMBAT MODE: [uppertext(source.combat_mode)] (DAMTYPE: [uppertext(damtype)])")
 			return ..()
-
+*/	// SKYRAT REMOVAL - No instant arm-removals.
 		M.take_overall_damage(clamp_damage)
 		if(!M) //get gibbed stoopid
 			return
@@ -127,7 +138,7 @@
 		target.visible_message("<span class='danger'>[chassis] squeezes [target]!</span>", \
 							"<span class='userdanger'>[chassis] squeezes you!</span>",\
 							"<span class='hear'>You hear something crack.</span>")
-		log_combat(source, M, "attacked", "[name]", "(INTENT: [uppertext(source.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+		log_combat(source, M, "attacked", "[name]", "(Combat mode: [source.combat_mode ? "On" : "Off"]) (DAMTYPE: [uppertext(damtype)])")
 	return ..()
 
 
@@ -217,9 +228,9 @@
 		return FALSE
 
 
-#define MODE_DECONSTRUCT	0
-#define MODE_WALL			1
-#define MODE_AIRLOCK		2
+#define MODE_DECONSTRUCT 0
+#define MODE_WALL 1
+#define MODE_AIRLOCK 2
 
 /obj/item/mecha_parts/mecha_equipment/rcd
 	name = "mounted RCD"
@@ -254,7 +265,7 @@
 				var/turf/closed/wall/W = target
 				if(!do_after_cooldown(W, source))
 					return
-				W.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+				W.ScrapeAway()
 			else if(isfloorturf(target))
 				var/turf/open/floor/F = target
 				if(!do_after_cooldown(target, source))

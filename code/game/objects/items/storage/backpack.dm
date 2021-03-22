@@ -1,8 +1,8 @@
 /* Backpacks
  * Contains:
- *		Backpack
- *		Backpack Types
- *		Satchel Types
+ * Backpack
+ * Backpack Types
+ * Satchel Types
  */
 
 /*
@@ -17,7 +17,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK	//ERROOOOO
+	slot_flags = ITEM_SLOT_BACK //ERROOOOO
 	resistance_flags = NONE
 	max_integrity = 300
 
@@ -322,18 +322,28 @@
 	STR.set_holdable(null, list(/obj/item/storage/backpack/satchel/flat)) //muh recursive backpacks)
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
-	var/datum/supply_pack/costumes_toys/randomised/contraband/C = new
+	//SKYRAT EDIT CHANGE BEGIN
+	/*
+	/datum/supply_pack/costumes_toys/randomised/contraband/C = new
 	for(var/i in 1 to 2)
 		var/ctype = pick(C.contains)
 		new ctype(src)
 
 	qdel(C)
+	*/
+	var/contraband_list = list(/obj/item/storage/bag/ammo=4, /obj/item/storage/belt/utility/syndicate=1, /obj/item/storage/toolbox/syndicate=7, /obj/item/card/id/advanced/chameleon=6, /obj/item/storage/secure/briefcase/syndie=3, /obj/item/stack/telecrystal=2, /obj/item/storage/belt/military=12, /obj/item/storage/pill_bottle/aranesp=11, /obj/item/storage/pill_bottle/happy=12, /obj/item/storage/pill_bottle/stimulant=9, /obj/item/storage/pill_bottle/lsd=10, /obj/item/storage/fancy/cigarettes/cigpack_syndicate=8, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims=10, /obj/item/reagent_containers/food/drinks/bottle/absinthe=12, /obj/item/storage/box/fireworks/dangerous=11, /obj/item/food/grown/cannabis/white=9, /obj/item/food/grown/cannabis=13, /obj/item/food/grown/cannabis/rainbow=8, /obj/item/food/grown/mushroom/libertycap=11, /obj/item/clothing/mask/gas/syndicate=10, /obj/item/vending_refill/donksoft=13, /obj/item/ammo_box/foambox/riot=11, /obj/item/soap/syndie=7)
+	for(var/i in 1 to 3)
+		var/contraband_type = pickweight(contraband_list)
+		contraband_list -= contraband_type
+		new contraband_type(src)
+
+	//SKYRAT EDIT CHANGE END
 
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
-	new /obj/item/stack/tile/plasteel(src)
+	new /obj/item/stack/tile/iron(src)
 	new /obj/item/crowbar(src)
 
-	..()
+//	..() SKYRAT EDIT REMOVAL
 
 /obj/item/storage/backpack/satchel/flat/empty/PopulateContents()
 	return
@@ -343,12 +353,81 @@
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
-	slowdown = 1
+	//slowdown = 1 //ORIGINAL
+	slowdown = 0.5 //SKYRAT EDIT CHANGE
 
 /obj/item/storage/backpack/duffelbag/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 30
+
+/obj/item/storage/backpack/duffelbag/cursed
+	name = "living duffel bag"
+	desc = "A cursed clown duffel bag that hungers for food of any kind.\n A warning label suggests that it eats food inside. If that food happens to be a horribly ruined, burned mess the chef scrapped out of the microwave, then it might have negative effects on the bag..."
+	icon_state = "duffel-curse"
+	inhand_icon_state = "duffel-curse"
+	slowdown = 2
+	item_flags = DROPDEL
+	max_integrity = 100
+	///counts time passed since it ate food
+	var/hunger = 0
+
+/obj/item/storage/backpack/duffelbag/cursed/examine(mob/user)
+	. = ..()
+
+	if(hunger > 25)
+		. += "<span class='danger'>The bag is growling for food...</span>"
+
+/obj/item/storage/backpack/duffelbag/cursed/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
+	START_PROCESSING(SSobj,src)
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+	ADD_TRAIT(user, TRAIT_CLUMSY, CURSED_ITEM_TRAIT)
+	ADD_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
+	ADD_TRAIT(user, TRAIT_DUFFEL_CURSED, CURSED_ITEM_TRAIT)
+
+/obj/item/storage/backpack/duffelbag/cursed/dropped(mob/living/carbon/human/user)
+	REMOVE_TRAIT(user, TRAIT_DUFFEL_CURSED, CURSED_ITEM_TRAIT)
+	REMOVE_TRAIT(user, TRAIT_CLUMSY, CURSED_ITEM_TRAIT)
+	REMOVE_TRAIT(user, TRAIT_PACIFISM, CURSED_ITEM_TRAIT)
+	STOP_PROCESSING(SSobj,src)
+
+	var/turf/T = get_turf(user)
+	playsound(T, 'sound/effects/splat.ogg', 50, TRUE)
+	new /obj/effect/decal/cleanable/vomit(T)
+
+	. = ..()
+
+/obj/item/storage/backpack/duffelbag/cursed/process()
+
+	var/mob/living/carbon/user = loc
+	///check hp
+	if(obj_integrity == 0)
+		user.dropItemToGround(src, TRUE)
+	hunger++
+	///check hunger
+	if((hunger > 50) && prob(20))
+		for(var/obj/item/I in contents)
+			if(IS_EDIBLE(I))
+				var/obj/item/food/hunger_breaks = I //If you fed them poundland microwave meals, it probably would kill them
+				hunger_breaks.forceMove(user.loc)
+				playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
+				///poisoned food damages it
+				if(istype(hunger_breaks, /obj/item/food/badrecipe))
+					to_chat(user, "<span class='warning'>The [name] grumbles!</span>")
+					obj_integrity -= 50
+				else
+					to_chat(user, "<span class='notice'>The [name] eats your [hunger_breaks]!</span>")
+				QDEL_NULL(hunger_breaks)
+				hunger = 0
+				return
+		///no food found: it bites you and loses some hp
+		var/affecting = user.get_bodypart(BODY_ZONE_CHEST)
+		user.apply_damage(60, BRUTE, affecting)
+		hunger = initial(hunger)
+		playsound(src, 'sound/items/eatfood.ogg', 20, TRUE)
+		to_chat(user, "<span class='warning'>The [name] eats your back!</span>")
+		obj_integrity -= 25
 
 /obj/item/storage/backpack/duffelbag/captain
 	name = "captain's duffel bag"
@@ -366,6 +445,44 @@
 	name = "surgical duffel bag"
 	desc = "A large duffel bag for holding extra medical supplies - this one seems to be designed for holding surgical tools."
 
+/obj/item/storage/backpack/duffelbag/explorer
+	name = "explorator's duffel bag"
+	desc = "A large duffel bag for holding extra exotic treasures."
+	icon_state = "duffel-explorer"
+	inhand_icon_state = "duffel-explorer"
+
+/obj/item/storage/backpack/duffelbag/hydroponics
+	name = "hydroponic's duffel bag"
+	desc = "A large duffel bag for holding extra gardening tools."
+	icon_state = "duffel-hydroponics"
+	inhand_icon_state = "duffel-hydroponics"
+
+/obj/item/storage/backpack/duffelbag/chemistry
+	name = "chemistry duffel bag"
+	desc = "A large duffel bag for holding extra chemical substances."
+	icon_state = "duffel-chemistry"
+	inhand_icon_state = "duffel-chemistry"
+
+/obj/item/storage/backpack/duffelbag/genetics
+	name = "geneticist's duffel bag"
+	desc = "A large duffel bag for holding extra genetic mutations."
+	icon_state = "duffel-genetics"
+	inhand_icon_state = "duffel-genetics"
+
+/obj/item/storage/backpack/duffelbag/toxins
+	name = "scientist's duffel bag"
+	desc = "A large duffel bag for holding extra scientific components."
+	icon_state = "duffel-toxins"
+	inhand_icon_state = "duffel-toxins"
+
+/obj/item/storage/backpack/duffelbag/virology
+	name = "virologist's duffel bag"
+	desc = "A large duffel bag for holding extra viral bottles."
+	icon_state = "duffel-virology"
+	inhand_icon_state = "duffel-virology"
+
+
+
 /obj/item/storage/backpack/duffelbag/med/surgery/PopulateContents()
 	new /obj/item/scalpel(src)
 	new /obj/item/hemostat(src)
@@ -375,6 +492,7 @@
 	new /obj/item/cautery(src)
 	new /obj/item/bonesetter(src)
 	new /obj/item/surgical_drapes(src)
+	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/razor(src)
 	new /obj/item/blood_filter(src)
@@ -398,6 +516,7 @@
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
 	new /obj/item/surgical_drapes(src)
+	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/blood_filter(src)
 
@@ -432,18 +551,20 @@
 
 /obj/item/storage/backpack/duffelbag/clown/cream_pie/PopulateContents()
 	for(var/i in 1 to 10)
-		new /obj/item/reagent_containers/food/snacks/pie/cream(src)
+		new /obj/item/food/pie/cream(src)
 
 /obj/item/storage/backpack/fireproof
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/syndie
-	name = "suspicious looking duffel bag"
+	name = "tactical duffel bag" //SKYRAT EDIT, was "suspicious-looking duffel bag". It's just a black duffel.
 	desc = "A large duffel bag for holding extra tactical supplies."
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	slowdown = 0
 	resistance_flags = FIRE_PROOF
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // Skyrat edit
 
 /obj/item/storage/backpack/duffelbag/syndie/ComponentInitialize()
 	. = ..()
@@ -472,7 +593,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery
 	name = "surgery duffel bag"
-	desc = "A suspicious looking duffel bag for holding surgery tools."
+	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools." //SKYRAT EDIT, to match the security surgery bag
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 
@@ -489,6 +610,7 @@
 	new /obj/item/clothing/mask/muzzle(src)
 	new /obj/item/mmi/syndie(src)
 	new /obj/item/blood_filter(src)
+	new /obj/item/stack/medical/bone_gel(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/ammo
 	name = "ammunition duffel bag"

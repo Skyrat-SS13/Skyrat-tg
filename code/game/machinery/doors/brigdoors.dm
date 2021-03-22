@@ -2,11 +2,15 @@
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Small Fonts"
-#define MAX_TIMER 9000
+//#define MAX_TIMER 9000 //ORIGINAL
+#define MAX_TIMER 36000 //SKYRAT EDIT CHANGE
 
-#define PRESET_SHORT 1200
-#define PRESET_MEDIUM 1800
-#define PRESET_LONG 3000
+//#define PRESET_SHORT 1200 //ORIGINAL
+#define PRESET_SHORT 3000 //SKYRAT EDIT CHANGE
+//#define PRESET_MEDIUM 1800 //ORIGINAL
+#define PRESET_MEDIUM 6000 //SKYRAT EDIT CHANGE
+//#define PRESET_LONG 3000 //ORIGINAL
+#define PRESET_LONG 9000 //SKYRAT EDIT CHANGE
 
 
 
@@ -30,7 +34,7 @@
 	var/activation_time = 0
 	var/timer_duration = 0
 
-	var/timing = FALSE		// boolean, true/1 timer is on, false/0 means it's not timing
+	var/timing = FALSE // boolean, true/1 timer is on, false/0 means it's not timing
 	var/list/obj/machinery/targets = list()
 	var/obj/item/radio/Radio //needed to send messages to sec radio
 
@@ -61,7 +65,7 @@
 
 	if(!targets.len)
 		obj_break()
-	update_icon()
+	update_appearance()
 
 
 //Main door timer loop, if it's timing and time is >0 reduce time by 1.
@@ -72,9 +76,10 @@
 		return
 
 	if(timing)
-		if(world.time - activation_time >= timer_duration)
+		//if(world.time - activation_time >= timer_duration) //ORIGINAL
+		if(world.realtime - activation_time >= timer_duration) //SKYRAT EDIT CHANGE
 			timer_end() // open doors, reset timer, clear status screen
-		update_icon()
+		update_appearance()
 
 // open/closedoor checks if door_timer has power, if so it checks if the
 // linked door is open/closed (by density) then opens it/closes it.
@@ -82,7 +87,8 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 
-	activation_time = world.time
+	//activation_time = world.time //ORIGINAL
+	activation_time = world.realtime //SKYRAT EDIT CHANGE
 	timing = TRUE
 
 	for(var/obj/machinery/door/window/brigdoor/door in targets)
@@ -96,7 +102,7 @@
 		if(C.opened && !C.close())
 			continue
 		C.locked = TRUE
-		C.update_icon()
+		C.update_appearance()
 	return 1
 
 
@@ -112,7 +118,7 @@
 	timing = FALSE
 	activation_time = null
 	set_timer(0)
-	update_icon()
+	update_appearance()
 
 	for(var/obj/machinery/door/window/brigdoor/door in targets)
 		if(!door.density)
@@ -125,13 +131,14 @@
 		if(C.opened)
 			continue
 		C.locked = FALSE
-		C.update_icon()
+		C.update_appearance()
 
 	return 1
 
 
 /obj/machinery/door_timer/proc/time_left(seconds = FALSE)
-	. = max(0,timer_duration - (activation_time ? world.time - activation_time : 0))
+	//. = max(0,timer_duration - (activation_time ? world.time - activation_time : 0)) //ORIGINAL
+	. = max(0,timer_duration - (activation_time ? world.realtime - activation_time : 0)) //SKYRAT EDIT CHANGE
 	if(seconds)
 		. /= 10
 
@@ -151,8 +158,8 @@
 // if BROKEN, display blue screen of death icon AI uses
 // if timing=true, run update display function
 /obj/machinery/door_timer/update_icon()
+	. = ..()
 	if(machine_stat & (NOPOWER))
-		icon_state = "frame"
 		return
 
 	if(machine_stat & (BROKEN))
@@ -238,7 +245,8 @@
 					preset_time = PRESET_LONG
 			. = set_timer(preset_time)
 			if(timing)
-				activation_time = world.time
+				//activation_time = world.time //ORIGINAL
+				activation_time = world.realtime
 		else
 			. = FALSE
 

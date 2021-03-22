@@ -34,6 +34,24 @@
 	else
 		parts += ""
 	parts += "<a href='?_src_=holder;[HrefToken()];traitor=[REF(owner)]'>Show Objective</a>"
+	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
+	if(uses_ambitions && owner.current && owner.current.mind && owner.current.mind.my_ambitions)
+		var/datum/ambitions/ambs = owner.current.mind.my_ambitions
+		var/string = "NOT SUBMITTED"
+		if(ambs.submitted)
+			switch(ambs.intensity)
+				if(AMBITION_INTENSITY_STEALTH)
+					string = "Stealth"
+				if(AMBITION_INTENSITY_MILD)
+					string = "Mild"
+				if(AMBITION_INTENSITY_MEDIUM)
+					string = "Medium"
+				if(AMBITION_INTENSITY_SEVERE)
+					string = "Severe"
+				if(AMBITION_INTENSITY_EXTREME)
+					string = "Extreme"
+		parts += "<a href='?src=[REF(ambs)];admin_pref=show_ambitions'>Ambitions</a>-[string]"
+	//SKYRAT EDIT ADDITION END
 	return parts //Better as one cell or two/three
 
 //Builds table row for the antag
@@ -142,7 +160,7 @@
 		dat += "Replacement Game Mode: <B>[SSticker.mode.replacementmode.name]</B><BR>"
 	else
 		dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
-	if(istype(SSticker.mode, /datum/game_mode/dynamic))	// Currently only used by dynamic. If more start using this, find a better way.
+	if(istype(SSticker.mode, /datum/game_mode/dynamic)) // Currently only used by dynamic. If more start using this, find a better way.
 		dat += "<a href='?_src_=holder;[HrefToken()];gamemode_panel=1'>Game Mode Panel</a><br>"
 	dat += "Round Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B><BR>"
 	dat += "<B>Emergency shuttle</B><BR>"

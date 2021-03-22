@@ -1,7 +1,7 @@
 //Blueshield
 /obj/item/clothing/under/rank/security/blueshield
-	desc = "Gold trim on space-black cloth, this uniform bears \"Blueshield\" on the left shoulder."
-	name = "Blueshield Uniform"
+	desc = "Expensive designer shirt with snazzy suit pants, complete with a blue tie."
+	name = "Blueshield's suit"
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/blueshield/icons/mob/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/blueshield/icons/mob/uniform_digi.dmi'
@@ -13,7 +13,7 @@
 
 /obj/item/clothing/under/rank/security/blueshieldturtleneck
 	name = "Blueshield's turtleneck"
-	desc = "A stylish alternative to the normal Blueshield's Uniform, complete with tactical pants."
+	desc = "A cozier alternative to the normal Blueshield's Suit, the wool is still expensive."
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/blueshield/icons/mob/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/blueshield/icons/mob/uniform_digi.dmi'

@@ -229,14 +229,14 @@
 
 /obj/item/food/popsicle/update_overlays()
 	. = ..()
-	if(bitecount)
-		. += "[initial(overlay_state)]_[min(bitecount, 3)]"
-	else
+	if(!bitecount)
 		. += initial(overlay_state)
+		return
+	. += "[initial(overlay_state)]_[min(bitecount, 3)]"
 
 /obj/item/food/popsicle/proc/after_bite(mob/living/eater, mob/living/feeder, bitecount)
 	src.bitecount = bitecount
-	update_icon()
+	update_appearance()
 
 /obj/item/popsicle_stick
 	name = "popsicle stick"
@@ -282,3 +282,4 @@
 	tastes = list("chopped hazelnuts", "waffle")
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/hot_coco = 4, /datum/reagent/consumable/cream = 2, /datum/reagent/consumable/vanilla = 4, /datum/reagent/consumable/sugar = 2)
 	foodtypes = DAIRY | SUGAR
+	venue_value = FOOD_PRICE_NORMAL

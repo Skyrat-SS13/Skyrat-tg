@@ -28,3 +28,12 @@
 	caliber = "a762x25"
 	max_ammo = 71
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern
+	name = "\improper Mil Spec PPSh-41"
+	desc = "The PPSh-41 (pistolet-pulemyot Shpagina; Shpagin machine pistol) is a Soviet submachine gun designed by Georgy Shpagin as a cheap, reliable, and simplified alternative to the PPD-40. This is the 25th century version."
+	icon_state = "ppsh_modern"
+	worn_icon_state = "ppsh"
+	inhand_icon_state = "ppsh"
+	spread = 15
+	burst_size = 5

@@ -1,18 +1,18 @@
 /*
- *	These absorb the functionality of the plant bag, ore satchel, etc.
- *	They use the use_to_pickup, quick_gather, and quick_empty functions
- *	that were already defined in weapon/storage, but which had been
- *	re-implemented in other classes.
+ * These absorb the functionality of the plant bag, ore satchel, etc.
+ * They use the use_to_pickup, quick_gather, and quick_empty functions
+ * that were already defined in weapon/storage, but which had been
+ * re-implemented in other classes.
  *
- *	Contains:
- *		Trash Bag
- *		Mining Satchel
- *		Plant Bag
- *		Sheet Snatcher
- *		Book Bag
+ * Contains:
+ * Trash Bag
+ * Mining Satchel
+ * Plant Bag
+ * Sheet Snatcher
+ * Book Bag
  *      Biowaste Bag
  *
- *	-Sayu
+ * -Sayu
  */
 
 //  Generic non-item
@@ -65,6 +65,7 @@
 			icon_state = "[initial(icon_state)]1"
 		else
 			icon_state = "[initial(icon_state)]"
+	return ..()
 
 /obj/item/storage/bag/trash/cyborg
 	insertable = FALSE
@@ -73,7 +74,7 @@
 	if(insertable)
 		J.put_in_cart(src, user)
 		J.mybag=src
-		J.update_icon()
+		J.update_appearance()
 	else
 		to_chat(user, "<span class='warning'>You are unable to fit your [name] into the [J.name].</span>")
 		return
@@ -106,7 +107,7 @@
 //        Mining Satchel
 // -----------------------------
 
-/obj/item/storage/bag/ore
+/obj/item/storage/bag/ore//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "mining satchel"
 	desc = "This little bugger can be used to store and transport ores."
 	icon = 'icons/obj/mining.dmi'
@@ -208,7 +209,7 @@
 	STR.max_combined_w_class = 100
 	STR.max_items = 100
 	STR.set_holdable(list(
-		/obj/item/reagent_containers/food/snacks/grown,
+		/obj/item/food/grown,
 		/obj/item/seeds,
 		/obj/item/grown,
 		/obj/item/reagent_containers/honeycomb,
@@ -315,6 +316,7 @@
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
 	custom_materials = list(/datum/material/iron=3000)
+	custom_price = PAYCHECK_ASSISTANT * 0.6
 
 /obj/item/storage/bag/tray/ComponentInitialize()
 	. = ..()
@@ -323,11 +325,17 @@
 	STR.set_holdable(list(
 		/obj/item/reagent_containers/food,
 		/obj/item/reagent_containers/glass,
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/storage/fancy,
+		/obj/item/storage/box/gum,
+		/obj/item/storage/box/matches,
 		/obj/item/food,
-		/obj/item/kitchen/knife,
-		/obj/item/kitchen/rollingpin,
-		/obj/item/kitchen/fork,
-		)) //Should cover: Bottles, Beakers, Bowls, Booze, Glasses, Food, and Kitchen Tools.
+		/obj/item/trash,
+		/obj/item/lighter,
+		/obj/item/rollingpaper,
+		/obj/item/kitchen,
+		/obj/item/organ,
+		)) //Should cover: Bottles, Beakers, Bowls, Booze, Glasses, Food, Food Containers, Food Trash, Organs, Tobacco Products, Lighters, and Kitchen Tools.
 	STR.insert_preposition = "on"
 	STR.max_items = 7
 
@@ -345,10 +353,10 @@
 	else
 		playsound(M, 'sound/items/trayhit2.ogg', 50, TRUE)
 
-	if(ishuman(M) || ismonkey(M))
+	if(ishuman(M))
 		if(prob(10))
 			M.Paralyze(40)
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/bag/tray/proc/do_scatter(obj/item/I)
 	for(var/i in 1 to rand(1,2))
@@ -366,11 +374,11 @@
 
 /obj/item/storage/bag/tray/Entered()
 	. = ..()
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/bag/tray/Exited()
 	. = ..()
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/bag/tray/cafeteria
 	name = "cafeteria tray"
@@ -379,7 +387,7 @@
 	desc = "A cheap metal tray to pile today's meal onto."
 
 /*
- *	Chemistry bag
+ * Chemistry bag
  */
 
 /obj/item/storage/bag/chemistry
@@ -433,10 +441,12 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/blood,
 		/obj/item/reagent_containers/hypospray/medipen,
-		/obj/item/reagent_containers/food/snacks/deadmouse,
+		/obj/item/food/deadmouse,
 		/obj/item/food/monkeycube,
 		/obj/item/organ,
-		/obj/item/bodypart
+		/obj/item/bodypart,
+		/obj/item/petri_dish,
+		/obj/item/swab
 		))
 
 /*
@@ -468,3 +478,24 @@
 		/obj/item/electronics,
 		/obj/item/wallframe/camera
 		))
+
+/obj/item/storage/bag/harpoon_quiver
+	name = "harpoon quiver"
+	desc = "A quiver for holding harpoons."
+	icon_state = "quiver"
+	inhand_icon_state = "quiver"
+	worn_icon_state = "harpoon_quiver"
+
+/obj/item/storage/bag/harpoon_quiver/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_w_class = WEIGHT_CLASS_TINY
+	STR.max_items = 40
+	STR.max_combined_w_class = 100
+	STR.set_holdable(list(
+		/obj/item/ammo_casing/caseless/harpoon
+		))
+
+/obj/item/storage/bag/harpoon_quiver/PopulateContents()
+	for(var/i in 1 to 40)
+		new /obj/item/ammo_casing/caseless/harpoon(src)

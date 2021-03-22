@@ -58,6 +58,11 @@
 	can_be_sawn_off = TRUE
 	bolt_wording = "barrel"
 
+/obj/item/ammo_box/magazine/internal/shot/improvised
+	name = "improvised shotgun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/improvised
+	max_ammo = 1
+
 /obj/item/gun/ballistic/rifle/ishotgun/examine(mob/user)
 	. = ..()
 	. += "The barrel is [bolt_locked ? "broke open" : "closed"]."
@@ -113,8 +118,8 @@
 ////////////////////////
 
 /obj/item/gun/ballistic/automatic/cfa_rifle
-	name = "Canta 5.56 Rifle"
-	desc = "An old semi-automatic rifle used in a war long ago. Uses 5.56 bullets in a ten round magazine."
+	name = "Cantanheim 7.62 Rifle"
+	desc = "An old semi-automatic rifle used in a war long ago. Uses 7.62 bullets in a ten round magazine."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "cfa_rifle"
 	inhand_icon_state = "irifle"
@@ -123,8 +128,8 @@
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	worn_icon_state = null
-	mag_type = /obj/item/ammo_box/magazine/cm556
-	fire_delay = 10
+	mag_type = /obj/item/ammo_box/magazine/cm762
+	fire_delay = 5
 	can_suppress = FALSE
 	burst_size = 0
 	actions_types = list()
@@ -137,27 +142,20 @@
 	zoomable = TRUE
 	zoom_amt = 4
 	zoom_out_amt = 2
+	has_gun_safety = FALSE
+	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/ammo_box/magazine/cm556
-	name = "rifle magazine (5.56mm)"
+/obj/item/ammo_box/magazine/cm762
+	name = "rifle magazine (7.62mm)"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
-	icon_state = "5.56"
-	ammo_type = /obj/item/ammo_casing/a556
-	caliber = "a556"
+	icon_state = "7.62"
+	ammo_type = /obj/item/ammo_casing/a762
+	caliber = CALIBER_A762
 	max_ammo = 10
 	multiple_sprites = 2
 
-/obj/item/ammo_box/magazine/cm556/empty
+/obj/item/ammo_box/magazine/cm762/empty
 	start_empty = 1
-
-/obj/item/ammo_casing/a556/rubber
-	name = "5.56mm rubber bullet casing"
-	desc = "A 5.56mm rubber bullet casing."
-	caliber = "a556"
-	projectile_type = /obj/projectile/bullet/a556/rubber
-
-/obj/item/ammo_box/magazine/cm556/rubber
-	ammo_type = /obj/item/ammo_casing/a556/rubber
