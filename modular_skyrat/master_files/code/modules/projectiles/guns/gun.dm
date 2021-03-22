@@ -91,6 +91,11 @@
 	///if i`1t has an icon for a selector switch indicating current firemode.
 	var/selector_switch_icon = FALSE
 
+/datum/action/item_action/toggle_safety
+	name = "Toggle Safety"
+	icon_icon = 'modular_skyrat/modules/gunsafety/icons/hud/actions.dmi'
+	button_icon_state = "safety_on"
+
 /obj/item/gun/ui_action_click(mob/user, actiontype)
 	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
 		fire_select()
@@ -131,7 +136,6 @@
 	. = ..()
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
 		AddComponent(/datum/component/automatic_fire, fire_delay)
-
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -194,6 +198,8 @@
 			. += "<span class='info'>[bayonet] looks like it can be <b>unscrewed</b> from [src].</span>"
 	if(can_bayonet)
 		. += "It has a <b>bayonet</b> lug on it."
+	if(has_gun_safety)
+		. += "<span>The safety is [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
 
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
@@ -310,12 +316,6 @@
 		var/mob/living/L = user
 		if(!can_trigger_gun(L))
 			return
-		/*
-		if(has_gun_safety)
-			if(safety)
-				to_chat(user, "<span class='warning'>The safety is on!</span>")
-				return
-		*/
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 			handle_suicide(user, target, params)
@@ -362,6 +362,24 @@
 	. = ..()
 	if(!handle_pins(user))
 		return FALSE
+	if(has_gun_safety)
+		to_chat(user, )
+
+/obj/item/gun/proc/toggle_safety(mob/user, override)
+	if(!has_gun_safety)
+		return
+	if(override)
+		if(override == "off")
+			safety = FALSE
+		else
+			safety = TRUE
+	else
+		safety = !safety
+	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
+	tsafety.UpdateButtonIcon()
+	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
+	user.visible_message("<span class='notice'>[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].",
+	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>")
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
 	if(pin)
