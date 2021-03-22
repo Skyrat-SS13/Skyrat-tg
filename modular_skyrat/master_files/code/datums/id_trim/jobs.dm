@@ -1,14 +1,4 @@
 //MODULAR ID TRIM ACCESS OVERRIDES GO HERE!!
-
-/datum/id_trim/job/head_of_security
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-
-/datum/id_trim/job/warden
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-
-/datum/id_trim/job/security_officer
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-
 /datum/id_trim/job/head_of_security/New()
 	. = ..()
 
@@ -55,8 +45,7 @@
 
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_blueshield"
+	trim_state = "trim_command"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS, \
 			    ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_HEADS, ACCESS_CAPTAIN, \
 			    ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MORGUE, \
@@ -71,13 +60,12 @@
 
 /datum/id_trim/job/captain/shuttle_pilot
 	assignment = "Shuttle Pilot"
-	trim_state = "trim_shuttlepilot"
+	trim_state = "trim_command"
 	config_job = "shuttle pilot"
 
 /datum/id_trim/job/security_medic
 	assignment = "Security Medic"
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_securitymedic"
+	trim_state = "trim_secmed"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MECH_SECURITY, ACCESS_MORGUE, ACCESS_WEAPONS,
 				ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CHEMISTRY, ACCESS_GENETICS,
 				ACCESS_VIROLOGY, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
@@ -96,7 +84,7 @@
 /datum/id_trim/job/security_sergeant
 	assignment = "Security Sergeant"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_securitysergeant"
+	trim_state = "trim_security"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MECH_SECURITY, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE,
 				ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM, ACCESS_ENTER_GENPOP)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_MECH_SECURITY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM,

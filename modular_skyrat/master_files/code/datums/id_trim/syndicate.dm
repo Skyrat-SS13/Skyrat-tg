@@ -1,73 +1,60 @@
-/datum/id_trim/syndicom/skyrat
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-
-/datum/id_trim/syndicom/skyrat/crew
-	assignment = "Syndicate Operative"
-	trim_state = "trim_syndicateoperative"
-	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS)
-
-/datum/id_trim/syndicom/skyrat/captain
-	assignment = "Syndicate Ship Captain"
-	trim_state = "trim_syndicateshipcaptain"
-	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS)
-
 //DS-1
 
 /datum/id_trim/syndicom/skyrat/assault
 	assignment = "DS-1 Operative"
-	trim_state = "trim_syndicateoperative"
+	trim_state = "trim_syndicate"
 
 /datum/id_trim/syndicom/skyrat/assault/assistant
 	assignment = "Operative"
-	trim_state = "trim_syndicateassistant"
+	trim_state = "trim_security" // Keeping with the theme here, grey is service.
 
 /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 	assignment = "Syndicate Staff"
-	trim_state = "trim_syndicatestaff"
+	trim_state = "trim_security"
 
 /datum/id_trim/syndicom/skyrat/assault/researcher
 	assignment = "Researcher"
-	trim_state = "trim_researcher"
+	trim_state = "trim_science"
 
 /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
 	assignment = "Station Medical Officer"
-	trim_state = "trim_stationmedicalofficer"
+	trim_state = "trim_medical"
 
 /datum/id_trim/syndicom/skyrat/assault/masteratarms
 	assignment = "Master At Arms"
-	trim_state = "trim_masteratarms"
+	trim_state = "trim_syndicate" //Red is security.
 
 /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	assignment = "Brig Officer"
-	trim_state = "trim_brigofficer"
+	trim_state = "trim_syndicate"
 
 /datum/id_trim/syndicom/skyrat/assault/chiefmasteratarms
 	assignment = "Chief Master At Arms"
-	trim_state = "trim_chiefmasteratarms"
+	trim_state = "trim_command"
 
 /datum/id_trim/syndicom/skyrat/assault/chiefresearchofficer
 	assignment = "Chief Research Officer"
-	trim_state = "trim_chiefresearchofficer"
+	trim_state = "trim_command"
 
 /datum/id_trim/syndicom/skyrat/assault/chiefengineeringofficer
 	assignment = "Chief Engineering Officer"
-	trim_state = "trim_chiefengineeringofficer"
+	trim_state = "trim_command"
 	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE)
 
 /datum/id_trim/syndicom/skyrat/assault/stationadmiral
 	assignment = "Station Admiral"
-	trim_state = "trim_stationadmiral"
+	trim_state = "trim_command"
 
 //Interdyne
 
 /datum/id_trim/syndicom/skyrat/interdyne
 	assignment = "Interdyne Operative"
-	trim_state = "trim_syndicateoperative"
+	trim_state = "trim_syndicate"
 
 /datum/id_trim/syndicom/skyrat/interdyne/commsofficer
 	assignment = "Comms Officer"
-	trim_state = "trim_commsofficer"
+	trim_state = "trim_syndicate"
 
 /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
 	assignment = "Deck Officer"
-	trim_state = "trim_deckofficer"
+	trim_state = "trim_command"

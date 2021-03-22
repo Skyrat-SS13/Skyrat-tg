@@ -146,7 +146,7 @@
 
 /datum/id_trim/centcom/armadyne
 	assignment = "Armadyne Corporate"
-	trim_state = "trim_ert_commander"
+	trim_state = "trim_armadyne"
 
 /datum/id_trim/centcom/armadyne/New()
 	. = ..()
@@ -158,14 +158,14 @@
 
 /datum/id_trim/centcom/armadyne/security
 	assignment = "Armadyne Corporate Security Detail"
-	trim_state = "trim_ert_commander"
+	trim_state = "trim_armadyne"
 
 /obj/item/card/id/advanced/armadyne/agent
 	trim = /datum/id_trim/centcom/armadyne/agent
 
 /datum/id_trim/centcom/armadyne/agent
 	assignment = "Armadyne Corporate Directorate"
-	trim_state = "trim_ert_commander"
+	trim_state = "trim_armadyne"
 
 /datum/outfit/armadyne_rep/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
