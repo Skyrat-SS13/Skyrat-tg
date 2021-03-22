@@ -148,3 +148,11 @@
 	if(has_ammo_display)
 		AddComponent(/datum/component/ammo_hud)
 
+/obj/item/gun/energy/ComponentInitialize()
+	. = ..()
+	if(cell)
+		AddComponent(/datum/component/ammo_hud)
+
+/obj/item/weldingtool/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/ammo_hud)
