@@ -25,7 +25,6 @@
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
-
 /datum/outfit/job/junior_officer
 	name = "Junior Security Officer"
 	jobtype = /datum/job/junior_officer
@@ -56,6 +55,11 @@
 	implants = list(/obj/item/implant/mindshield)
 
 	id_trim = /datum/id_trim/job/junior_officer
+
+/datum/outfit/job/junior_officer/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	if(prob(1))
+		ADD_TRAIT(H, TRAIT_CLUMSY, ROUNDSTART_TRAIT)
 
 /obj/effect/landmark/start/junior_officer
 	name = "Junior Security officer"
