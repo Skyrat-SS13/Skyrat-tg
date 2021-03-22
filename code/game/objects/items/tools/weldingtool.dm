@@ -89,7 +89,7 @@
 			burned_fuel_for += delta_time
 			if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
 				use(1)
-				SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
+			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 			update_appearance()
 
 	//This is to start fires. process() is only called if the welder is on.
@@ -210,6 +210,7 @@
 	. = welding
 	welding = new_value
 	set_light_on(welding)
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 
 //Turns off the welder if there is no more fuel (does this really need to be its own proc?)
