@@ -13,6 +13,12 @@
 /obj/item/card/emag/halloween
 	icon = 'icons/obj/card.dmi' //So the sprite isn't invisible
 
+/obj/item/card/id/advanced/gold
+	assigned_icon_state = "assigned_gold"
+
+/obj/item/card/id/advanced/silver
+	assigned_icon_state = "assigned_silver"
+
 //TRIMS//
 
 /datum/id_trim
