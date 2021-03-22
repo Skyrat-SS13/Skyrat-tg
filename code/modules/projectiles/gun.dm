@@ -1,4 +1,4 @@
-/* SKYRAT EDIT - MOVED TO MODULAR GUN.DM
+
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 #define FIRING_PIN_REMOVAL_DELAY 50
 
@@ -77,6 +77,29 @@
 	var/zoom_out_amt = 0
 	var/datum/action/toggle_scope_zoom/azoom
 	var/pb_knockback = 0
+	//SKYRAT EDIT ADDITION BEGIN
+	var/safety = FALSE ///Internal variable for keeping track whether the safety is on or off
+	var/has_gun_safety = FALSE ///Whether the gun actually has a gun safety
+	var/datum/action/item_action/toggle_safety/tsafety
+
+
+	var/datum/action/item_action/toggle_firemode/firemode_action
+	///Current fire selection, can choose between burst, single, and full auto.
+	var/fire_select = SELECT_SEMI_AUTOMATIC
+	var/fire_select_index = 1
+	///What modes does this weapon have? Put SELECT_FULLY_AUTOMATIC in here to enable fully automatic behaviours.
+	var/list/fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	///if i`1t has an icon for a selector switch indicating current firemode.
+	var/selector_switch_icon = FALSE
+
+/obj/item/gun/ui_action_click(mob/user, actiontype)
+	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
+		fire_select()
+	else if(istype(actiontype, tsafety))
+		toggle_safety(user)
+	else
+		..()
+//SKYRAT EDIT END
 
 /obj/item/gun/Initialize()
 	. = ..()
@@ -85,6 +108,29 @@
 	if(gun_light)
 		alight = new(src)
 	build_zooming()
+
+//SKYRAT EDIT ADDITION BEGIN
+	if(has_gun_safety)
+		safety = TRUE
+		tsafety = new(src)
+
+	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
+		fire_select_modes.Add(SELECT_BURST_SHOT)
+	else if(burst_size <= 1 && (SELECT_BURST_SHOT in fire_select_modes))
+		fire_select_modes.Remove(SELECT_BURST_SHOT)
+
+	sortList(fire_select_modes, /proc/cmp_numeric_asc)
+
+	if(fire_select_modes.len > 1)
+		firemode_action = new(src)
+		firemode_action.button_icon_state = "fireselect_[fire_select]"
+		firemode_action.UpdateButtonIcon()
+
+/obj/item/gun/ComponentInitialize()
+	. = ..()
+	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
+		AddComponent(/datum/component/automatic_fire, fire_delay)
+//SKYRAT EDIT  END
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -148,6 +194,40 @@
 	. = ..()
 	if(zoomed && user.get_active_held_item() != src)
 		zoom(user, user.dir, FALSE) //we can only stay zoomed in if it's in our hands //yeah and we only unzoom if we're actually zoomed using the gun!!
+
+//SKYRAT EDIT ADDITION BEGIN
+/obj/item/gun/proc/fire_select()
+	var/mob/living/carbon/human/user = usr
+
+	var/max_mode = fire_select_modes.len
+
+	if(max_mode <= 1)
+		to_chat(user, "<span class='warning'>[src] is not capable of switching firemodes!</span>")
+		return
+
+	fire_select_index = 1 + fire_select_index % max_mode //Magic math to cycle through this shit!
+
+	fire_select = fire_select_modes[fire_select_index]
+
+	switch(fire_select)
+		if(SELECT_SEMI_AUTOMATIC)
+			burst_size = 1
+			fire_delay = 0
+			to_chat(user, "<span class='notice'>You switch [src] to semi-automatic.</span>")
+		if(SELECT_BURST_SHOT)
+			burst_size = initial(burst_size)
+			fire_delay = initial(fire_delay)
+			to_chat(user, "<span class='notice'>You switch [src] to [burst_size]-round burst.</span>")
+		if(SELECT_FULLY_AUTOMATIC)
+			burst_size = 1
+			to_chat(user, "<span class='notice'>You switch [src] to automatic.</span>")
+
+	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
+	update_appearance()
+	firemode_action.button_icon_state = "fireselect_[fire_select]"
+	firemode_action.UpdateButtonIcon()
+	return TRUE
+//SKYRAT EDIT END
 
 //called after the gun has successfully fired its chambered ammo.
 /obj/item/gun/proc/process_chamber()
@@ -227,6 +307,11 @@
 		var/mob/living/L = user
 		if(!can_trigger_gun(L))
 			return
+		//SKYRAT EDIT ADDITION
+		if(has_gun_safety)
+			if(safety)
+				to_chat(user, "<span class='warning'>The safety is on!</span>")
+				return
 
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
@@ -718,4 +803,3 @@
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
-*/
