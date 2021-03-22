@@ -93,6 +93,8 @@
 	//This is to start fires. process() is only called if the welder is on.
 	open_flame()
 
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
+
 
 /obj/item/weldingtool/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] welds [user.p_their()] every orifice closed! It looks like [user.p_theyre()] trying to commit suicide!</span>")

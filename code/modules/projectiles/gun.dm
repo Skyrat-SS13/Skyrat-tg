@@ -378,6 +378,8 @@
 		user.update_inv_hands()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
 
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
+
 	return TRUE
 
 /obj/item/gun/proc/reset_semicd()

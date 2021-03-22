@@ -1,6 +1,17 @@
 /////////////////////////
 //Customizable ammo hud//
 /////////////////////////
+
+/*
+This hud is controlled namely by the ammo_hud component. Generally speaking this is inactive much like all other hud components until it's needed.
+It does not do any calculations of it's own, you must do this externally.
+If you wish to use this hud, use the ammo_hud component or create another one which interacts with it via the below procs.
+proc/turn_off
+proc/turn_on
+proc/set_hud
+Check the gun_hud.dmi for all available icons you can use.
+*/
+
 /atom/movable/screen/ammo_counter
 	name = "ammo counter"
 	icon = 'modular_skyrat/modules/gunhud/icons/hud/gun_hud.dmi'
@@ -8,21 +19,39 @@
 	screen_loc = ui_ammocounter
 	invisibility = INVISIBILITY_ABSTRACT
 
+	///This is the color assigned to the OTH backing, numbers and indicator.
 	var/backing_color = COLOR_RED
+	///This is the "backlight" of the numbers, and only the numbers. Generally you should leave this alone if you aren't making some mutant project.
 	var/oth_backing = "oth_light"
+
+	//Below are the OTH numbers, these are assigned by oX, tX and hX, x being the number you wish to display(0-9)
+	///OTH position X00
 	var/oth_o
+	///OTH position 0X0
 	var/oth_t
+	///OTH position 00X
 	var/oth_h
+	///This is the custom indicator sprite that will appear in the box at the bottom of the ammo hud, use this for something like semi/auto toggle on a gun.
 	var/indicator
 
+///This proc simply resets the hud to standard and removes it from the players visible hud.
 /atom/movable/screen/ammo_counter/proc/turn_off()
 	invisibility = INVISIBILITY_ABSTRACT
 	maptext = null
+	backing_color = COLOR_RED
+	oth_backing = ""
+	oth_o = ""
+	oth_t = ""
+	oth_h = ""
+	indicator = ""
+	update_appearance()
 
+///This proc turns the hud on, but does not set it to anything other than the currently set values
 /atom/movable/screen/ammo_counter/proc/turn_on()
 	invisibility = 0
 
-/atom/movable/screen/ammo_counter/proc/set_hud(_backing_color, _oth_o, _oth_t, _oth_h, _indicator, _oth_backing = "backing")
+///This is the main proc for altering the hud's appeareance, it controls the setting of the overlays. Use the OTH and below variables to set it accordingly.
+/atom/movable/screen/ammo_counter/proc/set_hud(_backing_color, _oth_o, _oth_t, _oth_h, _indicator, _oth_backing = "oth_light")
 	backing_color = _backing_color
 	oth_backing = _oth_backing
 	oth_o = _oth_o
@@ -30,11 +59,10 @@
 	oth_h = _oth_h
 	indicator = _indicator
 
-	update_overlays()
+	update_appearance()
 
 /atom/movable/screen/ammo_counter/update_overlays()
 	. = ..()
-	cut_overlays()
 	if(oth_backing)
 		var/mutable_appearance/oth_backing_overlay = mutable_appearance(icon, oth_backing)
 		oth_backing_overlay.color = backing_color
@@ -56,79 +84,3 @@
 		indicator_overlay.color = backing_color
 		. += indicator_overlay
 
-/*
-//ENERGY GUNS
-/atom/movable/screen/ammo_counter/proc/gun_energy(var/obj/item/gun/energy/pew)
-	if(!istype(pew, /obj/item/gun/energy))
-		return
-
-	cut_overlays()
-
-	icon_state = "eammo_counter"
-
-	maptext_x = -12
-
-
-	var/obj/item/ammo_casing/energy/shot = pew.ammo_type[pew.select]
-	var/batt_percent = FLOOR(clamp(pew.cell.charge / pew.cell.maxcharge, 0, 1) * 100, 1)
-	var/shot_cost_percent = FLOOR(clamp(shot.e_cost / pew.cell.maxcharge, 0, 1) * 100, 1)
-
-	if(batt_percent > 99 || shot_cost_percent > 99)
-		maptext_x = -12
-	else
-		maptext_x = -8
-
-	if(!pew.can_shoot())
-		icon_state = "eammo_counter_empty"
-		maptext = "<span class='maptext'><div align='center' valign='middle' style='position:relative'><font color='[COLOR_RED]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div></span>"
-		return
-
-	if(batt_percent <= 25)
-		maptext = "<span class='maptext'><div align='center' valign='middle' style='position:relative'><font color='[COLOR_YELLOW]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div></span>"
-		return
-	maptext = "<span class='maptext'><div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'><b>[batt_percent]%</b></font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div></span>"
-
-//WELDER
-/atom/movable/screen/ammo_counter/proc/welder(var/obj/item/weldingtool/welder)
-	if(!istype(welder, /obj/item/weldingtool))
-		turn_off()
-		return
-
-	backing_color = COLOR_TAN_ORANGE
-
-	mode = MODE_WELDER
-
-	icon_state = "backing"
-
-	if(welder.get_fuel() < 1)
-		oth_o = "oe"
-		oth_t = "te"
-		oth_h = "he"
-		indicator = "empty_flash"
-		update_icon()
-		return
-
-	if(welder.welding)
-		indicator = "flame_on"
-	else
-		indicator = "flame_off"
-
-	var/fuel = num2text(welder.get_fuel())
-	to_chat(usr, "[fuel]")
-	switch(length(fuel))
-		if(1)
-			oth_o = "o[fuel[1]]"
-		if(2)
-			oth_o = "o[fuel[2]]"
-			oth_t = "t[fuel[1]]"
-		if(3)
-			oth_o = "o[fuel[3]]"
-			oth_t = "t[fuel[2]]"
-			oth_h = "h[fuel[1]]"
-		else
-			oth_o = "o9"
-			oth_t = "t9"
-			oth_h = "h9"
-	update_icon()
-
-*/

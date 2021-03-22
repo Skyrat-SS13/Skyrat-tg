@@ -12,4 +12,4 @@
 
 //Gun signals
 ///The gun needs to update the gun hud!
-#define COMSIG_GUN_UPDATE_HUD "gun_update_hud"
+#define COMSIG_UPDATE_AMMO_HUD "gun_update_hud"
