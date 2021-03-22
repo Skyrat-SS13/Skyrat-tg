@@ -223,16 +223,16 @@
 		if(SELECT_SEMI_AUTOMATIC)
 			burst_size = 1
 			fire_delay = 0
-			SEND_SIGNAL(src, COMSIG_AUTOFIRE_DESELECTED, user)
+			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_DESELECTED, user)
 			to_chat(user, "<span class='notice'>You switch [src] to semi-automatic.</span>")
 		if(SELECT_BURST_SHOT)
 			burst_size = initial(burst_size)
 			fire_delay = initial(fire_delay)
-			SEND_SIGNAL(src, COMSIG_AUTOFIRE_DESELECTED, user)
+			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_DESELECTED, user)
 			to_chat(user, "<span class='notice'>You switch [src] to [burst_size]-round burst.</span>")
 		if(SELECT_FULLY_AUTOMATIC)
 			burst_size = 1
-			SEND_SIGNAL(src, COMSIG_AUTOFIRE_SELECTED, user)
+			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_SELECTED, user)
 			to_chat(user, "<span class='notice'>You switch [src] to automatic.</span>")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
