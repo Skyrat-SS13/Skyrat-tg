@@ -178,3 +178,6 @@
 
 //Families
 #define ui_wanted_lvl "NORTH,11"
+
+//SKYRAT HUD DEFINES BELOW
+#define ui_ammocounter "EAST-1:28,CENTER-5:9"

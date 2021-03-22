@@ -1,3 +1,3 @@
 //Skyrat hud defines
 /datum/hud
-	var/obj/screen/ammo_counter
+	var/atom/movable/screen/ammo_counter

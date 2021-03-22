@@ -7,3 +7,9 @@
 
 //Horror form bombastic flag
 #define COMSIG_HORRORFORM_EXPLODE "horrorform_explode"
+
+
+
+//Gun signals
+///The gun needs to update the gun hud!
+#define COMSIG_GUN_UPDATE_HUD "gun_update_hud"
