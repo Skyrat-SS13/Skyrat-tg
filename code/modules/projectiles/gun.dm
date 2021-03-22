@@ -145,7 +145,7 @@
 		QDEL_NULL(azoom)
 	if(suppressed)
 		QDEL_NULL(suppressed)
-	. = ..()
+	. = ..() //SKYRAT EDIT CHANGE
 
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == pin)
