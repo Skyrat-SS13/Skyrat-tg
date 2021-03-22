@@ -219,23 +219,20 @@
 
 	fire_select = fire_select_modes[fire_select_index]
 
-	var/datum/component/automatic_fire/autofire = GetComponent(/datum/component/automatic_fire)
-
-	SEND_SIGNAL(autofire, COMSIG_AUTOFIRE_DESELECTED)
-
 	switch(fire_select)
 		if(SELECT_SEMI_AUTOMATIC)
 			burst_size = 1
 			fire_delay = 0
+			SEND_SIGNAL(src, COMSIG_AUTOFIRE_DESELECTED, user)
 			to_chat(user, "<span class='notice'>You switch [src] to semi-automatic.</span>")
 		if(SELECT_BURST_SHOT)
 			burst_size = initial(burst_size)
 			fire_delay = initial(fire_delay)
+			SEND_SIGNAL(src, COMSIG_AUTOFIRE_DESELECTED, user)
 			to_chat(user, "<span class='notice'>You switch [src] to [burst_size]-round burst.</span>")
 		if(SELECT_FULLY_AUTOMATIC)
 			burst_size = 1
-
-			SEND_SIGNAL(autofire, COMSIG_AUTOFIRE_SELECTED)
+			SEND_SIGNAL(src, COMSIG_AUTOFIRE_SELECTED, user)
 			to_chat(user, "<span class='notice'>You switch [src] to automatic.</span>")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
@@ -368,7 +365,7 @@
 	. = ..()
 	if(!handle_pins(user))
 		return FALSE
-	if(has_gun_safety)
+	if(has_gun_safety && safety)
 		to_chat(user, "<span class='warning'>The safety is on!</span>")
 		return FALSE
 
