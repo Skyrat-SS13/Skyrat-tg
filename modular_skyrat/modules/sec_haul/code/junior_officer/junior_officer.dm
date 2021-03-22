@@ -58,7 +58,7 @@
 
 /datum/outfit/job/junior_officer/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
-	if(prob(1))
+	if(prob(1)) //HURR DURR I BATONG SELF
 		ADD_TRAIT(H, TRAIT_CLUMSY, ROUNDSTART_TRAIT)
 
 /obj/effect/landmark/start/junior_officer

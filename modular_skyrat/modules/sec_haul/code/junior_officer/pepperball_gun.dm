@@ -35,6 +35,8 @@
 
 /obj/projectile/bullet/pepperball
 	name = "pepperball orb"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
+	icon_state = "pepperball"
 	damage = 0
 	stamina = 5
 	nodamage = TRUE
