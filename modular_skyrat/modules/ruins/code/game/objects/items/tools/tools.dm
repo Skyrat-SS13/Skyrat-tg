@@ -23,7 +23,8 @@
 	icon = 'modular_skyrat/modules/ruins/icons/obj/advancedtools.dmi'
 	icon_state = "welder"
 	toolspeed = 0.2
-	light_intensity = 0
+	light_system = NO_LIGHT_SUPPORT
+	light_range = 0
 	change_icons = 0
 
 /obj/item/weldingtool/advanced/process()
@@ -37,7 +38,7 @@
 	desc = "A classy silver screwdriver with an alien alloy tip, it works almost as well as the real thing. There's a sticker attached declaring that it needs updating from 'the latest samples'."
 	icon = 'modular_skyrat/modules/ruins/icons/obj/advancedtools.dmi'
 	icon_state = "screwdriver_a"
-	item_state = "screwdriver_nuke"
+	inhand_icon_state = "screwdriver_nuke"
 	usesound = 'sound/items/pshoom.ogg'
 	toolspeed = 0.2
 	random_color = FALSE
