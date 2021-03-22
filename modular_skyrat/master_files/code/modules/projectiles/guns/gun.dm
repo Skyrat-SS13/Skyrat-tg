@@ -97,7 +97,7 @@
 	///The modifying nomag state for inhand sprites. Leave as don't change unless you need to.
 	var/alt_icon_nomag_state = "_nomag"
 	///The modifying mag state for inhand sprites. Leave as don't change unless you need to.
-	var/alt_icon_nomag_state = ""
+	var/alt_icon_mag_state = ""
 
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"

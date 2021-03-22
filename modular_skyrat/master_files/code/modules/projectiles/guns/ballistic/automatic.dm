@@ -177,11 +177,9 @@
 	icon_state = "l6"
 	inhand_icon_state = "l6"
 	base_icon_state = "l6"
-	//SKYRAT EDIT ADDITION BEGIN
 	alt_icons = TRUE
 	alt_icon_nomag_state = "nomag"
 	alt_icon_mag_state = "mag"
-	//SKYRAT EDIT END
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = 0
 	mag_type = /obj/item/ammo_box/magazine/mm712x82
@@ -203,13 +201,6 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/unrestricted
 	pin = /obj/item/firing_pin
-
-/*
-/obj/item/gun/ballistic/automatic/l6_saw/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS) SKYRAT EDIT REMOVAL
-*/
 
 /obj/item/gun/ballistic/automatic/l6_saw/examine(mob/user)
 	. = ..()
