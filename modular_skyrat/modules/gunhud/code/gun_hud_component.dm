@@ -1,18 +1,19 @@
 /datum/component/gun_hud
+	var/atom/movable/screen/ammo_counter/hud
 
 /datum/component/gun_hud/Initialize()
 	. = ..()
 	if(!istype(parent, /obj/item/gun/ballistic))
 		return COMPONENT_INCOMPATIBLE
-	var/obj/item/gun/ballistic/G = parent
+	var/obj/item/gun/ballistic = parent
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
-	if(ismob(G.loc))
-		var/mob/user = G.loc
+	if(ismob(ballistic.loc))
+		var/mob/user = ballistic.loc
 		wake_up(src, user)
 
 /datum/component/gun_hud/Destroy()
 	turn_off()
-	. = ..()
+	return ..()
 
 /datum/component/gun_hud/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
@@ -22,6 +23,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.is_holding(parent))
+			hud = H.hud_used.ammo_counter
 			turn_on(user)
 		else
 			turn_off(user)
@@ -30,8 +32,6 @@
 	SIGNAL_HANDLER
 
 	RegisterSignal(parent, COMSIG_GUN_UPDATE_HUD, .proc/update_hud)
-
-	var/atom/movable/screen/ammo_counter/hud = user.hud_used.ammo_counter
 
 	hud.turn_on()
 
@@ -42,15 +42,13 @@
 
 	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED, COMSIG_GUN_UPDATE_HUD))
 
-	var/atom/movable/screen/ammo_counter/hud = user.hud_used.ammo_counter
-
 	hud.turn_off()
+
+	hud = null
 
 /datum/component/gun_hud/proc/update_hud(mob/user)
 	if(!ishuman(user))
 		turn_off()
-
-	var/atom/movable/screen/ammo_counter/hud = user.hud_used.ammo_counter
 
 	var/obj/item/gun/ballistic/pew = parent
 

@@ -29,6 +29,8 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/atom/movable/screen/ling/chems/lingchemdisplay
 	var/atom/movable/screen/ling/sting/lingstingdisplay
 
+	var/atom/movable/screen/ammo_counter //SKYRAT EDIT ADDITION
+
 	var/atom/movable/screen/blobpwrdisplay
 
 	var/atom/movable/screen/alien_plasma_display
@@ -42,8 +44,6 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/atom/movable/screen/rest_icon
 	var/atom/movable/screen/throw_icon
 	var/atom/movable/screen/module_store_icon
-
-	var/atom/movable/screen/ammo_counter //SKYRAT EDIT ADDITION
 
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden

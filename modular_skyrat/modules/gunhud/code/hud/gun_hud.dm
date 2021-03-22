@@ -2,11 +2,11 @@
 //Customizable ammo hud//
 /////////////////////////
 /atom/movable/screen/ammo_counter
-	name = "ammo_counter"
+	name = "ammo counter"
 	icon = 'modular_skyrat/modules/gunhud/icons/hud/gun_hud.dmi'
 	icon_state = "backing"
 	screen_loc = ui_ammocounter
-	invisibility = 0
+	invisibility = INVISIBILITY_ABSTRACT
 
 	var/backing_color = COLOR_RED
 	var/oth_backing = "oth_light"
@@ -23,15 +23,6 @@
 	invisibility = 0
 
 /atom/movable/screen/ammo_counter/proc/set_hud(_backing_color, _oth_o, _oth_t, _oth_h, _indicator, _oth_backing = "backing")
-	if(isobserver(usr))
-		return FALSE
-	if(!usr.mind)
-		return FALSE
-	if(!usr.hud_used)
-		return FALSE
-	if(!usr.hud_used.ammo_counter)
-		return FALSE
-
 	backing_color = _backing_color
 	oth_backing = _oth_backing
 	oth_o = _oth_o
