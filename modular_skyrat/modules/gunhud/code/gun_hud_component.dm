@@ -141,7 +141,12 @@
 		hud.set_hud(backing_color, oth_o, oth_t, oth_h, indicator)
 
 /obj/item/gun/ballistic
-	var/has_ammo_display = TRUE
+	var/has_ammo_display = FALSE
+
+/obj/item/gun/ballistic/automatic
+	has_ammo_display = TRUE
+/obj/item/gun/ballistic/shotgun/bulldog
+	has_ammo_display = TRUE
 
 /obj/item/gun/ballistic/ComponentInitialize()
 	. = ..()
@@ -150,7 +155,6 @@
 
 /obj/item/gun/energy/ComponentInitialize()
 	. = ..()
-	if(cell)
 		AddComponent(/datum/component/ammo_hud)
 
 /obj/item/weldingtool/ComponentInitialize()
