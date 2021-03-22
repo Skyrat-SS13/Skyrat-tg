@@ -145,6 +145,7 @@
 
 /obj/item/gun/ballistic/automatic
 	has_ammo_display = TRUE
+
 /obj/item/gun/ballistic/shotgun/bulldog
 	has_ammo_display = TRUE
 
@@ -155,7 +156,7 @@
 
 /obj/item/gun/energy/ComponentInitialize()
 	. = ..()
-		AddComponent(/datum/component/ammo_hud)
+	AddComponent(/datum/component/ammo_hud)
 
 /obj/item/weldingtool/ComponentInitialize()
 	. = ..()
