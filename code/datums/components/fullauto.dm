@@ -20,6 +20,7 @@
 	var/obj/item/gun = parent
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
 	RegisterSignal(parent, COMSIG_GUN_AUTOFIRE_SELECTED, .proc/wake_up) //SKYRAT EDIT ADDITION
+	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), .proc/autofire_off) //SKYRAT EDIT CHANGE
 	if(_autofire_shot_delay)
 		autofire_shot_delay = _autofire_shot_delay
 	if(ismob(gun.loc))
@@ -28,6 +29,7 @@
 
 
 /datum/component/automatic_fire/Destroy()
+	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED))
 	autofire_off()
 	return ..()
 
@@ -49,8 +51,6 @@
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
 		stop_autofiring() //Let's stop shooting to avoid issues.
 		return
-
-	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), .proc/autofire_off) //SKYRAT EDIT CHANGE
 
 	var/obj/item/gun/G = parent //SKYRAT EDIT ADDITION
 
@@ -93,7 +93,6 @@
 	RegisterSignal(shooter, COMSIG_MOB_LOGIN, .proc/on_client_login)
 	if(!QDELETED(shooter))
 		UnregisterSignal(shooter, COMSIG_MOB_LOGOUT)
-	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED))
 	shooter = null
 	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
 	parent.UnregisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN)
