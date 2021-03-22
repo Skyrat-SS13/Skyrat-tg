@@ -491,8 +491,8 @@
 	if(off_station < 2)
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
-	explosion(src, 50, 70, 80, 100, TRUE, TRUE) //SKYRAT EDIT ADDITION
-	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) //SKYRAT EDIT ADDITION
+
+	KillEveryoneOnZLevel(z) //SKYRAT EDIT ADDITION
 
 	//Cinematic
 	SSticker.mode.OnNukeExplosion(off_station)
@@ -501,6 +501,7 @@
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
+	explosion(src, 40, 50, 70, 80, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	//INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) SKYRAT EDIT REMOVAL
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
