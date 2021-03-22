@@ -18,7 +18,8 @@
 	if(!isgun(parent))
 		return COMPONENT_INCOMPATIBLE
 	var/obj/item/gun = parent
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
+	//RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up) SKYRAT EDIT REMOVAL
+	RegisterSignal(parent, COMSIG_AUTOFIRE_SELECTED, .proc/wake_up)
 	if(_autofire_shot_delay)
 		autofire_shot_delay = _autofire_shot_delay
 	if(ismob(gun.loc))
@@ -49,7 +50,7 @@
 		stop_autofiring() //Let's stop shooting to avoid issues.
 		return
 
-	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED), .proc/autofire_off)
+	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_AUTOFIRE_DESELECTED), .proc/autofire_off) //SKYRAT EDIT CHANGE
 
 	if(iscarbon(user))
 		var/mob/living/carbon/shooter = user

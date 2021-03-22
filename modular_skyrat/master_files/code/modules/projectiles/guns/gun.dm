@@ -219,6 +219,10 @@
 
 	fire_select = fire_select_modes[fire_select_index]
 
+	var/datum/component/automatic_fire/autofire = GetComponent(/datum/component/automatic_fire)
+
+	SEND_SIGNAL(autofire, COMSIG_AUTOFIRE_DESELECTED)
+
 	switch(fire_select)
 		if(SELECT_SEMI_AUTOMATIC)
 			burst_size = 1
@@ -230,6 +234,8 @@
 			to_chat(user, "<span class='notice'>You switch [src] to [burst_size]-round burst.</span>")
 		if(SELECT_FULLY_AUTOMATIC)
 			burst_size = 1
+
+			SEND_SIGNAL(autofire, COMSIG_AUTOFIRE_SELECTED)
 			to_chat(user, "<span class='notice'>You switch [src] to automatic.</span>")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
