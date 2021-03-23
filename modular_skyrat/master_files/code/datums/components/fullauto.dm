@@ -39,7 +39,7 @@
 	stack_trace("PROCESS: pre-fired.")
 	if(!(autofire_stat & AUTOFIRE_STAT_FIRING))
 		stack_trace("PROCESS: AUTOFIRE_STAT_FIRING, stop processing called.")
-		STOP_PROCESSING(SSprojectiles, src)
+		STOP_PROCESSING(SSfastprocess, src)
 		return
 
 	if(!COOLDOWN_FINISHED(src, next_shot_cd))
@@ -193,7 +193,7 @@
 		stack_trace("START AUTOFIRING: process_shot(), first shot is processed instantly. return.")
 		return //If it fails, such as when the gun is empty, then there's no need to schedule a second shot.
 	stack_trace("START AUTOFIRING: START_PROCESSING.")
-	START_PROCESSING(SSprojectiles, src)
+	START_PROCESSING(SSfastprocess, src)
 	RegisterSignal(clicker, COMSIG_CLIENT_MOUSEDRAG, .proc/on_mouse_drag)
 
 
@@ -214,7 +214,7 @@
 			stack_trace("STOP AUTOFIRING: autofire_stat check, process not stopped. Return.")
 			return
 	stack_trace("STOP AUTOFIRING: STOP_PROCESSING.")
-	STOP_PROCESSING(SSprojectiles, src)
+	STOP_PROCESSING(SSfastprocess, src)
 	autofire_stat = AUTOFIRE_STAT_ALERT
 	if(clicker)
 		clicker.mouse_override_icon = null
