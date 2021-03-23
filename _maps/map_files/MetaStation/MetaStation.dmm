@@ -5812,10 +5812,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/brig)
-"avj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "avk" = (
 /turf/open/floor/iron/dark,
 /area/security/brig)
@@ -6123,66 +6119,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/brig)
-"awu" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security{
-	name = "Interrogation";
-	req_access_txt = "63"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"awv" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"aww" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"awx" = (
-/obj/structure/table,
-/obj/item/flashlight/lamp,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"awy" = (
-/obj/structure/chair{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"awz" = (
-/obj/machinery/camera{
-	c_tag = "Interrogation room";
-	dir = 8;
-	network = list("interrogation")
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "awA" = (
 /obj/effect/loot_site_spawner,
 /turf/open/floor/plating,
@@ -6424,37 +6360,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/courtroom)
-"axy" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"axz" = (
-/obj/structure/table,
-/obj/item/folder/red,
-/obj/item/taperecorder,
-/obj/item/radio/intercom{
-	broadcasting = 1;
-	frequency = 1423;
-	listening = 0;
-	name = "Interrogation Intercom";
-	pixel_y = -24
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"axA" = (
-/obj/structure/chair{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"axB" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "axL" = (
 /obj/item/caution,
 /obj/effect/turf_decal/stripes/line{
@@ -8039,6 +7944,46 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/port)
+<<<<<<< HEAD
+=======
+"aGR" = (
+/obj/item/radio/intercom{
+	pixel_y = -26
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
+	dir = 4;
+	name = "Cargo Deliveries"
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/hallway/primary/fore)
+"aGZ" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/heater/on{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "aHc" = (
 /obj/structure/filingcabinet,
 /obj/structure/disposalpipe/segment,
@@ -8060,34 +8005,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/turf/open/floor/iron,
-/area/security/checkpoint/supply)
-"aHf" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/obj/effect/landmark/start/depsec/supply,
-/turf/open/floor/iron,
-/area/security/checkpoint/supply)
-"aHg" = (
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/effect/landmark/start/depsec/supply,
-/turf/open/floor/iron,
-/area/security/checkpoint/supply)
-"aHh" = (
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/obj/machinery/power/apc/auto_name/east,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/obj/effect/landmark/start/depsec/supply,
 /turf/open/floor/iron,
 /area/security/checkpoint/supply)
 "aHj" = (
@@ -8286,16 +8203,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/turf/open/floor/iron,
-/area/security/checkpoint/supply)
-"aIp" = (
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 30
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
-/obj/effect/landmark/start/depsec/supply,
 /turf/open/floor/iron,
 /area/security/checkpoint/supply)
 "aIs" = (
@@ -9662,6 +9569,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/cafeteria)
+"aSt" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/science/mixing)
 "aSD" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -15272,6 +15189,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /turf/open/floor/iron,
 /area/science/mixing)
+<<<<<<< HEAD
 "btD" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -15289,6 +15207,17 @@
 /obj/effect/landmark/start/depsec/engineering,
 /turf/open/floor/iron,
 /area/security/checkpoint/engineering)
+=======
+"btu" = (
+/obj/machinery/vending/modularpc,
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/iron/white,
+/area/science/research)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "btK" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -15541,23 +15470,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/main)
-"bvl" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/machinery/newscaster/security_unit{
-	pixel_y = -30
-	},
-/obj/effect/landmark/start/depsec/engineering,
-/turf/open/floor/iron,
-/area/security/checkpoint/engineering)
 "bvm" = (
 /obj/machinery/vending/wardrobe/cargo_wardrobe,
 /obj/effect/turf_decal/tile/brown{
@@ -15968,6 +15880,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"bxZ" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/engineering/main)
 "byu" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/light/small{
@@ -17513,6 +17431,18 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+<<<<<<< HEAD
+=======
+"bIb" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/science/mixing)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "bIj" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -20414,35 +20344,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/turf/open/floor/iron/white,
-/area/security/checkpoint/medical)
-"caf" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
-/obj/effect/landmark/start/depsec/medical,
-/turf/open/floor/iron/white,
-/area/security/checkpoint/medical)
-"cag" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/machinery/button/door{
-	id = "medsecprivacy";
-	name = "Privacy Shutters Control";
-	pixel_x = 24;
-	pixel_y = -4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/obj/effect/landmark/start/depsec/medical,
 /turf/open/floor/iron/white,
 /area/security/checkpoint/medical)
 "can" = (
@@ -24042,6 +23943,22 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
+"cqD" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/machinery/power/apc/auto_name/south,
+/obj/effect/landmark/start/depsec/engineering,
+/turf/open/floor/iron,
+/area/security/checkpoint/engineering)
 "cqH" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/blue,
@@ -24467,6 +24384,26 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/medical/central)
+"csJ" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/obj/machinery/camera{
+	c_tag = "Atmospherics - Port-Aft";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/trinary/filter/atmos/co2,
+/turf/open/floor/iron/dark/corner{
+	dir = 1
+	},
+/area/engineering/atmos)
 "csT" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/cable,
@@ -25128,6 +25065,7 @@
 "cyr" = (
 /turf/open/floor/iron,
 /area/science/robotics/mechbay)
+<<<<<<< HEAD
 "cyC" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -25136,6 +25074,25 @@
 /mob/living/simple_animal/hostile/retaliate/bat/sgt_araneus,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
+=======
+"cyE" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/landmark/start/depsec/medical,
+/turf/open/floor/iron/white,
+/area/security/checkpoint/medical)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "cyK" = (
 /turf/closed/wall/r_wall,
 /area/science/mixing)
@@ -27495,6 +27452,10 @@
 	icon_state = "platingdmg2"
 	},
 /area/maintenance/starboard/aft)
+"cLH" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "cLL" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -28408,6 +28369,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
+"cQE" = (
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/bluespace_vendor/south,
+/turf/open/floor/iron,
+/area/hallway/primary/fore)
 "cQJ" = (
 /obj/structure/sign/warning/vacuum{
 	pixel_x = -32
@@ -28674,6 +28646,17 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"cVe" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/service/kitchen/coldroom)
 "cVh" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/iron/dark,
@@ -29949,6 +29932,9 @@
 	dir = 1
 	},
 /area/engineering/main)
+"djw" = (
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "djz" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external{
@@ -30848,6 +30834,20 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
+"dxP" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Interrogation";
+	req_access_txt = "63"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "dxQ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -31128,6 +31128,30 @@
 	},
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"dBg" = (
+/obj/effect/turf_decal/trimline/blue/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/purple/corner,
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/purple/corner{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/science/research)
 "dBo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -31580,14 +31604,6 @@
 	},
 /turf/open/floor/iron,
 /area/science/xenobiology)
-"dHN" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "dHX" = (
 /obj/machinery/light/small,
 /turf/open/floor/iron/chapel{
@@ -31639,6 +31655,12 @@
 	},
 /turf/open/floor/iron,
 /area/commons/toilet/auxiliary)
+"dIO" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "dIW" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
@@ -32000,6 +32022,7 @@
 /obj/structure/chair/office,
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
+<<<<<<< HEAD
 "dSN" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -32021,6 +32044,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen/coldroom)
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "dTc" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet4";
@@ -32046,15 +32071,6 @@
 /obj/effect/spawner/lootdrop/costume,
 /turf/open/floor/iron,
 /area/commons/locker)
-"dUX" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/structure/chair,
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "dVp" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -32688,6 +32704,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/aisat/exterior)
+"efD" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "efN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -32785,6 +32809,12 @@
 	},
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"eiM" = (
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/atmos)
 "ejl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -32818,6 +32848,19 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/security/range)
+"ejZ" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock{
+	name = "Kitchen Cold Room";
+	req_access_txt = "28"
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
+/area/service/kitchen/coldroom)
 "ekh" = (
 /obj/effect/turf_decal/box/white{
 	color = "#9FED58"
@@ -33103,6 +33146,9 @@
 	},
 /turf/open/floor/iron/white,
 /area/security/prison)
+"eqg" = (
+/turf/closed/wall/r_wall,
+/area/security/interrogation)
 "eqw" = (
 /obj/structure/bookcase/random/religion,
 /turf/open/floor/wood,
@@ -34654,6 +34700,25 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
+"eTP" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/light_switch{
+	pixel_x = -22;
+	pixel_y = 24
+	},
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "eUp" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -35535,23 +35600,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
-"flO" = (
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/structure/table/wood,
-/obj/item/radio/intercom{
-	frequency = 1423;
-	name = "Interrogation Intercom";
-	pixel_y = -31
-	},
-/obj/item/taperecorder{
-	pixel_x = 8;
-	pixel_y = -1
-	},
-/turf/open/floor/iron/grimy,
-/area/security/office)
 "flP" = (
 /obj/machinery/sparker{
 	id = "Xenobio";
@@ -36293,6 +36341,12 @@
 	},
 /turf/open/floor/wood,
 /area/service/bar)
+"fCu" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/depsec/engineering,
+/turf/open/floor/iron,
+/area/security/checkpoint/engineering)
 "fCG" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/light{
@@ -36520,21 +36574,6 @@
 /obj/machinery/computer/security/wooden_tv,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
-"fHe" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/obj/structure/cable,
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "fHg" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -37043,6 +37082,23 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"fTm" = (
+/obj/structure/closet/bombcloset,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/requests_console{
+	department = "Toxins Lab";
+	departmentType = 5;
+	name = "Toxins RC";
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/siding{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/iron/white,
+/area/science/mixing)
 "fTo" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -37226,6 +37282,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"fWg" = (
+/obj/structure/chair,
+/obj/machinery/computer/security/telescreen/interrogation{
+	dir = 1;
+	pixel_y = -30
+	},
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "fWo" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -37314,12 +37378,27 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+<<<<<<< HEAD
 "fYg" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/iron/grimy,
 /area/security/office)
+=======
+"fYf" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/trimline/purple/corner,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/camera{
+	c_tag = "Science Hallway - West";
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/science/research)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "fYp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -37837,6 +37916,7 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/cafeteria)
+<<<<<<< HEAD
 "gjM" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -37853,6 +37933,44 @@
 /obj/effect/landmark/start/depsec/engineering,
 /turf/open/floor/iron,
 /area/security/checkpoint/engineering)
+=======
+"gkw" = (
+/obj/structure/safe,
+/obj/item/storage/secure/briefcase{
+	contents = newlist(/obj/item/clothing/suit/armor/vest,/obj/item/gun/ballistic/automatic/pistol,/obj/item/suppressor,/obj/item/melee/classic_baton/telescopic,/obj/item/clothing/mask/balaclava,/obj/item/bodybag,/obj/item/soap/nanotrasen)
+	},
+/obj/item/storage/backpack/duffelbag/syndie/hitman,
+/obj/item/card/id/advanced/silver/reaper,
+/obj/item/lazarus_injector,
+/obj/item/gun/energy/disabler,
+/obj/item/gun/ballistic/revolver/russian,
+/obj/item/ammo_box/a357,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/book{
+	desc = "An undeniably handy book.";
+	icon_state = "bookknock";
+	name = "\improper A Simpleton's Guide to Safe-cracking with Stethoscopes"
+	},
+/obj/effect/turf_decal/bot_white/left,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ai_monitored/command/nuke_storage)
+"gkz" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/heater/on{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "gkA" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -37889,18 +38007,6 @@
 "glb" = (
 /turf/open/floor/iron/dark,
 /area/engineering/break_room)
-"glk" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "glu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -38009,6 +38115,15 @@
 	},
 /turf/open/floor/wood,
 /area/service/theater)
+"gmH" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Interrogation Monitoring";
+	req_one_access_txt = "1;4"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/grimy,
+/area/security/office)
 "gmO" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
@@ -38292,6 +38407,23 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"gsl" = (
+/obj/structure/closet/bombcloset,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
+/turf/open/floor/iron/white,
+/area/science/mixing)
 "gsF" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -38450,6 +38582,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
+"gvd" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "gvn" = (
 /obj/structure/chair/sofa/corp/left{
 	desc = "Looks like someone threw it out. Covered in donut crumbs.";
@@ -39561,6 +39702,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/science/research)
+"gQb" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "gQo" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/purple,
@@ -40510,6 +40660,25 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/abandoned)
+"hkX" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/dark,
+/area/science/server)
 "hlh" = (
 /turf/closed/wall,
 /area/command/bridge)
@@ -41030,6 +41199,17 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"hyg" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/chair,
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/red/corner,
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "hyi" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Surgery B";
@@ -41839,6 +42019,12 @@
 /obj/structure/table,
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"hPc" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/bluespace_vendor/south,
+/turf/open/floor/iron,
+/area/commons/locker)
 "hPW" = (
 /obj/machinery/hydroponics/soil{
 	pixel_y = 8
@@ -42999,6 +43185,7 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/research)
+<<<<<<< HEAD
 "iox" = (
 /obj/machinery/modular_computer/console/preset/id{
 	dir = 4
@@ -43006,6 +43193,21 @@
 /obj/item/paper/fluff/ids_for_dummies,
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
+=======
+"iov" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/bluespace_vendor/north,
+/turf/open/floor/iron,
+/area/hallway/primary/central)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "ioy" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -43434,15 +43636,6 @@
 	},
 /turf/open/floor/iron,
 /area/service/hydroponics)
-"izO" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/red,
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "izY" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -43838,6 +44031,15 @@
 /obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/iron/dark,
 /area/science/nanite)
+"iIW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/engineering/main)
 "iJy" = (
 /obj/structure/cable,
 /turf/closed/wall/r_wall,
@@ -44004,6 +44206,15 @@
 /obj/machinery/vending/drugs,
 /turf/open/floor/iron/dark,
 /area/medical/medbay/central)
+"iNh" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/landmark/start/depsec/supply,
+/turf/open/floor/iron,
+/area/security/checkpoint/supply)
 "iNl" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
 	dir = 4
@@ -44737,6 +44948,17 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"jcm" = (
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/power/apc/auto_name/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/effect/landmark/start/depsec/supply,
+/turf/open/floor/iron,
+/area/security/checkpoint/supply)
 "jcC" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -45182,6 +45404,21 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/restrooms)
+"jlU" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "jmf" = (
 /turf/closed/wall,
 /area/engineering/storage/tech)
@@ -45362,6 +45599,23 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/engineering/main)
+"joX" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 4
+	},
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "jpg" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/structure/sign/poster/random{
@@ -45717,6 +45971,11 @@
 /obj/structure/chair/stool,
 /turf/open/floor/iron,
 /area/cargo/sorting)
+"jvt" = (
+/obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable,
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "jvw" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
@@ -45901,6 +46160,20 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"jAR" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/west,
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/medical/cryo)
 "jBf" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin{
@@ -46051,6 +46324,12 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/restrooms)
+"jEj" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
+	},
+/turf/closed/wall,
+/area/service/kitchen/coldroom)
 "jEp" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -46321,6 +46600,16 @@
 	dir = 4
 	},
 /area/science/lab)
+"jIK" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/bluespace_vendor/west,
+/turf/open/floor/iron,
+/area/hallway/secondary/exit/departure_lounge)
 "jIZ" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -46578,6 +46867,14 @@
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/iron,
 /area/science/mixing)
+"jOl" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/bluespace_vendor/west,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "jON" = (
 /obj/effect/landmark/start/clown,
 /obj/structure/disposalpipe/segment{
@@ -48192,6 +48489,16 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
+"kvI" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/science/mixing)
 "kvR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -48441,6 +48748,19 @@
 /obj/effect/spawner/lootdrop/donkpockets,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+"kBF" = (
+/obj/structure/table,
+/obj/item/folder/red,
+/obj/item/taperecorder,
+/obj/item/radio/intercom{
+	broadcasting = 1;
+	frequency = 1423;
+	listening = 0;
+	name = "Interrogation Intercom";
+	pixel_y = -24
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "kBT" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -48981,6 +49301,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"kKX" = (
+/obj/item/radio/intercom{
+	pixel_y = 28
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/atmospherics/components/unary/bluespace_sender,
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "kLb" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -49482,6 +49812,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
+"kWh" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/red,
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "kWj" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
@@ -49993,6 +50333,23 @@
 /obj/machinery/restaurant_portal/bar,
 /turf/open/floor/wood,
 /area/service/bar)
+"lgn" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/landmark/start/depsec/engineering,
+/turf/open/floor/iron,
+/area/security/checkpoint/engineering)
 "lgq" = (
 /obj/machinery/computer/slot_machine{
 	pixel_y = 2
@@ -50057,17 +50414,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"liB" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/structure/chair,
-/obj/structure/cable,
-/obj/effect/turf_decal/siding/red/corner,
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "liD" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/virology/glass{
@@ -51165,25 +51511,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"lJt" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/light_switch{
-	pixel_x = -22;
-	pixel_y = 24
-	},
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "lJB" = (
 /obj/machinery/button/door{
 	desc = "A remote control-switch for the engineering security doors.";
@@ -51431,6 +51758,23 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood,
 /area/cargo/qm)
+"lMt" = (
+/obj/item/phone{
+	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/cigbutt/cigarbutt{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/structure/table/wood,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 28
+	},
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "lMG" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -51454,6 +51798,23 @@
 /mob/living/simple_animal/sloth/citrus,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"lNc" = (
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/structure/table/wood,
+/obj/item/radio/intercom{
+	frequency = 1423;
+	name = "Interrogation Intercom";
+	pixel_y = -31
+	},
+/obj/item/taperecorder{
+	pixel_x = 8;
+	pixel_y = -1
+	},
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "lNj" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/trimline/blue/filled/warning,
@@ -52650,6 +53011,21 @@
 /obj/item/clothing/glasses/sunglasses,
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"mky" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	dir = 8;
+	initialize_directions = 4;
+	name = "euthanization chamber freezer"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/science/xenobiology)
 "mkZ" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -53999,6 +54375,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/science/mixing)
+"mLN" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = 30
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/depsec/supply,
+/turf/open/floor/iron,
+/area/security/checkpoint/supply)
 "mLS" = (
 /obj/structure/window/reinforced,
 /obj/machinery/computer/atmos_control/tank/nitrogen_tank{
@@ -54526,6 +54912,14 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
+"mVT" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/effect/landmark/start/depsec/supply,
+/turf/open/floor/iron,
+/area/security/checkpoint/supply)
 "mWd" = (
 /obj/structure/railing{
 	dir = 4
@@ -55116,6 +55510,15 @@
 	},
 /turf/open/floor/grass,
 /area/medical/virology)
+"ngQ" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/depsec/medical,
+/turf/open/floor/iron/white,
+/area/security/checkpoint/medical)
 "nhu" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
@@ -55430,6 +55833,17 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+"nnN" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/pen,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/bluespace_vendor/east,
+/turf/open/floor/iron,
+/area/hallway/secondary/command)
 "nnS" = (
 /obj/item/radio/intercom{
 	pixel_x = -29;
@@ -55951,10 +56365,6 @@
 /obj/machinery/light/small,
 /turf/open/floor/engine,
 /area/science/misc_lab/range)
-"nyI" = (
-/obj/effect/spawner/structure/window/reinforced/tinted,
-/turf/open/floor/plating,
-/area/security/office)
 "nyO" = (
 /obj/machinery/computer/secure_data{
 	dir = 8
@@ -56219,6 +56629,12 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/iron/dark,
 /area/science/storage)
+"nFU" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/closed/wall,
+/area/service/kitchen/coldroom)
 "nGe" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -56683,6 +57099,17 @@
 "nNL" = (
 /turf/closed/mineral/volcanic,
 /area/space/nearstation)
+"nNP" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/effect/landmark/start/depsec/medical,
+/turf/open/floor/iron/white,
+/area/security/checkpoint/medical)
 "nOc" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/starboard/aft)
@@ -57563,6 +57990,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/science/storage)
+"oiC" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/red,
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "oji" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -58221,6 +58657,12 @@
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/engine,
 /area/science/misc_lab/range)
+"oxd" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "oxe" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -58955,6 +59397,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/command/heads_quarters/hop)
+"oJO" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
+/turf/closed/wall,
+/area/medical/treatment_center)
 "oJP" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/bar,
@@ -59047,6 +59495,14 @@
 	},
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
+"oMv" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/bluespace_vendor/west,
+/turf/open/floor/iron,
+/area/commons/fitness/recreation)
 "oMF" = (
 /obj/machinery/light,
 /obj/machinery/aug_manipulator,
@@ -59169,6 +59625,19 @@
 	},
 /turf/open/floor/wood,
 /area/service/bar)
+"oOO" = (
+/obj/structure/cable,
+/obj/structure/sink/kitchen{
+	dir = 8;
+	pixel_x = 14
+	},
+/obj/machinery/power/apc/auto_name/north,
+/mob/living/simple_animal/hostile/retaliate/goat{
+	name = "Pete"
+	},
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/service/kitchen/coldroom)
 "oOZ" = (
 /obj/machinery/nuclearbomb/selfdestruct,
 /obj/effect/turf_decal/tile/neutral{
@@ -59269,14 +59738,6 @@
 	},
 /turf/open/floor/iron,
 /area/commons/locker)
-"oQE" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security{
-	name = "Interrogation Monitoring";
-	req_one_access_txt = "1;4"
-	},
-/turf/open/floor/iron/grimy,
-/area/security/office)
 "oQH" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
 /obj/effect/turf_decal/stripes/line,
@@ -59700,21 +60161,6 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/maintenance/space_hut)
-"oXA" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 10
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/siding/red{
-	dir = 4
-	},
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "oXP" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 8
@@ -60178,6 +60624,11 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
+"peY" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/engineering/main)
 "pfk" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -61174,6 +61625,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/rd)
+"pzr" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/closed/wall/r_wall,
+/area/science/server)
 "pzD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -61626,6 +62081,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"pIn" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/chair,
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "pIt" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -61741,6 +62205,10 @@
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/hos)
+"pLc" = (
+/obj/structure/chair,
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "pLg" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -61970,6 +62438,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/nanite)
+"pQi" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/security/office)
 "pQj" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/techstorage/tcomms,
@@ -62232,6 +62707,15 @@
 /obj/machinery/atmospherics/pipe/manifold/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/main)
+"pVT" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/thermomachine/heater/on,
+/turf/open/floor/iron/dark/corner{
+	dir = 1
+	},
+/area/engineering/atmos)
 "pWb" = (
 /obj/structure/closet/toolcloset,
 /obj/effect/turf_decal/delivery,
@@ -62250,6 +62734,12 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
+"pWt" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/heater{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/science/mixing)
 "pWz" = (
 /obj/effect/turf_decal/bot_white,
 /obj/effect/turf_decal/tile/neutral{
@@ -62946,6 +63436,12 @@
 	},
 /turf/open/floor/iron,
 /area/science/mixing)
+"qjo" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "qjp" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -63443,6 +63939,19 @@
 "quV" = (
 /turf/closed/wall,
 /area/service/hydroponics)
+"qvn" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/landmark/start/depsec/engineering,
+/turf/open/floor/iron,
+/area/security/checkpoint/engineering)
 "qvw" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
 	dir = 8
@@ -64796,6 +65305,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
+"qWU" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/heater{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "qXH" = (
 /obj/machinery/vending/coffee,
 /obj/effect/turf_decal/tile/bar{
@@ -64861,6 +65376,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
+"qYZ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers,
+/turf/open/floor/engine,
+/area/engineering/main)
 "qZf" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
@@ -65140,6 +65665,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/morgue)
+"rdE" = (
+/obj/effect/spawner/structure/window/reinforced/tinted,
+/turf/open/floor/plating,
+/area/security/interrogation)
 "rdL" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral{
@@ -66012,6 +66541,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
 /area/security/office)
+<<<<<<< HEAD
 "ruz" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -66039,6 +66569,8 @@
 /obj/effect/landmark/start/depsec/medical,
 /turf/open/floor/iron/white,
 /area/security/checkpoint/medical)
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "ruM" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
@@ -66267,10 +66799,6 @@
 	dir = 1
 	},
 /area/command/gateway)
-"rzp" = (
-/obj/structure/chair,
-/turf/open/floor/iron/grimy,
-/area/security/office)
 "rzE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -66526,19 +67054,6 @@
 	},
 /turf/open/floor/iron/dark/corner,
 /area/engineering/atmos)
-"rEy" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/effect/landmark/start/depsec/engineering,
-/turf/open/floor/iron,
-/area/security/checkpoint/engineering)
 "rEC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -66963,6 +67478,21 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"rNC" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/red{
+	dir = 4
+	},
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "rNE" = (
 /obj/structure/sign/warning/electricshock{
 	pixel_x = 32
@@ -67452,23 +67982,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
-"rVd" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/effect/landmark/start/depsec/medical,
-/turf/open/floor/iron/white,
-/area/security/checkpoint/medical)
 "rVj" = (
 /obj/machinery/light{
 	dir = 8
@@ -68125,6 +68638,15 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
+"sih" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "siF" = (
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
@@ -69050,23 +69572,6 @@
 /obj/item/stack/cable_coil,
 /turf/open/space/basic,
 /area/space/nearstation)
-"sBe" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/structure/chair/office{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/red{
-	dir = 4
-	},
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "sBj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
@@ -69472,6 +69977,7 @@
 	},
 /turf/open/floor/iron,
 /area/science/xenobiology)
+<<<<<<< HEAD
 "sLf" = (
 /obj/structure/chair,
 /obj/machinery/computer/security/telescreen/interrogation{
@@ -69480,6 +69986,8 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/security/office)
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "sMw" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -69567,6 +70075,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/research)
+"sOq" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/medical/cryo)
 "sOr" = (
 /obj/machinery/photocopier,
 /obj/machinery/camera{
@@ -69771,6 +70289,18 @@
 /mob/living/carbon/human/species/monkey,
 /turf/open/floor/grass,
 /area/science/genetics)
+"sRC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/engineering/main)
 "sRH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
@@ -69931,6 +70461,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
+"sVy" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on/coldroom,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/service/kitchen/coldroom)
 "sVD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71064,6 +71599,10 @@
 	},
 /turf/open/floor/iron,
 /area/science/robotics/lab)
+"tsl" = (
+/obj/structure/cable,
+/turf/open/floor/iron/grimy,
+/area/security/interrogation)
 "tsx" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -72052,6 +72591,14 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/prison)
+"tNG" = (
+/obj/structure/table,
+/obj/item/flashlight/lamp,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "tNZ" = (
 /obj/item/storage/fancy/candle_box{
 	pixel_y = 5
@@ -72409,23 +72956,6 @@
 /obj/structure/cable,
 /turf/open/floor/carpet,
 /area/command/corporate_showroom)
-"tXs" = (
-/obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/cigbutt/cigarbutt{
-	pixel_x = 5;
-	pixel_y = -1
-	},
-/obj/structure/table/wood,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 28
-	},
-/turf/open/floor/iron/grimy,
-/area/security/office)
 "tXy" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/plating/airless,
@@ -72522,6 +73052,9 @@
 	},
 /turf/open/floor/iron,
 /area/command/gateway)
+"tZK" = (
+/turf/closed/wall,
+/area/security/interrogation)
 "tZT" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/machinery/airalarm{
@@ -72759,6 +73292,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"ufB" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/item/storage/box/lights/mixed,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/starboard)
 "ufS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -73261,12 +73804,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/chapel/main)
-"uow" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
-/obj/effect/landmark/start/depsec/engineering,
-/turf/open/floor/iron,
-/area/security/checkpoint/engineering)
 "uoE" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 6
@@ -73948,10 +74485,29 @@
 /obj/machinery/air_sensor/atmos/nitrous_tank,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
+<<<<<<< HEAD
 "uFL" = (
 /obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/security/office)
+=======
+"uFS" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Distro to Waste"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/turf/open/floor/iron/dark/corner{
+	dir = 1
+	},
+/area/engineering/atmos)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "uFV" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/effect/turf_decal/trimline/blue/filled/corner{
@@ -74932,6 +75488,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/lab)
+"uZh" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 23
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "uZj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
@@ -75615,6 +76178,17 @@
 	},
 /turf/open/floor/iron,
 /area/security/office)
+"vlz" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/bluespace_vendor/north,
+/turf/open/floor/iron,
+/area/hallway/primary/port)
 "vmd" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -75759,16 +76333,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
-"vou" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/siding/red,
-/obj/effect/landmark/start/depsec/science,
-/turf/open/floor/iron,
-/area/security/checkpoint/science)
 "voD" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -75954,6 +76518,23 @@
 /obj/structure/grille,
 /turf/open/space/basic,
 /area/space/nearstation)
+"vse" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/newscaster/security_unit{
+	pixel_y = -30
+	},
+/obj/effect/landmark/start/depsec/engineering,
+/turf/open/floor/iron,
+/area/security/checkpoint/engineering)
 "vsh" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -75985,6 +76566,15 @@
 	},
 /turf/open/floor/iron/white,
 /area/security/brig)
+"vsD" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "vsN" = (
 /obj/structure/cable,
 /turf/open/floor/iron/airless/solarpanel,
@@ -76192,6 +76782,26 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/aisat/exterior)
+"vxL" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "medsecprivacy";
+	name = "Privacy Shutters Control";
+	pixel_x = 24;
+	pixel_y = -4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/effect/landmark/start/depsec/medical,
+/turf/open/floor/iron/white,
+/area/security/checkpoint/medical)
 "vxU" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -76233,6 +76843,22 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
+"vye" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/bluespace_vendor/north,
+/turf/open/floor/iron,
+/area/hallway/primary/port)
 "vyB" = (
 /obj/effect/turf_decal/bot_white/right,
 /obj/structure/closet/crate/goldcrate,
@@ -76473,6 +77099,17 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/commons/locker)
+"vCF" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 6
+	},
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "vDb" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood,
@@ -77525,6 +78162,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"wap" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/landmark/start/hangover,
+/obj/machinery/bluespace_vendor/west,
+/turf/open/floor/iron,
+/area/hallway/primary/central)
 "waq" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/burgundy,
@@ -77626,6 +78271,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"wbD" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/box/white{
+	color = "#52B4E9"
+	},
+/obj/machinery/holopad,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/medical/cryo)
 "wbF" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/yellow{
@@ -77637,6 +78292,17 @@
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"wbV" = (
+/obj/machinery/camera{
+	c_tag = "Interrogation room";
+	dir = 8;
+	network = list("interrogation")
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "wcz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -79196,6 +79862,10 @@
 	},
 /turf/open/floor/wood,
 /area/service/theater)
+"wMh" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer,
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "wMi" = (
 /obj/machinery/button/door{
 	id = "bridge blast";
@@ -79972,6 +80642,12 @@
 	},
 /turf/open/floor/iron,
 /area/science/mixing)
+"xai" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "xaj" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock{
@@ -80609,6 +81285,12 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"xmG" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "xmK" = (
 /obj/structure/closet/wardrobe/white,
 /obj/effect/turf_decal/tile/neutral{
@@ -81380,6 +82062,18 @@
 /obj/machinery/biogenerator,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"xDn" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron,
+/area/security/checkpoint/science)
 "xEb" = (
 /obj/structure/table,
 /obj/item/electronics/apc,
@@ -82235,9 +82929,6 @@
 /obj/machinery/computer/secure_data,
 /turf/open/floor/iron,
 /area/security/checkpoint/engineering)
-"xWG" = (
-/turf/open/floor/iron/grimy,
-/area/security/office)
 "xWI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
@@ -97446,7 +98137,11 @@ bcX
 beL
 bgw
 bbK
+<<<<<<< HEAD
 bjY
+=======
+vye
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 ong
 kqz
 rJv
@@ -99254,7 +99949,11 @@ baE
 bnM
 baE
 baE
+<<<<<<< HEAD
 jMF
+=======
+vlz
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 bNh
 bNK
 ikK
@@ -101795,7 +102494,7 @@ tuP
 tuP
 aJK
 aFL
-aHf
+mVT
 aIn
 aJG
 wfw
@@ -102052,7 +102751,7 @@ aDn
 aDm
 dhC
 aHc
-aHg
+iNh
 aIo
 dhC
 hli
@@ -102309,8 +103008,8 @@ aDn
 aDn
 dhC
 aHj
-aHh
-aIp
+jcm
+mLN
 aJJ
 hHn
 lsC
@@ -105441,8 +106140,13 @@ css
 bYS
 bZZ
 cbK
+<<<<<<< HEAD
 cdq
 mRw
+=======
+sOq
+oJO
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 hSa
 mRw
 mRw
@@ -105699,7 +106403,11 @@ bYT
 caa
 cbL
 cdr
+<<<<<<< HEAD
 cew
+=======
+jAR
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 cfL
 ifK
 cik
@@ -105956,7 +106664,11 @@ bYU
 apG
 cbM
 cds
+<<<<<<< HEAD
 xNe
+=======
+wbD
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 cfM
 cgU
 cil
@@ -107238,7 +107950,7 @@ aWf
 eoc
 bXL
 bYY
-rVd
+cyE
 cbQ
 cdw
 ceA
@@ -107495,9 +108207,9 @@ aWf
 eoc
 bXL
 bYZ
-cag
-caf
-ruD
+vxL
+ngQ
+nNP
 ceB
 sqr
 cgX
@@ -108248,7 +108960,11 @@ cmF
 msW
 mDg
 nxX
+<<<<<<< HEAD
 bzQ
+=======
+nnN
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 bzR
 bDa
 dDa
@@ -108311,7 +109027,11 @@ cMS
 cNJ
 cMg
 cMV
+<<<<<<< HEAD
 cMV
+=======
+jIK
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 cPO
 cQm
 cQJ
@@ -111088,7 +111808,11 @@ doK
 gMj
 eCo
 lLe
+<<<<<<< HEAD
 bTQ
+=======
+iov
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 bVj
 bWw
 bXU
@@ -111560,7 +112284,11 @@ aBe
 aCp
 aDD
 aDC
+<<<<<<< HEAD
 aGo
+=======
+cQE
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 aHD
 aIM
 aIR
@@ -112917,12 +113645,21 @@ hWk
 ipr
 lwd
 cyK
+<<<<<<< HEAD
 rNJ
 pGP
 wXB
 kDc
 ibu
 mSz
+=======
+gsl
+fTm
+kvI
+kDc
+ibu
+pWt
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 czD
 qAs
 tcW
@@ -113174,7 +113911,11 @@ ouA
 ipr
 gGe
 juT
+<<<<<<< HEAD
 vVC
+=======
+aSt
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 qvw
 hVF
 phY
@@ -114889,11 +115630,11 @@ qdW
 xvZ
 vuS
 vST
-vuS
+pQi
 oXY
 rmG
 ajm
-awu
+dxP
 ajm
 ayF
 azV
@@ -114960,9 +115701,9 @@ ocv
 eQp
 pYm
 uQh
-lJt
-dHN
-izO
+eTP
+efD
+oiC
 nOI
 jeM
 isH
@@ -115146,12 +115887,12 @@ qtP
 rmG
 rsa
 rmG
-oQE
+gmH
 rmG
 rmG
-avj
-awv
-avk
+cLH
+gvd
+djw
 ayJ
 ayJ
 ayJ
@@ -115184,7 +115925,11 @@ bmJ
 boJ
 bra
 btj
+<<<<<<< HEAD
 ivr
+=======
+wap
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 abO
 byv
 bcl
@@ -115216,10 +115961,10 @@ uZe
 iUN
 rXN
 pYm
-dUX
-fHe
-glk
-vou
+pIn
+jlU
+xDn
+kWh
 uwX
 jeM
 lXi
@@ -115402,14 +116147,14 @@ gpr
 tPK
 rmG
 tRd
-rmG
-xWG
-rzp
-nyI
-avk
-aww
-axy
-ahx
+eqg
+tsl
+pLc
+rdE
+djw
+gQb
+xai
+tZK
 azW
 aBq
 aqb
@@ -115473,10 +116218,10 @@ gaZ
 lrP
 ndG
 pYm
-liB
-oXA
-sBe
-dSN
+hyg
+rNC
+joX
+vCF
 pPA
 bZn
 bZn
@@ -115659,14 +116404,14 @@ vTB
 ljC
 anD
 aoL
-wZI
-xWG
-sLf
-nyI
-avk
-awx
-axz
-ahx
+tZK
+jvt
+fWg
+rdE
+djw
+tNG
+kBF
+tZK
 azX
 aoP
 wpL
@@ -115916,14 +116661,14 @@ ldD
 pBm
 rmG
 aoM
-wZI
-fYg
-rzp
-nyI
-avk
-awy
-axA
-ahx
+tZK
+dIO
+pLc
+rdE
+djw
+sih
+qjo
+tZK
 dhz
 aoP
 wpL
@@ -116173,14 +116918,14 @@ rmG
 rmG
 rmG
 aoN
-wZI
-tXs
-flO
-wZI
-avk
-awz
-axB
-ahx
+tZK
+lMt
+lNc
+tZK
+uZh
+wbV
+xmG
+tZK
 azY
 aoP
 wpL
@@ -116196,7 +116941,11 @@ pRW
 kJE
 ixe
 qCf
+<<<<<<< HEAD
 sKS
+=======
+hPc
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 lgz
 aWt
 aYa
@@ -116430,14 +117179,14 @@ ala
 amt
 agq
 dhr
-wZI
-wZI
-wZI
-wZI
-ahx
-ahx
-ahx
-ahx
+tZK
+tZK
+tZK
+tZK
+tZK
+tZK
+tZK
+tZK
 aGE
 aBr
 aCz
@@ -118221,7 +118970,11 @@ aaa
 tdI
 xBC
 lHu
+<<<<<<< HEAD
 lHu
+=======
+oMv
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 peP
 ntj
 kKV
@@ -118239,7 +118992,11 @@ sTJ
 dqy
 iPs
 lHS
+<<<<<<< HEAD
 bpa
+=======
+jOl
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 ftn
 kZO
 int
@@ -118819,9 +119576,15 @@ ljB
 cJW
 eXh
 dME
+<<<<<<< HEAD
 jQd
 cIg
 uKt
+=======
+hkX
+pzr
+dBg
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 jxW
 jPt
 nOc
@@ -119820,8 +120583,13 @@ ruR
 otI
 hzQ
 wju
+<<<<<<< HEAD
 qMr
 rHT
+=======
+nFU
+sVy
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 fZP
 sGV
 qMr
@@ -120077,7 +120845,11 @@ eLr
 erq
 ukG
 sQi
+<<<<<<< HEAD
 dSW
+=======
+ejZ
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 mZE
 ppE
 thR
@@ -120334,9 +121106,15 @@ eLr
 iVd
 jpg
 xjR
+<<<<<<< HEAD
 qMr
 lbX
 jWJ
+=======
+jEj
+oOO
+cVe
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 xli
 qMr
 bTa
@@ -122913,7 +123691,11 @@ rWp
 alq
 alq
 bXb
+<<<<<<< HEAD
 bYu
+=======
+vsD
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 auQ
 caY
 ccI
@@ -123170,7 +123952,11 @@ bTh
 bUx
 aut
 bXc
+<<<<<<< HEAD
 apc
+=======
+oxd
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 bZE
 aaU
 ccJ
@@ -123427,7 +124213,11 @@ rID
 bUy
 alq
 bXd
+<<<<<<< HEAD
 apf
+=======
+ufB
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 bZE
 cba
 ccK
@@ -123684,7 +124474,11 @@ bVE
 jMk
 jMk
 bXe
+<<<<<<< HEAD
 jMk
+=======
+eiM
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 jMk
 jMk
 jnu
@@ -123941,7 +124735,11 @@ anM
 jMk
 gma
 eeI
+<<<<<<< HEAD
 kqk
+=======
+csJ
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 kDw
 gzh
 pHc
@@ -125462,9 +126260,9 @@ cju
 qvX
 bfX
 aCs
-btD
-rEy
-bvl
+lgn
+qvn
+vse
 dql
 jMk
 xtq
@@ -125720,8 +126518,8 @@ xQM
 bfX
 xWD
 kSe
-uow
-gjM
+fCu
+cqD
 jyT
 jMk
 cor
@@ -125737,7 +126535,11 @@ oqj
 oqj
 hmj
 mvS
+<<<<<<< HEAD
 kHQ
+=======
+kKX
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 fMr
 hCR
 lix
@@ -126207,7 +127009,11 @@ mKH
 jno
 duE
 wmW
+<<<<<<< HEAD
 med
+=======
+iIW
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 lIv
 ugD
 toS
@@ -126237,8 +127043,13 @@ kbv
 kbv
 kbv
 qHT
+<<<<<<< HEAD
 ezB
 lyO
+=======
+uFS
+wMh
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 rHU
 ukS
 peg
@@ -126462,9 +127273,15 @@ fTu
 dWc
 mKH
 bwg
+<<<<<<< HEAD
 wPy
 wmW
 med
+=======
+bxZ
+peY
+qYZ
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 lIv
 iYv
 wST
@@ -126495,7 +127312,11 @@ fTt
 vLX
 sic
 gGa
+<<<<<<< HEAD
 sNV
+=======
+gkz
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 iGh
 ctN
 hWS
@@ -126719,9 +127540,15 @@ fTu
 iGD
 mKH
 mtD
+<<<<<<< HEAD
 wPy
 wmW
 med
+=======
+bxZ
+peY
+sRC
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 prP
 ugD
 toS
@@ -126764,8 +127591,13 @@ wef
 qPR
 qPR
 qPR
+<<<<<<< HEAD
 jjW
 kXB
+=======
+qWU
+aGZ
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 lye
 glH
 mzG
@@ -127522,7 +128354,11 @@ aOY
 kbv
 syH
 jMk
+<<<<<<< HEAD
 mpX
+=======
+pVT
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 xJU
 ibn
 hGN
@@ -129107,7 +129943,11 @@ cSd
 xVD
 pud
 cSd
+<<<<<<< HEAD
 vRM
+=======
+mky
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 wOk
 aBR
 cSd

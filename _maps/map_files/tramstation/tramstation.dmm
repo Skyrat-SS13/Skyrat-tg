@@ -3400,10 +3400,6 @@
 /obj/item/storage/box/prisoner,
 /turf/open/floor/iron,
 /area/security/prison)
-"ahr" = (
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "ahs" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 1;
@@ -3548,13 +3544,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/port)
-"ahK" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "ahL" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 9
@@ -17663,6 +17652,15 @@
 /obj/machinery/vending/wardrobe/bar_wardrobe,
 /turf/open/floor/wood,
 /area/service/bar)
+"aNS" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "aNT" = (
 /obj/machinery/blackbox_recorder,
 /turf/open/floor/iron/dark/telecomms,
@@ -19542,6 +19540,18 @@
 	},
 /turf/open/floor/iron,
 /area/commons/storage/art)
+"aVd" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/heater,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Science - Toxins North";
+	dir = 6;
+	network = list("ss13","science")
+	},
+/turf/open/floor/iron,
+/area/science/mixing)
 "aVg" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
@@ -24679,6 +24689,12 @@
 	},
 /turf/open/floor/plating,
 /area/science/mixing)
+"ddJ" = (
+/obj/structure/sign/poster/official/do_not_question{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "deb" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -26758,22 +26774,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/white,
 /area/science/research)
-"dUY" = (
-/obj/effect/turf_decal/trimline/red/filled/corner{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/corner{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/red/filled/corner,
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "dVo" = (
 /obj/item/pickaxe/rusted,
 /turf/open/floor/plating/asteroid/airless,
@@ -27736,6 +27736,10 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/office)
+"eqB" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "eqP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -27922,14 +27926,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
-"eul" = (
-/obj/machinery/camera{
-	c_tag = "Security - Interrogation Observation";
-	dir = 9;
-	network = list("ss13","Security")
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "eup" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
@@ -31069,13 +31065,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/dark,
 /area/service/bar)
-"fNd" = (
-/obj/structure/table,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "fNh" = (
 /obj/machinery/door/airlock/hatch,
 /obj/structure/disposalpipe/segment,
@@ -31262,6 +31251,9 @@
 	},
 /turf/open/floor/plating,
 /area/service/hydroponics)
+"fQn" = (
+/turf/closed/wall,
+/area/security/interrogation)
 "fQJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
@@ -31937,6 +31929,15 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+<<<<<<< HEAD
+=======
+"gli" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "gls" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -32001,6 +32002,15 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+<<<<<<< HEAD
+=======
+"gnd" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/west,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "gnC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -33022,11 +33032,14 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/white,
 /area/science/mixing)
+<<<<<<< HEAD
 "gFy" = (
 /obj/machinery/light,
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/dark,
 /area/security/brig)
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "gFM" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -33425,6 +33438,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/cargo/storage)
+"gLQ" = (
+/turf/closed/wall/r_wall,
+/area/security/interrogation)
 "gLR" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/security_space_law,
@@ -33482,9 +33498,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
-"gNM" = (
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "gNY" = (
 /obj/structure/lattice,
 /turf/open/openspace/airless/planetary,
@@ -33516,6 +33529,12 @@
 /obj/item/toy/cards/deck,
 /turf/open/floor/iron,
 /area/security/prison)
+"gOr" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "gOs" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -33536,6 +33555,9 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
 /area/security/prison)
+"gOD" = (
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "gOG" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 9
@@ -34603,6 +34625,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/central)
+"hoy" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer,
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/iron/dark,
+/area/medical/treatment_center)
 "hoF" = (
 /obj/structure/sign/warning/nosmoking,
 /turf/closed/wall,
@@ -34706,12 +34733,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
-"hrv" = (
-/obj/structure/sign/poster/official/do_not_question{
-	pixel_y = 32
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "hrA" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -36345,18 +36366,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/tram/left)
-"iho" = (
-/obj/machinery/door/airlock/security{
-	name = "Interrogation";
-	req_access_txt = "63"
+"iic" = (
+/turf/open/floor/iron/dark,
+/area/engineering/main)
+"iid" = (
+/obj/machinery/door/airlock/medical/glass{
+	name = "Treatment Center";
+	req_access_txt = "5"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+/obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
+<<<<<<< HEAD
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "iic" = (
@@ -36375,6 +36401,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 /obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
@@ -38294,10 +38322,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/central)
-"jbd" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/security/brig)
 "jbm" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /turf/open/floor/iron,
@@ -38811,6 +38835,13 @@
 /obj/machinery/portable_atmospherics/scrubber/huge,
 /turf/open/floor/iron,
 /area/science/mixing)
+"jot" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "joC" = (
 /turf/closed/wall/r_wall,
 /area/medical/virology)
@@ -40068,6 +40099,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/lab)
+"jVN" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/security/interrogation)
 "jVY" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/machinery/light/small,
@@ -40813,6 +40848,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"kkZ" = (
+/obj/machinery/light,
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "klf" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
@@ -41733,6 +41773,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/psychology)
+"kIG" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "kIT" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
@@ -43027,6 +43073,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/maintenance/disposal)
+<<<<<<< HEAD
+=======
+"llN" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "lmk" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
 /obj/effect/turf_decal/trimline/yellow/filled/corner{
@@ -44837,12 +44892,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/science/research)
-"mha" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "mhj" = (
 /obj/effect/turf_decal/stripes{
 	dir = 8
@@ -45950,6 +45999,16 @@
 /obj/item/airlock_painter,
 /turf/open/floor/iron,
 /area/engineering/break_room)
+"mHM" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "mHT" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
@@ -47277,6 +47336,15 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/plating,
 /area/hallway/primary/tram/left)
+<<<<<<< HEAD
+=======
+"niS" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "niW" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering{
@@ -49029,10 +49097,12 @@
 "nYv" = (
 /turf/closed/wall,
 /area/security/checkpoint/supply)
-"nZk" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+"nYG" = (
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
-/area/security/brig)
+/area/security/interrogation)
 "nZO" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -49202,6 +49272,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/starboard/central)
+"odd" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "odg" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
@@ -49600,6 +49677,10 @@
 /obj/machinery/navbeacon/wayfinding/tcomms,
 /turf/open/floor/iron,
 /area/tcommsat/computer)
+"olF" = (
+/obj/structure/table,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "omi" = (
 /obj/structure/fluff/tram_rail,
 /turf/open/openspace,
@@ -51175,19 +51256,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/virology)
-"oXK" = (
-/obj/structure/chair{
-	dir = 1
+"oYf" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_y = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
-"oYd" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
+<<<<<<< HEAD
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "oYf" = (
@@ -51195,6 +51269,8 @@
 	dir = 4;
 	pixel_y = 8
 	},
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 /obj/effect/landmark/start/assistant,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/freezer,
@@ -51761,12 +51837,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/lab)
-"plI" = (
-/obj/structure/chair{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "plQ" = (
 /obj/effect/loot_site_spawner,
 /obj/effect/decal/cleanable/dirt,
@@ -52918,12 +52988,15 @@
 "pHW" = (
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
+<<<<<<< HEAD
 "pIu" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
 	dir = 8
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "pIw" = (
 /obj/structure/railing/corner,
 /obj/effect/landmark/start/hangover,
@@ -52945,6 +53018,14 @@
 /mob/living/simple_animal/mouse/brown/tom,
 /turf/open/floor/iron,
 /area/security/prison)
+"pJi" = (
+/obj/machinery/camera{
+	c_tag = "Security - Interrogation Main";
+	dir = 6;
+	network = list("ss13","Security")
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "pJm" = (
 /obj/structure/bodycontainer/morgue,
 /turf/open/floor/iron/dark,
@@ -53240,6 +53321,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
+"pQv" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "pQD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
@@ -54349,15 +54434,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
-"qtq" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "qtB" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
@@ -55501,6 +55577,13 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
+<<<<<<< HEAD
+=======
+"qTS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "qUb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -55757,12 +55840,6 @@
 /obj/machinery/vending/security,
 /turf/open/floor/iron/showroomfloor,
 /area/security/office)
-"rak" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "raq" = (
 /obj/structure/table/glass,
 /turf/open/floor/iron/cafeteria{
@@ -55924,12 +56001,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
-"reD" = (
-/obj/structure/table,
-/obj/item/flashlight/lamp,
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "reE" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -56008,15 +56079,6 @@
 /obj/machinery/microwave,
 /turf/open/floor/iron/white,
 /area/security/prison)
-"rgp" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 9
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "rgz" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -57461,6 +57523,14 @@
 /obj/structure/ore_box,
 /turf/open/floor/plating/asteroid/airless,
 /area/mine/explored)
+"rLw" = (
+/obj/machinery/camera{
+	c_tag = "Security - Interrogation Observation";
+	dir = 9;
+	network = list("ss13","Security")
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "rLA" = (
 /obj/effect/turf_decal/bot_white/left,
 /obj/effect/turf_decal/tile/neutral{
@@ -57767,6 +57837,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/security/brig)
+"rWf" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/heater{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "rWh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 5
@@ -58016,6 +58092,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/grimy,
 /area/ai_monitored/turret_protected/aisat/foyer)
+"sbC" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	name = "euthanization chamber freezer"
+	},
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "sbU" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/girder,
@@ -58960,6 +59045,18 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/ai_monitored/security/armory)
+<<<<<<< HEAD
+=======
+"suM" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "suW" = (
 /obj/machinery/atmospherics/pipe/multiz/layer2{
 	dir = 4
@@ -59617,6 +59714,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+"sKq" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/science/server)
 "sKW" = (
 /obj/structure/disposalpipe/junction/flip{
 	dir = 8
@@ -60077,10 +60180,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/tram/right)
-"sUC" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "sUQ" = (
 /obj/machinery/suit_storage_unit/rd,
 /obj/structure/cable,
@@ -62693,6 +62792,15 @@
 /obj/structure/cable,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
+"tYE" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	name = "euthanization chamber freezer"
+	},
+/turf/open/floor/iron/dark,
+/area/science/xenobiology)
 "tYJ" = (
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/mouse,
@@ -63613,12 +63721,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/white,
 /area/science/explab)
-"urB" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "urD" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 4
@@ -63794,6 +63896,26 @@
 "uwx" = (
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+<<<<<<< HEAD
+=======
+"uwO" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/security/brig)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "uwR" = (
 /obj/structure/bed/roller,
 /obj/machinery/iv_drip,
@@ -65581,14 +65703,6 @@
 /obj/item/flashlight/lamp/green,
 /turf/open/floor/carpet,
 /area/commons/vacant_room/office)
-"vlJ" = (
-/obj/machinery/camera{
-	c_tag = "Security - Interrogation Main";
-	dir = 6;
-	network = list("ss13","Security")
-	},
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "vlK" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/cable,
@@ -65690,10 +65804,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison)
-"voU" = (
-/obj/structure/table,
-/turf/open/floor/iron/dark,
-/area/security/brig)
 "voW" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -65934,11 +66044,19 @@
 	dir = 9
 	},
 /obj/structure/chair{
+<<<<<<< HEAD
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/red/corner{
 	dir = 4
 	},
+=======
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/corner{
+	dir = 4
+	},
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 /obj/structure/cable,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
@@ -66856,6 +66974,21 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
+"vQs" = (
+/obj/machinery/door/airlock/security{
+	name = "Interrogation";
+	req_access_txt = "63"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/security/brig)
 "vQt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/railing,
@@ -68526,6 +68659,17 @@
 /obj/effect/turf_decal/sand/plating,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
+<<<<<<< HEAD
+=======
+"wEQ" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer,
+/obj/machinery/light_switch{
+	pixel_x = -25;
+	pixel_y = -8
+	},
+/turf/open/floor/iron,
+/area/science/mixing)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "wFd" = (
 /obj/structure/chair,
 /obj/structure/sign/poster/official/random{
@@ -68887,6 +69031,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/tcommsat/computer)
+<<<<<<< HEAD
+=======
+"wOa" = (
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "wOw" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/landmark/start/hangover,
@@ -70460,6 +70611,12 @@
 "xtb" = (
 /turf/closed/wall,
 /area/cargo/office)
+"xtD" = (
+/obj/structure/table,
+/obj/item/flashlight/lamp,
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "xuo" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
@@ -71138,6 +71295,20 @@
 /obj/machinery/atmospherics/pipe/simple,
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
+"xIM" = (
+/obj/machinery/door/airlock/security{
+	name = "Interrogation";
+	req_access_txt = "63"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "xJw" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/research/glass/incinerator/toxmix_exterior,
@@ -72100,6 +72271,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/command/bridge)
+"yeN" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/interrogation)
 "yft" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 10
@@ -72233,12 +72410,15 @@
 /obj/effect/spawner/lootdrop/maintenance/three,
 /turf/open/floor/iron/airless,
 /area/mine/explored)
+<<<<<<< HEAD
 "yiL" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
+=======
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 "yiS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
@@ -107740,8 +107920,13 @@ tnL
 oTZ
 oTZ
 oTZ
+<<<<<<< HEAD
 ntR
 pIu
+=======
+rWf
+gOr
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 spz
 tnL
 gUE
@@ -113660,7 +113845,11 @@ aPG
 lPd
 lPd
 lQG
+<<<<<<< HEAD
 maq
+=======
+tYE
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 nQg
 pKo
 lQG
@@ -116203,7 +116392,11 @@ fXT
 qSj
 oab
 der
+<<<<<<< HEAD
 gvJ
+=======
+wEQ
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 oFQ
 bWx
 wAe
@@ -117231,7 +117424,11 @@ frL
 oJJ
 awM
 mSi
+<<<<<<< HEAD
 tMb
+=======
+aVd
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 cgy
 kWc
 jys
@@ -169921,7 +170118,11 @@ eyp
 gKY
 xNf
 rbb
+<<<<<<< HEAD
 ait
+=======
+hoy
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 aHC
 qor
 gKY
@@ -171924,7 +172125,7 @@ xkv
 apo
 vjv
 ugh
-dUY
+uwO
 aAj
 ipP
 jIZ
@@ -172181,9 +172382,9 @@ xkv
 xkv
 xkv
 xkv
-iho
-xkv
-iho
+vQs
+fQn
+xIM
 ktC
 ktC
 ktC
@@ -172434,15 +172635,15 @@ wfU
 hvy
 xZz
 apa
-xkv
-nZk
-sUC
-sUC
-rgp
-xkv
-qtq
-urB
-ktC
+fQn
+qTS
+pQv
+gnd
+mHM
+fQn
+aNS
+kIG
+gLQ
 rJw
 lTF
 lTF
@@ -172691,15 +172892,15 @@ cDF
 kAQ
 xZz
 vIN
-xkv
-hrv
-mha
-mha
-oYd
-jbd
-oXK
-gNM
-ktC
+fQn
+ddJ
+yeN
+yeN
+llN
+jVN
+suM
+wOa
+gLQ
 lTF
 lTF
 kSX
@@ -172948,15 +173149,15 @@ fyX
 qVl
 cQS
 dHx
-xkv
-rak
-reD
-voU
-oYd
-jbd
-fNd
-gFy
-ktC
+fQn
+niS
+xtD
+olF
+llN
+jVN
+odd
+kkZ
+gLQ
 tUT
 lTF
 jXG
@@ -173205,15 +173406,15 @@ cot
 tQc
 tHL
 bcm
-xkv
-ahr
-plI
-plI
-oYd
-jbd
-oXK
-gNM
-ktC
+fQn
+eqB
+nYG
+nYG
+llN
+jVN
+suM
+gOD
+gLQ
 lTF
 lTF
 vcj
@@ -173462,15 +173663,15 @@ hmg
 bcm
 bcm
 bcm
-ktC
-vlJ
-gNM
-gNM
-yiL
-xkv
-ahK
-eul
-ktC
+gLQ
+pJi
+gOD
+gOD
+gli
+fQn
+jot
+rLw
+gLQ
 dFv
 fsi
 fsi
@@ -173719,15 +173920,15 @@ iCX
 lTF
 jDM
 iuC
-ktC
-ktC
-ktC
-ktC
-ktC
-ktC
-ktC
-ktC
-ktC
+gLQ
+gLQ
+gLQ
+gLQ
+gLQ
+gLQ
+gLQ
+gLQ
+gLQ
 lTF
 fsi
 whY
@@ -179453,7 +179654,11 @@ dGu
 dGu
 dGu
 lQG
+<<<<<<< HEAD
 fRA
+=======
+sbC
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 siQ
 epT
 tSI
@@ -183027,7 +183232,11 @@ uNO
 xjn
 sby
 dzG
+<<<<<<< HEAD
 eXy
+=======
+sKq
+>>>>>>> b5a9002a5e8 (Defines the interrogation room as unique area and not 4 different var edits. (#57612))
 xjn
 aIi
 tei
