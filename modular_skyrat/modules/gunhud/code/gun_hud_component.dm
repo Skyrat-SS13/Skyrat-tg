@@ -18,7 +18,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.is_holding(parent) && !isnull(H.hud_used.ammo_counter))
+		if(H.is_holding(parent))
 			hud = H.hud_used.ammo_counter
 			turn_on()
 		else
