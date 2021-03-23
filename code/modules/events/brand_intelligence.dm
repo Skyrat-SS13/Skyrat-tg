@@ -30,7 +30,7 @@
 		source = initial(example.name)
 	else if(originMachine)
 		source = originMachine.name
-	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please stand by. The origin is believed to be \a [source].", "Machine Learning Alert")
+	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please stand by. The origin is believed to be \a [source].", "Machine Learning Alert", ANNOUNCER_BRANDINTELLIGENCE) //SKYRAT EDIT CHANGE
 
 /datum/round_event/brand_intelligence/start()
 	for(var/obj/machinery/vending/V in GLOB.machines)
@@ -58,13 +58,9 @@
 	vendingMachines = removeNullsFromList(vendingMachines)
 	if(!vendingMachines.len) //if every machine is infected
 		for(var/obj/machinery/vending/upriser in infectedMachines)
-			if(prob(70) && !QDELETED(upriser))
+			if(!QDELETED(upriser))
 				upriser.ai_controller = new /datum/ai_controller/vending_machine(upriser)
 				infectedMachines.Remove(upriser)
-			else
-				explosion(upriser.loc, -1, 1, 2, 4, 0)
-				qdel(upriser)
-
 		kill()
 		return
 	if(ISMULTIPLE(activeFor, 2))

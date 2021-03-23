@@ -75,7 +75,8 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 		to_chat(target, "<span class='warning'>You aren't able to activate \the [src] anymore!</span>")
 
 	// Has the user thrown it away or otherwise disposed of it such that it's no longer in their hands or in some storage connected to them?
-	if(!(get_atom_on_turf(src, /mob) == user))
+	// if(!(get_atom_on_turf(src, /mob) == user)) SKYRAT EDIT ORIGINAL
+	if(!Adjacent(user)) // SKYRAT EDIT -- Ghost Cafe Static Hilbertspawner
 		if(user == target)
 			to_chat(user, "<span class='warning'>\The [src] is no longer in your possession!</span>")
 		else
@@ -249,7 +250,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	icon_state = "bluespace"
 	base_icon_state = "bluespace"
 	baseturfs = /turf/open/space/bluespace
-	flags_1 = NOJAUNT_1
+	flags_1 = NOJAUNT
 	explosion_block = INFINITY
 	var/obj/item/hilbertshotel/parentSphere
 
@@ -496,15 +497,16 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	ghost_usable = FALSE
 	oxy_damage = 500
 	mob_species = /datum/species/skeleton
-	id_job = "Head Researcher"
-	id_access = ACCESS_RESEARCH
-	id_access_list = list(ACCESS_AWAY_GENERIC3, ACCESS_RESEARCH)
 	instant = TRUE
-	id = /obj/item/card/id/silver
+	outfit = /datum/outfit/doctorhilbert
+
+/datum/outfit/doctorhilbert
+	id = /obj/item/card/id/advanced/silver
 	uniform = /obj/item/clothing/under/rank/rnd/research_director/doctor_hilbert
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	back = /obj/item/storage/backpack/satchel/leather
 	suit = /obj/item/clothing/suit/toggle/labcoat
+	id_trim = /datum/id_trim/away/hilbert
 
 /obj/item/paper/crumpled/docslogs
 	name = "Research Logs"

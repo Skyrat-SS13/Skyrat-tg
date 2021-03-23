@@ -133,6 +133,16 @@
 	path = /obj/item/clothing/under/costume/kamishimo
 	cost = 1
 
+/datum/loadout_item/uniform/corset
+	name = "Black Corset"
+	path = /obj/item/clothing/under/dress/corset
+	cost = 1
+
+/datum/loadout_item/uniform/chaps
+	name = "Black Chaps"
+	path = /obj/item/clothing/under/pants/chaps
+	cost = 1
+
 //SUITS
 /datum/loadout_item/uniform/suit
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SUITS
@@ -186,7 +196,7 @@
 	name = "Victorian Vest, Red Shirt"
 	path = /obj/item/clothing/under/costume/vic_vest/red
 	cost = 1
-	
+
 /datum/loadout_item/uniform/suit/victorian/blue
 	name = "Victorian Vest, Blue Shirt"
 	path = /obj/item/clothing/under/costume/vic_vest/blue
@@ -411,7 +421,7 @@
 
 /datum/loadout_item/uniform/sweater/polysweater
 	name = "Polychromic Commando Sweater"
-	path = /obj/item/clothing/under/misc/polysweater	
+	path = /obj/item/clothing/under/misc/polysweater
 	extra_info = LOADOUT_INFO_ONE_COLOR
 	cost = 3
 
@@ -489,7 +499,7 @@
 	path = /obj/item/clothing/under/utility/med
 	restricted_roles = list("Medical Doctor", "Paramedic", "Chemist", "Virologist", "Geneticist", "Chief Medical Officer")
 	restricted_desc = "Medical"
-	
+
 /datum/loadout_item/uniform/job/utility_sci
 	name = "Science Utility Uniform"
 	path = /obj/item/clothing/under/utility/sci
@@ -523,8 +533,8 @@
 /datum/loadout_item/uniform/job/para_red
 	name = "Red Paramedic Jumpsuit"
 	path = /obj/item/clothing/under/utility/para_red
-	restricted_roles = list("Paramedic")
-	restricted_desc = "Paramedic"
+	restricted_roles = list("Chief Medical Officer", "Paramedic")
+	restricted_desc = "Medical First Responders"
 
 /*// Trekie things
 //TOS

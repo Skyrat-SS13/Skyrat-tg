@@ -1,4 +1,4 @@
-
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR GUN.DM
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 #define FIRING_PIN_REMOVAL_DELAY 50
 
@@ -76,8 +76,6 @@
 	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
 	var/zoom_out_amt = 0
 	var/datum/action/toggle_scope_zoom/azoom
-
-	var/automatic = 0 //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 	var/pb_knockback = 0
 
 /obj/item/gun/Initialize()
@@ -330,6 +328,8 @@
 
 /obj/item/gun/proc/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(user)
+		if(HAS_TRAIT(user, TRAIT_POOR_AIM)) //nice shootin' tex
+			target = pick(orange(2, target))
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, user, target, params, zone_override)
 
 	SEND_SIGNAL(src, COMSIG_GUN_FIRED, user, target, params, zone_override)
@@ -343,10 +343,7 @@
 	var/randomized_gun_spread = 0
 	var/rand_spr = rand()
 	if(spread)
-		randomized_gun_spread = rand(0,spread)
-	if(HAS_TRAIT(user, TRAIT_POOR_AIM)) //nice shootin' tex
-		user.blind_eyes(1)
-		bonus_spread += 25
+		randomized_gun_spread =	rand(0,spread)
 	var/randomized_bonus_spread = rand(0, bonus_spread)
 
 	if(burst_size > 1)
@@ -395,7 +392,7 @@
 			return ..()
 	return
 
-/obj/item/gun/attack_obj(obj/O, mob/living/user)
+/obj/item/gun/attack_obj(obj/O, mob/living/user, params)
 	if(user.combat_mode)
 		if(bayonet)
 			O.attackby(bayonet, user)
@@ -721,3 +718,4 @@
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
+*/

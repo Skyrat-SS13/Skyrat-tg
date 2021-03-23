@@ -107,7 +107,7 @@
 	attack_verb_simple = list("drill", "screw", "jab", "whack")
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.7
+	toolspeed = 0.5	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
 	random_color = FALSE
 
 /obj/item/screwdriver/power/examine()

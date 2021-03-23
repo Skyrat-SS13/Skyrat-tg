@@ -146,7 +146,7 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			R.on_ex_act()
 	if(!QDELETED(src))
-		..()
+		return ..()
 
 /obj/item/reagent_containers/fire_act(exposed_temperature, exposed_volume)
 	reagents.expose_temperature(exposed_temperature)
@@ -161,8 +161,8 @@
 	if(target.CanPass(src, get_turf(src)) && thrownby && HAS_TRAIT(thrownby, TRAIT_BOOZE_SLIDER))
 		. = TRUE
 
-/obj/item/reagent_containers/proc/SplashReagents(atom/target, thrown = FALSE)
-	if(!reagents || !reagents.total_volume || !spillable)
+/obj/item/reagent_containers/proc/SplashReagents(atom/target, thrown = FALSE, override_spillable = FALSE)
+	if(!reagents || !reagents.total_volume || (!spillable && !override_spillable))
 		return
 
 	if(ismob(target) && target.reagents)

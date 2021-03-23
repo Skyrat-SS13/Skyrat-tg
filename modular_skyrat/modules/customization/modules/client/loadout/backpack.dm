@@ -94,6 +94,11 @@
 	name = "Newspaper"
 	path = /obj/item/newspaper
 
+/datum/loadout_item/backpack/hhmirror
+	name = "Handheld Mirror"
+	path = /obj/item/hhmirror
+	cost = 3
+
 //TOYS
 /datum/loadout_item/backpack/toy
 	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_TOYS
@@ -157,7 +162,7 @@
 //Plushies
 /datum/loadout_item/backpack/plushies
 	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_PLUSHIES
-	
+
 /datum/loadout_item/backpack/plushies/plushcarp
 	name = "Space carp plushie"
 	path = /obj/item/toy/plush/carpplushie
@@ -173,31 +178,31 @@
 /datum/loadout_item/backpack/plushies/plushslime
 	name = "Slime plushie"
 	path = /obj/item/toy/plush/slimeplushie
-	
+
 /datum/loadout_item/backpack/plushies/bubbleplush
 	name = "Bubblegum plushie"
 	path = /obj/item/toy/plush/bubbleplush
-	
+
 /datum/loadout_item/backpack/plushies/nukeplushie
 	name = "Operative plushie"
 	path = /obj/item/toy/plush/nukeplushie
-	
+
 /datum/loadout_item/backpack/plushies/plasmamanplushie
 	name = "Plasmaman plushie"
 	path = /obj/item/toy/plush/plasmamanplushie
-	
+
 /datum/loadout_item/backpack/plushies/beeplushie //the best one
 	name = "Bee plushie"
 	path = /obj/item/toy/plush/beeplushie
-	
+
 /datum/loadout_item/backpack/plushies/goatplushie
 	name = "Strange Goat plushie"
 	path = /obj/item/toy/plush/goatplushie
-	
+
 /datum/loadout_item/backpack/plushies/moth
 	name = "Moth plushie"
 	path = /obj/item/toy/plush/moth
-	
+
 /datum/loadout_item/backpack/plushies/pkplush
 	name = "Peacekeeper plushie"
 	path = /obj/item/toy/plush/pkplush
@@ -229,11 +234,11 @@
 /datum/loadout_item/backpack/plushies/deer
 	name = "Deer plushie"
 	path = /obj/item/toy/plush/deer
-	
+
 /datum/loadout_item/backpack/plushies/fermis
 	name = "Medcat plushie"
 	path = /obj/item/toy/plush/fermis
-	
+
 /datum/loadout_item/backpack/plushies/fox
 	name = "Fox plushie"
 	path = /obj/item/toy/plush/fox
@@ -249,13 +254,37 @@
 /datum/loadout_item/backpack/plushies/leaplush
 	name = "Suspicious deer plushie"
 	path = /obj/item/toy/plush/leaplush
-	
+
+/datum/loadout_item/backpack/plushies/sarmie
+	name = "Cosplayer plushie"
+	path = /obj/item/toy/plush/sarmieplush
+
+/datum/loadout_item/backpack/plushies/oglaplush
+	name = "Suspicious lizzy plush"
+	path = /obj/item/toy/plush/oglaplush
+
+/datum/loadout_item/backpack/plushies/arcplush
+	name = "Familiar Lizard plushie"
+	path = /obj/item/toy/plush/arcplush
+
+/datum/loadout_item/backpack/plushies/oleplush
+	name = "Irritable Goat plushie"
+	path = /obj/item/toy/plush/oleplush
+
+/datum/loadout_item/backpack/plushies/szaplush
+	name = "Suspicious spider plushie"
+	path = /obj/item/toy/plush/szaplush
+
+/datum/loadout_item/backpack/plushies/riffplush
+	name = "Valid plushie"
+	path = /obj/item/toy/plush/riffplush
+
 /datum/loadout_item/backpack/plushies/narplush
 	name = "Narsie Plushie"
 	path = /obj/item/toy/plush/narplush
 	cost = 5
 	restricted_roles = list("Chaplain")
-	
+
 /datum/loadout_item/backpack/plushies/ratplush
 	name = "Ratvar Plushie"
 	path = /obj/item/toy/plush/ratplush

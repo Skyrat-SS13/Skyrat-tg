@@ -1186,12 +1186,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/agent_card
 	name = "Agent Identification Card"
-	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and can copy access \
-			from other identification cards. The access is cumulative, so scanning one card does not erase the \
-			access gained from another. In addition, they can be forged to display a new assignment and name. \
+	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and hold up to 5 wildcards \
+			from other identification cards. In addition, they can be forged to display a new assignment, name and trim. \
 			This can be done an unlimited amount of times. Some Syndicate areas and devices can only be accessed \
 			with these cards."
-	item = /obj/item/card/id/syndicate
+	item = /obj/item/card/id/advanced/chameleon
 	cost = 2
 
 /datum/uplink_item/stealthy_tools/ai_detector
@@ -1210,15 +1209,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/storage/box/syndie_kit/chameleon
 	cost = 2
 	exclude_modes = list(/datum/game_mode/nuclear) //clown ops are allowed to buy this kit, since it's basically a costume
-
-/datum/uplink_item/stealthy_tools/chameleon_skillchip
-	name = "Chameleon Skillchip"
-	desc = "A highly advanced skillchip that contains data on all available skillchips. \
-			This skillchip only takes up a single skillchip slot in the user's brain. \
-			Comes with a single-use Syndicate autosurgeon for immediate self-application."
-	item = /obj/item/autosurgeon/skillchip/syndicate/chameleon_chip
-	cost = 4
-	exclude_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/stealthy_tools/chameleon_proj
 	name = "Chameleon Projector"
@@ -1518,6 +1508,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
 	cost = 18 //SKYRAT EDIT: Original value (10)
+	player_minimum = 25
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
@@ -1859,6 +1850,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
 
+//SKYRAT EDIT REMOVAL START
+/*
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -1869,6 +1862,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 20
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/role_restricted/explosive_hot_potato
 	name = "Exploding Hot Potato"

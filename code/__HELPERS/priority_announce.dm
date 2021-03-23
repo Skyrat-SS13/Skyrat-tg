@@ -1,10 +1,13 @@
+/* - SKYRAT EDIT REMOVAL - MOVED TO MODULAR PRIORITY_ANNOUNCE.DM
 /proc/priority_announce(text, title = "", sound, type , sender_override, has_important_message)
 	if(!text)
 		return
 
 	var/announcement
-	if(!istype(sound, /sound))
-		sound = SSstation.announcer.event_sounds[sound] || SSstation.announcer.get_rand_alert_sound()
+	if(!sound)
+		sound = SSstation.announcer.get_rand_alert_sound()
+	else if(SSstation.announcer.event_sounds[sound])
+		sound = SSstation.announcer.event_sounds[sound]
 
 	if(type == "Priority")
 		announcement += "<h1 class='alert'>Priority Announcement</h1>"
@@ -71,3 +74,4 @@
 					SEND_SOUND(M, sound('sound/misc/notice1.ogg'))
 				else
 					SEND_SOUND(M, sound('sound/misc/notice2.ogg'))
+*/

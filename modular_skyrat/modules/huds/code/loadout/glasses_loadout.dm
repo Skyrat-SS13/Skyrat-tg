@@ -6,7 +6,7 @@
 /datum/loadout_item/glasses/medhud_glasses
 	name = "Prescription Medical Hud"
 	path = /obj/item/clothing/glasses/hud/health/prescription
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
 
 /datum/loadout_item/glasses/diaghud_glasses
 	name = "Prescription Diagnostic Hud"

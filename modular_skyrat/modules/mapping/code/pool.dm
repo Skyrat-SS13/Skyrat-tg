@@ -17,7 +17,7 @@
 ///////////////////////////////////////////
 /////////////   INITIALISE    /////////////
 /turf/open/water/overlay/Initialize()
-	..()
+	.  = ..()
 	var/obj/effect/overlay/water/water_overlay = new()
 	var/obj/effect/overlay/water/top/water_top_overlay = new()
 	vis_contents += water_overlay

@@ -1,4 +1,4 @@
-#define TRUE_CHANGELING_REFORM_THRESHOLD 1800 //3 minutes by default
+#define TRUE_CHANGELING_REFORM_THRESHOLD 5 MINUTES
 #define TRUE_CHANGELING_PASSIVE_HEAL 3 //Amount of brute damage restored per tick
 
 //Changelings in their true form.
@@ -18,34 +18,31 @@
 	speed = 0.5
 	stop_automated_movement = FALSE
 	status_flags = CANPUSH
-	see_in_dark = 8
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	maxHealth = 500 //Very durable
+	maxHealth = 750 //Very durable
 	health = 500
-	healable = 0
+	healable = FALSE
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	environment_smash = TRUE
 	melee_damage_lower = 40
-	melee_damage_upper = 50
-//	see_in_dark = 8
-//	see_invisible = SEE_INVISIBLE_MINIMUM
-	wander = 0
+	melee_damage_upper = 40
+	wander = FALSE
 	attack_verb_continuous = "rips into"
 	attack_verb_simple = "rip into"
 	attack_sound = 'sound/effects/blobattack.ogg'
 	next_move_modifier = 0.5 //Faster attacks
 	butcher_results = list(/obj/item/food/meat/slab/human = 15) //It's a pretty big dude. Actually killing one is a feat.
-	gold_core_spawnable = 0 //Should stay exclusive to changelings tbh, otherwise makes it much less significant to sight one
+	gold_core_spawnable = FALSE //Should stay exclusive to changelings tbh, otherwise makes it much less significant to sight one
 	var/datum/action/innate/turn_to_human
 	var/datum/action/innate/devour
 	var/transformed_time = 0
 	var/playstyle_string = "<b><font size=3 color='red'>We have entered our true form!</font> We are unbelievably powerful, and regenerate life at a steady rate. However, most of \
 	our abilities are useless in this form, and we must utilise the abilities that we have gained as a result of our transformation. Currently, we are incapable of returning to a human. \
-	After several minutes, we will once again be able to revert into a human. Taking too much damage will also turn us back into a human in addition to knocking us out for a long time.</b>"
+	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>"
 	var/mob/living/carbon/human/stored_changeling = null //The changeling that transformed
 	var/devouring = FALSE //If the true changeling is currently devouring a human
-	var/spam_flag = 0 //To stop spam
 
 /mob/living/simple_animal/hostile/true_changeling/New()
 	. = ..()
@@ -63,62 +60,110 @@
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
-	adjustBruteLoss(-TRUE_CHANGELING_PASSIVE_HEAL) //Uncomment for passive healing
+	adjustBruteLoss(-TRUE_CHANGELING_PASSIVE_HEAL)
 
 /mob/living/simple_animal/hostile/true_changeling/AttackingTarget()
 	..()
-	if(prob(5))
-		if(!spam_flag)
-			emote("scream")
+	if(prob(10))
+		emote("scream")
 
 /mob/living/simple_animal/hostile/true_changeling/emote(act, m_type=1, message = null, intentional = TRUE)
 	if(stat)
 		return
-	if(act == "scream" && !spam_flag)
+	if(act == "scream")
 		message = "<B>[src]</B> makes a loud, bone-chilling roar!"
 		act = "me"
-		var/frequency = get_rand_frequency() //so sound frequency is consistent
-		for(var/mob/M in range(35, src)) //You can hear the scream 7 screens away
-			// Double check for client
-			if(M && M.client)
-				var/turf/M_turf = get_turf(M)
-				if(M_turf && M_turf.z == src.z)
-					var/dist = get_dist(M_turf, src)
-					if(dist <= 7) //source of sound very close
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency)
-					else
-						var/vol = clamp(100-((dist-7)*5), 10, 100) //Every tile decreases sound volume by 5
-						M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency)
-				if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
-					M.show_message(message)
-		audible_message(message)
-		spam_flag = 1
-		spawn(50)
-			spam_flag = 0
+		scream(message)
 		return
+	. = ..()
 
-	..(act, m_type, message)
+/mob/living/simple_animal/hostile/true_changeling/proc/scream(message)
+	if(!message)
+		message = "<B>[src]</B> makes a loud, bone-chilling roar!"
+	var/frequency = get_rand_frequency() //so sound frequency is consistent
+	for(var/mob/M in range(35, src)) //You can hear the scream 7 screens away
+		// Double check for client
+		if(M && M.client)
+			var/turf/M_turf = get_turf(M)
+			if(M_turf && M_turf.z == src.z)
+				var/dist = get_dist(M_turf, src)
+				if(dist <= 7) //source of sound very close
+					M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 80, 1, frequency)
+				else
+					var/vol = clamp(100-((dist-7)*5), 10, 100) //Every tile decreases sound volume by 5
+					M.playsound_local(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream_reverb.ogg', vol, 1, frequency)
+			if(M.stat == DEAD && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(get_turf(src),null)))
+				M.show_message(message)
+	audible_message(message)
 
 /mob/living/simple_animal/hostile/true_changeling/death()
-	emote("scream")
+	. = ..()
+	scream()
+	spawn_gibs()
 	if(stored_changeling && mind)
-		visible_message("<span class='warning'>[src] lets out a furious scream as it shrinks into its human form.</span>", \
-						"<span class='userdanger'>We lack the power to maintain this form! We helplessly turn back into a human...</span>")
-		stored_changeling.loc = get_turf(src)
-		mind.transfer_to(stored_changeling)
-		stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
-		stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
-		stored_changeling.status_flags &= ~GODMODE
-		var/datum/antagonist/changeling/C = mind.has_antag_datum(/datum/antagonist/changeling)
-		C.true_form_death = world.time
-		qdel(src)
+		visible_message("<span class='warning'>[src] lets out a furious scream as it reaches equilibrium, as it starts exploding into a shower of gore!</span>", \
+						"<span class='userdanger'>We lack the power to maintain our mass, we have reached critic-...</span>")
+		anchored = TRUE
+		turn_to_human.Remove()
+		AddComponent(/datum/component/pellet_cloud, projectile_type=/obj/projectile/bullet/pellet/bone_fragment, magnitude=8)
+		addtimer(CALLBACK(src, .proc/real_death), rand(3 SECONDS, 6 SECONDS))
 	else
 		visible_message("<span class='warning'>[src] lets out a waning scream as it falls, twitching, to the floor.</span>")
 		spawn(450)
 			if(src)
 				visible_message("<span class='warning'>[src] stumbles upright and begins to move!</span>")
 				revive() //Changelings can self-revive, and true changelings are no exception
-				emote("scream")
+				scream()
+
+/mob/living/simple_animal/hostile/true_changeling/proc/real_death()
+	for(var/i in 1 to 4)
+		spawn_gibs()
+	scream()
+	icon_state = "horror_dead"
+	visible_message("<span class='warning'>[src] has surpassed equilibrium and can no longer support itself, exploding in a shower of bone and gore!</span>", \
+						"<span class='userdanger'>ARRRRRRGHHHH!!!</span>")
+	stored_changeling.loc = get_turf(src)
+	mind.transfer_to(stored_changeling)
+	stored_changeling.Paralyze(10 SECONDS) //Make them helpless for 10 seconds
+	stored_changeling.adjustBruteLoss(30, TRUE, TRUE)
+	stored_changeling.status_flags &= ~GODMODE
+	stored_changeling.emote("scream")
+	stored_changeling.gib()
+	stored_changeling = null
+	SEND_SIGNAL(src, COMSIG_HORRORFORM_EXPLODE)
+	explosion(src, 0, 0, 5, 5)
+	qdel(src)
+
+/obj/projectile/bullet/pellet/bone_fragment
+	name = "bone fragment"
+	icon = 'modular_skyrat/modules/horrorform/icons/bone_fragment.dmi'
+	icon_state = "bone_fragment"
+	damage = 8
+	ricochets_max = 3
+	ricochet_chance = 66
+	ricochet_decay_chance = 1
+	ricochet_decay_damage = 0.9
+	ricochet_auto_aim_angle = 10
+	ricochet_auto_aim_range = 2
+	ricochet_incidence_leeway = 0
+	embed_falloff_tile = -2
+	shrapnel_type = /obj/item/shrapnel/bone_fragment
+	embedding = list(embed_chance=55, fall_chance=2, jostle_chance=7, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.7, pain_mult=3, jostle_pain_mult=3, rip_time=15)
+
+/obj/item/shrapnel/bone_fragment
+	name = "bone fragment"
+	icon_state = "tiny"
+	sharpness = NONE
+
+/obj/item/grenade/stingbang/bonebang
+	name = "bonebang"
+	icon = 'modular_skyrat/modules/horrorform/icons/bone_fragment.dmi'
+	icon_state = "grenade_bone"
+	shrapnel_type = /obj/projectile/bullet/pellet/bone_fragment
+	shrapnel_radius = 8
+
+/obj/item/grenade/stingbang/bonebang/detonate(mob/living/lanced_by)
+	new /obj/effect/gibspawner/generic/animal(loc)
 	. = ..()
 
 /datum/action/innate/turn_to_human

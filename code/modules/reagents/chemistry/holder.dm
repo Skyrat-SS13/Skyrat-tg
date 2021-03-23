@@ -13,6 +13,8 @@
 	GLOB.chemical_reagents_list = list()
 
 	for(var/path in paths)
+		if(path in GLOB.fake_reagent_blacklist)
+			continue
 		var/datum/reagent/D = new path()
 		GLOB.chemical_reagents_list[path] = D
 
@@ -32,9 +34,9 @@
 
 	//Randomized need to go last since they need to check against conflicts with normal recipes
 	var/paths = subtypesof(/datum/chemical_reaction) - typesof(/datum/chemical_reaction/randomized) + subtypesof(/datum/chemical_reaction/randomized)
-	GLOB.chemical_reactions_list = list()
-	GLOB.chemical_reactions_results_lookup_list = list()
-	GLOB.chemical_reactions_list_product_index = list()
+	GLOB.chemical_reactions_list = list() //reagents to reaction list
+	GLOB.chemical_reactions_results_lookup_list = list() //UI glob
+	GLOB.chemical_reactions_list_product_index = list() //product to reaction list
 
 	for(var/path in paths)
 		var/datum/chemical_reaction/D = new path()
@@ -153,8 +155,9 @@
  * * added_purity - override to force a purity when added
  * * added_ph - override to force a pH when added
  * * override_base_ph - ingore the present pH of the reagent, and instead use the default (i.e. if buffers/reactions alter it)
+ * * ignore splitting - Don't call the process that handles reagent spliting in a mob (impure/inverse) - generally leave this false unless you care about REAGENTS_DONOTSPLIT flags (see reagent defines)
  */
-/datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = 300, added_purity = null, added_ph, no_react = 0, override_base_ph = FALSE)
+/datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = DEFAULT_REAGENT_TEMPERATURE, added_purity = null, added_ph, no_react = FALSE, override_base_ph = FALSE, ignore_splitting = FALSE)
 	if(!isnum(amount) || !amount)
 		return FALSE
 
@@ -165,13 +168,19 @@
 	if(!glob_reagent)
 		stack_trace("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
 		return FALSE
-
-	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
 	if(isnull(added_purity)) //Because purity additions can be 0
-		added_purity = D.creation_purity //Usually 1
-
+		added_purity = glob_reagent.creation_purity //Usually 1
 	if(!added_ph)
-		added_ph = D.ph
+		added_ph = glob_reagent.ph
+
+	//Split up the reagent if it's in a mob
+	var/has_split = FALSE
+	if(!ignore_splitting && (flags & REAGENT_HOLDER_ALIVE)) //Stomachs are a pain - they will constantly call on_mob_add unless we split on addition to stomachs, but we also want to make sure we don't double split
+		var/adjusted_vol = process_mob_reagent_purity(glob_reagent, amount, added_purity)
+		if(!adjusted_vol) //If we're inverse or FALSE cancel addition
+			return FALSE
+		amount = adjusted_vol
+		has_split = TRUE
 
 	update_total()
 	var/cached_total = total_volume
@@ -227,6 +236,9 @@
 
 	if(isliving(my_atom))
 		new_reagent.on_mob_add(my_atom, amount) //Must occur before it could posibly run on_mob_delete
+
+	if(has_split) //prevent it from splitting again
+		new_reagent.chemical_flags |= REAGENT_DONOTSPLIT
 
 	update_total()
 	if(reagtemp != cached_temp)
@@ -464,7 +476,7 @@
 				trans_data = copy_data(reagent)
 			if(reagent.intercept_reagents_transfer(R, cached_amount))//Use input amount instead.
 				continue
-			R.add_reagent(reagent.type, transfer_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE) //we only handle reaction after every reagent has been transfered.
+			R.add_reagent(reagent.type, transfer_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT) //we only handle reaction after every reagent has been transfered.
 			if(methods)
 				if(istype(target_atom, /obj/item/organ))
 					R.expose_single(reagent, target, methods, part, show_message)
@@ -473,8 +485,7 @@
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
 			remove_reagent(reagent.type, transfer_amount)
 			transfer_log[reagent.type] = transfer_amount
-			if(is_type_in_list(target_atom, list(/mob/living/carbon, /obj/item/organ/stomach)))
-				R.process_mob_reagent_purity(reagent.type, transfer_amount * multiplier, reagent.purity)
+
 	else
 		var/to_transfer = amount
 		for(var/datum/reagent/reagent as anything in cached_reagents)
@@ -489,7 +500,7 @@
 				transfer_amount = reagent.volume
 			if(reagent.intercept_reagents_transfer(R, cached_amount))//Use input amount instead.
 				continue
-			R.add_reagent(reagent.type, transfer_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE) //we only handle reaction after every reagent has been transfered.
+			R.add_reagent(reagent.type, transfer_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT) //we only handle reaction after every reagent has been transfered.
 			to_transfer = max(to_transfer - transfer_amount , 0)
 			if(methods)
 				if(istype(target_atom, /obj/item/organ))
@@ -499,13 +510,10 @@
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
 			remove_reagent(reagent.type, transfer_amount)
 			transfer_log[reagent.type] = transfer_amount
-			if(is_type_in_list(target_atom, list(/mob/living/carbon, /obj/item/organ/stomach)))
-				R.process_mob_reagent_purity(reagent.type, transfer_amount * multiplier, reagent.purity)
 
 	if(transfered_by && target_atom)
 		target_atom.add_hiddenprint(transfered_by) //log prints so admins can figure out who touched it last.
 		log_combat(transfered_by, target_atom, "transferred reagents ([log_list(transfer_log)]) from [my_atom] to")
-
 
 	update_total()
 	R.update_total()
@@ -529,7 +537,6 @@
 		return
 	if(amount < 0)
 		return
-
 	var/cached_amount = amount
 	if(get_reagent_amount(reagent) < amount)
 		amount = get_reagent_amount(reagent)
@@ -544,7 +551,7 @@
 			if(current_reagent.intercept_reagents_transfer(holder, cached_amount))//Use input amount instead.
 				break
 			force_stop_reagent_reacting(current_reagent)
-			holder.add_reagent(current_reagent.type, amount, trans_data, chem_temp, current_reagent.purity, current_reagent.ph, no_react = TRUE)
+			holder.add_reagent(current_reagent.type, amount, trans_data, chem_temp, current_reagent.purity, current_reagent.ph, no_react = TRUE, ignore_splitting = current_reagent.chemical_flags & REAGENT_DONOTSPLIT)
 			remove_reagent(current_reagent.type, amount, 1)
 			break
 
@@ -577,7 +584,7 @@
 		var/copy_amount = reagent.volume * part
 		if(preserve_data)
 			trans_data = reagent.data
-		R.add_reagent(reagent.type, copy_amount * multiplier, trans_data, added_purity = reagent.purity, added_ph = reagent.ph, no_react = TRUE)
+		R.add_reagent(reagent.type, copy_amount * multiplier, trans_data, added_purity = reagent.purity, added_ph = reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
 
 	//pass over previous ongoing reactions before handle_reactions is called
 	transfer_reactions(R)
@@ -596,7 +603,7 @@
 	var/change = (multiplier - 1) //Get the % change
 	for(var/datum/reagent/reagent as anything in cached_reagents)
 		if(change > 0)
-			add_reagent(reagent.type, reagent.volume * change, added_purity = reagent.purity)
+			add_reagent(reagent.type, reagent.volume * change, added_purity = reagent.purity, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
 		else
 			remove_reagent(reagent.type, abs(reagent.volume * change)) //absolute value to prevent a double negative situation (removing -50% would be adding 50%)
 
@@ -639,12 +646,15 @@
 			master = reagent
 
 	return master
+/*							MOB/CARBON RELATED PROCS 								*/
 
 /**
- * Triggers metabolizing the reagents in this holder
+ * Triggers metabolizing for all the reagents in this holder
  *
  * Arguments:
- * * mob/living/carbon/C - The mob to metabolize in, if null it uses [/datum/reagents/var/my_atom]
+ * * mob/living/carbon/carbon - The mob to metabolize in, if null it uses [/datum/reagents/var/my_atom]
+ * * delta_time - the time in server seconds between proc calls (when performing normally it will be 2)
+ * * times_fired - the number of times the owner's life() tick has been called aka The number of times SSmobs has fired
  * * can_overdose - Allows overdosing
  * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
  */
@@ -652,62 +662,78 @@
 	var/list/cached_reagents = reagent_list
 	if(owner)
 		expose_temperature(owner.bodytemperature, 0.25)
-	var/need_mob_update = 0
+	var/need_mob_update = FALSE
 	for(var/datum/reagent/reagent as anything in cached_reagents)
-		if(QDELETED(reagent.holder))
-			continue
-
-		if(!owner)
-			owner = reagent.holder.my_atom
-
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(ishuman(owner))
-			var/mob/living/carbon/human/H = owner
-			//Check if this mob's species is set and can process this type of reagent
-			var/can_process = FALSE
-			//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
-			if(H.dna && H.dna.species.reagent_flags)
-				var/owner_flags = H.dna.species.reagent_flags
-				if((reagent.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
-					can_process = TRUE
-				if((reagent.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
-					can_process = TRUE
-
-			//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
-			if(!can_process)
-				reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-				continue
-		//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
-		else
-			if(reagent.process_flags == REAGENT_SYNTHETIC)
-				reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-				continue
-		//SKYRAT EDIT ADDITION END
-
-		if(owner && reagent)
-			if(owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
-				if(liverless && !reagent.self_consuming) //need to be metabolized
-					continue
-				if(!reagent.metabolizing)
-					reagent.metabolizing = TRUE
-					reagent.on_mob_metabolize(owner)
-				if(can_overdose)
-					if(reagent.overdose_threshold)
-						if(reagent.volume >= reagent.overdose_threshold && !reagent.overdosed)
-							reagent.overdosed = TRUE
-							need_mob_update += reagent.overdose_start(owner)
-							log_game("[key_name(owner)] has started overdosing on [reagent.name] at [reagent.volume] units.")
-					for(var/addiction in reagent.addiction_types)
-						owner.mind?.add_addiction_points(addiction, reagent.addiction_types[addiction] * REAGENTS_METABOLISM)
-
-					if(reagent.overdosed)
-						need_mob_update += reagent.overdose_process(owner, delta_time, times_fired)
-
-				need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
+		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose, liverless)
 	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		owner.updatehealth()
 		owner.update_stamina()
 	update_total()
+
+/*
+ * Metabolises a single reagent for a target owner carbon mob. See above.
+ *
+ * Arguments:
+ * * mob/living/carbon/owner - The mob to metabolize in, if null it uses [/datum/reagents/var/my_atom]
+ * * delta_time - the time in server seconds between proc calls (when performing normally it will be 2)
+ * * times_fired - the number of times the owner's life() tick has been called aka The number of times SSmobs has fired
+ * * can_overdose - Allows overdosing
+ * * liverless - Stops reagents that aren't set as [/datum/reagent/var/self_consuming] from metabolizing
+ */
+/datum/reagents/proc/metabolize_reagent(mob/living/carbon/owner, datum/reagent/reagent, delta_time, times_fired, can_overdose = FALSE, liverless = FALSE)
+	var/need_mob_update = FALSE
+	if(QDELETED(reagent.holder))
+		return FALSE
+
+	if(!owner)
+		owner = reagent.holder.my_atom
+
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		//Check if this mob's species is set and can process this type of reagent
+		var/can_process = FALSE
+		//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
+		if(H.dna && H.dna.species.reagent_flags)
+			var/owner_flags = H.dna.species.reagent_flags
+			if((reagent.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
+				can_process = TRUE
+			if((reagent.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
+				can_process = TRUE
+
+		//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
+		if(!can_process)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			return
+	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
+	else
+		if(reagent.process_flags == REAGENT_SYNTHETIC)
+			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
+			return
+	//SKYRAT EDIT ADDITION END
+
+	if(owner && reagent)
+		if(!owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
+			return
+		if(liverless && !reagent.self_consuming) //need to be metabolized
+			return
+		if(!reagent.metabolizing)
+			reagent.metabolizing = TRUE
+			reagent.on_mob_metabolize(owner)
+		if(can_overdose)
+			if(reagent.overdose_threshold)
+				if(reagent.volume >= reagent.overdose_threshold && !reagent.overdosed)
+					reagent.overdosed = TRUE
+					need_mob_update += reagent.overdose_start(owner)
+					log_game("[key_name(owner)] has started overdosing on [reagent.name] at [reagent.volume] units.")
+			for(var/addiction in reagent.addiction_types)
+				owner.mind?.add_addiction_points(addiction, reagent.addiction_types[addiction] * REAGENTS_METABOLISM)
+
+			if(reagent.overdosed)
+				need_mob_update += reagent.overdose_process(owner, delta_time, times_fired)
+
+			need_mob_update += reagent.on_mob_life(owner, delta_time, times_fired)
+	return need_mob_update
 
 /// Signals that metabolization has stopped, triggering the end of trait-based effects
 /datum/reagents/proc/end_metabolization(mob/living/carbon/C, keep_liverless = TRUE)
@@ -722,6 +748,51 @@
 		if(reagent.metabolizing)
 			reagent.metabolizing = FALSE
 			reagent.on_mob_end_metabolize(C)
+
+/*Processes the reagents in the holder and converts them, only called in a mob/living/carbon on addition
+*
+* Arguments:
+* * reagent - the added reagent datum/object
+* * added_volume - the volume of the reagent that was added (since it can already exist in a mob)
+* * added_purity - the purity of the added volume
+* returns the volume of the current reagent to keep
+*/
+/datum/reagents/proc/process_mob_reagent_purity(datum/reagent/reagent, added_volume, added_purity)
+	if(!reagent)
+		stack_trace("Attempted to process a mob's reagent purity for a null reagent!")
+		return FALSE
+	if(added_purity == 1)
+		return added_volume
+	if(reagent.chemical_flags & REAGENT_DONOTSPLIT)
+		return added_volume
+	if(added_purity < 0)
+		stack_trace("Purity below 0 for chem on mob splitting: [reagent.type]!")
+		added_purity = 0
+
+	if((reagent.inverse_chem_val > added_purity) && (reagent.inverse_chem))//Turns all of a added reagent into the inverse chem
+		add_reagent(reagent.inverse_chem, added_volume, FALSE, added_purity = 1-reagent.creation_purity)
+		var/datum/reagent/inverse_reagent = has_reagent(reagent.inverse_chem)
+		if(inverse_reagent.chemical_flags & REAGENT_SNEAKYNAME)
+			inverse_reagent.name = reagent.name//Negative effects are hidden
+		return FALSE //prevent addition
+	else if(reagent.impure_chem)
+		var/impure_vol = added_volume * (1 - added_purity) //turns impure ratio into impure chem
+		add_reagent(reagent.impure_chem, impure_vol, FALSE, added_purity = 1-reagent.creation_purity)
+		if(!(reagent.chemical_flags & REAGENT_SPLITRETAINVOL))
+			return added_volume - impure_vol
+	return added_volume
+
+///Processes any chems that have the REAGENT_IGNORE_STASIS bitflag ONLY
+/datum/reagents/proc/handle_stasis_chems(mob/living/carbon/owner, delta_time, times_fired)
+	var/need_mob_update = FALSE
+	for(var/datum/reagent/reagent as anything in reagent_list)
+		if(!(reagent.chemical_flags & REAGENT_IGNORE_STASIS))
+			continue
+		need_mob_update += metabolize_reagent(owner, reagent, delta_time, times_fired, can_overdose = TRUE)
+	if(owner && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
+		owner.updatehealth()
+		owner.update_stamina()
+	update_total()
 
 /**
  * Calls [/datum/reagent/proc/on_move] on every reagent in this holder
@@ -797,7 +868,7 @@
 			var/meets_ph_requirement = FALSE
 			var/granularity = 1
 			if(!(reaction.reaction_flags & REACTION_INSTANT))
-				granularity = 0.01
+				granularity = CHEMICAL_VOLUME_MINIMUM
 
 			for(var/req_reagent in cached_required_reagents)
 				if(!has_reagent(req_reagent, (cached_required_reagents[req_reagent]*granularity)))
@@ -904,7 +975,6 @@
 				mix_message += temp_mix_message
 			continue
 		SSblackbox.record_feedback("tally", "chemical_reaction", 1, "[equilibrium.reaction.type] total reaction steps")
-
 	if(num_reactions)
 		SEND_SIGNAL(src, COMSIG_REAGENTS_REACTION_STEP, num_reactions, delta_time)
 
@@ -991,7 +1061,7 @@
 				mix_message += end_reaction(equilibrium)
 				any_stopped = TRUE
 	if(length(mix_message))
-		my_atom.audible_message("<span class='notice'>[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] [mix_message.Join()]</span>")
+		my_atom.audible_message("<span class='notice'>[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))][mix_message.Join()]</span>")
 	return any_stopped
 
 /*
@@ -1021,7 +1091,6 @@
 
 	target.previous_reagent_list = LAZYLISTDUPLICATE(previous_reagent_list)
 	target.is_reacting = is_reacting
-
 
 ///Checks to see if the reagents has a difference in reagents_list and previous_reagent_list (I.e. if there's a difference between the previous call and the last)
 ///Also checks to see if the saved reactions in failed_but_capable_reactions can start as a result of temp/pH change
@@ -1111,42 +1180,6 @@
 				selected_reaction = competitor
 	return selected_reaction
 
-/*Processes the reagents in the holder and converts them, only called in a mob/living/carbon on addition
-*
-* Arguments:
-* * reagent - the added reagent datum/object
-* * added_volume - the volume of the reagent that was added (since it can already exist in a mob)
-* * added_purity - the purity of the added volume
-*/
-/datum/reagents/proc/process_mob_reagent_purity(_reagent, added_volume, added_purity)
-	var/datum/reagent/R = has_reagent(_reagent)
-	if(!R)
-		stack_trace("Tried to process reagent purity for [_reagent], but 0 volume was found right after it was added!") //This can happen from smoking, where the volume is 0 after adding?
-		return
-	if (R.purity == 1)
-		return
-	if(R.chemical_flags & REAGENT_DONOTSPLIT)
-		R.purity = 1
-		return
-	if(R.purity < 0)
-		stack_trace("Purity below 0 for chem: [type]!")
-		R.purity = 0
-
-	if ((R.inverse_chem_val > R.purity) && (R.inverse_chem))//Turns all of a added reagent into the inverse chem
-		remove_reagent(R.type, added_volume, FALSE)
-		add_reagent(R.inverse_chem, added_volume, FALSE, added_purity = 1-R.creation_purity)
-		var/datum/reagent/inverse_reagent = has_reagent(R.inverse_chem)
-		if(inverse_reagent.chemical_flags & REAGENT_SNEAKYNAME)
-			inverse_reagent.name = R.name//Negative effects are hidden
-			if(inverse_reagent.chemical_flags & REAGENT_INVISIBLE)
-				inverse_reagent.chemical_flags |= (REAGENT_INVISIBLE)
-	else if (R.impure_chem)
-		var/impureVol = added_volume * (1 - R.purity) //turns impure ratio into impure chem
-		if(!(R.chemical_flags & REAGENT_SPLITRETAINVOL))
-			remove_reagent(R.type, impureVol, FALSE)
-		add_reagent(R.impure_chem, impureVol, FALSE, added_purity = 1-R.creation_purity)
-	R.purity = 1 //prevent this process from repeating (this is why creation_purity exists)
-
 /// Updates [/datum/reagents/var/total_volume]
 /datum/reagents/proc/update_total()
 	var/list/cached_reagents = reagent_list
@@ -1159,7 +1192,6 @@
 		else
 			total_volume += reagent.volume
 	recalculate_sum_ph()
-
 
 /**
  * Applies the relevant expose_ proc for every reagent in this holder
@@ -1361,7 +1393,7 @@
 		return
 
 	. = chem_temp
-	chem_temp = _temperature
+	chem_temp = clamp(_temperature, 0, CHEMICAL_MAXIMUM_TEMPERATURE)
 	SEND_SIGNAL(src, COMSIG_REAGENTS_TEMP_CHANGE, _temperature, .)
 
 /*
@@ -1634,6 +1666,8 @@
 
 			if(reagent.chemical_flags & REAGENT_DEAD_PROCESS)
 				data["reagent_mode_reagent"] += list("deadProcess" = TRUE)
+	else
+		data["reagent_mode_reagent"] = null
 
 	//reaction lookup data
 	if (ui_reaction_id)
@@ -1733,6 +1767,8 @@
 					tooltip_bool = TRUE
 			data["reagent_mode_recipe"]["catalysts"] += list(list("name" = reagent.name, "id" = reagent.type, "ratio" = reaction.required_catalysts[reagent.type], "color" = color_r, "tooltipBool" = tooltip_bool, "tooltip" = tooltip))
 		data["reagent_mode_recipe"]["isColdRecipe"] = reaction.is_cold_recipe
+	else
+		data["reagent_mode_recipe"] = null
 
 	return data
 

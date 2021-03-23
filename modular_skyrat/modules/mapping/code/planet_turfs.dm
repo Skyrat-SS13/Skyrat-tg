@@ -69,3 +69,10 @@
 	..()
 	vis_contents += snow_overlay
 */
+
+/turf/closed/mineral/earth_like
+	icon_state = "rock"
+	turf_type = /turf/open/floor/plating/asteroid
+	baseturfs = /turf/open/floor/plating/asteroid
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	defer_change = TRUE
