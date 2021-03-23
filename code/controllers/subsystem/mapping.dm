@@ -322,6 +322,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	var/players = GLOB.clients.len
 	var/list/mapvotes = list()
 	//count votes
+	//SKYRAT EDIT REMOVAL BEGIN - No autovote
+	/*
 	var/pmv = CONFIG_GET(flag/preference_map_voting)
 	if(pmv)
 		for (var/client/c in GLOB.clients)
@@ -332,8 +334,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 				continue
 			mapvotes[vote] += 1
 	else
-		for(var/M in global.config.maplist)
-			mapvotes[M] = 1
+	*/
+	//SKYRAT EDIT REMOVAL END - No autovote
+	for(var/M in global.config.maplist) //SKYRAT EDIT ONE INDENTATION REMOVED - No autovote
+		mapvotes[M] = 1 //SKYRAT EDIT ONE INDENTATION REMOVED - No autovote
 
 	//filter votes
 	for (var/map in mapvotes)
@@ -360,8 +364,12 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			mapvotes.Remove(map)
 			continue
 
+		//SKYRAT EDIT REMOVAL BEGIN - No autovote
+		/*
 		if(pmv)
 			mapvotes[map] = mapvotes[map]*VM.voteweight
+		*/
+		//SKYRAT EDIT REMOVAL END - No autovote
 
 	var/pickedmap = pickweight(mapvotes)
 	if (!pickedmap)
