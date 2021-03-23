@@ -36,6 +36,7 @@
 	return ..()
 
 /datum/component/automatic_fire/process(delta_time)
+	stack_trace("Process pre-fired.")
 	if(!(autofire_stat & AUTOFIRE_STAT_FIRING))
 		STOP_PROCESSING(SSprojectiles, src)
 		return
@@ -43,11 +44,13 @@
 	if(!COOLDOWN_FINISHED(src, next_shot_cd))
 		return
 
+	stack_trace("Process fired.")
+
 	process_shot()
 
 /datum/component/automatic_fire/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
-
+	stack_trace("Wakeup called.")
 	if(autofire_stat & (AUTOFIRE_STAT_ALERT))
 		return //We've updated the firemode. No need for more.
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
@@ -77,6 +80,7 @@
 		UnregisterSignal(shooter, COMSIG_MOB_LOGIN)
 	parent.RegisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN, /obj/item/gun/.proc/autofire_bypass_check)
 	parent.RegisterSignal(parent, COMSIG_AUTOFIRE_SHOT, /obj/item/gun/.proc/do_autofire)
+	stack_trace("Autofire_on called.")
 
 
 /datum/component/automatic_fire/proc/autofire_off(datum/source)
@@ -98,6 +102,7 @@
 	shooter = null
 	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
 	parent.UnregisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN)
+	stack_trace("Autofire_off called.")
 
 /datum/component/automatic_fire/proc/on_client_login(mob/source)
 	SIGNAL_HANDLER
@@ -151,6 +156,7 @@
 
 //Dakka-dakka
 /datum/component/automatic_fire/proc/start_autofiring()
+	stack_trace("Start autofiring called.")
 	if(autofire_stat == AUTOFIRE_STAT_FIRING)
 		return //Already pew-pewing.
 	autofire_stat = AUTOFIRE_STAT_FIRING
@@ -190,6 +196,7 @@
 
 /datum/component/automatic_fire/proc/stop_autofiring(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
+	stack_trace("Stop autofiring called.")
 	switch(autofire_stat)
 		if(AUTOFIRE_STAT_IDLE, AUTOFIRE_STAT_ALERT)
 			return
@@ -238,6 +245,7 @@
 		stop_autofiring() //Elvis has left the building.
 		return FALSE
 	shooter.face_atom(target)
+	stack_trace("Process shot called.")
 	COOLDOWN_START(src, next_shot_cd, autofire_shot_delay)
 	if(SEND_SIGNAL(parent, COMSIG_AUTOFIRE_SHOT, target, shooter, mouse_parameters) & COMPONENT_AUTOFIRE_SHOT_SUCCESS)
 		return TRUE
@@ -273,6 +281,7 @@
 		if(akimbo_gun.weapon_weight < WEAPON_MEDIUM && akimbo_gun.can_trigger_gun(shooter))
 			bonus_spread = dual_wield_spread
 			addtimer(CALLBACK(akimbo_gun, /obj/item/gun.proc/process_fire, target, shooter, TRUE, params, null, bonus_spread), 1)
+	stack_trace("Do autofire called.")
 	process_fire(target, shooter, TRUE, params, null, bonus_spread)
 	return COMPONENT_AUTOFIRE_SHOT_SUCCESS //All is well, we can continue shooting.
 
