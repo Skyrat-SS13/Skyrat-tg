@@ -146,7 +146,7 @@
 
 /datum/map_template/ruin/space/spacehotel
 	id = "spacehotel"
-	suffix = "spacehotel.dmm"
+	suffix = "spacehotel_skyrat.dmm"	// SKYRAT EDIT CHANGE - ORIGINAL: suffix = "spacehotel.dmm"
 	name = "The Twin-Nexus Hotel"
 	description = "An interstellar hotel, where the weary spaceman can rest their head and relax, assured that the residental staff will not murder them in their sleep. Probably."
 
@@ -237,13 +237,14 @@
 	description = "There seems to be a pair of buses that pulled over for repairs. What were they doing...? Their shipment sure  seems to be filled with a strange mix. \
 	Anyway, it looks like some people tried to fix it up for a long time but didn't really get anywhere..."
 
+/*SKYRAT EDIT CHANGE - Mapping
 /datum/map_template/ruin/space/oldstation
 	id = "oldstation"
 	suffix = "oldstation.dmm"
 	name = "Ancient Space Station"
 	description = "The crew of a space station awaken one hundred years after a crisis. Awaking to a derelict space station on the verge of collapse, and a hostile force of invading \
 	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"
-
+*/
 /datum/map_template/ruin/space/gondoland
 	id = "gondolaasteroid"
 	suffix = "gondolaasteroid.dmm"

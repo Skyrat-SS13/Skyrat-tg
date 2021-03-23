@@ -47,7 +47,6 @@
 		// If we're not exploding, set the alert level back to normal
 		set_safety()
 	GLOB.nuke_list -= src
-	explosion(src, 50, 70, 80, 100, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	QDEL_NULL(countdown)
 	QDEL_NULL(core)
 	. = ..()
@@ -463,9 +462,10 @@
 	safety = TRUE
 	update_appearance()
 	sound_to_playing_players('sound/machines/alarm.ogg')
+	sound_to_playing_players('modular_skyrat/modules/alerts/sound/ai/default/DeltaBOOM.ogg') //SKYRAT EDIT ADDITION
 	if(SSticker?.mode)
 		SSticker.roundend_check_paused = TRUE
-	addtimer(CALLBACK(src, .proc/actually_explode), 100)
+	addtimer(CALLBACK(src, .proc/actually_explode), 10 SECONDS)
 
 /obj/machinery/nuclearbomb/proc/actually_explode()
 	if(!core)
@@ -493,7 +493,7 @@
 		SSshuttle.registerHostileEnvironment(src)
 		SSshuttle.lockdown = TRUE
 
-	INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) //SKYRAT EDIT ADDITION
+	KillEveryoneOnZLevel(z) //SKYRAT EDIT ADDITION
 
 	//Cinematic
 	SSticker.mode.OnNukeExplosion(off_station)
@@ -502,6 +502,7 @@
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
+	explosion(src, 40, 50, 70, 80, TRUE, TRUE) //SKYRAT EDIT ADDITION
 	//INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) SKYRAT EDIT REMOVAL
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)

@@ -550,7 +550,7 @@
 
 //Cosmetic
 
-/obj/item/borg/upgrade/modkit/chassis_mod
+/obj/item/borg/upgrade/modkit/chassis_mod /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
 	name = "super chassis"
 	desc = "Makes your KA yellow. All the fun of having a more powerful KA without actually having a more powerful KA."
 	cost = 0
@@ -569,7 +569,7 @@
 	KA.name = initial(KA.name)
 	..()
 
-/obj/item/borg/upgrade/modkit/chassis_mod/orange
+/obj/item/borg/upgrade/modkit/chassis_mod/orange /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
 	name = "hyper chassis"
 	desc = "Makes your KA orange. All the fun of having explosive blasts without actually having explosive blasts."
 	chassis_icon = "kineticgun_h"

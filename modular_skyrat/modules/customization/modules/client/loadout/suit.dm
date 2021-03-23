@@ -48,11 +48,11 @@
 /datum/loadout_item/suit/flannel_red
 	name = "Red Flannel"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/red
-	
+
 /datum/loadout_item/suit/flannel_aqua
 	name = "Aqua Flannel"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/aqua
-	
+
 /datum/loadout_item/suit/flannel_brown
 	name = "Brown Flannel"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/brown
@@ -131,6 +131,62 @@
 	name = "Flak Jacket"
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+
+//HOODIES
+/datum/loadout_item/suit/hoodie
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_HOODIES
+
+/datum/loadout_item/suit/hoodie/grey
+	name = "Grey Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie
+
+/datum/loadout_item/suit/hoodie/black
+	name = "Black Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/black
+
+/datum/loadout_item/suit/hoodie/red
+	name = "Red Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/red
+
+/datum/loadout_item/suit/hoodie/blue
+	name = "Blue Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/blue
+
+/datum/loadout_item/suit/hoodie/green
+	name = "Green Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/green
+
+/datum/loadout_item/suit/hoodie/orange
+	name = "orange hoodies"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/orange
+
+/datum/loadout_item/suit/hoodie/yellow
+	name = "Yellow Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/yellow
+
+/datum/loadout_item/suit/hoodie/white
+	name = "White Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/white
+
+/datum/loadout_item/suit/hoodie/cti
+	name = "CTI Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/cti
+
+/datum/loadout_item/suit/hoodie/mu
+	name = "Mojave University Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/mu
+
+/datum/loadout_item/suit/hoodie/nt
+	name = "NT Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/nt
+
+/datum/loadout_item/suit/hoodie/smw
+	name = "SMW Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/smw
+
+/datum/loadout_item/suit/hoodie/nrti
+	name = "NRTI Hoodie"
+	path = /obj/item/clothing/suit/storage/toggle/hoodie/nrti
 
 //JOB RELATED
 /datum/loadout_item/suit/job

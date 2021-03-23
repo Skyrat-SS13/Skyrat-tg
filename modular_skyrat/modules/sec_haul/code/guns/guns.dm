@@ -73,7 +73,6 @@
 	burst_size = 3
 	fire_delay = 1
 	spread = 10
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
@@ -167,7 +166,6 @@
 	burst_size = 3
 	fire_delay = 1
 	spread = 5
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	realistic = TRUE
 	dirt_modifier = 0.1
 	can_flashlight = TRUE
@@ -391,7 +389,6 @@
 	can_suppress = FALSE
 	burst_size = 3
 	spread = 10
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
@@ -431,7 +428,7 @@
 	inhand_icon_state = "pitbull"
 	icon_state = "pitbull"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
-	worn_icon_state = "pitbull_worn"
+	worn_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
@@ -440,7 +437,6 @@
 	burst_size = 3
 	fire_delay = 3
 	spread = 15
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
@@ -489,7 +485,6 @@
 	fire_delay = 0.7
 	can_suppress = FALSE
 	burst_size = 4
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
@@ -538,7 +533,7 @@
 	spread = 20
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	actions_types = list(/datum/action/item_action/toggle_firemode)
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 	realistic = TRUE
 	dirt_modifier = 1.7
 	emp_damageable = TRUE
@@ -578,7 +573,7 @@
 	mag_display_ammo = FALSE
 	burst_size = 1
 	fire_delay = 0
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
@@ -641,6 +636,7 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	emp_damageable = TRUE
 	armadyne = TRUE
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
 	name = "norwind dmr magazine (12mm)"
@@ -675,7 +671,6 @@
 	inhand_icon_state = "vintorez"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez
 	can_suppress = FALSE
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
@@ -729,7 +724,6 @@
 	fire_delay = 1.7
 	can_suppress = FALSE
 	burst_size = 3
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	can_bayonet = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE

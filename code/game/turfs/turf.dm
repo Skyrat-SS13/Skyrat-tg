@@ -3,10 +3,10 @@ GLOBAL_LIST_EMPTY(station_turfs)
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	icon = 'icons/turf/floors.dmi'
-	flags_1 = CAN_BE_DIRTY_1
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE // Important for interaction with and visualization of openspace.
 	luminosity = 1
-
+	/// Turf bitflags, see code/__DEFINES/flags.dm
+	var/turf_flags = NONE
 	var/intact = 1
 
 	// baseturfs can be either a list or a single turf type.
@@ -24,8 +24,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 	var/list/image/blueprint_data //for the station blueprints, images of objects eg: pipes
 
-	var/explosion_level = 0 //for preventing explosion dodging
-	var/explosion_id = 0
 	var/list/explosion_throw_details
 
 	var/requires_activation //add to air processing after initialize?
@@ -155,6 +153,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	flags_1 &= ~INITIALIZED_1
 	requires_activation = FALSE
 	..()
+	
+	vis_contents.Cut()
 
 /turf/attack_hand(mob/user, list/modifiers)
 	. = ..()
@@ -477,8 +477,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	for(var/thing in contents)
 		var/atom/movable/movable_thing = thing
 		if(QDELETED(movable_thing))
-			continue
-		if(!movable_thing.ex_check(explosion_id))
 			continue
 		switch(severity)
 			if(EXPLODE_DEVASTATE)

@@ -169,6 +169,8 @@
 						if(target.oxyloss > 50)
 							target.Unconscious(400)
 			if(BODY_ZONE_CHEST)
+				if(istype(user.mind.martial_art, /datum/martial_art/cqc)) //If you know CQC, You can't suplex and instead have the ability to use the chokehold, Sorry.
+					return
 				//Suplex!
 				. = TRUE
 				user.changeNext_move(3 SECONDS)
