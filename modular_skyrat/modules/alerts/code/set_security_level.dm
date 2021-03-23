@@ -1,6 +1,10 @@
-GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound effect is currently playing
+GLOBAL_VAR_INIT(gamma_timer_id, null)
+GLOBAL_VAR_INIT(delta_timer_id, null)
+GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 
 #define GAMMA_LOOP_LENGTH 1236 //2.06 minutes in deciseconds
+#define DELTA_LOOP_LENGTH 8 SECONDS
+#define SET_SEC_LEVEL_COOLDOWN 5 SECONDS
 
 /proc/set_security_level(level)
 	level = isnum(level) ? level : seclevel2num(level)
@@ -9,41 +13,16 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 
 	//Will not be announced if you try to set to the same level as it already is
 	if(level >= SEC_LEVEL_GREEN && level <= SEC_LEVEL_GAMMA && level != GLOB.security_level)
-		switch(level)
-			if(SEC_LEVEL_GREEN)
-				minor_announce(CONFIG_GET(string/alert_green), "Attention! Alert level lowered to green:")
-			if(SEC_LEVEL_BLUE)
-				if(GLOB.security_level < SEC_LEVEL_BLUE)
-					minor_announce(CONFIG_GET(string/alert_blue_upto), "Attention! Alert level elevated to blue:",1)
-				else
-					minor_announce(CONFIG_GET(string/alert_blue_downto), "Attention! Alert level lowered to blue:")
-			if(SEC_LEVEL_VIOLET)
-				if(GLOB.security_level < SEC_LEVEL_VIOLET)
-					minor_announce(CONFIG_GET(string/alert_violet_upto), "Attention! Alert level set to violet:",1)
-				else
-					minor_announce(CONFIG_GET(string/alert_violet_downto), "Attention! Alert level set to violet:")
-			if(SEC_LEVEL_ORANGE)
-				if(GLOB.security_level < SEC_LEVEL_ORANGE)
-					minor_announce(CONFIG_GET(string/alert_orange_upto), "Attention! Alert level set to orange:",1)
-				else
-					minor_announce(CONFIG_GET(string/alert_orange_downto), "Attention! Alert level set to orange:")
-			if(SEC_LEVEL_AMBER)
-				if(GLOB.security_level < SEC_LEVEL_AMBER)
-					minor_announce(CONFIG_GET(string/alert_amber_upto), "Attention! Alert level set to amber:",1)
-				else
-					minor_announce(CONFIG_GET(string/alert_amber_downto), "Attention! Alert level set to amber:")
-			if(SEC_LEVEL_RED)
-				if(GLOB.security_level < SEC_LEVEL_RED)
-					minor_announce(CONFIG_GET(string/alert_red_upto), "Attention! Code red!",1)
-				else
-					minor_announce(CONFIG_GET(string/alert_red_downto), "Attention! Code red!")
-			if(SEC_LEVEL_DELTA)
-				if(GLOB.security_level < SEC_LEVEL_DELTA)
-					minor_announce(CONFIG_GET(string/alert_delta_upto), "Attention! Delta Alert level reached!",1)
-				else
-					minor_announce(CONFIG_GET(string/alert_delta_downto), "Attention! Delta Alert level reached!",1)
-			if(SEC_LEVEL_GAMMA)
-				minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!",1)
+		if(GLOB.sec_level_cooldown)
+			message_admins("Attempt made to change security level while in cooldown!")
+			return "COOLDOWN"
+		if(GLOB.delta_timer_id)
+			deltimer(GLOB.delta_timer_id)
+			GLOB.delta_timer_id = null
+		if(GLOB.gamma_timer_id)
+			deltimer(GLOB.gamma_timer_id)
+			GLOB.gamma_timer_id = null
+		announce_security_level(level) //IF YOU ARE ADDING A NEW SECURITY LEVEL, UPDATE THIS PROC
 		GLOB.security_level = level
 		for(var/obj/machinery/firealarm/FA in GLOB.machines)
 			if(is_station_level(FA.z))
@@ -61,9 +40,13 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 			SSshuttle.emergency.modTimer(modTimer)
 		SSblackbox.record_feedback("tally", "security_level_changes", 1, get_security_level())
 		SSnightshift.check_nightshift()
-		play_security_alert_sound(level)
+		GLOB.sec_level_cooldown = TRUE
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/reset_sec_level_cooldown), SET_SEC_LEVEL_COOLDOWN)
 	else
 		return
+
+/proc/reset_sec_level_cooldown()
+	GLOB.sec_level_cooldown = FALSE
 
 /proc/get_mod_timer(secLevel)
 	switch(secLevel)
@@ -141,40 +124,72 @@ GLOBAL_VAR_INIT(gamma_looping, FALSE) //This is so we know if the gamma sound ef
 		if("gamma")
 			return SEC_LEVEL_GAMMA
 
-/proc/play_security_alert_sound(level)
+/proc/announce_security_level(level)
 	switch(level)
+		if(SEC_LEVEL_GREEN)
+			minor_announce(CONFIG_GET(string/alert_green), "Attention! Alert level lowered to green:", sound = 'modular_skyrat/modules/alerts/sound/misc/downtoGREEN.ogg')
 		if(SEC_LEVEL_BLUE)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/voybluealert.ogg', volume = 50)
+			if(GLOB.security_level < SEC_LEVEL_BLUE)
+				minor_announce(CONFIG_GET(string/alert_blue_upto), "Attention! Alert level elevated to blue:", sound = 'modular_skyrat/modules/alerts/sound/misc/blue.ogg')
+			else
+				minor_announce(CONFIG_GET(string/alert_blue_downto), "Attention! Alert level lowered to blue:", sound = 'modular_skyrat/modules/alerts/sound/misc/downtoBLUE.ogg')
 		if(SEC_LEVEL_VIOLET)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg', volume = 50)
+			if(GLOB.security_level < SEC_LEVEL_VIOLET)
+				minor_announce(CONFIG_GET(string/alert_violet_upto), "Attention! Alert level set to violet:", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
+			else
+				minor_announce(CONFIG_GET(string/alert_violet_downto), "Attention! Alert level set to violet:", sound = 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
 		if(SEC_LEVEL_ORANGE)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg', volume = 50)
+			if(GLOB.security_level < SEC_LEVEL_ORANGE)
+				minor_announce(CONFIG_GET(string/alert_orange_upto), "Attention! Alert level set to orange:", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
+			else
+				minor_announce(CONFIG_GET(string/alert_orange_downto), "Attention! Alert level set to orange:", sound = 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
 		if(SEC_LEVEL_AMBER)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/notice1.ogg', volume = 50)
+			if(GLOB.security_level < SEC_LEVEL_AMBER)
+				minor_announce(CONFIG_GET(string/alert_amber_upto), "Attention! Alert level set to amber:", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
+			else
+				minor_announce(CONFIG_GET(string/alert_amber_downto), "Attention! Alert level set to amber:", sound = 'modular_skyrat/modules/alerts/sound/misc/voyalert.ogg')
 		if(SEC_LEVEL_RED)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/redalert1.ogg', volume = 50)
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				minor_announce(CONFIG_GET(string/alert_red_upto), "Attention! Code red!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/red.ogg')
+			else
+				minor_announce(CONFIG_GET(string/alert_red_downto), "Attention! Code red!", sound = 'modular_skyrat/modules/alerts/sound/misc/downtoRED.ogg')
 		if(SEC_LEVEL_DELTA)
-			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/deltaklaxon.ogg')
+			if(GLOB.security_level < SEC_LEVEL_DELTA)
+				minor_announce(CONFIG_GET(string/alert_delta_upto), "Attention! Delta Alert level reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/delta.ogg')
+			else
+				minor_announce(CONFIG_GET(string/alert_delta_downto), "Attention! Delta Alert level reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/delta.ogg')
+			GLOB.security_level = level //Snowflake shit to make sue they actually loop.
+			delta_alarm()
 		if(SEC_LEVEL_GAMMA)
-			if(!GLOB.gamma_looping)
-				gamma_loop() //Gamma has a looping sound effect
+			minor_announce(CONFIG_GET(string/alert_gamma), "Attention! ZK-Class Reality Failure Scenario Detected, GAMMA Alert Level Reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
+			GLOB.security_level = level
+			gamma_loop()
 
-/proc/alert_sound_to_playing(soundin, volume = 100, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
+/proc/delta_alarm() //Delta alarm sounds every so often
+	if(GLOB.security_level == SEC_LEVEL_DELTA)
+		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
+		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm), DELTA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE)
+
+/proc/gamma_loop() //Loops gamma sound
+	if(GLOB.security_level == SEC_LEVEL_GAMMA)
+		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
+		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE)
+
+///This is quite franlky the most important proc relating to global sounds, it uses area definition to play sounds depending on your location, and respects the players announcement volume. Generally if you're sending an announcement you want to use priority_announce.
+/proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
 	if(!S)
 		S = sound(get_sfx(soundin))
+	var/list/quiet_areas = typecacheof(typesof(/area/maintenance) + typesof(/area/space) + typesof(/area/commons/dorms))
 	for(var/m in GLOB.player_list)
 		if(ismob(m) && !isnewplayer(m))
 			var/mob/M = m
-			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
-				M.playsound_local(M, null, volume, vary, frequency, falloff, channel, pressure_affected, S)
-
-//ALERT ALERT ALERT SHITCODE
-/proc/gamma_loop() //Loops gamma sound
-	if(GLOB.security_level != SEC_LEVEL_GAMMA)
-		GLOB.gamma_looping = FALSE
-		return
-	GLOB.gamma_looping = TRUE
-	alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
-	addtimer(CALLBACK(.proc/gamma_loop), GAMMA_LOOP_LENGTH)
+			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS && M.can_hear())
+				var/area/A = get_area(M)
+				if(is_type_in_typecache(A, quiet_areas)) //These areas don't hear it as loudly
+					M.playsound_local(get_turf(M), S, min(10, M.client.prefs.announcement_volume), FALSE)
+				else
+					M.playsound_local(get_turf(M), S, M.client.prefs.announcement_volume, FALSE)
 
 #undef GAMMA_LOOP_LENGTH
+#undef SET_SEC_LEVEL_COOLDOWN
+#undef DELTA_LOOP_LENGTH

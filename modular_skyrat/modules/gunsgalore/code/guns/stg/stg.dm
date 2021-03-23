@@ -17,6 +17,7 @@
 	fire_sound_volume = 70
 	alt_icons = TRUE
 	realistic = TRUE
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT, SELECT_FULLY_AUTOMATIC)
 
 /obj/item/ammo_box/magazine/stg
 	name = "stg magazine (7.92×33mm)"
