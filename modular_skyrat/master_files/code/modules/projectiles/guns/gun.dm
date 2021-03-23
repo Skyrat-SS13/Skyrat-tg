@@ -1,4 +1,4 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR GUN.DM
+
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 #define FIRING_PIN_REMOVAL_DELAY 50
 
@@ -78,13 +78,64 @@
 	var/datum/action/toggle_scope_zoom/azoom
 	var/pb_knockback = 0
 
+	var/safety = FALSE ///Internal variable for keeping track whether the safety is on or off
+	var/has_gun_safety = FALSE ///Whether the gun actually has a gun safety
+	var/datum/action/item_action/toggle_safety/tsafety
+
+	var/datum/action/item_action/toggle_firemode/firemode_action
+	///Current fire selection, can choose between burst, single, and full auto.
+	var/fire_select = SELECT_SEMI_AUTOMATIC
+	var/fire_select_index = 1
+	///What modes does this weapon have? Put SELECT_FULLY_AUTOMATIC in here to enable fully automatic behaviours.
+	var/list/fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	///if i`1t has an icon for a selector switch indicating current firemode.
+	var/selector_switch_icon = FALSE
+
+/datum/action/item_action/toggle_safety
+	name = "Toggle Safety"
+	icon_icon = 'modular_skyrat/modules/gunsafety/icons/hud/actions.dmi'
+	button_icon_state = "safety_on"
+
+/obj/item/gun/ui_action_click(mob/user, actiontype)
+	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
+		fire_select()
+	else if(istype(actiontype, tsafety))
+		toggle_safety(user)
+	else
+		..()
+
 /obj/item/gun/Initialize()
 	. = ..()
 	if(pin)
 		pin = new pin(src)
+
 	if(gun_light)
 		alight = new(src)
+
 	build_zooming()
+
+	if(has_gun_safety)
+		safety = TRUE
+		tsafety = new(src)
+
+	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
+		fire_select_modes.Add(SELECT_BURST_SHOT)
+	else if(burst_size <= 1 && (SELECT_BURST_SHOT in fire_select_modes))
+		fire_select_modes.Remove(SELECT_BURST_SHOT)
+
+	burst_size = 1
+
+	sortList(fire_select_modes, /proc/cmp_numeric_asc)
+
+	if(fire_select_modes.len > 1)
+		firemode_action = new(src)
+		firemode_action.button_icon_state = "fireselect_[fire_select]"
+		firemode_action.UpdateButtonIcon()
+
+/obj/item/gun/ComponentInitialize()
+	. = ..()
+	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
+		AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/Destroy()
 	if(isobj(pin)) //Can still be the initial path, then we skip
@@ -99,7 +150,11 @@
 		QDEL_NULL(azoom)
 	if(suppressed)
 		QDEL_NULL(suppressed)
-	return ..()
+	if(tsafety)
+		QDEL_NULL(tsafety)
+	if(firemode_action)
+		QDEL_NULL(firemode_action)
+	. = ..()
 
 /obj/item/gun/handle_atom_del(atom/A)
 	if(A == pin)
@@ -113,7 +168,7 @@
 		clear_gunlight()
 	if(A == suppressed)
 		clear_suppressor()
-	return ..()
+	. = ..()
 
 ///Clears var and updates icon. In the case of ballistic weapons, also updates the gun's weight.
 /obj/item/gun/proc/clear_suppressor()
@@ -143,11 +198,48 @@
 			. += "<span class='info'>[bayonet] looks like it can be <b>unscrewed</b> from [src].</span>"
 	if(can_bayonet)
 		. += "It has a <b>bayonet</b> lug on it."
+	if(has_gun_safety)
+		. += "<span>The safety is [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
 
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
 	if(zoomed && user.get_active_held_item() != src)
 		zoom(user, user.dir, FALSE) //we can only stay zoomed in if it's in our hands //yeah and we only unzoom if we're actually zoomed using the gun!!
+
+/obj/item/gun/proc/fire_select()
+	var/mob/living/carbon/human/user = usr
+
+	var/max_mode = fire_select_modes.len
+
+	if(max_mode <= 1)
+		to_chat(user, "<span class='warning'>[src] is not capable of switching firemodes!</span>")
+		return
+
+	fire_select_index = 1 + fire_select_index % max_mode //Magic math to cycle through this shit!
+
+	fire_select = fire_select_modes[fire_select_index]
+
+	switch(fire_select)
+		if(SELECT_SEMI_AUTOMATIC)
+			burst_size = 1
+			fire_delay = 0
+			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_DESELECTED, user)
+			to_chat(user, "<span class='notice'>You switch [src] to semi-automatic.</span>")
+		if(SELECT_BURST_SHOT)
+			burst_size = initial(burst_size)
+			fire_delay = initial(fire_delay)
+			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_DESELECTED, user)
+			to_chat(user, "<span class='notice'>You switch [src] to [burst_size]-round burst.</span>")
+		if(SELECT_FULLY_AUTOMATIC)
+			burst_size = 1
+			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_SELECTED, user)
+			to_chat(user, "<span class='notice'>You switch [src] to automatic.</span>")
+
+	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
+	update_appearance()
+	firemode_action.button_icon_state = "fireselect_[fire_select]"
+	firemode_action.UpdateButtonIcon()
+	return TRUE
 
 //called after the gun has successfully fired its chambered ammo.
 /obj/item/gun/proc/process_chamber()
@@ -193,10 +285,10 @@
 			O.emp_act(severity)
 
 /obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
-	if (user.GetComponent(/datum/component/gunpoint))
+	if(user.GetComponent(/datum/component/gunpoint))
 		to_chat(user, "<span class='warning'>You are already holding someone up!</span>")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	if (user == victim)
+	if(user == victim)
 		to_chat(user,"<span class='warning'>You can't hold yourself up!</span>")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -227,7 +319,6 @@
 		var/mob/living/L = user
 		if(!can_trigger_gun(L))
 			return
-
 	if(flag)
 		if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 			handle_suicide(user, target, params)
@@ -274,6 +365,25 @@
 	. = ..()
 	if(!handle_pins(user))
 		return FALSE
+	if(has_gun_safety && safety)
+		to_chat(user, "<span class='warning'>The safety is on!</span>")
+		return FALSE
+
+/obj/item/gun/proc/toggle_safety(mob/user, override)
+	if(!has_gun_safety)
+		return
+	if(override)
+		if(override == "off")
+			safety = FALSE
+		else
+			safety = TRUE
+	else
+		safety = !safety
+	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
+	tsafety.UpdateButtonIcon()
+	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
+	user.visible_message("<span class='notice'>[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].",
+	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>")
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
 	if(pin)
@@ -577,9 +687,12 @@
 		A.UpdateButtonIcon()
 
 /obj/item/gun/pickup(mob/user)
-	..()
+	. = ..()
 	if(azoom)
 		azoom.Grant(user)
+	if(w_class > WEIGHT_CLASS_SMALL && !suppressed)
+		user.visible_message("<span class='warning'>[user] grabs <b>[src]</b>!</span>",
+		"<span class='warning'>You grab [src]!</span>")
 
 /obj/item/gun/dropped(mob/user)
 	. = ..()
@@ -718,4 +831,3 @@
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
-*/
