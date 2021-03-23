@@ -2,25 +2,14 @@
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Small Fonts"
-<<<<<<< HEAD
-//#define MAX_TIMER 9000 //ORIGINAL
-#define MAX_TIMER 36000 //SKYRAT EDIT CHANGE
-
-//#define PRESET_SHORT 1200 //ORIGINAL
-#define PRESET_SHORT 3000 //SKYRAT EDIT CHANGE
-//#define PRESET_MEDIUM 1800 //ORIGINAL
-#define PRESET_MEDIUM 6000 //SKYRAT EDIT CHANGE
-//#define PRESET_LONG 3000 //ORIGINAL
-#define PRESET_LONG 9000 //SKYRAT EDIT CHANGE
-=======
-#define MAX_TIMER 15 MINUTES
-
-#define PRESET_SHORT 2 MINUTES
-#define PRESET_MEDIUM 3 MINUTES
-#define PRESET_LONG 5 MINUTES
->>>>>>> 3b91692a69f (Adds Sec timer logging (#57835))
-
-
+//#define MAX_TIMER 15 MINUTES //ORIGINAL
+#define MAX_TIMER 60 MINUTES //SKYRAT EDIT CHANGE
+//#define PRESET_SHORT 2 MINUTES //ORIGINAL
+#define PRESET_SHORT 5 MINUTES //SKYRAT EDIT CHANGE
+//#define PRESET_MEDIUM 3 MINUTES //ORIGINAL
+#define PRESET_MEDIUM 10 MINUTES //SKYRAT EDIT CHANGE
+//#define PRESET_LONG 5 MINUTES //ORIGINAL
+#define PRESET_LONG 15 MINUTES //SKYRAT EDIT CHANGE
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Brig Door control displays.
