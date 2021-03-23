@@ -6,10 +6,6 @@
 	if(!istype(parent, /obj/item/gun) && !istype(parent, /obj/item/weldingtool))
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
-	var/obj/item = parent
-	if(ismob(item.loc))
-		var/mob/user = item.loc
-		wake_up(src, user)
 
 /datum/component/ammo_hud/Destroy()
 	turn_off()
@@ -57,14 +53,24 @@
 		if(!pew.get_ammo())
 			hud.set_hud(backing_color, "oe", "te", "he", "empty_flash")
 			return
-		if(pew.safety)
-			hud.set_hud(backing_color, "oe", "te", "he", "safe")
-			return
-		var/indicator = "auto"
+
+		var/indicator
 		var/rounds = num2text(pew.get_ammo(TRUE))
 		var/oth_o
 		var/oth_t
 		var/oth_h
+
+		switch(pew.fire_select)
+			if(SELECT_SEMI_AUTOMATIC)
+				indicator = "semi"
+			if(SELECT_BURST_SHOT)
+				indicator = "burst"
+			if(SELECT_FULLY_AUTOMATIC)
+				indicator = "auto"
+
+		if(pew.safety)
+			indicator = "safe"
+
 		switch(length(rounds))
 			if(1)
 				oth_o = "o[rounds[1]]"
