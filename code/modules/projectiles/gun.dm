@@ -324,7 +324,6 @@
 		return FALSE
 	process_chamber()
 	update_appearance()
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 	return TRUE
 
 /obj/item/gun/proc/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -378,8 +377,6 @@
 	if(user)
 		user.update_inv_hands()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
-
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 	return TRUE
 
