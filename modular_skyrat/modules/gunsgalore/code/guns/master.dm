@@ -87,24 +87,11 @@
 			jammed = FALSE
 			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
-
-
-/obj/item/gun/ballistic/can_shoot()
+/obj/item/gun/ballistic/can_trigger_gun(mob/living/user)
+	. = ..()
 	if(realistic && jammed)
+		to_chat(user, "<span class='warning'>[src] is jammed!</span>")
 		return FALSE
-	. = ..()
-
-/obj/item/gun/ballistic/process_burst(mob/living/user, atom/target, message, params, zone_override, sprd, randomized_gun_spread, randomized_bonus_spread, rand_spr, iteration)
-	if(realistic && jammed)
-		firing_burst = FALSE
-		return FALSE
-	. = ..()
-
-/obj/item/gun/ballistic/process_fire()
-	if(realistic && jammed)
-		shoot_with_empty_chamber()
-		return
-	. = ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank, atom/pbtarget, message)
 	if(realistic)
