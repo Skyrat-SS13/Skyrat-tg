@@ -12,6 +12,8 @@
 		var/obj/item/target = controller.blackboard[BB_MONKEY_PICKUPTARGET]
 
 		item_blacklist[target] = TRUE
+		if(istype(controller, /datum/ai_controller/monkey)) //What the fuck
+			controller.RegisterSignal(target, COMSIG_PARENT_QDELETING, /datum/ai_controller/monkey/proc/target_del)
 
 	controller.blackboard[BB_MONKEY_PICKUPTARGET] = null
 
@@ -87,6 +89,11 @@
 	controller.blackboard[BB_MONKEY_PICKPOCKETING] = TRUE
 
 	var/success = FALSE
+
+	//SKYRAT EDIT ADDITION BEGIN - FOR SOME REASON THIS MONKEY WONT FUCK OFF
+	if(!ismob(victim))
+		finish_action(controller, success) //RETURN TO ENTERPRISE!
+	//SKYRAT EDIT END - HE HAS BEEN FUCKING SHIT UP FOR TOO LONG
 
 	if(do_mob(living_pawn, victim, MONKEY_ITEM_SNATCH_DELAY) && target)
 

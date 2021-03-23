@@ -31,7 +31,7 @@
 		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE) SKYRAT PORT -- Needs to be completely rewritten
 		new_spawn.AddElement(/datum/element/dusts_on_catatonia)
 		new_spawn.AddElement(/datum/element/dusts_on_leaving_area,list(A.type, /area/hilbertshotel, /area/centcom/holding/cafe, /area/centcom/holding/cafewar, /area/centcom/holding/cafebotany,
-		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark))
+		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark, /area/centcom/holding/cafeplumbing))
 		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
 		to_chat(new_spawn,"<span class='boldwarning'>Ghosting is free!</span>")
@@ -58,11 +58,10 @@
 	if(new_spawn.client)
 		new_spawn.client.prefs.copy_to(new_spawn)
 		var/area/A = get_area(src)
-		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
 		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE)
 		new_spawn.AddElement(/datum/element/dusts_on_catatonia)
 		new_spawn.AddElement(/datum/element/dusts_on_leaving_area,list(A.type, /area/hilbertshotel, /area/centcom/holding/cafe, /area/centcom/holding/cafewar, /area/centcom/holding/cafebotany,
-		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark))
+		/area/centcom/holding/cafebuild, /area/centcom/holding/cafevox, /area/centcom/holding/cafedorms, /area/centcom/holding/cafepark, /area/centcom/holding/cafeplumbing))
 		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
 		ADD_TRAIT(new_spawn, TRAIT_FREE_GHOST, GHOSTROLE_TRAIT)
 		to_chat(new_spawn,"<span class='boldwarning'>Ghosting is free!</span>")
@@ -75,7 +74,7 @@
 	uniform = /obj/item/clothing/under/color/random
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	r_hand = /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
-	id = /obj/item/card/id/ghost_cafe
+	id = /obj/item/card/id/advanced/ghost_cafe
 
 /datum/action/toggle_dead_chat_mob
 	icon_icon = 'icons/mob/mob.dmi'
@@ -108,16 +107,13 @@
 	new /obj/item/clothing/mask/chameleon(src)
 	new /obj/item/storage/backpack/chameleon(src)
 
-/obj/item/card/id/ghost_cafe
+/obj/item/card/id/advanced/ghost_cafe
 	name = "\improper Cafe ID"
-	id_type_name = "\improper Cafe ID"
-	desc = "An Cafe Visitor card."
-	icon_state = "silver_id"
-	registered_name = "Cafe Visitor"
-	assignment = "Cafe Visitor"
-	uses_overlays = FALSE
+	desc = "An ID straight from God."
+	icon_state = "card_centcom"
+	worn_icon_state = "card_centcom"
+	assigned_icon_state = "assigned_centcom"
 	registered_age = null
+	trim = /datum/id_trim/admin
+	wildcard_slots = WILDCARD_LIMIT_ADMIN
 
-/obj/item/card/id/ghost_cafe/Initialize()
-	access = get_all_accesses()
-	. = ..()

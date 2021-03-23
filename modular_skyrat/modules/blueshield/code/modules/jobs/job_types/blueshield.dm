@@ -13,23 +13,18 @@
 
 	outfit = /datum/outfit/job/blueshield
 
-	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS, \
-			            ACCESS_MEDICAL, ACCESS_ENGINE, ACCESS_HEADS, \
-			            ACCESS_MAINT_TUNNELS, ACCESS_CONSTRUCTION, ACCESS_MORGUE, \
-			            ACCESS_RESEARCH, ACCESS_CARGO, \
-			            ACCESS_RC_ANNOUNCE, ACCESS_GATEWAY, ACCESS_WEAPONS, ACCESS_BLUESHIELD, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
-	minimal_access = list(ACCESS_FORENSICS_LOCKERS, ACCESS_SEC_DOORS, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_ENGINE, ACCESS_MAINT_TUNNELS, ACCESS_RESEARCH,
-			            ACCESS_RC_ANNOUNCE, ACCESS_HEADS, ACCESS_BLUESHIELD, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	outfit = /datum/outfit/job/blueshield
+
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"
 	jobtype = /datum/job/blueshield
 	uniform = /obj/item/clothing/under/rank/security/blueshield
-	id = /obj/item/card/id/silver
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	id = /obj/item/card/id/advanced/gold
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/heads/blueshield/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
@@ -42,8 +37,12 @@
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/pda/security
 
+	id_trim = /datum/id_trim/job/blueshield
+
 /datum/outfit/plasmaman/blueshield
 	name = "Blueshield Plasmaman"
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/blueshield
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
+
+

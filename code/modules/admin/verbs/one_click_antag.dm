@@ -12,7 +12,6 @@
 
 
 /datum/admins/proc/one_click_antag()
-
 	var/dat = {"
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=traitors'>Make Traitors</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=changelings'>Make Changelings</a><br>
@@ -25,6 +24,7 @@
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=centcom'>Make CentCom Response Team (Requires Ghosts)</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=abductors'>Make Abductor Team (Requires Ghosts)</a><br>
 		<a href='?src=[REF(src)];[HrefToken()];makeAntag=revenant'>Make Revenant (Requires Ghost)</a><br>
+		<a href='?src=[REF(src)];[HrefToken()];makeAntag=nerd'>Make N.E.R.D. (Requires Ghost)</a><br>
 		"}
 //SKYRAT EDIT ADDITION - MAKE ASSAULT TEAM
 	var/datum/browser/popup = new(usr, "oneclickantag", "Quick-Create Antagonist", 400, 400)
@@ -325,7 +325,8 @@
 		"open_armory" = list("desc" = "Open armory doors", "type" = "boolean", "value" = "[(ertemplate.opendoors ? "Yes" : "No")]"),
 		"leader_experience" = list("desc" = "Pick an experienced leader", "type" = "boolean", "value" = "[(ertemplate.leader_experience ? "Yes" : "No")]"),
 		"random_names" = list("desc" = "Randomize names", "type" = "boolean", "value" = "[(ertemplate.random_names ? "Yes" : "No")]"),
-		"spawn_admin" = list("desc" = "Spawn yourself as briefing officer", "type" = "boolean", "value" = "[(ertemplate.spawn_admin ? "Yes" : "No")]")
+		"spawn_admin" = list("desc" = "Spawn yourself as briefing officer", "type" = "boolean", "value" = "[(ertemplate.spawn_admin ? "Yes" : "No")]"),
+		"notify_players" = list("desc" = "Notify players that you have sent an ERT", "type" = "boolean", "value" = "[(ertemplate.notify_players ? "Yes" : "No")]") //SKYRAT EDIT ADDITION
 		)
 	)
 
@@ -352,6 +353,7 @@
 		ertemplate.leader_experience = prefs["leader_experience"]["value"] == "Yes"
 		ertemplate.random_names = prefs["random_names"]["value"] == "Yes"
 		ertemplate.spawn_admin = prefs["spawn_admin"]["value"] == "Yes"
+		ertemplate.notify_players = prefs["notify_players"]["value"] == "Yes" //SKYRAT EDIT ADDITION
 
 		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		var/index = 0
@@ -443,7 +445,10 @@
 
 		if (teamSpawned)
 			message_admins("[ertemplate.polldesc] has spawned with the mission: [ertemplate.mission]")
-
+			//SKYRAT EDIT ADDITION BEGIN
+			if(ertemplate.notify_players)
+				priority_announce("Central command has responded to your request for a CODE [uppertext(ertemplate.code)] Emergency Response Team and have confirmed one to be enroute.", "ERT Request", ANNOUNCER_ERTYES)
+			//SKYRAT EDIT END
 		//Open the Armory doors
 		if(ertemplate.opendoors)
 			for(var/obj/machinery/door/poddoor/ert/door in GLOB.airlocks)
@@ -456,10 +461,37 @@
 //Abductors
 /datum/admins/proc/makeAbductorTeam()
 	new /datum/round_event/ghost_role/abductor
-	return 1
+	return TRUE
 
 /datum/admins/proc/makeRevenant()
 	new /datum/round_event/ghost_role/revenant(TRUE, TRUE)
-	return 1
+	return TRUE
+
+/datum/admins/proc/makeNerd()
+	var/spawnpoint = pick(GLOB.blobstart)
+	var/list/mob/dead/observer/candidates
+	var/mob/dead/observer/chosen_candidate
+	var/mob/living/simple_animal/drone/nerd
+	var/teamsize
+
+	teamsize = input(usr, "How many drones?", "N.E.R.D. team size", 2) as num|null
+
+	if(teamsize <= 0)
+		return FALSE
+
+	candidates = pollGhostCandidates("Do you wish to be considered for a Nanotrasen emergency response drone?", "Drone")
+
+	if(length(candidates) == 0)
+		return FALSE
+
+	while(length(candidates) && teamsize)
+		chosen_candidate = pick(candidates)
+		candidates -= chosen_candidate
+		nerd = new /mob/living/simple_animal/drone(spawnpoint)
+		nerd.key = chosen_candidate.key
+		log_game("[key_name(nerd)] has been selected as a Nanotrasen emergency response drone")
+		teamsize--
+
+	return TRUE
 
 #undef ERT_EXPERIENCED_LEADER_CHOOSE_TOP

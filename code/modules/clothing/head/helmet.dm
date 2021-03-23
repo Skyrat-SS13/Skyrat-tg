@@ -373,10 +373,10 @@
 	strip_delay = 80
 
 /obj/item/clothing/head/helmet/elder_atmosian
-	name = "Elder Atmosian Helmet"
+	name = "\improper Elder Atmosian Helmet"
 	desc = "A superb helmet made with the toughest and rarest materials available to man."
-	icon_state = "knight_greyscale"
-	inhand_icon_state = "knight_greyscale"
+	icon_state = "h2helmet"
+	inhand_icon_state = "h2helmet"
 	armor = list(MELEE = 15, BULLET = 10, LASER = 30, ENERGY = 30, BOMB = 10, BIO = 10, RAD = 20, FIRE = 65, ACID = 40, WOUND = 15)
 	material_flags = MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS //Can change color and add prefix
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
@@ -410,12 +410,14 @@
 	. += "<span class='boldnotice'>Ask your CMO if mind magnification is right for you.</span>"
 
 /obj/item/clothing/head/helmet/monkey_sentience/update_icon_state()
-	icon_state = "[initial(icon_state)][light_colors][magnification ? "up" : ""]"
-	return ..()
+	. = ..()
+	icon_state = "[initial(icon_state)][light_colors][magnification ? "up" : null]"
 
 /obj/item/clothing/head/helmet/monkey_sentience/equipped(mob/user, slot)
 	. = ..()
 	if(slot != ITEM_SLOT_HEAD)
+		return
+	if(istype(user, /mob/living/carbon/human/dummy)) //Prevents ghosts from being polled when the helmet is put on a dummy.
 		return
 	if(!ismonkey(user) || user.ckey)
 		var/mob/living/something = user
@@ -429,14 +431,19 @@
 	magnification = user //this polls ghosts
 	visible_message("<span class='warning'>[src] powers up!</span>")
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
+	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, .proc/make_fall_off)
 	polling = TRUE
 	var/list/candidates = pollCandidatesForMob("Do you want to play as a mind magnified monkey?", ROLE_SENTIENCE, null, ROLE_SENTIENCE, 50, magnification, POLL_IGNORE_SENTIENCE_POTION)
 	polling = FALSE
+	if(!magnification)
+		return
 	if(!candidates.len)
+		UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 		magnification = null
 		visible_message("<span class='notice'>[src] falls silent and drops on the floor. Maybe you should try again later?</span>")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		user.dropItemToGround(src)
+		return
 	var/mob/picked = pick(candidates)
 	magnification.key = picked.key
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
@@ -468,6 +475,7 @@
 				if(4) //genetic mass susceptibility (gib)
 					magnification.gib()
 	//either used up correctly or taken off before polling finished (punish this by destroying the helmet)
+	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	visible_message("<span class='warning'>[src] fizzles and breaks apart!</span>")
@@ -479,6 +487,10 @@
 	if(magnification || polling)
 		qdel(src)//runs disconnect code
 
+/obj/item/clothing/head/helmet/monkey_sentience/proc/make_fall_off()
+	if(magnification)
+		visible_message("<span class='warning'>[src] falls off of [magnification]'s head as it changes shape!</span>")
+		magnification.dropItemToGround(src)
 
 //LightToggle
 
