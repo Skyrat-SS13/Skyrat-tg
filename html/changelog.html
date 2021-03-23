@@ -52,6 +52,45 @@
 		-->
 		<div class="commit sansserif">
 
+			<h2 class="date">23 March 2021</h2>
+			<h3 class="author">Gandalf2k15 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">A big lighting runtime.</li>
+			</ul>
+			<h3 class="author">Guillaume Prata updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">New bio hood sprites.</li>
+			</ul>
+			<h3 class="author">Melbert updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Toilets now drop their cistern contents on deconstruction.</li>
+				<li class="admin">Midround Syndicate Sleeper Agent is now logged and messages admins when triggered.</li>
+				<li class="bugfix">Some worn things that previously used to be slippery are now properly slippery again.</li>
+				<li class="code_imp">Slip component can be given a whitelist of valid worn slots. (B)Admins can now make anything worn slippery, again.</li>
+			</ul>
+			<h3 class="author">Ryll/Shaps updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Simple bots should no longer randomly fail to respond to summons even when a path is available</li>
+			</ul>
+			<h3 class="author">SkyratBot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Cleaned up scooter/skate code</li>
+				<li class="bugfix">Admins can once again open the stat panels to look at active, disconnected, closed and resolved tickets.</li>
+				<li class="bugfix">Corrected a manufacturing defect in mind magnification helmets that allowed them to remain on the subject's head after humanization.</li>
+				<li class="bugfix">fixes icebox's json file referencing a non-existing area</li>
+				<li class="bugfix">fixes mouse override icon on supplypod launchers</li>
+				<li class="bugfix">Admins should no longer be triggered by simple bots creating Captain's Spares in nullspace.</li>
+				<li class="bugfix">Security officers now only get PDA'd if the new member is of the same department.</li>
+			</ul>
+			<h3 class="author">Yawet330 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Heretics now disembowel you instead of just qdelling your heart</li>
+			</ul>
+			<h3 class="author">unit0016 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Whiteships now spawn properly. Whoopsies.</li>
+			</ul>
+
 			<h2 class="date">22 March 2021</h2>
 			<h3 class="author">Cimika / Kathy Ryals updated:</h3>
 			<ul class="changes bgimages16">
@@ -3107,81 +3146,6 @@
 			<h3 class="author">coiax updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="tweak">Spray-on insulated gloves, a BEPIS tech, now produce a visible message when disintegrating. That disintegration can be caused by absorbing a shock, or now by washing them too much.</li>
-			</ul>
-
-			<h2 class="date">19 January 2021</h2>
-			<h3 class="author">Arkatos updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Moonlight Greatsword is now a proper sharp weapon and no longer a modified nullrod. That means no free antimagic anymore, my friends.</li>
-			</ul>
-			<h3 class="author">Azarak updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Damaged bodyparts are now more likely to recieve wounds</li>
-				<li class="tweak">You can now set brig timers to 30 minutes</li>
-				<li class="balance">Brig timers are now calculated from real time, not applying TD in effect</li>
-			</ul>
-			<h3 class="author">GuppyLaxx updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added immunity from Families to Heads of Staff (And sec)</li>
-			</ul>
-			<h3 class="author">KathrinBailey updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Xenomorphs are now no longer laughably weak and easily to wipe out. Queens are faster, hunters are slower. Xenomorphs do more damage in general, the bigger they are, the harder they hit!</li>
-			</ul>
-			<h3 class="author">Nari Harimoto updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed glass plating turning invisible when damaged</li>
-				<li class="refactor">changed some floor tile broken_state code to use a proc in initialization rather than hardcoded in</li>
-				<li class="refactor">removed initialization override for plating.dm</li>
-				<li class="bugfix">all non-iron based tiles will no longer magically turn into iron plating when broken, instead asteroid turf will become dug and stuff like grass, dirt, water etc. will not change icon when broken</li>
-			</ul>
-			<h3 class="author">NotRanged updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="admin">Submitting traitor ambitions of intensity 'Severe' or higher automatically flags them for admin review.</li>
-			</ul>
-			<h3 class="author">Seris02 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscdel">removes australicus slime injector from the uplink</li>
-				<li class="tweak">enables the no_dresscode variable once again but better this time</li>
-			</ul>
-			<h3 class="author">SkyratBot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes a runtime with the sickly blade.</li>
-				<li class="bugfix">Civilian Bounties now show the fulfillment value, instead of the value of the cube total. The UI is not lying anymore!</li>
-				<li class="rscadd">The new "Comet" hairstyle has been added, looking a bit like its namesake.</li>
-				<li class="bugfix">Able to secure grinders/cell chargers to tables.</li>
-				<li class="bugfix">Fixed broken UI in ExosuitFabricator interface.</li>
-				<li class="bugfix">Regular and material floor tile recipes no longer have the same name. You can seal your breaches with less chance of producing the wrong stack.</li>
-				<li class="tweak">you cant tie bronze boots anymore spriteadd: makes the clockwork helmet not as big on the ground</li>
-				<li class="spellcheck">fixed a single typo</li>
-				<li class="bugfix">Fixes grinders giving out beakers before they're done grinding</li>
-				<li class="admin">Exosuit console EMP logging now properly outputs the mech's occupants to chat and logs.</li>
-				<li class="bugfix">Mechs no longer runtime when exosuit consoles EMP them and will now properly play sounds and give notifications to their occupants when this happens.</li>
-				<li class="bugfix">Fixes reacted wine instantly turning into grappa by setting the grappa reaction's enzyme volume requirement to 10u instead of 5u</li>
-			</ul>
-			<h3 class="author">Thunder12345 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">In-spect scanner now takes a few seconds to produce a report.</li>
-			</ul>
-			<h3 class="author">coiax updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">If you are luckily enough to revive while still inside the stomach of a laughter demon, you will be immediately ejected. Whether you will be able to get away before the demon then kills and eats you again, is up to you.</li>
-			</ul>
-			<h3 class="author">park66665, Ghilker, Rohesie updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed atmos component Destroy() a little bit.</li>
-			</ul>
-			<h3 class="author">theOOZ updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added moth fluff accessory slot for mammals, moths and insects.</li>
-				<li class="tweak">Allows disabling of any insect or moth parts</li>
-			</ul>
-			<h3 class="author">unit0016 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Icemoon Syndies now have winter coats by default. Bundle up, It's cold outside!</li>
-				<li class="tweak">Lavaland and Icemoon Syndies now have dedicated miners.</li>
-				<li class="rscadd">117 New job icons await you, Operative / Bored HoP!</li>
-				<li class="tweak">Most ID cards have been moved to work with the overlay system.</li>
 			</ul>
 		</div>
 
