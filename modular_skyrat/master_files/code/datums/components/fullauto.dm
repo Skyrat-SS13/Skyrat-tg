@@ -21,6 +21,7 @@
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
 	RegisterSignal(parent, COMSIG_GUN_AUTOFIRE_SELECTED, .proc/wake_up)
 	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), .proc/autofire_off)
+	RegisterSignal(parent, COMSIG_GUN_JAMMED, .proc/stop_autofiring)
 	if(_autofire_shot_delay)
 		autofire_shot_delay = _autofire_shot_delay
 	if(ismob(gun.loc))
@@ -29,7 +30,8 @@
 
 
 /datum/component/automatic_fire/Destroy()
-	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED))
+	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED, COMSIG_GUN_JAMMED, \
+	COMSIG_GUN_AUTOFIRE_SELECTED, COMSIG_ITEM_EQUIPPED))
 	autofire_off()
 	return ..()
 
