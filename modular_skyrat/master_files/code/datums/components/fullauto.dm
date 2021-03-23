@@ -36,15 +36,17 @@
 	return ..()
 
 /datum/component/automatic_fire/process(delta_time)
-	stack_trace("Process pre-fired.")
+	stack_trace("PROCESS: pre-fired.")
 	if(!(autofire_stat & AUTOFIRE_STAT_FIRING))
+		stack_trace("PROCESS: AUTOFIRE_STAT_FIRING, stop processing called.")
 		STOP_PROCESSING(SSprojectiles, src)
 		return
 
 	if(!COOLDOWN_FINISHED(src, next_shot_cd))
+		stack_trace("PROCESS: !COOLDOWN_FINISHED.")
 		return
 
-	stack_trace("Process fired.")
+	stack_trace("PROCESS: fired.")
 
 	process_shot()
 
@@ -85,9 +87,11 @@
 
 /datum/component/automatic_fire/proc/autofire_off(datum/source)
 	SIGNAL_HANDLER
+	stack_trace("AUTOFIRE OFF: called.")
 	if(autofire_stat & (AUTOFIRE_STAT_IDLE))
 		return
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
+		stack_trace("AUTOFIRE OFF: AUTOFIRE_STAT_FIRING. stop_autofiring called.")
 		stop_autofiring()
 
 	autofire_stat = AUTOFIRE_STAT_IDLE
@@ -102,7 +106,6 @@
 	shooter = null
 	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
 	parent.UnregisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN)
-	stack_trace("Autofire_off called.")
 
 /datum/component/automatic_fire/proc/on_client_login(mob/source)
 	SIGNAL_HANDLER
@@ -113,6 +116,7 @@
 
 /datum/component/automatic_fire/proc/on_mouse_down(client/source, atom/_target, turf/location, control, params)
 	var/list/modifiers = params2list(params) //If they're shift+clicking, for example, let's not have them accidentally shoot.
+	stack_trace("ON MOUSE DOWN: Called.")
 
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		return
@@ -130,6 +134,7 @@
 		return
 	if(get_dist(source.mob, _target) < 2) //Adjacent clicking.
 		return
+	stack_trace("ON MOUSE DOWN: checks completed.")
 
 	if(isnull(location)) //Clicking on a screen object.
 		if(_target.plane != CLICKCATCHER_PLANE) //The clickcatcher is a special case. We want the click to trigger then, under it.
@@ -142,22 +147,26 @@
 		return
 
 	source.click_intercept_time = world.time //From this point onwards Click() will no longer be triggered.
+	stack_trace("ON MOUSE DOWN: TIME SET: [source.click_intercept_time].")
 
 	if(autofire_stat & (AUTOFIRE_STAT_IDLE))
 		CRASH("on_mouse_down() called with [autofire_stat] autofire_stat")
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
+		stack_trace("ON MOUSE DOWN: AUTOFIRE_STAT_FIRING. stop_autofiring called.")
 		stop_autofiring() //This can happen if we click and hold and then alt+tab, printscreen or other such action. MouseUp won't be called then and it will keep autofiring.
 
 	target = _target
 	target_loc = get_turf(target)
 	mouse_parameters = params
+	stack_trace("ON MOUSE DOWN: start_autofiring called.")
 	start_autofiring()
 
 
 //Dakka-dakka
 /datum/component/automatic_fire/proc/start_autofiring()
-	stack_trace("Start autofiring called.")
+	stack_trace("START AUTOFIRING: called.")
 	if(autofire_stat == AUTOFIRE_STAT_FIRING)
+		stack_trace("START AUTOFIRING: AUTOFIRE_STAT_FIRING - Already shooting. Return.")
 		return //Already pew-pewing.
 	autofire_stat = AUTOFIRE_STAT_FIRING
 
@@ -173,14 +182,17 @@
 	if(isgun(parent))
 		var/obj/item/gun/shoota = parent
 		if(!shoota.on_autofire_start(shooter)) //This is needed because the minigun has a do_after before firing and signals are async.
+			stack_trace("START AUTOFIRING: !shoota.on_autofire_start, stop_autofiring called, and return.")
 			stop_autofiring()
 			return
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
+		stack_trace("START AUTOFIRING: AUTOFIRE_STAT_FIRING, return.")
 		return //Things may have changed while on_autofire_start() was being processed, due to do_after's sleep.
 
 	if(!process_shot()) //First shot is processed instantly.
+		stack_trace("START AUTOFIRING: process_shot(), first shot is processed instantly. return.")
 		return //If it fails, such as when the gun is empty, then there's no need to schedule a second shot.
-
+	stack_trace("START AUTOFIRING: START_PROCESSING.")
 	START_PROCESSING(SSprojectiles, src)
 	RegisterSignal(clicker, COMSIG_CLIENT_MOUSEDRAG, .proc/on_mouse_drag)
 
@@ -196,10 +208,12 @@
 
 /datum/component/automatic_fire/proc/stop_autofiring(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
-	stack_trace("Stop autofiring called.")
+	stack_trace("STOP AUTOFIRING: called.")
 	switch(autofire_stat)
 		if(AUTOFIRE_STAT_IDLE, AUTOFIRE_STAT_ALERT)
+			stack_trace("STOP AUTOFIRING: autofire_stat check, process not stopped. Return.")
 			return
+	stack_trace("STOP AUTOFIRING: STOP_PROCESSING.")
 	STOP_PROCESSING(SSprojectiles, src)
 	autofire_stat = AUTOFIRE_STAT_ALERT
 	if(clicker)
@@ -234,7 +248,9 @@
 
 
 /datum/component/automatic_fire/proc/process_shot()
+	stack_trace("PROCESS SHOT: called.")
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
+		stack_trace("PROCESS SHOT: AUTOFIRE_STAT_FIRING, return.")
 		return
 	if(QDELETED(target) || get_turf(target) != target_loc) //Target moved or got destroyed since we last aimed.
 		target = target_loc //So we keep firing on the emptied tile until we move our mouse and find a new target.
@@ -242,13 +258,16 @@
 		target = get_step(shooter, shooter.dir) //Shoot in the direction faced if the mouse is on the same tile as we are.
 		target_loc = target
 	else if(!in_view_range(shooter, target))
+		stack_trace("PROCESS SHOT: in_view_range, stop_autofiring.")
 		stop_autofiring() //Elvis has left the building.
 		return FALSE
 	shooter.face_atom(target)
-	stack_trace("Process shot called.")
+	stack_trace("PROCESS SHOT: cooldown set.")
 	COOLDOWN_START(src, next_shot_cd, autofire_shot_delay)
 	if(SEND_SIGNAL(parent, COMSIG_AUTOFIRE_SHOT, target, shooter, mouse_parameters) & COMPONENT_AUTOFIRE_SHOT_SUCCESS)
+		stack_trace("PROCESS SHOT: COMSIG_AUTOFIRE_SHOT, success.")
 		return TRUE
+	stack_trace("PROCESS SHOT: Calling stop_autofiring.")
 	stop_autofiring()
 	return FALSE
 
