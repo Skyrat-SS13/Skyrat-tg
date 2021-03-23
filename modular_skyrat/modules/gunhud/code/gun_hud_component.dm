@@ -42,6 +42,7 @@
 		hud = null
 
 /datum/component/ammo_hud/proc/update_hud()
+	SIGNAL_HANDLER
 	if(istype(parent, /obj/item/gun/ballistic))
 		var/obj/item/gun/ballistic/pew = parent
 		hud.maptext = null
