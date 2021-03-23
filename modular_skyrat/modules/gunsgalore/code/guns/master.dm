@@ -87,6 +87,7 @@
 			jammed = FALSE
 			to_chat(user, "<span class='notice'>You unjam the [src]'s bolt.</span>")
 			playsound(src, 'sound/weapons/gun/l6/l6_rack.ogg', 60, TRUE)
+
 /obj/item/gun/ballistic/can_trigger_gun(mob/living/user)
 	. = ..()
 	if(realistic && jammed)
