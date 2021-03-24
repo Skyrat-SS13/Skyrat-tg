@@ -35,11 +35,7 @@ const taskTgui = new Task('tgui')
   .depends('tgui/yarn.lock')
   .depends('tgui/webpack.config.js')
   .depends('tgui/**/package.json')
-<<<<<<< HEAD
-  .depends('tgui/packages/**/*.+(js|jsx|ts|tsx|cjs|mjs|scss)')
-=======
   .depends('tgui/packages/**/*.+(js|cjs|ts|tsx|scss)')
->>>>>>> 8080a5132ca (tgui: ESLint and VSCode settings improvements (#57905))
   .provides('tgui/public/tgui.bundle.css')
   .provides('tgui/public/tgui.bundle.js')
   .provides('tgui/public/tgui-common.bundle.js')
