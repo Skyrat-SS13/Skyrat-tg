@@ -22,8 +22,6 @@
 	RegisterSignal(parent, COMSIG_GUN_AUTOFIRE_SELECTED, .proc/wake_up)
 	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), .proc/autofire_off)
 	RegisterSignal(parent, COMSIG_GUN_JAMMED, .proc/stop_autofiring)
-	stack_trace("AUTOFIRE ON: COMSIG_AUTOFIRE_SHOT signal registered to parent.")
-	parent.RegisterSignal(parent, COMSIG_AUTOFIRE_SHOT, /obj/item/gun/.proc/do_autofire) //POSSIBLE FUCKY WUCKY HERE?
 	if(_autofire_shot_delay)
 		autofire_shot_delay = _autofire_shot_delay
 	if(ismob(gun.loc))
@@ -34,8 +32,6 @@
 /datum/component/automatic_fire/Destroy()
 	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED, COMSIG_GUN_JAMMED, \
 	COMSIG_GUN_AUTOFIRE_SELECTED, COMSIG_ITEM_EQUIPPED))
-	stack_trace("AUTOFIRE OFF: COMSIG_AUTOFIRE_SHOT signal unregistered to parent.")
-	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT) //POSSIBLE FUCKY WUCKY HERE?
 	autofire_off()
 	return ..()
 
@@ -79,6 +75,7 @@
 	if(!QDELETED(shooter))
 		UnregisterSignal(shooter, COMSIG_MOB_LOGIN)
 	parent.RegisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN, /obj/item/gun/.proc/autofire_bypass_check)
+	parent.RegisterSignal(parent, COMSIG_AUTOFIRE_SHOT, /obj/item/gun/.proc/do_autofire)
 
 
 /datum/component/automatic_fire/proc/autofire_off(datum/source)
@@ -86,7 +83,6 @@
 	if(autofire_stat & (AUTOFIRE_STAT_IDLE))
 		return
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
-		stack_trace("AUTOFIRE OFF: AUTOFIRE_STAT_FIRING. stop_autofiring called.")
 		stop_autofiring()
 
 	autofire_stat = AUTOFIRE_STAT_IDLE
@@ -100,6 +96,8 @@
 		UnregisterSignal(shooter, COMSIG_MOB_LOGOUT)
 	shooter = null
 	parent.UnregisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN)
+	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
+
 
 /datum/component/automatic_fire/proc/on_client_login(mob/source)
 	SIGNAL_HANDLER
@@ -175,8 +173,9 @@
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
 		return //Things may have changed while on_autofire_start() was being processed, due to do_after's sleep.
 
-	if(!process_shot()) //First shot is processed instantly.
+	if(process_shot() == -1) //First shot is processed instantly.
 		return //If it fails, such as when the gun is empty, then there's no need to schedule a second shot.
+
 	START_PROCESSING(SSfastprocess, src)
 	RegisterSignal(clicker, COMSIG_CLIENT_MOUSEDRAG, .proc/on_mouse_drag)
 
@@ -192,12 +191,9 @@
 
 /datum/component/automatic_fire/proc/stop_autofiring(datum/source, atom/object, turf/location, control, params)
 	SIGNAL_HANDLER
-	stack_trace("STOP AUTOFIRING: called.")
 	switch(autofire_stat)
 		if(AUTOFIRE_STAT_IDLE, AUTOFIRE_STAT_ALERT)
-			stack_trace("STOP AUTOFIRING: autofire_stat check, process not stopped. Return.")
 			return
-	stack_trace("STOP AUTOFIRING: STOP_PROCESSING.")
 	STOP_PROCESSING(SSfastprocess, src)
 	autofire_stat = AUTOFIRE_STAT_ALERT
 	if(clicker)
@@ -232,9 +228,7 @@
 
 
 /datum/component/automatic_fire/proc/process_shot()
-	stack_trace("PROCESS SHOT: called.")
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
-		stack_trace("PROCESS SHOT: AUTOFIRE_STAT_FIRING, return.")
 		return
 	if(QDELETED(target) || get_turf(target) != target_loc) //Target moved or got destroyed since we last aimed.
 		target = target_loc //So we keep firing on the emptied tile until we move our mouse and find a new target.
@@ -242,16 +236,12 @@
 		target = get_step(shooter, shooter.dir) //Shoot in the direction faced if the mouse is on the same tile as we are.
 		target_loc = target
 	else if(!in_view_range(shooter, target))
-		stack_trace("PROCESS SHOT: in_view_range, stop_autofiring.")
 		stop_autofiring() //Elvis has left the building.
 		return FALSE
 	shooter.face_atom(target)
-	stack_trace("PROCESS SHOT: cooldown set.")
 	COOLDOWN_START(src, next_shot_cd, autofire_shot_delay)
 	if(SEND_SIGNAL(parent, COMSIG_AUTOFIRE_SHOT, target, shooter, mouse_parameters) & COMPONENT_AUTOFIRE_SHOT_SUCCESS)
-		stack_trace("PROCESS SHOT: COMSIG_AUTOFIRE_SHOT, success.")
 		return TRUE
-	stack_trace("PROCESS SHOT: Calling stop_autofiring.")
 	stop_autofiring()
 	return FALSE
 
@@ -273,22 +263,20 @@
 		return COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS
 
 
-/obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params) //POSSIBLE FUCKY WUCKY HERE?
-	SIGNAL_HANDLER
-	stack_trace("DO AUTOFIRE: Called.")
+/obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params) //THIS IS WHERE THE FUCKY WUCKY IS
+	SIGNAL_HANDLER_DOES_SLEEP
+	. = COMPONENT_AUTOFIRE_SHOT_SUCCESS //This might cause issues.
 	if(!can_shoot())
-		stack_trace("DO AUTOFIRE: !can_shoot, returning.")
 		shoot_with_empty_chamber(shooter)
-		return NONE
+		return -1
 	var/obj/item/gun/akimbo_gun = shooter.get_inactive_held_item()
 	var/bonus_spread = 0
 	if(istype(akimbo_gun) && weapon_weight < WEAPON_MEDIUM)
 		if(akimbo_gun.weapon_weight < WEAPON_MEDIUM && akimbo_gun.can_trigger_gun(shooter))
 			bonus_spread = dual_wield_spread
-			stack_trace("DO AUTOFIRE: Addtimer process_fire.")
 			addtimer(CALLBACK(akimbo_gun, /obj/item/gun.proc/process_fire, target, shooter, TRUE, params, null, bonus_spread), 1)
 	process_fire(target, shooter, TRUE, params, null, bonus_spread)
-	return COMPONENT_AUTOFIRE_SHOT_SUCCESS //All is well, we can continue shooting.
+	return .
 
 #undef AUTOFIRE_MOUSEUP
 #undef AUTOFIRE_MOUSEDOWN
