@@ -167,7 +167,7 @@
 	else
 		HTML += " Load Program"
 	if(!program)
-		HTML += " [fast_clone ? "Print" : "Begin Printing"] Assembly"
+		HTML += " [fast_clone ? "Print" : "Begin Printing"] Assembly<br>"
 	else if(cloning)
 		HTML += " <A href='?src=[REF(src)];print=cancel'>Cancel Print</a>"
 	else
@@ -264,7 +264,8 @@
 			if("load")
 				if(cloning)
 					return
-				var/input = stripped_multiline_input(usr, "Put your code there:", "loading", max_length = MAX_SIZE_CIRCUIT)
+				// We want this trimmed through stripped_multiline_input, but we don't want the result to be html encoded otherwise there will be json decode errors.
+				var/input = html_decode(stripped_multiline_input(usr, "Put your code there:", "loading", max_length = MAX_SIZE_CIRCUIT))
 				if(!check_interactivity(usr) || cloning)
 					return
 				if(!input)
