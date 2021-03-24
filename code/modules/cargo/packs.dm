@@ -286,7 +286,7 @@
 	crate_name = "ammo crate"
 
 /datum/supply_pack/security/armor
-/* Moved to Bloat.dm	name = "Armor Crate"
+	name = "Armor Crate"
 	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
