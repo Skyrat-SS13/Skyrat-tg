@@ -22,6 +22,8 @@
 	RegisterSignal(parent, COMSIG_GUN_AUTOFIRE_SELECTED, .proc/wake_up)
 	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), .proc/autofire_off)
 	RegisterSignal(parent, COMSIG_GUN_JAMMED, .proc/stop_autofiring)
+	stack_trace("AUTOFIRE ON: COMSIG_AUTOFIRE_SHOT signal registered to parent.")
+	parent.RegisterSignal(parent, COMSIG_AUTOFIRE_SHOT, /obj/item/gun/.proc/do_autofire) //POSSIBLE FUCKY WUCKY HERE?
 	if(_autofire_shot_delay)
 		autofire_shot_delay = _autofire_shot_delay
 	if(ismob(gun.loc))
@@ -32,6 +34,8 @@
 /datum/component/automatic_fire/Destroy()
 	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED, COMSIG_GUN_JAMMED, \
 	COMSIG_GUN_AUTOFIRE_SELECTED, COMSIG_ITEM_EQUIPPED))
+	stack_trace("AUTOFIRE OFF: COMSIG_AUTOFIRE_SHOT signal unregistered to parent.")
+	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT) //POSSIBLE FUCKY WUCKY HERE?
 	autofire_off()
 	return ..()
 
@@ -75,8 +79,6 @@
 	if(!QDELETED(shooter))
 		UnregisterSignal(shooter, COMSIG_MOB_LOGIN)
 	parent.RegisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN, /obj/item/gun/.proc/autofire_bypass_check)
-	stack_trace("AUTOFIRE ON: COMSIG_AUTOFIRE_SHOT signal registered to parent.")
-	parent.RegisterSignal(parent, COMSIG_AUTOFIRE_SHOT, /obj/item/gun/.proc/do_autofire)
 
 
 /datum/component/automatic_fire/proc/autofire_off(datum/source)
@@ -97,8 +99,6 @@
 	if(!QDELETED(shooter))
 		UnregisterSignal(shooter, COMSIG_MOB_LOGOUT)
 	shooter = null
-	stack_trace("AUTOFIRE OFF: COMSIG_AUTOFIRE_SHOT signal unregistered to parent.")
-	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
 	parent.UnregisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN)
 
 /datum/component/automatic_fire/proc/on_client_login(mob/source)
@@ -273,7 +273,7 @@
 		return COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS
 
 
-/obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
+/obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params) //POSSIBLE FUCKY WUCKY HERE?
 	SIGNAL_HANDLER_DOES_SLEEP
 	stack_trace("DO AUTOFIRE: Called.")
 	if(!can_shoot())
@@ -288,7 +288,6 @@
 			stack_trace("DO AUTOFIRE: Addtimer process_fire.")
 			addtimer(CALLBACK(akimbo_gun, /obj/item/gun.proc/process_fire, target, shooter, TRUE, params, null, bonus_spread), 1)
 	process_fire(target, shooter, TRUE, params, null, bonus_spread)
-	stack_trace("DO AUTOFIRE: COMPONENT_AUTOFIRE_SHOT_SUCCESS returned.")
 	return COMPONENT_AUTOFIRE_SHOT_SUCCESS //All is well, we can continue shooting.
 
 #undef AUTOFIRE_MOUSEUP
