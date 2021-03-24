@@ -306,7 +306,7 @@ SUBSYSTEM_DEF(ticker)
 	SSdbcore.SetRoundStart()
 
 	to_chat(world, "<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
-	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
+	alert_sound_to_playing(sound(SSstation.announcer.get_rand_welcome_sound())) //SKYRAT EDIT CHANGE
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)

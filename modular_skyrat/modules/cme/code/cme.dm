@@ -148,10 +148,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
 	var/area/loc_area_name = get_area(spawnpoint)
 	minor_announce("WARNING! [uppertext(intensity)] PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
-	for(var/i in GLOB.mob_list)
-		var/mob/M = i
-		if(M.client && M.z == spawnpoint.z)
-			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+	alert_sound_to_playing(sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 	switch(intensity)
 		if(CME_MINIMAL)
 			var/obj/effect/cme/spawnedcme = new(spawnpoint)

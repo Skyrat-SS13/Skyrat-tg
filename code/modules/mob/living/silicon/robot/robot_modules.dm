@@ -255,7 +255,8 @@
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron,
-		/obj/item/stack/cable_coil)
+		/obj/item/stack/cable_coil,
+		/obj/item/lightreplacer/cyborg) // Skyrat Edit - Surprised Engie borgs don't get these
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(/obj/item/borg/stun)
 	cyborg_base_icon = "engineer"

@@ -16,6 +16,8 @@
 	var/spawn_admin = FALSE
 	/// If TRUE, we try and pick one of the most experienced players who volunteered to fill the leader slot
 	var/leader_experience = TRUE
+	///SKYRAT EDIT: Do we want to notify the players of this ERT?
+	var/notify_players = TRUE
 
 /datum/ert/New()
 	if (!polldesc)
