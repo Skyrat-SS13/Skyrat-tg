@@ -37,7 +37,7 @@
 
 /datum/component/automatic_fire/process(delta_time)
 	if(!(autofire_stat & AUTOFIRE_STAT_FIRING))
-		STOP_PROCESSING(SSfastprocess, src)
+		STOP_PROCESSING(SSprojectiles, src)
 		return
 
 	if(!COOLDOWN_FINISHED(src, next_shot_cd))
@@ -173,10 +173,10 @@
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
 		return //Things may have changed while on_autofire_start() was being processed, due to do_after's sleep.
 
-	if(process_shot() == -1) //First shot is processed instantly.
+	if(!process_shot()) //First shot is processed instantly.
 		return //If it fails, such as when the gun is empty, then there's no need to schedule a second shot.
 
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprojectiles, src)
 	RegisterSignal(clicker, COMSIG_CLIENT_MOUSEDRAG, .proc/on_mouse_drag)
 
 
@@ -194,7 +194,7 @@
 	switch(autofire_stat)
 		if(AUTOFIRE_STAT_IDLE, AUTOFIRE_STAT_ALERT)
 			return
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprojectiles, src)
 	autofire_stat = AUTOFIRE_STAT_ALERT
 	if(clicker)
 		clicker.mouse_override_icon = null
@@ -262,13 +262,15 @@
 	if(clicker.mob.get_active_held_item() != src)
 		return COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS
 
+/obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
+    SIGNAL_HANDLER
+    if(!can_shoot())
+        shoot_with_empty_chamber(shooter)
+        return FALSE
+    INVOKE_ASYNC(src, .proc/do_autofire_secondary, source, target, shooter, params)
+    return COMPONENT_AUTOFIRE_SHOT_SUCCESS
 
-/obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params) //THIS IS WHERE THE FUCKY WUCKY IS
-	SIGNAL_HANDLER_DOES_SLEEP
-	. = COMPONENT_AUTOFIRE_SHOT_SUCCESS //This might cause issues.
-	if(!can_shoot())
-		shoot_with_empty_chamber(shooter)
-		return -1
+/obj/item/gun/proc/do_autofire_secondary(datum/source, atom/target, mob/living/shooter, params)
 	var/obj/item/gun/akimbo_gun = shooter.get_inactive_held_item()
 	var/bonus_spread = 0
 	if(istype(akimbo_gun) && weapon_weight < WEAPON_MEDIUM)
@@ -276,7 +278,7 @@
 			bonus_spread = dual_wield_spread
 			addtimer(CALLBACK(akimbo_gun, /obj/item/gun.proc/process_fire, target, shooter, TRUE, params, null, bonus_spread), 1)
 	process_fire(target, shooter, TRUE, params, null, bonus_spread)
-	return .
+
 
 #undef AUTOFIRE_MOUSEUP
 #undef AUTOFIRE_MOUSEDOWN
