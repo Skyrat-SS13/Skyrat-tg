@@ -273,10 +273,8 @@
 				if(cloning)
 					return
 
-				// Putting this through stripped_multiline_input causes problems, both with html encoding causing json parse failures
-				// and certain characters like ! being dropped. Since this inputted code isn't going to be displayed, only parsed
-				// it's alright to take it like this.
-				var/input = input(usr, "Put your code there:", "loading", "") as message|null
+				// We want this trimmed through stripped_multiline_input, but we don't want the result to be html encoded otherwise there will be json decode errors.
+				var/input = html_decode(stripped_multiline_input(usr, "Put your code there:", "loading", max_length = MAX_SIZE_CIRCUIT))
 				if(!check_interactivity(usr) || cloning)
 					return
 				if(!input)
