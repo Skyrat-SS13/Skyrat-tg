@@ -46,7 +46,6 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	ADD_TRAIT(src, TRAIT_DISFIGURED, TRAIT_GENERIC)
 	set_species(/datum/species/skeleton)
 	return TRUE
-
 /*
 OLD DRAIN
 /mob/living/carbon/proc/Drain()
@@ -55,13 +54,12 @@ OLD DRAIN
 	blood_volume = 0
 	return TRUE
 */
-
-//SKYRAT DRAIN
+//SKYRAT EDIT ADD
 /mob/living/carbon/proc/Drain()
 	become_husk(CHANGELING_DRAIN)
 	blood_volume = 0
 	return TRUE
-
+//
 /mob/living/carbon/proc/makeUncloneable()
 	ADD_TRAIT(src, TRAIT_BADDNA, MADE_UNCLONEABLE)
 	blood_volume = 0
