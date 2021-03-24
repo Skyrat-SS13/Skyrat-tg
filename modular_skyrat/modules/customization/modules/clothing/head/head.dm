@@ -95,7 +95,7 @@
 /obj/item/clothing/head/masterbaiter
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
-	name = "Master Baiter professional fishing cap"
+	name = "\improper Master Baiter professional fishing cap"
 	icon_state = "masterbaiter"
 	inhand_icon_state = "masterbaiter"
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 100, "wound" = 0)
