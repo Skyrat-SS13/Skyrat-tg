@@ -47,10 +47,18 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	set_species(/datum/species/skeleton)
 	return TRUE
 
-
+/*
+OLD DRAIN
 /mob/living/carbon/proc/Drain()
 	become_husk(CHANGELING_DRAIN)
 	ADD_TRAIT(src, TRAIT_BADDNA, CHANGELING_DRAIN)
+	blood_volume = 0
+	return TRUE
+*/
+
+//SKYRAT DRAIN
+/mob/living/carbon/proc/Drain()
+	become_husk(CHANGELING_DRAIN)
 	blood_volume = 0
 	return TRUE
 
