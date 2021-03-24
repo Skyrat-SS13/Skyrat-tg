@@ -91,3 +91,13 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "syndwardenberet"
 	dog_fashion = null
+
+/obj/item/clothing/head/masterbaiter
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	name = "Master Baiter professional fishing cap"
+	icon_state = "masterbaiter"
+	inhand_icon_state = "masterbaiter"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 100, "wound" = 0)
+	desc = "A comically long trucker hat that depicts its owner as a man who slays gods. There are strips of text saying ''Women fear me - Fish fear me - Men turn their eyes away from me as I walk - No beast dares make a sound in my presence - I am alone in this barren spess.'' with a crudely drawn space carp at the bottom."
+	mutant_variants = NONE
