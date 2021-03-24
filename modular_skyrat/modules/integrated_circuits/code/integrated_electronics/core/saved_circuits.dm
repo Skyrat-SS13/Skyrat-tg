@@ -268,7 +268,7 @@
 		var/amount_required = assembly.custom_materials[mat]
 		if(!istype(req_mat))
 			req_mat = GET_MATERIAL_REF(req_mat)
-		if(blocks["material_costs"].Find(req_mat))
+		if(req_mat in blocks["material_costs"])
 			blocks["material_costs"][req_mat] += amount_required
 		else
 			blocks["material_costs"][req_mat] = amount_required
@@ -307,7 +307,7 @@
 			var/amount_required = component.custom_materials[mat]
 			if(!istype(req_mat))
 				req_mat = GET_MATERIAL_REF(req_mat)
-			if(blocks["material_costs"].Find(req_mat))
+			if(req_mat in blocks["material_costs"])
 				blocks["material_costs"][req_mat] += amount_required
 			else
 				blocks["material_costs"][req_mat] = amount_required
