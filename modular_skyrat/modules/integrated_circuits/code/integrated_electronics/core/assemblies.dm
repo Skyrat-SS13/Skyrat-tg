@@ -575,12 +575,10 @@
 
 	switch(type_to_use)
 		if("repair")
-			to_chat(world,"Integrity: [obj_integrity] / [max_integrity]")
 			if(obj_integrity < max_integrity)
 				obj_integrity = min(obj_integrity + 20,max_integrity)
-				to_chat(world,"Integrity: [obj_integrity] / [max_integrity]")
+				to_chat(user,"<span class='notice'>Integrity: [obj_integrity] / [max_integrity]</span>")
 				to_chat(user,"<span class='notice'>You fix the dents and scratches of the assembly.</span>")
-				to_chat(world,user)
 				return TRUE
 
 			else
