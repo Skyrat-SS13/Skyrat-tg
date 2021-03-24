@@ -36,23 +36,17 @@
 	return ..()
 
 /datum/component/automatic_fire/process(delta_time)
-	stack_trace("PROCESS: pre-fired.")
 	if(!(autofire_stat & AUTOFIRE_STAT_FIRING))
-		stack_trace("PROCESS: AUTOFIRE_STAT_FIRING, stop processing called.")
 		STOP_PROCESSING(SSfastprocess, src)
 		return
 
 	if(!COOLDOWN_FINISHED(src, next_shot_cd))
-		stack_trace("PROCESS: !COOLDOWN_FINISHED.")
 		return
-
-	stack_trace("PROCESS: fired.")
 
 	process_shot()
 
 /datum/component/automatic_fire/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
-	stack_trace("Wakeup called.")
 	if(autofire_stat & (AUTOFIRE_STAT_ALERT))
 		return //We've updated the firemode. No need for more.
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
@@ -81,13 +75,12 @@
 	if(!QDELETED(shooter))
 		UnregisterSignal(shooter, COMSIG_MOB_LOGIN)
 	parent.RegisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN, /obj/item/gun/.proc/autofire_bypass_check)
+	stack_trace("AUTOFIRE ON: COMSIG_AUTOFIRE_SHOT signal registered to parent.")
 	parent.RegisterSignal(parent, COMSIG_AUTOFIRE_SHOT, /obj/item/gun/.proc/do_autofire)
-	stack_trace("Autofire_on called.")
 
 
 /datum/component/automatic_fire/proc/autofire_off(datum/source)
 	SIGNAL_HANDLER
-	stack_trace("AUTOFIRE OFF: called.")
 	if(autofire_stat & (AUTOFIRE_STAT_IDLE))
 		return
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
@@ -104,6 +97,7 @@
 	if(!QDELETED(shooter))
 		UnregisterSignal(shooter, COMSIG_MOB_LOGOUT)
 	shooter = null
+	stack_trace("AUTOFIRE OFF: COMSIG_AUTOFIRE_SHOT signal unregistered to parent.")
 	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
 	parent.UnregisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN)
 
@@ -116,7 +110,6 @@
 
 /datum/component/automatic_fire/proc/on_mouse_down(client/source, atom/_target, turf/location, control, params)
 	var/list/modifiers = params2list(params) //If they're shift+clicking, for example, let's not have them accidentally shoot.
-	stack_trace("ON MOUSE DOWN: Called.")
 
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		return
@@ -134,7 +127,6 @@
 		return
 	if(get_dist(source.mob, _target) < 2) //Adjacent clicking.
 		return
-	stack_trace("ON MOUSE DOWN: checks completed.")
 
 	if(isnull(location)) //Clicking on a screen object.
 		if(_target.plane != CLICKCATCHER_PLANE) //The clickcatcher is a special case. We want the click to trigger then, under it.
@@ -147,27 +139,23 @@
 		return
 
 	source.click_intercept_time = world.time //From this point onwards Click() will no longer be triggered.
-	stack_trace("ON MOUSE DOWN: TIME SET: [source.click_intercept_time].")
 
 	if(autofire_stat & (AUTOFIRE_STAT_IDLE))
 		CRASH("on_mouse_down() called with [autofire_stat] autofire_stat")
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
-		stack_trace("ON MOUSE DOWN: AUTOFIRE_STAT_FIRING. stop_autofiring called.")
 		stop_autofiring() //This can happen if we click and hold and then alt+tab, printscreen or other such action. MouseUp won't be called then and it will keep autofiring.
 
 	target = _target
 	target_loc = get_turf(target)
 	mouse_parameters = params
-	stack_trace("ON MOUSE DOWN: start_autofiring called.")
 	start_autofiring()
 
 
 //Dakka-dakka
 /datum/component/automatic_fire/proc/start_autofiring()
-	stack_trace("START AUTOFIRING: called.")
 	if(autofire_stat == AUTOFIRE_STAT_FIRING)
-		stack_trace("START AUTOFIRING: AUTOFIRE_STAT_FIRING - Already shooting. Return.")
 		return //Already pew-pewing.
+
 	autofire_stat = AUTOFIRE_STAT_FIRING
 
 	clicker.mouse_override_icon = 'icons/effects/mouse_pointers/weapon_pointer.dmi'
@@ -182,17 +170,13 @@
 	if(isgun(parent))
 		var/obj/item/gun/shoota = parent
 		if(!shoota.on_autofire_start(shooter)) //This is needed because the minigun has a do_after before firing and signals are async.
-			stack_trace("START AUTOFIRING: !shoota.on_autofire_start, stop_autofiring called, and return.")
 			stop_autofiring()
 			return
 	if(autofire_stat != AUTOFIRE_STAT_FIRING)
-		stack_trace("START AUTOFIRING: AUTOFIRE_STAT_FIRING, return.")
 		return //Things may have changed while on_autofire_start() was being processed, due to do_after's sleep.
 
 	if(!process_shot()) //First shot is processed instantly.
-		stack_trace("START AUTOFIRING: process_shot(), first shot is processed instantly. return.")
 		return //If it fails, such as when the gun is empty, then there's no need to schedule a second shot.
-	stack_trace("START AUTOFIRING: START_PROCESSING.")
 	START_PROCESSING(SSfastprocess, src)
 	RegisterSignal(clicker, COMSIG_CLIENT_MOUSEDRAG, .proc/on_mouse_drag)
 
@@ -291,7 +275,9 @@
 
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
 	SIGNAL_HANDLER_DOES_SLEEP
+	stack_trace("DO AUTOFIRE: Called.")
 	if(!can_shoot())
+		stack_trace("DO AUTOFIRE: !can_shoot, returning.")
 		shoot_with_empty_chamber(shooter)
 		return NONE
 	var/obj/item/gun/akimbo_gun = shooter.get_inactive_held_item()
@@ -299,9 +285,10 @@
 	if(istype(akimbo_gun) && weapon_weight < WEAPON_MEDIUM)
 		if(akimbo_gun.weapon_weight < WEAPON_MEDIUM && akimbo_gun.can_trigger_gun(shooter))
 			bonus_spread = dual_wield_spread
+			stack_trace("DO AUTOFIRE: Addtimer process_fire.")
 			addtimer(CALLBACK(akimbo_gun, /obj/item/gun.proc/process_fire, target, shooter, TRUE, params, null, bonus_spread), 1)
-	stack_trace("Do autofire called.")
 	process_fire(target, shooter, TRUE, params, null, bonus_spread)
+	stack_trace("DO AUTOFIRE: COMPONENT_AUTOFIRE_SHOT_SUCCESS returned.")
 	return COMPONENT_AUTOFIRE_SHOT_SUCCESS //All is well, we can continue shooting.
 
 #undef AUTOFIRE_MOUSEUP
