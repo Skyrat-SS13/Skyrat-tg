@@ -274,7 +274,7 @@
 
 
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params) //POSSIBLE FUCKY WUCKY HERE?
-	SIGNAL_HALDER
+	SIGNAL_HANDER
 	stack_trace("DO AUTOFIRE: Called.")
 	if(!can_shoot())
 		stack_trace("DO AUTOFIRE: !can_shoot, returning.")
