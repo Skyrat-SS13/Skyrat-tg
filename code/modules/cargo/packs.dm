@@ -286,14 +286,14 @@
 	crate_name = "ammo crate"
 
 /datum/supply_pack/security/armor
-	name = "Armor Crate"
+/* Moved to Bloat.dm	name = "Armor Crate"
 	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
 	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest)
-	crate_name = "armor crate"
+	crate_name = "armor crate" */
 
 /* - SKYRAT EDIT REMOVAL - SEC_HAUL
 /datum/supply_pack/security/disabler
