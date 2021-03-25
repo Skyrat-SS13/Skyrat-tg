@@ -44,7 +44,7 @@
 							"(Standard) Eyebot",
 							"(Standard) Bootyborg",
 							"(Standard) Protectron",
-							"(Standard) Miss m",
+							"(Standard) Miss M",
 							"(Medical) Default",
 							"(Medical) Heavy",
 							"(Medical) Sleek",
@@ -65,7 +65,7 @@
 							"(Engineering) Heavy",
 							"(Engineering) Bootyborg",
 							"(Engineering) Protectron",
-							"(Engineering) Miss m",
+							"(Engineering) Miss M",
 							"(Miner) Lavaland",
 							"(Miner) Asteroid",
 							"(Miner) Droid",
@@ -75,7 +75,7 @@
 							"(Miner) Heavy",
 							"(Miner) Bootyborg",
 							"(Miner) Protectron",
-							"(Miner) Miss m",
+							"(Miner) Miss M",
 							"(Service) Waitress",
 							"(Service) Butler",
 							"(Service) Bro",
@@ -85,14 +85,14 @@
 							"(Service) Heavy",
 							"(Service) Bootyborg",
 							"(Service) Protectron",
-							"(Service) Miss m",
+							"(Service) Miss M",
 							"(Janitor) Default",
 							"(Janitor) Marina",
 							"(Janitor) Sleek",
 							"(Janitor) Can",
 							"(Janitor) Bootyborg",
 							"(Janitor) Protectron",
-							"(Janitor) Miss m")
+							"(Janitor) Miss M")
 
 /obj/item/borg_shapeshifter/Initialize()
 	. = ..()
@@ -168,11 +168,11 @@
 					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootysd"),
 					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootysd"),
 					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_standard"),
-					"Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_sd")
+					"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_sd")
 				))
 				var/list/L = list("Fabulous" = "k69")
 				for(var/a in L)
-					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
+					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi', icon_state = L[a])
 					wide.pixel_x = -16
 					standard_icons[a] = wide
 				standard_icons = sortList(standard_icons)
@@ -204,12 +204,13 @@
 					if("Protectron")
 						disguise = "protectron_standard"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Miss m")
+					if("Miss M")
 						disguise = "missm_sd"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+					//Dogborgs
 					if("Fabulous")
 						disguise = "k69"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					else
@@ -218,19 +219,22 @@
 			if("Medical")
 				var/static/list/med_icons = list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
-					"Droid" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "medical"),
-					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sleekmed"),
-					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marinamed"),
-					"Eyebot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "eyebotmed"),
-					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "heavymed"),
-					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootymedical"),
-					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootymedical"),
-					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_medical"),
-					"Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_med"),
-					"Qualified Doctor" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "qualified_doctor"),
-					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "zoomba_med")
+					"Droid" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "medical"),
+					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "sleekmed"),
+					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "marinamed"),
+					"Eyebot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "eyebotmed"),
+					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "heavymed"),
+					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "bootymedical"),
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "male_bootymedical"),
+					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "protectron_medical"),
+					"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "missm_med"),
+					"Qualified Doctor" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "qualified_doctor"),
+					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "zoomba_med"),
+					"Arachne" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "arachne"),
+					"Insekt" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "insekt-Med"),
+					"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "gibbs")
 				)
-				var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed",  "Drake" = "drakemed")
+				var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed",  "Drake" = "drakemed", "Borgi" = "borgi-medi")
 				for(var/a in L)
 					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
 					wide.pixel_x = -16
@@ -245,55 +249,70 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Droid")
 						disguise = "medical"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Sleek")
 						disguise = "sleekmed"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Marina")
 						disguise = "marinamed"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Eyebot")
 						disguise = "eyebotmed"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Heavy")
 						disguise = "heavymed"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Bootyborg")
 						disguise = "bootymedical"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Male Bootyborg")
 						disguise = "male_bootymedical"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Protectron")
 						disguise = "protectron_medical"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Miss m")
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+					if("Miss M")
 						disguise = "missm_med"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Qualified Doctor")
 						disguise = "qualified_doctor"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 					if("Zoomba")
 						disguise = "zoomba_med"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+					if("Arachne")
+						disguise = "arachne"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+					if("Insekt")
+						disguise = "insekt-Med"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+					if("Mech")
+						disguise = "gibbs"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+					//Dogborgs
 					if("Medihound")
 						disguise = "medihound"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Medihound Dark")
 						disguise = "medihounddark"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Vale")
 						disguise = "valemed"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Drake")
 						disguise = "drakemed"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("Borgi")
+						disguise = "borgi-medi"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					else
@@ -302,21 +321,24 @@
 			if("Engineer")
 				var/static/list/engi_icons = list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
-					"Default - Treads" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "engi-tread"),
-					"Loader" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "loaderborg"),
-					"Handy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "handyeng"),
-					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sleekeng"),
-					"Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "caneng"),
-					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marinaeng"),
-					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "spidereng"),
-					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "heavyeng"),
-					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootyeng"), //Skyrat change
-					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootyeng"),
-					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_eng"),
-					"Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_eng"),
-					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "zoomba_engi")
+					"Default - Treads" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "engi-tread"),
+					"Loader" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "loaderborg"),
+					"Handy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "handyeng"),
+					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "sleekeng"),
+					"Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "caneng"),
+					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "marinaeng"),
+					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "spidereng"),
+					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "heavyeng"),
+					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "bootyeng"), //Skyrat change
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "male_bootyeng"),
+					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "protectron_eng"),
+					"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "missm_eng"),
+					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "zoomba_engi"),
+					"Eyebot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "eyeboteng"),
+					"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "conagher"),
+					"Wide" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "wide-engi")
 				)
-				var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng", "Hound" = "engihound", "Darkhound" = "engihounddark", "Drake" = "drakeeng")
+				var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng", "Hound" = "engihound", "Darkhound" = "engihounddark", "Drake" = "drakeeng", "Borgi" = "borgi-eng")
 				for(var/a in L)
 					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
 					wide.pixel_x = -16
@@ -331,73 +353,88 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Zoomba")
 						disguise = "zoomba_engi"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Default - Treads")
 						disguise = "engi-tread"
 						disguise_special_light_key = "engineer"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Loader")
 						disguise = "loaderborg"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Handy")
 						disguise = "handyeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Sleek")
 						disguise = "sleekeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Can")
 						disguise = "caneng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Marina")
 						disguise = "marinaeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Spider")
 						disguise = "spidereng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 					if("Heavy")
 						disguise = "heavyeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					if("Bootyborg")
+						disguise = "bootyeng"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					if("Male Bootyborg")
+						disguise = "male_bootyeng"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					if("Protectron")
+						disguise = "protectron_eng"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					if("Miss M")
+						disguise = "missm_eng"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					if("Eyebot")
+						disguise = "eyeboteng"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					if("Mech")
+						disguise = "conagher"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					if("Wide")
+						disguise = "wide-engi"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+					//Dogborgs
 					if("Pup Dozer")
 						disguise = "pupdozer"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Vale")
 						disguise = "valeeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Alina")
 						disguise = "alina-eng"
 						disguise_special_light_key = "alina"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
-					if("Bootyborg") //Skyrat change
-						disguise = "bootyeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Male Bootyborg")
-						disguise = "male_bootyeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Protectron")
-						disguise = "protectron_eng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Miss m")
-						disguise = "missm_eng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Drake")
 						disguise = "drakeeng"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Hound")
 						disguise = "engihound"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Darkhound")
 						disguise = "engihounddark"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("Borgi")
+						disguise = "borgi-eng"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					else
@@ -405,19 +442,22 @@
 			if("Security")
 				var/static/list/sec_icons = list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
-					"Default - Treads" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sec-tread"),
-					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sleeksec"),
-					"Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "cansec"),
-					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marinasec"),
-					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "spidersec"),
-					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "heavysec"),
-					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootysecurity"), //Skyrat change
-					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootysecurity"),
-					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_security"),
-					"Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_security"),
-					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "zoomba_sec")
+					"Default - Treads" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "sec-tread"),
+					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "sleeksec"),
+					"Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "cansec"),
+					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "marinasec"),
+					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "spidersec"),
+					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "heavysec"),
+					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "bootysecurity"), //Skyrat change
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "male_bootysecurity"),
+					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "protectron_security"),
+					"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "missm_security"),
+					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "zoomba_sec"),
+					"Eyebot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "eyebotsec"),
+					"Insekt" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "insekt-Sec"),
+					"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi', icon_state = "woody")
 				)
-				var/list/L = list("K9" = "k9", "Vale" = "valesec", "K9 Dark" = "k9dark", "Otie" = "oties", "Drake" = "drakesec")
+				var/list/L = list("Hound" = "k9", "Vale" = "valesec", "Darkhound" = "k9dark", "Otie" = "oties", "Drake" = "drakesec", "Borgi" = "borgi-sec")
 				for(var/a in L)
 					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
 					wide.pixel_x = -16
@@ -432,27 +472,40 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Zoomba")
 						disguise = "zoomba_sec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 					if("Default - Treads")
 						disguise = "sec-tread"
 						disguise_special_light_key = "sec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 					if("Sleek")
 						disguise = "sleeksec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 					if("Marina")
 						disguise = "marinasec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 					if("Can")
 						disguise = "cansec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 					if("Spider")
 						disguise = "spidersec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 					if("Heavy")
 						disguise = "heavysec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("K9")
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
+					if("Bootyborg") //Skyrat change
+						disguise = "bootysecurity"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
+					if("Male Bootyborg")
+						disguise = "male_bootysecurity"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
+					if("Protectron")
+						disguise = "protectron_security"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
+					if("Miss M")
+						disguise = "missm_security"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
+					//Dogborgs
+					if("Hound")
 						disguise = "k9"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
 						disguise_pixel_offset = -16
@@ -460,39 +513,32 @@
 					if("Alina")
 						disguise = "alina-sec"
 						disguise_special_light_key = "alina"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
-					if("K9 Dark")
+					if("Darkhound")
 						disguise = "k9dark"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Vale")
 						disguise = "valesec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
-					if("Bootyborg") //Skyrat change
-						disguise = "bootysecurity"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Male Bootyborg")
-						disguise = "male_bootysecurity"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Protectron")
-						disguise = "protectron_security"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Miss m")
-						disguise = "missm_security"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("Drake")
 						disguise = "drakesec"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Otie")
 						disguise = "oties"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("Borgi")
+						disguise = "borgi-sec"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					else
@@ -504,27 +550,34 @@
 					"(Service) Bro" = image(icon = 'icons/mob/robots.dmi', icon_state = "brobot"),
 					"(Service) Can" = image(icon = 'icons/mob/robots.dmi', icon_state = "kent"),
 					"(Service) Tophat" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
-					"(Service) Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sleekserv"),
-					"(Service) Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "heavyserv"),
-					"(Service) Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootyservice"),
-					"(Service) Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootyservice"),
-					"(Service) Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_service"),
-					"(Service) Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_service"),
+					"(Service) Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "sleekserv"),
+					"(Service) Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "heavyserv"),
+					"(Service) Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "bootyservice"),
+					"(Service) Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "male_bootyservice"),
+					"(Service) Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "protectron_service"),
+					"(Service) Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "missm_service"),
+					"(Service) Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "lloyd"),
+					"(Service) Handy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi', icon_state = "handy-service"),
+
 					"(Janitor) Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
-					"(Janitor) Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marinajan"),
-					"(Janitor) Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sleekjan"),
-					"(Janitor) Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "canjan"),
-					"(Janitor) Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootyjanitor"),
-					"(Janitor) Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootyjanitor"),
-					"(Janitor) Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_janitor"),
-					"(Janitor) Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_janitor"),
-					"(Janitor) Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "heavyres"),
-					"(Janitor) Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "zoomba_jani")
+					"(Janitor) Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "marinajan"),
+					"(Janitor) Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "sleekjan"),
+					"(Janitor) Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "canjan"),
+					"(Janitor) Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "bootyjanitor"),
+					"(Janitor) Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "male_bootyjanitor"),
+					"(Janitor) Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "protectron_janitor"),
+					"(Janitor) Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "missm_janitor"),
+					"(Janitor) Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "heavyres"),
+					"(Janitor) Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "zoomba_jani"),
+					"(Janitor) Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "flynn"),
+					"(Janitor) Eyebot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "eyebotjani"),
+					"(Janitor) Insekt" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "insekt-Sci"),
+					"(Janitor) Wide" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "wide-jani"),
+					"(Janitor) Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi', icon_state = "spidersci"),
 				)
-				var/list/L = list("(Service) DarkK9" = "k50", "(Service) Vale" = "valeserv", "(Service) ValeDark" = "valeservdark",
-								"(Janitor) Scrubpuppy" = "scrubpup", "(Janitor) Otie" = "otiej",  "(Service) Fabulous" = "k69", "(Janitor) Drake" = "drakejanit")
+				var/list/L = list("(Service) Darkhound" = "k50", "(Service) Vale" = "valeserv", "(Service) ValeDark" = "valeservdark", "(Service) Borgi" = "borgi-serv",  "(Service) Partyhound" = "k69", "(Service) Borgi" = "borgi-serv", "(Janitor) Scrubpuppy" = "scrubpup", "(Janitor) Otie" = "otiej", "(Janitor) Drake" = "drakejanit", "(Janitor) Vale" = "J9", "(Janitor) Borgi" = "borgi-jani")
 				for(var/a in L)
-					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
+					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi', icon_state = L[a])
 					wide.pixel_x = -16
 					service_icons[a] = wide
 				service_icons = sortList(service_icons)
@@ -532,9 +585,6 @@
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
-					if("(Janitor) Zoomba")
-						disguise = "zoomba_jani"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("(Service) Waitress")
 						disguise = "service_f"
 						disguise_special_light_key = "service"
@@ -556,42 +606,29 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("(Service) Sleek")
 						disguise = "sleekserv"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
 					if("(Service) Heavy")
 						disguise = "heavyserv"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("(Service) DarkK9")
-						disguise = "k50"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
-						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
-					if("(Service) Vale")
-						disguise = "valeserv"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
-						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
-					if("(Service) Fabulous")
-						disguise = "k69"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
-						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
-					if("(Service) ValeDark")
-						disguise = "valeservdark"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
-						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
 					if("(Service) Bootyborg")
 						disguise = "bootyservice"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
 					if("(Service) Male Bootyborg")
 						disguise = "male_bootyservice"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
 					if("(Service) Protectron")
 						disguise = "protectron_service"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("(Service) Miss m")
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
+					if("(Service) Miss M")
 						disguise = "missm_service"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
+					if("(Service) Mech")
+						disguise = "lloyd"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
+					if("(Service) Handy")
+						disguise = "handy-service"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
+
 					if("(Janitor) Default")
 						disguise = "janitor"
 						disguise_icon_override = 'icons/mob/robots.dmi'
@@ -607,11 +644,9 @@
 					if("(Janitor) Heavy")
 						disguise = "heavyres"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("(Janitor) Scrubpuppy")
-						disguise = "scrubpup"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
-						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+					if("(Janitor) Zoomba")
+						disguise = "zoomba_jani"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 					if("(Janitor) Bootyborg")
 						disguise = "bootyjanitor"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
@@ -621,17 +656,60 @@
 					if("(Janitor) Protectron")
 						disguise = "protectron_janitor"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("(Janitor) Miss m")
+					if("(Janitor) Miss M")
 						disguise = "missm_janitor"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+
+					//Dogborgs
+					if("(Service) Darkhound")
+						disguise = "k50"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("(Service) Vale")
+						disguise = "valeserv"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("(Service) Partyhound")
+						disguise = "k69"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("(Service) ValeDark")
+						disguise = "valeservdark"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("(Service) Borgi")
+						disguise = "borgi-serv"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+
 					if("(Janitor) Drake")
 						disguise = "drakejanit"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("(Janitor) Otie")
 						disguise = "otiej"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("(Janitor) Scrubpuppy")
+						disguise = "scrubpup"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("(Janitor) Vale")
+						disguise = "J9"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("(Janitor) Borgi")
+						disguise = "borgi-jani"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					else
@@ -640,20 +718,22 @@
 				var/static/list/mining_icons = list(
 					"Lavaland" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
 					"Asteroid" = image(icon = 'icons/mob/robots.dmi', icon_state = "minerOLD"),
-					"Droid" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "miner"),
-					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sleekmin"),
-					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marinamin"),
-					"Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "canmin"),
-					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "heavymin"),
-					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootyminer"),
-					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootyminer"),
-					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_miner"),
-					"Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_miner"),
-					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "zoomba_miner")
+					"Droid" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "miner"),
+					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "sleekmin"),
+					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "marinamin"),
+					"Can" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "canmin"),
+					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "heavymin"),
+					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "bootyminer"),
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "male_bootyminer"),
+					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "protectron_miner"),
+					"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "missm_miner"),
+					"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "zoomba_miner"),
+					"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "ishimura"),
+					"Drone" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "miningdrone")
 				)
-				var/list/L = list("Blade" = "blade", "Vale" = "valemine", "Drake" = "drakemine")
+				var/list/L = list("Blade" = "blade", "Vale" = "valemine", "Drake" = "drakemine", "Hound" = "cargohound", "Darkhound" = "cargohounddark")
 				for(var/a in L)
-					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
+					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi', icon_state = L[a])
 					wide.pixel_x = -16
 					mining_icons[a] = wide
 				mining_icons = sortList(mining_icons)
@@ -670,50 +750,67 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Droid")
 						disguise = "miner"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
 					if("Sleek")
 						disguise = "sleekmin"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
 					if("Can")
 						disguise = "canmin"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
 					if("Marina")
 						disguise = "marinamin"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
 					if("Spider")
 						disguise = "spidermin"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
 					if("Heavy")
 						disguise = "heavymin"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					if("Bootyborg")
+						disguise = "bootyminer"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					if("Male Bootyborg")
+						disguise = "male_bootyminer"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					if("Protectron")
+						disguise = "protectron_miner"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					if("Miss M")
+						disguise = "missm_miner"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					if("Zoomba")
+						disguise = "zoomba_miner"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					if("Mech")
+						disguise = "ishimura"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					if("Drone")
+						disguise = "miningdrone"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+					//Dogborgs
+					if("Drake")
+						disguise = "drakemine"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
 					if("Blade")
 						disguise = "blade"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Vale")
 						disguise = "valemine"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
-					if("Bootyborg")
-						disguise = "bootyminer"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Male Bootyborg")
-						disguise = "male_bootyminer"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Protectron")
-						disguise = "protectron_miner"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Miss m")
-						disguise = "missm_miner"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Zoomba")
-						disguise = "zoomba_miner"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Drake")
-						disguise = "drakemine"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+					if("Hound")
+						disguise = "cargohound"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("Darkhound")
+						disguise = "cargohounddark"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					else
@@ -721,17 +818,18 @@
 			if("Peacekeeper")
 				var/static/list/peace_icons = sortList(list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
-					"Borgi" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "borgi"),
-					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "whitespider"),
-					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "sleekpeace"),
-					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marinapeace"),
-					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootypeace"),
-					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootypeace"),
-					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "protectron_peacekeeper")
+					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "whitespider"),
+					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "sleekpeace"),
+					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "marinapeace"),
+					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "bootypeace"),
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "male_bootypeace"),
+					"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "protectron_peacekeeper"),
+					"Insekt" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "insekt-Default"),
+					"Omni" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "omoikane")
 					))
-				var/list/L = list("Drake" = "drakepeace")
+				var/list/L = list("Drake" = "drakepeace", "Borgi" = "borgi")
 				for(var/a in L)
-					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
+					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi', icon_state = L[a])
 					wide.pixel_x = -16
 					peace_icons[a] = wide
 				peace_icons = sortList(peace_icons)
@@ -744,28 +842,37 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Sleek")
 						disguise = "sleekpeace"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
 					if("Spider")
 						disguise = "whitespider"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Borgi")
-						disguise = "borgi"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
 					if("Marina")
 						disguise = "marinapeace"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
 					if("Bootyborg")
 						disguise = "bootypeace"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
 					if("Male Bootyborg")
 						disguise = "male_bootypeace"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
 					if("Protectron")
 						disguise = "protectron_peacekeeper"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
+					if("Insekt")
+						disguise = "insekt-Default"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
+					if("Omni")
+						disguise = "omoikane"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
+					//Dogborgs
 					if("Drake")
 						disguise = "drakepeace"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi'
+						disguise_pixel_offset = -16
+						disguise_dogborg = TRUE
+					if("Borgi")
+						disguise = "borgi"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					else
@@ -773,12 +880,12 @@
 			if("Clown")
 				var/static/list/clown_icons = sortList(list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
-					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootyclown"),
-					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootyclown"),
-					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "marina_mommy"),
-					"Garish" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "garish"),
-					"Robot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "clownbot"),
-					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "clownman")
+					"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "bootyclown"),
+					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "male_bootyclown"),
+					"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "marina_mommy"),
+					"Garish" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "garish"),
+					"Robot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "clownbot"),
+					"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "clownman")
 				))
 				var/borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
@@ -789,22 +896,22 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Bootyborg")
 						disguise = "bootyclown"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
 					if("Male Bootyborg")
 						disguise = "male_bootyclown"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
 					if("Marina")
 						disguise = "marina_mommy"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
 					if("Garish")
 						disguise = "garish"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
 					if("Robot")
 						disguise = "clownbot"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
 					if("Sleek")
 						disguise = "clownman"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
 					else
 						return FALSE
 			if("Syndicate")
@@ -812,13 +919,14 @@
 					"Saboteur" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_engi"),
 					"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical"),
 					"Assault" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
-					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "syndieheavy"),
-					"Miss m" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "missm_syndie"),
-					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "spidersyndi"),
-					"Booty Striker" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootynukie"),
-					"Booty Syndicate" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "bootysyndie"),
-					"Male Booty Striker" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootynukie"),
-					"Male Booty Syndicate" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi', icon_state = "male_bootysyndie")
+					"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "syndieheavy"),
+					"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "missm_syndie"),
+					"Spider" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "spidersyndi"),
+					"Booty Striker" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "bootynukie"),
+					"Booty Syndicate" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "bootysyndie"),
+					"Male Booty Striker" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "male_bootynukie"),
+					"Male Booty Syndicate" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "male_bootysyndie"),
+					"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "chesty")
 				))
 				var/borg_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
@@ -835,25 +943,28 @@
 						disguise_icon_override = 'icons/mob/robots.dmi'
 					if("Heavy")
 						disguise = "syndieheavy"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
-					if("Miss m")
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
+					if("Miss M")
 						disguise = "missm_syndie"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
 					if("Spider")
 						disguise = "spidersyndi"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
 					if("Booty Striker")
 						disguise = "bootynukie"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
 					if("Booty Syndicate")
 						disguise = "bootysyndie"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
 					if("Male Booty Striker")
 						disguise = "male_bootynukie"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
 					if("Male Booty Syndicate")
 						disguise = "male_bootysyndie"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
+					if("Mech")
+						disguise = "chesty"
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi'
 					else
 						return FALSE
 			if("Spider Clan")
@@ -862,7 +973,7 @@
 					"Medical" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_medical"),
 					"Assault" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_sec"),
 					"Heavy" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaheavy"),
-					"Miss m" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
+					"Miss M" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
 					"Spider" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaspider"),
 					"BootyBorg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "bootyninja"),
 					"Male Bootyborg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "male_bootyninja")
@@ -883,7 +994,7 @@
 					if("Heavy")
 						disguise = "ninjaheavy"
 						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
-					if("Miss m")
+					if("Miss M")
 						disguise = "missm_ninja"
 						disguise_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
 					if("Spider")
