@@ -15,9 +15,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme
-	weight = 5
+	weight = 0
 	min_players = 15
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
+	max_occurrences = 0
 	earliest_start = 20 MINUTES
 
 /datum/round_event/cme
@@ -32,9 +32,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/random
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme/random
-	weight = 5
+	weight = 0
 	min_players = 15
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
+	max_occurrences = 0
 	earliest_start = 20 MINUTES
 
 /datum/round_event/cme/random
@@ -43,9 +43,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/moderate
 	name = "Coronal Mass Ejection: Moderate"
 	typepath = /datum/round_event/cme/moderate
-	weight = 5
+	weight = 0
 	min_players = 20
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
+	max_occurrences = 0
 	earliest_start = 35 MINUTES
 
 /datum/round_event/cme/moderate
@@ -54,9 +54,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/extreme
 	name = "Coronal Mass Ejection: Extreme"
 	typepath = /datum/round_event/cme/extreme
-	weight = 5
+	weight = 0
 	min_players = 25
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
+	max_occurrences = 0
 	earliest_start = 45 MINUTES
 
 /datum/round_event/cme/extreme
@@ -66,7 +66,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	name = "Coronal Mass Ejection: Armageddon"
 	typepath = /datum/round_event/cme/armageddon
 	weight = 0
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
+	max_occurrences = 0
 
 /datum/round_event/cme/armageddon
 	cme_intensity = CME_ARMAGEDDON
