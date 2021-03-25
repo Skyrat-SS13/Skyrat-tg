@@ -419,15 +419,19 @@
 					/obj/item/clothing/mask/gas/sechailer)
 	crate_name = "security clothing crate"
 
+//SKYRAT EDIT REMOVAL BEGIN - No stunbaton
+/*
 /datum/supply_pack/security/baton
 	name = "Stun Batons Crate"
 	desc = "Arm the Civil Protection Forces with three stun batons. Batteries included. Requires Security access to open."
-	cost = CARGO_CRATE_VALUE * 15 //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: 2
+	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/loaded,
 					/obj/item/melee/baton/loaded,
 					/obj/item/melee/baton/loaded)
 	crate_name = "stun baton crate"
+*/
+//SKYRAT EDIT REMOVAL END - No stunbaton
 
 /datum/supply_pack/security/wall_flash
 	name = "Wall-Mounted Flash Crate"
