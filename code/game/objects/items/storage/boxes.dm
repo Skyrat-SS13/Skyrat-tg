@@ -137,7 +137,6 @@
 		new /obj/item/tank/internals/emergency_oxygen(src)
 	//SKYRAT EDIT END
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
-	new /obj/item/crowbar/red(src) //SKYRAT EDIT ADDITION
 
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
 		new /obj/item/flashlight/flare(src)
