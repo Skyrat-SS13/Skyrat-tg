@@ -12,7 +12,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	can_flashlight = TRUE
-	dirt_modifier = 3
+	dirt_modifier = 2
 	emp_damageable = TRUE
 	armadyne = TRUE
 	fire_sound_volume = 50
@@ -54,3 +54,20 @@
 			var/datum/reagent/R = new contained_reagent
 			R.expose_mob(M, VAPOR, reagent_volume)
 	. = ..()
+
+/datum/design/pepperballs
+	name = "Pepperball Ammo Box"
+	id = "pepperball"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron = 10000, )
+	build_path = /obj/item/ammo_box/advanced/pepperballs
+	category = list("intial", "Security", "Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/ammo_box/advanced/pepperballs
+	name = "pepperball ammo box"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon_state = "box10x24-0"
+	ammo_type = /obj/item/ammo_casing/pepperball
+	custom_materials = list(/datum/material/iron = 10000)
+	max_ammo = 30

@@ -98,7 +98,7 @@
 
 // MK-58
 /obj/item/storage/box/gunset/ladon
-	name = "mk-58 supply box"
+	name = "ladon supply box"
 
 /obj/item/gun/ballistic/automatic/pistol/mk58/nomag
 	spawnwithmagazine = FALSE
@@ -113,7 +113,7 @@
 
 //CROON
 /obj/item/storage/box/gunset/croon
-	name = "mk-58 supply box"
+	name = "croon supply box"
 
 /obj/item/gun/ballistic/automatic/croon/nomag
 	spawnwithmagazine = FALSE
@@ -163,8 +163,10 @@
 /obj/item/storage/box/gunset/zeta/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/zeta(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/zeta/rubber(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/zeta/rubber(src)
+	new /obj/item/ammo_box/revolver/zeta/rubber(src)
+	new /obj/item/ammo_box/revolver/zeta/rubber(src)
+	new /obj/item/ammo_box/revolver/zeta/rubber(src)
+	new /obj/item/ammo_box/revolver/zeta/rubber(src)
 
 //REVOLUTION
 /obj/item/storage/box/gunset/revolution
@@ -173,8 +175,10 @@
 /obj/item/storage/box/gunset/revolution/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/revolution(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/revolution/rubber(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/revolution/rubber(src)
+	new /obj/item/ammo_box/revolver/revolution/rubber(src)
+	new /obj/item/ammo_box/revolver/revolution/rubber(src)
+	new /obj/item/ammo_box/revolver/revolution/rubber(src)
+	new /obj/item/ammo_box/revolver/revolution/rubber(src)
 
 
 /////////////////

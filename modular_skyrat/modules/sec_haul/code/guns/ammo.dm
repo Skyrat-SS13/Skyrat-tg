@@ -309,39 +309,26 @@
 			temp_materials[material] = material_amount
 		set_custom_materials(temp_materials)
 
-/obj/item/ammo_box/revolver/multi_sprite
+/obj/item/ammo_box/revolver
+	name = "speed loader"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	desc = "An advanced revolver speedloader with smart type displays. Alt+click to reskin it."
-	w_class = WEIGHT_CLASS_SMALL
-	item_flags = NO_MAT_REDEMPTION
+	desc = "Designed to quickly reload revolvers."
+	icon_state = "speedloader"
+	max_ammo = 8
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	var/round_type = AMMO_TYPE_LETHAL
-	var/base_name = ""
-	var/list/possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER, "ihdf" = AMMO_TYPE_IHDF)
+	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
-/obj/item/ammo_box/revolver/multi_sprite/AltClick(mob/user)
+/obj/item/ammo_box/revolver/AltClick(mob/user)
 	. = ..()
 	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
 	if(!new_type)
 		new_type = AMMO_TYPE_LETHAL
 	round_type = new_type
-	name = "[base_name] [round_type]"
-	update_icon()
+	name = "[initial(name)] [round_type]"
+	update_appearance()
 
-/obj/item/ammo_box/revolver/multi_sprite/update_icon()
+/obj/item/ammo_box/revolver/update_overlays()
 	. = ..()
-	var/shells_left = stored_ammo.len
-	switch(multiple_sprites)
-		if(AMMO_BOX_PER_BULLET)
-			icon_state = "[initial(icon_state)]_[round_type]-[shells_left]"
-		if(AMMO_BOX_FULL_EMPTY)
-			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "[max_ammo]" : "0"]"
-		if(AMMO_BOX_FULL_EMPTY_BASIC)
-			icon_state = "[initial(icon_state)]_[round_type]-[shells_left ? "full" : "empty"]"
-	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	if(length(bullet_cost))
-		var/temp_materials = custom_materials.Copy()
-		for (var/material in bullet_cost)
-			var/material_amount = bullet_cost[material]
-			material_amount = (material_amount*stored_ammo.len) + base_cost[material]
-			temp_materials[material] = material_amount
-		set_custom_materials(temp_materials)
+	if(stored_ammo.len)
+		. += "[initial(icon_state)]_[round_type]"

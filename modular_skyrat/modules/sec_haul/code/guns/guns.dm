@@ -759,7 +759,7 @@
 	caliber = "10mm"
 	max_ammo = 8
 
-/obj/item/ammo_box/revolver/multi_sprite/zeta
+/obj/item/ammo_box/revolver/zeta
 	name = "zeta speed loader(10mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
@@ -767,15 +767,15 @@
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
-/obj/item/ammo_box/revolver/multi_sprite/zeta/hp
+/obj/item/ammo_box/revolver/zeta/hp
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/revolver/multi_sprite/zeta/rubber
+/obj/item/ammo_box/revolver/zeta/rubber
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/ammo_box/revolver/multi_sprite/zeta/ihdf
+/obj/item/ammo_box/revolver/zeta/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
@@ -798,7 +798,7 @@
 	caliber = "9mm"
 	max_ammo = 8
 
-/obj/item/ammo_box/revolver/multi_sprite/revolution
+/obj/item/ammo_box/revolver/revolution
 	name = "revolution speed loader(9mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
@@ -806,15 +806,15 @@
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
-/obj/item/ammo_box/revolver/multi_sprite/revolution/hp
+/obj/item/ammo_box/revolver/revolution/hp
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/revolver/multi_sprite/revolution/rubber
+/obj/item/ammo_box/revolver/revolution/rubber
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/ammo_box/revolver/multi_sprite/revolution/ihdf
+/obj/item/ammo_box/revolver/revolution/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
