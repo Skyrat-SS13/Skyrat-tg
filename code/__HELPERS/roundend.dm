@@ -255,7 +255,11 @@
 	CHECK_TICK
 
 	handle_hearts()
+	//SKYRAT EDIT REMOVAL START
+	/*
 	set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
+	*/
+	//SKYRAT EDIT END
 
 	CHECK_TICK
 
