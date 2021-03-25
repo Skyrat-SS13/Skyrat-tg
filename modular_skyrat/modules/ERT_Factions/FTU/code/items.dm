@@ -48,7 +48,6 @@
 	can_suppress = FALSE
 	burst_size = 5
 	spread = 3
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
@@ -86,7 +85,6 @@
 	can_suppress = FALSE
 	burst_size = 8
 	spread = 5
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = FALSE
 	realistic = TRUE
@@ -132,6 +130,6 @@
 /obj/item/ammo_box/magazine/pulse/mm12/saphe
 	name = "12.7x35mm SAP-HE Magnum magazine"
 	icon_state = "50ae"
-	ammo_type = /obj/item/ammo_casing/b12mm
+	ammo_type = /obj/item/ammo_casing/pulse/mm12
 	caliber = "12mm SAP-HE"
 	max_ammo = 12

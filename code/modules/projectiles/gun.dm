@@ -1,4 +1,4 @@
-
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR GUN.DM
 #define DUALWIELD_PENALTY_EXTRA_MULTIPLIER 1.4
 #define FIRING_PIN_REMOVAL_DELAY 50
 
@@ -76,8 +76,6 @@
 	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
 	var/zoom_out_amt = 0
 	var/datum/action/toggle_scope_zoom/azoom
-
-	var/automatic = 0 //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 	var/pb_knockback = 0
 
 /obj/item/gun/Initialize()
@@ -720,3 +718,4 @@
 
 #undef FIRING_PIN_REMOVAL_DELAY
 #undef DUALWIELD_PENALTY_EXTRA_MULTIPLIER
+*/
