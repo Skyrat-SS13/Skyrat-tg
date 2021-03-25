@@ -28,9 +28,11 @@
 		errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
 		if(fexists(out_file))
 			stdout = file2text(out_file)
+			to_chat(world, stdout)
 			fdel(out_file)
 		if(fexists(err_file))
 			stderr = file2text(err_file)
+			to_chat(world, stderr)
 			fdel(err_file)
 		shelleo_ids[shelleo_id] = FALSE
 	else
