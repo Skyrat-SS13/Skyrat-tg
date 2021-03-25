@@ -42,7 +42,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	max_ammo = 17
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -83,7 +83,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	max_ammo = 33
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -142,7 +142,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b12mm
-	caliber = CALIBER_12MM
+	caliber = CALIBER_P12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
@@ -196,7 +196,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	max_ammo = 14
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -239,7 +239,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -277,7 +277,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -316,7 +316,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -354,7 +354,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	max_ammo = 10
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -403,7 +403,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -451,7 +451,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	max_ammo = 25
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -498,7 +498,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b6mm
-	caliber = "6mm"
+	caliber = CALIBER_P6MM
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
@@ -544,7 +544,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/b6mm
-	caliber = "6mm"
+	caliber = CALIBER_P6MM
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
@@ -587,7 +587,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -643,7 +643,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b12mm
-	caliber = CALIBER_12MM
+	caliber = CALIBER_P12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
@@ -689,7 +689,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -755,8 +755,8 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	caliber = CALIBER_P10MM
 	max_ammo = 8
 
 /obj/item/ammo_box/revolver/zeta
@@ -766,7 +766,7 @@
 	ammo_type = /obj/item/ammo_casing/b10mm
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 
 /////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
@@ -783,8 +783,8 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	caliber = CALIBER_P9MM
 	max_ammo = 8
 
 /obj/item/ammo_box/revolver/revolution
@@ -794,7 +794,7 @@
 	ammo_type = /obj/item/ammo_casing/b9mm
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun

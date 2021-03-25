@@ -10,7 +10,7 @@
 	desc = "A 6mm bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = "6mm"
+	caliber = CALIBER_P6MM
 	projectile_type = /obj/projectile/bullet/advanced/b6mm
 
 /obj/projectile/bullet/advanced/b6mm
@@ -23,7 +23,7 @@
 	desc = "A 6mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = "6mm"
+	caliber = CALIBER_P6MM
 	projectile_type = /obj/projectile/bullet/advanced/b6mm/rubber
 
 /obj/projectile/bullet/advanced/b6mm/rubber
@@ -44,7 +44,7 @@
 	desc = "A 6mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = "6mm"
+	caliber = CALIBER_P6MM
 	projectile_type = /obj/projectile/bullet/advanced/b6mm/ihdf
 
 /obj/projectile/bullet/advanced/b6mm/ihdf
@@ -62,7 +62,7 @@
 	desc = "A 9mm bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm
 
 /obj/projectile/bullet/advanced/b9mm
@@ -75,7 +75,7 @@
 	desc = "A 9mm hollowpoint bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/hp
 
 /obj/projectile/bullet/advanced/b9mm/hp
@@ -91,7 +91,7 @@
 	desc = "A 9mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/rubber
 
 /obj/projectile/bullet/advanced/b9mm/rubber
@@ -112,7 +112,7 @@
 	desc = "A 9mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = CALIBER_9MM
+	caliber = CALIBER_P9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/ihdf
 
 /obj/projectile/bullet/advanced/b9mm/ihdf
@@ -131,7 +131,7 @@
 	desc = "A 10mm bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	projectile_type = /obj/projectile/bullet/advanced/b10mm
 
 /obj/projectile/bullet/advanced/b10mm
@@ -144,7 +144,7 @@
 	desc = "A 10mm hollowpoint bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/hp
 
 /obj/projectile/bullet/advanced/b10mm/hp
@@ -160,7 +160,7 @@
 	desc = "A 10mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/rubber
 
 /obj/projectile/bullet/advanced/b10mm/rubber
@@ -181,7 +181,7 @@
 	desc = "A 10mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = CALIBER_10MM
+	caliber = CALIBER_P10MM
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/ihdf
 
 /obj/projectile/bullet/advanced/b10mm/ihdf
@@ -199,7 +199,7 @@
 	desc = "A 12mm bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = CALIBER_12MM
+	caliber = CALIBER_P12MM
 	projectile_type = /obj/projectile/bullet/advanced/b12mm
 
 /obj/projectile/bullet/advanced/b12mm
@@ -212,7 +212,7 @@
 	desc = "A 12mm hollowpoint bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
-	caliber = CALIBER_12MM
+	caliber = CALIBER_P12MM
 	projectile_type = /obj/projectile/bullet/advanced/b12mm/hp
 
 /obj/projectile/bullet/advanced/b12mm/hp
@@ -228,7 +228,7 @@
 	desc = "A 12mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = CALIBER_12MM
+	caliber = CALIBER_P12MM
 	projectile_type = /obj/projectile/bullet/advanced/b12mm/rubber
 
 /obj/projectile/bullet/advanced/b12mm/rubber
