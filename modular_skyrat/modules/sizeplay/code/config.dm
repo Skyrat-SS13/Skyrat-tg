@@ -33,7 +33,6 @@
 /datum/config_entry/number/body_size_slowdown_factor
 	integer = FALSE
 	config_entry_value = 4
-	max_val = 1
 	min_val = 0.1
 
 //For everything we want exempt from the sizeguns, stepping-on, picking up and so on.
