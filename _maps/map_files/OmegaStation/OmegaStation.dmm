@@ -5051,7 +5051,7 @@
 /area/engineering/atmos)
 "alw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer{
 	dir = 8
 	},
 /obj/machinery/camera{
@@ -6885,7 +6885,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "apQ" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "apR" = (
@@ -23200,7 +23200,7 @@
 /turf/open/floor/iron,
 /area/engineering/break_room)
 "bjU" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -25029,8 +25029,8 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 1
 	},
 /turf/open/floor/iron/grimy,
 /area/medical/psychology)
@@ -26142,7 +26142,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/thermomachine/heater{
+/obj/machinery/atmospherics/components/binary/thermomachine/heater{
 	dir = 8
 	},
 /turf/open/floor/iron,
@@ -27963,6 +27963,9 @@
 /obj/item/reagent_containers/dropper,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
 /turf/open/floor/iron/dark,
 /area/medical/chemistry)
 "fYx" = (
@@ -28901,6 +28904,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
+"hJA" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/maintenance/port)
 "hJR" = (
 /obj/structure/table,
 /obj/item/nanite_remote,
@@ -30515,6 +30524,13 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/holofloor/dark,
 /area/security/brig)
+"kjt" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "kkl" = (
 /obj/structure/table,
 /obj/item/clipboard,
@@ -31247,6 +31263,12 @@
 	dir = 4
 	},
 /area/security/prison)
+"lnJ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/main)
 "lpx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/structure/cable,
@@ -32211,6 +32233,9 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 6
+	},
 /turf/open/floor/engine,
 /area/engineering/main)
 "mEc" = (
@@ -32714,6 +32739,13 @@
 	icon_state = "wood-broken2"
 	},
 /area/maintenance/starboard/aft)
+"nmE" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/junction,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 9
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/main)
 "nnk" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/circuit,
@@ -34503,6 +34535,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
 "pNn" = (
@@ -35071,7 +35104,7 @@
 /turf/open/floor/iron/dark,
 /area/security/execution/education)
 "qzh" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -38118,7 +38151,7 @@
 /turf/open/floor/iron/dark,
 /area/tcommsat/server)
 "sMc" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -38574,7 +38607,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
+/obj/machinery/atmospherics/components/binary/thermomachine/heater/on{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -38596,7 +38629,7 @@
 /turf/open/floor/iron/dark,
 /area/engineering/main)
 "sNu" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -38660,6 +38693,9 @@
 	dir = 6
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/layer_manifold/visible{
+	dir = 4
+	},
 /turf/open/floor/engine,
 /area/engineering/main)
 "sNC" = (
@@ -38876,6 +38912,7 @@
 /area/medical/psychology)
 "sOu" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/plating,
 /area/medical/chemistry)
 "sOv" = (
@@ -39881,6 +39918,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/morgue)
+"ueR" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "ufP" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/food/meat/slab/monkey,
@@ -41138,7 +41182,7 @@
 /turf/open/floor/wood,
 /area/maintenance/port)
 "vUq" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -41552,7 +41596,7 @@
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/science/research)
 "wCx" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -68443,7 +68487,7 @@ bjH
 sKa
 sMq
 sNu
-bxz
+kjt
 xIY
 pml
 gAk
@@ -68700,7 +68744,7 @@ bjD
 sJA
 sMr
 sNv
-bxz
+ueR
 yhg
 pml
 gAk
@@ -68957,7 +69001,7 @@ bjD
 sKf
 sMv
 sNx
-bxz
+ueR
 xIY
 pml
 gAk
@@ -69214,7 +69258,7 @@ bta
 sKh
 sMw
 sNy
-aMA
+lnJ
 yhg
 pml
 gAk
@@ -69471,7 +69515,7 @@ sFX
 sKJ
 sMx
 mDx
-sPa
+nmE
 pml
 pml
 pml
@@ -69984,7 +70028,7 @@ sdL
 sGy
 sME
 sME
-sME
+hJA
 sME
 sME
 sME
@@ -75641,7 +75685,7 @@ poY
 poY
 uxJ
 poY
-poY
+ses
 poY
 pVz
 cif
