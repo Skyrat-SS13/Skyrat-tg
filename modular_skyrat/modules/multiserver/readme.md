@@ -17,7 +17,7 @@ It isn't coded in an idiotproof way, so make sure your configs and db are up to 
 - `**code/controllers/subsystem/blackbox.dm**` - added a column with server name in death logs and population statistics
 - `**code/controllers/subsystem/dbcore.dm**` - added a column with server name in round logs
 - `**code/modules/admin/IsBanned.dm**`, `**code/modules/admin/sql_ban_system.dm**` - a column with server name and tracking whether the bans are global, also altered the banning panel to allow global/local ban choices
-- `**code/modules/admin/sql_message_system.dm**` - notes are cross-server, but now they track which server they were appleid on
+- `**code/modules/admin/sql_message_system.dm**` - notes are cross-server, but now they track which server they were applied on
 - `**code/modules/client/client_procs.dm**` - added a column with server name in server login logs
 
 
