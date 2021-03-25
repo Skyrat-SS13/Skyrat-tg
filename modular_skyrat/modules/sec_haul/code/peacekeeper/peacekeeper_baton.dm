@@ -1,5 +1,5 @@
 /obj/item/melee/classic_baton/peacekeeper
-	name = "peacekeeper baton"
+	name = "nightstick"
 	desc = "A metal-plastic bat, looks like it would REALLY hurt."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	icon_state = "peacekeeper_baton"
