@@ -26,6 +26,7 @@
 		out_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_OUT]"
 		err_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_ERR]"
 		errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
+		to_chat(world, file2text(errorcode))
 		if(fexists(out_file))
 			stdout = file2text(out_file)
 			to_chat(world, stdout)
