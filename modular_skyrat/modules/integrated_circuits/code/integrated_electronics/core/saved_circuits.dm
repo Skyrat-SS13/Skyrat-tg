@@ -226,12 +226,14 @@
 // The following parameters area calculated during validation and added to the returned save list:
 // "requires_upgrades", "unsupported_circuit", "iron_cost", "complexity", "max_complexity", "used_space", "max_space"
 /datum/controller/subsystem/processing/circuit/proc/validate_electronic_assembly(program)
-	//Check for bad inputs
-	program = bad_regex.Replace(program, "")
+	// This regex was causing data to be parsed incorrectly, resulting in a situation where you can build a valid circuit
+	// in the server, save it and reimport it, and find some values not as they were supposed to be. Mostly interferes
+	// with special characters which are already safely handled to begin with.
+	//program = bad_regex.Replace(program, "")
 
 	var/list/blocks = json_decode(program)
 	if(!blocks)
-		return
+		return "The program was empty or caused a parsing error."
 
 	var/error
 
@@ -259,8 +261,17 @@
 	blocks["used_space"] = 0
 	blocks["max_space"] = assembly.max_components
 
-	// Start keeping track of total iron cost
-	blocks["iron_cost"] = assembly.materials
+	// Start keeping track of total material costs
+	blocks["material_costs"] = list()
+	for(var/mat in assembly.custom_materials)
+		var/datum/material/req_mat = mat
+		var/amount_required = assembly.custom_materials[mat]
+		if(!istype(req_mat))
+			req_mat = GET_MATERIAL_REF(req_mat)
+		if(req_mat in blocks["material_costs"])
+			blocks["material_costs"][req_mat] += amount_required
+		else
+			blocks["material_costs"][req_mat] = amount_required
 
 
 	// Block 2. Components.
@@ -291,7 +302,15 @@
 		// Update estimated assembly complexity, taken space and material cost
 		blocks["complexity"] += component.complexity
 		blocks["used_space"] += component.size
-		blocks["iron_cost"] += component.materials
+		for(var/mat in component.custom_materials)
+			var/datum/material/req_mat = mat
+			var/amount_required = component.custom_materials[mat]
+			if(!istype(req_mat))
+				req_mat = GET_MATERIAL_REF(req_mat)
+			if(req_mat in blocks["material_costs"])
+				blocks["material_costs"][req_mat] += amount_required
+			else
+				blocks["material_costs"][req_mat] = amount_required
 
 		// Check if the assembly requires printer upgrades
 		if(!(component.spawn_flags & IC_SPAWN_DEFAULT))
