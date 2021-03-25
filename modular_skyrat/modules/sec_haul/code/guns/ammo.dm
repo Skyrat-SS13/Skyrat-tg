@@ -318,6 +318,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	var/round_type = AMMO_TYPE_LETHAL
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
+	start_empty = TRUE //SOmething strange going on with refills.
 
 /obj/item/ammo_box/revolver/AltClick(mob/user)
 	. = ..()

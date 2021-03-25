@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Security Officer",
 	"Security Medic",
 	"Security Sergeant",
-	"Junior Security Officer",
+	"Civil Disputes Officer",
 	"Blueshield")) //SKYRAT EDIT - LIST AMENDED
 
 /// These aren't defacto jobs, but are the special departmental variants for sec officers.

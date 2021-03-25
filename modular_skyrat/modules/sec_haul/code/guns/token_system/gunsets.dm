@@ -163,10 +163,10 @@
 /obj/item/storage/box/gunset/zeta/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/zeta(src)
-	new /obj/item/ammo_box/revolver/zeta/rubber(src)
-	new /obj/item/ammo_box/revolver/zeta/rubber(src)
-	new /obj/item/ammo_box/revolver/zeta/rubber(src)
-	new /obj/item/ammo_box/revolver/zeta/rubber(src)
+	new /obj/item/ammo_box/revolver/zeta(src) //These start empty.
+	new /obj/item/ammo_box/revolver/zeta(src)
+	new /obj/item/ammo_box/revolver/zeta(src)
+	new /obj/item/ammo_box/advanced/b10mm/rubber(src)
 
 //REVOLUTION
 /obj/item/storage/box/gunset/revolution
@@ -175,10 +175,11 @@
 /obj/item/storage/box/gunset/revolution/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/revolution(src)
-	new /obj/item/ammo_box/revolver/revolution/rubber(src)
-	new /obj/item/ammo_box/revolver/revolution/rubber(src)
-	new /obj/item/ammo_box/revolver/revolution/rubber(src)
-	new /obj/item/ammo_box/revolver/revolution/rubber(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/advanced/b9mm/rubber(src)
 
 
 /////////////////

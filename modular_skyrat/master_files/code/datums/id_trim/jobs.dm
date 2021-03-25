@@ -114,7 +114,7 @@
 
 
 /datum/id_trim/job/junior_officer
-	assignment = "Junior Security Officer"
+	assignment = "Civil Disputes Officer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_juniorofficer"
 	full_access = list(ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MECH_SECURITY, ACCESS_MAINT_TUNNELS,

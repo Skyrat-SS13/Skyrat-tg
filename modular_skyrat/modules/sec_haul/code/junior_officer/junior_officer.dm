@@ -1,5 +1,5 @@
 /datum/job/junior_officer
-	title = "Junior Security Officer"
+	title = "Civil Disputes Officer"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
 	faction = "Station"
@@ -26,7 +26,7 @@
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
 /datum/outfit/job/junior_officer
-	name = "Junior Security Officer"
+	name = "Civil Disputes Officer"
 	jobtype = /datum/job/junior_officer
 
 	belt = /obj/item/pda/security
@@ -62,5 +62,5 @@
 		ADD_TRAIT(H, TRAIT_CLUMSY, ROUNDSTART_TRAIT)
 
 /obj/effect/landmark/start/junior_officer
-	name = "Junior Security officer"
+	name = "Civil Disputes Officer"
 	icon_state = "Security Officer"

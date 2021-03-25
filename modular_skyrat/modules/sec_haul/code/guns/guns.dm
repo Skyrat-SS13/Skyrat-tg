@@ -767,18 +767,6 @@
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
-/obj/item/ammo_box/revolver/zeta/hp
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/revolver/zeta/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/revolver/zeta/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
-	round_type = AMMO_TYPE_IHDF
-
 /////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
 	name = "\improper Armadyne Revolution-8 'Spurmaster'"
@@ -805,18 +793,6 @@
 	ammo_type = /obj/item/ammo_casing/b9mm
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-
-/obj/item/ammo_box/revolver/revolution/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/revolver/revolution/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/revolver/revolution/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-	round_type = AMMO_TYPE_IHDF
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun
