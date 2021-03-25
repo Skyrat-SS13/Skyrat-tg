@@ -78,12 +78,14 @@
 	. = ..()
 	INVOKE_ASYNC(src, .proc/latetoggle)
 
-/obj/machinery/door/firedoor/attack_hand(mob/user, list/modifiers)
+/obj/machinery/door/firedoor/attack_hand(mob/living/user, list/modifiers) //SKYRAT EDIT - ORIGINAL "mob/user" w/o 'living'
 	. = ..()
 	if(.)
 		return
 	if(operating || !density)
 		return
+	if(!user.combat_mode && try_manual_override(user)) // SKYRAT EDIT - MANUAL FIRELOCKS
+		return // SKYRAT EDIT - MANUAL FIRELOCKS
 	user.changeNext_move(CLICK_CD_MELEE)
 
 	user.visible_message("<span class='notice'>[user] bangs on \the [src].</span>", \
@@ -132,6 +134,7 @@
 
 /obj/machinery/door/firedoor/try_to_crowbar(obj/item/I, mob/user)
 	if(welded || operating)
+		to_chat(user, "<span class='warning'>[src] refuses to budge!</span>") // SKYRAT EDIT ADDITION - Makes flavour text apparent, manual override
 		return
 
 	if(density)
@@ -210,7 +213,15 @@
 		if(FIREDOOR_CLOSED)
 			nextstate = null
 			close()
-
+// SKYRAT EDIT BEGIN - MANUAL FIRELOCK OVERRIDE
+/obj/machinery/door/proc/try_manual_override(mob/user)
+	if(density)
+		to_chat(user, "<span class='notice'>You begin working the manual override mechanism...</span>")
+		if(do_after(user, 15 SECONDS, target = src))
+			try_to_crowbar(null, user)
+			return TRUE
+	return FALSE
+// SKYRAT EDIT END - MANUAL FIRELOCK OVERRIDE
 /obj/machinery/door/firedoor/border_only
 	icon = 'icons/obj/doors/edge_Doorfire.dmi'
 	can_crush = FALSE
