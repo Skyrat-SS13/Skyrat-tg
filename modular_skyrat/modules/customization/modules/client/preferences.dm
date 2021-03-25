@@ -1093,7 +1093,7 @@ GLOBAL_LIST_INIT(food, list(
 			//cumface pref
 			dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
- *///Rogue Station Removal End
+*///Rogue Station Removal End
 
 			if(user.client)
 				if(unlock_content)
