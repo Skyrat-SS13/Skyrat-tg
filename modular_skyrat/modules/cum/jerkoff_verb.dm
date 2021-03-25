@@ -1,4 +1,4 @@
-/datum/emote/living/cum
+/* /datum/emote/living/cum
 	key = "cum"
 	key_third_person = "cums"
 	cooldown = 30 SECONDS
@@ -114,3 +114,4 @@
 			if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
 				target.icon = 'modular_skyrat/modules/cum/cum.dmi'
 			qdel(src)
+ */

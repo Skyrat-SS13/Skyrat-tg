@@ -1,4 +1,4 @@
-/datum/reagent/cum
+/* /datum/reagent/cum
 	name = "Cum"
 	description = "A fluid containing sperm that is secretated by the sexual organs of most species."
 	color = "#fff9f1"
@@ -23,3 +23,4 @@
 				else
 					exposed_mob.AddComponent(/datum/component/cumfaced, src)
 		qdel(src)
+ */
