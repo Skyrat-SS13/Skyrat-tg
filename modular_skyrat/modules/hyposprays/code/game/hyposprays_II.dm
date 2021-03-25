@@ -64,6 +64,7 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/hypospray/mkii/update_icon_state()
+	. = ..()
 	icon_state = "[initial(icon_state)][vial ? "" : "-e"]"
 
 /obj/item/hypospray/mkii/examine(mob/user)

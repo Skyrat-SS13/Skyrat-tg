@@ -114,7 +114,7 @@
 /obj/item/gun/energy/kinetic_accelerator/proc/empty()
 	if(cell)
 		cell.use(cell.charge)
-	update_icon()
+	update_appearance()
 
 /obj/item/gun/energy/kinetic_accelerator/proc/attempt_reload(recharge_time)
 	if(!cell)
@@ -147,7 +147,7 @@
 		playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, TRUE)
 	else
 		to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
-	update_icon()
+	update_appearance()
 	overheat = FALSE
 
 /obj/item/gun/energy/kinetic_accelerator/update_overlays()
@@ -166,7 +166,7 @@
 	..()
 	if(loc && istype(loc, /obj/item/gun/energy/kinetic_accelerator))
 		var/obj/item/gun/energy/kinetic_accelerator/KA = loc
-		KA.modify_projectile(BB)
+		KA.modify_projectile(loaded_projectile)
 
 //Projectiles
 /obj/projectile/kinetic
@@ -550,7 +550,7 @@
 
 //Cosmetic
 
-/obj/item/borg/upgrade/modkit/chassis_mod
+/obj/item/borg/upgrade/modkit/chassis_mod /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
 	name = "super chassis"
 	desc = "Makes your KA yellow. All the fun of having a more powerful KA without actually having a more powerful KA."
 	cost = 0
@@ -569,7 +569,7 @@
 	KA.name = initial(KA.name)
 	..()
 
-/obj/item/borg/upgrade/modkit/chassis_mod/orange
+/obj/item/borg/upgrade/modkit/chassis_mod/orange /////ICON OVERRIDE IN modular_skyrat/modules/aesthetics/guns/icons/energy.dmi
 	name = "hyper chassis"
 	desc = "Makes your KA orange. All the fun of having explosive blasts without actually having explosive blasts."
 	chassis_icon = "kineticgun_h"

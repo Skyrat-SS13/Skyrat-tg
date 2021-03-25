@@ -30,7 +30,9 @@
 					/obj/item/clothing/under/rank/security/officer/skirt = 3,
 					/obj/item/clothing/under/rank/security/officer/grey = 3,
 					/obj/item/clothing/under/pants/khaki = 3,
-					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
+					/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
+					/obj/item/clothing/under/utility/sec/old = 3,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/suit/toggle/jacket/sec/old = 3)	//SKYRAT EDIT ADDITION END
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
 					/obj/item/clothing/head/beret/sec/navyofficer = 3)
@@ -52,6 +54,7 @@
 					/obj/item/storage/backpack/medic = 4,
 					/obj/item/storage/backpack/satchel/med = 4,
 					/obj/item/clothing/suit/hooded/wintercoat/medical = 4,
+					/obj/item/clothing/suit/hooded/wintercoat/medical/paramedic = 4,
 					/obj/item/clothing/under/rank/medical/paramedic = 4,
 					/obj/item/clothing/under/rank/medical/paramedic/skirt = 4,
 					/obj/item/clothing/under/rank/medical/doctor/nurse = 4,
@@ -61,12 +64,17 @@
 					/obj/item/clothing/under/rank/medical/doctor/green = 4,
 					/obj/item/clothing/under/rank/medical/doctor/purple = 4,
 					/obj/item/clothing/under/rank/medical/doctor = 4,
+					/obj/item/clothing/under/utility/med = 4,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/suit/toggle/jacket/med = 4,
+					/obj/item/clothing/under/utility/haz_white = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/toggle/labcoat = 4,
 					/obj/item/clothing/suit/toggle/labcoat/paramedic = 4,
 					/obj/item/clothing/shoes/sneakers/white = 4,
 					/obj/item/clothing/head/soft/paramedic = 4,
+					/obj/item/clothing/head/beret/job/med = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/apron/surgical = 4,
-					/obj/item/clothing/mask/surgical = 4)
+					/obj/item/clothing/mask/surgical = 4,
+					/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 4)	//SKYRAT EDIT ADDITION
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
 	payment_department = ACCOUNT_MED
 
@@ -86,9 +94,14 @@
 					/obj/item/clothing/suit/hooded/wintercoat/engineering = 3,
 					/obj/item/clothing/under/rank/engineering/engineer = 3,
 					/obj/item/clothing/under/rank/engineering/engineer/skirt = 3,
+					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/toggle/jacket/engi = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
+					/obj/item/clothing/under/utility/haz_green = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/shoes/workboots = 3,
+					/obj/item/clothing/head/beret/job/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/hardhat = 3,
 					/obj/item/clothing/head/hardhat/weldhat = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
@@ -111,6 +124,9 @@
 					/obj/item/clothing/suit/hooded/wintercoat/engineering/atmos = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician/skirt = 3,
+					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/shoes/sneakers/black = 3,
+					/obj/item/clothing/head/beret/job/atmos = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/shoes/sneakers/black = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/atmos_wardrobe
 	payment_department = ACCOUNT_ENG
@@ -128,6 +144,9 @@
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/cargo = 3,
 					/obj/item/clothing/under/rank/cargo/tech = 3,
 					/obj/item/clothing/under/rank/cargo/tech/skirt = 3,
+					/obj/item/clothing/under/misc/cargo_long = 3,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/under/utility/cargo = 3,
+					/obj/item/clothing/suit/toggle/jacket/supply = 3,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/shoes/sneakers/black = 3,
 					/obj/item/clothing/gloves/fingerless = 3,
 					/obj/item/clothing/head/soft = 3,
@@ -147,10 +166,13 @@
 	products = list(/obj/item/clothing/glasses/hud/diagnostic = 2,
 					/obj/item/clothing/under/rank/rnd/roboticist = 2,
 					/obj/item/clothing/under/rank/rnd/roboticist/skirt = 2,
+					/obj/item/clothing/under/utility/robo_sleek = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/roboticist = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/science/robotics = 3,
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
+					/obj/item/clothing/head/beret/job/sci/robo = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/mask/bandana/skull = 2)
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2,
 					/obj/item/organ/tongue/robot = 2)
@@ -171,9 +193,12 @@
 					/obj/item/storage/backpack/satchel/tox = 3,
 					/obj/item/storage/backpack/duffelbag/toxins = 3,
 					/obj/item/clothing/head/beret/science = 3,
+					/obj/item/clothing/head/beret/job/sci = 3,	//SKYRAT EDIT ADDITION (alt-sprite)
 					/obj/item/clothing/suit/hooded/wintercoat/science = 3,
 					/obj/item/clothing/under/rank/rnd/scientist = 3,
 					/obj/item/clothing/under/rank/rnd/scientist/skirt = 3,
+					/obj/item/clothing/under/utility/sci = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/toggle/jacket/sci = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/science = 3,
 					/obj/item/clothing/shoes/sneakers/white = 3,
 					/obj/item/radio/headset/headset_sci = 3,
@@ -219,9 +244,12 @@
 					/obj/item/pen/fourcolor = 1,
 					/obj/item/pen/fountain = 2,
 					/obj/item/clothing/accessory/pocketprotector = 2,
-					/obj/item/clothing/under/rank/civilian/curator/skirt = 2,
-					/obj/item/clothing/under/rank/captain/suit/skirt = 2,
-					/obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt = 2,
+					/obj/item/clothing/under/rank/civilian/curator = 1,
+					/obj/item/clothing/under/rank/civilian/curator/skirt = 1,
+					/obj/item/clothing/under/rank/captain/suit = 1,
+					/obj/item/clothing/under/rank/captain/suit/skirt = 1,
+					/obj/item/clothing/under/rank/civilian/head_of_personnel/suit = 1,
+					/obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt = 1,
 					/obj/item/storage/backpack/satchel/explorer = 1,
 					/obj/item/clothing/glasses/regular = 2,
 					/obj/item/clothing/glasses/regular/jamjar = 1,
@@ -247,6 +275,7 @@
 					/obj/item/clothing/suit/apron/purple_bartender = 2,
 					/obj/item/clothing/head/soft/black = 2,
 					/obj/item/clothing/shoes/sneakers/black = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/bartender = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/reagent_containers/glass/rag = 2,
 					/obj/item/storage/box/beanbag = 1,
 					/obj/item/clothing/suit/armor/vest/alt = 1,
@@ -298,6 +327,7 @@
 	products = list(/obj/item/clothing/under/rank/civilian/janitor = 2,
 					/obj/item/cartridge/janitor = 2,
 					/obj/item/clothing/under/rank/civilian/janitor/skirt = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/janitor = 2,
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/head/soft/purple = 2,
 					/obj/item/pushbroom = 2,
@@ -403,10 +433,13 @@
 					/obj/item/clothing/under/rank/medical/chemist/skirt = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
+					/obj/item/clothing/head/beret/job/med/chem = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/hooded/wintercoat/medical/chemistry = 2,
 					/obj/item/storage/backpack/chemistry = 2,
 					/obj/item/storage/backpack/satchel/chem = 2,
 					/obj/item/storage/backpack/duffelbag/chemistry = 2,
-					/obj/item/storage/bag/chemistry = 2)
+					/obj/item/storage/bag/chemistry = 2,
+					/obj/item/ph_booklet = 3)
 	contraband = list(/obj/item/reagent_containers/spray/syndicate = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/chem_wardrobe
 	payment_department = ACCOUNT_MED
@@ -423,6 +456,7 @@
 					/obj/item/clothing/under/rank/rnd/geneticist/skirt = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/genetics = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/science/genetics = 2,
 					/obj/item/storage/backpack/genetics = 2,
 					/obj/item/storage/backpack/satchel/gen = 2,
 					/obj/item/storage/backpack/duffelbag/genetics = 2)
@@ -441,6 +475,8 @@
 					/obj/item/clothing/under/rank/medical/virologist/skirt = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/virologist = 2,
+					/obj/item/clothing/head/beret/job/med/viro = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 2,
 					/obj/item/clothing/mask/surgical = 2,
 					/obj/item/storage/backpack/virology = 2,
 					/obj/item/storage/backpack/satchel/vir = 2,
@@ -463,10 +499,16 @@
 					/obj/item/clothing/head/fedora/det_hat = 2,
 					/obj/item/clothing/under/rank/security/detective/grey = 2,
 					/obj/item/clothing/under/rank/security/detective/grey/skirt = 2,
+					/obj/item/clothing/under/rank/security/detective/undersuit = 2, // SKYRAT EDIT ADD
+					/obj/item/clothing/suit/det_bomber = 2, // SKYRAT EDIT ADD
+					/obj/item/clothing/under/costume/cybersleek = 2,	//SKYRAT EDIT ADDITION START - Cyberpunk P.I. Outfit
+					/obj/item/clothing/under/costume/cybersleek/long = 2,
+					/obj/item/clothing/head/fedora/det_hat/cybergoggles = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/accessory/waistcoat = 2,
 					/obj/item/clothing/shoes/laceup = 2,
 					/obj/item/clothing/suit/det_suit/grey = 1,
 					/obj/item/clothing/suit/det_suit/noir = 1,
+					/obj/item/clothing/suit/toggle/labcoat/highvis = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/fedora = 2,
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,

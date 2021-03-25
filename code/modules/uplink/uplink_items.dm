@@ -30,8 +30,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			sale_items += I
 	if(allow_sales)
 		var/datum/team/nuclear/nuclear_team
-		if (gamemode == /datum/game_mode/nuclear) 					// uplink code kind of needs a redesign
-			nuclear_team = locate() in GLOB.antagonist_teams	// the team discounts could be in a GLOB with this design but it would make sense for them to be team specific...
+		if (gamemode == /datum/game_mode/nuclear) // uplink code kind of needs a redesign
+			nuclear_team = locate() in GLOB.antagonist_teams // the team discounts could be in a GLOB with this design but it would make sense for them to be team specific...
 		if (!nuclear_team)
 			create_uplink_sales(3, "Discounted Gear", 1, sale_items, filtered_uplink_items)
 		else
@@ -239,9 +239,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Super Surplus Crate"
 	desc = "A dusty SUPER-SIZED from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
 			but you never know. Contents are sorted to always be worth 125 TC."
-	cost = 40
+	cost = 50 //SKYRAT EDIT CHANGE - ORIGINAL: 40
 	player_minimum = 40
-	starting_crate_value = 125
+	starting_crate_value = 145 //SKYRAT EDIT CHANGE - ORIGINAL: 125
 
 /datum/uplink_item/bundles_tc/surplus/purchase(mob/user, datum/component/uplink/U)
 	var/list/uplink_items = get_uplink_items(SSticker && SSticker.mode? SSticker.mode : null, FALSE)
@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
 			against other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
-	cost = 16
+	cost = 5 //SKYRAT EDIT CHANGE: ORIGINAL: 16
 	surplus = 20
 	include_modes = list(/datum/game_mode/nuclear)
 
@@ -550,7 +550,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Toy Pistol with Riot Darts"
 	desc = "An innocent-looking toy pistol designed to fire foam darts. Comes loaded with riot-grade \
 			darts effective at incapacitating a target."
-	item = /obj/item/gun/ballistic/automatic/toy/pistol/riot
+	item = /obj/item/gun/ballistic/automatic/pistol/toy/riot
 	cost = 2
 	surplus = 10
 
@@ -625,7 +625,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
 			perfectly aerodynamic (and potentially lethal) paper airplanes."
 	item = /obj/item/storage/box/syndie_kit/origami_bundle
-	cost = 14
+	cost = 12 //SKYRAT EDIT: Original value (14)
 	surplus = 0
 	exclude_modes = list(/datum/game_mode/nuclear) //clown ops intentionally left in, because that seems like some s-tier shenanigans.
 
@@ -1186,12 +1186,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/stealthy_tools/agent_card
 	name = "Agent Identification Card"
-	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and can copy access \
-			from other identification cards. The access is cumulative, so scanning one card does not erase the \
-			access gained from another. In addition, they can be forged to display a new assignment and name. \
+	desc = "Agent cards prevent artificial intelligences from tracking the wearer, and hold up to 5 wildcards \
+			from other identification cards. In addition, they can be forged to display a new assignment, name and trim. \
 			This can be done an unlimited amount of times. Some Syndicate areas and devices can only be accessed \
 			with these cards."
-	item = /obj/item/card/id/syndicate
+	item = /obj/item/card/id/advanced/chameleon
 	cost = 2
 
 /datum/uplink_item/stealthy_tools/ai_detector
@@ -1211,21 +1210,13 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 2
 	exclude_modes = list(/datum/game_mode/nuclear) //clown ops are allowed to buy this kit, since it's basically a costume
 
-/datum/uplink_item/stealthy_tools/chameleon_skillchip
-	name = "Chameleon Skillchip"
-	desc = "A highly advanced skillchip that contains data on all available skillchips. \
-			This skillchip only takes up a single skillchip slot in the user's brain. \
-			Comes with a single-use Syndicate autosurgeon for immediate self-application."
-	item = /obj/item/autosurgeon/skillchip/syndicate/chameleon_chip
-	cost = 4
-	exclude_modes = list(/datum/game_mode/nuclear)
-
 /datum/uplink_item/stealthy_tools/chameleon_proj
 	name = "Chameleon Projector"
 	desc = "Projects an image across a user, disguising them as an object scanned with it, as long as they don't \
 			move the projector from their hand. Disguised users move slowly, and projectiles pass over them."
 	item = /obj/item/chameleon
 	cost = 7
+
 
 /datum/uplink_item/stealthy_tools/codespeak_manual
 	name = "Codespeak Manual"
@@ -1334,16 +1325,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 8
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 	exclude_modes = list()
-
-//SKYRAT EDIT: ADDITION BEGIN
-/datum/uplink_item/suits/hardsuit/elite2
-	name = "Elite Syndicate Hardsuit"
-	desc = "An upgraded, elite version of the Syndicate hardsuit. It features fireproofing, and also \
-			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
-	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
-	cost = 14
-	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //It's exactly same as the one that costs 8 TC for nukies, so they have no reason to buy it for more.
-///SKYRAT EDIT: ADDITION END
 
 /datum/uplink_item/suits/hardsuit/shielded
 	name = "Shielded Syndicate Hardsuit"
@@ -1527,6 +1508,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
 	cost = 18 //SKYRAT EDIT: Original value (10)
+	player_minimum = 25
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
@@ -1552,7 +1534,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			and other supplies helpful for a field medic."
 	item = /obj/item/storage/firstaid/tactical
 	cost = 4
-	//include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops) //SKYRAT EDIT: Removal
+	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 
 /datum/uplink_item/device_tools/soap
 	name = "Syndicate Soap"
@@ -1785,7 +1767,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			blast wave \"projectile\". Aspiring scientists may find this highly useful, as forcing the pressure shockwave into a narrow angle seems to be able to bypass whatever quirk of physics \
 			disallows explosive ranges above a certain distance, allowing for the device to use the theoretical yield of a transfer valve bomb, instead of the factual yield. It's simple design makes it easy to conceal."
 	item = /obj/item/gun/blastcannon
-	cost = 14							//High cost because of the potential for extreme damage in the hands of a skilled scientist.
+	cost = 14 //High cost because of the potential for extreme damage in the hands of a skilled scientist.
 	restricted_roles = list("Research Director", "Scientist")
 */ // SKYRAT EDIT - REMOVAL END
 
@@ -1868,6 +1850,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
 
+//SKYRAT EDIT REMOVAL START
+/*
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -1878,6 +1862,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 20
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/role_restricted/explosive_hot_potato
 	name = "Exploding Hot Potato"
@@ -1980,10 +1966,10 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/role_restricted/ocd_device
 	name = "Organic Resources Disturbance Inducer"
 	desc = "A device that raises hell in organic resources indirectly. Single use."
-	cost = 5 //SKYRAT EDIT: Original Value: (2)
-	limited_stock = 3 //SKYRAT EDIT: Original Value: (1)
+	cost = 2
+	limited_stock = 1
 	item = /obj/item/devices/ocd_device
-	//restricted_roles = list("Head of Personnel", "Quartermaster") //SKYRAT EDIT: Removal
+	restricted_roles = list("Head of Personnel", "Quartermaster")
 
 /datum/uplink_item/role_restricted/meathook
 	name = "Butcher's Meat Hook"
@@ -2078,4 +2064,3 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 1
 	include_modes = list(/datum/game_mode/nuclear/clown_ops)
 	illegal_tech = FALSE
-

@@ -36,7 +36,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 /obj/item/ammo_casing/b6mm/ihdf
@@ -51,6 +51,7 @@
 	name = "6mm ihdf bullet"
 	icon_state = "bullet_i"
 	damage = 15
+	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	damage_type = STAMINA
 
 ///////////////////////////9mm
@@ -103,7 +104,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 /obj/item/ammo_casing/b9mm/ihdf
@@ -119,6 +120,7 @@
 	icon_state = "bullet_i"
 	damage = 25
 	damage_type = STAMINA
+	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
 
 ///////////////////////////10mm
@@ -171,7 +173,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 /obj/item/ammo_casing/b10mm/ihdf
@@ -187,7 +189,7 @@
 	icon_state = "bullet_i"
 	damage = 30
 	damage_type = STAMINA
-
+	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
 //////////////////12mm
 //RUBBER | LETHAL | HP
@@ -239,7 +241,7 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.8
 	shrapnel_type = null
-	sharpness = SHARP_NONE
+	sharpness = NONE
 	embedding = null
 
 
@@ -252,8 +254,9 @@
 /obj/projectile/bullet/advanced/b577
 	name = "577 bullet"
 	damage = 40
-	wound_bonus = 10
-	bare_wound_bonus = 15
+	wound_bonus = 15
+	bare_wound_bonus = 30
+	dismemberment = 15
 
 //SMARTGUN
 /obj/item/ammo_casing/smartgun

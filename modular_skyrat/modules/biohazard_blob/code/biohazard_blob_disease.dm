@@ -58,7 +58,7 @@
 	name = "Cordycep bacillus microbes"
 	description = "Active fungal spores."
 	color = "#92D17D"
-	can_synth = FALSE
+	chemical_flags = NONE
 	taste_description = "slime"
 	penetrates_skin = NONE
 

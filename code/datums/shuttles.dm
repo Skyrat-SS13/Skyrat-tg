@@ -61,7 +61,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/list/turfs = block(	locate(.[MAP_MINX], .[MAP_MINY], .[MAP_MINZ]),
+	var/list/turfs = block( locate(.[MAP_MINX], .[MAP_MINY], .[MAP_MINZ]),
 							locate(.[MAP_MAXX], .[MAP_MAXY], .[MAP_MAXZ]))
 	for(var/i in 1 to turfs.len)
 		var/turf/place = turfs[i]
@@ -234,6 +234,7 @@
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
 	credit_cost = CARGO_CRATE_VALUE * 250
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
+	can_be_bought = FALSE //SKYRAT EDIT: Addition
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
@@ -340,6 +341,12 @@
 	name = "Ministation emergency shuttle"
 	credit_cost = CARGO_CRATE_VALUE * 2
 	description = "Despite its namesake, this shuttle is actually only slightly smaller than standard, and still complete with a brig and medbay."
+
+/datum/map_template/shuttle/emergency/tram
+	suffix = "tram"
+	name = "Tram Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 4
+	description = "A train but in space, choo choo!"
 
 /datum/map_template/shuttle/emergency/scrapheap
 	suffix = "scrapheap"
@@ -497,6 +504,10 @@
 	suffix = "donut"
 	name = "NT Long-Distance Bluespace Jumper"
 
+/datum/map_template/shuttle/whiteship/tram
+	suffix = "tram"
+	name = "NT Long-Distance Bluespace Freighter"
+
 /datum/map_template/shuttle/whiteship/delta
 	suffix = "delta"
 	name = "NT Frigate"
@@ -647,6 +658,14 @@
 /datum/map_template/shuttle/pirate/default
 	suffix = "default"
 	name = "pirate ship (Default)"
+
+/datum/map_template/shuttle/pirate/silverscale
+	suffix = "silverscale"
+	name = "pirate ship (Silver Scales)"
+
+/datum/map_template/shuttle/pirate/dutchman
+	suffix = "dutchman"
+	name = "pirate ship (Flying Dutchman)"
 
 /datum/map_template/shuttle/hunter/space_cop
 	suffix = "space_cop"

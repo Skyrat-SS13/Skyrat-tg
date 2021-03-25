@@ -118,8 +118,8 @@
 
 	var/datum/gas_mixture/environment = loc.return_air()
 
-	var/t =	"<span class='notice'>Coordinates: [x],[y] </span>\n"
-	t +=	"<span class='danger'>Temperature: [environment.temperature] </span>\n"
+	var/t = "<span class='notice'>Coordinates: [x],[y] </span>\n"
+	t += "<span class='danger'>Temperature: [environment.temperature] </span>\n"
 	for(var/id in environment.gases)
 		var/gas = environment.gases[id]
 		if(gas[MOLES])
@@ -544,7 +544,7 @@
  *
  * Note that if either party has their face obscured, the other won't get the notice about the eye contact
  * Also note that examine_more() doesn't proc this or extend the timer, just because it's simpler this way and doesn't lose much.
- *	The nice part about relying on examining is that we don't bother checking visibility, because we already know they were both visible to each other within the last second, and the one who triggers it is currently seeing them
+ * The nice part about relying on examining is that we don't bother checking visibility, because we already know they were both visible to each other within the last second, and the one who triggers it is currently seeing them
  */
 /mob/proc/handle_eye_contact(mob/living/examined_mob)
 	return
@@ -589,6 +589,7 @@
 
 	point_at(A)
 
+	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
 	return TRUE
 
 /**
@@ -603,7 +604,7 @@
 
 ///Can this mob resist (default FALSE)
 /mob/proc/can_resist()
-	return FALSE		//overridden in living.dm
+	return FALSE //overridden in living.dm
 
 ///Spin this mob around it's central axis
 /mob/proc/spin(spintime, speed)
@@ -630,11 +631,11 @@
 
 ///Update the pulling hud icon
 /mob/proc/update_pull_hud_icon()
-	hud_used?.pull_icon?.update_icon()
+	hud_used?.pull_icon?.update_appearance()
 
 ///Update the resting hud icon
 /mob/proc/update_rest_hud_icon()
-	hud_used?.rest_icon?.update_icon()
+	hud_used?.rest_icon?.update_appearance()
 
 /**
  * Verb to activate the object in your held hand
@@ -709,6 +710,11 @@
 	if ((stat != DEAD || !( SSticker )))
 		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
 		return
+
+	if(ckey)
+		if(is_banned_from(ckey, BAN_RESPAWN))
+			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
+			return
 
 	log_game("[key_name(usr)] used abandon mob.")
 
@@ -1138,6 +1144,7 @@
 			if(ID.registered_name == oldname)
 				ID.registered_name = newname
 				ID.update_label()
+				ID.update_icon()
 				if(ID.registered_account?.account_holder == oldname)
 					ID.registered_account.account_holder = newname
 				if(!search_pda)
@@ -1173,19 +1180,17 @@
 
 ///Update the mouse pointer of the attached client in this mob
 /mob/proc/update_mouse_pointer()
-	if (!client)
+	if(!client)
 		return
 	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 	if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 		client.mouse_pointer_icon = examine_cursor_icon
-	else if (ismecha(loc))
-		var/obj/vehicle/sealed/mecha/M = loc
-		if(M.mouse_pointer)
-			client.mouse_pointer_icon = M.mouse_pointer
-	else if (istype(loc, /obj/vehicle/sealed))
+	if(istype(loc, /obj/vehicle/sealed))
 		var/obj/vehicle/sealed/E = loc
 		if(E.mouse_pointer)
 			client.mouse_pointer_icon = E.mouse_pointer
+	if(client.mouse_override_icon)
+		client.mouse_pointer_icon = client.mouse_override_icon
 
 
 ///This mob is abile to read books

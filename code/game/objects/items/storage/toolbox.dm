@@ -29,7 +29,7 @@
 			latches = "double_latch"
 			if(prob(1))
 				latches = "triple_latch"
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/toolbox/update_overlays()
 	. = ..()
@@ -150,12 +150,14 @@
 		new /obj/item/stack/cable_coil(src,MAXCOIL,pickedcolor)
 
 /obj/item/storage/toolbox/syndicate
-	name = "suspicious looking toolbox"
+	name = "tactical toolbox" //SKYRAT EDIT
 	icon_state = "syndicate"
 	inhand_icon_state = "toolbox_syndi"
 	force = 15
 	throwforce = 18
 	material_flags = NONE
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "A toolbox manufactured by the Syndicate containing extra tactical tools. Made of more robust materials than the average toolbox." // Skyrat edit
 
 /obj/item/storage/toolbox/syndicate/ComponentInitialize()
 	. = ..()
@@ -280,7 +282,7 @@
 
 //floorbot assembly
 /obj/item/storage/toolbox/attackby(obj/item/stack/tile/iron/T, mob/user, params)
-	var/list/allowed_toolbox = list(/obj/item/storage/toolbox/emergency,	//which toolboxes can be made into floorbots
+	var/list/allowed_toolbox = list(/obj/item/storage/toolbox/emergency, //which toolboxes can be made into floorbots
 							/obj/item/storage/toolbox/electrical,
 							/obj/item/storage/toolbox/mechanical,
 							/obj/item/storage/toolbox/artistic,
@@ -309,7 +311,7 @@
 			if(/obj/item/storage/toolbox/syndicate)
 				B.toolbox_color = "s"
 		user.put_in_hands(B)
-		B.update_icon()
+		B.update_appearance()
 		to_chat(user, "<span class='notice'>You add the tiles into the empty [name]. They protrude from the top.</span>")
 		qdel(src)
 	else

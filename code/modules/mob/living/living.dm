@@ -241,13 +241,21 @@
 	if((AM.move_resist * MOVE_FORCE_CRUSH_RATIO) <= force)
 		if(move_crush(AM, move_force, dir_to_target))
 			push_anchored = TRUE
-	if((AM.move_resist * MOVE_FORCE_FORCEPUSH_RATIO) <= force)			//trigger move_crush and/or force_push regardless of if we can push it normally
+	if((AM.move_resist * MOVE_FORCE_FORCEPUSH_RATIO) <= force) //trigger move_crush and/or force_push regardless of if we can push it normally
 		if(force_push(AM, move_force, dir_to_target, push_anchored))
 			push_anchored = TRUE
+	if(ismob(AM))
+		var/mob/mob_to_push = AM
+		var/atom/movable/mob_buckle = mob_to_push.buckled
+		// If we can't pull them because of what they're buckled to, make sure we can push the thing they're buckled to instead.
+		// If neither are true, we're not pushing anymore.
+		if(mob_buckle && (mob_buckle.buckle_prevents_pull || (force < (mob_buckle.move_resist * MOVE_FORCE_PUSH_RATIO))))
+			now_pushing = FALSE
+			return
 	if((AM.anchored && !push_anchored) || (force < (AM.move_resist * MOVE_FORCE_PUSH_RATIO)))
 		now_pushing = FALSE
 		return
-	if (istype(AM, /obj/structure/window))
+	if(istype(AM, /obj/structure/window))
 		var/obj/structure/window/W = AM
 		if(W.fulltile)
 			for(var/obj/structure/window/win in get_step(W, dir_to_target))
@@ -612,17 +620,37 @@
 //Recursive function to find everything a mob is holding. Really shitty proc tbh.
 /mob/living/get_contents()
 	var/list/ret = list()
-	ret |= contents						//add our contents
-	for(var/i in ret.Copy())			//iterate storage objects
+	ret |= contents //add our contents
+	for(var/i in ret.Copy()) //iterate storage objects
 		var/atom/A = i
 		SEND_SIGNAL(A, COMSIG_TRY_STORAGE_RETURN_INVENTORY, ret)
-	for(var/obj/item/folder/F in ret.Copy())		//very snowflakey-ly iterate folders
+	for(var/obj/item/folder/F in ret.Copy()) //very snowflakey-ly iterate folders
 		ret |= F.contents
 	return ret
 
-// Living mobs use can_inject() to make sure that the mob is not syringe-proof in general.
-/mob/living/proc/can_inject()
+/**
+ * Returns whether or not the mob can be injected. Should not perform any side effects.
+ *
+ * Arguments:
+ * * user - The user trying to inject the mob.
+ * * target_zone - The zone being targeted.
+ * * injection_flags - A bitflag for extra properties to check.
+ *   Check __DEFINES/injection.dm for more details, specifically the ones prefixed INJECT_CHECK_*.
+ */
+/mob/living/proc/can_inject(mob/user, target_zone, injection_flags)
 	return TRUE
+
+/**
+ * Like can_inject, but it can perform side effects.
+ *
+ * Arguments:
+ * * user - The user trying to inject the mob.
+ * * target_zone - The zone being targeted.
+ * * injection_flags - A bitflag for extra properties to check. Check __DEFINES/injection.dm for more details.
+ *   Check __DEFINES/injection.dm for more details. Unlike can_inject, the INJECT_TRY_* defines will behave differently.
+ */
+/mob/living/proc/try_inject(mob/user, target_zone, injection_flags)
+	return can_inject(user, target_zone, injection_flags)
 
 /mob/living/is_injectable(mob/user, allowmobs = TRUE)
 	return (allowmobs && reagents && can_inject(user))
@@ -734,11 +762,6 @@
 	SetUnconscious(0)
 
 
-/mob/living/Crossed(atom/movable/AM)
-	. = ..()
-	for(var/i in get_equipped_items())
-		var/obj/item/item = i
-		SEND_SIGNAL(item, COMSIG_ITEM_WEARERCROSSED, AM, src)
 
 
 
@@ -772,6 +795,7 @@
 	slurring = 0
 	jitteriness = 0
 	stop_sound_channel(CHANNEL_HEARTBEAT)
+	SEND_SIGNAL(src, COMSIG_LIVING_POST_FULLY_HEAL, admin_revive)
 
 
 //proc called by revive(), to check if we can actually ressuscitate the mob (we don't want to revive him and have him instantly die again)
@@ -839,7 +863,7 @@
 		return
 
 	var/bleed_amount = bleedDragAmount()
-	blood_volume = max(blood_volume - bleed_amount, 0) 					//that depends on our brute damage.
+	blood_volume = max(blood_volume - bleed_amount, 0) //that depends on our brute damage.
 	var/newdir = get_dir(target_turf, start)
 	if(newdir != direction)
 		newdir = newdir | direction
@@ -950,7 +974,7 @@
 	. = TRUE
 	if(pulledby.grab_state || body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) || staminaloss > STAMINA_THRESHOLD_HARD_RESIST) //SKYRAT EDIT CHANGE: if(pulledby.grab_state || resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS))
 		var/altered_grab_state = pulledby.grab_state
-		if(HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however - SKYRAT EDIT CHANGE: if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
+		if(body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_GRABWEAKNESS) && pulledby.grab_state < GRAB_KILL) //If prone, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however - SKYRAT EDIT CHANGE: if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++
 		if(staminaloss > STAMINA_THRESHOLD_HARD_RESIST)
 			altered_grab_state++
@@ -1000,7 +1024,7 @@
 		if(has_gravity == 1)
 			clear_alert("gravity")
 		else
-			if(has_gravity >= GRAVITY_DAMAGE_TRESHOLD)
+			if(has_gravity >= GRAVITY_DAMAGE_THRESHOLD)
 				throw_alert("gravity", /atom/movable/screen/alert/veryhighgravity)
 			else
 				throw_alert("gravity", /atom/movable/screen/alert/highgravity)
@@ -1420,20 +1444,21 @@
 	name = "[name] ([numba])"
 	real_name = name
 
-/mob/living/proc/mob_try_pickup(mob/living/user)
+/mob/living/proc/mob_try_pickup(mob/living/user, instant=FALSE)
 	if(!ishuman(user))
 		return
-	if(user.get_active_held_item())
+	if(!user.get_empty_held_indexes())
 		to_chat(user, "<span class='warning'>Your hands are full!</span>")
 		return FALSE
 	if(buckled)
 		to_chat(user, "<span class='warning'>[src] is buckled to something!</span>")
 		return FALSE
-	user.visible_message("<span class='warning'>[user] starts trying to scoop up [src]!</span>", \
-					"<span class='danger'>You start trying to scoop up [src]...</span>", null, null, src)
-	to_chat(src, "<span class='userdanger'>[user] starts trying to scoop you up!</span>")
-	if(!do_after(user, 20, target = src))
-		return FALSE
+	if(!instant)
+		user.visible_message("<span class='warning'>[user] starts trying to scoop up [src]!</span>", \
+						"<span class='danger'>You start trying to scoop up [src]...</span>", null, null, src)
+		to_chat(src, "<span class='userdanger'>[user] starts trying to scoop you up!</span>")
+		if(!do_after(user, 2 SECONDS, target = src))
+			return FALSE
 	mob_pickup(user)
 	return TRUE
 
@@ -1890,7 +1915,7 @@
 
 	// Trait removal if obese
 	if(HAS_TRAIT_FROM(src, TRAIT_FAT, OBESITY))
-		if(overeatduration >= 100)
+		if(overeatduration >= (200 SECONDS))
 			to_chat(src, "<span class='notice'>Your transformation restores your body's natural fitness!</span>")
 
 		REMOVE_TRAIT(src, TRAIT_FAT, OBESITY)
@@ -1958,24 +1983,19 @@
  * It is also used to process martial art attacks by nonhumans, even against humans
  * Human vs human attacks are handled in species code right now.
  */
-/mob/living/proc/apply_martial_art(mob/living/target, modifiers, is_grab)
+/mob/living/proc/apply_martial_art(mob/living/target, modifiers, is_grab = FALSE)
 	if(HAS_TRAIT(target, TRAIT_MARTIAL_ARTS_IMMUNE))
-		return FALSE
-	if(ishuman(target) && ishuman(src)) //Human vs human are handled in species code
-		return FALSE
+		return MARTIAL_ATTACK_INVALID
 	var/datum/martial_art/style = mind?.martial_art
-	var/attack_result = FALSE
-	if (style)
-		if (is_grab)
-			attack_result = style.grab_act(src, target)
-		if(modifiers && modifiers["right"])
-			attack_result = style.disarm_act(src, target)
-		if(combat_mode)
-			if (HAS_TRAIT(src, TRAIT_PACIFISM))
-				return FALSE
-			attack_result = style.harm_act(src, target)
-		else
-			attack_result = style.help_act(src, target)
-
-
-	return attack_result
+	if (!style)
+		return MARTIAL_ATTACK_INVALID
+	// will return boolean below since it's not invalid
+	if (is_grab)
+		return style.grab_act(src, target)
+	if (LAZYACCESS(modifiers, RIGHT_CLICK))
+		return style.disarm_act(src, target)
+	if(combat_mode)
+		if (HAS_TRAIT(src, TRAIT_PACIFISM))
+			return FALSE
+		return style.harm_act(src, target)
+	return style.help_act(src, target)

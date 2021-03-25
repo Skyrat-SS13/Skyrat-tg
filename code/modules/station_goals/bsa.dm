@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR BSA_OVERHAUL
 // Crew has to build a bluespace cannon
 // Cargo orders part for high price
 // Requires high amount of power
@@ -8,7 +9,6 @@
 /datum/station_goal/bluespace_cannon/get_report()
 	return {"Our military presence is inadequate in your sector.
 		We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.
-
 		Base parts are available for shipping via cargo.
 		-Nanotrasen Naval Command"}
 
@@ -63,7 +63,7 @@
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using multitool."
+	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using a multitool."
 	icon_state = "fuel_chamber"
 	var/obj/machinery/bsa/back/back
 	var/obj/machinery/bsa/front/front
@@ -227,7 +227,7 @@
 	var/obj/machinery/parent
 
 /obj/structure/filler/ex_act()
-	return
+	return FALSE
 
 /obj/machinery/computer/bsa_control
 	name = "bluespace artillery control"
@@ -275,7 +275,7 @@
 		if("recalibrate")
 			calibrate(usr)
 			. = TRUE
-	update_icon()
+	update_appearance()
 
 /obj/machinery/computer/bsa_control/proc/calibrate(mob/user)
 	if(!GLOB.bsa_unlock)
@@ -334,3 +334,4 @@
 	qdel(centerpiece.back)
 	qdel(centerpiece)
 	return cannon
+*/

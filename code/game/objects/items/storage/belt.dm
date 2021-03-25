@@ -20,13 +20,14 @@
 
 /obj/item/storage/belt/update_overlays()
 	. = ..()
-	if(content_overlays)
-		for(var/obj/item/I in contents)
-			. += I.get_belt_overlay()
+	if(!content_overlays)
+		return
+	for(var/obj/item/I in contents)
+		. += I.get_belt_overlay()
 
 /obj/item/storage/belt/Initialize()
 	. = ..()
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/belt/utility
 	name = "toolbelt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
@@ -171,6 +172,7 @@
 		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/surgical_drapes, //for true paramedics
+		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
 		/obj/item/bonesetter,
@@ -208,7 +210,7 @@
 	new /obj/item/stack/medical/bone_gel(src)
 	new /obj/item/stack/sticky_tape/surgical(src)
 	new /obj/item/reagent_containers/glass/bottle/formaldehyde(src)
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/belt/security
 	name = "security belt"
@@ -249,7 +251,7 @@
 	new /obj/item/grenade/flashbang(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/loaded(src)
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/belt/security/webbing
 	name = "security webbing"
@@ -358,7 +360,7 @@
 
 /obj/item/storage/belt/soulstone/full/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/soulstone(src)
+		new /obj/item/soulstone/mystic(src)
 
 /obj/item/storage/belt/soulstone/full/chappy/PopulateContents()
 	for(var/i in 1 to 6)
@@ -405,7 +407,7 @@
 
 /obj/item/storage/belt/military/snack/Initialize()
 	. = ..()
-	var/sponsor = pick("DonkCo", "Waffle Co.", "Roffle Co.", "Gorlax Marauders", "Tiger Cooperative")
+	var/sponsor = pick("Donk Co.", "Waffle Co.", "Roffle Co.", "Gorlax Marauders", "Tiger Cooperative")
 	desc = "A set of snack-tical webbing worn by athletes of the [sponsor] VR sports division."
 
 /obj/item/storage/belt/military/snack/ComponentInitialize()
@@ -576,7 +578,10 @@
 		/obj/item/melee/flyswatter,
 		/obj/item/assembly/mousetrap,
 		/obj/item/paint/paint_remover,
-		/obj/item/pushbroom
+		/obj/item/pushbroom, //SKYRAT EDIT - Comma.....
+		/obj/item/mop, //SKYRAT EDIT - For when you're lazy to use soap
+		/obj/item/mop/advanced, //SKYRAT EDIT For when you're lazy to use a bucket
+		/obj/item/reagent_containers/glass/bucket //SKYRAT EDIT - Bucket
 		))
 
 /obj/item/storage/belt/janitor/full/PopulateContents()
@@ -710,7 +715,7 @@
 		var/obj/item/I = contents[1]
 		user.visible_message("<span class='notice'>[user] takes [I] out of [src].</span>", "<span class='notice'>You take [I] out of [src].</span>")
 		user.put_in_hands(I)
-		update_icon()
+		update_appearance()
 	else
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 
@@ -722,10 +727,11 @@
 		icon_state += "-sabre"
 		inhand_icon_state += "-sabre"
 		worn_icon_state += "-sabre"
+	return ..()
 
 /obj/item/storage/belt/sabre/PopulateContents()
 	new /obj/item/melee/sabre(src)
-	update_icon()
+	update_appearance()
 
 /obj/item/storage/belt/plant
 	name = "botanical belt"

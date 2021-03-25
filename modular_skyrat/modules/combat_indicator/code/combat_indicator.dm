@@ -14,6 +14,9 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	set_combat_indicator(FALSE)
 
 /mob/living/proc/set_combat_indicator(state)
+	if(!CONFIG_GET(flag/combat_indicator))
+		return
+
 	if(stat == DEAD)
 		combat_indicator = FALSE
 
@@ -58,3 +61,5 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		return
 	var/mob/living/L = user.mob
 	L.user_toggle_combat_indicator()
+
+/datum/config_entry/flag/combat_indicator

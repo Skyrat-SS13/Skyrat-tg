@@ -216,7 +216,6 @@
 	glass_name = "Cog Grog"
 	glass_desc = "Not even Ratvar's Four Generals could withstand this!  Qevax Jryy!"
 
-
 // RACE SPECIFIC DRINKS
 
 /datum/reagent/consumable/ethanol/coldscales
@@ -395,6 +394,24 @@
 
 /datum/reagent/consumable/ethanol/laval_spit/on_mob_life(mob/living/carbon/M)
 	if(isgolem(M))
+		quality = RACE_DRINK
+	else
+		M.adjust_disgust(25)
+	return ..()
+
+/datum/reagent/consumable/ethanol/frisky_kitty
+	name = "Frisky Kitty"
+	color = "#FCF7D4" //(252, 247, 212)
+	description = "Warm milk mixed with catnip."
+	boozepwr = 0
+	taste_description = "Warm milk and catnip"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "frisky_kitty"
+	glass_name = "cup of Frisky Kitty"
+	glass_desc = "Warm milk and some catnip."
+
+/datum/reagent/consumable/ethanol/frisky_kitty/on_mob_life(mob/living/carbon/M)
+	if(ismammal(M) || isfelinid(M))
 		quality = RACE_DRINK
 	else
 		M.adjust_disgust(25)

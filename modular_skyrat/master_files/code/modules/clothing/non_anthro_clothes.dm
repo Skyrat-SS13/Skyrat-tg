@@ -143,6 +143,9 @@
 /obj/item/clothing/head/santa
 	mutant_variants = NONE
 
+/obj/item/clothing/head/helmet/durathread
+	mutant_variants = NONE
+
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -193,9 +196,11 @@
 
 /obj/item/clothing/under/syndicate/skirt
 	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/syndicate/tacticool/skirt
 	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/rank/captain/suit/skirt
 	mutant_variants = NONE
@@ -219,6 +224,9 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/suit/black/skirt
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/captain/pilot/skirt
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/toggle/labcoat/roboticist

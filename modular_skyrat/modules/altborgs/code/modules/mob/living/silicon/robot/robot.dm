@@ -87,7 +87,7 @@
 
 	var/list/skyratmodel = list(
 	"Departmental Modules" = "next",
-	"Skyrat Service(alt skins)" = /obj/item/robot_model/butler/skyrat,
+	"Skyrat Service(alt skins)" = /obj/item/robot_model/service/skyrat,
 	"Skyrat Miner(alt skins)" = /obj/item/robot_model/miner/skyrat
 	)
 	var/input_model_sk = input("Please select a module, or choose a reskin.", "Robot", null, null) as null|anything in sortList(skyratmodel)

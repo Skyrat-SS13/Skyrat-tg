@@ -100,7 +100,7 @@
 			var/obj/item/assembly/flash/F = I
 			F.times_used = 0
 			F.burnt_out = FALSE
-			F.update_icon()
+			F.update_appearance()
 		else if(istype(I, /obj/item/melee/baton))
 			var/obj/item/melee/baton/B = I
 			if(B.cell)
@@ -215,7 +215,7 @@
 		/obj/item/paint/anycolor,
 		/obj/item/soap/nanotrasen,
 		/obj/item/pneumatic_cannon/pie/selfcharge/cyborg,
-		/obj/item/razor,					//killbait material
+		/obj/item/razor, //killbait material
 		/obj/item/lipstick/purple,
 		/obj/item/reagent_containers/spray/waterflower/cyborg,
 		/obj/item/borg/cyborghug/peacekeeper,
@@ -240,14 +240,13 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg,
-		/obj/item/wrench/cyborg,
-		/obj/item/crowbar/cyborg,
-		/obj/item/wirecutters/cyborg,
+		/obj/item/screwdriver/cyborg/power, // Skyrat Removal/Edit - Combines Screwdriver and Wrench into one
+		/obj/item/crowbar/cyborg/power, // Skyrat Removal/Edit - Combines Crowbar and Wirecutters into one
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
 		/obj/item/geiger_counter/cyborg,
+		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -449,7 +448,7 @@
 		if(T.cell.charge < T.cell.maxcharge)
 			var/obj/item/ammo_casing/energy/S = T.ammo_type[T.select]
 			T.cell.give(S.e_cost * coeff)
-			T.update_icon()
+			T.update_appearance()
 		else
 			T.charge_timer = 0
 
@@ -477,6 +476,7 @@
 		/obj/item/borg/apparatus/beaker/service)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
+	cyborg_base_icon = "service_m" // display as butlerborg for radial model selection
 	model_select_icon = "service"
 	special_light_key = "service"
 	hat_offset = 0
@@ -655,10 +655,10 @@
 	if (energy >= amount)
 		energy -= amount
 		if (energy == 0)
-			return 1
-		return 2
+			return TRUE
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /datum/robot_energy_storage/proc/add_charge(amount)
 	energy = min(energy + amount, max_energy)

@@ -69,7 +69,6 @@ GLOBAL_LIST_INIT(summoned_magic, list(
 	/obj/item/gun/magic/staff/healing,
 	/obj/item/gun/magic/staff/door,
 	/obj/item/scrying,
-	/obj/item/voodoo,
 	/obj/item/warpwhistle,
 	/obj/item/clothing/suit/space/hardsuit/shielded/wizard,
 	/obj/item/immortality_talisman,
@@ -94,7 +93,6 @@ GLOBAL_LIST_INIT(summoned_magic_objectives, list(
 	/obj/item/scrying,
 	/obj/item/spellbook,
 	/obj/item/storage/belt/wands/full,
-	/obj/item/voodoo,
 	/obj/item/warpwhistle))
 
 // If true, it's the probability of triggering "survivor" antag.
@@ -175,13 +173,13 @@ GLOBAL_VAR_INIT(summon_magic_triggered, FALSE)
 
 /proc/summonevents()
 	if(!SSevents.wizardmode)
-		SSevents.frequency_lower = 600									//1 minute lower bound
-		SSevents.frequency_upper = 3000									//5 minutes upper bound
+		SSevents.frequency_lower = 600 //1 minute lower bound
+		SSevents.frequency_upper = 3000 //5 minutes upper bound
 		SSevents.toggleWizardmode()
 		SSevents.reschedule()
 
-	else 																//Speed it up
-		SSevents.frequency_upper -= 600	//The upper bound falls a minute each time, making the AVERAGE time between events lessen
+	else //Speed it up
+		SSevents.frequency_upper -= 600 //The upper bound falls a minute each time, making the AVERAGE time between events lessen
 		if(SSevents.frequency_upper < SSevents.frequency_lower) //Sanity
 			SSevents.frequency_upper = SSevents.frequency_lower
 

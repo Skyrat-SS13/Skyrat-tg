@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/gun/ballistic/automatic/c20r/toy/unrestricted = 25,
 		/obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted = 25,
 		/obj/item/gun/ballistic/automatic/toy/unrestricted = 25,
-		/obj/item/gun/ballistic/automatic/toy/pistol/unrestricted = 25,
+		/obj/item/gun/ballistic/automatic/pistol/toy = 25,
 		/obj/item/gun/ballistic/shotgun/toy/unrestricted = 25,
 		/obj/item/gun/ballistic/shotgun/toy/crossbow = 25,
 		/obj/item/hot_potato/harmless/toy = 25,

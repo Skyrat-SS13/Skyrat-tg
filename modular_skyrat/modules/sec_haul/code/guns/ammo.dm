@@ -273,7 +273,7 @@
 	item_flags = NO_MAT_REDEMPTION
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
-	var/list/possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER, "ihdf" = AMMO_TYPE_IHDF)
+	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize()
 	. = ..()
@@ -291,6 +291,7 @@
 	update_icon()
 
 /obj/item/ammo_box/magazine/multi_sprite/update_icon()
+	. = ..()
 	var/shells_left = stored_ammo.len
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)
@@ -327,6 +328,7 @@
 	update_icon()
 
 /obj/item/ammo_box/revolver/multi_sprite/update_icon()
+	. = ..()
 	var/shells_left = stored_ammo.len
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)

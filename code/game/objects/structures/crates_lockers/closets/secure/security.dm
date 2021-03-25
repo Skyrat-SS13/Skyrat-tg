@@ -18,6 +18,7 @@
 	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
 	new /obj/item/clothing/head/caphat(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
+	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
 	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
 	new /obj/item/clothing/head/caphat/parade(src)
 	new /obj/item/clothing/suit/captunic(src)
@@ -31,7 +32,6 @@
 	new /obj/item/storage/belt/sabre(src)
 	new /obj/item/storage/box/gunset/pdh_captain(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/captain(src)
-	new /obj/item/card/id/captains_spare(src)
 	new /obj/item/storage/photo_album/captain(src)
 
 /obj/structure/closet/secure_closet/hop
@@ -62,6 +62,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/service(src)
 	new /obj/item/storage/photo_album/hop(src)
 	new /obj/item/storage/lockbox/medal/hop(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
 
 
 /obj/structure/closet/secure_closet/hos
@@ -74,8 +75,9 @@
 	new /obj/item/clothing/neck/cloak/hos(src)
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
+	new /obj/item/clothing/suit/armor/hos/parade/female(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
+	new /obj/item/clothing/suit/armor/hos/parade(src) // SKYRAT EDIT ADDITION
 	new /obj/item/clothing/suit/armor/vest/leather(src)
 	new /obj/item/clothing/suit/armor/hos(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
@@ -98,6 +100,8 @@
 	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
+	new /obj/item/storage/box/gunset/glock18_hos(src)
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"

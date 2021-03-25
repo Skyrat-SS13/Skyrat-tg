@@ -24,7 +24,7 @@
 	var/hijack_stage_time = 5 SECONDS
 	var/hijack_stage_cooldown = 5 SECONDS
 	var/hijack_flight_time_increase = 30 SECONDS
-	var/hijack_completion_flight_time_set = 10 SECONDS	//How long in deciseconds to set shuttle's timer after hijack is done.
+	var/hijack_completion_flight_time_set = 10 SECONDS //How long in deciseconds to set shuttle's timer after hijack is done.
 	var/hijack_hacking = FALSE
 	var/hijack_announce = TRUE
 
@@ -189,7 +189,7 @@
 		if(shuttle.hijack_status == HIJACKED)
 			shuttle.setTimer(hijack_completion_flight_time_set)
 		else
-			shuttle.setTimer(shuttle.timeLeft(1) + hijack_flight_time_increase)		//give the guy more time to hijack if it's already in flight.
+			shuttle.setTimer(shuttle.timeLeft(1) + hijack_flight_time_increase) //give the guy more time to hijack if it's already in flight.
 	return shuttle.hijack_status
 
 /obj/machinery/computer/emergency_shuttle/AltClick(user)
@@ -253,7 +253,7 @@
 	if(!IS_DOCKED)
 		return
 
-	if((obj_flags & EMAGGED) || ENGINES_STARTED)	//SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LAUNCH IN 10 SECONDS
+	if((obj_flags & EMAGGED) || ENGINES_STARTED) //SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LA-SYSTEM ERROR: THE SHUTTLE WILL LAUNCH IN 10 SECONDS
 		to_chat(user, "<span class='warning'>The shuttle is already about to launch!</span>")
 		return
 
@@ -503,7 +503,7 @@
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
-				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, null, "Priority")
+				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority") //SKYRAT EDIT CHANGE - ANNOUNCER_SHUTTLELEFT
 				INVOKE_ASYNC(SSticker, /datum/controller/subsystem/ticker.proc/poll_hearts)
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 
@@ -601,6 +601,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
+	locked = FALSE
 	to_chat(user, "<span class='warning'>You fry the pod's alert level checking system.</span>")
 
 /obj/machinery/computer/shuttle/pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
@@ -685,7 +686,7 @@
 	if (can_interact(user))
 		return ..()
 
-/obj/item/storage/pod/attack_hand(mob/user)
+/obj/item/storage/pod/attack_hand(mob/user, list/modifiers)
 	if (can_interact(user))
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SHOW, user)
 	return TRUE

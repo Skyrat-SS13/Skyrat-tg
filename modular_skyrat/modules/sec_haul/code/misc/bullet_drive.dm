@@ -32,7 +32,7 @@
 		return
 	var/disposed = 0
 	for(var/obj/item/ammo_casing/A in dish_drive_contents)
-		if(!A.BB)
+		if(!A.loaded_projectile)
 			LAZYREMOVE(dish_drive_contents, A)
 			qdel(A)
 			use_power(active_power_usage)

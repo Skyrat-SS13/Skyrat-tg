@@ -101,7 +101,8 @@
 
 /datum/sprite_accessory/screen/redtext
 	name = "Red Text"
-	icon_state = "retext"
+	icon_state = "redtext"
+	color_src = 0
 
 /datum/sprite_accessory/screen/sinewave
 	name = "Sine wave"
