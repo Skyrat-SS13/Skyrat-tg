@@ -19,19 +19,22 @@ ALTER TABLE `ban`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `bantime`,
 	ADD COLUMN `global_ban` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `role`;
 
+UPDATE `ban`
+	SET `global_ban` = 1;
+
 ALTER TABLE `legacy_population`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `time`;
 
 ALTER TABLE `connection_log`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `datetime`;
 
-ALTER_TABLE `death`
+ALTER TABLE `death`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `mapname`;
 
-ALTER_TABLE `messages`
+ALTER TABLE `messages`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `timestamp`;
 
-ALTER_TABLE `round`
+ALTER TABLE `round`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `end_datetime`;
 
 -----------------------------------------------------
