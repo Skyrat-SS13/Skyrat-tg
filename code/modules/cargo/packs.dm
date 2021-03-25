@@ -285,6 +285,7 @@
 					/obj/item/ammo_box/c38/iceblox)
 	crate_name = "ammo crate"
 
+/* SKYRAT EDIT: Moved to Bloat.dm	name = "Armor Crate"
 /datum/supply_pack/security/armor
 	name = "Armor Crate"
 	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
@@ -293,7 +294,7 @@
 	contains = list(/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest)
-	crate_name = "armor crate"
+	crate_name = "armor crate" */
 
 /* - SKYRAT EDIT REMOVAL - SEC_HAUL
 /datum/supply_pack/security/disabler

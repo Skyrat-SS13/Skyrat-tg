@@ -36,6 +36,16 @@
 					/obj/item/ammo_box/magazine/wt550m9/wtic)
 	crate_name = "WT550 Ammo Variety Pack"
 
+/datum/supply_pack/security/armor
+	name = "Armor Crate"
+	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/clothing/suit/armor/vest/alt,
+					/obj/item/clothing/suit/armor/vest/alt,
+					/obj/item/clothing/suit/armor/vest/alt)
+	crate_name = "armor crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
