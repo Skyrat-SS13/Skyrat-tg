@@ -39,7 +39,7 @@
 	mag_type = /obj/item/ammo_box/magazine/m75
 	burst_size = 1
 	fire_delay = 0
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	casing_ejector = FALSE
 
 /obj/item/gun/ballistic/rocketlauncher

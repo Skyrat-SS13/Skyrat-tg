@@ -380,4 +380,4 @@
 
 /obj/item/gun/energy/tesla_cannon/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/automatic_fire, 0.1 SECONDS)
+	//AddComponent(/datum/component/automatic_fire, 0.1 SECONDS) SKYRAT EDIT REMOVAL

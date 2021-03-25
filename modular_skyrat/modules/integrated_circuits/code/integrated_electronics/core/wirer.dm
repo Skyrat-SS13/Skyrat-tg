@@ -12,6 +12,7 @@
 	icon_state = "wirer-wire"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_SMALL
+	custom_materials = list(/datum/material/iron=200)
 	var/datum/integrated_io/selected_io = null
 	var/mode = WIRE
 
@@ -28,7 +29,7 @@
 			selected_io = io
 			to_chat(user, "<span class='notice'>You attach a data wire to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
 			mode = WIRING
-			update_icon()		
+			update_icon()
 		if(WIRING)
 			if(io == selected_io)
 				to_chat(user, "<span class='warning'>Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless.</span>")
