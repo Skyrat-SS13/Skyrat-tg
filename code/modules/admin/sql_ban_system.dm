@@ -553,10 +553,12 @@
 	var/sql_ban = list()
 	for(var/role in roles_to_ban)
 		sql_ban += list(list(
+			"server_name" = CONFIG_GET(string/serversqlname),// SKYRAT EDIT CHANGE - MULTISERVER
 			"server_ip" = world.internet_address || 0,
 			"server_port" = world.port,
 			"round_id" = GLOB.round_id,
 			"role" = role,
+			"global_ban" = global_ban, // SKYRAT EDIT CHANGE - MULTISERVER
 			"expiration_time" = duration,
 			"applies_to_admins" = applies_to_admins,
 			"reason" = reason,
@@ -567,8 +569,7 @@
 			"a_ip" = admin_ip || null,
 			"a_computerid" = admin_cid,
 			"who" = who,
-			"adminwho" = adminwho,
-			"global_ban" = global_ban // SKYRAT EDIT CHANGE - MULTISERVER
+			"adminwho" = adminwho
 		))
 	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
 		return

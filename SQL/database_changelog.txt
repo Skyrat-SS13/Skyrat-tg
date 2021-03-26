@@ -15,6 +15,8 @@ Version 5.13, 9 March, 2021, by Useroth
 Implemented some features to help with running multiple servers on the same database and easily differentiate
 between servers when it comes to bans, statistical data, etc.
 
+You might also want to update the server_name column in older records in the tables, however it is not absolutely necessary.
+
 ALTER TABLE `ban`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `bantime`,
 	ADD COLUMN `global_ban` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `role`;
