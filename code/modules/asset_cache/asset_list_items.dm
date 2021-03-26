@@ -166,6 +166,13 @@
 	)
 	parents = list("font-awesome.css" = 'html/font-awesome/css/all.min.css')
 
+/datum/asset/simple/namespaced/tgfont
+	assets = list(
+		"tgfont.eot" = 'tgui/packages/tgfont/dist/tgfont.eot',
+		"tgfont.woff2" = 'tgui/packages/tgfont/dist/tgfont.woff2',
+	)
+	parents = list("tgfont.css" = 'tgui/packages/tgfont/dist/tgfont.css')
+
 /datum/asset/spritesheet/chat
 	name = "chat"
 
@@ -519,6 +526,14 @@
 			continue
 		Insert(id, fish_icon, fish_icon_state)
 	..()
+
+/datum/asset/simple/adventure
+	assets = list(
+		"default" = 'icons/UI_Icons/adventure/default.png',
+		"grue" = 'icons/UI_Icons/adventure/grue.png',
+		"signal_lost" ='icons/UI_Icons/adventure/signal_lost.png',
+		"trade" = 'icons/UI_Icons/adventure/trade.png',
+	)
 
 /datum/asset/simple/inventory
 	assets = list(
