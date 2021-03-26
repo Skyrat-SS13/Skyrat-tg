@@ -59,7 +59,7 @@
 	name = "Pepperball Ammo Box"
 	id = "pepperball"
 	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 10000, )
+	materials = list(/datum/material/iron = 10000)
 	build_path = /obj/item/ammo_box/advanced/pepperballs
 	category = list("intial", "Security", "Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY

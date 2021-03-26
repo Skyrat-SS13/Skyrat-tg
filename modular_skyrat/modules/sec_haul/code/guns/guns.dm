@@ -786,10 +786,10 @@
 	name = "revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	caliber = CALIBER_12MM
-	max_ammo = 8
+	max_ammo = 6
 
 /obj/item/ammo_box/revolver/revolution
-	name = "revolution speed loader(9mm)"
+	name = "revolution speed loader(12mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b12mm
