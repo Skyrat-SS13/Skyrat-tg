@@ -62,7 +62,8 @@
 					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
 					/obj/item/clothing/suit/security/officer = 3,
-					/obj/item/clothing/head/beret/sec/navyofficer = 3)
+					/obj/item/clothing/head/beret/sec/navyofficer = 3,
+					/obj/item/conversion_kit/nightstick = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MOSTLY_PURE_RED
