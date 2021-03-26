@@ -24,12 +24,12 @@
 	attack_cooldown = 1.5 SECONDS
 	stamina_loss_amt = 40
 
-/obj/item/melee/baton/peacekeeper/Initialize()
+/obj/item/melee/classic_baton/peacekeeper/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/convert)
 
 
-/obj/item/melee/baton/peacekeeper/Destroy()
+/obj/item/melee/classic_baton/peacekeeper/Destroy()
 	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
 	return ..()
 
@@ -41,7 +41,7 @@
 	custom_materials = list(/datum/material/iron = 10000, /datum/material/glass = 10000, /datum/material/silver = 10000)
 	custom_price = PAYCHECK_HARD * 5
 
-/obj/item/conversion_kit/nightstick/proc/convert(datum/source, obj/item/I, mob/user)
+/obj/item/melee/classic_baton/peacekeeper/proc/convert(datum/source, obj/item/I, mob/user)
 	SIGNAL_HANDLER
 
 	if(istype(I,/obj/item/conversion_kit/nightstick))
