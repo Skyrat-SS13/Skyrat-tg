@@ -64,8 +64,10 @@
 	. = ..()
 
 /datum/antagonist/changeling/proc/create_actions()
-	cellular_emporium = new(src)
-	emporium_action = new(cellular_emporium)
+	if(!cellular_emporium)
+		cellular_emporium = new(src)
+	if(!emporium_action)
+		emporium_action = new(cellular_emporium)
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()
