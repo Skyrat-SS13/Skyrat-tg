@@ -10,16 +10,24 @@
 	density = FALSE
 	circuit = /obj/item/circuitboard/machine/dish_drive
 	pass_flags = PASSTABLE
+<<<<<<< HEAD
 	var/list/collectable_items = list(/obj/item/trash/waffles,  //SKYRAT EDIT CHANGE: NO STATIC!
 		/obj/item/trash/plate,
+=======
+	var/static/list/collectable_items = list(/obj/item/trash/waffles,
+>>>>>>> 40d75cc340c (You can now put food on plates, and plate no longer materialize out of nowhere as you cook (#57770))
 		/obj/item/trash/tray,
 		/obj/item/reagent_containers/glass/bowl,
 		/obj/item/reagent_containers/food/drinks/drinkingglass,
 		/obj/item/kitchen/fork,
 		/obj/item/shard,
 		/obj/item/broken_bottle)
+<<<<<<< HEAD
 	var/list/disposable_items = list(/obj/item/trash/waffles, //SKYRAT EDIT CHANGE: NO STATIC!
 		/obj/item/trash/plate,
+=======
+	var/static/list/disposable_items = list(/obj/item/trash/waffles,
+>>>>>>> 40d75cc340c (You can now put food on plates, and plate no longer materialize out of nowhere as you cook (#57770))
 		/obj/item/trash/tray,
 		/obj/item/shard,
 		/obj/item/broken_bottle)
