@@ -142,12 +142,12 @@
 
 /obj/item/ammo_casing/energy/laser/accelerator
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser_cannon_fire.ogg'
-	
+
 /obj/item/gun/ballistic/automatic/sniper_rifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper"
 	fire_delay = 60
-	
+
 /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "sniper2"
@@ -198,7 +198,7 @@
 	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
 	zoom_out_amt = 5
 	slot_flags = ITEM_SLOT_BACK
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	mag_display = TRUE
 
 /obj/item/gun/ballistic/automatic/ar/modular
@@ -223,6 +223,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	can_suppress = FALSE
 	weapon_weight = WEAPON_HEAVY
-	
+
 /obj/item/gun/energy/kinetic_accelerator
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'

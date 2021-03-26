@@ -1,5 +1,5 @@
 /obj/effect/mob_spawn/human/syndicate/assops
-	name = "Syndicate Assault Guard"
+	name = "Syndicate DS-1 Operative"
 	roundstart = FALSE
 	death = FALSE
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -39,7 +39,6 @@
 
 //SECURITY//
 /obj/effect/mob_spawn/human/syndicate/assops/prison_guard
-	name = "Syndicate Brig Officer"
 	short_desc = "You are a brig officer aboard the Syndicate facility DS-1."
 	flavour_text = "Your job is to keep the prisoners in check and ensure they do not cause trouble. Patrol the prison, DO NOT TAKE ITEMS FROM THE ARMORY."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
@@ -65,7 +64,6 @@
 		/obj/item/melee/baton/loaded
 	)
 /obj/effect/mob_spawn/human/syndicate/assops/prison_warden
-	name = "Syndicate Master At Arms"
 	short_desc = "You are a Master At Arms aboard the Syndicate facility DS-1."
 	flavour_text = "Your job is to oversee facility operations and ensure a smooth running prison. You deal with executions and sentencing."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
@@ -95,7 +93,6 @@
 
 //SERVICE//
 /obj/effect/mob_spawn/human/syndicate/assops/facility_staff
-	name = "Syndicate Facility Staff"
 	short_desc = "You are a general purpose crewmember aboard the Syndicate facility DS-1."
 	flavour_text = "Your job is not combat, but instead is to run the syndicate facilites such as the bar, cooking areas, engineering and janitorial work."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
@@ -114,7 +111,6 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant
-	name = "Syndicate Assistant" //Changing this to 'Syndicate Operative' is a no go, that's nukies.
 	short_desc = "You are an operative aboard the Syndicate facility DS-1."
 	flavour_text = "Your job is NOT combat, unless the assault team requires it. Otherwise you are simply there to assist the guards and warden. Or relax."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
@@ -133,7 +129,6 @@
 
 //SCIENCE//
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist
-	name = "Syndicate Researcher"
 	short_desc = "You are a scientist aboard the Syndicate facility DS-1."
 	flavour_text = "Your job is that of research and development! You should further your scientific research and utilise the given tools."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
@@ -153,7 +148,6 @@
 
 //MEDICAL//
 /obj/effect/mob_spawn/human/syndicate/assops/station_medical_officer
-	name = "Syndicate Medical Officer"
 	short_desc = "You are a Medical Officer aboard the Syndicate facility DS-1."
 	flavour_text = "Your job is to maintain and improve the health and safety of the crew on-board."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
@@ -171,12 +165,8 @@
 
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
 
-/obj/item/card/id/syndicate_command/medical_officer
-	assignment = "Station Medical Officer"
-
 //HEADS OF STAFF//
 /obj/effect/mob_spawn/human/syndicate/assops/heads
-	name = "Syndicate Head Of Staff"
 	outfit = /datum/outfit/syndicate_empty/assops/heads
 
 /datum/outfit/syndicate_empty/assops/heads
@@ -186,7 +176,6 @@
 
 //Admiral//
 /obj/effect/mob_spawn/human/syndicate/assops/heads/station_admiral
-	name = "Syndicate Admiral"
 	short_desc = "You are the Station Admiral of Syndicate facility DS-1."
 	flavour_text = "Your job is to coordinate the heads of staff onboard, and otherwise relax. Unlike those Nanotrasen NADs, yours is in no danger of being tracked."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
@@ -206,7 +195,6 @@
 
 //Chief Master At Arms//
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_master_at_arms
-	name = "Syndicate Chief Master At Arms"
 	short_desc = "You are the Chief Master At Arms onboard the Syndicate facility DS-1."
 	flavour_text = "Your job is to oversee the Brig Officers and Master At Arms."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
@@ -227,7 +215,6 @@
 
 //Chief Research Officer//
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_research_officer
-	name = "Syndicate Chief Research Officer"
 	short_desc = "You are the Chief Research Officer onboard the Syndicate facility DS-1."
 	flavour_text = "Your job is to oversee the Researchers and maintain DS-1's coordinate secrecy." //An IC Solution to the problem of DS-1 Operatives getting too handsy with research, since RND consoles log who did research and where.
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
@@ -246,7 +233,6 @@
 
 //Chief Engineering Officer//
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_engineering_officer
-	name = "Syndicate Chief Engineering Officer"
 	short_desc = "You are the Chief Engineering Officer onboard the Syndicate facility DS-1."
 	flavour_text = "Your job is to maintain DS-1's power generation and hull integrity. Or 'touching up' the disused section east of cargo."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives. DO NOT TOUCH THE ARMORY."
