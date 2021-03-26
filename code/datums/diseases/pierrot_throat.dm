@@ -1,3 +1,5 @@
+//SKYRAT EDIT REMOVAL START - REVERT ON FREEDOM
+/*
 /datum/disease/pierrot_throat
 	name = "Pierrot's Throat"
 	max_stages = 4
@@ -62,3 +64,5 @@
 /datum/disease/pierrot_throat/remove_disease()
 	UnregisterSignal(affected_mob, COMSIG_MOB_SAY)
 	return ..()
+*/
+//SKYRAT EDIT END
