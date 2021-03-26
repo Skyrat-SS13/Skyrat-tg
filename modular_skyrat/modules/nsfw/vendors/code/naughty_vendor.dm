@@ -1,7 +1,7 @@
 /obj/machinery/vending/dorms
 	name = "KinkMate"
 	desc = "A vending machine for all your unmentionable desires."
-	product_ads = "Hey you, yeah you... wanna take a look at my collection~?;Kinky!;Sexy!;Check me out, big boy~"
+	product_ads = "Hey you, yeah you... wanna take a look at my collection?~;Kinky!;Sexy!;Check me out, big boy~"
 	icon = 'modular_skyrat/modules/nsfw/vendors/icons/vending.dmi'
 	icon_state = "kink"
 	icon_deny = "kink-deny"
