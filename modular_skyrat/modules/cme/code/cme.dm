@@ -32,7 +32,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/random
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme/random
-	wweight = 0
+	weight = 0
 	max_occurrences = 0
 
 /datum/round_event/cme/random
