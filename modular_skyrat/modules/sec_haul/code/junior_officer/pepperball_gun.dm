@@ -57,7 +57,7 @@
 
 /datum/design/pepperballs
 	name = "Pepperball Ammo Box"
-	id = "pepperball"
+	id = "pepperballs"
 	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(/datum/material/iron = 10000)
 	build_path = /obj/item/ammo_box/advanced/pepperballs
