@@ -10,7 +10,7 @@
 	desc = "A 6mm bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = "6mm"
+	caliber = CALIBER_6MM
 	projectile_type = /obj/projectile/bullet/advanced/b6mm
 
 /obj/projectile/bullet/advanced/b6mm
@@ -23,7 +23,7 @@
 	desc = "A 6mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = "6mm"
+	caliber = CALIBER_6MM
 	projectile_type = /obj/projectile/bullet/advanced/b6mm/rubber
 
 /obj/projectile/bullet/advanced/b6mm/rubber
@@ -44,7 +44,7 @@
 	desc = "A 6mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = "6mm"
+	caliber = CALIBER_6MM
 	projectile_type = /obj/projectile/bullet/advanced/b6mm/ihdf
 
 /obj/projectile/bullet/advanced/b6mm/ihdf
