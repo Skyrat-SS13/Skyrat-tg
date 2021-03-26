@@ -1,4 +1,4 @@
-//SKYRAT EDIT REMOVAL START - REVERT ON FREEDOM
+//SKYRAT EDIT REMOVAL START
 /*
 /datum/disease/pierrot_throat
 	name = "Pierrot's Throat"
