@@ -277,7 +277,7 @@
 	has_tool_description = ""
 	action_text = "Mine"
 	delay_message = "Mining..."
-	var/static/list/possible_materials = list(/datum/material/silver,/datum/material/bananium,/datum/material/pizza) //only add materials with sheet type here
+	var/static/list/possible_materials = list(/datum/material/silver,/datum/material/bananium) //only add materials with sheet type here //SKYRAT EDIT - REMOVED /datum/material/pizza
 	var/loot_amount = 30
 	var/chosen_material_type
 
