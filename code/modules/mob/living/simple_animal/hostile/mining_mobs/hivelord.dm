@@ -292,7 +292,12 @@
 	H.dna.add_mutation(DWARFISM)
 
 /obj/effect/mob_spawn/human/corpse/damaged/legioninfested/Initialize()
+	//SKYRAT EDIT START
+	/*
 	var/type = pickweight(list("Miner" = 66, "Ashwalker" = 10, "Golem" = 10,"Clown" = 10, pick(list("Shadow", "YeOlde","Operative", "Cultist")) = 4))
+	*/ //you'd gut me if i removed clowns entirely
+	var/type = pickweight(list("Miner" = 80, "Ashwalker" = 10, "Golem" = 5, pick(list("Clown", "Shadow", "YeOlde","Operative", "Cultist")) = 5)) //Reasoning: Miners are the most common, ashwalkers are tribals - common but not consistent, golems come from ONE pod, nanotrasen no longer hires clowns so they're rare to find.
+	//SKYRAT EDIT END
 	switch(type)
 		if("Miner")
 			mob_species = pickweight(list(/datum/species/human = 70, /datum/species/lizard = 26, /datum/species/fly = 2, /datum/species/plasmaman = 2))
@@ -308,22 +313,40 @@
 					belt = pickweight(list(/obj/item/pickaxe = 8, /obj/item/pickaxe/mini = 4, /obj/item/pickaxe/silver = 2, /obj/item/pickaxe/diamond = 1))
 				else
 					belt = /obj/item/tank/internals/emergency_oxygen/engi
+			//SKYRAT EDIT START
+			/*
 			if(mob_species != /datum/species/lizard)
 				shoes = /obj/item/clothing/shoes/workboots/mining
+			*/
+			shoes = /obj/item/clothing/shoes/workboots/mining
+			//SKYRAT EDIT END
 			gloves = /obj/item/clothing/gloves/color/black
 			mask = /obj/item/clothing/mask/gas/explorer
 			if(prob(20))
 				suit = pickweight(list(/obj/item/clothing/suit/hooded/explorer = 18, /obj/item/clothing/suit/hooded/cloak/goliath = 2))
 			if(prob(30))
 				r_pocket = pickweight(list(/obj/item/stack/marker_beacon = 20, /obj/item/stack/spacecash/c1000 = 7, /obj/item/reagent_containers/hypospray/medipen/survival = 2, /obj/item/borg/upgrade/modkit/damage = 1 ))
+			//SKYRAT EDIT START
+			/*
 			if(prob(10))
 				l_pocket = pickweight(list(/obj/item/stack/spacecash/c1000 = 7, /obj/item/reagent_containers/hypospray/medipen/survival = 2, /obj/item/borg/upgrade/modkit/cooldown = 1 ))
+			*/
+			if(prob(5))
+				l_pocket = pickweight(list(/obj/item/storage/bag/ore = 15, /obj/item/reagent_containers/hypospray/medipen/survival = 9, /obj/item/reagent_containers/hypospray/medipen/survival/luxury = 1)) //A 0.2 chance to get a luxury medipen
+			//SKYRAT EDIT END
 		if("Ashwalker")
 			mob_species = /datum/species/lizard/ashwalker
+			//SKYRAT EDIT START
+			/*
 			uniform = /obj/item/clothing/under/costume/gladiator/ash_walker
 			if(prob(95))
 				head = /obj/item/clothing/head/helmet/gladiator
 			else
+			*/
+			outfit = /datum/outfit/ashwalker
+			if(prob(5))
+				uniform = /obj/item/clothing/under/costume/loincloth
+				//SKYRAT EDIT END
 				head = /obj/item/clothing/head/helmet/skull
 				suit = /obj/item/clothing/suit/armor/bone
 				gloves = /obj/item/clothing/gloves/bracer
@@ -331,10 +354,16 @@
 				back = pickweight(list(/obj/item/spear/bonespear = 3, /obj/item/fireaxe/boneaxe = 2))
 			if(prob(10))
 				belt = /obj/item/storage/belt/mining/primitive
+			//SKYRAT EDIT START
+			/*
 			if(prob(30))
 				r_pocket = /obj/item/kitchen/knife/combat/bone
 			if(prob(30))
 				l_pocket = /obj/item/kitchen/knife/combat/bone
+			*/
+			if(prob(51)) //30 percent of 100 is 30, 30 percent of 70 is 21, add the two together
+				l_pocket = /obj/item/kitchen/knife/combat/bone
+			//SKYRAT EDIT END
 		if("Clown")
 			name = pick(GLOB.clown_names)
 			outfit = /datum/outfit/job/clown
@@ -354,7 +383,12 @@
 				glasses = pickweight(list(/obj/item/clothing/glasses/meson = 2, /obj/item/clothing/glasses/hud/health = 2, /obj/item/clothing/glasses/hud/diagnostic =2, /obj/item/clothing/glasses/science = 2, /obj/item/clothing/glasses/welding = 2, /obj/item/clothing/glasses/night = 1))
 			if(prob(10))
 				belt = pick(list(/obj/item/storage/belt/mining/vendor, /obj/item/storage/belt/utility/full))
+			//SKYRAT EDIT START
+			/*
 			if(prob(50))
+			*/
+			if(prob(10)) //there's only one cape, let it be at least a bit rare
+			//SKYRAT EDIT END
 				neck = /obj/item/bedsheet/rd/royal_cape
 			if(prob(10))
 				l_pocket = pick(list(/obj/item/crowbar/power, /obj/item/screwdriver/power, /obj/item/weldingtool/experimental))
