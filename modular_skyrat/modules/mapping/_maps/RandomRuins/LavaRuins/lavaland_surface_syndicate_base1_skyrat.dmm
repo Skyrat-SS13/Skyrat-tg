@@ -401,6 +401,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/vending/syndichem,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "dX" = (
@@ -2238,6 +2239,16 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
+"vA" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 10
+	},
+/obj/item/tank/internals/oxygen/yellow,
+/obj/item/tank/internals/oxygen/yellow,
+/obj/structure/closet/emcloset/anchored,
+/obj/item/flashlight/seclite,
+/turf/open/floor/iron,
+/area/ruin/unpowered/syndicate_lava_base/arrivals)
 "vC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -2579,6 +2590,13 @@
 /obj/structure/tank_dispenser,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/main)
+"zp" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/machinery/vending/assist,
+/turf/open/floor/iron,
+/area/ruin/unpowered/syndicate_lava_base/arrivals)
 "zu" = (
 /obj/effect/turf_decal/trimline/brown/filled/corner{
 	dir = 1
@@ -3054,6 +3072,10 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 5
 	},
+/obj/item/tank/internals/oxygen/yellow,
+/obj/item/tank/internals/oxygen/yellow,
+/obj/structure/closet/emcloset/anchored,
+/obj/item/flashlight/seclite,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/arrivals)
 "Ew" = (
@@ -3704,6 +3726,10 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
+"KX" = (
+/obj/machinery/vending/boozeomat/syndicate_access,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "Li" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
@@ -3770,9 +3796,7 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 9
 	},
-/obj/machinery/mineral/equipment_vendor/golem{
-	name = "Syndie-Mine"
-	},
+/obj/machinery/mineral/equipment_vendor,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "LQ" = (
@@ -5514,7 +5538,7 @@ Zz
 ee
 LH
 Ru
-lm
+vA
 ZM
 ab
 ab
@@ -5579,7 +5603,7 @@ ab
 ab
 ab
 ZM
-ee
+zp
 Xp
 Xp
 rA
@@ -7061,7 +7085,7 @@ he
 Fs
 TL
 Zc
-Nu
+KX
 tT
 ak
 Nu
