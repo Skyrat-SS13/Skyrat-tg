@@ -469,7 +469,7 @@
 	else
 		create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, global_ban, roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 
-/datum/admins/proc/create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, global_ban, reason, list/roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
+/datum/admins/proc/create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, global_ban, list/roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
