@@ -2,6 +2,14 @@
 /obj/item/card/id/advanced
 	icon = 'modular_skyrat/modules/simplecardtrim/card.dmi'
 
+/obj/item/card/id/advanced/solgov
+	name = "solgov identification card"
+	desc = "An ID straight from SolGov."
+	icon_state = "card_solgov"
+	worn_icon_state = "card_gold"
+	assigned_icon_state = "assigned_solgov"
+	wildcard_slots = WILDCARD_LIMIT_GOLD
+
 //EMAG//
 
 /obj/item/card/emag
