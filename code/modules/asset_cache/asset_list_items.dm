@@ -166,6 +166,13 @@
 	)
 	parents = list("font-awesome.css" = 'html/font-awesome/css/all.min.css')
 
+/datum/asset/simple/namespaced/tgfont
+	assets = list(
+		"tgfont.eot" = 'tgui/packages/tgfont/dist/tgfont.eot',
+		"tgfont.woff2" = 'tgui/packages/tgfont/dist/tgfont.woff2',
+	)
+	parents = list("tgfont.css" = 'tgui/packages/tgfont/dist/tgfont.css')
+
 /datum/asset/spritesheet/chat
 	name = "chat"
 
@@ -520,8 +527,6 @@
 		Insert(id, fish_icon, fish_icon_state)
 	..()
 
-<<<<<<< HEAD
-=======
 /datum/asset/simple/adventure
 	assets = list(
 		"default" = 'icons/UI_Icons/adventure/default.png',
@@ -551,7 +556,6 @@
 		"inventory-collar.png" = 'icons/UI_Icons/inventory/collar.png',
 	)
 
->>>>>>> 8b1ffd1e49a (Adds explorer drones / adventures. (#57851))
 /// Removes all non-alphanumerics from the text, keep in mind this can lead to id conflicts
 /proc/sanitize_css_class_name(name)
 	var/static/regex/regex = new(@"[^a-zA-Z0-9]","g")
