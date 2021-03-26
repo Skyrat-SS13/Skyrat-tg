@@ -2832,10 +2832,7 @@
 					/obj/item/vending_refill/wardrobe/det_wardrobe,
 					/obj/item/vending_refill/wardrobe/law_wardrobe)
 	crate_name = "security department supply crate"
-<<<<<<< HEAD
 */
-=======
-
 
 /// Exploration drone unlockables ///
 
@@ -2881,4 +2878,3 @@
 /datum/supply_pack/exploration/shrubbery/fill(obj/structure/closet/crate/C)
 	for(var/i in 1 to shrub_amount)
 		new /obj/item/grown/shrub(C)
->>>>>>> 8b1ffd1e49a (Adds explorer drones / adventures. (#57851))
