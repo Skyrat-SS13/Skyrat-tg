@@ -40047,7 +40047,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "bKe" = (
@@ -49536,9 +49538,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 6
-	},
 /turf/open/floor/iron,
 /area/engineering/main)
 "cfE" = (
@@ -49546,8 +49545,8 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/layer_manifold{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 6
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
@@ -82582,9 +82581,6 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "dCd" = (
@@ -82594,7 +82590,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
+	dir = 6
 	},
 /turf/open/floor/iron/white,
 /area/science/mixing)
@@ -83635,9 +83631,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 1
-	},
 /turf/open/floor/iron,
 /area/science/mixing)
 "dEu" = (
@@ -101161,6 +101154,14 @@
 /obj/structure/cable,
 /turf/open/space,
 /area/maintenance/solars/port/fore)
+"kdO" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/science/mixing)
 "key" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -104393,8 +104394,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 9
+/obj/machinery/atmospherics/pipe/layer_manifold/visible{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
@@ -105445,6 +105446,12 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"pyy" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/science/mixing)
 "pzj" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/portable_atmospherics/canister/air,
@@ -107607,22 +107614,10 @@
 /turf/open/floor/iron/dark,
 /area/security/execution/education)
 "rYw" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 1
-	},
-/turf/open/floor/iron,
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/iron/white,
 /area/science/mixing)
 "rYU" = (
 /obj/structure/disposalpipe/segment,
@@ -111120,6 +111115,18 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"wfr" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/engineering/main)
 "wfN" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
@@ -137328,7 +137335,7 @@ cat
 cbX
 ckD
 cfE
-chx
+wfr
 cjh
 cjn
 xyr
@@ -144829,7 +144836,7 @@ dxR
 dzv
 dAy
 dCc
-rYw
+dzv
 dEs
 bKc
 bKF
@@ -145086,9 +145093,9 @@ tew
 dtl
 dtl
 dCd
-dDq
-dDq
-dDq
+rYw
+pyy
+kdO
 dDq
 dIx
 dJW
