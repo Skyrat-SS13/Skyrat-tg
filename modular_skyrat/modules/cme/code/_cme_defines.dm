@@ -17,8 +17,8 @@
 #define CME_MINIMAL_FREQUENCY_LOWER 25 / 2 //The lower time range for cme bubbles to appear.
 #define CME_MINIMAL_FREQUENCY_UPPER 30 / 2 //The higher time range for cme bubbles to appear.
 #define CME_MINIMAL_BUBBLE_BURST_TIME 40 SECONDS //The time taken for a cme bubble to pop.
-#define CME_MINIMAL_START_LOWER 180 / 2 //The lowest amount of time for the event to start from the announcement. - Prep time
-#define CME_MINIMAL_START_UPPER 240 / 2 //The highest amount of time for the event to start from the announcement. - Prep time
+#define CME_MINIMAL_START_LOWER 120 / 2 //The lowest amount of time for the event to start from the announcement. - Prep time
+#define CME_MINIMAL_START_UPPER 180 / 2 //The highest amount of time for the event to start from the announcement. - Prep time
 #define CME_MINIMAL_END 240 / 2 //The amount of time starting from THE MINIMAL START TIME for the event to end. - How long it actually lasts.
 
 #define CME_MODERATE_LIGHT_RANGE_LOWER 10
@@ -30,7 +30,7 @@
 #define CME_MODERATE_BUBBLE_BURST_TIME 30 SECONDS
 #define CME_MODERATE_START_LOWER 120 / 2
 #define CME_MODERATE_START_UPPER 180 / 2
-#define CME_MODERATE_END 300 / 2
+#define CME_MODERATE_END 240 / 2
 
 #define CME_EXTREME_LIGHT_RANGE_LOWER 15
 #define CME_EXTREME_LIGHT_RANGE_UPPER 20
@@ -41,7 +41,7 @@
 #define CME_EXTREME_BUBBLE_BURST_TIME 20 SECONDS
 #define CME_EXTREME_START_LOWER 60 /2
 #define CME_EXTREME_START_UPPER 120 / 2
-#define CME_EXTREME_END 360 / 2
+#define CME_EXTREME_END 300 / 2
 
 #define CME_ARMAGEDDON_LIGHT_RANGE_LOWER 25
 #define CME_ARMAGEDDON_LIGHT_RANGE_UPPER 30
@@ -52,4 +52,4 @@
 #define CME_ARMAGEDDON_BUBBLE_BURST_TIME 10 SECONDS
 #define CME_ARMAGEDDON_START_LOWER 60 / 2
 #define CME_ARMAGEDDON_START_UPPER 70 / 2
-#define CME_ARMAGEDDON_END 1200 / 2
+#define CME_ARMAGEDDON_END 600 / 2

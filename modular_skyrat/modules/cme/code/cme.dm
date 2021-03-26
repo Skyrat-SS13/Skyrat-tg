@@ -15,16 +15,16 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme
-	weight = 5
-	min_players = 15
-	max_occurrences = 2
-	earliest_start = 20 MINUTES
+	weight = 7
+	min_players = 30
+	max_occurrences = 3
+	earliest_start = 25 MINUTES
 
 /datum/round_event/cme
 	startWhen = 6
 	endWhen	= 66
 	announceWhen = 10
-	var/cme_intensity = CME_MINIMAL
+	var/cme_intensity
 	var/cme_frequency_lower
 	var/cme_frequency_upper
 	var/list/cme_start_locs = list()
@@ -32,10 +32,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/random
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme/random
-	weight = 5
-	min_players = 15
-	max_occurrences = 3
-	earliest_start = 20 MINUTES
+	wweight = 0
+	max_occurrences = 0
 
 /datum/round_event/cme/random
 	cme_intensity = CME_RANDOM
@@ -43,10 +41,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/moderate
 	name = "Coronal Mass Ejection: Moderate"
 	typepath = /datum/round_event/cme/moderate
-	weight = 5
-	min_players = 20
-	max_occurrences = 1
-	earliest_start = 35 MINUTES
+	weight = 0
+	max_occurrences = 0
 
 /datum/round_event/cme/moderate
 	cme_intensity = CME_MODERATE
@@ -54,10 +50,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/extreme
 	name = "Coronal Mass Ejection: Extreme"
 	typepath = /datum/round_event/cme/extreme
-	weight = 5
-	min_players = 25
-	max_occurrences = 1
-	earliest_start = 45 MINUTES
+	weight = 0
+	max_occurrences = 0
 
 /datum/round_event/cme/extreme
 	cme_intensity = CME_EXTREME
@@ -73,7 +67,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/setup()
 	if(!cme_intensity)
-		cme_intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
+		cme_intensity = pick(CME_MINIMAL, CME_RANDOM, CME_MODERATE, CME_EXTREME)
 	switch(cme_intensity)
 		if(CME_RANDOM)
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
