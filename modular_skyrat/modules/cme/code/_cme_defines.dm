@@ -9,6 +9,7 @@
 #define CME_ARMAGEDDON "armageddon"
 
 //Times are SECONDS, they're devided by 2 because that's how long the controller takes to process. 20 deciseconds = 2 seconds. I know, it's dumb as fuck.
+//NOT ANYMORE, NOW WE MULTIPLY BY A HALF
 
 #define CME_MINIMAL_LIGHT_RANGE_LOWER 7 //The lowest range for the emp pulse light range.
 #define CME_MINIMAL_LIGHT_RANGE_UPPER 10 //The highest range for the emp pulse light range.
@@ -31,6 +32,7 @@
 #define CME_MODERATE_START_LOWER 120 / 0.5
 #define CME_MODERATE_START_UPPER 180 / 0.5
 #define CME_MODERATE_END 240 / 0.5
+
 
 #define CME_EXTREME_LIGHT_RANGE_LOWER 15
 #define CME_EXTREME_LIGHT_RANGE_UPPER 20
