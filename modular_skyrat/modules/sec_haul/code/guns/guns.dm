@@ -742,8 +742,8 @@
 
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
-	name = "\improper Armadyne Zeta-6 'Spurchamber'"
-	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with a 6 round cylinder."
+	name = "\improper Armadyne Zeta-8 'Spurchamber'"
+	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with an 8 round cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -770,8 +770,8 @@
 
 /////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
-	name = "\improper Armadyne Revolution-8 'Spurmaster'"
-	desc = "A surprisingly premium feeling revolver, even though it uses 9mm, it seems to have a nice weight to it. This handle feels nice too. 8 rounds."
+	name = "\improper Armadyne Revolution-6 'Spurmaster'"
+	desc = "An upgraded version of the Zeta-8, this has the superior spurmaster technology inbuilt, and is chambered in 12mm with an 8 round cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -783,18 +783,18 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
+	ammo_type = /obj/item/ammo_casing/b12mm
+	caliber = CALIBER_12MM
 	max_ammo = 8
 
 /obj/item/ammo_box/revolver/revolution
 	name = "revolution speed loader(9mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	max_ammo = 8
+	ammo_type = /obj/item/ammo_casing/b12mm
+	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_9MM
+	caliber = CALIBER_12MM
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun
