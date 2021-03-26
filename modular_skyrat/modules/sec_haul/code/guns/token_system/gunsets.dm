@@ -178,7 +178,7 @@
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/revolver/revolution(src)
-	new /obj/item/ammo_box/advanced/b9mm/rubber(src)
+	new /obj/item/ammo_box/advanced/b12mm/rubber(src)
 
 
 /////////////////

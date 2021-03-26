@@ -755,7 +755,7 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b10mm
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	caliber = CALIBER_10MM
 	max_ammo = 8
 
@@ -767,6 +767,7 @@
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	caliber = CALIBER_10MM
+	start_empty = TRUE
 
 /////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
@@ -783,7 +784,7 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b12mm
+	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	caliber = CALIBER_12MM
 	max_ammo = 8
 
@@ -795,6 +796,7 @@
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	caliber = CALIBER_12MM
+	start_empty = TRUE
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun
