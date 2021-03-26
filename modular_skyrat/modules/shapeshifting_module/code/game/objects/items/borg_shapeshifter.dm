@@ -236,7 +236,7 @@
 				)
 				var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed",  "Drake" = "drakemed", "Borgi" = "borgi-medi")
 				for(var/a in L)
-					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
+					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = L[a])
 					wide.pixel_x = -16
 					med_icons[a] = wide
 				med_icons = sortList(med_icons)
@@ -340,7 +340,7 @@
 				)
 				var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng", "Hound" = "engihound", "Darkhound" = "engihounddark", "Drake" = "drakeeng", "Borgi" = "borgi-eng")
 				for(var/a in L)
-					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
+					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi', icon_state = L[a])
 					wide.pixel_x = -16
 					engi_icons[a] = wide
 				engi_icons = sortList(engi_icons)
@@ -459,7 +459,7 @@
 				)
 				var/list/L = list("Hound" = "k9", "Vale" = "valesec", "Darkhound" = "k9dark", "Otie" = "oties", "Drake" = "drakesec", "Borgi" = "borgi-sec")
 				for(var/a in L)
-					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi', icon_state = L[a])
+					var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi', icon_state = L[a])
 					wide.pixel_x = -16
 					sec_icons[a] = wide
 				sec_icons = sortList(sec_icons)
@@ -507,7 +507,7 @@
 					//Dogborgs
 					if("Hound")
 						disguise = "k9"
-						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot.dmi'
+						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
 						disguise_dogborg = TRUE
 					if("Alina")

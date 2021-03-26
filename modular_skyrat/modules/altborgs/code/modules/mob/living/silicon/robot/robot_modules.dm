@@ -507,7 +507,7 @@
 		if("Protectron")
 			cyborg_base_icon = "protectron_peacekeeper"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
-		if("Insket")
+		if("Insekt")
 			cyborg_base_icon = "insekt-Default"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
 		if("Omni")
