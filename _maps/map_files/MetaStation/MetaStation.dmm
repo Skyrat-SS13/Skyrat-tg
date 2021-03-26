@@ -6974,7 +6974,6 @@
 	name = "Brig Lockdown Control";
 	pixel_x = 6;
 	pixel_y = 7;
-	req_access = null;
 	req_access_txt = "63"
 	},
 /obj/machinery/button/door{
@@ -22657,10 +22656,10 @@
 /area/medical/chemistry)
 "cmC" = (
 /obj/effect/turf_decal/tile/yellow,
-/obj/structure/closet/secure_closet/chemical,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/machinery/chem_mass_spec,
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
 "cmD" = (
@@ -35379,10 +35378,7 @@
 /turf/open/floor/iron,
 /area/maintenance/starboard)
 "fuY" = (
-/obj/machinery/holopad,
-/obj/effect/turf_decal/box/white{
-	color = "#EFB341"
-	},
+/obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
 "fvb" = (
@@ -47093,6 +47089,10 @@
 /turf/open/floor/wood,
 /area/maintenance/port/aft)
 "kge" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/box/white{
+	color = "#EFB341"
+	},
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
 "kgg" = (
@@ -55272,7 +55272,7 @@
 	},
 /obj/item/storage/fancy/donut_box,
 /obj/item/paper{
-	info = "Jim Norton's Quebecois Coffee.         You see, in 2265 the Quebecois had finally had enough of Canada's shit, and went to the one place that wasn't corrupted by Canuckistan.Je vais au seul endroit qui n'a pas � corrompu par les Canadiens ... ESPACE.";
+	info = "Jim Norton's Quebecois Coffee.         You see, in 2265 the Quebecois had finally had enough of Canada's shit, and went to the one place that wasn't corrupted by Canuckistan.Je vais au seul endroit qui n'a pas ??? corrompu par les Canadiens ... ESPACE.";
 	name = "Coffee Shop";
 	pixel_x = -4;
 	pixel_y = 6
@@ -60572,7 +60572,7 @@
 	pixel_x = 7;
 	pixel_y = 6
 	},
-/obj/item/trash/plate{
+/obj/item/plate{
 	pixel_x = -9
 	},
 /obj/item/storage/box/donkpockets{
@@ -73263,27 +73263,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
-<<<<<<< HEAD
-"upd" = (
-/obj/effect/turf_decal/delivery,
-/obj/machinery/door/window/northleft{
-	dir = 4;
-	name = "Containment Pen #1";
-	req_access_txt = "55"
-	},
-/obj/machinery/door/window/northleft{
-	dir = 4;
-	name = "Containment Pen #1";
-	req_access_txt = "55"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xenobio1";
-	name = "Xenobio Pen 1 Blast Door"
-	},
-/turf/open/floor/iron,
-/area/science/xenobiology)
-=======
->>>>>>> 8b1ffd1e49a (Adds explorer drones / adventures. (#57851))
 "upe" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -79723,7 +79702,7 @@
 /area/command/heads_quarters/hop)
 "wQf" = (
 /obj/structure/table,
-/obj/item/trash/plate,
+/obj/item/plate,
 /obj/item/candle,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/radio{
