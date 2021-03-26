@@ -166,13 +166,8 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/hos
 
 /obj/item/clothing/head/hooded/winterhood/security/hos
-<<<<<<< HEAD
 	desc = "A black, armour-padded winter hood with red and gold stripes on the arms, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes." // SKYRAT EDIT - ORIGINAL: desc = "A red, armour-padded winter hood, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes."
-	icon_state = "winterhood_hos"
-=======
-	desc = "A red, armour-padded winter hood, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes."
 	icon_state = "hood_hos"
->>>>>>> 77cff42b6c5 (Splits winter coats/hoods into their own sprite file (#57896))
 
 // Medical Doctor
 /obj/item/clothing/suit/hooded/wintercoat/medical
