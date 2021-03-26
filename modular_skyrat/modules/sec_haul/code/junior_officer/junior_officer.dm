@@ -38,13 +38,11 @@
 
 	suit = /obj/item/clothing/suit/toggle/labcoat/junior_officer
 
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/storage/box/gunset/pepperball, /obj/item/restraints/handcuffs/cable=2)
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/storage/box/gunset/pepperball, /obj/item/restraints/handcuffs/cable=2, /obj/item/storage/belt/security/peacekeeper)
 
 	l_pocket = /obj/item/flashlight
 
 	r_pocket = /obj/item/assembly/flash/handheld
-
-	belt = /obj/item/storage/belt/security/peacekeeper
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
