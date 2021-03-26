@@ -24,6 +24,15 @@
 	attack_cooldown = 1.5 SECONDS
 	stamina_loss_amt = 40
 
+/obj/item/melee/baton/peacekeeper/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/convert)
+
+
+/obj/item/melee/baton/peacekeeper/Destroy()
+	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
+	return ..()
+
 /obj/item/conversion_kit/nightstick
 	name = "nightstick conversion kit"
 	desc = "A kit used to turn nightsticks into stunsticks."
@@ -32,10 +41,10 @@
 	custom_materials = list(/datum/material/iron = 10000, /datum/material/glass = 10000, /datum/material/silver = 10000)
 	custom_price = PAYCHECK_HARD * 5
 
-/obj/item/conversion_kit/nightstick/convert(datum/source, obj/item/I, mob/user)
+/obj/item/conversion_kit/nightstick/proc/convert(datum/source, obj/item/I, mob/user)
 	SIGNAL_HANDLER
 
-	if(istype(I,/obj/item/conversion_kit/nightstick) && convertible)
+	if(istype(I,/obj/item/conversion_kit/nightstick))
 		var/turf/T = get_turf(src)
 		var/obj/item/melee/baton/peacekeeper/B = new /obj/item/melee/baton/peacekeeper (T)
 		B.alpha = 20
