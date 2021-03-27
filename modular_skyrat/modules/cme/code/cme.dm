@@ -15,16 +15,16 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme
-	weight = 5
-	min_players = 15
-	max_occurrences = 2
-	earliest_start = 20 MINUTES
+	weight = 10
+	min_players = 30
+	max_occurrences = 3
+	earliest_start = 25 MINUTES
 
 /datum/round_event/cme
 	startWhen = 6
 	endWhen	= 66
 	announceWhen = 10
-	var/cme_intensity = CME_MINIMAL
+	var/cme_intensity
 	var/cme_frequency_lower
 	var/cme_frequency_upper
 	var/list/cme_start_locs = list()
@@ -32,10 +32,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/random
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme/random
-	weight = 5
-	min_players = 15
-	max_occurrences = 3
-	earliest_start = 20 MINUTES
+	weight = 0
+	max_occurrences = 0
 
 /datum/round_event/cme/random
 	cme_intensity = CME_RANDOM
@@ -43,10 +41,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/moderate
 	name = "Coronal Mass Ejection: Moderate"
 	typepath = /datum/round_event/cme/moderate
-	weight = 5
-	min_players = 20
-	max_occurrences = 1
-	earliest_start = 35 MINUTES
+	weight = 0
+	max_occurrences = 0
 
 /datum/round_event/cme/moderate
 	cme_intensity = CME_MODERATE
@@ -54,10 +50,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme/extreme
 	name = "Coronal Mass Ejection: Extreme"
 	typepath = /datum/round_event/cme/extreme
-	weight = 5
-	min_players = 25
-	max_occurrences = 1
-	earliest_start = 45 MINUTES
+	weight = 0
+	max_occurrences = 0
 
 /datum/round_event/cme/extreme
 	cme_intensity = CME_EXTREME
@@ -73,7 +67,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/setup()
 	if(!cme_intensity)
-		cme_intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
+		cme_intensity = pick(CME_MINIMAL, CME_RANDOM, CME_MODERATE, CME_EXTREME)
 	switch(cme_intensity)
 		if(CME_RANDOM)
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
@@ -117,25 +111,25 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	else
 		switch(cme_intensity)
 			if(CME_RANDOM)
-				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_MINIMAL)
-				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_MODERATE)
-				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				priority_announce("Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
 				set_security_level(SEC_LEVEL_RED)
-				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
 				set_security_level(SEC_LEVEL_GAMMA)
-				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) / 10, 0.1)] seconds. \
+				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 
 /datum/round_event/cme/tick()
