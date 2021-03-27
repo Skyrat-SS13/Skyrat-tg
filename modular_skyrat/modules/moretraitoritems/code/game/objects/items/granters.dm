@@ -32,4 +32,4 @@
 	desc = "A special operations handbook for teaching people with at least a basic understanding of infiltration tactics how to most effectively utilize small spaces such as air ducts or pipes."
 	greet = "<span class='boldannounce'>You’ve mastered the art of climbing through air pipes!</span>"
 	icon_state = "stealthmanual"
-	remarks = list("Have a healthy diet..", "Know when to use vents to your advantage..", "Avoid being called suspicious...", "Best paired with close quarters skills...", "Pressure resistant gear recommended...")
+	remarks = list("Have a healthy diet...", "Know when to use vents to your advantage...", "Don't be seen climbing into vents...", "Best paired with close quarters skills...", "Pressure resistant gear recommended...")
