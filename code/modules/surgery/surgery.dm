@@ -57,8 +57,10 @@
 		else
 			return TRUE
 
+	/* SKYRAT EDIT REMOVAL
 	if(!requires_tech && !replaced_by)
 		return TRUE
+	*/
 
 	if(requires_tech)
 		. = FALSE
@@ -71,6 +73,17 @@
 				return FALSE
 			if(type in SP.advanced_surgeries)
 				return TRUE
+
+	//SKRYAT EDIT ADDITION START
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		//This is the trait given to doctors and surgeons alike.
+		if(!(HAS_TRAIT(H, TRAIT_BASIC_SURGEON)) && !(HAS_TRAIT(H.mind, TRAIT_BASIC_SURGEON)) && !H.mind.has_antag_datum(/datum/antagonist, TRUE))
+			if(!is_species(H, /datum/species/robotic))
+				return FALSE
+			else if(location != BODY_ZONE_CHEST) //Synths can perform operatiosn on their
+				return FALSE
+	//SKRYAT EDIT END
 
 	var/turf/T = get_turf(patient)
 

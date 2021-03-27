@@ -50,6 +50,8 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
+	skillchips = list(/obj/item/skillchip/surgery)
+
 	id_trim = /datum/id_trim/job/security_medic
 
 /obj/effect/landmark/start/security_medic

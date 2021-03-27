@@ -15,3 +15,7 @@
 
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
+
+// Skillchip traits
+///The trait needed to perform BASIC surgery
+#define TRAIT_BASIC_SURGEON "basic_surgeon"

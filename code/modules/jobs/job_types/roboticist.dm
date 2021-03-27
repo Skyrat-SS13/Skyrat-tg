@@ -41,6 +41,6 @@
 
 	pda_slot = ITEM_SLOT_LPOCKET
 
-	skillchips = list(/obj/item/skillchip/job/roboticist)
+	skillchips = list(/obj/item/skillchip/job/roboticist, /obj/item/skillchip/surgery) //SKYRAT EDIT CHANGE
 
 	id_trim = /datum/id_trim/job/roboticist
