@@ -83,6 +83,10 @@
 				return FALSE
 			else if(location != BODY_ZONE_CHEST || !(user == patient))
 				return FALSE
+
+	if(!requires_tech && !replaced_by)
+		return TRUE
+
 	//SKRYAT EDIT END
 
 	var/turf/T = get_turf(patient)
