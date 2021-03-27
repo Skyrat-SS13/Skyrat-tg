@@ -81,7 +81,7 @@
 		if(!(HAS_TRAIT(H, TRAIT_BASIC_SURGEON)) && !(HAS_TRAIT(H.mind, TRAIT_BASIC_SURGEON)) && !H.mind.has_antag_datum(/datum/antagonist, TRUE))
 			if(!is_species(H, /datum/species/robotic))
 				return FALSE
-			else if(location != BODY_ZONE_CHEST) //Synths can perform operatiosn on their
+			else if(location != BODY_ZONE_CHEST || !(user == patient))
 				return FALSE
 	//SKRYAT EDIT END
 
