@@ -7,8 +7,34 @@
 	worn_icon_state = "crusader_belt"
 	inhand_icon_state = "utility"
 	w_class = WEIGHT_CLASS_BULKY //Cant fit a sheath in your bag
+	component_type = /datum/component/storage/concrete/belt/crusader
 
-/obj/item/storage/belt/crusader/AltClick(mob/user)
+//Credit to Funce for this chunk of code directly below, which overrides normal dumping code and instead dumps from the pouch item inside
+/datum/component/storage/concrete/belt/crusader/dump_content_at(atom/dest_object, mob/M)
+    var/atom/A = parent
+    var/atom/dump_destination = dest_object.get_dumping_location()
+    if(A.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
+        var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location()
+        if (!pouch)
+            to_chat(M, "<span class='warning'>[parent] doesn't seem to have a pouch to empty.</span>")
+            return FALSE //oopsie!! If we don't have a pouch! You're fucked!
+        var/datum/component/storage/STR = pouch.GetComponent(/datum/component/storage)
+        if(locked)
+            to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
+            return FALSE
+        if(dump_destination.storage_contents_dump_act(STR, M))
+            playsound(A, "rustle", 50, TRUE, -5)
+            A.do_squish(0.8, 1.2)
+            return TRUE
+    return FALSE
+
+/obj/item/storage/belt/crusader/CtrlClick(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.user_show_to_mob(user)
+	return
+
+/obj/item/storage/belt/crusader/AltClick(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	if(contents.len == 2)
@@ -36,27 +62,10 @@
 
 /obj/item/storage/belt/crusader/examine(mob/user)
 	. = ..()
+	.+= "<span class='notice'>Ctrl-click it to easily open its inventory.</span>"
 	if(contents.len == 2)	//If there's no sword/rod in the sheath slot it doesnt display the alt-click instruction
 		. += "<span class='notice'>Alt-click it to quickly draw the blade.</span>"
 		return
-/datum/component/storage/belt/crusader/quick_empty(mob/M)	//simply pushes the quick_empty into the pouch storage instead of the belt, keeping the pouch from being dumped anywhere
-	var/atom/A = parent
-	if(!M.canUseStorage() || !A.Adjacent(M) || M.incapacitated())
-		return
-	if(locked)
-		to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
-		return FALSE
-	to_chat(M, "<span class='notice>[parent] is too unwieldy to dump like that... maybe you can dump just the pouches?</span>")
-	return
-	/*A.add_fingerprint(M)
-	to_chat(M, "<span class='notice'>You start dumping out [parent].</span>")
-	var/turf/T = get_turf(A)
-	var/obj/item/storage/pouch = contents(1)
-	var/list/things = pouch.contents()
-	var/datum/progressbar/progress = new(M, length(things), T)
-	while (do_after(M, 1 SECONDS, T, NONE, FALSE, CALLBACK(src, .proc/mass_remove_from_storage, T, things, progress)))
-		stoplag(1)
-	progress.end_progress()*/
 
 /obj/item/storage/belt/crusader/ComponentInitialize()
 	. = ..()
@@ -101,34 +110,6 @@
 
 	STR.max_items = 6
 	STR.rustle_sound = TRUE
-	STR.max_w_class = WEIGHT_CLASS_SMALL //Rather than have a huge whitelist, the belt can simply hold anything a pocket can hold - Can be changed if it becomes an issue
+	STR.max_w_class = WEIGHT_CLASS_SMALL //Rather than have a huge whitelist, the belt can simply hold anything a pocket can hold - Can easily be changed if it somehow becomes an issue
 
 //End of Crusader Belt code (Finally)
-			//This will be a Newline when its all complete
-
-
-
-
-//-------------- DELETE WHEN DONE---------------
-/*TODO:
--you can Dump the pouch out of the belt, at which point its stuck on the ground - override normal dumping code so we dont drop the fucking pouch
--BoH's can have the pouch dumped into them, where its then anchored to the BoH (at least they can be dragged back, but it could possibly be abused for more than 1 sword)
-
-*/
-//-----------------------------------------------
-//Very very failed code - keeping it for now to see if its fixable, considering I like the idea for stuff like holsters
-/*
-//Checks for a sword/nullrod already in the belt (keeps it to a max of 1 sword/chaplain sword)
-/datum/component/storage/concrete/crusader/slave_can_insert_object(obj/item/inserted, stop_messages, mob/user)
-	if(!istype(inserted, list(/obj/item/melee, /obj/item/nullrod)))
-		return ..()
-	var/obj/item/melee/sword = locate() in real_location()
-	var/obj/item/nullrod/chap_rod = locate() in real_location()
-	if(sword)
-		to_chat(user, "<span class = 'warning'>[parent] already has [sword] in it!</span>")
-		return FALSE
-	if(chap_rod)
-		to_chat(user, "<span class = 'warning'>[parent] already has [chap_rod] in it!</span>")
-		return FALSE
-	return ..()
-*/
