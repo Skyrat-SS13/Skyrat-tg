@@ -11,14 +11,14 @@
 
 
 /datum/sprite_accessory/ears/cat
-	recommended_species = list("mammal", "human", "felinid", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "human", "felinid", "humanoid")
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/ears/mutant
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list("mammal", "human", "felinid", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "human", "felinid", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/none
 	name = "None"
@@ -27,13 +27,13 @@
 	factual = FALSE
 
 /datum/sprite_accessory/ears/mutant/vulpkanin
-	recommended_species = list("mammal", "human", "felinid", "vulpkanin", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "human", "felinid", "vulpkanin", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/tajaran
-	recommended_species = list("mammal", "human", "felinid", "tajaran", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "human", "felinid", "tajaran", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/akula
-	recommended_species = list("mammal", "human", "felinid", "aquatic", "akula", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "human", "felinid", "aquatic", "akula", "humanoid")
 
 /datum/sprite_accessory/ears/mutant/axolotl
 	name = "Axolotl"
