@@ -126,3 +126,20 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/robotic/synthliz/on_species_gain(mob/living/carbon/owner, datum/species/old_species, pref_load)
+	var/real_tail_type = owner.dna.features["tail_lizard"]
+	var/real_spines = owner.dna.features["spines"]
+
+	. = ..()
+
+	if(pref_load)
+		owner.dna.features["tail_lizard"] = real_tail_type
+		owner.dna.features["spines"] = real_spines
+
+		var/obj/item/organ/tail/lizard/new_tail = new /obj/item/organ/tail/lizard()
+
+		new_tail.tail_type = owner.dna.features["tail_lizard"]
+		new_tail.spines = owner.dna.features["spines"]
+
+		new_tail.Insert(owner, TRUE, FALSE)
