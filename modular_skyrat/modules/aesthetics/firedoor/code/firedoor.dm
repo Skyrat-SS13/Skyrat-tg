@@ -1,13 +1,13 @@
 /obj/machinery/door/firedoor
 	name = "Emergency Shutter"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a glass panel."
+	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a glass panel. It has a mechanism to open it with just your hands."
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor_glass.dmi'
 	var/door_open_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 	var/door_close_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 
 /obj/machinery/door/firedoor/heavy
 	name = "Heavy Emergency Shutter"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
+	desc = "Emergency air-tight shutter, capable of sealing off breached areas. It has a mechanism to open it with just your hands."
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor.dmi'
 
 /obj/structure/firelock_frame
