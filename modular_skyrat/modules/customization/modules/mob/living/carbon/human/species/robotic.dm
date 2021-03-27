@@ -135,7 +135,6 @@
 	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "fluff" = "None", "wings" = "None", "head_acc" = "None", "neck_acc" = "None")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/mammal_parts_greyscale.dmi'
-	mutantears = /obj/item/organ/ears
 
 /datum/species/robotic/synthetic_mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
