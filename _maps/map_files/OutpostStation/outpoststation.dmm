@@ -4519,6 +4519,12 @@
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/hos)
+"cMW" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
+/turf/closed/wall/r_wall,
+/area/science/xenobiology)
 "cNp" = (
 /obj/machinery/camera/autoname{
 	dir = 8
@@ -8899,7 +8905,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -10810,10 +10816,8 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science)
 "gDk" = (
@@ -18024,8 +18028,8 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 9
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/medical/storage)
@@ -20395,6 +20399,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
+"mul" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/plating,
+/area/medical/cryo)
 "mun" = (
 /obj/effect/turf_decal/trimline/green/filled/arrow_ccw{
 	dir = 8
@@ -26918,6 +26927,7 @@
 	req_access_txt = "30"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/structure/fans/tiny,
 /turf/open/floor/iron/freezer,
 /area/science/server)
 "qaJ" = (
@@ -29069,6 +29079,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/chemistry)
+"rny" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/science/xenobiology)
 "rnA" = (
 /obj/machinery/light{
 	dir = 1
@@ -29108,6 +29124,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/science)
 "roB" = (
@@ -36381,7 +36400,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer,
 /turf/open/floor/iron/white,
 /area/medical/cryo)
 "vDC" = (
@@ -39860,6 +39879,10 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
+"xDM" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/turf/closed/wall/r_wall,
+/area/science/xenobiology)
 "xFo" = (
 /obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -40050,7 +40073,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/thermomachine/heater{
+/obj/machinery/atmospherics/components/binary/thermomachine/heater{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -64728,7 +64751,7 @@ eES
 cjk
 rWf
 foE
-aAX
+cMW
 pVO
 pVO
 jmb
@@ -64985,7 +65008,7 @@ dkU
 iLh
 bzE
 irq
-aAX
+rny
 wyO
 pVO
 pVO
@@ -65242,7 +65265,7 @@ fda
 lXR
 nMa
 xKA
-aAX
+xDM
 pVO
 pVO
 vQD
@@ -65499,7 +65522,7 @@ gLB
 waA
 gLB
 gLB
-aAX
+rny
 aAX
 aAX
 aAX
@@ -75207,7 +75230,7 @@ nmI
 euz
 nmI
 kUu
-isS
+mul
 vDt
 neg
 knE
