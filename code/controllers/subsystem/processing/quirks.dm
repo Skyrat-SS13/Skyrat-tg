@@ -68,7 +68,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	if(cli.get_exp_living(TRUE) < EXP_ASSIGN_WAYFINDER && !user.has_quirk(/datum/quirk/needswayfinder))
 		user.add_quirk(/datum/quirk/needswayfinder, TRUE)
 
-<<<<<<< HEAD
 
 	// SKYRAT EDIT ADDITION START - Customization (food prefs)
 	// This was done in this proc on old skyrat and i cba to find a better way
@@ -83,7 +82,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 			for(var/V in cli.prefs.fooddislikes)
 				H.dna.species.disliked_food |= cli.prefs.fooddislikes[V]
 	// SKYRAT EDIT ADDITION END
-=======
 /*
  *Randomises the quirks for a specified mob
  */
@@ -149,4 +147,3 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 #undef RANDOM_QUIRK_BONUS
 #undef MINIMUM_RANDOM_QUIRKS
->>>>>>> 0500771072b ([Ready] Fermichem part 2.3 Adds a new reagent: Eigenstasium (#56918))
