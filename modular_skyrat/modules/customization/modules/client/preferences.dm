@@ -2235,7 +2235,7 @@ GLOBAL_LIST_INIT(food, list(
 					var/datum/scream_type/scream = available_screams[new_scream_id]
 					if(scream)
 						pref_scream = new scream
-						playsound(usr, pick(pref_scream.male_screamsounds), 50)
+						SEND_SOUND(user, pick(pref_scream.male_screamsounds))
 
 				if("species")
 					ShowSpeciesMenu(user)
