@@ -15,8 +15,6 @@ Bonus
 //////////////////////////////////////
 */
 
-//SKYRAT EDIT REMOVAL START
-/*
 /datum/symptom/oxygen
 
 	name = "Self-Respiration"
@@ -25,7 +23,7 @@ Bonus
 	resistance = -3
 	stage_speed = -3
 	transmittable = -4
-	level = 6
+	level = 9 //SKYRAT EDIT
 	base_message_chance = 5
 	symptom_delay_min = 1
 	symptom_delay_max = 1
@@ -73,5 +71,3 @@ Bonus
 	if(!.)
 		return
 	REMOVE_TRAIT(A.affected_mob, TRAIT_NOBREATH, DISEASE_TRAIT)
-*/
-//SKYRAT EDIT END
