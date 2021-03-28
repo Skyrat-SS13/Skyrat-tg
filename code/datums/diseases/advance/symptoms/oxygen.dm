@@ -15,6 +15,8 @@ Bonus
 //////////////////////////////////////
 */
 
+//SKYRAT EDIT REMOVAL START
+/*
 /datum/symptom/oxygen
 
 	name = "Self-Respiration"
@@ -71,3 +73,5 @@ Bonus
 	if(!.)
 		return
 	REMOVE_TRAIT(A.affected_mob, TRAIT_NOBREATH, DISEASE_TRAIT)
+*/
+//SKYRAT EDIT END
