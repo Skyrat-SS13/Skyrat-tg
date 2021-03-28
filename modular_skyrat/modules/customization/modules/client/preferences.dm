@@ -2225,6 +2225,9 @@ GLOBAL_LIST_INIT(food, list(
 					var/list/available_screams = list()
 					for(var/spath in subtypesof(/datum/scream_type)) //We need to build a custom list of available screams!
 						var/datum/scream_type/scream = spath
+						if(initial(scream.restricted_species_type))
+							if(!istype(pref_species, initial(scream.restricted_species_type)))
+								continue
 						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey])
 							continue
 						available_screams[initial(scream.name)] = spath

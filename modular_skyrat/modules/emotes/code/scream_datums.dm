@@ -5,6 +5,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	var/donator_only = FALSE
 	var/list/male_screamsounds
 	var/list/female_screamsounds
+	var/restricted_species_type
 
 /datum/scream_type/none //Why would you want this?
 	name = "No Scream"
@@ -20,6 +21,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Robotic Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	female_screamsounds = null
+	restricted_species_type = /datum/species/robotic
 
 /datum/scream_type/lizard
 	name = "Lizard Scream"
