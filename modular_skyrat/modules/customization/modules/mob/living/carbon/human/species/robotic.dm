@@ -194,11 +194,12 @@
 	return markings
 
 /datum/species/robotic/synthetic_human
-	name = "Synthetic Human"
+	name = "Synthetic Humanoid"
 	id = "synthhuman"
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	species_traits = list(ROBOTIC_DNA_ORGANS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,REVIVES_BY_HEALING,FACEHAIR,NOTRANSSTING)
+	default_mutant_bodyparts = list("tail" = "None", "snout" = "None", "ears" = "None", "wings" = "None", "taur" = "None", "horns" = "None")
 	use_skintones = TRUE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
