@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
 #define LOCKER_FULL -1
 
-/obj/structure/closet
->>>>>>> 0500771072b ([Ready] Fermichem part 2.3 Adds a new reagent: Eigenstasium (#56918))
+/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "closet"
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/closet.dmi'
