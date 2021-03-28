@@ -3,7 +3,7 @@
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
-	recommended_species = list("human", "felinid", "lizard", "synthmammal", "mammal", "synthliz")
+	recommended_species = list("human", "synthhuman", "felinid", "lizard", "synthmammal", "mammal", "synthliz")
 	organ_type = /obj/item/organ/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
