@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 /datum/scream_type
 	var/name
 	var/donator_only = FALSE
-	var/list/restricted_species
+	var/list/restricted_species_types
 	var/list/male_screamsounds
 	var/list/female_screamsounds
 
@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Robotic Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg')
 	female_screamsounds = null
-	restricted_species = list(/datum/species/robotic/ipc, /datum/species/synth, /datum/species/synth/military, /datum/species/robotic/synthliz)
+	restricted_species_types = list(/datum/species/robotic)
 
 /datum/scream_type/lizard
 	name = "Lizard Scream"
@@ -37,6 +37,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Skeleton Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
 	female_screamsounds = null
+	restricted_species_types = list(/datum/species/skeleton, /datum/species/plasmaman)
 
 /datum/scream_type/moth
 	name = "Moth Scream"
@@ -62,6 +63,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Zombie Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/zombie_scream.ogg')
 	female_screamsounds = null
+	restricted_species_types = list(/datum/species/zombie)
 
 /datum/scream_type/tajaran
 	name = "Cat Scream"

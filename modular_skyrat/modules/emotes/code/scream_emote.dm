@@ -32,11 +32,16 @@
 		return 'sound/voice/hiss6.ogg'
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
+		if(isnull(H.selected_scream)) //For things that don't have a selected scream(npcs)
+			var/datum/species/userspecies = H.dna.species
+			if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
+				return pick(userspecies.screamsounds)
+			else
+				return pick(userspecies.femalescreamsounds)
 		if(user.gender == MALE || !LAZYLEN(H.selected_scream.female_screamsounds))
 			return pick(H.selected_scream.male_screamsounds)
 		else
 			return pick(H.selected_scream.female_screamsounds)
-	return
 
 /datum/emote/living/scream/can_run_emote(mob/living/user, status_check, intentional)
 	if(iscyborg(user))
