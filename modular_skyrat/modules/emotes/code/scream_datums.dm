@@ -53,13 +53,12 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/cat_scream.ogg')
 	female_screamsounds = null
 
-//DONATOR SCREAMS
 /datum/scream_type/xeno
 	name = "Xeno Scream"
 	male_screamsounds = list('sound/voice/hiss6.ogg')
 	female_screamsounds = null
-	donator_only = TRUE
 
+//DONATOR SCREAMS
 /datum/scream_type/zombie
 	name = "Zombie Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/zombie_scream.ogg')
