@@ -130,6 +130,7 @@
 /datum/species/robotic/synthetic_mammal
 	name = "Synthetic Anthromorph"
 	id = "synthmammal"
+	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	default_color = "4B4B4B"
 	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING,FACEHAIR)
 	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "fluff" = "None", "wings" = "None", "head_acc" = "None", "neck_acc" = "None")
