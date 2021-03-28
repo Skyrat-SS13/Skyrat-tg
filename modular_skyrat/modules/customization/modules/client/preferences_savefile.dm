@@ -388,12 +388,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/scream_id
 	READ_FILE(S["scream"], scream_id)
 	if(scream_id)
-		var/datum/scream_type/new_type = GLOB.scream_types[scream_id]
+		var/new_type = GLOB.scream_types[scream_id]
 		if(new_type)
-			if(new_type.donator_only && !GLOB.donator_list[parent.ckey])
-				pref_scream = new /datum/scream_type/human
-			else
-				pref_scream = new new_type
+			pref_scream = new new_type
+		else
+			pref_scream = new /datum/scream_type/human
 	else
 		pref_scream = new /datum/scream_type/human
 
