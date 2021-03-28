@@ -108,6 +108,16 @@
 	contains = list(/obj/item/clothing/suit/space/hardsuit/security)
 	crate_name = "security hardsuit crate"
 
+/datum/supply_pack/security/baton_peacekeeper
+	name = "Batons Crate"
+	desc = "Arm the Civil Protection Forces with three batons. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_SECURITY
+	contains = list(/obj/item/melee/classic_baton/peacekeeper,
+					/obj/item/melee/classic_baton/peacekeeper,
+					/obj/item/melee/classic_baton/peacekeeper)
+	crate_name = "baton crate"
+
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -231,6 +241,15 @@
 	contains = list(/obj/machinery/jukebox/disco)
 	crate_name = "dance machine crate"
 */
+
+/datum/supply_pack/misc/fuel_pellets
+	name = "ExoDrone Fuel Crate"
+	desc = "Atmos on fire, and you still really wanna explore the stars? We've got you covered, for the fuel atleast."
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(/obj/item/fuel_pellet,
+					/obj/item/fuel_pellet,
+					/obj/item/fuel_pellet)
+	crate_name = "drone fuel crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Food Stuff //////////////////////////////////////
