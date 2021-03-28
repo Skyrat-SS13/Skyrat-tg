@@ -2222,20 +2222,20 @@ GLOBAL_LIST_INIT(food, list(
 						features["custom_species"] = null
 
 				if("scream")
-					var/list/available_screams
-					for(var/i in GLOB.scream_types)
-						var/datum/scream_type/newtype = GLOB.scream_types[i]
-						if(newtype)
-							var/datum/scream_type/ST = new newtype
-							if(pref_species.type in ST.restricted_species)
+					var/list/available_screams = list()
+					for(var/spath in subtypesof(/datum/scream_type)) //We need to build a custom list of available screams!
+						var/datum/scream_type/scream = spath
+						var/list/restricted = initial(scream.restricted_species)
+						if(restricted)
+							if(!(pref_species in restricted))
 								continue
-							if(ST.donator_only && !GLOB.donator_list[parent.ckey])
-								continue
-							available_screams += ST.type
-					var/new_scream = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
-					var/datum/scream_type/new_scream_type = new_scream
-					if(new_scream_type)
-						pref_scream = new new_scream_type
+						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey])
+							continue
+						available_screams[initial(scream.name)] = spath
+					var/new_scream_id = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
+					var/datum/scream_type/scream = available_screams[new_scream_id]
+					if(scream)
+						pref_scream = new scream
 
 				if("species")
 					ShowSpeciesMenu(user)
