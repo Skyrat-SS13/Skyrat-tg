@@ -2231,7 +2231,7 @@ GLOBAL_LIST_INIT(food, list(
 								continue
 							if(ST.donator_only && !GLOB.donator_list[parent.ckey])
 								continue
-							available_screams += ST
+							available_screams += ST.type
 					var/new_scream = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
 					var/datum/scream_type/new_scream_type = new_scream
 					if(new_scream_type)

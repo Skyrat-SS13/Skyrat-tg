@@ -7,6 +7,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 	var/list/male_screamsounds
 	var/list/female_screamsounds
 
+/datum/scream_type/none //Why would you want this?
+	name = "No Scream"
+	male_screamsounds = null
+	female_screamsounds = null
+
 /datum/scream_type/human
 	name = "Human Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_m1.ogg', 'modular_skyrat/modules/emotes/sound/voice/scream_m2.ogg')
