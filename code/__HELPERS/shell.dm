@@ -25,15 +25,15 @@
 			shelleo_ids[shelleo_id] = TRUE
 		out_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_OUT]"
 		err_file = "[SHELLEO_NAME][shelleo_id][SHELLEO_ERR]"
-		if(world.system_type == UNIX)
-			errorcode = shell("[interpreter] \"[replacetext(command, "\"", "\\\"")]\" > [out_file] 2> [err_file]")
-		else
-			errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
+		errorcode = shell("[interpreter] \"[command]\" > [out_file] 2> [err_file]")
+		to_chat(world, file2text(errorcode))
 		if(fexists(out_file))
 			stdout = file2text(out_file)
+			to_chat(world, stdout)
 			fdel(out_file)
 		if(fexists(err_file))
 			stderr = file2text(err_file)
+			to_chat(world, stderr)
 			fdel(err_file)
 		shelleo_ids[shelleo_id] = FALSE
 	else
@@ -42,7 +42,6 @@
 #undef SHELLEO_NAME
 #undef SHELLEO_ERR
 #undef SHELLEO_OUT
-
 /proc/shell_url_scrub(url)
 	var/static/regex/bad_chars_regex = regex("\[^#%&./:=?\\w]*", "g")
 	var/scrubbed_url = ""
