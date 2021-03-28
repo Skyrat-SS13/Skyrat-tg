@@ -2227,7 +2227,7 @@ GLOBAL_LIST_INIT(food, list(
 						var/datum/scream_type/scream = spath
 						var/list/restricted = initial(scream.restricted_species)
 						if(restricted)
-							if(!(pref_species in restricted))
+							if(!(pref_species.type in restricted))
 								continue
 						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey])
 							continue
