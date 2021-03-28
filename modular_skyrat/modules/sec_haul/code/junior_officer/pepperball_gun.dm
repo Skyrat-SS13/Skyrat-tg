@@ -67,7 +67,7 @@
 /obj/item/ammo_box/advanced/pepperballs
 	name = "pepperball ammo box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box10x24-0"
+	icon_state = "box10x24"
 	ammo_type = /obj/item/ammo_casing/pepperball
 	custom_materials = list(/datum/material/iron = 10000)
 	max_ammo = 30
