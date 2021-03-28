@@ -6,8 +6,8 @@
 	difficulty = 16
 	text_gain_indication = "<span class='notice'>Your body feels warm!</span>"
 	time_coeff = 5
-	instability = 30
-	locked = TRUE //SKYRAT EDIT ADDITION
+	instability = 60
+	locked = FALSE //SKYRAT EDIT ADDITION
 
 /datum/mutation/human/space_adaptation/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
 	..()
