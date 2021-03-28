@@ -98,7 +98,7 @@
 
 // MK-58
 /obj/item/storage/box/gunset/ladon
-	name = "mk-58 supply box"
+	name = "ladon supply box"
 
 /obj/item/gun/ballistic/automatic/pistol/mk58/nomag
 	spawnwithmagazine = FALSE
@@ -113,7 +113,7 @@
 
 //CROON
 /obj/item/storage/box/gunset/croon
-	name = "mk-58 supply box"
+	name = "croon supply box"
 
 /obj/item/gun/ballistic/automatic/croon/nomag
 	spawnwithmagazine = FALSE
@@ -163,8 +163,10 @@
 /obj/item/storage/box/gunset/zeta/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/zeta(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/zeta/rubber(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/zeta/rubber(src)
+	new /obj/item/ammo_box/revolver/zeta(src) //These start empty.
+	new /obj/item/ammo_box/revolver/zeta(src)
+	new /obj/item/ammo_box/revolver/zeta(src)
+	new /obj/item/ammo_box/advanced/b10mm/rubber(src)
 
 //REVOLUTION
 /obj/item/storage/box/gunset/revolution
@@ -173,8 +175,10 @@
 /obj/item/storage/box/gunset/revolution/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/revolver/revolution(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/revolution/rubber(src)
-	new /obj/item/ammo_box/revolver/multi_sprite/revolution/rubber(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/advanced/b12mm/rubber(src)
 
 
 /////////////////
@@ -338,3 +342,18 @@
 /obj/item/storage/box/gunset/blaster/PopulateContents()
 	. = ..()
 	new /obj/item/gun/energy/laser/hitscan(src)
+
+//PEPPERBALLS
+/obj/item/storage/box/gunset/pepperball
+	name = "pepperball supply box"
+	w_class = WEIGHT_CLASS_NORMAL
+/obj/item/gun/ballistic/automatic/pistol/pepperball/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/pepperball/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/pepperball/nomag(src)
+	new /obj/item/ammo_box/magazine/pepperball(src)
+	new /obj/item/ammo_box/magazine/pepperball(src)
+	new /obj/item/ammo_box/magazine/pepperball(src)
+	new /obj/item/ammo_box/magazine/pepperball(src)
