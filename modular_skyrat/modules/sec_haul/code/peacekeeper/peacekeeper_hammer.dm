@@ -49,13 +49,19 @@
 
 /obj/item/melee/hammer/proc/remove_track(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
+	if(!registered)
+		return FALSE
 	registered = FALSE
 	breaching = FALSE
-	if(!user)
-		visible_message("Remove track passed without user")
+	to_chat(user, text = "Text text text")
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(breaching_target, COMSIG_BREACHING)
 	breaching_target = null
+	var/mob/living/carbon/human/silly = breacher
+	var/target_slot = silly.held_items.Find(src, 1, 0)
+	if(target_slot)
+		var/obj/item/melee/hammer/hamm = silly.held_items[target_slot]
+		hamm.remove_track(silly)
 	breacher = null
 
 /obj/item/melee/hammer/proc/try_breaching(obj/target, mob/living/carbon/human/user)
@@ -71,16 +77,14 @@
 	to_chat(breacher , text = "You begin forcefully smashing the [target]")
 
 /obj/item/melee/hammer/proc/breaching_loop(mob/living/user, obj/target)
-	if(user.stat || !target)
+	if(user.stat || !target || !(user.Adjacent(target)) || !breacher)
 		remove_track(user)
 		return FALSE
 	if(target.obj_integrity < 1)
 		remove_track(user)
-		qdel(target)
+		qdel(target, TRUE)
 	var/mob/living/carbon/human/silly = breacher
-	if(!silly)
-		return FALSE
-	if(!(user.Adjacent(target)) || !(silly.Adjacent(target)))
+	if(!(silly.Adjacent(target)))
 		remove_track(user)
 		return NONE
 	if(do_after(user, breaching_delay))
