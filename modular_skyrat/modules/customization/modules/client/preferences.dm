@@ -2228,13 +2228,14 @@ GLOBAL_LIST_INIT(food, list(
 						if(initial(scream.restricted_species_type))
 							if(!istype(pref_species, initial(scream.restricted_species_type)))
 								continue
-						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey])
+						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey] && !check_rights(R_ADMIN))
 							continue
 						available_screams[initial(scream.name)] = spath
 					var/new_scream_id = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
 					var/datum/scream_type/scream = available_screams[new_scream_id]
 					if(scream)
 						pref_scream = new scream
+						playsound(usr, pick(pref_scream.male_screamsounds), 50)
 
 				if("species")
 					ShowSpeciesMenu(user)

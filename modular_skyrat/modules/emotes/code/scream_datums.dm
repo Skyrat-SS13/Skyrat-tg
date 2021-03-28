@@ -33,11 +33,6 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_lizard.ogg')
 	female_screamsounds = null
 
-/datum/scream_type/skeleton
-	name = "Skeleton Scream"
-	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
-	female_screamsounds = null
-
 /datum/scream_type/moth
 	name = "Moth Scream"
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_moth.ogg')
@@ -53,6 +48,12 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/voxscream.ogg')
 	female_screamsounds = null
 
+/datum/scream_type/tajaran
+	name = "Cat Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/cat_scream.ogg')
+	female_screamsounds = null
+
+//DONATOR SCREAMS
 /datum/scream_type/xeno
 	name = "Xeno Scream"
 	male_screamsounds = list('sound/voice/hiss6.ogg')
@@ -65,7 +66,20 @@ GLOBAL_LIST_EMPTY(scream_types)
 	female_screamsounds = null
 	donator_only = TRUE
 
-/datum/scream_type/tajaran
-	name = "Cat Scream"
-	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/cat_scream.ogg')
+/datum/scream_type/monkey
+	name = "Monkey Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg')
 	female_screamsounds = null
+	donator_only = TRUE
+
+/datum/scream_type/gorilla
+	name = "Gorilla Scream"
+	male_screamsounds = list('sound/creatures/gorilla.ogg')
+	female_screamsounds = null
+	donator_only = TRUE
+
+/datum/scream_type/skeleton
+	name = "Skeleton Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/scream_skeleton.ogg')
+	female_screamsounds = null
+	donator_only = TRUE
