@@ -2225,12 +2225,13 @@ GLOBAL_LIST_INIT(food, list(
 					var/list/available_screams
 					for(var/i in GLOB.scream_types)
 						var/datum/scream_type/newtype = GLOB.scream_types[i]
-						var/datum/scream_type/actual_type = new newtype
-						if(pref_species.type in actual_type.restricted_species)
-							continue
-						if(actual_type.donator_only && !GLOB.donator_list[parent.ckey])
-							continue
-						available_screams += actual_type
+						if(newtype)
+							var/datum/scream_type/ST = new newtype
+							if(pref_species.type in ST.restricted_species)
+								continue
+							if(ST.donator_only && !GLOB.donator_list[parent.ckey])
+								continue
+							available_screams += ST
 					var/new_scream = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
 					var/datum/scream_type/new_scream_type = new_scream
 					if(new_scream_type)

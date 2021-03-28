@@ -388,11 +388,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/scream_id
 	READ_FILE(S["scream"], scream_id)
 	if(scream_id)
-		var/datum/scream_type/new_type = GLOB.scream_types[scream_id]
+		var/new_type = GLOB.scream_types[scream_id]
 		if(new_type)
-			pref_scream = new new_type
-		else
-			pref_scream = new /datum/scream_type/human
+			var/datum/scream_type/ST = new new_type
+			if(pref_species.type in ST.restricted_species)
+				pref_scream = new /datum/scream_type/human
+			else
+				pref_scream = ST
 
 	/*if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
 		WRITE_FILE(S["features["mcolor"]"]	, "#FFF")

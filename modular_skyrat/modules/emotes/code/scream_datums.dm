@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 	name = "Lizard Scream"
 	male_screamsounds = list('sound/voice/lizard/lizard_scream_1.ogg', 'sound/voice/lizard/lizard_scream_3.ogg')
 	female_screamsounds = null
-	restricted_species = typesof(/datum/species/lizard)
+	restricted_species = list(/datum/species/lizard)
 
 /datum/scream_type/lizard2
 	name = "Lizard Scream 2"
