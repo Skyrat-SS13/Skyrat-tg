@@ -105,7 +105,11 @@
 	SIGNAL_HANDLER
 
 	shooter = user
+<<<<<<< HEAD
 	var/turf/targloc = get_turf(target)
+=======
+	var/turf/target_loc = get_turf(target)
+>>>>>>> 62a06b26fd9 (Refactors pellet_cloud/create_cassing_pellets to not sleep (#57974))
 	if(!zone_override)
 		zone_override = shooter.zone_selected
 
@@ -128,10 +132,18 @@
 		shell.loaded_projectile.wound_bonus = original_wb
 		shell.loaded_projectile.bare_wound_bonus = original_bwb
 		pellets += shell.loaded_projectile
+<<<<<<< HEAD
 		var/turf/curloc = get_turf(user)
 		if (!istype(targloc) || !istype(curloc) || !(shell.loaded_projectile))
 			return
 		INVOKE_ASYNC(shell, /obj/item/ammo_casing.proc/throw_proj, target, targloc, shooter, params, spread)
+=======
+		var/turf/current_loc = get_turf(user)
+		if (!istype(target_loc) || !istype(current_loc) || !(shell.loaded_projectile))
+			return
+		INVOKE_ASYNC(shell, /obj/item/ammo_casing.proc/throw_proj, target, target_loc, shooter, params, spread)
+
+>>>>>>> 62a06b26fd9 (Refactors pellet_cloud/create_cassing_pellets to not sleep (#57974))
 		if(i != num_pellets)
 			shell.newshot()
 
