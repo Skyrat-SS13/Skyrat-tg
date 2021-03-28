@@ -36,8 +36,10 @@
 		to_chat(user, text = "You prepare to forcefully strike the door")
 		if(!registered)
 			RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/remove_track, FALSE)
-			RegisterSignal(target, COMSIG_BREACHING, .proc/try_breaching, FALSE)
+			RegisterSignal(target, COMSIG_BREACHING, .proc/try_breaching, TRUE)
 			registered = TRUE
+		if(!(breachers.Find(user, 1, 0)))
+			breachers += user
 		SEND_SIGNAL(target, COMSIG_BREACHING, user, breachers)
 		breaching_target = target
 	if(iscarbon(target))
@@ -62,8 +64,6 @@
 	SIGNAL_HANDLER
 	if(breaching)
 		return FALSE
-	if(!(breachers.Find(user, 1, 0)))
-		breachers += user
 	for(var/fellow_breacher in fellow_breachers)
 		if(fellow_breacher != user)
 			breachers += fellow_breacher
@@ -73,7 +73,7 @@
 		remove_track()
 		return NONE
 	for(var/breacher in breachers)
-		breaching_loop(breacher, target)
+		INVOKE_ASYNC(src, /obj/item/melee/hammer.proc/breaching_loop , breacher, target)
 		to_chat(breacher , text = "You begin forcefully smashing the [target]")
 	SEND_SIGNAL(target, COMSIG_BREACHING, user, breachers)
 
