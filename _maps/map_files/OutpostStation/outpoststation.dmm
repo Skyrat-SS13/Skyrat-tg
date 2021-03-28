@@ -3701,7 +3701,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/cargo/storage)
+/area/maintenance/port/aft)
 "ckU" = (
 /obj/machinery/door/airlock/research/glass{
 	name = "Robotics Lab";
@@ -8190,6 +8190,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/iron,
 /area/cargo/storage)
 "eUV" = (
@@ -14219,6 +14220,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"iHi" = (
+/obj/structure/window/spawner,
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/cargo/storage)
 "iHx" = (
 /turf/closed/wall/r_wall,
 /area/command/meeting_room)
@@ -15446,11 +15454,10 @@
 	pixel_x = -30;
 	receive_ore_updates = 1
 	},
-/obj/structure/closet/wardrobe/chemistry_white,
-/obj/item/book/manual/wiki/chemistry,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 9
 	},
+/obj/machinery/chem_mass_spec,
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
 "jtM" = (
@@ -17976,6 +17983,14 @@
 /obj/structure/closet/secure_closet/medical1,
 /turf/open/floor/iron/white,
 /area/medical/storage)
+"kST" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/machinery/exodrone_launcher,
+/obj/item/exodrone,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "kTc" = (
 /obj/machinery/recharge_station,
 /obj/machinery/camera/autoname{
@@ -18093,6 +18108,27 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
+"kWU" = (
+/obj/structure/table/reinforced,
+/obj/item/stock_parts/micro_laser{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/stock_parts/micro_laser{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stock_parts/micro_laser{
+	pixel_x = 2
+	},
+/obj/item/stock_parts/micro_laser{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/fuel_pellet,
+/obj/structure/window/spawner,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "kWX" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics";
@@ -18104,6 +18140,17 @@
 	},
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"kXg" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Cargo Bay Warehouse Maintenance";
+	req_access_txt = "31"
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes,
+/turf/open/floor/iron,
+/area/maintenance/port/aft)
 "kXj" = (
 /obj/structure/table,
 /turf/open/floor/iron/dark,
@@ -18120,6 +18167,24 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
+"kXx" = (
+/obj/structure/table/reinforced,
+/obj/item/stock_parts/scanning_module{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/stock_parts/scanning_module{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/stock_parts/scanning_module{
+	pixel_x = -5
+	},
+/obj/item/stock_parts/scanning_module{
+	pixel_x = 5
+	},
+/turf/open/floor/iron,
+/area/cargo/storage)
 "kXR" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -18957,6 +19022,14 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/sorting)
+"lxt" = (
+/obj/machinery/computer/exoscanner_control{
+	dir = 8
+	},
+/obj/structure/window/spawner,
+/obj/structure/window/spawner/east,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "lxA" = (
 /obj/item/radio/intercom{
 	broadcasting = 1;
@@ -18973,6 +19046,20 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/ai_upload)
+"lxD" = (
+/obj/structure/rack,
+/obj/item/circuitboard/machine/exoscanner{
+	pixel_y = 3
+	},
+/obj/item/circuitboard/machine/exoscanner,
+/obj/item/circuitboard/machine/exoscanner{
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/cargo/storage)
 "lxP" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -22664,6 +22751,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/engineering/supermatter)
+"nGD" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/cargo/storage)
 "nGQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/gross_decal_spawner,
@@ -24186,9 +24279,13 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "oAz" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/commons/dorms)
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/structure/tank_holder/extinguisher,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "oBI" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -29373,6 +29470,12 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/port)
+"ruu" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/cargo/storage)
 "ruL" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable,
@@ -29630,6 +29733,14 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"rCd" = (
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/obj/machinery/exodrone_launcher,
+/obj/item/exodrone,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "rCz" = (
 /obj/machinery/light{
 	dir = 8
@@ -32167,6 +32278,13 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/break_room)
+"sYy" = (
+/obj/machinery/computer/exodrone_control_console{
+	dir = 8
+	},
+/obj/structure/window/spawner/east,
+/turf/open/floor/iron,
+/area/cargo/storage)
 "sZc" = (
 /obj/machinery/light_switch{
 	pixel_x = 23
@@ -32340,6 +32458,7 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/chemistry,
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
 "tcQ" = (
@@ -59066,13 +59185,13 @@ xfn
 xfn
 xfn
 hKd
-nHO
+oAz
 uOg
 aKu
 aKu
 aKu
 aKu
-ruj
+rVI
 tti
 dAg
 eub
@@ -59324,13 +59443,13 @@ dnK
 dnK
 kae
 nHO
-uOg
-xHQ
-xHQ
-lXF
-oXm
+lxD
+kXx
+kWU
+xfn
+kXg
 rVI
-oAz
+tti
 uap
 xoi
 ljH
@@ -59581,13 +59700,13 @@ xfn
 xfn
 kjQ
 nHO
-nJy
-xHQ
-xHQ
-lXF
-oXm
+ruu
+xfn
+iHi
+xfn
+uOg
 rVI
-oAz
+tti
 nsT
 lnf
 uap
@@ -59838,13 +59957,13 @@ xfn
 xfn
 kjQ
 nHO
-nJy
-xHQ
-lXF
-xHQ
-oXm
+ruu
+sYy
+lxt
+xfn
+uOg
 rVI
-oAz
+tti
 lnf
 lnf
 nsT
@@ -60095,13 +60214,13 @@ xfn
 xfn
 kjQ
 nHO
-nJy
-xHQ
-lXF
-xHQ
-oXm
+ruu
+xfn
+xfn
+xfn
+uOg
 rVI
-oAz
+tti
 dAg
 jyv
 lPY
@@ -60352,13 +60471,13 @@ kkq
 xfn
 kjQ
 nHO
+rCd
+nGD
+nGD
+kST
 uOg
-xHQ
-xHQ
-xHQ
-oXm
 rVI
-oAz
+tti
 uap
 lnf
 gwE
