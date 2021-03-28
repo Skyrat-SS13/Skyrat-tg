@@ -101,23 +101,19 @@
 					message_admins("[key_name(usr)] created a nuke team with [maxCount] operatives")
 					log_admin("[key_name(usr)] created a nuke team with [maxCount] operatives")
 				else
-<<<<<<< HEAD
-					message_admins("[key_name_admin(usr)] tried to create a nuke team. Unfortunately, there were not enough candidates available.")
-					log_admin("[key_name(usr)] failed to create a nuke team.")
+					message_admins("[key_name_admin(usr)] tried to create a nuke team with [maxCount] operatives Unfortunately, there were not enough candidates available.")
+					log_admin("[key_name(usr)] failed to create a nuke team with [maxCount] operatives.")
 			//SKYRAT EDIT ADDITION BEGIN - ASSAULT OPS
 			if("assaultops")
 				message_admins("[key_name(usr)] is creating an assault team...")
-				if(src.makeAssaultTeam())
-					message_admins("[key_name(usr)] created an assault team.")
-					log_admin("[key_name(usr)] created an assault team.")
+				var/maxCount = input("Set number of Ass OPs","Set Ass OP Count (max)",5) as num|null
+				if(src.makeAssaultTeam(maxCount))
+					message_admins("[key_name(usr)] created an assault team with [maxCount] operatives.")
+					log_admin("[key_name(usr)] created an assault team with [maxCount] operatives")
 				else
-					message_admins("[key_name_admin(usr)] tried to create an assault team. Unfortunately, there were not enough candidates available.")
-					log_admin("[key_name(usr)] failed to create an assault team.")
+					message_admins("[key_name_admin(usr)] tried to create an assault team with [maxCount] operatves. Unfortunately, there were not enough candidates available.")
+					log_admin("[key_name(usr)] failed to create an assault team with [maxCount] operatives.")
 			//SKYRAT EDIT END
-=======
-					message_admins("[key_name_admin(usr)] tried to create a nuke team with [maxCount] operatives Unfortunately, there were not enough candidates available.")
-					log_admin("[key_name(usr)] failed to create a nuke team with [maxCount] operatives.")
->>>>>>> 185dd4b88f5 (Quick-Create-Antagonist tweaks (#57913))
 			if("ninja")
 				message_admins("[key_name(usr)] spawned a ninja.")
 				log_admin("[key_name(usr)] spawned a ninja.")
