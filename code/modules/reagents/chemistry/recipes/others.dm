@@ -764,9 +764,6 @@
 	rate_up_lim = 50
 	purity_min = 0
 	mix_message = "The mixture's colors swirl together."
-<<<<<<< HEAD
-
-=======
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
 
 /datum/chemical_reaction/eigenstate
@@ -847,4 +844,3 @@
 			return
 	clear_products(holder, step_volume_added)
 	holder.my_atom.audible_message("<span class='notice'>[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] The reaction gives out a fizz, teleporting items everywhere!</span>")
->>>>>>> 0500771072b ([Ready] Fermichem part 2.3 Adds a new reagent: Eigenstasium (#56918))
