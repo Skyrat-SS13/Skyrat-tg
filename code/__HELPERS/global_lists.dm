@@ -39,6 +39,14 @@
 	*/
 	//SKYRAT EDIT REMOVAL END
 
+	//SKYRAT EDIT ADDITION BEGIN
+	//Scream types
+	for(var/spath in subtypesof(/datum/scream_type))
+		var/datum/scream_type/S = new spath()
+		GLOB.scream_types[S.name] = spath
+	sortList(GLOB.scream_types, /proc/cmp_typepaths_asc)
+	//SKYRAT EDIT END
+
 	//Species
 	for(var/spath in subtypesof(/datum/species))
 		var/datum/species/S = new spath()

@@ -104,6 +104,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/facial_hair_color = "000" //Facial hair color
 	var/skin_tone = "caucasian1" //Skin color
 	var/eye_color = "000" //Eye color
+	var/datum/scream_type/pref_scream = new /datum/scream_type/human() //Scream type
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	//Has to include all information that extra organs from mutant bodyparts would need. (so far only genitals now)
 	var/list/features = MANDATORY_FEATURE_LIST
@@ -426,6 +427,7 @@ GLOBAL_LIST_INIT(food, list(
 
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
+					dat += "<b>Scream:</b><BR><a href='?_src_=prefs;preference=scream;task=input'>[pref_scream.name]</a><BR>"
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
 					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
@@ -2219,6 +2221,21 @@ GLOBAL_LIST_INIT(food, list(
 					else
 						features["custom_species"] = null
 
+				if("scream")
+					var/list/available_screams
+					for(var/i in GLOB.scream_types)
+						var/datum/scream_type/newtype = GLOB.scream_types[i]
+						var/datum/scream_type/actual_type = new newtype
+						if(pref_species.type in actual_type.restricted_species)
+							continue
+						if(actual_type.donator_only && !GLOB.donator_list[parent.ckey])
+							continue
+						available_screams += actual_type
+					var/new_scream = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
+					var/datum/scream_type/new_scream_type = new_scream
+					if(new_scream_type)
+						pref_scream = new new_scream_type
+
 				if("species")
 					ShowSpeciesMenu(user)
 					return TRUE
@@ -2873,6 +2890,8 @@ GLOBAL_LIST_INIT(food, list(
 	character.backpack = backpack
 
 	character.jumpsuit_style = jumpsuit_style
+
+	character.selected_scream = pref_scream
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
