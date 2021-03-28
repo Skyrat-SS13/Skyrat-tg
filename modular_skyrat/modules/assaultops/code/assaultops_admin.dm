@@ -1,9 +1,12 @@
-/datum/admins/proc/makeAssaultTeam()
+/datum/admins/proc/makeAssaultTeam(var/numops)
 	var/datum/game_mode/assaultops/temp = new
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for an assault team being sent in?", ROLE_ASSAULTOPS, temp)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 	var/numagents = 5
+
+	if(numops)
+		numagents = numops
 
 	if(candidates.len)
 		var/agentcount = 0
