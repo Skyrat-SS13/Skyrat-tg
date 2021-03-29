@@ -92,7 +92,7 @@
 	if(user.stat || !target || !breacher)
 		remove_track(user)
 		return FALSE
-	if(!(user.Adjacent(target))
+	if(!(user.Adjacent(target)))
 		remove_track(user)
 		return FALSE
 	if(target.obj_integrity < 1)
