@@ -36,7 +36,7 @@
 	var/door_light_power = AIRLOCK_LIGHT_POWER
 
 /obj/effect/overlay/vis_airlock
-	layer = EMISSIVE_LAYER
+	layer = 0
 	plane = EMISSIVE_PLANE
 	vis_flags = VIS_INHERIT_ID
 
