@@ -2,8 +2,8 @@
 	name = "D-4 Tactical hammer"
 	desc = "A metallic-plastic composite breaching hammer, looks like a whack with this would severly harm or tire someone."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
-	icon_state = "peacekeeper_baton"
-	inhand_icon_state = "peacekeeper_baton"
+	icon_state = "peacekeeper_hammer"
+	inhand_icon_state = "peacekeeper_hammer"
 	worn_icon_state = "classic_baton"
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_righthand.dmi'
