@@ -7,12 +7,6 @@
 	worn_icon_state = "classic_baton"
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_righthand.dmi'
-	var/breaching_delay = 2 SECONDS
-	var/breaching_target = null
-	var/breaching = FALSE
-	var/registered = FALSE
-	var/breacher = null
-	var/breaching_multipler = 2.5
 	slot_flags = ITEM_SLOT_BELT
 	force = 15
 	throwforce = 35
@@ -22,6 +16,18 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb_continuous = list("whacks","breaches","bulldozes")
 	attack_verb_simple = list("breaches","hammers","whacks","slaps","annhilates")
+	/// Delay between door hits
+	var/breaching_delay = 2 SECONDS
+	/// The door we aim to breach
+	var/breaching_target = null
+	/// If we are in the process of breaching
+	var/breaching = FALSE
+	/// If we are tracking the door and ourselves
+	var/registered = FALSE
+	/// The person breaching , initially us but we receive a signal with another one
+	var/breacher = null
+	/// the amount that the force is multiplied by , that is then applied as damage to the door.
+	var/breaching_multipler = 2.5
 
 /obj/item/melee/hammer/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
@@ -47,6 +53,7 @@
 		H.apply_damage_type(40, STAMINA)
 		H.throw_at(get_step_away(H, user), 1, 1, user, TRUE, gentle = TRUE)
 
+/// Removes any form of tracking from the user and the item , make sure to call it on he proper item
 /obj/item/melee/hammer/proc/remove_track(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 	if(!registered)
@@ -59,6 +66,7 @@
 	breaching_target = null
 	breacher = null
 
+/// Does the checks for breaching
 /obj/item/melee/hammer/proc/try_breaching(obj/target, mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 	if(breaching || (user == breacher))
@@ -79,11 +87,16 @@
 	INVOKE_ASYNC(second_hammer, /obj/item/melee/hammer.proc/breaching_loop , breacher, target)
 	to_chat(breacher , text = "You begin forcefully smashing the [target]")
 
+/// Keeps looping under the door is no more , or someone moves , gets shot , dies , incapacitated , stunned , etc
 /obj/item/melee/hammer/proc/breaching_loop(mob/living/user, obj/target)
-	if(user.stat || !target || !(user.Adjacent(target)) || !breacher)
+	if(user.stat || !target || !breacher)
+		remove_track(user)
+		return FALSE
+	if(!(user.Adjacent(target))
 		remove_track(user)
 		return FALSE
 	if(target.obj_integrity < 1)
+		do_smoke(3, target.loc)
 		remove_track(user)
 		qdel(target, TRUE)
 	var/mob/living/carbon/human/silly = breacher
