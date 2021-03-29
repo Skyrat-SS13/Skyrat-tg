@@ -974,6 +974,7 @@
 		/obj/item/stack/sheet/glass = 1)
 	def_components = list(/obj/item/stack/ore/bluespace_crystal = /obj/item/stack/ore/bluespace_crystal/artificial)
 
+/*	//SKYRAT EDIT REMOVAL BEGIN
 /obj/item/circuitboard/machine/dnascanner
 	name = "DNA Scanner (Machine Board)"
 	icon_state = "science"
@@ -984,6 +985,7 @@
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/cable_coil = 2)
+*/	//SKYRAT EDIT REMOVAL END
 
 /obj/item/circuitboard/machine/mechpad
 	name = "Mecha Orbital Pad (Machine Board)"

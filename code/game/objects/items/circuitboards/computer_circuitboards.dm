@@ -409,10 +409,12 @@
 	icon_state = "science"
 	build_path = /obj/machinery/computer/camera_advanced/xenobio
 
+/*	//SKYRAT EDIT REMOVAL START
 /obj/item/circuitboard/computer/scan_consolenew
 	name = "DNA Console (Computer Board)"
 	icon_state = "science"
 	build_path = /obj/machinery/computer/scan_consolenew
+*/	//SKYRAT EDIT REMOVAL END
 
 /obj/item/circuitboard/computer/mechpad
 	name = "Mecha Orbital Pad Console (Computer Board)"
