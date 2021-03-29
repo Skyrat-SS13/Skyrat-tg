@@ -11599,12 +11599,6 @@
 /turf/open/floor/iron,
 /area/hallway/primary/port)
 "aDW" = (
-/obj/structure/table,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/toolbox/emergency,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -11622,6 +11616,13 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
@@ -12641,6 +12642,9 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
@@ -15322,11 +15326,12 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/kirbyplants/random,
+/obj/machinery/vending/autodrobe{
+	req_access_txt = "0"
+	},
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "aOo" = (
-/obj/structure/closet/crate/bin,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -15338,12 +15343,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark,
 /area/commons/dorms)
 "aOp" = (
-/obj/machinery/vending/autodrobe{
-	req_access_txt = "0"
-	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
 	},
@@ -15360,6 +15363,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/cryopod{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
@@ -17037,7 +17043,9 @@
 /area/commons/dorms)
 "aSR" = (
 /obj/structure/table,
-/obj/item/paicard,
+/obj/item/paicard{
+	pixel_x = -6
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -17048,11 +17056,12 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/camera{
+	pixel_x = 7
+	},
 /turf/open/floor/iron,
 /area/commons/dorms)
 "aSS" = (
-/obj/structure/table,
-/obj/item/camera,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -17072,6 +17081,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/closet/crate/bin,
 /turf/open/floor/iron,
 /area/commons/dorms)
 "aSV" = (
@@ -23860,15 +23870,7 @@
 /obj/effect/turf_decal/tile/blue/darkblue{
 	dir = 1
 	},
-/obj/structure/rack,
-/obj/item/storage/box/flashes{
-	pixel_x = 3
-	},
-/obj/item/storage/box/teargas{
-	pixel_x = 1;
-	pixel_y = -2
-	},
-/obj/item/gun/grenadelauncher,
+/obj/machinery/gun_vendor,
 /turf/open/floor/holofloor/dark,
 /area/service/lawoffice)
 "bqT" = (
@@ -39926,7 +39928,9 @@
 /turf/open/floor/plating,
 /area/engineering/main)
 "ufP" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/closet/secure_closet/freezer/fridge{
+	req_access = null
+	},
 /obj/item/food/meat/slab/monkey,
 /obj/item/food/meat/slab/monkey,
 /obj/item/food/meat/slab/monkey,
