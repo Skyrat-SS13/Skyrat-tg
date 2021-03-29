@@ -15,7 +15,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme
-	weight = 10
+	weight = 0
 	min_players = 30
 	max_occurrences = 3
 	earliest_start = 25 MINUTES
@@ -275,6 +275,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
+	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
+	new loot(loc)
 
 /obj/effect/cme/extreme/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
@@ -285,6 +287,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
+	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
+	new loot(loc)
 
 /obj/effect/cme/armageddon/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
@@ -295,3 +299,5 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
+	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
+	new loot(loc)
