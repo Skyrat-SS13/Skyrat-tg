@@ -387,6 +387,7 @@
 		changed_after_approval = TRUE
 		log += "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")] CHANGED AFTER APPROVAL:"
 	log += "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")] [text_content]"
+	my_mind.log_message(text_content, LOG_AMBITION)
 
 /datum/ambitions/proc/is_proper_ambitions()
 	if(intensity == 0 || length(objectives) == 0 || narrative == "")
