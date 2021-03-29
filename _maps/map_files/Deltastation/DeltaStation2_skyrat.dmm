@@ -55203,12 +55203,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/library)
-"cwt" = (
-/obj/machinery/newscaster/security_unit{
-	pixel_y = 32
-	},
-/turf/open/floor/iron/dark,
-/area/security/office)
 "cwu" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box{
@@ -102322,7 +102316,6 @@
 	pixel_x = 4
 	},
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/wirecutters,
 /obj/item/shovel/spade,
 /obj/item/shovel/spade,
 /obj/item/cultivator,
@@ -102332,6 +102325,7 @@
 /obj/item/storage/bag/plants,
 /obj/item/secateurs,
 /obj/item/secateurs,
+/obj/item/wrench,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/crowbar,
@@ -102428,6 +102422,15 @@
 	},
 /turf/open/floor/iron,
 /area/security/checkpoint)
+"mLN" = (
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "brigprison";
+	name = "Prison Blast door"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/security/prison/safe)
 "mMY" = (
 /obj/effect/spawner/randomsnackvend,
 /obj/effect/turf_decal/bot,
@@ -104830,6 +104833,9 @@
 /area/commons/vacant_room/commissary)
 "pAS" = (
 /obj/item/kirbyplants/random,
+/obj/machinery/newscaster/security_unit{
+	pixel_y = -32
+	},
 /turf/open/floor/iron/dark,
 /area/security/office)
 "pAV" = (
@@ -107469,6 +107475,20 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/hallway/primary/central/fore)
+"soG" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/prison)
 "soI" = (
 /obj/machinery/computer/security{
 	dir = 4
@@ -111288,6 +111308,19 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/maintenance/department/science)
+"wBP" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/security/prison)
 "wDB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4,
@@ -162250,8 +162283,8 @@ aad
 aad
 aad
 aad
-mIc
-mIc
+qYo
+qYo
 aad
 aad
 aad
@@ -165075,7 +165108,7 @@ aFm
 aWd
 kTs
 lPW
-qcp
+bfR
 bfR
 bfR
 bfR
@@ -165332,10 +165365,10 @@ syA
 gDy
 gDy
 wDB
-bfS
-bfS
-bfS
-bfS
+soG
+soG
+soG
+soG
 bhe
 npz
 qmm
@@ -165566,9 +165599,9 @@ aaa
 uHd
 aaa
 qYo
-xjZ
-xjZ
-xjZ
+mLN
+mLN
+mLN
 xjZ
 vkb
 mli
@@ -165589,12 +165622,12 @@ tab
 wWx
 lQx
 eyf
-wWx
-bfR
-bfR
-lwZ
-bhd
-cwt
+wBP
+wBP
+wBP
+soG
+gCu
+npz
 kTw
 joB
 tRX
@@ -165845,11 +165878,11 @@ gUM
 aFm
 oTt
 aJA
+qcp
 bfR
 bfR
-aFm
-fMk
-fMk
+bfR
+lwZ
 bhd
 oVf
 kTw
@@ -166105,8 +166138,8 @@ aJA
 aFm
 aFm
 aFm
-eqU
-aaa
+fMk
+fMk
 bhd
 lEO
 npz
@@ -166360,7 +166393,7 @@ aUz
 aMi
 mgz
 fMk
-aaa
+qYo
 qYo
 qYo
 qYo
@@ -166617,10 +166650,10 @@ pff
 bfS
 rrk
 fMk
-qYo
-qYo
-eqU
 aaa
+aaa
+eqU
+qYo
 gCu
 pEw
 byM
@@ -166874,7 +166907,7 @@ oBn
 agf
 ewn
 fMk
-aaa
+qYo
 qYo
 qYo
 qYo
@@ -167132,9 +167165,9 @@ wWx
 aJA
 aFm
 aaa
-qYo
-eqU
 aaa
+eqU
+qYo
 bhd
 biO
 bky
@@ -167622,9 +167655,9 @@ aaa
 uHd
 aaa
 qYo
-xjZ
-xjZ
-xjZ
+mLN
+mLN
+mLN
 xjZ
 rJj
 adw
