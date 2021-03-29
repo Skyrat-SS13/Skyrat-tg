@@ -22,11 +22,6 @@
 /datum/job/cyborg/after_spawn(mob/living/silicon/robot/R, mob/M)
 	R.updatename(M.client)
 	R.gender = NEUTER
-	for(var/mob/living/silicon/ai/AI in GLOB.silicon_mobs) // SKYRAT EDIT ADDITION START - LATEJOIN LINK
-		if(AI.z == 3)
-			if(!(R.connected_ai))
-				R.set_connected_ai(AI)
-	R.show_laws() // SKYRAT EDIT ADDITION END
 
 /datum/job/cyborg/radio_help_message(mob/M)
 	to_chat(M, "<b>Prefix your message with :b to speak with other cyborgs and AI.</b>")
