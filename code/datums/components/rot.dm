@@ -121,11 +121,12 @@
 
 	if(!prob(strength * 8))
 		return
-
+	/* SKYRAT EDIT-: You posted major cringe
 	//We're running just under the "worst disease", since we don't want these to be too strong
 	var/datum/disease/advance/random/rand_disease = new(rand(5 * strength), rand(strength * 7))
 	rand_disease.name = "Unknown"
 	react_to.ContactContractDisease(rand_disease, target_zone)
+	*/
 
 #undef REAGENT_BLOCKER
 #undef TEMPERATURE_BLOCKER
