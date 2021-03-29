@@ -49,6 +49,10 @@
 		return
 	if(!get_path_to(user, target, max_distance = changeling.sting_range, simulated_only = FALSE))
 		return
+	var/mob/living/carbon/human/to_check = target
+	if(to_check.mob_biotypes & MOB_ROBOTIC)
+		to_chat(user, "<span class='warning'>Our sting would have no effect on robotic entities</span>")
+		return
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/changeling))
 		sting_feedback(user, target)
 		changeling.chem_charges -= chemical_cost

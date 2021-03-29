@@ -7,10 +7,8 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
 	coldmod = 0.5
-	burnmod = 1.1
-	heatmod = 1.2
-	brutemod = 1.1
-	siemens_coeff = 1.2 //Not more because some shocks will outright crit you, which is very unfun
+	heatmod = 2
+	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/brain/ipc_positron
