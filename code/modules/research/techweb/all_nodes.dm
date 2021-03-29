@@ -12,7 +12,7 @@
 					"destructive_analyzer", "circuit_imprinter", "circuit_imprinter_offstation", "experimentor", "rdconsole", "bepis", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab", "restaurant_portal",
 					"paystand", "space_heater", "bucket", "sec_rshot", "sec_beanbag_slug", "sec_Islug", "sec_dart", "sec_38", "rglass", "plasteel", "experi_scanner", "destructive_scanner", "doppler_array",
 					"plastitanium", "plasmaglass", "plasmareinforcedglass", "titaniumglass", "plastitaniumglass", "plastic_knife", "plastic_fork", "plastic_spoon", "conveyor_belt", "conveyor_switch",
-					"b6mm","b6mm_rubber","b9mm","b9mm_rubber","b10mm","b10mm_rubber","b12mm","b12mm_rubber") //SKYRAT EDIT ADDITION - SEC_HAUL
+					"b6mm","b6mm_rubber","b9mm","b9mm_rubber","b10mm","b10mm_rubber","b12mm","b12mm_rubber", "pepperballs") //SKYRAT EDIT ADDITION - SEC_HAUL
 
 /datum/techweb_node/mmi
 	id = "mmi"
@@ -600,7 +600,7 @@
 	display_name = "Electric Weapons"
 	description = "Weapons using electric technology"
 	prereq_ids = list("weaponry", "adv_power"  , "emp_basic")
-	design_ids = list("stunrevolver", "ioncarbine")
+	design_ids = list("stunrevolver", "ioncarbine", "nightstick_conversion") //SKYRAT EDIT CHANGE
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/radioactive_weapons
