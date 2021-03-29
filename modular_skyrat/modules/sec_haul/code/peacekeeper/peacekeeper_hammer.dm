@@ -34,10 +34,10 @@
 		return
 	user.changeNext_move(5 SECONDS)
 	if(istype(target, /obj/machinery/door))
-		to_chat(user, text = "You prepare to forcefully strike the door")
 		if(!registered)
 			RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/remove_track, FALSE)
 			RegisterSignal(target, COMSIG_BREACHING, .proc/try_breaching, TRUE)
+			to_chat(user, text = "You prepare to forcefully strike the door")
 			registered = TRUE
 		breacher = user
 		SEND_SIGNAL(target, COMSIG_BREACHING, user)
@@ -53,15 +53,10 @@
 		return FALSE
 	registered = FALSE
 	breaching = FALSE
-	to_chat(user, text = "Text text text")
+	to_chat(user, text = "You relax yourself , and not prepare to breach the door anymore")
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(breaching_target, COMSIG_BREACHING)
 	breaching_target = null
-	var/mob/living/carbon/human/silly = breacher
-	var/target_slot = silly.held_items.Find(src, 1, 0)
-	if(target_slot)
-		var/obj/item/melee/hammer/hamm = silly.held_items[target_slot]
-		hamm.remove_track(silly)
 	breacher = null
 
 /obj/item/melee/hammer/proc/try_breaching(obj/target, mob/living/carbon/human/user)
@@ -71,9 +66,17 @@
 	if(!(user.Adjacent(target)))
 		remove_track(user)
 		return NONE
+	var/mob/living/carbon/human/breach_buddy = breacher
+	var/target_item = breach_buddy.held_items.Find(src, 1, 0)
+	var/obj/item/melee/hammer/second_hammer = null
+	if(target_item)
+		second_hammer = breach_buddy.held_items[target_item]
+	if(!second_hammer)
+		remove_track(user)
+		return FALSE
 	breaching = TRUE
 	INVOKE_ASYNC(src, /obj/item/melee/hammer.proc/breaching_loop , user, target)
-	INVOKE_ASYNC(src, /obj/item/melee/hammer.proc/breaching_loop , breacher, target)
+	INVOKE_ASYNC(second_hammer, /obj/item/melee/hammer.proc/breaching_loop , breacher, target)
 	to_chat(breacher , text = "You begin forcefully smashing the [target]")
 
 /obj/item/melee/hammer/proc/breaching_loop(mob/living/user, obj/target)
@@ -94,4 +97,4 @@
 		user.do_attack_animation(target, used_item = src)
 		breaching_loop(user, target)
 		return TRUE
-	remove_track()
+	remove_track(user)
