@@ -5,6 +5,7 @@
 	icon_state = "analyzer"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_SMALL
+	custom_materials = list(/datum/material/iron=200)
 
 /obj/item/integrated_electronics/analyzer/afterattack(var/atom/A, var/mob/living/user)
 	. = ..()
