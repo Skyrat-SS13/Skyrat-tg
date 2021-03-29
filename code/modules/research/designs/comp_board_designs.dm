@@ -313,6 +313,7 @@
 	build_type = IMPRINTER
 	build_path = /obj/item/circuitboard/computer/exoscanner_console
 	category = list("Computer Boards")
+	departmental_flags = DEPARTMENTAL_FLAG_CARGO //SKYRAT EDIT - Stops people not from cargo stealing their side activity
 
 /datum/design/board/exodrone_console
 	name = "Computer Design (Exploration Drone Control Console)"
@@ -321,3 +322,4 @@
 	build_type = IMPRINTER
 	build_path = /obj/item/circuitboard/computer/exodrone_console
 	category = list("Computer Boards")
+	departmental_flags = DEPARTMENTAL_FLAG_CARGO //SKYRAT EDIT - Stops people not from cargo stealing their side activity
