@@ -33,7 +33,7 @@
 		"Medical" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_medical"),
 		"Assault" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_sec"),
 		"Heavy" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaheavy"),
-		"Miss m" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
+		"Miss M" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
 		"Spider" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaspider"),
 		"BootyBorg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "bootyninja"),
 		"Male Bootyborg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "male_bootyninja"),
@@ -70,7 +70,7 @@
 			return FALSE
 	return ..()
 
-/obj/item/robot_model/ninja/ninja_medical 
+/obj/item/robot_model/ninja/ninja_medical
 	name = "Spider Clan Medical"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
@@ -142,7 +142,7 @@
 		"Medical" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_medical"),
 		"Assault" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_sec"),
 		"Heavy" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaheavy"),
-		"Miss m" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
+		"Miss M" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "missm_ninja"),
 		"Spider" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninjaspider"),
 		"BootyBorg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "bootyninja"),
 		"Male Bootyborg" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "male_bootyninja"),
@@ -161,7 +161,7 @@
 		if("Heavy")
 			cyborg_base_icon = "ninjaheavy"
 			cyborg_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
-		if("Miss m")
+		if("Miss M")
 			cyborg_base_icon = "missm_ninja"
 			cyborg_icon_override = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi'
 		if("Spider")
