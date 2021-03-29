@@ -42,6 +42,8 @@
 	var/backpack = DBACKPACK //Which backpack type the player has chosen.
 	var/jumpsuit_style = PREF_SUIT //suit/skirt
 
+	var/datum/scream_type/selected_scream //SKRYAT EDIT ADDITION
+
 	//Equipment slots
 	var/obj/item/clothing/wear_suit = null
 	var/obj/item/clothing/w_uniform = null

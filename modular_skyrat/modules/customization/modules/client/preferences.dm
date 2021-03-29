@@ -81,6 +81,7 @@ GLOBAL_LIST_INIT(food, list(
 
 	//aphrodisiac preference
 	var/aphrodisiacs_pref = 1
+	var/cumfaced_pref = 0
 
 	var/uses_glasses_colour = 0
 
@@ -103,6 +104,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/facial_hair_color = "000" //Facial hair color
 	var/skin_tone = "caucasian1" //Skin color
 	var/eye_color = "000" //Eye color
+	var/datum/scream_type/pref_scream = new /datum/scream_type/human() //Scream type
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	//Has to include all information that extra organs from mutant bodyparts would need. (so far only genitals now)
 	var/list/features = MANDATORY_FEATURE_LIST
@@ -425,6 +427,7 @@ GLOBAL_LIST_INIT(food, list(
 
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
+					dat += "<b>Scream:</b><BR><a href='?_src_=prefs;preference=scream;task=input'>[pref_scream.name]</a><BR>"
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
 					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
@@ -993,10 +996,6 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Income Updates:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "Allowed" : "Muted"]</a><br>"
 			dat += "<br>"
 
-			//aphrodisiac pref
-			dat += "<b>Be affected by aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
-			dat += "<br>"
-
 			dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
 
 			dat += "<b>Parallax (Fancy Space):</b> <a href='?_src_=prefs;preference=parallaxdown' oncontextmenu='window.location.href=\"?_src_=prefs;preference=parallaxup\";return false;'>"
@@ -1090,6 +1089,12 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Play Combat Mode Sounds:</b> <a href='?_src_=prefs;preference=combat_mode_sound'>[(toggles & SOUND_COMBATMODE) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Announcement Sound Volume:</b> <a href='?_src_=prefs;preference=announcement_volume_level'>[announcement_volume]</a><br>"
 			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<br>"
+
+			//aphrodisiac pref
+			dat += "<b>Be Affected by Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
+			//cumface pref
+			dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
 
@@ -2216,6 +2221,22 @@ GLOBAL_LIST_INIT(food, list(
 					else
 						features["custom_species"] = null
 
+				if("scream")
+					var/list/available_screams = list()
+					for(var/spath in subtypesof(/datum/scream_type)) //We need to build a custom list of available screams!
+						var/datum/scream_type/scream = spath
+						if(initial(scream.restricted_species_type))
+							if(!istype(pref_species, initial(scream.restricted_species_type)))
+								continue
+						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey] && !check_rights(R_ADMIN))
+							continue
+						available_screams[initial(scream.name)] = spath
+					var/new_scream_id = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
+					var/datum/scream_type/scream = available_screams[new_scream_id]
+					if(scream)
+						pref_scream = new scream
+						SEND_SOUND(user, pick(pref_scream.male_screamsounds))
+
 				if("species")
 					ShowSpeciesMenu(user)
 					return TRUE
@@ -2683,6 +2704,10 @@ GLOBAL_LIST_INIT(food, list(
 				if("aphrodisiacs_pref")
 					skyrat_toggles ^= APHRO_PREF
 
+				//cumface pref
+				if("cumfaced_pref")
+					skyrat_toggles ^= CUMFACE_PREF
+
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
 					if (parent && parent.mob && parent.mob.hud_used)
@@ -2866,6 +2891,8 @@ GLOBAL_LIST_INIT(food, list(
 	character.backpack = backpack
 
 	character.jumpsuit_style = jumpsuit_style
+
+	character.selected_scream = pref_scream
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type

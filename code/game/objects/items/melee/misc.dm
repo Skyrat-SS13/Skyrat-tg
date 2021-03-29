@@ -316,7 +316,6 @@
 	target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST)
 	*/ //SKYRAT EDIT END
 	//SKYRAT EDIT ADDITION - BEGIN
-	target.apply_damage(force*0.5, BRUTE, BODY_ZONE_CHEST)
 	target.StaminaKnockdown(stamina_damage)
 	//SKYRAT EDIT END
 	additional_effects_carbon(target, user)
