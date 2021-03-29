@@ -14,8 +14,8 @@
 	bare_wound_bonus = 40
 	block_chance = 45
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb_continuous = list("whacks","breaches","bulldozes")
-	attack_verb_simple = list("breaches","hammers","whacks","slaps","annhilates")
+	attack_verb_continuous = list("whacks","breaches","bulldozes","flings","thwachs")
+	attack_verb_simple = list("breache","hammer","whack","slap","thwach","fling")
 	/// Delay between door hits
 	var/breaching_delay = 2 SECONDS
 	/// The door we aim to breach
@@ -60,7 +60,7 @@
 		return FALSE
 	registered = FALSE
 	breaching = FALSE
-	to_chat(user, text = "You relax yourself , and not prepare to breach the door anymore")
+	to_chat(user, text = "You relax yourself , and lay down the breaching hammer")
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	UnregisterSignal(breaching_target, COMSIG_BREACHING)
 	breaching_target = null
@@ -86,6 +86,7 @@
 	INVOKE_ASYNC(src, /obj/item/melee/hammer.proc/breaching_loop , user, target)
 	INVOKE_ASYNC(second_hammer, /obj/item/melee/hammer.proc/breaching_loop , breacher, target)
 	to_chat(breacher , text = "You begin forcefully smashing the [target]")
+	to_chat(user, text = "You begin forcefully smashing the [target]")
 
 /// Keeps looping under the door is no more , or someone moves , gets shot , dies , incapacitated , stunned , etc
 /obj/item/melee/hammer/proc/breaching_loop(mob/living/user, obj/target)
@@ -104,6 +105,8 @@
 		remove_track(user)
 		return NONE
 	if(do_after(user, breaching_delay))
+		if(QDELETED(target))
+			return FALSE
 		target.obj_integrity -= force*breaching_multipler
 		playsound(target, 'sound/weapons/sonic_jackhammer.ogg', 70)
 		visible_message("[user] smashes the [target] forcefully with the [src]")
