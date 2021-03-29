@@ -4450,6 +4450,7 @@
 	name = "'Monkey Pen";
 	req_access_txt = "9"
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/grass,
 /area/science/genetics)
 "asb" = (
@@ -18800,6 +18801,7 @@
 	req_access_txt = "9"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/iron/white,
 /area/science/genetics)
 "bWc" = (
@@ -28794,16 +28796,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/turf_decal/siding/purple{
-	dir = 9
-	},
-/obj/item/toy/figure/geneticist,
 /obj/item/radio/intercom{
 	pixel_x = -26
 	},
-/obj/item/storage/pill_bottle/mutadone{
-	pixel_x = -9
-	},
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "day" = (
@@ -29546,13 +29542,9 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/clothing/gloves/color/latex{
-	pixel_x = 4;
-	pixel_y = 9
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 4
-	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/food/meat/slab/human/mutant/zombie,
+/obj/item/food/meat/slab/human/mutant/zombie,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "djs" = (
@@ -31311,7 +31303,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/mob/living/carbon/human/species/monkey,
+/mob/living/simple_animal/hostile/zombie,
 /turf/open/floor/grass,
 /area/science/genetics)
 "dJj" = (
@@ -33780,9 +33772,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/chair/office/light{
-	dir = 8
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/greenglow,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "eLS" = (
@@ -38955,21 +38947,12 @@
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
 "gHh" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating,
 /area/science/genetics)
 "gHk" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -39008,15 +38991,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/computer/scan_consolenew{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
 	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = 24
+	},
+/obj/machinery/modular_computer/console/preset/civilian{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/science/genetics)
@@ -39479,6 +39462,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/greenglow,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "gTG" = (
@@ -39608,6 +39592,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/barricade/wooden,
+/obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/plating,
 /area/maintenance/aft/secondary)
 "gVi" = (
@@ -39648,6 +39635,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/footprints,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "gVO" = (
@@ -43271,6 +43261,31 @@
 	},
 /turf/open/floor/carpet,
 /area/command/bridge)
+"iyq" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/purple{
+	dir = 4
+	},
+/obj/machinery/light{
+	bulb_colour = "#bc2930";
+	dir = 4
+	},
+/obj/structure/showcase/machinery/cloning_pod{
+	desc = "An old decommissioned scanner, permanently scuttled.";
+	icon_state = "scanner";
+	name = "decommissioned genetics scanner"
+	},
+/turf/open/floor/iron/dark,
+/area/science/genetics)
 "iyN" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -43422,13 +43437,14 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/dna_scannernew,
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
 	},
 /obj/machinery/light{
+	bulb_colour = "#bc2930";
 	dir = 4
 	},
+/obj/structure/frame/machine,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "iBZ" = (
@@ -43890,7 +43906,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/landmark/start/geneticist,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "iMl" = (
@@ -47570,6 +47587,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "kld" = (
@@ -49249,11 +49267,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/computer/scan_consolenew{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
+	},
+/obj/machinery/modular_computer/console/preset/civilian{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/science/genetics)
@@ -49697,6 +49715,7 @@
 	dir = 5
 	},
 /obj/machinery/airalarm/directional/east,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "laC" = (
@@ -50548,6 +50567,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "luB" = (
@@ -50583,6 +50603,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
 	dir = 8
 	},
+/obj/structure/holosign/barrier,
 /turf/open/floor/iron/white,
 /area/science/research)
 "lvk" = (
@@ -51416,6 +51437,8 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/hostile/zombie,
 /turf/open/floor/grass,
 /area/science/genetics)
 "lLO" = (
@@ -52425,13 +52448,16 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/computer/scan_consolenew{
-	dir = 4
-	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 8
 	},
+/obj/machinery/modular_computer/console/preset/civilian{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
+	bulb_colour = "#bc2930";
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
@@ -52787,23 +52813,14 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "mmL" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/iron/dark,
+/obj/item/stack/tile/iron,
+/turf/open/floor/plating,
 /area/science/genetics)
 "mng" = (
 /obj/machinery/modular_computer/console/preset/id{
@@ -53707,17 +53724,12 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/effect/turf_decal/siding/purple/corner{
-	dir = 1
-	},
 /obj/item/storage/box/bodybags{
 	pixel_x = -4;
 	pixel_y = 9
 	},
-/obj/item/storage/box/disks{
-	pixel_x = 6;
-	pixel_y = 3
-	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "mDQ" = (
@@ -53815,21 +53827,15 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
 "mHk" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/purple/corner{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 8
+	},
+/obj/item/stack/tile/iron,
+/turf/open/floor/plating,
 /area/science/genetics)
 "mHt" = (
 /obj/effect/turf_decal/tile/purple,
@@ -53859,6 +53865,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/break_room)
+"mHM" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/hostile/zombie,
+/turf/open/floor/grass,
+/area/science/genetics)
 "mIU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -56865,6 +56876,8 @@
 /obj/machinery/newscaster{
 	pixel_x = -32
 	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "nOR" = (
@@ -56973,8 +56986,7 @@
 	name = "Genetics Desk";
 	req_access_txt = "9"
 	},
-/obj/item/folder,
-/obj/item/pen,
+/obj/structure/barricade/wooden,
 /turf/open/floor/iron,
 /area/science/genetics)
 "nQm" = (
@@ -57075,6 +57087,8 @@
 	dir = 8
 	},
 /obj/machinery/holopad,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/greenglow,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "nTn" = (
@@ -59690,6 +59704,7 @@
 	id = "rdgene";
 	name = "Genetics Lab Shutters"
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/science/genetics)
 "oTW" = (
@@ -65763,7 +65778,8 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
-/obj/effect/landmark/start/geneticist,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "rjW" = (
@@ -70081,7 +70097,7 @@
 /turf/open/floor/plating,
 /area/cargo/sorting)
 "sRB" = (
-/mob/living/carbon/human/species/monkey,
+/obj/effect/decal/remains/human,
 /turf/open/floor/grass,
 /area/science/genetics)
 "sRH" = (
@@ -71316,6 +71332,7 @@
 	},
 /obj/machinery/power/apc/auto_name/east,
 /obj/structure/cable,
+/obj/effect/decal/cleanable/greenglow,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "trZ" = (
@@ -71701,6 +71718,13 @@
 	},
 /turf/open/floor/engine,
 /area/science/misc_lab/range)
+"tBu" = (
+/obj/effect/turf_decal/siding/purple,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plating,
+/area/science/genetics)
 "tBJ" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/junction/flip{
@@ -73316,23 +73340,14 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "uhd" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/purple{
 	dir = 8
 	},
 /obj/structure/chair/office/light{
 	dir = 8
 	},
-/turf/open/floor/iron/dark,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/plating,
 /area/science/genetics)
 "uhe" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -73658,7 +73673,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/dna_scannernew,
 /obj/effect/turf_decal/siding/purple{
 	dir = 10
 	},
@@ -73668,6 +73682,8 @@
 	name = "Genetics RC";
 	pixel_x = -30
 	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/frame/machine,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "unb" = (
@@ -75445,18 +75461,9 @@
 /turf/open/floor/iron,
 /area/commons/toilet/auxiliary)
 "uXd" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
 /area/science/genetics)
 "uXk" = (
 /obj/machinery/computer/cargo/request{
@@ -78587,6 +78594,7 @@
 	id = "rdgene2";
 	name = "Genetics Lab Shutters"
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/science/genetics)
 "wgh" = (
@@ -79942,6 +79950,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mob_spawn/human/scientist,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "wKT" = (
@@ -82692,6 +82702,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 26
 	},
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "xMC" = (
@@ -82928,18 +82939,6 @@
 	pixel_x = 24;
 	pixel_y = -7;
 	req_access_txt = "7"
-	},
-/obj/item/radio/headset/headset_medsci{
-	pixel_x = -7;
-	pixel_y = 4
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/obj/item/storage/box/gloves{
-	pixel_x = 5;
-	pixel_y = 1
 	},
 /turf/open/floor/iron/dark,
 /area/science/genetics)
@@ -112578,9 +112577,9 @@ uhd
 nOL
 mDI
 eLP
-vTk
+tBu
 lLC
-sRB
+mHM
 cmP
 deh
 uHM
@@ -113345,7 +113344,7 @@ ipr
 tDC
 oTC
 laB
-iBL
+iyq
 kRc
 xRg
 gIt
