@@ -93,7 +93,7 @@
 
 /datum/loadout_item/suit/jacket/yakuzajacket
 	name = "Asian Jacket"
-	path = /obj/item/clothing/suit/MajimaJacket
+	path = /obj/item/clothing/suit/yakuza
 
 /datum/loadout_item/suit/jacket/suitblue
 	name = "Blue Suit Jacket"
