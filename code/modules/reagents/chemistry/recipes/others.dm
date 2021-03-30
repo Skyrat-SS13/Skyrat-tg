@@ -715,9 +715,6 @@
 	for(var/i in 1 to created_volume)
 		new /obj/item/stack/sheet/mineral/silver(location)
 
-<<<<<<< HEAD
-//////////////////////////////////// Water ////////////////////////////////////////////////
-=======
 /datum/chemical_reaction/bone_gel
 	required_reagents = list(/datum/reagent/bone_dust = 10, /datum/reagent/carbon = 10)
 	required_temp = 630
@@ -732,7 +729,6 @@
 		new /obj/item/stack/medical/bone_gel(location)
 
 ////Ice and water
->>>>>>> 51394ea3e36 (You can now manufacture bone gel (#58006))
 
 /datum/chemical_reaction/ice
 	results = list(/datum/reagent/consumable/ice = 1.09)//density
