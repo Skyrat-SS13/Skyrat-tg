@@ -2019,6 +2019,7 @@
 /area/construction/mining/aux_base)
 "agf" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "agj" = (
@@ -49821,20 +49822,8 @@
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "ckl" = (
-/obj/item/stack/rods/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/target,
-/obj/item/target/syndicate,
-/obj/item/target/alien,
-/obj/item/target/clown,
-/obj/structure/closet/crate/secure{
-	desc = "A secure crate containing various materials for building a customised test-site.";
-	name = "Test Site Materials Crate";
-	req_access_txt = "63"
-	},
-/obj/effect/turf_decal/bot,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/vending/security_ammo,
 /turf/open/floor/plating,
 /area/security/range)
 "ckm" = (
@@ -95536,7 +95525,7 @@
 	pixel_y = -26
 	},
 /obj/machinery/iv_drip,
-/obj/item/reagent_containers/blood,
+/obj/item/reagent_containers/blood/o_minus,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "eFA" = (
@@ -96026,9 +96015,6 @@
 /area/medical/medbay/central)
 "fnO" = (
 /obj/structure/window,
-/obj/machinery/light{
-	dir = 8
-	},
 /turf/open/floor/iron,
 /area/security/prison)
 "foK" = (
@@ -96080,6 +96066,15 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"ftw" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/security/prison)
 "ftX" = (
 /obj/machinery/door/airlock/glass,
 /turf/open/floor/iron/dark,
@@ -97299,7 +97294,9 @@
 /obj/machinery/light_switch{
 	pixel_x = -36
 	},
-/obj/machinery/vending/security_ammo,
+/obj/machinery/dish_drive/bullet{
+	succrange = 6
+	},
 /turf/open/floor/iron/dark,
 /area/security/range)
 "gUL" = (
@@ -102443,6 +102440,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/security/prison)
 "mNE" = (
@@ -104928,9 +104926,6 @@
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/command/bridge)
-"pGM" = (
-/turf/open/floor/iron/kitchen,
-/area/security/prison)
 "pGP" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -105215,6 +105210,19 @@
 /turf/open/floor/glass,
 /area/maintenance/space_hut/observatory)
 "pYL" = (
+/obj/item/stack/rods/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/target,
+/obj/item/target/syndicate,
+/obj/item/target/alien,
+/obj/item/target/clown,
+/obj/structure/closet/crate/secure{
+	desc = "A secure crate containing various materials for building a customised test-site.";
+	name = "Test Site Materials Crate";
+	req_access_txt = "63"
+	},
+/obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/security/range)
@@ -106336,6 +106344,9 @@
 /obj/structure/cable,
 /obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/bot,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "rjH" = (
@@ -106733,6 +106744,7 @@
 /area/engineering/gravity_generator)
 "rED" = (
 /obj/structure/table,
+/obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "rEG" = (
@@ -107406,6 +107418,12 @@
 /obj/effect/turf_decal/bot,
 /obj/structure/reagent_dispensers/cooking_oil,
 /turf/open/floor/iron,
+/area/security/prison)
+"sjk" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/security/prison)
 "sjU" = (
 /obj/structure/table/reinforced,
@@ -109454,9 +109472,7 @@
 /area/ai_monitored/security/armory)
 "uDH" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/dish_drive/bullet{
-	succrange = 6
-	},
+/obj/machinery/gun_vendor,
 /turf/open/floor/iron/dark,
 /area/security/range)
 "uEc" = (
@@ -111680,6 +111696,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood{
 	icon_state = "wood-broken7"
 	},
@@ -112152,6 +112169,7 @@
 /obj/machinery/status_display/ai{
 	pixel_y = -32
 	},
+/obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "xxu" = (
@@ -112165,7 +112183,7 @@
 	},
 /obj/structure/bed/roller,
 /obj/machinery/iv_drip,
-/obj/item/reagent_containers/blood,
+/obj/item/reagent_containers/blood/o_minus,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "xxD" = (
@@ -164850,7 +164868,7 @@ vXz
 vXz
 xjZ
 ejU
-ewn
+ftw
 aFm
 aFm
 aFm
@@ -166133,7 +166151,7 @@ aKV
 aKV
 aKV
 aFm
-wWx
+sjk
 aJA
 aFm
 aFm
@@ -168439,7 +168457,7 @@ ksX
 vXz
 vyv
 jWa
-pGM
+jWa
 rwd
 aZL
 iCN
@@ -168953,7 +168971,7 @@ pmV
 vXz
 uoy
 hmY
-pGM
+jWa
 plN
 aKZ
 aKZ
@@ -170245,7 +170263,7 @@ rgs
 oAD
 smi
 aKZ
-wWx
+sjk
 bbr
 lgN
 aKV
