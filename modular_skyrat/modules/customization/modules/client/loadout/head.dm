@@ -113,41 +113,35 @@
 	name = "Cowboy Hat, Pink"
 	path = /obj/item/clothing/head/cowboyhat/pink
 
-/*
 //trek fancy Hats!
-/datum/gear/trekcap
+/datum/loadout_item/head/trek/trekcap
 	name = "Federation Officer's Cap (White)"
-	category = SLOT_HEAD
 	path = /obj/item/clothing/head/caphat/formal/fedcover
 	restricted_roles = list("Captain","Head of Personnel")
 
-/datum/gear/trekcapcap
+/datum/loadout_item/head/trek/trekcapcap
 	name = "Federation Officer's Cap (Black)"
-	category = SLOT_HEAD
 	path = /obj/item/clothing/head/caphat/formal/fedcover/black
 	restricted_roles = list("Captain","Head of Personnel")
 
-/datum/gear/trekcapmedisci
+/datum/loadout_item/head/trek/trekcapmedisci
 	name = "Federation Officer's Cap (Blue)"
-	category = SLOT_HEAD
 	path = /obj/item/clothing/head/caphat/formal/fedcover/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
-/datum/gear/trekcapeng
+/datum/loadout_item/head/trek/trekcapeng
 	name = "Federation Officer's Cap (Yellow)"
-	category = SLOT_HEAD
 	path = /obj/item/clothing/head/caphat/formal/fedcover/eng
 	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
-/datum/gear/trekcapsec
+/datum/loadout_item/head/trek/trekcapsec
 	name = "Federation Officer's Cap (Red)"
-	category = SLOT_HEAD
 	path = /obj/item/clothing/head/caphat/formal/fedcover/sec
 	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
-*/
+
 /*Commenting out Until next Christmas or made automatic
 /datum/gear/santahatr
 	name = "Red Santa Hat"
@@ -262,7 +256,7 @@
 	path = /obj/item/clothing/head/beret/job/sci/robo
 	restricted_roles = list("Roboticist", "Research Director")
 	restricted_desc = "Robotics"
-	
+
 /datum/loadout_item/head/job/RD_beret
 	name = "Research Director's Beret"
 	path = /obj/item/clothing/head/beret/job/sci/head
@@ -286,7 +280,7 @@
 	path = /obj/item/clothing/head/beret/job/captain
 	restricted_roles = list("Captain")
 	restricted_desc = "Captain"
-	
+
 /datum/loadout_item/head/job/Cap_beret_alt
 	name = "Captain's White Beret"
 	path = /obj/item/clothing/head/beret/job/captain/alt
@@ -298,7 +292,7 @@
 	path = /obj/item/clothing/head/beret/job/hop
 	restricted_roles = list("Head of Personnel")
 	restricted_desc = "Head of Personnel"
-	
+
 /datum/loadout_item/head/job/HOP_beret_alt
 	name = "Head of Personnel's White Beret"
 	path = /obj/item/clothing/head/beret/job/hop/alt
