@@ -159,7 +159,7 @@
 	category = CAT_MISC
 
 /obj/item/banner/cargo
-	name = "cargoslavia banner"
+	name = "cargoslavia banner"                 ////SKYRAT EDIT START
 	desc = "The banner of the newly formed station-state of Cargoslavia, with the mystical power of conjuring any object into existence."
 	icon_state = "banner_cargo"
 	inhand_icon_state = "banner_cargo"
@@ -175,7 +175,7 @@
 	inspiration_available = FALSE
 
 /datum/crafting_recipe/cargo_banner
-	name = "Cargoslavia Banner"
+	name = "Cargoslavia Banner"                 ////SKYRAT EDIT END
 	result = /obj/item/banner/cargo/mundane
 	time = 40
 	reqs = list(/obj/item/stack/rods = 2,
