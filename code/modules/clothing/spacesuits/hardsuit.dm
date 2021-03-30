@@ -327,6 +327,7 @@
 		hardsuit_type = "mining_goliath"
 		if(amount == maxamount)
 			hardsuit_type = "mining_goliath_full"
+			hardsuit_tail_colors = list("222", "933", "410")	//SKYRAT EDIT ADDITION - Plated Tail Sprite
 	icon_state = "hardsuit-[hardsuit_type]"
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
