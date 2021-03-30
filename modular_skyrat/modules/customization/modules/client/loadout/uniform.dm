@@ -372,10 +372,6 @@
 	name = "Japanese Jeans"
 	path = /obj/item/clothing/under/costume/yakuza
 
-
-
-
-
 //SHORTS
 /datum/loadout_item/uniform/shorts
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SHORTS
