@@ -14,6 +14,7 @@
 	bodytemp_cold_damage_limit = (T20C - 10)
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
+	liked_food = TOXIC | DAIRY | FRUIT
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/skrell_parts_greyscale.dmi'
@@ -24,6 +25,35 @@
 	mutantlungs = /obj/item/organ/lungs/skrell
 	mutantheart = /obj/item/organ/heart/skrell
 	mutantliver = /obj/item/organ/liver/skrell
+	mutanttongue = /obj/item/organ/tongue/skrell
+
+/obj/item/organ/tongue/skrell
+	name = "internal vocal sacs"
+	desc = "An Strange looking sac."
+	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon_state = "tongue"
+	taste_sensitivity = 5
+	var/static/list/languages_possible_skrell = typecacheof(list(
+		/datum/language/common,
+		/datum/language/uncommon,
+		/datum/language/draconic,
+		/datum/language/codespeak,
+		/datum/language/monkey,
+		/datum/language/narsie,
+		/datum/language/machine,
+		/datum/language/slime,
+		/datum/language/beachbum,
+		/datum/language/aphasia,
+		/datum/language/piratespeak,
+		/datum/language/moffic,
+		/datum/language/sylvan,
+		/datum/language/shadowtongue,
+		/datum/language/terrum,
+		/datum/language/vox,
+		/datum/language/dwarf,
+		/datum/language/nekomimetic,
+		/datum/language/skrell
+	))
 
 /obj/item/organ/heart/skrell
 	name = "Skrellian Heart"
@@ -41,6 +71,7 @@
 	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
 	icon_state = "eyes"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
+
 /obj/item/organ/lungs/skrell
 	name = "skrell lungs"
 	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
@@ -66,6 +97,7 @@
 	heat_level_2_damage = HEAT_GAS_DAMAGE_LEVEL_2
 	heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_damage_type = BURN
+
 /obj/item/organ/liver/skrell
 	name = "skrell liver"
 	icon_state = "liver"
