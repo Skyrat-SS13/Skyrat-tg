@@ -29,3 +29,4 @@
 	icon_state = "zest_panda"
 	icon_living = "zest_panda"
 	icon_dead = "blue_dead_panda"
+	gender = MALE
