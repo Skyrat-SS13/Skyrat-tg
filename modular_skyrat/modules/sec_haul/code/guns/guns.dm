@@ -20,8 +20,8 @@
 
 //////////////////GLOCK
 /obj/item/gun/ballistic/automatic/pistol/g17
-	name = "\improper Armadyne Glock-17"
-	desc = "A weapon from bygone times, this has been made to feel and look exactly like the 21st century version. Let's hope it's more reliable. Chambered in 9mm."
+	name = "\improper Armadyne APS-F1"
+	desc = "An Armadyne reproduction of a bullpup AEROMECH model, chambered in 9mm Peacekeeper. Unlike the gun's internal systems, the ergonomics are nice."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -38,7 +38,7 @@
 	armadyne = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
-	name = "g17 handgun magazine (9mm)"
+	name = "aps-f1 handgun magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -59,10 +59,10 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/gun/ballistic/automatic/pistol/g18
-	name = "\improper Armadyne Glock-18"
-	desc = "A special anniversary edition of the Glock-18 from Armadyne, it has a 3 round burst mode and accepts extended magazines."
+	name = "\improper Armadyne PP-25 ''Gremuchka''"
+	desc = "A light-weight 9mm Armadyne PP-25-01 ''Gremuchka'' SMG, licensed by New Russia. This one has been outiftted with a special folding stock with a cheek rest, and a red-cross sight."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
-	icon_state = "glock_spec"
+	icon_state = "vityaz_spec"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g18
 	can_suppress = FALSE
@@ -79,7 +79,7 @@
 	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g18
-	name = "g18 handgun magazine (9mm)"
+	name = "pp-25 smg magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
 	ammo_type = /obj/item/ammo_casing/b9mm
