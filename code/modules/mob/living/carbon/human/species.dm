@@ -984,7 +984,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//SKYRAT EDIT ADDITION BEGIN
 	for(var/key in mutant_bodyparts) //Randomize currently attached mutant bodyparts, organs should update when they need to (detachment)
 		var/datum/sprite_accessory/SP = random_accessory_of_key_for_species(key, src)
-		var/list/color_list = SP.get_default_color(features, src)
+		var/list/color_list = SP.get_default_color(human_mob.dna.features, src)
 		var/list/final_list = list()
 		final_list[MUTANT_INDEX_NAME] = SP.name
 		final_list[MUTANT_INDEX_COLOR_LIST] = color_list
