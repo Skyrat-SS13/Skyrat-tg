@@ -11,9 +11,9 @@
 
 //Credit to Funce for this chunk of code directly below, which overrides normal dumping code and instead dumps from the pouch item inside
 /datum/component/storage/concrete/belt/crusader/dump_content_at(atom/dest_object, mob/M)
-    var/atom/A = parent
+    var/atom/used_belt = parent
     var/atom/dump_destination = dest_object.get_dumping_location()
-    if(A.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
+    if(used_belt.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
         var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location()
         if (!pouch)
             to_chat(M, "<span class='warning'>[parent] doesn't seem to have a pouch to empty.</span>")
@@ -23,8 +23,8 @@
             to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
             return FALSE
         if(dump_destination.storage_contents_dump_act(STR, M))
-            playsound(A, "rustle", 50, TRUE, -5)
-            A.do_squish(0.8, 1.2)
+            playsound(used_belt, "rustle", 50, TRUE, -5)
+            used_belt.do_squish(0.8, 1.2)
             return TRUE
     return FALSE
 
@@ -45,13 +45,13 @@
 			to_chat(user, "<span class='notice'>You fumble for [drawn_item] and it falls on the floor.</span>")
 			update_appearance()
 			return
-		update_appearance()
 		user.visible_message("<span class='notice'>[user] takes [drawn_item] out of [src].</span>", "<span class='notice'>You take [drawn_item] out of [src].</span>")
+		update_appearance()
 	else
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 	. = ..()
 
-/obj/item/storage/belt/crusader/update_appearance(updates)
+/obj/item/storage/belt/crusader/update_icon(updates)
 	if(contents.len == 2)	//Checks for a sword/rod in the sheath slot, changes the sprite accordingly
 		icon_state = "crusader_belt_sheathed"
 		worn_icon_state = "crusader_belt_sheathed"
@@ -74,19 +74,32 @@
 
 	STR.max_items = 2
 	STR.rustle_sound = TRUE
-	STR.max_w_class = WEIGHT_CLASS_GIGANTIC	//Max size makes sure that the storage_pouch item still properly fits in it - the whitelist keeps anything fucky out
-	STR.allow_big_nesting = TRUE //Same as above
+	STR.max_w_class = WEIGHT_CLASS_BULKY	//This makes sure swords and the pouches can fit in here - the whitelist keeps the bad stuff out
+	STR.allow_big_nesting = TRUE //Same as above, lets the pouch work
 	STR.set_holdable(list(
 		/obj/item/storage/belt/storage_pouch,
 		/obj/item/melee/sabre,
 		/obj/item/melee/cleric_mace,
-		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage, so this doesnt become a massive list
+		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage - - -
+		), list(	// - - - except the second list's items (no fedora in the sheath)
+		/obj/item/nullrod/armblade,
+		/obj/item/nullrod/carp,
+		/obj/item/nullrod/chainsaw,
+		/obj/item/nullrod/claymore/bostaff,
+		/obj/item/nullrod/hammmer,
+		/obj/item/nullrod/pitchfork,
+		/obj/item/nullrod/pride_hammer,
+		/obj/item/nullrod/spear,
+		/obj/item/nullrod/staff,
+		/obj/item/nullrod/fedora, 
+		/obj/item/nullrod/godhand,
+		/obj/item/nullrod/staff,
+		/obj/item/nullrod/whip
 		))
 
 /obj/item/storage/belt/crusader/PopulateContents()
 	. = ..()
 	new /obj/item/storage/belt/storage_pouch(src)
-	return
 
 /obj/item/storage/belt/storage_pouch	//seperate mini-storage inside the belt, leaving room for only one sword. Inspired by a (very poorly implemented) belt on Desert Rose
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/storage.dmi'
@@ -95,14 +108,13 @@
 	desc = "<span class='notice'>Click on this to open your belt's inventory!</span>"
 	icon_state = "storage_pouch_icon"
 	worn_icon_state = "no name"	//Intentionally sets the worn icon to an error
-	w_class = WEIGHT_CLASS_GIGANTIC	//Keeps it from being dragged into other bags
+	w_class = WEIGHT_CLASS_BULKY //Still cant put it in your bags, its technically a belt
 	anchored = 1	//Dont want people taking it out with their hands
 
 /obj/item/storage/belt/storage_pouch/attack_hand(mob/user, list/modifiers)	//Opens the bag on click - considering it's already anchored, this makes it function similar to how ghosts can open all nested inventories
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.user_show_to_mob(user)
-	return
 
 /obj/item/storage/belt/storage_pouch/ComponentInitialize()
 	. = ..()
@@ -111,5 +123,3 @@
 	STR.max_items = 6
 	STR.rustle_sound = TRUE
 	STR.max_w_class = WEIGHT_CLASS_SMALL //Rather than have a huge whitelist, the belt can simply hold anything a pocket can hold - Can easily be changed if it somehow becomes an issue
-
-//End of Crusader Belt code (Finally)
