@@ -52,7 +52,7 @@
 		/datum/language/vox,
 		/datum/language/dwarf,
 		/datum/language/nekomimetic,
-		/datum/language/skrell
+		/datum/language/skrell,
 	))
 
 /obj/item/organ/heart/skrell
