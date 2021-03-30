@@ -538,19 +538,19 @@
 
 // Trekie things
 //TOS
-/datum/loadout_item/uniform/trek/trekcmdtos
+/datum/loadout_item/uniform/job/trek/trekcmdtos
 	name = "TOS - cmd"
 	path = /obj/item/clothing/under/trek/command
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
 
-/datum/loadout_item/uniform/trek/trekmedscitos
+/datum/loadout_item/uniform/job/trek/trekmedscitos
 	name = "TOS - med/sci"
 	path = /obj/item/clothing/under/trek/medsci
 	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
-/datum/loadout_item/uniform/trek/trekengtos
+/datum/loadout_item/uniform/job/trek/trekengtos
 	name = "TOS - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec
 	restricted_desc = "Engineering, Security, and Cargo"
@@ -558,76 +558,76 @@
 
 //handled by modular skyrat code as reskins
 //TNG
-/datum/loadout_item/uniform/trek/trekcmdtng
+/datum/loadout_item/uniform/job/trek/trekcmdtng
 	name = "TNG - cmd"
 	path = /obj/item/clothing/under/trek/command/next
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
 
-/datum/loadout_item/uniform/trekmedscitng
+/datum/loadout_item/uniform/job/trekmedscitng
 	name = "TNG - med/sci"
 	path = /obj/item/clothing/under/trek/medsci/next
 	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
-/datum/loadout_item/uniform/trekengtng
+/datum/loadout_item/uniform/job/trekengtng
 	name = "TNG - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec/next
 	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //VOY
-/datum/loadout_item/uniform/trekcmdvoy
+/datum/loadout_item/uniform/job/trekcmdvoy
 	name = "VOY - cmd"
 	path = /obj/item/clothing/under/trek/modular_skyrat/command/voy
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
 
-/datum/loadout_item/uniform/trekmedscivoy
+/datum/loadout_item/uniform/job/trekmedscivoy
 	name = "VOY - med/sci"
 	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/voy
 	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
-/datum/loadout_item/uniform/trekengvoy
+/datum/loadout_item/uniform/job/trekengvoy
 	name = "VOY - ops/sec"
 	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/voy
 	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //DS9
-/datum/loadout_item/uniform/trekcmdds9
+/datum/loadout_item/uniform/job/trekcmdds9
 	name = "DS9 - cmd"
 	path = /obj/item/clothing/under/trek/modular_skyrat/command/ds9
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
 
-/datum/loadout_item/uniform/trekmedscids9
+/datum/loadout_item/uniform/job/trekmedscids9
 	name = "DS9 - med/sci"
 	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/ds9
 	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
-/datum/loadout_item/uniform/trekengds9
+/datum/loadout_item/uniform/job/trekengds9
 	name = "DS9 - ops/sec"
 	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/ds9
 	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //ENT
-/datum/loadout_item/uniform/trekcmdent
+/datum/loadout_item/uniform/job/trekcmdent
 	name = "ENT - cmd"
 	path = /obj/item/clothing/under/trek/command/ent
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
 
-/datum/loadout_item/uniform/trekmedscient
+/datum/loadout_item/uniform/job/trekmedscient
 	name = "ENT - med/sci"
 	path = /obj/item/clothing/under/trek/medsci/ent
 	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
-/datum/loadout_item/uniform/trekengent
+/datum/loadout_item/uniform/job/trekengent
 	name = "ENT - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec/ent
 	restricted_desc = "Engineering, Security, and Cargo"

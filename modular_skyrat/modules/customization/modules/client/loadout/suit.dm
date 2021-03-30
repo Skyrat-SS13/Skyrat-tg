@@ -304,3 +304,5 @@
 	path = /obj/item/clothing/suit/toggle/labcoat/highvis
 	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective")
 	restricted_desc = "First Responders and Detective"
+
+//Trekkie things.
