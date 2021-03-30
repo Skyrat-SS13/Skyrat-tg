@@ -981,6 +981,16 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 ///Proc that will randomise the hair, or primary appearance element (i.e. for moths wings) of a species' associated mob
 /datum/species/proc/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
+	//SKYRAT EDIT ADDITION BEGIN
+	for(var/key in mutant_bodyparts) //Randomize currently attached mutant bodyparts, organs should update when they need to (detachment)
+		var/datum/sprite_accessory/SP = random_accessory_of_key_for_species(key, src)
+		var/list/color_list = SP.get_default_color(features, src)
+		var/list/final_list = list()
+		final_list[MUTANT_INDEX_NAME] = SP.name
+		final_list[MUTANT_INDEX_COLOR_LIST] = color_list
+		mutant_bodyparts[key] = final_list
+	human_mob.update_mutant_bodyparts()
+	//SKYRAT EDIT ADDITION END
 	human_mob.hairstyle = random_hairstyle(human_mob.gender)
 	human_mob.update_hair()
 
