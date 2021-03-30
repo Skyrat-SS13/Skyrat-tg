@@ -63,6 +63,7 @@
 	desc = "A light-weight 9mm Armadyne PP-25-01 ''Gremuchka'' SMG, licensed by New Russia. This one has been outiftted with a special folding stock with a cheek rest, and a red-cross sight."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "vityaz_spec"
+	inhand_icon_state = "arg"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g18
 	can_suppress = FALSE
