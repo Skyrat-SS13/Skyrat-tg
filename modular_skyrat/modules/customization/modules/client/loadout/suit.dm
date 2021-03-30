@@ -314,7 +314,7 @@
 	name = "Medsci fed jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/suit/job/trek/fedeng
 	name = "Ops/Sec fed Jacket"
@@ -325,22 +325,22 @@
 //Modern trekkie
 /datum/loadout_item/suit/job/trek/fedcoatmodern
 	name = "Modern fed jacket"
-	path = /obj/item/clothing/suit/storage/fluff/fedcoat/modern
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat
 
 /datum/loadout_item/suit/job/trek/fedcoatmodernmedsci
 	name = "Modern medsci jacket"
-	path = /obj/item/clothing/suit/storage/fluff/fedcoat/modern/medsci
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/suit/job/trek/fedcoatmoderneng
 	name = "Modern ops jacket"
-	path = /obj/item/clothing/suit/storage/fluff/fedcoat/modern/eng
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/eng
 	restricted_desc = "Engineering and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /datum/loadout_item/suit/job/trek/fedcoatmodernsec
 	name = "Modern sec jacket"
-	path = /obj/item/clothing/suit/storage/fluff/fedcoat/modern/sec
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
 	restricted_desc = "All Security Personnel"

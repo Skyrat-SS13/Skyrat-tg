@@ -568,7 +568,7 @@
 	name = "TNG - med/sci"
 	path = /obj/item/clothing/under/trek/medsci/next
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/uniform/job/trekengtng
 	name = "TNG - ops/sec"
@@ -587,7 +587,7 @@
 	name = "VOY - med/sci"
 	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/voy
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/uniform/job/trekengvoy
 	name = "VOY - ops/sec"
@@ -606,7 +606,7 @@
 	name = "DS9 - med/sci"
 	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/ds9
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/uniform/job/trekengds9
 	name = "DS9 - ops/sec"
@@ -625,7 +625,7 @@
 	name = "ENT - med/sci"
 	path = /obj/item/clothing/under/trek/medsci/ent
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/uniform/job/trekengent
 	name = "ENT - ops/sec"

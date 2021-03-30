@@ -4,6 +4,7 @@
 	desc = "A uniform jacket from the United Federation. Set phasers to awesome."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/trek.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/trek.dmi'
+	mutant_variants = NONE
 	icon_state = "fedcoat"
 	inhand_icon_state = "fedcoat"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -33,7 +34,7 @@
 		set src in usr
 
 		var/mob/living/I = usr
-		if(!istype(I) || !CHECK_MOBILITY(I, MOBILITY_USE))
+		if(!istype(I))
 			return FALSE
 
 		switch(unbuttoned)
@@ -62,20 +63,44 @@
 	inhand_icon_state = "fedcapt"
 
 //fedcoat but modern
-/obj/item/clothing/suit/storage/fluff/fedcoat/modern
+/obj/item/clothing/suit/storage/fluff/mfedcoat
 	name = "Modern Federation Uniform Jacket"
 	desc = "A modern uniform jacket from the United Federation."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/trek.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/trek.dmi'
+	mutant_variants = NONE
 	icon_state = "fedmodern"
 	inhand_icon_state = "fedmodern"
+	body_parts_covered = CHEST|GROIN|ARMS
+	allowed = list(
+			/obj/item/tank/internals/emergency_oxygen,
+			/obj/item/flashlight,
+			/obj/item/analyzer,
+			/obj/item/radio,
+			/obj/item/gun,
+			/obj/item/melee/baton,
+			/obj/item/restraints/handcuffs,
+			/obj/item/reagent_containers/hypospray,
+			/obj/item/hypospray,
+			/obj/item/healthanalyzer,
+			/obj/item/reagent_containers/syringe,
+			/obj/item/reagent_containers/glass/bottle/vial,
+			/obj/item/reagent_containers/glass/beaker,
+			/obj/item/storage/pill_bottle,
+			/obj/item/taperecorder)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
-/obj/item/clothing/suit/storage/fluff/fedcoat/modern/medsci
+/obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
+	name = "Modern Medsci Federation Jacket"
 	icon_state = "fedmodernblue"
 	inhand_icon_state = "fedmodernblue"
 
-/obj/item/clothing/suit/storage/fluff/fedcoat/modern/eng
+/obj/item/clothing/suit/storage/fluff/mfedcoat/eng
+	name = "Modern Eng Federation Jacket"
 	icon_state = "fedmoderneng"
 	inhand_icon_state = "fedmoderneng"
 
-/obj/item/clothing/suit/storage/fluff/fedcoat/modern/sec
+/obj/item/clothing/suit/storage/fluff/mfedcoat/sec
+	name = "Modern sec Federation Jacket"
 	icon_state = "fedmodernsec"
 	inhand_icon_state = "fedmodernsec"

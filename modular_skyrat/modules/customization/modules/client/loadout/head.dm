@@ -128,7 +128,7 @@
 	name = "Federation Officer's Cap (Blue)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/head/trek/trekcapeng
 	name = "Federation Officer's Cap (Yellow)"
