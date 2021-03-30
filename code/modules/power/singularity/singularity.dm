@@ -7,7 +7,7 @@
 	anchored = TRUE
 	density = TRUE
 	move_resist = INFINITY
-	plane = MASSIVE_OBJ_PLANE
+	layer = MASSIVE_OBJ_LAYER
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
