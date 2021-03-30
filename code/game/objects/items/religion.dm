@@ -159,13 +159,13 @@
 	category = CAT_MISC
 
 /obj/item/banner/cargo
-	name = "cargonia banner"
-	desc = "The banner of the eternal Cargonia, with the mystical power of conjuring any object into existence."
+	name = "cargoslavia banner"
+	desc = "The banner of the newly formed Cargoslavia, with the mystical power of conjuring any object into existence."
 	icon_state = "banner_cargo"
 	inhand_icon_state = "banner_cargo"
 	lefthand_file = 'icons/mob/inhands/equipment/banners_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/banners_righthand.dmi'
-	warcry = "Hail Cargonia!"
+	warcry = "Glory to Cargoslavia!!"
 
 /obj/item/banner/cargo/Initialize()
 	. = ..()
@@ -175,7 +175,7 @@
 	inspiration_available = FALSE
 
 /datum/crafting_recipe/cargo_banner
-	name = "Cargonia Banner"
+	name = "Carslavia Banner"
 	result = /obj/item/banner/cargo/mundane
 	time = 40
 	reqs = list(/obj/item/stack/rods = 2,
