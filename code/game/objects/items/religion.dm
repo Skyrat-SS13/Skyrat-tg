@@ -160,7 +160,7 @@
 
 /obj/item/banner/cargo
 	name = "cargoslavia banner"
-	desc = "The banner of the newly formed Cargoslavia, with the mystical power of conjuring any object into existence."
+	desc = "The banner of the newly formed station-state of Cargoslavia, with the mystical power of conjuring any object into existence."
 	icon_state = "banner_cargo"
 	inhand_icon_state = "banner_cargo"
 	lefthand_file = 'icons/mob/inhands/equipment/banners_lefthand.dmi'
@@ -175,7 +175,7 @@
 	inspiration_available = FALSE
 
 /datum/crafting_recipe/cargo_banner
-	name = "Carslavia Banner"
+	name = "Cargoslavia Banner"
 	result = /obj/item/banner/cargo/mundane
 	time = 40
 	reqs = list(/obj/item/stack/rods = 2,
