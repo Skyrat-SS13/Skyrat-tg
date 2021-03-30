@@ -95,6 +95,10 @@
 				user.stop_pulling()
 	return ..()
 
+//	SKYRAT EDIT ADDITION START
+/obj/structure/table/attack_robot(mob/user)
+	on_attack_hand(user)
+//	SKYRAT EDIT ADDITION END
 
 /obj/structure/table/attack_tk(mob/user)
 	return
