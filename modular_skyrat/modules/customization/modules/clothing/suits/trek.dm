@@ -27,28 +27,28 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	var/unbuttoned = 0
 
-	//this may or may not make it so that the jackets can be unbuttoned(?)
-	verb/toggle()
-		set name = "Toggle coat buttons"
-		set category = "Object"
-		set src in usr
+//This makes the fed coats button and unbuttonable. Doesn't aply to modern fedcoats.
+/obj/item/clothing/suit/storage/fluff/fedcoat/verb/toggle()
+	set name = "Toggle coat buttons"
+	set category = "Object"
+	set src in usr
 
-		var/mob/living/I = usr
-		if(!istype(I))
-			return FALSE
+	var/mob/living/I = usr
+	if(!istype(I))
+		return FALSE
 
-		switch(unbuttoned)
-			if(0)
-				icon_state = "[initial(icon_state)]_open"
-				inhand_icon_state = "[initial(inhand_icon_state)]_open"
-				unbuttoned = 1
-				to_chat(usr,"You unbutton the coat.")
-			if(1)
-				icon_state = "[initial(icon_state)]"
-				inhand_icon_state = "[initial(inhand_icon_state)]"
-				unbuttoned = 0
-				to_chat(usr,"You button up the coat.")
-		usr.update_inv_wear_suit()
+	switch(unbuttoned)
+		if(0)
+			icon_state = "[initial(icon_state)]_open"
+			inhand_icon_state = "[initial(inhand_icon_state)]_open"
+			unbuttoned = 1
+			to_chat(usr,"You unbutton the coat.")
+		if(1)
+			icon_state = "[initial(icon_state)]"
+			inhand_icon_state = "[initial(inhand_icon_state)]"
+			unbuttoned = 0
+			to_chat(usr,"You button up the coat.")
+	usr.update_inv_wear_suit()
 
 /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
 	icon_state = "fedblue"
