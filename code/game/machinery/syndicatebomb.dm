@@ -62,6 +62,8 @@
 		switch(seconds_remaining())
 			if(0 to 5)
 				volume = 50
+				for(var/i,i<3,i++)
+					addtimer(CALLBACK(src, .proc/play_fearsome_ping), i*5)
 			if(5 to 10)
 				volume = 40
 			if(10 to 15)
@@ -81,6 +83,9 @@
 		update_appearance()
 		try_detonate(TRUE)
 
+/obj/machinery/syndicatebomb/proc/play_fearsome_ping()
+	playsound(loc, beepsound, 80, FALSE)
+
 /obj/machinery/syndicatebomb/Initialize()
 	. = ..()
 	wires = new /datum/wires/syndicatebomb(src)
@@ -98,7 +103,7 @@
 
 /obj/machinery/syndicatebomb/examine(mob/user)
 	. = ..()
-	. += {"A digital display on it reads "[seconds_remaining()]"."}
+	// . += {"A digital display on it reads "[seconds_remaining()]"."} SKYRAT EDIT : - commented out to make people fear it more.
 
 /obj/machinery/syndicatebomb/update_icon_state()
 	icon_state = "[initial(icon_state)][active ? "-active" : "-inactive"][open_panel ? "-wires" : ""]"

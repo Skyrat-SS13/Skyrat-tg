@@ -10,6 +10,7 @@
 	var/access_any = FALSE
 	var/list/contains = null
 	var/crate_name = "crate"
+	var/id
 	var/desc = ""//no desc by default
 	var/crate_type = /obj/structure/closet/crate
 	var/dangerous = FALSE // Should we message admins?
@@ -19,6 +20,9 @@
 	var/special_pod //If this pack comes shipped in a specific pod when launched from the express console
 	var/admin_spawned = FALSE
 	var/goody = FALSE //Goodies can only be purchased by private accounts and can have coupons apply to them. They also come in a lockbox instead of a full crate, so the 700 min doesn't apply
+
+/datum/supply_pack/New()
+	id = type
 
 /datum/supply_pack/proc/generate(atom/A, datum/bank_account/paying_account)
 	var/obj/structure/closet/crate/C
@@ -48,6 +52,10 @@
 	else
 		for(var/item in contains)
 			new item(C)
+
+/// For generating supply packs at runtime. Returns a list of supply packs to use instead of this one.
+/datum/supply_pack/proc/generate_supply_packs()
+	return
 
 // If you add something to this list, please group it by type and sort it alphabetically instead of just jamming it in like an animal
 
@@ -277,6 +285,7 @@
 					/obj/item/ammo_box/c38/iceblox)
 	crate_name = "ammo crate"
 
+/* SKYRAT EDIT: Moved to Bloat.dm	name = "Armor Crate"
 /datum/supply_pack/security/armor
 	name = "Armor Crate"
 	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
@@ -285,7 +294,7 @@
 	contains = list(/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest)
-	crate_name = "armor crate"
+	crate_name = "armor crate" */
 
 /* - SKYRAT EDIT REMOVAL - SEC_HAUL
 /datum/supply_pack/security/disabler
@@ -411,15 +420,19 @@
 					/obj/item/clothing/mask/gas/sechailer)
 	crate_name = "security clothing crate"
 
+//SKYRAT EDIT REMOVAL BEGIN - No stunbaton
+/*
 /datum/supply_pack/security/baton
 	name = "Stun Batons Crate"
 	desc = "Arm the Civil Protection Forces with three stun batons. Batteries included. Requires Security access to open."
-	cost = CARGO_CRATE_VALUE * 15 //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: 2
+	cost = CARGO_CRATE_VALUE * 2
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/melee/baton/loaded,
 					/obj/item/melee/baton/loaded,
 					/obj/item/melee/baton/loaded)
 	crate_name = "stun baton crate"
+*/
+//SKYRAT EDIT REMOVAL END - No stunbaton
 
 /datum/supply_pack/security/wall_flash
 	name = "Wall-Mounted Flash Crate"
@@ -829,11 +842,12 @@
 	name = "Bluespace Artillery Parts"
 	desc = "The pride of Nanotrasen Naval Command. The legendary Bluespace Artillery Cannon is a devastating feat of human engineering and testament to wartime determination. Highly advanced research is required for proper construction. "
 	cost = CARGO_CRATE_VALUE * 30
-	special = TRUE
+	special = FALSE //SKYRAT EDIT CHANGE
 	access_view = ACCESS_HEADS
 	contains = list(/obj/item/circuitboard/machine/bsa/front,
 					/obj/item/circuitboard/machine/bsa/middle,
 					/obj/item/circuitboard/machine/bsa/back,
+					/obj/item/circuitboard/machine/bsa/powercore, //SKYRAT EDIT ADDITION
 					/obj/item/circuitboard/computer/bsa_control
 					)
 	crate_name= "bluespace artillery parts crate"
@@ -905,7 +919,7 @@
 /datum/supply_pack/engine/emitter
 	name = "Emitter Crate"
 	desc = "Useful for powering forcefield generators while destroying locked crates and intruders alike. Contains two high-powered energy emitters. Requires CE access to open."
-	cost = CARGO_CRATE_VALUE * 4
+	cost = CARGO_CRATE_VALUE * 7
 	access = ACCESS_CE
 	contains = list(/obj/machinery/power/emitter,
 					/obj/machinery/power/emitter)
@@ -916,7 +930,7 @@
 /datum/supply_pack/engine/field_gen
 	name = "Field Generator Crate"
 	desc = "Typically the only thing standing between the station and a messy death. Powered by emitters. Contains two field generators."
-	cost = CARGO_CRATE_VALUE * 3
+	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/machinery/field/generator,
 					/obj/machinery/field/generator)
 	crate_name = "field generator crate"
@@ -935,7 +949,7 @@
 /datum/supply_pack/engine/collector
 	name = "Radiation Collector Crate"
 	desc = "Contains three radiation collectors. Useful for collecting energy off nearby Supermatter Crystals, Singularities or Teslas!"
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 8
 	contains = list(/obj/machinery/power/rad_collector,
 					/obj/machinery/power/rad_collector,
 					/obj/machinery/power/rad_collector)
@@ -944,7 +958,7 @@
 /datum/supply_pack/engine/solar
 	name = "Solar Panel Crate"
 	desc = "Go green with this DIY advanced solar array. Contains twenty one solar assemblies, a solar-control circuit board, and tracker. If you have any questions, please check out the enclosed instruction book."
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 8
 	contains  = list(/obj/item/solar_assembly,
 					/obj/item/solar_assembly,
 					/obj/item/solar_assembly,
@@ -1064,25 +1078,6 @@
 	contains = list(/obj/item/stack/sheet/mineral/wood/fifty)
 	crate_name = "wood planks crate"
 
-/datum/supply_pack/materials/bz
-	name = "BZ Canister Crate"
-	desc = "Contains a canister of BZ. Requires Toxins access to open."
-	cost = CARGO_CRATE_VALUE * 16
-	access = ACCESS_TOXINS
-	access_view = ACCESS_ATMOSPHERICS
-	contains = list(/obj/machinery/portable_atmospherics/canister/bz)
-	crate_name = "BZ canister crate"
-	crate_type = /obj/structure/closet/crate/secure/science
-
-/datum/supply_pack/materials/carbon_dio
-	name = "Carbon Dioxide Canister"
-	desc = "Contains a canister of Carbon Dioxide."
-	cost = CARGO_CRATE_VALUE * 6
-	access_view = ACCESS_ATMOSPHERICS
-	contains = list(/obj/machinery/portable_atmospherics/canister/carbon_dioxide)
-	crate_name = "carbon dioxide canister crate"
-	crate_type = /obj/structure/closet/crate/large
-
 /datum/supply_pack/materials/foamtank
 	name = "Firefighting Foam Tank Crate"
 	desc = "Contains a tank of firefighting foam. Also known as \"plasmaman's bane\"."
@@ -1116,32 +1111,6 @@
 	crate_name = "high-capacity fuel tank crate"
 	crate_type = /obj/structure/closet/crate/large
 
-/datum/supply_pack/materials/nitrogen
-	name = "Nitrogen Canister"
-	desc = "Contains a canister of Nitrogen."
-	cost = CARGO_CRATE_VALUE * 4
-	contains = list(/obj/machinery/portable_atmospherics/canister/nitrogen)
-	crate_name = "nitrogen canister crate"
-	crate_type = /obj/structure/closet/crate/large
-
-/datum/supply_pack/materials/nitrous_oxide_canister
-	name = "Nitrous Oxide Canister"
-	desc = "Contains a canister of Nitrous Oxide. Requires Atmospherics access to open."
-	cost = CARGO_CRATE_VALUE * 6
-	access = ACCESS_ATMOSPHERICS
-	access_view = ACCESS_ATMOSPHERICS
-	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
-	crate_name = "nitrous oxide canister crate"
-	crate_type = /obj/structure/closet/crate/secure
-
-/datum/supply_pack/materials/oxygen
-	name = "Oxygen Canister"
-	desc = "Contains a canister of Oxygen. Canned in Druidia."
-	cost = CARGO_CRATE_VALUE * 3
-	contains = list(/obj/machinery/portable_atmospherics/canister/oxygen)
-	crate_name = "oxygen canister crate"
-	crate_type = /obj/structure/closet/crate/large
-
 /datum/supply_pack/materials/watertank
 	name = "Water Tank Crate"
 	desc = "Contains a tank of dihydrogen monoxide... sounds dangerous."
@@ -1150,13 +1119,41 @@
 	crate_name = "water tank crate"
 	crate_type = /obj/structure/closet/crate/large
 
-/datum/supply_pack/materials/water_vapor
-	name = "Water Vapor Canister"
-	desc = "Contains a canister of Water Vapor. I swear to god if you open this in the halls..."
-	cost = CARGO_CRATE_VALUE * 4
-	contains = list(/obj/machinery/portable_atmospherics/canister/water_vapor)
-	crate_name = "water vapor canister crate"
+/datum/supply_pack/materials/gas_canisters
+	cost = CARGO_CRATE_VALUE * 0.05
+	contains = list(/obj/machinery/portable_atmospherics/canister)
 	crate_type = /obj/structure/closet/crate/large
+
+/datum/supply_pack/materials/gas_canisters/generate_supply_packs()
+	var/list/canister_packs = list()
+
+	var/obj/machinery/portable_atmospherics/canister/fakeCanister = /obj/machinery/portable_atmospherics/canister
+	// This is the amount of moles in a default canister
+	var/moleCount = (initial(fakeCanister.maximum_pressure) * initial(fakeCanister.filled)) * initial(fakeCanister.volume) / (R_IDEAL_GAS_EQUATION * T20C)
+
+	for(var/gasType in GLOB.meta_gas_info)
+		var/datum/gas/gas = gasType
+		var/name = initial(gas.name)
+		if(!initial(gas.purchaseable))
+			continue
+		var/datum/supply_pack/materials/pack = new
+		pack.name = "[name] Canister"
+		pack.desc = "Contains a canister of [name]."
+		if(initial(gas.dangerous))
+			pack.desc = "[pack.desc] Requires Atmospherics access to open."
+			pack.access = ACCESS_ATMOSPHERICS
+			pack.access_view = ACCESS_ATMOSPHERICS
+		pack.crate_name = "[name] canister crate"
+		pack.id = "[type]([name])"
+
+		pack.cost = cost + moleCount * initial(gas.base_value) * 1.6
+		pack.cost = CEILING(pack.cost, 10)
+
+		pack.contains = list(GLOB.gas_id_to_canister[initial(gas.id)])
+
+		canister_packs += pack
+
+	return canister_packs
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Medical /////////////////////////////////////////
@@ -2483,6 +2480,13 @@
 					/obj/item/book/random)
 	crate_type = /obj/structure/closet/crate/wooden
 
+/datum/supply_pack/misc/exploration_drone
+	name = "Exploration Drone"
+	desc = "A replacement long-range exploration drone."
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/exodrone)
+	crate_name = "exodrone crate"
+
 /datum/supply_pack/misc/paper
 	name = "Bureaucracy Crate"
 	desc = "High stacks of papers on your desk Are a big problem - make it Pea-sized with these bureaucratic supplies! Contains six pens, some camera film, hand labeler supplies, a paper bin, a carbon paper bin, three folders, a laser pointer, two clipboards and two stamps."//that was too forced
@@ -2829,3 +2833,48 @@
 					/obj/item/vending_refill/wardrobe/law_wardrobe)
 	crate_name = "security department supply crate"
 */
+
+/// Exploration drone unlockables ///
+
+/datum/supply_pack/exploration
+	special = TRUE
+	group = "Outsourced"
+
+/datum/supply_pack/exploration/scrapyard
+	name = "Scrapyard Crate"
+	desc = "Outsourced crate containing various junk."
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/relic,
+					/obj/item/broken_bottle,
+					/obj/item/pickaxe/rusted)
+	crate_name = "scrapyard crate"
+
+/datum/supply_pack/exploration/catering
+	name = "Catering Crate"
+	desc = "No cook? No problem! Food quality may vary depending on provider."
+	cost = CARGO_CRATE_VALUE * 5
+	contains = list(/obj/item/food/sandwich,
+					/obj/item/food/sandwich,
+					/obj/item/food/sandwich,
+					/obj/item/food/sandwich,
+					/obj/item/food/sandwich)
+	crate_name = "outsourced food crate"
+
+/datum/supply_pack/exploration/catering/fill(obj/structure/closet/crate/C)
+	. = ..()
+	if(prob(30))
+		for(var/obj/item/food/F in C)
+			F.name = "spoiled [F.name]"
+			F.foodtypes |= GROSS
+			F.MakeEdible()
+
+/datum/supply_pack/exploration/shrubbery
+	name = "Shrubbery Crate"
+	desc = "Crate full of hedge shrubs."
+	cost = CARGO_CRATE_VALUE * 5
+	crate_name = "shrubbery crate"
+	var/shrub_amount = 8
+
+/datum/supply_pack/exploration/shrubbery/fill(obj/structure/closet/crate/C)
+	for(var/i in 1 to shrub_amount)
+		new /obj/item/grown/shrub(C)

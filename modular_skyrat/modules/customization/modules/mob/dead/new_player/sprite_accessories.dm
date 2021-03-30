@@ -219,6 +219,9 @@
 	name = "Thigh-high - Rainbow"
 	icon_state = "rainbow_thigh"
 
+/datum/sprite_accessory/socks/fishnet_thigh
+	name = "Thigh-high - Fishnet"
+	icon_state = "fishnet"
 
 /datum/sprite_accessory/underwear
 	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'

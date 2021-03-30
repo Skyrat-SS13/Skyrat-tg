@@ -19,7 +19,7 @@
 	desc += "<br><font size=3><b>Current Bloodthirst: [HG.bloodlust]</b></font>\
 	<br>Becomes undroppable at <b>[HIS_GRACE_FAMISHED]</b>\
 	<br>Will consume you at <b>[HIS_GRACE_CONSUME_OWNER]</b>"
-	..()
+	return ..()
 
 /datum/status_effect/his_grace/on_apply()
 	owner.log_message("gained His Grace's stun immunity", LOG_ATTACK)
@@ -346,7 +346,7 @@
 	owner.bodytemperature = owner.get_body_temp_normal()
 	if(istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/humi = owner
-		humi.coretemperature = humi.get_body_temp_normal()
+		humi.set_coretemperature(humi.get_body_temp_normal())
 	return TRUE
 
 /datum/status_effect/regenerative_core/on_remove()

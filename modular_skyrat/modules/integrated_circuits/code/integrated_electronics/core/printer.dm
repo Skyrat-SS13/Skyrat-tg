@@ -8,7 +8,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	var/upgraded = TRUE		// When hit with an upgrade disk, will turn true, allowing it to print the higher tier circuits.
 	var/can_clone = TRUE		// Allows the printer to clone circuits, either instantly or over time depending on upgrade. Set to FALSE to disable entirely.
-	var/fast_clone = TRUE		// If this is false, then cloning will take an amount of deciseconds equal to the iron cost divided by 100.
+	var/fast_clone = TRUE		// If this is false, then cloning will take an amount of deciseconds equal to the material cost divided by 100.
 	var/debug = FALSE			// If it's upgraded and can clone, even without config settings.
 	var/current_category = null
 	var/cloning = FALSE			// If the printer is currently creating a circuit
@@ -34,7 +34,7 @@
 
 /obj/item/integrated_circuit_printer/Initialize()
 	. = ..()
-	AddComponent(/datum/component/material_container, list(/datum/material/iron), MINERAL_MATERIAL_AMOUNT * 25, MATCONTAINER_ANY_INTENT)
+	AddComponent(/datum/component/material_container, list(/datum/material/iron), MINERAL_MATERIAL_AMOUNT * 25, MATCONTAINER_ANY_INTENT | MATCONTAINER_SILENT)
 	//AddComponent(/datum/component/material_container, list(/datum/material/iron), MINERAL_MATERIAL_AMOUNT * 25, TRUE, list(/obj/item/stack, /obj/item/integrated_circuit, /obj/item/electronic_assembly))
 
 /obj/item/integrated_circuit_printer/proc/print_program(mob/user)
@@ -167,7 +167,7 @@
 	else
 		HTML += " Load Program"
 	if(!program)
-		HTML += " [fast_clone ? "Print" : "Begin Printing"] Assembly"
+		HTML += " [fast_clone ? "Print" : "Begin Printing"] Assembly<br>"
 	else if(cloning)
 		HTML += " <A href='?src=[REF(src)];print=cancel'>Cancel Print</a>"
 	else
@@ -217,21 +217,29 @@
 		if(!build_type || !ispath(build_type))
 			return TRUE
 
-		var/cost = 400
+		var/cost = list(/datum/material/iron=400)
 		if(ispath(build_type, /obj/item/electronic_assembly))
 			var/obj/item/electronic_assembly/E = SScircuit.cached_assemblies[build_type]
-			cost = E.materials
+			cost = E.custom_materials
 		else if(ispath(build_type, /obj/item/integrated_circuit))
 			var/obj/item/integrated_circuit/IC = SScircuit.cached_components[build_type]
-			cost = IC.materials
+			cost = IC.custom_materials
 		else if(!(build_type in SScircuit.circuit_fabricator_recipe_list["Tools"]))
 			return
 
 		var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 
-		if(!debug && !materials.use_amount_mat(cost, /datum/material/iron))
-			to_chat(usr, "<span class='warning'>You need [cost] iron to build that!</span>")
+		if(!debug && !materials.has_materials(cost))
+			to_chat(usr, "<span class='warning'>You need more materials to build that!</span>")
+			to_chat(usr, "<span class='warning'>=== MATERIALS ===</span>")
+			for(var/mat in cost)
+				var/datum/material/req_mat = mat
+				var/amount_required = cost[mat]
+				if(!istype(req_mat))
+					req_mat = GET_MATERIAL_REF(req_mat)
+				to_chat(usr, "<span class='notice'>[req_mat]: [amount_required]</span>")
 			return TRUE
+		materials.use_materials(cost)
 
 		var/obj/item/built = new build_type(drop_location())
 		usr.put_in_hands(built)
@@ -264,7 +272,9 @@
 			if("load")
 				if(cloning)
 					return
-				var/input = stripped_multiline_input(usr, "Put your code there:", "loading", max_length = MAX_SIZE_CIRCUIT)
+
+				// We want this trimmed through stripped_multiline_input, but we don't want the result to be html encoded otherwise there will be json decode errors.
+				var/input = html_decode(stripped_multiline_input(usr, "Put your code there:", "loading", max_length = MAX_SIZE_CIRCUIT))
 				if(!check_interactivity(usr) || cloning)
 					return
 				if(!input)
@@ -289,7 +299,13 @@
 						to_chat(usr, "<span class='warning'>This program uses components not supported by the specified assembly. Please change the assembly type in the save file to a supported one.</span>")
 					to_chat(usr, "<span class='notice'>Used space: [program["used_space"]]/[program["max_space"]].</span>")
 					to_chat(usr, "<span class='notice'>Complexity: [program["complexity"]]/[program["max_complexity"]].</span>")
-					to_chat(usr, "<span class='notice'>Iron cost: [program["iron_cost"]].</span>")
+					to_chat(usr, "<span class='notice'>=== MATERIALS ===</span>")
+					for(var/mat in program["material_costs"])
+						var/datum/material/req_mat = mat
+						var/amount_required = program["material_costs"][mat]
+						if(!istype(req_mat))
+							req_mat = GET_MATERIAL_REF(req_mat)
+						to_chat(usr, "<span class='notice'>[req_mat]: [amount_required]</span>")
 
 			if("print")
 				if(!program || cloning)
@@ -303,17 +319,22 @@
 					return
 				else if(fast_clone)
 					var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-					if(debug || materials.use_amount_mat(program["iron_cost"], /datum/material/iron))
+					if(materials.has_materials(program["material_costs"]))
+						materials.use_materials(program["material_costs"])
 						cloning = TRUE
 						print_program(usr)
 					else
-						to_chat(usr, "<span class='warning'>You need [program["iron_cost"]] iron to build that!</span>")
+						to_chat(usr, "<span class='warning'>The printer doesn't have sufficient materials to produce this circuit.</span>")
 				else
 					var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-					if(!materials.use_amount_mat(program["iron_cost"], /datum/material/iron))
-						to_chat(usr, "<span class='warning'>You need [program["iron_cost"]] iron to build that!</span>")
+					if(!materials.has_materials(program["material_costs"]))
+						to_chat(usr, "<span class='warning'>The printer doesn't have sufficient materials to produce this circuit.</span>")
 						return
-					var/cloning_time = round(program["iron_cost"] / 15)
+					materials.use_materials(program["material_costs"])
+					var/total_cost = 0
+					for(var/mat in program["material_costs"])
+						total_cost += program["material_costs"][mat]
+					var/cloning_time = round(total_cost / 15)
 					cloning_time = min(cloning_time, MAX_CIRCUIT_CLONE_TIME)
 					cloning = TRUE
 					to_chat(usr, "<span class='notice'>You begin printing a custom assembly. This will take approximately [DisplayTimeText(cloning_time)]. You can still print \
@@ -325,10 +346,12 @@
 				if(!cloning || !program)
 					return
 
-				to_chat(usr, "<span class='notice'>Cloning has been canceled. Iron cost has been refunded.</span>")
+				to_chat(usr, "<span class='notice'>Cloning has been canceled. Materials have been refunded.</span>")
 				cloning = FALSE
 				var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-				materials.use_amount_mat(-program["iron_cost"], /datum/material/iron) //use negative amount to regain the cost
+				for(var/mat in program["material_costs"])
+					materials.use_amount_mat(-program["material_costs"][mat], mat)
+				//materials.use_amount_mat(-program["iron_cost"], /datum/material/iron) //use negative amount to regain the cost
 
 
 	interact(usr)

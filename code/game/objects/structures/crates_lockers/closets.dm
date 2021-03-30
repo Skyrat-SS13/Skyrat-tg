@@ -87,7 +87,7 @@
 	if(broken || !secure)
 		return
 	//Overlay is similar enough for both that we can use the same mask for both
-	SSvis_overlays.add_vis_overlay(src, icon, "locked", EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha)
+	SSvis_overlays.add_vis_overlay(src, icon, "locked", 0, EMISSIVE_PLANE, dir, alpha)
 	. += locked ? "locked" : "unlocked"
 
 /obj/structure/closet/examine(mob/user)
@@ -502,14 +502,13 @@
 				req_access += pick(SSid_access.get_region_access_list(list(REGION_ALL_STATION)))
 
 /obj/structure/closet/contents_explosion(severity, target)
-	for(var/thing in contents)
-		switch(severity)
-			if(EXPLODE_DEVASTATE)
-				SSexplosions.high_mov_atom += thing
-			if(EXPLODE_HEAVY)
-				SSexplosions.med_mov_atom += thing
-			if(EXPLODE_LIGHT)
-				SSexplosions.low_mov_atom += thing
+	switch(severity)
+		if(EXPLODE_DEVASTATE)
+			SSexplosions.high_mov_atom += contents
+		if(EXPLODE_HEAVY)
+			SSexplosions.med_mov_atom += contents
+		if(EXPLODE_LIGHT)
+			SSexplosions.low_mov_atom += contents
 
 /obj/structure/closet/singularity_act()
 	dump_contents()

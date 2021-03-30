@@ -2096,8 +2096,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(on_species_init)
 		return
 	// If we don't have a set tail, don't bother adding moodlets
+	//SKYRAT EDIT CHANGE BEGIN
+	/*
 	if(!mutant_organs.len)
 		return
+	*/
+	if(!tail_owner.dna.mutant_bodyparts["tail"])
+		return
+	//SKYRAT EDIT CHANGE END
 
 	SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "tail_lost", /datum/mood_event/tail_lost)
 	SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "tail_balance_lost", /datum/mood_event/tail_balance_lost)
@@ -2117,13 +2123,27 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(on_species_init)
 		return
 	// If we don't have a set tail, don't add moodlets
+	//SKYRAT EDIT CHANGE BEGIN
+	/*
 	if(!mutant_organs.len)
 		return
+	*/
+	if(!tail_owner.dna.mutant_bodyparts["tail"])
+		return
+	//SKYRAT EDIT CHANGE END
 
+	//SKYRAT EDIT CHANGE BEGIN
+	/*
 	if(found_tail.type in mutant_organs)
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "right_tail_regained", /datum/mood_event/tail_regained_right)
 	else
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
+	*/
+	if(tail_owner.dna.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] == mutant_bodyparts["tail"][MUTANT_INDEX_NAME]) //mutant_bodyparts["tail"] should exist here
+		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "right_tail_regained", /datum/mood_event/tail_regained_right)
+	else
+		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
+	//SKYRAT EDIT CHANGE END
 
 /*
  * Clears all tail related moodlets when they lose their species.

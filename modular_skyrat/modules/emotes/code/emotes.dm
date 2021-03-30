@@ -26,57 +26,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg'
 
-/datum/emote/living/scream
-	message = "screams!"
-	mob_type_blacklist_typecache = list(/mob/living/simple_animal/slime, /mob/living/brain)
-	vary = TRUE
-
-/datum/emote/living/scream/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(!user.is_muzzled() && !(user.mind && user.mind.miming))
-		if(ishuman(user))
-			user.adjustOxyLoss(5)
-		var/sound = get_sound(user, TRUE)
-		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
-
-/datum/emote/living/scream/select_message_type(mob/user, intentional)
-	if(!intentional && isanimal(user))
-		return "makes a loud and pained whimper."
-	if(user.is_muzzled())
-		return "makes a very loud noise."
-	. = ..()
-
-/datum/emote/living/scream/get_sound(mob/living/user, override = FALSE)
-	if(!override)
-		return
-	if(iscyborg(user))
-		return 'modular_skyrat/modules/emotes/sound/voice/scream_silicon.ogg'
-	if(ismonkey(user))
-		return 'modular_skyrat/modules/emotes/sound/voice/scream_monkey.ogg'
-	if(istype(user, /mob/living/simple_animal/hostile/gorilla))
-		return 'sound/creatures/gorilla.ogg'
-	if(isalien(user))
-		return 'sound/voice/hiss6.ogg'
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		var/datum/species/userspecies = H.dna.species
-
-		if(user.gender == MALE || !LAZYLEN(userspecies.femalescreamsounds))
-			return pick(userspecies.screamsounds)
-		else
-			return pick(userspecies.femalescreamsounds)
-	return
-
-/datum/emote/living/scream/can_run_emote(mob/living/user, status_check, intentional)
-	if(iscyborg(user))
-		var/mob/living/silicon/robot/R = user
-
-		if(R.cell?.charge < 200)
-			to_chat(R, "<span class='warning'>Scream module deactivated. Please recharge.</span>")
-			return FALSE
-		R.cell.use(200)
-	return ..()
 
 /datum/emote/living/cough/get_sound(mob/living/user)
 	if(isvox(user))

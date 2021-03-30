@@ -255,7 +255,8 @@
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron,
-		/obj/item/stack/cable_coil)
+		/obj/item/stack/cable_coil,
+		/obj/item/lightreplacer/cyborg) // Skyrat Edit - Surprised Engie borgs don't get these
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(/obj/item/borg/stun)
 	cyborg_base_icon = "engineer"
@@ -476,6 +477,7 @@
 		/obj/item/borg/apparatus/beaker/service)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
+	cyborg_base_icon = "service_m" // display as butlerborg for radial model selection
 	model_select_icon = "service"
 	special_light_key = "service"
 	hat_offset = 0

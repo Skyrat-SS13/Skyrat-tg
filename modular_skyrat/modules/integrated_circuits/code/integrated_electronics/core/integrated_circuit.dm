@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/integrated_circuits/icons/obj/assemblies/electronic_components.dmi'
 	icon_state = "template"
 	w_class = WEIGHT_CLASS_TINY
-	var/materials
+	custom_materials = list(/datum/material/iron=200)
 	var/obj/item/electronic_assembly/assembly // Reference to the assembly holding this circuit, if any.
 	var/extended_desc
 	var/list/inputs = list()
@@ -82,7 +82,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 
 /obj/item/integrated_circuit/Initialize()
 	. = ..()
-	materials = w_class * SScircuit.cost_multiplier
+	set_custom_materials(list(GET_MATERIAL_REF(/datum/material/iron)=w_class * SScircuit.cost_multiplier))
 	displayed_name = name
 	setup_io(inputs, /datum/integrated_io, inputs_default, IC_INPUT)
 	setup_io(outputs, /datum/integrated_io, outputs_default, IC_OUTPUT)
