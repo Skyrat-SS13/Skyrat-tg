@@ -21,7 +21,7 @@
 //////////////////GLOCK
 /obj/item/gun/ballistic/automatic/pistol/g17
 	name = "\improper Armadyne APS-F1"
-	desc = "An Armadyne reproduction of a bullpup AEROMECH model, chambered in 9mm Peacekeeper. Unlike the gun's internal systems, the ergonomics are nice."
+	desc = "An Armadyne reproduction of an AEROMECH bullpup model, chambered in 9mm Peacekeeper. Unlike the gun's internal systems, the ergonomics are atleast somewhat nice."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
