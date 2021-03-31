@@ -279,7 +279,6 @@
 	desc = "The circuit board for an Exosuit Fabricator."
 	id = "mechfab"
 	build_path = /obj/item/circuitboard/machine/mechfab
-	build_type = IMPRINTER //SKYRAT EDIT Addition - Removes exploitables from ghostroles
 	category = list("Research Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
