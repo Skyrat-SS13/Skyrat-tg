@@ -96,8 +96,8 @@
 	return ..()
 
 //	SKYRAT EDIT ADDITION START
-/obj/structure/table/attack_robot(mob/user)
-	on_attack_hand(user)
+/obj/structure/table/attack_robot(mob/user, list/modifiers)
+	return attack_hand(user, modifiers)
 //	SKYRAT EDIT ADDITION END
 
 /obj/structure/table/attack_tk(mob/user)
