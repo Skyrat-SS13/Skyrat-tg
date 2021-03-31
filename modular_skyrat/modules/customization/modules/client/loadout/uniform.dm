@@ -179,6 +179,18 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/uniform/suit/vice
+	name = "Grey and Black suit"
+	path = /obj/item/clothing/under/misc/vice_officer
+
+/datum/loadout_item/uniform/suit/femblack
+	name = "Feminine Suit"
+	path = /obj/item/clothing/under/suit/black/female
+
+/datum/loadout_item/uniform/suit/femblackskirt
+	name = "Executive Skirt"
+	path = /obj/item/clothing/under/suit/black_really/skirt
+
 /datum/loadout_item/uniform/suit/cybersleek	//Cyberpunk P.I. Outfit
 	name = "Sleek Modern Coat"
 	path = /obj/item/clothing/under/costume/cybersleek
@@ -355,6 +367,10 @@
 /datum/loadout_item/uniform/pants/rippedjeans
 	name = "Ripped Jeans"
 	path = /obj/item/clothing/under/pants/jeanripped
+
+/datum/loadout_item/uniform/pants/yakuza
+	name = "Japanese Jeans"
+	path = /obj/item/clothing/under/costume/yakuza
 
 //SHORTS
 /datum/loadout_item/uniform/shorts
