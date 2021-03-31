@@ -66626,6 +66626,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron{
 	heat_capacity = 1e+006
 	},
@@ -67584,10 +67585,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/junction{
-	dir = 1
-	},
 /obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
 /turf/open/floor/iron,
 /area/medical/storage)
 "cUU" = (
@@ -68326,7 +68327,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/medical/storage)
@@ -72065,7 +72065,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/medical/storage)
 "deK" = (
@@ -73921,7 +73920,6 @@
 /area/medical/medbay/central)
 "diC" = (
 /obj/item/beacon,
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -73932,6 +73930,9 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
@@ -73949,6 +73950,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "diE" = (
@@ -73958,6 +73962,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -73975,6 +73982,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "diH" = (
@@ -74020,6 +74030,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "diM" = (
@@ -74912,10 +74925,10 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "dkG" = (
@@ -78145,7 +78158,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/medical/storage)
 "dsR" = (
@@ -96048,10 +96060,15 @@
 /turf/open/floor/iron/white,
 /area/medical/surgery/room_b)
 "eNQ" = (
-/obj/effect/spawner/structure/window/reinforced/tinted,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/medical/storage)
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "eNR" = (
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer2,
@@ -96316,7 +96333,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/medical/storage)
 "foK" = (
@@ -96559,6 +96575,23 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/hallway/secondary/command)
+"fHs" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/medical/medbay/central)
 "fIc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/flasher{
@@ -96739,6 +96772,25 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/gravity_generator)
+"fTj" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/medical/medbay/central)
 "fTN" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
@@ -102358,7 +102410,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "mTZ" = (
@@ -102858,6 +102912,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "nza" = (
@@ -103690,6 +103747,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/medical/treatment_center)
 "ozx" = (
@@ -105287,12 +105345,12 @@
 /turf/open/floor/iron,
 /area/engineering/main)
 "qnt" = (
-/obj/effect/turf_decal/tile/blue{
+/obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
-/area/medical/medbay/central)
+/area/medical/treatment_center)
 "qnx" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxins_mixing_input,
 /turf/open/floor/engine/vacuum,
@@ -108118,7 +108176,6 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/medical/storage)
 "tyq" = (
@@ -108764,6 +108821,41 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/maintenance/port/fore)
+"upK" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/medical/medbay/central)
+"upU" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/medical/medbay/central)
 "uqA" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral,
@@ -110134,6 +110226,24 @@
 	dir = 6
 	},
 /turf/open/floor/iron/white,
+/area/medical/medbay/central)
+"vHP" = (
+/obj/effect/landmark/event_spawn,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/medical/medbay/central)
 "vHV" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
@@ -156951,7 +157061,7 @@ vBV
 tWl
 cUG
 cPv
-diJ
+upK
 dkv
 cNz
 dnv
@@ -157722,7 +157832,7 @@ cUG
 cUG
 dfD
 dhm
-diM
+fHs
 iLU
 cPy
 dny
@@ -157979,7 +158089,7 @@ xAi
 rOP
 vTA
 abY
-diz
+vHP
 iLU
 cNz
 dnv
@@ -158236,7 +158346,7 @@ gPx
 snQ
 vTA
 dho
-diM
+fHs
 dkx
 cNB
 cNz
@@ -158487,13 +158597,13 @@ cSR
 oKQ
 dbu
 oua
-oua
+eNQ
 uHV
 gaK
 iRl
 vTA
 cPv
-diJ
+upK
 dky
 dfG
 dnz
@@ -158750,7 +158860,7 @@ uTS
 cZK
 vTA
 cPv
-diM
+fHs
 dkz
 dfI
 dnA
@@ -159007,7 +159117,7 @@ dbt
 nRl
 qdq
 cPv
-diJ
+upK
 dkA
 cNA
 pyI
@@ -159264,7 +159374,7 @@ uvc
 deD
 qJK
 kzm
-diM
+fHs
 dkv
 oxg
 oxg
@@ -159521,7 +159631,7 @@ svE
 deE
 qdq
 cPv
-diJ
+upK
 hBm
 oxg
 dnC
@@ -159772,13 +159882,13 @@ fuA
 cUN
 cXW
 rZZ
-rZZ
+qnt
 hue
 wqd
 uFG
 vTA
 cPv
-diM
+fHs
 dkv
 oxg
 iPR
@@ -160035,7 +160145,7 @@ ddg
 deF
 vTA
 cPv
-diz
+vHP
 dkv
 oxg
 dnE
@@ -160549,7 +160659,7 @@ dsN
 ttq
 oZd
 dhq
-diJ
+upK
 dkv
 cPy
 xRj
@@ -160806,7 +160916,7 @@ ugM
 deH
 oZd
 cPv
-diM
+upU
 dkv
 cPy
 dnH
@@ -161063,7 +161173,7 @@ vNO
 deI
 dfK
 pBM
-diH
+fTj
 kxT
 cPy
 ycW
@@ -161318,8 +161428,8 @@ fnt
 fnt
 dsQ
 deJ
-eNQ
-qnt
+hcI
+cPv
 mSs
 dkE
 dme
