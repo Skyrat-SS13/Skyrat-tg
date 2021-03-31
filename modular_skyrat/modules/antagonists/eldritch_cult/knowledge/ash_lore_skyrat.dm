@@ -7,4 +7,3 @@
 	required_atoms = list(/obj/effect/decal/cleanable/ash,/obj/item/organ/stomach,/obj/item/book)
 	mob_to_summon = /mob/living/simple_animal/hostile/eldritch/ash_spirit
 	next_knowledge = list(/datum/eldritch_knowledge/summon/stalker,/datum/eldritch_knowledge/spell/flame_birth)
-    
