@@ -274,10 +274,8 @@ Used by the AI doomsday and the self-destruct nuke.
 		++space_levels_so_far
 		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
 
-	LoadGroup(FailedZs, "Rockplanet", "skyrat/planets", "rockplanet.dmm", default_traits = ZTRAITS_ROCKPLANET)
-
 	if(config.minetype == "lavaland")
-		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+		LoadGroup(FailedZs, "Rockplanet", "skyrat/planets", "rockplanet.dmm", default_traits = ZTRAITS_ROCKPLANET)
 	else if (!isnull(config.minetype) && config.minetype != "none")
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 #endif
