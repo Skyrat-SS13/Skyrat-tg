@@ -383,13 +383,17 @@
 		return TRUE
 
 /datum/ambitions/proc/log_action(text_content, clears_approval = TRUE)
+	var/admin_change = my_mind.current != usr
+	if(admin_change)
+		text_content += " \[ADMIN\]"
 	if(admin_approval && clears_approval && !changed_after_approval)
 		changed_after_approval = TRUE
 		log += "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")] CHANGED AFTER APPROVAL:"
 	log += "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")] [text_content]"
-	usr.log_message(text_content, LOG_AMBITION)
-	if(my_mind.current != usr)
+	if(admin_change)
+		text_content +=
 		my_mind.current.log_message(text_content, LOG_AMBITION)
+	usr.log_message(text_content, LOG_AMBITION)
 
 /datum/ambitions/proc/is_proper_ambitions()
 	if(intensity == 0 || length(objectives) == 0 || narrative == "")
