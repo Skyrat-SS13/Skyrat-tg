@@ -92,7 +92,11 @@
 	/// Linked paystand.
 	var/obj/machinery/paystand/my_store
 	/// Registered owner's age.
+<<<<<<< HEAD
 	var/registered_age = 18 //SKYRAT EDIT - ORIGINAL (13)
+=======
+	var/registered_age = 30
+>>>>>>> 50510184b33 (CTF players are no longer 13 year olds (#58040))
 
 	/// The job name registered on the card (for example: Assistant).
 	var/assignment
