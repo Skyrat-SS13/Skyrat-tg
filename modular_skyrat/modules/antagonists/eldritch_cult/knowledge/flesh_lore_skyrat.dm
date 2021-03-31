@@ -6,3 +6,4 @@
 	required_atoms = list(/obj/effect/decal/cleanable/vomit,/obj/item/book,/obj/item/organ/lungs)
 	mob_to_summon = /mob/living/simple_animal/hostile/eldritch/rust_spirit
 	next_knowledge = list(/datum/eldritch_knowledge/spell/voidpull,/datum/eldritch_knowledge/spell/entropic_plume)
+    
