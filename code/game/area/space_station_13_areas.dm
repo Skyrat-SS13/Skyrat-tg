@@ -453,6 +453,37 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Service Hallway"
 	icon_state = "hall_service"
 
+/area/hallway/primary/central/floor0
+	name = "Central Stairway - Ground Floor"
+
+/area/hallway/primary/central/floor1
+	name = "Central Stairway - First Floor"
+
+/area/hallway/primary/central/floor2
+	name = "Central Stairway - Second Floor"
+
+/area/hallway/primary/central/floor3
+	name = "Central Stairway - Third Floor"
+
+/area/hallway/primary/central/floor4
+	name = "Central Stairway - Fourth Floor"
+
+/area/hallway/primary/central/floor5
+	name = "Central Stairway - Fifth Floor"
+
+/area/hallway/primary/central/floor6
+	name = "Central Stairway - Sixth Floor"
+
+/area/hallway/primary/central/floor7
+	name = "Central Stairway - Seventh Floor"
+
+/area/hallway/primary/central/floor8
+	name = "Central Stairway - Eighth Floor"
+
+/area/hallway/primary/central/floor9
+	name = "Central Stairway - Ninth Floor"
+
+
 //Command
 
 /area/command
