@@ -9,7 +9,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	icon_state      = "grey"
 	plane           = OPENSPACE_BACKDROP_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+<<<<<<< HEAD
 	layer           = SPLASHSCREEN_LAYER
+=======
+>>>>>>> 800baeaf1cd (Feex (#58073))
 	//I don't know why the others are aligned but I shall do the same.
 	vis_flags = VIS_INHERIT_ID
 
