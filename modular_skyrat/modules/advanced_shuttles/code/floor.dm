@@ -81,3 +81,4 @@
 	icon = 'code/modules/locations/shuttles/evac_shuttle.dmi'
 	icon_state = "floor"
 
+*/
