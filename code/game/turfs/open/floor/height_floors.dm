@@ -1,19 +1,19 @@
 /obj/item/stack/tile/plasteel/elevated
 	name = "elevated floor tile"
 	singular_name = "elevated floor tile"
-	turf_type = /turf/open/floor/plasteel/elevated
+	turf_type = /turf/open/floor/iron/elevated
 
 /obj/item/stack/tile/plasteel/lowered
 	name = "lowered floor tile"
 	singular_name = "lowered floor tile"
-	turf_type = /turf/open/floor/plasteel/lowered
+	turf_type = /turf/open/floor/iron/lowered
 
 /obj/item/stack/tile/plasteel/pool
 	name = "pool floor tile"
 	singular_name = "pool floor tile"
-	turf_type = /turf/open/floor/plasteel/pool
+	turf_type = /turf/open/floor/iron/pool
 
-/turf/open/floor/plasteel/pool
+/turf/open/floor/iron/pool
 	name = "pool floor"
 	floor_tile = /obj/item/stack/tile/plasteel/pool
 	icon = 'icons/horizon/turf/pool_tile.dmi'
@@ -22,16 +22,16 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/plasteel/pool/setup_broken_states()
+/turf/open/floor/iron/pool/setup_broken_states()
 	return list("pool_tile")
 
-/turf/open/floor/plasteel/pool/setup_burnt_states()
+/turf/open/floor/iron/pool/setup_burnt_states()
 	return list("pool_tile")
 
-/turf/open/floor/plasteel/pool/rust_heretic_act()
+/turf/open/floor/iron/pool/rust_heretic_act()
 	return
 
-/turf/open/floor/plasteel/elevated
+/turf/open/floor/iron/elevated
 	name = "elevated floor"
 	floor_tile = /obj/item/stack/tile/plasteel/elevated
 	icon = 'icons/horizon/turf/elevated_plasteel.dmi'
@@ -43,16 +43,16 @@
 	liquid_height = 30
 	turf_height = 30
 
-/turf/open/floor/plasteel/elevated/setup_broken_states()
+/turf/open/floor/iron/elevated/setup_broken_states()
 	return list("elevated_plasteel")
 
-/turf/open/floor/plasteel/elevated/setup_burnt_states()
+/turf/open/floor/iron/elevated/setup_burnt_states()
 	return list("elevated_plasteel")
 
-/turf/open/floor/plasteel/elevated/rust_heretic_act()
+/turf/open/floor/iron/elevated/rust_heretic_act()
 	return
 
-/turf/open/floor/plasteel/lowered
+/turf/open/floor/iron/lowered
 	name = "lowered floor"
 	floor_tile = /obj/item/stack/tile/plasteel/lowered
 	icon = 'icons/horizon/turf/lowered_plasteel.dmi'
@@ -64,11 +64,11 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/plasteel/lowered/setup_broken_states()
+/turf/open/floor/iron/lowered/setup_broken_states()
 	return list("lowered_plasteel")
 
-/turf/open/floor/plasteel/lowered/setup_burnt_states()
+/turf/open/floor/iron/lowered/setup_burnt_states()
 	return list("lowered_plasteel")
 
-/turf/open/floor/plasteel/lowered/rust_heretic_act()
+/turf/open/floor/iron/lowered/rust_heretic_act()
 	return

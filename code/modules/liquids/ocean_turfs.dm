@@ -113,11 +113,11 @@
 	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
 	new_immmutable.add_turf(src)
 
-/turf/open/floor/plasteel/ocean
+/turf/open/floor/iron/ocean
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/plasteel/ocean
+	baseturfs = /turf/open/floor/iron/ocean
 
-/turf/open/floor/plasteel/ocean/Initialize()
+/turf/open/floor/iron/ocean/Initialize()
 	. = ..()
 	if(liquids)
 		if(liquids.immutable)
@@ -196,7 +196,7 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/plasteel/submarine
+/turf/open/floor/iron/submarine
 	name = "submarine floor"
 	icon = 'icons/horizon/turf/submarine.dmi'
 	base_icon_state = "submarine_floor"
@@ -204,16 +204,16 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/plasteel/submarine/setup_broken_states()
+/turf/open/floor/iron/submarine/setup_broken_states()
 	return list("submarine_floor")
 
-/turf/open/floor/plasteel/submarine/setup_burnt_states()
+/turf/open/floor/iron/submarine/setup_burnt_states()
 	return list("submarine_floor")
 
-/turf/open/floor/plasteel/submarine/rust_heretic_act()
+/turf/open/floor/iron/submarine/rust_heretic_act()
 	return
 
-/turf/open/floor/plasteel/submarine_vents
+/turf/open/floor/iron/submarine_vents
 	name = "submarine floor"
 	icon = 'icons/horizon/turf/submarine.dmi'
 	base_icon_state = "submarine_vents"
@@ -221,16 +221,16 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/plasteel/submarine_vents/setup_broken_states()
+/turf/open/floor/iron/submarine_vents/setup_broken_states()
 	return list("submarine_vents")
 
-/turf/open/floor/plasteel/submarine_vents/setup_burnt_states()
+/turf/open/floor/iron/submarine_vents/setup_burnt_states()
 	return list("submarine_vents")
 
-/turf/open/floor/plasteel/submarine_vents/rust_heretic_act()
+/turf/open/floor/iron/submarine_vents/rust_heretic_act()
 	return
 
-/turf/open/floor/plasteel/submarine_perf
+/turf/open/floor/iron/submarine_perf
 	name = "submarine floor"
 	icon = 'icons/horizon/turf/submarine.dmi'
 	base_icon_state = "submarine_perf"
@@ -238,13 +238,13 @@
 	liquid_height = -30
 	turf_height = -30
 
-/turf/open/floor/plasteel/submarine_perf/setup_broken_states()
+/turf/open/floor/iron/submarine_perf/setup_broken_states()
 	return list("submarine_perf")
 
-/turf/open/floor/plasteel/submarine_perf/setup_burnt_states()
+/turf/open/floor/iron/submarine_perf/setup_burnt_states()
 	return list("submarine_perf")
 
-/turf/open/floor/plasteel/submarine_perf/rust_heretic_act()
+/turf/open/floor/iron/submarine_perf/rust_heretic_act()
 	return
 
 //For now just a titanium wall. I'll make sprites for it later
