@@ -88,15 +88,15 @@
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-/*	//SKYRAT EDIT REMOVAL START
+
 /datum/design/board/scan_console
 	name = "Computer Design (DNA Console)"
 	desc = "Allows for the construction of circuit boards used to build a new DNA console."
 	id = "scan_console"
-	build_path = /obj/item/circuitboard/computer/scan_consolenew
+	//build_path = /obj/item/circuitboard/computer/scan_consolenew	SKYRAT EDIT REMOVAL
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-*/	//SKYRAT EDIT REMOVAL END
+
 /datum/design/board/comconsole
 	name = "Computer Design (Communications)"
 	desc = "Allows for the construction of circuit boards used to build a communications console."

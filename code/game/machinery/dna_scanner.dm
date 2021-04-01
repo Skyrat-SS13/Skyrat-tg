@@ -1,4 +1,3 @@
-/*	//SKYRAT EDIT REMOVAL START
 /obj/machinery/dna_scannernew
 	name = "\improper DNA scanner"
 	desc = "It scans DNA structures."
@@ -10,7 +9,7 @@
 	idle_power_usage = 50
 	active_power_usage = 300
 	occupant_typecache = list(/mob/living, /obj/item/bodypart/head, /obj/item/organ/brain)
-	circuit = /obj/item/circuitboard/machine/dnascanner
+	//circuit = /obj/item/circuitboard/machine/dnascanner	SKYRAT EDIT REMOVAL
 	var/locked = FALSE
 	var/damage_coeff
 	var/scan_level
@@ -169,4 +168,3 @@
 /obj/item/disk/data/examine(mob/user)
 	. = ..()
 	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
-*/	//SKYRAT EDIT REMOVAL END

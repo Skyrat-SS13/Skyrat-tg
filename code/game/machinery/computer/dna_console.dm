@@ -1,4 +1,3 @@
-/*	//SKYRAT EDIT REMOVAL START
 /// Base timeout for creating mutation activators and other injectors
 #define INJECTOR_TIMEOUT 100
 /// Maximum number of genetic makeup storage slots in DNA Console
@@ -44,7 +43,7 @@
 	icon_screen = "dna"
 	icon_keyboard = "med_key"
 	density = TRUE
-	circuit = /obj/item/circuitboard/computer/scan_consolenew
+	//circuit = /obj/item/circuitboard/computer/scan_consolenew	//SKYRAT EDIT REMOVAL
 
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
@@ -2173,4 +2172,3 @@
 #undef SEARCH_STORED
 #undef SEARCH_DISKETTE
 #undef SEARCH_ADV_INJ
-*/	//SKYRAT EDIT REMOVAL END
