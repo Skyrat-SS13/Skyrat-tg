@@ -59,13 +59,14 @@
 
 	mob_spawn_chance = 3
 
-	mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/goliath/beast/random = 20,
+	mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/goliath = 20,
 		/mob/living/simple_animal/hostile/netherworld/asteroid = 10,
 		/mob/living/simple_animal/hostile/ooze/grapes/asteroid = 20,
 		/mob/living/simple_animal/hostile/asteroid/fugu = 30,
 		/mob/living/simple_animal/hostile/asteroid/basilisk = 40,
 		/mob/living/simple_animal/hostile/asteroid/hivelord = 50,
 		/mob/living/simple_animal/hostile/netherworld/migo/asteroid = 10,
+		/mob/living/simple_animal/hostile/alien/asteroid = 20,
 		SPAWN_MEGAFAUNA = 3,
 		/mob/living/simple_animal/hostile/asteroid/goldgrub = 10)
 	flora_spawn_list = list(
@@ -76,7 +77,7 @@
 		/obj/structure/flora/ash/stem_shroom = 2,
 		/obj/structure/flora/ash/cacti = 1,
 		/obj/structure/flora/ash/tall_shroom = 2)
-	feature_spawn_list = list(/obj/structure/geyser/random = 1)
+	feature_spawn_list = list(/obj/structure/geyser/random = 1, /obj/effect/mine/shrapnel/human_only = 1)
 
 	initial_closed_chance = 45
 	smoothing_iterations = 50
@@ -84,4 +85,7 @@
 	death_limit = 3
 
 /area/mine/rockplanet
+	name = "Abandoned Syndicate Mining Facility"
+
+/area/mine/rockplanet_nanotrasen
 	name = "Abandoned Mining Facility"
