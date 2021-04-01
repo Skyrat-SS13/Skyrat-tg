@@ -664,7 +664,7 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_TINY
-	var/uses = 10
+	var/uses = 16 //SKYRAT EDIT - ORIGINAL VALUE (10)
 	var/temp = null
 	var/mob/living/carbon/human/owner
 	var/list/entries = list()
