@@ -448,8 +448,8 @@
 				/obj/item/circuitboard/machine/nanite_chamber,
 				/obj/item/circuitboard/machine/nanite_programmer,
 				/obj/item/circuitboard/machine/nanite_program_hub,
-				/obj/item/circuitboard/computer/scan_consolenew,
-				/obj/item/circuitboard/machine/dnascanner
+				///obj/item/circuitboard/computer/scan_consolenew,	SKYRAT EDIT REMOVAL
+				///obj/item/circuitboard/machine/dnascanner		SKYRAT EDIT REMOVAL
 				)
 
 /obj/effect/spawner/lootdrop/techstorage/security

@@ -330,6 +330,7 @@
 	category = list("Research Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
+/*	//SKYRAT EDIT REMOVAL START
 /datum/design/board/dnascanner
 	name = "Machine Design (DNA Scanner)"
 	desc = "The circuit board for a DNA Scanner."
@@ -337,7 +338,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 	build_path = /obj/item/circuitboard/machine/dnascanner
 	category = list("Research Machinery")
-
+*/	//SKYRAT EDIT REMOVAL END
 /datum/design/board/destructive_scanner
 	name = "Machine Design (Destructive Scanner Board)"
 	desc = "The circuit board for an experimental destructive scanner."

@@ -1,3 +1,4 @@
+/*	//SKYRAT EDIT REMOVAL START
 /// Base timeout for creating mutation activators and other injectors
 #define INJECTOR_TIMEOUT 100
 /// Maximum number of genetic makeup storage slots in DNA Console
@@ -2172,3 +2173,4 @@
 #undef SEARCH_STORED
 #undef SEARCH_DISKETTE
 #undef SEARCH_ADV_INJ
+*/	//SKYRAT EDIT REMOVAL END

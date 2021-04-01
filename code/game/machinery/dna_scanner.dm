@@ -1,3 +1,4 @@
+/*	//SKYRAT EDIT REMOVAL START
 /obj/machinery/dna_scannernew
 	name = "\improper DNA scanner"
 	desc = "It scans DNA structures."
@@ -168,3 +169,4 @@
 /obj/item/disk/data/examine(mob/user)
 	. = ..()
 	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
+*/	//SKYRAT EDIT REMOVAL END
