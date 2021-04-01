@@ -47,7 +47,7 @@
 	suit = /obj/item/clothing/suit/monkeysuit //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/suit/armor/hos/trenchcoat
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
-	suit_store = /obj/item/reagent_containers/spray/waterflower/lube //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/gun/energy/e_gun
+	r_hand = /obj/item/reagent_containers/spray/waterflower/lube //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/gun/energy/e_gun
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
 	implants = list(/obj/item/implant/sad_trombone)
