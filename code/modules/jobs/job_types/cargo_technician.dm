@@ -21,7 +21,7 @@
 	family_heirlooms = list(/obj/item/clipboard)
 
 /datum/outfit/job/cargo_tech
-	name = "Cargoslavian Mercenary"
+	name = "Cargo Technician"
 	jobtype = /datum/job/cargo_technician
 
 	belt = /obj/item/pda/cargo
