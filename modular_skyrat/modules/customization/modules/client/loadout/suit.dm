@@ -87,6 +87,26 @@
 /datum/loadout_item/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
+/datum/loadout_item/suit/jacket/dutchjacket
+	name = "Dutch Jacket"
+	path = /obj/item/clothing/suit/dutch
+
+/datum/loadout_item/suit/jacket/yakuzajacket
+	name = "Asian Jacket"
+	path = /obj/item/clothing/suit/yakuza
+
+/datum/loadout_item/suit/jacket/suitblue
+	name = "Blue Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer
+
+/datum/loadout_item/suit/jacket/suitpurple
+	name = "Purple Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/purple
+
+/datum/loadout_item/suit/jacket/suitblack
+	name = "Black Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/black
+
 /datum/loadout_item/suit/jacket/jacketbomber
 	name = "Bomber jacket"
 	path = /obj/item/clothing/suit/jacket
