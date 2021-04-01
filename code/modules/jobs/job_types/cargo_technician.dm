@@ -30,5 +30,5 @@
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	r_hand = /obj/item/gun/ballistic/automatic/cfa_wildcat
 	l_hand = /obj/item/export_scanner
-	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo=1),(/obj/item/ammo_box/magazine/smg32/rubber=1),(/obj/item/gun/ballistic/automatic/pistol/cfa_snub=1)
+	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo=1), (/obj/item/ammo_box/magazine/smg32/rubber=1), (/obj/item/gun/ballistic/automatic/pistol/cfa_snub=1),
 	id_trim = /datum/id_trim/job/cargo_technician
