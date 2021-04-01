@@ -7,7 +7,7 @@
 /turf/open/openspace/ocean/Initialize()
 	. = ..()
 	var/turf/T = below()
-	if(T.flags_1 & NO_RUINS_1)
+	if(T.turf_flags & NO_RUINS)
 		ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
 		return
 	for(var/obj/structure/flora/plant in contents)

@@ -68,7 +68,7 @@
 		welds_remaining--
 		if(welds_remaining <= 0)
 			to_chat(user, "<span class='notice'>You successfully salvage [src].</span>")
-			new /obj/item/stack/sheet/metal(get_turf(src), rand(SCRAP_METAL_YIELD_LOW, SCRAP_METAL_YIELD_HIGH))
+			new /obj/item/stack/sheet/iron(get_turf(src), rand(SCRAP_METAL_YIELD_LOW, SCRAP_METAL_YIELD_HIGH))
 			qdel(src)
 		else
 			welder_act(user, I, FALSE)
@@ -113,11 +113,11 @@
 	if(!allowed_area_types[A.type])
 		return INITIALIZE_HINT_QDEL
 	var/turf/T = get_turf(src)
-	if(T.flags_1 & NO_RUINS_1)
+	if(T.turf_flags & NO_RUINS)
 		return INITIALIZE_HINT_QDEL
 
 	var/to_spawn_path
-	
+
 	var/random = rand(1,80)
 	switch(random)
 		if(1 to 3)

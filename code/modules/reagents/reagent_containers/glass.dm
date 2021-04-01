@@ -21,7 +21,6 @@
 		return
 
 	if(istype(M))
-<<<<<<< HEAD
 		if(M != user)
 			M.visible_message("<span class='danger'>[user] attempts to feed [M] something from [src].</span>", \
 						"<span class='userdanger'>[user] attempts to feed you something from [src].</span>")
@@ -32,26 +31,6 @@
 			M.visible_message("<span class='danger'>[user] feeds [M] something from [src].</span>", \
 						"<span class='userdanger'>[user] feeds you something from [src].</span>")
 			log_combat(user, M, "fed", reagents.log_list())
-=======
-		if(user.a_intent == INTENT_HARM)
-			var/R
-			M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
-							"<span class='userdanger'>[user] splashes the contents of [src] onto you!</span>")
-			if(reagents)
-				for(var/datum/reagent/A in reagents.reagent_list)
-					R += "[A] ([num2text(A.volume)]),"
-
-			if(isturf(target))
-				var/turf/T = target
-				T.add_liquid_from_reagents(reagents)
-				if(reagents.reagent_list.len && thrownby)
-					log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-					message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
-			else
-				reagents.expose(M, TOUCH)
-			log_combat(user, M, "splashed", R)
-			reagents.clear_reagents()
->>>>>>> 147ecee668... stuffs n drains
 		else
 			to_chat(user, "<span class='notice'>You swallow a gulp of [src].</span>")
 		SEND_SIGNAL(src, COMSIG_GLASS_DRANK, M, user)
@@ -158,8 +137,8 @@
 	update_appearance()
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
 
-/obj/item/reagent_containers/glass/beaker/proc/attack_on_liquids_turf(obj/item/reagent_containers/glass/beaker/my_beaker, turf/T, mob/user, obj/effect/abstract/liquid_turf/liquids)
-	if(user.a_intent == INTENT_HARM)
+/obj/item/reagent_containers/glass/beaker/proc/attack_on_liquids_turf(obj/item/reagent_containers/glass/beaker/my_beaker, turf/T, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
+	if(user.combat_mode)
 		return FALSE
 	if(!user.Adjacent(T))
 		return FALSE

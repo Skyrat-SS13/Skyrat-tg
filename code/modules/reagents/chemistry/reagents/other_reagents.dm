@@ -1120,17 +1120,13 @@
 	glass_name = "glass of welder fuel"
 	glass_desc = "Unless you're an industrial tool, this is probably not safe for consumption."
 	penetrates_skin = NONE
-<<<<<<< HEAD
 	ph = 4
 	burning_temperature = 1725 //more refined than oil
 	burning_volume = 0.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/alcohol = 4)
-=======
-	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 	liquid_fire_power = 10
 	liquid_fire_burnrate = 0.1
->>>>>>> 6a860deb55... stuff
 
 /datum/reagent/fuel/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	. = ..()
