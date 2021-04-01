@@ -1,5 +1,5 @@
 /datum/job/cargo_technician
-	title = "Cargoslavian Mercenary"
+	title = "Cargo Technician"
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Quartermaster") //SKYRAT EDIT CHANGE
 	faction = "Station"
@@ -18,7 +18,7 @@
 	bounty_types = CIV_JOB_RANDOM
 	departments = DEPARTMENT_CARGO
 
-	family_heirlooms = list(/obj/item/clipboard)
+	family_heirlooms = list(/obj/item/gun/ballistic/automatic/assault_rifle/akm)
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"
