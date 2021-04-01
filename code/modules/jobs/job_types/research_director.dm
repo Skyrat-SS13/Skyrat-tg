@@ -40,9 +40,12 @@
 	ears = /obj/item/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/rnd/research_director
 	shoes = /obj/item/clothing/shoes/sneakers/brown
-	suit = /obj/item/clothing/suit/toggle/labcoat
-	l_hand = /obj/item/clipboard
+	suit = /obj/item/clothing/suit/xenos
+	l_hand = /obj/item/slimecross/charged/oil
+	r_hand = /obj/item/slimecross/charged/oil
 	l_pocket = /obj/item/laser_pointer
+	implants = list(/obj/item/implant/sad_trombone)
+	head = /obj/item/clothing/head/xenos
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command=1)
 
 	backpack = /obj/item/storage/backpack/science

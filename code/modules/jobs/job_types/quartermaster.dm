@@ -37,12 +37,14 @@
 	//ears = /obj/item/radio/headset/headset_cargo //ORIGINAL
 	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE
 	id = /obj/item/card/id/advanced/silver //SKYRAT EDIT CHANGE
-	uniform = /obj/item/clothing/under/rank/cargo/qm
-	shoes = /obj/item/clothing/shoes/sneakers/brown
+	uniform = /obj/item/clothing/under/costume/russian_officer
+	shoes = /obj/item/clothing/shoes/russian
 	glasses = /obj/item/clothing/glasses/sunglasses
-	l_hand = /obj/item/clipboard
+	suit = /obj/item/clothing/suit/armor/vest/russian_coat
+	l_hand = /obj/item/gun/ballistic/rifle/boltaction/brand_new
+	implants = list(/obj/item/implant/sad_trombone)
 	//backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo=1) //ORIGINAL
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command = 1) //SKYRAT EDIT CHANGE
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command=1, /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka=1) //SKYRAT EDIT CHANGE
 
 	chameleon_extras = /obj/item/stamp/qm
 
