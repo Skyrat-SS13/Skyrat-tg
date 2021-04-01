@@ -2,15 +2,11 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /atom/movable/openspace_backdrop
 	name = "openspace_backdrop"
-
 	anchored = TRUE
-
-	icon            = 'icons/turf/floors.dmi'
-	icon_state      = "grey"
-	plane           = OPENSPACE_BACKDROP_PLANE
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "grey"
+	plane = OPENSPACE_BACKDROP_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	layer           = SPLASHSCREEN_LAYER
-	//I don't know why the others are aligned but I shall do the same.
 	vis_flags = VIS_INHERIT_ID
 
 /turf/open/openspace

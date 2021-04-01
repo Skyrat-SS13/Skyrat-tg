@@ -87,6 +87,26 @@
 /datum/loadout_item/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
+/datum/loadout_item/suit/jacket/dutchjacket
+	name = "Dutch Jacket"
+	path = /obj/item/clothing/suit/dutch
+
+/datum/loadout_item/suit/jacket/yakuzajacket
+	name = "Asian Jacket"
+	path = /obj/item/clothing/suit/yakuza
+
+/datum/loadout_item/suit/jacket/suitblue
+	name = "Blue Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer
+
+/datum/loadout_item/suit/jacket/suitpurple
+	name = "Purple Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/purple
+
+/datum/loadout_item/suit/jacket/suitblack
+	name = "Black Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/black
+
 /datum/loadout_item/suit/jacket/jacketbomber
 	name = "Bomber jacket"
 	path = /obj/item/clothing/suit/jacket
@@ -304,3 +324,43 @@
 	path = /obj/item/clothing/suit/toggle/labcoat/highvis
 	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective")
 	restricted_desc = "First Responders and Detective"
+
+//Trekkie things.
+/datum/loadout_item/suit/job/trek/fedcoat
+	name = "Federation Jacket"
+	path = /obj/item/clothing/suit/storage/fluff/fedcoat
+
+/datum/loadout_item/suit/job/trek/fedmedsci
+	name = "Medsci fed jacket"
+	path = /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
+	restricted_desc = "Medical and Science"
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/suit/job/trek/fedeng
+	name = "Ops/Sec fed Jacket"
+	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
+	restricted_desc = "Engineering, Security, and Cargo"
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
+//Modern trekkie
+/datum/loadout_item/suit/job/trek/fedcoatmodern
+	name = "Modern fed jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat
+
+/datum/loadout_item/suit/job/trek/fedcoatmodernmedsci
+	name = "Modern medsci jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
+	restricted_desc = "Medical and Science"
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/suit/job/trek/fedcoatmoderneng
+	name = "Modern ops jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/eng
+	restricted_desc = "Engineering and Cargo"
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Cargo Technician", "Shaft Miner", "Quartermaster")
+
+/datum/loadout_item/suit/job/trek/fedcoatmodernsec
+	name = "Modern sec jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_desc = "All Security Personnel"
