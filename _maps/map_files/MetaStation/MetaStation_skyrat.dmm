@@ -14537,8 +14537,7 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "bsl" = (
-/obj/effect/spawner/randomcolavend,
-/obj/effect/turf_decal/delivery,
+/obj/machinery/computer/shuttle/arrivals/recall,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "bsm" = (
@@ -14812,11 +14811,17 @@
 /turf/open/floor/iron/grimy,
 /area/tcommsat/computer)
 "btO" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 1;
+	height = 13;
+	id = "arrivals_stationary";
+	name = "arrivals";
+	roundstart_template = null;
+	width = 5
 	},
-/turf/open/floor/iron,
-/area/hallway/secondary/entry)
+/turf/open/space/basic,
+/area/space)
 "btP" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -39393,17 +39398,10 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "gUe" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 1;
-	height = 13;
-	id = "arrivals_stationary";
-	name = "arrivals";
-	roundstart_template = null;
-	width = 5
-	},
-/turf/open/space/basic,
-/area/space)
+/obj/effect/spawner/randomcolavend,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "gUu" = (
 /obj/structure/sign/painting/library{
 	pixel_y = -32
@@ -55682,9 +55680,7 @@
 /area/science/server)
 "nus" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/computer/shuttle/arrivals/recall{
-	dir = 1
-	},
+/obj/effect/spawner/randomcolavend,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "nuz" = (
@@ -74061,6 +74057,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/science)
+"uxb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "uxi" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -94201,9 +94203,9 @@ aaa
 aaa
 aaa
 aaa
-aaa
-lMJ
-aRA
+aVs
+aVs
+aVs
 bvC
 aWU
 ppp
@@ -94458,9 +94460,9 @@ aaa
 aaa
 aaa
 aaa
-aVs
-aVs
-aVs
+djz
+bsk
+djC
 bvD
 aWU
 ppp
@@ -94715,9 +94717,9 @@ aaa
 aaa
 aaa
 aaa
-djz
-bsk
-djC
+aVs
+aVs
+aVs
 aVu
 aWU
 ppp
@@ -94973,9 +94975,9 @@ aaa
 aaa
 aaa
 aVs
-aVs
-aVs
-aVu
+gUe
+uxb
+aWW
 bxv
 ppp
 ppp
@@ -95231,8 +95233,8 @@ aaa
 aaa
 aVs
 bsl
-btO
-aWW
+aVu
+bvF
 bxw
 ppp
 ppp
@@ -97022,11 +97024,11 @@ aYF
 aVs
 lMJ
 aaa
-gUe
 aaa
 aaa
 aaa
 aaa
+btO
 aaa
 lMJ
 aVs
