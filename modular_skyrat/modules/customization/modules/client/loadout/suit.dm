@@ -87,9 +87,9 @@
 /datum/loadout_item/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
-/datum/loadout_item/suit/jacket/dutchjacket
+/datum/loadout_item/suit/jacket/dutchjacketsr
 	name = "Dutch Jacket"
-	path = /obj/item/clothing/suit/dutch
+	path = /obj/item/clothing/suit/dutchjacketsr
 
 /datum/loadout_item/suit/jacket/yakuzajacket
 	name = "Asian Jacket"
