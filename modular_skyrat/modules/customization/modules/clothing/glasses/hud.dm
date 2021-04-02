@@ -2,7 +2,7 @@
 	name = "Security Eyepatch Hud"
 	desc = "Lost your eye beating an innocent clown? Thankfully your corporate overlords have made something to make up for this. May not do well against flashes."
 	icon = "modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi"
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
+	worn_icon = "modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
 	icon_state = "hudpatch"
 	inhand_icon_state = "eyepatch"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
@@ -40,4 +40,3 @@
 	icon_state = "scipatch"
 	inhand_icon_state = "eyepatch"
 	clothing_flags = SCAN_REAGENTS
-
