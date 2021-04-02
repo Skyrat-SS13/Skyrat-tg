@@ -34,6 +34,14 @@
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
+	///Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
+	var/external = FALSE
+
+/obj/machinery/door/airlock/external
+	external = TRUE
+
+/obj/machinery/door/airlock/shuttle
+	external = TRUE
 
 /obj/effect/overlay/vis_airlock
 	layer = 0
