@@ -95,10 +95,6 @@
 				user.stop_pulling()
 	return ..()
 
-/*	//SKYRAT EDIT MOVED TO modular_skyrat/master_files/code/game/objects/structures/tables_racks.dm
-/obj/structure/table/attack_robot(mob/user, list/modifiers)
-	return attack_hand(user, modifiers)
-*/	//SKYRAT EDIT END
 
 /obj/structure/table/attack_tk(mob/user)
 	return
