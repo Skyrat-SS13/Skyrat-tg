@@ -17,7 +17,7 @@
 
 /obj/item/clothing/glasses/betterunshit
 	name = "modern glasses"
-	desc = "After Nred. Co went bankrupt for tax evasion and invasion, they were bought out by Dork.Co, who revamped their classic design."
+	desc = "After Nerd. Co went bankrupt for tax evasion and invasion, they were bought out by Dork.Co, who revamped their classic design."
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
 	icon = "modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi"
 	icon_state = "glasses_alt"
