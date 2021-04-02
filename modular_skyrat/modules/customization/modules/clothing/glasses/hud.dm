@@ -25,7 +25,7 @@
 	name = "Diagnostic Eyepatch Hud"
 	desc = "Lost your eyeball to a rogue borg? Dare to tell a Dogborg to do it's job? Got bored? Whatever the reason, this bit of tech will help you still repair borgs, they'll never need it since they usually do it themselves, but its the thought that counts."
 	icon = "modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi"
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
+	worn_icon = "modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
 	icon_state = "robopatch"
 	inhand_icon_state = "eyepatch"
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
