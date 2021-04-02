@@ -20,7 +20,7 @@
 
 //////////////////GLOCK
 /obj/item/gun/ballistic/automatic/pistol/g17
-	name = "\improper Armadyne Glock-17"
+	name = "\improper Armadyne Glock-34"
 	desc = "A weapon from bygone times, this has been made to feel and look exactly like the 21st century version. Let's hope it's more reliable. Chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
@@ -59,8 +59,8 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/gun/ballistic/automatic/pistol/g18
-	name = "\improper Armadyne Glock-18"
-	desc = "A special anniversary edition of the Glock-18 from Armadyne, it has a 3 round burst mode and accepts extended magazines."
+	name = "\improper GLOCKINATOR"
+	desc = "Glockinator."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
