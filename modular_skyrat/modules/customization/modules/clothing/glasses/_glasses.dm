@@ -2,7 +2,7 @@
 	name = "white eyepatch"
 	desc = "This is what happens when a pirate gets a PhD."
 	icon = "modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi"
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
+	worn_icon = "modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
 	icon_state = "eyepatch_white"
 	inhand_icon_state = "eyepatch"
 
@@ -23,4 +23,3 @@
 	icon_state = "glasses_alt"
 	inhand_icon_state = "glasses"
 	vision_correction = TRUE
-
