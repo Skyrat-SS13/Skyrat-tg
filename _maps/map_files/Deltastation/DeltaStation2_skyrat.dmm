@@ -52685,6 +52685,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/iron,
 /area/tcommsat/server)
 "cpN" = (
@@ -68161,6 +68162,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "cVQ" = (
@@ -68727,6 +68729,7 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "cXj" = (
@@ -69469,6 +69472,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "cYY" = (
@@ -69486,7 +69492,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "cYZ" = (
@@ -81756,6 +81764,9 @@
 /obj/effect/turf_decal/tile/purple,
 /obj/item/radio/intercom/directional/east,
 /obj/machinery/newscaster/directional/south,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 6
+	},
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/rd)
 "dCn" = (
@@ -96551,6 +96562,24 @@
 	},
 /turf/open/floor/iron/white,
 /area/hallway/primary/central/aft)
+"fwO" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "fxd" = (
 /obj/effect/spawner/randomcolavend,
 /turf/open/floor/iron/cafeteria,
@@ -97973,6 +98002,15 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"hqK" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/science/research)
 "hrP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -99610,6 +99648,9 @@
 	dir = 8
 	},
 /obj/machinery/firealarm/directional/west,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/science/research)
 "jlX" = (
@@ -100128,6 +100169,10 @@
 /obj/effect/landmark/start/depsec/medical,
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
+"jPj" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
+/turf/closed/wall/r_wall,
+/area/hallway/secondary/command)
 "jPp" = (
 /obj/structure/bed/roller,
 /obj/machinery/iv_drip,
@@ -108888,6 +108933,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
+"utm" = (
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/closed/wall/r_wall,
+/area/command/heads_quarters/rd)
 "utK" = (
 /obj/machinery/camera{
 	c_tag = "Permabrig - Kitchen Entrance";
@@ -109461,6 +109510,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
+"uVv" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/hallway/secondary/command)
 "uVY" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -111411,6 +111470,12 @@
 /obj/effect/landmark/start/hangover/closet,
 /turf/open/floor/iron/dark,
 /area/commons/locker)
+"xmL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/closed/wall/r_wall,
+/area/command/heads_quarters/rd)
 "xmS" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
@@ -147396,7 +147461,7 @@ dxW
 dzE
 dAI
 dCm
-dlE
+utm
 dED
 dFT
 dHs
@@ -147652,7 +147717,7 @@ dlE
 dlD
 dlE
 dlE
-dlE
+xmL
 dlE
 dEE
 dFU
@@ -148166,7 +148231,7 @@ dwt
 dya
 dwt
 duR
-dwt
+fwO
 duR
 dEF
 dFW
@@ -148423,7 +148488,7 @@ dwu
 dyb
 dCn
 dCn
-dCn
+hqK
 dDx
 dmY
 acj
@@ -151980,8 +152045,8 @@ ait
 had
 coj
 cpM
-cqY
-csz
+jPj
+uVv
 cuh
 cvx
 cwP
