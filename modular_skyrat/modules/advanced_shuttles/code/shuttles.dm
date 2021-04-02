@@ -26,8 +26,10 @@
 	desc = "The terminal used to control the arrivals interlink shuttle."
 	shuttleId = "arrivals_shuttle"
 	possible_destinations = "arrivals_stationary;arrivals_shuttle"
-	icon_screen = "generic"
-	icon_keyboard = "generic_key"
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/computer.dmi'
+	icon_state = "wagon"
+	icon_keyboard = ""
+	icon_screen = ""
 	light_color = COLOR_ORANGE_BROWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
@@ -48,3 +50,9 @@
 	prefix = "_maps/skyrat/shuttles/"
 	port_id = "escape_pod"
 	suffix = "default_skyrat"
+
+/datum/map_template/shuttle/emergency/skyrat
+	suffix = "skyrat"
+	name = "Standard Emergency Shuttle"
+	description = "Nanotrasen's standard issue emergency shuttle."
+

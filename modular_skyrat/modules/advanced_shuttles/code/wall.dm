@@ -23,23 +23,6 @@
 	underlay_appearance.icon_state = "1"
 	underlays = list(underlay_appearance)
 
-/turf/closed/wall/mineral/titanium/shuttle_wall/window
-	opacity = FALSE
-
-/turf/closed/wall/mineral/titanium/shuttle_wall/window/pod
-	name = "shuttle pod window"
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/pod.dmi'
-	icon_state = "3,1"
-
-/turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry
-	name = "shuttle window"
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/erokez.dmi'
-	icon_state = "18,2"
-
-/turf/closed/wall/mineral/titanium/shuttle_wall/window/arrivals
-	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
-	icon_state = "3,1"
-
 /turf/closed/wall/mineral/titanium/shuttle_wall/mining
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/shuttle_mining.dmi'
 
@@ -57,3 +40,23 @@
 /turf/closed/wall/mineral/titanium/shuttle_wall/arrivals
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
 	icon_state = "3,1"
+
+/////////////////////////////////////////////WINDOWS//////////////////////////////////////////////////////////
+/turf/closed/wall/mineral/titanium/shuttle_wall/window
+	opacity = FALSE
+
+/turf/closed/wall/mineral/titanium/shuttle_wall/window/pod
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/pod.dmi'
+	icon_state = "3,1"
+
+/turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/erokez.dmi'
+	icon_state = "18,2"
+
+/turf/closed/wall/mineral/titanium/shuttle_wall/window/arrivals
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
+	icon_state = "3,1"
+
+/turf/closed/wall/mineral/titanium/shuttle_wall/window/evac
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi'
+	icon_state = "9,1"

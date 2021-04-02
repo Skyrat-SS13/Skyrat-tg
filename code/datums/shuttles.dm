@@ -108,6 +108,7 @@
 
 /datum/map_template/shuttle/emergency
 	port_id = "emergency"
+	suffix = "skyrat" //SKYRAT EDIT CHANGE
 	name = "Base Shuttle Template (Emergency)"
 
 /datum/map_template/shuttle/cargo

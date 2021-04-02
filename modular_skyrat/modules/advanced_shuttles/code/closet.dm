@@ -4,6 +4,14 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
 	icon_state = "wallcloset"
 
+/obj/structure/closet/shuttle/white
+	anchored = TRUE
+	density = TRUE
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
+	icon_state = "wallcloset_white"
+	icon_door_override = TRUE
+	icon_door = "wallcloset_door"
+
 /obj/structure/closet/shuttle/wagon
 	name = "emergency closet"
 	desc = "It's a storage unit for emergency breathmasks and o2 tanks."
@@ -52,9 +60,22 @@
 
 /obj/structure/closet/shuttle/evacvent
 	name = "Engine ventilation"
-	desc = "Looks like you can get in this small engine ventilation shaft"
+	desc = "Looks like you can get in this small engine ventilation shaft."
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
 	icon_state = "shuttle"
 	anchored = TRUE
+
+/obj/structure/closet/firecloset/wall
 	wall_mounted = TRUE
-	density = FALSE
+	anchored = TRUE
+	density = TRUE
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
+	icon_state = "fire_wall"
+
+/obj/structure/closet/emcloset/wall
+	wall_mounted = TRUE
+	anchored = TRUE
+	density = TRUE
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
+	icon_state = "emergency_wall"
+
