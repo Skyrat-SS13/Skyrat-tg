@@ -173,14 +173,14 @@
 /mob/living/silicon/robot/RangedAttack(atom/A)
 	A.attack_robot(src)
 
+/*	//SKYRAT EDIT - MOVED TO modular_skyrat/master_files/code/_onclick/cyborg.dm
 /atom/proc/attack_robot(mob/user)
-	//	SKYRAT EDIT ADDITION START
 	if((isturf(src) || istype(src, /obj/structure/table) || istype(src, /obj/machinery/conveyor)) && get_dist(user, src) <= 1)
 		user.Move_Pulled(src)
 		return
-	//	SKYRAT EDIT ADDITION END
 	attack_ai(user)
 	return
+*/	//SKYRAT EDIT END
 
 /**
  * What happens when the cyborg without active module holds right-click on an item. Returns a SECONDARY_ATTACK_* value.
