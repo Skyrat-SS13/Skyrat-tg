@@ -9,7 +9,7 @@
 /obj/item/clothing/glasses/thin
 	name = "thin glasses"
 	desc = "Often seen staring down at someone taking a book."
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
+	worn_icon = "modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
 	icon = "modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi"
 	icon_state = "glasses_thin"
 	inhand_icon_state = "glasses"
