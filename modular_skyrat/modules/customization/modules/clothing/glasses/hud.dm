@@ -13,7 +13,7 @@
 	name = "Medical Eyepatch Hud"
 	desc = "Do no harm, maybe harm has befell to you, or your poor eyeball, thankfully there's a way to continue your oath, thankfully it didn't mention sleepdarts or monkey men."
 	icon = "modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi"
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
+	worn_icon = "modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi"
 	icon_state = "medpatch"
 	inhand_icon_state = "eyepatch"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
