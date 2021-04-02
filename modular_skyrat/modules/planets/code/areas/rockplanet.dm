@@ -55,7 +55,7 @@
 
 /datum/map_generator/cave_generator/rockplanet
 	open_turf_types = list(/turf/open/floor/plating/asteroid = 1)
-	closed_turf_types =  list(/turf/closed/mineral/random/stationside/asteroid = 1)
+	closed_turf_types =  list(/turf/closed/mineral/random/stationside/asteroid/rockplanet = 1)
 
 	mob_spawn_chance = 3
 
@@ -89,3 +89,12 @@
 
 /area/mine/rockplanet_nanotrasen
 	name = "Abandoned Mining Facility"
+
+/turf/closed/mineral/random/stationside/asteroid/rockplanet
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	mineralSpawnChanceList = list(/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10,
+		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /obj/item/stack/ore/titanium = 11,
+		/turf/closed/mineral/gibtonite = 4, /obj/item/stack/ore/bluespace_crystal = 1)
+		//Currently, Adamantine won't spawn as it has no uses. -Durandan
+	mineralChance = 30
+
