@@ -35803,16 +35803,9 @@
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "fCP" = (
-/obj/docking_port/stationary{
-	dheight = 3;
-	dir = 2;
-	dwidth = 8;
-	height = 11;
-	id = "ferry_home";
-	name = "Port Bay 2";
-	width = 20
-	},
-/turf/open/floor/plating,
+/obj/effect/spawner/randomcolavend,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "fCV" = (
 /obj/machinery/button/flasher{
@@ -39398,8 +39391,9 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "gUe" = (
-/obj/effect/spawner/randomcolavend,
-/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "gUu" = (
@@ -66477,6 +66471,18 @@
 	},
 /turf/open/floor/iron,
 /area/commons/storage/tools)
+"rAu" = (
+/obj/docking_port/stationary{
+	dheight = 3;
+	dir = 2;
+	dwidth = 8;
+	height = 11;
+	id = "ferry_home";
+	name = "Port Bay 2";
+	width = 20
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "rAx" = (
 /obj/machinery/camera{
 	c_tag = "Dormitories - Fore";
@@ -74057,12 +74063,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/science)
-"uxb" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/iron,
-/area/hallway/secondary/entry)
 "uxi" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -94725,7 +94725,7 @@ aWU
 ppp
 ppp
 ppp
-ppp
+rAu
 ppp
 ppp
 ppp
@@ -94975,14 +94975,14 @@ aaa
 aaa
 aaa
 aVs
+fCP
 gUe
-uxb
 aWW
 bxv
 ppp
 ppp
 ppp
-fCP
+ppp
 ppp
 ppp
 ppp

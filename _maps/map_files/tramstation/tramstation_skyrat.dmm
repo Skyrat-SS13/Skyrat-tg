@@ -30874,9 +30874,7 @@
 /area/ai_monitored/turret_protected/ai_upload_foyer)
 "fpF" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/computer/shuttle/arrivals/recall{
-	dir = 1
-	},
+/obj/effect/spawner/randomcolavend,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "fpJ" = (
@@ -41183,6 +41181,10 @@
 /obj/machinery/portable_atmospherics/pump,
 /turf/open/floor/iron,
 /area/engineering/main)
+"khu" = (
+/obj/machinery/computer/shuttle/arrivals/recall,
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "khB" = (
 /obj/structure/flora/ausbushes/sunnybush,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -58477,17 +58479,12 @@
 /turf/closed/wall/r_wall,
 /area/science/mixing)
 "smr" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 1;
-	height = 13;
-	id = "arrivals_stationary";
-	name = "arrivals";
-	roundstart_template = null;
-	width = 5
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
 	},
-/turf/open/openspace/airless/planetary,
-/area/space)
+/obj/effect/spawner/randomcolavend,
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "smu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -60001,6 +59998,18 @@
 	dir = 5
 	},
 /area/command/heads_quarters/rd)
+"sVc" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 1;
+	height = 13;
+	id = "arrivals_stationary";
+	name = "arrivals";
+	roundstart_template = null;
+	width = 5
+	},
+/turf/open/openspace/airless/planetary,
+/area/space)
 "sVe" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -148283,9 +148292,9 @@ aYr
 aYr
 aYr
 aYr
-aYr
-aYr
-aGH
+awZ
+awZ
+awZ
 fZO
 okd
 aVR
@@ -148540,9 +148549,9 @@ aYr
 aYr
 aYr
 aYr
-awZ
-awZ
-awZ
+abg
+uFp
+erO
 nPe
 okd
 aVR
@@ -148797,9 +148806,9 @@ aYr
 aYr
 aYr
 aYr
-abg
-uFp
-erO
+awZ
+awZ
+awZ
 vsH
 okd
 aVR
@@ -149045,7 +149054,7 @@ aGH
 pkd
 vdY
 azs
-aqD
+smr
 awZ
 aYr
 aYr
@@ -149055,8 +149064,8 @@ aYr
 aYr
 aYr
 awZ
-awZ
-awZ
+khu
+aBa
 vsH
 gtp
 aVR
@@ -151104,11 +151113,11 @@ aqD
 awZ
 aYr
 aYr
-smr
 aYr
 aYr
 aYr
 aYr
+sVc
 aYr
 aYr
 awZ

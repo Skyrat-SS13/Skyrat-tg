@@ -19,7 +19,10 @@
 	},
 /area/shuttle/transport)
 "bI" = (
-/obj/machinery/door/airlock/command/glass,
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit";
+	req_access_txt = "101"
+	},
 /turf/open/floor/iron/stairs{
 	dir = 4
 	},
@@ -318,13 +321,6 @@
 	icon_state = "17,8"
 	},
 /area/shuttle/transport)
-"EY" = (
-/obj/machinery/door/airlock/multi_tile/metal,
-/obj/structure/fans/tiny/invisible,
-/turf/open/floor/iron/shuttle/ferry{
-	icon_state = "floor"
-	},
-/area/shuttle/transport)
 "Fg" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/ferry{
 	icon_state = "8,6"
@@ -342,7 +338,6 @@
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/transport)
 "Gy" = (
-/obj/structure/fans/tiny/invisible,
 /obj/docking_port/mobile{
 	dheight = 7;
 	dir = 2;
@@ -351,9 +346,11 @@
 	id = "ferry";
 	name = "ferry shuttle";
 	port_direction = 8;
-	preferred_direction = 4;
+	preferred_direction = 8;
 	width = 20
 	},
+/obj/structure/fans/tiny/forcefield,
+/obj/machinery/door/airlock/highsecurity,
 /turf/open/floor/iron/shuttle/ferry{
 	icon_state = "floor"
 	},
@@ -485,7 +482,8 @@
 	},
 /area/shuttle/transport)
 "Qg" = (
-/obj/structure/fans/tiny/invisible,
+/obj/structure/fans/tiny/forcefield,
+/obj/machinery/door/airlock/highsecurity,
 /turf/open/floor/iron/shuttle/ferry{
 	icon_state = "floor"
 	},
@@ -710,11 +708,11 @@ wX
 wX
 wX
 wX
-EY
+Qg
 iG
 Ti
 iG
-EY
+Qg
 wX
 wX
 wX
