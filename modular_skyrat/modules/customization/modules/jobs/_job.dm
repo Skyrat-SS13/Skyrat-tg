@@ -35,7 +35,7 @@
 	no_dresscode = TRUE
 	blacklist_dresscode_slots = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK) //headset, PDA, ID, backpack are important items
 
-/datum/job/officer
+/datum/job/security_officer
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/detective
@@ -53,22 +53,25 @@
 /datum/job/blueshield
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
-/datum/job/hos
+/datum/job/head_of_security
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
 
-/datum/job/cmo
+/datum/job/chief_medical_officer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/chief_engineer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
 
-/datum/job/rd
+/datum/job/research_director
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
-/datum/job/hop
+/datum/job/head_of_personnel
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
-/datum/job/qm
+/datum/job/quartermaster
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/captain
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/ai
