@@ -636,7 +636,9 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	emp_damageable = TRUE
 	armadyne = TRUE
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	burst_size = 1
+	fire_delay = 5
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
 	name = "norwind dmr magazine (12mm)"
