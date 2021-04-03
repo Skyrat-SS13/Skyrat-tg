@@ -30,3 +30,9 @@
 	suffix = "waypointstation.dmm"
 	name = "Waypoint Station"
 	description = "Previously used as a refueling stop for larger ships, unintentional syndicate intervention has turned this station into a combat zone."
+
+/datum/map_template/ruin/space/skyrat/alientoollab
+	id = "alientoollab"
+	suffix = "alientoollab.dmm"
+	name = "Abductor Replication Facility"
+	description = "A mad doctor's dreams were dashed when he finally disclosed to both his funders that each other existed, leaving behind his work for the looters."
