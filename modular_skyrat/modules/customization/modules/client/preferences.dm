@@ -2228,7 +2228,7 @@ GLOBAL_LIST_INIT(food, list(
 						if(initial(scream.restricted_species_type))
 							if(!istype(pref_species, initial(scream.restricted_species_type)))
 								continue
-						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey] && !check_rights(R_ADMIN))
+						if(initial(scream.donator_only) && !GLOB.donator_list[parent.ckey] && !check_rights(R_ADMIN, FALSE))
 							continue
 						available_screams[initial(scream.name)] = spath
 					var/new_scream_id = input(user, "Choose your character's scream:", "Character Scream")  as null|anything in available_screams
