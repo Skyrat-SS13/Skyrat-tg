@@ -83,4 +83,3 @@ Check the gun_hud.dmi for all available icons you can use.
 		var/mutable_appearance/indicator_overlay = mutable_appearance(icon, indicator)
 		indicator_overlay.color = backing_color
 		. += indicator_overlay
-

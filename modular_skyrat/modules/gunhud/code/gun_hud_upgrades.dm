@@ -10,9 +10,9 @@
 	desc = "A sleek optical hud for displaying information about the tool it's attached to. Attach this to any ballistic automatic gun, energy gun or welder!"
 	id = "gun_hud"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 10000, /datum/material/gold = 2000)
+	materials = list(/datum/material/iron = 10000, /datum/material/glass = 2000)
 	build_path = /obj/item/weaponcrafting/gunkit/temperature
-	category = list("Weapons")
+	category = list("initial", "Security", "Weapons")
 
 /obj/item/gun_hud_attachment/attack_obj(obj/O, mob/living/user, params)
 	. = ..()
