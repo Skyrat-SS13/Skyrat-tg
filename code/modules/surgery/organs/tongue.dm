@@ -20,6 +20,7 @@
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
+		/datum/language/skrell, //SKYRAT EDIT - I forgot to push the commit!!
 		/datum/language/narsie,
 		/datum/language/machine, //SKYRAT EDIT - Gives synths the abiltiy to speak EAL
 		/datum/language/slime, //SKYRAT EDIT - Gives slimes the ability to speak slime once more.
