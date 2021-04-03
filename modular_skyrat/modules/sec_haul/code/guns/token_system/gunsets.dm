@@ -336,12 +336,20 @@
 
 //Blaster
 /obj/item/storage/box/gunset/blaster
-	name = "blaster supply box"
+	name = "energy gun supply box"
 
 
 /obj/item/storage/box/gunset/blaster/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/laser/hitscan(src)
+	new /obj/item/gun/energy/e_gun(src)
+
+//LASER
+/obj/item/storage/box/gunset/laser
+	name = "laser gun supply box"
+
+/obj/item/storage/box/gunset/laser/PopulateContents()
+	. = ..()
+	new /obj/item/gun/energy/laser(src)
 
 //PEPPERBALLS
 /obj/item/storage/box/gunset/pepperball

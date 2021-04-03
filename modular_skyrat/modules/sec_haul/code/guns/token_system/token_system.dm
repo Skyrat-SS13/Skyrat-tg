@@ -157,7 +157,11 @@
     /obj/item/storage/box/gunset/blaster = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "blaster"
-     )
+     ),
+    /obj/item/storage/box/gunset/laser = image(
+      icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+      icon_state = "laser"
+     )	 
   )
 
 /obj/item/storage/box/armament_tokens_sidearm
