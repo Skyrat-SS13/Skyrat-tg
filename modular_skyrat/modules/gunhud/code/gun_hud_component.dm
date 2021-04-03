@@ -150,25 +150,3 @@
 				oth_t = "t9"
 				oth_h = "h9"
 		hud.set_hud(backing_color, oth_o, oth_t, oth_h, indicator)
-
-/obj/item/gun/ballistic
-	var/has_ammo_display = FALSE
-
-/obj/item/gun/ballistic/automatic
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/shotgun/bulldog
-	has_ammo_display = TRUE
-
-/obj/item/gun/ballistic/ComponentInitialize()
-	. = ..()
-	if(has_ammo_display)
-		AddComponent(/datum/component/ammo_hud)
-
-/obj/item/gun/energy/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/ammo_hud)
-
-/obj/item/weldingtool/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/ammo_hud)
