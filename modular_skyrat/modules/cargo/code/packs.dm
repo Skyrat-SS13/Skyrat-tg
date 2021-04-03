@@ -243,7 +243,7 @@
 */
 
 /datum/supply_pack/misc/fuel_pellets
-	name = "ExoDrone Fuel Crate"
+	name = "Exploration Drone Fuel Crate"
 	desc = "Atmos on fire, and you still really wanna explore the stars? We've got you covered, for the fuel atleast."
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(/obj/item/fuel_pellet,

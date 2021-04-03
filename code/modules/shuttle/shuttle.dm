@@ -148,7 +148,7 @@
 //Debug proc used to highlight bounding area
 /obj/docking_port/proc/highlight(_color = "#f00")
 	invisibility = 0
-	layer = GHOST_LAYER
+	plane = GHOST_PLANE
 	var/list/L = return_coords()
 	var/turf/T0 = locate(L[1],L[2],z)
 	var/turf/T1 = locate(L[3],L[4],z)
@@ -317,7 +317,7 @@
 	dwidth = 11
 	height = 22
 	width = 35
-	shuttlekeys = list("whiteship_meta", "whiteship_pubby", "whiteship_box", "whiteship_cere", "whiteship_kilo", "whiteship_donut", "whiteship_delta", "whiteship_ship", "whiteship_tram") //SKYRAT EDIT - Mapping - Adds shipstation's whiteship, along with tram's. Update with more as added!
+	shuttlekeys = list("whiteship_meta", "whiteship_pubby", "whiteship_box", "whiteship_cere", "whiteship_kilo", "whiteship_donut", "whiteship_delta", "whiteship_ship", "whiteship_tram", "whiteship_outpost") //SKYRAT EDIT - Mapping - Adds shipstation and outpost's whiteship, along with tram's. Update with more as added!
 
 /obj/docking_port/mobile
 	name = "shuttle"
