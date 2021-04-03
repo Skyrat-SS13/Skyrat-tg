@@ -80,15 +80,11 @@
 	if (current_skin)
 		. += "It can be spun with <b>alt+click</b>"
 
-<<<<<<< HEAD
-/obj/item/gun/ballistic/revolver/detective //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 /obj/item/gun/ballistic/revolver/ignition_effect(atom/A, mob/user)
 	if(last_fire && last_fire + 15 SECONDS > world.time)
 		. = "<span class='notice'>[user] touches the end of [src] to \the [A], using the residual heat to ignite it in a puff of smoke. What a badass.</span>"
 
 /obj/item/gun/ballistic/revolver/detective
->>>>>>> 4753179fbd4 (Allows you to ignite cigars with cauteries and recently-fired revolvers. (#58109))
 	name = "\improper Colt Detective Special"
 	desc = "A classic, if not outdated, law enforcement firearm. Uses .38 Special rounds. \nSome spread rumors that if you loosen the barrel with a wrench, you can \"improve\" it."
 	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
