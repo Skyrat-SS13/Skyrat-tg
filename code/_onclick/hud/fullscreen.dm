@@ -82,6 +82,15 @@
 	severity = 0
 	. = ..()
 
+<<<<<<< HEAD
+=======
+/atom/movable/screen/fullscreen/emergency_meeting
+	icon_state = "emergency_meeting"
+	show_when_dead = TRUE
+	layer = CURSE_LAYER
+	plane = SPLASHSCREEN_PLANE
+
+>>>>>>> a7b6c18a52d (Fixes a critical accidental early return (#58128))
 /atom/movable/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
 	layer = UI_DAMAGE_LAYER
