@@ -38,7 +38,7 @@
 
 	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_UPDATE_AMMO_HUD))
 
-	if(!isnull(hud))
+	if(hud)
 		hud.turn_off()
 		hud = null
 
