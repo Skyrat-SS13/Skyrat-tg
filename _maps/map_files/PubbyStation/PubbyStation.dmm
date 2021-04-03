@@ -20089,7 +20089,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/restaurant_portal/restaurant,
+/obj/machinery/restaurant_portal/bar,
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "beG" = (
@@ -47888,6 +47888,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/machinery/light_switch{
+	pixel_y = 24
+	},
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
 "hst" = (
@@ -50442,6 +50445,10 @@
 /obj/effect/turf_decal/trimline/yellow,
 /turf/open/floor/iron/dark,
 /area/security/range)
+"kpW" = (
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "krb" = (
 /obj/structure/cable,
 /obj/machinery/holopad,
@@ -51914,9 +51921,11 @@
 /turf/open/floor/iron/dark,
 /area/security/range)
 "lPW" = (
-/obj/effect/decal/cleanable/garbage,
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/dorms)
+/obj/machinery/computer/cryopod{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "lQn" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -52157,9 +52166,11 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "meX" = (
-/obj/structure/reagent_dispensers/foamtank,
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/dorms)
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "mfu" = (
 /obj/machinery/door/window/northleft{
 	base_state = "right";
@@ -52336,9 +52347,11 @@
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "mqD" = (
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/dorms)
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "mqH" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/trinary/filter/critical{
@@ -52772,7 +52785,7 @@
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/iron,
-/area/maintenance/department/crew_quarters/dorms)
+/area/commons/fitness/recreation)
 "mPh" = (
 /obj/machinery/door/firedoor,
 /obj/structure/sign/directions/evac{
@@ -55181,7 +55194,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/item/holosign_creator/robot_seat/bar,
+/obj/item/holosign_creator/robot_seat/restaurant,
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
 "pah" = (
@@ -56679,12 +56692,14 @@
 /turf/open/floor/iron,
 /area/security/checkpoint/medical)
 "qHi" = (
-/obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/dorms)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "qHu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -60775,6 +60790,9 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/engineering/main)
+"uUr" = (
+/turf/open/floor/iron/dark,
+/area/commons/fitness/recreation)
 "uUQ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
@@ -107269,9 +107287,9 @@ aEb
 aFJ
 aHo
 atn
-rpp
-rpp
-rpp
+qHi
+qHi
+qHi
 qdU
 nWb
 aMo
@@ -107526,9 +107544,9 @@ atn
 atn
 atn
 atn
-kQV
-gZC
-ilZ
+atn
+atn
+atn
 jBX
 wJr
 rpp
@@ -107781,11 +107799,11 @@ cVo
 cVo
 gtF
 cVo
-cVo
-cVo
-cVo
-cVo
-qHi
+atn
+meX
+meX
+meX
+avm
 oOA
 xYI
 hNL
@@ -108038,11 +108056,11 @@ atj
 vfb
 lUL
 vfb
-atj
+atn
 lPW
-vfb
-iKH
-rpp
+uUr
+oWW
+kpW
 xOn
 mYO
 ilZ
@@ -108295,11 +108313,11 @@ iKH
 uIT
 jha
 xmV
+atn
 mqD
 mqD
 mqD
-atj
-rpp
+avm
 fpv
 rhp
 dxU
@@ -108552,10 +108570,10 @@ gAY
 rpp
 rpp
 rpp
-rpp
-meX
-atm
-rpp
+atn
+atn
+atn
+atn
 mPf
 toF
 rIw
