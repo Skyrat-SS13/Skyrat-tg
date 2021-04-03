@@ -134,7 +134,7 @@
 	attack_verb_continuous = list("baps")
 	attack_verb_simple = list("bap")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
-	gender = FEMALE
+	gender = MALE
 
 /obj/item/toy/plush/oglaplush
 	name = "Suspicious lizzy"
