@@ -3026,14 +3026,6 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "aip" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/sunglasses{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/ears/earmuffs{
-	pixel_y = 7
-	},
 /obj/machinery/light/small,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -3258,6 +3250,7 @@
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "aiP" = (
@@ -3406,6 +3399,7 @@
 	light_color = "#e8eaff"
 	},
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ajk" = (
@@ -3647,6 +3641,7 @@
 /obj/item/gun/energy/temperature/security,
 /obj/item/clothing/suit/hooded/ablative,
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "ajU" = (
@@ -4057,6 +4052,7 @@
 	},
 /obj/effect/turf_decal/bot_blue,
 /obj/structure/closet/secure_closet/smartgun,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "akQ" = (
@@ -4888,7 +4884,6 @@
 /area/hallway/primary/central)
 "amS" = (
 /obj/structure/closet/secure_closet/warden,
-/obj/item/clothing/mask/gas/sechailer,
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "Brig Control APC";
@@ -4942,6 +4937,7 @@
 	dir = 8;
 	pixel_x = 28
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "anb" = (
@@ -5137,6 +5133,7 @@
 "anJ" = (
 /obj/structure/table,
 /obj/machinery/recharger,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "anM" = (
@@ -5278,6 +5275,14 @@
 /area/security/brig)
 "aon" = (
 /obj/structure/cable,
+/obj/structure/table,
+/obj/item/clothing/ears/earmuffs{
+	pixel_y = 7
+	},
+/obj/item/clothing/glasses/sunglasses{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/open/floor/iron/dark,
 /area/security/range)
 "aoo" = (
@@ -7779,6 +7784,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+/obj/effect/landmark/start/warden,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "avE" = (
@@ -7795,6 +7801,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/effect/landmark/start/warden,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "avG" = (
@@ -8668,8 +8675,6 @@
 /obj/machinery/camera{
 	c_tag = "Captain's Quarters"
 	},
-/obj/item/clothing/suit/armor/riot/knight/blue,
-/obj/item/clothing/head/helmet/knight/blue,
 /turf/open/floor/iron/grimy,
 /area/command/heads_quarters/captain/private)
 "axQ" = (
@@ -8705,6 +8710,9 @@
 	departmentType = 5;
 	name = "Captain RC";
 	pixel_y = 30
+	},
+/obj/structure/window/reinforced{
+	dir = 8
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
@@ -9457,8 +9465,17 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
 "aAv" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/clothing/suit/armor/riot/knight/blue{
+	pixel_y = -4
+	},
+/obj/item/clothing/head/helmet/knight/blue{
+	pixel_y = 10
+	},
+/obj/structure/closet/cabinet,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
 "aAw" = (
@@ -9467,10 +9484,18 @@
 /obj/item/paper_bin{
 	layer = 2.9
 	},
+/obj/structure/window/reinforced,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
 "aAx" = (
 /obj/structure/table/wood,
+/obj/machinery/door/window{
+	name = "Captain's Desk";
+	req_access_txt = "20"
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = -9
+	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
 "aAy" = (
@@ -9484,6 +9509,7 @@
 	pixel_x = 28;
 	pixel_y = 8
 	},
+/obj/structure/window/reinforced,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
 "aAz" = (
@@ -16292,10 +16318,6 @@
 	pixel_x = 10;
 	pixel_y = 15
 	},
-/obj/item/reagent_containers/food/drinks/bottle/vodka{
-	pixel_x = 2;
-	pixel_y = 4
-	},
 /obj/machinery/light_switch{
 	pixel_y = 22
 	},
@@ -17586,19 +17608,9 @@
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "aYe" = (
-/obj/structure/table/reinforced,
-/obj/item/kirbyplants{
-	icon_state = "plant-18";
-	pixel_y = 10
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
+/obj/effect/landmark/start/warden,
 /turf/open/floor/iron/dark,
-/area/service/bar)
+/area/security/warden)
 "aYf" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/barman_recipes,
@@ -20068,6 +20080,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/restaurant_portal/restaurant,
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "beG" = (
@@ -43039,9 +43052,16 @@
 /turf/closed/wall,
 /area/service/library/lounge)
 "cyM" = (
-/obj/structure/lattice,
-/turf/closed/mineral,
-/area/service/chapel/asteroid/monastery)
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/item/holosign_creator/robot_seat/bar,
+/turf/open/floor/iron/dark,
+/area/service/bar)
 "cyP" = (
 /obj/structure/bookcase/random/nonfiction,
 /obj/machinery/light/small{
@@ -51620,6 +51640,20 @@
 /obj/structure/disposalpipe/junction/flip,
 /turf/open/floor/iron,
 /area/commons/fitness)
+"lDc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/restaurant_portal/restaurant,
+/turf/open/floor/iron/dark,
+/area/service/bar)
 "lDw" = (
 /obj/structure/flora/grass/jungle,
 /mob/living/carbon/human/species/monkey,
@@ -52038,6 +52072,18 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
+"mbv" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "barshutters";
+	name = "bar shutters"
+	},
+/obj/effect/turf_decal/bot,
+/obj/machinery/light_switch{
+	pixel_x = -21;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark,
+/area/service/bar)
 "mbJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
@@ -55062,6 +55108,22 @@
 	},
 /turf/closed/wall,
 /area/cargo/storage)
+"oYu" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "kitchenshutters";
+	name = "kitchen shutters"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/item/holosign_creator/robot_seat/bar,
+/turf/open/floor/iron/dark,
+/area/service/kitchen)
 "pah" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden/layer4,
@@ -57322,6 +57384,7 @@
 	pixel_y = 3
 	},
 /obj/effect/turf_decal/bot_blue,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "rzp" = (
@@ -76362,7 +76425,7 @@ cfN
 cfN
 cfN
 cfN
-cyM
+cfN
 aaa
 aaa
 aaa
@@ -76624,7 +76687,7 @@ aaa
 aaa
 aaa
 cfN
-cyM
+cfN
 cfN
 cfN
 cfN
@@ -76872,9 +76935,9 @@ aaa
 cfN
 cfN
 cfN
-cyM
 cfN
-cyM
+cfN
+cfN
 aaa
 aht
 aaa
@@ -77142,7 +77205,7 @@ aht
 aaa
 cfN
 cfN
-cyM
+cfN
 cfN
 cfN
 cfN
@@ -78946,7 +79009,7 @@ cyU
 aht
 aht
 aht
-cyM
+cfN
 cfN
 cfN
 aaa
@@ -80230,7 +80293,7 @@ cjp
 aht
 aht
 aht
-cyM
+cfN
 cfN
 cfN
 cfN
@@ -80999,7 +81062,7 @@ aht
 aht
 aht
 aht
-cyM
+cfN
 cfN
 cfN
 cfN
@@ -81760,7 +81823,7 @@ aaa
 aht
 cfN
 cfN
-cyM
+cfN
 cfN
 aht
 aaa
@@ -82014,14 +82077,14 @@ aaa
 aht
 aaa
 cfN
-cyM
 cfN
 cfN
 cfN
 cfN
-cyM
 cfN
-cyM
+cfN
+cfN
+cfN
 cfN
 cfN
 cfN
@@ -82268,7 +82331,7 @@ cfN
 aaa
 aaa
 aaa
-cyM
+cfN
 cfN
 cfN
 cfN
@@ -86763,7 +86826,7 @@ ajR
 ulV
 akN
 amh
-amX
+aYe
 amX
 aoq
 aoW
@@ -87276,7 +87339,7 @@ ajj
 ajT
 akP
 ryH
-amh
+anB
 amZ
 anJ
 aoq
@@ -94257,7 +94320,7 @@ aRN
 aYX
 bad
 bbl
-bbl
+oYu
 bbl
 sbI
 aRN
@@ -95030,7 +95093,7 @@ bag
 cpo
 cpt
 cpv
-bag
+lDc
 aPE
 bgr
 bhd
@@ -95538,7 +95601,7 @@ aUg
 aVf
 aWi
 bah
-aYe
+aYg
 aZb
 bag
 bbr
@@ -96059,7 +96122,7 @@ bbp
 bbp
 bdv
 bag
-bfs
+mbv
 bgt
 auI
 cpJ
@@ -96309,7 +96372,7 @@ aPE
 aVi
 bah
 aXh
-aYg
+cyM
 aZd
 beB
 bbq
