@@ -50,14 +50,14 @@
 /datum/loadout_item/glasses/medic
 	name = "Medical Eyepatch"
 	path = /obj/item/clothing/glasses/hud/med/eyepatchsr
-    restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
-    restricted_desc = "Medical"
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
+	restricted_desc = "Medical"
 
 /datum/loadout_item/glasses/robo
 	name = "Diagnostic Eyepatch"
 	path = /obj/item/clothing/glasses/hud/diagnostic/eyepatchsr
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
-    restricted_desc = "Science"
+	restricted_desc = "Science"
 
 /datum/loadout_item/glasses/sci
 	name = "Science Eyepatch"
