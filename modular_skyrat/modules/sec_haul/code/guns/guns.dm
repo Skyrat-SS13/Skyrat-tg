@@ -744,8 +744,8 @@
 
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
-	name = "\improper Armadyne Zeta-8 'Spurchamber'"
-	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with an 8 round cylinder."
+	name = "\improper Armadyne Zeta-6 'Spurchamber'"
+	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with a 6 round cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -759,22 +759,22 @@
 	name = "revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	caliber = CALIBER_10MM
-	max_ammo = 8
+	max_ammo = 6
 
 /obj/item/ammo_box/revolver/zeta
 	name = "zeta speed loader(10mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	max_ammo = 8
+	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	caliber = CALIBER_10MM
 	start_empty = TRUE
 
 /////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
-	name = "\improper Armadyne Revolution-6 'Spurmaster'"
-	desc = "An upgraded version of the Zeta-8, this has the superior spurmaster technology inbuilt, and is chambered in 12mm with an 8 round cylinder."
+	name = "\improper Armadyne Revolution-8 'Spurmaster'"
+	desc = "An upgraded version of the Zeta-6, this has the superior spurmaster technology inbuilt, and is chambered in 9mm with an 8 round cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -786,18 +786,18 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
-	caliber = CALIBER_12MM
-	max_ammo = 6
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	caliber = CALIBER_9MM
+	max_ammo = 8
 
 /obj/item/ammo_box/revolver/revolution
-	name = "revolution speed loader(12mm)"
+	name = "revolution speed loader(9mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
-	ammo_type = /obj/item/ammo_casing/b12mm
-	max_ammo = 6
+	ammo_type = /obj/item/ammo_casing/b9mm
+	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_12MM
+	caliber = CALIBER_9MM
 	start_empty = TRUE
 
 /////////////////SMARTGUN 40x32
