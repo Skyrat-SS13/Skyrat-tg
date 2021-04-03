@@ -270,7 +270,7 @@
 /datum/loadout_item/suit/job/navybluejacketofficer
 	name = "security officer's navyblue jacket"
 	path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list("Security Officer")
+	restricted_roles = list("Security Officer", "Security Sergeant")
 
 /datum/loadout_item/suit/job/navybluejacketwarden
 	name = "warden navyblue jacket"
@@ -340,7 +340,7 @@
 	name = "Ops/Sec fed Jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Security Sergeant","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Modern trekkie
 /datum/loadout_item/suit/job/trek/fedcoatmodern
