@@ -745,7 +745,7 @@
 /////////////////////////////////////////////ZETA
 /obj/item/gun/ballistic/revolver/zeta
 	name = "\improper Armadyne Zeta-6 'Spurchamber'"
-	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with an 6 round cylinder."
+	desc = "A nice looking revolver with spurchamber technology, don't ask what it does. It's 10mm with a 6 round cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
