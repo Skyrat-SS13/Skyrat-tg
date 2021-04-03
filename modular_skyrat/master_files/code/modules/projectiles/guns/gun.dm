@@ -239,6 +239,7 @@
 	update_appearance()
 	firemode_action.button_icon_state = "fireselect_[fire_select]"
 	firemode_action.UpdateButtonIcon()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 	return TRUE
 
 //called after the gun has successfully fired its chambered ammo.
@@ -384,6 +385,7 @@
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message("<span class='notice'>[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].",
 	"<span class='notice'>You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>")
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
 	if(pin)
@@ -434,6 +436,7 @@
 		return FALSE
 	process_chamber()
 	update_appearance()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 	return TRUE
 
 /obj/item/gun/proc/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -487,6 +490,8 @@
 	if(user)
 		user.update_inv_hands()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
+
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 	return TRUE
 
