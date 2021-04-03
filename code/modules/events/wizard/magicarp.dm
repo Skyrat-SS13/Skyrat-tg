@@ -1,6 +1,6 @@
 /datum/round_event_control/wizard/magicarp //these fish is loaded
 	name = "Magicarp"
-	weight = 1
+	weight = 0 //SKYRAT EDIT CHANGE - WIZARD CHANGE
 	typepath = /datum/round_event/wizard/magicarp
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
