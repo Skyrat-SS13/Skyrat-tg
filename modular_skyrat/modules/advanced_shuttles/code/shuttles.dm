@@ -1,7 +1,6 @@
 /datum/map_template/shuttle/ferry
 	name = "centcom ferry"
-	prefix = "_maps/skyrat/shuttles/"
-	port_id = "ferryskyrat"
+	port_id = "ferry"
 	suffix = "skyrat"
 	can_be_bought = FALSE
 
