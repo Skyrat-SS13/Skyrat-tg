@@ -333,15 +333,13 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 
+//LASER
+/obj/item/storage/box/gunset/laser
+	name = "laser gun supply box"
 
-//Blaster
-/obj/item/storage/box/gunset/blaster
-	name = "blaster supply box"
-
-
-/obj/item/storage/box/gunset/blaster/PopulateContents()
+/obj/item/storage/box/gunset/laser/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/laser/hitscan(src)
+	new /obj/item/gun/energy/laser(src)
 
 //PEPPERBALLS
 /obj/item/storage/box/gunset/pepperball
