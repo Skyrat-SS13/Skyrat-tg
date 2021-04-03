@@ -42,7 +42,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	caliber = CALIBER_9MM
 	max_ammo = 17
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -83,7 +83,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	caliber = CALIBER_9MM
 	max_ammo = 33
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -142,7 +142,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b12mm
-	caliber = "12mm"
+	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
@@ -196,7 +196,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	caliber = CALIBER_9MM
 	max_ammo = 14
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -239,7 +239,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10mm"
+	caliber = CALIBER_10MM
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -277,7 +277,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10mm"
+	caliber = CALIBER_10MM
 	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -316,7 +316,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	caliber = CALIBER_9MM
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -354,7 +354,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	caliber = CALIBER_9MM
 	max_ammo = 10
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -403,7 +403,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	caliber = CALIBER_9MM
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -451,7 +451,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10mm"
+	caliber = CALIBER_10MM
 	max_ammo = 25
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -498,7 +498,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b6mm
-	caliber = "6mm"
+	caliber = CALIBER_6MM
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
@@ -544,7 +544,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/b6mm
-	caliber = "6mm"
+	caliber = CALIBER_6MM
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
@@ -587,7 +587,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10mm"
+	caliber = CALIBER_10MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -636,14 +636,16 @@
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	emp_damageable = TRUE
 	armadyne = TRUE
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	burst_size = 1
+	fire_delay = 5
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
 	name = "norwind dmr magazine (12mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b12mm
-	caliber = "12mm"
+	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
@@ -689,7 +691,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	caliber = CALIBER_9MM
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -755,34 +757,24 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = "10mm"
-	max_ammo = 8
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	caliber = CALIBER_10MM
+	max_ammo = 6
 
-/obj/item/ammo_box/revolver/multi_sprite/zeta
+/obj/item/ammo_box/revolver/zeta
 	name = "zeta speed loader(10mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b10mm
-	max_ammo = 8
+	max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-
-/obj/item/ammo_box/revolver/multi_sprite/zeta/hp
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/revolver/multi_sprite/zeta/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/revolver/multi_sprite/zeta/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
-	round_type = AMMO_TYPE_IHDF
+	caliber = CALIBER_10MM
+	start_empty = TRUE
 
 /////////////////////////////////////////////////////////REVOLUTION
 /obj/item/gun/ballistic/revolver/revolution
 	name = "\improper Armadyne Revolution-8 'Spurmaster'"
-	desc = "A surprisingly premium feeling revolver, even though it uses 9mm, it seems to have a nice weight to it. This handle feels nice too. 8 rounds."
+	desc = "An upgraded version of the Zeta-6, this has the superior spurmaster technology inbuilt, and is chambered in 9mm with an 8 round cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -794,29 +786,19 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = "9mm"
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	caliber = CALIBER_9MM
 	max_ammo = 8
 
-/obj/item/ammo_box/revolver/multi_sprite/revolution
+/obj/item/ammo_box/revolver/revolution
 	name = "revolution speed loader(9mm)"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-
-/obj/item/ammo_box/revolver/multi_sprite/revolution/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/revolver/multi_sprite/revolution/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/revolver/multi_sprite/revolution/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-	round_type = AMMO_TYPE_IHDF
+	caliber = CALIBER_9MM
+	start_empty = TRUE
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun

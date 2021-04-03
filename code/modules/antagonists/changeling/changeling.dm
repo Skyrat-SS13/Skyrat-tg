@@ -64,8 +64,10 @@
 	. = ..()
 
 /datum/antagonist/changeling/proc/create_actions()
-	cellular_emporium = new(src)
-	emporium_action = new(cellular_emporium)
+	if(!cellular_emporium) // SKYRAT EDIT START- PREVENTS DUPLICATION ON AMBITION SUBMIT
+		cellular_emporium = new(src)
+	if(!emporium_action)
+		emporium_action = new(cellular_emporium) // SKYRAT EDIT END 
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()

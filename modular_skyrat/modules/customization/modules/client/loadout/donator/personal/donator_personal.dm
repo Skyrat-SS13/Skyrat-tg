@@ -6,7 +6,8 @@
 /datum/loadout_item/shoes/donator/heeled_jackboots
 	name = "High-heel Jackboots"
 	path = /obj/item/clothing/shoes/jackboots/heel
-	ckeywhitelist = list("thedragmeme")
+//	ckeywhitelist = list("thedragmeme")
+//As they requested, it's properly public now.
 
 /datum/loadout_item/suit/donator/furcoat
 	name = "Leather coat with fur"

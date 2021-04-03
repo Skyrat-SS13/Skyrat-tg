@@ -78,7 +78,7 @@
 	. = ..()
 	INVOKE_ASYNC(src, .proc/latetoggle)
 
-/obj/machinery/door/firedoor/attack_hand(mob/user, list/modifiers)
+/* /obj/machinery/door/firedoor/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -88,7 +88,7 @@
 
 	user.visible_message("<span class='notice'>[user] bangs on \the [src].</span>", \
 		"<span class='notice'>You bang on \the [src].</span>")
-	playsound(loc, 'sound/effects/glassknock.ogg', 10, FALSE, frequency = 32000)
+	playsound(loc, 'sound/effects/glassknock.ogg', 10, FALSE, frequency = 32000) */ // SKYRAT EDIT CHANGE - MOVED TO modular_skyrat\master_files\game\machinery\doors\firedoor.dm
 
 /obj/machinery/door/firedoor/attackby(obj/item/C, mob/user, params)
 	add_fingerprint(user)
