@@ -1,6 +1,6 @@
 /obj/item/gun_hud_attachment
 	name = "Optical Hud Upgrade"
-	desc = "A sleek optical hud for displaying information about the tool it's attached to. Attach this to any ballistic automatic gun, energy gun or welder!"
+	desc = "A sleek optical hud for displaying information about the tool it's attached to. Attach this to any ballistic automatic gun, energy gun or welder. Slap this with whatever you're trying to upgrade!"
 	icon = 'icons/obj/improvised.dmi'
 	icon_state = "kitsuitcase"
 	custom_materials = list(/datum/material/iron = 10000, /datum/material/glass = 2000)
@@ -11,14 +11,15 @@
 	id = "gun_hud"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 2000)
-	build_path = /obj/item/weaponcrafting/gunkit/temperature
+	build_path = /obj/item/gun_hud_attachment
 	category = list("initial", "Security", "Weapons")
 
-/obj/item/gun_hud_attachment/attack_obj(obj/O, mob/living/user, params)
+/obj/item/gun_hud_attachment/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
-	if(!istype(O, /obj/item/gun/ballistic) && !istype(O, /obj/item/gun/energy) && !istype(O, /obj/item/weldingtool))
-		to_chat(user, "<span class='warning'>[src] is not compatable with [O]!</span>")
+	if(!istype(I, /obj/item/gun/ballistic) && !istype(I, /obj/item/gun/energy) && !istype(I, /obj/item/weldingtool))
+		to_chat(user, "<span class='warning'>[src] is not compatable with [I]!</span>")
 		return
-	O.AddComponent(/datum/component/ammo_hud)
-	to_chat(user, "<span class='notice'>You install [src] on [O]!</span>")
+	I.AddComponent(/datum/component/ammo_hud)
+	to_chat(user, "<span class='notice'>You install [src] on [I]!</span>")
 	qdel(src)
+
