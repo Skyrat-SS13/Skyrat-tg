@@ -316,7 +316,6 @@
 	target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST)
 	*/ //SKYRAT EDIT END
 	//SKYRAT EDIT ADDITION - BEGIN
-	target.apply_damage(force*0.5, BRUTE, BODY_ZONE_CHEST)
 	target.StaminaKnockdown(stamina_damage)
 	//SKYRAT EDIT END
 	additional_effects_carbon(target, user)
@@ -497,8 +496,10 @@
 	balanced = 0
 
 /obj/item/melee/supermatter_sword/ex_act(severity, target)
-	visible_message("<span class='danger'>The blast wave smacks into [src] and rapidly flashes to ash.</span>",\
-	"<span class='hear'>You hear a loud crack as you are washed with a wave of heat.</span>")
+	visible_message(
+		"<span class='danger'>The blast wave smacks into [src] and rapidly flashes to ash.</span>",
+		"<span class='hear'>You hear a loud crack as you are washed with a wave of heat.</span>"
+	)
 	consume_everything()
 
 /obj/item/melee/supermatter_sword/acid_act()

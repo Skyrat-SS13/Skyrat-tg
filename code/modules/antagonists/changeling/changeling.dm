@@ -23,8 +23,8 @@
 	var/absorbedcount = 0
 	var/trueabsorbs = 0//dna gained using absorb, not dna sting
 	var/chem_charges = 75 //SKYRAT EDIT CHANGE - ORIGINAL: 20
-	var/chem_storage = 125 //SKYRAT EDIT CHANGE - ORIGINAL: 75
-	var/chem_recharge_rate = 2 //SKYRAT EDIT CHANGE - ORIGINAL: 1
+	var/chem_storage = 100 //SKYRAT EDIT CHANGE - ORIGINAL: 75
+	var/chem_recharge_rate = 1.5 //SKYRAT EDIT CHANGE - ORIGINAL: 1
 	var/chem_recharge_slowdown = 0
 	var/sting_range = 2
 	var/geneticdamage = 0
@@ -33,7 +33,7 @@
 	var/islinking = FALSE
 	var/geneticpoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
 	var/total_geneticspoints = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 10
-	var/total_chem_storage = 125 //SKYRAT EDIT CHANGE - ORIGINAL: 75
+	var/total_chem_storage = 100 //SKYRAT EDIT CHANGE - ORIGINAL: 75
 	var/purchasedpowers = list()
 
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
@@ -64,8 +64,10 @@
 	. = ..()
 
 /datum/antagonist/changeling/proc/create_actions()
-	cellular_emporium = new(src)
-	emporium_action = new(cellular_emporium)
+	if(!cellular_emporium) // SKYRAT EDIT START- PREVENTS DUPLICATION ON AMBITION SUBMIT
+		cellular_emporium = new(src)
+	if(!emporium_action)
+		emporium_action = new(cellular_emporium) // SKYRAT EDIT END 
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()

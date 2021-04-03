@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 	/obj/item/pizzabox/infinite = 100,
 	/obj/item/relic = 200,
 	/obj/item/sharpener = 1,
-	/obj/item/sharpener/super = 1,
+	/obj/item/toy/plush/carpplushie/dehy_carp = 1,
 	/obj/item/stack/sticky_tape/super = 1,
 	/obj/item/stack/sticky_tape/pointy = 1,
 	/obj/item/stack/sticky_tape/pointy/super = 1,
@@ -65,6 +65,5 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 	/obj/item/storage/toolbox/syndicate = 100,
 	/obj/item/storage/toolbox/infiltrator = 100,
 	/obj/item/toy/sprayoncan = 200,
-	/obj/item/voodoo = 100,
 	/obj/item/warpwhistle = 5
 ))

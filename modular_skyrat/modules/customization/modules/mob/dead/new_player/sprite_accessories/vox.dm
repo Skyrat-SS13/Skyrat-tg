@@ -67,6 +67,26 @@
 	name = "Vox Yasu"
 	icon_state = "hair_vox_yasu"
 
+/datum/sprite_accessory/hair/vox/surf
+	name = "Vox Surf"
+	icon_state = "vox_surf"
+
+/datum/sprite_accessory/hair/vox/cropped
+	name = "Vox Cropped"
+	icon_state = "vox_cropped"
+
+/datum/sprite_accessory/hair/vox/rows
+	name = "Vox Rows"
+	icon_state = "vox_rows"
+
+/datum/sprite_accessory/hair/vox/ponytail
+	name = "Vox Ponytail"
+	icon_state = "vox_pony"
+
+/datum/sprite_accessory/hair/vox/mange
+	name = "Vox Mange"
+	icon_state = "vox_mange"
+
 //The facial hairstyles
 /datum/sprite_accessory/facial_hair/vox
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_facial_hair.dmi'

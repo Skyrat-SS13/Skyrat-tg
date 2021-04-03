@@ -48,7 +48,6 @@
 	can_suppress = FALSE
 	burst_size = 5
 	spread = 3
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
@@ -86,7 +85,6 @@
 	can_suppress = FALSE
 	burst_size = 8
 	spread = 5
-	actions_types = list(/datum/action/item_action/toggle_firemode)
 	mag_display = TRUE
 	mag_display_ammo = FALSE
 	realistic = TRUE

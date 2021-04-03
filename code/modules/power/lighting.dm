@@ -407,12 +407,12 @@
 
 	var/area/A = get_area(src)
 	if(emergency_mode || (A?.fire))
-		SSvis_overlays.add_vis_overlay(src, overlayicon, "[base_state]_emergency", layer, plane, dir)
+		. += mutable_appearance(overlayicon, "[base_state]_emergency", layer, plane)
 		return
 	if(nightshift_enabled)
-		SSvis_overlays.add_vis_overlay(src, overlayicon, "[base_state]_nightshift", layer, plane, dir)
+		. += mutable_appearance(overlayicon, "[base_state]_nightshift", layer, plane)
 		return
-	SSvis_overlays.add_vis_overlay(src, overlayicon, base_state, layer, plane, dir)
+	. += mutable_appearance(overlayicon, base_state, layer, plane)
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #define LIGHT_ON_DELAY_UPPER 3 SECONDS
@@ -620,7 +620,7 @@
 				drop_light_tube()
 			new /obj/item/stack/cable_coil(loc, 1, "red")
 		transfer_fingerprints_to(newlight)
-		if(cell)
+		if(!QDELETED(cell))
 			newlight.cell = cell
 			cell.forceMove(newlight)
 			cell = null
@@ -665,6 +665,10 @@
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/A = get_area(src)
+	//SKYRAT EDIT ADDITION BEGIN
+	if(isnull(A))
+		return FALSE
+	//SKYRAT EDIT END
 	return A.lightswitch && A.power_light
 
 // returns whether this light has emergency power

@@ -29,7 +29,7 @@
 	desc = "A 10mm Magnum bullet casing. This leaves a burning trail and ignites its target."	// SKYRAT EDIT
 	projectile_type = /obj/projectile/bullet/incendiary/c10mm
 
-// 9mm (Makarov and Stechkin APS)
+// 9mm (Makarov, Stechkin APS, PP-95)
 
 /obj/item/ammo_casing/c9mm
 //	name = "9mm bullet casing"		// SKYRAT EDIT: Original

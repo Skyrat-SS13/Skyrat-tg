@@ -18,7 +18,7 @@
 		to_chat(A, "<br><span class='warning'><b>[alert]</b></span><br>")
 
 	if(prob(30) || fake) //most of the time, we don't want an announcement, so as to allow AIs to fake blackouts.
-		priority_announce(alert)
+		priority_announce(alert, null, ANNOUNCER_COMMSBLACKOUT) //SKYRAT EDIT CHANGE
 
 
 /datum/round_event/communications_blackout/start()

@@ -132,7 +132,7 @@
 	fire_delay = 5
 	can_suppress = FALSE
 	burst_size = 0
-	actions_types = list()
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	empty_indicator = FALSE

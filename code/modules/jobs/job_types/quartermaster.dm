@@ -11,6 +11,7 @@
 	exp_type_department = EXP_TYPE_SUPPLY // This is so the jobs menu can work properly
 
 	outfit = /datum/outfit/job/quartermaster
+	plasmaman_outfit = /datum/outfit/plasmaman/cargo
 
 	paycheck = PAYCHECK_COMMAND //SKYRAT EDIT CHANGE - ORIGINAL: PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CAR
