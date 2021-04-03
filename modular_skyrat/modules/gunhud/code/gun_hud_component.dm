@@ -150,3 +150,15 @@
 				oth_t = "t9"
 				oth_h = "h9"
 		hud.set_hud(backing_color, oth_o, oth_t, oth_h, indicator)
+
+/obj/item/gun/ballistic/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/ammo_hud)
+
+/obj/item/gun/energy/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/ammo_hud)
+
+/obj/item/weldingtool/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/ammo_hud)
