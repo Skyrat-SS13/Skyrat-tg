@@ -1,3 +1,10 @@
+## The name that the server uses to identify itself to the database. Useful if you intend to run multiple servers that
+#  speak to the same database to share staff ranks, bans, notes etc.
+SERVERSQLNAME
+
+## Comment this out if you'd like a server that cares only about local bans in the database.
+RESPECT_GLOBAL_BANS
+
 ## Comment this out if you want to use the SQL based mentor system, the legacy system uses mentors.txt.
 ## You need to set up your database to use the SQL based system.
 ## This flag is automatically enabled if SQL_ENABLED isn't
@@ -13,7 +20,6 @@ ALERT_VIOLET_DOWNTO  A major medical emergency has developed. Non-medical person
 ALERT_DELTA_UPTO Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
 ALERT_DELTA_DOWNTO Destruction of the station is still imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
 ALERT_GAMMA The Solar Federation has placed this system under Gamma Alert status. This galactic system is facing a ZK-Class Reality Failure Scenario. Security Personnel is authorized full access to lethal equipment to enforce Martial Law. Failure to follow emergency procedures is punishable by death. This is not a drill.
-
 
 ## How long until someone can be put in cryo if they are SSD
 CRYO_MIN_SSD_TIME 15

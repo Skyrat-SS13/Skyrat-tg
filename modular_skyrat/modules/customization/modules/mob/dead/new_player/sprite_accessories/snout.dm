@@ -3,7 +3,7 @@
 	generic = "Snout"
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/lizard_snouts.dmi'
 	var/use_muzzled_sprites = TRUE
-	recommended_species = list("mammal", "lizard", "unathi", "ashlizard", "silverlizard")
+	recommended_species = list("synthmammal", "mammal", "lizard", "unathi", "ashlizard", "silverlizard")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -20,16 +20,16 @@
 /datum/sprite_accessory/snouts/mammal
 	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/snouts.dmi'
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list("mammal", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/vulpkanin
-	recommended_species = list("mammal", "vulpkanin", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "vulpkanin", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/tajaran
-	recommended_species = list("mammal", "tajaran", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "tajaran", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/akula
-	recommended_species = list("mammal", "akula", "aquatic", "humanoid")
+	recommended_species = list("synthmammal", "mammal", "akula", "aquatic", "humanoid")
 
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"
