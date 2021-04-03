@@ -32,8 +32,8 @@
 		if(SHUTTLE_IDLE, SHUTTLE_IGNITING)
 			destination = S
 			mode = SHUTTLE_IGNITING
+			bolt_all_doors()
 			setTimer(ignitionTime)
-	bolt_all_doors() //SKYRAT EDIT ADDITION
 
 /obj/docking_port/mobile/proc/bolt_all_doors() //Expensive procs :(
 	var/list/turfs = return_ordered_turfs(x, y, z, dir)

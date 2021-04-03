@@ -680,6 +680,7 @@
 				return
 			if(rechargeTime)
 				mode = SHUTTLE_RECHARGING
+				unbolt_all_doors() //SKYRAT EDIT ADDITION
 				setTimer(rechargeTime)
 				return
 		if(SHUTTLE_RECALL)
