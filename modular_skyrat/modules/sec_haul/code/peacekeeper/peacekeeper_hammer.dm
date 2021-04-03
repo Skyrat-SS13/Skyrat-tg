@@ -9,13 +9,14 @@
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
 	force = 15
-	throwforce = 35
+	throwforce = 20
+	throw_range = 1
 	wound_bonus = 30
 	bare_wound_bonus = 40
-	block_chance = 45
+	block_chance = 25
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb_continuous = list("whacks","breaches","bulldozes","flings","thwachs")
-	attack_verb_simple = list("breache","hammer","whack","slap","thwach","fling")
+	attack_verb_simple = list("breach","hammer","whack","slap","thwach","fling")
 	/// Delay between door hits
 	var/breaching_delay = 2 SECONDS
 	/// The door we aim to breach
@@ -31,7 +32,7 @@
 
 /obj/item/melee/hammer/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
-		final_block_chance = 15 // Less likely to parry a fucking bullet
+		final_block_chance = 5 // Less likely to parry a fucking bullet
 	return ..()
 
 /obj/item/melee/hammer/afterattack(atom/target, mob/user, proximity)
@@ -90,7 +91,7 @@
 
 /// Keeps looping under the door is no more , or someone moves , gets shot , dies , incapacitated , stunned , etc
 /obj/item/melee/hammer/proc/breaching_loop(mob/living/user, obj/target)
-	if(user.stat || !target || !breacher)
+	if(user.stat || !target)
 		remove_track(user)
 		return FALSE
 	if(!(user.Adjacent(target)))
@@ -101,9 +102,12 @@
 		remove_track(user)
 		qdel(target, TRUE)
 	var/mob/living/carbon/human/silly = breacher
+	if(!silly)
+		remove_track(user)
+		return FALSE
 	if(!(silly.Adjacent(target)))
 		remove_track(user)
-		return NONE
+		return FALSE
 	if(do_after(user, breaching_delay))
 		if(QDELETED(target))
 			return FALSE
