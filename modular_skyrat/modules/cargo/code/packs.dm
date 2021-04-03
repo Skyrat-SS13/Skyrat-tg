@@ -251,6 +251,20 @@
 					/obj/item/fuel_pellet)
 	crate_name = "drone fuel crate"
 
+/datum/supply_pack/service/emptybig
+	name = "Empty Big Metal Crate"
+	desc = "It's a big empty crate, for all your secure storage needs."
+	cost = CARGO_CRATE_VALUE * 1.4 //Net Zero Profit.
+	contains = list()
+	crate_type = /obj/structure/closet/crate/big
+
+/datum/supply_pack/service/emptybigsecure
+	name = "Empty Big Plasteel Crate"
+	desc = "It's a big empty crate, for all your secure storage needs."
+	cost = CARGO_CRATE_VALUE * 1.4 //Net Zero Profit.
+	contains = list()
+	crate_type = /obj/structure/closet/crate/big/reinforced
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Food Stuff //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
