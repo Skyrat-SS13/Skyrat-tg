@@ -3,7 +3,7 @@
 	desc = "A sleek optical hud for displaying information about the tool it's attached to. Attach this to any ballistic automatic gun, energy gun or welder!"
 	icon = 'icons/obj/improvised.dmi'
 	icon_state = "kitsuitcase"
-	custom_materials = list(/datum/material/iron = 10000, /datum/material/gold = 2000)
+	custom_materials = list(/datum/material/iron = 10000, /datum/material/glass = 2000)
 
 /datum/design/gun_hud_attachment
 	name = "Optical Hud Kit"
