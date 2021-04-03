@@ -22,6 +22,7 @@
 	update_icon()
 
 /obj/item/gun/energy/sizegun/update_icon_state()
+	. = ..()
 	var/ratio = get_charge_ratio()
 	var/temp_icon_to_use = initial(icon_state)
 
