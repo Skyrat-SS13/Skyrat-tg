@@ -89,7 +89,7 @@
 /datum/job/cook
 	required_languages = null
 
-/datum/job/hydro
+/datum/job/botanist
 	required_languages = null
 
 /datum/job/curator
