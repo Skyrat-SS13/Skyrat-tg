@@ -81,6 +81,7 @@
 		jammed = TRUE
 		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
 		to_chat(user, "<span class='danger'>The [src] jams!</span>")
+		SEND_SIGNAL(src, COMSIG_GUN_JAMMED)
 	else if(jammed)
 		to_chat(user, "You start to unjam the bolt!")
 		if(do_after(user, unjam_time))
