@@ -54,7 +54,7 @@
 	name = "Modern Glasses"
 	path = /obj/item/clothing/glasses/betterunshit
 
-/datum/loadout_item/glasses/medic
+/datum/loadout_item/glasses/whiteeyepatch
 	name = "White Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch/white
 
