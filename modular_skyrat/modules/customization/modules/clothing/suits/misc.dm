@@ -32,3 +32,35 @@
 	name = "Western Jacket"
 	desc = "Botanists screaming of mangos have been rumored to wear this."
 	icon_state = "dutchjacket"
+
+/obj/item/clothing/suit/hawaiian_blue
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "blue hawaiian shirt"
+	icon_state = "hawaiian_blue"
+	desc = "Strangely en vouge with aviator wearing shibas."
+	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/suit/hawaiian_orange
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "orange hawaiian shirt"
+	icon_state = "hawaiian_orange"
+	desc = "Strangely en vouge with aviator wearing shibas."
+	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/suit/hawaiian_purple
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "purple hawaiian shirt"
+	icon_state = "hawaiian_purple"
+	desc = "Strangely en vouge with aviator wearing shibas."
+	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/suit/hawaiian_green
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "green hawaiian shirt"
+	icon_state = "hawaiian_green"
+	desc = "Strangely en vouge with aviator wearing shibas."
+	body_parts_covered = CHEST|GROIN
