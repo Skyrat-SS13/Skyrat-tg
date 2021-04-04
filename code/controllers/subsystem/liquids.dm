@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(liquids)
 	name = "Liquid Turfs"
 	wait = 1 SECONDS
-	flags = SS_BACKGROUND
+	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/active_turfs = list()
@@ -378,6 +378,8 @@ SUBSYSTEM_DEF(liquids)
 		set_fire_state(LIQUID_FIRE_STATE_NONE)
 	
 /obj/effect/abstract/liquid_turf/proc/process_fire()
+	if(!fire_state)
+		SSliquids.processing_fire -= my_turf
 	var/old_state = fire_state
 	if(!check_fire())
 		SSliquids.processing_fire -= my_turf

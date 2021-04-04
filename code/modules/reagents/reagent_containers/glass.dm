@@ -135,28 +135,6 @@
 /obj/item/reagent_containers/glass/beaker/Initialize()
 	. = ..()
 	update_appearance()
-	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
-
-/obj/item/reagent_containers/glass/beaker/proc/attack_on_liquids_turf(obj/item/reagent_containers/glass/beaker/my_beaker, turf/T, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
-	if(user.combat_mode)
-		return FALSE
-	if(!user.Adjacent(T))
-		return FALSE
-	if(liquids.fire_state) //Use an extinguisher first
-		to_chat(user, "<span class='warning'>You can't scoop up anything while it's on fire!</span>")
-		return TRUE
-	var/free_space = my_beaker.reagents.maximum_volume - my_beaker.reagents.total_volume
-	if(free_space <= 0)
-		to_chat(user, "<span class='warning'>You can't fit any more liquids inside [my_beaker]!</span>")
-		return TRUE
-	var/desired_transfer = my_beaker.amount_per_transfer_from_this
-	if(desired_transfer > free_space)
-		desired_transfer = free_space
-	var/datum/reagents/tempr = liquids.take_reagents_flat(desired_transfer)
-	tempr.trans_to(my_beaker.reagents, tempr.total_volume)
-	to_chat(user, "<span class='notice'>You scoop up around [my_beaker.amount_per_transfer_from_this] units of liquids with [my_beaker].</span>")
-	qdel(tempr)
-	return TRUE
 
 /obj/item/reagent_containers/glass/beaker/get_part_rating()
 	return reagents.maximum_volume
@@ -249,7 +227,7 @@
 
 /obj/item/reagent_containers/glass/bucket//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bucket"
-	desc = "It's a bucket."
+	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"
@@ -283,14 +261,25 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	resistance_flags = FLAMMABLE
 
-/obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/user, params)
+/obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/living/user, params)
 	if(istype(O, /obj/item/mop))
-		if(reagents.total_volume < 1)
-			to_chat(user, "<span class='warning'>[src] is out of water!</span>")
+		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
+		if(is_right_clicking)
+			if(O.reagents.total_volume == 0)
+				to_chat(user, "<span class='warning'>[O] is dry, you can't squeeze anything out!</span>")
+				return
+			if(reagents.total_volume == reagents.maximum_volume)
+				to_chat(user, "<span class='warning'>[src] is full!</span>")
+				return
+			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
+			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
-			reagents.trans_to(O, 5, transfered_by = user)
-			to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
-			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+			if(reagents.total_volume < 1)
+				to_chat(user, "<span class='warning'>[src] is out of water!</span>")
+			else
+				reagents.trans_to(O, 5, transfered_by = user)
+				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
+				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, "<span class='notice'>You add [O] to [src].</span>")
 		qdel(O)

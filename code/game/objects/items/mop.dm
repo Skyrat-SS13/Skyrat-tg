@@ -14,7 +14,7 @@
 	attack_verb_simple = list("mop", "bash", "bludgeon", "whack")
 	resistance_flags = FLAMMABLE
 	var/mopcount = 0
-	var/mopcap = 15
+	var/mopcap = 50
 	var/mopspeed = 15
 	force_string = "robust... against germs"
 	var/insertable = TRUE
@@ -33,6 +33,7 @@
 	tempr.trans_to(the_mop.reagents, tempr.total_volume)
 	to_chat(user, "<span class='notice'>You soak the mop with some liquids.</span>")
 	qdel(tempr)
+	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE
 
 /obj/item/mop/proc/clean(turf/A, mob/living/cleaner)
@@ -99,9 +100,9 @@
 	insertable = FALSE
 
 /obj/item/mop/advanced
-	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this!"
+	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this! Due to the self-wetting technology, it proves very inefficient for cleaning up spills."
 	name = "advanced mop"
-	mopcap = 10
+	mopcap = 100
 	icon_state = "advmop"
 	inhand_icon_state = "mop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
