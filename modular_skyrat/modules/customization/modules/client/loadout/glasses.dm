@@ -46,6 +46,17 @@
 	name = "Prescription glasses"
 	path = /obj/item/clothing/glasses/regular
 
+/datum/loadout_item/glasses/thin
+	name = "Thin Glasses"
+	path = /obj/item/clothing/glasses/thin
+
+/datum/loadout_item/glasses/better
+	name = "Modern Glasses"
+	path = /obj/item/clothing/glasses/betterunshit
+
+/datum/loadout_item/glasses/medic
+	name = "White Eyepatch"
+	path = /obj/item/clothing/glasses/eyepatch/white
 
 /datum/loadout_item/glasses/medic
 	name = "Medical Eyepatch"
