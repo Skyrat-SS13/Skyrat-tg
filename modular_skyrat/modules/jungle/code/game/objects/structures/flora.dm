@@ -22,7 +22,7 @@
 /obj/structure/flora/biolumi/update_overlays()
 	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
-	SSvis_overlays.add_vis_overlay(src, icon, "[base_icon]_light", ABOVE_LIGHTING_LAYER, ABOVE_LIGHTING_PLANE)
+	SSvis_overlays.add_vis_overlay(src, icon, "[base_icon]_light", 0, ABOVE_LIGHTING_PLANE)
 	if(light_color)
 		var/obj/effect/overlay/vis/overlay = managed_vis_overlays[1]
 		overlay.color = light_color

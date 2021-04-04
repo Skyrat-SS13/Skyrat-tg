@@ -19,6 +19,7 @@
 	item = /obj/item/gun/ballistic/automatic/pistol/aps
 	cost = 13
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
+
 /datum/uplink_item/dangerous/foamsmg_traitor
 	name = "Toy Submachine Gun"
 	desc = "A fully-loaded Donksoft bullpup submachine gun that fires riot grade darts with a 20-round magazine."
@@ -125,6 +126,13 @@
 	surplus = 35
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 
+/datum/uplink_item/explosives/bonebang
+	name = "Bonebang"
+	desc = "A horrifying grenade filled with what looks to be bone and gore, which upon detonation will fill the room you're in with bone fragments."
+	item = /obj/item/grenade/stingbang/bonebang
+	cost = 5
+
+//DEVICE TOOLS
 /datum/uplink_item/device_tools/syndie_jaws_of_life_traitor
 	name = "Syndicate Jaws of Life"
 	desc = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
@@ -133,7 +141,6 @@
 	cost = 4
 	exclude_modes = list(/datum/game_mode/nuclear, /datum/game_mode/nuclear/clown_ops)
 
-//DEVICE TOOLS
 /datum/uplink_item/device_tools/medkit_traitor
 	name = "Syndicate Combat Medic Kit"
 	desc = "This first aid kit is a suspicious brown and red. Included is a combat stimulant injector \

@@ -10,7 +10,7 @@
 	icon_state = "setup_small"
 	item_flags = NOBLUDGEON
 	datum_flags = DF_USE_TAG
-	var/materials
+	custom_materials = list(/datum/material/iron=400)
 	var/list/assembly_components = list()
 	var/list/ckeys_allowed_to_scan = list() // Players who built the circuit can scan it as a ghost.
 	var/max_components = IC_MAX_SIZE_BASE
@@ -84,7 +84,7 @@
 	.=..()
 	START_PROCESSING(SScircuit, src)
 
-	materials = round((max_complexity + max_components) / 4) * SScircuit.cost_multiplier
+	set_custom_materials(list(GET_MATERIAL_REF(/datum/material/iron)=round((max_complexity + max_components) / 4) * SScircuit.cost_multiplier))
 
 	//sets up diagnostic hud view
 	prepare_huds()
@@ -575,12 +575,10 @@
 
 	switch(type_to_use)
 		if("repair")
-			to_chat(world,"Integrity: [obj_integrity] / [max_integrity]")
 			if(obj_integrity < max_integrity)
 				obj_integrity = min(obj_integrity + 20,max_integrity)
-				to_chat(world,"Integrity: [obj_integrity] / [max_integrity]")
+				to_chat(user,"<span class='notice'>Integrity: [obj_integrity] / [max_integrity]</span>")
 				to_chat(user,"<span class='notice'>You fix the dents and scratches of the assembly.</span>")
-				to_chat(world,user)
 				return TRUE
 
 			else

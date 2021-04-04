@@ -7,6 +7,7 @@
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_SMALL
+	custom_materials = list(/datum/material/iron=200)
 	var/data_to_write = null
 	var/accepting_refs = FALSE
 	var/copy_values = FALSE

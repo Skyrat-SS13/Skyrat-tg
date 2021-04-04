@@ -267,7 +267,12 @@
 		if(LH.target && LH.target.stat == DEAD)
 			to_chat(carbon_user,"<span class='danger'>Your patrons accepts your offer..</span>")
 			var/mob/living/carbon/human/H = LH.target
-			H.gib()
+			//SKYRAT EDIT BEGIN: MAKES HERETICS NOT GIB PEOPLE
+			var/obj/item/bodypart/chest/chest = H.get_bodypart(BODY_ZONE_CHEST)
+			chest.dismember()
+			H.visible_message("<span class='danger'>[H.name] Is quickly surrounded by invisible claws; lacerating their chest open, spilling their organs out!</span>", \
+								"<span class='danger'>You feel claws tear your chest open; spilling your organs out onto the floor!</span>", ignored_mobs=H)
+			//SKYRAT EDIT END
 			LH.target = null
 			var/datum/antagonist/heretic/EC = carbon_user.mind.has_antag_datum(/datum/antagonist/heretic)
 

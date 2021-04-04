@@ -78,15 +78,15 @@
 	/obj/item/storage/box/gunset/dozer = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "dozer"
-   /* ),
+	  ),
     /obj/item/storage/box/gunset/zeta = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "zeta"
-     ),
+	  ),
     /obj/item/storage/box/gunset/revolution = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
       icon_state = "revolution"
-     */)
+    )
   )
 
 //BAD BOY!
@@ -154,10 +154,10 @@
 
 /obj/item/armament_token/energy/get_available_gunsets()
   return list(
-    /obj/item/storage/box/gunset/blaster = image(
+    /obj/item/storage/box/gunset/laser = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-      icon_state = "blaster"
-     )
+      icon_state = "laser"
+     )	 
   )
 
 /obj/item/storage/box/armament_tokens_sidearm

@@ -76,7 +76,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/harvester,
+/obj/structure/bodycontainer/crematorium{
+	id = "fscremate"
+	},
+/obj/machinery/button/crematorium{
+	id = "fscremate";
+	pixel_x = -32
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ak" = (
@@ -328,10 +334,6 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "aV" = (
-/obj/structure/rack,
-/obj/item/clothing/mask/gas/syndicate,
-/obj/item/clothing/mask/gas/syndicate,
-/obj/item/clothing/mask/gas/syndicate,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
 	},
@@ -379,12 +381,15 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "be" = (
-/obj/structure/frame/computer{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/food/condiment/milk{
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/obj/item/reagent_containers/glass/beaker/large,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bf" = (
@@ -445,13 +450,10 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bp" = (
 /obj/structure/window/reinforced/spawner/west,
-/obj/structure/rack,
-/obj/item/clothing/shoes/combat,
-/obj/item/clothing/shoes/combat,
-/obj/item/clothing/shoes/combat,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
+/obj/machinery/vending/wardrobe/syndie_wardrobe,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bq" = (
@@ -558,9 +560,6 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bF" = (
-/obj/structure/rack,
-/obj/item/clothing/under/syndicate/combat,
-/obj/item/clothing/under/syndicate/combat,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
 	},
@@ -604,10 +603,6 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bJ" = (
 /obj/structure/window/reinforced/spawner/west,
-/obj/structure/rack,
-/obj/item/clothing/under/syndicate/skirt,
-/obj/item/clothing/under/syndicate/skirt,
-/obj/item/clothing/under/syndicate/skirt,
 /obj/structure/window/reinforced/spawner,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
@@ -615,8 +610,6 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bK" = (
-/obj/structure/rack,
-/obj/item/clothing/under/syndicate,
 /obj/structure/window/reinforced/spawner,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
@@ -699,7 +692,6 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bW" = (
-/mob/living/simple_animal/hostile/nanotrasen/elite,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
 	dir = 1
 	},
@@ -1071,12 +1063,14 @@
 	},
 /obj/item/storage/box/stockparts/deluxe,
 /obj/item/storage/box/stockparts/deluxe,
-/obj/item/storage/box/rndboards,
 /obj/item/stack/sheet/glass{
 	amount = 10
 	},
 /obj/item/stack/cable_coil,
 /obj/item/storage/box/beakers,
+/obj/item/circuitboard/machine/circuit_imprinter/offstation,
+/obj/item/circuitboard/machine/protolathe/offstation,
+/obj/item/circuitboard/machine/destructive_analyzer,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cU" = (
@@ -1644,6 +1638,10 @@
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = list(150)
 	},
+/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/milk,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "up" = (
@@ -2192,6 +2190,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump{
 	dir = 1
 	},
+/mob/living/simple_animal/hostile/nanotrasen/elite,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "YT" = (
