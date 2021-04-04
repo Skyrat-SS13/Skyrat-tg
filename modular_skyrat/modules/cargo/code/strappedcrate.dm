@@ -1,4 +1,15 @@
 //Allows you to wrap crates with plastic straps that need to be cut before it can open
+
+
+
+
+
+/*
+* WIP: Plastic Strapping will be a function of crates instead - - -
+* EVERYTHING BELOW HERE IS THE ORIGINAL, NEW-OBJECT CODE
+*/
+
+/*
 /obj/structure/big_delivery/strapped	//The following code is some horrific version of package wrappers. You've been warned.
 	icon = 'modular_skyrat/modules/aesthetics/crates/icons/crates.dmi'
 	name = "strapped crate"
@@ -100,3 +111,4 @@
 			return
 	else	//not a storage item, just use normal plastic attack code
 		return
+*/
