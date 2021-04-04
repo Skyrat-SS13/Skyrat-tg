@@ -55,6 +55,9 @@
 	LoadMOTD()
 	LoadPolicy()
 	LoadChatFilter()
+	//SKYRAT EDIT ADDITION BEGIN - Combat Indicator
+	LoadCombatIndicator()
+	//SKYRAT EDIT ADDITION END
 
 	loaded = TRUE
 

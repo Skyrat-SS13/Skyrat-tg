@@ -1,6 +1,6 @@
 #define COMBAT_NOTICE_COOLDOWN 10 SECONDS
 GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
-GLOBAL_VAR_INIT(combat_indicator_time, CONFIG_GET(number/combat_indicator_time))
+GLOBAL_VAR_INIT(combat_indicator_time, null)
 
 /proc/GenerateCombatOverlay()
 	var/mutable_appearance/combat_indicator = mutable_appearance('modular_skyrat/modules/combat_indicator/icons/combat_indicator.dmi', "combat", FLY_LAYER)
