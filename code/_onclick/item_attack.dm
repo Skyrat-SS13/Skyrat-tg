@@ -171,7 +171,7 @@
 		to_chat(user, "<span class='warning'>You don't want to harm other living beings!</span>")
 		return
 	//SKYRAT EDIT ADDITION BEGIN
-	if(ishuman(M) && force && !user.combat_indicator_check())
+	if(ishuman(M) && M.client && force && !user.combat_indicator_check())
 		to_chat(user, "<span class='warning'>You go to attack [M] with [src], but refrain from doing so unprepared.</span>")
 		return
 	//SKRYAT EDIT END
