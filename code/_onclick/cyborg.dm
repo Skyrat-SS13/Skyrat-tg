@@ -92,13 +92,13 @@
 //Give cyborgs hotkey clicks without breaking existing uses of hotkey clicks
 // for non-doors/apcs
 /mob/living/silicon/robot/CtrlShiftClickOn(atom/A) // Procs overridden in skyrat_modular/modules/Silicon_QoL
-	A.BorgCtrlShiftClick(src) 
+	A.BorgCtrlShiftClick(src)
 /mob/living/silicon/robot/ShiftClickOn(atom/A)
-	A.BorgShiftClick(src) 
+	A.BorgShiftClick(src)
 /mob/living/silicon/robot/CtrlClickOn(atom/A)
 	A.BorgCtrlClick(src)
 /mob/living/silicon/robot/AltClickOn(atom/A)
-	A.BorgAltClick(src) 
+	A.BorgAltClick(src)
 
 /atom/proc/BorgCtrlShiftClick(mob/living/silicon/robot/user) //forward to human click if not overridden
 	CtrlShiftClick(user)
@@ -173,9 +173,11 @@
 /mob/living/silicon/robot/RangedAttack(atom/A)
 	A.attack_robot(src)
 
+/*	//SKYRAT EDIT - MOVED TO modular_skyrat/master_files/code/_onclick/cyborg.dm
 /atom/proc/attack_robot(mob/user)
 	attack_ai(user)
 	return
+*/	//SKYRAT EDIT END
 
 /**
  * What happens when the cyborg without active module holds right-click on an item. Returns a SECONDARY_ATTACK_* value.
