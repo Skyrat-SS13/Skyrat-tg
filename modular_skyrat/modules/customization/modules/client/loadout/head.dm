@@ -128,19 +128,19 @@
 	name = "Federation Officer's Cap (Blue)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Security Medic","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/head/trek/trekcapeng
 	name = "Federation Officer's Cap (Yellow)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /datum/loadout_item/head/trek/trekcapsec
 	name = "Federation Officer's Cap (Red)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/sec
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /*Commenting out Until next Christmas or made automatic
 /datum/gear/santahatr
@@ -161,7 +161,7 @@
 	name = "Cowboy Hat, Security"
 	path = /obj/item/clothing/head/cowboyhat/sec
 	restricted_desc = "Security"
-	restricted_roles = list("Warden","Detective","Security Officer","Head of Security")
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
 
 /datum/loadout_item/head/job/navybluehosberet
 	name = "Head of security's navyblue beret"
@@ -171,7 +171,7 @@
 /datum/loadout_item/head/job/navyblueofficerberet
 	name = "Security officer's Navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyofficer
-	restricted_roles = list("Security Officer")
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
 /datum/loadout_item/head/job/navybluewardenberet
 	name = "Warden's navyblue beret"
@@ -187,7 +187,7 @@
 /datum/loadout_item/head/job/nursehat
 	name = "Nurse Hat"
 	path = /obj/item/clothing/head/nursehat
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist","Security Medic")
 	restricted_desc = "Medical"
 
 // JOB - Berets
@@ -218,7 +218,7 @@
 /datum/loadout_item/head/job/med
 	name = "Medical Beret"
 	path = /obj/item/clothing/head/beret/job/med
-	restricted_roles = list("Medical Doctor","Virologist", "Chemist", "Chief Medical Officer")
+	restricted_roles = list("Medical Doctor","Virologist", "Chemist", "Chief Medical Officer","Security Medic")
 	restricted_desc = "Medical"
 
 /datum/loadout_item/head/job/med_viro

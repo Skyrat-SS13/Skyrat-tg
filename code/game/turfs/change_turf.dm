@@ -85,6 +85,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(lgroup)
 		lgroup.remove_from_group(src)
 
+	var/old_rcd_memory = rcd_memory
+
+
 	var/old_bp = blueprint_data
 	blueprint_data = null
 
@@ -113,6 +116,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		W.AfterChange(flags, old_type)
 
 	W.blueprint_data = old_bp
+	W.rcd_memory = old_rcd_memory
 
 	if(SSlighting.initialized)
 		lighting_object = old_lighting_object
