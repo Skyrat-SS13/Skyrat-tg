@@ -1,4 +1,4 @@
-/obj/item/clothing/glasses/eyepatch/white
+/obj/item/clothing/glasses/eyepatch/white //ANAKIN THE WEEBS ARE TAKING OVER!
 	name = "white eyepatch"
 	desc = "This is what happens when a pirate gets a PhD."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
@@ -15,7 +15,7 @@
 	inhand_icon_state = "glasses"
 	vision_correction = TRUE
 
-/obj/item/clothing/glasses/betterunshit
+/obj/item/clothing/glasses/betterunshit //they look better shut up
 	name = "modern glasses"
 	desc = "After Nerd. Co went bankrupt for tax evasion and invasion, they were bought out by Dork.Co, who revamped their classic design."
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
