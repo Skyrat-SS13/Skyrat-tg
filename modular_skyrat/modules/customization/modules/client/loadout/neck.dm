@@ -118,3 +118,4 @@
 /datum/loadout_item/neck/tie/disco
 	name = "Horrible Necktie"
 	path = /obj/item/clothing/neck/tie/horrible
+
