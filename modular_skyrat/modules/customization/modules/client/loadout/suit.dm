@@ -270,7 +270,7 @@
 /datum/loadout_item/suit/job/navybluejacketofficer
 	name = "security officer's navyblue jacket"
 	path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list("Security Officer")
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/job/navybluejacketwarden
 	name = "warden navyblue jacket"
@@ -316,13 +316,13 @@
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
 	path = /obj/item/clothing/suit/toggle/labcoat/para_red
-	restricted_roles = list("Chief Medical Officer", "Paramedic")
+	restricted_roles = list("Chief Medical Officer", "Paramedic","Security Medic") // its a medic jacket anyway screw you
 	restricted_desc = "Medical First Responders"
 
 /datum/loadout_item/suit/job/labcoat_highvis
 	name = "High-Vis Labcoat"
 	path = /obj/item/clothing/suit/toggle/labcoat/highvis
-	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective")
+	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic") // why does the atmos get this? sec med is more of a first responder lmao
 	restricted_desc = "First Responders and Detective"
 
 //Trekkie things.
@@ -334,13 +334,13 @@
 	name = "Medsci fed jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/suit/job/trek/fedeng
 	name = "Ops/Sec fed Jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Modern trekkie
 /datum/loadout_item/suit/job/trek/fedcoatmodern
@@ -351,7 +351,7 @@
 	name = "Modern medsci jacket"
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
 
 /datum/loadout_item/suit/job/trek/fedcoatmoderneng
 	name = "Modern ops jacket"
