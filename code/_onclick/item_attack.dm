@@ -171,8 +171,8 @@
 		to_chat(user, "<span class='warning'>You don't want to harm other living beings!</span>")
 		return
 	//SKYRAT EDIT ADDITION BEGIN
-	if(force && !user.combat_mode)
-		to_chat(user, "<span class='notice'>You go to attack [M] with [src], but refrain from doing so.</span>")
+	if(ishuman(M) && force && !user.combat_indicator_check())
+		to_chat(user, "<span class='warning'>You go to attack [M] with [src], but refrain from doing so unprepared.</span>")
 		return
 	//SKRYAT EDIT END
 	if(item_flags & EYE_STAB && user.zone_selected == BODY_ZONE_PRECISE_EYES)

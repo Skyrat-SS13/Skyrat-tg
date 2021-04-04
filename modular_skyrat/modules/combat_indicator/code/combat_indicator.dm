@@ -1,5 +1,6 @@
 #define COMBAT_NOTICE_COOLDOWN 10 SECONDS
 GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
+GLOBAL_VAR_INIT(combat_indicator_time, CONFIG_GET(number/combat_indicator_time))
 
 /proc/GenerateCombatOverlay()
 	var/mutable_appearance/combat_indicator = mutable_appearance('modular_skyrat/modules/combat_indicator/icons/combat_indicator.dmi', "combat", FLY_LAYER)
@@ -9,9 +10,22 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 /mob/living
 	var/combat_indicator = FALSE
 	var/nextcombatpopup = 0
+	var/lastcombatindicator = 0
 
 /mob/living/proc/combat_indicator_unconscious_signal()
 	set_combat_indicator(FALSE)
+
+/mob/living/proc/combat_indicator_check()
+	. = FALSE
+	if(!CONFIG_GET(flag/combat_indicator))
+		return TRUE
+	if(!client)
+		return TRUE
+	if(!ishuman(src))
+		return TRUE
+
+	if(combat_indicator && (lastcombatindicator + GLOB.combat_indicator_time <= world.time))
+		return TRUE
 
 /mob/living/proc/set_combat_indicator(state)
 	if(!CONFIG_GET(flag/combat_indicator))
@@ -28,6 +42,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if(combat_indicator)
 		if(world.time > nextcombatpopup)
 			nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
+			lastcombatindicator = world.time
 			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE)
 			flick_emote_popup_on_mob("combat", 20)
 			visible_message("<span class='boldwarning'>[src] gets ready for combat!</span>")
@@ -63,3 +78,5 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	L.user_toggle_combat_indicator()
 
 /datum/config_entry/flag/combat_indicator
+
+/datum/config_entry/number/combat_indicator_time

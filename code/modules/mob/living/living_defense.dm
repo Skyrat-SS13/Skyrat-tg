@@ -87,7 +87,7 @@
 				G.toggle_safety(src, "off")
 			else
 				G.toggle_safety(src, "on")
-	if(!ishuman(src))
+	if(client)
 		if(combat_mode)
 			set_combat_indicator(TRUE)
 		else

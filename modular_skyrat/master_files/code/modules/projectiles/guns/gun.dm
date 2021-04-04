@@ -302,6 +302,9 @@
 		return
 	if(firing_burst)
 		return
+	if(!user.combat_indicator_check())
+		to_chat(user, "<span class='warning'>You refrain from firing [src] unprepared.</span>")
+		return
 	if(flag) //It's adjacent, is the user, or is on the user's person
 		if(target in user.contents) //can't shoot stuff inside us.
 			return
