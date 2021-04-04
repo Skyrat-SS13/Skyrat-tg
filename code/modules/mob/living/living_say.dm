@@ -385,6 +385,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 /mob/living/proc/treat_message(message)
 
+	//SKYRAT EDIT ADDITION BEGIN - ANTIPOGGERS
+	message = antimemespeech(message, src)
+	//SKYRAT EDIT ADDITION END
+
 	if(HAS_TRAIT(src, TRAIT_UNINTELLIGIBLE_SPEECH))
 		message = unintelligize(message)
 
