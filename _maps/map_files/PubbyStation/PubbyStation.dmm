@@ -5672,13 +5672,32 @@
 /area/space/nearstation)
 "app" = (
 /obj/structure/safe,
-/obj/item/bikehorn/golden,
-/obj/item/ammo_box/a357,
-/obj/item/tank/internals/plasma/full,
-/obj/item/disk/nuclear/fake,
-/obj/item/stack/ore/diamond,
+/obj/item/storage/secure/briefcase{
+	contents = newlist(/obj/item/clothing/suit/armor/vest,/obj/item/gun/ballistic/automatic/pistol,/obj/item/suppressor,/obj/item/melee/classic_baton/telescopic,/obj/item/clothing/mask/balaclava,/obj/item/bodybag,/obj/item/soap/nanotrasen)
+	},
+/obj/item/storage/backpack/duffelbag/syndie/hitman,
+/obj/item/card/id/advanced/silver/reaper,
+/obj/item/lazarus_injector,
 /obj/item/gun/energy/disabler,
-/turf/open/floor/vault,
+/obj/item/gun/ballistic/revolver/russian,
+/obj/item/ammo_box/a357,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/book{
+	desc = "An undeniably handy book.";
+	icon_state = "bookknock";
+	name = "\improper A Simpleton's Guide to Safe-cracking with Stethoscopes"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ai_monitored/command/nuke_storage)
 "apq" = (
 /obj/item/clothing/under/rank/civilian/clown/sexy,
@@ -18178,6 +18197,9 @@
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/machinery/conveyor{
+	id = "TrashMover"
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
@@ -53531,6 +53553,10 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "Delivery"
+	},
 /turf/open/floor/iron,
 /area/cargo/storage)
 "nBw" = (
@@ -63599,6 +63625,9 @@
 	},
 /obj/structure/disposaloutlet,
 /obj/structure/plasticflaps/opaque,
+/obj/machinery/conveyor{
+	id = "CargoUnload"
+	},
 /turf/open/floor/iron,
 /area/cargo/storage)
 "xEI" = (
