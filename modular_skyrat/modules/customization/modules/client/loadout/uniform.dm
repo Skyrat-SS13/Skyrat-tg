@@ -224,6 +224,11 @@
 	path = /obj/item/clothing/under/costume/dutch
 	cost = 3
 
+/datum/loadout_item/uniform/suit/arthur
+	name = "Dutch Assistant Suit"
+	path = /obj/item/clothing/under/costume/arthur
+	cost = 2
+
 //SKIRTS
 /datum/loadout_item/uniform/skirt
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SKIRTS
