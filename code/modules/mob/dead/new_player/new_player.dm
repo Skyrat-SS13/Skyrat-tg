@@ -283,6 +283,8 @@
 			return "[jobtitle] is restricted from your quirks."
 		if(JOB_UNAVAILABLE_SPECIES)
 			return "[jobtitle] is restricted from your species."
+		if(JOB_UNAVAILABLE_LANGUAGE)
+			return "You don't have the required languages for [jobtitle]."
 		//SKYRAT EDIT END
 	return "Error: Unknown job availability."
 
@@ -312,6 +314,8 @@
 		return JOB_UNAVAILABLE_QUIRK
 	if(job.has_banned_species(client.prefs))
 		return JOB_UNAVAILABLE_SPECIES
+	if(!job.has_required_languages(client.prefs))
+		return JOB_UNAVAILABLE_LANGUAGE
 	//SKYRAT EDIT END
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
