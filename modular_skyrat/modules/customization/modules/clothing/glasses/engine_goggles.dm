@@ -7,3 +7,10 @@
 	desc = "The day has finally came, after begging robotics for a new eye...they refused because they were on a couch, but you begged some random guy at the Science desk, he turned around and threw you this, an eyepatch for the building or mining enthusiast."
 
 	modes = list(MODE_NONE = MODE_NONE, MODE_MESON = MODE_MESON)
+
+#undef MODE_NONE
+#undef MODE_MESON
+#undef MODE_TRAY
+#undef MODE_RAD
+#undef MODE_SHUTTLE
+
