@@ -1,3 +1,4 @@
+/* MOVED TO MODULAR
 /obj/item/zombie_hand
 	name = "zombie claw"
 	desc = "A zombie's claw is its primary tool, capable of infecting \
@@ -77,3 +78,4 @@
 		user.updatehealth()
 		user.adjustOrganLoss(ORGAN_SLOT_BRAIN, -hp_gained) // Zom Bee gibbers "BRAAAAISNSs!1!"
 		user.set_nutrition(min(user.nutrition + hp_gained, NUTRITION_LEVEL_FULL))
+*/

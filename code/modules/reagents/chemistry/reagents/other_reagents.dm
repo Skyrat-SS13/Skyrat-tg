@@ -2200,9 +2200,12 @@
 /datum/reagent/romerol/expose_mob(mob/living/carbon/human/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
 	// Silently add the zombie infection organ to be activated upon death
+	/*
 	if(!exposed_mob.getorganslot(ORGAN_SLOT_ZOMBIE))
 		var/obj/item/organ/zombie_infection/nodamage/ZI = new()
 		ZI.Insert(exposed_mob)
+	*/
+	try_to_zombie_infect(exposed_mob) //SKYRAT EDIT CHANGE
 
 /datum/reagent/magillitis
 	name = "Magillitis"

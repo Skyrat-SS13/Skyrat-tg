@@ -1,5 +1,4 @@
-/* SKYRAT EDIT - MOVED TO MODULAR
-#define REGENERATION_DELAY 60  // After taking damage, how long it takes for automatic regeneration to begin
+#define REGENERATION_DELAY 10 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
 
 /datum/species/zombie
 	// 1spooky
@@ -9,7 +8,7 @@
 	sexes = 0
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	species_traits = list(NOBLOOD,NOZOMBIE,NOTRANSSTING, HAS_FLESH, HAS_BONE)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_NOMETABOLISM,TRAIT_TOXIMMUNE,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_EASILY_WOUNDED,TRAIT_LIMBATTACHMENT,TRAIT_NOBREATH,TRAIT_NODEATH,TRAIT_FAKEDEATH,TRAIT_NOCLONELOSS)
+	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_NOMETABOLISM,TRAIT_TOXIMMUNE,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_LIMBATTACHMENT,TRAIT_NOBREATH,TRAIT_NODEATH,TRAIT_FAKEDEATH,TRAIT_NOCLONELOSS)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/tongue/zombie
 	var/static/list/spooks = list('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/wail.ogg')
@@ -17,7 +16,7 @@
 	liked_food = GROSS | MEAT | RAW
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | ERT_SPAWN
 	bodytemp_normal = T0C // They have no natural body heat, the environment regulates body temp
-	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_EXIST // Take damage at fire temp
+	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // Take damage at fire temp
 	bodytemp_cold_damage_limit = MINIMUM_TEMPERATURE_TO_MOVE // take damage below minimum movement temp
 
 /datum/species/zombie/check_roundstart_eligible()
@@ -30,12 +29,12 @@
 	id = "memezombies"
 	limbs_id = "zombie"
 	mutanthands = /obj/item/zombie_hand
-	armor = 20 // 120 damage to KO a zombie, which kills it
-	speedmod = 1.6
+	armor = 50
+	speedmod = 0.5
 	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	/// The rate the zombies regenerate at
-	var/heal_rate = 0.5
+	var/heal_rate = 1.5
 	/// The cooldown before the zombie can start regenerating
 	COOLDOWN_DECLARE(regen_cooldown)
 
@@ -73,26 +72,6 @@
 	if(!HAS_TRAIT(C, TRAIT_CRITICAL_CONDITION) && DT_PROB(2, delta_time))
 		playsound(C, pick(spooks), 50, TRUE, 10)
 
-//Congrats you somehow died so hard you stopped being a zombie
-/datum/species/zombie/infectious/spec_death(gibbed, mob/living/carbon/C)
-	. = ..()
-	var/obj/item/organ/zombie_infection/infection
-	infection = C.getorganslot(ORGAN_SLOT_ZOMBIE)
-	if(infection)
-		qdel(infection)
-
-/datum/species/zombie/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	. = ..()
-
-	// Deal with the source of this zombie corruption
-	//  Infection organ needs to be handled separately from mutant_organs
-	//  because it persists through species transitions
-	var/obj/item/organ/zombie_infection/infection
-	infection = C.getorganslot(ORGAN_SLOT_ZOMBIE)
-	if(!infection)
-		infection = new()
-		infection.Insert(C)
-
 // Your skin falls off
 /datum/species/krokodil_addict
 	name = "Human"
@@ -106,4 +85,80 @@
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_EASILY_WOUNDED)
 
 #undef REGENERATION_DELAY
-*/
+
+
+/mob/living/carbon/human/canBeHandcuffed()
+	if(is_species(src, /datum/species/zombie/infectious))
+		return FALSE
+	else
+		. = ..()
+
+/obj/item/zombie_hand
+	name = "zombie claw"
+	desc = "A zombie's claw is its primary tool, capable of infecting \
+		humans, butchering all other living things to \
+		sustain the zombie, smashing open airlock doors and opening \
+		child-safe caps on bottles."
+	item_flags = ABSTRACT | DROPDEL
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	icon = 'icons/effects/blood.dmi'
+	icon_state = "bloodhand_left"
+	var/icon_left = "bloodhand_left"
+	var/icon_right = "bloodhand_right"
+	hitsound = 'sound/hallucinations/growl1.ogg'
+	force = 30
+	sharpness = SHARP_EDGED
+	bare_wound_bonus = 15
+	damtype = BRUTE
+
+/obj/item/zombie_hand/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+
+/obj/item/zombie_hand/equipped(mob/user, slot)
+	. = ..()
+	//these are intentionally inverted
+	var/i = user.get_held_index_of_item(src)
+	if(!(i % 2))
+		icon_state = icon_left
+	else
+		icon_state = icon_right
+
+/obj/item/zombie_hand/afterattack(atom/target, mob/user, proximity_flag)
+	. = ..()
+	if(!proximity_flag)
+		return
+	else if(isliving(target))
+		if(iscarbon(target))
+			try_to_zombie_infect(target)
+		else
+			check_feast(target, user)
+
+/proc/try_to_zombie_infect(mob/living/carbon/target)
+	CHECK_DNA_AND_SPECIES(target)
+
+	if(NOZOMBIE in target.dna.species.species_traits)
+		// cannot infect any NOZOMBIE subspecies (such as high functioning
+		// zombies)
+		return
+
+	target.AddComponent(/datum/component/zombie_infection)
+
+/proc/try_to_zombie_cure(mob/living/carbon/target) //For things like admin procs
+	var/datum/component/zombie_infection/infection = target.GetComponent(/datum/component/zombie_infection)
+	if(!infection)
+		return
+	qdel(infection)
+
+/obj/item/zombie_hand/proc/check_feast(mob/living/target, mob/living/user)
+	if(target.stat == DEAD)
+		var/hp_gained = target.maxHealth
+		target.gib()
+		// zero as argument for no instant health update
+		user.adjustBruteLoss(-hp_gained, 0)
+		user.adjustToxLoss(-hp_gained, 0)
+		user.adjustFireLoss(-hp_gained, 0)
+		user.adjustCloneLoss(-hp_gained, 0)
+		user.updatehealth()
+		user.adjustOrganLoss(ORGAN_SLOT_BRAIN, -hp_gained) // Zom Bee gibbers "BRAAAAISNSs!1!"
+		user.set_nutrition(min(user.nutrition + hp_gained, NUTRITION_LEVEL_FULL))

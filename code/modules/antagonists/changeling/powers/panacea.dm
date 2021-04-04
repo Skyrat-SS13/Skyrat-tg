@@ -13,7 +13,10 @@
 	..()
 	var/list/bad_organs = list(
 		user.getorgan(/obj/item/organ/body_egg),
-		user.getorgan(/obj/item/organ/zombie_infection))
+		//user.getorgan(/obj/item/organ/zombie_infection) SKRYAT EDIT REMOVAL
+		)
+
+	try_to_zombie_cure(user) //SKYRAT EDIT ADDITION
 
 	for(var/o in bad_organs)
 		var/obj/item/organ/O = o
