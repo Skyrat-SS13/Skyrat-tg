@@ -95,7 +95,7 @@
 
 /datum/chemical_reaction/drink/piledriver
 	results = list(/datum/reagent/consumable/ethanol/piledriver = 6)
-	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/ethanol/rum = 2, /datum/reagent/consumable/space_cola = 1, /datum/reagent/consumable/orangejuice = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/screwdrivercocktail = 1, /datum/reagent/consumable/ethanol/rum_coke = 1)
 
 /datum/chemical_reaction/drink/zenstar
 	results = list(/datum/reagent/consumable/ethanol/zenstar = 5)
