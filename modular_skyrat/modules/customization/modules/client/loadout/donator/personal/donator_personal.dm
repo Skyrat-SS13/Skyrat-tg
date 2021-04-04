@@ -134,8 +134,18 @@
 	path = /obj/item/clothing/under/custom/lannese/vambrace
 	ckeywhitelist = list("kathrinbailey")
 
+/datum/loadout_item/suit/donator/scraparmour
+	name = "Scrap Armor"
+	path = /obj/item/clothing/suit/scraparmour
+	ckeywhitelist = list("hackert.dog")
+
+/datum/loadout_item/uniform/donator/mechanic
+	name = "Mechanic's Overalls"
+	path = /obj/item/clothing/under/misc/mechanic
+	ckeywhitelist = list("cypressb")
+
 //FOR DEV INTERNS!
 /datum/loadout_item/backpack/donator/intern_hat
 	name = "Intern Hat"
 	path = /obj/item/clothing/head/intern/developer
-	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz", "tf4")
+	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz", "tf4", "cheshify", "swiftfeather", "spcr", "tygertac")
