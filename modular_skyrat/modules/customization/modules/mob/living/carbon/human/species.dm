@@ -309,6 +309,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
+	learnable_languages = list(/datum/language/common, /datum/language/voltaic)
 
 /datum/species/pod
 	name = "Primal Podperson"
