@@ -315,6 +315,12 @@
 	combo_display = new /atom/movable/screen/combo()
 	infodisplay += combo_display
 
+	//SKYRAT EDIT ADDITION
+	ammo_counter = new /atom/movable/screen/ammo_counter()
+	ammo_counter.hud = src
+	infodisplay += ammo_counter
+	//SKYRAT EDIT END
+
 	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory))
 		if(inv.slot_id)
 			inv.hud = src

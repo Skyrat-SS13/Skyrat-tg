@@ -909,6 +909,7 @@
 		/obj/item/stack/medical/gauze,
 		/obj/item/shockpaddles/cyborg,
 		/obj/item/healthanalyzer/advanced,
+		/obj/item/surgical_drapes,
 		/obj/item/retractor/advanced,
 		/obj/item/cautery/advanced,
 		/obj/item/scalpel/advanced,
