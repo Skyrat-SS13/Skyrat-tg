@@ -1,6 +1,6 @@
 /datum/sprite_accessory/genital
 	special_render_case = TRUE
-	var/associated_organ_slot 
+	var/associated_organ_slot
 	var/uses_skintones
 
 /datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
@@ -73,6 +73,10 @@
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	uses_skintones = TRUE
 	can_have_sheath = FALSE
+
+/datum/sprite_accessory/genital/penis/nondescript
+	icon_state = "human"
+	name = "Nondescript"
 
 /datum/sprite_accessory/genital/penis/knotted
 	icon_state = "knotted"
