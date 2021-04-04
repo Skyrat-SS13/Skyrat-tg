@@ -58,11 +58,6 @@
 	name = "White Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch/white
 
-/datum/loadout_item/glasses/meson
-	name = "Meson Eyepatch"
-	path = /obj/item/clothing/glasses/meson/engine/eyepatch
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer", "Shaft Miner", "Quartermaster")
-	restricted_desc = "Engineering and Mining"
 
 /datum/loadout_item/glasses/medic
 	name = "Medical Eyepatch"
