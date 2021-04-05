@@ -68,3 +68,15 @@
 	desc = "Strangely en vouge with aviator wearing shibas."
 	body_parts_covered = CHEST|GROIN
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/jacket/cardigan
+	name = "cardigan"
+	desc = "It's like, half a jacket."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "cardigan"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/jacket/cardigan/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF"))

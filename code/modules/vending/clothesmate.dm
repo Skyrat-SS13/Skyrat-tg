@@ -100,6 +100,13 @@
 					/obj/item/clothing/suit/storage/toggle/hoodie/smw = 1,
 					/obj/item/clothing/suit/storage/toggle/hoodie/nrti = 1,
 					//SKYRAT EDIT: ADDITION: END - HOODIES
+					//SKYRAT EDIT: ADDITION: START - Cardigan/Hawaiian
+					/obj/item/clothing/suit/toggle/jacket/cardigan = 1,
+					/obj/item/clothing/suit/hawaiian_blue = 1,
+					/obj/item/clothing/suit/hawaiian_orange = 1,
+					/obj/item/clothing/suit/hawaiian_purple = 1,
+					/obj/item/clothing/suit/hawaiian_green = 1,
+					//SKYRAT EDIT: ADDITION: END - Cardigan/Hawaiian
 		            /obj/item/clothing/glasses/regular = 2,
 		            /obj/item/clothing/glasses/regular/jamjar = 1,
 		            /obj/item/clothing/glasses/orange = 1,

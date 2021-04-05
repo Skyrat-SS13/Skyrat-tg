@@ -170,6 +170,11 @@
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
 
+/datum/loadout_item/suit/jacket/cardigan
+	name = "Cardigan"
+	path = /obj/item/clothing/suit/toggle/jacket/cardigan
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 //HOODIES
 /datum/loadout_item/suit/hoodie
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_HOODIES
