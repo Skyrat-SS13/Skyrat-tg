@@ -166,9 +166,16 @@
 
 /datum/holiday/april_fools
 	name = APRIL_FOOLS
+<<<<<<< HEAD
 	begin_day = 1
 	end_day = 2 // SKYRAT EDIT -- ORIGINALLY 5
 	begin_month = APRIL
+=======
+	begin_month = MARCH
+	begin_day = 31
+	end_month = APRIL
+	end_day = 2
+>>>>>>> 0c93ba659f5 (Shorten april fools to 3 days (#58144))
 
 /datum/holiday/april_fools/celebrate()
 	SSjob.set_overflow_role("Clown")
