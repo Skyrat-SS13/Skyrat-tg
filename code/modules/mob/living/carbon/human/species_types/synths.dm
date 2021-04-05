@@ -116,7 +116,7 @@
 		return ..()
 
 
-/datum/species/synth/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE)
+/datum/species/synth/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/synth/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
 	if(fake_species)
 		fake_species.handle_mutant_bodyparts(H,forced_colour, force_update)
 	else
