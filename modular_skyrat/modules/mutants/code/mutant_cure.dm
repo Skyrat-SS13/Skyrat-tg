@@ -349,12 +349,14 @@
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
 
-/obj/item/reagent_containers/glass/bottle/hnz/one
+/obj/item/reagent_containers/food/drinks/hnz/one
 	name = "HNZ-1 bottle"
 	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 1)
+	custom_materials = list(/datum/material/glass=500)
+	isGlass = TRUE
 
 /obj/item/storage/briefcase/tvirus
 	name = "HNZ-1 Biocontainer"
@@ -368,8 +370,8 @@
 	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
 	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
 	new /obj/item/circuitboard/machine/rna_recombinator(src)
-	/obj/item/rna_extractor(src)
-	/obj/item/rna_vial(src)
+	new /obj/item/rna_extractor(src)
+	new /obj/item/rna_vial(src)
 
 
-/obj/item/reagent_containers/glass/
+/obj/item/reagent_containers/food/drinks/drinkingglass
