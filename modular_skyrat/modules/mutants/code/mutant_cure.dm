@@ -358,7 +358,7 @@
 	custom_materials = list(/datum/material/glass=500)
 	isGlass = TRUE
 
-/obj/item/storage/briefcase/tvirus
+/obj/item/storage/briefcase/hnz
 	name = "HNZ-1 Biocontainer"
 	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
@@ -366,7 +366,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	max_integrity = 500
 
-/obj/item/storage/briefcase/tvirus/PopulateContents()
+/obj/item/storage/briefcase/hnz/PopulateContents()
 	new /obj/item/reagent_containers/food/drinks/hnz/one(src)
 	new /obj/item/reagent_containers/food/drinks/hnz/one(src)
 	new /obj/item/circuitboard/machine/rna_recombinator(src)
