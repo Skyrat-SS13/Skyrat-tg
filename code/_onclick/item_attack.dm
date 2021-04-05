@@ -174,7 +174,7 @@
 	if(ishuman(M) && M.client && force && !user.combat_indicator_check())
 		to_chat(user, "<span class='warning'>You go to attack [M] with [src], but refrain from doing so unprepared.</span>")
 		return
-	//SKYRAT EDIT END
+	//SKYRAT EDIT ADDITION END
 	if(item_flags & EYE_STAB && user.zone_selected == BODY_ZONE_PRECISE_EYES)
 		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 			M = user
@@ -227,10 +227,10 @@
 	send_item_attack_message(I, user)
 	if(I.force)
 		apply_damage(I.force, I.damtype)
-		//SKYRAT EDIT ADDITION START
+		//SKYRAT EDIT ADDITION BEGIN - Combat Indicator
 		if(user.client) //we don't care for npc's
 			set_combat_indicator(TRUE, TRUE)
-		//SKYRAT EDIT END
+		//SKYRAT EDIT ADDITION END
 		if(I.damtype == BRUTE)
 			if(prob(33))
 				I.add_mob_blood(src)
