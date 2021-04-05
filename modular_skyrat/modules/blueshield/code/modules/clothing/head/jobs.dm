@@ -1,5 +1,5 @@
 /obj/item/clothing/head/beret/blueshield
-	name = "blueshield's beret" //Thank you for helping me rework the armor values for all Blueshield items Trilby <3 -CinderWC  //Hi Alek here, I'm gonna fuck with the values. Sorry!
+	name = "blueshield's beret"
 	desc = "A blue beret made of durathread with a genuine golden badge, denoting its owner as a Blueshield Lieuteneant. It seems to be padded with nano-kevlar, making it tougher than standard reinforced berets."
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/blueshield/icons/mob/head.dmi'
