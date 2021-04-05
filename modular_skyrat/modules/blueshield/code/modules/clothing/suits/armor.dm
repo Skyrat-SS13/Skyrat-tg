@@ -1,7 +1,7 @@
 //blueshield armor
 /obj/item/clothing/suit/armor/vest/blueshield
 	name = "Blueshield's jacket"
-	desc = "An expensive kevlar-lined jacket with a golden badge, despite how heavy it looks it's reasonably light. Has \"NT\" embazloned on the back. There's a tight-fitting vest tucked in underneath."
+	desc = "An expensive kevlar-lined jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks. There's a tight-fitting vest tucked in underneath."
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/blueshield/icons/mob/suit.dmi'
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/suit_digi.dmi'
