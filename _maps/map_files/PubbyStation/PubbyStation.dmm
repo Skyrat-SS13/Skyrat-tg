@@ -23998,6 +23998,13 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
+/obj/structure/rack,
+/obj/item/electropack,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/iron/white,
 /area/science/explab)
 "bqw" = (
@@ -24086,8 +24093,17 @@
 	id = "xenobio5";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bqJ" = (
@@ -24095,9 +24111,18 @@
 	id = "xenobio6";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bqK" = (
@@ -24119,8 +24144,17 @@
 	id = "xenobio6";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bqO" = (
@@ -26138,7 +26172,8 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/machinery/reagentgrinder,
+/obj/item/taperecorder,
+/obj/item/screwdriver,
 /turf/open/floor/iron/dark,
 /area/science/explab)
 "bwa" = (
@@ -26721,12 +26756,20 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/chem_heater,
+/obj/structure/table,
+/obj/item/integrated_electronics/wirer{
+	pixel_x = -5
+	},
+/obj/item/integrated_electronics/debugger{
+	pixel_x = 8
+	},
+/obj/item/integrated_circuit_printer{
+	pixel_y = -8
+	},
 /turf/open/floor/iron/dark,
 /area/science/explab)
 "bxK" = (
 /obj/structure/chair/stool,
-/obj/item/reagent_containers/glass/beaker/large,
 /turf/open/floor/iron/dark,
 /area/science/explab)
 "bxL" = (
@@ -27325,27 +27368,6 @@
 /area/science/xenobiology)
 "bzh" = (
 /obj/structure/table,
-/obj/machinery/camera{
-	c_tag = "Experimentation Lab";
-	dir = 1;
-	network = list("ss13","rd")
-	},
-/obj/item/storage/toolbox/electrical{
-	pixel_x = -4;
-	pixel_y = 5
-	},
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/iron/dark,
-/area/science/explab)
-"bzi" = (
-/obj/structure/table,
-/obj/item/electropack,
-/obj/item/taperecorder,
-/obj/item/screwdriver,
-/turf/open/floor/iron/dark,
-/area/science/explab)
-"bzj" = (
-/obj/structure/table,
 /obj/item/storage/box/syringes,
 /obj/item/storage/box/beakers{
 	pixel_x = 2;
@@ -27357,14 +27379,35 @@
 /obj/item/reagent_containers/dropper,
 /turf/open/floor/iron/dark,
 /area/science/explab)
+"bzi" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/obj/item/reagent_containers/glass/beaker/large{
+	pixel_x = 8
+	},
+/turf/open/floor/iron/dark,
+/area/science/explab)
+"bzj" = (
+/obj/machinery/chem_heater/withbuffer,
+/turf/open/floor/iron/dark,
+/area/science/explab)
 "bzk" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio1";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bzl" = (
@@ -27387,8 +27430,17 @@
 	id = "xenobio1";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bzn" = (
@@ -27396,9 +27448,18 @@
 	id = "xenobio2";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bzp" = (
@@ -27406,8 +27467,17 @@
 	id = "xenobio2";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bzq" = (
@@ -27415,9 +27485,18 @@
 	id = "xenobio3";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bzr" = (
@@ -27440,8 +27519,17 @@
 	id = "xenobio3";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bzy" = (
@@ -28458,10 +28546,10 @@
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
 "bCr" = (
-/obj/machinery/chem_heater,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
+/obj/machinery/chem_heater/withbuffer,
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
 "bCt" = (
@@ -28482,7 +28570,6 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/machinery/chem_heater,
 /obj/machinery/power/apc{
 	areastring = "/area/medical/chemistry";
 	dir = 4;
@@ -28490,6 +28577,7 @@
 	pixel_x = 25
 	},
 /obj/structure/cable,
+/obj/machinery/chem_heater/withbuffer,
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
 "bCx" = (
@@ -44865,8 +44953,17 @@
 	id = "xenobio7";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "ecB" = (
@@ -48057,8 +48154,17 @@
 	id = "xenobio4";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "hwa" = (
@@ -48185,6 +48291,13 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/commons/fitness/recreation)
+"hAK" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "hBd" = (
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 4
@@ -52492,9 +52605,18 @@
 	id = "xenobio4";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "msX" = (
@@ -54143,6 +54265,10 @@
 	dir = 1;
 	network = list("ss13","rd")
 	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "nYb" = (
@@ -54369,6 +54495,10 @@
 	c_tag = "Xenobiology Slime Pen #3";
 	dir = 1;
 	network = list("ss13","rd")
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
@@ -55222,13 +55352,22 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/lobby)
 "oSc" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio5";
 	name = "containment blast door"
 	},
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "oSC" = (
@@ -55559,9 +55698,18 @@
 	id = "xenobio7";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "plW" = (
@@ -59540,8 +59688,17 @@
 	id = "xenobio8";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "txB" = (
@@ -61463,7 +61620,6 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/green,
-/obj/structure/closet/secure_closet/cytology,
 /turf/open/floor/iron/dark,
 /area/science/xenobiology)
 "vpq" = (
@@ -62458,6 +62614,14 @@
 /obj/effect/turf_decal/tile/blue,
 /turf/closed/wall,
 /area/medical/storage)
+"wtU" = (
+/obj/effect/landmark/event_spawn,
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "wun" = (
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 8
@@ -62845,9 +63009,18 @@
 	id = "xenobio8";
 	name = "containment blast door"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "wOS" = (
@@ -110656,9 +110829,9 @@ aLi
 pmR
 kSG
 bkF
-bni
-blX
-blX
+wtU
+hAK
+hAK
 bqI
 igE
 gIG
@@ -110666,8 +110839,8 @@ buM
 bwe
 bxO
 bzm
-blX
-blX
+hAK
+hAK
 nXC
 bkF
 hTl
@@ -111427,9 +111600,9 @@ aEj
 rAE
 bfM
 bkF
-blX
-blX
-blX
+hAK
+hAK
+hAK
 bqL
 bse
 gIG
@@ -111437,9 +111610,9 @@ buM
 bwe
 bxR
 bzp
-blX
-blX
-bni
+hAK
+hAK
+wtU
 bkF
 dmP
 bFD
@@ -112198,9 +112371,9 @@ aEl
 kVk
 bfM
 bkF
-bni
-blX
-blX
+wtU
+hAK
+hAK
 eca
 xdc
 gIG
@@ -112208,8 +112381,8 @@ dxc
 bwe
 kHP
 bzs
-blX
-blX
+hAK
+hAK
 olj
 bkF
 wfc
