@@ -53,7 +53,8 @@
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
 		apply_damage(P.damage, P.damage_type, def_zone, armor, wound_bonus=P.wound_bonus, bare_wound_bonus=P.bare_wound_bonus, sharpness = P.sharpness)
 		//SKYRAT EDIT ADDITION BEGIN
-		set_combat_indicator(TRUE, TRUE) //getting hit by a bullet will probably put you on guard
+		if(!(P.firer = src) && isliving(P.firer)) //Yes, it doesn't count shit like watchers and colossi. But I can't check for client since firer is an atom, so.. Too bad!
+			set_combat_indicator(TRUE, TRUE)
 		if(P.damage_type == BRUTE || P.damage_type == BURN)
 			apply_damage((P.damage*PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER), STAMINA, def_zone, armor)
 		//SKYRAT EDIT ADDITION END
@@ -84,15 +85,9 @@
 	if(istype(get_active_held_item(), /obj/item/gun))
 		var/obj/item/gun/G = get_active_held_item()
 		if(G.has_gun_safety)
-			if(combat_mode)
-				G.toggle_safety(src, "off")
-			else
-				G.toggle_safety(src, "on")
-	if(!ishuman(src))
-		if(combat_mode)
-			set_combat_indicator(TRUE)
-		else
-			set_combat_indicator(FALSE)
+			G.toggle_safety(src, combat_mode ? "off" : "on")
+	if(!ishuman(src) && client)
+		set_combat_indicator(combat_mode)
 	//SKYRAT EDIT ADDITION END
 
 	if(silent || !(client?.prefs.toggles & SOUND_COMBATMODE))
