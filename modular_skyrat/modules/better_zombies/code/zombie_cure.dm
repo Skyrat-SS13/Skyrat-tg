@@ -163,12 +163,12 @@
 		timer_id = null
 	. = ..()
 
-/obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/I, mob/user)
+/obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/I, mob/living/user)
 	if(!user.combat_mode)
 		. = 1
 		if(!is_insertion_ready(user))
 			return
-		if(!user.transferItemToLoc(O, src))
+		if(!user.transferItemToLoc(I, src))
 			return
 		if(!istype(I, /obj/item/rna_vial))
 			return
