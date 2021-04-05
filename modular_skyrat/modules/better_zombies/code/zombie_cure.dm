@@ -8,7 +8,7 @@
 
 /obj/item/rna_extractor/attackby(obj/item/I, mob/living/user)
 	. = ..()
-	if((istype(I, loaded_vial) && vial != null))
+	if((istype(I, loaded_vial) && loaded_vial != null))
 		to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
 		return FALSE
 	if(istype(I, loaded_vial))
