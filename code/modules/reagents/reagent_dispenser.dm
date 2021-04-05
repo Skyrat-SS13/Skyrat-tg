@@ -72,7 +72,7 @@
 	name = "high-capacity water tank"
 	desc = "A highly pressurized water tank made to hold gargantuan amounts of water."
 	icon_state = "water_high" //I was gonna clean my room...
-	tank_volume = 100000
+	tank_volume = 3000
 
 /obj/structure/reagent_dispensers/foamtank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "firefighting foam tank"
