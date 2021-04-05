@@ -2184,7 +2184,6 @@
 
 //Misc reagents
 
-/*SKYRAT EDIT REMOVAL
 /datum/reagent/romerol
 	name = "Romerol"
 	// the REAL zombie powder
@@ -2204,7 +2203,7 @@
 	if(!exposed_mob.getorganslot(ORGAN_SLOT_ZOMBIE))
 		var/obj/item/organ/zombie_infection/nodamage/ZI = new()
 		ZI.Insert(exposed_mob)
-*/
+
 /datum/reagent/magillitis
 	name = "Magillitis"
 	description = "An experimental serum which causes rapid muscular growth in Hominidae. Side-affects may include hypertrichosis, violent outbursts, and an unending affinity for bananas."

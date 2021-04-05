@@ -983,7 +983,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	for(var/i in GLOB.human_list)
 		var/mob/living/carbon/human/H = i
-		try_to_zombie_infect(H, TRUE) //SKYRAT EDIT CHANGE
+		new /obj/item/organ/zombie_infection/nodamage(H)
 
 	message_admins("[key_name_admin(usr)] added a latent zombie infection to all humans.")
 	log_admin("[key_name(usr)] added a latent zombie infection to all humans.")
@@ -1000,8 +1000,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(confirm != "Yes")
 		return
 
-	for(var/i in GLOB.zombie_infection_list)
-		try_to_zombie_cure(i)
+	for(var/obj/item/organ/zombie_infection/nodamage/I in GLOB.zombie_infection_list)
+		qdel(I)
 
 	message_admins("[key_name_admin(usr)] cured all zombies.")
 	log_admin("[key_name(usr)] cured all zombies.")

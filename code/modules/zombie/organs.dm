@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL
 /obj/item/organ/zombie_infection
 	name = "festering ooze"
 	desc = "A black web of pus and viscera."
@@ -97,4 +96,3 @@
 
 /obj/item/organ/zombie_infection/nodamage
 	causes_damage = FALSE
-*/

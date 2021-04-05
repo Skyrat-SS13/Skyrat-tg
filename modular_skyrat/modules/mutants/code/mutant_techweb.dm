@@ -7,8 +7,8 @@
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stock_parts/micro_laser = 2)
 
-/datum/techweb_node/zombietech
-	id = "zombietech"
+/datum/techweb_node/mutanttech
+	id = "mutanttech"
 	display_name = "Advanced Nanotrasen Viral Bioweapons Technology"
 	description = "Research devices from the Nanotrasen viral bioweapons division! Got a virus problem? This'll save your day."
 	prereq_ids = list("adv_engi", "biotech", "weaponry")

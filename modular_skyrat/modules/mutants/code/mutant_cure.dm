@@ -1,7 +1,7 @@
 /obj/item/rna_extractor
 	name = "Advanced virus RNA extractor"
 	desc = "A tool used to extract the RNA from viruses. Apply to skin."
-	icon = 'modular_skyrat/modules/better_zombies/icons/extractor.dmi'
+	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "extractor"
 	custom_materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
 	var/obj/item/rna_vial/loaded_vial
@@ -35,13 +35,13 @@
 	if(loaded_vial.contains_rna)
 		to_chat(user, "<span class='danger'>[src] already has RNA data in it, upload it to the combinator!</span>")
 		return
-	if(!iszombie(H))
+	if(!ismutant(H))
 		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
 		return
 	if(H.stat == DEAD)
 		to_chat(user, "<span class='danger'>[src] only works on living targets!</span>")
 		return
-	var/datum/component/zombie_infection/ZI = H.GetComponent(/datum/component/zombie_infection)
+	var/datum/component/mutant_infection/ZI = H.GetComponent(/datum/component/mutant_infection)
 	if(!ZI)
 		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
 		return
@@ -83,7 +83,7 @@
 /obj/item/rna_vial
 	name = "Raw RNA vial"
 	desc = "A glass vial containing raw virus RNA. Slot this into the combinator to upload the sample."
-	icon = 'modular_skyrat/modules/better_zombies/icons/extractor.dmi'
+	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "rnavial"
 	custom_materials = list(/datum/material/iron = 1000, /datum/material/glass = 3000, /datum/material/silver = 1000)
 	var/contains_rna = FALSE
@@ -102,12 +102,12 @@
 	if(contains_rna)
 		. += "It has an RNA sample in it."
 
-#define ZOMBIE_CURE_TIME 10 SECONDS
+#define MUTANT_CURE_TIME 10 SECONDS
 
 /obj/item/hnz_cure
 	name = "HNZ-1 Cure Vial"
 	desc = "A counter to the HNZ-1 virus, used to rapidly reverse the effects of the virus."
-	icon = 'modular_skyrat/modules/better_zombies/icons/extractor.dmi'
+	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_cure"
 	var/used = FALSE
 
@@ -118,11 +118,11 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(!H.GetComponent(/datum/component/zombie_infection))
+		if(!H.GetComponent(/datum/component/mutant_infection))
 			to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
 			return
 		to_chat(user, "<span class='notice'>You begin injecting [H] wth [src]!")
-		if(do_after(user, ZOMBIE_CURE_TIME))
+		if(do_after(user, MUTANT_CURE_TIME))
 			cure_target(H)
 			playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 			to_chat(user, "<span class='notice'>You inject [H] wth [src]!")
@@ -137,9 +137,9 @@
 /obj/item/hnz_cure/proc/cure_target(mob/target)
 	SIGNAL_HANDLER
 
-	SEND_SIGNAL(target, COMSIG_ZOMBIE_CURED)
+	SEND_SIGNAL(target, COMSIG_MUTANT_CURED)
 
-#undef ZOMBIE_CURE_TIME
+#undef MUTANT_CURE_TIME
 
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
@@ -150,7 +150,7 @@
 /obj/machinery/rnd/rna_recombinator
 	name = "RNA Recombinator"
 	desc = "This machine is used to recombine RNA sequences from extracted vials of raw virus."
-	icon = 'modular_skyrat/modules/better_zombies/icons/cure_machine.dmi'
+	icon = 'modular_skyrat/modules/mutants/icons/cure_machine.dmi'
 	icon_state = "h_lathe"
 	base_icon_state = "h_lathe"
 	density = TRUE
@@ -328,7 +328,6 @@
 //////////////////////////////Infection stuff - You didn't think I wouldn't include this did you?
 /datum/reagent/hnz
 	name = "HNZ-1"
-	// the REAL zombie powder
 	description = "HNZ-1 is a highly experimental viral bioterror agent \
 		which causes dormant nodules to be etched into the grey matter of \
 		the subject. These nodules only become active upon death of the \
@@ -341,18 +340,18 @@
 
 /datum/reagent/hnz/expose_mob(mob/living/carbon/human/exposed_mob, methods=TOUCH, reac_volume)
 	. = ..()
-	try_to_zombie_infect(exposed_mob, TRUE)
+	try_to_mutant_infect(exposed_mob, TRUE)
 
 /obj/item/reagent_containers/glass/bottle/hnz
 	name = "HNZ-1 bottle"
 	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
-	icon = 'modular_skyrat/modules/better_zombies/icons/extractor.dmi'
+	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
 
 /obj/item/reagent_containers/glass/bottle/hnz/one
 	name = "HNZ-1 bottle"
 	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
-	icon = 'modular_skyrat/modules/better_zombies/icons/extractor.dmi'
+	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 1)
