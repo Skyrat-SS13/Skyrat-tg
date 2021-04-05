@@ -75,7 +75,7 @@
 	can_have_sheath = FALSE
 
 /datum/sprite_accessory/genital/penis/nondescript
-	icon_state = "human"
+	icon_state = "nondescript"
 	name = "Nondescript"
 
 /datum/sprite_accessory/genital/penis/knotted
