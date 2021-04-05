@@ -57,6 +57,24 @@
 	name = "Brown Flannel"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/brown
 
+/*Hawaiian Shirts*/
+/datum/loadout_item/suit/hawaiian_blue
+	name = "Blue Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_blue
+
+/datum/loadout_item/suit/hawaiian_orange
+	name = "Orange Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_orange
+
+/datum/loadout_item/suit/hawaiian_purple
+	name = "Purple Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_purple
+
+/datum/loadout_item/suit/hawaiian_green
+	name = "Green Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_green
+
+
 //COATS
 /datum/loadout_item/suit/coat
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_COATS
