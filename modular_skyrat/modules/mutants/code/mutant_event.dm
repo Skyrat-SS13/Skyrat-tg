@@ -6,6 +6,7 @@
 
 /datum/round_event/mutant_infestation
 	announceWhen = 30
+	announceChance = 100
 	fakeable = TRUE
 	var/infected = 1
 
@@ -24,4 +25,4 @@
 			notify_ghosts("[H] has been infected by the HNZ-1 pathogen!", source = H)
 
 /datum/round_event/mutant_infestation/announce(fake)
-	priority_announce("Automated air filtration screeing systems have flagged an unknown pathogen in the air systems, biohazard quarantine is in effect.", "Viral Biohazard Alert", ANNOUNCER_MUTANTS)
+	priority_announce("Automated air filtration screeing systems have flagged an unknown pathogen in the ventilation systems, biohazard quarantine is in effect.", "Viral Biohazard Alert", ANNOUNCER_MUTANTS)
