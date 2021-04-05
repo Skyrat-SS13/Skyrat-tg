@@ -172,12 +172,11 @@
 	var/obj/item/rna_vial/vial = loaded_item
 	var/list/dat = list("<center>")
 	dat += "<b>System Status - [status]</b>"
-	dat += "<b>System Efficency - Step time: [recombination_step_time] SECONDS | Step percent: [recombination_step_amount]</b>"
+	dat += "<b>System Efficency - Step time: [recombination_step_time / 10] SECONDS | Step percent: [recombination_step_amount]%</b>"
 	if(status == STATUS_RECOMBINATING)
 		dat += "Current RNA restructure progress: [cure_progress]%"
 	if(vial)
 		dat += "<b>Loaded RNA vial:</b> [vial]"
-
 		dat += "<div>RNA Information:"
 		if(vial.contains_rna)
 			dat += "<b>RNA structure: HNZ-1</b>"

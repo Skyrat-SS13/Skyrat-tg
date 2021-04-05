@@ -109,12 +109,15 @@
 	if(!host.revive(full_heal = FALSE, admin_revive = FALSE))
 		return
 
-	host.grab_ghost()
+	if(!host.mind)
+		offer_control(host)
+	else
+		host.grab_ghost()
+
+	host.do_jitter_animation(30)
 	host.visible_message("<span class='danger'>[host] suddenly convulses, as [host.p_they()][stand_up ? " stagger to [host.p_their()] feet and" : ""] gain a ravenous hunger in [host.p_their()] eyes!</span>", "<span class='alien'>You HUNGER!</span>")
 	playsound(host.loc, 'sound/hallucinations/far_noise.ogg', 50, TRUE)
-	host.do_jitter_animation(30)
 	to_chat(host, "<span class='alertalien'>You are now a zombie! Do not seek to be cured, do not help any non-zombies in any way, do not harm your zombie brethren and spread the disease by killing others. You are a creature of hunger and violence.</span>")
-
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/zombie_death)
 
 /datum/component/zombie_infection/proc/zombie_death()
