@@ -25,7 +25,7 @@
 	return ..()
 
 /datum/species/zombie/infectious
-	name = "Infectious Zombie"
+	name = "Festering Corpse"
 	id = "memezombies"
 	limbs_id = "zombie"
 	mutanthands = /obj/item/zombie_hand
@@ -64,6 +64,7 @@
 		if(HAS_TRAIT(C, TRAIT_CRITICAL_CONDITION))
 			heal_amt *= 2
 		C.heal_overall_damage(heal_amt * delta_time, heal_amt * delta_time)
+		C.adjustStaminaLoss(-heal_amt * delta_time)
 		C.adjustToxLoss(-heal_amt * delta_time)
 		for(var/i in C.all_wounds)
 			var/datum/wound/iter_wound = i
@@ -129,20 +130,24 @@
 	if(!proximity_flag)
 		return
 	else if(isliving(target))
-		if(iscarbon(target))
+		if(ishuman(target))
 			try_to_zombie_infect(target)
 		else
 			check_feast(target, user)
 
-/proc/try_to_zombie_infect(mob/living/carbon/target)
+/proc/try_to_zombie_infect(mob/living/carbon/human/target, forced = FALSE)
 	CHECK_DNA_AND_SPECIES(target)
 
 	if(NOZOMBIE in target.dna.species.species_traits)
 		// cannot infect any NOZOMBIE subspecies (such as high functioning
 		// zombies)
-		return
+		return FALSE
+
+	if(!target.can_inject() && !forced)
+		return FALSE
 
 	target.AddComponent(/datum/component/zombie_infection)
+	return TRUE
 
 /proc/try_to_zombie_cure(mob/living/carbon/target) //For things like admin procs
 	var/datum/component/zombie_infection/infection = target.GetComponent(/datum/component/zombie_infection)

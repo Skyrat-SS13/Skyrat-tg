@@ -983,7 +983,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	for(var/i in GLOB.human_list)
 		var/mob/living/carbon/human/H = i
-		try_to_zombie_infect(H) //SKYRAT EDIT CHANGE
+		try_to_zombie_infect(H, TRUE) //SKYRAT EDIT CHANGE
 
 	message_admins("[key_name_admin(usr)] added a latent zombie infection to all humans.")
 	log_admin("[key_name(usr)] added a latent zombie infection to all humans.")

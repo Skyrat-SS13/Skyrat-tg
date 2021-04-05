@@ -1,27 +1,34 @@
-#define DEAD_TO_ZOMBIE_TIME 15 SECONDS
-#define STAGE_INCREASE_TIME 30 SECONDS
 #define CURE_TIME 15 SECONDS
-#define REVIVE_TIME 2 MINUTES
+#define REVIVE_TIME_LOWER 30 SECONDS
+#define REVIVE_TIME_UPPER 1 MINUTES
+#define IMMUNITY_LOWER 1 MINUTES
+#define IMMUNITY_UPPER 3 MINUTES
+#define RNA_REFRESH_TIME 4 MINUTES //How soon can we extract more RNA?
 
 /datum/component/zombie_infection
 	var/mob/living/carbon/human/host
 	var/datum/species/old_species = /datum/species/human
 	/// The stage of infection
-	var/control_timer
 	var/list/insanity_phrases = list("You feel too hot! Something isn't right!", "You can't think straight, please end the suffering!", "AAAAAAAAAAAAAAAGHHHHHHHH!")
+	var/timer_id
+	var/rna_extracted = FALSE
 
 /datum/component/zombie_infection/Initialize()
 	. = ..()
-	if(!iscarbon(parent))
+	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 	host = parent
+
+	if(HAS_TRAIT(host, TRAIT_ZOMBIE_IMMUNE)) //No infection for das recently cured!!
+		to_chat(host, "<span class='notce'>Your recent cure protected you from whatever just happened.</span>")
+		return ELEMENT_INCOMPATIBLE
 
 	GLOB.zombie_infection_list += src
 
 	if(host.stat == DEAD)
-		control_timer = addtimer(CALLBACK(src, .proc/transform_host), DEAD_TO_ZOMBIE_TIME, TIMER_STOPPABLE)
+		var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
+		timer_id = addtimer(CALLBACK(src, .proc/transform_host), revive_time, TIMER_STOPPABLE)
 		to_chat(host, "<span class='userdanger'>You feel your veins throb as your body begins twitching...</span>")
-		return
 
 	RegisterSignal(parent, COMSIG_ZOMBIE_CURED, .proc/cure_host)
 
@@ -29,54 +36,64 @@
 
 /datum/component/zombie_infection/Destroy(force, silent)
 	GLOB.zombie_infection_list -= src
-	if(control_timer)
-		deltimer(control_timer)
-		control_timer = null
 	STOP_PROCESSING(SSobj, src)
 	UnregisterSignal(parent, list(COMSIG_ZOMBIE_CURED, COMSIG_LIVING_DEATH))
+	if(timer_id)
+		deltimer(timer_id)
+		timer_id = null
 	if(host)
 		if(iszombie(host) && old_species)
 			host.set_species(old_species)
 		to_chat(host, "<span class='greentext'>You feel like you're free of that foul disease!</span>")
+		ADD_TRAIT(host, TRAIT_ZOMBIE_IMMUNE, "zombie_virus")
+		var/cure_time = rand(IMMUNITY_LOWER, IMMUNITY_UPPER)
+		addtimer(CALLBACK(host, /mob/living/carbon/human/proc/remove_zombie_immunity), cure_time, TIMER_STOPPABLE)
 		host = null
 	return ..()
 
-/datum/component/zombie_infection/process(delta_time)
-	. = ..()
-	if(host.stat == DEAD)
-		if(control_timer)
-			deltimer(control_timer)
-			control_timer = null
-		control_timer = addtimer(CALLBACK(src, .proc/transform_host), DEAD_TO_ZOMBIE_TIME, TIMER_STOPPABLE)
-		STOP_PROCESSING(SSobj, src)
-		return
-	if(iszombie(host))
-		STOP_PROCESSING(SSobj, src)
-		return
-	host.adjustToxLoss(0.5 * delta_time)
-	if(DT_PROB(5, delta_time))
-		to_chat(host, "<span class='danger'>[pick(insanity_phrases)]</span>")
+/datum/component/zombie_infection/proc/extract_rna()
+	if(rna_extracted)
+		return FALSE
+	to_chat(host, "<span class='userdanger'>You feel your genes being altered!</span>")
+	rna_extracted = TRUE
+	addtimer(CALLBACK(src, .proc/refresh_rna), RNA_REFRESH_TIME, TIMER_STOPPABLE)
+	return TRUE
 
-/datum/component/zombie_infection/proc/revive_host(instant = FALSE)
-	if(instant)
-		transform_host()
+/datum/component/zombie_infection/proc/refresh_rna()
+	rna_extracted = FALSE
+
+/mob/living/carbon/human/proc/remove_zombie_immunity()
+	REMOVE_TRAIT(src, TRAIT_ZOMBIE_IMMUNE, "zombie_virus")
+
+/datum/component/zombie_infection/process(delta_time)
+	if(!iszombie(host) && host.stat != DEAD)
+		host.adjustToxLoss(0.5 * delta_time)
+		if(DT_PROB(10, delta_time))
+			var/obj/item/bodypart/wound_area = host.get_bodypart(BODY_ZONE_CHEST)
+			if(wound_area)
+				var/datum/wound/slash/moderate/rotting_wound = new
+				rotting_wound.apply_wound(wound_area)
+			host.emote(pick(list("cough", "sneeze")))
+			to_chat(host, "<span class='danger'>[pick(insanity_phrases)]</span>")
+	if(timer_id)
 		return
-	control_timer = addtimer(CALLBACK(src, .proc/transform_host), REVIVE_TIME, TIMER_STOPPABLE)
+	if(host.stat != DEAD)
+		return
+	if(!iszombie(host))
+		to_chat(host, "<span class='cultlarge'>You can feel your heart stopping, but something isn't right... \
+		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
+		not even death can stop, you will rise again!</span>")
+	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
+	timer_id = addtimer(CALLBACK(src, .proc/transform_host), revive_time, TIMER_STOPPABLE)
 
 /datum/component/zombie_infection/proc/cure_host()
 	if(!host.stat == DEAD)
 		to_chat(host, "<span class='notice'>You start to feel refreshed and invigorated!</span>")
-	if(control_timer)
-		deltimer(control_timer)
-		control_timer = null
 	STOP_PROCESSING(SSobj, src)
-	control_timer = addtimer(CALLBACK(src, .proc/Destroy), CURE_TIME, TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, .proc/Destroy), CURE_TIME)
 
 /datum/component/zombie_infection/proc/transform_host()
-	if(control_timer)
-		deltimer(control_timer)
-		control_timer = null
-	STOP_PROCESSING(SSobj, src)
+	timer_id = null
 
 	if(!iszombie(host))
 		old_species = host.dna.species.type
@@ -98,19 +115,13 @@
 	host.do_jitter_animation(30)
 	to_chat(host, "<span class='alertalien'>You are now a zombie! Do not seek to be cured, do not help any non-zombies in any way, do not harm your zombie brethren and spread the disease by killing others. You are a creature of hunger and violence.</span>")
 
-	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/zombie_death)
+	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/zombie_death)
 
 /datum/component/zombie_infection/proc/zombie_death()
-	if(!iszombie(host))
-		return
-	if(control_timer)
-		deltimer(control_timer)
-		control_timer = null
-	control_timer = addtimer(CALLBACK(src, .proc/regenerate), REVIVE_TIME, TIMER_STOPPABLE)
+	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
+	timer_id = addtimer(CALLBACK(src, .proc/regenerate), revive_time, TIMER_STOPPABLE)
 
 /datum/component/zombie_infection/proc/regenerate()
-	if(!iszombie(host))
-		return
 	to_chat(host, "<span class='notice'>You feel an itching, both inside and \
 		outside as your tissues knit and reknit.</span>")
 	var/list/missing = host.get_missing_limbs()
