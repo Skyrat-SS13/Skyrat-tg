@@ -12,7 +12,7 @@
 
 /datum/surgery/advanced/necrotic_revival/can_start(mob/user, mob/living/carbon/target)
 	. = ..()
-	if(target.GetComponent(/datum/component/zombie_infection)) //SKYRAT EDIT CHANGE
+	if(target.GetComponent(/datum/component/mutant_infection)) //SKYRAT EDIT CHANGE
 		return FALSE
 
 /datum/surgery_step/bionecrosis

@@ -1,4 +1,3 @@
-/* SKYRAT EDIT - MOVED TO MODULAR
 #define REGENERATION_DELAY 60  // After taking damage, how long it takes for automatic regeneration to begin
 
 /datum/species/zombie
@@ -106,4 +105,3 @@
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_EASILY_WOUNDED)
 
 #undef REGENERATION_DELAY
-*/
