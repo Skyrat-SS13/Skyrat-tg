@@ -1,4 +1,4 @@
-#define REGENERATION_DELAY 10 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
+#define REGENERATION_DELAY 30 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
 
 /datum/species/mutant
 	name = "High-Functioning mutant"
@@ -32,14 +32,31 @@
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
 	mutanthands = /obj/item/mutant_hand
-	armor = 50
-	speedmod = 0.7
+	armor = 10
+	speedmod = 1
 	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	/// The rate the mutants regenerate at
-	var/heal_rate = 1.5
+	var/heal_rate = 1
 	/// The cooldown before the mutant can start regenerating
 	COOLDOWN_DECLARE(regen_cooldown)
+
+/datum/species/mutant/infectious/fast
+	name = "Fast Mutated Abomination"
+	mutanthands = /obj/item/mutant_hand/fast
+	armor = 0
+	speedmod = 0.5
+	/// The rate the mutants regenerate at
+	heal_rate = 0.5
+	/// The cooldown before the mutant can start regenerating
+
+/datum/species/mutant/infectious/slow
+	name = "Slow Mutated Abomination"
+	armor = 30
+	speedmod = 2
+	/// The rate the mutants regenerate at
+	heal_rate = 2
+	/// The cooldown before the mutant can start regenerating
 
 /// mutants do not stabilize body temperature they are the walking dead and are cold blooded
 /datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, delta_time, times_fired)
@@ -97,11 +114,18 @@
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 	hitsound = 'sound/hallucinations/growl1.ogg'
-	force = 25
+	force = 30
 	sharpness = SHARP_EDGED
-	wound_bonus = -30
-	bare_wound_bonus = 15
+	wound_bonus = -20
+	bare_wound_bonus = 20
 	damtype = BRUTE
+
+/obj/item/mutant_hand/fast
+	name = "weak mutant claw"
+	force = 21
+	sharpness = NONE
+	wound_bonus = -40
+	bare_wound_bonus = 0
 
 /obj/item/mutant_hand/Initialize()
 	. = ..()
@@ -126,6 +150,8 @@
 		else
 			check_feast(target, user)
 
+#define INFECT_CHANCE 50
+
 /proc/try_to_mutant_infect(mob/living/carbon/human/target, forced = FALSE)
 	CHECK_DNA_AND_SPECIES(target)
 
@@ -134,11 +160,13 @@
 		// mutants)
 		return FALSE
 
-	if(!target.can_inject() && !forced && HAS_TRAIT(target, TRAIT_MUTANT_IMMUNE))
+	if(!target.can_inject() && !forced && HAS_TRAIT(target, TRAIT_MUTANT_IMMUNE) && !prob(INFECT_CHANCE))
 		return FALSE
 
 	target.AddComponent(/datum/component/mutant_infection)
 	return TRUE
+
+#undef INFECT_CHANCE
 
 /proc/try_to_mutant_cure(mob/living/carbon/target) //For things like admin procs
 	var/datum/component/mutant_infection/infection = target.GetComponent(/datum/component/mutant_infection)

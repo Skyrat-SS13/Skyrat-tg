@@ -102,8 +102,6 @@
 	if(contains_rna)
 		. += "It has an RNA sample in it."
 
-#define MUTANT_CURE_TIME 10 SECONDS
-
 /obj/item/hnz_cure
 	name = "HNZ-1 Cure Vial"
 	desc = "A counter to the HNZ-1 virus, used to rapidly reverse the effects of the virus."
@@ -121,13 +119,11 @@
 		if(!H.GetComponent(/datum/component/mutant_infection))
 			to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
 			return
-		to_chat(user, "<span class='notice'>You begin injecting [H] wth [src]!")
-		if(do_after(user, MUTANT_CURE_TIME))
-			cure_target(H)
-			playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
-			to_chat(user, "<span class='notice'>You inject [H] wth [src]!")
-			used = TRUE
-			update_appearance()
+		cure_target(H)
+		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
+		to_chat(user, "<span class='notice'>You inject [H] wth [src]!")
+		used = TRUE
+		update_appearance()
 
 /obj/item/hnz_cure/update_icon_state()
 	. = ..()
@@ -139,7 +135,6 @@
 
 	SEND_SIGNAL(target, COMSIG_MUTANT_CURED)
 
-#undef MUTANT_CURE_TIME
 
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
@@ -298,7 +293,7 @@
 	if(status == STATUS_RECOMBINATING_CURE)
 		new /obj/item/hnz_cure(get_turf(src))
 	else
-		new /obj/item/reagent_containers/food/drinks/hnz/one(get_turf(src))
+		new /obj/item/reagent_containers/glass/bottle/hnz/one(get_turf(src))
 	flick("h_lathe_leave", src)
 	use_power(3000)
 	playsound(loc, 'sound/machines/ding.ogg', 60, 1)
@@ -348,27 +343,23 @@
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
-
-/obj/item/reagent_containers/food/drinks/hnz/one
-	name = "HNZ-1 bottle"
-	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
-	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
-	icon_state = "tvirus_infector"
-	list_reagents = list(/datum/reagent/hnz = 1)
 	custom_materials = list(/datum/material/glass=500)
-	isGlass = TRUE
+
+/obj/item/reagent_containers/glass/bottle/hnz/one
+	list_reagents = list(/datum/reagent/hnz = 1)
+
 
 /obj/item/storage/briefcase/hnz
 	name = "HNZ-1 Biocontainer"
 	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_box"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 500
 
 /obj/item/storage/briefcase/hnz/PopulateContents()
-	new /obj/item/reagent_containers/food/drinks/hnz/one(src)
-	new /obj/item/reagent_containers/food/drinks/hnz/one(src)
+	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
+	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
 	new /obj/item/circuitboard/machine/rna_recombinator(src)
 	new /obj/item/rna_extractor(src)
 	new /obj/item/rna_vial(src)

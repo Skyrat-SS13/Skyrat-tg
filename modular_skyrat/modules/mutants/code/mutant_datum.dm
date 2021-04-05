@@ -1,16 +1,17 @@
 GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organs, for any mass "animation"
 
-#define CURE_TIME 15 SECONDS
-#define REVIVE_TIME_LOWER 30 SECONDS
-#define REVIVE_TIME_UPPER 1 MINUTES
+#define CURE_TIME 10 SECONDS
+#define REVIVE_TIME_LOWER 2 MINUTES
+#define REVIVE_TIME_UPPER 4 MINUTES
 #define IMMUNITY_LOWER 1 MINUTES
 #define IMMUNITY_UPPER 3 MINUTES
-#define RNA_REFRESH_TIME 4 MINUTES //How soon can we extract more RNA?
+#define RNA_REFRESH_TIME 2 MINUTES //How soon can we extract more RNA?
 
 /datum/component/mutant_infection
 	var/mob/living/carbon/human/host
 	var/datum/species/old_species = /datum/species/human
-	var/datum/species/mutant_species = /datum/species/mutant/infectious
+	var/list/mutant_species = list(/datum/species/mutant/infectious/fast, /datum/species/mutant/infectious/slow)
+	var/datum/species/selected_type
 	/// The stage of infection
 	var/list/insanity_phrases = list("You feel too hot! Something isn't right!", "You can't think straight, please end the suffering!", "AAAAAAAAAAAAAAAGHHHHHHHH!")
 	var/timer_id
@@ -72,12 +73,11 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 		else
 			host.adjustToxLoss((tox_loss_mod * 2) * delta_time)
 			if(DT_PROB(10, delta_time))
-				host.adjustToxLoss(tox_loss_mod * delta_time) //Starting to get very ill
 				var/obj/item/bodypart/wound_area = host.get_bodypart(BODY_ZONE_CHEST)
 				if(wound_area)
 					var/datum/wound/slash/moderate/rotting_wound = new
 					rotting_wound.apply_wound(wound_area)
-				host.emote(pick(list("cough", "sneeze")))
+				host.emote(pick(list("cough", "sneeze", "scream")))
 	if(timer_id)
 		return
 	if(host.stat != DEAD)
@@ -87,6 +87,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
 		not even death can stop, you will rise again!</span>")
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
+	to_chat(host, "<span class='redtext'>You will transform in approximately [revive_time/10] seconds.</span>")
 	timer_id = addtimer(CALLBACK(src, .proc/transform_host), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/cure_host()
@@ -98,19 +99,26 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 /datum/component/mutant_infection/proc/transform_host()
 	timer_id = null
 
+	selected_type = pick(mutant_species)
+
 	if(!ismutant(host))
 		old_species = host.dna.species
-		host.set_species(mutant_species)
+		host.set_species(selected_type)
 
 	var/stand_up = (host.stat == DEAD) || (host.stat == UNCONSCIOUS)
 
 	//Fully heal the mutant's damage the first time they rise
+
 	regenerate()
 
 	host.do_jitter_animation(30)
 	host.visible_message("<span class='danger'>[host] suddenly convulses, as [host.p_they()][stand_up ? " stagger to [host.p_their()] feet and" : ""] gain a ravenous hunger in [host.p_their()] eyes!</span>", "<span class='alien'>You HUNGER!</span>")
 	playsound(host.loc, 'sound/hallucinations/far_noise.ogg', 50, TRUE)
-	to_chat(host, "<span class='alertalien'>You are now a mutant! Do not seek to be cured, do not help any non-mutants in any way, do not harm your mutant brethren and spread the disease by killing others. You are a creature of hunger and violence.</span>")
+	if(is_species(host, /datum/species/mutant/infectious/fast))
+		to_chat(host, "<span class='redtext'>You are a FAST zombie. You run fast and hit more quickly, beware however, you are much weaker and susceptible to damage.")
+	else
+		to_chat(host, "<span class='redtext'>You are a SLOW zombie. You walk slowly and hit more slowly and harder. However, you are far more resilient to most damage types.")
+	to_chat(host, "<span class='alertalien'>You are now a mutant! Do not seek to be cured, do not help any non-mutants in any way, do not harm your mutant brethren. You retain some higher functions and can reason to an extent.</span>")
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/mutant_death)
 
 /datum/component/mutant_infection/proc/mutant_death()
@@ -120,34 +128,9 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 /datum/component/mutant_infection/proc/regenerate()
 	to_chat(host, "<span class='notice'>You feel an itching, both inside and \
 		outside as your tissues knit and reknit.</span>")
-	var/list/missing = host.get_missing_limbs()
-	if(missing.len)
-		playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
-		host.visible_message("<span class='warning'>[host]'s missing limbs \
-			reform, making a loud, grotesque sound!</span>",
-			"<span class='userdanger'>Your limbs regrow, making a \
-			loud, crunchy sound and giving you great pain!</span>",
-			"<span class='hear'>You hear organic matter ripping \
-			and tearing!</span>")
-		host.emote("scream")
-		host.regenerate_limbs(1)
-	if(!host.getorganslot(ORGAN_SLOT_BRAIN))
-		var/obj/item/organ/brain/B
-		if(host.has_dna() && host.dna.species.mutantbrain)
-			B = new host.dna.species.mutantbrain()
-		else
-			B = new()
-		B.organ_flags &= ~ORGAN_VITAL
-		B.decoy_override = TRUE
-		B.Insert(host)
-	host.regenerate_organs()
-	for(var/i in host.all_wounds)
-		var/datum/wound/iter_wound = i
-		iter_wound.remove_wound()
-	host.restore_blood()
-	host.remove_all_embedded_objects()
-	host.revive()
+	playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	if(!host.mind)
 		offer_control(host)
 	else
 		host.grab_ghost()
+	host.revive(TRUE, TRUE)
