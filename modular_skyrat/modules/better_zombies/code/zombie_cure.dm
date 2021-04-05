@@ -164,8 +164,14 @@
 	. = ..()
 
 /obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/I, mob/user)
-	. = ..()
-	if(istype(I, /obj/item/rna_vial))
+	if(!user.combat_mode)
+		. = 1
+		if(!is_insertion_ready(user))
+			return
+		if(!user.transferItemToLoc(O, src))
+			return
+		if(!istype(I, /obj/item/rna_vial))
+			return
 		loaded_item = I
 		to_chat(user, "<span class='notice'>You insert [I] to [src] reciprocal.</span>")
 		flick("h_lathe_load", src)
