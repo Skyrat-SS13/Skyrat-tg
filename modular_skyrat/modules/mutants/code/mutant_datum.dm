@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 /datum/component/mutant_infection
 	var/mob/living/carbon/human/host
 	var/datum/species/old_species = /datum/species/human
+	var/datum/species/mutant_species = /datum/species/mutant/infectious
 	/// The stage of infection
 	var/list/insanity_phrases = list("You feel too hot! Something isn't right!", "You can't think straight, please end the suffering!", "AAAAAAAAAAAAAAAGHHHHHHHH!")
 	var/timer_id
@@ -98,14 +99,8 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	timer_id = null
 
 	if(!ismutant(host))
-		old_species = host.dna.species.type
-		var/default_mutant_bodyparts = host.dna.species.default_mutant_bodyparts
-		var/limbs_icon = host.dna.species.limbs_icon
-		var/limbs_id = host.dna.species.limbs_id
-		host.set_species(/datum/species/mutant/infectious)
-		host.dna.species.default_mutant_bodyparts = default_mutant_bodyparts
-		host.dna.species.limbs_id = limbs_id
-		host.dna.species.limbs_icon = limbs_icon
+		old_species = host.dna.species
+		host.set_species(mutant_species)
 
 	var/stand_up = (host.stat == DEAD) || (host.stat == UNCONSCIOUS)
 

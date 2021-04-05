@@ -355,3 +355,21 @@
 	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 1)
+
+/obj/item/storage/briefcase/tvirus
+	name = "HNZ-1 Biocontainer"
+	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
+	icon = 'modular_skyrat/modules/mutants/icons/extractor.dmi'
+	icon_state = "tvirus_box"
+	w_class = WEIGHT_CLASS_BULKY
+	max_integrity = 500
+
+/obj/item/storage/briefcase/tvirus/PopulateContents()
+	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
+	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
+	new /obj/item/circuitboard/machine/rna_recombinator(src)
+	/obj/item/rna_extractor(src)
+	/obj/item/rna_vial(src)
+
+
+/obj/item/reagent_containers/glass/
