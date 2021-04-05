@@ -53,6 +53,7 @@
 	if(!P.nodamage && on_hit_state != BULLET_ACT_BLOCK)
 		apply_damage(P.damage, P.damage_type, def_zone, armor, wound_bonus=P.wound_bonus, bare_wound_bonus=P.bare_wound_bonus, sharpness = P.sharpness)
 		//SKYRAT EDIT ADDITION BEGIN
+		set_combat_indicator(TRUE, TRUE) //getting hit by a bullet will probably put you on guard
 		if(P.damage_type == BRUTE || P.damage_type == BURN)
 			apply_damage((P.damage*PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER), STAMINA, def_zone, armor)
 		//SKYRAT EDIT ADDITION END
@@ -87,7 +88,7 @@
 				G.toggle_safety(src, "off")
 			else
 				G.toggle_safety(src, "on")
-	if(client)
+	if(!ishuman(src))
 		if(combat_mode)
 			set_combat_indicator(TRUE)
 		else
