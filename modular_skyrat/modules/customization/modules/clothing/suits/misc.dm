@@ -25,3 +25,10 @@
 	name = "medical labcoat"
 	desc = "A modest labcoat with medical coloring, meant to distinguish personnel in the line of duty."
 	icon_state = "labcoat_gen"
+
+/obj/item/clothing/suit/dutchjacketsr
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "Western Jacket"
+	desc = "Botanists screaming of mangos have been rumored to wear this."
+	icon_state = "dutchjacket"
