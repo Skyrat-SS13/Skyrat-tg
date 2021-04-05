@@ -112,7 +112,7 @@
 
 /obj/item/clothing/head/cowboyhat/widesec
 	name = "wide brimmed security cowboy hat"
-	desc = "A bandit turned Sherrif, his enforcement is brutal but effective, if out of fear or respect, not many bodies hang high. A peaceful land, a quiet people."
+	desc = "A bandit turned Sherriff, his enforcement is brutal but effective, if out of fear or respect, not many bodies hang high. A peaceful land, a quiet people."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "cowboy_black_sec"
