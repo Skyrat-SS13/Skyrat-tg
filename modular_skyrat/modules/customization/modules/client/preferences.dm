@@ -253,6 +253,7 @@ GLOBAL_LIST_INIT(food, list(
 		if(load_character())
 			return
 	//we couldn't load character data so just randomize the character appearance + name
+	set_new_species(/datum/species/human)
 	random_character() //let's create a random character then - rather than a fat, bald and naked man.
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.set_macros()
