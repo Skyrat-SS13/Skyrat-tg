@@ -14,6 +14,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	var/list/insanity_phrases = list("You feel too hot! Something isn't right!", "You can't think straight, please end the suffering!", "AAAAAAAAAAAAAAAGHHHHHHHH!")
 	var/timer_id
 	var/rna_extracted = FALSE
+	var/tox_loss_mod = 0.5
 
 /datum/component/mutant_infection/Initialize()
 	. = ..()
@@ -65,14 +66,17 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 
 /datum/component/mutant_infection/process(delta_time)
 	if(!ismutant(host) && host.stat != DEAD)
-		host.adjustToxLoss(0.5 * delta_time)
-		if(DT_PROB(10, delta_time))
-			var/obj/item/bodypart/wound_area = host.get_bodypart(BODY_ZONE_CHEST)
-			if(wound_area)
-				var/datum/wound/slash/moderate/rotting_wound = new
-				rotting_wound.apply_wound(wound_area)
-			host.emote(pick(list("cough", "sneeze")))
-			to_chat(host, "<span class='danger'>[pick(insanity_phrases)]</span>")
+		if(host.getToxLoss() < 50)
+			host.adjustToxLoss(tox_loss_mod * delta_time)
+		else
+			host.adjustToxLoss((tox_loss_mod * 2) * delta_time)
+			if(DT_PROB(10, delta_time))
+				host.adjustToxLoss(tox_loss_mod * delta_time) //Starting to get very ill
+				var/obj/item/bodypart/wound_area = host.get_bodypart(BODY_ZONE_CHEST)
+				if(wound_area)
+					var/datum/wound/slash/moderate/rotting_wound = new
+					rotting_wound.apply_wound(wound_area)
+				host.emote(pick(list("cough", "sneeze")))
 	if(timer_id)
 		return
 	if(host.stat != DEAD)
@@ -95,7 +99,13 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 
 	if(!ismutant(host))
 		old_species = host.dna.species.type
+		var/default_mutant_bodyparts = host.dna.species.default_mutant_bodyparts
+		var/limbs_icon = host.dna.species.limbs_icon
+		var/limbs_id = host.dna.species.limbs_id
 		host.set_species(/datum/species/mutant/infectious)
+		host.dna.species.default_mutant_bodyparts = default_mutant_bodyparts
+		host.dna.species.limbs_id = limbs_id
+		host.dna.species.limbs_icon = limbs_icon
 
 	var/stand_up = (host.stat == DEAD) || (host.stat == UNCONSCIOUS)
 
