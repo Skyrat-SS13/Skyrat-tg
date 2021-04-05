@@ -193,10 +193,10 @@
 /obj/item/storage/box/gunset/pcr/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pcr/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
 
 /obj/item/storage/box/gunset/norwind
 	name = "lg-2 norwind supply box"
@@ -207,10 +207,10 @@
 /obj/item/storage/box/gunset/norwind/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/norwind/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/norwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind/(src)
 
 /obj/item/storage/box/gunset/ostwind
 	name = "ostwind supply box"
@@ -221,10 +221,10 @@
 /obj/item/storage/box/gunset/ostwind/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/ostwind/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind/(src)
 
 /obj/item/storage/box/gunset/vintorez
 	name = "vintorez supply box"
@@ -235,10 +235,10 @@
 /obj/item/storage/box/gunset/vintorez/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/vintorez/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/vintorez/(src)
 
 /obj/item/storage/box/gunset/pitbull
 	name = "pitbull supply box"
@@ -249,10 +249,10 @@
 /obj/item/storage/box/gunset/pitbull/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pitbull/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull/(src)
 
 /////////////////
 //JOB SPECIFIC GUNSETS

@@ -118,7 +118,7 @@
 	name = "primary armament holochip"
 	desc = "A holochip used in any armament vendor, this is for main arms. Do not bend."
 	icon_state = "token_primary"
-	minimum_sec_level = SEC_LEVEL_AMBER
+	minimum_sec_level = SEC_LEVEL_RED
 
 /obj/item/armament_token/primary/get_available_gunsets()
   return list(
