@@ -137,7 +137,7 @@
 /datum/loadout_item/suit/donator/scraparmour
 	name = "Scrap Armor"
 	path = /obj/item/clothing/suit/scraparmour
-	ckeywhitelist = list("hackert.dog")
+	ckeywhitelist = list("hackertdog")
 
 /datum/loadout_item/uniform/donator/mechanic
 	name = "Mechanic's Overalls"
