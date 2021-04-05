@@ -71,7 +71,7 @@
 // Structure purchasing
 
 #define BLOB_UPGRADE_STRONG_COST                    15          // Upgrade and build costs here
-#define BLOB_UPGRADE_REFLECTOR_COST                 10
+#define BLOB_UPGRADE_REFLECTOR_COST                 5
 #define BLOB_STRUCTURE_RESOURCE_COST                40
 #define BLOB_STRUCTURE_FACTORY_COST                 60
 #define BLOB_STRUCTURE_NODE_COST                    50
