@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	color = blobstrain.complementary_color
 	if(blob_core)
 		blob_core.update_appearance()
-	SSshuttle.registerHostileEnvironment(src)
+	// SSshuttle.registerHostileEnvironment(src) SKYRAT EDIT removal
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -202,7 +202,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	GLOB.overminds -= src
 	QDEL_LIST_ASSOC_VAL(strain_choices)
 
-	SSshuttle.clearHostileEnvironment(src)
+	// SSshuttle.clearHostileEnvironment(src) SKYRAT EDIT removal
 	STOP_PROCESSING(SSobj, src)
 
 	return ..()
