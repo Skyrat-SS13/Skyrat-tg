@@ -8,6 +8,9 @@
 
 /obj/item/rna_extractor/attackby(obj/item/I, mob/living/user)
 	. = ..()
+	if((istype(I, loaded_vial) && vial != null))
+		to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
+		return FALSE
 	if(istype(I, loaded_vial))
 		if(!user.transferItemToLoc(I, src))
 			return FALSE
@@ -108,6 +111,7 @@
 	. = ..()
 	if(used)
 		to_chat(user, "<span class='danger'>[src] has been used and is useless!</span>")
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.GetComponent(/datum/component/zombie_infection))
