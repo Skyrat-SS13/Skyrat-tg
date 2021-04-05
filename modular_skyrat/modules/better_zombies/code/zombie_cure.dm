@@ -6,16 +6,15 @@
 	custom_materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
 	var/obj/item/rna_vial/loaded_vial
 
-/obj/item/rna_extractor/attackby(obj/item/I, mob/living/user)
-	. = ..()
-	if((istype(I, loaded_vial) && loaded_vial != null))
+/obj/item/rna_extractor/attackby(obj/item/O, mob/living/user)
+	if((istype(O, /obj/item/rna_vial) && loaded_vial != null))
 		to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
 		return FALSE
-	if(istype(I, loaded_vial))
-		if(!user.transferItemToLoc(I, src))
+	if(istype(O, /obj/item/rna_vial))
+		if(!user.transferItemToLoc(O, src))
 			return FALSE
-		to_chat(user, "<span class='notce'>You insert [I] into [src]!")
-		loaded_vial = I
+		to_chat(user, "<span class='notce'>You insert [O] into [src]!")
+		loaded_vial = O
 		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
 		update_appearance()
 
@@ -24,30 +23,35 @@
 		return
 	unload_vial(user)
 
-/obj/item/rna_extractor/attack(mob/living/M, mob/living/user, params)
-	. = ..()
+/obj/item/rna_extractor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return
+	if(!ishuman(target))
+		return
+	var/mob/living/carbon/human/H = target
 	if(!loaded_vial)
 		to_chat(user, "<span class='danger'>[src] is empty!</span>")
 		return
 	if(loaded_vial.contains_rna)
 		to_chat(user, "<span class='danger'>[src] already has RNA data in it, upload it to the combinator!</span>")
 		return
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(!iszombie(H))
-			to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
-			return
-		if(H.stat == DEAD)
-			to_chat(user, "<span class='danger'>[src] only works on living targets!</span>")
-			return
-		var/datum/component/zombie_infection/ZI = H.GetComponent(/datum/component/zombie_infection)
-		if(ZI.extract_rna())
-			loaded_vial.load_rna(H)
-			to_chat(user, "<span class='notice'>[src] successfully scanned [H], and now holds a sample virus RNA data.</span>")
-			playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
-			update_appearance()
-		else
-			to_chat(user, "<span class='warning'>[src] has no useable RNA!</span>")
+	if(!iszombie(H))
+		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
+		return
+	if(H.stat == DEAD)
+		to_chat(user, "<span class='danger'>[src] only works on living targets!</span>")
+		return
+	var/datum/component/zombie_infection/ZI = H.GetComponent(/datum/component/zombie_infection)
+	if(!ZI)
+		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
+		return
+	if(ZI.extract_rna())
+		loaded_vial.load_rna(H)
+		to_chat(user, "<span class='notice'>[src] successfully scanned [H], and now holds a sample virus RNA data.</span>")
+		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
+		update_appearance()
+	else
+		to_chat(user, "<span class='warning'>[H] has no useable RNA!</span>")
 
 /obj/item/rna_extractor/proc/unload_vial(mob/living/user)
 	if(loaded_vial)
@@ -58,13 +62,13 @@
 		update_appearance()
 		playsound(loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='notice'>[src]] isn't loaded!</span>")
+		to_chat(user, "<span class='notice'>[src] isn't loaded!</span>")
 		return
 
 /obj/item/rna_extractor/update_overlays()
 	. = ..()
 	if(loaded_vial)
-		. += "extracted"
+		. += "extractor_load"
 
 /obj/item/rna_extractor/examine(mob/user)
 	. = ..()
@@ -138,7 +142,8 @@
 #undef ZOMBIE_CURE_TIME
 
 #define STATUS_IDLE "System Idle"
-#define STATUS_RECOMBINATING "System Recombinating"
+#define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
+#define STATUS_RECOMBINATING_CURE "System Synthesising Cure"
 #define RECOMBINATION_STEP_TIME 30 SECONDS
 #define RECOMBINATION_STEP_AMOUNT 10
 
@@ -163,37 +168,38 @@
 		timer_id = null
 	. = ..()
 
-/obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/I, mob/living/user)
-	if(!user.combat_mode)
-		. = 1
-		if(!is_insertion_ready(user))
-			return
-		if(!user.transferItemToLoc(I, src))
-			return
-		if(!istype(I, /obj/item/rna_vial))
-			return
-		loaded_item = I
-		to_chat(user, "<span class='notice'>You insert [I] to [src] reciprocal.</span>")
-		flick("h_lathe_load", src)
-		update_appearance()
-		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+/obj/machinery/rnd/rna_recombinator/Insert_Item(obj/item/O, mob/living/user)
+	if(user.combat_mode)
+		return FALSE
+	if(!is_insertion_ready(user))
+		return FALSE
+	if(!istype(O, /obj/item/rna_vial))
+		return FALSE
+	if(!user.transferItemToLoc(O, src))
+		return FALSE
+	loaded_item = O
+	to_chat(user, "<span class='notice'>You insert [O] to into [src] reciprocal.</span>")
+	flick("h_lathe_load", src)
+	update_appearance()
+	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+
 
 /obj/machinery/rnd/rna_recombinator/ui_interact(mob/user)
 	var/obj/item/rna_vial/vial = loaded_item
 	var/list/dat = list("<center>")
-	dat += "<b>System Status - [status]</b>"
-	dat += "<b>System Efficency - Step time: [recombination_step_time / 10] SECONDS | Step percent: [recombination_step_amount]%</b>"
-	if(status == STATUS_RECOMBINATING)
-		dat += "Current RNA restructure progress: [cure_progress]%"
+	dat += "<b>System Status: [status]</b>"
+	dat += "System Efficency - Step time: [recombination_step_time / 10] SECONDS | Step percent: [recombination_step_amount]%"
+	if(status != STATUS_IDLE)
+		dat += "<b>Current RNA restructure progress: [cure_progress]%</b>"
 	if(vial)
 		dat += "<b>Loaded RNA vial:</b> [vial]"
-		dat += "<div>RNA Information:"
 		if(vial.contains_rna)
 			dat += "<b>RNA structure: HNZ-1</b>"
-			dat += "<b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=cure'>Synthesize Cure</A></b></div>"
-			dat += "<b><a href='byond://?src=[REF(src)];function=eject'>Eject</A>"
+			dat += "<b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=cure'>Synthesize Cure</A></b>"
+			dat += "<b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=virus'>Synthesize Virus</A></b>"
 		else
-			dat += "<b>RNA structure: ERROR NO RNA</b>"
+			dat += "RNA structure: <b>ERROR NO RNA</b>"
+		dat += "<b><a href='byond://?src=[REF(src)];function=eject'>Eject</A></b>"
 	else
 		dat += "<b>Nothing loaded.</b>"
 	dat += "<a href='byond://?src=[REF(src)];function=refresh'>Refresh</A>"
@@ -222,15 +228,20 @@
 	else if(operation == "refresh")
 		updateUsrDialog()
 	else
-		if(status == STATUS_RECOMBINATING)
+		if(status != STATUS_IDLE)
 			to_chat(usr, "<span class='warning'>[src] is currently recombinating!</span>")
 		else if(!loaded_item)
 			to_chat(usr, "<span class='warning'>[src] is not currently loaded!</span>")
 		else if(!process || process != loaded_item) //Interface exploit protection (such as hrefs or swapping items with interface set to old item)
 			to_chat(usr, "<span class='danger'>Interface failure detected in [src]. Please try again.</span>")
 		else
+			if(operation == "virus")
+				status = STATUS_RECOMBINATING_VIRUS
+			else
+				status = STATUS_RECOMBINATING_CURE
 			recombinate_start()
 			use_power(3000)
+
 	updateUsrDialog()
 
 /obj/machinery/rnd/rna_recombinator/proc/ejectItem()
@@ -249,12 +260,10 @@
 			deltimer(timer_id)
 			timer_id = null
 		return
-	if(status == STATUS_RECOMBINATING)
-		return
 	var/obj/item/rna_vial/vial = loaded_item
 	vial.contains_rna = FALSE
 	vial.update_appearance()
-	status = STATUS_RECOMBINATING
+	ejectItem()
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	flick("h_lathe_wloop", src)
 	use_power(3000)
@@ -268,10 +277,10 @@
 			deltimer(timer_id)
 			timer_id = null
 		return
+	cure_progress += recombination_step_amount
 	if(cure_progress >= 100)
 		recombinate_finish()
 		return
-	cure_progress += recombination_step_amount
 	flick("h_lathe_wloop", src)
 	use_power(3000)
 	playsound(loc, 'sound/items/rped.ogg', 60, 1)
@@ -286,12 +295,14 @@
 			timer_id = null
 		return
 	cure_progress = 0
-	status = STATUS_IDLE
-	new /obj/item/hnz_cure(get_turf(src))
+	if(status == STATUS_RECOMBINATING_CURE)
+		new /obj/item/hnz_cure(get_turf(src))
+	else
+		new /obj/item/reagent_containers/glass/bottle/hnz/one(get_turf(src))
 	flick("h_lathe_leave", src)
 	use_power(3000)
-	playsound(loc, 'sound/items/rped.ogg', 60, 1)
 	playsound(loc, 'sound/machines/ding.ogg', 60, 1)
+	status = STATUS_IDLE
 
 /obj/machinery/rnd/rna_recombinator/RefreshParts()
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
@@ -307,6 +318,11 @@
 	if(machine_stat & (NOPOWER|BROKEN|MAINT) || !loaded_item)
 		. += "lathe_empty"
 
+#undef STATUS_IDLE
+#undef STATUS_RECOMBINATING_CURE
+#undef STATUS_RECOMBINATING_VIRUS
+#undef RECOMBINATION_STEP_TIME
+#undef RECOMBINATION_STEP_AMOUNT
 
 
 //////////////////////////////Infection stuff - You didn't think I wouldn't include this did you?
@@ -333,3 +349,10 @@
 	icon = 'modular_skyrat/modules/better_zombies/icons/extractor.dmi'
 	icon_state = "tvirus_infector"
 	list_reagents = list(/datum/reagent/hnz = 30)
+
+/obj/item/reagent_containers/glass/bottle/hnz/one
+	name = "HNZ-1 bottle"
+	desc = "A small bottle of the HNZ-1 pathogen. Nanotrasen Bioweapons inc."
+	icon = 'modular_skyrat/modules/better_zombies/icons/extractor.dmi'
+	icon_state = "tvirus_infector"
+	list_reagents = list(/datum/reagent/hnz = 1)

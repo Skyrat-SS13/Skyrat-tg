@@ -1,12 +1,7 @@
-/datum/round_event_control/zombie_infestation
+/datum/round_event_control/zombie_infestation //Admin only
 	name = "HNZ-1 Pathogen Outbreak"
-	typepath = /datum/round_event/ghost_role/alien_infestation
-	weight = 3
-
-	min_players = 50
-
-	earliest_start = 25 MINUTES
-
+	typepath = /datum/round_event/zombie_infestation
+	weight = 0
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/zombie_infestation

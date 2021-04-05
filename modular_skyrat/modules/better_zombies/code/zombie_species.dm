@@ -73,6 +73,8 @@
 	if(!HAS_TRAIT(C, TRAIT_CRITICAL_CONDITION) && DT_PROB(2, delta_time))
 		playsound(C, pick(spooks), 50, TRUE, 10)
 
+/obj/item/reagent_containers/food/drinks/drinkingglass
+
 // Your skin falls off
 /datum/species/krokodil_addict
 	name = "Human"
@@ -86,7 +88,6 @@
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_EASILY_WOUNDED)
 
 #undef REGENERATION_DELAY
-
 
 /mob/living/carbon/human/canBeHandcuffed()
 	if(is_species(src, /datum/species/zombie/infectious))
@@ -144,7 +145,7 @@
 		// zombies)
 		return FALSE
 
-	if(!target.can_inject() && !forced)
+	if(!target.can_inject() && !forced && HAS_TRAIT(target, TRAIT_ZOMBIE_IMMUNE))
 		return FALSE
 
 	target.AddComponent(/datum/component/zombie_infection)

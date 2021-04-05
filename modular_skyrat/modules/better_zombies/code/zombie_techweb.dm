@@ -13,7 +13,7 @@
 	description = "Research devices from the Nanotrasen viral bioweapons division! Got a virus problem? This'll save your day."
 	prereq_ids = list("adv_engi", "biotech", "weaponry")
 	design_ids = list("rna_vial", "rna_extractor", "rna_recombinator")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 18000)
 
 /datum/design/rna_vial
 	name = "Empty RNA vial"
@@ -23,7 +23,7 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 3000, /datum/material/silver = 1000)
 	build_path = /obj/item/rna_vial
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/rna_extractor
 	name = "Empty RNA vial"
@@ -33,7 +33,7 @@
 	materials = list(/datum/material/iron = 3000, /datum/material/gold = 3000, /datum/material/uranium = 1000, /datum/material/diamond = 1000)
 	build_path = /obj/item/rna_extractor
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/board/rna_recombinator
 	name = "Machine Design (RNA Recombinator)"
@@ -41,4 +41,4 @@
 	id = "rna_recombinator"
 	build_path = /obj/item/circuitboard/machine/rna_recombinator
 	category = list("Research Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL

@@ -19,10 +19,6 @@
 		return COMPONENT_INCOMPATIBLE
 	host = parent
 
-	if(HAS_TRAIT(host, TRAIT_ZOMBIE_IMMUNE)) //No infection for das recently cured!!
-		to_chat(host, "<span class='notce'>Your recent cure protected you from whatever just happened.</span>")
-		return ELEMENT_INCOMPATIBLE
-
 	GLOB.zombie_infection_list += src
 
 	if(host.stat == DEAD)
@@ -102,17 +98,7 @@
 	var/stand_up = (host.stat == DEAD) || (host.stat == UNCONSCIOUS)
 
 	//Fully heal the zombie's damage the first time they rise
-	host.setToxLoss(0, 0)
-	host.setOxyLoss(0, 0)
-	host.heal_overall_damage(INFINITY, INFINITY, INFINITY, null, TRUE)
-
-	if(!host.revive(full_heal = FALSE, admin_revive = FALSE))
-		return
-
-	if(!host.mind)
-		offer_control(host)
-	else
-		host.grab_ghost()
+	regenerate()
 
 	host.do_jitter_animation(30)
 	host.visible_message("<span class='danger'>[host] suddenly convulses, as [host.p_they()][stand_up ? " stagger to [host.p_their()] feet and" : ""] gain a ravenous hunger in [host.p_their()] eyes!</span>", "<span class='alien'>You HUNGER!</span>")
@@ -154,3 +140,7 @@
 	host.restore_blood()
 	host.remove_all_embedded_objects()
 	host.revive()
+	if(!host.mind)
+		offer_control(host)
+	else
+		host.grab_ghost()
