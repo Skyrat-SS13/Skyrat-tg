@@ -30,7 +30,7 @@ GLOBAL_VAR_INIT(combat_indicator_time, null)
 	if(combat_indicator && (lastcombatindicator + GLOB.combat_indicator_time <= world.time))
 		return TRUE
 
-/mob/living/proc/set_combat_indicator(state, forced = FALSE) //if something forced CI on us, used to bypass the cooldown on being attacked
+/mob/living/proc/set_combat_indicator(state, forced = FALSE) // forced - if something forced CI on us, used to bypass the ci time check
 
 	if(combat_indicator == state) //let's save ourselfes the many config_get()s by checking this first
 		return
