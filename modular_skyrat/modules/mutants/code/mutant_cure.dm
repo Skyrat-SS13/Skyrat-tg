@@ -298,7 +298,7 @@
 	if(status == STATUS_RECOMBINATING_CURE)
 		new /obj/item/hnz_cure(get_turf(src))
 	else
-		new /obj/item/reagent_containers/glass/bottle/hnz/one(get_turf(src))
+		new /obj/item/reagent_containers/food/drinks/hnz/one(get_turf(src))
 	flick("h_lathe_leave", src)
 	use_power(3000)
 	playsound(loc, 'sound/machines/ding.ogg', 60, 1)
@@ -367,11 +367,8 @@
 	max_integrity = 500
 
 /obj/item/storage/briefcase/tvirus/PopulateContents()
-	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
-	new /obj/item/reagent_containers/glass/bottle/hnz/one(src)
+	new /obj/item/reagent_containers/food/drinks/hnz/one(src)
+	new /obj/item/reagent_containers/food/drinks/hnz/one(src)
 	new /obj/item/circuitboard/machine/rna_recombinator(src)
 	new /obj/item/rna_extractor(src)
 	new /obj/item/rna_vial(src)
-
-
-/obj/item/reagent_containers/food/drinks/drinkingglass
