@@ -5,4 +5,6 @@
 		if(AI.z == 3)
 			if(!(R.connected_ai))
 				R.set_connected_ai(AI)
+	R.lawsync()
 	R.show_laws()
+	

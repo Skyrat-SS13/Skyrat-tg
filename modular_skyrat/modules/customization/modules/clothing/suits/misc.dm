@@ -40,6 +40,7 @@
 	icon_state = "hawaiian_blue"
 	desc = "Strangely en vouge with aviator wearing shibas."
 	body_parts_covered = CHEST|GROIN
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/hawaiian_orange
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
@@ -48,6 +49,7 @@
 	icon_state = "hawaiian_orange"
 	desc = "Strangely en vouge with aviator wearing shibas."
 	body_parts_covered = CHEST|GROIN
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/hawaiian_purple
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
@@ -56,6 +58,7 @@
 	icon_state = "hawaiian_purple"
 	desc = "Strangely en vouge with aviator wearing shibas."
 	body_parts_covered = CHEST|GROIN
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/hawaiian_green
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
@@ -64,3 +67,4 @@
 	icon_state = "hawaiian_green"
 	desc = "Strangely en vouge with aviator wearing shibas."
 	body_parts_covered = CHEST|GROIN
+	mutant_variants = NONE

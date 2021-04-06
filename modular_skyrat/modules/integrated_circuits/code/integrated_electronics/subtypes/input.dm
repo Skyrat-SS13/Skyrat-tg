@@ -96,8 +96,8 @@
 		activate_pin(1)
 
 /obj/item/integrated_circuit/input/med_scanner
-	name = "integrated medical analyser"
-	desc = "A very small version of the common medical analyser. This allows the machine to know how healthy someone is."
+	name = "integrated medical analyzer"
+	desc = "A very small version of the common medical analyzer. This allows the machine to know how healthy someone is."
 	icon_state = "medscan"
 	complexity = 4
 	inputs = list("target" = IC_PINTYPE_REF)
@@ -113,7 +113,7 @@
 	var/mob/living/H = get_pin_data_as_type(IC_INPUT, 1, /mob/living)
 	if(!istype(H)) //Invalid input
 		return
-	if(H.Adjacent(get_turf(src))) // Like normal analysers, it can't be used at range.
+	if(H.Adjacent(get_turf(src))) // Like normal analyzers, it can't be used at range.
 		var/total_health = round(H.health/H.getMaxHealth(), 0.01)*100
 		var/missing_health = H.getMaxHealth() - H.health
 
@@ -124,8 +124,8 @@
 	activate_pin(2)
 
 /obj/item/integrated_circuit/input/adv_med_scanner
-	name = "integrated adv. medical analyser"
-	desc = "A very small version of the medbot's medical analyser. This allows the machine to know how healthy someone is. \
+	name = "integrated adv. medical analyzer"
+	desc = "A very small version of the medbot's medical analyzer. This allows the machine to know how healthy someone is. \
 	This type is much more precise, allowing the machine to know much more about the target than a normal analyzer."
 	icon_state = "medscan_adv"
 	complexity = 12
@@ -164,7 +164,7 @@
 
 /obj/item/integrated_circuit/input/slime_scanner
 	name = "slime scanner"
-	desc = "A very small version of the xenobio analyser. This allows the machine to know every needed properties of slime. Output mutation list is non-associative."
+	desc = "A very small version of the xenobio analyzer. This allows the machine to know every needed properties of slime. Output mutation list is non-associative."
 	icon_state = "medscan_adv"
 	complexity = 12
 	inputs = list("target" = IC_PINTYPE_REF)
@@ -207,7 +207,7 @@
 
 /obj/item/integrated_circuit/input/plant_scanner
 	name = "integrated plant analyzer"
-	desc = "A very small version of the plant analyser. This allows the machine to know all valuable parameters of plants in trays. \
+	desc = "A very small version of the plant analyzer. This allows the machine to know all valuable parameters of plants in trays. \
 			It can only scan plants, not seeds or fruits."
 	icon_state = "medscan_adv"
 	complexity = 12
