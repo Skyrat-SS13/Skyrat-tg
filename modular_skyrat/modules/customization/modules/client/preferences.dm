@@ -736,6 +736,7 @@ GLOBAL_LIST_INIT(food, list(
 
 					dat += "</tr></table>"
 				if(3) //Background
+					dat += "<b>THE ENTRIES AND THEIR DESCRIPTIONS ARE PLACEHOLDERS AND ARE NOT FINAL.</b><HR>"
 					dat += "<table width='100%'>"
 					dat += "<tr>"
 					dat += "<td width='21%'></td>"
