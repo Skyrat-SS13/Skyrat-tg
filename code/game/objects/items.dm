@@ -647,12 +647,12 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 		if(w_class < 4)
 			itempush = 0 //too light to push anything
 		if(istype(hit_atom, /mob/living)) //Living mobs handle hit sounds differently.
-			//SKYRAT EDIT ADDITION START
+			//SKYRAT EDIT ADDITION BEGIN
 			var/mob/living/M = hit_atom //Yes, most of this proc could be replaced to use this instead. This is a tiny bit more modular tho.
 			//SKYRAT EDIT ADDITION END
 			var/volume = get_volume_by_throwforce_and_or_w_class()
 			if (throwforce > 0)
-				//SKYRAT EDIT ADDITION START
+				//SKYRAT EDIT ADDITION BEGIN
 				if(throwforce > 10)
 					M.set_combat_indicator(TRUE, TRUE)
 				//SKYRAT EDIT ADDITION END
