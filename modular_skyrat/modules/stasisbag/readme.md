@@ -6,6 +6,8 @@ MODULE ID: stasisbag
 
 Bodybags that keep a body in stasis while closed, albeit without the ability for treatment while closed.
 
+Also removes stasis beds.
+
 ### TG Proc Changes:
 
  - N/A
