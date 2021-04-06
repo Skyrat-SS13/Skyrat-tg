@@ -23,7 +23,7 @@
 
 /obj/effect/turf_decal/tile/red
 	name = "red corner"
-	color = "#DE3A3A"
+	color = "#486091" //SKYRAT EDIT CHANGE
 
 /obj/effect/turf_decal/tile/bar
 	name = "bar corner"
