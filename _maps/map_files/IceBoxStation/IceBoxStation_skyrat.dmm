@@ -40473,6 +40473,18 @@
 /obj/structure/sign/poster/official/random,
 /turf/closed/wall,
 /area/hallway/secondary/service)
+"dJT" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/gun/energy/laser/practice,
+/obj/item/gun/energy/laser/practice,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "dMb" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -40600,9 +40612,6 @@
 "dSj" = (
 /obj/machinery/dish_drive/bullet{
 	succrange = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
@@ -41998,6 +42007,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
 	dir = 9
+	},
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
@@ -45062,6 +45075,15 @@
 /obj/machinery/vending/wardrobe/det_wardrobe,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
+"iJg" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/structure/rack,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/iron/dark,
+/area/security/office)
 "iKz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -45799,6 +45821,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/genetics)
+"jxS" = (
+/obj/structure/table,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/obj/item/crowbar,
+/turf/open/floor/iron/dark,
+/area/security/office)
 "jyE" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2,
@@ -45854,6 +45884,15 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"jCw" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "hosspace";
+	name = "space shutters"
+	},
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/security/office)
 "jCF" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -51622,7 +51661,7 @@
 /area/maintenance/port/aft)
 "pka" = (
 /obj/effect/turf_decal/bot_blue,
-/obj/effect/landmark/secequipment,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "pkd" = (
@@ -53311,6 +53350,15 @@
 	icon_state = "wood-broken7"
 	},
 /area/maintenance/port/aft)
+"qWh" = (
+/obj/structure/closet/l3closet/security,
+/obj/effect/turf_decal/bot_blue,
+/obj/item/clothing/suit/bio_suit/security,
+/obj/item/clothing/suit/bio_suit/security,
+/obj/item/clothing/head/bio_hood/security,
+/obj/item/clothing/head/bio_hood/security,
+/turf/open/floor/iron/dark,
+/area/security/office)
 "qWo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -54099,8 +54147,7 @@
 /turf/open/floor/iron/dark,
 /area/security/processing)
 "rMz" = (
-/obj/effect/landmark/secequipment,
-/obj/effect/turf_decal/bot_blue,
+/obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "rNh" = (
@@ -58270,6 +58317,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/blue/side,
 /area/security/prison/safe)
+"wak" = (
+/obj/machinery/camera{
+	c_tag = "Brig Equipment Room";
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/office)
 "wba" = (
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = 32
@@ -58655,6 +58709,11 @@
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/floor/wood,
 /area/security/prison)
+"wsZ" = (
+/obj/structure/table,
+/obj/item/hand_labeler,
+/turf/open/floor/iron/dark,
+/area/security/office)
 "wtb" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -59373,16 +59432,12 @@
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "xeM" = (
-/obj/structure/closet/l3closet/security,
 /obj/machinery/camera{
 	c_tag = "Brig Equipment Room";
 	dir = 4
 	},
 /obj/effect/turf_decal/bot_blue,
-/obj/item/clothing/suit/bio_suit/security,
-/obj/item/clothing/suit/bio_suit/security,
-/obj/item/clothing/head/bio_hood/security,
-/obj/item/clothing/head/bio_hood/security,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "xeP" = (
@@ -90223,7 +90278,7 @@ boP
 boP
 boP
 blq
-blq
+abq
 abq
 abq
 abq
@@ -90480,11 +90535,11 @@ boP
 boP
 boP
 blq
-blq
 abq
 hgD
 ovx
-hgD
+wak
+trX
 abq
 boP
 aaZ
@@ -90737,11 +90792,11 @@ boP
 boP
 boP
 boP
-blq
 abq
 hgD
 iVu
-trX
+iVu
+pkd
 abq
 boP
 aaZ
@@ -90995,10 +91050,10 @@ boP
 boP
 boP
 abq
-abq
-abq
-dQP
-abo
+hgD
+iVu
+iVu
+qWh
 abq
 abo
 aaZ
@@ -91252,13 +91307,13 @@ boP
 boP
 boP
 abq
-fSV
-ksN
-iVu
-mNa
+abq
+abq
+dQP
 abo
+abq
 lmU
-pkd
+pka
 xeM
 pka
 iVu
@@ -91509,8 +91564,8 @@ boP
 boP
 boP
 abq
-puT
-nli
+fSV
+ksN
 iVu
 iVu
 dQP
@@ -91766,16 +91821,16 @@ oCP
 boP
 boP
 abq
-pJj
-wbO
+puT
+nli
 iVu
-iVu
+mNa
 abo
 iVu
+jxS
+wsZ
 rMz
-rMz
-rMz
-rMz
+iVu
 ygM
 pGO
 ghe
@@ -92023,8 +92078,8 @@ boP
 boP
 boP
 abq
-kTl
-nli
+pJj
+wbO
 iVu
 iVu
 dQP
@@ -92280,16 +92335,16 @@ boP
 boP
 boP
 abq
-qti
-sni
-sni
+kTl
+nli
+iVu
 iVu
 abo
 dlO
 lmU
 lmU
 lmU
-lmU
+iJg
 abq
 abq
 abq
@@ -92537,9 +92592,9 @@ boP
 boP
 boP
 abq
-hWj
-gwO
-gwO
+qti
+sni
+sni
 dSj
 abq
 bpJ
@@ -92794,10 +92849,10 @@ boP
 boP
 boP
 abq
-tRz
-afn
-afn
-lNV
+hWj
+gwO
+gwO
+dJT
 abq
 abT
 acs
@@ -93055,7 +93110,7 @@ tRz
 afn
 afn
 lNV
-abr
+jCw
 abS
 acr
 acQ
@@ -93307,7 +93362,7 @@ boP
 boP
 boP
 boP
-abo
+abq
 tRz
 afn
 afn
@@ -93565,7 +93620,7 @@ boP
 boP
 boP
 abo
-fpx
+tRz
 afn
 afn
 lNV
@@ -93822,7 +93877,7 @@ boP
 boP
 boP
 abo
-bUe
+fpx
 afn
 afn
 lNV
@@ -94079,10 +94134,10 @@ xUW
 boP
 boP
 abo
-tRz
+bUe
 afn
 afn
-gDa
+lNV
 abq
 bpJ
 bpJ
@@ -94335,12 +94390,12 @@ boP
 boP
 boP
 boP
-abq
-tRz
-ryQ
-afn
-lNV
 abo
+tRz
+afn
+afn
+gDa
+abq
 boP
 boP
 boP
@@ -94593,10 +94648,10 @@ boP
 boP
 boP
 abq
-tRa
-fak
-rcG
-voA
+tRz
+ryQ
+afn
+lNV
 abo
 boP
 boP
@@ -94850,11 +94905,11 @@ boP
 boP
 boP
 abq
-abq
-abq
-abq
-abq
-abq
+tRa
+fak
+rcG
+voA
+abo
 boP
 ajW
 abq
@@ -95106,12 +95161,12 @@ gQb
 gQb
 boP
 boP
-boP
-boP
-boP
-boP
-boP
-boP
+abq
+abq
+abq
+abq
+abq
+abq
 boP
 asU
 acU
@@ -95362,7 +95417,7 @@ gQb
 gQb
 gQb
 gQb
-gQb
+boP
 boP
 boP
 boP
