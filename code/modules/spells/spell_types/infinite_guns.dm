@@ -11,6 +11,9 @@
 	cooldown_min = 10 //Gun wizard
 	action_icon_state = "bolt_action"
 	var/summon_path = /obj/item/gun/ballistic/rifle/enchanted
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE //Should already be handled by the gun checks but w/e
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/targeted/infinite_guns/cast(list/targets, mob/user = usr)
 	for(var/mob/living/carbon/C in targets)

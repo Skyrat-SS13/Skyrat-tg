@@ -6,6 +6,9 @@
 	var/ex_heavy = 2
 	var/ex_light = 3
 	var/ex_flash = 4
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/targeted/explosion/cast(list/targets,mob/user = usr)
 	for(var/mob/living/target in targets)

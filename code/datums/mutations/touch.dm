@@ -18,6 +18,9 @@
 	charge_max = 100
 	clothes_req = FALSE
 	action_icon_state = "zap"
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/melee/touch_attack/shock
 	name = "\improper shock touch"

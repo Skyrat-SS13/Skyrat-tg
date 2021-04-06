@@ -15,6 +15,9 @@
 	var/sound/Snd // so far only way i can think of to stop a sound, thank MSO for the idea.
 
 	action_icon_state = "lightning"
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/targeted/tesla/Click()
 	if(!ready && cast_check())

@@ -70,6 +70,9 @@
 	cooldown_min = 200 //100 deciseconds reduction per rank
 
 	action_icon_state = "gib"
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/targeted/touch/flesh_to_stone
 	name = "Flesh to Stone"

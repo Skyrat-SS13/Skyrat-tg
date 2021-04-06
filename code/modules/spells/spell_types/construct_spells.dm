@@ -315,6 +315,9 @@
 	action_icon_state = "cultfist"
 	action_background_icon_state = "bg_demon"
 	sound = 'sound/weapons/resonator_blast.ogg'
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/projectile/magic/spell/juggernaut
 	name = "Gauntlet Echo"

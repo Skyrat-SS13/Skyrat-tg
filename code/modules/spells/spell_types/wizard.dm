@@ -13,6 +13,9 @@
 	proj_type = /obj/projectile/magic/spell/magic_missile
 	action_icon_state = "magicm"
 	sound = 'sound/magic/magic_missile.ogg'
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE //It specifically doesn't have nodamage, but at the same time it.. doesn't deal damage??
+	//SKYRAT EDIT ADDITION END
 
 /obj/projectile/magic/spell/magic_missile
 	name = "magic missile"

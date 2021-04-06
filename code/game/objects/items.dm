@@ -653,7 +653,7 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 			var/volume = get_volume_by_throwforce_and_or_w_class()
 			if (throwforce > 0)
 				//SKYRAT EDIT ADDITION START
-				if(throwforce > 5)
+				if(throwforce > 10)
 					M.set_combat_indicator(TRUE, TRUE)
 				//SKYRAT EDIT ADDITION END
 				if (mob_throw_hit_sound)

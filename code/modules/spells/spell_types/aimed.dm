@@ -107,6 +107,9 @@
 	active_msg = "You energize your hands with arcane lightning!"
 	deactive_msg = "You let the energy flow out of your hands back into yourself..."
 	projectile_type = /obj/projectile/magic/aoe/lightning
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/aimed/fireball
 	name = "Fireball"
@@ -125,6 +128,9 @@
 	active_msg = "You prepare to cast your fireball spell!"
 	deactive_msg = "You extinguish your fireball... for now."
 	active = FALSE
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/aimed/fireball/fire_projectile(list/targets, mob/living/user)
 	var/range = 6 + 2*spell_level
@@ -153,6 +159,9 @@
 	var/projectile_location_spread_amount = 12
 	var/datum/component/lockon_aiming/lockon_component
 	ranged_clickcd_override = TRUE
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/aimed/spell_cards/on_activation(mob/M)
 	QDEL_NULL(lockon_component)

@@ -196,6 +196,9 @@
 	action_icon_state = "finger_guns0"
 	action_background_icon_state = "bg_mime"
 	base_icon_state = "finger_guns"
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 
 /obj/effect/proc_holder/spell/aimed/finger_guns/Click()

@@ -128,6 +128,9 @@
 	active_msg = "You built up heat in your mouth."
 	deactive_msg = "You swallow the flame."
 	var/strength = 1
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/aimed/firebreath/before_cast(list/targets)
 	. = ..()
@@ -252,6 +255,9 @@
 	action_icon = 'icons/mob/actions/actions_genetic.dmi'
 	action_icon_state = "spike"
 	var/spike_path = /obj/item/hardened_spike
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/self/tongue_spike/cast(list/targets, mob/user = usr)
 	if(!iscarbon(user))

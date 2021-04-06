@@ -147,6 +147,10 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	action_background_icon_state = "bg_spell"
 	base_action = /datum/action/spell_action/spell
 
+	//SKYRAT EDIT ADDITION BEGIN
+	var/harmful = FALSE
+	//SKYRAT EDIT ADDITION END
+
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge = 0,mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
 	if(player_lock)
 		if(!user.mind || !(src in user.mind.spell_list) && !(src in user.mob_spell_list))
@@ -183,9 +187,24 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		return FALSE
 
 	var/mob/living/L = user
+	//SKYRAT EDIT BEGIN
+	/*
 	if(istype(L) && (invocation_type == INVOCATION_WHISPER || invocation_type == INVOCATION_SHOUT) && !L.can_speak_vocal())
 		to_chat(user, "<span class='warning'>You can't get the words out!</span>")
 		return FALSE
+	*/
+	if(istype(L))
+		if((invocation_type == INVOCATION_WHISPER || invocation_type == INVOCATION_SHOUT) && !L.can_speak_vocal())
+			to_chat(user, "<span class='warning'>You can't get the words out!</span>")
+			return FALSE
+		if(harmful)
+			if(!L.combat_indicator_check())
+				to_chat(user, "<span class='warning'>You refrain from doing this unprepared.</span>") //a lot of abilities are spells
+				return FALSE
+			if((HAS_TRAIT(user, TRAIT_PACIFISM)))
+				to_chat(user, "<span class='warning'>This may harm someone! Best not to use it..</span>")
+				return FALSE
+	//SKYRAT EDIT END
 
 	if(ishuman(user))
 

@@ -119,6 +119,9 @@
 	action_icon_state = "blood_siphon"
 	action_background_icon_state = "bg_ecult"
 	range = 9
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/pointed/blood_siphon/cast(list/targets, mob/user)
 	. = ..()
@@ -225,6 +228,9 @@
 	action_icon = 'icons/mob/actions/actions_ecult.dmi'
 	action_icon_state = "cleave"
 	action_background_icon_state = "bg_ecult"
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/pointed/cleave/cast(list/targets, mob/user)
 	if(!targets.len)
@@ -649,6 +655,9 @@
 	charge_max = 300
 	cone_levels = 5
 	respect_density = TRUE
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/cone/staggered/entropic_plume/cast(list/targets,mob/user = usr)
 	. = ..()

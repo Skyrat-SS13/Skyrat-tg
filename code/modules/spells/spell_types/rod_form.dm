@@ -10,6 +10,9 @@
 	invocation = "CLANG!"
 	invocation_type = INVOCATION_SHOUT
 	action_icon_state = "immrod"
+	//SKYRAT EDIT ADDITION BEGIN
+	harmful = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /obj/effect/proc_holder/spell/targeted/rod_form/cast(list/targets,mob/user = usr)
 	var/area/A = get_area(user)
