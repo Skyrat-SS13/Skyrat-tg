@@ -1,8 +1,8 @@
 /obj/structure/closet/body_bag/stasis
 	name = "stasis body bag"
 	desc = "A stasis body bag designed for the storage and stasis of cadavers."
-	icon = 'icons/obj/bodybag.dmi'
-	icon_state = "bluebodybag"
+	icon = 'modular_skyrat/modules/stasisbag/icons/obj/stasisbag.dmi'
+	icon_state = "greenbodybag"
 	foldedbag_path = /obj/item/bodybag/stasis
 	mob_storage_capacity = 1
 	max_mob_size = MOB_SIZE_LARGE
