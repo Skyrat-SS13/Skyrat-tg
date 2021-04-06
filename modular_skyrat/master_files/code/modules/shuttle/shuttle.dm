@@ -69,7 +69,7 @@
 		for(var/mob/M in range(sound_range, distant_source))
 			if(M && M.client)
 				var/dist = get_dist(M.loc, distant_source.loc)
-				var/vol = clamp(80-((dist-7)*5), 10, 80) //Every tile decreases sound volume by 5
+				var/vol = clamp(50-((dist-7)*5), 10, 50) //Every tile decreases sound volume by 5
 				if(takeoff)
 					M.playsound_local(distant_source, takeoff_sound, vol)
 				else
