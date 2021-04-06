@@ -6,7 +6,7 @@
 	/// The landing sound to be played
 	var/landing_sound = sound('modular_skyrat/modules/advanced_shuttles/sound/engine_landing.ogg')
 	/// The sound range coeff for the landing and take off sound effect
-	var/sound_range = 25
+	var/sound_range = 20
 
 
 //call the shuttle to destination S
