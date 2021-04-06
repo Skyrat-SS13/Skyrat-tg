@@ -202,7 +202,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 				to_chat(user, "<span class='warning'>You refrain from doing this unprepared.</span>") //a lot of abilities are spells
 				return FALSE
 			if((HAS_TRAIT(user, TRAIT_PACIFISM)))
-				to_chat(user, "<span class='warning'>This may harm someone! Best not to use it..</span>")
+				to_chat(user, "<span class='warning'>This may harm someone! Best not to do it..</span>")
 				return FALSE
 	//SKYRAT EDIT END
 
