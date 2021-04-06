@@ -58,7 +58,6 @@
 	name = "White Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch/white
 
-
 /datum/loadout_item/glasses/medic
 	name = "Medical Eyepatch"
 	path = /obj/item/clothing/glasses/hud/med/eyepatchsr
