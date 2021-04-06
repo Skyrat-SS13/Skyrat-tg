@@ -148,6 +148,7 @@
 					/obj/item/clothing/under/utility/cargo/gorka = 3,
 					/obj/item/clothing/under/utility/cargo/turtleneck = 3,
 					/obj/item/clothing/under/utility/cargo = 3,
+					/obj/item/clothing/suit/gorka/supply = 3,
 					/obj/item/clothing/suit/toggle/jacket/supply = 3,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/shoes/sneakers/black = 3,
 					/obj/item/clothing/gloves/fingerless = 3,
