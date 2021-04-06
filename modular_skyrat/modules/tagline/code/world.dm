@@ -11,7 +11,7 @@
 		hostedby = CONFIG_GET(string/hostedby)
 
 	s += " ("
-	s += "<a href=\"https://discord.gg/hGpZ4Z3\">"
+	s += "<a href=\"[CONFIG_GET(string/discord_link)]\">"
 	s += "Discord"
 	s += ")\]"
 	s += "<br>[CONFIG_GET(string/servertagline)]<br>"
