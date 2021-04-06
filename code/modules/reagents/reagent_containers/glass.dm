@@ -236,8 +236,8 @@
 	custom_materials = list(/datum/material/iron=200)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,70)
-	volume = 70
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
+	volume = 100
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
@@ -261,6 +261,8 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	resistance_flags = FLAMMABLE
 
+#define SQUEEZING_DISPERSAL_PERCENT 0.75
+
 /obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/living/user, params)
 	if(istype(O, /obj/item/mop))
 		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
@@ -271,6 +273,7 @@
 			if(reagents.total_volume == reagents.maximum_volume)
 				to_chat(user, "<span class='warning'>[src] is full!</span>")
 				return
+			O.reagents.remove_any(O.reagents.total_volume*SQUEEZING_DISPERSAL_PERCENT)
 			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
 			to_chat(user, "<span class='notice'>You squeeze the liquids from [O] to [src].</span>")
 		else
@@ -287,6 +290,8 @@
 		user.put_in_hands(new /obj/item/bot_assembly/cleanbot)
 	else
 		..()
+
+#undef SQUEEZING_DISPERSAL_PERCENT
 
 /obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot)
 	..()
