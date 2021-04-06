@@ -654,6 +654,51 @@
 	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
+//Orville+
+/datum/loadout_item/uniform/job/trekcptorv
+	name = "ORV - captain"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv/captain
+	restricted_roles = list("Captain")
+
+/datum/loadout_item/uniform/job/trekcmdorv_medsci
+	name = "ORV - cmd - med/sci"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv/medsci
+	restricted_roles = list("Research Director","Chief Medical Officer")
+
+/datum/loadout_item/uniform/job/trekcmdorv_engsec
+	name = "ORV - cmd - ops/sec"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv/engsec
+	restricted_roles = list("Head of Security","Chief Engineer","Quartermaster")
+
+/datum/loadout_item/uniform/job/trekcmdorv
+	name = "ORV - cmd"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv
+	restricted_desc = "Heads of Staff"
+	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
+
+/datum/loadout_item/uniform/job/trekmedsciorv
+	name = "ORV - med/sci"
+	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/orv
+	restricted_desc = "Medical and Science"
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/uniform/job/trekengorv
+	name = "ORV - ops/sec"
+	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/orv
+	restricted_desc = "Engineering, Security, and Cargo"
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
+/datum/loadout_item/uniform/job/trekservorv
+	name = "ORV - service"
+	path = /obj/item/clothing/under/trek/modular_skyrat/orv/service
+	restricted_desc = "Service"
+	restricted_roles = list("Assistant", "Bartender", "Botanist", "Cook", "Curator", "Janitor", "Clown", "Mime", "Lawyer")
+
+/datum/loadout_item/uniform/job/trekadjtorv
+	name = "ORV - assistant"
+	path = /obj/item/clothing/under/trek/modular_skyrat/orv
+	restricted_roles = list("Assistant")
+
 //TheMotionPicture
 /*/datum/loadout_item/trekfedutil
 	name = "TMP uniform"
