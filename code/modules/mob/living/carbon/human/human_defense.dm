@@ -478,7 +478,7 @@
 	if(!.)
 		return
 	//SKYRAT EDIT BEGIN: MAKES POWERFUL SHOCKS HAVE A CHANCE TO STOP YOUR HEART. DANGER 
-	if(can_heartattack && !(flags & SHOCK_ILLUSION) && shock_damage >= 70)
+	if(can_heartattack() && !(flags & SHOCK_ILLUSION) && shock_damage >= 70)
 		if(shock_damage * siemens_coeff >= 1 && prob(30))//Higher chance to disrupt the pacemaker cells
 			var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 			heart.Stop()
