@@ -134,7 +134,7 @@
 	color = "#330000"
 	boozepwr = 66
 	quality = DRINK_FANTASTIC
-	taste_description = "sin"
+	taste_description = "overpowering sweetness with a touch of sourness, followed by iron and the sensation of a warm summer breeze"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "sins_delight"
 	glass_name = "Sin's Delight"
