@@ -1,6 +1,6 @@
 /obj/item/melee/classic_baton/peacekeeper
 	name = "nightstick"
-	desc = "A metal-plastic bat, looks like it would REALLY hurt."
+	desc = "A firm rubber truncheon, looks like it would knock the wind out of you."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	icon_state = "peacekeeper_baton"
 	inhand_icon_state = "peacekeeper_baton"
