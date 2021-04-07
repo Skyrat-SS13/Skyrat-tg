@@ -20,7 +20,7 @@
 /obj/effect/accelerated_particle/powerful
 	movement_range = 20
 	energy = 50
-
+	color = COLOR_RED
 
 /obj/effect/accelerated_particle/New(loc)
 	..()

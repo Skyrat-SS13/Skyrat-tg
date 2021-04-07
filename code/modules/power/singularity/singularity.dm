@@ -38,12 +38,13 @@
 
 /obj/singularity/Initialize(mapload, starting_energy = 50)
 	. = ..()
-
+	//SKYRAT EDIT ADDITION BEGIN
 	new /obj/effect/singularity_creation(loc)
 
 	addtimer(CALLBACK(src, .proc/make_visible), 62)
 
 	energy = starting_energy
+	//SKYRAT EDIT END
 
 	START_PROCESSING(SSobj, src)
 	AddElement(/datum/element/point_of_interest)
