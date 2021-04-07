@@ -60,7 +60,7 @@
 /obj/machinery/particle_accelerator/control_box/update_icon_state()
 	. = ..()
 	if(active)
-		icon_state = "control_boxp1"
+		icon_state = "control_boxp[strength]"
 	else
 		if(use_power)
 			if(assembled)
@@ -81,13 +81,13 @@
 		var/obj/structure/particle_accelerator/part = CP
 		part.strength = strength
 		part.update_icon()
+		update_appearance()
 
 /obj/machinery/particle_accelerator/control_box/proc/add_strength(s)
 	if(assembled && (strength < strength_upper_limit))
 		strength++
 		strength_change()
 
-		message_admins("PA Control Computer increased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer increased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("increased to <font color='red'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
 
@@ -96,7 +96,6 @@
 		strength--
 		strength_change()
 
-		message_admins("PA Control Computer decreased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer decreased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("decreased to <font color='green'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_SINGULO)
 
@@ -237,10 +236,15 @@
 					did_something = TRUE
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(W.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
-				user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
-					"<span class='notice'>You remove some wires.</span>")
-				construction_state = PA_CONSTRUCTION_UNWIRED
-				did_something = TRUE
+				var/confirm = alert(user, "Do you wish to access the wiring or remove it?", "Do what?", "Access", "Remove")
+				if(confirm == "Access")
+					wires.interact(user)
+					return
+				else
+					user.visible_message("[user.name] removes some wires from the [name].", \
+						"You remove some wires.")
+					construction_state = PA_CONSTRUCTION_UNWIRED
+					did_something = TRUE
 			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
 				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
 					"<span class='notice'>You close the access panel.</span>")
