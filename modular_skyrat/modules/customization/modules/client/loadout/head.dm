@@ -105,6 +105,14 @@
 	name = "Cowboy Hat, Black"
 	path = /obj/item/clothing/head/cowboyhat/black
 
+/datum/loadout_item/head/cowboyhat/blackwide
+	name = "Wide Cowboy Hat, Black"
+	path = /obj/item/clothing/head/cowboyhat/blackwide
+
+/datum/loadout_item/head/cowboyhat/wide
+	name = "Wide Cowboy Hat, Brown"
+	path = /obj/item/clothing/head/cowboyhat/wide
+
 /datum/loadout_item/head/cowboyhat/white
 	name = "Cowboy Hat, White"
 	path = /obj/item/clothing/head/cowboyhat/white
@@ -160,6 +168,12 @@
 /datum/loadout_item/head/job/cowboyhat/sec
 	name = "Cowboy Hat, Security"
 	path = /obj/item/clothing/head/cowboyhat/sec
+	restricted_desc = "Security"
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
+
+/datum/loadout_item/head/job/cowboyhat/secwide
+	name = "Wide Cowboy Hat, Security"
+	path = /obj/item/clothing/head/cowboyhat/widesec
 	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
 
