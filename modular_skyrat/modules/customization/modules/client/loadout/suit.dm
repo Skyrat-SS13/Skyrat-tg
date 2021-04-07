@@ -101,6 +101,12 @@
 	extra_info = LOADOUT_INFO_THREE_COLORS
 	cost = 3
 
+/datum/loadout_item/suit/coat/urban
+	name = "Urban Coat"
+	path = /obj/item/clothing/suit/urban/polychromic
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
 //JACKETS
 /datum/loadout_item/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
@@ -169,6 +175,11 @@
 	name = "Flak Jacket"
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+
+/datum/loadout_item/suit/jacket/cardigan
+	name = "Cardigan"
+	path = /obj/item/clothing/suit/toggle/jacket/cardigan
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 //HOODIES
 /datum/loadout_item/suit/hoodie
