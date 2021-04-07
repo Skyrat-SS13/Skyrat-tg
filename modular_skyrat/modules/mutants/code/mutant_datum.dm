@@ -134,10 +134,10 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	if(!host.mind)
 		var/list/candidates = pollCandidatesForMob("Do you want to play as a mutant?")
-			if(!candidates.len)
-				return
-			var/client/C = pick_n_take(candidates)
-			host.key = C.key
+		if(!candidates.len)
+			return
+		var/client/C = pick_n_take(candidates)
+		host.key = C.key
 	else
 		host.grab_ghost()
 	host.revive(TRUE, TRUE)
