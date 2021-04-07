@@ -236,15 +236,10 @@
 					did_something = TRUE
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(W.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
-				var/confirm = alert(user, "Do you wish to access the wiring or remove it?", "Do what?", "Access", "Remove")
-				if(confirm == "Access")
-					wires.interact(user)
-					return
-				else
-					user.visible_message("[user.name] removes some wires from the [name].", \
-						"You remove some wires.")
-					construction_state = PA_CONSTRUCTION_UNWIRED
-					did_something = TRUE
+				user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
+					"<span class='notice'>You remove some wires.</span>")
+				construction_state = PA_CONSTRUCTION_UNWIRED
+				did_something = TRUE
 			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
 				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
 					"<span class='notice'>You close the access panel.</span>")
