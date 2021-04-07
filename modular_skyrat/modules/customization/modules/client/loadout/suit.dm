@@ -74,6 +74,9 @@
 	name = "Green Hawaiian Shirt"
 	path = /obj/item/clothing/suit/hawaiian_green
 
+/datum/loadout_item/suit/frenchtrench
+	name = "Blue Trenchcoat"
+	path = /obj/item/clothing/suit/frenchtrench
 
 //COATS
 /datum/loadout_item/suit/coat
@@ -95,6 +98,14 @@
 	name = "Brass winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
 
+/datum/loadout_item/suit/coat/korea
+	name = "Eastern winter coat"
+	path = /obj/item/clothing/suit/koreacoat
+
+/datum/loadout_item/suit/coat/czech
+	name = "Modern winter coat"
+	path = /obj/item/clothing/suit/modernwintercoatthing
+
 /datum/loadout_item/suit/coat/poly
 	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
@@ -108,6 +119,10 @@
 /datum/loadout_item/suit/jacket/dutchjacket
 	name = "Dutch Jacket"
 	path = /obj/item/clothing/suit/dutchjacketsr
+
+/datum/loadout_item/suit/jacket/caretaker
+	name = "Caretaker Jacket"
+	path = /obj/item/clothing/suit/victoriantailcoatbutler
 
 /datum/loadout_item/suit/jacket/yakuzajacket
 	name = "Asian Jacket"

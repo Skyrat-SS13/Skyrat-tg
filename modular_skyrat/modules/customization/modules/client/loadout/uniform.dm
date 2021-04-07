@@ -26,6 +26,10 @@
 	name = "Kilt"
 	path = /obj/item/clothing/under/costume/kilt
 
+/datum/loadout_item/uniform/royalkilt
+	name = "Royal Kilt"
+	path = /obj/item/clothing/under/misc/royalkilt
+
 /datum/loadout_item/uniform/poly_kilt
 	name = "Polychromic Kilt"
 	path = /obj/item/clothing/under/misc/poly_kilt
@@ -412,6 +416,10 @@
 	name = "Tactitool Turtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool
 
+/datum/loadout_item/uniform/sweater/tactical1
+	name = "Irish Tactical Sweater"
+	path = /obj/item/clothing/under/misc/tactical1
+
 /datum/loadout_item/uniform/sweater/turtleneck/skirt
 	name = "Tactitool Skirtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool/skirt
@@ -478,6 +486,11 @@
 	name = "Head of security's skirt"
 	path = /obj/item/clothing/under/rank/security/head_of_security/skirt
 	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/uniform/job/seckilt
+	name = "Security Kilt"
+	path = /obj/item/clothing/under/rank/security/blackwatch
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
 
 /datum/loadout_item/uniform/job/bluescrubs
 	name = "Blue Scrubs"
