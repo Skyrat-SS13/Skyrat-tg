@@ -93,3 +93,10 @@
 	desc = "War crimes make people cold, not just on the inside, but on the outside as well, just ask Germany, France, Sweden, Germany again, Russia themselves and Poland, this coat's a touch more eastern, however."
 	icon_state = "chi_korea_coat"
 
+/obj/item/clothing/suit/modernwintercoatthing
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "modern winter coat"
+	desc = "Warm and comfy, the inner fur seems to be removable, not this one though, someone's sewn it in and left the buttons!"
+	icon_state = "modern_winter"
+

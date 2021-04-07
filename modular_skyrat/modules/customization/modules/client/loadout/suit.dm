@@ -102,6 +102,10 @@
 	name = "Eastern winter coat"
 	path = /obj/item/clothing/suit/koreacoat
 
+/datum/loadout_item/suit/coat/czech
+	name = "Modern winter coat"
+	path = /obj/item/clothing/suit/modernwintercoatthing
+
 /datum/loadout_item/suit/coat/poly
 	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
