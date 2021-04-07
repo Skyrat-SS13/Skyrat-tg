@@ -162,3 +162,18 @@
 	name = "Dragon (alt 2)"
 	icon_state = "dragonalt2"
 	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/harpywings
+	name = "Harpy"
+	icon_state = "harpy"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/harpywingsalt1
+	name = "Harpy (alt 1)"
+	icon_state = "harpyalt"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/harpywingsalt2
+	name = "Harpy (Bat)"
+	icon_state = "harpybat"
+	color_src = USE_ONE_COLOR
