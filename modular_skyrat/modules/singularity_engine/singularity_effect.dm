@@ -5,6 +5,8 @@
 	icon_state = ""
 	anchored = TRUE
 	opacity = FALSE
+	pixel_x = -32
+	pixel_y = -32
 	var/timeleft = 62
 
 /obj/effect/singularity_creation/Initialize()
