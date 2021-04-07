@@ -28,7 +28,7 @@
 
 /datum/loadout_item/uniform/royalkilt
 	name = "Royal Kilt"
-	path = obj/item/clothing/under/misc/royalkilt
+	path = /obj/item/clothing/under/misc/royalkilt
 
 /datum/loadout_item/uniform/poly_kilt
 	name = "Polychromic Kilt"
@@ -418,7 +418,7 @@
 
 /datum/loadout_item/uniform/sweater/tactical1
 	name = "Irish Tactical Sweater"
-	path = obj/item/clothing/under/misc/tactical1
+	path = /obj/item/clothing/under/misc/tactical1
 
 /datum/loadout_item/uniform/sweater/turtleneck/skirt
 	name = "Tactitool Skirtleneck"
