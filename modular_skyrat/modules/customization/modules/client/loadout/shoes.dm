@@ -87,3 +87,9 @@
 /datum/loadout_item/shoes/cowboyboots/blackproper
 	name = "Cowboy Boots, Hangman Black"
 	path = /obj/item/clothing/shoes/cowboy/black
+
+/datum/loadout_item/shoes/junhle
+	name = "Brown Jackboots"
+	path = /obj/item/clothing/shoes/jungleboots
+
+
