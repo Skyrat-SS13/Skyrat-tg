@@ -179,6 +179,18 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/uniform/suit/vice
+	name = "Grey and Black suit"
+	path = /obj/item/clothing/under/misc/vice_officer
+
+/datum/loadout_item/uniform/suit/femblack
+	name = "Feminine Suit"
+	path = /obj/item/clothing/under/suit/black/female
+
+/datum/loadout_item/uniform/suit/femblackskirt
+	name = "Executive Skirt"
+	path = /obj/item/clothing/under/suit/black_really/skirt
+
 /datum/loadout_item/uniform/suit/cybersleek	//Cyberpunk P.I. Outfit
 	name = "Sleek Modern Coat"
 	path = /obj/item/clothing/under/costume/cybersleek
@@ -211,6 +223,11 @@
 	name = "Dutch Suit"
 	path = /obj/item/clothing/under/costume/dutch
 	cost = 3
+
+/datum/loadout_item/uniform/suit/arthur
+	name = "Dutch Assistant Suit"
+	path = /obj/item/clothing/under/costume/arthur
+	cost = 2
 
 //SKIRTS
 /datum/loadout_item/uniform/skirt
@@ -356,6 +373,10 @@
 	name = "Ripped Jeans"
 	path = /obj/item/clothing/under/pants/jeanripped
 
+/datum/loadout_item/uniform/pants/yakuza
+	name = "Japanese Jeans"
+	path = /obj/item/clothing/under/costume/yakuza
+
 //SHORTS
 /datum/loadout_item/uniform/shorts
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SHORTS
@@ -441,7 +462,7 @@
 /datum/loadout_item/uniform/job/navyblueuniformofficer
  	name = "Security officer navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/officer/formal
- 	restricted_roles = list("Security Officer")
+ 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant")
 
 /datum/loadout_item/uniform/job/navyblueuniformwarden
 	name = "Warden navyblue uniform"
@@ -451,7 +472,7 @@
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
 	path = /obj/item/clothing/under/rank/security/officer/skirt
-	restricted_roles = list("Security Officer", "Warden", "Head of Security")
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant") //i want a femboy sergeant to shove a baton up my ass
 
 /datum/loadout_item/uniform/job/hosskirt
 	name = "Head of security's skirt"
@@ -461,25 +482,25 @@
 /datum/loadout_item/uniform/job/bluescrubs
 	name = "Blue Scrubs"
 	path = /obj/item/clothing/under/rank/medical/doctor/blue
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
 /datum/loadout_item/uniform/job/greenscrubs
 	name = "Green Scrubs"
 	path = /obj/item/clothing/under/rank/medical/doctor/green
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
 /datum/loadout_item/uniform/job/purplescrubs
 	name = "Purple Scrubs"
 	path = /obj/item/clothing/under/rank/medical/doctor/purple
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
 /datum/loadout_item/uniform/job/nursesuit
 	name = "Nurse Suit"
 	path = /obj/item/clothing/under/rank/medical/doctor/nurse
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
 //JOB - UTILITY
@@ -497,7 +518,7 @@
 /datum/loadout_item/uniform/job/utility_med
 	name = "Medical Utility Uniform"
 	path = /obj/item/clothing/under/utility/med
-	restricted_roles = list("Medical Doctor", "Paramedic", "Chemist", "Virologist", "Geneticist", "Chief Medical Officer")
+	restricted_roles = list("Medical Doctor", "Paramedic", "Chemist", "Virologist", "Geneticist", "Security Medic", "Chief Medical Officer")
 	restricted_desc = "Medical"
 
 /datum/loadout_item/uniform/job/utility_sci
@@ -515,7 +536,7 @@
 /datum/loadout_item/uniform/job/utility_sec
 	name = "Security Utility Uniform"
 	path = /obj/item/clothing/under/utility/sec
-	restricted_roles = list("Security Officer", "Detective", "Warden", "Blueshield", "Head of Security")
+	restricted_roles = list("Security Officer", "Detective", "Warden", "Blueshield", "Security Medic","Security Sergeant", "Head of Security") //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 	restricted_desc = "Security"
 
 /datum/loadout_item/uniform/job/utility_com
@@ -533,110 +554,150 @@
 /datum/loadout_item/uniform/job/para_red
 	name = "Red Paramedic Jumpsuit"
 	path = /obj/item/clothing/under/utility/para_red
-	restricted_roles = list("Chief Medical Officer", "Paramedic")
+	restricted_roles = list("Chief Medical Officer", "Paramedic", "Security Medic") //BRO RED USED TO BE THE SEC COLOUR
 	restricted_desc = "Medical First Responders"
 
-/*// Trekie things
+// Trekie things
 //TOS
-/datum/loadout_item/trekcmdtos
-	name = "TOS uniform, cmd"
-	category = SLOT_W_UNIFORM
+/datum/loadout_item/uniform/job/trek/trekcmdtos
+	name = "TOS - cmd"
 	path = /obj/item/clothing/under/trek/command
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
 
-/datum/loadout_item/trekmedscitos
-	name = "TOS uniform, med/sci"
-	category = SLOT_W_UNIFORM
+/datum/loadout_item/uniform/job/trek/trekmedscitos
+	name = "TOS - med/sci"
 	path = /obj/item/clothing/under/trek/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
 
-/datum/loadout_item/trekengtos
-	name = "TOS uniform, ops/sec"
-	category = SLOT_W_UNIFORM
+/datum/loadout_item/uniform/job/trek/trekengtos
+	name = "TOS - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
- //handled by modular skyrat code as reskins
+//handled by modular skyrat code as reskins
 //TNG
-/datum/loadout_item/trekcmdtng
-	name = "TNG uniform, cmd"
-	category = SLOT_W_UNIFORM
+/datum/loadout_item/uniform/job/trek/trekcmdtng
+	name = "TNG - cmd"
 	path = /obj/item/clothing/under/trek/command/next
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
-/datum/loadout_item/trekmedscitng
-	name = "TNG uniform, med/sci"
-	category = SLOT_W_UNIFORM
+
+/datum/loadout_item/uniform/job/trekmedscitng
+	name = "TNG - med/sci"
 	path = /obj/item/clothing/under/trek/medsci/next
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
-/datum/loadout_item/trekengtng
-	name = "TNG uniform, ops/sec"
-	category = SLOT_W_UNIFORM
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/uniform/job/trekengtng
+	name = "TNG - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec/next
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
 //VOY
-/datum/loadout_item/trekcmdvoy
-	name = "VOY uniform, cmd"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/trek/command/voy
+/datum/loadout_item/uniform/job/trekcmdvoy
+	name = "VOY - cmd"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/voy
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
-/datum/loadout_item/trekmedscivoy
-	name = "VOY uniform, med/sci"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/trek/medsci/voy
+
+/datum/loadout_item/uniform/job/trekmedscivoy
+	name = "VOY - med/sci"
+	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/voy
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
-/datum/loadout_item/trekengvoy
-	name = "VOY uniform, ops/sec"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/trek/engsec/voy
+	restricted_roles = list("Chief Medical Officer","Security Medic","Medical Doctor","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/uniform/job/trekengvoy
+	name = "VOY - ops/sec"
+	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/voy
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
 //DS9
-/datum/loadout_item/trekcmdds9
-	name = "DS9 uniform, cmd"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/trek/command/ds9
+/datum/loadout_item/uniform/job/trekcmdds9
+	name = "DS9 - cmd"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/ds9
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
-/datum/loadout_item/trekmedscids9
-	name = "DS9 uniform, med/sci"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/trek/medsci/ds9
+
+/datum/loadout_item/uniform/job/trekmedscids9
+	name = "DS9 - med/sci"
+	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/ds9
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
-/datum/loadout_item/trekengds9
-	name = "DS9 uniform, ops/sec"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/trek/engsec/ds9
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Security Medic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/uniform/job/trekengds9
+	name = "DS9 - ops/sec"
+	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/ds9
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
 //ENT
-/datum/loadout_item/trekcmdent
-	name = "ENT uniform, cmd"
-	category = SLOT_W_UNIFORM
+/datum/loadout_item/uniform/job/trekcmdent
+	name = "ENT - cmd"
 	path = /obj/item/clothing/under/trek/command/ent
 	restricted_desc = "Heads of Staff"
 	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
-/datum/loadout_item/trekmedscient
-	name = "ENT uniform, med/sci"
-	category = SLOT_W_UNIFORM
+
+/datum/loadout_item/uniform/job/trekmedscient
+	name = "ENT - med/sci"
 	path = /obj/item/clothing/under/trek/medsci/ent
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
-/datum/loadout_item/trekengent
-	name = "ENT uniform, ops/sec"
-	category = SLOT_W_UNIFORM
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Security Medic","Paramedic","Chemist","Virologist","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/uniform/job/trekengent
+	name = "ENT - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec/ent
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
-*/
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
+//Orville+
+/datum/loadout_item/uniform/job/trekcptorv
+	name = "ORV - captain"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv/captain
+	restricted_roles = list("Captain")
+
+/datum/loadout_item/uniform/job/trekcmdorv_medsci
+	name = "ORV - cmd - med/sci"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv/medsci
+	restricted_roles = list("Research Director","Chief Medical Officer")
+
+/datum/loadout_item/uniform/job/trekcmdorv_engsec
+	name = "ORV - cmd - ops/sec"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv/engsec
+	restricted_roles = list("Head of Security","Chief Engineer","Quartermaster")
+
+/datum/loadout_item/uniform/job/trekcmdorv
+	name = "ORV - cmd"
+	path = /obj/item/clothing/under/trek/modular_skyrat/command/orv
+	restricted_desc = "Heads of Staff"
+	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
+
+/datum/loadout_item/uniform/job/trekmedsciorv
+	name = "ORV - med/sci"
+	path = /obj/item/clothing/under/trek/modular_skyrat/medsci/orv
+	restricted_desc = "Medical and Science"
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/uniform/job/trekengorv
+	name = "ORV - ops/sec"
+	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/orv
+	restricted_desc = "Engineering, Security, and Cargo"
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
+/datum/loadout_item/uniform/job/trekservorv
+	name = "ORV - service"
+	path = /obj/item/clothing/under/trek/modular_skyrat/orv/service
+	restricted_desc = "Service"
+	restricted_roles = list("Assistant", "Bartender", "Botanist", "Cook", "Curator", "Janitor", "Clown", "Mime", "Lawyer")
+
+/datum/loadout_item/uniform/job/trekadjtorv
+	name = "ORV - assistant"
+	path = /obj/item/clothing/under/trek/modular_skyrat/orv
+	restricted_roles = list("Assistant")
 
 //TheMotionPicture
 /*/datum/loadout_item/trekfedutil
@@ -650,13 +711,13 @@
 							"Cargo Technician", "Shaft Miner")
 
 /datum/loadout_item/trekfedtrainee
-	name = "TMP uniform, trainee"
+	name = "TMP - trainee"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/trek/fedutil/trainee
 	restricted_roles = list("Assistant", "Janitor", "Cargo Technician")
 
 /datum/loadout_item/trekfedservice
-	name = "TMP uniform, service"
+	name = "TMP - service"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/trek/fedutil/service
 	restricted_desc = "Service and Civilian, barring Clown, Mime and Lawyer"
