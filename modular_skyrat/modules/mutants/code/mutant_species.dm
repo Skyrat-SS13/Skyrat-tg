@@ -1,4 +1,4 @@
-#define REGENERATION_DELAY 30 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
+#define REGENERATION_DELAY 5 SECONDS  // After taking damage, how long it takes for automatic regeneration to begin
 
 /datum/species/mutant
 	name = "High-Functioning mutant"
@@ -6,7 +6,7 @@
 	say_mod = "moans"
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	species_traits = list(NOBLOOD,NOZOMBIE,HAS_FLESH,HAS_BONE,NOEYESPRITES,LIPS,HAIR)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_NOMETABOLISM,TRAIT_TOXIMMUNE,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_LIMBATTACHMENT,TRAIT_NOBREATH,TRAIT_NODEATH,TRAIT_FAKEDEATH,TRAIT_NOCLONELOSS)
+	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_NOMETABOLISM,TRAIT_TOXIMMUNE,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_LIMBATTACHMENT,TRAIT_NOBREATH,TRAIT_FAKEDEATH,TRAIT_NOCLONELOSS)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	mutanttongue = /obj/item/organ/tongue/zombie
 	var/static/list/spooks = list('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg','sound/hallucinations/veryfar_noise.ogg','sound/hallucinations/wail.ogg')
@@ -146,21 +146,33 @@
 		return
 	else if(isliving(target))
 		if(ishuman(target))
-			try_to_mutant_infect(target)
+			try_to_mutant_infect(target, user = user)
 		else
 			check_feast(target, user)
 
 #define INFECT_CHANCE 50
 
-/proc/try_to_mutant_infect(mob/living/carbon/human/target, forced = FALSE)
+/proc/try_to_mutant_infect(mob/living/carbon/human/target, forced = FALSE, mob/user)
 	CHECK_DNA_AND_SPECIES(target)
+
+	if(forced)
+		target.AddComponent(/datum/component/mutant_infection)
 
 	if(NOZOMBIE in target.dna.species.species_traits)
 		// cannot infect any NOZOMBIE subspecies (such as high functioning
 		// mutants)
 		return FALSE
 
-	if(!target.can_inject() && !forced && HAS_TRAIT(target, TRAIT_MUTANT_IMMUNE) && !prob(INFECT_CHANCE))
+	if(target.GetComponent(/datum/component/mutant_infection))
+		return FALSE
+
+	if(!target.can_inject(user))
+		return FALSE
+
+	if(prob(INFECT_CHANCE))
+		return FALSE
+
+	if(HAS_TRAIT(target, TRAIT_MUTANT_IMMUNE))
 		return FALSE
 
 	target.AddComponent(/datum/component/mutant_infection)
@@ -170,9 +182,8 @@
 
 /proc/try_to_mutant_cure(mob/living/carbon/target) //For things like admin procs
 	var/datum/component/mutant_infection/infection = target.GetComponent(/datum/component/mutant_infection)
-	if(!infection)
-		return
-	qdel(infection)
+	if(infection)
+		qdel(infection)
 
 /obj/item/mutant_hand/proc/check_feast(mob/living/target, mob/living/user)
 	if(target.stat == DEAD)

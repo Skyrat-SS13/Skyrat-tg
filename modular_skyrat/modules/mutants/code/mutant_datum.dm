@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 
 #define CURE_TIME 10 SECONDS
 #define REVIVE_TIME_LOWER 2 MINUTES
-#define REVIVE_TIME_UPPER 4 MINUTES
+#define REVIVE_TIME_UPPER 3 MINUTES
 #define IMMUNITY_LOWER 1 MINUTES
 #define IMMUNITY_UPPER 3 MINUTES
 #define RNA_REFRESH_TIME 2 MINUTES //How soon can we extract more RNA?
@@ -123,6 +123,9 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 
 /datum/component/mutant_infection/proc/mutant_death()
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
+	to_chat(host, "<span class='cultlarge'>You can feel your heart stopping, but something isn't right... \
+		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
+		not even death can stop, you will rise again!</span>")
 	timer_id = addtimer(CALLBACK(src, .proc/regenerate), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/regenerate()
@@ -130,7 +133,11 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 		outside as your tissues knit and reknit.</span>")
 	playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	if(!host.mind)
-		offer_control(host)
+		var/list/candidates = pollCandidatesForMob("Do you want to play as a mutant?")
+			if(!candidates.len)
+				return
+			var/client/C = pick_n_take(candidates)
+			host.key = C.key
 	else
 		host.grab_ghost()
 	host.revive(TRUE, TRUE)
