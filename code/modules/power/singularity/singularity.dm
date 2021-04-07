@@ -12,6 +12,8 @@
 	light_range = 6
 	appearance_flags = LONG_GLIDE
 
+	invisibility = INVISIBILITY_MAXIMUM //SKYRAT EDIT ADDITION
+
 	/// The singularity component itself.
 	/// A weak ref in case an admin removes the component to preserve the functionality.
 	var/datum/weakref/singularity_component
@@ -37,7 +39,9 @@
 /obj/singularity/Initialize(mapload, starting_energy = 50)
 	. = ..()
 
-	flick('modular_skyrat/modules/aesthetics/singularity/singularity_creation.dmi', src) //SKYRAT EDIT ADDITION
+	new /obj/effect/singularity_creation(loc)
+
+	addtimer(CALLBACK(src, .proc/make_visible), 62)
 
 	energy = starting_energy
 
