@@ -516,6 +516,28 @@
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
+/datum/loadout_item/uniform/job/gorka_cargo
+	name = "Supply Gorka"
+	path = /obj/item/clothing/under/utility/cargo/gorka
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
+/datum/loadout_item/uniform/job/turtleneck_cargo
+	name = "Supply Turtleneck"
+	path = /obj/item/clothing/under/utility/cargo/turtleneck
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
+/datum/loadout_item/uniform/job/gorka_qm
+	name = "Quartermaster's Gorka"
+	path = /obj/item/clothing/under/utility/cargo/gorka/head
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/turtleneck_qm
+	name = "Quartermaster's Turtleneck"
+	path = /obj/item/clothing/under/utility/cargo/turtleneck/head
+	restricted_roles = list("Quartermaster")
+
 //JOB - UTILITY
 /datum/loadout_item/uniform/job/utility
 	name = "Utility Uniform"
