@@ -66,8 +66,8 @@
 /obj/item/clothing/under/rank/security/blackwatch
 	name = "security kilt"
 	desc = "Youve heard about the B-men, the cruel RUC. Well theres another regiment the devil calls his own. Theyre known as the Black Watch commissioned by the Crown"
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniforms.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "blackwatch"
 	inhand_icon_state = "kilt"
 	armor = list(MELEE = 30, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 10, ACID = 20, WOUND = 10)
