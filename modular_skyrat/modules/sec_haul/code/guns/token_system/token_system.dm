@@ -118,7 +118,7 @@
 	name = "primary armament holochip"
 	desc = "A holochip used in any armament vendor, this is for main arms. Do not bend."
 	icon_state = "token_primary"
-	minimum_sec_level = SEC_LEVEL_AMBER
+	minimum_sec_level = SEC_LEVEL_RED
 
 /obj/item/armament_token/primary/get_available_gunsets()
   return list(
@@ -154,10 +154,10 @@
 
 /obj/item/armament_token/energy/get_available_gunsets()
   return list(
-    /obj/item/storage/box/gunset/blaster = image(
+    /obj/item/storage/box/gunset/laser = image(
       icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-      icon_state = "blaster"
-     )
+      icon_state = "laser"
+     )	 
   )
 
 /obj/item/storage/box/armament_tokens_sidearm

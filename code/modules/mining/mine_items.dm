@@ -73,7 +73,7 @@
 	desc = "Used to call and send the mining shuttle."
 	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
-	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
+	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_away_rockplanet" //SKYRAT EDIT CHANGE
 	no_destination_swap = TRUE
 	var/static/list/dumb_rev_heads = list()
 

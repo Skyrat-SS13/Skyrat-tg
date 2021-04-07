@@ -29,6 +29,18 @@
 	attack_verb_continuous = list("cuddles", "petpatts", "wigglepurrs")
 	attack_verb_simple = list("cuddle", "petpatt", "wigglepurr")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
+	gender = FEMALE
+	
+/obj/item/toy/plush/fermis/chen
+	name = "securicat plushie"
+	desc = "The official stuffed companion to the medcat plushie!! It resembles a certain securicat. You get the impression she's encouraging you to be brave and protect those you care for."
+	icon_state = "plushie_chen"
+	inhand_icon_state = "plushie_chen"
+	attack_verb_continuous = list("snuggles", "meowhuggies", "wigglepurrs")
+	attack_verb_simple = list("snuggle", "meowhuggie", "wigglepurr")
+	special_desc_requirement = EXAMINE_CHECK_JOB
+	special_desc_jobs = list("Assistant", "Head of Security")
+	special_desc = "There's a pocket under the coat hiding a tiny picture of the medcat plushie and a tinier ribbon diamond ring. D'awww."
 
 /obj/item/toy/plush/sechound
 	name = "Sechound plushie"
@@ -100,6 +112,7 @@
 	attack_verb_continuous = list("flutters", "flaps", "squeaks")
 	attack_verb_simple = list("flutter", "flap", "squeak")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/mothsqueak.ogg'= 1)
+	gender = MALE
 
 /obj/item/toy/plush/leaplush
 	name = "Suspicious deer plushie"
@@ -110,6 +123,7 @@
 	attack_verb_continuous = list("headbutts", "plaps")
 	attack_verb_simple = list("headbutt", "plap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/leaplush.ogg' = 1)
+	gender = FEMALE
 
 /obj/item/toy/plush/sarmieplush
 	name = "Cosplayer plushie"
@@ -120,6 +134,7 @@
 	attack_verb_continuous = list("baps")
 	attack_verb_simple = list("bap")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+	gender = MALE
 
 /obj/item/toy/plush/oglaplush
 	name = "Suspicious lizzy"
@@ -130,6 +145,7 @@
 	attack_verb_continuous = list("claws", "hisses", "tail slaps")
 	attack_verb_simple = list("claw", "hiss", "tail slap")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
+	gender = MALE
 
 /obj/item/toy/plush/arcplush
 	name = "Familiar lizard plushie"
@@ -152,6 +168,7 @@
 	attack_verb_simple = list("headbutt", "plap")
 	squeak_override = list('sound/weapons/punch1.ogg'= 1)
 	young = 1 //No.
+	gender = FEMALE
 
 /obj/item/toy/plush/szaplush
 	name = "Suspicious spider"
