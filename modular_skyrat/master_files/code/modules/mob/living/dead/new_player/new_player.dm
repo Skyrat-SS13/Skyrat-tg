@@ -143,12 +143,12 @@
 		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
 		show_titlescreen()
 
-	if(href_list["late_join"])
+	if(href_list["lobby_join"])
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, "<span class='boldwarning'>The round is either not ready, or has already finished...</span>")
 			return
 
-		if(href_list["late_join"] == "override")
+		if(href_list["lobby_join"] == "override")
 			LateChoices()
 			return
 
