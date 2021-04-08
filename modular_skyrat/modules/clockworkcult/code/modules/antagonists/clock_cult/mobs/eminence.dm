@@ -1,7 +1,7 @@
 /mob/living/simple_animal/eminence
 	name = "\the Eminence"
 	desc = "A glowing ball of light."
-	icon = 'icons/effects/clockwork_effects.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/effects/clockwork_effects.dmi'
 	icon_state = "eminence"
 	mob_biotypes = list(MOB_SPIRIT)
 	incorporeal_move = INCORPOREAL_MOVE_EMINENCE
@@ -103,7 +103,7 @@
 /obj/effect/proc_holder/spell/targeted/eminence
 	invocation = "none"
 	invocation_type = "none"
-	action_icon = 'icons/mob/actions/actions_clockcult.dmi'
+	action_icon = 'modular_skyrat/modules/clockworkcult/icons/mob/actions/actions_clockcult.dmi'
 	action_icon_state = "ratvarian_spear"
 	action_background_icon_state = "bg_clock"
 	clothes_req = FALSE

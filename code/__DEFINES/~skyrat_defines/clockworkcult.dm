@@ -68,6 +68,11 @@ GLOBAL_LIST_EMPTY(servant_spawns) //Servants of Ratvar spawn here
 #define COG_EXPOSED 3
 #define ACCESS_CLOCKCULT 251
 
+/atom/movable/screen/alert/status_effect/interdiction
+	name = "Interdicted"
+	desc = "I don't think I am meant to go this way."
+	icon_state = "inathneqs_endowment"
+
 /datum/language/ratvar
 	name = "Ratvarian"
 	desc = "A timeless language full of power and incomprehensible to the unenlightened."

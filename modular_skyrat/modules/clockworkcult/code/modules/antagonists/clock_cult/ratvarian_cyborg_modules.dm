@@ -1,7 +1,7 @@
 /obj/item/clock_module
 	name = "ratvarian borg module"
 	desc = "cool."
-	icon = 'icons/mob/actions/actions_clockcult.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/mob/actions/actions_clockcult.dmi'
 	icon_state = "Replicant"
 	w_class = WEIGHT_CLASS_NORMAL
 	item_flags = NOBLUDGEON

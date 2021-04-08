@@ -142,7 +142,7 @@
 		var/obj/item/I = user.get_active_held_item()
 		if (do_mob(user,I,5))
 			to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
-			playsound(src, 'sound/weapons/bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
+			playsound(src, 'modular_skyrat/modules/clockworkcult/sounds/weapons/bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
 			chamber_round()
 	update_icon()
 
@@ -164,7 +164,7 @@
 	name = "energy bolt"
 	desc = "An arrow made from a strange energy."
 	icon_state = "arrow_redlight"
-	projectile_type = /obj/item/projectile/energy/clockbolt
+	projectile_type = /obj/projectile/energy/clockbolt
 
 /obj/projectile/energy/clockbolt
 	name = "energy bolt"

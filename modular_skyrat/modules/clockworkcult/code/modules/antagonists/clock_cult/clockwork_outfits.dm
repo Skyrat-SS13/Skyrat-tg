@@ -10,6 +10,8 @@
 	belt = /obj/item/storage/belt/utility/servant
 	var/weapon = null
 
+
+
 /datum/outfit/clockcult/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(weapon)

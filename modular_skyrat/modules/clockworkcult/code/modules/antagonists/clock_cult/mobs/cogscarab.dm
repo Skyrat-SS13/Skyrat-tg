@@ -23,8 +23,6 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	chat_color = LIGHT_COLOR_CLOCKWORK
 	initial_language_holder = /datum/language_holder/clockmob
 
-/mob/living/simple_animal/drone/cogscarab/do_after_coefficent() // This gets added to the delay on a do_after, default 1
-	return 0.6
 
 //No you can't go weilding guns like that.
 /mob/living/simple_animal/drone/cogscarab/Initialize()
@@ -63,7 +61,7 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	var/be_drone = alert("Become a cogscarab? (Warning, You can no longer be cloned!)",,"Yes","No")
 	if(be_drone == "No" || QDELETED(src) || !isobserver(user))
 		return
-	var/mob/living/simple_animal/drone/D = new drone_type(get_turf(loc))
+	var/mob/living/simple_animal/drone/cogscarab/D = new /mob/living/simple_animal/drone/cogscarab
 	D.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
 	D.key = user.key
 	add_servant_of_ratvar(D, silent=TRUE)

@@ -1,3 +1,100 @@
+/obj/item/clothing/under/chameleon/ratvar
+	name = "ratvarian jumpsuit"
+	desc = "A tough jumpsuit woven from alloy threads. It can take on the appearance of other jumpsuits."
+
+/obj/item/wrench/brass
+	name = "brass wrench"
+	desc = "A brass wrench. It's faintly warm to the touch."
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	icon_state = "wrench_brass"
+	toolspeed = 0.5
+
+/obj/item/screwdriver/brass
+	name = "brass screwdriver"
+	desc = "A screwdriver made of brass. The handle feels freezing cold."
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	icon_state = "screwdriver_brass"
+	toolspeed = 0.5
+	random_color = FALSE
+
+/obj/item/weldingtool/experimental/brass
+	name = "brass welding tool"
+	desc = "A brass welder that seems to constantly refuel itself. It is faintly warm to the touch."
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	icon_state = "brasswelder"
+
+/obj/item/crowbar/brass
+	name = "brass crowbar"
+	desc = "A brass crowbar. It feels faintly warm to the touch."
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	icon_state = "crowbar_brass"
+	toolspeed = 0.5
+
+/obj/item/wirecutters/brass
+	name = "brass wirecutters"
+	desc = "A pair of wirecutters made of brass. The handle feels freezing cold to the touch."
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	icon_state = "cutters_brass"
+	random_color = FALSE
+	toolspeed = 0.5
+
+/obj/item/storage/belt/utility/servant
+	var/slab = null
+	var/replicator = null
+
+/obj/item/storage/belt/utility/servant/drone
+	slab = /obj/item/clockwork/clockwork_slab
+	replicator = /obj/item/clockwork/replica_fabricator
+
+/obj/item/storage/belt/utility/servant/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_combined_w_class = 25
+	STR.max_items = 7
+	var/static/list/can_hold = typecacheof(list(
+		/obj/item/crowbar,
+		/obj/item/screwdriver,
+		/obj/item/weldingtool,
+		/obj/item/wirecutters,
+		/obj/item/wrench,
+		/obj/item/multitool,
+		/obj/item/flashlight,
+		/obj/item/stack/cable_coil,
+		/obj/item/t_scanner,
+		/obj/item/analyzer,
+		/obj/item/geiger_counter,
+		/obj/item/extinguisher/mini,
+		/obj/item/radio,
+		/obj/item/clothing/gloves,
+		/obj/item/holosign_creator/atmos,
+		/obj/item/holosign_creator/engineering,
+		/obj/item/forcefield_projector,
+		/obj/item/assembly/signaler,
+		/obj/item/lightreplacer,
+		/obj/item/construction/rcd,
+		/obj/item/pipe_dispenser,
+		/obj/item/inducer,
+		/obj/item/plunger,
+		/obj/item/clockwork/clockwork_slab,
+		/obj/item/clockwork/replica_fabricator
+		))
+	STR.can_hold = can_hold
+
+/obj/item/storage/belt/utility/servant/PopulateContents()
+	if(slab)
+		new slab(src)
+	else
+		new/obj/item/multitool(src)
+	if(replicator)
+		new replicator(src)
+
+	new /obj/item/screwdriver/brass(src)
+	new /obj/item/wirecutters/brass(src)
+	new /obj/item/wrench/brass(src)
+	new /obj/item/crowbar/brass(src)
+	new /obj/item/weldingtool/experimental/brass(src)
+
+
 /obj/structure/chair/brass
 	name = "brass chair"
 	desc = "A spinny chair made of brass. It looks uncomfortable."

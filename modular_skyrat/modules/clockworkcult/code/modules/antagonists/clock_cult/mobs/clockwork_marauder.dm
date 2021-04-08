@@ -4,7 +4,7 @@
 /mob/living/simple_animal/clockwork_marauder
 	name = "clockwork marauder"
 	desc = "A brass machine of destruction,"
-	icon = 'icons/mob/clockwork_mobs.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/mob/clockwork_mobs.dmi'
 	icon_state = "clockwork_marauder"
 	icon_dead = "anime_fragment"
 	health = 140
