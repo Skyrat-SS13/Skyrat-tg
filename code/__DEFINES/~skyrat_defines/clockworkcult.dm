@@ -82,7 +82,7 @@ GLOBAL_LIST_EMPTY(servant_spawns) //Servants of Ratvar spawn here
 	spans = list(SPAN_ROBOT)
 	icon_state = "ratvar"
 
-/datum/language/ratvar/scramble(var/input)
+/datum/language/ratvar/scramble(input)
 	. = text2ratvar(input)
 
 
