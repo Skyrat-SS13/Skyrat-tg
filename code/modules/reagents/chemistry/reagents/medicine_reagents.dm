@@ -946,6 +946,9 @@
 	exposed_human.hair_color = "C2F"
 	exposed_human.facial_hair_color = "C2F"
 	exposed_human.update_hair()
+	// SKYRAT EDIT ADDITION BEGIN
+	exposed_human.update_mutant_bodyparts(force_update=TRUE)
+	// SKYRAT EDIT END
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.adjustBruteLoss(-1.5 * REM * delta_time, 0)
