@@ -18,4 +18,4 @@
 	head = /obj/item/clothing/head/helmet/clockcult
 	shoes = /obj/item/clothing/shoes/clockcult
 	gloves = /obj/item/clothing/gloves/clockcult
-	var/weapon = null
+	weapon = null

@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/clockwork
 	name = "brass armor"
 	desc = "A strong, brass suit worn by the soldiers of the Ratvarian armies."
-	icon = 'icons/obj/clothing/clockwork_garb.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_cuirass"
 	armor = list("melee" = 50, "bullet" = 60, "laser" = 30, "energy" = 80, "bomb" = 80, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
 	slowdown = 0.6
@@ -29,7 +29,7 @@
 /obj/item/clothing/suit/clockwork/speed
 	name = "robes of divinity"
 	desc = "A shiny suit, glowing with a vibrant energy. The wearer will be able to move quickly across battlefields, but will be able to withstand less damage before falling."
-	icon = 'icons/obj/clothing/clockwork_garb.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_cuirass_speed"
 	slowdown = -0.3
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -38,7 +38,7 @@
 /obj/item/clothing/suit/clockwork/cloak
 	name = "shrouding cloak"
 	desc = "A faltering cloak that bends light around it, distorting the user's appearance, making it hard to see them with the naked eye. However, it provides very little protection."
-	icon = 'icons/obj/clothing/clockwork_garb.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_cloak"
 	armor = list("melee" = 10, "bullet" = 60, "laser" = 40, "energy" = 20, "bomb" = 40, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
 	slowdown = 0.4
@@ -82,7 +82,7 @@
 
 /obj/item/clothing/glasses/clockwork
 	name = "base clock glasses"
-	icon = 'icons/obj/clothing/clockwork_garb.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_cuirass"
 
 /obj/item/clothing/glasses/clockwork/equipped(mob/user, slot)
@@ -149,7 +149,7 @@
 /obj/item/clothing/head/helmet/clockcult
 	name = "brass helmet"
 	desc = "A strong, brass helmet worn by the soldiers of the Ratvarian armies. Includes an integrated light-dimmer for flash protection, as well as occult-grade muffling for factory based environments."
-	icon = 'icons/obj/clothing/clockwork_garb.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_helmet"
 	armor = list("melee" = 50, "bullet" = 60, "laser" = 30, "energy" = 80, "bomb" = 80, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -159,13 +159,13 @@
 /obj/item/clothing/shoes/clockcult
 	name = "brass treads"
 	desc = "A strong pair of brass boots worn by the soldiers of the Ratvarian armies."
-	icon = 'icons/obj/clothing/clockwork_garb.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_treads"
 
 /obj/item/clothing/gloves/clockcult
 	name = "brass gauntlets"
 	desc = "A strong pair of brass gloves worn by the soldiers of the Ratvarian armies."
-	icon = 'icons/obj/clothing/clockwork_garb.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
 	icon_state = "clockwork_gauntlets"
 	siemens_coefficient = 0
 	permeability_coefficient = 0
