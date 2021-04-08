@@ -29,7 +29,6 @@
 	name = "clockwork wall"
 	icon = 'modular_skyrat/modules/clockworkcult/icons/turf/walls/clockwork_wall.dmi'
 	icon_state = "clockwork_wall"
-	canSmoothWith = list(/obj/effect/clockwork/overlay/wall)
 	layer = CLOSED_TURF_LAYER
 
 /obj/effect/clockwork/overlay/wall/Initialize()

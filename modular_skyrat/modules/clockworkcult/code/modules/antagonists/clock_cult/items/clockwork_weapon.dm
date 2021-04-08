@@ -69,7 +69,7 @@
 /obj/item/twohanded/clockwork/proc/hit_effect(mob/living/target, mob/living/user, thrown=FALSE)
 	return
 
-/obj/item/twohanded/clockwork/brass_spear
+/obj/item/twohanded/clockwork/ 
 	name = "brass spear"
 	desc = "A razor-sharp spear made of brass. It thrums with barely-contained energy."
 	icon_state = "ratvarian_spear"
