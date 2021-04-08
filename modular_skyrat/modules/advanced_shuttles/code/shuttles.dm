@@ -13,10 +13,10 @@
 	dir = WEST
 	port_direction = SOUTH
 
-	callTime = 45 SECONDS
-	ignitionTime = 5 SECONDS
+	callTime = 30 SECONDS
+	ignitionTime = 6 SECONDS
 
-	rechargeTime = 30 SECONDS
+	rechargeTime = 20 SECONDS
 
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
 
