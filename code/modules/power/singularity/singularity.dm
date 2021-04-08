@@ -105,7 +105,6 @@
 		return
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/carbon_tk_part_three, jedi), 0.1 SECONDS)
 
-
 /obj/singularity/proc/carbon_tk_part_three(mob/living/carbon/jedi)
 	if(QDELETED(jedi))
 		return

@@ -204,7 +204,7 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	QDEL_IN(src, 3)
 	sleep(3)
 	var/turf/center_station = SSmapping.get_station_center()
-	new /obj/singularity/ratvar(center_station)
+	new /obj/ratvar(center_station)
 	if(GLOB.narsie_breaching)
 		new /obj/narsie(GLOB.narsie_arrival)
 	flee_reebe(TRUE)
@@ -212,21 +212,19 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 //=========Ratvar==========
 GLOBAL_VAR(cult_ratvar)
 
-/obj/singularity/ratvar
+/obj/ratvar
 	name = "ratvar, the Clockwork Justicar"
 	desc = "Oh, that's ratvar!"
 	icon = 'icons/effects/512x512.dmi'
 	icon_state = "ratvar"
 	density = FALSE
-	current_size = STAGE_SIX
-	allowed_size = STAGE_SIX
 	pixel_x = -236
 	pixel_y = -256
 	var/range = 1
 	var/ratvar_target
 	var/next_attack_tick
 
-/obj/singularity/ratvar/Initialize(mapload, starting_energy = 50)
+/obj/ratvar/Initialize(mapload, starting_energy = 50)
 	log_game("!!! RATVAR HAS RISEN. !!!")
 	GLOB.cult_ratvar = src
 	. = ..()
@@ -238,8 +236,7 @@ GLOBAL_VAR(cult_ratvar)
 	check_gods_battle()
 
 //tasty
-/obj/singularity/ratvar/process()
-	eat()
+/obj/ratvar/process()
 	if(ratvar_target)
 		if(get_dist(src, ratvar_target) < 5)
 			if(next_attack_tick < world.time)
@@ -260,30 +257,13 @@ GLOBAL_VAR(cult_ratvar)
 				return
 	move()
 
-/obj/singularity/ratvar/eat()
-	for(var/turf/T as() in spiral_range_turfs(range, src))
-		if(!T || !isturf(loc))
-			continue
-		T.ratvar_act()
-		for(var/thing in T)
-			if(isturf(loc) && thing != src)
-				var/atom/movable/X = thing
-				consume(X)
-			CHECK_TICK
-	if(range < 20)
-		range ++
-	return
-
-/obj/singularity/ratvar/consume(atom/A)
-	A.ratvar_act()
-
-/obj/singularity/ratvar/Bump(atom/A)
+/obj/ratvar/Bump(atom/A)
 	var/turf/T = get_turf(A)
 	if(T == loc)
 		T = get_step(A, A.dir) //please don't slam into a window like a bird, Ratvar
 	forceMove(T)
 
-/obj/singularity/ratvar/attack_ghost(mob/user)
+/obj/ratvar/attack_ghost(mob/user)
 	. = ..()
 	var/mob/living/simple_animal/drone/D = new /mob/living/simple_animal/drone/cogscarab(get_turf(src))
 	D.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)

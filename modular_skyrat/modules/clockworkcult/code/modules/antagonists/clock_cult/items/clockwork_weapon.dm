@@ -4,33 +4,43 @@
 	icon = 'icons/obj/clockwork_objects.dmi'
 	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi';
 	righthand_file = 'icons/mob/inhands/antag/clockwork_righthand.dmi'
-	force_unwielded = 15
-	force_wielded = 5
-	block_flags = BLOCKING_NASTY | BLOCKING_ACTIVE
-	block_level = 1	//God blocking is actual aids to deal with, I am sorry for putting this here
-	block_power_wielded = 25
-	block_upgrade_walk = 1
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	throwforce = 20
 	throw_speed = 4
 	armour_penetration = 10
-	materials = list(/datum/material/iron=1150, /datum/material/gold=2750)
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
-	sharpness = IS_SHARP_ACCURATE
+	attack_verb_continuous = list("attacked", "poked", "jabbed", "torn", "gored")
+	sharpness = SHARP_EDGED
 	max_integrity = 200
 	var/clockwork_hint = ""
 	var/obj/effect/proc_holder/spell/targeted/summon_spear/SS
-
-/obj/item/twohanded/clockwork/pickup(mob/user)
+	var/wielded = FALSE // track wielded status on item
+	
+/obj/item/twohanded/clockwork/Initialize()
 	. = ..()
-	user.mind.RemoveSpell(SS)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+
+/obj/item/twohanded/clockwork/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=5)
+
+/// triggered on wield of two handed item
+/obj/item/twohanded/clockwork/proc/on_wield(obj/item/source, mob/user)
+	SIGNAL_HANDLER
+
+	wielded = TRUE
 	if(is_servant_of_ratvar(user))
 		SS = new
 		SS.marked_item = src
 		user.mind.AddSpell(SS)
-	wield(user)
+
+/// triggered on unwield of two handed item
+/obj/item/twohanded/clockwork/proc/on_unwield(obj/item/source, mob/user)
+	SIGNAL_HANDLER
+
+	wielded = FALSE
 
 /obj/item/twohanded/clockwork/examine(mob/user)
 	. = ..()
@@ -61,22 +71,28 @@
 	name = "brass spear"
 	desc = "A razor-sharp spear made of brass. It thrums with barely-contained energy."
 	icon_state = "ratvarian_spear"
-	embedding = list("embedded_impact_pain_multiplier" = 3)
-	force_wielded = 24
 	throwforce = 36
+	sharpness = SHARP_EDGED
 	armour_penetration = 24
 	clockwork_hint = "Throwing the spear will deal bonus damage while on Reebe."
+
+/obj/item/twohanded/clockwork/brass_spear/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=24)
 
 /obj/item/twohanded/clockwork/brass_battlehammer
 	name = "brass battle-hammer"
 	desc = "A brass hammer glowing with energy."
 	icon_state = "ratvarian_hammer"
-	force_wielded = 25
 	throwforce = 25
 	armour_penetration = 6
-	sharpness = IS_BLUNT
-	attack_verb = list("bashed", "smitted", "hammered", "attacked")
+	sharpness = SHARP_BLUNT
+	attack_verb_continuous = list("bashed", "smitted", "hammered", "attacked")
 	clockwork_hint = "Enemies hit by this will be flung back while on Reebe."
+
+/obj/item/twohanded/clockwork/brass_battlehammer/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=25)
 
 /obj/item/twohanded/clockwork/brass_battlehammer/hit_effect(mob/living/target, mob/living/user, thrown=FALSE)
 	var/atom/throw_target = get_edge_target_turf(target, get_dir(src, get_step_away(target, src)))
@@ -86,12 +102,15 @@
 	name = "brass longsword"
 	desc = "A large sword made of brass."
 	icon_state = "ratvarian_sword"
-	force_wielded = 26
 	throwforce = 20
 	armour_penetration = 12
-	attack_verb = list("attacked", "slashed", "cut", "torn", "gored")
+	attack_verb_continuous = list("attacked", "slashed", "cut", "torn", "gored")
 	clockwork_hint = "Targets will be struck with a powerful electromagnetic pulse while on Reebe."
 	var/emp_cooldown = 0
+
+/obj/item/twohanded/clockwork/brass_sword/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=26)
 
 /obj/item/twohanded/clockwork/brass_sword/hit_effect(mob/living/target, mob/living/user, thrown)
 	if(world.time > emp_cooldown)
@@ -148,7 +167,7 @@
 	icon_state = "arrow_redlight"
 	projectile_type = /obj/item/projectile/energy/clockbolt
 
-/obj/item/projectile/energy/clockbolt
+/obj/projectile/energy/clockbolt
 	name = "energy bolt"
 	icon_state = "arrow_energy"
 	damage = 24

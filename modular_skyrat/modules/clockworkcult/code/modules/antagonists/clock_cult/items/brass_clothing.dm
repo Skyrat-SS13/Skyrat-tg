@@ -155,7 +155,6 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	w_class = WEIGHT_CLASS_BULKY
 	flash_protect = 1
-	bang_protect = 3
 
 /obj/item/clothing/shoes/clockcult
 	name = "brass treads"
