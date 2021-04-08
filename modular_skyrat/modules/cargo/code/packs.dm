@@ -364,6 +364,13 @@
                     /obj/item/flashlight,)
 	crate_name = "emergency lighting crate"
 
+/datum/supply_pack/service/jukebox
+	name = "Jukebox Crate"
+	desc = "Wanting to amp up your bar or club with some sick tunes? This is the crate for you! Contains one jukebox."
+	cost = CARGO_CRATE_VALUE * 30
+	contains = list(/obj/machinery/jukebox)
+	crate_name = "jukebox crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Materials & Sheets //////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
