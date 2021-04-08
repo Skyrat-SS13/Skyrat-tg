@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					min-width: 100vmin;
 					min-height: 10vmin;
 					padding-left: 1vmin;
-					padding-top: 40vmin;
+					padding-top: 45vmin;
 					box-sizing: border-box;
 					top: 50%;
 					left:50%;
@@ -69,7 +69,6 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					width: auto;
 					box-sizing: border-box;
 					padding-top: 5vmin;
-					padding-left: 5vmin
 					top: 0%;
 					left:0%;
 				}
@@ -92,7 +91,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 				}
 
 				.menu_a:hover {
-					border-left: 3px solid ##0080ff;
+					border-left: 3px solid #0080ff;
 					font-weight: bolder;
 					padding-left: 3px;
 				}
@@ -113,21 +112,18 @@ GLOBAL_LIST_EMPTY(startup_messages)
 				}
 
 				.menu_c {
-					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
 					text-decoration: none;
 					width: 100%;
 					text-align: left;
-					color:#ff0000;
-					margin-right: 0%;
-					margin-top: 0px;
+					color:#0066cc;
 					font-size: 6vmin;
 					line-height: 1vmin;
 					letter-spacing: 1px;
 				}
 				.menu_c:hover {
-					border-left: 3px solid ##0080ff;
+					border-left: 3px solid #0080ff;
 					font-weight: bolder;
 					padding-left: 3px;
 				}

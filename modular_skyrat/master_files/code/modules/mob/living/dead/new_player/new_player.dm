@@ -71,8 +71,6 @@
 
 /mob/dead/new_player/proc/playerpolls()
 	var/output
-	output += {"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS (NEW!)</a>"}
-	return output
 	if (SSdbcore.Connect())
 		var/isadmin = FALSE
 		if(client?.holder)
@@ -97,7 +95,7 @@
 			qdel(query_get_new_polls)
 			return
 		if(query_get_new_polls.NextRow())
-			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS (NEW!)</a>"}
+			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS!</a>"}
 		else
 			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS</a>"}
 		qdel(query_get_new_polls)
