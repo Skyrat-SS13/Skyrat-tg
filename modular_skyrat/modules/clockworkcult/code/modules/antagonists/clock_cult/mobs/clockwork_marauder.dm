@@ -18,7 +18,7 @@
 	mob_size = MOB_SIZE_LARGE
 	pass_flags = PASSTABLE
 	hud_possible = list(ANTAG_HUD)
-	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
+	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, OXY = 0)
 	attack_verb_continuous = "slices"
 	attack_verb_simple = "slice"
 	attack_sound = 'sound/weapons/bladeslice.ogg'

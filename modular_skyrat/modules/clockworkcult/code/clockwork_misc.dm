@@ -218,7 +218,7 @@
 	shards = 0
 	rods = 0
 	max_integrity = 50
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 70, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 70, "acid" = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/made_glow = FALSE
 

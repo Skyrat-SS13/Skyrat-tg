@@ -41,6 +41,8 @@
 	SIGNAL_HANDLER
 
 	wielded = FALSE
+	if(is_servant_of_ratvar(user))
+		user.mind.RemoveSpell(SS)
 
 /obj/item/twohanded/clockwork/examine(mob/user)
 	. = ..()
