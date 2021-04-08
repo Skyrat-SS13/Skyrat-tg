@@ -107,6 +107,4 @@ List of nuances:
 			L.say(message, "clock", spans, language=/datum/language/common, ignore_spam = TRUE)
 		else
 			L.whisper(message, "clock", spans, language=/datum/language/common)
-	else
-		AM.say(message, "clock", spans, language=/datum/language/common, ignore_spam = TRUE)
 		
