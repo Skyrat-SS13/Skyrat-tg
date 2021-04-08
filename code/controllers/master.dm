@@ -228,7 +228,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Loop.
 	Master.StartProcessing(0)
 	add_startupmessage("Clearing clutter...") //SKYRAT EDIT ADDITION
-	change_lobbyscreen() //SKYRAT EDIT ADDITION
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
 	var/old_runlevel = current_runlevel
