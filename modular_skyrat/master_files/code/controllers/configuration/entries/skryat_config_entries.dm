@@ -21,3 +21,9 @@
 	config_entry_value = 0.5
 	min_val = 0.1
 
+//DISCORD GAME ALERT CONFIGS
+//Role id to ping
+/datum/config_entry/number/game_alert_role_id
+
+//Reaction roles channel
+/datum/config_entry/string/role_assign_channel_id
