@@ -3,7 +3,12 @@
 	desc = "A large cryogenics unit built from brass. Its surface is pleasantly cool the touch."
 	icon_state = "sleeper_clockwork"
 	enter_message = "<span class='bold inathneq_small'>You hear the gentle hum and click of machinery, and are lulled into a sense of peace.</span>"
-	possible_chems = list(list(/datum/reagent/medicine/epinephrine, /datum/reagent/medicine/salbutamol, /datum/reagent/medicine/bicaridine, /datum/reagent/medicine/kelotane, /datum/reagent/medicine/oculine, /datum/reagent/medicine/inacusiate, /datum/reagent/medicine/mannitol))
+	possible_chems = list(
+		list(/datum/reagent/medicine/epinephrine, /datum/reagent/medicine/morphine, /datum/reagent/medicine/c2/convermol, /datum/reagent/medicine/c2/libital, /datum/reagent/medicine/c2/aiuri),
+		list(/datum/reagent/medicine/oculine,/datum/reagent/medicine/inacusiate),
+		list(/datum/reagent/medicine/c2/multiver, /datum/reagent/medicine/mutadone, /datum/reagent/medicine/mannitol, /datum/reagent/medicine/salbutamol, /datum/reagent/medicine/pen_acid),
+		list(/datum/reagent/medicine/omnizine)
+	)
 
 /turf/open/indestructible/reebe_void
 	name = "void"
@@ -50,7 +55,7 @@
 	else
 		if(istype(AM, /obj/structure/window))
 			return FALSE
-		if(istype(AM, /obj/item/projectile))
+		if(istype(AM, /obj/projectile))
 			return TRUE
 		if((locate(/obj/structure/lattice) in src))
 			return TRUE
