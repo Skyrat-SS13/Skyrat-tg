@@ -414,7 +414,7 @@
 					/obj/item/clothing/head/nemes = 1,
 					/obj/item/clothing/head/pharaoh = 1)
 					//SKYRAT EDIT ADDITION END
-	contraband = list(/obj/item/toy/plush/ratplush = 1,
+	contraband = list(/obj/item/toy/plush/plushvar = 1,
 					/obj/item/toy/plush/narplush = 1,
 					/obj/item/clothing/head/medievaljewhat = 3,
 					/obj/item/clothing/suit/chaplainsuit/clownpriest = 1,

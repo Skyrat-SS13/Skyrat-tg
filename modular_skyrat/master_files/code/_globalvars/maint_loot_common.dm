@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/toy/plush/narplush = 5,
 		/obj/item/toy/plush/nukeplushie = 5,
 		/obj/item/toy/plush/pkplush = 5,
-		/obj/item/toy/plush/ratplush = 5,
+		/obj/item/toy/plush/plushvar = 5,
 		/obj/item/toy/plush/slimeplushie = 5,
 		/obj/item/toy/plush/snakeplushie = 5,
 		/obj/item/toy/redbutton = 5,

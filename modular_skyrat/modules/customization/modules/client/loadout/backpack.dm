@@ -289,8 +289,8 @@
 	cost = 5
 	restricted_roles = list("Chaplain")
 
-/datum/loadout_item/backpack/plushies/ratplush
+/datum/loadout_item/backpack/plushies/plushvar
 	name = "Ratvar Plushie"
-	path = /obj/item/toy/plush/ratplush
+	path = /obj/item/toy/plush/plushvar
 	cost = 5
 	restricted_roles = list("Chaplain")
