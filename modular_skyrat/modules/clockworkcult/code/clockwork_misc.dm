@@ -284,6 +284,7 @@
 	name = "brass table frame"
 	desc = "Four pieces of brass arranged in a square. It's slightly warm to the touch."
 	icon_state = "brass_frame"
+	icon = 'icons/obj/structures.dmi'
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	framestack = /obj/item/stack/tile/brass
 	framestackamount = 1
@@ -311,7 +312,7 @@
 /obj/structure/table/brass
 	name = "brass table"
 	desc = "A solid, slightly beveled brass table."
-	icon = 'icons/obj/smooth_structures/brass_table.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/brass_table.dmi'
 	icon_state = "brass_table"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	frame = /obj/structure/table_frame/brass

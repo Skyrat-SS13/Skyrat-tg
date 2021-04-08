@@ -39,6 +39,10 @@
 	desc = "A huge chunk of warm metal. The clanging of machinery emanates from within."
 	explosion_block = 2
 	hardness = 10
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clockwork_objects.dmi'
+	icon_state = "clockwork_wall"
+	base_icon_state = "clockwork_wall"
+	smoothing_flags = SMOOTH_BITMASK
 	slicing_duration = 80
 	sheet_type = /obj/item/stack/tile/brass
 	sheet_amount = 1
