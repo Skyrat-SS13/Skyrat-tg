@@ -128,8 +128,8 @@
 
 	if(href_list["lobby_ready"])
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
+			client << output(null, "lobbybrowser:imgsrc")
 			ready = !ready
-			client << output(null, "lobbybrowser:strdy")
 		return
 
 	if(href_list["lobby_observe"])
@@ -140,8 +140,9 @@
 
 	if(href_list["lobby_antagtoggle"])
 		client.prefs.be_antag = !client.prefs.be_antag
-		client << output(null, "lobbybrowser:stang")
+		update_titlescreen()
 		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
+		return
 
 	if(href_list["lobby_join"])
 		if(!SSticker?.IsRoundInProgress())

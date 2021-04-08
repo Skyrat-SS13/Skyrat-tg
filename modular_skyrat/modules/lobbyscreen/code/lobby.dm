@@ -167,7 +167,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			dat += {"<a class="menu_a" href='?src=\ref[src];lobby_crew=1'>CREW</a>
 		"}
 
-		dat += {"<a id="antag" class="menu_a" href='?src=\ref[src];lobby_antagtoggle=1'>[client.prefs.be_antag ? "BE ANTAG ☑" : "BE ANTAG ☒"]</a>
+		dat += {"<a class="menu_a" href='?src=\ref[src];lobby_antagtoggle=1'>[client.prefs.be_antag ? "BE ANTAG ☑" : "BE ANTAG ☒"]</a>
 		"}
 
 		dat += {"<a class="menu_a" href='?src=\ref[src];lobby_observe=1'>OBSERVE</a>
@@ -182,28 +182,9 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			var i=0;
 			var mark=document.getElementById("ready");
 			var marks=new Array('READY ☒', 'READY ☑');
-			function strdy(setReady) {
+			function imgsrc(setReady) {
 				if(setReady) {
 					i = setReady;
-					mark.textContent = marks\[i\];
-				}
-				else {
-					i++;
-					if (i == marks.length)
-						i = 0;
-					mark.textContent = marks\[i\];
-				}
-			}
-		</script>
-		"}
-		dat += {"
-		<script language="JavaScript">
-			var i=0;
-			var mark=document.getElementById("antag");
-			var marks=new Array('BE ANTAG ☒', 'BE ANTAG ☑');
-			function stang(setAntag) {
-				if(setAntag) {
-					i = setAntag;
 					mark.textContent = marks\[i\];
 				}
 				else {
