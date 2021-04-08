@@ -5,5 +5,5 @@
 		WRITE_LOG(GLOB.world_game_log, "SUBTLER EMOTE: [text]")
 
 /proc/log_ambition(text)
-	if(CONFIG_GET(flag/log_subtler))
+	if(CONFIG_GET(flag/log_ambition))
 		WRITE_LOG(GLOB.world_game_log, "AMBITION: [text]")
