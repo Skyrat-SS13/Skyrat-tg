@@ -174,3 +174,4 @@
 /obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/polychromic, list("5D5", "EEA", "333"))
+
