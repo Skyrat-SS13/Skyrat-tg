@@ -24,11 +24,11 @@ const NukeKeypad = (props, context) => {
                 fluid
                 bold
                 key={key}
-                mb="6px"
+                mb={1}
                 content={key}
                 textAlign="center"
                 fontSize="40px"
-                lineHeight={1.25}
+                lineHeight="50px"
                 width="55px"
                 className={classes([
                   'NuclearBomb__Button',
@@ -54,13 +54,13 @@ export const NuclearBomb = (props, context) => {
   } = data;
   return (
     <Window
+      theme="retro"
       width={350}
-      height={442}
-      theme="retro">
+      height={442}>
       <Window.Content>
-        <Box m="6px">
+        <Box m={1}>
           <Box
-            mb="6px"
+            mb={1}
             className="NuclearBomb__displayBox">
             {status1}
           </Box>
@@ -74,10 +74,10 @@ export const NuclearBomb = (props, context) => {
               <Button
                 icon="eject"
                 fontSize="24px"
-                lineHeight={1}
+                lineHeight="23px"
                 textAlign="center"
                 width="43px"
-                ml="6px"
+                ml={1}
                 mr="3px"
                 mt="3px"
                 className="NuclearBomb__Button NuclearBomb__Button--keypad"
@@ -88,7 +88,7 @@ export const NuclearBomb = (props, context) => {
             <Flex.Item>
               <NukeKeypad />
             </Flex.Item>
-            <Flex.Item ml="6px" width="129px">
+            <Flex.Item ml={1} width="129px">
               <Box>
                 <Button
                   fluid
@@ -96,8 +96,8 @@ export const NuclearBomb = (props, context) => {
                   content="ARM"
                   textAlign="center"
                   fontSize="28px"
-                  lineHeight={1.1}
-                  mb="6px"
+                  lineHeight="32px"
+                  mb={1}
                   className="NuclearBomb__Button NuclearBomb__Button--C"
                   onClick={() => act('arm')} />
                 <Button
@@ -106,7 +106,7 @@ export const NuclearBomb = (props, context) => {
                   content="ANCHOR"
                   textAlign="center"
                   fontSize="28px"
-                  lineHeight={1.1}
+                  lineHeight="32px"
                   className="NuclearBomb__Button NuclearBomb__Button--E"
                   onClick={() => act('anchor')} />
                 <Box

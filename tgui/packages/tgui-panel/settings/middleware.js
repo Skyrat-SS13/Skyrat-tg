@@ -5,6 +5,7 @@
  */
 
 import { storage } from 'common/storage';
+import { chatMiddleware } from '../chat';
 import { setClientTheme } from '../themes';
 import { loadSettings, updateSettings } from './actions';
 import { selectSettings } from './selectors';
@@ -42,11 +43,17 @@ export const settingsMiddleware = store => {
       if (theme) {
         setClientTheme(theme);
       }
+      else if (type === loadSettings.type) {
+        updateSettings({
+          theme: 'dark',
+        });
+      }
       // Pass action to get an updated state
       next(action);
       const settings = selectSettings(store.getState());
       // Update global UI font size
       setGlobalFontSize(settings.fontSize);
+      // Update global UI font family
       setGlobalFontFamily(settings.fontFamily);
       // Save settings to the web storage
       storage.set('panel-settings', settings);

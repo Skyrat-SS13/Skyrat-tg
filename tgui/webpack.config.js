@@ -6,8 +6,9 @@
 
 const webpack = require('webpack');
 const path = require('path');
-const ExtractCssPlugin = require('mini-css-extract-plugin');
-const { createBabelConfig } = require('./babel.config.js');
+const BuildNotifierPlugin = require('webpack-build-notifier');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const PnpPlugin = require(`pnp-webpack-plugin`);
 
 const createStats = verbose => ({
   assets: verbose,
@@ -16,20 +17,16 @@ const createStats = verbose => ({
   children: false,
   chunks: false,
   colors: true,
-  entrypoints: true,
   hash: false,
-  modules: false,
-  performance: false,
   timings: verbose,
   version: verbose,
+  modules: false,
 });
 
 module.exports = (env = {}, argv) => {
-  const mode = argv.mode === 'production' ? 'production' : 'development';
   const config = {
-    mode,
+    mode: argv.mode === 'production' ? 'production' : 'development',
     context: path.resolve(__dirname),
-    target: ['web', 'es3', 'browserslist:ie 8'],
     entry: {
       'tgui': [
         './packages/tgui-polyfill',
@@ -45,21 +42,47 @@ module.exports = (env = {}, argv) => {
         ? path.resolve(__dirname, './public/.tmp')
         : path.resolve(__dirname, './public'),
       filename: '[name].bundle.js',
-      chunkFilename: '[name].bundle.js',
-      chunkLoadTimeout: 15000,
+      chunkFilename: '[name].chunk.js',
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.js', '.jsx'],
       alias: {},
+      plugins: [
+        PnpPlugin,
+      ],
+    },
+    resolveLoader: {
+      plugins: [
+        PnpPlugin.moduleLoader(module),
+      ],
     },
     module: {
       rules: [
         {
-          test: /\.(js|cjs|ts|tsx)$/,
+          test: /\.m?jsx?$/,
           use: [
             {
-              loader: require.resolve('babel-loader'),
-              options: createBabelConfig({ mode }),
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  ['@babel/preset-env', {
+                    modules: 'commonjs',
+                    useBuiltIns: 'entry',
+                    corejs: '3.6',
+                    spec: false,
+                    loose: true,
+                    targets: {
+                      ie: '8',
+                    },
+                  }],
+                ],
+                plugins: [
+                  '@babel/plugin-transform-jscript',
+                  'babel-plugin-inferno',
+                  'babel-plugin-transform-remove-console',
+                  'common/string.babel-plugin.cjs',
+                ],
+              },
             },
           ],
         },
@@ -67,19 +90,18 @@ module.exports = (env = {}, argv) => {
           test: /\.scss$/,
           use: [
             {
-              loader: ExtractCssPlugin.loader,
+              loader: ExtractCssChunks.loader,
               options: {
-                esModule: false,
+                hmr: argv.hot,
               },
             },
             {
-              loader: require.resolve('css-loader'),
-              options: {
-                esModule: false,
-              },
+              loader: 'css-loader',
+              options: {},
             },
             {
-              loader: require.resolve('sass-loader'),
+              loader: 'sass-loader',
+              options: {},
             },
           ],
         },
@@ -87,17 +109,15 @@ module.exports = (env = {}, argv) => {
           test: /\.(png|jpg|svg)$/,
           use: [
             {
-              loader: require.resolve('url-loader'),
-              options: {
-                esModule: false,
-              },
+              loader: 'url-loader',
+              options: {},
             },
           ],
         },
       ],
     },
     optimization: {
-      emitOnErrors: false,
+      noEmitOnErrors: true,
       splitChunks: {
         chunks: 'initial',
         name: 'tgui-common',
@@ -107,13 +127,6 @@ module.exports = (env = {}, argv) => {
       hints: false,
     },
     devtool: false,
-    cache: {
-      type: 'filesystem',
-      cacheLocation: path.resolve(__dirname, `.yarn/webpack/${mode}`),
-      buildDependencies: {
-        config: [__filename],
-      },
-    },
     stats: createStats(true),
     plugins: [
       new webpack.EnvironmentPlugin({
@@ -121,9 +134,10 @@ module.exports = (env = {}, argv) => {
         WEBPACK_HMR_ENABLED: env.WEBPACK_HMR_ENABLED || argv.hot || false,
         DEV_SERVER_IP: env.DEV_SERVER_IP || null,
       }),
-      new ExtractCssPlugin({
+      new ExtractCssChunks({
         filename: '[name].bundle.css',
-        chunkFilename: '[name].bundle.css',
+        chunkFilename: '[name].chunk.css',
+        orderWarning: true,
       }),
     ],
   };
@@ -140,6 +154,7 @@ module.exports = (env = {}, argv) => {
   // Production build specific options
   if (argv.mode === 'production') {
     const TerserPlugin = require('terser-webpack-plugin');
+    const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
     config.optimization.minimizer = [
       new TerserPlugin({
         extractComments: false,
@@ -152,15 +167,39 @@ module.exports = (env = {}, argv) => {
         },
       }),
     ];
+    config.plugins = [
+      ...config.plugins,
+      new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require('cssnano'),
+        cssProcessorPluginOptions: {
+          preset: ['default', {
+            discardComments: {
+              removeAll: true,
+            },
+          }],
+        },
+        canPrint: true,
+      }),
+    ];
   }
 
   // Development build specific options
   if (argv.mode !== 'production') {
+    if (argv.hot) {
+      config.plugins.push(new webpack.HotModuleReplacementPlugin());
+    }
     config.devtool = 'cheap-module-source-map';
   }
 
   // Development server specific options
   if (argv.devServer) {
+    config.plugins = [
+      ...config.plugins,
+      new BuildNotifierPlugin({
+        suppressSuccess: true,
+      }),
+    ];
     config.devServer = {
       progress: false,
       quiet: false,

@@ -1,3 +1,4 @@
+import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
@@ -67,7 +68,7 @@ export const AiAirlock = (props, context) => {
               label="Electrify"
               color={statusElectrify.color}
               buttons={(
-                <>
+                <Fragment>
                   <Button
                     icon="wrench"
                     disabled={!(data.wires.shock && data.shock === 0)}
@@ -83,7 +84,7 @@ export const AiAirlock = (props, context) => {
                     disabled={!data.wires.shock}
                     content="Permanent"
                     onClick={() => act('shock-perm')} />
-                </>
+                </Fragment>
               )}>
               {data.shock === 2 ? 'Safe' : 'Electrified'}
               {' '}

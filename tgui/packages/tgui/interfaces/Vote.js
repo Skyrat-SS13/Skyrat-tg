@@ -1,189 +1,204 @@
 import { useBackend } from "../backend";
-import { Box, Icon, Stack, Button, Section, NoticeBox, LabeledList, Collapsible } from "../components";
+import {
+  Box,
+  Icon,
+  Flex,
+  Button,
+  Section,
+  Collapsible,
+} from "../components";
 import { Window } from "../layouts";
+import { logger } from "../logging";
 
 export const Vote = (props, context) => {
   const { data } = useBackend(context);
   const { mode, question, lower_admin } = data;
-
-  // Adds the voting type to title if there is an ongoing vote
-  let windowTitle = "Vote";
-  if (mode) {
-    windowTitle += ": " + (question || mode).replace(/^\w/, c => c.toUpperCase());
-  }
-
+  
   return (
-    <Window resizable title={windowTitle} width={400} height={500}>
-      <Window.Content>
-        <Stack fill vertical>
-          {!!lower_admin && (
-            <Section title="Admin Options">
-              <VoteOptions />
-              <VotersList />
-            </Section>
-          )}
+    <Window
+      resizable
+      title={`Vote${
+        mode
+          ? `: ${
+            question
+              ? question.replace(/^\w/, c => c.toUpperCase())
+              : mode.replace(/^\w/, c => c.toUpperCase())
+          }`
+          : ""
+      }`}
+      width={400}
+      height={500} >
+      <Window.Content overflowY="scroll">
+        <Flex direction="column" height="100%">
+          {!!lower_admin && <AdminPanel />}
           <ChoicesPanel />
           <TimePanel />
-        </Stack>
+        </Flex>
       </Window.Content>
     </Window>
   );
 };
 
-// Gives access to starting votes
-const VoteOptions = (props, context) => {
+// Collapsible panel for admin actions.
+const AdminPanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    allow_vote_mode,
-    allow_vote_restart,
-    allow_vote_map,
-    upper_admin,
-  } = data;
-
+  const { avm, avr, avmap, voting, upper_admin } = data;
   return (
-    <Stack.Item>
-      <Collapsible title="Start a Vote">
-        <Stack justify="space-between">
-          <Stack.Item>
-            <Stack vertical>
-              <Stack.Item>
-                {!!upper_admin && (
-                  <Button.Checkbox
-                    mr={!allow_vote_map ? 1 : 1.6}
-                    color="red"
-                    checked={!!allow_vote_map}
-                    onClick={() => act("toggle_map")}>
-                    {allow_vote_map ? "Enabled" : "Disabled"}
-                  </Button.Checkbox>
-                )}
+    <Flex.Item>
+      <Section mb={1} title="Admin Options">
+        <Collapsible title="Start a Vote">
+          <Flex mt={2} justify="space-between">
+            <Flex.Item>
+              <Box mb={1}>
                 <Button
-                  disabled={!upper_admin || !allow_vote_map}
-                  onClick={() => act("map")}>
+                  disabled={!upper_admin || !avmap}
+                  onClick={() => act("map")} >
                   Map
                 </Button>
-              </Stack.Item>
-              <Stack.Item>
                 {!!upper_admin && (
                   <Button.Checkbox
-                    mr={!allow_vote_restart ? 1 : 1.6}
+                    ml={1}
                     color="red"
-                    checked={!!allow_vote_restart}
-                    onClick={() => act("toggle_restart")}>
-                    {allow_vote_restart ? "Enabled" : "Disabled"}
+                    checked={!avmap}
+                    onClick={() => act("toggle_map")} >
+                    Disable{!avmap ? "d" : ""}
                   </Button.Checkbox>
                 )}
+              </Box>
+              <Box mb={1}>
                 <Button
-                  disabled={!upper_admin || !allow_vote_restart}
-                  onClick={() => act("restart")}>
+                  disabled={!upper_admin || !avr}
+                  onClick={() => act("restart")} >
                   Restart
                 </Button>
-              </Stack.Item>
-              <Stack.Item>
                 {!!upper_admin && (
                   <Button.Checkbox
-                    mr={!allow_vote_restart ? 1 : 1.6}
+                    ml={1}
                     color="red"
-                    checked={!!allow_vote_restart}
-                    onClick={() => act("transfer")}>
-                    {allow_vote_restart ? "Enabled" : "Disabled"}
+                    checked={!avr}
+                    onClick={() => act("toggle_restart")} >
+                    Disable{!avr ? "d" : ""}
                   </Button.Checkbox>
                 )}
+              </Box>
+              <Box mb={1}>
                 <Button
-                  disabled={!upper_admin || !allow_vote_restart}
-                  onClick={() => act("transfer")}>
-                  Transfer
-                </Button>
-              </Stack.Item>
-              <Stack.Item>
-                {!!upper_admin && (
-                  <Button.Checkbox
-                    mr={!allow_vote_mode ? 1 : 1.6}
-                    color="red"
-                    checked={!!allow_vote_mode}
-                    onClick={() => act("toggle_gamemode")}>
-                    {allow_vote_mode ? "Enabled" : "Disabled"}
-                  </Button.Checkbox>
-                )}
-                <Button
-                  disabled={!upper_admin || !allow_vote_mode}
-                  onClick={() => act("gamemode")}>
+                  disabled={!upper_admin || !avm}
+                  onClick={() => act("gamemode")} >
                   Gamemode
                 </Button>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
-            <Button disabled={!upper_admin} onClick={() => act("custom")}>
-              Create Custom Vote
-            </Button>
-          </Stack.Item>
-        </Stack>
-      </Collapsible>
-    </Stack.Item>
-  );
-};
-
-// Table to view voters by ckey
-const VotersList = (props, context) => {
-  const { data } = useBackend(context);
-  const { voting } = data;
-
-  return (
-    <Stack.Item>
-      <Collapsible title={`View Voters: ${voting.length}`}>
-        <Section height={8} fill scrollable>
-          {voting.map(voter => {
-            return <Box key={voter}>{voter}</Box>;
-          })}
-        </Section>
-      </Collapsible>
-    </Stack.Item>
-  );
-};
-
-// Display choices
-const ChoicesPanel = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { choices, selected_choice } = data;
-
-  return (
-    <Stack.Item grow>
-      <Section fill scrollable title="Choices">
-        {choices.length !== 0 ? (
-          <LabeledList>
-            {choices.map((choice, i) => (
-              <Box key={choice.id}>
-                <LabeledList.Item
-                  label={choice.name.replace(/^\w/, c => c.toUpperCase())}
-                  textAlign="right"
-                  buttons={
-                    <Button
-                      disabled={i === selected_choice - 1}
-                      onClick={() => {
-                        act("vote", { index: i + 1 });
-                      }}>
-                      Vote
-                    </Button>
-                  }>
-                  {i === selected_choice - 1 && (
-                    <Icon
-                      alignSelf="right"
-                      mr={2}
-                      color="green"
-                      name="vote-yea" />
-                  )}
-                  {choice.votes} Votes
-                </LabeledList.Item>
-                <LabeledList.Divider />
+                {!!upper_admin && (
+                  <Button.Checkbox
+                    ml={1}
+                    color="red"
+                    checked={!avm}
+                    onClick={() => act("toggle_gamemode")} >
+                    Disable{!avm ? "d" : ""}
+                  </Button.Checkbox>
+                )}
               </Box>
-            ))}
-          </LabeledList>
-        ) : (
-          <NoticeBox>No choices available!</NoticeBox>
-        )}
+            </Flex.Item>
+            <Flex.Item>
+              <Button disabled={!upper_admin} onClick={() => act("custom")}>
+                Create Custom Vote
+              </Button>
+            </Flex.Item>
+          </Flex>
+        </Collapsible>
+        <Collapsible title="View Voters">
+          <Box mt={2} width="100%" height={6} overflowY="scroll">
+            {voting.map(voter => {
+              return <Box key={voter}>{voter}</Box>;
+            })}
+          </Box>
+        </Collapsible>
       </Section>
-    </Stack.Item>
+    </Flex.Item>
   );
+};
+
+// Display choices as buttons
+const ChoicesPanel = (props, context) => {
+  const { data } = useBackend(context);
+  const { mode, choices } = data;
+
+  let content;
+  if (choices.length === 0) {
+    content = "No choices available!";
+  }
+  // Single box for most normal vote types
+  else if ((choices.length < 10) | (mode === "custom")) {
+    content = (
+      <DisplayChoices
+        choices={choices}
+        tally="Votes:"
+        startIndex={0}
+        margin={1} />
+    );
+  } else {
+    // If there's both too much content, most likely gamemode
+    content = (
+      <Flex justify="space-between" direction="row">
+        <Flex direction="column">
+          <DisplayChoices
+            choices={choices.filter(
+              (choice, index) => index < choices.length / 2
+            )}
+            tally="|"
+            startIndex={0}
+            margin={0} />
+        </Flex>
+        <Flex direction="column" ml={1}>
+          <DisplayChoices
+            choices={choices.filter(
+              (choice, index) => index > choices.length / 2
+            )}
+            tally="|"
+            startIndex={Math.ceil(choices.length / 2)}
+            margin={0} />
+        </Flex>
+      </Flex>
+    );
+  }
+
+  return (
+    <Flex.Item mb={1} grow={1}>
+      <Section fill title="Choices">
+        {content}
+      </Section>
+    </Flex.Item>
+  );
+};
+
+const DisplayChoices = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { selectedChoice } = data;
+
+  return props.choices?.map((choice, i) => (
+    <Flex justify="space-between" direction="row" key={i} mb={props.margin}>
+      <Flex>
+        <Button
+          onClick={() => {
+            act("vote", {
+              index: i + props.startIndex + 1,
+            });
+          }}
+          disabled={
+            choice === props.choices[selectedChoice - props.startIndex - 1]
+          } >
+          {choice.name?.replace(/^\w/, c => c.toUpperCase())}
+        </Button>
+        <Box mt={0.4} ml={1}>
+          {choice === props.choices[selectedChoice - props.startIndex - 1] && (
+            <Icon color="green" name="vote-yea" />
+          )}
+        </Box>
+      </Flex>
+      <Box ml={1}>
+        {props.tally} {choice.votes}
+      </Box>
+    </Flex>
+  ));
 };
 
 // Countdown timer at the bottom. Includes a cancel vote option for admins
@@ -192,19 +207,23 @@ const TimePanel = (props, context) => {
   const { upper_admin, time_remaining } = data;
 
   return (
-    <Stack.Item mt={1}>
+    <Flex.Item>
       <Section>
-        <Stack justify="space-between">
-          <Box fontSize={1.5}>
-            Time Remaining: {time_remaining || 0}s
-          </Box>
+        <Flex justify="space-between">
           {!!upper_admin && (
-            <Button color="red" onClick={() => act('cancel')}>
+            <Button
+              onClick={() => {
+                act("cancel");
+              }}
+              color="red" >
               Cancel Vote
             </Button>
           )}
-        </Stack>
+          <Box fontSize={1.5} textAlign="right">
+            Time Remaining: {time_remaining}s
+          </Box>
+        </Flex>
       </Section>
-    </Stack.Item>
+    </Flex.Item>
   );
 };

@@ -8,6 +8,7 @@ export const Crayon = (props, context) => {
   const drawables = data.drawables || [];
   return (
     <Window
+      resizable
       width={600}
       height={600}>
       <Window.Content scrollable>

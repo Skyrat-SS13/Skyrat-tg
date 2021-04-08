@@ -7,20 +7,21 @@
 import { toFixed } from 'common/math';
 import { useLocalState } from 'tgui/backend';
 import { useDispatch, useSelector } from 'common/redux';
-import { Box, Button, ColorBox, Divider, Dropdown, Flex, Input, LabeledList, NumberInput, Section, Stack, Tabs, TextArea } from 'tgui/components';
+import { Box, Button, ColorBox, Divider, Dropdown, Flex, Input, LabeledList, NumberInput, Section, Tabs, TextArea, Grid } from 'tgui/components';
 import { ChatPageSettings } from '../chat';
 import { rebuildChat, saveChatToDisk } from '../chat/actions';
 import { THEMES } from '../themes';
 import { changeSettingsTab, updateSettings } from './actions';
 import { FONTS, SETTINGS_TABS } from './constants';
-import { selectActiveTab, selectSettings } from './selectors';
+import { useSettings } from './hooks';
+import { selectActiveTab, selectSettings, selectStatPanel } from './selectors';
 
 export const SettingsPanel = (props, context) => {
   const activeTab = useSelector(context, selectActiveTab);
   const dispatch = useDispatch(context);
   return (
-    <Stack fill>
-      <Stack.Item>
+    <Flex>
+      <Flex.Item mr={1}>
         <Section fitted fill minHeight="8em">
           <Tabs vertical>
             {SETTINGS_TABS.map(tab => (
@@ -35,16 +36,22 @@ export const SettingsPanel = (props, context) => {
             ))}
           </Tabs>
         </Section>
-      </Stack.Item>
-      <Stack.Item grow={1} basis={0}>
+      </Flex.Item>
+      <Flex.Item grow={1} basis={0}>
         {activeTab === 'general' && (
           <SettingsGeneral />
         )}
         {activeTab === 'chatPage' && (
           <ChatPageSettings />
         )}
-      </Stack.Item>
-    </Stack>
+        {activeTab === 'highlightPage' && (
+          <SettingsHighlight />
+        )}
+        {activeTab === 'statPanelpage' && (
+          <SettingsStat />
+        )}
+      </Flex.Item>
+    </Flex>
   );
 };
 
@@ -52,15 +59,18 @@ export const SettingsGeneral = (props, context) => {
   const {
     theme,
     fontFamily,
+    highContrast,
     fontSize,
     lineHeight,
-    highlightText,
-    highlightColor,
   } = useSelector(context, selectSettings);
   const dispatch = useDispatch(context);
   const [freeFont, setFreeFont] = useLocalState(context, "freeFont", false);
   return (
-    <Section>
+    <Section fill>
+      <Flex bold>
+        General Settings
+      </Flex>
+      <Divider />
       <LabeledList>
         <LabeledList.Item label="Theme">
           <Dropdown
@@ -71,36 +81,41 @@ export const SettingsGeneral = (props, context) => {
             }))} />
         </LabeledList.Item>
         <LabeledList.Item label="Font style">
-          <Stack inline align="baseline">
-            <Stack.Item>
-              {!freeFont && (
-                <Dropdown
-                  selected={fontFamily}
-                  options={FONTS}
-                  onSelected={value => dispatch(updateSettings({
-                    fontFamily: value,
-                  }))} />
-              ) || (
-                <Input
-                  value={fontFamily}
-                  onChange={(e, value) => dispatch(updateSettings({
-                    fontFamily: value,
-                  }))}
-                />
-              )}
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                content="Custom font"
-                icon={freeFont? "lock-open" : "lock"}
-                color={freeFont? "good" : "bad"}
-                ml={1}
-                onClick={() => {
-                  setFreeFont(!freeFont);
-                }}
-              />
-            </Stack.Item>
-          </Stack>
+          {!freeFont && (
+            <Dropdown
+              selected={fontFamily}
+              options={FONTS}
+              onSelected={value => dispatch(updateSettings({
+                fontFamily: value,
+              }))} />
+          ) || (
+            <Input
+              value={fontFamily}
+              onChange={(e, value) => dispatch(updateSettings({
+                fontFamily: value,
+              }))}
+            />
+          )}
+        </LabeledList.Item>
+        <LabeledList.Item>
+          <Button
+            content="Custom font"
+            icon={freeFont? "lock-open" : "lock"}
+            color={freeFont? "good" : "bad"}
+            ml={1}
+            onClick={() => {
+              setFreeFont(!freeFont);
+            }}
+          />
+        </LabeledList.Item>
+        <LabeledList.Item label="High Contrast">
+          <Button.Checkbox
+            checked={!highContrast}
+            onClick={() => dispatch(updateSettings({
+              highContrast: !highContrast,
+            }))}>
+            Colored names
+          </Button.Checkbox>
         </LabeledList.Item>
         <LabeledList.Item label="Font size">
           <NumberInput
@@ -131,7 +146,51 @@ export const SettingsGeneral = (props, context) => {
         </LabeledList.Item>
       </LabeledList>
       <Divider />
+      <Button
+        icon="save"
+        onClick={() => dispatch(saveChatToDisk())}>
+        Save chat log
+      </Button>
+    </Section>
+  );
+};
+
+export const SettingsStat = (props, context) => {
+  const settings = useSettings(context);
+  const dispatch = useDispatch(context);
+  return (
+    <Section fill>
+      <Flex bold>
+        Stat Panel Settings
+      </Flex>
+      <Divider />
+      <LabeledList>
+        <LabeledList.Item label="Tab Mode">
+          <Dropdown
+            selected={settings.statTabMode}
+            options={["Scroll", "Multiline"]}
+            onSelected={value => dispatch(updateSettings({
+              statTabMode: value,
+            }))} />
+        </LabeledList.Item>
+      </LabeledList>
+    </Section>
+  );
+};
+
+export const SettingsHighlight = (props, context) => {
+  const {
+    highlightText,
+    highlightColor,
+  } = useSelector(context, selectSettings);
+  const dispatch = useDispatch(context);
+  return (
+    <Section fill>
       <Box>
+        <Flex bold>
+          Highlight Settings
+        </Flex>
+        <Divider />
         <Flex mb={1} color="label" align="baseline">
           <Flex.Item grow={1}>
             Highlight words (comma separated):
@@ -166,12 +225,7 @@ export const SettingsGeneral = (props, context) => {
           Can freeze the chat for a while.
         </Box>
       </Box>
-      <Divider />
-      <Button
-        icon="save"
-        onClick={() => dispatch(saveChatToDisk())}>
-        Save chat log
-      </Button>
     </Section>
   );
 };
+

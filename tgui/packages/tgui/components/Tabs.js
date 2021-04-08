@@ -12,7 +12,6 @@ export const Tabs = props => {
   const {
     className,
     vertical,
-    fill,
     fluid,
     children,
     ...rest
@@ -24,7 +23,6 @@ export const Tabs = props => {
         vertical
           ? 'Tabs--vertical'
           : 'Tabs--horizontal',
-        fill && 'Tabs--fill',
         fluid && 'Tabs--fluid',
         className,
         computeBoxClassName(rest),

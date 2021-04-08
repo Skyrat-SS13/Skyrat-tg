@@ -9,7 +9,7 @@ export const DecalPainter = (props, context) => {
   const dir_list = data.dir_list || [];
   return (
     <Window
-      width={500}
+      width={400}
       height={400}>
       <Window.Content>
         <Section title="Decal Type">

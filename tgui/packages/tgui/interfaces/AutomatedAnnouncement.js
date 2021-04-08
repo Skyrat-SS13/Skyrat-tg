@@ -18,7 +18,6 @@ export const AutomatedAnnouncement = (props, context) => {
   } = data;
   return (
     <Window
-      title="Automated Announcement System"
       width={500}
       height={225}>
       <Window.Content>

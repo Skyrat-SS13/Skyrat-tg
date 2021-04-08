@@ -1,33 +1,19 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, ProgressBar, Section } from '../components';
+import { Box, Section, LabeledList, Button, ProgressBar, AnimatedNumber } from '../components';
+import { Fragment } from 'inferno';
 import { Window } from '../layouts';
-
-const damageTypes = [
-  {
-    label: 'Brute',
-    type: 'bruteLoss',
-  },
-  {
-    label: 'Burn',
-    type: 'fireLoss',
-  },
-  {
-    label: 'Toxin',
-    type: 'toxLoss',
-  },
-  {
-    label: 'Oxygen',
-    type: 'oxyLoss',
-  },
-];
+import { BeakerContents } from './common/BeakerContents';
+import { toFixed } from 'common/math';
 
 export const Sleeper = (props, context) => {
   const { act, data } = useBackend(context);
+
   const {
     open,
     occupant = {},
     occupied,
   } = data;
+
   const preSortChems = data.chems || [];
   const chems = preSortChems.sort((a, b) => {
     const descA = a.name.toLowerCase();
@@ -40,14 +26,35 @@ export const Sleeper = (props, context) => {
     }
     return 0;
   });
+
+  const damageTypes = [
+    {
+      label: 'Brute',
+      type: 'bruteLoss',
+    },
+    {
+      label: 'Burn',
+      type: 'fireLoss',
+    },
+    {
+      label: 'Toxin',
+      type: 'toxLoss',
+    },
+    {
+      label: 'Oxygen',
+      type: 'oxyLoss',
+    },
+  ];
+
   return (
     <Window
+      resizable
       width={310}
-      height={465}>
+      height={520}>
       <Window.Content>
         <Section
           title={occupant.name ? occupant.name : 'No Occupant'}
-          minHeight="210px"
+          minHeight="250px"
           buttons={!!occupant.stat && (
             <Box
               inline
@@ -57,7 +64,7 @@ export const Sleeper = (props, context) => {
             </Box>
           )}>
           {!!occupied && (
-            <>
+            <Fragment>
               <ProgressBar
                 value={occupant.health}
                 minValue={occupant.minHealth}
@@ -90,8 +97,21 @@ export const Sleeper = (props, context) => {
                   color={occupant.brainLoss ? 'bad' : 'good'}>
                   {occupant.brainLoss ? 'Abnormal' : 'Healthy'}
                 </LabeledList.Item>
+                <LabeledList.Item label="Reagents">
+                  <Box color="label">
+                    {occupant.reagents.length === 0 && '—'}
+                    {occupant.reagents.map(chemical => (
+                      <Box key={chemical.name}>
+                        <AnimatedNumber
+                          value={chemical.volume}
+                          format={value => toFixed(value, 1)} />
+                        {` units of ${chemical.name}`}
+                      </Box>
+                    ))}
+                  </Box>
+                </LabeledList.Item>
               </LabeledList>
-            </>
+            </Fragment>
           )}
         </Section>
         <Section
@@ -108,11 +128,12 @@ export const Sleeper = (props, context) => {
               key={chem.name}
               icon="flask"
               content={chem.name}
-              disabled={!occupied || !chem.allowed}
+              disabled={!(occupied && chem.allowed)}
               width="140px"
               onClick={() => act('inject', {
                 chem: chem.id,
-              })} />
+              })}
+            />
           ))}
         </Section>
       </Window.Content>

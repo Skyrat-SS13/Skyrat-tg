@@ -1,5 +1,6 @@
+import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, Dropdown, Flex, Input, LabeledList, ProgressBar, Section } from '../components';
+import { Button, Dropdown, Grid, Input, LabeledList, ProgressBar, Section, Flex } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
@@ -64,7 +65,7 @@ export const Mule = (props, context) => {
           <Section
             title="Controls"
             buttons={(
-              <>
+              <Fragment>
                 {!!load && (
                   <Button
                     icon="eject"
@@ -77,7 +78,7 @@ export const Mule = (props, context) => {
                     content="Eject PAI"
                     onClick={() => act('ejectpai')} />
                 )}
-              </>
+              </Fragment>
             )}>
             <LabeledList>
               <LabeledList.Item label="ID">

@@ -1,4 +1,3 @@
-import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { AnimatedNumber, Box, Button, Grid, LabeledList, ProgressBar, Section } from '../components';
 import { NtosWindow } from '../layouts';
@@ -74,7 +73,7 @@ export const NtosArcade = (props, context) => {
                   inline
                   width="156px"
                   textAlign="center">
-                  <img src={resolveAsset(data.BossID)} />
+                  <img src={data.BossID} />
                 </Section>
               </Grid.Column>
             </Grid>
@@ -109,16 +108,6 @@ export const NtosArcade = (props, context) => {
               disabled={data.GameActive === 1}
               onClick={() => act('Start_Game')}
               content="Begin Game" />
-            <Button
-              icon="ticket-alt"
-              tooltip="Claim at your local Arcade Computer for Prizes!"
-              tooltipPosition="top"
-              disabled={data.GameActive === 1}
-              onClick={() => act('Dispense_Tickets')}
-              content="Claim Tickets" />
-          </Box>
-          <Box color={data.TicketCount >= 1 ? 'good' : 'normal'}>
-            Earned Tickets: {data.TicketCount}
           </Box>
         </Section>
       </NtosWindow.Content>

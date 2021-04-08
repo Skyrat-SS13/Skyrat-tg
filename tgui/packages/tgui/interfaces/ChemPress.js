@@ -5,85 +5,53 @@ import { Window } from '../layouts';
 export const ChemPress = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    current_volume,
-    product_name,
+    pill_size,
+    pill_name,
     pill_style,
     pill_styles = [],
-    product,
-    min_volume,
-    max_volume,
   } = data;
   return (
     <Window
       width={300}
-      height={227}>
+      height={199}>
       <Window.Content>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Product">
-              <Button.Checkbox
-                content="Pills"
-                checked={product === "pill"}
-                onClick={() => act('change_product', {
-                  product: "pill",
-                })}
-              />
-              <Button.Checkbox
-                content="Patches"
-                checked={product === "patch"}
-                onClick={() => act('change_product', {
-                  product: "patch",
-                })}
-              />
-              <Button.Checkbox
-                content="Bottles"
-                checked={product === "bottle"}
-                onClick={() => act('change_product', {
-                  product: "bottle",
-                })}
-              />
-            </LabeledList.Item>
-            <LabeledList.Item label="Volume">
+            <LabeledList.Item label="Pill Volume">
               <NumberInput
-                value={current_volume}
+                value={pill_size}
                 unit="u"
                 width="43px"
-                minValue={min_volume}
-                maxValue={max_volume}
+                minValue={5}
+                maxValue={50}
                 step={1}
                 stepPixelSize={2}
-                onChange={(e, value) => act('change_current_volume', {
+                onChange={(e, value) => act('change_pill_size', {
                   volume: value,
                 })} />
             </LabeledList.Item>
-            <LabeledList.Item label="Name">
+            <LabeledList.Item label="Pill Name">
               <Input
-                value={product_name}
-                placeholder={product_name}
-                onChange={(e, value) => act('change_product_name', {
+                value={pill_name}
+                onChange={(e, value) => act('change_pill_name', {
                   name: value,
                 })} />
-              <Box as="span">
-                {product}
-              </Box>
             </LabeledList.Item>
-            {product === "pill" && (
-              <LabeledList.Item label="Style">
-                {pill_styles.map(pill => (
-                  <Button
-                    key={pill.id}
-                    width="30px"
-                    selected={pill.id === pill_style}
-                    textAlign="center"
-                    color="transparent"
-                    onClick={() => act('change_pill_style', {
-                      id: pill.id,
-                    })}>
-                    <Box mx={-1} className={pill.class_name} />
-                  </Button>
-                ))}
-              </LabeledList.Item>
-            )}
+            <LabeledList.Item label="Pill Style">
+              {pill_styles.map(pill => (
+                <Button
+                  key={pill.id}
+                  width="30px"
+                  selected={pill.id === pill_style}
+                  textAlign="center"
+                  color="transparent"
+                  onClick={() => act('change_pill_style', {
+                    id: pill.id,
+                  })}>
+                  <Box mx={-1} className={pill.class_name} />
+                </Button>
+              ))}
+            </LabeledList.Item>
           </LabeledList>
         </Section>
       </Window.Content>

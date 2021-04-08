@@ -10,6 +10,7 @@ export const MiningVendor = (props, context) => {
   ];
   return (
     <Window
+      resizable
       width={425}
       height={600}>
       <Window.Content scrollable>
@@ -29,7 +30,7 @@ export const MiningVendor = (props, context) => {
             </Box>
           )}
         </Section>
-        <Section title="Equipment">
+        <Section title="Equipment" >
           <Table>
             {inventory.map((product => {
               return (

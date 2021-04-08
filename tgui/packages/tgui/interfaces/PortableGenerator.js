@@ -1,3 +1,4 @@
+import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
@@ -13,9 +14,7 @@ export const PortableGenerator = (props, context) => {
     || 'bad'
   );
   return (
-    <Window
-      width={450}
-      height={340}>
+    <Window resizable>
       <Window.Content scrollable>
         {!data.anchored && (
           <NoticeBox>Generator not anchored.</NoticeBox>
@@ -32,7 +31,7 @@ export const PortableGenerator = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label={data.sheet_name + ' sheets'}>
               <Box inline color={stackPercentState}>{data.sheets}</Box>
-              {data.sheets >= 1 && (
+              {(data.sheets >= 1) && (
                 <Button
                   ml={1}
                   icon="eject"

@@ -6,8 +6,8 @@ export const HypnoChair = (props, context) => {
   const { act, data } = useBackend(context);
   return (
     <Window
-      width={375}
-      height={480}>
+      width={500}
+      height={500}>
       <Window.Content>
         <Section
           title="Information"

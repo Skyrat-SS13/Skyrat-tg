@@ -64,9 +64,6 @@ export class Dropdown extends Component {
   render() {
     const { props } = this;
     const {
-      icon,
-      iconRotation,
-      iconSpin,
       color = 'default',
       over,
       noscroll,
@@ -75,7 +72,6 @@ export class Dropdown extends Component {
       onClick,
       selected,
       disabled,
-      displayText,
       ...boxProps
     } = props;
     const {
@@ -118,15 +114,8 @@ export class Dropdown extends Component {
             }
             this.setOpen(!this.state.open);
           }}>
-          {icon && (
-            <Icon
-              name={icon}
-              rotation={iconRotation}
-              spin={iconSpin}
-              mr={1} />
-          )}
           <span className="Dropdown__selected-text">
-            {displayText ? displayText : this.state.selected}
+            {this.state.selected}
           </span>
           {!!nochevron || (
             <span className="Dropdown__arrow-button">

@@ -10,34 +10,27 @@ const VendingRow = (props, context) => {
     productStock,
     custom,
   } = props;
-  const {
-    onstation,
-    department,
-    user,
-    jobDiscount,
-  } = data;
   const free = (
-    !onstation
+    !data.onstation
     || product.price === 0
     || (
       !product.premium
-      && department
-      && user
+      && data.department
+      && data.user
+      && data.department === data.user.department
     )
   );
-  const discount = department === user?.department;
-  const redPrice = Math.round(product.price * jobDiscount);
   return (
     <Table.Row>
       <Table.Cell collapsing>
-        {product.base64 && (
+        {product.img ? (
           <img
             src={`data:image/jpeg;base64,${product.img}`}
             style={{
               'vertical-align': 'middle',
               'horizontal-align': 'middle',
             }} />
-        ) || (
+        ) : (
           <span
             className={classes([
               'vending32x32',
@@ -54,12 +47,13 @@ const VendingRow = (props, context) => {
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         <Box
-          color={(
-            custom && 'good'
-            || productStock <= 0 && 'bad'
-            || productStock <= (product.max_amount / 2) && 'average'
-            || 'good'
-          )}>
+          color={custom
+            ? 'good'
+            : productStock <= 0
+              ? 'bad'
+              : productStock <= (product.max_amount / 2)
+                ? 'average'
+                : 'good'}>
           {productStock} in stock
         </Box>
       </Table.Cell>
@@ -81,8 +75,7 @@ const VendingRow = (props, context) => {
                 || product.price > data.user.cash
               )
             )}
-            content={(free && discount)
-              ? `${redPrice} cr` : `${product.price} cr`}
+            content={free ? 'FREE' : product.price + ' cr'}
             onClick={() => act('vend', {
               'ref': product.ref,
             })} />
@@ -94,66 +87,55 @@ const VendingRow = (props, context) => {
 
 export const Vending = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    user,
-    onstation,
-    product_records = [],
-    coin_records = [],
-    hidden_records = [],
-    stock,
-  } = data;
   let inventory;
   let custom = false;
   if (data.vending_machine_input) {
     inventory = data.vending_machine_input;
     custom = true;
-  }
-  else {
+  } else if (data.extended_inventory) {
     inventory = [
-      ...product_records,
-      ...coin_records,
+      ...data.product_records,
+      ...data.coin_records,
+      ...data.hidden_records,
     ];
-    if (data.extended_inventory) {
-      inventory = [
-        ...inventory,
-        ...hidden_records,
-      ];
-    }
+  } else {
+    inventory = [
+      ...data.product_records,
+      ...data.coin_records,
+    ];
   }
-  // Just in case we still have undefined values in the list
-  inventory = inventory.filter(item => !!item);
   return (
     <Window
-      title="Vending Machine"
-      width={450}
-      height={600}>
+      resizable
+      width={400}
+      height={550}>
       <Window.Content scrollable>
-        {!!onstation && (
+        {!!data.onstation && (
           <Section title="User">
-            {user && (
+            {data.user && (
               <Box>
-                Welcome, <b>{user.name}</b>,
+                Welcome, <b>{data.user.name}</b>,
                 {' '}
-                <b>{user.job || 'Unemployed'}</b>!
+                <b>{data.user.job || 'Unemployed'}</b>!
                 <br />
-                Your balance is <b>{user.cash} credits</b>.
+                Your balance is <b>{data.user.cash} credits</b>.
               </Box>
             ) || (
-              <Box color="light-grey">
+              <Box color="light-gray">
                 No registered ID card!<br />
                 Please contact your local HoP!
               </Box>
             )}
           </Section>
         )}
-        <Section title="Products">
+        <Section title="Products" >
           <Table>
             {inventory.map(product => (
               <VendingRow
                 key={product.name}
                 custom={custom}
                 product={product}
-                productStock={stock[product.name]} />
+                productStock={data.stock[product.name]} />
             ))}
           </Table>
         </Section>

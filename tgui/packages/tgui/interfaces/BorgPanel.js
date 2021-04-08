@@ -14,7 +14,7 @@ export const BorgPanel = (props, context) => {
   const laws = data.laws || [];
   return (
     <Window
-      title="Borg Panel"
+      resizable
       width={700}
       height={700}>
       <Window.Content scrollable>
@@ -82,7 +82,7 @@ export const BorgPanel = (props, context) => {
                   })} />
               ))}
             </LabeledList.Item>
-            <LabeledList.Item label="Model">
+            <LabeledList.Item label="Module">
               {modules.map(module => (
                 <Button
                   key={module.type}

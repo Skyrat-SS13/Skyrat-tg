@@ -1,3 +1,4 @@
+import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
@@ -16,7 +17,7 @@ export const TurbineComputer = (props, context) => {
         <Section
           title="Status"
           buttons={(
-            <>
+            <Fragment>
               <Button
                 icon={data.online ? 'power-off' : 'times'}
                 content={data.online ? 'Online' : 'Offline'}
@@ -27,7 +28,7 @@ export const TurbineComputer = (props, context) => {
                 icon="sync"
                 content="Reconnect"
                 onClick={() => act('reconnect')} />
-            </>
+            </Fragment>
           )}>
           {!operational && (
             <LabeledList>

@@ -8,6 +8,7 @@ export const AtmosAlertConsole = (props, context) => {
   const minorAlerts = data.minor || [];
   return (
     <Window
+      resizable
       width={350}
       height={300}>
       <Window.Content scrollable>
@@ -27,7 +28,7 @@ export const AtmosAlertConsole = (props, context) => {
                   onClick={() => act('clear', { zone: alert })} />
               </li>
             ))}
-            {minorAlerts.length === 0 && (
+            {minorAlerts.length > 0 && (
               <li className="color-good">
                 No Minor Alerts
               </li>

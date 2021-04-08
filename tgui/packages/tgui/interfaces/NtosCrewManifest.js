@@ -1,16 +1,19 @@
-import { map } from 'common/collections';
 import { useBackend } from '../backend';
 import { Button, Section, Table } from '../components';
+import { map } from 'common/collections';
 import { NtosWindow } from '../layouts';
 
 export const NtosCrewManifest = (props, context) => {
   const { act, data } = useBackend(context);
+
   const {
     have_printer,
     manifest = {},
   } = data;
+
   return (
     <NtosWindow
+      resizable
       width={400}
       height={480}>
       <NtosWindow.Content scrollable>
