@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					font-family: "Fixedsys";
 					font-weight: lighter;
 					text-decoration: none;
-					width: 100%;
+					width: 70%;
 					text-align: left;
 					color: #0066cc;
 					margin-right: 100%;
