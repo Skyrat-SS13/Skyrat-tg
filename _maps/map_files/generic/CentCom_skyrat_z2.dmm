@@ -347,10 +347,12 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "abe" = (
-/obj/structure/urinal{
-	pixel_y = -12
+/obj/structure/railing,
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
 	},
-/turf/closed/indestructible/riveted,
+/turf/open/floor/iron/cafeteria,
 /area/centcom/tram_dock)
 "abf" = (
 /obj/machinery/door/airlock/security/old{
@@ -1563,10 +1565,12 @@
 /turf/open/floor/engine,
 /area/cruiser_dock/security/armory)
 "aey" = (
-/obj/structure/urinal{
-	pixel_y = -5
+/obj/structure/railing,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
 	},
-/turf/closed/indestructible/riveted,
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron/cafeteria,
 /area/centcom/tram_dock)
 "aez" = (
 /obj/structure/table/reinforced,
@@ -2227,7 +2231,9 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
 "agp" = (
-/obj/structure/closet/wardrobe,
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 5
+	},
 /turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "agq" = (
@@ -3014,27 +3020,11 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafepark)
 "aim" = (
-/obj/structure/table{
-	name = "Jim Norton's Quebecois Coffee table"
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 6
 	},
-/obj/item/reagent_containers/food/condiment/soymilk{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/drinks/bottle/cream{
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/obj/item/reagent_containers/food/condiment/milk{
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/food/condiment/sugar{
-	pixel_y = 4
-	},
-/turf/open/floor/iron/brown/side{
-	dir = 8
-	},
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron,
 /area/centcom/tram_dock)
 "ain" = (
 /obj/structure/filingcabinet/chestdrawer,
@@ -3584,13 +3574,6 @@
 	},
 /turf/open/floor/plating/grass/planet,
 /area/centcom/holding/cafepark)
-"ajL" = (
-/obj/effect/turf_decal/trimline/darkblue/line{
-	dir = 9
-	},
-/obj/structure/window/reinforced/spawner/east,
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "ajM" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
@@ -3650,11 +3633,9 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
 "ajS" = (
-/obj/effect/turf_decal/trimline/darkblue/line{
+/turf/open/floor/iron/brown/side{
 	dir = 1
 	},
-/obj/structure/window/reinforced/spawner/east,
-/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "ajT" = (
 /obj/effect/turf_decal/siding/wood{
@@ -3839,13 +3820,15 @@
 /turf/open/floor/iron/grimy,
 /area/cruiser_dock/commons)
 "akv" = (
-/obj/structure/chair/stool,
-/obj/machinery/light{
-	dir = 4
+/obj/machinery/vending/coffee{
+	custom_premium_price = 0;
+	custom_price = 0;
+	default_price = 0;
+	extra_price = 0;
+	fair_market_price = 0;
+	name = "\improper Jim Norton's Quebecois Coffee"
 	},
-/turf/open/floor/iron/brown/side{
-	dir = 8
-	},
+/turf/open/floor/iron,
 /area/centcom/tram_dock)
 "akw" = (
 /obj/machinery/light/cold,
@@ -3882,10 +3865,28 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/vault)
 "akA" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 1
+/obj/structure/table{
+	name = "Jim Norton's Quebecois Coffee table"
 	},
-/obj/structure/closet/crate/bin,
+/obj/item/food/muffin/berry{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/item/food/grown/coffee,
+/obj/item/food/grown/coffee,
+/obj/item/food/grown/coffee,
+/obj/item/food/grown/coffee,
+/obj/item/food/grown/coffee,
+/obj/item/food/grown/coffee,
+/obj/item/food/grown/coffee/robusta,
+/obj/item/food/grown/coffee/robusta,
+/obj/item/seeds/coffee,
+/obj/item/seeds/coffee/robusta,
+/obj/machinery/reagentgrinder{
+	name = "\improper Coffee Grinder";
+	pixel_x = 6;
+	pixel_y = 1
+	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -4170,10 +4171,9 @@
 	},
 /area/centcom/holding/cafe)
 "aln" = (
-/obj/effect/turf_decal/trimline/darkblue/line{
-	dir = 5
+/turf/open/floor/iron/brown/corner{
+	dir = 1
 	},
-/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "alo" = (
 /obj/structure/flora/tree/jungle/small{
@@ -4326,10 +4326,6 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/research)
-"alL" = (
-/obj/structure/sign/poster/official/cleanliness,
-/turf/closed/indestructible/riveted,
-/area/centcom/tram_dock)
 "alM" = (
 /obj/item/reagent_containers/food/drinks/shaker{
 	pixel_x = 1;
@@ -4575,12 +4571,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
-"amp" = (
-/obj/machinery/light,
-/obj/effect/turf_decal/trimline/darkblue/line,
-/obj/structure/closet/crate/bin,
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "amq" = (
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
@@ -4726,8 +4716,8 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "amK" = (
-/obj/effect/turf_decal/trimline/darkblue/line{
-	dir = 9
+/obj/effect/turf_decal/trimline/darkblue/corner{
+	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/centcom/tram_dock)
@@ -6009,10 +5999,7 @@
 /turf/open/floor/wood,
 /area/cruiser_dock/medical/virology)
 "apL" = (
-/obj/effect/turf_decal/trimline/darkblue/line{
-	dir = 1
-	},
-/obj/machinery/light{
+/obj/effect/turf_decal/trimline/darkblue/warning{
 	dir = 1
 	},
 /turf/open/floor/iron/white,
@@ -6256,17 +6243,9 @@
 	},
 /area/centcom/holding/cafepark)
 "aqp" = (
-/obj/effect/turf_decal/trimline/darkblue/line{
-	dir = 1
+/turf/open/floor/iron/brown/side{
+	dir = 8
 	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/item/kirbyplants{
-	icon_state = "plant-02";
-	pixel_y = 3
-	},
-/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aqq" = (
 /obj/structure/closet/secure_closet{
@@ -6426,19 +6405,10 @@
 /turf/open/floor/plating,
 /area/cruiser_dock/research)
 "aqL" = (
-/obj/structure/mirror{
-	pixel_x = 26
+/obj/structure/table/glass,
+/turf/open/floor/iron/brown/side{
+	dir = 4
 	},
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face.";
-	dir = 8;
-	name = "bathroom sink";
-	pixel_x = 12
-	},
-/obj/effect/turf_decal/trimline/darkblue/line{
-	dir = 5
-	},
-/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aqM" = (
 /obj/machinery/light/cold/no_nightlight{
@@ -6738,12 +6708,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
-"arA" = (
-/obj/effect/turf_decal/trimline/darkblue/corner{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "arB" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -6772,8 +6736,8 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "arF" = (
-/obj/effect/turf_decal/trimline/darkblue/line{
-	dir = 10
+/obj/effect/turf_decal/trimline/darkblue/corner{
+	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/centcom/tram_dock)
@@ -7800,10 +7764,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"auq" = (
-/obj/effect/turf_decal/trimline/darkblue/warning,
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "aur" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -8301,9 +8261,7 @@
 /turf/open/floor/plating,
 /area/cruiser_dock/research)
 "avC" = (
-/obj/machinery/light,
-/obj/effect/turf_decal/trimline/darkblue/line,
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/brown/side,
 /area/centcom/tram_dock)
 "avD" = (
 /obj/structure/window/reinforced/spawner,
@@ -8947,20 +8905,12 @@
 /turf/closed/indestructible/syndicate,
 /area/cruiser_dock/engineering)
 "axn" = (
-/obj/structure/mirror{
-	pixel_x = 26;
-	pixel_y = -1
+/obj/structure/chair/comfy/brown{
+	dir = 1
 	},
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face.";
-	dir = 8;
-	name = "bathroom sink";
-	pixel_x = 12
-	},
-/obj/effect/turf_decal/trimline/darkblue/line{
+/turf/open/floor/iron/brown/side{
 	dir = 6
 	},
-/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "axo" = (
 /obj/effect/turf_decal/stripes/line{
@@ -9800,12 +9750,6 @@
 /obj/structure/tank_holder/extinguisher,
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
-"azy" = (
-/obj/machinery/door/airlock{
-	name = "Bathroom"
-	},
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "azz" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -10492,10 +10436,6 @@
 /obj/machinery/libraryscanner,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafepark)
-"aBl" = (
-/obj/structure/curtain,
-/turf/open/floor/plastic,
-/area/centcom/tram_dock)
 "aBm" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 8
@@ -10724,25 +10664,27 @@
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
 "aBO" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/poddoor/shutters/window/preopen,
-/obj/item/food/muffin/berry{
-	pixel_x = -4;
-	pixel_y = 9
+/obj/structure/table{
+	name = "Jim Norton's Quebecois Coffee table"
 	},
-/obj/item/food/cakeslice/pound_cake_slice{
-	pixel_x = 8;
+/obj/item/reagent_containers/food/condiment/sugar{
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/condiment/milk{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/condiment/soymilk{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/bottle/cream{
+	pixel_x = 3;
 	pixel_y = -2
 	},
-/obj/item/food/hotcrossbun{
-	pixel_x = 3;
-	pixel_y = 5
-	},
-/obj/item/paper{
-	info = "Jim Norton's Quebecois Coffee.         You see, in 2265 the Quebecois had finally had enough of Canada's shit, and went to the one place that wasn't corrupted by Canuckistan.Je vais au seul endroit qui n'a pas ??? corrompu par les Canadiens ... ESPACE.";
-	name = "Coffee Shop";
-	pixel_x = -4;
-	pixel_y = 6
+/obj/structure/sign/poster/contraband/robust_softdrinks{
+	name = "Jim Norton's Quebecois Coffee";
+	pixel_y = 32
 	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
@@ -11311,10 +11253,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "aDp" = (
-/obj/machinery/door/airlock{
-	name = "Bathroom"
+/obj/machinery/light{
+	dir = 4
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/stairs,
 /area/centcom/tram_dock)
 "aDq" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -11932,8 +11874,7 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 10
 	},
-/obj/item/food/honeybun,
-/obj/structure/table/glass,
+/obj/structure/closet/emcloset,
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "aFc" = (
@@ -12331,11 +12272,7 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
 	},
-/obj/structure/sink{
-	desc = "Finally, modern amenities.";
-	name = "water fountain";
-	pixel_y = 20
-	},
+/obj/structure/closet/crate/bin,
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "aGg" = (
@@ -12436,8 +12373,12 @@
 	},
 /area/bluespace_locker)
 "aGs" = (
-/obj/effect/turf_decal/trimline/darkblue/line,
-/turf/open/floor/iron/white,
+/obj/structure/chair/comfy/brown{
+	dir = 4
+	},
+/turf/open/floor/iron/brown/side{
+	dir = 10
+	},
 /area/centcom/tram_dock)
 "aGt" = (
 /obj/structure/rack,
@@ -13362,11 +13303,12 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "aIQ" = (
-/obj/structure/closet/emcloset,
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 1
+/obj/item/kirbyplants{
+	icon_state = "plant-06"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/brown/side{
+	dir = 9
+	},
 /area/centcom/tram_dock)
 "aIR" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -13432,12 +13374,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
-"aJb" = (
-/obj/effect/turf_decal/trimline/darkblue/corner{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "aJc" = (
 /obj/machinery/vending/cola/pwr_game,
 /turf/open/floor/plating,
@@ -13810,14 +13746,12 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
 "aJY" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 4
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/structure/railing,
-/obj/effect/turf_decal/arrows/white{
-	dir = 8
+/turf/open/floor/iron/brown/side{
+	dir = 1
 	},
-/turf/open/floor/iron,
 /area/centcom/tram_dock)
 "aJZ" = (
 /obj/structure/spider/stickyweb,
@@ -14704,10 +14638,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "aMu" = (
-/obj/structure/chair/sofa/bench/left{
-	dir = 4
+/obj/effect/turf_decal/trimline/darkblue/warning{
+	dir = 8
 	},
-/turf/open/floor/plastic,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aMv" = (
 /obj/structure/tank_dispenser/oxygen,
@@ -14785,9 +14719,6 @@
 /obj/item/coin/silver,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
-"aMF" = (
-/turf/open/floor/plastic,
-/area/centcom/tram_dock)
 "aMG" = (
 /obj/structure/chair/sofa/corp/left{
 	dir = 1
@@ -15474,9 +15405,6 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
-"aOx" = (
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "aOy" = (
 /obj/structure/table/wood,
 /obj/item/storage/photo_album/syndicate,
@@ -15735,12 +15663,9 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/vault)
 "aPb" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 14
-	},
+/obj/structure/chair/sofa/right,
 /turf/open/floor/iron/brown/side{
-	dir = 8
+	dir = 1
 	},
 /area/centcom/tram_dock)
 "aPc" = (
@@ -15910,12 +15835,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"aPB" = (
-/obj/effect/turf_decal/trimline/darkblue/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/centcom/tram_dock)
 "aPC" = (
 /obj/machinery/light/cold/no_nightlight{
 	dir = 4
@@ -16223,10 +16142,11 @@
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "aQu" = (
-/obj/structure/chair/sofa/bench/right{
-	dir = 8
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 5
 	},
-/turf/open/floor/plastic,
+/obj/structure/closet/crate/bin,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aQv" = (
 /obj/machinery/iv_drip,
@@ -16600,7 +16520,6 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 9
 	},
-/obj/machinery/vending/modularpc,
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "aRq" = (
@@ -17026,9 +16945,13 @@
 /turf/open/floor/plating/beach/coastline_t/sandwater_inner,
 /area/centcom/holding/cafepark)
 "aSr" = (
-/obj/structure/table/glass,
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
+	},
+/obj/structure/sink{
+	desc = "Finally, modern amenities.";
+	name = "water fountain";
+	pixel_y = 20
 	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
@@ -17376,9 +17299,10 @@
 /turf/open/floor/iron/dark/yellow,
 /area/cruiser_dock/engineering)
 "aTn" = (
-/obj/effect/turf_decal/trimline/blue/filled,
-/obj/effect/turf_decal/trimline/blue/filled,
-/turf/open/floor/iron,
+/obj/structure/chair/sofa/left,
+/turf/open/floor/iron/brown/side{
+	dir = 5
+	},
 /area/centcom/tram_dock)
 "aTo" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -17805,10 +17729,10 @@
 	},
 /area/centcom/holding/cafepark)
 "aUs" = (
-/obj/structure/chair/sofa/bench/right{
-	dir = 4
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 8
 	},
-/turf/open/floor/plastic,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aUt" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -17921,12 +17845,6 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
-"aUJ" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plastic,
-/area/centcom/tram_dock)
 "aUK" = (
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/caution/stand_clear,
@@ -18123,6 +18041,9 @@
 	},
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = -32
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
@@ -18411,10 +18332,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
 "aWb" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plastic,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aWc" = (
 /obj/structure/window/reinforced/spawner,
@@ -19021,10 +18939,10 @@
 	},
 /area/bluespace_locker)
 "aXI" = (
-/obj/structure/chair/sofa/bench/left{
-	dir = 8
+/obj/effect/turf_decal/trimline/darkblue/warning{
+	dir = 4
 	},
-/turf/open/floor/plastic,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aXJ" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -19074,10 +18992,14 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "aXQ" = (
-/obj/machinery/shower{
-	dir = 4
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 10
 	},
-/turf/open/floor/plastic,
+/obj/item/kirbyplants{
+	icon_state = "plant-02";
+	pixel_y = 3
+	},
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aXR" = (
 /obj/machinery/button/door{
@@ -19316,10 +19238,11 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "aYC" = (
-/obj/machinery/shower{
-	dir = 8
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 6
 	},
-/turf/open/floor/plastic,
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "aYD" = (
 /obj/machinery/firealarm{
@@ -19599,9 +19522,6 @@
 "aZp" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
 /obj/machinery/light,
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "aZq" = (
@@ -19920,12 +19840,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
-"bnl" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 6
+"biw" = (
+/obj/structure/toilet{
+	contents = newlist(/obj/item/toy/snappop/phoenix);
+	dir = 4
 	},
-/obj/structure/closet/crate/bin,
-/turf/open/floor/iron,
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
+"bnl" = (
+/obj/structure/trash_pile,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "bot" = (
 /obj/machinery/washing_machine{
@@ -19938,6 +19862,12 @@
 	dir = 8
 	},
 /turf/open/floor/iron/cafeteria,
+/area/centcom/tram_dock)
+"btE" = (
+/obj/machinery/door/airlock{
+	name = "Bathroom"
+	},
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "bFx" = (
 /obj/structure/table/wood,
@@ -19954,6 +19884,18 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
+"bZo" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 8
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
+"chW" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/iron/brown/side,
+/area/centcom/tram_dock)
 "cnS" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -19967,12 +19909,22 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
+"cqY" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/stairs,
+/area/centcom/tram_dock)
 "ctg" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
+/area/centcom/tram_dock)
+"czK" = (
+/obj/effect/turf_decal/trimline/darkblue/line,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "cDd" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -20041,6 +19993,15 @@
 /obj/machinery/computer/security/telescreen/entertainment,
 /turf/closed/indestructible/riveted,
 /area/centcom/tram_dock)
+"dKB" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
 "dMY" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
@@ -20074,6 +20035,19 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
+/area/centcom/tram_dock)
+"emM" = (
+/obj/machinery/door/airlock{
+	name = "Bathroom"
+	},
+/turf/open/floor/iron,
+/area/centcom/tram_dock)
+"eLV" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 9
+	},
+/obj/structure/window/reinforced/spawner/east,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "eOB" = (
 /obj/machinery/button/door{
@@ -20117,6 +20091,9 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
+"fwZ" = (
+/turf/closed/indestructible/riveted,
+/area/space)
 "fzU" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -20230,15 +20207,6 @@
 /obj/structure/chair/stool/bar,
 /turf/open/floor/carpet/executive,
 /area/centcom/tram_dock)
-"hkb" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 8
-	},
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/centcom/tram_dock)
 "hkX" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/iron,
@@ -20265,6 +20233,12 @@
 	name = "old radio"
 	},
 /turf/open/floor/carpet,
+/area/centcom/tram_dock)
+"idT" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "ieC" = (
 /obj/machinery/modular_computer/console/preset/command{
@@ -20301,16 +20275,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
-"iCe" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 8
-	},
-/obj/structure/sign/poster/contraband/random{
-	pixel_x = -32
-	},
-/obj/structure/chair/comfy/black,
-/turf/open/floor/iron,
-/area/centcom/tram_dock)
 "iEA" = (
 /obj/machinery/light/small,
 /turf/open/floor/carpet,
@@ -20342,14 +20306,28 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
+"iZj" = (
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
+"jff" = (
+/obj/structure/urinal{
+	pixel_y = -12
+	},
+/turf/closed/indestructible/riveted,
+/area/centcom/tram_dock)
 "jgm" = (
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 6
+	dir = 4
 	},
-/obj/structure/closet/emcloset,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "jrF" = (
@@ -20363,14 +20341,10 @@
 /turf/open/floor/iron/grimy,
 /area/centcom/tram_dock)
 "jwv" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 4
+/obj/structure/toilet{
+	pixel_y = 8
 	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/turf_decal/arrows/white,
-/turf/open/floor/iron,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "jzj" = (
 /obj/effect/turf_decal/tile/blue{
@@ -20403,8 +20377,14 @@
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "jMY" = (
-/obj/structure/trash_pile,
-/turf/open/floor/iron/white,
+/obj/structure/chair/sofa/left{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron/cafeteria,
 /area/centcom/tram_dock)
 "jTG" = (
 /obj/effect/turf_decal/tile/blue{
@@ -20430,6 +20410,20 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
+"jUE" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
+"jXl" = (
+/obj/effect/turf_decal/trimline/darkblue/warning,
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
+"jXA" = (
+/obj/structure/sign/poster/official/cleanliness,
+/turf/closed/indestructible/riveted,
+/area/centcom/tram_dock)
 "jXY" = (
 /obj/machinery/light{
 	dir = 8
@@ -20437,16 +20431,6 @@
 /obj/structure/chair/sofa/bench{
 	dir = 4
 	},
-/turf/open/floor/iron,
-/area/centcom/tram_dock)
-"kfI" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 8
-	},
-/obj/item/reagent_containers/food/drinks/coffee{
-	pixel_x = -3
-	},
-/obj/structure/table/glass,
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "kiC" = (
@@ -20485,10 +20469,12 @@
 /turf/open/floor/carpet,
 /area/centcom/tram_dock)
 "kAy" = (
-/obj/structure/toilet{
-	pixel_y = 8
+/obj/structure/chair/sofa/right{
+	dir = 1
 	},
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/brown/side{
+	dir = 4
+	},
 /area/centcom/tram_dock)
 "kGR" = (
 /obj/structure/dresser,
@@ -20532,17 +20518,11 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
 "kRW" = (
-/obj/structure/mirror{
-	pixel_x = -28
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
 	},
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face.";
-	dir = 4;
-	name = "bathroom sink";
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/turf/open/floor/iron/white,
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron/cafeteria,
 /area/centcom/tram_dock)
 "kVK" = (
 /obj/structure/chair/stool,
@@ -20563,9 +20543,23 @@
 /obj/machinery/door/window/eastleft,
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
-"lkX" = (
-/obj/machinery/light,
+"lhC" = (
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
+/area/centcom/tram_dock)
+"lkX" = (
+/obj/structure/sign/poster/contraband/robust_softdrinks{
+	name = "Jim Norton's Quebecois Coffee";
+	pixel_x = 32
+	},
+/obj/item/kirbyplants{
+	icon_state = "plant-06"
+	},
+/turf/open/floor/iron/brown/side{
+	dir = 4
+	},
 /area/centcom/tram_dock)
 "lmu" = (
 /obj/structure/table/wood,
@@ -20588,6 +20582,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
+"luy" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
 "lIR" = (
 /obj/item/trash/can,
 /turf/open/floor/iron,
@@ -20599,11 +20602,46 @@
 	},
 /turf/open/floor/carpet,
 /area/centcom/tram_dock)
+"lSk" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 8
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
 "lUt" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
+/area/centcom/tram_dock)
+"lWQ" = (
+/obj/structure/urinal{
+	pixel_y = -5
+	},
+/turf/closed/indestructible/riveted,
+/area/centcom/tram_dock)
+"mih" = (
+/obj/effect/turf_decal/trimline/green/filled/line,
+/turf/open/floor/iron,
+/area/centcom/tram_dock)
+"mpj" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters/window/preopen,
+/obj/item/food/cakeslice/pound_cake_slice{
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/food/hotcrossbun{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/paper{
+	info = "Jim Norton's Quebecois Coffee.         You see, in 2265 the Quebecois had finally had enough of Canada's shit, and went to the one place that wasn't corrupted by Canuckistan.Je vais au seul endroit qui n'a pas ??? corrompu par les Canadiens ... ESPACE.";
+	name = "Coffee Shop";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/iron,
 /area/centcom/tram_dock)
 "mqd" = (
 /obj/effect/turf_decal/tile/blue,
@@ -20631,8 +20669,10 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
 "mHF" = (
-/obj/effect/turf_decal/delivery,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = -12
+	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "mOa" = (
@@ -20665,29 +20705,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
-"mSu" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 8
-	},
-/obj/structure/chair/comfy/black,
-/turf/open/floor/iron,
-/area/centcom/tram_dock)
 "mTn" = (
-/obj/structure/sign/poster/contraband/robust_softdrinks{
-	name = "Jim Norton's Quebecois Coffee";
-	pixel_x = 32
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 4
 	},
-/obj/machinery/vending/coffee{
-	custom_premium_price = 0;
-	custom_price = 0;
-	default_price = 0;
-	extra_price = 0;
-	fair_market_price = 0;
-	name = "\improper Jim Norton's Quebecois Coffee"
+/obj/structure/sink{
+	desc = "Finally, modern amenities.";
+	dir = 8;
+	name = "water fountain";
+	pixel_x = 12
 	},
-/turf/open/floor/iron/brown/side{
-	dir = 8
-	},
+/turf/open/floor/iron,
 /area/centcom/tram_dock)
 "nib" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
@@ -20705,6 +20733,17 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
+/area/centcom/tram_dock)
+"nwj" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/turf_decal/arrows/white,
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron/cafeteria,
 /area/centcom/tram_dock)
 "nwM" = (
 /obj/structure/chair/comfy/black{
@@ -20727,6 +20766,9 @@
 "nHt" = (
 /obj/machinery/light/floor,
 /turf/open/floor/plating,
+/area/centcom/tram_dock)
+"nKj" = (
+/turf/open/floor/plastic,
 /area/centcom/tram_dock)
 "nSQ" = (
 /obj/item/cardboard_cutout{
@@ -20794,6 +20836,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
+"poj" = (
+/obj/structure/table/glass,
+/obj/item/food/honeybun,
+/turf/open/floor/iron/brown/side,
+/area/centcom/tram_dock)
 "pwX" = (
 /obj/structure/table/wood,
 /obj/item/phone{
@@ -20822,6 +20869,12 @@
 	},
 /turf/open/floor/carpet/executive,
 /area/centcom/tram_dock)
+"pCv" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
 "pDF" = (
 /obj/item/clothing/suit/jacket/letterman_nanotrasen{
 	pixel_x = 5;
@@ -20848,6 +20901,17 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/iron/cafeteria,
 /area/centcom/tram_dock)
+"pRy" = (
+/obj/effect/turf_decal/arrows/white{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/brown/side{
+	dir = 9
+	},
+/area/centcom/tram_dock)
 "pUb" = (
 /obj/item/pen,
 /obj/structure/table/glass,
@@ -20869,9 +20933,30 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/centcom/tram_dock)
+"pYQ" = (
+/obj/structure/closet/wardrobe,
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
+"qcJ" = (
+/obj/structure/urinal{
+	dir = 4;
+	pixel_x = -29;
+	pixel_y = -2
+	},
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
 "qdd" = (
 /obj/machinery/light/floor,
 /turf/open/floor/iron/dark,
+/area/centcom/tram_dock)
+"qei" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "qkX" = (
 /obj/machinery/status_display/ai{
@@ -20897,6 +20982,22 @@
 "qlO" = (
 /turf/open/floor/iron/stairs,
 /area/centcom/tram_dock)
+"qqd" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
+"quD" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/turf/open/floor/iron/cafeteria,
+/area/centcom/tram_dock)
 "qxa" = (
 /obj/structure/closet/crate/bin{
 	pixel_x = -6;
@@ -20906,11 +21007,36 @@
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
 "qxS" = (
-/obj/effect/turf_decal/trimline/green/filled/line,
-/turf/open/floor/iron,
+/obj/structure/table/glass,
+/obj/item/reagent_containers/food/drinks/coffee,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/iron/cafeteria,
 /area/centcom/tram_dock)
 "qyu" = (
 /turf/open/floor/iron/cafeteria,
+/area/centcom/tram_dock)
+"qAL" = (
+/obj/structure/curtain,
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
+"qLM" = (
+/obj/structure/mirror{
+	pixel_x = 26;
+	pixel_y = -1
+	},
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face.";
+	dir = 8;
+	name = "bathroom sink";
+	pixel_x = 12
+	},
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "qMC" = (
 /obj/structure/table/wood,
@@ -20944,6 +21070,39 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
+"rlm" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
+"rpn" = (
+/obj/structure/mirror{
+	pixel_x = 26
+	},
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face.";
+	dir = 8;
+	name = "bathroom sink";
+	pixel_x = 12
+	},
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 5
+	},
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
+"rxu" = (
+/obj/effect/turf_decal/trimline/darkblue/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
+"rNg" = (
+/obj/structure/chair/sofa/bench/left{
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/centcom/tram_dock)
 "rOF" = (
 /obj/structure/sign/poster/official/walk,
 /turf/closed/indestructible/riveted,
@@ -20970,13 +21129,36 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
+"spI" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/east,
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
 "sqx" = (
-/obj/effect/turf_decal/trimline/green/filled/corner,
-/turf/open/floor/iron,
+/obj/structure/table/glass,
+/obj/item/reagent_containers/food/drinks/coffee,
+/turf/open/floor/iron/brown/side{
+	dir = 4
+	},
 /area/centcom/tram_dock)
 "syJ" = (
 /obj/machinery/telecomms/relay/preset/auto,
 /turf/open/floor/plating,
+/area/centcom/tram_dock)
+"szI" = (
+/obj/machinery/light,
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
+"sKu" = (
+/obj/structure/chair/comfy/brown,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/brown/side{
+	dir = 4
+	},
 /area/centcom/tram_dock)
 "sQb" = (
 /obj/effect/turf_decal/tile/red{
@@ -21007,6 +21189,19 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/centcom/tram_dock)
+"tpa" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/kirbyplants{
+	icon_state = "plant-02";
+	pixel_y = 3
+	},
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
 "trp" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder,
@@ -21028,13 +21223,17 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tram_dock)
 "tym" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 4
+/obj/structure/sink/kitchen{
+	desc = "A sink used for washing one's hands and face.";
+	dir = 4;
+	name = "bathroom sink";
+	pixel_x = -12;
+	pixel_y = 2
 	},
-/obj/structure/railing{
-	dir = 8
+/obj/structure/mirror{
+	pixel_x = -28
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/white,
 /area/centcom/tram_dock)
 "tAx" = (
 /obj/effect/turf_decal/stripes/line{
@@ -21054,6 +21253,11 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
+/area/centcom/tram_dock)
+"tBE" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/open/floor/iron,
 /area/centcom/tram_dock)
 "tIu" = (
 /obj/effect/turf_decal/tile/red{
@@ -21231,13 +21435,13 @@
 "vLz" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/window/preopen,
-/obj/item/reagent_containers/food/drinks/waterbottle,
-/obj/item/reagent_containers/food/drinks/coffee{
-	pixel_x = -3
-	},
 /obj/item/reagent_containers/food/drinks/coffee{
 	pixel_x = 10;
 	pixel_y = 6
+	},
+/obj/item/reagent_containers/food/drinks/waterbottle,
+/obj/item/reagent_containers/food/drinks/coffee{
+	pixel_x = -3
 	},
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
@@ -21276,6 +21480,12 @@
 /obj/item/storage/fancy/cigarettes,
 /turf/open/floor/iron,
 /area/centcom/tram_dock)
+"wpA" = (
+/obj/effect/turf_decal/trimline/darkblue/line{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/centcom/tram_dock)
 "wpT" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-21"
@@ -21288,6 +21498,12 @@
 /obj/structure/table/wood,
 /turf/open/floor/carpet/executive,
 /area/centcom/tram_dock)
+"wyP" = (
+/turf/closed/indestructible/fakedoor{
+	desc = "Why would you want to go back, you just got here!";
+	name = "Arrivals Hallway"
+	},
+/area/space)
 "wzO" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Central Access"
@@ -22906,14 +23122,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+aHC
+aHC
+aHC
+aHC
+aHC
+aHC
+aHC
 aHC
 aVM
 aVM
@@ -23163,14 +23379,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+pYQ
+wpA
+idT
+aHC
+rNg
+qqd
+rlm
 aHC
 aVM
 aVM
@@ -23420,14 +23636,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+pYQ
+aoC
+jXl
+qAL
+nKj
+pCv
+nKj
 aHC
 aVM
 aVM
@@ -23677,14 +23893,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+aHC
+dKB
+jXl
+aHC
+aHC
+aHC
+aHC
 aHC
 aSz
 aVM
@@ -23934,14 +24150,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+pYQ
+aoC
+jXl
+qAL
+nKj
+jUE
+nKj
 aHC
 aVM
 aVM
@@ -24191,14 +24407,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+pYQ
+aoC
+czK
+aHC
+lSk
+bZo
+iZj
 aHC
 aCy
 aVM
@@ -24448,14 +24664,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+aHC
+tpa
+czK
+aHC
+aHC
+aHC
+aHC
 aHC
 aVM
 aVM
@@ -24705,14 +24921,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+jff
+eLV
+rxu
+czK
+aHC
+tym
+qcJ
+biw
 aHC
 aVM
 aVM
@@ -24962,14 +25178,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+lWQ
+spI
+aWb
+czK
+aHC
+aWb
+lhC
+bnl
 aHC
 aVM
 aVM
@@ -25219,12 +25435,12 @@ aaa
 aaa
 aaa
 aaa
-aHC
-aHC
-aHC
-aHC
-aHC
-aHC
+lWQ
+spI
+aWb
+czK
+jXA
+btE
 aHC
 aHC
 aHC
@@ -25476,11 +25692,11 @@ aaa
 aaa
 aaa
 aaa
-aHC
+lWQ
 agp
 amK
 arF
-aHC
+qei
 aMu
 aUs
 aXQ
@@ -25730,17 +25946,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
 aHC
-agp
+aHC
+aHC
+aHC
+jXA
 aoC
-auq
-aBl
-aMF
-aUJ
-aMF
+aWb
+aWb
+aWb
+aWb
+czK
 aHC
 aVM
 aVM
@@ -25987,17 +26203,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
 aHC
-aHC
+bnl
+tym
+aWb
+btE
 apL
-auq
-aHC
-aHC
-aHC
-aHC
+aWb
+aWb
+aWb
+aWb
+czK
 aHC
 aVM
 aSz
@@ -26244,17 +26460,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
 aHC
-agp
-aoC
-auq
-aBl
-aMF
+jwv
 aWb
-aMF
+szI
+aHC
+rpn
+qLM
+luy
+amK
+aWb
+czK
 aHC
 aVM
 aVM
@@ -26500,14 +26716,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
 aHC
-agp
-aoC
-aGs
+aHC
+aHC
+aHC
+aHC
+aHC
+aHC
+aHC
 aHC
 aQu
 aXI
@@ -26757,17 +26973,17 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
 aHC
-aHC
+akv
+mHF
+aNb
+quD
+pRy
 aqp
 aGs
 aHC
 aHC
-aHC
+emM
 aHC
 aHC
 aDg
@@ -27014,20 +27230,20 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+akA
+kVK
+vLz
 abe
-ajL
-arA
-aGs
+ajS
+kRW
+poj
 aHC
 aRp
-aTn
+amq
 aHe
 aVm
-aZh
+aHe
 aiE
 aiE
 aiE
@@ -27037,11 +27253,11 @@ aiE
 aZh
 aiE
 aiE
-iCe
-kfI
-hkb
+aVm
+aHe
+aHe
 aiE
-mSu
+aHe
 aFb
 aHC
 aHC
@@ -27271,14 +27487,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+aHC
+aBO
+amq
+mpj
 aey
 ajS
-aOx
-aGs
+kRW
+chW
 aHC
 aSr
 amq
@@ -27528,16 +27744,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aey
-ajS
-aOx
-aGs
 aHC
-aIQ
+aNb
+aCr
+aNb
+nwj
+ajS
+kRW
+avC
+cqY
+atO
 amq
 amq
 amV
@@ -27556,8 +27772,8 @@ amV
 amq
 amq
 amq
-aJQ
-mHF
+mih
+aNb
 aKj
 aKj
 aDn
@@ -27572,13 +27788,13 @@ aHC
 aHC
 nFd
 aHC
+aHC
 nFd
 aHC
 aHC
 aHC
 aHC
-aHC
-aaa
+fwZ
 aaa
 aaa
 aaa
@@ -27785,16 +28001,16 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aey
-aln
-aJb
-amp
 aHC
-akA
+aIQ
+aqp
+aqp
+aqp
+aln
+kRW
+avC
+qlO
+atO
 amq
 amq
 amq
@@ -27814,7 +28030,7 @@ amq
 amq
 amq
 aJQ
-aNE
+tBE
 aKj
 aKj
 aKj
@@ -27829,13 +28045,13 @@ vfp
 amq
 kYL
 amq
+amq
 kYL
 amq
 vfp
 amq
 amq
-aHC
-aaa
+fwZ
 aaa
 aaa
 aaa
@@ -28042,14 +28258,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 aHC
-aHC
-aHC
-alL
-aoC
-auq
+aJY
+kRW
+kRW
+kRW
+kRW
+kRW
+avC
 aDp
 atO
 amq
@@ -28063,15 +28279,15 @@ aBm
 axB
 afe
 ayn
+aBm
+axB
+afe
 amV
 amq
-sqx
-jwv
-tym
-aJY
-aNS
-bnl
-aHC
+amq
+amq
+aJQ
+aNE
 aKj
 aKj
 aKj
@@ -28091,8 +28307,8 @@ amq
 amq
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -28299,13 +28515,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 aHC
+aPb
+qxS
 jMY
 kRW
-azy
-aPB
+kRW
+kRW
 avC
 aHC
 aGf
@@ -28322,13 +28538,13 @@ amq
 amq
 amq
 amq
-qxS
+amq
+amq
+amq
+amq
+amq
+mih
 aNb
-vLz
-aBO
-aCr
-aNb
-aHC
 aDn
 aDn
 aDn
@@ -28347,9 +28563,9 @@ dfQ
 uGJ
 dfQ
 amq
+amq
 wcp
-nFd
-aaa
+wyP
 aaa
 aaa
 aaa
@@ -28556,12 +28772,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
 aHC
+aTn
+sqx
 kAy
 lkX
-aHC
+sKu
 aqL
 axn
 aHC
@@ -28580,10 +28796,10 @@ aSm
 avM
 avM
 jgm
-aNb
+aNS
 mTn
-akv
-aPb
+aKd
+aNS
 aim
 aHC
 ait
@@ -28605,8 +28821,8 @@ dfQ
 dfQ
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -28861,9 +29077,9 @@ uDv
 dfQ
 dfQ
 amq
+amq
 aPe
-aHC
-aaa
+fwZ
 aaa
 aaa
 aaa
@@ -29119,8 +29335,8 @@ snU
 jzj
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -29376,8 +29592,8 @@ iWd
 lUt
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -29632,9 +29848,9 @@ cnS
 jzj
 qdd
 amq
+amq
 wcp
-nFd
-aaa
+wyP
 aaa
 aaa
 aaa
@@ -29890,8 +30106,8 @@ cnS
 jzj
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -30147,8 +30363,8 @@ iWd
 lUt
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -30403,9 +30619,9 @@ ooR
 cnS
 klo
 amq
+amq
 aPe
-aHC
-aaa
+fwZ
 aaa
 aaa
 aaa
@@ -30661,8 +30877,8 @@ ooR
 klo
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -30917,9 +31133,9 @@ dfQ
 xga
 lUt
 amq
+amq
 wcp
-nFd
-aaa
+wyP
 aaa
 aaa
 aaa
@@ -31175,8 +31391,8 @@ amq
 amq
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -31432,8 +31648,8 @@ afe
 jUz
 amq
 amq
-aHC
-aaa
+amq
+fwZ
 aaa
 aaa
 aaa
@@ -31690,7 +31906,7 @@ aHC
 aHC
 aHC
 aHC
-aaa
+fwZ
 aaa
 aaa
 aaa
