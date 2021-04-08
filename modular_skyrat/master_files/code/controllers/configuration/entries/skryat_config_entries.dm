@@ -9,4 +9,4 @@
 /datum/config_entry/number/game_alert_role_id
 
 //Reaction roles channel
-/datum/config_entry/string/role_assign_channel
+/datum/config_entry/string/role_assign_channel_id
