@@ -3,7 +3,7 @@
 	name = "meme structure"
 	desc = "Some frog or something, the fuck?"
 	var/clockwork_desc //Shown to servants when they examine
-	icon = 'icons/obj/clockwork_objects.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clockwork_objects.dmi'
 	icon_state = "rare_pepe"
 	var/unanchored_icon //icon for when this structure is unanchored, doubles as the var for if it can be unanchored
 	anchored = TRUE

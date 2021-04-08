@@ -53,7 +53,7 @@
 /obj/machinery/computer/camera_advanced/ratvar
 	name = "ratvarian observation console"
 	desc = "Used by the servants of Ratvar to conduct operations on Nanotrasen property."
-	icon = 'modular_skyrat/modules/clockworkcult/icons/ratvar/ratvar.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clockwork_objects.dmi'
 	icon_screen = "ratvar1"
 	icon_keyboard = "ratvar_key1"
 	icon_state = "ratvarcomputer"
