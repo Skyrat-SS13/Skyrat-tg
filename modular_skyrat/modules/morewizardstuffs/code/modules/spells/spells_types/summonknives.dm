@@ -4,13 +4,13 @@
 	invocation = "POIN'T ED'JIS!"
 	action_icon_state = "projectile"
 	invocation_type = INVOCATION_SHOUT
-	charge_max = 100
-	cooldown_min = 20
+	charge_max = 200
+	cooldown_min = 35
 	projectile_type = /obj/projectile/summonedknife
-	projectile_amount = 1
-	projectiles_per_fire = 7
-	var/projectile_initial_spread_amount = 20
-	var/projectile_location_spread_amount = 10
+	projectile_amount = 3
+	projectiles_per_fire = 5
+	var/projectile_initial_spread_amount = 30
+	var/projectile_location_spread_amount = 12
 
 /obj/effect/proc_holder/spell/aimed/summonknives/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration)
 	var/total_angle = projectile_initial_spread_amount * 2
