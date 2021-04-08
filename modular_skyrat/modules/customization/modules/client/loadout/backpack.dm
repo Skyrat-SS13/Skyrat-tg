@@ -238,6 +238,10 @@
 /datum/loadout_item/backpack/plushies/fermis
 	name = "Medcat plushie"
 	path = /obj/item/toy/plush/fermis
+	
+/datum/loadout_item/backpack/plushies/chen
+	name = "Securicat plushie"
+	path = /obj/item/toy/plush/fermis/chen
 
 /datum/loadout_item/backpack/plushies/fox
 	name = "Fox plushie"
