@@ -169,6 +169,7 @@
 	..()
 
 /datum/clockcult/scripture/slab/Destroy()
+	.=..()
 	if(progress)
 		qdel(progress)
 	if(PH && !QDELETED(PH))
@@ -237,7 +238,7 @@
 	icon_icon = 'icons/mob/actions/actions_clockcult.dmi'
 	background_icon_state = "bg_clock"
 	buttontooltipstyle = "brass"
-	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_CONSCIOUS
 
 /datum/action/innate/clockcult/quick_bind
 	name = "Quick Bind"

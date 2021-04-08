@@ -95,7 +95,7 @@
 		sg_light.close()
 
 /obj/structure/destructible/clockwork/gear_base/stargazer/attackby(obj/item/I, mob/living/user, params)
-	if(user.a_intent != INTENT_HELP)
+	if(user.combat_mode)
 		. = ..()
 		return
 	if(!anchored)
@@ -184,7 +184,7 @@
 			return
 		if(10)
 			to_chat(user, "<span class='neovgre'>[I] suddenly transforms, gaining the magical properties of shungite, it will protect your from all the evil forces!</span>")
-			I.AddComponent(/datum/component/empprotection)
+			I.AddElement(/datum/element/empprotection)
 			I.AddComponent(/datum/component/anti_magic, TRUE, TRUE)
 			I.color = COLOR_ALMOST_BLACK
 			return

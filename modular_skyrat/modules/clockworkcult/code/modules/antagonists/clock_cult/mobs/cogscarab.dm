@@ -1,5 +1,3 @@
-#define CLOCKDRONE	"drone_clock"
-
 GLOBAL_LIST_INIT(cogscarabs, list())
 
 //====Cogscarab====
@@ -14,7 +12,7 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	maxHealth = 30
 	faction = list("neutral", "silicon", "turret", "ratvar")
 	default_storage = /obj/item/storage/belt/utility/servant/drone
-	visualAppearence = CLOCKDRONE
+	visualAppearance = CLOCKDRONE
 	bubble_icon = "clock"
 	picked = TRUE
 	flavortext = "<span class=brass>You are a cogscarab, an intricate machine that has been granted sentient by Rat'var.<br>\
@@ -23,7 +21,6 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	laws = "You are have been granted the gift of sentience from Rat'var.<br>\
 		You are not bound by any laws, do whatever you must to serve Rat'var!"
 	chat_color = LIGHT_COLOR_CLOCKWORK
-	mobchatspan = "brassmobsay"
 	initial_language_holder = /datum/language_holder/clockmob
 
 /mob/living/simple_animal/drone/cogscarab/do_after_coefficent() // This gets added to the delay on a do_after, default 1
@@ -51,7 +48,6 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	name = "cogscarab construct"
 	desc = "The shell of an ancient construction drone, loyal to Ratvar."
 	icon_state = "drone_clock_hat"
-	drone_type = /mob/living/simple_animal/drone/cogscarab
 
 /obj/item/drone_shell/cogscarab/attack_ghost(mob/user)
 	if(is_banned_from(user.ckey, ROLE_SERVANT_OF_RATVAR) || QDELETED(src) || QDELETED(user))
@@ -68,10 +64,6 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	if(be_drone == "No" || QDELETED(src) || !isobserver(user))
 		return
 	var/mob/living/simple_animal/drone/D = new drone_type(get_turf(loc))
-	if(!D.default_hatmask && seasonal_hats && possible_seasonal_hats.len)
-		var/hat_type = pick(possible_seasonal_hats)
-		var/obj/item/new_hat = new hat_type(D)
-		D.equip_to_slot_or_del(new_hat, ITEM_SLOT_HEAD)
 	D.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
 	D.key = user.key
 	add_servant_of_ratvar(D, silent=TRUE)

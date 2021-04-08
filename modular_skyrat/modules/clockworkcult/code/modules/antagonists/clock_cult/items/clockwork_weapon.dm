@@ -16,7 +16,7 @@
 	var/clockwork_hint = ""
 	var/obj/effect/proc_holder/spell/targeted/summon_spear/SS
 	var/wielded = FALSE // track wielded status on item
-	
+
 /obj/item/twohanded/clockwork/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
@@ -51,7 +51,7 @@
 	. = ..()
 	if(!is_reebe(user.z))
 		return
-	if(!QDELETED(target) && target.stat != DEAD && !is_servant_of_ratvar(target) && !target.anti_magic_check(major=FALSE) && wielded)
+	if(!QDELETED(target) && target.stat != DEAD && !is_servant_of_ratvar(target) && !target.anti_magic_check() && wielded)
 		hit_effect(target, user)
 
 /obj/item/twohanded/clockwork/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -86,7 +86,6 @@
 	icon_state = "ratvarian_hammer"
 	throwforce = 25
 	armour_penetration = 6
-	sharpness = SHARP_BLUNT
 	attack_verb_continuous = list("bashed", "smitted", "hammered", "attacked")
 	clockwork_hint = "Enemies hit by this will be flung back while on Reebe."
 

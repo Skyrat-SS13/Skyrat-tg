@@ -1,3 +1,17 @@
+/mob/living/silicon/robot
+	var/obj/item/clockwork/clockwork_slab/internal_clock_slab = null
+	var/ratvar = FALSE
+
+/mob/living/silicon/robot/proc/SetRatvar(new_state, rebuild=TRUE)
+	ratvar = new_state
+	update_icons()
+	if(ratvar)
+		internal_clock_slab = new(src)
+		throw_alert("ratvar", /atom/movable/screen/alert/ratvar)
+	else
+		qdel(internal_clock_slab)
+		clear_alert("ratvar")
+
 /mob/living/silicon/robot/Moved(atom/OldLoc, Dir, Forced = FALSE)
 	. = ..()
 	if(robot_resting)

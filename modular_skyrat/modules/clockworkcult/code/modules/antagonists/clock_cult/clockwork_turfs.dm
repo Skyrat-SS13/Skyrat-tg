@@ -389,6 +389,7 @@
 	return TRUE //yes we do have power
 
 /obj/machinery/door/airlock/clockwork/obj_break(damage_flag)
+	.=..()
 	return
 
 /obj/machinery/door/airlock/clockwork/deconstruct(disassembled = TRUE)

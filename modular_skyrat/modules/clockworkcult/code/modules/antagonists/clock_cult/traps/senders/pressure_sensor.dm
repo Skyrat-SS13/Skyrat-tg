@@ -30,7 +30,7 @@
 	if(istype(M))
 		if(is_servant_of_ratvar(M))
 			return
-		if(M.incorporeal_move || M.is_flying())
+		if(M.incorporeal_move)
 			return
 	else
 		return

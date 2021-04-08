@@ -7,7 +7,6 @@
 	icon = 'icons/mob/clockwork_mobs.dmi'
 	icon_state = "clockwork_marauder"
 	icon_dead = "anime_fragment"
-	possible_a_intents = list(INTENT_HARM)
 	health = 140
 	maxHealth = 140
 
@@ -20,13 +19,13 @@
 	pass_flags = PASSTABLE
 	hud_possible = list(ANTAG_HUD)
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
-
-	attacktext = "slices"
+	attack_verb_continuous = "slices"
+	attack_verb_simple = "slice"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	chat_color = "#CAA25B"
-	mobchatspan = "brassmobsay"
 	obj_damage = 80
-	melee_damage = 24
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	faction = list("ratvar")
 
 	initial_language_holder = /datum/language_holder/clockmob
@@ -51,7 +50,7 @@
 			new item(get_turf(src))
 	qdel(src)
 
-/mob/living/simple_animal/clockwork_marauder/bullet_act(obj/item/projectile/Proj)
+/mob/living/simple_animal/clockwork_marauder/bullet_act(obj/projectile/Proj)
 	//Block Ranged Attacks
 	if(shield_health > 0)
 		damage_shield()

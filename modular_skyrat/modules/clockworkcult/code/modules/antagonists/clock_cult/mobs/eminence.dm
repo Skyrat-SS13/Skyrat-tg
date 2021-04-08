@@ -8,9 +8,8 @@
 	invisibility = INVISIBILITY_OBSERVER
 	health = INFINITY
 	maxHealth = INFINITY
-	layer = GHOST_LAYER
+	layer = GHOST_PLANE
 	healable = FALSE
-	spacewalk = TRUE
 	sight = SEE_SELF
 	throwforce = 0
 
@@ -66,13 +65,9 @@
 	AddSpell(reagent_purge)
 	linked_abscond = new
 	AddSpell(linked_abscond)
-	AddComponent(/datum/component/tracking_beacon, "ghost", null, null, TRUE, "#9e4d91", TRUE, TRUE)
 
 /mob/living/simple_animal/eminence/Destroy()
 	. = ..()
-	var/datum/component/tracking_beacon/beacon = GetComponent(/datum/component/tracking_beacon)
-	if(beacon)
-		qdel(beacon)
 
 /mob/living/simple_animal/eminence/Login()
 	. = ..()
@@ -95,12 +90,12 @@
 	return FALSE
 
 /mob/living/simple_animal/eminence/Move(atom/newloc, direct)
-	if(istype(get_area(newloc), /area/chapel))
+	if(istype(get_area(newloc), /area/service/chapel))
 		to_chat(usr, "<span class='warning'>You cannot move on to holy grounds!</span>")
 		return
 	. = ..()
 
-/mob/living/simple_animal/eminence/bullet_act(obj/item/projectile/Proj)
+/mob/living/simple_animal/eminence/bullet_act(obj/projectile/Proj)
 	return BULLET_ACT_FORCE_PIERCE
 
 //Eminence abilities

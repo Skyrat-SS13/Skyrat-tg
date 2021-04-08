@@ -39,7 +39,7 @@
 		if(LAZYLEN(candidates))
 			eminence = pick(candidates)
 	else
-		eminence.dust()
+		qdel(eminence)
 	if(!(eminence?.client))
 		hierophant_message("The Eminence remains in slumber, for now, try waking it again soon.")
 		used = FALSE

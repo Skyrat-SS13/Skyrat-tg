@@ -28,11 +28,12 @@
 	var/mob/living/M = owner
 	var/mob/camera/ai_eye/remote/ratvar/cam = M.remote_control
 	var/target_loc = get_turf(cam)
+	var/area/H = get_area(target_loc)
 	if(isclosedturf(target_loc))
 		to_chat(owner, "<span class='brass'>You cannot warp into dense objects.</span>")
 		return
-	if(!get_area(target_loc).clockwork_warp_allowed)
-		to_chat(owner, "<span class='brass'>[get_area(target_loc).clockwork_warp_fail]</span>")
+	if(!H.clockwork_warp_allowed)
+		to_chat(owner, "<span class='brass'>[H.clockwork_warp_fail]</span>")
 		return
 	do_sparks(5, TRUE, get_turf(cam))
 	warping = TRUE
@@ -55,7 +56,6 @@
 	icon_screen = "ratvar1"
 	icon_keyboard = "ratvar_key1"
 	icon_state = "ratvarcomputer"
-	clockwork = TRUE
 	lock_override = CAMERA_LOCK_STATION
 	var/datum/action/innate/clockcult/warp/warp_action
 

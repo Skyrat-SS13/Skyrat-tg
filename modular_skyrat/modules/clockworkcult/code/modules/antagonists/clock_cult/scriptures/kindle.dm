@@ -53,8 +53,10 @@
 		if(!HAS_TRAIT(M, TRAIT_MINDSHIELD))
 			M.Paralyze(150)
 		else
-			to_chat(invoker, "<span class='brass'>[M] seems somewhat resistant to your powers!</span>")
-			M.confused = CLAMP(M.confused, 50, INFINITY)
+			if(ishuman(M))
+				var/mob/living/carbon/human/P = M
+				to_chat(invoker, "<span class='brass'>[M] seems somewhat resistant to your powers!</span>")
+				P.add_confusion(clamp(P.get_confusion(), 50, INFINITY))
 	if(issilicon(M))
 		var/mob/living/silicon/S = M
 		S.emp_act(EMP_HEAVY)

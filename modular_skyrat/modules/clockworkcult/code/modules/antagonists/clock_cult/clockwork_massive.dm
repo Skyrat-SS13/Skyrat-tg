@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	var/destroyed = FALSE
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/Initialize()
-	. = ..()
+	.=..()
 	GLOB.celestial_gateway = src
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/Destroy()
@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	activated = TRUE
 	set_security_level(SEC_LEVEL_DELTA)
 	mass_recall(TRUE)
-	var/grace_time = GLOB.narsie_breaching ? 0 : 1800
+	var/grace_time = 1800
 	addtimer(CALLBACK(src, .proc/begin_assault), grace_time)
 	priority_announce("Massive [Gibberish("bluespace", 100)] anomaly detected on all frequencies. All crew are directed to \
 	@!$, [text2ratvar("PURGE ALL UNTRUTHS")] <&. the anomalies and destroy their source to prevent further damage to corporate property. This is \
@@ -205,8 +205,6 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	sleep(3)
 	var/turf/center_station = SSmapping.get_station_center()
 	new /obj/ratvar(center_station)
-	if(GLOB.narsie_breaching)
-		new /obj/narsie(GLOB.narsie_arrival)
 	flee_reebe(TRUE)
 
 //=========Ratvar==========
@@ -233,7 +231,6 @@ GLOBAL_VAR(cult_ratvar)
 	to_chat(world, "<span class='ratvar'>The bluespace veil gives way to Ratvar, his light shall shine upon all mortals!</span>")
 	UnregisterSignal(src, COMSIG_ATOM_BSA_BEAM)
 	INVOKE_ASYNC(GLOBAL_PROC, /proc/trigger_clockcult_victory, src)
-	check_gods_battle()
 
 //tasty
 /obj/ratvar/process()
@@ -255,7 +252,6 @@ GLOBAL_VAR(cult_ratvar)
 						to_chat(M, "<span class='userdanger'>You feel a stabbing pain in your chest... This can't be happening!</span>")
 						M.current?.dust()
 				return
-	move()
 
 /obj/ratvar/Bump(atom/A)
 	var/turf/T = get_turf(A)

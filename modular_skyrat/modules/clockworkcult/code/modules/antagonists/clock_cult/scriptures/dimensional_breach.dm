@@ -19,9 +19,11 @@
 /datum/clockcult/scripture/ark_activation/check_special_requirements()
 	if(!..())
 		return FALSE
+	/*
 	if(!is_reebe(get_area(invoker).z))
 		to_chat(invoker, "<span class='brass'>You need to be near the gateway to channel its energy!</span>")
 		return FALSE
+	*/
 	return TRUE
 
 /datum/clockcult/scripture/ark_activation/invoke_success()

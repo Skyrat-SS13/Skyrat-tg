@@ -54,21 +54,7 @@
 	return (istype(AM, /obj/mecha) || iscyborg(AM) || ishuman(AM))
 
 /obj/structure/destructible/clockwork/sigil/transmission/apply_effects(atom/movable/AM)
-	if(istype(AM, /obj/mecha))
-		var/obj/mecha/M = AM
-		var/mob/living/O = M.occupant
-		var/obj/item/stock_parts/cell/C = M.cell
-		if(!C)
-			return
-		if(O && is_servant_of_ratvar(O))
-			if(C.charge < C.maxcharge && GLOB.clockcult_power > 40)
-				M.give_power(C.chargerate)
-				GLOB.clockcult_power -= 40
-		else
-			if(C.charge > 0)
-				M.use_power(C.chargerate)
-				GLOB.clockcult_power += 20
-	else if(iscyborg(AM))
+	if(iscyborg(AM))
 		var/mob/living/silicon/robot/R = AM
 		var/obj/item/stock_parts/cell/C = R.get_cell()
 		if(!C)

@@ -25,9 +25,8 @@
 /obj/structure/destructible/clockwork/gear_base/attackby(obj/item/I, mob/user, params)
 	if(is_servant_of_ratvar(user) && I.tool_behaviour == TOOL_WRENCH)
 		to_chat(user, "<span class='notice'>You begin to [anchored ? "unwrench" : "wrench"] [src].</span>")
-		if(I.use_tool(src, user, 20, volume=50))
+		if(default_unfasten_wrench(user, I, time = 20))
 			to_chat(user, "<span class='notice'>You successfully [anchored ? "unwrench" : "wrench"] [src].</span>")
-			setAnchored(!anchored)
 			update_icon_state()
 		return TRUE
 	else
