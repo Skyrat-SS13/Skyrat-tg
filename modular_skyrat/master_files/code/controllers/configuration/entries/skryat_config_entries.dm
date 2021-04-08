@@ -3,3 +3,10 @@
 
 /datum/config_entry/string/wikiurlskyrat
 	config_entry_value = "https://skyrat13.tk/wiki/index.php"
+
+//DISCORD GAME ALERT CONFIGS
+//Role id to ping
+/datum/config_entry/number/gamealertroleid
+
+//$assignrole gamealertrolename
+/datum/config_entry/string/gamealertrolename
