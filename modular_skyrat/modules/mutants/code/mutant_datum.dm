@@ -132,7 +132,6 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	to_chat(host, "<span class='notice'>You feel an itching, both inside and \
 		outside as your tissues knit and reknit.</span>")
 	playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
-	host.revive(TRUE, TRUE)
 	if(!host.mind)
 		var/list/candidates = pollCandidatesForMob("Do you want to play as a mutant?", M = host)
 		if(!candidates.len)
@@ -141,3 +140,4 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 		host.key = C.key
 	else
 		host.grab_ghost()
+	host.revive(TRUE, TRUE)

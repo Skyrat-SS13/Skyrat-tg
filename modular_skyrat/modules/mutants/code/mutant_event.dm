@@ -26,4 +26,4 @@
 
 /datum/round_event/mutant_infestation/announce(fake)
 	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'))
-	priority_announce("Automated air filtration screeing systems have flagged an unknown pathogen in the ventilation systems, biohazard quarantine is in effect.", "Viral Biohazard Alert", ANNOUNCER_MUTANTS)
+	priority_announce("Automated air filtration screeing systems have flagged an unknown pathogen in the ventilation systems, quarantine is in effect.", "Level-1 Viral Biohazard Alert", ANNOUNCER_MUTANTS)
