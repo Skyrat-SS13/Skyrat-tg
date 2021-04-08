@@ -49,15 +49,18 @@
 	if (client?.interviewee)
 		return
 
-	winset(client, "lobbybrowser", "is-disabled=false;is-visible=true")
+	winset(src, "lobbybrowser", "is-disabled=false;is-visible=true")
 
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/lobby) //Sending pictures to the client
 	assets.send(src)
 
+	update_titlescreen()
+
+/mob/dead/new_player/proc/update_titlescreen()
 	var/dat = get_lobby_html()
 
-	client << browse(GLOB.current_lobby_screen, "file=titlescreen.gif;display=0")
-	client << browse(dat, "window=lobbybrowser")
+	src << browse(GLOB.current_lobby_screen, "file=titlescreen.gif;display=0")
+	src << browse(dat, "window=lobbybrowser")
 
 /datum/asset/simple/lobby
 	assets = list(
@@ -65,8 +68,7 @@
 	)
 
 /mob/dead/new_player/proc/hide_titlescreen()
-	if(my_client.mob) // Check if the client is still connected to something
-		// Hide title screen, allowing player to see the map
+	if(my_client.mob)
 		winset(my_client, "lobbybrowser", "is-disabled=true;is-visible=false")
 
 /mob/dead/new_player/proc/playerpolls()
@@ -127,21 +129,19 @@
 	if(href_list["lobby_ready"])
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			ready = !ready
+			client << output(null, "lobbybrowser:strdy")
+		return
 
 	if(href_list["lobby_observe"])
-		hide_titlescreen()
 		ready = PLAYER_READY_TO_OBSERVE
+		hide_titlescreen()
 		make_me_an_observer()
 		return
 
-	if(href_list["refresh"])
-		hide_titlescreen() //closes the player setup window
-		show_titlescreen()
-
 	if(href_list["lobby_antagtoggle"])
 		client.prefs.be_antag = !client.prefs.be_antag
+		client << output(null, "lobbybrowser:stang")
 		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
-		show_titlescreen()
 
 	if(href_list["lobby_join"])
 		if(!SSticker?.IsRoundInProgress())
@@ -168,6 +168,8 @@
 
 	if(href_list["lobby_crew"])
 		ViewManifest()
+		return
+
 
 	if(href_list["SelectedJob"])
 		if(!SSticker?.IsRoundInProgress())
@@ -185,9 +187,6 @@
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
-
-	else if(!href_list["late_join"])
-		show_titlescreen()
 
 	if(href_list["showpoll"])
 		handle_player_polling()
@@ -214,7 +213,6 @@
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
-		hide_titlescreen() //closes the player setup window
 		show_titlescreen()
 		return FALSE
 

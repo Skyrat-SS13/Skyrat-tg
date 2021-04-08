@@ -135,7 +135,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		dat += {"<img src="titlescreen.gif" class="fone" alt="">"}
 		dat += {"
 		<div class="container_terminal">
-			<p class="menu_b">SYSTEM INITIALIZING:</p>
+			<p class="menu_b">SYSTEMS INITIALIZING:</p>
 		"}
 		var/loop_index = 0
 		for(var/i in GLOB.startup_messages)
@@ -167,7 +167,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			dat += {"<a class="menu_a" href='?src=\ref[src];lobby_crew=1'>CREW</a>
 		"}
 
-		dat += {"<a class="menu_a" href='?src=\ref[src];lobby_antagtoggle=1'>[client.prefs.be_antag ? "BE ANTAG ☑" : "BE ANTAG ☒"]</a>
+		dat += {"<a id="antag" class="menu_a" href='?src=\ref[src];lobby_antagtoggle=1'>[client.prefs.be_antag ? "BE ANTAG ☑" : "BE ANTAG ☒"]</a>
 		"}
 
 		dat += {"<a class="menu_a" href='?src=\ref[src];lobby_observe=1'>OBSERVE</a>
@@ -182,9 +182,28 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			var i=0;
 			var mark=document.getElementById("ready");
 			var marks=new Array('READY ☒', 'READY ☑');
-			function imgsrc(setReady) {
+			function strdy(setReady) {
 				if(setReady) {
 					i = setReady;
+					mark.textContent = marks\[i\];
+				}
+				else {
+					i++;
+					if (i == marks.length)
+						i = 0;
+					mark.textContent = marks\[i\];
+				}
+			}
+		</script>
+		"}
+		dat += {"
+		<script language="JavaScript">
+			var i=0;
+			var mark=document.getElementById("antag");
+			var marks=new Array('BE ANTAG ☒', 'BE ANTAG ☑');
+			function stang(setAntag) {
+				if(setAntag) {
+					i = setAntag;
 					mark.textContent = marks\[i\];
 				}
 				else {
@@ -207,4 +226,4 @@ GLOBAL_LIST_EMPTY(startup_messages)
 	GLOB.startup_messages.Insert(1, msg_dat)
 
 	for(var/mob/dead/new_player/N in GLOB.new_player_list)
-		INVOKE_ASYNC(N, /mob/dead/new_player.proc/show_titlescreen)
+		INVOKE_ASYNC(N, /mob/dead/new_player.proc/update_titlescreen)
