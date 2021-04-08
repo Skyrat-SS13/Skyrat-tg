@@ -50,7 +50,10 @@ SUBSYSTEM_DEF(title)
 	if(new_screen)
 		GLOB.current_lobby_screen = new_screen
 	else
-		GLOB.current_lobby_screen = pick(GLOB.lobby_screens)
+		if(GLOB.lobby_screens.len)
+			GLOB.current_lobby_screen = pick(GLOB.lobby_screens)
+		else
+			GLOB.current_lobby_screen = 'modular_skyrat/modules/lobbyscreen/icons/skyrat_lobbyscreen.png'
 
 	for(var/mob/dead/new_player/N in GLOB.new_player_list)
 		INVOKE_ASYNC(N, /mob/dead/new_player.proc/show_titlescreen)
