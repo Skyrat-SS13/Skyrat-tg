@@ -1,3 +1,6 @@
+GLOBAL_LIST_EMPTY(city_of_cogs_spawns) //Anyone entering the City of Cogs spawns here
+GLOBAL_LIST_EMPTY(servant_spawns) //Servants of Ratvar spawn here
+
 #define CHANNEL_JUSTICAR_ARK 1020
 #define is_reebe(z) SSmapping.level_trait(z, ZTRAIT_REEBE)
 #define NOJAUNT_1					(1<<0)
@@ -9,12 +12,12 @@
 #define STARGAZER_TRAIT "stargazer"
 #define CLOCKCULT_SERVANTS 4
 #define COMSIG_ATOM_RATVAR_ACT "atom_ratvar_act"
-GLOBAL_LIST_EMPTY(servant_spawns) //Servants of Ratvar spawn here
 #define LIGHT_COLOR_CLOCKWORK 	"#BE8700"
 #define TELEPORT_MODE_CLOCKWORK 2
 #define COMSIG_ATOM_EMINENCE_ACT "atom_eminence_act"
 #define COMSIG_CLOCKWORK_SIGNAL_RECEIVED "clock_received"			//! When anything the trap is attatched to is triggered
 #define VANGUARD_TRAIT "vanguard"
+#define ismovableatom(A) ismovable(A)
 
 //component id defines; sometimes these may not make sense in regards to their use in scripture but important ones are bright
 #define BELLIGERENT_EYE "belligerent_eye" //! Use this for offensive and damaging scripture!
@@ -56,3 +59,23 @@ GLOBAL_LIST_EMPTY(servant_spawns) //Servants of Ratvar spawn here
 #define COG_COVER 1
 #define COG_EXPOSED 3
 #define ACCESS_CLOCKCULT 251
+
+/obj/effect/landmark/servant_of_ratvar
+	name = "servant of ratvar spawn"
+	icon_state = "clockwork_orange"
+	layer = MOB_LAYER
+
+/obj/effect/landmark/servant_of_ratvar/Initialize(mapload)
+	..()
+	GLOB.servant_spawns += loc
+	return INITIALIZE_HINT_QDEL
+
+//City of Cogs entrances
+/obj/effect/landmark/city_of_cogs
+	name = "city of cogs entrance"
+	icon_state = "city_of_cogs"
+
+/obj/effect/landmark/city_of_cogs/Initialize(mapload)
+	..()
+	GLOB.city_of_cogs_spawns += loc
+	return INITIALIZE_HINT_QDEL
