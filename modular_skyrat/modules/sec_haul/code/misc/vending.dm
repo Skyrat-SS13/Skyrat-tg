@@ -81,16 +81,22 @@
 	icon_deny = "ammo-deny"
 	light_mask = "ammo-light-mask"
 	req_access = list(ACCESS_SECURITY)
+<<<<<<< HEAD
 	products = list(/obj/item/ammo_box/advanced/b6mm/rubber = 10,
 					/obj/item/ammo_box/advanced/b9mm/rubber = 10,
 					/obj/item/ammo_box/advanced/b10mm/rubber = 10,
 					/obj/item/ammo_box/advanced/pepperballs = 10,
+=======
+	products = list(/obj/item/ammo_box/advanced/b6mm = 10,
+					/obj/item/ammo_box/advanced/b9mm = 10,
+					/obj/item/ammo_box/advanced/b10mm = 10,
+>>>>>>> ed028f51858044ee88a97f1ca9fb87e1a9636317
 					/obj/item/storage/bag/ammo = 3,
 					/obj/item/gun_maintenance_supplies = 10
 					)
-	premium = list(/obj/item/ammo_box/advanced/b6mm/ihdf = 2,
-					/obj/item/ammo_box/advanced/b9mm/ihdf = 2,
-					/obj/item/ammo_box/advanced/b10mm/ihdf = 2)
+	premium = list(/obj/item/ammo_box/advanced/b12mm = 2,
+					/obj/item/ammo_box/advanced/b9mm/hp = 2,
+					/obj/item/ammo_box/advanced/b10mm/hp = 2)
 	refill_canister = /obj/item/vending_refill/security_ammo
 	default_price = PAYCHECK_MEDIUM
 	extra_price = PAYCHECK_HARD * 2
