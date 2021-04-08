@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	var/turf/center_station = SSmapping.get_station_center()
 	new /obj/singularity/ratvar(center_station)
 	if(GLOB.narsie_breaching)
-		new /obj/singularity/narsie/large/cult(GLOB.narsie_arrival)
+		new /obj/narsie(GLOB.narsie_arrival)
 	flee_reebe(TRUE)
 
 //=========Ratvar==========
@@ -241,7 +241,6 @@ GLOBAL_VAR(cult_ratvar)
 /obj/singularity/ratvar/process()
 	eat()
 	if(ratvar_target)
-		target = ratvar_target
 		if(get_dist(src, ratvar_target) < 5)
 			if(next_attack_tick < world.time)
 				next_attack_tick = world.time + rand(50, 100)

@@ -69,6 +69,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_SENTIENCE,
 	ROLE_FAMILIES = /datum/game_mode/gang,
 	ROLE_HERETIC = /datum/game_mode/heretics,
+	ROLE_SERVANT_OF_RATVAR = /datum/game_mode/clockcult, 	//SKYRAT EDIT - CWC RETURNS
 	ROLE_ASSAULTOP = /datum/game_mode/assaultops //SKYRAT EDIT ADDITION - ASSAULTOPS
 ))
 

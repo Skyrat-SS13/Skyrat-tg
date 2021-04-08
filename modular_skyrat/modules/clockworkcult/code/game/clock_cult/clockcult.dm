@@ -35,7 +35,6 @@ GLOBAL_VAR(clockcult_eminence)
 	antag_flag = ROLE_SERVANT_OF_RATVAR
 	enemy_minimum_age = 14
 
-	title_icon = "clockcult"
 	announce_span = "danger"
 	announce_text = "A powerful group of fanatics is trying to summon their deity!\n\
 	<span class='danger'>Servants</span>: Convert more servants and defend the Ark of the Clockwork Justicar!\n\
@@ -55,8 +54,6 @@ GLOBAL_VAR(clockcult_eminence)
 		message_admins("Reebe failed to load")
 		log_game("Reebe failed to load")
 		return FALSE
-	for(var/datum/parsed_map/map in reebe)
-		map.initTemplateBounds()
 	//Generate cultists
 	for(var/i in 1 to clock_cultists)
 		if(!antag_candidates.len)
@@ -110,25 +107,6 @@ GLOBAL_VAR(clockcult_eminence)
 
 /datum/game_mode/clockcult/proc/check_cult_victory()
 	return GLOB.ratvar_risen
-
-/datum/game_mode/clockcult/generate_credit_text()
-	var/list/round_credits = list()
-	var/len_before_addition
-
-	if(GLOB.ratvar_risen)
-		round_credits += "<center><h1>Ratvar has been released from his prison!</h1>"
-	else
-		round_credits += "<center><h1>The clock cultists failed to summon Ratvar, he will remain trapped forever to rust!</h1>"
-	round_credits += "<center><h1>The Servants of Ratvar:</h1>"
-	len_before_addition = round_credits.len
-	for(var/datum/mind/operative in GLOB.servants_of_ratvar)
-		round_credits += "<center><h2>[operative.name] as a servant of Ratvar!</h2>"
-	if(len_before_addition == round_credits.len)
-		round_credits += list("<center><h2>The servants were annihilated!</h2>", "<center><h2>Their remains could not be identified!</h2>")
-	round_credits += "<br>"
-
-	round_credits += ..()
-	return round_credits
 
 /datum/game_mode/proc/update_clockcult_icons_added(datum/mind/cult_mind)
 	var/datum/atom_hud/antag/culthud = GLOB.huds[ANTAG_HUD_CLOCKWORK]
@@ -238,8 +216,6 @@ GLOBAL_VAR(clockcult_eminence)
 					prefix = "Cogwatcher"
 				else if(role in "Clown")
 					prefix = "Clonker"
-				else if((role in GLOB.civilian_positions) || (role in GLOB.gimmick_positions))
-					prefix = "Cogworker"
 				else if(role in GLOB.security_positions)
 					prefix = "Warrior"
 				else if(role in GLOB.nonhuman_positions)
