@@ -46,3 +46,5 @@
 	cold_protection = CHEST|ARMS
 	mutant_variants = NONE
 	heat_protection = CHEST|ARMS
+
+// SEC GENERAL

@@ -200,7 +200,7 @@
 	icon_state = "siding_end"
 
 /obj/effect/turf_decal/siding/red
-	color = "#DE3A3A"
+	color = "#486091" //SKYRAT EDIT CHANGE
 
 /obj/effect/turf_decal/siding/red/corner
 	icon_state = "siding_corner"
