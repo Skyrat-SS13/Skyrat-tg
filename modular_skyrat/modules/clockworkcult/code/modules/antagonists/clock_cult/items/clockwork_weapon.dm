@@ -1,7 +1,7 @@
 /obj/item/twohanded/clockwork
 	name = "Clockwork Weapon"
 	desc = "Something"
-	icon = 'icons/obj/clockwork_objects.dmi'
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clockwork_objects.dmi'
 	lefthand_file = 'icons/mob/inhands/antag/clockwork_lefthand.dmi';
 	righthand_file = 'icons/mob/inhands/antag/clockwork_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
