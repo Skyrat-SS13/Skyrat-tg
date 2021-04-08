@@ -26,6 +26,10 @@
 	name = "Kilt"
 	path = /obj/item/clothing/under/costume/kilt
 
+/datum/loadout_item/uniform/royalkilt
+	name = "Royal Kilt"
+	path = /obj/item/clothing/under/misc/royalkilt
+
 /datum/loadout_item/uniform/poly_kilt
 	name = "Polychromic Kilt"
 	path = /obj/item/clothing/under/misc/poly_kilt
@@ -412,6 +416,10 @@
 	name = "Tactitool Turtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool
 
+/datum/loadout_item/uniform/sweater/tactical1
+	name = "Irish Tactical Sweater"
+	path = /obj/item/clothing/under/misc/tactical1
+
 /datum/loadout_item/uniform/sweater/turtleneck/skirt
 	name = "Tactitool Skirtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool/skirt
@@ -479,6 +487,11 @@
 	path = /obj/item/clothing/under/rank/security/head_of_security/skirt
 	restricted_roles = list("Head of Security")
 
+/datum/loadout_item/uniform/job/seckilt
+	name = "Security Kilt"
+	path = /obj/item/clothing/under/rank/security/blackwatch
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
+
 /datum/loadout_item/uniform/job/bluescrubs
 	name = "Blue Scrubs"
 	path = /obj/item/clothing/under/rank/medical/doctor/blue
@@ -502,6 +515,28 @@
 	path = /obj/item/clothing/under/rank/medical/doctor/nurse
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/gorka_cargo
+	name = "Supply Gorka"
+	path = /obj/item/clothing/under/utility/cargo/gorka
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
+/datum/loadout_item/uniform/job/turtleneck_cargo
+	name = "Supply Turtleneck"
+	path = /obj/item/clothing/under/utility/cargo/turtleneck
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
+/datum/loadout_item/uniform/job/gorka_qm
+	name = "Quartermaster's Gorka"
+	path = /obj/item/clothing/under/utility/cargo/gorka/head
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/turtleneck_qm
+	name = "Quartermaster's Turtleneck"
+	path = /obj/item/clothing/under/utility/cargo/turtleneck/head
+	restricted_roles = list("Quartermaster")
 
 //JOB - UTILITY
 /datum/loadout_item/uniform/job/utility
