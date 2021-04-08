@@ -281,7 +281,7 @@
 				if(!istype(X,/obj/item/forbidden_book))
 					continue
 				var/obj/item/forbidden_book/FB = X
-				FB.charge += 2
+				FB.charge += 3 //SKYRAT EDIT: More points for sacrifice
 				break
 
 		if(!LH.target)

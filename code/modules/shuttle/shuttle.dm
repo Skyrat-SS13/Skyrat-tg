@@ -709,6 +709,8 @@
 			var/tl = timeLeft(1)
 			if(tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)
+				play_engine_sound(src, FALSE) //SKYRAT EDIT ADDITION
+				play_engine_sound(destination, FALSE) //SKYRAT EDIT ADDITION
 
 	var/obj/docking_port/stationary/S0 = get_docked()
 	if(istype(S0, /obj/docking_port/stationary/transit) && timeLeft(1) <= PARALLAX_LOOP_TIME)
