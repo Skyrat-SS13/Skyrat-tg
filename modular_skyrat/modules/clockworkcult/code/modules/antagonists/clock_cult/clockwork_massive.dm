@@ -46,9 +46,6 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 		M.forceMove(safe_place)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
-	for(var/i in 1 to 30)
-		explosion(pick(get_area_turfs(/area/reebe/city_of_cogs)), 0, 2, 4, 4, FALSE)
-		sleep(5)
 	explosion(pick(GLOB.servant_spawns), 50, 40, 30, 30, FALSE, TRUE)
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/examine(mob/user)
@@ -72,15 +69,16 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 				var/turf/T = get_turf(M)
 				if((T && T.z == z) || is_servant_of_ratvar(M))
 					M.playsound_local(M, 'sound/machines/clockcult/ark_deathrattle.ogg', 100, FALSE, pressure_affected = FALSE)
-			sleep(27)
-			explosion(src, 1, 3, 8, 8)
-			sound_to_playing_players('sound/effects/explosion_distant.ogg', volume = 50)
-			for(var/obj/effect/portal/wormhole/clockcult/CC in GLOB.all_wormholes)
-				qdel(CC)
-			SSshuttle.clearHostileEnvironment(src)
-			set_security_level(SEC_LEVEL_RED)
-			sleep(300)
-			SSticker.force_ending = TRUE
+			addtimer(CALLBACK(src, .proc/Explode), 50)
+
+/obj/structure/destructible/clockwork/massive/celestial_gateway/proc/Explode()
+	explosion(src, 1, 3, 8, 8)
+	sound_to_playing_players('sound/effects/explosion_distant.ogg', volume = 50)
+	for(var/obj/effect/portal/wormhole/clockcult/CC in GLOB.all_wormholes)
+		qdel(CC)
+	SSshuttle.clearHostileEnvironment(src)
+	set_security_level(SEC_LEVEL_RED)
+	SSticker.force_ending = TRUE
 	qdel(src)
 
 /obj/structure/destructible/clockwork/massive/celestial_gateway/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armour_penetration)
@@ -198,15 +196,21 @@ GLOBAL_LIST_INIT(clockwork_portals, list())
 	GLOB.ratvar_risen = TRUE
 	var/original_matrix = matrix()
 	animate(src, transform = original_matrix * 1.5, alpha = 255, time = 125)
-	sleep(125)
-	transform = original_matrix
-	animate(src, transform = original_matrix * 3, alpha = 0, time = 5)
-	QDEL_IN(src, 3)
-	sleep(3)
+	addtimer(CALLBACK(src, .proc/ratvar_here),original_matrix, 125)
 	var/turf/center_station = SSmapping.get_station_center()
 	new /obj/ratvar(center_station)
 	flee_reebe(TRUE)
 
+/obj/structure/destructible/clockwork/massive/celestial_gateway/proc/ratvar_here(original_matrix)
+	transform = original_matrix
+	animate(src, transform = original_matrix * 3, alpha = 0, time = 5)
+	QDEL_IN(src, 3)
+	addtimer(CALLBACK(src, .proc/ratvar_create), 3)
+
+/obj/structure/destructible/clockwork/massive/celestial_gateway/proc/ratvar_create()
+	var/turf/center_station = SSmapping.get_station_center()
+	new /obj/ratvar(center_station)
+	flee_reebe(TRUE)
 //=========Ratvar==========
 GLOBAL_VAR(cult_ratvar)
 

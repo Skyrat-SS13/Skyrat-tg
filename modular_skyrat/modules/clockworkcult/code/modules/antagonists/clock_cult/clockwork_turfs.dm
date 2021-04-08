@@ -303,10 +303,6 @@
 /obj/structure/lattice/catwalk/clockwork
 	name = "clockwork catwalk"
 	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/catwalk_clockwork.dmi'
-	canSmoothWith = list(/obj/structure/lattice,
-	/turf/open/floor,
-	/turf/closed/wall,
-	/obj/structure/falsewall)
 
 /obj/structure/lattice/catwalk/clockwork/Initialize(mapload)
 	. = ..()
