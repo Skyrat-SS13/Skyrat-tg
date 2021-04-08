@@ -6,7 +6,9 @@
 	flags_1 = CONDUCT_1
 	custom_materials = list(/datum/material/iron=2000)
 	anchored = FALSE
-	var/building = FALSE
+	can_buckle = FALSE	//this is changed whenever its anchored
+	buckle_requires_restraints = TRUE
+	buckle_lying = NO_BUCKLE_LYING
 
 /obj/item/dancer_pole/examine(mob/user)
 	. = ..()
@@ -19,6 +21,9 @@
 /obj/item/dancer_pole/attackby(obj/item/used_tool, mob/user, params)
 	. = ..()
 	if(src.anchored == TRUE)
+		if(LAZYLEN(buckled_mobs) != 0)
+			to_chat(user, "<span class='notice'>You can't reach the bolts with someone buckled to this! Untie them first!</span>")
+			return
 		if (used_tool.tool_behaviour == TOOL_WRENCH)
 			to_chat(user, "<span class='notice'>You start to disassemble [src]...</span>")
 			if(used_tool.use_tool(src, user, 30, volume=80))
@@ -26,6 +31,7 @@
 				src.name = "pole parts"
 				src.desc = "Parts of a pole, ready for assembly."
 				src.icon_state = "pole_parts"
+				can_buckle = FALSE
 				anchored = FALSE
 			return
 		else if(used_tool.tool_behaviour == TOOL_WELDER)
@@ -43,6 +49,7 @@
 				var/obj/item/held_item = user.get_inactive_held_item()
 				if(held_item == src)
 					user.dropItemToGround(src)
+				can_buckle = TRUE
 				anchored = TRUE
 			return
 		else if(used_tool.tool_behaviour == TOOL_WELDER)
