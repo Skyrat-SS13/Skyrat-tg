@@ -33,7 +33,7 @@ in the core code, that we decide to change from 1 to 2 on our end,
 ```
 
 but then our upstream introduces a change in their codebase, changing it from 1 to 4
-
+ 
 ```diff
 - var/something = 1
 + var/something = 4
