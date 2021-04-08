@@ -158,6 +158,7 @@ SUBSYSTEM_DEF(ticker)
 				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
+			change_lobbyscreen() //SKYRAT EDIT ADDITION
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			send2chat("<@&656268126253744152> New round starting on [SSmapping.config.map_name]! \nIf you wish to be pinged for game related stuff, go to a text channel and type $assignrole Game-Alert", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role ping
 			current_state = GAME_STATE_PREGAME
@@ -380,7 +381,7 @@ SUBSYSTEM_DEF(ticker)
 			GLOB.joined_player_list += player.ckey
 			player.create_character(FALSE)
 		else
-			player.new_player_panel()
+			player.show_titlescreen()
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
