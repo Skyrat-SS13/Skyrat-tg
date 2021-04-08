@@ -32566,12 +32566,8 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bOo" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/purple/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/bridge_pipe/cyan/visible{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/atmospherics/pipe/bridge_pipe/purple/visible,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bOp" = (
@@ -32805,21 +32801,17 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bOV" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible{
-	dir = 4
+/obj/machinery/light{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/purple/visible{
-	dir = 4
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
 	},
-/obj/machinery/meter,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bOW" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/purple/visible{
-	dir = 4
+/obj/machinery/atmospherics/components/binary/pump{
+	name = "Air to Port"
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
@@ -33013,9 +33005,11 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/binary/pump{
-	name = "Air to Port"
+/obj/machinery/portable_atmospherics/canister,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
 	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bPN" = (
@@ -34019,12 +34013,6 @@
 /obj/item/wrench,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/purple/visible{
 	dir = 4
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
-/obj/machinery/light{
-	dir = 8
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
@@ -37223,8 +37211,13 @@
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "caC" = (
-/obj/effect/turf_decal/stripes/line,
 /obj/machinery/pipedispenser/disposal,
+/obj/machinery/camera{
+	c_tag = "Atmospherics Mixing"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "caD" = (
@@ -54301,15 +54294,6 @@
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
-"ofy" = (
-/obj/machinery/camera{
-	c_tag = "Atmospherics Mixing"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "ofK" = (
 /obj/machinery/light_switch{
 	pixel_x = -20;
@@ -101666,12 +101650,12 @@ bJN
 bMd
 bMf
 bOk
-bPQ
+bOV
+bMf
 bQK
 bQK
-bQK
-bPQ
-ofy
+bPM
+bMf
 bNd
 urG
 bMe
@@ -101923,8 +101907,8 @@ bKS
 aIe
 bPU
 bOo
-bPM
 bUu
+bOW
 bUu
 bRA
 bSf
@@ -102179,8 +102163,8 @@ bJN
 bKT
 bOU
 bRw
-bOV
-bMf
+bOk
+bRA
 bMf
 bMf
 bRz
@@ -102436,7 +102420,7 @@ bHw
 bKU
 bMf
 bMf
-bOW
+bOk
 bUu
 bPU
 bUu
