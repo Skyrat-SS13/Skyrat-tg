@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 #define LINKIFY_READY(string, value) "<a href='byond://?src=[REF(src)];ready=[value]'>[string]</a>"
 
 /mob/dead/new_player
@@ -49,7 +50,7 @@
 
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	asset_datum.send(client)
-	var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character(<b>[client.prefs.real_name]</b>)</a></p>") //SKYRAT EDIT CHANGE - ORIGINAL: var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>")
+	var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>")
 
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -59,14 +60,10 @@
 				output += "<p>\[ <b>Ready</b> | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
 			if(PLAYER_READY_TO_OBSERVE)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
-		output += "<p><a href='byond://?src=[REF(src)];antagtoggle=1'>Be antagonist: [client.prefs.be_antag ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
-		output += "<p><a href='byond://?src=[REF(src)];midroundantag=1'>Be midround antagonist: [(client.prefs.toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a></p>" //SKYRAT EDIT ADDITION
 	else
 		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a></p>"
 		output += "<p>[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]</p>"
-		output += "<p><a href='byond://?src=[REF(src)];antagtoggle=1'>Be Latejoin Antagonist: <b>[client.prefs.be_antag ? "Enabled" : "Disabled"]</b></a></p>" //SKYRAT EDIT ADDITION
-		output += "<p><a href='byond://?src=[REF(src)];midroundantag=1'>Be Midround Antagonist: <b>[(client.prefs.toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</b></a></p>" //SKYRAT EDIT ADDITION
 
 	if(!IsGuestKey(src.key))
 		output += playerpolls()
@@ -133,7 +130,6 @@
 		relevant_cap = max(hpc, epc)
 
 	if(href_list["show_preferences"])
-		client.prefs.needs_update = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		client.prefs.ShowChoices(src)
 		return TRUE
 
@@ -153,18 +149,6 @@
 	if(href_list["refresh"])
 		src << browse(null, "window=playersetup") //closes the player setup window
 		new_player_panel()
-
-	//SKYRAT EDIT ADDITION BEGIN
-	if(href_list["antagtoggle"])
-		client.prefs.be_antag = !client.prefs.be_antag
-		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
-		new_player_panel()
-
-	if(href_list["midroundantag"])
-		client.prefs.toggles ^= MIDROUND_ANTAG
-		to_chat(usr, "<span class='notice'>You will now [(client.prefs.toggles & MIDROUND_ANTAG) ? "be considered" : "not be considered"] for any midround antagonist opportunities.</span>")
-		new_player_panel()
-	//SKYRAT EDIT END
 
 	if(href_list["late_join"])
 		if(!SSticker?.IsRoundInProgress())
@@ -278,12 +262,6 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(JOB_UNAVAILABLE_QUIRK)
-			return "[jobtitle] is restricted from your quirks."
-		if(JOB_UNAVAILABLE_SPECIES)
-			return "[jobtitle] is restricted from your species."
-		//SKYRAT EDIT END
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -307,12 +285,6 @@
 		return JOB_UNAVAILABLE_ACCOUNTAGE
 	if(job.required_playtime_remaining(client))
 		return JOB_UNAVAILABLE_PLAYTIME
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(job.has_banned_quirk(client.prefs))
-		return JOB_UNAVAILABLE_QUIRK
-	if(job.has_banned_species(client.prefs))
-		return JOB_UNAVAILABLE_SPECIES
-	//SKYRAT EDIT END
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
@@ -372,15 +344,6 @@
 	SSticker.minds += character.mind
 	character.client.init_verbs() // init verbs for the late join
 	var/mob/living/carbon/human/humanc
-
-	//SKRYAT EDIT ADDITION BEGIN - ASSAULTOPS
-	if(SSticker.mode.name == "assaultops")
-		if(is_assaultops_target(character.mind))
-			remove_assaultops_target(character.mind, original=TRUE)
-		if(check_assaultops_target(character))
-			add_assaultops_target(character, notify_target = TRUE)
-	//SKYRAT EDIT ADDITION END
-
 	if(ishuman(character))
 		humanc = character //Let's retypecast the var to be human,
 
@@ -426,9 +389,6 @@
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
-	//SKYRAT EDIT ADDITION BEGIN - ALERTS
-	dat += "<div class='notice'>Alert Level: [capitalize(num2seclevel(GLOB.security_level))]</div>"
-	//SKYRAT EDIT END
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
@@ -599,3 +559,4 @@
 
 	// Add verb for re-opening the interview panel, and re-init the verbs for the stat panel
 	add_verb(src, /mob/dead/new_player/proc/open_interview)
+*/
