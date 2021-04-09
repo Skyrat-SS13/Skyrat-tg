@@ -1,4 +1,4 @@
-/obj/item/clothing/neck/tie/disco
+obj/item/clothing/neck/tie/disco
 	name = "Horrific Necktie"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
