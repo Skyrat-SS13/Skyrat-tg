@@ -34,7 +34,7 @@
 		to_chat(M, "<span class='userdanger'>You are impaled by [src]!</span>")
 		M.emote("scream")
 		M.apply_damage(30, BRUTE, BODY_ZONE_CHEST)
-		src.buckle_mob(M)
+		src.buckle_mob(M, TRUE)
 	if(target_stabbed)
 		if(!stab_overlay)
 			stab_overlay = mutable_appearance('modular_skyrat/modules/clockworkcult/icons/obj/clockwork_objects.dmi', "brass_skewer_pokeybit", layer=ABOVE_MOB_LAYER)
