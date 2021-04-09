@@ -48,9 +48,7 @@ GLOBAL_VAR(clockcult_eminence)
 
 /datum/game_mode/clockcult/pre_setup()
 	//Load Reebe
-	var/datum/map_template/template = load_new_z_level("_maps/map_files/generic/CityOfCogs.dmm", "Reebe")
-	var/Reebe = template
-	if(!Reebe)
+	if(!load_new_z_level("_maps/map_files/generic/CityOfCogs.dmm", "Reebe"))
 		message_admins("Reebe failed to load")
 		log_game("Reebe failed to load")
 		return FALSE
