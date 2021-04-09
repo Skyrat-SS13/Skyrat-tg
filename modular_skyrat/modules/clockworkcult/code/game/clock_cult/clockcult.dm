@@ -49,7 +49,7 @@ GLOBAL_VAR(clockcult_eminence)
 /datum/game_mode/clockcult/pre_setup()
 	//Load Reebe
 	var/list/FailedZs = list()
-	SSmapping.LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits = ZTRAITS_LAVALAND)
+	SSmapping.LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits = ZTRAITS_REEBE)
 	if(!FailedZs.len > 0)
 		message_admins("Reebe failed to load")
 		log_game("Reebe failed to load")
