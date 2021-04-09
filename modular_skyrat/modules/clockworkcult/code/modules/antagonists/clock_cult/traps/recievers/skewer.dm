@@ -30,14 +30,14 @@
 	for(var/mob/living/M in get_turf(src))
 		if(M.incorporeal_move)
 			continue
-		if(buckle_mob(M, TRUE))
+		if(src?.buckle_mob(M))
 			target_stabbed = TRUE
 			to_chat(M, "<span class='userdanger'>You are impaled by [src]!</span>")
 			M.emote("scream")
 			M.apply_damage(30, BRUTE, BODY_ZONE_CHEST)
 	if(target_stabbed)
 		if(!stab_overlay)
-			stab_overlay = mutable_appearance('icons/obj/clockwork_objects.dmi', "brass_skewer_pokeybit", layer=ABOVE_MOB_LAYER)
+			stab_overlay = mutable_appearance('modular_skyrat/modules/clockworkcult/icons/obj/clockwork_objects.dmi', "brass_skewer_pokeybit", layer=ABOVE_MOB_LAYER)
 		add_overlay(stab_overlay)
 
 /obj/structure/destructible/clockwork/trap/skewer/unbuckle_mob(mob/living/buckled_mob, force)
