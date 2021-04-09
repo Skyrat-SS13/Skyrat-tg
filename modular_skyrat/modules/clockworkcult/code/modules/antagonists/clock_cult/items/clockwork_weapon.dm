@@ -140,17 +140,12 @@
 	addtimer(CALLBACK(src, .proc/recharge_bolt), recharge_time)
 
 /obj/item/gun/ballistic/bow/clockwork/AltClick(mob/living/user)
-	if (chambered)
+	if(chambered)
 		chambered = null
 		to_chat(user, "<span class='notice'>You dispell the arrow.</span>")
+	else
+		recharge_bolt()
 	update_icon()
-
-/obj/item/gun/ballistic/bow/clockwork/attack_self(mob/user)
-	var/obj/item/I = user.get_active_held_item()
-	if (do_mob(user,I,5))
-		to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
-		playsound(src, 'modular_skyrat/modules/clockworkcult/sounds/weapons/bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
-		chamber_round()
 
 /obj/item/gun/ballistic/bow/clockwork/proc/recharge_bolt()
 	if(magazine.get_round(TRUE))
