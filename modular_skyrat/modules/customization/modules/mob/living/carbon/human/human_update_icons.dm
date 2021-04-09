@@ -1,3 +1,7 @@
+//used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
+/mob/living/carbon/human/proc/update_mutant_bodyparts(force_update=FALSE)
+	dna.species.handle_mutant_bodyparts(src, force_update = force_update)
+
 /mob/living/carbon/human/update_inv_w_uniform()
 	remove_overlay(UNIFORM_LAYER)
 

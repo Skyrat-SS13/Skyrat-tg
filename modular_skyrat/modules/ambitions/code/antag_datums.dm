@@ -28,6 +28,16 @@
 /datum/antagonist/changeling/ambitions_removal()
 	remove_changeling_powers()
 
+/datum/antagonist/wizard
+	uses_ambitions = TRUE
+
+/datum/antagonist/wizard/ambitions_add()
+	register()
+	equip_wizard() //This apparently give the book if you didn't comment it in the antag one, you could use it and if you did get spells and then submit your ambitions, You actually could get twice as much spells. :pain:
+
+/datum/antagonist/wizard/ambitions_removal()
+	unregister()
+
 /datum/objective/ambitions
 	name = "ambitions"
 	explanation_text = "Open up ambitions from the IC tab and craft your unique antagonistic story."

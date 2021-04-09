@@ -1464,6 +1464,8 @@
 		//SKYRAT EDIT ADDITION BEGIN
 		if(LOG_SUBTLER)
 			log_subtler(log_text)
+		if(LOG_AMBITION)
+			log_ambition(log_text)
 		//SKYRAT EDIT ADDITION END
 		if(LOG_DSAY)
 			log_dsay(log_text)

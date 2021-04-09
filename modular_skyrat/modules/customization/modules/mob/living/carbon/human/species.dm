@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	///Flavor text of the species displayed on character creation screeen
 	var/flavor_text = "No description."
 
-/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
+/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE)
 	var/list/standing	= list()
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		new_renderkey += "-[key]-[render_state]"
 		bodyparts_to_add[S] = render_state
 
-	if(new_renderkey == H.mutant_renderkey)
+	if(new_renderkey == H.mutant_renderkey && !force_update)
 		return
 	H.mutant_renderkey = new_renderkey
 
