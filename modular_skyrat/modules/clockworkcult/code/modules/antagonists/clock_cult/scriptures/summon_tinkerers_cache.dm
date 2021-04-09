@@ -43,9 +43,9 @@
 	var/list/pickedtype = list()
 	switch(choice)
 		if("Robes of Divinity")
-			pickedtype += /obj/item/clothing/suit/clockwork/speed
+			pickedtype += /obj/item/clothing/suit/armor/vest/clockwork/speed
 		if("Shrouding Cloak")
-			pickedtype += /obj/item/clothing/suit/clockwork/cloak
+			pickedtype += /obj/item/clothing/suit/armor/vest/clockwork/cloak
 		if("Wraith Spectacles")
 			pickedtype += /obj/item/clothing/glasses/clockwork/wraith_spectacles
 	if(src && !QDELETED(src) && anchored && pickedtype && Adjacent(user) && !user.incapacitated() && is_servant_of_ratvar(user) && cooldowntime <= world.time)

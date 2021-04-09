@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/clockwork
+/obj/item/clothing/suit/armor/vest/clockwork
 	name = "brass armor"
 	desc = "A strong, brass suit worn by the soldiers of the Ratvarian armies."
 	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
@@ -10,7 +10,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	allowed = list(/obj/item/clockwork, /obj/item/stack/tile/brass, /obj/item/twohanded/clockwork, /obj/item/gun/ballistic/bow/clockwork)
 
-/obj/item/clothing/suit/clockwork/equipped(mob/living/user, slot)
+/obj/item/clothing/suit/armor/vest/clockwork/equipped(mob/living/user, slot)
 	. = ..()
 	if(!is_servant_of_ratvar(user))
 		to_chat(user, "<span class='userdanger'>You feel a shock of energy surge through your body!</span>")
@@ -26,7 +26,7 @@
 		if(C)
 			C.jitteriness = max(C.jitteriness - 990, 10)
 
-/obj/item/clothing/suit/clockwork/speed
+/obj/item/clothing/suit/armor/vest/clockwork/speed
 	name = "robes of divinity"
 	desc = "A shiny suit, glowing with a vibrant energy. The wearer will be able to move quickly across battlefields, but will be able to withstand less damage before falling."
 	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
@@ -35,7 +35,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	armor = list("melee" = 40, "bullet" = 40, "laser" = 10, "energy" = -20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
 
-/obj/item/clothing/suit/clockwork/cloak
+/obj/item/clothing/suit/armor/vest/clockwork/cloak
 	name = "shrouding cloak"
 	desc = "A faltering cloak that bends light around it, distorting the user's appearance, making it hard to see them with the naked eye. However, it provides very little protection."
 	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/clothing/clockwork_garb.dmi'
@@ -49,7 +49,7 @@
 	var/start
 	var/previous_alpha
 
-/obj/item/clothing/suit/clockwork/cloak/equipped(mob/user, slot)
+/obj/item/clothing/suit/armor/vest/clockwork/cloak/equipped(mob/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_OCLOTHING && !shroud_active)
 		shroud_active = TRUE
@@ -69,7 +69,7 @@
 			animate(f, offset=f:offset, time=0, loop=-1, flags=ANIMATION_PARALLEL)
 			animate(offset=f:offset-1, time=rand()*20+10)
 
-/obj/item/clothing/suit/clockwork/cloak/dropped(mob/user)
+/obj/item/clothing/suit/armor/vest/clockwork/cloak/dropped(mob/user)
 	. = ..()
 	if(shroud_active)
 		shroud_active = FALSE
