@@ -320,7 +320,6 @@
 	buildstack = /obj/item/stack/tile/brass
 	framestackamount = 1
 	buildstackamount = 1
-	canSmoothWith = list(/obj/structure/table/brass)
 
 /obj/structure/table/brass/tablepush(mob/living/user, mob/living/pushed_mob)
 	. = ..()
