@@ -97,9 +97,9 @@
 			qdel(query_get_new_polls)
 			return
 		if(query_get_new_polls.NextRow())
-			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS!</a>"}
+			output +={"<a class="menu_a" href='?src=\ref[src];showpoll=1'>POLLS (NEW)</a>"}
 		else
-			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS</a>"}
+			output +={"<a class="menu_a" href='?src=\ref[src];showpoll=1'>POLLS</a>"}
 		qdel(query_get_new_polls)
 		if(QDELETED(src))
 			return
@@ -142,6 +142,27 @@
 		client.prefs.be_antag = !client.prefs.be_antag
 		update_titlescreen()
 		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
+		return
+
+	if(href_list["lobby_swap"])
+		if(!CONFIG_GET(flag/server_swap_enabled))
+			return
+		if(GLOB.swappable_ips.len == 1)
+			var/server_name = GLOB.swappable_ips[1]
+			var/server_ip = GLOB.swappable_ips[server_name]
+			var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+			if(confirm == "Connect me!")
+				to_chat_immediate(src, "So long, spaceman.")
+				client << link(server_ip)
+			return
+		var/server_name = tgui_alert(usr, "Please select the server you wish to swap to:", "Server swap!", GLOB.swappable_ips)
+		if(!server_name)
+			return
+		var/server_ip = GLOB.swappable_ips[server_name]
+		var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+		if(confirm == "Connect me!")
+			to_chat_immediate(src, "So long, spaceman.")
+			client << link(server_ip)
 		return
 
 	if(href_list["lobby_join"])

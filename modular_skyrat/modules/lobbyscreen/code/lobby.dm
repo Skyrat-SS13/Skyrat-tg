@@ -59,18 +59,30 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					position: absolute;
 					width: auto;
 					box-sizing: border-box;
-					padding-top: 5vmin;
+					padding-top: 3vmin;
 					top: 0%;
 					left:0%;
+					z-index: 1;
 				}
 
 				.container_polls {
 					position: absolute;
 					width: auto;
 					box-sizing: border-box;
-					padding-top: 5vmin;
+					padding-top: 3vmin;
 					top: 0%;
 					left:0%;
+					z-index: 1;
+				}
+
+				.container_notice {
+					position: absolute;
+					width: auto;
+					box-sizing: border-box;
+					padding-top: 3vmin;
+					top: 0%;
+					left:70%;
+					z-index: 1;
 				}
 
 				.menu_a {
@@ -86,7 +98,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					padding-left: 6px;
 					font-size: 6vmin;
 					line-height: 6vmin;
-					height: 4vmin;
+					height: 6vmin;
 					letter-spacing: 1px;
 				}
 
@@ -112,21 +124,21 @@ GLOBAL_LIST_EMPTY(startup_messages)
 				}
 
 				.menu_c {
+					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
 					text-decoration: none;
 					width: 100%;
-					text-align: left;
-					color:#0066cc;
-					font-size: 6vmin;
-					line-height: 1vmin;
+					text-align: right;
+					color: red;
+					margin-right: 0%;
+					margin-top: 0px;
+					font-size: 3vmin;
+					line-height: 3vmin;
+					height: 3vmin;
 					letter-spacing: 1px;
 				}
-				.menu_c:hover {
-					border-left: 3px solid #0080ff;
-					font-weight: bolder;
-					padding-left: 3px;
-				}
+
 			</style>
 		</head>
 		<body>
@@ -139,25 +151,35 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		"}
 		var/loop_index = 0
 		for(var/i in GLOB.startup_messages)
-			if(loop_index >= 25)
+			if(loop_index >= 27)
 				break
 			dat += i
 			loop_index++
 		dat += "</div>"
 
 	else
+		dat += {"<img src="titlescreen.gif" class="fone" alt="">"}
 
 		if(!IsGuestKey(src.key))
 			dat += {"
 			<div class="container_polls">
 		"}
+			dat += {"<a class="menu_a" href='?src=\ref[src];showpoll=1'>POLLS (NEW)</a>"}
 			dat += playerpolls()
 			dat += "</div>"
 
+		if(GLOB.current_lobbyscreen_notice)
+			dat += {"
+			<div class="container_notice">
+				<a class="menu_c" href='?src=\ref[src];lobby_setup=1'>[GLOB.current_lobbyscreen_notice]</a>
+			</div>
+		"}
+
 		dat += {"
 		<div class="container_nav">
-				<a class="menu_a" href='?src=\ref[src];lobby_setup=1'>SETUP ([uppertext(client.prefs.real_name)])</a>
+			<a class="menu_a" href='?src=\ref[src];lobby_setup=1'>SETUP ([uppertext(client.prefs.real_name)])</a>
 		"}
+
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
 			dat += {"<a id="ready" class="menu_a" href='?src=\ref[src];lobby_ready=1'>[ready ? "READY ☑" : "READY ☒"]</a>
 		"}
@@ -174,9 +196,12 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		"}
 		dat += {"<br><br><a class="menu_a" href='?src=\ref[src];lobby_changelog=1'>CHANGELOG</a>
 		"}
+		if(CONFIG_GET(flag/server_swap_enabled))
+			dat += {"
+			<a class="menu_a" href='?src=\ref[src];lobby_swap=1'>SWAP SERVERS</a>
+		"}
 
 		dat += "</div>"
-		dat += {"<img src="titlescreen.gif" class="fone" alt="">"}
 		dat += {"
 		<script language="JavaScript">
 			var i=0;

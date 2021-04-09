@@ -93,6 +93,7 @@ GLOBAL_LIST_INIT(admin_verbs_sounds, list(/client/proc/play_local_sound, /client
 GLOBAL_PROTECT(admin_verbs_sounds)
 GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/change_title_screen, //SKYRAT EDIT ADDITION
+	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,

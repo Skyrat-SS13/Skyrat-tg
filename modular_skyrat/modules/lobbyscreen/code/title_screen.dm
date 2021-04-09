@@ -1,5 +1,7 @@
 GLOBAL_VAR(current_lobby_screen)
 
+GLOBAL_VAR(current_lobbyscreen_notice)
+
 GLOBAL_LIST_EMPTY(lobby_screens)
 
 SUBSYSTEM_DEF(title)
@@ -54,6 +56,15 @@ SUBSYSTEM_DEF(title)
 			GLOB.current_lobby_screen = pick(GLOB.lobby_screens)
 		else
 			GLOB.current_lobby_screen = 'modular_skyrat/modules/lobbyscreen/icons/skyrat_lobbyscreen.png'
+
+	for(var/mob/dead/new_player/N in GLOB.new_player_list)
+		INVOKE_ASYNC(N, /mob/dead/new_player.proc/show_titlescreen)
+
+/proc/set_titlescreen_notice(new_title)
+	if(new_title)
+		GLOB.current_lobbyscreen_notice = sanitize_text(new_title)
+	else
+		GLOB.current_lobbyscreen_notice = null
 
 	for(var/mob/dead/new_player/N in GLOB.new_player_list)
 		INVOKE_ASYNC(N, /mob/dead/new_player.proc/show_titlescreen)
