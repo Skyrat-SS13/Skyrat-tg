@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					box-sizing: border-box;
 					padding-top: 3vmin;
 					top: 0%;
-					left:70%;
+					left:0%;
 					z-index: 1;
 				}
 
@@ -171,7 +171,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		if(GLOB.current_lobbyscreen_notice)
 			dat += {"
 			<div class="container_notice">
-				<a class="menu_c" href='?src=\ref[src];lobby_setup=1'>[GLOB.current_lobbyscreen_notice]</a>
+				<p class="menu_c">[GLOB.current_lobbyscreen_notice]</p>
 			</div>
 		"}
 

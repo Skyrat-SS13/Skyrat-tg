@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(serverswap)
 
 /datum/controller/subsystem/title/Initialize()
 	if(!CONFIG_GET(flag/server_swap_enabled))
-		return
+		return ..()
 
 	var/list/lines = world.file2list("config/skyrat/swap_ips.txt")
 	for(var/line in lines)
