@@ -284,7 +284,7 @@ no power level overlay is currently in the overlays list.
 	var/steps = 0
 	if(!NSEW)//Make sure its ran right
 		return FALSE
-	for(var/dist in 0 to FIELD_GENERATOR_MAX_DISTANCE) // checks out to 8 tiles away for another generator
+	for(var/dist in 0 to FIELD_GENERATOR_MAX_DISTANCE)//SKYRAT EDIT CHANGE // checks out to DEFINE tiles away for another generator
 		T = get_step(T, NSEW)
 		if(T.density)//We cant shoot a field though this
 			return FALSE
@@ -406,4 +406,4 @@ no power level overlay is currently in the overlays list.
 #undef FG_CHARGING
 #undef FG_ONLINE
 
-#undef FIELD_GENERATOR_MAX_DISTANCE
+#undef FIELD_GENERATOR_MAX_DISTANCE //SKYRAT EDIT ADDITION
