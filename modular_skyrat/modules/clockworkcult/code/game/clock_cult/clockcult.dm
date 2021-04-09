@@ -48,7 +48,9 @@ GLOBAL_VAR(clockcult_eminence)
 
 /datum/game_mode/clockcult/pre_setup()
 	//Load Reebe
-	if(!load_new_z_level("_maps/map_files/generic/CityOfCogs.dmm", "Reebe"))
+	var/list/FailedZs = list()
+	SSmapping.LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits = ZTRAITS_LAVALAND)
+	if(!FailedZs.len > 0)
 		message_admins("Reebe failed to load")
 		log_game("Reebe failed to load")
 		return FALSE
@@ -62,6 +64,8 @@ GLOBAL_VAR(clockcult_eminence)
 		clockie.assigned_role = ROLE_SERVANT_OF_RATVAR
 		clockie.special_role = ROLE_SERVANT_OF_RATVAR
 	generate_clockcult_scriptures()
+	message_admins("Reebe loaded successfully; make sure that antags spawned correctly!")
+	log_game("Reebe loaded successfully; make sure that antags spawned correctly!")
 	return TRUE
 
 /datum/game_mode/clockcult/post_setup(report)
