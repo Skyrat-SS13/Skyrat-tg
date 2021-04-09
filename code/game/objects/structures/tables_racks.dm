@@ -531,8 +531,8 @@
 /obj/structure/table/bronze
 	name = "bronze table"
 	desc = "A solid table made out of bronze."
-	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/brass_table.dmi' //Skyrat edit
-	icon_state = "brass_table"
+	icon = 'icons/obj/smooth_structures/brass_table.dmi'
+	icon_state = "brass_table-0"
 	base_icon_state = "brass_table"
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	buildstack = /obj/item/stack/tile/bronze
