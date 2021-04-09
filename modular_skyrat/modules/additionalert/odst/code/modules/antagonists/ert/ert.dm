@@ -1,16 +1,19 @@
 /datum/antagonist/ert/odst
 	name = "Orbital Drop Shock Trooper"
 	role = "Trooper"
-	var/odst_outfit = /datum/ert/odst
+	outfit = /datum/outfit/centcom/ert/odst
+
+/datum/antagonist/ert/odst/on_gain()
+	. = ..()
+	equip_odst()
 
 /datum/antagonist/ert/odst/proc/equip_odst()
 	if(!ishuman(owner.current))
 		return
 	var/mob/living/carbon/human/H = owner.current
 
-	H.set_species(/datum/species/human) //Plasamen burn up otherwise, and lizards are vulnerable to asimov AIs
+	H.set_species(/datum/species/human) //ODST are apparently human only.
 
-	H.equipOutfit(odst_outfit)
 	return TRUE
 
 /datum/antagonist/ert/odst/leader
