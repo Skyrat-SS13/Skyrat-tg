@@ -246,7 +246,8 @@ Used by the AI doomsday and the self-destruct nuke.
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
-		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
+		//INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
+		add_startupmessage("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") //SKYRAT EDIT CHANGE
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
@@ -258,7 +259,8 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	// load the station
 	station_start = world.maxz + 1
-	INIT_ANNOUNCE("Loading [config.map_name]...")
+	//INIT_ANNOUNCE("Loading [config.map_name]...") SKYRAT EDIT REMOVAL
+	add_startupmessage("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())
@@ -273,8 +275,6 @@ Used by the AI doomsday and the self-destruct nuke.
 	while (world.maxz < (5 - 1) && space_levels_so_far < config.space_ruin_levels)
 		++space_levels_so_far
 		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
-
-	LoadGroup(FailedZs, "Rockplanet", "skyrat/planets", "rockplanet.dmm", default_traits = ZTRAITS_ROCKPLANET)
 
 	if(config.minetype == "lavaland")
 		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
