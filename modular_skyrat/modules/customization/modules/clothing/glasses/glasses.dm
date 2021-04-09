@@ -21,5 +21,5 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
 	icon_state = "glasses_alt"
-	inhand_icon_state = "glasses"
+	inhand_icon_state = "glasses_rimless"
 	vision_correction = TRUE

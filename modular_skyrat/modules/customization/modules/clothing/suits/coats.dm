@@ -163,3 +163,16 @@
 	desc = "conceal your face in shame with this nanotrasen brand hood"
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/urban/polychromic
+	name = "urban coat"
+	desc = "A coat built for urban life."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "urbanjacket"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("5D5", "EEA", "333"))
+
