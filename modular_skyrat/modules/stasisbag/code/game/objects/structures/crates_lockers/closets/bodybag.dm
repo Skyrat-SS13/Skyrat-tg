@@ -1,6 +1,6 @@
 /obj/structure/closet/body_bag/stasis
 	name = "stasis body bag"
-	desc = "A stasis body bag designed for the storage and stasis of cadavers. It has saftey sensors on the bag that prevent it from activating when a living being is inside."
+	desc = "A body bag designed for the preservation of cadavers via integrated cryogenic technology and cryo-insulative mesh. It has saftey sensors on the bag that prevent it from activating when a living being is inside."
 	icon = 'modular_skyrat/modules/stasisbag/icons/obj/stasisbag.dmi'
 	icon_state = "greenbodybag"
 	foldedbag_path = /obj/item/bodybag/stasis
