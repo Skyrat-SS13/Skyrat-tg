@@ -155,7 +155,8 @@
 				to_chat_immediate(src, "So long, spaceman.")
 				client << link(server_ip)
 			return
-		var/server_name = tgui_alert(usr, "Please select the server you wish to swap to:", "Server swap!", GLOB.swappable_ips)
+		var/list/server_options = GLOB.swappable_ips
+		var/server_name = tgui_alert(usr, "Please select the server you wish to swap to:", "Server swap!", server_options)
 		if(!server_name)
 			return
 		var/server_ip = GLOB.swappable_ips[server_name]
