@@ -13,7 +13,6 @@
 /datum/outfit/clockcult_armaments
 	name = "Servant of Ratvar - Armaments"  
 	uniform = /obj/item/clothing/under/chameleon/ratvar
-	suit = /obj/item/clothing/suit/armor/vest/clockwork
 	gloves = /obj/item/clothing/gloves/color/yellow
 	id = /obj/item/card/id/syndicate/ratvar
 	shoes = /obj/item/clothing/shoes/chameleon

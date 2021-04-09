@@ -25,15 +25,21 @@
 		if("Brass Spear")
 			H.equip(M)
 			weapon = /obj/item/twohanded/clockwork/brass_spear
+			suit = /obj/item/clothing/suit/armor/vest/clockwork
 		if("Brass Battlehammer")
 			H.equip(M)
 			weapon = /obj/item/twohanded/clockwork/brass_battlehammer
+			suit = /obj/item/clothing/suit/armor/vest/clockwork
 		if("Brass Sword")
 			H.equip(M)
 			weapon = /obj/item/twohanded/clockwork/brass_sword
+			suit = /obj/item/clothing/suit/armor/vest/clockwork/speed
 		if("Brass Bow")
 			H.equip(M)
 			weapon = /obj/item/gun/ballistic/bow/clockwork
+			suit = /obj/item/clothing/suit/armor/vest/clockwork/cloak
 		
 	var/weapon_to_spawn = new weapon(get_turf(M))
 	M.put_in_inactive_hand(weapon_to_spawn)
+	var/suit_to_spawn = new suit(get_turf(M))
+	M.put_in_inactive_hand(suit_to_spawn)
