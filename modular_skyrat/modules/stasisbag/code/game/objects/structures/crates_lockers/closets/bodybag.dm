@@ -1,6 +1,6 @@
 /obj/structure/closet/body_bag/stasis
 	name = "stasis body bag"
-	desc = "A stasis body bag designed for the storage and stasis of cadavers."
+	desc = "A stasis body bag designed for the storage and stasis of cadavers. It has saftey sensors on the bag that prevent it from activating when a living being is inside."
 	icon = 'modular_skyrat/modules/stasisbag/icons/obj/stasisbag.dmi'
 	icon_state = "greenbodybag"
 	foldedbag_path = /obj/item/bodybag/stasis
@@ -17,7 +17,8 @@
 /obj/structure/closet/body_bag/stasis/close()
 	. = ..()
 	for(var/mob/living/M in contents)
-		chill_out(M)
+		if(M.stat == DEAD)
+			chill_out(M)
 	if(.)
 		density = FALSE
 		mouse_drag_pointer = MOUSE_ACTIVE_POINTER
