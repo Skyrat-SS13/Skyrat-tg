@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 #define LINKIFY_READY(string, value) "<a href='byond://?src=[REF(src)];ready=[value]'>[string]</a>"
 
 /mob/dead/new_player
@@ -17,6 +16,8 @@
 
 	//Used to make sure someone doesn't get spammed with messages if they're ineligible for roles
 	var/ineligible_for_roles = FALSE
+
+	var/client/my_client
 
 /mob/dead/new_player/Initialize()
 	if(client && SSticker.state == GAME_STATE_STARTUP)
@@ -44,39 +45,34 @@
 /**
  * This proc generates the panel that opens to all newly joining players, allowing them to join, observe, view polls, view the current crew manifest, and open the character customization menu.
  */
-/mob/dead/new_player/proc/new_player_panel()
+/mob/dead/new_player/proc/show_titlescreen()
 	if (client?.interviewee)
 		return
 
-	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
-	asset_datum.send(client)
-	var/list/output = list("<center><p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>")
+	winset(src, "lobbybrowser", "is-disabled=false;is-visible=true")
 
-	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		switch(ready)
-			if(PLAYER_NOT_READY)
-				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | <b>Not Ready</b> | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
-			if(PLAYER_READY_TO_PLAY)
-				output += "<p>\[ <b>Ready</b> | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
-			if(PLAYER_READY_TO_OBSERVE)
-				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
-	else
-		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a></p>"
-		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a></p>"
-		output += "<p>[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]</p>"
+	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/lobby) //Sending pictures to the client
+	assets.send(src)
 
-	if(!IsGuestKey(src.key))
-		output += playerpolls()
+	update_titlescreen()
 
-	output += "</center>"
+/mob/dead/new_player/proc/update_titlescreen()
+	var/dat = get_lobby_html()
 
-	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 250, 265)
-	popup.set_window_options("can_close=0")
-	popup.set_content(output.Join())
-	popup.open(FALSE)
+	src << browse(GLOB.current_lobby_screen, "file=titlescreen.gif;display=0")
+	src << browse(dat, "window=lobbybrowser")
+
+/datum/asset/simple/lobby
+	assets = list(
+		"FixedsysExcelsior3.01Regular.ttf" = 'html/browser/FixedsysExcelsior3.01Regular.ttf',
+	)
+
+/mob/dead/new_player/proc/hide_titlescreen()
+	if(my_client.mob)
+		winset(my_client, "lobbybrowser", "is-disabled=true;is-visible=false")
 
 /mob/dead/new_player/proc/playerpolls()
-	var/list/output = list()
+	var/output
 	if (SSdbcore.Connect())
 		var/isadmin = FALSE
 		if(client?.holder)
@@ -97,24 +93,20 @@
 				AND deleted = 0
 			)
 		"}, list("isadmin" = isadmin, "ckey" = ckey))
-		var/rs = REF(src)
 		if(!query_get_new_polls.Execute())
 			qdel(query_get_new_polls)
 			return
 		if(query_get_new_polls.NextRow())
-			output += "<p><b><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
+			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS!</a>"}
 		else
-			output += "<p><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A></p>"
+			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS</a>"}
 		qdel(query_get_new_polls)
 		if(QDELETED(src))
 			return
 		return output
 
 /mob/dead/new_player/Topic(href, href_list[])
-	if(src != usr)
-		return
-
-	if(!client)
+	if(src != usr || !client)
 		return
 
 	if(client.interviewee)
@@ -129,33 +121,35 @@
 	else
 		relevant_cap = max(hpc, epc)
 
-	if(href_list["show_preferences"])
+	if(href_list["lobby_setup"])
+		client.prefs.needs_update = TRUE
 		client.prefs.ShowChoices(src)
 		return TRUE
 
-	if(href_list["ready"])
-		var/tready = text2num(href_list["ready"])
-		//Avoid updating ready if we're after PREGAME (they should use latejoin instead)
-		//This is likely not an actual issue but I don't have time to prove that this
-		//no longer is required
+	if(href_list["lobby_ready"])
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
-			ready = tready
-		//if it's post initialisation and they're trying to observe we do the needful
-		if(!SSticker.current_state < GAME_STATE_PREGAME && tready == PLAYER_READY_TO_OBSERVE)
-			ready = tready
-			make_me_an_observer()
-			return
+			client << output(null, "lobbybrowser:imgsrc")
+			ready = !ready
+		return
 
-	if(href_list["refresh"])
-		src << browse(null, "window=playersetup") //closes the player setup window
-		new_player_panel()
+	if(href_list["lobby_observe"])
+		ready = PLAYER_READY_TO_OBSERVE
+		hide_titlescreen()
+		make_me_an_observer()
+		return
 
-	if(href_list["late_join"])
+	if(href_list["lobby_antagtoggle"])
+		client.prefs.be_antag = !client.prefs.be_antag
+		update_titlescreen()
+		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
+		return
+
+	if(href_list["lobby_join"])
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, "<span class='boldwarning'>The round is either not ready, or has already finished...</span>")
 			return
 
-		if(href_list["late_join"] == "override")
+		if(href_list["lobby_join"] == "override")
 			LateChoices()
 			return
 
@@ -173,8 +167,10 @@
 			return
 		LateChoices()
 
-	if(href_list["manifest"])
+	if(href_list["lobby_crew"])
 		ViewManifest()
+		return
+
 
 	if(href_list["SelectedJob"])
 		if(!SSticker?.IsRoundInProgress())
@@ -193,9 +189,6 @@
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
 
-	else if(!href_list["late_join"])
-		new_player_panel()
-
 	if(href_list["showpoll"])
 		handle_player_polling()
 		return
@@ -208,6 +201,9 @@
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
 
+	if(href_list["lobby_changelog"])
+		client.changelog()
+
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
@@ -218,8 +214,7 @@
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
-		src << browse(null, "window=playersetup") //closes the player setup window
-		new_player_panel()
+		show_titlescreen()
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
@@ -262,6 +257,10 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "[jobtitle] is restricted from your species."
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -285,6 +284,10 @@
 		return JOB_UNAVAILABLE_ACCOUNTAGE
 	if(job.required_playtime_remaining(client))
 		return JOB_UNAVAILABLE_PLAYTIME
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	return JOB_AVAILABLE
@@ -344,6 +347,13 @@
 	SSticker.minds += character.mind
 	character.client.init_verbs() // init verbs for the late join
 	var/mob/living/carbon/human/humanc
+
+	if(SSticker.mode.name == "assaultops")
+		if(is_assaultops_target(character.mind))
+			remove_assaultops_target(character.mind, original=TRUE)
+		if(check_assaultops_target(character))
+			add_assaultops_target(character, notify_target = TRUE)
+
 	if(ishuman(character))
 		humanc = character //Let's retypecast the var to be human,
 
@@ -389,6 +399,7 @@
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
+	dat += "<div class='notice'>Alert Level: [capitalize(num2seclevel(GLOB.security_level))]</div>"
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
@@ -502,7 +513,7 @@
 /mob/dead/new_player/proc/close_spawn_windows()
 
 	src << browse(null, "window=latechoices") //closes late choices window
-	src << browse(null, "window=playersetup") //closes the player setup window
+	hide_titlescreen() //closes the player setup window
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
 	src << browse(null, "window=latechoices") //closes late job selection
@@ -559,4 +570,3 @@
 
 	// Add verb for re-opening the interview panel, and re-init the verbs for the stat panel
 	add_verb(src, /mob/dead/new_player/proc/open_interview)
-*/
