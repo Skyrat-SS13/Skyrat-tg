@@ -51,7 +51,7 @@
 	invoker.mob_light(_color = LIGHT_COLOR_CLOCKWORK, _range = 2, _duration = 10)
 	if(!is_reebe(invoker.z))
 		if(!HAS_TRAIT(M, TRAIT_MINDSHIELD))
-			M.Paralyze(150)
+			M.Knockdown(5 SECONDS)
 		else
 			if(ishuman(M))
 				var/mob/living/carbon/human/P = M
