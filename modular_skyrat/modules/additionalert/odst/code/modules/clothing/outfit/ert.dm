@@ -42,7 +42,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
 	new	/obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
+	new /obj/item/crowbar/red  (src)
 	new /obj/item/grenade/frag (src)
 	new /obj/item/grenade/frag (src)
 
