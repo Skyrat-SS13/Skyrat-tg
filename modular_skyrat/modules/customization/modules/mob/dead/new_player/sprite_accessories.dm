@@ -223,6 +223,11 @@
 	name = "Thigh-high - Fishnet"
 	icon_state = "fishnet"
 
+/datum/sprite_accessory/socks/fishnet_thigh
+	name = "Pantyhose - Ripped"
+	icon_state = "pantyhose_ripped"
+	use_static = null
+
 /datum/sprite_accessory/underwear
 	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
@@ -345,6 +350,16 @@
 	name = "Thong - Alt"
 	icon_state = "thong_babydoll"
 	gender = FEMALE
+
+/datum/sprite_accessory/underwear/chastbelt
+	name = "Chastity Belt"
+	icon_state = "chastbelt"
+	use_static = TRUE
+
+/datum/sprite_accessory/underwear/chastcage
+	name = "Chastity Cage"
+	icon_state = "chastcage"
+	use_static = null
 
 
 /datum/sprite_accessory/underwear/male_briefs
@@ -535,5 +550,35 @@
 /datum/sprite_accessory/undershirt/tubetop
 	name = "Tube Top"
 	icon_state = "tubetop"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/chastbra
+	name = "Chastity Bra"
+	icon_state = "chastbra"
+	gender = FEMALE
+	use_static = TRUE
+
+/datum/sprite_accessory/undershirt/pasties
+	name = "Pasties"
+	icon_state = "pasties"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/pasties_alt
+	name = "Pasties - Alt"
+	icon_state = "pasties_alt"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/shibari
+	name = "Shibari"
+	icon_state = "shibari"
+	gender = FEMALE
+	use_static = null
+
+/datum/sprite_accessory/undershirt/shibari_sleeves
+	name = "Shibari Sleeves"
+	icon_state = "shibari_sleeves"
 	gender = FEMALE
 	use_static = null
