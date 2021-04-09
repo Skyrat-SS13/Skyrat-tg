@@ -385,17 +385,15 @@
 /datum/ambitions/proc/log_action(text_content, clears_approval = TRUE)
 	var/admin_change = my_mind.current != usr
 	if(admin_change)
-		text_content += " \[ADMIN CHANGE\]"
+		var/mob/living/holder = my_mind.current
+		text_content = "\[[key_name(usr)] -> [key_name(holder)]\] " + text_content
+		log_admin(text_content)
+		holder.log_message(text_content, LOG_AMBITION)
+	usr.log_message(text_content, LOG_AMBITION)
 	if(admin_approval && clears_approval && !changed_after_approval)
 		changed_after_approval = TRUE
 		log += "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")] CHANGED AFTER APPROVAL:"
 	log += "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")] [text_content]"
-	if(admin_change)
-		var/mob/living/holder = my_mind.current
-		text_content = "\[key_name(usr) -> key_name(holder)\] " + text_content
-		log_admin(text_content)
-		holder.log_message(text_content, LOG_AMBITION)
-	usr.log_message(text_content, LOG_AMBITION)
 
 /datum/ambitions/proc/is_proper_ambitions()
 	if(intensity == 0 || length(objectives) == 0 || narrative == "")
