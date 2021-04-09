@@ -6,7 +6,6 @@ GLOBAL_LIST_EMPTY(servant_spawns) //Servants of Ratvar spawn here
 #define NOJAUNT_1					(1<<0)
 #define ZTRAIT_REEBE "Reebe"
 #define ZTRAITS_REEBE list(ZTRAIT_REEBE = TRUE, ZTRAIT_BOMBCAP_MULTIPLIER = 0.5)
-#define ROLE_SERVANT_OF_RATVAR	"Servant of Ratvar"
 #define ANTAG_HUD_CLOCKWORK		22
 #define TRAIT_STARGAZED			"stargazed"	//Affected by a stargazer
 #define STARGAZER_TRAIT "stargazer"

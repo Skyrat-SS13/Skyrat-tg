@@ -35,6 +35,7 @@
 #define ROLE_PYROCLASTIC_SLIME "Pyroclastic Anomaly Slime"
 #define ROLE_MIND_TRANSFER "Mind Transfer Potion"
 #define ROLE_POSIBRAIN "Posibrain"
+#define ROLE_SERVANT_OF_RATVAR	"Servant of Ratvar"//Skyrat edit, fixes CWC names - MOVED FROM SKYRATDEFINES/CLOCKWORKCULT.DM
 #define ROLE_DRONE "Drone"
 #define ROLE_DEATHSQUAD "Deathsquad"
 #define ROLE_LAVALAND "Lavaland"
