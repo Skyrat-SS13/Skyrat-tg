@@ -8,6 +8,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	throwforce = 20
 	throw_speed = 4
+	force = 15
 	armour_penetration = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacked", "poked", "jabbed", "torn", "gored")
@@ -74,6 +75,7 @@
 	desc = "A razor-sharp spear made of brass. It thrums with barely-contained energy."
 	icon_state = "ratvarian_spear"
 	throwforce = 36
+	force = 21
 	sharpness = SHARP_EDGED
 	armour_penetration = 24
 	clockwork_hint = "Throwing the spear will deal bonus damage while on Reebe."
@@ -105,6 +107,7 @@
 	icon_state = "ratvarian_sword"
 	throwforce = 20
 	armour_penetration = 12
+	force = 19
 	attack_verb_continuous = list("attacked", "slashed", "cut", "torn", "gored")
 	clockwork_hint = "Targets will be struck with a powerful electromagnetic pulse while on Reebe."
 	var/emp_cooldown = 0
@@ -126,7 +129,7 @@
 
 /obj/item/gun/ballistic/bow/clockwork
 	name = "Brass Bow"
-	desc = "A bow made from brass and other components that you can't quite understand. It glows with a deep energy and frabricates arrows by itself."
+	desc = "A bow made from brass and other components that you can't quite understand. It glows with a deep energy and frabricates arrows by itself. Altclick to manifest arrows."
 	icon_state = "bow_clockwork"
 	force = 10
 	mag_type = /obj/item/ammo_box/magazine/internal/bow/clockcult
@@ -136,17 +139,18 @@
 	. = ..()
 	addtimer(CALLBACK(src, .proc/recharge_bolt), recharge_time)
 
-/obj/item/gun/ballistic/bow/clockwork/attack_self(mob/living/user)
+/obj/item/gun/ballistic/bow/clockwork/AltClick(mob/living/user)
 	if (chambered)
 		chambered = null
 		to_chat(user, "<span class='notice'>You dispell the arrow.</span>")
-	else if (get_ammo())
-		var/obj/item/I = user.get_active_held_item()
-		if (do_mob(user,I,5))
-			to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
-			playsound(src, 'modular_skyrat/modules/clockworkcult/sounds/weapons/bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
-			chamber_round()
 	update_icon()
+
+/obj/item/gun/ballistic/bow/clockwork/attack_self(mob/user)
+	var/obj/item/I = user.get_active_held_item()
+	if (do_mob(user,I,5))
+		to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
+		playsound(src, 'modular_skyrat/modules/clockworkcult/sounds/weapons/bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
+		chamber_round()
 
 /obj/item/gun/ballistic/bow/clockwork/proc/recharge_bolt()
 	if(magazine.get_round(TRUE))
