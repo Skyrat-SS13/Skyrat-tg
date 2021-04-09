@@ -19,10 +19,11 @@
 	category = "Mobility"
 
 //SUPPORT
-
+/* Holy shit, What was I doing when I made that one?
 /datum/spellbook_entry/item/impostors
 	name = "Magical Device"
 	desc = "This magical device can be used to have a fake, identical body double. Looks like you, Problably talks like you but especially used to trick the crews with it."
 	item_path = /obj/item/antag_spawner/impostors
 	limit = 3
 	category = "Assistance"
+*/
