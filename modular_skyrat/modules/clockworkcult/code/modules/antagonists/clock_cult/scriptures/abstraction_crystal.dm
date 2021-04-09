@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 
 	//Equip with generic gear
 	add_servant_of_ratvar(active_hologram, silent=TRUE, servant_type=/datum/antagonist/servant_of_ratvar/manifestation)
-	active_hologram.equipOutfit(/datum/outfit/clockcult/armaments)
+	active_hologram.equipOutfit(/datum/outfit/clockcult_armaments)
 	for(var/obj/item in active_hologram.get_contents())
 		item.alpha = 180
 		item.flags_1 |= HOLOGRAM_1

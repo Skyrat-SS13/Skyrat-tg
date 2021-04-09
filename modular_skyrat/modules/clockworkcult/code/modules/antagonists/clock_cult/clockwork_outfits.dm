@@ -10,7 +10,7 @@
 	belt = /obj/item/storage/belt/utility/servant
 	var/weapon = null
 
-/datum/outfit/clockcult/armaments
+/datum/outfit/clockcult_armaments
 	name = "Servant of Ratvar - Armaments"  
 	uniform = /obj/item/clothing/under/chameleon/ratvar
 	suit = /obj/item/clothing/suit/clockwork
