@@ -48,7 +48,7 @@ GLOBAL_VAR(clockcult_eminence)
 
 /datum/game_mode/clockcult/pre_setup()
 	//Load Reebe
-	var/datum/map_template/template = new("map_files/generic/CityOfCogs.dmm", "Reebe")
+	var/datum/map_template/template = new("_map_files/generic/CityOfCogs.dmm", "Reebe")
 	var/Reebe = template.load_new_z()
 	if(!Reebe)
 		message_admins("Reebe failed to load")

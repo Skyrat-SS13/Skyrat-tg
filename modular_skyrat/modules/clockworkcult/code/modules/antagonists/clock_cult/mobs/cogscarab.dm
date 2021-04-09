@@ -45,6 +45,7 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 /obj/item/drone_shell/cogscarab
 	name = "cogscarab construct"
 	desc = "The shell of an ancient construction drone, loyal to Ratvar."
+	icon = 'icons/mob/drone.dmi'
 	icon_state = "drone_clock_hat"
 
 /obj/item/drone_shell/cogscarab/attack_ghost(mob/user)
