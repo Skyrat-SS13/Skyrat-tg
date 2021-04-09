@@ -29,6 +29,8 @@
 	to_chat(owner.current, "<span class='brass'>Use your Clockwork Slab to summon integration cogs to unlock more scriptures and siphon power.</span>")
 	to_chat(owner.current, "<span class='brass'>Unlock Kindle to stun targets, Hateful Manacles to restrain them and use a sigil of submission to convert them!</span>")
 	to_chat(owner.current, "<span class='brass'>When you are ready, gather 6 cultists around the Ark and activate it to summon Rat'var, but be prepared to fight for your life.</span>")
+	var/obj/item/clockwork/clockwork_slab/S = new /obj/item/clockwork/clockwork_slab
+	owner.current.put_in_hands(S)
 
 /datum/antagonist/servant_of_ratvar/on_gain()
 	. = ..()
