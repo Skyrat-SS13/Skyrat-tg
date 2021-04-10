@@ -1,4 +1,4 @@
-## Title: General aesthetic change.
+## Title: Bar Signs
 
 MODULE ID: barsigns
 
