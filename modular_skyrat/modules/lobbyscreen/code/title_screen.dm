@@ -28,10 +28,6 @@ SUBSYSTEM_DEF(title)
 							font-family: "Fixedsys";
 							src: url("FixedsysExcelsior3.01Regular.ttf");
 						}
-						@font-face {
-							font-family: "Terminal";
-							src: url("TerminusTTFWindows-4.47.0.ttf");
-						}
 						body,
 						html {
 							margin: 0;
@@ -161,7 +157,6 @@ SUBSYSTEM_DEF(title)
 
 						.menu_c {
 							display: inline-block;
-							font-family: "Fixedsys";
 							font-weight: lighter;
 							text-decoration: none;
 							width: 100%;
@@ -171,7 +166,6 @@ SUBSYSTEM_DEF(title)
 							margin-top: 0px;
 							font-size: 3vmin;
 							line-height: 2vmin;
-							letter-spacing: 1px;
 						}
 
 					</style>

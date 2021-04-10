@@ -66,7 +66,6 @@
 /datum/asset/simple/lobby
 	assets = list(
 		"FixedsysExcelsior3.01Regular.ttf" = 'html/browser/FixedsysExcelsior3.01Regular.ttf',
-		"TerminusTTFWindows-4.47.0.ttf" = 'html/browser/TerminusTTFWindows-4.47.0.ttf'
 	)
 
 /mob/dead/new_player/proc/hide_titlescreen()
