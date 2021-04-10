@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/assault_rifle/akm
 	name = "\improper AKM rifle"
-	desc = "A timeless Russian infantry rifle chambered in an extremely outdated round. This is one of over two-hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice or crime. This rifle and its variants truly have no bounds."
+	desc = "a timeless Russian infantry rifle chambered in an extremely outdated round. This is one of over two-hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice or crime. This rifle and its variants truly have no bounds."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm.dmi'
 	icon_state = "akm"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm_lefthand.dmi'
@@ -19,7 +19,7 @@
 
 /obj/item/ammo_box/magazine/akm
 	name = "akm magazine (7.62×39mm)"
-	desc = "A banana-shaped double stack magazine able to hold 30 rounds of 7.62x39mm Soviet ammunition. It's said that in the early days of SolFed's spread, spanish colony rebels often referred to these as 'Goat Horns'.
+	desc = "a banana-shaped double stack magazine able to hold 30 rounds of 7.62x39mm Soviet ammunition. It's said that in the early days of SolFed's spread, spanish colony rebels often referred to these as 'Goat Horns'.
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm.dmi'
 	icon_state = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39
@@ -29,7 +29,7 @@
 
 /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern
 	name = "\improper Tactical AKMS"
-	desc = "A modernized version of the most iconic infantry rifle ever produced. This one has aftermarket parts and attachments, making it a better contender against its modern buddies. It still uses the same outdated rounds."
+	desc = "a modernized version of the most iconic infantry rifle ever produced. This one has aftermarket parts and attachments, making it a better contender against its modern buddies. It still uses the same outdated rounds."
 	icon_state = "akm_modern"
 	inhand_icon_state = "akm"
 	worn_icon_state = "akm"
