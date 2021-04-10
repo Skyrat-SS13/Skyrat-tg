@@ -175,8 +175,6 @@ GLOBAL_LIST_EMPTY(startup_messages)
 
 		dat += {"<a class="menu_a" href='?src=\ref[src];lobby_observe=1'>OBSERVE</a>
 		"}
-		dat += {"<br><br><a class="menu_a" href='?src=\ref[src];lobby_changelog=1'>CHANGELOG</a>
-		"}
 		if(CONFIG_GET(flag/server_swap_enabled))
 			dat += {"
 			<a class="menu_a" href='?src=\ref[src];lobby_swap=1'>SWAP SERVERS</a>
