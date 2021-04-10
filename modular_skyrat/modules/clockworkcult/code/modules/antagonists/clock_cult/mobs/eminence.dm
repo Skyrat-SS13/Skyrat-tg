@@ -89,12 +89,6 @@
 /mob/living/simple_animal/eminence/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
 	return FALSE
 
-/mob/living/simple_animal/eminence/Move(atom/newloc, direct)
-	if(istype(get_area(newloc), /area/service/chapel))
-		to_chat(usr, "<span class='warning'>You cannot move on to holy grounds!</span>")
-		return
-	. = ..()
-
 /mob/living/simple_animal/eminence/bullet_act(obj/projectile/Proj)
 	return BULLET_ACT_FORCE_PIERCE
 
