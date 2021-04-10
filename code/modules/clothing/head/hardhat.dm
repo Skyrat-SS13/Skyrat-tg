@@ -135,19 +135,19 @@
 /obj/item/clothing/head/hardhat/weldhat/proc/toggle_welding_screen(mob/living/user)
 	if(weldingvisortoggle(user))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE) //Visors don't just come from nothing
-	var/mob/living/carbon/carbon_user = user
-	if(carbon_user.dna.species.mutant_bodyparts["snout"])	//SKYRAT EDIT --- Lets the visor not smush the snout
+	var/mob/living/carbon/carbon_user = user	//SKYRAT EDIT --- Lets the visor not smush the snout
+	if(carbon_user.dna.species.mutant_bodyparts["snout"])
 		visor_sprite_path = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
 	else
-		visor_sprite_path = 'icons/mob/clothing/head.dmi'
-	update_appearance()	//END SKYRAT EDIT
+		visor_sprite_path = 'icons/mob/clothing/head.dmi'	//END SKYRAT EDIT
+	update_appearance()
 
 /obj/item/clothing/head/hardhat/weldhat/worn_overlays(isinhands)
 	. = ..()
 	if(!isinhands)
-		. += mutable_appearance(visor_sprite_path, "weldhelmet")
+		. += mutable_appearance(visor_sprite_path, "weldhelmet")	//Changed first variable from 'icons/mob/clothing/head.dmi'
 		if(!up)
-			. += mutable_appearance(visor_sprite_path, "weldvisor")
+			. += mutable_appearance(visor_sprite_path, "weldvisor")	//Changed first variable from 'icons/mob/clothing/head.dmi'
 
 /obj/item/clothing/head/hardhat/weldhat/update_overlays()
 	. = ..()
