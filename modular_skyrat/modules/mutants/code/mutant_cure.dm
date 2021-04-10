@@ -119,11 +119,12 @@
 		if(!H.GetComponent(/datum/component/mutant_infection))
 			to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
 			return
-		cure_target(H)
-		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
-		to_chat(user, "<span class='notice'>You inject [H] wth [src]!")
-		used = TRUE
-		update_appearance()
+		if(do_after(user, 4 SECONDS))
+			cure_target(H)
+			playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE, -6)
+			to_chat(user, "<span class='notice'>You inject [H] wth [src]!")
+			used = TRUE
+			update_appearance()
 
 /obj/item/hnz_cure/update_icon_state()
 	. = ..()
@@ -139,8 +140,8 @@
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
 #define STATUS_RECOMBINATING_CURE "System Synthesising Cure"
-#define RECOMBINATION_STEP_TIME 30 SECONDS
-#define RECOMBINATION_STEP_AMOUNT 10
+#define RECOMBINATION_STEP_TIME 20 SECONDS
+#define RECOMBINATION_STEP_AMOUNT 20
 
 /obj/machinery/rnd/rna_recombinator
 	name = "RNA Recombinator"
@@ -291,6 +292,8 @@
 		return
 	cure_progress = 0
 	if(status == STATUS_RECOMBINATING_CURE)
+		new /obj/item/hnz_cure(get_turf(src))
+		new /obj/item/hnz_cure(get_turf(src))
 		new /obj/item/hnz_cure(get_turf(src))
 	else
 		new /obj/item/reagent_containers/glass/bottle/hnz/one(get_turf(src))
