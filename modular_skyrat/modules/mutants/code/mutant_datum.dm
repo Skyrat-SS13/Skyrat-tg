@@ -45,6 +45,8 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	if(host)
 		if(ismutant(host) && old_species)
 			host.set_species(old_species)
+		host.grab_ghost()
+		host.revive(TRUE, TRUE)
 		to_chat(host, "<span class='greentext'>You feel like you're free of that foul disease!</span>")
 		ADD_TRAIT(host, TRAIT_MUTANT_IMMUNE, "mutant_virus")
 		var/cure_time = rand(IMMUNITY_LOWER, IMMUNITY_UPPER)
