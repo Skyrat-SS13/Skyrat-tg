@@ -165,6 +165,7 @@
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	canSmoothWith = null
 	var/dropped_brass
 	var/uses_overlay = TRUE
 	var/obj/effect/clockwork/overlay/floor/realappearence
