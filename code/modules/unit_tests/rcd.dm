@@ -44,4 +44,3 @@
 		frame_count++
 
 	TEST_ASSERT_EQUAL(frame_count, 1, "Expected no density machine deconstruction frame stacking test to end up with exactly 1 machine frame.")
-	
