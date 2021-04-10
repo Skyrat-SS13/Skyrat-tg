@@ -69,7 +69,7 @@
 	set category = "OOC"
 	set desc = "Fix your lobbyscreen if it's timed out."
 
-	show_titlescreen()
+	src.show_titlescreen()
 
 /datum/asset/simple/lobby
 	assets = list(
