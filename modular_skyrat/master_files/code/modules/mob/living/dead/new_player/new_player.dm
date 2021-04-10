@@ -69,9 +69,6 @@
 	set category = "OOC"
 	set desc = "Fix your lobbyscreen if it's timed out."
 
-	if(!istype(src, /mob/dead/new_player))
-		return
-
 	show_titlescreen()
 
 /datum/asset/simple/lobby
