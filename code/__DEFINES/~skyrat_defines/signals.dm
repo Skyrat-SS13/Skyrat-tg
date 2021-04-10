@@ -19,3 +19,7 @@
 #define COMSIG_UPDATE_AMMO_HUD "update_ammo_hud"
 ///The gun has jammed.
 #define COMSIG_GUN_JAMMED "gun_jammed"
+
+//Mutant stuff
+///When a mutant is cured of the virus
+#define COMSIG_MUTANT_CURED "mutant_cured"

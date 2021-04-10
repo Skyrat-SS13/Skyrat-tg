@@ -170,6 +170,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
 	icon_state = "urbanjacket"
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
 	. = ..()

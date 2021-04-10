@@ -3978,6 +3978,7 @@
 "aiy" = (
 /obj/structure/table/wood,
 /obj/item/storage/pill_bottle/dice,
+/obj/item/pen/fourcolor,
 /turf/open/floor/iron/grimy,
 /area/service/library)
 "aiz" = (
@@ -12614,10 +12615,28 @@
 /turf/open/floor/iron,
 /area/commons/storage/tools)
 "aAd" = (
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
+/obj/structure/closet/crate{
+	name = "Stations and Syndicate Starter Bundle"
+	},
+/obj/item/toy/figure/assistant,
+/obj/item/toy/figure/assistant,
+/obj/item/toy/figure/syndie,
+/obj/item/toy/figure/syndie,
+/obj/item/toy/figure/wizard,
+/obj/item/toy/figure/borg,
+/obj/item/toy/figure/botanist,
+/obj/item/toy/figure/chef,
+/obj/item/toy/figure/curator,
+/obj/item/folder/blue,
+/obj/item/folder/red,
+/obj/item/folder/red,
+/obj/item/folder/blue,
+/obj/item/clothing/head/wizard/fake,
+/obj/item/clothing/suit/wizrobe/fake,
+/obj/item/staff,
 /turf/open/floor/wood,
 /area/service/library)
 "aAe" = (
@@ -17652,7 +17671,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/medical/glass{
 	name = "Chemistry";
-	req_access_txt = "69"
+	req_access_txt = "33"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -26456,10 +26475,6 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "dtZ" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Power Access Hatch";
-	req_one_access_txt = "11"
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
@@ -26473,6 +26488,10 @@
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
+	},
+/obj/machinery/door/airlock/highsecurity{
+	name = "AI Upload Access";
+	req_access_txt = "16"
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/ai_upload_foyer)
@@ -34563,7 +34582,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/engineering{
 	name = "Power Access Hatch";
-	req_access_txt = "11"
+	req_access_txt = "50"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -38625,7 +38644,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 5
 	},
-/obj/machinery/navbeacon/wayfinding/aiupload,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/command/bridge)
@@ -38888,6 +38906,11 @@
 /obj/item/storage/box/monkeycubes{
 	pixel_x = -5;
 	pixel_y = 1
+	},
+/obj/item/storage/box/syringes,
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper{
+	pixel_y = -5
 	},
 /turf/open/floor/iron,
 /area/science/xenobiology)
@@ -40780,8 +40803,8 @@
 "jKb" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Security Maintenance";
-	req_access_txt = null;
-	req_one_access_txt = "11, 1"
+	req_access_txt = "12";
+	req_one_access_txt = null
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -41924,7 +41947,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/engineering{
 	name = "Power Access Hatch";
-	req_access_txt = "11"
+	req_access_txt = "35"
 	},
 /turf/open/floor/plating,
 /area/service/hydroponics)
@@ -42169,7 +42192,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/medical/glass{
 	name = "Chemistry";
-	req_access_txt = "69"
+	req_access_txt = "33"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/disposalpipe/segment,
@@ -52535,6 +52558,11 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/inspector,
+/obj/item/inspector{
+	pixel_x = -5;
+	pixel_y = 12
+	},
 /turf/open/floor/iron/dark,
 /area/security/office)
 "phj" = (
@@ -62092,6 +62120,24 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"tqf" = (
+/obj/structure/table/wood,
+/obj/item/toy/figure/wizard{
+	pixel_y = -3
+	},
+/obj/item/toy/figure/hos{
+	pixel_y = 15
+	},
+/obj/item/toy/figure/secofficer{
+	pixel_x = -9;
+	pixel_y = 15
+	},
+/obj/item/toy/figure/secofficer{
+	pixel_x = 9;
+	pixel_y = 15
+	},
+/turf/open/floor/iron/grimy,
+/area/service/library)
 "tqj" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/closet,
@@ -65583,6 +65629,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/folder/documents,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/command/nuke_storage)
 "uQm" = (
@@ -71287,6 +71334,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/machinery/navbeacon/wayfinding/aiupload,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "xwB" = (
@@ -72100,7 +72148,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "Power Access Hatch";
-	req_access_txt = "11"
+	req_access_txt = "47"
 	},
 /turf/open/floor/plating,
 /area/science/research)
@@ -89042,7 +89090,7 @@ hPV
 aMr
 unq
 aiy
-aSJ
+tqf
 aMr
 uxv
 aRQ
