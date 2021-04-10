@@ -79,6 +79,8 @@
 
 /datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
 
+/datum/config_entry/flag/log_ambition // log ambition changes //SKYRAT EDIT ADDITION
+
 /datum/config_entry/flag/log_econ // log economy actions
 
 /datum/config_entry/flag/log_adminchat // log admin chat messages
@@ -510,6 +512,9 @@
 //SKYRAT EDIT ADDITION BEGIN
 /datum/config_entry/string/servertagline
 	config_entry_value = "We forgot to set the server's tagline in config.txt"
+
+/datum/config_entry/string/discord_link
+	config_entry_value = "We forgot to set the server's discord link in config.txt"
 
 /datum/config_entry/flag/sql_game_log
 	protection = CONFIG_ENTRY_LOCKED

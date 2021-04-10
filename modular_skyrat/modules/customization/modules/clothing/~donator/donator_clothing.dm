@@ -616,3 +616,13 @@
 	icon_state = "lannese_vambrace"
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET
+
+//Donation reward for Hacker T.Dog
+/obj/item/clothing/suit/scraparmour
+	name = "Scrap Armour"
+	desc = "A shoddily crafted piece of armour. It provides no benefit apart from being clunky."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	icon_state = "scraparmor"
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	worn_icon_state = "scraparmor"
+	body_parts_covered = CHEST
