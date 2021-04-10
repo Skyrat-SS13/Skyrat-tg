@@ -4,6 +4,7 @@
 	species_traits = list(LIPS, NOEYESPRITES, HAS_FLESH, HAS_BONE, HAS_MARKINGS, MUTCOLORS)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/moth_parts_greyscale.dmi'
+	learnable_languages = list(/datum/language/common, /datum/language/moffic)
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"

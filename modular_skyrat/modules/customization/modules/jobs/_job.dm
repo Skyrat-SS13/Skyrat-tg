@@ -11,6 +11,8 @@
 	var/list/species_whitelist
 	//Blacklist of species for this job.
 	var/list/species_blacklist
+	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN 
+	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
 
 /datum/job/proc/has_banned_quirk(datum/preferences/pref)
 	if(!pref) //No preferences? We'll let you pass, this time (just a precautionary check,you dont wanna mess up gamemode setting logic)
@@ -34,6 +36,7 @@
 /datum/job/assistant
 	no_dresscode = TRUE
 	blacklist_dresscode_slots = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK) //headset, PDA, ID, backpack are important items
+	required_languages = null
 
 /datum/job/security_officer
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
@@ -82,3 +85,27 @@
 
 /datum/job/cyborg
 	loadout = FALSE
+
+/datum/job/cook
+	required_languages = null
+
+/datum/job/botanist
+	required_languages = null
+
+/datum/job/curator
+	required_languages = null
+
+/datum/job/janitor
+	required_languages = null
+
+/datum/job/prisoner
+	required_languages = null
+
+/datum/job/proc/has_required_languages(datum/preferences/pref)
+	if(!required_languages)
+		return TRUE
+	for(var/lang in required_languages)
+		//Doesnt have language, or the required "level" is too low (understood, while needing spoken)
+		if(!pref.languages[lang] || pref.languages[lang] < required_languages[lang])
+			return FALSE
+	return TRUE
