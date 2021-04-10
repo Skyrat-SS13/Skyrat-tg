@@ -134,7 +134,7 @@
 	color = "#330000"
 	boozepwr = 66
 	quality = DRINK_FANTASTIC
-	taste_description = "sin"
+	taste_description = "overpowering sweetness with a touch of sourness, followed by iron and the sensation of a warm summer breeze"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "sins_delight"
 	glass_name = "Sin's Delight"
@@ -215,6 +215,70 @@
 	glass_icon_state = "coggrog"
 	glass_name = "Cog Grog"
 	glass_desc = "Not even Ratvar's Four Generals could withstand this!  Qevax Jryy!"
+
+/datum/reagent/consumable/ethanol/badtouch
+	name = "Bad Touch"
+	description = "A sour and vintage drink. Some say the inventor gets slapped a lot."
+	color = rgb(31, 181, 99)
+	boozepwr = 35
+	quality = DRINK_GOOD
+	taste_description = "a slap to the face"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "badtouch"
+	glass_name = "Bad Touch"
+	glass_desc = "We're nothing but mammals after all."
+
+/datum/reagent/consumable/ethanol/marsblast
+	name = "Marsblast"
+	description = "A spicy and manly drink in honor of the first colonists on Mars."
+	color = rgb(246, 143, 55)
+	boozepwr = 70
+	quality = DRINK_FANTASTIC
+	taste_description = "hot red sand"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "marsblast"
+	glass_name = "Marsblast"
+	glass_desc = "One of these is enough to leave your face as red as the planet."
+
+/datum/reagent/consumable/ethanol/mercuryblast
+	name = "Mercuryblast"
+	description = "A sour burningly cold drink that's sure to chill the drinker."
+	color = rgb(29, 148, 213)
+	boozepwr = 40
+	quality = DRINK_VERYGOOD
+	taste_description = "chills down your spine"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "mercuryblast"
+	glass_name = "Mercuryblast"
+	glass_desc = "No thermometers were harmed in the creation of this drink"
+
+/datum/reagent/consumable/ethanol/mercuryblast/on_mob_life(mob/living/carbon/M)
+	M.adjust_bodytemperature(-30 * TEMPERATURE_DAMAGE_COEFFICIENT, T0C)
+	return ..()
+
+/datum/reagent/consumable/ethanol/piledriver
+	name = "Piledriver"
+	description = "A bright drink that leaves you with a burning sensation."
+	color = rgb(241, 146, 59)
+	boozepwr = 45
+	quality = DRINK_NICE
+	taste_description = "a fire in your throat"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "piledriver"
+	glass_name = "Piledriver"
+	glass_desc = "Not the only thing to leave your throat sore."
+
+/datum/reagent/consumable/ethanol/zenstar
+	name = "Zen Star"
+	description = "A sour and bland drink, rather dissapointing."
+	color = rgb(51, 87, 203)
+	boozepwr = 35
+	quality = DRINK_NICE
+	taste_description = "dissapointment"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "zenstar"
+	glass_name = "Zen Star"
+	glass_desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
 
 // RACE SPECIFIC DRINKS
 

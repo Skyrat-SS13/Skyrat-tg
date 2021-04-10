@@ -115,6 +115,8 @@
 #define COMSIG_ATOM_UPDATE_ICON_STATE "atom_update_icon_state"
 ///from base of [/atom/update_overlays]: (list/new_overlays)
 #define COMSIG_ATOM_UPDATE_OVERLAYS "atom_update_overlays"
+///from base of [/atom/update_greyscale]: (list/colors)
+#define COMSIG_ATOM_UPDATE_GREYSCALE "atom_update_greyscale"
 ///from base of [/atom/update_icon]: (signalOut, did_anything)
 #define COMSIG_ATOM_UPDATED_ICON "atom_updated_icon"
 ///from base of atom/Entered(): (atom/movable/entering, /atom/oldLoc)
@@ -709,6 +711,7 @@
 	#define COMPONENT_BLOCK_MARK_RETRIEVAL (1<<0)
 ///from base of obj/item/hit_reaction(): (list/args)
 #define COMSIG_ITEM_HIT_REACT "item_hit_react"
+	#define COMPONENT_HIT_REACTION_BLOCK (1<<0)
 ///called on item when microwaved (): (obj/machinery/microwave/M)
 #define COMSIG_ITEM_MICROWAVE_ACT "microwave_act"
 	#define COMPONENT_SUCCESFUL_MICROWAVE (1<<0)

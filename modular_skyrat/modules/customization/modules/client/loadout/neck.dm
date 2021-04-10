@@ -44,7 +44,7 @@
 /datum/loadout_item/neck/stethoscope
 	name = "Stethoscope"
 	path = /obj/item/clothing/neck/stethoscope
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer","Security Medic")
 
 //SCARVES
 /datum/loadout_item/neck/scarf
@@ -114,3 +114,14 @@
 /datum/loadout_item/neck/tie/blacktie
 	name = "Black tie"
 	path = /obj/item/clothing/neck/tie/black
+
+/datum/loadout_item/neck/tie/disco
+	name = "Yellow Necktie"
+	path = /obj/item/clothing/neck/tie/horrible
+
+/datum/loadout_item/neck/tie/discoproper
+	name = "Horrible Necktie"
+	path = /obj/item/clothing/neck/tie/disco
+	restricted_roles = list("Detective")
+	restricted_desc = "Superstar Detectives"
+
