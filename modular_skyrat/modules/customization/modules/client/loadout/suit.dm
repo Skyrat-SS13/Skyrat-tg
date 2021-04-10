@@ -112,6 +112,12 @@
 	extra_info = LOADOUT_INFO_THREE_COLORS
 	cost = 3
 
+/datum/loadout_item/suit/coat/urban
+	name = "Urban Coat"
+	path = /obj/item/clothing/suit/urban/polychromic
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
 //JACKETS
 /datum/loadout_item/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
@@ -184,6 +190,11 @@
 	name = "Flak Jacket"
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+
+/datum/loadout_item/suit/jacket/cardigan
+	name = "Cardigan"
+	path = /obj/item/clothing/suit/toggle/jacket/cardigan
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 //HOODIES
 /datum/loadout_item/suit/hoodie
@@ -363,6 +374,12 @@
 	path = /obj/item/clothing/suit/toggle/labcoat/highvis
 	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic") // why does the atmos get this? sec med is more of a first responder lmao
 	restricted_desc = "First Responders and Detective"
+
+/datum/loadout_item/suit/job/discojacket
+	name = "Disco Ass Blazer"
+	path = /obj/item/clothing/suit/discoblazer
+	restricted_roles = list("Detective")
+	restricted_desc = "Superstar Detectives"
 
 //Trekkie things.
 /datum/loadout_item/suit/job/trek/fedcoat

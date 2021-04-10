@@ -40,6 +40,13 @@
 	desc = "A fancy pair of high heels. Won't compensate for your below average height that much."
 	icon_state = "heels"
 
+/obj/item/clothing/shoes/discoshoes
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	name = "Green Snakeskin Shoes"
+	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
+	icon_state = "lizardskin_shoes"
+
 
 /obj/item/clothing/shoes/jungleboots
 	name = "jungle boots"
