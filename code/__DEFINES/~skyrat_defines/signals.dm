@@ -17,6 +17,9 @@
 #define COMSIG_GUN_AUTOFIRE_DESELECTED "gun_autofire_deselected"
 ///The gun needs to update the gun hud!
 #define COMSIG_UPDATE_AMMO_HUD "update_ammo_hud"
+
+/// Used by /obj/item/melee/hammer
+#define COMSIG_BREACHING "breaching_signal_woop_woop"
 ///The gun has jammed.
 #define COMSIG_GUN_JAMMED "gun_jammed"
 
