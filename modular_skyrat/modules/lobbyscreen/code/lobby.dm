@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					position: absolute;
 					width: auto;
 					box-sizing: border-box;
-					padding-top: 3vmin;
+					padding-top: 1vmin;
 					top: 0%;
 					left:0%;
 					z-index: 1;
@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					margin-right: 0%;
 					margin-top: 0px;
 					font-size: 3vmin;
-					line-height: 3vmin;
+					line-height: 2vmin;
 					letter-spacing: 1px;
 				}
 
@@ -163,7 +163,6 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			dat += {"
 			<div class="container_polls">
 		"}
-			dat += {"<a class="menu_a" href='?src=\ref[src];showpoll=1'>POLLS (NEW)</a>"}
 			dat += playerpolls()
 			dat += "</div>"
 
