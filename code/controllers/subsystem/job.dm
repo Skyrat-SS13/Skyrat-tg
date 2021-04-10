@@ -127,6 +127,8 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(job.has_banned_species(player.client.prefs))
 			return FALSE
+		if(!job.has_required_languages(player.client.prefs))
+			return FALSE
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			return FALSE
@@ -158,6 +160,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.has_banned_species(player.client.prefs))
 			JobDebug("FOC job not compatible with species, Player: [player]")
+			continue
+		if(!job.has_required_languages(player.client.prefs))
+			JobDebug("FOC job not compatible with languages, Player: [player]")
 			continue
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
@@ -204,6 +209,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.has_banned_species(player.client.prefs))
 			JobDebug("GRJ player has incompatible species, Player: [player]")
+			continue
+		if(!job.has_required_languages(player.client.prefs))
+			JobDebug("GRJ player has incompatible languages, Player: [player]")
 			continue
 		//SKYRAT EDIT END
 
@@ -392,6 +400,9 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
 					continue
 				if(job.has_banned_species(player.client.prefs))
+					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					continue
+				if(!job.has_required_languages(player.client.prefs))
 					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
 					continue
 				//SKYRAT EDIT END
