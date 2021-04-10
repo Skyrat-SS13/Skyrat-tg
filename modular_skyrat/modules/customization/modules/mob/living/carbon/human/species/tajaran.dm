@@ -2,6 +2,8 @@
 	name = "Tajaran"
 	id = "tajaran"
 	default_color = "4B4B4B"
+	cultures = list(CULTURES_EXOTIC,CULTURES_HUMAN,CULTURE_TAJARAN)
+	learnable_languages = list(/datum/language/common,/datum/language/tajaran,/datum/language/tajaran/uncommon)
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID

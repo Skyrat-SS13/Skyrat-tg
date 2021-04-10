@@ -37,7 +37,9 @@
 		/datum/language/russian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/gutter  //SKYRAT EDIT - customization - extra languages
+		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/tajaran/uncommon, //SKYRAT EDIT - customization - extra languages
+		/datum/language/tajaran, //SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
