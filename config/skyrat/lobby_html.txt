@@ -91,7 +91,14 @@
 					opacity: 0.5;
 				}
 
-				@keyframes mymove {
+				.menu_a:hover {
+					border-left: 3px solid red;
+					border-right: 3px solid red;
+					font-weight: bolder;
+					padding-left: 3px;
+				}
+
+				@keyframes pollsmove {
 				50% {opacity: 0;}
 				}
 
@@ -113,16 +120,7 @@
 					border: 2px solid white;
 					background-color: #0080ff;
 					opacity: 0.5;
-					animation: mymove 5s infinite;
-				}
-
-
-
-				.menu_a:hover {
-					border-left: 3px solid red;
-					border-right: 3px solid red;
-					font-weight: bolder;
-					padding-left: 3px;
+					animation: pollsmove 5s infinite;
 				}
 
 				.menu_b {
