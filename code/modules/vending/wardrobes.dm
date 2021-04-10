@@ -105,8 +105,8 @@
 					/obj/item/clothing/head/hardhat = 3,
 					/obj/item/clothing/head/hardhat/weldhat = 3,
 					/obj/item/clothing/head/hardhat/orange = 3,	//SKYRAT EDIT ADDITION START
-					/obj/item/clothing/head/hardhat/dblue = 3,
 					/obj/item/clothing/head/hardhat/weldhat/orange = 3,
+					/obj/item/clothing/head/hardhat/dblue = 3,
 					/obj/item/clothing/head/hardhat/weldhat/dblue = 3	//SKYRAT EDIT ADDITION END
 					)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
