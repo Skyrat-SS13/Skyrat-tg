@@ -65,16 +65,6 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					z-index: 1;
 				}
 
-				.container_polls {
-					position: absolute;
-					width: auto;
-					box-sizing: border-box;
-					padding-top: 3vmin;
-					top: 0%;
-					left:0%;
-					z-index: 1;
-				}
-
 				.container_notice {
 					position: absolute;
 					width: auto;
@@ -159,13 +149,6 @@ GLOBAL_LIST_EMPTY(startup_messages)
 	else
 		dat += {"<img src="titlescreen.gif" class="fone" alt="">"}
 
-		if(!IsGuestKey(src.key))
-			dat += {"
-			<div class="container_polls">
-		"}
-			dat += playerpolls()
-			dat += "</div>"
-
 		if(GLOB.current_lobbyscreen_notice)
 			dat += {"
 			<div class="container_notice">
@@ -198,6 +181,9 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			dat += {"
 			<a class="menu_a" href='?src=\ref[src];lobby_swap=1'>SWAP SERVERS</a>
 		"}
+
+		if(!IsGuestKey(src.key))
+			dat += playerpolls()
 
 		dat += "</div>"
 		dat += {"
