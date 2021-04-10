@@ -164,7 +164,6 @@
 		if(confirm == "Connect me!")
 			to_chat_immediate(src, "So long, spaceman.")
 			client << link(server_ip)
-		qdel(src)
 		return
 
 	if(href_list["lobby_join"])
