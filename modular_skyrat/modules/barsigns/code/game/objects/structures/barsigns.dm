@@ -10,9 +10,9 @@
 	name = "Club Bee"
 	icon = "clubee"
 
-datum/barsign/cybersylph
-	name = "Cyber Sylph's"
-	icon = "cybersylph"
+// datum/barsign/cybersylph
+//	name = "Cyber Sylph's"
+//	icon = "cybersylph"
 
 /datum/barsign/thesun
 	name = "The Sun"
@@ -228,3 +228,4 @@ datum/barsign/cybersylph
 	name = "The Hungry Bug"
 	icon = "hungrybug"
 	desc = "Stop by and enjoy some of the Hole's famous gyoza!"
+
