@@ -34,4 +34,7 @@
 		set_titlescreen_notice()
 		return
 	set_titlescreen_notice(new_notice)
+	for(var/mob/dead/new_player/N in GLOB.new_player_list)
+		to_chat(N, "<span class='boldannounce'>TITLE NOTICE UPDATED: [new_notice]</span>")
+		SEND_SOUND(N,  sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
 
