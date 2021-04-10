@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					font-weight: lighter;
 					text-decoration: none;
 					width: 100%;
-					text-align: right;
+					text-align: left;
 					color: red;
 					margin-right: 0%;
 					margin-top: 0px;
