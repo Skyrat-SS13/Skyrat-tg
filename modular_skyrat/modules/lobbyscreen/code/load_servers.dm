@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(serverswap)
 	var/file_path
 	var/icon/startup_splash
 
-/datum/controller/subsystem/title/Initialize()
+/datum/controller/subsystem/serverswap/Initialize()
 	if(!CONFIG_GET(flag/server_swap_enabled))
 		return ..()
 
