@@ -56,11 +56,23 @@
 
 	update_titlescreen()
 
+	add_verb(client, /mob/dead/new_player/proc/fix_titlescreen)
+
 /mob/dead/new_player/proc/update_titlescreen()
 	var/dat = get_lobby_html()
 
 	src << browse(GLOB.current_lobby_screen, "file=titlescreen.gif;display=0")
 	src << browse(dat, "window=lobbybrowser")
+
+/mob/dead/new_player/proc/fix_titlescreen()
+	set name = "Fix Lobbyscreen"
+	set category = "OOC"
+	set desc = "Fix your lobbyscreen if it's timed out."
+
+	if(!istype(src, /mob/dead/new_player))
+		return
+
+	show_titlescreen()
 
 /datum/asset/simple/lobby
 	assets = list(
@@ -538,6 +550,7 @@
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
 	src << browse(null, "window=latechoices") //closes late job selection
+	remove_verb(client, /mob/dead/new_player/proc/fix_titlescreen)
 
 // Used to make sure that a player has a valid job preference setup, used to knock players out of eligibility for anything if their prefs don't make sense.
 // A "valid job preference setup" in this situation means at least having one job set to low, or not having "return to lobby" enabled

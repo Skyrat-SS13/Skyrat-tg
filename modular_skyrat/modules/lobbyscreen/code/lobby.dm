@@ -135,7 +135,6 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					margin-top: 0px;
 					font-size: 3vmin;
 					line-height: 3vmin;
-					height: 3vmin;
 					letter-spacing: 1px;
 				}
 
