@@ -335,6 +335,9 @@
 		else
 			. += {"It's [ !terminal ? "not" : "" ] wired up.\n
 			The electronics are[!has_electronics?"n't":""] installed."}
+		if(integration_cog || (user.hallucinating() && prob(20))) //SKYRAT EDIT, CLOCKS
+			. += "A small cogwheel is inside of it."
+
 	else
 		if (machine_stat & MAINT)
 			. += "The cover is closed. Something is wrong with it. It doesn't work."
@@ -477,6 +480,12 @@
 			if (terminal)
 				to_chat(user, "<span class='warning'>Disconnect the wires first!</span>")
 				return
+		if(integration_cog)//SKYRAT EDIT
+			to_chat(user, "<span class='notice'>You begin prying something out of the APC.</span>")
+			W.play_tool_sound(src)
+			if(W.use_tool(src, user, 50))
+				to_chat(user, "<span class='warning'>You screw up breaking whatever was inside!</span>")
+				QDEL_NULL(integration_cog)
 			W.play_tool_sound(src)
 			to_chat(user, "<span class='notice'>You attempt to remove the power control board...</span>" )
 			if(W.use_tool(src, user, 50))
@@ -1367,6 +1376,12 @@
 		else // chargemode off
 			charging = APC_NOT_CHARGING
 			chargecount = 0
+
+		//SKYRAT EDIT =====Clock Cult=====
+		if(integration_cog && cell.charge >= cell.maxcharge/2)
+			var/power_delta = clamp(cell.charge - 20, 0, 20)
+			GLOB.clockcult_power += power_delta
+			cell.charge -= power_delta
 
 	else // no cell, switch everything off
 
