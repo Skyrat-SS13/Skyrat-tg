@@ -16,8 +16,8 @@ SUBSYSTEM_DEF(title)
 
 /datum/controller/subsystem/title/Initialize()
 	var/dat
-	if(!fexists("config/skyrat/lobby_html.txt"))
-		to_chat_immediate(world, "<span class='boldwarning'>CRITICAL ERROR: Unable to read lobby_html.txt, reverting to backup lobby html, please check your server config and ensure this file exists.")
+	if(!fexists("[global.config.directory]/skyrat/lobby_html.txt"))
+		to_chat(world, "<span class='boldwarning'>CRITICAL ERROR: Unable to read lobby_html.txt, reverting to backup lobby html, please check your server config and ensure this file exists.")
 		dat = {"
 			<html>
 				<head>
@@ -172,8 +172,9 @@ SUBSYSTEM_DEF(title)
 				</head>
 				<body>
 			"}
+
 	else
-		dat = file2text('config/skyrat/lobby_html.txt')
+		dat = file2text("[global.config.directory]/skyrat/lobby_html.txt")
 
 	GLOB.lobby_html = dat
 
