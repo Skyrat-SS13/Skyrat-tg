@@ -74,6 +74,9 @@
 	name = "Green Hawaiian Shirt"
 	path = /obj/item/clothing/suit/hawaiian_green
 
+/datum/loadout_item/suit/frenchtrench
+	name = "Blue Trenchcoat"
+	path = /obj/item/clothing/suit/frenchtrench
 
 //COATS
 /datum/loadout_item/suit/coat
@@ -95,9 +98,23 @@
 	name = "Brass winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
 
+/datum/loadout_item/suit/coat/korea
+	name = "Eastern winter coat"
+	path = /obj/item/clothing/suit/koreacoat
+
+/datum/loadout_item/suit/coat/czech
+	name = "Modern winter coat"
+	path = /obj/item/clothing/suit/modernwintercoatthing
+
 /datum/loadout_item/suit/coat/poly
 	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
+/datum/loadout_item/suit/coat/urban
+	name = "Urban Coat"
+	path = /obj/item/clothing/suit/urban/polychromic
 	extra_info = LOADOUT_INFO_THREE_COLORS
 	cost = 3
 
@@ -108,6 +125,10 @@
 /datum/loadout_item/suit/jacket/dutchjacket
 	name = "Dutch Jacket"
 	path = /obj/item/clothing/suit/dutchjacketsr
+
+/datum/loadout_item/suit/jacket/caretaker
+	name = "Caretaker Jacket"
+	path = /obj/item/clothing/suit/victoriantailcoatbutler
 
 /datum/loadout_item/suit/jacket/yakuzajacket
 	name = "Asian Jacket"
@@ -169,6 +190,11 @@
 	name = "Flak Jacket"
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+
+/datum/loadout_item/suit/jacket/cardigan
+	name = "Cardigan"
+	path = /obj/item/clothing/suit/toggle/jacket/cardigan
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 //HOODIES
 /datum/loadout_item/suit/hoodie
@@ -325,6 +351,12 @@
 	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
 	restricted_desc = "All Cargo Personnel"
 
+/datum/loadout_item/suit/job/supply_gorka_jacket
+	name = "Supply Gorka Jacket"
+	path = /obj/item/clothing/suit/gorka/supply
+	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
+	restricted_desc = "All Cargo Personnel"
+
 /datum/loadout_item/suit/job/supply_head_jacket
 	name = "Quartermaster's Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/supply/head
@@ -342,6 +374,12 @@
 	path = /obj/item/clothing/suit/toggle/labcoat/highvis
 	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic") // why does the atmos get this? sec med is more of a first responder lmao
 	restricted_desc = "First Responders and Detective"
+
+/datum/loadout_item/suit/job/discojacket
+	name = "Disco Ass Blazer"
+	path = /obj/item/clothing/suit/discoblazer
+	restricted_roles = list("Detective")
+	restricted_desc = "Superstar Detectives"
 
 //Trekkie things.
 /datum/loadout_item/suit/job/trek/fedcoat
