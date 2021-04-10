@@ -7,7 +7,6 @@ SUBSYSTEM_DEF(serverswap)
 	flags = SS_NO_FIRE
 	init_order = INIT_ORDER_DEFAULT
 
-	var/file_path
 	var/icon/startup_splash
 
 /datum/controller/subsystem/serverswap/Initialize()
