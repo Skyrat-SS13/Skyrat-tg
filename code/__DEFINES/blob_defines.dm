@@ -107,4 +107,3 @@
 #define BLOBMOB_BLOBBERNAUT_HEALING_CORE            0.05        // Percentage multiplier HP restored on Life() when within 2 tiles of the blob core
 #define BLOBMOB_BLOBBERNAUT_HEALING_NODE            0.025       // Same, but for a nearby node
 #define BLOBMOB_BLOBBERNAUT_HEALTH_DECAY            0.0125      // Percentage multiplier HP lost when not near blob tiles or without factory
-
