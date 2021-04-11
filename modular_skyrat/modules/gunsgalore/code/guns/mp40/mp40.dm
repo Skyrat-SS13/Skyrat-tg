@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/submachine_gun/mp40
 	name = "\improper Maschinenpistole 40"
-	desc = "The MP 40 (Maschinenpistole 40) is a submachine gun chambered for the 9×19mm Parabellum cartridge. It was developed in Nazi Germany and used extensively by the Axis powers during World War II."
+	desc = "The instantly recognizable 'nazi gun'. Extremely outdated SMG that has only seen service during Sol-3's second World War. This one's a poor, unlicensed reproduction."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mp40/mp40.dmi'
 	icon_state = "mp40"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/mp40/mp40_lefthand.dmi'
@@ -29,7 +29,7 @@
 
 /obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern
 	name = "\improper Mil Spec Maschinenpistole 40"
-	desc = "The MP 40 (Maschinenpistole 40) is a submachine gun chambered for the 9×19mm Parabellum cartridge. It was developed in Nazi Germany and used extensively by the Axis powers during World War II. This is the 25th century version."
+	desc = "An extremely outdated German SMG that has been modified extensively with aftermarket parts. It looks like it came straight out of the videogame Return to Fortress Dogenstein."
 	icon_state = "mp40_modern"
 	inhand_icon_state = "mp40"
 	worn_icon_state = "mp40"
