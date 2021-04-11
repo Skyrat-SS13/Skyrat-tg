@@ -56,6 +56,7 @@
 
 	update_titlescreen()
 
+
 /mob/dead/new_player/proc/update_titlescreen()
 	var/dat = get_lobby_html()
 
@@ -97,9 +98,9 @@
 			qdel(query_get_new_polls)
 			return
 		if(query_get_new_polls.NextRow())
-			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS!</a>"}
+			output +={"<a class="menu_ab" href='?src=\ref[src];showpoll=1'>POLLS (NEW)</a>"}
 		else
-			output +={"<a class="menu_c" href='?src=\ref[src];showpoll=1'>POLLS</a>"}
+			output +={"<a class="menu_a" href='?src=\ref[src];showpoll=1'>POLLS</a>"}
 		qdel(query_get_new_polls)
 		if(QDELETED(src))
 			return
@@ -142,6 +143,27 @@
 		client.prefs.be_antag = !client.prefs.be_antag
 		update_titlescreen()
 		to_chat(usr, "<span class='notice'>You will now [client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
+		return
+
+	if(href_list["lobby_swap"])
+		if(!CONFIG_GET(flag/server_swap_enabled))
+			return
+		if(GLOB.swappable_ips.len == 1)
+			var/server_name = GLOB.swappable_ips[1]
+			var/server_ip = GLOB.swappable_ips[server_name]
+			var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+			if(confirm == "Connect me!")
+				to_chat_immediate(src, "So long, spaceman.")
+				client << link(server_ip)
+			return
+		var/server_name = input(usr, "Please select the server you wish to swap to:", "Swap servers!") as null|anything in GLOB.swappable_ips
+		if(!server_name)
+			return
+		var/server_ip = GLOB.swappable_ips[server_name]
+		var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+		if(confirm == "Connect me!")
+			to_chat_immediate(src, "So long, spaceman.")
+			client << link(server_ip)
 		return
 
 	if(href_list["lobby_join"])
@@ -196,13 +218,12 @@
 	if(href_list["viewpoll"])
 		var/datum/poll_question/poll = locate(href_list["viewpoll"]) in GLOB.polls
 		poll_player(poll)
+		return
 
 	if(href_list["votepollref"])
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
-
-	if(href_list["lobby_changelog"])
-		client.changelog()
+		return
 
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
@@ -261,6 +282,12 @@
 			return "[jobtitle] is restricted from your quirks."
 		if(JOB_UNAVAILABLE_SPECIES)
 			return "[jobtitle] is restricted from your species."
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "[jobtitle] is restricted from your species."
+		if(JOB_UNAVAILABLE_LANGUAGE)
+			return "You don't have the required languages for [jobtitle]."
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -290,6 +317,12 @@
 		return JOB_UNAVAILABLE_SPECIES
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
+	if(!job.has_required_languages(client.prefs))
+		return JOB_UNAVAILABLE_LANGUAGE
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
@@ -399,7 +432,7 @@
 
 /mob/dead/new_player/proc/LateChoices()
 	var/list/dat = list("<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
-	dat += "<div class='notice'>Alert Level: [capitalize(num2seclevel(GLOB.security_level))]</div>"
+	dat += "<div class='notice'>Alert Level: [capitalize(num2seclevel(SSsecurity_level.current_level))]</div>"
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)

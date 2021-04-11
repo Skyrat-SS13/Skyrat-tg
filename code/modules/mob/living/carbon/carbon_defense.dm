@@ -355,10 +355,9 @@
 			target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 			log_combat(src, target, "shoved", "onto [target_table] (table)")
 		else if(target_collateral_carbon)
-			//target.Knockdown(SHOVE_KNOCKDOWN_HUMAN) - SKYRAT EDIT REMOVAL
-			target.StaminaKnockdown(10)
-			//target_collateral_carbon.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)- SKYRAT EDIT REMOVAL
-			target_collateral_carbon.StaminaKnockdown(1)
+			target.StaminaKnockdown(10) //SKYRAT EDIT
+			if(!target_collateral_carbon.is_shove_knockdown_blocked())
+				target_collateral_carbon.StaminaKnockdown(1) //SKYRAT EDIT
 			target.visible_message("<span class='danger'>[name] shoves [target.name] into [target_collateral_carbon.name]!</span>",
 				"<span class='userdanger'>You're shoved into [target_collateral_carbon.name] by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, "<span class='danger'>You shove [target.name] into [target_collateral_carbon.name]!</span>")
