@@ -111,3 +111,17 @@
 /obj/item/clothing/suit/toggle/jacket/cardigan/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/polychromic, list("FFF"))
+
+/obj/item/clothing/suit/discoblazer
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "Disco Ass Blazer"
+	desc = "Looks like someone skinned this blazer off some long extinct disco-animal. It has an enigmatic white rectangle on the back and the right sleeve."
+	icon_state = "jamrock_blazer"
+
+/obj/item/clothing/suit/kimjacket
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "Aerostatic Bomber Jacket"
+	desc = "A jacket once worn by the Air Force during the Antecentennial Revolution, there are quite a few pockets on the inside, mostly for storing notebooks and compasses."
+	icon_state = "aerostatic_bomber_jacket"

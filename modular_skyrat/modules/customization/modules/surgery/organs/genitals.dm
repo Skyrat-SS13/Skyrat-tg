@@ -303,7 +303,7 @@
 			return text2num(key)
 	return 0
 
-/*  Rogue Station Removal
+/*  Tannhauser-Gate Removal
 /mob/living/carbon/human/verb/toggle_genitals()
 	set category = "IC"
 	set name = "Expose/Hide genitals"
@@ -362,4 +362,4 @@
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
- */ //Rogue Station Removal End
+ */ //Tannhauser-Gate Removal End

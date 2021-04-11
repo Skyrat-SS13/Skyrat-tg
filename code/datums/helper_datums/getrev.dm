@@ -23,7 +23,7 @@
 
 /datum/getrev/proc/get_log_message()
 	var/list/msg = list()
-	msg += "Running Rogue Life revision: [date]"
+	msg += "Running Tannhauser Gate revision: [date]"
 	if(originmastercommit)
 		msg += "origin/master: [originmastercommit]"
 

@@ -1,7 +1,10 @@
 /obj/structure/sign/barsign // All Signs are 64 by 64 pixels, they take two tiles
 	name = "bar sign"
 	desc = "A bar sign which has not been initialized, somehow. Complain at a coder!"
-	icon = 'icons/obj/barsigns.dmi'
+	//SKYRAT EDIT CHANGE BEGIN - BARSIGNS
+	//icon = 'icons/obj/barsigns.dmi'
+	icon = 'modular_skyrat/modules/barsigns/icons/obj/barsigns.dmi'
+	//SKYRAT EDIT CHANGE END
 	icon_state = "empty"
 	req_access = list(ACCESS_BAR)
 	max_integrity = 500
@@ -314,7 +317,7 @@
 	desc = "This sign doesn't seem to be on."
 	rename_area = FALSE
 
-// Rogue Station Bar Signs
+// Tannhauser Gate Station Bar Signs
 
 /datum/barsign/orcacomand
 	name = "Orca Dive Bar"
