@@ -33,11 +33,8 @@ SUBSYSTEM_DEF(persistence)
 		LoadAntagReputation()
 	LoadRandomizedRecipes()
 	LoadPaintings()
-<<<<<<< HEAD
 	LoadPanicBunker() //SKYRAT EDIT ADDITION - PANICBUNKER
-=======
 	load_custom_outfits()
->>>>>>> 1542aa66bc5 (TGUI Outfit Manager and Editor (#58125))
 
 	GLOB.explorer_drone_adventures = load_adventures()
 	return ..()
@@ -188,11 +185,8 @@ SUBSYSTEM_DEF(persistence)
 	SaveRandomizedRecipes()
 	SavePaintings()
 	SaveScars()
-<<<<<<< HEAD
 	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
-=======
 	save_custom_outfits()
->>>>>>> 1542aa66bc5 (TGUI Outfit Manager and Editor (#58125))
 
 /datum/controller/subsystem/persistence/proc/GetPhotoAlbums()
 	var/album_path = file("data/photo_albums.json")
