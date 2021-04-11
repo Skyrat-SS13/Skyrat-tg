@@ -36,7 +36,7 @@ the equipment and controls the behaviour of said equipment.
 		ComponentSetupFlashlight()
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
-	RegisterSignal(parent, COMSIG_CLICK_CTRL, .proc/remove_cell)
+	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
 
 /datum/component/cell/proc/ComponentSetupFlashlight()
@@ -68,6 +68,7 @@ the equipment and controls the behaviour of said equipment.
 	START_PROCESSING(SSobj, src)
 
 /datum/component/cell/proc/stop_processing_cell()
+	SIGNAL_HANDLER
 	STOP_PROCESSING(SSobj, src)
 
 /datum/component/cell/process(delta_time)
@@ -89,11 +90,14 @@ the equipment and controls the behaviour of said equipment.
 	if(!inserted_cell)
 		examine_list += "<span class='danger'>It does not have a cell inserted!</span>"
 	else
-		examine_list += "<span class='notice'>It has [inserted_cell] inserted, reading [inserted_cell.charge]."
+		examine_list += "<span class='notice'>It has [inserted_cell] inserted, charge indicator reading [inserted_cell.charge]."
 
 
 /datum/component/cell/proc/remove_cell(datum/source, mob/user)
 	SIGNAL_HANDLER
+
+	if(!equipment.can_interact(user))
+		return
 
 	if(inserted_cell)
 		to_chat(user, "<span class='notice'>You remove [inserted_cell] from [equipment]!</span>")
@@ -105,12 +109,20 @@ the equipment and controls the behaviour of said equipment.
 		to_chat(user, "<span class='danger'>There is no cell inserted in [equipment]!</span>")
 
 /datum/component/cell/proc/insert_cell(datum/source, obj/item/inserting_item, mob/living/user, params)
+	SIGNAL_HANDLER
+
+	if(!equipment.can_interact(user))
+		return
+
 	if(!istype(inserting_item, /obj/item/stock_parts/cell))
 		return
+
 	var/obj/item/stock_parts/cell/doubleabattery = inserting_item
+
 	if(inserted_cell)
 		to_chat(user, "<span class='danger'>There is alread a cell inserted in [equipment]!")
 		return
+
 	to_chat(user, "<span class='notice'>You insert [doubleabattery] into [equipment]!")
 	playsound(equipment, 'sound/weapons/magin.ogg', 40, TRUE)
 	inserted_cell = doubleabattery
