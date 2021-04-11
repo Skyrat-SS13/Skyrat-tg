@@ -19,7 +19,7 @@
 
 /obj/item/ammo_box/magazine/akm
 	name = "akm magazine (7.62×39mm)"
-	desc = "a banana-shaped double stack magazine able to hold 30 rounds of 7.62x39mm Soviet ammunition. It's said that in the early days of SolFed's spread, spanish colony rebels often referred to these as 'Goat Horns'."
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 7.62x39mm Soviet ammunition. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm.dmi'
 	icon_state = "7.62mm"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39
