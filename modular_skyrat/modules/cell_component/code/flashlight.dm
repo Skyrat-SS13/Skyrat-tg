@@ -65,7 +65,7 @@
 /obj/item/flashlight/ComponentInitialize()
 	. = ..()
 	if(uses_battery)
-		AddComponent(battery_compartment, cell_override, cell_power_use)
+		AddComponent(/datum/component/cell, cell_override, cell_power_use)
 		battery_compartment = GetComponent(/datum/component/cell)
 
 /obj/item/flashlight/Destroy()
@@ -73,6 +73,14 @@
 		qdel(battery_compartment)
 		battery_compartment = null
 	return ..()
+
+/obj/item/flashlight/flare/turn_on()
+	on = TRUE
+	update_brightness()
+
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
 
 /obj/item/flashlight/flare/turn_off()
 	on = FALSE

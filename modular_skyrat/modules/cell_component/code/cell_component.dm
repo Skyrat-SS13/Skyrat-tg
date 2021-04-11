@@ -21,9 +21,14 @@ the equipment and controls the behaviour of said equipment.
 	var/power_use_amount = 50
 	/// What signals have been registered to this component - Used for deletion cleanup
 	var/list/registered_signals = list()
+	/// What signals have been registered to the parent - Used for deletion cleanuo
+	var/list/parent_registered_signals = list()
 
-/datum/component/cell/Initialize(cell_override)
+/datum/component/cell/Initialize(cell_override, cell_power_use)
 	. = ..()
+
+	if(cell_power_use)
+		power_use_amount = cell_power_use
 
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -53,7 +58,9 @@ the equipment and controls the behaviour of said equipment.
 	RegisterSignal(parent, COMSIG_FLASHLIGHT_TOGGLED_OFF, .proc/stop_processing_cell)
 	registered_signals += COMSIG_FLASHLIGHT_TOGGLED_OFF
 	parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /obj/item/flashlight.proc/turn_off)
+	parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
 	parent.RegisterSignal(src, COMSIG_CELL_NO_CELL, /obj/item/flashlight.proc/turn_off)
+	parent_registered_signals += COMSIG_CELL_NO_CELL
 
 /datum/component/cell/Destroy(force, silent)
 	if(inserted_cell)
@@ -62,15 +69,19 @@ the equipment and controls the behaviour of said equipment.
 
 	UnregisterSignal(parent, registered_signals)
 
+	if(parent_registered_signals)
+		parent.UnregisterSignal(src, parent_registered_signals)
+
 	return ..()
 
-/datum/component/cell/proc/simple_power_use()
+/datum/component/cell/proc/simple_power_use(use_amount)
 	SIGNAL_HANDLER
 
 	if(!inserted_cell)
 		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
+		return FALSE
 
-	if(!inserted_cell.use(power_use_amount))
+	if(!inserted_cell.use(use_amount))
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
 		return FALSE
 
