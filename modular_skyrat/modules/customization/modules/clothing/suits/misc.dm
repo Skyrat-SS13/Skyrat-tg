@@ -125,3 +125,17 @@
 	name = "Aerostatic Bomber Jacket"
 	desc = "A jacket once worn by the Air Force during the Antecentennial Revolution, there are quite a few pockets on the inside, mostly for storing notebooks and compasses."
 	icon_state = "aerostatic_bomber_jacket"
+
+/obj/item/clothing/suit/blackfurrich
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "expensive black fur coat"
+	desc = "Ever thought to yourself 'I'm a rich bitch, but I haven't GOT the Mafia Princess look?' Well thanks to the tireless work of underpaid slave labour in Space China, your dreams of looking like a bitch have been fulfilled, like a Genie with a sweatshop."
+	icon_state = "expensivecoat"
+
+/obj/item/clothing/suit/brownbattlecoat
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "expensive brown fur coat"
+	desc = "There is nothing more valuable, nothing more sacred, look at the fur lining, it's beautiful, when you cruse through Necropolis in this thing, you're gonna be balls deep in Ash Walker snatch."
+	icon_state = "battlecoat"

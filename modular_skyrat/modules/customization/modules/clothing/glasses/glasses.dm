@@ -23,3 +23,29 @@
 	icon_state = "glasses_alt"
 	inhand_icon_state = "glasses_rimless"
 	vision_correction = TRUE
+
+/obj/item/clothing/glasses/kim
+	name = "binoclard lenses"
+	desc = "Stylish round lenses subtly shaded for your protection and criminal discomfort."
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	icon_state = "binoclard_lenses"
+	inhand_icon_state = "glasses_rimless"
+	vision_correction = TRUE
+
+/obj/item/clothing/glasses/eyepatch/right //if someone has more brain that I do, make these a...on click flip thing, please i dunno what i'm doing
+	name = "right sided eyepatch"
+	desc = ".rraY"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon_state = "eyepatch_1"
+	inhand_icon_state = "eyepatch"
+
+/obj/item/clothing/glasses/eyepatch/whiteright
+	name = "right white eyepatch"
+	desc = ".DhP a steg etarip a nehw sneppah tahw si sihT"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon_state = "eyepatch_white_1"
+	inhand_icon_state = "eyepatch"
+
