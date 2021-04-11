@@ -23,27 +23,58 @@
 /obj/item/flashlight/Initialize()
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
-		on = TRUE
+		turn_on()
+
+/obj/item/flashlight/proc/update_brightness()
+	set_light_on(on)
+	if(light_system == STATIC_LIGHT)
+		update_light()
+	update_appearance()
+
+
+/obj/item/flashlight/attack_self(mob/user)
+	. = ..()
+	if(on)
+		turn_off()
+	else
+		turn_on()
+
+/obj/item/flashlight/proc/turn_off()
+	SIGNAL_HANDLER
+
+	on = FALSE
+
+	SEND_SIGNAL(src, COMSIG_FLASHLIGHT_TOGGLED_OFF)
+
+	playsound(src, 'sound/weapons/magout.ogg', 40, TRUE)
+
 	update_brightness()
 
-/obj/item/flashlight/proc/update_brightness(mob/user)
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
+
+/obj/item/flashlight/proc/turn_on()
+	SIGNAL_HANDLER
+
+	on = TRUE
+
+	SEND_SIGNAL(src, COMSIG_FLASHLIGHT_TOGGLED_ON)
+
+	playsound(src, 'sound/weapons/magin.ogg', 40, TRUE)
+
+	update_brightness()
+
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
+
+/obj/item/flashlight/update_icon_state()
+	. = ..()
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
 	else
 		icon_state = initial(icon_state)
-	set_light_on(on)
-	if(light_system == STATIC_LIGHT)
-		update_light()
-
-
-/obj/item/flashlight/attack_self(mob/user)
-	on = !on
-	playsound(user, on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
-	update_brightness(user)
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
-	return 1
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
 	if (user.is_blind())
@@ -299,8 +330,8 @@
 /obj/item/flashlight/flare/ignition_effect(atom/A, mob/user)
 	. = fuel && on ? "<span class='notice'>[user] lights [A] with [src] like a real badass.</span>" : ""
 
-/obj/item/flashlight/flare/proc/turn_off()
-	on = FALSE
+/obj/item/flashlight/flare/turn_off()
+	. = ..()
 	force = initial(src.force)
 	damtype = initial(src.damtype)
 	if(ismob(loc))
@@ -484,9 +515,11 @@
 		STOP_PROCESSING(SSobj, src)
 		update_appearance()
 
+/* SKYRAT EDIT REMOVAL
 /obj/item/flashlight/glowstick/proc/turn_off()
 	on = FALSE
 	update_appearance()
+*/
 
 /obj/item/flashlight/glowstick/update_appearance(updates=ALL)
 	. = ..()

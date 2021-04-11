@@ -26,3 +26,13 @@
 //Mutant stuff
 ///When a mutant is cured of the virus
 #define COMSIG_MUTANT_CURED "mutant_cured"
+
+//Cell component stuff
+/// Sent when a cell runs out of charge.
+#define COMSIG_CELL_OUT_OF_CHARGE "cell_out_of_charge"
+/// Sent when there is no cell.
+#define COMSIG_CELL_NO_CELL "cell_no_cell"
+/// Sent when a flashlight is toggled on.
+#define COMSIG_FLASHLIGHT_TOGGLED_ON "flashlight_toggled_on"
+/// Sent when a flashlight is toggled off.
+#define COMSIG_FLASHLIGHT_TOGGLED_OFF "flashlight_toggled_off"
