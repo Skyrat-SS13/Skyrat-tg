@@ -78,8 +78,6 @@ using loc where necessary.
 		parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
 		parent_registered_signals += COMSIG_CELL_REMOVED
 
-	if(istype(parent, /obj/item/gps))
-		parent.RegisterSignal(src, COMSIG_)
 
 /datum/component/cell/UnregisterFromParent()
 	UnregisterSignal(parent, registered_signals)
