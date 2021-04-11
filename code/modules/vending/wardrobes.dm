@@ -103,7 +103,12 @@
 					/obj/item/clothing/shoes/workboots = 3,
 					/obj/item/clothing/head/beret/job/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/hardhat = 3,
-					/obj/item/clothing/head/hardhat/weldhat = 3)
+					/obj/item/clothing/head/hardhat/weldhat = 3,
+					/obj/item/clothing/head/hardhat/orange = 3,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/head/hardhat/weldhat/orange = 3,
+					/obj/item/clothing/head/hardhat/dblue = 3,
+					/obj/item/clothing/head/hardhat/weldhat/dblue = 3	//SKYRAT EDIT ADDITION END
+					)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
 	payment_department = ACCOUNT_ENG
 	light_color = COLOR_VIVID_YELLOW
@@ -118,6 +123,7 @@
 	product_ads = "Get your inflammable clothing right here!!!"
 	vend_reply = "Thank you for using the AtmosDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 2,
+					/obj/item/clothing/glasses/meson/engine = 2,	//SKYRAT EDIT ADDITION - why would they only get t-rays? they need radiation-sight more than pipes anyways
 					/obj/item/storage/backpack/duffelbag/engineering = 2,
 					/obj/item/storage/backpack/satchel/eng = 2,
 					/obj/item/storage/backpack/industrial = 2,
