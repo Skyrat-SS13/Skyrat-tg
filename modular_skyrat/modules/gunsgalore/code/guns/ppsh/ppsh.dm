@@ -30,7 +30,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern
-	name = "\improper Mil Spec PPSh-41"
+	name = "\improper PPsh-59"
 	desc = "A modernized reproduction of a simple Soviet SMG with aftermarket parts. Its heavy synthetic stock and composite breech buffer help absorb the bolt’s heavy recoil, a mix of two worlds that should not exist."
 	icon_state = "ppsh_modern"
 	worn_icon_state = "ppsh"
