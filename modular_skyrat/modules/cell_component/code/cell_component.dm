@@ -1,5 +1,5 @@
 /*
-Cell Component
+CELL COMPONENT
 
 What we aim to achieve with cell components is a universal framework for all items that would logically use batteries,
 Be it a flashlight, T-ray scanner or multitool. All of them would logically require batteries right? Well, welcome,
@@ -12,6 +12,11 @@ Component moves battery to equipment loc, keeps a record, and then communicates 
 the equipment and controls the behaviour of said equipment.
 
 If it's a robot, it uses the robot cell - Using certified shitcode.
+
+If you are adding this to an item that is active for a period of time, register signal to COMSIG_CELL_START_USE when it would start using the cell
+and COMSIG_CELL_STOP_USE when it should stop. To handle the turning off of said item once the cell is depleted, add your code into the component_cell_out_of_charge proc
+using loc where necessary.
+
 */
 
 /datum/component/cell
