@@ -6,7 +6,7 @@ MODULE ID: BESTIARY
 
 ### Description:
 
-The Rogue Life Managerie. Do not feed the animals.
+The Tannhauser Gate. Do not feed the animals.
 
 Contains the Following Critters:
 Opposum

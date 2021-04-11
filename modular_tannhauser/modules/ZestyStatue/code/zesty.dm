@@ -9,5 +9,5 @@
 /obj/structure/statue/bluespace_crystal/zesty
 	name = "Bluezest"
 	desc = "ALL HAIL THE BLUE ZEST!!"
-	icon = 'rogue_modules/modules/ZestyStatue/icon/zest.dmi'
+	icon = 'modular_tannhauser/modules/ZestyStatue/art/zest.dmi'
 	icon_state = "zesty"

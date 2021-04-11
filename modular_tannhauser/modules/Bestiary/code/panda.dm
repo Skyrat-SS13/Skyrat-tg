@@ -1,7 +1,7 @@
 /mob/living/simple_animal/pet/redpanda
 	name = "Red panda"
 	desc = "Wah't a dork."
-	icon = 'rogue_modules/modules/Bestiary/art/mob/red_panda.dmi'
+	icon = 'modular_tannhauser/modules/Bestiary/art/mob/red_panda.dmi'
 	icon_state = "red_panda"
 	icon_living = "red_panda"
 	icon_dead = "dead_panda"

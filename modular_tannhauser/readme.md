@@ -1,4 +1,4 @@
-Basically follow skyrat directions but Relabel toi Rogue Life instead
+Basically follow skyrat directions but Relabel to Tannhauser-Gate or Sea of Lost Souls as apropriate instead
 
 # The modularization handbook - Skyrat style, v0.1
 
