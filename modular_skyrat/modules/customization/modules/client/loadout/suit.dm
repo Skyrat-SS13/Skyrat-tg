@@ -375,6 +375,12 @@
 	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic") // why does the atmos get this? sec med is more of a first responder lmao
 	restricted_desc = "First Responders and Detective"
 
+/datum/loadout_item/suit/job/discojacket
+	name = "Disco Ass Blazer"
+	path = /obj/item/clothing/suit/discoblazer
+	restricted_roles = list("Detective")
+	restricted_desc = "Superstar Detectives"
+
 //Trekkie things.
 /datum/loadout_item/suit/job/trek/fedcoat
 	name = "Federation Jacket"

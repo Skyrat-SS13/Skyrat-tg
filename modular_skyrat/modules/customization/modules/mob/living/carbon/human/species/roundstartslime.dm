@@ -4,6 +4,7 @@
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
+	learnable_languages = list(/datum/language/common, /datum/language/slime)
 
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
@@ -159,7 +160,7 @@
 			if(!dna_alteration || dna_alteration == "Cancel")
 				return
 			switch(dna_alteration)
-			// Rogue Station Removal Begin
+			// Tannhauser-Gate Removal Begin
 /* 				if("Breasts Size")
 					var/new_size = input(H, "Choose your character's breasts size:", "DNA Alteration") as null|anything in GLOB.preference_breast_sizes
 					if(new_size)
@@ -211,7 +212,7 @@
 						var/obj/item/organ/genital/testicles/avocados = H.getorganslot(ORGAN_SLOT_TESTICLES)
 						if(avocados)
 							avocados.set_size(DNA.features["balls_size"])
-Rogue Station Removal End
+Tannhauser-Gate Removal End
  */
 				if("Body Size")
 					var/new_body_size = input(H, "Choose your desired sprite size:\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%), Warning: May make your character look distorted", "Character Preference", DNA.features["body_size"]*100) as num|null

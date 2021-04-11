@@ -487,6 +487,13 @@
 	path = /obj/item/clothing/under/rank/security/head_of_security/skirt
 	restricted_roles = list("Head of Security")
 
+/datum/loadout_item/uniform/job/disco
+	name = "Superstar Cop Suit"
+	path = /obj/item/clothing/under/misc/discounder
+	restricted_roles = list("Detective")
+	restricted_desc = "Superstar Detectives"
+
+
 /datum/loadout_item/uniform/job/seckilt
 	name = "Security Kilt"
 	path = /obj/item/clothing/under/rank/security/blackwatch
