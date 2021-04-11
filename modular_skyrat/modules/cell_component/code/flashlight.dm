@@ -36,8 +36,9 @@
 		A.UpdateButtonIcon()
 
 /obj/item/flashlight/proc/turn_on(mob/user)
-	if(uses_battery)
-		if(!SEND_SIGNAL(src, COMSIG_CELL_SIMPLE_POWER_USE, user, power_cell_use, TRUE))
+	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
+	if(battery_compartment)
+		if(!battery_compartment.simple_power_use(user))
 			return
 
 	on = TRUE

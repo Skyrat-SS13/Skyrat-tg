@@ -18,8 +18,10 @@
 	if(slot != ITEM_SLOT_EYES)
 		return
 	//SKYRAT EDIT ADDITION
-	if(!SEND_SIGNAL(src, COMSIG_CELL_SIMPLE_POWER_USE, user, power_cell_use))
-		return
+	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
+	if(battery_compartment)
+		if(!battery_compartment.simple_power_use(user))
+			return
 	//SKYRAT EDIT END
 	SEND_SIGNAL(src, COMSIG_CELL_START_USE) //SKYRAT EDIT ADDITION
 	if(hud_type)
