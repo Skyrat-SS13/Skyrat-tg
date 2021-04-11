@@ -18,7 +18,7 @@
 	light_power = 1
 	light_on = FALSE
 	var/on = FALSE
-
+	var/battery_compartment = /datum/component/cell //SKYRAT EDIT ADDITION - The cell component link
 
 /obj/item/flashlight/Initialize()
 	. = ..()

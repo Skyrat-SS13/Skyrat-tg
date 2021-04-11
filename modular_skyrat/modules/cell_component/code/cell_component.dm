@@ -39,8 +39,8 @@ the equipment and controls the behaviour of said equipment.
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
 	registered_signals += COMSIG_PARENT_ATTACKBY
-	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
-	registered_signals += COMSIG_CLICK_CTRL_SHIFT
+	RegisterSignal(parent, COMSIG_CLICK_CTRL, .proc/remove_cell)
+	registered_signals += COMSIG_CLICK_CTRL
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
 	registered_signals += COMSIG_PARENT_EXAMINE
 
@@ -57,7 +57,7 @@ the equipment and controls the behaviour of said equipment.
 		qdel(inserted_cell)
 		inserted_cell = null
 
-	UnregisterSignal(parent, registered_sginals)
+	UnregisterSignal(parent, registered_signals)
 
 	return ..()
 
@@ -142,5 +142,6 @@ the equipment and controls the behaviour of said equipment.
 
 /obj/item/flashlight/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell)
+	if(battery_compartment)
+		AddComponent(battery_compartment)
 
