@@ -317,9 +317,17 @@
 			I = L.is_holding_tool_quality(TOOL_MULTITOOL)
 			if(I || isAdminGhostAI(usr))
 				if(I && holder)
-					I.play_tool_sound(holder, 20)
-				pulse_color(target_wire, L)
-				. = TRUE
+				//SKYRAT EDIT CHANGE BEGIN
+					if(istype(I, /obj/item/multitool))
+						var/obj/item/multitool/the_tool = I
+						if(the_tool.battery_compartment.simple_power_use(L, the_tool.power_cell_use))
+							I.play_tool_sound(holder, 20)
+							pulse_color(target_wire, L)
+							. = TRUE
+				else
+					pulse_color(target_wire, L)
+					. = TRUE
+				//SKYRAT EDIT END
 			else
 				to_chat(L, "<span class='warning'>You need a multitool!</span>")
 		if("attach")
