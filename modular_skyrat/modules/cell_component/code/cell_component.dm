@@ -19,6 +19,8 @@ the equipment and controls the behaviour of said equipment.
 	var/obj/item/equipment
 	/// How much power do we use each process?
 	var/power_use_amount = 50
+	/// What signals have been registered to this component - Used for deletion cleanup
+	var/list/registered_signals = list()
 
 /datum/component/cell/Initialize(...)
 	. = ..()
@@ -36,12 +38,17 @@ the equipment and controls the behaviour of said equipment.
 		ComponentSetupFlashlight()
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
+	registered_signals += COMSIG_PARENT_ATTACKBY
 	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
+	registered_signals += COMSIG_CLICK_CTRL_SHIFT
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
+	registered_signals += COMSIG_PARENT_EXAMINE
 
 /datum/component/cell/proc/ComponentSetupFlashlight()
 	RegisterSignal(parent, COMSIG_FLASHLIGHT_TOGGLED_ON, .proc/start_processing_cell)
+	registered_signals += COMSIG_FLASHLIGHT_TOGGLED_ON
 	RegisterSignal(parent, COMSIG_FLASHLIGHT_TOGGLED_OFF, .proc/stop_processing_cell)
+	registered_signals += COMSIG_FLASHLIGHT_TOGGLED_OFF
 	parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /obj/item/flashlight.proc/turn_off)
 	parent.RegisterSignal(src, COMSIG_CELL_NO_CELL, /obj/item/flashlight.proc/turn_off)
 
@@ -50,7 +57,7 @@ the equipment and controls the behaviour of said equipment.
 		qdel(inserted_cell)
 		inserted_cell = null
 
-	UnregisterSignal(parent, list(COMSIG_PARENT_ATTACKBY, COMSIG_CLICK_CTRL))
+	UnregisterSignal(parent, registered_sginals)
 
 	return ..()
 
@@ -72,7 +79,11 @@ the equipment and controls the behaviour of said equipment.
 	STOP_PROCESSING(SSobj, src)
 
 /datum/component/cell/process(delta_time)
-	if(!inserted_cell.use(power_use_amount))
+	if(!inserted_cell)
+		stop_processing_cell()
+		return
+
+	if(!inserted_cell.use(power_use_amount/delta_time))
 		cell_out_of_charge()
 
 /datum/component/cell/proc/cell_out_of_charge()
@@ -92,7 +103,6 @@ the equipment and controls the behaviour of said equipment.
 	else
 		examine_list += "<span class='notice'>It has [inserted_cell] inserted, charge indicator reading [inserted_cell.charge]."
 
-
 /datum/component/cell/proc/remove_cell(datum/source, mob/user)
 	SIGNAL_HANDLER
 
@@ -105,6 +115,8 @@ the equipment and controls the behaviour of said equipment.
 		inserted_cell.forceMove(equipment.loc)
 		INVOKE_ASYNC(user, /mob/living.proc/put_in_hands, inserted_cell)
 		inserted_cell = null
+		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
+		stop_processing_cell()
 	else
 		to_chat(user, "<span class='danger'>There is no cell inserted in [equipment]!</span>")
 
