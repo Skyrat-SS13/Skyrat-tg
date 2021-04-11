@@ -16,7 +16,7 @@
 // Generic blob defines
 
 #define BLOB_BASE_POINT_RATE                        2           // Base amount of points per process()
-#define BLOB_EXPAND_COST                            4           // Price to expand onto a new tile
+#define BLOB_EXPAND_COST                            3           // Price to expand onto a new tile
 #define BLOB_ATTACK_REFUND                          2           // Points 'refunded' when the expand attempt actually attacks something instead
 #define BLOB_BRUTE_RESIST                           0.5         // Brute damage taken gets multiplied by this value
 #define BLOB_FIRE_RESIST                            1           // Burn damage taken gets multiplied by this value
@@ -55,7 +55,7 @@
 #define BLOB_RESOURCE_HP_REGEN                      15
 #define BLOB_RESOURCE_MIN_DISTANCE                  3           // Minimum distance between resource blobs
 #define BLOB_RESOURCE_GATHER_DELAY                  4 SECONDS   // Gather points when pulsed outside this interval
-#define BLOB_RESOURCE_GATHER_ADDED_DELAY            0.25 SECONDS// Every additional resource blob adds this amount to the gather delay
+#define BLOB_RESOURCE_GATHER_ADDED_DELAY            0.4 SECONDS// Every additional resource blob adds this amount to the gather delay
 #define BLOB_RESOURCE_GATHER_AMOUNT                 1           // The amount of points added to the overmind
 
 #define BLOB_REGULAR_MAX_HP                         30
@@ -70,10 +70,10 @@
 
 // Structure purchasing
 
-#define BLOB_UPGRADE_STRONG_COST                    15          // Upgrade and build costs here
+#define BLOB_UPGRADE_STRONG_COST                    10          // Upgrade and build costs here
 #define BLOB_UPGRADE_REFLECTOR_COST                 5
 #define BLOB_STRUCTURE_RESOURCE_COST                40
-#define BLOB_STRUCTURE_FACTORY_COST                 60
+#define BLOB_STRUCTURE_FACTORY_COST                 50
 #define BLOB_STRUCTURE_NODE_COST                    50
 
 #define BLOB_REFUND_STRONG_COST                     8           // Points refunded when destroying the structure
@@ -97,7 +97,7 @@
 #define BLOBMOB_SPORE_DMG_LOWER                     8
 #define BLOBMOB_SPORE_DMG_UPPER                     16
 #define BLOBMOB_BLOBBERNAUT_RESOURCE_COST           40          // Purchase price for making a blobbernaut
-#define BLOBMOB_BLOBBERNAUT_HEALTH                  200         // Base blobbernaut health
+#define BLOBMOB_BLOBBERNAUT_HEALTH                  150         // Base blobbernaut health
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_LOWER          20          // Damage without active overmind (core dead or xenobio mob)
 #define BLOBMOB_BLOBBERNAUT_DMG_SOLO_UPPER          20
 #define BLOBMOB_BLOBBERNAUT_DMG_LOWER               4           // Damage dealt with active overmind (most damage comes from strain chems)
