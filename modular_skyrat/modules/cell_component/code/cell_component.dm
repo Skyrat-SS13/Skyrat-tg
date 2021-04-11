@@ -39,7 +39,7 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 
 	equipment = parent
 
-	if(istype(equipment.loc, /mob/living/silicon)) //Le shitcode for le shitcode robits
+	if(istype(equipment.loc, /mob/living/silicon/robot)) //Le shitcode for le shitcode robits
 		var/mob/living/silicon/robot/robit = equipment.loc
 		inserted_cell = robit.cell
 		inside_robot = TRUE
@@ -88,6 +88,9 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 /datum/component/cell/proc/simple_power_use(mob/user, use_amount, check_only = FALSE)
 	SIGNAL_HANDLER
 
+	if(!use_amount)
+		use_amount = power_use_amount
+
 	if(!inserted_cell)
 		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
 		to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
@@ -97,12 +100,12 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
 		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return FALSE
-
-	if(!inserted_cell.use(use_amount))
+	else if(!inserted_cell.use(use_amount))
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
 		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return FALSE
 
+	SEND_SIGNAL(src, COMSIG_CELL_POWER_USED)
 	return TRUE
 
 /datum/component/cell/proc/start_processing_cell()
@@ -127,7 +130,7 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 		stop_processing_cell()
 		return
 
-	if(!inserted_cell.use(power_use_amount/delta_time))
+	if(!inserted_cell.use(power_use_amount))
 		cell_out_of_charge()
 
 /datum/component/cell/proc/cell_out_of_charge()
