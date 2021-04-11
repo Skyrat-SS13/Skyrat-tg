@@ -241,3 +241,22 @@ SUBSYSTEM_DEF(title)
 		NP.show_titlescreen()
 	else
 		winset(src, "lobbybrowser", "is-disabled=true;is-visible=false")
+
+/client/proc/change_title_screen_html()
+	set category = "Admin.Fun"
+	set name = "Title Screen: Set HTML"
+
+	if(!check_rights(R_FUN))
+		return
+
+	log_admin("[key_name(usr)] is setting the titlescreen HTML.")
+	message_admins("[key_name_admin(usr)] is setting the titlescreen HTML.")
+
+	var/new_html = input(usr, "Please enter your desired HTML(WARNING: YOU WILL BREAK SHIT)", "DANGER: LOBBY HTML EDIT") as message|null
+
+	GLOB.lobby_html = new_html
+
+	for(var/mob/dead/new_player/N in GLOB.new_player_list)
+		INVOKE_ASYNC(N, /mob/dead/new_player.proc/show_titlescreen)
+
+	message_admins("[key_name_admin(usr)] has changed the titlescreen HTML.")
