@@ -26,11 +26,17 @@ the equipment and controls the behaviour of said equipment.
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
+	equipment = parent
+
+	var/obj/item/stock_parts/cell/crap/new_cell = new()
+	inserted_cell = new_cell
+	new_cell.moveToNullspace()
+
 	if(istype(parent, /obj/item/flashlight))
 		ComponentSetupFlashlight()
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
-	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
+	RegisterSignal(parent, COMSIG_CLICK_CTRL, .proc/remove_cell)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
 
 /datum/component/cell/proc/ComponentSetupFlashlight()
@@ -65,8 +71,7 @@ the equipment and controls the behaviour of said equipment.
 	STOP_PROCESSING(SSobj, src)
 
 /datum/component/cell/process(delta_time)
-	. = ..()
-	if(!inserted_cell.use(power_use_amount*delta_time))
+	if(!inserted_cell.use(power_use_amount))
 		cell_out_of_charge()
 
 /datum/component/cell/proc/cell_out_of_charge()
@@ -89,9 +94,6 @@ the equipment and controls the behaviour of said equipment.
 
 /datum/component/cell/proc/remove_cell(datum/source, mob/user)
 	SIGNAL_HANDLER
-
-	if(!equipment.can_interact(user))
-		return
 
 	if(inserted_cell)
 		to_chat(user, "<span class='notice'>You remove [inserted_cell] from [equipment]!</span>")
