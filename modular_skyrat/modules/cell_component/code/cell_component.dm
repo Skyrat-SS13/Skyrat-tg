@@ -22,15 +22,18 @@ the equipment and controls the behaviour of said equipment.
 	/// What signals have been registered to this component - Used for deletion cleanup
 	var/list/registered_signals = list()
 
-/datum/component/cell/Initialize(...)
+/datum/component/cell/Initialize(cell_override)
 	. = ..()
 
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	equipment = parent
-
-	var/obj/item/stock_parts/cell/crap/new_cell = new()
+	var/obj/item/stock_parts/cell/new_cell
+	if(cell_override)
+		new_cell = new cell_override()
+	else
+		new_cell = new /obj/item/stock_parts/cell/crap()
 	inserted_cell = new_cell
 	new_cell.moveToNullspace()
 
@@ -61,6 +64,18 @@ the equipment and controls the behaviour of said equipment.
 
 	return ..()
 
+/datum/component/cell/proc/simple_power_use()
+	SIGNAL_HANDLER
+
+	if(!inserted_cell)
+		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
+
+	if(!inserted_cell.use(power_use_amount))
+		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
+		return FALSE
+
+	return TRUE
+
 /datum/component/cell/proc/start_processing_cell()
 	SIGNAL_HANDLER
 
@@ -68,7 +83,7 @@ the equipment and controls the behaviour of said equipment.
 		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
 		return
 
-	if(!inserted_cell.use(power_use_amount))
+	if(!inserted_cell.charge < power_use_amount)
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
 		return
 
@@ -140,8 +155,4 @@ the equipment and controls the behaviour of said equipment.
 	inserted_cell = doubleabattery
 	doubleabattery.moveToNullspace()
 
-/obj/item/flashlight/ComponentInitialize()
-	. = ..()
-	if(battery_compartment)
-		AddComponent(battery_compartment)
 
