@@ -577,6 +577,14 @@ GENE SCANNER
 	var/cooldown_time = 250
 	var/accuracy // 0 is the best accuracy.
 
+	var/datum/component/cell/battery_compartment
+	var/power_cell_use = 50
+
+/obj/item/analyzer/ComponentInitialize()
+	. = ..()
+	battery_compartment = AddComponent(/datum/component/cell, null, power_cell_use)
+
+
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click [src] to activate the barometer function.</span>"

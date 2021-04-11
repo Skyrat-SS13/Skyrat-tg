@@ -1341,6 +1341,10 @@
 		if(TOOL_CROWBAR)
 			. = crowbar_act(user, I)
 		if(TOOL_MULTITOOL)
+			if(istype(I, /obj/item/multitool))
+				var/obj/item/multitool/the_tool = I
+				if(!the_tool.battery_compartment.simple_power_use(user, the_tool.power_cell_use))
+					return
 			. = multitool_act(user, I)
 		if(TOOL_SCREWDRIVER)
 			. = screwdriver_act(user, I)
@@ -1351,6 +1355,10 @@
 		if(TOOL_WELDER)
 			. = welder_act(user, I)
 		if(TOOL_ANALYZER)
+			if(istype(I, /obj/item/analyzer))
+				var/obj/item/analyzer/the_tool = I
+				if(!the_tool.battery_compartment.simple_power_use(user, the_tool.power_cell_use))
+					return
 			. = analyzer_act(user, I)
 	if(. || signal_result & COMPONENT_BLOCK_TOOL_ATTACK) //Either the proc or the signal handled the tool's events in some way.
 		return TRUE

@@ -8,8 +8,10 @@ to the cell component.
 General logic:
 Component attaches to parent(flashlight etc)
 Registers onhit signal to check if it's being slapped by a battery
-Component moves battery to nullspace, keeps a record, and then communicates with
+Component moves battery to equipment loc, keeps a record, and then communicates with
 the equipment and controls the behaviour of said equipment.
+
+If it's a robot, it uses the robot cell - Using certified shitcode.
 */
 
 /datum/component/cell
@@ -23,6 +25,8 @@ the equipment and controls the behaviour of said equipment.
 	var/list/registered_signals = list()
 	/// What signals have been registered to the parent - Used for deletion cleanuo
 	var/list/parent_registered_signals = list()
+	/// Are we using a robot's powersource?
+	var/inside_robot = FALSE
 
 /datum/component/cell/Initialize(cell_override, cell_power_use)
 	. = ..()
@@ -34,21 +38,27 @@ the equipment and controls the behaviour of said equipment.
 		return COMPONENT_INCOMPATIBLE
 
 	equipment = parent
-	var/obj/item/stock_parts/cell/new_cell
-	if(cell_override)
-		new_cell = new cell_override()
+
+	if(istype(equipment.loc, /mob/living/silicon)) //Le shitcode for le shitcode robits
+		var/mob/living/silicon/robot/robit = equipment.loc
+		inserted_cell = robit.cell
+		inside_robot = TRUE
 	else
-		new_cell = new /obj/item/stock_parts/cell/crap()
-	inserted_cell = new_cell
-	new_cell.moveToNullspace()
+		var/obj/item/stock_parts/cell/new_cell
+		if(cell_override)
+			new_cell = new cell_override()
+		else
+			new_cell = new /obj/item/stock_parts/cell/crap()
+		inserted_cell = new_cell
+		new_cell.forceMove(parent)
 
 	if(istype(parent, /obj/item/flashlight))
 		ComponentSetupFlashlight()
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
 	registered_signals += COMSIG_PARENT_ATTACKBY
-	RegisterSignal(parent, COMSIG_CLICK_CTRL, .proc/remove_cell)
-	registered_signals += COMSIG_CLICK_CTRL
+	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
+	registered_signals += COMSIG_CLICK_CTRL_SHIFT
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
 	registered_signals += COMSIG_PARENT_EXAMINE
 
@@ -64,7 +74,8 @@ the equipment and controls the behaviour of said equipment.
 
 /datum/component/cell/Destroy(force, silent)
 	if(inserted_cell)
-		qdel(inserted_cell)
+		if(!inside_robot)
+			qdel(inserted_cell)
 		inserted_cell = null
 
 	UnregisterSignal(parent, registered_signals)
@@ -74,15 +85,17 @@ the equipment and controls the behaviour of said equipment.
 
 	return ..()
 
-/datum/component/cell/proc/simple_power_use(use_amount)
+/datum/component/cell/proc/simple_power_use(mob/user, use_amount)
 	SIGNAL_HANDLER
 
 	if(!inserted_cell)
 		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
+		to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
 		return FALSE
 
 	if(!inserted_cell.use(use_amount))
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
+		to_chat(user, "<span class='danger'>The cell inside [equipment] is out of charge!</span>")
 		return FALSE
 
 	return TRUE
@@ -135,6 +148,9 @@ the equipment and controls the behaviour of said equipment.
 	if(!equipment.can_interact(user))
 		return
 
+	if(inside_robot)
+		return
+
 	if(inserted_cell)
 		to_chat(user, "<span class='notice'>You remove [inserted_cell] from [equipment]!</span>")
 		playsound(equipment, 'sound/weapons/magout.ogg', 40, TRUE)
@@ -152,6 +168,9 @@ the equipment and controls the behaviour of said equipment.
 	if(!equipment.can_interact(user))
 		return
 
+	if(inside_robot)
+		return
+
 	if(!istype(inserting_item, /obj/item/stock_parts/cell))
 		return
 
@@ -164,6 +183,6 @@ the equipment and controls the behaviour of said equipment.
 	to_chat(user, "<span class='notice'>You insert [doubleabattery] into [equipment]!")
 	playsound(equipment, 'sound/weapons/magin.ogg', 40, TRUE)
 	inserted_cell = doubleabattery
-	doubleabattery.moveToNullspace()
+	doubleabattery.forceMove(parent)
 
 
