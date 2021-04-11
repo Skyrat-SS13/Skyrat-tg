@@ -100,3 +100,6 @@
 
 /obj/item/flashlight/eyelight
 	uses_battery = FALSE
+
+/obj/item/flashlight/pen
+	cell_override = /obj/item/stock_parts/cell/potato
