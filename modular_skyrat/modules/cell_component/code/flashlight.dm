@@ -23,11 +23,11 @@
 /obj/item/flashlight/attack_self(mob/user)
 	. = ..()
 	if(on)
-		turn_off()
+		turn_off(user)
 	else
-		turn_on()
+		turn_on(user)
 
-/obj/item/flashlight/proc/turn_off()
+/obj/item/flashlight/proc/turn_off(mob/user)
 	SIGNAL_HANDLER
 
 	on = FALSE
@@ -40,10 +40,14 @@
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
 
-/obj/item/flashlight/proc/turn_on()
+/obj/item/flashlight/proc/turn_on(mob/user)
 	SIGNAL_HANDLER
 
 	on = TRUE
+
+	if(battery_compartment && uses_battery)
+		if(!battery_compartment.simple_power_use(user, cell_power_use, TRUE))
+			return
 
 	SEND_SIGNAL(src, COMSIG_FLASHLIGHT_TOGGLED_ON)
 

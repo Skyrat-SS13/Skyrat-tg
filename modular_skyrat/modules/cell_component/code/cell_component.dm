@@ -85,7 +85,7 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 
 	return ..()
 
-/datum/component/cell/proc/simple_power_use(mob/user, use_amount)
+/datum/component/cell/proc/simple_power_use(mob/user, use_amount, check_only = FALSE)
 	SIGNAL_HANDLER
 
 	if(!inserted_cell)
@@ -93,9 +93,14 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 		to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
 		return FALSE
 
+	if(check_only && inserted_cell.charge < use_amount)
+		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
+		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+		return FALSE
+
 	if(!inserted_cell.use(use_amount))
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
-		to_chat(user, "<span class='danger'>The cell inside [equipment] is out of charge!</span>")
+		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return FALSE
 
 	return TRUE
@@ -107,7 +112,7 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
 		return
 
-	if(!inserted_cell.charge < power_use_amount)
+	if(inserted_cell.charge < power_use_amount)
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
 		return
 
