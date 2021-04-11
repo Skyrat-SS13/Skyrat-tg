@@ -67,6 +67,15 @@
 	toolspeed = 0.5	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
 	force_opens = TRUE
 
+	//SKYRAT EDIT ADDITION BEGIN
+	var/datum/component/cell/battery_compartment
+	var/power_cell_use = POWER_CELL_USE_NORMAL
+
+/obj/item/crowbar/power/ComponentInitialize()
+	. = ..()
+	battery_compartment = AddComponent(/datum/component/cell, null, power_cell_use)
+	//SKYRAT EDIT END
+
 /obj/item/crowbar/power/syndicate
 	name = "Syndicate jaws of life"
 	desc = "A re-engineered copy of Nanotrasen's standard jaws of life. Can be used to force open airlocks in its crowbar configuration."

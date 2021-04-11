@@ -112,7 +112,7 @@
 
 	//SKYRAT EDIT ADDITION BEGIN
 	var/datum/component/cell/battery_compartment
-	var/power_cell_use = 50
+	var/power_cell_use = POWER_CELL_USE_NORMAL
 
 /obj/item/screwdriver/power/ComponentInitialize()
 	. = ..()

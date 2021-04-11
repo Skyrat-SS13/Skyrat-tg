@@ -6,8 +6,7 @@
 	/// Does this flashlight have a cell override?
 	var/cell_override
 	/// How much power(per process) does this flashlight use? If any.
-	var/cell_power_use = 10
-
+	var/power_cell_use = POWER_CELL_USE_LOW
 
 /obj/item/flashlight/Initialize()
 	. = ..()
@@ -27,7 +26,7 @@
 	else
 		turn_on(user)
 
-/obj/item/flashlight/proc/turn_off(mob/user)
+/obj/item/flashlight/proc/turn_off()
 	SIGNAL_HANDLER
 
 	on = FALSE
@@ -46,7 +45,7 @@
 	on = TRUE
 
 	if(battery_compartment && uses_battery)
-		if(!battery_compartment.simple_power_use(user, cell_power_use, TRUE))
+		if(!battery_compartment.simple_power_use(user, power_cell_use, TRUE))
 			return
 
 	SEND_SIGNAL(src, COMSIG_FLASHLIGHT_TOGGLED_ON)
@@ -69,7 +68,7 @@
 /obj/item/flashlight/ComponentInitialize()
 	. = ..()
 	if(uses_battery)
-		AddComponent(/datum/component/cell, cell_override, cell_power_use)
+		AddComponent(/datum/component/cell, cell_override, power_cell_use)
 		battery_compartment = GetComponent(/datum/component/cell)
 
 /obj/item/flashlight/Destroy()
@@ -91,6 +90,9 @@
 	force = initial(src.force)
 	damtype = initial(src.damtype)
 	update_brightness()
+
+/obj/item/flashlight/component_cell_out_of_charge()
+	turn_off()
 
 /obj/item/flashlight/seclite
 	cell_override = /obj/item/stock_parts/cell/upgraded

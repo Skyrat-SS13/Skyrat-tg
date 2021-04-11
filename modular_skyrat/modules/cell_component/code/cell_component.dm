@@ -18,7 +18,7 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 	/// Our reference to the inserted cell, which will be stored in nullspace.
 	var/obj/item/stock_parts/cell/inserted_cell
 	/// The item reference to parent
-	var/obj/item/equipment
+	var/atom/equipment
 	/// How much power do we use each process?
 	var/power_use_amount = 50
 	/// What signals have been registered to this component - Used for deletion cleanup
@@ -34,7 +34,7 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 	if(cell_power_use)
 		power_use_amount = cell_power_use
 
-	if(!isitem(parent))
+	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	equipment = parent
@@ -52,8 +52,16 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 		inserted_cell = new_cell
 		new_cell.forceMove(parent)
 
-	if(istype(parent, /obj/item/flashlight))
-		ComponentSetupFlashlight()
+	RegisterSignal(parent, COMSIG_CELL_START_USE, .proc/start_processing_cell)
+	registered_signals += COMSIG_CELL_START_USE
+	RegisterSignal(parent, COMSIG_CELL_STOP_USE, .proc/stop_processing_cell)
+	registered_signals += COMSIG_CELL_STOP_USE
+
+	parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /atom.proc/component_cell_out_of_charge)
+	parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
+
+	parent.RegisterSignal(src, COMSIG_CELL_NO_CELL, /atom.proc/component_cell_removed)
+	parent_registered_signals += COMSIG_CELL_NO_CELL
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
 	registered_signals += COMSIG_PARENT_ATTACKBY
@@ -62,15 +70,6 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
 	registered_signals += COMSIG_PARENT_EXAMINE
 
-/datum/component/cell/proc/ComponentSetupFlashlight()
-	RegisterSignal(parent, COMSIG_FLASHLIGHT_TOGGLED_ON, .proc/start_processing_cell)
-	registered_signals += COMSIG_FLASHLIGHT_TOGGLED_ON
-	RegisterSignal(parent, COMSIG_FLASHLIGHT_TOGGLED_OFF, .proc/stop_processing_cell)
-	registered_signals += COMSIG_FLASHLIGHT_TOGGLED_OFF
-	parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /obj/item/flashlight.proc/turn_off)
-	parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
-	parent.RegisterSignal(src, COMSIG_CELL_NO_CELL, /obj/item/flashlight.proc/turn_off)
-	parent_registered_signals += COMSIG_CELL_NO_CELL
 
 /datum/component/cell/Destroy(force, silent)
 	if(inserted_cell)
@@ -193,4 +192,8 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 	inserted_cell = doubleabattery
 	doubleabattery.forceMove(parent)
 
+/atom/proc/component_cell_out_of_charge()
+	return
 
+/atom/proc/component_cell_removed()
+	return component_cell_out_of_charge()
