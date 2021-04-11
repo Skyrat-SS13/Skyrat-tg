@@ -486,9 +486,11 @@
 		STOP_PROCESSING(SSobj, src)
 		update_appearance()
 
+/* SKYRAT EDIT REMOVAL
 /obj/item/flashlight/glowstick/proc/turn_off()
 	on = FALSE
 	update_appearance()
+*/
 
 /obj/item/flashlight/glowstick/update_appearance(updates=ALL)
 	. = ..()
