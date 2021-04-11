@@ -230,3 +230,14 @@ SUBSYSTEM_DEF(title)
 
 	for(var/mob/dead/new_player/N in GLOB.new_player_list)
 		INVOKE_ASYNC(N, /mob/dead/new_player.proc/show_titlescreen)
+
+/client/verb/fix_lobbyscreen()
+	set name = "Fix Lobbyscreen"
+	set desc = "Lobbyscreen broke? Press this."
+	set category = "OOC"
+
+	if(istype(mob, /mob/dead/new_player))
+		var/mob/dead/new_player/NP = mob
+		NP.show_titlescreen()
+	else
+		winset(src, "lobbybrowser", "is-disabled=true;is-visible=false")
