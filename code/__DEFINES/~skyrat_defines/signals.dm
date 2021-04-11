@@ -31,13 +31,15 @@
 /// Sent when a cell runs out of charge.
 #define COMSIG_CELL_OUT_OF_CHARGE "cell_out_of_charge"
 /// Sent when there is no cell.
-#define COMSIG_CELL_NO_CELL "cell_no_cell"
+#define COMSIG_CELL_REMOVED "cell_removed"
 /// Called to start draining from a cell
 #define COMSIG_CELL_START_USE "cell_start_use"
 /// Called to stop draining from a cell
 #define COMSIG_CELL_STOP_USE "cell_stop_use"
 /// Sent when a cell is successfully drawn from
-#define COMSIG_CELL_POWER_USED "cell_ower_used"
+#define COMSIG_CELL_POWER_USED "cell_power_used"
+/// Sent when a cell is successfully drawn from
+#define COMSIG_CELL_SIMPLE_POWER_USE "cell_simple_power_use"
 /// Sent when a flashlight is toggled on.
 #define COMSIG_FLASHLIGHT_TOGGLED_ON "flashlight_toggled_on"
 /// Sent when a flashlight is toggled off.

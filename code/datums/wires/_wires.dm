@@ -320,7 +320,8 @@
 				//SKYRAT EDIT CHANGE BEGIN
 					if(istype(I, /obj/item/multitool))
 						var/obj/item/multitool/the_tool = I
-						if(the_tool.battery_compartment.simple_power_use(L, the_tool.power_cell_use))
+						var/datum/component/cell/cell_component = the_tool.GetComponent(/datum/component/cell)
+						if(cell_component.simple_power_use(L, the_tool.power_cell_use))
 							I.play_tool_sound(holder, 20)
 							pulse_color(target_wire, L)
 							. = TRUE

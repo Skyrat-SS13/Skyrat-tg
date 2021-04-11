@@ -111,12 +111,11 @@
 	random_color = FALSE
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/datum/component/cell/battery_compartment
 	var/power_cell_use = POWER_CELL_USE_NORMAL
 
 /obj/item/screwdriver/power/ComponentInitialize()
 	. = ..()
-	battery_compartment = AddComponent(/datum/component/cell, null, power_cell_use)
+	AddComponent(/datum/component/cell, null, power_cell_use)
 	//SKYRAT EDIT END
 
 

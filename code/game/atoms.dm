@@ -1341,7 +1341,7 @@
 	var/datum/component/cell/battery_compartment = I.GetComponent(/datum/component/cell)
 	if(battery_compartment)
 		if(!battery_compartment.simple_power_use(user))
-			return COMPONENT_BLOCK_TOOL_ATTACK
+			return TRUE
 	//SKYRAT EDIT END
 	switch(tool_type)
 		if(TOOL_CROWBAR)

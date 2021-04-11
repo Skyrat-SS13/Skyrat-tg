@@ -16,7 +16,6 @@ If it's a robot, it uses the robot cell - Using certified shitcode.
 If you are adding this to an item that is active for a period of time, register signal to COMSIG_CELL_START_USE when it would start using the cell
 and COMSIG_CELL_STOP_USE when it should stop. To handle the turning off of said item once the cell is depleted, add your code into the component_cell_out_of_charge proc
 using loc where necessary.
-
 */
 
 /datum/component/cell
@@ -57,24 +56,23 @@ using loc where necessary.
 		inserted_cell = new_cell
 		new_cell.forceMove(parent)
 
+
+/datum/component/cell/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_CELL_START_USE, .proc/start_processing_cell)
-	registered_signals += COMSIG_CELL_START_USE
 	RegisterSignal(parent, COMSIG_CELL_STOP_USE, .proc/stop_processing_cell)
-	registered_signals += COMSIG_CELL_STOP_USE
-
-	parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /atom.proc/component_cell_out_of_charge)
-	parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
-
-	parent.RegisterSignal(src, COMSIG_CELL_NO_CELL, /atom.proc/component_cell_removed)
-	parent_registered_signals += COMSIG_CELL_NO_CELL
-
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
-	registered_signals += COMSIG_PARENT_ATTACKBY
 	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
-	registered_signals += COMSIG_CLICK_CTRL_SHIFT
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
+	RegisterSignal(parent, COMSIG_CELL_SIMPLE_POWER_USE, .proc/simple_power_use)
+	registered_signals += COMSIG_CELL_START_USE
+	registered_signals += COMSIG_CELL_STOP_USE
+	registered_signals += COMSIG_PARENT_ATTACKBY
+	registered_signals += COMSIG_CLICK_CTRL_SHIFT
 	registered_signals += COMSIG_PARENT_EXAMINE
+	registered_signals += COMSIG_CELL_SIMPLE_POWER_USE
 
+/datum/component/cell/UnregisterFromParent()
+	UnregisterSignal(parent, registered_signals)
 
 /datum/component/cell/Destroy(force, silent)
 	if(inserted_cell)
@@ -96,7 +94,6 @@ using loc where necessary.
 		use_amount = power_use_amount
 
 	if(!inserted_cell)
-		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
 		to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
 		return FALSE
 
@@ -116,14 +113,14 @@ using loc where necessary.
 	SIGNAL_HANDLER
 
 	if(!inserted_cell)
-		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
-		return
+		return FALSE
 
 	if(inserted_cell.charge < power_use_amount)
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
-		return
+		return FALSE
 
 	START_PROCESSING(SSobj, src)
+	return TRUE
 
 /datum/component/cell/proc/stop_processing_cell()
 	SIGNAL_HANDLER
@@ -136,6 +133,7 @@ using loc where necessary.
 
 	if(!inserted_cell.use(power_use_amount))
 		cell_out_of_charge()
+		return
 
 /datum/component/cell/proc/cell_out_of_charge()
 	SIGNAL_HANDLER
@@ -169,7 +167,7 @@ using loc where necessary.
 		inserted_cell.forceMove(equipment.loc)
 		INVOKE_ASYNC(user, /mob/living.proc/put_in_hands, inserted_cell)
 		inserted_cell = null
-		SEND_SIGNAL(src, COMSIG_CELL_NO_CELL)
+		SEND_SIGNAL(src, COMSIG_CELL_REMOVED)
 		stop_processing_cell()
 	else
 		to_chat(user, "<span class='danger'>There is no cell inserted in [equipment]!</span>")
@@ -196,9 +194,3 @@ using loc where necessary.
 	playsound(equipment, 'sound/weapons/magin.ogg', 40, TRUE)
 	inserted_cell = doubleabattery
 	doubleabattery.forceMove(parent)
-
-/atom/proc/component_cell_out_of_charge()
-	return
-
-/atom/proc/component_cell_removed()
-	return component_cell_out_of_charge()

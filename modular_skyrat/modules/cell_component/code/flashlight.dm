@@ -1,8 +1,6 @@
 /obj/item/flashlight
 	/// Does this flashlight utilize batteries?
 	var/uses_battery = TRUE
-	/// The cell component link
-	var/datum/component/cell/battery_compartment
 	/// Does this flashlight have a cell override?
 	var/cell_override
 	/// How much power(per process) does this flashlight use? If any.
@@ -31,8 +29,6 @@
 
 	on = FALSE
 
-	SEND_SIGNAL(src, COMSIG_FLASHLIGHT_TOGGLED_OFF)
-
 	update_brightness()
 
 	for(var/X in actions)
@@ -40,15 +36,11 @@
 		A.UpdateButtonIcon()
 
 /obj/item/flashlight/proc/turn_on(mob/user)
-	SIGNAL_HANDLER
-
-	on = TRUE
-
-	if(battery_compartment && uses_battery)
-		if(!battery_compartment.simple_power_use(user, power_cell_use, TRUE))
+	if(uses_battery)
+		if(!SEND_SIGNAL(src, COMSIG_CELL_SIMPLE_POWER_USE, user, power_cell_use, TRUE))
 			return
 
-	SEND_SIGNAL(src, COMSIG_FLASHLIGHT_TOGGLED_ON)
+	on = TRUE
 
 	playsound(src, 'modular_skyrat/master_files/sound/effects/flashlight.ogg', 40, TRUE)
 
@@ -69,13 +61,6 @@
 	. = ..()
 	if(uses_battery)
 		AddComponent(/datum/component/cell, cell_override, power_cell_use)
-		battery_compartment = GetComponent(/datum/component/cell)
-
-/obj/item/flashlight/Destroy()
-	if(battery_compartment)
-		qdel(battery_compartment)
-		battery_compartment = null
-	return ..()
 
 /obj/item/flashlight/flare/turn_on()
 	on = TRUE
@@ -90,9 +75,6 @@
 	force = initial(src.force)
 	damtype = initial(src.damtype)
 	update_brightness()
-
-/obj/item/flashlight/component_cell_out_of_charge()
-	turn_off()
 
 /obj/item/flashlight/seclite
 	cell_override = /obj/item/stock_parts/cell/upgraded

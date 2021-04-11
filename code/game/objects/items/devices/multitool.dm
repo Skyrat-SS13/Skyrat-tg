@@ -34,13 +34,12 @@
 	var/mode = 0
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/datum/component/cell/battery_compartment
 	var/power_cell_use = POWER_CELL_USE_NORMAL
 	var/cell_override
 
 /obj/item/multitool/ComponentInitialize()
 	. = ..()
-	battery_compartment = AddComponent(/datum/component/cell, cell_override, power_cell_use)
+	AddComponent(/datum/component/cell, cell_override, power_cell_use)
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/multitool/examine(mob/user)
