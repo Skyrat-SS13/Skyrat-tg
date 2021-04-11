@@ -29,6 +29,9 @@
 
 	on = FALSE
 
+	if(uses_battery)
+		SEND_SIGNAL(src, COMSIG_CELL_STOP_USE)
+
 	update_brightness()
 
 	for(var/X in actions)
@@ -36,10 +39,14 @@
 		A.UpdateButtonIcon()
 
 /obj/item/flashlight/proc/turn_on(mob/user)
+	SIGNAL_HANDLER
 	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
 	if(battery_compartment)
 		if(!battery_compartment.simple_power_use(user))
 			return
+
+	if(uses_battery)
+		SEND_SIGNAL(src, COMSIG_CELL_START_USE)
 
 	on = TRUE
 

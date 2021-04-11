@@ -85,6 +85,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	var/underline_flag = TRUE //flag for underline
 
+	//SKYRAT EDIT ADDITION BEGIN
+	var/power_cell_use = POWER_CELL_USE_LOW
+
+/obj/item/pda/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/cell, null, power_cell_use)
+	//SKYRAT EDIT ADDITION END
+
 /obj/item/pda/suicide_act(mob/living/carbon/user)
 	var/deathMessage = msg_input(user)
 	if (!deathMessage)
@@ -212,6 +220,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 
 	..()
+
+	//SKYRAT EDIT ADDITION
+	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
+	if(battery_compartment)
+		if(!battery_compartment.simple_power_use(user, check_only = TRUE))
+			return
+		//SKYRAT EDIT END
 
 	var/datum/asset/spritesheet/assets = get_asset_datum(/datum/asset/spritesheet/simple/pda)
 	assets.send(user)
@@ -449,6 +464,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) && !href_list["close"])
 		add_fingerprint(U)
 		U.set_machine(src)
+
+		//SKYRAT EDIT ADDITION
+		var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
+		if(battery_compartment)
+			if(!battery_compartment.simple_power_use(U))
+				return
+		//SKYRAT EDIT END
 
 		switch(href_list["choice"])
 

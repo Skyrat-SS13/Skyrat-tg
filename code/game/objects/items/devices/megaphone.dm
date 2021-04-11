@@ -10,6 +10,13 @@
 	siemens_coefficient = 1
 	var/spamcheck = 0
 	var/list/voicespan = list(SPAN_COMMAND)
+	//SKYRAT EDIT ADDITION BEGIN
+	var/power_cell_use = POWER_CELL_USE_NORMAL
+
+/obj/item/multitool/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/cell, cell_override, power_cell_use)
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/megaphone/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] is uttering [user.p_their()] last words into \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -33,6 +40,12 @@
 		if(spamcheck > world.time)
 			to_chat(user, "<span class='warning'>\The [src] needs to recharge!</span>")
 		else
+			//SKYRAT EDIT ADDITION
+			var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
+			if(battery_compartment)
+				if(!battery_compartment.simple_power_use(user))
+					return
+			//SKYRAT EDIT END
 			playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 			spamcheck = world.time + 50
 			speech_args[SPEECH_SPANS] |= voicespan

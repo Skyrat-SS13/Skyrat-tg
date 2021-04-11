@@ -58,12 +58,12 @@ using loc where necessary.
 
 
 /datum/component/cell/RegisterWithParent()
+	//Component to Parent signal registries
 	RegisterSignal(parent, COMSIG_CELL_START_USE, .proc/start_processing_cell)
 	RegisterSignal(parent, COMSIG_CELL_STOP_USE, .proc/stop_processing_cell)
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
 	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
-	RegisterSignal(parent, COMSIG_CELL_SIMPLE_POWER_USE, .proc/simple_power_use)
 	registered_signals += COMSIG_CELL_START_USE
 	registered_signals += COMSIG_CELL_STOP_USE
 	registered_signals += COMSIG_PARENT_ATTACKBY
@@ -71,20 +71,26 @@ using loc where necessary.
 	registered_signals += COMSIG_PARENT_EXAMINE
 	registered_signals += COMSIG_CELL_SIMPLE_POWER_USE
 
+	//Parent to Component signal registires
+	if(istype(parent, /obj/item/flashlight))
+		parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /obj/item/flashlight.proc/turn_off)
+		parent.RegisterSignal(src, COMSIG_CELL_REMOVED, /obj/item/flashlight.proc/turn_off)
+		parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
+		parent_registered_signals += COMSIG_CELL_REMOVED
+
+	if(istype(parent, /obj/item/gps))
+		parent.RegisterSignal(src, COMSIG_)
+
 /datum/component/cell/UnregisterFromParent()
 	UnregisterSignal(parent, registered_signals)
+	if(parent_registered_signals)
+		parent.UnregisterSignal(src, parent_registered_signals)
 
 /datum/component/cell/Destroy(force, silent)
 	if(inserted_cell)
 		if(!inside_robot)
 			qdel(inserted_cell)
 		inserted_cell = null
-
-	UnregisterSignal(parent, registered_signals)
-
-	if(parent_registered_signals)
-		parent.UnregisterSignal(src, parent_registered_signals)
-
 	return ..()
 
 /datum/component/cell/proc/simple_power_use(mob/user, use_amount, check_only = FALSE)
