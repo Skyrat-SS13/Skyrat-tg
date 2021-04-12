@@ -24,6 +24,7 @@
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
 
 /obj/item/twohanded/clockwork/pickup(obj/item/source, mob/user)
+	.=..()
 	if(is_servant_of_ratvar(user))
 		if(!SS)
 			SS = new
