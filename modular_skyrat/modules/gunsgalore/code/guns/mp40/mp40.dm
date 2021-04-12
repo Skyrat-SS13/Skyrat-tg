@@ -1,5 +1,5 @@
 /obj/item/gun/ballistic/automatic/submachine_gun/mp40
-	name = "\improper Maschinenpistole 40"
+	name = "\improper MP-40"
 	desc = "The instantly recognizable 'nazi gun'. Extremely outdated SMG that has only seen service during Sol-3's second World War. This one's a poor, unlicensed reproduction."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mp40/mp40.dmi'
 	icon_state = "mp40"
@@ -28,7 +28,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern
-	name = "\improper Mil Spec Maschinenpistole 40"
+	name = "\improper MP-40k"
 	desc = "An extremely outdated German SMG that has been modified extensively with aftermarket parts. It looks like it came straight out of the videogame Return to Fortress Dogenstein."
 	icon_state = "mp40_modern"
 	inhand_icon_state = "mp40"
