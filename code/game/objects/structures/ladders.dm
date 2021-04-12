@@ -10,7 +10,7 @@
 	var/obj/structure/ladder/up     //the ladder above this one
 	var/crafted = FALSE
 	/// Optional travel time for ladder in deciseconds
-	var/travel_time = 0
+	var/travel_time = 100 //SKYRAT EDIT
 
 /obj/structure/ladder/Initialize(mapload, obj/structure/ladder/up, obj/structure/ladder/down)
 	..()
@@ -73,6 +73,9 @@
 /obj/structure/ladder/proc/travel(going_up, mob/user, is_ghost, obj/structure/ladder/ladder)
 	if(!is_ghost)
 		ladder.add_fingerprint(user)
+		var/adjusted_travel_time = travel_time
+		if(HAS_TRAIT(user, TRAIT_FASTCLIMB))
+			adjusted_climb_time *= 0.1
 		if(!do_after(user, travel_time, target = src))
 			return
 		show_fluff_message(going_up, user)

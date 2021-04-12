@@ -12,3 +12,12 @@
 	desc = "Don't let corporate crooks slip this into your lunch."
 	tastes = list("the jungle" = 1, "acid" = 1)
 	spawned_mob = /mob/living/carbon/alien/humanoid/hunter //This is catatonic.
+
+/obj/item/skillchip/fastclimb
+	name = "Ladder Lover skillchip"
+	auto_traits = list(TRAIT_FASTCLIMB)
+	skill_name = "FastClimbing"
+	skill_description = "Allows you to accend and decend at speeds never known before! Impress your slower friends!."
+	skill_icon = "swimming-pool"
+	activate_message = "<span class='notice'>You feel like you can take it two rungs at a time!.</span>"
+	deactivate_message = "<span class='notice'>You give up on your dreams of being a fireman.</span>"
