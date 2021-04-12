@@ -9,3 +9,9 @@
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 
+/obj/item/clothing/gloves/kim
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/hands.dmi'
+	name = "aerostatic gloves"
+	desc = "Vivid red gloves that exude a mysterious style, sadly not the best for gardening, or getting bodies out of trees."
+	icon_state = "aerostatic_gloves"
