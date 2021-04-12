@@ -16,7 +16,6 @@
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete/wallet)
 	STR.max_items = 5
 	STR.set_holdable(list(
-		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/hypospray/medipen,
 		/obj/item/stack/spacecash,
 		/obj/item/holochip,
