@@ -118,6 +118,18 @@
 	extra_info = LOADOUT_INFO_THREE_COLORS
 	cost = 3
 
+/datum/loadout_item/suit/coat/maxson
+	name = "Fancy Brown Coat"
+	path = /obj/item/clothing/suit/brownbattlecoat
+	cost = 3
+
+/datum/loadout_item/suit/coat/bossu
+	name = "Fancy Black Coat"
+	path = /obj/item/clothing/suit/blackfurrich
+	cost = 3
+
+
+
 //JACKETS
 /datum/loadout_item/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
