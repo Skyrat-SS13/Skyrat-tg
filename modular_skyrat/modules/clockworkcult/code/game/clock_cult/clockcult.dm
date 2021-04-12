@@ -49,10 +49,10 @@ GLOBAL_VAR(clockcult_eminence)
 /datum/game_mode/clockcult/pre_setup()
 	//Load Reebe
 	var/list/FailedZs = list()
-	SSmapping.LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits = ZTRAITS_REEBE)
-	if(!FailedZs.len > 0)
-		message_admins("Reebe failed to load")
-		log_game("Reebe failed to load")
+	var/list/reebe = SSmapping.LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits=ZTRAITS_REEBE, silent=TRUE)
+	if(!FailedZs.len > 0 || !reebe)
+		message_admins("Reebe POTENTIALLY failed to load. Search for Reebe in ghost teleports.")
+		log_game("Reebe POTENTIALLY failed to load")
 		return FALSE
 	//Generate cultists
 	for(var/i in 1 to clock_cultists)
