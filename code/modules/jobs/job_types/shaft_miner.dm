@@ -44,6 +44,8 @@
 
 	chameleon_extras = /obj/item/gun/energy/kinetic_accelerator
 
+	skillchips = list(/obj/item/skillchip/fastclimb)
+
 	id_trim = /datum/id_trim/job/shaft_miner
 
 /datum/outfit/job/miner/equipped
