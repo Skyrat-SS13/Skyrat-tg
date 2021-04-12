@@ -14,6 +14,18 @@
 						/datum/cultural_info/culture/spacer_core, \
 						/datum/cultural_info/culture/spacer_frontier
 
+#define CULTURE_TAJARAN	/datum/cultural_info/culture/tajaran, \
+						/datum/cultural_info/culture/tajaran/rakarziz, \
+						/datum/cultural_info/culture/tajaran/zhan, \
+						/datum/cultural_info/culture/tajaran/najrro, \
+						/datum/cultural_info/culture/tajaran/other \
+
+#define CULTURE_XENO	/datum/cultural_info/culture/xeno/generic, \
+						/datum/cultural_info/culture/xeno/spacer, \
+						/datum/cultural_info/culture/xeno/experiment, \
+						/datum/cultural_info/culture/xeno/hive, \
+
+
 #define CULTURES_LIZARD /datum/cultural_info/culture/lavaland
 
 #define CULTURES_HUMAN	/datum/cultural_info/culture/generic_human, \

@@ -2,6 +2,8 @@
 	// A cloning mistake, crossing human and xenomorph DNA
 	name = "Xenomorph Hybrid"
 	id = "xeno"
+	cultures = list(CULTURES_EXOTIC,CULTURES_HUMAN,CULTURE_XENO)
+	learnable_languages = list(/datum/language/common,/datum/language/xenohybrid,/datum/language/xenohybrid/phero)
 	say_mod = "hisses"
 	default_color = "00FF00"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)

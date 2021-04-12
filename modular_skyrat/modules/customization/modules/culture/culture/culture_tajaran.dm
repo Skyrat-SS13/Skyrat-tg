@@ -1,14 +1,6 @@
 //Tajaran Background
-#define CULTURE_TAJARAN	/datum/cultural_info/culture/tajaran, \
-						/datum/cultural_info/culture/tajaran/rakarziz, \
-						/datum/cultural_info/culture/tajaran/zhan, \
-						/datum/cultural_info/culture/tajaran/najrro, \
-						/datum/cultural_info/culture/tajaran/other, \
-
-
-
 /datum/cultural_info/culture/tajaran
-	name = CULTURE_NEERROM
+	name = "Nerrom"
 	description = "The 'face' of the Tajara people. Nee'rro'm Tajara are about similar height to most humans. Ranging from 5'6'' to 6'0'' (167-180 cm) \
 	the Nee'rro'm range in either somewhat dull colors of taupe to the more softer and brighter colors of white and even cream colors. They are the most \
 	numerous of the species with their coats being a somewhat thicker fur than their smaller brethren. They are often seen in the more typical traits as soldiers, \
@@ -16,14 +8,14 @@
 
 
 /datum/cultural_info/culture/tajaran/rakarziz
-	name = Rakarziz Tajaran
+	name = "Rakarziz Tajaran"
 	description = "Ra'kar'ziz Tajara are an oddity of the Tajara people that typically live within the alpine areas of Adhomai. They are similar to that in height \
 	of the Naj'rro', the distinct difference that separates them from many Tajara is their incredibly tall ears. They are often compared to 'lynxes' by humans. Their \
 	fur color is almost always taupe in color with soft creams and dark spots speckling their coat. Ra'kar'ziz Tajara are known for their brutal honesty and adherence \
 	to strict cultural tropes. "
 
 /datum/cultural_info/culture/tajaran/zhan
-	name = Zhan Tajaran
+	name = "Zhan Tajaran"
 	description = "The largest and by far the most dangerous of the Tajara. The Zhan as well as their subspecies, the Ur Zhan Khazan, are known for their immense height, \
 	strength, aggressive tendencies and their endurance and hard to put down traits. These Tajara are gigantic but usually quite rare as they usually do not leave the \
 	frigid tundra of the northern lands. Zhan Tajara can stand from 6'1'' all the way up to the imposing height of 6'5'' (185 -195cm). Their fur is usually incredibly thick, \
@@ -33,12 +25,12 @@
 	cultural trait of keeping oaths and promises very close, thus being the reason for the stripes along their body."
 
 /datum/cultural_info/culture/tajaran/najrro
-	name = Najrro Tajaran
+	name = "Najrro Tajaran"
 	description = "The smallest species of Tajara standing usually 4'10'' to 5'4'' (143-162 cm) usually \
 	their fur is incredibly thin as they are more acclimated to the somewhat warmer and more temperate center of Meralar. Their fur color is usually a brighter \
 	orange color, ruddy cinnamon or even mahogany and light 'red' like colors. Najrro' Ak'han Tajara are most known for being crafty, swift, and occasionally are \
 	known for being able to fit into incredibly small spaces."
 
 /datum/cultural_info/culture/tajaran/other
-	name = Spacer Tajaran
+	name = "Spacer Tajaran"
 	description = "You are one of the unknown; someone who left home or some other special circumstance."
