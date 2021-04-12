@@ -62,7 +62,7 @@ using loc where necessary.
 	RegisterSignal(parent, COMSIG_CELL_START_USE, .proc/start_processing_cell)
 	RegisterSignal(parent, COMSIG_CELL_STOP_USE, .proc/stop_processing_cell)
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
-	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT, .proc/remove_cell)
+	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND , .proc/remove_cell)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
 	registered_signals += COMSIG_CELL_START_USE
 	registered_signals += COMSIG_CELL_STOP_USE
@@ -106,9 +106,12 @@ using loc where necessary.
 		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return FALSE
 	else if(!inserted_cell.use(use_amount))
+		inserted_cell.update_appearance()
 		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
 		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return FALSE
+
+	inserted_cell.update_appearance()
 
 	SEND_SIGNAL(src, COMSIG_CELL_POWER_USED)
 	return TRUE
@@ -139,6 +142,8 @@ using loc where necessary.
 		cell_out_of_charge()
 		return
 
+	inserted_cell.update_appearance()
+
 /datum/component/cell/proc/cell_out_of_charge()
 	SIGNAL_HANDLER
 
@@ -156,10 +161,10 @@ using loc where necessary.
 	else
 		examine_list += "<span class='notice'>It has [inserted_cell] inserted, charge indicator reading [inserted_cell.charge]."
 
-/datum/component/cell/proc/remove_cell(datum/source, mob/user)
+/datum/component/cell/proc/remove_cell(atom/parent_atom, mob/living/carbon/user)
 	SIGNAL_HANDLER
 
-	if(!equipment.can_interact(user))
+	if(!(equipment.loc == user) && !user.is_holding(equipment))
 		return
 
 	if(inside_robot)

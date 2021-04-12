@@ -87,10 +87,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	//SKYRAT EDIT ADDITION BEGIN
 	var/power_cell_use = POWER_CELL_USE_LOW
+	var/cell_override = /obj/item/stock_parts/cell/upgraded/plus
 
 /obj/item/pda/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
+	AddComponent(/datum/component/cell, cell_override, power_cell_use)
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/pda/suicide_act(mob/living/carbon/user)

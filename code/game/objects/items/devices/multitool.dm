@@ -34,7 +34,7 @@
 	var/mode = 0
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_NORMAL
+	var/power_cell_use = POWER_CELL_USE_LOW
 	var/cell_override
 
 /obj/item/multitool/ComponentInitialize()

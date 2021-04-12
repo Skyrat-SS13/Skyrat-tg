@@ -6,24 +6,10 @@
 	///Used for topic calls. Just because you have a HUD display doesn't mean you should be able to interact with stuff.
 	var/hud_trait = null
 
-	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_VERY_LOW
-
-/obj/item/clothing/glasses/hud/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
-
 /obj/item/clothing/glasses/hud/equipped(mob/living/carbon/human/user, slot)
 	..()
 	if(slot != ITEM_SLOT_EYES)
 		return
-	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return
-	//SKYRAT EDIT END
-	SEND_SIGNAL(src, COMSIG_CELL_START_USE) //SKYRAT EDIT ADDITION
 	if(hud_type)
 		var/datum/atom_hud/H = GLOB.huds[hud_type]
 		H.add_hud_to(user)
@@ -34,7 +20,6 @@
 	..()
 	if(!istype(user) || user.glasses != src)
 		return
-	SEND_SIGNAL(src, COMSIG_CELL_STOP_USE) //SKYRAT EDIT ADDITION
 	if(hud_type)
 		var/datum/atom_hud/H = GLOB.huds[hud_type]
 		H.remove_hud_from(user)
