@@ -12,3 +12,9 @@
 	desc = "Don't let corporate crooks slip this into your lunch."
 	tastes = list("the jungle" = 1, "acid" = 1)
 	spawned_mob = /mob/living/carbon/alien/humanoid/hunter //This is catatonic.
+
+/obj/item/food/monkeycube/pickle
+	name = "pickle cube"
+	desc = "For when you need to avoid family therapy."
+	tastes = list("humor" = 1, "brine" = 1)
+	spawned_mob = /mob/living/simple_animal/pickle //This is a pickle.	
