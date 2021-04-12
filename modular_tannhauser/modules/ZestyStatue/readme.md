@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/21 <!--PR Number-->
+https://github.com/Sea-of-Lost-Souls/Tannhauser-Gate/pull/21 <!--PR Number-->
 
 ## Title: <!--Title of your addition-->
 

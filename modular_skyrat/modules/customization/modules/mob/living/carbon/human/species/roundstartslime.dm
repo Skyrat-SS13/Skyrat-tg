@@ -156,7 +156,7 @@
 			H.icon_render_key = "" //Just in case
 			H.update_body()
 		if("DNA Specifics")
-			var/dna_alteration = input(H, "Select what part of your DNA you'd like to alter", "DNA Alteration", "cancel") in list("Penis Size","Penis Girth", "Penis Sheath", "Penis Taur Mode", "Balls Size", "Breasts Size", "Breasts Lactation", "Body Size", "Cancel")
+			var/dna_alteration = input(H, "Select what part of your DNA you'd like to alter", "DNA Alteration", "cancel") in list("Body Size", "Cancel") // "Penis Size","Penis Girth", "Penis Sheath", "Penis Taur Mode", "Balls Size", "Breasts Size", "Breasts Lactation",  removed
 			if(!dna_alteration || dna_alteration == "Cancel")
 				return
 			switch(dna_alteration)
