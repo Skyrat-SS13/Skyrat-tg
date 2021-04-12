@@ -8,3 +8,4 @@
 	build_path = /obj/item/skillchip/fastclimb
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	

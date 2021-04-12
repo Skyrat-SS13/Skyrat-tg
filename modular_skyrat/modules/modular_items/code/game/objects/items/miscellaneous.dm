@@ -21,3 +21,4 @@
 	skill_icon = "swimming-pool"
 	activate_message = "<span class='notice'>You feel like you can take it two rungs at a time!.</span>"
 	deactivate_message = "<span class='notice'>You give up on your dreams of being a fireman.</span>"
+	
