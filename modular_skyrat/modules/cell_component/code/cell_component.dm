@@ -62,21 +62,19 @@ using loc where necessary.
 	RegisterSignal(parent, COMSIG_CELL_START_USE, .proc/start_processing_cell)
 	RegisterSignal(parent, COMSIG_CELL_STOP_USE, .proc/stop_processing_cell)
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/insert_cell)
-	RegisterSignal(parent, COMSIG_ATOM_ATTACK_HAND , .proc/remove_cell)
+	RegisterSignal(parent, COMSIG_CLICK_CTRL_SHIFT , .proc/remove_cell)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examine_cell)
 	registered_signals += COMSIG_CELL_START_USE
 	registered_signals += COMSIG_CELL_STOP_USE
 	registered_signals += COMSIG_PARENT_ATTACKBY
 	registered_signals += COMSIG_CLICK_CTRL_SHIFT
 	registered_signals += COMSIG_PARENT_EXAMINE
-	registered_signals += COMSIG_CELL_SIMPLE_POWER_USE
 
 	//Parent to Component signal registires
-	if(istype(parent, /obj/item/flashlight))
-		parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /obj/item/flashlight.proc/turn_off)
-		parent.RegisterSignal(src, COMSIG_CELL_REMOVED, /obj/item/flashlight.proc/turn_off)
-		parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
-		parent_registered_signals += COMSIG_CELL_REMOVED
+	parent.RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, /atom.proc/component_cell_out_of_charge)
+	parent.RegisterSignal(src, COMSIG_CELL_REMOVED, /atom.proc/component_cell_removed)
+	parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
+	parent_registered_signals += COMSIG_CELL_REMOVED
 
 
 /datum/component/cell/UnregisterFromParent()
@@ -92,8 +90,6 @@ using loc where necessary.
 	return ..()
 
 /datum/component/cell/proc/simple_power_use(mob/user, use_amount, check_only = FALSE)
-	SIGNAL_HANDLER
-
 	if(!use_amount)
 		use_amount = power_use_amount
 
@@ -101,19 +97,16 @@ using loc where necessary.
 		to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
 		return FALSE
 
-	if(check_only && inserted_cell.charge < use_amount)
-		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
-		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
-		return FALSE
+	if(check_only)
+		if(inserted_cell.charge < use_amount)
+			to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+			return FALSE
 	else if(!inserted_cell.use(use_amount))
 		inserted_cell.update_appearance()
-		SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
 		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return FALSE
 
 	inserted_cell.update_appearance()
-
-	SEND_SIGNAL(src, COMSIG_CELL_POWER_USED)
 	return TRUE
 
 /datum/component/cell/proc/start_processing_cell()
@@ -134,10 +127,6 @@ using loc where necessary.
 	STOP_PROCESSING(SSobj, src)
 
 /datum/component/cell/process(delta_time)
-	if(!inserted_cell)
-		stop_processing_cell()
-		return
-
 	if(!inserted_cell.use(power_use_amount))
 		cell_out_of_charge()
 		return
@@ -146,11 +135,9 @@ using loc where necessary.
 
 /datum/component/cell/proc/cell_out_of_charge()
 	SIGNAL_HANDLER
-
 	SEND_SIGNAL(src, COMSIG_CELL_OUT_OF_CHARGE)
-
+	inserted_cell.update_appearance()
 	stop_processing_cell()
-
 	equipment.visible_message("[equipment] makes a soft humming noise as it shuts off!")
 
 /datum/component/cell/proc/examine_cell(atom/A, mob/user, list/examine_list)
@@ -159,12 +146,12 @@ using loc where necessary.
 	if(!inserted_cell)
 		examine_list += "<span class='danger'>It does not have a cell inserted!</span>"
 	else
-		examine_list += "<span class='notice'>It has [inserted_cell] inserted, charge indicator reading [inserted_cell.charge]."
+		examine_list += "<span class='notice'>It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left."
 
-/datum/component/cell/proc/remove_cell(atom/parent_atom, mob/living/carbon/user)
+/datum/component/cell/proc/remove_cell(datum/source, mob/user)
 	SIGNAL_HANDLER
 
-	if(!(equipment.loc == user) && !user.is_holding(equipment))
+	if(!equipment.can_interact(user))
 		return
 
 	if(inside_robot)
@@ -193,13 +180,17 @@ using loc where necessary.
 	if(!istype(inserting_item, /obj/item/stock_parts/cell))
 		return
 
-	var/obj/item/stock_parts/cell/doubleabattery = inserting_item
-
 	if(inserted_cell)
-		to_chat(user, "<span class='danger'>There is alread a cell inserted in [equipment]!")
+		to_chat(user, "<span class='danger'>There is alread a cell inserted in [equipment]!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You insert [doubleabattery] into [equipment]!")
+	to_chat(user, "<span class='notice'>You insert [inserting_item] into [equipment]!</span>")
 	playsound(equipment, 'sound/weapons/magin.ogg', 40, TRUE)
-	inserted_cell = doubleabattery
-	doubleabattery.forceMove(parent)
+	inserted_cell = inserting_item
+	inserting_item.forceMove(parent)
+
+/atom/proc/component_cell_out_of_charge()
+	return
+
+/atom/proc/component_cell_removed()
+	return component_cell_out_of_charge()

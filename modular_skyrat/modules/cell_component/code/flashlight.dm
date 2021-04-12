@@ -24,6 +24,9 @@
 	else
 		turn_on(user)
 
+/obj/item/flashlight/component_cell_out_of_charge()
+	turn_off()
+
 /obj/item/flashlight/proc/turn_off()
 	SIGNAL_HANDLER
 
