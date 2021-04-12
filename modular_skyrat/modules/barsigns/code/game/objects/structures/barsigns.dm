@@ -228,4 +228,3 @@
 	name = "The Hungry Bug"
 	icon = "hungrybug"
 	desc = "Stop by and enjoy some of the Hole's famous gyoza!"
-
