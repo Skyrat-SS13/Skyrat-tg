@@ -75,7 +75,7 @@
 		ladder.add_fingerprint(user)
 		var/adjusted_travel_time = travel_time
 		if(HAS_TRAIT(user, TRAIT_FASTCLIMB))
-			adjusted_climb_time *= 0.1
+			adjusted_travel_time *= 0.1
 		if(!do_after(user, travel_time, target = src))
 			return
 		show_fluff_message(going_up, user)
