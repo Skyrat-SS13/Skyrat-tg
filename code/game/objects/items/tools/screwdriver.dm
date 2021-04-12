@@ -153,4 +153,3 @@
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
 	random_color = FALSE
-	uses_battery = FALSE // SKYRAT EDIT ADDTITION
