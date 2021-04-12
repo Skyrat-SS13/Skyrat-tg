@@ -52,7 +52,7 @@ using loc where necessary.
 		if(cell_override)
 			new_cell = new cell_override()
 		else
-			new_cell = new /obj/item/stock_parts/cell/crap()
+			new_cell = new /obj/item/stock_parts/cell/upgraded()
 		inserted_cell = new_cell
 		new_cell.forceMove(parent)
 

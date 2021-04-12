@@ -4,7 +4,7 @@
 	/// Does this flashlight have a cell override?
 	var/cell_override
 	/// How much power(per process) does this flashlight use? If any.
-	var/power_cell_use = POWER_CELL_USE_LOW
+	var/power_cell_use = POWER_CELL_USE_VERY_LOW
 
 /obj/item/flashlight/Initialize()
 	. = ..()

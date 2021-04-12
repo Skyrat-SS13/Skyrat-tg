@@ -5,7 +5,7 @@
 #define POWER_CELL_USE_VERY_LOW 10
 /// For items that generally wouldn't use very much power.
 #define POWER_CELL_USE_LOW 30
-/// For items that use an average amount of power.
+/// For items that use a average amount of power.
 #define POWER_CELL_USE_NORMAL 50
 /// For items that use a high amount of power.
 #define POWER_CELL_USE_HIGH 70
