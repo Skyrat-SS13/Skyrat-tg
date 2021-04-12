@@ -69,10 +69,12 @@
 
 	//SKYRAT EDIT ADDITION BEGIN
 	var/power_cell_use = POWER_CELL_USE_NORMAL
+	var/uses_battery = TRUE
 
 /obj/item/crowbar/power/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
+	if(uses_battery)
+		AddComponent(/datum/component/cell, null, power_cell_use)
 	//SKYRAT EDIT END
 
 /obj/item/crowbar/power/syndicate
@@ -146,3 +148,4 @@
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 10
 	toolspeed = 0.5
+	uses_battery = FALSE //SKYRAT EDIT ADDITION

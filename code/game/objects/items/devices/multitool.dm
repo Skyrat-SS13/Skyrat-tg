@@ -36,10 +36,12 @@
 	//SKYRAT EDIT ADDITION BEGIN
 	var/power_cell_use = POWER_CELL_USE_LOW
 	var/cell_override
+	var/uses_battery = TRUE
 
 /obj/item/multitool/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, cell_override, power_cell_use)
+	if(uses_battery)
+		AddComponent(/datum/component/cell, cell_override, power_cell_use)
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/multitool/examine(mob/user)
@@ -184,3 +186,4 @@
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "multitool_cyborg"
 	toolspeed = 0.5
+	uses_battery = FALSE

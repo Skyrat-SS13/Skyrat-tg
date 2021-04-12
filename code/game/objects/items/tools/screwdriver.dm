@@ -112,10 +112,12 @@
 
 	//SKYRAT EDIT ADDITION BEGIN
 	var/power_cell_use = POWER_CELL_USE_NORMAL
+	var/uses_battery = TRUE
 
 /obj/item/screwdriver/power/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
+	if(uses_battery)
+		AddComponent(/datum/component/cell, null, power_cell_use)
 	//SKYRAT EDIT END
 
 
@@ -151,3 +153,4 @@
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
 	random_color = FALSE
+	uses_battery = FALSE // SKYRAT EDIT ADDTITION
