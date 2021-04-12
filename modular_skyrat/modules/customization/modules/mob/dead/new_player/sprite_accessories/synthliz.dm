@@ -57,6 +57,17 @@
 	name = "Synthetic Lizard - Barless Tertiary Under"
 	icon_state = "synthliz_barless_tertunder"
 
+//Protogen snoot
+/datum/sprite_accessory/snouts/synthliz/protogen
+	color_src = USE_MATRIXED_COLORS
+	name = "Protogen"
+	icon_state = "protogen"
+
+/datum/sprite_accessory/snouts/synthliz/protogen_withbolt
+	color_src = USE_MATRIXED_COLORS
+	name = "Protogen - With Bolt"
+	icon_state = "protogen_withbolt"
+
 
 //Synth tails
 /datum/sprite_accessory/tails/synthliz

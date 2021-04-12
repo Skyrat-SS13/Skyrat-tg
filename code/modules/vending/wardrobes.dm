@@ -519,6 +519,15 @@
 					/obj/item/clothing/suit/det_suit/noir = 1,
 					/obj/item/clothing/suit/toggle/labcoat/highvis = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/fedora = 2,
+					/obj/item/clothing/suit/discoblazer = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/misc/discounder = 2,
+					/obj/item/clothing/shoes/discoshoes = 2,
+					/obj/item/clothing/neck/tie/disco = 2,
+					/obj/item/clothing/suit/kimjacket = 2,
+					/obj/item/clothing/under/misc/kimunder = 2,
+					/obj/item/clothing/shoes/kimshoes = 2,
+					/obj/item/clothing/glasses/kim = 2,
+					/obj/item/clothing/gloves/kim = 2,	//SKYRAT EDIT ADD END
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,
 					/obj/item/reagent_containers/food/drinks/flask/det = 2,
