@@ -99,9 +99,8 @@
 /obj/machinery/cell_charger_multi/RefreshParts()
 	charge_rate = 250
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		charge_rate *= C.rating
-	clamp(charge_rate, 0, 1000) //Just because we have more capacitors does not mean we increase overall power beyond each individual charging ports output
-
+		charge_rate = clamp((charge_rate *= C.rating), 0, 1500)
+	
 /obj/machinery/cell_charger_multi/emp_act(severity)
 	. = ..()
 
