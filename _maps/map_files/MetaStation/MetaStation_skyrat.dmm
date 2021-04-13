@@ -51292,16 +51292,16 @@
 /area/security/office)
 "mfd" = (
 /obj/structure/table,
-/obj/item/circuitboard/machine/HFR_core,
-/obj/item/circuitboard/machine/HFR_fuel_input,
-/obj/item/circuitboard/machine/HFR_interface,
-/obj/item/circuitboard/machine/HFR_moderator_input,
-/obj/item/circuitboard/machine/HFR_waste_output,
 /obj/item/stack/cable_coil{
 	pixel_x = -3;
 	pixel_y = 3
 	},
 /obj/effect/turf_decal/bot,
+/obj/item/hfr_box/corner,
+/obj/item/hfr_box/corner,
+/obj/item/hfr_box/corner,
+/obj/item/hfr_box/corner,
+/obj/item/hfr_box/core,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
 "mfG" = (
@@ -56812,10 +56812,6 @@
 /area/security/checkpoint/supply)
 "olr" = (
 /obj/structure/table,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
 /obj/item/stack/cable_coil{
 	pixel_x = 3;
 	pixel_y = -7
@@ -56823,6 +56819,10 @@
 /obj/effect/turf_decal/bot,
 /obj/item/stack/sheet/plasteel/fifty,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/hfr_box/body/waste_output,
+/obj/item/hfr_box/body/moderator_input,
+/obj/item/hfr_box/body/interface,
+/obj/item/hfr_box/body/fuel_input,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "olU" = (
@@ -77982,10 +77982,11 @@
 /turf/open/floor/plating,
 /area/engineering/main)
 "wnw" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron,
 /area/engineering/atmos)
 "wnx" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/warning{
@@ -81096,9 +81097,9 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "xwF" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers,
+/turf/open/floor/plating,
 /area/engineering/atmos)
 "xwG" = (
 /obj/machinery/door/airlock/maintenance{
@@ -128142,7 +128143,7 @@ cfu
 aaf
 aaf
 jMk
-wnw
+hRS
 jMk
 gfX
 eOt
@@ -129178,7 +129179,7 @@ ubx
 ekh
 tdZ
 pqE
-pqE
+wnw
 cor
 aaa
 aaa
@@ -129434,9 +129435,9 @@ eOt
 tvX
 dRZ
 pqE
-xwF
+pqE
 xoc
-mtK
+xwF
 kuD
 aaa
 aaa
