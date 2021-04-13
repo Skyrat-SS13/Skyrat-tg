@@ -201,13 +201,10 @@ SUBSYSTEM_DEF(statpanels)
 
 	statbrowser_ready = TRUE
 	init_verbs()
-<<<<<<< HEAD
-*/
-=======
 
 /client/verb/update_verbs()
 	set name = "Update Verbs"
 	set hidden = TRUE
 
 	init_verbs()
->>>>>>> 20b5420254e (Allow splitting admin tabs (#58310))
+*/
