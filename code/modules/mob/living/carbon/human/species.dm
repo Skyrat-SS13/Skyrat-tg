@@ -643,15 +643,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  * Arguments:
  * * species_human - Human, whoever we're handling the body for
  */
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
-/datum/species/proc/handle_body(mob/living/carbon/human/H)
-	H.remove_overlay(BODY_LAYER)
-=======
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
->>>>>>> 09ab61ae056 (Four New Sects, small rethemes to first 3 (#57820))
 
 	var/list/standing = list()
 
@@ -763,15 +758,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(standing.len)
 		species_human.overlays_standing[BODY_LAYER] = standing
 
-<<<<<<< HEAD
-	H.apply_overlay(BODY_LAYER)
-	handle_mutant_bodyparts(H)
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	species_human.apply_overlay(BODY_LAYER)
 	handle_mutant_bodyparts(species_human)
->>>>>>> 09ab61ae056 (Four New Sects, small rethemes to first 3 (#57820))
+*/
+//SKYRAT EDIT REMOVAL END
 
 /**
  * Handles the mutant bodyparts of a human
