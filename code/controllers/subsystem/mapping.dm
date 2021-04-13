@@ -277,7 +277,7 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	LoadGroup(FailedZs, "Rockplanet", "skyrat/planets", "rockplanet.dmm", default_traits = ZTRAITS_ROCKPLANET)
 	LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits=ZTRAITS_REEBE) //SKYRAT EDIT - FORCED CWC (OH GOD)
-  
+
 	if(config.minetype == "lavaland")
 		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
 	else if (!isnull(config.minetype) && config.minetype != "none")
