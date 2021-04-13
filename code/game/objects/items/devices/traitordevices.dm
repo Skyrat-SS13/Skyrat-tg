@@ -293,9 +293,10 @@ effective or pretty fucking useless.
 	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
 	//active = !active SKYRAT EDIT REMOVAL
 	if(active)
-		turn_off() //SKYRAT EDIT CHANGE
-	else
 		turn_on() //SKYRAT EDIT CHANGE
+	else
+		turn_off() //SKYRAT EDIT CHANGE
+
 	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") //SKYRAT EDIT MOVE
 	update_appearance()
 
