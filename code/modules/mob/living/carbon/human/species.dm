@@ -664,6 +664,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
+			var/obj/item/organ/eyes/E = H.getorganslot(ORGAN_SLOT_EYES)
+			var/mutable_appearance/eye_overlay
+			if(!E)
+				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+			else
+				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', E.eye_icon_state, -BODY_LAYER)
+			if((EYECOLOR in species_traits) && E)
+				eye_overlay.color = "#" + H.eye_color
+			if(OFFSET_FACE in H.dna.species.offset_features)
+				eye_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
+				eye_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
+			standing += eye_overlay
 			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
 			var/list/eye_overlays
@@ -693,7 +705,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					if((EYECOLOR in species_traits) && eye_organ)
 						eye_overlay.color = "#" + species_human.eye_color
 					standing += eye_overlay
-
 	// organic body markings
 	if(HAS_MARKINGS in species_traits)
 		var/obj/item/bodypart/chest/chest = species_human.get_bodypart(BODY_ZONE_CHEST)
