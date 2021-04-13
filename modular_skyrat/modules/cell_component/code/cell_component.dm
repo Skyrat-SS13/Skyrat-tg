@@ -182,7 +182,7 @@ using loc where necessary.
 		return
 
 	if(inserted_cell)
-		to_chat(user, "<span class='danger'>There is alread a cell inserted in [equipment]!</span>")
+		to_chat(user, "<span class='danger'>There is already a cell inserted in [equipment]!</span>")
 		return
 
 	to_chat(user, "<span class='notice'>You insert [inserting_item] into [equipment]!</span>")
