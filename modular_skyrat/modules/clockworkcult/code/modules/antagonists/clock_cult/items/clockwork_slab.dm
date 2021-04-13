@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 		purchased_scriptures += script
 		var/datum/clockcult/scripture/default_script = new script
 		bind_spell(null, default_script, pos++)
-	..()
+	return ..()
 
 /obj/item/clockwork/clockwork_slab/dropped(mob/user)
 	//Clear quickbinds
