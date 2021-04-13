@@ -395,7 +395,7 @@
 
 	icon_state = "monkeymind"
 	inhand_icon_state = "monkeymind"
-	strip_delay = 100
+	strip_delay = 120 //SKYRAT EDIT CHANGE
 	var/mob/living/carbon/human/magnification = null ///if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
 	var/polling = FALSE///if the helmet is currently polling for targets (special code for removal)
 	var/light_colors = 1 ///which icon state color this is (red, blue, yellow)
@@ -438,7 +438,7 @@
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, .proc/make_fall_off)
 	polling = TRUE
-	var/list/candidates = pollCandidatesForMob("Do you want to play as a mind magnified monkey?", ROLE_SENTIENCE, null, ROLE_SENTIENCE, 50, magnification, POLL_IGNORE_SENTIENCE_POTION)
+	var/list/candidates = pollCandidatesForMob("Do you want to play as a mind magnified monkey?", ROLE_SENTIENCE, M = magnification, ignore_category = POLL_IGNORE_SENTIENCE_POTION) //SKYRAT EDIT CHANGE
 	polling = FALSE
 	if(!magnification)
 		return
@@ -482,15 +482,17 @@
 	//either used up correctly or taken off before polling finished (punish this by destroying the helmet)
 	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
+	/* SKYRAT EDIT REMOVAL
 	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	visible_message("<span class='warning'>[src] fizzles and breaks apart!</span>")
+	*/
+	magnification.dropItemToGround(src)
 	magnification = null
-	new /obj/effect/decal/cleanable/ash/crematorium(drop_location()) //just in case they're in a locker or other containers it needs to use crematorium ash, see the path itself for an explanation
+	//new /obj/effect/decal/cleanable/ash/crematorium(drop_location()) SKYRAT EDIT REMOVAL //just in case they're in a locker or other containers it needs to use crematorium ash, see the path itself for an explanation
 
 /obj/item/clothing/head/helmet/monkey_sentience/dropped(mob/user)
 	. = ..()
-	if(magnification || polling)
-		qdel(src)//runs disconnect code
+	disconnect()
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/make_fall_off()
 	if(magnification)
