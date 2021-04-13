@@ -11,8 +11,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/dsay, /*talk in deadchat using our ckey/fakekey*/
 	/client/proc/investigate_show, /*various admintools for investigation. Such as a singulo grief-log*/
-
-/client/proc/secrets,
+	/client/proc/secrets,
 	/client/proc/toggle_hear_radio, /*allows admins to hide all radio output*/
 	/client/proc/toggle_split_admin_tabs,
 	/client/proc/reload_admins,
