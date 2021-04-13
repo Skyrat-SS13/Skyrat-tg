@@ -43,8 +43,8 @@ using loc where necessary.
 
 	equipment = parent
 
-	if(istype(equipment.loc, /mob/living/silicon/robot)) //Le shitcode for le shitcode robits
-		var/mob/living/silicon/robot/robit = equipment.loc
+	if(istype(equipment.loc, /obj/item/robot_model)) //Le shitcode for le shitcode robits
+		var/mob/living/silicon/robot/robit = equipment.loc.loc
 		inserted_cell = robit.cell
 		inside_robot = TRUE
 	else
@@ -145,8 +145,10 @@ using loc where necessary.
 
 	if(!inserted_cell)
 		examine_list += "<span class='danger'>It does not have a cell inserted!</span>"
-	else
+	else if(!inside_robot)
 		examine_list += "<span class='notice'>It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left."
+	else
+		examine_list += "<span class='notice'>It is drawing power from an external powersource, reading <b>[inserted_cell.percent()]%</b> charge.</span>"
 
 /datum/component/cell/proc/remove_cell(datum/source, mob/user)
 	SIGNAL_HANDLER

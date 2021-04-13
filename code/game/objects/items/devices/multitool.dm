@@ -186,4 +186,3 @@
 	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "multitool_cyborg"
 	toolspeed = 0.5
-	uses_battery = FALSE
