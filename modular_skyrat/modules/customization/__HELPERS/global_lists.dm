@@ -4,8 +4,29 @@
 	make_body_marking_set_references()
 	make_loadout_references()
 	make_augment_references()
+	make_culture_references()
 	//We're loading donators here because it's the least intrusive way modularly
 	load_donators()
+
+/proc/make_culture_references()
+	for(var/path in subtypesof(/datum/cultural_info/culture))
+		var/datum/cultural_info/L = path
+		if(!initial(L.name))
+			continue
+		L = new path()
+		GLOB.culture_cultures[path] = L
+	for(var/path in subtypesof(/datum/cultural_info/location))
+		var/datum/cultural_info/L = path
+		if(!initial(L.name))
+			continue
+		L = new path()
+		GLOB.culture_locations[path] = L
+	for(var/path in subtypesof(/datum/cultural_info/faction))
+		var/datum/cultural_info/L = path
+		if(!initial(L.name))
+			continue
+		L = new path()
+		GLOB.culture_factions[path] = L
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories

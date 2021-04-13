@@ -18,6 +18,10 @@
 	name = "Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 
+/datum/loadout_item/glasses/eyepatchright
+	name = "Right Eyepatch"
+	path = /obj/item/clothing/glasses/eyepatch/right
+
 /datum/loadout_item/glasses/heat
 	name = "Heat goggles"
 	path = /obj/item/clothing/glasses/heat
@@ -58,11 +62,22 @@
 	name = "White Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch/white
 
+/datum/loadout_item/glasses/whiteeyepatchright
+	name = "White Eyepatch"
+	path = /obj/item/clothing/glasses/eyepatch/whiteright
+
+
 /datum/loadout_item/glasses/medic
 	name = "Medical Eyepatch"
 	path = /obj/item/clothing/glasses/hud/med/eyepatchsr
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
 	restricted_desc = "Medical"
+
+/datum/loadout_item/glasses/medicright
+	name = "Right Medical Eyepatch"
+	path = /obj/item/clothing/glasses/hud/med/righteyepatchsr
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
+	restricted_desc = "lacideM"
 
 /datum/loadout_item/glasses/robo
 	name = "Diagnostic Eyepatch"
@@ -70,11 +85,23 @@
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
 	restricted_desc = "Science"
 
+/datum/loadout_item/glasses/roboright
+	name = "Right Diagnostic Eyepatch"
+	path = /obj/item/clothing/glasses/hud/diagnostic/righteyepatchsr
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
+	restricted_desc = "ecneicS"
+
 /datum/loadout_item/glasses/sci
 	name = "Science Eyepatch"
 	path = /obj/item/clothing/glasses/hud/sci/eyepatchsr
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Chemist")
 	restricted_desc = "Science"
+
+/datum/loadout_item/glasses/sciright
+	name = "Right Science Eyepatch"
+	path = /obj/item/clothing/glasses/hud/sci/righteyepatchsr
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Chemist")
+	restricted_desc = "ecneicS"
 
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"
@@ -85,3 +112,13 @@
 	name = "Security Eyepatch Hud"
 	path = /obj/item/clothing/glasses/hud/sec/eyepatchsr
 	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security")
+
+/datum/loadout_item/glasses/sechud/righteyepatch
+	name = "Right Security Eyepatch Hud"
+	path = /obj/item/clothing/glasses/hud/sec/righteyepatchsr
+	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security")
+	restricted_desc = "ytiruceS"
+
+
+
+

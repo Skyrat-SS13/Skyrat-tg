@@ -304,8 +304,12 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	switch(get_status())
 		if(SUPERMATTER_DELAMINATING)
 			playsound(src, 'sound/misc/bloblarm.ogg', 100, FALSE, 40, 30, falloff_distance = 10)
+			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/meltdown.ogg')
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alert1.ogg')
 		if(SUPERMATTER_EMERGENCY)
 			playsound(src, 'sound/machines/engine_alert1.ogg', 100, FALSE, 30, 30, falloff_distance = 10)
+			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/core_overheating.ogg')
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alert1.ogg')
 		if(SUPERMATTER_DANGER)
 			playsound(src, 'sound/machines/engine_alert2.ogg', 100, FALSE, 30, 30, falloff_distance = 10)
 		if(SUPERMATTER_WARNING)
@@ -362,6 +366,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			L.rad_act(rads)
 
 	var/turf/T = get_turf(src)
+	alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/explode.ogg')
 	for(var/mob/M in GLOB.player_list)
 		var/turf/mob_turf = get_turf(M)
 		if(T.z == mob_turf.z)
@@ -507,9 +512,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		//This is more error prevention, according to all known laws of atmos, gas_mix.remove() should never make negative mol values.
 		//But this is tg
 
-		//Lets get the proportions of the gasses in the mix and then slowly move our comp to that value
-		//Can cause an overestimation of mol count, should stabalize things though.
-		//Prevents huge bursts of gas/heat when a large amount of something is introduced
+		//Lets get the proportions of the gasses in the mix for scaling stuff later
 		//They range between 0 and 1
 		for(var/gasID in gases_we_care_about)
 			gas_comp[gasID] = clamp(removed.gases[gasID][MOLES] / combined_gas, 0, 1)
@@ -518,7 +521,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		var/list/transit_mod = gases_we_care_about.Copy()
 		var/list/resistance_mod = gases_we_care_about.Copy()
 
-		//We're concerned about pluoxium being too easy to abuse at low percents, so we make sure there's a substantial amount.
 		var/h2obonus = 1 - (gas_comp[/datum/gas/water_vapor] * 0.25)//At max this value should be 0.75
 		var/freonbonus = (gas_comp[/datum/gas/freon] <= 0.03) //Let's just yeet power output if this shit is high
 

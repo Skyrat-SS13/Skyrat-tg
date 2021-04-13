@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/food/canned = 25,
 		/obj/item/food/canned/beans = 100,
 		/obj/item/food/canned/peaches/maint = 300,
-		/obj/item/food/chewable/spiderlollipop = 25,
+		/obj/item/food/spiderlollipop = 25,
 		/obj/item/food/rationpack = 200,
 		/obj/item/food/syndicake = 50,
 		/obj/item/grenade/iedcasing = 25,

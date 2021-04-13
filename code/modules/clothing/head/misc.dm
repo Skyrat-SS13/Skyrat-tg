@@ -338,6 +338,7 @@
 	attack_verb_simple = list("warn", "caution", "smash")
 	resistance_flags = NONE
 	dynamic_hair_suffix = ""
+	mutant_variants = NONE // SKYRAT EDIT ADD
 
 /obj/item/clothing/head/santa
 	name = "santa hat"
