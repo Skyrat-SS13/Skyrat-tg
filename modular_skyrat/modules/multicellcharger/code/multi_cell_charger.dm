@@ -92,7 +92,7 @@
 	if(!charging_batteries.len)
 		return
 
-	to_chat(user, "<span class='notice'>You telekinetically remove [removecell()] from [src].</span>")
+	to_chat(user, "<span class='notice'>You telekinetically remove [removecell(user)] from [src].</span>")
 
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
@@ -100,7 +100,7 @@
 	charge_rate = 250
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		charge_rate = clamp((charge_rate *= C.rating), 0, 1500)
-	
+
 /obj/machinery/cell_charger_multi/emp_act(severity)
 	. = ..()
 
@@ -116,15 +116,6 @@
 	charging_batteries = null
 	return ..()
 
-/obj/machinery/cell_charger_multi/proc/removecell()
-	if(!charging_batteries.len)
-		return FALSE
-	var/obj/item/stock_parts/cell/charging = charging_batteries[1] //Remove the first cells in the list
-	charging.forceMove(drop_location())
-	charging.update_appearance()
-	charging_batteries -= charging
-	update_appearance()
-	return charging
 
 /obj/machinery/cell_charger_multi/attack_ai(mob/user)
 	return
@@ -134,7 +125,7 @@
 	if(.)
 		return
 
-	var/obj/item/stock_parts/cell/charging = removecell()
+	var/obj/item/stock_parts/cell/charging = removecell(user)
 
 	if(!charging)
 		return
@@ -143,6 +134,26 @@
 	charging.add_fingerprint(user)
 
 	user.visible_message("<span class='notice'>[user] removes [charging] from [src].</span>", "<span class='notice'>You remove [charging] from [src].</span>")
+
+/obj/machinery/cell_charger_multi/proc/removecell(mob/user)
+	if(!charging_batteries.len)
+		return FALSE
+	var/obj/item/stock_parts/cell/charging
+	if(charging_batteries.len > 1)
+		var/list/buttons = list()
+		for(var/obj/item/stock_parts/cell/battery in charging_batteries)
+			buttons["[battery] [battery.percent()]%"] = battery
+		var/cell_name = tgui_input_list(user, "Please choose what cell you'd like to remove.", "Remove a cell", buttons)
+		charging = buttons[cell_name]
+	else
+		charging = charging_batteries[1]
+	if(!charging)
+		return FALSE
+	charging.forceMove(drop_location())
+	charging.update_appearance()
+	charging_batteries -= charging
+	update_appearance()
+	return charging
 
 /obj/machinery/cell_charger_multi/Destroy()
 	for(var/obj/item/stock_parts/cell/charging in charging_batteries)
