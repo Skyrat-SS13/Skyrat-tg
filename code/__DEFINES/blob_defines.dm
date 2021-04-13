@@ -7,7 +7,7 @@
 #define OVERMIND_STARTING_REROLLS                   1           // Free strain rerolls at the start
 #define OVERMIND_STARTING_MIN_PLACE_TIME            1 MINUTES   // Minimum time before the core can be placed
 #define OVERMIND_STARTING_AUTO_PLACE_TIME           6 MINUTES   // After this time, randomly place the core somewhere viable
-#define OVERMIND_WIN_CONDITION_AMOUNT               700         // Blob structures required to win
+#define OVERMIND_WIN_CONDITION_AMOUNT               400         // Blob structures required to win
 #define OVERMIND_ANNOUNCEMENT_MIN_SIZE              75          // Once the blob has this many structures, announce their presence
 #define OVERMIND_ANNOUNCEMENT_MAX_TIME              10 MINUTES  // If the blob hasn't reached the minimum size before this time, announce their presence
 #define OVERMIND_MAX_CAMERA_STRAY                   "3x3"       // How far the overmind camera is allowed to stray from blob tiles. 3x3 is 1 tile away, 5x5 2 tiles etc
