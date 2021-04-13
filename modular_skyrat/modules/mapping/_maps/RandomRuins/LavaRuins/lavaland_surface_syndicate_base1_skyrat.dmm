@@ -1779,9 +1779,9 @@
 	},
 /obj/structure/bookcase/random,
 /obj/machinery/button/door{
-	pixel_y = 0;
 	id = "lavalandsyndi_dorms";
 	pixel_x = -32;
+	pixel_y = 0;
 	req_access_txt = "150"
 	},
 /obj/machinery/light{
@@ -3690,9 +3690,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
-/obj/machinery/computer/monitor/secret{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
@@ -3828,12 +3825,6 @@
 /obj/item/bedsheet/dorms,
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
-"JT" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "JW" = (
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 1
@@ -4558,7 +4549,7 @@
 "Rm" = (
 /obj/machinery/porta_turret/syndicate,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/bar)
+/area/ruin/unpowered/syndicate_lava_base/engineering)
 "Ro" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 5
@@ -5406,9 +5397,11 @@
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "ZJ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/ruin/unpowered/syndicate_lava_base/engineering)
 "ZM" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /obj/machinery/door/poddoor{
@@ -7468,7 +7461,7 @@ PR
 gF
 gR
 ZJ
-JT
+Gb
 Gb
 Gb
 Gb
@@ -7684,8 +7677,8 @@ Vj
 Vj
 Vj
 Vj
-Nu
-Nu
+Vj
+Vj
 Rm
 ab
 ab
