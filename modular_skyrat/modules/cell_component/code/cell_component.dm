@@ -161,7 +161,7 @@ using loc where necessary.
 	if(inserted_cell)
 		to_chat(user, "<span class='notice'>You remove [inserted_cell] from [equipment]!</span>")
 		playsound(equipment, 'sound/weapons/magout.ogg', 40, TRUE)
-		inserted_cell.forceMove(equipment.loc)
+		inserted_cell.forceMove(get_turf(equipment))
 		INVOKE_ASYNC(user, /mob/living.proc/put_in_hands, inserted_cell)
 		inserted_cell = null
 		SEND_SIGNAL(src, COMSIG_CELL_REMOVED)
