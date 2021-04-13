@@ -119,6 +119,20 @@
 					/obj/item/melee/classic_baton/peacekeeper)
 	crate_name = "baton crate"
 
+/datum/supply_pack/security/croonsurplus
+	name = "Croon Weapons Crate"
+	desc = "Help out in a local revolt, or fund a civil war, it's not like you have a choice in supplier. (Comes with four magazines of ammo.)"
+	cost = CARGO_CRATE_VALUE * 40
+	contraband = TRUE
+	contains = list(/obj/item/gun/ballistic/automatic/croon/nomag,
+					/obj/item/gun/ballistic/automatic/croon/nomag,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon)
+	crate_name = "unmarked weapons crate"
+	dangerous = TRUE
+	
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
