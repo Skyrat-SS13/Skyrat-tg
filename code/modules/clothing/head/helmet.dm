@@ -457,6 +457,7 @@
 	if(policy)
 		to_chat(magnification, policy)
 	icon_state = "[icon_state]up"
+	REMOVE_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //SKYRAT EDIT ADDITION
 
 /obj/item/clothing/head/helmet/monkey_sentience/Destroy()
 	disconnect()
@@ -484,6 +485,7 @@
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 	playsound(src, "sparks", 100, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	visible_message("<span class='warning'>[src] fizzles and breaks apart!</span>")
+	ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //SKRYAT EDIT ADDITION
 	magnification = null
 	new /obj/effect/decal/cleanable/ash/crematorium(drop_location()) //just in case they're in a locker or other containers it needs to use crematorium ash, see the path itself for an explanation
 
