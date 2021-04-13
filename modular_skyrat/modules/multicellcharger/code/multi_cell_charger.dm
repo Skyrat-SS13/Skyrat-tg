@@ -34,7 +34,7 @@
 	if(!charging_batteries.len)
 		. += "There are no cells in [src]."
 	else
-		. += "There are [charging_batteries.len] in [src]."
+		. += "There are [charging_batteries.len] cells in [src]."
 		for(var/obj/item/stock_parts/cell/charging in charging_batteries)
 			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
@@ -49,7 +49,7 @@
 			to_chat(user, "<span class='warning'>[src] isn't attached to the ground!</span>")
 			return
 		if(charging_batteries.len >= 4)
-			to_chat(user, "<span class='warning'>[src] is full, and cannot hold anymore batteries!</span>")
+			to_chat(user, "<span class='warning'>[src] is full, and cannot hold anymore cells!</span>")
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
@@ -120,7 +120,7 @@
 /obj/machinery/cell_charger_multi/proc/removecell()
 	if(!charging_batteries.len)
 		return FALSE
-	var/obj/item/stock_parts/cell/charging = charging_batteries[1] //Remove the first battery in the list
+	var/obj/item/stock_parts/cell/charging = charging_batteries[1] //Remove the first cells in the list
 	charging.forceMove(drop_location())
 	charging.update_appearance()
 	charging_batteries -= charging
