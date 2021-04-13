@@ -259,13 +259,42 @@ effective or pretty fucking useless.
 	var/active = FALSE
 	var/range = 12
 
+	//SKYRAT EDIT ADDITION BEGIN
+	var/power_cell_use = POWER_CELL_USE_NORMAL
+
+/obj/item/jammer/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/cell, null, power_cell_use)
+
+/obj/item/jammer/component_cell_out_of_charge()
+	turn_off()
+
+/obj/item/jammer/proc/turn_on()
+	SEND_SIGNAL(src, COMSIG_CELL_START_USE)
+	active = TRUE
+	GLOB.active_jammers |= src
+
+/obj/item/jammer/proc/turn_off()
+	SEND_SIGNAL(src, COMSIG_CELL_STOP_USE)
+	active = FALSE
+	GLOB.active_jammers -= src
+	//SKYRAT EDIT END
+
 /obj/item/jammer/attack_self(mob/user)
-	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>")
-	active = !active
+	//SKYRAT EDIT ADDITON
+	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
+	if(battery_compartment)
+		if(!battery_compartment.simple_power_use(user))
+			turn_off()
+			return
+	//SKYRAT EDIT END
+	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
+	//active = !active SKYRAT EDIT REMOVAL
 	if(active)
-		GLOB.active_jammers |= src
+		turn_on() //SKYRAT EDIT CHANGE
 	else
-		GLOB.active_jammers -= src
+		turn_off() //SKYRAT EDIT CHANGE
+	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") //SKYRAT EDIT MOVE
 	update_appearance()
 
 /obj/item/storage/toolbox/emergency/turret
