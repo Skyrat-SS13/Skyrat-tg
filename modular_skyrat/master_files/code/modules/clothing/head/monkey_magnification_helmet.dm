@@ -3,7 +3,7 @@
 	desc = "A fragile, circuitry embedded helmet for boosting the intelligence of a monkey to a higher level. You see several warning labels..."
 	icon_state = "monkeymind"
 	inhand_icon_state = "monkeymind"
-	strip_delay = 120
+	strip_delay = 100
 	var/mob/living/carbon/human/magnification = null ///if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
 	var/polling = FALSE///if the helmet is currently polling for targets (special code for removal)
 	var/light_colors = 1 ///which icon state color this is (red, blue, yellow)
@@ -49,7 +49,7 @@
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/connect(mob/user)
 	polling = TRUE
-	var/list/candidates = pollCandidatesForMob("Do you want to play as a mind magnified monkey?", ROLE_SENTIENCE, M = magnification, ignore_category = POLL_IGNORE_SENTIENCE_POTION) //SKYRAT EDIT CHANGE
+	var/list/candidates = pollCandidatesForMob("Do you want to play as a mind magnified monkey?", ROLE_SENTIENCE, M = magnification, ignore_category = POLL_IGNORE_SENTIENCE_POTION)
 	polling = FALSE
 	if(!magnification)
 		return
@@ -71,12 +71,19 @@
 	REMOVE_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //Monkeys with sentience should be able to use less primitive tools.
 
 /obj/item/clothing/head/helmet/monkey_sentience/Destroy()
-	disconnect()
+	if(magnification)
+		ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT)
+		magnification = null
 	return ..()
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/disconnect()
 	if(!magnification) //not put on a viable head
 		return
+	//either used up correctly or taken off before polling finished (punish this by having a chance to gib the monkey?)
+	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
+	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
+	magnification.dropItemToGround(src)
+	ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //We removed it, now that they're back to being dumb, add the trait again.
 	if(!polling)//put on a viable head, but taken off after polling finished.
 		if(magnification.client)
 			to_chat(magnification, "<span class='userdanger'>You feel your flicker of sentience ripped away from you, as everything becomes dim...</span>")
@@ -91,13 +98,7 @@
 					magnification.gorillize()
 				if(4) //genetic mass susceptibility (gib)
 					magnification.gib()
-	//either used up correctly or taken off before polling finished (punish this by destroying the helmet)
-	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
-	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
-	magnification.dropItemToGround(src)
-	ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //We removed it, now that they're back to being dumb, add the trait again.
 	magnification = null
-
 
 /obj/item/clothing/head/helmet/monkey_sentience/dropped(mob/user)
 	. = ..()
