@@ -806,9 +806,12 @@ function remove_tickets() {
 function remove_interviews() {
 	if(tickets) {
 		tickets = [];
+<<<<<<< HEAD
 		removePermanentTab("Interviews");
 		if(current_tab == "Interviews")
 			tab_change("Status");
+=======
+>>>>>>> 74cfa33193f (Prevent flashing tabs issue (#58397))
 	}
 	checkStatusTab();
 }
