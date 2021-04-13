@@ -19,7 +19,7 @@ using loc where necessary.
 */
 
 /datum/component/cell
-	/// Our reference to the inserted cell, which will be stored in nullspace.
+	/// Our reference to the inserted cell, which will be stored in the parent.
 	var/obj/item/stock_parts/cell/inserted_cell
 	/// The item reference to parent
 	var/atom/equipment
@@ -79,8 +79,7 @@ using loc where necessary.
 
 /datum/component/cell/UnregisterFromParent()
 	UnregisterSignal(parent, registered_signals)
-	if(parent_registered_signals)
-		parent.UnregisterSignal(src, parent_registered_signals)
+	parent.UnregisterSignal(src, parent_registered_signals)
 
 /datum/component/cell/Destroy(force, silent)
 	if(inserted_cell)
