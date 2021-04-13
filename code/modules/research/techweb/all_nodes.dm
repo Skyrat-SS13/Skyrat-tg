@@ -170,7 +170,7 @@
 	//design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "sheetifier", "HFR_core", "HFR_fuel_input",
 	//"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface") //ORIGINAL
 	design_ids = list("engine_goggles", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "sheetifier", "HFR_core", "HFR_fuel_input",
-	"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface") //SKYRAT EDIT CHANGE - HUDS
+	"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface", "multi_cell_charger") //SKYRAT EDIT CHANGE - HUDS
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/random/material/medium/one = 4000)
 

@@ -48,7 +48,7 @@
 		if(!anchored)
 			to_chat(user, "<span class='warning'>[src] isn't attached to the ground!</span>")
 			return
-		if(charging_batteries.len > 4)
+		if(charging_batteries.len >= 4)
 			to_chat(user, "<span class='warning'>[src] is full, and cannot hold anymore batteries!</span>")
 			return
 		else
@@ -100,6 +100,7 @@
 	charge_rate = 250
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		charge_rate *= C.rating
+	clamp(charge_rate, 0, 1000) //Just because we have more capacitors does not mean we increase overall power beyond each individual charging ports output
 
 /obj/machinery/cell_charger_multi/emp_act(severity)
 	. = ..()
@@ -151,8 +152,16 @@
 	return ..()
 
 /obj/item/circuitboard/machine/cell_charger_multi
-	name = "Multi Cell Charger (Machine Board)"
+	name = "Multi-Cell Charger (Machine Board)"
 	icon_state = "engineering"
 	build_path = /obj/machinery/cell_charger_multi
 	req_components = list(/obj/item/stock_parts/capacitor = 4)
 	needs_anchored = FALSE
+
+
+/datum/design/board/cell_charger_multi
+	name = "Machine Design (Multi-Cell Charger Board)"
+	desc = "The circuit board for a multi-cell charger."
+	id = "multi_cell_charger"
+	build_path = /obj/item/circuitboard/machine/cell_charger_multi
+	category = list ("Misc. Machinery")
