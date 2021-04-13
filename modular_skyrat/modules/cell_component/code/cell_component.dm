@@ -76,7 +76,6 @@ using loc where necessary.
 	parent_registered_signals += COMSIG_CELL_OUT_OF_CHARGE
 	parent_registered_signals += COMSIG_CELL_REMOVED
 
-
 /datum/component/cell/UnregisterFromParent()
 	UnregisterSignal(parent, registered_signals)
 	parent.UnregisterSignal(src, parent_registered_signals)
