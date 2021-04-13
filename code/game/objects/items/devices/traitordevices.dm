@@ -267,18 +267,18 @@ effective or pretty fucking useless.
 	AddComponent(/datum/component/cell, null, power_cell_use)
 
 /obj/item/jammer/component_cell_out_of_charge()
+	active = FALSE
 	turn_off()
 
 /obj/item/jammer/proc/turn_on()
 	SIGNAL_HANDLER
 	SEND_SIGNAL(src, COMSIG_CELL_START_USE)
-	active = TRUE
+
 	GLOB.active_jammers |= src
 
 /obj/item/jammer/proc/turn_off()
 	SIGNAL_HANDLER
 	SEND_SIGNAL(src, COMSIG_CELL_STOP_USE)
-	active = FALSE
 	GLOB.active_jammers -= src
 	//SKYRAT EDIT END
 
@@ -286,12 +286,12 @@ effective or pretty fucking useless.
 	//SKYRAT EDIT ADDITON
 	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
 	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
+		if(!battery_compartment.simple_power_use(user, power_cell_use, TRUE))
 			turn_off()
 			return
 	//SKYRAT EDIT END
 	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
-	//active = !active SKYRAT EDIT REMOVAL
+	active = !active
 	if(active)
 		turn_on() //SKYRAT EDIT CHANGE
 	else
