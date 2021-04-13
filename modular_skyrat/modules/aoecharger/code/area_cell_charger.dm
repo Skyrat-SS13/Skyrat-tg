@@ -10,7 +10,7 @@
 	circuit = null
 	pass_flags = PASSTABLE
 	use_power = IDLE_POWER_USE
-	var/charge_rate = 250
+	var/charge_rate = 50 //Even now, in the future, wireless charging is a fad.
 	var/charge_range = 2
 	var/max_cells = 4
 	var/charging = FALSE
@@ -44,7 +44,7 @@
 
 /obj/machinery/wirelesscharger/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	if(!user.can_interact(src))
+	if(.)
 		return
 	if(!anchored || (machine_stat & (BROKEN|NOPOWER)))
 		return
