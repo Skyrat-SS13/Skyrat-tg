@@ -9,29 +9,18 @@
 	projectile_type = /obj/projectile/bullet/c10mm
 
 /obj/item/ammo_casing/c10mm/ap
-<<<<<<< HEAD
 //	name = "10mm armor-piercing bullet casing"		// SKYRAT EDIT: Original
 //	desc = "A 10mm armor-piercing bullet casing."	// SKYRAT EDIT: Original
 	name = "10mm Magnum armor-piercing bullet casing"							// SKYRAT EDIT
 	desc = "A 10mm Magnum bullet casing with an armor-piercing projectile."		// SKYRAT EDIT
-	projectile_type = /obj/projectile/bullet/c10mm_ap
+	projectile_type = /obj/projectile/bullet/c10mm/ap
 
 /obj/item/ammo_casing/c10mm/hp
 //	name = "10mm hollow-point bullet casing"		// SKYRAT EDIT: Original
 //	desc = "A 10mm hollow-point bullet casing."		// SKYRAT EDIT: Original
 	name = "10mm Magnum hollow-point bullet casing"								// SKYRAT EDIT
 	desc = "A 10mm Magnum bullet casing with a hollow-point projectile."		// SKYRAT EDIT
-	projectile_type = /obj/projectile/bullet/c10mm_hp
-=======
-	name = "10mm armor-piercing bullet casing"
-	desc = "A 10mm armor-piercing bullet casing."
-	projectile_type = /obj/projectile/bullet/c10mm/ap
-
-/obj/item/ammo_casing/c10mm/hp
-	name = "10mm hollow-point bullet casing"
-	desc = "A 10mm hollow-point bullet casing."
 	projectile_type = /obj/projectile/bullet/c10mm/hp
->>>>>>> 9deb7102c71 (Cleans up bullets to use subtypes for ammo variations (#57846))
 
 /obj/item/ammo_casing/c10mm/fire
 //	name = "10mm incendiary bullet casing"			// SKYRAT EDIT: Original
@@ -51,29 +40,18 @@
 	projectile_type = /obj/projectile/bullet/c9mm
 
 /obj/item/ammo_casing/c9mm/ap
-<<<<<<< HEAD
 //	name = "9mm armor-piercing bullet casing"		// SKYRAT EDIT: Original
 //	desc = "A 9mm armor-piercing bullet casing."	// SKYRAT EDIT: Original
 	name = "9x25mm Mk.12 armor-piercing bullet casing"	// SKYRAT EDIT
 	desc = "A modern 9x25mm Mk.12 bullet casing. This one fires an armor-piercing projectile."	// SKYRAT EDIT
-	projectile_type =/obj/projectile/bullet/c9mm_ap
+	projectile_type = /obj/projectile/bullet/c9mm/ap
 
 /obj/item/ammo_casing/c9mm/hp
 //	name = "9mm hollow-point bullet casing"			// SKYRAT EDIT: Original
 //	desc = "A 10mm hollow-point bullet casing."		// SKYRAT EDIT: Original
 	name = "9x25mm Mk.12 hollow-point bullet casing"	// SKYRAT EDIT
 	desc = "A modern 9x25mm Mk.12 bullet casing. This one fires a hollow-point projectile. Very lethal to unarmored opponents."	// SKYRAT EDIT
-	projectile_type = /obj/projectile/bullet/c9mm_hp
-=======
-	name = "9mm armor-piercing bullet casing"
-	desc = "A 9mm armor-piercing bullet casing."
-	projectile_type =/obj/projectile/bullet/c9mm/ap
-
-/obj/item/ammo_casing/c9mm/hp
-	name = "9mm hollow-point bullet casing"
-	desc = "A 9mm hollow-point bullet casing."
 	projectile_type = /obj/projectile/bullet/c9mm/hp
->>>>>>> 9deb7102c71 (Cleans up bullets to use subtypes for ammo variations (#57846))
 
 /obj/item/ammo_casing/c9mm/fire
 //	name = "9mm incendiary bullet casing"			// SKYRAT EDIT: Original
