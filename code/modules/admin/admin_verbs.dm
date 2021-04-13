@@ -14,10 +14,6 @@ GLOBAL_PROTECT(admin_verbs_default)
 
 	/client/proc/secrets,
 	/client/proc/toggle_hear_radio, /*allows admins to hide all radio output*/
-<<<<<<< HEAD
-=======
-	/client/proc/toggle_split_admin_tabs,
->>>>>>> 3295cdb0fa9 (Fix null cropping up in admin_verbs, which breaks everything (#58395))
 	/client/proc/reload_admins,
 	/client/proc/reestablish_db_connection, /*reattempt a connection to the database*/
 	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
