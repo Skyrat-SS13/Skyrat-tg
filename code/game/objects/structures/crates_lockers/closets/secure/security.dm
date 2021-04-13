@@ -143,6 +143,7 @@
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
 	new /obj/item/flashlight/seclite(src)
+	new /obj/item/holosign_creator/security(src) // SKYRAT EDIT ADD
 
 /obj/structure/closet/secure_closet/security/sec
 

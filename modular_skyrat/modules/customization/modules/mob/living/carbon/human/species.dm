@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	///Flavor text of the species displayed on character creation screeen
 	var/flavor_text = "No description."
 
-/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
+/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE)
 	var/list/standing	= list()
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		new_renderkey += "-[key]-[render_state]"
 		bodyparts_to_add[S] = render_state
 
-	if(new_renderkey == H.mutant_renderkey)
+	if(new_renderkey == H.mutant_renderkey && !force_update)
 		return
 	H.mutant_renderkey = new_renderkey
 
@@ -263,6 +263,12 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
+	/// Available cultural informations
+	var/list/cultures = list(CULTURES_EXOTIC, CULTURES_HUMAN)
+	var/list/locations = list(LOCATIONS_GENERIC, LOCATIONS_HUMAN)
+	var/list/factions = list(FACTIONS_GENERIC, FACTIONS_HUMAN)
+	/// List of all the languages our species can learn NO MATTER their background
+	var/list/learnable_languages = list(/datum/language/common)
 
 /datum/species/New()
 	. = ..()
@@ -303,6 +309,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
+	learnable_languages = list(/datum/language/common, /datum/language/voltaic)
 
 /datum/species/pod
 	name = "Primal Podperson"
