@@ -270,11 +270,13 @@ effective or pretty fucking useless.
 	turn_off()
 
 /obj/item/jammer/proc/turn_on()
+	SIGNAL_HANDLER
 	SEND_SIGNAL(src, COMSIG_CELL_START_USE)
 	active = TRUE
 	GLOB.active_jammers |= src
 
 /obj/item/jammer/proc/turn_off()
+	SIGNAL_HANDLER
 	SEND_SIGNAL(src, COMSIG_CELL_STOP_USE)
 	active = FALSE
 	GLOB.active_jammers -= src
@@ -291,9 +293,9 @@ effective or pretty fucking useless.
 	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
 	//active = !active SKYRAT EDIT REMOVAL
 	if(active)
-		turn_on() //SKYRAT EDIT CHANGE
-	else
 		turn_off() //SKYRAT EDIT CHANGE
+	else
+		turn_on() //SKYRAT EDIT CHANGE
 	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") //SKYRAT EDIT MOVE
 	update_appearance()
 

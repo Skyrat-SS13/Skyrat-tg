@@ -89,6 +89,7 @@ using loc where necessary.
 	return ..()
 
 /datum/component/cell/proc/simple_power_use(mob/user, use_amount, check_only = FALSE)
+	SIGNAL_HANDLER
 	if(!use_amount)
 		use_amount = power_use_amount
 
