@@ -3980,23 +3980,14 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/circuitboard/machine/HFR_waste_output,
-/obj/item/circuitboard/machine/HFR_moderator_input,
-/obj/item/circuitboard/machine/HFR_interface,
-/obj/item/circuitboard/machine/HFR_fuel_input,
-/obj/item/circuitboard/machine/HFR_core,
-/obj/item/stack/cable_coil{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/stack/cable_coil{
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
 /obj/machinery/firealarm/directional/north,
+/obj/item/hfr_box/body/fuel_input,
+/obj/item/hfr_box/body/interface,
+/obj/item/hfr_box/body/moderator_input,
+/obj/item/hfr_box/body/waste_output,
 /turf/open/floor/iron,
 /area/engineering/atmos/upper)
 "amK" = (
@@ -94531,14 +94522,11 @@
 "eou" = (
 /obj/machinery/light,
 /obj/structure/table/reinforced,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/circuitboard/machine/HFR_corner,
-/obj/item/stack/cable_coil{
-	pixel_x = 3;
-	pixel_y = -7
-	},
+/obj/item/hfr_box/core,
+/obj/item/hfr_box/corner,
+/obj/item/hfr_box/corner,
+/obj/item/hfr_box/corner,
+/obj/item/hfr_box/corner,
 /turf/open/floor/iron,
 /area/engineering/atmos/upper)
 "epU" = (
@@ -100660,7 +100648,7 @@
 /area/hallway/primary/central/aft)
 "kZv" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible{
+/obj/machinery/atmospherics/pipe/layer_manifold/yellow/visible{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -110233,6 +110221,13 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central/fore)
+"vdI" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/layer_manifold/cyan/visible{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engineering/atmos)
 "vec" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/tank_holder/emergency_oxygen,
@@ -140996,7 +140991,7 @@ aML
 aMG
 aMG
 aMG
-njr
+vdI
 aMB
 njr
 aMG
