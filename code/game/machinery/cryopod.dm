@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
 	desc = "An interface between crew and the cryogenic storage oversight systems."
-	icon = 'icons/obj/machines/cryopod.dmi'
+	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: 'icons/obj/machines/cryopod.dmi'
 	icon_state = "cellconsole_1"
 	// circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
