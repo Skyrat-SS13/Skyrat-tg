@@ -177,3 +177,23 @@
 	name = "Harpy (Bat)"
 	icon_state = "harpybat"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/top/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+	if((H.wear_suit && (H.try_hide_mutant_parts || (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(H.dna.species, H.wear_suit.species_exception)))))
+		return TRUE
+	return FALSE
+
+/datum/sprite_accessory/wings/mammal/top/harpywings_top
+	name = "Harpy (Top)"
+	icon_state = "harpy_top"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/top/harpywingsalt1_top
+	name = "Harpy (alt 1) (Top)"
+	icon_state = "harpyalt_top"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/top/harpywingsalt2_top
+	name = "Harpy (Bat) (Top)"
+	icon_state = "harpybat_top"
+	color_src = USE_ONE_COLOR
