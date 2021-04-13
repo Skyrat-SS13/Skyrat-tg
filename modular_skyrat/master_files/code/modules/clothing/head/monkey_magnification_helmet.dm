@@ -68,6 +68,7 @@
 	if(policy)
 		to_chat(magnification, policy)
 	icon_state = "[icon_state]up"
+	REMOVE_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //Monkeys with sentience should be able to use less primitive tools.
 
 /obj/item/clothing/head/helmet/monkey_sentience/Destroy()
 	disconnect()
@@ -93,8 +94,11 @@
 	//either used up correctly or taken off before polling finished (punish this by destroying the helmet)
 	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
-	magnification.dropItemToGround(src) //SKYRAT EDIT ADDITION
+	magnification.dropItemToGround(src)
+	ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //We removed it, now that they're back to being dumb, add the trait again.
 	magnification = null
+
+
 /obj/item/clothing/head/helmet/monkey_sentience/dropped(mob/user)
 	. = ..()
 	disconnect()
