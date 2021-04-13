@@ -32,6 +32,8 @@
 #define COMSIG_CELL_OUT_OF_CHARGE "cell_out_of_charge"
 /// Sent when there is no cell.
 #define COMSIG_CELL_REMOVED "cell_removed"
+/// Sent when a cell is inserted.
+#define COMSIG_CELL_INSERTED "cell_inserted"
 /// Called to start draining from a cell
 #define COMSIG_CELL_START_USE "cell_start_use"
 /// Called to stop draining from a cell

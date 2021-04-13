@@ -190,6 +190,7 @@ using loc where necessary.
 	playsound(equipment, 'sound/weapons/magin.ogg', 40, TRUE)
 	inserted_cell = inserting_item
 	inserting_item.forceMove(parent)
+	SEND_SIGNAL(src, COMSIG_CELL_INSERTED)
 
 /atom/proc/component_cell_out_of_charge()
 	return

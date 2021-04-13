@@ -43,12 +43,12 @@
 
 /obj/item/flashlight/proc/turn_on(mob/user)
 	SIGNAL_HANDLER
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return
 
 	if(uses_battery)
+		var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
+		if(battery_compartment)
+			if(!battery_compartment.simple_power_use(user))
+				return
 		SEND_SIGNAL(src, COMSIG_CELL_START_USE)
 
 	on = TRUE
