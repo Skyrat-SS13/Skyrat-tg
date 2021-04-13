@@ -215,6 +215,10 @@
 	name = "Half-shaved 2"
 	icon_state = "hair_halfshave"
 
+/datum/sprite_accessory/hair/skyrat/halfshave_snout
+	name = "Half-shaved 2 (clipped)"
+	icon_state = "hair_halfshave_snout"
+
 /datum/sprite_accessory/hair/skyrat/manbun
 	name = "Manbun"
 	icon_state = "hair_manbun"
