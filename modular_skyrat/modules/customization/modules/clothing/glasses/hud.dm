@@ -40,3 +40,46 @@
 	icon_state = "scipatch"
 	inhand_icon_state = "eyepatch"
 	clothing_flags = SCAN_REAGENTS
+
+/obj/item/clothing/glasses/hud/sec/righteyepatchsr
+	name = "Right Security Eyepatch Hud"
+	desc = ".sehsalf tsniaga llew od ton yaM .siht rof pu ekam ot gnihtemos edam evah sdrolrevo etaroproc ruoy yllufknahT ?nwolc tneconni na gnitaeb eye ruoy tsoL"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon_state = "hudpatch_1"
+	inhand_icon_state = "eyepatch"
+	hud_type = DATA_HUD_SECURITY_ADVANCED
+	hud_trait = TRAIT_SECURITY_HUD
+	glass_colour_type = /datum/client_colour/glass_colour/blue
+
+/obj/item/clothing/glasses/hud/med/righteyepatchsr
+	name = "Right Medical Eyepatch Hud"
+	desc = ".nem yeknom ro stradpeels noitnem t'ndid ti yllufknaht ,htao ruoy eunitnoc ot yaw a s'ereht yllufknaht ,llabeye roop ruoy ro ,uoy ot llefeb sah mrah ebyam ,mrah on oD"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon_state = "medpatch_1"
+	inhand_icon_state = "eyepatch"
+	hud_type = DATA_HUD_MEDICAL_ADVANCED
+	hud_trait = TRAIT_MEDICAL_HUD
+	glass_colour_type = /datum/client_colour/glass_colour/lightblue
+
+
+/obj/item/clothing/glasses/hud/diagnostic/righteyepatchsr
+	name = "Right Diagnostic Eyepatch Hud"
+	desc = ".stnuoc taht thguoht eht sti tub ,sevlesmeht ti od yllausu yeht ecnis ti deen reven ll'yeht ,sgrob riaper llits uoy pleh lliw hcet fo tib siht ,nosaer eht revetahW ?derob toG ?boj s'ti od ot grobgoD a llet ot eraD ?grob eugor a ot llabeye ruoy tsoL"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon_state = "robopatch_1"
+	inhand_icon_state = "eyepatch"
+	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
+	hud_trait = TRAIT_DIAGNOSTIC_HUD
+	glass_colour_type = /datum/client_colour/glass_colour/lightorange
+
+/obj/item/clothing/glasses/hud/sci/righteyepatchsr
+	name = "Right Science Eyepatch Hud"
+	desc = ".elyts ni rof pu sekam ti esu ni skcal ti tahw ,slacimehc nacs dnoyeb hcum od t'nseod ti elihw ,dneirf raed uoy rof taht derevoc ydaerla sah xolaG .rD ,yllufknaht ,'kool a si deen I tahw tub ,tnempiuqe dna hgual live eht ,eltsac eht tog ev'I' sevlesmeht ot syas tsitneics dam gniripsa eht ,sraey wef yrevE"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon_state = "scipatch_1"
+	inhand_icon_state = "eyepatch"
+	clothing_flags = SCAN_REAGENTS
