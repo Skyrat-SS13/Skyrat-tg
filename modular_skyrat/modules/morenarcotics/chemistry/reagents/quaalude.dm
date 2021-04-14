@@ -2,9 +2,10 @@
 	name = "Quaalude"
 	description = "Relaxes the user, putting them in a hypnotic, drugged state. If overdosed it will cause Brain damage and cause the user to impulsively shout about quaaludes."
 	reagent_state = LIQUID
-	color = "#FA00C8"
+	color = "#ffe669"
 	overdose_threshold = 20
 	ph = 8
+	taste_description = "lemons"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	//NON NARCOTIC, NON ADDICTIVE!!
 
@@ -16,6 +17,12 @@
 	M.adjustStaminaLoss(-5 * REM * delta_time, 0)
 	if(DT_PROB(3.5, delta_time))
 		M.emote("laugh")
+	if(ishuman(M)) //aphrodisiac properties
+		for(var/obj/item/organ/genital/G in M.internal_organs)
+			if(!G.aroused == AROUSAL_CANT)
+				G.aroused = AROUSAL_FULL
+				G.update_sprite_suffix()
+		M.update_body()
 	..()
 
 /datum/reagent/drug/quaalude/overdose_process(mob/living/M, delta_time, times_fired)
