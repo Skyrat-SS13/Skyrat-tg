@@ -257,7 +257,7 @@ effective or pretty fucking useless.
 	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
-	var/range = 12
+	var/range = 20 //SKYRAT EDIT CHANGE - ORIGINAL:12
 
 	//SKYRAT EDIT ADDITION BEGIN
 /obj/item/jammer/ComponentInitialize()

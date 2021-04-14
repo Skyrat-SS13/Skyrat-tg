@@ -85,15 +85,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	var/underline_flag = TRUE //flag for underline
 
-	//SKYRAT EDIT ADDITION BEGIN
-	power_use_amount = POWER_CELL_USE_LOW
-	var/cell_override = /obj/item/stock_parts/cell/upgraded/plus
-
-/obj/item/pda/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/cell, cell_override)
-	//SKYRAT EDIT ADDITION END
-
 /obj/item/pda/suicide_act(mob/living/carbon/user)
 	var/deathMessage = msg_input(user)
 	if (!deathMessage)
@@ -222,11 +213,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 
 	..()
-
-	//SKYRAT EDIT ADDITION
-	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
-		return
-	//SKYRAT EDIT END
 
 	var/datum/asset/spritesheet/assets = get_asset_datum(/datum/asset/spritesheet/simple/pda)
 	assets.send(user)
@@ -464,11 +450,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) && !href_list["close"])
 		add_fingerprint(U)
 		U.set_machine(src)
-
-		//SKYRAT EDIT ADDITION
-		if(!(item_use_power(power_use_amount, usr) & COMPONENT_POWER_SUCCESS))
-			return
-		//SKYRAT EDIT END
 
 		switch(href_list["choice"])
 

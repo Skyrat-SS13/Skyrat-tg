@@ -1338,10 +1338,9 @@
 	if(QDELETED(I))
 		return TRUE
 	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = I.GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(I.power_use_amount, user))
-			return TRUE
+	var/result = I.item_use_power(I.power_use_amount, user)
+	if(!(result & NO_COMPONENT) && !(result & COMPONENT_POWER_SUCCESS))
+		return
 	//SKYRAT EDIT END
 	switch(tool_type)
 		if(TOOL_CROWBAR)
