@@ -89,28 +89,29 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 /// This proc is the basic way of processing the cell, with included feedback. It will return a bitflag if it failed to use the power, or COMPONENT_POWER_SUCCESS if it succeeds.
 /// The user is sent the feedback, use_amount is an override, check_only will only return if it can use the cell and feedback relating to that.
-/datum/component/cell/proc/simple_power_use(use_amount, mob/user, check_only)
+/datum/component/cell/proc/simple_power_use(datum/source, use_amount, mob/user, check_only)
 	SIGNAL_HANDLER
 
 	if(!use_amount)
 		use_amount = power_use_amount
 
 	if(!inserted_cell)
-		to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
+		if(user)
+			to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
 		return COMPONENT_NO_CELL
 
 	if(check_only && inserted_cell.charge < use_amount)
-		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+		if(user)
+			to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return COMPONENT_NO_CHARGE
 
 	if(!inserted_cell.use(use_amount))
 		inserted_cell.update_appearance()  //Updates the attached cell sprite - Why does this not happen in cell.use?
-		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+		if(user)
+			to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return COMPONENT_NO_CHARGE
 
 	inserted_cell.update_appearance()
-
-	to_chat(world, "COMPONENT_POWER_SUCCESS, [COMPONENT_POWER_SUCCESS]")
 
 	return COMPONENT_POWER_SUCCESS
 
