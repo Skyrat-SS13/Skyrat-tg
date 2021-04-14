@@ -1339,7 +1339,7 @@
 		return TRUE
 	//SKYRAT EDIT ADDITION
 	var/result = I.item_use_power(I.power_use_amount, user)
-	if(!(result & NO_COMPONENT) && !(result & COMPONENT_POWER_SUCCESS))
+	if(result && !(result & COMPONENT_POWER_SUCCESS))
 		return
 	//SKYRAT EDIT END
 	switch(tool_type)
