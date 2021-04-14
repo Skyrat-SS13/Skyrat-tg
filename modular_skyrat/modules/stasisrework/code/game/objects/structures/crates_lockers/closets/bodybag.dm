@@ -1,7 +1,7 @@
 /obj/structure/closet/body_bag/stasis
 	name = "stasis body bag"
-	desc = "A body bag designed for the preservation of cadavers via integrated cryogenic technology and cryo-insulative mesh. It has safety sensors on the bag that prevent it from activating when a living being is inside."
-	icon = 'modular_skyrat/modules/stasisbag/icons/obj/stasisbag.dmi'
+	desc = "A body bag designed for the preservation of cadavers via integrated cryogenic technology and cryo-insulative mesh. Due to size limitations, it only works on dead bodies."
+	icon = 'modular_skyrat/modules/stasisrework/icons/obj/stasisbag.dmi'
 	icon_state = "greenbodybag"
 	foldedbag_path = /obj/item/bodybag/stasis
 	mob_storage_capacity = 1

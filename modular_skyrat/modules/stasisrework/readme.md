@@ -1,12 +1,12 @@
-## Title: Stasis bodybags
+## Title: Stasis Rework
 
-MODULE ID: stasisbag
+MODULE ID: stasisrework
 
 ### Description:
 
-Bodybags that keep a body in stasis while closed, albeit without the ability for treatment while closed.
+Introduces Bodybags that keep a dead, and only dead, body in stasis while closed, albeit without the ability for treatment while closed.
 
-Also removes stasis beds.
+Makes stasis beds have a lid when they're active.
 
 ### TG Proc Changes:
 
