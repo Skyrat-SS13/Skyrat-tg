@@ -107,19 +107,60 @@
 	attack_verb_simple = list("drill", "screw", "jab", "whack")
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.2	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
+	toolspeed = 1	// SKYRAT EDIT
 	random_color = FALSE
 
-	//SKYRAT EDIT ADDITION BEGIN
+//SKYRAT EDIT ADDITION BEGIN
+	var/powered_toolspeed = 0.4
+	var/powered = FALSE
+
 /obj/item/screwdriver/power/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell)
-	//SKYRAT EDIT END
+	AddComponent(/datum/component/cell, null, CALLBACK(src, .proc/turn_off))
 
+/obj/item/screwdriver/power/CtrlClick(mob/user)
+	. = ..()
+	if(!powered)
+		if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
+			return
+	powered = !powered
+	if(powered)
+		to_chat(user, "<span class='notice'>You turn [src] on.</span>")
+		turn_on()
+	else
+		to_chat(user, "<span class='notice'>You turn [src] off.</span>")
+		turn_off()
+	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
+
+/obj/item/screwdriver/power/proc/turn_off()
+	powered = FALSE
+	toolspeed = initial(toolspeed)
+	update_appearance()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/screwdriver/power/proc/turn_on()
+	toolspeed = powered_toolspeed
+	update_appearance()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/screwdriver/power/process(delta_time)
+	if(!powered)
+		turn_off()
+		return
+	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
+		turn_off()
+		return
+
+/obj/item/screwdriver/power/update_overlays()
+	. = ..()
+	if(powered)
+		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/icons/tools.dmi', "jaws_on")
+//SKYRAT EDIT END
 
 /obj/item/screwdriver/power/examine()
 	. = ..()
 	. += " It's fitted with a [tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"] bit."
+	. += "[src] is currently [powered ? "powered" : "unpowered"]." //SKYRAT EDIT ADDITION
 
 /obj/item/screwdriver/power/suicide_act(mob/user)
 	if(tool_behaviour == TOOL_SCREWDRIVER)

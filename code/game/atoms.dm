@@ -1337,11 +1337,6 @@
 		process_recipes(user, I, processing_recipes)
 	if(QDELETED(I))
 		return TRUE
-	//SKYRAT EDIT ADDITION
-	var/result = I.item_use_power(I.power_use_amount, user)
-	if(result && !(result & COMPONENT_POWER_SUCCESS))
-		return
-	//SKYRAT EDIT END
 	switch(tool_type)
 		if(TOOL_CROWBAR)
 			. = crowbar_act(user, I)

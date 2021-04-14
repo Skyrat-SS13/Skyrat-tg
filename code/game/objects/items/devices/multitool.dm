@@ -33,15 +33,6 @@
 	var/obj/machinery/buffer // simple machine buffer for device linkage
 	var/mode = 0
 
-//SKYRAT EDIT ADDITION BEGIN
-	power_use_amount = POWER_CELL_USE_LOW
-	var/cell_override
-
-/obj/item/multitool/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/cell, cell_override)
-//SKYRAT EDIT ADDITION END
-
 /obj/item/multitool/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Its buffer [buffer ? "contains [buffer]." : "is empty."]</span>"
@@ -176,7 +167,6 @@
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "multitool"
 	toolspeed = 0.1
-	cell_override = /obj/item/stock_parts/cell/bluespace //SKYRAT EDIT ADDITION
 
 /obj/item/multitool/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "electronic multitool"
