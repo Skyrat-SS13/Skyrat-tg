@@ -92,7 +92,7 @@
 /obj/item/screwdriver/power
 	name = "hand drill"
 	desc = "A simple powered hand drill."
-	icon_state = "drill_screw"
+	icon_state = "drill" //SKYRAT EDIT CHANGE
 	inhand_icon_state = "drill"
 	worn_icon_state = "drill"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
@@ -113,6 +113,10 @@
 //SKYRAT EDIT ADDITION BEGIN
 	var/powered_toolspeed = 0.4
 	var/powered = FALSE
+
+/obj/item/screwdriver/Initialize()
+	. = ..()
+	update_appearance()
 
 /obj/item/screwdriver/power/ComponentInitialize()
 	. = ..()
@@ -154,7 +158,8 @@
 /obj/item/screwdriver/power/update_overlays()
 	. = ..()
 	if(powered)
-		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/icons/tools.dmi', "jaws_on")
+		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/icons/tools.dmi', "drill_on")
+	. += "[initial(icon_state)]_[tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"]"
 //SKYRAT EDIT END
 
 /obj/item/screwdriver/power/examine()
@@ -175,11 +180,12 @@
 	if(tool_behaviour == TOOL_SCREWDRIVER)
 		tool_behaviour = TOOL_WRENCH
 		to_chat(user, "<span class='notice'>You attach the bolt bit to [src].</span>")
-		icon_state = "drill_bolt"
+		//___callbacknewicon_state = "drill_bolt"
 	else
 		tool_behaviour = TOOL_SCREWDRIVER
 		to_chat(user, "<span class='notice'>You attach the screw bit to [src].</span>")
-		icon_state = "drill_screw"
+		//icon_state = "drill_screw"
+	update_appearance() //SKYRAT EDIT ADDITION
 
 /obj/item/screwdriver/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "automated screwdriver"

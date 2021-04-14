@@ -56,7 +56,7 @@
 /obj/item/crowbar/power
 	name = "jaws of life"
 	desc = "A set of jaws of life, compressed through the magic of science."
-	icon_state = "jaws_pry"
+	icon_state = "jaws" //SKYRAT EDIT CHANGE
 	inhand_icon_state = "jawsoflife"
 	worn_icon_state = "jawsoflife"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
@@ -69,6 +69,10 @@
 //SKYRAT EDIT ADDITION BEGIN
 	var/powered_toolspeed = 0.4
 	var/powered = FALSE
+
+/obj/item/crowbar/power/Initialize()
+	. = ..()
+	update_appearance()
 
 /obj/item/crowbar/power/ComponentInitialize()
 	. = ..()
@@ -111,12 +115,13 @@
 	. = ..()
 	if(powered)
 		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/icons/tools.dmi', "jaws_on")
+	. += "[initial(icon_state)]_[tool_behaviour == TOOL_WIRECUTTER ? "cutter": "pry"]"
 //SKYRAT EDIT END
 
 /obj/item/crowbar/power/syndicate
 	name = "Syndicate jaws of life"
 	desc = "A re-engineered copy of Nanotrasen's standard jaws of life. Can be used to force open airlocks in its crowbar configuration."
-	icon_state = "jaws_pry_syndie"
+	icon_state = "jaws_syndicate" //SKYRAT EDIT CHANGE
 	toolspeed = 0.25	// SKYRAT EDIT: Keeps this relevant, buffs to oldbase speed - Original value (0.5)
 	force_opens = TRUE
 
@@ -154,6 +159,7 @@
 		usesound = 'sound/items/jaws_pry.ogg'
 		update_appearance()
 
+/* SKYRAT EDIT REMOVAL
 /obj/item/crowbar/power/update_icon_state()
 	if(tool_behaviour == TOOL_WIRECUTTER)
 		icon_state = "jaws_cutter"
@@ -167,6 +173,7 @@
 	else
 		icon_state = "jaws_pry_syndie"
 	return ..()
+*/
 
 /obj/item/crowbar/power/attack(mob/living/carbon/C, mob/user)
 	if(istype(C) && C.handcuffed && tool_behaviour == TOOL_WIRECUTTER)

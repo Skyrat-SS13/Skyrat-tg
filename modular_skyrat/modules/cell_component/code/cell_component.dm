@@ -31,6 +31,8 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	var/datum/callback/on_cell_removed = null
 	///Can this cell be removed from the parent?
 	var/cell_can_be_removed = TRUE
+	///Our reference to the cell overlay
+	var/mutable_appearance/cell_overlay = null
 
 /datum/component/cell/Initialize(cell_override, _on_cell_removed, _power_use_amount, start_with_cell = TRUE, _cell_can_be_removed)
 	if(!isitem(parent)) //Currently only compatable with items.
@@ -62,7 +64,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 			new_cell = new /obj/item/stock_parts/cell/upgraded()
 		inserted_cell = new_cell
 		new_cell.forceMove(parent) //We use the parents location so things like EMP's can interact with the cell.
-
+	handle_cell_overlays()
 	return ..()
 
 /datum/component/cell/RegisterWithParent()
@@ -142,7 +144,9 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		inserted_cell.forceMove(get_turf(equipment))
 		INVOKE_ASYNC(user, /mob/living.proc/put_in_hands, inserted_cell)
 		inserted_cell = null
-		on_cell_removed.Invoke()
+		if(on_cell_removed)
+			on_cell_removed.Invoke()
+		handle_cell_overlays(TRUE)
 	else
 		to_chat(user, "<span class='danger'>There is no cell inserted in [equipment]!</span>")
 
@@ -165,3 +169,15 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	playsound(equipment, 'sound/weapons/magin.ogg', 40, TRUE)
 	inserted_cell = inserting_item
 	inserting_item.forceMove(parent)
+	handle_cell_overlays(FALSE)
+
+/datum/component/cell/proc/handle_cell_overlays(update_overlays)
+	if(inserted_cell)
+		cell_overlay = mutable_appearance(equipment.icon, "[initial(equipment.icon_state)]_cell")
+		equipment.add_overlay(cell_overlay)
+	else
+		QDEL_NULL(cell_overlay)
+		cell_overlay = null
+		if(update_overlays)
+			equipment.overlays.Cut()
+			equipment.update_overlays()

@@ -27,6 +27,7 @@
 	resistance_flags = FIRE_PROOF
 	tool_behaviour = NONE
 	toolspeed = 0.2
+	power_use_amount = POWER_CELL_USE_LOW
 	var/cell_override = /obj/item/stock_parts/cell/high
 	var/powered = FALSE
 
@@ -42,17 +43,20 @@
 		if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
 			return
 	powered = !powered
+	playsound(src, 'sound/effects/sparks4.ogg', 100, TRUE)
 	if(powered)
 		to_chat(user, "<span class='notice'>You turn [src] on.</span>")
 		turn_on()
 	else
 		to_chat(user, "<span class='notice'>You turn [src] off.</span>")
 		turn_off()
-	playsound(user, 'sound/effects/sparks4.ogg', 100, TRUE)
+
 
 /obj/item/weldingtool_electric/proc/turn_off()
 	powered = FALSE
 	light_on = FALSE
+	force = initial(force)
+	damtype = BRUTE
 	set_light_on(powered)
 	tool_behaviour = NONE
 	update_appearance()
@@ -61,6 +65,8 @@
 /obj/item/weldingtool_electric/proc/turn_on()
 	tool_behaviour = TOOL_WELDER
 	light_on = TRUE
+	force = 15
+	damtype = BURN
 	set_light_on(powered)
 	update_appearance()
 	START_PROCESSING(SSobj, src)
