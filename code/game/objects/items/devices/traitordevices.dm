@@ -274,19 +274,23 @@ effective or pretty fucking useless.
 	GLOB.active_jammers -= src
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/jammer/process
+/obj/item/jammer/process(delta_time)
 	if(!active)
 		STOP_PROCESSING(SSobj, src)
 		return
-	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
 		turn_off()
 		return
+
+/obj/item/jammer/examine(mob/user)
+	. = ..()
+	. += "[src] is currently [active ? "on" : "off"]."
 	//SKYRAT EDIT END
 
 /obj/item/jammer/attack_self(mob/user)
 	//SKYRAT EDIT ADDITON
-	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-			return
+	if(!active && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
+		return
 	//SKYRAT EDIT END
 	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
 	active = !active

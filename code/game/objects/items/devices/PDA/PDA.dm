@@ -466,7 +466,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		U.set_machine(src)
 
 		//SKYRAT EDIT ADDITION
-		if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		if(!(item_use_power(power_use_amount, usr) & COMPONENT_POWER_SUCCESS))
 			return
 		//SKYRAT EDIT END
 
