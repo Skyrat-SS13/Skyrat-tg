@@ -5,6 +5,10 @@
 	var/cell_override
 	/// How much power(per process) does this flashlight use? If any.
 	power_use_amount = POWER_CELL_USE_VERY_LOW
+	/// Flashlight mode, 0 = low, 1 = med, 2 = high
+	var/flashlight_mode = 0
+	///Does this flashlight have modes?
+	var/has_modes = TRUE
 
 /obj/item/flashlight/Initialize()
 	. = ..()
@@ -21,6 +25,37 @@
 	if(light_system == STATIC_LIGHT)
 		update_light()
 	update_appearance()
+
+/obj/item/flashlight/examine(mob/user)
+	. = ..()
+	if(has_modes)
+		. += "<span class='notice'>This flashlight has modes! Ctrl+click it to change the mode.</span>"
+
+/obj/item/flashlight/CtrlClick(mob/user)
+	. = ..()
+	if(has_modes)
+		switch(flashlight_mode)
+			if(0)
+				power_use_amount = POWER_CELL_USE_VERY_LOW
+				light_range = initial(light_range)
+				light_power = initial(light_power)
+				update_light()
+				flashlight_mode = 1
+				to_chat(user, "<span class='notice'>You set [src] to low.</span>")
+			if(1)
+				power_use_amount = POWER_CELL_USE_LOW
+				light_range = 8
+				light_power = 2
+				update_light()
+				flashlight_mode = 2
+				to_chat(user, "<span class='notice'>You set [src] to medium.</span>")
+			if(2)
+				power_use_amount = POWER_CELL_USE_NORMAL
+				light_range = 10
+				light_power = 3
+				update_light()
+				flashlight_mode = 0
+				to_chat(user, "<span class='notice'>You set [src] to high.</span>")
 
 /obj/item/flashlight/attack_self(mob/user)
 	. = ..()
@@ -68,9 +103,11 @@
 
 /obj/item/flashlight/lamp
 	uses_battery = FALSE
+	has_modes = FALSE
 
 /obj/item/flashlight/flare
 	uses_battery = FALSE
+	has_modes = FALSE
 
 /obj/item/flashlight/emp/debug
 	uses_battery = FALSE
@@ -80,9 +117,12 @@
 
 /obj/item/flashlight/spotlight
 	uses_battery = FALSE
+	has_modes = FALSE
 
 /obj/item/flashlight/eyelight
 	uses_battery = FALSE
+	has_modes = FALSE
 
 /obj/item/flashlight/pen
 	cell_override = /obj/item/stock_parts/cell/potato
+	has_modes = FALSE

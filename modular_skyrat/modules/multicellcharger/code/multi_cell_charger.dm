@@ -29,6 +29,12 @@
 		. += new /mutable_appearance(charge_overlay)
 		. += new /mutable_appearance(cell_overlay)
 
+/obj/machinery/cell_charger_multi/CtrlShiftClick(mob/user)
+	. = ..()
+	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")
+	for(var/i in charging_batteries)
+		removecell()
+
 /obj/machinery/cell_charger_multi/examine(mob/user)
 	. = ..()
 	if(!charging_batteries.len)
@@ -139,7 +145,7 @@
 	if(!charging_batteries.len)
 		return FALSE
 	var/obj/item/stock_parts/cell/charging
-	if(charging_batteries.len > 1)
+	if(charging_batteries.len > 1 && user)
 		var/list/buttons = list()
 		for(var/obj/item/stock_parts/cell/battery in charging_batteries)
 			buttons["[battery] [battery.percent()]%"] = battery
