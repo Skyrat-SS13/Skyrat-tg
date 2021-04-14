@@ -99,13 +99,11 @@ GENE SCANNER
 	var/advanced = FALSE
 	custom_price = PAYCHECK_HARD
 
-	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_NORMAL
-
+//SKYRAT EDIT ADDITION BEGIN
 /obj/item/healthanalyzer/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
-	//SKYRAT EDIT END
+	AddComponent(/datum/component/cell)
+//SKYRAT EDIT END
 
 /obj/item/healthanalyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!</span>")
@@ -121,10 +119,8 @@ GENE SCANNER
 
 /obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
 	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return
 	//SKYRAT EDIT END
 	flick("[icon_state]-scan", src) //makes it so that it plays the scan animation upon scanning, including clumsy scanning
 
@@ -155,10 +151,8 @@ GENE SCANNER
 
 /obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
 	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	//SKYRAT EDIT END
 	chemscan(user, victim)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -508,7 +502,7 @@ GENE SCANNER
 	icon_state = "health_adv"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject with high accuracy."
 	advanced = TRUE
-	power_cell_use = POWER_CELL_USE_HIGH //SKYRAT EDIT ADDITION CHANGE
+	power_use_amount = POWER_CELL_USE_HIGH //SKYRAT EDIT ADDITION CHANGE
 
 /// Displays wounds with extended information on their status vs medscanners
 /proc/woundscan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/wound/scanner)
@@ -598,13 +592,11 @@ GENE SCANNER
 	var/cooldown_time = 250
 	var/accuracy // 0 is the best accuracy.
 
-	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_NORMAL
-
+//SKYRAT EDIT ADDITION BEGIN
 /obj/item/analyzer/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
-	//SKYRAT EDIT END
+	AddComponent(/datum/component/cell)
+//SKYRAT EDIT END
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
@@ -621,10 +613,8 @@ GENE SCANNER
 		return
 
 	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return
 	//SKYRAT EDIT END
 
 	var/turf/location = user.loc
@@ -670,10 +660,8 @@ GENE SCANNER
 			to_chat(user, "<span class='warning'>[src]'s barometer function is preparing itself.</span>")
 			return
 		//SKYRAT EDIT ADDITION
-		var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-		if(battery_compartment)
-			if(!battery_compartment.simple_power_use(user))
-				return
+		if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+			return
 		//SKYRAT EDIT END
 
 		var/turf/T = get_turf(user)
@@ -791,11 +779,11 @@ GENE SCANNER
 	custom_materials = list(/datum/material/iron=30, /datum/material/glass=20)
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_LOW
+	power_use_amount = POWER_CELL_USE_LOW
 
 /obj/item/slime_scanner/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
+	AddComponent(/datum/component/cell)
 	//SKYRAT EDIT END
 
 /obj/item/slime_scanner/attack(mob/living/M, mob/living/user)
@@ -805,10 +793,8 @@ GENE SCANNER
 		to_chat(user, "<span class='warning'>This device can only scan slimes!</span>")
 		return
 	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return
 	//SKYRAT EDIT END
 	var/mob/living/simple_animal/slime/T = M
 	slime_scan(T, user)
@@ -864,19 +850,17 @@ GENE SCANNER
 	custom_materials = list(/datum/material/iron=200)
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_LOW
+	power_use_amount = POWER_CELL_USE_LOW
 
 /obj/item/nanite_scanner/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
+	AddComponent(/datum/component/cell)
 	//SKYRAT EDIT END
 
 /obj/item/nanite_scanner/attack(mob/living/M, mob/living/carbon/human/user)
 	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return
 		//SKYRAT EDIT END
 	user.visible_message("<span class='notice'>[user] analyzes [M]'s nanites.</span>", \
 						"<span class='notice'>You analyze [M]'s nanites.</span>")
@@ -910,21 +894,19 @@ GENE SCANNER
 	var/cooldown = 200
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_VERY_LOW
+	power_use_amount = POWER_CELL_USE_VERY_LOW
 
 /obj/item/sequence_scanner/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
+	AddComponent(/datum/component/cell)
 	//SKYRAT EDIT END
 
 /obj/item/sequence_scanner/attack(mob/living/M, mob/living/carbon/human/user)
 	add_fingerprint(user)
 	if (!HAS_TRAIT(M, TRAIT_GENELESS) && !HAS_TRAIT(M, TRAIT_BADDNA)) //no scanning if its a husk or DNA-less Species
 		//SKYRAT EDIT ADDITION
-		var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-		if(battery_compartment)
-			if(!battery_compartment.simple_power_use(user))
-				return
+		if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+			return
 		//SKYRAT EDIT END
 		user.visible_message("<span class='notice'>[user] analyzes [M]'s genetic sequence.</span>", \
 							"<span class='notice'>You analyze [M]'s genetic sequence.</span>")

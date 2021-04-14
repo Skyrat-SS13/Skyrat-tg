@@ -1340,7 +1340,7 @@
 	//SKYRAT EDIT ADDITION
 	var/datum/component/cell/battery_compartment = I.GetComponent(/datum/component/cell)
 	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
+		if(!battery_compartment.simple_power_use(I.power_use_amount, user))
 			return TRUE
 	//SKYRAT EDIT END
 	switch(tool_type)

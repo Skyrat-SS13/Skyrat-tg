@@ -10,12 +10,9 @@
 	custom_materials = list(/datum/material/iron=5000, /datum/material/glass=2000)
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_NORMAL
-
-
 /obj/item/pipe_painter/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
+	AddComponent(/datum/component/cell)
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/pipe_painter/afterattack(atom/A, mob/user, proximity_flag)
@@ -28,10 +25,8 @@
 		return
 
 	//SKYRAT EDIT ADDITION
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return
 	//SKYRAT EDIT END
 
 	var/obj/machinery/atmospherics/pipe/P = A

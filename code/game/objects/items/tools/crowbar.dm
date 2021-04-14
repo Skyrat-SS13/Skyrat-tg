@@ -64,18 +64,14 @@
 	custom_materials = list(/datum/material/iron=150,/datum/material/silver=50,/datum/material/titanium=25)
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 15
-	toolspeed = 0.5	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
+	toolspeed = 0.2	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
 	force_opens = TRUE
 
-	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_NORMAL
-	var/uses_battery = TRUE
-
+//SKYRAT EDIT ADDITION BEGIN
 /obj/item/crowbar/power/ComponentInitialize()
 	. = ..()
-	if(uses_battery)
-		AddComponent(/datum/component/cell, null, power_cell_use)
-	//SKYRAT EDIT END
+	AddComponent(/datum/component/cell)
+//SKYRAT EDIT END
 
 /obj/item/crowbar/power/syndicate
 	name = "Syndicate jaws of life"

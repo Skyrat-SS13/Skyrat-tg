@@ -260,34 +260,32 @@ effective or pretty fucking useless.
 	var/range = 12
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_NORMAL
-
 /obj/item/jammer/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, null, power_cell_use)
-
-/obj/item/jammer/component_cell_out_of_charge()
-	active = FALSE
-	turn_off()
+	AddComponent(/datum/component/cell, power_use_amount, CALLBACK(src, .proc/turn_off))
 
 /obj/item/jammer/proc/turn_on()
-	SIGNAL_HANDLER
-	SEND_SIGNAL(src, COMSIG_CELL_START_USE)
-
+	active = TRUE
 	GLOB.active_jammers |= src
+	START_PROCESSING(SSobj, src)
 
 /obj/item/jammer/proc/turn_off()
-	SIGNAL_HANDLER
-	SEND_SIGNAL(src, COMSIG_CELL_STOP_USE)
+	active = FALSE
 	GLOB.active_jammers -= src
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/jammer/process
+	if(!active)
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		turn_off()
+		return
 	//SKYRAT EDIT END
 
 /obj/item/jammer/attack_self(mob/user)
 	//SKYRAT EDIT ADDITON
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user, power_cell_use, TRUE))
-			turn_off()
+	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
 			return
 	//SKYRAT EDIT END
 	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL

@@ -33,16 +33,14 @@
 	var/obj/machinery/buffer // simple machine buffer for device linkage
 	var/mode = 0
 
-	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_LOW
+//SKYRAT EDIT ADDITION BEGIN
+	power_use_amount = POWER_CELL_USE_LOW
 	var/cell_override
-	var/uses_battery = TRUE
 
 /obj/item/multitool/ComponentInitialize()
 	. = ..()
-	if(uses_battery)
-		AddComponent(/datum/component/cell, cell_override, power_cell_use)
-	//SKYRAT EDIT ADDITION END
+	AddComponent(/datum/component/cell, cell_override)
+//SKYRAT EDIT ADDITION END
 
 /obj/item/multitool/examine(mob/user)
 	. = ..()

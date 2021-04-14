@@ -27,22 +27,10 @@
 ///When a mutant is cured of the virus
 #define COMSIG_MUTANT_CURED "mutant_cured"
 
-//Cell component stuff
-/// Sent when a cell runs out of charge.
-#define COMSIG_CELL_OUT_OF_CHARGE "cell_out_of_charge"
-/// Sent when there is no cell.
-#define COMSIG_CELL_REMOVED "cell_removed"
-/// Sent when a cell is inserted.
-#define COMSIG_CELL_INSERTED "cell_inserted"
-/// Called to start draining from a cell
-#define COMSIG_CELL_START_USE "cell_start_use"
-/// Called to stop draining from a cell
-#define COMSIG_CELL_STOP_USE "cell_stop_use"
-/// Sent when a cell is successfully drawn from
-#define COMSIG_CELL_POWER_USED "cell_power_used"
-/// Sent when a cell is successfully drawn from
-#define COMSIG_CELL_SIMPLE_POWER_USE "cell_simple_power_use"
-/// Sent when a flashlight is toggled on.
-#define COMSIG_FLASHLIGHT_TOGGLED_ON "flashlight_toggled_on"
-/// Sent when a flashlight is toggled off.
-#define COMSIG_FLASHLIGHT_TOGGLED_OFF "flashlight_toggled_off"
+// Power signals
+/// Sent when an obj/item calls item_use_power: (use_amount, user, check_only)
+#define COMSIG_ITEM_POWER_USE "item_use_power"
+	#define NO_COMPONENT NONE
+	#define COMPONENT_POWER_SUCCESS (1<<0)
+	#define COMPONENT_NO_CELL  (1<<1)
+	#define COMPONENT_NO_CHARGE (1<<2)

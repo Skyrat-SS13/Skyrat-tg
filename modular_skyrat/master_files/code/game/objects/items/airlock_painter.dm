@@ -33,23 +33,19 @@
 		"Standard" = /obj/machinery/door/airlock
 	)
 
-	var/power_cell_use = POWER_CELL_USE_HIGH
+	power_use_amount = POWER_CELL_USE_HIGH
 	var/cell_override
 
 /obj/item/airlock_painter/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, cell_override, power_cell_use)
-
-
+	AddComponent(/datum/component/cell, cell_override)
 
 //This proc doesn't just check if the painter can be used, but also uses it.
 //Only call this if you are certain that the painter will be used right after this check!
 /obj/item/airlock_painter/proc/use_paint(mob/user)
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return FALSE
-		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return FALSE
+	playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
 	return TRUE
 
 
@@ -57,10 +53,8 @@
 //Call this if you don't want the painter to be used right after this check, for example
 //because you're expecting user input.
 /obj/item/airlock_painter/proc/can_use(mob/user)
-	var/datum/component/cell/battery_compartment = GetComponent(/datum/component/cell)
-	if(battery_compartment)
-		if(!battery_compartment.simple_power_use(user))
-			return FALSE
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+		return FALSE
 	return TRUE
 
 /obj/item/airlock_painter/suicide_act(mob/user)

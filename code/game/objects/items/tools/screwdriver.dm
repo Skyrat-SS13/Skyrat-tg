@@ -107,17 +107,13 @@
 	attack_verb_simple = list("drill", "screw", "jab", "whack")
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 0.3	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
+	toolspeed = 0.2	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
 	random_color = FALSE
 
 	//SKYRAT EDIT ADDITION BEGIN
-	var/power_cell_use = POWER_CELL_USE_NORMAL
-	var/uses_battery = TRUE
-
 /obj/item/screwdriver/power/ComponentInitialize()
 	. = ..()
-	if(uses_battery)
-		AddComponent(/datum/component/cell, null, power_cell_use)
+	AddComponent(/datum/component/cell)
 	//SKYRAT EDIT END
 
 

@@ -1,4 +1,4 @@
-//General defines for items that use power.
+//General defines for items that use power and the cell component.
 /// The minimal amount of power an item can use.
 #define POWER_CELL_USE_MINIMUM 1
 /// For items that barely use any power at all.
