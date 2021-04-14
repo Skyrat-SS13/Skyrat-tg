@@ -119,7 +119,7 @@ GENE SCANNER
 
 /obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
 	//SKYRAT EDIT ADDITION
-	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+	if(!(item_use_power(power_use_amount, user, FALSE) & COMPONENT_POWER_SUCCESS))
 		return
 	//SKYRAT EDIT END
 	flick("[icon_state]-scan", src) //makes it so that it plays the scan animation upon scanning, including clumsy scanning

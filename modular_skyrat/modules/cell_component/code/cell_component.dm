@@ -49,8 +49,6 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	if(_cell_can_be_removed)
 		cell_can_be_removed = _cell_can_be_removed
 
-
-
 	//So this is shitcode in it's ultimate form. Right now, as far as I can see, this is the only way to handle robot items that would normally use a cell.
 	if(istype(equipment.loc, /obj/item/robot_model)) //Really, I absolutely hate borg code.
 		var/mob/living/silicon/robot/robit = equipment.loc.loc //If this ever runtimes, we'll know about it and be able to refactor this.
@@ -91,8 +89,9 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 /// This proc is the basic way of processing the cell, with included feedback. It will return a bitflag if it failed to use the power, or COMPONENT_POWER_SUCCESS if it succeeds.
 /// The user is sent the feedback, use_amount is an override, check_only will only return if it can use the cell and feedback relating to that.
-/datum/component/cell/proc/simple_power_use(use_amount, mob/user, check_only = FALSE)
+/datum/component/cell/proc/simple_power_use(use_amount, mob/user, check_only)
 	SIGNAL_HANDLER
+
 	if(!use_amount)
 		use_amount = power_use_amount
 
@@ -100,18 +99,18 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
 		return COMPONENT_NO_CELL
 
-	if(check_only)
-		if(inserted_cell.charge < use_amount)
-			if(user)
-				to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
-			return COMPONENT_NO_CHARGE
-	else if(!inserted_cell.use(use_amount))
+	if(check_only && inserted_cell.charge < use_amount)
+		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+		return COMPONENT_NO_CHARGE
+
+	if(!inserted_cell.use(use_amount))
 		inserted_cell.update_appearance()  //Updates the attached cell sprite - Why does this not happen in cell.use?
-		if(user)
-			to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+		to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
 		return COMPONENT_NO_CHARGE
 
 	inserted_cell.update_appearance()
+
+	to_chat(world, "COMPONENT_POWER_SUCCESS, [COMPONENT_POWER_SUCCESS]")
 
 	return COMPONENT_POWER_SUCCESS
 
