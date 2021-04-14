@@ -35,6 +35,7 @@
 	playsound(user, on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 
 /obj/item/flashlight/proc/turn_off()
+	on = FALSE
 	update_brightness()
 	for(var/X in actions)
 		var/datum/action/A = X
