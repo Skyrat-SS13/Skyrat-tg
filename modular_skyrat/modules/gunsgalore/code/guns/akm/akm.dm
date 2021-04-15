@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/assault_rifle/akm
 	name = "\improper AKM rifle"
-	desc = "a timeless Russian infantry rifle chambered in an extremely outdated round. This is one of over two hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice, or crime. This rifle and its variants truly have no bounds."
+	desc = "A timeless Russian infantry rifle chambered in an extremely outdated round. This is one of over two hundred million copies produced - in and outside of Sol. A tool for a revolution, an insurgency, justice, or crime. This rifle and its variants truly have no bounds."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm.dmi'
 	icon_state = "akm"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/akm/akm_lefthand.dmi'
