@@ -24786,6 +24786,11 @@
 /obj/item/storage/box/firingpins,
 /obj/item/key/security,
 /obj/item/storage/lockbox/loyalty,
+/obj/item/storage/box/trackimp,
+/obj/item/storage/box/chemimp{
+	pixel_x = 4;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "cKk" = (
@@ -42605,8 +42610,10 @@
 /turf/open/floor/iron,
 /area/engineering/main)
 "kAQ" = (
-/obj/machinery/rnd/production/techfab/department/security,
 /obj/effect/turf_decal/trimline/red/filled/line,
+/obj/machinery/computer/secure_data{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/security/office)
 "kAS" = (
@@ -45025,13 +45032,13 @@
 /obj/structure/sign/poster/official/safety_report{
 	pixel_y = 32
 	},
-/obj/machinery/vending/wardrobe/sec_wardrobe,
 /obj/effect/turf_decal/bot,
 /obj/machinery/camera{
 	c_tag = "Security - Equipment Room";
 	dir = 6;
 	network = list("ss13","Security")
 	},
+/obj/machinery/vending/wardrobe/peacekeeper_wardrobe,
 /turf/open/floor/iron/showroomfloor,
 /area/security/office)
 "lGB" = (
@@ -52311,6 +52318,9 @@
 /obj/effect/landmark/start/prisoner,
 /turf/open/floor/iron/dark,
 /area/security/prison/safe)
+"paI" = (
+/turf/closed/wall/r_wall,
+/area/security/processing)
 "paY" = (
 /obj/machinery/atmospherics/components/trinary/mixer{
 	dir = 1;
@@ -52978,9 +52988,6 @@
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
 "pok" = (
-/obj/machinery/computer/secure_data{
-	dir = 1
-	},
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/machinery/newscaster/security_unit{
 	pixel_y = -30
@@ -63506,6 +63513,9 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
+"tXi" = (
+/turf/closed/wall/r_wall,
+/area/security/office)
 "tXt" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/hangover,
@@ -72904,6 +72914,9 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison)
+"ycJ" = (
+/turf/closed/wall/r_wall,
+/area/command/heads_quarters/hos)
 "ydp" = (
 /obj/machinery/computer/cargo/request{
 	dir = 8
@@ -167163,8 +167176,8 @@ aBM
 aBM
 aBM
 aBM
-dOV
-dOV
+paI
+paI
 nTn
 nTn
 nTn
@@ -167420,7 +167433,7 @@ aBM
 aBM
 aBM
 aBM
-dOV
+paI
 cbm
 dED
 aoR
@@ -167677,7 +167690,7 @@ aBM
 aBM
 aBM
 aBM
-dOV
+paI
 xao
 mEj
 icN
@@ -168705,7 +168718,7 @@ aBM
 aBM
 aBM
 aBM
-dOV
+paI
 dOV
 lvJ
 rYZ
@@ -170239,7 +170252,7 @@ aBM
 aBM
 aBM
 aBM
-bcm
+tXi
 rcy
 sLo
 sLo
@@ -170496,7 +170509,7 @@ aBM
 aBM
 aBM
 aBM
-bcm
+tXi
 jdK
 wOX
 wOX
@@ -170753,7 +170766,7 @@ aBM
 aBM
 aBM
 aBM
-bcm
+tXi
 oZm
 wOX
 kBf
@@ -171010,7 +171023,7 @@ aBM
 aBM
 aBM
 aae
-bcm
+tXi
 jdK
 wOX
 kjb
@@ -171267,7 +171280,7 @@ aBM
 aBM
 aBM
 aae
-bcm
+tXi
 ofr
 wOX
 dPU
@@ -171524,7 +171537,7 @@ aBM
 aBM
 aBM
 aae
-bcm
+tXi
 lGt
 wOX
 wOX
@@ -171781,7 +171794,7 @@ aBM
 aae
 aBM
 aae
-bcm
+tXi
 sKD
 wOX
 qZT
@@ -172038,7 +172051,7 @@ aBM
 aae
 aae
 aae
-bcm
+tXi
 rmF
 hrj
 kVU
@@ -172295,14 +172308,14 @@ aBM
 aae
 aae
 aae
-bcm
+tXi
+ycJ
 cso
 cso
 cso
 cso
 cso
-cso
-cso
+ycJ
 phH
 xZz
 hbu
@@ -172553,7 +172566,7 @@ aBM
 aae
 aae
 aae
-cso
+ycJ
 agn
 aoz
 mNh
@@ -172810,13 +172823,13 @@ aae
 aae
 aae
 aae
-cso
+ycJ
 pAr
 inb
 avg
 nXZ
 azD
-cso
+ycJ
 ajx
 vzr
 nSg
@@ -173067,7 +173080,7 @@ aae
 aae
 aae
 aae
-cso
+ycJ
 xox
 vWh
 dGt
@@ -173324,13 +173337,13 @@ aae
 aae
 aae
 aae
-cso
+ycJ
 irc
 vWh
 bsd
 mlc
 aad
-cso
+ycJ
 ajB
 vzr
 byf
@@ -173581,7 +173594,7 @@ aae
 aae
 aae
 aae
-cso
+ycJ
 rzr
 ves
 fAM
@@ -173838,13 +173851,13 @@ aae
 aae
 aae
 aae
-cso
-cso
-cso
-cso
-cso
-cso
-cso
+ycJ
+ycJ
+ycJ
+ycJ
+ycJ
+ycJ
+ycJ
 eRe
 rwe
 tci
@@ -174101,7 +174114,7 @@ aae
 aae
 aae
 aae
-bcm
+tXi
 azF
 qVQ
 qcy
@@ -174358,15 +174371,15 @@ aae
 aae
 aae
 aae
-bcm
-bcm
+tXi
+tXi
 dsN
-bcm
-bcm
+tXi
+tXi
 hmg
-bcm
-bcm
-bcm
+tXi
+tXi
+tXi
 jWX
 vlJ
 qjO
