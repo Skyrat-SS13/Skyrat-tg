@@ -13,7 +13,7 @@
 	var/max_batteries = 4
 	var/charge_rate = 250
 	var/charge_rate_base = 250 // Amount of charge we gain from a level one capacitor
-	var/charge_rate_max = 2000 // The highest we allow the charge rate to go
+	var/charge_rate_max = 4000 // The highest we allow the charge rate to go
 
 /obj/machinery/cell_charger_multi/update_overlays()
 	. = ..()
