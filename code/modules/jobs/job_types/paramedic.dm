@@ -10,7 +10,7 @@
 	outfit = /datum/outfit/job/paramedic
 	plasmaman_outfit = /datum/outfit/plasmaman/paramedic
 
-	paycheck = PAYCHECK_HARD //SKYRAT EDIT ORIGINAL (PAYCHECK_MEDIUM) - Paramed pay increase
+	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_MED
 
 	liver_traits = list(TRAIT_MEDICAL_METABOLISM)
