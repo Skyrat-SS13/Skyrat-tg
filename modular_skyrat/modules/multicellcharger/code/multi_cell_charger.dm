@@ -31,6 +31,8 @@
 
 /obj/machinery/cell_charger_multi/CtrlShiftClick(mob/user)
 	. = ..()
+	if(!can_interact(user))
+		return
 	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")
 	for(var/i in charging_batteries)
 		removecell()
