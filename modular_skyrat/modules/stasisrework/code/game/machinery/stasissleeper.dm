@@ -9,7 +9,7 @@
 	circuit = /obj/item/circuitboard/machine/stasissleeper
 	idle_power_usage = 40
 	active_power_usage = 340
-	var/enter_message = "<span class='notice'><b>You feel cool air Surround you. You go numb as your senses turn inward.<b></span>"
+	var/enter_message = "<span class='notice'><b>You feel cool air surround you. You go numb as your senses turn inward.<b></span>"
 	var/last_stasis_sound = FALSE
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
@@ -21,13 +21,17 @@
 	. = ..()
 	. += "<span class='notice'>Alt-click to [state_open ? "close" : "open"] the machine.</span>"
 
-/obj/machinery/sleeper/open_machine()
+/obj/machinery/stasissleeper/open_machine()
 	if(!state_open && !panel_open)
+		playsound(src, 'sound/machines/click.ogg', 60, TRUE)
+		play_power_sound()
 		flick("[initial(icon_state)]-anim", src)
 		..()
 
-/obj/machinery/sleeper/close_machine(mob/user)
+/obj/machinery/stasissleeper/close_machine(mob/user)
 	if((isnull(user) || istype(user)) && state_open && !panel_open)
+		play_power_sound()
+		playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 		flick("[initial(icon_state)]-anim", src)
 		..(user)
 		var/mob/living/mob_occupant = occupant
@@ -47,11 +51,10 @@
 /obj/machinery/stasissleeper/AltClick(mob/user)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
-	playsound(src, 'sound/machines/click.ogg', 60, TRUE)
-	user.visible_message("<span class='notice'>\The [src] [state_open ? "hisses as it swings open." : "hisses as it seals shut."].</span>", \
-					"<span class='notice'>You [state_open ? "close" : "open"] \the [src].</span>", \
-					"<span class='hear'>You hear a nearby machine [state_open ? "hiss open." : "seal shut."].</span>")
-	play_power_sound()
+	if(!panel_open)
+		user.visible_message("<span class='notice'>\The [src] [state_open ? "hisses as it swings open." : "hisses as it seals shut."].</span>", \
+						"<span class='notice'>You [state_open ? "close" : "open"] \the [src].</span>", \
+						"<span class='hear'>You hear a nearby machine [state_open ? "hiss open." : "seal shut."].</span>")
 	if(state_open)
 		close_machine()
 	else
@@ -108,8 +111,7 @@
 	else if(IS_IN_STASIS(L_occupant))
 		thaw_them(L_occupant)
 
-/obj/machinery/stasis/screwdriver_act(mob/living/user, obj/item/I)
-	. = ..()
+/obj/machinery/stasissleeper/screwdriver_act(mob/living/user, obj/item/I)
 	if(.)
 		return
 	if(occupant)
@@ -118,13 +120,13 @@
 	if(state_open)
 		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!</span>")
 		return
-	return default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I)
+	default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I)
 
 /obj/machinery/stasissleeper/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(default_pry_open(I))
 		return TRUE
-	return default_deconstruction_crowbar(I) || .
+	default_deconstruction_crowbar(I)
 
 /obj/machinery/stasissleeper/default_pry_open(obj/item/I)
 	if(occupant)
