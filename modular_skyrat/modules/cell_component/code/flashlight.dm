@@ -44,15 +44,15 @@
 				to_chat(user, "<span class='notice'>You set [src] to low.</span>")
 			if(1)
 				power_use_amount = POWER_CELL_USE_LOW
-				light_range = 7
-				light_power = 2
+				light_range = initial(light_range) + 2
+				light_power = initial(light_power) + 1
 				set_light_on(on)
 				flashlight_mode = 2
 				to_chat(user, "<span class='notice'>You set [src] to medium.</span>")
 			if(2)
 				power_use_amount = POWER_CELL_USE_NORMAL
-				light_range = 9
-				light_power = 3
+				light_range = initial(light_range) + 4
+				light_power = initial(light_power) + 2
 				set_light_on(on)
 				flashlight_mode = 0
 				to_chat(user, "<span class='notice'>You set [src] to high.</span>")
