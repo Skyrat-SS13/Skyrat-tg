@@ -4,7 +4,7 @@
 //Current design direction: Higher paying jobs are vastly outnumbered by lower paying jobs, so anything above medium hurts inflation, common jobs help inflation
 #define PAYCHECK_PRISONER 25
 #define PAYCHECK_ASSISTANT 50
-#define PAYCHECK_MINIMAL 65 //SKYRAT EDIT ORIGINAL = (55) - Pay Raise
+#define PAYCHECK_MINIMAL 70 //SKYRAT EDIT ORIGINAL = (55) - Pay Raise
 #define PAYCHECK_EASY 80 //SKYRAT EDIT ORIGINAL = (60) - Pay Raise
 #define PAYCHECK_MEDIUM 100 //SKYRAT EDIT ORIGINAL = (75) - Pay Raise
 #define PAYCHECK_HARD 125 //SKYRAT EDIT ORIGINAL = (100)  - Pay Raise
