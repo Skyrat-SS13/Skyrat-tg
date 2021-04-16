@@ -116,6 +116,12 @@
 	path = /obj/item/clothing/neck/tie/black
 
 /datum/loadout_item/neck/tie/disco
-	name = "Horrible Necktie"
+	name = "Yellow Necktie"
 	path = /obj/item/clothing/neck/tie/horrible
+
+/datum/loadout_item/neck/tie/discoproper
+	name = "Horrible Necktie"
+	path = /obj/item/clothing/neck/tie/disco
+	restricted_roles = list("Detective")
+	restricted_desc = "Superstar Detectives"
 
