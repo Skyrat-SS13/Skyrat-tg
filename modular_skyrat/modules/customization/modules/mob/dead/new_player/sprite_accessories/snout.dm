@@ -145,6 +145,10 @@
 	name = "hShark"
 	icon_state = "hshark"
 
+/datum/sprite_accessory/snouts/mammal/akula/hshark_eyes
+	name = "hShark and eyes"
+	icon_state = "hshark_eyes"
+
 /*/datum/sprite_accessory/snouts/mammal/sharp
 	name = "Mammal Sharp"
 	icon_state = "sharp"

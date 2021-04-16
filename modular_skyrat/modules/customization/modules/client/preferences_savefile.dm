@@ -635,6 +635,27 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	validate_species_parts()
 
+	READ_FILE(S["pref_culture"] , pref_culture)
+	READ_FILE(S["pref_location"] , pref_location)
+	READ_FILE(S["pref_faction"] , pref_faction)
+
+	READ_FILE(S["languages"] , languages)
+	var/do_get_common_later = FALSE
+	if(isnull(languages))
+		do_get_common_later = TRUE
+	languages = SANITIZE_LIST(languages)
+
+	if(!pref_culture || !GLOB.culture_cultures[pref_culture])
+		pref_culture = pref_species.cultures[1]
+	if(!pref_location || !GLOB.culture_locations[pref_location])
+		pref_location = pref_species.locations[1]
+	if(!pref_faction || !GLOB.culture_factions[pref_faction])
+		pref_faction = pref_species.factions[1]
+
+	validate_languages()
+	if(do_get_common_later)
+		try_get_common_language()
+
 	needs_update = TRUE
 	return TRUE
 
@@ -730,6 +751,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["undershirt_color"], undershirt_color)
 	WRITE_FILE(S["socks_color"], socks_color)
+
+	WRITE_FILE(S["pref_culture"] , pref_culture)
+	WRITE_FILE(S["pref_location"] , pref_location)
+	WRITE_FILE(S["pref_faction"] , pref_faction)
+
+	WRITE_FILE(S["languages"] , languages)
 
 	return TRUE
 
