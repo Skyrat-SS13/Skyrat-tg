@@ -439,4 +439,3 @@
 
 	M.adjustToxLoss(5 * REM * delta_time)
 	M.adjustOrganLoss(ORGAN_SLOT_LIVER, 3 * REM * delta_time)
-	M.drowsyness += 2 * REM * normalise_creation_purity() * delta_time
