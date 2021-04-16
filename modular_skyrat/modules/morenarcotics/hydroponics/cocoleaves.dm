@@ -1,8 +1,8 @@
 /obj/item/seeds/cocaleaf
 	name = "pack of coca leaf seeds"
 	desc = "These seeds grow into coca shrubs. They make you feel energized just looking at them..."
-	icon = 'modular_skyrat/modules/morenarcotics/icons/cocoleaf.dmi'
-	growing_icon = 'modular_skyrat/modules/morenarcotics/icons/cocoleaf.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/seeds.dmi'
+	growing_icon = 'modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi'
 	icon_state = "seed-cocoleaf"
 	species = "cocoleaf"
 	plantname = "Coca Leaves"
@@ -17,7 +17,7 @@
 	seed = /obj/item/seeds/cocaleaf
 	name = "coca leaf"
 	desc = "A leaf of the coca shrub, which contains a potent psychoactive alkaloid known as 'cocaine'."
-	icon = 'modular_skyrat/modules/morenarcotics/icons/cocoleaf.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "cocoleaf"
 	foodtypes = FRUIT //i guess? i mean it grows on trees...
 	tastes = list("leaves" = 1)
