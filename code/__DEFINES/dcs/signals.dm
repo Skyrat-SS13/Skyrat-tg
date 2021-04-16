@@ -40,6 +40,9 @@
 ///from SSsun when the sun changes position : (azimuth)
 #define COMSIG_SUN_MOVED "sun_moved"
 
+///from SSsecurity_level when the security level changes : (new_level)
+#define COMSIG_SECURITY_LEVEL_CHANGED "security_level_changed"
+
 //////////////////////////////////////////////////////////////////
 
 // /datum signals
@@ -334,7 +337,9 @@
 
 // /turf signals
 
-///from base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/transferring_comps)
+/// from base of turf/ChangeTurf(): (path, list/new_baseturfs, flags, list/post_change_callbacks).
+/// `post_change_callbacks` is a list that signal handlers can mutate to append `/datum/callback` objects.
+/// They will be called with the new turf after the turf has changed.
 #define COMSIG_TURF_CHANGE "turf_change"
 ///from base of atom/has_gravity(): (atom/asker, list/forced_gravities)
 #define COMSIG_TURF_HAS_GRAVITY "turf_has_gravity"
@@ -358,18 +363,12 @@
 #define COMSIG_MOVABLE_CROSS "movable_cross"
 ///from base of atom/movable/Crossed(): (/atom/movable)
 #define COMSIG_MOVABLE_CROSSED "movable_crossed"
-///from base of atom/movable/Uncross(): (/atom/movable)
-#define COMSIG_MOVABLE_UNCROSS "movable_uncross"
-	#define COMPONENT_MOVABLE_BLOCK_UNCROSS (1<<0)
 ///from base of atom/movable/Uncrossed(): (/atom/movable)
 #define COMSIG_MOVABLE_UNCROSSED "movable_uncrossed"
 ///from base of atom/movable/Cross(): (/atom/movable)
 #define COMSIG_MOVABLE_CROSS_OVER "movable_cross_am"
 ///from base of atom/movable/Crossed(): (/atom/movable)
 #define COMSIG_MOVABLE_CROSSED_OVER "movable_crossed_am"
-///from base of atom/movable/Uncross(): (/atom/movable)
-#define COMSIG_MOVABLE_UNCROSS_OVER "movable_uncross_am"
-	#define COMPONENT_MOVABLE_BLOCK_UNCROSS_OVER (1<<0)
 ///from base of atom/movable/Uncrossed(): (/atom/movable)
 #define COMSIG_MOVABLE_UNCROSSED_OVER "movable_uncross_am"
 ///from base of atom/movable/Bump(): (/atom)
@@ -619,6 +618,18 @@
 #define COMSIG_CARBON_EMBED_REMOVAL "item_embed_remove_safe"
 ///Called when someone attempts to cuff a carbon
 #define COMSIG_CARBON_CUFF_ATTEMPTED "carbon_attempt_cuff"
+///Called when a carbon mutates (source = dna, mutation = mutation added)
+#define COMSIG_CARBON_GAIN_MUTATION "carbon_gain_mutation"
+///Called when a carbon loses a mutation (source = dna, mutation = mutation lose)
+#define COMSIG_CARBON_LOSE_MUTATION "carbon_lose_mutation"
+///Called when a carbon becomes addicted (source = what addiction datum, addicted_mind = mind of the addicted carbon)
+#define COMSIG_CARBON_GAIN_ADDICTION "carbon_gain_addiction"
+///Called when a carbon is no longer addicted (source = what addiction datum was lost, addicted_mind = mind of the freed carbon)
+#define COMSIG_CARBON_LOSE_ADDICTION "carbon_lose_addiction"
+///Called when a carbon gets a brain trauma (source = carbon, trauma = what trauma was added) - this is before on_gain()
+#define COMSIG_CARBON_GAIN_TRAUMA "carbon_gain_trauma"
+///Called when a carbon loses a brain trauma (source = carbon, trauma = what trauma was removed)
+#define COMSIG_CARBON_LOSE_TRAUMA "carbon_lose_trauma"
 
 // /mob/living/simple_animal/hostile signals
 #define COMSIG_HOSTILE_ATTACKINGTARGET "hostile_attackingtarget"
@@ -709,6 +720,7 @@
 	#define COMPONENT_BLOCK_MARK_RETRIEVAL (1<<0)
 ///from base of obj/item/hit_reaction(): (list/args)
 #define COMSIG_ITEM_HIT_REACT "item_hit_react"
+	#define COMPONENT_HIT_REACTION_BLOCK (1<<0)
 ///called on item when microwaved (): (obj/machinery/microwave/M)
 #define COMSIG_ITEM_MICROWAVE_ACT "microwave_act"
 	#define COMPONENT_SUCCESFUL_MICROWAVE (1<<0)
@@ -740,6 +752,16 @@
 #define COMSIG_MINE_TRIGGERED "minegoboom"
 ///from [/obj/structure/closet/supplypod/proc/preOpen]:
 #define COMSIG_SUPPLYPOD_LANDED "supplypodgoboom"
+
+///Closets
+///From base of [/obj/structure/closet/proc/insert]: (atom/movable/inserted)
+#define COMSIG_CLOSET_INSERT "closet_insert"
+	///used to interrupt insertion
+	#define COMPONENT_CLOSET_INSERT_INTERRUPT (1<<0)
+
+///Eigenstasium
+///From base of [/datum/controller/subsystem/eigenstates/proc/use_eigenlinked_atom]: (var/target)
+#define COMSIG_EIGENSTATE_ACTIVATE "eigenstate_activate"
 
 // /obj signals for economy
 ///called when the payment component tries to charge an account.
@@ -810,10 +832,15 @@
 
 // /obj/item/gun signals
 
-///called in /obj/item/gun/process_fire (user, target, params, zone_override)
+///called in /obj/item/gun/process_fire (src, target, params, zone_override)
 #define COMSIG_MOB_FIRED_GUN "mob_fired_gun"
 ///called in /obj/item/gun/process_fire (user, target, params, zone_override)
 #define COMSIG_GUN_FIRED "gun_fired"
+
+// /obj/effect/proc_holder/spell signals
+
+///called from /obj/effect/proc_holder/spell/perform (src)
+#define COMSIG_MOB_CAST_SPELL "mob_cast_spell"
 
 // /obj/item/grenade signals
 

@@ -57,6 +57,27 @@
 	name = "Brown Flannel"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/brown
 
+/*Hawaiian Shirts*/
+/datum/loadout_item/suit/hawaiian_blue
+	name = "Blue Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_blue
+
+/datum/loadout_item/suit/hawaiian_orange
+	name = "Orange Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_orange
+
+/datum/loadout_item/suit/hawaiian_purple
+	name = "Purple Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_purple
+
+/datum/loadout_item/suit/hawaiian_green
+	name = "Green Hawaiian Shirt"
+	path = /obj/item/clothing/suit/hawaiian_green
+
+/datum/loadout_item/suit/frenchtrench
+	name = "Blue Trenchcoat"
+	path = /obj/item/clothing/suit/frenchtrench
+
 //COATS
 /datum/loadout_item/suit/coat
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_COATS
@@ -77,15 +98,65 @@
 	name = "Brass winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
 
+/datum/loadout_item/suit/coat/korea
+	name = "Eastern winter coat"
+	path = /obj/item/clothing/suit/koreacoat
+
+/datum/loadout_item/suit/coat/czech
+	name = "Modern winter coat"
+	path = /obj/item/clothing/suit/modernwintercoatthing
+
 /datum/loadout_item/suit/coat/poly
 	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
 	extra_info = LOADOUT_INFO_THREE_COLORS
 	cost = 3
 
+/datum/loadout_item/suit/coat/urban
+	name = "Urban Coat"
+	path = /obj/item/clothing/suit/urban/polychromic
+	extra_info = LOADOUT_INFO_THREE_COLORS
+	cost = 3
+
+/datum/loadout_item/suit/coat/maxson
+	name = "Fancy Brown Coat"
+	path = /obj/item/clothing/suit/brownbattlecoat
+	cost = 3
+
+/datum/loadout_item/suit/coat/bossu
+	name = "Fancy Black Coat"
+	path = /obj/item/clothing/suit/blackfurrich
+	cost = 3
+
+
+
 //JACKETS
 /datum/loadout_item/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/loadout_item/suit/jacket/dutchjacket
+	name = "Dutch Jacket"
+	path = /obj/item/clothing/suit/dutchjacketsr
+
+/datum/loadout_item/suit/jacket/caretaker
+	name = "Caretaker Jacket"
+	path = /obj/item/clothing/suit/victoriantailcoatbutler
+
+/datum/loadout_item/suit/jacket/yakuzajacket
+	name = "Asian Jacket"
+	path = /obj/item/clothing/suit/yakuza
+
+/datum/loadout_item/suit/jacket/suitblue
+	name = "Blue Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer
+
+/datum/loadout_item/suit/jacket/suitpurple
+	name = "Purple Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/purple
+
+/datum/loadout_item/suit/jacket/suitblack
+	name = "Black Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/black
 
 /datum/loadout_item/suit/jacket/jacketbomber
 	name = "Bomber jacket"
@@ -131,6 +202,11 @@
 	name = "Flak Jacket"
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+
+/datum/loadout_item/suit/jacket/cardigan
+	name = "Cardigan"
+	path = /obj/item/clothing/suit/toggle/jacket/cardigan
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 //HOODIES
 /datum/loadout_item/suit/hoodie
@@ -250,7 +326,7 @@
 /datum/loadout_item/suit/job/navybluejacketofficer
 	name = "security officer's navyblue jacket"
 	path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list("Security Officer")
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/job/navybluejacketwarden
 	name = "warden navyblue jacket"
@@ -287,6 +363,12 @@
 	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
 	restricted_desc = "All Cargo Personnel"
 
+/datum/loadout_item/suit/job/supply_gorka_jacket
+	name = "Supply Gorka Jacket"
+	path = /obj/item/clothing/suit/gorka/supply
+	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
+	restricted_desc = "All Cargo Personnel"
+
 /datum/loadout_item/suit/job/supply_head_jacket
 	name = "Quartermaster's Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/supply/head
@@ -296,11 +378,57 @@
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
 	path = /obj/item/clothing/suit/toggle/labcoat/para_red
-	restricted_roles = list("Chief Medical Officer", "Paramedic")
+	restricted_roles = list("Chief Medical Officer", "Paramedic","Security Medic") // its a medic jacket anyway screw you
 	restricted_desc = "Medical First Responders"
 
 /datum/loadout_item/suit/job/labcoat_highvis
 	name = "High-Vis Labcoat"
 	path = /obj/item/clothing/suit/toggle/labcoat/highvis
-	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective")
+	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic") // why does the atmos get this? sec med is more of a first responder lmao
 	restricted_desc = "First Responders and Detective"
+
+/datum/loadout_item/suit/job/discojacket
+	name = "Disco Ass Blazer"
+	path = /obj/item/clothing/suit/discoblazer
+	restricted_roles = list("Detective")
+	restricted_desc = "Superstar Detectives"
+
+//Trekkie things.
+/datum/loadout_item/suit/job/trek/fedcoat
+	name = "Federation Jacket"
+	path = /obj/item/clothing/suit/storage/fluff/fedcoat
+
+/datum/loadout_item/suit/job/trek/fedmedsci
+	name = "Medsci fed jacket"
+	path = /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
+	restricted_desc = "Medical and Science"
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/suit/job/trek/fedeng
+	name = "Ops/Sec fed Jacket"
+	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
+	restricted_desc = "Engineering, Security, and Cargo"
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+
+//Modern trekkie
+/datum/loadout_item/suit/job/trek/fedcoatmodern
+	name = "Modern fed jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat
+
+/datum/loadout_item/suit/job/trek/fedcoatmodernmedsci
+	name = "Modern medsci jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
+	restricted_desc = "Medical and Science"
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+
+/datum/loadout_item/suit/job/trek/fedcoatmoderneng
+	name = "Modern ops jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/eng
+	restricted_desc = "Engineering and Cargo"
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Cargo Technician", "Shaft Miner", "Quartermaster")
+
+/datum/loadout_item/suit/job/trek/fedcoatmodernsec
+	name = "Modern sec jacket"
+	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_desc = "All Security Personnel"

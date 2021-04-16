@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	sound_environment = SOUND_AREA_WOODFLOOR
 
 /area/cruiser_dock/heads/cmo
-	name = "Chief Medical Officer's Office"
+	name = "DS-1 Chief Medical Officer's Office"
 	icon_state = "cmo_office"
 
 /area/cruiser_dock/heads/ceo
@@ -78,56 +78,56 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	icon_state = "rd_office"
 
 /area/cruiser_dock/security
-	name = "Security"
+	name = "DS-1 Security"
 	icon_state = "security"
 	ambience_index = AMBIENCE_DANGER
 
 /area/cruiser_dock/security/armory
-	name = "Armory"
+	name = "DS-1 Armory"
 
 /area/cruiser_dock/service
-	name = "Service Halls"
+	name = "DS-1 Service Halls"
 	icon_state = "hall_service"
 
 /area/cruiser_dock/research
-	name = "Research And Development"
+	name = "DS-1 Research And Development"
 	icon_state = "science"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/cruiser_dock/cargo
-	name = "Cargo"
+	name = "DS-1 Cargo"
 	icon_state = "cargo_bay"
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
 /area/cruiser_dock/cargo/hangar
-	name = "Hangar"
+	name = "DS-1 Hangar"
 
 /area/cruiser_dock/vault
-	name = "Vault"
+	name = "DS-1 Vault"
 	icon_state = "nuke_storage"
 
 /area/cruiser_dock/engineering
-	name = "Engineering"
+	name = "DS-1 Engineering"
 	ambience_index = AMBIENCE_ENGI
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 	icon_state = "engine"
 
 /area/cruiser_dock/commons
-	name = "Commons"
+	name = "DS-1 Commons"
 	icon_state = "dorms"
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/cruiser_dock/commons/dorms
-	name = "Dormitories"
+	name = "DS-1 Dormitories"
 
 /area/cruiser_dock/maint
-	name = "Maintenance Tunnels"
+	name = "DS-1 Maintenance Tunnels"
 	ambience_index = AMBIENCE_MAINT
 	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
 	icon_state = "maint_electrical"
 
 /area/cruiser_dock/medical
-	name = "Medical"
+	name = "DS-1 Medical"
 	icon_state = "medbay1"
 	ambience_index = AMBIENCE_MEDICAL
 	sound_environment = SOUND_AREA_STANDARD_STATION
@@ -135,17 +135,17 @@ GLOBAL_LIST_EMPTY(assaultop_start)
 	max_ambience_cooldown = 180 SECONDS
 
 /area/cruiser_dock/medical/virology
-	name = "Virology"
+	name = "DS-1 Virology"
 	icon_state = "virology"
 
 /area/cruiser_dock/bridge
-	name = "Bridge"
+	name = "DS-1 Bridge"
 	icon_state = "bridge_hallway"
 	ambientsounds = list('sound/ambience/signal.ogg')
 	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/cruiser_dock/bridge/hallway
-	name = "Command Hallway"
+	name = "DS-1 Command Hallway"
 
 /obj/machinery/door/poddoor/shutters
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS)

@@ -283,6 +283,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_KISS_OF_DEATH "kiss_of_death"
 /// Used on limbs in the process of turning a human into a plasmaman while in plasma lava
 #define TRAIT_PLASMABURNT "plasma_burnt"
+/// Addictions don't tick down, basically they're permanently addicted
+#define TRAIT_HOPELESSLY_ADDICTED "hopelessly_addicted"
+/// Special examine if eyes are visible
+#define CULT_EYES "cult_eyes"
+/// This mob should never close UI even if it doesn't have a client
+#define TRAIT_PRESERVE_UI_WITHOUT_CLIENT "preserve_ui_without_client"
 
 #define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
 /// This atom can ignore the "is on a turf" check for simple AI datum attacks, allowing them to attack from bags or lockers as long as any other conditions are met
@@ -364,6 +370,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Marks the item as having been transmuted. Functionally blacklists the item from being recycled or sold for materials.
 #define TRAIT_MAT_TRANSMUTED "transmuted"
 
+///If the item will block the cargo shuttle from flying to centcom
+#define TRAIT_BANNED_FROM_CARGO_SHUTTLE "banned_from_cargo_shuttle"
+
 // item traits
 #define TRAIT_NODROP "nodrop"
 /// cannot be inserted in a storage.
@@ -430,6 +439,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Minor trait used for beakers, or beaker-ishes. [/obj/item/reagent_containers], to show that they've been used in a reagent grinder.
 #define TRAIT_MAY_CONTAIN_BLENDED_DUST "may_contain_blended_dust"
+
+///Trait applied to turfs when an atmos holosign is placed on them. It will stop firedoors from closing.
+#define TRAIT_FIREDOOR_STOP "firedoor_stop"
 
 //Medical Categories for quirks
 #define CAT_QUIRK_ALL 0
@@ -515,7 +527,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STASIS_MUTE "stasis"
 #define GENETICS_SPELL "genetics_spell"
 #define EYES_COVERED "eyes_covered"
-#define CULT_EYES "cult_eyes"
 #define TRAIT_SANTA "santa"
 #define SCRYING_ORB "scrying-orb"
 #define ABDUCTOR_ANTAGONIST "abductor-antagonist"

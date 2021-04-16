@@ -231,6 +231,11 @@
 	strip_delay = 80
 	dog_fashion = null
 
+/obj/item/clothing/head/helmet/thunderdome/holosuit
+	cold_protection = null
+	heat_protection = null
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
 /obj/item/clothing/head/helmet/roman
 	name = "\improper Roman helmet"
 	desc = "An ancient helmet made of bronze and leather."
@@ -384,6 +389,7 @@
 
 //monkey sentience caps
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /obj/item/clothing/head/helmet/monkey_sentience
 	name = "monkey mind magnification helmet"
 	desc = "A fragile, circuitry embedded helmet for boosting the intelligence of a monkey to a higher level. You see several warning labels..."
@@ -491,7 +497,7 @@
 	if(magnification)
 		visible_message("<span class='warning'>[src] falls off of [magnification]'s head as it changes shape!</span>")
 		magnification.dropItemToGround(src)
-
+*/
 //LightToggle
 
 /obj/item/clothing/head/helmet/ComponentInitialize()

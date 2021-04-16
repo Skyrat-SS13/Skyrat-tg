@@ -23,7 +23,7 @@
 
 /obj/item/clothing/head/cowboyhat/black
 	name = "black cowboy hat"
-	desc = "A a black cowboy hat, perfect for any outlaw"
+	desc = "A black cowboy hat, perfect for any outlaw"
 	icon_state = "cowboyhat_black"
 	inhand_icon_state= "cowboyhat_black"
 
@@ -91,3 +91,32 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "syndwardenberet"
 	dog_fashion = null
+
+
+/obj/item/clothing/head/cowboyhat/blackwide
+	name = "wide brimmed black cowboy hat"
+	desc = "The Man in Black, he walked the earth but is now six foot under, this hat a stark reminder. Bring your courage, your righteousness... measure it against my resolve, and you will fail."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "cowboy_black"
+	inhand_icon_state= "cowboy_black"
+
+
+/obj/item/clothing/head/cowboyhat/wide
+	name = "wide brimmed cowboy hat"
+	desc = "A brown cowboy hat for blocking out the sun. Remember: Justice is truth in action. Let that guide you in the coming days."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "cowboy_wide"
+	inhand_icon_state= "cowboy_wide"
+
+/obj/item/clothing/head/cowboyhat/widesec
+	name = "wide brimmed security cowboy hat"
+	desc = "A bandit turned Sherriff, his enforcement is brutal but effective, if out of fear or respect, not many bodies hang high. A peaceful land, a quiet people."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "cowboy_black_sec"
+	inhand_icon_state= "cowboy_black_sec"
+
+
+

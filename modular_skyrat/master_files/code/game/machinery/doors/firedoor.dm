@@ -15,7 +15,7 @@
 /obj/machinery/door/proc/try_manual_override(mob/user)
 	if(density)
 		to_chat(user, "<span class='notice'>You begin working the manual override mechanism...</span>")
-		if(do_after(user, 15 SECONDS, target = src))
+		if(do_after(user, 10 SECONDS, target = src))
 			try_to_crowbar(null, user)
 			return TRUE
 	return FALSE
