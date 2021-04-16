@@ -12,7 +12,7 @@
 	var/list/voicespan = list(SPAN_COMMAND)
 
 //SKYRAT EDIT ADDITION BEGIN
-/obj/item/multitool/ComponentInitialize()
+/obj/item/megaphone/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/cell)
 //SKYRAT EDIT ADDITION END

@@ -70,7 +70,8 @@
 		/obj/item/inducer,
 		/obj/item/plunger,
 		/obj/item/airlock_painter,
-		/obj/item/pipe_painter
+		/obj/item/pipe_painter,
+		/obj/item/weldingtool_electric //SKYRAT EDIT ADDITION
 		))
 
 /obj/item/storage/belt/utility/chief
