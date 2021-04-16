@@ -200,7 +200,7 @@
 	//Handle held offsets
 	var/mob/M = loc
 	if(istype(M))
-		var/list/L = get_held_offsets()
+		var/list/L = get_worn_offsets(true)
 		if(L)
 			standing.pixel_x += L["x"] //+= because of center()ing
 			standing.pixel_y += L["y"]
