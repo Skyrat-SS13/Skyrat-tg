@@ -281,11 +281,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
-		//SKYRAT EDIT ADDITION
-		if(SSticker.mode.name == "assaultops")
-			if(is_assaultops_target(mob_occupant.mind))
-				remove_assaultops_target(mob_occupant.mind) //Remove them from the list of targets for the assops.
-		//SKYRAT EDIT END
 	else
 		crew_member["job"] = "N/A"
 	// Delete them from datacore.
