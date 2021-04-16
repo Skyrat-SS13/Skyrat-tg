@@ -277,7 +277,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
 
 	//SKYRAT EDIT CHANGE BEGIN
-	var/mining_map_to_load = SSrandommining.choosen_map
+	var/mining_map_to_load = SSrandommining.chosen_map
 	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
 
 	if(mining_map_to_load)

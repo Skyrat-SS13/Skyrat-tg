@@ -130,6 +130,10 @@ SUBSYSTEM_DEF(vote)
 			if("map")
 				SSmapping.changemap(global.config.maplist[.])
 				SSmapping.map_voted = TRUE
+			if("mining_map")
+				SSrandommining.voted_next_map = .
+				var/F = file("data/next_mining.dat")
+				WRITE_FILE(F, .)
 			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
 			if("transfer")
 				if(. == "Initiate Crew Transfer")
@@ -209,6 +213,19 @@ SUBSYSTEM_DEF(vote)
 					shuffle_inplace(maps)
 				for(var/valid_map in maps)
 					choices.Add(valid_map)
+			//SKYRAT EDIT ADDITION
+			if("map_mining")
+				if(!lower_admin && SSrandommining.voted_next_map)
+					to_chat(usr, "<span class='warning'>The next map has already been selected.</span>")
+					return FALSE
+				var/list/maps = list()
+				for(var/map in SSrandommining.possible_names)
+					if(SSrandommining.previous_map == map) //SKYRAT EDIT CHANGE - ORIGINAL: if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps))
+						continue
+					maps += map
+				for(var/valid_map in maps)
+					choices.Add(valid_map)
+			//SKYRAT EDIT ADDITON END
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
@@ -329,6 +346,11 @@ SUBSYSTEM_DEF(vote)
 		if("map")
 			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
 				initiate_vote("map",usr.key)
+		//SKYRAT EDIT ADDITION
+		if("mining_map")
+			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
+				initiate_vote("mining_map",usr.key)
+		//SKYRAT EDIT END
 		if("custom")
 			if(usr.client.holder)
 				initiate_vote("custom",usr.key)
