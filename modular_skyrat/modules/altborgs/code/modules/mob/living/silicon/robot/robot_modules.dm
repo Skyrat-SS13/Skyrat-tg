@@ -477,7 +477,7 @@
 		"Insekt" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi', icon_state = "insekt-Default"),
 		"Drake" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi', icon_state = "drakepeacebox")
 		)
-		var/list/L = list("Borgi" = "borgi")
+		var/list/L = list("Borgi" = "borgi", "Vale" = "valepeace")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi', icon_state = L[a])
 			wide.pixel_x = -16
@@ -522,6 +522,11 @@
 		if("Borgi")
 			cyborg_base_icon = "borgi"
 			sleeper_overlay = "borgi-sleeper"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi'
+			dogborg = TRUE
+		if("Vale")
+			cyborg_base_icon = "valepeace"
+			sleeper_overlay = "valepeace-sleeper"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi'
 			dogborg = TRUE
 		else
