@@ -8,6 +8,16 @@
 	taste_description = "bitterness" //supposedly does taste bitter in real life
 	addiction_types = list(/datum/addiction/stimulants = 14) //5.6 per 2 seconds
 
+/datum/reagent/drug/cocaine/on_mob_metabolize(mob/living/L)
+	..()
+	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	ADD_TRAIT(L, TRAIT_STUNRESISTANCE, type)
+
+/datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/L)
+	L.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	REMOVE_TRAIT(L, TRAIT_STUNRESISTANCE, type)
+	..()
+
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	if(DT_PROB(2.5, delta_time))
 		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
@@ -26,8 +36,8 @@
 	. = TRUE
 
 /datum/reagent/drug/cocaine/overdose_process(mob/living/M, delta_time, times_fired)
-	M.adjustToxLoss((rand(10, 50) / 10) * REM * delta_time, 0)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1 * REM * delta_time)
+	M.adjustToxLoss(1 * REM * delta_time, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, (rand(10, 20) / 10) * REM * delta_time)
 	M.Jitter(2 * REM * delta_time)
 	if(DT_PROB(2.5, delta_time))
 		M.emote(pick("twitch","drool"))
