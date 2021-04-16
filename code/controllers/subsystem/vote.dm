@@ -130,11 +130,11 @@ SUBSYSTEM_DEF(vote)
 			if("map")
 				SSmapping.changemap(global.config.maplist[.])
 				SSmapping.map_voted = TRUE
+			//SKYRAT EDIT ADDITION BEGIN
 			if("mining_map")
 				SSrandommining.voted_next_map = .
 				var/F = file("data/next_mining.dat")
 				WRITE_FILE(F, .)
-			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
 			if("transfer")
 				if(. == "Initiate Crew Transfer")
 					SSshuttle.autoEnd()
@@ -214,13 +214,13 @@ SUBSYSTEM_DEF(vote)
 				for(var/valid_map in maps)
 					choices.Add(valid_map)
 			//SKYRAT EDIT ADDITION
-			if("map_mining")
+			if("mining_map")
 				if(!lower_admin && SSrandommining.voted_next_map)
 					to_chat(usr, "<span class='warning'>The next map has already been selected.</span>")
 					return FALSE
 				var/list/maps = list()
 				for(var/map in SSrandommining.possible_names)
-					if(SSrandommining.previous_map == map) //SKYRAT EDIT CHANGE - ORIGINAL: if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps))
+					if(SSrandommining.previous_map == map)
 						continue
 					maps += map
 				for(var/valid_map in maps)
