@@ -276,10 +276,23 @@ Used by the AI doomsday and the self-destruct nuke.
 		++space_levels_so_far
 		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
 
-	if(config.minetype == "lavaland")
-		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-	else if (!isnull(config.minetype) && config.minetype != "none")
-		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+	//SKYRAT EDIT CHANGE BEGIN
+	var/mining_map_to_load = SSrandommining.choosen_map
+	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
+
+	if(mining_map_to_load)
+		add_startupmessage("MINING MAP: Loading random mining level...")
+		if(!mining_traits_to_load)
+			add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
+		LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
+		add_startupmessage("MINING MAP: Loaded successfully.")
+	else
+		add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+		if(config.minetype == "lavaland")
+			LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+		else if (!isnull(config.minetype) && config.minetype != "none")
+			INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+	//SKYRAT EDIT END
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
