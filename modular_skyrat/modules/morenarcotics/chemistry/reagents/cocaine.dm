@@ -5,7 +5,7 @@
 	color = "#ffffff"
 	overdose_threshold = 20
 	ph = 9
-	taste_description = "lemons"
+	taste_description = "bitterness" //supposedly does taste bitter in real life
 	addiction_types = list(/datum/addiction/stimulants = 14) //5.6 per 2 seconds
 
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
@@ -28,8 +28,19 @@
 	M.adjustToxLoss((rand(10, 50) / 10) * REM * delta_time, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1 * REM * delta_time)
 	M.Jitter(2 * REM * delta_time)
-	M.drowsyness += 2 * REM * normalise_creation_purity() * delta_time
 	if(DT_PROB(2.5, delta_time))
 		M.emote(pick("twitch","drool"))
 	..()
 	. = TRUE
+
+/datum/reagent/drug/cocaine/freebase_cocaine
+	name = "freebase cocaine"
+	description = "A smokable form of cocaine."
+	color = "#f0e6bb"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/drug/cocaine/powder_cocaine
+	name = "powder cocaine"
+	description = "The powder form of cocaine."
+	color = "#ffffff"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

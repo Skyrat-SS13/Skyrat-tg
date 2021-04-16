@@ -1,13 +1,12 @@
 /datum/reagent/drug/quaalude
 	name = "Quaalude"
-	description = "Relaxes the user, putting them in a hypnotic, drugged state. If overdosed it will cause Brain damage and cause the user to impulsively shout about quaaludes."
+	description = "Relaxes the user, putting them in a hypnotic, drugged state. A favorite drug of kids from Brooklyn" //THAT WAS THE BEST FUCKIN DRUG EVER MADE
 	reagent_state = LIQUID
 	color = "#ffe669"
 	overdose_threshold = 20
 	ph = 8
 	taste_description = "lemons"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	//NON NARCOTIC, NON ADDICTIVE!!
 
 /datum/reagent/drug/quaalude/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel relaxed.", "You feel like you're on the moon.", "You feel like you could walk 20 miles for a quaalude.")
@@ -16,21 +15,16 @@
 	M.set_drugginess(15 * REM * delta_time)
 	M.adjustStaminaLoss(-5 * REM * delta_time, 0)
 	if(DT_PROB(3.5, delta_time))
-		M.emote("laugh")
-	if(ishuman(M)) //aphrodisiac properties
-		for(var/obj/item/organ/genital/G in M.internal_organs)
-			if(!G.aroused == AROUSAL_CANT)
-				G.aroused = AROUSAL_FULL
-				G.update_sprite_suffix()
-		M.update_body()
+		M.emote(pick("laugh","drool"))
 	..()
 
 /datum/reagent/drug/quaalude/overdose_process(mob/living/M, delta_time, times_fired)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25 * REM * delta_time)
-	M.adjustToxLoss(0.25 * REM * delta_time, 0)
 	var/kidfrombrooklyn_message = pick("BRING BACK THE FUCKING QUAALUDES!", "I'd walk 20 miles for a quaalude, let me tell ya'!", "There's nothing like a fuckin' quaalude!")
 	if(DT_PROB(1.5, delta_time))
 		M.say("[kidfrombrooklyn_message]")
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25 * REM * delta_time)
+	M.adjustToxLoss(0.25 * REM * delta_time, 0)
+	M.drowsyness += 0.25 * REM * normalise_creation_purity() * delta_time
 	if(DT_PROB(3.5, delta_time))
 		M.emote("twitch")
 	..()
