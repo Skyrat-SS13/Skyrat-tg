@@ -16,10 +16,7 @@
 	icon_grow = "cocoapod-grow"
 	icon_dead = "cocoapod-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	//mutatelist = list(/obj/item/seeds/cocoapod/vanillapod, /obj/item/seeds/cocoapod/bungotree)
-	//SKYRAT EDIT START - MORENARCOTICS
-	mutatelist = list(/obj/item/seeds/cocoapod/vanillapod, /obj/item/seeds/cocoapod/bungotree, /obj/item/seeds/cocoapod/cocaleaf)
-	//SKYRAT EDIT END
+	mutatelist = list(/obj/item/seeds/cocoapod/vanillapod, /obj/item/seeds/cocoapod/bungotree)
 	reagents_add = list(/datum/reagent/consumable/coco = 0.25, /datum/reagent/consumable/nutriment = 0.1)
 
 /obj/item/food/grown/cocoapod

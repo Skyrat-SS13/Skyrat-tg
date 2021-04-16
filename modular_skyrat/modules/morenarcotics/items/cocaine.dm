@@ -43,3 +43,21 @@
 			if(reagents.total_volume)
 				reagents.trans_to(M, reagents.total_volume, transfered_by = user, methods = INGEST)
 			qdel(src)
+
+/datum/export/crack
+	cost = CARGO_CRATE_VALUE * 0.5
+	unit_name = "crack"
+	export_types = list(/obj/item/reagent_containers/crack)
+	include_subtypes = FALSE
+
+/datum/export/crack/crackbrick
+	cost = CARGO_CRATE_VALUE * 2.5
+	unit_name = "crack"
+	export_types = list(/obj/item/reagent_containers/crack/crackbrick)
+	include_subtypes = FALSE
+
+/datum/export/cocaine
+	cost = CARGO_CRATE_VALUE * 0.4
+	unit_name = "crack"
+	export_types = list(/obj/item/reagent_containers/cocaine)
+	include_subtypes = FALSE
