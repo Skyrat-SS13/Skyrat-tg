@@ -12,6 +12,8 @@
 	var/list/charging_batteries = list() //The list of batteries we are gonna charge!
 	var/max_batteries = 4
 	var/charge_rate = 250
+	var/charge_rate_base = 250 // Amount of charge we gain from a level one capacitor
+	var/charge_rate_max = 4000 // The highest we allow the charge rate to go
 
 /obj/machinery/cell_charger_multi/update_overlays()
 	. = ..()
@@ -97,9 +99,14 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/cell_charger_multi/RefreshParts()
-	charge_rate = 250
+	charge_rate = 0 // No, you cant get free charging speed!
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
-		charge_rate = clamp((charge_rate *= C.rating), 0, 1500)
+		charge_rate += charge_rate_base * C.rating
+		if(charge_rate >= charge_rate_max) // We've hit the charge speed cap, stop iterating.
+			charge_rate = charge_rate_max
+			break
+	if(charge_rate < charge_rate_base) // This should never happen; but we need to pretend it can.
+		charge_rate = charge_rate_base
 
 /obj/machinery/cell_charger_multi/emp_act(severity)
 	. = ..()
