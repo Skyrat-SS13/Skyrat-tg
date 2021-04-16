@@ -269,7 +269,8 @@ Used by the AI doomsday and the self-destruct nuke.
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
-		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
+		//INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
+		add_startupmessage("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") //SKYRAT EDIT CHANGE
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
@@ -281,7 +282,8 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	// load the station
 	station_start = world.maxz + 1
-	INIT_ANNOUNCE("Loading [config.map_name]...")
+	//INIT_ANNOUNCE("Loading [config.map_name]...") SKYRAT EDIT REMOVAL
+	add_startupmessage("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())
@@ -297,12 +299,22 @@ Used by the AI doomsday and the self-destruct nuke.
 		++space_levels_so_far
 		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
 
-	LoadGroup(FailedZs, "Rockplanet", "skyrat/planets", "rockplanet.dmm", default_traits = ZTRAITS_ROCKPLANET)
-
-	if(config.minetype == "lavaland")
-		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-	else if (!isnull(config.minetype) && config.minetype != "none")
-		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+	//SKYRAT EDIT CHANGE BEGIN
+	var/mining_map_to_load = SSrandommining.chosen_map
+	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
+	if(mining_map_to_load)
+		add_startupmessage("MINING MAP: Loading random mining level...")
+		if(!mining_traits_to_load)
+			add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
+		LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
+		add_startupmessage("MINING MAP: Loaded successfully.")
+	else
+		add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+		if(config.minetype == "lavaland")
+			LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+		else if (!isnull(config.minetype) && config.minetype != "none")
+			INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+	//SKYRAT EDIT END
 
 #endif
 

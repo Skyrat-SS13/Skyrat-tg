@@ -302,7 +302,6 @@
 	var/obj/item/organ/zombie_infection/ooze = owner.getorganslot(ORGAN_SLOT_ZOMBIE)
 	if(istype(ooze))
 		ooze.transfer_to_limb(src, owner)
-
 	name = "[owner.real_name]'s head"
 	..()
 

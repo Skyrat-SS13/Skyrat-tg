@@ -264,14 +264,16 @@
 					if(action && !(action == "Yes"))
 						return
 				GLOB.ambitions_to_review[src] = usr.ckey
-				message_admins("<span class='adminhelp'>[usr.ckey] is handling [owner_name]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
-				to_chat(my_mind.current, "<span class='boldnotice'>[usr.ckey] is handling your ambitions.</span>")
+				log_action("HANDLING")
+				message_admins("<span class='adminhelp'>[key_name(usr, FALSE, TRUE)] is handling [owner_name]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				to_chat(my_mind.current, "<span class='boldnotice'>[key_name(usr, FALSE, FALSE)] is handling your ambitions.</span>")
 			if("request_changes")
 				var/changes_wanted = input(usr, "Requested changes:", "Ambitions")  as message|null
 				if(changes_wanted)
 					last_requested_change = changes_wanted
-					to_chat(my_mind.current, "<span class='boldwarning'>[usr.ckey] requested changes on your ambitions: [changes_wanted]. (<a href='?src=[REF(src)];pref=show_ambitions'>VIEW</a>)</span>")
-					message_admins("<span class='adminhelp'>[usr.ckey] requested changes in [ADMIN_TPMONTY(my_mind.current)]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+					log_action("CHANGES REQUESTED: [changes_wanted]")
+					to_chat(my_mind.current, "<span class='boldwarning'>[key_name(usr, FALSE, FALSE)] requested changes on your ambitions: [changes_wanted]. (<a href='?src=[REF(src)];pref=show_ambitions'>VIEW</a>)</span>")
+					message_admins("<span class='adminhelp'>[key_name(usr, FALSE, TRUE)] requested changes in [ADMIN_TPMONTY(my_mind.current)]'s ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("discard_review")
 				var/action = alert(usr, "Are you sure you want to discard this review request (Use request changes if you want it changed instead)?", "", "Yes", "No")
 				if(action && action == "Yes" && admin_review_requested)
@@ -280,16 +282,17 @@
 					changed_after_approval = FALSE
 					last_requested_change = null
 					GLOB.ambitions_to_review -= src
-					to_chat(my_mind.current, "<span class='warning'><b>Your ambitions review request was discarded by [usr.ckey].</b></span>")
-					message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions review request was DISCARDED by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+					log_action("DISCARDED: Review discarded without approval")
+					to_chat(my_mind.current, "<span class='warning'><b>Your ambitions review request was discarded by [key_name(usr, FALSE, FALSE)].</b></span>")
+					message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions review request was DISCARDED by [key_name(usr, FALSE, TRUE)]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 			if("approve")
 				admin_approval = TRUE
 				changed_after_approval = FALSE
 				last_requested_change = null
 				GLOB.ambitions_to_review -= src
-				log_action("APPROVED: Got an approval from [usr.ckey]", FALSE)
-				to_chat(my_mind.current, "<span class='nicegreen'><b>Your ambitions were approved by [usr.ckey].</b></span>")
-				message_admins("<span class='nicegreen'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions were approved by [usr.ckey]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				log_action("APPROVED", FALSE)
+				to_chat(my_mind.current, "<span class='nicegreen'><b>Your ambitions were approved by [key_name(usr, FALSE, FALSE)].</b></span>")
+				message_admins("<span class='nicegreen'>[ADMIN_TPMONTY(my_mind.current)]'s ambitions were approved by [key_name(usr, FALSE, TRUE)]. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 				submit()
 			if("logs")
 				var/datum/browser/popup = new(usr, "Ambition logging", "Ambition logs", 500, 200)
@@ -383,6 +386,13 @@
 		return TRUE
 
 /datum/ambitions/proc/log_action(text_content, clears_approval = TRUE)
+	var/admin_change = my_mind.current != usr
+	if(admin_change)
+		var/mob/living/holder = my_mind.current
+		text_content = "\[[key_name(usr)] -> [key_name(holder)]\] " + text_content
+		log_admin(text_content)
+		holder.log_message(text_content, LOG_AMBITION)
+	usr.log_message(text_content, LOG_AMBITION)
 	if(admin_approval && clears_approval && !changed_after_approval)
 		changed_after_approval = TRUE
 		log += "[time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")] CHANGED AFTER APPROVAL:"

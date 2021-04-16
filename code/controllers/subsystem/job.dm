@@ -18,6 +18,8 @@ SUBSYSTEM_DEF(job)
 
 	/// A list of all jobs associated with the station. These jobs also have various icons associated with them including sechud and card trims.
 	var/list/station_jobs
+	/// A list of all Head of Staff jobs.
+	var/list/head_of_staff_jobs
 	/// A list of additional jobs that have various icons associated with them including sechud and card trims.
 	var/list/additional_jobs_with_icons
 	/// A list of jobs associed with Centcom and should use the standard NT Centcom icons.
@@ -127,6 +129,8 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(job.has_banned_species(player.client.prefs))
 			return FALSE
+		if(!job.has_required_languages(player.client.prefs))
+			return FALSE
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			return FALSE
@@ -141,6 +145,14 @@ SUBSYSTEM_DEF(job)
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")
 	return FALSE
 
+/datum/controller/subsystem/job/proc/FreeRole(rank)
+	if(!rank)
+		return
+	JobDebug("Freeing role: [rank]")
+	var/datum/job/job = GetJob(rank)
+	if(!job)
+		return FALSE
+	job.current_positions = max(0, job.current_positions - 1)
 
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	JobDebug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
@@ -158,6 +170,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.has_banned_species(player.client.prefs))
 			JobDebug("FOC job not compatible with species, Player: [player]")
+			continue
+		if(!job.has_required_languages(player.client.prefs))
+			JobDebug("FOC job not compatible with languages, Player: [player]")
 			continue
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
@@ -204,6 +219,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.has_banned_species(player.client.prefs))
 			JobDebug("GRJ player has incompatible species, Player: [player]")
+			continue
+		if(!job.has_required_languages(player.client.prefs))
+			JobDebug("GRJ player has incompatible languages, Player: [player]")
 			continue
 		//SKYRAT EDIT END
 
@@ -392,6 +410,9 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
 					continue
 				if(job.has_banned_species(player.client.prefs))
+					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					continue
+				if(!job.has_required_languages(player.client.prefs))
 					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
 					continue
 				//SKYRAT EDIT END
@@ -683,6 +704,7 @@ SUBSYSTEM_DEF(job)
 	to_chat(player, "<b>You have failed to qualify for any job you desired.</b>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
+	player.client << output(player.ready, "lobbybrowser:imgsrc") //SKYRAT EDIT ADDITION
 
 
 /datum/controller/subsystem/job/Recover()
@@ -815,6 +837,8 @@ SUBSYSTEM_DEF(job)
 		"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer", \
 		"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Geneticist", "Virologist", "Psychologist", \
 		"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Prisoner")
+
+	head_of_staff_jobs = list("Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Head of Security", "Captain")
 
 	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
 		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \

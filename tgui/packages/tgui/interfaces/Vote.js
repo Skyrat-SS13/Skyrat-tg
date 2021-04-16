@@ -65,6 +65,22 @@ const VoteOptions = (props, context) => {
               <Stack.Item>
                 {!!upper_admin && (
                   <Button.Checkbox
+                    mr={!allow_vote_map ? 1 : 1.6}
+                    color="red"
+                    checked={!!allow_vote_map}
+                    onClick={() => act("toggle_map")}>
+                    {allow_vote_map ? "Enabled" : "Disabled"}
+                  </Button.Checkbox>
+                )}
+                <Button
+                  disabled={!upper_admin || !allow_vote_map}
+                  onClick={() => act("mining_map")}>
+                  Mining Map
+                </Button>
+              </Stack.Item>
+              <Stack.Item>
+                {!!upper_admin && (
+                  <Button.Checkbox
                     mr={!allow_vote_restart ? 1 : 1.6}
                     color="red"
                     checked={!!allow_vote_restart}
