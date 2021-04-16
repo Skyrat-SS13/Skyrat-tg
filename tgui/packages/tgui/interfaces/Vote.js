@@ -69,7 +69,7 @@ const VoteOptions = (props, context) => {
                     mr={!allow_vote_mining_map ? 1 : 1.6}
                     color="red"
                     checked={!!allow_vote_mining_map}
-                    onClick={() => act("toggle_map")}>
+                    onClick={() => act("toggle_mining_map")}>
                     {allow_vote_mining_map ? "Enabled" : "Disabled"}
                   </Button.Checkbox>
                 )}
