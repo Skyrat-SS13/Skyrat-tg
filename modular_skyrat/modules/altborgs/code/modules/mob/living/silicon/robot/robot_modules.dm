@@ -238,7 +238,7 @@
 		"Wide" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi', icon_state = "wide-engi"),
 		"Drake" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi', icon_state = "drakeengbox")
 		)
-		var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng", "Hound" = "engihound", "Darkhound" = "engihounddark", "Borgi" = "borgi-eng")
+		var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng", "Hound" = "engihound", "Darkhound" = "engihounddark", "Borgi" = "borgi-eng", "Otie" = "otiee")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi', icon_state = L[a])
 			wide.pixel_x = -16
@@ -336,6 +336,11 @@
 			cyborg_base_icon = "borgi-eng"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 			sleeper_overlay = "borgi-eng-sleeper"
+			dogborg = TRUE
+		if("Otie")
+			cyborg_base_icon = "otiee"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
+			sleeper_overlay = "otiee-sleeper"
 			dogborg = TRUE
 		else
 			return FALSE
@@ -806,7 +811,7 @@
 		"Drone" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi', icon_state = "miningdrone"),
 		"Drake" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi', icon_state = "drakeminebox")
 		)
-		var/list/L = list("Blade" = "blade", "Vale" = "valemine", "Hound" = "cargohound", "Darkhound" = "cargohounddark")
+		var/list/L = list("Blade" = "blade", "Vale" = "valemine", "Hound" = "cargohound", "Darkhound" = "cargohounddark", "Otie" = "otiec")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi', icon_state = L[a])
 			wide.pixel_x = -16
@@ -885,6 +890,11 @@
 			cyborg_base_icon = "cargohounddark"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 			sleeper_overlay = "cargohounddark-sleeper"
+			dogborg = TRUE
+		if("Otie")
+			cyborg_base_icon = "otiec"
+			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
+			sleeper_overlay = "otiec_sleeper"
 			dogborg = TRUE
 		else
 			return FALSE
