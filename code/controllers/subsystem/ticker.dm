@@ -67,6 +67,8 @@ SUBSYSTEM_DEF(ticker)
 
 	var/real_round_start_time = 0 //SKYRAT EDIT ADDITION
 
+	var/discord_alerted = FALSE //SKYRAT EDIT - DISCORD PING SPAM PREVENTION
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
@@ -159,7 +161,11 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role ping
+			// SKYRAT EDIT START - DISCORD SPAM PREVENTION
+			if(!discord_alerted)
+				discord_alerted = TRUE
+				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role ping
+			// SKYRAT EDIT END
 			current_state = GAME_STATE_PREGAME
 			change_lobbyscreen() //SKYRAT EDIT ADDITION
 			//Everyone who wants to be an observer is now spawned
