@@ -4,8 +4,6 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/cocoleaf.dmi'
 	growing_icon = 'modular_skyrat/modules/morenarcotics/icons/cocoleaf.dmi'
 	icon_state = "seed-cocoleaf"
-	icon_grow = "cocoleaf-grow" // Uses one growth icons set for all the subtypes
-	icon_dead = "cocoleaf-dead" // Same for the dead icon
 	species = "cocoleaf"
 	plantname = "Coca Leaves"
 	maturation = 8

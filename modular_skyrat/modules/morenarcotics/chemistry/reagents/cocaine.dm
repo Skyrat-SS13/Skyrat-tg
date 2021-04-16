@@ -19,6 +19,7 @@
 	M.AdjustImmobilized(-15 * REM * delta_time)
 	M.AdjustParalyzed(-15 * REM * delta_time)
 	M.adjustStaminaLoss(-2 * REM * delta_time, 0)
+	M.drowsyness -= 1 * REM * normalise_creation_purity() * delta_time
 	if(DT_PROB(2.5, delta_time))
 		M.emote("shiver")
 	..()
