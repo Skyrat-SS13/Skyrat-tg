@@ -26522,7 +26522,10 @@
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
 "bmg" = (
-/obj/structure/bed,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/item/bedsheet/medical,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -70854,6 +70857,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
+/obj/machinery/stasissleeper{
+	dir = 1
+	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "deF" = (
@@ -73767,9 +73773,6 @@
 	},
 /obj/machinery/newscaster/directional/north,
 /obj/structure/table/glass,
-/obj/item/bodybag/stasis,
-/obj/item/bodybag/stasis,
-/obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "dkE" = (
@@ -99826,6 +99829,13 @@
 	},
 /turf/open/floor/plating,
 /area/science/mixing)
+"jSo" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/obj/machinery/stasissleeper{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "jTB" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/security{
@@ -159869,7 +159879,7 @@ pBM
 dkC
 tJy
 dbt
-svE
+jSo
 qdq
 cPv
 diJ
