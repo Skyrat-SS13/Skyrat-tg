@@ -37,7 +37,6 @@ const VoteOptions = (props, context) => {
     allow_vote_mode,
     allow_vote_restart,
     allow_vote_map,
-    allow_vote_mining_map,
     upper_admin,
   } = data;
 
@@ -66,15 +65,15 @@ const VoteOptions = (props, context) => {
               <Stack.Item>
                 {!!upper_admin && (
                   <Button.Checkbox
-                    mr={!allow_vote_mining_map ? 1 : 1.6}
+                    mr={!allow_vote_map ? 1 : 1.6}
                     color="red"
-                    checked={!!allow_vote_mining_map}
-                    onClick={() => act("toggle_mining_map")}>
-                    {allow_vote_mining_map ? "Enabled" : "Disabled"}
+                    checked={!!allow_vote_map}
+                    onClick={() => act("toggle_map")}>
+                    {allow_vote_map ? "Enabled" : "Disabled"}
                   </Button.Checkbox>
                 )}
                 <Button
-                  disabled={!upper_admin || !allow_vote_mining_map}
+                  disabled={!upper_admin || !allow_vote_map}
                   onClick={() => act("mining_map")}>
                   Mining Map
                 </Button>
