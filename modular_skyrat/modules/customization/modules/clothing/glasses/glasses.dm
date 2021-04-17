@@ -1,10 +1,75 @@
+/obj/item/clothing/glasses	//Code to let you switch the side your eyepatch is on! Woo! Just an explanation, this is added to the base glasses so it works on eyepatch-huds too
+	var/can_switch_eye = FALSE	//Having this default to false means that its easy to make sure this doesnt apply to any pre-existing items
+	var/current_eye = "_R"	//Added to the end of the icon_state to make this easy code-wise, L and R being the wearer's Left and Right
+
+/obj/item/clothing/glasses/CtrlClick(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
+		return
+	else
+		switcheye()
+
+/obj/item/clothing/glasses/examine(mob/user)
+	. = ..()
+	if(can_switch_eye)
+		if(current_eye == "_L")
+			. += "Ctrl-click on [src] to wear it over your right eye."
+		else
+			. += "Ctrl-click on [src] to wear it over your left eye."
+
+/obj/item/clothing/glasses/verb/eyepatch_switcheye()
+	set name = "Switch Eyepatch Side"
+	set category = null
+	set src in usr
+	switcheye()
+
+/obj/item/clothing/glasses/proc/switcheye()
+	if(!can_use(usr))
+		return
+	if(!can_switch_eye)
+		to_chat(usr, "<span class='warning'>You cannot wear this any differently!</span>")
+		return
+	eyepatch_do_switch()
+	if(current_eye == "_L")
+		to_chat(usr, "<span class='notice'>You adjust the eyepatch to wear it over your left eye.</span>")
+	else if(current_eye == "_R")
+		to_chat(usr, "<span class='notice'>You adjust the eyepatch to wear it over your right eye.</span>")
+	usr.update_inv_glasses()
+	usr.update_overlays()
+
+/obj/item/clothing/glasses/proc/eyepatch_do_switch()
+	if(current_eye == "_L")
+		current_eye = "_R"
+	else if(current_eye == "_R")
+		current_eye = "_L"
+	src.icon_state = "[initial(icon_state)]"+ current_eye
+
+/obj/item/clothing/glasses/Initialize()
+	. = ..()
+	icon_state += current_eye	//Makes sure it spawns in with a sprite
+
+/* ---------- Items Below ----------*/
+
+/obj/item/clothing/glasses/eyepatch	//Re-defined here for ease with the left/right switch
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	can_switch_eye = TRUE
+
+/obj/item/clothing/glasses/eyepatch/wrap
+	name = "eye wrap"
+	desc = "A glorified bandage. At least this one's actually made for your head..."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon_state = "eyewrap"
+
 /obj/item/clothing/glasses/eyepatch/white
 	name = "white eyepatch"
 	desc = "This is what happens when a pirate gets a PhD."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
 	icon_state = "eyepatch_white"
-	inhand_icon_state = "eyepatch"
 
 /obj/item/clothing/glasses/thin
 	name = "thin glasses"
@@ -32,20 +97,3 @@
 	icon_state = "binoclard_lenses"
 	inhand_icon_state = "glasses_rimless"
 	vision_correction = TRUE
-
-/obj/item/clothing/glasses/eyepatch/right //if someone has more brain that I do, make these a...on click flip thing, please i dunno what i'm doing
-	name = "right sided eyepatch"
-	desc = ".rraY"
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
-	icon_state = "eyepatch_1"
-	inhand_icon_state = "eyepatch"
-
-/obj/item/clothing/glasses/eyepatch/whiteright
-	name = "right white eyepatch"
-	desc = ".DhP a steg etarip a nehw sneppah tahw si sihT"
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
-	icon_state = "eyepatch_white_1"
-	inhand_icon_state = "eyepatch"
-
