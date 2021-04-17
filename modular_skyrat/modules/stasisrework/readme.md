@@ -25,6 +25,6 @@ Makes stasis beds have a lid when they're active.
 - N/A
 
 ### Credits:
-Baystation12 - Concept
-TGstation - Stasis Bed code
-FlamingLily - Jerryrigging the stasis bed code into a stasis bodybag
+Baystation12 - Concept for the bodybag
+TGstation - Stasis Bed code and sleeper code
+FlamingLily - Jerryrigging the stasis bed code into a stasis bodybag and frankenstining sleeper and stasis bed code together
