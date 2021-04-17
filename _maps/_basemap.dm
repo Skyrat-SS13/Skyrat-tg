@@ -7,6 +7,7 @@
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
 		#include "map_files\Mining\Rockplanet.dmm"
+		#include "map_files\Mining\Icemoon.dmm"
 		#include "map_files\Mining\Lavaland.dmm"
 		#include "map_files\debug\runtimestation.dmm"
 		#include "map_files\debug\multiz.dmm"
