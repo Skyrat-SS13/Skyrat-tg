@@ -17,12 +17,14 @@ SUBSYSTEM_DEF(randommining)
 	if(fexists("data/next_mining.dat"))
 		var/_voted_map = file2text("data/next_mining.dat")
 		if(istext(_voted_map))
-			voted_map = trim_right(_voted_map)
+			voted_map = _voted_map
+		fdel("data/previous_mining.dat")
 
 	if(fexists("data/previous_mining.dat"))
 		var/_previous_map = file2text("data/previous_mining.dat")
 		if(istext(_previous_map))
 			previous_map = _previous_map
+		fdel("data/previous_mining.dat")
 
 	if(!fexists("config/skyrat/mining_levels.txt"))
 		add_startupmessage("RANDOM MINING ERROR: mining_levels.txt does not exist, unable to load mining level!")
