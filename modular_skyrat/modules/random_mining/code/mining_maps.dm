@@ -67,3 +67,31 @@ SUBSYSTEM_DEF(randommining)
 
 	return ..()
 
+/datum/controller/subsystem/randommining/proc/mapvote()
+	if(voted_next_map) //If voted or set by other means.
+		return
+	if(SSvote.mode) //Theres already a vote running, default to rotation.
+		to_chat(world, "<span class='boldannounce'>MAPPING VOTE ERROR; VOTE IN PROGRESS, REVERTING TO RANDOM MAP.")
+		if(fexists("data/next_mining.dat"))
+			fdel("data/next_mining.dat")
+		return
+	SSvote.initiate_vote("mining_map", "automatic mining map rotation")
+
+/client/proc/set_mining_map()
+	set name = "Set Mining Map"
+	set category = "Server"
+	set desc = "Force change the next mining map."
+
+	if(!check_rights(R_SERVER))
+		return
+
+	var/new_map = tgui_input_list(usr, "Choose a mining map:", "Mining Map Change", SSrandommining.possible_names)
+
+	if(fexists("data/next_mining.dat"))
+		fdel("data/next_mining.dat")
+
+	var/F = file("data/previous_mining.dat")
+
+	WRITE_FILE(F, new_map)
+
+	message_admins("[key_name_admin(usr)] has set the next mining map to [new_map]!")
