@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(randommining)
 	if(fexists("data/next_mining.dat"))
 		fdel("data/next_mining.dat")
 
-	var/F = file("data/previous_mining.dat")
+	var/F = file("data/next_mining.dat")
 
 	WRITE_FILE(F, new_map)
 
