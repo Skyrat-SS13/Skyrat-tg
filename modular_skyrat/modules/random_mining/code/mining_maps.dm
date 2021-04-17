@@ -15,15 +15,15 @@ SUBSYSTEM_DEF(randommining)
 	var/list/possible_choices = list()
 
 	if(fexists("data/next_mining.dat"))
-		var/_voted_map = file2text("data/next_mining.dat")
-		if(istext(_voted_map))
-			voted_map = _voted_map
+		var/list/_voted_map = world.file2list("data/next_mining.dat")
+		if(istext(_voted_map[1]))
+			voted_map = _voted_map[1]
 		fdel("data/previous_mining.dat")
 
 	if(fexists("data/previous_mining.dat"))
-		var/_previous_map = file2text("data/previous_mining.dat")
-		if(istext(_previous_map))
-			previous_map = _previous_map
+		var/list/_previous_map = world.file2list("data/previous_mining.dat")
+		if(istext(_previous_map[1]))
+			previous_map = _previous_map[1]
 		fdel("data/previous_mining.dat")
 
 	if(!fexists("config/skyrat/mining_levels.txt"))
@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(randommining)
 		add_startupmessage("RANDOM MINING: [uppertext(name)] Level loaded!")
 
 	if(voted_map)
-		chosen_map = possible_choices[voted_map]
+		chosen_map = voted_map
 		traits = possible_choices[chosen_map]
 	else
 		chosen_map = pick(possible_choices)

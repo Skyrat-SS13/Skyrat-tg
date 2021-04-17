@@ -133,6 +133,8 @@ SUBSYSTEM_DEF(vote)
 			//SKYRAT EDIT ADDITION BEGIN
 			if("mining_map")
 				SSrandommining.voted_next_map = .
+				if(fexists("data/next_mining.dat"))
+					fdel("data/next_mining.dat")
 				var/F = file("data/next_mining.dat")
 				WRITE_FILE(F, .)
 			if("transfer")
