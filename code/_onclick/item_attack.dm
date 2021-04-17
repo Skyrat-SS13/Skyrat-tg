@@ -170,7 +170,6 @@
 	if(force && HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='warning'>You don't want to harm other living beings!</span>")
 		return
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	if(force && !user.combat_mode)
 		to_chat(user, "<span class='notice'>You go to attack [M] with [src], but refrain from doing so.</span>")
@@ -181,9 +180,6 @@
 			M = user
 		if(eyestab(M,user))
 			return
-=======
-
->>>>>>> 1e848e57387 (Move eyestabbing to an element, rather than as part of core combat code (#58358))
 	if(!force)
 		playsound(loc, 'sound/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
 	else if(hitsound)
