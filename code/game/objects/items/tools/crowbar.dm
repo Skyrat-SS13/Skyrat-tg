@@ -114,7 +114,7 @@
 /obj/item/crowbar/power/update_overlays()
 	. = ..()
 	if(powered)
-		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/icons/tools.dmi', "jaws_on")
+		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/tools.dmi', "jaws_on")
 	. += "[initial(icon_state)]_[tool_behaviour == TOOL_WIRECUTTER ? "cutter": "pry"]"
 //SKYRAT EDIT END
 

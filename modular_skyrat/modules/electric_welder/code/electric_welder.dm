@@ -1,9 +1,9 @@
 /obj/item/weldingtool_electric
 	name = "electrical welding tool"
 	desc = "An experimental welding tool capable of creating a flame using electricity."
-	icon = 'modular_skyrat/modules/aesthetics/tools/icons/tools.dmi'
-	icon_state = "exwelder"
-	inhand_icon_state = "exwelder"
+	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
+	icon_state = "elwelder"
+	inhand_icon_state = "elwelder"
 	worn_icon_state = "welder"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
@@ -82,7 +82,7 @@
 /obj/item/weldingtool_electric/update_overlays()
 	. = ..()
 	if(powered)
-		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/icons/tools.dmi', "exwelder_on")
+		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/tools.dmi', "elwelder_on")
 
 /obj/item/weldingtool_electric/examine()
 	. = ..()

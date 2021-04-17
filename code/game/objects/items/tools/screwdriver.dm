@@ -158,7 +158,7 @@
 /obj/item/screwdriver/power/update_overlays()
 	. = ..()
 	if(powered)
-		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/icons/tools.dmi', "drill_on")
+		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/tools.dmi', "drill_on")
 	. += "[initial(icon_state)]_[tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"]"
 //SKYRAT EDIT END
 
