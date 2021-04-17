@@ -112,6 +112,7 @@
 		thaw_them(L_occupant)
 
 /obj/machinery/stasissleeper/screwdriver_act(mob/living/user, obj/item/I)
+	. = ..()
 	if(.)
 		return
 	if(occupant)
@@ -121,6 +122,10 @@
 		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!</span>")
 		return
 	default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I)
+
+/obj/machinery/stasissleeper/wrench_act(mob/living/user, obj/item/I)
+	. = ..()
+	default_change_direction_wrench(user, I)
 
 /obj/machinery/stasissleeper/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
