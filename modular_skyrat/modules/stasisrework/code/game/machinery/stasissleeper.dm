@@ -1,7 +1,7 @@
 /obj/machinery/stasissleeper
 	name = "lifeform stasis unit"
 	desc = "A somewhat comfortable looking bed with a cover over it. It will keep someone in stasis."
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'modular_skyrat/modules/stasisrework/icons/obj/machines/stasissleeper.dmi'
 	icon_state = "sleeper"
 	base_icon_state = "sleeper"
 	density = FALSE
