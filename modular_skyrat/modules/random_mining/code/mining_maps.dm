@@ -94,4 +94,6 @@ SUBSYSTEM_DEF(randommining)
 
 	WRITE_FILE(F, new_map)
 
+	SSrandommining.voted_next_map = TRUE
+
 	message_admins("[key_name_admin(usr)] has set the next mining map to [new_map]!")
