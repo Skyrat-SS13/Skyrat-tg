@@ -14,11 +14,6 @@ SUBSYSTEM_DEF(randommining)
 
 	var/list/possible_choices = list()
 
-	if(fexists("data/next_mining.dat"))
-		var/_voted_map = file2text("data/next_mining.dat")
-		if(istext(_voted_map))
-			voted_map = _voted_map
-
 	if(fexists("data/previous_mining.dat"))
 		var/_previous_map = file2text("data/previous_mining.dat")
 		if(istext(_previous_map))
@@ -39,18 +34,14 @@ SUBSYSTEM_DEF(randommining)
 			continue
 		var/name = L[1]
 		var/traits = L[2]
-		if(!voted_map && name == previous_map && lines.len > 1)
+		if(name == previous_map && lines.len > 1)
 			continue
 		possible_choices[name] = traits
-		possible_names += name
 		add_startupmessage("RANDOM MINING: [uppertext(name)] Level loaded!")
 
-	if(voted_map)
-		chosen_map = possible_choices[voted_map]
-		traits = possible_choices[chosen_map]
-	else
-		chosen_map = pick(possible_choices)
-		traits = possible_choices[chosen_map]
+
+	chosen_map = pick(possible_choices)
+	traits = possible_choices[chosen_map]
 
 	if(!chosen_map)
 		add_startupmessage("RANDOM MINING: Error, no map was chosen!")
