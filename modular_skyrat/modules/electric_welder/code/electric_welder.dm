@@ -101,6 +101,6 @@
 	id = "exwelder"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
-	build_path = /obj/item/weldingtool/experimental
+	build_path = /obj/item/weldingtool_electric
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
