@@ -10,6 +10,7 @@
 		var/datum/component/squeak/annoyance = GetComponent(/datum/component/squeak)
 		if(!annoyance)
 			to_chat(user, "<span class='notice'>[src] have already been silenced!")
+			return
 		if(T.use(5))
 			to_chat(user, "<span class='notice'>You tape [src] tightly together, reducing the sound they make as you walk.</span>")
 			qdel(annoyance)
