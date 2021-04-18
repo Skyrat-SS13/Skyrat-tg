@@ -47,10 +47,10 @@
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/hos/beret/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/head/hos/beret
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
-	suit_store = /obj/item/gun/ballistic/automatic/pistol/g18 //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/gun/energy/e_gun
+	suit_store = /obj/item/flashlight/seclite //SKYRAT EDIT CHANGE - SEC_HAUL & HOS_NERF - ORIGINAL: /obj/item/gun/energy/e_gun SEC_HAUL: /obj/item/gun/ballistic/automatic/pistol/g18
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
-	backpack_contents = list(/obj/item/melee/baton/loaded=1, /obj/item/modular_computer/tablet/preset/advanced/command=1) //SKYRAT EDIT CHANGE
+	backpack_contents = list(/obj/item/melee/baton/loaded=1, /obj/item/modular_computer/tablet/preset/advanced/command=1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
