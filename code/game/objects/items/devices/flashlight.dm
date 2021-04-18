@@ -19,7 +19,7 @@
 	light_on = FALSE
 	var/on = FALSE
 
-
+/* SKYRAT EDIT REMOVAL - MOVED TO MODUALR FLASHLIGHT.DM
 /obj/item/flashlight/Initialize()
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
@@ -44,6 +44,7 @@
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
 	return 1
+*/
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
 	if (user.is_blind())
@@ -299,16 +300,17 @@
 /obj/item/flashlight/flare/ignition_effect(atom/A, mob/user)
 	. = fuel && on ? "<span class='notice'>[user] lights [A] with [src] like a real badass.</span>" : ""
 
-/obj/item/flashlight/flare/proc/turn_off()
-	on = FALSE
+/obj/item/flashlight/flare/turn_off() //SKYRAT EDIT CHANGE
+	//on = FALSE SKYRAT EDIT REMOVAL
 	force = initial(src.force)
 	damtype = initial(src.damtype)
+	/* SKYRAT EDIT REMOVAL
 	if(ismob(loc))
 		var/mob/U = loc
 		update_brightness(U)
 	else
 		update_brightness(null)
-
+	*/
 /obj/item/flashlight/flare/update_brightness(mob/user = null)
 	..()
 	if(on)
@@ -484,9 +486,11 @@
 		STOP_PROCESSING(SSobj, src)
 		update_appearance()
 
+/* SKYRAT EDIT REMOVAL
 /obj/item/flashlight/glowstick/proc/turn_off()
 	on = FALSE
 	update_appearance()
+*/
 
 /obj/item/flashlight/glowstick/update_appearance(updates=ALL)
 	. = ..()
