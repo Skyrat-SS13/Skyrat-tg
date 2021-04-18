@@ -69,6 +69,7 @@ SUBSYSTEM_DEF(mapping)
 	loadWorld()
 	repopulate_sorted_areas()
 	process_teleport_locs() //Sets up the wizard teleport locations
+	get_prisoner_spawns()//SKYRAT EDIT ADDITION
 	preloadTemplates()
 
 #ifndef LOWMEMORYMODE

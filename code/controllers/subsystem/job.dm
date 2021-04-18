@@ -62,7 +62,6 @@ SUBSYSTEM_DEF(job)
 	if(CONFIG_GET(flag/load_jobs_from_txt))
 		LoadJobs()
 	generate_selectable_species()
-	get_prisoner_spawns()//SKYRAT EDIT ADDITION
 	set_overflow_role(CONFIG_GET(string/overflow_job))
 	return ..()
 
