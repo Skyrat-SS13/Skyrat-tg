@@ -18,22 +18,22 @@
 
 ///////////////////////////////////////////////////////////////////////BIO HOODS
 
-/obj/item/clothing/suit/bio_hood/general
+/obj/item/clothing/head/bio_hood/general
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'
 
-/obj/item/clothing/suit/bio_hood/security
+/obj/item/clothing/head/bio_hood/security
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'
 
-/obj/item/clothing/suit/bio_hood/cmo
+/obj/item/clothing/head/bio_hood/cmo
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'
 
-/obj/item/clothing/suit/bio_hood/scientist
+/obj/item/clothing/head/bio_hood/scientist
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'
 
-/obj/item/clothing/suit/bio_hood/janitor
+/obj/item/clothing/head/bio_hood/janitor
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'
 
-/obj/item/clothing/suit/bio_hood/virology
+/obj/item/clothing/head/bio_hood/virology
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/rd
