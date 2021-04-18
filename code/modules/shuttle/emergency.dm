@@ -453,6 +453,7 @@
 				setTimer(SSshuttle.emergencyDockTime)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
 				priority_announce("[SSshuttle.emergency] has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, ANNOUNCER_SHUTTLEDOCK, "Priority")
+				SSrandommining.mapvote()
 				ShuttleDBStuff()
 
 
@@ -466,6 +467,7 @@
 					var/obj/docking_port/mobile/M = A
 					if(M.launch_status == UNLAUNCHED) //Pods will not launch from the mine/planet, and other ships won't launch unless we tell them to.
 						M.check_transit_zone()
+
 
 		if(SHUTTLE_IGNITING)
 			var/success = TRUE
