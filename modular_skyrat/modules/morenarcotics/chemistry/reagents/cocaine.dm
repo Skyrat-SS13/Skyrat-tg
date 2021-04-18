@@ -8,14 +8,14 @@
 	taste_description = "bitterness" //supposedly does taste bitter in real life
 	addiction_types = list(/datum/addiction/stimulants = 14) //5.6 per 2 seconds
 
-/datum/reagent/drug/cocaine/on_mob_metabolize(mob/living/L)
+/datum/reagent/drug/cocaine/on_mob_metabolize(mob/living/M)
 	..()
-	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
-	ADD_TRAIT(L, TRAIT_STUNRESISTANCE, type)
+	M.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	ADD_TRAIT(M, TRAIT_STUNRESISTANCE, type)
 
-/datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/L)
-	L.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
-	REMOVE_TRAIT(L, TRAIT_STUNRESISTANCE, type)
+/datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/M)
+	M.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	REMOVE_TRAIT(M, TRAIT_STUNRESISTANCE, type)
 	..()
 
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
@@ -29,11 +29,14 @@
 	M.AdjustImmobilized(-15 * REM * delta_time)
 	M.AdjustParalyzed(-15 * REM * delta_time)
 	M.adjustStaminaLoss(-2 * REM * delta_time, 0)
-	M.drowsyness -= 1 * REM * normalise_creation_purity() * delta_time
 	if(DT_PROB(2.5, delta_time))
 		M.emote("shiver")
 	..()
 	. = TRUE
+
+
+/datum/reagent/drug/cocaine/overdose_start(mob/living/M)
+	to_chat(M, "<span class='userdanger'>Your heart beats is beating so fast, it hurts...</span>")
 
 /datum/reagent/drug/cocaine/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustToxLoss(1 * REM * delta_time, 0)

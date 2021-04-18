@@ -29,9 +29,9 @@
 
 
 /obj/item/clothing/mask/cigarette/pipe/crackpipe/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/reagent_containers/crack)&&!istype(O, /obj/item/reagent_containers/crack/crackbrick))
+	if(is_type_in_list(O, list(/obj/item/reagent_containers/crack,/obj/item/reagent_containers/blacktar))&&!istype(O, /obj/item/reagent_containers/crack/crackbrick))
 		to_chat(user, "<span class='notice'>You stuff [O] into [src].</span>")
-		smoketime = 5 * 60
+		smoketime = 2 * 60
 		name = "[O.name]-packed [initial(name)]"
 		if(O.reagents)
 			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
