@@ -48,7 +48,9 @@
 
 /obj/item/clothing/glasses/Initialize()
 	. = ..()
-	icon_state += current_eye	//Makes sure it spawns in with a sprite
+	if(!can_switch_eye)	//Just runs the normal code for any item that we havent manually set this as TRUE for
+		return
+	icon_state += current_eye	//Makes sure the icon initially ends in _R so its a valid sprite (Change current_eye in loadout once thats possible to spawn it on the side of your choice)
 
 /* ---------- Items Below ----------*/
 
