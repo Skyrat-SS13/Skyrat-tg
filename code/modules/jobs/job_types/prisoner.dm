@@ -35,6 +35,6 @@
 	to_chat(M, "<b>You are a prisoner being held in Space Station 13, awaiting transfer to a secure prison facility or to the courthouse to stand trial.</b>")
 	to_chat(M, "It's up to you to decide why you're in here. Chances are, the case against you might not be strong enough to convict you. Or is it?<br>")
 
-	H.forceMove(pick(SSjob.prisoner_spawn_locs))
+	H.forceMove(pick(SSmapping.prisoner_spawn_locs))
 // SKYRAT EDIT : End - Adds spawn text to prisoners.
 

@@ -52,8 +52,6 @@ SUBSYSTEM_DEF(job)
 	/// If TRUE, the "Captain" job will always be given the code to the spare ID safe and always have a "Captain on deck!" announcement.
 	var/always_promote_captain_job = TRUE
 
-	var/list/prisoner_spawn_locs = list() //SKYRAT EDIT ADDITION - List of spawn areas for prisoners
-
 /datum/controller/subsystem/job/Initialize(timeofday)
 	SSmapping.HACK_LoadMapConfig()
 	setup_job_lists()
