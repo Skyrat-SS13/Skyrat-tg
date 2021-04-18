@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MASTER FILES
 /obj/item/airlock_painter
 	name = "airlock painter"
 	desc = "An advanced autopainter preprogrammed with several paintjobs for airlocks. Use it on an airlock during or after construction to change the paintjob."
@@ -15,7 +14,6 @@
 	slot_flags = ITEM_SLOT_BELT
 	usesound = 'sound/effects/spray2.ogg'
 
-	var/obj/item/toner/ink = null
 	/// Associate list of all paint jobs the airlock painter can apply. The key is the name of the airlock the user will see. The value is the type path of the airlock
 	var/list/available_paint_jobs = list(
 		"Public" = /obj/machinery/door/airlock/public,
@@ -35,32 +33,29 @@
 		"Standard" = /obj/machinery/door/airlock
 	)
 
-/obj/item/airlock_painter/Initialize()
+	power_use_amount = POWER_CELL_USE_HIGH
+	var/cell_override
+
+/obj/item/airlock_painter/ComponentInitialize()
 	. = ..()
-	ink = new /obj/item/toner(src)
+	AddComponent(/datum/component/cell, cell_override)
 
 //This proc doesn't just check if the painter can be used, but also uses it.
 //Only call this if you are certain that the painter will be used right after this check!
 /obj/item/airlock_painter/proc/use_paint(mob/user)
-	if(can_use(user))
-		ink.charges--
-		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
-		return TRUE
-	else
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
 		return FALSE
+	playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
+	return TRUE
+
 
 //This proc only checks if the painter can be used.
 //Call this if you don't want the painter to be used right after this check, for example
 //because you're expecting user input.
 /obj/item/airlock_painter/proc/can_use(mob/user)
-	if(!ink)
-		to_chat(user, "<span class='warning'>There is no toner cartridge installed in [src]!</span>")
+	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
 		return FALSE
-	else if(ink.charges < 1)
-		to_chat(user, "<span class='warning'>[src] is out of ink!</span>")
-		return FALSE
-	else
-		return TRUE
+	return TRUE
 
 /obj/item/airlock_painter/suicide_act(mob/user)
 	var/obj/item/organ/lungs/L = user.getorganslot(ORGAN_SLOT_LUNGS)
@@ -108,43 +103,6 @@
 		user.visible_message("<span class='suicide'>[user] is trying to inhale toner from [src]! It might be a suicide attempt if [src] had any toner.</span>")
 		return SHAME
 
-
-/obj/item/airlock_painter/examine(mob/user)
-	. = ..()
-	if(!ink)
-		. += "<span class='notice'>It doesn't have a toner cartridge installed.</span>"
-		return
-	var/ink_level = "high"
-	if(ink.charges < 1)
-		ink_level = "empty"
-	else if((ink.charges/ink.max_charges) <= 0.25) //25%
-		ink_level = "low"
-	else if((ink.charges/ink.max_charges) > 1) //Over 100% (admin var edit)
-		ink_level = "dangerously high"
-	. += "<span class='notice'>Its ink levels look [ink_level].</span>"
-
-
-/obj/item/airlock_painter/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/toner))
-		if(ink)
-			to_chat(user, "<span class='warning'>[src] already contains \a [ink]!</span>")
-			return
-		if(!user.transferItemToLoc(W, src))
-			return
-		to_chat(user, "<span class='notice'>You install [W] into [src].</span>")
-		ink = W
-		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
-	else
-		return ..()
-
-/obj/item/airlock_painter/attack_self(mob/user)
-	if(ink)
-		playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
-		ink.forceMove(user.drop_location())
-		user.put_in_hands(ink)
-		to_chat(user, "<span class='notice'>You remove [ink] from [src].</span>")
-		ink = null
-
 /obj/item/airlock_painter/decal
 	name = "decal painter"
 	desc = "An airlock painter, reprogramed to use a different style of paint in order to apply decals for floor tiles as well, in addition to repainting doors. Decals break when the floor tiles are removed. Alt-Click to change design."
@@ -167,6 +125,7 @@
 			list("Box Corner","box_corners"),
 			list("Delivery Marker","delivery"),
 			list("Warning Box","warn_full"))
+	cell_override = /obj/item/stock_parts/cell/upgraded/plus
 
 /obj/item/airlock_painter/decal/afterattack(atom/target, mob/user, proximity)
 	. = ..()
@@ -180,10 +139,6 @@
 /obj/item/airlock_painter/decal/AltClick(mob/user)
 	. = ..()
 	ui_interact(user)
-
-/obj/item/airlock_painter/decal/Initialize()
-	. = ..()
-	ink = new /obj/item/toner/large(src)
 
 /obj/item/airlock_painter/decal/proc/update_decal_path()
 	var/yellow_fix = "" //This will have to do until someone refactor's markings.dm
@@ -244,8 +199,4 @@
 /obj/item/airlock_painter/decal/debug
 	name = "extreme decal painter"
 	icon_state = "decal_sprayer_ex"
-
-/obj/item/airlock_painter/decal/debug/Initialize()
-	. = ..()
-	ink = new /obj/item/toner/extreme(src)
-*/
+	cell_override = /obj/item/stock_parts/cell/infinite
