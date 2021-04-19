@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("shower frame", /obj/structure/showerframe, 2, time= 2 SECONDS)
 ))
 
-/obj/item/stack/sheet/iron
+/obj/item/stack/sheet/iron//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "iron"
 	desc = "Sheets made out of iron."
 	singular_name = "iron sheet"
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 	)), \
 ))
 
-/obj/item/stack/sheet/plasteel
+/obj/item/stack/sheet/plasteel//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "plasteel"
 	singular_name = "plasteel sheet"
 	desc = "This sheet is an alloy of iron and plasma."
@@ -673,7 +673,7 @@ GLOBAL_LIST_INIT(plastic_recipes, list(
 	new /datum/stack_recipe("warning cone", /obj/item/clothing/head/cone, 2), \
 	new /datum/stack_recipe("blank wall sign", /obj/item/sign, 1)))
 
-/obj/item/stack/sheet/plastic
+/obj/item/stack/sheet/plastic//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "plastic"
 	desc = "Compress dinosaur over millions of years, then refine, split and mold, and voila! You have plastic."
 	singular_name = "plastic sheet"
