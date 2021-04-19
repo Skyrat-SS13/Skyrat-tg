@@ -229,7 +229,7 @@
 	if(key || !getorgan(/obj/item/organ/brain) || ghost?.can_reenter_corpse)
 		return "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life...</span>"
 	else
-		return "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life and rigor mortis is starting to set in. Revival is unlikely...</span>" // SKYRAT EDIT - ORIGINAL  ...signs of life and [t_his] soul has departed...
+		return "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life and rigor mortis is starting to set in...</span>" // SKYRAT EDIT - ORIGINAL  ...signs of life and [t_his] soul has departed...
 
 ///copies over clothing preferences like underwear to another human
 /mob/living/carbon/human/proc/copy_clothing_prefs(mob/living/carbon/human/destination)
