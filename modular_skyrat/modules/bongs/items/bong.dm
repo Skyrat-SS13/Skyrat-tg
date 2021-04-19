@@ -153,3 +153,19 @@
 					inhand_icon_state = icon_off
 					name = "[initial(name)]"
 					reagents.clear_reagents() //just to make sure
+
+/datum/crafting_recipe/bong
+	name = "Bong"
+	result = /obj/item/bong
+	reqs = list(/obj/item/stack/sheet/iron = 5,
+				/obj/item/stack/sheet/glass = 10)
+	time = 20
+	category = CAT_CHEMISTRY
+
+/datum/crafting_recipe/lungbuster
+	name = "The Lungbuster"
+	result = /obj/item/bong
+	reqs = list(/obj/item/stack/sheet/iron = 10,
+				/obj/item/stack/sheet/glass = 20)
+	time = 30
+	category = CAT_CHEMISTRY
