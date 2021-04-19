@@ -91,8 +91,6 @@ SUBSYSTEM_DEF(mapping)
 		load_new_z_level("_maps/RandomZLevels/VR/vrhub.dmm", "Virtual Reality Hub")
 		to_chat(world, "<span class='boldannounce'>Virtual reality loaded.</span>")
 
-	LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits=ZTRAITS_REEBE) //SKYRAT EDIT - FORCED CWC (OH GOD)
-
 	// Generate mining ruins
 	loading_ruins = TRUE
 	var/list/lava_ruins = levels_by_trait(ZTRAIT_LAVA_RUINS)
@@ -281,6 +279,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	//SKYRAT EDIT CHANGE BEGIN
 	var/mining_map_to_load = SSrandommining.chosen_map
 	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
+	LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits=ZTRAITS_REEBE) //SKYRAT EDIT - FORCED CWC (OH GOD)
 
 	if(mining_map_to_load)
 		add_startupmessage("MINING MAP: Loading mining level...")
