@@ -27,7 +27,6 @@
 		ANNOUNCER_PYROANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/pyr_anomalies.ogg',
 		ANNOUNCER_CARP = 'modular_skyrat/modules/alerts/sound/ai/default/carps.ogg',
 		ANNOUNCER_BLUESPACEARTY = 'modular_skyrat/modules/alerts/sound/ai/default/artillery.ogg',
-		ANNOUNCER_CAPTAIN = 'modular_skyrat/modules/alerts/sound/ai/default/announce.ogg',
 		ANNOUNCER_GRAVGENOFF = 'modular_skyrat/modules/alerts/sound/ai/default/gravityoff.ogg',
 		ANNOUNCER_GRAVGENON = 'modular_skyrat/modules/alerts/sound/ai/default/gravityon.ogg',
 		ANNOUNCER_GREYTIDE = 'modular_skyrat/modules/alerts/sound/ai/default/greytide.ogg',
