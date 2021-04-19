@@ -103,17 +103,6 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a nuke team with [maxCount] operatives Unfortunately, there were not enough candidates available.")
 					log_admin("[key_name(usr)] failed to create a nuke team with [maxCount] operatives.")
-			//SKYRAT EDIT ADDITION BEGIN - ASSAULT OPS
-			if("assaultops")
-				message_admins("[key_name(usr)] is creating an assault team...")
-				var/maxCount = input("Set number of Ass OPs","Set Ass OP Count (max)",5) as num|null
-				if(src.makeAssaultTeam(maxCount))
-					message_admins("[key_name(usr)] created an assault team with [maxCount] operatives.")
-					log_admin("[key_name(usr)] created an assault team with [maxCount] operatives")
-				else
-					message_admins("[key_name_admin(usr)] tried to create an assault team with [maxCount] operatves. Unfortunately, there were not enough candidates available.")
-					log_admin("[key_name(usr)] failed to create an assault team with [maxCount] operatives.")
-			//SKYRAT EDIT END
 			if("ninja")
 				message_admins("[key_name(usr)] spawned a ninja.")
 				log_admin("[key_name(usr)] spawned a ninja.")
