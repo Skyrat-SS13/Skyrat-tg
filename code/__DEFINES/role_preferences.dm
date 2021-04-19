@@ -68,13 +68,8 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_INTERNAL_AFFAIRS = /datum/game_mode/traitor/internal_affairs,
 	ROLE_SENTIENCE,
 	ROLE_FAMILIES = /datum/game_mode/gang,
-<<<<<<< CWC
-	ROLE_HERETIC = /datum/game_mode/heretics,
 	ROLE_SERVANT_OF_RATVAR = /datum/game_mode/clockcult, 	//SKYRAT EDIT - CWC RETURNS
-	ROLE_ASSAULTOP = /datum/game_mode/assaultops //SKYRAT EDIT ADDITION - ASSAULTOPS
-=======
 	ROLE_HERETIC = /datum/game_mode/heretics
->>>>>>> master
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection
