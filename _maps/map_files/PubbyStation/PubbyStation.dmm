@@ -10957,8 +10957,8 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/storage/box/silver_ids,
 /obj/item/storage/box/ids,
+/obj/item/storage/box/silver_ids,
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
 "aEO" = (
@@ -10972,6 +10972,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/item/paper/fluff/ids_for_dummies,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
 "aEQ" = (
@@ -15313,10 +15314,14 @@
 /area/service/bar)
 "aSO" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/wood,
 /area/service/bar)
 "aSP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/service/bar)
 "aSQ" = (
@@ -15728,9 +15733,8 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/department/crew_quarters/bar)
 "aUd" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/wood,
+/obj/machinery/computer/chef_order,
+/turf/open/floor/iron/dark,
 /area/service/bar)
 "aUe" = (
 /obj/machinery/vending/wardrobe/bar_wardrobe,
@@ -16077,8 +16081,8 @@
 	name = "Bar Storage";
 	req_access_txt = "25"
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "aVf" = (
@@ -16464,26 +16468,16 @@
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "aWd" = (
-/obj/structure/sink/kitchen{
-	pixel_y = 28
-	},
 /mob/living/carbon/human/species/monkey/punpun,
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "aWe" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 5
+/obj/structure/sink/kitchen{
+	pixel_y = 28
 	},
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "aWf" = (
-/obj/machinery/requests_console{
-	department = "Bar";
-	departmentType = 2;
-	pixel_y = 30;
-	receive_ore_updates = 1
-	},
 /obj/machinery/camera{
 	c_tag = "Bar Access"
 	},
@@ -25064,6 +25058,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/white,
 /area/medical/cryo)
 "btZ" = (
@@ -44214,6 +44209,18 @@
 /mob/living/simple_animal/pet/dog/corgi,
 /turf/open/floor/grass,
 /area/medical/psychology)
+"dGg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/requests_console{
+	department = "Bar";
+	departmentType = 2;
+	pixel_y = -30;
+	receive_ore_updates = 1
+	},
+/turf/open/floor/iron/dark,
+/area/service/bar)
 "dGE" = (
 /obj/item/holosign_creator/janibarrier,
 /obj/item/grenade/chem_grenade/cleaner,
@@ -98440,7 +98447,7 @@ aQS
 aRQ
 aSN
 aPE
-aPE
+aUd
 aWd
 aXb
 aRN
@@ -98696,8 +98703,8 @@ aPE
 aQT
 aRR
 aSO
-aUd
-aVd
+aPE
+aPE
 aWe
 aXb
 aRN
@@ -98954,9 +98961,9 @@ aQU
 aRS
 aSP
 aSP
-aPE
+aVd
 aWf
-aXb
+dGg
 aPE
 aYY
 bae
