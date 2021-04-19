@@ -20,6 +20,7 @@
 /obj/machinery/stasissleeper/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click to [state_open ? "close" : "open"] the machine.</span>"
+	. += "<span class='notice'>A light blinking on the side indicates that it is [occupant ? "occupied" : "vacant"].</span>"
 
 /obj/machinery/stasissleeper/open_machine()
 	if(!state_open && !panel_open)
