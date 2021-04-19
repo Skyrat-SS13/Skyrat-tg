@@ -29,6 +29,7 @@
 	icon_state = "clown"
 	inhand_icon_state = "clown"
 	species_exception = list(/datum/species/golem/bananium)
+	can_adjust = FALSE
 
 //SKYRAT EDIT REMOVAL BEGIN
 /*
