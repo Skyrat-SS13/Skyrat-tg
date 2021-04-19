@@ -381,12 +381,6 @@
 	character.client.init_verbs() // init verbs for the late join
 	var/mob/living/carbon/human/humanc
 
-	if(SSticker.mode.name == "assaultops")
-		if(is_assaultops_target(character.mind))
-			remove_assaultops_target(character.mind, original=TRUE)
-		if(check_assaultops_target(character))
-			add_assaultops_target(character, notify_target = TRUE)
-
 	if(ishuman(character))
 		humanc = character //Let's retypecast the var to be human,
 

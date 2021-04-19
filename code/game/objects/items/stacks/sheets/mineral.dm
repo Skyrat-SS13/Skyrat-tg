@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(uranium_recipes, list ( \
 /*
  * Plasma
  */
-/obj/item/stack/sheet/mineral/plasma
+/obj/item/stack/sheet/mineral/plasma//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "solid plasma"
 	icon_state = "sheet-plasma"
 	inhand_icon_state = "sheet-plasma"
