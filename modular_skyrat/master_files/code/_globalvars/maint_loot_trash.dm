@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/poster/random_official = 100,
 		/obj/item/assembly/shock_kit = 25,
 		/obj/item/camera = 25,
-		/obj/item/caution = 100,
+		/obj/item/clothing/suit/caution = 100,
 		/obj/item/chair/plastic = 50,
 		/obj/item/clothing/ears/earmuffs = 25,
 		/obj/item/clothing/glasses/blindfold = 25,
