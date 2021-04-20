@@ -144,6 +144,31 @@
 	path = /obj/item/clothing/under/misc/mechanic
 	ckeywhitelist = list("cypressb")
 
+/datum/loadout_item/uniform/donator/mikubikini
+	name = "starlight singer bikini"
+	path = /obj/item/clothing/under/mikubikini
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/suit/donator/mikujacket
+	name = "starlight singer jacket"
+	path = /obj/item/clothing/suit/mikujacket
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/head/donator/mikuhair
+	name = "starlight singer hair"
+	path = /obj/item/clothing/head/mikuhair
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/gloves/donator/mikugloves
+	name = "starlight singer gloves"
+	path = /obj/item/clothing/gloves/mikugloves
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/shoes/donator/mikulegging
+	name = "starlight singer bikini"
+	path = /obj/item/clothing/shoes/sneakers/mikuleggings
+	ckeywhitelist = list("grandvegeta")
+
 //FOR DEV INTERNS!
 /datum/loadout_item/backpack/donator/intern_hat
 	name = "Intern Hat"
