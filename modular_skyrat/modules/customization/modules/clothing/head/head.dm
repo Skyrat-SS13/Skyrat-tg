@@ -142,4 +142,17 @@
 		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
 	earflaps = !earflaps
 
+/obj/item/clothing/head/soft/enclave
+	name = "neo american cap"
+	desc = "If worn in the battlefield or at a baseball game, it's still a rather scary hat."
+	icon_state = "enclave"
+	soft_type = "enclave_flipped"
+	dog_fashion = null
+
+/obj/item/clothing/head/enclaveo
+	name = "neo american officer cap"
+	desc = "It blocks out the sun and laser bolts from executions."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "enclave_o_cap"
 

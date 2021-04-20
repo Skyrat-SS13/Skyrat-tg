@@ -129,5 +129,22 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "tracksuit_blue_s"
 
+/obj/item/clothing/under/enclaveo
+	name = "neo american officer uniform"
+	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "enclave_o"
+	armor = list(MELEE = 0, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+
+/obj/item/clothing/under/enclave
+	name = "neo american sergeant uniform"
+	desc = "Not as high ranking as the officers often standing in front of them, this outfit is less armored than it's sister."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "enclave"
+	armor = list(MELEE = 0, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 
