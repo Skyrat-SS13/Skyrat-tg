@@ -95,6 +95,9 @@
 	desc = "War crimes make people cold, not just on the inside, but on the outside as well, just ask Germany, France, Sweden, Germany again, Russia themselves and Poland, this coat's a touch more eastern, however."
 	icon_state = "chi_korea_coat"
 	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/modernwintercoatthing
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
@@ -103,6 +106,9 @@
 	desc = "Warm and comfy, the inner fur seems to be removable, not this one though, someone's sewn it in and left the buttons!"
 	icon_state = "modern_winter"
 	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/toggle/jacket/cardigan
 	name = "cardigan"
@@ -139,6 +145,9 @@
 	desc = "Ever thought to yourself 'I'm a rich bitch, but I haven't GOT the Mafia Princess look?' Well thanks to the tireless work of underpaid slave labour in Space China, your dreams of looking like a bitch have been fulfilled, like a Genie with a sweatshop."
 	icon_state = "expensivecoat"
 	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/brownbattlecoat
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
@@ -146,4 +155,31 @@
 	name = "expensive brown fur coat"
 	desc = "There is nothing more valuable, nothing more sacred, look at the fur lining, it's beautiful, when you cruse through Necropolis in this thing, you're gonna be balls deep in Ash Walker snatch."
 	icon_state = "battlecoat"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+/obj/item/clothing/suit/brownfurrich
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "quartermaster fur coat"
+	desc = "Cargonia, or if you're a dork, Cargoslavia has shipped out a coat for loyal quartermasters, despite accusations it's just a dyed black fur coat, it's...not, promise!"
+	icon_state = "winter_coat"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+/obj/item/clothing/suit/fallsparka
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "falls parka"
+	desc = "A light brown coat with light fur lighting around the collar."
+	icon_state = "fallsparka"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
 
