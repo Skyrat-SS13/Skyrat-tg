@@ -626,3 +626,51 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
 	worn_icon_state = "scraparmor"
 	body_parts_covered = CHEST
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/under/mikubikini
+	name = "starlight singer bikini"
+	desc = " "
+	icon_state = "mikubikini"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	worn_icon_state = "mikubikini"
+	body_parts_covered = CHEST|GROIN
+	fitted = FEMALE_UNIFORM_TOP
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/suit/mikujacket
+	name = "starlight singer jacket"
+	desc = " "
+	icon_state = "mikujacket"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	worn_icon_state = "mikujacket"
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/head/mikuhair
+	name = "starlight singer hair"
+	desc = " "
+	icon_state = "mikuhair"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/head.dmi'
+	worn_icon_state = "mikuhair"
+	flags_inv = HIDEHAIR
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/gloves/mikugloves
+	name = "starlight singer gloves"
+	desc = " "
+	icon_state = "mikugloves"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/hands.dmi'
+	worn_icon_state = "mikugloves"
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/shoes/sneakers/mikuleggings
+	name = "starlight singer leggings"
+	desc = " "
+	icon_state = "mikuleggings"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
+	worn_icon_state = "mikuleggings"
