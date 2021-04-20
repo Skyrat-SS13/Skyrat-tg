@@ -76,4 +76,4 @@
 	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time. These are fully black."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
-	icon_state = "rus_shoes"
+	icon_state = "blackjack"
