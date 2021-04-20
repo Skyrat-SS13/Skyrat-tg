@@ -147,7 +147,8 @@
 	desc = "If worn in the battlefield or at a baseball game, it's still a rather scary hat."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
-	icon_state = "enclave"
+	icon_state = "enclavesoft"
+	soft_type = "enclave"
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/enclaveo
@@ -155,5 +156,6 @@
 	desc = "It blocks out the sun and laser bolts from executions."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
-	icon_state = "enclaveo"
+	icon_state = "enclaveosoft"
+	soft_type = "enclaveo"
 	dog_fashion = null
