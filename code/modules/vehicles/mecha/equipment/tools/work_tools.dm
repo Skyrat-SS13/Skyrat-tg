@@ -94,7 +94,7 @@
 		if(M.stat == DEAD)
 			return
 
-		//var/list/modifiers = params2list(params) - SKYRAT EDIT REMOVAL
+		var/list/modifiers = params2list(params)
 
 		if(!source.combat_mode)
 			step_away(M,chassis)
@@ -107,7 +107,7 @@
 				"<span class='notice'>[chassis] pushes you aside.</span>")
 			return ..()
 
-		/*else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M))//meme clamp here
+		else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M) && M.real_name == "Scott Waverly")//meme clamp here //SKYRAT EDIT - Original : else if(LAZYACCESS(modifiers, RIGHT_CLICK) && iscarbon(M))
 			if(!killer_clamp)
 				to_chat(source, "<span class='notice'>You longingly wish to tear [M]'s arms off.</span>")
 				return
@@ -126,10 +126,9 @@
 				return
 			playsound(src, get_dismember_sound(), 80, TRUE)
 			target.visible_message("<span class='danger'>[chassis] rips [target]'s arms off!</span>", \
-						   "<span class='userdanger'>[chassis] rips your arms off!</span>")
+						"<span class='userdanger'>[chassis] rips your arms off!</span>")
 			log_combat(source, M, "removed both arms with a real clamp,", "[name]", "(COMBAT MODE: [uppertext(source.combat_mode)] (DAMTYPE: [uppertext(damtype)])")
 			return ..()
-*/	// SKYRAT REMOVAL - No instant arm-removals.
 		M.take_overall_damage(clamp_damage)
 		if(!M) //get gibbed stoopid
 			return
