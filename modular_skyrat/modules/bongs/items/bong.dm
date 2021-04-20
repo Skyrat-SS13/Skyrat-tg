@@ -164,7 +164,7 @@
 
 /datum/crafting_recipe/lungbuster
 	name = "The Lungbuster"
-	result = /obj/item/bong
+	result = /obj/item/bong/lungbuster
 	reqs = list(/obj/item/stack/sheet/iron = 10,
 				/obj/item/stack/sheet/glass = 20)
 	time = 30
