@@ -42,4 +42,3 @@
 	suffix = "dangerous_research.dmm"
 	name = "Nanotrasen Research Facility"
 	description = "A small, recently abandoned research outpost, perhaps there's time to see what went wrong before Nanotrasen wipes it from their records?"
-	
