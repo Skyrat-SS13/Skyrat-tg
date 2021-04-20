@@ -120,7 +120,7 @@
 	desc = "Found on a dead homeless man squatting in an alleyway, the classic design has been mass produced to bring terror to the galaxy."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
-	icon_state = "tracksuit_blue"
+	icon_state = "tracksuit_blue_s"
 
 /obj/item/clothing/under/misc/hlscience
 	name = "ridiculous scientist outfit"
