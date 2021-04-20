@@ -87,5 +87,47 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "aerostatic_suit"
 
+/obj/item/clothing/under/misc/countess
+	name = "countess dress"
+	desc = "A wide flowing dress fitting for a countess, maybe not for anyone who enjoys a dress that doesn't catch on things."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "countess_s"
+
+/obj/item/clothing/under/misc/formaldressred
+	name = "formal red dress"
+	desc = "Not too wide flowing, but big enough to make an impression."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "formalred_s"
+
+/obj/item/clothing/under/misc/peakyblinder
+	name = "birmingham bling"
+	desc = "A grey suit with a white vest, maybe you run a whiskey plant, maybe you have a frenemy relationship with that guy out of that one film, whatever it is, it's still a nice looking suit."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "peakyblinder"
+
+/obj/item/clothing/under/misc/taccas
+	name = "tacticasual uniform"
+	desc = "A white wifebeater on top of some cargo pants. For when you need to carry various beers."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "tac_s"
+
+/obj/item/clothing/under/misc/bluetracksuit
+	name = "blue tracksuit"
+	desc = "Found on a dead homeless man squatting in an alleyway, the classic design has been mass produced to bring terror to the galaxy."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "tracksuit_blue_s"
+
+/obj/item/clothing/under/misc/hlscience
+	name = "ridiculous scientist outfit"
+	desc = "The tie is mandatory."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "tracksuit_blue_s"
+
 
 

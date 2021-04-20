@@ -375,6 +375,12 @@
 	restricted_roles = list("Quartermaster")
 	restricted_desc = "Quartermaster Only"
 
+/datum/loadout_item/suit/job/supply_head_jacket
+	name = "Quartermaster's Fur Jacket"
+	path = /obj/item/clothing/suit/brownfurrich
+	restricted_roles = list("Quartermaster")
+	restricted_desc = "Quartermaster Only"
+
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
 	path = /obj/item/clothing/suit/toggle/labcoat/para_red

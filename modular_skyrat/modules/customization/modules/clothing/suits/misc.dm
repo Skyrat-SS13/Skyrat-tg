@@ -146,4 +146,15 @@
 	name = "expensive brown fur coat"
 	desc = "There is nothing more valuable, nothing more sacred, look at the fur lining, it's beautiful, when you cruse through Necropolis in this thing, you're gonna be balls deep in Ash Walker snatch."
 	icon_state = "battlecoat"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/brownfurrich
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "quartermaster fur coat"
+	desc = "Cargonia, or if you're a dork, Cargoslavia has shipped out a coat for loyal quartermasters, despite accusations it's just a dyed black fur coat, it's...not, promise!"
+	icon_state = "winter_coat"
+	mutant_variants = NONE
+
+
 
