@@ -1,3 +1,4 @@
+/*
 //quick and dirty aphrodisiacs for the new base
 
 /datum/reagent/drug/aphrodisiac
@@ -71,3 +72,4 @@
 	icon_state = "pill_happy"
 	list_reagents = list(/datum/reagent/drug/aphrodisiac = 20)
 	rename_with_volume = TRUE
+*/
