@@ -178,6 +178,10 @@
 	name = "Leather overcoat"
 	path = /obj/item/clothing/suit/jacket/leather/overcoat
 
+/datum/loadout_item/suit/jacket/woolcoat
+	name = "Leather overcoat"
+	path = /obj/item/clothing/suit/woolcoat
+
 /datum/loadout_item/suit/jacket/jacketpuffer
 	name = "Puffer jacket"
 	path = /obj/item/clothing/suit/jacket/puffer
