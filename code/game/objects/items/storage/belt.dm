@@ -72,6 +72,7 @@
 		/obj/item/airlock_painter,
 		/obj/item/pipe_painter,
 		/obj/item/weldingtool/experimental
+		))
 
 /obj/item/storage/belt/utility/chief
 	name = "\improper Chief Engineer's toolbelt" //"the Chief Engineer's toolbelt", because "Chief Engineer's toolbelt" is not a proper noun
