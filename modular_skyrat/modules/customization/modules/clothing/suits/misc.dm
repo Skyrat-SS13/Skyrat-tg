@@ -191,3 +191,8 @@
 	name = "white fur coat"
 	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
 	icon_state = "winter_coat_white"
+
+/obj/item/clothing/suit/brownfurrich/cream
+	name = "cream fur coat"
+	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
+	icon_state = "winter_coat_cream"
