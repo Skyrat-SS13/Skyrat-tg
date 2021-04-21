@@ -186,3 +186,8 @@
 /obj/item/clothing/suit/brownfurrich/public
 	name = "fur coat"
 	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
+
+/obj/item/clothing/suit/brownfurrich/white
+	name = "white fur coat"
+	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
+	icon_state = "winter_coat_white"
