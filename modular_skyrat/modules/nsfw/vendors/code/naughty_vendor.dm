@@ -24,17 +24,15 @@
 		/obj/item/clothing/glasses/blindfold = 8,
 		/obj/item/clothing/mask/muzzle = 8,
 		/obj/item/clothing/head/kitty = 4,
-		/obj/item/clothing/head/rabbitears = 4,
-		/obj/item/reagent_containers/pill/crocin = 20
+		/obj/item/clothing/head/rabbitears = 4
 	)
 
 	contraband = list( //Actually dangerous or exploitable shit.
 		/obj/item/clothing/under/costume/jabroni = 4,
-		/obj/item/clothing/neck/human_petcollar/locked = 2,
-		/obj/item/key/collar = 2,
-		/obj/item/electropack/shockcollar = 4,
-		/obj/item/assembly/signaler = 4,
-		/obj/item/reagent_containers/pill/hexacrocin = 10
+		/obj/item/clothing/neck/human_petcollar/locked = 1,
+		/obj/item/key/collar = 1,
+		/obj/item/electropack/shockcollar = 1,
+		/obj/item/assembly/signaler = 1
 	)
 
 	premium = list(
