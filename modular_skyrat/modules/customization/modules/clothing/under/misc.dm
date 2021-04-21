@@ -120,14 +120,14 @@
 	desc = "Found on a dead homeless man squatting in an alleyway, the classic design has been mass produced to bring terror to the galaxy."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
-	icon_state = "tracksuit_blue_s"
+	icon_state = "tracksuit_blue"
 
 /obj/item/clothing/under/misc/hlscience
 	name = "ridiculous scientist outfit"
 	desc = "The tie is mandatory."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
-	icon_state = "tracksuit_blue_s"
+	icon_state = "hl_scientist"
 
 /obj/item/clothing/under/enclaveo
 	name = "neo american officer uniform"
