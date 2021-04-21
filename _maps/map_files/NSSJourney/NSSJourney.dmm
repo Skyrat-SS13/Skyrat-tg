@@ -26250,7 +26250,7 @@
 "bIz" = (
 /obj/structure/sign/warning/biohazard,
 /turf/closed/wall/r_wall,
-/area/maintenance/aft)
+/area/science/xenobiology)
 "bIA" = (
 /obj/machinery/atmospherics/components/binary/thermomachine/freezer{
 	dir = 4
@@ -38757,16 +38757,10 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "dqL" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/table,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/obj/machinery/camera/autoname{
-	dir = 10
-	},
-/turf/open/floor/iron,
-/area/science/xenobiology)
+/obj/structure/cable,
+/obj/structure/tank_holder,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "dsd" = (
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -38787,12 +38781,11 @@
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "dtO" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/science/xenobiology)
+/obj/structure/cable,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/structure/rack,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "dtT" = (
 /obj/structure/chair{
 	dir = 1
@@ -40120,14 +40113,11 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "fie" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	external_pressure_bound = 120;
-	name = "server vent"
-	},
-/obj/machinery/camera/autoname{
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/circuit,
+/turf/open/floor/iron/white,
 /area/science/xenobiology)
 "fif" = (
 /obj/structure/disposalpipe/segment{
@@ -40315,13 +40305,24 @@
 /turf/open/floor/plating,
 /area/security/office)
 "fqg" = (
-/turf/open/floor/circuit,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/rack,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/clothing/shoes/winterboots,
+/obj/item/clothing/shoes/winterboots,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/turf/open/floor/iron,
 /area/science/xenobiology)
 "fqu" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	external_pressure_bound = 120;
+	name = "server vent"
+	},
+/obj/machinery/camera/autoname{
+	dir = 4
 	},
 /turf/open/floor/circuit,
 /area/science/xenobiology)
@@ -40587,11 +40588,7 @@
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "fBE" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on,
-/turf/open/floor/iron,
+/turf/open/floor/circuit,
 /area/science/xenobiology)
 "fBH" = (
 /obj/machinery/light{
@@ -40707,7 +40704,11 @@
 /turf/open/floor/iron/dark,
 /area/security/courtroom)
 "fKY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
+	},
 /turf/open/floor/circuit,
 /area/science/xenobiology)
 "fLX" = (
@@ -41084,9 +41085,8 @@
 /turf/closed/wall,
 /area/medical/surgery)
 "gbS" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/turf/open/floor/iron/white,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/science/xenobiology)
 "gbT" = (
 /obj/structure/table,
@@ -43358,8 +43358,11 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "iFN" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/turf/open/floor/iron/white,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on,
+/turf/open/floor/iron,
 /area/science/xenobiology)
 "iGp" = (
 /obj/structure/chair/office,
@@ -47257,6 +47260,17 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison)
+"mQw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/obj/machinery/camera/autoname{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/science/xenobiology)
 "mQN" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Locker Room Maintenance";
@@ -47644,16 +47658,8 @@
 /turf/open/floor/iron,
 /area/medical/pharmacy)
 "nlQ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/rack,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
-/obj/item/clothing/shoes/winterboots,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
-/turf/open/floor/iron,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/circuit,
 /area/science/xenobiology)
 "nlW" = (
 /obj/effect/decal/cleanable/dirt,
@@ -48183,8 +48189,12 @@
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "nOl" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/obj/machinery/door/airlock/research{
+	name = "Xenobiology Lab";
+	req_access_txt = "55"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/white,
 /area/science/xenobiology)
 "nOC" = (
 /obj/structure/closet/secure_closet/brig{
@@ -52307,13 +52317,12 @@
 /area/hallway/primary/fore)
 "srU" = (
 /obj/effect/decal/cleanable/cobweb,
-/obj/structure/closet/emcloset,
-/turf/open/floor/plating,
-/area/maintenance/starboard/aft)
+/turf/closed/wall/r_wall,
+/area/science/xenobiology)
 "stP" = (
-/obj/structure/tank_holder,
-/turf/open/floor/plating,
-/area/maintenance/starboard/aft)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "sur" = (
 /obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/iron/dark,
@@ -55846,10 +55855,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "vYW" = (
-/obj/machinery/door/airlock/research{
-	name = "Xenobiology Lab";
-	req_access_txt = "55"
-	},
+/obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
@@ -56972,6 +56978,7 @@
 /obj/structure/sign/warning/securearea{
 	pixel_y = 32
 	},
+/obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "xbg" = (
@@ -99737,12 +99744,12 @@ tnw
 tnw
 buG
 bvA
-bzs
+bsM
 rhx
 rhx
 bAw
 bAw
-bzs
+xXp
 xXp
 xXp
 xXp
@@ -100251,40 +100258,40 @@ bfV
 bto
 buL
 bvB
-bzs
+bhA
 bxg
 bBR
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
 bti
 bIz
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
-bRa
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
+bDb
 jBL
 jsw
 dgP
@@ -100534,14 +100541,14 @@ bJN
 cfo
 ohb
 xAv
+bJN
+cfo
+ohb
+xAv
 bDb
-fie
-fKY
+fqu
+nlQ
 bDb
-xzh
-xzh
-xzh
-mtK
 cNW
 cNW
 bhG
@@ -100791,14 +100798,14 @@ bJN
 xzr
 xAv
 xAv
+bJN
+xzr
+xAv
+xAv
 bDb
-fqg
-fKY
+fBE
+nlQ
 ylY
-xzh
-xzh
-xzh
-xzh
 xzh
 cOT
 bhG
@@ -101048,14 +101055,14 @@ bJN
 xzr
 cKZ
 xAv
+bJN
+xzr
+cKZ
+xAv
 bDb
-fqg
-fKY
+fBE
+nlQ
 ylY
-xzh
-xzh
-xzh
-xzh
 xzh
 cOT
 bhG
@@ -101305,14 +101312,14 @@ bJN
 yck
 dnc
 ylY
+bJN
+yck
+dnc
+ylY
 bDb
-fqu
 fKY
+nlQ
 bDb
-xzh
-xzh
-xzh
-xzh
 xzh
 cNW
 bhG
@@ -101562,14 +101569,14 @@ bJN
 mdh
 rjh
 wOk
+bJN
+mdh
+rjh
+wOk
 bDb
+gbS
 nOl
-vYW
 bDb
-xzh
-xzh
-xzh
-xzh
 xzh
 cNW
 cBN
@@ -101819,14 +101826,14 @@ dQy
 mOj
 mOj
 mOj
+dQy
+mOj
+mOj
+mOj
 mOj
 bMi
-iFN
+stP
 ylY
-sUX
-sUX
-sUX
-sUX
 sUX
 cOT
 fif
@@ -102076,14 +102083,14 @@ lNo
 lNo
 lNo
 lNo
-dtO
 lNo
-gbS
+lNo
+lNo
+lNo
+fie
+lNo
+vYW
 bJK
-nPP
-nPP
-nPP
-nPP
 nPP
 czZ
 dni
@@ -102333,14 +102340,14 @@ pnD
 bMi
 bMi
 bMi
-nlQ
-fBE
-dqL
+pnD
+bMi
+bMi
+bMi
+fqg
+iFN
+mQw
 ylY
-sUX
-sUX
-sUX
-sUX
 sUX
 cOT
 pxV
@@ -102590,14 +102597,14 @@ bJN
 jRs
 txJ
 wBO
+bJN
+jRs
+txJ
+wBO
 bDb
 bDb
 bDb
 bDb
-xzh
-xzh
-xzh
-xzh
 xzh
 cNW
 pxV
@@ -102847,13 +102854,13 @@ bJN
 ylY
 dqk
 yck
+bJN
+ylY
+dqk
+yck
 bDb
 sUX
 sUX
-xzh
-xzh
-xzh
-xzh
 xzh
 xzh
 cNW
@@ -103104,12 +103111,12 @@ bJN
 xAv
 xAv
 xzr
+bJN
+xAv
+xAv
+xzr
 bDb
 sUX
-xzh
-xzh
-xzh
-xzh
 xzh
 xzh
 xzh
@@ -103361,13 +103368,13 @@ bJN
 xAv
 xAv
 xzr
+bJN
+xAv
+xAv
+xzr
 bDb
 sUX
 sUX
-xzh
-xzh
-xzh
-xzh
 xzh
 xzh
 cOT
@@ -103618,11 +103625,11 @@ bJN
 czb
 dxm
 dFp
+bJN
+czb
+dxm
+dFp
 bDb
-mtK
-mtK
-mtK
-mtK
 mtK
 mtK
 mtK
@@ -103875,11 +103882,11 @@ bQZ
 bQZ
 bQZ
 bQZ
-mtK
+bDb
 srU
-stP
-cOe
-cmo
+bDb
+bDb
+bDb
 cgp
 cOe
 cOe
@@ -104133,8 +104140,8 @@ dUO
 egr
 bQZ
 xaZ
-pxV
-pxV
+dqL
+dtO
 pxV
 pxV
 pxV
