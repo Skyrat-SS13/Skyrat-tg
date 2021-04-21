@@ -510,7 +510,7 @@
  	path = /obj/item/clothing/under/rank/protcustpskirt
  	restricted_roles = list("Prisoner")
 
- /datum/loadout_item/uniform/job/supmaxprison
+/datum/loadout_item/uniform/job/supmaxprison
  	name = "Supermax Prisoner Jumpsuit"
  	path = /obj/item/clothing/under/rank/supermaxp
  	restricted_roles = list("Prisoner")
@@ -530,7 +530,7 @@
  	path = /obj/item/clothing/under/rank/highsecpskirt
  	restricted_roles = list("Prisoner")
 
- /datum/loadout_item/uniform/job/priestrobe
+/datum/loadout_item/uniform/job/priestrobe
 	name = "Priestess Robe"
 	path = /obj/item/clothing/under/rank/pmarsrobe
 	cost = 2
