@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/pda_color = "#808000"
 
 	//aphrodisiac preference
-	var/aphrodisiacs_pref = 1
+	var/aphrodisiacs_pref = 0
 	var/cumfaced_pref = 0
 
 	var/uses_glasses_colour = 0
@@ -198,9 +198,9 @@ GLOBAL_LIST_INIT(food, list(
 	var/preview_pref = PREVIEW_PREF_JOB
 
 	var/ooc_prefs = ""
-	var/erp_pref = "Ask"
-	var/noncon_pref = "Ask"
-	var/vore_pref = "Ask"
+	var/erp_pref = "NO"
+	var/noncon_pref = "NO"
+	var/vore_pref = "NO"
 
 	//BACKGROUND STUFF
 	var/general_record = ""
@@ -466,9 +466,9 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "[copytext(html_encode(features["silicon_flavor_text"]), 1, 40)]..."
 
 					dat +=	"<h2>OOC Preferences</h2>"
-					dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
-					dat += 	"<b>Non-Con:</b><a href='?_src_=prefs;preference=noncon_pref;task=input'>[noncon_pref]</a> "
-					dat += 	"<b>Vore:</b><a href='?_src_=prefs;preference=vore_pref;task=input'>[vore_pref]</a><br>"
+					//dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
+					//dat += 	"<b>Non-Con:</b><a href='?_src_=prefs;preference=noncon_pref;task=input'>[noncon_pref]</a> "
+					//dat += 	"<b>Vore:</b><a href='?_src_=prefs;preference=vore_pref;task=input'>[vore_pref]</a><br>"
 					dat += "<a href='?_src_=prefs;preference=ooc_prefs;task=input'><b>Set OOC prefs</b></a><br>"
 					if(length(ooc_prefs) <= 40)
 						if(!length(ooc_prefs))
@@ -611,18 +611,18 @@ GLOBAL_LIST_INIT(food, list(
 
 					if(pref_species.can_have_genitals)
 						dat += APPEARANCE_CATEGORY_COLUMN
-						dat += "<a href='?_src_=prefs;preference=change_arousal_preview;task=input'>Change arousal preview</a>"
-						dat += "<h3>Penis</h3>"
+						//dat += "<a href='?_src_=prefs;preference=change_arousal_preview;task=input'>Change arousal preview</a>"
+						dat += "<h3>?</h3>"
 						var/penis_name = mutant_bodyparts["penis"][MUTANT_INDEX_NAME]
-						dat += print_bodypart_change_line("penis")
+						//dat += print_bodypart_change_line("penis")
 						if(penis_name != "None")
 							dat += "<br><b>Length: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_size;task=change_genitals'>[features["penis_size"]]</a> inches."
 							dat += "<br><b>Girth: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_girth;task=change_genitals'>[features["penis_girth"]]</a> inches circumference"
 							dat += "<br><b>Sheath: </b> <a href='?_src_=prefs;key=["penis"];preference=penis_sheath;task=change_genitals'>[features["penis_sheath"]]</a>"
 
-						dat += "<h3>Testicles</h3>"
+						dat += "<h3>?</h3>"
 						var/balls_name = mutant_bodyparts["testicles"][MUTANT_INDEX_NAME]
-						dat += print_bodypart_change_line("testicles")
+						//dat += print_bodypart_change_line("testicles")
 						if(balls_name != "None")
 							var/named_size = balls_size_to_description(features["balls_size"])
 							dat += "<br><b>Size: </b> <a href='?_src_=prefs;key=["testicles"];preference=balls_size;task=change_genitals'>[named_size]</a>"
@@ -637,10 +637,10 @@ GLOBAL_LIST_INIT(food, list(
 
 						dat += APPEARANCE_CATEGORY_COLUMN
 						dat += "<b>Uses skintones: </b> <a href='?_src_=prefs;preference=uses_skintones;task=input'>[(features["uses_skintones"]) ? "Yes" : "No"]</a>"
-						dat += "<h3>Vagina</h3>"
-						dat += print_bodypart_change_line("vagina")
-						dat += "<h3>Womb</h3>"
-						dat += print_bodypart_change_line("womb")
+						dat += "<h3>?</h3>"
+						//dat += print_bodypart_change_line("vagina")
+						dat += "<h3>?</h3>"
+						//dat += print_bodypart_change_line("womb")
 						dat += "</td>"
 
 						dat += APPEARANCE_CATEGORY_COLUMN
@@ -652,7 +652,7 @@ GLOBAL_LIST_INIT(food, list(
 							var/named_size = breasts_size_to_cup(features["breasts_size"])
 							var/named_lactation = (features["breasts_lactation"]) ? "Yes" : "No"
 							dat += "<br><b>Size: </b> <a href='?_src_=prefs;key=["breasts"];preference=breasts_size;task=change_genitals'>[named_size]</a>"
-							dat += "<br><b>Can Lactate: </b> <a href='?_src_=prefs;key=["breasts"];preference=breasts_lactation;task=change_genitals'>[named_lactation]</a>"
+							//dat += "<br><b>Can Lactate: </b> <a href='?_src_=prefs;key=["breasts"];preference=breasts_lactation;task=change_genitals'>[named_lactation]</a>"
 						dat += "</td>"
 
 					dat += "</tr></table>"
@@ -1149,9 +1149,9 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<br>"
 
 			//aphrodisiac pref
-			dat += "<b>Be Affected by Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
+			//dat += "<b>Be Affected by Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
 			//cumface pref
-			dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
+			//dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
 
