@@ -44,7 +44,7 @@
 
 /datum/action/innate/slime_change/proc/change_form()
 	var/mob/living/carbon/human/H = owner
-	var/select_alteration = input(H, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Colors","Hair Style", "Facial Hair Style", "Mutant Body Parts", "Markings", "DNA Specifics", "Cancel")
+	var/select_alteration = input(H, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Colors","Hair Style", "Facial Hair Style", "Markings", "Cancel")
 	if(!select_alteration || select_alteration == "Cancel" || QDELETED(H))
 		return
 	var/datum/dna/DNA = H.dna
