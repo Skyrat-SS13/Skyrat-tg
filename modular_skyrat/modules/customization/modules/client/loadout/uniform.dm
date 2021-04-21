@@ -147,6 +147,18 @@
 	path = /obj/item/clothing/under/pants/chaps
 	cost = 1
 
+/datum/loadout_item/uniform/taccas
+	name = "Tacticasual Uniform"
+	path = /obj/item/clothing/under/misc/taccas
+	cost = 1
+
+/datum/loadout_item/uniform/tracky
+	name = "Blue Tracksuit"
+	path = /obj/item/clothing/under/misc/bluetracksuit
+	cost = 1
+
+
+
 //SUITS
 /datum/loadout_item/uniform/suit
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SUITS
@@ -221,6 +233,11 @@
 /datum/loadout_item/uniform/suit/victorian/red_alt
 	name = "Red Victorian Vest, Black Shirt"
 	path = /obj/item/clothing/under/costume/vic_vest/red_alt
+	cost = 1
+
+/datum/loadout_item/uniform/suit/peaky
+	name = "Birmingham Bling"
+	path = /obj/item/clothing/under/misc/peakyblinder
 	cost = 1
 
 /datum/loadout_item/uniform/suit/dutch
@@ -328,6 +345,16 @@
 /datum/loadout_item/uniform/dress/flowerdress
 	name = "Flower Dress"
 	path = /obj/item/clothing/under/dress/flower
+
+/datum/loadout_item/uniform/dress/countess
+	name = "Countess Dress"
+	path = /obj/item/clothing/under/misc/countess
+	cost = 3
+
+/datum/loadout_item/uniform/dress/formal
+	name = "Formal Red Dress"
+	path = /obj/item/clothing/under/misc/formaldressred
+	cost = 2
 
 /datum/loadout_item/uniform/dress/victorian
 	name = "Victorian Vest, Black"
@@ -566,6 +593,12 @@
 /datum/loadout_item/uniform/job/utility_sci
 	name = "Science Utility Uniform"
 	path = /obj/item/clothing/under/utility/sci
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
+	restricted_desc = "Science"
+
+/datum/loadout_item/uniform/job/hlscientist
+	name = "Ridiculous Scientist Outfit"
+	path = /obj/item/clothing/under/misc/hlscience
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
 	restricted_desc = "Science"
 

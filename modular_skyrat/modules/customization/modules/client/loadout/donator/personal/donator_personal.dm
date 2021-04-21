@@ -49,6 +49,11 @@
 	path = /obj/item/clothing/mask/gas/britches
 	ckeywhitelist = list("bloodrite")
 
+/datum/loadout_item/mask/donator/luchador_mask
+	name = "Luchador mask"
+	path = /obj/item/clothing/mask/luchador/enzo
+	ckeywhitelist = list("enzoman")
+
 /datum/loadout_item/head/donator/drake_skull
 	name = "Skull of an ashdrake"
 	path = /obj/item/clothing/head/drake_skull
@@ -143,6 +148,31 @@
 	name = "Mechanic's Overalls"
 	path = /obj/item/clothing/under/misc/mechanic
 	ckeywhitelist = list("cypressb")
+
+/datum/loadout_item/uniform/donator/mikubikini
+	name = "starlight singer bikini"
+	path = /obj/item/clothing/under/mikubikini
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/suit/donator/mikujacket
+	name = "starlight singer jacket"
+	path = /obj/item/clothing/suit/mikujacket
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/head/donator/mikuhair
+	name = "starlight singer hair"
+	path = /obj/item/clothing/head/mikuhair
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/gloves/donator/mikugloves
+	name = "starlight singer gloves"
+	path = /obj/item/clothing/gloves/mikugloves
+	ckeywhitelist = list("grandvegeta")
+
+/datum/loadout_item/shoes/donator/mikulegging
+	name = "starlight singer bikini"
+	path = /obj/item/clothing/shoes/sneakers/mikuleggings
+	ckeywhitelist = list("grandvegeta")
 
 //FOR DEV INTERNS!
 /datum/loadout_item/backpack/donator/intern_hat
