@@ -1,3 +1,4 @@
+/*
 /datum/emote/living/cum
 	key = "cum"
 	key_third_person = "cums"
@@ -114,3 +115,4 @@
 			if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
 				target.icon = 'modular_skyrat/modules/cum/cum.dmi'
 			qdel(src)
+*/
