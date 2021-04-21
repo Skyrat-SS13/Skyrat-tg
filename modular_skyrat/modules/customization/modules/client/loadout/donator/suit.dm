@@ -13,3 +13,7 @@
 /datum/loadout_item/suit/donator/public/british_officer
 	name = "British Officers Coat"
 	path = /obj/item/clothing/suit/british_officer
+
+/datum/loadout_item/suit/donator/public/british_officer
+	name = "Modern Winter Coat"
+	path = /obj/item/clothing/suit/modern_winter

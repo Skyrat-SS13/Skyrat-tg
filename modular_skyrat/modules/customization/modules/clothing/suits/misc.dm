@@ -209,6 +209,17 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
+/obj/item/clothing/suit/modern_winter
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "modern winter coat"
+	desc = "A comfy modern winter coat."
+	icon_state = "modern_winter"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
 /obj/item/clothing/suit/woolcoat
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
@@ -217,3 +228,4 @@
 	icon_state = "woolcoat"
 	mutant_variants = NONE
 	body_parts_covered = CHEST|GROIN|ARMS
+
