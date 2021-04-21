@@ -72,7 +72,7 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/supermaxp
+/obj/item/clothing/under/rank/protcustp/supermaxp
 	name = "supermax prisoner jumpsuit"
 	desc = "A crimson red prison jumpsuit, for the worst of the worst, or the Clown."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
@@ -83,7 +83,7 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/supermaxpskirt
+/obj/item/clothing/under/rank/protcustpskirt/supermaxpskirt
 	name = "supermax prisoner jumpskirt"
 	desc = "A crimson red prison jumpskirt, for the worst of the worst, or the Clown."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
@@ -94,7 +94,7 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/highsecpskirt
+/obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
 	name = "high risk prisoner jumpskirt"
 	desc = "A dark red prison jumpskirt, depending on who sees it, either a badge of honour or a sign to avoid. All my life I've wanted to be famous."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
@@ -105,7 +105,7 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/lowsecpskirt
+/obj/item/clothing/under/rank/protcustp/lowsecpskirt
 	name = "low security prisoner jumpskirt"
 	desc = "A pale, almost creamy prison jumpskirt, this one denotes a low security prisoner, things like fraud and anything white collar. It screams 'I'm a bitch' to inmates."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
@@ -116,7 +116,7 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/lowsecp
+/obj/item/clothing/under/rank/protcustp/lowsecp
 	name = "low security prisoner jumpsuit"
 	desc = "A pale, almost creamy prison jumpsuit, this one denotes a low security prisoner, things like fraud and anything white collar. It screams 'I'm a bitch' to inmates."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
@@ -127,7 +127,7 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/highsecp
+/obj/item/clothing/under/rank/protcustp/highsecp
 	name = "high risk prisoner jumpsuit"
 	desc = "A dark red prison jumpsuit, depending on who sees it, either a badge of honour or a sign to avoid. All my life I've wanted to be famous."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
