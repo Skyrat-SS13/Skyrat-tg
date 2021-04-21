@@ -1,3 +1,4 @@
+/*
 //you got cum on your face bro *licks it off*
 /datum/component/cumfaced
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
@@ -92,3 +93,4 @@
 	A.cut_overlay(bigcumface)
 	qdel(bigcumface)
 	return ..()
+*/
