@@ -1551,7 +1551,7 @@ GLOBAL_LIST_INIT(food, list(
 	popup.open(FALSE)
 
 /datum/preferences/proc/GetQuirkBalance()
-	var/bal = 0
+	var/bal = 2
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
