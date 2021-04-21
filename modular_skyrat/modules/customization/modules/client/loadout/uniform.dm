@@ -489,6 +489,54 @@
 /datum/loadout_item/uniform/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+
+/datum/loadout_item/uniform/job/lowprison
+ 	name = "Low Security Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/lowsecp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/lowprisons
+ 	name = "Low Security Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustp/lowsecpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprison
+ 	name = "Protective Custody Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprisons
+ 	name = "Protective Custody Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprison
+ 	name = "Supermax Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/supermaxp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "Supermax Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt/supermaxpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/highprison
+ 	name = "High Risk Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/highsecp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "High Risk Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/priestrobe
+	name = "Priestess Robe"
+	path = /obj/item/clothing/under/rank/pmarsrobe
+	cost = 2
+	restricted_roles = list("Chaplain")
+
+
 /datum/loadout_item/uniform/job/navyblueuniformhos
  	name = "Head of Security navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal

@@ -190,3 +190,10 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "westender"
 	mutant_variants = NONE
+/obj/item/clothing/under/rank/pmarsrobe
+	name = "priestess robe"
+	desc = "A thick woolly robe adorned with black furs of a wolf. Keepers of the Flame of utter boredom. Sadly not flameproof"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "pmars_robe"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
