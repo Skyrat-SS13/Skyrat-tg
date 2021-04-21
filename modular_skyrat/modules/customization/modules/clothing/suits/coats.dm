@@ -176,3 +176,20 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("5D5", "EEA", "333"))
 
+
+/obj/item/clothing/suit/toggle/deckard
+	name = "runner coat"
+	desc = "They say you overused reference. Tell them you're eating in this lovely coat, a long flowing brown one."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "deckard"
+	mutant_variants = NONE
+	inhand_icon_state = "det_suit"
+	blood_overlay_type = "coat"
+	togglename = "buttons"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 45)
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+
+
