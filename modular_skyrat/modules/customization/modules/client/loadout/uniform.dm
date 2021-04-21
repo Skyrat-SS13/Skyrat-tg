@@ -817,7 +817,7 @@
 	restricted_desc = "Service"
 	restricted_roles = list("Assistant", "Bartender", "Botanist", "Cook", "Curator", "Janitor", "Clown", "Mime", "Lawyer")
 
-/datum/loadout_item/uniform/suit/trekadjtorv
+/datum/loadout_item/uniform/job/trekadjtorv
 	name = "ORV - assistant"
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv
 	restricted_roles = list("Assistant")
