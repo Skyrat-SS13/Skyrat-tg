@@ -1,3 +1,4 @@
+/*
 /obj/structure/reagent_dispensers/keg/cum
 	name = "keg of cum"
 	desc = "A keg full of \"reproductive agent\"."
@@ -5,3 +6,4 @@
 	icon_state = "cumkeg"
 	reagent_id = /datum/reagent/cum
 	tank_volume = 150
+*/
