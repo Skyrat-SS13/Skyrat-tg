@@ -46,6 +46,8 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
 
+	var/list/prisoner_spawn_locs = list() //SKYRAT EDIT ADDITION - List of spawn areas for prisoners
+
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!config)
@@ -69,6 +71,7 @@ SUBSYSTEM_DEF(mapping)
 	loadWorld()
 	repopulate_sorted_areas()
 	process_teleport_locs() //Sets up the wizard teleport locations
+	get_prisoner_spawns()//SKYRAT EDIT ADDITION
 	preloadTemplates()
 
 #ifndef LOWMEMORYMODE
