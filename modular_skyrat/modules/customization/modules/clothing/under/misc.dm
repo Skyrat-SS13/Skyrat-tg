@@ -147,6 +147,49 @@
 	armor = list(MELEE = 0, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
+/obj/item/clothing/under/tachawaiian
+	name = "orange tactical hawaiian outfit"
+	desc = "Clearly the wearer didn't know if they wanted to invade a country or lay on a nice Hawaiian beach."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "tacticool_hawaiian_orange"
+	mutant_variants = NONE
+
+/obj/item/clothing/under/tachawaiian/blue
+	name = "blue tactical hawaiian outfit"
+	icon_state = "tacticool_hawaiian_blue"
+
+/obj/item/clothing/under/tachawaiian/purple
+	name = "purple tactical hawaiian outfit"
+	icon_state = "tacticool_hawaiian_purple"
+
+/obj/item/clothing/under/tachawaiian/green
+	name = "green tactical hawaiian outfit"
+	icon_state = "tacticool_hawaiian_green"
+
+/obj/item/clothing/under/texas
+	name = "texan formal outfit"
+	desc = "A premium quality shirt and pants combo straight from Texas."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "texas"
+	mutant_variants = NONE
+
+/obj/item/clothing/under/doug_dimmadome
+	name = "dimmadome formal outfit"
+	desc = "A tight fitting suit with a belt that is surely made out of gold."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "doug_dimmadome"
+	mutant_variants = NONE
+
+/obj/item/clothing/under/westender
+	name = "westender outfit"
+	desc = "An outfit harking back to a pre-industrial revolution era."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "westender"
+	mutant_variants = NONE
 /obj/item/clothing/under/rank/pmarsrobe
 	name = "priestess robe"
 	desc = "A thick woolly robe adorned with black furs of a wolf. Keepers of the Flame of utter boredom. Sadly not flameproof"

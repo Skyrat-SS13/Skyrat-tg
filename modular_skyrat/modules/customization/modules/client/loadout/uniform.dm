@@ -822,6 +822,34 @@
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv
 	restricted_roles = list("Assistant")
 
+/datum/loadout_item/uniform/tactical_hawaiian_orange
+	name = "Tactical Hawaiian Outfit - Orange"
+	path = /obj/item/clothing/under/tachawaiian
+
+/datum/loadout_item/uniform/tactical_hawaiian_blue
+	name = "Tactical Hawaiian Outfit - Blue"
+	path = /obj/item/clothing/under/tachawaiian/blue
+
+/datum/loadout_item/uniform/tactical_hawaiian_purple
+	name = "Tactical Hawaiian Outfit - Purple"
+	path = /obj/item/clothing/under/tachawaiian/purple
+
+/datum/loadout_item/uniform/tactical_hawaiian_green
+	name = "Tactical Hawaiian Outfit - Green"
+	path = /obj/item/clothing/under/tachawaiian/green
+
+/datum/loadout_item/uniform/texas
+	name = "Texan Suit"
+	path = /obj/item/clothing/under/texas
+
+/datum/loadout_item/uniform/dimmadome
+	name = "Doug Dimmadome Suit"
+	path = /obj/item/clothing/under/doug_dimmadome
+
+/datum/loadout_item/uniform/westender
+	name = "Westender Suit"
+	path = /obj/item/clothing/under/westender
+
 //TheMotionPicture
 /*/datum/loadout_item/trekfedutil
 	name = "TMP uniform"
