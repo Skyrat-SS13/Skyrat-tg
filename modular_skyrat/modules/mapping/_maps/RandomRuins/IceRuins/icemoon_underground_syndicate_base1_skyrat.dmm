@@ -182,9 +182,8 @@
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "bO" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/testlab)
+/turf/open/floor/plating/grass,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "bT" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -278,6 +277,9 @@
 	pixel_y = 6
 	},
 /obj/item/kitchen/rollingpin,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "dq" = (
@@ -1781,15 +1783,6 @@
 "ju" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/unpowered/syndicate_lava_base/bar)
-"jv" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/ruin/unpowered/syndicate_lava_base/engineering)
 "jx" = (
 /obj/machinery/shower{
 	dir = 8
@@ -2056,6 +2049,7 @@
 	pixel_y = -23
 	},
 /obj/structure/cable,
+/obj/machinery/monkey_recycler,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "kw" = (
@@ -3499,6 +3493,11 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
+"Ak" = (
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/ruin/unpowered/syndicate_lava_base/testlab)
 "Aq" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
@@ -3616,8 +3615,7 @@
 /obj/machinery/hydroponics/soil{
 	desc = "A patch of fertile soil that you can plant stuff in.";
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi';
-	icon_state = "grass0";
-	plane = -2
+	icon_state = "grass0"
 	},
 /turf/open/floor/plating/grass,
 /area/ruin/unpowered/syndicate_lava_base/bar)
@@ -3626,6 +3624,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/main)
+"BZ" = (
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/plating,
+/area/ruin/unpowered/syndicate_lava_base/testlab)
 "Cb" = (
 /obj/structure/bed/maint,
 /turf/open/floor/plating,
@@ -3886,9 +3890,6 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
@@ -4018,8 +4019,7 @@
 /obj/machinery/hydroponics/soil{
 	desc = "A patch of fertile soil that you can plant stuff in.";
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi';
-	icon_state = "grass0";
-	plane = -2
+	icon_state = "grass0"
 	},
 /turf/open/floor/plating/grass,
 /area/ruin/unpowered/syndicate_lava_base/bar)
@@ -4032,8 +4032,8 @@
 "Hw" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/siding/white,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/stone,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "Hy" = (
@@ -4126,12 +4126,12 @@
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "Iz" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/white,
 /obj/structure/railing,
 /obj/machinery/chem_dispenser/mutagensaltpeter,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "IB" = (
@@ -4175,6 +4175,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark/telecomms,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "JA" = (
@@ -4290,6 +4291,12 @@
 "Lc" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 9
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4;
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
 	},
 /turf/open/floor/iron/dark/telecomms,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -4494,8 +4501,8 @@
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/stone,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "Nc" = (
@@ -4559,8 +4566,7 @@
 /obj/machinery/hydroponics/soil{
 	desc = "A patch of fertile soil that you can plant stuff in.";
 	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi';
-	icon_state = "grass0";
-	plane = -2
+	icon_state = "grass0"
 	},
 /turf/open/floor/plating/grass,
 /area/ruin/unpowered/syndicate_lava_base/bar)
@@ -4617,14 +4623,14 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 9
 	},
-/obj/machinery/airalarm/syndicate{
-	pixel_y = 24
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "Ph" = (
-/obj/effect/turf_decal/siding/white/corner,
 /obj/structure/railing/corner,
+/obj/effect/turf_decal/siding/white/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/button/door{
 	id = "lavalandsyndi_biodome";
@@ -4756,6 +4762,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark/telecomms,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "RK" = (
@@ -4865,6 +4872,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark/telecomms,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "Tg" = (
@@ -5388,6 +5396,11 @@
 "ZI" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 6
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 1;
+	external_pressure_bound = 120;
+	name = "server vent"
 	},
 /turf/open/floor/iron/dark/telecomms,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -6937,9 +6950,9 @@ QL
 OD
 FK
 Ye
-WJ
+BZ
 Gs
-WJ
+Ak
 Ye
 mY
 Gd
@@ -6991,7 +7004,7 @@ oP
 bL
 Yi
 JN
-Ye
+WJ
 Pg
 QT
 QT
@@ -7101,7 +7114,7 @@ oP
 iY
 Mg
 Ix
-Ye
+WJ
 Tg
 ST
 PX
@@ -7377,7 +7390,7 @@ ZN
 Wt
 ZN
 Ye
-bO
+Ye
 Ye
 Ye
 Ye
@@ -7430,7 +7443,7 @@ MI
 ju
 jc
 Yt
-jv
+FY
 FY
 jV
 Wm
@@ -7816,8 +7829,8 @@ hT
 Is
 KI
 OZ
-Bq
-Bq
+bO
+bO
 Lf
 sJ
 Wa
