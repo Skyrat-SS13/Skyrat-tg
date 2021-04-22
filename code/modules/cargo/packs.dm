@@ -1336,6 +1336,8 @@
 	access_view = ACCESS_RESEARCH
 	crate_type = /obj/structure/closet/crate/science
 
+/datum/supply_pack/science/ed209pack // SKYRAT EDIT ADDITION
+
 /datum/supply_pack/science/plasma
 	name = "Plasma Assembly Crate"
 	desc = "Everything you need to burn something to the ground, this contains three plasma assembly sets. Each set contains a plasma tank, igniter, proximity sensor, and timer! Warranty void if exposed to high temperatures. Requires Toxins access to open."
@@ -1437,6 +1439,8 @@
 	access_view = FALSE
 	contains = list(/obj/item/storage/part_replacer/cargo)
 	crate_name = "\improper RPED crate"
+
+/datum/supply_pack/science/secbotpack // SKYRAT EDIT ADDITION
 
 /datum/supply_pack/science/shieldwalls
 	name = "Shield Generator Crate"
