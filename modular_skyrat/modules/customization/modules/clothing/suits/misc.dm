@@ -170,6 +170,21 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/suit/brownfurrich/public
+	name = "fur coat"
+	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
+
+/obj/item/clothing/suit/brownfurrich/white
+	name = "white fur coat"
+	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
+	icon_state = "winter_coat_white"
+
+/obj/item/clothing/suit/brownfurrich/cream
+	name = "cream fur coat"
+	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
+	icon_state = "winter_coat_cream"
 
 /obj/item/clothing/suit/fallsparka
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
@@ -182,7 +197,35 @@
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
+/obj/item/clothing/suit/british_officer
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "british officers coat"
+	desc = "Whether you're commanding a colonial crusade or commanding a battalion for the British Empire, this coat will suit you."
+	icon_state = "british_officer"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
-/obj/item/clothing/suit/brownfurrich/public
-	name = "fur coat"
-	desc = "A lavishly cosy furr coat, made with 100% recycled carbon!"
+/obj/item/clothing/suit/modern_winter
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "modern winter coat"
+	desc = "A comfy modern winter coat."
+	icon_state = "modern_winter"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+/obj/item/clothing/suit/woolcoat
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "wool coat"
+	desc = "A fine coat made from the richest of wool."
+	icon_state = "woolcoat"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+

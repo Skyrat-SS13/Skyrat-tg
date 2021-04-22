@@ -2,7 +2,7 @@
 	name = "centcom ferry"
 	port_id = "ferry"
 	suffix = "skyrat"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /obj/docking_port/mobile/arrivals_skyrat
 	name = "arrivals interlink shuttle"
@@ -44,7 +44,7 @@
 	prefix = "_maps/skyrat/shuttles/"
 	port_id = "arrivals"
 	suffix = "skyrat"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /datum/map_template/shuttle/escape_pod/default
 	name = "escape pod (Default)"
