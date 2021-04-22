@@ -43,23 +43,22 @@
 			GlobalBlock/global_block=new
 			curBlock
 
-	proc
 /*
 	Proc: Parse
 	Reads the tokens and returns the AST's <GlobalBlock> node. Be sure to populate the tokens list before calling this procedure.
 */
-		Parse()
+/n_Parser/proc/Parse()
 
 /*
 	Proc: NextToken
 	Sets <curToken> to the next token in the <tokens> list, or null if there are no more tokens.
 */
-		NextToken()
-			if(index>=tokens.len)
-				curToken=null
-			else
-				curToken=tokens[++index]
-			return curToken
+/n_Parser/proc/NextToken()
+	if(index>=tokens.len)
+		curToken=null
+	else
+		curToken=tokens[++index]
+	return curToken
 
 /*
 	Class: nS_Parser
@@ -74,53 +73,52 @@
 	tokens  - A list of tokens to parse.
 	options - An object used for configuration.
 */
-	New(tokens[], n_scriptOptions/options)
-		src.tokens=tokens
-		src.options=options
-		curBlock=global_block
-		return ..()
+/n_Parser/nS_Parser/proc/New(tokens[], n_scriptOptions/options)
+	src.tokens=tokens
+	src.options=options
+	curBlock=global_block
+	return ..()
 
-	Parse()
-		ASSERT(tokens)
-		for(,src.index<=src.tokens.len, src.index++)
-			curToken=tokens[index]
-			switch(curToken.type)
-				if(/token/keyword)
-					var/n_Keyword/kw=options.keywords[curToken.value]
-					kw=new kw()
-					if(kw)
-						if(!kw.Parse(src))
-							return
-						continue
-				if(/token/symbol)
-					if(curToken.value=="}")
-						if(!EndBlock())
-							errors+=new/scriptError/BadToken(curToken)
-							continue
-						continue
-				if(/token/end)
+/n_Parser/nS_Parser/proc/Parse()
+	ASSERT(tokens)
+	for(,src.index<=src.tokens.len, src.index++)
+		curToken=tokens[index]
+		switch(curToken.type)
+			if(/token/keyword)
+				var/n_Keyword/kw=options.keywords[curToken.value]
+				kw=new kw()
+				if(kw)
+					if(!kw.Parse(src))
+						return
 					continue
-			curBlock.statements += ParseExpression()
-			if(!istype(curToken, /token/end))
-				errors+=new/scriptError/ExpectedToken(";", curToken)
+			if(/token/symbol)
+				if(curToken.value=="}")
+					if(!EndBlock())
+						errors+=new/scriptError/BadToken(curToken)
+						continue
+					continue
+			if(/token/end)
 				continue
+		curBlock.statements += ParseExpression()
+		if(!istype(curToken, /token/end))
+			errors+=new/scriptError/ExpectedToken(";", curToken)
+			continue
 
-		return global_block
+	return global_block
 
-	proc
-		CheckToken(val, type, err=1, skip=1)
-			if(!curToken || !istype(curToken,type) || curToken.value!=val)
-				if(err)
-					errors+=new/scriptError/ExpectedToken(val, curToken)
-				return 0
-			if(skip)NextToken()
-			return 1
+/n_Parser/nS_Parser/proc/CheckToken(val, type, err=1, skip=1)
+	if(!curToken || !istype(curToken,type) || curToken.value!=val)
+		if(err)
+			errors+=new/scriptError/ExpectedToken(val, curToken)
+		return 0
+	if(skip)NextToken()
+	return 1
 
-		AddBlock(node/BlockDefinition/B)
-			blocks.Push(curBlock)
-			curBlock=B
+/n_Parser/nS_Parser/proc/AddBlock(node/BlockDefinition/B)
+	blocks.Push(curBlock)
+	curBlock=B
 
-		EndBlock()
-			if(curBlock==global_block) return 0
-			curBlock=blocks.Pop()
-			return 1
+/n_Parser/nS_Parser/proc/EndBlock()
+	if(curBlock==global_block) return 0
+	curBlock=blocks.Pop()
+	return 1

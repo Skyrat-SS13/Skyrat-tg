@@ -44,10 +44,9 @@
 	Class: node
 */
 /node
-	var/token/token // for line number informatino
-	proc
-		ToString()
-			return "[src.type]"
+	var/token/token // for line number information
+/node/proc/ToString()
+	return "[src.type]"
 /*
 	Class: identifier
 */
@@ -55,13 +54,13 @@
 	var
 		id_name
 
-	New(id, token)
-		.=..()
-		src.id_name=id
-		src.token = token
+/node/identifier/proc/New(id, token)
+	.=..()
+	src.id_name=id
+	src.token = token
 
-	ToString()
-		return id_name
+/node/identifier/proc/ToString()
+	return id_name
 
 /*
 	Class: expression
@@ -78,21 +77,21 @@
 			name
 			precedence
 
-	New(token, exp)
-		.=..()
-		if(!src.name) src.name="[src.type]"
-		src.token = token
-		src.exp = exp
+/node/expression/operator/proc/New(token, exp)
+	.=..()
+	if(!src.name) src.name="[src.type]"
+	src.token = token
+	src.exp = exp
 
-	ToString()
-		return "operator: [name]"
+/node/expression/operator/proc/ToString()
+	return "operator: [name]"
 
 /node/expression/member
 	var/node/expression/object
 	var/tmp/temp_object // so you can pre-eval it, used for function calls and assignments
-	New(token)
-		src.token = token
-		return ..()
+/node/expression/member/proc/New(token)
+	src.token = token
+	return ..()
 
 /node/expression/member/dot
 	var/node/identifier/id
@@ -109,9 +108,9 @@
 	//Function calls can also be expressions or statements.
 	var/node/expression/function
 	var/list/parameters=list()
-	New(token)
-		.=..()
-		src.token = token
+/node/expression/FunctionCall/proc/New(token)
+	.=..()
+	src.token = token
 
 /*
 	Class: literal
@@ -120,12 +119,12 @@
 	var
 		value
 
-	New(value)
-		.=..()
-		src.value=value
+/node/expression/value/literal/proc/New(value)
+	.=..()
+	src.value=value
 
-	ToString()
-		return src.value
+/node/expression/value/literal/proc/ToString()
+	return src.value
 
 /*
 	Class: variable
@@ -138,21 +137,21 @@
 			id
 
 
-	New(ident, token)
-		.=..()
-		src.token = token
-		id=ident
-		if(istext(id))id=new(id)
+/node/expression/value/variable/proc/New(ident, token)
+	.=..()
+	src.token = token
+	id=ident
+	if(istext(id))id=new(id)
 
-	ToString()
-		return src.id.ToString()
+/node/expression/value/variable/proc/ToString()
+	return src.id.ToString()
 
 /node/expression/value/list_init
 	var/list/init_list
 
-	New(token)
-		. = ..()
-		src.token = token
+/node/expression/value/list_init/proc/New(token)
+	. = ..()
+	src.token = token
 
 /*
 	Class: reference
@@ -161,10 +160,10 @@
 	var
 		datum/value
 
-	New(value, token)
-		.=..()
-		src.token = token
-		src.value=value
+/node/expression/value/reference/proc/New(value, token)
+	.=..()
+	src.token = token
+	src.value=value
 
-	ToString()
-		return "ref: [src.value] ([src.value.type])"
+/node/expression/value/reference/proc/ToString()
+	return "ref: [src.value] ([src.value.type])"

@@ -17,12 +17,12 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 /n_Interpreter/TCS_Interpreter
 	var/datum/TCS_Compiler/Compiler
 
-	HandleError(runtimeError/e)
-		Compiler.Holder.add_entry(e.ToString(), "Execution Error")
+/n_Interpreter/TCS_Interpreter/proc/HandleError(runtimeError/e)
+	Compiler.Holder.add_entry(e.ToString(), "Execution Error")
 
-	GC()
-		..()
-		Compiler = null
+/n_Interpreter/TCS_Interpreter/proc/GC()
+	..()
+	Compiler = null
 
 
 /datum/TCS_Compiler

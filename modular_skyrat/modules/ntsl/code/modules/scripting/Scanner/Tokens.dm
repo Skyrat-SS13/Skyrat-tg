@@ -9,20 +9,21 @@
 	var/line
 	var/column
 
-	New(v, l=0, c=0)
-		value=v
-		line=l
-		column=c
+/token/proc/New(v, l=0, c=0)
+	value=v
+	line=l
+	column=c
 
-	string
-	symbol
-	word
-	keyword
-	number
-		New()
-			.=..()
-			if(!isnum(value))
-				value=text2num(value)
-				ASSERT(!isnull(value))
+/token/string
+/token/symbol
+/token/word
+/token/keyword
 
-	end
+/token/number
+/token/number/proc/New()
+	.=..()
+	if(!isnum(value))
+		value=text2num(value)
+		ASSERT(!isnull(value))
+
+/token/end

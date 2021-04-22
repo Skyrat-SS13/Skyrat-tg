@@ -6,20 +6,20 @@
 	An object representing a single instruction run by an interpreter.
 */
 /node/statement
-	New(token)
-		.=..()
-		src.token=token
+/node/statement/proc/New(token)
+	.=..()
+	src.token=token
 
 /*
 	Class: FunctionDefinition
 	Defines a function.
 */
 //
-	FunctionDefinition
-		var
-			func_name
-			list/parameters=new
-			node/BlockDefinition/FunctionBlock/block
+/node/statement/FunctionDefinition
+	var
+		func_name
+		list/parameters=new
+		node/BlockDefinition/FunctionBlock/block
 
 /*
 	Class: VariableAssignment
@@ -33,13 +33,13 @@
 	- <VariableDeclaration>
 */
 //
-	VariableAssignment
-		var
-			node
-				identifier
-					object
-					var_name
-				expression/value
+/node/statement/VariableAssignment
+	var
+		node
+			identifier
+				object
+				var_name
+			expression/value
 
 /*
 	Class: VariableDeclaration
@@ -49,71 +49,71 @@
 	- <VariableAssignment>
 */
 //
-	VariableDeclaration
-		var
-			node
-				identifier
-					object
-					var_name
+/node/statement/VariableDeclaration
+	var
+		node
+			identifier
+				object
+				var_name
 
 /*
 	Class: IfStatement
 */
 //
-	IfStatement
-		var
-			skip = 0
-			node
-				BlockDefinition
-					block
-					else_block //may be null
-				expression/cond
-				statement/else_if
+/node/statement/IfStatement
+	var
+		skip = 0
+		node
+			BlockDefinition
+				block
+				else_block //may be null
+			expression/cond
+			statement/else_if
 
-		ElseIf
+	ElseIf
 
 /*
 	Class: WhileLoop
 	Loops while a given condition is true.
 */
 //
-	WhileLoop
-		var
-			node
-				BlockDefinition/block
-				expression/cond
+/node/statement/WhileLoop
+	var
+		node
+			BlockDefinition/block
+			expression/cond
 
 /*
 	Class: ForLoop
 	Loops while test is true, initializing a variable, increasing the variable
 */
-	ForLoop
-		var
-			node
-				BlockDefinition/block
-				expression/test
-				expression/init
-				expression/increment
+/node/statement/ForLoop
+	var
+		node
+			BlockDefinition/block
+			expression/test
+			expression/init
+			expression/increment
 
 /*
 	Class: BreakStatement
 	Ends a loop.
 */
 //
-	BreakStatement
+/node/statement/BreakStatement
 
 /*
 	Class: ContinueStatement
 	Skips to the next iteration of a loop.
 */
 //
-	ContinueStatement
+/node/statement/ContinueStatement
 
 /*
 	Class: ReturnStatement
 	Ends the function and returns a value.
 */
 //
-	ReturnStatement
-		var
-			node/expression/value
+/node/statement/ReturnStatement
+	var
+		node/expression/value
