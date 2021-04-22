@@ -190,6 +190,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "westender"
 	mutant_variants = NONE
+
 /obj/item/clothing/under/rank/pmarsrobe
 	name = "priestess robe"
 	desc = "A thick woolly robe adorned with black furs of a wolf. Keepers of the Flame of utter boredom. Sadly not flameproof"
@@ -197,3 +198,38 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+
+/obj/item/clothing/under/rancher
+	name = "rancher outfit"
+	desc = "An outfit from the desert outback, phrases around family murder or revenge seem to echo from this get-up."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "rancher"
+
+/obj/item/clothing/under/rancher/pioneer
+	name = "pioneer outfit"
+	desc = "An outfit from the desert outback, this one seems like one on the frontline, don't trust a german, or anyone trying to get you to go to Callifornia."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "pioneer"
+
+/obj/item/clothing/under/rancher/worker
+	name = "western worker outfit"
+	desc = "An outfit from the desert outback, this one seems something a coffin maker would wear, hope you're good at eyeballing size."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "worker"
+
+/obj/item/clothing/under/rancher/cowboy
+	name = "cowboy outfit"
+	desc = "An outfit from the desert outback, this one seems fitting for a hat and poncho, maybe a long flowing coat."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "cowboy"
+
+/obj/item/clothing/under/rancher/checkered
+	name = "western checkered outfit"
+	desc = "An outfit from the desert outback, this one seems like something someone with no fashion sense would wear."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "checkered"
