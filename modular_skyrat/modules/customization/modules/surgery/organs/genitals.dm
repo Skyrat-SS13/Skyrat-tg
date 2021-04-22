@@ -302,7 +302,7 @@
 		if(GLOB.balls_size_translation[key] == cup)
 			return text2num(key)
 	return 0
-
+/*
 /mob/living/carbon/human/verb/toggle_genitals()
 	set category = "IC"
 	set name = "Expose/Hide genitals"
@@ -361,3 +361,4 @@
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
+*/
