@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		T.song_name = L[1]
 		T.song_length = text2num(L[2])
 		T.song_beat = text2num(L[3])
-		//T.song_associated_id = L[4]
+		T.song_associated_id = L[4]
 		songs |= T
 	for(var/i in CHANNEL_JUKEBOX_START to CHANNEL_JUKEBOX)
 		freejukeboxchannels |= i
