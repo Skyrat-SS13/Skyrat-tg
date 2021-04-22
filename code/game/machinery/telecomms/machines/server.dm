@@ -31,6 +31,10 @@
 	if (log_entries.len >= 400)
 		log_entries.Cut(1, 2)
 
+	//SKYRAT ADD START - NTSL
+	signal.data["server"] = src;
+	//SKYRAT ADD END
+
 	var/datum/comm_log_entry/log = new
 	log.parameters["mobtype"] = signal.virt.source.type
 	log.parameters["name"] = signal.data["name"]
@@ -51,6 +55,11 @@
 	var/identifier = num2text( rand(-1000,1000) + world.time )
 	log.name = "data packet ([md5(identifier)])"
 	log_entries.Add(log)
+
+	//SKYRAT EDIT ADD - NTSL
+	if(Compiler && autoruncode)
+		Compiler.Run(signal)
+	//SKYRAT EDIT END
 
 	var/can_send = relay_information(signal, /obj/machinery/telecomms/hub)
 	if(!can_send)

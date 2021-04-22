@@ -144,6 +144,7 @@ GLOBAL_VAR(restart_counter)
 	GLOB.world_paper_log = "[GLOB.log_directory]/paper.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.world_shuttle_log = "[GLOB.log_directory]/shuttle.log"
+	GLOB.world_ntsl_log = "[GLOB.log_directory]/ntsl.log"	//SKYRAT EDIT ADDITION - NTSL
 
 	GLOB.demo_log = "[GLOB.log_directory]/demo.log"
 

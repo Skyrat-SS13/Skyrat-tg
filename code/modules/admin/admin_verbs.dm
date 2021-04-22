@@ -83,6 +83,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/toggleadminhelpsound,
 	/client/proc/respawn_character,
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
+	/client/proc/reset_all_tcs,	//SKYRAT EDIT ADDITION - NTSL. Resets all NTSL scripts in the world
 	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/open_borgopanel

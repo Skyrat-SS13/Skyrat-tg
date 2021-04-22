@@ -1525,6 +1525,8 @@
 			log_mecha(log_text)
 		if(LOG_SHUTTLE)
 			log_shuttle(log_text)
+		if(LOG_NTSL)	//SKYRAT EDIT ADD - NTSL
+			log_ntsl(log_text)	//SKYRAT EDIT ADD - NTSL
 		else
 			stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
 			log_game(log_text)

@@ -39,6 +39,10 @@ GLOBAL_LIST_EMPTY(telecomms_list)
 
 	if(!on)
 		return
+	//SKYRAT EDIT ADD - NTSL
+	if(filter && !ispath(filter))
+		CRASH("relay_information() was given a path filter that wasn't actually a path!")
+	//SKYRAT EDIT END
 	var/send_count = 0
 
 	// Apply some lag based on traffic rates
@@ -47,7 +51,9 @@ GLOBAL_LIST_EMPTY(telecomms_list)
 		signal.data["slow"] = netlag
 
 	// Loop through all linked machines and send the signal or copy.
-	for(var/obj/machinery/telecomms/machine in links)
+	//for(var/obj/machinery/telecomms/machine in links)
+	for(var/m_typeless in links)	//SKYRAT EDIT CHANGE - NTSL
+		var/obj/machinery/telecomms/machine = m_typeless	//SKYRAT EDIT ADD - NTSL
 		if(filter && !istype( machine, filter ))
 			continue
 		if(!machine.on)

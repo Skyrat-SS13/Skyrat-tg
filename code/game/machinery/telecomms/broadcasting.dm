@@ -102,7 +102,8 @@
 	datum/language/language,  // the language of the message
 	message,  // the text content of the message
 	spans,  // the list of spans applied to the message
-	list/message_mods // the list of modification applied to the message. Whispering, singing, ect
+	list/message_mods, // the list of modification applied to the message. Whispering, singing, ect
+	lvls = null //SKYRAT EDIT - NTSL. It's the list of Z-levels that should hear this message
 )
 	src.source = source
 	src.frequency = frequency
@@ -118,8 +119,13 @@
 		"spans" = spans,
 		"mods" = message_mods
 	)
-	var/turf/T = get_turf(source)
-	levels = list(T.z)
+	//SKYRAT EDIT START - NTSL
+	if(lvls)
+		levels = lvls
+	else
+	//SKYRAT EDIT END
+		var/turf/T = get_turf(source)
+		levels = list(T.z)
 
 /datum/signal/subspace/vocal/copy()
 	var/datum/signal/subspace/vocal/copy = new(source, frequency, virt, language)
