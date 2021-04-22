@@ -42,7 +42,7 @@
 	prefix = "_maps/skyrat/shuttles/"
 	port_id = "syndicate"
 	suffix = "cruiser"
-	can_be_bought = FALSE
+	who_can_purchase = null
 
 /////////////FRIGATE
 /obj/machinery/computer/shuttle/syndicate_frigate
@@ -75,4 +75,4 @@
 	prefix = "_maps/skyrat/shuttles/"
 	port_id = "syndicate"
 	suffix = "frigate"
-	can_be_bought = FALSE
+	who_can_purchase = null

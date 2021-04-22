@@ -106,6 +106,10 @@
 	name = "Modern winter coat"
 	path = /obj/item/clothing/suit/modernwintercoatthing
 
+/datum/loadout_item/suit/coat/parka
+	name = "Falls Parka"
+	path = /obj/item/clothing/suit/fallsparka
+
 /datum/loadout_item/suit/coat/poly
 	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
@@ -173,6 +177,10 @@
 /datum/loadout_item/suit/jacket/overcoatleather
 	name = "Leather overcoat"
 	path = /obj/item/clothing/suit/jacket/leather/overcoat
+
+/datum/loadout_item/suit/jacket/woolcoat
+	name = "Leather overcoat"
+	path = /obj/item/clothing/suit/woolcoat
 
 /datum/loadout_item/suit/jacket/jacketpuffer
 	name = "Puffer jacket"
@@ -375,6 +383,12 @@
 	restricted_roles = list("Quartermaster")
 	restricted_desc = "Quartermaster Only"
 
+/datum/loadout_item/suit/job/supply_head_jacket
+	name = "Quartermaster's Fur Jacket"
+	path = /obj/item/clothing/suit/brownfurrich
+	restricted_roles = list("Quartermaster")
+	restricted_desc = "Quartermaster Only"
+
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
 	path = /obj/item/clothing/suit/toggle/labcoat/para_red
@@ -392,6 +406,12 @@
 	path = /obj/item/clothing/suit/discoblazer
 	restricted_roles = list("Detective")
 	restricted_desc = "Superstar Detectives"
+
+/datum/loadout_item/suit/job/deckard
+	name = "Runner Coat"
+	path = /obj/item/clothing/suit/toggle/deckard
+	restricted_roles = list("Detective")
+	restricted_desc = "Hungry Detectives"
 
 //Trekkie things.
 /datum/loadout_item/suit/job/trek/fedcoat

@@ -31,6 +31,14 @@
 		. += new /mutable_appearance(charge_overlay)
 		. += new /mutable_appearance(cell_overlay)
 
+/obj/machinery/cell_charger_multi/CtrlShiftClick(mob/user)
+	. = ..()
+	if(!can_interact(user))
+		return
+	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")
+	for(var/i in charging_batteries)
+		removecell()
+
 /obj/machinery/cell_charger_multi/examine(mob/user)
 	. = ..()
 	if(!charging_batteries.len)
@@ -41,6 +49,7 @@
 			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
 		. += "<span class='notice'>The status display reads: Charging power: <b>[charge_rate]W</b>.</span>"
+	. += "<span class='notice'>Ctrl+shift click it to remove all the cells at once!</span>"
 
 /obj/machinery/cell_charger_multi/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell) && !panel_open)
@@ -146,7 +155,7 @@
 	if(!charging_batteries.len)
 		return FALSE
 	var/obj/item/stock_parts/cell/charging
-	if(charging_batteries.len > 1)
+	if(charging_batteries.len > 1 && user)
 		var/list/buttons = list()
 		for(var/obj/item/stock_parts/cell/battery in charging_batteries)
 			buttons["[battery] [battery.percent()]%"] = battery

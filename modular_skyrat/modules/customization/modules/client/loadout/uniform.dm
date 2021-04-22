@@ -147,6 +147,18 @@
 	path = /obj/item/clothing/under/pants/chaps
 	cost = 1
 
+/datum/loadout_item/uniform/taccas
+	name = "Tacticasual Uniform"
+	path = /obj/item/clothing/under/misc/taccas
+	cost = 1
+
+/datum/loadout_item/uniform/tracky
+	name = "Blue Tracksuit"
+	path = /obj/item/clothing/under/misc/bluetracksuit
+	cost = 1
+
+
+
 //SUITS
 /datum/loadout_item/uniform/suit
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SUITS
@@ -221,6 +233,11 @@
 /datum/loadout_item/uniform/suit/victorian/red_alt
 	name = "Red Victorian Vest, Black Shirt"
 	path = /obj/item/clothing/under/costume/vic_vest/red_alt
+	cost = 1
+
+/datum/loadout_item/uniform/suit/peaky
+	name = "Birmingham Bling"
+	path = /obj/item/clothing/under/misc/peakyblinder
 	cost = 1
 
 /datum/loadout_item/uniform/suit/dutch
@@ -328,6 +345,16 @@
 /datum/loadout_item/uniform/dress/flowerdress
 	name = "Flower Dress"
 	path = /obj/item/clothing/under/dress/flower
+
+/datum/loadout_item/uniform/dress/countess
+	name = "Countess Dress"
+	path = /obj/item/clothing/under/misc/countess
+	cost = 3
+
+/datum/loadout_item/uniform/dress/formal
+	name = "Formal Red Dress"
+	path = /obj/item/clothing/under/misc/formaldressred
+	cost = 2
 
 /datum/loadout_item/uniform/dress/victorian
 	name = "Victorian Vest, Black"
@@ -462,6 +489,54 @@
 /datum/loadout_item/uniform/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+
+/datum/loadout_item/uniform/job/lowprison
+ 	name = "Low Security Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/lowsecp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/lowprisons
+ 	name = "Low Security Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustp/lowsecpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprison
+ 	name = "Protective Custody Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprisons
+ 	name = "Protective Custody Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprison
+ 	name = "Supermax Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/supermaxp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "Supermax Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt/supermaxpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/highprison
+ 	name = "High Risk Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/highsecp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "High Risk Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/priestrobe
+	name = "Priestess Robe"
+	path = /obj/item/clothing/under/rank/pmarsrobe
+	cost = 2
+	restricted_roles = list("Chaplain")
+
+
 /datum/loadout_item/uniform/job/navyblueuniformhos
  	name = "Head of Security navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
@@ -566,6 +641,12 @@
 /datum/loadout_item/uniform/job/utility_sci
 	name = "Science Utility Uniform"
 	path = /obj/item/clothing/under/utility/sci
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
+	restricted_desc = "Science"
+
+/datum/loadout_item/uniform/job/hlscientist
+	name = "Ridiculous Scientist Outfit"
+	path = /obj/item/clothing/under/misc/hlscience
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
 	restricted_desc = "Science"
 
@@ -740,6 +821,34 @@
 	name = "ORV - assistant"
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv
 	restricted_roles = list("Assistant")
+
+/datum/loadout_item/uniform/tactical_hawaiian_orange
+	name = "Tactical Hawaiian Outfit - Orange"
+	path = /obj/item/clothing/under/tachawaiian
+
+/datum/loadout_item/uniform/tactical_hawaiian_blue
+	name = "Tactical Hawaiian Outfit - Blue"
+	path = /obj/item/clothing/under/tachawaiian/blue
+
+/datum/loadout_item/uniform/tactical_hawaiian_purple
+	name = "Tactical Hawaiian Outfit - Purple"
+	path = /obj/item/clothing/under/tachawaiian/purple
+
+/datum/loadout_item/uniform/tactical_hawaiian_green
+	name = "Tactical Hawaiian Outfit - Green"
+	path = /obj/item/clothing/under/tachawaiian/green
+
+/datum/loadout_item/uniform/texas
+	name = "Texan Suit"
+	path = /obj/item/clothing/under/texas
+
+/datum/loadout_item/uniform/dimmadome
+	name = "Doug Dimmadome Suit"
+	path = /obj/item/clothing/under/doug_dimmadome
+
+/datum/loadout_item/uniform/westender
+	name = "Westender Suit"
+	path = /obj/item/clothing/under/westender
 
 //TheMotionPicture
 /*/datum/loadout_item/trekfedutil
