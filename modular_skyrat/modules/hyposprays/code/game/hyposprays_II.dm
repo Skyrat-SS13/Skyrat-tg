@@ -93,14 +93,14 @@
 		to_chat(user, "<span class='notice'>This hypo isn't loaded!</span>")
 		return
 
-/obj/item/hypospray/mkii/attackby(obj/item/hypo, mob/living/user)
-	if((istype(hypo, /obj/item/reagent_containers/glass/bottle/vial) && vial != null))
+/obj/item/hypospray/mkii/attackby(obj/item/used_item, mob/living/user)
+	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial) && vial != null))
 		if(!quickload)
 			to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
 			return FALSE
 		unload_hypo(vial, user)
-	if((istype(hypo, /obj/item/reagent_containers/glass/bottle/vial)))
-		var/obj/item/reagent_containers/glass/bottle/vial/container = hypo
+	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial)))
+		var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
 		if(!is_type_in_list(container, allowed_containers))
 			to_chat(user, "<span class='notice'>[src] doesn't accept this type of vial.</span>")
 			return FALSE
