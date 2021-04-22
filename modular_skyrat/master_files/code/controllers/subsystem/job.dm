@@ -3,4 +3,4 @@
 		var/area/turf_area = get_area(T)
 		if(is_station_level(T.z) && istype(turf_area, /area/security/prison))
 			if(!(/obj/structure/grille in turf_area.contents))
-				prisoner_spawn_locs += T
+				prisoner_spawn_locs += T.loc
