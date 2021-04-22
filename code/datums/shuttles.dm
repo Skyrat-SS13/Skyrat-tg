@@ -238,7 +238,7 @@
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
 	credit_cost = CARGO_CRATE_VALUE * 250
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
-	can_be_bought = FALSE //SKYRAT EDIT: Addition
+	who_can_purchase = null //SKYRAT EDIT CHANGE
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
