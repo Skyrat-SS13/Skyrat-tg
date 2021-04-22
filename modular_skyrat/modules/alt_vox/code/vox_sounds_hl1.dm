@@ -1,17 +1,3 @@
-/mob/living/silicon/ai/verb/switch_vox()
-	set name = "Switch Vox"
-	set desc = "Switch your VOX announcement voice!"
-	set category = "AI Commands"
-
-	if(incapacitated())
-		return
-
-	var/selection = tgui_input_list("Please select your new AI vox voice:", "Enter new vox voice", list(VOX_NORMAL, VOX_HL))
-
-	vox_type = selection
-
-	to_chat(src, "Vox voice set to [vox_type]")
-
 #ifdef AI_VOX
 
 //for vim

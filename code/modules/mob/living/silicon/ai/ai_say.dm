@@ -45,7 +45,7 @@
 	else
 		to_chat(src, "<span class='alert'>No holopad connected.</span>")
 
-
+/* SKYRAT EDIT REMOVAL - MOVED TO: MODULAR_SKYRAT/MODULES/ALT_VOX/CODE/VOX_PROCS.DM
 // Make sure that the code compiles with AI_VOX undefined
 #ifdef AI_VOX
 #define VOX_DELAY 600
@@ -68,21 +68,13 @@
 	<LI>Sound effects begin with an 's' before the actual word, e.g. scensor</LI>
 	<LI>Use Ctrl+F to see if a word exists in the list.</LI></UL><HR>
 	"}
-	switch(vox_type)
-		if(VOX_NORMAL)
-			var/index = 0
-			for(var/word in GLOB.vox_sounds)
-				index++
-				dat += "<A href='?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
-				if(index != GLOB.vox_sounds.len)
-					dat += " / "
-		if(VOX_HL)
-			var/index = 0
-			for(var/word in GLOB.vox_sounds_hl)
-				index++
-				dat += "<A href='?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
-				if(index != GLOB.vox_sounds_hl.len)
-					dat += " / "
+
+	var/index = 0
+	for(var/word in GLOB.vox_sounds)
+		index++
+		dat += "<A href='?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
+		if(index != GLOB.vox_sounds.len)
+			dat += " / "
 
 	var/datum/browser/popup = new(src, "announce_help", "Announcement Help", 500, 400)
 	popup.set_content(dat)
@@ -161,3 +153,4 @@
 
 #undef VOX_DELAY
 #endif
+*/ //SKYRAT EDIT REMOVAL END
