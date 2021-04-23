@@ -192,4 +192,15 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 
+/obj/item/clothing/suit/toggle/ranger
+	name = "cowboy ponch"
+	desc = "Aim for the Heart, Ramone."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "ranger_cloak"
+	mutant_variants = NONE
+	heat_protection = CHEST
+	blood_overlay_type = "coat"
+	togglename = "cloak"
+
 

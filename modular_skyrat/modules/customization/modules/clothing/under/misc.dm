@@ -135,10 +135,29 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "enclaveo"
-	armor = list(MELEE = 0, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/under/enclave
+	name = "neo american sergeant uniform"
+	desc = "Not as high ranking as the officers often standing in front of them, this outfit is less armored than it's sister."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "enclave"
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+
+
+/obj/item/clothing/under/enclaveo/real
+	name = "neo american officer uniform"
+	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "enclaveo"
+	armor = list(MELEE = 0, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+
+/obj/item/clothing/under/enclave/real
 	name = "neo american sergeant uniform"
 	desc = "Not as high ranking as the officers often standing in front of them, this outfit is less armored than it's sister."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
@@ -190,6 +209,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "westender"
 	mutant_variants = NONE
+
 /obj/item/clothing/under/rank/pmarsrobe
 	name = "priestess robe"
 	desc = "A thick woolly robe adorned with black furs of a wolf. Keepers of the Flame of utter boredom. Sadly not flameproof"
@@ -197,3 +217,41 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+
+/obj/item/clothing/under/rancher
+	name = "rancher outfit"
+	desc = "An outfit from the desert outback, phrases around family murder or revenge seem to echo from this get-up."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "rancher"
+
+/obj/item/clothing/under/rancher/pioneer
+	name = "pioneer outfit"
+	desc = "An outfit from the desert outback, this one seems like one on the frontline, don't trust a german, or anyone trying to get you to go to Callifornia."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "pioneer"
+
+/obj/item/clothing/under/rancher/worker
+	name = "western worker outfit"
+	desc = "An outfit from the desert outback, this one seems something a coffin maker would wear, hope you're good at eyeballing size."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "worker"
+
+/obj/item/clothing/under/rancher/cowboy
+	name = "cowboy outfit"
+	desc = "An outfit from the desert outback, this one seems fitting for a hat and poncho, maybe a long flowing coat."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "cowboy"
+
+/obj/item/clothing/under/rancher/checkered
+	name = "western checkered outfit"
+	desc = "An outfit from the desert outback, this one seems like something someone with no fashion sense would wear."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "checkered"
+
+
+
