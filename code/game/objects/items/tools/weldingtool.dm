@@ -73,32 +73,13 @@
 
 
 /obj/item/weldingtool/process(delta_time)
-<<<<<<< HEAD
-	switch(welding)
-		if(0)
-			force = 3
-			damtype = BRUTE
-			update_appearance()
-			if(!can_off_process)
-				SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
-				STOP_PROCESSING(SSobj, src)
-			return
-	//Welders left on now use up fuel, but lets not have them run out quite that fast
-		if(1)
-			force = 15
-			damtype = BURN
-			burned_fuel_for += delta_time
-			if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
-				use(1)
-			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
-			update_appearance()
-=======
 	if(welding)
 		force = 15
 		damtype = BURN
 		burned_fuel_for += delta_time
 		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
 			use(TRUE)
+			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		update_appearance()
 
 	//Welders left on now use up fuel, but lets not have them run out quite that fast
@@ -108,8 +89,8 @@
 		update_appearance()
 		if(!can_off_process)
 			STOP_PROCESSING(SSobj, src)
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 		return
->>>>>>> 4b531c9d3e1 (Changes reinforced window deconstruction to right click (#58523))
 
 	//This is to start fires. process() is only called if the welder is on.
 	open_flame()
