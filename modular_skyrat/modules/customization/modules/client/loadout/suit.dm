@@ -14,6 +14,10 @@
 	name = "Red poncho"
 	path = /obj/item/clothing/suit/poncho/red
 
+/datum/loadout_item/suit/poncho
+	name = "Cowboy Poncho"
+	path = /obj/item/clothing/suit/toggle/ranger
+
 /datum/loadout_item/suit/redhood
 	name = "Red cloak"
 	path = /obj/item/clothing/suit/hooded/cloak/david
@@ -161,6 +165,10 @@
 /datum/loadout_item/suit/jacket/suitblack
 	name = "Black Suit Jacket"
 	path = /obj/item/clothing/suit/toggle/lawyer/black
+
+/datum/loadout_item/suit/jacket/suitwhite
+	name = "White Suit Jacket"
+	path = /obj/item/clothing/suit/texas
 
 /datum/loadout_item/suit/jacket/jacketbomber
 	name = "Bomber jacket"
@@ -334,7 +342,7 @@
 /datum/loadout_item/suit/job/navybluejacketofficer
 	name = "security officer's navyblue jacket"
 	path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Head of Security", "Warden") // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/job/navybluejacketwarden
 	name = "warden navyblue jacket"
@@ -346,6 +354,12 @@
 	path = /obj/item/clothing/suit/toggle/jacket/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
 	restricted_desc = "All Security Personnel"
+
+/datum/loadout_item/suit/job/british_jacket
+	name = "Peacekeeper Officer Coat"
+	path = /obj/item/clothing/suit/british_officer
+	restricted_roles = list("Head of Security", "Warden","Detective","Security Sergeant")
+	restricted_desc = "All High Ranking Security Personnel"
 
 /datum/loadout_item/suit/job/engi_jacket
 	name = "Engineering Jacket"

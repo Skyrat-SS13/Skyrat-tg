@@ -250,6 +250,27 @@
 	path = /obj/item/clothing/under/costume/arthur
 	cost = 2
 
+/datum/loadout_item/uniform/suit/rancher
+	name = "Rancher Suit"
+	path = /obj/item/clothing/under/rancher
+
+/datum/loadout_item/uniform/suit/pioneer
+	name = "Pioneer Suit"
+	path = /obj/item/clothing/under/rancher/pioneer
+
+/datum/loadout_item/uniform/suit/worker
+	name = "Western Worker Suit"
+	path = /obj/item/clothing/under/rancher/worker
+
+/datum/loadout_item/uniform/suit/cowboywhatever
+	name = "Cowboy Suit"
+	path = /obj/item/clothing/under/rancher/cowboy
+
+/datum/loadout_item/uniform/suit/checkered
+	name = "Checkered Shirt"
+	path = /obj/item/clothing/under/rancher/checkered
+
+
 //SKIRTS
 /datum/loadout_item/uniform/skirt
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SKIRTS
