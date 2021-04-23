@@ -47,7 +47,7 @@
 	Proc: Parse
 	Reads the tokens and returns the AST's <GlobalBlock> node. Be sure to populate the tokens list before calling this procedure.
 */
-/n_Parser/Parse()
+/n_Parser/proc/Parse()
 
 /*
 	Proc: NextToken

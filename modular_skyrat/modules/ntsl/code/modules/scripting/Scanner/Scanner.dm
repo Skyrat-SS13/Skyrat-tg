@@ -40,7 +40,7 @@
 	Proc: Scan
 	Runs the scanner and returns the resulting list of tokens. Ensure that <LoadCode()> has been called first.
 */
-/n_Scanner/Scan()
+/n_Scanner/proc/Scan()
 
 /*
 	Class: nS_Scanner

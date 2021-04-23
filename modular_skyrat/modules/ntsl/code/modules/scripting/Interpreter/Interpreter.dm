@@ -78,7 +78,7 @@
 /*
 	Set ourselves to Garbage Collect
 */
-/n_Interpreter/GC()
+/n_Interpreter/proc/GC()
 	container = null
 
 /*

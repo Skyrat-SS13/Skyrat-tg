@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 
 	/* -- Set ourselves to Garbage Collect -- */
 
-/datum/TCS_Compiler/GC()
+/datum/TCS_Compiler/proc/GC()
 	Holder = null
 	if(interpreter)
 		interpreter.GC()

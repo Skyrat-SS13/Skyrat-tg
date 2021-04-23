@@ -44,8 +44,8 @@
 	Class: node
 */
 /node
-	var/token/token // for line number information
-/node/ToString()
+	var/token/token // for line number informatino
+/node/proc/ToString()
 	return "[src.type]"
 /*
 	Class: identifier

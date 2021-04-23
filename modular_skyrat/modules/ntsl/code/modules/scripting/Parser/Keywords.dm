@@ -21,7 +21,7 @@ Represents a special statement in the code triggered by a keyword.
 	Var: inline
 	1 if the keyword is in an expression (e.g. the new keyword in many languages), 0 otherwise (such as the if and else keywords).
 */
-var/inline
+/n_Keyword/var/inline
 
 /*
 	Proc: Parse
@@ -31,7 +31,7 @@ var/inline
 	parser - The parser that created this object. You can use the parameter to manipulate the parser in order to add statements and blocks
 	to its AST.
 */
-/n_Keyword/Parse(n_Parser/parser)
+/n_Keyword/proc/Parse(n_Parser/parser)
 
 /*
 	Class: nS_Keyword
