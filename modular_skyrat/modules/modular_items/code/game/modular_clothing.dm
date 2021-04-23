@@ -33,7 +33,7 @@
 // This is equivalent to a security jumpsuit, it has a generic military colour scheme.
 
 /obj/item/clothing/under/rank/civilian/skirt
-	name = "gold trimmed black skirt"
+	name = "fashionable skirt"
 	desc = "A black skirt with a fashionable gold-ish yellow trim. It's tied up at the side. It doesn't cover up the chest..."
 	icon = 'modular_skyrat/modules/modular_items/icons/obj/modular_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi'
