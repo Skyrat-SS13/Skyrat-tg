@@ -650,7 +650,7 @@ GLOBAL_LIST_INIT(food, list(
 						dat += print_bodypart_change_line("breasts")
 						if(breasts_name != "None")
 							var/named_size = breasts_size_to_cup(features["breasts_size"])
-							var/named_lactation = (features["breasts_lactation"]) ? "Yes" : "No"
+							//var/named_lactation = (features["breasts_lactation"]) ? "Yes" : "No"
 							dat += "<br><b>Size: </b> <a href='?_src_=prefs;key=["breasts"];preference=breasts_size;task=change_genitals'>[named_size]</a>"
 							//dat += "<br><b>Can Lactate: </b> <a href='?_src_=prefs;key=["breasts"];preference=breasts_lactation;task=change_genitals'>[named_lactation]</a>"
 						dat += "</td>"
