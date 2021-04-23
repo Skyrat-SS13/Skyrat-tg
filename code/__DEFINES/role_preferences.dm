@@ -43,7 +43,6 @@
 #define ROLE_FAMILIES "Familes Antagonists"
 #define ROLE_SYNDICATE_CYBERSUN "Cybersun Space Syndicate" //Ghost role syndi from Forgottenship ruin
 #define ROLE_SYNDICATE_CYBERSUN_CAPTAIN "Cybersun Space Syndicate Captain" //Forgottenship captain syndie
-#define ROLE_ASSAULTOP "Assault Operatives" //SKYRAT EDIT ADDITION - ASSAULTOPS
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough
@@ -71,7 +70,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_FAMILIES = /datum/game_mode/gang,
 	ROLE_HERETIC = /datum/game_mode/heretics,
 	ROLE_SERVANT_OF_RATVAR = /datum/game_mode/clockcult, 	//SKYRAT EDIT - CWC RETURNS
-	ROLE_ASSAULTOP = /datum/game_mode/assaultops //SKYRAT EDIT ADDITION - ASSAULTOPS
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

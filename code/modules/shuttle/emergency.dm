@@ -467,6 +467,7 @@
 					if(M.launch_status == UNLAUNCHED) //Pods will not launch from the mine/planet, and other ships won't launch unless we tell them to.
 						M.check_transit_zone()
 
+
 		if(SHUTTLE_IGNITING)
 			var/success = TRUE
 			SSshuttle.checkHostileEnvironment()
@@ -575,7 +576,7 @@
 	var/obj/machinery/computer/shuttle/C = getControlConsole()
 	if(!istype(C, /obj/machinery/computer/shuttle/pod))
 		return ..()
-	if(GLOB.security_level >= SEC_LEVEL_RED || (C && (C.obj_flags & EMAGGED)))
+	if(SSsecurity_level.current_level >= SEC_LEVEL_RED || (C && (C.obj_flags & EMAGGED)))
 		if(launch_status == UNLAUNCHED)
 			launch_status = EARLY_LAUNCHED
 			return ..()
@@ -595,6 +596,10 @@
 	light_color = LIGHT_COLOR_BLUE
 	density = FALSE
 
+/obj/machinery/computer/shuttle/pod/Initialize(mapload)
+	. = ..()
+	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, .proc/check_lock)
+
 /obj/machinery/computer/shuttle/pod/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_blocker)
@@ -609,6 +614,20 @@
 /obj/machinery/computer/shuttle/pod/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	. = ..()
 	possible_destinations += ";[port.id]_lavaland"
+
+/**
+ * Signal handler for checking if we should lock or unlock escape pods accordingly to a newly set security level
+ *
+ * Arguments:
+ * * source The datum source of the signal
+ * * new_level The new security level that is in effect
+ */
+/obj/machinery/computer/shuttle/pod/proc/check_lock(datum/source, new_level)
+	SIGNAL_HANDLER
+
+	if(obj_flags & EMAGGED)
+		return
+	locked = new_level < SEC_LEVEL_RED
 
 /obj/docking_port/stationary/random
 	name = "escape pod"
@@ -705,7 +724,7 @@
 /obj/item/storage/pod/can_interact(mob/user)
 	if(!..())
 		return FALSE
-	if(GLOB.security_level >= SEC_LEVEL_RED || unlocked)
+	if(SSsecurity_level.current_level >= SEC_LEVEL_RED || unlocked)
 		return TRUE
 	to_chat(user, "The storage unit will only unlock during a Red or Delta security alert.")
 
