@@ -58,6 +58,11 @@ GLOBAL_LIST_EMPTY(scream_types)
 	male_screamsounds = list('sound/voice/hiss6.ogg')
 	female_screamsounds = null
 
+/datum/scream_type/raptor //This is the Teshari scream ported from CitRP which was a cockatoo scream edited by BlackMajor.
+	name = "Raptor Scream"
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/raptorscream.ogg')
+	female_screamsounds = null
+
 //DONATOR SCREAMS
 /datum/scream_type/zombie
 	name = "Zombie Scream"
