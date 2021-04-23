@@ -117,12 +117,8 @@
 		return INITIALIZE_HINT_QDEL //No pack, no gun
 	ammo_pack = loc
 	AddElement(/datum/element/update_icon_blocker)
-<<<<<<< HEAD
 	//AddComponent(/datum/component/automatic_fire, 0.2 SECONDS) SKYRAT EDIT REMOVAL
-=======
-	AddComponent(/datum/component/automatic_fire, 0.2 SECONDS)
 	return ..()
->>>>>>> b17b55aae8d (Full Auto Update: no crit firing, no spamclicking, more autofire, more balance (#58595))
 
 /obj/item/gun/energy/minigun/attack_self(mob/living/user)
 	return
