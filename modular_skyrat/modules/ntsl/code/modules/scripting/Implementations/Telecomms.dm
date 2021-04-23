@@ -17,10 +17,10 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 /n_Interpreter/TCS_Interpreter
 	var/datum/TCS_Compiler/Compiler
 
-/n_Interpreter/TCS_Interpreter/proc/HandleError(runtimeError/e)
+/n_Interpreter/TCS_Interpreter/HandleError(runtimeError/e)
 	Compiler.Holder.add_entry(e.ToString(), "Execution Error")
 
-/n_Interpreter/TCS_Interpreter/proc/GC()
+/n_Interpreter/TCS_Interpreter/GC()
 	..()
 	Compiler = null
 
@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 
 	/* -- Set ourselves to Garbage Collect -- */
 
-/datum/TCS_Compiler/proc/GC()
+/datum/TCS_Compiler/GC()
 	Holder = null
 	if(interpreter)
 		interpreter.GC()

@@ -47,7 +47,7 @@
 	Proc: Parse
 	Reads the tokens and returns the AST's <GlobalBlock> node. Be sure to populate the tokens list before calling this procedure.
 */
-/n_Parser/proc/Parse()
+/n_Parser/Parse()
 
 /*
 	Proc: NextToken
@@ -73,13 +73,13 @@
 	tokens  - A list of tokens to parse.
 	options - An object used for configuration.
 */
-/n_Parser/nS_Parser/proc/New(tokens[], n_scriptOptions/options)
+/n_Parser/nS_Parser/New(tokens[], n_scriptOptions/options)
 	src.tokens=tokens
 	src.options=options
 	curBlock=global_block
 	return ..()
 
-/n_Parser/nS_Parser/proc/Parse()
+/n_Parser/nS_Parser/Parse()
 	ASSERT(tokens)
 	for(,src.index<=src.tokens.len, src.index++)
 		curToken=tokens[index]

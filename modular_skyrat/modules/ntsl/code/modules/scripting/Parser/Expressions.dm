@@ -164,7 +164,7 @@
 	- <ParseParenExpression()>
 	- <ParseParamExpression()>
 */
-/n_Parser/nS_Parser/proc/ParseExpression(list/end=list(/token/end), list/ErrChars=list("{", "}"), check_functions = 0, check_assignments = 1)
+/n_Parser/nS_Parser/ParseExpression(list/end=list(/token/end), list/ErrChars=list("{", "}"), check_functions = 0, check_assignments = 1)
 	var/stack/opr = new
 	var/stack/val = new
 
@@ -275,7 +275,7 @@
 	See Also:
 	- <ParseExpression()>
 */
-/n_Parser/nS_Parser/proc/ParseFunctionExpression(func_exp)
+/n_Parser/nS_Parser/ParseFunctionExpression(func_exp)
 	var/node/expression/FunctionCall/exp=new(curToken)
 	exp.function = func_exp
 	NextToken() //skip open parenthesis, already found
@@ -298,7 +298,7 @@
 			errors+=new/scriptError/ExpectedToken(")")
 			return exp
 
-/n_Parser/nS_Parser/proc/ParseListExpression()
+/n_Parser/nS_Parser/ParseListExpression()
 	var/node/expression/value/list_init/exp = new(curToken)
 	exp.init_list = list()
 	NextToken() // skip the "list" word
@@ -332,7 +332,7 @@
 	See Also:
 	- <ParseExpression()>
 */
-/n_Parser/nS_Parser/proc/ParseParenExpression()
+/n_Parser/nS_Parser/ParseParenExpression()
 	var/group_token = curToken
 	if(!CheckToken("(", /token/symbol))
 		return
@@ -345,7 +345,7 @@
 	See Also:
 	- <ParseExpression()>
 */
-/n_Parser/nS_Parser/proc/ParseParamExpression(check_functions = 0, check_assignments = 1)
+/n_Parser/nS_Parser/ParseParamExpression(check_functions = 0, check_assignments = 1)
 	var/cf = check_functions
 	var/ca = check_assignments
 	return ParseExpression(list(",", ")"), check_functions = cf, check_assignments = ca)

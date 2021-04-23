@@ -9,7 +9,7 @@
 	var/line
 	var/column
 
-/token/proc/New(v, l=0, c=0)
+/token/New(v, l=0, c=0)
 	value=v
 	line=l
 	column=c
@@ -20,7 +20,7 @@
 /token/keyword
 
 /token/number
-/token/number/proc/New()
+/token/number/New()
 	.=..()
 	if(!isnum(value))
 		value=text2num(value)

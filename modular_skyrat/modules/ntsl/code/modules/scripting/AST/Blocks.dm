@@ -35,7 +35,7 @@
 */
 //
 /node/BlockDefinition/GlobalBlock
-/node/BlockDefinition/GlobalBlock/proc/New()
+/node/BlockDefinition/GlobalBlock/New()
 	initial_variables["null"]=null
 	return ..()
 

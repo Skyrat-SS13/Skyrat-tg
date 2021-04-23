@@ -47,7 +47,7 @@ File: Options
 												"*=" = /node/expression/operator/binary/Assign/Multiply,						 "/=" = /node/expression/operator/binary/Assign/Divide,
 												"^=" = /node/expression/operator/binary/Assign/Power,
 												"%=" = /node/expression/operator/binary/Assign/Modulo)
-/n_scriptOptions/nS_Options/proc/New()
+/n_scriptOptions/nS_Options/New()
 	.=..()
 	for(var/O in binary_operators+unary_operators)
 		if(!symbols.Find(O)) symbols+=O

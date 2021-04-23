@@ -129,4 +129,4 @@
 	See Also:
 		- <runtimeError>
 */
-/n_Interpreter/proc/HandleError(runtimeError/e)
+/n_Interpreter/HandleError(runtimeError/e)

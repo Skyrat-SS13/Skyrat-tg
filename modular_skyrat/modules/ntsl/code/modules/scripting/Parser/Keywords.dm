@@ -13,7 +13,7 @@ Class: n_Keyword
 Represents a special statement in the code triggered by a keyword.
 */
 /n_Keyword
-/n_Keyword/proc/New(inline=0)
+/n_Keyword/New(inline=0)
 	src.inline=inline
 	return ..()
 
@@ -31,7 +31,7 @@ var/inline
 	parser - The parser that created this object. You can use the parameter to manipulate the parser in order to add statements and blocks
 	to its AST.
 */
-/n_Keyword/proc/Parse(n_Parser/parser)
+/n_Keyword/Parse(n_Parser/parser)
 
 /*
 	Class: nS_Keyword
@@ -44,12 +44,12 @@ var/inline
 */
 //
 /n_Keyword/nS_Keyword
-/n_Keyword/nS_Keyword/proc/New(inline=0)
+/n_Keyword/nS_Keyword/New(inline=0)
 	if(inline)
 		del src
 
 /n_Keyword/nS_Keyword/kwReturn
-/n_Keyword/nS_Keyword/kwReturn/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwReturn/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	if(istype(parser.curBlock, /node/BlockDefinition/GlobalBlock)) // Exit out of the program by setting the tokens list size to the same as index.
 		parser.tokens.len = parser.index
@@ -60,7 +60,7 @@ var/inline
 	parser.curBlock.statements+=stmt
 
 /n_Keyword/nS_Keyword/kwIf
-/n_Keyword/nS_Keyword/kwIf/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwIf/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	var/node/statement/IfStatement/stmt=new(parser.curToken)
 	parser.NextToken()  //skip 'if' token
@@ -74,7 +74,7 @@ var/inline
 	parser.AddBlock(stmt.block)
 
 /n_Keyword/nS_Keyword/kwElseIf
-/n_Keyword/nS_Keyword/kwElseIf/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwElseIf/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	var/list/L=parser.curBlock.statements
 	var/node/statement/IfStatement/ifstmt
@@ -99,7 +99,7 @@ var/inline
 
 
 /n_Keyword/nS_Keyword/kwElse
-/n_Keyword/nS_Keyword/kwElse/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwElse/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	var/list/L=parser.curBlock.statements
 	var/node/statement/IfStatement/stmt
@@ -114,7 +114,7 @@ var/inline
 	parser.AddBlock(stmt.else_block)
 
 /n_Keyword/nS_Keyword/kwWhile
-/n_Keyword/nS_Keyword/kwWhile/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwWhile/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	var/node/statement/WhileLoop/stmt=new(parser.curToken)
 	parser.NextToken()  //skip 'while' token
@@ -128,7 +128,7 @@ var/inline
 	parser.AddBlock(stmt.block)
 
 /n_Keyword/nS_Keyword/kwFor
-/n_Keyword/nS_Keyword/kwFor/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwFor/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	var/node/statement/ForLoop/stmt = new(parser.curToken)
 	parser.NextToken()
@@ -150,7 +150,7 @@ var/inline
 	parser.AddBlock(stmt.block)
 
 /n_Keyword/nS_Keyword/kwBreak
-/n_Keyword/nS_Keyword/kwBreak/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwBreak/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	if(istype(parser.curBlock, /node/BlockDefinition/GlobalBlock))
 		parser.errors+=new/scriptError/BadToken(parser.curToken)
@@ -160,7 +160,7 @@ var/inline
 	parser.curBlock.statements+=stmt
 
 /n_Keyword/nS_Keyword/kwContinue
-/n_Keyword/nS_Keyword/kwContinue/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwContinue/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	if(istype(parser.curBlock, /node/BlockDefinition/GlobalBlock))
 		parser.errors+=new/scriptError/BadToken(parser.curToken)
@@ -170,7 +170,7 @@ var/inline
 	parser.curBlock.statements+=stmt
 
 /n_Keyword/nS_Keyword/kwDef
-/n_Keyword/nS_Keyword/kwDef/proc/Parse(n_Parser/nS_Parser/parser)
+/n_Keyword/nS_Keyword/kwDef/Parse(n_Parser/nS_Parser/parser)
 	.=KW_PASS
 	var/node/statement/FunctionDefinition/def=new(parser.curToken)
 	parser.NextToken() //skip 'def' token

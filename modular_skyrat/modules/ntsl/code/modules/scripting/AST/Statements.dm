@@ -6,7 +6,7 @@
 	An object representing a single instruction run by an interpreter.
 */
 /node/statement
-/node/statement/proc/New(token)
+/node/statement/New(token)
 	.=..()
 	src.token=token
 

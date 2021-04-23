@@ -59,7 +59,7 @@
 	Constructor: New
 	Calls <Load()> with the given parameters.
 */
-/n_Interpreter/proc/New(node/BlockDefinition/GlobalBlock/program=null)
+/n_Interpreter/New(node/BlockDefinition/GlobalBlock/program=null)
 	.=..()
 	if(program)Load(program)
 
@@ -78,7 +78,7 @@
 /*
 	Set ourselves to Garbage Collect
 */
-/n_Interpreter/proc/GC()
+/n_Interpreter/GC()
 	container = null
 
 /*

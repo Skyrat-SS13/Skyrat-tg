@@ -40,7 +40,7 @@
 	Proc: Scan
 	Runs the scanner and returns the resulting list of tokens. Ensure that <LoadCode()> has been called first.
 */
-/n_Scanner/proc/Scan()
+/n_Scanner/Scan()
 
 /*
 	Class: nS_Scanner
@@ -97,14 +97,14 @@
 	code	 	- The source code to tokenize.
 	options - An <nS_Options> object used to configure the scanner.
 */
-/n_Scanner/nS_Scanner/proc/New(code, n_scriptOptions/nS_Options/options)
+/n_Scanner/nS_Scanner/New(code, n_scriptOptions/nS_Options/options)
 	.=..()
 	ignore+= ascii2text(13) //Carriage return
 	delim += ignore + options.symbols + end_stmt + string_delim
 	src.options=options
 	LoadCode(code)
 
-/n_Scanner/nS_Scanner/proc/Scan() //Creates a list of tokens from source code
+/n_Scanner/nS_Scanner/Scan() //Creates a list of tokens from source code
 	var/list/tokens=new
 	for(, src.codepos<=length(code), src.codepos++)
 		var/char = copytext(code, codepos, codepos + 1)

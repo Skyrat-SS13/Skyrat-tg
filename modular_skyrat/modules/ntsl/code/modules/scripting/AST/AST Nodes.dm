@@ -45,7 +45,7 @@
 */
 /node
 	var/token/token // for line number information
-/node/proc/ToString()
+/node/ToString()
 	return "[src.type]"
 /*
 	Class: identifier
@@ -54,12 +54,12 @@
 	var
 		id_name
 
-/node/identifier/proc/New(id, token)
+/node/identifier/New(id, token)
 	.=..()
 	src.id_name=id
 	src.token = token
 
-/node/identifier/proc/ToString()
+/node/identifier/ToString()
 	return id_name
 
 /*
@@ -77,19 +77,19 @@
 			name
 			precedence
 
-/node/expression/operator/proc/New(token, exp)
+/node/expression/operator/New(token, exp)
 	.=..()
 	if(!src.name) src.name="[src.type]"
 	src.token = token
 	src.exp = exp
 
-/node/expression/operator/proc/ToString()
+/node/expression/operator/ToString()
 	return "operator: [name]"
 
 /node/expression/member
 	var/node/expression/object
 	var/tmp/temp_object // so you can pre-eval it, used for function calls and assignments
-/node/expression/member/proc/New(token)
+/node/expression/member/New(token)
 	src.token = token
 	return ..()
 
@@ -108,7 +108,7 @@
 	//Function calls can also be expressions or statements.
 	var/node/expression/function
 	var/list/parameters=list()
-/node/expression/FunctionCall/proc/New(token)
+/node/expression/FunctionCall/New(token)
 	.=..()
 	src.token = token
 
@@ -119,11 +119,11 @@
 	var
 		value
 
-/node/expression/value/literal/proc/New(value)
+/node/expression/value/literal/New(value)
 	.=..()
 	src.value=value
 
-/node/expression/value/literal/proc/ToString()
+/node/expression/value/literal/ToString()
 	return src.value
 
 /*
@@ -137,19 +137,19 @@
 			id
 
 
-/node/expression/value/variable/proc/New(ident, token)
+/node/expression/value/variable/New(ident, token)
 	.=..()
 	src.token = token
 	id=ident
 	if(istext(id))id=new(id)
 
-/node/expression/value/variable/proc/ToString()
+/node/expression/value/variable/ToString()
 	return src.id.ToString()
 
 /node/expression/value/list_init
 	var/list/init_list
 
-/node/expression/value/list_init/proc/New(token)
+/node/expression/value/list_init/New(token)
 	. = ..()
 	src.token = token
 
@@ -160,10 +160,10 @@
 	var
 		datum/value
 
-/node/expression/value/reference/proc/New(value, token)
+/node/expression/value/reference/New(value, token)
 	.=..()
 	src.token = token
 	src.value=value
 
-/node/expression/value/reference/proc/ToString()
+/node/expression/value/reference/ToString()
 	return "ref: [src.value] ([src.value.type])"

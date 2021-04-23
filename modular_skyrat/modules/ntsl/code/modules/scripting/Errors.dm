@@ -12,13 +12,13 @@
 	A message describing the problem.
 */
 		message
-/scriptError/proc/New(msg=null)
+/scriptError/New(msg=null)
 	if(msg)message=msg
 
 /scriptError/BadToken
 	message="Unexpected token: "
 	var/token/token
-/scriptError/BadToken/proc/New(token/t)
+/scriptError/BadToken/New(token/t)
 	token=t
 	if(t&&t.line) message="[t.line]: [message]"
 	if(istype(t))message+="[t.value]"
@@ -39,7 +39,7 @@
 /scriptError/BadReturn
 	var/token/token
 	message = "Unexpected return statement outside of a function."
-/scriptError/BadReturn/proc/New(token/t)
+/scriptError/BadReturn/New(token/t)
 	src.token=t
 
 /scriptError/EndOfFile
@@ -47,7 +47,7 @@
 
 /scriptError/ExpectedToken
 	message="Expected: "
-/scriptError/ExpectedToken/proc/New(id, token/T)
+/scriptError/ExpectedToken/New(id, token/T)
 	if(T)
 		message = "[T.line ? T.line : "???"]: [message]'[id]'. Found '[T.value]'."
 	else
@@ -57,7 +57,7 @@
 	message="Unterminated multi-line comment statement: expected */"
 
 /scriptError/DuplicateFunction
-/scriptError/DuplicateFunction/proc/New(name, token/t)
+/scriptError/DuplicateFunction/New(name, token/t)
 	message="Function '[name]' defined twice."
 
 /scriptError/ParameterFunction
@@ -120,7 +120,7 @@
 
 /runtimeError/TypeMismatch
 	name="TypeMismatchError"
-/runtimeError/TypeMismatch/proc/New(op, a, b)
+/runtimeError/TypeMismatch/New(op, a, b)
 	if(isnull(a))
 		a = "NULL"
 	if(isnull(b))
@@ -133,27 +133,27 @@
 
 /runtimeError/UnknownInstruction
 	name="UnknownInstructionError"
-/runtimeError/UnknownInstruction/proc/New(node/op)
+/runtimeError/UnknownInstruction/New(node/op)
 	message="Unknown instruction type '[op.type]'. This may be due to incompatible compiler and interpreter versions or a lack of implementation."
 
 /runtimeError/UndefinedVariable
 	name="UndefinedVariableError"
-/runtimeError/UndefinedVariable/proc/New(variable)
+/runtimeError/UndefinedVariable/New(variable)
 	message="Variable '[variable]' has not been declared."
 
 /runtimeError/IndexOutOfRange
 	name="IndexOutOfRangeError"
-/runtimeError/IndexOutOfRange/proc/New(obj, idx)
+/runtimeError/IndexOutOfRange/New(obj, idx)
 	message="Index [obj]\[[idx]] is out of range."
 
 /runtimeError/UndefinedFunction
 	name="UndefinedFunctionError"
-/runtimeError/UndefinedFunction/proc/New(function)
+/runtimeError/UndefinedFunction/New(function)
 	message="Function '[function]()' has not been defined."
 
 /runtimeError/DuplicateVariableDeclaration
 	name="DuplicateVariableError"
-/runtimeError/DuplicateVariableDeclaration/proc/New(variable)
+/runtimeError/DuplicateVariableDeclaration/New(variable)
 	message="Variable '[variable]' was already declared."
 
 /runtimeError/IterationLimitReached
@@ -173,10 +173,10 @@
 
 /runtimeError/MaxCPU
 	name="MaxComputationalUse"
-/runtimeError/MaxCPU/proc/New(maxcycles)
+/runtimeError/MaxCPU/New(maxcycles)
 	message="Maximum amount of computational cycles reached (>= [maxcycles])."
 
 /runtimeError/Internal
 	name="InternalError"
-/runtimeError/Internal/proc/New(exception/E)
+/runtimeError/Internal/New(exception/E)
 	message = E.name
