@@ -130,6 +130,14 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg'
 
+/datum/emote/living/mousesqueak
+	key = "squeak"
+	key_third_person = "squeaks"
+	message = "squeaks!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/effects/mousesqueek.ogg'
+
 /datum/emote/living/merp
 	key = "merp"
 	key_third_person = "merps"
