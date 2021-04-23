@@ -17262,6 +17262,7 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
+/obj/effect/landmark/start/signal_tech,
 /turf/open/floor/engine,
 /area/tcommsat/computer)
 "aFL" = (
@@ -62022,21 +62023,23 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/status_display/ai{
-	pixel_x = 32;
-	pixel_y = -32
-	},
 /turf/open/floor/engine,
 /area/tcommsat/computer)
 "cgo" = (
-/obj/effect/turf_decal/stripes/end{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/item/radio/intercom{
 	pixel_x = 28
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/chair/office{
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/tcommsat/computer)
@@ -62131,24 +62134,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
-"cgz" = (
-/obj/effect/turf_decal/tile/yellow{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/item/kirbyplants{
-	icon_state = "plant-05"
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/hallway/primary/fore)
 "cgA" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -65484,6 +65469,7 @@
 	dir = 1
 	},
 /obj/machinery/power/apc/auto_name/east,
+/obj/item/paper/monitorkey,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/ce)
 "cok" = (
@@ -86860,6 +86846,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/showroomfloor,
 /area/security/brig)
+"qFw" = (
+/obj/effect/turf_decal/stripes/end,
+/obj/machinery/computer/telecomms/traffic{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/tcommsat/computer)
 "qGP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/line{
@@ -123527,7 +123520,7 @@ cfG
 aCO
 afP
 cgo
-cfM
+qFw
 cfM
 aRw
 aPw
@@ -123785,7 +123778,7 @@ cfU
 cfM
 cfM
 cfM
-cgz
+cfM
 aRy
 aQg
 mWQ

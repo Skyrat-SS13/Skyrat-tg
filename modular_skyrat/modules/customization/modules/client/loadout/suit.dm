@@ -350,7 +350,7 @@
 /datum/loadout_item/suit/job/engi_jacket
 	name = "Engineering Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/engi
-	restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician")
+	restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician", "Signal Technician")
 	restricted_desc = "All Engineering Personnel"
 
 /datum/loadout_item/suit/job/sci_jacket
@@ -428,7 +428,7 @@
 	name = "Ops/Sec fed Jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer", "Signal Technician", "Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Modern trekkie
 /datum/loadout_item/suit/job/trek/fedcoatmodern
@@ -445,7 +445,7 @@
 	name = "Modern ops jacket"
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/eng
 	restricted_desc = "Engineering and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer", "Signal Technician", "Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /datum/loadout_item/suit/job/trek/fedcoatmodernsec
 	name = "Modern sec jacket"

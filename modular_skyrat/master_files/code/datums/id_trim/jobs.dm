@@ -131,3 +131,18 @@
 	// Config check for if sec has maint access.
 	if(CONFIG_GET(flag/security_has_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
+
+/datum/id_trim/job/chief_engineer/New()
+	full_access += list(ACCESS_TCOM_ADMIN)
+	minimal_access += list(ACCESS_TCOM_ADMIN)
+	return ..()
+
+/datum/id_trim/job/signal_tech
+	assignment = "Signal Technician"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_signaltech"
+	full_access = list(ACCESS_TCOMSAT, ACCESS_TCOM_ADMIN, ACCESS_TECH_STORAGE, ACCESS_RC_ANNOUNCE, ACCESS_CONSTRUCTION, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP,
+					ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE)
+	minimal_access = list(ACCESS_TCOMSAT, ACCESS_TCOM_ADMIN, ACCESS_TECH_STORAGE, ACCESS_RC_ANNOUNCE, ACCESS_CONSTRUCTION, ACCESS_MECH_ENGINE)
+	config_job = "signal_tech"
+	template_access = list(ACCESS_CAPTAIN, ACCESS_CE, ACCESS_CHANGE_IDS)

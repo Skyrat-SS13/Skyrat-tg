@@ -88,6 +88,7 @@
 // SKYRAT EDIT: Start - Modular Access (See Blueshield module for theirs)
 #define ACCESS_ENTER_GENPOP 80
 #define ACCESS_LEAVE_GENPOP 81
+#define ACCESS_TCOM_ADMIN 82	// Access to the Signal Tech monitoring room
 // SKYRAT EDIT: End - Modular Access
 
 	//BEGIN CENTCOM ACCESS

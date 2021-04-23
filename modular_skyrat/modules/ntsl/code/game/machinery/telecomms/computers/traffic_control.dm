@@ -18,7 +18,7 @@
 	var/process = 0
 	circuit = /obj/item/circuitboard/computer/telecomms/comm_traffic
 
-	//req_access = list(ACCESS_TCOM_ADMIN)
+	req_access = list(ACCESS_TCOM_ADMIN)
 
 /obj/machinery/computer/telecomms/traffic/Initialize(mapload)
 	. = ..()

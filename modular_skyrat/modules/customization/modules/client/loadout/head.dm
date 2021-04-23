@@ -142,13 +142,13 @@
 	name = "Federation Officer's Cap (Yellow)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer", "Atmospheric Technician", "Station Engineer", "Signal Technician", "Security Medic", "Security Sergeant", "Warden", "Detective", "Security Officer", "Head of Security", "Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /datum/loadout_item/head/trek/trekcapsec
 	name = "Federation Officer's Cap (Red)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/sec
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer", "Atmospheric Technician", "Station Engineer", "Signal Technician", "Security Medic", "Security Sergeant", "Warden", "Detective", "Security Officer", "Head of Security", "Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /*Commenting out Until next Christmas or made automatic
 /datum/gear/santahatr
@@ -214,13 +214,13 @@
 /datum/loadout_item/head/job/atmos_beret
 	name = "Atmospherics Beret"
 	path = /obj/item/clothing/head/beret/job/atmos
-	restricted_roles = list("Station Engineer", "Atmospheric Technician", "Chief Engineer")
+	restricted_roles = list("Station Engineer", "Atmospheric Technician", "Chief Engineer", "Signal Technician")
 	restricted_desc = "Engineering"
 
 /datum/loadout_item/head/job/engi_beret
 	name = "Engineering Beret"
 	path = /obj/item/clothing/head/beret/job/engi
-	restricted_roles = list("Station Engineer", "Atmospheric Technician", "Chief Engineer")
+	restricted_roles = list("Station Engineer", "Atmospheric Technician", "Chief Engineer", "Signal Technician")
 	restricted_desc = "Engineering"
 
 /datum/loadout_item/head/job/CE_beret

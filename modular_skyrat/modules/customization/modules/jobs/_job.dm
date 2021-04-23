@@ -11,7 +11,7 @@
 	var/list/species_whitelist
 	//Blacklist of species for this job.
 	var/list/species_blacklist
-	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN 
+	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
 	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
 
 /datum/job/proc/has_banned_quirk(datum/preferences/pref)
@@ -49,7 +49,7 @@
 
 /datum/job/security_sergeant
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
-	
+
 /datum/job/security_medic
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
@@ -99,6 +99,9 @@
 	required_languages = null
 
 /datum/job/prisoner
+	required_languages = null
+
+/datum/job/signal_tech
 	required_languages = null
 
 /datum/job/proc/has_required_languages(datum/preferences/pref)
