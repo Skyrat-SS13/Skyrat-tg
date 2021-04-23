@@ -119,6 +119,20 @@
 					/obj/item/melee/classic_baton/peacekeeper)
 	crate_name = "baton crate"
 
+/datum/supply_pack/security/croonsurplus
+	name = "Croon Weapons Crate"
+	desc = "Help out in a local revolt, or fund a civil war, it's not like you have a choice in supplier. (Comes with four magazines of ammo.)"
+	cost = CARGO_CRATE_VALUE * 40
+	contraband = TRUE
+	contains = list(/obj/item/gun/ballistic/automatic/croon/nomag,
+					/obj/item/gun/ballistic/automatic/croon/nomag,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon)
+	crate_name = "unmarked weapons crate"
+	dangerous = TRUE
+	
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -434,10 +448,22 @@
 
 
 //////////////////////////////////////////////////////////////////////////////
+///////////////////////////// Vending Restocks ///////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Temporarily Disabled ////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 /*
+/datum/supply_pack/vending/wardrobes/dormtime //Disabled because the dorm vendor/kinkmate is only half finished and I don't have time to fix it atm.
+	name = "Dorms-Time Restock"
+	desc = "This crate contains a refill for the Droms-Time Vendor."
+	cost = CARGO_CRATE_VALUE * 1.5
+	contains = list(/obj/item/vending_refill/kink)
+	crate_name = "dorms-time restock"
+
 /datum/supply_pack/service/wrapping_paper
 	name = "Cargo Packaging Crate"
 	desc = "Want to mail your loved ones gift-wrapped chocolates, stuffed animals, or the Clown's severed head? You can do all that, with this crate full of festive (and normal) wrapping paper. Also contains a hand labeler and a destination tagger for easy shipping!"

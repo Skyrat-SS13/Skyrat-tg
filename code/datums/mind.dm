@@ -41,6 +41,7 @@
 	var/assigned_role
 	var/special_role
 	var/list/restricted_roles = list()
+	var/list/datum/objective/objectives = list()
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
 
@@ -455,15 +456,6 @@
 		N.send_to_spawnpoint = FALSE
 		N.nukeop_outfit = null
 		add_antag_datum(N,converter.nuke_team)
-
-	//SKYRAT EDIT ADDITION - BEGIN - ASSAULT OPS
-	else if(is_assault_operative(creator))
-		var/datum/antagonist/assaultops/converter = creator.mind.has_antag_datum(/datum/antagonist/assaultops,TRUE)
-		var/datum/antagonist/assaultops/N = new()
-		N.send_to_spawnpoint = FALSE
-		N.assaultop_outfit = null
-		add_antag_datum(N,converter.assault_team)
-	//SKYRAT EDIT END
 
 	enslaved_to = creator
 

@@ -126,7 +126,7 @@
 /mob/living/carbon/human/revive(full_heal = 0, admin_revive = 0)
 	if(..())
 		if(dna && dna.species)
-			dna.species.spec_revival(src) 
+			dna.species.spec_revival(src)
 
 /mob/living/carbon/human/verb/toggle_mutant_part_visibility()
 	set category = "IC"
@@ -141,3 +141,52 @@
 	try_hide_mutant_parts = !try_hide_mutant_parts
 	to_chat(usr, "<span class='notice'>[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]</span>")
 	update_mutant_bodyparts()
+
+/mob/living/carbon/human/verb/acting()
+	set category = "IC"
+	set name = "Feign Impairment"
+	set desc = "Slur, stutter or jitter for a short duration."
+
+	if(stat != CONSCIOUS)
+		to_chat(usr, "<span class='warning'>You can't do this right now...</span>")
+		return
+
+	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
+	if(slurring >= 10 || stuttering >= 10 || jitteriness >= 10) //Give the option to end the impairment if there's one ongoing.
+		var/disable = input(src, "Stop performing existing impairment?", "Impairments") as null|anything in choices
+		if(disable)
+			acting_expiry(disable)
+			return
+
+	var/impairment = input(src, "Select an impairment to perform:", "Impairments") as null|anything in choices
+	if(!impairment)
+		return
+
+	var/duration = input(src, "Enter how long you will feign [impairment]. (1 - 60 seconds)", "Duration in seconds", 25) as num|null
+	if(!isnum(duration))
+		return
+	if(duration > 60)
+		to_chat(src, "Please choose a duration in seconds between 1 to 60.")
+		return
+	switch(impairment)
+		if("Drunkenness")
+			slurring = duration
+		if("Stuttering")
+			stuttering = duration
+		if("Jittering")
+			jitteriness = duration
+
+	if(duration)
+		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
+		to_chat(src, "You are now feigning [impairment].")
+
+/mob/living/carbon/human/proc/acting_expiry(var/impairment) //End only the impairment we're affected by.
+	if(impairment)
+		switch(impairment)
+			if("Drunkenness")
+				slurring = 0
+			if("Stuttering")
+				stuttering = 0
+			if("Jittering")
+				jitteriness = 0
+		to_chat(src, "You are no longer feigning [impairment].")

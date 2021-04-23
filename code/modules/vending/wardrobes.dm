@@ -423,6 +423,10 @@
 	contraband = list(/obj/item/toy/plush/ratplush = 1,
 					/obj/item/toy/plush/narplush = 1,
 					/obj/item/clothing/head/medievaljewhat = 3,
+					//SKYRAT EDIT ADDITION BEGIN
+					/obj/item/clothing/neck/chaplain = 1,
+					/obj/item/clothing/neck/chaplain/black = 1,
+					//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/chaplainsuit/clownpriest = 1,
 					/obj/item/clothing/head/clownmitre = 1)
 	premium = list(/obj/item/clothing/suit/chaplainsuit/bishoprobe = 1,

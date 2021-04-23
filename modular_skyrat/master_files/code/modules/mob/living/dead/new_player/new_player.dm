@@ -156,7 +156,7 @@
 				to_chat_immediate(src, "So long, spaceman.")
 				client << link(server_ip)
 			return
-		var/server_name = input(usr, "Please select the server you wish to swap to:", "Swap servers!") as null|anything in GLOB.swappable_ips
+		var/server_name = tgui_input_list(usr, "Please select the server you wish to swap to:", "Swap servers!", GLOB.swappable_ips)
 		if(!server_name)
 			return
 		var/server_ip = GLOB.swappable_ips[server_name]
@@ -380,12 +380,6 @@
 	SSticker.minds += character.mind
 	character.client.init_verbs() // init verbs for the late join
 	var/mob/living/carbon/human/humanc
-
-	if(SSticker.mode.name == "assaultops")
-		if(is_assaultops_target(character.mind))
-			remove_assaultops_target(character.mind, original=TRUE)
-		if(check_assaultops_target(character))
-			add_assaultops_target(character, notify_target = TRUE)
 
 	if(ishuman(character))
 		humanc = character //Let's retypecast the var to be human,
