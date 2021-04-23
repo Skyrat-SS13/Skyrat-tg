@@ -14,6 +14,6 @@
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_SECURITY
 	access_view = ACCESS_SECURITY
-	contains = list(/obj/item/botpack/secbot)
+	contains = list(/obj/item/botpack/ed209)
 	crate_name = "ED-209 part crate"
 	crate_type = /obj/structure/closet/crate/secure/science
