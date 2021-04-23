@@ -10,7 +10,6 @@ Adds 2 new items, security robot part kits, orderable from cargo, that are used 
 
 ### TG Proc Changes:
 
-- code/modules/cargo/packs.dm - added cargo crates to cargo orders.
 - code/modules/mob/living/simple_animal/bot/secbot.dm - removed disabler/baton drops
 
 ### Defines:
