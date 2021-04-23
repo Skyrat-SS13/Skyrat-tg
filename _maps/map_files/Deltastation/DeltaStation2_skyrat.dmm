@@ -40400,10 +40400,19 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/open/floor/iron/grimy,
 /area/tcommsat/computer)
 "bOM" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
 /turf/open/floor/iron/grimy,
@@ -40411,6 +40420,9 @@
 "bON" = (
 /obj/structure/chair/office{
 	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
 /turf/open/floor/iron/grimy,
 /area/tcommsat/computer)
@@ -41240,6 +41252,10 @@
 /area/tcommsat/computer)
 "bQM" = (
 /obj/effect/landmark/event_spawn,
+/obj/machinery/door/window/brigdoor/westleft{
+	name = "Control Room";
+	req_access_txt = "61;82"
+	},
 /turf/open/floor/iron/grimy,
 /area/tcommsat/computer)
 "bQO" = (
@@ -51861,10 +51877,6 @@
 /area/hallway/secondary/command)
 "crb" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command{
-	name = "Telecomms Foyer";
-	req_access_txt = "61"
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -99981,6 +99993,13 @@
 	dir = 8
 	},
 /area/security/prison)
+"klD" = (
+/obj/item/kirbyplants/random,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/tcommsat/computer)
 "kma" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/brown{
@@ -106851,6 +106870,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"rIm" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/grimy,
+/area/tcommsat/computer)
 "rIr" = (
 /obj/structure/closet/secure_closet/security_medic,
 /obj/structure/window/reinforced{
@@ -107632,6 +107657,12 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
+"sqq" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/tcommsat/computer)
 "ssh" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -152207,7 +152238,7 @@ bUI
 bUI
 bQJ
 qKG
-bQJ
+rIm
 cpJ
 cqY
 hCt
@@ -152719,10 +152750,10 @@ lUW
 bUI
 bUI
 bUI
-bQJ
+sqq
 bOL
 bQM
-bSH
+klD
 cqY
 csy
 cug
