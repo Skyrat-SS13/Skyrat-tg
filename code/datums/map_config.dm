@@ -19,8 +19,8 @@
 	var/map_file = "MetaStation.dmm"
 
 	var/traits = null
-	var/space_ruin_levels = 7
-	var/space_empty_levels = 1
+	var/space_ruin_levels = 4 //SKYRAT EDIT CHANGE - ORIGINAL: 7
+	var/space_empty_levels = 0 //SKYRAT EDIT CHANGE - ORIGINAL: 1
 
 	var/minetype = "lavaland"
 
