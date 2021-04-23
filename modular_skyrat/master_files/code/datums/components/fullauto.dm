@@ -54,7 +54,7 @@
 
 	if(iscarbon(user))
 		var/mob/living/carbon/arizona_ranger = user
-		if(arizona_ranger.is_holding(parent))
+		if(arizona_ranger.is_holding(parent) && G.fire_select == SELECT_FULLY_AUTOMATIC)
 			autofire_on(arizona_ranger.client)
 
 // There is a gun and there is a user wielding it. The component now waits for the mouse click.
