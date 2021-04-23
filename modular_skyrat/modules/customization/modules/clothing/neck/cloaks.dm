@@ -8,3 +8,4 @@
 /obj/item/clothing/neck/chaplain/black
 	name = "black bishop's cloak"
 	icon_state = "blackbishopcloak"
+
