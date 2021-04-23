@@ -57,13 +57,10 @@
 	message = "blares an alarm!"
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/warning-buzzer.ogg'
-<<<<<<< HEAD
-*/
-=======
 
 /datum/emote/silicon/slowclap
 	key = "slowclap"
 	message = "activates their slow clap processor."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/slowclap.ogg'
->>>>>>> 9e9cf3c7b0f (Adds *slowclap for silicons (#58583))
+*/
