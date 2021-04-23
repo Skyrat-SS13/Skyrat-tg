@@ -318,6 +318,7 @@
 	frame = /obj/structure/table_frame/brass
 	framestack = /obj/item/stack/tile/brass
 	buildstack = /obj/item/stack/tile/brass
+	canSmoothWith = null
 	framestackamount = 1
 	buildstackamount = 1
 

@@ -282,6 +282,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	//SKYRAT EDIT CHANGE BEGIN
 	var/mining_map_to_load = SSrandommining.chosen_map
 	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
+	LoadGroup(FailedZs, "Reebe", "map_files/generic", "CityOfCogs.dmm", default_traits=ZTRAITS_REEBE) //SKYRAT EDIT - FORCED CWC (OH GOD)
 
 	if(mining_map_to_load)
 		add_startupmessage("MINING MAP: Loading mining level...")

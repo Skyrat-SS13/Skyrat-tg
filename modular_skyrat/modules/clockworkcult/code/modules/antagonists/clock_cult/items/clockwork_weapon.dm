@@ -23,6 +23,14 @@
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
 
+/obj/item/twohanded/clockwork/pickup(obj/item/source, mob/user)
+	.=..()
+	if(is_servant_of_ratvar(user))
+		if(!SS)
+			SS = new
+			SS.marked_item = src
+			user.mind.AddSpell(SS)
+
 /obj/item/twohanded/clockwork/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=5)
@@ -32,18 +40,12 @@
 	SIGNAL_HANDLER
 
 	wielded = TRUE
-	if(is_servant_of_ratvar(user))
-		SS = new
-		SS.marked_item = src
-		user.mind.AddSpell(SS)
 
 /// triggered on unwield of two handed item
 /obj/item/twohanded/clockwork/proc/on_unwield(obj/item/source, mob/user)
 	SIGNAL_HANDLER
 
 	wielded = FALSE
-	if(is_servant_of_ratvar(user))
-		user.mind.RemoveSpell(SS)
 
 /obj/item/twohanded/clockwork/examine(mob/user)
 	. = ..()

@@ -265,7 +265,7 @@ GLOBAL_VAR(cult_ratvar)
 
 /obj/ratvar/attack_ghost(mob/user)
 	. = ..()
-	var/mob/living/simple_animal/drone/D = new /mob/living/simple_animal/drone/cogscarab(get_turf(src))
+	var/mob/living/simple_animal/drone/cogscarab/D = new /mob/living/simple_animal/drone/cogscarab(get_turf(src))
 	D.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
 	D.key = user.key
 	add_servant_of_ratvar(D, silent=TRUE)
