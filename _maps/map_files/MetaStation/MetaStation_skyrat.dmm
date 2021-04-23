@@ -16455,14 +16455,7 @@
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "bKM" = (
-/obj/structure/table/glass,
-/obj/item/folder{
-	pixel_y = 2
-	},
-/obj/item/folder{
-	pixel_y = 2
-	},
-/obj/item/pen,
+/obj/machinery/ntnet_relay,
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/tcommsat/server)
 "bKN" = (
@@ -16859,17 +16852,6 @@
 "bNY" = (
 /obj/machinery/telecomms/server/presets/engineering,
 /turf/open/floor/circuit/telecomms/mainframe,
-/area/tcommsat/server)
-"bNZ" = (
-/obj/machinery/light/small,
-/obj/machinery/camera{
-	c_tag = "Telecomms - Server Room - Aft";
-	dir = 1;
-	network = list("ss13","tcomms")
-	},
-/obj/machinery/ntnet_relay,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark/telecomms,
 /area/tcommsat/server)
 "bOa" = (
 /obj/machinery/telecomms/server/presets/medical,
@@ -17785,6 +17767,10 @@
 /area/maintenance/starboard)
 "bUL" = (
 /obj/machinery/telecomms/server/presets/security,
+/obj/machinery/camera{
+	dir = 1;
+	network = list("ss13","tcomms")
+	},
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "bUQ" = (
@@ -20796,6 +20782,7 @@
 /area/maintenance/disposal/incinerator)
 "cgy" = (
 /obj/machinery/telecomms/server/presets/service,
+/obj/machinery/light/small,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "cgz" = (
@@ -35046,10 +35033,16 @@
 /turf/open/floor/carpet,
 /area/command/bridge)
 "fBy" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/space,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/telecomms,
 /area/ai_monitored/aisat/exterior)
 "fBB" = (
 /obj/effect/landmark/start/station_engineer,
@@ -45077,6 +45070,14 @@
 "jyv" = (
 /turf/open/floor/iron/dark,
 /area/engineering/gravity_generator)
+"jyx" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Telecomms Server Room"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/tcommsat/server)
 "jyT" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
 	dir = 4
@@ -47585,9 +47586,14 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "kyT" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/closed/wall,
-/area/ai_monitored/aisat/exterior)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/telecomms,
+/area/tcommsat/server)
 "kzn" = (
 /obj/machinery/door/airlock/external{
 	name = "Departure Lounge Airlock"
@@ -50774,17 +50780,6 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "lNu" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2.9
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/camera{
-	c_tag = "MiniSat Exterior - Aft";
-	network = list("minisat")
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/aisat/exterior)
@@ -52342,6 +52337,11 @@
 "mqq" = (
 /obj/structure/window/reinforced,
 /obj/machinery/holopad,
+/obj/machinery/camera{
+	dir = 1;
+	network = list("minisat")
+	},
+/obj/machinery/light/small,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/aisat/exterior)
 "mqw" = (
@@ -53433,6 +53433,16 @@
 	},
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"mNQ" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Telecomms Server Room"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/tcommsat/server)
 "mNW" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
@@ -138478,10 +138488,10 @@ bGd
 bGd
 bGd
 bUL
+bCD
 gfU
-eNR
-aaa
-aMq
+gfU
+bly
 cVP
 uKj
 oqn
@@ -138734,10 +138744,10 @@ bHE
 bKM
 bKO
 bMp
-bNZ
-lGu
+bMp
+jyx
 kyT
-rim
+mNQ
 fBy
 lNu
 orU
@@ -138992,10 +139002,10 @@ bJk
 bJk
 bMq
 cgy
+bCD
 gfU
-eNR
-aaa
-aMq
+gfU
+bcQ
 cVP
 uKj
 oqn
