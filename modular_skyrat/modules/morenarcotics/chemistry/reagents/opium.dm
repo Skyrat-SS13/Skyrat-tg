@@ -1,3 +1,6 @@
+/atom/movable/screen/fullscreen/color_vision/heroin_color
+	color = "#444444"
+
 /datum/reagent/drug/opium
 	name = "Opium"
 	description = "A extract from opium poppies. Puts the user in a slightly euphoric state."
@@ -16,6 +19,7 @@
 	M.adjustBruteLoss(-0.1 * REM * delta_time, 0) //can be used as a (shitty) painkiller
 	M.adjustFireLoss(-0.1 * REM * delta_time, 0)
 	M.hal_screwyhud = SCREWYHUD_HEALTHY
+	M.overlay_fullscreen("heroin_euphoria", /atom/movable/screen/fullscreen/color_vision/heroin_color)
 	..()
 
 /datum/reagent/drug/opium/overdose_process(mob/living/M, delta_time, times_fired)
@@ -29,6 +33,7 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/N = M
 		N.hal_screwyhud = SCREWYHUD_NONE
+		N.clear_fullscreen("heroin_euphoria")
 	..()
 
 /datum/reagent/drug/opium/heroin
@@ -46,7 +51,6 @@
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
-	M.set_drugginess(15 * REM * delta_time)
 	M.adjustBruteLoss(-0.4 * REM * delta_time, 0) //more powerful as a painkiller, possibly actually useful to medical now
 	M.adjustFireLoss(-0.4 * REM * delta_time, 0)
 	..()
