@@ -510,6 +510,10 @@
 /datum/loadout_item/uniform/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+/datum/loadout_item/uniform/job/humblecaptain
+	name = "Humble Captain Jumpsuit"
+	path = /obj/item/clothing/under/rank/captain/humble
+	restricted_roles = list("Captain")
 
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
@@ -687,6 +691,11 @@
 	path = /obj/item/clothing/under/rank/cargo/qm/formal/skirt
 	restricted_roles = list("Quartermaster")
 
+/datum/loadout_item/uniform/job/qmcasual
+	name = "Quartermaster's Casual Suit"
+	path = /obj/item/clothing/under/rank/cargo/qm/casual
+	restricted_roles = list("Quartermaster")
+
 /datum/loadout_item/uniform/job/engformal
 	name = "Engineering Formal Suit"
 	path = /obj/item/clothing/under/rank/engineering/engineer/formal
@@ -698,6 +707,8 @@
 	path = /obj/item/clothing/under/rank/engineering/engineer/formal/skirt
 	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
 	restricted_desc = "Engineering"
+
+
 
 //JOB - UTILITY
 /datum/loadout_item/uniform/job/utility

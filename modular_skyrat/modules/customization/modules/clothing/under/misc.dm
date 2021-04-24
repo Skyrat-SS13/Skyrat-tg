@@ -327,4 +327,26 @@
 	icon_state = "supply_chief"
 	inhand_icon_state = "lb_suit"
 
+/obj/item/clothing/under/rank/cargo/qm/casual
+	name = "quartermaster's casual wear"
+	desc = "A Cargonium with matching trousers. Expect to see a shotgun shells in the pockets."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "supply_chief"
+	inhand_icon_state = "lb_suit"
+
+/obj/item/clothing/under/rank/captain/humble
+	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
+	name = "captain's humble jumpsuit"
+	icon_state = "captainhumble"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	inhand_icon_state = "b_suit"
+	sensor_mode = SENSOR_COORDS
+	random_sensor = FALSE
+	icon = 'icons/obj/clothing/under/captain.dmi'
+	worn_icon = 'icons/mob/clothing/under/captain.dmi'
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 15)
+
+
 
