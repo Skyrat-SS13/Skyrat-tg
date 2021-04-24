@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/glass/bottle/vial
 	name = "broken hypovial"
-	desc = "A hypovial compatible with most hyposprays."
+	desc = "You probably shouldn't be seeing this. Shout at a coder."
 	icon = 'modular_skyrat/modules/hyposprays/icons/vials.dmi'
 	icon_state = "hypovial"
 	spillable = FALSE
@@ -37,16 +37,23 @@
 /obj/item/reagent_containers/glass/bottle/vial/on_reagent_change()
 	update_icon()
 
+//Fit in all hypos
 /obj/item/reagent_containers/glass/bottle/vial/small
 	name = "hypovial"
+	desc = "A small, 60u capacity vial compatible with most hyposprays."
 	volume = 60
 	possible_transfer_amounts = list(1,2,5,10,20)
 
+//Fit in CMO hypo only
 /obj/item/reagent_containers/glass/bottle/vial/large
+	name = "large hypovial"
+	icon_state = "hypoviallarge"
+	desc = "A large, 120u capacity vial that fits only in the most deluxe hyposprays."
 	volume = 120
 	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,100,120)
 
-/obj/item/reagent_containers/glass/bottle/vial/large/cmo
+//Hypos that are in the CMO's kit round start
+/obj/item/reagent_containers/glass/bottle/vial/large/deluxe
 	name = "deluxe hypovial"
 	list_reagents = list(/datum/reagent/medicine/omnizine = 20, /datum/reagent/medicine/leporazine = 20, /datum/reagent/medicine/atropine = 20)
 

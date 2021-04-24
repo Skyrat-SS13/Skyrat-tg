@@ -40,6 +40,20 @@
 	desc = "A fancy pair of high heels. Won't compensate for your below average height that much."
 	icon_state = "heels"
 
+/obj/item/clothing/shoes/discoshoes
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	name = "Green Snakeskin Shoes"
+	desc = "They may have lost some of their lustre over the years, but these green crocodile leather shoes fit you perfectly."
+	icon_state = "lizardskin_shoes"
+
+/obj/item/clothing/shoes/kimshoes
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	name = "Aerostatic Boots"
+	desc = "A brown pair of boots, prim and proper, ready to set off and get a body out of a tree."
+	icon_state = "aerostatic_boots"
+
 
 /obj/item/clothing/shoes/jungleboots
 	name = "jungle boots"
@@ -56,3 +70,10 @@
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	can_be_tied = TRUE //SKYRAT EDIT
+
+/obj/item/clothing/shoes/jackboots/black
+	name = "dark jackboots"
+	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time. These are fully black."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	icon_state = "blackjack"

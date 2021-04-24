@@ -68,9 +68,9 @@
 	var/announce_text = "This gamemode forgot to set a descriptive text! Uh oh!"
 
 	/// What is the lower bound of when the roundstart annoucement is sent out?
-	var/waittime_l = 600 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/const/waittime_l = 600
+	var/const/waittime_l = 600
 	/// What is the higher bound of when the roundstart annoucement is sent out?
-	var/waittime_h = 1800 // started at 1800 //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: var/waittime_h = 1800
+	var/const/waittime_h = 1800
 	/// List of available station goals for the crew to be working on, built into the round-type.
 	var/list/datum/station_goal/station_goals = list()
 	/// Does this gamemode allow the collection of persistance features? (Scars, etc.)
@@ -327,7 +327,7 @@
 
 	print_command_report(intercepttext, "Central Command Status Summary", announce=FALSE)
 	priority_announce("A summary has been copied and printed to all communications consoles.", "Enemy communication intercepted. Security level elevated.", ANNOUNCER_INTERCEPT)
-	if(GLOB.security_level < SEC_LEVEL_BLUE)
+	if(SSsecurity_level.current_level < SEC_LEVEL_BLUE)
 		set_security_level(SEC_LEVEL_BLUE)
 
 /*
