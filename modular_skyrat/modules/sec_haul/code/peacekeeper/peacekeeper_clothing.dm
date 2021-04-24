@@ -292,6 +292,10 @@
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"
 
+/obj/item/clothing/shoes/combat/peacekeeper/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/suitstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/suitstep2.ogg'=1), 40, falloff_exponent = SOUND_FALLOFF_EXPONENT)
+
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
