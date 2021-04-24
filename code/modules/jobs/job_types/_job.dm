@@ -276,6 +276,12 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
+		//SKYRAT EDIT ADDITION - Alt job titles
+		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
+			C.assignment = H.client.prefs.alt_titles_preferences[J.title]
+		else
+			C.assignment = J.title
+		//SKYRAT EDIT ADDITION END
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -287,7 +293,11 @@
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = J.title
+		// SKYRAT EDIT ADDITION - alt job titles
+		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
+			PDA.ownjob = H.client.prefs.alt_titles_preferences[J.title]
+		else // SKYRAT EDIT ADDITION END - alt job titles
+			PDA.ownjob = J.title
 		PDA.update_label()
 
 	if(H.client?.prefs.playtime_reward_cloak)
