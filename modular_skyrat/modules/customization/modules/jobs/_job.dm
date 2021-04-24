@@ -69,7 +69,6 @@
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 // Command
-
 /datum/job/captain
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 	alt_titles = list("Station Commander")
