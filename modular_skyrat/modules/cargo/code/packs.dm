@@ -448,10 +448,22 @@
 
 
 //////////////////////////////////////////////////////////////////////////////
+///////////////////////////// Vending Restocks ///////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Temporarily Disabled ////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 /*
+/datum/supply_pack/vending/wardrobes/dormtime //Disabled because the dorm vendor/kinkmate is only half finished and I don't have time to fix it atm.
+	name = "Dorms-Time Restock"
+	desc = "This crate contains a refill for the Droms-Time Vendor."
+	cost = CARGO_CRATE_VALUE * 1.5
+	contains = list(/obj/item/vending_refill/kink)
+	crate_name = "dorms-time restock"
+
 /datum/supply_pack/service/wrapping_paper
 	name = "Cargo Packaging Crate"
 	desc = "Want to mail your loved ones gift-wrapped chocolates, stuffed animals, or the Clown's severed head? You can do all that, with this crate full of festive (and normal) wrapping paper. Also contains a hand labeler and a destination tagger for easy shipping!"
