@@ -247,6 +247,12 @@
 		speaker = v.source
 		spans |= "virtual-speaker"
 
+	// SKYRAT EDIT ADDITION START - NTSL
+	// NTSL doesn't pass a speaker when you do broadcast() since technically nothing is actually speaking.
+	if(!speaker)
+		return
+	// SKYRAT EDIT ADDITION END - NTSL
+
 	// Ignore virtual speaker (most often radio messages) from ourself
 	if (originalSpeaker != src && speaker == src)
 		return
