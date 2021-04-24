@@ -2,7 +2,20 @@
 	say_mod = "beeps"
 	default_color = "00FF00"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_RADIMMUNE, TRAIT_VIRUSIMMUNE, TRAIT_NOBREATH, TRAIT_TOXIMMUNE, TRAIT_NOCLONELOSS, TRAIT_GENELESS, TRAIT_STABLEHEART,TRAIT_LIMBATTACHMENT, TRAIT_NO_HUSK, TRAIT_OXYIMMUNE)
+	inherent_traits = list(
+		TRAIT_CAN_STRIP,
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_RADIMMUNE,
+		TRAIT_VIRUSIMMUNE,
+		TRAIT_NOBREATH,
+		TRAIT_TOXIMMUNE,
+		TRAIT_NOCLONELOSS,
+		TRAIT_GENELESS,
+		TRAIT_STABLEHEART,
+		TRAIT_LIMBATTACHMENT,
+		TRAIT_NO_HUSK,
+		TRAIT_OXYIMMUNE
+	)
 	mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
@@ -49,9 +62,23 @@
 /datum/species/robotic/ipc
 	name = "I.P.C."
 	id = "ipc"
-	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS_PARTSONLY,EYECOLOR,LIPS,HAIR,NOEYESPRITES,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
+	species_traits = list(
+		ROBOTIC_DNA_ORGANS,
+		MUTCOLORS_PARTSONLY,
+		EYECOLOR,
+		LIPS,
+		HAIR,
+		NOEYESPRITES,
+		ROBOTIC_LIMBS,
+		NOTRANSSTING,
+		REVIVES_BY_HEALING
+	)
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("ipc_antenna" = ACC_RANDOM, "ipc_screen" = ACC_RANDOM, "ipc_chassis" = ACC_RANDOM)
+	default_mutant_bodyparts = list(
+		"ipc_antenna" = ACC_RANDOM,
+		"ipc_screen" = ACC_RANDOM,
+		"ipc_chassis" = ACC_RANDOM
+	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/ipc_parts.dmi'
 	hair_alpha = 210
@@ -112,9 +139,24 @@
 /datum/species/robotic/synthliz
 	name = "Synthetic Lizardperson"
 	id = "synthliz"
-	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
+	species_traits = list(
+		ROBOTIC_DNA_ORGANS,
+		MUTCOLORS,EYECOLOR,
+		LIPS,
+		HAIR,
+		ROBOTIC_LIMBS,
+		NOTRANSSTING,
+		REVIVES_BY_HEALING
+	)
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("ipc_antenna" = ACC_RANDOM, "tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
+	default_mutant_bodyparts = list(
+		"ipc_antenna" = ACC_RANDOM,
+		"tail" = ACC_RANDOM,
+		"snout" = ACC_RANDOM,
+		"legs" = "Digitigrade Legs",
+		"taur" = "None",
+		"wings" = "None"
+	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/synthliz_parts_greyscale.dmi'
 
@@ -132,8 +174,27 @@
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	default_color = "4B4B4B"
-	species_traits = list(ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING,FACEHAIR)
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "fluff" = "None", "wings" = "None", "head_acc" = "None", "neck_acc" = "None")
+	species_traits = list(
+		ROBOTIC_DNA_ORGANS,
+		MUTCOLORS,EYECOLOR,
+		LIPS,HAIR,
+		ROBOTIC_LIMBS,
+		NOTRANSSTING,
+		REVIVES_BY_HEALING,
+		FACEHAIR
+	)
+	default_mutant_bodyparts = list(
+		"tail" = ACC_RANDOM,
+		"snout" = ACC_RANDOM,
+		"horns" = "None",
+		"ears" = ACC_RANDOM,
+		"legs" = ACC_RANDOM,
+		"taur" = "None",
+		"fluff" = "None",
+		"wings" = "None",
+		"head_acc" = "None",
+		"neck_acc" = "None"
+	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/synthmammal_parts_greyscale.dmi'
 
@@ -197,8 +258,24 @@
 	id = "synthhuman"
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	species_traits = list(ROBOTIC_DNA_ORGANS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,REVIVES_BY_HEALING,FACEHAIR,NOTRANSSTING)
-	default_mutant_bodyparts = list("tail" = "None", "snout" = "None", "ears" = "None", "wings" = "None", "taur" = "None", "horns" = "None")
+	species_traits = list(
+		ROBOTIC_DNA_ORGANS,
+		EYECOLOR,
+		LIPS,
+		HAIR,
+		ROBOTIC_LIMBS,
+		REVIVES_BY_HEALING,
+		FACEHAIR,
+		NOTRANSSTING
+	)
+	default_mutant_bodyparts = list(
+		"tail" = "None",
+		"snout" = "None",
+		"ears" = "None",
+		"wings" = "None",
+		"taur" = "None",
+		"horns" = "None"
+	)
 	use_skintones = TRUE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC

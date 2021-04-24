@@ -4,8 +4,19 @@
 	limbs_id = "human"
 	default_color = "FFFFFF"
 	say_mod = "bellows"
-	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_DWARF,TRAIT_SNOB,TRAIT_ADVANCEDTOOLUSER)
+	species_traits = list(
+		EYECOLOR,
+		HAIR,
+		FACEHAIR,
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE
+	)
+	inherent_traits = list(
+		TRAIT_DWARF,TRAIT_SNOB,
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP
+	)
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	disliked_food = GROSS | RAW
