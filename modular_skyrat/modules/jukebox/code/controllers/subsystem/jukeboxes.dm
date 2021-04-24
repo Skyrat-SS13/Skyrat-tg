@@ -1,3 +1,5 @@
+#define JUKEBOX_MAX_RANGE 15 //After X tiles, the player will no longer hear the jukebox.
+
 SUBSYSTEM_DEF(jukeboxes)
 	name = "Jukeboxes"
 	wait = 5
@@ -19,7 +21,7 @@ SUBSYSTEM_DEF(jukeboxes)
 	song_beat = beat
 	song_associated_id = assocID
 
-/datum/controller/subsystem/jukeboxes/proc/addjukebox(var/obj/machinery/jukebox/jukebox, datum/track/T, jukefalloff = 5)
+/datum/controller/subsystem/jukeboxes/proc/addjukebox(var/obj/machinery/jukebox/jukebox, datum/track/T, jukefalloff = 1)
 	if(!istype(T))
 		CRASH("[src] tried to play a song with a nonexistant track")
 	var/channeltoreserve = pick(freejukeboxchannels)
@@ -99,8 +101,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		var/turf/currentturf = get_turf(jukebox)
 
 		song_played.falloff = jukeinfo[4]
-
-		for(var/mob/M in GLOB.player_list)
+		for(var/mob/M in range(JUKEBOX_MAX_RANGE, jukebox))
 			if(!M.client)
 				continue
 			if(!(M.client.prefs.toggles & SOUND_INSTRUMENTS) || !M.can_hear())
