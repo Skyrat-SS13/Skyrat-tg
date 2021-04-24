@@ -271,6 +271,24 @@
 
 				L.forceMove(stepTurf)
 			L.setDir(direct)
+		//SKYRAT EDIT ADDITION START
+		if(INCORPOREAL_MOVE_EMINENCE) //Incorporeal move for emincence. Blocks move like Jaunt but lets it pass through clockwalls
+			var/turf/open/floor/stepTurf = get_step(L, direct)
+			var/turf/loccheck = get_turf(stepTurf)
+			if(stepTurf)
+				for(var/obj/effect/decal/cleanable/food/salt/S in stepTurf)
+					to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
+					return
+				if(stepTurf.flags_1 & NOJAUNT_1)
+					if(!is_reebe(loccheck.z))
+						to_chat(L, "<span class='warning'>Some strange aura is blocking the way.</span>")
+						return
+				if(locate(/obj/effect/blessing, stepTurf))
+					to_chat(L, "<span class='warning'>Holy energies block your path!</span>")
+					return
+				L.forceMove(stepTurf)
+			L.setDir(direct)
+		//SKYRAT EDIT END
 	return TRUE
 
 

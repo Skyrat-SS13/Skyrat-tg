@@ -12,7 +12,6 @@
 	healable = FALSE
 	sight = SEE_SELF
 	throwforce = 0
-
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	unsuitable_atmos_damage = 0
