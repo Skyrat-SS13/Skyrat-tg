@@ -72,7 +72,7 @@
 /obj/item/twohanded/clockwork/proc/hit_effect(mob/living/target, mob/living/user, thrown=FALSE)
 	return
 
-/obj/item/twohanded/clockwork/ 
+/obj/item/twohanded/clockwork/
 	name = "brass spear"
 	desc = "A razor-sharp spear made of brass. It thrums with barely-contained energy."
 	icon_state = "ratvarian_spear"
@@ -165,12 +165,14 @@
 
 /obj/item/ammo_casing/caseless/arrow/clockbolt
 	name = "energy bolt"
+	icon = 'modular_skyrat/modules/clockworkcult/icons/obj/ammo.dmi'
 	desc = "An arrow made from a strange energy."
 	icon_state = "arrow_redlight"
 	projectile_type = /obj/projectile/energy/clockbolt
 
 /obj/projectile/energy/clockbolt
 	name = "energy bolt"
+	icon = 'modular_skyrat/modules/clockworkcult/icons/effects/projectile.dmi'
 	icon_state = "arrow_energy"
 	damage = 24
 	damage_type = BURN

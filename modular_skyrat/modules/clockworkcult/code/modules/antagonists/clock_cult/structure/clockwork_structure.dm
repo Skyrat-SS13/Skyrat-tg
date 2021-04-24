@@ -46,3 +46,8 @@
 	var/needs_power = TRUE
 	var/active_icon = null //icon_state while process() is being called
 	var/inactive_icon = null //icon_state while process() isn't being called
+
+/obj/item/radio/intercom/ratvar
+	name = "ratvarian intercom"
+	icon = 'icons/obj/radio.dmi'
+	icon_state = "intercom_ratvar"
