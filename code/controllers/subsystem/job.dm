@@ -739,17 +739,10 @@ SUBSYSTEM_DEF(job)
 		destination.JoinPlayerHere(M, FALSE)
 		return TRUE
 
-	if(M.job)
-		if(M.job == "Prisoner")
-			destination = pick(SSmapping.prisoner_spawn_locs)
-			destination.JoinPlayerHere(M, buckle)
-			return TRUE
-	//SKYRAT EDIT ADDITION
 	if(latejoin_trackers.len)
 		destination = pick(latejoin_trackers)
 		destination.JoinPlayerHere(M, buckle)
 		return TRUE
-	//SKYRAT EDIT END
 
 	//bad mojo
 	var/area/shuttle/arrival/A = GLOB.areas_by_type[/area/shuttle/arrival]
