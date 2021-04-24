@@ -51,3 +51,4 @@
 	name = "ratvarian intercom"
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "intercom_ratvar"
+	freerange = TRUE //These are spying devices. syndie=true would be too powerful.
