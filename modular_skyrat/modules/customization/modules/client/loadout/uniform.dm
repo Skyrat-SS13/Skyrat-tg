@@ -689,13 +689,13 @@
 
 /datum/loadout_item/uniform/job/engformal
 	name = "Engineering Formal Suit"
-	path = obj/item/clothing/under/rank/engineering/engineer/formal
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal
 	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
 	restricted_desc = "Engineering"
 
 /datum/loadout_item/uniform/job/engformalskirt
 	name = "Engineering Formal Skirt"
-	path = obj/item/clothing/under/rank/engineering/engineer/formal/skirt
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal/skirt
 	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
 	restricted_desc = "Engineering"
 

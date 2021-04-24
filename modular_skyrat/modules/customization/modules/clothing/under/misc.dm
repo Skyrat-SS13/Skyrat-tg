@@ -297,14 +297,14 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "pharmacist_skirt"
 
-obj/item/clothing/under/rank/engineering/engineer/formal
+/obj/item/clothing/under/rank/engineering/engineer/formal
 	desc = "A white shirt with garrish mustard pants, lined with protection against light radiation and fire."
 	name = "engineer's formal wear"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "senior_engineer"
 
-obj/item/clothing/under/rank/engineering/engineer/formal/skirt
+/obj/item/clothing/under/rank/engineering/engineer/formal/skirt
 	desc = "A white shirt with a garrish mustard skirt, lined with protection against light radiation and fire."
 	name = "engineer's formal skirt"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
