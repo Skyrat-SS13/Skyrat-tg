@@ -40,7 +40,7 @@
 	no_dresscode = TRUE
 	blacklist_dresscode_slots = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK) //headset, PDA, ID, backpack are important items
 	required_languages = null
-	alt_titles = list("Civillian", "Tourist", "Businessman", "Trader", "Entertainer")
+	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer")
 
 /datum/job/prisoner
 	required_languages = null
