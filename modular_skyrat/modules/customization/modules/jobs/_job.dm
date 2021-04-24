@@ -11,8 +11,10 @@
 	var/list/species_whitelist
 	//Blacklist of species for this job.
 	var/list/species_blacklist
-	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN 
+	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
 	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
+	//Alt titles
+	var/list/alt_titles = list()
 
 /datum/job/proc/has_banned_quirk(datum/preferences/pref)
 	if(!pref) //No preferences? We'll let you pass, this time (just a precautionary check,you dont wanna mess up gamemode setting logic)
@@ -33,23 +35,30 @@
 		return TRUE
 	return FALSE
 
+// Misc
 /datum/job/assistant
 	no_dresscode = TRUE
 	blacklist_dresscode_slots = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK) //headset, PDA, ID, backpack are important items
 	required_languages = null
+	alt_titles = list("Civillian", "Tourist", "Businessman", "Trader", "Entertainer")
 
+/datum/job/prisoner
+	required_languages = null
+
+//Security
 /datum/job/security_officer
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/detective
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	alt_titles = list("Forensics Technician", "Private Investigator")
 
 /datum/job/warden
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/security_sergeant
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
-	
+
 /datum/job/security_medic
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
@@ -59,14 +68,22 @@
 /datum/job/blueshield
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
+// Command
+
+/datum/job/captain
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	alt_titles = list("Station Commander")
+
 /datum/job/head_of_security
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
+	alt_titles = list("Security Commander")
 
 /datum/job/chief_medical_officer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/chief_engineer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+	alt_titles = list("Engineering Foreman")
 
 /datum/job/research_director
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
@@ -77,29 +94,56 @@
 /datum/job/quartermaster
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
-/datum/job/captain
-	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+//Engineering
+/datum/job/engineer
+	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician")
 
+/datum/job/atmos
+	alt_titles = list("Firefighter", "Life Support Specialist")
+
+//Medical
+/datum/job/doctor
+	alt_titles = list("Nurse", "Surgeon")
+
+/datum/job/paramedic
+	alt_titles = list("Emergency Medical Technician", "Medical Responder")
+
+/datum/job/chemist
+	alt_titles = list("Pharmacist", "Pharmacologist")
+
+//Silicon
 /datum/job/ai
 	loadout = FALSE
 
 /datum/job/cyborg
 	loadout = FALSE
 
+//Science
+/datum/job/scientist
+	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher")
+
+/datum/job/roboticist
+	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer")
+
+//Service
 /datum/job/cook
 	required_languages = null
+	alt_titles = list("Chef", "Culinary Artist", "Butcher")
 
 /datum/job/botanist
 	required_languages = null
+	alt_titles = list("Gardener", "Herbalist", "Botanical Researcher")
 
 /datum/job/curator
 	required_languages = null
+	alt_titles = list("Journalist", "Librarian", "Archivist")
 
 /datum/job/janitor
 	required_languages = null
+	alt_titles = list("Custodian", "Sanitation Technician")
 
-/datum/job/prisoner
-	required_languages = null
+/datum/job/lawyer
+	alt_titles = list("Human Resources Agent", "Internal Affairs Agent")
 
 /datum/job/proc/has_required_languages(datum/preferences/pref)
 	if(!required_languages)
