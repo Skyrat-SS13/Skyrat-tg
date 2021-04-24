@@ -28,21 +28,26 @@ SUBSYSTEM_DEF(jukeboxes)
 	if(!channeltoreserve)
 		return FALSE
 	freejukeboxchannels -= channeltoreserve
-	var/list/youvegotafreejukebox = list(T, channeltoreserve, jukebox, jukefalloff)
-	activejukeboxes.len++
-	activejukeboxes[activejukeboxes.len] = youvegotafreejukebox
+
+	var/list/mobs_in_range
+
+	var/list/youvegotafreejukebox = list(T, channeltoreserve, jukebox, jukefalloff, mobs_in_range)
 
 	//Due to changes in later versions of 512, SOUND_UPDATE no longer properly plays audio when a file is defined in the sound datum. As such, we are now required to init the audio before we can actually do anything with it.
 	//Downsides to this? This means that you can *only* hear the jukebox audio if you were present on the server when it started playing, and it means that it's now impossible to add loops to the jukebox track list.
 	var/sound/song_to_init = sound(T.song_path)
 	song_to_init.status = SOUND_MUTE
-	for(var/mob/M in GLOB.player_list)
+	for(var/mob/M in range(JUKEBOX_MAX_RANGE, jukebox))
 		if(!M.client)
 			continue
 		if(!(M.client.prefs.toggles & SOUND_INSTRUMENTS))
 			continue
 
-		M.playsound_local(M, null, jukebox.volume, channel = youvegotafreejukebox[2], S = song_to_init)
+		youvegotafreejukebox[5] += M
+
+		M.playsound_local(jukebox, null, jukebox.volume, channel = youvegotafreejukebox[2], S = song_to_init)
+	activejukeboxes.len++
+	activejukeboxes[activejukeboxes.len] = youvegotafreejukebox
 	return activejukeboxes.len
 
 /datum/controller/subsystem/jukeboxes/proc/removejukebox(IDtoremove)
@@ -99,8 +104,10 @@ SUBSYSTEM_DEF(jukeboxes)
 			continue
 		var/sound/song_played = sound(juketrack.song_path)
 		var/turf/currentturf = get_turf(jukebox)
-
 		song_played.falloff = jukeinfo[4]
+
+		var/list/old_mobs = jukeinfo[5]
+
 		for(var/mob/M in range(JUKEBOX_MAX_RANGE, jukebox))
 			if(!M.client)
 				continue
@@ -108,11 +115,15 @@ SUBSYSTEM_DEF(jukeboxes)
 				M.stop_sound_channel(jukeinfo[2])
 				continue
 
+			old_mobs -= M
+
 			if(jukebox.z == M.z)	//todo - expand this to work with mining planet z-levels when robust jukebox audio gets merged to master
 				song_played.status = SOUND_UPDATE
 			else
 				song_played.status = SOUND_MUTE | SOUND_UPDATE	//Setting volume = 0 doesn't let the sound properties update at all, which is lame.
-
-			M.playsound_local(currentturf, null, jukebox.volume, channel = jukeinfo[2], S = song_played)
+			M.playsound_local(currentturf, null, jukebox.volume, channel = jukeinfo[2], S = song_played, use_reverb = TRUE)
 			CHECK_TICK
+		for(var/mob/M in jukeinfo[5])
+			M.stop_sound_channel(jukeinfo[2])
+		jukeinfo[5] = old_mobs
 	return
