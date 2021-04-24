@@ -23,7 +23,7 @@
 
 /datum/reagent/drug/pcp/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like KILLING!", "Someone's about to fucking die!", "Rip and tear!")
-	if(M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]!=null)
+	if(M.hud_used!=null)
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.add_filter("pcp_blur", 10, angular_blur_filter(0, 0, 0.7))
 	if(DT_PROB(2.5, delta_time))
@@ -41,7 +41,7 @@
 /datum/reagent/drug/pcp/on_mob_end_metabolize(mob/living/L)
 	if(iscarbon(L))
 		var/mob/living/carbon/M = L
-		if(M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]!=null)
+		if(M.hud_used!=null)
 			var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 			game_plane_master_controller.remove_filter("pcp_blur")
 		M.clear_fullscreen("pcp_rage")

@@ -12,7 +12,7 @@
 	var/high_message = pick("You feel relaxed.", "You feel like you're on the moon.", "You feel like you could walk 20 miles for a quaalude.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
-	if(M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]!=null)
+	if(M.hud_used!=null)
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.add_filter("quaalude_wave", 10, wave_filter(300, 300, 3, 0, WAVE_SIDEWAYS))
 	M.set_drugginess(15 * REM * delta_time)
@@ -30,7 +30,7 @@
 	..()
 
 /datum/reagent/drug/quaalude/on_mob_end_metabolize(mob/living/carbon/M)
-	if(M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]!=null)
+	if(M.hud_used!=null)
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.remove_filter("quaalude_wave")
 
