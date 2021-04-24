@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		return FALSE
 	freejukeboxchannels -= channeltoreserve
 
-	var/list/mobs_in_range
+	var/list/mob/mobs_in_range
 
 	var/list/youvegotafreejukebox = list(T, channeltoreserve, jukebox, jukefalloff, mobs_in_range)
 
@@ -106,7 +106,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		var/turf/currentturf = get_turf(jukebox)
 		song_played.falloff = jukeinfo[4]
 
-		var/list/old_mobs = jukeinfo[5]
+		var/list/mob/old_mobs = jukeinfo[5]
 
 		for(var/mob/M in range(JUKEBOX_MAX_RANGE, jukebox))
 			if(!M.client)
