@@ -49,3 +49,16 @@
 	name = "Completely Normal Space Tile"
 	description = "A completely normal space tile, nothing strange with it at all."
 	cost = 0 //Wasting space budget on this meme of a ruin is stupid, sorry.
+
+/datum/map_template/ruin/space/skyrat/outoftime
+	id = "outoftime"
+	suffix = "outoftime.dmm"
+	name = "Bluespace Displaced Shuttle"
+	description = "A group of Nuclear Operatives bit off more than they bargained for when their shuttle somehow managed to slip on a bluespace peel. Reality seems somewhat unstable here."
+	cost = 2 //I'd count the armed pizza bomb, despite the warnings and obviously suspicious name, as gamer loot still tbh, but not enough to justify higher than 2 cost.
+
+/datum/map_template/ruin/space/skyrat/codealpha
+	id = "codealpha"
+	suffix = "codealpha.dmm"
+	name = "Code Alpha Supplementary Station"
+	description = "The mess hall of a once bustling supplementary station, to be deployed alongside SS13."
