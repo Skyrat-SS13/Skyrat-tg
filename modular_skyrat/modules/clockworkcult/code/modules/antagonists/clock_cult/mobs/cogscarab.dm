@@ -22,6 +22,8 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 		You are not bound by any laws, do whatever you must to serve Rat'var!"
 	chat_color = LIGHT_COLOR_CLOCKWORK
 	initial_language_holder = /datum/language_holder/clockmob
+	hacked = TRUE
+	shy = FALSE
 
 
 //No you can't go weilding guns like that.
