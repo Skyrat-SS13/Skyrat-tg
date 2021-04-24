@@ -46,7 +46,46 @@
 	name = "Prescription glasses"
 	path = /obj/item/clothing/glasses/regular
 
+/datum/loadout_item/glasses/thin
+	name = "Thin Glasses"
+	path = /obj/item/clothing/glasses/thin
+
+/datum/loadout_item/glasses/better
+	name = "Modern Glasses"
+	path = /obj/item/clothing/glasses/betterunshit
+
+/datum/loadout_item/glasses/eyewrap
+	name = "Eyepatch Wrap"
+	path = /obj/item/clothing/glasses/eyepatch/wrap
+
+/datum/loadout_item/glasses/whiteeyepatch
+	name = "White Eyepatch"
+	path = /obj/item/clothing/glasses/eyepatch/white
+
+/datum/loadout_item/glasses/medicpatch
+	name = "Medical Eyepatch"
+	path = /obj/item/clothing/glasses/hud/eyepatch/med
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/glasses/robopatch
+	name = "Diagnostic Eyepatch"
+	path = /obj/item/clothing/glasses/hud/eyepatch/diagnostic
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
+	restricted_desc = "Science"
+
+/datum/loadout_item/glasses/scipatch
+	name = "Science Eyepatch"
+	path = /obj/item/clothing/glasses/hud/eyepatch/sci
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Chemist")
+	restricted_desc = "Science"
+
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"
 	path = /obj/item/clothing/glasses/hud/security
-	restricted_roles = list("Security Officer", "Warden", "Head of Security")
+	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security")
+
+/datum/loadout_item/glasses/secpatch
+	name = "Security Eyepatch Hud"
+	path = /obj/item/clothing/glasses/hud/eyepatch/sec
+	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security")

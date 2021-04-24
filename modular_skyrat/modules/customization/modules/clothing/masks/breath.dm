@@ -17,3 +17,20 @@
 	icon_state = "gas_alt2"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
+/obj/item/clothing/mask/gas/soviet
+	name = "soviet gas mask"
+	desc = "A white gas mask with a green filter, there's a small sticker attached saying it's not got Asbestos anymore."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	icon_state = "gp5_mask"
+
+/obj/item/clothing/mask/gas/hecu1
+	name = "modern gas mask"
+	desc = "MY. ASS. IS. HEAVY."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	icon_state = "hecu"
+
+/obj/item/clothing/mask/gas/hecu2
+	name = "modern gas mask"
+	desc = "MY. ASS. IS. HEAVY."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	icon_state = "hecu2"

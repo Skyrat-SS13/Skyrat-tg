@@ -109,7 +109,7 @@ SUBSYSTEM_DEF(vote)
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
 	log_vote(text)
 	remove_action_buttons()
-	to_chat(world, "\n<font color='purple'>[text]</font>")
+	to_chat(world, "\n<span class='infoplain'><font color='purple'>[text]</font></span>")
 	return .
 
 /datum/controller/subsystem/vote/proc/result()
@@ -130,7 +130,13 @@ SUBSYSTEM_DEF(vote)
 			if("map")
 				SSmapping.changemap(global.config.maplist[.])
 				SSmapping.map_voted = TRUE
-			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
+			//SKYRAT EDIT ADDITION BEGIN
+			if("mining_map")
+				SSrandommining.voted_next_map = TRUE
+				if(fexists("data/next_mining.dat"))
+					fdel("data/next_mining.dat")
+				var/F = file("data/next_mining.dat")
+				WRITE_FILE(F, .)
 			if("transfer")
 				if(. == "Initiate Crew Transfer")
 					SSshuttle.autoEnd()
@@ -209,6 +215,19 @@ SUBSYSTEM_DEF(vote)
 					shuffle_inplace(maps)
 				for(var/valid_map in maps)
 					choices.Add(valid_map)
+			//SKYRAT EDIT ADDITION
+			if("mining_map")
+				if(!lower_admin && SSrandommining.voted_next_map)
+					to_chat(usr, "<span class='warning'>The next map has already been selected.</span>")
+					return FALSE
+				var/list/maps = list()
+				for(var/map in SSrandommining.possible_names)
+					if(SSrandommining.previous_map == map)
+						continue
+					maps += map
+				for(var/valid_map in maps)
+					choices.Add(valid_map)
+			//SKYRAT EDIT ADDITON END
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
@@ -232,7 +251,7 @@ SUBSYSTEM_DEF(vote)
 			text += "\n[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		to_chat(world, "\n<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\nYou have [DisplayTimeText(vp)] to vote.</font>")
+		to_chat(world, "\n<span class='infoplain'><font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\nYou have [DisplayTimeText(vp)] to vote.</font></span>")
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
@@ -285,7 +304,7 @@ SUBSYSTEM_DEF(vote)
 	)
 
 	if(!!user.client?.holder)
-		data["voting"] += list(voting)
+		data["voting"] = voting
 
 	for(var/key in choices)
 		data["choices"] += list(list(
@@ -329,6 +348,11 @@ SUBSYSTEM_DEF(vote)
 		if("map")
 			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
 				initiate_vote("map",usr.key)
+		//SKYRAT EDIT ADDITION
+		if("mining_map")
+			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
+				initiate_vote("mining_map",usr.key)
+		//SKYRAT EDIT END
 		if("custom")
 			if(usr.client.holder)
 				initiate_vote("custom",usr.key)

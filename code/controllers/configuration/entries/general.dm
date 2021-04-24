@@ -79,6 +79,8 @@
 
 /datum/config_entry/flag/log_subtler // log subtler emotes //SKYRAT EDIT ADDITION
 
+/datum/config_entry/flag/log_ambition // log ambition changes //SKYRAT EDIT ADDITION
+
 /datum/config_entry/flag/log_econ // log economy actions
 
 /datum/config_entry/flag/log_adminchat // log admin chat messages
@@ -206,6 +208,13 @@
 /datum/config_entry/flag/use_exp_restrictions_other
 
 /datum/config_entry/flag/use_exp_restrictions_admin_bypass
+
+/datum/config_entry/flag/use_low_living_hour_intern
+
+/datum/config_entry/number/use_low_living_hour_intern_hours
+	config_entry_value = 0
+	integer = FALSE
+	min_val = 0
 
 /datum/config_entry/string/server
 
@@ -510,6 +519,9 @@
 //SKYRAT EDIT ADDITION BEGIN
 /datum/config_entry/string/servertagline
 	config_entry_value = "We forgot to set the server's tagline in config.txt"
+
+/datum/config_entry/string/discord_link
+	config_entry_value = "We forgot to set the server's discord link in config.txt"
 
 /datum/config_entry/flag/sql_game_log
 	protection = CONFIG_ENTRY_LOCKED

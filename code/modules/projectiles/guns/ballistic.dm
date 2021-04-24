@@ -257,6 +257,7 @@
 		if (bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
 			chamber_round(TRUE)
 		update_appearance()
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 		return TRUE
 	else
 		to_chat(user, "<span class='warning'>You cannot seem to get \the [src] out of your hands!</span>")
@@ -285,6 +286,7 @@
 	if (display_message)
 		to_chat(user, "<span class='notice'>You pull the [magazine_wording] out of \the [src].</span>")
 	update_appearance()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 /obj/item/gun/ballistic/can_shoot()
 	return chambered
@@ -553,6 +555,11 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 		name = "sawn-off [src.name]"
 		desc = sawn_desc
 		w_class = WEIGHT_CLASS_NORMAL
+		//The file might not have a "gun" icon, let's prepare for this
+		lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+		inhand_x_dimension = 32
+		inhand_y_dimension = 32
 		inhand_icon_state = "gun"
 		worn_icon_state = "gun"
 		slot_flags &= ~ITEM_SLOT_BACK //you can't sling it on your back

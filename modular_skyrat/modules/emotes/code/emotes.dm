@@ -130,6 +130,14 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg'
 
+/datum/emote/living/mousesqueak
+	key = "squeak"
+	key_third_person = "squeaks"
+	message = "squeaks!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/effects/mousesqueek.ogg'
+
 /datum/emote/living/merp
 	key = "merp"
 	key_third_person = "merps"
@@ -435,3 +443,36 @@
 	animate(gloveimg, alpha = 175, transform = matrix() * 0.75, pixel_x = 0, pixel_y = -5, pixel_z = 0, time = 3)
 	animate(time = 1)
 	animate(alpha = 0, time = 3, easing = CIRCULAR_EASING|EASE_OUT)
+
+//Froggie Revolution
+/datum/emote/living/warble
+	key = "warble"
+	key_third_person = "warbles"
+	message = "warbles!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/warbles.ogg'
+
+/datum/emote/living/trills
+	key = "trills"
+	key_third_person = "trills!"
+	message = "trills!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/trills.ogg'
+
+/datum/emote/living/rpurr
+	key = "rpurr"
+	key_third_person = "purrs!"
+	message = "purrs!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/raptor_purr.ogg'
+
+/datum/emote/living/purr //Ported from CitRP originally by buffyuwu.
+	key = "purr"
+	key_third_person = "purrs!"
+	message = "purrs!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'

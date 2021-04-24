@@ -19,7 +19,7 @@
 	anchored = TRUE
 	appearance_flags = LONG_GLIDE
 	density = TRUE
-	layer = MASSIVE_OBJ_LAYER
+	plane = MASSIVE_OBJ_PLANE
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	move_resist = INFINITY
@@ -217,6 +217,15 @@
 										/obj/machinery/portable_atmospherics,
 										/obj/machinery/power/emitter,
 										/obj/machinery/field/generator,
+										//SKYRAT EDIT ADDITION BEGIN
+										/obj/machinery/particle_accelerator/control_box,
+										/obj/structure/particle_accelerator/fuel_chamber,
+										/obj/structure/particle_accelerator/particle_emitter/center,
+										/obj/structure/particle_accelerator/particle_emitter/left,
+										/obj/structure/particle_accelerator/particle_emitter/right,
+										/obj/structure/particle_accelerator/power_box,
+										/obj/structure/particle_accelerator/end_cap,
+										//SKYRAT EDIT END
 										/mob/living/simple_animal,
 										/obj/machinery/field/containment,
 										/obj/structure/disposalpipe,

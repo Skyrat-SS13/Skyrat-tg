@@ -11,9 +11,9 @@
 
 /obj/item/storage/hypospraykit/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 12
-	STR.can_hold = typecacheof(list(
+	var/datum/component/storage/stored = GetComponent(/datum/component/storage)
+	stored.max_items = 12
+	stored.can_hold = typecacheof(list(
 	/obj/item/hypospray/mkii,
 	/obj/item/reagent_containers/glass/bottle/vial))
 
@@ -30,7 +30,7 @@
 
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"
-	desc = "A kit containing a Deluxe hypospray and Vials."
+	desc = "A kit containing a deluxe hypospray and vials."
 	icon_state = "tactical-mini"
 
 /obj/item/storage/hypospraykit/cmo/PopulateContents()

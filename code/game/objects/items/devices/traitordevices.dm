@@ -257,15 +257,49 @@ effective or pretty fucking useless.
 	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
-	var/range = 12
+	var/range = 20 //SKYRAT EDIT CHANGE - ORIGINAL:12
+
+	//SKYRAT EDIT ADDITION BEGIN
+/obj/item/jammer/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/cell, power_use_amount, CALLBACK(src, .proc/turn_off))
+
+/obj/item/jammer/proc/turn_on()
+	active = TRUE
+	GLOB.active_jammers |= src
+	START_PROCESSING(SSobj, src)
+
+/obj/item/jammer/proc/turn_off()
+	active = FALSE
+	GLOB.active_jammers -= src
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/jammer/process(delta_time)
+	if(!active)
+		STOP_PROCESSING(SSobj, src)
+		return
+	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
+		turn_off()
+		return
+
+/obj/item/jammer/examine(mob/user)
+	. = ..()
+	. += "[src] is currently [active ? "on" : "off"]."
+	//SKYRAT EDIT END
 
 /obj/item/jammer/attack_self(mob/user)
-	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>")
+	//SKYRAT EDIT ADDITON
+	if(!active && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
+		return
+	//SKYRAT EDIT END
+	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
 	active = !active
 	if(active)
-		GLOB.active_jammers |= src
+		turn_on() //SKYRAT EDIT CHANGE
 	else
-		GLOB.active_jammers -= src
+		turn_off() //SKYRAT EDIT CHANGE
+
+	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") //SKYRAT EDIT MOVE
 	update_appearance()
 
 /obj/item/storage/toolbox/emergency/turret
