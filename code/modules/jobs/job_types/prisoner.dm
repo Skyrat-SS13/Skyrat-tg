@@ -3,7 +3,7 @@
 	department_head = list("The Security Team")
 	faction = "Station"
 	total_positions = 12		// SKYRAT EDIT: Original value (0)
-	spawn_positions = 4 //SKYRAT EDIT CHANGE - Original: 2
+	spawn_positions = 2
 	supervisors = "the security team"
 	selection_color = "#ffe1c3"
 	paycheck = PAYCHECK_PRISONER
