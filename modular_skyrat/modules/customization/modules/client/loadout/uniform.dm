@@ -646,13 +646,13 @@
 /datum/loadout_item/uniform/job/formalchem
 	name = "Formal Chemist Suit"
 	path = /obj/item/clothing/under/rank/medical/chemist/formal
-	restricted_roles = list("Chief Medical Officer" "Chemist")
+	restricted_roles = list("Chief Medical Officer", "Chemist")
 	restricted_desc = "Chemistry"
 
 /datum/loadout_item/uniform/job/formalchemskirt
 	name = "Formal Chemist Skirt"
 	path = /obj/item/clothing/under/rank/medical/chemist/formal/skirt
-	restricted_roles = list("Chief Medical Officer" "Chemist")
+	restricted_roles = list("Chief Medical Officer", "Chemist")
 	restricted_desc = "Chemistry"
 
 /datum/loadout_item/uniform/job/gorka_cargo
