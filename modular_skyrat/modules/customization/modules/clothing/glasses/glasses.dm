@@ -109,3 +109,5 @@
 	icon_state = "biker"
 	inhand_icon_state = "welding-g"
 	vision_correction = TRUE
+
+
