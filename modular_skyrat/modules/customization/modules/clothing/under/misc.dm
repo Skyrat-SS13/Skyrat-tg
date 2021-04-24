@@ -218,6 +218,7 @@
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
+///COWBOY
 /obj/item/clothing/under/rancher
 	name = "rancher outfit"
 	desc = "An outfit from the desert outback, phrases around family murder or revenge seem to echo from this get-up."
@@ -253,5 +254,77 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
+///FORMAL DEPT
+/obj/item/clothing/under/rank/medical/virologist/formal ///Do NOT add this to the vendor unless you want Peter Griffen
+	desc = "It's not what you think, I swear."
+	name = "formal virologist suit"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "pathologist"
+	inhand_icon_state = "w_suit"
+
+/obj/item/clothing/under/rank/medical/virologist/formal/skirt
+	name = "formal virologist skirt"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "pathologist_skirt"
+
+/obj/item/clothing/under/rank/medical/doctor/formal
+	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
+	name = "medical doctor's formal wear"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "senior_medical"
+
+/obj/item/clothing/under/rank/medical/doctor/formal/skirt
+	desc = "A white shirt with a blue skirt, lined with a protection against some light biohazards."
+	name = "medical doctor's formal skirt"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "senior_medical_skirt"
+
+/obj/item/clothing/under/rank/medical/chemist/formal
+	desc = "A orange shirt with white pants, lined with protection against chemical spills."
+	name = "chemist's formal wear"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "pharmacist"
+
+/obj/item/clothing/under/rank/medical/chemist/formal/skirt
+	desc = "A orange shirt with a white skirt, lined with protection against chemical spills."
+	name = "chemist's formal skirt"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "pharmacist_skirt"
+
+obj/item/clothing/under/rank/engineering/engineer/formal
+	desc = "A white shirt with garrish mustard pants, lined with protection against light radiation and fire."
+	name = "engineer's formal wear"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "senior_engineer"
+
+obj/item/clothing/under/rank/engineering/engineer/formal/skirt
+	desc = "A white shirt with a garrish mustard skirt, lined with protection against light radiation and fire."
+	name = "engineer's formal skirt"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "senior_engineer_skirt"
+
+/obj/item/clothing/under/rank/cargo/qm/formal
+	name = "quartermaster's formal jumpsuit"
+	desc = "A white shirt with some Cargoium Brown trousers. Expect to see a shotgun wrapped around it."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "supply_chief"
+	inhand_icon_state = "lb_suit"
+
+/obj/item/clothing/under/rank/cargo/qm/formal/skirt
+	name = "quartermaster's formal jumpskirt"
+	desc = "A white shirt with a Cargoium Brown skirt. Expect to see a shotgun wrapped around it."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "supply_chief"
+	inhand_icon_state = "lb_suit"
 
 
