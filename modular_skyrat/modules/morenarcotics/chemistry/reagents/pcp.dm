@@ -23,14 +23,15 @@
 
 /datum/reagent/drug/pcp/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like KILLING!", "Someone's about to fucking die!", "Rip and tear!")
-	var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+	if(M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]!=null)
+		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+		game_plane_master_controller.add_filter("pcp_blur", 10, angular_blur_filter(0, 0, 0.7))
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, "<span class='warning'>[high_message]</span>")
 	M.AdjustKnockdown(-20 * REM * delta_time)
 	M.AdjustImmobilized(-20 * REM * delta_time)
 	M.adjustStaminaLoss(-10 * REM * delta_time, 0)
 	M.AdjustStun(-10 * REM * delta_time) //this is absolutely rediculous
-	game_plane_master_controller.add_filter("pcp_blur", 10, angular_blur_filter(0, 0, 0.7))
 	M.overlay_fullscreen("pcp_rage", /atom/movable/screen/fullscreen/color_vision/rage_color)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 	if(DT_PROB(3.5, delta_time))
@@ -40,8 +41,9 @@
 /datum/reagent/drug/pcp/on_mob_end_metabolize(mob/living/L)
 	if(iscarbon(L))
 		var/mob/living/carbon/M = L
-		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
-		game_plane_master_controller.remove_filter("pcp_blur")
+		if(M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]!=null)
+			var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
+			game_plane_master_controller.remove_filter("pcp_blur")
 		M.clear_fullscreen("pcp_rage")
 		M.sound_environment_override = SOUND_ENVIRONMENT_NONE
 	if(pcp_rage)
