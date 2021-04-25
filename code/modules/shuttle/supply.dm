@@ -233,5 +233,52 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	SSshuttle.centcom_message = msg
 	investigate_log("Shuttle contents sold for [D.account_balance - presale_points] credits. Contents: [ex.exported_atoms ? ex.exported_atoms.Join(",") + "." : "none."] Message: [SSshuttle.centcom_message || "none."]", INVESTIGATE_CARGO)
 
+<<<<<<< HEAD
+=======
+/*
+	Generates a box of mail depending on our exports and imports.
+	Applied in the cargo shuttle sending/arriving, by building the crate if the round is ready to introduce mail based on the economy subsystem.
+	Then, fills the mail crate with mail, by picking applicable crew who can recieve mail at the time to sending.
+*/
+/obj/docking_port/mobile/supply/proc/create_mail()
+	//Early return if there's no mail waiting to prevent taking up a slot.
+	if(!SSeconomy.mail_waiting)
+		return
+	//spawn crate
+	var/list/empty_turfs = list()
+	for(var/place as anything in shuttle_areas)
+		var/area/shuttle/shuttle_area = place
+		for(var/turf/open/floor/shuttle_floor in shuttle_area)
+			if(shuttle_floor.is_blocked_turf())
+				continue
+			empty_turfs += shuttle_floor
+	var/obj/structure/closet/crate/mail/mailcrate = new(pick(empty_turfs))
+
+	//collect recipients
+	var/list/mail_recipients = list()
+	for(var/mob/living/carbon/human/player_human in GLOB.player_list)
+		if(player_human.stat != DEAD)
+			mail_recipients += player_human
+
+	//Creates mail for all the mail waiting to arrive, if there's nobody to recieve it it's just junkmail.
+	for(var/mail_iterator in 1 to SSeconomy.mail_waiting)
+		var/obj/item/mail/new_mail
+		if(prob(FULL_CRATE_LETTER_ODDS))
+			new_mail = new /obj/item/mail(mailcrate)
+		else
+			new_mail = new /obj/item/mail/envelope(mailcrate)
+		var/mob/living/carbon/human/mail_to
+		if(mail_recipients.len)
+			mail_to = pick(mail_recipients)
+			new_mail.initialize_for_recipient(mail_to)
+			mail_recipients -= mail_to
+		else
+			new_mail.junk_mail()
+		if(new_mail)
+			SSeconomy.mail_waiting -= 1
+	mailcrate.update_icon()
+	return mailcrate
+
+>>>>>>> 154b4ec4016 ( Fixes mail multiplying in a hellish race to Avogadro's number (#58699))
 #undef GOODY_FREE_SHIPPING_MAX
 #undef CRATE_TAX
