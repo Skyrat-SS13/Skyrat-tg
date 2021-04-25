@@ -105,7 +105,7 @@
 	results = list(/datum/reagent/consumable/ethanol/appletini = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 3, /datum/reagent/consumable/ethanol/hcider = 1, /datum/reagent/consumable/lemonjuice = 1)
 
-/datum.chemical_reaction/drink/quadruple_sec/cityofsin
+/datum/chemical_reaction/drink/quadruple_sec/cityofsin
 	results = list(/datum/reagent/consumable/ethanol/quadruple_sec/cityofsin = 4)
 	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/ethanol/champagne = 1, /datum/reagent/consumable/berryjuice = 1)
 
