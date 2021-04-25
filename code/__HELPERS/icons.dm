@@ -1192,9 +1192,9 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	var/icon/I = getFlatIcon(thing)
 	return icon2html(I, target, sourceonly = sourceonly)
+*/
 
 GLOBAL_LIST_EMPTY(transformation_animation_objects)
-*/
 
 /*
  * Creates animation that turns current icon into result appearance from top down.
