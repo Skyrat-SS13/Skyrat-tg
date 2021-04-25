@@ -130,6 +130,14 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg'
 
+/datum/emote/living/mousesqueak
+	key = "squeak"
+	key_third_person = "squeaks"
+	message = "squeaks!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'sound/effects/mousesqueek.ogg'
+
 /datum/emote/living/merp
 	key = "merp"
 	key_third_person = "merps"
@@ -452,3 +460,19 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/trills.ogg'
+
+/datum/emote/living/rpurr
+	key = "rpurr"
+	key_third_person = "purrs!"
+	message = "purrs!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/raptor_purr.ogg'
+
+/datum/emote/living/purr //Ported from CitRP originally by buffyuwu.
+	key = "purr"
+	key_third_person = "purrs!"
+	message = "purrs!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'

@@ -325,8 +325,8 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "aY" = (
-/turf/template_noop,
-/area/ruin/unpowered/no_grav)
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "aZ" = (
 /turf/closed/indestructible/syndicate,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
@@ -451,6 +451,10 @@
 /obj/item/pen,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"bv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "bx" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/security/telescreen/interrogation{
@@ -473,11 +477,6 @@
 	req_one_access_txt = "150"
 	},
 /obj/item/language_manual/codespeak_manual/unlimited,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "bB" = (
@@ -1200,10 +1199,11 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "dz" = (
-/obj/structure/lattice/catwalk,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/structure/cable,
-/turf/template_noop,
-/area/ruin/unpowered/no_grav)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "dA" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /turf/open/floor/iron/dark,
@@ -1216,6 +1216,13 @@
 /obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"er" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "eu" = (
 /obj/structure/window/reinforced/spawner/north,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -1240,6 +1247,19 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"gc" = (
+/turf/open/floor/engine/o2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"go" = (
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 4
+	},
+/turf/open/floor/engine/air,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"gs" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "gy" = (
 /turf/closed/mineral,
 /area/ruin/unpowered/no_grav)
@@ -1274,6 +1294,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"is" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"iM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "iV" = (
 /obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -1281,6 +1311,23 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"iY" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/template_noop)
+"jx" = (
+/obj/machinery/power/apc/auto_name/east{
+	start_charge = 0
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"kl" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "ky" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
@@ -1288,6 +1335,13 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"kG" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/crate/solarpanel_small,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "kH" = (
 /obj/machinery/door/window{
 	dir = 1;
@@ -1331,6 +1385,14 @@
 /obj/item/crowbar/red,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"lI" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"lM" = (
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "lV" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/wood{
@@ -1361,6 +1423,10 @@
 /obj/item/clothing/mask/chameleon,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
+"nt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "nL" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -1377,6 +1443,10 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"ok" = (
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/inverse,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "oE" = (
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
@@ -1393,6 +1463,21 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"pa" = (
+/obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/visible,
+/obj/machinery/atmospherics/pipe/bridge_pipe/supply/visible{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"pv" = (
+/obj/item/stack/circuit_stack/full,
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/item/stack/circuit_stack/full,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "pB" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
@@ -1494,6 +1579,17 @@
 /obj/item/card/id/advanced/chameleon,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
+"rZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"sl" = (
+/obj/machinery/atmospherics/pipe/bridge_pipe/general/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/bridge_pipe/supply/visible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "ss" = (
 /obj/structure/frame/machine,
 /obj/structure/window/reinforced/spawner,
@@ -1510,6 +1606,14 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"sP" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"sU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "tc" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 9
@@ -1559,6 +1663,33 @@
 /obj/machinery/light,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
+"vj" = (
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
+"vE" = (
+/turf/open/floor/engine/n2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"vF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"vP" = (
+/obj/machinery/door/airlock/atmos,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "wf" = (
 /turf/open/floor/mineral/plastitanium{
 	icon_state = "plastitanium_dam1"
@@ -1580,8 +1711,20 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xz" = (
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
+	},
 /obj/machinery/light,
-/obj/structure/closet/crate/solarpanel_small,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "xF" = (
@@ -1600,6 +1743,16 @@
 /obj/item/storage/bag/tray,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"yp" = (
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"yq" = (
+/turf/open/floor/engine/air,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "yy" = (
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
@@ -1614,6 +1767,12 @@
 /obj/item/skillchip/job/roboticist,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
+"yA" = (
+/obj/effect/turf_decal/vg_decals/atmos/oxygen{
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "yK" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -1643,6 +1802,21 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"zE" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/template_noop,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"zQ" = (
+/obj/machinery/atmospherics/miner/nitrogen,
+/turf/open/floor/engine/n2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"Ag" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Aq" = (
 /turf/open/floor/mineral/plastitanium{
 	icon_state = "plastitanium_dam4"
@@ -1673,6 +1847,10 @@
 /obj/machinery/griddle,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"Cq" = (
+/obj/structure/rack,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Df" = (
 /obj/machinery/biogenerator,
 /obj/effect/turf_decal/trimline/green/filled/line{
@@ -1687,8 +1865,8 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Dr" = (
-/turf/closed/mineral/random/high_chance,
-/area/template_noop)
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "DA" = (
 /obj/machinery/mineral/ore_redemption{
 	name = "Syndicate ore redemption machine";
@@ -1697,10 +1875,28 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
+"DL" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "DN" = (
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
+"Ed" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"Eh" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"EE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4
+	},
+/turf/open/floor/engine/air,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Fu" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -1725,6 +1921,13 @@
 /obj/effect/turf_decal/trimline/green/filled/line,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"GN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Ha" = (
 /obj/structure/closet/syndicate{
 	anchored = 1;
@@ -1749,6 +1952,9 @@
 "Hp" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"Hr" = (
+/turf/closed/mineral/random,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Ih" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
@@ -1788,6 +1994,14 @@
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"IY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"Jf" = (
+/obj/machinery/atmospherics/miner/oxygen,
+/turf/open/floor/engine/o2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "JC" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/iron/dark,
@@ -1819,15 +2033,42 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"KB" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"KD" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Lr" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner,
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"Lv" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 4
+	},
+/turf/open/floor/engine/air,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"LF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "LH" = (
 /obj/effect/decal/cleanable/robot_debris/limb,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"MB" = (
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "MD" = (
 /obj/machinery/door/password/voice/sfc{
 	password = null
@@ -1901,6 +2142,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"OM" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"OS" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/turf/template_noop,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Ps" = (
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
@@ -1959,6 +2211,11 @@
 /obj/machinery/microwave,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"RN" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/marker_beacon/burgundy,
+/turf/template_noop,
+/area/template_noop)
 "RP" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 4
@@ -1975,6 +2232,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"SI" = (
+/obj/structure/grille,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "Tj" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -2021,6 +2283,12 @@
 /obj/machinery/computer/bookmanagement,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"UN" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "UV" = (
 /obj/structure/window/reinforced/spawner,
 /obj/machinery/hydroponics/constructable,
@@ -2029,6 +2297,27 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"Vr" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"Vs" = (
+/obj/structure/grille,
+/turf/closed/wall/r_wall,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"Vv" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"Vw" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
+"VF" = (
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "VG" = (
 /obj/structure/cable,
 /obj/machinery/door/window{
@@ -2066,6 +2355,10 @@
 /obj/effect/decal/cleanable/ash/large,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"XJ" = (
+/obj/machinery/atmospherics/components/trinary/filter/atmos/o2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 "XM" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/window/reinforced/spawner,
@@ -2115,6 +2408,7 @@
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/plasteel/fifty,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "Zc" = (
@@ -2127,6 +2421,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"Zm" = (
+/obj/machinery/atmospherics/components/trinary/filter/atmos/n2,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cybersun/atmospherics)
 
 (1,1,1) = {"
 aa
@@ -2153,8 +2451,33 @@ aa
 aa
 aa
 aa
-Dr
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
+bU
 aa
 aa
 aa
@@ -2193,9 +2516,34 @@ aa
 aa
 aa
 aa
-Dr
-Dr
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
+bU
+bU
 aa
 aa
 aa
@@ -2234,8 +2582,33 @@ aa
 aa
 aa
 aa
-Dr
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
+bU
 aa
 aa
 aa
@@ -2249,6 +2622,31 @@ aa
 aa
 "}
 (4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aq
@@ -2291,6 +2689,31 @@ aa
 (5,1,1) = {"
 aa
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aq
 aq
 aq
@@ -2330,6 +2753,31 @@ aa
 "}
 (6,1,1) = {"
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 ad
 aq
 aq
@@ -2363,13 +2811,38 @@ aa
 aa
 aa
 aa
-Dr
-Dr
-Dr
+bU
+bU
+bU
 aa
 "}
 (7,1,1) = {"
 aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 bZ
 bZ
@@ -2404,11 +2877,36 @@ aa
 aa
 aa
 aa
-Dr
-Dr
-Dr
+bU
+bU
+bU
 "}
 (8,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 ab
 bZ
 as
@@ -2449,6 +2947,31 @@ aa
 aa
 "}
 (9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 af
 ap
 dm
@@ -2489,6 +3012,31 @@ aa
 aa
 "}
 (10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 af
 dm
 au
@@ -2514,11 +3062,11 @@ aa
 aa
 aa
 aa
-aY
-aY
-aY
-aY
-aY
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -2529,6 +3077,31 @@ aa
 aa
 "}
 (11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 af
 dk
 dt
@@ -2552,14 +3125,14 @@ aa
 aa
 aa
 aa
-aY
-aY
-aY
+aa
+aa
+aa
 ba
 bU
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
@@ -2569,6 +3142,31 @@ aa
 aa
 "}
 (12,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 bZ
 bZ
@@ -2591,16 +3189,16 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 ba
 ba
 ba
 ba
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
@@ -2609,6 +3207,31 @@ aa
 aa
 "}
 (13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 ae
 dm
@@ -2630,8 +3253,8 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 ba
 aZ
@@ -2640,7 +3263,7 @@ aZ
 aZ
 ba
 ba
-aY
+aa
 aa
 aa
 aa
@@ -2649,6 +3272,31 @@ aa
 aa
 "}
 (14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 bV
 dm
@@ -2669,8 +3317,8 @@ bZ
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 ba
 aZ
@@ -2680,7 +3328,7 @@ my
 aZ
 aZ
 ba
-aY
+aa
 aa
 aa
 aa
@@ -2689,6 +3337,31 @@ aa
 aa
 "}
 (15,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 ag
 dm
@@ -2709,7 +3382,7 @@ bZ
 aa
 aa
 aa
-aY
+aa
 ba
 ba
 ba
@@ -2720,8 +3393,8 @@ hU
 rU
 aZ
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
@@ -2729,6 +3402,31 @@ aa
 aa
 "}
 (16,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 dg
 bZ
 ch
@@ -2749,7 +3447,7 @@ dg
 aa
 aa
 aa
-aY
+aa
 ba
 bU
 ba
@@ -2761,7 +3459,7 @@ mZ
 aZ
 ba
 bU
-aY
+aa
 aa
 aa
 aa
@@ -2769,6 +3467,31 @@ aa
 aa
 "}
 (17,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 bZ
 bZ
@@ -2789,8 +3512,8 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 ba
 aZ
@@ -2801,14 +3524,39 @@ YT
 aZ
 ba
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
 aa
 "}
 (18,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 bZ
 av
@@ -2829,7 +3577,7 @@ aa
 aa
 aa
 aa
-aY
+aa
 ba
 ba
 ba
@@ -2842,13 +3590,38 @@ aZ
 ba
 ba
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
 "}
 (19,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 bZ
 ay
@@ -2869,7 +3642,7 @@ aa
 aa
 aa
 aa
-aY
+aa
 ba
 ba
 bU
@@ -2883,12 +3656,37 @@ ba
 ba
 ba
 ba
-aY
+aa
 aa
 aa
 aa
 "}
 (20,1,1) = {"
+aa
+aa
+aa
+aa
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+Vs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 bZ
 aA
@@ -2909,8 +3707,8 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 ba
 dd
@@ -2921,14 +3719,39 @@ vh
 bb
 ba
 ba
-aY
-aY
-aY
+aa
+aa
+aa
 aa
 aa
 aa
 "}
 (21,1,1) = {"
+aa
+aa
+aa
+aa
+Vs
+gc
+yA
+gc
+Vs
+vE
+VF
+vE
+Vs
+yq
+go
+yq
+Vs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 ab
 bZ
 am
@@ -2950,7 +3773,7 @@ aa
 aa
 aa
 aa
-aY
+aa
 ba
 ba
 bb
@@ -2960,15 +3783,40 @@ DA
 bj
 bb
 ba
-aY
-aY
-aY
-aY
+aa
+aa
+aa
+aa
 aa
 aa
 aa
 "}
 (22,1,1) = {"
+aa
+aa
+aa
+aa
+Vs
+gc
+Jf
+gc
+Vs
+vE
+zQ
+vE
+Vs
+yq
+yq
+yq
+Vs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 aj
 al
@@ -2990,8 +3838,8 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 bb
 xF
@@ -3003,12 +3851,37 @@ gy
 ba
 ba
 ba
-aY
+aa
 aa
 aa
 aa
 "}
 (23,1,1) = {"
+aa
+aa
+aa
+aa
+Vs
+kl
+gc
+KB
+Vs
+Ag
+vE
+UN
+Vs
+Lv
+yq
+EE
+Vs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 bZ
 ar
@@ -3031,24 +3904,49 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 aX
 DN
 bj
 bj
-bj
+pv
 bb
 bU
 ba
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
 "}
 (24,1,1) = {"
+aa
+aa
+aa
+aa
+Vs
+SI
+Ed
+SI
+Vs
+SI
+Ed
+SI
+Vs
+SI
+Ed
+SI
+Vs
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 ac
 bd
 bh
@@ -3071,24 +3969,49 @@ eK
 eK
 eK
 eK
-dz
-dz
+eK
+eK
 dh
 DN
 bj
 bj
-bj
+vj
 bb
 ba
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
 aa
 "}
 (25,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+OS
+lI
+OS
+aa
+OS
+lI
+OS
+aa
+OS
+lI
+OS
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 bS
 bT
@@ -3111,17 +4034,17 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 bf
-de
+kG
 bj
 bj
 xz
 bb
 ba
 ba
-aY
+aa
 aa
 aa
 aa
@@ -3129,6 +4052,31 @@ aa
 aa
 "}
 (26,1,1) = {"
+aa
+aa
+aa
+aa
+MB
+Eh
+Vw
+Eh
+MB
+Eh
+Vw
+Eh
+MB
+Eh
+Vw
+Eh
+MB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 bZ
 ai
 cr
@@ -3150,8 +4098,8 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 bb
 bb
@@ -3161,7 +4109,7 @@ bb
 bb
 ba
 ba
-aY
+aa
 aa
 aa
 aa
@@ -3169,6 +4117,31 @@ aa
 aa
 "}
 (27,1,1) = {"
+aa
+aa
+aa
+sP
+MB
+is
+Vv
+rZ
+rZ
+sl
+rZ
+ok
+rZ
+rZ
+Vv
+rZ
+MB
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 dg
 Hp
 aU
@@ -3190,7 +4163,7 @@ aa
 aa
 aa
 aa
-aY
+aa
 ba
 ba
 ba
@@ -3201,7 +4174,7 @@ bb
 ba
 ba
 bU
-aY
+aa
 aa
 aa
 aa
@@ -3209,6 +4182,31 @@ aa
 aa
 "}
 (28,1,1) = {"
+aa
+aa
+aa
+zE
+Vr
+XJ
+IY
+IY
+IY
+Zm
+IY
+IY
+IY
+IY
+IY
+pa
+gs
+OM
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 bZ
 bZ
@@ -3230,8 +4228,8 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 ba
 ba
 ba
@@ -3240,8 +4238,8 @@ bU
 ba
 ba
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
@@ -3249,6 +4247,31 @@ aa
 aa
 "}
 (29,1,1) = {"
+aa
+aa
+aa
+sU
+MB
+er
+KD
+KD
+KD
+KD
+KD
+KD
+KD
+KD
+KD
+GN
+MB
+MB
+MB
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -3271,16 +4294,16 @@ aa
 aa
 aa
 aa
-aY
-aY
+aa
+aa
 bU
 ba
 ba
 ba
 ba
 ba
-aY
-aY
+aa
+aa
 aa
 aa
 aa
@@ -3289,6 +4312,31 @@ aa
 aa
 "}
 (30,1,1) = {"
+aa
+aa
+aY
+nt
+MB
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+DL
+bv
+MB
+Vv
+MB
+RN
+aa
+aa
+aa
+aa
+aa
 bZ
 bZ
 bZ
@@ -3312,14 +4360,14 @@ aa
 aa
 aa
 aa
-aY
-aY
-aY
-aY
-aY
-aY
-aY
-aY
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -3329,6 +4377,31 @@ aa
 aa
 "}
 (31,1,1) = {"
+aa
+aa
+dz
+LF
+vP
+vF
+vF
+vF
+vF
+vF
+vF
+vF
+vF
+vF
+vF
+vF
+yp
+iM
+lM
+iY
+aa
+aa
+aa
+aa
+aa
 bZ
 ak
 aP
@@ -3369,6 +4442,31 @@ aa
 aa
 "}
 (32,1,1) = {"
+aa
+aY
+Dr
+Cq
+MB
+Hr
+Hr
+DL
+DL
+Hr
+Hr
+DL
+jx
+Hr
+DL
+DL
+MB
+Vv
+MB
+RN
+aa
+aa
+aa
+aa
+aa
 bZ
 an
 bH
@@ -3409,6 +4507,31 @@ aa
 aa
 "}
 (33,1,1) = {"
+aa
+ba
+aY
+MB
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+Hr
+MB
+Hr
+Hr
+MB
+MB
+MB
+MB
+aa
+aa
+aa
+aa
+aa
+aa
 dg
 Hp
 bQ
@@ -3449,6 +4572,31 @@ aa
 aa
 "}
 (34,1,1) = {"
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 bZ
 bZ
@@ -3489,6 +4637,31 @@ aa
 aa
 "}
 (35,1,1) = {"
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 bZ
@@ -3520,7 +4693,7 @@ aa
 aa
 aa
 aa
-Dr
+bU
 aa
 aa
 aa
@@ -3530,6 +4703,31 @@ aa
 "}
 (36,1,1) = {"
 aa
+ba
+ba
+ba
+bU
+bU
+bU
+bU
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 dg
@@ -3558,10 +4756,10 @@ aa
 aa
 aa
 aa
-Dr
-Dr
-Dr
-Dr
+bU
+bU
+bU
+bU
 aa
 aa
 aa
@@ -3571,6 +4769,20 @@ aa
 (37,1,1) = {"
 aa
 aa
+ba
+ba
+ba
+bU
+bU
+bU
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 aa
 aa
 aa
@@ -3598,9 +4810,20 @@ aa
 aa
 aa
 aa
-Dr
-Dr
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
+bU
+bU
 aa
 aa
 aa
@@ -3610,6 +4833,19 @@ aa
 "}
 (38,1,1) = {"
 aa
+ba
+ba
+ba
+ba
+bU
+bU
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 aa
 aa
 aa
@@ -3629,7 +4865,19 @@ aa
 aa
 aa
 aa
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
 aa
 aa
 aa
@@ -3650,6 +4898,17 @@ aa
 "}
 (39,1,1) = {"
 aa
+ba
+ba
+ba
+ba
+bU
+bU
+ba
+ba
+ba
+ba
+ba
 aa
 aa
 aa
@@ -3668,9 +4927,23 @@ aa
 aa
 aa
 aa
-Dr
-Dr
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
+bU
+bU
 aa
 aa
 aa
@@ -3689,6 +4962,17 @@ aa
 aa
 "}
 (40,1,1) = {"
+ba
+ba
+ba
+ba
+ba
+bU
+ba
+ba
+ba
+ba
+ba
 aa
 aa
 aa
@@ -3708,10 +4992,24 @@ aa
 aa
 aa
 aa
-Dr
-Dr
-Dr
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
+bU
+bU
+bU
 aa
 aa
 aa
@@ -3729,6 +5027,17 @@ aa
 aa
 "}
 (41,1,1) = {"
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
 aa
 aa
 aa
@@ -3749,7 +5058,216 @@ aa
 aa
 aa
 aa
-Dr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bU
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(42,1,1) = {"
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(43,1,1) = {"
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(44,1,1) = {"
+aa
+ba
+ba
+ba
+ba
+ba
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa

@@ -468,9 +468,9 @@ Auto Patrol: []"},
 		Sa.add_overlay("hs_hole")
 		Sa.created_name = name
 		new /obj/item/assembly/prox_sensor(Tsec)
-		var/obj/item/gun/energy/disabler/G = new (Tsec)
+		/* var/obj/item/gun/energy/disabler/G = new (Tsec) - SKYRAT EDIT REMOVAL START
 		G.cell.charge = 0
-		G.update_appearance()
+		G.update_appearance() */ // SKYRAT EDIT REMOVAL END - no more disabler farms
 		if(prob(50))
 			new /obj/item/bodypart/l_leg/robot(Tsec)
 			if(prob(25))
@@ -486,7 +486,7 @@ Auto Patrol: []"},
 		Sa.add_overlay("hs_hole")
 		Sa.created_name = name
 		new /obj/item/assembly/prox_sensor(Tsec)
-		drop_part(baton_type, Tsec)
+		// drop_part(baton_type, Tsec) - SKYRAT EDIT REMOVAL - no more baton farms
 
 		if(prob(50))
 			drop_part(robot_arm, Tsec)
