@@ -329,10 +329,10 @@
 
 /obj/item/clothing/under/rank/cargo/qm/casual
 	name = "quartermaster's casual wear"
-	desc = "A Cargonium with matching trousers. Expect to see a shotgun shells in the pockets."
+	desc = "A Cargonium brown jacket with matching trousers. Expect to see a shotgun shells in the pockets."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
-	icon_state = "supply_chief"
+	icon_state = "qmc"
 	inhand_icon_state = "lb_suit"
 
 /obj/item/clothing/under/rank/captain/humble
@@ -348,5 +348,12 @@
 	worn_icon = 'icons/mob/clothing/under/captain.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 15)
 
+/obj/item/clothing/under/rank/cargo/casualman
+	name = "cargo tech casual wear"
+	desc = "A Cargonium brown with matching trousers. It's adjusted for pushing crates."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "cargocas"
+	inhand_icon_state = "lb_suit"
 
 

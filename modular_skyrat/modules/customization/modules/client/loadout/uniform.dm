@@ -671,6 +671,12 @@
 	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
 	restricted_desc = "All Cargo Personnel"
 
+/datum/loadout_item/uniform/job/casualcargothing
+	name = "Casual Cargo Gear"
+	path = /obj/item/clothing/under/rank/cargo/casualman
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
 /datum/loadout_item/uniform/job/gorka_qm
 	name = "Quartermaster's Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka/head
