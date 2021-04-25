@@ -60,7 +60,7 @@
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 	glass_icon_state = "milkshake"
 	glass_name = "plastic cup of milkshake"
-	glass_desc = "Good for a summer day!"
+	glass_desc = "Brings all the boys to the yard."
 
 /datum/reagent/consumable/milkshake_strawberry
 	name = "Strawberry Milkshake"
