@@ -8,10 +8,6 @@
 	suffix = "ship"
 	name = "NTSS 'Friendship'"
 
-/datum/map_template/shuttle/whiteship/outpost
-	suffix = "outpost"
-	name = "SciMed Transport Craft"
-
 /datum/map_template/shuttle/arrival/outpost
 	suffix = "outpost"
 	name = "arrival shuttle (Outpost)"
