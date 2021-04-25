@@ -280,5 +280,6 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			SSeconomy.mail_waiting -= 1
 	mailcrate.update_icon()
 	return mailcrate
+
 #undef GOODY_FREE_SHIPPING_MAX
 #undef CRATE_TAX
