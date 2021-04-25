@@ -147,6 +147,18 @@
 	path = /obj/item/clothing/under/pants/chaps
 	cost = 1
 
+/datum/loadout_item/uniform/taccas
+	name = "Tacticasual Uniform"
+	path = /obj/item/clothing/under/misc/taccas
+	cost = 1
+
+/datum/loadout_item/uniform/tracky
+	name = "Blue Tracksuit"
+	path = /obj/item/clothing/under/misc/bluetracksuit
+	cost = 1
+
+
+
 //SUITS
 /datum/loadout_item/uniform/suit
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SUITS
@@ -223,6 +235,11 @@
 	path = /obj/item/clothing/under/costume/vic_vest/red_alt
 	cost = 1
 
+/datum/loadout_item/uniform/suit/peaky
+	name = "Birmingham Bling"
+	path = /obj/item/clothing/under/misc/peakyblinder
+	cost = 1
+
 /datum/loadout_item/uniform/suit/dutch
 	name = "Dutch Suit"
 	path = /obj/item/clothing/under/costume/dutch
@@ -232,6 +249,27 @@
 	name = "Dutch Assistant Suit"
 	path = /obj/item/clothing/under/costume/arthur
 	cost = 2
+
+/datum/loadout_item/uniform/suit/rancher
+	name = "Rancher Suit"
+	path = /obj/item/clothing/under/rancher
+
+/datum/loadout_item/uniform/suit/pioneer
+	name = "Pioneer Suit"
+	path = /obj/item/clothing/under/rancher/pioneer
+
+/datum/loadout_item/uniform/suit/worker
+	name = "Western Worker Suit"
+	path = /obj/item/clothing/under/rancher/worker
+
+/datum/loadout_item/uniform/suit/cowboywhatever
+	name = "Cowboy Suit"
+	path = /obj/item/clothing/under/rancher/cowboy
+
+/datum/loadout_item/uniform/suit/checkered
+	name = "Checkered Shirt"
+	path = /obj/item/clothing/under/rancher/checkered
+
 
 //SKIRTS
 /datum/loadout_item/uniform/skirt
@@ -328,6 +366,16 @@
 /datum/loadout_item/uniform/dress/flowerdress
 	name = "Flower Dress"
 	path = /obj/item/clothing/under/dress/flower
+
+/datum/loadout_item/uniform/dress/countess
+	name = "Countess Dress"
+	path = /obj/item/clothing/under/misc/countess
+	cost = 3
+
+/datum/loadout_item/uniform/dress/formal
+	name = "Formal Red Dress"
+	path = /obj/item/clothing/under/misc/formaldressred
+	cost = 2
 
 /datum/loadout_item/uniform/dress/victorian
 	name = "Victorian Vest, Black"
@@ -462,6 +510,58 @@
 /datum/loadout_item/uniform/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+/datum/loadout_item/uniform/job/humblecaptain
+	name = "Humble Captain Jumpsuit"
+	path = /obj/item/clothing/under/rank/captain/humble
+	restricted_roles = list("Captain")
+
+/datum/loadout_item/uniform/job/lowprison
+ 	name = "Low Security Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/lowsecp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/lowprisons
+ 	name = "Low Security Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustp/lowsecpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprison
+ 	name = "Protective Custody Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprisons
+ 	name = "Protective Custody Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprison
+ 	name = "Supermax Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/supermaxp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "Supermax Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt/supermaxpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/highprison
+ 	name = "High Risk Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/protcustp/highsecp
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "High Risk Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/priestrobe
+	name = "Priestess Robe"
+	path = /obj/item/clothing/under/rank/pmarsrobe
+	cost = 2
+	restricted_roles = list("Chaplain")
+
+
 /datum/loadout_item/uniform/job/navyblueuniformhos
  	name = "Head of Security navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
@@ -523,6 +623,42 @@
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
+/datum/loadout_item/uniform/job/formalmed
+	name = "Formal Medical Suit"
+	path = /obj/item/clothing/under/rank/medical/doctor/formal
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/formalmedskirt
+	name = "Formal Medical Skirt"
+	path = /obj/item/clothing/under/rank/medical/doctor/formal/skirt
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/formalvir
+	name = "Formal Virologist Suit"
+	path = /obj/item/clothing/under/rank/medical/virologist/formal
+	restricted_roles = list("Chief Medical Officer", "Virologist")
+	restricted_desc = "Virologists"
+
+/datum/loadout_item/uniform/job/formalvirskirt
+	name = "Formal Virologist Skirt"
+	path = /obj/item/clothing/under/rank/medical/virologist/formal/skirt
+	restricted_roles = list("Chief Medical Officer", "Virologist")
+	restricted_desc = "Virology"
+
+/datum/loadout_item/uniform/job/formalchem
+	name = "Formal Chemist Suit"
+	path = /obj/item/clothing/under/rank/medical/chemist/formal
+	restricted_roles = list("Chief Medical Officer", "Chemist")
+	restricted_desc = "Chemistry"
+
+/datum/loadout_item/uniform/job/formalchemskirt
+	name = "Formal Chemist Skirt"
+	path = /obj/item/clothing/under/rank/medical/chemist/formal/skirt
+	restricted_roles = list("Chief Medical Officer", "Chemist")
+	restricted_desc = "Chemistry"
+
 /datum/loadout_item/uniform/job/gorka_cargo
 	name = "Supply Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka
@@ -535,6 +671,12 @@
 	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
 	restricted_desc = "All Cargo Personnel"
 
+/datum/loadout_item/uniform/job/casualcargothing
+	name = "Casual Cargo Gear"
+	path = /obj/item/clothing/under/rank/cargo/casualman
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
 /datum/loadout_item/uniform/job/gorka_qm
 	name = "Quartermaster's Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka/head
@@ -544,6 +686,35 @@
 	name = "Quartermaster's Turtleneck"
 	path = /obj/item/clothing/under/utility/cargo/turtleneck/head
 	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmformal
+	name = "Quartermaster's Formal Suit"
+	path = /obj/item/clothing/under/rank/cargo/qm/formal
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmformalskirt
+	name = "Quartermaster's Formal Skirt"
+	path = /obj/item/clothing/under/rank/cargo/qm/formal/skirt
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmcasual
+	name = "Quartermaster's Casual Suit"
+	path = /obj/item/clothing/under/rank/cargo/qm/casual
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/engformal
+	name = "Engineering Formal Suit"
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
+/datum/loadout_item/uniform/job/engformalskirt
+	name = "Engineering Formal Skirt"
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal/skirt
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
+
 
 //JOB - UTILITY
 /datum/loadout_item/uniform/job/utility
@@ -566,6 +737,12 @@
 /datum/loadout_item/uniform/job/utility_sci
 	name = "Science Utility Uniform"
 	path = /obj/item/clothing/under/utility/sci
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
+	restricted_desc = "Science"
+
+/datum/loadout_item/uniform/job/hlscientist
+	name = "Ridiculous Scientist Outfit"
+	path = /obj/item/clothing/under/misc/hlscience
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
 	restricted_desc = "Science"
 
@@ -740,6 +917,34 @@
 	name = "ORV - assistant"
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv
 	restricted_roles = list("Assistant")
+
+/datum/loadout_item/uniform/tactical_hawaiian_orange
+	name = "Tactical Hawaiian Outfit - Orange"
+	path = /obj/item/clothing/under/tachawaiian
+
+/datum/loadout_item/uniform/tactical_hawaiian_blue
+	name = "Tactical Hawaiian Outfit - Blue"
+	path = /obj/item/clothing/under/tachawaiian/blue
+
+/datum/loadout_item/uniform/tactical_hawaiian_purple
+	name = "Tactical Hawaiian Outfit - Purple"
+	path = /obj/item/clothing/under/tachawaiian/purple
+
+/datum/loadout_item/uniform/tactical_hawaiian_green
+	name = "Tactical Hawaiian Outfit - Green"
+	path = /obj/item/clothing/under/tachawaiian/green
+
+/datum/loadout_item/uniform/texas
+	name = "Texan Suit"
+	path = /obj/item/clothing/under/texas
+
+/datum/loadout_item/uniform/dimmadome
+	name = "Doug Dimmadome Suit"
+	path = /obj/item/clothing/under/doug_dimmadome
+
+/datum/loadout_item/uniform/westender
+	name = "Westender Suit"
+	path = /obj/item/clothing/under/westender
 
 //TheMotionPicture
 /*/datum/loadout_item/trekfedutil

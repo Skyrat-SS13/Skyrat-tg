@@ -65,12 +65,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Prisoner"
 	icon_state = "Prisoner"
 
-// SKYRAT EDIT: Start - Latejoin prisoners!
-/obj/effect/landmark/start/prisoner/latejoin
-	name = "Latejoin Prisoner"
-	jobspawn_override = TRUE
-	delete_after_roundstart = FALSE
-// SKYRAT EDIT: End - Latejoin prisoners!
+/obj/effect/landmark/start/prisoner/after_round_start()
+	return
+
 /obj/effect/landmark/start/janitor
 	name = "Janitor"
 	icon_state = "Janitor"
@@ -476,7 +473,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	if(!iscarbon(hangover_mob))
 		return
 	var/mob/living/carbon/spawned_carbon = hangover_mob
-	spawned_carbon.Sleeping(rand(2 SECONDS, 5 SECONDS))
+	spawned_carbon.set_resting(TRUE, silent = TRUE)
 	if(prob(50))
 		spawned_carbon.adjust_drugginess(rand(15, 20))
 	else

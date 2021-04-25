@@ -185,6 +185,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HARDLY_WOUNDED "hard_limb_wound"
 #define TRAIT_NEVER_WOUNDED "never_wounded"
 #define TRAIT_TOXINLOVER "toxinlover"
+/// reduces the use time of syringes, pills, patches and medigels but only when using on someone
+#define TRAIT_FASTMED "fast_med_use"
 #define TRAIT_NOBREATH "no_breath"
 #define TRAIT_ANTIMAGIC "anti_magic"
 #define TRAIT_HOLY "holy"
@@ -224,6 +226,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// We place people into a fireman carry especially quickly compared to quick_carry
 #define TRAIT_QUICKER_CARRY "quicker-carry"
 #define TRAIT_QUICK_BUILD "quick-build"
+/// We can handle 'dangerous' plants in botany safely
+#define TRAIT_PLANT_SAFE "plant_safe"
 #define TRAIT_UNINTELLIGIBLE_SPEECH "unintelligible-speech"
 #define TRAIT_UNSTABLE "unstable"
 #define TRAIT_OIL_FRIED "oil_fried"
@@ -327,6 +331,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ENGINEER_METABOLISM "engineer_metabolism"
 #define TRAIT_ROYAL_METABOLISM "royal_metabolism"
 #define TRAIT_PRETENDER_ROYAL_METABOLISM "pretender_royal_metabolism"
+
+/// This mob can strip other mobs.
+#define TRAIT_CAN_STRIP "can_strip"
 
 // If present on a mob or mobmind, allows them to "suplex" an immovable rod
 // turning it into a glorified potted plant, and giving them an
@@ -597,6 +604,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Self-explainatory.
 #define BEAUTY_ELEMENT_TRAIT "beauty_element"
 #define MOOD_COMPONENT_TRAIT "mood_component"
+#define DRONE_SHY_TRAIT "drone_shy"
+/// Pacifism trait given by stabilized light pink extracts.
+#define STABILIZED_LIGHT_PINK_TRAIT "stabilized_light_pink"
 
 /**
 * Trait granted by [/mob/living/carbon/Initialize] and

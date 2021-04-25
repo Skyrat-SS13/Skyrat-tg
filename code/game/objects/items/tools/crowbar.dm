@@ -53,10 +53,16 @@
 	worn_icon_state = "crowbar"
 	toolspeed = 0.7
 
+/obj/item/crowbar/large/heavy //from space ruin
+	name = "heavy crowbar"
+	desc = "It's a big crowbar. It doesn't fit in your pockets, because it's big. It feels oddly heavy.."
+	force = 20
+	icon_state = "crowbar_powergame"
+
 /obj/item/crowbar/power
 	name = "jaws of life"
 	desc = "A set of jaws of life, compressed through the magic of science."
-	icon_state = "jaws_pry"
+	icon_state = "jaws" //SKYRAT EDIT CHANGE
 	inhand_icon_state = "jawsoflife"
 	worn_icon_state = "jawsoflife"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
@@ -64,19 +70,71 @@
 	custom_materials = list(/datum/material/iron=150,/datum/material/silver=50,/datum/material/titanium=25)
 	usesound = 'sound/items/jaws_pry.ogg'
 	force = 15
-	toolspeed = 0.5	// SKYRAT EDIT: Buffs toolspeed to half of what it was on oldbase - Original value (0.7)
+	toolspeed = 1	// SKYRAT EDIT
 	force_opens = TRUE
+//SKYRAT EDIT ADDITION BEGIN
+	var/powered_toolspeed = 0.4
+	var/powered = FALSE
+
+/obj/item/crowbar/power/Initialize()
+	. = ..()
+	update_appearance()
+
+/obj/item/crowbar/power/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/cell, null, CALLBACK(src, .proc/turn_off))
+
+/obj/item/crowbar/power/CtrlClick(mob/user)
+	. = ..()
+	if(!powered)
+		if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
+			return
+	powered = !powered
+	if(powered)
+		to_chat(user, "<span class='notice'>You turn [src] on.</span>")
+		turn_on()
+	else
+		to_chat(user, "<span class='notice'>You turn [src] off.</span>")
+		turn_off()
+	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
+
+/obj/item/crowbar/power/proc/turn_off()
+	powered = FALSE
+	toolspeed = initial(toolspeed)
+	update_appearance()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/crowbar/power/proc/turn_on()
+	toolspeed = powered_toolspeed
+	update_appearance()
+	START_PROCESSING(SSobj, src)
+
+/obj/item/crowbar/power/process(delta_time)
+	if(!powered)
+		turn_off()
+		return
+	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
+		turn_off()
+		return
+
+/obj/item/crowbar/power/update_overlays()
+	. = ..()
+	if(powered)
+		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/tools.dmi', "jaws_on")
+	. += "[initial(icon_state)]_[tool_behaviour == TOOL_WIRECUTTER ? "cutter": "pry"]"
+//SKYRAT EDIT END
 
 /obj/item/crowbar/power/syndicate
 	name = "Syndicate jaws of life"
 	desc = "A re-engineered copy of Nanotrasen's standard jaws of life. Can be used to force open airlocks in its crowbar configuration."
-	icon_state = "jaws_pry_syndie"
+	icon_state = "jaws_syndicate" //SKYRAT EDIT CHANGE
 	toolspeed = 0.25	// SKYRAT EDIT: Keeps this relevant, buffs to oldbase speed - Original value (0.5)
 	force_opens = TRUE
 
 /obj/item/crowbar/power/examine()
 	. = ..()
 	. += " It's fitted with a [tool_behaviour == TOOL_CROWBAR ? "prying" : "cutting"] head."
+	. += "[src] is currently [powered ? "powered" : "unpowered"]." //SKYRAT EDIT ADDITION
 
 /obj/item/crowbar/power/suicide_act(mob/user)
 	if(tool_behaviour == TOOL_CROWBAR)
@@ -107,6 +165,7 @@
 		usesound = 'sound/items/jaws_pry.ogg'
 		update_appearance()
 
+/* SKYRAT EDIT REMOVAL
 /obj/item/crowbar/power/update_icon_state()
 	if(tool_behaviour == TOOL_WIRECUTTER)
 		icon_state = "jaws_cutter"
@@ -120,6 +179,7 @@
 	else
 		icon_state = "jaws_pry_syndie"
 	return ..()
+*/
 
 /obj/item/crowbar/power/attack(mob/living/carbon/C, mob/user)
 	if(istype(C) && C.handcuffed && tool_behaviour == TOOL_WIRECUTTER)
