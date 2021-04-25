@@ -259,26 +259,13 @@
 
 		if(heart.target && heart.target.stat == DEAD)
 			to_chat(carbon_user,"<span class='danger'>Your patrons accepts your offer..</span>")
-<<<<<<< HEAD
-			var/mob/living/carbon/human/H = LH.target
-			//SKYRAT EDIT BEGIN: MAKES HERETICS NOT GIB PEOPLE
-			var/obj/item/bodypart/chest/chest = H.get_bodypart(BODY_ZONE_CHEST)
-			chest.dismember()
-			H.visible_message("<span class='danger'>[H.name] Is quickly surrounded by invisible claws; lacerating their chest open, spilling their organs out!</span>", \
-								"<span class='danger'>You feel claws tear your chest open; spilling your organs out onto the floor!</span>", ignored_mobs=H)
-			//SKYRAT EDIT END
-			LH.target = null
-			var/datum/antagonist/heretic/EC = carbon_user.mind.has_antag_datum(/datum/antagonist/heretic)
-
-			EC.total_sacrifices++
-			for(var/X in carbon_user.get_all_gear())
-				if(!istype(X,/obj/item/forbidden_book))
-					continue
-				var/obj/item/forbidden_book/FB = X
-				FB.charge += 3 //SKYRAT EDIT: More points for sacrifice
-=======
 			var/mob/living/carbon/human/current_target = heart.target
-			current_target.gib()
+			//SKYRAT EDIT BEGIN: MAKES HERETICS NOT GIB PEOPLE
+			var/obj/item/bodypart/chest/chest = current_target.get_bodypart(BODY_ZONE_CHEST)
+			chest.dismember()
+			current_target.visible_message("<span class='danger'>[current_target.name] Is quickly surrounded by invisible claws; lacerating their chest open, spilling their organs out!</span>", \
+								"<span class='danger'>You feel claws tear your chest open; spilling your organs out onto the floor!</span>", ignored_mobs=current_target)
+			//SKYRAT EDIT END
 			heart.target = null
 			var/datum/antagonist/heretic/heretic_datum = carbon_user.mind.has_antag_datum(/datum/antagonist/heretic)
 
@@ -287,7 +274,6 @@
 				if(!istype(book))
 					continue
 				book.charge += 2
->>>>>>> 4f47f52ddcf (Generally brings about half the heretic antag code up to our code standards, more or less (#58557))
 				break
 
 		if(!heart.target)
