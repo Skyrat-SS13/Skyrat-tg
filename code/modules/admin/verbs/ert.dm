@@ -1,6 +1,7 @@
 /// If we spawn an ERT with the "choose experienced leader" option, select the leader from the top X playtimes
 #define ERT_EXPERIENCED_LEADER_CHOOSE_TOP 3
 
+<<<<<<< HEAD:code/modules/admin/verbs/one_click_antag.dm
 /client/proc/one_click_antag()
 	set name = "Create Antagonist"
 	set desc = "Auto-create an antagonist of your choice"
@@ -239,6 +240,8 @@
 /datum/admins/proc/makeDeathsquad()
 	return makeEmergencyresponseteam(/datum/ert/deathsquad)
 
+=======
+>>>>>>> 7e4de07506d (Remove all gamemodes except Dynamic (#58470)):code/modules/admin/verbs/ert.dm
 // CENTCOM RESPONSE TEAM
 
 /datum/admins/proc/makeERTTemplateModified(list/settings)
@@ -456,40 +459,17 @@
 
 	return
 
-//Abductors
-/datum/admins/proc/makeAbductorTeam()
-	new /datum/round_event/ghost_role/abductor
-	return TRUE
+/client/proc/summon_ert()
+	set category = "Admin.Fun"
+	set name = "Summon ERT"
+	set desc = "Summons an emergency response team"
 
-/datum/admins/proc/makeRevenant()
-	new /datum/round_event/ghost_role/revenant(TRUE, TRUE)
-	return TRUE
-
-/datum/admins/proc/makeNerd()
-	var/spawnpoint = pick(GLOB.blobstart)
-	var/list/mob/dead/observer/candidates
-	var/mob/dead/observer/chosen_candidate
-	var/mob/living/simple_animal/drone/nerd
-	var/teamsize
-
-	teamsize = input(usr, "How many drones?", "N.E.R.D. team size", 2) as num|null
-
-	if(teamsize <= 0)
-		return FALSE
-
-	candidates = pollGhostCandidates("Do you wish to be considered for a Nanotrasen emergency response drone?", "Drone")
-
-	if(length(candidates) == 0)
-		return FALSE
-
-	while(length(candidates) && teamsize)
-		chosen_candidate = pick(candidates)
-		candidates -= chosen_candidate
-		nerd = new /mob/living/simple_animal/drone/classic(spawnpoint)
-		nerd.key = chosen_candidate.key
-		log_game("[key_name(nerd)] has been selected as a Nanotrasen emergency response drone")
-		teamsize--
-
-	return TRUE
+	message_admins("[key_name(usr)] is creating a CentCom response team...")
+	if(holder?.makeEmergencyresponseteam())
+		message_admins("[key_name(usr)] created a CentCom response team.")
+		log_admin("[key_name(usr)] created a CentCom response team.")
+	else
+		message_admins("[key_name_admin(usr)] tried to create a CentCom response team. Unfortunately, there were not enough candidates available.")
+		log_admin("[key_name(usr)] failed to create a CentCom response team.")
 
 #undef ERT_EXPERIENCED_LEADER_CHOOSE_TOP

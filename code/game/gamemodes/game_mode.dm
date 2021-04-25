@@ -99,7 +99,6 @@
 	if(!GLOB.Debug2)
 		if(playerC < required_players || (maximum_players >= 0 && playerC > maximum_players))
 			return FALSE
-	antag_candidates = get_players_for_role(antag_flag)
 	if(!GLOB.Debug2)
 		if(antag_candidates.len < required_enemies)
 			return FALSE
@@ -414,6 +413,7 @@
 	WARNING("Something has gone terribly wrong. /datum/game_mode/proc/antag_pick failed to select a candidate. Falling back to pick()")
 	return pick(candidates)
 
+<<<<<<< HEAD
 /datum/game_mode/proc/get_players_for_role(role)
 	var/list/players = list()
 	var/list/candidates = list()
@@ -474,6 +474,8 @@
 
 
 
+=======
+>>>>>>> 7e4de07506d (Remove all gamemodes except Dynamic (#58470))
 /datum/game_mode/proc/num_players()
 	. = 0
 	for(var/i in GLOB.new_player_list)
@@ -589,27 +591,8 @@
 	for (var/C in GLOB.admins)
 		to_chat(C, msg.Join())
 
-//If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
-/datum/game_mode/proc/age_check(client/C)
-	if(get_remaining_days(C) == 0)
-		return 1 //Available in 0 days = available right now = player is old enough to play.
-	return 0
-
-
-/datum/game_mode/proc/get_remaining_days(client/C)
-	if(!C)
-		return 0
-	if(!CONFIG_GET(flag/use_age_restriction_for_jobs))
-		return 0
-	if(!isnum(C.player_age))
-		return 0 //This is only a number if the db connection is established, otherwise it is text: "Requires database", meaning these restrictions cannot be enforced
-	if(!isnum(enemy_minimum_age))
-		return 0
-
-	return max(0, enemy_minimum_age - C.player_age)
-
 /datum/game_mode/proc/remove_antag_for_borging(datum/mind/newborgie)
-	SSticker.mode.remove_cultist(newborgie, 0, 0)
+	newborgie.remove_antag_datum(/datum/antagonist/cult)
 	var/datum/antagonist/rev/rev = newborgie.has_antag_datum(/datum/antagonist/rev)
 	if(rev)
 		rev.remove_revolutionary(TRUE)

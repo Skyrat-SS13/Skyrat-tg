@@ -37,7 +37,6 @@ export const Vote = (props, context) => {
 const VoteOptions = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    allow_vote_mode,
     allow_vote_restart,
     allow_vote_map,
     lower_admin,
@@ -98,6 +97,7 @@ const VoteOptions = (props, context) => {
                   Restart
                 </Button>
               </Stack.Item>
+<<<<<<< HEAD
               <Stack.Item>
                 {!!lower_admin && (
                   <Button.Checkbox
@@ -131,6 +131,8 @@ const VoteOptions = (props, context) => {
                   Gamemode
                 </Button>
               </Stack.Item>
+=======
+>>>>>>> 7e4de07506d (Remove all gamemodes except Dynamic (#58470))
             </Stack>
           </Stack.Item>
           <Stack.Item>
