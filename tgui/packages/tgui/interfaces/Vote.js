@@ -67,21 +67,21 @@ const VoteOptions = (props, context) => {
               <Stack.Item>
                 {!!lower_admin && (
                   <Button.Checkbox
-                    mr={!allow_vote_map ? 1 : 1.6}
+                    mr={!allow_vote_restart ? 1 : 1.6}
                     color="red"
-                    checked={!!allow_vote_map}
-                    onClick={() => act("toggle_map")}>
-                    {allow_vote_map ? "Enabled" : "Disabled"}
+                    checked={!!allow_vote_restart}
+                    onClick={() => act("transfer")}>
+                    {allow_vote_restart ? "Enabled" : "Disabled"}
                   </Button.Checkbox>
                 )}
                 <Button
-                  disabled={!upper_admin || !allow_vote_map}
-                  onClick={() => act("mining_map")}>
-                  Mining Map
+                  disabled={!upper_admin || !allow_vote_restart}
+                  onClick={() => act("transfer")}>
+                  Transfer
                 </Button>
               </Stack.Item>
               <Stack.Item>
-                {!!upper_admin && (
+                {!!lower_admin && (
                   <Button.Checkbox
                     mr={!allow_vote_restart ? 1 : 1.6}
                     color="red"
@@ -97,42 +97,6 @@ const VoteOptions = (props, context) => {
                   Restart
                 </Button>
               </Stack.Item>
-<<<<<<< HEAD
-              <Stack.Item>
-                {!!lower_admin && (
-                  <Button.Checkbox
-                    mr={!allow_vote_restart ? 1 : 1.6}
-                    color="red"
-                    checked={!!allow_vote_restart}
-                    onClick={() => act("transfer")}>
-                    {allow_vote_restart ? "Enabled" : "Disabled"}
-                  </Button.Checkbox>
-                )}
-                <Button
-                  disabled={!upper_admin || !allow_vote_restart}
-                  onClick={() => act("transfer")}>
-                  Transfer
-                </Button>
-              </Stack.Item>
-              <Stack.Item>
-                {!!upper_admin && (
-                  <Button.Checkbox
-                    mr={!allow_vote_mode ? 1 : 1.6}
-                    color="red"
-                    checked={!!allow_vote_mode}
-                    disabled={!upper_admin}
-                    onClick={() => act('toggle_gamemode')}>
-                    {allow_vote_mode ? 'Enabled' : 'Disabled'}
-                  </Button.Checkbox>
-                )}
-                <Button
-                  disabled={!allow_vote_mode}
-                  onClick={() => act('gamemode')}>
-                  Gamemode
-                </Button>
-              </Stack.Item>
-=======
->>>>>>> 7e4de07506d (Remove all gamemodes except Dynamic (#58470))
             </Stack>
           </Stack.Item>
           <Stack.Item>

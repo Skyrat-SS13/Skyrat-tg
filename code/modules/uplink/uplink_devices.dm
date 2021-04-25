@@ -20,16 +20,12 @@
 	throw_range = 7
 	w_class = WEIGHT_CLASS_SMALL
 
-<<<<<<< HEAD
-///obj/item/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
-/obj/item/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
-=======
 	/// The uplink flag for this type.
 	/// See [`code/__DEFINES/uplink.dm`]
 	var/uplink_flag = UPLINK_TRAITORS
 
-/obj/item/uplink/Initialize(mapload, owner, tc_amount = 20)
->>>>>>> 7e4de07506d (Remove all gamemodes except Dynamic (#58470))
+///obj/item/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
+/obj/item/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, FALSE, TRUE, uplink_flag, tc_amount)
 

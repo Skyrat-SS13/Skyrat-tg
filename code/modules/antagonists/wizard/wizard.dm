@@ -17,12 +17,9 @@
 	show_to_ghosts = TRUE
 
 /datum/antagonist/wizard/on_gain()
-<<<<<<< HEAD
 	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
 	/*
 	register()
-=======
->>>>>>> 7e4de07506d (Remove all gamemodes except Dynamic (#58470))
 	equip_wizard()
 	*/
 	//SKYRAT EDIT REMOVAL END
@@ -116,15 +113,12 @@
 	//SKYRAT EDIT REMOVAL END
 
 /datum/antagonist/wizard/on_removal()
-<<<<<<< HEAD
 	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
 	/*
 	unregister()
+	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
 	*/
 	//SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 7e4de07506d (Remove all gamemodes except Dynamic (#58470))
-	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
 	return ..()
 
 /datum/antagonist/wizard/proc/equip_wizard()
