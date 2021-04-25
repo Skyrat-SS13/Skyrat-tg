@@ -23,6 +23,12 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
 	icon_state = "gp5_mask"
 
+/obj/item/clothing/mask/gas/german
+	name = "black gas mask"
+	desc = "A black gas mask. Are you my Mummy?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	icon_state = "m38_mask"
+
 /obj/item/clothing/mask/gas/hecu1
 	name = "modern gas mask"
 	desc = "MY. ASS. IS. HEAVY."
