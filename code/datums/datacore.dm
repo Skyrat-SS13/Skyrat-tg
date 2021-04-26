@@ -236,7 +236,9 @@
 		else
 			assignment = "Unassigned"
 		//SKYRAT EDIT ADD - ALT JOB TITLES
-		if(C && C.prefs && C.prefs.alt_titles_preferences[assignment])
+		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[assignment]) // latejoin
+			assignment = H.client.prefs.alt_titles_preferences[assignment]
+		else if(C && C.prefs && C.prefs.alt_titles_preferences[assignment]) // roundstart - yes both do separate things i don't fucking know why but they do and if they're not both there then they don't fucking work leave me ALONE
 			assignment = C.prefs.alt_titles_preferences[assignment]
 		//SKYRAT EDIT ADD END
 		var/static/record_id_num = 1001
