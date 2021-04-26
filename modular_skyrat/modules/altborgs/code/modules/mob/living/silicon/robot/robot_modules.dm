@@ -1,4 +1,4 @@
-var/has_small_sprite = FALSE
+var/has_small_sprite = TRUE
 
 /obj/item/robot_model/proc/dogborg_equip()
 	has_snowflake_deadsprite = TRUE
@@ -47,10 +47,9 @@ var/has_small_sprite = FALSE
 		wide.pixel_x = -16
 		standard_icons[a] = wide
 	standard_icons = sortList(standard_icons)
+	has_small_sprite = FALSE
 	var/standard_borg_icon = show_radial_menu(cyborg, cyborg , standard_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(standard_borg_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Default")
 			cyborg_base_icon = "robot"
 			has_small_sprite = TRUE
@@ -122,10 +121,9 @@ var/has_small_sprite = FALSE
 			wide.pixel_x = -16
 			med_icons[a] = wide
 		med_icons = sortList(med_icons)
+	has_small_sprite = FALSE
 	var/med_borg_icon = show_radial_menu(cyborg, cyborg , med_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(med_borg_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Default")
 			cyborg_base_icon = "medical"
 			has_small_sprite = TRUE
@@ -256,10 +254,9 @@ var/has_small_sprite = FALSE
 			wide.pixel_x = -16
 			engi_icons[a] = wide
 		engi_icons = sortList(engi_icons)
+	has_small_sprite = FALSE
 	var/engi_borg_icon = show_radial_menu(cyborg, cyborg , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(engi_borg_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Default")
 			cyborg_base_icon = "engineer"
 		if("Zoomba")
@@ -392,10 +389,9 @@ var/has_small_sprite = FALSE
 			wide.pixel_x = -16
 			sec_icons[a] = wide
 		sec_icons = sortList(sec_icons)
+	has_small_sprite = FALSE
 	var/sec_borg_icon = show_radial_menu(cyborg, cyborg , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(sec_borg_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Default")
 			cyborg_base_icon = "sec"
 		if("Zoomba")
@@ -510,10 +506,9 @@ var/has_small_sprite = FALSE
 			wide.pixel_x = -16
 			peace_icons[a] = wide
 		peace_icons = sortList(peace_icons)
+	has_small_sprite = FALSE
 	var/peace_borg_icon = show_radial_menu(cyborg, cyborg , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Default")
 			cyborg_base_icon = "peace"
 		if("Sleek")
@@ -594,10 +589,9 @@ var/has_small_sprite = FALSE
 			wide.pixel_x = -16
 			janitor_icons[a] = wide
 		janitor_icons = sortList(janitor_icons)
+	has_small_sprite = FALSE
 	var/janitor_robot_icon = show_radial_menu(cyborg, cyborg , janitor_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(janitor_robot_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Default")
 			cyborg_base_icon = "janitor"
 		if("Zoomba")
@@ -689,10 +683,9 @@ var/has_small_sprite = FALSE
 		"Robot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "clownbot"),
 		"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "clownman")
 		))
+	has_small_sprite = FALSE
 	var/clown_borg_icon = show_radial_menu(cyborg, cyborg , clown_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(clown_borg_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Default")
 			cyborg_base_icon = "clown"
 		if("Bootyborg")
@@ -746,10 +739,9 @@ var/has_small_sprite = FALSE
 			wide.pixel_x = -16
 			service_icons[a] = wide
 		service_icons = sortList(service_icons)
+	has_small_sprite = FALSE
 	var/service_robot_icon = show_radial_menu(cyborg, cyborg , service_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Waitress")
 			cyborg_base_icon = "service_f"
 			special_light_key = "service"
@@ -855,10 +847,9 @@ var/has_small_sprite = FALSE
 			wide.pixel_x = -16
 			mining_icons[a] = wide
 		mining_icons = sortList(mining_icons)
+	has_small_sprite = FALSE
 	var/mining_borg_icon = show_radial_menu(cyborg, cyborg , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(mining_borg_icon)
-		if (1 == 1)
-			has_small_sprite = FALSE
 		if("Lavaland")
 			cyborg_base_icon = "miner"
 		if("Asteroid")
@@ -998,10 +989,9 @@ var/has_small_sprite = FALSE
 		"Male Booty Syndicate" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "male_bootysyndie"),
 		"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_syndi.dmi', icon_state = "chesty")
 		))
+	has_small_sprite = FALSE //Remove this line to prevent the shrink module from being used on any syndie borgs
 	var/syndiejack_icon = show_radial_menu(cyborg, cyborg , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(syndiejack_icon)
-		if (1 == 1) //Remove this to disallow shrink module usage on syndie borgs
-			has_small_sprite = FALSE
 		if("Saboteur")
 			cyborg_base_icon = "synd_engi"
 			cyborg_icon_override = 'icons/mob/robots.dmi'
