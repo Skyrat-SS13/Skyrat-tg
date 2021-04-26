@@ -24,6 +24,8 @@
 
 /obj/machinery/stasissleeper/open_machine()
 	if(!state_open && !panel_open)
+		if(occupant)
+			thaw_them(occupant)
 		playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 		play_power_sound()
 		flick("[initial(icon_state)]-anim", src)
