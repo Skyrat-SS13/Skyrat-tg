@@ -30,6 +30,7 @@
 		/obj/item/stack/marker_beacon/ten=1)
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
+	name = "Lavaland Syndicate Deck Officer"
 	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
 	suit = null //Subtype moment
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
