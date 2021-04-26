@@ -1,5 +1,5 @@
-var/mob/living/silicon/robot
-	var/R.has_small_sprite = FALSE
+var/mob/living/silicon/robot //For restricting shrink module usage on small borgs
+	var/has_small_sprite = FALSE
 
 /obj/item/robot_model/proc/dogborg_equip()
 	has_snowflake_deadsprite = TRUE
