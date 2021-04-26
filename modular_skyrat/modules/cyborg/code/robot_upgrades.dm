@@ -43,6 +43,7 @@ var/mob/living/silicon/robot = new
 /obj/item/borg/upgrade/shrink/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
+		has_small_sprite = TRUE
 		if (R.hasShrunk)
 			R.hasShrunk = FALSE
 			R.resize = (4/3)
