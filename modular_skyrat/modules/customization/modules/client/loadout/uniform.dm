@@ -510,6 +510,10 @@
 /datum/loadout_item/uniform/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+/datum/loadout_item/uniform/job/humblecaptain
+	name = "Humble Captain Jumpsuit"
+	path = /obj/item/clothing/under/rank/captain/humble
+	restricted_roles = list("Captain")
 
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
@@ -619,6 +623,42 @@
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
+/datum/loadout_item/uniform/job/formalmed
+	name = "Formal Medical Suit"
+	path = /obj/item/clothing/under/rank/medical/doctor/formal
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/formalmedskirt
+	name = "Formal Medical Skirt"
+	path = /obj/item/clothing/under/rank/medical/doctor/formal/skirt
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/formalvir
+	name = "Formal Virologist Suit"
+	path = /obj/item/clothing/under/rank/medical/virologist/formal
+	restricted_roles = list("Chief Medical Officer", "Virologist")
+	restricted_desc = "Virologists"
+
+/datum/loadout_item/uniform/job/formalvirskirt
+	name = "Formal Virologist Skirt"
+	path = /obj/item/clothing/under/rank/medical/virologist/formal/skirt
+	restricted_roles = list("Chief Medical Officer", "Virologist")
+	restricted_desc = "Virology"
+
+/datum/loadout_item/uniform/job/formalchem
+	name = "Formal Chemist Suit"
+	path = /obj/item/clothing/under/rank/medical/chemist/formal
+	restricted_roles = list("Chief Medical Officer", "Chemist")
+	restricted_desc = "Chemistry"
+
+/datum/loadout_item/uniform/job/formalchemskirt
+	name = "Formal Chemist Skirt"
+	path = /obj/item/clothing/under/rank/medical/chemist/formal/skirt
+	restricted_roles = list("Chief Medical Officer", "Chemist")
+	restricted_desc = "Chemistry"
+
 /datum/loadout_item/uniform/job/gorka_cargo
 	name = "Supply Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka
@@ -631,6 +671,12 @@
 	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
 	restricted_desc = "All Cargo Personnel"
 
+/datum/loadout_item/uniform/job/casualcargothing
+	name = "Casual Cargo Gear"
+	path = /obj/item/clothing/under/rank/cargo/casualman
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
 /datum/loadout_item/uniform/job/gorka_qm
 	name = "Quartermaster's Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka/head
@@ -640,6 +686,35 @@
 	name = "Quartermaster's Turtleneck"
 	path = /obj/item/clothing/under/utility/cargo/turtleneck/head
 	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmformal
+	name = "Quartermaster's Formal Suit"
+	path = /obj/item/clothing/under/rank/cargo/qm/formal
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmformalskirt
+	name = "Quartermaster's Formal Skirt"
+	path = /obj/item/clothing/under/rank/cargo/qm/formal/skirt
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmcasual
+	name = "Quartermaster's Casual Suit"
+	path = /obj/item/clothing/under/rank/cargo/qm/casual
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/engformal
+	name = "Engineering Formal Suit"
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
+/datum/loadout_item/uniform/job/engformalskirt
+	name = "Engineering Formal Skirt"
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal/skirt
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
+
 
 //JOB - UTILITY
 /datum/loadout_item/uniform/job/utility
