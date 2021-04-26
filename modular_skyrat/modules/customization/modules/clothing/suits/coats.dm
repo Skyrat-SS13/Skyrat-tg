@@ -204,3 +204,6 @@
 	togglename = "cloak"
 
 
+/obj/item/clothing/suit/jacket/leather/polychromic
+	desc = "Now with more color!"
+	icon_state = "polyleatherjacket"
