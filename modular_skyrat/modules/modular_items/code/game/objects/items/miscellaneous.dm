@@ -41,7 +41,7 @@
 		else
 			if(user.phaseout(target))
 				phased = 1
-		if(iscarbon(user))
+		if(iscarbon(user) && C.blood_volume >= 150)
 			var/mob/living/carbon/C = user
 			C.blood_volume -= 150
 		start_recharge()
