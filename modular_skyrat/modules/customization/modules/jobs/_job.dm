@@ -89,6 +89,7 @@
 
 /datum/job/head_of_personnel
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+	alt_titles = list("Executive Officer")
 
 /datum/job/quartermaster
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
