@@ -102,7 +102,7 @@
 		qdel(src)
 		return
 	if(reagents.get_reagent_amount(/datum/reagent/fuel)) // the fuel explodes, too, but much less violently
-		var/datum/effect_system/reagents_explosion/e = new()
+		var/datum/effect_system/reagents_explosion/explosion = new()
 		explosion.set_up(round(reagents.get_reagent_amount(/datum/reagent/fuel) / 5, 1), get_turf(src), 0, 0)
 		explosion.start()
 		qdel(src)
@@ -143,7 +143,7 @@
 					playsound(hit_mob, pick('modular_skyrat/master_files/sound/effects/lungbust_moan1.ogg','modular_skyrat/master_files/sound/effects/lungbust_moan2.ogg', 'modular_skyrat/master_files/sound/effects/lungbust_moan3.ogg'), 50, TRUE)
 					hit_mob.emote("moan")
 				else
-					playsound(M, pick('modular_skyrat/master_files/sound/effects/lungbust_cough1.ogg','modular_skyrat/master_files/sound/effects/lungbust_cough2.ogg'), 50, TRUE)
+					playsound(hit_mob, pick('modular_skyrat/master_files/sound/effects/lungbust_cough1.ogg','modular_skyrat/master_files/sound/effects/lungbust_cough2.ogg'), 50, TRUE)
 					hit_mob.emote("cough")
 				if(bonghits <= 0)
 					to_chat(hit_mob, "<span class='notice'>Your [name] goes out.</span>")

@@ -36,7 +36,7 @@
 
 
 /datum/reagent/drug/cocaine/overdose_start(mob/living/containing_mob)
-	to_chat(M, "<span class='userdanger'>Your heart beats is beating so fast, it hurts...</span>")
+	to_chat(containing_mob, "<span class='userdanger'>Your heart beats is beating so fast, it hurts...</span>")
 
 /datum/reagent/drug/cocaine/overdose_process(mob/living/containing_mob, delta_time, times_fired)
 	containing_mob.adjustToxLoss(1 * REM * delta_time, 0)
