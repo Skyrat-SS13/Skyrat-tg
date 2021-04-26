@@ -23,7 +23,7 @@
 
 /obj/effect/proc_holder/spell/bloodcrawl/lesser
 	name = "Lesser Blood Crawl"
-	desc = "Use pools of blood to phase out of existence. Requires large pools of blood, and drains 5% of your blood."
+	desc = "Use pools of blood to phase out of existence. Requires large pools of blood, and a lot of your blood."
 
 /obj/effect/proc_holder/spell/bloodcrawl/lesser/choose_targets(mob/user = usr)
 	for(var/obj/effect/decal/cleanable/target in range(range, get_turf(user)))
@@ -43,7 +43,7 @@
 				phased = 1
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
-			M.blood_volume -= 150
+			C.blood_volume -= 150
 		start_recharge()
 		return
 	revert_cast()
