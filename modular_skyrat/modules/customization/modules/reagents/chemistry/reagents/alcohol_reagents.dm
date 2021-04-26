@@ -480,3 +480,26 @@
 	else
 		M.adjust_disgust(25)
 	return ..()
+
+/datum/reagent/consumable/ethanol/appletini
+	name = "Appletini"
+	color = "#9bd1a9" //(155, 209, 169)
+	description = "The electric-green appley beverage nobody can turn down!"
+	boozepwr = 50
+	taste_description = "Sweet and green"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "appletini"
+	glass_name = "glass of Appletini"
+	glass_desc = "An appley beverage in a martini glass"
+
+/datum/reagent/consumable/ethanol/quadruple_sec/cityofsin //making this a subtype was some REAL JANK, but it saves me a headache, and it looks good!
+	name = "City of Sin"
+	color = "#eb9378" //(235, 147, 120)
+	description = "A smooth, fancy drink for people of ill repute"
+	boozepwr = 70
+	taste_description = "Your own sins"
+	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
+	glass_icon_state = "cityofsin"
+	glass_name = "glass of City of Sin"
+	glass_desc = "Looking at it makes you recall every mistake you’ve made."
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
