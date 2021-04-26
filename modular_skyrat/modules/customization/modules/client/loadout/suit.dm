@@ -186,6 +186,7 @@
 	name = "Leather overcoat"
 	path = /obj/item/clothing/suit/jacket/leather/overcoat
 
+
 /datum/loadout_item/suit/jacket/jacketpoly
 	name = "Colorable leather jacket"
 	path = /obj/item/clothing/suit/jacket/leather/polychromic
