@@ -19,13 +19,10 @@
 
 /obj/item/clothing/shoes/sneakers/blue
 	name = "blue shoes"
-<<<<<<< HEAD
 	icon_state = "blue"
-=======
 	greyscale_colors = "#16a9eb#ffffff"
 	permeability_coefficient = 0.01	
->>>>>>> 3e7e48d4d51 (QoL: Blue shoes (Paramedics) have the same "disease resistance" than white ones. (#58652))
-
+	
 /obj/item/clothing/shoes/sneakers/green
 	name = "green shoes"
 	icon_state = "green"
