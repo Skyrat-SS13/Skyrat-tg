@@ -1,4 +1,4 @@
-/datum/outfit/plasmaman/sigtech
+/datum/outfit/plasmaman/signal_tech
 	name = "Plasmaman Signal Technician"
 
 	uniform = /obj/item/clothing/under/plasmaman/engineering
