@@ -11,7 +11,7 @@ var/mob/living/silicon/robot = new
 	. = ..()
 	if(.)
 
-		to_chat(usr, "<span class='warning'>DEBUG"+has_small_sprite+"</span>")
+		to_chat(usr, "<span class='warning'>DEBUG".has_small_sprite."</span>")
 
 		if(R.hasShrunk)
 			to_chat(usr, "<span class='warning'>This unit already has a shrink module installed!</span>")
