@@ -30,6 +30,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //STANDARD
 /obj/item/robot_model/standard/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/standard_icons = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
@@ -93,6 +94,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //MEDICAL
 /obj/item/robot_model/medical/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/med_icons
 	if(!med_icons)
@@ -222,6 +224,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //ENGINEERING
 /obj/item/robot_model/engineering/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/engi_icons
 	if(!engi_icons)
@@ -358,6 +361,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //SECURITY
 /obj/item/robot_model/security/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/sec_icons
 	if(!sec_icons)
@@ -480,6 +484,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //PEACEKEEPER
 /obj/item/robot_model/peacekeeper/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/peace_icons
 	if(!peace_icons)
@@ -556,6 +561,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //JANITOR
 /obj/item/robot_model/janitor/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/janitor_icons
 	if(!janitor_icons)
@@ -706,6 +712,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //SERVICE
 /obj/item/robot_model/service/skyrat/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/service_icons
 	if(!service_icons)
@@ -812,6 +819,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 
 //MINING
 /obj/item/robot_model/miner/skyrat/be_transformed_to(obj/item/robot_model/old_model, mob/living/silicon/robot/R)
+	. = ..()
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/mining_icons
 	if(!mining_icons)
