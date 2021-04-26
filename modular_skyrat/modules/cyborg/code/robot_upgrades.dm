@@ -1,6 +1,5 @@
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
-	var/has_small_sprite = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
