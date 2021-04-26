@@ -1,4 +1,4 @@
-var/obj/item/robot_model = new
+var/mob/living/silicon/robot = new
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
 
