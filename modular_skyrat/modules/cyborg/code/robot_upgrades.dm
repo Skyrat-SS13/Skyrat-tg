@@ -14,6 +14,10 @@
 			to_chat(usr, "<span class='warning'>This unit already has a shrink module installed!</span>")
 			return FALSE
 
+		if(R.has_small_sprite && !R.hasExpanded)
+				to_chat(usr, "<span class='warning'>This unit is too compact. It wouldn't be feasible make it any smaller!</span>")
+				return FALSE
+
 		R.notransform = TRUE
 		var/prev_lockcharge = R.lockcharge
 		R.SetLockdown(1)
