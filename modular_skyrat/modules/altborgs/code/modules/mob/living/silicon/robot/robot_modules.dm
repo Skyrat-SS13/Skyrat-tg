@@ -1,5 +1,4 @@
-mob/living/silicon/robot //For restricting shrink module usage on small borgs
-	var/has_small_sprite = FALSE
+var/has_small_sprite = FALSE
 
 /obj/item/robot_model/proc/dogborg_equip()
 	has_snowflake_deadsprite = TRUE
@@ -29,8 +28,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 //ROBOT ADDITIONAL MODULES
 
 //STANDARD
-/obj/item/robot_model/standard/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/standard/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/standard_icons = list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
@@ -65,7 +63,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "eyebotsd"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Robot")
 			cyborg_base_icon = "robot_old"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
@@ -93,8 +91,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 	return ..()
 
 //MEDICAL
-/obj/item/robot_model/medical/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/medical/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/med_icons
 	if(!med_icons)
@@ -130,7 +127,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "zoomba_med"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Droid")
 			cyborg_base_icon = "medical"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
@@ -145,7 +142,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "eyebotmed"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Heavy")
 			cyborg_base_icon = "heavymed"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
@@ -217,14 +214,13 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			model_select_icon = "medihound"
 			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			dogborg = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		else
 			return FALSE
 	return ..()
 
 //ENGINEERING
-/obj/item/robot_model/engineering/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/engineering/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/engi_icons
 	if(!engi_icons)
@@ -262,7 +258,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "zoomba_engi"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Default - Treads")
 			cyborg_base_icon = "engi-tread"
 			special_light_key = "engineer"
@@ -311,7 +307,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "eyeboteng"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		//Dogborgs
 		if("Pup Dozer")
 			cyborg_base_icon = "pupdozer"
@@ -349,7 +345,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 			sleeper_overlay = "borgi-eng-sleeper"
 			dogborg = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Otie")
 			cyborg_base_icon = "otiee"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
@@ -360,8 +356,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 	return ..()
 
 //SECURITY
-/obj/item/robot_model/security/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/security/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/sec_icons
 	if(!sec_icons)
@@ -397,7 +392,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "zoomba_sec"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Default - Treads")
 			cyborg_base_icon = "sec-tread"
 			special_light_key = "sec"
@@ -433,7 +428,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "eyebotsec"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Insekt")
 			cyborg_base_icon = "insekt-Sec"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
@@ -477,14 +472,13 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			sleeper_overlay = "borgi-sec-sleeper"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 			dogborg = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		else
 			return FALSE
 	return ..()
 
 //PEACEKEEPER
-/obj/item/robot_model/peacekeeper/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/peacekeeper/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/peace_icons
 	if(!peace_icons)
@@ -517,7 +511,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 		if("Spider")
 			cyborg_base_icon = "whitespider"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Marina")
 			cyborg_base_icon = "marinapeace"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
@@ -537,7 +531,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 		if("Omni")
 			cyborg_base_icon = "omoikane"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		//Dogborgs
 		if("Drake")
 			cyborg_base_icon = "drakepeace"
@@ -549,7 +543,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			sleeper_overlay = "borgi-sleeper"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi'
 			dogborg = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Vale")
 			cyborg_base_icon = "valepeace"
 			sleeper_overlay = "valepeace-sleeper"
@@ -560,8 +554,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 	return ..()
 
 //JANITOR
-/obj/item/robot_model/janitor/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/janitor/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/janitor_icons
 	if(!janitor_icons)
@@ -597,7 +590,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "zoomba_jani"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Marina")
 			cyborg_base_icon = "marinajan"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi'
@@ -629,7 +622,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "eyebotjani"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Insekt")
 			cyborg_base_icon = "insekt-Sci"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_jani.dmi'
@@ -665,7 +658,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 			sleeper_overlay = "borgi-jani-sleeper"
 			dogborg = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		else
 			return FALSE
 	return ..()
@@ -711,8 +704,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 	return ..()
 
 //SERVICE
-/obj/item/robot_model/service/skyrat/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/service/skyrat/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/service_icons
 	if(!service_icons)
@@ -779,7 +771,7 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			cyborg_base_icon = "zoomba_green"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Mech")
 			cyborg_base_icon = "lloyd"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
@@ -812,14 +804,13 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 			sleeper_overlay = "borgi-sleeper"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 			dogborg = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		else
 			return FALSE
 	return TRUE
 
 //MINING
-/obj/item/robot_model/miner/skyrat/be_transformed_to(mob/living/silicon/robot/R, obj/item/robot_model/old_model)
-	. = ..()
+/obj/item/robot_model/miner/skyrat/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/static/list/mining_icons
 	if(!mining_icons)
@@ -890,12 +881,12 @@ mob/living/silicon/robot //For restricting shrink module usage on small borgs
 		if("Drone")
 			cyborg_base_icon = "miningdrone"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_miner"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
 			has_snowflake_deadsprite = TRUE
-			R.has_small_sprite = TRUE
+			has_small_sprite = TRUE
 		//Dogborgs
 		if("Blade")
 			cyborg_base_icon = "blade"
