@@ -34061,6 +34061,7 @@
 	c_tag = "Atmospherics Monitoring";
 	dir = 4
 	},
+/obj/structure/reagent_dispensers/foamtank,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bSQ" = (
@@ -46272,7 +46273,9 @@
 /area/commons/dorms)
 "fyO" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible{
+	dir = 1
+	},
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "fzu" = (
@@ -51342,14 +51345,9 @@
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
 "kbV" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
 	dir = 4
 	},
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/engine,
 /area/engineering/main)
 "kdb" = (
@@ -51779,6 +51777,12 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"kAG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
+	dir = 1
+	},
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "kBm" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -53568,8 +53572,9 @@
 /turf/open/floor/plating,
 /area/security/prison)
 "meF" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
-	dir = 4
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Atmos Supermatter Mix"
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
@@ -58762,7 +58767,9 @@
 /obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
 /obj/effect/turf_decal/box,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "qqQ" = (
@@ -62678,6 +62685,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/meter,
 /turf/open/floor/engine,
 /area/engineering/main)
 "tJZ" = (
@@ -63376,7 +63384,9 @@
 /turf/open/floor/iron/dark,
 /area/medical/morgue)
 "uoq" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible{
+	dir = 1
+	},
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "uos" = (
@@ -65826,12 +65836,12 @@
 /turf/open/floor/iron/dark,
 /area/commons/fitness/recreation)
 "wkA" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8;
-	name = "Atmos Supermatter Mix"
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
+	dir = 1
 	},
-/turf/open/floor/engine,
-/area/engineering/main)
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "wkW" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -66265,7 +66275,9 @@
 /obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
 /obj/effect/turf_decal/box,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "wGx" = (
@@ -99834,7 +99846,7 @@ cfx
 tlN
 kMO
 tSK
-fyO
+wkA
 oag
 rue
 cgY
@@ -100091,7 +100103,7 @@ cfy
 tlN
 nQt
 sWj
-uoq
+kAG
 qqa
 qqa
 qqa
@@ -101117,8 +101129,8 @@ cbj
 igu
 vPX
 jBn
+kbV
 ulY
-meF
 chA
 iLF
 uTI
@@ -101374,8 +101386,8 @@ ktM
 cff
 vPX
 flQ
+meF
 ulY
-wkA
 kWQ
 bXk
 evB
@@ -101632,7 +101644,7 @@ cfg
 qrw
 cfY
 tJX
-kbV
+uTI
 gEI
 evB
 cdm
