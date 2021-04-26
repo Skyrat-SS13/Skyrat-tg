@@ -56,6 +56,10 @@
 	name = "Blue leg wraps"
 	path= /obj/item/clothing/shoes/wraps/blue
 
+/datum/loadout_item/shoes/clothwraps
+	name = "Cloth foot wraps"
+	path= /obj/item/clothing/shoes/wraps/cloth
+
 /datum/loadout_item/shoes/high_heels
 	name = "High Heels"
 	path = /obj/item/clothing/shoes/high_heels

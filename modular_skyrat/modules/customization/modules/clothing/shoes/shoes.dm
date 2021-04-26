@@ -21,6 +21,11 @@
 	desc = "Ankle coverings. Hang ten, brother."
 	icon_state = "bluecuffs"
 
+/obj/item/clothing/shoes/wraps/cloth
+	name = "cloth footwraps"
+	desc = "A roll of treated canvas used for wrapping claws or paws."
+	icon_state = "clothwrap"
+
 /obj/item/clothing/shoes/cowboyboots
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
@@ -54,7 +59,6 @@
 	desc = "A brown pair of boots, prim and proper, ready to set off and get a body out of a tree."
 	icon_state = "aerostatic_boots"
 
-
 /obj/item/clothing/shoes/jungleboots
 	name = "jungle boots"
 	desc = "Take me to your paradise, I want to see the Jungle. A brown pair of boots."
@@ -69,7 +73,7 @@
 	resistance_flags = NONE
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
-	can_be_tied = TRUE //SKYRAT EDIT
+	can_be_tied = TRUE
 
 /obj/item/clothing/shoes/jackboots/black
 	name = "dark jackboots"
