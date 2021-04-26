@@ -1221,7 +1221,8 @@
 	build_path = /obj/item/assembly/control
 	category = list("initial","Misc")
 
-/datum/design/shotgun_slug //SKYRAT EDIT START - SHOTGUN AMMO
+//SKYRAT EDIT START - SHOTGUN AMMO
+/datum/design/shotgun_slug
 	name = "Shotgun Slug"
 	id = "shotgun_slug"
 	build_type = AUTOLATHE
@@ -1235,4 +1236,5 @@
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 4000)
 	build_path = /obj/item/ammo_casing/shotgun/buckshot
-	category = list("hacked", "Security") //SKYRAT EDIT END - SHOTGUN AMMO
+	category = list("hacked", "Security") 
+//SKYRAT EDIT END - SHOTGUN AMMO
