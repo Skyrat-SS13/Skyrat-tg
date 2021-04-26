@@ -148,6 +148,8 @@
 					/obj/item/storage/box/lethalshot,
 					/obj/item/ammo_box/c38, //Revolver rifle ammo.
 					/obj/item/ammo_box/a762, //rifle ammo.
+					/obj/item/gun/ballistic/automatic/surplus, //It's bad
+					/obj/item/ammo_box/magazine/m10mm/rifle,
 					/obj/item/gun/ballistic/automatic/pistol/toy) //they just hate you.
 	crate_name = "dusty crate"
 
