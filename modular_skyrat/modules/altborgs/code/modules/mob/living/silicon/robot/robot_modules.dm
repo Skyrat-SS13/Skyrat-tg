@@ -1,4 +1,4 @@
-/obj/item/robot_model/var/has_small_sprite = TRUE
+var/has_small_sprite = TRUE
 
 /obj/item/robot_model/proc/dogborg_equip()
 	has_snowflake_deadsprite = TRUE
