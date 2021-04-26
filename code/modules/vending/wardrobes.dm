@@ -131,6 +131,7 @@
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician/skirt = 3,
 					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/rank/engineering/atmospheric_technician/hazard = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/shoes/sneakers/black = 3,
 					/obj/item/clothing/head/beret/job/atmos = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/shoes/sneakers/black = 3)

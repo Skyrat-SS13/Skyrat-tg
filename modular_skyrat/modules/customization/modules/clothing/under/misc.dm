@@ -15,6 +15,13 @@
 	name = "pink mankini"
 	icon_state = "mankini"
 
+/obj/item/clothing/under/misc/stripper/bunnysuit
+	name = "bunny suit"
+	desc = "Makes the wearer more attractive, even men."
+	icon_state = "bunnysuit"
+	can_adjust = TRUE
+	alt_covers_chest = FALSE
+
 /obj/item/clothing/under/croptop
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
@@ -356,4 +363,18 @@
 	icon_state = "cargocas"
 	inhand_icon_state = "lb_suit"
 
+/obj/item/clothing/under/rank/engineering/chief_engineer/hazard
+	name = "chief engineer's hazard jumpsuit"
+	desc = "A high visibility jumpsuit for the chief engineer made from heat and radiation resistant materials."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "hazard_ce"
+	alt_covers_chest = TRUE
 
+/obj/item/clothing/under/rank/engineering/atmospheric_technician/hazard
+	name = "atmospheric technician's hazard jumpsuit"
+	desc = "A high visibility jumpsuit made from heat and radiation resistant materials."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "hazard_atmos"
+	alt_covers_chest = TRUE

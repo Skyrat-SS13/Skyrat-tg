@@ -82,6 +82,11 @@
 	path = /obj/item/clothing/under/misc/stripper/green
 	cost = 3
 
+/datum/loadout_item/uniform/bunnysuit
+	name = "Bunny suit"
+	path = /obj/item/clothing/under/misc/stripper/bunnysuit
+	cost = 3
+
 /datum/loadout_item/uniform/qipao
 	name = "Qipao, Black"
 	path = /obj/item/clothing/under/costume/qipao
@@ -917,6 +922,21 @@
 	name = "ORV - assistant"
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv
 	restricted_roles = list("Assistant")
+
+/datum/loadout_item/uniform/job/hazardce
+	name = "chief engineer's hazard jumpsuit"
+	path = /obj/item/clothing/under/rank/engineering/chief_engineer/hazard
+	restricted_roles = list("Chief Engineer")
+
+/datum/loadout_item/uniform/job/hazardatmos
+	name = "atmos technician's hazard jumpsuit"
+	path = /obj/item/clothing/under/rank/engineering/atmospheric_technician/hazard
+	restricted_roles = list("Atmospheric Technician")
+
+/datum/loadout_item/uniform/job/hazardeng
+	name = "engineer's hazard jumpsuit"
+	path = /obj/item/clothing/under/rank/engineering/engineer/hazard
+	restricted_roles = list("Station Engineer")
 
 /datum/loadout_item/uniform/tactical_hawaiian_orange
 	name = "Tactical Hawaiian Outfit - Orange"

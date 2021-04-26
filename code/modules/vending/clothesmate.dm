@@ -137,6 +137,13 @@
 		            /obj/item/clothing/shoes/cowboy = 2,
 		            /obj/item/clothing/shoes/cowboy/white = 2,
 		            /obj/item/clothing/shoes/cowboy/black = 2,
+		            //SKYRAT EDIT: ADDITION: START - Footwraps
+		            /obj/item/clothing/shoes/wraps = 2,
+		            /obj/item/clothing/shoes/wraps/silver = 2,
+		            /obj/item/clothing/shoes/wraps/red = 3,
+		            /obj/item/clothing/shoes/wraps/blue = 3,
+		            /obj/item/clothing/shoes/wraps/cloth = 4,
+		            // SKYRAT EDIT: ADDITION: END - Footwraps
 		            /obj/item/clothing/suit/jacket/miljacket = 1,
 		            /obj/item/clothing/suit/apron/purple_bartender = 2,
 		            /obj/item/clothing/under/rank/civilian/bartender/purple = 2,
