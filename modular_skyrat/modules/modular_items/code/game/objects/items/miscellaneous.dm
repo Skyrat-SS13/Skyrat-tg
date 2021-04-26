@@ -43,7 +43,7 @@
 				phased = 1
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
-			C.AdjustBloodVol(initial(C.blood_volume)/20)
+			M.blood_volume -= 150
 		start_recharge()
 		return
 	revert_cast()
