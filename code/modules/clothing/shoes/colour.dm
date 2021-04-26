@@ -27,8 +27,10 @@
 
 /obj/item/clothing/shoes/sneakers/blue
 	name = "blue shoes"
+	icon_state = "blue"
+	permeability_coefficient = 0.01	
 	greyscale_colors = "#16a9eb#ffffff"
-
+  
 /obj/item/clothing/shoes/sneakers/green
 	name = "green shoes"
 	greyscale_colors = "#54eb16#ffffff"
@@ -98,4 +100,3 @@
 			to_chat(c, "<span class='warning'>You need help taking these off!</span>")
 			return
 	return ..()
-
