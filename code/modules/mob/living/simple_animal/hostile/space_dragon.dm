@@ -455,7 +455,8 @@
 			to_chat(L, "<span class='userdanger'>You're knocked back by the gust!</span>")
 			var/dir_to_target = get_dir(get_turf(src), get_turf(L))
 			var/throwtarget = get_edge_target_turf(target, dir_to_target)
-			L.safe_throw_at(throwtarget, 15, 1, src)
+			L.safe_throw_at(throwtarget, 15, 1, src) // SKYRAT EDIT - ORIGINAL :(throwtarget, 10, 1, src)
+			M.Knockdown(30) // SKYRAT EDIT - ORIGINAL: L.Paralyze(50)
 	addtimer(CALLBACK(src, .proc/reset_status), 4 + ((tiredness * tiredness_mult) / 10))
 	tiredness = tiredness + (gust_tiredness * tiredness_mult)
 
