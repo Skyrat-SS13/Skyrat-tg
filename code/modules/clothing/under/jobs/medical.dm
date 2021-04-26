@@ -97,12 +97,9 @@
 	name = "paramedic jumpsuit"
 	icon_state = "paramedic"
 	inhand_icon_state = "w_suit"
-<<<<<<< HEAD
 	permeability_coefficient = 0.5
 	mutant_variants = NONE //SKYRAT EDIT: Sprite fix
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 0, ACID = 0)
-=======
->>>>>>> b97b9e65584 (Small clean up on uniform code (#58690))
 	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/medical/paramedic/skirt
