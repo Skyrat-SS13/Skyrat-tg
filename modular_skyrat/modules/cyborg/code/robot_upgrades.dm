@@ -1,4 +1,4 @@
-var/mob/living/silicon/robot = new
+var/mob/living/silicon/robot = new //Imports variables for shrink module blacklist
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
 

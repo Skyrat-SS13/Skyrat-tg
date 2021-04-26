@@ -1,4 +1,4 @@
-var/has_small_sprite = TRUE
+var/has_small_sprite = TRUE //For Shrink Module Blacklist
 
 /obj/item/robot_model/proc/dogborg_equip()
 	has_snowflake_deadsprite = TRUE
@@ -121,7 +121,7 @@ var/has_small_sprite = TRUE
 			wide.pixel_x = -16
 			med_icons[a] = wide
 		med_icons = sortList(med_icons)
-	has_small_sprite = FALSE
+	has_small_sprite = FALSE //Removes borgs from the shrink module blacklist when they select a chassis
 	var/med_borg_icon = show_radial_menu(cyborg, cyborg , med_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(med_borg_icon)
 		if("Default")
@@ -131,7 +131,7 @@ var/has_small_sprite = TRUE
 			cyborg_base_icon = "zoomba_med"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 			has_snowflake_deadsprite = TRUE
-			has_small_sprite = TRUE
+			has_small_sprite = TRUE //If this chassis is selected, the borg is added to the shrink module blacklist
 		if("Droid")
 			cyborg_base_icon = "medical"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
