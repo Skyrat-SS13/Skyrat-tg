@@ -37,6 +37,7 @@
 	desc = "A black skirt with a fashionable gold-ish yellow trim. It's tied up at the side. It doesn't cover up the chest..."
 	icon = 'modular_skyrat/modules/modular_items/icons/obj/modular_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi'
 	icon_state = "skirt"
 	can_adjust = FALSE
 	body_parts_covered = GROIN|LEGS
