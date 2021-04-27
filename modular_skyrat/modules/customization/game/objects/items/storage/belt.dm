@@ -15,9 +15,9 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 5
-    STR.display_numerical_stacking = TRUE
+	STR.display_numerical_stacking = TRUE
 	STR.set_holdable(list(
 		/obj/item/mail,
-        /obj/item/mail/envelope,
-        /obj/item/paper
+		/obj/item/mail/envelope,
+		/obj/item/paper
 		))
