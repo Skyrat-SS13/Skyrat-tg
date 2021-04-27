@@ -57,6 +57,7 @@
 	desc = "Some sort of primitive projectile weapon made of bone and wrapped sinew, oddly robust."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "ashenbow"
+	inhand_icon_state = "ashenbow"
 	force = 15
 
 /obj/item/gun/ballistic/tribalbow/pipe
@@ -64,5 +65,6 @@
 	desc = "Portable and sleek, but you'd be better off hitting someone with a pool noodle."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "pipebow"
+	inhand_icon_state = "pipebow"
 	force = 3
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE

@@ -2,11 +2,12 @@
 	name = "Bone Sword"
 	desc = "Jagged pieces of bone are tied to what looks like a goliaths femur."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/items_and_weapons.dmi'
-	icon_state = "bone_sword"
 	lefthand_file = 'modular_skyrat/modules/tribal_extended/icons/swords_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/tribal_extended/icons/swords_righthand.dmi'
+	icon_state = "bone_sword"
+	inhand_icon_state = "bone_sword"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
-	force = 15
+	force = 20
 	throwforce = 10
 	armour_penetration = 15
 	w_class = WEIGHT_CLASS_NORMAL
