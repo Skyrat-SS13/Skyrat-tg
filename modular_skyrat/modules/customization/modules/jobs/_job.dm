@@ -40,7 +40,6 @@
 	no_dresscode = TRUE
 	blacklist_dresscode_slots = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK) //headset, PDA, ID, backpack are important items
 	required_languages = null
-	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer")
 
 /datum/job/prisoner
 	required_languages = null
@@ -51,7 +50,6 @@
 
 /datum/job/detective
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
-	alt_titles = list("Forensics Technician", "Private Investigator")
 
 /datum/job/warden
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
@@ -71,45 +69,24 @@
 // Command
 /datum/job/captain
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
-	alt_titles = list("Station Commander")
 
 /datum/job/head_of_security
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
-	alt_titles = list("Security Commander")
 
 /datum/job/chief_medical_officer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/chief_engineer
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
-	alt_titles = list("Engineering Foreman")
 
 /datum/job/research_director
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/head_of_personnel
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
-	alt_titles = list("Executive Officer")
 
 /datum/job/quartermaster
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
-
-//Engineering
-/datum/job/engineer
-	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician")
-
-/datum/job/atmos
-	alt_titles = list("Firefighter", "Life Support Specialist")
-
-//Medical
-/datum/job/doctor
-	alt_titles = list("Nurse", "Surgeon")
-
-/datum/job/paramedic
-	alt_titles = list("Emergency Medical Technician", "Medical Responder")
-
-/datum/job/chemist
-	alt_titles = list("Pharmacist", "Pharmacologist")
 
 //Silicon
 /datum/job/ai
@@ -118,32 +95,18 @@
 /datum/job/cyborg
 	loadout = FALSE
 
-//Science
-/datum/job/scientist
-	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher")
-
-/datum/job/roboticist
-	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer")
-
 //Service
 /datum/job/cook
 	required_languages = null
-	alt_titles = list("Chef", "Culinary Artist", "Butcher")
 
 /datum/job/botanist
 	required_languages = null
-	alt_titles = list("Gardener", "Herbalist", "Botanical Researcher")
 
 /datum/job/curator
 	required_languages = null
-	alt_titles = list("Journalist", "Librarian", "Archivist")
 
 /datum/job/janitor
 	required_languages = null
-	alt_titles = list("Custodian", "Sanitation Technician")
-
-/datum/job/lawyer
-	alt_titles = list("Human Resources Agent", "Internal Affairs Agent")
 
 /datum/job/proc/has_required_languages(datum/preferences/pref)
 	if(!required_languages)
