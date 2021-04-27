@@ -301,7 +301,7 @@
 ///////////////////////////////
 /obj/item/ammo_casing/caseless/b473
 	name = "4.73x33mm bullet"
-	desc = "A 9mm bullet."
+	desc = "A 4.73x33mm bullet."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
 	caliber = CALIBER_473MM
