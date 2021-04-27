@@ -2,6 +2,8 @@
 	//The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 
+	//The cosmetic, alternate title chosen by the player. Does not affect anything var/title effects. SKYRAT EDIT ADD - ALT TITLES
+	var/alt_title_pref
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a skeleton crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
 	var/list/skills
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a full crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
@@ -172,6 +174,9 @@
 		var/datum/bank_account/bank_account = new(H.real_name, src, H.dna.species.payday_modifier)
 		bank_account.payday(STARTING_PAYCHECKS, TRUE)
 		H.account_id = bank_account.account_id
+	//SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
+	if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[title])
+		alt_title_pref = preference_source.prefs.alt_titles_preferences[title]
 
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
@@ -284,9 +289,11 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-		//SKYRAT EDIT ADDITION - Alt job titles
+		//SKYRAT EDIT ADDITION - Alt job titles (latejoin)
 		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
 			C.assignment = H.client.prefs.alt_titles_preferences[J.title]
+		else if (J.alt_title_pref)
+			C.assignment = J.alt_title_pref
 		else
 			C.assignment = J.title
 		//SKYRAT EDIT ADDITION END
