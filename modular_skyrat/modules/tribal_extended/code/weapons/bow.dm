@@ -7,7 +7,7 @@
 	icon_state = "bow"
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY //need both hands to fire
-	force = 5
+	force = 8
 	mag_type = /obj/item/ammo_box/magazine/internal/bow
 	fire_sound = 'modular_skyrat/modules/tribal_extended/sound/sound_weapons_bowfire.ogg'
 	slot_flags = ITEM_SLOT_BACK
@@ -54,14 +54,15 @@
 
 /obj/item/gun/ballistic/tribalbow/ashen
 	name = "Bone Bow"
-	desc = "Some sort of primitive projectile weapon made of bone and wrapped sinew."
+	desc = "Some sort of primitive projectile weapon made of bone and wrapped sinew, oddly robust."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "ashenbow"
-	force = 8
+	force = 15
 
 /obj/item/gun/ballistic/tribalbow/pipe
 	name = "Pipe Bow"
-	desc = "A crude projectile weapon made from silk string, pipe and lots of bending."
+	desc = "Portable and sleek, but you'd be better off hitting someone with a pool noodle."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "pipebow"
-	force = 7
+	force = 3
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
