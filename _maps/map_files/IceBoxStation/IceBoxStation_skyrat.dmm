@@ -6871,9 +6871,11 @@
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
 "aCd" = (
-/obj/machinery/cryopod,
 /obj/machinery/airalarm{
 	pixel_y = 18
+	},
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -7731,18 +7733,9 @@
 /turf/open/floor/iron,
 /area/commons/dorms)
 "aFe" = (
-/obj/machinery/camera{
-	c_tag = "Dormitory South";
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/commons/dorms)
+/obj/machinery/light,
+/turf/open/floor/iron/freezer,
+/area/security/prison)
 "aFf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 4
@@ -40770,14 +40763,14 @@
 /turf/open/openspace,
 /area/science/xenobiology)
 "few" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
 /obj/machinery/light_switch{
 	pixel_y = -22
+	},
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -47079,9 +47072,18 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "lJt" = (
-/obj/machinery/light,
-/turf/open/floor/iron/freezer,
-/area/security/prison)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Dormitory South";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/commons/dorms)
 "lJw" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
 /obj/machinery/airalarm/all_access{
@@ -50799,9 +50801,11 @@
 /turf/open/floor/plating,
 /area/security/prison)
 "pAr" = (
-/obj/machinery/cryopod,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/cryopod{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -54493,11 +54497,11 @@
 /turf/open/floor/carpet,
 /area/commons/dorms)
 "tqo" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
+	},
+/obj/machinery/cryopod{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -81328,7 +81332,7 @@ boP
 aai
 sxf
 pIM
-lJt
+aFe
 abz
 rOV
 giF
@@ -90638,8 +90642,8 @@ atj
 aAX
 azc
 qgF
-aFe
 azc
+lJt
 aHT
 aJy
 aJy
