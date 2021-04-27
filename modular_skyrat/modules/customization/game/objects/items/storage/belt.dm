@@ -20,4 +20,4 @@
 		/obj/item/mail,
 		/obj/item/mail/envelope,
 		/obj/item/paper
-		))
+	))
