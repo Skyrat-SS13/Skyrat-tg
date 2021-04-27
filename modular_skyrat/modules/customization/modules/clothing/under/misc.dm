@@ -356,4 +356,9 @@
 	icon_state = "cargocas"
 	inhand_icon_state = "lb_suit"
 
-
+/obj/item/clothing/under/rank/cargo/qm/syndie
+	name = "deck officer's jumpsuit"
+	desc = "A dark suit with a classic cargo vest. For the ultimate master of all things paper."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "qmsynd"
