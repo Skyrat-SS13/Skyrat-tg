@@ -4,12 +4,125 @@
 /* --- Traffic Control Scripting Language --- */
 	// Nanotrasen TCS Language - Made by Doohl, ported to Yogs by Altoids
 
-#define HUMAN 1
-#define MONKEY 2
-#define ROBOT 4
-#define POLYSMORPH 8
-#define DRACONIC 16
-#define BEACHTONGUE 32
+#define NTSL_LANG_APHASIA 1
+#define NTSL_LANG_BEACHBUM 2
+#define NTSL_LANG_BUZZWORDS 3
+#define NTSL_LANG_CALCIC 4
+#define NTSL_LANG_CODESPEAK 5
+#define NTSL_LANG_COMMON 6
+#define NTSL_LANG_DRACONIC 7
+#define NTSL_LANG_MACHINE 8
+#define NTSL_LANG_MOFFIC 9
+#define NTSL_LANG_MONKEY 10
+#define NTSL_LANG_MUSHROOM 11
+#define NTSL_LANG_NARSIAN 12
+#define NTSL_LANG_NEKOMIMETIC 13
+#define NTSL_LANG_PIRATESPEAK 14
+#define NTSL_LANG_SHADOWTONGUE 15
+#define NTSL_LANG_SLIME 16
+#define NTSL_LANG_SWARMER 17
+#define NTSL_LANG_SYLVAN 18
+#define NTSL_LANG_TERRUM 19
+#define NTSL_LANG_UNCOMMON 20
+#define NTSL_LANG_VOLTAIC 21
+#define NTSL_LANG_XENOCOMMON 22
+
+/proc/NTSL_LANG_TOBIT(lang)
+	. = 0
+	switch(lang)
+		if(/datum/language/aphasia)
+			return NTSL_LANG_APHASIA
+		if(/datum/language/beachbum)
+			return NTSL_LANG_BEACHBUM
+		if(/datum/language/buzzwords)
+			return NTSL_LANG_BUZZWORDS
+		if(/datum/language/calcic)
+			return NTSL_LANG_CALCIC
+		if(/datum/language/codespeak)
+			return NTSL_LANG_CODESPEAK
+		if(/datum/language/common)
+			return NTSL_LANG_COMMON
+		if(/datum/language/draconic)
+			return NTSL_LANG_DRACONIC
+		if(/datum/language/machine)
+			return NTSL_LANG_MACHINE
+		if(/datum/language/moffic)
+			return NTSL_LANG_MOFFIC
+		if(/datum/language/monkey)
+			return NTSL_LANG_MONKEY
+		if(/datum/language/mushroom)
+			return NTSL_LANG_MUSHROOM
+		if(/datum/language/narsie)
+			return NTSL_LANG_NARSIAN
+		if(/datum/language/nekomimetic)
+			return NTSL_LANG_NEKOMIMETIC
+		if(/datum/language/piratespeak)
+			return NTSL_LANG_PIRATESPEAK
+		if(/datum/language/shadowtongue)
+			return NTSL_LANG_SHADOWTONGUE
+		if(/datum/language/slime)
+			return NTSL_LANG_SLIME
+		if(/datum/language/swarmer)
+			return NTSL_LANG_SWARMER
+		if(/datum/language/sylvan)
+			return NTSL_LANG_SYLVAN
+		if(/datum/language/terrum)
+			return NTSL_LANG_TERRUM
+		if(/datum/language/uncommon)
+			return NTSL_LANG_UNCOMMON
+		if(/datum/language/voltaic)
+			return NTSL_LANG_VOLTAIC
+		if(/datum/language/xenocommon)
+			return NTSL_LANG_XENOCOMMON
+
+/proc/NTSL_LANG_TODATUM(lang)
+	. = /datum/language/common // If we ever fail to grab a real language; instead of just not passing a language we'll revert to common.
+	switch(lang)
+		if(NTSL_LANG_APHASIA)
+			return /datum/language/aphasia
+		if(NTSL_LANG_BEACHBUM)
+			return /datum/language/beachbum
+		if(NTSL_LANG_BUZZWORDS)
+			return /datum/language/buzzwords
+		if(NTSL_LANG_CALCIC)
+			return /datum/language/calcic
+		if(NTSL_LANG_CODESPEAK)
+			return /datum/language/codespeak
+		if(NTSL_LANG_COMMON)
+			return /datum/language/common
+		if(NTSL_LANG_DRACONIC)
+			return /datum/language/draconic
+		if(NTSL_LANG_MACHINE)
+			return /datum/language/machine
+		if(NTSL_LANG_MOFFIC)
+			return /datum/language/moffic
+		if(NTSL_LANG_MONKEY)
+			return /datum/language/monkey
+		if(NTSL_LANG_MUSHROOM)
+			return /datum/language/mushroom
+		if(NTSL_LANG_NARSIAN)
+			return /datum/language/narsie
+		if(NTSL_LANG_NEKOMIMETIC)
+			return /datum/language/nekomimetic
+		if(NTSL_LANG_PIRATESPEAK)
+			return /datum/language/piratespeak
+		if(NTSL_LANG_SHADOWTONGUE)
+			return /datum/language/shadowtongue
+		if(NTSL_LANG_SLIME)
+			return /datum/language/slime
+		if(NTSL_LANG_SWARMER)
+			return /datum/language/swarmer
+		if(NTSL_LANG_SYLVAN)
+			return /datum/language/sylvan
+		if(NTSL_LANG_TERRUM)
+			return /datum/language/terrum
+		if(NTSL_LANG_UNCOMMON)
+			return /datum/language/uncommon
+		if(NTSL_LANG_VOLTAIC)
+			return /datum/language/voltaic
+		if(NTSL_LANG_XENOCOMMON)
+			return /datum/language/xenocommon
+
 GLOBAL_LIST_INIT(allowed_custom_spans,list(SPAN_ROBOT,SPAN_YELL,SPAN_ITALICS,SPAN_SANS,SPAN_COMMAND,SPAN_CLOWN))//Span classes that players are allowed to set in a radio transmission.
 //this is fucking broken
 GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/language/machine,/datum/language/draconic))// language datums that players are allowed to translate to in a radio transmission.
@@ -109,6 +222,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 	However, I think the signal can only have one language
 	So, the lowest bit set within $language overrides any higher ones that are set.
 	*/
+	/*
 	interpreter.SetVar("languages", new /datum/n_enum(list(
 		"human" = HUMAN,
 		"monkey" = MONKEY,
@@ -117,6 +231,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 		"draconic" = DRACONIC,
 		"beachtounge" = BEACHTONGUE
 	)))
+	*/
 
 	interpreter.Run() // run the thing
 
@@ -140,21 +255,11 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 	if(!interpreter.ProcExists("process_signal"))
 		return
 
-	var/datum/language/oldlang = signal.language
-	if(oldlang == /datum/language/common)
-		oldlang = HUMAN
-	else if(oldlang == /datum/language/monkey)
-		oldlang = MONKEY
-	else if(oldlang == /datum/language/machine)
-		oldlang = ROBOT
-	/*
-	else if(oldlang == /datum/language/polysmorph)
-		oldlang = POLYSMORPH
-	*/
-	else if(oldlang == /datum/language/draconic)
-		oldlang = DRACONIC
-	else if(oldlang == /datum/language/beachbum)
-		oldlang = BEACHTONGUE
+	if(!istype(signal, /datum/signal/subspace/vocal))
+		return
+
+	var/datum/language/oldlang = !signal.language ? /datum/language/common : signal.language
+	oldlang = NTSL_LANG_TOBIT(oldlang)
 
 	// Signal data
 
@@ -207,7 +312,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 	signal.virt.verb_ask		= script_signal.get_clean_property("ask")
 	signal.virt.verb_yell		= script_signal.get_clean_property("yell")
 	signal.virt.verb_exclaim	= script_signal.get_clean_property("exclaim")
-	var/newlang = LangBit2Datum(script_signal.get_clean_property("language"))
+	var/newlang = NTSL_LANG_TODATUM(script_signal.get_clean_property("language"))
 	if(newlang != oldlang)// makes sure that we only clean out unallowed languages when a translation is taking place otherwise we run an unnecessary proc to filter newlang on foreign untranslated languages.
 		if(!LAZYFIND(GLOB.allowed_translations, oldlang)) // cleans out any unallowed translations by making sure the new language is on the allowed translation list. Tcomms powergaming is dead! - Hopek
 			newlang = oldlang
@@ -233,7 +338,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 		"job" = "",
 		"pass" = TRUE,
 		"filters" = list(),
-		"language" = HUMAN,
+		"language" = NTSL_LANG_COMMON,
 		"say" = "says",
 		"ask" = "asks",
 		"yell" = "yells",
@@ -264,25 +369,6 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 
 #define SIGNAL_COOLDOWN 20 // 2 seconds
 #define MAX_MEM_VARS 500 // The maximum number of variables that can be stored by NTSL via mem()
-
-/datum/signal
-
-/proc/LangBit2Datum(langbits) // Takes in the set language bits, returns the datum to use
-	switch(langbits)
-		if(HUMAN)
-			return /datum/language/common
-		if(MONKEY)
-			return /datum/language/monkey
-		if(ROBOT)
-			return /datum/language/machine
-		/*
-		if(POLYSMORPH)
-			return /datum/language/polysmorph
-		*/
-		if(DRACONIC)
-			return /datum/language/draconic
-		if(BEACHTONGUE)
-			return /datum/language/beachbum
 
 /datum/n_function/default/mem
 	name = "mem"
@@ -398,7 +484,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 		// Nah. That actually can't happen when you multiply by a whole number.
 		// Think about it.
 	if(isnum(language)) // If the language was a lang bit instead of a datum
-		language = LangBit2Datum(language)
+		language = NTSL_LANG_TODATUM(language)
 	if(!islist(spans))
 		spans = list()
 	else
@@ -415,10 +501,7 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 	virt.verb_yell = yell
 
 	var/datum/signal/subspace/vocal/newsign = new(hradio,freq,virt,language,message,spans, list(), list(S.z))
-	/*
-	virt.languages_spoken = language
-	virt.languages_understood = virt.languages_spoken //do not remove this or everything turns to jibberish
-	*/
+
 	//END SAY REWRITE RELATED CODE.
 
 	//Now we set up the signal
@@ -446,9 +529,3 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 	return pass // Returns, as of Jan 23 2019, the number of machines that received this broadcast's message.
 #undef SIGNAL_COOLDOWN
 #undef MAX_MEM_VARS
-#undef HUMAN
-#undef MONKEY
-#undef ROBOT
-#undef POLYSMORPH
-#undef DRACONIC
-#undef BEACHTONGUE
