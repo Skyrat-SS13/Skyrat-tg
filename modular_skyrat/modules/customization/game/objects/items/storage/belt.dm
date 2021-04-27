@@ -8,7 +8,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt"
 	inhand_icon_state = "mailbelt"
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/belt.dmi'
 	worn_icon_state = "mailbelt"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
