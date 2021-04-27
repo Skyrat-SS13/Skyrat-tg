@@ -195,8 +195,11 @@
 
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
+		if(alt_title_pref) // SKYRAT EDIT ADD - ALT JOB TITLES
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, alt_title_pref, channels), 1)) // SKYRAT EDIT ADD END
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		else
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
@@ -311,6 +314,8 @@
 		// SKYRAT EDIT ADDITION - alt job titles
 		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
 			PDA.ownjob = H.client.prefs.alt_titles_preferences[J.title]
+		else if (J.alt_title_pref)
+			PDA.ownjob = J.alt_title_pref
 		else // SKYRAT EDIT ADDITION END - alt job titles
 			PDA.ownjob = J.title
 		PDA.update_label()
