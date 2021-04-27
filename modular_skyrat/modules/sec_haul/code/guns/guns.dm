@@ -914,7 +914,7 @@
 	name = "g11 toploader magazine (4.73×33mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
-	ammo_type = /obj/item/ammo_casing/b473
+	ammo_type = /obj/item/ammo_casing/caseless/b473
 	caliber = CALIBER_473MM
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
