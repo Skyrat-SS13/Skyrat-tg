@@ -140,7 +140,7 @@
 /datum/id_trim/job/signal_tech
 	assignment = "Signal Technician"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_signaltech"
+	trim_state = "trim_sigtech"
 	full_access = list(ACCESS_TCOMSAT, ACCESS_TCOM_ADMIN, ACCESS_TECH_STORAGE, ACCESS_RC_ANNOUNCE, ACCESS_CONSTRUCTION, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP,
 					ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE)
 	minimal_access = list(ACCESS_TCOMSAT, ACCESS_TCOM_ADMIN, ACCESS_TECH_STORAGE, ACCESS_RC_ANNOUNCE, ACCESS_CONSTRUCTION, ACCESS_MECH_ENGINE)
