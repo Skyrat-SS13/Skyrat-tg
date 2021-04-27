@@ -13,12 +13,12 @@
 	smoketime -= delta_time
 	if(smoketime <= 0)
 		if(ismob(loc))
-			var/mob/living/M = loc
-			to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+			var/mob/living/smoking_mob = loc
+			to_chat(smoking_mob, "<span class='notice'>Your [name] goes out.</span>")
 			lit = FALSE
 			icon_state = icon_off
 			inhand_icon_state = icon_off
-			M.update_inv_wear_mask()
+			smoking_mob.update_inv_wear_mask()
 			packeditem = FALSE
 			name = "empty [initial(name)]"
 		STOP_PROCESSING(SSobj, src)
@@ -28,16 +28,16 @@
 		handle_reagents()
 
 
-/obj/item/clothing/mask/cigarette/pipe/crackpipe/attackby(obj/item/O, mob/user, params)
-	if(is_type_in_list(O, list(/obj/item/reagent_containers/crack,/obj/item/reagent_containers/blacktar))&&!istype(O, /obj/item/reagent_containers/crack/crackbrick))
-		to_chat(user, "<span class='notice'>You stuff [O] into [src].</span>")
+/obj/item/clothing/mask/cigarette/pipe/crackpipe/attackby(obj/item/used_item, mob/user, params)
+	if(is_type_in_list(used_item, list(/obj/item/reagent_containers/crack,/obj/item/reagent_containers/blacktar))&&!istype(used_item, /obj/item/reagent_containers/crack/crackbrick))
+		to_chat(user, "<span class='notice'>You stuff [used_item] into [src].</span>")
 		smoketime = 2 * 60
-		name = "[O.name]-packed [initial(name)]"
-		if(O.reagents)
-			O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
-		qdel(O)
+		name = "[used_item.name]-packed [initial(name)]"
+		if(used_item.reagents)
+			used_item.reagents.trans_to(src, used_item.reagents.total_volume, transfered_by = user)
+		qdel(used_item)
 	else
-		var/lighting_text = O.ignition_effect(src,user)
+		var/lighting_text = used_item.ignition_effect(src,user)
 		if(lighting_text)
 			if(smoketime > 0)
 				light(lighting_text)
