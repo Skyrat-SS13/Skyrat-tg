@@ -20,24 +20,24 @@
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 
-/obj/item/bong/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/food/grown))
-		var/obj/item/food/grown/G = O
+/obj/item/bong/attackby(obj/item/used_item, mob/user, params)
+	if(istype(used_item, /obj/item/food/grown))
+		var/obj/item/food/grown/grown_item = used_item
 		if(!packeditem)
-			if(HAS_TRAIT(G, TRAIT_DRIED))
-				to_chat(user, "<span class='notice'>You stuff [O] into [src].</span>")
+			if(HAS_TRAIT(grown_item, TRAIT_DRIED))
+				to_chat(user, "<span class='notice'>You stuff [grown_item] into [src].</span>")
 				bonghits = useable_bonghits
 				packeditem = TRUE
-				if(O.reagents)
-					O.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
+				if(grown_item.reagents)
+					grown_item.reagents.trans_to(src, grown_item.reagents.total_volume, transfered_by = user)
 					quarter_volume = reagents.total_volume/useable_bonghits
-				qdel(O)
+				qdel(grown_item)
 			else
 				to_chat(user, "<span class='warning'>It has to be dried first!</span>")
 		else
 			to_chat(user, "<span class='warning'>It is already packed!</span>")
 	else
-		var/lighting_text = O.ignition_effect(src,user)
+		var/lighting_text = used_item.ignition_effect(src,user)
 		if(lighting_text)
 			if(bonghits > 0)
 				light(lighting_text)
@@ -63,21 +63,21 @@
 		reagents.clear_reagents()
 	return
 
-/obj/item/bong/attack(mob/M, mob/user, def_zone)
+/obj/item/bong/attack(mob/hit_mob, mob/user, def_zone)
 	if(packeditem && lit)
-		if(M == user)
-			M.visible_message("<span class='notice'>[user] starts taking a hit from the [src].</span>")
+		if(hit_mob == user)
+			hit_mob.visible_message("<span class='notice'>[user] starts taking a hit from the [src].</span>")
 			playsound(src, 'sound/chemistry/heatdam.ogg', 50, TRUE)
 			if(do_after(user,40))
-				to_chat(M, "<span class='notice'>You finish taking a hit from the [src].</span>")
+				to_chat(hit_mob, "<span class='notice'>You finish taking a hit from the [src].</span>")
 				if(reagents.total_volume)
-					reagents.trans_to(M, quarter_volume, transfered_by = user, methods = VAPOR)
+					reagents.trans_to(hit_mob, quarter_volume, transfered_by = user, methods = VAPOR)
 					bonghits--
 				var/turf/open/pos = get_turf(src)
 				if(istype(pos) && pos.air.return_pressure() < 2*ONE_ATMOSPHERE)
 					pos.atmos_spawn_air("water_vapor=10;TEMP=T20C + 20")
 				if(bonghits <= 0)
-					to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+					to_chat(hit_mob, "<span class='notice'>Your [name] goes out.</span>")
 					lit = FALSE
 					packeditem = FALSE
 					icon_state = icon_off
@@ -96,15 +96,15 @@
 	lit = TRUE
 	name = "lit [name]"
 	if(reagents.get_reagent_amount(/datum/reagent/toxin/plasma)) // the plasma explodes when exposed to fire
-		var/datum/effect_system/reagents_explosion/e = new()
-		e.set_up(round(reagents.get_reagent_amount(/datum/reagent/toxin/plasma) / 2.5, 1), get_turf(src), 0, 0)
-		e.start()
+		var/datum/effect_system/reagents_explosion/explosion = new()
+		explosion.set_up(round(reagents.get_reagent_amount(/datum/reagent/toxin/plasma) / 2.5, 1), get_turf(src), 0, 0)
+		explosion.start()
 		qdel(src)
 		return
 	if(reagents.get_reagent_amount(/datum/reagent/fuel)) // the fuel explodes, too, but much less violently
-		var/datum/effect_system/reagents_explosion/e = new()
-		e.set_up(round(reagents.get_reagent_amount(/datum/reagent/fuel) / 5, 1), get_turf(src), 0, 0)
-		e.start()
+		var/datum/effect_system/reagents_explosion/explosion = new()
+		explosion.set_up(round(reagents.get_reagent_amount(/datum/reagent/fuel) / 5, 1), get_turf(src), 0, 0)
+		explosion.start()
 		qdel(src)
 		return
 	// allowing reagents to react after being lit
@@ -113,8 +113,8 @@
 	icon_state = icon_on
 	inhand_icon_state = icon_on
 	if(flavor_text)
-		var/turf/T = get_turf(src)
-		T.visible_message(flavor_text)
+		var/turf/bong_turf = get_turf(src)
+		bong_turf.visible_message(flavor_text)
 
 /obj/item/bong/lungbuster
 	name = "The Lungbuster"
@@ -126,27 +126,27 @@
 	useable_bonghits = 2
 	chem_volume = 50
 
-/obj/item/bong/lungbuster/attack(mob/M, mob/user, def_zone)
+/obj/item/bong/lungbuster/attack(mob/hit_mob, mob/user, def_zone)
 	if(packeditem && lit)
-		if(M == user)
-			M.visible_message("<span class='notice'>[user] starts taking a hit from the [src].</span>")
+		if(hit_mob == user)
+			hit_mob.visible_message("<span class='notice'>[user] starts taking a hit from the [src].</span>")
 			playsound(src, 'sound/chemistry/heatdam.ogg', 50, TRUE)
 			if(do_after(user,40))
-				to_chat(M, "<span class='notice'>You finish taking a hit from the [src].</span>")
+				to_chat(hit_mob, "<span class='notice'>You finish taking a hit from the [src].</span>")
 				if(reagents.total_volume)
-					reagents.trans_to(M, quarter_volume, transfered_by = user, methods = VAPOR)
+					reagents.trans_to(hit_mob, quarter_volume, transfered_by = user, methods = VAPOR)
 					bonghits--
 				var/turf/open/pos = get_turf(src)
 				if(istype(pos) && pos.air.return_pressure() < 2*ONE_ATMOSPHERE)
 					pos.atmos_spawn_air("water_vapor=30;TEMP=T20C + 20")
 				if(prob(50))
-					playsound(M, pick('modular_skyrat/master_files/sound/effects/lungbust_moan1.ogg','modular_skyrat/master_files/sound/effects/lungbust_moan2.ogg', 'modular_skyrat/master_files/sound/effects/lungbust_moan3.ogg'), 50, TRUE)
-					M.emote("moan")
+					playsound(hit_mob, pick('modular_skyrat/master_files/sound/effects/lungbust_moan1.ogg','modular_skyrat/master_files/sound/effects/lungbust_moan2.ogg', 'modular_skyrat/master_files/sound/effects/lungbust_moan3.ogg'), 50, TRUE)
+					hit_mob.emote("moan")
 				else
-					playsound(M, pick('modular_skyrat/master_files/sound/effects/lungbust_cough1.ogg','modular_skyrat/master_files/sound/effects/lungbust_cough2.ogg'), 50, TRUE)
-					M.emote("cough")
+					playsound(hit_mob, pick('modular_skyrat/master_files/sound/effects/lungbust_cough1.ogg','modular_skyrat/master_files/sound/effects/lungbust_cough2.ogg'), 50, TRUE)
+					hit_mob.emote("cough")
 				if(bonghits <= 0)
-					to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+					to_chat(hit_mob, "<span class='notice'>Your [name] goes out.</span>")
 					lit = FALSE
 					packeditem = FALSE
 					icon_state = icon_off
