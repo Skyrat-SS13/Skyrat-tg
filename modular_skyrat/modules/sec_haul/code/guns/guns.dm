@@ -905,7 +905,7 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/g11.ogg'
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 	emp_damageable = FALSE
 	armadyne = TRUE
 	can_bayonet = TRUE
