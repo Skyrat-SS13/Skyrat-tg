@@ -17,7 +17,7 @@
 	STR.max_items = 5
     STR.display_numerical_stacking = TRUE
 	STR.set_holdable(list(
-		/obj/item/mail
-        /obj/item/mail/envelope
+		/obj/item/mail,
+        /obj/item/mail/envelope,
         /obj/item/paper
 		))
