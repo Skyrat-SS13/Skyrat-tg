@@ -37,7 +37,7 @@
 	if(istype(user) && user.canUseTopic(user, TRUE))
 		if(phased)
 			if(user.phasein(target))
-				phased = 0
+				phased = FALSE
 		else
 			if(user.phaseout(target))
 				phased = 1
