@@ -6,9 +6,9 @@
 	name = "Messenger Belt Bag"
 	desc = "A small bag with a belt, worn around the waist. Just wide enough to hold stacks of letters. Includes several dividers for ease of sorting!"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/belts.dmi'
-	icon_state = "mailbelt"
-	inhand_icon_state = "mailbelt"
-	worn_icon_state = "mailbelt"
+	icon_state = "utility" //TODO: figure out what this does
+	inhand_icon_state = "utility" //TODO: figure out what this does
+	worn_icon_state = "modular_skyrat/modules/customization/icons/mob/clothing/belts.dmi"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
 /obj/item/storage/belt/champion/ComponentInitialize()
