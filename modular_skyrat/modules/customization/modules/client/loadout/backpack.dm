@@ -3,12 +3,10 @@
 
 //MISC
 
-/*
 /datum/loadout_item/backpack/mailbelt
 	name = "Messenger Belt Bag"
 	path = /obj/item/storage/belt/mailbelt
 	cost = 2
-*/
 
 /datum/loadout_item/backpack/matches
 	name = "Matchbox"
