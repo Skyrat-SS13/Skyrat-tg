@@ -627,6 +627,17 @@
 	worn_icon_state = "scraparmor"
 	body_parts_covered = CHEST
 
+//Donation reward for Enzoman
+/obj/item/clothing/mask/luchador/enzo
+	name = "mask of El Red Templar"
+	desc = "A mask belonging to El Red Templar, a warrior of lucha. Taking it from him is not recommended."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/mask.dmi'
+	icon_state = "luchador"
+	worn_icon_state = "luchador"
+	clothing_flags = MASKINTERNALS
+	mutant_variants = NONE
+
 //Donation Reward for Grand Vegeta
 /obj/item/clothing/under/mikubikini
 	name = "starlight singer bikini"
