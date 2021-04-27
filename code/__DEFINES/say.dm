@@ -29,10 +29,6 @@
 #define MODE_WHISPER "whisper"
 #define MODE_WHISPER_CRIT "whispercrit"
 
-//SKYRAT custom verb
-#define MODE_CUSTOM_SAY "custom_say"
-//SKYRAT custom sayverb end.
-
 #define MODE_DEPARTMENT "department"
 #define MODE_KEY_DEPARTMENT "h"
 #define MODE_TOKEN_DEPARTMENT ":h"
