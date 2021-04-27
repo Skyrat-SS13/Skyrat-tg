@@ -40,7 +40,7 @@
 				phased = FALSE
 		else
 			if(user.phaseout(target))
-				phased = 1
+				phased = TRUE
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
 			C.blood_volume -= 150
