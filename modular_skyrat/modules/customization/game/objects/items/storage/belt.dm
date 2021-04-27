@@ -12,7 +12,7 @@
 	worn_icon_state = "mailbelt"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
-/obj/item/storage/belt/champion/ComponentInitialize()
+/obj/item/storage/belt/mailbelt/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 5
