@@ -2,7 +2,7 @@
 
 
 /* --- Traffic Control Scripting Language --- */
-	// Nanotrasen TCS Language - Made by Doohl, ported to Yogs by Altoids
+	// Nanotrasen TCS Language - Made by Doohl, ported to Yogs by Altoids, ported to Skyrat by Tf4
 
 #define NTSL_LANG_APHASIA 1
 #define NTSL_LANG_BEACHBUM 2
@@ -11,21 +11,30 @@
 #define NTSL_LANG_CODESPEAK 5
 #define NTSL_LANG_COMMON 6
 #define NTSL_LANG_DRACONIC 7
-#define NTSL_LANG_MACHINE 8
-#define NTSL_LANG_MOFFIC 9
-#define NTSL_LANG_MONKEY 10
-#define NTSL_LANG_MUSHROOM 11
-#define NTSL_LANG_NARSIAN 12
-#define NTSL_LANG_NEKOMIMETIC 13
-#define NTSL_LANG_PIRATESPEAK 14
-#define NTSL_LANG_SHADOWTONGUE 15
-#define NTSL_LANG_SLIME 16
-#define NTSL_LANG_SWARMER 17
-#define NTSL_LANG_SYLVAN 18
-#define NTSL_LANG_TERRUM 19
-#define NTSL_LANG_UNCOMMON 20
-#define NTSL_LANG_VOLTAIC 21
-#define NTSL_LANG_XENOCOMMON 22
+#define NTSL_LANG_DRONE 8
+#define NTSL_LANG_MACHINE 9
+#define NTSL_LANG_MOFFIC 10
+#define NTSL_LANG_MONKEY 11
+#define NTSL_LANG_MUSHROOM 12
+#define NTSL_LANG_NARSIAN 13
+#define NTSL_LANG_NEKOMIMETIC 14
+#define NTSL_LANG_PIRATESPEAK 15
+#define NTSL_LANG_SHADOWTONGUE 16
+#define NTSL_LANG_SLIME 17
+#define NTSL_LANG_SWARMER 18
+#define NTSL_LANG_SYLVAN 19
+#define NTSL_LANG_TERRUM 20
+#define NTSL_LANG_UNCOMMON 21
+#define NTSL_LANG_VOLTAIC 22
+#define NTSL_LANG_XENOCOMMON 23
+// SKYRAT MODULAR LANGUAGES
+#define NTSL_LANG_DWARF 24
+#define NTSL_LANG_GUTTER 25
+#define NTSL_LANG_RUSSIAN 26
+#define NTSL_LANG_SELENIAN 27
+#define NTSL_LANG_SKRELL 28
+#define NTSL_LANG_SPACER 29
+#define NTSL_LANG_VOX 30
 
 /proc/NTSL_LANG_TOBIT(lang)
 	. = 0
@@ -74,6 +83,23 @@
 			return NTSL_LANG_VOLTAIC
 		if(/datum/language/xenocommon)
 			return NTSL_LANG_XENOCOMMON
+		if(/datum/language/drone)
+			return NTSL_LANG_DRONE
+		// SKYRAT MODULAR LANGUAGES
+		if(/datum/language/dwarf)
+			return NTSL_LANG_DWARF
+		if(/datum/language/gutter)
+			return NTSL_LANG_GUTTER
+		if(/datum/language/russian)
+			return NTSL_LANG_RUSSIAN
+		if(/datum/language/selenian)
+			return NTSL_LANG_SELENIAN
+		if(/datum/language/skrell)
+			return NTSL_LANG_SKRELL
+		if(/datum/language/spacer)
+			return NTSL_LANG_SPACER
+		if(/datum/language/vox)
+			return NTSL_LANG_VOX
 
 /proc/NTSL_LANG_TODATUM(lang)
 	. = /datum/language/common // If we ever fail to grab a real language; instead of just not passing a language we'll revert to common.
@@ -122,6 +148,23 @@
 			return /datum/language/voltaic
 		if(NTSL_LANG_XENOCOMMON)
 			return /datum/language/xenocommon
+		if(NTSL_LANG_DRONE)
+			return /datum/language/drone
+		// SKYRAT MODULAR LANGUAGES
+		if(NTSL_LANG_DWARF)
+			return /datum/language/dwarf
+		if(NTSL_LANG_GUTTER)
+			return /datum/language/gutter
+		if(NTSL_LANG_RUSSIAN)
+			return /datum/language/russian
+		if(NTSL_LANG_SELENIAN)
+			return /datum/language/selenian
+		if(NTSL_LANG_SKRELL)
+			return /datum/language/skrell
+		if(NTSL_LANG_SPACER)
+			return /datum/language/spacer
+		if(NTSL_LANG_VOX)
+			return /datum/language/vox
 
 GLOBAL_LIST_INIT(allowed_custom_spans,list(SPAN_ROBOT,SPAN_YELL,SPAN_ITALICS,SPAN_SANS,SPAN_COMMAND,SPAN_CLOWN))//Span classes that players are allowed to set in a radio transmission.
 //this is fucking broken
