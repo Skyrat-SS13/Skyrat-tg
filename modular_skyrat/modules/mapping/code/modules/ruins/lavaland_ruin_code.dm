@@ -13,16 +13,13 @@
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/comms
-	id = /obj/item/card/id/advanced/chameleon
 	ears = /obj/item/radio/headset/interdyne/comms
 
 /datum/outfit/lavaland_syndicate/comms/space
-	id = /obj/item/card/id/advanced/chameleon
 	ears = /obj/item/radio/headset/syndicate/alt
 
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Lavaland Syndicate Shaft Miner"
-	id = /obj/item/card/id/advanced/chameleon
 	r_pocket = /obj/item/storage/bag/ore
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
@@ -33,7 +30,10 @@
 		/obj/item/stack/marker_beacon/ten=1)
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
-	id = /obj/item/card/id/advanced/chameleon
+	name = "Lavaland Syndicate Deck Officer"
+	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
+	suit = null //Subtype moment
+	neck = /obj/item/clothing/neck/cloak/qm/syndie
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer
 	name = "Syndicate Deck Officer"
