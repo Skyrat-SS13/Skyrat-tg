@@ -3,7 +3,7 @@
 	department_head = list("The Security Team")
 	faction = "Station"
 	total_positions = 12		// SKYRAT EDIT: Original value (0)
-	spawn_positions = 4 //SKYRAT EDIT CHANGE - Original: 2
+	spawn_positions = 2
 	supervisors = "the security team"
 	selection_color = "#ffe1c3"
 	paycheck = PAYCHECK_PRISONER
@@ -13,13 +13,18 @@
 
 	display_order = JOB_DISPLAY_ORDER_PRISONER
 
+	exclusive_mail_goodies = TRUE
+	mail_goodies = list (
+		/obj/effect/spawner/lootdrop/prison_contraband = 1
+	)
+
 	family_heirlooms = list(/obj/item/pen/blue)
 
 /datum/outfit/job/prisoner
 	name = "Prisoner"
 	jobtype = /datum/job/prisoner
 
-	uniform = /obj/item/clothing/under/rank/prisoner
+	uniform = /obj/item/clothing/under/color/prisoner
 	shoes = /obj/item/clothing/shoes/sneakers/orange
 	id = /obj/item/card/id/advanced/prisoner
 	ears = null

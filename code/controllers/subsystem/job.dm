@@ -738,18 +738,17 @@ SUBSYSTEM_DEF(job)
 		destination = pick(GLOB.jobspawn_overrides[M.mind.assigned_role])
 		destination.JoinPlayerHere(M, FALSE)
 		return TRUE
-
+	//SKYRAT EDIT ADDITION
 	if(M.job)
 		if(M.job == "Prisoner")
-			destination = pick(SSmapping.prisoner_spawn_locs)
+			destination = locate(/obj/effect/landmark/start/prisoner) in GLOB.landmarks_list
 			destination.JoinPlayerHere(M, buckle)
 			return TRUE
-	//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT END
 	if(latejoin_trackers.len)
 		destination = pick(latejoin_trackers)
 		destination.JoinPlayerHere(M, buckle)
 		return TRUE
-	//SKYRAT EDIT END
 
 	//bad mojo
 	var/area/shuttle/arrival/A = GLOB.areas_by_type[/area/shuttle/arrival]
