@@ -4,7 +4,7 @@
 
 /obj/item/storage/belt/mailbelt
 	name = "Messenger Belt Bag"
-	desc = "A small bag with a belt, worn around the waist. Just wide enough to hold stacks of letters. Includes several dividers for ease of sorting!"
+	desc = "A small bag with a belt, worn around the waist. Just big enough to hold a small stack of letters."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/belts.dmi'
 	icon_state = "mailbelt"
 	inhand_icon_state = "mailbelt"
