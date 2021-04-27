@@ -892,6 +892,7 @@
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
 	icon_state = "g11"
+	inhand_icon_state = "g11"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/g11.dmi'
 	worn_icon_state = "g11_worn"
 	w_class = WEIGHT_CLASS_BULKY
