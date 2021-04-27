@@ -352,7 +352,7 @@
 
 /obj/item/ammo_casing/caseless/b473/ihdf
 	name = "4.73x33mm IHDF bullet"
-	desc = "A 9mm intelligent high-impact dispersal foam bullet casing."
+	desc = "A 4.73x33mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
 	caliber = CALIBER_473MM
