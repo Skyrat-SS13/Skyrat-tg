@@ -19,9 +19,14 @@
 
 	var/molds2spawn = rand(1, 3)
 
+	var/obj/structure/biohazard_blob/structure/resin/resintest = new()
+
 	for(var/area/maintenance/A in world)
-		for(var/turf/open/F in A)
-			turfs += F
+		for(var/turf/open/floor in A)
+			if(floor.Enter(resintest))
+			turfs += floor
+
+	qdel(resintest)
 
 	for(var/i = 1, i <= molds2spawn, i++)
 		var/picked_mold = pick(available_molds)
