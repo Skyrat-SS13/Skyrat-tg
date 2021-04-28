@@ -1,9 +1,9 @@
-#define SPREAD_PROCESS 3
+#define SPREAD_PROCESS 2
 #define SPREAD_STALLED_PROCESS 20
 
-#define PROGRESSION_FOR_STRUCTURE 30
+#define PROGRESSION_FOR_STRUCTURE 25
 #define PROGRESSION_RETALIATED 3
-#define STRUCTURE_PROGRESSION_START 23
+#define STRUCTURE_PROGRESSION_START 20
 
 #define RESIN_CANT_SPREAD 0
 #define RESIN_DID_SPREAD 1
@@ -33,9 +33,9 @@
 
 /datum/biohazard_blob_controller/proc/SpawnExpansion()
 	var/list/turfs = list()
-	var/hatcheries_to_spawn = 2
-	var/bulbs_to_spawn = 1
-	var/spread_radius = 3
+	var/hatcheries_to_spawn = 4
+	var/bulbs_to_spawn = 3
+	var/spread_radius = 5
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE
 	for(var/i in 1 to spread_radius)

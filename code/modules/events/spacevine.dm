@@ -14,7 +14,7 @@
 
 	var/obj/structure/spacevine/SV = new()
 
-	for(var/area/hallway/A in world)
+	for(var/area/maintenance/A in world) //SKYRAT EDIT CHANGE - MOVED FROM HALLWAYS TO MAINTENANCE
 		for(var/turf/F in A)
 			if(F.Enter(SV))
 				turfs += F
