@@ -20,7 +20,7 @@
 	alt_titles = list("Medical Director")
 
 /datum/job/station_engineer
-	alt_titles = list("Damage Control Specialist")
+	alt_titles = list("Damage Control Technician")
 
 /datum/job/atmospheric_technician
 	alt_titles = list("Life Support Technician")
@@ -44,7 +44,7 @@
 	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer")
 
 /datum/job/geneticist
-	alt_titles = list("Mutation Reasearcher")
+	alt_titles = list("Mutation Researcher")
 
 /datum/job/cargo_technician
 	alt_titles = list("Deck Worker")
@@ -104,10 +104,10 @@
 	alt_titles = list("Station Police", "Civil Protection Officer")
 
 /datum/job/blueshield
-	alt_titles = list("Bridge Officer")
+	alt_titles = list("Command Guard")
 
 /datum/job/ai
-	alt_titles = list("Station Intelligence")
+	alt_titles = list("Station Intelligence", "Automated Overseer")
 
 /datum/job/cyborg
 	alt_titles = list("Robot", "Android")
