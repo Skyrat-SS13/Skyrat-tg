@@ -152,7 +152,7 @@
 		            /obj/item/clothing/suit/toggle/suspenders/blue = 2,
 		            /obj/item/clothing/suit/toggle/suspenders/gray = 2,
 					/obj/item/clothing/under/costume/bathrobe = 5, //SKYRAT EDIT ADDITION
-					 // SKYRAT EDIT BEGIN - Adds polychromic gear to ClothesMates
+					// SKYRAT EDIT BEGIN - Adds polychromic gear to ClothesMates
 					/obj/item/clothing/under/misc/poly_shirt = 3,
 					/obj/item/clothing/under/misc/poly_kilt = 3,
 					/obj/item/clothing/under/misc/poly_tanktop = 3,
