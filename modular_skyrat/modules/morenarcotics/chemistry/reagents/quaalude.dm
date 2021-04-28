@@ -37,11 +37,11 @@
 /datum/reagent/drug/quaalude/overdose_process(mob/living/M, delta_time, times_fired)
 	var/kidfrombrooklyn_message = pick("BRING BACK THE FUCKING QUAALUDES!", "I'd walk 20 miles for a quaalude, let me tell ya'!", "There's nothing like a fuckin' quaalude!")
 	if(DT_PROB(1.5, delta_time))
-		containing_mob.say("[kidfrombrooklyn_message]")
-	containing_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25 * REM * delta_time)
-	containing_mob.adjustToxLoss(0.25 * REM * delta_time, 0)
-	containing_mob.drowsyness += 0.25 * REM * normalise_creation_purity() * delta_time
+		M.say("[kidfrombrooklyn_message]")
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25 * REM * delta_time)
+	M.adjustToxLoss(0.25 * REM * delta_time, 0)
+	M.drowsyness += 0.25 * REM * normalise_creation_purity() * delta_time
 	if(DT_PROB(3.5, delta_time))
-		containing_mob.emote("twitch")
+		M.emote("twitch")
 	..()
 	. = TRUE
