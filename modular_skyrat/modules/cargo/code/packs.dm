@@ -133,6 +133,26 @@
 	crate_name = "unmarked weapons crate"
 	dangerous = TRUE
 	
+/datum/supply_pack/costumes_toys/randomised/improvised
+	name = "Improvised Weapons Crate"
+	desc = "Really hit rock bottom? Well, we've got a few things laying around from a sting-op on pirates we could lend you. (We'll expect these back.)" //they don't, actually.
+	contraband = TRUE
+	cost = CARGO_CRATE_VALUE * 7
+	num_contained = 3
+	contains = list(/obj/item/gun/ballistic/revolver/rifle/improvised,
+					/obj/item/gun/ballistic/revolver/rifle, //Above, but better.
+					/obj/item/gun/ballistic/rifle/irifle, //just a shittier mosin, in a much less statistically valuable crate.
+					/obj/item/gun/ballistic/rifle/ishotgun,
+					/obj/item/gun/ballistic/rifle/ishotgun/sawn, //Why not, helps pad the list.
+					/obj/item/storage/box/beanbag,
+					/obj/item/storage/box/lethalshot,
+					/obj/item/ammo_box/c38, //Revolver rifle ammo.
+					/obj/item/ammo_box/a762, //rifle ammo.
+					/obj/item/gun/ballistic/automatic/surplus, //It's bad
+					/obj/item/ammo_box/magazine/m10mm/rifle,
+					/obj/item/gun/ballistic/automatic/pistol/toy) //they just hate you.
+	crate_name = "dusty crate"
+
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -448,10 +468,22 @@
 
 
 //////////////////////////////////////////////////////////////////////////////
+///////////////////////////// Vending Restocks ///////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Temporarily Disabled ////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 /*
+/datum/supply_pack/vending/wardrobes/dormtime //Disabled because the dorm vendor/kinkmate is only half finished and I don't have time to fix it atm.
+	name = "Dorms-Time Restock"
+	desc = "This crate contains a refill for the Droms-Time Vendor."
+	cost = CARGO_CRATE_VALUE * 1.5
+	contains = list(/obj/item/vending_refill/kink)
+	crate_name = "dorms-time restock"
+
 /datum/supply_pack/service/wrapping_paper
 	name = "Cargo Packaging Crate"
 	desc = "Want to mail your loved ones gift-wrapped chocolates, stuffed animals, or the Clown's severed head? You can do all that, with this crate full of festive (and normal) wrapping paper. Also contains a hand labeler and a destination tagger for easy shipping!"

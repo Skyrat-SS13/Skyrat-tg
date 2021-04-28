@@ -880,3 +880,54 @@
 	new /obj/item/ammo_box/magazine/smartgun(src)
 	new /obj/item/ammo_box/magazine/smartgun(src)
 	new /obj/item/ammo_box/magazine/smartgun(src)
+
+//////////////////////////////////////////////////////////
+/////////////////KRAUT SPACE MAGIC G11////////////////////
+//////////////////////////////////////////////////////////
+
+/obj/item/gun/ballistic/automatic/g11
+	name = "\improper Armadyne G11 K2"
+	desc = "A futuristic battle rifle made with the finest German polymer and engineering. This gun is cheap to produce yet so very technologically advanced. It's chambered in 4.73×33mm caseless ammunition."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/g11.dmi'
+	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
+	icon_state = "g11"
+	inhand_icon_state = "g11"
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/g11.dmi'
+	worn_icon_state = "g11_worn"
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g11
+	can_suppress = FALSE
+	burst_size = 3
+	fire_delay = 0.5
+	spread = 10
+	mag_display = TRUE
+	mag_display_ammo = TRUE
+	realistic = TRUE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
+	emp_damageable = FALSE
+	armadyne = TRUE
+	can_bayonet = TRUE
+	can_flashlight = TRUE
+
+/obj/item/ammo_box/magazine/multi_sprite/g11
+	name = "g11 toploader magazine (4.73×33mm)"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "g11"
+	ammo_type = /obj/item/ammo_casing/caseless/b473
+	caliber = CALIBER_473MM
+	max_ammo = 50
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+
+/obj/item/ammo_box/magazine/multi_sprite/g11/hp
+	ammo_type = /obj/item/ammo_casing/caseless/b473/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/g11/rubber
+	ammo_type = /obj/item/ammo_casing/caseless/b473/rubber
+	round_type = AMMO_TYPE_RUBBER
+
+/obj/item/ammo_box/magazine/multi_sprite/g11/ihdf
+	ammo_type = /obj/item/ammo_casing/caseless/b473/ihdf
+	round_type = AMMO_TYPE_IHDF

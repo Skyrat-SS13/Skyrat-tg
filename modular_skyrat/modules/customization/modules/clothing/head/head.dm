@@ -119,4 +119,43 @@
 	inhand_icon_state= "cowboy_black_sec"
 
 
+/obj/item/clothing/head/ushankasec
+	name = "security ushanka"
+	desc = "There's more to life than money, with this red ushanka, you can prove it for $19.99."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "ushankared"
+	inhand_icon_state = "ushankadown"
+	flags_inv = HIDEEARS|HIDEHAIR
+	var/earflaps = TRUE
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 
+/obj/item/clothing/head/ushankasec/attack_self(mob/user)
+	if(earflaps)
+		icon_state = "ushankaredup"
+		inhand_icon_state = "ushankaup"
+		to_chat(user, "<span class='notice'>You raise the ear flaps on the ushanka.</span>")
+	else
+		icon_state = "ushankared"
+		inhand_icon_state = "ushankadown"
+		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
+	earflaps = !earflaps
+
+/obj/item/clothing/head/soft/enclave
+	name = "neo american cap"
+	desc = "If worn in the battlefield or at a baseball game, it's still a rather scary hat."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "enclavesoft"
+	soft_type = "enclave"
+	dog_fashion = null
+
+/obj/item/clothing/head/soft/enclaveo
+	name = "neo american officer cap"
+	desc = "It blocks out the sun and laser bolts from executions."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "enclaveosoft"
+	soft_type = "enclaveo"
+	dog_fashion = null

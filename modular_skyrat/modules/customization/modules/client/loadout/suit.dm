@@ -14,6 +14,10 @@
 	name = "Red poncho"
 	path = /obj/item/clothing/suit/poncho/red
 
+/datum/loadout_item/suit/poncho
+	name = "Cowboy Poncho"
+	path = /obj/item/clothing/suit/toggle/ranger
+
 /datum/loadout_item/suit/redhood
 	name = "Red cloak"
 	path = /obj/item/clothing/suit/hooded/cloak/david
@@ -106,6 +110,10 @@
 	name = "Modern winter coat"
 	path = /obj/item/clothing/suit/modernwintercoatthing
 
+/datum/loadout_item/suit/coat/parka
+	name = "Falls Parka"
+	path = /obj/item/clothing/suit/fallsparka
+
 /datum/loadout_item/suit/coat/poly
 	name = "Polychromic Wintercoat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
@@ -158,6 +166,10 @@
 	name = "Black Suit Jacket"
 	path = /obj/item/clothing/suit/toggle/lawyer/black
 
+/datum/loadout_item/suit/jacket/suitwhite
+	name = "White Suit Jacket"
+	path = /obj/item/clothing/suit/texas
+
 /datum/loadout_item/suit/jacket/jacketbomber
 	name = "Bomber jacket"
 	path = /obj/item/clothing/suit/jacket
@@ -173,6 +185,15 @@
 /datum/loadout_item/suit/jacket/overcoatleather
 	name = "Leather overcoat"
 	path = /obj/item/clothing/suit/jacket/leather/overcoat
+
+/datum/loadout_item/suit/jacket/polyjacketleather
+	name = "Colorable leather jacket"
+	path = /obj/item/clothing/suit/jacket/leather/polychromic
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/suit/jacket/woolcoat
+	name = "Leather overcoat"
+	path = /obj/item/clothing/suit/woolcoat
 
 /datum/loadout_item/suit/jacket/jacketpuffer
 	name = "Puffer jacket"
@@ -326,7 +347,7 @@
 /datum/loadout_item/suit/job/navybluejacketofficer
 	name = "security officer's navyblue jacket"
 	path = /obj/item/clothing/suit/armor/navyblue
-	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",) // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Head of Security", "Warden") // I aint making a medic one, maybe i'll add some rank thing from cm or civ for it
 
 /datum/loadout_item/suit/job/navybluejacketwarden
 	name = "warden navyblue jacket"
@@ -338,6 +359,12 @@
 	path = /obj/item/clothing/suit/toggle/jacket/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
 	restricted_desc = "All Security Personnel"
+
+/datum/loadout_item/suit/job/british_jacket
+	name = "Peacekeeper Officer Coat"
+	path = /obj/item/clothing/suit/british_officer
+	restricted_roles = list("Head of Security", "Warden","Detective","Security Sergeant")
+	restricted_desc = "All High Ranking Security Personnel"
 
 /datum/loadout_item/suit/job/engi_jacket
 	name = "Engineering Jacket"
@@ -375,6 +402,12 @@
 	restricted_roles = list("Quartermaster")
 	restricted_desc = "Quartermaster Only"
 
+/datum/loadout_item/suit/job/supply_head_jacket
+	name = "Quartermaster's Fur Jacket"
+	path = /obj/item/clothing/suit/brownfurrich
+	restricted_roles = list("Quartermaster")
+	restricted_desc = "Quartermaster Only"
+
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
 	path = /obj/item/clothing/suit/toggle/labcoat/para_red
@@ -392,6 +425,12 @@
 	path = /obj/item/clothing/suit/discoblazer
 	restricted_roles = list("Detective")
 	restricted_desc = "Superstar Detectives"
+
+/datum/loadout_item/suit/job/deckard
+	name = "Runner Coat"
+	path = /obj/item/clothing/suit/toggle/deckard
+	restricted_roles = list("Detective")
+	restricted_desc = "Hungry Detectives"
 
 //Trekkie things.
 /datum/loadout_item/suit/job/trek/fedcoat

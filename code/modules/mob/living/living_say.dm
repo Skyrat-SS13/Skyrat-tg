@@ -22,6 +22,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	RADIO_KEY_FACTION = RADIO_CHANNEL_FACTION, //SKYRAT EDIT ADDITION - FACTION
 	RADIO_KEY_CYBERSUN = RADIO_CHANNEL_CYBERSUN, //SKYRAT EDIT ADDITION - MAPPING
 	RADIO_KEY_INTERDYNE = RADIO_CHANNEL_INTERDYNE, //SKYRAT EDIT ADDITION - MAPPING
+	RADIO_KEY_ASSAULT = RADIO_CHANNEL_ASSAULT, //SKYRAT EDIT ADDITION - MAPPING
 
 	// Admin
 	MODE_KEY_ADMIN = MODE_ADMIN,
@@ -159,9 +160,13 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		language = get_selected_language()
 	var/mob/living/carbon/human/H = src
 	if(!can_speak_vocal(message))
-		if (HAS_TRAIT(src, TRAIT_SIGN_LANG) && H.mind.miming)
-			to_chat(src, "<span class='warning'>You stop yourself from signing in favor of the artform of mimery!</span>")
-			return
+		if(H.mind?.miming)
+			if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
+				to_chat(src, "<span class='warning'>You stop yourself from signing in favor of the artform of mimery!</span>")
+				return
+			else
+				to_chat(src, "<span class='green'>Your vow of silence prevents you from speaking!</span>")
+				return
 		else
 			to_chat(src, "<span class='warning'>You find yourself unable to speak!</span>")
 			return

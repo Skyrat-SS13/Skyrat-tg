@@ -371,6 +371,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
 	icon_state = "clown_shoes_cute"
 	mutant_variants = NONE
+	resistance_flags = FIRE_PROOF
 
 //Donation reward for Bloodrite
 /obj/item/clothing/under/rank/civilian/clown/britches
@@ -380,6 +381,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	icon_state = "clowndress"
 	mutant_variants = NONE
+	resistance_flags = FIRE_PROOF
 
 //Donation reward for Bloodrite
 /obj/item/clothing/mask/gas/britches
@@ -394,7 +396,16 @@
 	clothing_flags = MASKINTERNALS
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSEYES
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
+
+//Donation reward for Farsighted Nightlight
+/obj/item/clothing/mask/gas/nightlight
+	name = "FAR-13 SRU"
+	desc = "A rare, complex close-fitting respiration unit designed for use by immunocompromised Servelyn personnel. NOTE: Designed for Servelyn personnel only, might not fit other peoples faces."
+	icon_state = "sechailer"
+	inhand_icon_state = "sechailer"
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	w_class = WEIGHT_CLASS_SMALL
 
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
@@ -626,3 +637,62 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
 	worn_icon_state = "scraparmor"
 	body_parts_covered = CHEST
+
+//Donation reward for Enzoman
+/obj/item/clothing/mask/luchador/enzo
+	name = "mask of El Red Templar"
+	desc = "A mask belonging to El Red Templar, a warrior of lucha. Taking it from him is not recommended."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/mask.dmi'
+	icon_state = "luchador"
+	worn_icon_state = "luchador"
+	clothing_flags = MASKINTERNALS
+	mutant_variants = NONE
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/under/mikubikini
+	name = "starlight singer bikini"
+	desc = " "
+	icon_state = "mikubikini"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
+	worn_icon_state = "mikubikini"
+	body_parts_covered = CHEST|GROIN
+	fitted = FEMALE_UNIFORM_TOP
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/suit/mikujacket
+	name = "starlight singer jacket"
+	desc = " "
+	icon_state = "mikujacket"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	worn_icon_state = "mikujacket"
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/head/mikuhair
+	name = "starlight singer hair"
+	desc = " "
+	icon_state = "mikuhair"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/head.dmi'
+	worn_icon_state = "mikuhair"
+	flags_inv = HIDEHAIR
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/gloves/mikugloves
+	name = "starlight singer gloves"
+	desc = " "
+	icon_state = "mikugloves"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/hands.dmi'
+	worn_icon_state = "mikugloves"
+
+//Donation Reward for Grand Vegeta
+/obj/item/clothing/shoes/sneakers/mikuleggings
+	name = "starlight singer leggings"
+	desc = " "
+	icon_state = "mikuleggings"
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
+	worn_icon_state = "mikuleggings"
