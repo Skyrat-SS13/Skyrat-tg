@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/tribalbow
 	name = "Wooden Bow"
-	desc = "some sort of primitive projectile weapon. used to fire arrows."
+	desc = "Some sort of primitive projectile weapon used to fire arrows."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	lefthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_righthand.dmi'
@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "ashenbow"
 	inhand_icon_state = "ashenbow"
-	force = 15
+	force = 12
 
 /obj/item/gun/ballistic/tribalbow/pipe
 	name = "Pipe Bow"

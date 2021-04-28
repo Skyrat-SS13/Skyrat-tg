@@ -23,7 +23,7 @@
 
 /obj/item/ammo_casing/caseless/arrow/bronze
 	name = "bronze arrow"
-	desc = "An arrow made from wood. tipped with bronze."
+	desc = "An arrow made from wood, tipped with bronze."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/ammo.dmi'
 	icon_state = "bronzearrow"
 	inhand_icon_state = "bronzearrow"
