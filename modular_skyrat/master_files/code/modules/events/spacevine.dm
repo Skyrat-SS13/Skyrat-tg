@@ -587,7 +587,7 @@
 		var/mob/living/simple_animal/hostile/venus_human_trap/VS = AM
 		if(VS.health >= VS.maxHealth)
 			return
-		VS.adjustHealth(clamp((VS.health + VS.maxHealth * 0.1), VS.health, VS.maxHealth), TRUE, TRUE)
+		VS.adjustHealth(-clamp((VS.health + VS.maxHealth * 0.1), VS.health, VS.maxHealth), TRUE, TRUE)
 		to_chat(VS, "<span class='notice'>The vines attempt to regenerate some of your wounds!</span>")
 		return
 
