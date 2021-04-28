@@ -19,7 +19,7 @@
 
 	for(var/area/maintenance/A in world)
 		for(var/turf/open/F in A)
-				turfs += F
+			turfs += F
 
 	var/picked_mold = pick(available_molds)
 
