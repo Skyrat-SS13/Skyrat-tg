@@ -2,6 +2,22 @@
 	category = LOADOUT_CATEGORY_BACKPACK
 
 //MISC
+
+/datum/loadout_item/backpack/mailbelt
+	name = "Messenger Belt Bag"
+	path = /obj/item/storage/belt/mailbelt
+	cost = 2
+
+/datum/loadout_item/backpack/mailbelt_white
+	name = "White Belt Bag"
+	path = /obj/item/storage/belt/mailbelt/white
+	cost = 2
+
+/datum/loadout_item/backpack/mailbelt_leather
+	name = "Leather Belt Bag"
+	path = /obj/item/storage/belt/mailbelt/leather
+	cost = 2
+
 /datum/loadout_item/backpack/matches
 	name = "Matchbox"
 	path = /obj/item/storage/box/matches
