@@ -77,19 +77,23 @@
 	return is_type_in_typecache(language, languages_possible)
 
 /*SKYRAT ADDITION - A snowflake tongue allowing for custom speech quirks*/
-/obj/item/organ/tongue/unique
+/obj/item/organ/tongue/unique(datum/preferences)
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
-	say_mod = "hisses"
+	say_mod = speech_verb
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args)
-	var/static/regex/custom_quirk = new("s+", "X")
+/obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences)
+	var/replace_upper = uppertext(speech_replace_from)
+	var/replace_lower = lowertext(speech_replace_from)
+	var/static/regex/custom_quirk_upper = new(replace_upper, "g")
+	var/static/regex/custom_quirk_lower = new(replace_lower, "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = custom_quirk.Replace(message, "TEST")
+		message = custom_quirk_upper.Replace(message, uppertext(speech_replace_to))
+		message = custom_quirk_lower.Replace(message, lowertext(speech_replace_to))
 	speech_args[SPEECH_MESSAGE] = message
 /*END SKYRAT ADDITION*/
 

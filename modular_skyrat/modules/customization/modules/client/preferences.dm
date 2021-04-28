@@ -209,6 +209,7 @@ GLOBAL_LIST_INIT(food, list(
 
 	var/background_info = ""
 	var/exploitable_info = ""
+
 	///Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set
 	var/needs_update = TRUE
 	///List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
@@ -217,6 +218,15 @@ GLOBAL_LIST_INIT(food, list(
 	var/augment_limb_styles = list()
 	///Which augment slot we currently have chosen, this is for UI display
 	var/chosen_augment_slot
+
+	//SPEECH STUFF for the Unique Tongue augment
+	///Replaces "says" or "hisses" with a custom verb
+	var/speech_verb = "says"
+	//What character(s) to search for
+	var/speech_replace_from = "s"
+	//What to replace the above character(s) with
+	var/speech_replace_to = "sss"
+
 	///Whether the user wants to see body size being shown in the preview
 	var/show_body_size = FALSE
 	///The arousal state of the previewed character, can be toggled by the user
@@ -961,7 +971,9 @@ GLOBAL_LIST_INIT(food, list(
 									if(chosen_limb.uses_robotic_styles)
 										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#16274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
 								if(category_name == AUGMENT_CATEGORY_ORGANS && chosen_item) //For Custom Speech Quirks
-									dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>[chosen_item]<br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;task=input;slot=[slot_name]'>r</a> with <a href='?_src_=prefs;task=input;slot=[slot_name]'>l</a></td></tr>"
+									if (chosen_item == "Unique tongue")
+										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>Custom verb: <a href='?_src_=prefs;preference=speech_verb;task=input'>peeps</a><br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_replace_from;task=input'>r</a> with <a href='?_src_=prefs;preference=speech_replace_to;task=input]'>l</a></td></tr>"
+										dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
 								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
 								dat += "</table>"
 							dat += "</td>"
