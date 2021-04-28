@@ -89,3 +89,7 @@
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"
 	path = /obj/item/organ/tongue/lizard
+
+/datum/augment_item/organ/tongue/unique
+	name = "Unique tongue"
+	path = /obj/item/organ/tongue/unique
