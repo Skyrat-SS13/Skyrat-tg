@@ -6,3 +6,4 @@
 	suffix = "lavaland_surface_syndicate_base1_skyrat.dmm"
 	cost = 20
 	allow_duplicates = FALSE
+	never_spawn_with = list(/datum/map_template/ruin/icemoon/underground/syndicate_base)
