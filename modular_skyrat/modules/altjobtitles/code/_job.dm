@@ -1,40 +1,40 @@
-datum/job/captain
+/datum/job/captain
 	alt_titles = list("Station Commander")
 
-datum/job/head_of_personnel
+/datum/job/head_of_personnel
 	alt_titles = list("Executive Officer")
 
-datum/job/head_of_security
+/datum/job/head_of_security
 	alt_titles = list("Security Commander")
 
-datum/job/chief_engineer
+/datum/job/chief_engineer
 	alt_titles = list("Engineering Foreman")
 
-datum/job/research_director
+/datum/job/research_director
 	alt_titles = list("Silicon Administrator")
 
-datum/job/quartermaster
+/datum/job/quartermaster
 	alt_titles = list("Deck Chief")
 
-datum/job/chief_medical_officer
+/datum/job/chief_medical_officer
 	alt_titles = list("Medical Director")
 
-datum/job/station_engineer
+/datum/job/station_engineer
 	alt_titles = list("Damage Control Specialist")
 
-datum/job/atmospheric_technician
+/datum/job/atmospheric_technician
 	alt_titles = list("Life Support Technician")
 
-datum/job/doctor
+/datum/job/doctor
 	alt_titles = list("Surgeon", "Nurse")
 
-datum/job/paramedic
+/datum/job/paramedic
 	alt_titles = list("Emergency Medical Technician")
 
-datum/job/virologist
+/datum/job/virologist
 	alt_titles = list("Pathologist")
 
-datum/job/chemist
+/datum/job/chemist
 	alt_titles = list("Pharmacist", "Pharmacologist")
 
 /datum/job/scientist
