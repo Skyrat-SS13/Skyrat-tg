@@ -18,7 +18,7 @@
 	REMOVE_TRAIT(containing_mob, TRAIT_STUNRESISTANCE, type)
 	..()
 
-/datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/containing_mob, delta_time, times_fired)
+/datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	if(DT_PROB(2.5, delta_time))
 		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
 		to_chat(M, "<span class='notice'>[high_message]</span>")
@@ -42,12 +42,12 @@
 	containing_mob.adjustOrganLoss(ORGAN_SLOT_HEART, (rand(10, 20) / 10) * REM * delta_time)
 	containing_mob.Jitter(2 * REM * delta_time)
 	if(DT_PROB(2.5, delta_time))
-		M.emote(pick("twitch","drool"))
-	if(!HAS_TRAIT(M, TRAIT_FLOORED))
+		containing_mob.emote(pick("twitch","drool"))
+	if(!HAS_TRAIT(containing_mob, TRAIT_FLOORED))
 		if(DT_PROB(1.5, delta_time))
-			M.visible_message("<span class='danger'>[M] collapses onto the floor!</span>")
-			M.Paralyze(135,TRUE)
-			M.drop_all_held_items()
+			containing_mob.visible_message("<span class='danger'>[M] collapses onto the floor!</span>")
+			containing_mob.Paralyze(135,TRUE)
+			containing_mob.drop_all_held_items()
 	..()
 	. = TRUE
 
