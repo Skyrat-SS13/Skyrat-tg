@@ -1,3 +1,4 @@
+///SYNDICATE ID TRIMS
 /datum/id_trim/syndicom/skyrat
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 
@@ -11,7 +12,7 @@
 	trim_state = "trim_syndicateshipcaptain"
 	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS)
 
-//DS-1
+///DS-1
 
 /datum/id_trim/syndicom/skyrat/assault
 	assignment = "DS-1 Operative"
@@ -58,7 +59,7 @@
 	assignment = "Station Admiral"
 	trim_state = "trim_stationadmiral"
 
-//Interdyne
+///Interdyne
 
 /datum/id_trim/syndicom/skyrat/interdyne
 	assignment = "Interdyne Operative"
@@ -71,3 +72,52 @@
 /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
 	assignment = "Deck Officer"
 	trim_state = "trim_deckofficer"
+
+///Misc
+
+/datum/id_trim/syndicom/skyrat/misc
+	assignment = "Nuclear Tech Support" //Hello? Yes? Nanotrasen? This is Gorlex, uhh. There seems to be an issue.. is your self-destruct running?
+
+/datum/id_trim/syndicom/skyrat/misc/corporateliasion //Syndicate HoP
+	assignment = "Corporate Liaison"
+	trim_state = "trim_corporateliaison"
+
+/datum/id_trim/syndicom/skyrat/misc/investigativeofficer
+	assignment = "Investigative Officer"
+	trim_state = "trim_investigativeofficer"
+
+/datum/id_trim/syndicom/skyrat/misc/corporatelawyer
+	assignment = "Corporate Lawyer"
+	trim_state = "trim_corporatelawyer"
+
+/datum/id_trim/syndicom/skyrat/misc/geneticsresearcher
+	assignment = "Genetics Researcher"
+	trim_state = "trim_geneticsresearcher"
+
+/datum/id_trim/syndicom/skyrat/misc/chef
+	assignment = "Chef"
+	trim_state = "trim_chef"
+
+/datum/id_trim/syndicom/skyrat/misc/counsel
+	assignment = "Counsel"
+	trim_state = "trim_counsel"
+
+/datum/id_trim/syndicom/skyrat/misc/sanitationtechnician
+	assignment = "Sanitation Technician"
+	trim_state = "trim_sanitationtechnician"
+
+/datum/id_trim/syndicom/skyrat/misc/deckcrewman //Finally, an excuse to emag the supply console.
+	assignment = "Deck Crewman"
+	trim_state = "trim_deckcrewman"
+
+///No Custom Icon
+/datum/id_trim/syndicom/skyratnoicon
+	assignment = "Mr. S"
+
+/datum/id_trim/syndicom/skyratnoicon/roboticstechnician
+	assignment = "Robotics Technician"
+	trim_state = "trim_roboticist"
+
+/datum/id_trim/syndicom/skyratnoicon/enginetechnician
+	assignment = "Engine Technician"
+	trim_state = "trim_stationengineer"
