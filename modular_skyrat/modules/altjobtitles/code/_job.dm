@@ -31,7 +31,7 @@
 	alt_titles = list("Medical Director")
 
 /datum/job/station_engineer
-	alt_titles = list("Damage Control Technician")
+	alt_titles = list("Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician")
 
 /datum/job/atmospheric_technician
 	alt_titles = list("Life Support Technician")
