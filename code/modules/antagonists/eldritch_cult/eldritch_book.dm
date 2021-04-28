@@ -8,7 +8,7 @@
 	///Last person that touched this
 	var/mob/living/last_user
 	///how many charges do we have?
-	var/charge = 1
+	var/charge = 2 //SKYRAT EDIT - ORIGINAL: 1
 	///Where we cannot create the rune?
 	var/static/list/blacklisted_turfs = typecacheof(list(/turf/closed,/turf/open/space,/turf/open/lava))
 
