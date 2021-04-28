@@ -15,6 +15,8 @@
 		/obj/item/clothing/under/misc/stripper = 4,
 		/obj/item/clothing/under/misc/stripper/green = 4,
 		/obj/item/clothing/under/misc/stripper/mankini = 4,
+		/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
+		/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
 		/obj/item/clothing/under/shorts/polychromic/pantsu = 4,
 		/obj/item/clothing/under/misc/poly_bottomless = 4,
 		/obj/item/clothing/under/misc/poly_tanktop = 4,
