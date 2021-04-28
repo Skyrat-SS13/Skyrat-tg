@@ -27,7 +27,7 @@
 				continue
 			if(locate(/turf/closed) in range(2, floor))
 				continue
-			if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, floor))
+			if(locate(/obj/structure/biohazard_blob/structure/core) in range(10, floor))
 				continue
 			turfs += floor
 
