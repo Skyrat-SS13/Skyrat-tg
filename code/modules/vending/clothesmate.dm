@@ -75,17 +75,19 @@
 					/obj/item/clothing/under/dress/littleblack = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/dress/pinktutu = 2,	//SKYRAT EDIT ADDITION
 		            /obj/item/clothing/suit/jacket = 2,
-					/obj/item/clothing/suit/toggle/jacket = 2,	//SKYRAT EDIT ADDITION START - Jacket/Flannels Port
+					//SKYRAT EDIT ADDITION BEGIN - Jacket/Flannels Port
+					/obj/item/clothing/suit/toggle/jacket = 2,
 					/obj/item/clothing/suit/toggle/jacket/flannel = 2,
 					/obj/item/clothing/suit/toggle/jacket/flannel/red = 2,
 					/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 2,
-					/obj/item/clothing/suit/toggle/jacket/flannel/brown = 2,	//SKYRAT EDIT ADDITION END
+					/obj/item/clothing/suit/toggle/jacket/flannel/brown = 2,
+					//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/hooded/wintercoat = 2,
 		            /obj/item/clothing/suit/jacket/puffer/vest = 2,
 		            /obj/item/clothing/suit/jacket/puffer = 2,
 		            /obj/item/clothing/suit/jacket/letterman = 2,
 		            /obj/item/clothing/suit/jacket/letterman_red = 2,
-					//SKYRAT EDIT: ADDITION: START - HOODIES
+					//SKYRAT EDIT: ADDITION: BEGIN - HOODIES
 					/obj/item/clothing/suit/storage/toggle/hoodie = 2,
 					/obj/item/clothing/suit/storage/toggle/hoodie/black = 2,
 					/obj/item/clothing/suit/storage/toggle/hoodie/red = 2,
@@ -100,7 +102,7 @@
 					/obj/item/clothing/suit/storage/toggle/hoodie/smw = 1,
 					/obj/item/clothing/suit/storage/toggle/hoodie/nrti = 1,
 					//SKYRAT EDIT: ADDITION: END - HOODIES
-					//SKYRAT EDIT: ADDITION: START - Coats/Hawaiian
+					//SKYRAT EDIT: ADDITION: BEGIN - Coats/Hawaiian
 					/obj/item/clothing/suit/urban/polychromic = 3,
 					/obj/item/clothing/suit/toggle/jacket/cardigan = 2,
 					/obj/item/clothing/suit/hawaiian_blue = 1,
@@ -137,7 +139,7 @@
 		            /obj/item/clothing/shoes/cowboy = 2,
 		            /obj/item/clothing/shoes/cowboy/white = 2,
 		            /obj/item/clothing/shoes/cowboy/black = 2,
-		            //SKYRAT EDIT: ADDITION: START - Footwraps
+		            //SKYRAT EDIT: ADDITION: BEGIN - Footwraps
 		            /obj/item/clothing/shoes/wraps = 2,
 		            /obj/item/clothing/shoes/wraps/silver = 2,
 		            /obj/item/clothing/shoes/wraps/red = 3,
@@ -150,7 +152,8 @@
 		            /obj/item/clothing/suit/toggle/suspenders/blue = 2,
 		            /obj/item/clothing/suit/toggle/suspenders/gray = 2,
 					/obj/item/clothing/under/costume/bathrobe = 5, //SKYRAT EDIT ADDITION
-					/obj/item/clothing/under/misc/poly_shirt = 3, // SKYRAT EDIT BEGIN - Adds polychromic gear to ClothesMates
+					 // SKYRAT EDIT BEGIN - Adds polychromic gear to ClothesMates
+					/obj/item/clothing/under/misc/poly_shirt = 3,
 					/obj/item/clothing/under/misc/poly_kilt = 3,
 					/obj/item/clothing/under/misc/poly_tanktop = 3,
 					/obj/item/clothing/under/misc/poly_tanktop/female = 3,
