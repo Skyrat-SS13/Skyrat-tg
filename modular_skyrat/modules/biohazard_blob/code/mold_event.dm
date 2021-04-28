@@ -29,3 +29,4 @@
 		if(turfs.len) //Pick a turf to spawn at if we can
 			var/turf/T = pick(turfs)
 			new picked_mold(T)
+			turfs -= T

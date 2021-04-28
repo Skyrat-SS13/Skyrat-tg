@@ -24,8 +24,10 @@
 	if(turfs.len) //Pick a turf to spawn at if we can
 		var/turf/T = pick(turfs)
 		new /datum/spacevine_controller(T, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src) //spawn a controller at turf with randomized stats and a single random mutation
-
-
+		//SKYRAT EDIT ADDITION START
+		new /mob/living/simple_animal/hostile/venus_human_trap(T)
+		new /mob/living/simple_animal/hostile/venus_human_trap(T)
+		//SKYRAT EDIT END
 /datum/spacevine_mutation
 	var/name = ""
 	var/severity = 1
