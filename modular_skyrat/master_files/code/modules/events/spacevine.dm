@@ -26,6 +26,7 @@
 		//SKYRAT EDIT ADDITION START
 		new /mob/living/simple_animal/hostile/venus_human_trap(T)
 		new /mob/living/simple_animal/hostile/venus_human_trap(T)
+		new /mob/living/simple_animal/hostile/venus_human_trap(T)
 		//SKYRAT EDIT END
 
 /datum/spacevine_mutation
@@ -610,7 +611,13 @@
 	var/list/vine_mutations_list
 	var/mutativeness = 1
 
+#define MINIMUM_SPACEVINES_EFFECTIVENESS 0.4 //Minimum multiplier that the effectivess of vines can reach
+#define MAXIMUM_SPACEVINES_EFFECTIVENESS 1.3 //Maximum multiplier
+#define SPACEVINES_PLAYER_BALANCED_NUMBER 70 //The multiplier is balanced around this, and will be 1 if amount of players is equal to this
+
 /datum/spacevine_controller/New(turf/location, list/muts, potency, production, datum/round_event/event = null)
+	spread_multiplier /= clamp((length(GLOB.joined_player_list) / SPACEVINES_PLAYER_BALANCED_NUMBER), MINIMUM_SPACEVINES_EFFECTIVENESS, MAXIMUM_SPACEVINES_EFFECTIVENESS)
+	spread_cap *= clamp((length(GLOB.joined_player_list) / SPACEVINES_PLAYER_BALANCED_NUMBER), MINIMUM_SPACEVINES_EFFECTIVENESS, MAXIMUM_SPACEVINES_EFFECTIVENESS)
 	vines = list()
 	growth_queue = list()
 	var/obj/structure/spacevine/SV = spawn_spacevine_piece(location, null, muts)
@@ -621,9 +628,13 @@
 	init_subtypes(/datum/spacevine_mutation/, vine_mutations_list)
 	if(potency != null)
 		mutativeness = potency / 10
-	if(production != null && production <= 10) //Prevents runtime in case production is set to 11.
-		spread_cap *= (11 - production) / 5 //Best production speed of 1 doubles spread_cap to 60 while worst speed of 10 lowers it to 6. Even distribution.
-		spread_multiplier /= (11 - production) / 5
+	if(production != null)
+		spread_cap *= production / 5
+		spread_multiplier /= production / 5
+
+#undef MINIMUM_SPACEVINES_EFFECTIVENESS
+#undef MAXIMUM_SPACEVINES_EFFECTIVENESS
+#undef SPACEVINES_PLAYER_BALANCED_NUMBER
 
 /datum/spacevine_controller/vv_get_dropdown()
 	. = ..()
@@ -738,7 +749,6 @@
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
 	var/turf/stepturf = get_step(src,direction)
-	var/area/steparea = get_area(stepturf)
 	for(var/obj/machinery/door/D in stepturf.contents)
 		if(prob(50))
 			D.open()
