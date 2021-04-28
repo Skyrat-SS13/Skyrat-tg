@@ -1,5 +1,5 @@
 /datum/round_event_control/mold
-	name = "mold"
+	name = "Moldies"
 	typepath = /datum/round_event/mold
 	weight = 15
 	max_occurrences = 3
@@ -17,14 +17,14 @@
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
-	var/molds2spawn = rand(1, 3)
+	var/molds2spawn = rand(2, 3)
 
-	var/obj/structure/biohazard_blob/structure/resin/resintest = new()
+	var/obj/structure/biohazard_blob/resin/resintest = new()
 
 	for(var/area/maintenance/A in world)
 		for(var/turf/open/floor in A)
 			if(floor.Enter(resintest))
-			turfs += floor
+				turfs += floor
 
 	qdel(resintest)
 

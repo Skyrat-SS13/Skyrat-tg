@@ -20,7 +20,7 @@
 	canSmoothWith = null
 	smoothing_flags = NONE
 	/// The amount of time it takes to create a venus human trap.
-	var/growth_time = 120 SECONDS
+	var/growth_time = 1 MINUTES //SKYRAT EDIT CHANGE
 	var/growth_icon = 0
 
 	/// Used by countdown to check time, this is when the timer will complete and the venus trap will spawn.
@@ -129,6 +129,8 @@
 	var/vine_grab_distance = 5
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
+
+	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS // SKYRAT EDIT ADDITION
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
