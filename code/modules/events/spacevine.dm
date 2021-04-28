@@ -28,6 +28,7 @@
 		new /mob/living/simple_animal/hostile/venus_human_trap(T)
 		new /mob/living/simple_animal/hostile/venus_human_trap(T)
 		//SKYRAT EDIT END
+
 /datum/spacevine_mutation
 	var/name = ""
 	var/severity = 1
