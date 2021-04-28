@@ -67,11 +67,11 @@
 	job_whitelist = list("Botanist")
 
 /datum/ambition_template/hannibal
-    name = "Frontier Ripper"
-    narrative = "Manners make the man, they make every man. This station you have inhabited for a long while has been filled with so many rude creatures. Your skills in the culinary arts will be helpful, thankfully no one ever checks where the meat came from. Its time to get the the rolodex out, have an old friend for dinner..."
-    objectives = list("Make meals out of the rude.", "Make your judgements thematic.", "Cook the best part of someone. The leg of a lamb or runner will taste better than that of a skunk, just make sure the lamb stops screaming. Simply making a steak will not do, treat the meat with respect, make the best possible meal you can.")
-    tips = list(" Whenever feasible, one should always try to eat the rude. The Wound Man is a popular choice. Classical music is known to enhance cooking by 40 percent, Goldberg variations even more so.")
-    job_whitelist = list("Cook")
+	name = "Frontier Ripper"
+	narrative = "Manners make the man, they make every man. This station you have inhabited for a long while has been filled with so many rude creatures. Your skills in the culinary arts will be helpful, thankfully no one ever checks where the meat came from. Its time to get the the rolodex out, have an old friend for dinner..."
+	objectives = list("Make meals out of the rude.", "Make your judgements thematic.", "Cook the best part of someone. The leg of a lamb or runner will taste better than that of a skunk, just make sure the lamb stops screaming. Simply making a steak will not do, treat the meat with respect, make the best possible meal you can.")
+	tips = list(" Whenever feasible, one should always try to eat the rude. The Wound Man is a popular choice. Classical music is known to enhance cooking by 40 percent, Goldberg variations even more so.")
+	job_whitelist = list("Cook")
 
 ///SCIENCE
 /datum/ambition_template/fsociety
