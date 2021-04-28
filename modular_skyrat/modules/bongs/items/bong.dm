@@ -42,7 +42,7 @@
 			bonghits = useable_bonghits
 			packeditem = TRUE
 			if(used_item.reagents)
-				used_item.reagents.trans_to(src, O.reagents.total_volume, transfered_by = user)
+				used_item.reagents.trans_to(src, used_item.reagents.total_volume, transfered_by = user)
 				quarter_volume = reagents.total_volume/useable_bonghits
 			qdel(used_item)
 	else
