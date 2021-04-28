@@ -212,27 +212,6 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 	)))
 	//Current allowed span classes
 
-	//Language bitflags
-	/* (Following comment written 26 Jan 2019)
-	So, language doesn't work with bitflags anymore
-	But having them be bitflags inside of NTSL makes more sense in its context
-	So, when we get the signal back from NTSL, if the language has been altered, we'll set it to a new language datum,
-	based on the bitflag the guy used.
-
-	However, I think the signal can only have one language
-	So, the lowest bit set within $language overrides any higher ones that are set.
-	*/
-	/*
-	interpreter.SetVar("languages", new /datum/n_enum(list(
-		"human" = HUMAN,
-		"monkey" = MONKEY,
-		"robot" = ROBOT,
-		"polysmorph" = POLYSMORPH,
-		"draconic" = DRACONIC,
-		"beachtounge" = BEACHTONGUE
-	)))
-	*/
-
 	interpreter.Run() // run the thing
 
 	if(Holder)
@@ -313,10 +292,13 @@ GLOBAL_LIST_INIT(allowed_translations,list(/datum/language/common,/datum/languag
 	signal.virt.verb_yell		= script_signal.get_clean_property("yell")
 	signal.virt.verb_exclaim	= script_signal.get_clean_property("exclaim")
 	var/newlang = NTSL_LANG_TODATUM(script_signal.get_clean_property("language"))
-	if(newlang != oldlang)// makes sure that we only clean out unallowed languages when a translation is taking place otherwise we run an unnecessary proc to filter newlang on foreign untranslated languages.
-		if(!LAZYFIND(GLOB.allowed_translations, oldlang)) // cleans out any unallowed translations by making sure the new language is on the allowed translation list. Tcomms powergaming is dead! - Hopek
+	// how did I miss this???
+	oldlang = NTSL_LANG_TODATUM(oldlang)
+
+	if(newlang != oldlang) // If we didn't change the language, we don't check for allowing the translation because there is none!
+		if(!LAZYFIND(GLOB.allowed_translations, oldlang)) // If we aren't allowed to translate from this language, we don't; this prevents a SigTech from gamering syndie speak.
 			newlang = oldlang
-	signal.language = newlang || oldlang
+	signal.language = newlang || oldlang // I DO NOT KNOW WHAT THIS DOES, BUT IF I COMMENT IT OUT SHIT BREAKS
 	var/list/setspans 			= script_signal.get_clean_property("filters") //Save the span vector/list to a holder list
 	if(islist(setspans)) //Players cannot be trusted with ANYTHING. At all. Ever.
 		setspans &= GLOB.allowed_custom_spans //Prune out any illegal ones. Go ahead, comment this line out. See the horror you can unleash!
