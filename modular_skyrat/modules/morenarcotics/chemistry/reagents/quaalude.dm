@@ -8,7 +8,7 @@
 	taste_description = "lemons"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
-/datum/reagent/drug/quaalude/on_mob_life(mob/living/carbon/containing_mob, delta_time, times_fired)
+/datum/reagent/drug/quaalude/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel relaxed.", "You feel like you're on the moon.", "You feel like you could walk 20 miles for a quaalude.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
