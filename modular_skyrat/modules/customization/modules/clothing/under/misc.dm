@@ -390,3 +390,4 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "hazard_atmos"
 	alt_covers_chest = TRUE
+
