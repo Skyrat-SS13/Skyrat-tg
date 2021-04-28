@@ -23,9 +23,11 @@
 
 	for(var/area/maintenance/A in world)
 		for(var/turf/open/floor in A)
-			if(floor.Enter(resintest))
-				if(!(/turf/closed in range(3, floor)))
-					turfs += floor
+			if(!floor.Enter(resintest))
+				continue
+			if(locate(/turf/closed) in range(3, floor))
+				continue
+			turfs += floor
 
 	qdel(resintest)
 
