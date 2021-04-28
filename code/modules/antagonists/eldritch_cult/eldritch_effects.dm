@@ -239,14 +239,15 @@
 	var/obj/item/bodypart/head/head = locate() in human_user.bodyparts
 	if(head)
 		head.dismember()
-		qdel(head)
+	//	qdel(head) //SKYRAT REMOVAL - RR bad, but funny head goes pop is funny, so let's leave that
 	else
 		human_user.gib()
 
-	var/datum/effect_system/reagents_explosion/explosion = new()
+//SKYRAT REMOVAL START - Probably don't need this if we're just decapping now
+	/*var/datum/effect_system/reagents_explosion/explosion = new()
 	explosion.set_up(1, get_turf(human_user), TRUE, 0)
-	explosion.start()
-
+	explosion.start()*/ 
+//SKYRAT REMOVAL END 
 
 /obj/effect/broken_illusion/examine(mob/user)
 	. = ..()

@@ -11,7 +11,7 @@
 	taste_description = "flowers"
 	addiction_types = list(/datum/addiction/opiods = 18)
 
-/datum/reagent/drug/opium/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+/datum/reagent/drug/opium/on_mob_life(mob/living/carbon/containing_mob, delta_time, times_fired)
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
@@ -22,10 +22,10 @@
 	M.overlay_fullscreen("heroin_euphoria", /atom/movable/screen/fullscreen/color_vision/heroin_color)
 	..()
 
-/datum/reagent/drug/opium/overdose_process(mob/living/M, delta_time, times_fired)
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * delta_time)
-	M.adjustToxLoss(1 * REM * delta_time, 0)
-	M.drowsyness += 0.5 * REM * normalise_creation_purity() * delta_time
+/datum/reagent/drug/opium/overdose_process(mob/living/containing_mob, delta_time, times_fired)
+	containing_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * delta_time)
+	containing_mob.adjustToxLoss(1 * REM * delta_time, 0)
+	containing_mob.drowsyness += 0.5 * REM * normalise_creation_purity() * delta_time
 	..()
 	. = TRUE
 
