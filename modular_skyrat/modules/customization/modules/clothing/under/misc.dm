@@ -363,6 +363,13 @@
 	icon_state = "cargocas"
 	inhand_icon_state = "lb_suit"
 
+/obj/item/clothing/under/rank/cargo/qm/syndie
+	name = "deck officer's jumpsuit"
+	desc = "A dark suit with a classic cargo vest. For the ultimate master of all things paper."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "qmsynd"
+
 /obj/item/clothing/under/rank/engineering/chief_engineer/hazard
 	name = "chief engineer's hazard jumpsuit"
 	desc = "A high visibility jumpsuit for the chief engineer made from heat and radiation resistant materials."
