@@ -76,6 +76,7 @@
 /obj/item/organ/tongue/could_speak_language(language)
 	return is_type_in_typecache(language, languages_possible)
 
+/*SKYRAT ADDITION - A snowflake tongue allowing for custom speech quirks*/
 /obj/item/organ/tongue/unique
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
@@ -90,6 +91,7 @@
 	if(message[1] != "*")
 		message = custom_quirk.Replace(message, "TEST")
 	speech_args[SPEECH_MESSAGE] = message
+/*END SKYRAT ADDITION*/
 
 /obj/item/organ/tongue/lizard
 	name = "forked tongue"

@@ -961,7 +961,7 @@ GLOBAL_LIST_INIT(food, list(
 									if(chosen_limb.uses_robotic_styles)
 										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#16274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
 								if(category_name == AUGMENT_CATEGORY_ORGANS && chosen_item)
-									dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
+									dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: TEST</td></tr>"
 								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
 								dat += "</table>"
 							dat += "</td>"
