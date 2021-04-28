@@ -1,9 +1,9 @@
 #define SPREAD_PROCESS 2
-#define SPREAD_STALLED_PROCESS 20
+#define SPREAD_STALLED_PROCESS 10
 
-#define PROGRESSION_FOR_STRUCTURE 25
-#define PROGRESSION_RETALIATED 3
-#define STRUCTURE_PROGRESSION_START 20
+#define PROGRESSION_FOR_STRUCTURE 15
+#define PROGRESSION_RETALIATED 5
+#define STRUCTURE_PROGRESSION_START 40
 
 #define RESIN_CANT_SPREAD 0
 #define RESIN_DID_SPREAD 1
@@ -33,9 +33,9 @@
 
 /datum/biohazard_blob_controller/proc/SpawnExpansion()
 	var/list/turfs = list()
-	var/hatcheries_to_spawn = 4
-	var/bulbs_to_spawn = 3
-	var/spread_radius = 5
+	var/hatcheries_to_spawn = rand(4, 5)
+	var/bulbs_to_spawn = rand(3, 5)
+	var/spread_radius = 6
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE
 	for(var/i in 1 to spread_radius)
@@ -86,10 +86,6 @@
 			a_resin.blooming = FALSE
 			a_resin.set_light(0)
 			a_resin.update_overlays()
-	//With the death of the core, we kill all structures
-	for(var/t in other_structures)
-		var/obj/structure/biohazard_blob/structure/our_structure = t
-		qdel(our_structure)
 	return
 
 /datum/biohazard_blob_controller/proc/TrySpreadResin(obj/structure/biohazard_blob/resin/spreaded_resin)
