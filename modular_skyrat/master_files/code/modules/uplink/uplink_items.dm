@@ -272,6 +272,14 @@
 	surplus = 0
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
 
+//JOBS ONLY
+/datum/uplink_item/role_restricted/cultkitsr //Ported from beestation
+	name = "Cult Construct Kit"
+	desc = "Recovered from an abandoned Nar'sie cult lair, two construct shells and a stash of empty soulstones was found. These were purified to prevent occult contamination and have been put in a belt so they may be used as an accessible source of disposable minions. The construct shells have been packaged into two beacons for rapid and portable deployment."
+	item = /obj/item/storage/box/syndie_kit/cultkitsr
+	cost = 30 //If used correctly, You actually get several servants.
+	restricted_roles = list("Chaplain")
+
 //LOADOUTS
 
 /datum/uplink_item/loadout_skyrat

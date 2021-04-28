@@ -1,3 +1,52 @@
+/obj/item/clothing/head/helmet/chaplain/bland
+	icon = 'modular_skyrat/modules/chaplain/icons/obj/clothings/hats.dmi'
+	icon_state = "knight_generic"
+	worn_icon = 'modular_skyrat/modules/chaplain/icons/mobs/clothings/head.dmi'
+	worn_icon_state = "knight_generic"
+
+/obj/item/clothing/head/helmet/chaplain/bland/horned
+	name = "horned crusader helmet"
+	desc = "Helfen, Wehren, Heilen."
+	icon_state = "knight_horned"
+	worn_icon_state = "knight_horned"
+
+/obj/item/clothing/head/helmet/chaplain/bland/winged
+	name = "winged crusader helmet"
+	desc = "Helfen, Wehren, Heilen."
+	icon_state = "knight_winged"
+	worn_icon_state = "knight_winged"
+
+/obj/item/clothing/suit/armor/riot/chaplain/teutonic
+	desc = "Help, Defend, Heal!"
+	icon_state = "knight_teutonic"
+	icon = 'modular_skyrat/modules/chaplain/icons/obj/clothings/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/chaplain/icons/mobs/clothings/suit.dmi'
+	worn_icon_state = "knight_teutonic"
+
+/obj/item/clothing/suit/armor/riot/chaplain/teutonic/alt
+	icon_state = "knight_teutonic_alt"
+	worn_icon_state = "knight_teutonic_alt"
+
+/obj/item/clothing/suit/armor/riot/chaplain/hospitaller
+	icon_state = "knight_hospitaller"
+	icon = 'modular_skyrat/modules/chaplain/icons/obj/clothings/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/chaplain/icons/mobs/clothings/suit.dmi'
+	worn_icon_state = "knight_hospitaller"
+
+/obj/item/storage/box/holy/teutonic
+	name = "Teutonic Kit"
+
+/obj/item/storage/box/holy/teutonic/PopulateContents()
+	pick(new /obj/item/clothing/head/helmet/chaplain/bland/horned(src), new /obj/item/clothing/head/helmet/chaplain/bland/winged(src))
+	pick(new /obj/item/clothing/suit/armor/riot/chaplain/teutonic(src), new /obj/item/clothing/suit/armor/riot/chaplain/teutonic/alt(src))
+
+/obj/item/storage/box/holy/hospitaller
+	name = "Hospitaller Kit"
+
+/obj/item/storage/box/holy/hospitaller/PopulateContents()
+	new /obj/item/clothing/head/helmet/chaplain/bland(src)
+	new /obj/item/clothing/suit/armor/riot/chaplain/hospitaller(src)
+
 /obj/item/clothing/suit/hooded/cultlain_robe
 	name = "ancient robes"
 	desc = "A ragged, dusty set of robes."
@@ -22,6 +71,7 @@
 
 /obj/item/storage/box/holy/narsian/PopulateContents()
 	new /obj/item/clothing/suit/hooded/cultlain_robe(src)
+	new /obj/item/clothing/shoes/cult/alt(src)
 
 /obj/item/nullrod/cultdagger
 	name = "ritual dagger"
