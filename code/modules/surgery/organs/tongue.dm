@@ -1,3 +1,5 @@
+var/datum/preferences = new //SKYRAT EDIT - Imports variables for custom speech modifiers
+
 /obj/item/organ/tongue
 	name = "tongue"
 	desc = "A fleshy muscle mostly used for lying."
@@ -76,8 +78,8 @@
 /obj/item/organ/tongue/could_speak_language(language)
 	return is_type_in_typecache(language, languages_possible)
 
-/*SKYRAT ADDITION - A snowflake tongue allowing for custom speech quirks*/
-/obj/item/organ/tongue/unique(datum/preferences)
+/*SKYRAT EDIT - Adds a snowflake tongue allowing for custom speech quirks*/
+/obj/item/organ/tongue/unique()
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
@@ -85,7 +87,7 @@
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences)
+/obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args)
 	var/replace_upper = uppertext(speech_replace_from)
 	var/replace_lower = lowertext(speech_replace_from)
 	var/static/regex/custom_quirk_upper = new(replace_upper, "g")
@@ -95,7 +97,7 @@
 		message = custom_quirk_upper.Replace(message, uppertext(speech_replace_to))
 		message = custom_quirk_lower.Replace(message, lowertext(speech_replace_to))
 	speech_args[SPEECH_MESSAGE] = message
-/*END SKYRAT ADDITION*/
+/*END SKYRAT EDIT*/
 
 /obj/item/organ/tongue/lizard
 	name = "forked tongue"
