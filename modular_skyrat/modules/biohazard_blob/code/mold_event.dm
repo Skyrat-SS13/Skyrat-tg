@@ -21,8 +21,10 @@
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
-	for(var/area/maintenance/area in world)
-		for(var/turf/open/floor in area)
+	for(var/area/maintenance/A in world)
+		if(!is_station_level(A.z))
+			continue
+		for(var/turf/open/floor in A)
 			if(!floor.Enter(resintest))
 				continue
 			if(locate(/turf/closed) in range(2, floor))
