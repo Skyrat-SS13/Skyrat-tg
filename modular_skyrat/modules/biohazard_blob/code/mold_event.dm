@@ -21,13 +21,13 @@
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
-	for(var/area/maintenance/A in world)
-		for(var/turf/open/floor in A)
+	for(var/area/maintenance/area in world)
+		for(var/turf/open/floor in area)
 			if(!floor.Enter(resintest))
 				continue
-			if(locate(/turf/closed) in range(3, floor))
+			if(locate(/turf/closed) in range(2, floor))
 				continue
-			if(locate(/obj/structure/biohazard_blob) in range(20, floor))
+			if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, floor))
 				continue
 			turfs += floor
 
