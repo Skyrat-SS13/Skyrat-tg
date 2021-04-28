@@ -21,7 +21,7 @@
 /datum/loadout_item/backpack/matches
 	name = "Matchbox"
 	path = /obj/item/storage/box/matches
-	
+
 /datum/loadout_item/backpack/cheaplighter
 	name = "Cheap lighter"
 	path = /obj/item/lighter/greyscale
