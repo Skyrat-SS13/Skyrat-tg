@@ -18,7 +18,7 @@
 						/obj/item/seeds/cannabis/death,
 						/obj/item/seeds/cannabis/white,
 						/obj/item/seeds/cannabis/ultimate)
-	reagents_add = list(/datum/reagent/drug/space_drugs = 0.15, /datum/reagent/toxin/lipolicide = 0.35) // gives u the munchies
+	reagents_add = list(/datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.35) //SKYRAT EDIT - MORENARCOTICS
 
 
 /obj/item/seeds/cannabis/rainbow
@@ -40,7 +40,7 @@
 	plantname = "Deathweed"
 	product = /obj/item/food/grown/cannabis/death
 	mutatelist = list()
-	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/space_drugs = 0.15, /datum/reagent/toxin/lipolicide = 0.15)
+	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
 /obj/item/seeds/cannabis/white
@@ -52,7 +52,7 @@
 	instability = 30
 	product = /obj/item/food/grown/cannabis/white
 	mutatelist = list()
-	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/space_drugs = 0.15, /datum/reagent/toxin/lipolicide = 0.15)
+	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
 
@@ -65,7 +65,7 @@
 	product = /obj/item/food/grown/cannabis/ultimate
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/green)
 	mutatelist = list()
-	reagents_add = list(/datum/reagent/drug/space_drugs = 0.3,
+	reagents_add = list(/datum/reagent/drug/thc = 0.3, //SKYRAT EDIT - MORENARCOTICS
 						/datum/reagent/toxin/mindbreaker = 0.3,
 						/datum/reagent/mercury = 0.15,
 						/datum/reagent/lithium = 0.15,
