@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(command_alttitles, list(
 
 GLOBAL_LIST_INIT(engineering_alttitles, list(
 	"Engineering Foreman", //CE
-	"Damage Control Technician", //Engie
+	"Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", //Engie
 	"Life Support Technician")) //Atmos
 
 
