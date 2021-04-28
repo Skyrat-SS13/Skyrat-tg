@@ -388,7 +388,7 @@
 	merge_type = /obj/item/stack/tile/pod/dark
 
 //Plasteel (normal)
-/obj/item/stack/tile/iron
+/obj/item/stack/tile/iron//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "floor tile"
 	singular_name = "floor tile"
 	desc = "The ground you walk on."

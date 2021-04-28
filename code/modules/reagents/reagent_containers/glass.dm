@@ -130,7 +130,7 @@
 	custom_materials = list(/datum/material/glass=500)
 	volume = 60 //SKYRAT EDIT: Addition
 	possible_transfer_amounts = list(5,10,15,20,30,60) //SKYRAT EDIT: Addition
-	fill_icon_thresholds = list(0, 10, 25, 50, 75, 80, 90)
+	fill_icon_thresholds = list(0, 20, 40, 60, 80, 100)
 
 /obj/item/reagent_containers/glass/beaker/Initialize()
 	. = ..()

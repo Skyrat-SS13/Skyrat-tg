@@ -40,7 +40,7 @@
 	strip_delay = 5
 	equip_delay_other = 50
 	permeability_coefficient = 0.9
-	can_be_tied = FALSE
+	can_be_tied = TRUE //SKYRAT EDIT
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/shoes/sandal/marisa
@@ -145,7 +145,7 @@
 	resistance_flags = NONE
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
-	can_be_tied = FALSE
+	can_be_tied = TRUE //SKYRAT EDIT
 
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
@@ -430,7 +430,7 @@
 	custom_price = PAYCHECK_EASY
 	var/list/occupants = list()
 	var/max_occupants = 4
-	can_be_tied = FALSE
+	can_be_tied = TRUE //SKYRAT EDIT
 
 /obj/item/clothing/shoes/cowboy/Initialize()
 	. = ..()
