@@ -22,7 +22,7 @@
 	alt_titles = list("Engineering Foreman")
 
 /datum/job/research_director
-	alt_titles = list("Silicon Administrator")
+	alt_titles = list("Silicon Administrator", "Lead Researcher", "Biorobotics Director")
 
 /datum/job/quartermaster
 	alt_titles = list("Deck Chief")

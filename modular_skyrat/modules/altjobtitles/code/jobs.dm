@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(command_alttitles, list(
 	"Executive Officer", "Employment Officer", //HoP
 	"Security Commander", //HoS
 	"Engineering Foreman", //CE
-	"Silicon Administrator", //RD
+	"Silicon Administrator", "Lead Researcher", "Biorobotics Director",//RD
 	"Deck Chief", //QM
 	"Medical Director")) //CMO
 
@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(medical_alttitles, list(
 
 
 GLOBAL_LIST_INIT(science_alttitles, list(
-	"Silicon Administrator", //RD
+	"Silicon Administrator", "Lead Researcher", "Biorobotics Director",//RD
 	"Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher", "Anomalist", "Lab Technician", //Sci
 	"Mutation Researcher", //Genetics
 	"Biomechanical Engineer", "Mechatronic Engineer")) //Robo
