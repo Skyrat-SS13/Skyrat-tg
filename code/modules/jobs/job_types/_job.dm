@@ -288,6 +288,7 @@
 		if(H.age)
 			C.registered_age = H.age
 		//SKYRAT EDIT ADDITION - Alternate job titles
+		C.real_title = J.title
 		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
 			C.assignment = H.client.prefs.alt_titles_preferences[J.title]
 		else if (J.alt_title_pref)
