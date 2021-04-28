@@ -21,15 +21,17 @@
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
-	for(var/area/maintenance/A in world)
+	var/list/possible_spawn_areas = typecacheof(typesof(/area/maintenance, /area/security/prison, /area/construction, /area/engineering/atmos))
+
+	for(var/area/A in world)
 		if(!is_station_level(A.z))
+			continue
+		if(!is_type_in_typecache(A, possible_spawn_areas))
 			continue
 		for(var/turf/open/floor in A)
 			if(!floor.Enter(resintest))
 				continue
 			if(locate(/turf/closed) in range(2, floor))
-				continue
-			if(locate(/obj/structure/biohazard_blob/structure/core) in range(10, floor))
 				continue
 			turfs += floor
 
@@ -39,7 +41,20 @@
 		var/picked_mold = pick(available_molds)
 
 		if(turfs.len) //Pick a turf to spawn at if we can
-			var/turf/T = pick(turfs)
+			shuffle(turfs)
+			var/good_turf = FALSE
+			var/turf/T
+			while(!good_turf && turfs.len)
+				var/turf/turf_temp = pick(turfs)
+				if(locate(/obj/structure/biohazard_blob/structure/core) in range(10, T))
+					turfs -= T
+				else
+					good_turf = TRUE
+					T = turf_temp
+					break
+			if(!T)
+				message_admins("Mold failed to spawn due to the lack of a safe area.")
+				return
 			var/obj/structure/biohazard_blob/boob = new picked_mold(T)
 			announce_to_ghosts(boob)
 			turfs -= T

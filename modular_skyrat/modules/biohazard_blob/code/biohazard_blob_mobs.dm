@@ -22,6 +22,7 @@
 	turns_per_move = 4
 	maxHealth = 150
 	health = 150
+	speed = 0.5
 	obj_damage = 40
 	melee_damage_lower = 10
 	melee_damage_upper = 15
@@ -34,6 +35,8 @@
 	light_power = 1
 	light_color = LIGHT_COLOR_FIRE
 	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
 	maxbodytemp = INFINITY
 	gender = MALE
 
@@ -78,6 +81,7 @@
 	maxHealth = 70
 	health = 70
 	obj_damage = 30
+	speed = 0.5
 	melee_damage_lower = 7
 	melee_damage_upper = 13
 	faction = list(MOLD_FACTION)
@@ -87,6 +91,12 @@
 	butcher_results = list(/obj/item/food/meat/slab = 1)
 	attack_sound = 'sound/weapons/bite.ogg'
 	melee_damage_type = BRUTE
+
+/mob/living/simple_animal/hostile/biohazard_blob/diseased_rat/AttackingTarget()
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		C.reagents.add_reagent(/datum/reagent/fungalspores, 5)
 
 /mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito
 	name = "electric mosquito"
@@ -100,15 +110,19 @@
 	turns_per_move = 4
 	maxHealth = 70
 	health = 70
+	speed = 0.5
 	obj_damage = 20
-	melee_damage_lower = 5
-	melee_damage_upper = 6
+	melee_damage_lower = 7
+	melee_damage_upper = 10
 	faction = list(MOLD_FACTION)
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BRUTE
 	pass_flags = PASSTABLE
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = INFINITY
 
 /mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito/AttackingTarget()
 	. = ..()

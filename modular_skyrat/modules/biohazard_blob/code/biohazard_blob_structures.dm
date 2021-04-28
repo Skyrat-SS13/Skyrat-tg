@@ -39,7 +39,7 @@
 	mid_sounds = list('modular_skyrat/master_files/sound/effects/heart_beat_loop3.ogg'=1)
 	volume = 20
 
-#define CORE_RETALIATION_COOLDOWN 20 SECONDS
+#define CORE_RETALIATION_COOLDOWN 5 SECONDS
 
 /obj/structure/biohazard_blob/structure/core
 	name = "glowing core"
@@ -104,8 +104,8 @@
 				my_turf.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 			if(BIO_BLOB_TYPE_EMP)
 				visible_message("<span class='warning'>The [src] sends out electrical discharges!</span>")
+				empulse(src, 5, 10)
 				if(prob(50))
-					empulse(src, 3, 4)
 					for(var/mob/living/M in get_hearers_in_view(3, my_turf))
 						if(M.flash_act(affect_silicon = 1))
 							M.Paralyze(20)
@@ -160,6 +160,7 @@
 			desc += " You can notice small sparks travelling in the vines."
 		if(BIO_BLOB_TYPE_TOXIC)
 			desc += " It feels damp and smells of rat poison."
+	AddComponent(/datum/component/slippery, 80)
 
 /obj/structure/biohazard_blob/resin/update_overlays()
 	. = ..()
@@ -308,7 +309,7 @@
 	set_light(0)
 	update_overlays()
 	density = FALSE
-	addtimer(CALLBACK(src, .proc/make_full), 150 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	addtimer(CALLBACK(src, .proc/make_full), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/structure/biohazard_blob/structure/bulb/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
 	discharge()
@@ -355,6 +356,49 @@
 		our_controller.other_structures -= src
 	return ..()
 
+/obj/structure/biohazard_blob/structure/conditioner
+	name = "pulsating vent"
+	desc = "An unsightly vent, it appears to be puffing something out."
+	density = FALSE
+	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_spawner.dmi'
+	icon_state = "blob_vent"
+	density = FALSE
+	layer = LOW_OBJ_LAYER
+	max_integrity = 150
+	///The mold atmosphere conditioner will spawn the molds preferred atmosphere every so often.
+	var/happy_atmos = null
+	var/puff_cooldown = 5 SECONDS
+	var/puff_delay = 0
+
+/obj/structure/biohazard_blob/structure/conditioner/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	if(our_controller)
+		our_controller.other_structures -= src
+	return ..()
+
+/obj/structure/biohazard_blob/structure/conditioner/Initialize()
+	. = ..()
+	switch(blob_type)
+		if(BIO_BLOB_TYPE_FUNGUS)
+			happy_atmos = "miasma=50;TEMP=296"
+		if(BIO_BLOB_TYPE_FIRE)
+			happy_atmos = "plasma=50;TEMP=360"
+		if(BIO_BLOB_TYPE_EMP)
+			happy_atmos = "n2=50;TEMP=100"
+		if(BIO_BLOB_TYPE_TOXIC)
+			happy_atmos = "miasma=50;TEMP=296"
+
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/biohazard_blob/structure/conditioner/process(delta_time)
+	if(!happy_atmos)
+		return
+	if(puff_delay > world.time)
+		return
+	puff_delay = world.time + puff_cooldown
+	var/turf/holder_turf = get_turf(src)
+	holder_turf.atmos_spawn_air(happy_atmos)
+
 /obj/structure/biohazard_blob/structure/spawner
 	name = "hatchery"
 	density = FALSE
@@ -364,8 +408,8 @@
 	layer = LOW_OBJ_LAYER
 	max_integrity = 150
 	var/monster_types = list()
-	var/max_spawns = 1
-	var/spawn_cooldown = 600 //In deciseconds
+	var/max_spawns = 2
+	var/spawn_cooldown = 400 //In deciseconds
 
 /obj/structure/biohazard_blob/structure/spawner/Destroy()
 	if(our_controller)

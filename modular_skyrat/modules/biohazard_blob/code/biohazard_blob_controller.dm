@@ -33,8 +33,9 @@
 
 /datum/biohazard_blob_controller/proc/SpawnExpansion()
 	var/list/turfs = list()
-	var/hatcheries_to_spawn = rand(4, 5)
+	var/hatcheries_to_spawn = 4
 	var/bulbs_to_spawn = rand(3, 5)
+	var/conditioners_to_spawn = rand(1, 3)
 	var/spread_radius = 6
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE
@@ -54,6 +55,9 @@
 		else if(bulbs_to_spawn && prob(40))
 			bulbs_to_spawn--
 			SpawnStructureLoc(1, T)
+		else if(conditioners_to_spawn && prob(40))
+			conditioners_to_spawn--
+			SpawnStructureLoc(3, T)
 
 /datum/biohazard_blob_controller/proc/SpawnStructureLoc(index, location)
 	var/spawn_type
@@ -62,6 +66,9 @@
 			spawn_type = /obj/structure/biohazard_blob/structure/bulb
 		if(2)
 			spawn_type = /obj/structure/biohazard_blob/structure/spawner
+		if(3)
+			spawn_type = /obj/structure/biohazard_blob/structure/conditioner
+
 	var/struct = new spawn_type(location, blob_type)
 	other_structures[struct] = TRUE
 	our_core.max_integrity += 10
@@ -99,7 +106,7 @@
 				break
 		if(!forbidden)
 			structure_progression -= PROGRESSION_FOR_STRUCTURE
-			var/random = rand(1,2)
+			var/random = rand(1,3)
 			SpawnStructureLoc(random, ownturf)
 
 	//Check if we can attack an airlock

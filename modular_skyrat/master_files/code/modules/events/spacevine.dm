@@ -20,14 +20,17 @@
 
 	qdel(SV)
 
+	var/vines2spawn = rand(1, 3)
+
 	if(turfs.len) //Pick a turf to spawn at if we can
-		var/turf/T = pick(turfs)
-		new /datum/spacevine_controller(T, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src) //spawn a controller at turf with randomized stats and a single random mutation
-		//SKYRAT EDIT ADDITION START
-		new /mob/living/simple_animal/hostile/venus_human_trap(T)
-		new /mob/living/simple_animal/hostile/venus_human_trap(T)
-		new /mob/living/simple_animal/hostile/venus_human_trap(T)
-		//SKYRAT EDIT END
+		for(var/i = 1, i <= vines2spawn, i++)
+			shuffle(turfs)
+			var/turf/T = pick(turfs)
+			new /datum/spacevine_controller(T, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src) //spawn a controller at turf with randomized stats and a single random mutation
+			new /mob/living/simple_animal/hostile/venus_human_trap(T)
+			new /mob/living/simple_animal/hostile/venus_human_trap(T)
+			new /mob/living/simple_animal/hostile/venus_human_trap(T)
+			turfs -= T
 
 /datum/spacevine_mutation
 	var/name = ""
@@ -582,9 +585,9 @@
 		SM.on_cross(src, AM)
 	if(istype(AM, /mob/living/simple_animal/hostile/venus_human_trap)) //skyrat change: vines heal flytraps 10% on cross
 		var/mob/living/simple_animal/hostile/venus_human_trap/VS = AM
-		if(VS.health == VS.maxHealth)
+		if(VS.health >= VS.maxHealth)
 			return
-		VS.health = clamp((VS.health + VS.maxHealth * 0.1), VS.health, VS.maxHealth)
+		VS.adjustHealth(clamp((VS.health + VS.maxHealth * 0.1), VS.health, VS.maxHealth), TRUE, TRUE)
 		to_chat(VS, "<span class='notice'>The vines attempt to regenerate some of your wounds!</span>")
 		return
 
