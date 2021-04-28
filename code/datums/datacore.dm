@@ -138,7 +138,7 @@
 	var/datum/data/record/foundrecord = find_record("name", name, GLOB.data_core.general)
 	if(foundrecord)
 		foundrecord.fields["rank"] = assignment
-
+/* SKYRAT EDIT MOVAL - OVERWRITTEN IN ALTJOBTITLES
 /datum/datacore/proc/get_manifest()
 	var/list/manifest_out = list(
 		"Command",
@@ -151,14 +151,14 @@
 		"Silicon"
 	)
 	var/list/departments = list(
-		"Command" = GLOB.command_positions + GLOB.command_alttitles, //SKYRAT EDIT - ALT TITLES
-		"Security" = GLOB.security_positions + GLOB.security_sub_positions + GLOB.security_alttitles,
-		"Engineering" = GLOB.engineering_positions + GLOB.engineering_alttitles,
-		"Medical" = GLOB.medical_positions + GLOB.medical_alttitles,
-		"Science" = GLOB.science_positions + GLOB.science_alttitles,
-		"Supply" = GLOB.supply_positions + GLOB.supply_alttitles,
-		"Service" = GLOB.service_positions + GLOB.service_alttitles,
-		"Silicon" = GLOB.nonhuman_positions + GLOB.nonhuman_alttitles // SKYRAT EDIT END
+		"Command" = GLOB.command_positions,
+		"Security" = GLOB.security_positions + GLOB.security_sub_positions,
+		"Engineering" = GLOB.engineering_positions,
+		"Medical" = GLOB.medical_positions,
+		"Science" = GLOB.science_positions,
+		"Supply" = GLOB.supply_positions,
+		"Service" = GLOB.service_positions,
+		"Silicon" = GLOB.nonhuman_positions
 	)
 	var/list/heads = GLOB.command_positions + list("Quartermaster")
 
@@ -194,6 +194,7 @@
 		if (!manifest_out[department])
 			manifest_out -= department
 	return manifest_out
+*/
 
 /datum/datacore/proc/get_manifest_html(monochrome = FALSE)
 	var/list/manifest = get_manifest()
