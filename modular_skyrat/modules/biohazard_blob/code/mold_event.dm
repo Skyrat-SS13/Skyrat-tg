@@ -27,6 +27,8 @@
 				continue
 			if(locate(/turf/closed) in range(3, floor))
 				continue
+			if(locate(/obj/structure/biohazard_blob) in range(20, floor))
+				continue
 			turfs += floor
 
 	qdel(resintest)
