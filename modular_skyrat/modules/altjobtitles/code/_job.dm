@@ -10,10 +10,10 @@
 			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
 /datum/job/captain
-	alt_titles = list("Station Commander")
+	alt_titles = list("Station Commander", "Commanding Officer", "Site Manager")
 
 /datum/job/head_of_personnel
-	alt_titles = list("Executive Officer")
+	alt_titles = list("Executive Officer", "Employment Officer")
 
 /datum/job/head_of_security
 	alt_titles = list("Security Commander")
@@ -34,7 +34,7 @@
 	alt_titles = list("Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician")
 
 /datum/job/atmospheric_technician
-	alt_titles = list("Life Support Technician")
+	alt_titles = list("Life Support Technician", "Emergency Fire Technician")
 
 /datum/job/doctor
 	alt_titles = list("Surgeon", "Nurse")
@@ -49,7 +49,7 @@
 	alt_titles = list("Pharmacist", "Pharmacologist")
 
 /datum/job/scientist
-	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher", "Anomalist")
+	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher", "Anomalist", "Lab Technician")
 
 /datum/job/roboticist
 	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer")
@@ -103,10 +103,10 @@
 	alt_titles = list("Forensic Technician", "Private Investigator", "Forensic Scientst")
 
 /datum/job/security_officer
-	alt_titles = list("Security Operative")
+	alt_titles = list("Security Operative", "Peacekeeper")
 
 /datum/job/security_sergeant
-	alt_titles = list("Security Squad Leader")
+	alt_titles = list("Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader")
 
 /datum/job/security_medic
 	alt_titles = list("Field Medic", "Security Corpsman", "Brig Physician")
@@ -115,7 +115,7 @@
 	alt_titles = list("Station Police", "Civil Protection Officer")
 
 /datum/job/blueshield
-	alt_titles = list("Command Guard")
+	alt_titles = list("Command Bodyguard")
 
 /datum/job/ai
 	alt_titles = list("Station Intelligence", "Automated Overseer")
