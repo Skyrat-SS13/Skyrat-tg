@@ -42,3 +42,11 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/belt.dmi'
 	worn_icon_state = "mailbelt_leather"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
+
+//Byond code go brrrrrrr
+
+
+
+
+
+
