@@ -1,3 +1,14 @@
+/datum/job
+	var/alt_title_pref
+
+/datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+	if(H && GLOB.announcement_systems.len)
+		if(alt_title_pref)
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, alt_title_pref, channels), 1)) // SKYRAT EDIT ADD END
+		//timer because these should come after the captain announcement
+		else
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+
 /datum/job/captain
 	alt_titles = list("Station Commander")
 

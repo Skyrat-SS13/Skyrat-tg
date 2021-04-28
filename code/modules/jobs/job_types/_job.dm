@@ -2,8 +2,6 @@
 	//The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 
-	//The cosmetic, alternate title chosen by the player. Does not affect anything var/title effects. SKYRAT EDIT ADD - ALT TITLES
-	var/alt_title_pref
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a skeleton crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
 	var/list/skills
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a full crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
@@ -192,15 +190,12 @@
 
 	if(!visualsOnly && announce)
 		announce(H, is_captain)
-
+/* SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
-		if(alt_title_pref) // SKYRAT EDIT ADD - ALT JOB TITLES
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, alt_title_pref, channels), 1)) // SKYRAT EDIT ADD END
 		//timer because these should come after the captain announcement
-		else
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
-
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+*/
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
 	if(available_in_days(C) == 0)
@@ -292,13 +287,13 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-		//SKYRAT EDIT ADDITION - Alt job titles (latejoin)
+		//SKYRAT EDIT ADDITION - Alternate job titles
 		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
 			C.assignment = H.client.prefs.alt_titles_preferences[J.title]
 		else if (J.alt_title_pref)
 			C.assignment = J.alt_title_pref
 		else
-			C.assignment = J.title
+			C.assignment = J.title //Original - not under else statement
 		//SKYRAT EDIT ADDITION END
 		C.update_label()
 		C.update_icon()
@@ -311,12 +306,12 @@
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		// SKYRAT EDIT ADDITION - alt job titles
+		// SKYRAT EDIT ADDITION - alternate job titles
 		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
 			PDA.ownjob = H.client.prefs.alt_titles_preferences[J.title]
 		else if (J.alt_title_pref)
 			PDA.ownjob = J.alt_title_pref
-		else // SKYRAT EDIT ADDITION END - alt job titles
+		else // SKYRAT EDIT ADDITION END - alternate job titles
 			PDA.ownjob = J.title
 		PDA.update_label()
 

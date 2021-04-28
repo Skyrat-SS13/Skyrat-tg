@@ -455,7 +455,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["joblessrole"], joblessrole)
 	//Load prefs
 	READ_FILE(S["job_preferences"], job_preferences)
-	//Load Job Titles - alt titles working comment
+	//Load Alternate Job Titles
 	S["alt_titles_preferences"]			>> alt_titles_preferences
 	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
 	if(SSjob)
@@ -730,7 +730,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["joblessrole"] , joblessrole)
 	//Write prefs
 	WRITE_FILE(S["job_preferences"] , job_preferences)
-	//Write Job Titles alt titles working comment
+	//Write Alternate Job Titles
 	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)
 
 	//Quirks
