@@ -1,3 +1,4 @@
+
 /datum/ambition_template
 	///Name of the template. Has to be unique
 	var/name
@@ -49,6 +50,8 @@
 
 //TODO: Atmos Tech Ambition
 
+///SERVICE
+
 /datum/ambition_template/secret_agent_man
 	name = "Secret Agent Man"
 	narrative = "There's a man who lives a life of danger - to everyone he meets, he stays a stranger. With every move he makes, another chance he takes. Odds are, he won't live to see tomorrow. You are that man. Good luck, Agent - and remember, harm a single animal, you will be terminated upon extraction. -Your Benefactors, The Animal Rights Consortium."
@@ -63,4 +66,33 @@
 	tips = list("Punji sticks are your best friend if things get hot.")
 	job_whitelist = list("Botanist")
 
-//TODO: Everything Past Botanist Ambitions
+/datum/ambition_template/hannibal
+    name = "Frontier Ripper"
+    narrative = "Manners make the man, they make every man. This station you've inhabited for a long while has been filled with so many rude creatures. Your skills in the culinary arts will be helpful, thankfully no one ever checks where the meat came from. It's time to get the the rolodex out, have an old friend for dinner..."
+    objectives = list("Make meals out of the rude.", "Make your judgements thematic.", "Cook the best part of someone. The leg of a lamb or runner will taste better than that of a skunk, just make sure the lamb stops screaming. Simply making a steak will not do, treat the meat with respect, make the best possible meal you can.")
+    tips = list(" Whenever feasible, one should always try to eat the rude. The Wound Man is a popular choice. Classical music is known to enhance cooking by 40 percent, Goldberg variations even more so.")
+    job_whitelist = list("Cook")
+
+///SCIENCE
+/datum/ambition_template/fsociety
+	name = "Zero Sum"
+	narrative = "What I'm about to tell you is top secret. A conspiracy bigger than all of us. There's a powerful group of people out there that are secretly running the world. I'm talking about the guys no one knows about, the ones that are invisible. The top 1% of the top 1%, the guys that play God without permission. Nanotrasen, countless violations, countless evil...It's time for revenge, the plan,  all the debt we owe them. Every record of every credit card, loan, and mortgage would be wiped clean. It'd be impossible to reinforce outdated paper records. It'd all be gone. The single, biggest incident of wealth redistribution in history. "
+	objectives = list("Stage One, the Digital, records are kept in the vault and science database.", "Stage Two, physical, Contracts are kept in the Lawyer's office, Detective Office and Chief Medical Officer's office, destroy them, wipe it away, awaken the masses.", "Frame the RD for the Digital Attacks, plant his prints if you can, one of their employees doesn't matter much, though he's more use alive than dead.", "Broadcast your demands, there's an old earth film, the mask will be perfect for your theatrics, though any will do.")
+	tips = list("All revolutions have casualties, this doesn't mean you should go around killing, this is for the people, the liberation. Sometimes another personality may help.")
+	job_whitelist = list("Scientist")
+
+/datum/ambition_template/eggman
+   
+	name = "Masterplan"
+	narrative = "The story begins with who's going to win. It's childish, yes, but what wasn't childish is a very large check with 'do some bad shit' written on it, so obviously this means it's time to become a right proper supervillain, dawn a read outfit, get a army of themed evil robots, and avoid any technicolor hedgehogs."
+   
+	objectives = list("Build your empire of evil, possibly themed robots, animals tend to make a better power source.", "Conquer the world with your tools, the station is a small foot note.", "Wear red, not only does it make you go faster, but it's EVIL, which is perfect.")
+   
+	tips = list("Go bald, it'll prevent your hair catching on fire.", "The AI will either be your best friend or your worst nightmare, get them on your side as soon as possible.")
+   
+	job_whitelist = list("Roboticist")
+
+
+
+
+//TODO: Everything Past Cook and Roboticist Ambitions
