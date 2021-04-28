@@ -87,7 +87,7 @@
 	narrative = "The story begins with whos going to win. Its childish, yes, but what wasnt childish is a very large check with do some bad shit written on it, so obviously this means it's time to become a right proper supervillain, dawn a red outfit, get an army of themed evil robots, and avoid any technicolor hedgehogs."
    
 	objectives = list("Build your empire of evil, possibly themed robots, animals tend to make a better power source.", "Conquer the world with your tools, the station is a small foot note.", "Wear red, not only does it make you go faster, but its EVIL, which is perfect.")
-	tips = list("Go bald to prevent your hair from catching on fire.", "The AI will either be your best friend or your worst nightmare. Get them on your side as soon as possible.")
+	tips = list("Go bald to prevent your hair from catching on fire.", "The station AI is either gonna be your best friend or worst nightmare. Get them on the team as soon as you can.")
 	job_whitelist = list("Roboticist")
 
 
