@@ -135,7 +135,6 @@
 	. = ..()
 	. += " It's fitted with a [tool_behaviour == TOOL_CROWBAR ? "prying" : "cutting"] head."
 	. += "[src] is currently [powered ? "powered" : "unpowered"]." //SKYRAT EDIT ADDITION
-	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"	//SKYRAT EDIT ADDITION
 
 /obj/item/crowbar/power/suicide_act(mob/user)
 	if(tool_behaviour == TOOL_CROWBAR)
