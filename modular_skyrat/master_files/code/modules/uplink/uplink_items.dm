@@ -68,7 +68,6 @@
 	desc = "An incredibly sharp sword used by Samurais. Woefully underpowered in D20."
 	item = /obj/item/katana
 	cost = 7
-	exclude_modes = list(/datum/game_mode/nuclear/clown_ops, /datum/game_mode/nuclear)
 
 //STEALTHY WEAPONS
 /datum/uplink_item/stealthy_weapons/cqc_traitor
