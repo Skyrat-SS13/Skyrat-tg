@@ -54,6 +54,11 @@
 	path = /obj/item/clothing/mask/luchador/enzo
 	ckeywhitelist = list("enzoman")
 
+/datum/loadout_item/mask/donator/nightlight_mask
+	name = "FAR-13 SRU"
+	path = /obj/item/clothing/mask/gas/nightlight
+	ckeywhitelist = list("farsightednightlight")
+
 /datum/loadout_item/head/donator/drake_skull
 	name = "Skull of an ashdrake"
 	path = /obj/item/clothing/head/drake_skull

@@ -6871,9 +6871,11 @@
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
 "aCd" = (
-/obj/machinery/cryopod,
 /obj/machinery/airalarm{
 	pixel_y = 18
+	},
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -7731,18 +7733,9 @@
 /turf/open/floor/iron,
 /area/commons/dorms)
 "aFe" = (
-/obj/machinery/camera{
-	c_tag = "Dormitory South";
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/commons/dorms)
+/obj/machinery/light,
+/turf/open/floor/iron/freezer,
+/area/security/prison)
 "aFf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 4
@@ -40776,14 +40769,14 @@
 /turf/open/openspace,
 /area/science/xenobiology)
 "few" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
 /obj/machinery/light_switch{
 	pixel_y = -22
+	},
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -45203,7 +45196,7 @@
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "dirt";
 	layer = 2.0001;
-	plane = -2
+	plane = -7
 	},
 /turf/open/floor/plating/dirt/planet{
 	icon_state = "oldsmoothdirt"
@@ -45830,6 +45823,7 @@
 "krE" = (
 /obj/effect/decal/cleanable/oil,
 /obj/machinery/meter/atmos/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/security/prison)
 "krJ" = (
@@ -47088,11 +47082,18 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "lJt" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/machinery/light/small,
-/turf/open/floor/plating,
-/area/security/prison)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Dormitory South";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/commons/dorms)
 "lJw" = (
 /obj/item/reagent_containers/glass/bucket/wooden,
 /obj/machinery/airalarm/all_access{
@@ -48351,7 +48352,7 @@
 /obj/item/clothing/head/beanie/orange{
 	pixel_y = 8
 	},
-/obj/item/clothing/shoes/wheelys/skishoes{
+/obj/item/clothing/shoes/sneakers/wheelys/skishoes{
 	pixel_y = -8
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
@@ -50276,14 +50277,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/locker)
-"oZI" = (
-/obj/item/soap/nanotrasen,
-/obj/machinery/shower{
-	pixel_y = 16
-	},
-/obj/structure/curtain/cloth,
-/turf/open/floor/iron/freezer,
-/area/security/prison)
 "oZV" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/line{
 	dir = 9
@@ -50515,6 +50508,7 @@
 "pmK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/security/prison)
 "pmL" = (
@@ -50820,9 +50814,11 @@
 /turf/open/floor/plating,
 /area/security/prison)
 "pAr" = (
-/obj/machinery/cryopod,
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/machinery/cryopod{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -50983,11 +50979,6 @@
 	name = "Holodeck Projector Floor"
 	},
 /area/holodeck/rec_center)
-"pGf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/security/prison)
 "pGO" = (
 /obj/machinery/light{
 	dir = 4
@@ -51014,6 +51005,7 @@
 	},
 /area/security/prison/safe)
 "pIM" = (
+/obj/item/soap/nanotrasen,
 /turf/open/floor/iron/freezer,
 /area/security/prison)
 "pIS" = (
@@ -52482,12 +52474,6 @@
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/maintenance/aft)
-"rhU" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/iron/freezer,
-/area/security/prison)
 "rid" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -53664,10 +53650,12 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "sxf" = (
-/obj/machinery/shower{
-	pixel_y = 16
+/obj/structure/mirror{
+	pixel_y = 32
 	},
-/obj/structure/curtain/cloth,
+/obj/structure/sink{
+	pixel_y = 22
+	},
 /turf/open/floor/iron/freezer,
 /area/security/prison)
 "sxQ" = (
@@ -53822,6 +53810,7 @@
 "sHl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/glowstick,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/security/prison)
 "sHm" = (
@@ -53875,11 +53864,8 @@
 /turf/open/floor/plating,
 /area/maintenance/department/medical/morgue)
 "sKc" = (
-/obj/structure/sink{
-	dir = 1
-	},
-/obj/structure/mirror{
-	pixel_y = -28
+/obj/machinery/shower{
+	dir = 4
 	},
 /turf/open/floor/iron/freezer,
 /area/security/prison)
@@ -54516,6 +54502,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/security/prison)
 "tqd" = (
@@ -54526,11 +54513,11 @@
 /turf/open/floor/carpet,
 /area/commons/dorms)
 "tqo" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
+	},
+/obj/machinery/cryopod{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
@@ -57709,8 +57696,8 @@
 /turf/open/floor/carpet/green,
 /area/maintenance/space_hut/cabin)
 "wFu" = (
-/obj/machinery/light/small{
-	dir = 4
+/obj/machinery/shower{
+	dir = 8
 	},
 /turf/open/floor/iron/freezer,
 /area/security/prison)
@@ -81102,8 +81089,8 @@ boP
 boP
 boP
 aai
-oZI
-rhU
+sKc
+sKc
 sKc
 abz
 wfd
@@ -81361,7 +81348,7 @@ boP
 aai
 sxf
 pIM
-sKc
+aFe
 abz
 rOV
 giF
@@ -81615,10 +81602,10 @@ bBM
 boP
 boP
 boP
-acd
-sxf
+aai
 wFu
-pIM
+wFu
+wFu
 lzO
 gBy
 aGK
@@ -84445,7 +84432,7 @@ boP
 aai
 lJN
 xZn
-lJt
+wxl
 acd
 vOR
 oBk
@@ -84702,7 +84689,7 @@ boP
 aai
 fNM
 xZn
-pGf
+uAQ
 acd
 wIo
 oBk
@@ -90671,8 +90658,8 @@ atj
 aAX
 azc
 qgF
-aFe
 azc
+lJt
 aHT
 aJy
 aJy
