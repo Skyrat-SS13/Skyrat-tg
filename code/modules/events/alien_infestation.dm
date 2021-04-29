@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/ghost_role/alien_infestation
 	//SKYRAT EDIT CHANGE BEGIN
 	//weight = 5 - SKYRAT EDIT - ORIGINAL
-	weight = 2
+	weight = 0
 	//SKYRAT EDIT CHANGE END
 
 	min_players = 10
