@@ -355,30 +355,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	explode()
 
 /obj/machinery/power/supermatter_crystal/proc/explode()
-<<<<<<< HEAD
-	for(var/mob in GLOB.alive_mob_list)
-		var/mob/living/L = mob
-		if(istype(L) && L.z == z)
-			if(ishuman(mob))
-				//Hilariously enough, running into a closet should make you get hit the hardest.
-				var/mob/living/carbon/human/H = mob
-				H.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(mob, src) + 1)) ) )
-			var/rads = DETONATION_RADS * sqrt( 1 / (get_dist(L, src) + 1) )
-			L.rad_act(rads)
-
-	var/turf/T = get_turf(src)
-	alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/explode.ogg')
-	for(var/mob/M in GLOB.player_list)
-		var/turf/mob_turf = get_turf(M)
-		if(T.z == mob_turf.z)
-			SEND_SOUND(M, 'sound/magic/charge.ogg')
-
-			if (M.z == z)
-				to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
-				SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "delam", /datum/mood_event/delam)
-			else
-				to_chat(M, "<span class='boldannounce'>You hold onto \the [M.loc] as hard as you can, as reality distorts around you. You feel safe.</span>")
-=======
 	for(var/mob/living/victim as anything in GLOB.alive_mob_list)
 		if(!istype(victim) || victim.z != z)
 			continue
@@ -390,6 +366,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		victim.rad_act(rads)
 
 	var/turf/local_turf = get_turf(src)
+	alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/explode.ogg') // SKYRAT EDIT - SM EXPLOSION
 	for(var/mob/victim as anything in GLOB.player_list)
 		var/turf/mob_turf = get_turf(victim)
 		if(local_turf.z != mob_turf.z)
@@ -401,8 +378,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			continue
 		to_chat(victim, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
 		SEND_SIGNAL(victim, COMSIG_ADD_MOOD_EVENT, "delam", /datum/mood_event/delam)
-
->>>>>>> 234d9cfd595 (SM code improvements (#58457))
 
 	if(combined_gas > MOLE_PENALTY_THRESHOLD)
 		investigate_log("has collapsed into a singularity.", INVESTIGATE_SUPERMATTER)
@@ -1094,39 +1069,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 /* - SKYRAT EDIT CHANGE - QOL - ORIGINAL
 /obj/machinery/power/supermatter_crystal/proc/supermatter_anomaly_gen(turf/anomalycenter, type = FLUX_ANOMALY, anomalyrange = 5)
-<<<<<<< HEAD
-	var/turf/L = pick(orange(anomalyrange, anomalycenter))
-	if(L)
-		switch(type)
-			if(FLUX_ANOMALY)
-				var/obj/effect/anomaly/flux/A = new(L, 300, FALSE)
-				A.explosive = FALSE
-			if(GRAVITATIONAL_ANOMALY)
-				new /obj/effect/anomaly/grav(L, 250, FALSE)
-			if(PYRO_ANOMALY)
-				new /obj/effect/anomaly/pyro(L, 200, FALSE)
-*/
-
-/obj/machinery/power/supermatter_crystal/proc/supermatter_anomaly_gen(turf/anomalycenter, type = FLUX_ANOMALY, anomalyrange = 5)
-	var/turf/L = pick(orange(anomalyrange, anomalycenter))
-	// BEGIN SKYRAT CHANGE - High Energy Anomaly Core Generation
-	var/drops_core = FALSE
-	// Every 334 EER above POWER_PENALTY_THRESHOLD adds 10% chance for the anomalies to leave behind a core when neutralized
-	var/chance_bonus = clamp((10 * (power - POWER_PENALTY_THRESHOLD) / 334), 0, 95)
-	if(prob(25 + round(chance_bonus))) // 25% base chance to drop a core
-		drops_core = TRUE
-
-	if(L)
-		switch(type)
-			if(FLUX_ANOMALY)
-				var/obj/effect/anomaly/flux/A = new(L, 300, drops_core)
-				A.explosive = FALSE
-			if(GRAVITATIONAL_ANOMALY)
-				new /obj/effect/anomaly/grav(L, 250, drops_core)
-			if(PYRO_ANOMALY)
-				new /obj/effect/anomaly/pyro(L, 200, drops_core)
-	// END SKYRAT CHANGE
-=======
 	var/turf/local_turf = pick(orange(anomalyrange, anomalycenter))
 	if(!local_turf)
 		return
@@ -1138,7 +1080,28 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			new /obj/effect/anomaly/grav(local_turf, 250, FALSE)
 		if(PYRO_ANOMALY)
 			new /obj/effect/anomaly/pyro(local_turf, 200, FALSE)
->>>>>>> 234d9cfd595 (SM code improvements (#58457))
+*/
+
+/obj/machinery/power/supermatter_crystal/proc/supermatter_anomaly_gen(turf/anomalycenter, type = FLUX_ANOMALY, anomalyrange = 5)
+	var/turf/local_turf = pick(orange(anomalyrange, anomalycenter))
+	if(!local_turf)
+		return
+	// BEGIN SKYRAT CHANGE - High Energy Anomaly Core Generation
+	var/drops_core = FALSE
+	// Every 334 EER above POWER_PENALTY_THRESHOLD adds 10% chance for the anomalies to leave behind a core when neutralized
+	var/chance_bonus = clamp((10 * (power - POWER_PENALTY_THRESHOLD) / 334), 0, 95)
+	if(prob(25 + round(chance_bonus))) // 25% base chance to drop a core
+		drops_core = TRUE
+
+	switch(type)
+		if(FLUX_ANOMALY)
+			var/obj/effect/anomaly/flux/flux = new(local_turf, 300, drops_core)
+			flux.explosive = FALSE
+		if(GRAVITATIONAL_ANOMALY)
+			new /obj/effect/anomaly/grav(local_turf, 250, drops_core)
+		if(PYRO_ANOMALY)
+			new /obj/effect/anomaly/pyro(local_turf, 200, drops_core)
+	// END SKYRAT CHANGE
 
 /obj/machinery/proc/supermatter_zap(atom/zapstart = src, range = 5, zap_str = 4000, zap_flags = ZAP_SUPERMATTER_FLAGS, list/targets_hit = list(), zap_cutoff = 1500, power_level = 0, zap_icon = DEFAULT_ZAP_ICON_STATE)
 	if(QDELETED(zapstart))
