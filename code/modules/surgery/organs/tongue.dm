@@ -81,10 +81,11 @@ var/client/prefs = new
 /*SKYRAT EDIT - Adds a snowflake tongue allowing for custom speech quirks*/
 /obj/item/organ/tongue/unique
 	var/datum/preferences/prefs
+	var/sverb = lowertext(prefs.speech_verb)
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
-	say_mod = lowertext(prefs.speech_verb)
+	say_mod = "[sverb]"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
