@@ -87,6 +87,7 @@
 /obj/item/weldingtool_electric/examine()
 	. = ..()
 	. += "[src] is currently [powered ? "powered" : "unpowered"]." //SKYRAT EDIT ADDITION
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"	//SKYRAT EDIT ADDITION
 
 /obj/item/weldingtool_electric/update_icon_state()
 	if(powered)

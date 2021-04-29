@@ -40,6 +40,10 @@
 	. = ..()
 	AddComponent(/datum/component/cell, cell_override)
 
+/obj/item/airlock_painter/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
+
 //This proc doesn't just check if the painter can be used, but also uses it.
 //Only call this if you are certain that the painter will be used right after this check!
 /obj/item/airlock_painter/proc/use_paint(mob/user)

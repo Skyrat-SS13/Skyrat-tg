@@ -30,6 +30,8 @@
 	. = ..()
 	if(has_modes)
 		. += "<span class='notice'>This flashlight has modes! Ctrl+click it to change the mode.</span>"
+	if(uses_battery)
+		. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 
 /obj/item/flashlight/CtrlClick(mob/user)
 	. = ..()

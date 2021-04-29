@@ -15,6 +15,10 @@
 /obj/item/megaphone/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/cell)
+
+/obj/item/megaphone/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 //SKYRAT EDIT ADDITION END
 
 /obj/item/megaphone/suicide_act(mob/living/carbon/user)

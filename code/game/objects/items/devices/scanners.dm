@@ -103,6 +103,10 @@ GENE SCANNER
 /obj/item/healthanalyzer/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/cell)
+
+/obj/item/healthanalyzer/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 //SKYRAT EDIT END
 
 /obj/item/healthanalyzer/suicide_act(mob/living/carbon/user)
@@ -601,6 +605,7 @@ GENE SCANNER
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click [src] to activate the barometer function.</span>"
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 
 /obj/item/analyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!</span>")
@@ -784,6 +789,10 @@ GENE SCANNER
 /obj/item/slime_scanner/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/cell)
+
+/obj/item/slime_scanner/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 	//SKYRAT EDIT END
 
 /obj/item/slime_scanner/attack(mob/living/M, mob/living/user)
@@ -855,6 +864,10 @@ GENE SCANNER
 /obj/item/nanite_scanner/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/cell)
+
+/obj/item/nanite_scanner/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 	//SKYRAT EDIT END
 
 /obj/item/nanite_scanner/attack(mob/living/M, mob/living/carbon/human/user)
@@ -899,6 +912,10 @@ GENE SCANNER
 /obj/item/sequence_scanner/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/cell)
+
+/obj/item/sequence_scanner/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 	//SKYRAT EDIT END
 
 /obj/item/sequence_scanner/attack(mob/living/M, mob/living/carbon/human/user)

@@ -285,6 +285,7 @@ effective or pretty fucking useless.
 /obj/item/jammer/examine(mob/user)
 	. = ..()
 	. += "[src] is currently [active ? "on" : "off"]."
+	. += "<span class='notice'>[src] needs a cell! Ctrl+Shift+click it to remove the cell, if there is one.</span>"
 	//SKYRAT EDIT END
 
 /obj/item/jammer/attack_self(mob/user)
