@@ -79,7 +79,7 @@ var/client/prefs = new
 	return is_type_in_typecache(language, languages_possible)
 
 /*SKYRAT EDIT - Adds a snowflake tongue allowing for custom speech quirks*/
-/obj/item/organ/tongue/unique()
+/obj/item/organ/tongue/unique
 	var/datum/preferences/prefs
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
