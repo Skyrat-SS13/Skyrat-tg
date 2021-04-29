@@ -110,10 +110,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return "[say_mod(input, message_mods)], \"[spanned]\""
 
 /atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, list/message_mods = list(), no_quote = FALSE)
-	// SKYRAT EDIT - NTSL - EDGE CASE LANG SANITIZING
-	if(isnum(language))
-		language = NTSL_LANG_TODATUM(language)
-	// SKYRAT EDIT - NTSL - END
 	if(has_language(language))
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM) //Basically means "if the speaker is virtual"
