@@ -1,5 +1,6 @@
 // i shall taint your pretty preferences file with bobcode
-GLOBAL_LIST_INIT(food, list(
+GLOBAL_LIST_INIT(food, list
+	(
 		"Meat" = MEAT,
 		"Vegetables" = VEGETABLES,
 		"Raw" = RAW,
