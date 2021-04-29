@@ -210,7 +210,10 @@
 	loc.handle_fall(src)//it's loc so it doesn't call the mob's handle_fall which does nothing
 
 /mob/living/carbon/is_muzzled()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
+	for (var/obj/item/clothing/clothing in get_equipped_items())
+		if(clothing.clothing_flags & BLOCKS_SPEECH)
+			return TRUE
+	return FALSE
 
 /mob/living/carbon/hallucinating()
 	if(hallucination)
@@ -270,7 +273,7 @@
 		cuff_resist(I)
 
 
-/mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 600, cuff_break = 0)
+/mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 1 MINUTES, cuff_break = 0)
 	if(I.item_flags & BEING_REMOVED)
 		to_chat(src, "<span class='warning'>You're already attempting to remove [I]!</span>")
 		return
@@ -524,7 +527,7 @@
 	var/stam = getStaminaLoss()
 	//TODO: Make this much more cleaner
 	//SKYRAT EDIT - ORIGINAL: if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
-	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN 
+	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN
 		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
 			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
 				//When you get floored by stamina, you also get a brief stun and disarm
@@ -1276,6 +1279,7 @@
 	if(!buckled || buckled.buckle_lying != 0)
 		lying_angle_on_lying_down(new_lying_angle)
 
+	drop_all_held_items() //SKYRAT EDIT ADDITION
 
 /// Special carbon interaction on lying down, to transform its sprite by a rotation.
 /mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)
@@ -1320,4 +1324,4 @@
 
 
 /mob/living/carbon/proc/attach_rot(mapload)
-	AddComponent(/datum/component/rot, 6 MINUTES, 1)
+	AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)

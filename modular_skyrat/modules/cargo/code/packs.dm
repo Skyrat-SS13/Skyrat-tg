@@ -79,6 +79,7 @@
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/clothing/suit/space/hardsuit/medical)
 	crate_name = "medical hardsuit crate"
+	crate_type = /obj/structure/closet/crate/secure //No medical varient with security locks.
 
 /datum/supply_pack/medical/compact_defib
 	name = "Compact Defibrillator Crate"
@@ -118,18 +119,53 @@
 					/obj/item/melee/classic_baton/peacekeeper)
 	crate_name = "baton crate"
 
+/datum/supply_pack/security/croonsurplus
+	name = "Croon Weapons Crate"
+	desc = "Help out in a local revolt, or fund a civil war, it's not like you have a choice in supplier. (Comes with four magazines of ammo.)"
+	cost = CARGO_CRATE_VALUE * 40
+	contraband = TRUE
+	contains = list(/obj/item/gun/ballistic/automatic/croon/nomag,
+					/obj/item/gun/ballistic/automatic/croon/nomag,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon,
+					/obj/item/ammo_box/magazine/multi_sprite/croon)
+	crate_name = "unmarked weapons crate"
+	dangerous = TRUE
+	
+/datum/supply_pack/costumes_toys/randomised/improvised
+	name = "Improvised Weapons Crate"
+	desc = "Really hit rock bottom? Well, we've got a few things laying around from a sting-op on pirates we could lend you. (We'll expect these back.)" //they don't, actually.
+	contraband = TRUE
+	cost = CARGO_CRATE_VALUE * 7
+	num_contained = 3
+	contains = list(/obj/item/gun/ballistic/revolver/rifle/improvised,
+					/obj/item/gun/ballistic/revolver/rifle, //Above, but better.
+					/obj/item/gun/ballistic/rifle/irifle, //just a shittier mosin, in a much less statistically valuable crate.
+					/obj/item/gun/ballistic/rifle/ishotgun,
+					/obj/item/gun/ballistic/rifle/ishotgun/sawn, //Why not, helps pad the list.
+					/obj/item/storage/box/beanbag,
+					/obj/item/storage/box/lethalshot,
+					/obj/item/ammo_box/c38, //Revolver rifle ammo.
+					/obj/item/ammo_box/a762, //rifle ammo.
+					/obj/item/gun/ballistic/automatic/surplus, //It's bad
+					/obj/item/ammo_box/magazine/m10mm/rifle,
+					/obj/item/gun/ballistic/automatic/pistol/toy) //they just hate you.
+	crate_name = "dusty crate"
+
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////////// Engineering ////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 /datum/supply_pack/engineering/industrial_rcd
 	name = "Industrial RCD Crate"
-	desc = "Manufactured at a high-tech NT production facility, this pack contains 2 industrial RCDs with expanded matter reserves and upgraded deconstructors."
-	access_view = ACCESS_ENGINE_EQUIP
+	desc = "Manufactured at a high-tech NT production facility, this pack contains 2 industrial RCDs with expanded matter reserves and upgraded deconstructors. Requires CE Access to open."
+	access = ACCESS_CE //These contain all upgrades and ~2.5x as much matter. The least we can do is lock it behind CE.
 	contains = list(/obj/item/construction/rcd/combat,
 					/obj/item/construction/rcd/combat)
 	cost = CARGO_CRATE_VALUE * 40
 	crate_name = "industrial RCD crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
 
 /* Removed pending rebalance
 /datum/supply_pack/engineering/experimental_rcd
@@ -176,18 +212,20 @@
 /datum/supply_pack/engineering/hardsuit_engineering
 	name = "Engineering Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard engineering specifications."
-	access_view = ACCESS_ENGINE_EQUIP
+	access = ACCESS_ENGINE_EQUIP
 	contains = list(/obj/item/clothing/suit/space/hardsuit/engine)
 	cost = CARGO_CRATE_VALUE * 13
 	crate_name = "engineering hardsuit crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
 
 /datum/supply_pack/engineering/hardsuit_atmospherics
 	name = "Atmospherics Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard atmospherics suit specifications."
-	access_view = ACCESS_ENGINE_EQUIP
+	access = ACCESS_ENGINE_EQUIP
 	contains = list(/obj/item/clothing/suit/space/hardsuit/engine/atmos)
 	cost = CARGO_CRATE_VALUE * 16
 	crate_name = "atmospherics hardsuit crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
 
 /datum/supply_pack/engineering/engi_inducers
 	name = "NT-150 Industrial Power Inducers Crate"
@@ -201,6 +239,30 @@
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Misc Crates /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
+
+/datum/supply_pack/misc/painting
+	name = "Advanced Art Supplies"
+	desc = "Bring out your artistic spirit with these advanced art supplies. Contains coloring supplies, cloth for canvas, and two easels to work with!"
+	cost = CARGO_CRATE_VALUE * 2.2
+	contains = list(/obj/structure/easel,
+					/obj/structure/easel,
+					/obj/item/toy/crayon/spraycan,
+					/obj/item/toy/crayon/spraycan,
+					/obj/item/storage/crayons,
+					/obj/item/storage/crayons,
+					/obj/item/toy/crayon/white,
+					/obj/item/toy/crayon/white,
+					/obj/item/toy/crayon/rainbow,
+					/obj/item/toy/crayon/rainbow,
+					/obj/item/stack/sheet/cloth/ten,
+					/obj/item/stack/sheet/cloth/ten)
+	crate_name = "advanced art supplies"
+
+/datum/supply_pack/service/paintcan
+	name = "Adaptive Paintcan"
+	desc = "Give things a splash of color with this experimental color-changing can of paint! Sellers note: We are not responsible for lynchings carried out by angry janitors, security officers, or any other crewmembers as a result of you using this."
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(/obj/item/paint/anycolor)
 
 /datum/supply_pack/misc/coloredsheets
 	name = "Bedsheet Crate"
@@ -265,7 +327,7 @@
                     /obj/item/food/fries,
                     /obj/item/storage/fancy/nugget_box,
                     /obj/item/storage/fancy/nugget_box)
-	crate_name = "combo meal w/toy"
+	crate_name = "burger n nuggs combo meal"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/organic/fiestatortilla
@@ -350,8 +412,32 @@
 	crate_name = "janitor ride crate"
 	crate_type = /obj/structure/closet/crate/large
 
+/datum/supply_pack/service/janitor/janpimpkey
+	name = "Cruiser Keys"
+	desc = "Replacement Keys for the Custodial Cruiser."
+	cost = CARGO_CRATE_VALUE * 1.5
+	access = ACCESS_JANITOR
+	contains = list(/obj/item/key/janitor)
+	crate_name = "key crate"
+	crate_type = /obj/structure/closet/crate/wooden
+
+/datum/supply_pack/service/janitor/janpremium
+	name = "Janitor Supplies (Premium)"
+	desc = "For when the mess is too big for a mop to handle. Contains, several cleaning grenades, some spare bottles of ammonia, two bars of soap, and an MCE (or Massive Cleaning Explosive)."
+	cost = CARGO_CRATE_VALUE * 6
+	contains = list(/obj/item/soap/nanotrasen,
+					/obj/item/soap/nanotrasen,
+					/obj/item/grenade/clusterbuster/cleaner,
+					/obj/item/grenade/chem_grenade/cleaner,
+					/obj/item/grenade/chem_grenade/cleaner,
+					/obj/item/grenade/chem_grenade/cleaner,
+					/obj/item/reagent_containers/glass/bottle/ammonia,
+					/obj/item/reagent_containers/glass/bottle/ammonia,
+					/obj/item/reagent_containers/glass/bottle/ammonia)
+	crate_name = "premium janitorial crate"
+
 /datum/supply_pack/service/lamplight
-	name = "Emergency Lighting Crate"
+	name = "Lamp Light Crate"
 	desc = "Dealing with brownouts? Lights out across the station? Brighten things up with a pack of four lamps and flashlights."
 	cost = CARGO_CRATE_VALUE * 1.75
 	contains = list(/obj/item/flashlight/lamp,
@@ -362,7 +448,7 @@
                     /obj/item/flashlight,
                     /obj/item/flashlight,
                     /obj/item/flashlight,)
-	crate_name = "emergency lighting crate"
+	crate_name = "lamp light crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Materials & Sheets //////////////////////////////
@@ -382,10 +468,22 @@
 
 
 //////////////////////////////////////////////////////////////////////////////
+///////////////////////////// Vending Restocks ///////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Temporarily Disabled ////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
 /*
+/datum/supply_pack/vending/wardrobes/dormtime //Disabled because the dorm vendor/kinkmate is only half finished and I don't have time to fix it atm.
+	name = "Dorms-Time Restock"
+	desc = "This crate contains a refill for the Droms-Time Vendor."
+	cost = CARGO_CRATE_VALUE * 1.5
+	contains = list(/obj/item/vending_refill/kink)
+	crate_name = "dorms-time restock"
+
 /datum/supply_pack/service/wrapping_paper
 	name = "Cargo Packaging Crate"
 	desc = "Want to mail your loved ones gift-wrapped chocolates, stuffed animals, or the Clown's severed head? You can do all that, with this crate full of festive (and normal) wrapping paper. Also contains a hand labeler and a destination tagger for easy shipping!"
@@ -429,21 +527,6 @@
 					/obj/item/holosign_creator)
 	crate_name = "advanced santation crate"
 	crate_type = /obj/structure/closet/crate/secure
-
-/datum/supply_pack/service/janitor/janpremium
-	name = "Janitor Supplies (Premium)"
-	desc = "The custodial union is in a tizzy, so we've gathered up some better supplies for you. In this crate you can get a brand new chem, Drying Agent. This stuff is the work of slimes or magic! This crate also contains a rag to test out the Drying Agent magic, several cleaning grenades, some spare bottles of ammonia, and an MCE (or Massive Cleaning Explosive)." //Skyrat change, fixed typo
-	cost = 2700
-	contains = list(/obj/item/grenade/clusterbuster/cleaner,
-					/obj/item/grenade/chem_grenade/cleaner,
-					/obj/item/grenade/chem_grenade/cleaner,
-					/obj/item/grenade/chem_grenade/cleaner,
-					/obj/item/reagent_containers/rag,
-					/obj/item/reagent_containers/glass/bottle/ammonia,
-					/obj/item/reagent_containers/glass/bottle/ammonia,
-					/obj/item/reagent_containers/glass/bottle/ammonia,
-					/obj/item/reagent_containers/spray/drying_agent)
-	crate_name = "premium janitorial crate"
 
 /datum/supply_pack/misc/shower
 	name = "Shower Supplies"

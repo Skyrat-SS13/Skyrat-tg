@@ -357,7 +357,26 @@
 	tastes = list("muffin" = 3, "spookiness" = 1)
 	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
 
+/obj/item/food/muffin/moffin
+	name = "moffin"
+	icon_state = "moffin"
+	desc = "A delicious and spongy little cake."
+	tastes = list("muffin" = 3, "dust" = 1, "lint" = 1)
+	foodtypes = CLOTH | GRAIN | SUGAR | BREAKFAST
 
+/obj/item/food/muffin/moffin/Initialize(mapload)
+	. = ..()
+	icon_state = "[icon_state]_[rand(1,3)]"
+
+/obj/item/food/muffin/moffin/examine(mob/user)
+	. = ..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/moffin_observer = user
+	if(moffin_observer.dna.species.liked_food & CLOTH)
+		. += "<span class='nicegreen'>Ooh! It's even got bits of clothes on it! Yummy!</span>"
+	else
+		. += "<span class='warning'>You're not too sure what's on top though...</span>"
 
 ////////////////////////////////////////////WAFFLES////////////////////////////////////////////
 
@@ -597,30 +616,6 @@
 	tastes = list("cracker" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_TINY
-
-/obj/item/food/hotdog
-	name = "hotdog"
-	desc = "Fresh footlong ready to go down on."
-	icon_state = "hotdog"
-	bite_consumption = 3
-	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 1, /datum/reagent/consumable/ketchup = 3, /datum/reagent/consumable/nutriment/vitamin = 6)
-	tastes = list("bun" = 3, "meat" = 2)
-	foodtypes = GRAIN | MEAT | VEGETABLES
-	w_class = WEIGHT_CLASS_SMALL
-	venue_value = FOOD_PRICE_CHEAP
-
-/obj/item/food/hotdog/debug
-	eat_time = 0
-
-/obj/item/food/meatbun
-	name = "meat bun"
-	desc = "Has the potential to not be Dog."
-	icon_state = "meatbun"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 7, /datum/reagent/consumable/nutriment/vitamin = 4)
-	tastes = list("bun" = 3, "meat" = 2)
-	foodtypes = GRAIN | MEAT | VEGETABLES
-	w_class = WEIGHT_CLASS_SMALL
-	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/khachapuri
 	name = "khachapuri"

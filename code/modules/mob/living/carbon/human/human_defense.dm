@@ -435,7 +435,7 @@
 	take_overall_damage(brute_loss,burn_loss)
 
 	//attempt to dismember bodyparts
-	if(severity <= EXPLODE_HEAVY || !bomb_armor)
+	if(severity >= EXPLODE_HEAVY || !bomb_armor)
 		var/max_limb_loss = round(4/severity) //so you don't lose four limbs at severity 3.
 		for(var/X in bodyparts)
 			var/obj/item/bodypart/BP = X
@@ -477,6 +477,14 @@
 	//Don't go further if the shock was blocked/too weak.
 	if(!.)
 		return
+	//SKYRAT EDIT BEGIN: MAKES POWERFUL SHOCKS HAVE A CHANCE TO STOP YOUR HEART. DANGER 
+	if(can_heartattack() && !(flags & SHOCK_ILLUSION) && shock_damage >= 70)
+		if(shock_damage * siemens_coeff >= 1 && prob(30))//Higher chance to disrupt the pacemaker cells
+			var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
+			heart.Stop()
+			visible_message("<span class='danger'>[src.name] briefly twitches; before falling limp - their breathing irratic and chest spasming violently!</span>", \
+								"<span class='danger'>You feel your heart thump eratically; before ceasing to beat, a violent twitch overcoming your form!</span>", ignored_mobs=src)
+	//SKYRAT EDIT END		
 	//Note we both check that the user is in cardiac arrest and can actually heartattack
 	//If they can't, they're missing their heart and this would runtime
 	if(undergoing_cardiac_arrest() && can_heartattack() && !(flags & SHOCK_ILLUSION))

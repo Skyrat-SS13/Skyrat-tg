@@ -10,6 +10,9 @@
 	var/blood_overlay_type = "suit"
 	var/togglename = null
 	var/suittoggled = FALSE
+	//Skyrat Edit Pocket Edition
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/exo
+	//Skyrat Edit end
 	limb_integrity = 0 // disabled for most exo-suits
 
 

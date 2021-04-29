@@ -40,6 +40,11 @@
 	path = /obj/item/clothing/shoes/sneakers/white
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
+/datum/loadout_item/shoes/sportshoes
+	name = "Sport Shoes"
+	path = /obj/item/clothing/shoes/sports
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/shoes/gildedcuffs
 	name = "Gilded leg wraps"
 	path= /obj/item/clothing/shoes/wraps
@@ -55,6 +60,11 @@
 /datum/loadout_item/shoes/bluecuffs
 	name = "Blue leg wraps"
 	path= /obj/item/clothing/shoes/wraps/blue
+
+/datum/loadout_item/shoes/clothwrap
+	name = "Colourable Cloth Wraps"
+	path = /obj/item/clothing/shoes/wraps/poly
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/shoes/high_heels
 	name = "High Heels"
@@ -87,3 +97,15 @@
 /datum/loadout_item/shoes/cowboyboots/blackproper
 	name = "Cowboy Boots, Hangman Black"
 	path = /obj/item/clothing/shoes/cowboy/black
+
+/datum/loadout_item/shoes/junhle
+	name = "Brown Jackboots"
+	path = /obj/item/clothing/shoes/jungleboots
+
+/datum/loadout_item/shoes/disco
+	name = "Green Snakeskin Shoes"
+	path = /obj/item/clothing/shoes/discoshoes
+
+
+
+

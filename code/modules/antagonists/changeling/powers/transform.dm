@@ -165,7 +165,7 @@
 	if(!chosen_prof)
 		return
 	..()
-	changeling_transform(user, chosen_prof)
+	changeling.transform(user, chosen_prof)
 	return TRUE
 
 /**
@@ -188,8 +188,8 @@
 		return
 
 	if(chosen_name == "Drop Flesh Disguise")
-		for(var/slot in GLOB.slots)
-			if(istype(user.vars[slot], GLOB.slot2type[slot]))
+		for(var/slot in slot2type)
+			if(istype(user.vars[slot], slot2type[slot]))
 				qdel(user.vars[slot])
 		for(var/i in user.all_scars)
 			var/datum/scar/iter_scar = i

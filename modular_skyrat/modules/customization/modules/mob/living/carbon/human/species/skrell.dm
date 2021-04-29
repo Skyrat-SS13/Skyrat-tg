@@ -2,8 +2,18 @@
 	name = "Skrell"
 	id = "skrell"
 	default_color = "4B4B4B"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,NO_SLIP_WHEN_WALKING)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE,
+		NO_SLIP_WHEN_WALKING
+	)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP
+	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	say_mod = "warbles"
 	brutemod = 1.70
@@ -26,6 +36,8 @@
 	mutantheart = /obj/item/organ/heart/skrell
 	mutantliver = /obj/item/organ/liver/skrell
 	mutanttongue = /obj/item/organ/tongue/skrell
+
+	learnable_languages = list(/datum/language/common, /datum/language/skrell)
 
 /obj/item/organ/tongue/skrell
 	name = "internal vocal sacs"
