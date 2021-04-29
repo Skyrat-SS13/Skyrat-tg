@@ -30,7 +30,7 @@
 	attack_verb_simple = list("cuddle", "petpatt", "wigglepurr")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
 	gender = FEMALE
-	
+
 /obj/item/toy/plush/fermis/chen
 	name = "securicat plushie"
 	desc = "The official stuffed companion to the medcat plushie!! It resembles a certain securicat. You get the impression she's encouraging you to be brave and protect those you care for."
@@ -134,17 +134,6 @@
 	attack_verb_continuous = list("baps")
 	attack_verb_simple = list("bap")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
-	gender = MALE
-
-/obj/item/toy/plush/oglaplush
-	name = "Suspicious lizzy"
-	desc = "It would appear that, as a part of a certain lizard's plan to up his reputation, he manufactured a plushie of himself. At least it smells like blueberries."
-	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
-	icon_state = "plushie_ogla"
-	inhand_icon_state = "plushie_ogla"
-	attack_verb_continuous = list("claws", "hisses", "tail slaps")
-	attack_verb_simple = list("claw", "hiss", "tail slap")
-	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 	gender = MALE
 
 /obj/item/toy/plush/arcplush
