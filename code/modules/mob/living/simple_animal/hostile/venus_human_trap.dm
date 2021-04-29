@@ -20,7 +20,7 @@
 	canSmoothWith = null
 	smoothing_flags = NONE
 	/// The amount of time it takes to create a venus human trap.
-	var/growth_time = 1 MINUTES //SKYRAT EDIT CHANGE
+	var/growth_time = 2 MINUTES //SKYRAT EDIT CHANGE
 	var/growth_icon = 0
 
 	/// Used by countdown to check time, this is when the timer will complete and the venus trap will spawn.
@@ -100,13 +100,13 @@
 	health_doll_icon = "venus_human_trap"
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
 	layer = SPACEVINE_MOB_LAYER
-	health = 50
-	maxHealth = 50
+	health = 40 //SKYRAT EDIT CHANGE
+	maxHealth = 40 //SKYRAT EDIT CHANGE
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
-	melee_damage_lower = 25
-	melee_damage_upper = 25
+	melee_damage_lower = 10 //SKYRAT EDIT CHANGE
+	melee_damage_upper = 15 //SKYRAT EDIT CHANGE
 	combat_mode = TRUE
 	del_on_death = TRUE
 	deathmessage = "collapses into bits of plant matter."

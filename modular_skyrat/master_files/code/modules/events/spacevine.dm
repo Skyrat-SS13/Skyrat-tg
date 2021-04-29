@@ -20,17 +20,11 @@
 
 	qdel(SV)
 
-	var/vines2spawn = rand(1, 3)
-
 	if(turfs.len) //Pick a turf to spawn at if we can
-		for(var/i = 1, i <= vines2spawn, i++)
-			shuffle(turfs)
-			var/turf/T = pick(turfs)
-			new /datum/spacevine_controller(T, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src) //spawn a controller at turf with randomized stats and a single random mutation
-			new /mob/living/simple_animal/hostile/venus_human_trap(T)
-			new /mob/living/simple_animal/hostile/venus_human_trap(T)
-			new /mob/living/simple_animal/hostile/venus_human_trap(T)
-			turfs -= T
+		var/turf/T = pick(turfs)
+		new /datum/spacevine_controller(T, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src) //spawn a controller at turf with randomized stats and a single random mutation
+		new /mob/living/simple_animal/hostile/venus_human_trap(T)
+		new /mob/living/simple_animal/hostile/venus_human_trap(T)
 
 /datum/spacevine_mutation
 	var/name = ""
