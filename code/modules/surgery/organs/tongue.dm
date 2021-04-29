@@ -77,7 +77,9 @@
 	return is_type_in_typecache(language, languages_possible)
 
 /*SKYRAT EDIT - Adds a snowflake tongue allowing for custom speech quirks*/
-/obj/item/organ/tongue/unique(client/prefs/cprefs)
+/obj/item/organ/tongue/unique
+	var/client/prefs = cprefs
+
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
@@ -85,7 +87,8 @@
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, client/prefs/cprefs)
+/obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args)
+	var/client/prefs = cprefs
 	var/replace_upper = uppertext(cprefs.speech_replace_from)
 	var/replace_lower = lowertext(cprefs.speech_replace_from)
 	var/static/regex/custom_quirk_upper = new(replace_upper, "g")
