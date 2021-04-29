@@ -78,19 +78,19 @@
 
 /*SKYRAT EDIT - Adds a snowflake tongue allowing for custom speech quirks*/
 /obj/item/organ/tongue/unique
-	var/client/prefs
+	var/client/prefs/cprefs
 
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
-	say_mod = lowertext(speech_verb)
+	say_mod = lowertext(cprefs.speech_verb)
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args)
-	var/client/prefs = new
+	var/client/prefs/cprefs = new
 	var/replace_upper = uppertext(speech_replace_from)
-	var/replace_lower = lowertext(prefs.speech_replace_from)
+	var/replace_lower = lowertext(cprefs.speech_replace_from)
 	var/static/regex/custom_quirk_upper = new(replace_upper, "g")
 	var/static/regex/custom_quirk_lower = new(replace_lower, "g")
 	var/message = speech_args[SPEECH_MESSAGE]
