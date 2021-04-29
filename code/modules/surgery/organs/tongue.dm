@@ -1,3 +1,5 @@
+var/client/prefs = new
+
 /obj/item/organ/tongue
 	name = "tongue"
 	desc = "A fleshy muscle mostly used for lying."
