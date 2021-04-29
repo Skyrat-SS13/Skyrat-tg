@@ -82,6 +82,16 @@
 	path = /obj/item/clothing/under/misc/stripper/green
 	cost = 3
 
+/datum/loadout_item/uniform/bunnysuit
+	name = "Bunny suit"
+	path = /obj/item/clothing/under/misc/stripper/bunnysuit
+	cost = 3
+
+/datum/loadout_item/uniform/bunnysuit/white
+	name = "Bunny suit, white"
+	path = /obj/item/clothing/under/misc/stripper/bunnysuit/white
+	cost = 3
+
 /datum/loadout_item/uniform/qipao
 	name = "Qipao, Black"
 	path = /obj/item/clothing/under/costume/qipao
