@@ -180,7 +180,8 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
-	plane = LIGHTING_PLANE
+	plane = MASSIVE_OBJ_PLANE
+	plane = ABOVE_LIGHTING_PLANE
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/timeleft = CME_MINIMAL_BUBBLE_BURST_TIME
 	var/cme_light_range_lower = CME_MINIMAL_LIGHT_RANGE_LOWER

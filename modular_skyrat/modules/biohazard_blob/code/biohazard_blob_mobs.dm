@@ -96,7 +96,9 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.reagents.add_reagent(/datum/reagent/fungalspores, 5)
+		if(prob(30))
+			to_chat(C, "<span class='danger'>[src] manages to penetrate your clothing with it's teeth!</span>")
+			C.ForceContractDisease(new /datum/disease/cordyceps(), FALSE, TRUE)
 
 /mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito
 	name = "electric mosquito"

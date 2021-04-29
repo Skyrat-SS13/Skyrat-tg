@@ -46,7 +46,7 @@
 			var/turf/T
 			while(!good_turf && turfs.len)
 				var/turf/turf_temp = pick(turfs)
-				if(locate(/obj/structure/biohazard_blob/structure/core) in range(10, T))
+				if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, T))
 					turfs -= T
 				else
 					good_turf = TRUE

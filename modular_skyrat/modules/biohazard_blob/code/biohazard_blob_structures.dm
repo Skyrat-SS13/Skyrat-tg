@@ -286,7 +286,7 @@
 			T.atmos_spawn_air("o2=20;plasma=20;TEMP=600")
 		if(BIO_BLOB_TYPE_EMP)
 			if(prob(50))
-				empulse(src, 3, 4)
+				empulse(src, 5, 7)
 				for(var/mob/living/M in get_hearers_in_view(3, T))
 					if(M.flash_act(affect_silicon = 1))
 						M.Paralyze(20)
@@ -409,7 +409,7 @@
 	max_integrity = 150
 	var/monster_types = list()
 	var/max_spawns = 2
-	var/spawn_cooldown = 400 //In deciseconds
+	var/spawn_cooldown = 1200 //In deciseconds
 
 /obj/structure/biohazard_blob/structure/spawner/Destroy()
 	if(our_controller)
