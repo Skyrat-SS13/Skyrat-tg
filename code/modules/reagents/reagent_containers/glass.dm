@@ -128,13 +128,9 @@
 	inhand_icon_state = "beaker"
 	worn_icon_state = "beaker"
 	custom_materials = list(/datum/material/glass=500)
-<<<<<<< HEAD
 	volume = 60 //SKYRAT EDIT: Addition
 	possible_transfer_amounts = list(5,10,15,20,30,60) //SKYRAT EDIT: Addition
-	fill_icon_thresholds = list(0, 20, 40, 60, 80, 100)
-=======
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
->>>>>>> a856296eef7 (funny beaker but real this time (#58760))
 
 /obj/item/reagent_containers/glass/beaker/Initialize()
 	. = ..()
@@ -156,13 +152,9 @@
 	custom_materials = list(/datum/material/glass=2500)
 	volume = 120 //SKYRAT EDIT: Original value (100)
 	amount_per_transfer_from_this = 10
-<<<<<<< HEAD
 	//possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT: Original Values
 	possible_transfer_amounts = list(5,10,15,20,30,40,60,120) //SKYRAT EDIT: New Values
-=======
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
 	fill_icon_thresholds = list(0, 1, 20, 40, 60, 80, 100)
->>>>>>> a856296eef7 (funny beaker but real this time (#58760))
 
 /obj/item/reagent_containers/glass/beaker/plastic
 	name = "x-large beaker"
@@ -171,13 +163,9 @@
 	custom_materials = list(/datum/material/glass=2500, /datum/material/plastic=3000)
 	volume = 150 //SKYRAT EDIT: Original Value (120)
 	amount_per_transfer_from_this = 10
-<<<<<<< HEAD
 	//possible_transfer_amounts = list(5,10,15,20,25,30,60,120) //SKYRAT EDIT: Original values
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,75,150) //SKYRAT EDIT: New Values
-=======
-	possible_transfer_amounts = list(5,10,15,20,25,30,60,120)
 	fill_icon_thresholds = list(0, 1, 10, 20, 40, 60, 80, 100)
->>>>>>> a856296eef7 (funny beaker but real this time (#58760))
 
 /obj/item/reagent_containers/glass/beaker/meta
 	name = "metamaterial beaker"
