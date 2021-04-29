@@ -288,5 +288,7 @@
 /obj/item/clothing/suit/hooded/chaplain_hoodie
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/curator
+	mutant_variants = NONE
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
