@@ -330,10 +330,17 @@
 	lootcount = 5
 
 /obj/effect/spawner/lootdrop/two_percent_xeno_egg_spawner
+	/* SKYRAT EDIT STARTS - Original
 	name = "2% chance xeno egg spawner"
 	loot = list(
 		/obj/effect/decal/remains/xeno = 49,
 		/obj/effect/spawner/xeno_egg_delivery = 1)
+	*/
+	// The reason is simple: Mechanical round-ending antag at round-start is bad for a roleplay server
+	name = "0% chance xeno egg spawner"
+	loot = list(
+		/obj/effect/decal/remains/xeno = 50)
+	// SKYRAT EDIT ENDS
 
 /obj/effect/spawner/lootdrop/costume
 	name = "random costume spawner"
