@@ -11,8 +11,8 @@
 	exp_requirements = 120
 	exp_type = EXP_TYPE_MEDICAL
 
-
 	outfit = /datum/outfit/job/junior_officer
+	plasmaman_outfit = /datum/outfit/plasmaman/security
 
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SEC
