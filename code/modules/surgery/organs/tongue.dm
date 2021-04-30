@@ -48,7 +48,7 @@ var/datum/preferences = new
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
 
-/obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0, datum/preferences/prefs)
+/obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0)
 	..()
 	if(say_mod && M.dna && M.dna.species)
 		M.dna.species.say_mod = say_mod
@@ -81,13 +81,13 @@ var/datum/preferences = new
 /*SKYRAT EDIT - Adds a snowflake tongue allowing for custom speech quirks*/
 /obj/item/organ/tongue/unique
 	name = "unique tongue"
-	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
+	desc = "A peculiar tongue, likely belonging to one of the many unique species and gene-modded humans in this galaxy."
 	icon_state = "tonguelizard"
+	say_mod = owner.client.prefs.speech_verb
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences/prefs)
-	say_mod = owner.client.prefs.speech_verb
 	var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
 	var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
 	/*var/static/regex/custom_quirk_upper = new("[replace_upper]", "g")
