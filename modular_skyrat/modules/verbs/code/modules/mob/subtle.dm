@@ -44,7 +44,7 @@
 
 	var/prefix_log_message = "(SUBTLE) [message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
-	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
+	message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(message)]</i></span>"
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -107,7 +107,7 @@
 		return FALSE
 
 	user.log_message(message, LOG_SUBTLER)
-	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
+	message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(message)]</i></span>"
 
 	if(emote_type == EMOTE_AUDIBLE)
 		user.audible_message_subtler(message=message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)

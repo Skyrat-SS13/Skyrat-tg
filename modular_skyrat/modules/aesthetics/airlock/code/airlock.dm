@@ -34,9 +34,17 @@
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
+	///Is this door external? E.g. does it lead to space? Shuttle docking systems bolt doors with this flag.
+	var/external = FALSE
+
+/obj/machinery/door/airlock/external
+	external = TRUE
+
+/obj/machinery/door/airlock/shuttle
+	external = TRUE
 
 /obj/effect/overlay/vis_airlock
-	layer = EMISSIVE_LAYER
+	layer = 0
 	plane = EMISSIVE_PLANE
 	vis_flags = VIS_INHERIT_ID
 
@@ -284,6 +292,11 @@
 /obj/machinery/door/airlock/security/old
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/security2.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_sec/old
+
+/obj/machinery/door/airlock/security/old/glass
+	opacity = FALSE
+	glass = TRUE
+	normal_integrity = 400
 
 /obj/machinery/door/airlock/engineering
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/engineering.dmi'

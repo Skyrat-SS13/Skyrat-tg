@@ -2,11 +2,33 @@
 	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
 	id = "mammal"
 	default_color = "4B4B4B"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER)
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE,
+		HAIR,
+		FACEHAIR
+	)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP
+	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "fluff" = "None", "wings" = "None", "head_acc" = "None", "neck_acc" = "None")
+	default_mutant_bodyparts = list(
+		"tail" = ACC_RANDOM,
+		"snout" = ACC_RANDOM,
+		"horns" = "None",
+		"ears" = ACC_RANDOM,
+		"legs" = ACC_RANDOM,
+		"taur" = "None",
+		"fluff" = "None",
+		"wings" = "None",
+		"head_acc" = "None",
+		"neck_acc" = "None"
+	)
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'

@@ -9,6 +9,15 @@
 	opacity = FALSE
 	var/table_type = /obj/structure/table
 
+/obj/structure/flippedtable/Initialize()
+	. = ..()
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_EXIT = .proc/on_exit,
+	)
+
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	var/attempted_dir = get_dir(loc, target)
@@ -26,15 +35,18 @@
 	else if(attempted_dir != dir)
 		return TRUE
 
-/obj/structure/flippedtable/CheckExit(atom/movable/O, turf/target)
+/obj/structure/flippedtable/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
+	SIGNAL_HANDLER
+
 	if(table_type == /obj/structure/table/glass) //Glass table, jolly ranchers pass
-		if(istype(O) && (O.pass_flags & PASSGLASS))
-			return TRUE
-	if(istype(O, /obj/projectile))
-		return TRUE
-	if(get_dir(O.loc, target) == dir)
-		return FALSE
-	return TRUE
+		if(istype(leaving) && (leaving.pass_flags & PASSGLASS))
+			return
+
+	if(istype(leaving, /obj/projectile))
+		return
+
+	if(get_dir(leaving.loc, new_location) == dir)
+		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/flippedtable/CtrlShiftClick(mob/user)
 	. = ..()

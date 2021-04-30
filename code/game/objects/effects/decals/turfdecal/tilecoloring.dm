@@ -23,7 +23,7 @@
 
 /obj/effect/turf_decal/tile/red
 	name = "red corner"
-	color = "#DE3A3A"
+	color = "#486091" //SKYRAT EDIT CHANGE
 
 /obj/effect/turf_decal/tile/bar
 	name = "bar corner"
@@ -112,7 +112,7 @@
 	icon_state = "trimline_shrink_ccw"
 
 /obj/effect/turf_decal/trimline/red
-	color = "#DE3A3A"
+	color = "#486091" //SKYRAT EDIT CHANGE
 
 /obj/effect/turf_decal/trimline/red/line
 	icon_state = "trimline"

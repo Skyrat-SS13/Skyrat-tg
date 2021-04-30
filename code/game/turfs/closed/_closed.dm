@@ -57,10 +57,10 @@
 	name = "Space Station 13"
 	icon = 'icons/blank_title.png'
 	icon_state = ""
-	layer = SPLASHSCREEN_LAYER
 	plane = SPLASHSCREEN_PLANE
 	bullet_bounce_sound = null
 
+/* SKYRAT EDIT REMOVAL
 /turf/closed/indestructible/splashscreen/New()
 	SStitle.splash_turf = src
 	if(SStitle.icon)
@@ -73,7 +73,7 @@
 		switch(var_name)
 			if(NAMEOF(src, icon))
 				SStitle.icon = icon
-
+*/
 
 /turf/closed/indestructible/reinforced
 	name = "reinforced wall"

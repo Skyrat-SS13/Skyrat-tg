@@ -22,6 +22,8 @@
 	var/perma_docked = FALSE //highlander with RESPAWN??? OH GOD!!!
 	var/obj/docking_port/stationary/target_dock  // for badminry
 
+	shuttle_sounds = FALSE //SKYRAT EDIT ADDITION
+
 /obj/docking_port/mobile/arrivals/Initialize(mapload)
 	. = ..()
 	preferred_direction = dir

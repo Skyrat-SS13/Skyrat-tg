@@ -57,9 +57,9 @@
 
 /obj/item/clothing/under/rank/security/peacekeeper/tactical
 	name = "tactical peacekeeper uniform"
-	desc = "A tactical peackeeper uniform, we'll get em boys."
+	desc = "A tactical peackeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
 	icon_state = "peacekeeper_tac"
-	armor = list(MELEE = 15, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
+	armor = list(MELEE = 5, BULLET = 5, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
 
 /obj/item/clothing/under/rank/security/peacekeeper/blue
 	name = "blue peacekeeper uniform"
@@ -291,6 +291,10 @@
 	icon_state = "peacekeeper_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"
+
+/obj/item/clothing/shoes/combat/peacekeeper/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/suitstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/suitstep2.ogg'=1), 40, falloff_exponent = SOUND_FALLOFF_EXPONENT)
 
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"

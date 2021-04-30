@@ -28,6 +28,8 @@
 	lose_text = "<span class='notice'>You can taste again!</span>"
 	medical_record_text = "Patient suffers from ageusia and is incapable of tasting food or reagents."
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+/*
 /datum/quirk/foreigner
 	name = "Foreigner"
 	desc = "You're not from around here. You don't know Galactic Common!"
@@ -47,6 +49,8 @@
 	H.remove_blocked_language(/datum/language/common)
 	if(ishumanbasic(H))
 		H.remove_language(/datum/language/uncommon)
+*/
+//SKYRAT EDIT REMOVAL END - CUSTOMIZATION
 
 /datum/quirk/vegetarian
 	name = "Vegetarian"

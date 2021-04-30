@@ -74,7 +74,8 @@
 	flags_1 = CONDUCT_1
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 17
+	force = 24 //SKYRAT EDIT - ORIGINAL: 17
+	armour_penetration = 15 // SKYRAT EDIT - ADDITION
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
@@ -183,7 +184,7 @@
 	allowed = list(/obj/item/melee/sickly_blade, /obj/item/forbidden_book, /obj/item/living_heart)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	// slightly better than normal cult robes
-	armor = list(MELEE = 50, BULLET = 50, LASER = 50,ENERGY = 50, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20)
+	armor = list(MELEE = 50, BULLET = 65, LASER = 35,ENERGY = 45, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20) //SKYRAT EDIT - ORIGINAL: armor = list(MELEE = 50, BULLET = 50, LASER = 50,ENERGY = 50, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20)
 
 /obj/item/reagent_containers/glass/beaker/eldritch
 	name = "flask of eldritch essence"
@@ -284,7 +285,7 @@
 
 		if(DT_PROB(30,delta_time))
 			human_in_range.emote(pick("giggle","laugh"))
-			human_in_range.adjustStaminaLoss(10)
+			human_in_range.adjustStaminaLoss(15) //SKYRAT EDIT - Original: 10
 
 		if(DT_PROB(25,delta_time))
 			human_in_range.Dizzy(5)

@@ -4,7 +4,15 @@
 	say_mod = "beep boops" //inherited from a user's real species
 	sexes = 0
 	species_traits = list(NOTRANSSTING) //all of these + whatever we inherit from the real species
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_VIRUSIMMUNE,TRAIT_NODISMEMBER,TRAIT_NOLIMBDISABLE,TRAIT_NOHUNGER,TRAIT_NOBREATH)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_VIRUSIMMUNE,
+		TRAIT_NODISMEMBER,
+		TRAIT_NOLIMBDISABLE,
+		TRAIT_NOHUNGER,
+		TRAIT_NOBREATH,
+	)
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	meat = null
 	damage_overlay_type = "synth"
@@ -116,9 +124,9 @@
 		return ..()
 
 
-/datum/species/synth/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
+/datum/species/synth/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/synth/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
 	if(fake_species)
-		fake_species.handle_mutant_bodyparts(H,forced_colour)
+		fake_species.handle_mutant_bodyparts(H,forced_colour, force_update)
 	else
 		return ..()
 

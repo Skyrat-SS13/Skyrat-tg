@@ -21,6 +21,7 @@
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/wake_up)
 	RegisterSignal(parent, COMSIG_GUN_AUTOFIRE_SELECTED, .proc/wake_up)
 	RegisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED), .proc/autofire_off)
+	RegisterSignal(parent, COMSIG_GUN_JAMMED, .proc/stop_autofiring)
 	if(_autofire_shot_delay)
 		autofire_shot_delay = _autofire_shot_delay
 	if(ismob(gun.loc))
@@ -29,7 +30,8 @@
 
 
 /datum/component/automatic_fire/Destroy()
-	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED))
+	UnregisterSignal(parent, list(COMSIG_PARENT_PREQDELETED, COMSIG_ITEM_DROPPED, COMSIG_GUN_AUTOFIRE_DESELECTED, COMSIG_GUN_JAMMED, \
+	COMSIG_GUN_AUTOFIRE_SELECTED, COMSIG_ITEM_EQUIPPED))
 	autofire_off()
 	return ..()
 
@@ -45,7 +47,6 @@
 
 /datum/component/automatic_fire/proc/wake_up(datum/source, mob/user, slot)
 	SIGNAL_HANDLER
-
 	if(autofire_stat & (AUTOFIRE_STAT_ALERT))
 		return //We've updated the firemode. No need for more.
 	if(autofire_stat & AUTOFIRE_STAT_FIRING)
@@ -94,8 +95,9 @@
 	if(!QDELETED(shooter))
 		UnregisterSignal(shooter, COMSIG_MOB_LOGOUT)
 	shooter = null
-	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
 	parent.UnregisterSignal(src, COMSIG_AUTOFIRE_ONMOUSEDOWN)
+	parent.UnregisterSignal(parent, COMSIG_AUTOFIRE_SHOT)
+
 
 /datum/component/automatic_fire/proc/on_client_login(mob/source)
 	SIGNAL_HANDLER
@@ -151,6 +153,7 @@
 /datum/component/automatic_fire/proc/start_autofiring()
 	if(autofire_stat == AUTOFIRE_STAT_FIRING)
 		return //Already pew-pewing.
+
 	autofire_stat = AUTOFIRE_STAT_FIRING
 
 	clicker.mouse_override_icon = 'icons/effects/mouse_pointers/weapon_pointer.dmi'
@@ -259,12 +262,15 @@
 	if(clicker.mob.get_active_held_item() != src)
 		return COMPONENT_AUTOFIRE_ONMOUSEDOWN_BYPASS
 
-
 /obj/item/gun/proc/do_autofire(datum/source, atom/target, mob/living/shooter, params)
-	SIGNAL_HANDLER_DOES_SLEEP
-	if(!can_shoot())
-		shoot_with_empty_chamber(shooter)
-		return NONE
+    SIGNAL_HANDLER
+    if(!can_shoot())
+        shoot_with_empty_chamber(shooter)
+        return FALSE
+    INVOKE_ASYNC(src, .proc/do_autofire_shot, source, target, shooter, params)
+    return COMPONENT_AUTOFIRE_SHOT_SUCCESS
+
+/obj/item/gun/proc/do_autofire_shot(datum/source, atom/target, mob/living/shooter, params)
 	var/obj/item/gun/akimbo_gun = shooter.get_inactive_held_item()
 	var/bonus_spread = 0
 	if(istype(akimbo_gun) && weapon_weight < WEAPON_MEDIUM)
@@ -272,7 +278,7 @@
 			bonus_spread = dual_wield_spread
 			addtimer(CALLBACK(akimbo_gun, /obj/item/gun.proc/process_fire, target, shooter, TRUE, params, null, bonus_spread), 1)
 	process_fire(target, shooter, TRUE, params, null, bonus_spread)
-	return COMPONENT_AUTOFIRE_SHOT_SUCCESS //All is well, we can continue shooting.
+
 
 #undef AUTOFIRE_MOUSEUP
 #undef AUTOFIRE_MOUSEDOWN

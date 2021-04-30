@@ -185,9 +185,6 @@
 /obj/item/clothing/under/misc/bouncer
 	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/engineering/engineer/hazard
-	mutant_variants = NONE
-
 /obj/item/clothing/under/rank/security/officer/spacepol
 	mutant_variants = NONE
 
@@ -291,5 +288,7 @@
 /obj/item/clothing/suit/hooded/chaplain_hoodie
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/curator
+	mutant_variants = NONE
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -543,7 +543,8 @@
 
 /datum/spellbook_entry/summon/CanBuy(mob/living/carbon/human/user,obj/item/spellbook/book)
 	return ..() && !times
-
+//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGE
+/*
 /datum/spellbook_entry/summon/ghosts
 	name = "Summon Ghosts"
 	desc = "Spook the crew out by making them see dead people. Be warned, ghosts are capricious and occasionally vindicative, and some will use their incredibly minor abilities to frustrate you."
@@ -557,7 +558,8 @@
 	to_chat(user, "<span class='notice'>You have cast summon ghosts!</span>")
 	playsound(get_turf(user), 'sound/effects/ghost2.ogg', 50, TRUE)
 	return TRUE
-
+*/
+//SKYRAT EDIT REMOVAL END
 /datum/spellbook_entry/summon/guns
 	name = "Summon Guns"
 	desc = "Nothing could possibly go wrong with arming a crew of lunatics just itching for an excuse to kill you. There is a good chance that they will shoot each other first."
@@ -664,7 +666,7 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_TINY
-	var/uses = 10
+	var/uses = 16 //SKYRAT EDIT - ORIGINAL VALUE (10)
 	var/temp = null
 	var/mob/living/carbon/human/owner
 	var/list/entries = list()

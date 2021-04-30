@@ -20,6 +20,7 @@
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
+		/datum/language/skrell, //SKYRAT EDIT - I forgot to push the commit!!
 		/datum/language/narsie,
 		/datum/language/machine, //SKYRAT EDIT - Gives synths the abiltiy to speak EAL
 		/datum/language/slime, //SKYRAT EDIT - Gives slimes the ability to speak slime once more.
@@ -32,7 +33,11 @@
 		/datum/language/terrum,
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
-		/datum/language/nekomimetic
+		/datum/language/nekomimetic,
+		/datum/language/russian,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/gutter  //SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -205,14 +210,12 @@
 /obj/item/organ/tongue/fly/handle_speech(datum/source, list/speech_args)
 	var/static/regex/fly_buzz = new("z+", "g")
 	var/static/regex/fly_buZZ = new("Z+", "g")
-	var/static/regex/fly_buss = new("s+", "g")
-	var/static/regex/fly_buSS = new("S+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = fly_buzz.Replace(message, "zzz")
 		message = fly_buZZ.Replace(message, "ZZZ")
-		message = fly_buss.Replace(message, "z")
-		message = fly_buSS.Replace(message, "Z")
+		message = replacetext(message, "s", "z")
+		message = replacetext(message, "S", "Z")
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly/Initialize(mapload)

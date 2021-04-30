@@ -175,11 +175,6 @@
 		to_chat(user, "<span class='notice'>You go to attack [M] with [src], but refrain from doing so.</span>")
 		return
 	//SKRYAT EDIT END
-	if(item_flags & EYE_STAB && user.zone_selected == BODY_ZONE_PRECISE_EYES)
-		if(HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-			M = user
-		if(eyestab(M,user))
-			return
 	if(!force)
 		playsound(loc, 'sound/weapons/tap.ogg', get_clamped_volume(), TRUE, -1)
 	else if(hitsound)

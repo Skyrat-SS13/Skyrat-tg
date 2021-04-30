@@ -15,13 +15,15 @@
 					/obj/item/flashlight/glowstick = 3,
 					/obj/item/flashlight/glowstick/red = 3,
 					/obj/item/flashlight = 5,
-					/obj/item/clothing/ears/earmuffs = 1)
+					/obj/item/clothing/ears/earmuffs = 1,
+					/obj/item/stock_parts/cell/crap = 40) //SKYRAT EDIT ADDITION
 	contraband = list(/obj/item/clothing/gloves/color/fyellow = 2)
 	premium = list(/obj/item/storage/belt/utility = 2,
 					/obj/item/multitool = 2,
 					/obj/item/weldingtool/hugetank = 2,
 					/obj/item/clothing/head/welding = 2,
-					/obj/item/clothing/gloves/color/yellow = 1)
+					/obj/item/clothing/gloves/color/yellow = 1,
+					/obj/item/stock_parts/cell/upgraded = 10) //SKYRAT EDIT ADDITION
 	refill_canister = /obj/item/vending_refill/youtool
 	default_price = PAYCHECK_ASSISTANT
 	extra_price = PAYCHECK_COMMAND * 1.5

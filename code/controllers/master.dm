@@ -185,7 +185,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	//to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	add_startupmessage("Initializing subsystems...") //SKYRAT EDIT CHANGE
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
@@ -226,6 +227,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	initializations_finished_with_no_players_logged_in = initialized_tod < REALTIMEOFDAY - 10
 	// Loop.
 	Master.StartProcessing(0)
+	add_startupmessage("Clearing clutter...") //SKYRAT EDIT ADDITION
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
 	var/old_runlevel = current_runlevel

@@ -18,36 +18,64 @@
 	name = "head of security's cloak"
 	desc = "Worn by Securistan, ruling the station with an iron fist."
 	icon_state = "hoscloak"
+	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/qm
 	name = "quartermaster's cloak"
 	desc = "Worn by Cargonia, supplying the station with the necessary tools for survival."
+	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/cmo
 	name = "chief medical officer's cloak"
 	desc = "Worn by Meditopia, the valiant men and women keeping pestilence at bay."
 	icon_state = "cmocloak"
+	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/ce
 	name = "chief engineer's cloak"
 	desc = "Worn by Engitopia, wielders of an unlimited power."
 	icon_state = "cecloak"
 	resistance_flags = FIRE_PROOF
+	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/rd
 	name = "research director's cloak"
 	desc = "Worn by Sciencia, thaumaturges and researchers of the universe."
 	icon_state = "rdcloak"
+	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/cap
 	name = "captain's cloak"
 	desc = "Worn by the commander of Space Station 13."
 	icon_state = "capcloak"
+	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/hop
 	name = "head of personnel's cloak"
 	desc = "Worn by the Head of Personnel. It smells faintly of bureaucracy."
 	icon_state = "hopcloak"
+	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/goliath
 	name = "goliath cloak"

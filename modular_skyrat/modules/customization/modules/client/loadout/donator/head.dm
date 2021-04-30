@@ -25,3 +25,11 @@
 /datum/loadout_item/head/donator/public/carbon_rose
 	name = "Carbon Rose Flower"
 	path = /obj/item/grown/carbon_rose
+
+/datum/loadout_item/head/donator/public/enclave
+	name = "Enclave Cap"
+	path = /obj/item/clothing/head/soft/enclave
+
+/datum/loadout_item/head/donator/public/enclaveo
+	name = "Enclave Cap - officer"
+	path = /obj/item/clothing/head/soft/enclaveo

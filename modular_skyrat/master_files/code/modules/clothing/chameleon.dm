@@ -17,6 +17,11 @@
 /datum/action/item_action/chameleon/change/
 	var/datum/action/chameleon_slowdown/slowtoggle
 
+/datum/action/item_action/chameleon/change/update_look(mob/user, obj/item/picked_item)
+	. = ..()
+	if(isliving(user))
+		owner.regenerate_icons()
+
 /datum/action/item_action/chameleon/change/update_item(obj/item/picked_item)
 	. = ..()
 	if(istype(target, /obj/item/clothing/))
@@ -40,7 +45,6 @@
 			slowtoggle.target = T
 		else if(slowtoggle)
 			qdel(slowtoggle)
-		owner.regenerate_icons()
 
 /datum/action/item_action/chameleon/change/Grant(mob/M)
 	. = ..()

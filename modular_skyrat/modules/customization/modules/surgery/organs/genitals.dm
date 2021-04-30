@@ -65,7 +65,7 @@
 
 /obj/item/organ/genital/penis/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = ""
-	var/pname = lowertext(genital_name)
+	var/pname = lowertext(genital_name) == "nondescript" ? "" : lowertext(genital_name) + " "
 	if(sheath != SHEATH_NONE && aroused != AROUSAL_FULL) //Hidden in sheath
 		switch(sheath)
 			if(SHEATH_NORMAL)
@@ -73,9 +73,9 @@
 			if(SHEATH_SLIT)
 				returned_string = "You see genital slit."
 		if(aroused == AROUSAL_PARTIAL)
-			returned_string += " There's a [pname] penis poking out of it."
+			returned_string += " There's a [pname]penis poking out of it."
 	else
-		returned_string = "You see a [pname] penis. You estimate it's [genital_size] inches long, and [girth] inches in circumference."
+		returned_string = "You see a [pname]penis. You estimate it's [genital_size] inches long, and [girth] inches in circumference."
 		switch(aroused)
 			if(AROUSAL_NONE)
 				returned_string += " It seems flaccid."

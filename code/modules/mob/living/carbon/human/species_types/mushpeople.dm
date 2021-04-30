@@ -10,7 +10,12 @@
 
 	say_mod = "poofs" //what does a mushroom sound like
 	species_traits = list(MUTCOLORS, NOEYESPRITES, NO_UNDERWEAR, HAS_FLESH, HAS_BONE)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,TRAIT_NOBREATH, TRAIT_NOFLASH)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_NOBREATH,
+		TRAIT_NOFLASH,
+	)
 	inherent_factions = list("mushroom")
 	speedmod = 1.5 //faster than golems but not by much
 
@@ -52,6 +57,6 @@
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
 
-/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
+/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
 	forced_colour = FALSE
 	..()

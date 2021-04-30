@@ -6,14 +6,31 @@
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/vox_parts_greyscale.dmi'
 	say_mod = "shrieks"
 	default_color = "00FF00"
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
-	inherent_traits = list(TRAIT_RESISTCOLD, TRAIT_ADVANCEDTOOLUSER)
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE,
+		HAIR,
+		FACEHAIR
+	)
+	inherent_traits = list(
+		TRAIT_RESISTCOLD,
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP
+	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutantlungs = /obj/item/organ/lungs/vox
 	mutantbrain = /obj/item/organ/brain/vox
 	breathid = "n2"
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = "Vox Tail", "legs" = "Digitigrade Legs", "snout" = "Vox Snout", "spines" = ACC_RANDOM)
+	default_mutant_bodyparts = list(
+		"tail" = "Vox Tail",
+		"legs" = "Digitigrade Legs",
+		"snout" = "Vox Snout",
+		"spines" = ACC_RANDOM
+	)
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -21,6 +38,7 @@
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	learnable_languages = list(/datum/language/common, /datum/language/vox)
 
 /datum/species/vox/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	var/datum/outfit/vox/O = new /datum/outfit/vox

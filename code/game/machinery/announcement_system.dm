@@ -83,12 +83,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		message = CompileText(arrival, user, rank)
 	else if(message_type == "NEWHEAD" && newheadToggle)
 		message = CompileText(newhead, user, rank)
+	else if(message_type == "CRYOSTORAGE")
+		message = "[user][rank ? ", [rank]" : ""] has been moved to cryo storage."
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
-	//SKYRAT EDIT ADDITION BEGIN - CRYOSLEEP
-	else if(message_type == "CRYOSTORAGE")
-		message = CompileText("%PERSON, %RANK has been moved to cryo storage.", user, rank)
-	//SKYRAT EDIT ADDITION END
 
 	broadcast(message, channels)
 

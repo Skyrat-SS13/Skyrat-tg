@@ -54,7 +54,7 @@
 	. = ..()
 	SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 	SSvis_overlays.add_vis_overlay(src, icon, "oil_shambler_overlay", layer, plane, dir, alpha)
-	SSvis_overlays.add_vis_overlay(src, icon, "oil_shambler_overlay", EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha)
+	SSvis_overlays.add_vis_overlay(src, icon, "oil_shambler_overlay", 0, EMISSIVE_PLANE, dir, alpha)
 
 /mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/AttackingTarget()
 	. = ..()

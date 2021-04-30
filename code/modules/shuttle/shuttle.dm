@@ -148,7 +148,7 @@
 //Debug proc used to highlight bounding area
 /obj/docking_port/proc/highlight(_color = "#f00")
 	invisibility = 0
-	layer = GHOST_LAYER
+	plane = GHOST_PLANE
 	var/list/L = return_coords()
 	var/turf/T0 = locate(L[1],L[2],z)
 	var/turf/T1 = locate(L[3],L[4],z)
@@ -365,6 +365,11 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
+	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
+	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
+
+	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
+
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
 	if(!id)
@@ -493,6 +498,7 @@
 /obj/docking_port/mobile/proc/transit_failure()
 	message_admins("Shuttle [src] repeatedly failed to create transit zone.")
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 //call the shuttle to destination S
 /obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S)
 	if(!check_dock(S))
@@ -521,6 +527,8 @@
 			destination = S
 			mode = SHUTTLE_IGNITING
 			setTimer(ignitionTime)
+
+*/ //SKYRAT EDIT END
 
 //recall the shuttle to where it was previously
 /obj/docking_port/mobile/proc/cancel()
@@ -672,6 +680,7 @@
 				return
 			if(rechargeTime)
 				mode = SHUTTLE_RECHARGING
+				unbolt_all_doors() //SKYRAT EDIT ADDITION
 				setTimer(rechargeTime)
 				return
 		if(SHUTTLE_RECALL)
@@ -688,6 +697,8 @@
 				enterTransit()
 				return
 
+	admin_forced = FALSE //SKYRAT EDIT ADDITION
+	unbolt_all_doors() //SKYRAT EDIT ADDITION
 	mode = SHUTTLE_IDLE
 	timer = 0
 	destination = null
@@ -698,6 +709,8 @@
 			var/tl = timeLeft(1)
 			if(tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)
+				play_engine_sound(src, FALSE) //SKYRAT EDIT ADDITION
+				play_engine_sound(destination, FALSE) //SKYRAT EDIT ADDITION
 
 	var/obj/docking_port/stationary/S0 = get_docked()
 	if(istype(S0, /obj/docking_port/stationary/transit) && timeLeft(1) <= PARALLAX_LOOP_TIME)

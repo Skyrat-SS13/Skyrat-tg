@@ -6,3 +6,12 @@
 	suffix = "icemoon_underground_syndicate_base1_skyrat.dmm"
 	cost = 20
 	allow_duplicates = FALSE
+	never_spawn_with = list(/datum/map_template/ruin/lavaland/syndicate_base)
+
+/datum/map_template/ruin/icemoon/underground/mining_site_below
+	name = "Mining Site Underground"
+	id = "miningsite-underground"
+	description = "The Iceminer arena."
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/IceRuins/"
+	suffix = "icemoon_underground_mining_site_skyrat.dmm"
+	always_place = TRUE

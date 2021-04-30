@@ -73,22 +73,24 @@
 
 
 /obj/item/weldingtool/process(delta_time)
-	switch(welding)
-		if(0)
-			force = 3
-			damtype = BRUTE
-			update_appearance()
-			if(!can_off_process)
-				STOP_PROCESSING(SSobj, src)
-			return
+	if(welding)
+		force = 15
+		damtype = BURN
+		burned_fuel_for += delta_time
+		if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
+			use(TRUE)
+			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
+		update_appearance()
+
 	//Welders left on now use up fuel, but lets not have them run out quite that fast
-		if(1)
-			force = 15
-			damtype = BURN
-			burned_fuel_for += delta_time
-			if(burned_fuel_for >= WELDER_FUEL_BURN_INTERVAL)
-				use(1)
-			update_appearance()
+	else
+		force = 3
+		damtype = BRUTE
+		update_appearance()
+		if(!can_off_process)
+			STOP_PROCESSING(SSobj, src)
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
+		return
 
 	//This is to start fires. process() is only called if the welder is on.
 	open_flame()
@@ -109,9 +111,8 @@
 	update_appearance()
 
 /obj/item/weldingtool/proc/explode()
-	var/turf/T = get_turf(loc)
 	var/plasmaAmount = reagents.get_reagent_amount(/datum/reagent/toxin/plasma)
-	dyn_explosion(T, plasmaAmount/5)//20 plasma in a standard welder has a 4 power explosion. no breaches, but enough to kill/dismember holder
+	dyn_explosion(src, plasmaAmount/5)//20 plasma in a standard welder has a 4 power explosion. no breaches, but enough to kill/dismember holder
 	qdel(src)
 
 /obj/item/weldingtool/attack(mob/living/carbon/human/H, mob/living/user)
@@ -208,6 +209,7 @@
 	. = welding
 	welding = new_value
 	set_light_on(welding)
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 
 //Turns off the welder if there is no more fuel (does this really need to be its own proc?)

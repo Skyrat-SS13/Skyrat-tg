@@ -12,8 +12,7 @@
 
 /datum/surgery/advanced/necrotic_revival/can_start(mob/user, mob/living/carbon/target)
 	. = ..()
-	var/obj/item/organ/zombie_infection/ZI = target.getorganslot(ORGAN_SLOT_ZOMBIE)
-	if(ZI)
+	if(target.GetComponent(/datum/component/mutant_infection)) //SKYRAT EDIT CHANGE
 		return FALSE
 
 /datum/surgery_step/bionecrosis
@@ -32,7 +31,5 @@
 	display_results(user, target, "<span class='notice'>You succeed in growing a romerol tumor on [target]'s brain.</span>",
 		"<span class='notice'>[user] successfully grows a romerol tumor on [target]'s brain!</span>",
 		"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
-	if(!target.getorganslot(ORGAN_SLOT_ZOMBIE))
-		var/obj/item/organ/zombie_infection/ZI = new()
-		ZI.Insert(target)
+	try_to_zombie_infect(target) //SKYRAT EDIT CHANGE
 	return ..()

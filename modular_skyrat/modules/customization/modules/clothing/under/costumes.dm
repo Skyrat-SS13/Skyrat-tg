@@ -87,3 +87,12 @@
 	name = "loincloth"
 	desc = "A synthetic cloth covering. It's better than wearing nothing at least."
 	has_sensor = HAS_SENSORS
+
+
+/obj/item/clothing/under/costume/arthur
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	name = "dutch assistant uniform"
+	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
+	icon_state = "arthur_morgan"
+

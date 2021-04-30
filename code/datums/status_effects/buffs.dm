@@ -82,7 +82,7 @@
 	if(!QDELETED(GLOB.cult_narsie))
 		return //if Nar'Sie is alive, don't even worry about it
 	var/area/A = get_area(owner)
-	for(var/datum/mind/B in SSticker.mode.cult)
+	for(var/datum/mind/B as anything in get_antag_minds(/datum/antagonist/cult))
 		if(isliving(B.current))
 			var/mob/living/M = B.current
 			SEND_SOUND(M, sound('sound/hallucinations/veryfar_noise.ogg'))
@@ -202,15 +202,7 @@
 	id = "Exercised"
 	duration = 1200
 	alert_type = null
-
-/datum/status_effect/exercised/on_creation(mob/living/new_owner, ...)
-	. = ..()
-	STOP_PROCESSING(SSfastprocess, src)
-	START_PROCESSING(SSprocessing, src) //this lasts 20 minutes, so SSfastprocess isn't needed.
-
-/datum/status_effect/exercised/Destroy()
-	. = ..()
-	STOP_PROCESSING(SSprocessing, src)
+	processing_speed = STATUS_EFFECT_NORMAL_PROCESS
 
 //Hippocratic Oath: Applied when the Rod of Asclepius is activated.
 /datum/status_effect/hippocratic_oath

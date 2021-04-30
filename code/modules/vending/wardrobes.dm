@@ -103,7 +103,12 @@
 					/obj/item/clothing/shoes/workboots = 3,
 					/obj/item/clothing/head/beret/job/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/hardhat = 3,
-					/obj/item/clothing/head/hardhat/weldhat = 3)
+					/obj/item/clothing/head/hardhat/weldhat = 3,
+					/obj/item/clothing/head/hardhat/orange = 3,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/head/hardhat/weldhat/orange = 3,
+					/obj/item/clothing/head/hardhat/dblue = 3,
+					/obj/item/clothing/head/hardhat/weldhat/dblue = 3	//SKYRAT EDIT ADDITION END
+					)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
 	payment_department = ACCOUNT_ENG
 	light_color = COLOR_VIVID_YELLOW
@@ -118,6 +123,7 @@
 	product_ads = "Get your inflammable clothing right here!!!"
 	vend_reply = "Thank you for using the AtmosDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 2,
+					/obj/item/clothing/glasses/meson/engine = 2,	//SKYRAT EDIT ADDITION - why would they only get t-rays? they need radiation-sight more than pipes anyways
 					/obj/item/storage/backpack/duffelbag/engineering = 2,
 					/obj/item/storage/backpack/satchel/eng = 2,
 					/obj/item/storage/backpack/industrial = 2,
@@ -141,19 +147,30 @@
 	icon_state = "cargodrobe"
 	product_ads = "Upgraded Assistant Style! Pick yours today!;These shorts are comfy and easy to wear, get yours now!"
 	vend_reply = "Thank you for using the CargoDrobe!"
-	products = list(/obj/item/clothing/suit/hooded/wintercoat/cargo = 3,
-					/obj/item/clothing/under/rank/cargo/tech = 3,
-					/obj/item/clothing/under/rank/cargo/tech/skirt = 3,
-					/obj/item/clothing/under/misc/cargo_long = 3,	//SKYRAT EDIT ADDITION START
-					/obj/item/clothing/under/utility/cargo = 3,
-					/obj/item/clothing/suit/toggle/jacket/supply = 3,	//SKYRAT EDIT ADDITION END
-					/obj/item/clothing/shoes/sneakers/black = 3,
-					/obj/item/clothing/gloves/fingerless = 3,
-					/obj/item/clothing/head/soft = 3,
-					/obj/item/radio/headset/headset_cargo = 3)
-	premium = list(/obj/item/clothing/under/rank/cargo/miner = 3)
+	products = list(
+		/obj/item/storage/bag/mail = 3,
+		/obj/item/clothing/suit/hooded/wintercoat/cargo = 3,
+		/obj/item/clothing/under/rank/cargo/tech = 3,
+		/obj/item/clothing/under/rank/cargo/tech/skirt = 3,
+		/obj/item/clothing/under/misc/cargo_long = 3,	//SKYRAT EDIT ADDITION START
+		/obj/item/clothing/under/utility/cargo/gorka = 3,
+		/obj/item/clothing/under/utility/cargo/turtleneck = 3,
+		/obj/item/clothing/under/utility/cargo = 3,
+		/obj/item/clothing/suit/gorka/supply = 3,
+		/obj/item/clothing/suit/toggle/jacket/supply = 3,	//SKYRAT EDIT ADDITION END
+		/obj/item/clothing/shoes/sneakers/black = 3,
+		/obj/item/clothing/gloves/fingerless = 3,
+		/obj/item/clothing/head/soft = 3,
+		/obj/item/radio/headset/headset_cargo = 3
+	)
+	premium = list(
+		/obj/item/clothing/under/rank/cargo/miner = 3,
+		/obj/item/clothing/head/mailman = 1,
+		/obj/item/clothing/under/misc/mailman = 1
+	)
 	refill_canister = /obj/item/vending_refill/wardrobe/cargo_wardrobe
 	payment_department = ACCOUNT_CAR
+
 /obj/item/vending_refill/wardrobe/cargo_wardrobe
 	machine_name = "CargoDrobe"
 
@@ -414,6 +431,10 @@
 	contraband = list(/obj/item/toy/plush/ratplush = 1,
 					/obj/item/toy/plush/narplush = 1,
 					/obj/item/clothing/head/medievaljewhat = 3,
+					//SKYRAT EDIT ADDITION BEGIN
+					/obj/item/clothing/neck/chaplain = 1,
+					/obj/item/clothing/neck/chaplain/black = 1,
+					//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/chaplainsuit/clownpriest = 1,
 					/obj/item/clothing/head/clownmitre = 1)
 	premium = list(/obj/item/clothing/suit/chaplainsuit/bishoprobe = 1,
@@ -510,6 +531,15 @@
 					/obj/item/clothing/suit/det_suit/noir = 1,
 					/obj/item/clothing/suit/toggle/labcoat/highvis = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/fedora = 2,
+					/obj/item/clothing/suit/discoblazer = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/misc/discounder = 2,
+					/obj/item/clothing/shoes/discoshoes = 2,
+					/obj/item/clothing/neck/tie/disco = 2,
+					/obj/item/clothing/suit/kimjacket = 2,
+					/obj/item/clothing/under/misc/kimunder = 2,
+					/obj/item/clothing/shoes/kimshoes = 2,
+					/obj/item/clothing/glasses/kim = 2,
+					/obj/item/clothing/gloves/kim = 2,	//SKYRAT EDIT ADD END
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,
 					/obj/item/reagent_containers/food/drinks/flask/det = 2,

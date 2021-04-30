@@ -106,6 +106,12 @@
 	augments = list()
 	all_quirks = list()
 	pref_scream = new /datum/scream_type/human
+	//Reset cultural stuff
+	pref_culture = pref_species.cultures[1]
+	pref_location = pref_species.locations[1]
+	pref_faction = pref_species.factions[1]
+	try_get_common_language()
+	validate_languages()
 
 /datum/preferences/proc/reset_colors()
 	for(var/key in mutant_bodyparts)

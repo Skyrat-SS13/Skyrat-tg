@@ -2,7 +2,7 @@
 	//SECURITY//
 	////////////
 #define UPLOAD_LIMIT 524288 //Restricts client uploads to the server to 0.5MB
-#define UPLOAD_LIMIT_ADMIN 2621440 //Restricts admin client uploads to the server to 2.5MB
+#define UPLOAD_LIMIT_ADMIN 5550000 //Restricts admin client uploads to the server to 2.5MB //SKYRAT EDIT CHANGE - CHANGED TO 5.55 MB
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -652,10 +652,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		qdel(query_log_player)
 	if(!account_join_date)
 		account_join_date = "Error"
-	var/datum/db_query/query_log_connection = SSdbcore.NewQuery({"
-		INSERT INTO `[format_table_name("connection_log")]` (`id`,`datetime`,`server_ip`,`server_port`,`round_id`,`ckey`,`ip`,`computerid`)
-		VALUES(null,Now(),INET_ATON(:internet_address),:port,:round_id,:ckey,INET_ATON(:ip),:computerid)
-	"}, list("internet_address" = world.internet_address || "0", "port" = world.port, "round_id" = GLOB.round_id, "ckey" = ckey, "ip" = address, "computerid" = computer_id))
+	var/datum/db_query/query_log_connection = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
+		INSERT INTO `[format_table_name("connection_log")]` (`id`,`datetime`,`server_name`,`server_ip`,`server_port`,`round_id`,`ckey`,`ip`,`computerid`)
+		VALUES(null,Now(),:server_name,INET_ATON(:internet_address),:port,:round_id,:ckey,INET_ATON(:ip),:computerid)
+	"}, list("server_name" = CONFIG_GET(string/serversqlname), "internet_address" = world.internet_address || "0", "port" = world.port, "round_id" = GLOB.round_id, "ckey" = ckey, "ip" = address, "computerid" = computer_id)) //SKYRAT EDIT CHANGE - MULTISERVER
 	query_log_connection.Execute()
 	qdel(query_log_connection)
 
@@ -1146,3 +1146,18 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		SSambience.ambience_listening_clients[src] = world.time + 10 SECONDS //Just wait 10 seconds before the next one aight mate? cheers.
 	else
 		SSambience.ambience_listening_clients -= src
+
+/// Checks if this client has met the days requirement passed in, or if
+/// they are exempt from it.
+/// Returns the number of days left, or 0.
+/client/proc/get_remaining_days(days_needed)
+	if(!CONFIG_GET(flag/use_age_restriction_for_jobs))
+		return 0
+
+	if(!isnum(player_age))
+		return 0 //This is only a number if the db connection is established, otherwise it is text: "Requires database", meaning these restrictions cannot be enforced
+
+	if(!isnum(days_needed))
+		return 0
+
+	return max(0, days_needed - player_age)

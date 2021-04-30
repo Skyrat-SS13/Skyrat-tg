@@ -102,6 +102,8 @@
 
 	var/datum/robot_control/robot_control
 
+	var/vox_type = VOX_NORMAL //SKYRAT EDIT ADDITION
+
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
 	. = ..()
 	if(!target_ai) //If there is no player/brain inside.

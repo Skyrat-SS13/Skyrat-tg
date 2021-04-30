@@ -69,6 +69,7 @@
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)
 	icon_state = "hos"
+	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
@@ -101,7 +102,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
-	new /obj/item/storage/box/gunset/glock18_hos(src)
+	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
@@ -143,6 +144,7 @@
 	new /obj/item/radio/headset/headset_sec/alt(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper(src) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
 	new /obj/item/flashlight/seclite(src)
+	new /obj/item/holosign_creator/security(src) // SKYRAT EDIT ADD
 
 /obj/structure/closet/secure_closet/security/sec
 
@@ -224,8 +226,8 @@
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
-	new /obj/item/clothing/under/rank/prisoner( src )
-	new /obj/item/clothing/under/rank/prisoner/skirt( src )
+	new /obj/item/clothing/under/color/prisoner( src )
+	new /obj/item/clothing/under/color/jumpskirt/prisoner( src )
 	new /obj/item/clothing/shoes/sneakers/orange( src )
 
 /obj/structure/closet/secure_closet/courtroom

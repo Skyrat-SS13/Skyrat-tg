@@ -35,3 +35,8 @@
 	STR.max_items = 2
 	STR.display_numerical_stacking = TRUE
 	STR.can_hold = typecacheof(list(/obj/item/rcd_ammo, /obj/item/stack/sheet))
+
+/obj/item/storage/bag/trash
+	slot_flags = ITEM_SLOT_BELT //QoL by Gandalf
+	worn_icon_state = "trashbag"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
