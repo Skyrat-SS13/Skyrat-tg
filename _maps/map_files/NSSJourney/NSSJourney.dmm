@@ -3256,6 +3256,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "arK" = (
+/obj/structure/cable,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -3741,13 +3742,11 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/command/storage/eva)
 "atr" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Garden Maintenance";
+	req_access_txt = "12"
+	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 10
-	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "ats" = (
@@ -4383,12 +4382,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 6
+	},
 /turf/open/floor/iron,
 /area/hallway/primary/port)
 "avH" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 10
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/port)
@@ -6037,8 +6042,8 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aAP" = (
-/obj/machinery/hydroponics/soil,
-/turf/open/floor/grass,
+/obj/machinery/seed_extractor,
+/turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "aAQ" = (
 /turf/open/floor/iron,
@@ -6053,32 +6058,24 @@
 /turf/open/floor/wood,
 /area/service/bar)
 "aAS" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -5;
-	pixel_y = 30
+/obj/structure/sink{
+	pixel_y = 20
 	},
-/obj/machinery/biogenerator,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "aAT" = (
-/obj/machinery/seed_extractor,
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating/corner,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "aAU" = (
-/obj/structure/sink{
-	pixel_y = 30
-	},
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "aAV" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 5
-	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "aAW" = (
@@ -6245,9 +6242,6 @@
 /turf/open/floor/carpet,
 /area/commons/vacant_room/office)
 "aBw" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 5
 	},
@@ -10717,9 +10711,6 @@
 /turf/open/floor/iron,
 /area/service/bar)
 "aQd" = (
-/obj/machinery/newscaster{
-	pixel_y = -28
-	},
 /obj/structure/chair/sofa/right{
 	dir = 1
 	},
@@ -11086,9 +11077,9 @@
 /turf/open/floor/iron,
 /area/command/bridge)
 "aRo" = (
-/obj/item/paper/crumpled,
-/turf/open/floor/iron/airless,
-/area/space/nearstation)
+/obj/machinery/hydroponics/soil,
+/turf/open/floor/grass,
+/area/service/hydroponics/garden)
 "aRp" = (
 /obj/machinery/computer/shuttle/mining,
 /obj/effect/turf_decal/tile/blue,
@@ -14697,10 +14688,15 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "bbV" = (
-/obj/item/airlock_painter,
-/obj/structure/closet,
-/turf/open/space/basic,
-/area/space)
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -5;
+	pixel_y = 30
+	},
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/service/hydroponics/garden)
 "bbW" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "heads_meeting";
@@ -42928,11 +42924,11 @@
 /turf/open/floor/grass,
 /area/service/bar)
 "iHT" = (
-/obj/machinery/hydroponics/soil,
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/grass,
+/obj/machinery/biogenerator,
+/turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "iIQ" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -43075,15 +43071,12 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "iWe" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Garden Maintenance";
-	req_access_txt = "12"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/service/hydroponics/garden)
 "iWA" = (
 /obj/machinery/airlock_sensor/incinerator_toxmix{
 	pixel_x = 24
@@ -43520,6 +43513,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"jsA" = (
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/iron/dark,
+/area/service/hydroponics/garden)
 "jsH" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -46323,16 +46320,11 @@
 /turf/open/floor/plating,
 /area/security/prison)
 "miW" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 4
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/meter/atmos/layer4,
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/turf/open/floor/iron,
+/area/service/hydroponics/garden)
 "mje" = (
 /obj/machinery/door/airlock{
 	name = "Private Restroom"
@@ -47721,6 +47713,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/maintenance/port/aft)
+"nJt" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/service/hydroponics/garden)
 "nJL" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -48769,6 +48767,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/miningdock)
+"oYQ" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/service/hydroponics/garden)
 "oZl" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -50473,6 +50478,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"qKJ" = (
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/service/hydroponics/garden)
 "qLx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -50805,9 +50816,6 @@
 /area/security/brig)
 "rdH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 5
 	},
 /obj/structure/cable,
@@ -51738,6 +51746,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/storage/primary)
+"sfM" = (
+/obj/machinery/hydroponics/soil,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/service/hydroponics/garden)
 "sgh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/closed/wall,
@@ -53499,8 +53514,6 @@
 /turf/open/floor/iron/kitchen,
 /area/security/prison)
 "tUV" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
@@ -57416,6 +57429,13 @@
 /obj/structure/chair/stool,
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"xRA" = (
+/obj/machinery/hydroponics/soil,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/service/hydroponics/garden)
 "xRH" = (
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt,
@@ -72893,11 +72913,11 @@ alU
 aiP
 alU
 bEJ
-alU
-alU
-alU
-alU
-alU
+azF
+azF
+azF
+azF
+azF
 azF
 aDg
 vIU
@@ -73150,13 +73170,13 @@ ali
 aiR
 aol
 aol
-aol
-aol
-aol
-aol
-aol
 azF
-aAU
+aAS
+aRo
+sfM
+aRo
+aAQ
+aAQ
 aIO
 aAQ
 azF
@@ -73406,12 +73426,12 @@ uRx
 ali
 ajw
 aol
-alU
-alU
-alU
-alU
-alU
-ayh
+amC
+azF
+aAT
+oYQ
+oYQ
+oYQ
 iWe
 tUV
 rdH
@@ -73663,14 +73683,14 @@ alU
 alU
 vvZ
 aol
-alU
-lwn
-uRx
-lwn
-alU
-asK
-azF
-aAT
+aol
+atr
+aAU
+jsA
+jsA
+jsA
+nJt
+aAQ
 aBw
 aBM
 azF
@@ -73920,14 +73940,14 @@ amC
 apP
 ajw
 aol
-alU
-uRx
-bbV
-xzh
-alU
-miW
+amC
 azF
-aAS
+bbV
+miW
+miW
+miW
+qKJ
+aAQ
 aFP
 arC
 ase
@@ -74177,14 +74197,14 @@ aol
 aol
 ajK
 aol
-alU
-aRo
-lwn
-lwn
-alU
-asK
+amC
 azF
-aAU
+aAS
+aRo
+xRA
+aRo
+aAQ
+aAQ
 aBG
 aAQ
 aIS
@@ -74434,23 +74454,23 @@ anJ
 anJ
 aFJ
 arK
-alU
-alU
-ali
-alU
-alU
-asK
+amC
+azF
+azF
+azF
+azF
+azF
 azF
 aAP
 iHT
-aAP
+aAQ
 aAQ
 aFO
 aHA
 aIT
 azF
 uBY
-aNl
+avG
 aOl
 aPA
 aPA
@@ -74690,13 +74710,13 @@ aom
 amC
 apP
 amC
-amC
-amC
-amC
-amC
-amC
-amC
-asK
+aol
+aol
+aol
+aol
+aol
+aol
+aol
 azF
 azF
 azF
@@ -74707,7 +74727,7 @@ azF
 azF
 azF
 aNe
-aNl
+avG
 aOl
 aPA
 aQO
@@ -74953,8 +74973,8 @@ atT
 asO
 avV
 alU
-atr
-atN
+aol
+aol
 aAV
 aBQ
 aDh
