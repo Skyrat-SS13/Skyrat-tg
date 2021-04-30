@@ -504,7 +504,7 @@
 
 /obj/effect/proc_holder/spell/targeted/fiery_rebirth
 	name = "Nightwatcher's Rebirth"
-	desc = "Drains nearby alive people that are engulfed in flames. It heals a low amount of each damage type per person, favoring burn. If a target is in critical condition it drains the last of their vitality, killing them."
+	desc = "Drains nearby alive people that are engulfed in flames. It heals a low amount of each damage type per person, favoring burn. If a target is in critical condition it drains the last of their vitality, killing them." //SKYRAT EDIT - ORIGINAL: "Drains nearby alive people that are engulfed in flames. It heals 10 of each damage type per person. If a target is in critical condition it drains the last of their vitality, killing them."
 	invocation = "GL'RY T' TH' N'GHT'W'TCH'ER"
 	invocation_type = INVOCATION_WHISPER
 	school = SCHOOL_FORBIDDEN
