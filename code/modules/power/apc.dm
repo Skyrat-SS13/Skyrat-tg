@@ -198,6 +198,25 @@
 	dir = WEST
 	pixel_x = -25
 
+//SKYRAT EDIT ADDITION START - invincible, infinite cell, and impossible for crew to unlock. Really only for use in the Interlink
+/obj/machinery/power/apc/dummy	
+	use_power = ACTIVE_POWER_USE
+	cell_type = /obj/item/stock_parts/cell/infinite
+	resistance_flags = INDESTRUCTIBLE
+	flags_1 = NODECONSTRUCT_1
+	aidisabled = TRUE	//No, borgs dont get to mess with it
+	req_access = list(ACCESS_CENT_THUNDER)	//In fact, no one does, except bluespace techs. Its safe to assume the Interlink would have its own repair staff anyways.
+	start_charge = 100
+	
+/obj/machinery/power/apc/dummy/process()	//This is here to fight how shitty the IPC charging code is
+	. = ..()
+	cell.charge = cell.maxcharge
+	
+/obj/machinery/power/apc/dummy/emag_act(mob/user)	//Little custom emag blurb because you dont get to hack this nonono
+	to_chat(user, "<span class='notice'>You try to emag the APC interface but are promptly blocked by the firewalls! This APC uses a stronger encryption than you'll ever hope to crack!</span>")
+	return
+//SKYRAT EDIT ADDITION END
+
 /obj/machinery/power/apc/get_cell()
 	return cell
 
