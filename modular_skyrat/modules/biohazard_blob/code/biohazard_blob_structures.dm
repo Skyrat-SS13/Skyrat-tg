@@ -327,7 +327,6 @@
 			var/datum/effect_system/foam_spread/foam = new
 			foam.set_up(50, T, R)
 			foam.start()
-
 	is_full = FALSE
 	name = "empty bulb"
 	icon_state = "blob_bulb_empty"
@@ -393,7 +392,7 @@
 	max_integrity = 150
 	///The mold atmosphere conditioner will spawn the molds preferred atmosphere every so often.
 	var/happy_atmos = null
-	var/puff_cooldown = 5 SECONDS
+	var/puff_cooldown = 10 SECONDS
 	var/puff_delay = 0
 
 /obj/structure/biohazard_blob/structure/conditioner/Destroy()
@@ -406,15 +405,15 @@
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
-			happy_atmos = "miasma=50;TEMP=296"
+			happy_atmos = "miasma=30;TEMP=296"
 		if(BIO_BLOB_TYPE_FIRE)
-			happy_atmos = "o2=10;plasma=40;TEMP=310"
+			happy_atmos = "o2=3;plasma=30;TEMP=310"
 		if(BIO_BLOB_TYPE_EMP)
-			happy_atmos = "n2=50;TEMP=100"
+			happy_atmos = "n2=30;TEMP=100"
 		if(BIO_BLOB_TYPE_TOXIC)
-			happy_atmos = "miasma=50;TEMP=296"
+			happy_atmos = "miasma=30;TEMP=296"
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
-			happy_atmos = "tritium=50;TEMP=296"
+			happy_atmos = "tritium=5;TEMP=296"
 
 	START_PROCESSING(SSobj, src)
 

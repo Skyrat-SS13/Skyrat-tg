@@ -7,12 +7,6 @@
 
 /datum/round_event/mold
 	fakeable = FALSE
-	var/list/available_molds = list(
-		/obj/structure/biohazard_blob/structure/core/fungus,
-		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/emp,
-		/obj/structure/biohazard_blob/structure/core/toxic
-	)
 
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
@@ -38,7 +32,7 @@
 	qdel(resintest)
 
 	for(var/i = 1, i <= molds2spawn)
-		var/picked_mold = pick(available_molds)
+		var/picked_mold = pick(ALL_BIO_BLOB_TYPES)
 		shuffle(turfs)
 		var/turf/picked_turf = pick(turfs)
 		if(turfs.len) //Pick a turf to spawn at if we can
