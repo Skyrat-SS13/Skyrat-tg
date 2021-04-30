@@ -971,8 +971,8 @@ GLOBAL_LIST_INIT(food, list(
 									if(chosen_limb.uses_robotic_styles)
 										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#16274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
 								if(category_name == AUGMENT_CATEGORY_ORGANS && chosen_item)//For Custom Speech Quirks
-									if (chosen_item.name == "Unique tongue" || chosen_item)
-										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>[chosen_item.name]<br>Custom verb: <a href='?_src_=prefs;preference=sverb;task=input'>[speech_verb]</a><br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_rep_from;task=input'>[speech_replace_from]</a> with <a href='?_src_=prefs;preference=speech_rep_to;task=input'>[speech_replace_to]</a></td></tr>"
+									if (chosen_item.name == "Unique tongue")
+										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>Custom verb: <a href='?_src_=prefs;preference=sverb;task=input'>[speech_verb]</a><br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_rep_from;task=input'>[speech_replace_from]</a> with <a href='?_src_=prefs;preference=speech_rep_to;task=input'>[speech_replace_to]</a></td></tr>"
 								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
 								dat += "</table>"
 							dat += "</td>"
@@ -2428,22 +2428,16 @@ GLOBAL_LIST_INIT(food, list(
 				if("speech_rep_from") 
 					var/search_char = input(user, "What character(s) do you wish to replace?", "Character Preference")  as text|null
 					if(search_char)
-						search_char = reject_bad_name(search_char)
-						if(!search_char)
-							to_chat(user, "<font color='red'>Invalid verb. Your verb may only contain the characters A-Z, a-z, - and '.</font>")
-						else if(length(search_char) < 6 && length(search_char) > 0)
-							speech_replace_from = search_char
+						if(length(search_char) < 6 && length(search_char) > 0)
+							speech_replace_from = strip_html_simple(search_char, 6, TRUE)
 						else
 							to_chat(user, "<font color='red'>Invalid input. Must be 1 to 5 characters long. </font>")
 
 				if("speech_rep_to") 
 					var/rep_char = input(user, "What do you want to replace those characters with? Do not abuse this feature -- you are expected to stay within the server's HRP guidelines.", "Character Preference")  as text|null
 					if(rep_char)
-						rep_char = reject_bad_name(rep_char)
-						if(!rep_char)
-							to_chat(user, "<font color='red'>Invalid verb. Your verb may only contain the characters A-Z, a-z, - and '.</font>")
-						else if(length(rep_char) < 6 && length(rep_char) > 0)
-							speech_replace_to = rep_char
+						if(length(rep_char) < 6 && length(rep_char) > 0)
+							speech_replace_to = strip_html_simple(rep_char, 6, TRUE)
 						else
 							to_chat(user, "<font color='red'>Invalid input. Must be 1 to 5 characters long. </font>")
 

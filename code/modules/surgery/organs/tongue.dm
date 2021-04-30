@@ -96,8 +96,10 @@ var/datum/preferences = new
 	if(message[1] != "*")
 		/*message = custom_quirk_upper.Replace(message, uppertext(client.prefs.speech_replace_to))
 		message = custom_quirk_lower.Replace(message, lowertext(client.prefs.speech_replace_to))*/
-		message = replacetext(message, replace_upper,uppertext(owner.client.prefs.speech_replace_to))
-		message = replacetext(message, replace_lower,lowertext(owner.client.prefs.speech_replace_to))
+		message = replace_upper.Replace(message, uppertext(owner.client.prefs.speech_replace_to))
+		message = replace_lower.Replace(message, lowertext(owner.client.prefs.speech_replace_to))
+		//message = replacetext(message, replace_upper,uppertext(owner.client.prefs.speech_replace_to))
+		//message = replacetext(message, replace_lower,lowertext(owner.client.prefs.speech_replace_to))
 	speech_args[SPEECH_MESSAGE] = message
 
 /*END SKYRAT EDIT*/
