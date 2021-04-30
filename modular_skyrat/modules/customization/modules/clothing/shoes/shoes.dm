@@ -77,3 +77,25 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
 	icon_state = "blackjack"
+
+/obj/item/clothing/shoes/wraps/poly
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	name = "cloth foot wraps"
+	desc = "Boxer tape or bandages wrapped like a mummy, all left up to the choice of the wearer."
+	icon_state = "clothwrap"
+	body_parts_covered = FALSE
+
+/obj/item/clothing/shoes/wraps/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF"))
+
+/obj/item/clothing/shoes/sports
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
+	name = "Sport shoes"
+	desc = "Shoes for the sporty individual. The giants of Charlton play host to the titans of Ipswich - making them both seem normal sized."
+	icon_state = "sportshoe"
+
+
+
