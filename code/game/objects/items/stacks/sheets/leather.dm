@@ -183,7 +183,10 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 	new/datum/stack_recipe("leather shoes", /obj/item/clothing/shoes/laceup, 2), \
 	new/datum/stack_recipe("leather overcoat", /obj/item/clothing/suit/jacket/leather/overcoat, 10), \
 	new/datum/stack_recipe("saddle", /obj/item/saddle, 5), \
-	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2)	//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT ADDITION BEGIN
+	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/gear_harness, 6), \
+	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2)
+	//SKYRAT EDIT ADDITION END
 ))
 
 /obj/item/stack/sheet/leather/get_main_recipes()

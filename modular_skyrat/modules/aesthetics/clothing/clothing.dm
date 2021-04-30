@@ -17,6 +17,8 @@
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/suit.dmi'
 
 ///////////////////////////////////////////////////////////////////////BIO HOODS
+/obj/item/clothing/head/bio_hood
+	dynamic_hair_suffix = ""
 
 /obj/item/clothing/head/bio_hood/general
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'

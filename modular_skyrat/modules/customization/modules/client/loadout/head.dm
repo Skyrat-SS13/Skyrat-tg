@@ -177,6 +177,12 @@
 	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
 
+/datum/loadout_item/head/job/sec/ushanka
+	name = "Security Ushanka"
+	path = /obj/item/clothing/head/ushankasec
+	restricted_desc = "Security"
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
+
 /datum/loadout_item/head/job/navybluehosberet
 	name = "Head of security's navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyhos

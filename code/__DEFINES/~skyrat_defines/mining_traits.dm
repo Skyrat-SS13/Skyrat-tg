@@ -4,5 +4,6 @@
 GLOBAL_LIST_INIT(mining_traits, list(
 	"lavaland" = ZTRAITS_LAVALAND,
 	"rockplanet" = ZTRAITS_ROCKPLANET,
-	"icemoon" = ZTRAITS_ICEMOONSKYRAT
+	"icemoon" = ZTRAITS_ICEMOONSKYRAT,
+	"tidallock" = ZTRAITS_TIDALLOCK
 ))
