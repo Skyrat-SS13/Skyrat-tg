@@ -57,9 +57,17 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "aj" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/virology)
+/obj/machinery/door/firedoor,
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 8
+	},
+/obj/item/folder/white,
+/turf/open/floor/iron/white,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "ak" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -499,7 +507,7 @@
 	dir = 5
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/cargo)
+/area/ruin/unpowered/syndicate_lava_base/main)
 "eo" = (
 /obj/structure/table/wood,
 /obj/item/ammo_box/magazine/sniper_rounds,
@@ -601,12 +609,6 @@
 /obj/item/disk/surgery/forgottenship,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
-"eG" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 9
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/cargo)
 "eH" = (
 /obj/machinery/smartfridge/chemistry/virology/preloaded,
 /obj/effect/decal/cleanable/dirt,
@@ -1670,6 +1672,7 @@
 /area/ruin/unpowered/syndicate_lava_base/main)
 "iZ" = (
 /obj/structure/closet/radiation,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "jc" = (
@@ -1784,9 +1787,6 @@
 	dir = 8;
 	name = "emergency shower"
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "ju" = (
@@ -1894,7 +1894,13 @@
 /obj/structure/closet/secure_closet/cytology{
 	req_access = list(150)
 	},
+/obj/machinery/airalarm/syndicate{
+	pixel_y = 24
+	},
 /obj/item/storage/box/beakers,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "jS" = (
@@ -1905,6 +1911,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "jT" = (
@@ -1917,6 +1924,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
+/obj/machinery/power/smes/engineering,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "jW" = (
@@ -1924,7 +1932,6 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "jY" = (
@@ -2002,9 +2009,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/power/smes/engineering,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "kl" = (
@@ -2085,9 +2090,6 @@
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "ky" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/structure/extinguisher_cabinet{
@@ -2966,7 +2968,7 @@
 	dir = 9
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/arrivals)
+/area/ruin/unpowered/syndicate_lava_base/main)
 "rq" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/machinery/light,
@@ -3110,11 +3112,6 @@
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "sE" = (
-/obj/machinery/power/apc/syndicate{
-	name = "Bar APC";
-	pixel_y = -23
-	},
-/obj/structure/cable,
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/fullupgrade{
 	dir = 1
@@ -3525,9 +3522,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
-"zX" = (
-/turf/open/lava/plasma/ice_moon,
-/area/ruin/unpowered/syndicate_lava_base/bar)
 "Af" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor/wood,
@@ -3561,12 +3555,6 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/bar)
-"AH" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 10
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/arrivals)
 "AK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
@@ -3824,10 +3812,6 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/bar)
-"Et" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/engineering)
 "EH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3864,6 +3848,9 @@
 	dir = 8
 	},
 /obj/structure/table,
+/obj/item/storage/box/beakers{
+	pixel_y = 8
+	},
 /obj/item/stack/cable_coil,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/main)
@@ -4018,7 +4005,9 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/arrivals)
 "Ha" = (
-/obj/structure/sink/kitchen,
+/obj/structure/sink/kitchen{
+	pixel_y = 15
+	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "Hi" = (
@@ -4052,9 +4041,6 @@
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "Hp" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
 /obj/structure/cable,
 /obj/machinery/power/rtg/advanced,
 /obj/effect/turf_decal/stripes/line{
@@ -4246,6 +4232,10 @@
 "JJ" = (
 /obj/machinery/processor,
 /obj/structure/cable,
+/obj/machinery/power/apc/syndicate{
+	name = "Bar APC";
+	pixel_y = -23
+	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "JN" = (
@@ -4301,6 +4291,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "KG" = (
@@ -4320,7 +4311,7 @@
 	anchored = 1
 	},
 /obj/item/crowbar,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "KI" = (
@@ -4952,6 +4943,7 @@
 /obj/structure/cable,
 /obj/structure/closet/l3closet/scientist,
 /obj/item/storage/bag/bio,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "Th" = (
@@ -5088,10 +5080,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/arrivals)
-"Vk" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/testlab)
 "Vt" = (
 /obj/machinery/suit_storage_unit/mining,
 /turf/open/floor/iron/dark,
@@ -5153,13 +5141,15 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/smes/engineering,
 /obj/structure/sign/warning/electricshock{
 	pixel_x = -32
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "Wn" = (
@@ -5759,7 +5749,7 @@ Rl
 Rl
 Rl
 Rl
-AH
+UH
 ab
 ab
 ab
@@ -6024,7 +6014,7 @@ ab
 ab
 ab
 ab
-eG
+rn
 gj
 gH
 hi
@@ -6836,7 +6826,7 @@ Ye
 Ye
 Ye
 Ye
-Vk
+IB
 ab
 ab
 ab
@@ -6921,7 +6911,7 @@ oP
 Ze
 Yi
 hf
-ha
+Zx
 hN
 jD
 il
@@ -7465,7 +7455,7 @@ yG
 nu
 Ro
 fa
-fa
+aj
 fa
 Ro
 OB
@@ -7760,7 +7750,7 @@ ZN
 ZN
 ZN
 ZN
-Et
+IB
 ab
 ab
 ab
@@ -7948,7 +7938,7 @@ aa
 ab
 ab
 ab
-aj
+IB
 Rv
 Rv
 Rv
@@ -8077,9 +8067,9 @@ ab
 ab
 ab
 ab
-zX
-zX
-zX
+ab
+ab
+ab
 ju
 ju
 KR

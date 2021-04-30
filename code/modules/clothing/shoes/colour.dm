@@ -27,7 +27,6 @@
 
 /obj/item/clothing/shoes/sneakers/blue
 	name = "blue shoes"
-	icon_state = "blue"
 	permeability_coefficient = 0.01
 	greyscale_colors = "#16a9eb#ffffff"
 
