@@ -504,7 +504,7 @@
 
 /obj/effect/proc_holder/spell/targeted/fiery_rebirth
 	name = "Nightwatcher's Rebirth"
-	desc = "Drains nearby alive people that are engulfed in flames. It heals 10 of each damage type per person. If a target is in critical condition it drains the last of their vitality, killing them."
+	desc = "Drains nearby alive people that are engulfed in flames. It heals a low amount of each damage type per person, favoring burn. If a target is in critical condition it drains the last of their vitality, killing them."
 	invocation = "GL'RY T' TH' N'GHT'W'TCH'ER"
 	invocation_type = INVOCATION_WHISPER
 	school = SCHOOL_FORBIDDEN
@@ -529,11 +529,11 @@
 		target.adjustFireLoss(20)
 		new /obj/effect/temp_visual/eldritch_smoke(target.drop_location())
 		human_user.extinguish_mob()
-		human_user.adjustBruteLoss(-10, FALSE)
+		human_user.adjustBruteLoss(-7, FALSE) //SKYRAT EDIT - ORIGINAL 10
 		human_user.adjustFireLoss(-10, FALSE)
-		human_user.adjustStaminaLoss(-10, FALSE)
-		human_user.adjustToxLoss(-10, FALSE)
-		human_user.adjustOxyLoss(-10)
+		human_user.adjustStaminaLoss(-7, FALSE) //SKYRAT EDIT - ORIGINAL 10
+		human_user.adjustToxLoss(-8, FALSE) //SKYRAT EDIT - ORIGINAL 10
+		human_user.adjustOxyLoss(-6) //SKYRAT EDIT - ORIGINAL 10
 
 /obj/effect/proc_holder/spell/pointed/manse_link
 	name = "Mansus Link"
