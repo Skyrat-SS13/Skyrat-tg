@@ -393,7 +393,7 @@
 	max_integrity = 150
 	///The mold atmosphere conditioner will spawn the molds preferred atmosphere every so often.
 	var/happy_atmos = null
-	var/puff_cooldown = 10 SECONDS
+	var/puff_cooldown = 15 SECONDS
 	var/puff_delay = 0
 
 /obj/structure/biohazard_blob/structure/conditioner/Destroy()
@@ -437,8 +437,8 @@
 	layer = LOW_OBJ_LAYER
 	max_integrity = 150
 	var/monster_types = list()
-	var/max_spawns = 2
-	var/spawn_cooldown = 600 //In deciseconds
+	var/max_spawns = 1
+	var/spawn_cooldown = 1200 //In deciseconds
 
 /obj/structure/biohazard_blob/structure/spawner/Destroy()
 	if(our_controller)

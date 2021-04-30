@@ -142,8 +142,8 @@
 	emote_hear = list("moans")
 	speak_chance = 5
 	turns_per_move = 1
-	maxHealth = 200
-	health = 200
+	maxHealth = 120
+	health = 120
 	speed = 0.5
 	obj_damage = 40
 	melee_damage_lower = 10
@@ -151,7 +151,6 @@
 	faction = list(MOLD_FACTION)
 	attack_sound = 'sound/effects/wounds/crackandbleed.ogg'
 	melee_damage_type = BRUTE
-	del_on_death = TRUE
 	light_system = MOVABLE_LIGHT
 	light_range = 2
 	light_power = 1
@@ -167,7 +166,7 @@
 	. = ..()
 	update_overlays()
 
-/mob/living/simple_animal/hostile/biohazard_blob/centaur/Destroy()
+/mob/living/simple_animal/hostile/biohazard_blob/centaur/death(gibbed)
 	visible_message("<span class='warning'>The [src] ruptures!</span>")
 	var/datum/reagents/R = new/datum/reagents(300)
 	R.my_atom = src
