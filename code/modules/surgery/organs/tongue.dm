@@ -1,5 +1,3 @@
-//var/client/prefs = new
-
 /obj/item/organ/tongue
 	name = "tongue"
 	desc = "A fleshy muscle mostly used for lying."
@@ -45,6 +43,7 @@
 /obj/item/organ/tongue/Initialize(mapload)
 	. = ..()
 	languages_possible = languages_possible_base
+	var/cprefs = owner.client.prefs
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
 
@@ -55,6 +54,8 @@
 	if (modifies_speech)
 		RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
 	M.UnregisterSignal(M, COMSIG_MOB_SAY)
+
+	var/cprefs = owner.client.prefs
 
 	/* This could be slightly simpler, by making the removal of the
 	* NO_TONGUE_TRAIT conditional on the tongue's `sense_of_taste`, but
@@ -83,12 +84,12 @@
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
-	say_mod = owner.client.prefs.speech_verb
+	say_mod = cprefs.prefs.speech_verb
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args)
-	var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
+	var/replace_upper = uppertext(cprefs.speech_replace_from)
 	var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
 	/*var/static/regex/custom_quirk_upper = new("[replace_upper]", "g")
 	var/static/regex/custom_quirk_lower = new("[replace_lower]", "g")*/
