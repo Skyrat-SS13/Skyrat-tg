@@ -173,7 +173,7 @@
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 	return ..()
 
-/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/AttackingTarget()
+/mob/living/simple_animal/hostile/biohazard_blob/centaur/AttackingTarget()
 	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target
