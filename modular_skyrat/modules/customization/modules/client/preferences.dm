@@ -971,8 +971,8 @@ GLOBAL_LIST_INIT(food, list(
 									if(chosen_limb.uses_robotic_styles)
 										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#16274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
 								if(category_name == AUGMENT_CATEGORY_ORGANS && chosen_item)//For Custom Speech Quirks
-									if (chosen_item == "Unique tongue" || chosen_item)
-										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>[chosen_item]/nCustom verb: <a href='?_src_=prefs;preference=speech_verb;task=input'>[speech_verb]</a><br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_replace_from;task=input'>[speech_replace_from]</a> with <a href='?_src_=prefs;preference=speech_replace_to;task=input'>[speech_replace_to]</a></td></tr>"
+									if (chosen_item.name == "Unique tongue" || chosen_item)
+										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>[chosen_item.name]<br>Custom verb: <a href='?_src_=prefs;preference=speech_verb;task=input'>[speech_verb]</a><br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_replace_from;task=input'>[speech_replace_from]</a> with <a href='?_src_=prefs;preference=speech_replace_to;task=input'>[speech_replace_to]</a></td></tr>"
 								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
 								dat += "</table>"
 							dat += "</td>"
