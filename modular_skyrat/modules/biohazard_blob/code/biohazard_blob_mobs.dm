@@ -142,8 +142,8 @@
 	emote_hear = list("moans")
 	speak_chance = 5
 	turns_per_move = 1
-	maxHealth = 250
-	health = 250
+	maxHealth = 200
+	health = 200
 	speed = 0.5
 	obj_damage = 40
 	melee_damage_lower = 10
