@@ -320,6 +320,7 @@
 			foam.start()
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			radiation_pulse(src, 1500, 15, FALSE, TRUE)
+			fire_nuclear_particle()
 			empulse(src, 5, 7)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
@@ -425,7 +426,8 @@
 	puff_delay = world.time + puff_cooldown
 	var/turf/holder_turf = get_turf(src)
 	holder_turf.atmos_spawn_air(happy_atmos)
-
+	if(blob_type == BIO_BLOB_TYPE_RADIOACTIVE)
+		fire_nuclear_particle()
 /obj/structure/biohazard_blob/structure/spawner
 	name = "hatchery"
 	density = FALSE
