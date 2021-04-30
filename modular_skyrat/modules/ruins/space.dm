@@ -62,3 +62,10 @@
 	suffix = "codealpha.dmm"
 	name = "Code Alpha Supplementary Station"
 	description = "The mess hall of a once bustling supplementary station, to be deployed alongside SS13."
+
+/datum/map_template/ruin/space/skyrat/DS1
+	id = "ds1"
+	suffix = "ds1.dmm"
+	name = "DS-1"
+	description = "Some say mixed syndicate forces deploy miniature stations in enemy space occasionally, the vesture of plastitanium the last thing many a stray assistant sees. Nanotrasen denies this."
+	placement_weight = 0.1 //Should be a rare, unpleasant surprise for space explorers. Cybersun is a guaranteed spawn anyways.

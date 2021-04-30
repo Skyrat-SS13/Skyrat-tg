@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/brig)
 "ab" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/brig)
@@ -25,6 +31,10 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/brig)
+"aj" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/kitchen,
+/area/cruiser_dock/service)
 "am" = (
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/iron,
@@ -137,19 +147,39 @@
 	width = 22
 	},
 /turf/template_noop,
-/area/space)
+/area/template_noop)
 "bp" = (
 /turf/open/floor/mineral/plastitanium/red,
 /area/cruiser_dock/cargo/hangar)
 "bq" = (
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/brig)
+"bs" = (
+/obj/structure/table/glass,
+/obj/item/slime_extract/grey{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/slime_extract/grey{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/slime_extract/grey,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "bu" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Kitchen"
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/brig)
+"by" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/bridge)
 "bA" = (
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
@@ -169,6 +199,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "bK" = (
@@ -176,6 +207,11 @@
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/iron,
 /area/cruiser_dock/medical/virology)
+"bP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
 "bR" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/commons)
@@ -193,14 +229,19 @@
 	req_access_txt = "150"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
 /area/cruiser_dock/commons)
 "bU" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "bV" = (
-/turf/template_noop,
-/area/space)
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
+/area/cruiser_dock/vault)
 "bW" = (
 /obj/structure/bed,
 /obj/item/bedsheet/qm{
@@ -246,6 +287,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
 "ck" = (
@@ -255,6 +297,7 @@
 "cn" = (
 /obj/structure/table,
 /obj/machinery/chem_dispenser/drinks/beer,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "co" = (
@@ -273,6 +316,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "ct" = (
@@ -282,17 +326,15 @@
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "cu" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
 "cv" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
-/turf/open/floor/wood,
-/area/cruiser_dock/brig)
+/turf/open/floor/plating,
+/area/cruiser_dock/commons)
 "cw" = (
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
@@ -376,6 +418,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
 "dd" = (
@@ -397,6 +442,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "dh" = (
@@ -423,7 +469,8 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
 /area/cruiser_dock/commons)
 "dr" = (
 /obj/machinery/door/airlock/science/glass{
@@ -475,6 +522,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
 "dS" = (
@@ -506,6 +554,7 @@
 	},
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
 "el" = (
@@ -517,6 +566,9 @@
 /obj/machinery/reagentgrinder{
 	pixel_x = -1;
 	pixel_y = 8
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
@@ -532,6 +584,12 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"eR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "eS" = (
 /obj/machinery/computer/security{
 	dir = 1;
@@ -552,6 +610,12 @@
 /obj/structure/closet,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"fd" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/security)
 "fg" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -573,6 +637,20 @@
 /obj/structure/closet,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"fv" = (
+/obj/effect/turf_decal/siding/blue,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/brig)
+"fC" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/cruiser_dock/medical)
 "fE" = (
 /obj/structure/chair/sofa/bench/right,
 /turf/open/floor/iron/dark,
@@ -591,6 +669,7 @@
 "fK" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
 "fL" = (
@@ -621,8 +700,13 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
+"fV" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/service)
 "gb" = (
 /obj/structure/table/glass,
 /obj/item/nanite_scanner{
@@ -687,11 +771,15 @@
 /area/cruiser_dock/brig)
 "gy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "gD" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
@@ -703,6 +791,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
 "gI" = (
@@ -734,6 +823,9 @@
 /obj/structure/closet/emcloset/wall{
 	pixel_y = 31
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "gY" = (
@@ -751,6 +843,7 @@
 /area/cruiser_dock/engineering)
 "hf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
 "hj" = (
@@ -783,8 +876,14 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"hA" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "hE" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -798,6 +897,7 @@
 	name = "Pool"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "hN" = (
@@ -807,10 +907,12 @@
 "hV" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "hY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "ib" = (
@@ -823,6 +925,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/ceo)
 "id" = (
@@ -835,6 +938,9 @@
 /area/cruiser_dock/medical/virology)
 "ie" = (
 /obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
 "if" = (
@@ -914,6 +1020,10 @@
 "iO" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/medical)
+"iP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons/dorms)
 "iR" = (
 /obj/machinery/light{
 	dir = 8
@@ -931,6 +1041,10 @@
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"jc" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
 "jp" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/airlock{
@@ -938,6 +1052,7 @@
 	name = "Cabin 1"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
 "js" = (
@@ -947,6 +1062,7 @@
 	name = "Cabin 2"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
 "jt" = (
@@ -957,6 +1073,10 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/research)
+"jG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
 "jL" = (
 /obj/machinery/nanite_chamber,
 /turf/open/floor/circuit/green,
@@ -968,6 +1088,7 @@
 	name = "Cabin 3"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
 "jR" = (
@@ -1027,10 +1148,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/surgery,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
-"kq" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/cruiser_dock/cargo/hangar)
 "ks" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -1116,9 +1233,27 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
+"lh" = (
+/obj/effect/mob_spawn/human/assops_prisoner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/brig)
+"li" = (
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
+/area/cruiser_dock/medical/virology)
 "lk" = (
 /turf/open/floor/plating,
 /area/cruiser_dock/security)
+"lp" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/floor,
+/turf/open/floor/iron,
+/area/cruiser_dock/bridge/hallway)
 "lv" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
@@ -1277,6 +1412,7 @@
 /area/cruiser_dock/service)
 "mE" = (
 /obj/structure/table/wood,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/ceo)
 "mF" = (
@@ -1318,7 +1454,7 @@
 /mob/living/carbon/human/species/monkey{
 	faction = list("neutral","Syndicate")
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/cruiser_dock/medical/virology)
 "mY" = (
 /obj/structure/bed,
@@ -1349,6 +1485,13 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/commons/dorms)
+"nr" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "nB" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
@@ -1467,28 +1610,35 @@
 /area/cruiser_dock/heads/cmaa)
 "oD" = (
 /obj/effect/turf_decal/siding/blue,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
 "oF" = (
 /obj/effect/turf_decal/siding/blue/corner{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
 "oL" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
 "oN" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "oO" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
 "oY" = (
@@ -1539,10 +1689,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
-"pQ" = (
-/obj/structure/lattice,
-/turf/template_noop,
-/area/cruiser_dock/medical/virology)
 "pS" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -1555,6 +1701,8 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/item/clothing/under/rank/cargo/qm/syndie,
+/obj/item/clothing/neck/cloak/qm/syndie,
 /turf/open/floor/wood,
 /area/cruiser_dock/cargo)
 "pW" = (
@@ -1563,8 +1711,14 @@
 	name = "Kitchen Backroom";
 	req_access_txt = "150"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/service)
+"pY" = (
+/obj/effect/turf_decal/siding/blue,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons/dorms)
 "qa" = (
 /obj/effect/turf_decal/siding/white,
 /obj/machinery/door/airlock/freezer{
@@ -1605,11 +1759,13 @@
 	dir = 1;
 	req_access_txt = "150"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/cruiser_dock/service)
 "qC" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/ceo)
 "qE" = (
@@ -1633,11 +1789,15 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/orange,
 /area/cruiser_dock/cargo)
 "qH" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -1648,6 +1808,7 @@
 	},
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/ceo)
 "qQ" = (
@@ -1658,6 +1819,9 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/cruiser_dock/cargo)
 "qS" = (
@@ -1666,6 +1830,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmaa)
 "qU" = (
@@ -1752,6 +1917,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"rz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/bridge/hallway)
 "rA" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/beakers{
@@ -1792,6 +1963,7 @@
 	},
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/cargo)
 "rV" = (
@@ -1858,6 +2030,8 @@
 /area/cruiser_dock/medical)
 "sk" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "ss" = (
@@ -1871,6 +2045,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
 "sw" = (
@@ -1941,6 +2116,7 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/cafeteria,
 /area/cruiser_dock/service)
 "tb" = (
@@ -1948,6 +2124,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
 "te" = (
@@ -1955,6 +2132,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "tf" = (
@@ -1965,6 +2143,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "tg" = (
@@ -1983,6 +2162,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "tj" = (
@@ -1993,6 +2173,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "tl" = (
@@ -2004,6 +2185,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
 "tr" = (
@@ -2011,6 +2193,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "ts" = (
@@ -2023,6 +2206,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "tD" = (
@@ -2033,6 +2217,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmaa)
 "tH" = (
@@ -2056,7 +2241,14 @@
 "tR" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
+/area/cruiser_dock/brig)
+"tS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "tT" = (
 /obj/structure/table/glass,
@@ -2084,7 +2276,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/cruiser_dock/medical/virology)
 "ue" = (
 /obj/machinery/atmospherics/components/unary/tank/oxygen,
@@ -2135,7 +2327,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/survival_pod,
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/cruiser_dock/medical/virology)
 "uA" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
@@ -2150,6 +2342,9 @@
 /area/cruiser_dock/engineering)
 "uG" = (
 /obj/machinery/chem_master,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "uV" = (
@@ -2179,12 +2374,14 @@
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
 "vr" = (
-/mob/living/simple_animal/slime,
 /turf/open/floor/engine,
 /area/cruiser_dock/research)
 "vs" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 10
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
@@ -2215,6 +2412,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "vS" = (
@@ -2304,6 +2502,7 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "wC" = (
@@ -2315,6 +2514,7 @@
 	name = "Cryopod"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
 "wF" = (
@@ -2478,6 +2678,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "xC" = (
@@ -2512,6 +2713,8 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "xH" = (
@@ -2537,6 +2740,7 @@
 /area/cruiser_dock/service)
 "xS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
 "ya" = (
@@ -2566,6 +2770,7 @@
 /area/cruiser_dock/brig)
 "yG" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
 "yL" = (
@@ -2631,6 +2836,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
+"zc" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/circuit/green,
+/area/cruiser_dock/brig)
 "ze" = (
 /turf/open/floor/iron/dark/red/side{
 	dir = 10
@@ -2675,6 +2889,9 @@
 /area/cruiser_dock/medical)
 "zM" = (
 /obj/machinery/vending/security,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/red/side,
 /area/cruiser_dock/security)
 "zN" = (
@@ -2715,8 +2932,17 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
+"Ah" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/red/corner{
+	dir = 1
+	},
+/area/cruiser_dock/commons)
 "Ai" = (
 /obj/structure/chair{
 	dir = 4
@@ -2749,6 +2975,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
+"AD" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo)
 "AH" = (
 /obj/machinery/light{
 	dir = 4
@@ -2757,6 +2989,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "AI" = (
@@ -2780,6 +3013,7 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "AS" = (
@@ -2803,6 +3037,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "AW" = (
@@ -2826,6 +3061,7 @@
 "Bc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "Bd" = (
@@ -2943,7 +3179,7 @@
 /obj/machinery/door/window/survival_pod{
 	req_access_txt = "150"
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/cruiser_dock/medical/virology)
 "BM" = (
 /obj/machinery/limbgrower,
@@ -2990,6 +3226,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"Cc" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
 "Cf" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
@@ -2997,6 +3239,9 @@
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/spray/chemsprayer/janitor{
 	pixel_y = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
@@ -3010,8 +3255,14 @@
 	dir = 10
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
+"Cn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons/dorms)
 "Cv" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/structure/cable,
@@ -3104,15 +3355,9 @@
 /area/cruiser_dock/security)
 "Dc" = (
 /obj/structure/table,
-/obj/item/clothing/under/rank/prisoner{
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner{
-	pixel_x = 8;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/color/prisoner,
+/obj/item/clothing/under/color/prisoner,
+/obj/item/clothing/under/color/prisoner,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "Dd" = (
@@ -3147,17 +3392,14 @@
 /area/cruiser_dock/heads/admiral)
 "Dt" = (
 /obj/structure/table,
-/obj/item/clothing/under/rank/prisoner/skirt{
-	pixel_x = -6;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner/skirt{
-	pixel_x = 9;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner/skirt,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south,
+/obj/item/clothing/under/color/jumpskirt/prisoner,
+/obj/item/clothing/under/color/jumpskirt/prisoner,
+/obj/item/clothing/under/color/jumpskirt/prisoner,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "Du" = (
@@ -3177,7 +3419,7 @@
 "Dy" = (
 /obj/structure/lattice,
 /turf/template_noop,
-/area/cruiser_dock/vault)
+/area/template_noop)
 "DC" = (
 /obj/structure/table/glass,
 /obj/item/stack/sheet/mineral/plasma{
@@ -3201,6 +3443,9 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/ceo)
 "DH" = (
@@ -3214,6 +3459,12 @@
 /obj/item/storage/box/monkeycubes,
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
+"DJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/red/side{
+	dir = 10
+	},
+/area/cruiser_dock/commons)
 "DN" = (
 /obj/machinery/computer/arcade/amputation{
 	dir = 4
@@ -3258,6 +3509,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
+"Ee" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "Eh" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay";
@@ -3271,6 +3528,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
+"Er" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/service)
 "Et" = (
 /obj/machinery/computer/camera_advanced/xenobio,
 /turf/open/floor/iron/dark,
@@ -3287,6 +3550,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
 "EA" = (
@@ -3308,10 +3572,12 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
 "EI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
 "EL" = (
@@ -3354,6 +3620,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "Ff" = (
@@ -3396,6 +3663,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "FD" = (
@@ -3439,6 +3707,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "FP" = (
@@ -3464,16 +3733,26 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
+"FX" = (
+/obj/structure/closet/secure_closet/evidence{
+	req_one_access_txt = list(150)
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/security)
 "FZ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
 "Gb" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cruiser_dock/bridge/hallway)
 "Gc" = (
@@ -3578,6 +3857,7 @@
 "GP" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
 "GS" = (
@@ -3636,10 +3916,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"HM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/cruiser_dock/brig)
 "HQ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "HU" = (
@@ -3718,6 +4004,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "Iu" = (
@@ -3727,8 +4014,14 @@
 	dir = 8
 	},
 /area/cruiser_dock/security)
+"Iv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood,
+/area/cruiser_dock/brig)
 "Ix" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "Iz" = (
@@ -3737,8 +4030,16 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
+"IB" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/cruiser_dock/medical)
 "IE" = (
 /obj/machinery/computer/aifixer{
 	dir = 8
@@ -3754,8 +4055,13 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
+"IG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/service)
 "IJ" = (
 /obj/machinery/light,
 /turf/open/floor/plating,
@@ -3765,6 +4071,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "IN" = (
@@ -3773,6 +4080,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cruiser_dock/security)
 "IP" = (
@@ -3804,8 +4112,18 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
+"IW" = (
+/obj/structure/chair/stool/bar,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/brig)
+"Jb" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/cruiser_dock/commons)
 "Jf" = (
 /obj/structure/flora/rock/pile,
 /turf/open/floor/grass,
@@ -3861,6 +4179,9 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "Jr" = (
@@ -3877,6 +4198,9 @@
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_research_officer,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cro)
+"JA" = (
+/turf/open/floor/plating,
+/area/cruiser_dock/commons)
 "JI" = (
 /obj/structure/dresser,
 /turf/open/floor/wood,
@@ -3958,6 +4282,9 @@
 /area/cruiser_dock/service)
 "Kr" = (
 /obj/structure/chair/office,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
 "Kt" = (
@@ -3989,10 +4316,19 @@
 /obj/structure/closet/l3closet/virology,
 /turf/open/floor/iron,
 /area/cruiser_dock/medical/virology)
+"KO" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
 "KP" = (
 /obj/machinery/suit_storage_unit/syndicate{
 	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/black;
 	suit_type = /obj/item/clothing/suit/space/syndicate/black
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/security)
@@ -4055,6 +4391,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"Lp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/cruiser_dock/heads/ceo)
 "Lq" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -4068,6 +4408,13 @@
 	icon_state = "wood-broken"
 	},
 /area/cruiser_dock/heads/cl)
+"Lx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons/dorms)
 "LA" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/medical/virology)
@@ -4137,6 +4484,7 @@
 "LS" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "LU" = (
@@ -4152,6 +4500,12 @@
 /obj/item/book/manual/wiki/barman_recipes,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
+"Mk" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock/commons/dorms)
 "Mn" = (
 /turf/closed/wall/mineral/titanium/survival/nodiagonal,
 /area/cruiser_dock/cargo/hangar)
@@ -4161,8 +4515,17 @@
 	initialize_directions = 4;
 	name = "euthanization chamber freezer"
 	},
+/obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"Mq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
+"Ms" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "Mv" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/shaker{
@@ -4175,6 +4538,7 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "My" = (
@@ -4203,6 +4567,11 @@
 	dir = 9
 	},
 /area/cruiser_dock/commons)
+"MH" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/cruiser_dock/medical)
 "MI" = (
 /turf/open/floor/iron/dark/red/corner,
 /area/cruiser_dock/commons)
@@ -4246,6 +4615,13 @@
 	dir = 1
 	},
 /area/cruiser_dock/vault)
+"MZ" = (
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
 "Na" = (
 /obj/effect/turf_decal/box/corners{
 	dir = 8
@@ -4372,6 +4748,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"Ou" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "Ov" = (
 /obj/structure/rack,
 /obj/item/melee/transforming/energy/sword/saber/blue,
@@ -4418,6 +4800,12 @@
 	},
 /turf/open/floor/iron/dark/red/corner,
 /area/cruiser_dock/vault)
+"OL" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/cruiser_dock/heads/ceo)
 "ON" = (
 /obj/structure/safe,
 /obj/item/storage/box/syndie_kit/chameleon,
@@ -4448,17 +4836,20 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "OT" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
 "OY" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
 "Pb" = (
@@ -4481,11 +4872,17 @@
 /turf/open/floor/grass,
 /area/cruiser_dock/bridge/hallway)
 "Py" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
+"Pz" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line,
+/obj/effect/turf_decal/trimline/blue/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/service)
 "PA" = (
 /obj/item/bedsheet/rd{
 	name = "chief research officer's bedsheet"
@@ -4520,6 +4917,13 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
+"PO" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "PS" = (
@@ -4531,11 +4935,15 @@
 "PT" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/red/corner,
 /area/cruiser_dock/commons)
 "PV" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
@@ -4545,11 +4953,13 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
 "PZ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/red/corner{
 	dir = 8
 	},
@@ -4557,6 +4967,7 @@
 "Qa" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/red/side{
 	dir = 9
 	},
@@ -4579,6 +4990,7 @@
 /obj/machinery/computer/crew{
 	dir = 8
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "QA" = (
@@ -4590,6 +5002,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "QB" = (
@@ -4604,6 +5017,7 @@
 "QC" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark/red/side{
 	dir = 1
 	},
@@ -4654,6 +5068,9 @@
 /obj/item/stack/sheet/mineral/gold{
 	amount = 10
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/red/corner{
 	dir = 1
 	},
@@ -4673,9 +5090,11 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "Rd" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/red/side{
 	dir = 4
 	},
@@ -4689,6 +5108,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/vault)
 "Rl" = (
@@ -4700,6 +5120,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/vault)
 "Ru" = (
@@ -4729,6 +5150,7 @@
 /area/cruiser_dock/cargo/hangar)
 "RA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
 "RC" = (
@@ -4810,6 +5232,7 @@
 	name = "Halmant";
 	real_name = null
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "Sv" = (
@@ -4819,11 +5242,13 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security/armory)
 "Sw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security/armory)
 "Sx" = (
@@ -4869,6 +5294,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "SN" = (
@@ -4905,7 +5331,7 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/cruiser_dock/medical/virology)
 "SW" = (
 /obj/structure/table/wood,
@@ -4928,6 +5354,7 @@
 	name = "Security";
 	req_access_txt = "150"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/red/side{
 	dir = 4
 	},
@@ -4939,6 +5366,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "Te" = (
@@ -4959,6 +5387,7 @@
 /obj/item/clothing/suit/armor/vest/warden/syndicate,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "Th" = (
@@ -5061,6 +5490,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"UA" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/red/side{
+	dir = 8
+	},
+/area/cruiser_dock/security)
 "UF" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -5118,6 +5555,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
 "Vp" = (
@@ -5136,6 +5574,10 @@
 /obj/structure/chair/stool,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
+"Vw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/security)
 "Vy" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/admiral)
@@ -5163,7 +5605,7 @@
 /mob/living/carbon/human/species/monkey{
 	faction = list("neutral","Syndicate")
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/cruiser_dock/medical/virology)
 "VO" = (
 /obj/structure/chair/sofa/bench/right{
@@ -5181,6 +5623,10 @@
 	dir = 8
 	},
 /area/cruiser_dock/commons)
+"VZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood,
+/area/cruiser_dock/service)
 "Wb" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "dsarmory";
@@ -5232,8 +5678,13 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/cargo)
+"WA" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/showroomfloor,
+/area/cruiser_dock/service)
 "WK" = (
 /obj/structure/flora/ausbushes/sunnybush,
 /turf/open/floor/grass,
@@ -5299,6 +5750,7 @@
 /area/cruiser_dock/security)
 "XB" = (
 /obj/structure/dresser,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/carpet/orange,
 /area/cruiser_dock/cargo)
 "XC" = (
@@ -5308,6 +5760,7 @@
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "XD" = (
@@ -5353,9 +5806,18 @@
 	dir = 8
 	},
 /area/cruiser_dock/security)
+"XS" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/cruiser_dock/brig)
+"XV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/vault)
 "XZ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "Ya" = (
@@ -5462,6 +5924,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "YY" = (
@@ -5483,6 +5946,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
 "Zo" = (
@@ -5517,6 +5981,9 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/cruiser_dock/cargo)
 "ZA" = (
@@ -5527,6 +5994,12 @@
 	dir = 8
 	},
 /area/cruiser_dock/security)
+"ZG" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "ZI" = (
 /obj/machinery/recharge_station,
 /obj/structure/window/reinforced/survival_pod{
@@ -5537,6 +6010,7 @@
 "ZL" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "ZN" = (
@@ -5545,6 +6019,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "ZT" = (
@@ -5553,6 +6028,7 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 "ZW" = (
@@ -5569,52 +6045,61 @@
 	req_access_txt = "150"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
 
 (1,1,1) = {"
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 LA
 LA
 LA
@@ -5622,68 +6107,76 @@ LA
 LA
 LA
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (2,1,1) = {"
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 LA
 YA
 rA
@@ -5691,169 +6184,193 @@ Ub
 id
 Kt
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (3,1,1) = {"
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 LA
 cL
 cL
 cL
-Vt
+MZ
 Xg
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (4,1,1) = {"
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 LA
 Ig
 Vt
 cL
-cL
+jG
 qV
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (5,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 dl
 dl
@@ -5884,48 +6401,56 @@ Dy
 Dy
 Dy
 Dy
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
 LA
 mT
 SV
 uz
-cL
+jG
 cL
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (6,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 el
-eE
+Mk
 iq
 dl
 lM
@@ -5936,30 +6461,30 @@ rb
 rb
 rb
 dl
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
 Hp
 MQ
 OB
 QU
 SI
 Hp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
 LA
 uc
 VG
@@ -5967,46 +6492,54 @@ BI
 xS
 MJ
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (7,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 eE
 hf
 hf
 jp
-lN
-ng
-oD
+Cn
+iP
+pY
 rb
 rb
 rb
 rb
 dl
-bV
-bV
+wi
+wi
 Hp
 Hp
 Hp
@@ -6017,18 +6550,18 @@ KV
 Hp
 Hp
 Hp
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
 LA
 LA
 LA
@@ -6036,31 +6569,39 @@ LA
 PW
 LA
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (8,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 eJ
 hj
@@ -6068,14 +6609,14 @@ iu
 dl
 lY
 ng
-oD
+pY
 rb
 rb
 rb
 rb
 dl
-bV
-bV
+wi
+wi
 Hp
 IP
 KV
@@ -6086,50 +6627,58 @@ MR
 KV
 Wq
 Hp
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
 Nm
 xS
 Nm
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (9,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 dl
 dl
@@ -6137,14 +6686,14 @@ dl
 dl
 lY
 ng
-oD
+pY
 rb
 rb
 rb
 rb
 dl
-bV
-bV
+wi
+wi
 Hp
 IR
 KV
@@ -6155,65 +6704,73 @@ SO
 KV
 QU
 Hp
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
 Nm
 xS
 Nm
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (10,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 el
-eE
+Mk
 iC
 dl
 lY
 ng
-oD
+pY
 rb
 rb
 rb
 rb
 dl
-bV
-bV
+wi
+wi
 Hp
 IU
 KV
@@ -6224,65 +6781,73 @@ SO
 KV
 WK
 Hp
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
-Nm
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
+li
 xS
-Nm
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+li
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (11,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 eE
 hf
 hf
 js
-lN
-ng
-oD
+Cn
+iP
+pY
 re
 rb
 rb
 rb
 dl
-bV
-bV
+wi
+wi
 Hp
 Jf
 KV
@@ -6293,50 +6858,58 @@ SP
 KV
 WQ
 Hp
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
 Nm
 xS
 Nm
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (12,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 eJ
 hj
@@ -6368,251 +6941,283 @@ Dy
 Dy
 Dy
 Dy
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-bV
-bV
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
+Dy
+wi
+wi
 Nm
 xS
 Nm
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (13,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 dl
 dl
 dl
 dl
-lN
+Lx
 ng
-ng
+iP
 rH
 us
 us
 us
 rm
-bV
-bV
+wi
+wi
 Dy
-bV
-bV
+wi
+wi
 KV
 OR
-MR
+XV
 KV
-bV
-bV
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
-bV
-pQ
-pQ
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
+wi
+Dy
+Dy
 LA
 LA
 tl
 LA
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (14,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 el
-eE
+Mk
 iH
 dl
 lN
 ng
-ng
+iP
 rm
 us
 us
 us
 rm
-bV
-bV
+wi
+wi
 Dy
+wi
+wi
 bV
-bV
-KV
 OR
-MR
+XV
 KV
-bV
-bV
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
-bV
-pQ
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
+wi
+Dy
+wi
 LA
 Do
 xS
 Yw
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (15,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 eE
 hf
 hf
 jO
-lN
-ng
-ng
+Cn
+iP
+iP
 rm
 ut
 ut
 ut
 rm
-bV
-bV
+wi
+wi
 Dy
-bV
-bV
+wi
+wi
 KV
 OR
-MR
-KV
+XV
 bV
-bV
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
-bV
-pQ
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
+wi
+Dy
+wi
 LA
 KJ
 xS
 cz
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (16,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 eJ
 hj
@@ -6626,62 +7231,70 @@ uu
 wF
 uu
 rm
-bV
-bV
+wi
+wi
 Dy
-bV
-bV
+wi
+wi
 KV
 OR
-MR
+XV
 KV
-bV
-bV
+wi
+wi
 Dy
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-pQ
-bV
-bV
-bV
-pQ
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+Dy
+wi
+wi
+wi
+Dy
+wi
 LA
 KJ
 GP
 bK
 LA
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (17,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 dl
 dl
 dl
@@ -6727,99 +7340,115 @@ ci
 LA
 LA
 bR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (18,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
 bU
-bU
+eK
 hu
 hu
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-hu
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+bP
 bU
 bR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (19,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -6832,23 +7461,15 @@ rQ
 bU
 bU
 bU
+PO
 bU
 bU
 bU
 bU
 bU
 bU
+Cc
 bU
-oY
-bU
-bU
-bU
-bU
-bU
-bU
-bU
-bU
-rQ
 bU
 bU
 bU
@@ -6862,33 +7483,49 @@ bU
 bU
 bU
 bU
-hu
+bU
+bU
+rQ
+bU
+bU
+bU
+bU
+bU
+bP
 hq
 bR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (20,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 hq
@@ -6931,33 +7568,41 @@ ST
 ST
 ST
 ST
-hu
+bP
 bU
 bR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (21,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -6977,7 +7622,7 @@ iO
 Jg
 Jg
 iO
-oY
+Cc
 bU
 ST
 Tv
@@ -7000,33 +7645,41 @@ RR
 Gn
 vr
 ST
-hu
+bP
 bU
 cy
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (22,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -7046,7 +7699,7 @@ Hs
 Jk
 KY
 iO
-oY
+Cc
 bU
 ST
 TF
@@ -7069,33 +7722,41 @@ SC
 Jr
 SR
 ST
-hu
+bP
 bU
 cy
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (23,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -7115,7 +7776,7 @@ iO
 Jl
 FG
 iO
-oY
+Cc
 bU
 ST
 TN
@@ -7138,33 +7799,41 @@ Xe
 Xe
 Mp
 ST
-hu
-bU
+bP
+KO
 cy
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (24,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -7184,7 +7853,7 @@ iO
 JK
 FT
 iO
-oY
+Cc
 bU
 ST
 TQ
@@ -7207,33 +7876,41 @@ Tx
 RD
 DT
 ST
-hu
+bP
 bU
 bR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 aE
 Mn
 Mn
 Mn
 aE
-bV
-bV
-bV
+wi
+wi
+wi
 "}
 (25,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -7253,7 +7930,7 @@ iO
 iO
 KZ
 iO
-oY
+Cc
 bU
 ST
 TT
@@ -7269,25 +7946,25 @@ Ff
 dr
 Xe
 eu
-AK
+bs
 ju
 vr
 RR
 tH
 qt
 ST
-hu
+bP
 bU
 bR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 tM
 Ay
 tK
@@ -7295,14 +7972,22 @@ tK
 Mn
 Mn
 Mn
-bV
+wi
 "}
 (26,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
@@ -7322,7 +8007,7 @@ DZ
 vc
 vc
 iO
-oY
+Cc
 bU
 ST
 TU
@@ -7367,11 +8052,19 @@ Mn
 aE
 "}
 (27,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
@@ -7386,12 +8079,12 @@ xi
 vc
 vc
 vc
-zL
+fC
 DZ
 vc
 Le
 iO
-oY
+Cc
 bU
 ST
 Uq
@@ -7436,11 +8129,19 @@ bp
 Aq
 "}
 (28,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 hq
@@ -7455,12 +8156,12 @@ xk
 vc
 vc
 vc
-zL
+MH
 Hw
 JU
 Ln
 iO
-oY
+Cc
 bU
 ST
 Uz
@@ -7505,11 +8206,19 @@ bp
 Aq
 "}
 (29,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
@@ -7524,7 +8233,7 @@ xm
 vc
 BH
 Ec
-FT
+IB
 iO
 Hw
 LG
@@ -7574,11 +8283,19 @@ Mn
 aE
 "}
 (30,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
@@ -7619,20 +8336,20 @@ rC
 hY
 Dh
 gn
-kq
-bV
-bV
-kq
+Dy
+wi
+wi
+Dy
 gn
 qg
 gn
-bV
+wi
 gn
 qg
 gn
-bV
-bV
-bV
+wi
+wi
+wi
 tM
 Ay
 nj
@@ -7640,14 +8357,22 @@ nj
 Mn
 Mn
 Mn
-bV
+wi
 "}
 (31,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -7666,10 +8391,10 @@ FZ
 FZ
 FZ
 Gb
+lp
 Gb
 Gb
-Gb
-Gb
+lp
 Gb
 FZ
 Zn
@@ -7688,35 +8413,43 @@ rC
 hY
 Dh
 gn
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
 Vd
 PI
 Vd
-bV
+wi
 Vd
 PI
 Vd
-bV
-bV
-bV
+wi
+wi
+wi
 aE
 Mn
 Mn
 Mn
 aE
-bV
-bV
-bV
+wi
+wi
+wi
 "}
 (32,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -7736,7 +8469,7 @@ HD
 Eu
 Eu
 Eu
-Eu
+rz
 Eu
 Eu
 Eu
@@ -7757,7 +8490,7 @@ rC
 hY
 Dh
 gn
-bV
+wi
 aE
 Mn
 Mn
@@ -7771,21 +8504,29 @@ Mn
 Mn
 Mn
 aE
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (33,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -7826,7 +8567,7 @@ rC
 hY
 Dh
 gn
-bV
+wi
 tM
 Ay
 zo
@@ -7841,18 +8582,26 @@ tK
 sL
 Mn
 aE
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (34,1,1) = {"
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 cy
 bR
@@ -7895,7 +8644,7 @@ rC
 hY
 Dh
 gn
-bV
+wi
 tM
 Ay
 bp
@@ -7910,20 +8659,28 @@ bp
 tV
 tV
 Aq
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (35,1,1) = {"
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bT
-bU
+JA
 dq
 bU
 bU
@@ -7938,7 +8695,7 @@ iO
 iO
 iO
 Eu
-Gb
+lp
 Eu
 JY
 LM
@@ -7949,7 +8706,7 @@ LN
 UM
 JY
 Eu
-Gb
+lp
 Eu
 ST
 ST
@@ -7962,9 +8719,9 @@ rC
 rC
 rC
 hY
-Dh
+Ou
 gn
-bV
+wi
 tM
 Ay
 Bn
@@ -7979,21 +8736,29 @@ Bn
 tV
 tV
 Aq
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (36,1,1) = {"
-bV
-bV
-bV
-bU
-bU
-bU
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+cv
+JA
+Jb
 bU
 bU
 iR
@@ -8023,7 +8788,7 @@ Eu
 BU
 Dh
 Dh
-Dh
+eR
 Dh
 Dh
 Dh
@@ -8033,7 +8798,7 @@ kG
 hY
 Dh
 gn
-bV
+wi
 tM
 Ay
 bp
@@ -8048,20 +8813,28 @@ bp
 tV
 tV
 Aq
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (37,1,1) = {"
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bk
 bT
-bU
+JA
 dq
 bU
 bU
@@ -8102,7 +8875,7 @@ LS
 LS
 Dh
 gn
-bV
+wi
 tM
 Ay
 AW
@@ -8117,21 +8890,29 @@ nj
 Br
 Mn
 aE
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (38,1,1) = {"
-bV
-bV
-bV
-bU
-bU
-bU
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+cv
+JA
+Jb
 bU
 bU
 iT
@@ -8145,7 +8926,7 @@ iT
 iT
 iT
 Eu
-Gb
+lp
 Eu
 JY
 LN
@@ -8156,7 +8937,7 @@ LN
 Vf
 JY
 Eu
-Gb
+lp
 Eu
 Ya
 Ya
@@ -8171,7 +8952,7 @@ Ya
 LS
 Dh
 gn
-bV
+wi
 aE
 Mn
 Mn
@@ -8185,19 +8966,27 @@ Mn
 Mn
 Mn
 aE
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (39,1,1) = {"
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 cy
 bR
@@ -8240,44 +9029,52 @@ Ya
 LS
 Dh
 gn
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
 Vd
 Rx
 Vd
-bV
+wi
 Vd
 Rx
 Vd
-bV
-bV
-bV
+wi
+wi
+wi
 aE
 Mn
 Mn
 Mn
 aE
-bV
-bV
-bV
+wi
+wi
+wi
 "}
 (40,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
 iT
 kz
-kz
-kz
+WA
+IG
 pW
-sR
+aj
 sR
 sR
 zX
@@ -8309,20 +9106,20 @@ Ya
 LS
 Dh
 gn
-kq
-bV
-bV
-kq
+Dy
+wi
+wi
+Dy
 gn
 qg
 gn
-bV
+wi
 gn
 qg
 gn
-bV
-bV
-bV
+wi
+wi
+wi
 tM
 Ay
 tK
@@ -8330,14 +9127,22 @@ tK
 Mn
 Mn
 Mn
-bV
+wi
 "}
 (41,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -8402,11 +9207,19 @@ Mn
 aE
 "}
 (42,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -8425,10 +9238,10 @@ FZ
 FZ
 FZ
 Gb
+lp
 Gb
 Gb
-Gb
-Gb
+lp
 Gb
 FZ
 FZ
@@ -8445,11 +9258,11 @@ Ya
 Ya
 Ya
 HQ
-Dh
-kG
-Dh
-Dh
-Dh
+Mq
+nr
+Mq
+Mq
+Ou
 Dh
 Dh
 Dh
@@ -8471,11 +9284,19 @@ bp
 Aq
 "}
 (43,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
@@ -8486,7 +9307,7 @@ nP
 qa
 te
 mA
-mA
+Er
 mA
 Cv
 iT
@@ -8540,11 +9361,19 @@ bp
 Aq
 "}
 (44,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
@@ -8578,8 +9407,8 @@ Ne
 eS
 Zo
 yN
-Dh
-Dh
+Ms
+hA
 sk
 xF
 LS
@@ -8609,11 +9438,19 @@ Mn
 aE
 "}
 (45,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 hq
@@ -8633,7 +9470,7 @@ HY
 Km
 LO
 iT
-oY
+Cc
 bU
 SY
 Vh
@@ -8666,8 +9503,8 @@ qI
 mE
 mE
 mE
-QD
-bV
+Lp
+OL
 tM
 Ay
 nj
@@ -8675,14 +9512,22 @@ nj
 Mn
 Mn
 Mn
-bV
+wi
 "}
 (46,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
@@ -8702,13 +9547,13 @@ HZ
 mA
 LP
 iT
-oY
+Cc
 bU
 SY
 Vp
 XD
 Zr
-yG
+by
 Ne
 Ne
 Ne
@@ -8736,29 +9581,37 @@ ly
 DG
 gN
 QD
-bV
+wi
 aE
 Mn
 Mn
 Mn
 aE
-bV
-bV
-bV
+wi
+wi
+wi
 "}
 (47,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 cy
 bU
 bU
 iT
 lg
-mA
-oh
+fV
+Pz
 qB
 tr
 mA
@@ -8771,7 +9624,7 @@ HY
 Kn
 Mj
 iT
-oY
+Cc
 bU
 SY
 Vq
@@ -8789,7 +9642,7 @@ wi
 wi
 wi
 bR
-oY
+Cc
 bU
 Sz
 ue
@@ -8805,22 +9658,30 @@ ri
 RU
 RU
 QD
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (48,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -8840,7 +9701,7 @@ HZ
 mA
 Mv
 iT
-oY
+Cc
 bU
 SY
 Vy
@@ -8858,7 +9719,7 @@ wi
 wi
 wi
 cy
-oY
+Cc
 bU
 fG
 lS
@@ -8874,22 +9735,30 @@ lx
 RU
 tg
 QD
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (49,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -8909,7 +9778,7 @@ iT
 Ko
 My
 iT
-oY
+Cc
 bU
 SY
 Vy
@@ -8927,7 +9796,7 @@ wi
 wi
 wi
 cy
-oY
+Cc
 bU
 Sz
 gh
@@ -8943,22 +9812,30 @@ QD
 QD
 QD
 QD
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (50,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -8973,12 +9850,12 @@ xE
 iT
 CE
 EI
-GE
-GE
-GE
+VZ
+VZ
+VZ
 MA
 iT
-oY
+Cc
 bU
 SY
 Vy
@@ -8996,8 +9873,8 @@ wi
 wi
 wi
 cy
-oY
-bU
+Cc
+hq
 Sz
 Sz
 wC
@@ -9012,22 +9889,30 @@ ts
 ts
 po
 Sz
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (51,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -9047,7 +9932,7 @@ GE
 Kr
 MB
 iT
-oY
+Cc
 bU
 SY
 Vz
@@ -9065,8 +9950,8 @@ wi
 wi
 wi
 cy
-oY
-oY
+Cc
+Cc
 cq
 Rc
 bJ
@@ -9081,22 +9966,30 @@ wt
 wt
 kd
 Sz
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (52,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -9116,7 +10009,7 @@ Ie
 EV
 EV
 iT
-oY
+Cc
 bU
 SY
 VF
@@ -9134,11 +10027,11 @@ wi
 wi
 wi
 bR
-oY
+Cc
 bU
 Sz
 LJ
-LY
+Ee
 DP
 jV
 Sz
@@ -9150,22 +10043,30 @@ ts
 ts
 hc
 Sz
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (53,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 hq
@@ -9219,22 +10120,30 @@ wt
 wt
 kd
 Sz
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (54,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 eK
 hu
@@ -9246,33 +10155,33 @@ hu
 hu
 hu
 hu
-hu
-hu
-hu
-hu
-hu
-hu
-hu
-hu
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
+bP
+bP
+bP
+bP
+bP
+bP
+bP
+bP
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
 Vl
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
-oY
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
 bU
 Sz
 uE
@@ -9288,22 +10197,30 @@ ts
 ts
 po
 Sz
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (55,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bR
 bU
 bU
@@ -9315,15 +10232,15 @@ bU
 rQ
 bU
 bU
-hu
-bU
+bP
+PO
 EZ
 bU
 bU
 bU
 bU
 bU
-oY
+Cc
 bU
 bU
 bU
@@ -9339,7 +10256,7 @@ bU
 bU
 bU
 bU
-oY
+Cc
 bU
 bU
 bU
@@ -9357,22 +10274,30 @@ Sz
 Sz
 Sz
 Sz
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (56,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ab
 ab
@@ -9413,39 +10338,47 @@ cR
 CM
 cR
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (57,1,1) = {"
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 fa
 hw
-iU
+fv
 lF
 lF
 lF
@@ -9453,7 +10386,7 @@ qF
 ab
 vZ
 ya
-hu
+bP
 bU
 Fm
 bR
@@ -9461,7 +10394,7 @@ bR
 bR
 MG
 NI
-oY
+Cc
 bU
 Ta
 VO
@@ -9482,30 +10415,38 @@ AI
 de
 tX
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (58,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ab
 ab
@@ -9513,7 +10454,7 @@ ab
 ab
 ab
 fu
-bA
+XS
 iU
 lF
 lF
@@ -9522,15 +10463,15 @@ lF
 ab
 vZ
 ya
-hu
-bU
+bP
+KO
 Fp
 bR
 bR
 GL
 Ii
 bU
-oY
+Cc
 bU
 bU
 VQ
@@ -9547,34 +10488,42 @@ sc
 sc
 EM
 OT
-AI
+AD
 AI
 bX
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (59,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 af
 bq
@@ -9582,7 +10531,7 @@ bq
 cE
 ab
 fE
-bA
+XS
 iU
 lF
 lF
@@ -9620,30 +10569,38 @@ se
 Na
 AI
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (60,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ah
 bq
@@ -9669,7 +10626,7 @@ bU
 bU
 eK
 PZ
-Ii
+Ah
 bU
 bU
 bU
@@ -9689,30 +10646,38 @@ AI
 AI
 AI
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (61,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ab
 bu
@@ -9728,8 +10693,8 @@ lI
 lI
 lI
 bR
-bR
-bR
+cy
+cy
 bR
 bR
 GM
@@ -9737,7 +10702,7 @@ bU
 bU
 bU
 bU
-oY
+Cc
 bU
 bU
 bU
@@ -9758,30 +10723,38 @@ GH
 AM
 bX
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (62,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 am
 bA
@@ -9807,8 +10780,8 @@ bU
 MI
 oY
 Qa
-Sh
-bU
+DJ
+jc
 Se
 bU
 bU
@@ -9827,30 +10800,38 @@ AI
 AI
 AI
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (63,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 as
 bA
@@ -9858,7 +10839,7 @@ bA
 bA
 dt
 fP
-cM
+HM
 fP
 lI
 mL
@@ -9896,38 +10877,46 @@ cR
 qQ
 cR
 vw
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (64,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 av
 bA
 cn
-bA
-dS
-gf
-cM
+XS
+ZG
+IW
+HM
 fP
 lI
 mM
@@ -9946,49 +10935,57 @@ MN
 wy
 Qd
 MN
-Kv
+Vw
 Qd
 XP
 ZA
 ZA
 wp
 wq
-wq
+UA
 ze
 wp
-bV
-bV
-bV
+wi
+wi
+wi
 cR
 RC
 cR
 RC
 cR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (65,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ay
 bA
@@ -10003,19 +11000,19 @@ mS
 mS
 qS
 tD
-wy
-wy
-wy
-wy
+fd
+fd
+fd
+fd
 FB
-wy
-wy
-wy
-wy
-wy
-wy
-wy
-wy
+fd
+fd
+fd
+fd
+fd
+fd
+fd
+fd
 Ix
 Ix
 Ix
@@ -10025,39 +11022,47 @@ Ix
 Ix
 GF
 wp
-bV
-bV
-bV
+wi
+wi
+wi
 cR
 Zz
 cR
 Zz
 cR
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (66,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 aT
 bA
@@ -10065,7 +11070,7 @@ ct
 cM
 eb
 gu
-cM
+HM
 fP
 lI
 mY
@@ -10074,7 +11079,7 @@ qU
 lI
 wz
 yb
-wy
+fd
 Da
 wp
 yb
@@ -10084,7 +11089,7 @@ yb
 Oc
 Da
 yb
-wy
+fd
 Da
 yb
 Ix
@@ -10094,39 +11099,47 @@ wz
 dd
 wO
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (67,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 aV
 bA
@@ -10134,7 +11147,7 @@ bA
 bA
 ab
 fP
-cM
+HM
 iY
 lI
 lI
@@ -10163,39 +11176,47 @@ cD
 XA
 Gh
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (68,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 bc
 bA
@@ -10206,23 +11227,23 @@ fP
 gy
 fP
 fP
-fP
-fP
-fP
-fP
+lh
+lh
+lh
+lh
 bH
 fP
 Bc
 Dc
 wp
-GS
+FX
 Ix
 Kv
 wp
 Og
 Qe
 Su
-wy
+fd
 wp
 Yi
 Ix
@@ -10232,39 +11253,47 @@ lk
 lk
 lk
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (69,1,1) = {"
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ab
 ab
@@ -10272,12 +11301,12 @@ ab
 ab
 ab
 gy
-cM
-cM
-cM
-cM
-cM
-cM
+HM
+HM
+HM
+HM
+HM
+HM
 gy
 wB
 gy
@@ -10291,7 +11320,7 @@ wp
 Oi
 Kv
 Kv
-wy
+fd
 wp
 Yi
 Ix
@@ -10301,49 +11330,57 @@ lk
 lk
 lk
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (70,1,1) = {"
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 cu
-cu
+Iv
 ej
 gy
+tS
 bA
-bA
-cM
+HM
 bA
 bA
 bA
@@ -10359,7 +11396,7 @@ Kv
 wp
 Op
 Qw
-wy
+fd
 Tf
 wp
 Yi
@@ -10370,50 +11407,58 @@ lk
 lk
 lk
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (71,1,1) = {"
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
-cv
+im
 cT
 ab
 gy
 fP
 fP
 gy
-fP
+aa
 fP
 fP
 tR
@@ -10439,41 +11484,49 @@ lk
 lk
 lk
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (72,1,1) = {"
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ab
 dk
@@ -10488,7 +11541,7 @@ fP
 gy
 ab
 yF
-yF
+zc
 yF
 wp
 yE
@@ -10508,56 +11561,64 @@ lk
 lk
 lk
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (73,1,1) = {"
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 bH
 cw
 cw
 dk
-cu
+Iv
 ie
 ab
-cu
+Iv
 ie
 ab
 fP
 gy
 wD
-cM
-cM
+HM
+HM
 Dv
 wp
 GV
@@ -10577,41 +11638,49 @@ lk
 if
 IJ
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (74,1,1) = {"
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 cx
 cw
@@ -10646,41 +11715,49 @@ lk
 lk
 lk
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
 (75,1,1) = {"
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 ab
 ab
 bH
@@ -10715,35 +11792,35 @@ wp
 yE
 wp
 wp
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+wi
 "}
