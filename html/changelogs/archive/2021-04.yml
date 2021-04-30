@@ -1155,29 +1155,6 @@
   unit0016:
   - rscadd: Deck Officers now have a proper outfit to themselves.
   - rscadd: The NSS Journey now has a common mining shuttle.
-2021-04-28:
-  RatFromTheJungle:
-  - balance: Heretic sickle-sword now does 7 more damage, and has slight armor pen.
-  - balance: Doubled the stamina damage of the abyssal mask.
-  - balance: Gives another starting point to their book.
-  SkyratBot:
-  - bugfix: Fixes misc js and py issues in the codebase (TGUI, CBT, mapmerge) (closes
-      every issue made by ZeWaka, bye felicia)
-  - refactor: The explosive compressor and blastcannon now actually use the bombs
-      they are given. Both have experienced slight changes to their response times
-      as a result.
-  - code_imp: The explosion severity definitions are now the right way round.
-  - code_imp: Most explosions now use named arguments and occur at the exploding object
-      instead of its turf.
-  - bugfix: Fixes service borg drinking glass duplicating reagents that it shouldn't.
-  ZephyrTFA:
-  - spellcheck: There is no longer a 'medical cell' inside of Research.
-  linnpap:
-  - bugfix: Makes the colorable leather jacket sprite actually show up
-  unit0016:
-  - rscadd: Several Ambition Templates have been added.
-  - bugfix: All chameleon items (Minus the PDA) Now show up in the cafe.
-  - bugfix: Vault door panels no longer lead to the matrix.
 2021-04-30:
   Balky Goat:
   - rscdel: Removed unused sprites in robots.dmi.
@@ -1193,6 +1170,7 @@
   - rscadd: Armadyne has recently received stock of the G11.
   - balance: Ashlizards now spawn every time lavaland loads.
   - rscdel: The Norwind and G11 have been taken out of service.
+  - balance: Traitors now only get 35 TC. Bundles have been balanced accordingly.
   GoldenAlpharex:
   - bugfix: Felinids can now speak Nekomimetic again, the sudden widespread amnesia
       related to how to speak it is now over.
@@ -1214,6 +1192,10 @@
   PositiveEntropy:
   - imageadd: Holding a chemistry/science plumbing device and a Rapid Service Fabricator
       now displays actual in-hand icons for them!
+  RatFromTheJungle:
+  - balance: Heretic sickle-sword now does 7 more damage, and has slight armor pen.
+  - balance: Doubled the stamina damage of the abyssal mask.
+  - balance: Gives another starting point to their book.
   Ryll/Shaps:
   - bugfix: Wizard shielded hardsuit recharge runes are now properly consumed upon
       use
@@ -1230,6 +1212,8 @@
   SkyratBot:
   - rscadd: Some foods from sandwiches to donk pockets to candies and snowcones can
       now be eaten while walking.
+  - bugfix: Fixes misc js and py issues in the codebase (TGUI, CBT, mapmerge) (closes
+      every issue made by ZeWaka, bye felicia)
   - admin: There is now a menu that allows admins to give players spells that execute
       SDQL queries. New users of this menu should study it and its tooltips to figure
       out how to make the most of it.
@@ -1246,12 +1230,19 @@
   - bugfix: Silverscale pirates can now access their turrets.
   - imageadd: Some hidden debug content got some new sprites, should you ever find
       it.
+  - refactor: The explosive compressor and blastcannon now actually use the bombs
+      they are given. Both have experienced slight changes to their response times
+      as a result.
+  - code_imp: The explosion severity definitions are now the right way round.
+  - code_imp: Most explosions now use named arguments and occur at the exploding object
+      instead of its turf.
   - balance: Multiplies corazargh's metabolization by 100x so it's no longer hilariously
       overpowered and only slightly overpowered now. No more 4u deathmixes.
   - bugfix: Fixes building things on top of objects that shouldn't be built upon.
   - bugfix: 'Due to a stabilization in mail uncertainty, crew should see SIGNIFIGANTLY
       less mail per minute arriving in cargo. qol: Close Examine text has been added
       to letters to inform players they can be used with destination taggers.'
+  - bugfix: Fixes service borg drinking glass duplicating reagents that it shouldn't.
   - rscdel: No more crystal invasion event
   - admin: reagent transferring now logs purity
   - bugfix: Gas canisters now sell for the correct value.
@@ -1274,12 +1265,15 @@
   - rscadd: Blind people no longer get hallucinations from supermatter crystals.
   - refactor: Refactored the code responsible for supermatter causing hallucinations
       and psychologists calming the supermatter crystal.
+  ZephyrTFA:
+  - spellcheck: There is no longer a 'medical cell' inside of Research.
   carshalash, Sprites borrowed/stolen from Aurora's Synnono:
   - rscadd: Risotto is now a cookable recipe in the misc category.
   itseasytosee:
   - balance: The hallucination virus symptom has had its stats buffed, check the wiki
       if you are interested.
   linnpap:
+  - bugfix: Makes the colorable leather jacket sprite actually show up
   - rscadd: Added THC
   - rscadd: Added hash (along with hash bricks)
   - rscadd: Added dabs
@@ -1290,6 +1284,8 @@
   - bugfix: Fixed the ability to equip opium poppies as a mask
   tf-4:
   - bugfix: Blue shoes are now visible once more
+  - bugfix: Plasmamen can now join as Security Medics, CDOs, and Security Sergeants
+      without bursting into flame.
   - bugfix: Cryo is connected to the grid shift start on icebox
   - bugfix: Medbay storage is connected to the grid shift start on tram
   - bugfix: Dorm vendors no longer deconstruct into custom vendors
@@ -1297,8 +1293,14 @@
   unit0016:
   - bugfix: The alternate prisoner jumpsuits now work for digitigrade sprites.
   - bugfix: The protective custody jumpskirt is no longer a copy of the original jumpsuit.
+  - rscadd: Several Ambition Templates have been added.
+  - bugfix: All chameleon items (Minus the PDA) Now show up in the cafe.
+  - balance: The Cybersun captain now gets thermal vision goggles instead of a mutator.
+  - bugfix: NSS Journey's atmos is now properly hooked up.
+  - bugfix: Vault door panels no longer lead to the matrix.
   - code_imp: Heretic Ascension now calls "ANNOUNCER_SPOOKY" instead of "ANNOUNCER_SPANOMALIES".
   - balance: The blueshield has been given their own office on the NSS Journey.
+  - bugfix: Interdyne's base control now actually... affects the turrets.
   - bugfix: Power cell sprites are now properly aligned.
   - bugfix: Only one Interdyne outpost can exist at a time.
   werewolfboyfriend:
