@@ -62,6 +62,10 @@
 	name = "White Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch/white
 
+/datum/loadout_item/glasses/biker
+	name = "Biker Goggles"
+	path =/obj/item/clothing/glasses/biker
+
 /datum/loadout_item/glasses/medicpatch
 	name = "Medical Eyepatch"
 	path = /obj/item/clothing/glasses/hud/eyepatch/med

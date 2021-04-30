@@ -96,6 +96,11 @@
 	icon_state = "bands_foot"
 	affected_bodyparts = LEG_RIGHT | LEG_LEFT
 
+/datum/body_marking/other/anklet
+	name = "Anklet"
+	icon_state = "anklet"
+	affected_bodyparts = LEG_RIGHT | LEG_LEFT
+
 /datum/body_marking/secondary
 	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/secondary_markings.dmi'
 	default_color = DEFAULT_SECONDARY
@@ -166,12 +171,12 @@
 	affected_bodyparts = HEAD | CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/secondary/leopard1
-	name = "Leopard (alt 1)"
+	name = "Leopard"
 	icon_state = "leopard1"
-	affected_bodyparts = CHEST
+	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/secondary/leopard2
-	name = "Leopard (alt 2)"
+	name = "Leopard (alt)"
 	icon_state = "leopard2"
 	affected_bodyparts = CHEST
 

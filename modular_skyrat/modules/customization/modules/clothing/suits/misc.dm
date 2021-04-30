@@ -229,3 +229,37 @@
 	mutant_variants = NONE
 	body_parts_covered = CHEST|GROIN|ARMS
 
+
+/obj/item/clothing/suit/gautumn
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "neo american general's coat"
+	desc = "In stark contrast to the undersuit, this large and armored coat is as white as snow, perfect for the bloodstains."
+	icon_state = "soldier"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	armor = list(MELEE = 10, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/suit/autumn
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "neo american officer's coat"
+	desc = "In stark contrast to the undersuit, this coat is a greeny white colour, layered with slight protection against bullets and melee weapons."
+	icon_state = "autumn"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/suit/texas
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "white suit coat"
+	desc = "A white suit coat, perfect for fat oil barons."
+	icon_state = "texas"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|ARMS
+

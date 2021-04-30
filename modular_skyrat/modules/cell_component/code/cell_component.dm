@@ -53,8 +53,6 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 	//So this is shitcode in it's ultimate form. Right now, as far as I can see, this is the only way to handle robot items that would normally use a cell.
 	if(istype(equipment.loc, /obj/item/robot_model)) //Really, I absolutely hate borg code.
-		var/mob/living/silicon/robot/robit = equipment.loc.loc //If this ever runtimes, we'll know about it and be able to refactor this.
-		inserted_cell = robit.cell
 		inside_robot = TRUE
 	else if(start_with_cell)
 		var/obj/item/stock_parts/cell/new_cell
@@ -94,6 +92,9 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 /datum/component/cell/proc/simple_power_use(datum/source, use_amount, mob/user, check_only)
 	SIGNAL_HANDLER
 
+	if(inside_robot)
+		return COMPONENT_POWER_SUCCESS
+
 	if(!use_amount)
 		use_amount = power_use_amount
 
@@ -123,7 +124,8 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	if(!inserted_cell)
 		examine_list += "<span class='danger'>It does not have a cell inserted!</span>"
 	else if(!inside_robot)
-		examine_list += "<span class='notice'>It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left."
+		examine_list += "<span class='notice'>It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left.\
+						Ctrl+Shift+Click to remove the [inserted_cell]."
 	else
 		examine_list += "<span class='notice'>It is drawing power from an external powersource, reading <b>[inserted_cell.percent()]%</b> charge.</span>"
 

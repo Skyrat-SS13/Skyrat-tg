@@ -50,9 +50,14 @@
 	ckeywhitelist = list("bloodrite")
 
 /datum/loadout_item/mask/donator/luchador_mask
-	name = "Luchador mask"
+	name = "Mask of El Red Templar"
 	path = /obj/item/clothing/mask/luchador/enzo
 	ckeywhitelist = list("enzoman")
+
+/datum/loadout_item/mask/donator/nightlight_mask
+	name = "FAR-13 SRU"
+	path = /obj/item/clothing/mask/gas/nightlight
+	ckeywhitelist = list("farsightednightlight")
 
 /datum/loadout_item/head/donator/drake_skull
 	name = "Skull of an ashdrake"
