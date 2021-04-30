@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_SENTIENCE = 0,
 	ROLE_FAMILIES = 0,
 	ROLE_HERETIC = 0,
-  ROLE_SERVANT_OF_RATVAR = 14 //SKYRAT EDIT ADDITION
+	ROLE_SERVANT_OF_RATVAR = 14 //SKYRAT EDIT ADDITION
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection
