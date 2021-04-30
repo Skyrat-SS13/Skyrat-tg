@@ -1,3 +1,5 @@
+var/datum/preferences = new
+
 /obj/item/organ/tongue
 	name = "tongue"
 	desc = "A fleshy muscle mostly used for lying."
@@ -46,7 +48,7 @@
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
 
-/obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0)
+/obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0, datum/preferences/prefs)
 	..()
 	if(say_mod && M.dna && M.dna.species)
 		M.dna.species.say_mod = say_mod
@@ -78,17 +80,14 @@
 
 /*SKYRAT EDIT - Adds a snowflake tongue allowing for custom speech quirks*/
 /obj/item/organ/tongue/unique
-	var/datum/preferences/prefs = new
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/unique(datum/preferences/prefs)
-	say_mod = owner.client.prefs.speech_verb
-
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences/prefs)
+	say_mod = owner.client.prefs.speech_verb
 	var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
 	var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
 	/*var/static/regex/custom_quirk_upper = new("[replace_upper]", "g")
@@ -100,6 +99,7 @@
 		message = replacetext(message, replace_upper,uppertext(owner.client.prefs.speech_replace_to))
 		message = replacetext(message, replace_lower,lowertext(owner.client.prefs.speech_replace_to))
 	speech_args[SPEECH_MESSAGE] = message
+
 /*END SKYRAT EDIT*/
 
 /obj/item/organ/tongue/lizard
