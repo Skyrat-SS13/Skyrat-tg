@@ -186,6 +186,11 @@
 	name = "Leather overcoat"
 	path = /obj/item/clothing/suit/jacket/leather/overcoat
 
+/datum/loadout_item/suit/jacket/polyjacketleather
+	name = "Colorable leather jacket"
+	path = /obj/item/clothing/suit/jacket/leather/polychromic
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/suit/jacket/woolcoat
 	name = "Leather overcoat"
 	path = /obj/item/clothing/suit/woolcoat

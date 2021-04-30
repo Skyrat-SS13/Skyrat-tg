@@ -39,13 +39,13 @@
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/cocaine = 5)
 
-/obj/item/reagent_containers/cocaine/attack(mob/M, mob/user, def_zone)
-	if(M == user)
-		M.visible_message("<span class='notice'>[user] starts snorting the [src].</span>")
+/obj/item/reagent_containers/cocaine/attack(mob/target, mob/user, def_zone)
+	if(target == user)
+		target.visible_message("<span class='notice'>[user] starts snorting the [src].</span>")
 		if(do_after(user,30))
-			to_chat(M, "<span class='notice'>You finish snorting the [src].</span>")
+			to_chat(target, "<span class='notice'>You finish snorting the [src].</span>")
 			if(reagents.total_volume)
-				reagents.trans_to(M, reagents.total_volume, transfered_by = user, methods = INGEST)
+				reagents.trans_to(target, reagents.total_volume, transfered_by = user, methods = INGEST)
 			qdel(src)
 
 /obj/item/reagent_containers/cocainebrick

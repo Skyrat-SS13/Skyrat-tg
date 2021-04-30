@@ -9,3 +9,6 @@
 	name = "black bishop's cloak"
 	icon_state = "blackbishopcloak"
 
+/obj/item/clothing/neck/cloak/qm/syndie
+	name = "deck officer's cloak"
+	desc = "A cloak that represents the eternal Cargoslavia. There's little Mosin Nagant emblems woven into the fabric."

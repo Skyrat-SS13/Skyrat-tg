@@ -31,12 +31,6 @@
 	if(allow_rename)
 		rename_wizard()
 
-/datum/antagonist/wizard/proc/register()
-	SSticker.mode.wizards |= owner
-
-/datum/antagonist/wizard/proc/unregister()
-	SSticker.mode.wizards -= src
-
 /datum/antagonist/wizard/create_team(datum/team/wizard/new_team)
 	if(!new_team)
 		return
@@ -122,9 +116,9 @@
 	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
 	/*
 	unregister()
+	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
 	*/
 	//SKYRAT EDIT REMOVAL END
-	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
 	return ..()
 
 /datum/antagonist/wizard/proc/equip_wizard()
@@ -202,12 +196,6 @@
 /datum/antagonist/wizard/apprentice/greet()
 	to_chat(owner, "<B>You are [master.current.real_name]'s apprentice! You are bound by magic contract to follow [master.p_their()] orders and help [master.p_them()] in accomplishing [master.p_their()] goals.")
 	owner.announce_objectives()
-
-/datum/antagonist/wizard/apprentice/register()
-	SSticker.mode.apprentices |= owner
-
-/datum/antagonist/wizard/apprentice/unregister()
-	SSticker.mode.apprentices -= owner
 
 /datum/antagonist/wizard/apprentice/equip_wizard()
 	. = ..()
