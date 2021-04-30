@@ -7,7 +7,7 @@
 
 /obj/item/ammo_casing/caseless/arrow/ash
 	name = "ashen arrow"
-	desc = "An arrow made from wood, hardened by fire"
+	desc = "An arrow made from wood, hardened by fire."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/ammo.dmi'
 	icon_state = "ashenarrow"
 	inhand_icon_state = "ashenarrow"

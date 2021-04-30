@@ -20,7 +20,7 @@
 
 /obj/projectile/bullet/reusable/arrow/bronze
 	name = "Bronze arrow"
-	desc = "A bronze-tipped arrow"
+	desc = "A bronze-tipped arrow."
 	damage = 30
 	armour_penetration = 10
 	ammo_type = /obj/item/ammo_casing/caseless/arrow/bronze

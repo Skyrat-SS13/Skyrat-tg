@@ -19,7 +19,7 @@
 /obj/item/gun/ballistic/tribalbow/shoot_with_empty_chamber()
 	return
 
-/obj/item/gun/ballistic/tribalbow/chamber_round()
+/obj/item/gun/ballistic/tribalbow/chamber_round(keep_bullet = FALSE, spin_cylinder, replace_new_round)
 	chambered = magazine.get_round(1)
 
 /obj/item/gun/ballistic/tribalbow/process_chamber()
@@ -47,6 +47,7 @@
 		update_icon()
 
 /obj/item/gun/ballistic/tribalbow/update_icon()
+	. = ..()
 	icon_state = "[initial(icon_state)]_[get_ammo() ? (chambered ? "firing" : "loaded") : "unloaded"]"
 
 /obj/item/gun/ballistic/tribalbow/can_shoot()
