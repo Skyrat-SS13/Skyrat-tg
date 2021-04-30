@@ -83,11 +83,11 @@ var/datum/preferences = new
 	name = "unique tongue"
 	desc = "A peculiar tongue, likely belonging to one of the many unique species and gene-modded humans in this galaxy."
 	icon_state = "tonguelizard"
-	say_mod = owner.client.prefs.speech_verb
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences/prefs)
+	say_mod = owner.client.prefs.speech_verb
 	var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
 	var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
 	/*var/static/regex/custom_quirk_upper = new("[replace_upper]", "g")
