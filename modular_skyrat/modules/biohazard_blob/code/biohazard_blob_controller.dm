@@ -33,9 +33,9 @@
 
 /datum/biohazard_blob_controller/proc/SpawnExpansion()
 	var/list/turfs = list()
-	var/hatcheries_to_spawn = 4
+	var/hatcheries_to_spawn = 3
 	var/bulbs_to_spawn = rand(3, 5)
-	var/conditioners_to_spawn = 3
+	var/conditioners_to_spawn = 2
 	var/spread_radius = 6
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE

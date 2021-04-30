@@ -407,7 +407,7 @@
 		if(BIO_BLOB_TYPE_FUNGUS)
 			happy_atmos = "miasma=50;TEMP=296"
 		if(BIO_BLOB_TYPE_FIRE)
-			happy_atmos = "o2=3;plasma=30;TEMP=310"
+			happy_atmos = "o2=2;plasma=20;TEMP=200"
 		if(BIO_BLOB_TYPE_EMP)
 			happy_atmos = "n2=30;TEMP=100"
 		if(BIO_BLOB_TYPE_TOXIC)
