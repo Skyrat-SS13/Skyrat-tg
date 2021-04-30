@@ -13835,6 +13835,9 @@
 "aZi" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/table/reinforced,
+/obj/machinery/button/ignition{
+	id = "changelingmoment"
+	},
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "aZj" = (
@@ -14431,6 +14434,7 @@
 	dir = 6
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "baX" = (
@@ -17773,6 +17777,9 @@
 "bkz" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "bkB" = (
@@ -26727,6 +26734,7 @@
 "bLc" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/table,
+/obj/item/assembly/igniter,
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "bLe" = (
@@ -35528,10 +35536,12 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "cya" = (
-/obj/structure/safe/floor,
-/obj/item/toy/figure/clown,
-/turf/open/floor/plating,
-/area/maintenance/fore)
+/obj/item/beacon,
+/obj/machinery/igniter{
+	id = "changelingmoment"
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "cyb" = (
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod One"
@@ -39769,9 +39779,9 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "eZS" = (
-/obj/effect/loot_site_spawner,
-/turf/open/floor/plating,
-/area/maintenance/fore)
+/obj/machinery/atmospherics/components/unary/outlet_injector/on,
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "fak" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -45358,9 +45368,14 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "kOn" = (
-/obj/structure/grille/broken,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "xenobiomain";
+	name = "containment blast door"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /turf/open/floor/plating,
-/area/maintenance/fore)
+/area/science/xenobiology)
 "kOw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	dir = 4
@@ -49433,6 +49448,14 @@
 /obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
+"pqe" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/computer/security/telescreen/research{
+	pixel_x = -2;
+	pixel_y = 32
+	},
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "pqf" = (
 /obj/machinery/shower{
 	dir = 4
@@ -56311,9 +56334,12 @@
 /turf/open/floor/wood,
 /area/security/prison)
 "wnG" = (
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/maintenance/fore)
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4;
+	name = "Injector Intake"
+	},
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "wos" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/chair/pew/right{
@@ -78546,9 +78572,9 @@ xzh
 aqQ
 axq
 arP
-arP
-ayE
-arP
+aqR
+aqR
+aqR
 dFo
 dTG
 rAC
@@ -79061,8 +79087,8 @@ arP
 axq
 arP
 aqR
-kOn
-wnG
+aqR
+aqR
 dFo
 eRH
 kqE
@@ -79574,8 +79600,8 @@ aqQ
 arP
 axq
 arP
-wnG
-arP
+aqR
+aqR
 aqR
 dFo
 dFo
@@ -79831,11 +79857,11 @@ xzh
 aqQ
 axq
 arP
-cya
-arP
 aqR
 aqR
-arP
+aqR
+aqR
+aqR
 aqR
 xIY
 eEw
@@ -80088,11 +80114,11 @@ xzh
 aqQ
 axq
 arP
-arP
-arP
-ayE
-arP
-arP
+aqR
+aqR
+aqR
+aqR
+aqR
 aqR
 arP
 qcH
@@ -80345,7 +80371,7 @@ uRx
 aqQ
 btX
 arP
-eZS
+aqR
 aqR
 aqR
 aqR
@@ -100953,7 +100979,7 @@ xAv
 bDb
 ylY
 aZi
-bMi
+wnG
 bAW
 bID
 bIR
@@ -101207,10 +101233,10 @@ bDb
 xAv
 xAv
 xAv
-xAv
-ylY
+eZS
+kOn
 baW
-bMi
+pqe
 bAW
 bIO
 bIT
@@ -101462,7 +101488,7 @@ bAB
 bBV
 bDb
 bEn
-xAv
+cya
 xAv
 xAv
 aWC
