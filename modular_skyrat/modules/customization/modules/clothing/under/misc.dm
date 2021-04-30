@@ -15,6 +15,18 @@
 	name = "pink mankini"
 	icon_state = "mankini"
 
+/obj/item/clothing/under/misc/stripper/bunnysuit
+	name = "bunny suit"
+	desc = "Makes the wearer more attractive, even men."
+	icon_state = "bunnysuit"
+	can_adjust = TRUE
+	alt_covers_chest = FALSE
+
+/obj/item/clothing/under/misc/stripper/bunnysuit/white
+	name = "white bunny suit"
+	icon_state = "whitebunnysuit"
+	can_adjust = FALSE
+
 /obj/item/clothing/under/croptop
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'

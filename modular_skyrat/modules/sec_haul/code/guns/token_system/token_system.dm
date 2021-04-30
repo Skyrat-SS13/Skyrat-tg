@@ -126,10 +126,6 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pcr"
 		),
-	/obj/item/storage/box/gunset/norwind = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "norwind"
-		),
 	/obj/item/storage/box/gunset/ostwind = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "ostwind"
@@ -157,21 +153,6 @@
 	/obj/item/storage/box/gunset/laser = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "laser"
-		)
-	)
-
-/obj/item/armament_token/g11
-	name = "g11 armament holochip"
-	desc = "A holochip used in any armament vendor, this is for the g11. Do not bend."
-	icon_state = "token_g11"
-	custom_premium_price = PAYCHECK_HARD * 3
-	minimum_sec_level = SEC_LEVEL_RED
-
-/obj/item/armament_token/g11/get_available_gunsets()
-	return list(
-	/obj/item/storage/box/gunset/g11 = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "g11"
 		)
 	)
 
