@@ -1,4 +1,4 @@
-var/client/prefs = new
+//var/client/prefs = new
 
 /obj/item/organ/tongue
 	name = "tongue"
