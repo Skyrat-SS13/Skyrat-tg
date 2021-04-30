@@ -11,9 +11,6 @@
 	var/list/languages_possible
 	var/say_mod = null
 
-	///SKYRAT EDIT - Initialize the client variable
-	var/client = owner.client
-
 	/// Whether the owner of this tongue can taste anything. Being set to FALSE will mean no taste feedback will be provided.
 	var/sense_of_taste = TRUE
 
@@ -86,21 +83,21 @@
 	name = "unique tongue"
 	desc = "With so many different species and gene-modded humans, you aren't quite sure who or what this tongue belongs to."
 	icon_state = "tonguelizard"
-	say_mod = client.prefs.speech_verb
+	say_mod = owner.client.prefs.speech_verb
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args)
-	var/replace_upper = uppertext(client.prefs.speech_replace_from)
-	var/replace_lower = lowertext(client.prefs.speech_replace_from)
+	var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
+	var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
 	/*var/static/regex/custom_quirk_upper = new("[replace_upper]", "g")
 	var/static/regex/custom_quirk_lower = new("[replace_lower]", "g")*/
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		/*message = custom_quirk_upper.Replace(message, uppertext(client.prefs.speech_replace_to))
 		message = custom_quirk_lower.Replace(message, lowertext(client.prefs.speech_replace_to))*/
-		message = replacetext(message, replace_upper,uppertext(client.prefs.speech_replace_to))
-		message = replacetext(message, replace_lower,lowertext(client.prefs.speech_replace_to))
+		message = replacetext(message, replace_upper,uppertext(owner.client.prefs.speech_replace_to))
+		message = replacetext(message, replace_lower,lowertext(owner.client.prefs.speech_replace_to))
 	speech_args[SPEECH_MESSAGE] = message
 /*END SKYRAT EDIT*/
 
