@@ -88,10 +88,10 @@ var/datum/preferences = new
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences/prefs)
 	say_mod = owner.client.prefs.speech_verb
-	var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
-	var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
-	var/static/regex/custom_quirk_upper = new(replace_upper, "g")
-	var/static/regex/custom_quirk_lower = new(replace_lower, "g")
+	//var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
+	//var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
+	var/static/regex/custom_quirk_upper = new(uppertext(owner.client.prefs.speech_replace_from), "g")
+	var/static/regex/custom_quirk_lower = new(lowertext(owner.client.prefs.speech_replace_from), "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = custom_quirk_upper.Replace(message, uppertext(owner.client.prefs.speech_replace_to))
