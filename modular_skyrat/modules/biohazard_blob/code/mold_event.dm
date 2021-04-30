@@ -43,7 +43,7 @@
 		shuffle(turfs)
 		var/turf/picked_turf = pick(turfs)
 		if(turfs.len) //Pick a turf to spawn at if we can
-			if(locate(/obj/structure/biohazard_blob/structure/core) in range(15, picked_turf))
+			if(locate(/obj/structure/biohazard_blob/structure/core) in range(20, picked_turf))
 				turfs -= picked_turf
 				continue
 			var/obj/structure/biohazard_blob/boob = new picked_mold(picked_turf)
