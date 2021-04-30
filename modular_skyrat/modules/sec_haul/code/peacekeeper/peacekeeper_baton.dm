@@ -39,7 +39,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "uk"
 	custom_materials = list(/datum/material/iron = 10000, /datum/material/glass = 10000, /datum/material/silver = 10000)
-	custom_price = PAYCHECK_COMMAND * 15
+	custom_price = PAYCHECK_COMMAND * 20
 
 /obj/item/melee/classic_baton/peacekeeper/proc/convert(datum/source, obj/item/I, mob/user)
 	SIGNAL_HANDLER
