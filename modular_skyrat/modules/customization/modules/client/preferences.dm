@@ -2421,25 +2421,25 @@ GLOBAL_LIST_INIT(food, list(
 						if(!new_verb)
 							to_chat(user, "<font color='red'>Invalid verb. Your verb may only contain the characters A-Z, a-z, - and '.</font>")
 						else if(length(new_verb) < 10 && length(new_verb) > 2)
-							speech_verb = new_verb
+							speech_verb = lowertext(new_verb)
 						else
 							to_chat(user, "<font color='red'>Invalid verb. Your verb must be 3 to 9 characters long. </font>")
 
 				if("speech_rep_from") 
 					var/search_char = input(user, "What character(s) do you wish to replace?", "Character Preference")  as text|null
 					if(search_char)
-						if(length(search_char) < 6 && length(search_char) > 0)
+						if(length(search_char) < 6 && length(search_char) >= 0)
 							speech_replace_from = strip_html_simple(search_char, 6, TRUE)
 						else
-							to_chat(user, "<font color='red'>Invalid input. Must be 1 to 5 characters long. </font>")
+							to_chat(user, "<font color='red'>Invalid input. Cannot be more than 5 characters.</font>")
 
 				if("speech_rep_to") 
 					var/rep_char = input(user, "What do you want to replace those characters with? Do not abuse this feature -- you are expected to stay within the server's HRP guidelines.", "Character Preference")  as text|null
 					if(rep_char)
-						if(length(rep_char) < 6 && length(rep_char) > 0)
+						if(length(rep_char) < 6 && length(rep_char) >= 0)
 							speech_replace_to = strip_html_simple(rep_char, 6, TRUE)
 						else
-							to_chat(user, "<font color='red'>Invalid input. Must be 1 to 5 characters long. </font>")
+							to_chat(user, "<font color='red'>Invalid input. Cannot be more than 5 characters.</font>")
 
 				/*if("tail_lizard")
 					var/new_tail
