@@ -113,13 +113,12 @@
 	for(var/a in get_adjacent_open_turfs(spreaded_resin))
 		var/turf/open/open_turf = a
 		for(var/obj/O in open_turf)
-			if(istype(O, /obj/machinery/door/airlock) || istype(O, /obj/machinery/door/firedoor) || istype(O, /obj/structure/door_assembly))
-				if(O.density)
-					spreaded_resin.do_attack_animation(O, ATTACK_EFFECT_PUNCH)
-					playsound(O, 'sound/effects/attackblob.ogg', 50, TRUE)
-					O.take_damage(40, BRUTE, MELEE, 1, get_dir(O, spreaded_resin))
-					. = RESIN_ATTACKED_DOOR
-					break
+			if(istype(O, /obj/machinery/door/airlock) || istype(O, /obj/machinery/door/firedoor) || istype(O, /obj/machinery/door/window) || istype(O, /obj/structure/door_assembly) || istype(O, /obj/machinery/door/window))
+				spreaded_resin.do_attack_animation(O, ATTACK_EFFECT_PUNCH)
+				playsound(O, 'sound/effects/attackblob.ogg', 50, TRUE)
+				O.take_damage(40, BRUTE, MELEE, 1, get_dir(O, spreaded_resin))
+				. = RESIN_ATTACKED_DOOR
+				break
 		if(.)
 			break
 
