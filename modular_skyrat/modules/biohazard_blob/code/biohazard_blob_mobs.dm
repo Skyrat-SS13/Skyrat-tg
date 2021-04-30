@@ -155,7 +155,6 @@
 	light_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_GREEN
-	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
 	gender = NEUTER
 	wound_bonus = 30
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
