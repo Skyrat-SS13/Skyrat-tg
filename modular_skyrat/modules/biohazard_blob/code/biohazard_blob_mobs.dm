@@ -22,7 +22,7 @@
 	turns_per_move = 4
 	maxHealth = 150
 	health = 150
-	speed = 0.5
+	speed = 0
 	obj_damage = 40
 	melee_damage_lower = 10
 	melee_damage_upper = 15
@@ -81,7 +81,7 @@
 	maxHealth = 70
 	health = 70
 	obj_damage = 30
-	speed = 0.5
+	speed = 0
 	melee_damage_lower = 7
 	melee_damage_upper = 13
 	faction = list(MOLD_FACTION)
@@ -112,7 +112,7 @@
 	turns_per_move = 4
 	maxHealth = 70
 	health = 70
-	speed = 0.5
+	speed = 0
 	obj_damage = 20
 	melee_damage_lower = 7
 	melee_damage_upper = 10
@@ -159,6 +159,9 @@
 	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
 	gender = NEUTER
 	wound_bonus = 30
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = INFINITY
 
 /mob/living/simple_animal/hostile/biohazard_blob/centaur/Initialize()
 	. = ..()

@@ -130,7 +130,7 @@
 				foam.start()
 			if(BIO_BLOB_TYPE_RADIOACTIVE)
 				visible_message("<span class='warning'>The [src] emits a strong radiation pulse!</span>")
-				radiation_pulse(src, 1500, 15, FALSE, FALSE)
+				radiation_pulse(src, 1500, 10, FALSE, TRUE)
 				var/datum/reagents/R = new/datum/reagents(300)
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin/mutagen, 50)
@@ -319,7 +319,7 @@
 			foam.set_up(40, T, R)
 			foam.start()
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
-			radiation_pulse(src, 1500, 15, FALSE, FALSE)
+			radiation_pulse(src, 1500, 15, FALSE, TRUE)
 			empulse(src, 5, 7)
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
@@ -392,7 +392,7 @@
 	max_integrity = 150
 	///The mold atmosphere conditioner will spawn the molds preferred atmosphere every so often.
 	var/happy_atmos = null
-	var/puff_cooldown = 7 SECONDS
+	var/puff_cooldown = 10 SECONDS
 	var/puff_delay = 0
 
 /obj/structure/biohazard_blob/structure/conditioner/Destroy()

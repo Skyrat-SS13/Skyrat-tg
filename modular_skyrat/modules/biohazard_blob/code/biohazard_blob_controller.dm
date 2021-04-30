@@ -1,7 +1,7 @@
 #define SPREAD_PROCESS 2
 #define SPREAD_STALLED_PROCESS 10
 
-#define PROGRESSION_FOR_STRUCTURE 15
+#define PROGRESSION_FOR_STRUCTURE 20
 #define PROGRESSION_RETALIATED 5
 #define STRUCTURE_PROGRESSION_START 20
 
@@ -36,7 +36,7 @@
 	var/hatcheries_to_spawn = 3
 	var/bulbs_to_spawn = rand(3, 5)
 	var/conditioners_to_spawn = 2
-	var/spread_radius = 6
+	var/spread_radius = 5
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE
 	for(var/i in 1 to spread_radius)
