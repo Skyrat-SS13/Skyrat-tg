@@ -30,6 +30,9 @@
 		if(BIO_BLOB_TYPE_TOXIC)
 			color = "#480"
 			resistance_flags = UNACIDABLE | ACID_PROOF
+		if(BIO_BLOB_TYPE_RADIOACTIVE)
+			color = "#80ff00"
+			resistance_flags = ACID_PROOF | FIRE_PROOF //Shit's gonna get hot
 
 /obj/structure/biohazard_blob/structure
 	density = TRUE
@@ -64,6 +67,9 @@
 
 /obj/structure/biohazard_blob/structure/core/toxic
 	blob_type = BIO_BLOB_TYPE_TOXIC
+
+/obj/structure/biohazard_blob/structure/core/radioactive
+	blob_type = BIO_BLOB_TYPE_RADIOACTIVE
 
 /obj/structure/biohazard_blob/structure/core/Initialize()
 	if(!blob_type)
@@ -122,6 +128,15 @@
 				var/datum/effect_system/foam_spread/foam = new
 				foam.set_up(40, my_turf, R)
 				foam.start()
+			if(BIO_BLOB_TYPE_RADIOACTIVE)
+				visible_message("<span class='warning'>The [src] emits a strong radiation pulse!</span>")
+				radiation_pulse(src, 1500, 15, FALSE, FALSE)
+				var/datum/reagents/R = new/datum/reagents(300)
+				R.my_atom = src
+				R.add_reagent(/datum/reagent/toxin/mutagen, 50)
+				var/datum/effect_system/foam_spread/foam = new
+				foam.set_up(50, my_turf, R)
+				foam.start()
 	return ..()
 
 /obj/structure/biohazard_blob/structure/core/update_overlays()
@@ -160,6 +175,8 @@
 			desc += " You can notice small sparks travelling in the vines."
 		if(BIO_BLOB_TYPE_TOXIC)
 			desc += " It feels damp and smells of rat poison."
+		if(BIO_BLOB_TYPE_RADIOACTIVE)
+			desc += " It glows softly."
 	AddComponent(/datum/component/slippery, 80)
 
 /obj/structure/biohazard_blob/resin/update_overlays()
@@ -301,6 +318,15 @@
 			var/datum/effect_system/foam_spread/foam = new
 			foam.set_up(40, T, R)
 			foam.start()
+		if(BIO_BLOB_TYPE_RADIOACTIVE)
+			radiation_pulse(src, 1500, 15, FALSE, FALSE)
+			empulse(src, 5, 7)
+			var/datum/reagents/R = new/datum/reagents(300)
+			R.my_atom = src
+			R.add_reagent(/datum/reagent/toxin/mutagen, 50)
+			var/datum/effect_system/foam_spread/foam = new
+			foam.set_up(50, T, R)
+			foam.start()
 
 	is_full = FALSE
 	name = "empty bulb"
@@ -387,6 +413,8 @@
 			happy_atmos = "n2=50;TEMP=100"
 		if(BIO_BLOB_TYPE_TOXIC)
 			happy_atmos = "miasma=50;TEMP=296"
+		if(BIO_BLOB_TYPE_RADIOACTIVE)
+			happy_atmos = "tritium=50;TEMP=296"
 
 	START_PROCESSING(SSobj, src)
 
@@ -409,7 +437,7 @@
 	max_integrity = 150
 	var/monster_types = list()
 	var/max_spawns = 2
-	var/spawn_cooldown = 1200 //In deciseconds
+	var/spawn_cooldown = 600 //In deciseconds
 
 /obj/structure/biohazard_blob/structure/spawner/Destroy()
 	if(our_controller)
@@ -421,15 +449,14 @@
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/diseased_rat)
-			max_spawns = 2
 			spawn_cooldown = 500
 		if(BIO_BLOB_TYPE_FIRE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler)
 		if(BIO_BLOB_TYPE_EMP)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito)
-			max_spawns = 2
 			spawn_cooldown = 500
 		if(BIO_BLOB_TYPE_TOXIC)
-			monster_types = list(/mob/living/simple_animal/hostile/poison/giant_spider) //Laziness
-
+			monster_types = list(/mob/living/simple_animal/hostile/poison/giant_spider)
+		if(BIO_BLOB_TYPE_RADIOACTIVE)
+			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)
