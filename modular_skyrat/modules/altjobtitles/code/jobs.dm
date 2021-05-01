@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(service_alttitles, list(
 	"Chef", "Butcher", "Culinary Artist", "Sous-Chef", //Cook
 	"Custodian", "Custodial Technicial", "Sanitation Technician", //Janitor
 	"Librarian", "Journalist", "Archivist", //Curator
-	"Psychiatrist", "Therapist", //Psych
+	"Psychiatrist", "Therapist", "Counsellor", //Psych
 	"Internal Affairs Agent", "Human Resources Agent", //Lawyer
 	"Priest", "Preacher", //Chap
 	"Pantomimist", //Mime
