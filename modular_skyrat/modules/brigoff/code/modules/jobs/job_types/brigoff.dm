@@ -3,8 +3,8 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("The Warden and Head of Security")
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "the Warden and Head of Security"
 	selection_color = "#ddddff"
 	minimal_player_age = 7
