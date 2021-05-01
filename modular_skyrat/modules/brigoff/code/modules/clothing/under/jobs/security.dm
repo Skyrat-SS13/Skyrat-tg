@@ -3,7 +3,6 @@
 	name = "brig officer's suit"
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/brigoff/icons/mob/uniform_digi.dmi'
 	icon_state = "brigguard"
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	can_adjust = FALSE
