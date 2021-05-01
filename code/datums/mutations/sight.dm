@@ -42,10 +42,7 @@
 	text_gain_indication = "<span class='notice'>You can see the heat rising off of your skin...</span>"
 	time_coeff = 2
 	instability = 25
-<<<<<<< HEAD
 	locked = TRUE //SKYRAT EDIT ADDITION
-	var/visionflag = TRAIT_THERMAL_VISION
-=======
 	synchronizer_coeff = 1
 	power_coeff = 1
 	energy_coeff = 1
@@ -73,7 +70,6 @@
 
 /obj/effect/proc_holder/spell/self/thermal_vision_activate/cast(list/targets, mob/user = usr)
 	. = ..()
->>>>>>> ac86b15e858 (Reworks thermal mutation. (#57899))
 
 	if(HAS_TRAIT(user,TRAIT_THERMAL_VISION))
 		return
