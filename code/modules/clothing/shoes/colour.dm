@@ -24,10 +24,7 @@
 	name = "blue shoes"
 	permeability_coefficient = 0.01
 	greyscale_colors = "#16a9eb#ffffff"
-<<<<<<< HEAD
-=======
 	permeability_coefficient = 0.01
->>>>>>> 574c81a1436 (Resolve chameleon GAGS item issues (#58808))
 
 /obj/item/clothing/shoes/sneakers/green
 	name = "green shoes"
