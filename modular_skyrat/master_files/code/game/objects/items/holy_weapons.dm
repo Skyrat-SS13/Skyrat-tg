@@ -93,7 +93,7 @@
 /obj/item/nullrod/cultdagger/attack_self(mob/user)
 	if(narsian)
 	else if(user.mind && (user.mind.holy_role))
-		to_chat(user, "<span class='cultlarge'>\"Interesting.\"</span>")
+		to_chat(user, "<span class='cultlarge'>\"Partake in the language of blood..\"</span>")
 		user.grant_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
@@ -107,7 +107,7 @@
 /obj/item/nullrod/claymore/darkblade/attack_self(mob/user)
 	if(narsian)
 	else if(user.mind && (user.mind.holy_role))
-		to_chat(user, "<span class='cultlarge'>\"Interesting.\"</span>")
+		to_chat(user, "<span class='cultlarge'>\"Partake in the language of blood..\"</span>")
 		user.grant_language(/datum/language/narsie, TRUE, TRUE, LANGUAGE_MIND)
 		special_desc_requirement = NONE // No point in keeping something that can't no longer be used
 		narsian = TRUE
