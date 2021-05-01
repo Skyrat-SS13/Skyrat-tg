@@ -187,27 +187,44 @@
 
 	to_chat(user, "<span class='warning'>There is no charge to draw from that APC.</span>")
 
-/obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/A, mob/living/carbon/human/H)
-	H.visible_message("<span class='notice'>[H] inserts a power connector into the [A].</span>", "<span class='notice'>You begin to draw power from the [A].</span>")
-	while(do_after(H, 10, target = A))
-		if(loc != H)
-			to_chat(H, "<span class='warning'>You must keep your connector out while charging!</span>")
+#define IPC_CHARGE_MAX 150
+#define IPC_CHARGE_MIN 50
+#define IPC_CHARGE_PER_NUTRITION 10
+#define IPC_CHARGE_DELAY_PER_100 10
+
+/obj/item/apc_powercord/proc/powerdraw_loop(obj/machinery/power/apc/target_apc, mob/living/carbon/human/user)
+	user.visible_message("<span class='notice'>[user] inserts a power connector into the [target_apc].</span>", "<span class='notice'>You begin to draw power from the [target_apc].</span>")
+
+	while(TRUE)
+		var/power_needed = NUTRITION_LEVEL_WELL_FED - user.nutrition // How much charge do we need in total?
+		// Do we even need anything?
+		if(power_needed <= 0)
+			to_chat(user, "<span class='notice'>You are fully charged.</span>")
 			break
-		if(A.cell.charge == 0)
-			to_chat(H, "<span class='warning'>The [A] doesn't have enough charge to spare.</span>")
+		// Is the APC almost empty?
+		if(target_apc.cell.percent() < 10)
+			to_chat(user, "<span class='warning'>[target_apc]'s emergency power is active.</span>")
 			break
-		A.charging = 1
-		if(A.cell.charge >= 500)
-			do_sparks(1, FALSE, A)
-			H.nutrition += 50
-			A.cell.charge -= 150
-			to_chat(H, "<span class='notice'>You siphon off some of the stored charge for your own use.</span>")
-		else
-			H.nutrition += A.cell.charge/10
-			A.cell.charge = 0
-			to_chat(H, "<span class='notice'>You siphon off as much as the [A] can spare.</span>")
+		// Calculate how much to draw this cycle
+		var/power_use = clamp(power_needed, IPC_CHARGE_MIN, IPC_CHARGE_MAX)
+		power_use = clamp(power_use, 0, target_apc.cell.charge)
+		// Are we able to draw anything?
+		if(power_use==0)
+			to_chat(user, "<span class='warning'>[target_apc] lacks the power to charge you.</span>")
 			break
-		if(H.nutrition > NUTRITION_LEVEL_WELL_FED)
-			to_chat(H, "<span class='notice'>You are now fully charged.</span>")
+		// Calculate the delay.
+		var/power_delay = (power_use/100) * IPC_CHARGE_DELAY_PER_100
+		// Attempt to run a charging cycle.
+		if(!do_after(user, power_delay, target = target_apc))
+			to_chat(user, "<span class='warning'>You accidentally rip the powercord from the APC.</span>")
 			break
-	H.visible_message("<span class='notice'>[H] unplugs from the [A].</span>", "<span class='notice'>You unplug from the [A].</span>")
+		// Use the power and increase nutrition.
+		target_apc.cell.use(power_use)
+		user.nutrition += power_use / IPC_CHARGE_PER_NUTRITION
+
+	user.visible_message("<span class='notice'>[user] unplugs from the [target_apc].</span>", "<span class='notice'>You unplug from the [target_apc].</span>")
+
+#undef IPC_CHARGE_MAX
+#undef IPC_CHARGE_MIN
+#undef IPC_CHARGE_PER_NUTRITION
+#undef IPC_CHARGE_DELAY_PER_100
