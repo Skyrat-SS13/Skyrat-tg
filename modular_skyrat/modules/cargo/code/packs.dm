@@ -450,6 +450,33 @@
                     /obj/item/flashlight,)
 	crate_name = "lamp light crate"
 
+/datum/supply_pack/service/medieval
+	name = "Authentic Renaissance Faire Crate"
+	desc = "Contains two authentic suits of armor, swords, and two bows and cuirass' for the cowards hiding in the back."
+	cost = CARGO_CRATE_VALUE * 30
+	contraband = TRUE
+	contains = list(/obj/item/clothing/suit/armor/riot/knight/red,
+					/obj/item/clothing/gloves/plate/red,
+					/obj/item/clothing/head/helmet/knight/red,
+					/obj/item/clothing/shoes/plate/red,
+					/obj/item/nullrod/claymore,
+					/obj/item/clothing/shoes/plate/blue,
+					/obj/item/clothing/suit/armor/riot/knight/blue,
+					/obj/item/clothing/gloves/plate/blue,
+					/obj/item/clothing/head/helmet/knight/blue,
+					/obj/item/nullrod/claymore,
+					/obj/item/clothing/suit/armor/vest/cuirass,
+					/obj/item/clothing/suit/armor/vest/cuirass,
+					/obj/item/gun/ballistic/bow,
+					/obj/item/gun/ballistic/bow,
+					/obj/item/storage/bag/quiver,
+					/obj/item/storage/bag/quiver,
+					/obj/item/clothing/head/helmet/knight/red,
+					/obj/item/clothing/head/helmet/knight/blue,
+					/obj/item/food/bread)
+	crate_name = "vintage crate"
+	dangerous = TRUE
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Materials & Sheets //////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
