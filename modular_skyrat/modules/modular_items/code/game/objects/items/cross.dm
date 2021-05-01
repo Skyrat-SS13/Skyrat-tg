@@ -11,9 +11,9 @@
 	throwforce = 15
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/crucifix/Initialize()
-	. = ..()
-	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, ITEM_SLOT_HANDS, null, FALSE) //Its a cross, so of course its Holy.
+//obj/item/crucifix/Initialize()
+//	. = ..()
+//	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, ITEM_SLOT_HANDS, null, FALSE) //Its a cross, so of course its Holy.
 
 /datum/crafting_recipe/cross
 	name = "Ornate Cross"
