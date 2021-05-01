@@ -340,7 +340,7 @@
 	//SKYRAT EDIT CHANGE END
 
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
-	new /obj/item/stack/tile/iron(src)
+	new /obj/item/stack/tile/iron/base(src)
 	new /obj/item/crowbar(src)
 
 //	..() SKYRAT EDIT REMOVAL
