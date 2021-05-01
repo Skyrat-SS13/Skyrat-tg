@@ -1,4 +1,4 @@
-/obj/structure/closet/secure_closet/warden/brigoff
+/obj/structure/closet/secure_closet/brigoff
 	icon = 'modular_skyrat/modules/brigoff/icons/lockers/closet.dmi'
 	name = "brig officer riot gear"
 	icon_state = "riot"
