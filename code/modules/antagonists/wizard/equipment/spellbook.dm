@@ -349,10 +349,10 @@
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	return TRUE
 
-/datum/spellbook_entry/item/staffchange
+/*/datum/spellbook_entry/item/staffchange
 	name = "Staff of Change"
 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
-	item_path = /obj/item/gun/magic/staff/change
+	item_path = /obj/item/gun/magic/staff/change */
 
 /datum/spellbook_entry/item/staffanimation
 	name = "Staff of Animation"
