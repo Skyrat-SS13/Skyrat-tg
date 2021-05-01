@@ -248,7 +248,6 @@
 
 /obj/structure/biohazard_blob/structure/bulb
 	name = "empty bulb"
-	density = TRUE
 	icon = 'modular_skyrat/modules/biohazard_blob/icons/blob_bulb.dmi'
 	icon_state = "blob_bulb_empty"
 	density = FALSE
@@ -337,7 +336,15 @@
 	density = FALSE
 	addtimer(CALLBACK(src, .proc/make_full), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
-/obj/structure/biohazard_blob/structure/bulb/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
+/obj/structure/biohazard_blob/structure/bulb/attack_generic(mob/user, damage_amount, damage_type, damage_flag, sound_effect, armor_penetration)
+	if(MOLD_FACTION in user.faction)
+		return ..()
+	discharge()
+	. = ..()
+
+/obj/structure/biohazard_blob/structure/bulb/bullet_act(obj/projectile/P)
+	if(istype(P, /obj/projectile/energy/nuclear_particle) && MOLD_FACTION in user.faction)
+		return ..()
 	discharge()
 	. = ..()
 
@@ -428,6 +435,7 @@
 	holder_turf.atmos_spawn_air(happy_atmos)
 	if(blob_type == BIO_BLOB_TYPE_RADIOACTIVE)
 		fire_nuclear_particle()
+
 /obj/structure/biohazard_blob/structure/spawner
 	name = "hatchery"
 	density = FALSE
