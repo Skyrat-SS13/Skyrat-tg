@@ -82,7 +82,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_OOC,
     name: 'OOC',
     description: 'The bluewall of global OOC messages',
-    selector: '.ooc, .adminooc, .looc',
+    selector: '.ooc, .adminooc, .looc, .rlooc',
   },
   {
     type: MESSAGE_TYPE_ADMINPM,

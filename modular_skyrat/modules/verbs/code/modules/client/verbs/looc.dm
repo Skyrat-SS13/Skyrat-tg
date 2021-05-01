@@ -21,7 +21,7 @@
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<span class='boldannounce'><B>Advertising other servers is not allowed.</B></span>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
 		if(mob.stat)
