@@ -331,6 +331,10 @@
 	name = "Slime Droplet Alt"
 	icon_state = "hair_slimedroplet_alt"
 
+/datum/sprite_accessory/hair/skyrat/newyou
+	name = "New You"
+	icon_state = "hair_newyou"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
@@ -359,3 +363,7 @@
 /datum/sprite_accessory/facial_hair/skyrat/tribeard
 	name = "Tri-beard"
 	icon_state = "facial_tribeard"
+
+/datum/sprite_accessory/facial_hair/skyrat/neckfluff
+	name = "Neckfluff"
+	icon_state = "facial_neckfluff"
