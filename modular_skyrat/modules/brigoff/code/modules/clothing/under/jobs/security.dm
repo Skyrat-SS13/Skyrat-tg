@@ -14,6 +14,5 @@
 	name = "brig officer's skirt"
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/brigoff/icons/mob/uniform_digi.dmi'
 	icon_state = "brigguardw"
 
