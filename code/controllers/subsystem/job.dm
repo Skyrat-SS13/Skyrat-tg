@@ -731,6 +731,13 @@ SUBSYSTEM_DEF(job)
 	if (buckle && isliving(M) && buckle_mob(M, FALSE, FALSE))
 		return
 	..()
+////SKYRAT EDIT BEGIN
+	if(M.job)
+		if(M.job == "Brig Officer")
+			destination = locate(/obj/effect/landmark/start/security_officer) in GLOB.landmarks_list
+			destination.JoinPlayerHere(M, buckle)
+			return TRUE
+//SKYRAT EDIT END
 
 /datum/controller/subsystem/job/proc/SendToLateJoin(mob/M, buckle = TRUE)
 	var/atom/destination
@@ -742,12 +749,6 @@ SUBSYSTEM_DEF(job)
 	if(M.job)
 		if(M.job == "Prisoner")
 			destination = locate(/obj/effect/landmark/start/prisoner) in GLOB.landmarks_list
-			destination.JoinPlayerHere(M, buckle)
-			return TRUE
-
-	if(M.job)
-		if(M.job == "Brig Officer")
-			destination = locate(/obj/effect/landmark/start/security_officer) in GLOB.landmarks_list
 			destination.JoinPlayerHere(M, buckle)
 			return TRUE
 	//SKYRAT EDIT END
