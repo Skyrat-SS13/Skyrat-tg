@@ -170,19 +170,19 @@
 	if(!istype(target, /obj/machinery/power/apc) || !ishuman(user) || !proximity_flag)
 		return ..()
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/obj/machinery/power/apc/A = target
-	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/stomach/robot_ipc/cell = locate(/obj/item/organ/stomach/robot_ipc) in H.internal_organs
+	var/obj/machinery/power/apc/target_apc = target
+	var/mob/living/carbon/human/ipc = user
+	var/obj/item/organ/stomach/robot_ipc/cell = locate(/obj/item/organ/stomach/robot_ipc) in ipc.internal_organs
 	if(!cell)
-		to_chat(H, "<span class='warning'>You try to siphon energy from the [A], but your power cell is gone!</span>")
+		to_chat(ipc, "<span class='warning'>You try to siphon energy from the [target_apc], but your power cell is gone!</span>")
 		return
 
-	if(A.cell && A.cell.charge > 0)
-		if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
+	if(target_apc.cell && target_apc.cell.charge > 0)
+		if(ipc.nutrition >= NUTRITION_LEVEL_WELL_FED)
 			to_chat(user, "<span class='warning'>You are already fully charged!</span>")
 			return
 		else
-			powerdraw_loop(A, H)
+			powerdraw_loop(target_apc, ipc)
 			return
 
 	to_chat(user, "<span class='warning'>There is no charge to draw from that APC.</span>")
