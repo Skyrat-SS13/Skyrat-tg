@@ -254,14 +254,9 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-<<<<<<< HEAD
-		/obj/item/stack/tile/iron,
+		/obj/item/stack/tile/iron/base,
 		/obj/item/stack/cable_coil,
 		/obj/item/lightreplacer/cyborg) // Skyrat Edit - Surprised Engie borgs don't get these
-=======
-		/obj/item/stack/tile/iron/base,
-		/obj/item/stack/cable_coil)
->>>>>>> c0f9d2e7e84 ([READY] Tile Reskinning 2: Epic Winaloo (#58801))
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(/obj/item/borg/stun)
 	cyborg_base_icon = "engineer"
