@@ -28,7 +28,11 @@
 		KIT_BLOODY_SPAI = 3,
 		KIT_STEALTHY = 2,
 		KIT_SCREWED = 2,
+<<<<<<< HEAD
 		KIT_SABOTAGE = 0, //SKYRAT EDIT: ORIGINAL: 2
+=======
+		KIT_SABOTAGE = 3,
+>>>>>>> 574c81a1436 (Resolve chameleon GAGS item issues (#58808))
 		KIT_GUN = 2,
 		KIT_MURDER = 2,
 		KIT_IMPLANTS = 1,
