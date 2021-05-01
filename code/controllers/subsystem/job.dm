@@ -744,6 +744,12 @@ SUBSYSTEM_DEF(job)
 			destination = locate(/obj/effect/landmark/start/prisoner) in GLOB.landmarks_list
 			destination.JoinPlayerHere(M, buckle)
 			return TRUE
+
+	if(M.job)
+		if(M.job == "Brig Officer")
+			destination = locate(/obj/effect/landmark/start/security_officer) in GLOB.landmarks_list
+			destination.JoinPlayerHere(M, buckle)
+			return TRUE
 	//SKYRAT EDIT END
 	if(latejoin_trackers.len)
 		destination = pick(latejoin_trackers)
