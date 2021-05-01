@@ -81,8 +81,6 @@
 /obj/item/clothing/under/rank/security/warden/skirt
 	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/prisoner/skirt
-	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/security/officer/skirt
 	mutant_variants = NONE
