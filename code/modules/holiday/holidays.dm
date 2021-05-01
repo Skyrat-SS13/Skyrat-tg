@@ -168,15 +168,9 @@
 
 /datum/holiday/april_fools
 	name = APRIL_FOOLS
-<<<<<<< HEAD
-	begin_day = 1
-	end_day = 2 // SKYRAT EDIT -- ORIGINALLY 5
-	begin_month = APRIL
-=======
 	begin_month = APRIL
 	begin_day = 1
 	end_day = 2
->>>>>>> 0c5a968a83c (Makes holidays span all timezones by default (#58673))
 
 /datum/holiday/april_fools/celebrate()
 	SSjob.set_overflow_role("Clown")
