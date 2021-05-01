@@ -8,13 +8,13 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
 	icon_state = "posibrain-ipc"
 
-/obj/item/organ/brain/ipc_positron/Insert(mob/living/carbon/C, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/brain/ipc_positron/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
 	..()
-	if(C.stat == DEAD && ishuman(C))
-		var/mob/living/carbon/human/H = C
-		if(H?.dna?.species && (REVIVES_BY_HEALING in H.dna.species.species_traits))
-			if(H.health > 50)
-				H.revive(FALSE)
+	if(user.stat == DEAD && ishuman(user))
+		var/mob/living/carbon/human/user_human = user
+		if(user_human?.dna?.species && (REVIVES_BY_HEALING in user_human.dna.species.species_traits))
+			if(user_human.health > 50)
+				user_human.revive(FALSE)
 
 /obj/item/organ/brain/ipc_positron/emp_act(severity)
 	switch(severity)
