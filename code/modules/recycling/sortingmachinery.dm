@@ -1,7 +1,7 @@
 /obj/structure/big_delivery
 	name = "large parcel"
 	desc = "A large delivery parcel."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "deliverycloset"
 	density = TRUE
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
@@ -176,7 +176,7 @@
 /obj/item/small_delivery
 	name = "parcel"
 	desc = "A brown paper delivery parcel."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "deliverypackage3"
 	inhand_icon_state = "deliverypackage"
 	var/giftwrapped = 0
