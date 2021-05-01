@@ -405,30 +405,6 @@
 	turf_type = /turf/open/floor/pod/dark
 	merge_type = /obj/item/stack/tile/pod/dark
 
-<<<<<<< HEAD
-//Plasteel (normal)
-/obj/item/stack/tile/iron//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-	name = "floor tile"
-	singular_name = "floor tile"
-	desc = "The ground you walk on."
-	icon_state = "tile"
-	inhand_icon_state = "tile"
-	force = 6
-	mats_per_unit = list(/datum/material/iron=500)
-	//throwforce = 10 //ORIGINAL
-	throwforce = 6 //SKYRAT EDIT CHANGE
-	flags_1 = CONDUCT_1
-	turf_type = /turf/open/floor/iron
-	mineralType = "iron"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 70)
-	resistance_flags = FIRE_PROOF
-	matter_amount = 1
-	cost = 125
-	source = /datum/robot_energy_storage/iron
-	merge_type = /obj/item/stack/tile/iron
-
-=======
->>>>>>> c0f9d2e7e84 ([READY] Tile Reskinning 2: Epic Winaloo (#58801))
 /obj/item/stack/tile/plastic
 	name = "plastic tile"
 	singular_name = "plastic floor tile"
