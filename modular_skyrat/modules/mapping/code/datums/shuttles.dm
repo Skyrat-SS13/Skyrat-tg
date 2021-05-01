@@ -25,3 +25,13 @@
 	prefix = "_maps/skyrat/shuttles/"
 	suffix = "cybersun"
 	name = "SCSBC-12"
+
+/obj/docking_port/stationary/picked/cybersun  //I wish whoever made shuttlecode this bad a severely bad day
+	name = "Deep Space"
+	id = "cybersun_home"
+	dheight = 0
+	dir = 2
+	dwidth = 21
+	height = 12
+	width = 17
+	shuttlekeys = list("cybersun")
