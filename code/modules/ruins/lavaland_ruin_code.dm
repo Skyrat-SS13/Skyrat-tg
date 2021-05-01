@@ -77,7 +77,7 @@
 		/obj/item/stack/medical/gauze = /datum/species/golem/cloth,
 		/obj/item/stack/sheet/cloth = /datum/species/golem/cloth,
 		/obj/item/stack/sheet/mineral/adamantine = /datum/species/golem/adamantine,
-		/obj/item/stack/sheet/plastic = /datum/species/golem/plastic,
+
 		/obj/item/stack/sheet/bronze = /datum/species/golem/bronze,
 		/obj/item/stack/sheet/cardboard = /datum/species/golem/cardboard,
 		/obj/item/stack/sheet/leather = /datum/species/golem/leather,
