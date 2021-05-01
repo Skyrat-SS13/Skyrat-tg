@@ -22,6 +22,6 @@
 /datum/map_template/shuttle/cybersun
 	port_id = "cybersun"
 	who_can_purchase = null
-	prefix = "modular_skyrat/modules/mapping/_maps/Shuttles"
-	suffix = "cybersun.dmm"
+	prefix = "_maps/skyrat/shuttles/"
+	suffix = "cybersun"
 	name = "SCSBC-12"
