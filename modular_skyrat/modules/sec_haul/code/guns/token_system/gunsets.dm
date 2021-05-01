@@ -193,10 +193,10 @@
 /obj/item/storage/box/gunset/pcr/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pcr/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pcr/(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
 
 /obj/item/storage/box/gunset/norwind
 	name = "lg-2 norwind supply box"
@@ -318,6 +318,20 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
 
+//////KRAUT SPACE MAGIC!
+/obj/item/storage/box/gunset/g11
+	name = "g11 supply box"
+
+/obj/item/gun/ballistic/automatic/g11/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/g11/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/g11/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
 
 //SECURITY MEDIC
 /obj/item/storage/box/gunset/security_medic

@@ -371,6 +371,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
 	icon_state = "clown_shoes_cute"
 	mutant_variants = NONE
+	resistance_flags = FIRE_PROOF
 
 //Donation reward for Bloodrite
 /obj/item/clothing/under/rank/civilian/clown/britches
@@ -380,6 +381,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	icon_state = "clowndress"
 	mutant_variants = NONE
+	resistance_flags = FIRE_PROOF
 
 //Donation reward for Bloodrite
 /obj/item/clothing/mask/gas/britches
@@ -394,7 +396,16 @@
 	clothing_flags = MASKINTERNALS
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSEYES
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
+
+//Donation reward for Farsighted Nightlight
+/obj/item/clothing/mask/gas/nightlight
+	name = "FAR-13 SRU"
+	desc = "A rare, complex close-fitting respiration unit designed for use by immunocompromised Servelyn personnel. NOTE: Designed for Servelyn personnel only, might not fit other peoples faces."
+	icon_state = "sechailer"
+	inhand_icon_state = "sechailer"
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	w_class = WEIGHT_CLASS_SMALL
 
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
