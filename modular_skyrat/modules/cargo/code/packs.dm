@@ -475,7 +475,6 @@
 					/obj/item/clothing/head/helmet/knight/blue,
 					/obj/item/food/bread)
 	crate_name = "vintage crate"
-	dangerous = TRUE
 
 /datum/supply_pack/service/hydrohelper
 	name = "Hydro-Helper Circuit Pack"
