@@ -1974,6 +1974,7 @@
 "alW" = (
 /obj/item/cigbutt/cigarbutt,
 /obj/effect/decal/cleanable/blood/old,
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "alX" = (
@@ -2876,6 +2877,14 @@
 "aqb" = (
 /obj/structure/closet/secure_closet/blueshield,
 /obj/machinery/firealarm/directional/east,
+/obj/item/clothing/under/rank/centcom/officer_skirt/replica{
+	desc = "A cheaper, unarmored CentCom skirtleneck meant for everyday wear. Somewhat of a status symbol.";
+	name = "\improper Civilian CentCom skirtleneck"
+	},
+/obj/item/clothing/under/rank/centcom/officer/replica{
+	desc = "A cheaper, unarmored CentCom turtleneck meant for everyday wear. Somewhat of a status symbol.";
+	name = "\improper Civilian CentCom turtleneck"
+	},
 /turf/open/floor/wood,
 /area/blueshield)
 "aqc" = (
@@ -3818,6 +3827,7 @@
 	name = "Blast Door Control C";
 	pixel_y = 24
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "aty" = (
@@ -4592,6 +4602,7 @@
 "avX" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/window/reinforced/spawner/north,
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "awe" = (
@@ -4797,6 +4808,7 @@
 /area/commons/dorms)
 "awB" = (
 /obj/structure/closet/wardrobe/pjs,
+/obj/effect/spawner/lootdrop/minor/beret_or_rabbitears,
 /turf/open/floor/iron,
 /area/commons/fitness)
 "awD" = (
@@ -7593,6 +7605,7 @@
 /area/commons/dorms)
 "aGb" = (
 /obj/structure/closet/wardrobe/grey,
+/obj/effect/spawner/lootdrop/minor/kittyears_or_rabbitears,
 /turf/open/floor/iron,
 /area/commons/fitness)
 "aGc" = (
@@ -15281,6 +15294,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 10
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "bdn" = (
@@ -16489,18 +16503,15 @@
 /turf/open/floor/iron,
 /area/commons/fitness)
 "bgT" = (
-/obj/machinery/computer/communications{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/maintenance/two,
+/turf/open/floor/plating,
+/area/maintenance/fore/secondary)
 "bgU" = (
-/obj/structure/chair/comfy/brown{
-	dir = 4
-	},
-/obj/effect/landmark/start/captain,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
+/obj/structure/rack,
+/obj/effect/spawner/lootdrop/maintenance/three,
+/turf/open/floor/plating,
+/area/maintenance/fore/secondary)
 "bgV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/table/wood,
@@ -17075,15 +17086,16 @@
 	name = "Station Intercom (Command)";
 	pixel_x = -28
 	},
-/obj/machinery/suit_storage_unit/captain,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
-"bil" = (
 /obj/machinery/modular_computer/console/preset/id{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
+"bil" = (
+/obj/effect/turf_decal/siding/yellow,
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/commons/fitness)
 "bim" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/table/wood,
@@ -17570,6 +17582,9 @@
 	},
 /obj/machinery/keycard_auth{
 	pixel_y = -24
+	},
+/obj/machinery/computer/communications{
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
@@ -28092,6 +28107,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/commons/storage/tools)
+"bPM" = (
+/obj/structure/window/reinforced/spawner,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/structure/rack,
+/obj/item/gps,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "bPN" = (
 /turf/closed/wall,
 /area/science/misc_lab)
@@ -39298,6 +39322,14 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
+"efu" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/commons/fitness)
 "efX" = (
 /obj/machinery/light{
 	dir = 1
@@ -39417,6 +39449,18 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"emV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain)
+"enl" = (
+/obj/effect/turf_decal/siding/yellow{
+	dir = 8
+	},
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/commons/fitness)
 "eoi" = (
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable,
@@ -41751,6 +41795,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/science/robotics/lab)
+"gTC" = (
+/obj/structure/table/wood,
+/obj/item/toy/figure/captain{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/coin/antagtoken,
+/turf/open/floor/carpet/executive,
+/area/blueshield)
 "gUD" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -43712,6 +43765,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"jaH" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "jbp" = (
 /obj/machinery/light{
 	dir = 8
@@ -44123,6 +44180,18 @@
 	dir = 5
 	},
 /area/security/prison/safe)
+"juQ" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/spawner/lootdrop/refreshing_beverage,
+/turf/open/floor/iron,
+/area/service/bar)
 "jvR" = (
 /obj/machinery/computer/med_data{
 	dir = 4
@@ -45841,6 +45910,11 @@
 	},
 /turf/open/floor/iron,
 /area/commons/vacant_room/commissary)
+"kWp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/commons/fitness)
 "kWH" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
@@ -46343,6 +46417,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/security/prison)
+"lFo" = (
+/obj/effect/landmark/start/hangover,
+/turf/open/water/overlay{
+	desc = "It's a pool for swimming in!";
+	icon_state = "hotspring_tile";
+	name = "pool"
+	},
+/area/commons/fitness)
 "lFP" = (
 /obj/machinery/door/airlock/research{
 	name = "Testing Lab";
@@ -46772,6 +46854,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "lXT" = (
@@ -47065,6 +47148,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/maintenance/port/fore)
+"mqX" = (
+/obj/machinery/suit_storage_unit/captain,
+/turf/open/floor/iron/dark,
+/area/command/heads_quarters/captain)
 "mrg" = (
 /obj/structure/toilet{
 	pixel_y = 8
@@ -47114,6 +47201,13 @@
 "mtK" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/starboard/aft)
+"mtV" = (
+/obj/effect/turf_decal/siding/yellow{
+	dir = 4
+	},
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/commons/fitness)
 "mue" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/darkblue/filled/warning{
@@ -48693,6 +48787,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"nXf" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/commons/fitness)
 "nXi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
@@ -49287,6 +49388,9 @@
 /area/security/prison)
 "oJJ" = (
 /obj/machinery/light,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "oKN" = (
@@ -49991,6 +50095,8 @@
 /obj/item/lighter{
 	pixel_x = 15
 	},
+/obj/item/paper,
+/obj/item/pen/fountain,
 /turf/open/floor/carpet/executive,
 /area/blueshield)
 "pvk" = (
@@ -51183,6 +51289,10 @@
 /area/science/nanite)
 "qGZ" = (
 /obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/toy/balloon/arrest{
+	pixel_x = -9
+	},
 /turf/open/floor/carpet/executive,
 /area/blueshield)
 "qHw" = (
@@ -51459,7 +51569,7 @@
 /area/security/prison)
 "qUn" = (
 /obj/structure/closet/secure_closet/captains,
-/turf/open/floor/wood,
+/turf/open/floor/iron/dark,
 /area/command/heads_quarters/captain)
 "qVn" = (
 /obj/item/radio/intercom{
@@ -56030,6 +56140,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/office)
+"vBq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain)
 "vCg" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -56822,6 +56939,10 @@
 "woJ" = (
 /turf/open/floor/carpet,
 /area/security/prison)
+"wpa" = (
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/commons/fitness)
 "wph" = (
 /obj/docking_port/stationary{
 	dheight = 4;
@@ -58823,6 +58944,11 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/science/mixing)
+"ygs" = (
+/obj/effect/landmark/start/captain,
+/obj/structure/chair/office,
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain)
 "ygD" = (
 /obj/effect/spawner/structure/window/reinforced/tinted,
 /obj/structure/cable,
@@ -72410,7 +72536,7 @@ tux
 otU
 vcc
 lHg
-awW
+bPM
 auP
 auP
 auP
@@ -86532,7 +86658,7 @@ bON
 mSf
 akw
 qGZ
-qGZ
+gTC
 klg
 iIX
 axt
@@ -89138,8 +89264,8 @@ xbg
 xbg
 guz
 sSM
-bnY
-bbw
+emV
+mqX
 aZV
 xzh
 xzh
@@ -89395,7 +89521,7 @@ bik
 aZV
 aZV
 vtB
-bnY
+vBq
 oJJ
 bqH
 bsh
@@ -89647,8 +89773,8 @@ aGv
 aGv
 bek
 bfB
-bgU
 bbw
+ygs
 bjF
 aZV
 bbw
@@ -89904,8 +90030,8 @@ bbw
 bbw
 roW
 bfA
-bgT
-bil
+bbw
+bbw
 bej
 blb
 bmy
@@ -93477,7 +93603,7 @@ fXn
 ofZ
 axV
 sed
-awr
+kuW
 tma
 aCr
 aDY
@@ -93716,7 +93842,7 @@ aiA
 ahn
 apx
 ahn
-asb
+bgT
 anF
 axR
 ahn
@@ -94230,7 +94356,7 @@ ahn
 ahn
 anF
 ahn
-asb
+bgU
 anF
 axR
 aAf
@@ -95004,7 +95130,7 @@ arq
 aso
 avx
 ayB
-ayB
+mtV
 ayB
 ayB
 ayB
@@ -95013,7 +95139,7 @@ aCq
 rQR
 ayz
 hBw
-hBw
+wpa
 hBw
 hBw
 xeQ
@@ -95266,7 +95392,7 @@ azd
 azd
 azd
 aCf
-aCq
+kWp
 aDt
 aBR
 aBR
@@ -95277,7 +95403,7 @@ aBR
 xKS
 jtQ
 hBw
-azr
+efu
 aCu
 fPh
 kWH
@@ -95292,7 +95418,7 @@ aJC
 aXj
 aVy
 aSY
-aVy
+juQ
 bnd
 aYI
 bah
@@ -95786,7 +95912,7 @@ aEM
 aEP
 aGc
 hBw
-bgM
+nXf
 bgM
 axY
 tDC
@@ -96030,7 +96156,7 @@ xzh
 xzh
 arq
 hBw
-axm
+bil
 azd
 azd
 azd
@@ -96290,7 +96416,7 @@ hBw
 axm
 azd
 azd
-azd
+lFo
 azd
 azd
 aCh
@@ -97574,7 +97700,7 @@ arq
 auS
 axM
 azT
-azT
+enl
 azT
 azT
 azT
@@ -105805,7 +105931,7 @@ alP
 bqg
 apE
 anf
-anf
+jaH
 asB
 asB
 asB
