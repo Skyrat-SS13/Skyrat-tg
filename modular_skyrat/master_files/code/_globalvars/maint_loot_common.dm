@@ -1,7 +1,7 @@
 
 GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 	list( //Tiles
-		/obj/item/stack/tile/bronze/thirty = 25,
+		/obj/item/stack/sheet/bronze/thirty,
 		/obj/item/stack/tile/carpet/black/fifty = 25,
 		/obj/item/stack/tile/carpet/blue/fifty = 25,
 		/obj/item/stack/tile/carpet/cyan/fifty = 25,
