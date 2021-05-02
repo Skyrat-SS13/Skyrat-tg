@@ -194,7 +194,7 @@
 
 /obj/item/clothing/suit/toggle/ranger
 	name = "cowboy ponch"
-	desc = "Aim for the Heart, Ramone."
+	desc = "Aim for the Heart, Ramon."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
 	icon_state = "ranger_cloak"
@@ -209,3 +209,15 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
 	icon_state = "polyleatherjacket"
+
+
+/obj/item/clothing/suit/toggle/brit/sec
+	name = "high vis armored vest"
+	desc = "Oi bruv' you got a loicence for that?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "hazardbg"
+	mutant_variants = NONE
+	blood_overlay_type = "coat"
+	togglename = "zipper"
+	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
