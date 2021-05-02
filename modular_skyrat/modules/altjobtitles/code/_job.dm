@@ -58,7 +58,7 @@
 	alt_titles = list("Mutation Researcher")
 
 /datum/job/cargo_technician
-	alt_titles = list("Deck Worker")
+	alt_titles = list("Deck Worker", "Mailman")
 
 /datum/job/shaft_miner
 	alt_titles = list("Excavator")
