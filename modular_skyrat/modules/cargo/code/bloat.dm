@@ -44,6 +44,7 @@
 	contains = list(/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
+crate_name = "armor crate"
 	
 
 //////////////////////////////////////////////////////////////////////////////
