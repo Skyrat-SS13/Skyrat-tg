@@ -62,7 +62,7 @@
 	contains = list(/obj/item/circuitboard/machine/hydroponics,
 					/obj/item/circuitboard/machine/hydroponics,
 					/obj/item/circuitboard/machine/hydroponics)
-	crate_name = "hydro-helper circuit pack"
+	crate_name = "hydroponics crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
 
 //////////////////////////////////////////////////////////////////////////////
