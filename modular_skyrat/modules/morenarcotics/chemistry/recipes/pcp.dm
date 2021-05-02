@@ -6,7 +6,7 @@
 
 /datum/chemical_reaction/pcc
 	results = list(/datum/reagent/pcc = 1)
-	required_reagents = list(/datum/reagent/sodium = 1, /datum/reagent/medicine/c2/multiver = 2)
+	required_reagents = list(/datum/reagent/toxin/cyanide = 1, /datum/reagent/medicine/c2/multiver = 2) //more effort to get it now
 	optimal_ph_min = 1
 	optimal_ph_max = 6
 	H_ion_release = 0.04
