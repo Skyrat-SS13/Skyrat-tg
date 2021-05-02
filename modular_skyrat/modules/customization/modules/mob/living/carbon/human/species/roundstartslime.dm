@@ -111,6 +111,7 @@
 				return
 			var/datum/sprite_accessory/SA = GLOB.sprite_accessories[chosen_key][chosen_name_key]
 			H.mutant_renderkey = "" //Just in case
+			//user.Digitigrade_Leg_Swap(!(DIGITIGRADE in chosen_dna.species.species_traits))
 			if(!SA.factual)
 				if(SA.organ_type)
 					var/obj/item/organ/path = SA.organ_type
@@ -146,6 +147,16 @@
 					new_acc_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(DNA.features, DNA.species)
 					DNA.species.mutant_bodyparts[chosen_key] = new_acc_list
 					DNA.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
+			if (chosen_key == "legs" && chosen_name_key != "Cancel")
+				if (chosen_name_key == "Digitigrade Legs" && !(DIGITIGRADE in DNA.species.species_traits))
+					DNA.species.species_traits += DIGITIGRADE
+				if (chosen_name_key == "Normal Legs" && (DIGITIGRADE in DNA.species.species_traits))
+					DNA.species.species_traits -= DIGITIGRADE
+				H.Digitigrade_Leg_Swap(chosen_name_key == "Normal Legs")
+				H.update_body()
+				H.update_inv_w_uniform()
+				H.update_inv_wear_suit()
+				H.update_inv_shoes()
 			H.update_mutant_bodyparts()
 		if("Markings")
 			var/list/candidates = GLOB.body_marking_sets
