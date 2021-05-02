@@ -343,7 +343,7 @@
 	. = ..()
 
 /obj/structure/biohazard_blob/structure/bulb/bullet_act(obj/projectile/P)
-	if(istype(P, /obj/projectile/energy/nuclear_particle) && MOLD_FACTION in user.faction)
+	if(istype(P, /obj/projectile/energy/nuclear_particle))
 		return ..()
 	discharge()
 	. = ..()
