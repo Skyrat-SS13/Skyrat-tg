@@ -374,3 +374,24 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "qmsynd"
+
+/obj/item/clothing/under/uvf
+	name = "british combat sweater"
+	desc = "Thankfully doesn't include the sash your father wore."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "uvf"
+
+/obj/item/clothing/under/blackfemsuitskirt
+	name = "feminine skirt suit"
+	desc = "Perfect for a secretary that does no work."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "blacklewdskirt"
+
+/obj/item/clothing/under/whiterussian
+	name = "army baron uniform"
+	desc = "Space Communism? That's just like...your opinion man."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "rusuni"
