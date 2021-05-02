@@ -159,7 +159,7 @@
 	name = "Rustbringer's Oath"
 	desc = "Bring 3 corpses onto the transmutation rune. After you finish the ritual rust will now automatically spread from the rune. Your healing on rust is also tripled, while you become extremely more resillient."
 	gain_text = "Champion of rust. Corruptor of steel. Fear the dark for the Rustbringer has come! Rusted Hills, CALL MY NAME!"
-	cost = 6 //SKYRAT EDIT - ORIGINAL: 3
+	cost = 4 //SKYRAT EDIT - ORIGINAL: 3
 	required_atoms = list(/mob/living/carbon/human)
 	route = PATH_RUST
 	var/list/conditional_immunities = list(TRAIT_STUNIMMUNE,TRAIT_SLEEPIMMUNE,TRAIT_PUSHIMMUNE,TRAIT_SHOCKIMMUNE,TRAIT_NOSLIPALL,TRAIT_RADIMMUNE,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RESISTCOLD,TRAIT_RESISTHEAT,TRAIT_PIERCEIMMUNE,TRAIT_BOMBIMMUNE,TRAIT_NOBREATH)
@@ -200,11 +200,11 @@
 	if(!istype(user_loc_turf, /turf/open/floor/plating/rust) || !isliving(user) || !finished)
 		return
 	var/mob/living/carbon/human/human_user = user
-	human_user.adjustBruteLoss(-4, FALSE)
+	human_user.adjustBruteLoss(-3, FALSE) //SKYRAT EDIT - ORIGINAL: 4
 	human_user.adjustFireLoss(-4, FALSE)
-	human_user.adjustToxLoss(-4, FALSE, forced = TRUE)
+	human_user.adjustToxLoss(-2, FALSE, forced = TRUE) //SKYRAT EDIT - ORIGINAL: 4
 	human_user.adjustOxyLoss(-4, FALSE)
-	human_user.adjustStaminaLoss(-20)
+	human_user.adjustStaminaLoss(-10) //SKYRAT EDIT - ORIGINAL: 20
 
 /**
  * #Rust spread datum
