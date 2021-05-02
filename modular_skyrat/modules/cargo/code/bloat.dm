@@ -44,7 +44,7 @@
 	contains = list(/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
-	crate_name = "armor crate"
+	
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
@@ -55,15 +55,6 @@
 /////////////////////////////// Service //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-/datum/supply_pack/service/hydrohelper
-	name = "Hydro-Helper Circuit Pack"
-	desc = "Botany being lazy with something? Being refused circuit boards? Wanting to start your own Gaiatic garden? This pack contains 3 Hydroponic tray circuit boards, to start your own little grow room.
-	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics)
-	crate_name = "hydroponics crate"
-	crate_type = /obj/structure/closet/crate/hydroponics
 
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////////////// Goodies //////////////////////////////////////
