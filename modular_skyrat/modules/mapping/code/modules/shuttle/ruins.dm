@@ -22,10 +22,8 @@
 	shuttlePortId = "cybersun_custom"
 	jumpto_ports = list("cybersun_home" = 1)
 	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral)
-	view_range = 12
+	view_range = 15
 	designate_time = 50
-	x_offset = 9
-	y_offset = 9
 	circuit = /obj/item/circuitboard/computer/cybersun_shuttle_nav
 
 /obj/item/circuitboard/computer/cybersun_shuttle_nav
