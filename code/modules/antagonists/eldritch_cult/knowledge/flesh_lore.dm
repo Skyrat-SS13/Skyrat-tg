@@ -225,7 +225,7 @@
 	gain_text = "Men of this world. Hear me, for the time of the Lord of Arms has come! The Emperor of Flesh guides my army!"
 	desc = "Bring 3 bodies onto a transmutation rune to shed your human form and ascend to untold power."
 	required_atoms = list(/mob/living/carbon/human)
-	cost = 3
+	cost = 5 //SKYRAT EDIT - ORIGINAL: 3
 	route = PATH_FLESH
 
 /datum/eldritch_knowledge/final/flesh_final/on_finished_recipe(mob/living/user, list/atoms, loc)
