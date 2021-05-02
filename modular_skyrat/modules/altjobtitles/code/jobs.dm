@@ -4,7 +4,7 @@ GLOBAL_LIST_INIT(command_alttitles, list(
 	"Security Commander", //HoS
 	"Engineering Foreman", //CE
 	"Silicon Administrator", "Lead Researcher", "Biorobotics Director",//RD
-	"Deck Chief", //QM
+	"Deck Chief", "Cargo Foreman", //QM
 	"Medical Director")) //CMO
 
 
