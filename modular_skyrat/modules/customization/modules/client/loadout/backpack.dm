@@ -2,6 +2,22 @@
 	category = LOADOUT_CATEGORY_BACKPACK
 
 //MISC
+
+/datum/loadout_item/backpack/mailbelt
+	name = "Messenger Belt Bag"
+	path = /obj/item/storage/belt/mailbelt
+	cost = 2
+
+/datum/loadout_item/backpack/mailbelt_white
+	name = "White Belt Bag"
+	path = /obj/item/storage/belt/mailbelt/white
+	cost = 2
+
+/datum/loadout_item/backpack/mailbelt_leather
+	name = "Leather Belt Bag"
+	path = /obj/item/storage/belt/mailbelt/leather
+	cost = 2
+
 /datum/loadout_item/backpack/matches
 	name = "Matchbox"
 	path = /obj/item/storage/box/matches
@@ -238,7 +254,7 @@
 /datum/loadout_item/backpack/plushies/fermis
 	name = "Medcat plushie"
 	path = /obj/item/toy/plush/fermis
-	
+
 /datum/loadout_item/backpack/plushies/chen
 	name = "Securicat plushie"
 	path = /obj/item/toy/plush/fermis/chen
@@ -262,10 +278,6 @@
 /datum/loadout_item/backpack/plushies/sarmie
 	name = "Cosplayer plushie"
 	path = /obj/item/toy/plush/sarmieplush
-
-/datum/loadout_item/backpack/plushies/oglaplush
-	name = "Suspicious lizzy plush"
-	path = /obj/item/toy/plush/oglaplush
 
 /datum/loadout_item/backpack/plushies/arcplush
 	name = "Familiar Lizard plushie"

@@ -1,7 +1,7 @@
 
 GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 	list( //Tiles
-		/obj/item/stack/tile/bronze/thirty = 25,
+		/obj/item/stack/sheet/bronze/thirty,
 		/obj/item/stack/tile/carpet/black/fifty = 25,
 		/obj/item/stack/tile/carpet/blue/fifty = 25,
 		/obj/item/stack/tile/carpet/cyan/fifty = 25,
@@ -197,9 +197,9 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/mask/facehugger/toy = 25,
 		/obj/item/clothing/mask/whistle = 25,
 		/obj/item/clothing/neck/beads = 25,
-		/obj/item/clothing/shoes/wheelys = 100,
-		/obj/item/clothing/shoes/wheelys/rollerskates = 25,
-		/obj/item/clothing/shoes/wheelys/skishoes = 25,
+		/obj/vehicle/ridden/scooter/skateboard/wheelys = 100,
+		/obj/vehicle/ridden/scooter/skateboard/wheelys/rollerskates = 25,
+		/obj/vehicle/ridden/scooter/skateboard/wheelys/skishoes = 25,
 		/obj/item/dualsaber/toy = 25,
 		/obj/item/extendohand/acme = 25,
 		/obj/item/grenade/chem_grenade/glitter/blue = 25,
@@ -212,9 +212,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/gun/ballistic/shotgun/toy/unrestricted = 25,
 		/obj/item/gun/ballistic/shotgun/toy/crossbow = 25,
 		/obj/item/hot_potato/harmless/toy = 25,
-		/obj/item/instrument/saxophone/spectral = 5,
-		/obj/item/instrument/trombone/spectral =5,
-		/obj/item/instrument/trumpet/spectral = 5,
 		/obj/item/laser_pointer = 25,
 		/obj/item/latexballon = 25,
 		/obj/item/megaphone = 25,

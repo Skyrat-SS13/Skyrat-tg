@@ -82,6 +82,10 @@
 	name = "Blue Trenchcoat"
 	path = /obj/item/clothing/suit/frenchtrench
 
+/datum/loadout_item/suit/cossak
+	name = "Ukrainian Coat"
+	path = /obj/item/clothing/suit/cossack
+
 //COATS
 /datum/loadout_item/suit/coat
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_COATS
@@ -185,6 +189,11 @@
 /datum/loadout_item/suit/jacket/overcoatleather
 	name = "Leather overcoat"
 	path = /obj/item/clothing/suit/jacket/leather/overcoat
+
+/datum/loadout_item/suit/jacket/polyjacketleather
+	name = "Colorable leather jacket"
+	path = /obj/item/clothing/suit/jacket/leather/polychromic
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/suit/jacket/woolcoat
 	name = "Leather overcoat"
@@ -352,6 +361,18 @@
 /datum/loadout_item/suit/job/security_jacket
 	name = "Security Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/sec
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_desc = "All Security Personnel"
+
+/datum/loadout_item/suit/job/cossak
+	name = "Ukrainian Security Jacket"
+	path = /obj/item/clothing/suit/cossack/sec
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_desc = "All Security Personnel"
+
+/datum/loadout_item/suit/job/brit
+	name = "High Vis Armored Vest"
+	path = /obj/item/clothing/suit/toggle/brit/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
 	restricted_desc = "All Security Personnel"
 

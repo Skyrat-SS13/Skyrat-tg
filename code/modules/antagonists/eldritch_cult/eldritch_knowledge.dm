@@ -129,7 +129,7 @@
 	var/obj/effect/proc_holder/spell/spell_to_add
 
 /datum/eldritch_knowledge/spell/on_gain(mob/user)
-	spell_to_add = new
+	spell_to_add = new spell_to_add
 	user.mind.AddSpell(spell_to_add)
 	return ..()
 
@@ -273,7 +273,7 @@
 			for(var/obj/item/forbidden_book/book as anything in carbon_user.get_all_gear())
 				if(!istype(book))
 					continue
-				book.charge += 2
+				book.charge += 3 //SKYRAT EDIT: More points for sacrifice
 				break
 
 		if(!heart.target)
