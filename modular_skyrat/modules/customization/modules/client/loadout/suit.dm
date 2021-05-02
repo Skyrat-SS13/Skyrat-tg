@@ -370,6 +370,12 @@
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
 	restricted_desc = "All Security Personnel"
 
+/datum/loadout_item/suit/job/brit
+	name = "High Vis Armored Vest"
+	path = /obj/item/clothing/suit/toggle/brit/sec
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_desc = "All Security Personnel"
+
 /datum/loadout_item/suit/job/british_jacket
 	name = "Peacekeeper Officer Coat"
 	path = /obj/item/clothing/suit/british_officer
