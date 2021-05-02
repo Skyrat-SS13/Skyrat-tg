@@ -136,7 +136,7 @@ GLOBAL_VAR(clockcult_eminence)
 		return FALSE
 	if(M.mind.unconvertable)
 		return FALSE
-	if(iscultist(M) || isconstruct(M) || ispAI(M))
+	if(IS_CULTIST(M) || isconstruct(M) || ispAI(M))
 		return FALSE
 	if(HAS_TRAIT(M, TRAIT_MINDSHIELD))
 		return FALSE

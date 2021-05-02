@@ -100,7 +100,7 @@
 	..()
 	if (slot != SLOT_WEAR_SUIT || !real)
 		return
-	if (iscultist(user))
+	if (IS_CULTIST(user))
 		return
 	else
 		user.dropItemToGround(src)

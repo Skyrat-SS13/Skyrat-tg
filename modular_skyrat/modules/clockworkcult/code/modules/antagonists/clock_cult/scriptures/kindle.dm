@@ -36,7 +36,7 @@
 		playsound(invoker, 'sound/magic/mm_hit.ogg', 50, TRUE)
 		return TRUE
 	//Blood Cultist Effect
-	if(iscultist(M))
+	if(IS_CULTIST(M))
 		M.mob_light(_color = LIGHT_COLOR_BLOOD_MAGIC, _range = 2, _duration = 300)
 		M.stuttering += 15
 		M.Jitter(15)

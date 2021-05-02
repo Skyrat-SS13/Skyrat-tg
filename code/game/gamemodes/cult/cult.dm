@@ -3,7 +3,7 @@
 /datum/game_mode
 	var/list/datum/mind/cult = list()
 
-/proc/iscultist(mob/living/M)
+/proc/IS_CULTIST(mob/living/M)
 	return istype(M) && M.mind && M.mind.has_antag_datum(/datum/antagonist/cult)
 
 /datum/team/cult/proc/is_sacrifice_target(datum/mind/mind)
@@ -20,7 +20,7 @@
 			return FALSE
 		if(specific_cult?.is_sacrifice_target(M.mind))
 			return FALSE
-		if(M.mind.enslaved_to && !iscultist(M.mind.enslaved_to))
+		if(M.mind.enslaved_to && !IS_CULTIST(M.mind.enslaved_to))
 			return FALSE
 		if(M.mind.unconvertable)
 			return FALSE

@@ -112,7 +112,7 @@ GLOBAL_LIST_INIT(clockwork_slabs, list())
 //==================================//
 /obj/item/clockwork/clockwork_slab/attack_self(mob/living/user)
 	. = ..()
-	if(iscultist(user))
+	if(IS_CULTIST(user))
 		to_chat(user, "<span class='big_brass'>You shouldn't be playing with my toys...</span>")
 		user.Stun(60)
 		user.adjust_blindness(150)
