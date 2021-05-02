@@ -51,15 +51,16 @@
 
 // PRISONER
 /obj/item/clothing/under/rank/protcustpskirt
-	name = "protective custody prisoner jumpsuit"
-	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentComm employees."
+	name = "protective custody prisoner jumpskirt"
+	desc = "A mustard coloured prison jumpskirt, often worn by former Security members, informants and former CentComm employees."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
-	icon_state = "prisoner_protcust"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	icon_state = "prisoner_protcust_skirt"
+	body_parts_covered = CHEST|GROIN|ARMS
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/protcustp
 	name = "protective custody prisoner jumpsuit"
@@ -89,10 +90,11 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_superwax_skirt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	body_parts_covered = CHEST|GROIN|ARMS
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
 	name = "high risk prisoner jumpskirt"
@@ -100,10 +102,11 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_highsec_skirt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	body_parts_covered = CHEST|GROIN|ARMS
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/protcustp/lowsecpskirt
 	name = "low security prisoner jumpskirt"
@@ -111,10 +114,11 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_lowsec_skirt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	body_parts_covered = CHEST|GROIN|ARMS
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/protcustp/lowsecp
 	name = "low security prisoner jumpsuit"
@@ -137,5 +141,3 @@
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-
-
