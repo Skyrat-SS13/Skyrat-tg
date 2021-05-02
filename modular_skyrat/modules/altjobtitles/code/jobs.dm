@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(science_alttitles, list(
 
 GLOBAL_LIST_INIT(supply_alttitles, list(
 	"Deck Chief", //QM
-	"Deck Worker", //Cargo
+	"Deck Worker", "Mailman", //Cargo
 	"Excavator")) //Miner
 
 
