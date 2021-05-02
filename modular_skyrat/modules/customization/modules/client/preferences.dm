@@ -972,7 +972,9 @@ GLOBAL_LIST_INIT(food, list(
 										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#16274C'><a href='?_src_=prefs;task=augment_style;slot=[slot_name]'>Style</a>: [print_style]</td></tr>"
 								if(category_name == AUGMENT_CATEGORY_ORGANS && chosen_item)//For Custom Speech Quirks
 									if (chosen_item.name == "Unique tongue")
-										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>Custom verb: <a href='?_src_=prefs;preference=sverb;task=input'>[speech_verb]</a><br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_rep_from;task=input'>[speech_replace_from]</a> with <a href='?_src_=prefs;preference=speech_rep_to;task=input'>[speech_replace_to]</a></td></tr>"
+										dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_rep_from;task=input'>[speech_replace_from]</a> with <a href='?_src_=prefs;preference=speech_rep_to;task=input'>[speech_replace_to]</a></td></tr>"
+										///TODO: Get custom verbs working
+										//dat += "<tr style='vertical-align:top'><td width='100%' style='background-color:#96274C'>Custom verb: <a href='?_src_=prefs;preference=sverb;task=input'>[speech_verb]</a><br>Custom Speech Quirk<br>Replace <a href='?_src_=prefs;preference=speech_rep_from;task=input'>[speech_replace_from]</a> with <a href='?_src_=prefs;preference=speech_rep_to;task=input'>[speech_replace_to]</a></td></tr>"
 								dat += "<tr style='vertical-align:top'><td width='100%' height='100%'>[chosen_item ? "<i>[chosen_item.description]</i>" : ""]</td></tr>"
 								dat += "</table>"
 							dat += "</td>"
@@ -2414,10 +2416,10 @@ GLOBAL_LIST_INIT(food, list(
 					ShowLangMenu(user)
 					return TRUE
 
-				if("sverb") 
+				if("sverb") //TODO: Get this working
 					var/new_verb = input(user, "Choose your character's speech verb, such as says, hisses, chirps, etc. Do not abuse this feature -- you are expected to stay within the server's HRP guidelines.", "Character Preference")  as text|null
 					if(new_verb)
-						new_verb = reject_bad_name(new_verb)
+						new_verb = reject_bad_name(new_verb) //Stealing this for my own function because fuck that I'm lazy
 						if(!new_verb)
 							to_chat(user, "<font color='red'>Invalid verb. Your verb may only contain the characters A-Z, a-z, - and '.</font>")
 						else if(length(new_verb) < 10 && length(new_verb) > 2)
@@ -2426,7 +2428,7 @@ GLOBAL_LIST_INIT(food, list(
 							to_chat(user, "<font color='red'>Invalid verb. Your verb must be 3 to 9 characters long. </font>")
 
 				if("speech_rep_from") 
-					var/search_char = input(user, "What character(s) do you wish to replace?", "Character Preference")  as text|null
+					var/search_char = input(user, "What character(s) do you wish to replace? This supports some basic REGEX.", "Character Preference")  as text|null
 					if(search_char)
 						if(length(search_char) < 6 && length(search_char) >= 0)
 							speech_replace_from = strip_html_simple(search_char, 6, TRUE)

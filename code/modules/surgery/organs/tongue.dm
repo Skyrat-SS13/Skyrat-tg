@@ -87,17 +87,14 @@ var/datum/preferences = new
 	modifies_speech = TRUE
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences/prefs)
-	say_mod = owner.client.prefs.speech_verb
-	//var/replace_upper = uppertext(owner.client.prefs.speech_replace_from)
-	//var/replace_lower = lowertext(owner.client.prefs.speech_replace_from)
+	///TODO: Figure out how to replace say_mod with a pref var
+	//say_mod = owner.client.prefs.speech_verb
 	var/static/regex/custom_quirk_upper = new(uppertext(owner.client.prefs.speech_replace_from), "g")
 	var/static/regex/custom_quirk_lower = new(lowertext(owner.client.prefs.speech_replace_from), "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = custom_quirk_upper.Replace(message, uppertext(owner.client.prefs.speech_replace_to))
 		message = custom_quirk_lower.Replace(message, lowertext(owner.client.prefs.speech_replace_to))
-		//message = replacetext(message, replace_upper,uppertext(owner.client.prefs.speech_replace_to))
-		//message = replacetext(message, replace_lower,lowertext(owner.client.prefs.speech_replace_to))
 	speech_args[SPEECH_MESSAGE] = message
 
 /*END SKYRAT EDIT*/
