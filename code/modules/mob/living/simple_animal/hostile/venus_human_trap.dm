@@ -227,3 +227,10 @@
  */
 /mob/living/simple_animal/hostile/venus_human_trap/proc/remove_vine(datum/beam/vine)
 	vines -= vine
+
+//SKYRAT EDIT ADDITION
+/mob/living/simple_animal/hostile/venus_human_trap/death(gibbed)
+	for(var/i in vines)
+		qdel(i)
+	return ..()
+//SKYRAT EDIT END
