@@ -75,12 +75,14 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/arrivals)
 "aP" = (
-/obj/structure/window/reinforced/spawner/west,
 /obj/effect/turf_decal/trimline/neutral/line{
 	dir = 8
 	},
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "aX" = (
@@ -1265,18 +1267,16 @@
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "iM" = (
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Xenobiology";
-	req_access_txt = "150"
-	},
-/obj/machinery/door/window{
-	dir = 4;
-	name = "Xenobiology";
-	req_access_txt = "150"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/door/window/survival_pod{
+	dir = 4;
+	req_access_txt = "150"
+	},
+/obj/machinery/door/window/survival_pod{
+	dir = 8;
+	req_access_txt = "150"
 	},
 /turf/open/floor/engine,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -1391,11 +1391,13 @@
 /obj/machinery/computer/camera_advanced/xenobio{
 	dir = 4
 	},
-/obj/structure/window/reinforced/spawner/west,
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "ju" = (
@@ -1505,8 +1507,10 @@
 	pixel_x = 5;
 	pixel_y = 10
 	},
-/obj/structure/window/reinforced/spawner/west,
 /obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
 /turf/open/floor/wood,
@@ -1638,14 +1642,16 @@
 /turf/open/floor/stone,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "kw" = (
-/obj/structure/window/reinforced/spawner/east,
-/obj/structure/window/reinforced/spawner,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -1740,12 +1746,14 @@
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "le" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
-/obj/structure/window/reinforced/spawner/north,
 /obj/effect/turf_decal/trimline/neutral/line{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "lh" = (
@@ -2032,9 +2040,11 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "nJ" = (
-/obj/structure/window/spawner,
-/obj/structure/window/spawner/east,
 /obj/structure/flora/grass/jungle,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/grass,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "nK" = (
@@ -2084,6 +2094,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 10
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "oc" = (
@@ -2262,7 +2275,9 @@
 /area/ruin/unpowered/syndicate_lava_base/arrivals)
 "pA" = (
 /obj/machinery/deepfryer,
-/obj/structure/window/reinforced/spawner/north,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "pJ" = (
@@ -2549,9 +2564,11 @@
 /turf/open/floor/plating/grass,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "sP" = (
-/obj/structure/window/spawner,
-/obj/structure/window/spawner/west,
 /obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/grass,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "sV" = (
@@ -2599,13 +2616,15 @@
 /area/ruin/unpowered/syndicate_lava_base/main)
 "um" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
-/obj/structure/window/reinforced/spawner/north,
 /obj/effect/turf_decal/trimline/neutral/line{
 	dir = 1
 	},
 /obj/machinery/light,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "uo" = (
@@ -2672,12 +2691,14 @@
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "vy" = (
-/obj/structure/window/spawner/west,
 /obj/machinery/stasis{
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
 	},
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
@@ -2759,7 +2780,6 @@
 	dir = 4
 	},
 /obj/machinery/processor/slime,
-/obj/machinery/atmospherics/components/unary/portables_connector,
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "wn" = (
@@ -2930,9 +2950,6 @@
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "yL" = (
 /obj/structure/table/glass,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
 /obj/item/storage/box/monkeycubes/syndicate{
 	pixel_y = 5
 	},
@@ -2948,6 +2965,9 @@
 /obj/item/slime_extract/grey{
 	pixel_x = 2;
 	pixel_y = -2
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -3313,8 +3333,11 @@
 	},
 /obj/effect/turf_decal/trimline/neutral/corner,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 6
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "Df" = (
@@ -3496,8 +3519,11 @@
 	},
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 5
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "Fk" = (
@@ -3557,13 +3583,15 @@
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "FA" = (
-/obj/structure/window/reinforced/spawner/east,
 /obj/effect/turf_decal/trimline/neutral/line{
 	dir = 4
 	},
 /obj/structure/cable,
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "FB" = (
@@ -3705,7 +3733,6 @@
 /turf/open/floor/iron/kitchen,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "Hi" = (
-/obj/structure/window/spawner/west,
 /obj/machinery/stasis{
 	dir = 4
 	},
@@ -3714,6 +3741,9 @@
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "Hj" = (
@@ -3895,7 +3925,6 @@
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "IJ" = (
-/obj/structure/window/spawner/north,
 /obj/structure/table,
 /obj/item/storage/box/syringes{
 	pixel_x = 5;
@@ -3904,6 +3933,9 @@
 /obj/item/gun/syringe/syndicate,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
 	},
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
@@ -3917,13 +3949,15 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/arrivals)
 "IN" = (
-/obj/structure/window/spawner/north,
 /obj/structure/closet/secure_closet/medical1{
 	req_access = null;
 	req_access_txt = "150"
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
 	},
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
@@ -4115,8 +4149,11 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 9
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "LK" = (
@@ -4241,8 +4278,12 @@
 /area/ruin/unpowered/syndicate_lava_base/main)
 "MH" = (
 /obj/machinery/griddle,
-/obj/structure/window/reinforced/spawner/north,
-/obj/structure/window/reinforced/spawner/west,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "MI" = (
@@ -4295,14 +4336,16 @@
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "MS" = (
-/obj/structure/window/reinforced/spawner/west,
-/obj/structure/window/reinforced/spawner,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -4332,18 +4375,16 @@
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "Ny" = (
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Xenobiology";
-	req_access_txt = "150"
-	},
-/obj/machinery/door/window{
-	dir = 4;
-	name = "Xenobiology";
-	req_access_txt = "150"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/door/window/survival_pod{
+	dir = 4;
+	req_access_txt = "150"
+	},
+/obj/machinery/door/window/survival_pod{
+	dir = 8;
+	req_access_txt = "150"
 	},
 /turf/open/floor/engine,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -4517,16 +4558,15 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "PE" = (
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Xenobiology";
-	req_access_txt = "150"
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/window/survival_pod{
+	dir = 8;
+	req_access_txt = "150"
+	},
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "PF" = (
@@ -4694,9 +4734,9 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
 	},
-/obj/structure/window/reinforced/spawner,
 /obj/effect/turf_decal/trimline/neutral/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "Si" = (
@@ -4867,7 +4907,10 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet/directional/west,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27;
+	pixel_y = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "Ui" = (
@@ -7415,12 +7458,12 @@ qR
 Nn
 Xr
 xP
-Xr
-Xr
-Xr
-Xr
-Xr
-Xr
+Nn
+Nn
+Nn
+Nn
+Nn
+Nn
 Fu
 Fu
 Fu
