@@ -13,3 +13,4 @@
 	new /obj/item/clothing/shoes/combat/peacekeeper(src)
 	new /obj/item/clothing/head/helmet/riot(src)
 	new /obj/item/shield/riot(src)
+	new /obj/item/clothing/under/rank/security/brigguard(src)

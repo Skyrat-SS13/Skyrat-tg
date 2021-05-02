@@ -16,3 +16,16 @@
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
 	icon_state = "brigguardw"
 
+/obj/item/clothing/under/rank/security/brigguard/sweater
+	desc = "A black combat sweater thrown over the standard issue shirt, perfect for wake up calls."
+	name = "brig officer's sweater"
+	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
+	icon_state = "brigguardsweat"
+
+/obj/item/clothing/under/rank/security/brigguard/sweater/women
+	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
+	icon_state = "brigguardsweatw"
+
+

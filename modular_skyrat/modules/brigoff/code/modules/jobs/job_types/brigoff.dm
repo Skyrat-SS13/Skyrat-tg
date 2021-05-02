@@ -33,7 +33,7 @@
 /datum/outfit/job/brigoff
 	name = "Brig Officer"
 	jobtype = /datum/job/brigoff
-	uniform = /obj/item/clothing/under/rank/security/brigguard
+	uniform = /obj/item/clothing/under/rank/security/brigguard/sweater
 	suit = /obj/item/clothing/suit/toggle/jacket/brigoff
 	shoes = /obj/item/clothing/shoes/laceup
 	ears = /obj/item/radio/headset/headset_sec
