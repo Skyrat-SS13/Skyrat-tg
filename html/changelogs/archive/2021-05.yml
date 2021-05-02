@@ -13,6 +13,14 @@
   - bugfix: 'Fixed an issue where space carps turned grey for a moment when attacking
       something. qol: Light purple space carp variant is now more close to the original.
       Nostalgia! qol: Replaced beige space carp variant with a light red one.'
+  Celotajs:
+  - bugfix: Chameleon sneakers and jumpsuits now work correctly
+  Cheshify:
+  - rscadd: Bows, Arrows, Swords, and Shields for Ashies.
+  LemonInTheDark, duncathan:
+  - refactor: Gas reactions should be cheaper in the standard case
+  - refactor: Moves canisters, pipelines, and tanks to event based processing, if
+      you see something fail to "update" when it really should let me know yeah?
   Les Porter:
   - rscadd: One new hairstyle, New You
   - rscadd: One facial hairstyle, Neckfluff
@@ -26,15 +34,70 @@
       it changes transfer volume.
   - bugfix: Prayers will show a little book next to them again
   - refactor: Cargo Shuttle consoles now rely a lot more on variables instead of hardcoding.
+  - bugfix: Ice Box Station Telecommunication APC shouldn't drain so much at roundstart
+      anymore
+  - rscdel: removed delta roundstart power tools, the room no longer made sense being
+      what it was without that so i turned it into a smoking room style.
+  - rscdel: Nanotrasen, after receiving many complaints, removed the flash that used
+      to sit at the entrance of the science department.
+  - rscadd: MetaStation now has some plumbing water tanks scattered around in high-demand
+      areas for water
+  - rscadd: MetaStation chem lab now has two empty plumbing storage tanks
+  - bugfix: Midround events will now properly poll again.
+  - balance: Thermal is now an active mutation, that has a cooldown and deals damage
+      to your eyes.
+  - bugfix: Tram medbay storage is now wired to the grid at round start.
+  - bugfix: potentially reduces overlay impact on SendMaps
+  - bugfix: Fixes some atmos senstivity stuff, it'll work more consistently now
+  - admin: The greyscale debug menu now has improved functionality involving dirs
+      and changing config types.
   SpaceVampire:
   - bugfix: Heretic Sacrifices now give the correct amount of value.
   - bugfix: Fixed some issues related to weird attack checks.
+  - bugfix: Custom species not having pay-check mods.
   YakumoChen:
   - balance: The EMP Syndicate Bomb has had its name scrubbed off. Better hope that
       bomb you're defusing is one of those instead!
   Yakumochen:
   - spellcheck: Removes nanochips from infiltrator gloves. Makes them more tacticool.
+  cacogen:
+  - code_imp: Universal holidays will cover every timezone by default. This means
+      they'll start 14 hours earlier and last 26 hours longer
+  - code_imp: Shortens Christmas, Halloween, April Fool's Day, New Year's and Valentine's
+      Day periods by one day. They will start 14 hours earlier but only last 2 hours
+      longer
+  - code_imp: US Independence Day, ANZAC Day, Bastille Day and Waitangi Day will begin
+      and end when they do in the countries that celebrate them
   itseastosee:
   - spellcheck: The unknown narrator now properly talks in second person
+  maxymax13, /vg/station, Citadel Station:
+  - imageadd: 3 new variations for wooden tiles are available (large, parquet, and
+      tiled), the same way you color titanium tiles! Remember, use a screwdriver and
+      not a crowbar!
+  - imageadd: A new red planetary pattern design is available for arcade carpet!
   tf-4:
   - bugfix: Ring boxes no longer go invisible when the ring is taken out
+  unit0016:
+  - rscadd: A bunch of new ID card types have been sprung into existence.
+  - balance: There's no longer a roundstart RND console on the NSS Journey. Whoops.
+  - bugfix: A bunch of missing cameras have been implemented into the NSS Journey.
+      Also whoops.
+  - bugfix: Following several attacks by the Animal Rights Consortium, the poor monkies
+      left to rot in genetics can now at least breathe. That should get them off our
+      backs, right?
+  - bugfix: The charlie SM is no longer continously heating the gas it's filtering,
+      leading to a never ending feedback loop.
+  - bugfix: The airlocks in OutOfTime.dmm no longer display the wrong overlays.
+  - imageadd: Sprited a SOULFUL NewSec airlock, though unused.
+2021-05-02:
+  Cheshify:
+  - rscadd: Icebox Map Reset / Merge
+  SkyratBot:
+  - bugfix: fixes stuff made with bronze sheets deconstructing into tiles or not being
+      able to make bronze golems
+  - rscadd: Adds cryopod areas to every in-rotation map. Expect to find them in dorms
+      or recreation areas.
+  unit0016:
+  - bugfix: The NSS Journey is now updated to current floor pathing
+  werewolfboyfriend:
+  - imageadd: Mining carts, trash carts, and package wrapped objects have new sprites.
