@@ -434,6 +434,7 @@
 					//SKYRAT EDIT ADDITION BEGIN
 					/obj/item/clothing/neck/chaplain = 1,
 					/obj/item/clothing/neck/chaplain/black = 1,
+					/obj/item/implanter/mortis = 1,
 					//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/chaplainsuit/clownpriest = 1,
 					/obj/item/clothing/head/clownmitre = 1)
