@@ -252,9 +252,6 @@ GLOBAL_VAR(cult_ratvar)
 					SEND_SOUND(world, 'sound/magic/demon_dies.ogg')
 					to_chat(world, "<span class='ratvar'>You were a fool for underestimating me...</span>")
 					qdel(ratvar_target)
-					for(var/datum/mind/M as() in SSticker.mode?.cult)
-						to_chat(M, "<span class='userdanger'>You feel a stabbing pain in your chest... This can't be happening!</span>")
-						M.current?.dust()
 				return
 
 /obj/ratvar/Bump(atom/A)
