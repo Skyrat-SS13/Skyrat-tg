@@ -111,7 +111,6 @@
 				return
 			var/datum/sprite_accessory/SA = GLOB.sprite_accessories[chosen_key][chosen_name_key]
 			H.mutant_renderkey = "" //Just in case
-			//user.Digitigrade_Leg_Swap(!(DIGITIGRADE in chosen_dna.species.species_traits))
 			if(!SA.factual)
 				if(SA.organ_type)
 					var/obj/item/organ/path = SA.organ_type
