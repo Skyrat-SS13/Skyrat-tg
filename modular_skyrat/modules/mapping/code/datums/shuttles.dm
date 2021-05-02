@@ -21,6 +21,7 @@
 
 /datum/map_template/shuttle/cybersun
 	port_id = "cybersun"
+	shuttle_id = "cybersun"
 	who_can_purchase = null
 	prefix = "_maps/skyrat/shuttles/"
 	suffix = "cybersun"
@@ -29,9 +30,16 @@
 /obj/docking_port/stationary/picked/cybersun  //I wish whoever made shuttlecode this bad a severely bad day
 	name = "Deep Space"
 	id = "cybersun_home"
-	dheight = 0
 	dir = 2
-	dwidth = 21
-	height = 12
-	width = 17
+	height = 17
+	width = 33
 	shuttlekeys = list("cybersun")
+
+/obj/docking_port/mobile/cybersun
+	name = "cybersun"
+	id = "cybersun"
+	dir = 2
+	preferred_direction = 2
+	height = 17
+	width = 33
+	rechargeTime = 100
