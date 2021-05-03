@@ -272,8 +272,8 @@
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
-		if(JOB_NOT_WHITELISTED)
-			return "You need to be whitelisted to join as [jobtitle]."
+		if(JOB_NOT_TRUSTED)
+			return "You need to be trusted to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
