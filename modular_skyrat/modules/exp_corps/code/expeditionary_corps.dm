@@ -1,3 +1,6 @@
+GLOBAL_LIST_EMPTY(expcorps_equipment)
+GLOBAL_LIST_EMPTY(expcorps_eva)
+
 /datum/job/expeditionary_corps
 	title = "Expeditionary Trooper"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
@@ -81,3 +84,40 @@
 	suit_type = /obj/item/clothing/suit/space/hardsuit/expeditionary_corps
 	mask_type = /obj/item/clothing/mask/gas/alt
 	storage_type = /obj/item/tank/internals/oxygen
+
+/obj/effect/landmark/expcorps_equipment
+	name = "expcorpsequipment"
+	icon_state = "secequipment"
+
+/obj/effect/landmark/expcorps_equipment/Initialize(mapload)
+	..()
+	GLOB.expcorps_equipment += loc
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/expcorps_eva
+	name = "expcorpseva"
+	icon_state = "secequipment"
+
+/obj/effect/landmark/expcorps_eva/Initialize(mapload)
+	..()
+	GLOB.expcorps_eva += loc
+	return INITIALIZE_HINT_QDEL
+
+/datum/controller/subsystem/job/proc/spawn_exp_corps_lockers()
+	var/datum/job/exp_corps = SSjob.GetJob("Expeditionary Trooper")
+
+	var/lockers2spawn = exp_corps.current_positions
+
+	for(var/i = 1, i <= lockers2spawn, i++)
+		if(GLOB.expcorps_equipment.len)
+			var/spawnloc = GLOB.expcorps_equipment[1]
+			new /obj/structure/closet/secure_closet/expeditionary_corps(spawnloc)
+			GLOB.expcorps_equipment -= spawnloc
+		else
+			message_admins("Expeditionary corps didn't have enough locker spawns left!")
+		if(GLOB.expcorps_eva.len)
+			var/spawnloc = GLOB.expcorps_eva[1]
+			new /obj/machinery/suit_storage_unit/expeditionary_corps(spawnloc)
+			GLOB.expcorps_eva -= spawnloc
+		else
+			message_admins("Expeditionary corps didn't have enough suit storage unit spawns left!")

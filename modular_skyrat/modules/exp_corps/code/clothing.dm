@@ -31,6 +31,22 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/hands.dmi'
 
+/obj/item/clothing/gloves/combat/expeditionary_corps
+	name = "expeditionary corps gloves"
+	icon_state = "exp_corps"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/hands.dmi'
+
+/obj/item/storage/backpack/duffelbag/expeditionary_corps
+	name = "expeditionary corps bag" //SKYRAT EDIT, was "suspicious-looking duffel bag". It's just a black duffel.
+	desc = "A large bag for holding extra tactical supplies."
+	icon_state = "exp_corps"
+	inhand_icon_state = "backpack"
+	icon = 'modular_skyrat/modules/exp_corps/icons/backpack.dmi'
+	worn_icon = 'modular_skyrat/modules/exp_corps/icons/mob_backpack.dmi'
+	slowdown = 0
+	resistance_flags = FIRE_PROOF
+
 /obj/item/clothing/suit/armor/vest/expeditionary_corps
 	name = "expeditionary corps armor vest"
 	desc = "An armored vest that provides decent protection against most types of damage."
