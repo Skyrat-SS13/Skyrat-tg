@@ -28,6 +28,8 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	family_heirlooms = list(/obj/item/binoculars)
 
+	trusted_only = TRUE
+
 /datum/outfit/job/expeditionary_corps
 	name = "Expeditionary Trooper"
 	jobtype = /datum/job/expeditionary_corps
