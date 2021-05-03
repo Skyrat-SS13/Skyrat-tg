@@ -29,9 +29,9 @@
 	name = "Expeditionary Trooper"
 	jobtype = /datum/job/expeditionary_corps
 
+	shoes = /obj/item/clothing/shoes/combat/expeditionary_corps
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/expeditionary_corps
-	shoes = /obj/item/clothing/shoes/sneakers/black
 	glasses = /obj/item/clothing/glasses/sunglasses/big
 
 	backpack_contents = list(/obj/item/pda/expeditionary_corps)
@@ -70,7 +70,6 @@
 /obj/structure/closet/secure_closet/expeditionary_corps/PopulateContents()
 	..()
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
-	new /obj/item/clothing/shoes/combat/expeditionary_corps(src)
 	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/syndie/expeditionary_corps(src)

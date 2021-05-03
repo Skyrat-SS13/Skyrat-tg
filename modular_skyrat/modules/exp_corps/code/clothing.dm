@@ -27,7 +27,7 @@
 
 /obj/item/clothing/gloves/combat/expeditionary_corps
 	name = "expeditionary corps gloves"
-	icon_state = "black"
+	icon_state = "exp_corps"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/hands.dmi'
 
@@ -56,11 +56,11 @@
 /obj/item/clothing/suit/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit"
 	desc = "An advanced hardsuit designed for exploratory missions."
-	icon_state = "hardsuit-hexp_corps"
-	inhand_icon_state = "eng_hardsuit"
-	hardsuit_type = "expeditionary"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "hardsuit-hexp_corps"
+	inhand_icon_state = "eng_hardsuit"
+	hardsuit_type = "hexp_corps"
 	armor = list(MELEE = 40, BULLET = 50, LASER = 30, ENERGY = 40, BOMB = 35, BIO = 100, RAD = 50, FIRE = 50, ACID = 90, WOUND = 25)
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
@@ -72,9 +72,11 @@
 /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit helmet"
 	desc = "An advanced hardsuit helmet designed for exploratory missions."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
 	icon_state = "hardsuit0-hexp_corps"
 	inhand_icon_state = "sec_helm"
-	hardsuit_type = "expeditionary"
+	hardsuit_type = "hexp_corps"
 	armor = list(MELEE = 40, BULLET = 50, LASER = 30, ENERGY = 40, BOMB = 35, BIO = 100, RAD = 50, FIRE = 50, ACID = 90, WOUND = 25)
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
@@ -101,6 +103,10 @@
 
 /obj/item/clothing/head/helmet/expeditionary_corps/AltClick(mob/user)
 	. = ..()
+	if(!current_user)
+		return
+	if(!can_interact(user))
+		return
 	var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
 	nightvision = !nightvision
 	if(nightvision)
@@ -130,6 +136,7 @@
 			my_eyes.flash_protect = initial(my_eyes.flash_protect)
 		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
 		current_user.update_sight()
+	current_user = null
 
 /obj/item/clothing/head/helmet/expeditionary_corps/Destroy()
 	if(nightvision)
@@ -140,6 +147,7 @@
 			my_eyes.flash_protect = initial(my_eyes.flash_protect)
 		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
 		current_user.update_sight()
+	current_user = null
 	return ..()
 
 /obj/item/clothing/head/helmet/expeditionary_corps/update_icon_state()
