@@ -37,6 +37,18 @@
 	name = "Ushanka"
 	path = /obj/item/clothing/head/ushanka
 
+/datum/loadout_item/head/wrussian
+	name = "Black Papakha"
+	path = /obj/item/clothing/head/whiterussian
+
+/datum/loadout_item/head/wrussianw
+	name = "White Papakha"
+	path = /obj/item/clothing/head/whiterussian/white
+
+/datum/loadout_item/head/wrussianb
+	name = "Black and Red Papakha"
+	path = /obj/item/clothing/head/whiterussian/black
+
 /datum/loadout_item/head/slime
 	name = "Slime hat"
 	path = /obj/item/clothing/head/collectable/slime

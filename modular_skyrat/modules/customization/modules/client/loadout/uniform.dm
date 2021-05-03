@@ -214,6 +214,10 @@
 	path = /obj/item/clothing/under/suit/black/female
 
 /datum/loadout_item/uniform/suit/femblackskirt
+	name = "Feminine Skirt Suit"
+	path = /obj/item/clothing/under/blackfemsuitskirt
+
+/datum/loadout_item/uniform/suit/femblackskirt
 	name = "Executive Skirt"
 	path = /obj/item/clothing/under/suit/black_really/skirt
 
@@ -279,6 +283,11 @@
 /datum/loadout_item/uniform/suit/checkered
 	name = "Checkered Shirt"
 	path = /obj/item/clothing/under/rancher/checkered
+
+/datum/loadout_item/uniform/suit/whiterussian
+	name = "Russian Baron Suit"
+	path = /obj/item/clothing/under/whiterussian
+	cost = 4
 
 
 //SKIRTS
@@ -477,6 +486,10 @@
 /datum/loadout_item/uniform/sweater/tactical1
 	name = "Irish Tactical Sweater"
 	path = /obj/item/clothing/under/misc/tactical1
+
+/datum/loadout_item/uniform/sweater/tactical2
+	name = "British Tactical Sweater"
+	path = /obj/item/clothing/under/uvf
 
 /datum/loadout_item/uniform/sweater/turtleneck/skirt
 	name = "Tactitool Skirtleneck"
