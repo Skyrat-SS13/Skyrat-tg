@@ -211,3 +211,17 @@
 		icon_state = "peacekeeper_sergeant_cap"
 		)
 	)
+
+/obj/item/storage/box/armament_tokens_sarge
+	name = "security sarge tokens"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
+	icon_state = "armadyne_sarge"
+	desc = "A box full of sergeant promotion tokens!"
+	illustration = null
+
+/obj/item/storage/box/armament_tokens_sarge/PopulateContents()
+	. = ..()
+	new /obj/item/armament_token/sarge(src)
+	new /obj/item/armament_token/sarge(src)
+	new /obj/item/armament_token/primary(src)
+	new /obj/item/armament_token/primary(src)
