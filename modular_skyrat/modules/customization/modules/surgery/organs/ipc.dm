@@ -216,11 +216,12 @@
 		var/power_delay = (power_use/100) * IPC_CHARGE_DELAY_PER_100
 		// Attempt to run a charging cycle.
 		if(!do_after(user, power_delay, target = target_apc))
-			to_chat(user, "<span class='warning'>You accidentally rip the powercord from the APC.</span>")
+			to_chat(user, "<span class='warning'>You accidentally rip the powercord from [target_apc].</span>")
 			break
 		// Use the power and increase nutrition.
 		target_apc.cell.use(power_use)
 		user.nutrition += power_use / IPC_CHARGE_PER_NUTRITION
+		do_sparks(1, FALSE, target_apc)
 
 	user.visible_message("<span class='notice'>[user] unplugs from the [target_apc].</span>", "<span class='notice'>You unplug from the [target_apc].</span>")
 
