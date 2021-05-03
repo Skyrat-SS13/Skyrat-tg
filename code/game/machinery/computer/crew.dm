@@ -66,6 +66,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Quartermaster" = 51,
 		"Shaft Miner" = 52,
 		"Cargo Technician" = 53,
+		"Expeditionary Trooper" = 54, //SKYRAT EDIT ADDITION
 		// 60+: Civilian/other
 		"Bartender" = 61,
 		"Cook" = 62,

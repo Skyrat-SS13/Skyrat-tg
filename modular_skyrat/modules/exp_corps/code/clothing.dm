@@ -109,7 +109,7 @@
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
 
-/obj/item/clothing/head/helmet/expeditionary_corps/Initialize()
+/obj/item/clothing/head/helmet/expeditionary_corps/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 

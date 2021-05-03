@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
-	new /obj/item/storage/backpack/duffelbag/syndie/expeditionary_corps(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/firstaid/tactical(src)
 	new /obj/item/radio(src)
@@ -123,3 +123,5 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 			GLOB.expcorps_eva -= spawnloc
 		else
 			message_admins("Expeditionary corps didn't have enough suit storage unit spawns left!")
+
+/obj/item/storage
