@@ -201,7 +201,7 @@
 			Loaded with incendiary rounds which inflict little damage, but ignite the target."
 	item = /obj/item/ammo_box/magazine/smgm45/incen
 	cost = 2
-  
+
 /datum/uplink_item/ammo/shotgun/buck_traitor
 	name = "12g Buckshot Drum"
 	desc = "An additional 8-round buckshot magazine for use with the Bulldog shotgun. Front towards enemy."
@@ -262,6 +262,14 @@
 	cost = 6
 	surplus = 0
 
+//JOBS ONLY
+/datum/uplink_item/role_restricted/cultkitsr //Ported from beestation
+	name = "Cult Construct Kit"
+	desc = "Recovered from an abandoned Nar'sie cult lair, two construct shells and a stash of empty soulstones was found. These were purified to prevent occult contamination and have been put in a belt so they may be used as an accessible source of disposable minions. The construct shells have been packaged into two beacons for rapid and portable deployment."
+	item = /obj/item/storage/box/syndie_kit/cultkitsr
+	cost = 15 //If used correctly, You actually get several servants or just get fucked over because no ghosts want to be a shade.
+	restricted_roles = list("Chaplain")
+
 //LOADOUTS
 
 /datum/uplink_item/loadout_skyrat
@@ -286,7 +294,7 @@
 	desc = "Not a thing aboard the station is safe from your grubby hands with this specialized set of gear, perfect for the enterprising thief."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/stealthop
 	cost = 20
-  
+
 /datum/uplink_item/loadout_skyrat/hacker
 	name = "Hacker bundle"
 	desc = "Subvert everything in sight using some of the most advanced tools available to operatives. If it’s powered, it’s already under your thumb."
