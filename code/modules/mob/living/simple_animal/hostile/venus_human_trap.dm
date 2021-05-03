@@ -131,7 +131,6 @@
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
 
-	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS // SKYRAT EDIT ADDITION
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
