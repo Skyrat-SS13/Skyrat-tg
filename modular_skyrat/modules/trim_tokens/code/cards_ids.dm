@@ -11,9 +11,9 @@
 
 	// Just to make sure to give feedback if it requires a better card to grant the trim.
 	if(SSid_access.apply_trim_to_card(src, token.token_trim, copy_access = token.force_access))
-		to_chat(user, "<span class='notice'>The [token.name] fuses with your ID, replacing its trim with a [token.token_trim.assignment] trim!</span>")
+		to_chat(user, "<span class='notice'>The [token.name] fuses with your ID, replacing its trim with a [token.assignment] trim!</span>")
 		if(!token.uses == INFINITE)
-			token.uses--
+			token.uses -= 1
 		if(token.uses == 0)
 			qdel(token)
 			return

@@ -8,11 +8,11 @@ Adds some TrimTokens, that allow for some one-use rapid trim modification that u
 
 ### TG Proc Changes:
 
-- See: https://github.com/Skyrat-SS13/Skyrat-tg/pull/2860
+- /obj/item/card/id/attackby(obj/item/W, mob/user, params) - cards_ids.dm
 
 ### Defines:
 
-- See: 
+- N/A
 
 ### Master file additions
 
@@ -20,7 +20,7 @@ Adds some TrimTokens, that allow for some one-use rapid trim modification that u
 
 ### Included files that are not contained in this module:
 
--
+
 
 
 ### Credits:

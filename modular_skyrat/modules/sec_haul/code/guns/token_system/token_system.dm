@@ -223,5 +223,3 @@
 	. = ..()
 	new /obj/item/armament_token/sarge(src)
 	new /obj/item/armament_token/sarge(src)
-	new /obj/item/armament_token/primary(src)
-	new /obj/item/armament_token/primary(src)

@@ -378,8 +378,10 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/gunset/sarge/PopulateContents()
-	. = ..()
+	new /obj/item/trim_token/security_sergeant(src)
 	new /obj/item/melee/classic_baton/telescopic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/sergeant(src)
 	new /obj/item/clothing/head/beret/sec/peacekeeper/sergeant(src)
+	new /obj/item/armament_token/primary(src)
 	new /obj/item/megaphone/sec(src)
+	// . = ..()
