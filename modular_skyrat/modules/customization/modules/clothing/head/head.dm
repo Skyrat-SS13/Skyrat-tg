@@ -159,3 +159,23 @@
 	icon_state = "enclaveosoft"
 	soft_type = "enclaveo"
 	dog_fashion = null
+
+/obj/item/clothing/head/whiterussian
+	name = "papakha"
+	desc = "A big wooly clump of fur designed to go on your head."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "papakha"
+	dog_fashion = null
+
+/obj/item/clothing/head/whiterussian/white
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "papakha_white"
+	dog_fashion = null
+
+/obj/item/clothing/head/whiterussian/black
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "papakha_kuban"
+	dog_fashion = null
