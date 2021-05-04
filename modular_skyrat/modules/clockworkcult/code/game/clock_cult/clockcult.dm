@@ -78,7 +78,7 @@ GLOBAL_VAR(clockcult_eminence)
 
 /datum/dynamic_ruleset/roundstart/clockcult/round_result()
 	..()
-	if(main_cult.check_cult_victory())
+	if(GLOB.ratvar_risen)
 		SSticker.mode_result = "win - clockcult win"
 		SSticker.news_report = CLOCK_SUMMON
 	else if(LAZYLEN(GLOB.cyborg_servants_of_ratvar))
@@ -151,7 +151,7 @@ GLOBAL_VAR(clockcult_eminence)
 
 /datum/game_mode/clockcult/set_round_result()
 	..()
-	if(check_cult_victory())
+	if(GLOB.ratvar_risen)
 		SSticker.mode_result = "win - clockcult win"
 		SSticker.news_report = CLOCK_SUMMON
 	else if(LAZYLEN(GLOB.cyborg_servants_of_ratvar))
@@ -163,9 +163,6 @@ GLOBAL_VAR(clockcult_eminence)
 
 /datum/game_mode/clockcult/check_finished(force_ending)
 	return force_ending
-
-/datum/game_mode/clockcult/proc/check_cult_victory()
-	return GLOB.ratvar_risen
 
 /datum/game_mode/proc/update_clockcult_icons_added(datum/mind/cult_mind)
 	var/datum/atom_hud/antag/culthud = GLOB.huds[ANTAG_HUD_CLOCKWORK]
