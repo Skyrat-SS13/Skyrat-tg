@@ -61,7 +61,7 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	icon_state = "Security Officer"
 
 /obj/item/pda/expeditionary_corps
-	icon_state = "pda-syndi"
+	greyscale_colors = "#891417#000099"
 	name = "Military PDA"
 
 /obj/item/storage/box/survival/expeditionary_corps
