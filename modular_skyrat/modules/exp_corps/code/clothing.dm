@@ -33,12 +33,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
 	icon_state = "exp_corps"
 	inhand_icon_state = "exp_corps"
-
-/obj/item/clothing/gloves/combat/expeditionary_corps
-	name = "expeditionary corps gloves"
-	icon_state = "exp_corps"
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/gloves.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/hands.dmi'
+	armor = list(MELEE = 60, BULLET = 60, LASER = 60, ENERGY = 60, BOMB = 60, BIO = 0, RAD = 20, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/clothing/gloves/combat/expeditionary_corps
 	name = "expeditionary corps gloves"

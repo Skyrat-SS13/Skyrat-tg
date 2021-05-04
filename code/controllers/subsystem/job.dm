@@ -448,8 +448,6 @@ SUBSYSTEM_DEF(job)
 			if(!AssignRole(player, SSjob.overflow_role)) //If everything is already filled, make them an assistant
 				return FALSE //Living on the edge, the forced antagonist couldn't be assigned to overflow role (bans, client age) - just reroll
 
-	spawn_exp_corps_lockers() //SKYRAT EDIT ADDITION
-
 	return validate_required_jobs(required_jobs)
 
 /datum/controller/subsystem/job/proc/validate_required_jobs(list/required_jobs)
@@ -746,19 +744,6 @@ SUBSYSTEM_DEF(job)
 			destination = locate(/obj/effect/landmark/start/prisoner) in GLOB.landmarks_list
 			destination.JoinPlayerHere(M, buckle)
 			return TRUE
-		if(M.job == "Expeditionary Trooper")
-			if(GLOB.expcorps_equipment.len)
-				var/spawnloc = GLOB.expcorps_equipment[1]
-				new /obj/structure/closet/secure_closet/expeditionary_corps(spawnloc)
-				GLOB.expcorps_equipment -= spawnloc
-			else
-				message_admins("[M] joined as [M.job] but there was nowhere to spawn their locker!")
-			if(GLOB.expcorps_eva.len)
-				var/spawnloc = GLOB.expcorps_eva[1]
-				new /obj/machinery/suit_storage_unit/expeditionary_corps(spawnloc)
-				GLOB.expcorps_eva -= spawnloc
-			else
-				message_admins("[M] joined as [M.job] but there was nowhere to spawn their suit storage unit!")
 	//SKYRAT EDIT END
 	if(latejoin_trackers.len)
 		destination = pick(latejoin_trackers)

@@ -44,6 +44,8 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	box = /obj/item/storage/box/survival/expeditionary_corps
 
+	backpack_contents = list()
+
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/expeditionary_trooper
 
@@ -60,69 +62,6 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 /obj/item/storage/box/survival/expeditionary_corps
 	mask_type = /obj/item/clothing/mask/gas/alt
 
-/obj/structure/closet/secure_closet/expeditionary_corps
-	name = "\proper expeditionary corps locker"
-	req_access = list(ACCESS_GATEWAY, ACCESS_SEC_DOORS)
-	icon_state = "exp_corps"
-	icon = 'modular_skyrat/modules/exp_corps/icons/closet.dmi'
-
-/obj/structure/closet/secure_closet/expeditionary_corps/PopulateContents()
-	..()
-	new /obj/item/storage/firstaid/tactical(src)
-	new /obj/item/storage/box/expeditionary_survival(src)
-	new /obj/item/radio(src)
-	new /obj/item/melee/tomahawk(src)
-	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
-	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
-	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
-	new /obj/item/storage/belt/military/expeditionary_corps(src)
-	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
-
-/obj/machinery/suit_storage_unit/expeditionary_corps
-	suit_type = /obj/item/clothing/suit/space/hardsuit/expeditionary_corps
-	mask_type = /obj/item/clothing/mask/gas/alt
-	storage_type = /obj/item/tank/internals/oxygen
-
-/obj/effect/landmark/expcorps_equipment
-	name = "expcorpsequipment"
-	icon_state = "secequipment"
-
-/obj/effect/landmark/expcorps_equipment/Initialize(mapload)
-	..()
-	GLOB.expcorps_equipment += loc
-	return INITIALIZE_HINT_QDEL
-
-/obj/effect/landmark/expcorps_eva
-	name = "expcorpseva"
-	icon_state = "secequipment"
-
-/obj/effect/landmark/expcorps_eva/Initialize(mapload)
-	..()
-	GLOB.expcorps_eva += loc
-	return INITIALIZE_HINT_QDEL
-
-/datum/controller/subsystem/job/proc/spawn_exp_corps_lockers()
-	var/datum/job/exp_corps = SSjob.GetJob("Expeditionary Trooper")
-
-	var/lockers2spawn = exp_corps.current_positions
-
-	if(!lockers2spawn)
-		return
-
-	for(var/i = 1, i <= lockers2spawn, i++)
-		if(GLOB.expcorps_equipment.len)
-			var/spawnloc = GLOB.expcorps_equipment[1]
-			new /obj/structure/closet/secure_closet/expeditionary_corps(spawnloc)
-			GLOB.expcorps_equipment -= spawnloc
-		else
-			message_admins("Expeditionary corps didn't have enough locker spawns left!")
-		if(GLOB.expcorps_eva.len)
-			var/spawnloc = GLOB.expcorps_eva[1]
-			new /obj/machinery/suit_storage_unit/expeditionary_corps(spawnloc)
-			GLOB.expcorps_eva -= spawnloc
-		else
-			message_admins("Expeditionary corps didn't have enough suit storage unit spawns left!")
-
 /obj/item/storage/box/expeditionary_survival
 	name = "expedition survival pack"
 	desc = "A box filled with useful items for your expedition!"
@@ -136,5 +75,34 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/flashlight/glowstick(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
-	new /obj/item/survivalcapsule(src)
 	new /obj/item/reagent_containers/food/drinks/waterbottle(src)
+	new /obj/item/reagent_containers/blood/universal(src)
+	new /obj/item/reagent_containers/syringe(src)
+
+/obj/structure/closet/crate/secure/exp_corps
+	name = "expeditionary gear crate"
+	desc = "A secure weapons crate."
+	icon_state = "expcrate"
+	icon = 'modular_skyrat/modules/exp_corps/icons/exp_crate.dmi'
+	req_access = list(ACCESS_GATEWAY)
+
+/obj/structure/closet/crate/secure/exp_corps/PopulateContents()
+	new /obj/item/storage/firstaid/tactical(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/melee/tomahawk(src)
+	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+
+/obj/item/choice_beacon/exp_corps_equip
+	name = "Expeditionary Corps Supply Beacon"
+	desc = "Used to request your job supplies, use in hand to do so!"
+	uses = 1
+
+/obj/item/choice_beacon/exp_corps/generate_display_names()
+	var/list/choices = list(/obj/structure/closet/crate/secure/exp_corps)
+	return choices
