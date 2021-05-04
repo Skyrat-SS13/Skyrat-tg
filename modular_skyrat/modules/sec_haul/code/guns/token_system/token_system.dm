@@ -222,4 +222,3 @@
 /obj/item/storage/box/armament_tokens_sarge/PopulateContents()
 	. = ..()
 	new /obj/item/armament_token/sarge(src)
-	new /obj/item/armament_token/sarge(src)
