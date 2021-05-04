@@ -66,7 +66,7 @@
 	var/list/random_nouns = list("Johnson", "Cluwne", "General", "Specific", "Master", "King", "Queen", "Table", "Rupture", "Dynamic", "Massive", "Mega", "Giga", "Certain", "Singulo", "State", "National", "International", "Interplanetary", "Sector", "Planet", "Burn", "Robust", "Exotic", "Solar", "Lunar", "Chelp", "Corgi", "Lag", "Lizard")
 	var/list/company = list("Company", "Factory", "Incorporated", "Industries", "Group", "Consolidated", "GmbH", "LLC", "Ltd", "Inc.", "Association", "Limited", "Software", "Technology", "Programming", "IT Group", "Electronics", "Nanotechnology", "Farms", "Stores", "Mobile", "Motors", "Electric", "Designs", "Energy", "Pharmaceuticals", "Communications", "Wholesale", "Holding", "Health", "Machines", "Astrotech", "Gadgets", "Kinetics")
 	for (var/i = 1, i <= amt, i++)
-		var/datum/stock/stock = new
+		var/datum/stock/new_stock = new
 		var/sname = ""
 		switch (rand(1,6))
 			if(1) //                          VVVVVVVV this is a check to prevent the word from randomly showing up in game, github dont lynch us
@@ -88,25 +88,25 @@
 						sname = "[pname] [pick(company)]"
 					if (3)
 						sname = "[pname]"
-		stock.name = sname
-		stock.short_name = generateDesignation(stock.name)
-		stock.current_value = rand(10, 125)
+		new_stock.name = sname
+		new_stock.short_name = generateDesignation(new_stock.name)
+		new_stock.current_value = rand(10, 125)
 		var/rate_of_change = rand(10, 40) / 10
-		stock.fluctuational_coefficient = prob(50) ? (1 / rate_of_change) : rate_of_change
-		stock.average_optimism = rand(-10, 10) / 100
-		stock.optimism = stock.average_optimism + (rand(-40, 40) / 100)
-		stock.current_trend = rand(-200, 200) / 10
-		stock.last_trend = stock.current_trend
-		stock.disp_value_change = rand(-1, 1)
-		stock.speculation = rand(-20, 20)
-		stock.average_shares = round(rand(500, 10000) / 10)
-		stock.outside_shareholders = rand(1000, 30000)
-		stock.available_shares = rand(200000, 800000)
-		stock.fluctuation_rate = rand(6, 20)
-		stock.generateIndustry()
-		stock.generateEvents()
-		stock += stocks
-		last_read[stocks] = list()
+		new_stock.fluctuational_coefficient = prob(50) ? (1 / rate_of_change) : rate_of_change
+		new_stock.average_optimism = rand(-10, 10) / 100
+		new_stock.optimism = new_stock.average_optimism + (rand(-40, 40) / 100)
+		new_stock.current_trend = rand(-200, 200) / 10
+		new_stock.last_trend = new_stock.current_trend
+		new_stock.disp_value_change = rand(-1, 1)
+		new_stock.speculation = rand(-20, 20)
+		new_stock.average_shares = round(rand(500, 10000) / 10)
+		new_stock.outside_shareholders = rand(1000, 30000)
+		new_stock.available_shares = rand(200000, 800000)
+		new_stock.fluctuation_rate = rand(6, 20)
+		new_stock.generateIndustry()
+		new_stock.generateEvents()
+		stocks += new_stock
+		last_read[new_stock] = list()
 
 /datum/stockMarket/process()
 	for (var/stock in stocks)
