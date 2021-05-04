@@ -47,22 +47,22 @@
 	var/fluctuation_counter = 0
 	var/datum/industry/industry = null
 
-/datum/stock/proc/addEvent(var/datum/stockEvent/E)
-	events |= E
+/datum/stock/proc/addEvent(var/datum/stockEvent/stock_event)
+	events |= stock_event
 
-/datum/stock/proc/addArticle(var/datum/article/A)
-	if (!(A in articles))
-		articles.Insert(1, A)
-	A.ticks = world.time
+/datum/stock/proc/addArticle(var/datum/article/stock_article)
+	if (!(stock_article in articles))
+		articles.Insert(1, stock_article)
+	stock_article.ticks = world.time
 
 /datum/stock/proc/generateEvents()
 	var/list/types = typesof(/datum/stockEvent) - /datum/stockEvent
-	for (var/T in types)
-		generateEvent(T)
+	for (var/stock_type in types)
+		generateEvent(stock_type)
 
-/datum/stock/proc/generateEvent(var/T)
-	var/datum/stockEvent/E = new T(src)
-	addEvent(E)
+/datum/stock/proc/generateEvent(var/event_type)
+	var/datum/stockEvent/stock_event = new event_type(src)
+	addEvent(stock_event)
 
 /datum/stock/proc/affectPublicOpinion(var/boost)
 	optimism += rand(0, 500) / 500 * boost
@@ -168,28 +168,28 @@
 	current_trend += rand(-200, 200) / 100 + optimism * rand(200) / 10 + max(50 - abs(speculation), 0) / 50 * rand(0, 200) / 1000 * (-current_trend) + max(speculation - 50, 0) * rand(0, 200) / 1000 * speculation / 400
 
 /datum/stock/proc/unifyShares()
-	for (var/I in shareholders)
-		var/shr = shareholders[I]
+	for (var/shareholder in shareholders)
+		var/shr = shareholders[shareholder]
 		if (shr % 2)
-			sellShares(I, 1)
+			sellShares(shareholder, 1)
 		shr -= 1
-		shareholders[I] /= 2
-		if (!shareholders[I])
-			shareholders -= I
-	for (var/datum/borrow/B in borrow_brokers)
-		B.share_amount = round(B.share_amount / 2)
-		B.share_debt = round(B.share_debt / 2)
-	for (var/datum/borrow/B in borrows)
-		B.share_amount = round(B.share_amount / 2)
-		B.share_debt = round(B.share_debt / 2)
+		shareholders[shareholder] /= 2
+		if (!shareholders[shareholder])
+			shareholders -= shareholder
+	for (var/datum/borrow/broker in borrow_brokers)
+		broker.share_amount = round(broker.share_amount / 2)
+		broker.share_debt = round(broker.share_debt / 2)
+	for (var/datum/borrow/borrower in borrows)
+		borrower.share_amount = round(borrower.share_amount / 2)
+		borrower.share_debt = round(borrower.share_debt / 2)
 	average_shares /= 2
 	available_shares /= 2
 	current_value *= 2
 	last_unification = world.time
 
 /datum/stock/process()
-	for (var/B in borrows)
-		var/datum/borrow/borrow = B
+	for (var/borrower in borrows)
+		var/datum/borrow/borrow = borrower
 		if (world.time > borrow.grace_expires)
 			modifyAccount(borrow.borrower, -max(current_value * borrow.share_debt, 0), 1)
 			borrows -= borrow
@@ -214,8 +214,8 @@
 					borrow.share_debt -= amt
 	if (bankrupt)
 		return
-	for (var/B in borrow_brokers)
-		var/datum/borrow/borrow = B
+	for (var/broker in borrow_brokers)
+		var/datum/borrow/borrow = broker
 		if (borrow.offer_expires < world.time)
 			borrow_brokers -= borrow
 			qdel(borrow)
@@ -223,9 +223,9 @@
 		generateBrokers()
 	fluctuation_counter++
 	if (fluctuation_counter >= fluctuation_rate)
-		for (var/E in events)
-			var/datum/stockEvent/EV = E
-			EV.process()
+		for (var/stock_event in events)
+			var/datum/stockEvent/current_stock_event = stock_event
+			current_stock_event.process()
 		fluctuation_counter = 0
 		fluctuate()
 
@@ -235,50 +235,50 @@
 	if (!GLOB.stockExchange.stockBrokers.len)
 		GLOB.stockExchange.generateBrokers()
 	var/broker = pick(GLOB.stockExchange.stockBrokers)
-	var/datum/borrow/B = new
-	B.broker = broker
-	B.stock = src
-	B.lease_time = rand(4, 7) * 600
-	B.grace_time = rand(1, 3) * 600
-	B.share_amount = rand(1, 10) * 100
-	B.deposit = rand(20, 70) / 100
-	B.share_debt = B.share_amount
-	B.offer_expires = rand(5, 10) * 600 + world.time
-	borrow_brokers += B
+	var/datum/borrow/new_borrow = new
+	new_borrow.broker = broker
+	new_borrow.stock = src
+	new_borrow.lease_time = rand(4, 7) * 600
+	new_borrow.grace_time = rand(1, 3) * 600
+	new_borrow.share_amount = rand(1, 10) * 100
+	new_borrow.deposit = rand(20, 70) / 100
+	new_borrow.share_debt = new_borrow.share_amount
+	new_borrow.offer_expires = rand(5, 10) * 600 + world.time
+	borrow_brokers += new_borrow
 
 /datum/stock/proc/modifyAccount(whose, by, force=0)
-	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	if (D.account_balance)
-		if (by < 0 && D.account_balance + by < 0 && !force)
+	var/datum/bank_account/dept_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	if (dept_account.account_balance)
+		if (by < 0 && dept_account.account_balance + by < 0 && !force)
 			return 0
-		D.account_balance += by
+		dept_account.account_balance += by
 		GLOB.stockExchange.balanceLog(whose, by)
 		return 1
 	return 0
 
-/datum/stock/proc/borrow(var/datum/borrow/B, var/who)
-	if (B.lease_expires)
+/datum/stock/proc/borrow(var/datum/borrow/borrow_event, var/who)
+	if (borrow_event.lease_expires)
 		return 0
-	B.lease_expires = world.time + B.lease_time
-	var/old_d = B.deposit
-	var/d_amt = B.deposit * current_value * B.share_amount
+	borrow_event.lease_expires = world.time + borrow_event.lease_time
+	var/old_d = borrow_event.deposit
+	var/d_amt = borrow_event.deposit * current_value * borrow_event.share_amount
 	if (!modifyAccount(who, -d_amt))
-		B.lease_expires = 0
-		B.deposit = old_d
+		borrow_event.lease_expires = 0
+		borrow_event.deposit = old_d
 		return 0
-	B.deposit = d_amt
+	borrow_event.deposit = d_amt
 	if (!(who in shareholders))
-		shareholders[who] = B.share_amount
+		shareholders[who] = borrow_event.share_amount
 	else
-		shareholders[who] += B.share_amount
-	borrow_brokers -= B
-	borrows += B
-	B.borrower = who
-	B.grace_expires = B.lease_expires + B.grace_time
+		shareholders[who] += borrow_event.share_amount
+	borrow_brokers -= borrow_event
+	borrows += borrow_event
+	borrow_event.borrower = who
+	borrow_event.grace_expires = borrow_event.lease_expires + borrow_event.grace_time
 	if (!(who in GLOB.FrozenAccounts))
-		GLOB.FrozenAccounts[who] = list(B)
+		GLOB.FrozenAccounts[who] = list(borrow_event)
 	else
-		GLOB.FrozenAccounts[who] += B
+		GLOB.FrozenAccounts[who] += borrow_event
 	return 1
 
 /datum/stock/proc/buyShares(var/who, var/howmany)
