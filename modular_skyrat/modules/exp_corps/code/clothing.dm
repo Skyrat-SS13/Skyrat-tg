@@ -87,7 +87,7 @@
 	icon_state = "hardsuit-hexp_corps"
 	inhand_icon_state = "eng_hardsuit"
 	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 40, BULLET = 50, LASER = 30, ENERGY = 40, BOMB = 35, BIO = 100, RAD = 50, FIRE = 50, ACID = 90, WOUND = 25)
+	armor = list(MELEE = 60, BULLET = 60, LASER = 60,ENERGY = 60, BOMB = 60, BIO = 0, RAD = 20, FIRE = 80, ACID = 100, WOUND = 30)
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	jetpack = /obj/item/tank/jetpack/suit
@@ -103,7 +103,7 @@
 	icon_state = "hardsuit0-hexp_corps"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 40, BULLET = 50, LASER = 30, ENERGY = 40, BOMB = 35, BIO = 100, RAD = 50, FIRE = 50, ACID = 90, WOUND = 25)
+	armor = list(MELEE = 60, BULLET = 60, LASER = 60,ENERGY = 60, BOMB = 60, BIO = 0, RAD = 20, FIRE = 80, ACID = 100, WOUND = 30)
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0.5
@@ -114,7 +114,7 @@
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
-	armor = list(MELEE = 35, BULLET = 35, LASER = 30,ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 60, BULLET = 60, LASER = 60,ENERGY = 60, BOMB = 60, BIO = 0, RAD = 20, FIRE = 80, ACID = 100, WOUND = 30)
 	mutant_variants = NONE
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
