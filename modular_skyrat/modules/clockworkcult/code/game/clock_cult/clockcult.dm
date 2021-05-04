@@ -25,7 +25,7 @@ GLOBAL_VAR(clockcult_eminence)
 //==========================
 /datum/dynamic_ruleset/roundstart/clockcult
 	name = "Clockwork Cult"
-	antag_flag = ROLE_CULTIST
+	antag_flag = ROLE_SERVANT_OF_RATVAR
 	antag_datum = /datum/antagonist/servant_of_ratvar
 	minimum_required_age = 14
 	restricted_roles = list("AI", "Cyborg", "Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain", "Head of Personnel")
