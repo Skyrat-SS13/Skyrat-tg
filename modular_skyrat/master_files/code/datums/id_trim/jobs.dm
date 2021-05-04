@@ -134,14 +134,14 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
 
-/datum/id_trim/job/expeditionary_corps
+/datum/id_trim/job/expeditionary_trooper
 	assignment = "Expeditionary Trooper"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_expeditionarytrooper"
 	full_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE, ACCESS_SEC_DOORS)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE, ACCESS_SEC_DOORS)
 
-	config_job = "expeditionary_corps"
+	config_job = "expeditionary_trooper"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/brigoff

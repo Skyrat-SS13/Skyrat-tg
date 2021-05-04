@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(expcorps_equipment)
 GLOBAL_LIST_EMPTY(expcorps_eva)
 
-/datum/job/expeditionary_corps
+/datum/job/expeditionary_trooper
 	title = "Expeditionary Trooper"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Captain")
@@ -14,8 +14,7 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	exp_requirements = 400
 	exp_type = EXP_TYPE_SECURITY
 
-	outfit = /datum/outfit/job/expeditionary_corps
-	plasmaman_outfit = /datum/outfit/plasmaman/security
+	outfit = /datum/outfit/job/expeditionary_trooper
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SEC
@@ -30,9 +29,9 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	trusted_only = TRUE
 
-/datum/outfit/job/expeditionary_corps
+/datum/outfit/job/expeditionary_trooper
 	name = "Expeditionary Trooper"
-	jobtype = /datum/job/expeditionary_corps
+	jobtype = /datum/job/expeditionary_trooper
 
 	shoes = /obj/item/clothing/shoes/combat/expeditionary_corps
 	ears = /obj/item/radio/headset/headset_sec/alt
@@ -46,7 +45,7 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	box = /obj/item/storage/box/survival/expeditionary_corps
 
 	id = /obj/item/card/id/advanced/silver
-	id_trim = /datum/id_trim/job/expeditionary_corps
+	id_trim = /datum/id_trim/job/expeditionary_trooper
 
 	belt = /obj/item/pda/expeditionary_corps
 
