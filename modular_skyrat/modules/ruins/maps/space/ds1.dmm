@@ -7,19 +7,6 @@
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating/asteroid/airless,
 /area/ruin/space/has_grav)
-"ad" = (
-/obj/machinery/door/airlock/external/glass{
-	name = "Arrivals Airlock";
-	req_access_txt = "150"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo/hangar)
 "ag" = (
 /obj/structure/table,
 /obj/machinery/microwave{
@@ -55,6 +42,12 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/brig)
+"au" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
 "av" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
@@ -72,20 +65,23 @@
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/admiral)
 "aB" = (
-/obj/structure/table/wood,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/ceo)
+/obj/structure/flora/rock/pile{
+	icon_state = "basalt3"
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/cruiser_dock/commons)
 "aE" = (
 /turf/closed/wall/mineral/titanium/survival,
 /area/cruiser_dock/cargo/hangar)
-"aM" = (
-/obj/structure/chair/office{
+"aP" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
 	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo)
+/area/cruiser_dock/engineering)
 "aT" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
 	req_access = list(null)
@@ -122,23 +118,6 @@
 /obj/machinery/deepfryer,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
-"aZ" = (
-/obj/structure/table/glass,
-/obj/item/stack/sheet/mineral/gold{
-	amount = 10
-	},
-/obj/item/stack/sheet/mineral/uranium{
-	amount = 10
-	},
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 5
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
-"bb" = (
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "bc" = (
 /obj/machinery/griddle,
 /obj/machinery/light{
@@ -164,22 +143,17 @@
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/brig)
 "bt" = (
-/obj/machinery/monkey_recycler,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/research)
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/cruiser_dock/cargo)
 "bu" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Kitchen"
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/brig)
-"bx" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 6
-	},
-/obj/structure/closet/l3closet/janitor,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "by" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Bridge";
@@ -192,6 +166,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
+"bz" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/mob_spawn/human/syndicate/assops/heads/chief_research_officer,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cro)
 "bA" = (
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
@@ -237,6 +216,20 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
+"ca" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "ce" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_access_txt = "150"
@@ -264,6 +257,11 @@
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
+"cj" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
 "ck" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -283,10 +281,9 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
-"cs" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
+"cr" = (
+/turf/open/floor/plating,
+/area/cruiser_dock/cargo)
 "ct" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/glowstick,
@@ -318,13 +315,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
-"cB" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/north,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
+"cA" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/plastitanium,
 /area/cruiser_dock/cargo/hangar)
+"cB" = (
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "cC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -332,17 +330,20 @@
 /obj/machinery/atmospherics/components/trinary/filter/atmos/n2,
 /turf/open/floor/plating,
 /area/cruiser_dock/engineering)
+"cF" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/item/lightreplacer{
+	pixel_y = 10
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "cG" = (
 /obj/structure/table/glass,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"cH" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/ceo)
 "cK" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/iron/showroomfloor,
@@ -366,9 +367,11 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"cP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
+"cQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
 /area/cruiser_dock/cargo/hangar)
 "cR" = (
 /obj/machinery/door/airlock/command{
@@ -390,13 +393,9 @@
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
 "cV" = (
-/obj/effect/turf_decal/siding/wood/corner,
-/obj/structure/table/wood,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
-/area/cruiser_dock/heads/cl)
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "dd" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "150"
@@ -419,9 +418,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
-"dj" = (
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo)
 "dk" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Cell"
@@ -441,10 +437,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/ceo)
-"do" = (
-/obj/machinery/chem_heater/withbuffer,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/research)
 "dq" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -463,10 +455,6 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
-"dv" = (
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo/hangar)
 "dw" = (
 /obj/machinery/door/airlock/science/glass{
 	name = "Fabrication";
@@ -486,6 +474,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
+"dI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "dP" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor/wood,
@@ -498,32 +492,20 @@
 /obj/item/bedsheet/dorms,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
-"dT" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
-"dW" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "150"
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "dX" = (
 /obj/machinery/nanite_programmer,
 /turf/open/floor/circuit/green,
 /area/cruiser_dock/research)
+"dZ" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "eb" = (
 /obj/machinery/smartfridge/food,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
@@ -540,21 +522,21 @@
 /obj/structure/closet,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"es" = (
+/obj/machinery/power/rtg/advanced,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
+"et" = (
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
+/area/cruiser_dock/medical/virology)
 "eu" = (
 /obj/structure/chair/sofa/bench/right,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
-"eC" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/cruiser_dock/engineering)
-"eH" = (
-/obj/machinery/light,
-/turf/open/floor/holofloor/dark,
-/area/cruiser_dock/research)
 "eJ" = (
 /obj/structure/chair/sofa/bench/left,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -570,40 +552,31 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
-"eL" = (
-/obj/effect/turf_decal/siding/wood/corner,
-/obj/structure/cable,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cro)
 "eS" = (
 /obj/structure/chair/stool/bar,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
-"eT" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "eU" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"eY" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
+"fc" = (
+/obj/machinery/light,
+/turf/open/floor/holofloor/dark,
+/area/cruiser_dock/research)
 "fd" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
-"ff" = (
-/obj/machinery/portable_atmospherics/scrubber/huge/movable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/cruiser_dock/engineering)
 "fg" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Cell"
@@ -616,50 +589,23 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
-"fi" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/structure/closet/secure_closet{
-	icon_state = "rd";
-	name = "\proper chief research officer's locker";
-	req_access_txt = "150"
-	},
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cro)
-"fk" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
-/turf/open/floor/engine/telecomms,
-/area/cruiser_dock/research)
+"fp" = (
+/obj/machinery/power/rtg/advanced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "fs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
-"ft" = (
-/obj/machinery/base_alarm{
-	pixel_y = 30
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "fu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/brig)
-"fz" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 1
-	},
-/turf/open/floor/plating/airless,
-/area/cruiser_dock/heads/ceo)
 "fC" = (
 /obj/structure/table/glass,
 /turf/open/floor/noslip,
@@ -670,9 +616,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
-"fF" = (
-/turf/open/floor/carpet/orange,
-/area/cruiser_dock/heads/ceo)
 "fG" = (
 /obj/machinery/light{
 	dir = 4
@@ -695,15 +638,6 @@
 "fP" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
-"fT" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/cruiser_dock/cargo/hangar)
 "fV" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -713,6 +647,20 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/service)
+"fW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
+"fZ" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "gb" = (
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
@@ -725,25 +673,30 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "gg" = (
-/obj/machinery/light{
-	dir = 4
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
 	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/turf/open/floor/mineral/plastitanium,
+/obj/structure/table/reinforced,
+/obj/item/pushbroom,
+/turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
 "gh" = (
 /turf/open/floor/engine/o2,
+/area/cruiser_dock/engineering)
+"gi" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
 /area/cruiser_dock/engineering)
 "gn" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/cargo/hangar)
-"gr" = (
-/obj/effect/turf_decal/siding/wood,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/ceo)
+"gs" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/cruiser_dock/engineering)
 "gt" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Pool"
@@ -763,6 +716,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"gB" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "gD" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plating,
@@ -791,10 +753,6 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/research)
-"gW" = (
-/obj/structure/girder,
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "gY" = (
 /obj/machinery/button/door{
 	id = "sdorm1";
@@ -826,12 +784,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
-"hn" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "hq" = (
 /obj/machinery/button/door{
 	id = "sdorm3";
@@ -843,21 +795,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/commons/dorms)
-"hr" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 9
-	},
-/obj/structure/table/reinforced,
-/obj/item/pushbroom,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
-"hs" = (
-/obj/structure/chair/stool,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
 "hu" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
@@ -867,19 +804,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"hy" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/mineral/plastitanium,
+"hz" = (
+/obj/structure/window/shuttle/survival_pod,
+/obj/structure/grille,
+/turf/open/floor/plating,
 /area/cruiser_dock/cargo/hangar)
 "hA" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/donk,
 /area/cruiser_dock/heads/cl)
-"hB" = (
-/obj/structure/table/glass,
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
 "hE" = (
 /obj/machinery/light{
 	dir = 8
@@ -894,9 +827,12 @@
 /obj/effect/turf_decal/siding/blue,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
-"hU" = (
-/turf/open/floor/iron,
-/area/cruiser_dock/medical/virology)
+"hR" = (
+/obj/effect/turf_decal/trimline/purple/filled/warning,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "hV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -923,12 +859,28 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/cruiser_dock/security)
+"ig" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 10
+	},
+/obj/machinery/vending/wardrobe/jani_wardrobe,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "im" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
+"ir" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/cruiser_dock/cargo/hangar)
 "is" = (
 /obj/machinery/smartfridge/extract/preloaded,
 /turf/open/floor/iron/dark,
@@ -937,13 +889,6 @@
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
-"iv" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "iF" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/airlock{
@@ -1011,18 +956,18 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "iX" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/belt/utility/syndicate,
-/obj/item/storage/belt/utility/syndicate,
-/obj/item/storage/belt/utility/syndicate,
-/obj/item/storage/belt/utility/syndicate,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 6
+/obj/machinery/door/airlock/external/glass{
+	name = "Cargo Airlock";
+	req_access_txt = "150"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/cargo)
 "iY" = (
 /obj/structure/table/glass,
 /obj/item/storage/backpack/duffelbag/syndie/surgery,
@@ -1033,6 +978,10 @@
 /obj/structure/table/optable,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
+"jh" = (
+/obj/structure/closet/l3closet/virology,
+/turf/open/floor/iron,
+/area/cruiser_dock/medical/virology)
 "js" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = list(150)
@@ -1054,6 +1003,16 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/research)
+"jv" = (
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
+/area/cruiser_dock/engineering)
+"jA" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "jG" = (
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder{
@@ -1078,6 +1037,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
+"jP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
+"jT" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "jV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/hidden{
@@ -1105,14 +1074,16 @@
 /obj/machinery/light,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/ceo)
+"kf" = (
+/turf/open/floor/iron,
+/area/cruiser_dock/medical/virology)
 "kg" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
-"kh" = (
-/obj/structure/closet/radiation,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron,
-/area/cruiser_dock/engineering)
+"ki" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/ceo)
 "kj" = (
 /obj/item/bedsheet/cmo,
 /obj/structure/bed,
@@ -1124,12 +1095,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
-"kr" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "ks" = (
 /obj/structure/bodycontainer/morgue{
 	dir = 8
@@ -1170,15 +1135,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
-"kE" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/mob/living/simple_animal/hostile/lizard/wags_his_tail{
-	name = "Chomps-The-Rats"
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "kM" = (
 /obj/structure/reagent_dispensers/cooking_oil,
 /obj/effect/turf_decal/siding/white{
@@ -1190,18 +1146,6 @@
 /obj/machinery/gibber,
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/service)
-"kT" = (
-/obj/machinery/door/airlock/research/glass{
-	name = "Janitorial"
-	},
-/obj/effect/turf_decal/trimline/purple/filled/warning{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/neutral/filled/warning,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "ld" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = list(150)
@@ -1240,20 +1184,6 @@
 /obj/machinery/vending/hydronutrients,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"lj" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "ce";
-	name = "\proper chief engineering officer's locker";
-	req_access_txt = "150"
-	},
-/obj/item/storage/belt/utility/chief/full{
-	name = "\improper Chief Engineering Officer's toolbelt"
-	},
-/obj/item/construction/rcd/combat,
-/obj/item/pipe_dispenser,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/ceo)
 "lk" = (
 /turf/open/floor/plating,
 /area/cruiser_dock/security)
@@ -1321,15 +1251,6 @@
 /obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/cruiser_dock/engineering)
-"lW" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "lY" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
@@ -1360,6 +1281,10 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/commons/dorms)
+"mk" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "mm" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
@@ -1417,6 +1342,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
+"mJ" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/purple,
+/area/cruiser_dock/heads/cro)
 "mK" = (
 /obj/machinery/computer/crew/syndie{
 	dir = 8
@@ -1433,10 +1362,6 @@
 /obj/machinery/suit_storage_unit/syndicate,
 /turf/open/floor/carpet/red,
 /area/cruiser_dock/heads/cmaa)
-"mN" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/cruiser_dock/engineering)
 "mS" = (
 /obj/structure/dresser,
 /turf/open/floor/wood,
@@ -1458,13 +1383,6 @@
 /obj/effect/mob_spawn/human/syndicate/assops/heads/chief_master_at_arms,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmaa)
-"nd" = (
-/obj/structure/bed,
-/obj/item/bedsheet/ce{
-	name = "chief engineering officer's bedsheet"
-	},
-/turf/open/floor/carpet/orange,
-/area/cruiser_dock/heads/ceo)
 "ng" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
@@ -1489,22 +1407,11 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
 "nu" = (
-/obj/machinery/power/rtg/advanced,
-/obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
-/obj/machinery/light/warm,
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
-"nz" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 4
 	},
-/obj/structure/window/reinforced/survival_pod,
-/turf/open/floor/engine,
-/area/cruiser_dock/research)
-"nA" = (
-/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
-/turf/open/floor/plating,
+/turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "nD" = (
 /obj/structure/cable,
@@ -1518,13 +1425,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
-"nF" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
+"nG" = (
+/obj/machinery/dna_scannernew,
+/turf/open/floor/holofloor/dark,
+/area/cruiser_dock/research)
 "nH" = (
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmo)
@@ -1553,16 +1457,20 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/service)
-"nV" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
 "nZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/service)
+"oc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
+/area/cruiser_dock/engineering)
+"od" = (
+/obj/structure/dresser,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cl)
 "oh" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 10
@@ -1595,15 +1503,6 @@
 /obj/effect/turf_decal/trimline/blue/line,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"oo" = (
-/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
-	dir = 4;
-	initialize_directions = 4;
-	name = "euthanization chamber freezer"
-	},
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/research)
 "ot" = (
 /obj/machinery/door/airlock/medical{
 	name = "Unit A";
@@ -1612,6 +1511,10 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
+"ou" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/cruiser_dock/cargo/hangar)
 "ow" = (
 /obj/machinery/door/airlock/medical{
 	name = "Unit B";
@@ -1651,18 +1554,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons/dorms)
-"oP" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
-"oU" = (
-/obj/effect/turf_decal/trimline/yellow/filled/corner,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "oY" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -1708,6 +1599,20 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmo)
+"pl" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod,
+/turf/open/floor/engine,
+/area/cruiser_dock/research)
+"pm" = (
+/obj/machinery/door/airlock/science/glass{
+	name = "Xenobiology";
+	req_access_txt = "150"
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "po" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance/two,
@@ -1723,18 +1628,27 @@
 	name = "pool"
 	},
 /area/cruiser_dock/commons/dorms)
-"pE" = (
-/obj/machinery/power/rtg/advanced,
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "pO" = (
 /obj/structure/falsewall/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
+"pP" = (
+/obj/machinery/light,
+/turf/open/floor/iron,
+/area/cruiser_dock/medical/virology)
+"pR" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/spray/chemsprayer/janitor{
+	pixel_y = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "pW" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 10
@@ -1768,25 +1682,22 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/cruiser_dock/service)
-"qc" = (
-/turf/open/floor/carpet/orange,
-/area/cruiser_dock/cargo)
-"qd" = (
+"qi" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/iron,
+/area/cruiser_dock/engineering)
+"qq" = (
+/obj/machinery/door/airlock/research/glass{
+	name = "Janitorial"
+	},
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
-"qj" = (
-/obj/machinery/power/smes/magical{
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Produces power through an unstable bluespace pocket.";
-	name = "bluespace-powered power storage unit"
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "qr" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
@@ -1857,6 +1768,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmaa)
+"qK" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
+"qM" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/cruiser_dock/medical/virology)
 "qQ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
@@ -1879,6 +1804,18 @@
 /obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/cruiser_dock/engineering)
+"ra" = (
+/obj/item/kirbyplants/random,
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/holofloor/dark,
+/area/cruiser_dock/research)
 "rb" = (
 /turf/open/water/overlay{
 	desc = "It's a pool for swimming in!";
@@ -1905,10 +1842,18 @@
 /turf/open/floor/carpet,
 /area/cruiser_dock/heads/admiral)
 "rw" = (
-/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
-/obj/machinery/light/floor,
-/turf/open/floor/plating,
+/obj/machinery/shower{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/cruiser_dock/medical/virology)
+"ry" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "rC" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/heads/cro)
@@ -1917,10 +1862,30 @@
 	icon = 'icons/turf/floors.dmi'
 	},
 /area/cruiser_dock/maint)
+"rL" = (
+/obj/machinery/door/airlock/virology{
+	name = "Virology";
+	req_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
 "rN" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
+"rP" = (
+/obj/machinery/power/rtg/advanced,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/obj/machinery/light/warm,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "rQ" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -1937,12 +1902,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
-"rT" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "rV" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -1962,6 +1921,13 @@
 /obj/machinery/griddle,
 /turf/open/floor/iron/kitchen,
 /area/cruiser_dock/service)
+"sf" = (
+/obj/structure/bed,
+/obj/item/bedsheet/ce{
+	name = "chief engineering officer's bedsheet"
+	},
+/turf/open/floor/carpet/orange,
+/area/cruiser_dock/heads/ceo)
 "sh" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -1980,6 +1946,15 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cmo)
+"sj" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/closet/secure_closet{
+	icon_state = "rd";
+	name = "\proper chief research officer's locker";
+	req_access_txt = "150"
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cro)
 "sk" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hop{
@@ -2013,26 +1988,17 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
-"sH" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/structure/table/reinforced,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
-"sK" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "150"
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning,
-/obj/effect/turf_decal/trimline/neutral/filled/warning{
+"sG" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 1
 	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
+"sI" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
 /area/cruiser_dock/engineering)
 "sN" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -2070,6 +2036,13 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/commons)
+"sV" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/cruiser_dock/heads/ceo)
 "ta" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Prison";
@@ -2131,11 +2104,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
-"to" = (
-/obj/structure/window/shuttle/survival_pod,
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo/hangar)
 "tr" = (
 /obj/structure/chair{
 	dir = 4
@@ -2147,12 +2115,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"tu" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 4
-	},
-/turf/open/floor/engine/o2,
-/area/cruiser_dock/engineering)
 "tz" = (
 /obj/structure/table,
 /obj/machinery/light{
@@ -2165,25 +2127,28 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"tB" = (
-/obj/machinery/recharge_station,
-/obj/structure/window/reinforced/spawner/west,
-/turf/open/floor/iron,
-/area/cruiser_dock/engineering)
 "tD" = (
 /obj/item/storage/toolbox/mechanical/old/clean,
 /turf/open/floor/iron{
 	icon = 'icons/turf/floors.dmi'
 	},
 /area/cruiser_dock/maint)
-"tE" = (
-/obj/machinery/dna_scannernew,
-/turf/open/floor/holofloor/dark,
-/area/cruiser_dock/research)
 "tG" = (
-/obj/machinery/recharge_station,
-/turf/open/floor/iron,
-/area/cruiser_dock/engineering)
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet{
+	icon_state = "qm";
+	name = "\proper Deck Officer's Locker";
+	req_access_txt = "150"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/item/clothing/under/rank/cargo/qm/syndie,
+/obj/item/clothing/neck/cloak/qm/syndie,
+/turf/open/floor/wood,
+/area/cruiser_dock/cargo)
 "tH" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -2193,16 +2158,24 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/research)
+"tJ" = (
+/obj/effect/turf_decal/box/corners,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo)
 "tM" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
 /area/cruiser_dock/cargo/hangar)
-"tO" = (
-/obj/machinery/suit_storage_unit/syndicate,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/ceo)
+"tN" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "tR" = (
 /obj/effect/mob_spawn/human/assops_prisoner{
 	dir = 4
@@ -2254,6 +2227,19 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
+"ub" = (
+/obj/machinery/door/airlock/external/glass{
+	name = "Arrivals Airlock";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/cargo/hangar)
 "ue" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave{
@@ -2293,10 +2279,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"up" = (
-/obj/item/toy/plush/bubbleplush,
-/turf/open/floor/plating/asteroid/airless,
-/area/cruiser_dock/commons)
 "us" = (
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
@@ -2321,11 +2303,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"uw" = (
-/obj/machinery/atmospherics/components/trinary/mixer/airmix/inverse,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "uz" = (
 /obj/machinery/computer/pandemic,
 /turf/open/floor/iron/dark,
@@ -2336,12 +2313,6 @@
 	},
 /turf/open/floor/circuit/green,
 /area/cruiser_dock/brig)
-"uD" = (
-/mob/living/carbon/human/species/monkey{
-	faction = list("neutral","Syndicate")
-	},
-/turf/open/floor/grass,
-/area/cruiser_dock/medical/virology)
 "uE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -2349,8 +2320,21 @@
 /obj/machinery/atmospherics/components/trinary/filter/atmos/o2,
 /turf/open/floor/plating,
 /area/cruiser_dock/engineering)
-"uF" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
+"uG" = (
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/circuit/green,
+/area/cruiser_dock/brig)
+"uI" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 8
 	},
 /obj/structure/cable,
@@ -2358,18 +2342,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
-"uG" = (
-/obj/machinery/cryopod{
-	dir = 8
-	},
-/turf/open/floor/circuit/green,
-/area/cruiser_dock/brig)
-"uS" = (
-/obj/machinery/shower{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/cruiser_dock/medical/virology)
 "uV" = (
 /obj/machinery/sleeper/syndie/fullupgrade{
 	dir = 1
@@ -2383,6 +2355,20 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cl)
+"va" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
+"vb" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "vc" = (
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
@@ -2395,6 +2381,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
+"vm" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/ceo)
 "vr" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -2405,6 +2398,17 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
+"vt" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/door/airlock/command/glass{
+	name = "Chief Research Officer";
+	req_access_txt = "150"
+	},
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cro)
 "vv" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -2425,6 +2429,53 @@
 /obj/machinery/light,
 /turf/open/floor/iron/kitchen,
 /area/cruiser_dock/service)
+"vE" = (
+/obj/machinery/recharge_station,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/cruiser_dock/engineering)
+"vG" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Chief Engineering Officer";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/ceo)
+"vH" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/chair/office,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cro)
+"vK" = (
+/obj/machinery/power/smes/magical{
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Produces power through an unstable bluespace pocket.";
+	name = "bluespace-powered power storage unit"
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
+"vO" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "vS" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/white{
@@ -2470,6 +2521,15 @@
 	dir = 1
 	},
 /area/cruiser_dock/commons)
+"ws" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8;
+	external_pressure_bound = 140;
+	name = "killroom vent";
+	pressure_checks = 0
+	},
+/turf/open/floor/engine/telecomms,
+/area/cruiser_dock/research)
 "wt" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood,
@@ -2502,12 +2562,6 @@
 	},
 /turf/open/floor/circuit/green,
 /area/cruiser_dock/brig)
-"wA" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 4
-	},
-/turf/open/floor/engine/n2,
-/area/cruiser_dock/engineering)
 "wB" = (
 /turf/open/floor/iron/dark/red/side{
 	dir = 4
@@ -2535,15 +2589,6 @@
 	},
 /turf/open/floor/circuit/green,
 /area/cruiser_dock/brig)
-"wK" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "wM" = (
 /obj/machinery/chem_dispenser/fullupgrade,
 /obj/effect/turf_decal/stripes/line{
@@ -2594,6 +2639,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
+"xh" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/cruiser_dock/heads/ceo)
 "xi" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 5
@@ -2613,6 +2662,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
+"xl" = (
+/obj/machinery/modular_computer/console/preset/civilian{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo)
 "xm" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
@@ -2623,6 +2678,12 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/heads/cl)
+"xr" = (
+/obj/effect/turf_decal/box/corners{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo)
 "xs" = (
 /obj/machinery/door/airlock/science/glass{
 	name = "Xenobiology";
@@ -2677,12 +2738,6 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/commons)
-"xD" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/cruiser_dock/medical/virology)
 "xE" = (
 /obj/structure/rack,
 /obj/item/tank/jetpack/oxygen,
@@ -2699,13 +2754,6 @@
 /obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
-"xJ" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/machinery/light,
-/turf/open/floor/mineral/plastitanium,
-/area/cruiser_dock/cargo/hangar)
 "xR" = (
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 8
@@ -2725,11 +2773,44 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
+"xX" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "ya" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
+/area/cruiser_dock/commons)
+"ye" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Engineering";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
+"yo" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
+"yw" = (
+/obj/item/toy/plush/bubbleplush,
+/turf/open/floor/plating/asteroid/airless,
 /area/cruiser_dock/commons)
 "yB" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
@@ -2743,13 +2824,6 @@
 	dir = 8
 	},
 /area/cruiser_dock/security)
-"yJ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "yL" = (
 /obj/structure/table,
 /obj/structure/cable,
@@ -2796,6 +2870,14 @@
 	},
 /turf/open/floor/noslip,
 /area/cruiser_dock/medical)
+"za" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/cruiser_dock/heads/cl)
 "zc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2808,26 +2890,16 @@
 /turf/open/floor/plating,
 /area/cruiser_dock/medical)
 "zf" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/door/airlock/command/glass{
-	name = "Chief Research Officer";
-	req_access_txt = "150"
-	},
-/obj/structure/cable,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cro)
-"zg" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/storage/belt/utility/syndicate,
+/obj/item/storage/belt/utility/syndicate,
+/obj/item/storage/belt/utility/syndicate,
+/obj/item/storage/belt/utility/syndicate,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
 "zi" = (
@@ -2835,12 +2907,14 @@
 /obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/cro)
-"zn" = (
-/obj/machinery/computer/scan_consolenew{
-	dir = 4
+"zq" = (
+/obj/machinery/power/rtg/advanced,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
-/turf/open/floor/holofloor/dark,
-/area/cruiser_dock/research)
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "zy" = (
 /obj/structure/closet/crate/freezer{
 	name = "universal blood storage"
@@ -2864,12 +2938,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
-"zC" = (
+"zA" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/turf/open/floor/grass,
-/area/cruiser_dock/medical/virology)
+/turf/open/floor/engine/telecomms,
+/area/cruiser_dock/research)
 "zJ" = (
 /obj/machinery/medical_kiosk,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -2911,19 +2986,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/service)
-"zR" = (
-/obj/machinery/door/airlock/external/glass{
-	name = "Cargo Airlock";
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo)
 "zT" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner,
 /obj/structure/cable,
@@ -2947,12 +3009,6 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
-"Aa" = (
-/obj/structure/flora/rock/pile{
-	icon_state = "basalt3"
-	},
-/turf/open/floor/plating/asteroid/airless,
-/area/cruiser_dock/commons)
 "Ad" = (
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder{
@@ -3012,13 +3068,6 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/commons)
-"AG" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/obj/machinery/light,
-/turf/open/floor/mineral/plastitanium,
-/area/cruiser_dock/cargo/hangar)
 "AH" = (
 /obj/structure/chair{
 	dir = 4
@@ -3103,22 +3152,6 @@
 /obj/effect/turf_decal/trimline/purple/filled/corner,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"AZ" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet{
-	icon_state = "qm";
-	name = "\proper Deck Officer's Locker";
-	req_access_txt = "150"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/item/clothing/under/rank/cargo/qm/syndie,
-/obj/item/clothing/neck/cloak/qm/syndie,
-/turf/open/floor/wood,
-/area/cruiser_dock/cargo)
 "Bc" = (
 /obj/structure/chair/stool/bar,
 /obj/effect/turf_decal/siding/wood{
@@ -3164,6 +3197,20 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
+"Bv" = (
+/obj/machinery/portable_atmospherics/scrubber/huge/movable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/cruiser_dock/engineering)
+"Bx" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "BC" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -3178,10 +3225,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
 /area/cruiser_dock/security)
-"BF" = (
-/obj/structure/closet/l3closet/virology,
-/turf/open/floor/iron,
-/area/cruiser_dock/medical/virology)
 "BG" = (
 /obj/machinery/reagentgrinder{
 	desc = "Used to grind things up into raw materials and liquids.";
@@ -3196,10 +3239,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
-"BL" = (
-/obj/structure/chair/stool,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
 "BM" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Storage";
@@ -3218,20 +3257,6 @@
 "BO" = (
 /turf/open/floor/iron,
 /area/cruiser_dock/bridge/hallway)
-"BP" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access_txt = "150"
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "BQ" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/stripes/line{
@@ -3245,6 +3270,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"BT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/machinery/light/cold/no_nightlight,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cro)
 "BU" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -3256,6 +3289,13 @@
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock/research)
+"BV" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod,
+/turf/open/floor/grass,
+/area/cruiser_dock/medical/virology)
 "BX" = (
 /obj/structure/table/wood,
 /obj/machinery/reagentgrinder{
@@ -3270,18 +3310,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
-"Cd" = (
-/obj/machinery/door/window/survival_pod{
-	req_access_txt = "150"
-	},
-/turf/open/floor/grass,
-/area/cruiser_dock/medical/virology)
-"Ce" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "Cf" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -3294,12 +3322,22 @@
 	dir = 1
 	},
 /area/cruiser_dock/commons)
-"Co" = (
-/obj/machinery/light{
+"Cl" = (
+/obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/turf/open/floor/iron,
-/area/cruiser_dock/cargo)
+/mob/living/carbon/human/species/monkey{
+	faction = list("neutral","Syndicate")
+	},
+/turf/open/floor/grass,
+/area/cruiser_dock/medical/virology)
+"Cs" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "Cv" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Evidence Storage";
@@ -3318,18 +3356,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
-"CC" = (
-/obj/item/kirbyplants/random,
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/effect/turf_decal/trimline/blue/filled/corner{
-	dir = 4
-	},
-/turf/open/floor/holofloor/dark,
-/area/cruiser_dock/research)
+"Cy" = (
+/turf/open/floor/carpet/orange,
+/area/cruiser_dock/cargo)
 "CD" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -3384,13 +3413,9 @@
 /turf/open/floor/grass,
 /area/cruiser_dock/vault)
 "CT" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
+/obj/structure/flora/rock,
+/turf/open/floor/plating/asteroid/airless,
+/area/cruiser_dock/commons)
 "CW" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 10
@@ -3400,21 +3425,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
-"CY" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 10
-	},
-/obj/machinery/vending/wardrobe/jani_wardrobe,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
-"CZ" = (
-/obj/machinery/power/smes/magical{
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Produces power through an unstable bluespace pocket.";
-	name = "bluespace-powered power storage unit"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
 /area/cruiser_dock/engineering)
 "Dc" = (
 /obj/structure/flora/rock/pile,
@@ -3428,13 +3438,6 @@
 "Dh" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
-"Dm" = (
-/obj/machinery/door/airlock/science/glass{
-	name = "Xenobiology";
-	req_access_txt = "150"
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/research)
 "Do" = (
 /obj/item/toy/figure/ian,
 /turf/open/floor/plating/asteroid/airless,
@@ -3442,27 +3445,12 @@
 "Dp" = (
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/admiral)
-"Ds" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "Dv" = (
 /obj/structure/table,
 /obj/item/restraints/handcuffs,
 /obj/item/restraints/handcuffs,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
-"DA" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "DC" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 1
@@ -3527,15 +3515,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/plating,
-/area/cruiser_dock/engineering)
-"DS" = (
-/obj/machinery/shower{
-	pixel_y = 12
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/iron,
 /area/cruiser_dock/engineering)
 "DT" = (
 /turf/open/floor/engine,
@@ -3620,15 +3599,6 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/cargo)
-"EO" = (
-/obj/machinery/door/airlock/virology{
-	name = "Virology";
-	req_access_txt = "150"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
 "EQ" = (
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 4
@@ -3696,6 +3666,13 @@
 /obj/machinery/light,
 /turf/open/floor/wood,
 /area/cruiser_dock/service)
+"Fu" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 6
+	},
+/obj/structure/closet/l3closet/janitor,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "FB" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
@@ -3746,15 +3723,18 @@
 	},
 /turf/open/floor/noslip,
 /area/cruiser_dock/medical)
-"FU" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
+"FS" = (
+/obj/machinery/light{
+	dir = 1
 	},
-/mob/living/carbon/human/species/monkey{
-	faction = list("neutral","Syndicate")
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
 	},
-/turf/open/floor/grass,
-/area/cruiser_dock/medical/virology)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "FV" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -3798,6 +3778,10 @@
 /obj/structure/flora/ausbushes/fernybush,
 /turf/open/floor/grass,
 /area/cruiser_dock/bridge/hallway)
+"Gx" = (
+/obj/structure/chair/stool,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
 "GC" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Dining Area"
@@ -3838,12 +3822,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
-"GO" = (
-/obj/machinery/power/rtg/advanced,
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "GP" = (
 /obj/machinery/door/airlock/virology{
 	name = "Virology";
@@ -3862,11 +3840,18 @@
 	},
 /area/cruiser_dock/security)
 "Ha" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/table/glass,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 10
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 10
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
 /turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
+/area/cruiser_dock/medical/virology)
 "Hc" = (
 /obj/structure/closet/secure_closet/evidence{
 	req_one_access_txt = list(150)
@@ -3886,6 +3871,9 @@
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock/cargo/hangar)
+"Hm" = (
+/turf/open/floor/carpet/orange,
+/area/cruiser_dock/heads/ceo)
 "Hp" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/vault)
@@ -3903,12 +3891,6 @@
 /obj/item/melee/transforming/energy/sword/saber/red,
 /turf/open/floor/iron,
 /area/cruiser_dock/security/armory)
-"Hv" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/cruiser_dock/cargo/hangar)
 "Hw" = (
 /obj/structure/rack,
 /obj/item/shield/energy,
@@ -3920,6 +3902,14 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/security/armory)
+"Hz" = (
+/obj/machinery/smartfridge/chemistry/virology/preloaded,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
+"HB" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "HD" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
@@ -3928,6 +3918,14 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
 /area/cruiser_dock/security/armory)
+"HG" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood,
+/area/cruiser_dock/cargo)
 "HI" = (
 /obj/structure/closet/crate/silvercrate,
 /obj/item/stack/sheet/mineral/silver{
@@ -3943,20 +3941,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cruiser_dock/brig)
-"HO" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Chief Engineering Officer";
-	req_access_txt = "150"
+"HN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/ceo)
+/obj/structure/tank_dispenser,
+/turf/open/floor/iron,
+/area/cruiser_dock/engineering)
 "HQ" = (
 /obj/structure/safe,
 /obj/item/storage/box/syndie_kit/chameleon,
@@ -3969,13 +3960,6 @@
 	dir = 8
 	},
 /area/cruiser_dock/vault)
-"HS" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "HU" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3983,10 +3967,6 @@
 	dir = 4
 	},
 /area/cruiser_dock/vault)
-"HV" = (
-/obj/structure/table/wood,
-/turf/open/floor/carpet/purple,
-/area/cruiser_dock/heads/cro)
 "HZ" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/stripes/line{
@@ -4000,6 +3980,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
+"If" = (
+/obj/machinery/power/smes/magical{
+	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Produces power through an unstable bluespace pocket.";
+	name = "bluespace-powered power storage unit"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "Ig" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
@@ -4024,11 +4012,12 @@
 /obj/structure/closet/l3closet/security,
 /turf/open/floor/iron/dark/red/side,
 /area/cruiser_dock/security)
-"In" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/south,
-/turf/open/floor/iron,
-/area/cruiser_dock/medical/virology)
+"Il" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/ceo)
 "Ip" = (
 /obj/machinery/light{
 	dir = 8
@@ -4112,6 +4101,15 @@
 	dir = 1
 	},
 /area/cruiser_dock/vault)
+"IL" = (
+/obj/machinery/shower{
+	pixel_y = 12
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/cruiser_dock/engineering)
 "IM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/red/side{
@@ -4168,6 +4166,11 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/cruiser_dock/commons)
+"Jd" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/south,
+/turf/open/floor/iron,
+/area/cruiser_dock/medical/virology)
 "Jf" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
@@ -4178,18 +4181,15 @@
 	dir = 10
 	},
 /area/cruiser_dock/commons)
-"Jh" = (
-/obj/effect/turf_decal/siding/wood{
+"Jj" = (
+/obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/chair/office{
+/obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/ceo)
+/turf/open/floor/mineral/plastitanium,
+/area/cruiser_dock/cargo/hangar)
 "Jk" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4228,19 +4228,33 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/vault)
+"Jx" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cl)
+"Jy" = (
+/obj/machinery/door/window/survival_pod{
+	req_access_txt = "150"
+	},
+/turf/open/floor/grass,
+/area/cruiser_dock/medical/virology)
 "JA" = (
 /turf/open/floor/plating,
 /area/cruiser_dock/commons)
-"JC" = (
+"JE" = (
+/obj/machinery/chem_heater/withbuffer,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
+"JG" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/spray/chemsprayer/janitor{
-	pixel_y = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
+	},
+/mob/living/simple_animal/hostile/lizard/wags_his_tail{
+	name = "Chomps-The-Rats"
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo/hangar)
@@ -4260,19 +4274,6 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/medical)
-"JL" = (
-/obj/machinery/door/airlock/external/glass{
-	name = "Cargo Airlock";
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo)
 "JM" = (
 /obj/structure/chair/sofa/bench/left{
 	dir = 4
@@ -4285,6 +4286,22 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"JS" = (
+/obj/machinery/door/airlock/virology{
+	name = "Virology";
+	req_access_txt = "150"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
+"JT" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/open/floor/mineral/plastitanium,
+/area/cruiser_dock/cargo/hangar)
 "JU" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Security";
@@ -4295,14 +4312,6 @@
 	dir = 4
 	},
 /area/cruiser_dock/security)
-"JW" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/structure/table/wood,
-/obj/machinery/light/cold/no_nightlight,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cro)
 "JY" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
@@ -4350,6 +4359,27 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
 /area/cruiser_dock/bridge/hallway)
+"Kx" = (
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
+"KC" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "ce";
+	name = "\proper chief engineering officer's locker";
+	req_access_txt = "150"
+	},
+/obj/item/storage/belt/utility/chief/full{
+	name = "\improper Chief Engineering Officer's toolbelt"
+	},
+/obj/item/construction/rcd/combat,
+/obj/item/pipe_dispenser,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/ceo)
 "KG" = (
 /turf/open/floor/engine/n2,
 /area/cruiser_dock/engineering)
@@ -4372,6 +4402,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
+"KS" = (
+/obj/structure/closet/radiation,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/cruiser_dock/engineering)
 "KU" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
@@ -4392,31 +4427,12 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
-"Ld" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/cruiser_dock/cargo/hangar)
 "Le" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 6
 	},
 /turf/open/floor/iron/white,
 /area/cruiser_dock/medical)
-"Lf" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 10
-	},
-/obj/machinery/power/apc/auto_name/west,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "Lh" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 9
@@ -4461,11 +4477,6 @@
 	dir = 10
 	},
 /area/cruiser_dock/commons)
-"Lt" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/commons)
 "Lx" = (
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_assistant,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4474,6 +4485,12 @@
 "LA" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/medical/virology)
+"LC" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "LD" = (
 /turf/open/floor/iron/dark/red/corner{
 	dir = 8
@@ -4552,6 +4569,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/admiral)
+"Mm" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/carpet/orange,
+/area/cruiser_dock/cargo)
 "Mn" = (
 /turf/closed/wall/mineral/titanium/survival/nodiagonal,
 /area/cruiser_dock/cargo/hangar)
@@ -4588,12 +4612,6 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/service)
-"Mz" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/commons)
 "MA" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/barman_recipes,
@@ -4607,6 +4625,10 @@
 /obj/item/reagent_containers/glass/rag,
 /turf/open/floor/iron,
 /area/cruiser_dock/service)
+"MD" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/ceo)
 "MG" = (
 /obj/structure/chair/office,
 /turf/open/floor/iron/dark,
@@ -4671,19 +4693,18 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/cruiser_dock/cargo)
-"Nc" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 5
-	},
-/obj/structure/janitorialcart{
-	dir = 4
-	},
-/obj/item/mop/advanced,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "Ne" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
+"Ng" = (
+/obj/structure/closet/emcloset/wall{
+	pixel_y = 31
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo/hangar)
 "Nk" = (
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
@@ -4692,6 +4713,10 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/medical/virology)
+"Nq" = (
+/obj/machinery/monkey_recycler,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "Nx" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/west,
@@ -4714,13 +4739,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"NG" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "NH" = (
 /obj/structure/table/wood,
 /obj/item/disk{
@@ -4739,19 +4757,39 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
-"NO" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
+"NJ" = (
+/obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
+/obj/machinery/light,
+/turf/open/floor/mineral/plastitanium,
+/area/cruiser_dock/cargo/hangar)
 "NQ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"NS" = (
+/obj/machinery/chem_master,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
+"NU" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/turf/open/floor/grass,
+/area/cruiser_dock/medical/virology)
+"NW" = (
+/obj/machinery/base_alarm{
+	pixel_y = 30
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "Ob" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/sheet/glass/fifty,
@@ -4792,6 +4830,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
+"On" = (
+/mob/living/carbon/human/species/monkey{
+	faction = list("neutral","Syndicate")
+	},
+/turf/open/floor/grass,
+/area/cruiser_dock/medical/virology)
 "Op" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -4859,15 +4903,6 @@
 /obj/structure/flora/rock,
 /turf/open/floor/grass,
 /area/cruiser_dock/vault)
-"OK" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8;
-	external_pressure_bound = 140;
-	name = "killroom vent";
-	pressure_checks = 0
-	},
-/turf/open/floor/engine/telecomms,
-/area/cruiser_dock/research)
 "OL" = (
 /turf/open/floor/plating,
 /area/cruiser_dock/cargo/hangar)
@@ -4897,12 +4932,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
-"OW" = (
-/obj/machinery/chem_master,
-/obj/machinery/light{
-	dir = 8
+"OX" = (
+/obj/machinery/computer/scan_consolenew{
+	dir = 4
 	},
-/turf/open/floor/iron/dark,
+/turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
 "OY" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -4923,9 +4957,12 @@
 /obj/item/slime_extract/grey,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"Pd" = (
-/turf/open/floor/carpet/purple,
-/area/cruiser_dock/heads/cro)
+"Pg" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
 "Pj" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -4936,10 +4973,11 @@
 	},
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/admiral)
-"Pm" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/effect/turf_decal/trimline/yellow/filled/line,
-/turf/open/floor/iron/dark,
+"Pl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
 /area/cruiser_dock/engineering)
 "Po" = (
 /obj/machinery/pdapainter,
@@ -4949,10 +4987,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/cl)
-"Ps" = (
-/obj/structure/flora/rock,
-/turf/open/floor/plating/asteroid/airless,
-/area/cruiser_dock/commons)
 "Pu" = (
 /obj/machinery/vending/security,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -5015,6 +5049,19 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/commons)
+"PU" = (
+/obj/machinery/door/airlock/external/glass{
+	name = "Cargo Airlock";
+	req_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/cargo)
 "PV" = (
 /obj/machinery/recharge_station,
 /obj/machinery/light{
@@ -5069,48 +5116,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
-"Qf" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	external_pressure_bound = 120;
-	name = "killroom vent"
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/turf/open/floor/engine/telecomms,
-/area/cruiser_dock/research)
-"Qi" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/structure/chair/office,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cro)
 "Qo" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/effect/mob_spawn/human/syndicate/assops/heads/station_admiral,
 /turf/open/floor/wood,
 /area/cruiser_dock/heads/admiral)
-"Qt" = (
-/obj/machinery/light,
-/turf/open/floor/iron,
-/area/cruiser_dock/medical/virology)
 "Qw" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/security)
-"Qx" = (
-/obj/structure/closet/emcloset/wall{
-	pixel_y = 31
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "QA" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -5133,6 +5147,10 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
+"QM" = (
+/obj/item/toy/figure/syndie,
+/turf/open/floor/plating/asteroid/airless,
+/area/cruiser_dock/commons)
 "QN" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/closet/secure_closet{
@@ -5164,13 +5182,6 @@
 "QY" = (
 /turf/open/floor/grass,
 /area/cruiser_dock/vault)
-"QZ" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "Ra" = (
 /obj/machinery/nanite_program_hub,
 /turf/open/floor/circuit/green,
@@ -5192,13 +5203,6 @@
 	dir = 4
 	},
 /area/cruiser_dock/vault)
-"Rk" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/carpet/orange,
-/area/cruiser_dock/cargo)
 "Rl" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
@@ -5212,12 +5216,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"Rw" = (
-/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
-	dir = 4
-	},
-/turf/open/floor/engine/n2,
-/area/cruiser_dock/engineering)
 "Rx" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 5
@@ -5231,6 +5229,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
+"RB" = (
+/obj/effect/turf_decal/box/corners{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo)
 "RC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -5242,13 +5246,6 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/research)
-"RE" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/tank_dispenser,
-/turf/open/floor/iron,
-/area/cruiser_dock/engineering)
 "RF" = (
 /obj/machinery/base_alarm{
 	pixel_y = 30
@@ -5278,6 +5275,9 @@
 	},
 /turf/open/floor/holofloor/dark,
 /area/cruiser_dock/research)
+"RQ" = (
+/turf/open/floor/carpet/purple,
+/area/cruiser_dock/heads/cro)
 "RR" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -5318,9 +5318,10 @@
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
 "Sn" = (
-/obj/machinery/smartfridge/chemistry/virology/preloaded,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/turf_decal/trimline/yellow/filled/line,
 /turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
+/area/cruiser_dock/engineering)
 "Su" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
@@ -5391,12 +5392,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"SM" = (
-/obj/effect/turf_decal/box/corners{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo)
 "SN" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -5445,19 +5440,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/cl)
-"SX" = (
-/obj/machinery/door/airlock/virology{
-	name = "Virology";
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/medical/virology)
 "SY" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/heads/admiral)
@@ -5492,12 +5474,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
-"Tg" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 4
-	},
-/turf/open/floor/engine/n2,
-/area/cruiser_dock/engineering)
 "Th" = (
 /obj/machinery/light{
 	dir = 8
@@ -5510,18 +5486,19 @@
 "Tl" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cruiser_dock/heads/ceo)
-"Tp" = (
-/obj/item/toy/figure/syndie,
-/turf/open/floor/plating/asteroid/airless,
-/area/cruiser_dock/commons)
-"Tr" = (
-/obj/machinery/light{
-	dir = 4
+"To" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	external_pressure_bound = 120;
+	name = "killroom vent"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/turf/open/floor/engine/telecomms,
+/area/cruiser_dock/research)
 "Ts" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -5563,16 +5540,6 @@
 	dir = 4
 	},
 /area/cruiser_dock/security)
-"TJ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo/hangar)
-"TL" = (
-/obj/machinery/door/firedoor,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "TM" = (
 /obj/machinery/computer/arcade/amputation{
 	dir = 4
@@ -5588,12 +5555,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/cruiser_dock/security)
-"TP" = (
-/obj/effect/turf_decal/trimline/purple/filled/warning,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "TQ" = (
 /obj/structure/table/optable,
 /turf/open/floor/iron/dark,
@@ -5606,21 +5567,31 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"Ua" = (
-/obj/item/bedsheet/rd{
-	name = "chief research officer's bedsheet"
+"TW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
 	},
-/obj/structure/bed,
-/turf/open/floor/carpet/purple,
-/area/cruiser_dock/heads/cro)
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/ceo)
 "Uc" = (
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
-"Ue" = (
-/obj/structure/dresser,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cl)
+"Uo" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/cruiser_dock/cargo/hangar)
 "Uq" = (
 /obj/machinery/mecha_part_fabricator,
 /obj/structure/window/reinforced/survival_pod{
@@ -5635,13 +5606,11 @@
 /obj/effect/turf_decal/siding/green,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"Uy" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
-/obj/structure/window/reinforced/survival_pod,
-/turf/open/floor/grass,
-/area/cruiser_dock/medical/virology)
+"Uu" = (
+/obj/effect/turf_decal/siding/wood/corner,
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/cruiser_dock/heads/cro)
 "Uz" = (
 /obj/structure/rack,
 /obj/item/assembly/flash/handheld,
@@ -5687,12 +5656,23 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
+"UP" = (
+/obj/structure/table/glass,
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
 "UR" = (
 /obj/machinery/computer/nanite_chamber_control{
 	dir = 1
 	},
 /turf/open/floor/circuit/green,
 /area/cruiser_dock/research)
+"US" = (
+/obj/effect/turf_decal/box/corners{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo)
 "UZ" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/structure/cable,
@@ -5709,16 +5689,6 @@
 /obj/machinery/nanite_chamber,
 /turf/open/floor/circuit/green,
 /area/cruiser_dock/research)
-"Vj" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 1
-	},
-/obj/structure/table/reinforced,
-/obj/item/lightreplacer{
-	pixel_y = 10
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo/hangar)
 "Vl" = (
 /obj/machinery/light,
 /turf/open/floor/carpet,
@@ -5753,6 +5723,13 @@
 	},
 /turf/open/floor/iron,
 /area/cruiser_dock/research)
+"Vr" = (
+/obj/item/bedsheet/rd{
+	name = "chief research officer's bedsheet"
+	},
+/obj/structure/bed,
+/turf/open/floor/carpet/purple,
+/area/cruiser_dock/heads/cro)
 "Vt" = (
 /obj/machinery/rnd/production/circuit_imprinter/offstation,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -5760,11 +5737,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"Vu" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/effect/mob_spawn/human/syndicate/assops/heads/chief_research_officer,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cro)
 "Vw" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/cable,
@@ -5780,10 +5752,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/admiral)
-"VB" = (
-/obj/effect/turf_decal/box/corners,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo)
 "VE" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Corporate Liaison";
@@ -5797,6 +5765,11 @@
 "VG" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical/virology)
+"VK" = (
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/inverse,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "VO" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -5810,6 +5783,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
+"VV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
+/turf/open/floor/plating,
+/area/cruiser_dock/engineering)
 "VZ" = (
 /obj/structure/chair/stool/bar,
 /obj/effect/turf_decal/siding/wood{
@@ -5822,6 +5802,12 @@
 /obj/structure/table/wood,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge)
+"Wc" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	name = "Escape Pod"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/cruiser_dock/cargo/hangar)
 "Wd" = (
 /obj/structure/closet/bombcloset/security,
 /turf/open/floor/iron/dark/red/side,
@@ -5835,6 +5821,15 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
+"Wo" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "Wt" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -5847,32 +5842,33 @@
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock/heads/cl)
-"Wz" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	name = "Escape Pod"
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/cruiser_dock/cargo/hangar)
 "WA" = (
 /obj/effect/decal/cleanable/blood/footprints{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
+"WE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
+"WJ" = (
+/obj/machinery/door/airlock/atmos{
+	name = "Atmospherics";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "WK" = (
 /obj/machinery/vending/cola/pwr_game,
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
-"WM" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/engineering)
 "WO" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/trimline/yellow/filled/line,
@@ -5894,20 +5890,40 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"WV" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+"WX" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
+"WY" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/cargo)
 "Xe" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"Xh" = (
-/obj/machinery/power/rtg/advanced,
+"Xk" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 9
+	},
 /obj/structure/cable,
-/turf/open/floor/plating,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
+"Xs" = (
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	dir = 4;
+	initialize_directions = 4;
+	name = "euthanization chamber freezer"
+	},
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "Xu" = (
 /obj/machinery/light,
 /turf/open/floor/iron/dark/red/side,
@@ -5918,12 +5934,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/bridge/hallway)
-"Xw" = (
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo)
 "Xz" = (
 /turf/open/floor/iron/dark/red/side{
 	dir = 6
@@ -5950,26 +5960,35 @@
 	},
 /turf/open/floor/plating,
 /area/cruiser_dock/security)
-"XE" = (
-/obj/machinery/door/airlock/atmos{
-	name = "Atmospherics";
-	req_access_txt = "150"
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/warning,
-/obj/effect/turf_decal/trimline/neutral/filled/warning{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "XH" = (
 /obj/machinery/light,
 /turf/open/floor/plating,
 /area/cruiser_dock/security)
+"XJ" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	name = "Escape Pod"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/cargo/hangar)
 "XP" = (
 /obj/machinery/recharge_station,
 /obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/iron,
 /area/cruiser_dock/research)
+"XQ" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 10
+	},
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "XS" = (
 /obj/effect/mob_spawn/human/syndicate/assops/syndicate_scientist{
 	dir = 4
@@ -6021,12 +6040,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
-"Yk" = (
-/obj/effect/turf_decal/box/corners{
-	dir = 1
+"Yj" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 5
 	},
+/obj/structure/janitorialcart{
+	dir = 4
+	},
+/obj/item/mop/advanced,
 /turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo)
+/area/cruiser_dock/cargo/hangar)
 "Yn" = (
 /obj/structure/table/wood,
 /obj/item/card/id/advanced/chameleon,
@@ -6042,6 +6065,13 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/cruiser_dock/bridge)
+"Yr" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/medical/virology)
 "Yw" = (
 /turf/open/floor/plating/asteroid/airless,
 /area/cruiser_dock/commons)
@@ -6063,25 +6093,6 @@
 "YA" = (
 /turf/closed/mineral/random/labormineral,
 /area/ruin/space/has_grav)
-"YB" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	name = "Escape Pod"
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/cruiser_dock/cargo/hangar)
-"YE" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 9
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/engineering)
 "YH" = (
 /obj/structure/closet/secure_closet{
 	icon_state = "sec";
@@ -6100,14 +6111,6 @@
 	dir = 1
 	},
 /area/cruiser_dock/security)
-"YN" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/structure/table/wood,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/wood,
-/area/cruiser_dock/heads/cl)
 "YP" = (
 /obj/machinery/processor/slime,
 /turf/open/floor/iron/dark,
@@ -6129,20 +6132,12 @@
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
-"YZ" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/wood,
-/area/cruiser_dock/cargo)
-"Za" = (
-/obj/effect/turf_decal/box/corners{
+"Ze" = (
+/obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/turf/open/floor/iron/dark,
-/area/cruiser_dock/cargo)
+/turf/open/floor/mineral/plastitanium,
+/area/cruiser_dock/cargo/hangar)
 "Zl" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/backpack/duffelbag/syndie/surgery{
@@ -6192,6 +6187,13 @@
 /obj/effect/loot_site_spawner,
 /turf/open/floor/iron,
 /area/cruiser_dock/cargo)
+"Zw" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/cruiser_dock/engineering)
 "Zy" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/heads/admiral)
@@ -6207,10 +6209,6 @@
 	dir = 8
 	},
 /area/cruiser_dock/commons)
-"ZF" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden,
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/cruiser_dock/heads/ceo)
 "ZG" = (
 /obj/structure/flora/rock/pile,
 /turf/open/floor/plating/asteroid/airless,
@@ -6257,6 +6255,10 @@
 	dir = 8
 	},
 /area/cruiser_dock/security)
+"ZV" = (
+/obj/effect/turf_decal/trimline/yellow/filled/corner,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/engineering)
 "ZW" = (
 /obj/structure/table/glass,
 /obj/item/storage/box/monkeycubes{
@@ -6650,7 +6652,7 @@ mT
 SV
 uz
 jG
-hB
+UP
 LA
 YA
 YA
@@ -6727,7 +6729,7 @@ LA
 VG
 VG
 VG
-hs
+Kx
 MJ
 LA
 YA
@@ -6802,11 +6804,11 @@ YA
 YA
 YA
 LA
-Sn
-BL
+Hz
+Gx
 VG
 PW
-aZ
+Ha
 LA
 YA
 YA
@@ -6880,9 +6882,9 @@ YA
 YA
 YA
 LA
-FU
-zC
-Uy
+Cl
+NU
+BV
 PW
 VG
 LA
@@ -6958,11 +6960,11 @@ YA
 YA
 YA
 LA
-xD
-uD
-Cd
+qM
+On
+Jy
 xS
-nF
+Yr
 LA
 YA
 YA
@@ -7039,7 +7041,7 @@ LA
 LA
 LA
 LA
-EO
+JS
 LA
 LA
 YA
@@ -7272,9 +7274,9 @@ YA
 YA
 YA
 YA
-rw
+et
 xS
-rw
+et
 YA
 YA
 YA
@@ -7584,9 +7586,9 @@ YA
 YA
 YA
 LA
-uS
+rw
 xS
-hU
+kf
 LA
 YA
 YA
@@ -7662,9 +7664,9 @@ YA
 YA
 YA
 LA
-BF
+jh
 xS
-Qt
+pP
 LA
 YA
 YA
@@ -7740,9 +7742,9 @@ YA
 YA
 YA
 LA
-BF
-nV
-In
+jh
+Pg
+Jd
 LA
 YA
 YA
@@ -7819,7 +7821,7 @@ cy
 bR
 LA
 LA
-SX
+rL
 LA
 LA
 bR
@@ -8123,8 +8125,8 @@ UR
 ST
 YP
 ZN
-do
-OW
+JE
+NS
 AK
 ju
 DT
@@ -8279,14 +8281,14 @@ Vp
 ST
 is
 ZW
-bt
+Nq
 Xe
 Xe
-Dm
+pm
 Xe
 Xe
 Xe
-oo
+Xs
 ST
 bP
 xB
@@ -8362,9 +8364,9 @@ Xe
 cG
 ju
 gR
-nz
-Qf
-fk
+pl
+To
+zA
 ST
 bP
 bU
@@ -8442,7 +8444,7 @@ ju
 DT
 Tx
 df
-OK
+ws
 ST
 bP
 bU
@@ -8522,8 +8524,8 @@ ST
 ST
 ST
 ST
-Ha
-TL
+eY
+mk
 Vd
 gn
 gn
@@ -8591,35 +8593,35 @@ Xe
 Xe
 Gi
 ST
-CC
-zn
-tE
+ra
+OX
+nG
 ST
-Qx
+Ng
 Dh
 Dh
 Dh
 Dh
 hY
 Dh
-dT
+jT
 Dh
 Dh
 Dh
-dT
+jT
 Dh
 Dh
 Dh
 Lp
 OL
-YB
-Wz
+XJ
+Wc
 bp
 bp
 bp
 bp
 bp
-to
+hz
 "}
 (31,1,1) = {"
 wi
@@ -8671,11 +8673,11 @@ Bh
 ZX
 ap
 Ts
-eH
+fc
 ST
 hY
 hY
-Tr
+qK
 hY
 hY
 hY
@@ -8688,16 +8690,16 @@ Dh
 Dh
 Dh
 Dh
-TJ
+cQ
 OL
-dv
+ou
 bp
 bp
 bp
 bp
 bp
 bp
-to
+hz
 "}
 (32,1,1) = {"
 wi
@@ -8751,8 +8753,8 @@ RP
 gL
 aU
 ST
-Ha
-TL
+eY
+mk
 Vd
 gn
 gn
@@ -8772,8 +8774,8 @@ Vd
 Mn
 tV
 tV
-gg
-Hv
+Jj
+Ze
 Mn
 aE
 "}
@@ -8848,8 +8850,8 @@ Ou
 Ou
 tM
 Ay
-Hv
-Hv
+Ze
+Ze
 Mn
 Mn
 Mn
@@ -8915,11 +8917,11 @@ Ou
 Ou
 Ou
 Vd
-ad
+ub
 Vd
 Ou
 Vd
-ad
+ub
 Vd
 Ou
 Ou
@@ -8980,10 +8982,10 @@ ST
 ST
 XS
 YV
-zf
-eL
-Qi
-JW
+vt
+Uu
+vH
+BT
 rC
 hY
 Dh
@@ -9059,9 +9061,9 @@ Rl
 YX
 YY
 rC
-Vu
-Pd
-HV
+bz
+RQ
+mJ
 rC
 hY
 Dh
@@ -9069,16 +9071,16 @@ gn
 Ou
 tM
 Ay
-Ld
+ir
 nj
 bp
 nj
-Ld
+ir
 nj
 bp
 nj
 nj
-AG
+JT
 Mn
 aE
 Ou
@@ -9137,9 +9139,9 @@ Vt
 XZ
 Zn
 rC
-fi
-Pd
-Ua
+sj
+RQ
+Vr
 rC
 hY
 Dh
@@ -9158,7 +9160,7 @@ bp
 bp
 tV
 tV
-to
+hz
 Ou
 wi
 wi
@@ -9225,18 +9227,18 @@ gn
 Ou
 tM
 Ay
-hy
-hy
+cA
+cA
 bp
-hy
-hy
-hy
+cA
+cA
+cA
 bp
-hy
-hy
+cA
+cA
 tV
 tV
-to
+hz
 Ou
 wi
 wi
@@ -9296,7 +9298,7 @@ Dh
 Dh
 Dh
 Dh
-dT
+jT
 hY
 Dh
 gn
@@ -9314,7 +9316,7 @@ bp
 bp
 tV
 tV
-to
+hz
 Ou
 wi
 wi
@@ -9381,16 +9383,16 @@ gn
 Ou
 tM
 Ay
-fT
-Hv
+Uo
+Ze
 bp
-Hv
-fT
-Hv
+Ze
+Uo
+Ze
 bp
-Hv
-Hv
-xJ
+Ze
+Ze
+NJ
 Mn
 aE
 Ou
@@ -9526,10 +9528,10 @@ SU
 Po
 Yg
 Ya
-Ue
-cV
-YN
-YN
+od
+za
+Jx
+Jx
 Ya
 LS
 Dh
@@ -9687,19 +9689,19 @@ Ms
 hA
 sk
 Ya
-HS
-TL
+Bx
+mk
 Vd
 gn
 gn
 gn
 gn
 Vd
-ad
+ub
 Vd
 gn
 Vd
-ad
+ub
 Vd
 Vd
 Vd
@@ -9765,9 +9767,9 @@ Ya
 Ya
 Ya
 Ya
-cB
+Cs
 Oe
-eT
+ry
 Oe
 Oe
 RY
@@ -9782,14 +9784,14 @@ Dh
 Dh
 Lp
 OL
-YB
-Wz
+XJ
+Wc
 bp
 bp
 bp
 bp
 bp
-to
+hz
 "}
 (46,1,1) = {"
 Ou
@@ -9838,10 +9840,10 @@ Ne
 Ne
 fO
 Zo
-hr
-sH
-JC
-CY
+gg
+va
+pR
+ig
 Vd
 LS
 ua
@@ -9858,16 +9860,16 @@ Dh
 Dh
 Dh
 Dh
-TJ
+cQ
 OL
-dv
+ou
 bp
 bp
 bp
 bp
 bp
 bp
-to
+hz
 "}
 (47,1,1) = {"
 Ou
@@ -9916,11 +9918,11 @@ Ne
 Ne
 lf
 Zo
-Vj
-cP
-qd
-TP
-kT
+cF
+jP
+fW
+hR
+qq
 LS
 Dh
 Sz
@@ -9942,8 +9944,8 @@ Vd
 Mn
 tV
 tV
-gg
-Hv
+Jj
+Ze
 Mn
 aE
 "}
@@ -9994,10 +9996,10 @@ Ta
 Ne
 An
 Zo
-Nc
-wK
-kE
-bx
+Yj
+fZ
+JG
+Fu
 Vd
 LS
 Dh
@@ -10006,7 +10008,7 @@ lS
 LY
 Sz
 qW
-Rw
+jv
 Sz
 Ge
 QD
@@ -10018,8 +10020,8 @@ Sz
 Ou
 tM
 Ay
-Hv
-Hv
+Ze
+Ze
 Mn
 Mn
 Mn
@@ -10077,8 +10079,8 @@ Vd
 Vd
 Vd
 Vd
-HS
-TL
+Bx
+mk
 Sz
 gh
 gh
@@ -10091,7 +10093,7 @@ QD
 RU
 QD
 QD
-gW
+jA
 Sz
 Ou
 aE
@@ -10158,11 +10160,11 @@ bR
 Cc
 bU
 Sz
-tu
+sI
 wC
 Sz
-Tg
-wA
+gi
+oc
 Sz
 gD
 Jp
@@ -10229,7 +10231,7 @@ SY
 Yo
 Yo
 Yw
-Aa
+aB
 Yw
 Yw
 cy
@@ -10308,7 +10310,7 @@ Yw
 Yw
 Yw
 Yw
-up
+yw
 Yw
 cy
 Cc
@@ -10318,16 +10320,16 @@ LJ
 Ee
 DP
 jV
-uw
+VK
 QA
 CW
 Tl
 yO
-aB
-aB
+Il
+Il
 hc
-ZF
-fz
+xh
+sV
 Ou
 Ou
 Ou
@@ -10390,19 +10392,19 @@ Yw
 Yw
 cy
 Cc
-Lt
-mN
+cj
+gs
 uE
 SF
 SF
 cC
-yJ
+VV
 Dd
 QV
-HO
+vG
 dm
 wt
-Jh
+TW
 kd
 Tl
 YA
@@ -10462,15 +10464,15 @@ Vl
 SY
 Yw
 Yw
-Tp
+QM
 Yw
-Ps
+CT
 Yw
 cy
 Cc
 bU
 Sz
-ft
+NW
 Kd
 Kd
 Kd
@@ -10478,10 +10480,10 @@ Kd
 wR
 WO
 Tl
-lj
-cH
-fF
-fF
+KC
+vm
+Hm
+Hm
 Tl
 YA
 YA
@@ -10547,19 +10549,19 @@ Yw
 bR
 Cc
 bU
-XE
-kr
+WJ
+sG
 Kd
 Kd
-oU
-NG
-oP
-iX
+ZV
+vb
+tN
+zf
 Tl
-tO
-gr
-fF
-nd
+MD
+ki
+Hm
+sf
 Tl
 YA
 YA
@@ -10626,12 +10628,12 @@ bR
 CM
 bU
 Sz
-ff
-ff
-eC
-RE
+Bv
+Bv
+Zw
+HN
 Sz
-dW
+uI
 Sz
 Tl
 Tl
@@ -10705,17 +10707,17 @@ Cc
 bU
 Sz
 Sz
-nA
-nA
+cB
+cB
 Sz
 Sz
-YE
-NO
-iv
-pE
-Xh
-Xh
-GO
+Xk
+Wo
+WX
+zq
+fp
+fp
+es
 Sz
 YA
 YA
@@ -10779,21 +10781,21 @@ bU
 bU
 Cc
 bU
-Mz
-Mz
-sK
-YE
-uF
-uF
-Lf
-BP
-Ds
+au
+au
+ye
+Xk
+aP
+aP
+XQ
+ca
+gB
 Kd
 wR
-DA
+Pl
 QD
 QD
-bb
+cV
 Sz
 YA
 YA
@@ -10860,18 +10862,18 @@ EM
 Na
 EM
 Sz
-DS
-hn
-cs
-Pm
+IL
+yo
+HB
+Sn
 Sz
-zg
-Ce
+FS
+dI
 wR
-pE
-Xh
-Xh
-nu
+zq
+fp
+fp
+rP
 Sz
 YA
 YA
@@ -10930,26 +10932,26 @@ rm
 TM
 rm
 Zv
-Co
+bt
 Zv
 rS
 RA
 AI
-aM
-Xw
+WY
+xl
 Sz
-kh
+KS
 Kd
-WV
-tB
+WE
+vE
 Sz
-qj
-WM
+vK
+dZ
 wR
-DA
+Pl
 QD
 QD
-bb
+cV
 Sz
 YA
 YA
@@ -11016,18 +11018,18 @@ GH
 AI
 bX
 Sz
-kh
-rT
-lW
-tG
+KS
+LC
+xX
+qi
 Sz
-CZ
-CT
-QZ
-pE
-Xh
-Xh
-GO
+If
+vO
+nu
+zq
+fp
+fp
+es
 Sz
 YA
 wi
@@ -11090,8 +11092,8 @@ Zv
 XB
 rS
 RA
-Yk
-Za
+RB
+US
 AI
 Sz
 Sz
@@ -11242,12 +11244,12 @@ rm
 rm
 rm
 ZI
-Rk
-YZ
+Mm
+HG
 cR
 RC
-SM
-VB
+xr
+tJ
 bX
 vw
 YA
@@ -11320,8 +11322,8 @@ us
 us
 rm
 ZL
-qc
-AZ
+Cy
+tG
 vw
 Zz
 AI
@@ -11401,9 +11403,9 @@ vw
 vw
 vw
 EM
-JL
+PU
 EM
-JL
+PU
 EM
 vw
 YA
@@ -11479,9 +11481,9 @@ YA
 YA
 YA
 EM
-dj
+cr
 EM
-dj
+cr
 EM
 YA
 YA
@@ -11557,9 +11559,9 @@ YA
 Ou
 Ou
 EM
-zR
+iX
 EM
-zR
+iX
 EM
 YA
 Ou
