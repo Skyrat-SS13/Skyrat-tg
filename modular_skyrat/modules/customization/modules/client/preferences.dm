@@ -201,6 +201,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/erp_pref = "Ask"
 	var/noncon_pref = "Ask"
 	var/vore_pref = "Ask"
+	var/extreme_lewd = "No"
 
 	//BACKGROUND STUFF
 	var/general_record = ""
@@ -1148,6 +1149,7 @@ GLOBAL_LIST_INIT(food, list(
 
 			//aphrodisiac pref
 			dat += "<b>Be Affected by Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
+			dat += 	"<b>Extreme lewd interactions:</b><a href='?_src_=prefs;preference=extreme_lewd;task=input'>[extreme_lewd]</a> "
 			//cumface pref
 			dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
@@ -2107,6 +2109,12 @@ GLOBAL_LIST_INIT(food, list(
 							erp_pref = "Ask"
 						if("Ask")
 							erp_pref = "No"
+						if("No")
+							erp_pref = "Yes"
+				if("extreme_lewd")
+					switch(erp_pref)
+						if("Yes")
+							erp_pref = "Ask"
 						if("No")
 							erp_pref = "Yes"
 				if("noncon_pref")
