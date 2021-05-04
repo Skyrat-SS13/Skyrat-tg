@@ -615,6 +615,21 @@
 	path = /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
 	restricted_roles = list("Warden")
 
+/datum/loadout_item/uniform/job/coroffw
+	name = "Corrections Officer Sweater (skirt)"
+	path = /obj/item/clothing/under/rank/security/brigguard/sweater/women
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshir
+	name = "Corrections Officer Shirt"
+	path = /obj/item/clothing/under/rank/security/brigguard
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshir
+	name = "Corrections Officer Skirt"
+	path = /obj/item/clothing/under/rank/security/brigguard/women
+	restricted_roles = list("Corrections Officer","Warden")
+
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
 	path = /obj/item/clothing/under/rank/security/officer/skirt
