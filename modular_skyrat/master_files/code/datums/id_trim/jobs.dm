@@ -144,7 +144,7 @@
 	config_job = "expeditionary_trooper"
 
 /datum/id_trim/job/brigoff
-	assignment = "Brig Officer"
+	assignment = "Corrections Officer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_brigoff"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS,
