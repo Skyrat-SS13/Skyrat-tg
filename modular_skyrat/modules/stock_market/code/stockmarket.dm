@@ -89,7 +89,7 @@
 					if (3)
 						sname = "[pname]"
 		new_stock.name = sname
-		new_stock.short_name = generateDesignation(stock.name)
+		new_stock.short_name = generateDesignation(new_stock.name)
 		new_stock.current_value = rand(10, 125)
 		var/rate_of_change = rand(10, 40) / 10
 		new_stock.fluctuational_coefficient = prob(50) ? (1 / rate_of_change) : rate_of_change
