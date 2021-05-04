@@ -46,7 +46,7 @@ var/datum/preferences = new
 	. = ..()
 	languages_possible = languages_possible_base
 
-/obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args, datum/preferences/prefs)
 
 /obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0)
 	..()
@@ -88,7 +88,7 @@ var/datum/preferences = new
 
 /obj/item/organ/tongue/unique/handle_speech(datum/source, list/speech_args, datum/preferences/prefs)
 	///TODO: Figure out how to replace say_mod with a pref var
-	//say_mod = owner.client.prefs.speech_verb
+	say_mod = owner.client.prefs.speech_verb
 	var/static/regex/custom_quirk_upper = new(uppertext(owner.client.prefs.speech_replace_from), "g")
 	var/static/regex/custom_quirk_lower = new(lowertext(owner.client.prefs.speech_replace_from), "g")
 	var/message = speech_args[SPEECH_MESSAGE]
