@@ -472,7 +472,6 @@
 	icon_state = "ratvargrille"
 	name = "cog grille"
 	desc = "A strangely-shaped grille."
-	broken_type = /obj/structure/grille/ratvar/broken
 
 /obj/structure/grille/ratvar/Initialize()
 	. = ..()
@@ -501,8 +500,6 @@
 	rods_type = /obj/item/stack/tile/brass
 	rods_amount = 1
 	rods_broken = FALSE
-	grille_type = /obj/structure/grille/ratvar
-	broken_type = null
 
 //=================================================
 //Ratvar Window: A transparent window
