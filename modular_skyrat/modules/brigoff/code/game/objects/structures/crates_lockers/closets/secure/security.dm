@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/brigoff
 	icon = 'modular_skyrat/modules/brigoff/icons/lockers/closet.dmi'
-	name = "correction officer riot gear"
+	name = "corrections officer riot gear"
 	icon_state = "riot"
 
 /obj/structure/closet/secure_closet/warden/brigoff/PopulateContents()

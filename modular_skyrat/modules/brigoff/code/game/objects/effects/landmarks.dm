@@ -1,3 +1,3 @@
 /obj/effect/landmark/start/brigoff
-	name = "Correction Officer"
+	name = "Corrections Officer"
 	icon_state = "Security Officer"

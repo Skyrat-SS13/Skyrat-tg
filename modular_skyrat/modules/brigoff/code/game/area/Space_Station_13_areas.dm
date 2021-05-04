@@ -1,3 +1,3 @@
 /area/brigofficer
-	name = "Correction Officer Lounge"
+	name = "Corrections Officer Lounge"
 	icon_state = "brig"
