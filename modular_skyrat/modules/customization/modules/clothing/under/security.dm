@@ -22,6 +22,13 @@
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 
+/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
+	name = "sol chief of police uniform"
+	desc = "A white satin shirt with a leather belt, the belt buckle is a large NT."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policechiefalt"
+
 // DETECTIVE
 
 /obj/item/clothing/under/rank/security/detective/undersuit
@@ -141,3 +148,36 @@
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+
+/obj/item/clothing/under/rank/prisoner/classic
+	name = "classic prisoner jumpsuit"
+	desc = "A black and white striped jumpsuit, like something out of a movie."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "prisonerclassic"
+
+///CDO
+/obj/item/clothing/under/rank/security/peacekeeper/junior/sol
+	name = "sol police cadet uniform"
+	desc = "A light blue shirt with navy pants, perfect for pretending you matter."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policecadetalt"
+///OFFICERS
+/obj/item/clothing/under/rank/security/peacekeeper/sol
+	name = "sol police uniform"
+	desc = "A light blue shirt with navy pants, perfect for opressing the Underclasses, like Catgirls."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policealt"
+
+///WARDEN
+/obj/item/clothing/under/rank/security/warden/peacekeeper/sol
+	name = "sol warden uniform"
+	desc = "A light blue shirt with navy pants, this one seems to have been modified for fat asses, like yourself."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policewardenalt"
+
+
+

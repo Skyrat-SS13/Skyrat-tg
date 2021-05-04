@@ -37,6 +37,18 @@
 	name = "Ushanka"
 	path = /obj/item/clothing/head/ushanka
 
+/datum/loadout_item/head/wrussian
+	name = "Black Papakha"
+	path = /obj/item/clothing/head/whiterussian
+
+/datum/loadout_item/head/wrussianw
+	name = "White Papakha"
+	path = /obj/item/clothing/head/whiterussian/white
+
+/datum/loadout_item/head/wrussianb
+	name = "Black and Red Papakha"
+	path = /obj/item/clothing/head/whiterussian/black
+
 /datum/loadout_item/head/slime
 	name = "Slime hat"
 	path = /obj/item/clothing/head/collectable/slime
@@ -181,17 +193,32 @@
 	name = "Security Ushanka"
 	path = /obj/item/clothing/head/ushankasec
 	restricted_desc = "Security"
-	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer")
 
 /datum/loadout_item/head/job/navybluehosberet
 	name = "Head of security's navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyhos
 	restricted_roles = list("Head of Security")
 
+/datum/loadout_item/head/job/solhoscap
+	name = "Head of security's Sol Cap"
+	path = /obj/item/clothing/head/hos/beret/peacekeeper/sol
+	restricted_roles = list("Head of Security")
+
 /datum/loadout_item/head/job/navyblueofficerberet
 	name = "Security officer's Navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
+
+/datum/loadout_item/head/job/solofficercap
+	name = "Security officer's Sol Cap"
+	path = /obj/item/clothing/head/beret/sec/peacekeeper/sol
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
+
+/datum/loadout_item/head/job/soltrafficoff
+	name = "Traffic Officer Cap"
+	path = /obj/item/clothing/head/soltraffic
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Civil Disputes Officer")
 
 /datum/loadout_item/head/job/navybluewardenberet
 	name = "Warden's navyblue beret"
