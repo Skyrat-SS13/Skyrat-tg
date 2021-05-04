@@ -1,6 +1,6 @@
 /obj/item/clothing/under/rank/security/brigguard
 	desc = "A white satin shirt with some bronze rank pins at the neck."
-	name = "brig officer's suit"
+	name = "correction officer's suit"
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
 	icon_state = "brigguard"
@@ -11,14 +11,14 @@
 
 /obj/item/clothing/under/rank/security/brigguardw
 	desc = "A white satin shirt with some bronze rank pins at the neck."
-	name = "brig officer's skirt"
+	name = "correction officer's skirt"
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
 	icon_state = "brigguardw"
 
 /obj/item/clothing/under/rank/security/brigguard/sweater
 	desc = "A black combat sweater thrown over the standard issue shirt, perfect for wake up calls."
-	name = "brig officer's sweater"
+	name = "correction officer's sweater"
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/uniform.dmi'
 	icon_state = "brigguardsweat"
