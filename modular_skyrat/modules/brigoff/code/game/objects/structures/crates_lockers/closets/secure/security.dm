@@ -3,8 +3,8 @@
 	name = "corrections officer riot gear"
 	icon_state = "riot"
 
-var/icon_door = riot_door
-var/icon_door_override = true
+	icon_door = riot_door
+	icon_door_override = true
 
 /obj/structure/closet/secure_closet/warden/brigoff/PopulateContents()
 	..()
