@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(FrozenAccounts)
 		"buy" = list("buy!", "buy, buy, buy!", "get in now!", "ride the share value to the stars!"), \
 		"company" = list("company", "corporation", "conglomerate", "enterprise", "venture"), \
 		"complete" = list("complete", "total", "absolute", "incredible"), \
-		"country" = list("Space", "Argentina", "Hungary", "United States of America", "United Space", "Space Federation", "Nanotrasen", "The Wizard Federation", "United Kingdom", "Poland", "The Syndicate", "Australia", "Serbia", "The European Union", "The Illuminati", "The New World Order", "Eurasian Union", "Asian Union", "United Arab Emirates", "Arabian League", "United States of Africa", "Mars Federation", "Allied Colonies of Jupiter", "Saturn's Ring", "Fringe Republic of Formerly Planet Pluto"), \
+		"country" = list("Space", "Janus Station", "Solas Colony", "Anemone", "Beacon", "Space Federation", "Nanotrasen", "The Wizard Federation", "Illume", "Terra Corps", "Visage", "The Syndicate", "Coblium", "Mars Federation", "Allied Colonies of Jupiter", "Saturn's Ring", "Republic of Planet Pluto"), \
 		"development" = list("development", "unfolding of events", "turn of events", "new shit"), \
 		"dip" = list("dip", "fall", "plunge", "decrease"), \
 		"excited" = list("excited", "euphoric", "exhilarated", "thrilled", "stimulated"), \
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(FrozenAccounts)
 	ticks = world.time
 
 /datum/article/proc/generateOutletName()
-	var/list/locations = list("Earth", "Luna", "Mars", "Saturn", "Jupiter", "Uranus", "Pluto", "Europa", "Io", "Phobos", "Deimos", "Space", "Venus", "Neptune", "Mercury", "Kalliope", "Ganymede", "Callisto", "Amalthea", "Himalia", "Orion", "Sybil", "Basil", "Badger", "Terry", "Artyom")
+	var/list/locations = list("Earth", "Mars", "Luna", "Venus", "Ceres", "Pluto", "Ceti Epsilon", "Eos", "Terstan", "Deimos", "Space", "Neptune", "Mercury", "Terra", "Terstan", "Lorriman", "Cinu", "Himalia", "Yuklid", "Lordania", "Kingston", "Gaia", "Magnitka", "Artyom")
 	var/list/nouns = list("Post", "Herald", "Sun", "Tribune", "Mail", "Times", "Journal", "Report")
 	var/list/timely = list("Daily", "Hourly", "Weekly", "Biweekly", "Monthly", "Yearly")
 
