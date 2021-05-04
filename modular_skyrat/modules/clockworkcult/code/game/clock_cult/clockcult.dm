@@ -23,6 +23,70 @@ GLOBAL_VAR(clockcult_eminence)
 //==========================
 //===Clock cult Gamemode ===
 //==========================
+/datum/dynamic_ruleset/roundstart/clockcult
+	name = "Clockwork Cult"
+	antag_flag = ROLE_CULTIST
+	antag_datum = /datum/antagonist/servant_of_ratvar
+	minimum_required_age = 14
+	restricted_roles = list("AI", "Cyborg", "Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain", "Head of Personnel")
+	required_candidates = 2
+	weight = 3
+	cost = 20
+	requirements = list(100,90,80,60,40,30,10,10,10,10)
+	flags = HIGH_IMPACT_RULESET
+	antag_cap = list("denominator" = 20, "offset" = 1)
+	var/clock_cultists = CLOCKCULT_SERVANTS
+	var/list/selected_servants = list()
+
+	var/datum/team/clock_cult/main_cult
+
+/datum/dynamic_ruleset/roundstart/clockcult/ready(population, forced = FALSE)
+	required_candidates = get_antag_cap(population)
+	. = ..()
+
+/datum/dynamic_ruleset/roundstart/clockcult/pre_execute(population)
+	//Generate cultists
+	var/clock_cultists = get_antag_cap(population)
+	for(var/cultists_number = 1 to clock_cultists)
+		if(candidates.len <= 0)
+			break
+		var/mob/M = pick_n_take(candidates)
+		assigned += M.mind
+		M.mind.special_role = ROLE_SERVANT_OF_RATVAR
+		M.mind.restricted_roles = restricted_roles
+		GLOB.pre_setup_antags += M.mind
+	generate_clockcult_scriptures()
+	message_admins("Reebe loaded successfully; make sure that antags spawned correctly!")
+	log_game("Reebe loaded successfully; make sure that antags spawned correctly!")
+	return TRUE
+
+/datum/dynamic_ruleset/roundstart/clockcult/execute()
+	var/list/spawns = GLOB.servant_spawns.Copy()
+	main_cult = new
+	main_cult.setup_objectives()
+	//Create team
+	for(var/datum/mind/servant_mind in selected_servants)
+		servant_mind.current.forceMove(pick_n_take(spawns))
+		servant_mind.current.set_species(/datum/species/human)
+		var/datum/antagonist/servant_of_ratvar/S = add_servant_of_ratvar(servant_mind.current, team=main_cult)
+		S.equip_carbon(servant_mind.current)
+		S.equip_servant()
+		S.prefix = CLOCKCULT_PREFIX_MASTER
+	//Setup the conversion limits for auto opening the ark
+	calculate_clockcult_values()
+	return ..()
+
+/datum/dynamic_ruleset/roundstart/clockcult/round_result()
+	..()
+	if(main_cult.check_cult_victory())
+		SSticker.mode_result = "win - clockcult win"
+		SSticker.news_report = CLOCK_SUMMON
+	else if(LAZYLEN(GLOB.cyborg_servants_of_ratvar))
+		SSticker.mode_result = "loss - staff destroyed the ark"
+		SSticker.news_report = CLOCK_SILICONS
+	else
+		SSticker.mode_result = "loss - staff destroyed the ark"
+		SSticker.news_report = CLOCK_PROSELYTIZATION
 
 /datum/game_mode/clockcult
 	name = "clockcult"
