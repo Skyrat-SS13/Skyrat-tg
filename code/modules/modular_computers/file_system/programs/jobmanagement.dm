@@ -27,7 +27,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Security Sergeant", //SKYRAT EDIT CHANGE START
 		"Security Medic",
 		"Clown",
-		"Expeditionary Trooper"
+		"Expeditionary Trooper",
 		"Blueshield", //SKYRAT EDIT END
 		"Chief Medical Officer",
 		"Quartermaster",
