@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the captain"
-	selection_color = "#00ffb3"
+	selection_color = "#9fffe2"
 	minimal_player_age = 40
 	exp_requirements = 400
 	exp_type = EXP_TYPE_SECURITY
@@ -61,11 +61,6 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 /obj/item/storage/box/survival/expeditionary_corps
 	mask_type = /obj/item/clothing/mask/gas/alt
 
-/obj/item/storage/box/survival/expeditionary_corps/PopulateContents()
-	..()
-	new /obj/item/crowbar/red(src)
-	new /obj/item/kitchen/knife/combat(src)
-
 /obj/structure/closet/secure_closet/expeditionary_corps
 	name = "\proper expeditionary corps locker"
 	req_access = list(ACCESS_GATEWAY, ACCESS_SEC_DOORS)
@@ -80,6 +75,7 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/firstaid/tactical(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
 	new /obj/item/radio(src)
 
 /obj/machinery/suit_storage_unit/expeditionary_corps
@@ -124,4 +120,18 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 		else
 			message_admins("Expeditionary corps didn't have enough suit storage unit spawns left!")
 
-/obj/item/storage
+/obj/item/storage/box/expeditionary_survival
+	name = "expedition survival pack"
+	desc = "A box filled with useful items for your expedition!"
+	icon_state = "survival_pack"
+	icon = 'modular_skyrat/modules/exp_corps/icons/survival_pack.dmi'
+	illustration = null
+
+/obj/item/storage/box/expeditionary_survival/PopulateContents()
+	new /obj/item/crowbar/red(src)
+	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/storage/box/donkpockets(src)
+	new /obj/item/flashlight/glowstick(src)
+	new /obj/item/tank/internals/emergency_oxygen/double(src)
+	new /obj/item/survivalcapsule(src)
+
