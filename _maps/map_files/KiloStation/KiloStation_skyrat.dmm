@@ -78190,9 +78190,18 @@
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "dOm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/kirbyplants{
+	desc = "After his promotion, he was transferred to Kilo Station to serve as the gateway's protector.";
+	icon_state = "plant-21";
+	name = "rodger"
+	},
 /obj/machinery/light/small,
-/obj/effect/landmark/expcorps_equipment,
-/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/command/gateway)
 "dPX" = (
@@ -78430,6 +78439,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/greenglow,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
 "elZ" = (
@@ -79082,6 +79093,10 @@
 /obj/machinery/holopad/secure,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
+"fhG" = (
+/obj/effect/landmark/start/brigoff,
+/turf/open/floor/iron/white,
+/area/security/prison)
 "fiv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/loot_site_spawner,
@@ -79303,6 +79318,19 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/security/prison)
+"fxx" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/command/gateway)
 "fyd" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -79639,6 +79667,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/grimy,
 /area/security/prison/safe)
 "fXW" = (
@@ -80195,6 +80224,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron,
 /area/security/prison)
 "gWV" = (
@@ -80511,6 +80541,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/camera{
 	c_tag = "Gateway";
 	name = "command camera"
@@ -81360,6 +81391,7 @@
 	pixel_x = 14;
 	pixel_y = 13
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/plating/rust,
 /area/security/prison)
 "iHr" = (
@@ -81414,6 +81446,10 @@
 /turf/open/floor/iron,
 /area/security/checkpoint/supply)
 "iKX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron,
 /area/command/gateway)
 "iLH" = (
@@ -81734,6 +81770,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/plating/rust,
 /area/security/prison)
 "jkN" = (
@@ -82083,6 +82120,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
@@ -82090,8 +82128,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/landmark/start/expeditionary_corps,
-/obj/structure/chair/stool,
 /turf/open/floor/iron,
 /area/command/gateway)
 "jWU" = (
@@ -82907,6 +82943,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
@@ -82925,8 +82962,20 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "leP" = (
+/obj/structure/rack,
 /obj/effect/turf_decal/bot,
-/obj/effect/landmark/expcorps_eva,
+/obj/item/radio{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/radio{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/radio{
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
 "lgs" = (
@@ -83114,6 +83163,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -83200,6 +83250,7 @@
 /area/security/prison)
 "lEM" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/structure/closet/secure_closet/brigoff,
 /turf/open/floor/iron/showroomfloor,
 /area/security/prison)
 "lFw" = (
@@ -84502,6 +84553,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/security/prison)
 "nID" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -85241,6 +85293,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
 	dir = 4;
 	pixel_x = -23
@@ -86109,6 +86162,7 @@
 /area/commons/storage/primary)
 "qbx" = (
 /obj/machinery/gateway/centerstation,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
@@ -86804,6 +86858,7 @@
 	req_access_txt = "12"
 	},
 /obj/effect/mapping_helpers/airlock/abandoned,
+/obj/structure/barricade/wooden/crude,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/maintenance/starboard/fore)
@@ -86862,11 +86917,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/blood/old,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/command/gateway)
@@ -87726,12 +87783,15 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
 /obj/effect/landmark/event_spawn,
 /obj/item/radio/intercom{
 	pixel_x = -28
 	},
-/obj/effect/landmark/start/expeditionary_corps,
-/obj/structure/chair/stool,
 /turf/open/floor/iron,
 /area/command/gateway)
 "skx" = (
@@ -87896,6 +87956,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -87968,6 +88029,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "sDv" = (
@@ -88073,12 +88135,17 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "sPO" = (
+/obj/structure/table,
+/obj/item/storage/box/lights/mixed{
+	pixel_y = 5
+	},
+/obj/item/stack/package_wrap,
+/obj/item/hand_labeler,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 24
 	},
-/obj/effect/landmark/expcorps_eva,
-/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
 "sPZ" = (
@@ -88869,6 +88936,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "tSu" = (
@@ -88983,6 +89051,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
 "tZI" = (
@@ -89265,6 +89334,11 @@
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/plating/asteroid/airless,
 /area/hallway/secondary/entry)
+"uri" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/brigoff,
+/turf/open/floor/iron,
+/area/security/prison)
 "urB" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -89438,6 +89512,10 @@
 /turf/open/floor/iron/showroomfloor,
 /area/service/bar/atrium)
 "uzL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
@@ -89776,6 +89854,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/greenglow,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
 "vbU" = (
@@ -90150,6 +90230,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/security/prison)
 "vuV" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -90763,6 +90844,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
 "wkd" = (
@@ -90793,6 +90875,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/greenglow,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
 "wmN" = (
@@ -91258,6 +91342,7 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
 "wPn" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet/exile,
 /obj/effect/turf_decal/bot,
 /obj/machinery/light_switch{
@@ -91609,6 +91694,7 @@
 	},
 /area/holodeck/rec_center)
 "xgu" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -92171,8 +92257,19 @@
 /turf/open/floor/iron,
 /area/security/warden)
 "xKH" = (
-/obj/effect/landmark/expcorps_equipment,
-/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/kirbyplants{
+	icon_state = "plant-16"
+	},
 /turf/open/floor/iron,
 /area/command/gateway)
 "xLK" = (
@@ -99616,7 +99713,7 @@ cpx
 aaa
 aau
 kLr
-xFp
+uri
 xFp
 aau
 uNu
@@ -102960,7 +103057,7 @@ urB
 fVW
 kzW
 anu
-fdJ
+fhG
 cJC
 aau
 rhG
@@ -124758,7 +124855,7 @@ akz
 aXW
 aUa
 lwA
-qWR
+fxx
 qWR
 sux
 uzL
