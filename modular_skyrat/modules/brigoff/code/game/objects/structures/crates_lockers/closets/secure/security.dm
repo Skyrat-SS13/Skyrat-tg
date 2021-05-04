@@ -3,9 +3,6 @@
 	name = "corrections officer riot gear"
 	icon_state = "riot"
 
-	icon_door = riot_door
-	icon_door_override = true
-
 /obj/structure/closet/secure_closet/warden/brigoff/PopulateContents()
 	..()
 	new /obj/item/clothing/suit/armor/riot(src)
