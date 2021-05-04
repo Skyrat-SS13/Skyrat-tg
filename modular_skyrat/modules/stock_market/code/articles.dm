@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(FrozenAccounts)
 		"buy" = list("buy!", "buy, buy, buy!", "get in now!", "ride the share value to the stars!"), \
 		"company" = list("company", "corporation", "conglomerate", "enterprise", "venture"), \
 		"complete" = list("complete", "total", "absolute", "incredible"), \
-		"country" = list("Space", "Janus Station", "Solas Colony", "Anemone", "Beacon", "Space Federation", "Nanotrasen", "The Wizard Federation", "Illume", "Terra Corps", "Visage", "The Syndicate", "Coblium", "Mars Federation", "Allied Colonies of Jupiter", "Saturn's Ring", "Republic of Planet Pluto"), \
+		"country" = list("Electra Networks", "Microman", "Solas Colony", "Anemone", "Beacon", "Protonetworks", "Lifeworth", "Tundra Lighting", "Illume", "Terra Corps", "Visage", "Night Co.", "Coblium", "Mars Federation", "Jungle Entertainment", "Wizardlife", "Hammer Security"), \
 		"development" = list("development", "unfolding of events", "turn of events", "new shit"), \
 		"dip" = list("dip", "fall", "plunge", "decrease"), \
 		"excited" = list("excited", "euphoric", "exhilarated", "thrilled", "stimulated"), \
