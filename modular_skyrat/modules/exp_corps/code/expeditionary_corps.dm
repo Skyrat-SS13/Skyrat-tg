@@ -134,4 +134,4 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	new /obj/item/flashlight/glowstick(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
 	new /obj/item/survivalcapsule(src)
-
+	new /obj/item/reagent_containers/
