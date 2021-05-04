@@ -221,3 +221,12 @@
 	blood_overlay_type = "coat"
 	togglename = "zipper"
 	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+
+/obj/item/clothing/suit/toggle/lawyer/black/better
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon_state = "suitjacket_black"
+	mutant_variants = NONE
+
+
