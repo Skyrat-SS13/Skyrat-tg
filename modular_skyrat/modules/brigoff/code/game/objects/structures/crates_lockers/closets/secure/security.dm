@@ -3,10 +3,12 @@
 	name = "corrections officer riot gear"
 	icon_state = "riot"
 
+var/icon_door = riot_door
+var/icon_door_override = true
+
 /obj/structure/closet/secure_closet/warden/brigoff/PopulateContents()
-	. = ..()
+	..()
 	new /obj/item/clothing/suit/armor/riot(src)
-	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/grenade/flashbang(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/restraints/handcuffs(src)

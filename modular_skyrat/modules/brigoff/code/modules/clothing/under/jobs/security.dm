@@ -9,7 +9,7 @@
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/security/brigguardw
+/obj/item/clothing/under/rank/security/brigguard/women
 	desc = "A white satin shirt with some bronze rank pins at the neck."
 	name = "corrections officer's skirt"
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/uniform.dmi'
