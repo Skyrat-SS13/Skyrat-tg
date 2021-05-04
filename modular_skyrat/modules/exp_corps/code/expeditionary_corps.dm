@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	var/lockers2spawn = exp_corps.current_positions
 
-	for(var/i = 1, i <= lockers2spawn, i++)
+	for(var/i = 0, i <= lockers2spawn, i++)
 		if(GLOB.expcorps_equipment.len)
 			var/spawnloc = GLOB.expcorps_equipment[1]
 			new /obj/structure/closet/secure_closet/expeditionary_corps(spawnloc)
