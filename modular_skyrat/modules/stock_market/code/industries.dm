@@ -28,29 +28,29 @@
 /datum/industry/proc/generateProductName(var/company_name)
 	return
 
-/datum/industry/proc/generateInCharacterProductArticle(var/product_name, var/datum/stock/S)
-	var/datum/article/A = new
-	var/list/add_tokens = list("company_name" = S.name, "product_name" = product_name, "outlet" = A.outlet, "author" = A.author)
-	A.about = S
-	A.opinion = rand(-1, 1)
+/datum/industry/proc/generateInCharacterProductArticle(var/product_name, var/datum/stock/current_stock)
+	var/datum/article/new_article = new
+	var/list/add_tokens = list("company_name" = current_stock.name, "product_name" = product_name, "outlet" = new_article.outlet, "author" = new_article.author)
+	new_article.about = current_stock
+	new_article.opinion = rand(-1, 1)
 
-	A.subtitle = A.detokenize(pick(subtitle_templates), tokens, add_tokens)
+	new_article.subtitle = new_article.detokenize(pick(subtitle_templates), tokens, add_tokens)
 	var/article = {"%company_name% %expand_influence% %industry%. [ucfirst(product_name)] %hit_shelves% %this_time% "}
-	if (A.opinion > 0)
-		A.headline = A.detokenize(pick(title_templates), tokens, add_tokens)
+	if (new_article.opinion > 0)
+		new_article.headline = new_article.detokenize(pick(title_templates), tokens, add_tokens)
 		article += "but %positive_outcome%, %signifying% the %resounding% %success% the product is. The %stock_market% is %excited% over this %development%, and %stockholder% optimism is expected to %rise% as well as the stock value. Our advice: %buy%."
-	else if (A.opinion == 0)
-		A.headline = A.detokenize(pick(title_templates_neutral), tokens, add_tokens)
+	else if (new_article.opinion == 0)
+		new_article.headline = new_article.detokenize(pick(title_templates_neutral), tokens, add_tokens)
 		article += "but %neutral_outcome%. For the average %stockholder%, no significant change on the market will be apparent over this %development%. Our advice is to continue investing as if this product was never released."
 	else
-		A.headline = A.detokenize(pick(title_templates_bad), tokens, add_tokens)
+		new_article.headline = new_article.detokenize(pick(title_templates_bad), tokens, add_tokens)
 		article += "but %negative_outcome%. Following this %complete% %failure%, %stockholder% optimism and stock value are projected to %dip%. Our advice: %sell%."
-	A.article = A.detokenize(article, tokens, add_tokens)
-	return A
+	new_article.article = new_article.detokenize(article, tokens, add_tokens)
+	return new_article
 
 /datum/industry/proc/detokenize(var/str)
-	for (var/T in tokens)
-		str = replacetext(str, "%[T]%", pick(tokens[T]))
+	for (var/token in tokens)
+		str = replacetext(str, "%[token]%", pick(tokens[token]))
 	return str
 
 /datum/industry/agriculture
@@ -158,9 +158,9 @@
 /datum/industry/it/generateProductName(var/company_name)
 	var/list/products = list("generator", "laptop", "keyboard", "memory card", "display", "operating system", "processor", "graphics card", "nanobots", "power supply", "pAI", "mech", "capacitor", "cell")
 	var/list/prefix = list("the [company_name] ", "the high performance ", "the mobile ", "the portable ", "the professional ", "the extreme ", "the incredible ", "the blazing fast ", "the bleeding edge ", "the bluespace-powered ", null)
-	var/L = pick(consonant(), "Seed ", "Radiant ", "Robust ", "Pentathon ", "Athlete ", "Phantom ", "Semper Fi ")
-	var/N = rand(0,99)
-	var/prefix2 = "[L][N][prob(5) ? " " + latin_number(N) : null]"
+	var/latin = pick(consonant(), "Seed ", "Radiant ", "Robust ", "Pentathon ", "Athlete ", "Phantom ", "Semper Fi ")
+	var/random_number = rand(0,99)
+	var/prefix2 = "[latin][random_number][prob(5) ? " " + latin_number(random_number) : null]"
 	return "[pick(prefix)][prefix2] [pick(products)]"
 
 /datum/industry/communications

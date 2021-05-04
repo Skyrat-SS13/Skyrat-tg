@@ -46,18 +46,18 @@
 /datum/stockMarket/proc/generateDesignation(var/name)
 	if (length(name) <= 4)
 		return uppertext(name)
-	var/list/w = splittext(name, " ")
-	if (w.len >= 2)
-		var/d = ""
-		for(var/i in 1 to min(5, w.len))
-			d += uppertext(ascii2text(text2ascii(w[i], 1)))
-		return d
+	var/list/split_name = splittext(name, " ")
+	if (split_name.len >= 2)
+		var/capitalised_name = ""
+		for(var/string_index in 1 to min(5, split_name.len))
+			capitalised_name += uppertext(ascii2text(text2ascii(split_name[string_index], 1)))
+		return capitalised_name
 	else
-		var/d = uppertext(ascii2text(text2ascii(name, 1)))
-		for(var/i in 2 to length(name))
-			if (prob(100 / i))
-				d += uppertext(ascii2text(text2ascii(name, i)))
-		return d
+		var/capitalised_name = uppertext(ascii2text(text2ascii(name, 1)))
+		for(var/string_index in 2 to length(name))
+			if (prob(100 / string_index))
+				capitalised_name += uppertext(ascii2text(text2ascii(name, string_index)))
+		return capitalised_name
 
 /datum/stockMarket/proc/generateStocks(var/amt = 15)
 	var/list/fruits = list("Banana", "Mimana", "Watermelon", "Ambrosia", "Pomegranate", "Reishi", "Papaya", "Mango", "Tomato", "Conkerberry", "Wood", "Lychee", "Mandarin", "Harebell", "Pumpkin", "Rhubarb", "Tamarillo", "Yantok", "Ziziphus", "Oranges", "Daisy", "Kudzu")
@@ -66,7 +66,7 @@
 	var/list/random_nouns = list("Johnson", "Cluwne", "General", "Specific", "Master", "King", "Queen", "Table", "Rupture", "Dynamic", "Massive", "Mega", "Giga", "Certain", "Singulo", "State", "National", "International", "Interplanetary", "Sector", "Planet", "Burn", "Robust", "Exotic", "Solar", "Lunar", "Chelp", "Corgi", "Lag", "Lizard")
 	var/list/company = list("Company", "Factory", "Incorporated", "Industries", "Group", "Consolidated", "GmbH", "LLC", "Ltd", "Inc.", "Association", "Limited", "Software", "Technology", "Programming", "IT Group", "Electronics", "Nanotechnology", "Farms", "Stores", "Mobile", "Motors", "Electric", "Designs", "Energy", "Pharmaceuticals", "Communications", "Wholesale", "Holding", "Health", "Machines", "Astrotech", "Gadgets", "Kinetics")
 	for (var/i = 1, i <= amt, i++)
-		var/datum/stock/S = new
+		var/datum/stock/stock = new
 		var/sname = ""
 		switch (rand(1,6))
 			if(1) //                          VVVVVVVV this is a check to prevent the word from randomly showing up in game, github dont lynch us
@@ -88,40 +88,40 @@
 						sname = "[pname] [pick(company)]"
 					if (3)
 						sname = "[pname]"
-		S.name = sname
-		S.short_name = generateDesignation(S.name)
-		S.current_value = rand(10, 125)
-		var/dv = rand(10, 40) / 10
-		S.fluctuational_coefficient = prob(50) ? (1 / dv) : dv
-		S.average_optimism = rand(-10, 10) / 100
-		S.optimism = S.average_optimism + (rand(-40, 40) / 100)
-		S.current_trend = rand(-200, 200) / 10
-		S.last_trend = S.current_trend
-		S.disp_value_change = rand(-1, 1)
-		S.speculation = rand(-20, 20)
-		S.average_shares = round(rand(500, 10000) / 10)
-		S.outside_shareholders = rand(1000, 30000)
-		S.available_shares = rand(200000, 800000)
-		S.fluctuation_rate = rand(6, 20)
-		S.generateIndustry()
-		S.generateEvents()
-		stocks += S
-		last_read[S] = list()
+		stock.name = sname
+		stock.short_name = generateDesignation(stock.name)
+		stock.current_value = rand(10, 125)
+		var/rate_of_change = rand(10, 40) / 10
+		stock.fluctuational_coefficient = prob(50) ? (1 / rate_of_change) : rate_of_change
+		stock.average_optimism = rand(-10, 10) / 100
+		stock.optimism = stock.average_optimism + (rand(-40, 40) / 100)
+		stock.current_trend = rand(-200, 200) / 10
+		stock.last_trend = stock.current_trend
+		stock.disp_value_change = rand(-1, 1)
+		stock.speculation = rand(-20, 20)
+		stock.average_shares = round(rand(500, 10000) / 10)
+		stock.outside_shareholders = rand(1000, 30000)
+		stock.available_shares = rand(200000, 800000)
+		stock.fluctuation_rate = rand(6, 20)
+		stock.generateIndustry()
+		stock.generateEvents()
+		stock += stocks
+		last_read[stocks] = list()
 
 /datum/stockMarket/process()
 	for (var/stock in stocks)
-		var/datum/stock/S = stock
-		S.process()
+		var/datum/stock/current_stock = stock
+		current_stock.process()
 
 /datum/stockMarket/proc/add_log(var/log_type, var/user, var/company_name, var/stocks, var/shareprice, var/money)
-	var/datum/stock_log/L = new log_type
-	L.user_name = user
-	L.company_name = company_name
-	L.stocks = stocks
-	L.shareprice = shareprice
-	L.money = money
-	L.time = time2text(world.timeofday, "hh:mm")
-	logs += L
+	var/datum/stock_log/new_stock_log = new log_type
+	new_stock_log.user_name = user
+	new_stock_log.company_name = company_name
+	new_stock_log.stocks = stocks
+	new_stock_log.shareprice = shareprice
+	new_stock_log.money = money
+	new_stock_log.time = time2text(world.timeofday, "hh:mm")
+	logs += new_stock_log
 
 GLOBAL_DATUM_INIT(stockExchange, /datum/stockMarket, new)
 
@@ -130,11 +130,11 @@ GLOBAL_DATUM_INIT(stockExchange, /datum/stockMarket, new)
 	if (points.len && height > 20 && width > 20)
 		var/min = points[1]
 		var/max = points[1]
-		for (var/v in points)
-			if (v < min)
-				min = v
-			if (v > max)
-				max = v
+		for (var/data_point in points)
+			if (data_point < min)
+				min = data_point
+			if (data_point > max)
+				max = data_point
 		var/cells = (height - 20) / 20
 		if (cells > round(cells))
 			cells = round(cells) + 1
@@ -146,17 +146,17 @@ GLOBAL_DATUM_INIT(stockExchange, /datum/stockMarket, new)
 		ost = diff / cells
 		var/cval = max
 		var/cwid = width / (points.len + 1)
-		for (var/y = cells, y > 0, y--)
-			if (y == cells)
+		for (var/y_axis = cells, y_axis > 0, y_axis--)
+			if (y_axis == cells)
 				output += "<tr>"
 			else
 				output += "<tr style='border:none; border-top:1px solid #00ff00; height: 20px'>"
-			for (var/x = 0, x <= points.len, x++)
-				if (x == 0)
+			for (var/x_axis = 0, x_axis <= points.len, x_axis++)
+				if (x_axis == 0)
 					output += "<td style='border:none; height: 20px; width: [cwid]px; font-size:10px; color:#00ff00; background:black; text-align:right; vertical-align:bottom'>[round(cval - ost)]</td>"
 				else
-					var/v = points[x]
-					if (v >= cval)
+					var/data_point = points[x_axis]
+					if (data_point >= cval)
 						output += "<td style='border:none; height: 20px; width: [cwid]px; background:#0000ff'>&nbsp;</td>"
 					else
 						output += "<td style='border:none; height: 20px; width: [cwid]px; background:black'>&nbsp;</td>"
@@ -168,4 +168,3 @@ GLOBAL_DATUM_INIT(stockExchange, /datum/stockMarket, new)
 		output += "<tr><td style='font-size:10px; background:black; color:green; text-align:center'>[base_text]</td></tr>"
 
 	return "[output]</table></BODY></HTML>"
-

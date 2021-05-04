@@ -4,21 +4,21 @@
 /proc/vowel()
 	return pick("A", "E", "I", "O", "U")
 
-/proc/ucfirst(var/S)
-	return "[uppertext(ascii2text(text2ascii(S, 1)))][copytext(S, 2)]"
+/proc/ucfirst(var/string)
+	return "[uppertext(ascii2text(text2ascii(string, 1)))][copytext(string, 2)]"
 
-/proc/ucfirsts(var/S)
-	var/list/L = splittext(S, " ")
-	var/list/M = list()
-	for (var/P in L)
-		M += ucfirst(P)
-	return jointext(M, " ")
+/proc/ucfirsts(var/string)
+	var/list/split_text = splittext(string, " ")
+	var/list/position_list = list()
+	for (var/position in split_text)
+		position_list += ucfirst(position)
+	return jointext(position_list, " ")
 
 GLOBAL_LIST_EMPTY(FrozenAccounts)
 
 /proc/list_frozen()
-	for (var/A in GLOB.FrozenAccounts)
-		to_chat(usr, "[A]: [length(GLOB.FrozenAccounts[A])] borrows")
+	for (var/frozen_accounts in GLOB.FrozenAccounts)
+		to_chat(usr, "[frozen_accounts]: [length(GLOB.FrozenAccounts[frozen_accounts])] borrows")
 
 /datum/article
 	var/headline = "Something big is happening"
@@ -63,18 +63,18 @@ GLOBAL_LIST_EMPTY(FrozenAccounts)
 /datum/article/New()
 	..()
 	if ((outlets.len && !prob(100 / (outlets.len + 1))) || !outlets.len)
-		var/ON = generateOutletName()
-		if (!(ON in outlets))
-			outlets[ON] = list()
-		outlet = ON
+		var/outlet_name = generateOutletName()
+		if (!(outlet_name in outlets))
+			outlets[outlet_name] = list()
+		outlet = outlet_name
 	else
 		outlet = pick(outlets)
 
 	var/list/authors = outlets[outlet]
 	if ((authors.len && !prob(100 / (authors.len + 1))) || !authors.len)
-		var/AN = generateAuthorName()
-		outlets[outlet] += AN
-		author = AN
+		var/author_name = generateAuthorName()
+		outlets[outlet] += author_name
+		author = author_name
 	else
 		author = pick(authors)
 
@@ -116,10 +116,10 @@ GLOBAL_LIST_EMPTY(FrozenAccounts)
 
 /datum/article/proc/detokenize(var/token_string, var/list/industry_tokens, var/list/product_tokens = list())
 	var/list/T_list = default_tokens.Copy()
-	for (var/I in industry_tokens)
-		T_list[I] = industry_tokens[I]
-	for (var/I in product_tokens)
-		T_list[I] = list(product_tokens[I])
-	for (var/I in T_list)
-		token_string = replacetext(token_string, "%[I]%", pick(T_list[I]))
+	for (var/token in industry_tokens)
+		T_list[token] = industry_tokens[token]
+	for (var/token in product_tokens)
+		T_list[token] = list(product_tokens[token])
+	for (var/token in T_list)
+		token_string = replacetext(token_string, "%[token]%", pick(T_list[token]))
 	return ucfirst(token_string)

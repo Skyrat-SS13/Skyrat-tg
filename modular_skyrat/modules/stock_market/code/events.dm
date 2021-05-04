@@ -32,13 +32,13 @@
 	var/datum/article/product_article = null
 	var/effect = 0
 
-/datum/stockEvent/product/New(var/datum/stock/S)
-	company = S
+/datum/stockEvent/product/New(var/datum/stock/new_stock)
+	company = new_stock
 	var/mins = rand(5*TIME_MULTIPLIER,20*TIME_MULTIPLIER)
 	next_phase = mins * (600*TIME_MULTIPLIER) + world.time
 	current_title = "Product demo"
-	current_desc = S.industry.detokenize("[S.name] will unveil a new product on an upcoming %industrial% conference held at spacetime [spacetime(next_phase)]")
-	S.addEvent(src)
+	current_desc = new_stock.industry.detokenize("[new_stock.name] will unveil a new product on an upcoming %industrial% conference held at spacetime [spacetime(next_phase)]")
+	new_stock.addEvent(src)
 
 
 /datum/stockEvent/product/transition()
@@ -49,9 +49,9 @@
 			product_name = company.industry.generateProductName(company.name)
 			current_title = "Product release: [product_name]"
 			current_desc = "[company.name] unveiled their newest product, [product_name], at a conference. Product release is expected to happen at spacetime [spacetime(next_phase)]."
-			var/datum/article/A = company.industry.generateInCharacterProductArticle(product_name, company)
-			product_article = A
-			effect = A.opinion + rand(-1, 1)
+			var/datum/article/new_article = company.industry.generateInCharacterProductArticle(product_name, company)
+			product_article = new_article
+			effect = new_article.opinion + rand(-1, 1)
 			company.affectPublicOpinion(effect)
 			phase_id = 1
 		if (1)
@@ -68,26 +68,26 @@
 	var/effect = 0
 	var/bailout_millions = 0
 
-/datum/stockEvent/bankruptcy/New(var/datum/stock/S)
+/datum/stockEvent/bankruptcy/New(var/datum/stock/bankrupt_stock)
 	hidden = 1
-	company = S
+	company = bankrupt_stock
 	var/mins = rand(9*TIME_MULTIPLIER,60*TIME_MULTIPLIER)
 	bailout_millions = rand(70, 190)
 	next_phase = mins * 300*TIME_MULTIPLIER + world.time
 	current_title = ""
 	current_desc = ""
-	S.addEvent(src)
+	bankrupt_stock.addEvent(src)
 
 /datum/stockEvent/bankruptcy/transition()
 	switch (phase_id)
 		if (0)
 			next_phase = world.time + rand(300*TIME_MULTIPLIER, 600*TIME_MULTIPLIER) * (10*TIME_MULTIPLIER)
-			var/datum/article/A = generateBankruptcyArticle()
-			if (!A.opinion)
+			var/datum/article/bankrupt_article = generateBankruptcyArticle()
+			if (!bankrupt_article.opinion)
 				effect = rand(5) * (prob(50) ? -1 : 1)
 			else
-				effect = prob(25) ? -A.opinion * rand(8) : A.opinion * rand(4)
-			company.addArticle(A)
+				effect = prob(25) ? -bankrupt_article.opinion * rand(8) : bankrupt_article.opinion * rand(4)
+			company.addArticle(bankrupt_article)
 			company.affectPublicOpinion(rand(-6, -3))
 			hidden = 0
 			current_title = "Bailout pending due to bankruptcy"
@@ -100,9 +100,9 @@
 				current_title = "[company.name]: Complete crash"
 				current_desc = "The company had gone bankrupt, was not bailed out and could not recover. No further stock trade will take place. All shares in the company are effectively worthless."
 				company.bankrupt = 1
-				for (var/X in company.shareholders)
-					var/amt = company.shareholders[X]
-					GLOB.stockExchange.balanceLog(X, -amt * company.current_value)
+				for (var/shareholder_amount in company.shareholders)
+					var/amt = company.shareholders[shareholder_amount]
+					GLOB.stockExchange.balanceLog(shareholder_amount, -amt * company.current_value)
 				company.shareholders = list()
 				company.current_value = 0
 				company.borrow_brokers = list()
@@ -119,25 +119,25 @@
 			company.generateEvent(type)
 
 /datum/stockEvent/bankruptcy/proc/generateBankruptcyArticle()
-	var/datum/article/A = new
+	var/datum/article/bankrupt_article = new
 	var/list/bankrupt_reason = list("investor pessimism", "failure of product lines", "economic recession", "overblown inflation", "overblown deflation", "collapsed pyramid schemes", "a Ponzi scheme", "economic terrorism", "extreme hedonism", "unfavourable economic climate", "rampant government corruption", "divine conspiracy", "some total bullshit", "volatile plans")
-	A.about = company
-	A.headline = pick(	"[company.name] filing for bankruptcy", \
+	bankrupt_article.about = company
+	bankrupt_article.headline = pick(	"[company.name] filing for bankruptcy", \
 						"[company.name] unable to pay, investors run", \
 						"[company.name] crashes, in foreclosure", \
 						"[company.name] in dire need of credits")
-	A.subtitle = "Investors panic, bailout pending"
+	bankrupt_article.subtitle = "Investors panic, bailout pending"
 	if (prob(15))
-		A.opinion = rand(-1, 1)
+		bankrupt_article.opinion = rand(-1, 1)
 	var/article = "Another one might bite the dust: [company.current_trend > 0 ? "despite their positive trend" : "in line with their failing model"], [company.name] files for bankruptcy citing [pick(bankrupt_reason)]. The president of %country% has been asked to bail the company out, "
-	if (!A.opinion)
+	if (!bankrupt_article.opinion)
 		article += "but no answer has been given by the government to date. Our tip to stay safe is: %sell%"
-	else if (A.opinion > 0)
+	else if (bankrupt_article.opinion > 0)
 		article += "and the government responded positively. When the share value hits its lowest, it is a safe bet to %buy%"
 	else
 		article += "but the outlook is not good. For investors, now would be an ideal time to %sell%"
-	A.article = A.detokenize(article, company.industry.tokens)
-	return A
+	bankrupt_article.article = bankrupt_article.detokenize(article, company.industry.tokens)
+	return bankrupt_article
 
 /datum/stockEvent/arrest
 	name = "arrest"
@@ -147,9 +147,9 @@
 	var/offenses = "murder"
 	var/effect = 0
 
-/datum/stockEvent/arrest/New(var/datum/stock/S)
+/datum/stockEvent/arrest/New(var/datum/stock/stock_arrest)
 	hidden = 1
-	company = S
+	company = stock_arrest
 	var/mins = rand(10*TIME_MULTIPLIER, 35*TIME_MULTIPLIER)
 	next_phase = mins * 600*TIME_MULTIPLIER + world.time
 	current_title = ""
@@ -160,34 +160,34 @@
 	else
 		position = ucfirsts(company.industry.detokenize("Lead %industrial% Engineer"))
 	offenses = ""
-	var/list/O = list("corruption", "murder", "grand theft", "assault", "battery", "drug possession", "burglary", "theft", "grand sabotage", "bribery",
+	var/list/offense_list = list("corruption", "murder", "grand theft", "assault", "battery", "drug possession", "burglary", "theft", "grand sabotage", "bribery",
 						"disorderly conduct", "treason", "sedition", "shoplifting", "tax evasion", "tax fraud", "insurance fraud", "perjury", "kidnapping", "manslaughter", "vandalism", "forgery", "extortion", "embezzlement",
 						"public indecency", "public intoxication", "trespassing", "loitering", "littering", "vigilantism", "squatting", "panhandling", "arson", "spacepodjacking", "shuttlejacking", "carjacking", "singularityjacking",
 						"dereliction of duty", "spacecraft piracy", "music piracy", "tabletop game piracy", "software piracy", "escaping from space prison", "seniornapping", "clownnapping", "corginapping", "catnapping",
 						"sleeping on the job", "terrorism", "counterterrorism", "drug distribution", "insubordination", "jaywalking", "owning a computer", "owning a cellphone", "owning a PDA", "owning a pAI", "adultery",
 						"committing an unnatural act with another person", "corrupting public morals", "skateboarding without a license", "shitcurity", "bestiality", "erotic roleplay", "accidentally strangling a prostitute")
-	while (prob(60) && O.len > 2)
-		var/offense = pick(O)
-		O -= offense
+	while (prob(60) && offense_list.len > 2)
+		var/offense = pick(offense_list)
+		offense_list -= offense
 		offense = "[prob(20) ? "attempted " : (prob(20) ? "being accessory to " : null)][offense][prob(5) ? " of the [pick("first", "second", "third", "fourth", "fifth", "sixth")] degree" : null]"
 		if (offenses == "")
 			offenses = offense
 		else
 			offenses += ", [offense]"
-	offenses += " and [prob(20) ? "attempted " : null][pick(O)]" // lazy
-	S.addEvent(src)
+	offenses += " and [prob(20) ? "attempted " : null][pick(offense_list)]" // lazy
+	stock_arrest.addEvent(src)
 
 /datum/stockEvent/arrest/transition()
 	switch (phase_id)
 		if (0)
 			tname = "[female ? pick(GLOB.first_names_female) : pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
 			next_phase = world.time + rand(300*TIME_MULTIPLIER, 600*TIME_MULTIPLIER) * (10*TIME_MULTIPLIER)
-			var/datum/article/A = generateArrestArticle()
-			if (!A.opinion)
+			var/datum/article/arrest_article = generateArrestArticle()
+			if (!arrest_article.opinion)
 				effect = rand(5) * (prob(50) ? -1 : 1)
 			else
-				effect = prob(25) ? -A.opinion * rand(5) : A.opinion * rand(3)
-			company.addArticle(A)
+				effect = prob(25) ? -arrest_article.opinion * rand(5) : arrest_article.opinion * rand(3)
+			company.addArticle(arrest_article)
 			company.affectPublicOpinion(rand(-3, -1))
 			hidden = 0
 			current_title = "Trial of [tname] ([position]) scheduled"
@@ -205,24 +205,24 @@
 			company.generateEvent(type)
 
 /datum/stockEvent/arrest/proc/generateArrestArticle()
-	var/datum/article/A = new
-	A.about = company
-	A.headline = company.industry.detokenize(pick( \
+	var/datum/article/arrest_article = new
+	arrest_article.about = company
+	arrest_article.headline = company.industry.detokenize(pick( \
 						"[tname], [position] of [company.name] arrested", \
 						"[position] of [company.name] facing jail time", \
 						"[tname] behind bars", \
 						"[position] of %industrial% company before trial", \
 						"Police arrest [tname] in daring raid", \
 						"Job vacancy ahead: [company.name]'s [position] in serious trouble"))
-	A.subtitle = "[A.author] reporting directly from the courtroom"
+	arrest_article.subtitle = "[arrest_article.author] reporting directly from the courtroom"
 	if (prob(15))
-		A.opinion = rand(-1, 1)
+		arrest_article.opinion = rand(-1, 1)
 	var/article = "[pick("Security", "Law enforcement")] forces issued a statement that [tname], the [position] of [company.name], the %famous% %industrial% %company% was arrested %this_time%. The trial has been scheduled and the statement reports that the arrested individual is being charged with [offenses]. "
-	if (!A.opinion)
+	if (!arrest_article.opinion)
 		article += "While we cannot predict the outcome of this trial, our tip to stay safe is: %sell%"
-	else if (A.opinion > 0)
+	else if (arrest_article.opinion > 0)
 		article += "Our own investigation shows that these charges are baseless and the arrest is most likely a publicity stunt. Our advice? You should %buy%"
 	else
 		article += "[tname] has a prior history of similar misdeeds and we're confident the charges will stand. For investors, now would be an ideal time to %sell%"
-	A.article = A.detokenize(article, company.industry.tokens)
-	return A
+	arrest_article.article = arrest_article.detokenize(article, company.industry.tokens)
+	return arrest_article
