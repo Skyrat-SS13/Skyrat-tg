@@ -197,13 +197,10 @@
 		y_center = isinhands ? inhand_y_dimension : worn_y_dimension
 	standing = center_image(standing, x_center, y_center)
 
-	//Handle held offsets
-	var/mob/M = loc
-	if(istype(M))
-		var/list/L = get_held_offsets()
-		if(L)
-			standing.pixel_x += L["x"] //+= because of center()ing
-			standing.pixel_y += L["y"]
+	//Worn offsets
+	var/list/offsets = get_worn_offsets(isinhands)
+	standing.pixel_x += offsets[1]
+	standing.pixel_y += offsets[2]
 
 	standing.alpha = alpha
 	standing.color = color

@@ -281,11 +281,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(LAZYLEN(mob_occupant.mind.objectives))
 			mob_occupant.mind.objectives.Cut()
 			mob_occupant.mind.special_role = null
-		//SKYRAT EDIT ADDITION
-		if(SSticker.mode.name == "assaultops")
-			if(is_assaultops_target(mob_occupant.mind))
-				remove_assaultops_target(mob_occupant.mind) //Remove them from the list of targets for the assops.
-		//SKYRAT EDIT END
 	else
 		crew_member["job"] = "N/A"
 	// Delete them from datacore.
@@ -366,9 +361,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		var/caught = FALSE
 		var/datum/antagonist/antag = target.mind.has_antag_datum(/datum/antagonist)
 		var/datum/job/target_job = SSjob.GetJob(target.mind.assigned_role)
-		if(target_job.req_admin_notify)
-			alert("You're an important role![generic_plsnoleave_message]")
-			caught = TRUE
+		if(target_job) //SKYRAT EDIT ADDITION
+			if(target_job.req_admin_notify)
+				alert("You're an important role![generic_plsnoleave_message]")
+				caught = TRUE
 		if(antag)
 			alert("You're \a [antag.name]![generic_plsnoleave_message]")
 			caught = TRUE

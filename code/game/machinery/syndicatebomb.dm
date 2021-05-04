@@ -226,8 +226,8 @@
 	payload = /obj/item/bombcore/training
 
 /obj/machinery/syndicatebomb/emp
-	name = "EMP Bomb"
-	desc = "A modified bomb designed to release a crippling electromagnetic pulse instead of explode"
+	//name = "EMP bomb" //SKYRAT EDIT: Makes the bomb look identical to its deadlier cousin
+	//desc = "A modified bomb designed to release a crippling electromagnetic pulse instead of explode" //SKYRAT EDIT: see above
 	payload = /obj/item/bombcore/emp
 
 /obj/machinery/syndicatebomb/badmin
@@ -298,7 +298,7 @@
 	if(adminlog)
 		message_admins(adminlog)
 		log_game(adminlog)
-	explosion(src, range_heavy, range_medium, range_light, flame_range = range_flame)
+	explosion(src, range_heavy, range_medium, range_light, range_flame)
 	if(loc && istype(loc, /obj/machinery/syndicatebomb/))
 		qdel(loc)
 	qdel(src)

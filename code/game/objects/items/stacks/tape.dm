@@ -17,14 +17,30 @@
 	splint_factor = 0.8
 	merge_type = /obj/item/stack/sticky_tape
 	var/list/conferred_embed = EMBED_HARMLESS
-	var/overwrite_existing = FALSE
 
 /obj/item/stack/sticky_tape/afterattack(obj/item/I, mob/living/user, proximity)
 	if(!proximity)
 		return
-		
+
 	if(!istype(I))
 		return
+
+	//SKYRAT EDIT ADDITION
+	if(istype(I, /obj/item/clothing/shoes/combat/peacekeeper))
+		var/obj/item/clothing/shoes/combat/peacekeeper/boot = I
+		var/datum/component/squeak/annoyance = boot.GetComponent(/datum/component/squeak)
+		if(!annoyance)
+			to_chat(user, "<span class='notice'>[src] have already been silenced!")
+			return
+		if(do_after(user, 30, target=boot))
+			if(use(5))
+				to_chat(user, "<span class='notice'>You tape [src] tightly together, reducing the sound they make as you walk.</span>")
+				qdel(annoyance)
+				return
+			else
+				to_chat(user, "<span class='notice'>[src] does not have enough tape in it!</span>")
+				return
+	//SKYRAT EDIT END
 
 	if(I.embedding && I.embedding == conferred_embed)
 		to_chat(user, "<span class='warning'>[I] is already coated in [src]!</span>")

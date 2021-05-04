@@ -5,6 +5,12 @@
 "aab" = (
 /turf/open/floor/plating,
 /area/cruiser_dock/maint)
+"aac" = (
+/obj/structure/urinal{
+	pixel_y = -5
+	},
+/turf/closed/indestructible/riveted,
+/area/centcom/interlink)
 "aad" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -61,6 +67,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/medical)
+"aaj" = (
+/obj/structure/flora/ausbushes/brflowers,
+/obj/machinery/light{
+	dir = 1
+	},
+/mob/living/carbon/human/species/monkey,
+/turf/open/floor/grass,
+/area/centcom/interlink)
 "aak" = (
 /turf/closed/indestructible/syndicate,
 /area/cruiser_dock/commons/dorms)
@@ -129,6 +143,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/grimy,
 /area/cruiser_dock/commons)
+"aas" = (
+/obj/machinery/shower/infinite{
+	icon_state = "shower";
+	dir = 4
+	},
+/turf/open/floor/plastic,
+/area/centcom/interlink)
 "aat" = (
 /mob/living/simple_animal/hostile/syndicate{
 	faction = list("Deathsquad");
@@ -261,6 +282,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/security)
+"aaN" = (
+/obj/machinery/shower/infinite{
+	icon_state = "shower";
+	dir = 8
+	},
+/turf/open/floor/plastic,
+/area/centcom/interlink)
 "aaO" = (
 /obj/effect/turf_decal/trimline/red/line{
 	dir = 8
@@ -278,6 +306,22 @@
 /obj/structure/table,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
+"aaQ" = (
+/obj/structure/curtain,
+/obj/machinery/shower/infinite{
+	icon_state = "shower";
+	dir = 1
+	},
+/turf/open/floor/material,
+/area/centcom/interlink)
+"aaR" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/true_changeling{
+	name = "abomination";
+	real_name = "abomination"
+	},
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "aaS" = (
 /mob/living/simple_animal/hostile/rat,
 /turf/open/floor/plating,
@@ -310,6 +354,11 @@
 	},
 /turf/open/floor/engine,
 /area/cruiser_dock/security/armory)
+"aaX" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/rat,
+/turf/open/floor/plating,
+/area/cruiser_dock/brig)
 "aaY" = (
 /obj/structure/fans/tiny/invisible,
 /turf/open/floor/plating/grass/planet,
@@ -497,11 +546,10 @@
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "abD" = (
-/mob/living/simple_animal/hostile/true_changeling{
-	name = "abomination";
-	real_name = "abomination"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/rat,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "abE" = (
@@ -561,8 +609,9 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
 "abQ" = (
-/mob/living/simple_animal/hostile/rat,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/rat,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "abR" = (
@@ -666,12 +715,18 @@
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "ack" = (
-/mob/living/simple_animal/hostile/rat,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 9
+	},
+/obj/machinery/camera/autoname{
+	dir = 9;
+	network = list("fsci")
+	},
+/mob/living/carbon/human/species/monkey{
+	faction = list("neutral","Syndicate")
+	},
+/turf/open/floor/engine,
+/area/cruiser_dock/research)
 "acl" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 8;
@@ -683,12 +738,6 @@
 "acm" = (
 /obj/effect/spawner/lootdrop/armory_contraband,
 /obj/structure/closet/crate,
-/turf/open/floor/plating,
-/area/cruiser_dock/brig)
-"acn" = (
-/mob/living/simple_animal/hostile/rat,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/cruiser_dock/brig)
 "aco" = (
@@ -953,7 +1002,7 @@
 	dir = 1
 	},
 /obj/machinery/vending/autodrobe{
-	premium = list(/obj/item/clothing/neck/human_petcollar/locked = 10,/obj/item/clothing/neck/human_petcollar/locked/choker = 10,/obj/item/clothing/neck/human_petcollar/locked/leather = 10)
+	premium = list(/obj/item/clothing/neck/human_petcollar/locked = 10, /obj/item/clothing/neck/human_petcollar/locked/choker = 10, /obj/item/clothing/neck/human_petcollar/locked/leather = 10)
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/brig)
@@ -2665,6 +2714,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron,
 /area/cruiser_dock/research)
 "ahu" = (
@@ -2743,10 +2793,10 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/clothing/gloves/botanic_leather,
 /obj/item/clothing/gloves/color/blue,
-/obj/item/caution,
-/obj/item/caution,
-/obj/item/caution,
-/obj/item/caution,
+/obj/item/clothing/suit/caution,
+/obj/item/clothing/suit/caution,
+/obj/item/clothing/suit/caution,
+/obj/item/clothing/suit/caution,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
@@ -3602,10 +3652,10 @@
 /obj/item/storage/box/lights/mixed,
 /obj/item/clothing/gloves/botanic_leather,
 /obj/item/clothing/gloves/color/blue,
-/obj/item/caution,
-/obj/item/caution,
-/obj/item/caution,
-/obj/item/caution,
+/obj/item/clothing/suit/caution,
+/obj/item/clothing/suit/caution,
+/obj/item/clothing/suit/caution,
+/obj/item/clothing/suit/caution,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
@@ -4231,19 +4281,6 @@
 /obj/item/toy/cards/deck,
 /turf/open/floor/eighties,
 /area/centcom/interlink)
-"alz" = (
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 9
-	},
-/mob/living/carbon/human/species/monkey{
-	faction = list("neutral","Syndicate")
-	},
-/obj/machinery/camera/autoname{
-	dir = 9;
-	network = list("fsci")
-	},
-/turf/open/floor/engine,
-/area/cruiser_dock/research)
 "alA" = (
 /obj/machinery/door/window/westleft{
 	dir = 1;
@@ -6768,14 +6805,6 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/grass,
 /area/cruiser_dock/medical)
-"arK" = (
-/obj/structure/flora/ausbushes/brflowers,
-/mob/living/carbon/human/species/monkey,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/centcom/interlink)
 "arL" = (
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/engineering)
@@ -14333,6 +14362,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "aLF" = (
@@ -18803,6 +18833,7 @@
 	opacity = 0;
 	req_access_txt = "55"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/research)
 "aXy" = (
@@ -19057,7 +19088,7 @@
 /area/cruiser_dock/commons)
 "aYf" = (
 /obj/structure/railing,
-/obj/machinery/computer/shuttle/syndicate_frigate/recall,
+/obj/machinery/computer/shuttle/syndicate_frigate,
 /turf/open/floor/iron/dark,
 /area/cruiser_dock/cargo)
 "aYg" = (
@@ -20171,6 +20202,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"fIM" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron,
+/area/cruiser_dock/research)
 "fUk" = (
 /obj/machinery/button/door{
 	id = "dorm23";
@@ -20424,6 +20460,10 @@
 /obj/effect/turf_decal/siding/blue,
 /turf/open/floor/iron/cafeteria,
 /area/centcom/interlink)
+"imX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/circuit/telecomms,
+/area/cruiser_dock/research)
 "ixt" = (
 /turf/open/floor/carpet,
 /area/centcom/interlink)
@@ -20456,25 +20496,6 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
-/area/centcom/interlink)
-"iZj" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/turf/open/floor/plastic,
-/area/centcom/interlink)
-"iZA" = (
-/obj/machinery/shower{
-	dir = 1
-	},
-/obj/structure/curtain,
-/turf/open/floor/material,
-/area/centcom/interlink)
-"jff" = (
-/obj/structure/urinal{
-	pixel_y = -12
-	},
-/turf/closed/indestructible/riveted,
 /area/centcom/interlink)
 "jgm" = (
 /obj/structure/sign/poster/contraband/random{
@@ -20696,6 +20717,10 @@
 /obj/structure/window/spawner/north,
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"kIt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "kLP" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/machinery/light{
@@ -20827,12 +20852,6 @@
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
-/area/centcom/interlink)
-"lWQ" = (
-/obj/structure/urinal{
-	pixel_y = -5
-	},
-/turf/closed/indestructible/riveted,
 /area/centcom/interlink)
 "mih" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
@@ -21058,6 +21077,13 @@
 /obj/structure/dresser,
 /turf/open/floor/iron/grimy,
 /area/centcom/interlink)
+"olG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "ooR" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -21355,6 +21381,11 @@
 /obj/structure/curtain,
 /turf/open/floor/plastic,
 /area/centcom/interlink)
+"qDD" = (
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/plating,
+/area/cruiser_dock/research)
 "qJT" = (
 /obj/machinery/door/airlock{
 	id_tag = "dorm21";
@@ -21413,12 +21444,6 @@
 "rjx" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/open/floor/plating/grass/planet,
-/area/centcom/interlink)
-"rlm" = (
-/obj/machinery/shower{
-	dir = 4
-	},
-/turf/open/floor/plastic,
 /area/centcom/interlink)
 "rpn" = (
 /obj/structure/mirror{
@@ -21493,6 +21518,11 @@
 /obj/structure/table/wood/poker,
 /turf/open/floor/eighties,
 /area/centcom/interlink)
+"skD" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "snU" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -21782,6 +21812,13 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"uyy" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "uCW" = (
 /obj/machinery/light{
 	dir = 8
@@ -22058,6 +22095,10 @@
 /obj/structure/sign/departments/evac,
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
+"xbw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/engine,
+/area/cruiser_dock/research)
 "xga" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -22068,6 +22109,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"xpr" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/dark,
+/area/cruiser_dock/research)
 "xuN" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -23967,7 +24015,7 @@ idT
 aHC
 rNg
 qqd
-rlm
+aas
 aHC
 aVM
 aVM
@@ -24995,7 +25043,7 @@ czK
 aHC
 lSk
 bZo
-iZj
+aaN
 aHC
 aCy
 aVM
@@ -25502,7 +25550,7 @@ aaa
 aaa
 aaa
 aaa
-jff
+aac
 eLV
 rxu
 czK
@@ -25759,7 +25807,7 @@ aaa
 aaa
 aaa
 aaa
-lWQ
+aac
 spI
 aWb
 czK
@@ -26016,7 +26064,7 @@ aaa
 aaa
 aaa
 aaa
-lWQ
+aac
 spI
 aWb
 czK
@@ -26273,7 +26321,7 @@ aaa
 aaa
 aaa
 aaa
-lWQ
+aac
 agp
 amK
 arF
@@ -27334,19 +27382,19 @@ aHC
 vhO
 hgr
 bot
-iZA
+aaQ
 vhO
 hgr
 bot
-iZA
+aaQ
 vhO
 hgr
 bot
-iZA
+aaQ
 vhO
 hgr
 bot
-iZA
+aaQ
 vhO
 aaa
 aaa
@@ -30388,7 +30436,7 @@ pYq
 aQY
 aLr
 aHC
-arK
+aaj
 aHQ
 aDg
 akk
@@ -34896,7 +34944,7 @@ aaf
 aaf
 aaf
 aah
-abQ
+aaX
 aaf
 aaS
 adc
@@ -35919,8 +35967,8 @@ aaa
 aaf
 aah
 aah
+aaX
 abQ
-acn
 abC
 abC
 abw
@@ -36690,7 +36738,7 @@ aah
 aaf
 aah
 abw
-ack
+abD
 abw
 aah
 aaS
@@ -37198,7 +37246,7 @@ aaf
 abs
 aaf
 abA
-abD
+aaR
 aaf
 abt
 aaf
@@ -37973,7 +38021,7 @@ aaf
 aaf
 abC
 aaf
-abQ
+aaX
 abw
 aah
 abw
@@ -39517,7 +39565,7 @@ abw
 aaf
 aaS
 ace
-abQ
+aaX
 aah
 aaf
 aaf
@@ -40033,7 +40081,7 @@ abS
 acf
 acf
 aco
-abQ
+aaX
 abw
 abw
 aaf
@@ -60127,7 +60175,7 @@ afU
 aEJ
 aum
 afU
-aNt
+skD
 aOE
 atG
 aSW
@@ -60142,11 +60190,11 @@ afX
 akV
 akM
 aYW
-aHB
-aNt
+xpr
+skD
 aht
-agD
-axf
+qDD
+xbw
 aTa
 axf
 axf
@@ -60384,7 +60432,7 @@ afU
 aUc
 aNt
 afU
-aNt
+skD
 aok
 aYV
 afU
@@ -60399,7 +60447,7 @@ afU
 afU
 afU
 afU
-afU
+kIt
 aNt
 ajI
 aNs
@@ -60641,8 +60689,8 @@ afU
 azG
 agn
 afU
-aNt
-aok
+skD
+fIM
 aLE
 aLJ
 aLB
@@ -60656,7 +60704,7 @@ aqa
 aLi
 ahS
 agh
-avo
+uyy
 aNt
 aKK
 afh
@@ -60913,7 +60961,7 @@ aBU
 aMb
 aZi
 aFF
-aYV
+olG
 aNt
 akn
 agD
@@ -61157,7 +61205,7 @@ afU
 afU
 aBg
 aFF
-aqH
+imX
 avs
 aFF
 agD
@@ -61414,7 +61462,7 @@ aPS
 afU
 aiF
 aFF
-aqH
+imX
 avs
 aFF
 axf
@@ -61671,7 +61719,7 @@ afU
 axS
 axI
 aFF
-aqH
+imX
 aqH
 aFF
 axf
@@ -62178,7 +62226,7 @@ aaa
 aFF
 aQB
 ast
-alz
+ack
 aFF
 aFF
 aFF

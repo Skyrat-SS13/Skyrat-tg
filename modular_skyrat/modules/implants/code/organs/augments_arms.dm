@@ -47,7 +47,7 @@
 /obj/item/organ/cyberimp/arm/botany
 	name = "botany arm implant"
 	desc = "A rather simple arm implant containing tools used in gardening and botanical research."
-	contents = newlist(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/reagent_containers/glass/beaker/plastic, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder) 
+	contents = newlist(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/reagent_containers/glass/beaker/plastic, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
 
 /obj/item/multitool/abductor/implant
 	name = "multitool"
@@ -68,4 +68,18 @@
 	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated deluxe cleaning supplies!</span>")
 	items_list += new /obj/item/soap/syndie(src) //We add not replace.
 	items_list += new /obj/item/reagent_containers/spray/cyborg_lube(src)
+	return TRUE
+
+/obj/item/organ/cyberimp/arm/lighter
+	name = "lighter implant"
+	desc = "A... implanted lighter. Incredibly useless."
+	contents = newlist(/obj/item/lighter/greyscale) //Hilariously useless.
+
+/obj/item/organ/cyberimp/arm/lighter/emag_act()
+	. = ..()
+	if(obj_flags & EMAGGED)
+		return
+	obj_flags |= EMAGGED
+	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated Zippo lighter! Finally, classy smoking!</span>")
+	items_list += new /obj/item/lighter(src) //Now you can choose between bad and worse!
 	return TRUE

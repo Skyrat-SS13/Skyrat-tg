@@ -69,6 +69,7 @@
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)
 	icon_state = "hos"
+	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
@@ -101,7 +102,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
-	new /obj/item/storage/box/gunset/glock18_hos(src)
+	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"

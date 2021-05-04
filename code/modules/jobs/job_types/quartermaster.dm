@@ -16,18 +16,21 @@
 	paycheck = PAYCHECK_COMMAND //SKYRAT EDIT CHANGE - ORIGINAL: PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CAR
 
-	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
+	//liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM) //ORIGINAL
+	liver_traits = list(TRAIT_ROYAL_METABOLISM) //SKYRAT EDIT CHANGE
 
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER
 	bounty_types = CIV_JOB_RANDOM
 	departments = DEPARTMENT_CARGO
+	family_heirlooms = list(/obj/item/stamp, /obj/item/stamp/denied)
+	mail_goodies = list(
+		/obj/item/circuitboard/machine/emitter = 3
+	)
 
 /datum/job/quartermaster/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
 	..()
 	if(announce_captaincy)
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to extreme staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
-
-	family_heirlooms = list(/obj/item/stamp, /obj/item/stamp/denied)
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"

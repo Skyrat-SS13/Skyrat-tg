@@ -273,7 +273,7 @@
 		cuff_resist(I)
 
 
-/mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 600, cuff_break = 0)
+/mob/living/carbon/proc/cuff_resist(obj/item/I, breakouttime = 1 MINUTES, cuff_break = 0)
 	if(I.item_flags & BEING_REMOVED)
 		to_chat(src, "<span class='warning'>You're already attempting to remove [I]!</span>")
 		return
@@ -527,7 +527,7 @@
 	var/stam = getStaminaLoss()
 	//TODO: Make this much more cleaner
 	//SKYRAT EDIT - ORIGINAL: if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
-	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN 
+	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN
 		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
 			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
 				//When you get floored by stamina, you also get a brief stun and disarm
@@ -1279,6 +1279,7 @@
 	if(!buckled || buckled.buckle_lying != 0)
 		lying_angle_on_lying_down(new_lying_angle)
 
+	drop_all_held_items() //SKYRAT EDIT ADDITION
 
 /// Special carbon interaction on lying down, to transform its sprite by a rotation.
 /mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)

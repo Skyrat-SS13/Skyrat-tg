@@ -64,9 +64,6 @@
 	if(!ishuman(user))
 		return FALSE
 
-	if(!is_assault_operative(user))
-		return FALSE
-
 	//Remove all current items from the vending machine
 	products.Cut()
 	product_records.Cut()

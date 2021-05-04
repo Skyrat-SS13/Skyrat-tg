@@ -113,19 +113,6 @@
 	else
 		return ..()
 
-//SKYRAT EDIT ADDITION
-/obj/machinery/processor/attack_hand(mob/living/user, list/modifiers)
-	. = ..()
-	if(ishuman(user) && user.Adjacent(src))
-		var/mob/living/carbon/human/H = user
-		if(H.combat_mode)
-			var/obj/item/bodypart/limb = H.get_active_hand()
-			H.visible_message("<span class='danger'>[H] puts their hand in the [src] causing it to be brutally dismembered!</span>", \
-			"<span class='userdanger'>You put your hand in [src] causing it to be torn off, ouch!</span>")
-			playsound(src.loc, 'sound/machines/blender.ogg', 50, TRUE)
-			limb.dismember()
-//SKYRAT EDIT ADDITION END
-
 /obj/machinery/processor/interact(mob/user)
 	if(processing)
 		to_chat(user, "<span class='warning'>[src] is in the process of processing!</span>")
@@ -174,6 +161,8 @@
 	set name = "Eject Contents"
 	set src in oview(1)
 	if(usr.stat != CONSCIOUS || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
+		return
+	if (!usr.canUseTopic())
 		return
 	if(isliving(usr))
 		var/mob/living/L = usr

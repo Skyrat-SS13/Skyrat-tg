@@ -29,8 +29,8 @@
 /mob/living/simple_animal/hostile/space_dragon
 	name = "Space Dragon"
 	desc = "A vile, leviathan-esque creature that flies in the most unnatural way.  Looks slightly similar to a space carp."
-	maxHealth = 400
-	health = 400
+	maxHealth = 550 //SKYRAT EDIT ORIGINAL VAL (400) - Space dragon rebalance
+	health = 550 //SKYRAT EDIT ORIGINAL VAL (400) - Space dragon rebalance
 	combat_mode = TRUE
 	speed = 0
 	attack_verb_continuous = "chomps"
@@ -46,10 +46,10 @@
 	obj_damage = 50
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1 | HEAR_1
-	melee_damage_upper = 35
+	melee_damage_upper = 40 //SKYRAT EDIT ORIGINAL VAL (30) - Space dragon rebalance
 	melee_damage_lower = 35
 	mob_size = MOB_SIZE_LARGE
-	armour_penetration = 30
+	armour_penetration = 34 //SKYRAT EDIT ORIGINAL VAL (30) - Space dragon rebalance
 	pixel_x = -16
 	base_pixel_x = -16
 	turns_per_move = 5
