@@ -39,8 +39,6 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	uniform = /obj/item/clothing/under/rank/expeditionary_corps
 	glasses = /obj/item/clothing/glasses/sunglasses/big
 
-	backpack_contents = list(/obj/item/pda/expeditionary_corps)
-
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
 	duffelbag = /obj/item/storage/backpack/duffelbag
@@ -49,6 +47,8 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/expeditionary_corps
+
+	belt = /obj/item/pda/expeditionary_corps
 
 /obj/effect/landmark/start/expeditionary_corps
 	name = "Expeditionary Trooper"
@@ -69,14 +69,15 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 /obj/structure/closet/secure_closet/expeditionary_corps/PopulateContents()
 	..()
-	new /obj/item/storage/belt/military/expeditionary_corps(src)
-	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
-	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
-	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
-	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/firstaid/tactical(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
 	new /obj/item/radio(src)
+	new /obj/item/melee/tomahawk(src)
+	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
 /obj/machinery/suit_storage_unit/expeditionary_corps
 	suit_type = /obj/item/clothing/suit/space/hardsuit/expeditionary_corps
@@ -106,7 +107,10 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	var/lockers2spawn = exp_corps.current_positions
 
-	for(var/i = 0, i <= lockers2spawn, i++)
+	if(!lockers2spawn)
+		return
+
+	for(var/i = 1, i <= lockers2spawn, i++)
 		if(GLOB.expcorps_equipment.len)
 			var/spawnloc = GLOB.expcorps_equipment[1]
 			new /obj/structure/closet/secure_closet/expeditionary_corps(spawnloc)

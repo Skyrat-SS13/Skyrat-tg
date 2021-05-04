@@ -137,7 +137,7 @@
 /datum/id_trim/job/expeditionary_corps
 	assignment = "Expeditionary Trooper"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_expeditionarycorps"
+	trim_state = "trim_expeditionarytrooper"
 	full_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE, ACCESS_SEC_DOORS)
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE, ACCESS_SEC_DOORS)
 

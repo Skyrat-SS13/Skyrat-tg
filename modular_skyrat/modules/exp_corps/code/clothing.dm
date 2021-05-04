@@ -17,6 +17,15 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/belt.dmi'
 
+/obj/item/storage/belt/military/expeditionary_corps/PopulateContents()
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+	new /obj/item/weldingtool(src)
+	new /obj/item/crowbar(src)
+	new /obj/item/wirecutters(src)
+	new /obj/item/multitool(src)
+	new /obj/item/stack/cable_coil(src)
+
 /obj/item/clothing/shoes/combat/expeditionary_corps
 	name = "expeditionary corps boots"
 	desc = "High speed, low drag combat boots."
@@ -58,17 +67,18 @@
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 	dog_fashion = null
-
-/obj/item/storage/backpack/duffelbag/syndie/expeditionary_corps
-	name = "expeditionary corps duffel bag"
-	desc = "A large duffel bag for holding extra expeditionary supplies."
-	icon_state = "duffel-syndie"
-	inhand_icon_state = "duffel-syndieammo"
-	slowdown = 0
-	resistance_flags = FIRE_PROOF
-	special_desc_requirement = NONE
-	special_desc = null
-
+	allowed = list(
+		/obj/item/melee,
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/flashlight,
+		/obj/item/gun,
+		/obj/item/kitchen/knife,
+		/obj/item/reagent_containers,
+		/obj/item/restraints/handcuffs,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman
+		)
 /obj/item/clothing/suit/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit"
 	desc = "An advanced hardsuit designed for exploratory missions."
@@ -88,8 +98,8 @@
 /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit helmet"
 	desc = "An advanced hardsuit helmet designed for exploratory missions."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-hexp_corps"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "hexp_corps"
