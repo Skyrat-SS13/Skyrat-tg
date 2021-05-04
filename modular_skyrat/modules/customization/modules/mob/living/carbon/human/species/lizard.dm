@@ -5,6 +5,7 @@
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/lizard_parts_greyscale.dmi'
 	cultures = list(CULTURES_EXOTIC, CULTURES_LIZARD, CULTURES_HUMAN)
 	learnable_languages = list(/datum/language/common, /datum/language/draconic)
+	payday_modifier = 0.75
 
 /datum/species/lizard/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
