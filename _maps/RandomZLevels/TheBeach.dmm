@@ -126,16 +126,16 @@
 /obj/item/clothing/head/pirate,
 /obj/item/clothing/glasses/eyepatch,
 /obj/item/clothing/suit/pirate,
-/obj/item/claymore/cutlass{
-	desc = "A piratey, foam sword used by kids to train themselves in the business of \"negotiating\" the transfer of treasure.";
+/obj/item/melee/sabre{
+	desc = "This isn't real however it can trick someone into thinking you have something real..";
 	force = 0;
-	name = "foam cutlass";
+	name = "foam pirate's sabre";
 	throwforce = 0
 	},
-/obj/item/claymore/cutlass{
-	desc = "A piratey, foam sword used by kids to train themselves in the business of \"negotiating\" the transfer of treasure.";
+/obj/item/melee/sabre{
+	desc = "This isn't real however it can trick someone into thinking you have something real..";
 	force = 0;
-	name = "foam cutlass";
+	name = "foam pirate's sabre";
 	throwforce = 0
 	},
 /turf/open/floor/plating/beach/sand,
@@ -204,8 +204,11 @@
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "aI" = (
-/obj/item/melee/skateboard/hoverboard{
-	pixel_x = -16;
+/obj/item/melee/skateboard{
+	color = "#6666ff";
+	desc = "Yes, surf boards have wheels. Stop laughing.";
+	name = "surf board";
+	pixel_x = -15;
 	pixel_y = 1
 	},
 /turf/open/floor/plating/beach/water,
@@ -374,7 +377,7 @@
 /area/awaymission/beach)
 "bq" = (
 /obj/effect/turf_decal/sand,
-/obj/machinery/telecomms/allinone,
+/obj/machinery/telecomms/relay/preset/mining,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "br" = (
@@ -399,10 +402,9 @@
 /turf/open/floor/wood,
 /area/awaymission/beach)
 "bu" = (
+/obj/item/reagent_containers/food/drinks/bottle/wine,
+/obj/item/reagent_containers/food/drinks/bottle/rum,
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/bottle/whiskey{
-	pixel_y = 3
-	},
 /turf/open/floor/wood,
 /area/awaymission/beach)
 "bv" = (
@@ -543,9 +545,7 @@
 /area/awaymission/beach)
 "bO" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/bottle/tequila{
-	pixel_y = 2
-	},
+/obj/item/reagent_containers/food/drinks/bottle/champagne,
 /turf/open/floor/wood,
 /area/awaymission/beach)
 "bP" = (
@@ -676,10 +676,10 @@
 /area/awaymission/beach)
 "cf" = (
 /obj/effect/turf_decal/sand,
+/obj/machinery/vending/cigarette,
 /obj/structure/sign/poster/contraband/smoke{
 	pixel_y = -32
 	},
-/obj/machinery/vending/cigarette/beach,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "cg" = (
@@ -775,7 +775,7 @@
 /area/awaymission/beach)
 "cv" = (
 /obj/effect/turf_decal/stripes/white/corner{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
@@ -786,11 +786,6 @@
 /obj/item/food/meat/slab/spider,
 /obj/item/food/meat/slab/killertomato,
 /obj/item/food/meat/slab/bear,
-/obj/item/food/meat/slab/rawcrab,
-/obj/item/food/meat/slab/rawcrab,
-/obj/item/food/meat/slab/rawcrab,
-/obj/item/food/meat/slab/rawcrab,
-/obj/item/food/meat/slab/rawcrab,
 /turf/open/floor/wood,
 /area/awaymission/beach)
 "cx" = (
@@ -822,19 +817,12 @@
 /area/awaymission/beach)
 "cC" = (
 /obj/structure/table/wood,
-/obj/item/food/burger/crab{
-	pixel_x = -11
-	},
 /turf/open/floor/wood,
 /area/awaymission/beach)
 "cD" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/rag{
 	pixel_y = 7
-	},
-/obj/item/food/burger/crab{
-	pixel_x = -14;
-	pixel_y = 9
 	},
 /turf/open/floor/wood,
 /area/awaymission/beach)
@@ -911,22 +899,18 @@
 /area/awaymission/beach)
 "cP" = (
 /obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime{
-	pixel_x = -12;
-	pixel_y = -7
+	pixel_x = -12
 	},
 /obj/item/reagent_containers/food/drinks/soda_cans/dr_gibb{
-	pixel_x = 13;
-	pixel_y = -7
+	pixel_x = 13
 	},
-/obj/structure/fluff/beach_umbrella,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "cQ" = (
 /obj/item/reagent_containers/food/drinks/soda_cans/starkist{
 	pixel_x = -12;
-	pixel_y = -6
+	pixel_y = 3
 	},
-/obj/structure/fluff/beach_umbrella/cap,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "cR" = (
@@ -939,9 +923,8 @@
 "cS" = (
 /obj/item/reagent_containers/food/drinks/soda_cans/dr_gibb{
 	pixel_x = -9;
-	pixel_y = -9
+	pixel_y = -7
 	},
-/obj/structure/fluff/beach_umbrella/engine,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "cT" = (
@@ -951,12 +934,11 @@
 "cU" = (
 /obj/item/reagent_containers/food/drinks/soda_cans/cola{
 	pixel_x = -8;
-	pixel_y = -6
+	pixel_y = -4
 	},
 /obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind{
 	pixel_x = 15
 	},
-/obj/structure/fluff/beach_umbrella/science,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "cV" = (
@@ -974,10 +956,8 @@
 /area/awaymission/beach)
 "cX" = (
 /obj/item/reagent_containers/food/drinks/soda_cans/cola{
-	pixel_x = -5;
-	pixel_y = -5
+	pixel_x = -5
 	},
-/obj/structure/fluff/beach_umbrella/security,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 "cY" = (
@@ -1029,183 +1009,8 @@
 /obj/item/toy/seashell,
 /turf/open/floor/plating/beach/coastline_t,
 /area/awaymission/beach)
-"kK" = (
-/obj/item/toy/seashell{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"kS" = (
-/obj/item/toy/seashell{
-	pixel_x = -7;
-	pixel_y = 5
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"lA" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/bottle/maltliquor{
-	pixel_y = 3
-	},
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"mF" = (
-/obj/structure/table/wood,
-/obj/item/food/burger/crab{
-	pixel_x = 9;
-	pixel_y = 8
-	},
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"oE" = (
-/obj/structure/table/wood,
-/obj/item/food/burger/crab,
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"wr" = (
-/obj/item/toy/seashell{
-	pixel_y = -5
-	},
-/turf/open/floor/plating/beach/coastline_t,
-/area/awaymission/beach)
-"wz" = (
-/obj/item/toy/seashell{
-	pixel_x = -8;
-	pixel_y = 9
-	},
-/turf/open/floor/plating/beach/coastline_t/sandwater_inner{
-	dir = 8
-	},
-/area/awaymission/beach)
-"xA" = (
-/obj/structure/table/wood,
-/obj/item/camera,
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"yp" = (
-/obj/item/flashlight/flare/torch{
-	pixel_x = 15;
-	pixel_y = -7
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"zc" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/bottle/sake{
-	pixel_y = 4
-	},
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"ze" = (
-/obj/item/toy/seashell{
-	pixel_x = 12;
-	pixel_y = -5
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"zZ" = (
-/obj/effect/turf_decal/sand,
-/obj/effect/baseturf_helper/beach/water,
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"AR" = (
-/obj/item/toy/seashell{
-	pixel_x = 8;
-	pixel_y = 14
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"Bd" = (
-/obj/item/toy/seashell{
-	pixel_x = 12;
-	pixel_y = 5
-	},
-/turf/open/floor/plating/beach/coastline_t/sandwater_inner,
-/area/awaymission/beach)
-"EG" = (
-/obj/item/flashlight/flare/torch{
-	pixel_x = -2;
-	pixel_y = 8
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"He" = (
-/obj/structure/fluff/beach_umbrella/syndi,
-/turf/open/floor/plating/beach/coastline_t/sandwater_inner{
-	dir = 1
-	},
-/area/awaymission/beach)
-"Kg" = (
-/obj/item/flashlight/flare/torch{
-	pixel_x = 12;
-	pixel_y = 9
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
 "MD" = (
 /obj/item/toy/seashell,
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"MP" = (
-/obj/item/flashlight/flare/torch{
-	pixel_x = 7;
-	pixel_y = -5
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"QQ" = (
-/obj/item/reagent_containers/food/drinks/bottle/rum{
-	pixel_y = 2
-	},
-/obj/structure/table/wood,
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"QU" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/food/meat/slab/rawcrab,
-/obj/item/food/meat/slab/rawcrab,
-/obj/item/food/meat/slab/rawcrab,
-/obj/item/food/meat/slab/monkey,
-/obj/item/food/meat/slab/monkey,
-/obj/item/food/meat/slab/monkey,
-/obj/item/food/meat/slab/gorilla,
-/obj/item/food/meat/slab/gorilla,
-/obj/item/food/meat/slab/gorilla,
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"SR" = (
-/obj/machinery/food_cart,
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"Tr" = (
-/obj/structure/table/wood,
-/obj/item/storage/photo_album,
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"Vx" = (
-/obj/item/reagent_containers/food/drinks/bottle/wine{
-	pixel_y = 4
-	},
-/obj/structure/table/wood,
-/turf/open/floor/wood,
-/area/awaymission/beach)
-"Ws" = (
-/obj/item/toy/seashell{
-	pixel_x = -10;
-	pixel_y = -4
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"Za" = (
-/obj/item/flashlight/flare/torch{
-	pixel_x = 10;
-	pixel_y = -4
-	},
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
-"ZL" = (
-/obj/machinery/grill,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/beach)
 
@@ -4779,9 +4584,9 @@ ac
 aw
 af
 ay
-kK
+MD
 ak
-kS
+MD
 aT
 ao
 aY
@@ -4885,7 +4690,7 @@ ac
 aw
 af
 ay
-AR
+MD
 ak
 ak
 ak
@@ -4994,7 +4799,7 @@ ay
 ak
 ak
 ak
-Ws
+MD
 ak
 ak
 ak
@@ -5527,7 +5332,7 @@ ak
 ak
 ak
 ak
-Kg
+aC
 ak
 ak
 ak
@@ -5633,9 +5438,9 @@ ag
 ak
 ak
 ak
-Za
+aC
 aF
-EG
+aC
 ak
 ak
 ak
@@ -5847,7 +5652,7 @@ ag
 ak
 ak
 ak
-yp
+aC
 aF
 aC
 ak
@@ -5955,7 +5760,7 @@ ak
 ak
 ak
 ak
-MP
+aC
 ak
 ak
 aA
@@ -7048,7 +6853,7 @@ cm
 bd
 bd
 bd
-mF
+cC
 cH
 ba
 ak
@@ -7137,7 +6942,7 @@ ak
 bg
 aQ
 by
-zZ
+ba
 ba
 ba
 ba
@@ -7369,7 +7174,7 @@ cp
 bd
 bd
 bd
-oE
+cC
 cH
 ba
 ak
@@ -7476,7 +7281,7 @@ cq
 bd
 bd
 bd
-Tr
+cC
 cH
 ba
 ak
@@ -7583,7 +7388,7 @@ bd
 bd
 bd
 bd
-xA
+cC
 cH
 ba
 ak
@@ -8223,7 +8028,7 @@ ak
 ak
 ak
 ak
-SR
+ak
 ak
 ak
 ak
@@ -8330,7 +8135,7 @@ ak
 ak
 ak
 ak
-ZL
+ak
 ak
 ak
 ak
@@ -8437,7 +8242,7 @@ ak
 aD
 ak
 ak
-QU
+ak
 ak
 cG
 ak
@@ -8738,7 +8543,7 @@ ac
 ad
 ah
 am
-He
+az
 ak
 aS
 aX
@@ -9600,7 +9405,7 @@ ag
 aX
 bb
 de
-lA
+bu
 aX
 ba
 ba
@@ -10049,7 +9854,7 @@ ak
 cu
 ak
 ak
-wz
+aT
 ao
 aY
 ac
@@ -10349,7 +10154,7 @@ ak
 aX
 bb
 df
-QQ
+bu
 aX
 ba
 ba
@@ -10693,7 +10498,7 @@ ak
 ak
 cO
 ak
-wr
+iy
 ar
 ac
 ac
@@ -10906,7 +10711,7 @@ ak
 ak
 ak
 aK
-ak
+MD
 ap
 ar
 ac
@@ -11098,12 +10903,12 @@ ak
 aX
 bb
 dd
-Vx
+bu
 aX
 ba
 ba
 aX
-zc
+bu
 bk
 bZ
 aX
@@ -11119,7 +10924,7 @@ ak
 ak
 ak
 ak
-ze
+MD
 bo
 aq
 ar
@@ -12067,7 +11872,7 @@ bo
 am
 am
 az
-Bd
+bo
 aq
 ar
 ac
