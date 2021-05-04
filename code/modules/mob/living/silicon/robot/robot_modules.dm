@@ -254,7 +254,7 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/lightreplacer/cyborg) // Skyrat Edit - Surprised Engie borgs don't get these
+		/obj/item/lightreplacer/cyborg, // Skyrat Edit - Surprised Engie borgs don't get these
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
