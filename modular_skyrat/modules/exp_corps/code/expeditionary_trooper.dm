@@ -29,6 +29,11 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	trusted_only = TRUE
 
+/datum/job/expeditionary_trooper/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	to_chat(M, "<span class='redtext'>As an Expeditionary trooper you are not part of security! You must not perform security duties unless absolutely nessecary. \
+	Do not valid hunt using your equipment. Use common sense. Failure to follow these simple rules will result in a job ban.")
+
 /datum/outfit/job/expeditionary_trooper
 	name = "Expeditionary Trooper"
 	jobtype = /datum/job/expeditionary_trooper
@@ -44,9 +49,9 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 	box = /obj/item/storage/box/survival/expeditionary_corps
 
-	backpack_contents = list()
+	backpack_contents = list(/obj/item/exp_corps_equip)
 
-	id = /obj/item/card/id/advanced/silver
+	id = /obj/item/card/id/advanced/silver/exp_corps
 	id_trim = /datum/id_trim/job/expeditionary_trooper
 
 	belt = /obj/item/pda/expeditionary_corps
@@ -81,10 +86,11 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 
 /obj/structure/closet/crate/secure/exp_corps
 	name = "expeditionary gear crate"
-	desc = "A secure weapons crate."
+	desc = "A secure crate, for Expeditionary Corps only!"
 	icon_state = "expcrate"
 	icon = 'modular_skyrat/modules/exp_corps/icons/exp_crate.dmi'
-	req_access = list(ACCESS_GATEWAY)
+	req_access = list(ACCESS_GATEWAY, ACCESS_CENT_GENERAL)
+	max_integrity = 5000
 
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
@@ -98,11 +104,25 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
-/obj/item/choice_beacon/exp_corps_equip
+/obj/item/exp_corps_equip
 	name = "Expeditionary Corps Supply Beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
-	uses = 1
+	icon = 'icons/obj/device.dmi'
+	icon_state = "gangtool-red"
+	inhand_icon_state = "radio"
+	var/item2spawn = /obj/structure/closet/crate/secure/exp_corps
 
-/obj/item/choice_beacon/exp_corps/generate_display_names()
-	var/list/choices = list(/obj/structure/closet/crate/secure/exp_corps)
-	return choices
+/obj/item/exp_corps_equip/attack_self(mob/user, modifiers)
+	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	podspawn(list(
+		"target" = get_turf(src),
+		"style" = STYLE_CENTCOM,
+		"spawn" = item2spawn,
+	))
+	to_chat(user, "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>")
+	qdel(src)
+
+
+/obj/item/card/id/advanced/silver/exp_corps
+	wildcard_slots = WILDCARD_LIMIT_CENTCOM
