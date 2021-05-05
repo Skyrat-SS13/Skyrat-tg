@@ -1,7 +1,7 @@
 /datum/round_event_control/operativetraitor
 	name = "Lone Infiltrator"
 	typepath = /datum/round_event/ghost_role/operativetraitor
-	weight = 10 //About as much weight as a Ninja. Arguably less harmful, depending on the guy who rolls it.
+	weight = 0 //Admin Event only. Up this for the action server, though, I reccomend 'weight = 10' personally.
 	max_occurrences = 1 //One spooky blood-red man at a time, please.
 	dynamic_should_hijack = TRUE
 
@@ -65,7 +65,5 @@
 	id_trim = /datum/id_trim/chameleon/operative
 
 /datum/outfit/syndicateinfiltrator/post_equip(mob/living/carbon/human/H)
-	var/obj/item/implant/weapons_auth/W = new/obj/item/implant/weapons_auth(H)
-	W.implant(H)
 	H.faction |= ROLE_SYNDICATE
 	H.update_icons()
