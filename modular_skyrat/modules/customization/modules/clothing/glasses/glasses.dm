@@ -100,6 +100,13 @@
 	inhand_icon_state = "glasses_rimless"
 	vision_correction = TRUE
 
+/obj/item/clothing/glasses/trickblindfold/hamburg
+	name = "thief visor"
+	desc = "Perfect for stealing hamburgers from innocent multinational capitalist monopolies."
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	icon_state = "thiefmask"
+
 ///GOGGLES
 /obj/item/clothing/glasses/biker
 	name = "biker goggles"

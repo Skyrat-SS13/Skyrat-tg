@@ -205,7 +205,7 @@
 	},
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
-/area/medical/medbay/central)
+/area/medical/medbay/lobby)
 "aaG" = (
 /obj/machinery/status_display/evac,
 /turf/closed/wall,
@@ -3745,7 +3745,7 @@
 	name = "Fore-Port Solar Array"
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/solars/port/fore)
 "ahG" = (
 /obj/structure/lattice/catwalk,
@@ -4684,7 +4684,7 @@
 	name = "Fore-Starboard Solar Array"
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/solars/starboard/fore)
 "ajH" = (
 /obj/structure/lattice/catwalk,
@@ -5371,7 +5371,7 @@
 	name = "Fore-Port Solar Array"
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/space/nearstation)
 "alb" = (
 /obj/structure/sign/warning/electricshock{
@@ -6654,7 +6654,7 @@
 /obj/machinery/power/tracker,
 /obj/effect/turf_decal/box,
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/space/nearstation)
 "ant" = (
 /obj/effect/turf_decal/delivery,
@@ -9528,7 +9528,7 @@
 /obj/machinery/power/tracker,
 /obj/effect/turf_decal/box,
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/solars/starboard/fore)
 "asg" = (
 /obj/item/kirbyplants{
@@ -16280,6 +16280,7 @@
 /area/engineering/atmos)
 "aDA" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "aDC" = (
@@ -16287,6 +16288,7 @@
 /area/engineering/atmos)
 "aDD" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "aDE" = (
@@ -17030,14 +17032,17 @@
 /area/medical/exam_room)
 "aFm" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "aFn" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "aFo" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "aFp" = (
@@ -18891,13 +18896,13 @@
 /turf/closed/wall,
 /area/maintenance/central)
 "aIO" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/layer_manifold/general/visible,
 /turf/closed/wall,
 /area/engineering/atmos)
 "aIP" = (
@@ -19792,10 +19797,10 @@
 	},
 /area/maintenance/starboard)
 "aKm" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible,
 /obj/machinery/atmospherics/pipe/bridge_pipe/orange/visible{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/layer_manifold/general/visible,
 /turf/closed/wall/rust,
 /area/engineering/atmos)
 "aKn" = (
@@ -21306,7 +21311,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
-/area/medical/medbay/central)
+/area/medical/medbay/lobby)
 "aMQ" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/power/emitter,
@@ -21558,7 +21563,7 @@
 /area/security/checkpoint/medical)
 "aNn" = (
 /turf/closed/wall,
-/area/medical/medbay/central)
+/area/medical/medbay/lobby)
 "aNo" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -23652,20 +23657,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/medical/medbay/lobby)
-"aQt" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue,
-/turf/open/floor/iron/showroomfloor,
-/area/medical/medbay/central)
 "aQu" = (
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/door/airlock/virology{
@@ -24985,7 +24976,7 @@
 /obj/item/stack/medical/mesh,
 /obj/item/stack/medical/suture,
 /turf/open/floor/iron/dark,
-/area/medical/medbay/central)
+/area/medical/medbay/lobby)
 "aSz" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -25089,7 +25080,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/showroomfloor,
-/area/medical/medbay/central)
+/area/medical/medbay/lobby)
 "aSJ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -25164,7 +25155,7 @@
 /obj/item/pen,
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
-/area/medical/medbay/central)
+/area/medical/medbay/lobby)
 "aSO" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -50467,6 +50458,7 @@
 /area/commons/locker)
 "bJz" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/structure/closet/secure_closet/brigoff,
 /turf/open/floor/iron/showroomfloor,
 /area/security/prison)
 "bJA" = (
@@ -56376,7 +56368,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible{
+/obj/machinery/atmospherics/pipe/layer_manifold/general/visible{
 	dir = 4
 	},
 /turf/closed/wall,
@@ -57517,6 +57509,10 @@
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
+	},
+/obj/item/radio/intercom{
+	pixel_x = 28;
+	pixel_y = -28
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 9
@@ -58748,6 +58744,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/yellow,
+/obj/item/kirbyplants{
+	icon_state = "plant-21"
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
@@ -72358,7 +72357,7 @@
 	},
 /obj/effect/turf_decal/box,
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/solars/starboard/aft)
 "cDp" = (
 /obj/effect/turf_decal/bot,
@@ -74163,7 +74162,7 @@
 /obj/machinery/power/tracker,
 /obj/effect/turf_decal/box,
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/solars/starboard/aft)
 "cGM" = (
 /obj/structure/frame/computer{
@@ -77814,6 +77813,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/plating/rust,
 /area/security/prison)
 "cQM" = (
@@ -78801,6 +78801,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "eiW" = (
@@ -79268,6 +79269,11 @@
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/open/floor/iron/showroomfloor,
 /area/service/kitchen)
+"ePL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/brigoff,
+/turf/open/floor/iron,
+/area/security/prison)
 "eRE" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -80027,6 +80033,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "fXW" = (
@@ -80574,6 +80581,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron/grimy,
 /area/security/prison/safe)
 "gVE" = (
@@ -80854,12 +80862,11 @@
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "hxC" = (
-/obj/structure/bodycontainer/morgue,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/turf_decal/delivery,
+/obj/structure/closet/secure_closet/security_medic,
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "hyC" = (
@@ -82261,7 +82268,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/turf/open/floor/goonplaque,
+/turf/open/floor/iron/goonplaque,
 /area/security/brig)
 "jHd" = (
 /obj/item/radio{
@@ -84720,6 +84727,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/iron,
 /area/security/prison)
 "nyF" = (
@@ -84869,6 +84877,7 @@
 	pixel_x = 14;
 	pixel_y = 13
 	},
+/obj/effect/landmark/start/brigoff,
 /turf/open/floor/plating/rust,
 /area/security/prison)
 "nMl" = (
@@ -84877,7 +84886,7 @@
 	name = "Aft-Port Solar Array"
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/solars/port/aft)
 "nMF" = (
 /obj/effect/turf_decal/tile/red,
@@ -84920,9 +84929,6 @@
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
-/obj/machinery/posialert{
-	pixel_x = -32
-	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "nPu" = (
@@ -85080,7 +85086,7 @@
 "oev" = (
 /obj/structure/cable,
 /obj/machinery/power/tracker,
-/turf/open/floor/iron/airless/solarpanel,
+/turf/open/floor/iron/solarpanel/airless,
 /area/solars/port/aft)
 "oez" = (
 /obj/effect/turf_decal/box/white{
@@ -87761,6 +87767,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/warden)
+"rXr" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 2;
+	height = 11;
+	id = "ferry_home";
+	name = "port bay 2";
+	width = 5
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "rXy" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -88187,6 +88204,10 @@
 	},
 /turf/open/floor/carpet/green,
 /area/maintenance/port)
+"sFZ" = (
+/obj/effect/landmark/start/brigoff,
+/turf/open/floor/iron/white,
+/area/security/prison)
 "sHb" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/portable_atmospherics/canister/air,
@@ -91895,6 +91916,11 @@
 	},
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"xqd" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/landmark/start/security_medic,
+/turf/open/floor/iron/showroomfloor,
+/area/security/warden)
 "xqB" = (
 /obj/item/storage/box/rubbershot{
 	pixel_x = -3;
@@ -99687,7 +99713,7 @@ cpx
 aaa
 aau
 kLr
-xFp
+ePL
 xFp
 aau
 uNu
@@ -103023,7 +103049,7 @@ aer
 acm
 aaa
 aaa
-aaa
+rXr
 aaa
 aaa
 cpx
@@ -103031,7 +103057,7 @@ urB
 gUU
 kzW
 anu
-fdJ
+sFZ
 cJC
 aau
 rhG
@@ -110767,7 +110793,7 @@ aeo
 aaa
 aaa
 aaa
-aaa
+aaB
 aaa
 aaa
 aaa
@@ -111770,7 +111796,7 @@ fKv
 aCv
 gyU
 xnA
-xnA
+xqd
 hyE
 aFu
 dfI
@@ -113344,7 +113370,7 @@ aaa
 aaa
 aaa
 aaa
-aaB
+aaa
 aaa
 aaa
 aaa
@@ -115327,7 +115353,7 @@ btA
 btA
 aSy
 aMP
-aQt
+aQw
 aSH
 aaF
 aSN
