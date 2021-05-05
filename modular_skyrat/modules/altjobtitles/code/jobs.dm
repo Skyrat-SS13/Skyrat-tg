@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(service_alttitles, list(
 	"Priest", "Preacher", //Chap
 	"Pantomimist", //Mime
 	"Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner", //Prisoner
-	"Civilian", "Tourist", "Businessman", "Trader", "Entertainer")) //Asistant
+	"Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff")) //Asistant
 
 GLOBAL_LIST_INIT(security_alttitles, list(
 	"Security Commander", //HoS
