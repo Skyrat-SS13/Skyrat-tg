@@ -1,6 +1,12 @@
 /datum/job
 	var/alt_title_pref
 
+/datum/job/proc/get_alt_title_pref(client/preference_source)
+	if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[title])
+		alt_title_pref = preference_source.prefs.alt_titles_preferences[title]
+	else
+		alt_title_pref = title
+
 /datum/job/proc/get_id_titles(mob/living/carbon/human/H, obj/item/card/id/ID)
 	ID.real_title = title
 	if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
@@ -26,6 +32,7 @@
 		else
 			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
+//Command
 /datum/job/captain
 	alt_titles = list("Station Commander", "Commanding Officer", "Site Manager")
 
@@ -47,12 +54,14 @@
 /datum/job/chief_medical_officer
 	alt_titles = list("Medical Director")
 
+//Engineering
 /datum/job/station_engineer
 	alt_titles = list("Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician")
 
 /datum/job/atmospheric_technician
 	alt_titles = list("Life Support Technician", "Emergency Fire Technician")
 
+//Medical
 /datum/job/doctor
 	alt_titles = list("Surgeon", "Nurse")
 
@@ -65,6 +74,7 @@
 /datum/job/chemist
 	alt_titles = list("Pharmacist", "Pharmacologist")
 
+//Science
 /datum/job/scientist
 	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher", "Anomalist", "Lab Technician")
 
@@ -74,12 +84,14 @@
 /datum/job/geneticist
 	alt_titles = list("Mutation Researcher")
 
+//Cargo
 /datum/job/cargo_technician
 	alt_titles = list("Deck Worker", "Mailman")
 
 /datum/job/shaft_miner
 	alt_titles = list("Excavator")
 
+//Service
 /datum/job/bartender
 	alt_titles = list("Mixologist")
 
@@ -113,6 +125,7 @@
 /datum/job/botanist
 	alt_titles = list("Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
 
+//Security
 /datum/job/warden
 	alt_titles = list("Brig Sergeant", "Dispatch Officer")
 
@@ -131,9 +144,13 @@
 /datum/job/junior_officer
 	alt_titles = list("Station Police", "Civil Protection Officer")
 
+/datum/job/brigoff
+    alt_titles = list("Brig Officer", "Prison Guard")
+
 /datum/job/blueshield
 	alt_titles = list("Command Bodyguard")
 
+//Silicon
 /datum/job/ai
 	alt_titles = list("Station Intelligence", "Automated Overseer")
 

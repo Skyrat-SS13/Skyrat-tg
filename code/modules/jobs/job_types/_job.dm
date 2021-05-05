@@ -172,11 +172,8 @@
 		var/datum/bank_account/bank_account = new(H.real_name, src, H.dna.species.payday_modifier)
 		bank_account.payday(STARTING_PAYCHECKS, TRUE)
 		H.account_id = bank_account.account_id
-	//SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
-	if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[title])
-		alt_title_pref = preference_source.prefs.alt_titles_preferences[title]
-	else
-		alt_title_pref = title
+	get_alt_title_pref(preference_source) //SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
+
 
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)

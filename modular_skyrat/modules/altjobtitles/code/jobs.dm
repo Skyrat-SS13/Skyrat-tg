@@ -57,6 +57,7 @@ GLOBAL_LIST_INIT(security_alttitles, list(
 	"Field Medic", "Security Corpsman", "Brig Physician", //Secmed
 	"Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader", //Sarge
 	"Station Police", "Civil Protection Officer", //CDO
+	"Brig Officer", "Prison Guard", //Brigoff
 	"Command Bodyguard")) //Bluey
 
 GLOBAL_LIST_INIT(nonhuman_alttitles, list(
