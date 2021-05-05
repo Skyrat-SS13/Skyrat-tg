@@ -88,20 +88,20 @@
 		return dif
 
 /mob/living/proc/moan()
-	if(prob(src.arousal))
 	var/moan = rand(1, 7)
-	if(moan == lastmoan)
-		moan--
-	if(!is_muzzled())
-		visible_message(message = "<font color=purple><B>\The [src]</B> [pick("moans", "moans in pleasure")].</font>", ignored_mobs = get_unconsenting())
-		//playsound(get_turf(src), "code/game/lewd/sound/interactions/moan_[gender == FEMALE ? "f" : "m"][rand(1, 7)].ogg", 70, 1, 0)
-	if(is_muzzled())//immursion
-		visible_message("<font color=purple><B>[src]</B> [pick("mimes a pleasured moan","moans in silence")].</font>")
-	lastmoan = moan
+	if(prob(src.arousal))
+		if(moan == lastmoan)
+			moan--
+		if(!is_muzzled())
+			visible_message(message = "<font color=purple><B>\The [src]</B> [pick("moans", "moans in pleasure")].</font>", ignored_mobs = get_unconsenting())
+		if(is_muzzled())//immursion
+			visible_message("<font color=purple><B>[src]</B> [pick("mimes a pleasured moan","moans in silence")].</font>")
+		lastmoan = moan
+	else
+		return
 
 /mob/living/proc/cum(mob/living/partner, target_orifice)
 	var/message
-	var/cumin = FALSE
 	if(src != partner)
 		if(!last_genital)
 			if(has_penis())
@@ -111,25 +111,21 @@
 					if(CUM_TARGET_MOUTH)
 						if(partner.has_mouth() && partner.mouth_is_free())
 							message = "cums right in \the <b>[partner]</b>'s mouth."
-							cumin = TRUE
 						else
 							message = "cums on \the <b>[partner]</b>'s face."
 					if(CUM_TARGET_THROAT)
 						if(partner.has_mouth() && partner.mouth_is_free())
 							message = "shoves deep into \the <b>[partner]</b>'s throat and cums."
-							cumin = TRUE
 						else
 							message = "cums on \the <b>[partner]</b>'s face."
 					if(CUM_TARGET_VAGINA)
 						if(partner.has_vagina(REQUIRE_EXPOSED))
 							message = "cums in \the <b>[partner]</b>'s pussy."
-							cumin = TRUE
 						else
 							message = "cums on \the <b>[partner]</b>'s belly."
 					if(CUM_TARGET_ANUS)
 						if(partner.has_anus(REQUIRE_EXPOSED))
 							message = "cums in \the <b>[partner]</b>'s asshole."
-							cumin = TRUE
 						else
 							message = "cums on \the <b>[partner]</b>'s backside."
 					if(CUM_TARGET_HAND)
@@ -150,7 +146,6 @@
 							message = "keeps \the <b>[partner]</b> locked in their thighs as their cock throbs, dumping its heavy load all over their face."
 						else
 							message = "reaches their peak, locking their legs around \the <b>[partner]</b>'s head extra hard as they cum straight onto the head stuck between their thighs"
-						cumin = TRUE
 					if(CUM_TARGET_FEET)
 						if(!last_lewd_datum.require_target_num_feet)
 							if(partner.has_feet())
@@ -168,13 +163,11 @@
 							message = "cums inside \the <b>[partner]</b>'s ear."
 						else
 							message = "cums inside \the <b>[partner]</b>'s earsocket."
-						cumin = TRUE
 					if(CUM_TARGET_EYES)
 						if(partner.has_eyes())
 							message = "cums on \the <b>[partner]</b>'s eyeball."
 						else
 							message = "cums inside \the <b>[partner]</b>'s eyesocket."
-						cumin = TRUE
 					//
 
 					else
@@ -187,25 +180,21 @@
 					if(CUM_TARGET_MOUTH)
 						if(partner.has_mouth() && partner.mouth_is_free())
 							message = "squirts right in \the <b>[partner]</b>'s mouth."
-							cumin = TRUE
 						else
 							message = "squirts on \the <b>[partner]</b>'s face."
 					if(CUM_TARGET_THROAT)
 						if(partner.has_mouth() && partner.mouth_is_free())
 							message = "rubs their vagina against \the <b>[partner]</b>'s mouth and cums."
-							cumin = TRUE
 						else
 							message = "squirts on \the <b>[partner]</b>'s face."
 					if(CUM_TARGET_VAGINA)
 						if(partner.has_vagina(REQUIRE_EXPOSED))
 							message = "squirts on \the <b>[partner]</b>'s pussy."
-							cumin = TRUE
 						else
 							message = "squirts on \the <b>[partner]</b>'s belly."
 					if(CUM_TARGET_ANUS)
 						if(partner.has_anus(REQUIRE_EXPOSED))
 							message = "squirts on \the <b>[partner]</b>'s asshole."
-							cumin = TRUE
 						else
 							message = "squirts on \the <b>[partner]</b>'s backside."
 					if(CUM_TARGET_HAND)
@@ -223,7 +212,6 @@
 							message = "vigorously ruts their clit into \the <b>[partner]</b>'s mouth before shooting their femcum all over their eyes and hair."
 					if(THIGH_SMOTHERING)
 						message = "keeps \the <b>[partner]</b> locked in their thighs as they orgasm, squirting over their face."
-						cumin = TRUE
 					if(CUM_TARGET_FEET)
 						if(!last_lewd_datum.require_target_num_feet)
 							if(partner.has_feet())
@@ -241,13 +229,11 @@
 							message = "squirts on \the <b>[partner]</b>'s ear."
 						else
 							message = "squirts on \the <b>[partner]</b>'s earsocket."
-						cumin = TRUE
 					if(CUM_TARGET_EYES)
 						if(partner.has_eyes())
 							message = "squirts on \the <b>[partner]</b>'s eyeball."
 						else
 							message = "squirts on \the <b>[partner]</b>'s eyesocket."
-						cumin = TRUE
 					else
 						message = "squirts on the floor!"
 
@@ -263,25 +249,21 @@
 						if(CUM_TARGET_MOUTH)
 							if(partner.has_mouth() && partner.mouth_is_free())
 								message = "cums right in \the <b>[partner]</b>'s mouth."
-								cumin = TRUE
 							else
 								message = "cums on \the <b>[partner]</b>'s face."
 						if(CUM_TARGET_THROAT)
 							if(partner.has_mouth() && partner.mouth_is_free())
 								message = "shoves deep into \the <b>[partner]</b>'s throat and cums."
-								cumin = TRUE
 							else
 								message = "cums on \the <b>[partner]</b>'s face."
 						if(CUM_TARGET_VAGINA)
 							if(partner.has_vagina(REQUIRE_EXPOSED))
 								message = "cums in \the <b>[partner]</b>'s pussy."
-								cumin = TRUE
 							else
 								message = "cums on \the <b>[partner]</b>'s belly."
 						if(CUM_TARGET_ANUS)
 							if(partner.has_anus(REQUIRE_EXPOSED))
 								message = "cums in \the <b>[partner]</b>'s asshole."
-								cumin = TRUE
 							else
 								message = "cums on \the <b>[partner]</b>'s backside."
 						if(CUM_TARGET_HAND)
@@ -302,7 +284,6 @@
 								message = "keeps \the <b>[partner]</b> locked in their thighs as their cock throbs, dumping its heavy load all over their face."
 							else
 								message = "reaches their peak, locking their legs around \the <b>[partner]</b>'s head extra hard as they cum straight onto the head stuck between their thighs"
-							cumin = TRUE
 						if(CUM_TARGET_FEET)
 							if(!last_lewd_datum || !last_lewd_datum.require_target_num_feet)
 								if(partner.has_feet())
@@ -320,13 +301,11 @@
 								message = "cums inside \the <b>[partner]</b>'s ear."
 							else
 								message = "cums inside \the <b>[partner]</b>'s earsocket."
-							cumin = TRUE
 						if(CUM_TARGET_EYES)
 							if(partner.has_eyes())
 								message = "cums on \the <b>[partner]</b>'s eyeball."
 							else
 								message = "cums inside \the <b>[partner]</b>'s eyesocket."
-							cumin = TRUE
 						else
 							message = "cums on the floor!"
 				if(/obj/item/organ/genital/vagina)
@@ -337,25 +316,21 @@
 						if(CUM_TARGET_MOUTH)
 							if(partner.has_mouth() && partner.mouth_is_free())
 								message = "squirts right in \the <b>[partner]</b>'s mouth."
-								cumin = TRUE
 							else
 								message = "squirts on \the <b>[partner]</b>'s face."
 						if(CUM_TARGET_THROAT)
 							if(partner.has_mouth() && partner.mouth_is_free())
 								message = "rubs their vagina against \the <b>[partner]</b>'s mouth and cums."
-								cumin = TRUE
 							else
 								message = "squirts on \the <b>[partner]</b>'s face."
 						if(CUM_TARGET_VAGINA)
 							if(partner.has_vagina(REQUIRE_EXPOSED))
 								message = "squirts on \the <b>[partner]</b>'s pussy."
-								cumin = TRUE
 							else
 								message = "squirts on \the <b>[partner]</b>'s belly."
 						if(CUM_TARGET_ANUS)
 							if(partner.has_anus(REQUIRE_EXPOSED))
 								message = "squirts on \the <b>[partner]</b>'s asshole."
-								cumin = TRUE
 							else
 								message = "squirts on \the <b>[partner]</b>'s backside."
 						if(CUM_TARGET_HAND)
@@ -392,20 +367,20 @@
 								message = "squirts on \the <b>[partner]</b>'s ear."
 							else
 								message = "squirts on \the <b>[partner]</b>'s earsocket."
-							cumin = TRUE
 						if(CUM_TARGET_EYES)
 							if(partner.has_eyes())
 								message = "squirts on \the <b>[partner]</b>'s eyeball."
 							else
 								message = "squirts on \the <b>[partner]</b>'s eyesocket."
-							cumin = TRUE
 						else
 							message = "squirts on the floor!"
 				else
 					message = pick("orgasms violently!", "twists in orgasm.")
 	else
 		message = "cums all over themselves!"
+	visible_message(message = "<span class='userlove'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
 	multiorgasms += 1
+	src.climax()
 
 /mob/living/proc/is_fucking(mob/living/partner, orifice)
 	if(partner == last_partner && orifice == last_orifice)
@@ -531,6 +506,8 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(CUM_TARGET_MOUTH, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(9)
 
 /mob/living/proc/do_facefuck(mob/living/partner, var/fucktarget = "penis")
 	var/message
@@ -608,6 +585,8 @@
 		visible_message(message = "<font color=red><b>\The <b>[partner]</b></b> [retaliation_message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(CUM_TARGET_MOUTH, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(8)
+	partner.adjustPleasure(5)
 
 /mob/living/proc/thigh_smother(mob/living/partner, var/fucktarget = "penis")
 
@@ -679,6 +658,8 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/oral2.ogg'), 70, 1, -1)
 	handle_post_sex(CUM_TARGET_MOUTH, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(6)
 
 /mob/living/proc/do_throatfuck(mob/living/partner)
 	var/message
@@ -715,6 +696,8 @@
 		visible_message(message = "<font color=red><b>\The <b>[partner]</b></b> [retaliation_message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(CUM_TARGET_THROAT, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(6)
+	partner.adjustPleasure(3)
 
 /mob/living/proc/nut_face(var/mob/living/partner)
 	var/message
@@ -728,13 +711,11 @@
 		message = pick(list("wedges a digit into the side of <b>[partner]</b>'s jaw and pries it open before using their other hand to shove their whole nutsack inside!", "stands with their groin inches away from [partner]'s face, then thrusting their hips forward and smothering [partner]'s whole face with their heavy ballsack."))
 		set_is_fucking(partner , NUTS_TO_FACE, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
 
-	/*playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/nuts1.ogg',
-						'modular_sand/sound/interactions/nuts2.ogg',
-						'modular_sand/sound/interactions/nuts3.ogg',
-						'modular_sand/sound/interactions/nuts4.ogg'), 70, 1, -1)*/ //These files don't even exist but nobody noticed because double-quotes were used instead of single.
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(CUM_TARGET_MOUTH, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(6)
+	partner.adjustPleasure(3)
 
 /mob/living/proc/do_anal(mob/living/partner)
 	var/message
@@ -759,6 +740,10 @@
 	handle_post_sex(CUM_TARGET_ANUS, partner)
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(src, partner)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(9)
+	src.adjustArousal(12)
+	src.adjustPleasure(9)
 
 /mob/living/proc/do_vaginal(mob/living/partner)
 	var/message
@@ -778,6 +763,10 @@
 	handle_post_sex(CUM_TARGET_VAGINA, partner)
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(9)
+	src.adjustArousal(12)
+	src.adjustPleasure(9)
 
 /mob/living/proc/do_mount(mob/living/partner)
 	var/message
@@ -794,6 +783,10 @@
 	partner.handle_post_sex(CUM_TARGET_VAGINA, src)
 	handle_post_sex(null, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(9)
+	src.adjustArousal(12)
+	src.adjustPleasure(9)
 
 /mob/living/proc/do_mountass(mob/living/partner)
 	var/message
@@ -811,6 +804,10 @@
 	partner.handle_post_sex(CUM_TARGET_ANUS, src)
 	handle_post_sex(null, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(9)
+	src.adjustArousal(12)
+	src.adjustPleasure(9)
 
 /mob/living/proc/do_tribadism(mob/living/partner)
 	var/message
@@ -829,6 +826,10 @@
 	partner.handle_post_sex(CUM_TARGET_VAGINA, src)
 	handle_post_sex(null, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(11)
+	partner.adjustPleasure(7)
+	src.adjustArousal(11)
+	src.adjustPleasure(7)
 
 /mob/living/proc/do_fingering(mob/living/partner)
 	visible_message(message = "<font color=purple><b>\The [src]</b> [pick("fingers \the <b>[partner]</b>.",
@@ -837,6 +838,8 @@
 	playlewdinteractionsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/champ_fingering.ogg', 50, 1, -1)
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(partner, src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(8)
 
 /mob/living/proc/do_fingerass(mob/living/partner)
 	visible_message(message = "<font color=purple><b>\The [src]</b> [pick("fingers \the <b>[partner]</b>.",
@@ -845,12 +848,16 @@
 	playlewdinteractionsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/champ_fingering.ogg', 50, 1, -1)
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(partner, src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(8)
 
 /mob/living/proc/do_rimjob(mob/living/partner)
 	visible_message(message = "<font color=purple><b>\The [src]</b> licks \the <b>[partner]</b>'s asshole.</font>", ignored_mobs = get_unconsenting())
 	playlewdinteractionsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/champ_fingering.ogg', 50, 1, -1)
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(src, partner)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(8)
 
 /mob/living/proc/do_handjob(mob/living/partner)
 	var/message
@@ -869,10 +876,11 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(CUM_TARGET_HAND, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(12)
+	partner.adjustPleasure(8)
 
 /mob/living/proc/do_breastfuck(mob/living/partner)
 	var/message
-
 	if(is_fucking(partner, CUM_TARGET_BREASTS))
 		message = "[pick("fucks \the <b>[partner]</b>'s' breasts.",
 			"grinds their cock between \the <b>[partner]</b>'s boobs.",
@@ -889,6 +897,8 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(CUM_TARGET_BREASTS, partner)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(9)
+	partner.adjustPleasure(6)
 
 /mob/living/proc/do_mountface(mob/living/partner)
 	var/message
@@ -908,6 +918,8 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(null, src)
 	partner.dir = get_dir(src, partner)
+	partner.adjustArousal(6)
+	partner.adjustPleasure(3)
 
 /mob/living/proc/do_lickfeet(mob/living/partner)
 	var/message
@@ -921,6 +933,7 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(null, src)
 	partner.dir = get_dir(src, partner)
+	partner.adjustArousal(5)
 
 /*Grinding YOUR feet in TARGET's face*/
 /mob/living/proc/do_grindface(mob/living/partner)
@@ -965,11 +978,11 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(src, partner)
+	partner.adjustArousal(5)
 
 /*Grinding YOUR feet in TARGET's mouth*/
 /mob/living/proc/do_grindmouth(mob/living/partner)
 	var/message
-
 	if(is_fucking(partner, GRINDING_MOUTH_WITH_FEET))
 		if(src.get_item_by_slot(ITEM_SLOT_FEET) != null)
 			message = "[pick(list("roughly shoves their [get_shoes()] deeper into <b>[partner]</b>'s mouth.",
@@ -1006,6 +1019,7 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(src, partner)
+	partner.adjustArousal(5)
 
 /mob/living/proc/do_footfuck(mob/living/partner)
 	var/message
@@ -1027,10 +1041,10 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(CUM_TARGET_FEET, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(5)
 
 /mob/living/proc/do_dfootfuck(mob/living/partner)
 	var/message
-
 	if(is_fucking(src, CUM_TARGET_FEET))
 		message = "[pick("fucks \the <b>[partner]</b>'s [partner.get_shoes() ? partner.get_shoes() : pick("feet", "soles")].",
 			"rubs their dick between \the <b>[partner]</b>'s [partner.get_shoes() ? partner.get_shoes() : pick("feet", "soles")].",
@@ -1048,10 +1062,10 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(CUM_TARGET_FEET, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(5)
 
 /mob/living/proc/do_vfootfuck(mob/living/partner)
 	var/message
-
 	if(is_fucking(src, CUM_TARGET_FEET))
 		message = "[pick("grinds their pussy against \the <b>[partner]</b>'s [partner.get_shoes() ? partner.get_shoes(TRUE) : pick("foot", "sole")].",
 			"rubs their clit on \the <b>[partner]</b>'s [partner.get_shoes() ? partner.get_shoes(TRUE) : pick("foot", "sole")].",
@@ -1069,10 +1083,10 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	handle_post_sex(CUM_TARGET_FEET, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(5)
 
 /mob/living/proc/do_footjob(mob/living/partner)
 	var/message
-
 	if(partner.is_fucking(src, CUM_TARGET_FEET))
 		message = "[pick("jerks \the <b>[partner]</b> off with their [get_shoes() ? get_shoes(TRUE) : pick("foot", "sole")].",
 			"rubs their [get_shoes() ? get_shoes(TRUE) : pick("foot", "sole", "toes")] on \the <b>[partner]</b>'s shaft.",
@@ -1089,10 +1103,10 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(CUM_TARGET_FEET, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(5)
 
 /mob/living/proc/do_dfootjob(mob/living/partner)
 	var/message
-
 	if(partner.is_fucking(src, CUM_TARGET_FEET))
 		message = "[pick("jerks \the <b>[partner]</b> off with their [get_shoes() ? get_shoes() : pick("feet", "soles")].",
 			"rubs their [get_shoes() ? get_shoes() : pick("feet", "soles")] on \the <b>[partner]</b>'s shaft.",
@@ -1110,6 +1124,7 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(CUM_TARGET_FEET, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(5)
 
 /mob/living/proc/do_footjob_v(mob/living/partner)
 	var/message
@@ -1131,6 +1146,7 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(CUM_TARGET_FEET, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustArousal(5)
 
 /mob/living/proc/get_shoes(var/singular = FALSE)
 	var/obj/A = get_item_by_slot(ITEM_SLOT_FEET)
@@ -1149,7 +1165,7 @@
 /mob/living/proc/handle_post_sex(orifice, mob/living/partner)
 	if(stat != CONSCIOUS)
 		return
-	if(pleasure >= 100)
+	if(pleasure >= 100 && src.is_having_sex())
 		if(prob(10))
 			to_chat(src, "<b>You struggle to not orgasm!</b>")
 			return
@@ -1197,6 +1213,7 @@
 	handle_post_sex(CUM_TARGET_EYES, partner)
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustPain(10)
 
 /mob/living/proc/do_earfuck(mob/living/partner)
 	var/message
@@ -1226,3 +1243,4 @@
 	handle_post_sex(CUM_TARGET_EARS, partner)
 	partner.handle_post_sex(null, src)
 	partner.dir = get_dir(partner,src)
+	partner.adjustPain(10)

@@ -278,6 +278,9 @@
 					if(!silent)
 						to_chat(user, "<span class = 'warning'>That's way too much for you.</span>")
 					return FALSE
+		if(require_ooc_consent)
+			if(user.client.prefs.erp_pref == "Yes")
+				return TRUE
 		if(action_check)
 			return FALSE
 	if(action_check)
@@ -497,6 +500,10 @@
 			if(!silent)
 				to_chat(user, "<span class = 'warning'>Their pants are in the way.</span>")
 			return FALSE
+
+		if(require_ooc_consent)
+			if(user.client.prefs.erp_pref == "Yes" && target.client.prefs.erp_pref == "Yes") //sneaky change, let hell go through earth
+				return TRUE
 		return FALSE
 	return FALSE
 
