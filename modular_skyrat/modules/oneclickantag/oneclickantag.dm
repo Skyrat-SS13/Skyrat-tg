@@ -81,7 +81,7 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 /datum/admins/proc/antag_get_protected_roles(antagtype)
 	if(MAKEANTAG_RESTRICTLIST[antagtype])
 		return MAKEANTAG_RESTRICTLIST[antagtype]
-	message_admins("Constructing Protected Roles for [antagtype]")
+	//message_admins("Constructing Protected Roles for [antagtype]")
 	var/c_p = CONFIG_GET(flag/protect_roles_from_antagonist)
 	var/c_a = CONFIG_GET(flag/protect_assistant_from_antagonist)
 	var/list/p_p = list()
@@ -146,7 +146,7 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/holder = null
 	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
-		message_admins("player_list [applicant]")
+		//message_admins("player_list [applicant]")
 		if(can_make_antag(applicant, antagtype))
 			if(applicant.job in restricted_jobs)
 				continue
@@ -161,7 +161,7 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 	return FALSE
 
 /datum/admins/proc/make_antag_ghostrole(antagtype, opt)
-	message_admins("make_antag_ghostrole [antagtype]")
+	//message_admins("make_antag_ghostrole [antagtype]")
 	switch(antagtype)
 		if(ROLE_WIZARD)
 			return make_wizard()
