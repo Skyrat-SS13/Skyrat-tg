@@ -7,6 +7,7 @@
 **Fuck you, Vic. ERP is back. - TT
 **>using var/ on everything, also TRUE
 **"TGUIzes" the panel because yes - SandPoot
+**Skyrat-Tg port done! Took 14 hours to do that - Lamella-0587.
 ***********************************/
 
 
