@@ -474,7 +474,12 @@
 	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/head.dmi'
 	icon_state = "avipilotup"
+	inhand_icon_state = "ushankadown"
+	flags_inv = HIDEEARS|HIDEHAIR
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT //about as warm as an ushanka
 	actions_types = list(/datum/action/item_action/adjust)
+	mutant_variants = NONE
 	var/goggles = FALSE
 
 /obj/item/clothing/head/avipilot/proc/adjust_goggles(mob/user)
@@ -489,6 +494,8 @@
 		inhand_icon_state = "avipilotdown"
 		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
 	goggles = !goggles
+	if(user)
+		head_update(src, TRUE)
 
 /obj/item/clothing/head/avipilot/ui_action_click(mob/user, action)
 	adjust_goggles(user)
