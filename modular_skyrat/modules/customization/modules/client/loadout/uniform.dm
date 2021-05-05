@@ -578,6 +578,11 @@
  	path = /obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
  	restricted_roles = list("Prisoner")
 
+/datum/loadout_item/uniform/job/blacknwhite
+ 	name = "Classic Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/prisoner/classic
+ 	restricted_roles = list("Prisoner")
+
 /datum/loadout_item/uniform/job/priestrobe
 	name = "Priestess Robe"
 	path = /obj/item/clothing/under/rank/pmarsrobe
@@ -590,6 +595,11 @@
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
  	restricted_roles = list("Head of Security")
 
+/datum/loadout_item/uniform/job/solhos
+ 	name = "Head of Security Sol uniform"
+ 	path = /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
+ 	restricted_roles = list("Head of Security")
+
 /datum/loadout_item/uniform/job/navyblueuniformofficer
  	name = "Security officer navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/officer/formal
@@ -600,10 +610,45 @@
 	path = /obj/item/clothing/under/rank/security/warden/formal
 	restricted_roles = list("Warden")
 
+/datum/loadout_item/uniform/job/solwarden
+	name = "Sol Warden Uniform"
+	path = /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
+	restricted_roles = list("Warden")
+
+/datum/loadout_item/uniform/job/coroffw
+	name = "Corrections Officer Sweater (skirt)"
+	path = /obj/item/clothing/under/rank/security/brigguard/sweater/women
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshir
+	name = "Corrections Officer Shirt"
+	path = /obj/item/clothing/under/rank/security/brigguard
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshir
+	name = "Corrections Officer Skirt"
+	path = /obj/item/clothing/under/rank/security/brigguard/women
+	restricted_roles = list("Corrections Officer","Warden")
+
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
 	path = /obj/item/clothing/under/rank/security/officer/skirt
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant") //i want a femboy sergeant to shove a baton up my ass
+
+/datum/loadout_item/uniform/job/seccadett
+	name = "Sol Cadet Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
+/datum/loadout_item/uniform/job/sectrafficop
+	name = "Sol Traffic Cop Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
+/datum/loadout_item/uniform/job/solofficerthing
+	name = "Sol Officer Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/sol
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
 
 /datum/loadout_item/uniform/job/hosskirt
 	name = "Head of security's skirt"

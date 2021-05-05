@@ -135,23 +135,27 @@
 	name = "black gas mask"
 	desc = "A black gas mask. Are you my Mummy?"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
 	icon_state = "m38_mask"
 
 /obj/item/clothing/mask/gas/hecu1
 	name = "modern gas mask"
 	desc = "MY. ASS. IS. HEAVY."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu"
 
 /obj/item/clothing/mask/gas/hecu2
 	name = "modern gas mask"
 	desc = "MY. ASS. IS. HEAVY."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"
 	desc = "A white gas mask with a green filter, there's a small sticker attached saying it's not got Asbestos anymore."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
 	icon_state = "gp5_mask"
 
