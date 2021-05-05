@@ -495,7 +495,7 @@
 		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
 	goggles = !goggles
 	if(user)
-		user.head_update(src, TRUE)
+		user.head_update(src, forced = 1)
 
 /obj/item/clothing/head/avipilot/ui_action_click(mob/user, action)
 	adjust_goggles(user)
