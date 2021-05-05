@@ -10,12 +10,6 @@
 
 #define TRAIT_MASOCHISM		"masochism"
 
-/atom/movable/screen/alert/aroused
-	name = "Aroused"
-	desc = "It's a little hot in here"
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
-	icon_state = "arousal_small"
-
 ///////////-----Decals-----//////////
 /obj/effect/decal/cleanable/cum
 	name = "cum"
@@ -167,11 +161,12 @@
 
 ///////////-----Verbs------///////////
 /mob/living/carbon/human/verb/arousal_panel()
-	set name = "Arousal panel"
+	set name = "Climax"
 	set category = "IC"
-	show_arousal_panel()
-
+	climax(TRUE)
+/*
 /mob/living/carbon/human/proc/show_arousal_panel()
+
 	var/obj/item/organ/genital/testicles/balls = getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
 	var/obj/item/organ/genital/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
@@ -197,7 +192,7 @@
 		dat += "</table>"
 		dat += "</div>"
 
-/*		dat += "<div>"
+		dat += "<div>"
 		dat += {"<table style="float: left">"}
 		dat += "<tr><td><label>Anus:</lable></td><td><A href='?src=[REF(src)];anus=1'>[(inserted_item ? inserted_item.name : "None")]</A></td></tr>"
 		if(breasts)
@@ -226,7 +221,7 @@
 		dat += "</div>"
 
 		dat += "<div>"
-*/
+
 	dat += "<A href='?src=[REF(usr)];mach_close=mob[REF(src)]'>Close</A>"
 	dat += "<A href='?src=[REF(src)];refresh=1'>Refresh</A>"
 	dat += "</div>"
@@ -249,7 +244,7 @@
 
 	if(href_list["climax"])
 		climax(TRUE)
-/*
+
 ///////////-----Procs------///////////
 /mob/living/proc/extract_item(user, slotName)
 	var/mob/living/carbon/human/U = user
@@ -838,81 +833,83 @@
 				H.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
 			if(10 to 25)
 				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I.icon_state = "arousal_small"
-				I.update_icon()
+				I?.icon_state = "arousal_small"
+				I?.update_icon()
 			if(25 to 50)
 				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I.icon_state = "arousal_medium"
-				I.update_icon()
+				I?.icon_state = "arousal_medium"
+				I?.update_icon()
 			if(50 to 75)
 				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I.icon_state = "arousal_high"
-				I.update_icon()
+				I?.icon_state = "arousal_high"
+				I?.update_icon()
 			if(75 to INFINITY) //to prevent that 101 arousal that can make icon disappear or something.
 				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I.icon_state = "arousal_max"
-				I.update_icon()
+				I?.icon_state = "arousal_max"
+				I?.update_icon()
 
 		if(H.arousal > 10)
 			switch(H.pain)
 				if(-100 to 5) //to prevent same thing with pain
-					I.cut_overlay(I.pain_overlay)
+					I?.cut_overlay(I.pain_overlay)
 				if(5 to 25)
-					I.cut_overlay(I.pain_overlay)
-					I.pain_level = "small"
-					I.pain_overlay = I.update_pain()
-					I.add_overlay(I.pain_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pain_overlay)
+					I?.pain_level = "small"
+					I?.pain_overlay = I.update_pain()
+					I?.add_overlay(I.pain_overlay)
+					I?.update_overlays()
 				if(25 to 50)
-					I.cut_overlay(I.pain_overlay)
-					I.pain_level = "medium"
-					I.pain_overlay = I.update_pain()
-					I.add_overlay(I.pain_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pain_overlay)
+					I?.pain_level = "medium"
+					I?.pain_overlay = I.update_pain()
+					I?.add_overlay(I.pain_overlay)
+					I?.update_overlays()
 				if(50 to 75)
-					I.cut_overlay(I.pain_overlay)
-					I.pain_level = "high"
-					I.pain_overlay = I.update_pain()
-					I.add_overlay(I.pain_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pain_overlay)
+					I?.pain_level = "high"
+					I?.pain_overlay = I.update_pain()
+					I?.add_overlay(I.pain_overlay)
+					I?.update_overlays()
 				if(75 to INFINITY)
-					I.cut_overlay(I.pain_overlay)
-					I.pain_level = "max"
-					I.pain_overlay = I.update_pain()
-					I.add_overlay(I.pain_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pain_overlay)
+					I?.pain_level = "max"
+					I?.pain_overlay = I.update_pain()
+					I?.add_overlay(I.pain_overlay)
+					I?.update_overlays()
 
 		if(H.arousal > 10)
 			switch(H.pleasure)
 				if(-100 to 5) //to prevent same thing with pleasure
-					I.cut_overlay(I.pleasure_overlay)
+					I?.cut_overlay(I.pleasure_overlay)
 				if(5 to 25)
-					I.cut_overlay(I.pleasure_overlay)
-					I.pleasure_level = "small"
-					I.pleasure_overlay = I.update_pleasure()
-					I.add_overlay(I.pleasure_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pleasure_overlay)
+					I?.pleasure_level = "small"
+					I?.pleasure_overlay = I.update_pleasure()
+					I?.add_overlay(I.pleasure_overlay)
+					I?.update_overlays()
 				if(25 to 60)
-					I.cut_overlay(I.pleasure_overlay)
-					I.pleasure_level = "medium"
-					I.pleasure_overlay = I.update_pleasure()
-					I.add_overlay(I.pleasure_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pleasure_overlay)
+					I?.pleasure_level = "medium"
+					I?.pleasure_overlay = I.update_pleasure()
+					I?.add_overlay(I.pleasure_overlay)
+					I?.update_overlays()
 				if(60 to 85)
-					I.cut_overlay(I.pleasure_overlay)
-					I.pleasure_level = "high"
-					I.pleasure_overlay = I.update_pleasure()
-					I.add_overlay(I.pleasure_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pleasure_overlay)
+					I?.pleasure_level = "high"
+					I?.pleasure_overlay = I.update_pleasure()
+					I?.add_overlay(I.pleasure_overlay)
+					I?.update_overlays()
 				if(85 to INFINITY)
-					I.cut_overlay(I.pleasure_overlay)
-					I.pleasure_level = "max"
-					I.pleasure_overlay = I.update_pleasure()
-					I.add_overlay(I.pleasure_overlay)
-					I.update_overlays()
+					I?.cut_overlay(I.pleasure_overlay)
+					I?.pleasure_level = "max"
+					I?.pleasure_overlay = I.update_pleasure()
+					I?.add_overlay(I.pleasure_overlay)
+					I?.update_overlays()
 		else
-			I.cut_overlay(I.pleasure_overlay)
-			I.cut_overlay(I.pain_overlay)
+			if(I?.pleasure_level in list("small", "medium", "high", "max"))
+				I.cut_overlay(I.pleasure_overlay)
+			if(I?.pain_level in list("small", "medium", "high", "max"))
+				I.cut_overlay(I.pain_overlay)
 
 ////////////////////////
 ///CUM.DM ASSIMILATED///
@@ -935,7 +932,7 @@
 					exposed_mob.AddComponent(/datum/component/cumfaced, src)
 		qdel(src)
 
-//you got cum on your face bro *licks it off*
+//you got cum on your face bro *licks it off* //What the fuck man
 /datum/component/cumfaced
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 

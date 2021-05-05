@@ -491,7 +491,7 @@
 		if(extreme)
 			var/client/cli = target.client
 			if(cli)
-				if(target.client.prefs.extreme_lewd == "No")
+				if(target.client?.prefs.extreme_lewd == "No")
 					if(!silent)
 						to_chat(user, "<span class = 'warning'>For some reason, you don't want to do this to [target].</span>")
 					return FALSE
@@ -502,7 +502,7 @@
 			return FALSE
 
 		if(require_ooc_consent)
-			if(user.client.prefs.erp_pref == "Yes" && target.client.prefs.erp_pref == "Yes") //sneaky change, let hell go through earth
+			if(user.client.prefs.erp_pref == "Yes" && target.client?.prefs.erp_pref == "Yes") //sneaky change, let hell go through earth
 				return TRUE
 		return FALSE
 	return FALSE

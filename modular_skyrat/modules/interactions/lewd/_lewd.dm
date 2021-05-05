@@ -50,6 +50,8 @@
 /proc/playlewdinteractionsound(turf/turf_source, soundin, vol as num, vary, extrarange as num ,frequency, falloff, channel = 0, pressure_affected = TRUE, sound/S, envwet = -10000, envdry = 0, manual_x, manual_y)
 	var/list/hearing_mobs
 	for(var/mob/H in get_hearers_in_view(4, turf_source))
+		if(!H.client || (H.client?.prefs.erp_pref == "Yes"))
+			continue
 		LAZYADD(hearing_mobs, H)
 	for(var/mob/H in hearing_mobs)
 		H.playsound_local(turf_source, soundin, vol, vary, frequency, falloff)
