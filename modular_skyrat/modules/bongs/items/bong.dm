@@ -36,6 +36,15 @@
 				to_chat(user, "<span class='warning'>It has to be dried first!</span>")
 		else
 			to_chat(user, "<span class='warning'>It is already packed!</span>")
+	else if(istype(used_item, /obj/item/reagent_containers/hash)) //for hash/dabs
+		if(!packeditem)
+			to_chat(user, "<span class='notice'>You stuff [used_item] into [src].</span>")
+			bonghits = useable_bonghits
+			packeditem = TRUE
+			if(used_item.reagents)
+				used_item.reagents.trans_to(src, used_item.reagents.total_volume, transfered_by = user)
+				quarter_volume = reagents.total_volume/useable_bonghits
+			qdel(used_item)
 	else
 		var/lighting_text = used_item.ignition_effect(src,user)
 		if(lighting_text)
