@@ -40,7 +40,7 @@
 	ckeywhitelist = list("coffeepot")
 
 /datum/loadout_item/head/donator/avipilot
-	name = "Skull of an ashdrake"
+	name = "Smuggler's Flying Cap"
 	path = /obj/item/clothing/head/avipilot
 	ckeywhitelist = list("slippyjoe")
 
