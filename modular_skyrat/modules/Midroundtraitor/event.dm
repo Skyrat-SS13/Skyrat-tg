@@ -1,45 +1,40 @@
-/datum/round_event_control/operativetraitor
+/datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator
 	name = "Lone Infiltrator"
-	typepath = /datum/round_event/ghost_role/operativetraitor
-	weight = 0 //Admin Event only. Up this for the action server, though, I reccomend 'weight = 10' personally.
-	max_occurrences = 1 //One spooky blood-red man at a time, please.
-	dynamic_should_hijack = TRUE
-
-/datum/round_event/ghost_role/operativetraitor
-	minimum_required = 1
-	role_name = "lone infiltrator"
-	fakeable = FALSE
-
-/datum/round_event/ghost_role/operativetraitor/spawn_role()
-	var/list/candidates = get_candidates(ROLE_TRAITOR, ROLE_TRAITOR)
-	if(!candidates.len)
-		return NOT_ENOUGH_PLAYERS
-
-	var/mob/dead/selected = pick_n_take(candidates)
-
+	antag_datum = /datum/antagonist/traitor/infiltrator
+	antag_flag = ROLE_TRAITOR
+	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
+	required_candidates = 1
+	weight = 5 //Slightly less common than normal midround traitors.
+	cost = 15 //But also slightly more costly.
+	requirements = list(50,40,30,20,10,10,10,10,10,10)
 	var/list/spawn_locs = list()
-	for(var/obj/effect/landmark/carpspawn/L in GLOB.landmarks_list)
-		spawn_locs += L.loc
+
+/datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator/execute()
+	for(var/obj/effect/landmark/carpspawn/C in GLOB.landmarks_list)
+		spawn_locs += (C.loc)
 	if(!spawn_locs.len)
+		message_admins("No valid spawn locations found, aborting...")
 		return MAP_ERROR
+	. = ..()
+
+/datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator/generate_ruleset_body(mob/applicant)
+	var/datum/mind/player_mind = new /datum/mind(applicant.key)
 
 	var/mob/living/carbon/human/operative = new(pick(spawn_locs))
-	selected.client.prefs.copy_to(operative)
+	applicant.client.prefs.copy_to(operative)
 	operative.dna.update_dna_identity()
 	operative.dna.species.before_equip_job(null, operative)
 	operative.regenerate_icons()
-	SSquirks.AssignQuirks(operative, selected.client, TRUE, TRUE, null, FALSE, operative)
-	var/datum/mind/Mind = new /datum/mind(selected.key)
-	Mind.assigned_role = "Lone Infiltrator"
-	Mind.special_role = "Lone Infiltrator"
-	Mind.active = TRUE
-	Mind.transfer_to(operative)
-	Mind.add_antag_datum(/datum/antagonist/traitor/infiltrator)
+	SSquirks.AssignQuirks(operative, applicant.client, TRUE, TRUE, null, FALSE, operative)
+	player_mind.assigned_role = "Lone Infiltrator"
+	player_mind.special_role = "Lone Infiltrator"
+	player_mind.active = TRUE
+	player_mind.transfer_to(operative)
+	player_mind.add_antag_datum(/datum/antagonist/traitor/infiltrator)
 
-	message_admins("[ADMIN_LOOKUPFLW(operative)] has been made into lone infiltrator by an event.")
-	log_game("[key_name(operative)] was spawned as a lone infiltrator by an event.")
-	spawned_mobs += operative
-	return SUCCESSFUL_SPAWN
+	message_admins("[ADMIN_LOOKUPFLW(operative)] has been made into lone infiltrator by midround ruleset.")
+	log_game("[key_name(operative)] was spawned as a lone infiltrator by midround ruleset.")
+	return operative
 
 //OUTFIT//
 /datum/outfit/syndicateinfiltrator
