@@ -9,6 +9,8 @@
 #define ITEM_SLOT_PENIS (1<<20)
 
 #define TRAIT_MASOCHISM		"masochism"
+#define TRAIT_NYMPHOMANIA	"nymphomania"
+#define TRAIT_BIMBO			"bimbo"
 
 ///////////-----Decals-----//////////
 /obj/effect/decal/cleanable/cum
@@ -78,8 +80,9 @@
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>You start tripping hard!</span>")
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
+	if(!HAS_TRAIT(M, TRAIT_NYMPHOMANIA) || !HAS_TRAIT(M, TRAIT_BIMBO))
+		to_chat(M, "<span class='userdanger'>You don't want to cum anymore!</span>")
+		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 	return
 
 /datum/reagent/drug/dopamine/overdose_process(mob/living/M)
@@ -164,140 +167,6 @@
 	set name = "Climax"
 	set category = "IC"
 	climax(TRUE)
-/*
-/mob/living/carbon/human/proc/show_arousal_panel()
-
-	var/obj/item/organ/genital/testicles/balls = getorganslot(ORGAN_SLOT_TESTICLES)
-	var/obj/item/organ/genital/breasts/breasts = getorganslot(ORGAN_SLOT_BREASTS)
-	var/obj/item/organ/genital/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
-//	var/obj/item/organ/genital/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
-
-	var/list/dat = list()
-
-	if(usr == src)
-		dat += "<div>"
-		dat += {"<table style="float: left">"}
-		dat += "<tr><td><label>Arousal:</lable></td><td><lable>[round(arousal)]%</label></td></tr>"
-		dat += "<tr><td><label>Pleasure:</lable></td><td><lable>[round(pleasure)]%</label></td></tr>"
-		dat += "<tr><td><label>Pain:</lable></td><td><lable>[round(pain)]%</label></td></tr>"
-		dat += "</table>"
-
-		dat += {"<table style="float: left"; margin-left: 50px;>"}
-		if(balls && balls.internal_fluids.holder_full())
-			dat += "<tr><td><lable>You balls is full!</label></td></tr>"
-		if(breasts && (breasts.internal_fluids.total_volume / breasts.internal_fluids.maximum_volume) > 0.9)
-			dat += "<tr><td><lable>You breasts full of milk!</label></td></tr>"
-		if(vagina && vagina.internal_fluids.holder_full())
-			dat += "<tr><td><lable>You so wet!</label></td></tr>"
-		dat += "</table>"
-		dat += "</div>"
-
-		dat += "<div>"
-		dat += {"<table style="float: left">"}
-		dat += "<tr><td><label>Anus:</lable></td><td><A href='?src=[REF(src)];anus=1'>[(inserted_item ? inserted_item.name : "None")]</A></td></tr>"
-		if(breasts)
-			dat += "<tr><td><label>Nipples:</lable></td><td><A href='?src=[REF(src)];breasts=1'>[(breasts.inserted_item ? breasts.inserted_item.name : "None")]</A></td></tr>"
-		if(penis)
-			dat += "<tr><td><label>Penis:</lable></td><td><A href='?src=[REF(src)];penis=1'>[(penis.inserted_item ? penis.inserted_item.name : "None")]</A></td></tr>"
-		if(vagina)
-			dat += "<tr><td><label>Vagina:</lable></td><td><A href='?src=[REF(src)];vagina=1'>[(vagina.inserted_item ? vagina.inserted_item.name : "None")]</A></td></tr>"
-		dat += "</table>"
-		dat += "</div>"
-
-		dat += "<div>"
-		dat += "<A href='?src=[REF(src)];climax=1'>Climax</A>"
-
-	else
-		dat += "<div>"
-		dat += {"<table style="float: left">"}
-		dat += "<tr><td><label>Anus:</lable></td><td><A href='?src=[REF(src)];anus=1'>[(inserted_item ? inserted_item.name : "None")]</A></td></tr>"
-		if(breasts)
-			dat += "<tr><td><label>Nipples:</lable></td><td><A href='?src=[REF(src)];breasts=1'>[(breasts.inserted_item ? breasts.inserted_item.name : "None")]</A></td></tr>"
-		if(penis)
-			dat += "<tr><td><label>Penis:</lable></td><td><A href='?src=[REF(src)];penis=1'>[(penis.inserted_item ? penis.inserted_item.name : "None")]</A></td></tr>"
-		if(vagina)
-			dat += "<tr><td><label>Vagina:</lable></td><td><A href='?src=[REF(src)];vagina=1'>[(vagina.inserted_item ? vagina.inserted_item.name : "None")]</A></td></tr>"
-		dat += "</table>"
-		dat += "</div>"
-
-		dat += "<div>"
-
-	dat += "<A href='?src=[REF(usr)];mach_close=mob[REF(src)]'>Close</A>"
-	dat += "<A href='?src=[REF(src)];refresh=1'>Refresh</A>"
-	dat += "</div>"
-
-	var/datum/browser/popup = new(usr, "mob[REF(src)]", "[src]", 440, 510)
-	popup.title = "[src] Arousal panel"
-	popup.set_content(dat.Join())
-	popup.open()
-
-//topic
-/mob/living/carbon/human/Topic(href, href_list)
-	.=..()
-	var/mob/living/carbon/human/user = src
-
-	if(!(usr in view(1)))
-		return
-
-	if(href_list["refresh"])
-		user.show_arousal_panel()
-
-	if(href_list["climax"])
-		climax(TRUE)
-
-///////////-----Procs------///////////
-/mob/living/proc/extract_item(user, slotName)
-	var/mob/living/carbon/human/U = user
-	var/mob/living/carbon/human/O = src
-	var/slotText = slotName
-
-	if(slotText == "vagina" || slotText == "nipples" || slotText == "penis")
-		var/obj/item/organ/genital/organ = null
-		var/list/wList = null
-		if(slotText == "vagina")
-			organ = O.getorganslot(ORGAN_SLOT_VAGINA)
-		else if(slotText == "nipples")
-			organ = O.getorganslot(ORGAN_SLOT_BREASTS)
-		else if(slotText == "penis")
-			organ = O.getorganslot(ORGAN_SLOT_PENIS)
-		else
-			return FALSE
-
-		wList = organ.contained_item
-		if(!isnull(organ.inserted_item))
-			U.put_in_hands(organ.inserted_item)
-			organ.inserted_item = null
-			return TRUE
-		else
-			var/obj/item/I = U.get_active_held_item()
-			if(!I)
-				return FALSE
-			for(var/T in wList)
-				if(istype(I,T))
-					//equip_to_slot_if_possible(I, slotText)
-					if(!transferItemToLoc(I, organ.inserted_item))
-						return FALSE
-					organ.inserted_item = I
-					return TRUE
-
-	else if(slotText == "anus")
-		if(!isnull(O.inserted_item))
-			U.put_in_hands(O.inserted_item)
-			O.inserted_item = null
-			return TRUE
-		else
-			var/obj/item/I = U.get_active_held_item()
-			if(!I)
-				return FALSE
-			for(var/T in O.contained_item)
-				if(istype(I,T))
-					if(!transferItemToLoc(I, O.inserted_item))
-						return FALSE
-					O.inserted_item = I
-					return TRUE
-	else
-		return FALSE
-*/
 
 /mob/living/proc/set_masochism(status) //TRUE or FALSE
 	if(status == TRUE)
@@ -679,14 +548,12 @@
 	if(H.client?.prefs.erp_pref == "Yes")
 		var/temp_arousal = -12
 		var/temp_pleasure = -12
-		var/temp_stamina = 12
-		var/temp_paralyze = 11
+		var/temp_stamina = 15
 
 		owner.reagents.add_reagent(/datum/reagent/drug/dopamine, 0.5)
 		owner.adjustStaminaLoss(temp_stamina)
 		owner.adjustArousal(temp_arousal)
 		owner.adjustPleasure(temp_pleasure)
-		owner.Paralyze(temp_paralyze)
 
 /datum/status_effect/climax/on_apply(obj/target)
 	var/mob/living/carbon/human/H = owner

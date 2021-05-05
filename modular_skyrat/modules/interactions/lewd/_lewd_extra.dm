@@ -19,6 +19,8 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg'), 70, 1, -1)
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>") //can't not consent to yourself, if you did it, you wanted it
 	user.handle_post_sex(CUM_TARGET_HAND, src)
+	user.adjustArousal(8)
+	user.adjustPleasure(8)
 
 /mob/living/proc/do_fingerass_self(mob/living/user)
 	var/t_His = p_their()
@@ -29,6 +31,8 @@
 		"fingers [t_Him]self hard.")]</font>") //can't not consent to yourself, if you did it, you wanted it
 	playlewdinteractionsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/champ_fingering.ogg', 50, 1, -1)
 	user.handle_post_sex(CUM_TARGET_HAND, src)
+	user.adjustArousal(8)
+	user.adjustPleasure(8)
 
 /mob/living/proc/do_fingering_self(mob/living/user)
 	var/t_His = p_their()
@@ -39,6 +43,8 @@
 		"fingers [t_His] own pussy hard.")]</font>") //can't not consent to yourself, if you did it, you wanted it
 	playlewdinteractionsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/champ_fingering.ogg', 50, 1, -1)
 	user.handle_post_sex(CUM_TARGET_HAND, src)
+	user.adjustArousal(8)
+	user.adjustPleasure(8)
 
 /mob/living/proc/do_titgrope_self(mob/living/user)
 	var/message
@@ -60,3 +66,4 @@
 	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>") //can't not consent to yourself, if you did it, you wanted it
 	playlewdinteractionsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/squelch1.ogg', 50, 1, -1)
 	user.handle_post_sex(CUM_TARGET_HAND, src)
+	user.adjustArousal(8)

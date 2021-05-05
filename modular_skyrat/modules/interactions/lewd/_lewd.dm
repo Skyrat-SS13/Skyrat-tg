@@ -380,7 +380,7 @@
 					message = pick("orgasms violently!", "twists in orgasm.")
 	else
 		message = "cums all over themselves!"
-	visible_message(message = "<span class='userlove'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
+	visible_message(message = "<font color=purple><b>\The [src]</b> [message]</font>", ignored_mobs = get_unconsenting())
 	multiorgasms += 1
 	src.climax()
 

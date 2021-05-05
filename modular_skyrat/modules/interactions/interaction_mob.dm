@@ -2,7 +2,7 @@
 	return FALSE
 
 /mob/living/has_hands()
-	return TRUE//(can_use_hand("l_hand") || can_use_hand("r_hand"))
+	return TRUE
 
 /mob/living/proc/has_mouth()
 	return TRUE
@@ -34,17 +34,3 @@
 		return !H.shoes
 	else
 		return TRUE
-
-///atom/movable/attack_hand(mob/living/carbon/human/user)
-//	. = ..()
-//	if(can_buckle && buckled_mob)
-//		if(user_unbuckle_mob(user))
-//			return 1
-/*
-/atom/movable/MouseDrop_T(mob/living/carbon/human/M, mob/living/carbon/human/user)
-	. = ..()
-	if(can_buckle && istype(M) && !buckled_mob)
-		if(user_buckle_mob(M, user))
-			return TRUE
-
-*/

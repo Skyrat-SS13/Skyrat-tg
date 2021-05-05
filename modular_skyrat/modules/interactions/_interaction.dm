@@ -112,12 +112,10 @@ var/list/interactions
 			to_chat(user, "<span class='warning'>You cannot target yourself.</span>")
 			return
 	if(get_dist(user, target) > max_distance)
-		//user << "<span class='warning'>They are too far away.</span>"
-		user.visible_message("<span class='warning'>They are too far away.</span>")
+		to_chat(user, "<span class='warning'>They are too far away.</span>")
 		return
 	if(needs_physical_contact && !(user.Adjacent(target) && target.Adjacent(user)))
-		//user << "<span class='warning'>You cannot get to them.</span>"
-		user.visible_message("<span class='warning'>You cannot get to them.</span>")
+		to_chat(user, "<span class='warning'>They are too far away.</span>")
 		return
 	if(!evaluate_user(user, silent = FALSE))
 		return
@@ -132,13 +130,6 @@ var/list/interactions
 	display_interaction(user, target)
 	post_interaction(user, target)
 
-	//if(write_log_user)
-		//add_logs(target, user, "fucked")
-	//user.attack_log += text("\[[time_stamp()]\] <font color='red'>[write_log_user] [target.name] ([target.ckey])</font>")
-	//if(write_log_target)
-		//add_logs(target, user, "fucked2")
-	//target.attack_log += text("\[[time_stamp()]\] <font color='orange'>[write_log_target] [user.name] ([user.ckey])</font>")
-
 /datum/interaction/proc/display_interaction(mob/living/user, mob/living/target)
 	if(simple_message)
 		var/use_message = replacetext(simple_message, "USER", "\the [user]")
@@ -150,29 +141,3 @@ var/list/interactions
 	if(interaction_sound)
 		playsound(get_turf(user), interaction_sound, 50, 1, -1)
 	return
-/*
-/atom/movable/attack_hand(mob/living/user)
-	. = ..()
-	if(can_buckle && buckled_mob)
-		if(user_unbuckle_mob(user))
-			return TRUE
-
-/atom/movable/MouseDrop_T(mob/living/M, mob/living/user)
-	. = ..()
-	if(can_buckle && istype(M) && !buckled_mob)
-		if(user_buckle_mob(M, user))
-			return TRUE
-
-
-/atom/movable/attack_hand(mob/living/user)
-	. = ..()
-	if(can_buckle && buckled_mob)
-		if(user_unbuckle_mob(user))
-			return TRUE
-
-/atom/movable/MouseDrop_T(mob/living/carbon/human/M, mob/living/user)
-	. = ..()
-	if(can_buckle && istype(M) && !buckled_mob)
-		if(user_buckle_mob(M, user))
-			return TRUE
-*/
