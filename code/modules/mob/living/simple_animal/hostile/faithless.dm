@@ -15,7 +15,7 @@
 	speed = 0
 	maxHealth = 80
 	health = 80
-	stat_attack = UNCONSCIOUS
+	stat_attack = HARD_CRIT
 	robust_searching = 1
 
 	harm_intent_damage = 10
@@ -41,8 +41,8 @@
 
 /mob/living/simple_animal/hostile/faithless/AttackingTarget()
 	. = ..()
-	if(. && prob(4) && iscarbon(target))
+	if(. && prob(12) && iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.StaminaKnockdown(30)
+		C.Paralyze(60)
 		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
 				"<span class='userdanger'>\The [src] knocks you down!</span>")
