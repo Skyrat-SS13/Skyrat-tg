@@ -208,5 +208,61 @@
 	icon_state = "policetrafficcap"
 	mutant_variants = NONE
 
+/obj/item/clothing/head/turb
+	name = "turban"
+	desc = "A cloth wrap for the head, meant for desert weather."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "turban"
+	mutant_variants = NONE
+	flags_inv = HIDEEARS|HIDEHAIR
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+
+/obj/item/clothing/head/turb/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF"))
+
+/obj/item/clothing/head/keffiyeh
+	name = "keffiyeh"
+	desc = "Free Palestine."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "keffiyeh_custom"
+	mutant_variants = NONE
+	flags_inv = HIDEEARS|HIDEHAIR
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+
+/obj/item/clothing/head/keffiyeh/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF", "EEA", "FFF"))
+
+/obj/item/clothing/head/hijab
+	name = "hijab"
+	desc = "A cloth veil traditionally worn for religious reasons."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "hijab"
+	mutant_variants = NONE
+	flags_inv = HIDEEARS|HIDEHAIR
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+
+/obj/item/clothing/head/hijab/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF"))
+
+/obj/item/clothing/head/polyflatc
+	name = "poly flat cap"
+	desc = "You in the computers son? You work the computers?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "flat_capw"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/polyflatc/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("FFF"))
 
 
