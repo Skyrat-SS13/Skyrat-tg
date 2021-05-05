@@ -126,6 +126,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "ushankared"
 	inhand_icon_state = "ushankadown"
+	mutant_variants = NONE
 	flags_inv = HIDEEARS|HIDEHAIR
 	var/earflaps = TRUE
 	cold_protection = HEAD
@@ -169,6 +170,7 @@
 	dog_fashion = null
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+	mutant_variants = NONE
 
 /obj/item/clothing/head/whiterussian/white
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
@@ -188,6 +190,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "policeofficercap"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/hos/beret/peacekeeper/sol
 	name = "sol police chief cap"
@@ -195,6 +198,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "policechiefcap"
+	mutant_variants = NONE
 
 /obj/item/clothing/head/soltraffic
 	name = "sol traffic cop cap"
@@ -202,4 +206,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "policetrafficcap"
+	mutant_variants = NONE
+
+
 

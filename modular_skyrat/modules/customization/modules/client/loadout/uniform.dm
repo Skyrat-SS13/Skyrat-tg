@@ -640,6 +640,11 @@
 	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
 
+/datum/loadout_item/uniform/job/sectrafficop
+	name = "Sol Traffic Cop Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
 /datum/loadout_item/uniform/job/solofficerthing
 	name = "Sol Officer Uniform"
 	path = /obj/item/clothing/under/rank/security/peacekeeper/sol
