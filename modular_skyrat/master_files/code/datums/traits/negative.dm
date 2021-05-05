@@ -36,9 +36,9 @@
 
 /datum/quirk/ashwalkertalons
 	name = "Chunky Fingers"
-	desc = "Your digits are thick and tough, making firing non-adapted firearms impossible."
-	gain_text = "<span class='notice'>Your fingers feel thicker and slightly less dextrous. Trigger guards seem unusably small now, and might need modification before you can fire a gun.</span>"
-	lose_text = "<span class='notice'>Your digits feel lithe and capable of operating a trigger.</span>"
-	medical_record_text = "Patient's digits are thick and incapable of operating some fine devices, tools or non-adapted firearms."
-	value = -4
+	desc = "Your digits are thick and tough and unable to use modular computers including tablets, certain devices like laser pointers, and non-adapted firearms."
+	gain_text = "<span class='notice'>Your fingers feel thicker and slightly less dextrous. You expect you'll have a difficult time using computers, certain small devices and firearms.</span>"
+	lose_text = "<span class='notice'>Your digits feel lithe and capable once more.</span>"
+	medical_record_text = "Patient's digits are thick and lack the dexterity for operating some small devices, computers and non-adapted firearms."
+	value = -8
 	mob_trait = TRAIT_CHUNKYFINGERS
