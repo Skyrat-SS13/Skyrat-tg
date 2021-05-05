@@ -25,6 +25,11 @@
 	name = "Flat cap"
 	path = /obj/item/clothing/head/flatcap
 
+/datum/loadout_item/head/pflatcap
+	name = "Poly Flat cap"
+	path = /obj/item/clothing/head/polyflatc
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/head/pirate
 	name = "Pirate hat"
 	path = /obj/item/clothing/head/pirate
@@ -81,6 +86,21 @@
 /datum/loadout_item/head/whitekepiold
 	name = "White Kepi, Old"
 	path = /obj/item/clothing/head/kepi/old
+
+/datum/loadout_item/head/hijab
+	name = "Hijab"
+	path = /obj/item/clothing/head/hijab
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/head/turban
+	name = "Turban"
+	path = /obj/item/clothing/head/turb
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/head/keff
+	name = "Keffiyeh"
+	path = /obj/item/clothing/head/keffiyeh
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/head/maidhead
 	name = "Maid Headband"
