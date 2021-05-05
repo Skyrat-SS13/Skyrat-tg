@@ -47,6 +47,53 @@
 			to_chat(usr, "<span class='danger'>ERROR: Mob not found.</span>", confidential = TRUE)
 			return
 		cmd_show_exp_panel(M.client)
+
+// SKYRAT EDIT BEGIN -- ONE CLICK ANTAG
+	else if(href_list["makeAntag"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if (!SSticker.mode)
+			to_chat(usr, "<span class='danger'>Not until the round starts!</span>", confidential = TRUE)
+			return
+
+		var/opt = null
+		switch(href_list["makeAntag"])
+			if(ROLE_BLOB)
+				opt = input("Set Blob Resource Gain Rate","Set Resource Rate",1) as num|null
+			if(ROLE_TRAITOR)
+				opt = input("How Many", ROLE_TRAITOR, 1) as num|null
+			if(ROLE_CHANGELING)
+				opt = input("How Many", ROLE_CHANGELING, 1) as num|null
+			if(ROLE_CULTIST)
+				opt = input("How Many", ROLE_CULTIST, 2) as num|null
+			if(ROLE_HERETIC)
+				opt = input("How Many", ROLE_HERETIC, 2) as num|null
+			if(ROLE_MONKEY)
+				opt = input("How Many", ROLE_MONKEY, 1) as num|null
+			if(ROLE_REV)
+				opt = input("How Many", ROLE_REV, 1) as num|null
+			if(ROLE_OPERATIVE)
+				opt = input("How Many", ROLE_OPERATIVE, 3) as num|null
+			if(ROLE_FAMILIES)
+				to_chat(usr, "<span class='danger'>Not Implemented!</span>")
+				//opt = input("How Many", ROLE_FAMILIES, 3) as num|null
+				return
+			if(ROLE_BROTHER)
+				to_chat(usr, "<span class='danger'>Not Implemented!</span>")
+				//opt = input("How Many", ROLE_BLOOD_BROTHER, 1) as num|null
+				return
+			if(ROLE_INTERNAL_AFFAIRS)
+				to_chat(usr, "<span class='danger'>Not Implemented!</span>")
+				//opt = input("How Many", ROLE_INTERNAL_AFFAIRS_AGENT, 1) as num|null
+				return
+			if(ROLE_OBSESSED)
+				to_chat(usr, "<span class='danger'>Not Implemented!</span>")
+				//opt = input("How Many", ROLE_OBSESSED, 1) as num|null
+				return
+		src.make_antag(href_list["makeAntag"], opt)
+// SKYRAT EDIT END -- ONE CLICK ANTAG
+
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))
 			return

@@ -95,6 +95,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/change_title_screen, //SKYRAT EDIT ADDITION
 	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
 	/client/proc/change_title_screen_html, //SKYRAT EDIT ADDITION
+	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
