@@ -175,6 +175,8 @@
 	//SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
 	if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[title])
 		alt_title_pref = preference_source.prefs.alt_titles_preferences[title]
+	else
+		alt_title_pref = title
 
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
@@ -287,15 +289,9 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-		//SKYRAT EDIT ADDITION - Alternate job titles
-		C.real_title = J.title
-		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
-			C.assignment = H.client.prefs.alt_titles_preferences[J.title]
-		else if (J.alt_title_pref)
-			C.assignment = J.alt_title_pref
-		else
-			C.assignment = J.title //Original - not under else statement
-		//SKYRAT EDIT ADDITION END
+			J.get_id_titles(H, C) // SKYRAT EDIT ADD - ALT TITLES
+			// C.assignment = J.title - SKYRAT EDIT - OVERWRITTEN IN ALT TITLES
+
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -307,18 +303,12 @@
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		// SKYRAT EDIT ADDITION - alternate job titles
-		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[J.title])
-			PDA.ownjob = H.client.prefs.alt_titles_preferences[J.title]
-		else if (J.alt_title_pref)
-			PDA.ownjob = J.alt_title_pref
-		else // SKYRAT EDIT ADDITION END - alternate job titles
-			PDA.ownjob = J.title
+		J.get_pda_titles(H, PDA) // SKYRAT EDIT ADD - ALT TITLES
+		// PDA.ownjob = J.title - SKYRAT EDIT - OVERWRITTEN IN ALT TITLES
 		PDA.update_label()
 
 	if(H.client?.prefs.playtime_reward_cloak)
 		neck = /obj/item/clothing/neck/cloak/skill_reward/playing
-
 
 /datum/outfit/job/get_chameleon_disguise_info()
 	var/list/types = ..()

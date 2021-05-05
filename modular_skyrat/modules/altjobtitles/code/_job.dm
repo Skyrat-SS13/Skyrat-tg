@@ -1,6 +1,23 @@
 /datum/job
 	var/alt_title_pref
 
+/datum/job/proc/get_id_titles(mob/living/carbon/human/H, obj/item/card/id/ID)
+	ID.real_title = title
+	if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
+		ID.assignment = H.client.prefs.alt_titles_preferences[title]
+	else if (alt_title_pref)
+		ID.assignment = alt_title_pref
+	else
+		ID.assignment = title
+
+/datum/job/proc/get_pda_titles(mob/living/carbon/human/H, obj/item/pda/PDA)
+	if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
+		PDA.ownjob = H.client.prefs.alt_titles_preferences[title]
+	else if (alt_title_pref)
+		PDA.ownjob = alt_title_pref
+	else
+		PDA.ownjob = title
+
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		if(alt_title_pref)
