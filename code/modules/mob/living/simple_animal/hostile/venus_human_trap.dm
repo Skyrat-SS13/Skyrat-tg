@@ -20,7 +20,7 @@
 	canSmoothWith = null
 	smoothing_flags = NONE
 	/// The amount of time it takes to create a venus human trap.
-	var/growth_time = 120 SECONDS
+	var/growth_time = 1 MINUTES //SKYRAT EDIT CHANGE
 	var/growth_icon = 0
 
 	/// Used by countdown to check time, this is when the timer will complete and the venus trap will spawn.
@@ -100,15 +100,16 @@
 	health_doll_icon = "venus_human_trap"
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
 	layer = SPACEVINE_MOB_LAYER
-	health = 50
-	maxHealth = 50
+	health = 40 //SKYRAT EDIT CHANGE
+	maxHealth = 40 //SKYRAT EDIT CHANGE
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
-	melee_damage_lower = 25
-	melee_damage_upper = 25
+	melee_damage_lower = 20 //SKYRAT EDIT CHANGE - Original: 25
+	melee_damage_upper = 20 //SKYRAT EDIT CHANGE - Original: 25
 	combat_mode = TRUE
-	del_on_death = TRUE
+	//del_on_death = TRUE //SKYRAT EDIT REMOVAL
+	flip_on_death = TRUE
 	deathmessage = "collapses into bits of plant matter."
 	attacked_sound = 'sound/creatures/venus_trap_hurt.ogg'
 	deathsound = 'sound/creatures/venus_trap_death.ogg'
@@ -129,6 +130,7 @@
 	var/vine_grab_distance = 5
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
+
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
@@ -224,3 +226,10 @@
  */
 /mob/living/simple_animal/hostile/venus_human_trap/proc/remove_vine(datum/beam/vine)
 	vines -= vine
+
+//SKYRAT EDIT ADDITION
+/mob/living/simple_animal/hostile/venus_human_trap/death(gibbed)
+	for(var/i in vines)
+		qdel(i)
+	return ..()
+//SKYRAT EDIT END
