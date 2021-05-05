@@ -213,9 +213,9 @@
 	name = "Feminine Suit"
 	path = /obj/item/clothing/under/suit/black/female
 
-/datum/loadout_item/uniform/suit/femblackskirt
+/datum/loadout_item/uniform/suit/femblacksk
 	name = "Feminine Skirt Suit"
-	path = /obj/item/clothing/under/blackfemsuitskirt
+	path = /obj/item/clothing/under/suit/black/female/skirt
 
 /datum/loadout_item/uniform/suit/femblackskirt
 	name = "Executive Skirt"
@@ -638,6 +638,11 @@
 /datum/loadout_item/uniform/job/seccadett
 	name = "Sol Cadet Uniform"
 	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
+/datum/loadout_item/uniform/job/sectrafficop
+	name = "Sol Traffic Cop Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
 
 /datum/loadout_item/uniform/job/solofficerthing
