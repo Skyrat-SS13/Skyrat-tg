@@ -4,16 +4,24 @@ GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('modular_skyrat/module
 	var/ssd_indicator = FALSE
 	var/lastclienttime = 0
 
-/mob/living/proc/set_ssd_indicator(var/state)
+/mob/living/proc/set_ssd_indicator(var/state, var/toggled)
 	if(state == ssd_indicator)
 		return
 	ssd_indicator = state
 	if(ssd_indicator)
 		add_overlay(GLOB.ssd_indicator_overlay)
-		log_message("<font color='green'>has went SSD and got their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		if(toggled)
+			log_message("<font color='green'>has toggled on their SSD indicator.</font>", INDIVIDUAL_ATTACK_LOG)
+			to_chat(src, "<span class='notice'>You have turned ON your SSD indicator. (Please do not abuse)")
+		else
+			log_message("<font color='green'>has went SSD and got their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
 	else
 		cut_overlay(GLOB.ssd_indicator_overlay)
-		log_message("<font color='green'>is no longer SSD and lost their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		if(toggled)
+			log_message("<font color='green'>has toggled off their SSD indicator.</font>", INDIVIDUAL_ATTACK_LOG)
+			to_chat(src, "<span class='notice'>You have turned OFF your SSD indicator. (Please do not abuse)")
+		else
+			log_message("<font color='green'>is no longer SSD and lost their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
 
 /mob/living/Login()
 	. = ..()
@@ -34,5 +42,16 @@ GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('modular_skyrat/module
 //This proc should stop mobs from having the overlay when someone keeps jumping control of mobs, unfortunately it causes Aghosts to have their character without the SSD overlay, I wasn't able to find a better proc unfortunately
 /mob/living/transfer_ckey(mob/new_mob, send_signal = TRUE)
 	..()
-	set_ssd_indicator(FALSE) 
+	set_ssd_indicator(FALSE)
 */
+
+/mob/living/verb/toggle_ssd_indicator()
+	set category = "OOC"
+	set name = "Toggle SSD Indicator"
+	set desc = "Toggle your SSD indicator on/off to show you're away/unresponsive. Not to be abused for ambushes."
+
+	to_chat(src, "Toggling SSD indicator, please wait...")
+	if(do_after(src, 5 SECONDS, src))
+		set_ssd_indicator(!ssd_indicator, TRUE) //Toggle the SSD indicator, log the action and inform the user appropriately.
+	else
+		to_chat(src, "<span class='notice'>You were interrupted while toggling your SSD indicator.")
