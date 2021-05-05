@@ -116,6 +116,9 @@
 /datum/job/mime
 	alt_titles = list("Pantomimist")
 
+/datum/job/clown
+	alt_titles = list("Jester")
+
 /datum/job/prisoner
 	alt_titles = list("Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner")
 
