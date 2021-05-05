@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(service_alttitles, list(
 GLOBAL_LIST_INIT(security_alttitles, list(
 	"Security Commander", //HoS
 	"Brig Sergeant", "Dispatch Officer", //Warden
-	"Forensic Technician", "Private Investigator", "Forensic Scientst", //Det
+	"Forensic Technician", "Private Investigator", "Forensic Scientist", //Det
 	"Security Operative", "Peacekeeper", //Sec
 	"Field Medic", "Security Corpsman", "Brig Physician", //Secmed
 	"Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader", //Sarge
