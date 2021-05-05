@@ -477,7 +477,7 @@
 	actions_types = list(/datum/action/item_action/adjust)
 	var/goggles = FALSE
 
-/obj/item/clothing/head/avipilot/adjust_goggles(mob/user)
+/obj/item/clothing/head/avipilot/proc/adjust_goggles(mob/user)
 	if(user?.incapacitated())
 		return
 	if(goggles)
