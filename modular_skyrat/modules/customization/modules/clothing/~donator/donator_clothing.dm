@@ -482,7 +482,7 @@
 	mutant_variants = NONE
 	var/goggles = FALSE
 
-/obj/item/clothing/head/avipilot/proc/adjust_goggles(mob/user)
+/obj/item/clothing/head/avipilot/proc/adjust_goggles(mob/living/carbon/user)
 	if(user?.incapacitated())
 		return
 	if(goggles)
@@ -497,10 +497,10 @@
 	if(user)
 		user.head_update(src, forced = 1)
 
-/obj/item/clothing/head/avipilot/ui_action_click(mob/user, action)
+/obj/item/clothing/head/avipilot/ui_action_click(mob/living/carbon/user, action)
 	adjust_goggles(user)
 
-/obj/item/clothing/head/avipilot/attack_self(mob/user)
+/obj/item/clothing/head/avipilot/attack_self(mob/living/carbon/user)
 	adjust_goggles(user)
 
 //Donation reward for NetraKyram
