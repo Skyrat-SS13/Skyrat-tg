@@ -25,6 +25,11 @@
 	name = "Flat cap"
 	path = /obj/item/clothing/head/flatcap
 
+/datum/loadout_item/head/pflatcap
+	name = "Poly Flat cap"
+	path = /obj/item/clothing/head/polyflatc
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/head/pirate
 	name = "Pirate hat"
 	path = /obj/item/clothing/head/pirate
@@ -36,6 +41,18 @@
 /datum/loadout_item/head/ushanka
 	name = "Ushanka"
 	path = /obj/item/clothing/head/ushanka
+
+/datum/loadout_item/head/wrussian
+	name = "Black Papakha"
+	path = /obj/item/clothing/head/whiterussian
+
+/datum/loadout_item/head/wrussianw
+	name = "White Papakha"
+	path = /obj/item/clothing/head/whiterussian/white
+
+/datum/loadout_item/head/wrussianb
+	name = "Black and Red Papakha"
+	path = /obj/item/clothing/head/whiterussian/black
 
 /datum/loadout_item/head/slime
 	name = "Slime hat"
@@ -69,6 +86,21 @@
 /datum/loadout_item/head/whitekepiold
 	name = "White Kepi, Old"
 	path = /obj/item/clothing/head/kepi/old
+
+/datum/loadout_item/head/hijab
+	name = "Hijab"
+	path = /obj/item/clothing/head/hijab
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/head/turban
+	name = "Turban"
+	path = /obj/item/clothing/head/turb
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/head/keff
+	name = "Keffiyeh"
+	path = /obj/item/clothing/head/keffiyeh
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/head/maidhead
 	name = "Maid Headband"
@@ -181,17 +213,32 @@
 	name = "Security Ushanka"
 	path = /obj/item/clothing/head/ushankasec
 	restricted_desc = "Security"
-	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer")
 
 /datum/loadout_item/head/job/navybluehosberet
 	name = "Head of security's navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyhos
 	restricted_roles = list("Head of Security")
 
+/datum/loadout_item/head/job/solhoscap
+	name = "Head of security's Sol Cap"
+	path = /obj/item/clothing/head/hos/beret/peacekeeper/sol
+	restricted_roles = list("Head of Security")
+
 /datum/loadout_item/head/job/navyblueofficerberet
 	name = "Security officer's Navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
+
+/datum/loadout_item/head/job/solofficercap
+	name = "Security officer's Sol Cap"
+	path = /obj/item/clothing/head/beret/sec/peacekeeper/sol
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
+
+/datum/loadout_item/head/job/soltrafficoff
+	name = "Traffic Officer Cap"
+	path = /obj/item/clothing/head/soltraffic
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Civil Disputes Officer")
 
 /datum/loadout_item/head/job/navybluewardenberet
 	name = "Warden's navyblue beret"

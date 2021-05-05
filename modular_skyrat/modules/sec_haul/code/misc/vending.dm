@@ -26,8 +26,7 @@
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 1,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 1,
-		/obj/item/grenade/stingbang = 1,
-		/obj/item/armament_token/g11 = 1
+		/obj/item/grenade/stingbang = 1
 	)
 	refill_canister = /obj/item/vending_refill/security_peacekeeper
 	default_price = PAYCHECK_MEDIUM
@@ -77,8 +76,7 @@
 	premium = list(
 		/obj/item/clothing/under/rank/security/officer/formal = 3,
 		/obj/item/clothing/suit/security/officer = 3,
-		/obj/item/clothing/head/beret/sec/navyofficer = 3,
-		/obj/item/conversion_kit/nightstick = 2
+		/obj/item/clothing/head/beret/sec/navyofficer = 3
 		)
 	refill_canister = /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	payment_department = ACCOUNT_SEC

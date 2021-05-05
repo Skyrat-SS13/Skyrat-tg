@@ -124,7 +124,8 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	if(!inserted_cell)
 		examine_list += "<span class='danger'>It does not have a cell inserted!</span>"
 	else if(!inside_robot)
-		examine_list += "<span class='notice'>It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left."
+		examine_list += "<span class='notice'>It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left.\
+						Ctrl+Shift+Click to remove the [inserted_cell]."
 	else
 		examine_list += "<span class='notice'>It is drawing power from an external powersource, reading <b>[inserted_cell.percent()]%</b> charge.</span>"
 

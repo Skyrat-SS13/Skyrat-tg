@@ -63,7 +63,6 @@
 	stank.gases[/datum/gas/miasma][MOLES] = (yield + 6)*3.5*MIASMA_CORPSE_MOLES*delta_time // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
 	stank.temperature = T20C // without this the room would eventually freeze and miasma mining would be easier
 	T.assume_air(stank)
-	T.air_update_turf(FALSE, FALSE)
 
 //Galaxy Thistle
 /obj/item/seeds/galaxythistle
@@ -290,7 +289,7 @@
 	if(player_turf?.is_blocked_turf(TRUE))
 		return FALSE
 	user.visible_message("<span class='danger'>[user] begins to plant \the [src]...</span>")
-	if(do_after(user, 8 SECONDS, target = user.drop_location(), progress = TRUE))
+	if(do_after(user, 4 SECONDS, target = user.drop_location(), progress = TRUE)) //SKYRAT EDIT - ORIGINAL 8 SECONDS
 		new /obj/structure/fluff/hedge/opaque(user.drop_location())
 		to_chat(user, "<span class='notice'>You plant \the [src].</span>")
 		qdel(src)

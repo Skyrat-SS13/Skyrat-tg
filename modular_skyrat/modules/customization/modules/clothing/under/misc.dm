@@ -15,6 +15,18 @@
 	name = "pink mankini"
 	icon_state = "mankini"
 
+/obj/item/clothing/under/misc/stripper/bunnysuit
+	name = "bunny suit"
+	desc = "Makes the wearer more attractive, even men."
+	icon_state = "bunnysuit"
+	can_adjust = TRUE
+	alt_covers_chest = FALSE
+
+/obj/item/clothing/under/misc/stripper/bunnysuit/white
+	name = "white bunny suit"
+	icon_state = "whitebunnysuit"
+	can_adjust = FALSE
+
 /obj/item/clothing/under/croptop
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
@@ -344,8 +356,6 @@
 	inhand_icon_state = "b_suit"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-	icon = 'icons/obj/clothing/under/captain.dmi'
-	worn_icon = 'icons/mob/clothing/under/captain.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 15)
 
 /obj/item/clothing/under/rank/cargo/casualman
@@ -362,3 +372,27 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "qmsynd"
+
+/obj/item/clothing/under/uvf
+	name = "british combat sweater"
+	desc = "Thankfully doesn't include the sash your father wore."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "uvf"
+
+/obj/item/clothing/under/suit/black/female/skirt
+	name = "feminine skirt"
+	desc = "Perfect for a secretary that does no work."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "black_suit_fem_skirt"
+
+/obj/item/clothing/under/whiterussian
+	name = "army baron uniform"
+	desc = "Space Communism? That's just like...your opinion man."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "rusuni"
+
+
+

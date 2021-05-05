@@ -82,6 +82,16 @@
 	path = /obj/item/clothing/under/misc/stripper/green
 	cost = 3
 
+/datum/loadout_item/uniform/bunnysuit
+	name = "Bunny suit"
+	path = /obj/item/clothing/under/misc/stripper/bunnysuit
+	cost = 3
+
+/datum/loadout_item/uniform/bunnysuit/white
+	name = "Bunny suit, white"
+	path = /obj/item/clothing/under/misc/stripper/bunnysuit/white
+	cost = 3
+
 /datum/loadout_item/uniform/qipao
 	name = "Qipao, Black"
 	path = /obj/item/clothing/under/costume/qipao
@@ -203,6 +213,10 @@
 	name = "Feminine Suit"
 	path = /obj/item/clothing/under/suit/black/female
 
+/datum/loadout_item/uniform/suit/femblacksk
+	name = "Feminine Skirt Suit"
+	path = /obj/item/clothing/under/suit/black/female/skirt
+
 /datum/loadout_item/uniform/suit/femblackskirt
 	name = "Executive Skirt"
 	path = /obj/item/clothing/under/suit/black_really/skirt
@@ -269,6 +283,11 @@
 /datum/loadout_item/uniform/suit/checkered
 	name = "Checkered Shirt"
 	path = /obj/item/clothing/under/rancher/checkered
+
+/datum/loadout_item/uniform/suit/whiterussian
+	name = "Russian Baron Suit"
+	path = /obj/item/clothing/under/whiterussian
+	cost = 4
 
 
 //SKIRTS
@@ -468,6 +487,10 @@
 	name = "Irish Tactical Sweater"
 	path = /obj/item/clothing/under/misc/tactical1
 
+/datum/loadout_item/uniform/sweater/tactical2
+	name = "British Tactical Sweater"
+	path = /obj/item/clothing/under/uvf
+
 /datum/loadout_item/uniform/sweater/turtleneck/skirt
 	name = "Tactitool Skirtleneck"
 	path = /obj/item/clothing/under/syndicate/tacticool/skirt
@@ -555,6 +578,11 @@
  	path = /obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
  	restricted_roles = list("Prisoner")
 
+/datum/loadout_item/uniform/job/blacknwhite
+ 	name = "Classic Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/prisoner/classic
+ 	restricted_roles = list("Prisoner")
+
 /datum/loadout_item/uniform/job/priestrobe
 	name = "Priestess Robe"
 	path = /obj/item/clothing/under/rank/pmarsrobe
@@ -567,6 +595,11 @@
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
  	restricted_roles = list("Head of Security")
 
+/datum/loadout_item/uniform/job/solhos
+ 	name = "Head of Security Sol uniform"
+ 	path = /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
+ 	restricted_roles = list("Head of Security")
+
 /datum/loadout_item/uniform/job/navyblueuniformofficer
  	name = "Security officer navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/officer/formal
@@ -577,10 +610,45 @@
 	path = /obj/item/clothing/under/rank/security/warden/formal
 	restricted_roles = list("Warden")
 
+/datum/loadout_item/uniform/job/solwarden
+	name = "Sol Warden Uniform"
+	path = /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
+	restricted_roles = list("Warden")
+
+/datum/loadout_item/uniform/job/coroffw
+	name = "Corrections Officer Sweater (skirt)"
+	path = /obj/item/clothing/under/rank/security/brigguard/sweater/women
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshir
+	name = "Corrections Officer Shirt"
+	path = /obj/item/clothing/under/rank/security/brigguard
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshir
+	name = "Corrections Officer Skirt"
+	path = /obj/item/clothing/under/rank/security/brigguard/women
+	restricted_roles = list("Corrections Officer","Warden")
+
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
 	path = /obj/item/clothing/under/rank/security/officer/skirt
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant") //i want a femboy sergeant to shove a baton up my ass
+
+/datum/loadout_item/uniform/job/seccadett
+	name = "Sol Cadet Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
+/datum/loadout_item/uniform/job/sectrafficop
+	name = "Sol Traffic Cop Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
+/datum/loadout_item/uniform/job/solofficerthing
+	name = "Sol Officer Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/sol
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
 
 /datum/loadout_item/uniform/job/hosskirt
 	name = "Head of security's skirt"
