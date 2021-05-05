@@ -13,7 +13,7 @@
 	alt_titles = list("Station Commander", "Commanding Officer", "Site Manager")
 
 /datum/job/head_of_personnel
-	alt_titles = list("Executive Officer", "Employment Officer")
+	alt_titles = list("Executive Officer", "Employment Officer", "Crew Supervisor")
 
 /datum/job/head_of_security
 	alt_titles = list("Security Commander")
@@ -22,7 +22,7 @@
 	alt_titles = list("Engineering Foreman")
 
 /datum/job/research_director
-	alt_titles = list("Silicon Administrator", "Lead Researcher", "Biorobotics Director")
+	alt_titles = list("Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor")
 
 /datum/job/quartermaster
 	alt_titles = list("Deck Chief", "Cargo Foreman")
@@ -40,7 +40,7 @@
 	alt_titles = list("Surgeon", "Nurse")
 
 /datum/job/paramedic
-	alt_titles = list("Emergency Medical Technician")
+	alt_titles = list("Emergency Medical Technician", "Search and Rescue Technician")
 
 /datum/job/virologist
 	alt_titles = list("Pathologist")
@@ -91,10 +91,10 @@
 	alt_titles = list("Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner")
 
 /datum/job/assistant
-	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Explorer")
+	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer")
 
 /datum/job/botanist
-	alt_titles = list("Hydroponicist", "Gardener", "Botanical Researcher")
+	alt_titles = list("Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
 
 /datum/job/warden
 	alt_titles = list("Brig Sergeant", "Dispatch Officer")
