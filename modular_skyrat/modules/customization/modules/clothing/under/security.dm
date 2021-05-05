@@ -163,6 +163,13 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "policecadetalt"
+
+/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	name = "sol traffic police uniform"
+	desc = "A light blue shirt with navy pants, perfect for standing and shouting at cars."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policetrafficalt"
 ///OFFICERS
 /obj/item/clothing/under/rank/security/peacekeeper/sol
 	name = "sol police uniform"
