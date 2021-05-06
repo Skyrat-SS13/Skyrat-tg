@@ -77,7 +77,7 @@
 			continue
 		var/T = get_turf(user)
 		if(M.stat == DEAD && M.client && user.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
-			M.show_message("[FOLLOW_LINK(M, user)] [dchatmsg]")
+			M.show_message("<span class='emote'>[FOLLOW_LINK(M, user)] [dchatmsg]</span>")
 
 	if(emote_type == EMOTE_AUDIBLE)
 		//SKYRAT EDIT CHANGE BEGIN
