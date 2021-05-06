@@ -230,7 +230,7 @@
 	mutant_variants = NONE
 
 
-/obj/item/clothing/suit/duster/colourable
+/obj/item/clothing/suit/duster/colorable
 	name = "colorable duster"
 	desc = "This station aint big enough for the both of us."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'

@@ -38,7 +38,7 @@
 
 /datum/loadout_item/suit/duster
 	name = "Colorable Duster"
-	path = /obj/item/clothing/suit/duster/colourable
+	path = /obj/item/clothing/suit/duster/colorable
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/suit/peacoat
