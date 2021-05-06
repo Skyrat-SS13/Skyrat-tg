@@ -54,14 +54,10 @@
 		depleted = TRUE
 		icon_state += "_depleted"
 		addtimer(CALLBACK(src, .proc/regenerate_ore), regeneration_time)
-
-
+//	After the ore vein finishes its wait, we make the ore 'respawn' and return the ore to its original post-Initialize() icon_state.
 /obj/structure/ore_vein/proc/regenerate_ore()
 	depleted = FALSE
 	icon_state = original_icon_state
-
-
-
 
 /obj/structure/ore_vein/stone
 	name = "stone mine"
