@@ -213,9 +213,9 @@
 	name = "Feminine Suit"
 	path = /obj/item/clothing/under/suit/black/female
 
-/datum/loadout_item/uniform/suit/femblackskirt
+/datum/loadout_item/uniform/suit/femblacksk
 	name = "Feminine Skirt Suit"
-	path = /obj/item/clothing/under/blackfemsuitskirt
+	path = /obj/item/clothing/under/suit/black/female/skirt
 
 /datum/loadout_item/uniform/suit/femblackskirt
 	name = "Executive Skirt"
