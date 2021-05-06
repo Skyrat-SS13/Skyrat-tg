@@ -10,7 +10,6 @@ In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
 
-<<<<<<< HEAD
 Version 5.13, 9 March, 2021, by Useroth
 
 Implemented some features to help with running multiple servers on the same database and easily differentiate
@@ -39,7 +38,6 @@ ALTER TABLE `messages`
 
 ALTER TABLE `round`
 	ADD COLUMN `server_name` VARCHAR(32) DEFAULT NULL AFTER `end_datetime`;
-=======
 Version 5.13, 30 April 2021, by Atlanta Ned
 Added the `citation` table for tracking security citations in the database.
 
@@ -66,7 +64,6 @@ ENGINE=InnoDB
 AUTO_INCREMENT=1
 ;
 ```
->>>>>>> e3b1e3c8c50 (Security citations are now logged to the DB (#58827))
 
 -----------------------------------------------------
 
