@@ -299,7 +299,8 @@
 /obj/item/storage/box/gunset/pdh_hop/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/pdh/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src))
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 
