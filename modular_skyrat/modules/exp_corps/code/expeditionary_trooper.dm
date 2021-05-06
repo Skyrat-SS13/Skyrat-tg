@@ -1,9 +1,5 @@
-GLOBAL_LIST_EMPTY(expcorps_equipment)
-GLOBAL_LIST_EMPTY(expcorps_eva)
-
 /datum/job/expeditionary_trooper
 	title = "Expeditionary Trooper"
-	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Captain")
 	faction = "Station"
 	total_positions = 2
@@ -12,18 +8,15 @@ GLOBAL_LIST_EMPTY(expcorps_eva)
 	selection_color = "#9fffe2"
 	minimal_player_age = 40
 	exp_requirements = 400
-	exp_type = EXP_TYPE_SECURITY
+	exp_type = EXP_TYPE_SCIENCE
 
 	outfit = /datum/outfit/job/expeditionary_trooper
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SEC
-
-	mind_traits = list(TRAIT_KNOW_ENGI_WIRES)
-	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+	paycheck_department = ACCOUNT_SCI
 
 	display_order = JOB_DISPLAY_ORDER_EXP_CORPS
-	bounty_types = CIV_JOB_SEC
+	bounty_types = CIV_JOB_SCI
 
 	family_heirlooms = list(/obj/item/binoculars)
 
