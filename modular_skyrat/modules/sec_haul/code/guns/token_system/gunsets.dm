@@ -346,6 +346,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 
 //LASER
 /obj/item/storage/box/gunset/laser
