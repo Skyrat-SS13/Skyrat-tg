@@ -1,9 +1,9 @@
-#define SPREAD_PROCESS 3
-#define SPREAD_STALLED_PROCESS 20
+#define SPREAD_PROCESS 2
+#define SPREAD_STALLED_PROCESS 10
 
-#define PROGRESSION_FOR_STRUCTURE 30
-#define PROGRESSION_RETALIATED 3
-#define STRUCTURE_PROGRESSION_START 23
+#define PROGRESSION_FOR_STRUCTURE 20
+#define PROGRESSION_RETALIATED 5
+#define STRUCTURE_PROGRESSION_START 20
 
 #define RESIN_CANT_SPREAD 0
 #define RESIN_DID_SPREAD 1
@@ -33,9 +33,10 @@
 
 /datum/biohazard_blob_controller/proc/SpawnExpansion()
 	var/list/turfs = list()
-	var/hatcheries_to_spawn = 2
-	var/bulbs_to_spawn = 1
-	var/spread_radius = 3
+	var/hatcheries_to_spawn = 3
+	var/bulbs_to_spawn = rand(3, 5)
+	var/conditioners_to_spawn = 2
+	var/spread_radius = 5
 	var/our_turf = get_turf(our_core)
 	turfs[our_turf] = TRUE
 	for(var/i in 1 to spread_radius)
@@ -54,6 +55,9 @@
 		else if(bulbs_to_spawn && prob(40))
 			bulbs_to_spawn--
 			SpawnStructureLoc(1, T)
+		else if(conditioners_to_spawn && prob(40))
+			conditioners_to_spawn--
+			SpawnStructureLoc(3, T)
 
 /datum/biohazard_blob_controller/proc/SpawnStructureLoc(index, location)
 	var/spawn_type
@@ -62,6 +66,9 @@
 			spawn_type = /obj/structure/biohazard_blob/structure/bulb
 		if(2)
 			spawn_type = /obj/structure/biohazard_blob/structure/spawner
+		if(3)
+			spawn_type = /obj/structure/biohazard_blob/structure/conditioner
+
 	var/struct = new spawn_type(location, blob_type)
 	other_structures[struct] = TRUE
 	our_core.max_integrity += 10
@@ -86,9 +93,11 @@
 			a_resin.blooming = FALSE
 			a_resin.set_light(0)
 			a_resin.update_overlays()
-	//With the death of the core, we kill all structures
-	for(var/t in other_structures)
-		var/obj/structure/biohazard_blob/structure/our_structure = t
+	for(var/obj/structure/biohazard_blob/structure/conditioner/c in other_structures)
+		var/obj/structure/biohazard_blob/structure/our_structure = c
+		qdel(our_structure)
+	for(var/obj/structure/biohazard_blob/structure/spawner/s in other_structures)
+		var/obj/structure/biohazard_blob/structure/our_structure = s
 		qdel(our_structure)
 	return
 
@@ -103,20 +112,19 @@
 				break
 		if(!forbidden)
 			structure_progression -= PROGRESSION_FOR_STRUCTURE
-			var/random = rand(1,2)
+			var/random = rand(1,3)
 			SpawnStructureLoc(random, ownturf)
 
 	//Check if we can attack an airlock
 	for(var/a in get_adjacent_open_turfs(spreaded_resin))
 		var/turf/open/open_turf = a
 		for(var/obj/O in open_turf)
-			if(istype(O, /obj/machinery/door/airlock) || istype(O, /obj/machinery/door/firedoor) || istype(O, /obj/structure/door_assembly))
-				if(O.density)
-					spreaded_resin.do_attack_animation(O, ATTACK_EFFECT_PUNCH)
-					playsound(O, 'sound/effects/attackblob.ogg', 50, TRUE)
-					O.take_damage(40, BRUTE, MELEE, 1, get_dir(O, spreaded_resin))
-					. = RESIN_ATTACKED_DOOR
-					break
+			if(istype(O, /obj/machinery/door/airlock) || istype(O, /obj/machinery/door/firedoor) || istype(O, /obj/machinery/door/window) || istype(O, /obj/structure/door_assembly) || istype(O, /obj/machinery/door/window))
+				spreaded_resin.do_attack_animation(O, ATTACK_EFFECT_PUNCH)
+				playsound(O, 'sound/effects/attackblob.ogg', 50, TRUE)
+				O.take_damage(40, BRUTE, MELEE, 1, get_dir(O, spreaded_resin))
+				. = RESIN_ATTACKED_DOOR
+				break
 		if(.)
 			break
 

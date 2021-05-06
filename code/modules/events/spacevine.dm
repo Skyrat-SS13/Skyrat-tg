@@ -1,8 +1,8 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/round_event_control/spacevine
 	name = "Spacevine"
 	typepath = /datum/round_event/spacevine
-	//weight = 15 //ORIGINAL
-	weight = 8 //SKYRAT EDIT CHANGE
+	weight = 15
 	max_occurrences = 3
 	min_players = 10
 
@@ -332,13 +332,10 @@
 	var/datum/spacevine_controller/master = null
 	var/list/mutations = list()
 
-/obj/structure/spacevine/Initialize()
+/obj/structure/spacevine/Initialize(mapload)
 	. = ..()
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
-
-/obj/structure/spacevine/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/atmos_sensitive)
+	AddElement(/datum/element/atmos_sensitive, mapload)
 
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()
@@ -595,3 +592,4 @@
 		if(("vines" in M.faction) || ("plants" in M.faction))
 			return TRUE
 	return FALSE
+*/
