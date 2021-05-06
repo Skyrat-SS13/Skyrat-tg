@@ -125,3 +125,7 @@
 	name = "cross collar"
 	desc = "A religious punishment, probably."
 	icon_state = "collar_blk"
+
+
+
+
