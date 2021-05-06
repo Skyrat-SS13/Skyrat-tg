@@ -547,12 +547,8 @@ SUBSYSTEM_DEF(job)
 	if(living_mob.mind)
 		living_mob.mind.assigned_role = rank
 
-<<<<<<< HEAD
-	to_chat(M, "<b>You are the [rank].</b>")
-	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
-=======
 	to_chat(M, "<span class='infoplain'><b>You are the [rank].</b></span>")
->>>>>>> ff2f6abe83d (Sort the majority of the rest of the unsorted chat (#58821))
+	var/list/packed_items
 	if(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if (M.client && job.no_dresscode && job.loadout)
