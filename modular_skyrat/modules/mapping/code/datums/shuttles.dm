@@ -1,13 +1,3 @@
-/datum/map_template/shuttle/shipstation
-	port_id = "station"
-	who_can_purchase = null
-	suffix = "ship"
-	name = "NTSS 'Companionship'"
-
-/datum/map_template/shuttle/whiteship/ship
-	suffix = "ship"
-	name = "NTSS 'Friendship'"
-
 /datum/map_template/shuttle/arrival/outpost
 	suffix = "outpost"
 	name = "arrival shuttle (Outpost)"

@@ -302,6 +302,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 
 //CORPO
 /obj/item/storage/box/gunset/pdh_corpo
@@ -343,6 +344,7 @@
 /obj/item/storage/box/gunset/security_medic/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/firefly/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
