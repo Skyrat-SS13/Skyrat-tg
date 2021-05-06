@@ -62,3 +62,9 @@
 	suffix = "codealpha.dmm"
 	name = "Code Alpha Supplementary Station"
 	description = "The mess hall of a once bustling supplementary station, to be deployed alongside SS13."
+
+/datum/map_template/ruin/space/skyrat/smugglies
+	id = "smugglies"
+	suffix = "smugglies.dmm"
+	name = "Suspicious Cargo Installation"
+	description = "*SCREECH* RDM RDM RDM"
