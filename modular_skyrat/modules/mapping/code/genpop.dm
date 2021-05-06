@@ -108,7 +108,7 @@
 			locked = TRUE
 			update_icon()
 			registered_id.forceMove(src.loc)
-			if(rand(1, 100) == 100) // 1% chance to get cartoon prison outfit, cause it's funny
+			if(prob(1)) // 1% chance to get cartoon prison outfit, cause it's funny
 				new /obj/item/clothing/under/rank/prisoner/classic(src.loc)
 				new /obj/item/clothing/shoes/sneakers/orange(src.loc)
 				return // early return to prevent 2 outfits
@@ -140,5 +140,4 @@
 		return
 
 	..()
-
 
