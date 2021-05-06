@@ -37,12 +37,12 @@
 	path = /obj/item/clothing/suit/costume/tailcoat
 
 /datum/loadout_item/suit/duster
-	name = "Colourable Duster"
+	name = "Colorable Duster"
 	path = /obj/item/clothing/suit/duster/colourable
 	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/suit/peacoat
-	name = "Colourable Peacoat"
+	name = "Colorable Peacoat"
 	path = /obj/item/clothing/suit/toggle/peacoat
 	extra_info = LOADOUT_INFO_ONE_COLOR
 

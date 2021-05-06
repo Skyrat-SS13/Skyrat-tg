@@ -231,7 +231,7 @@
 
 
 /obj/item/clothing/suit/duster/colourable
-	name = "colourable duster"
+	name = "colorable duster"
 	desc = "This station aint big enough for the both of us."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
@@ -243,7 +243,7 @@
 	AddElement(/datum/element/polychromic, list("5D5"))
 
 /obj/item/clothing/suit/toggle/peacoat
-	name = "colourable peacoat"
+	name = "colorable peacoat"
 	desc = "The way you guys are blending in with the local colour. I mean, Flag Girl was bad enough, but U-Boat Captain?"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
