@@ -63,8 +63,14 @@
 	name = "Code Alpha Supplementary Station"
 	description = "The mess hall of a once bustling supplementary station, to be deployed alongside SS13."
 
-/datum/map_template/ruin/space/skyrat/smugglies
+/datum/map_template/ruin/space/skyrat/smugglies  //Excuse me sir, do you have money printers in here?
 	id = "smugglies"
 	suffix = "smugglies.dmm"
 	name = "Suspicious Cargo Installation"
 	description = "*SCREECH* RDM RDM RDM"
+
+/datum/map_template/ruin/space/skyrat/polychromicfacility  //Excuse me sir, do you have money printers in here?
+	id = "polychromicfacility"
+	suffix = "polychromicfacility.dmm"
+	name = "Abandoned Polychromic Facility"
+	description = "A den of bad ideas. Secborgs were made here!"
