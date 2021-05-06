@@ -54,9 +54,16 @@
 	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
 	custom_materials = list(/datum/material/stone = 4000)
-
-/turf/closed/wall/mineral/stone/indestructible
-	baseturfs = /turf/closed/wall/mineral/stone/indestructible
+/turf/closed/indestructible/stone
+	name = "stone wall"
+	desc = "A wall made of solid stone brick."
+	icon = 'modular_skyrat/modules/stone/icons/wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
+	custom_materials = list(/datum/material/stone = 4000)
 
 /obj/structure/falsewall/stone
 	name = "stone wall"

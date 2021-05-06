@@ -47,7 +47,7 @@
 	to_chat(user, "<span class='notice'>You start mining the [ore_descriptor]...</span>")
 	if(W.use_tool(src, user, src.mining_time, volume=50))
 		to_chat(user, "<span class='notice'>You mine the [ore_descriptor].</span>")
-		if(ore_type && ore_amount)
+		if(ore_type && ore_amount && depleted == FALSE)
 			new ore_type(loc, ore_amount)
 		SSblackbox.record_feedback("tally", "pick_used_mining", 1, W.type)
 		// After giving	
