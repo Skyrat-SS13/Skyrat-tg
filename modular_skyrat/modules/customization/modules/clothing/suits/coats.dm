@@ -238,7 +238,7 @@
 	icon_state = "duster"
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/duster/colourable/ComponentInitialize()
+/obj/item/clothing/suit/duster/colorable/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/polychromic, list("5D5"))
 
