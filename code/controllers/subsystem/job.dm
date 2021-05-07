@@ -547,8 +547,12 @@ SUBSYSTEM_DEF(job)
 	if(living_mob.mind)
 		living_mob.mind.assigned_role = rank
 
+	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
+	var/display_rank = rank
+	if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
+		display_rank = M.client.prefs.alt_titles_preferences[rank]
 	to_chat(M, "<span class='infoplain'><b>You are the [rank].</b></span>")
-	var/list/packed_items
+	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if (M.client && job.no_dresscode && job.loadout)
@@ -570,7 +574,7 @@ SUBSYSTEM_DEF(job)
 			else
 				handle_auto_deadmin_roles(M.client, rank)
 
-		to_chat(M, "<span class='infoplain'><b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>")
+		to_chat(M, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [rank]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT - ALTERNATE JOB TITLES
 		job.radio_help_message(M)
 		if(job.req_admin_notify)
 			to_chat(M, "<span class='infoplain'><b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b></span>")
