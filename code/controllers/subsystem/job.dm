@@ -553,7 +553,6 @@ SUBSYSTEM_DEF(job)
 		display_rank = M.client.prefs.alt_titles_preferences[rank]
 	to_chat(M, "<span class='infoplain'><b>You are the [rank].</b></span>")
 	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
-  
 	if(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if (M.client && job.no_dresscode && job.loadout)
