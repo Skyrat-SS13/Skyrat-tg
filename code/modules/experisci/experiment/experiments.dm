@@ -99,10 +99,15 @@
 	required_heavy = GLOB.MAX_EX_HEAVY_RANGE
 	required_light = GLOB.MAX_EX_LIGHT_RANGE
 
-/datum/experiment/scanning/random/material/meat
+// SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
+// ORIGINAL: /datum/experiment/scanning/random/material/meat
+/datum/experiment/scanning/random/material/silver
 	name = "Biological Material Scanning Experiment"
-	description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
-	possible_material_types = list(/datum/material/meat)
+// ORIGINAL: description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
+	description = "Supposedly silver has an inert anti-microbial effect; scan a few samples to test this."
+// ORIGINAL: possible_material_types = list(/datum/material/meat)
+	possible_material_types = list(/datum/material/silver)
+// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
 
 /datum/experiment/scanning/random/material/easy
 	name = "Low Grade Material Scanning Experiment"

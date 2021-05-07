@@ -11,6 +11,7 @@
 	taste_description = "rage"
 	var/datum/brain_trauma/special/psychotic_brawling/bath_salts/pcp_rage
 	var/datum/brain_trauma/special/tenacity/pcp_tenacity
+	var/pcp_lifetime = 0
 
 /datum/reagent/drug/pcp/on_mob_metabolize(mob/living/L)
 	..()
@@ -36,6 +37,7 @@
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 	if(DT_PROB(3.5, delta_time))
 		M.emote(pick("scream","twitch"))
+	pcp_lifetime+= 3 * REM * delta_time
 	..()
 
 /datum/reagent/drug/pcp/on_mob_end_metabolize(mob/living/L)
@@ -51,7 +53,7 @@
 	if(pcp_tenacity)
 		QDEL_NULL(pcp_tenacity)
 	L.visible_message("<span class='danger'>[L] collapses onto the floor!</span>") //you pretty much pass out
-	L.Paralyze(270,TRUE)
+	L.Paralyze(pcp_lifetime,TRUE)
 	L.drop_all_held_items()
 	..()
 
