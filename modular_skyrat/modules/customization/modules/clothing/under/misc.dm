@@ -380,7 +380,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "uvf"
 
-/obj/item/clothing/under/blackfemsuitskirt
+/obj/item/clothing/under/suit/black/female/skirt
 	name = "feminine skirt"
 	desc = "Perfect for a secretary that does no work."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
