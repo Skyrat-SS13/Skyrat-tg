@@ -2,6 +2,11 @@
 	category = LOADOUT_CATEGORY_UNIFORM
 
 //MISC
+/datum/loadout_item/uniform/gandalf
+	name = "Nostalgic Costume"
+	path = /obj/item/clothing/under/nostalgiacritic
+	ckeywhitelist = list("gandalf2k15")
+
 /datum/loadout_item/uniform/assistantformal
 	name = "Assistant's formal uniform"
 	path = /obj/item/clothing/under/misc/assistantformal

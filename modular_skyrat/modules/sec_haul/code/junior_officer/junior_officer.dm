@@ -22,8 +22,16 @@
 
 	display_order = JOB_DISPLAY_ORDER_JUNIOR_SECURITY_OFFICER
 	bounty_types = CIV_JOB_SEC
+	departments = DEPARTMENT_SECURITY
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+
+	mail_goodies = list(
+		/obj/item/food/donut/caramel = 10,
+		/obj/item/food/donut/matcha = 10,
+		/obj/item/food/donut/blumpkin = 5,
+		/obj/item/clothing/mask/whistle = 5
+	)
 
 /datum/outfit/job/junior_officer
 	name = "Civil Disputes Officer"

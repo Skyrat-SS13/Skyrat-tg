@@ -63,10 +63,9 @@ GLOBAL_LIST_INIT(summoned_magic, list(
 	/obj/item/book/granter/spell/barnyard,
 	/obj/item/book/granter/spell/charge,
 	/obj/item/book/granter/spell/summonitem,
-	/obj/item/gun/magic/wand/nothing,
+	/obj/item/gun/magic/wand/nothing,  //SKYEDIT EDIT - Removes wand of polymorph
 	/obj/item/gun/magic/wand/death,
 	/obj/item/gun/magic/wand/resurrection,
-	/obj/item/gun/magic/wand/polymorph,
 	/obj/item/gun/magic/wand/teleport,
 	/obj/item/gun/magic/wand/door,
 	/obj/item/gun/magic/wand/fireball,
@@ -78,8 +77,7 @@ GLOBAL_LIST_INIT(summoned_magic, list(
 	/obj/item/immortality_talisman,
 	/obj/item/melee/ghost_sword))
 
-GLOBAL_LIST_INIT(summoned_special_magic, list(
-	/obj/item/gun/magic/staff/change,
+GLOBAL_LIST_INIT(summoned_special_magic, list(  //SKYEDIT EDIT - Removes wand of polymorph
 	/obj/item/gun/magic/staff/animate,
 	/obj/item/storage/belt/wands/full,
 	/obj/item/antag_spawner/contract,

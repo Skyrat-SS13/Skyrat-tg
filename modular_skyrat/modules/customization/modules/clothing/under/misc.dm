@@ -394,5 +394,12 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "rusuni"
 
+/obj/item/clothing/under/nostalgiacritic
+	name = "nostalgic outfit"
+	desc = "He remembers it so you don't have to."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "cia"
+
 
 
