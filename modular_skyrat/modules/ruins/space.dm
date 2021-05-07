@@ -74,3 +74,9 @@
 	suffix = "polychromicfacility.dmm"
 	name = "Abandoned Polychromic Facility"
 	description = "A den of bad ideas. Secborgs were made here!"
+
+/datum/map_template/ruin/space/skyrat/luna
+	id = "luna"
+	suffix = "luna.dmm"
+	name = "Luna"
+	description = "Please note for ethical concerns all experimentation regarding writing artificial intelligence units to beleive they are A, A fictional character and B, human have been suspended. Have a pleasant shift."
