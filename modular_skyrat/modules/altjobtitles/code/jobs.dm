@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(supply_alttitles, list(
 
 GLOBAL_LIST_INIT(service_alttitles, list(
 	"Executive Officer", "Employment Officer", "Crew Supervisor", //HoP
-	"Mixologist", "Barkeeper" //Bartender
+	"Mixologist", "Barkeeper", //Bartender
 	"Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist", //Botanist
 	"Chef", "Butcher", "Culinary Artist", "Sous-Chef", //Cook
 	"Custodian", "Custodial Technicial", "Sanitation Technician", "Maid", //Janitor
