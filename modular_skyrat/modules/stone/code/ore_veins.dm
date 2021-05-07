@@ -28,7 +28,6 @@
 	..()
 	if(random_sprite == TRUE)
 		icon_state += "[rand(1, (unique_sprites))]"
-	original_icon_state = icon_state
 
 /obj/structure/ore_vein/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour != TOOL_MINING)
@@ -54,10 +53,11 @@
 		depleted = TRUE
 		icon_state += "_depleted"
 		addtimer(CALLBACK(src, .proc/regenerate_ore), regeneration_time)
+
 //	After the ore vein finishes its wait, we make the ore 'respawn' and return the ore to its original post-Initialize() icon_state.
 /obj/structure/ore_vein/proc/regenerate_ore()
 	depleted = FALSE
-	icon_state = original_icon_state
+	icon_state = initial(icon_state)
 
 /obj/structure/ore_vein/stone
 	name = "stone mine"

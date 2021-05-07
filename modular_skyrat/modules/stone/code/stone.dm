@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "sheet-stone"
 	inhand_icon_state = "sheet-metal"
-	mats_per_unit = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT)
+	mats_per_unit = list(/datum/material/stone=MINERAL_MATERIAL_AMOUNT)
 	throwforce = 10
 //	flags_1 = null
 	resistance_flags = FIRE_PROOF
@@ -48,12 +48,13 @@
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	sheet_type = /obj/item/stack/sheet/mineral/stone
-	slicing_duration = 150   //literal rock
+	slicing_duration = 1.5 SECONDS  //literal rock
 	explosion_block = 2
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
 	custom_materials = list(/datum/material/stone = 4000)
+
 /turf/closed/indestructible/stone
 	name = "stone wall"
 	desc = "A wall made of solid stone brick."
@@ -76,5 +77,3 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
-
-
