@@ -25,3 +25,4 @@
 	new /obj/item/circuitboard/machine/ore_silo(src)
 	new /obj/item/card/id/departmental_budget/car(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/qm(src)
+	new /obj/item/circuitboard/computer/stockexchange(src) //SKYRAT EDIT - Adds stock exchange computer board to locker so QM has control over stonks

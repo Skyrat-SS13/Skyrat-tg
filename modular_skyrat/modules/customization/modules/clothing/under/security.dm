@@ -155,6 +155,10 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisonerclassic"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	has_sensor = LOCKED_SENSORS
+	sensor_mode = SENSOR_COORDS
+	random_sensor = FALSE
 
 ///CDO
 /obj/item/clothing/under/rank/security/peacekeeper/junior/sol
