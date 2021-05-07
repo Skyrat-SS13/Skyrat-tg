@@ -43,10 +43,20 @@
 		icon_dead = "rare_frog_dead"
 		butcher_results = list(/obj/item/food/nugget = 5)
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
 /mob/living/simple_animal/hostile/retaliate/frog/Crossed(AM as mob|obj)
 	. = ..()
+=======
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
+
+/mob/living/simple_animal/hostile/retaliate/frog/proc/on_entered(datum/source, AM as mob|obj)
+	SIGNAL_HANDLER
+>>>>>>> 08df8798cee ((code bounty) refactors all uses of Crossed() and Uncrossed() into signals sent to loc, tracked by connect_loc (#58340))
 	if(!stat && isliving(AM))
 		var/mob/living/L = AM
 		if(L.mob_size > MOB_SIZE_TINY)
