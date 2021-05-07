@@ -1,7 +1,6 @@
 /datum/map_template/shuttle/ruin/blackmarket_chevvy
 	prefix = "_maps/skyrat/shuttles/"
 	suffix = "blackmarket_chevvy"
-	id = "blackmarket_chevvy"
 	name = "Black Market Chevvy"
 
 /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
