@@ -82,10 +82,10 @@
 	if(emote_type == EMOTE_AUDIBLE)
 		//SKYRAT EDIT CHANGE BEGIN
 		//user.audible_message(msg, audible_message_flags = EMOTE_MESSAGE) - SKYRAT EDIT - ORIGINAL
-		user.audible_message(msg, deaf_message = "You see how <b>[user]</b> [msg]", audible_message_flags = EMOTE_MESSAGE)
+		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
 	else
 		//user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE) - SKYRAT EDIT - ORIGINAL
-		user.visible_message(msg, blind_message = "You hear how <b>[user]</b> [msg]", visible_message_flags = EMOTE_MESSAGE)
+		user.visible_message(msg, blind_message = "<span class='emote'>You hear how <b>[user]</b> [msg]</span>", visible_message_flags = EMOTE_MESSAGE)
 		//SKYRAT EDIT CHANGE END
 
 /// For handling emote cooldown, return true to allow the emote to happen
