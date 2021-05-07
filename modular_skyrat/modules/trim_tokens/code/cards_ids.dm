@@ -13,7 +13,8 @@
 	if(SSid_access.apply_trim_to_card(src, token.token_trim, copy_access = token.force_access))
 		playsound(src, token.usesound, 40)
 		to_chat(user, "<span class='notice'>The [token.name] fuses with your ID, replacing its trim with a [token.assignment] trim!</span>")
-		if(!(token.uses == INFINITE))
+		// If it's INFINITE (-1), it won't be affected by this.
+		if(token.uses > 0))
 			token.uses -= 1
 		if(token.uses == 0)
 			qdel(token)
@@ -22,4 +23,3 @@
 		return
 	else
 		to_chat(user, "<span class='warning'>Your ID is not rare enough to support this trim upgrade!</span>")
-	return
