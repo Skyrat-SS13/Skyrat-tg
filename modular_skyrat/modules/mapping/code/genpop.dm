@@ -112,26 +112,28 @@
 				new /obj/item/clothing/under/rank/prisoner/classic(src.loc)
 				new /obj/item/clothing/shoes/sneakers/orange(src.loc)
 				return // early return to prevent 2 outfits
-			if((registered_id.sentence > 0) && (registered_id.sentence < 19596.5)) // up to 30 mins = minsec
-				if(rand(0,1) == 1)
-					new /obj/item/clothing/under/rank/prisoner/lowsec(src.loc)
-				else
-					new /obj/item/clothing/under/rank/prisoner/lowsec/skirt(src.loc)
-			if((registered_id.sentence > 19596.5) && (registered_id.sentence < 37920.5)) // 30min-1hr = medsec
-				if(rand(0,1) == 1)
-					new /obj/item/clothing/under/rank/prisoner(src.loc)
-				else
-					new /obj/item/clothing/under/rank/prisoner/skirt(src.loc)
-			if(registered_id.sentence > 37920.5) // 1hr+ (not perma) = maxsec
-				if(rand(0,1) == 1)
-					new /obj/item/clothing/under/rank/prisoner/highsec(src.loc)
-				else
-					new /obj/item/clothing/under/rank/prisoner/highsec/skirt(src.loc)
-			if(registered_id.sentence == 0) // perma = supermax
-				if(rand(0,1) == 1)
-					new /obj/item/clothing/under/rank/prisoner/supermax(src.loc)
-				else
-					new /obj/item/clothing/under/rank/prisoner/supermax/skirt(src.loc)
+			var/sentence = registered_id.sentence
+			switch(sentence)
+				if(0) // perma = supermax
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner/supermax(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/supermax/skirt(src.loc)
+				if(1 to 18000) // up to 30 mins = minsec
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner/lowsec(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/lowsec/skirt(src.loc)
+				if(18001 to 36000) // 30min-1hr = medsec
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/skirt(src.loc)
+				else // 1hr+ (not perma) = maxsec
+					if(prob(50))
+						new /obj/item/clothing/under/rank/prisoner/highsec(src.loc)
+					else
+						new /obj/item/clothing/under/rank/prisoner/highsec/skirt(src.loc)
 			new /obj/item/clothing/shoes/sneakers/orange(src.loc)
 		else
 			qdel(registered_id)
@@ -140,4 +142,3 @@
 		return
 
 	..()
-
