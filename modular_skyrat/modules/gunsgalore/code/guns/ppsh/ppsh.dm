@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
 	name = "\improper PPSh-41"
-	desc = "The PPSh-41 (pistolet-pulemyot Shpagina; Shpagin machine pistol) is a Soviet submachine gun designed by Georgy Shpagin as a cheap, reliable, and simplified alternative to the PPD-40."
+	desc = "A reproduction of a simple Soviet SMG chambered in 7.62x25 Tokarev rounds. Its heavy wooden stock and leather breech buffer help absorb the bolt’s heavy recoil, making it great for spraying and praying. Uraaaa!"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/ppsh/ppsh.dmi'
 	icon_state = "ppsh"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/ppsh/ppsh_lefthand.dmi'
@@ -30,8 +30,8 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern
-	name = "\improper Mil Spec PPSh-41"
-	desc = "The PPSh-41 (pistolet-pulemyot Shpagina; Shpagin machine pistol) is a Soviet submachine gun designed by Georgy Shpagin as a cheap, reliable, and simplified alternative to the PPD-40. This is the 25th century version."
+	name = "\improper PPsh-59"
+	desc = "A modernized reproduction of a simple Soviet SMG with aftermarket parts. Its heavy synthetic stock and composite breech buffer help absorb the bolt’s heavy recoil, a mix of two worlds that should not exist."
 	icon_state = "ppsh_modern"
 	worn_icon_state = "ppsh"
 	inhand_icon_state = "ppsh"
