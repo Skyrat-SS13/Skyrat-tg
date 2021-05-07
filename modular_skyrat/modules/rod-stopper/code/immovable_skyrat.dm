@@ -4,6 +4,9 @@
 		should_self_destroy = TRUE
 	. = ..()
 	if(should_self_destroy)
-		visible_message("<span class='boldwarning'>The rod tears into the rodstopper with an earth-shattering screech!</span>")
-		explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
+
+		visible_message("<span class='boldwarning'>The rod tears into the rodstopper with a reality-rending screech!</span>")
+		playsound(src.loc,'sound/effects/supermatter.ogg', 200, TRUE)
+
+		new/obj/boh_tear(src.loc)
 		qdel(src)
