@@ -112,14 +112,6 @@
 	icon_state = "peacekeeper_trench_hos"
 	inhand_icon_state = "hostrench"
 	mutant_variants = NONE
-	//unique_reskin = list("Default" = "peacekeeper_trench_hos",
-						 //"Trenchcloak" = "peacekeeper_trench_hos_t",
-						 //"Snowtouched" = "peacekeeper_trench_hos_white",
-						 )
-//obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/AltClick(mob/user)
-    //. = ..()
-    //if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
-        reskin_obj(user)
 
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper
 	name = "warden's peacekeeper jacket"
