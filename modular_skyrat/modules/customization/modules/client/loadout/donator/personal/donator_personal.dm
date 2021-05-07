@@ -193,4 +193,4 @@
 /datum/loadout_item/backpack/donator/intern_hat
 	name = "Intern Hat"
 	path = /obj/item/clothing/head/intern/developer
-	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz", "tf4", "cheshify", "swiftfeather", "spcr", "tygertac", "useroth")
+	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz", "tf4", "cheshify", "swiftfeather", "spcr", "tygertac", "useroth", "slippyjoe")

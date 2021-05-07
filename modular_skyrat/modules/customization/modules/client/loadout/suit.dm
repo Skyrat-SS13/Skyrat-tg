@@ -36,6 +36,16 @@
 	name = "Tailcoat"
 	path = /obj/item/clothing/suit/costume/tailcoat
 
+/datum/loadout_item/suit/duster
+	name = "Colorable Duster"
+	path = /obj/item/clothing/suit/duster/colorable
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/suit/peacoat
+	name = "Colorable Peacoat"
+	path = /obj/item/clothing/suit/toggle/peacoat
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/suit/dresscoat
 	name = "Black Dresscoat"
 	path = /obj/item/clothing/suit/costume/vic_dresscoat

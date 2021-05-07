@@ -164,10 +164,9 @@ SUBSYSTEM_DEF(ticker)
 			//SKYRAT EDIT START - DISCORD SPAM PREVENTION
 			if(!discord_alerted)
 				discord_alerted = TRUE
-				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role ping
-			//SKYRAT EDIT END
-			change_lobbyscreen() //SKYRAT EDIT ADDITION
+				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role pingcurrent_state = GAME_STATE_PREGAME
 			current_state = GAME_STATE_PREGAME
+			change_lobbyscreen() //SKYRAT EDIT ADDITION
 			//Everyone who wants to be an observer is now spawned
 			create_observers()
 			fire()
