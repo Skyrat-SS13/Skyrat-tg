@@ -170,6 +170,10 @@
 	name = "Black Suit Jacket"
 	path = /obj/item/clothing/suit/toggle/lawyer/black
 
+/datum/loadout_item/suit/jacket/suitblackbetter
+	name = "Light Black Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/black/better
+
 /datum/loadout_item/suit/jacket/suitwhite
 	name = "White Suit Jacket"
 	path = /obj/item/clothing/suit/texas
