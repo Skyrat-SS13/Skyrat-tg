@@ -5,7 +5,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the captain"
-	selection_color = "#9fffe2"
+	selection_color = "#ffeeff"
 	minimal_player_age = 40
 	exp_requirements = 400
 	exp_type = EXP_TYPE_SCIENCE
