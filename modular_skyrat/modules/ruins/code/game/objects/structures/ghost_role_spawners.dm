@@ -14,10 +14,9 @@
 	Explore space, find valuable artifacts and nice loot - and pawn it off to those stooges at NT. \
 	Or perhaps more exotic customers are in local space...?"
 	important_info = "You are not an antagonist."
-	uniform = /obj/item/clothing/under/rank/rnd/scientist
+	uniform = /obj/item/clothing/under/rank/cargo/tech
 	shoes = /obj/item/clothing/shoes/laceup
-	id = /obj/item/card/id/away/old/sci
-	l_pocket = /obj/item/stack/medical/bruise_pack
+	id = /obj/item/card/id/away/blackmarket
 	assignedrole = "Black Market Dealer"
 	can_use_alias = TRUE
 	any_station_species = TRUE
