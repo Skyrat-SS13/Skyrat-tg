@@ -4,7 +4,7 @@
 	key = "Z"
 	flags = TONGUELESS_SPEECH
 	syllables = list (
-		"viepn","e","bag","docu","kar","xlaqf","raa","qwos","nen","ty","von","kytaf","xin","ty","ka","baak","hlaf","pyk","znu","agr","ith","na'ar","uah","plhu","six","fhler","bjel","scee","lleri","dttm","aggr","uujl","hjjifr","wuth","aav","inya","sod","bli","min"
+		"viepn","e","bag","docu","kar","xlaqf","raa","qwos","nen","ty","von","kytaf","xin","ty","ka","baak","hlaf","pyk","znu","agr","ith","na'ar","uah","plhu","six","fhler","bjel","scee","lleri","dttm","aggr","uujl","hjjifr","wuth","aav","inya","sod","bli","min","fril","bli-","'ddn-","tun'da","'ad"
 	)
 	icon_state = "zolmach"
 	icon = 'modular_skyrat/modules/customization/icons/misc/language.dmi'
