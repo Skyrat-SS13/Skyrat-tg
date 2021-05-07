@@ -3,7 +3,7 @@
 	name = "corrections officer riot gear"
 	icon_state = "riot"
 
-/obj/structure/closet/secure_closet/warden/brigoff/PopulateContents()
+/obj/structure/closet/secure_closet/brigoff/PopulateContents()
 	..()
 	new /obj/item/clothing/suit/armor/riot(src)
 	new /obj/item/grenade/flashbang(src)
