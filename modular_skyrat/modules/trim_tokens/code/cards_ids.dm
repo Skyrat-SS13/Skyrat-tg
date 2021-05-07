@@ -10,7 +10,7 @@
 		return
 
 	// Just to make sure to give feedback if it requires a better card to grant the trim.
-	if(SSid_access.apply_trim_to_card(src, token.token_trim, copy_access = token.force_access)
+	if(SSid_access.apply_trim_to_card(src, token.token_trim, copy_access = token.force_access))
 		playsound(src, token.usesound, 40)
 		to_chat(user, "<span class='notice'>The [token.name] fuses with your ID, replacing its trim with a [token.assignment] trim!</span>")
 		// If it's INFINITE (-1), it won't be affected by this.
