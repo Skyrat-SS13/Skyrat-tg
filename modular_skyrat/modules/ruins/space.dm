@@ -80,3 +80,9 @@
 	suffix = "luna.dmm"
 	name = "Luna"
 	description = "Please note for ethical concerns all experimentation regarding writing artificial intelligence units to beleive they are A, A fictional character and B, human have been suspended. Have a pleasant shift."
+
+/datum/map_template/ruin/space/skyrat/blackmarket
+	id = "blackmarket"
+	suffix = "blackmarket.dmm"
+	name = "Shady Market"
+	description = "Whaddya buyin'?"
