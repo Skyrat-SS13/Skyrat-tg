@@ -28,7 +28,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern
-	name = "\improper AR-24 Tactical"
+	name = "\improper AR-25T"
 	desc = "An M16 pattern infantry rifle, this one is a modern sporting/self defense model filled to the brim with aftermarket parts. Come and take it."
 	icon_state = "m16_modern"
 	inhand_icon_state = "m16"
@@ -39,7 +39,7 @@
 
 /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern/v2
 	name = "\improper AR-24 'Patriot'"
-	desc = "An M16 pattern infantry rifle with a short barrel and modified cycling mechanism that allows it to fire it significantly faster, with no care for accuracy or effectiveness. Whoever made this is probably a psychopath."
+	desc = "An M16 pattern infantry rifle with a short barrel and modified cycling mechanism that allows it to fire it significantly faster, with no care for accuracy or effectiveness. There's only room for one snake and one boss."
 	icon_state = "m16_modern2"
 	inhand_icon_state = "m16"
 	worn_icon_state = "m16"
