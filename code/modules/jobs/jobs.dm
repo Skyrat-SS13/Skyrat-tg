@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(supply_positions, list(
 	"Quartermaster",
 	"Cargo Technician",
 	"Shaft Miner",
-	"Expeditionary Trooper"))
+	"Expeditionary Trooper")) //SKYRAT EDIT ADDITION
 
 
 GLOBAL_LIST_INIT(service_positions, list(
