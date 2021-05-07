@@ -57,6 +57,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Scientist" = 31,
 		"Roboticist" = 32,
 		"Geneticist" = 33,
+		"Expeditionary Trooper" = 34, //SKYRAT EDIT ADDITION
 		// 40-49: Engineering
 		"Chief Engineer" = 40,
 		"Station Engineer" = 41,
@@ -66,7 +67,6 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Quartermaster" = 51,
 		"Shaft Miner" = 52,
 		"Cargo Technician" = 53,
-		"Expeditionary Trooper" = 54, //SKYRAT EDIT ADDITION
 		// 60+: Civilian/other
 		"Bartender" = 61,
 		"Cook" = 62,
