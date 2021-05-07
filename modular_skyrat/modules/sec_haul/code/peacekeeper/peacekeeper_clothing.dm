@@ -104,7 +104,7 @@
 	icon_state = "peacekeeper_black"
 	worn_icon_state = "peacekeeper_black"
 
-/obj/item/clothing/suit/toggle/armor/hos/trenchcoat/peacekeeper
+/obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper
 	name = "armored peacekeeper trenchcoat"
 	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
@@ -112,6 +112,14 @@
 	icon_state = "peacekeeper_trench_hos"
 	inhand_icon_state = "hostrench"
 	mutant_variants = NONE
+	//unique_reskin = list("Default" = "peacekeeper_trench_hos",
+						 //"Trenchcloak" = "peacekeeper_trench_hos_t",
+						 //"Snowtouched" = "peacekeeper_trench_hos_white",
+						 )
+//obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/AltClick(mob/user)
+    //. = ..()
+    //if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+        reskin_obj(user)
 
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper
 	name = "warden's peacekeeper jacket"
