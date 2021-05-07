@@ -9,3 +9,6 @@
 
 /area/ruin/space/has_grav/powered/skyrat/luna
 	name = "Unexplored Location"
+
+/area/ruin/space/has_grav/powered/skyrat/blackmarket
+	name = "Shady Market"
