@@ -123,7 +123,7 @@
 	alt_titles = list("Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner")
 
 /datum/job/assistant
-	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")
+	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer", "Parolled Prisoner")
 
 /datum/job/botanist
 	alt_titles = list("Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
