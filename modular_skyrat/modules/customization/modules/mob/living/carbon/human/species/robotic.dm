@@ -323,7 +323,7 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/synthmammal_parts_greyscale.dmi'
 
-/datum/species/robotic/synthetic_mammal/get_random_features()
+/datum/species/robotic/organic/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color
 	var/second_color
@@ -363,7 +363,7 @@
 	returned["mcolor3"] = third_color
 	return returned
 
-/datum/species/robotic/synthetic_mammal/get_random_body_markings(list/passed_features)
+/datum/species/robotic/organic/get_random_body_markings(list/passed_features)
 	var/name = "None"
 	var/list/candidates = GLOB.body_marking_sets.Copy()
 	for(var/candi in candidates)
