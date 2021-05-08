@@ -66,3 +66,4 @@
 	dodging = TRUE
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
+
