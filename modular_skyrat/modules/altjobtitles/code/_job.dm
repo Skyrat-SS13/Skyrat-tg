@@ -40,13 +40,13 @@
 	alt_titles = list("Executive Officer", "Employment Officer", "Crew Supervisor")
 
 /datum/job/head_of_security
-	alt_titles = list("Security Commander")
+	alt_titles = list("Security Commander", "Chief Constable", "Chief of Security", "Sherriff")
 
 /datum/job/chief_engineer
 	alt_titles = list("Engineering Foreman")
 
 /datum/job/research_director
-	alt_titles = list("Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor")
+	alt_titles = list("Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer")
 
 /datum/job/quartermaster
 	alt_titles = list("Deck Chief", "Cargo Foreman")
@@ -56,7 +56,7 @@
 
 //Engineering
 /datum/job/station_engineer
-	alt_titles = list("Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician")
+	alt_titles = list("Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Engineer")
 
 /datum/job/atmospheric_technician
 	alt_titles = list("Life Support Technician", "Emergency Fire Technician")
@@ -93,13 +93,13 @@
 
 //Service
 /datum/job/bartender
-	alt_titles = list("Mixologist")
+	alt_titles = list("Mixologist", "Barkeeper")
 
 /datum/job/cook
 	alt_titles = list("Chef", "Butcher", "Culinary Artist", "Sous-Chef")
 
 /datum/job/janitor
-	alt_titles = list("Custodian", "Custodial Technicial", "Sanitation Technician")
+	alt_titles = list("Custodian", "Custodial Technicial", "Sanitation Technician", "Maid")
 
 /datum/job/curator
 	alt_titles = list("Librarian", "Journalist", "Archivist")
@@ -108,7 +108,7 @@
 	alt_titles = list("Psychiatrist", "Therapist", "Counsellor")
 
 /datum/job/lawyer
-	alt_titles = list("Internal Affairs Agent", "Human Resources Agent")
+	alt_titles = list("Internal Affairs Agent", "Human Resources Agent", "Defence Attorney", "Public Defender", "Barrister", "Prosecutor")
 
 /datum/job/chaplain
 	alt_titles = list("Priest", "Preacher")
@@ -123,14 +123,14 @@
 	alt_titles = list("Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner")
 
 /datum/job/assistant
-	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff")
+	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")
 
 /datum/job/botanist
 	alt_titles = list("Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
 
 //Security
 /datum/job/warden
-	alt_titles = list("Brig Sergeant", "Dispatch Officer")
+	alt_titles = list("Brig Sergeant", "Dispatch Officer", "Brig Governor", "Jailer")
 
 /datum/job/detective
 	alt_titles = list("Forensic Technician", "Private Investigator", "Forensic Scientist")
@@ -139,19 +139,19 @@
 	alt_titles = list("Security Operative", "Peacekeeper")
 
 /datum/job/security_sergeant
-	alt_titles = list("Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader")
+	alt_titles = list("Security Squad Leader", "Security Task Force Leader", "Security Fireteam Leader", "Security Enforcer")
 
 /datum/job/security_medic
 	alt_titles = list("Field Medic", "Security Corpsman", "Brig Physician")
 
 /datum/job/junior_officer
-	alt_titles = list("Station Police", "Civil Protection Officer")
+	alt_titles = list("Station Police", "Civil Protection Officer", "Parole Officer")
 
 /datum/job/brigoff
     alt_titles = list("Brig Officer", "Prison Guard")
 
 /datum/job/blueshield
-	alt_titles = list("Command Bodyguard")
+	alt_titles = list("Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist")
 
 //Silicon
 /datum/job/ai
