@@ -24,4 +24,10 @@
 	else
 		return ..()
 
+/obj/item/clothing/head/susp_bowler/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
+	if(ishuman(thrower))
+		var/mob/living/carbon/human/I = thrower
+		I.throw_mode_off(THROW_MODE_TOGGLE) //so they can catch it on the return.
+	return ..()
+
 
