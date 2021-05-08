@@ -171,12 +171,7 @@
 	if(prob(1))
 		desc = "IT'S PEPPER TIME, BITCH!"
 
-<<<<<<< HEAD
-
 /obj/structure/reagent_dispensers/water_cooler//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
-/obj/structure/reagent_dispensers/water_cooler
->>>>>>> c86aff9a829 (The Wallening Approacheth: Adds directional variants to most wall mounts (#58809))
 	name = "liquid cooler"
 	desc = "A machine that dispenses liquid to drink."
 	icon = 'icons/obj/vending.dmi'
