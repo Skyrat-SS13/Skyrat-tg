@@ -22,10 +22,13 @@
 	energy = 50
 	color = COLOR_RED
 
-/obj/effect/accelerated_particle/New(loc)
-	..()
-
+/obj/effect/accelerated_particle/Initialize(mapload)
+	. = ..()
 	addtimer(CALLBACK(src, .proc/move), 1)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
 
 
 /obj/effect/accelerated_particle/Bump(atom/A)
@@ -46,10 +49,10 @@
 			B.take_damage(energy*0.6)
 			movement_range = 0
 
-/obj/effect/accelerated_particle/Crossed(atom/A)
-	. = ..()
-	if(isliving(A))
-		toxmob(A)
+/obj/effect/accelerated_particle/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+	if(isliving(AM))
+		toxmob(AM)
 
 
 /obj/effect/accelerated_particle/ex_act(severity, target)
