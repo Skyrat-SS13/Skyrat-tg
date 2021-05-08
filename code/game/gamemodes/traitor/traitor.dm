@@ -9,7 +9,7 @@
 	antag_flag = ROLE_TRAITOR
 	false_report_weight = 20 //Reports of traitors are pretty common.
 	restricted_jobs = list("Cyborg")//They are part of the AI if he is traitor so are they, they use to get double chances
-	protected_jobs = list("Prisoner","Security Officer", "Brig Officer", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Warden", "Blueshield", "Detective", "Head of Security", "Captain") //SKYRAT EDIT CHANGE - SEC_HAUL
+	protected_jobs = list("Prisoner","Security Officer", "Corrections Officer", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Warden", "Blueshield", "Detective", "Head of Security", "Captain") //SKYRAT EDIT CHANGE - SEC_HAUL
 	required_players = 0
 	required_enemies = 1
 	recommended_enemies = 4

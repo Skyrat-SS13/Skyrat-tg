@@ -1,5 +1,5 @@
 /datum/job/brigoff
-	title = "Brig Officer"
+	title = "Corrections Officer"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("The Warden and Head of Security")
 	faction = "Station"
@@ -31,7 +31,7 @@
 
 
 /datum/outfit/job/brigoff
-	name = "Brig Officer"
+	name = "Corrections Officer"
 	jobtype = /datum/job/brigoff
 	uniform = /obj/item/clothing/under/rank/security/brigguard/sweater
 	suit = /obj/item/clothing/suit/toggle/jacket/brigoff

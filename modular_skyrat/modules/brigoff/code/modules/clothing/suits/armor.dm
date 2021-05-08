@@ -1,5 +1,5 @@
 /obj/item/clothing/suit/toggle/jacket/brigoff
-	name = "brig officer's suit jacket"
+	name = "corrections officer's suit jacket"
 	desc = "A pressed and ironed suit jacket, it has light armor against stabbings. There's some rank badges on the right breast."
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/suit.dmi'
