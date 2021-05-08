@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 #define CART_SECURITY (1<<0)
 #define CART_ENGINE (1<<1)
@@ -17,6 +18,9 @@
 
 
 /obj/item/cartridge//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+=======
+/obj/item/cartridge
+>>>>>>> 770148de061 (Replace Maint. Drone machinery whitelist with last touched check & other tweaks (#58802))
 	name = "generic cartridge"
 	desc = "A data cartridge for portable microcomputers."
 	icon = 'icons/obj/pda.dmi'
@@ -160,7 +164,7 @@
 /obj/item/cartridge/ce
 	name = "\improper Power-On DELUXE cartridge"
 	icon_state = "cart-ce"
-	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_ENGINE | CART_ATMOS | CART_DRONEPHONE
+	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_ENGINE | CART_ATMOS | CART_DRONEPHONE | CART_DRONEACCESS
 	bot_access_flags = FLOOR_BOT | FIRE_BOT
 
 /obj/item/cartridge/cmo
