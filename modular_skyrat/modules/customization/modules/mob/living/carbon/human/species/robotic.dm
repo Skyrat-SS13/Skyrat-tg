@@ -282,3 +282,40 @@
 	reagent_flags = PROCESS_SYNTHETIC
 	species_language_holder = /datum/language_holder/machine
 	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/synthhuman_parts_greyscale.dmi'
+
+
+/datum/species/robotic/synthetic_mammal/organic
+	name = "Organic-Synth Anthromorph"
+	id = "organicsynth"
+	default_color = "00FF00"
+	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
+	inherent_traits = list(
+		TRAIT_CAN_STRIP,
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_LIMBATTACHMENT,
+		TRAIT_NO_HUSK,
+		HAS_FLESH,
+		HAS_BONE,
+	)
+	mutant_bodyparts = list()
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
+	reagent_flags = PROCESS_ORGANIC|PROCESS_SYNTHETIC
+	coldmod = 2
+	heatmod = 2
+	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
+	payday_modifier = 1 //Robots are cheep labor. But this ones are organic.
+	species_language_holder = /datum/language_holder/machine
+
+	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
+	mutantbrain = /obj/item/organ/brain/ipc_positron
+	mutantstomach = /obj/item/organ/stomach
+	mutantears = /obj/item/organ/ears/cybernetic
+	mutanttongue = /obj/item/organ/tongue
+	mutanteyes = /obj/item/organ/eyes/robot_ipc
+	mutantlungs = /obj/item/organ/lungs/cybernetic
+	mutantheart = /obj/item/organ/heart/cybernetic
+	mutantliver = /obj/item/organ/liver/cybernetic
+	exotic_blood = /datum/reagent/fuel/oil
+	exotic_bloodtype = "SYNOIL"
+
+	learnable_languages = list(/datum/language/common, /datum/language/machine, /datum/language/spacer)
