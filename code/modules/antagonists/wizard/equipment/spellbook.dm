@@ -348,11 +348,14 @@
 	log_spellbook("[key_name(user)] bought [src] for [cost] points")
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	return TRUE
-
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/spellbook_entry/item/staffchange
 	name = "Staff of Change"
 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
 	item_path = /obj/item/gun/magic/staff/change
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/spellbook_entry/item/staffanimation
 	name = "Staff of Animation"
@@ -666,7 +669,7 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_TINY
-	var/uses = 16 //SKYRAT EDIT - ORIGINAL VALUE (10)
+	var/uses = 10
 	var/temp = null
 	var/mob/living/carbon/human/owner
 	var/list/entries = list()

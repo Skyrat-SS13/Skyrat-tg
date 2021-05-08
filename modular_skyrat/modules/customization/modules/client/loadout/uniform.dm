@@ -2,6 +2,11 @@
 	category = LOADOUT_CATEGORY_UNIFORM
 
 //MISC
+/datum/loadout_item/uniform/gandalf
+	name = "Nostalgic Costume"
+	path = /obj/item/clothing/under/nostalgiacritic
+	ckeywhitelist = list("gandalf2k15")
+
 /datum/loadout_item/uniform/assistantformal
 	name = "Assistant's formal uniform"
 	path = /obj/item/clothing/under/misc/assistantformal
@@ -213,9 +218,9 @@
 	name = "Feminine Suit"
 	path = /obj/item/clothing/under/suit/black/female
 
-/datum/loadout_item/uniform/suit/femblackskirt
+/datum/loadout_item/uniform/suit/femblacksk
 	name = "Feminine Skirt Suit"
-	path = /obj/item/clothing/under/blackfemsuitskirt
+	path = /obj/item/clothing/under/suit/black/female/skirt
 
 /datum/loadout_item/uniform/suit/femblackskirt
 	name = "Executive Skirt"
@@ -540,42 +545,42 @@
 
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
- 	path = /obj/item/clothing/under/rank/protcustp/lowsecp
+ 	path = /obj/item/clothing/under/rank/prisoner/lowsec
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/lowprisons
  	name = "Low Security Prisoner Jumpskirt"
- 	path = /obj/item/clothing/under/rank/protcustp/lowsecpskirt
+ 	path = /obj/item/clothing/under/rank/prisoner/lowsec/skirt
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/procusprison
  	name = "Protective Custody Prisoner Jumpsuit"
- 	path = /obj/item/clothing/under/rank/protcustp
+ 	path = /obj/item/clothing/under/rank/prisoner/protcust
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/procusprisons
  	name = "Protective Custody Prisoner Jumpskirt"
- 	path = /obj/item/clothing/under/rank/protcustpskirt
+ 	path = /obj/item/clothing/under/rank/prisoner/protcust/skirt
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/supmaxprison
  	name = "Supermax Prisoner Jumpsuit"
- 	path = /obj/item/clothing/under/rank/protcustp/supermaxp
+ 	path = /obj/item/clothing/under/rank/prisoner/supermax
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/supmaxprisons
  	name = "Supermax Prisoner Jumpskirt"
- 	path = /obj/item/clothing/under/rank/protcustpskirt/supermaxpskirt
+ 	path = /obj/item/clothing/under/rank/prisoner/supermax/skirt
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/highprison
  	name = "High Risk Prisoner Jumpsuit"
- 	path = /obj/item/clothing/under/rank/protcustp/highsecp
+ 	path = /obj/item/clothing/under/rank/prisoner/highsec
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/supmaxprisons
  	name = "High Risk Prisoner Jumpskirt"
- 	path = /obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
+ 	path = /obj/item/clothing/under/rank/prisoner/highsec/skirt
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/blacknwhite
