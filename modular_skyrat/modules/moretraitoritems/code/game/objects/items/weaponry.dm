@@ -7,13 +7,15 @@
 	desc = "A deep black bowler. Inside the hat, there is a sleek red S, with a smaller X insignia embroidered within. On closer inspection, the brim feels oddly weighted..."
 	icon_state = "bowler"
 	inhand_icon_state = "bowler"
-	force = 3
+	force = 10
 	throwforce = 45
 	throw_speed = 5
 	throw_range = 9
 	w_class = WEIGHT_CLASS_SMALL
 	armour_penetration = 30 //5 points less then a double esword!
-	sharpness = SHARP_EDGED
+	sharpness = SHARP_POINTY
+	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 
 /obj/item/clothing/head/susp_bowler/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
 	if(ishuman(thrower))
