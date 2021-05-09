@@ -270,7 +270,7 @@ description = "A powder derived from fish toxin, Rezadone can effectively treat 
 	else if(reac_volume >= 10 && HAS_TRAIT_FROM(patient, TRAIT_HUSK, CHANGELING_DRAIN))
 		patient.cure_husk(CHANGELING_DRAIN)
 		patient.visible_message("<span class='nicegreen'>[patient]'s body rapidly absorbs moisture from the environment, taking on a more healthy appearance.</span>")
-	//
+	// SKYRAT EDIT ADDITION END
 /datum/reagent/medicine/spaceacillin
 	name = "Spaceacillin"
 	description = "Spaceacillin will prevent a patient from conventionally spreading any diseases they are currently infected with. Also reduces infection in serious burns."
