@@ -32,6 +32,10 @@
 	if(announce_captaincy)
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to extreme staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
 
+/datum/job/quartermaster/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	to_chat(M, "<span class='userdanger'>The rifle in your locker is for <b><u>SELF DEFENSE</b></u>, keep it within your department unless the situation is extremely dire. Security can confiscate it!.")
+
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/quartermaster
