@@ -9,7 +9,7 @@
 
 /area/shuttle/sbc/med
 	name = "Syndicate Battle Cruiser Medbay"
-	icon_state = "medbay3"
+	icon_state = "medbay1"
 	ambience_index = AMBIENCE_MEDICAL
 
 /area/shuttle/sbc/engi
@@ -32,9 +32,3 @@
 /area/shuttle/sbc/supermatter
 	name = "Syndicate Battle Cruiser Engine"
 	icon_state = "engine_sm"
-
-/area/shuttle/sbc/fighter1
-	name = "SBC Fighter 1"
-
-/area/shuttle/sbc/corvette
-	name = "SBC corvette"
