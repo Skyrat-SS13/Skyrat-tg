@@ -303,7 +303,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/plasmaman
 	mutant_bodyparts = list()
-	can_have_genitals = FALSE
+	can_have_genitals = TRUE
 	can_augment = FALSE
 	learnable_languages = list(/datum/language/common, /datum/language/calcic)
 
