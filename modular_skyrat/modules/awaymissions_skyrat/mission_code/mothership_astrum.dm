@@ -37,7 +37,7 @@
 /mob/living/simple_animal/hostile/abductor
 	name = "Abductor Scientist"
 	desc = "From the depths of space."
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons'
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/abductors.dmi'
 	icon_state = "abductor_scientist"
 	icon_living = "syndicate"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
@@ -66,4 +66,3 @@
 	dodging = TRUE
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
-
