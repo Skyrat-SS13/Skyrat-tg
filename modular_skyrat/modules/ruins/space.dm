@@ -63,7 +63,7 @@
 	name = "Code Alpha Supplementary Station"
 	description = "The mess hall of a once bustling supplementary station, to be deployed alongside SS13."
 
-/datum/map_template/ruin/space/skyrat/DS1
+/datum/map_template/ruin/space/skyrat/deeessone
 	id = "ds1"
 	suffix = "dsone.dmm"
 	name = "DS-1"
