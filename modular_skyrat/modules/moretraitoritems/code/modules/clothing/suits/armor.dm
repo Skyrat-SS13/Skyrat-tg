@@ -1,4 +1,4 @@
-obj/item/clothing/suit/armor/legate
+//obj/item/clothing/suit/armor/legate
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
 	name = "ninth legion legate armor"
