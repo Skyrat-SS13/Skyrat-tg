@@ -21,7 +21,13 @@
 		/obj/item/clothing/under/misc/poly_bottomless = 4,
 		/obj/item/clothing/under/misc/poly_tanktop = 4,
 		/obj/item/clothing/under/misc/poly_tanktop/female = 4,
-		/obj/item/clothing/neck/human_petcollar= 8,
+		/obj/item/clothing/mask/muzzle/ring = 4,
+		/obj/item/clothing/mask/muzzle/ball = 4,
+		/obj/item/clothing/neck/human_petcollar = 8,
+		/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 3,
+		/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 5,
+		/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 3,
+		/obj/item/clothing/neck/human_petcollar/locked/cross = 3,
 		/obj/item/clothing/neck/human_petcollar/choker = 4,
 		/obj/item/restraints/handcuffs/fake = 8,
 		/obj/item/clothing/glasses/blindfold = 8,
@@ -43,7 +49,8 @@
 	premium = list(
 		/obj/item/clothing/under/dress/corset = 4,
 		/obj/item/clothing/under/pants/chaps = 4,
-		/obj/item/clothing/accessory/skullcodpiece/fake = 4
+		/obj/item/clothing/accessory/skullcodpiece/fake = 4,
+		/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3
 	)
 
 	refill_canister = /obj/item/vending_refill/kink
