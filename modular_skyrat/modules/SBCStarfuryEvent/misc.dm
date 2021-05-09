@@ -37,7 +37,7 @@
 	shuttleId = "starfury"
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
-	light_color = LIGHT_COLOR_RED
+	light_color = RED
 	req_access = list(ACCESS_SYNDICATE)
 	possible_destinations = "starfury_home;starfury_custom"
 

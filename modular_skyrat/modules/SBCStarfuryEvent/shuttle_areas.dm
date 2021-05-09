@@ -1,6 +1,5 @@
 /area/shuttle/sbc
 	requires_power = TRUE
-	canSmoothWithAreas = /area/shuttle/sbc
 
 /area/shuttle/sbc/starfury
 	name = "Syndicate Battle Cruiser Bridge"
