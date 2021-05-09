@@ -134,7 +134,7 @@
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
 
-/obj/item/clothing/under/rank/prisoner/blacknwhite
+/obj/item/clothing/under/rank/prisoner/classic
 	name = "classic prisoner jumpsuit"
 	desc = "A black and white striped jumpsuit, like something out of a movie."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'

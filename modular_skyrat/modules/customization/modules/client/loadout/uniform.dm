@@ -583,9 +583,9 @@
  	path = /obj/item/clothing/under/rank/prisoner/highsec/skirt
  	restricted_roles = list("Prisoner")
 
-/datum/loadout_item/uniform/job/blacknwhiteprison
+/datum/loadout_item/uniform/job/blacknwhite
  	name = "Classic Prisoner Jumpsuit"
- 	path = /obj/item/clothing/under/rank/prisoner/blacknwhite
+ 	path = /obj/item/clothing/under/rank/prisoner/classic
  	restricted_roles = list("Prisoner")
 
 /datum/loadout_item/uniform/job/priestrobe
