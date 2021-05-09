@@ -7,3 +7,6 @@
 	inhand_icon_state = "kilt"
 	armor = list(MELEE = 20, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 10, ACID = 20, WOUND = 10)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+
+
+
