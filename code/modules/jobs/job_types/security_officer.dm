@@ -102,6 +102,13 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		var/obj/item/card/id/worn_id = H.wear_id
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
 		H.sec_hud_set_ID()
+		//SKYRAT EDIT ADD - ALT TITLES
+		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
+			worn_id.assignment = H.client.prefs.alt_titles_preferences[title]
+			worn_id.update_label()
+		else if (alt_title_pref)
+			worn_id.assignment = alt_title_pref
+			worn_id.update_label()
 
 	var/teleport = 0
 	if(!CONFIG_GET(flag/sec_start_brig))
