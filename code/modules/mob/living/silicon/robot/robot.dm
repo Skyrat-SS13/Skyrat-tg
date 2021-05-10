@@ -996,18 +996,16 @@
 	if(program)
 		program.force_full_update()
 
-<<<<<<< HEAD
 // SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
 /mob/living/silicon/robot/replace_identification_name(oldname,newname)
 	if(aiPDA && !shell)
 		aiPDA.owner = newname
 		aiPDA.name = newname + " (" + aiPDA.ownjob + ")"
 // SKYRAT EDIT ADDITION END
-=======
+
 /mob/living/silicon/robot/get_exp_list(minutes)
 	. = ..()
 
 	var/datum/job/cyborg/cyborg_job_ref = SSjob.GetJobType(/datum/job/cyborg)
 
 	.[cyborg_job_ref.title] = minutes
->>>>>>> ff47abe825f (Refactors playtime tracking code. (#58186))
