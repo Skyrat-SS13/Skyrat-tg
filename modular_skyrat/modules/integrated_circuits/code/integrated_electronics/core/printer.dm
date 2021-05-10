@@ -374,3 +374,11 @@
 	desc = "Install this into your integrated circuit printer to enhance it.  This one allows the printer to duplicate assemblies instantaneously."
 	icon_state = "upgrade_disk_clone"
 */
+
+/obj/item/integrated_circuit_printer/polychromic
+	name = "polychromic integrated circuit printer"
+	icon_state = "circuit_printer_poly"
+
+/obj/item/integrated_circuit_printer/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("666", "CBA", "00F"))
