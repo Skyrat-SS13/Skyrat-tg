@@ -129,6 +129,7 @@
 	else
 		to_chat(owner, "<span class='notice'>You flip the NV goggles up.")
 		my_helmet.disable_nv()
+	my_helmet.update_appearance()
 
 /obj/item/clothing/head/helmet/expeditionary_corps/ComponentInitialize()
 	. = ..()
