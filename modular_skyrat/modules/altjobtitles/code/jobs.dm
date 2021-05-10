@@ -47,8 +47,8 @@ GLOBAL_LIST_INIT(service_alttitles, list(
 	"Priest", "Preacher", //Chap
 	"Pantomimist", //Mime
 	"Jester", //Honkmaster Supreme
-	"Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner", //Prisoner
-	"Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer", "Parolled Prisoner")) //Asistant
+	"Low Risk Prisoner", "High Risk Prisoner", "Extreme Risk Prisoner", "Protective Custody Prisoner", //Prisoner
+	"Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer",)) //Asistant
 
 GLOBAL_LIST_INIT(security_alttitles, list(
 	"Security Commander", "Chief Constable", "Chief of Security", "Sherriff", //HoS
