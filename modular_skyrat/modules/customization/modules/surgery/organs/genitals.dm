@@ -187,7 +187,7 @@
 	if(lowertext(genital_name) == "cloaca")
 		returned_string = "You see a cloaca." //i deserve a pipebomb for this
 	if(genital_name == "Tauric Dog Vagina|ONLY USE ON TAUR DOGS")
-		returned_string == "You see a vagina." //Same as i little man ^
+		returned_string = "You see a vagina." //Same as i little man ^
 	switch(aroused)
 		if(AROUSAL_NONE)
 			returned_string += " It seems dry."
