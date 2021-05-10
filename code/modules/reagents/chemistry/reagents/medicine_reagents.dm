@@ -235,7 +235,7 @@
 /datum/reagent/medicine/rezadone
 	name = "Rezadone"
 	//description = "A powder derived from fish toxin, Rezadone can effectively treat genetic damage as well as restoring minor wounds and restoring corpses husked by burns. Overdose will cause intense nausea and minor toxin damage."
-description = "A powder derived from fish toxin, Rezadone can effectively treat genetic damage as well as restoring minor wounds and restoring corpses husked by burns or dessication. Overdose will cause intense nausea and minor toxin damage." //SKYRAT EDIT CHANGE
+  description = "A powder derived from fish toxin, Rezadone can effectively treat genetic damage as well as restoring minor wounds and restoring corpses husked by burns or dessication. Overdose will cause intense nausea and minor toxin damage." //SKYRAT EDIT CHANGE
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	overdose_threshold = 30
