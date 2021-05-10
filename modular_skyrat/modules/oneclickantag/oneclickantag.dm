@@ -1,5 +1,32 @@
+/datum/mind/var/list/oneclickantag = list()
+
+/datum/mind/remove_antag_datum(datum)
+	switch(datum)
+		if(/datum/antagonist/traitor)
+			src.oneclickantag += ROLE_TRAITOR
+		if(/datum/antagonist/changeling)
+			src.oneclickantag += ROLE_CHANGELING
+		if(/datum/antagonist/rev)
+			src.oneclickantag += ROLE_REV
+		if(/datum/antagonist/cult)
+			src.oneclickantag += ROLE_CULTIST
+		if(/datum/antagonist/brother)
+			src.oneclickantag += ROLE_BROTHER
+		if(/datum/antagonist/monkey)
+			src.oneclickantag += ROLE_MONKEY
+		if(/datum/antagonist/traitor/internal_affairs)
+			src.oneclickantag += ROLE_INTERNAL_AFFAIRS
+		if(/datum/antagonist/gang)
+			src.oneclickantag += ROLE_FAMILIES
+		if(/datum/antagonist/heretic)
+			src.oneclickantag += ROLE_HERETIC
+		else
+			message_admins("Unable to update [src]'s previous antag list for One Click Antag. Blame coders.")
+	return ..()
+
 /datum/mind/proc/make_antag(antagtype, opt = null)
 	message_admins("[src] was turned into [antagtype]")
+	src.oneclickantag += antagtype
 	switch(antagtype)
 		if(ROLE_TRAITOR)
 			src.make_Traitor()
@@ -54,6 +81,8 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	popup.open()
 
 /datum/admins/proc/can_make_antag(mob/living/carbon/human/applicant, targetrole, onstation = TRUE, conscious = TRUE)
+	if(applicant.mind.oneclickantag.Find(targetrole))
+		return FALSE
 	if(applicant.mind.special_role)
 		return FALSE
 	if(!(targetrole in applicant.client.prefs.be_special))
@@ -73,6 +102,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 /datum/admins/
 	var/MAKEANTAG_RESTRICTLIST = list()
 	var/MAKEANTAG_PL_DEFAULT_SECURITY = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+	var/MAKEANTAG_PL_DEFAULT_HEADS = list("Captain","Head of Personnel","Research Director","Chief Engineer","Chief Medical Officer","Head of Security","Quartermaster")
 	var/MAKEANTAG_PL_DEFAULT_SILICON = list("AI", "Cyborg")
 
 /datum/admins/proc/antag_get_protected_roles(antagtype)
@@ -85,26 +115,32 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	switch(antagtype)
 		if(ROLE_TRAITOR)
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
+			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 		if(ROLE_CHANGELING)
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
+			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 		if(ROLE_CULTIST)
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
+			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_p += MAKEANTAG_PL_DEFAULT_SILICON
 			p_p += list("Chaplain", "Head of Personnel")
 		if(ROLE_HERETIC)
 			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
+			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 		if(ROLE_FAMILIES)
 			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
+			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 			p_r += list("Head of Personnel")
 		if(ROLE_MONKEY)
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
+			p_p += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += list("Prisoner")
 		if(ROLE_REV)
 			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
+			p_r += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
-			p_r += list("Head of Personnel", "Chief Engineer", "Research Director", "Chief Medical Officer")
 	if(c_a)
 		p_r += list("Assistant")
 	if(c_p)
@@ -149,6 +185,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 				continue
 			candidates += applicant
 	if(candidates.len)
+		candidates = shuffle(candidates)
 		var/canmake = min(candidates.len, opt)
 		for(var/index = 0, index<canmake, index++)
 			holder = pick(candidates)
