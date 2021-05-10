@@ -452,10 +452,15 @@
 				var/command_bold = ""
 				if(job in GLOB.command_positions)
 					command_bold = " command"
+				var/jobline = "[job_datum.title] ([job_datum.current_positions])"
 				if(job_datum in SSjob.prioritized_jobs)
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
-				else
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+					jobline = "<span class='priority'>[jobline]</span>"
+				if(client && client.prefs && client.prefs.alt_titles_preferences[job_datum.title])
+					jobline = "[jobline]<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job_datum.title]])</span>"
+
+				jobline = "<a class='job[command_bold]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[jobline]</a>"
+				dept_dat += jobline
+
 		if(!dept_dat.len)
 			dept_dat += "<span class='nopositions'>No positions open.</span>"
 		dat += jointext(dept_dat, "")
