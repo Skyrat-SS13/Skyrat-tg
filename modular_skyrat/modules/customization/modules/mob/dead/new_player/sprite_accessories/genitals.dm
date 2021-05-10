@@ -222,6 +222,10 @@
 	icon_state = "cloaca"
 	name = "Cloaca"
 
+/datum/sprite_accessory/genital/vagina/dogtaur
+	icon_state = "taur"
+	name = "Tauric Dog Vagina|ONLY USE ON TAUR DOGS"
+
 /datum/sprite_accessory/genital/womb
 	organ_type = /obj/item/organ/genital/womb
 	associated_organ_slot = ORGAN_SLOT_WOMB

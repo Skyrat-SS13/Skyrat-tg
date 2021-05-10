@@ -254,6 +254,8 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("5D5"))
 
+/obj/item/clothing/suit/poncho
+    mutant_variants = STYLE_TAUR_ALL
 
-
-
+/obj/item/clothing/suit/apron
+    mutant_variants = STYLE_TAUR_ALL
