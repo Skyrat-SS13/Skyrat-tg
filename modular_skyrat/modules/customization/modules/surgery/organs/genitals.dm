@@ -15,6 +15,7 @@
 	var/aroused = AROUSAL_NONE
 	///Whether the organ is supposed to use a skintoned variant of the sprite
 	var/uses_skintones
+	var/desc_string
 
 //This translates the float size into a sprite string
 /obj/item/organ/genital/proc/get_sprite_size_string()
@@ -184,7 +185,6 @@
 
 /obj/item/organ/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] vagina."
-	var/desc_string = "You see a vagina."
 	if(gas && gas.desc_string)
 		returned_string = gas.desc_string
 		returned_string = "You see a cloaca." //i deserve a pipebomb for this

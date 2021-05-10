@@ -4,6 +4,7 @@
 	var/uses_skintones
 	///Where the genital is on the body. If clothing doesn't cover it, it shows up!
 	var/genital_location = GROIN
+	var/desc_string
 
 /datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
