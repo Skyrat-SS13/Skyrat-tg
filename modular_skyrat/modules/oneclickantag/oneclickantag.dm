@@ -3,16 +3,18 @@
 	switch(antagtype)
 		if(ROLE_TRAITOR)
 			src.make_Traitor()
-		if(ROLE_BROTHER)
-			src.add_antag_datum(/datum/antagonist/brother/)
 		if(ROLE_CHANGELING)
 			src.make_Changeling()
 		if(ROLE_REV)
 			src.make_Rev()
 		if(ROLE_CULTIST)
 			src.add_antag_datum(/datum/antagonist/cult)
-		if(ROLE_OBSESSED)
-			src.add_antag_datum(/datum/antagonist/obsessed)
+		if(ROLE_BROTHER)
+			if(!istype(opt, /datum/team/brother_team))
+				message_admins("Attempted to create bloodbrothers but no team was specified!")
+				return FALSE
+			var/datum/team/brother_team/team = opt
+			src.add_antag_datum(/datum/antagonist/brother, team)
 		if(ROLE_MONKEY)
 			src.add_antag_datum(/datum/antagonist/monkey/leader)
 		if(ROLE_INTERNAL_AFFAIRS)
@@ -21,7 +23,10 @@
 			src.add_antag_datum(/datum/antagonist/gang)
 		if(ROLE_HERETIC)
 			src.add_antag_datum(/datum/antagonist/heretic)
-	return
+		else
+			message_admins("[src] could not be turned into [antagtype] as it is not implemented; blame coders.")
+			return FALSE
+	return TRUE
 
 /client/proc/one_click_antag()
 	set name = "Create Antagonist"
@@ -32,23 +37,13 @@
 		holder.one_click_antag()
 	return
 
-/*
-DOES NOT WORK:
-BLOOD BROTHER
-OBSESSED
-IAA
-FAMILIES
-
-I dont even know; make_antag() calls perfectly fine, but then it just doesn't find valid players???
-*/
+/**
+If anyone can figure out how to get Obsessed to work I would be very appreciative.
+**/
 /datum/admins/proc/one_click_antag()
 	var/dat = ""
 	for(var/role in GLOB.special_roles)
-		if(role == ROLE_MALF)
-			continue
-		if(role == ROLE_PAI)
-			continue
-		if(role == ROLE_SENTIENCE)
+		if(role in list(ROLE_MALF, ROLE_PAI, ROLE_SENTIENCE, ROLE_OBSESSED))
 			continue
 		dat += "<a href='?src=[REF(src)];[HrefToken()];makeAntag=[role]'>Make [role](s)."
 		if(antag_is_ghostrole(role))
@@ -67,46 +62,47 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 		var/turf/T = get_turf(applicant)
 		if(!is_station_level(T.z))
 			return FALSE
-	if(conscious && applicant.stat) //incase you don't care about a certain antag being unconcious when made, ie if they have selfhealing abilities.
+	if(conscious && applicant.stat)
 		return FALSE
-	if(!considered_alive(applicant.mind) || considered_afk(applicant.mind)) //makes sure the player isn't a zombie, brain, or just afk all together
+	if(!considered_alive(applicant.mind) || considered_afk(applicant.mind))
 		return FALSE
-	return !is_banned_from(applicant.ckey, list(targetrole, ROLE_SYNDICATE))
+	if(is_banned_from(applicant.ckey, list(targetrole, ROLE_SYNDICATE)))
+		return FALSE
+	return TRUE
 
 /datum/admins/
 	var/MAKEANTAG_RESTRICTLIST = list()
-	var/MAKEANTAG_PL_DEFAULT_SEC = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+	var/MAKEANTAG_PL_DEFAULT_SECURITY = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	var/MAKEANTAG_PL_DEFAULT_SILICON = list("AI", "Cyborg")
 
 /datum/admins/proc/antag_get_protected_roles(antagtype)
 	if(MAKEANTAG_RESTRICTLIST[antagtype])
 		return MAKEANTAG_RESTRICTLIST[antagtype]
-	//message_admins("Constructing Protected Roles for [antagtype]")
 	var/c_p = CONFIG_GET(flag/protect_roles_from_antagonist)
 	var/c_a = CONFIG_GET(flag/protect_assistant_from_antagonist)
 	var/list/p_p = list()
 	var/list/p_r = list()
 	switch(antagtype)
 		if(ROLE_TRAITOR)
-			p_p += MAKEANTAG_PL_DEFAULT_SEC
+			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 		if(ROLE_CHANGELING)
-			p_p += MAKEANTAG_PL_DEFAULT_SEC
+			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 		if(ROLE_CULTIST)
-			p_p += MAKEANTAG_PL_DEFAULT_SEC
+			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_p += MAKEANTAG_PL_DEFAULT_SILICON
 			p_p += list("Chaplain", "Head of Personnel")
 		if(ROLE_HERETIC)
-			p_p += MAKEANTAG_PL_DEFAULT_SEC
+			p_p += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 		if(ROLE_FAMILIES)
-			p_r += MAKEANTAG_PL_DEFAULT_SEC
+			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 			p_r += list("Head of Personnel")
 		if(ROLE_MONKEY)
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 			p_r += list("Prisoner")
 		if(ROLE_REV)
-			p_r += MAKEANTAG_PL_DEFAULT_SEC
+			p_r += MAKEANTAG_PL_DEFAULT_SECURITY
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 			p_r += list("Head of Personnel", "Chief Engineer", "Research Director", "Chief Medical Officer")
 	if(c_a)
@@ -137,16 +133,17 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 	return FALSE
 
 /datum/admins/proc/make_antag(antagtype, opt)
-	message_admins("Trying to create '[antagtype]' with an optional paramater of '[opt]'")
-
 	if(antag_is_ghostrole(antagtype))
 		return make_antag_ghostrole(antagtype, opt)
-
+	var/datum/team/brother_team/team
+	if(antagtype == ROLE_BROTHER)
+		team = new
+		team.pick_meeting_area()
+		team.forge_brother_objectives()
 	var/list/restricted_jobs = antag_get_protected_roles(antagtype)
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/holder = null
 	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
-		//message_admins("player_list [applicant]")
 		if(can_make_antag(applicant, antagtype))
 			if(applicant.job in restricted_jobs)
 				continue
@@ -155,13 +152,17 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 		var/canmake = min(candidates.len, opt)
 		for(var/index = 0, index<canmake, index++)
 			holder = pick(candidates)
-			holder.mind.make_antag(antagtype)
+			if(antagtype==ROLE_BROTHER)
+				holder.mind.make_antag(antagtype, team)
+			else
+				holder.mind.make_antag(antagtype)
 			candidates.Remove(holder)
+		if(antagtype==ROLE_BROTHER)
+			team.update_name()
 		return TRUE
 	return FALSE
 
 /datum/admins/proc/make_antag_ghostrole(antagtype, opt)
-	//message_admins("make_antag_ghostrole [antagtype]")
 	switch(antagtype)
 		if(ROLE_WIZARD)
 			return make_wizard()
@@ -201,7 +202,7 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 		var/numagents = maxCount
 		var/agentcount = 0
 		for(var/i = 0, i<numagents,i++)
-			shuffle_inplace(candidates) //More shuffles means more randoms
+			shuffle_inplace(candidates)
 			for(var/mob/j in candidates)
 				if(!j || !j.client)
 					candidates.Remove(j)
@@ -211,10 +212,8 @@ I dont even know; make_antag() calls perfectly fine, but then it just doesn't fi
 				chosen += theghost
 				agentcount++
 				break
-		//Making sure we have atleast 3 Nuke agents, because less than that is kinda bad
 		if(agentcount < 3)
 			return FALSE
-		//Let's find the spawn locations
 		var/leader_chosen = FALSE
 		var/datum/team/nuclear/nuke_team
 		for(var/mob/c in chosen)
