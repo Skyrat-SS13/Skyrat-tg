@@ -47,12 +47,12 @@
 		return
 	if(!isturf(user.loc))
 		return
-	if(!get_path_to(user, target, max_distance = changeling.sting_range, simulated_only = FALSE))
-		return
 	var/mob/living/carbon/human/to_check = target // SKYRAT EDIT START - STINGS DO NOT AFFECT ROBOTIC ENTITIES
 	if(to_check.mob_biotypes & MOB_ROBOTIC)
 		to_chat(user, "<span class='warning'>Our sting would have no effect on robotic entities</span>")
 		return // SKYRAT EDIT END
+	if(!length(get_path_to(user, target, max_distance = changeling.sting_range, simulated_only = FALSE)))
+		return // no path within the sting's range is found. what a weird place to use the pathfinding system
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/changeling))
 		sting_feedback(user, target)
 		changeling.chem_charges -= chemical_cost

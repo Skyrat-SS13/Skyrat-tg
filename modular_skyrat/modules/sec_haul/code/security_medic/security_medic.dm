@@ -84,3 +84,4 @@
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/peacekeeper/full(src)
+	new /obj/item/clothing/under/rank/medical/doctor/red(src)
