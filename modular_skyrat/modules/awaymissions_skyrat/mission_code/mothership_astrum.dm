@@ -33,13 +33,13 @@
 //Fluff Notes
 
 //Simplemobs
-
+//MELEE
 /mob/living/simple_animal/hostile/abductor
 	name = "Abductor Scientist"
 	desc = "From the depths of space."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/abductors.dmi'
 	icon_state = "abductor_scientist"
-	icon_living = "syndicate"
+	icon_living = "abductor_scientist"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 0
@@ -66,3 +66,56 @@
 	dodging = TRUE
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
+
+/mob/living/simple_animal/hostile/abductor/melee //dude with a melee weapon
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	icon_state = "abductor_scientist_melee"
+	icon_living = "abductor_scientist_melee"
+	loot = list(/obj/effect/gibspawner/human)
+	attack_verb_continuous = "slashes"
+	attack_verb_simple = "slash"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	attack_vis_effect = ATTACK_EFFECT_SLASH
+	status_flags = 0
+	var/projectile_deflect_chance = 0
+
+/mob/living/simple_animal/hostile/abductor/agent
+	name = "Abductor Agent"
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	icon_state = "abductor_agent"
+	icon_living = "abductor_agent"
+	maxHealth = 170
+	health = 170
+
+//RANGED
+
+/mob/living/simple_animal/hostile/abductor/ranged
+	name = "Abductor Scientist"
+	ranged = 1
+	retreat_distance = 5
+	minimum_distance = 5
+	icon_state = "abductor_scientist_gun"
+	icon_living = "abductor_scientist_gun"
+	maxHealth = 70
+	health = 70
+	projectiletype = /obj/projectile/beam/laser
+	projectilesound = 'sound/weapons/laser.ogg'
+
+/mob/living/simple_animal/hostile/abductor/ranged/agent
+	name = "Abductor Combat Specialist"
+	icon_state = "abductor_agent_combat_gun"
+	icon_living = "abductor_agent_combat_gun"
+	maxHealth = 170
+	health = 170
+
+//LOOT
+
+/obj/item/crowbar/freeman
+	name = "Blood Soaked Crowbar"
+	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
+	icon_state = "crowbar"
+	force = 30
+	throwforce = 35
