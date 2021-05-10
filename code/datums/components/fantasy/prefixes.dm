@@ -98,8 +98,6 @@
 /datum/fantasy_affix/ugly/remove(datum/component/fantasy/comp)
 	var/obj/item/master = comp.parent
 	master.AddElement(/datum/element/beauty, min(comp.quality, -1) * 250)
-<<<<<<< HEAD
-=======
 
 /datum/fantasy_affix/venomous
 	name = "<poisonname>-laced (picked from small pool of toxins)"
@@ -140,4 +138,3 @@
 /datum/fantasy_affix/venomous/remove(datum/component/fantasy/comp)
 	var/obj/item/master = comp.parent
 	master.RemoveElement(/datum/element/venomous)
->>>>>>> 332fa0b3d0e (fixes master (adds a name to the venomous prefix, fixes bad signal in udders.dm) (#59007))
