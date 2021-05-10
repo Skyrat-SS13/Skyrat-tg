@@ -45,9 +45,9 @@ GLOBAL_LIST_INIT(cogscarabs, list())
 	icon_state = "drone_clock_hat"
 
 /obj/item/drone_shell/cogscarab/attack_ghost(mob/user)
-	if(!istype(SSticker.mode, /datum/game_mode/clockcult))
-		to_chat(user, "<span class='danger'>You can't play as a cogscarab right now!</span>")
-		return
+	//if(!istype(SSticker.mode, /datum/game_mode/clockcult))
+		//to_chat(user, "<span class='danger'>You can't play as a cogscarab right now!</span>") BREAKS COGSCARABS. DYNAMIC MOMENT.
+		//return
 	if(is_banned_from(user.ckey, ROLE_SERVANT_OF_RATVAR) || QDELETED(src) || QDELETED(user))
 		return
 	if(CONFIG_GET(flag/use_age_restriction_for_jobs))
