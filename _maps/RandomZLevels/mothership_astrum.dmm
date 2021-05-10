@@ -10,6 +10,11 @@
 	},
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
+"aA" = (
+/obj/structure/table/abductor,
+/obj/structure/table/abductor,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "aD" = (
 /obj/structure/table/wood,
 /obj/item/candle/infinite,
@@ -153,15 +158,6 @@
 	dir = 1
 	},
 /area/awaymission/mothership_astrum/deck5)
-"gW" = (
-/obj/machinery/door/airlock/abductor{
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 70;
-	id_tag = "glowsec";
-	name = "Low Security alien airlock"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plating/abductor2,
-/area/awaymission/mothership_astrum/halls)
 "hc" = (
 /turf/open/floor/plastic,
 /area/awaymission/mothership_astrum/deck2)
@@ -203,9 +199,9 @@
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
 "iN" = (
-/obj/effect/mob_spawn/human/miner/rig,
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/human/miner/explorer,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck1)
 "iR" = (
@@ -291,11 +287,9 @@
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck3)
 "kO" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/smg{
-	faction = list("Abductor")
-	},
-/turf/open/floor/wood,
-/area/awaymission/mothership_astrum/deck1)
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plating/abductor2,
+/area/space)
 "kY" = (
 /obj/structure/sign/poster/contraband/have_a_puff{
 	pixel_y = 32
@@ -307,14 +301,6 @@
 	icon_state = "ironsand9"
 	},
 /area/awaymission/mothership_astrum/deck1)
-"lj" = (
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/abductor{
-	id_tag = "ghighsec";
-	name = "High Security alien airlock"
-	},
-/turf/open/floor/plating/abductor2,
-/area/awaymission/mothership_astrum/halls)
 "lk" = (
 /mob/living/simple_animal/hostile/skeleton/eskimo{
 	faction = list("Abductor")
@@ -385,9 +371,6 @@
 "ny" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
-	},
-/mob/living/simple_animal/hostile/syndicate{
-	faction = list("Abductor")
 	},
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck1)
@@ -468,14 +451,6 @@
 "pC" = (
 /turf/closed/wall/mineral/sandstone,
 /area/awaymission/mothership_astrum/deck1)
-"pG" = (
-/obj/machinery/door/airlock/abductor{
-	id_tag = "gmaxsec";
-	name = "Maximum Security alien airlock"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plating/abductor2,
-/area/awaymission/mothership_astrum/halls)
 "pI" = (
 /obj/item/food/monkeycube,
 /turf/open/floor/mineral/abductor,
@@ -556,6 +531,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
+"qY" = (
+/obj/item/ammo_box/magazine/multi_sprite/makarov,
+/turf/open/floor/plating/ironsand,
+/area/awaymission/mothership_astrum/deck1)
 "rm" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/chair/sofa/bench/left{
@@ -563,18 +542,16 @@
 	},
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
+"rq" = (
+/mob/living/simple_animal/hostile/syndicate/ranged/smg{
+	faction = list("Abductor")
+	},
+/turf/open/floor/plating/ironsand,
+/area/awaymission/mothership_astrum/deck1)
 "rv" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck1)
-"rB" = (
-/obj/machinery/button/door{
-	id_tag = "glowsec";
-	name = "Low Security Lock"
-	},
-/obj/structure/table/abductor,
-/turf/open/floor/mineral/abductor,
-/area/space)
 "rE" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -662,14 +639,6 @@
 /obj/structure/window/spawner,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
-"ty" = (
-/obj/structure/table/abductor,
-/obj/machinery/button/door{
-	id_tag = "gmedsec";
-	name = "Medium Security Lock"
-	},
-/turf/open/floor/mineral/abductor,
-/area/space)
 "tz" = (
 /turf/closed/indestructible/fakeglass,
 /area/awaymission/mothership_astrum/deck5)
@@ -870,6 +839,14 @@
 	dir = 8
 	},
 /area/awaymission/mothership_astrum/deck5)
+"yD" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"yM" = (
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/open/floor/iron,
+/area/awaymission/mothership_astrum/deck2)
 "zc" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -915,9 +892,7 @@
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "zK" = (
-/mob/living/simple_animal/hostile/syndicate{
-	faction = list("Abductor")
-	},
+/mob/living/simple_animal/hostile/syndicate/melee,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck1)
 "zQ" = (
@@ -953,6 +928,10 @@
 /obj/structure/alien/resin/membrane/creature,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/deck4)
+"At" = (
+/mob/living/simple_animal/hostile/abductor,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
 "AL" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
@@ -1003,16 +982,11 @@
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "BE" = (
-/obj/machinery/button/door{
-	id_tag = "glowsec";
-	name = "Low Security Lock"
-	},
-/obj/structure/table/abductor,
 /turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
+/area/space)
 "BX" = (
 /obj/effect/mine/explosive,
-/turf/open/floor/plating/ironsand,
+/turf/open/indestructible/hotelwood,
 /area/awaymission/mothership_astrum/deck1)
 "BY" = (
 /obj/item/reagent_containers/food/drinks/soda_cans/cola{
@@ -1131,6 +1105,9 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
+"FV" = (
+/turf/open/indestructible/hotelwood,
+/area/awaymission/mothership_astrum/deck1)
 "Gn" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/chair/sofa/bench/left{
@@ -1145,13 +1122,9 @@
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "GM" = (
-/obj/machinery/door/airlock/abductor{
-	id_tag = "gmedsec";
-	name = "Medium Security alien airlock"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plating/abductor2,
-/area/awaymission/mothership_astrum/halls)
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/open/floor/plastic,
+/area/awaymission/mothership_astrum/deck2)
 "GW" = (
 /obj/machinery/grill,
 /obj/effect/turf_decal/sand,
@@ -1217,6 +1190,10 @@
 	},
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
+"IM" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/hotelwood,
+/area/awaymission/mothership_astrum/deck1)
 "Jl" = (
 /obj/structure/table/abductor,
 /obj/item/ammo_casing/shotgun/laserslug,
@@ -1258,13 +1235,13 @@
 /turf/open/floor/plating/beach/water,
 /area/awaymission/mothership_astrum/deck5)
 "KA" = (
-/obj/structure/table/abductor,
-/obj/machinery/button/door{
-	id_tag = "gmedsec";
-	name = "Medium Security Lock"
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
 	},
-/turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
+/obj/effect/mob_spawn/human/cook,
+/turf/open/floor/iron,
+/area/awaymission/mothership_astrum/deck2)
 "KD" = (
 /obj/item/gun/ballistic/automatic/pistol,
 /turf/open/floor/wood,
@@ -1304,6 +1281,12 @@
 	},
 /turf/open/floor/plastic,
 /area/awaymission/mothership_astrum/deck2)
+"Lp" = (
+/mob/living/simple_animal/hostile/syndicate/ranged/shotgun{
+	faction = list("Abductor")
+	},
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck1)
 "Lt" = (
 /turf/open/floor/plating/beach/coastline_b{
 	dir = 5
@@ -1361,6 +1344,10 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
+"MD" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "MK" = (
 /obj/effect/mob_spawn/human/corpse/charredskeleton,
 /turf/open/floor/plating/abductor2,
@@ -1536,14 +1523,6 @@
 /obj/structure/window/spawner/north,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
-"RF" = (
-/obj/structure/table/abductor,
-/obj/machinery/button/door{
-	id_tag = "ghighsec";
-	name = "High Security Lock"
-	},
-/turf/open/floor/mineral/abductor,
-/area/space)
 "RG" = (
 /turf/open/floor/plating/beach/coastline_b{
 	dir = 10
@@ -1551,18 +1530,10 @@
 /area/awaymission/mothership_astrum/deck5)
 "RI" = (
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/abductor{
-	id_tag = "gmedsec";
-	name = "Medium Security alien airlock"
-	},
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "RZ" = (
 /obj/structure/table/abductor,
-/obj/machinery/button/door{
-	id_tag = "gmaxsec";
-	name = "Maximum Security Lock"
-	},
 /turf/open/floor/mineral/abductor,
 /area/space)
 "Se" = (
@@ -1822,17 +1793,21 @@
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/deck4)
 "Zp" = (
-/obj/structure/table/abductor,
-/obj/machinery/button/door{
-	id_tag = "gmaxsec";
-	name = "Maximum Security Lock"
+/mob/living/simple_animal/hostile/syndicate/ranged/smg{
+	faction = list("Abductor")
 	},
-/turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck2)
 "Zv" = (
-/mob/living/simple_animal/hostile/abductor,
-/turf/open/space/basic,
-/area/space)
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/syndicate/ranged/shotgun{
+	faction = list("Abductor")
+	},
+/turf/open/floor/iron,
+/area/awaymission/mothership_astrum/deck2)
 "ZW" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -5060,7 +5035,7 @@ Tu
 Tu
 Tu
 Tu
-Zv
+Tu
 Tu
 Tu
 Tu
@@ -17925,7 +17900,7 @@ ee
 hc
 aD
 Lj
-hc
+GM
 hc
 bH
 yl
@@ -18193,7 +18168,7 @@ CI
 CI
 CI
 CI
-CI
+Zp
 CI
 CI
 CI
@@ -19978,7 +19953,7 @@ Vh
 bV
 bV
 ee
-hc
+GM
 hc
 hc
 hc
@@ -19998,7 +19973,7 @@ LF
 hX
 CI
 bH
-Ym
+yM
 Ym
 ee
 bV
@@ -20248,9 +20223,9 @@ CI
 bH
 qC
 pu
+KA
 pu
-pu
-pu
+Zv
 LW
 hX
 CI
@@ -22801,16 +22776,16 @@ bV
 ee
 ee
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 ee
@@ -22829,10 +22804,10 @@ bV
 bV
 ee
 XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 XU
@@ -23059,14 +23034,14 @@ bV
 ee
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 ee
@@ -23853,7 +23828,7 @@ ee
 bV
 bV
 ee
-Hj
+yg
 jY
 bV
 bV
@@ -24055,7 +24030,7 @@ Vh
 Vh
 bV
 bV
-bV
+AZ
 AZ
 kB
 kB
@@ -24413,7 +24388,6 @@ Tu
 Tu
 Tu
 Tu
-Tu
 XU
 XU
 XU
@@ -24423,7 +24397,8 @@ XU
 XU
 XU
 XU
-Tu
+XU
+XU
 Tu
 Tu
 Tu
@@ -24636,17 +24611,17 @@ bV
 bV
 bV
 ee
-bV
-bV
-bV
-Hj
+ee
+ee
 bV
 Hj
 bV
 Hj
 bV
+Hj
 bV
-bV
+ee
+ee
 ee
 ee
 bV
@@ -24664,12 +24639,12 @@ bV
 bV
 ee
 XU
-Tu
 XU
 XU
 XU
 XU
-Tu
+XU
+XU
 XU
 ee
 ee
@@ -24681,7 +24656,7 @@ ee
 ee
 ee
 XU
-Tu
+XU
 Tu
 Tu
 Tu
@@ -25144,7 +25119,7 @@ Vh
 bV
 bV
 ee
-bV
+yg
 bV
 Vh
 Vh
@@ -25664,6 +25639,8 @@ bV
 bV
 bV
 ee
+ee
+ee
 bV
 bV
 bV
@@ -25671,10 +25648,8 @@ bV
 bV
 bV
 bV
-bV
-bV
-bV
-bV
+ee
+ee
 ee
 bV
 bV
@@ -25939,7 +25914,7 @@ Vh
 Vh
 Vh
 bV
-bV
+yD
 bV
 bV
 bV
@@ -26189,7 +26164,7 @@ zt
 Vh
 bV
 bV
-Vh
+ES
 bV
 Vh
 Vh
@@ -26441,7 +26416,7 @@ Vh
 zt
 Vh
 zt
-Vh
+At
 zt
 Vh
 bV
@@ -26454,8 +26429,8 @@ Vh
 Vh
 bV
 ee
-bV
-Vh
+zt
+qD
 Vh
 bV
 ee
@@ -27251,7 +27226,7 @@ ee
 ee
 ee
 XU
-Tu
+XU
 Tu
 Tu
 Tu
@@ -27495,19 +27470,19 @@ ee
 XU
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
 Tu
+Tu
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
+XU
 Tu
 Tu
 Tu
@@ -27727,7 +27702,7 @@ bV
 bV
 bV
 bV
-bV
+zt
 bV
 bV
 bV
@@ -27736,24 +27711,24 @@ ee
 bV
 bV
 bV
+tO
+zt
+zt
+zt
 bV
 bV
 bV
 bV
 bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+zt
+zt
+zt
 ee
 ee
 ee
 XU
 XU
-XU
+Tu
 Tu
 Tu
 Tu
@@ -27976,15 +27951,15 @@ XU
 ee
 ee
 bV
+yg
 bV
-bV
 Vh
 Vh
 Vh
 Vh
 Vh
-Vh
-Vh
+qD
+qD
 Vh
 Vh
 Vh
@@ -28246,7 +28221,7 @@ Vh
 Vh
 Vh
 Vh
-gW
+RI
 Vh
 Vh
 Vh
@@ -28469,8 +28444,8 @@ ee
 ee
 XU
 XU
-XU
-XU
+Tu
+Tu
 XU
 ee
 ee
@@ -28488,12 +28463,12 @@ ee
 XU
 ee
 ee
+yg
 bV
 bV
 bV
 bV
-bV
-bV
+zt
 bV
 bV
 bV
@@ -28517,8 +28492,8 @@ bV
 bV
 bV
 bV
-bV
-bV
+zt
+zt
 bV
 bV
 bV
@@ -28726,10 +28701,10 @@ bV
 ee
 ee
 XU
+Tu
+Tu
 XU
 XU
-XU
-XU
 ee
 ee
 ee
@@ -28744,14 +28719,14 @@ bV
 ee
 XU
 ee
-bV
-bV
+zt
+zt
 Vh
 Vh
 bV
-bV
-bV
-bV
+zt
+aA
+zt
 AZ
 AZ
 AZ
@@ -28772,10 +28747,10 @@ AZ
 AZ
 AZ
 AZ
+zt
 bV
 bV
-bV
-bV
+zt
 Vh
 Vh
 bV
@@ -28983,9 +28958,9 @@ bV
 bV
 ee
 XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
 XU
 XU
 XU
@@ -29030,7 +29005,7 @@ oy
 oy
 AZ
 AZ
-bV
+zt
 bV
 bV
 Vh
@@ -29227,8 +29202,8 @@ bV
 bV
 ee
 XU
-XU
-XU
+Tu
+Tu
 XU
 ee
 bV
@@ -29240,12 +29215,12 @@ Vh
 bV
 ee
 XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 ee
@@ -29267,11 +29242,11 @@ bV
 bV
 AZ
 SU
-PP
+qY
 ld
 SU
 PP
-PP
+rq
 oy
 oy
 oy
@@ -29484,27 +29459,11 @@ bV
 bV
 ee
 XU
-XU
-XU
+Tu
+Tu
 XU
 ee
 ee
-ee
-ee
-bV
-bV
-bV
-bV
-ee
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
 ee
 ee
 bV
@@ -29512,13 +29471,29 @@ bV
 bV
 bV
 ee
+XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+XU
+XU
+ee
+ee
+bV
+bV
+bV
+bV
+ee
 ee
 XU
 ee
 ee
 ee
-gW
-gW
+RI
+RI
 ee
 ee
 ee
@@ -29531,7 +29506,7 @@ PP
 PP
 PP
 PP
-oy
+pC
 oy
 oy
 oy
@@ -29741,8 +29716,8 @@ bV
 bV
 ee
 XU
-XU
-XU
+Tu
+Tu
 XU
 XU
 XU
@@ -29754,13 +29729,13 @@ bV
 ee
 ee
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 ee
@@ -29789,8 +29764,8 @@ Lc
 PP
 ld
 PP
-PP
-PP
+FV
+FV
 oy
 oy
 oy
@@ -29998,11 +29973,11 @@ bV
 ee
 ee
 XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 ee
@@ -30011,13 +29986,13 @@ ee
 ee
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 ee
@@ -30040,15 +30015,15 @@ sn
 Qy
 Qy
 Qy
-Qy
+KD
 pC
 tI
 PP
 Ur
 PP
-PP
+FV
 BX
-Fo
+IM
 oy
 PP
 PP
@@ -30255,19 +30230,19 @@ bV
 ee
 XU
 XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 XU
 XU
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
 XU
 XU
 XU
@@ -30302,10 +30277,10 @@ pC
 Qy
 PP
 PP
-PP
+pC
 oy
-PP
-PP
+FV
+FV
 PP
 Fo
 PP
@@ -30512,19 +30487,19 @@ ee
 ee
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 ee
 ee
@@ -30540,13 +30515,13 @@ bV
 bV
 bV
 bV
+RI
 bV
 bV
-GM
 bV
 bV
 zt
-BE
+zt
 bV
 bV
 qt
@@ -30562,7 +30537,7 @@ PP
 oy
 oy
 oy
-PP
+pC
 dk
 Fo
 SU
@@ -30768,13 +30743,13 @@ ee
 ee
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 XU
@@ -30797,9 +30772,9 @@ bV
 bV
 bV
 bV
+MD
 bV
 bV
-GM
 bV
 bV
 qD
@@ -31024,13 +30999,13 @@ ee
 XU
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 XU
 ee
@@ -31280,14 +31255,14 @@ XU
 XU
 XU
 XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 ee
 ee
@@ -31324,8 +31299,8 @@ ee
 vs
 xa
 Wq
+Lp
 Qy
-kO
 pC
 PP
 PP
@@ -31482,9 +31457,9 @@ Tu
 Tu
 Tu
 XU
+XU
 ee
 ee
-ee
 bV
 bV
 bV
@@ -31535,16 +31510,16 @@ Tu
 Tu
 Tu
 Tu
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 ee
 bV
@@ -31571,7 +31546,7 @@ XU
 XU
 XU
 ee
-bV
+Hj
 bV
 Vh
 Vh
@@ -31739,8 +31714,8 @@ Tu
 Tu
 Tu
 Tu
-ee
-ee
+XU
+XU
 ee
 ee
 ee
@@ -31792,16 +31767,16 @@ Tu
 Tu
 Tu
 Tu
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 ee
 bV
@@ -31830,8 +31805,8 @@ XU
 ee
 ee
 ee
-gW
-gW
+RI
+RI
 ee
 ee
 ee
@@ -31996,14 +31971,14 @@ Tu
 Tu
 Tu
 Tu
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
+Tu
+XU
+XU
+XU
+XU
+XU
+XU
+XU
 ee
 bV
 bV
@@ -32049,16 +32024,16 @@ Tu
 Tu
 Tu
 Tu
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 ee
 bV
@@ -32253,14 +32228,14 @@ Tu
 Tu
 Tu
 Tu
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+XU
 ee
 bV
 bV
@@ -32306,16 +32281,16 @@ Tu
 Tu
 Tu
 Tu
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
-XU
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 XU
 ee
 bV
@@ -32371,7 +32346,7 @@ oy
 oy
 AZ
 AZ
-bV
+aA
 bV
 bV
 Vh
@@ -32510,14 +32485,14 @@ Tu
 Tu
 Tu
 Tu
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
+Tu
+XU
+XU
+XU
+XU
+XU
+XU
+XU
 ee
 bV
 bV
@@ -32575,9 +32550,9 @@ XU
 XU
 XU
 ee
-GM
-GM
-GM
+bV
+bV
+bV
 ee
 ee
 ee
@@ -32627,8 +32602,8 @@ ee
 ee
 AZ
 AZ
-bV
-bV
+zt
+zt
 bV
 bV
 Vh
@@ -32768,7 +32743,7 @@ Tu
 Tu
 Tu
 XU
-ee
+XU
 ee
 ee
 ee
@@ -33023,8 +32998,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-ee
+XU
+XU
 ee
 ee
 ee
@@ -33128,8 +33103,8 @@ Vh
 Vh
 Vh
 Vh
-Vh
-Vh
+qD
+qD
 Vh
 Vh
 Vh
@@ -33376,6 +33351,7 @@ bV
 bV
 bV
 Vh
+qD
 Vh
 Vh
 Vh
@@ -33384,8 +33360,7 @@ Vh
 Vh
 Vh
 Vh
-Vh
-Vh
+qD
 Vh
 Vh
 Vh
@@ -33633,6 +33608,8 @@ ee
 ee
 bV
 bV
+zt
+zt
 bV
 bV
 bV
@@ -33640,9 +33617,7 @@ bV
 bV
 bV
 bV
-bV
-bV
-bV
+zt
 bV
 bV
 bV
@@ -34923,7 +34898,7 @@ ee
 ee
 ee
 ee
-gW
+RI
 ee
 ee
 ee
@@ -34935,13 +34910,13 @@ ee
 ee
 ee
 ee
-lj
+RI
 ee
 ee
 ee
 ee
 ee
-pG
+RI
 ee
 ee
 ee
@@ -37190,7 +37165,7 @@ bV
 Vh
 bV
 bV
-KA
+zt
 Vh
 bV
 bV
@@ -40994,8 +40969,8 @@ XU
 ee
 ee
 ee
-pG
-pG
+RI
+RI
 ee
 ee
 ee
@@ -41024,8 +40999,8 @@ Kv
 ee
 ee
 ee
-pG
-pG
+RI
+RI
 ee
 ee
 ee
@@ -41748,8 +41723,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+kO
+kO
 Tu
 Tu
 Tu
@@ -42005,8 +41980,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -42262,8 +42237,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -42514,13 +42489,13 @@ Tu
 Tu
 Tu
 Tu
-rB
+RZ
 Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -42771,13 +42746,13 @@ Tu
 Tu
 Tu
 Tu
-ty
+RZ
 Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -43028,13 +43003,13 @@ Tu
 Tu
 Tu
 Tu
-RF
+RZ
 Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -43290,8 +43265,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+kO
+kO
 Tu
 Tu
 Tu
@@ -43547,8 +43522,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -43804,8 +43779,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -44061,8 +44036,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -44318,8 +44293,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -44575,8 +44550,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -44832,8 +44807,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+kO
+kO
 Tu
 Tu
 Tu
@@ -45089,8 +45064,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -45346,8 +45321,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -45603,8 +45578,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -45860,8 +45835,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -46117,8 +46092,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+BE
+BE
 Tu
 Tu
 Tu
@@ -46374,8 +46349,8 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
+kO
+kO
 Tu
 Tu
 Tu
@@ -47429,7 +47404,7 @@ bV
 bV
 bV
 zt
-Zp
+zt
 zt
 bV
 bV
@@ -47948,8 +47923,8 @@ XU
 XU
 ee
 ee
-gW
-gW
+RI
+RI
 ee
 ee
 XU
@@ -49490,8 +49465,8 @@ Tu
 XU
 ee
 ee
-RI
-RI
+bV
+bV
 ee
 ee
 XU
@@ -51032,8 +51007,8 @@ Tu
 XU
 ee
 ee
-lj
-lj
+bV
+bV
 ee
 ee
 XU
@@ -52574,8 +52549,8 @@ XU
 ee
 ee
 ee
-pG
-pG
+bV
+bV
 ee
 ee
 ee
