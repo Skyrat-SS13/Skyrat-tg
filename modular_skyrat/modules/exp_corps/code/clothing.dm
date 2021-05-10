@@ -113,6 +113,22 @@
 	mutant_variants = NONE
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
+	actions_types = list(/datum/action/item_action/toggle_nv)
+
+/datum/action/item_action/toggle_nv
+	name = "Toggle Nightvision"
+
+/datum/action/item_action/toggle_nv/Trigger()
+	var/obj/item/clothing/head/helmet/expeditionary_corps/my_helmet = target
+	if(!my_helmet.current_user)
+		return
+	my_helmet.nightvision = !my_helmet.nightvision
+	if(my_helmet.nightvision)
+		to_chat(owner, "<span class='notice'>You flip the NV goggles down.")
+		my_helmet.enable_nv()
+	else
+		to_chat(owner, "<span class='notice'>You flip the NV goggles up.")
+		my_helmet.disable_nv()
 
 /obj/item/clothing/head/helmet/expeditionary_corps/ComponentInitialize()
 	. = ..()
@@ -122,52 +138,48 @@
 	. = ..()
 	current_user = user
 
+/obj/item/clothing/head/helmet/expeditionary_corps/proc/enable_nv(mob/user)
+	if(current_user)
+		var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
+		if(my_eyes)
+			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			my_eyes.see_in_dark = 8
+			my_eyes.flash_protect = FLASH_PROTECTION_SENSITIVE
+		current_user.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
+
+/obj/item/clothing/head/helmet/expeditionary_corps/proc/disable_nv()
+	if(current_user)
+		var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
+		if(my_eyes)
+			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
+			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
+			my_eyes.flash_protect = initial(my_eyes.flash_protect)
+		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
+		current_user.update_sight()
+
 /obj/item/clothing/head/helmet/expeditionary_corps/AltClick(mob/user)
 	. = ..()
 	if(!current_user)
 		return
 	if(!can_interact(user))
 		return
-	var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
+
 	nightvision = !nightvision
 	if(nightvision)
 		to_chat(user, "<span class='notice'>You flip the NV goggles down.")
-		if(my_eyes)
-			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-			my_eyes.see_in_dark = 8
-			my_eyes.flash_protect = FLASH_PROTECTION_SENSITIVE
-		current_user.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
+		enable_nv()
 	else
 		to_chat(user, "<span class='notice'>You flip the NV goggles up.")
-		if(my_eyes)
-			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
-			my_eyes.flash_protect = initial(my_eyes.flash_protect)
-		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
-	current_user.update_sight()
+		disable_nv()
 	update_appearance()
 
 /obj/item/clothing/head/helmet/expeditionary_corps/dropped(mob/user)
 	. = ..()
-	if(nightvision)
-		var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
-		if(my_eyes)
-			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
-			my_eyes.flash_protect = initial(my_eyes.flash_protect)
-		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
-		current_user.update_sight()
+	disable_nv()
 	current_user = null
 
 /obj/item/clothing/head/helmet/expeditionary_corps/Destroy()
-	if(nightvision)
-		var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
-		if(my_eyes)
-			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
-			my_eyes.flash_protect = initial(my_eyes.flash_protect)
-		current_user.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
-		current_user.update_sight()
+	disable_nv()
 	current_user = null
 	return ..()
 
