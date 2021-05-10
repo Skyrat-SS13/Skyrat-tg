@@ -42,7 +42,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/hands.dmi'
 
 /obj/item/storage/backpack/duffelbag/expeditionary_corps
-	name = "expeditionary corps bag" //SKYRAT EDIT, was "suspicious-looking duffel bag". It's just a black duffel.
+	name = "expeditionary corps bag"
 	desc = "A large bag for holding extra tactical supplies."
 	icon_state = "exp_corps"
 	inhand_icon_state = "backpack"
