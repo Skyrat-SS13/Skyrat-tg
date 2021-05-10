@@ -184,6 +184,7 @@
 
 /obj/item/organ/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] vagina."
+	var/desc_string = "You see a vagina."
 	if(gas && gas.desc_string)
 		returned_string = gas.desc_string
 		returned_string = "You see a cloaca." //i deserve a pipebomb for this
