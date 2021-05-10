@@ -66,6 +66,10 @@
 	alignment = AFFIX_GOOD
 	weight = 5
 
+/datum/fantasy_affix/vampiric/validate(datum/component/fantasy/comp)
+	var/obj/item/attached = comp.parent
+	return attached.force //don't apply to things that just bap people
+
 /datum/fantasy_affix/vampiric/apply(datum/component/fantasy/comp, newName)
 	var/obj/item/master = comp.parent
 	comp.appliedComponents += master.AddComponent(/datum/component/lifesteal, comp.quality)
@@ -100,7 +104,6 @@
 	master.AddElement(/datum/element/beauty, min(comp.quality, -1) * 250)
 
 /datum/fantasy_affix/venomous
-	name = "<poisonname>-laced (picked from small pool of toxins)"
 	placement = AFFIX_PREFIX
 	alignment = AFFIX_GOOD
 
