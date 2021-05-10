@@ -221,6 +221,7 @@
 /datum/sprite_accessory/genital/vagina/cloaca
 	icon_state = "cloaca"
 	name = "Cloaca"
+	desc_string = "You see a cloaca."
 
 /datum/sprite_accessory/genital/vagina/dogtaur
 	icon_state = "taur"
