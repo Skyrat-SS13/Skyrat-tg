@@ -226,6 +226,7 @@
 /datum/sprite_accessory/genital/vagina/dogtaur
 	icon_state = "taur"
 	name = "Tauric Dog Vagina|ONLY USE ON TAUR DOGS"
+	desc_string = "You see a vagina."
 
 /datum/sprite_accessory/genital/womb
 	organ_type = /obj/item/organ/genital/womb
