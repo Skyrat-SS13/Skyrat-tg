@@ -69,6 +69,12 @@
 	item = /obj/item/katana
 	cost = 7
 
+/datum/uplink_item/dangerous/oddjob
+	name = "Deadly Bowler Hat"
+	desc = "An incredibly sharp edged bowler hat used by an infamously short operative."
+	item = /obj/item/clothing/head/sus_bowler
+	cost = 20
+
 //STEALTHY WEAPONS
 /datum/uplink_item/stealthy_weapons/cqc_traitor
 	name = "CQC Manual"
