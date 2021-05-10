@@ -401,5 +401,12 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "cia"
 
+/obj/item/clothing/under/rank/medical/doctor/red/unarm
+	name = "red scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "scrubsred"
+
 
 
