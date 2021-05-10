@@ -34,7 +34,7 @@
 
 /datum/job/quartermaster/after_spawn(mob/living/carbon/human/H, mob/M) //SKYRAT EDIT - Gubman 3.1
 	. = ..()
-	to_chat(M, "<span class='userdanger'>The firearm in your locker is for <b><u>SELF DEFENSE</b></u>, keep it within your department unless the situation is <i>extremely<\i>dire. Security can confiscate it!.")
+	to_chat(M, "<span class='userdanger'>The firearm in your locker is for <b><u>SELF DEFENSE</b></u>, keep it within your department unless the situation is <i>extremely</i>dire. Security can confiscate it!.")
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
