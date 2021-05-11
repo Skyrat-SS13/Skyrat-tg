@@ -148,3 +148,29 @@
 
 /obj/machinery/scanner_gate/anti_nanite/examine(mob/user)
 	return list("This gate seems to be highly modified with odd markings.")
+
+//Elite Fauna (I AM STEALING SO MUCH CODE FOR THIS I AM SORRY)
+
+/mob/living/simple_animal/hostile/asteroid/elite/abductor
+	name = "Abductor Captain"
+	desc = "The one you've come here for, finish this."
+	icon_state = "abductor_agent_combat"
+	icon_living = "abductor_agent_combat"
+	icon_aggro = "abductor_agent_combat"
+	icon_dead = "pandora_dead"
+	icon_gib = "syndicate_gib"
+	health_doll_icon = "pandora"
+	maxHealth = 1000
+	health = 1000
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	attack_verb_continuous = "kicked the ribs of"
+	attack_verb_simple = "kicks the ribs of"
+	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
+	throw_message = "merely shrugs off of the"
+	speed = 3
+	move_to_delay = 10
+	mouse_opacity = MOUSE_OPACITY_ICON
+	deathsound = 'sound/magic/repulse.ogg'
+	deathmessage = "falls to their knees, before exploding into a ball of gore."
+	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human)
