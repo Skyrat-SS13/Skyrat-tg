@@ -263,3 +263,25 @@
 	mutant_variants = NONE
 	body_parts_covered = CHEST|ARMS
 
+/obj/item/clothing/suit/cossack
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "ukrainian coat"
+	desc = "Cossacks, oh cossacks, let's go, cossachenki."
+	icon_state = "kuban_cossak"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/cossack/sec
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "security ukrainian coat"
+	icon_state = "don_cossak"
+	mutant_variants = NONE
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+
+
+
+
+
+

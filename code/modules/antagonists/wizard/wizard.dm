@@ -31,12 +31,6 @@
 	if(allow_rename)
 		rename_wizard()
 
-/datum/antagonist/wizard/proc/register()
-	SSticker.mode.wizards |= owner
-
-/datum/antagonist/wizard/proc/unregister()
-	SSticker.mode.wizards -= src
-
 /datum/antagonist/wizard/create_team(datum/team/wizard/new_team)
 	if(!new_team)
 		return
@@ -122,9 +116,9 @@
 	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
 	/*
 	unregister()
+	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
 	*/
 	//SKYRAT EDIT REMOVAL END
-	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
 	return ..()
 
 /datum/antagonist/wizard/proc/equip_wizard()
@@ -146,15 +140,16 @@
 	H.equipOutfit(outfit_type)
 
 /datum/antagonist/wizard/greet()
-	to_chat(owner, "<span class='boldannounce'>You are the Space Wizard!</span>")
-	to_chat(owner, "<B>The Space Wizards Federation has given you the following tasks:</B>")
+	to_chat(owner, "<span class='warningplain'><font color=red><B>You are the Space Wizard!</B></font></span>")
+	to_chat(owner, "<span class='warningplain'><B>The Space Wizards Federation has given you the following tasks:</B></span>")
 	owner.announce_objectives()
-	to_chat(owner, "You will find a list of available spells in your spell book. Choose your magic arsenal carefully.")
-	to_chat(owner, "The spellbook is bound to you, and others cannot use it.")
-	to_chat(owner, "In your pockets you will find a teleport scroll. Use it as needed.")
-	to_chat(owner,"<B>Remember:</B> Do not forget to prepare your spells.")
-	to_chat(owner,"<span class='boldannounce'>READ THE ANTAGONIST POLICY BEFORE DOING LITERALLY ANYTHING. YOU ARE AN HRP ANTAG.</span>") //SKYRAT EDIT ADDITION - WIZARD CHANGES
-	..() //SKYRAT EDIT ADDITION - WIZARD CHANGES
+	var/message = "<span class='warningplain'>"
+	message += "<BR>You will find a list of available spells in your spell book. Choose your magic arsenal carefully."
+	message += "<BR>The spellbook is bound to you, and others cannot use it."
+	message += "<BR>In your pockets you will find a teleport scroll. Use it as needed."
+	message += "<BR><B>Remember:</B> Do not forget to prepare your spells.</span>"
+	to_chat(owner, message)
+	..()
 
 /datum/antagonist/wizard/farewell()
 	to_chat(owner, "<span class='userdanger'>You have been brainwashed! You are no longer a wizard!</span>")
@@ -202,12 +197,6 @@
 /datum/antagonist/wizard/apprentice/greet()
 	to_chat(owner, "<B>You are [master.current.real_name]'s apprentice! You are bound by magic contract to follow [master.p_their()] orders and help [master.p_them()] in accomplishing [master.p_their()] goals.")
 	owner.announce_objectives()
-
-/datum/antagonist/wizard/apprentice/register()
-	SSticker.mode.apprentices |= owner
-
-/datum/antagonist/wizard/apprentice/unregister()
-	SSticker.mode.apprentices -= owner
 
 /datum/antagonist/wizard/apprentice/equip_wizard()
 	. = ..()

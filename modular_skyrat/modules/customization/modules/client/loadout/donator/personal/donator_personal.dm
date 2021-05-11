@@ -34,6 +34,16 @@
 	path = /obj/item/clothing/neck/cloak/grunnyyy
 	ckeywhitelist = list("grunnyyy")
 
+/datum/loadout_item/gloves/donator/hypnoring
+	name = "Hypnodemon's Ring"
+	path = /obj/item/clothing/gloves/ring/coffeepot
+	ckeywhitelist = list("coffeepot")
+
+/datum/loadout_item/head/donator/avipilot
+	name = "Smuggler's Flying Cap"
+	path = /obj/item/clothing/head/avipilot
+	ckeywhitelist = list("slippyjoe")
+
 /datum/loadout_item/shoes/donator/britches_shoes
 	name = "Britches' shoes"
 	path = /obj/item/clothing/shoes/clown_shoes/britches
@@ -53,6 +63,11 @@
 	name = "Mask of El Red Templar"
 	path = /obj/item/clothing/mask/luchador/enzo
 	ckeywhitelist = list("enzoman")
+
+/datum/loadout_item/mask/donator/nightlight_mask
+	name = "FAR-13 SRU"
+	path = /obj/item/clothing/mask/gas/nightlight
+	ckeywhitelist = list("farsightednightlight")
 
 /datum/loadout_item/head/donator/drake_skull
 	name = "Skull of an ashdrake"
@@ -178,4 +193,4 @@
 /datum/loadout_item/backpack/donator/intern_hat
 	name = "Intern Hat"
 	path = /obj/item/clothing/head/intern/developer
-	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz", "tf4", "cheshify", "swiftfeather", "spcr", "tygertac")
+	ckeywhitelist = list("gandalf2k15", "yawet330", "junglerat", "theooz", "tf4", "cheshify", "swiftfeather", "spcr", "tygertac", "useroth", "slippyjoe")

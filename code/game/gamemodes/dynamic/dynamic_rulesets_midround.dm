@@ -36,7 +36,7 @@
 		if (!M.client) // Are they connected?
 			trimmed_list.Remove(M)
 			continue
-		if(!mode.check_age(M.client, minimum_required_age))
+		if(M.client.get_remaining_days(minimum_required_age) > 0)
 			trimmed_list.Remove(M)
 			continue
 		if(antag_flag_override)
@@ -97,7 +97,7 @@
 	message_admins("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 	log_game("DYNAMIC: Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 
-	candidates = pollGhostCandidates("The mode is looking for volunteers to become [antag_flag] for [name]", antag_flag, SSticker.mode, antag_flag_override ? antag_flag_override : antag_flag, poll_time = 300)
+	candidates = pollGhostCandidates("The mode is looking for volunteers to become [antag_flag] for [name]", antag_flag, antag_flag_override ? antag_flag_override : antag_flag, poll_time = 300)
 
 	if(!candidates || candidates.len <= 0)
 		message_admins("The ruleset [name] received no applications.")
@@ -164,7 +164,7 @@
 	name = "Syndicate Sleeper Agent"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_TRAITOR
-	protected_roles = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+	protected_roles = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer")
 	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
 	required_candidates = 1
 	weight = 7
@@ -225,7 +225,7 @@
 	persistent = TRUE
 	antag_flag = ROLE_FAMILIES
 	protected_roles = list("Prisoner", "Head of Personnel")
-	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer")
 	required_candidates = 6 // gotta have 'em ALL
 	weight = 1
 	cost = 25

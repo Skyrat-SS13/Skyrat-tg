@@ -92,8 +92,8 @@
 		locked = TRUE
 		log_combat(target, source, "locked onto with aiming")
 		playsound(get_turf(source), 'modular_skyrat/modules/gunpoint/sound/targeton.ogg', 50,1)
-		to_chat(source, "<span class='boldnotice'>You lock onto [target.name]!</span>")
-		target.visible_message("<span class='boldwarning'>[source.name] holds [target.name] at gunpoint with the [aimed_gun.name]!</span>", "<span class='userdanger'>[source.name] holds you at gunpoint with the [aimed_gun.name]!</span>")
+		to_chat(source, "<span class='notice'><b>You lock onto [target.name]!</b></span>")
+		target.visible_message("<span class='warning'><b>[source.name] holds [target.name] at gunpoint with the [aimed_gun.name]!</b></span>", "<span class='userdanger'>[source.name] holds you at gunpoint with the [aimed_gun.name]!</span>")
 		if(target.gunpointed.len == 1)//First case
 			to_chat(target, "<span class='danger'>You'll <b>get shot</b> if you <b>use radio</b>, <b>move</b> or <b>interact with items</b>!</span>")
 			to_chat(target, "<span class='notice'>You can however take items out, toss harmless items or drop them.</span>")
@@ -131,7 +131,7 @@
 	source.gunpointing = null
 	if(locked)
 		QDEL_NULL(gunpoint_gui)
-		target.visible_message("<span class='notice'>[source.name] no longer holds [target.name] at gunpoint.</span>", "<span class='boldnotice'>[source.name] no longer holds you at gunpoint.</span>")
+		target.visible_message("<span class='notice'>[source.name] no longer holds [target.name] at gunpoint.</span>", "<span class='notice'><b>[source.name] no longer holds you at gunpoint.</b></span>")
 	source = null
 	target = null
 	aimed_gun = null

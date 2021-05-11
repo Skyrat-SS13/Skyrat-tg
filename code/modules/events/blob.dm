@@ -2,10 +2,9 @@
 	name = "Blob"
 	typepath = /datum/round_event/ghost_role/blob
 	weight = 10
-	max_occurrences = 1
+	max_occurrences = 0 //SKYRAT EDIT CHANGE
 
-	// min_players = 20 // SKYRAT EDIT -- Original
-	min_players = 60 	// SKYRAT EDIT CHANGE -- Requires 60 alive non-afk players for blob
+	min_players = 20
 
 	dynamic_should_hijack = TRUE
 
@@ -28,7 +27,7 @@
 /datum/round_event/ghost_role/blob/spawn_role()
 	if(!GLOB.blobstart.len)
 		return MAP_ERROR
-	var/list/candidates = get_candidates(ROLE_BLOB, null, ROLE_BLOB)
+	var/list/candidates = get_candidates(ROLE_BLOB, ROLE_BLOB)
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
 	var/mob/dead/observer/new_blob = pick(candidates)

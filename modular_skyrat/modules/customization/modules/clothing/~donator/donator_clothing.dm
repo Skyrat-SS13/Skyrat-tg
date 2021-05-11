@@ -371,6 +371,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
 	icon_state = "clown_shoes_cute"
 	mutant_variants = NONE
+	resistance_flags = FIRE_PROOF
 
 //Donation reward for Bloodrite
 /obj/item/clothing/under/rank/civilian/clown/britches
@@ -380,6 +381,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	icon_state = "clowndress"
 	mutant_variants = NONE
+	resistance_flags = FIRE_PROOF
 
 //Donation reward for Bloodrite
 /obj/item/clothing/mask/gas/britches
@@ -394,7 +396,25 @@
 	clothing_flags = MASKINTERNALS
 	w_class = WEIGHT_CLASS_SMALL
 	flags_cover = MASKCOVERSEYES
-	resistance_flags = FLAMMABLE
+	resistance_flags = FIRE_PROOF
+
+//Donation reward for Farsighted Nightlight
+/obj/item/clothing/mask/gas/nightlight
+	name = "FAR-13 SRU"
+	desc = "A rare, complex close-fitting respiration unit designed for use by immunocompromised Servelyn personnel. NOTE: Designed for Servelyn personnel only, might not fit other peoples faces."
+	actions_types = list(/datum/action/item_action/adjust)
+	icon_state = "sechailer"
+	inhand_icon_state = "sechailer"
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	visor_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
+	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
+	adjustmask(user)
 
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
@@ -434,6 +454,60 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
 	fitted = FEMALE_UNIFORM_TOP
+
+//Donation reward for CoffeePot
+/obj/item/clothing/gloves/ring/coffeepot
+	name = "hypnodemon's ring"
+	desc = "A pallid, softly desaturated-looking gold ring that doesn't look like it belongs. It's hard to put one's finger on why it feels at odds with the world around it - the shine coming off it looks like it could be a mismatch with the lighting in the room, or it could be that it seems to glint and twinkle occasionally when there's no obvious reason for it to - though only when you're not really looking."
+	actions_types = list(/datum/action/item_action/hypno_whisper)
+
+/datum/action/item_action/hypno_whisper
+	name = "Hypnotic Whisper"
+
+/obj/item/clothing/gloves/ring/coffeepot/ui_action_click(mob/living/user, action)
+	if(!isliving(user) || !can_use(user))
+		return
+	var/message = input(user, "Speak with a hypnotic whisper", "Whisper")
+	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
+		return
+	user.whisper(message, spans = list("hypnophrase"))
+
+//Donation reward for SlippyJoe
+/obj/item/clothing/head/avipilot
+	name = "smuggler's flying cap"
+	desc = "Shockingly, despite space winds, and the lack of any practicality, this pilot cap seems to be fairly well standing, there's a rabbit head seemingly stamped into the side of it."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/head.dmi'
+	icon_state = "avipilotup"
+	inhand_icon_state = "ushankadown"
+	flags_inv = HIDEEARS|HIDEHAIR
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT //about as warm as an ushanka
+	actions_types = list(/datum/action/item_action/adjust)
+	mutant_variants = NONE
+	var/goggles = FALSE
+
+/obj/item/clothing/head/avipilot/proc/adjust_goggles(mob/living/carbon/user)
+	if(user?.incapacitated())
+		return
+	if(goggles)
+		icon_state = "avipilotup"
+		inhand_icon_state = "avipilotup"
+		to_chat(user, "<span class='notice'>You put all your effort into pulling the goggles up.</span>")
+	else
+		icon_state = "avipilotdown"
+		inhand_icon_state = "avipilotdown"
+		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
+	goggles = !goggles
+	if(user)
+		user.head_update(src, forced = 1)
+		user.update_action_buttons_icon()
+
+/obj/item/clothing/head/avipilot/ui_action_click(mob/living/carbon/user, action)
+	adjust_goggles(user)
+
+/obj/item/clothing/head/avipilot/attack_self(mob/living/carbon/user)
+	adjust_goggles(user)
 
 //Donation reward for NetraKyram
 /obj/item/clothing/under/custom/kilano

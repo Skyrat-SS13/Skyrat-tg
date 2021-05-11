@@ -22,6 +22,7 @@
 	turns_per_move = 4
 	maxHealth = 150
 	health = 150
+	speed = 0
 	obj_damage = 40
 	melee_damage_lower = 10
 	melee_damage_upper = 15
@@ -34,6 +35,8 @@
 	light_power = 1
 	light_color = LIGHT_COLOR_FIRE
 	damage_coeff = list(BRUTE = 1, BURN = 0, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
 	maxbodytemp = INFINITY
 	gender = MALE
 
@@ -78,6 +81,7 @@
 	maxHealth = 70
 	health = 70
 	obj_damage = 30
+	speed = 0
 	melee_damage_lower = 7
 	melee_damage_upper = 13
 	faction = list(MOLD_FACTION)
@@ -87,6 +91,14 @@
 	butcher_results = list(/obj/item/food/meat/slab = 1)
 	attack_sound = 'sound/weapons/bite.ogg'
 	melee_damage_type = BRUTE
+
+/mob/living/simple_animal/hostile/biohazard_blob/diseased_rat/AttackingTarget()
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		if(prob(40))
+			to_chat(C, "<span class='danger'>[src] manages to penetrate your clothing with it's teeth!</span>")
+			C.ForceContractDisease(new /datum/disease/cordyceps(), FALSE, TRUE)
 
 /mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito
 	name = "electric mosquito"
@@ -100,18 +112,73 @@
 	turns_per_move = 4
 	maxHealth = 70
 	health = 70
+	speed = 0
 	obj_damage = 20
-	melee_damage_lower = 5
-	melee_damage_upper = 6
+	melee_damage_lower = 7
+	melee_damage_upper = 10
 	faction = list(MOLD_FACTION)
 	attack_verb_continuous = "stings"
 	attack_verb_simple = "sting"
 	attack_sound = 'sound/effects/attackblob.ogg'
 	melee_damage_type = BRUTE
 	pass_flags = PASSTABLE
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = INFINITY
 
 /mob/living/simple_animal/hostile/biohazard_blob/electric_mosquito/AttackingTarget()
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.reagents.add_reagent(/datum/reagent/teslium, 2)
+
+/mob/living/simple_animal/hostile/biohazard_blob/centaur
+	name = "centaur"
+	desc = "A horrific combination of bone and flesh with multiple sets of legs and feet."
+	icon_state = "centaur"
+	icon_living = "centaur"
+	icon_dead = "centaur_dead"
+	speak_emote = list("moans")
+	emote_hear = list("moans")
+	speak_chance = 5
+	turns_per_move = 1
+	maxHealth = 120
+	health = 120
+	speed = 0.5
+	obj_damage = 40
+	melee_damage_lower = 10
+	melee_damage_upper = 15
+	faction = list(MOLD_FACTION)
+	attack_sound = 'sound/effects/wounds/crackandbleed.ogg'
+	melee_damage_type = BRUTE
+	light_system = MOVABLE_LIGHT
+	light_range = 2
+	light_power = 1
+	light_color = LIGHT_COLOR_GREEN
+	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 1, STAMINA = 0, OXY = 0)
+	gender = NEUTER
+	wound_bonus = 30
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = INFINITY
+
+/mob/living/simple_animal/hostile/biohazard_blob/centaur/Initialize()
+	. = ..()
+	update_overlays()
+
+/mob/living/simple_animal/hostile/biohazard_blob/centaur/death(gibbed)
+	visible_message("<span class='warning'>The [src] ruptures!</span>")
+	var/datum/reagents/R = new/datum/reagents(300)
+	R.my_atom = src
+	R.add_reagent(/datum/reagent/toxin/mutagen, 50)
+	chem_splash(loc, 5, list(R))
+	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
+	return ..()
+
+/mob/living/simple_animal/hostile/biohazard_blob/centaur/AttackingTarget()
+	. = ..()
+	if(isliving(target))
+		var/mob/living/L = target
+		if(prob(20))
+			radiation_pulse(L, 300, 1, FALSE, TRUE)
+			playsound(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 60, TRUE)

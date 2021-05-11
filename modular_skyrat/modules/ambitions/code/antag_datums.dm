@@ -32,11 +32,10 @@
 	uses_ambitions = TRUE
 
 /datum/antagonist/wizard/ambitions_add()
-	register()
 	equip_wizard() //This apparently give the book if you didn't comment it in the antag one, you could use it and if you did get spells and then submit your ambitions, You actually could get twice as much spells. :pain:
 
 /datum/antagonist/wizard/ambitions_removal()
-	unregister()
+	owner.RemoveAllSpells()
 
 /datum/objective/ambitions
 	name = "ambitions"

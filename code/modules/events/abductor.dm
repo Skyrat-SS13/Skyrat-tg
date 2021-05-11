@@ -1,7 +1,7 @@
 /datum/round_event_control/abductor
 	name = "Abductors"
 	typepath = /datum/round_event/ghost_role/abductor
-	weight = 10
+	weight = 0 //SKYRAT EDIT CHANGE
 	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
@@ -13,7 +13,7 @@
 	fakeable = FALSE //Nothing to fake here
 
 /datum/round_event/ghost_role/abductor/spawn_role()
-	var/list/mob/dead/observer/candidates = get_candidates(ROLE_ABDUCTOR, null, ROLE_ABDUCTOR)
+	var/list/mob/dead/observer/candidates = get_candidates(ROLE_ABDUCTOR, ROLE_ABDUCTOR)
 
 	if(candidates.len < 2)
 		return NOT_ENOUGH_PLAYERS

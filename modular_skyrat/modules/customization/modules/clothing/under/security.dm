@@ -22,6 +22,13 @@
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 
+/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
+	name = "sol chief of police uniform"
+	desc = "A white satin shirt with a leather belt, the belt buckle is a large NT."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policechiefalt"
+
 // DETECTIVE
 
 /obj/item/clothing/under/rank/security/detective/undersuit
@@ -50,92 +57,133 @@
 // SEC GENERAL
 
 // PRISONER
-/obj/item/clothing/under/rank/protcustpskirt
+/obj/item/clothing/under/rank/prisoner/protcust/skirt
+	name = "protective custody prisoner jumpskirt"
+	desc = "A mustard coloured prison jumpskirt, often worn by former Security members, informants and former CentComm employees."
+	icon_state = "prisoner_protcust_skirt"
+	body_parts_covered = CHEST|GROIN|ARMS
+	mutant_variants = NONE
+
+/obj/item/clothing/under/rank/prisoner/protcust
 	name = "protective custody prisoner jumpsuit"
 	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentComm employees."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_protcust"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+	greyscale_config_worn = null
 
-/obj/item/clothing/under/rank/protcustp
-	name = "protective custody prisoner jumpsuit"
-	desc = "A mustard coloured prison jumpsuit, often worn by former Security members, informants and former CentComm employees."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
-	icon_state = "prisoner_protcust"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/protcustp/supermaxp
+/obj/item/clothing/under/rank/prisoner/supermax
 	name = "supermax prisoner jumpsuit"
 	desc = "A crimson red prison jumpsuit, for the worst of the worst, or the Clown."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_superwax"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+	greyscale_config_worn = null
 
-/obj/item/clothing/under/rank/protcustpskirt/supermaxpskirt
+/obj/item/clothing/under/rank/prisoner/supermax/skirt
 	name = "supermax prisoner jumpskirt"
 	desc = "A crimson red prison jumpskirt, for the worst of the worst, or the Clown."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_superwax_skirt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	body_parts_covered = CHEST|GROIN|ARMS
+	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/protcustpskirt/highsecpskirt
+/obj/item/clothing/under/rank/prisoner/highsec/skirt
 	name = "high risk prisoner jumpskirt"
 	desc = "A dark red prison jumpskirt, depending on who sees it, either a badge of honour or a sign to avoid. All my life I've wanted to be famous."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_highsec_skirt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	body_parts_covered = CHEST|GROIN|ARMS
+	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/protcustp/lowsecpskirt
+/obj/item/clothing/under/rank/prisoner/lowsec/skirt
 	name = "low security prisoner jumpskirt"
 	desc = "A pale, almost creamy prison jumpskirt, this one denotes a low security prisoner, things like fraud and anything white collar. It screams 'I'm a bitch' to inmates."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_lowsec_skirt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	body_parts_covered = CHEST|GROIN|ARMS
+	mutant_variants = NONE
 
-/obj/item/clothing/under/rank/protcustp/lowsecp
+/obj/item/clothing/under/rank/prisoner/lowsec
 	name = "low security prisoner jumpsuit"
 	desc = "A pale, almost creamy prison jumpsuit, this one denotes a low security prisoner, things like fraud and anything white collar. It screams 'I'm a bitch' to inmates."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_lowsec"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+	greyscale_config_worn = null
 
-/obj/item/clothing/under/rank/protcustp/highsecp
+/obj/item/clothing/under/rank/prisoner/highsec
 	name = "high risk prisoner jumpsuit"
 	desc = "A dark red prison jumpsuit, depending on who sees it, either a badge of honour or a sign to avoid. All my life I've wanted to be famous."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "prisoner_highsec"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	has_sensor = LOCKED_SENSORS
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+	greyscale_config_worn = null
+
+/obj/item/clothing/under/rank/prisoner/classic
+	name = "classic prisoner jumpsuit"
+	desc = "A black and white striped jumpsuit, like something out of a movie."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "prisonerclassic"
+	greyscale_colors = null
+	greyscale_config = null
+	greyscale_config_inhand_left = null
+	greyscale_config_inhand_right = null
+	greyscale_config_worn = null
+
+///CDO
+/obj/item/clothing/under/rank/security/peacekeeper/junior/sol
+	name = "sol police cadet uniform"
+	desc = "A light blue shirt with navy pants, perfect for pretending you matter."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policecadetalt"
+
+/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	name = "sol traffic police uniform"
+	desc = "A light blue shirt with navy pants, perfect for standing and shouting at cars."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policetrafficalt"
+///OFFICERS
+/obj/item/clothing/under/rank/security/peacekeeper/sol
+	name = "sol police uniform"
+	desc = "A light blue shirt with navy pants, perfect for opressing the Underclasses, like Catgirls."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policealt"
+
+///WARDEN
+/obj/item/clothing/under/rank/security/warden/peacekeeper/sol
+	name = "sol warden uniform"
+	desc = "A light blue shirt with navy pants, this one seems to have been modified for fat asses, like yourself."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "policewardenalt"
+
+///SECMED
+/obj/item/clothing/under/rank/medical/doctor/red
+	name = "security medic scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards and acid. This one is in a deep red."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "scrubsred"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
+
 
 
