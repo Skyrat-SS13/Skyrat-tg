@@ -44,6 +44,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
+	loot = list()
 
 /mob/living/simple_animal/hostile/xen/bullsquid/FindTarget()
 	. = ..()
@@ -58,7 +59,7 @@
 	uses_stored = FALSE
 	max_integrity = 100
 	base_icon_state = "syndie"
-	lethal_projectile = /obj/projectile/beam/laser
+	lethal_projectile = /obj/projectile/beam/xray
 	lethal_projectile_sound = 'sound/weapons/laser.ogg'
 
 /obj/machinery/porta_turret/black_mesa/assess_perp(mob/living/carbon/human/perp)
@@ -79,7 +80,23 @@
 	icon = 'modular_skyrat/master_files/icons/mob/nihilanth.dmi'
 	icon_state = "nihilanth"
 	icon_living = "nihilanth"
+	base_pixel_x = -156
+	base_pixel_y = -154
+	pixel_x = -156
+	pixel_y = -154
 	icon_dead = "bullsquid_dead"
-	maxHealth = 50000
-	health = 50000
+	maxHealth = 10000
+	health = 10000
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	projectilesound = 'sound/weapons/lasercannonfire.ogg'
+	projectiletype = /obj/projectile/seedling
+	ranged = TRUE
+	rapid = 3
+
+/mob/living/simple_animal/hostile/xen/nihilanth/Aggro()
+	. = ..()
+	set_combat_mode(TRUE)
+
+/mob/living/simple_animal/hostile/xen/nihilanth/LoseAggro()
+	. = ..()
+	set_combat_mode(FALSE)
