@@ -77,7 +77,7 @@
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/chief_engineer
-	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS, TECH_RESTRICTED_QUIRKS, "Paraplegic" = TRUE)
 
 /datum/job/research_director
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
@@ -111,6 +111,7 @@
 /datum/job/prisoner
 	required_languages = null
 
+//Engineering
 /datum/job/station_engineer
 	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
 
