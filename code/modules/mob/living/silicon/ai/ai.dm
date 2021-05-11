@@ -102,7 +102,7 @@
 
 	var/datum/robot_control/robot_control
 
-	var/vox_type = VOX_NORMAL //SKYRAT EDIT ADDITION
+
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
 	. = ..()
@@ -418,7 +418,8 @@
 		ai_alerts()
 #ifdef AI_VOX
 	if(href_list["say_word"])
-		play_vox_word(href_list["say_word"], null, src)
+		play_vox_word(href_list["say_word"], null, src, vox_type) //SKYRAT EDIT CHANGE
+		vox_word_string += "[href_list["say_word"]] " //SKYRAT EDIT ADDITION
 		return
 #endif
 	if(href_list["show_paper"])
