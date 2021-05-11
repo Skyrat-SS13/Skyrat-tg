@@ -108,7 +108,9 @@
 	icon_state = "nihilanth"
 	icon_living = "nihilanth"
 	base_pixel_x = -156
+	pixel_x = -156
 	base_pixel_y = -154
+	pixel_y = -154
 	icon_dead = "bullsquid_dead"
 	maxHealth = 10000
 	health = 10000
