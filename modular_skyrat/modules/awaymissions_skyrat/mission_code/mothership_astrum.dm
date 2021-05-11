@@ -119,3 +119,32 @@
 	icon_state = "crowbar"
 	force = 30
 	throwforce = 35
+
+// FUCK NANITES
+/obj/machinery/scanner_gate/anti_nanite
+	name = "Advanced Scanner Gate"
+	desc = "This gate seems to be highly modified with odd markings."
+	resistance_flags = INDESTRUCTIBLE
+	use_power = NO_POWER_USE
+
+/obj/machinery/scanner_gate/anti_nanite/perform_scan(mob/living/M)
+	if(SEND_SIGNAL(M, COMSIG_HAS_NANITES))
+		SEND_SIGNAL(M, COMSIG_NANITE_DELETE)
+		to_chat(M, "<span class='warning'>You feel an electrical charge run throughout your entire body as your nanites are vaporized!</span>")
+
+/obj/machinery/scanner_gate/anti_nanite
+	name = "Advanced Scanner Gate"
+	desc = "This gate seems to be highly modified with odd markings."
+	resistance_flags = INDESTRUCTIBLE
+	use_power = NO_POWER_USE
+	flags_1 = NODECONSTRUCT_1
+
+/obj/machinery/scanner_gate/anti_nanite/emag_act(mob/user)
+	to_chat(user, "<span class='notice'>This gate has advanced security measures!</span>")
+	return
+
+/obj/machinery/scanner_gate/anti_nanite/attackby(obj/item/W, mob/user, params)
+	return
+
+/obj/machinery/scanner_gate/anti_nanite/examine(mob/user)
+	return list("This gate seems to be highly modified with odd markings.")
