@@ -27,9 +27,6 @@
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	speak_chance = 1
 	speak_emote = list("growls")
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "hits"
 	speed = 1
 	turns_per_move = 7
 	maxHealth = 75
