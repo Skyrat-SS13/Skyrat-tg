@@ -120,7 +120,7 @@
 	alt_titles = list("Jester")
 
 /datum/job/prisoner
-	alt_titles = list("Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner")
+	alt_titles = list("Low Risk Prisoner", "High Risk Prisoner", "Extreme Risk Prisoner", "Protective Custody Prisoner")
 
 /datum/job/assistant
 	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")
