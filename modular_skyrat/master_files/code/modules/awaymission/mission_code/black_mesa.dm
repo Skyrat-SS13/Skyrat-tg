@@ -15,10 +15,14 @@
 /mob/living/simple_animal/hostile/xen
 	faction = list(FACTION_XEN)
 	var/list/alert_sounds
+	var/alert_cooldown = 3 SECONDS
+	var/alert_cooldown_time
 
 /mob/living/simple_animal/hostile/xen/Aggro()
 	if(alert_sounds)
-		playsound(src, pick(alert_sounds), 100)
+		if(!(world.time <= alert_cooldown_time))
+			playsound(src, pick(alert_sounds), 100)
+			alert_cooldown_time = world.time + alert_cooldown
 
 /mob/living/simple_animal/hostile/xen/bullsquid
 	name = "bullsquid"
@@ -48,6 +52,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
+
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect1.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect2.ogg',
@@ -158,11 +163,15 @@
 
 /mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
+	var/alert_cooldown = 3 SECONDS
+	var/alert_cooldown_time
 
 /mob/living/simple_animal/hostile/blackmesa/Aggro()
 	. = ..()
 	if(alert_sounds)
-		playsound(src, pick(alert_sounds), 100)
+		if(!(world.time <= alert_cooldown_time))
+			playsound(src, pick(alert_sounds), 100)
+			alert_cooldown_time = world.time + alert_cooldown
 
 ///////////////////HECU
 /mob/living/simple_animal/hostile/blackmesa/hecu
