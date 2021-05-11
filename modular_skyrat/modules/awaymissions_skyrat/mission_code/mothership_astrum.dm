@@ -164,8 +164,8 @@
 	health = 1000
 	melee_damage_lower = 15
 	melee_damage_upper = 15
-	attack_verb_continuous = "kicked the ribs of"
-	attack_verb_simple = "kicks the ribs of"
+	attack_verb_continuous = "attacked"
+	attack_verb_simple = "attacks"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	throw_message = "merely shrugs off of the"
 	speed = 3
@@ -174,3 +174,6 @@
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
 	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human)
+
+/mob/living/simple_animal/hostile/asteroid/elite/abductor/subtype/bullet_act(obj/projectile/proj)
+    return // no more bullet reduction
