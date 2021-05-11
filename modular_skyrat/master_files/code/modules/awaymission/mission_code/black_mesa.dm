@@ -149,7 +149,7 @@
 			alert_cooldown_time = world.time + alert_cooldown
 			switch(health)
 				if(0 to 999)
-					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_hurt01.ogg')))
+					alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg')
 				if(1000 to 2999)
 					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_youalldie01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_foryouhewaits01.ogg')))
 				if(3000 to 6000)
@@ -164,8 +164,7 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
-	set_
-combat_mode(FALSE)
+	set_combat_mode(FALSE)
 
 ///////////////////HECU/mob/living/simple_animal/hostile/blackmesa/hecu
 	name = "HECU Grunt"
