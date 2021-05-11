@@ -12,19 +12,21 @@
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "nanite_cloud_controller"
 
-/mob/living/simple_animal/hostile/xen
-	faction = list(FACTION_XEN)
+/mob/living/simple_animal/hostile/blackmesa
 	var/list/alert_sounds
 	var/alert_cooldown = 3 SECONDS
 	var/alert_cooldown_time
 
-/mob/living/simple_animal/hostile/xen/Aggro()
+/mob/living/simple_animal/hostile/blackmesa/xen
+	faction = list(FACTION_XEN)
+
+/mob/living/simple_animal/hostile/blackmesa/Aggro()
 	if(alert_sounds)
 		if(!(world.time <= alert_cooldown_time))
-			playsound(src, pick(alert_sounds), 100)
+			playsound(src, pick(alert_sounds), 70)
 			alert_cooldown_time = world.time + alert_cooldown
 
-/mob/living/simple_animal/hostile/xen/bullsquid
+/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
 	name = "bullsquid"
 	desc = "Some highly aggressive alien creature. Thrives in toxic environments."
 	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
@@ -52,14 +54,13 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect1.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect2.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect3.ogg'
 	)
 
-/mob/living/simple_animal/hostile/xen/xen/houndeye
+/mob/living/simple_animal/hostile/blackmesa/xen/xen/houndeye
 	name = "houndeye"
 	desc = "Some highly aggressive alien creature. Thrives in toxic environments."
 	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
@@ -97,7 +98,7 @@
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/he_alert5.ogg'
 	)
 
-/mob/living/simple_animal/hostile/xen/houndeye/enter_charge(atom/target)
+/mob/living/simple_animal/hostile/blackmesa/xen/houndeye/enter_charge(atom/target)
 	playsound(src, pick(list(
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg',
@@ -105,8 +106,7 @@
 	)), 100)
 	return ..()
 
-
-/mob/living/simple_animal/hostile/xen/nihilanth
+/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth
 	name = "nihilanth"
 	desc = "Holy shit."
 	icon = 'modular_skyrat/master_files/icons/mob/nihilanth.dmi'
@@ -124,7 +124,9 @@
 	projectiletype = /obj/projectile/nihilanth
 	ranged = TRUE
 	rapid = 4
+	alert_cooldown = 30 SECONDS
 	var/alert_everyone = TRUE
+	var/played_intro = FALSE
 
 /obj/projectile/nihilanth
 	name = "portal energy"
@@ -138,43 +140,34 @@
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
 	nondirectional_sprite = TRUE
 
-
-/mob/living/simple_animal/hostile/xen/nihilanth/Aggro()
+/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/Aggro()
 	. = ..()
+	if(!played_intro)
+		alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/xen-gl3b.ogg')
 	if(alert_everyone)
-		switch(health)
-			if(0 to 999)
-				alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg')
-			if(1000 to 2999)
-				alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_youalldie01.ogg')
-			if(3000 to 6000)
-				alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_whathavedone01.ogg')
-			else
-				alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_thetruth01.ogg')
+		if(!(world.time <= alert_cooldown_time))
+			alert_cooldown_time = world.time + alert_cooldown
+			switch(health)
+				if(0 to 999)
+					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_hurt01.ogg')))
+				if(1000 to 2999)
+					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_youalldie01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_foryouhewaits01.ogg')))
+				if(3000 to 6000)
+					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_whathavedone01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_deceiveyou01.ogg')))
+				else
+					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_thetruth01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_iamthelast01.ogg')))
 	set_combat_mode(TRUE)
 
-/mob/living/simple_animal/hostile/xen/nihilanth/death(gibbed)
+/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/death(gibbed)
 	. = ..()
 	alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_freeeemmaan01.ogg')
 
-/mob/living/simple_animal/hostile/xen/nihilanth/LoseAggro()
+/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
-	set_combat_mode(FALSE)
+	set_
+combat_mode(FALSE)
 
-/mob/living/simple_animal/hostile/blackmesa
-	var/list/alert_sounds
-	var/alert_cooldown = 3 SECONDS
-	var/alert_cooldown_time
-
-/mob/living/simple_animal/hostile/blackmesa/Aggro()
-	. = ..()
-	if(alert_sounds)
-		if(!(world.time <= alert_cooldown_time))
-			playsound(src, pick(alert_sounds), 100)
-			alert_cooldown_time = world.time + alert_cooldown
-
-///////////////////HECU
-/mob/living/simple_animal/hostile/blackmesa/hecu
+///////////////////HECU/mob/living/simple_animal/hostile/blackmesa/hecu
 	name = "HECU Grunt"
 	desc = "I didn't sign on for this shit. Monsters, sure, but civilians? Who ordered this operation anyway?"
 	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
