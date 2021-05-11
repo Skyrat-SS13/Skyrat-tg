@@ -18,7 +18,7 @@
 
 /mob/living/simple_animal/hostile/xen/Aggro()
 	if(alert_sounds)
-		playsound(src, pick(alert_sounds))
+		playsound(src, pick(alert_sounds), 100)
 
 /mob/living/simple_animal/hostile/xen/bullsquid
 	name = "bullsquid"
@@ -97,7 +97,7 @@
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/houndeye/charge3.ogg'
-	)))
+	)), 100)
 	return ..()
 
 
@@ -160,7 +160,7 @@
 /mob/living/simple_animal/hostile/blackmesa/Aggro()
 	. = ..()
 	if(alert_sounds)
-		playsound(src, pick(alert_sounds))
+		playsound(src, pick(alert_sounds), 100)
 
 ///////////////////HECU
 /mob/living/simple_animal/hostile/blackmesa/hecu
