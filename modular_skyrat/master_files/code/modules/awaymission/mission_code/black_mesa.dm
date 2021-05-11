@@ -115,6 +115,7 @@
 	base_pixel_x = -156
 	pixel_x = -156
 	base_pixel_y = -154
+	speed = 3
 	pixel_y = -154
 	icon_dead = "bullsquid_dead"
 	maxHealth = 10000
@@ -123,15 +124,21 @@
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
 	projectiletype = /obj/projectile/nihilanth
 	ranged = TRUE
-	rapid = 4
+	rapid = 3
 	alert_cooldown = 30 SECONDS
+	harm_intent_damage = 5
+	melee_damage_lower = 10
+	melee_damage_upper = 10
+	attack_verb_continuous = "lathes"
+	attack_verb_simple = "lathe"
+	attack_sound = 'sound/weapons/punch1.ogg'
 	var/alert_everyone = TRUE
 	var/played_intro = FALSE
 
 /obj/projectile/nihilanth
 	name = "portal energy"
 	icon_state = "seedling"
-	damage = 35
+	damage = 20
 	damage_type = BURN
 	light_range = 2
 	flag = ENERGY
@@ -167,7 +174,8 @@
 	. = ..()
 	set_combat_mode(FALSE)
 
-///////////////////HECU/mob/living/simple_animal/hostile/blackmesa/hecu
+///////////////////HECU
+/mob/living/simple_animal/hostile/blackmesa/hecu
 	name = "HECU Grunt"
 	desc = "I didn't sign on for this shit. Monsters, sure, but civilians? Who ordered this operation anyway?"
 	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
