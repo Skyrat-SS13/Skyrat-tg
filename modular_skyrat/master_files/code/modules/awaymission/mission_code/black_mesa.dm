@@ -144,6 +144,7 @@
 	. = ..()
 	if(!played_intro)
 		alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/xen-gl3b.ogg')
+		played_intro = TRUE
 	if(alert_everyone)
 		if(!(world.time <= alert_cooldown_time))
 			alert_cooldown_time = world.time + alert_cooldown
