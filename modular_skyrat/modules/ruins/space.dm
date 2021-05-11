@@ -62,3 +62,27 @@
 	suffix = "codealpha.dmm"
 	name = "Code Alpha Supplementary Station"
 	description = "The mess hall of a once bustling supplementary station, to be deployed alongside SS13."
+
+/datum/map_template/ruin/space/skyrat/smugglies  //Excuse me sir, do you have money printers in here?
+	id = "smugglies"
+	suffix = "smugglies.dmm"
+	name = "Suspicious Cargo Installation"
+	description = "*SCREECH* RDM RDM RDM"
+
+/datum/map_template/ruin/space/skyrat/polychromicfacility
+	id = "polychromicfacility"
+	suffix = "polychromicfacility.dmm"
+	name = "Abandoned Polychromic Facility"
+	description = "A den of bad ideas. Secborgs were made here!"
+
+/datum/map_template/ruin/space/skyrat/luna
+	id = "luna"
+	suffix = "luna.dmm"
+	name = "Luna"
+	description = "Please note for ethical concerns all experimentation regarding writing artificial intelligence units to beleive they are A, A fictional character and B, human have been suspended. Have a pleasant shift."
+
+/datum/map_template/ruin/space/skyrat/blackmarket
+	id = "blackmarket"
+	suffix = "blackmarket.dmm"
+	name = "Shady Market"
+	description = "Whaddya buyin'?"
