@@ -151,9 +151,10 @@
 
 //Elite Fauna (I AM STEALING SO MUCH CODE FOR THIS I AM SORRY)
 
-/mob/living/simple_animal/hostile/asteroid/elite/abductor
+/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor
 	name = "Abductor Captain"
 	desc = "The one you've come here for, finish this."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/abductors.dmi'
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
 	icon_aggro = "abductor_agent_combat"
@@ -175,5 +176,5 @@
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
 	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human)
 
-/mob/living/simple_animal/hostile/asteroid/elite/abductor/subtype/bullet_act(obj/projectile/proj)
-    return // no more bullet reduction
+/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/proj)
+    return // no more reduction
