@@ -7,7 +7,7 @@
 
 /obj/item/ammo_casing/caseless/arrow/ash
 	name = "ashen arrow"
-	desc = "An arrow made from wood, hardened by fire."
+	desc = "An arrow made from ash and iron; cheap, but they shatter on impact."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/ammo.dmi'
 	icon_state = "ashenarrow"
 	inhand_icon_state = "ashenarrow"
@@ -23,7 +23,7 @@
 
 /obj/item/ammo_casing/caseless/arrow/bronze
 	name = "bronze arrow"
-	desc = "An arrow made from wood, tipped with bronze."
+	desc = "An arrow tipped with bronze; fit for killing gods."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/ammo.dmi'
 	icon_state = "bronzearrow"
 	inhand_icon_state = "bronzearrow"
