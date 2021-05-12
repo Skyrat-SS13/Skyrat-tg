@@ -11,8 +11,8 @@
 	exp_requirements = 120
 	exp_type = EXP_TYPE_MEDICAL
 
-
 	outfit = /datum/outfit/job/security_medic
+	plasmaman_outfit = /datum/outfit/plasmaman/security
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SEC
@@ -84,3 +84,4 @@
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/peacekeeper/full(src)
+	new /obj/item/clothing/under/rank/medical/doctor/red(src)

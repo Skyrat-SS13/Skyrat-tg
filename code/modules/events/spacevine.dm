@@ -1,8 +1,8 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/round_event_control/spacevine
 	name = "Spacevine"
 	typepath = /datum/round_event/spacevine
-	//weight = 15 //ORIGINAL
-	weight = 8 //SKYRAT EDIT CHANGE
+	weight = 15
 	max_occurrences = 3
 	min_players = 10
 
@@ -116,7 +116,7 @@
 		QDEL_IN(holder, 5)
 
 /datum/spacevine_mutation/explosive/on_death(obj/structure/spacevine/holder, mob/hitter, obj/item/I)
-	explosion(holder.loc, 0, 0, severity, 0, 0)
+	explosion(holder, light_impact_range = severity, adminlog = FALSE)
 
 /datum/spacevine_mutation/fire_proof
 	name = "fire proof"
@@ -332,13 +332,14 @@
 	var/datum/spacevine_controller/master = null
 	var/list/mutations = list()
 
-/obj/structure/spacevine/Initialize()
+/obj/structure/spacevine/Initialize(mapload)
 	. = ..()
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
-
-/obj/structure/spacevine/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/atmos_sensitive)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/atmos_sensitive, mapload)
 
 /obj/structure/spacevine/examine(mob/user)
 	. = ..()
@@ -399,8 +400,8 @@
 		if(BURN)
 			playsound(src.loc, 'sound/items/welder.ogg', 100, TRUE)
 
-/obj/structure/spacevine/Crossed(atom/movable/AM)
-	. = ..()
+/obj/structure/spacevine/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(!isliving(AM))
 		return
 	for(var/datum/spacevine_mutation/SM in mutations)
@@ -571,7 +572,7 @@
 	var/i
 	for(var/datum/spacevine_mutation/SM in mutations)
 		i += SM.on_explosion(severity, target, src)
-	if(!i && prob(100/severity))
+	if(!i && prob(34 * severity))
 		qdel(src)
 
 /obj/structure/spacevine/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
@@ -595,3 +596,4 @@
 		if(("vines" in M.faction) || ("plants" in M.faction))
 			return TRUE
 	return FALSE
+*/

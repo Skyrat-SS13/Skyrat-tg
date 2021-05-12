@@ -395,9 +395,9 @@
 /mob/living/silicon/robot/proc/self_destruct()
 	if(emagged)
 		QDEL_NULL(mmi)
-		explosion(loc,1,2,4,flame_range = 2)
+		explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 4, flame_range = 2)
 	else
-		explosion(loc,-1,0,2)
+		explosion(src, devastation_range = -1, light_impact_range = 2)
 	gib()
 
 /mob/living/silicon/robot/proc/UnlinkSelf()
@@ -1002,3 +1002,10 @@
 		aiPDA.owner = newname
 		aiPDA.name = newname + " (" + aiPDA.ownjob + ")"
 // SKYRAT EDIT ADDITION END
+
+/mob/living/silicon/robot/get_exp_list(minutes)
+	. = ..()
+
+	var/datum/job/cyborg/cyborg_job_ref = SSjob.GetJobType(/datum/job/cyborg)
+
+	.[cyborg_job_ref.title] = minutes

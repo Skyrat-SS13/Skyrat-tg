@@ -119,7 +119,7 @@
 	if(!objectives.len)
 		return
 	for (var/objective_ in objectives)
-		if(!(istype(objective_, /datum/objective/escape)||istype(objective_, /datum/objective/survive/malf)))
+		if(!(istype(objective_, /datum/objective/escape) || istype(objective_, /datum/objective/survive/malf)))
 			continue
 		remove_objective(objective_)
 
@@ -139,6 +139,9 @@
 
 /datum/antagonist/traitor/internal_affairs/reinstate_escape_objective()
 	..()
+	for (var/datum/objective/martyr/martyr_objective in objectives)
+		remove_objective(martyr_objective)
+
 	var/objtype = traitor_kind == TRAITOR_HUMAN ? /datum/objective/escape : /datum/objective/survive/malf
 	var/datum/objective/escape_objective = new objtype
 	escape_objective.owner = owner
@@ -219,34 +222,7 @@
 					to_chat(owner.current, fail_msg)
 					objective.stolen = FALSE
 
-/datum/antagonist/traitor/internal_affairs/proc/forge_iaa_objectives()
-	if(SSticker.mode.target_list.len && SSticker.mode.target_list[owner]) // Is a double agent
-		// Assassinate
-		var/datum/mind/target_mind = SSticker.mode.target_list[owner]
-		if(issilicon(target_mind.current))
-			var/datum/objective/destroy/internal/destroy_objective = new
-			destroy_objective.owner = owner
-			destroy_objective.target = target_mind
-			destroy_objective.update_explanation_text()
-			add_objective(destroy_objective)
-		else
-			var/datum/objective/assassinate/internal/kill_objective = new
-			kill_objective.owner = owner
-			kill_objective.target = target_mind
-			kill_objective.update_explanation_text()
-			add_objective(kill_objective)
-
-		//Optional traitor objective
-		if(prob(PROB_ACTUAL_TRAITOR))
-			employer = "The Syndicate"
-			owner.special_role = TRAITOR_AGENT_ROLE
-			special_role = TRAITOR_AGENT_ROLE
-			syndicate = TRUE
-			forge_single_objective()
-
 /datum/antagonist/traitor/internal_affairs/forge_traitor_objectives()
-	forge_iaa_objectives()
-
 	var/objtype = traitor_kind == TRAITOR_HUMAN ? /datum/objective/escape : /datum/objective/survive/malf
 	var/datum/objective/escape_objective = new objtype
 	escape_objective.owner = owner
@@ -258,11 +234,11 @@
 	to_chat(owner.current, "<span class='userdanger'>You are the [special_role].</span>")
 	if(syndicate)
 		to_chat(owner.current, "<span class='userdanger'>Your target has been framed for [crime], and you have been tasked with eliminating them to prevent them defending themselves in court.</span>")
-		to_chat(owner.current, "<B><font size=5 color=red>Any damage you cause will be a further embarrassment to Nanotrasen, so you have no limits on collateral damage.</font></B>")
+		to_chat(owner.current, "<span class='warningplain'><B><font size=5 color=red>Any damage you cause will be a further embarrassment to Nanotrasen, so you have no limits on collateral damage.</font></B></span>")
 		to_chat(owner.current, "<span class='userdanger'>You have been provided with a standard uplink to accomplish your task.</span>")
 	else
 		to_chat(owner.current, "<span class='userdanger'>Your target is suspected of [crime], and you have been tasked with eliminating them by any means necessary to avoid a costly and embarrassing public trial.</span>")
-		to_chat(owner.current, "<B><font size=5 color=red>While you have a license to kill, unneeded property damage or loss of employee life will lead to your contract being terminated.</font></B>")
+		to_chat(owner.current, "<span class='warningplain'><B><font size=5 color=red>While you have a license to kill, unneeded property damage or loss of employee life will lead to your contract being terminated.</font></B></span>")
 		to_chat(owner.current, "<span class='userdanger'>For the sake of plausible deniability, you have been equipped with an array of captured Syndicate weaponry available via uplink.</span>")
 
 	to_chat(owner.current, "<span class='userdanger'>Finally, watch your back. Your target has friends in high places, and intel suggests someone may have taken out a contract of their own to protect them.</span>")

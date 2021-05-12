@@ -72,7 +72,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
 	icon_state = "eyepatch_white"
-
+///GLASSSES
 /obj/item/clothing/glasses/thin
 	name = "thin glasses"
 	desc = "Often seen staring down at someone taking a book."
@@ -99,3 +99,22 @@
 	icon_state = "binoclard_lenses"
 	inhand_icon_state = "glasses_rimless"
 	vision_correction = TRUE
+
+/obj/item/clothing/glasses/trickblindfold/hamburg
+	name = "thief visor"
+	desc = "Perfect for stealing hamburgers from innocent multinational capitalist monopolies."
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	icon_state = "thiefmask"
+
+///GOGGLES
+/obj/item/clothing/glasses/biker
+	name = "biker goggles"
+	desc = "Brown leather riding gear, You can leave, just give us the gas."
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
+	icon_state = "biker"
+	inhand_icon_state = "welding-g"
+	vision_correction = TRUE
+
+

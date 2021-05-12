@@ -30,7 +30,7 @@
 	attack_verb_simple = list("cuddle", "petpatt", "wigglepurr")
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
 	gender = FEMALE
-	
+
 /obj/item/toy/plush/fermis/chen
 	name = "securicat plushie"
 	desc = "The official stuffed companion to the medcat plushie!! It resembles a certain securicat. You get the impression she's encouraging you to be brave and protect those you care for."
@@ -136,17 +136,6 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 	gender = MALE
 
-/obj/item/toy/plush/oglaplush
-	name = "Suspicious lizzy"
-	desc = "It would appear that, as a part of a certain lizard's plan to up his reputation, he manufactured a plushie of himself. At least it smells like blueberries."
-	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
-	icon_state = "plushie_ogla"
-	inhand_icon_state = "plushie_ogla"
-	attack_verb_continuous = list("claws", "hisses", "tail slaps")
-	attack_verb_simple = list("claw", "hiss", "tail slap")
-	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
-	gender = MALE
-
 /obj/item/toy/plush/arcplush
 	name = "Familiar lizard plushie"
 	desc = "A small plushie that resembles a lizard-- Or, not a lizard, it's mouth seems to go horizontally too.. Are those limbs in it's maw?"
@@ -190,3 +179,53 @@
   attack_verb_continuous = list("slaps", "challenges")
   attack_verb_simple = list("slap", "challenge")
   squeak_override = list('sound/weapons/slap.ogg' = 1)
+
+/obj/item/toy/plush/ian
+	name = "plush corgi"
+	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "ianplushie"
+	inhand_icon_state = "corgi"
+	attack_verb_continuous = list("barks", "woofs", "wags his tail at")
+	attack_verb_simple = list("lick", "nuzzle", "bite")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
+	young = 1 //No.
+
+/obj/item/toy/plush/ian/small
+	name = "small plush corgi"
+	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "corgi"
+	inhand_icon_state = "corgi"
+
+/obj/item/toy/plush/ian/lisa
+	name = "plush girly corgi"
+	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Lisa\"?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "girlycorgi"
+	inhand_icon_state = "girlycorgi"
+	attack_verb_continuous = list("barks", "woofs", "wags her tail at")
+	gender = FEMALE
+
+/obj/item/toy/plush/cat
+	name = "cat plushie"
+	desc = "A small cat plushie with black beady eyes."
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "blackcat"
+	inhand_icon_state = "blackcat"
+	attack_verb_continuous = list("cuddles", "meows", "hisses")
+	attack_verb_simple = list("cuddle", "meow", "hiss")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
+
+/obj/item/toy/plush/cat/tux
+	name = "tux cat plushie"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "tuxedocat"
+	inhand_icon_state = "tuxedocat"
+
+/obj/item/toy/plush/cat/white
+	name = "white cat plushie"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "whitecat"
+	inhand_icon_state = "whitecat"
+

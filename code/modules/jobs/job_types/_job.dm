@@ -67,6 +67,14 @@
 
 	var/bounty_types = CIV_JOB_BASIC
 
+	/// Goodies that can be received via the mail system.
+	// this is a weighted list.
+	/// Keep the _job definition for this empty and use /obj/item/mail to define general gifts.
+	var/list/mail_goodies = list()
+
+	/// If this job's mail goodies compete with generic goodies.
+	var/exclusive_mail_goodies = FALSE
+
 	///Bitfield of departments this job belongs wit
 	var/departments = NONE
 
@@ -164,6 +172,8 @@
 		var/datum/bank_account/bank_account = new(H.real_name, src, H.dna.species.payday_modifier)
 		bank_account.payday(STARTING_PAYCHECKS, TRUE)
 		H.account_id = bank_account.account_id
+	get_alt_title_pref(preference_source) //SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
+
 
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
@@ -179,12 +189,12 @@
 
 	if(!visualsOnly && announce)
 		announce(H, is_captain)
-
+/* SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
-
+*/
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
 	if(available_in_days(C) == 0)
@@ -276,6 +286,9 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
+			J.get_id_titles(H, C) // SKYRAT EDIT ADD - ALT TITLES
+			// C.assignment = J.title - SKYRAT EDIT - OVERWRITTEN IN ALT TITLES
+
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -287,12 +300,12 @@
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = J.title
+		J.get_pda_titles(H, PDA) // SKYRAT EDIT ADD - ALT TITLES
+		// PDA.ownjob = J.title - SKYRAT EDIT - OVERWRITTEN IN ALT TITLES
 		PDA.update_label()
 
 	if(H.client?.prefs.playtime_reward_cloak)
 		neck = /obj/item/clothing/neck/cloak/skill_reward/playing
-
 
 /datum/outfit/job/get_chameleon_disguise_info()
 	var/list/types = ..()
@@ -301,3 +314,7 @@
 	types += satchel
 	types += duffelbag
 	return types
+
+/// An overridable getter for more dynamic goodies.
+/datum/job/proc/get_mail_goodies(mob/recipient)
+	return mail_goodies

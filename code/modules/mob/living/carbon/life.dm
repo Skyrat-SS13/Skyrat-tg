@@ -59,7 +59,7 @@
 				if(STAMINA_THRESHOLD_MESSAGE_OHGOD to INFINITY)
 					to_chat(src, "<span class='warning'>You feel fatigued!</span>")
 					//SKYRAT EDIT END
-	if(mind)
+	if(. && mind) //. == not dead
 		for(var/key in mind.addiction_points)
 			var/datum/addiction/addiction = SSaddiction.all_addictions[key]
 			addiction.process_addiction(src, delta_time, times_fired)
@@ -147,7 +147,6 @@
 
 	if(breath)
 		loc.assume_air(breath)
-		air_update_turf(FALSE, FALSE)
 
 /mob/living/carbon/proc/has_smoke_protection()
 	if(HAS_TRAIT(src, TRAIT_NOBREATH))
