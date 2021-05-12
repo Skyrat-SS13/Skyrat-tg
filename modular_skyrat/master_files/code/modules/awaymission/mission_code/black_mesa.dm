@@ -80,7 +80,7 @@
 	harm_intent_damage = 15
 	melee_damage_lower = 12
 	melee_damage_upper = 18
-	attack_sound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/attack1.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
 
@@ -126,7 +126,7 @@
 	harm_intent_damage = 15
 	melee_damage_lower = 12
 	melee_damage_upper = 18
-	attack_sound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/attack1.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	charger = TRUE
 	loot = list(/obj/item/stack/sheet/bluespace_crystal)
@@ -209,6 +209,7 @@
 	. = ..()
 	alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_death01.ogg')
 	new /obj/effect/singularity_creation(loc)
+	message_admins("[src] has been defeated, a resonance cascade will occur in 10 seconds.")
 	addtimer(CALLBACK(src, .proc/endgame_shit),  10 SECONDS)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
@@ -216,12 +217,22 @@
 	set_combat_mode(FALSE)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
+	to_chat(world, "<span class='warning'>You feel as though a powerful force has been defeated...</span>")
+	var/datum/round_event_control/resonance_cascade/event_to_start
+	event_to_start.runEvent()
 
+/datum/round_event_control/resonance_cascade
+	name = "Portal Storm: Resonance Cascade"
+	typepath = /datum/round_event/portal_storm/resonance_cascade
+	weight = 0
+	max_occurrences = 0
 
 /datum/round_event/portal_storm/resonance_cascade
-	boss_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 2)
-	hostile_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 8,\
-						/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 8)
+	hostile_types = list(
+		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 8,
+		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 8,
+		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 8
+	)
 
 ///////////////////HECU
 /mob/living/simple_animal/hostile/blackmesa/hecu
@@ -392,3 +403,4 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye,
 		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
 	)
+
