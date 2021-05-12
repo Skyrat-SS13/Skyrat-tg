@@ -34,14 +34,9 @@ GLOBAL_VAR(command_name)
 
 /proc/station_name()
 	if(!GLOB.station_name)
-		var/newname
-		var/config_station_name = CONFIG_GET(string/stationname)
-		if(config_station_name)
-			newname = config_station_name
-		else
-			newname = new_station_name()
-
-		set_station_name(newname)
+		SSmapping.HACK_LoadMapConfig()
+		var/mapname = SSmapping.config.map_name
+		set_station_name(mapname)
 
 	return GLOB.station_name
 
