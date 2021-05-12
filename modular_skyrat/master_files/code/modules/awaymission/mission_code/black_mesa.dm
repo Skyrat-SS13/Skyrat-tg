@@ -161,6 +161,26 @@
 					playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
 					human_to_dunk.death(FALSE)
 
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	if(.)
+		return
+	take_control(user)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/take_control(mob/user)
+	if(key || stat)
+		return
+	if(!is_zombie) //Only zombies can be controlled.
+		return
+	var/pod_ask = alert("Become a blob spore?", "Are you bulbous enough?", "Yes", "No")
+	if(pod_ask == "No" || !src || QDELETED(src))
+		return
+	if(key)
+		to_chat(user, "<span class='warning'>Someone else already took this spore!</span>")
+		return
+	key = user.key
+	log_game("[key_name(src)] took control of [name].")
+
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/H)
 	if(is_zombie)
 		return FALSE
