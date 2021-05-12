@@ -12,7 +12,11 @@
 /mob/living/carbon/human/Initialize()
 	. = ..()
 	if(CONFIG_GET(flag/mob_step_on))
-		RegisterSignal(src, list(COMSIG_ATOM_BUMPED, COMSIG_MOVABLE_CROSSED), .proc/attempt_step_on)
+		RegisterSignal(src, COMSIG_ATOM_BUMPED, .proc/attempt_step_on)
+		var/static/list/loc_connections = list(
+			COMSIG_ATOM_ENTERED = .proc/attempt_step_on,
+		)
+		AddElement(/datum/element/connect_loc, src, loc_connections)
 
 /mob/living/proc/attempt_step_on(atom/source, mob/living/stepper)
 	SIGNAL_HANDLER
