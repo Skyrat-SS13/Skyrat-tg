@@ -161,8 +161,8 @@
 	icon_dead = "pandora_dead"
 	icon_gib = "syndicate_gib"
 	health_doll_icon = "pandora"
-	maxHealth = 1000
-	health = 1000
+	maxHealth = 1500
+	health = 1500
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	attack_verb_continuous = "attacked"
@@ -175,14 +175,8 @@
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
 	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/item/key/gateway)
-
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/proj)
+	del_on_death = TRUE
+	
+/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/P)
+	apply_damage(P.damage, P.damage_type)
 	return // no more reduction
-
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/death(gibbed)
-	// do things here
-	qdel(src, hint=QDEL_HINT_QUEUE)
-	return
-
-//mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/Destroy()
-//	return // get fucked
