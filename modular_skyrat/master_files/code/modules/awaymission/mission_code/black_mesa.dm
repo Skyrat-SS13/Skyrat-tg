@@ -266,6 +266,7 @@
 	attack_verb_continuous = "lathes"
 	attack_verb_simple = "lathe"
 	attack_sound = 'sound/weapons/punch1.ogg'
+	status_flags = NONE
 	var/alert_everyone = TRUE
 
 /obj/projectile/nihilanth
@@ -309,7 +310,7 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
 	to_chat(world, "<span class='warning'>You feel as though a powerful force has been defeated...</span>")
-	var/datum/round_event_control/resonance_cascade/event_to_start
+	var/datum/round_event_control/resonance_cascade/event_to_start = new()
 	event_to_start.runEvent()
 
 /datum/round_event_control/resonance_cascade
@@ -318,11 +319,20 @@
 	weight = 0
 	max_occurrences = 0
 
+
+/datum/round_event/portal_storm/resonance_cascade/announce(fake)
+	set waitfor = 0
+	sound_to_playing_players('modular_skyrat/master_files/sound/blackmesa/tc_12_portalsuck.ogg')
+	sleep(40)
+	priority_announce("GENERAL ALERT: Resonance cascade detected; massive transdimentional rift inbound!", "Transdimentional Rift", ANNOUNCER_KLAXON)
+	sleep(20)
+	sound_to_playing_players('modular_skyrat/master_files/sound/blackmesa/tc_13_teleport.ogg')
+
 /datum/round_event/portal_storm/resonance_cascade
 	hostile_types = list(
 		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 8,
 		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 8,
-		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 8
+		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab = 12
 	)
 
 ///////////////////HECU
