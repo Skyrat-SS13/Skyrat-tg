@@ -127,6 +127,7 @@
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	charger = TRUE
+	charge_frequency = 3 SECONDS
 	loot = list(/obj/item/stack/sheet/bone)
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/alert1.ogg'
@@ -151,15 +152,18 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
-	if(hit_atom)
+	if(hit_atom && stat != DEAD)
 		if(ishuman(hit_atom))
 			var/mob/living/carbon/human/human_to_dunk = hit_atom
 			if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50)) //Anything on de head stops the head hump
-				to_chat(human_to_dunk, "<span class='userdanger'>[src] latches onto your head as it pierces your skull, instantly killing you!</span>")
-				playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
-				zombify(human_to_dunk)
+				if(zombify(human_to_dunk))
+					to_chat(human_to_dunk, "<span class='userdanger'>[src] latches onto your head as it pierces your skull, instantly killing you!</span>")
+					playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
+					human_to_dunk.death(FALSE)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/H)
+	if(is_zombie)
+		return FALSE
 	is_zombie = TRUE
 	if(H.wear_suit)
 		var/obj/item/clothing/suit/armor/A = H.wear_suit
@@ -174,26 +178,43 @@
 	obj_damage = 21 //now that it has a corpse to puppet, it can properly attack structures
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	movement_type = GROUND
-	icon = H.icon
-	icon_state = "zombie"
+	icon_state = ""
 	H.hairstyle = null
 	H.update_hair()
 	H.forceMove(src)
 	oldguy = H
-	update_icons()
+	update_appearance()
 	visible_message("<span class='warning'>The corpse of [H.name] suddenly rises!</span>")
+	charger = FALSE
 	if(!key)
 		notify_ghosts("\A [src] has been created in \the [get_area(src)].", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Headcrab Zombie Created")
+	return TRUE
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
 	. = ..()
 	if(oldguy)
 		oldguy.forceMove(loc)
 		oldguy = null
-	if(prob(30) && is_zombie)
-		new /mob/living/simple_animal/hostile/blackmesa/xen/headcrab(loc) //OOOO it unlached!
-		qdel(src)
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/update_icons()
+	if(is_zombie)
+		if(prob(30))
+			new /mob/living/simple_animal/hostile/blackmesa/xen/headcrab(loc) //OOOO it unlached!
+			qdel(src)
+			return
+		dezombify()
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/dezombify()
+	if(!is_zombie)
+		return
+	if(oldguy)
+		oldguy.forceMove(loc)
+		oldguy = null
+	is_zombie = FALSE
+	name = initial(name)
+	desc = initial(desc)
+	update_appearance()
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/update_overlays()
+	. = ..()
 	if(is_zombie)
 		copy_overlays(oldguy, TRUE)
 		var/mutable_appearance/blob_head_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/blackmesa.dmi', "headcrab_zombie")
