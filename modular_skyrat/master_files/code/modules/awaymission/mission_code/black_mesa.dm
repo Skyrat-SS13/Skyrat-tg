@@ -77,9 +77,9 @@
 	maxHealth = 75
 	health = 75
 	obj_damage = 50
-	harm_intent_damage = 15
-	melee_damage_lower = 12
-	melee_damage_upper = 18
+	harm_intent_damage = 10
+	melee_damage_lower = 10
+	melee_damage_upper = 14
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
@@ -113,7 +113,6 @@
 	icon_dead = "headcrab_dead"
 	icon_gib = null
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	speak_chance = 1
 	speak_emote = list("growls")
 	speed = 1
@@ -122,19 +121,20 @@
 	turns_per_move = 7
 	maxHealth = 40
 	health = 40
-	obj_damage = 50
 	harm_intent_damage = 15
-	melee_damage_lower = 12
-	melee_damage_upper = 18
+	melee_damage_lower = 10
+	melee_damage_upper = 12
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	charger = TRUE
-	loot = list(/obj/item/stack/sheet/bluespace_crystal)
+	loot = list(/obj/item/stack/sheet/bone)
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/alert1.ogg'
 	)
+	var/is_zombie = FALSE
+	var/mob/living/carbon/human/oldguy
 
-/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/enter_charge(atom/target)
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/handle_charge_target(atom/target)
 	playsound(src, pick(list(
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack1.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack2.ogg',
@@ -148,6 +148,56 @@
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/die1.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/die2.ogg'
 	)), 100)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	if(hit_atom)
+		if(ishuman(hit_atom))
+			var/mob/living/carbon/human/human_to_dunk = hit_atom
+			if(!human_to_dunk.get_item_by_slot(ITEM_SLOT_HEAD) && prob(50)) //Anything on de head stops the head hump
+				to_chat(human_to_dunk, "<span class='userdanger'>[src] latches onto your head as it pierces your skull, instantly killing you!</span>")
+				playsound(src, 'modular_skyrat/master_files/sound/blackmesa/headcrab/headbite.ogg', 100)
+				zombify(human_to_dunk)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/proc/zombify(mob/living/carbon/human/H)
+	is_zombie = TRUE
+	if(H.wear_suit)
+		var/obj/item/clothing/suit/armor/A = H.wear_suit
+		maxHealth += A.armor.melee //That zombie's got armor, I want armor!
+	maxHealth += 40
+	health = maxHealth
+	name = "zombie"
+	desc = "A shambling corpse animated by a headcrab!"
+	mob_biotypes |= MOB_HUMANOID
+	melee_damage_lower += 8
+	melee_damage_upper += 11
+	obj_damage = 21 //now that it has a corpse to puppet, it can properly attack structures
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	movement_type = GROUND
+	icon = H.icon
+	icon_state = "zombie"
+	H.hairstyle = null
+	H.update_hair()
+	H.forceMove(src)
+	oldguy = H
+	update_icons()
+	visible_message("<span class='warning'>The corpse of [H.name] suddenly rises!</span>")
+	if(!key)
+		notify_ghosts("\A [src] has been created in \the [get_area(src)].", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Headcrab Zombie Created")
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
+	. = ..()
+	if(oldguy)
+		oldguy.forceMove(loc)
+		oldguy = null
+	if(prob(30) && is_zombie)
+		new /mob/living/simple_animal/hostile/blackmesa/xen/headcrab(loc) //OOOO it unlached!
+		qdel(src)
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/update_icons()
+	if(is_zombie)
+		copy_overlays(oldguy, TRUE)
+		var/mutable_appearance/blob_head_overlay = mutable_appearance('modular_skyrat/master_files/icons/mob/blackmesa.dmi', "headcrab_zombie")
+		add_overlay(blob_head_overlay)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth
 	name = "nihilanth"
