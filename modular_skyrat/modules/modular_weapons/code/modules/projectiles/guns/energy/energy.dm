@@ -161,7 +161,8 @@
 	eyeblur = 1
 	light_range = 5
 	light_power = 0.75
-	speed = 0.5 
+	speed = 0.5
+	armour_penetration = 10
 
 //////////////////////
 //   Double Laser   //
@@ -178,11 +179,12 @@
 	name = "laser bolt"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/projectiles.dmi'
 	icon_state = "double_laser"
-	damage = 30
+	damage = 40
 	eyeblur = 1
 	light_range = 5
 	light_power = 0.75
 	speed = 0.5
+	armour_penetration = 10
 
 //////////////////////
 //  Energy Bullets  //
