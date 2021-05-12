@@ -31,15 +31,19 @@ GLOBAL_VAR(command_name)
 	GLOB.command_name = name
 
 	return name
-
+/* SKYRAT EDIT MOVAL - OVERWRITTEN IN MODULAR MASTER FILES
 /proc/station_name()
 	if(!GLOB.station_name)
-		SSmapping.HACK_LoadMapConfig()
-		var/mapname = SSmapping.config.map_name
-		set_station_name(mapname)
+		var/newname
+		var/config_station_name = CONFIG_GET(string/stationname)
+		if(config_station_name)
+			newname = config_station_name
+		else
+			newname = new_station_name()
 
+		set_station_name(newname)
 	return GLOB.station_name
-
+*/
 /proc/set_station_name(newname)
 	GLOB.station_name = newname
 
