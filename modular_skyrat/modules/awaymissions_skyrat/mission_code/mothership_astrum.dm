@@ -120,6 +120,33 @@
 	force = 30
 	throwforce = 35
 
+/obj/item/key/gateway
+    name = "\improper gateway key"
+    desc = "description"
+    resistance_flags = INDESTRUCTIBLE
+    var/datum/gateway_destination/target
+    var/use_once = TRUE
+    var/used = FALSE
+    var/inactive_gateway_only = TRUE
+
+/obj/item/key/gateway/home
+    name = "\improper Global Recall Key"
+    desc = "Recall to the Global Gateway."
+    gateway_destination = /datum/gateway_destination/gateway/home
+
+/obj/item/key/gateway/proc/pre_attack(atom/A, mob/living/user, params)
+    if(src.used && !src.use_once)
+        return
+    if(istype(A,/obj/machinery/gateway))
+        /obj/machinery/gateway/gate = A
+        if(gate.target)
+            if(src.inactive_gateway_only)
+                return
+            gate.deactivate()
+        gate.activate(src.target)
+        src.used = TRUE
+    else return ..()
+
 // FUCK NANITES
 /obj/machinery/scanner_gate/anti_nanite
 	name = "Advanced Scanner Gate"
@@ -168,13 +195,21 @@
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
-	throw_message = "merely shrugs off of the"
+	throw_message = "doesn't do anything to"
 	speed = 3
 	move_to_delay = 10
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
-	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human)
+	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/item/key/gateway)
 
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/proj)
-    return // no more reduction
+	return // no more reduction
+
+/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/death(gibbed)
+	// do things here
+	qdel(src, hint=QDEL_HINT_QUEUE)
+	return
+
+//mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/Destroy()
+//	return // get fucked
