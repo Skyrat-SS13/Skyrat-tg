@@ -174,9 +174,10 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
-	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/item/key/gateway)
-	del_on_death = TRUE
 	
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/P)
 	apply_damage(P.damage, P.damage_type)
 	return // no more reduction
+
+/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/death(gibbed)
+	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/item/key/gateway)
