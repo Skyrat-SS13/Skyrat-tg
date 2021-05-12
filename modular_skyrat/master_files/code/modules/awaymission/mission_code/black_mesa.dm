@@ -19,6 +19,9 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen
 	faction = list(FACTION_XEN)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = 1500
 
 /mob/living/simple_animal/hostile/blackmesa/Aggro()
 	if(alert_sounds)
@@ -38,7 +41,6 @@
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	speak_chance = 1
 	speak_emote = list("growls")
-	speed = 1
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
@@ -50,17 +52,13 @@
 	melee_damage_upper = 18
 	attack_sound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/attack1.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
-	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	minbodytemp = 0
-	maxbodytemp = 1500
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect1.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect2.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect3.ogg'
 	)
 
-/mob/living/simple_animal/hostile/blackmesa/xen/xen/houndeye
+/mob/living/simple_animal/hostile/blackmesa/xen/houndeye
 	name = "houndeye"
 	desc = "Some highly aggressive alien creature. Thrives in toxic environments."
 	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
@@ -85,7 +83,7 @@
 	attack_sound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/attack1.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+
 	minbodytemp = 0
 	maxbodytemp = 1500
 	charger = TRUE
@@ -106,6 +104,51 @@
 	)), 100)
 	return ..()
 
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab
+	name = "headcrab"
+	desc = "Don't let it latch onto your hea-... hey, that's kinda cool."
+	icon = 'modular_skyrat/master_files/icons/mob/blackmesa.dmi'
+	icon_state = "headcrab"
+	icon_living = "headcrab"
+	icon_dead = "headcrab_dead"
+	icon_gib = null
+	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
+	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
+	speak_chance = 1
+	speak_emote = list("growls")
+	speed = 1
+	emote_taunt = list("growls", "snarls", "grumbles")
+	taunt_chance = 100
+	turns_per_move = 7
+	maxHealth = 40
+	health = 40
+	obj_damage = 50
+	harm_intent_damage = 15
+	melee_damage_lower = 12
+	melee_damage_upper = 18
+	attack_sound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/attack1.ogg'
+	gold_core_spawnable = HOSTILE_SPAWN
+	charger = TRUE
+	loot = list(/obj/item/stack/sheet/bluespace_crystal)
+	alert_sounds = list(
+		'modular_skyrat/master_files/sound/blackmesa/headcrab/alert1.ogg'
+	)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/enter_charge(atom/target)
+	playsound(src, pick(list(
+		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack1.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack2.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/headcrab/attack3.ogg'
+	)), 100)
+	return ..()
+
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab/death(gibbed)
+	. = ..()
+	playsound(src, pick(list(
+		'modular_skyrat/master_files/sound/blackmesa/headcrab/die1.ogg',
+		'modular_skyrat/master_files/sound/blackmesa/headcrab/die2.ogg'
+	)), 100)
+
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth
 	name = "nihilanth"
 	desc = "Holy shit."
@@ -125,15 +168,14 @@
 	projectiletype = /obj/projectile/nihilanth
 	ranged = TRUE
 	rapid = 3
-	alert_cooldown = 30 SECONDS
+	alert_cooldown = 2 MINUTES
 	harm_intent_damage = 5
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	melee_damage_lower = 20
+	melee_damage_upper = 20
 	attack_verb_continuous = "lathes"
 	attack_verb_simple = "lathe"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	var/alert_everyone = TRUE
-	var/played_intro = FALSE
 
 /obj/projectile/nihilanth
 	name = "portal energy"
@@ -149,15 +191,12 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/Aggro()
 	. = ..()
-	if(!played_intro)
-		alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/xen-gl3b.ogg')
-		played_intro = TRUE
 	if(alert_everyone)
 		if(!(world.time <= alert_cooldown_time))
 			alert_cooldown_time = world.time + alert_cooldown
 			switch(health)
 				if(0 to 999)
-					alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg')
+					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_freeeemmaan01.ogg')))
 				if(1000 to 2999)
 					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_youalldie01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_foryouhewaits01.ogg')))
 				if(3000 to 6000)
@@ -168,11 +207,21 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/death(gibbed)
 	. = ..()
-	alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_freeeemmaan01.ogg')
+	alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_death01.ogg')
+	new /obj/effect/singularity_creation(loc)
+	addtimer(CALLBACK(src, .proc/endgame_shit),  10 SECONDS)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
 	set_combat_mode(FALSE)
+
+/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
+
+
+/datum/round_event/portal_storm/resonance_cascade
+	boss_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 2)
+	hostile_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 8,\
+						/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 8)
 
 ///////////////////HECU
 /mob/living/simple_animal/hostile/blackmesa/hecu
@@ -324,3 +373,22 @@
 	max_integrity = 200
 	lethal_projectile = /obj/projectile/beam/laser/heavylaser
 	lethal_projectile_sound = 'sound/weapons/lasercannonfire.ogg'
+
+/obj/effect/random_mob_placer
+	name = "mob placer"
+	icon = 'icons/effects/mapping_helpers.dmi'
+	icon_state = "mobspawner"
+	var/list/possible_mobs
+
+/obj/effect/random_mob_placer/Initialize(mapload)
+	..()
+	var/mob/picked_mob = pick(possible_mobs)
+	new picked_mob(loc)
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/random_mob_placer/xen
+	possible_mobs = list(
+		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab,
+		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye,
+		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
+	)
