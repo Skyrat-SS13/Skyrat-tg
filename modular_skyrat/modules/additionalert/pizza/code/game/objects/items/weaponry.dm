@@ -11,19 +11,6 @@
 	victim.IgniteMob()
 	return ..()
 
-/obj/item/choice_beacon/pizza
-	name = "pizza delivery beacon"
-	desc = "Summon a pizza box, service with a smile!"
-	icon_state = "gangtool-white"
 
-/obj/item/choice_beacon/pizza/generate_display_names()
-	var/list/pizzabox = list()
-	for(var/V in subtypesof(/obj/item/pizzabox))
-		var/obj/item/pizzabox/A = V
-		pizzabox[initial(A.theme_name)] = A
-	return pizzabox
-
-/obj/item/choice_beacon/pizza/spawn_option(obj/choice,mob/living/M)
-	new choice(get_turf(M))
-	to_chat(M, "<span class='hear'>You hear something crackle from the beacon for a moment before a voice speaks. \"Dogginos! Only the Barkiest of Pizza!</b> Message ends.\"</span>")
+var/random_pizza = pick(/obj/item/pizzabox/margherita, /obj/item/pizzabox/mushroom, /obj/item/pizzabox/meat, /obj/item/pizzabox/pineapple)
 
