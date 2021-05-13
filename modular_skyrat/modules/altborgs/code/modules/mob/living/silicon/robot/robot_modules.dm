@@ -166,14 +166,14 @@
 			cyborg_base_icon = "gibbs"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 		//Dogborgs
-		if("Hound")
+		if("Medihound")
 			cyborg_base_icon = "medihound"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 			sleeper_overlay = "msleeper"
 			model_select_icon = "medihound"
 			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			dogborg = TRUE
-		if("Darkhound")
+		if("Medihound Dark")
 			cyborg_base_icon = "medihounddark"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 			sleeper_overlay = "mdsleeper"
