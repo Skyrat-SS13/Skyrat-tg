@@ -180,4 +180,7 @@
 	return // no more reduction
 
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/death(gibbed)
-	loot_drop = list(/obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/effect/gibspawner/human, /obj/item/key/gateway)
+	spawn_gibs()
+	spawn_gibs()
+	new /obj/item/key/gateway/home(src.loc)
+	qdel(src)
