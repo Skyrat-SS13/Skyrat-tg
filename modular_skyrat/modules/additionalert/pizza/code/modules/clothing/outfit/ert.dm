@@ -8,6 +8,7 @@
 	mask = /obj/item/clothing/mask/fakemoustache/italian
 	uniform = /obj/item/clothing/under/pizza
 	ears = /obj/item/radio/headset/headset_cent/alt
+	back = /obj/item/storage/backpack/ert/odst
 	backpack_contents = list(
 		/obj/item/storage/box/survival,\
 		/obj/item/kitchen/knife,\
@@ -23,6 +24,7 @@
 	mask = /obj/item/clothing/mask/fakemoustache/italian
 	head = /obj/item/clothing/head/pizza
 	ears = /obj/item/radio/headset/headset_cent/alt
+	back = /obj/item/storage/backpack/ert/odst
 	backpack_contents = list(
 		/obj/item/storage/box/survival,\
 		/obj/item/kitchen/knife/hotknife,\
