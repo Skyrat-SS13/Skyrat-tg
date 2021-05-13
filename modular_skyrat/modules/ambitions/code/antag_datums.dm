@@ -14,8 +14,7 @@
 	uses_ambitions = TRUE
 
 /datum/antagonist/traitor/ambitions_add()
-	if(traitor_kind == TRAITOR_HUMAN && should_equip)
-		equip()
+	equip()
 
 /datum/antagonist/changeling
 	uses_ambitions = TRUE
