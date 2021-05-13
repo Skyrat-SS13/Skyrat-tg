@@ -36,7 +36,7 @@
 	if(give_objectives)
 		forge_traitor_objectives()
 
-	equip()
+	//equip() SKYRAT EDIT REMOVAL
 
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
@@ -57,18 +57,12 @@
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
-	add_objective(new /datum/objective/ambitions()) //SKYRAT EDIT ADDITION - AMBITIONS
-	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-	/*
-	switch(traitor_kind)
-		if(TRAITOR_AI)
-			forge_ai_objectives()
-		else
-			forge_human_objectives()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	objectives.Cut()
 
+	//SKYRAT EDIT ADDITION
+	var/datum/objective/ambitions/objective = new
+	objectives += objective
+	/* SKYRAT EDIT REMOVAL
 	var/is_hijacker = FALSE
 	var/objective_count = 0
 
@@ -87,6 +81,7 @@
 		return
 
 	forge_escape_objective()
+	*/
 
 /// Forges a single escape objective and adds it to this datum's objective list.
 /datum/antagonist/traitor/proc/forge_escape_objective()
@@ -151,24 +146,6 @@
 		give_codewords()
 	..() //SKYRAT EDIT ADDITION - AMBITIONS
 
-<<<<<<< HEAD
-/datum/antagonist/traitor/proc/finalize_traitor()
-	switch(traitor_kind)
-		if(TRAITOR_AI)
-			add_law_zero()
-			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
-			owner.current.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MALF)
-		if(TRAITOR_HUMAN)
-			//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-			/*
-			if(should_equip)
-				equip(silent)
-			*/
-			//SKYRAT EDIT REMOVAL END
-			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
-
-=======
->>>>>>> f36c7fa43f0 (Split malf AI antag datum away from traitor, enable malf AI roundstart ruleset. (#59064))
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
 	var/mob/living/datum_owner = mob_override || owner.current
