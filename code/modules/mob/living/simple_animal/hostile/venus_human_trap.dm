@@ -134,7 +134,7 @@
 	/// The maximum amount of vines a plant can have at one time
 	var/max_vines = 4
 	/// How far away a plant can attach a vine to something
-	var/vine_grab_distance = 3 //SKYRAT EDIT - Original 5
+	var/vine_grab_distance = 4 //SKYRAT EDIT - Original 5
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
 
