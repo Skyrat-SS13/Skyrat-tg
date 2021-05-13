@@ -110,7 +110,7 @@
 		"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "gibbs"),
 		"Drake" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = "drakemedbox")
 		)
-		var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed", "Borgi" = "borgi-medi")
+		var/list/L = list("Hound" = "medihound", "Darkhound" = "medihounddark", "Vale" = "valemed", "Borgi" = "borgi-medi")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = L[a])
 			wide.pixel_x = -16
@@ -166,14 +166,14 @@
 			cyborg_base_icon = "gibbs"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 		//Dogborgs
-		if("Medihound")
+		if("Hound")
 			cyborg_base_icon = "medihound"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 			sleeper_overlay = "msleeper"
 			model_select_icon = "medihound"
 			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
 			dogborg = TRUE
-		if("Medihound Dark")
+		if("Darkhound")
 			cyborg_base_icon = "medihounddark"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 			sleeper_overlay = "mdsleeper"
