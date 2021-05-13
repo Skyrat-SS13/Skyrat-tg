@@ -57,7 +57,6 @@
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
-<<<<<<< HEAD
 	add_objective(new /datum/objective/ambitions()) //SKYRAT EDIT ADDITION - AMBITIONS
 	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
 	/*
@@ -68,9 +67,7 @@
 			forge_human_objectives()
 	*/
 	//SKYRAT EDIT REMOVAL END
-=======
 	objectives.Cut()
->>>>>>> f36c7fa43f0 (Split malf AI antag datum away from traitor, enable malf AI roundstart ruleset. (#59064))
 
 	var/is_hijacker = FALSE
 	var/objective_count = 0

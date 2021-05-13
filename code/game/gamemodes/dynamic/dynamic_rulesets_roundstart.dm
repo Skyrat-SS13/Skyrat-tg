@@ -11,13 +11,8 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
-<<<<<<< HEAD
-	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer")
-	restricted_roles = list("Cyborg")
-=======
 	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	restricted_roles = list("AI", "Cyborg")
->>>>>>> f36c7fa43f0 (Split malf AI antag datum away from traitor, enable malf AI roundstart ruleset. (#59064))
 	required_candidates = 1
 	weight = 5
 	cost = 8 // Avoid raising traitor threat above 10, as it is the default low cost ruleset.
