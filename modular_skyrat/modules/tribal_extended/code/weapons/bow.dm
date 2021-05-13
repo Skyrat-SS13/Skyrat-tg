@@ -70,6 +70,6 @@
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "pipebow"
 	inhand_icon_state = "pipebow"
-	worn_icon_state = "worn_icon_state"
+	worn_icon_state = "pipebow"
 	force = 3
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE

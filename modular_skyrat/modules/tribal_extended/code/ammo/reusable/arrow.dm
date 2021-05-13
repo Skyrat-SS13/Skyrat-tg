@@ -13,7 +13,8 @@
 				break
 	. = ..()
 	if(nemesis_faction)
-		force -= faction_bonus_force
+		playsound(target.loc,'sound/weapons/blade1.ogg', rand(30,50), TRUE)
+		force += faction_bonus_force
 
 /obj/projectile/bullet/reusable/arrow/proc/nemesis_effects(mob/living/user, mob/living/target)
 	return
@@ -28,9 +29,10 @@
 /obj/projectile/bullet/reusable/arrow/ash
 	name = "Ashen arrow"
 	desc = "An arrow made of hardened ash."
-	damage = 25
-	faction_bonus_force = 40
+	damage = 20
+	faction_bonus_force = 50
 	nemesis_factions = list("mining", "boss")
+	ammo_type = /obj/item/ammo_casing/caseless/arrow/ash
 
 /obj/projectile/bullet/reusable/arrow/bone 
 	name = "Bone arrow"
