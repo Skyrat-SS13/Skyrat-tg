@@ -111,7 +111,7 @@
 	maxHealth = 40 //SKYRAT EDIT CHANGE
 	ranged = TRUE
 	harm_intent_damage = 5
-	obj_damage = 30//Skyrat edit change - Original: 60
+	obj_damage = 60
 	melee_damage_lower = 20 //SKYRAT EDIT CHANGE - Original: 25
 	melee_damage_upper = 20 //SKYRAT EDIT CHANGE - Original: 25
 	combat_mode = TRUE
