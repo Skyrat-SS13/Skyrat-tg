@@ -22,6 +22,7 @@
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Lavaland Syndicate Shaft Miner"
 	uniform = /obj/item/clothing/under/utility/cargo/syndicate
+	suit = null //Subtype moment
 	r_pocket = /obj/item/storage/bag/ore
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
@@ -34,7 +35,6 @@
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Lavaland Syndicate Deck Officer"
 	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
-	suit = null //Subtype moment
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer
