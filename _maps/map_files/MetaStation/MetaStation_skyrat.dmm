@@ -2648,8 +2648,9 @@
 /area/space/nearstation)
 "amH" = (
 /obj/machinery/door/airlock/external{
-	req_one_access_txt = "13,8"
+	req_access_txt = "13"
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "amJ" = (
@@ -21824,6 +21825,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
+"clC" = (
+/obj/machinery/door/airlock/external{
+	req_access_txt = "13"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "clD" = (
 /obj/structure/table/wood,
 /obj/item/camera_film{
@@ -23770,7 +23780,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/disposal/bin,
+/obj/machinery/disposal/bin{
+	desc = "A pneumatic waste disposal unit. This one leads to the morgue.";
+	name = "corpse disposal"
+	},
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -25135,7 +25148,7 @@
 "cHw" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/lootdrop/memeorgans,
-/obj/structure/closet/crate/medical,
+/obj/structure/closet/crate/freezer,
 /turf/open/floor/iron/white,
 /area/medical/abandoned)
 "cHy" = (
@@ -61671,7 +61684,10 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue,
-/obj/machinery/disposal/bin,
+/obj/machinery/disposal/bin{
+	desc = "A pneumatic waste disposal unit. This one leads to the morgue.";
+	name = "corpse disposal"
+	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
@@ -125543,7 +125559,7 @@ aox
 aox
 amH
 dnS
-amH
+clC
 dnS
 dnS
 apg

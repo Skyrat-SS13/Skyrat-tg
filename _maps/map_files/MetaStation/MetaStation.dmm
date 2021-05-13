@@ -2271,7 +2271,10 @@
 /area/engineering/atmos)
 "amH" = (
 /obj/machinery/door/airlock/external{
-	req_one_access_txt = "13,8"
+	req_access_txt = "13"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -16449,7 +16452,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/disposal/bin,
+/obj/machinery/disposal/bin{
+	desc = "A pneumatic waste disposal unit. This one leads to the morgue.";
+	name = "corpse disposal"
+	},
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
@@ -17453,7 +17459,7 @@
 "cHw" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/lootdrop/memeorgans,
-/obj/structure/closet/crate/medical,
+/obj/structure/closet/crate/freezer,
 /turf/open/floor/iron/white,
 /area/medical/abandoned)
 "cHy" = (
@@ -25104,14 +25110,14 @@
 	name = "Queue Shutters Control";
 	pixel_x = 25;
 	pixel_y = -36;
-	req_access_txt = "28"
+	req_access_txt = "57"
 	},
 /obj/machinery/button/door{
 	id = "hop";
 	name = "Privacy Shutters Control";
 	pixel_x = 25;
 	pixel_y = -26;
-	req_access_txt = "28"
+	req_access_txt = "57"
 	},
 /obj/machinery/button/flasher{
 	id = "hopflash";
@@ -30749,7 +30755,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/disposal/bin,
+/obj/machinery/disposal/bin{
+	desc = "A pneumatic waste disposal unit. This one leads to the morgue.";
+	name = "corpse disposal"
+	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
@@ -31988,7 +31997,7 @@
 /area/maintenance/port)
 "hfB" = (
 /obj/machinery/button/door{
-	id = "transittube";
+	id = "transitlockdown";
 	name = "Transit Tube Lockdown";
 	pixel_x = -24;
 	pixel_y = -5;
@@ -56217,6 +56226,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "transitlockdown"
+	},
 /turf/open/floor/iron/dark,
 /area/engineering/break_room)
 "pqA" = (
@@ -57742,7 +57754,10 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue,
-/obj/machinery/disposal/bin,
+/obj/machinery/disposal/bin{
+	desc = "A pneumatic waste disposal unit. This one leads to the morgue.";
+	name = "corpse disposal"
+	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
@@ -58434,7 +58449,7 @@
 	name = "Privacy Shutters Control";
 	pixel_x = -24;
 	pixel_y = -6;
-	req_access_txt = "28"
+	req_access_txt = "57"
 	},
 /obj/machinery/light_switch{
 	pixel_x = -25;
@@ -63934,6 +63949,13 @@
 	},
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"rQe" = (
+/obj/machinery/door/airlock/external{
+	req_access_txt = "13"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "rQt" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -66061,6 +66083,9 @@
 /obj/machinery/door/airlock/external{
 	name = "MiniSat Space Access Airlock";
 	req_access_txt = "32"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "transitlockdown"
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/break_room)
@@ -70721,6 +70746,10 @@
 /obj/machinery/navbeacon/wayfinding,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/poddoor/preopen,
+/obj/machinery/door/poddoor/preopen{
+	id = "transitlockdown"
+	},
 /turf/open/floor/iron/dark,
 /area/engineering/break_room)
 "uac" = (
@@ -124887,7 +124916,7 @@ rLv
 anS
 aox
 aox
-amH
+rQe
 dnS
 amH
 dnS
