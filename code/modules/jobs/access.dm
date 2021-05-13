@@ -116,7 +116,8 @@
 		card_assignment = id_card.trim?.assignment
 
 	if(!card_assignment)
-		card_assignment = id_card.assignment
+		card_assignment = id_card.real_title // SKYRAT EDIT - ALT TITLES
+	//	card_assignment = id_card.assignment - SKYRAT EDIT - ORIGINAL
 
 	// Is this one of the jobs with dedicated HUD icons?
 	if(card_assignment in SSjob.station_jobs)
