@@ -5,6 +5,7 @@
 	suit =  /obj/item/clothing/suit/pizzahoodie
 	glasses = /obj/item/clothing/glasses/betterunshit
 	head = /obj/item/clothing/head/soft/red
+	mask = /obj/item/clothing/mask/fakemoustache/italian
 	uniform = /obj/item/clothing/under/pizza
 	ears = /obj/item/radio/headset/headset_cent/alt
 	backpack_contents = list(
@@ -19,6 +20,7 @@
 	id = /obj/item/card/id/advanced/centcom/ert
 	suit =  /obj/item/clothing/suit/pizzaleader
 	uniform = /obj/item/clothing/under/pizza
+	mask = /obj/item/clothing/mask/fakemoustache/italian
 	head = /obj/item/clothing/head/pizza
 	ears = /obj/item/radio/headset/headset_cent/alt
 	backpack_contents = list(
