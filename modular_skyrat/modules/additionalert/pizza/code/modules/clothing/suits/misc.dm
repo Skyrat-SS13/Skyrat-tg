@@ -7,7 +7,7 @@
 
 /obj/item/clothing/suit/pizzaleader
 	name = "dogginos manager coat"
-	desc = "Why do managers of a pizza brand have an SS coat?"
+	desc = "A cool, long flowing coat in a tasteless red colour."
 	icon = 'modular_skyrat/modules/additionalert/pizza/icons/obj/clothing/suit.dmi'
 	worn_icon = 'modular_skyrat/modules/additionalert/pizza/icons/mob/clothing/suit.dmi'
 	icon_state = "forensics_red_long"
