@@ -421,6 +421,10 @@
 	name = "Black Jeans"
 	path = /obj/item/clothing/under/pants/blackjeans
 
+/datum/loadout_item/uniform/pants/bpants
+	name = "Black Pants"
+	path = /obj/item/clothing/under/pants/black
+
 /datum/loadout_item/uniform/pants/cjeans
 	name = "Classic Jeans"
 	path = /obj/item/clothing/under/pants/classicjeans
