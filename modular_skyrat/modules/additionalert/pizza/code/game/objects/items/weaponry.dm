@@ -12,5 +12,4 @@
 	return ..()
 
 
-var/random_pizza = pick(/obj/item/pizzabox/margherita, /obj/item/pizzabox/mushroom, /obj/item/pizzabox/meat, /obj/item/pizzabox/pineapple)
 

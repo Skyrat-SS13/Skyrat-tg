@@ -7,7 +7,6 @@
 	head = /obj/item/clothing/head/soft/red
 	uniform = /obj/item/clothing/under/pizza
 	ears = /obj/item/radio/headset/headset_cent/alt
-	r_hand = random_pizza
 	backpack_contents = list(
 		/obj/item/storage/box/survival,\
 		/obj/item/kitchen/knife,\
@@ -22,7 +21,6 @@
 	uniform = /obj/item/clothing/under/pizza
 	head = /obj/item/clothing/head/pizza
 	ears = /obj/item/radio/headset/headset_cent/alt
-	r_hand = random_pizza
 	backpack_contents = list(
 		/obj/item/storage/box/survival,\
 		/obj/item/kitchen/knife/hotknife,\
@@ -31,5 +29,9 @@
 
 
 
+
+/datum/outfit/centcom/ert/pizza/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	var/list/pizzalist = list(/obj/item/pizzabox/margherita, /obj/item/pizzabox/mushroom, /obj/item/pizzabox/meat, /obj/item/pizzabox/pineapple)
+	r_hand = pick(pizzalist)
 
 
