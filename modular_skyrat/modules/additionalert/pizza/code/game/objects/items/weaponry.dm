@@ -10,3 +10,4 @@
 	victim.adjust_fire_stacks(4)
 	victim.IgniteMob()
 	return ..()
+
