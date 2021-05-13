@@ -14,31 +14,31 @@
 /obj/projectile/bullet/c32
 	name = ".32 bullet"
 	damage = 15
-	wound_bonus = -50
+	wound_bonus = 0
 
-/obj/item/ammo_casing/c32_rubber
+/obj/item/ammo_casing/c32/rubber
 	name = ".32 rubber bullet casing"
 	desc = "A .32 rubber bullet casing."
 	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32_rubber
+	projectile_type = /obj/projectile/bullet/c32/rubber
 
-/obj/projectile/bullet/c32_rubber
+/obj/projectile/bullet/c32/rubber
 	name = ".32 rubber bullet"
 	damage = 5
 	stamina = 20
 	wound_bonus = -75
 
-/obj/item/ammo_casing/c32_ap
+/obj/item/ammo_casing/c32/ap
 	name = ".32 armor-piercing bullet"
 	desc = "A .32 armor-piercing bullet casing."
 	caliber = "c32acp"
-	projectile_type = /obj/projectile/bullet/c32_ap
+	projectile_type = /obj/projectile/bullet/c32/ap
 
-/obj/projectile/bullet/c32_ap
+/obj/projectile/bullet/c32/ap
 	name = ".32 armor-piercing bullet"
-	damage = 10
+	damage = 15
 	armour_penetration = 40
-	wound_bonus = -10
+	wound_bonus = -75
 
 /obj/item/ammo_casing/c32_incendiary
 	name = ".32 incendiary bullet"
@@ -174,3 +174,29 @@
 	shrapnel_type = null
 	sharpness = NONE
 	embedding = null	
+
+//////    7.62    //////
+////////////////////////
+/////  5.56x45mm   /////
+// Very good at piercing armour at short range, not as good at going through armour at over 100m. But this is SS13...
+
+/// The 5.56 you see pretty much everyone under NATO use.
+#define CALIBER_A556x45 "a556x45"
+/obj/item/ammo_casing/a556x45
+	name = "5.56x45mm bullet casing"
+	desc = "A 5.56mm rubber bullet casing."
+	caliber = CALIBER_A556x45
+	projectile_type = /obj/projectile/bullet/a556x45
+
+/obj/projectile/bullet/a556x45
+	name = "5.56x45mm bullet"
+	damage = 50
+	armour_penetration = 20
+	stamina = 10
+	speed = 0.2
+	wound_bonus = 20
+	bare_wound_bonus = 10
+
+/////  5.56x45mm   /////
+////////////////////////
+//////    7.62    //////
