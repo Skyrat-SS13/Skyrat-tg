@@ -42,6 +42,10 @@
 	short_desc = "You are a syndicate Deck Officer, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 
+/obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer/Destroy()
+	new/obj/structure/fluff/empty_sleeper/syndicate/captain(get_turf(src))
+	return ..()
+
 //ITEMS
 
 /obj/item/radio/headset/interdyne
