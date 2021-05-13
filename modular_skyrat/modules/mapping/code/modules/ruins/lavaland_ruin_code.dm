@@ -9,10 +9,11 @@
 
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
-	id = /obj/item/card/id/advanced/chameleon
+	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/comms
+	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
 	ears = /obj/item/radio/headset/interdyne/comms
 
 /datum/outfit/lavaland_syndicate/comms/space
@@ -20,6 +21,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Lavaland Syndicate Shaft Miner"
+	uniform = /obj/item/clothing/under/utility/cargo/syndicate
 	r_pocket = /obj/item/storage/bag/ore
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
