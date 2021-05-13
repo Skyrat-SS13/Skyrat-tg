@@ -127,7 +127,7 @@
 	config_job = "junior_officer"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
 
-/datum/id_trim/job/security_sergeant/New()
+/datum/id_trim/job/junior_officer/New()
 	. = ..()
 
 	// Config check for if sec has maint access.
