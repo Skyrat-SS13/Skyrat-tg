@@ -238,8 +238,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/dnainjector/olfaction = 1,
 		/obj/item/dnainjector/shock = 1,
 		/obj/item/dnainjector/thermal = 1,
-		/obj/item/dnainjector/void = 1,
-		/obj/item/dnainjector/xraymut = 1
+		/obj/item/dnainjector/void = 1
 	) = 25,
 	list( //INSULS!
 		/obj/item/clothing/gloves/color/yellow = 100,
