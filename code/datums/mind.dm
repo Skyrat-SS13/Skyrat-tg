@@ -478,7 +478,7 @@
 		to_chat(recipient, "<span class='infoplain'><i>[output]</i></span>")
 
 /datum/mind/Topic(href, href_list)
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN) || !check_rights(R_DEV))
 		return
 
 	var/self_antagging = usr == current

@@ -284,7 +284,7 @@ SUBSYSTEM_DEF(vote)
 		"question" = question,
 		"selected_choice" = choice_by_ckey[user.client?.ckey],
 		"time_remaining" = time_remaining,
-		"upper_admin" = check_rights_for(user.client, R_ADMIN),
+		"upper_admin" = check_rights_for(user.client, (R_ADMIN || R_DEV)),
 		"voting" = list(),
 	)
 
@@ -306,7 +306,7 @@ SUBSYSTEM_DEF(vote)
 
 	var/upper_admin = FALSE
 	if(usr.client.holder)
-		if(check_rights_for(usr.client, R_ADMIN))
+		if(check_rights_for(usr.client, R_ADMIN) || check_rights_for(usr.client, R_DEV) )
 			upper_admin = TRUE
 
 	switch(action)

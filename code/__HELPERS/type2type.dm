@@ -122,6 +122,8 @@ GLOBAL_LIST_INIT(modulo_angle_to_dir, list(NORTH,NORTHEAST,EAST,SOUTHEAST,SOUTH,
 		. += "[seperator]BUILDMODE"
 	if(rights & R_ADMIN)
 		. += "[seperator]ADMIN"
+	if(rights & R_DEV) //SKYRAT EDIT
+		. += "[seperator]DEVELOPER"
 	if(rights & R_BAN)
 		. += "[seperator]BAN"
 	if(rights & R_FUN)

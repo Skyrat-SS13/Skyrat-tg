@@ -193,7 +193,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 /datum/game_mode/dynamic/Topic(href, href_list)
 	if (..()) // Sanity, maybe ?
 		return
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN) || !check_rights(R_DEV))
 		message_admins("[usr.key] has attempted to override the game mode panel!")
 		log_admin("[key_name(usr)] tried to use the game mode panel without authorization.")
 		return
@@ -311,7 +311,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		alert("The round hasn't started yet!")
 		return
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN)|| !check_rights(R_DEV))
 		return
 
 	var/list/out = list("<TITLE>Threat Log</TITLE><B><font size='3'>Threat Log</font></B><br><B>Starting Threat:</B> [threat_level]<BR>")

@@ -34,7 +34,7 @@
 
 	selected = replacetext(selected, " (empty)", "")
 
-	if(selected == "notes, memos, watchlist" && check_rights(R_ADMIN))
+	if(selected == "notes, memos, watchlist" && (check_rights(R_ADMIN)|| check_rights(R_DEV)))//This is slightly risky. Skyrat Edit
 		browse_messages()
 		return
 

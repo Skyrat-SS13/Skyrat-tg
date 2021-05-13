@@ -20,6 +20,7 @@ DEFINE_BITFIELD(admin_flags, list(
 	"ADMIN" = R_ADMIN,
 	"AUTOLOGIN" = R_AUTOADMIN,
 	"BAN" = R_BAN,
+	"DEV" = R_DEV, //Skyrat Edit
 	"BUILDMODE" = R_BUILD,
 	"DBRANKS" = R_DBRANKS,
 	"DEBUG" = R_DEBUG,

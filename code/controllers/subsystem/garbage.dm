@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(garbage)
 				log_world("## TESTING: GC: -- \ref[D] | [type] was unable to be GC'd --")
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
 					var/client/admin = c
-					if(!check_rights_for(admin, R_ADMIN))
+					if(!check_rights_for(admin, R_ADMIN) || !check_rights_for(admin, R_DEV))
 						continue
 					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --")
 				testing("GC: -- \ref[src] | [type] was unable to be GC'd --")

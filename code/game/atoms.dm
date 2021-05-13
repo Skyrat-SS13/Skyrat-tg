@@ -1254,7 +1254,7 @@
 		if(!isnull(strength))
 			AddComponent(/datum/component/radioactive, strength, src)
 
-	if(href_list[VV_HK_SHOW_HIDDENPRINTS] && check_rights(R_ADMIN))
+	if(href_list[VV_HK_SHOW_HIDDENPRINTS] && (check_rights(R_ADMIN) || check_rights(R_DEV)))
 		usr.client.cmd_show_hiddenprints(src)
 
 
