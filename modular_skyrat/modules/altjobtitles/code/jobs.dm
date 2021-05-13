@@ -1,3 +1,6 @@
+GLOBAL_LIST_INIT(captain_alttitles, list(
+	"Station Commander", "Commanding Officer", "Site Manager")) // for sorting the command part of the manifest
+
 GLOBAL_LIST_INIT(command_alttitles, list(
 	"Station Commander", "Commanding Officer", "Site Manager", //Captain
 	"Executive Officer", "Employment Officer", "Crew Supervisor", //HoP
