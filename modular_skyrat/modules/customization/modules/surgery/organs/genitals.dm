@@ -188,7 +188,6 @@
 	if(gas && gas.desc_string)
 		returned_string = gas.desc_string
 		returned_string = "You see a cloaca." //i deserve a pipebomb for this
-	if(genital_name == "Tauric Dog Vagina|ONLY USE ON TAUR DOGS")
 	switch(aroused)
 		if(AROUSAL_NONE)
 			returned_string += " It seems dry."
