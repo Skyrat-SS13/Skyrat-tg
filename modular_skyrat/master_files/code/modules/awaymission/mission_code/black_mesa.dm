@@ -239,6 +239,7 @@
 			new /mob/living/simple_animal/hostile/blackmesa/xen/headcrab(loc) //OOOO it unlached!
 			qdel(src)
 			return
+		cut_overlays()
 		update_appearance()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/update_overlays()
