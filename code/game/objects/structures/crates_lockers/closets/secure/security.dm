@@ -103,6 +103,7 @@
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
 	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
+	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
