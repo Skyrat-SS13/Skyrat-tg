@@ -279,7 +279,7 @@
 								"<span class='danger'>You fire [src]!</span>", \
 								"<span class='hear'>You hear a gunshot!</span>", COMBAT_MESSAGE_RANGE)
 	if(user.resting) // SKYRAT EDIT ADD - no crawlshooting
-		user.Immobilize(10, TRUE) // SKYRAT EDIT END
+		user.Immobilize(20, TRUE) // SKYRAT EDIT END
 
 /obj/item/gun/emp_act(severity)
 	. = ..()
