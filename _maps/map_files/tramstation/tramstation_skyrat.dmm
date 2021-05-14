@@ -4680,10 +4680,7 @@
 	},
 /area/service/chapel)
 "apy" = (
-/obj/structure/bed/pod{
-	desc = "An old medical bed, just waiting for replacement with something up to date.";
-	name = "medical bed"
-	},
+/obj/structure/bed/pod,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
 	},
@@ -8425,6 +8422,7 @@
 /obj/item/reagent_containers/glass/bottle/epinephrine,
 /obj/item/reagent_containers/syringe,
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "aAn" = (
@@ -18019,6 +18017,10 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+"cDM" = (
+/obj/effect/landmark/start/medical_doctor,
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "cEd" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
@@ -20419,10 +20421,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "dzX" = (
-/obj/structure/bed/pod{
-	desc = "An old medical bed, just waiting for replacement with something up to date.";
-	name = "medical bed"
-	},
+/obj/structure/bed/pod,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
@@ -27719,15 +27718,15 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "gvN" = (
-/obj/structure/bed/pod{
-	desc = "An old medical bed, just waiting for replacement with something up to date.";
-	name = "medical bed"
-	},
 /obj/machinery/defibrillator_mount{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
+	},
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
 	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
@@ -48132,16 +48131,6 @@
 /obj/effect/landmark/start/hangover/closet,
 /turf/open/floor/plating,
 /area/maintenance/tram/left)
-"oyE" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/stasissleeper{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/turf/open/floor/iron/dark,
-/area/medical/treatment_center)
 "oyH" = (
 /obj/structure/chair/sofa/right{
 	dir = 8
@@ -52969,17 +52958,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/stasissleeper{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/turf/open/floor/iron/dark,
-/area/medical/treatment_center)
-"quA" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron/white,
-/area/medical/medbay/central)
+/turf/open/floor/plating,
+/area/hallway/primary/tram/right)
 "quT" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -60577,7 +60557,6 @@
 	pixel_y = 3
 	},
 /obj/item/storage/firstaid/regular,
-/obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "toT" = (
@@ -62008,8 +61987,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/landmark/start/medical_doctor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/stasissleeper{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/medical/treatment_center)
 "tOs" = (
@@ -70875,8 +70856,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/medical_doctor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/medical/treatment_center)
 "xdF" = (
@@ -170873,7 +170856,7 @@ gvN
 xDu
 gKY
 gKY
-xTv
+cDM
 gKY
 gKY
 skf
@@ -172415,7 +172398,7 @@ lWG
 jtI
 sLq
 gKY
-xTv
+cDM
 gKY
 hek
 oIr
