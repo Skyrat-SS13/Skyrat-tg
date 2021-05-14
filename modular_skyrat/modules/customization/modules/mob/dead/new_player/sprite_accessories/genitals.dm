@@ -4,7 +4,6 @@
 	var/uses_skintones
 	///Where the genital is on the body. If clothing doesn't cover it, it shows up!
 	var/genital_location = GROIN
-	var/desc_string
 
 /datum/sprite_accessory/genital/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/genital/badonkers = H.getorganslot(associated_organ_slot)
@@ -222,12 +221,6 @@
 /datum/sprite_accessory/genital/vagina/cloaca
 	icon_state = "cloaca"
 	name = "Cloaca"
-	desc_string = "You see a cloaca."
-
-/datum/sprite_accessory/genital/vagina/dogtaur
-	icon_state = "taur"
-	name = "Tauric Dog Vagina|ONLY USE ON TAUR DOGS"
-	desc_string = "You see a vagina."
 
 /datum/sprite_accessory/genital/womb
 	organ_type = /obj/item/organ/genital/womb
