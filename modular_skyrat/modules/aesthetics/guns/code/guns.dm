@@ -256,3 +256,8 @@
 	caliber = CALIBER_A762
 	max_ammo = 8
 	multiload = TRUE
+	
+/obj/item/gun/ballistic/automatic/surplus
+	name = "\improper Type-69 Surplus Rifle"
+	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
