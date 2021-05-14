@@ -48,7 +48,8 @@
 	health = 80
 	obj_damage = 50
 	harm_intent_damage = 15
-	melee_damage_lower = 12
+	melee_damage_lower = 15
+	melee_damage_upper = 20
 	ranged = TRUE
 	retreat_distance = 4
 	minimum_distance = 4
@@ -100,8 +101,8 @@
 	health = 80
 	obj_damage = 50
 	harm_intent_damage = 10
-	melee_damage_lower = 10
-	melee_damage_upper = 14
+	melee_damage_lower = 20
+	melee_damage_upper = 25
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
@@ -144,8 +145,8 @@
 	maxHealth = 80
 	health = 80
 	harm_intent_damage = 15
-	melee_damage_lower = 10
-	melee_damage_upper = 12
+	melee_damage_lower = 15
+	melee_damage_upper = 20
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	charger = TRUE
@@ -249,8 +250,8 @@
 	rapid = 3
 	alert_cooldown = 2 MINUTES
 	harm_intent_damage = 5
-	melee_damage_lower = 20
-	melee_damage_upper = 20
+	melee_damage_lower = 30
+	melee_damage_upper = 40
 	attack_verb_continuous = "lathes"
 	attack_verb_simple = "lathe"
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -323,9 +324,9 @@
 
 /datum/round_event/portal_storm/resonance_cascade
 	hostile_types = list(
-		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 8,
-		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 8,
-		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab = 12
+		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid = 15,
+		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye = 15,
+		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab = 30
 	)
 
 ///////////////////HECU
