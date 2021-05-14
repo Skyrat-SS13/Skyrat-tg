@@ -15,7 +15,7 @@
 	var/aroused = AROUSAL_NONE
 	///Whether the organ is supposed to use a skintoned variant of the sprite
 	var/uses_skintones
-	var/desc_string
+	
 
 //This translates the float size into a sprite string
 /obj/item/organ/genital/proc/get_sprite_size_string()
