@@ -179,3 +179,53 @@
   attack_verb_continuous = list("slaps", "challenges")
   attack_verb_simple = list("slap", "challenge")
   squeak_override = list('sound/weapons/slap.ogg' = 1)
+
+/obj/item/toy/plush/ian
+	name = "plush corgi"
+	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "ianplushie"
+	inhand_icon_state = "corgi"
+	attack_verb_continuous = list("barks", "woofs", "wags his tail at")
+	attack_verb_simple = list("lick", "nuzzle", "bite")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark2.ogg' = 1)
+	young = 1 //No.
+
+/obj/item/toy/plush/ian/small
+	name = "small plush corgi"
+	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Ian\"?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "corgi"
+	inhand_icon_state = "corgi"
+
+/obj/item/toy/plush/ian/lisa
+	name = "plush girly corgi"
+	desc = "A plushie of an adorable corgi! Don't you just want to hug it and squeeze it and call it \"Lisa\"?"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "girlycorgi"
+	inhand_icon_state = "girlycorgi"
+	attack_verb_continuous = list("barks", "woofs", "wags her tail at")
+	gender = FEMALE
+
+/obj/item/toy/plush/cat
+	name = "cat plushie"
+	desc = "A small cat plushie with black beady eyes."
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "blackcat"
+	inhand_icon_state = "blackcat"
+	attack_verb_continuous = list("cuddles", "meows", "hisses")
+	attack_verb_simple = list("cuddle", "meow", "hiss")
+	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/merowr.ogg' = 1)
+
+/obj/item/toy/plush/cat/tux
+	name = "tux cat plushie"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "tuxedocat"
+	inhand_icon_state = "tuxedocat"
+
+/obj/item/toy/plush/cat/white
+	name = "white cat plushie"
+	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon_state = "whitecat"
+	inhand_icon_state = "whitecat"
+

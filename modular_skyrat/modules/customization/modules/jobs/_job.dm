@@ -117,21 +117,6 @@
 /datum/job/atmospheric_technician
 	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
 
-/datum/job/doctor
-	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
-
-/datum/job/virologist
-	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
-
-/datum/job/chemist
-	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
-
-/datum/job/roboticist
-	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
-
-/datum/job/scientist
-	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
-
 /datum/job/proc/has_required_languages(datum/preferences/pref)
 	if(!required_languages)
 		return TRUE

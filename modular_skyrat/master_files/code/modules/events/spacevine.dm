@@ -507,6 +507,10 @@
 /obj/structure/spacevine/Initialize(mapload)
 	. = ..()
 	add_atom_colour("#ffffff", FIXED_COLOUR_PRIORITY)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
 	AddElement(/datum/element/atmos_sensitive, mapload)
 
 /obj/structure/spacevine/examine(mob/user)
@@ -568,17 +572,17 @@
 		if(BURN)
 			playsound(src.loc, 'sound/items/welder.ogg', 100, TRUE)
 
-/obj/structure/spacevine/Crossed(atom/movable/AM)
-	. = ..()
+/obj/structure/spacevine/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(!isliving(AM))
 		return
 	for(var/datum/spacevine_mutation/SM in mutations)
 		SM.on_cross(src, AM)
-	if(istype(AM, /mob/living/simple_animal/hostile/venus_human_trap)) //skyrat change: vines heal flytraps 10% on cross
+	if(istype(AM, /mob/living/simple_animal/hostile/venus_human_trap)) //SKYRAT CHANGE - Vines now heal less. Again. Stop forcing our hand by abusing on_entered.
 		var/mob/living/simple_animal/hostile/venus_human_trap/VS = AM
 		if(VS.health >= VS.maxHealth)
 			return
-		VS.adjustHealth(-clamp(VS.health += 5, 0, VS.maxHealth), TRUE, TRUE)
+		VS.adjustHealth(-clamp(VS.health += 2, 0, VS.maxHealth), TRUE, TRUE)
 		to_chat(VS, "<span class='notice'>The vines attempt to regenerate some of your wounds!</span>")
 		return
 

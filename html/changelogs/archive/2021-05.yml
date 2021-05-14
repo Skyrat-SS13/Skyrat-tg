@@ -276,3 +276,272 @@
   - bugfix: the sec medic  and HoP now get four mags in their gunsets, same as everyone
       else
   - bugfix: a single space
+2021-05-08:
+  Celotajs:
+  - bugfix: Fixed PDA overlays for GAGS PDAs
+  DuffCreeper:
+  - rscadd: Re-added the stock market to cargo. You can find the board in the QMs
+      locker round start or print it. Remember, sell high buy low
+  FlamingLily:
+  - rscadd: Alternate Job Titles for every job!
+  - rscadd: Framework for adding more titles in the future.
+  - rscadd: GENPOP lockers now dispense security level prisoner outfits dependant
+      on time.
+  - code_imp: general cleanup of alternate prisoner outfit code
+  Foxtrot (Funce):
+  - bugfix: Oops, Civil Disputes Officers now officially have SOOC
+  Investigator77:
+  - spellcheck: Changed and fixed descriptions for the AKM, FG42, M16, MG34, MP40,
+      PPS43, PPSh41 and StG (and variants)
+  - imageadd: Resprite most Cold War/WW2 guns and modern variants
+  KasparoVy:
+  - rscadd: Adds a new 8-point negative quirk preventing you from using most firearms,
+      modular computers/tablets and laser pointers like an Ashwalker or Golem. KAs
+      can be adapted w/ a modkit. You cannot be command, security, engineering, atmos,
+      doctor, virologist, chemist, roboticist or scientist with this trait.
+  ORCACommander:
+  - bugfix: Cleaned up the SQL Changelog AGAIN
+  Seris02:
+  - bugfix: various OOC messages going into unsorted now get sorted
+  - bugfix: various other miscellaneous unsorted messages now get sorted
+  SkyratBot:
+  - refactor: is_flying_animal var is now an element!
+  - bugfix: Messages related to becoming and ceasing to be a heretic monster are now
+      more noticeable.
+  - admin: Added fantasy affixes to the VV dropdown for items!
+  - refactor: pet bonuses are now an element
+  - admin: moves sdql spell from debug tab to vv dropdown
+  - refactor: tram is marginally faster
+  - bugfix: Felinids are disgusted by raw and gross foods again.
+  - bugfix: Made the PDA painter be able to paint PDAs into standard PDAs.
+  - bugfix: Made the PDA painter able to paint PDAs again after 58844 did not update
+      the painter.
+  Time-Green:
+  - rscadd: Miners can now discover geysers with their mining scanner for a point
+      reward! This will discover their type and mark that geyser (with type) on the
+      GPS system.
+  - rscdel: removes the ClF3 geysers
+  - rscadd: Adds a very rare strange geyser that has a random reagent (maintpill/strange
+      seed style)
+  - balance: Geysers can now be activated with normal, cheap plungers
+  ZephyrTFA:
+  - rscadd: Bluespace RPD
+  thestubborn:
+  - rscadd: Two new colourable coats
+  - rscadd: Like five new collars
+  - rscadd: New job titles, far too many to list
+  unit0016:
+  - rscadd: Lone Infiltrators are now on the prowl.
+  - rscadd: NSS Journey's missing 1x11 section of tiles, which are CRITICAL TO GAMEPLAY,
+      are back. Rejoice, peasant!
+  werewolfboyfriend:
+  - bugfix: The default evac shuttle has been adjusted to fit its doors to standard
+      departures docking arms.
+2021-05-09:
+  Celotajs, ike709:
+  - code_imp: ike709's code improvements from BeeStation have been ported.
+  FlamingLily:
+  - imageadd: Added a worn sprite for the choker
+  SkyratBot:
+  - rscadd: On Sundays and given mail holidays, mail will not arrive on station.
+  - code_imp: Documented code in the holidays file.
+  - bugfix: The lavaland xeno nest is still fixed.
+  - bugfix: Icebox incinerator input will now connect correctly to the injector instead
+      of the waste system
+  - rscadd: a new TGUI interface for sentience fun balloons
+  - code_imp: added a pop_sound_effect variable to customize sentience fun balloons
+  - code_imp: moved the arena shuttle's area and effects to shuttles.dm
+  - bugfix: Properly fixes the stray extuingisher cabinet in deltastation.
+  - bugfix: Fixes the lack of ai cameras in drone rooms on tram and metastation.
+  - bugfix: Blood cult's blood beam no longer sticks to your hand, and now fires!
+  - bugfix: Blood cultists can no longer walk out of a blood beam to avoid being stunned.
+  - code_imp: SStramprocess only fires on maps with trams actually present on the
+      map
+  - rscadd: New station trait where Pun Pun starts angry, armed, and ready for a fight.
+  - balance: made social anxiety more tied to speaking, along with more affect from
+      sanity, mood, and nearby people
+  - rscadd: 'Cargo requests can now be discussed over #cargobus!'
+  - bugfix: flypeople no longer dislike moffins
+  thestubborn:
+  - bugfix: 'added the new collars to the dorms vendor qol: added blue gloves to medidrobe,
+      two only, get em fast'
+2021-05-10:
+  Cheshify:
+  - bugfix: Fixed a single wall in Metastation perma, that didn't have an area
+  Melbert:
+  - bugfix: You no longer eat all botany plants plants in 1 bite. Apples and Potatos
+      retain their unique 1 bite behavior.
+  - code_imp: Botany plants use a new formula for calculating bite size. All botany
+      plants have had their bite modifier adjusted to match.
+  Ryll/Shaps:
+  - bugfix: Changeling stings once again require you to be within range of your target
+      and have a direct path from you to the target
+  SkyratBot:
+  - bugfix: Purchasing classic or mjolnir loadouts as the wizard will no longer crash
+      the server.
+  - bugfix: you can now map infinitely huge plumbing networks
+  - bugfix: blood filters no longer tell everyone that the listener's blood is being
+      filtered
+  Twaticus, Imaginos16:
+  - imageadd: Resprites (almost) all base floor tiles.
+  - imageadd: Ports smooth tiles & textured versions of grey, black, and white tiles.
+  - imageadd: Dance floor item icons are no longer massive.
+  thestubborn:
+  - rscadd: The trenchcloak is not back, as a toggle of the spawn hos coat. Fucking
+      hate this shit. But the item exists, ahelp for it I guess...
+  - rscadd: Red scrubs.
+  - rscadd: A hat for shorter traitors.
+  uomo91:
+  - bugfix: Civil Disputes Officer no longer requires medical playtime.
+2021-05-11:
+  FlamingLily:
+  - spellcheck: Changed up some alt titles for prisoners.
+  JJRcop:
+  - server: Default Drone hours without config set reduced from 40 to 14. Please set
+      DRONE_ROLE_PLAYTIME to 40 if you wish to retain old behavior.
+  JJRcop, ninjanomnom:
+  - bugfix: Drones now respect USE_EXP_RESTRICTIONS_ADMIN_BYPASS
+  KathrinBailey:
+  - rscadd: Stone walls with full auto-smoothing are now in the game.
+  SkyratBot:
+  - rscadd: Fantasy Prefix for poisoned weapons
+  - bugfix: Many things that would trigger on attacking someone even if you didn't
+      successfully land a hit now only trigger when you do
+  - refactor: Poisonous is an element, no more terrible pathing /poison/ woop woop
+  - refactor: Udders are now a component, all of it!
+  - refactor: Rewrite the way we handle which roles get assigned with playtime tracking.
+  - bugfix: Players who get MMI'd and put into borgs or AIs mid-shift now gain job
+      playtime tracking towards Silicon roles instead.
+  - imageadd: Fixes magic shoes and gives them a magical twinkling star decal.
+  - bugfix: "Fixes processing items \U0001F400"
+  Snakebittenn & Candle:
+  - rscadd: Adds the Zolmach language, and Zolmalchi culture, for demon and demon-adjacent
+      characters.
+  hack fraud:
+  - rscadd: plushies, yay
+  unit0016:
+  - rscadd: A multitude of ruins have been added to rotation.
+2021-05-12:
+  Investigator77:
+  - balance: HoP now starts with an energy gun instead of a 12mm pistol with spare
+      ammo.
+  - balance: QM has a custom Mosin Nagant in his locker. No fancy stripper clips,
+      though. And it gets dirty.
+  - imageadd: Resprited Mosin Nagant and Obrez
+  - imageadd: Added "Archangel" Mosin, a plastic abomination from a conversion kit.
+  - bugfix: Fixed toy C20r overlay, it now shows properly on top of the gun instead
+      of being offset.
+  - tweak: Tweaked the size of the combat shotgun to reflect its size.
+  - tweak: Tweaked the riot shotgun sprite
+  - tweak: Tweaked the C20r magazine sprite to reflect the object icon.
+  - tweak: Tweaked the size of the M90gl to be closer to that of a carbine rather
+      than a compressed pdw
+  SkyratBot:
+  - bugfix: Proximity checkers, used in the peacekeeper borg module, will now properly
+      destroy.
+  - bugfix: fixed "remove" button in reaction chamber gui
+  tf-4:
+  - bugfix: Prevents a certain amount of anti-chunky-fingers workplace discrimination
+  thestubborn:
+  - bugfix: fixed the new collars
+2021-05-13:
+  Foxtrot (Funce):
+  - bugfix: Icebox should have wires to cryo again.
+  Gun Medic Union:
+  - bugfix: After a long strike, SecMed finally has maint access.
+  - bugfix: George Lucas wanted his extra letter back.
+  Inept, Fikou:
+  - rscadd: Nanotrasen has seen it fit to officially commemorate the commission date
+      of its various stations- look for the commission plaques on each station today!
+  SkyratBot:
+  - bugfix: CONTRIBUTING.md's example on static overlays passes integration tests
+      now
+  - bugfix: You can no longer transformation sting people into Skeletons.
+  - rscadd: changed name and description of surgery room disposals to inform that
+      they are connected to the morgue
+  - balance: Now you need enriched liquid electricity to grow a vatbeast
+  coiax:
+  - bugfix: Blazing Oil blobs can now be damaged by sprayed water from fire extinguishers,
+      as intended.
+  unit0016:
+  - bugfix: Floor tiles now exist for the black market chevvy, the polychromic facility,
+      and that SIGN is no longer in the way on NSS Journey.
+2021-05-14:
+  Anonymous:
+  - rscadd: Added black pants to the loadout.
+  Cheshify:
+  - rscadd: A new gateway node has been unlocked, a trip to the largest abductor ship
+      we've seen yet.
+  - imageadd: added sprites for unique loot and simplemobs.
+  Cheshify, GoldenAlpharex:
+  - rscadd: The HoS has 1 token that promotes Officers to Sergeants, give it to the
+      officer you trust to lead your men.
+  - rscdel: Only 1 Security Sergeant can spawn shiftstart
+  - rscadd: Security Sergeants now have their own trim tokens.
+  - code_imp: Added Trim Token framework with high customizability.
+  - bugfix: Civil Dispute Officers will now have maintenance access if the other Security
+      officers have it, as per the server's config, as it was intended.
+  Fikou, PestoVerde322:
+  - imageadd: New Altar of Gods sprites
+  FlamingLily:
+  - bugfix: Command are now sorted at the heads of their department, and captain at
+      the head of command, on the manifest when using alt titles.
+  Foxtrot (Funce):
+  - tweak: Icebox Conference Intercom is no longer free range
+  - bugfix: Icebox Security Cargo Chat is actually the right type and won't make two
+      channels anymore.
+  KathrinBailey:
+  - rscadd: Some cool currently adminspawn-only guns you could probably TC trade for.
+  Pepsiman0:
+  - rscadd: most of the icebox maint was reworked. 3 new ladders leading to new small
+      areas have been added around the maints, providing more ways to come back to
+      the station from the zlevel below it. The other non maint areas that have been
+      touched are the vacant office and the engi hallway.
+  RatFromTheJungle:
+  - rscdel: Removed skeleton-race effect from the necromantic stone
+  Ryll/Shaps:
+  - bugfix: Hauberoaches will no longer spam messages about trying to squish themselves
+      every time they move
+  SarmentiCampbell:
+  - rscadd: Added trash piles to NSS Journey
+  - bugfix: Medihounds, both light and dark can be selected again.
+  SkyratBot:
+  - bugfix: The woke plushie seems to have fallen asleep at some point. They've been
+      shaken awake once more.
+  - refactor: Malf AI and Traitor are now unique antags with a dedicated dynamic ruleset
+      for rolling them and different entries on the traitor panel. The roundstart
+      traitor ruleset can no longer roll malf AIs, which is what the malf AI ruleset
+      does in its place.
+  - bugfix: Geneticists finally join their fellow members of science in being unable
+      to get the download research notes objective.
+  - bugfix: DNA activators that failed no longer give chromosomes.
+  - bugfix: Hopline shutters and queue shutters can now only be controlled by people
+      with proper access and not the entire service department
+  - bugfix: Fixed trashbags being able to be equipped on janitor wintercoats.
+  - bugfix: Metastation transit tube now properly has lockdown blastdoors
+  - bugfix: fixed cyborgs using the carbon's offset on scooters and skateboards.
+  - code_imp: Adds code improvements done to the cargo console to the modular computer
+      cargo program as well.
+  - bugfix: fixes udders not performing some things they should!
+  Twaticus:
+  - imageadd: New corner variants for the textured and smooth tiles
+  - imageadd: New normal, white and dark tile variants
+  - imageadd: New dark corner decal
+  Yawet330:
+  - bugfix: Venus Humantraps (Should) have proper regen values
+  - tweak: Venus Humantraps now regenerate half of what they used to per on_crossed()
+  - tweak: Venus Humantraps have had their range reduced from 5 to 4 tiles
+  - tweak: Venus Humantraps no longer hardstun, instead use knockdown() as intended
+      by our combat rework
+  unit0016:
+  - rscadd: Plaques have been added for all skyrat specific maps.
+  - balance: The SM on charlie station is no longer prebuilt.
+  - bugfix: Nanotrasen has uninstalled whatever ungodly force was leaving the NSS
+      Journey's prison with normal atmosphere no matter what - whispers remain that
+      it still might be in Icebox, however...
+  - bugfix: The utility security outfit now uses the correct icon-state for digitigrade
+      characters.
+  - rscdel: Interdyne's Comms agent has been fired.
+  - code_imp: Interdyne's GPS Signal now relies on the Deck Officer's sleeper, rather
+      than a GPS mask.
+  - rscadd: LZ2 has been completely overhaulled.
