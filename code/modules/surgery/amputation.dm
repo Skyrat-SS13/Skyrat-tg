@@ -22,6 +22,7 @@
 	display_results(user, target, "<span class='notice'>You sever [L]'s [parse_zone(target_zone)].</span>",
 		"<span class='notice'>[user] severs [L]'s [parse_zone(target_zone)]!</span>",
 		"<span class='notice'>[user] severs [L]'s [parse_zone(target_zone)]!</span>")
+	display_pain(target, "<span class='userdanger'>You lose all feeling in your [parse_zone(target_zone)]!</span>")
 	if(surgery.operated_bodypart)
 		var/obj/item/bodypart/target_limb = surgery.operated_bodypart
 		target_limb.drop_limb()
