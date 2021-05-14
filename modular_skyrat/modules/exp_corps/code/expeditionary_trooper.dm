@@ -68,14 +68,13 @@
 	illustration = null
 
 /obj/item/storage/box/expeditionary_survival/PopulateContents()
-	new /obj/item/crowbar/red(src)
-	new /obj/item/kitchen/knife/combat/survival(src)
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/flashlight/glowstick(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
 	new /obj/item/reagent_containers/food/drinks/waterbottle(src)
 	new /obj/item/reagent_containers/blood/universal(src)
 	new /obj/item/reagent_containers/syringe(src)
+	new /obj/item/storage/pill_bottle/multiver(src)
 
 /obj/structure/closet/crate/secure/exp_corps
 	name = "expeditionary gear crate"
@@ -115,7 +114,6 @@
 	))
 	to_chat(user, "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>")
 	qdel(src)
-
 
 /obj/item/card/id/advanced/silver/exp_corps
 	wildcard_slots = WILDCARD_LIMIT_CENTCOM

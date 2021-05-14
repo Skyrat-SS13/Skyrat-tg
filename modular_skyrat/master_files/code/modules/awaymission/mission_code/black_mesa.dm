@@ -44,8 +44,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 75
-	health = 75
+	maxHealth = 80
+	health = 80
 	obj_damage = 50
 	harm_intent_damage = 15
 	melee_damage_lower = 12
@@ -74,8 +74,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 75
-	health = 75
+	maxHealth = 80
+	health = 80
 	obj_damage = 50
 	harm_intent_damage = 10
 	melee_damage_lower = 10
@@ -119,8 +119,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 40
-	health = 40
+	maxHealth = 80
+	health = 80
 	harm_intent_damage = 15
 	melee_damage_lower = 10
 	melee_damage_upper = 12
@@ -252,8 +252,8 @@
 	speed = 3
 	pixel_y = -154
 	icon_dead = "bullsquid_dead"
-	maxHealth = 10000
-	health = 10000
+	maxHealth = 5000
+	health = 5000
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
 	projectiletype = /obj/projectile/nihilanth
@@ -267,7 +267,12 @@
 	attack_verb_simple = "lathe"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	status_flags = NONE
+	del_on_death = TRUE
+	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway/home)
 	var/alert_everyone = TRUE
+
+/obj/item/stack/sheet/bluespace_crystal/fifty
+	amount = 50
 
 /obj/projectile/nihilanth
 	name = "portal energy"
@@ -400,6 +405,7 @@
 	icon_living = "hecu_ranged_smg"
 	casingtype = /obj/item/ammo_casing/c45
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
+	loot = list(/obj/effect/gibspawner/human, /obj/item/gun/ballistic/automatic/c20r/unrestricted)
 
 /mob/living/simple_animal/hostile/blackmesa/sec
 	name = "Security Guard"
@@ -417,8 +423,8 @@
 	speed = 0
 	stat_attack = HARD_CRIT
 	robust_searching = 1
-	maxHealth = 70
-	health = 70
+	maxHealth = 80
+	health = 80
 	harm_intent_damage = 5
 	melee_damage_lower = 7
 	melee_damage_upper = 7
@@ -426,7 +432,7 @@
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt)
+	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(FACTION_BLACKMESA)
@@ -471,7 +477,7 @@
 	uses_stored = FALSE
 	max_integrity = 100
 	base_icon_state = "syndie"
-	lethal_projectile = /obj/projectile/beam/xray
+	lethal_projectile = /obj/projectile/beam/emitter
 	lethal_projectile_sound = 'sound/weapons/laser.ogg'
 
 /obj/machinery/porta_turret/black_mesa/assess_perp(mob/living/carbon/human/perp)
@@ -504,4 +510,36 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/houndeye,
 		/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid
 	)
+
+/obj/effect/mob_spawn/human/black_mesa
+	name = "Research Facility Science Team"
+	roundstart = FALSE
+	death = FALSE
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s"
+	outfit = /datum/outfit/science_team
+	assignedrole = "Science Team"
+	permanent = FALSE
+	can_use_alias = FALSE
+	any_station_species = FALSE
+
+/datum/outfit/science_team
+	name = "Scientist"
+	uniform = /obj/item/clothing/under/rank/rnd/scientist
+	suit = /obj/item/clothing/suit/toggle/labcoat
+	neck = /obj/item/clothing/neck/tie/horrible
+	shoes = /obj/item/clothing/shoes/laceup
+	back = /obj/item/storage/backpack
+	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/glass/beaker)
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/science_team
+
+/datum/outfit/science_team/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	H.faction |= FACTION_BLACKMESA
+
+/datum/id_trim/science_team
+	assignment = "Science Team Scientist"
+	trim_state = "trim_scientist"
+	access = list(ACCESS_RND)
 
