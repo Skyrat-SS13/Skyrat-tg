@@ -97,8 +97,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 80
-	health = 80
+	maxHealth = 100
+	health = 100
 	obj_damage = 50
 	harm_intent_damage = 10
 	melee_damage_lower = 20
@@ -241,8 +241,8 @@
 	speed = 3
 	pixel_y = -154
 	icon_dead = "bullsquid_dead"
-	maxHealth = 5000
-	health = 5000
+	maxHealth = 2500
+	health = 2500
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
 	projectiletype = /obj/projectile/nihilanth
