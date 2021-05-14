@@ -49,6 +49,12 @@
 	obj_damage = 50
 	harm_intent_damage = 15
 	melee_damage_lower = 12
+	ranged = TRUE
+	retreat_distance = 4
+	minimum_distance = 4
+	dodging = TRUE
+	projectiletype = /obj/projectile/bullsquid
+	projectilesound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/goo_attack3.ogg'
 	melee_damage_upper = 18
 	attack_sound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/attack1.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
@@ -57,6 +63,22 @@
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect2.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect3.ogg'
 	)
+
+/obj/projectile/bullsquid
+	name = "nasty ball of ooze"
+	icon_state = "neurotoxin"
+	damage = 5
+	damage_type = TOX
+	nodamage = FALSE
+	paralyze = 10
+	flag = BIO
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
+	hitsound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/splat1.ogg'
+	hitsound_wall = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/splat1.ogg'
+
+/obj/projectile/bullsquid/on_hit(atom/target, blocked, pierce_hit)
+	new /obj/effect/decal/cleanable/greenglow(target.loc)
+	return ..()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/houndeye
 	name = "houndeye"
@@ -431,7 +453,6 @@
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
-	combat_mode = TRUE
 	loot = list(/obj/effect/gibspawner/human, /obj/item/clothing/suit/armor/vest/blueshirt)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
@@ -439,6 +460,7 @@
 	check_friendly_fire = 1
 	status_flags = CANPUSH
 	del_on_death = TRUE
+	combat_mode = TRUE
 	dodging = TRUE
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
@@ -466,7 +488,6 @@
 	casingtype = /obj/item/ammo_casing/c10mm
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
 	loot = list(/obj/item/clothing/suit/armor/vest/blueshirt, /obj/item/gun/ballistic/automatic/pistol/g17)
-	dodging = TRUE
 	rapid_melee = 1
 
 /obj/machinery/porta_turret/black_mesa
@@ -519,6 +540,7 @@
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
 	assignedrole = "Science Team"
+	short_desc = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	permanent = FALSE
 	can_use_alias = FALSE
 	any_station_species = FALSE
@@ -542,4 +564,3 @@
 	assignment = "Science Team Scientist"
 	trim_state = "trim_scientist"
 	access = list(ACCESS_RND)
-
