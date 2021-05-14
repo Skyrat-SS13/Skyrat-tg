@@ -317,7 +317,7 @@
 	dwidth = 11
 	height = 22
 	width = 35
-	shuttlekeys = list("whiteship_meta", "whiteship_pubby", "whiteship_box", "whiteship_cere", "whiteship_kilo", "whiteship_donut", "whiteship_delta", "whiteship_ship", "whiteship_tram", "whiteship_outpost") //SKYRAT EDIT - Mapping - Adds shipstation and outpost's whiteship, along with tram's. Update with more as added!
+	shuttlekeys = list("whiteship_meta", "whiteship_pubby", "whiteship_box", "whiteship_cere", "whiteship_kilo", "whiteship_donut", "whiteship_delta")
 
 /obj/docking_port/mobile
 	name = "shuttle"
@@ -603,7 +603,7 @@
 		var/turf/T = t
 		for(var/mob/living/M in T.GetAllContents())
 			// If they have a mind and they're not in the brig, they escaped
-			if(M.mind && !istype(t, /turf/open/floor/iron/shuttle/red) && !istype(t, /turf/open/floor/mineral/plastitanium/red/brig))
+			if(M.mind && !istype(t, /turf/open/floor/mineral/plastitanium/red/brig))
 				M.mind.force_escaped = TRUE
 			// Ghostize them and put them in nullspace stasis (for stat & possession checks)
 			M.notransform = TRUE

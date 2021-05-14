@@ -253,7 +253,7 @@
 	var/turf/position = get_turf(src)
 	for(var/obj/item/jammer/jammer in GLOB.active_jammers)
 		var/turf/jammer_turf = get_turf(jammer)
-		if(position.z == jammer_turf.z && (get_dist(position, jammer_turf) <= jammer.range))
+		if(position?.z == jammer_turf.z && (get_dist(position, jammer_turf) <= jammer.range))
 			return
 
 	// Determine the identity information which will be attached to the signal.
@@ -386,6 +386,7 @@
 	subspace_transmission = TRUE
 	subspace_switchable = TRUE
 	dog_fashion = null
+	canhear_range = 0 // Skyrat Edit - Stops borgs being a loudspeaker and contains it to the tile they're on
 
 /obj/item/radio/borg/resetChannels()
 	. = ..()

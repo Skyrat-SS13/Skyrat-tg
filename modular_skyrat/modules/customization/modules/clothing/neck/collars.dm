@@ -90,3 +90,47 @@
 /obj/item/key/collar
 	name = "Collar Key"
 	desc = "A key for a tiny lock on a collar or bag."
+
+/obj/item/clothing/neck/human_petcollar/locked/cowcollar
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	name = "cowbell collar"
+	desc = "Don't fear the reaper, now your pet doesn't have to."
+	icon_state = "collar_cowbell"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/bellcollar
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	name = "bell collar"
+	desc = "A loud and annoying collar for your little kittens!"
+	icon_state = "collar_bell"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/spikecollar
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	name = "spiked collar"
+	desc = "A collar for moody pets. Or pitbulls."
+	icon_state = "collar_spik"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/holocollar
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	name = "holocollar"
+	desc = "A collar with holographic information, like a microchip, but around the neck."
+	icon_state = "collar_holo"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/cross
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	name = "cross collar"
+	desc = "A religious punishment, probably."
+	icon_state = "collar_blk"
+	is_polychromic = FALSE
+
+
+
+

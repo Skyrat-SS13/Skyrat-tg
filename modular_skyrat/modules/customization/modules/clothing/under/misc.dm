@@ -356,8 +356,6 @@
 	inhand_icon_state = "b_suit"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-	icon = 'icons/obj/clothing/under/captain.dmi'
-	worn_icon = 'icons/mob/clothing/under/captain.dmi'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 15)
 
 /obj/item/clothing/under/rank/cargo/casualman
@@ -374,3 +372,41 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
 	icon_state = "qmsynd"
+
+/obj/item/clothing/under/uvf
+	name = "british combat sweater"
+	desc = "Thankfully doesn't include the sash your father wore."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "uvf"
+
+/obj/item/clothing/under/suit/black/female/skirt
+	name = "feminine skirt"
+	desc = "Perfect for a secretary that does no work."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "black_suit_fem_skirt"
+
+/obj/item/clothing/under/whiterussian
+	name = "army baron uniform"
+	desc = "Space Communism? That's just like...your opinion man."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "rusuni"
+
+/obj/item/clothing/under/nostalgiacritic
+	name = "nostalgic outfit"
+	desc = "He remembers it so you don't have to."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "cia"
+
+/obj/item/clothing/under/rank/medical/doctor/red/unarm
+	name = "red scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a deep red."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon_state = "scrubsred"
+
+
+

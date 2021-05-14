@@ -302,6 +302,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh/rubber(src)
 
 //CORPO
 /obj/item/storage/box/gunset/pdh_corpo
@@ -346,6 +347,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 
 //LASER
 /obj/item/storage/box/gunset/laser
@@ -369,3 +371,19 @@
 	new /obj/item/ammo_box/magazine/pepperball(src)
 	new /obj/item/ammo_box/magazine/pepperball(src)
 	new /obj/item/ammo_box/magazine/pepperball(src)
+
+
+//Sergeants!//
+
+/obj/item/storage/box/gunset/sarge
+	name = "sergeant supply box"
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/box/gunset/sarge/PopulateContents()
+	new /obj/item/trim_token/security_sergeant(src)
+	new /obj/item/melee/classic_baton/telescopic(src)
+	new /obj/item/clothing/under/rank/security/peacekeeper/sergeant(src)
+	new /obj/item/clothing/head/beret/sec/peacekeeper/sergeant(src)
+	new /obj/item/armament_token/primary(src)
+	new /obj/item/megaphone/sec(src)
+	// . = ..()
