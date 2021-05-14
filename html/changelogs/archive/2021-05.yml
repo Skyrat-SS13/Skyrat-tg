@@ -466,3 +466,82 @@
   unit0016:
   - bugfix: Floor tiles now exist for the black market chevvy, the polychromic facility,
       and that SIGN is no longer in the way on NSS Journey.
+2021-05-14:
+  Anonymous:
+  - rscadd: Added black pants to the loadout.
+  Cheshify:
+  - rscadd: A new gateway node has been unlocked, a trip to the largest abductor ship
+      we've seen yet.
+  - imageadd: added sprites for unique loot and simplemobs.
+  Cheshify, GoldenAlpharex:
+  - rscadd: The HoS has 1 token that promotes Officers to Sergeants, give it to the
+      officer you trust to lead your men.
+  - rscdel: Only 1 Security Sergeant can spawn shiftstart
+  - rscadd: Security Sergeants now have their own trim tokens.
+  - code_imp: Added Trim Token framework with high customizability.
+  - bugfix: Civil Dispute Officers will now have maintenance access if the other Security
+      officers have it, as per the server's config, as it was intended.
+  Fikou, PestoVerde322:
+  - imageadd: New Altar of Gods sprites
+  FlamingLily:
+  - bugfix: Command are now sorted at the heads of their department, and captain at
+      the head of command, on the manifest when using alt titles.
+  Foxtrot (Funce):
+  - tweak: Icebox Conference Intercom is no longer free range
+  - bugfix: Icebox Security Cargo Chat is actually the right type and won't make two
+      channels anymore.
+  KathrinBailey:
+  - rscadd: Some cool currently adminspawn-only guns you could probably TC trade for.
+  Pepsiman0:
+  - rscadd: most of the icebox maint was reworked. 3 new ladders leading to new small
+      areas have been added around the maints, providing more ways to come back to
+      the station from the zlevel below it. The other non maint areas that have been
+      touched are the vacant office and the engi hallway.
+  RatFromTheJungle:
+  - rscdel: Removed skeleton-race effect from the necromantic stone
+  Ryll/Shaps:
+  - bugfix: Hauberoaches will no longer spam messages about trying to squish themselves
+      every time they move
+  SarmentiCampbell:
+  - rscadd: Added trash piles to NSS Journey
+  - bugfix: Medihounds, both light and dark can be selected again.
+  SkyratBot:
+  - bugfix: The woke plushie seems to have fallen asleep at some point. They've been
+      shaken awake once more.
+  - refactor: Malf AI and Traitor are now unique antags with a dedicated dynamic ruleset
+      for rolling them and different entries on the traitor panel. The roundstart
+      traitor ruleset can no longer roll malf AIs, which is what the malf AI ruleset
+      does in its place.
+  - bugfix: Geneticists finally join their fellow members of science in being unable
+      to get the download research notes objective.
+  - bugfix: DNA activators that failed no longer give chromosomes.
+  - bugfix: Hopline shutters and queue shutters can now only be controlled by people
+      with proper access and not the entire service department
+  - bugfix: Fixed trashbags being able to be equipped on janitor wintercoats.
+  - bugfix: Metastation transit tube now properly has lockdown blastdoors
+  - bugfix: fixed cyborgs using the carbon's offset on scooters and skateboards.
+  - code_imp: Adds code improvements done to the cargo console to the modular computer
+      cargo program as well.
+  - bugfix: fixes udders not performing some things they should!
+  Twaticus:
+  - imageadd: New corner variants for the textured and smooth tiles
+  - imageadd: New normal, white and dark tile variants
+  - imageadd: New dark corner decal
+  Yawet330:
+  - bugfix: Venus Humantraps (Should) have proper regen values
+  - tweak: Venus Humantraps now regenerate half of what they used to per on_crossed()
+  - tweak: Venus Humantraps have had their range reduced from 5 to 4 tiles
+  - tweak: Venus Humantraps no longer hardstun, instead use knockdown() as intended
+      by our combat rework
+  unit0016:
+  - rscadd: Plaques have been added for all skyrat specific maps.
+  - balance: The SM on charlie station is no longer prebuilt.
+  - bugfix: Nanotrasen has uninstalled whatever ungodly force was leaving the NSS
+      Journey's prison with normal atmosphere no matter what - whispers remain that
+      it still might be in Icebox, however...
+  - bugfix: The utility security outfit now uses the correct icon-state for digitigrade
+      characters.
+  - rscdel: Interdyne's Comms agent has been fired.
+  - code_imp: Interdyne's GPS Signal now relies on the Deck Officer's sleeper, rather
+      than a GPS mask.
+  - rscadd: LZ2 has been completely overhaulled.
