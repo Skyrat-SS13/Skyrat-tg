@@ -29,7 +29,7 @@
 	name = "Mothership Astrum Beach Holodeck"
 	icon_state = "away5"
 	requires_power = FALSE
-
+	dynamic_lighting = FALSE
 //Fluff Notes
 
 //Simplemobs
@@ -119,6 +119,30 @@
 	icon_state = "crowbar"
 	force = 30
 	throwforce = 35
+
+/obj/effect/spawner/lootdrop/astrum/low
+	name = "astrum low"
+	loot = list(/obj/item/storage/firstaid/regular = 45,
+				/obj/item/storage/firstaid/toxin = 35,
+				/obj/item/dnainjector/thermal = 5,
+				/obj/item/storage/firstaid/brute = 27,
+				/obj/item/storage/firstaid/fire = 27,
+				/obj/item/storage/toolbox/syndicate = 12,
+				/obj/item/clothing/under/chameleon = 13,
+				/obj/item/clothing/shoes/chameleon/noslip = 10)
+
+/obj/effect/spawner/lootdrop/astrum/mid
+	name = "astrum mid"
+	loot = list(/obj/item/storage/firstaid/tactical = 20,
+				/obj/item/shield/riot/tele = 12,
+				/obj/item/dnainjector/shock = 10,
+				/obj/item/pneumatic_cannon = 15,
+				/obj/item/melee/transforming/energy/sword = 7,
+				/obj/item/book/granter/spell/summonitem = 20,
+				/obj/item/storage/backpack/holding = 12,
+				/obj/item/melee/classic_baton/telescopic = 12,
+				/obj/item/book/granter/spell/barnyard = 4)
+
 
 // FUCK NANITES
 /obj/machinery/scanner_gate/anti_nanite
