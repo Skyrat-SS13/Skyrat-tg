@@ -49,7 +49,7 @@
 	obj_damage = 50
 	harm_intent_damage = 15
 	melee_damage_lower = 15
-	melee_damage_upper = 20
+	melee_damage_upper = 15
 	ranged = TRUE
 	retreat_distance = 4
 	minimum_distance = 4
@@ -120,7 +120,7 @@
 	obj_damage = 50
 	harm_intent_damage = 10
 	melee_damage_lower = 20
-	melee_damage_upper = 25
+	melee_damage_upper = 20
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
@@ -163,8 +163,8 @@
 	maxHealth = 80
 	health = 80
 	harm_intent_damage = 15
-	melee_damage_lower = 15
-	melee_damage_upper = 20
+	melee_damage_lower = 17
+	melee_damage_upper = 17
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	charger = TRUE
@@ -239,6 +239,7 @@
 			new /mob/living/simple_animal/hostile/blackmesa/xen/headcrab(loc) //OOOO it unlached!
 			qdel(src)
 			return
+		update_appearance()
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab/update_overlays()
 	. = ..()
