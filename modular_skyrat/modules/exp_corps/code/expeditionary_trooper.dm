@@ -2,8 +2,8 @@
 	title = "Expeditionary Trooper"
 	department_head = list("Captain")
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the captain"
 	selection_color = "#ffeeff"
 	minimal_player_age = 40
