@@ -174,12 +174,12 @@ const SCANNER_GATE_ROUTES = {
     title: 'Scanner Mode: Nutrition',
     component: () => ScannerGateNutrition,
   },
-//  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
+  //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
   Gender: {
     title: 'Scanner Mode: Gender',
     component: () => ScannerGateGender,
   },
-//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+  //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
   Nanites: {
     title: 'Scanner Mode: Nanites',
     component: () => ScannerGateNanites,
@@ -231,7 +231,7 @@ const ScannerGateOff = (props, context) => {
           onClick={() => act('set_mode', { new_mode: 'Species' })} />
         <Button //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
           content="Gender"
-          onClick={() => act('set_mode', { new_mode: 'Gender' })} //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+          onClick={() => act('set_mode', { new_mode: 'Gender' })}//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 		  />
         <Button
           content="Nutrition"
