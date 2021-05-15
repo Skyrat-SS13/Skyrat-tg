@@ -110,7 +110,7 @@
 		"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "gibbs"),
 		"Drake" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = "drakemedbox")
 		)
-		var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed", "Borgi" = "borgi-medi")
+		var/list/L = list("Hound" = "medihound", "Darkhound" = "medihounddark", "Vale" = "valemed", "Borgi" = "borgi-medi")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = L[a])
 			wide.pixel_x = -16
