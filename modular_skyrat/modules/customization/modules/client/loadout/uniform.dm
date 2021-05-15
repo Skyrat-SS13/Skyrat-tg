@@ -190,6 +190,10 @@
 	name = "Red suit"
 	path = /obj/item/clothing/under/suit/red
 
+/datum/loadout_item/uniform/suit/curatorthing
+	name = "Sensible Suit"
+	path = /obj/item/clothing/under/rank/civilian/curator
+
 /datum/loadout_item/uniform/suit/suitcharcoal
 	name = "Charcoal suit"
 	path = /obj/item/clothing/under/suit/charcoal
@@ -310,6 +314,10 @@
 /datum/loadout_item/uniform/skirt/skirtred
 	name = "Red skirt"
 	path = /obj/item/clothing/under/dress/skirt/red
+
+/datum/loadout_item/uniform/skirt/curatorthing
+	name = "Sensible Suitskirt"
+	path = /obj/item/clothing/under/rank/civilian/curator/skirt
 
 /datum/loadout_item/uniform/skirt/skirtpurple
 	name = "Purple skirt"
