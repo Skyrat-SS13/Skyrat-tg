@@ -120,7 +120,7 @@
 	force = 30
 	throwforce = 35
 
-/obj/effect/spawner/lootdrop/astrum/low
+/obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
 	loot = list(/obj/item/storage/firstaid/regular = 45,
 				/obj/item/storage/firstaid/toxin = 35,
@@ -138,11 +138,25 @@
 				/obj/item/dnainjector/shock = 10,
 				/obj/item/pneumatic_cannon = 15,
 				/obj/item/melee/transforming/energy/sword = 7,
-				/obj/item/book/granter/spell/summonitem = 20,
+				/obj/item/book/granter/spell/summonitem = 20,	
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/melee/classic_baton/telescopic = 12,
 				/obj/item/book/granter/spell/barnyard = 4)
 
+/obj/effect/spawner/lootdrop/astrum/sciloot
+	name = "abductor scientist loot"
+	loot = list(/obj/item/circular_saw/alien = 10,
+				/obj/item/retractor/alien = 10,
+				/obj/item/scalpel/alien = 10,
+				/obj/item/hemostat/alien = 10,
+				/obj/item/crowbar/abductor = 10,
+				new /obj/item/screwdriver/abductor = 10,
+				new /obj/item/wrench/abductor = 10,
+				new /obj/item/weldingtool/abductor = 10,
+				new /obj/item/crowbar/abductor = 10,
+				new /obj/item/wirecutters/abductor = 10,
+				new /obj/item/multitool/abductor = 10,
+				new /obj/item/stack/cable_coil = 10)
 
 // FUCK NANITES
 /obj/machinery/scanner_gate/anti_nanite
@@ -187,8 +201,8 @@
 	health_doll_icon = "pandora"
 	maxHealth = 1500
 	health = 1500
-	melee_damage_lower = 15
-	melee_damage_upper = 15
+	melee_damage_lower = 25
+	melee_damage_upper = 25
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
