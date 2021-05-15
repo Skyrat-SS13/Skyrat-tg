@@ -175,8 +175,9 @@ SUBSYSTEM_DEF(events)
 
 	if(holidays)
 		holidays = shuffle(holidays)
-		// regenerate station name because holiday prefixes.
-		// set_station_name(new_station_name()) // SKYRAT EDIT REMOVAL - PER MAP STATION NAMES
+		if(CONFIG_GET(holidaystationnames)) // SKYRAT EDIT - BIND STATION NAMES TO CONFIG
+			// regenerate station name because holiday prefixes.
+			set_station_name(new_station_name())
 		world.update_status()
 
 /datum/controller/subsystem/events/proc/toggleWizardmode()
