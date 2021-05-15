@@ -277,7 +277,7 @@
 		"Fly" = /datum/species/fly,
 		"Felinid" = /datum/species/human/felinid,
 		"Jelly" = /datum/species/jelly,
-		"Skrell" = /datum/species/skrell,
+		"Skrell" = /datum/species/skrell, // SKYRAT EDIT - START
 		"Anthromorph" = /datum/species/mammal,
 		"Slime Person" = /datum/species/jelly/roundstartslime,
 		"Vox" = /datum/species/vox,
@@ -289,7 +289,7 @@
 		"IPC" = /datum/species/robotic/ipc,
 		"Synthetic Lizard" = /datum/species/robotic/synthliz,
 		"Synthetic Mammal" = /datum/species/robotic/synthetic_mammal,
-		"Synthetic Human" = /datum/species/robotic/synthetic_human,
+		"Synthetic Human" = /datum/species/robotic/synthetic_human, // SKYRAT EDIT - END
 	)
 
 /datum/nanite_program/sensor/species/register_extra_settings()
