@@ -54,7 +54,7 @@ const TARGET_SPECIES_LIST = [
     name: 'Zombie',
     value: 'zombie',
   },
-  //	SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
+  //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
   {
     name: 'Anthromorph',
     value: 'mammal',
@@ -114,7 +114,7 @@ const TARGET_GENDER_LIST = [
     name: 'Female',
     value: 'female',
   },
-  //	SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+  //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 ];
 
 const TARGET_NUTRITION_LIST = [
@@ -174,12 +174,12 @@ const SCANNER_GATE_ROUTES = {
     title: 'Scanner Mode: Nutrition',
     component: () => ScannerGateNutrition,
   },
-//	SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
+//  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
   Gender: {
     title: 'Scanner Mode: Gender',
     component: () => ScannerGateGender,
   },
-//	SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
   Nanites: {
     title: 'Scanner Mode: Nanites',
     component: () => ScannerGateNanites,
@@ -229,9 +229,9 @@ const ScannerGateOff = (props, context) => {
         <Button
           content="Species"
           onClick={() => act('set_mode', { new_mode: 'Species' })} />
-        <Button //	SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
+        <Button //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
           content="Gender"
-          onClick={() => act('set_mode', { new_mode: 'Gender' })} //	SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+          onClick={() => act('set_mode', { new_mode: 'Gender' })} //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 		  />
         <Button
           content="Nutrition"
@@ -370,7 +370,7 @@ const ScannerGateNutrition = (props, context) => {
   );
 };
 
-//	SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
+//  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
 const ScannerGateGender = (props, context) => {
   const { act, data } = useBackend(context);
   const { reverse, target_gender } = data;
@@ -398,7 +398,7 @@ const ScannerGateGender = (props, context) => {
     </>
   );
 };
-//	SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 
 const ScannerGateNanites = (props, context) => {
   const { act, data } = useBackend(context);
