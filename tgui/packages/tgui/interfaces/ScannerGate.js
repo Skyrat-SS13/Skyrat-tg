@@ -232,7 +232,7 @@ const ScannerGateOff = (props, context) => {
         <Button //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
           content="Gender"
           onClick={() => act('set_mode', { new_mode: 'Gender' })}//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-		  />
+		/>
         <Button
           content="Nutrition"
           onClick={() => act('set_mode', { new_mode: 'Nutrition' })} />
