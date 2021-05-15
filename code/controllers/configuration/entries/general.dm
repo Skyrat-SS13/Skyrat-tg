@@ -29,6 +29,8 @@
 
 /datum/config_entry/string/serversqlname // short form server name used for the DB
 
+/datum/config_entry/flag/mapname_as_stationname // whether to use the map's name as the station name, overrides stationname - SKYRAT ADD
+
 /datum/config_entry/string/stationname // station name (the name of the station in-game)
 
 /datum/config_entry/number/lobby_countdown // In between round countdown.
