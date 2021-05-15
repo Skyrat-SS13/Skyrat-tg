@@ -1,12 +1,12 @@
 #define REVENANT_SPAWN_THRESHOLD 20
-
+/* - SKYRAT EDIT REMOVAL - GOODBYE NRP GREIFGHOST
 /datum/round_event_control/revenant
 	name = "Spawn Revenant" // Did you mean 'griefghost'?
 	typepath = /datum/round_event/ghost_role/revenant
 	weight = 7
 	max_occurrences = 1
 	min_players = 5
-	dynamic_should_hijack = TRUE
+	dynamic_should_hijack = TRUE */
 
 
 /datum/round_event/ghost_role/revenant
