@@ -190,10 +190,6 @@
 	name = "Red suit"
 	path = /obj/item/clothing/under/suit/red
 
-/datum/loadout_item/uniform/suit/curatorthing
-	name = "Sensible Suit"
-	path = /obj/item/clothing/under/rank/civilian/curator
-
 /datum/loadout_item/uniform/suit/suitcharcoal
 	name = "Charcoal suit"
 	path = /obj/item/clothing/under/suit/charcoal
