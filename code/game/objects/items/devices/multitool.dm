@@ -46,7 +46,7 @@
 
 /obj/item/multitool/ai_detect
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A special sensor embedded stealthily into this device can detect nearby silicon activity and camera vision range." // Skyrat edit
+	special_desc = "A special sensor embedded stealthily into this device can detect and warn of nearby silicon activity and camera vision range." // Skyrat edit
 	var/track_cooldown = 0
 	var/track_delay = 10 //How often it checks for proximity
 	var/detect_state = PROXIMITY_NONE
