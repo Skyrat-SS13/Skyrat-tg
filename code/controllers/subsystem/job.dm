@@ -559,7 +559,8 @@ SUBSYSTEM_DEF(job)
 	var/display_rank = rank
 	if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
 		display_rank = M.client.prefs.alt_titles_preferences[rank]
-	to_chat(M, "<span class='infoplain'><b>You are the [rank].</b></span>")
+	// to_chat(M, "<span class='infoplain'><b>You are the [rank].</b></span>") - ORIGINAL
+	to_chat(M, "<span class='infoplain'><b>You are the [display_rank].</b></span>") // SKYRAT EDIT ADD END
 	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
