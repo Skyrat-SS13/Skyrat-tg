@@ -228,13 +228,14 @@
 				/obj/item/scalpel/alien = 10,
 				/obj/item/hemostat/alien = 10,
 				/obj/item/crowbar/abductor = 10,
-				new /obj/item/screwdriver/abductor = 10,
-				new /obj/item/wrench/abductor = 10,
-				new /obj/item/weldingtool/abductor = 10,
-				new /obj/item/crowbar/abductor = 10,
-				new /obj/item/wirecutters/abductor = 10,
-				new /obj/item/multitool/abductor = 10,
-				new /obj/item/stack/cable_coil = 10)
+				/obj/item/screwdriver/abductor = 10,
+				/obj/item/wrench/abductor = 10,
+				/obj/item/weldingtool/abductor = 10,
+				/obj/item/crowbar/abductor = 10,
+				/obj/item/wirecutters/abductor = 10,
+				/obj/item/multitool/abductor = 10,
+				/obj/item/stack/cable_coil = 10,
+				/obj/effect/gibspawner/generic = 20)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
