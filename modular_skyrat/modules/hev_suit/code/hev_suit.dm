@@ -306,7 +306,7 @@
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/stat_changed(datum/source, new_stat)
 	SIGNAL_HANDLER
-	if(current_user.stat == DEAD)
+	if(new_stat == DEAD)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/flatline.ogg')
 		internal_radio.talk_into(src, "WARNING! USER [uppertext(current_user.name)] VITALSIGNS HAVE FLATLINED, CURRENT POSITION: [x], [y], [z]!", radio_channel)
 		deactivate()
@@ -408,6 +408,7 @@
 	state_health()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/finished()
+	send_message("CALIBRATED", COLOR_HEV_GREEN)
 	send_message("ALL SYSTEMS ONLINE, WELCOME [current_user.name]", COLOR_HEV_GREEN)
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/09_safe_day.ogg', 50)
 	activated = TRUE
