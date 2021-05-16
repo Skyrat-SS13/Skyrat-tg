@@ -16,12 +16,15 @@
 #define HEV_POWERUSE_INJECTION 100
 #define HEV_POWERUSE_HEAL 150
 
-#define HEV_INJECTION_COOLDOWN 5 SECONDS
+#define HEV_COOLDOWN_INJECTION 5 SECONDS
+#define HEV_COOLDOWN_BATTERY 1 MINUTE
+#define HEV_COOLDOWN_HEALTH_STATE 10 SECONDS
+#define HEV_COOLDOWN_HEAL 5 SECONDS
+#define HEV_COOLDOWN_VOICE 1 SECONDS
 
-#define HEV_HEAL_COOLDOWN 5 SECONDS
 #define HEV_HEAL_AMOUNT 10
 
-#define HEV_VOICE_COOLDOWN 1 SECONDS
+
 
 /obj/item/clothing/head/helmet/space/hardsuit/hev_suit
 	name = "hazardous environment suit helmet"
@@ -67,6 +70,8 @@
 	var/timer_id = null
 	var/voice_current_cooldown
 	var/healing_current_cooldown
+	var/health_statement_cooldown
+	var/battery_statement_cooldown
 	var/blood_loss_alarm
 	var/toxins_alarm
 
@@ -87,12 +92,22 @@
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/dropped()
 	. = ..()
+	if(current_internals_tank)
+		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
+		current_internals_tank = null
+	current_helmet = null
 	deactivate()
+	current_user = null
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/Destroy()
 	if(internal_radio)
 		qdel(internal_radio)
+	if(current_internals_tank)
+		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
+		current_internals_tank = null
+	current_helmet = null
 	deactivate()
+	current_user = null
 	return ..()
 
 /datum/action/item_action/hev_activate
@@ -115,8 +130,15 @@
 	to_chat(current_user, "HEV MARK IV: <span style='color: [color];'>[message]</span>")
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/send_hev_sound(sound/sound_in, volume = 50)
+
 	var/sound/voice = sound(sound_in, wait = 1, channel = CHANNEL_HEV)
 	playsound(src, voice, volume)
+
+/obj/item/clothing/suit/space/hardsuit/hev_suit/ToggleHelmet()
+	if(activated || activating)
+		send_message("ERROR, SUIT HELMENT CANNOT BE DISENGAGED", COLOR_HEV_RED)
+		return
+	. = ..()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/activate()
 	if(!current_user)
@@ -176,6 +198,23 @@
 		return FALSE
 	return TRUE
 
+/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/announce_battery()
+	if(world.time <= battery_statement_cooldown)
+		return
+	battery_statement_cooldown = world.time + HEV_COOLDOWN_BATTERY
+
+	var/datum/component/cell/my_cell = GetComponent(/datum/component/cell)
+	var/current_battery_charge = my_cell.inserted_cell.percent()
+	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
+	switch(current_battery_charge)
+		if(0 to 10)
+			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/ten.ogg')
+		if(11 to 20)
+			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/twenty.ogg')
+		if(21 to 30)
+			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/thirty.ogg')
+	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/powerarmor()
 	armor = HEV_ARMOR_POWERON
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/02_powerarmor_on.ogg', 50)
@@ -215,6 +254,9 @@
 	state_health()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/state_health()
+	if(world.time <= health_statement_cooldown)
+		return
+	health_statement_cooldown = world.time + HEV_COOLDOWN_HEALTH_STATE
 	var/current_health = current_user.health
 	var/max_health = current_user.maxHealth
 	if(current_health <= max_health*0.2)
@@ -256,8 +298,10 @@
 	current_user.extinguish_mob()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/vitalsigns()
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/04_vitalsigns_on.ogg', 50)
 	RegisterSignal(current_user, COMSIG_MOB_STATCHANGE, .proc/stat_changed)
 	send_message("CALIBRATED", COLOR_HEV_GREEN)
+	send_message("CALIBRATING AUTOMATIC MEDICAL SYSTEMS...")
 	timer_id = addtimer(CALLBACK(src, .proc/medical_systems), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/stat_changed(datum/source, new_stat)
@@ -268,9 +312,10 @@
 		deactivate()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/medical_systems()
-	send_message("CALIBRATING AUTOMATIC MEDICAL SYSTEMS...")
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/05_automedic_on.ogg', 50)
 	RegisterSignal(current_user, COMSIG_ATOM_RAD_ACT, .proc/process_radiation)
 	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, .proc/process_wound)
+	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, .proc/process_acid)
 	START_PROCESSING(SSobj, src)
 	send_message("CALIBRATED", COLOR_HEV_GREEN)
 	timer_id = addtimer(CALLBACK(src, .proc/finished), 3 SECONDS, TIMER_STOPPABLE)
@@ -300,36 +345,41 @@
 	if(new_oxyloss >= HEV_HEAL_AMOUNT)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustBruteLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_HEAL_COOLDOWN
+			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			send_message("OXYGEN MEDICAL ATTENTION ADMINISTERED", COLOR_HEV_BLUE)
 			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/morphine_shot.ogg')
 		return
 
 	if(new_bruteloss >= HEV_HEAL_AMOUNT)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustBruteLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_HEAL_COOLDOWN
-			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/morphine_shot.ogg')
+			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			send_message("BRUTE MEDICAL ATTENTION ADMINISTERED", COLOR_HEV_BLUE)
+			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/wound_sterilized.ogg')
 		return
 
 	if(new_fireloss >= HEV_HEAL_AMOUNT)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustFireLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_HEAL_COOLDOWN
-			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/morphine_shot.ogg')
+			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			send_message("BURN MEDICAL ATTENTION ADMINISTERED", COLOR_HEV_BLUE)
+			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/wound_sterilized.ogg')
 		return
 
 	if(new_toxloss >= HEV_HEAL_AMOUNT)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustBruteLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_HEAL_COOLDOWN
-			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/morphine_shot.ogg')
+			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			send_message("TOXIN MEDICAL ATTENTION ADMINISTERED", COLOR_HEV_BLUE)
+			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/antitoxin_shot.ogg')
 		return
 
 	if(new_cloneloss >= HEV_HEAL_AMOUNT)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.adjustBruteLoss(-HEV_HEAL_AMOUNT)
-			healing_current_cooldown = world.time + HEV_HEAL_COOLDOWN
-			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/morphine_shot.ogg')
+			healing_current_cooldown = world.time + HEV_COOLDOWN_HEAL
+			send_message("MEDICAL ATTENTION ADMINISTERED", COLOR_HEV_BLUE)
+			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/antidote_shot.ogg')
 		return
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/process_wound(carbon, wound, bodypart)
@@ -346,6 +396,11 @@
 	if(istype(wound, /datum/wound/slash/severe) || istype(wound, /datum/wound/slash/critical) || istype(wound, /datum/wound/pierce/severe) || istype(wound, /datum/wound/pierce/critical))
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/major_lacerations.ogg')
 		return
+
+/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/process_acid()
+	SIGNAL_HANDLER
+	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/radiation_detected.ogg')
+	state_health()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/process_radiation()
 	SIGNAL_HANDLER
@@ -366,13 +421,8 @@
 	UnregisterSignal(current_user, COMSIG_MOB_STATCHANGE)
 	UnregisterSignal(current_internals_tank, COMSIG_TANK_REMOVE_AIR)
 	armor = HEV_ARMOR_POWEROFF
-	current_helmet = null
-	if(current_internals_tank)
-		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
-		current_internals_tank = null
 	if(current_user)
 		send_message("SYSTEMS DEACTIVATED", COLOR_HEV_RED)
-		current_user = null
 	activated = FALSE
 	activating = FALSE
 
@@ -388,7 +438,10 @@
 #undef HEV_POWERUSE_HIT
 #undef HEV_POWERUSE_INJECTION
 #undef HEV_POWERUSE_HEAL
-#undef HEV_INJECTION_COOLDOWN
-#undef HEV_HEAL_COOLDOWN
 #undef HEV_HEAL_AMOUNT
-#undef HEV_VOICE_COOLDOWN
+#undef HEV_COOLDOWN_INJECTION
+#undef HEV_COOLDOWN_BATTERY
+#undef HEV_COOLDOWN_HEALTH_STATE
+#undef HEV_COOLDOWN_HEAL
+#undef HEV_COOLDOWN_VOICE
+
