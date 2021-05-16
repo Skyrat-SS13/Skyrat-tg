@@ -36,10 +36,3 @@
 	medical_record_text = "Patient is a DNR, and cannot be revived in any way."
 	value = 0
 	mob_trait = TRAIT_DNR
-
-/datum/quirk/noteleport
-	name = "Bluespace Immunity"
-	desc = "For some reason, bluespace or teleporting does not affect you. This can be good or bad from your point of view."
-	gain_text = "<span class='notice'>Your have an strange immunity against Bluespace and any kinda of teleportation</span>"
-	value = 0
-	mob_trait = TRAIT_NO_TELEPORT
