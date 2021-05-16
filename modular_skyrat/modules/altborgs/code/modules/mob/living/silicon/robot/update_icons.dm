@@ -34,7 +34,8 @@
 		pixel_x = initial(pixel_x)
 
 	if(robot_resting)
-		if(stat != DEAD && model.dogborg)
+		if(stat == DEAD && model.has_snowflake_deadsprite)
+			icon_state = "[model.cyborg_base_icon]-wreck"
 			switch(robot_resting)
 				if(ROBOT_REST_NORMAL)
 					icon_state = "[model.cyborg_base_icon]-rest"
