@@ -15,6 +15,11 @@
 	name = "Cybernetic heart"
 	path = /obj/item/organ/heart/cybernetic
 
+/datum/augment_item/organ/heart/determination
+	name = "Pulsing heart"
+	path = /obj/item/organ/heart/freedom/roundstart
+	cost = 5
+
 //LUNGS
 /datum/augment_item/organ/lungs
 	slot = AUGMENT_SLOT_LUNGS
@@ -52,6 +57,11 @@
 	name = "Cybernetic liver"
 	path = /obj/item/organ/liver/cybernetic
 
+/datum/augment_item/organ/liver/xeno
+	name = "Xeno Liver"
+	path = /obj/item/organ/liver/alien
+	cost = 5
+
 //STOMACHES
 /datum/augment_item/organ/stomach
 	slot = AUGMENT_SLOT_STOMACH
@@ -74,6 +84,10 @@
 	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
 	cost = 1
 
+/datum/augment_item/organ/eyes/moth
+	name = "Moth eyes"
+	path = /obj/item/organ/eyes/moth
+
 //TONGUES
 /datum/augment_item/organ/tongue
 	slot = AUGMENT_SLOT_TONGUE
@@ -89,3 +103,7 @@
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"
 	path = /obj/item/organ/tongue/lizard
+
+/datum/augment_item/organ/tongue/fly
+	name = "proboscis"
+	path = /obj/item/organ/tongue/fly

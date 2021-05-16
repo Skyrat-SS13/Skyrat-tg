@@ -255,6 +255,10 @@
 		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
 			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
 
+/obj/item/organ/heart/freedom/roundstart
+	name = "Pulsing Heart"
+	desc = "This heart pumps with the passion to give you life, they will heal you very softly when you go into critical state."
+	organ_flags = ORGAN_ORGANIC
 
 
 
