@@ -20,7 +20,7 @@
 	target = GLOB.the_gateway.destination
 
 /obj/item/key/gateway/pre_attack(atom/A, mob/living/user, params)
-	if(src.used && !src.use_once)
+	if(src.used && src.use_once)
 		return
 	if(istype(A,/obj/machinery/gateway))
 		var/obj/machinery/gateway/gate = A
