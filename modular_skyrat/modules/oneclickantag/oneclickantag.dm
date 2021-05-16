@@ -29,11 +29,14 @@
 	src.oneclickantag += antagtype
 	switch(antagtype)
 		if(ROLE_TRAITOR)
-			src.make_Traitor()
+			src.add_antag_datum(/datum/antagonist/traitor)
 		if(ROLE_CHANGELING)
-			src.make_Changeling()
+			src.add_antag_datum(/datum/antagonist/changeling)
 		if(ROLE_REV)
-			src.make_Rev()
+			var/datum/antagonist/rev/head/antag = new
+			antag.give_flash = TRUE
+			antag.give_hud = TRUE
+			src.add_antag_datum(antag)
 		if(ROLE_CULTIST)
 			src.add_antag_datum(/datum/antagonist/cult)
 		if(ROLE_BROTHER)
@@ -226,9 +229,17 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 
 /datum/admins/proc/make_wizard()
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", ROLE_WIZARD, null)
-	var/mob/dead/observer/selected = pick_n_take(candidates)
-	var/mob/living/carbon/human/new_character = makeBody(selected)
-	new_character.mind.make_Wizard()
+	var/mob/living/carbon/human/target
+	do
+		var/mob/dead/observer/selected = pick_n_take(candidates)
+		if(!LAZYLEN(candidates))
+			return FALSE
+		target = makeBody(selected)
+		if(!target.mind.active) //SMH people can't be trusted with shit; why would you DISCONNECT RIGHT AFTER BEING SELECTED FOR THE GHOST ROLE???
+			qdel(target)
+			continue
+	while(!target)
+	target.mind.add_antag_datum(/datum/antagonist/wizard)
 	return TRUE
 
 /datum/admins/proc/make_nukies(maxCount = 5)
