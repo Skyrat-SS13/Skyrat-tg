@@ -65,14 +65,14 @@
 	medical_record_text = "Patient exhibits abnormal blood coagulation behavior."
 
 /datum/quirk/noggie
-	name "Frail Head"
+	name = "Frail Head"
 	desc = "Being noogied hurts a lot! Probably because of a sensible head or antenna."
 	value = -2
 	mob_trait = TRAIT_ANTENNAE
 	medical_record_text = "Patient has an frail head."
 
 /datum/quirk/flash
-	name "Flash Sensitive"
+	name = "Flash Sensitive"
 	desc = "You can be flashed from any direction."
 	value = -3
 	mob_trait = TRAIT_FLASH_SENSITIVE
