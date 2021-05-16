@@ -233,9 +233,9 @@
 		//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
 		if(SCANGATE_GENDER)
 			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if((H.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
-					if(H.gender == detect_gender)
+				var/mob/living/carbon/human/scanned_human = M
+				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
+					if(scanned_human.gender == detect_gender)
 						beep = TRUE
 		//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 
