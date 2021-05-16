@@ -24,6 +24,7 @@
 	mail_goodies = list(
 		/obj/item/storage/fancy/cigarette = 10,
 		/obj/item/stack/spacecash/c500 = 3,
+		/obj/item/disk/nuclear/fake/obvious = 2,
 		/obj/item/clothing/head/collectable/captain = 4,
 		/obj/projectile/bullet/advanced/b10mm/b460 = 1
 	)
