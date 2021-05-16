@@ -197,7 +197,7 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
 	icon_state = "crowbar"
 	force = 30
-	throwforce = 35
+	throwforce = 42
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
