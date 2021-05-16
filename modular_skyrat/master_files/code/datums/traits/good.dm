@@ -21,8 +21,8 @@
 		var/mob/living/carbon/human/H = quirk_holder
 		if(H && istype(H))
 			H.dna.species.punchdamagehigh += 15
-			H.dna.species.punchdamagelow += 5
-			H.dna.species.punchstunthreshold += 10
+			H.dna.species.punchdamagelow += 7
+			H.dna.species.punchstunthreshold += 13
 
 /datum/quirk/quick_picker
 	name = "Basic training in Fireman carry"

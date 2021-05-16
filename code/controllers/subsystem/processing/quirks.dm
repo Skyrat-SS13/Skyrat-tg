@@ -30,6 +30,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 							list("Clown Fan","Mime Fan"), \
 							list("Bad Touch", "Friendly"), \
 							list("Extrovert", "Introvert"))
+							list("High Endurance","High Pain Tolerance")   //skyrat edit
 	return ..()
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
