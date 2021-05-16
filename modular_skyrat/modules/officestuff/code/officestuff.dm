@@ -15,3 +15,4 @@
 	desc = "A painting of a parting sea, the red sun washes over the blue ocean."
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
 	icon_state = "jmwt4"
+
