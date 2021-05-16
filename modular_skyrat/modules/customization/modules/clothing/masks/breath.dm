@@ -159,3 +159,17 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
 	icon_state = "gp5_mask"
 
+/obj/item/clothing/mask/muzzle/ball
+	name = "ballgag"
+	desc = "I'm pretty fuckin far from okay."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon_state = "ballgag"
+
+/obj/item/clothing/mask/muzzle/ring
+	name = "ring gag"
+	desc = "A mouth wrap seemingly designed to hold the mouth open."
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon_state = "ringgag"
+

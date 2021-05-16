@@ -72,8 +72,15 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	desc = "A thick vine, painful to the touch."
 
-/obj/effect/ebeam/vine/Crossed(atom/movable/AM)
+/obj/effect/ebeam/vine/Initialize(mapload)
 	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
+
+/obj/effect/ebeam/vine/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(!isvineimmune(L))
@@ -127,7 +134,7 @@
 	/// The maximum amount of vines a plant can have at one time
 	var/max_vines = 4
 	/// How far away a plant can attach a vine to something
-	var/vine_grab_distance = 5
+	var/vine_grab_distance = 4 //SKYRAT EDIT - Original 5
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
 
@@ -167,7 +174,7 @@
 	vines += newVine
 	if(isliving(the_target))
 		var/mob/living/L = the_target
-		L.Paralyze(20)
+		L.Knockdown(2 SECONDS) //Skyrat EDIT - Removes hardstun, bye!
 	ranged_cooldown = world.time + ranged_cooldown_time
 
 /mob/living/simple_animal/hostile/venus_human_trap/Login()
