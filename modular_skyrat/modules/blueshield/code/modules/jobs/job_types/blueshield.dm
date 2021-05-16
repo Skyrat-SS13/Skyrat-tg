@@ -22,7 +22,7 @@
 	family_heirlooms = list(/obj/item/bedsheet/captain, /obj/item/clothing/head/beret/blueshield)
 
 	mail_goodies = list(
-		/obj/item/storage/fancy/cigarette = 10,
+		/obj/item/storage/fancy/cigarettes/cigars/havana = 10,
 		/obj/item/stack/spacecash/c500 = 3,
 		/obj/item/disk/nuclear/fake/obvious = 2,
 		/obj/item/clothing/head/collectable/captain = 4,
