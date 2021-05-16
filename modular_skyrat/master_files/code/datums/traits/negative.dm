@@ -76,4 +76,4 @@
 	desc = "You can be flashed from any direction."
 	value = -3
 	mob_trait = TRAIT_FLASH_SENSITIVE
-	medical_record_text "Patient is sensitive to flash."
+	medical_record_text = "Patient is sensitive to flash."

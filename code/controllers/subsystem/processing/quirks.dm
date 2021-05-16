@@ -29,8 +29,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 							list("Alcohol Tolerance","Light Drinker"), \
 							list("Clown Fan","Mime Fan"), \
 							list("Bad Touch", "Friendly"), \
-							list("Extrovert", "Introvert"))
-							list("High Endurance","High Pain Tolerance")   //skyrat edit
+							list("Extrovert", "Introvert"), \
+							list("High Endurance","High Pain Tolerance"))  //skyrat edit
 	return ..()
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
