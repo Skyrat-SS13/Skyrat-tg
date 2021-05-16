@@ -42,3 +42,38 @@
 	medical_record_text = "Patient's digits are thick and lack the dexterity for operating some small devices, computers and non-adapted firearms."
 	value = -8
 	mob_trait = TRAIT_CHUNKYFINGERS
+
+/datum/quirk/airhead
+	name = "Airhead"
+	desc = "You are exceptionally airheaded... but who cares?"
+	value = -6
+	mob_trait = TRAIT_DUMB
+	medical_record_text = "Patient exhibits rather low mental capabilities."
+
+/datum/quirk/disaster_artist
+	name = "Clumsy"
+	desc = "You always manage to wreak havoc on everything you touch."
+	value = -8
+	mob_trait = TRAIT_CLUMSY
+	medical_record_text = "Patient lacks proper spatial awareness."
+
+/datum/quirk/hemophiliac
+	name = "Hemophiliac"
+	desc = "Your body is bad at coagulating blood. Bleeding will always be two times worse when compared to the average person."
+	value = -5
+	mob_trait = TRAIT_HEMOPHILIA
+	medical_record_text = "Patient exhibits abnormal blood coagulation behavior."
+
+/datum/quirk/noggie
+	name "Frail Head"
+	desc = "Being noogied hurts a lot! Probably because of a sensible head or antenna."
+	value = -2
+	mob_trait = TRAIT_ANTENNAE
+	medical_record_text = "Patient has an frail head."
+
+/datum/quirk/flash
+	name "Flash Sensitive"
+	desc = "You can be flashed from any direction."
+	value = -3
+	mob_trait = TRAIT_FLASH_SENSITIVE
+	medical_record_text "Patient is sensitive to flash."

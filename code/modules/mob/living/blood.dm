@@ -85,6 +85,11 @@
 	if(!(NOBLOOD in dna.species.species_traits))
 		..()
 
+//skyrat edit - hemophilia quirk
+	if(HAS_TRAIT(src, TRAIT_HEMOPHILIA))
+		amt *= 2
+	//
+
 /// A helper to see how much blood we're losing per tick
 /mob/living/carbon/proc/get_bleed_rate()
 	if(!blood_volume)
