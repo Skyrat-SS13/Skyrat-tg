@@ -1,7 +1,7 @@
 /obj/structure/awaymissions/wildwest/masterclock
-	name = 'grandfather clock'
+	name = "grandfather clock"
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
-	icon_state = "grandfather_clock_a"
+	icon_state = "grandfather_clock"
 	desc = "Tick, tick, tick, tick. It stands tall and daunting, loudly and ominously ticking, yet the hands are stuck close to midnight, the closer you get, the louder a faint whisper becomes a scream, a plea, something, but whatever it is, it says 'I am the Master, and you will obey me.'"
 
 /obj/structure/sign/poster/contraband/paintingmeat
