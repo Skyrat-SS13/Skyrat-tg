@@ -21,6 +21,14 @@
 
 	family_heirlooms = list(/obj/item/bedsheet/captain, /obj/item/clothing/head/beret/blueshield)
 
+	mail_goodies = list(
+		/obj/item/storage/fancy/cigarette = 10,
+		/obj/item/stack/spacecash/c500, = 3,
+		/obj/item/disk/nuclear/fake = 2,
+		/obj/item/clothing/head/collectable/captain = 4,
+		/obj/projectile/bullet/advanced/b10mm/b460 = 1
+	)
+
 /datum/outfit/job/blueshield
 	name = "Blueshield"
 	jobtype = /datum/job/blueshield
