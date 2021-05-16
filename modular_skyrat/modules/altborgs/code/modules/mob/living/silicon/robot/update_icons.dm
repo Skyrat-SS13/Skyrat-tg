@@ -51,3 +51,5 @@
 	if(stat == DEAD && model.has_snowflake_deadsprite)
 		icon_state = "[model.cyborg_base_icon]-wreck"
 	update_fire()
+
+
