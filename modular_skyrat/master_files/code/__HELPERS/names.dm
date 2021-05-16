@@ -2,11 +2,11 @@
 	if(!GLOB.station_name)
 		var/newname
 		var/config_station_name = CONFIG_GET(string/stationname)
-		if(CONFIG_GET(flag/mapname_as_stationname))
+		if(CONFIG_GET(flag/map_stationname))
 			SSmapping.HACK_LoadMapConfig()
-			var/config_map_name = SSmapping.config.map_name
-			set_station_name(config_map_name)
-			return GLOB.station_name
+			if(SSmapping.config.station_name)
+				set_station_name(SSmapping.config.station_name)
+				return GLOB.station_name
 		if(config_station_name)
 			newname = config_station_name
 		else

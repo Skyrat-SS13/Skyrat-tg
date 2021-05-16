@@ -29,9 +29,9 @@
 
 /datum/config_entry/string/serversqlname // short form server name used for the DB
 
-/datum/config_entry/flag/holidaystationnames // generate station name based on holidays
+/datum/config_entry/flag/holidaystationnames // generate station name based on holidays - SKYRAT ADD
 
-/datum/config_entry/flag/mapname_as_stationname // whether to use the map's name as the station name, overrides stationname - SKYRAT ADD
+/datum/config_entry/flag/map_stationname // whether to use the station name defined in the map's .json as the station name - SKYRAT ADD
 
 /datum/config_entry/string/stationname // station name (the name of the station in-game)
 

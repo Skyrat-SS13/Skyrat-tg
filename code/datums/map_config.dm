@@ -17,6 +17,7 @@
 	var/map_name = "Meta Station"
 	var/map_path = "map_files/MetaStation"
 	var/map_file = "MetaStation.dmm"
+	var/station_name = "NSS Pollux" //SKYRAT EDIT ADD - STATION NAMES FOR EACH MAP
 
 	var/traits = null
 	var/space_ruin_levels = 7
