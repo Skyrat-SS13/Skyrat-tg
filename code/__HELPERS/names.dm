@@ -40,7 +40,6 @@ GLOBAL_VAR(command_name)
 			newname = config_station_name
 		else
 			newname = new_station_name()
-
 		set_station_name(newname)
 	return GLOB.station_name
 */
