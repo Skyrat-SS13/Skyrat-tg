@@ -1,5 +1,5 @@
 //////////////////Imp
-//FILE WAS SKYRAT EDITED TO PREVENT ROUND REMOVAL
+//FILE WAS SKYRAT EDITED TO PREVENT ROUND REMOVAL 
 /mob/living/simple_animal/hostile/imp
 	name = "imp"
 	real_name = "imp"
