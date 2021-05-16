@@ -34,3 +34,25 @@
 	#define COMPONENT_POWER_SUCCESS (1<<0)
 	#define COMPONENT_NO_CELL  (1<<1)
 	#define COMPONENT_NO_CHARGE (1<<2)
+
+// Tank signals
+/// When a tank has it's air removed. (amount)
+#define COMSIG_TANK_REMOVE_AIR "tank_remove_air"
+
+// Health signals
+/// /mob/living/proc/updatehealth()
+#define COMSIG_MOB_UPDATE_HEALTH "mob_update_health"
+/// /mob/living/proc/adjustBruteLoss (amount)
+#define COMSIG_MOB_LOSS_BRUTE "mob_loss_brute"
+/// /mob/living/proc/adjustBurnLoss (amount)
+#define COMSIG_MOB_LOSS_FIRE "mob_loss_fire"
+/// /mob/living/proc/adjustCloneLoss (amount)
+#define COMSIG_MOB_LOSS_CLONE "mob_loss_clone"
+/// /mob/living/proc/adjustToxLoss (amount)
+#define COMSIG_MOB_LOSS_TOX "mob_loss_tox"
+////mob/living/proc/adjustOyxLoss (amount)
+#define COMSIG_MOB_LOSS_OXY "mob_loss_oxy"
+////mob/living/proc/adjustStaminaLoss (amount)
+#define COMSIG_MOB_LOSS_STAMINA "mob_loss_stamina"
+/// /mob/living/proc/adjustOrganLoss (slot, amount)
+#define COMSIG_MOB_LOSS_ORGAN "mob_loss_organ"

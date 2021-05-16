@@ -206,6 +206,7 @@
 				distribute_pressure = clamp(round(pressure), TANK_MIN_RELEASE_PRESSURE, TANK_MAX_RELEASE_PRESSURE)
 
 /obj/item/tank/remove_air(amount)
+	SEND_SIGNAL(src, COMSIG_TANK_REMOVE_AIR, amount) //SKYRAT EDIT ADDITION
 	START_PROCESSING(SSobj, src)
 	return air_contents.remove(amount)
 
