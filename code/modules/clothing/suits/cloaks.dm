@@ -88,7 +88,6 @@
 	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	//SKYRAT ADDITION END
 
 /obj/item/clothing/head/hooded/cloakhood/goliath
 	name = "goliath cloak hood"
@@ -98,6 +97,9 @@
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	transparent_protection = HIDEMASK
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	//SKYRAT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/drake
 	name = "drake armour"
