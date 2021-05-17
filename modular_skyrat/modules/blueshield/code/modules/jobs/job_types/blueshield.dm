@@ -17,6 +17,8 @@
 	outfit = /datum/outfit/job/blueshield
 	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
+	bounty_types = CIV_JOB_SEC
+	departments = DEPARTMENT_COMMAND
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
 	family_heirlooms = list(/obj/item/bedsheet/captain, /obj/item/clothing/head/beret/blueshield)
