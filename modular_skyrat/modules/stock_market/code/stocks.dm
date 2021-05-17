@@ -17,7 +17,7 @@
 	var/desc = "A company that does not exist."
 	var/list/values = list()
 	var/current_value = 10
-	var/value_cap = 450000
+	var/value_cap = 5000
 	var/last_value = 10
 	var/list/products = list()
 
@@ -146,7 +146,7 @@
 	if(i_hate_this_code < fucking_stock_spikes || i_hate_this_code > piece_of_shit_fuck)
 		current_value += i_hate_this_code
 	if(current_value > value_cap)
-		current_value = 450000
+		current_value = value_cap
 	if (current_value < 5)
 		current_value = 5
 
