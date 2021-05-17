@@ -94,8 +94,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 0
-	turns_per_move = 5
-	speed = 0
+	turns_per_move = 4
+	speed = 2
 	stat_attack = HARD_CRIT
 	robust_searching = 1
 	maxHealth = 100
@@ -235,7 +235,9 @@
 				/obj/item/wirecutters/abductor = 10,
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
-				/obj/effect/gibspawner/generic = 20)
+				/obj/effect/gibspawner/generic = 20,
+				/obj/item/reagent_containers/blood/universal = 15,
+				)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
