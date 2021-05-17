@@ -1279,7 +1279,6 @@
 	if(!buckled || buckled.buckle_lying != 0)
 		lying_angle_on_lying_down(new_lying_angle)
 
-	drop_all_held_items() //SKYRAT EDIT ADDITION
 
 /// Special carbon interaction on lying down, to transform its sprite by a rotation.
 /mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)

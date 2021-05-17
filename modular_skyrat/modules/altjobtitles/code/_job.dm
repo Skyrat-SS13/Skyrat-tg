@@ -40,7 +40,7 @@
 	alt_titles = list("Executive Officer", "Employment Officer", "Crew Supervisor")
 
 /datum/job/head_of_security
-	alt_titles = list("Security Commander", "Chief Constable", "Chief of Security", "Sherriff")
+	alt_titles = list("Security Commander", "Chief Constable", "Chief of Security", "Sheriff")
 
 /datum/job/chief_engineer
 	alt_titles = list("Engineering Foreman")

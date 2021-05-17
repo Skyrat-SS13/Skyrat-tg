@@ -134,7 +134,7 @@
 	/// The maximum amount of vines a plant can have at one time
 	var/max_vines = 4
 	/// How far away a plant can attach a vine to something
-	var/vine_grab_distance = 5
+	var/vine_grab_distance = 4 //SKYRAT EDIT - Original 5
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
 
@@ -174,7 +174,7 @@
 	vines += newVine
 	if(isliving(the_target))
 		var/mob/living/L = the_target
-		L.Paralyze(20)
+		L.Knockdown(2 SECONDS) //Skyrat EDIT - Removes hardstun, bye!
 	ranged_cooldown = world.time + ranged_cooldown_time
 
 /mob/living/simple_animal/hostile/venus_human_trap/Login()
