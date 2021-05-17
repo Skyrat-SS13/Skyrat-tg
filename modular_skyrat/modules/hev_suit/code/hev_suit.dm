@@ -17,7 +17,7 @@
 #define HEV_POWERUSE_HEAL 150
 
 #define HEV_COOLDOWN_INJECTION 5 SECONDS
-#define HEV_COOLDOWN_BATTERY 1 MINUTE
+#define HEV_COOLDOWN_BATTERY 1 MINUTES
 #define HEV_COOLDOWN_HEALTH_STATE 10 SECONDS
 #define HEV_COOLDOWN_HEAL 5 SECONDS
 #define HEV_COOLDOWN_VOICE 1 SECONDS
@@ -35,6 +35,9 @@
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "hev"
 	armor = HEV_ARMOR_POWEROFF
+	obj_flags = NO_MAT_REDEMPTION
+	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT|BLOCK_GAS_SMOKE_EFFECT|SCAN_REAGENTS
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
@@ -55,25 +58,41 @@
 	slowdown = 0 //I am not gimping doctor freeman
 	hardsuit_tail_colors = list("2B5", "444", "2FB")
 	actions_types = list(/datum/action/item_action/hev_activate, /datum/action/item_action/hev_deactivate, /datum/action/item_action/toggle_spacesuit, /datum/action/item_action/toggle_helmet)
+	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE|THICKMATERIAL|SNUG_FIT|LAVAPROTECT
+
 	var/activated = FALSE
 	var/activating = FALSE
+
 	var/mob/living/carbon/current_user
 	var/obj/item/clothing/head/helmet/space/hardsuit/hev_suit/current_helmet
 	var/obj/item/tank/internals/current_internals_tank
 	var/obj/item/radio/internal_radio
+
 	var/user_old_bruteloss
 	var/user_old_fireloss
 	var/user_old_toxloss
 	var/user_old_cloneloss
 	var/user_old_oxyloss
+
 	var/radio_channel = RADIO_CHANNEL_COMMON
+
 	var/timer_id = null
+
 	var/voice_current_cooldown
 	var/healing_current_cooldown
 	var/health_statement_cooldown
 	var/battery_statement_cooldown
-	var/blood_loss_alarm
-	var/toxins_alarm
+
+	var/blood_loss_alarm = FALSE
+	var/toxins_alarm = FALSE
+	var/batt_50_alarm = FALSE
+	var/batt_40_alarm = FALSE
+	var/batt_30_alarm = FALSE
+	var/batt_20_alarm = FALSE
+	var/batt_10_alarm = FALSE
+	/// On first activation, we play the user a nice song!
+	var/first_use = FALSE
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/Initialize()
 	. = ..()
@@ -171,13 +190,15 @@
 
 	send_message("ACTIVATING SYSTEMS")
 	activating = TRUE
+	var/sound/song = sound('modular_skyrat/master_files/sound/blackmesa/hev/anomalous_materials.ogg', volume = 50)
+	SEND_SOUND(current_user, song)
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/01_hev_logon.ogg', 50)
 
 	send_message("ESTABLISHING HELMET LINK...")
-	send_message("ESTABLISHED", COLOR_HEV_GREEN)
+	send_message("...ESTABLISHED", COLOR_HEV_GREEN)
 
 	send_message("CALIBRATING FIT ADJUSTMENTS...")
-	send_message("CALIBRATED", COLOR_HEV_GREEN)
+	send_message("...CALIBRATED", COLOR_HEV_GREEN)
 
 	send_message("CALIBRATING REACTIVE ARMOR SYSTEMS...")
 	timer_id = addtimer(CALLBACK(src, .proc/powerarmor), 10 SECONDS, TIMER_STOPPABLE)
@@ -196,6 +217,7 @@
 		send_message("ERROR - POWER SYSTEMS FAILURE - [failure_reason]", COLOR_HEV_RED)
 		deactivate()
 		return FALSE
+	announce_battery()
 	return TRUE
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/announce_battery()
@@ -205,26 +227,65 @@
 
 	var/datum/component/cell/my_cell = GetComponent(/datum/component/cell)
 	var/current_battery_charge = my_cell.inserted_cell.percent()
-	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
-	switch(current_battery_charge)
-		if(0 to 10)
-			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/ten.ogg')
-		if(11 to 20)
-			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/twenty.ogg')
-		if(21 to 30)
-			send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/thirty.ogg')
-	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+
+	if(current_battery_charge < 10 && !batt_10_alarm)
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/ten.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		batt_10_alarm = TRUE
+		return
+	else if(current_battery_charge > 10 && batt_10_alarm)
+		batt_10_alarm = FALSE
+
+	if(current_battery_charge > 10 && current_battery_charge < 20 && !batt_20_alarm)
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/twenty.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		batt_20_alarm = TRUE
+		return
+	else if(current_battery_charge > 20 && batt_20_alarm)
+		batt_20_alarm = FALSE
+
+	if(current_battery_charge > 20 && current_battery_charge < 30 && !batt_30_alarm)
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/thirty.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		batt_30_alarm = TRUE
+		return
+	else if(current_battery_charge > 30 && batt_30_alarm)
+		batt_30_alarm = FALSE
+
+	if(current_battery_charge > 30 && current_battery_charge < 40 && !batt_40_alarm)
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/fourty.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		batt_40_alarm = TRUE
+		return
+	else if(current_battery_charge > 40 && batt_40_alarm)
+		batt_40_alarm = FALSE
+
+	if(current_battery_charge > 40 && current_battery_charge < 50 && !batt_50_alarm)
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/fourty.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		batt_50_alarm = TRUE
+		return
+	else if(current_battery_charge > 50 && batt_50_alarm)
+		batt_50_alarm = FALSE
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/powerarmor()
 	armor = HEV_ARMOR_POWERON
-	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/02_powerarmor_on.ogg', 50)
+	armor.setRating()
+	current_helmet.armor = HEV_ARMOR_POWERON
+	current_helmet.armor.setRating()
 	user_old_bruteloss = current_user.getBruteLoss()
 	user_old_fireloss = current_user.getFireLoss()
 	user_old_toxloss = current_user.getToxLoss()
 	user_old_cloneloss = current_user.getCloneLoss()
 	user_old_oxyloss = current_user.getOxyLoss()
 	RegisterSignal(current_user, COMSIG_MOB_UPDATE_HEALTH, .proc/process_hit)
-	send_message("CALIBRATED", COLOR_HEV_GREEN)
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/02_powerarmor_on.ogg', 50)
+	send_message("...CALIBRATED", COLOR_HEV_GREEN)
 	send_message("CALIBRATING ATMOSPHERIC CONTAMINANT SENSORS...")
 	timer_id = addtimer(CALLBACK(src, .proc/atmospherics), 4 SECONDS, TIMER_STOPPABLE)
 
@@ -270,16 +331,17 @@
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/atmospherics()
 	if(!current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE) && !istype(current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE), /obj/item/tank/internals))
-		send_message("FAILURE, NO TANK DETECTED", COLOR_HEV_RED)
+		send_message("...FAILURE, NO TANK DETECTED", COLOR_HEV_RED)
+		send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
 		timer_id = addtimer(CALLBACK(src, .proc/vitalsigns), 4 SECONDS, TIMER_STOPPABLE)
 		return
-	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/03_atmospherics_on.ogg', 50)
 	current_internals_tank = current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE)
 	ADD_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
 	to_chat(current_user, "<span class='notice'>You hear a click as [current_internals_tank] is secured to your suit.</span>")
 	RegisterSignal(current_internals_tank, COMSIG_TANK_REMOVE_AIR, /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/handle_tank)
 	RegisterSignal(current_user, COMSIG_ATOM_FIRE_ACT, /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/deal_with_that_fire)
-	send_message("CALIBRATED", COLOR_HEV_GREEN)
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/03_atmospherics_on.ogg', 50)
+	send_message("...CALIBRATED", COLOR_HEV_GREEN)
 	send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
 	timer_id = addtimer(CALLBACK(src, .proc/vitalsigns), 4 SECONDS, TIMER_STOPPABLE)
 
@@ -298,8 +360,8 @@
 	current_user.extinguish_mob()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/vitalsigns()
-	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/04_vitalsigns_on.ogg', 50)
 	RegisterSignal(current_user, COMSIG_MOB_STATCHANGE, .proc/stat_changed)
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/04_vitalsigns_on.ogg', 50)
 	send_message("CALIBRATED", COLOR_HEV_GREEN)
 	send_message("CALIBRATING AUTOMATIC MEDICAL SYSTEMS...")
 	timer_id = addtimer(CALLBACK(src, .proc/medical_systems), 3 SECONDS, TIMER_STOPPABLE)
@@ -308,29 +370,30 @@
 	SIGNAL_HANDLER
 	if(new_stat == DEAD)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/flatline.ogg')
-		internal_radio.talk_into(src, "WARNING! USER [uppertext(current_user.name)] VITALSIGNS HAVE FLATLINED, CURRENT POSITION: [x], [y], [z]!", radio_channel)
+		internal_radio.talk_into(src, "WARNING! USER [uppertext(current_user.real_name)] VITALSIGNS HAVE FLATLINED, CURRENT POSITION: [loc.x], [loc.y], [loc.z]!", radio_channel)
 		deactivate()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/medical_systems()
-	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/05_automedic_on.ogg', 50)
 	RegisterSignal(current_user, COMSIG_ATOM_RAD_ACT, .proc/process_radiation)
 	RegisterSignal(current_user, COMSIG_CARBON_GAIN_WOUND, .proc/process_wound)
 	RegisterSignal(current_user, COMSIG_ATOM_ACID_ACT, .proc/process_acid)
 	START_PROCESSING(SSobj, src)
-	send_message("CALIBRATED", COLOR_HEV_GREEN)
-	timer_id = addtimer(CALLBACK(src, .proc/finished), 3 SECONDS, TIMER_STOPPABLE)
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/05_automedic_on.ogg', 50)
+	send_message("...CALIBRATED", COLOR_HEV_GREEN)
+	send_message("CALIBRATING DEFENSIVE WEAPON SELECTION SYSTEMS...")
+	timer_id = addtimer(CALLBACK(src, .proc/weaponselect), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/process(delta_time)
 	if(current_user.blood_volume < BLOOD_VOLUME_OKAY && !blood_loss_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/blood_loss.ogg')
 		blood_loss_alarm = TRUE
-	else if(blood_loss_alarm)
+	else if(blood_loss_alarm && current_user.getToxLoss() <= 30)
 		blood_loss_alarm = FALSE
 
 	if(current_user.getToxLoss() > 30 && !toxins_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/blood_toxins.ogg')
 		toxins_alarm = TRUE
-	else if(toxins_alarm)
+	else if(toxins_alarm && current_user.getToxLoss() <= 30)
 		toxins_alarm = FALSE
 
 	if(world.time <= healing_current_cooldown)
@@ -407,9 +470,28 @@
 	send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/radiation_detected.ogg')
 	state_health()
 
+/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/weaponselect()
+	ADD_TRAIT(current_user, list(TRAIT_GUNFLIP,TRAIT_GUN_NATURAL), "hev_trait")
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/06_weaponselect_on.ogg', 50)
+	send_message("...CALIBRATED", COLOR_HEV_GREEN)
+	send_message("CALIBRATING MUNITION LEVEL MONITORING SYSTEMS...")
+	timer_id = addtimer(CALLBACK(src, .proc/munitions_monitoring), 3 SECONDS, TIMER_STOPPABLE)
+
+/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/munitions_monitoring()
+	//Crickets, not sure what to make this do!
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/07_munitionview_on.ogg', 50)
+	send_message("...CALIBRATED", COLOR_HEV_GREEN)
+	send_message("CALIBRATING COMMUNICATIONS SYSTEMS...")
+	timer_id = addtimer(CALLBACK(src, .proc/comms_system), 3 SECONDS, TIMER_STOPPABLE)
+
+/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/comms_system()
+
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/08_communications_on.ogg', 50)
+	send_message("...CALIBRATED", COLOR_HEV_GREEN)
+	timer_id = addtimer(CALLBACK(src, .proc/finished), 3 SECONDS, TIMER_STOPPABLE)
+
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/finished()
-	send_message("CALIBRATED", COLOR_HEV_GREEN)
-	send_message("ALL SYSTEMS ONLINE, WELCOME [current_user.name]", COLOR_HEV_GREEN)
+	send_message("ALL SYSTEMS ONLINE, WELCOME [uppertext(current_user.real_name)]", COLOR_HEV_GREEN)
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/09_safe_day.ogg', 50)
 	activated = TRUE
 	activating = FALSE
@@ -418,12 +500,25 @@
 	if(timer_id)
 		deltimer(timer_id)
 	STOP_PROCESSING(SSobj, src)
-	UnregisterSignal(current_user, COMSIG_MOB_UPDATE_HEALTH)
-	UnregisterSignal(current_user, COMSIG_MOB_STATCHANGE)
-	UnregisterSignal(current_internals_tank, COMSIG_TANK_REMOVE_AIR)
 	armor = HEV_ARMOR_POWEROFF
+	armor.setRating()
+	if(current_helmet)
+		current_helmet.armor = HEV_ARMOR_POWEROFF
+		current_helmet.armor.setRating()
+		REMOVE_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
+	if(current_internals_tank)
+		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
+		UnregisterSignal(current_internals_tank, COMSIG_TANK_REMOVE_AIR)
 	if(current_user)
 		send_message("SYSTEMS DEACTIVATED", COLOR_HEV_RED)
+		REMOVE_TRAIT(current_user, list(TRAIT_GUNFLIP,TRAIT_GUN_NATURAL), "hev_trait")
+		UnregisterSignal(current_user, list(
+			COMSIG_ATOM_ACID_ACT,
+			COMSIG_CARBON_GAIN_WOUND,
+			COMSIG_ATOM_RAD_ACT,
+			COMSIG_MOB_UPDATE_HEALTH,
+			COMSIG_MOB_STATCHANGE
+		))
 	activated = FALSE
 	activating = FALSE
 
@@ -439,10 +534,9 @@
 #undef HEV_POWERUSE_HIT
 #undef HEV_POWERUSE_INJECTION
 #undef HEV_POWERUSE_HEAL
-#undef HEV_HEAL_AMOUNT
 #undef HEV_COOLDOWN_INJECTION
 #undef HEV_COOLDOWN_BATTERY
 #undef HEV_COOLDOWN_HEALTH_STATE
 #undef HEV_COOLDOWN_HEAL
 #undef HEV_COOLDOWN_VOICE
-
+#undef HEV_HEAL_AMOUNT
