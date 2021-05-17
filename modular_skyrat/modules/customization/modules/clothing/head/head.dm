@@ -265,10 +265,9 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("FFF"))
 
-//Credit to Virgo for orginal flower textures//
 /obj/item/clothing/head/flowerpin
 	name = "Flower Pin"
-	desc = "A fancy flower pin with the ability to change colors"
+	desc = "A small polychromic flower pin"
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "flowerpin"
