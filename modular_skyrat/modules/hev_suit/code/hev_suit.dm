@@ -18,7 +18,7 @@
 
 #define HEV_COOLDOWN_INJECTION 5 SECONDS
 #define HEV_COOLDOWN_BATTERY 1 MINUTES
-#define HEV_COOLDOWN_HEALTH_STATE 10 SECONDS
+#define HEV_COOLDOWN_HEALTH_STATE 30 SECONDS
 #define HEV_COOLDOWN_HEAL 5 SECONDS
 #define HEV_COOLDOWN_VOICE 1 SECONDS
 
@@ -91,6 +91,14 @@
 	var/batt_30_alarm = FALSE
 	var/batt_20_alarm = FALSE
 	var/batt_10_alarm = FALSE
+
+	var/health_near_death_alarm = FALSE
+	var/health_critical_alarm = FALSE
+	var/health_dropping_alarm = FALSE
+
+	var/seek_medical_attention_alarm = FALSE
+
+
 	/// On first activation, we play the user a nice song!
 	var/first_use = TRUE
 
@@ -232,7 +240,7 @@
 	var/datum/component/cell/my_cell = GetComponent(/datum/component/cell)
 	var/current_battery_charge = my_cell.inserted_cell.percent()
 
-	if(current_battery_charge < 10 && !batt_10_alarm)
+	if(current_battery_charge <= 10 && !batt_10_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/ten.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
@@ -241,7 +249,7 @@
 	else if(current_battery_charge > 10 && batt_10_alarm)
 		batt_10_alarm = FALSE
 
-	if(current_battery_charge > 10 && current_battery_charge < 20 && !batt_20_alarm)
+	if(current_battery_charge > 10 && current_battery_charge <= 20 && !batt_20_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/twenty.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
@@ -250,7 +258,7 @@
 	else if(current_battery_charge > 20 && batt_20_alarm)
 		batt_20_alarm = FALSE
 
-	if(current_battery_charge > 20 && current_battery_charge < 30 && !batt_30_alarm)
+	if(current_battery_charge > 20 && current_battery_charge <= 30 && !batt_30_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/thirty.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
@@ -259,7 +267,7 @@
 	else if(current_battery_charge > 30 && batt_30_alarm)
 		batt_30_alarm = FALSE
 
-	if(current_battery_charge > 30 && current_battery_charge < 40 && !batt_40_alarm)
+	if(current_battery_charge > 30 && current_battery_charge <= 40 && !batt_40_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/fourty.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
@@ -268,7 +276,7 @@
 	else if(current_battery_charge > 40 && batt_40_alarm)
 		batt_40_alarm = FALSE
 
-	if(current_battery_charge > 40 && current_battery_charge < 50 && !batt_50_alarm)
+	if(current_battery_charge > 40 && current_battery_charge <= 50 && !batt_50_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/fourty.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
@@ -320,16 +328,30 @@
 	if(world.time <= health_statement_cooldown)
 		return
 	health_statement_cooldown = world.time + HEV_COOLDOWN_HEALTH_STATE
-	var/current_health = current_user.health
+	var/health_percent = round((current_user.health / current_user.maxHealth) * 100, 1)
 	var/max_health = current_user.maxHealth
-	if(current_health <= max_health*0.2)
+
+	if(health_percent <= 20 && !health_near_death_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/near_death.ogg')
-	else if(current_health <= max_health*0.4)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_critical.ogg')
-	else if(current_health <= max_health*0.6)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_dropping2.ogg')
-	else if(current_health <= max_health*0.8)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/seek_medic.ogg')
+		health_near_death_alarm = TRUE
+		return
+	else if(current_battery_charge > 20 && health_near_death_alarm)
+		health_near_death_alarm = FALSE
+
+	if(health_percent > 20 && health_percent <= 30 && !health_critical_alarm)
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_critical.ogg')
+		health_critical_alarm = TRUE
+		return
+	else if(health_percent > 30 && health_critical_alarm)
+		health_critical_alarm = FALSE
+
+	if(health_percent > 30 && health_percent <= 80 && !health_dropping_alarm)
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_dropping2.ogg')
+		health_dropping_alarm = TRUE
+		return
+	else if(health_percent > 80 && health_dropping_alarm)
+		health_dropping_alarm = FALSE
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/atmospherics()
 	if(!current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE) && !istype(current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE), /obj/item/tank/internals))
@@ -484,7 +506,7 @@
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/07_munitionview_on.ogg', 50)
 	send_message("...CALIBRATED", COLOR_HEV_GREEN)
 	send_message("CALIBRATING COMMUNICATIONS SYSTEMS...")
-	timer_id = addtimer(CALLBACK(src, .proc/comms_system), 3 SECONDS, TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, .proc/comms_system), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/comms_system()
 
