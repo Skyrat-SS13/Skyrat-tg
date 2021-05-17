@@ -286,6 +286,11 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
 /datum/emote/living/laugh/get_sound(mob/living/user)
+	if(isfelinid(user))
+		return pick('modular_skyrat/modules/emotes/sound/emotes/nyahaha1.ogg',
+			'modular_skyrat/modules/emotes/sound/emotes/nyahaha2.ogg',
+			'modular_skyrat/modules/emotes/sound/emotes/nyaha.ogg',
+			'modular_skyrat/modules/emotes/sound/emotes/nyahehe.ogg')
 	if(ismoth(user))
 		return 'modular_skyrat/modules/emotes/sound/emotes/mothlaugh.ogg'
 	if(isinsect(user))

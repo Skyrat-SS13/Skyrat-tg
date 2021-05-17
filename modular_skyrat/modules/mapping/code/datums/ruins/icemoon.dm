@@ -7,6 +7,7 @@
 	cost = 20
 	allow_duplicates = FALSE
 	never_spawn_with = list(/datum/map_template/ruin/lavaland/syndicate_base)
+	always_place = TRUE
 
 /datum/map_template/ruin/icemoon/underground/mining_site_below
 	name = "Mining Site Underground"
