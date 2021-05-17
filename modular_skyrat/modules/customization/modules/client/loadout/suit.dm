@@ -54,6 +54,10 @@
 	name = "Red Dresscoat"
 	path = /obj/item/clothing/suit/costume/vic_dresscoat/red
 
+/datum/loadout_item/suit/trackjacket
+	name = "Track Jacket"
+	path = /obj/item/clothing/suit/toggle/trackjacket
+
 /*Flannels go inside Misc*/
 /datum/loadout_item/suit/flannel_black
 	name = "Black Flannel"
