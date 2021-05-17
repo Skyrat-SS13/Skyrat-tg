@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/tribal_extended/icons/ammo.dmi'
 	icon_state = "arrow"
 	inhand_icon_state = "arrow"
+	projectile_type = /obj/projectile/bullet/reusable/arrow/wood
 
 /obj/item/ammo_casing/caseless/arrow/ash
 	name = "ashen arrow"
