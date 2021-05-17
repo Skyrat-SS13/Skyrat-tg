@@ -15,9 +15,9 @@
 	paycheck_department = ACCOUNT_SEC
 
 	outfit = /datum/outfit/job/blueshield
-
+	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
-	outfit = /datum/outfit/job/blueshield
+	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
 	family_heirlooms = list(/obj/item/bedsheet/captain, /obj/item/clothing/head/beret/blueshield)
 
