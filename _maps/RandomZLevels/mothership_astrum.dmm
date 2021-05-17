@@ -103,7 +103,6 @@
 /obj/structure/table/abductor,
 /obj/item/ammo_box/magazine/tommygunm45,
 /obj/item/ammo_box/magazine/tommygunm45,
-/obj/item/ammo_box/magazine/tommygunm45,
 /obj/item/gun/ballistic/automatic/tommygun,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
@@ -2460,7 +2459,10 @@
 /area/awaymission/mothership_astrum/halls)
 "LV" = (
 /obj/machinery/porta_turret/syndicate/pod{
-	faction = list("boss")
+	faction = list("boss");
+	lethal_projectile = /obj/projectile/bullet/c45;
+	max_integrity = 150;
+	stun_projectile = /obj/projectile/bullet/c45
 	},
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
@@ -2483,7 +2485,10 @@
 /area/awaymission/mothership_astrum/halls)
 "Mw" = (
 /obj/machinery/porta_turret/syndicate/pod{
-	faction = list("Abductor")
+	faction = list("Abductor");
+	lethal_projectile = /obj/projectile/bullet/c45;
+	max_integrity = 120;
+	stun_projectile = /obj/projectile/bullet/c45
 	},
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
@@ -2661,6 +2666,11 @@
 	},
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
+"Oq" = (
+/obj/structure/table/abductor,
+/obj/item/ammo_box/magazine/tommygunm45,
+/turf/closed/indestructible/alien,
+/area/awaymission/mothership_astrum/halls)
 "Or" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/indestructible/hotelwood,
@@ -2746,7 +2756,10 @@
 /area/awaymission/mothership_astrum/halls)
 "PH" = (
 /obj/machinery/porta_turret/syndicate/pod{
-	faction = list("Abductor")
+	faction = list("Abductor");
+	lethal_projectile = /obj/projectile/bullet/c45;
+	max_integrity = 120;
+	stun_projectile = /obj/projectile/bullet/c45
 	},
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
@@ -3292,7 +3305,10 @@
 /area/awaymission/mothership_astrum/deck1)
 "Xa" = (
 /obj/machinery/porta_turret/syndicate/pod{
-	faction = list("Abductor")
+	faction = list("Abductor");
+	lethal_projectile = /obj/projectile/bullet/c45;
+	max_integrity = 120;
+	stun_projectile = /obj/projectile/bullet/c45
 	},
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
@@ -20048,7 +20064,7 @@ Tu
 ee
 ee
 bV
-bV
+ad
 Vh
 aV
 bV
@@ -22624,7 +22640,7 @@ Vh
 bV
 bV
 bV
-yd
+Xa
 AZ
 AZ
 AZ
@@ -30789,7 +30805,7 @@ Zp
 ee
 ee
 ee
-bV
+Xa
 bV
 Vh
 Vh
@@ -31368,7 +31384,7 @@ ee
 ee
 ee
 bV
-GZ
+Xa
 ee
 ee
 ee
@@ -35210,7 +35226,7 @@ Vh
 Vh
 Vh
 Vh
-Vh
+Ma
 Vh
 Vh
 Vh
@@ -37254,7 +37270,7 @@ ee
 bV
 bV
 Vh
-Vh
+Ma
 bV
 bV
 AZ
@@ -55313,7 +55329,7 @@ bV
 bV
 bV
 bV
-SX
+Oq
 ee
 ee
 Tu

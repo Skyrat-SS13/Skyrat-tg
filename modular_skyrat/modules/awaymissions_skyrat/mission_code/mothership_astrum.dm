@@ -236,15 +236,32 @@
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
 				/obj/effect/gibspawner/generic = 20,
-				/obj/item/reagent_containers/blood/universal = 15,
-				)
+				/obj/item/reagent_containers/blood/universal = 15)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
 	loot = list(/obj/item/gun/energy/alien/astrum = 10,
 				/obj/item/clothing/suit/armor/abductor/astrum = 5,
 				/obj/item/clothing/head/helmet/abductor = 5,
-				/obj/item/organ/cyberimp/arm/armblade = 1)
+				/obj/item/organ/cyberimp/arm/armblade = 1,
+				/obj/effect/gibspawner/generic = 20)
+
+/obj/item/gun/energy/alien/astrum
+	name = "alien energy pistol"
+	desc = "A seemingly complicated gun, that isn't so complicated after all."
+	ammo_type = list(/obj/item/ammo_casing/energy/laser)
+	pin = /obj/item/firing_pin
+
+/obj/item/gun/energy/alien/zeta
+	name = "Zeta Blaster"
+	desc = "Having this too close to your face makes you start to taste blood, is this safe?"
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/alienblaster.dmi'
+	lefthand_file = 'modular_skyrat/modules/awaymissions_skyrat/icons/alienhand.dmi'
+	righthand_file = 'modular_skyrat/modules/awaymissions_skyrat/icons/alienhand2.dmi'
+	icon_state = "alienblaster"
+	inhand_icon_state = "alienblaster"
+	pin = /obj/item/firing_pin
+	selfcharge = 1
 
 /obj/item/gun/energy/alien/astrum
 	name = "alien energy pistol"
@@ -329,4 +346,5 @@
 	spawn_gibs()
 	spawn_gibs()
 	new /obj/item/key/gateway/home(src.loc)
+	new/obj/item/gun/energy/alien/zeta(src.loc)
 	qdel(src)
