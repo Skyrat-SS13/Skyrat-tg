@@ -92,7 +92,7 @@
 	var/batt_20_alarm = FALSE
 	var/batt_10_alarm = FALSE
 	/// On first activation, we play the user a nice song!
-	var/first_use = FALSE
+	var/first_use = TRUE
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/Initialize()
 	. = ..()
@@ -190,8 +190,12 @@
 
 	send_message("ACTIVATING SYSTEMS")
 	activating = TRUE
-	var/sound/song = sound('modular_skyrat/master_files/sound/blackmesa/hev/anomalous_materials.ogg', volume = 50)
-	SEND_SOUND(current_user, song)
+
+	if(first_use)
+		var/sound/song = sound('modular_skyrat/master_files/sound/blackmesa/hev/anomalous_materials.ogg', volume = 50)
+		SEND_SOUND(current_user, song)
+		first_use = FALSE
+
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/01_hev_logon.ogg', 50)
 
 	send_message("ESTABLISHING HELMET LINK...")
@@ -274,10 +278,8 @@
 		batt_50_alarm = FALSE
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/powerarmor()
-	armor = HEV_ARMOR_POWERON
-	armor.setRating()
-	current_helmet.armor = HEV_ARMOR_POWERON
-	current_helmet.armor.setRating()
+	armor.setRating(HEV_ARMOR_POWERON)
+	current_helmet.armor.setRating(HEV_ARMOR_POWERON)
 	user_old_bruteloss = current_user.getBruteLoss()
 	user_old_fireloss = current_user.getFireLoss()
 	user_old_toxloss = current_user.getToxLoss()
@@ -500,11 +502,9 @@
 	if(timer_id)
 		deltimer(timer_id)
 	STOP_PROCESSING(SSobj, src)
-	armor = HEV_ARMOR_POWEROFF
-	armor.setRating()
+	armor.setRating(HEV_ARMOR_POWEROFF)
 	if(current_helmet)
-		current_helmet.armor = HEV_ARMOR_POWEROFF
-		current_helmet.armor.setRating()
+		current_helmet.armor.setRating(HEV_ARMOR_POWEROFF)
 		REMOVE_TRAIT(current_helmet, TRAIT_NODROP, "hev_trait")
 	if(current_internals_tank)
 		REMOVE_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
