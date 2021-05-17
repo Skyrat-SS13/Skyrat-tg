@@ -265,4 +265,10 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("FFF"))
 
-
+/obj/item/clothing/head/redflower
+	name = "Red Flower Pin"
+	desc = "A small Red Flower meant to be worn in hair"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "redflower"
+	mutant_variants = NONE
