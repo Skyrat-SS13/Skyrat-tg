@@ -329,14 +329,13 @@
 		return
 	health_statement_cooldown = world.time + HEV_COOLDOWN_HEALTH_STATE
 	var/health_percent = round((current_user.health / current_user.maxHealth) * 100, 1)
-	var/max_health = current_user.maxHealth
 
 	if(health_percent <= 20 && !health_near_death_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/near_death.ogg')
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/seek_medic.ogg')
 		health_near_death_alarm = TRUE
 		return
-	else if(current_battery_charge > 20 && health_near_death_alarm)
+	else if(health_percent > 20 && health_near_death_alarm)
 		health_near_death_alarm = FALSE
 
 	if(health_percent > 20 && health_percent <= 30 && !health_critical_alarm)
