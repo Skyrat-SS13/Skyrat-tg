@@ -58,19 +58,19 @@
 	name = "HepUnit Standard Underweave"
 	path = /obj/item/clothing/suit/armor/vest/peacekeeper/jax
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
 /datum/loadout_item/suit/donator/hepbelt
 	name = "HepUnit Standard Webbing"
 	path = /obj/item/storage/belt/security/webbing/peacekeeper/jax
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
 /datum/loadout_item/head/donator/hephelmet
 	name = "HepUnit Standard Helmet"
 	path = /obj/item/clothing/head/helmet/sec/peacekeeper/jax
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
 /datum/loadout_item/head/donator/avipilot
 	name = "Smuggler's Flying Cap"
