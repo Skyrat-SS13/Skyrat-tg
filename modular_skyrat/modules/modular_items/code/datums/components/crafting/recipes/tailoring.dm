@@ -21,3 +21,11 @@
 	tool_behaviors = list(TOOL_WIRECUTTER)
 	time = 15
 	category = CAT_CLOTHING
+
+/datum/crafting_recipe/medpatch
+	name = "Medical Eyepatch Hud"
+	result = /obj/item/clothing/glasses/hud/eyepatch/med
+	reqs = list(/obj/item/clothing/glasses/hud/health = 1, /obj/item/clothing/glasses/eyepatch = 1, /obj/item/stack/cable_coil = 5)
+	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER) //has same values as converting regular huds to sunglass huds//
+	time = 20
+	category = CAT_CLOTHING
