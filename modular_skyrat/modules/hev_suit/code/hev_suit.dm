@@ -9,7 +9,7 @@
 
 #define HEV_ARMOR_POWEROFF list(20, 20, 20, 20, 30, 40, 40, 40, 40, 10)
 
-#define HEV_ARMOR_POWERON list(60, 60, 60, 60, 90, 100, 100, 100, 100, 70)
+#define HEV_ARMOR_POWERON list(60, 60, 60, 60, 90, 100, 100, 100, 100, 30)
 
 #define HEV_POWERUSE_AIRTANK 1
 #define HEV_POWERUSE_HIT 50
