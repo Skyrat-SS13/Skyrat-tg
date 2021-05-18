@@ -161,6 +161,8 @@
 	var/icon_update_needed = FALSE
 	var/obj/machinery/computer/apc_control/remote_control = null
 
+	var/shock_proof = FALSE // SKYRAT EDIT ADD - APC Arcing. If TRUE, APCs will not arc.
+
 /obj/machinery/power/apc/unlocked
 	locked = FALSE
 
@@ -1362,6 +1364,23 @@
 		else // chargemode off
 			charging = APC_NOT_CHARGING
 			chargecount = 0
+
+		if(excess >= 2500000 && !shock_proof) // SKYRAT EDIT ADD - APC Arcing
+			var/shock_chance = 5 // 5%
+			if(excess >= 7500000)
+				shock_chance = 15
+			else if(excess >= 5000000)
+				shock_chance = 10
+			if(prob(shock_chance))
+				var/list/shock_mobs = list()
+				for(var/creature in view(get_turf(src), 5)) //We only want to shock a single random mob in range, not every one.
+					if(isliving(creature))
+						shock_mobs += creature
+				if(shock_mobs.len)
+					var/mob/living/living_target = pick(shock_mobs)
+					living_target.electrocute_act(rand(5, 25), "electrical arc")
+					playsound(get_turf(living_target), 'sound/machines/defib_zap.ogg', 75, TRUE) //Man the defib zap sound is cool and also I couldn't find the proper sound.
+					Beam(living_target, icon_state = "lightning[rand(1, 12)]", icon = 'icons/effects/beam.dmi', time = 5) // SKYRAT EDIT ADD END
 
 	else // no cell, switch everything off
 
