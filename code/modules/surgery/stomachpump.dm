@@ -32,6 +32,7 @@
 	display_results(user, target, "<span class='notice'>You begin pumping [target]'s stomach...</span>",
 		"<span class='notice'>[user] begins to pump [target]'s stomach.</span>",
 		"<span class='notice'>[user] begins to press on [target]'s chest.</span>")
+	display_pain(target, "<span class='userdanger'>You feel a horrible sloshing feeling in your gut! You're going to be sick!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/stomach_pump/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(ishuman(target))

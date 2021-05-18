@@ -26,10 +26,12 @@
 	display_results(user, target, "<span class='notice'>You begin to grow a romerol tumor on [target]'s brain...</span>",
 		"<span class='notice'>[user] begins to tinker with [target]'s brain...</span>",
 		"<span class='notice'>[user] begins to perform surgery on [target]'s brain.</span>")
+	display_pain(target, "<span class='userdanger'>You feel a horrible stinging pain in your head!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/bionecrosis/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(user, target, "<span class='notice'>You succeed in growing a romerol tumor on [target]'s brain.</span>",
 		"<span class='notice'>[user] successfully grows a romerol tumor on [target]'s brain!</span>",
 		"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+	display_pain(target, "<span class='userdanger'>Your head pounds... something's not right.</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	try_to_zombie_infect(target) //SKYRAT EDIT CHANGE
 	return ..()

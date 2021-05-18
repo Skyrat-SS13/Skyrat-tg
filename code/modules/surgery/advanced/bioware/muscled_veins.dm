@@ -20,11 +20,13 @@
 	display_results(user, target, "<span class='notice'>You start wrapping muscles around [target]'s circulatory system.</span>",
 		"<span class='notice'>[user] starts wrapping muscles around [target]'s circulatory system.</span>",
 		"<span class='notice'>[user] starts manipulating [target]'s circulatory system.</span>")
+	display_pain(target, "<span class='userdanger'>Your entire body burns in agony!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/muscled_veins/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(user, target, "<span class='notice'>You reshape [target]'s circulatory system, adding a muscled membrane!</span>",
 		"<span class='notice'>[user] reshapes [target]'s circulatory system, adding a muscled membrane!</span>",
 		"<span class='notice'>[user] finishes manipulating [target]'s circulatory system.</span>")
+	display_pain(target, "<span class='userdanger'>You can feel your heartbeat's powerful throbs ripple through your body!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	new /datum/bioware/muscled_veins(target)
 	return ..()
 

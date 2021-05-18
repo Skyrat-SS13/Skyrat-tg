@@ -82,6 +82,7 @@
 		display_results(user, target, "<span class='notice'>You succeed in replacing [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>[user] successfully replaces [target]'s [parse_zone(target_zone)] with [tool]!</span>",
 			"<span class='notice'>[user] successfully replaces [target]'s [parse_zone(target_zone)]!</span>")
+		display_pain(target, "<span class='userdanger'>You feel synthetic sensation wash from your [parse_zone(target_zone)], which you can feel again!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		return
 	else
 		var/obj/item/bodypart/L = target.newBodyPart(target_zone, FALSE, FALSE)
@@ -96,6 +97,7 @@
 		display_results(user, target, "<span class='notice'>You attach [tool].</span>",
 			"<span class='notice'>[user] finishes attaching [tool]!</span>",
 			"<span class='notice'>[user] finishes the attachment procedure!</span>")
+		display_pain(target, "<span class='userdanger'>You feel a strange sensation from your new [parse_zone(target_zone)].</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		qdel(tool)
 		if(istype(tool, /obj/item/chainsaw))
 			var/obj/item/mounted_chainsaw/new_arm = new(target)

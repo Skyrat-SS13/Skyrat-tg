@@ -21,11 +21,13 @@
 	display_results(user, target, "<span class='notice'>You start reshaping [target]'s ligaments into a hook-like shape.</span>",
 		"<span class='notice'>[user] starts reshaping [target]'s ligaments into a hook-like shape.</span>",
 		"<span class='notice'>[user] starts manipulating [target]'s ligaments.</span>")
+	display_pain(target, "<span class='userdanger'>Your limbs burn with severe pain!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/reshape_ligaments/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(user, target, "<span class='notice'>You reshape [target]'s ligaments into a connective hook!</span>",
 		"<span class='notice'>[user] reshapes [target]'s ligaments into a connective hook!</span>",
 		"<span class='notice'>[user] finishes manipulating [target]'s ligaments.</span>")
+	display_pain(target, "<span class='userdanger'>Your limbs feel... strangely loose.</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	new /datum/bioware/hooked_ligaments(target)
 	return ..()
 

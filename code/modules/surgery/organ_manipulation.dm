@@ -105,6 +105,7 @@
 		display_results(user, target, "<span class='notice'>You begin to insert [tool] into [target]'s [parse_zone(target_zone)]...</span>",
 			"<span class='notice'>[user] begins to insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>[user] begins to insert something into [target]'s [parse_zone(target_zone)].</span>")
+		display_pain(target, "<span class='userdanger'>You can feel your something being placed in your [parse_zone(target_zone)]!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 	else if(implement_type in implements_extract)
 		current_type = "extract"
@@ -131,6 +132,7 @@
 				display_results(user, target, "<span class='notice'>You begin to extract [I] from [target]'s [parse_zone(target_zone)]...</span>",
 					"<span class='notice'>[user] begins to extract [I] from [target]'s [parse_zone(target_zone)].</span>",
 					"<span class='notice'>[user] begins to extract something from [target]'s [parse_zone(target_zone)].</span>")
+				display_pain(target, "<span class='userdanger'>You can feel your [I] being removed from your [parse_zone(target_zone)]!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 			else
 				return -1
 
@@ -152,12 +154,13 @@
 		display_results(user, target, "<span class='notice'>You insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
 			"<span class='notice'>[user] inserts something into [target]'s [parse_zone(target_zone)]!</span>")
-
+		display_pain(target, "<span class='userdanger'>Your [parse_zone(target_zone)] throbs with pain as your new [tool] comes to life!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	else if(current_type == "extract")
 		if(I && I.owner == target)
 			display_results(user, target, "<span class='notice'>You successfully extract [I] from [target]'s [parse_zone(target_zone)].</span>",
 				"<span class='notice'>[user] successfully extracts [I] from [target]'s [parse_zone(target_zone)]!</span>",
 				"<span class='notice'>[user] successfully extracts something from [target]'s [parse_zone(target_zone)]!</span>")
+			display_pain(target, "<span class='userdanger'>Your [parse_zone(target_zone)] throbs with pain, you can't feel your [I] anymore!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 			log_combat(user, target, "surgically removed [I.name] from", addition="COMBAT MODE: [uppertext(user.combat_mode)]")
 			I.Remove(target)
 			I.forceMove(get_turf(target))

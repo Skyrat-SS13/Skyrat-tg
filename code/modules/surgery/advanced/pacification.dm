@@ -27,11 +27,13 @@
 	display_results(user, target, "<span class='notice'>You begin to pacify [target]...</span>",
 		"<span class='notice'>[user] begins to fix [target]'s brain.</span>",
 		"<span class='notice'>[user] begins to perform surgery on [target]'s brain.</span>")
+	display_pain(target, "<span class='userdanger'>Your head pounds with unimaginable pain!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/pacify/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(user, target, "<span class='notice'>You succeed in neurologically pacifying [target].</span>",
 		"<span class='notice'>[user] successfully fixes [target]'s brain!</span>",
 		"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+	display_pain(target, "<span class='userdanger'>Your head pounds... the concept of violence flashes in your head, and nearly makes you hurl!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	target.gain_trauma(/datum/brain_trauma/severe/pacifism, TRAUMA_RESILIENCE_LOBOTOMY)
 	return ..()
 
@@ -39,5 +41,6 @@
 	display_results(user, target, "<span class='notice'>You screw up, rewiring [target]'s brain the wrong way around...</span>",
 			"<span class='warning'>[user] screws up, causing brain damage!</span>",
 			"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+	display_pain(target, "<span class='userdanger'>Your head pounds, and it feels like it's getting worse!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)
 	return FALSE

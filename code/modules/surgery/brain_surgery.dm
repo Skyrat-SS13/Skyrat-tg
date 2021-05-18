@@ -28,11 +28,13 @@
 	display_results(user, target, "<span class='notice'>You begin to fix [target]'s brain...</span>",
 		"<span class='notice'>[user] begins to fix [target]'s brain.</span>",
 		"<span class='notice'>[user] begins to perform surgery on [target]'s brain.</span>")
+	display_pain(target, "<span class='userdanger'>Your head pounds with unimaginable pain!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/fix_brain/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(user, target, "<span class='notice'>You succeed in fixing [target]'s brain.</span>",
 		"<span class='notice'>[user] successfully fixes [target]'s brain!</span>",
 		"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+	display_pain(target, "<span class='userdanger'>The pain in your head receeds, thinking becomes a bit easier!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	if(target.mind?.has_antag_datum(/datum/antagonist/brainwashed))
 		target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
 	target.setOrganLoss(ORGAN_SLOT_BRAIN, target.getOrganLoss(ORGAN_SLOT_BRAIN) - 50) //we set damage in this case in order to clear the "failing" flag
@@ -46,6 +48,7 @@
 		display_results(user, target, "<span class='warning'>You screw up, causing more damage!</span>",
 			"<span class='warning'>[user] screws up, causing brain damage!</span>",
 			"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+		display_pain(target, "<span class='userdanger'>Your head throbs with horrible pain and thinking becomes a little bit harder!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 60)
 		target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)
 	else

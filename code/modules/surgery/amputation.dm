@@ -16,13 +16,14 @@
 	display_results(user, target, "<span class='notice'>You begin to sever [target]'s [parse_zone(target_zone)]...</span>",
 		"<span class='notice'>[user] begins to sever [target]'s [parse_zone(target_zone)]!</span>",
 		"<span class='notice'>[user] begins to sever [target]'s [parse_zone(target_zone)]!</span>")
+	display_pain(target, "<span class='userdanger'>You feel a gruesome pain in your [parse_zone(target_zone)]'s joint!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/sever_limb/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	var/mob/living/carbon/human/L = target
 	display_results(user, target, "<span class='notice'>You sever [L]'s [parse_zone(target_zone)].</span>",
 		"<span class='notice'>[user] severs [L]'s [parse_zone(target_zone)]!</span>",
 		"<span class='notice'>[user] severs [L]'s [parse_zone(target_zone)]!</span>")
-	display_pain(target, "<span class='userdanger'>You lose all feeling in your [parse_zone(target_zone)]!</span>")
+	display_pain(target, "<span class='userdanger'>You lose all feeling in your [parse_zone(target_zone)]!</span>") // SKYRAT EDIT ADD - SURGERY PAIN
 	if(surgery.operated_bodypart)
 		var/obj/item/bodypart/target_limb = surgery.operated_bodypart
 		target_limb.drop_limb()

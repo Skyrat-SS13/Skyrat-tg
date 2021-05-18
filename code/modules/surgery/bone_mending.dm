@@ -47,6 +47,7 @@
 		display_results(user, target, "<span class='notice'>You begin to repair the fracture in [target]'s [parse_zone(user.zone_selected)]...</span>",
 			"<span class='notice'>[user] begins to repair the fracture in [target]'s [parse_zone(user.zone_selected)] with [tool].</span>",
 			"<span class='notice'>[user] begins to repair the fracture in [target]'s [parse_zone(user.zone_selected)].</span>")
+		display_pain(target, "<span class='userdanger'>Your [parse_zone(user.zone_selected)] aches with pain!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	else
 		user.visible_message("<span class='notice'>[user] looks for [target]'s [parse_zone(user.zone_selected)].</span>", "<span class='notice'>You look for [target]'s [parse_zone(user.zone_selected)]...</span>")
 
@@ -83,6 +84,7 @@
 		display_results(user, target, "<span class='notice'>You begin to reset the bone in [target]'s [parse_zone(user.zone_selected)]...</span>",
 			"<span class='notice'>[user] begins to reset the bone in [target]'s [parse_zone(user.zone_selected)] with [tool].</span>",
 			"<span class='notice'>[user] begins to reset the bone in [target]'s [parse_zone(user.zone_selected)].</span>")
+		display_pain(target, "<span class='userdanger'>The aching pain in your [parse_zone(user.zone_selected)] is overwhelming!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	else
 		user.visible_message("<span class='notice'>[user] looks for [target]'s [parse_zone(user.zone_selected)].</span>", "<span class='notice'>You look for [target]'s [parse_zone(user.zone_selected)]...</span>")
 
@@ -117,6 +119,7 @@
 		display_results(user, target, "<span class='notice'>You begin to repair the fracture in [target]'s [parse_zone(user.zone_selected)]...</span>",
 			"<span class='notice'>[user] begins to repair the fracture in [target]'s [parse_zone(user.zone_selected)] with [tool].</span>",
 			"<span class='notice'>[user] begins to repair the fracture in [target]'s [parse_zone(user.zone_selected)].</span>")
+		display_pain(target, "<span class='userdanger'>The aching pain in your [parse_zone(user.zone_selected)] is overwhelming!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	else
 		user.visible_message("<span class='notice'>[user] looks for [target]'s [parse_zone(user.zone_selected)].</span>", "<span class='notice'>You look for [target]'s [parse_zone(user.zone_selected)]...</span>")
 
