@@ -1,3 +1,6 @@
+// When adding or making new wing sprites, try to use matrixed colours!
+// You can find a color palette to work with in modular_skyrat\modules\customization\icons\mob\sprite_accessory\wings.dmi as 'colorpalette matrixcolors'
+// Check some of the wings that make use of them for examples on how to make it look decent
 /datum/sprite_accessory/wings
 	icon = 'icons/mob/clothing/wings.dmi'
 	generic = "Wings"
@@ -139,9 +142,14 @@
 	name = "Feathery"
 	icon_state = "feathery"
 
-/datum/sprite_accessory/wings/mammal/featheralt1
-	name = "Feathered (alt 1)"
-	icon_state = "featheralt1"
+/datum/sprite_accessory/wings/mammal/featheryalt1
+	name = "Feathery (alt 1)"
+	icon_state = "featheryalt1"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/wings/mammal/featheryalt2
+	name = "Feathery (alt 2)"
+	icon_state = "featheryalt2"
 	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/wings/mammal/bee
