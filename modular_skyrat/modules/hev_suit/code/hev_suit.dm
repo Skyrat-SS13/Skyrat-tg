@@ -166,9 +166,9 @@
 
 	to_chat(my_suit.current_user, "<span class='notice'>[my_suit] notification mode is now [new_setting].")
 
-	my_suit.send_notifications = "sound_[new_setting]"
+	my_suit.send_notifications = new_setting
 
-	button_icon_state = my_suit.send_notifications
+	button_icon_state = "sound_[new_setting]"
 
 	playsound(my_suit, 'modular_skyrat/master_files/sound/blackmesa/hev/blip.ogg', 50)
 
