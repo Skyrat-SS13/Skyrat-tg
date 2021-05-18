@@ -202,6 +202,7 @@
 	wound_bonus = 30
 	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar.ogg'
 	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
+	force_opens = TRUE
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
