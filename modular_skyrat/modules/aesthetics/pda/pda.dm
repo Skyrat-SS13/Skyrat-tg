@@ -175,7 +175,7 @@
 	greyscale_config = /datum/greyscale_config/pda/aesthetics/stripe_split
 	greyscale_colors = "#d6d9e0#262d99#4049e0"
 
-/obj/item/pda/heads/blueshield
+/obj/item/pda/blueshield
 	name = "blueshield PDA"
 	default_cartridge = /obj/item/cartridge/hos
 	greyscale_config = /datum/greyscale_config/pda/aesthetics/stripe_thick
