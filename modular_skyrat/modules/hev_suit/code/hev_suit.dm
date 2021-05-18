@@ -209,6 +209,9 @@
 	if(send_notifications != HEV_NOTIFICATION_TEXT_AND_VOICE && send_notifications != HEV_NOTIFICATION_VOICE)
 		return
 
+	if(!activated)
+		return
+
 	if(playing_voice_line)
 		if(priority) //Shit's fucked, we better say this ASAP
 			queued_voice_lines.Insert(1, sound_in)
@@ -458,7 +461,7 @@
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/stat_changed(datum/source, new_stat)
 	SIGNAL_HANDLER
 	if(new_stat == DEAD)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/flatline.ogg')
+		playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/flatline.ogg', 40)
 		internal_radio.talk_into(src, "WARNING! USER [uppertext(current_user.real_name)] VITALSIGNS HAVE FLATLINED, CURRENT POSITION: [loc.x], [loc.y], [loc.z]!", radio_channel)
 		deactivate()
 
@@ -716,13 +719,15 @@
 	l_hand = /obj/item/crowbar/freeman
 
 	id = /obj/item/card/id/advanced/centcom
-	id_trim = /datum/id_trim/job/scientist
+	id_trim = /datum/id_trim/gordon_freeman
 
 /datum/outfit/gordon_freeman/post_equip(mob/living/carbon/human/our_human, visualsOnly)
 	. = ..()
 	var/obj/item/card/id/id_card = our_human.wear_id
 	if(istype(id_card))
 		id_card.registered_name = our_human.real_name
+		id_card.update_label()
+		id_card.update_icon()
 
 /datum/id_trim/gordon_freeman
 	trim_state = "trim_scientist"
