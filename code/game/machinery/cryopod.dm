@@ -297,16 +297,10 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		var/datum/antagonist/antag = target.mind.has_antag_datum(/datum/antagonist)
 
 		var/datum/job/target_job = SSjob.GetJob(target.mind.assigned_role)
-<<<<<<< HEAD
-		if(target_job) //SKYRAT EDIT ADDITION
-			if(target_job.req_admin_notify)
-				alert("You're an important role![generic_plsnoleave_message]")
-				caught = TRUE
-=======
 
 		if(target_job && target_job.req_admin_notify)
 			tgalert(target, "You're an important role! [AHELP_FIRST_MESSAGE]")
->>>>>>> ade991b87ee (Brings Cryopods up to /tg/ standards (#59098))
+
 		if(antag)
 			tgalert(target, "You're \a [antag.name]! [AHELP_FIRST_MESSAGE]")
 
