@@ -555,4 +555,4 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define SKILLCHIP_CATEGORY_JOB "job"
 
 /// Emoji icon set
-#define EMOJI_SET 'icons/emoji.dmi'
+#define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT
