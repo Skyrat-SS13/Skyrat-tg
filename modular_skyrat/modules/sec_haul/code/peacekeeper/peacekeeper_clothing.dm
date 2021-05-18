@@ -330,7 +330,6 @@
 	slowdown = 0.7
 
 /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
-	icon_state = "hardsuit-sec"
 	name = "Armadyne SS-01 Voidsuit"
 	desc = "An Armadyne brand voidsuit, with a decent layer of armor, this one comes in the peacekeeper colors."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
