@@ -759,3 +759,80 @@
 	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/feet.dmi'
 	worn_icon_state = "mikuleggings"
+
+
+// Donation reward for CandleJax
+/obj/item/clothing/suit/armor/vest/peacekeeper/jax
+	name = "HepUnit Standard Underweave"
+	desc = "A durable, plated uniform that provides mobility as well as security to the wearer. Most often used by Hephaestus Industries Security Constructs due to their effective use and recyclability."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	icon_state = "heparmor"
+	worn_icon_state = "heparmor"
+
+// Donation reward for CandleJax
+/obj/item/storage/belt/security/webbing/peacekeeper/jax
+	name = "HepUnit Standard Webbing"
+	desc = "A sturdy, segmented vest that fits over the included uniform. It conceals a number of pockets on the interior, making it ideal for storage across the operating unit's body."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/suit.dmi'
+	icon_state = "hepbelt"
+	worn_icon_state = "hepbelt"
+
+// Donation reward for CandleJax
+/obj/item/clothing/head/helmet/sec/peacekeeper/jax
+	name = "HepUnit Standard Helmet"
+	desc = "A concealing riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
+	icon = 'modular_skyrat/modules/customization/icons/~donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/~donator/mob/clothing/head.dmi'
+
+	icon_state = "hephelmet-visor-nolight"
+	worn_icon_state = "hephelmet-visor-nolight"
+	actions_types = list(/datum/action/item_action/togglevisor)
+
+	flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	var/visor = TRUE
+
+/datum/action/item_action/togglevisor
+	name = "Adjust visor"
+
+/obj/item/clothing/head/helmet/sec/peacekeeper/jax/ui_action_click(mob/living/carbon/user, datum/action)
+	. = ..()
+
+	if(istype(action, /datum/action/item_action/togglevisor))
+		visor = !visor
+		if(visor)
+			flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+		else
+			flags_inv = HIDEHAIR
+		update_icon()
+
+		if(user)
+			user.head_update(src, forced = 1)
+			user.update_action_buttons_icon()
+
+/obj/item/clothing/head/helmet/sec/peacekeeper/jax/update_icon_state()
+	. = ..()
+	icon_state = "hephelmet-[visor ? "visor" : "novisor"]-[attached_light?.on?"light":"nolight"]"
+	worn_icon_state = icon_state
+
+// Donation reward for Raxraus
+/obj/item/clothing/under/rax_turtleneck
+	icon = 'icons/obj/clothing/under/security.dmi'
+	worn_icon = 'icons/mob/clothing/under/security.dmi'
+	name = "black turtleneck"
+	desc = "A stylish black turtleneck."
+	icon_state = "hosalt"
+	inhand_icon_state = "bl_suit"
+	alt_covers_chest = TRUE
+
+// Donation reward for Raxraus
+/obj/item/clothing/shoes/combat/peacekeeper/armadyne/rax
+	name = "tactical boots"
+	desc = "Tactical and sleek. This model seems to resemble Armadyne's."
+	icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_clothing.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/sec_haul/icons/armadyne/armadyne_clothing_digi.dmi'
+	icon_state = "armadyne_boots"
+	inhand_icon_state = "jackboots"
+	worn_icon_state = "armadyne_boots"
