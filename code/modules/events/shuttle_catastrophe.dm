@@ -1,7 +1,7 @@
 /datum/round_event_control/shuttle_catastrophe
 	name = "Shuttle Catastrophe"
 	typepath = /datum/round_event/shuttle_catastrophe
-	weight = 10 
+	weight = 10
 	max_occurrences = 0 // Skyrat edit -- disabled due to our custom shuttle
 
 /datum/round_event_control/shuttle_catastrophe/canSpawnEvent(players, gamemode)
