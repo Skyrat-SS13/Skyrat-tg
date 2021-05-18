@@ -58,6 +58,14 @@
 /// The wire value used to reset the APCs wires after one's EMPed.
 #define APC_RESET_EMP "emp"
 
+// Arcing:
+/// Lower excess value for APC arcing, 5% chance to arc
+#define APC_ARC_LOWERLIMIT 2500000
+/// Moderate excess value for APC arcing, 10% chance to arc
+#define APC_ARC_MEDIUMLIMIT 5000000
+/// Upper excess value for for APC arcing, 15% chance to arc
+#define APC_ARC_UPPERLIMIT 7500000
+
 // update_state
 // Bitshifts: (If you change the status values to be something other than an int or able to exceed 3 you will need to change these too)
 /// The bit shift for the APCs cover status.
@@ -1365,11 +1373,11 @@
 			charging = APC_NOT_CHARGING
 			chargecount = 0
 
-		if(excess >= 2500000 && !shock_proof) // SKYRAT EDIT ADD - APC Arcing
+		if(excess >= APC_ARC_LOWERLIMIT && !shock_proof) // SKYRAT EDIT ADD - APC Arcing
 			var/shock_chance = 5 // 5%
-			if(excess >= 7500000)
+			if(excess >= APC_ARC_UPPERLIMIT)
 				shock_chance = 15
-			else if(excess >= 5000000)
+			else if(excess >= APC_ARC_MEDIUMLIMIT)
 				shock_chance = 10
 			if(prob(shock_chance))
 				var/list/shock_mobs = list()
