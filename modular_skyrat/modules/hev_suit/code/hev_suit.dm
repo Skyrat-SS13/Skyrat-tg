@@ -164,9 +164,14 @@
 /datum/action/item_action/hev_toggle_notifs/Trigger()
 	var/obj/item/clothing/suit/space/hardsuit/hev_suit/my_suit = target
 
-	my_suit.send_notifications = "sound_[tgui_input_list(my_suit.current_user, "Please select your notification settings.", "HEV Notification Settings", HEV_NOTIFICATIONS)]"
+	var/new_setting = tgui_input_list(my_suit.current_user, "Please select your notification settings.", "HEV Notification Settings", HEV_NOTIFICATIONS)
 
-	to_chat(my_suit.current_user, "<span class='notice'>[my_suit] notification mode is now [my_suit.send_notifications].")
+	if(!new_setting)
+		new_setting = HEV_NOTIFICATION_TEXT_AND_VOICE
+
+	to_chat(my_suit.current_user, "<span class='notice'>[my_suit] notification mode is now [new_setting].")
+
+	my_suit.send_notifications = "sound_[new_setting]"
 
 	button_icon_state = my_suit.send_notifications
 
@@ -205,12 +210,15 @@
 		return
 	to_chat(current_user, "HEV MARK IV: <span style='color: [color];'>[message]</span>")
 
-/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/send_hev_sound(sound_in, volume = 50)
+/obj/item/clothing/suit/space/hardsuit/hev_suit/proc/send_hev_sound(sound_in, priority, volume = 50)
 	if(!(send_notifications == HEV_NOTIFICATION_TEXT_AND_VOICE || HEV_NOTIFICATION_VOICE))
 		return
 
 	if(playing_voice_line)
-		queued_voice_lines += sound_in
+		if(priority) //Shit's fucked, we better say this ASAP
+			queued_voice_lines.Insert(1, sound_in)
+		else
+			queued_voice_lines += sound_in
 		return
 
 	if(queued_voice_lines.len)
@@ -404,22 +412,21 @@
 	var/health_percent = round((current_user.health / current_user.maxHealth) * 100, 1)
 
 	if(health_percent <= 20 && !health_near_death_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/near_death.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/seek_medic.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/near_death.ogg', TRUE)
 		health_near_death_alarm = TRUE
 		return
 	else if(health_percent > 20 && health_near_death_alarm)
 		health_near_death_alarm = FALSE
 
 	if(health_percent > 20 && health_percent <= 30 && !health_critical_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_critical.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_critical.ogg', TRUE)
 		health_critical_alarm = TRUE
 		return
 	else if(health_percent > 30 && health_critical_alarm)
 		health_critical_alarm = FALSE
 
 	if(health_percent > 30 && health_percent <= 80 && !health_dropping_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_dropping2.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/health_dropping2.ogg', TRUE)
 		health_dropping_alarm = TRUE
 		return
 	else if(health_percent > 80 && health_dropping_alarm)
