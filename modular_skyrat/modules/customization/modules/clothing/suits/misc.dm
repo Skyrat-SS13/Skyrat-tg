@@ -71,6 +71,14 @@
 	body_parts_covered = CHEST|GROIN
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/toggle/trackjacket
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	name = "track jacket"
+	desc = "A black jacket with blue stripes for the athletic. It is also popular among russian delinquents."
+	icon_state = "trackjacket"
+	togglename = "zipper"
 
 /obj/item/clothing/suit/frenchtrench
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'

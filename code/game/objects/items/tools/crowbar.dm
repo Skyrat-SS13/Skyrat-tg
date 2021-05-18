@@ -125,11 +125,13 @@
 //SKYRAT EDIT END
 
 /obj/item/crowbar/power/syndicate
-	name = "Syndicate jaws of life"
-	desc = "A re-engineered copy of Nanotrasen's standard jaws of life. Can be used to force open airlocks in its crowbar configuration."
+	name = "tactical jaws of life" //SKYRAT EDIT: Black and red is the new tactical
+	desc = "A set of jaws of life, compressed through the magic of science. This one has a tactical black and red paintjob and more robust hydraulics." //Skyrat Edit, was "A re-engineered copy of Nanotrasen's standard jaws of life. Can be used to force open airlocks in its crowbar configuration."
 	icon_state = "jaws_syndicate" //SKYRAT EDIT CHANGE
 	toolspeed = 0.25	// SKYRAT EDIT: Keeps this relevant, buffs to oldbase speed - Original value (0.5)
 	force_opens = TRUE
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
+	special_desc = "A re-engineered copy of Nanotrasen's standard jaws of life. This one has a tesla relay and is more powerful." // Skyrat edit
 
 /obj/item/crowbar/power/examine()
 	. = ..()
