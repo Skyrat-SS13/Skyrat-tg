@@ -140,8 +140,10 @@
 /obj/item/pda/roboticist
 	greyscale_config = /datum/greyscale_config/pda/aesthetics/stripe_split
 	greyscale_colors = "#6d6a81#9d2525#ff9112"
-/*
+
 /obj/item/pda/curator
+	overlays_x_offset = 0
+/*
 	icon_state = "pda-library"
 	greyscale_config = null
 	greyscale_colors = null
