@@ -1,5 +1,7 @@
 
 /mob/living/proc/run_armor_check(def_zone = null, attack_flag = MELEE, absorb_text = null, soften_text = null, armour_penetration, penetrated_text, silent=FALSE, weak_against_armour = FALSE)
+	SEND_SIGNAL(src, COMSIG_MOB_RUN_ARMOR) //SKYRAT EDIT ADDITION
+
 	var/armor = getarmor(def_zone, attack_flag)
 
 	if(armor <= 0)

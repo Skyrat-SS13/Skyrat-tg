@@ -94,8 +94,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 0
-	turns_per_move = 5
-	speed = 0
+	turns_per_move = 4
+	speed = 2
 	stat_attack = HARD_CRIT
 	robust_searching = 1
 	maxHealth = 100
@@ -192,12 +192,17 @@
 //LOOT
 
 /obj/item/crowbar/freeman
-	name = "Blood Soaked Crowbar"
+	name = "blood soaked crowbar"
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
 	icon_state = "crowbar"
-	force = 30
-	throwforce = 42
+	force = 40
+	throwforce = 45
+	toolspeed = 0
+	wound_bonus = 30
+	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
+	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
+	force_opens = TRUE
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
@@ -217,7 +222,7 @@
 				/obj/item/dnainjector/shock = 10,
 				/obj/item/pneumatic_cannon = 15,
 				/obj/item/melee/transforming/energy/sword = 7,
-				/obj/item/book/granter/spell/summonitem = 20,	
+				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/melee/classic_baton/telescopic = 12,)
 
@@ -235,14 +240,33 @@
 				/obj/item/wirecutters/abductor = 10,
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
-				/obj/effect/gibspawner/generic = 20)
+				/obj/effect/gibspawner/generic = 20,
+				/obj/item/reagent_containers/blood/universal = 15)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
 	loot = list(/obj/item/gun/energy/alien/astrum = 10,
 				/obj/item/clothing/suit/armor/abductor/astrum = 5,
 				/obj/item/clothing/head/helmet/abductor = 5,
-				/obj/item/organ/cyberimp/arm/armblade = 1)
+				/obj/item/organ/cyberimp/arm/armblade = 1,
+				/obj/effect/gibspawner/generic = 20)
+
+/obj/item/gun/energy/alien/astrum
+	name = "alien energy pistol"
+	desc = "A seemingly complicated gun, that isn't so complicated after all."
+	ammo_type = list(/obj/item/ammo_casing/energy/laser)
+	pin = /obj/item/firing_pin
+
+/obj/item/gun/energy/alien/zeta
+	name = "Zeta Blaster"
+	desc = "Having this too close to your face makes you start to taste blood, is this safe?"
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/alienblaster.dmi'
+	lefthand_file = 'modular_skyrat/modules/awaymissions_skyrat/icons/alienhand.dmi'
+	righthand_file = 'modular_skyrat/modules/awaymissions_skyrat/icons/alienhand2.dmi'
+	icon_state = "alienblaster"
+	inhand_icon_state = "alienblaster"
+	pin = /obj/item/firing_pin
+	selfcharge = 1
 
 /obj/item/gun/energy/alien/astrum
 	name = "alien energy pistol"
@@ -318,7 +342,7 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
-	
+
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/P)
 	apply_damage(P.damage, P.damage_type)
 	return // no more reduction
@@ -327,4 +351,5 @@
 	spawn_gibs()
 	spawn_gibs()
 	new /obj/item/key/gateway/home(src.loc)
+	new/obj/item/gun/energy/alien/zeta(src.loc)
 	qdel(src)

@@ -265,4 +265,15 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("FFF"))
 
+/obj/item/clothing/head/flowerpin
+	name = "Flower Pin"
+	desc = "A small polychromic flower pin"
+	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon_state = "flowerpin"
+	mutant_variants = NONE
+	var/list/poly_colors = list("FFF", "FFF", "FFF")
 
+/obj/item/clothing/head/flowerpin/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors)
