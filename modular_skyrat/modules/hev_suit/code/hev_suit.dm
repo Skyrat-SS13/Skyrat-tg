@@ -701,9 +701,14 @@
 	activated = FALSE
 	activating = FALSE
 
+/obj/machinery/suit_storage_unit/hev
+	suit_type = /obj/item/clothing/suit/space/hardsuit/hev_suit
+	mask_type = /obj/item/clothing/mask/gas/alt
+	storage_type = /obj/item/tank/internals/oxygen
+
 /datum/outfit/gordon_freeman
 	name = "Gordon Freeman"
-	uniform = /obj/item/clothing/under/rank/rnd/scientist
+	uniform = /obj/item/clothing/under/misc/hlscience
 	ears = /obj/item/radio/headset/headset_cent/commander
 	belt = /obj/item/storage/belt/utility/full
 	neck = /obj/item/clothing/neck/tie/horrible
