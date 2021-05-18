@@ -140,8 +140,8 @@
 	desc = "An incredibly stylish and heavy black coat made of synthetic kangaroo leather, padded with durathread and lined with kevlar."
 	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
-	icon_state = "peacekeeper_armor"
-	worn_icon_state = "peacekeeper"
+	icon_state = "peacekeeper_spacecoat"
+	worn_icon_state = "peacekeeper_spacecoat"
 	mutant_variants = NONE
 	body_parts_covered = CHEST|GROIN|ARMS
 	armor = list(MELEE = 35, BULLET = 25, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, RAD = 10, FIRE = 30, ACID = 30, WOUND = 20)
