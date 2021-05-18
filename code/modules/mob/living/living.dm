@@ -668,7 +668,6 @@
 
 
 /mob/living/proc/updatehealth()
-	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_HEALTH)
 	if(status_flags & GODMODE)
 		return
 	set_health(maxHealth - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss())

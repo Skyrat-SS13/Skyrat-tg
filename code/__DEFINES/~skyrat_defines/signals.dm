@@ -35,13 +35,9 @@
 	#define COMPONENT_NO_CELL  (1<<1)
 	#define COMPONENT_NO_CHARGE (1<<2)
 
-// Tank signals
-/// When a tank has it's air removed. (amount)
-#define COMSIG_TANK_REMOVE_AIR "tank_remove_air"
-
 // Health signals
 /// /mob/living/proc/updatehealth()
-#define COMSIG_MOB_UPDATE_HEALTH "mob_update_health"
+#define COMSIG_MOB_RUN_ARMOR "mob_run_armor"
 /// /mob/living/proc/adjustBruteLoss (amount)
 #define COMSIG_MOB_LOSS_BRUTE "mob_loss_brute"
 /// /mob/living/proc/adjustBurnLoss (amount)

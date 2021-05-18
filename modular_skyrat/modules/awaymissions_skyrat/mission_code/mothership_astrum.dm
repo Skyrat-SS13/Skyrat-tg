@@ -196,9 +196,10 @@
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
 	icon_state = "crowbar"
-	force = 37
-	throwforce = 47
+	force = 40
+	throwforce = 45
 	toolspeed = 0
+	wound_bonus = 30
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
