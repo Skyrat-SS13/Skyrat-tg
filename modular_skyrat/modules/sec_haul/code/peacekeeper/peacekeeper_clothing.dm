@@ -134,6 +134,20 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
 	icon_state = "winterhood_peacekeeper"
 	desc = "A greyish-blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
+	
+/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat
+	name = "peacekeeper sleek coat"
+	desc = "An incredibly stylish and heavy black coat made of synthetic kangaroo leather, padded with durathread and lined with kevlar."
+	icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi'
+	worn_icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/clothing/peacekeeper_armors.dmi'
+	icon_state = "peacekeeper_armor"
+	worn_icon_state = "peacekeeper"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	armor = list(MELEE = 35, BULLET = 25, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, RAD = 10, FIRE = 30, ACID = 30, WOUND = 20)
+	cold_protection = CHEST|GROIN|ARMS
+	heat_protection = CHEST|GROIN|ARMS
+	strip_delay = 60
 
 //PEACEKEEPER GLOVES
 /obj/item/clothing/gloves/combat/peacekeeper
