@@ -34,6 +34,11 @@
 	name = "Pirate hat"
 	path = /obj/item/clothing/head/pirate
 
+/datum/loadout_item/head/flowerpin
+	name = "Flower Pin"
+	path = /obj/item/clothing/head/flowerpin
+	extra_info = LOADOUT_INFO_THREE_COLORS
+
 /datum/loadout_item/head/rice_hat
 	name = "Rice hat"
 	path = /obj/item/clothing/head/rice_hat
