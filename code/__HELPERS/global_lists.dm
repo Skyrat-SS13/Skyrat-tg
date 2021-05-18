@@ -45,6 +45,12 @@
 		var/datum/scream_type/S = new spath()
 		GLOB.scream_types[S.name] = spath
 	sortList(GLOB.scream_types, /proc/cmp_typepaths_asc)
+
+	//Laugh types
+	for(var/spath in subtypesof(/datum/laugh_type))
+		var/datum/scream_type/S = new spath()
+		GLOB.laugh_types[S.name] = spath
+	sortList(GLOB.laugh_types, /proc/cmp_typepaths_asc)
 	//SKYRAT EDIT END
 
 	//Species
