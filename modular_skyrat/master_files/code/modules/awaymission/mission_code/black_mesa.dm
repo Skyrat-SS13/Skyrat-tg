@@ -44,8 +44,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 80
-	health = 80
+	maxHealth = 110
+	health = 110
 	obj_damage = 50
 	harm_intent_damage = 15
 	melee_damage_lower = 15
@@ -115,8 +115,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 100
-	health = 100
+	maxHealth = 110
+	health = 110
 	obj_damage = 50
 	harm_intent_damage = 10
 	melee_damage_lower = 20
@@ -160,8 +160,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 80
-	health = 80
+	maxHealth = 100
+	health = 100
 	harm_intent_damage = 15
 	melee_damage_lower = 17
 	melee_damage_upper = 17
@@ -261,8 +261,8 @@
 	speed = 3
 	pixel_y = -154
 	icon_dead = "bullsquid_dead"
-	maxHealth = 2500
-	health = 2500
+	maxHealth = 3000
+	health = 3000
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	projectilesound = 'sound/weapons/lasercannonfire.ogg'
 	projectiletype = /obj/projectile/nihilanth
@@ -366,8 +366,8 @@
 	speed = 0
 	stat_attack = HARD_CRIT
 	robust_searching = 1
-	maxHealth = 100
-	health = 100
+	maxHealth = 150
+	health = 150
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -432,8 +432,8 @@
 	speed = 0
 	stat_attack = HARD_CRIT
 	robust_searching = 1
-	maxHealth = 80
-	health = 80
+	maxHealth = 100
+	health = 100
 	harm_intent_damage = 5
 	melee_damage_lower = 7
 	melee_damage_upper = 7
@@ -483,7 +483,7 @@
 	faction = list(FACTION_XEN, FACTION_BLACKMESA, FACTION_HECU)
 	mode = TURRET_LETHAL
 	uses_stored = FALSE
-	max_integrity = 100
+	max_integrity = 120
 	base_icon_state = "syndie"
 	lethal_projectile = /obj/projectile/beam/emitter
 	lethal_projectile_sound = 'sound/weapons/laser.ogg'
@@ -526,17 +526,16 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
-	assignedrole = "Science Team"
+	assignedrole = "Black Mesa Science Team"
 	short_desc = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	permanent = FALSE
-	can_use_alias = FALSE
+	can_use_alias = TRUE
 	any_station_species = FALSE
 
 /datum/outfit/science_team
 	name = "Scientist"
-	uniform = /obj/item/clothing/under/rank/rnd/scientist
+	uniform = /obj/item/clothing/under/misc/hlscience
 	suit = /obj/item/clothing/suit/toggle/labcoat
-	neck = /obj/item/clothing/neck/tie/horrible
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack
 	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/glass/beaker)
@@ -551,3 +550,34 @@
 	assignment = "Science Team Scientist"
 	trim_state = "trim_scientist"
 	access = list(ACCESS_RND)
+
+/obj/effect/mob_spawn/human/black_mesa/guard
+	name = "Research Facility Security Guard"
+	outfit = /datum/outfit/security_guard
+	assignedrole = "Black Mesa Security Team"
+	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+
+/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
+	name = "security guard uniform"
+	desc = "About that beer I owe'd ya!"
+
+/datum/outfit/security_guard
+	name = "Security Guard"
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
+	head = /obj/item/clothing/head/helmet/blueshirt
+	gloves = /obj/item/clothing/gloves/color/black
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	shoes = /obj/item/clothing/shoes/jackboots
+	back = /obj/item/storage/backpack
+	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17, /obj/item/ammo_box/magazine/multi_sprite/g17)
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/security_guard
+
+/datum/outfit/science_team/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	H.faction |= FACTION_BLACKMESA
+
+/datum/id_trim/security_guard
+	assignment = "Security Guard"
+	trim_state = "trim_securityofficer"
+	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)

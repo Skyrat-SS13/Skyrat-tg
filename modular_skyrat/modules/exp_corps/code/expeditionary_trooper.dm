@@ -1,5 +1,5 @@
 /datum/job/expeditionary_trooper
-	title = "Expeditionary Trooper"
+	title = "Vanguard Operative"
 	department_head = list("Captain")
 	faction = "Station"
 	total_positions = 4
@@ -24,15 +24,15 @@
 
 /datum/job/expeditionary_trooper/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
-	to_chat(M, "<span class='redtext'>As a Vangaurd Expeditionary trooper you are not part of security! You must not perform security duties unless absolutely nessecary. \
+	to_chat(M, "<span class='redtext'>As a Vanguard Operative you are not part of security! You must not perform security duties unless absolutely nessecary. \
 	Do not valid hunt using your equipment. Use common sense. Failure to follow these simple rules will result in a job ban.")
 
 /datum/outfit/job/expeditionary_trooper
-	name = "Expeditionary Trooper"
+	name = "Vanguard Operative"
 	jobtype = /datum/job/expeditionary_trooper
 
 	shoes = /obj/item/clothing/shoes/combat/expeditionary_corps
-	ears = /obj/item/radio/headset/headset_sec/alt
+	ears = /obj/item/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/expeditionary_corps
 	glasses = /obj/item/clothing/glasses/sunglasses/big
 
@@ -50,7 +50,7 @@
 	belt = /obj/item/pda/expeditionary_corps
 
 /obj/effect/landmark/start/expeditionary_corps
-	name = "Expeditionary Trooper"
+	name = "Vanguard Operative"
 	icon_state = "Security Officer"
 
 /obj/item/pda/expeditionary_corps

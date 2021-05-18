@@ -33,7 +33,7 @@
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/feet.dmi'
 	icon_state = "exp_corps"
 	inhand_icon_state = "exp_corps"
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/clothing/gloves/combat/expeditionary_corps
 	name = "expeditionary corps gloves"
@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 	dog_fashion = null
@@ -74,6 +74,7 @@
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman
 		)
+
 /obj/item/clothing/suit/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit"
 	desc = "An advanced hardsuit designed for exploratory missions."
@@ -82,7 +83,7 @@
 	icon_state = "hardsuit-hexp_corps"
 	inhand_icon_state = "eng_hardsuit"
 	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 35, BULLET = 35, LASER = 35, ENERGY = 35, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	jetpack = /obj/item/tank/jetpack/suit
@@ -98,7 +99,7 @@
 	icon_state = "hardsuit0-hexp_corps"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 35, BULLET = 35, LASER = 35, ENERGY = 35, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0.5
