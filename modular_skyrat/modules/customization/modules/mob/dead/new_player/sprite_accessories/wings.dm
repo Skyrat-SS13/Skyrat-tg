@@ -139,6 +139,11 @@
 	name = "Feathery"
 	icon_state = "feathery"
 
+/datum/sprite_accessory/wings/mammal/featheralt1
+	name = "Feathered (alt 1)"
+	icon_state = "featheralt1"
+	color_src = USE_MATRIXED_COLORS
+
 /datum/sprite_accessory/wings/mammal/bee
 	name = "Bee"
 	icon_state = "bee"

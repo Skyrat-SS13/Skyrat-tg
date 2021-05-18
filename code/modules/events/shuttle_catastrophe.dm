@@ -1,8 +1,8 @@
 /datum/round_event_control/shuttle_catastrophe
 	name = "Shuttle Catastrophe"
 	typepath = /datum/round_event/shuttle_catastrophe
-	weight = 10
-	max_occurrences = 1
+	weight = 0 // SKYRAT EDIT - 0 since we use a custom shuttle
+	max_occurrences = 0 // SKYRAT EDIT - 0 since we use a custom shuttle
 
 /datum/round_event_control/shuttle_catastrophe/canSpawnEvent(players, gamemode)
 	if(SSshuttle.shuttle_purchased == SHUTTLEPURCHASE_FORCED)
