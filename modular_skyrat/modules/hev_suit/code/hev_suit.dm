@@ -24,8 +24,8 @@
 #define HEV_COOLDOWN_RADS 20 SECONDS
 #define HEV_COOLDOWN_ACID 20 SECONDS
 
-#define HEV_HEAL_AMOUNT 10
-#define HEV_BLOOD_REPLENISHMENT 10
+#define HEV_HEAL_AMOUNT 20
+#define HEV_BLOOD_REPLENISHMENT 20
 
 
 /obj/item/clothing/head/helmet/space/hardsuit/hev_suit
@@ -49,7 +49,6 @@
 	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
 	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
-	hardsuit_type = "hev"
 	icon_state = "hardsuit-hev"
 	inhand_icon_state = "eng_hardsuit"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, RAD = 40, FIRE = 40, ACID = 40, WOUND = 10) //This is gordons suit, of course it's strong.
@@ -161,6 +160,8 @@
 
 	button_icon_state = my_suit.send_notifications ? "sound_on" : "sound_off"
 
+	playsound(my_suit, 'modular_skyrat/master_files/sound/blackmesa/hev/blip.ogg', 50)
+
 	UpdateButtonIcon()
 
 /datum/action/item_action/hev_toggle/Trigger()
@@ -176,6 +177,8 @@
 		toggle = TRUE
 
 	button_icon_state = toggle ? "system_on" : "system_off"
+
+	playsound(my_suit, 'modular_skyrat/master_files/sound/blackmesa/hev/blip.ogg', 50)
 
 	UpdateButtonIcon()
 
@@ -196,13 +199,12 @@
 	if(!send_notifications)
 		return
 	var/sound/voice = sound(sound_in, wait = 1, channel = CHANNEL_HEV)
+	voice.status = SOUND_STREAM
 	playsound(src, voice, volume)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/activate()
 	if(!current_user)
 		return FALSE
-
-	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/blip.ogg', 50)
 
 	if(activating || activated)
 		send_message("ERROR - SYSTEM [activating ? "ALREADY ACTIVATING" : "ALREADY ACTIVATED"]", HEV_COLOR_RED)
@@ -266,53 +268,39 @@
 	return TRUE
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/announce_battery()
-	if(world.time <= battery_statement_cooldown)
-		return
-	battery_statement_cooldown = world.time + HEV_COOLDOWN_BATTERY
-
 	var/datum/component/cell/my_cell = GetComponent(/datum/component/cell)
 	var/current_battery_charge = my_cell.inserted_cell.percent()
 
 	if(current_battery_charge <= 10 && !batt_10_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/ten.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is_ten.ogg')
 		batt_10_alarm = TRUE
 		return
 	else if(current_battery_charge > 10 && batt_10_alarm)
 		batt_10_alarm = FALSE
 
 	if(current_battery_charge > 10 && current_battery_charge <= 20 && !batt_20_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/twenty.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is_twenty.ogg')
 		batt_20_alarm = TRUE
 		return
 	else if(current_battery_charge > 20 && batt_20_alarm)
 		batt_20_alarm = FALSE
 
 	if(current_battery_charge > 20 && current_battery_charge <= 30 && !batt_30_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/thirty.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is_thirty.ogg')
 		batt_30_alarm = TRUE
 		return
 	else if(current_battery_charge > 30 && batt_30_alarm)
 		batt_30_alarm = FALSE
 
 	if(current_battery_charge > 30 && current_battery_charge <= 40 && !batt_40_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/fourty.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is_fourty.ogg')
 		batt_40_alarm = TRUE
 		return
 	else if(current_battery_charge > 40 && batt_40_alarm)
 		batt_40_alarm = FALSE
 
 	if(current_battery_charge > 40 && current_battery_charge <= 50 && !batt_50_alarm)
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/fourty.ogg')
-		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/percent.ogg')
+		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/power_level_is_fifty.ogg')
 		batt_50_alarm = TRUE
 		return
 	else if(current_battery_charge > 50 && batt_50_alarm)
@@ -380,11 +368,7 @@
 		use_hev_power(HEV_POWERUSE_HIT)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/state_health()
-	if(world.time <= health_statement_cooldown)
-		return
-	health_statement_cooldown = world.time + HEV_COOLDOWN_HEALTH_STATE
-
-	var/health_percent = round(100 * current_user.health / current_user.maxHealth, 1)
+	var/health_percent = round((current_user.health / current_user.maxHealth) * 100, 1)
 
 	if(health_percent <= 20 && !health_near_death_alarm)
 		send_hev_sound('modular_skyrat/master_files/sound/blackmesa/hev/near_death.ogg')
@@ -681,7 +665,32 @@
 	activating = FALSE
 
 /datum/outfit/gordon_freeman
+	name = "Gordon Freeman"
+	uniform = /obj/item/clothing/under/rank/rnd/scientist
+	ears = /obj/item/radio/headset/headset_cent/commander
+	belt = /obj/item/storage/belt/utility/full
+	neck = /obj/item/clothing/neck/tie/horrible
+	shoes = /obj/item/clothing/shoes/combat
 
+	suit = /obj/item/clothing/suit/space/hardsuit/hev_suit
+	suit_store = /obj/item/tank/internals/oxygen
+
+	back = /obj/item/storage/backpack
+
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/cfa_wildcat, /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat = 4)
+
+	l_hand = /obj/item/crowbar/freeman
+
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/job/scientist
+
+/datum/id_trim/gordon_freeman
+	trim_state = "trim_scientist"
+	assignment = "Theoretical Physicist"
+
+/datum/id_trim/gordon_freeman/New()
+	. = ..()
+	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
 
 #undef HEV_COLOR_GREEN
 #undef HEV_COLOR_RED
