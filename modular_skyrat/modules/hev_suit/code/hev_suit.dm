@@ -13,14 +13,9 @@
 
 #define HEV_POWERUSE_AIRTANK 1
 #define HEV_POWERUSE_HIT 50
-#define HEV_POWERUSE_INJECTION 100
 #define HEV_POWERUSE_HEAL 150
 
-#define HEV_COOLDOWN_INJECTION 5 SECONDS
-#define HEV_COOLDOWN_BATTERY 1 MINUTES
-#define HEV_COOLDOWN_HEALTH_STATE 30 SECONDS
 #define HEV_COOLDOWN_HEAL 5 SECONDS
-#define HEV_COOLDOWN_VOICE 1 SECONDS
 #define HEV_COOLDOWN_RADS 20 SECONDS
 #define HEV_COOLDOWN_ACID 20 SECONDS
 
@@ -204,14 +199,14 @@
 	. = ..()
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/send_message(message, color = HEV_COLOR_ORANGE)
-	if(!(send_notifications == HEV_NOTIFICATION_TEXT_AND_VOICE || HEV_NOTIFICATION_TEXT))
+	if(send_notifications != HEV_NOTIFICATION_TEXT_AND_VOICE && send_notifications != HEV_NOTIFICATION_TEXT)
 		return
 	if(!current_user)
 		return
 	to_chat(current_user, "HEV MARK IV: <span style='color: [color];'>[message]</span>")
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/send_hev_sound(sound_in, priority, volume = 50)
-	if(!(send_notifications == HEV_NOTIFICATION_TEXT_AND_VOICE || HEV_NOTIFICATION_VOICE))
+	if(send_notifications != HEV_NOTIFICATION_TEXT_AND_VOICE && send_notifications != HEV_NOTIFICATION_VOICE)
 		return
 
 	if(playing_voice_line)
@@ -723,6 +718,12 @@
 	id = /obj/item/card/id/advanced/centcom
 	id_trim = /datum/id_trim/job/scientist
 
+/datum/outfit/gordon_freeman/post_equip(mob/living/carbon/human/our_human, visualsOnly)
+	. = ..()
+	var/obj/item/card/id/id_card = our_human.wear_id
+	if(istype(id_card))
+		id_card.registered_name = our_human.real_name
+
 /datum/id_trim/gordon_freeman
 	trim_state = "trim_scientist"
 	assignment = "Theoretical Physicist"
@@ -741,14 +742,14 @@
 #undef HEV_ARMOR_POWERON
 #undef HEV_POWERUSE_AIRTANK
 #undef HEV_POWERUSE_HIT
-#undef HEV_POWERUSE_INJECTION
 #undef HEV_POWERUSE_HEAL
-#undef HEV_COOLDOWN_INJECTION
-#undef HEV_COOLDOWN_BATTERY
-#undef HEV_COOLDOWN_HEALTH_STATE
 #undef HEV_COOLDOWN_HEAL
-#undef HEV_COOLDOWN_VOICE
 #undef HEV_COOLDOWN_RADS
 #undef HEV_COOLDOWN_ACID
 #undef HEV_HEAL_AMOUNT
 #undef HEV_BLOOD_REPLENISHMENT
+#undef HEV_NOTIFICATION_TEXT_AND_VOICE
+#undef HEV_NOTIFICATION_TEXT
+#undef HEV_NOTIFICATION_VOICE
+#undef HEV_NOTIFICATION_OFF
+#undef HEV_NOTIFICATIONS

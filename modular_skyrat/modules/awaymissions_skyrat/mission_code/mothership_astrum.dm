@@ -200,7 +200,7 @@
 	throwforce = 45
 	toolspeed = 0
 	wound_bonus = 30
-	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar.ogg'
+	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	force_opens = TRUE
 
