@@ -1402,7 +1402,7 @@
 				if(shock_mobs.len)
 					var/mob/living/living_target = pick(shock_mobs)
 					living_target.electrocute_act(rand(5, 25), "electrical arc")
-					playsound(get_turf(living_target), 'sound/machines/defib_zap.ogg', 75, TRUE) //Man the defib zap sound is cool and also I couldn't find the proper sound.
+					playsound(get_turf(living_target), 'sound/magic/lightningshock.ogg', 75, TRUE)
 					Beam(living_target, icon_state = "lightning[rand(1, 12)]", icon = 'icons/effects/beam.dmi', time = 5) // SKYRAT EDIT ADD END
 
 	else // no cell, switch everything off
