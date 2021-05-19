@@ -396,6 +396,26 @@
 		'modular_skyrat/master_files/sound/blackmesa/hecu/hg_alert10.ogg'
 	)
 
+
+/mob/living/simple_animal/hostile/blackmesa/hecu/attack_ghost(mob/dead/observer/user)
+	. = ..()
+	if(.)
+		return
+	take_control(user)
+
+/mob/living/simple_animal/hostile/blackmesa/hecu/proc/take_control(mob/user)
+	if(key || stat)
+		return
+	var/pod_ask = alert("Become a [src]?", "Are you bulbous enough?", "Yes", "No")
+	if(pod_ask == "No" || !src || QDELETED(src))
+		return
+	if(key)
+		to_chat(user, "<span class='warning'>Someone else already took this mob!</span>")
+		return
+	key = user.key
+	log_game("[key_name(src)] took control of [name].")
+
+
 /mob/living/simple_animal/hostile/blackmesa/hecu/ranged
 	ranged = TRUE
 	retreat_distance = 5
