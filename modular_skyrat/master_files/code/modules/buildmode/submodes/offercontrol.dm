@@ -12,4 +12,9 @@
 
 	var/mob/living/mob_to_offer = object
 
+	if(mob_to_offer.key)
+		var/response = tgui_alert(c, "This mob already has a ckey attached, continue?", "Mob already posessed!", list("Continue", "Cancel"))
+		if(response != "Continue")
+			return
+
 	offer_control(mob_to_offer)
