@@ -5,23 +5,23 @@
 	flags_cover = NONE
 
 /obj/item/clothing/mask/gas/glass
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	name = "glass gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. This one doesn't obscure your face however."
 	icon_state = "gas_clear"
 	flags_inv = HIDEEYES
 
 /obj/item/clothing/mask/gas/alt
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	icon_state = "gas_alt2"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
 /obj/item/clothing/mask/balaclavaadjust
 	name = "adjustable balaclava"
 	desc = "Wider eyed and made of an elastic based material, this one seems like it can contort more."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclava"
 	inhand_icon_state = "balaclava"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -116,16 +116,16 @@
 /obj/item/clothing/mask/balaclava/threehole
 	name = "three hole balaclava"
 	desc = "Tiocfaidh ar la."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "balaclavam"
 	inhand_icon_state = "balaclava"
 
 /obj/item/clothing/mask/balaclava/threehole/green
 	name = "three hole green balaclava"
 	desc = "Tiocfaidh ar la."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "swatclavam"
 	inhand_icon_state = "balaclava"
 
@@ -134,42 +134,42 @@
 /obj/item/clothing/mask/gas/german
 	name = "black gas mask"
 	desc = "A black gas mask. Are you my Mummy?"
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "m38_mask"
 
 /obj/item/clothing/mask/gas/hecu1
 	name = "modern gas mask"
 	desc = "MY. ASS. IS. HEAVY."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu"
 
 /obj/item/clothing/mask/gas/hecu2
 	name = "modern gas mask"
 	desc = "MY. ASS. IS. HEAVY."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"
 	desc = "A white gas mask with a green filter, there's a small sticker attached saying it's not got Asbestos anymore."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "gp5_mask"
 
 /obj/item/clothing/mask/muzzle/ball
 	name = "ballgag"
 	desc = "I'm pretty fuckin far from okay."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "ballgag"
 
 /obj/item/clothing/mask/muzzle/ring
 	name = "ring gag"
 	desc = "A mouth wrap seemingly designed to hold the mouth open."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/masks.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/mask.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "ringgag"
 
