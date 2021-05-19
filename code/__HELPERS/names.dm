@@ -59,13 +59,12 @@ GLOBAL_VAR(command_name)
 	var/random = rand(1,5)
 	var/name = ""
 	var/new_station_name = ""
-/* SKYRAT EDIT REMOVAL - "High RP" station names
 	//Rare: Pre-Prefix
-	if (prob(10))
-		name = pick(GLOB.station_prefixes)
+	//SKYRAT EDIT: Always Pre-Prefix //if (prob(10))
+		name = "NTS" //SKYRAT EDIT: Consistent station names. The "S" stands for Science or Ship or whatever your heart desires.
 		new_station_name = name + " "
 		name = ""
-*/ REMOVAL END
+		
 	// Prefix
 	var/holiday_name = pick(SSevents.holidays)
 	if(holiday_name)
@@ -75,7 +74,7 @@ GLOBAL_VAR(command_name)
 		name = holiday.getStationPrefix()
 		//get normal name
 	if(!name)
-		name = "NTSS" //SKYRAT EDIT: Consistent station names
+		name = pick(GLOB.station_names)
 	if(name)
 		new_station_name += name + " "
 
