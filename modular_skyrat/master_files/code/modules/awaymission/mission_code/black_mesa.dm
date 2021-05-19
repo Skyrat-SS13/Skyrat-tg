@@ -397,25 +397,6 @@
 	)
 
 
-/mob/living/simple_animal/hostile/blackmesa/hecu/attack_ghost(mob/dead/observer/user)
-	. = ..()
-	if(.)
-		return
-	take_control(user)
-
-/mob/living/simple_animal/hostile/blackmesa/hecu/proc/take_control(mob/user)
-	if(key || stat)
-		return
-	var/pod_ask = alert("Become a [src]?", "Are you bulbous enough?", "Yes", "No")
-	if(pod_ask == "No" || !src || QDELETED(src))
-		return
-	if(key)
-		to_chat(user, "<span class='warning'>Someone else already took this mob!</span>")
-		return
-	key = user.key
-	log_game("[key_name(src)] took control of [name].")
-
-
 /mob/living/simple_animal/hostile/blackmesa/hecu/ranged
 	ranged = TRUE
 	retreat_distance = 5
@@ -575,7 +556,7 @@
 	name = "Research Facility Security Guard"
 	outfit = /datum/outfit/security_guard
 	assignedrole = "Security Team"
-	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
 	name = "security guard uniform"
@@ -599,5 +580,40 @@
 
 /datum/id_trim/security_guard
 	assignment = "Security Guard"
+	trim_state = "trim_securityofficer"
+	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
+
+/obj/effect/mob_spawn/human/black_mesa/hecu
+	name = "HECU"
+	outfit = /datum/outfit/hecu
+	assignedrole = "HECU"
+	short_desc = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+
+/obj/item/clothing/under/rank/security/officer/hecu
+	name = "hecu jumpsuit"
+	desc = "A tactical HECU jumpsuit for officers complete with Nanotrasen belt buckle."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "hecu_uniform"
+	inhand_icon_state = "r_suit"
+
+/datum/outfit/hecu
+	name = "HECU Grunt"
+	uniform = /obj/item/clothing/under/rank/security/officer/hecu
+	head = /obj/item/clothing/head/helmet
+	gloves = /obj/item/clothing/gloves/combat
+	suit = /obj/item/clothing/suit/armor/vest
+	shoes = /obj/item/clothing/shoes/combat
+	back = /obj/item/storage/backpack
+	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/cfa_wildcat, /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat = 4, /obj/item/storage/firstaid/tactical)
+	id = /obj/item/card/id
+	id_trim = /datum/id_trim/hecu
+
+/datum/outfit/science_team/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	H.faction |= FACTION_XEN
+
+/datum/id_trim/hecu
+	assignment = "HECU Soldier"
 	trim_state = "trim_securityofficer"
 	access = list(ACCESS_SEC_DOORS, ACCESS_SECURITY, ACCESS_AWAY_SEC)
