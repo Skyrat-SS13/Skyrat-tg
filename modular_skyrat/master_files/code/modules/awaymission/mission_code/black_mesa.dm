@@ -315,7 +315,7 @@
 	. = ..()
 	alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_death01.ogg')
 	new /obj/effect/singularity_creation(loc)
-	message_admins("[src] has been defeated, a resonance cascade will occur in 10 seconds.")
+	message_admins("[src] has been defeated, a spacetime cascade will occur in 10 seconds.")
 	addtimer(CALLBACK(src, .proc/endgame_shit),  10 SECONDS)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
@@ -328,7 +328,7 @@
 	event_to_start.runEvent()
 
 /datum/round_event_control/resonance_cascade
-	name = "Portal Storm: Resonance Cascade"
+	name = "Portal Storm: Spacetime Cascade"
 	typepath = /datum/round_event/portal_storm/resonance_cascade
 	weight = 0
 	max_occurrences = 0
@@ -338,7 +338,7 @@
 	set waitfor = 0
 	sound_to_playing_players('modular_skyrat/master_files/sound/blackmesa/tc_12_portalsuck.ogg')
 	sleep(40)
-	priority_announce("GENERAL ALERT: Resonance cascade detected; massive transdimentional rift inbound!", "Transdimentional Rift", ANNOUNCER_KLAXON)
+	priority_announce("GENERAL ALERT: Spacetime cascade detected; massive transdimentional rift inbound!", "Transdimentional Rift", ANNOUNCER_KLAXON)
 	sleep(20)
 	sound_to_playing_players('modular_skyrat/master_files/sound/blackmesa/tc_13_teleport.ogg')
 
@@ -526,7 +526,7 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
-	assignedrole = "Black Mesa Science Team"
+	assignedrole = "Science Team"
 	short_desc = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	permanent = FALSE
 	can_use_alias = TRUE
@@ -554,7 +554,7 @@
 /obj/effect/mob_spawn/human/black_mesa/guard
 	name = "Research Facility Security Guard"
 	outfit = /datum/outfit/security_guard
-	assignedrole = "Black Mesa Security Team"
+	assignedrole = "Security Team"
 	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 
 /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
