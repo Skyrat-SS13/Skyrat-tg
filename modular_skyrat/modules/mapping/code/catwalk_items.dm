@@ -12,6 +12,7 @@
 	max_amount = 60
 	novariants = TRUE
 	var/catwalk_type
+	merge_type = /obj/item/stack/catwalk
 
 /obj/item/stack/catwalk/normal
 	name = "catwalk rods"
@@ -19,6 +20,7 @@
 	desc = "Rods that could be used to make a construction catwalk."
 	icon_state = "catwalk_normal"
 	catwalk_type = /obj/structure/lattice/catwalk
+	merge_type = /obj/item/stack/catwalk/normal
 
 /obj/item/stack/catwalk/plated
 	name = "plated catwalk rods"
@@ -26,6 +28,7 @@
 	desc = "Rods that could be used to make a plated catwalk."
 	icon_state = "catwalk_plated"
 	catwalk_type = /obj/structure/lattice/catwalk/plated
+	merge_type = /obj/item/stack/catwalk/plated
 
 /obj/item/stack/catwalk/plated/dark
 	name = "dark plated catwalk rods"
@@ -33,6 +36,7 @@
 	desc = "Rods that could be used to make a plated catwalk, with style."
 	icon_state = "catwalk_plated_dark"
 	catwalk_type = /obj/structure/lattice/catwalk/plated/dark
+	merge_type = /obj/item/stack/catwalk/plated/dark
 
 /obj/item/stack/catwalk/swarmer
 	name = "swarmer catwalk rods"
@@ -40,6 +44,7 @@
 	desc = "Rods that could be used to make a quite peculiar catwalk."
 	icon_state = "catwalk_swarmer"
 	catwalk_type = /obj/structure/lattice/catwalk/swarmer_catwalk
+	merge_type = /obj/item/stack/catwalk/swarmer
 
 /turf/open
 	var/can_be_latticed
