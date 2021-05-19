@@ -12,6 +12,8 @@
 	set name = "Toggle Delete Sparks"
 	set category = "Preferences.Admin"
 	set desc = "Toggles the appearance of bluespace zaps when you use the Delete command on stuff. Does not apply to build mode."
+	if(!holder)
+		return
 	usr.client.prefs.skyrat_toggles ^= ADMINDEL_ZAP_PREF
 	usr.client.prefs.save_preferences()	
 	to_chat(usr, "<span class='infoplain'>There will [(usr.client.prefs.skyrat_toggles & ADMINDEL_ZAP_PREF) ? "now" : "no longer"] be bluespace sparks when you Delete objects.</span>")
