@@ -574,7 +574,7 @@
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
-/datum/outfit/science_team/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/security_guard/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	H.faction |= FACTION_BLACKMESA
 
@@ -609,7 +609,7 @@
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
-/datum/outfit/science_team/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/hecu/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	H.faction |= FACTION_XEN
 
