@@ -11,6 +11,12 @@
 		to_chat(src, "<span class='danger'>You cannot send DSAY messages (muted).</span>", confidential = TRUE)
 		return
 
+	//SKYRAT EDIT ADDITION
+	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE))
+		to_chat(src, "<span class='danger'>Dead chat is currently muted.</span>")
+		return
+	//SKYRAT EDIT END
+
 	if (handle_spam_prevention(msg,MUTE_DEADCHAT))
 		return
 
