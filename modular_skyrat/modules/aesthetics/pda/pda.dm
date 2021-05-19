@@ -102,7 +102,7 @@
 
 /obj/item/pda/heads/rd
 	greyscale_config = /datum/greyscale_config/pda/aesthetics/stripe_thick/head
-	greyscale_colors = "#d6d9e#262d99#c28be5"
+	greyscale_colors = "#d6d9e0#262d99#c28be5"
 
 /obj/item/pda/captain
 	icon_state = "pda-captain"
