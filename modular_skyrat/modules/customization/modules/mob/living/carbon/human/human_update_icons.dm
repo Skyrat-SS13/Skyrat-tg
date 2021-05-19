@@ -35,13 +35,13 @@
 		var/x_override
 		switch(applied_style)
 			if(STYLE_DIGITIGRADE)
-				icon_file = w_uniform.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_digi.dmi'
+				icon_file = w_uniform.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 			if(STYLE_TAUR_SNAKE)
-				icon_file = w_uniform.worn_icon_taur_snake || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_taur_snake.dmi'
+				icon_file = w_uniform.worn_icon_taur_snake || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_snake.dmi'
 			if(STYLE_TAUR_HOOF)
-				icon_file = w_uniform.worn_icon_taur_hoof || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_taur_hoof.dmi'
+				icon_file = w_uniform.worn_icon_taur_hoof || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_hoof.dmi'
 			if(STYLE_TAUR_PAW)
-				icon_file = w_uniform.worn_icon_taur_paw || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_taur_paw.dmi'
+				icon_file = w_uniform.worn_icon_taur_paw || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_paw.dmi'
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64

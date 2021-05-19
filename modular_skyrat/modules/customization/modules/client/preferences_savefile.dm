@@ -398,6 +398,18 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else
 		pref_scream = new /datum/scream_type/human
 
+	//Laughs
+	var/laugh_id
+	READ_FILE(S["laugh"], laugh_id)
+	if(laugh_id)
+		var/new_type = GLOB.laugh_types[laugh_id]
+		if(new_type)
+			pref_laugh = new new_type
+		else
+			pref_laugh = new /datum/laugh_type/human
+	else
+		pref_laugh = new /datum/laugh_type/human
+
 	/*if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
 		WRITE_FILE(S["features["mcolor"]"]	, "#FFF")
 
@@ -690,6 +702,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["species"] , pref_species.id)
 	WRITE_FILE(S["phobia"], phobia)
 	WRITE_FILE(S["scream"], pref_scream.name)
+	WRITE_FILE(S["laugh"], pref_laugh.name)
 	/*WRITE_FILE(S["feature_mcolor"] , features["mcolor"])
 	WRITE_FILE(S["feature_ethcolor"] , features["ethcolor"])
 	WRITE_FILE(S["feature_lizard_tail"] , features["tail_lizard"])
