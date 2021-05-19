@@ -81,7 +81,7 @@
 	greyscale_colors = "#d6d9e0#262d99#c28be5"
 
 /obj/item/pda/heads
-	greyscale_config = /datum/greyscale_config/pda/head
+	greyscale_config = /datum/greyscale_config/pda/aesthetics/head
 	greyscale_colors = "#a2b4cf#262d99"
 
 /obj/item/pda/heads/hop
