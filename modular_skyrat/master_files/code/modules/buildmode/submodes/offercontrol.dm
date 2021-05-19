@@ -7,8 +7,6 @@
 		***********************************************************</span>")
 
 /datum/buildmode_mode/offercontrol/handle_click(client/c, params, object)
-	var/list/modifiers = params2list(params)
-
 	if(!ismob(object))
 		return
 
