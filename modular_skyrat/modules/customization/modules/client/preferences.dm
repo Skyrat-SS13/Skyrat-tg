@@ -1767,7 +1767,7 @@ GLOBAL_LIST_INIT(food, list(
 					if(new_color)
 						if(!loadout[path])
 							return
-						loadout[path] = sanitize_hexcolor(new_color)
+						loadout[path] = sanitize_hexcolor(new_color, 6)
 				if(LOADOUT_INFO_THREE_COLORS)
 					var/color_slot = text2num(href_list["color_slot"])
 					if(color_slot)
@@ -1776,7 +1776,7 @@ GLOBAL_LIST_INIT(food, list(
 						if(new_color)
 							if(!loadout[path])
 								return
-							color_list[color_slot] = sanitize_hexcolor(new_color)
+							color_list[color_slot] = sanitize_hexcolor(new_color, 6)
 							loadout[path] = color_list.Join("|")
 				if(LOADOUT_INFO_STYLE)
 					return
@@ -1830,7 +1830,7 @@ GLOBAL_LIST_INIT(food, list(
 					if(new_color)
 						if(!body_markings[zone] || !body_markings[zone][name])
 							return
-						body_markings[zone][name] = sanitize_hexcolor(new_color)
+						body_markings[zone][name] = sanitize_hexcolor(new_color, 6)
 				if("marking_move_up")
 					var/zone = href_list["key"]
 					var/name = href_list["name"]
@@ -1978,7 +1978,7 @@ GLOBAL_LIST_INIT(food, list(
 						return
 					var/new_color = input(user, "Choose your character's [key] color:", "Character Preference","#[colorlist[index]]") as color|null
 					if(new_color)
-						colorlist[index] = sanitize_hexcolor(new_color)
+						colorlist[index] = sanitize_hexcolor(new_color, 6)
 				if("reset_color")
 					var/key = href_list["key"]
 					if(!mutant_bodyparts[key])
@@ -2172,7 +2172,7 @@ GLOBAL_LIST_INIT(food, list(
 					needs_update = TRUE
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#"+hair_color) as color|null
 					if(new_hair)
-						hair_color = sanitize_hexcolor(new_hair)
+						hair_color = sanitize_hexcolor(new_hair, 6)
 
 				if("hairstyle")
 					needs_update = TRUE
@@ -2192,7 +2192,7 @@ GLOBAL_LIST_INIT(food, list(
 					needs_update = TRUE
 					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
 					if(new_facial)
-						facial_hair_color = sanitize_hexcolor(new_facial)
+						facial_hair_color = sanitize_hexcolor(new_facial, 6)
 
 				if("facial_hairstyle")
 					needs_update = TRUE
@@ -2217,19 +2217,19 @@ GLOBAL_LIST_INIT(food, list(
 					needs_update = TRUE
 					var/new_underwear_color = input(user, "Choose your character's underwear color:", "Character Preference","#"+underwear_color) as color|null
 					if(new_underwear_color)
-						underwear_color = sanitize_hexcolor(new_underwear_color)
+						underwear_color = sanitize_hexcolor(new_underwear_color, 6)
 
 				if("undershirt_color")
 					needs_update = TRUE
 					var/new_undershirt_color = input(user, "Choose your character's undershirt color:", "Character Preference","#"+undershirt_color) as color|null
 					if(new_undershirt_color)
-						undershirt_color = sanitize_hexcolor(new_undershirt_color)
+						undershirt_color = sanitize_hexcolor(new_undershirt_color, 6)
 
 				if("socks_color")
 					needs_update = TRUE
 					var/new_socks_color = input(user, "Choose your character's socks color:", "Character Preference","#"+socks_color) as color|null
 					if(new_socks_color)
-						socks_color = sanitize_hexcolor(new_socks_color)
+						socks_color = sanitize_hexcolor(new_socks_color, 6)
 
 				if("undershirt")
 					needs_update = TRUE
@@ -2248,7 +2248,7 @@ GLOBAL_LIST_INIT(food, list(
 					needs_update = TRUE
 					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference","#"+eye_color) as color|null
 					if(new_eyes)
-						eye_color = sanitize_hexcolor(new_eyes)
+						eye_color = sanitize_hexcolor(new_eyes, 6)
 
 				if("show_body_size")
 					needs_update = TRUE
@@ -2314,7 +2314,7 @@ GLOBAL_LIST_INIT(food, list(
 						if(new_mutantcolor == "#000000")
 							features["mcolor"] = pref_species.default_color
 						else
-							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
+							features["mcolor"] = sanitize_hexcolor(new_mutantcolor, 6)
 						if(!allow_advanced_colors)
 							reset_colors()
 
@@ -2325,7 +2325,7 @@ GLOBAL_LIST_INIT(food, list(
 						if(new_mutantcolor == "#000000")
 							features["mcolor2"] = pref_species.default_color
 						else
-							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
+							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor, 6)
 						if(!allow_advanced_colors)
 							reset_colors()
 
@@ -2336,7 +2336,7 @@ GLOBAL_LIST_INIT(food, list(
 						if(new_mutantcolor == "#000000")
 							features["mcolor3"] = pref_species.default_color
 						else
-							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
+							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor, 6)
 						if(!allow_advanced_colors)
 							reset_colors()
 
@@ -3121,7 +3121,7 @@ GLOBAL_LIST_INIT(food, list(
 
 /datum/preferences/proc/set_skin_tone(new_skin_tone)
 	skin_tone = new_skin_tone
-	features["skin_color"] = sanitize_hexcolor(skintone2hex(skin_tone), 3, 0)
+	features["skin_color"] = sanitize_hexcolor(skintone2hex(skin_tone), 6, 0)
 	if(!allow_advanced_colors)
 		reset_colors()
 

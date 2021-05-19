@@ -513,10 +513,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	undershirt = sanitize_inlist(undershirt, GLOB.undershirt_list)
 	socks = sanitize_inlist(socks, GLOB.socks_list)
 	age = sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
-	hair_color = sanitize_hexcolor(hair_color, 3, 0)
-	facial_hair_color = sanitize_hexcolor(facial_hair_color, 3, 0)
-	underwear_color = sanitize_hexcolor(underwear_color, 3, 0)
-	eye_color = sanitize_hexcolor(eye_color, 3, 0)
+	hair_color = sanitize_hexcolor(hair_color, 6, 0)
+	facial_hair_color = sanitize_hexcolor(facial_hair_color, 6, 0)
+	underwear_color = sanitize_hexcolor(underwear_color, 6, 0)
+	eye_color = sanitize_hexcolor(eye_color, 6, 0)
 	skin_tone = sanitize_inlist(skin_tone, GLOB.skin_tones)
 	backpack = sanitize_inlist(backpack, GLOB.backpacklist, initial(backpack))
 	jumpsuit_style = sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
@@ -572,10 +572,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
 	READ_FILE(S["undershirt_color"], undershirt_color)
-	undershirt_color			= sanitize_hexcolor(undershirt_color, 3, 0)
+	undershirt_color			= sanitize_hexcolor(undershirt_color, 6, 0)
 
 	READ_FILE(S["socks_color"], socks_color)
-	socks_color			= sanitize_hexcolor(socks_color, 3, 0)
+	socks_color			= sanitize_hexcolor(socks_color, 6, 0)
 
 	READ_FILE(S["foodlikes"], foodlikes)
 	READ_FILE(S["fooddislikes"], fooddislikes)
