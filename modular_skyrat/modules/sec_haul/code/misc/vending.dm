@@ -65,7 +65,8 @@
 		/obj/item/clothing/mask/bandana/black = 3,
 		/obj/item/clothing/gloves/combat/peacekeeper = 3,
 		/obj/item/clothing/under/pants/khaki = 3,
-		/obj/item/clothing/under/rank/security/officer/blueshirt = 3
+		/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
+		/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat = 4
 	)
 	contraband = list(
 		/obj/item/clothing/suit/armor/stormtrooper = 1,
