@@ -82,11 +82,6 @@
 		var/x = pos_idx % switch_width
 		var/y = FLOOR(pos_idx / switch_width, 1)
 		var/atom/movable/screen/buildmode/B = new buttontype(src, thing)
-		//SKYRAT EDIT ADDITION BEGIN
-		var/datum/buildmode_mode/buildmode_mode = thing
-		if(buildmode_mode.skyrat_button)
-			B.icon = 'modular_skyrat/master_files/icons/misc/buildmode.dmi'
-		//SKYRAT EDIT END
 		// extra .5 for a nice offset look
 		B.screen_loc = "NORTH-[(1 + 0.5 + y*1.5)],WEST+[0.5 + x*1.5]"
 		buttonslist += B
