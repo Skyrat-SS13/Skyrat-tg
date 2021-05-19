@@ -9,8 +9,6 @@
 	var/turf/cornerA
 	var/turf/cornerB
 
-	var/skyrat_button = FALSE //SKYRAT EDIT ADDITION - Are we going to use the custom icon file to render our button?
-
 /datum/buildmode_mode/New(datum/buildmode/BM)
 	src.BM = BM
 	preview = list()
