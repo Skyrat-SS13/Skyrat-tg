@@ -1,6 +1,5 @@
 /datum/buildmode_mode/offercontrol
 	key = "offercontrol"
-	skyrat_button = TRUE
 
 /datum/buildmode_mode/offercontrol/show_help(client/c)
 	to_chat(c, "<span class='notice'>***********************************************************\n\
