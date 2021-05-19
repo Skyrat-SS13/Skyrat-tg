@@ -476,6 +476,8 @@
 	timer_id = addtimer(CALLBACK(src, .proc/weaponselect), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/process(delta_time)
+	if(!activated)
+		return
 	if(current_user.blood_volume < BLOOD_VOLUME_OKAY)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.blood_volume += HEV_BLOOD_REPLENISHMENT

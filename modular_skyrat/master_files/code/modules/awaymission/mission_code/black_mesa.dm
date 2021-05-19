@@ -89,7 +89,7 @@
 	damage = 15
 	damage_type = BURN
 	nodamage = FALSE
-	paralyze = 20
+	knockdown = 20
 	flag = BIO
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
 	hitsound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/splat1.ogg'
