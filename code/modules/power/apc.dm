@@ -739,6 +739,20 @@
 		return
 	else if(panel_open && !opened && is_wire_tool(W))
 		wires.interact(user)
+	// SKYRAT EDIT ADD - SHOCK-PROOFING APCS
+	else if(istype(W, /obj/item/stack/sheet/bronze) && panel_open)
+		if(shock_proof)
+			to_chat(user, "<span class='warning'>This APC has already been shock proofed!</span>")
+		else
+			var/obj/item/stack/sheet/bronze/bronze = W
+			bronze.use(1)
+			to_chat(user, "<span class='notice'>You form the bronze sheet into a grounding component, preventing the APC from arcing!</span>")
+			shock_proof = TRUE
+	else if(W.tool_behaviour == TOOL_WRENCH && panel_open && shock_proof)
+		to_chat(user, "<span class='notice'>You unwrench the grounding component and discard it!</span>")
+		shock_proof = FALSE
+		W.play_tool_sound(src, 50)
+	//SKYRAT EDIT END
 	else
 		return ..()
 
