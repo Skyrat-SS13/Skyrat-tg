@@ -7,7 +7,7 @@ GLOBAL_VAR_INIT(dchat_allowed, TRUE)
 	toggle_dchat()
 	log_admin("[key_name(usr)] toggled dead chat.")
 	message_admins("[key_name_admin(usr)] toggled dead chat.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle DCHAT", "[GLOB.ooc_allowed ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle DCHAT", "[GLOB.dchat_allowed ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /proc/toggle_dchat(toggle = null)
 	if(toggle != null) //if we're specifically en/disabling dead chat
