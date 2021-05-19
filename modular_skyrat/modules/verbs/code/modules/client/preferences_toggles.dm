@@ -11,7 +11,7 @@
 /client/verb/admin_delete_zap_pref()
 	set name = "Toggle Delete Sparks"
 	set category = "Preferences.Admin"
-	set desc = "Toggles the appearance of bluespace zaps when you use the Delete command on stuff. Does not apply to build mode."
+	set desc = "Toggles the appearance of bluespace zaps when you use the Delete command on stuff. Also applies to simple/advanced/del buildmode."
 	if(!holder)
 		return
 	usr.client.prefs.skyrat_toggles ^= ADMINDEL_ZAP_PREF
