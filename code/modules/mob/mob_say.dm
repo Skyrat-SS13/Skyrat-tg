@@ -57,7 +57,7 @@
 		return
 
 	//SKYRAT EDIT ADDITION
-	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE)
+	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE))
 		to_chat(src, "<span class='danger'>Dead chat is currently muted.</span>")
 		return
 	//SKYRAT EDIT END
