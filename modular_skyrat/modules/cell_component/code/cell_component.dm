@@ -33,8 +33,10 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	var/cell_can_be_removed = TRUE
 	///Our reference to the cell overlay
 	var/mutable_appearance/cell_overlay = null
+	///Do we have cell overlays to be applied?
+	var/has_cell_overlays
 
-/datum/component/cell/Initialize(cell_override, _on_cell_removed, _power_use_amount, start_with_cell = TRUE, _cell_can_be_removed)
+/datum/component/cell/Initialize(cell_override, _on_cell_removed, _power_use_amount, start_with_cell = TRUE, _cell_can_be_removed, _has_cell_overlays = TRUE)
 	if(!isitem(parent)) //Currently only compatable with items.
 		return COMPONENT_INCOMPATIBLE
 
@@ -42,6 +44,8 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 	if(_on_cell_removed)
 		src.on_cell_removed = _on_cell_removed
+
+	has_cell_overlays = _has_cell_overlays
 
 	if(_power_use_amount)
 		power_use_amount = _power_use_amount
@@ -174,6 +178,8 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	handle_cell_overlays(FALSE)
 
 /datum/component/cell/proc/handle_cell_overlays(update_overlays)
+	if(!has_cell_overlays)
+		return
 	if(inserted_cell)
 		cell_overlay = mutable_appearance(equipment.icon, "[initial(equipment.icon_state)]_cell")
 		equipment.add_overlay(cell_overlay)

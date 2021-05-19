@@ -311,6 +311,10 @@
 	name = "Red skirt"
 	path = /obj/item/clothing/under/dress/skirt/red
 
+/datum/loadout_item/uniform/skirt/curatorthing
+	name = "Sensible Suitskirt"
+	path = /obj/item/clothing/under/rank/civilian/curator/skirt
+
 /datum/loadout_item/uniform/skirt/skirtpurple
 	name = "Purple skirt"
 	path = /obj/item/clothing/under/dress/skirt/purple
