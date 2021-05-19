@@ -5,7 +5,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "posibrain-ipc"
 
 /obj/item/organ/brain/ipc_positron/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
@@ -27,7 +27,7 @@
 
 /obj/item/organ/stomach/robot_ipc
 	name = "IPC micro cell"
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "stomach-ipc"
 	w_class = WEIGHT_CLASS_NORMAL
 	zone = "chest"
@@ -50,7 +50,7 @@
 
 /obj/item/organ/ears/robot_ipc
 	name = "auditory sensors"
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "ears-ipc"
 	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
 	zone = BODY_ZONE_HEAD
@@ -80,7 +80,7 @@
 	name = "robotic voicebox"
 	desc = "A voice synthesizer that can interface with organic lifeforms."
 	status = ORGAN_ROBOTIC
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "tongue-ipc"
 	say_mod = "beeps"
 	modifies_speech = TRUE
@@ -110,7 +110,7 @@
 /obj/item/organ/lungs/robot_ipc
 	name = "heat sink"
 	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs." //Purposefully left the 'fluid medium' ambigious for interpretation of the character, whether it be air or fluid cooling
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "lungs-ipc"
 	safe_nitro_min = 0
 	safe_nitro_max = 0
@@ -142,7 +142,7 @@
 	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs."
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "heart-ipc"
 
 /obj/item/organ/liver/robot_ipc
@@ -150,7 +150,7 @@
 	desc = "An electronic device that processes the beneficial chemicals for the synthetic user."
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
-	icon = 'modular_skyrat/modules/customization/icons/obj/surgery.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "liver-c"
 	filterToxins = FALSE //We dont filter them, we're immune ot them
 

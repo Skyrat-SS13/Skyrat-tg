@@ -32,8 +32,8 @@
 /obj/item/clothing/head/helmet/space/hardsuit/hev_suit
 	name = "hazardous environment suit helmet"
 	desc = "The Mark IV HEV suit helmet."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-hev"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "hev"
@@ -48,8 +48,8 @@
 /obj/item/clothing/suit/space/hardsuit/hev_suit
 	name = "hazardous environment suit"
 	desc = "The Mark IV HEV suit protects the user from a number of hazardous environments and has in build ballistic protection."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hardsuit-hev"
 	inhand_icon_state = "eng_hardsuit"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, RAD = 40, FIRE = 40, ACID = 40, WOUND = 10) //This is gordons suit, of course it's strong.
