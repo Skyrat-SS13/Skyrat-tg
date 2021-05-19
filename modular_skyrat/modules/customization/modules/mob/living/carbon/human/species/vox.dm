@@ -2,8 +2,8 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = "vox"
-	eyes_icon = 'modular_skyrat/modules/customization/icons/mob/species/vox_eyes.dmi'
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/vox_parts_greyscale.dmi'
+	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/vox_parts_greyscale.dmi'
 	say_mod = "shrieks"
 	default_color = "00FF00"
 	species_traits = list(
