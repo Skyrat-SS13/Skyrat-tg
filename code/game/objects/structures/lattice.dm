@@ -84,7 +84,7 @@
 /obj/structure/lattice/catwalk/deconstruction_hints(mob/user)
 	return "<span class='notice'>The supporting rods look like they could be <b>cut</b>.</span>"
 
-//SKYRAT EDIT REMOVAL BEGIN
+//SKYRAT EDIT REMOVAL BEGIN - Moved To Modular
 /*
 /obj/structure/lattice/catwalk/Move()
 	var/turf/T = loc
