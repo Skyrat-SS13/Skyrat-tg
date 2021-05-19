@@ -35,4 +35,4 @@
 	liked_food = GROSS | MEAT | TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/insect_parts_greyscale.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/insect_parts_greyscale.dmi'
