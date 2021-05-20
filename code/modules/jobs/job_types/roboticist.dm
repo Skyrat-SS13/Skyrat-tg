@@ -41,16 +41,10 @@
 	uniform = /obj/item/clothing/under/rank/rnd/roboticist
 	suit = /obj/item/clothing/suit/toggle/labcoat/roboticist
 
-<<<<<<< HEAD
 	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
 	satchel = /obj/item/storage/backpack/satchel/tox/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
 	duffelbag = /obj/item/storage/backpack/duffel/robo //SKYRAT CHANGE - Roboticist Bags (ADDITION)
-=======
-	backpack = /obj/item/storage/backpack/science
-	satchel = /obj/item/storage/backpack/satchel/tox
-	duffelbag = /obj/item/storage/backpack/duffelbag/toxins
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/science=1)
->>>>>>> f459a3fea58 (NTOS Signaler Modular App and hardware part (#58895))
 
 	pda_slot = ITEM_SLOT_LPOCKET
 
