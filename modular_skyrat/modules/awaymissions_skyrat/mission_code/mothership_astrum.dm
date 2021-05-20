@@ -192,12 +192,17 @@
 //LOOT
 
 /obj/item/crowbar/freeman
-	name = "Blood Soaked Crowbar"
+	name = "blood soaked crowbar"
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
 	icon_state = "crowbar"
-	force = 30
-	throwforce = 42
+	force = 40
+	throwforce = 45
+	toolspeed = 0
+	wound_bonus = 30
+	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
+	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
+	force_opens = TRUE
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
@@ -217,7 +222,7 @@
 				/obj/item/dnainjector/shock = 10,
 				/obj/item/pneumatic_cannon = 15,
 				/obj/item/melee/transforming/energy/sword = 7,
-				/obj/item/book/granter/spell/summonitem = 20,	
+				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/melee/classic_baton/telescopic = 12,)
 
@@ -337,7 +342,7 @@
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
-	
+
 /mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/P)
 	apply_damage(P.damage, P.damage_type)
 	return // no more reduction

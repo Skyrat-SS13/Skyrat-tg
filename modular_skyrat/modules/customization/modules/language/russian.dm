@@ -10,5 +10,5 @@
 		"ver", "stv", "pro"
 	)
 	icon_state = "russian"
-	icon = 'modular_skyrat/modules/customization/icons/misc/language.dmi'
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 95

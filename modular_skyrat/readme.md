@@ -102,6 +102,8 @@ All assets added by us should be placed into the same modular folder as your cod
 
 - Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
 
+- Any additional clothing icon files you add MUST go into the existing files in master_files clothing section.
+
 ### Fully modular portions of your code
 
 This section will be fairly straightforward, however, I will try to go over the basics and give simple examples, as the guide is aimed at new contributors likewise.
