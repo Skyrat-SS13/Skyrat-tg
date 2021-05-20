@@ -3,7 +3,7 @@
 	icon = 'modular_skyrat/modules/organs/lungs.dmi'
 	desc = "A set of lungs adapted to low temperatures though more susceptible to high temperatures. Breathing cold gases will heal you depending on the temperature of the gas."
 	icon_state = "lungs_cold"
-	cold_message = "There is a slightly painful, though bearable, smoothing and good cold sensation with every breath you take"
+	cold_message = "You feel a slightly painful, though bearable, cold sensation that invigorates you with every breath you take"
 	cold_level_1_threshold = 213
 	cold_level_2_threshold = 153
 	cold_level_3_threshold = 93
