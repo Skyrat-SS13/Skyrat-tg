@@ -12,7 +12,7 @@
 
 		var/dresscode
 		var/teleport_option = tgui_alert(user, "How would you like to be spawned in?", "IC Quick Spawn", list("Bluespace", "Pod", "Cancel"))
-		if (character_option == "Cancel")
+		if (teleport_option == "Cancel")
 			return
 		var/character_option = tgui_alert(user, "Which character?", "IC Quick Spawn", list("Selected Character", "Randomly Created", "Cancel"))
 		if (character_option == "Cancel")
