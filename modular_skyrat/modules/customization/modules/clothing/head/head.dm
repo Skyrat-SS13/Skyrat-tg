@@ -225,7 +225,7 @@
 
 /obj/item/clothing/head/keffiyeh
 	name = "keffiyeh"
-	desc = "Free Palestine."
+	desc = "My lawyers have advised me not to say anything related to this hat."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "keffiyeh_custom"
