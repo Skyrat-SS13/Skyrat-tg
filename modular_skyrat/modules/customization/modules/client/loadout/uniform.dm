@@ -311,6 +311,10 @@
 	name = "Red skirt"
 	path = /obj/item/clothing/under/dress/skirt/red
 
+/datum/loadout_item/uniform/skirt/curatorthing
+	name = "Sensible Suitskirt"
+	path = /obj/item/clothing/under/rank/civilian/curator/skirt
+
 /datum/loadout_item/uniform/skirt/skirtpurple
 	name = "Purple skirt"
 	path = /obj/item/clothing/under/dress/skirt/purple
@@ -420,6 +424,10 @@
 /datum/loadout_item/uniform/pants/bjeans
 	name = "Black Jeans"
 	path = /obj/item/clothing/under/pants/blackjeans
+
+/datum/loadout_item/uniform/pants/bpants
+	name = "Black Pants"
+	path = /obj/item/clothing/under/pants/black
 
 /datum/loadout_item/uniform/pants/cjeans
 	name = "Classic Jeans"
@@ -671,6 +679,18 @@
 	name = "Security Kilt"
 	path = /obj/item/clothing/under/rank/security/blackwatch
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
+
+/datum/loadout_item/uniform/job/medrscrubs
+	name = "Red Scrubs (security)"
+	path = /obj/item/clothing/under/rank/medical/doctor/red
+	restricted_roles = list("Security Medic")
+	restricted_desc = "Security Medic"
+
+/datum/loadout_item/uniform/job/redscrubs
+	name = "Red Scrubs"
+	path = /obj/item/clothing/under/rank/medical/doctor/red/unarm
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
 
 /datum/loadout_item/uniform/job/bluescrubs
 	name = "Blue Scrubs"

@@ -1,7 +1,10 @@
+GLOBAL_LIST_INIT(captain_alttitles, list(
+	"Station Commander", "Commanding Officer", "Site Manager")) // for sorting the command part of the manifest
+
 GLOBAL_LIST_INIT(command_alttitles, list(
 	"Station Commander", "Commanding Officer", "Site Manager", //Captain
 	"Executive Officer", "Employment Officer", "Crew Supervisor", //HoP
-	"Security Commander", "Chief Constable", "Chief of Security", "Sherriff", //HoS
+	"Security Commander", "Chief Constable", "Chief of Security", "Sheriff", //HoS
 	"Engineering Foreman", //CE
 	"Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer", //RD
 	"Deck Chief", "Cargo Foreman", //QM
@@ -47,11 +50,11 @@ GLOBAL_LIST_INIT(service_alttitles, list(
 	"Priest", "Preacher", //Chap
 	"Pantomimist", //Mime
 	"Jester", //Honkmaster Supreme
-	"Minimum Security Prisoner", "Maximum Security Prisoner", "SuperMax Security Prisoner", "Protective Custody Prisoner", //Prisoner
+	"Low Risk Prisoner", "High Risk Prisoner", "Extreme Risk Prisoner", "Protective Custody Prisoner", //Prisoner
 	"Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")) //Asistant
 
 GLOBAL_LIST_INIT(security_alttitles, list(
-	"Security Commander", "Chief Constable", "Chief of Security", "Sherriff", //HoS
+	"Security Commander", "Chief Constable", "Chief of Security", "Sheriff", //HoS
 	"Brig Sergeant", "Dispatch Officer", "Brig Governor", "Jailer", //Warden
 	"Forensic Technician", "Private Investigator", "Forensic Scientist", //Det
 	"Security Operative", "Peacekeeper", //Sec

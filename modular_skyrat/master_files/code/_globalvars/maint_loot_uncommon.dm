@@ -143,9 +143,9 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/ammo_casing/a762 = 25,
 		/obj/item/ammo_casing/c10mm = 25,
 		/obj/item/ammo_casing/c32 = 50,
-		/obj/item/ammo_casing/c32_ap = 10,
+		/obj/item/ammo_casing/c32/ap = 10,
 		/obj/item/ammo_casing/c32_incendiary = 10,
-		/obj/item/ammo_casing/c32_rubber = 50,
+		/obj/item/ammo_casing/c32/rubber = 50,
 		/obj/item/ammo_casing/c38 = 100,
 		/obj/item/ammo_casing/c38/dumdum = 20,
 		/obj/item/ammo_casing/c38/hotshot = 20,
@@ -238,8 +238,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/dnainjector/olfaction = 1,
 		/obj/item/dnainjector/shock = 1,
 		/obj/item/dnainjector/thermal = 1,
-		/obj/item/dnainjector/void = 1,
-		/obj/item/dnainjector/xraymut = 1
+		/obj/item/dnainjector/void = 1
 	) = 25,
 	list( //INSULS!
 		/obj/item/clothing/gloves/color/yellow = 100,

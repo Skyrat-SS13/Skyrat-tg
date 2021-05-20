@@ -62,6 +62,7 @@
 #define MC_CHARGE "CHARGE"
 #define MC_AI "AI"
 #define MC_SENSORS "SENSORS"
+#define MC_SIGNALER "SIGNALER"
 
 //NTNet stuff, for modular computers
 									// NTNet module-configuration values. Do not change these. If you need to add another use larger number (5..6..7 etc)
@@ -190,3 +191,11 @@
 #define ORION_GAMER_PAMPHLET -1
 //game begins to have a chance to warn sec and med
 #define ORION_GAMER_REPORT_THRESHOLD 2
+
+// Air alarm [/obj/machinery/airalarm/buildstage]
+/// Air alarm missing circuit
+#define AIRALARM_BUILD_NO_CIRCUIT 0
+/// Air alarm has circuit but is missing wires
+#define AIRALARM_BUILD_NO_WIRES 1
+/// Air alarm has all components but isn't completed
+#define AIRALARM_BUILD_COMPLETE 2

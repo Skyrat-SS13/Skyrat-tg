@@ -8,8 +8,8 @@
 	supervisors = "the head of security, security sergeants and security officers"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
-	exp_requirements = 120
-	exp_type = EXP_TYPE_MEDICAL
+	exp_requirements = 60
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/junior_officer
 	plasmaman_outfit = /datum/outfit/plasmaman/security
