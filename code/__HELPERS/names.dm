@@ -61,7 +61,7 @@ GLOBAL_VAR(command_name)
 	var/new_station_name = ""
 	//Rare: Pre-Prefix
 	//SKYRAT EDIT: Always Pre-Prefix //if (prob(10))
-	name = pick("NTS") //SKYRAT EDIT: Consistent station names. The "S" stands for Science or Space or whatever your heart desires.
+	name = pick("NS") //SKYRAT EDIT: Consistent station names. The "S" stands for Science or Space or whatever your heart desires.
 	new_station_name = name + " " //SKYRAT EDIT
 	name = "" //SKYRAT EDIT
 		
