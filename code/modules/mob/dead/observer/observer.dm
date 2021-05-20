@@ -310,16 +310,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(stat == DEAD)
 		ghostize(TRUE)
 		return TRUE
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION -- Free Ghost Cafe Ghosting
 	if(HAS_TRAIT(src, TRAIT_FREE_GHOST))
 		ghostize(TRUE) // Can return with TRUE
 		return TRUE
 	// SKYRAT EDIT ADDITION END
-	var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost whilst still alive you may not play again this round! You can't change your mind so choose wisely!!)","Are you sure you want to ghost?","Ghost","Stay in body")
-=======
-	var/response = tgui_alert(usr, "Are you -sure- you want to ghost?\n(You are alive. If you ghost whilst still alive you may not play again this round! You can't change your mind so choose wisely!!)","Are you sure you want to ghost?",list("Ghost","Stay in body"))
->>>>>>> 190d0a03847 (Replace alert usage with tgui_alert (#58419))
+var/response = tgui_alert(usr, "Are you -sure- you want to ghost?\n(You are alive. If you ghost whilst still alive you may not play again this round! You can't change your mind so choose wisely!!)","Are you sure you want to ghost?",list("Ghost","Stay in body"))
 	if(response != "Ghost")
 		return FALSE//didn't want to ghost after-all
 	ghostize(FALSE) // FALSE parameter is so we can never re-enter our body. U ded.

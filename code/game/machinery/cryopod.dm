@@ -361,24 +361,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		var/caught = FALSE
 		var/datum/antagonist/antag = target.mind.has_antag_datum(/datum/antagonist)
 		var/datum/job/target_job = SSjob.GetJob(target.mind.assigned_role)
-<<<<<<< HEAD
-		if(target_job) //SKYRAT EDIT ADDITION
-			if(target_job.req_admin_notify)
-				alert("You're an important role![generic_plsnoleave_message]")
-				caught = TRUE
-		if(antag)
-			alert("You're \a [antag.name]![generic_plsnoleave_message]")
-			caught = TRUE
-		if(caught)
-			COOLDOWN_START(target.client, cryo_warned, 5 MINUTES)
-			return
-=======
 
 		if(target_job && target_job.req_admin_notify)
 			tgui_alert(target, "You're an important role! [AHELP_FIRST_MESSAGE]")
 		if(antag)
 			tgui_alert(target, "You're \a [antag.name]! [AHELP_FIRST_MESSAGE]")
->>>>>>> 190d0a03847 (Replace alert usage with tgui_alert (#58419))
 
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
 		return
