@@ -3555,6 +3555,12 @@
 /obj/machinery/door/firedoor/heavy,
 /turf/open/floor/iron/cafeteria,
 /area/command/heads_quarters/rd)
+"bsd" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/command/gateway)
 "bsh" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -35181,6 +35187,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/science/misc_lab)
+"nWi" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 10
+	},
+/obj/machinery/modular_computer/console/preset/cargochat/security,
+/turf/open/floor/iron/dark,
+/area/security/office)
 "nWl" = (
 /obj/machinery/telecomms/receiver/preset_left,
 /turf/open/floor/iron/dark/telecomms,
@@ -35861,13 +35874,6 @@
 /obj/item/storage/toolbox/emergency,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
-"oiB" = (
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 10
-	},
-/obj/machinery/modular_computer/console/preset/cargochat/security,
-/turf/open/floor/iron/dark,
-/area/security/office)
 "oiK" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -45573,6 +45579,14 @@
 	},
 /turf/open/floor/iron,
 /area/security/checkpoint/science)
+"shf" = (
+/obj/structure/table/wood,
+/obj/item/radio/intercom{
+	dir = 8;
+	name = "Station Intercom (Command)"
+	},
+/turf/open/floor/carpet,
+/area/command/meeting_room)
 "shg" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/regular,
@@ -46260,14 +46274,6 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
-"svm" = (
-/obj/structure/table/wood,
-/obj/item/radio/intercom{
-	dir = 8;
-	name = "Station Intercom (Command)"
-	},
-/turf/open/floor/carpet,
-/area/command/meeting_room)
 "svn" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -47643,15 +47649,6 @@
 	dir = 6
 	},
 /area/security/prison)
-"sZH" = (
-/obj/effect/landmark/event_spawn,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/command/gateway)
 "sZV" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable,
@@ -50514,12 +50511,6 @@
 "umc" = (
 /turf/closed/wall,
 /area/maintenance/disposal)
-"umi" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/command/gateway)
 "uml" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -54441,6 +54432,15 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"vSJ" = (
+/obj/effect/landmark/event_spawn,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/command/gateway)
 "vSK" = (
 /obj/machinery/computer/med_data{
 	dir = 4
@@ -83401,7 +83401,7 @@ kuI
 cot
 gTv
 gTv
-sZH
+vSJ
 kzH
 gza
 hDp
@@ -83658,7 +83658,7 @@ eyf
 qjX
 eAF
 krI
-umi
+bsd
 krI
 gza
 hDp
@@ -86244,7 +86244,7 @@ nMd
 oEu
 uGx
 gZL
-svm
+shf
 okH
 hwB
 xgO
@@ -91080,7 +91080,7 @@ mqM
 vKy
 cTO
 rhN
-oiB
+nWi
 mqM
 oYv
 siX
