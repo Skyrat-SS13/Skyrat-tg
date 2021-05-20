@@ -151,7 +151,7 @@
 		if(GLOB.swappable_ips.len == 1)
 			var/server_name = GLOB.swappable_ips[1]
 			var/server_ip = GLOB.swappable_ips[server_name]
-			var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+			var/confirm = tgui_alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
 			if(confirm == "Connect me!")
 				to_chat_immediate(src, "So long, spaceman.")
 				client << link(server_ip)
@@ -160,7 +160,7 @@
 		if(!server_name)
 			return
 		var/server_ip = GLOB.swappable_ips[server_name]
-		var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+		var/confirm = tgui_alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
 		if(confirm == "Connect me!")
 			to_chat_immediate(src, "So long, spaceman.")
 			client << link(server_ip)
@@ -231,7 +231,7 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = alert(src,"Are you sure you wish to observe? You will not be able to play this round!","Player Setup","Yes","No")
+	var/this_is_like_playing_right = tgui_alert(src, "Are you sure you wish to observe?", "Player Setup", list("Yes", "No"))
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
