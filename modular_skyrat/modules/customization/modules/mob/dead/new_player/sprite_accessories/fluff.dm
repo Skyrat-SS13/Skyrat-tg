@@ -1,5 +1,5 @@
 /datum/sprite_accessory/fluff/moth
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/moth_fluff.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_fluff.dmi'
 	default_color = "FFF"
 	key = "fluff"
 	generic = "Fluff"
