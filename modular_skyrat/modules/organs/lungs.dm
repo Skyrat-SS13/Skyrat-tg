@@ -10,7 +10,7 @@
 	cold_level_1_damage = -0.2 //Keep in mind with gas damage levels, you can set these to be negative, if you want someone to heal, instead.
 	cold_level_2_damage = -0.7
 	cold_level_3_damage = 1 //why this? To people don't heal on extreme temperature.
-	cold_damage_type = (BURN,BRUTE,OXY)
+	cold_damage_type = list(BURN,BRUTE,OXY)
 
 	hot_message = "You can't stand the searing heat with every breath you take"
 	heat_level_1_threshold = 318
@@ -19,7 +19,7 @@
 	heat_level_1_damage = 2.2 //Yes people with lungs will be uttery fucked up if they don't use internals on hot areas.
 	heat_level_2_damage = 4.4
 	heat_level_3_damage = 6.6
-	heat_damage_type = (BURN,BRUTE,OXY)
+	heat_damage_type = list(BURN,BRUTE,OXY)
 
 
 /obj/item/organ/lungs/hot
@@ -34,7 +34,7 @@
 	cold_level_1_damage = 2.2 //Keep in mind with gas damage levels, you can set these to be negative, if you want someone to heal, instead.
 	cold_level_2_damage = 4.4
 	cold_level_3_damage = 6.6
-	cold_damage_type = (BURN,BRUTE,OXY)
+	cold_damage_type = list(BURN,BRUTE,OXY)
 
 	hot_message = "There is a slightly painful, though bearable, warmth with every breath you take"
 	heat_level_1_threshold = 373
@@ -43,7 +43,7 @@
 	heat_level_1_damage = -0.2
 	heat_level_2_damage = -0.7
 	heat_level_3_damage = 1
-	heat_damage_type = (BURN,BRUTE,OXY)
+	heat_damage_type = list(BURN,BRUTE,OXY)
 
 /obj/item/organ/lungs/toxin
 	name = "Toxic Adapted Lungs"
