@@ -29,6 +29,8 @@
 
 /datum/config_entry/string/serversqlname // short form server name used for the DB
 
+/datum/config_entry/flag/holidaystationnames // generate station name based on holidays - SKYRAT ADD
+
 /datum/config_entry/string/stationname // station name (the name of the station in-game)
 
 /datum/config_entry/number/lobby_countdown // In between round countdown.
