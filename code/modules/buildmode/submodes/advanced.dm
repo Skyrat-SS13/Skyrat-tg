@@ -60,4 +60,12 @@
 	else if(right_click)
 		if(isobj(object))
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")
+			// SKYRAT EDIT -- BS delete sparks. Original was just qdel(object)
+			var/turf/T = get_turf(object)
 			qdel(object)
+			if(T && c.prefs.skyrat_toggles & ADMINDEL_ZAP_PREF)
+				playsound(T, 'sound/magic/Repulse.ogg', 100, 1)
+				var/datum/effect_system/spark_spread/quantum/sparks = new
+				sparks.set_up(10, 1, T)
+				sparks.attach(T)
+				sparks.start()

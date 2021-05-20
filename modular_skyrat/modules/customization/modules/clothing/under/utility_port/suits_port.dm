@@ -1,7 +1,7 @@
 //Bartender Winter coat, with the ability to hold shakers/beakers/rags in its suit storage slot
 /obj/item/clothing/suit/hooded/wintercoat/bartender
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "bartender's winter coat"
 	desc = "A heavy jacket made from wool originally stolen from the chef's goat. This new design is made to fit the classic suit-and-tie aesthetic, but without the hypothermia."
 	icon_state = "coatbar"
@@ -10,14 +10,14 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/bartender
 
 /obj/item/clothing/head/hooded/winterhood/bartender
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "winterhood_bar"
 
 //Base Jacket - same stats as /obj/item/clothing/suit/jacket, just toggleable and serving as the base for all the departmental jackets and flannels
 /obj/item/clothing/suit/toggle/jacket
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "bomber jacket"
 	desc = "A warm bomber jacket, with synthetic-wool lining to keep you nice and warm in the depths of space. Aviators not included."
 	icon_state = "bomberalt"
@@ -54,8 +54,8 @@
 	icon_state = "supply_dep_jacket"
 
 /obj/item/clothing/suit/gorka	//THIS WILL BE MOVED IN THE NEXT PR ADDING PROPER GORKAS (not cargo related so not in this PR), BUT FOR NOW ITS HERE FOR THE SUBTYPE'S FILE LINKS
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/gorka/supply	//Put here for sorting purposes, considering the cargo gorkas are in the utility file too. The base Gorka and Jacket (to be added later) will most likely be elsewhere
@@ -79,8 +79,8 @@
 
 //Flannels
 /obj/item/clothing/suit/toggle/jacket/flannel
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "flannel jacket"
 	desc = "A cozy and warm plaid flannel jacket. Praised by Lumberjacks and Truckers alike."
 	icon_state = "flannel"
@@ -102,16 +102,16 @@
 
 //Labcoats
 /obj/item/clothing/suit/toggle/labcoat/highvis
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "high vis labcoat"
 	desc = "A high visibility vest for emergency responders, intended to draw attention away from the blood."
 	icon_state = "labcoat_highvis"
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/toggle/labcoat/para_red
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "red paramedic labcoat"
 	desc = "A red vest with reflective strips for First Responsers."
 	icon_state = "labcoat_pmedred"

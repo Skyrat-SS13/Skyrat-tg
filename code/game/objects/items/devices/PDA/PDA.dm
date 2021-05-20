@@ -268,13 +268,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += "<li><a href='byond://?src=[REF(src)];choice=1'>[PDAIMG(notes)]Notekeeper</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=2'>[PDAIMG(mail)]Messenger</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=6'>[PDAIMG(skills)]Skill Tracker</a></li>"
+				dat += "<li><a href='byond://?src=[REF(src)];choice=41'>[PDAIMG(notes)]View Crew Manifest</a></li>" // SKYRAT EDIT ADD - MANIFESTS PUBLICALLY
 
 				if (cartridge)
 					if (cartridge.access & CART_CLOWN)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Honk'>[PDAIMG(honk)]Honk Synthesizer</a></li>"
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Trombone'>[PDAIMG(honk)]Sad Trombone</a></li>"
-					if (cartridge.access & CART_MANIFEST)
-						dat += "<li><a href='byond://?src=[REF(src)];choice=41'>[PDAIMG(notes)]View Crew Manifest</a></li>"
+				//	if (cartridge.access & CART_MANIFEST)
+				//		dat += "<li><a href='byond://?src=[REF(src)];choice=41'>[PDAIMG(notes)]View Crew Manifest</a></li>" SKYRAT EDIT REMOVAL - MANIFESTS PUBLIC
 					if(cartridge.access & CART_STATUS_DISPLAY)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=42'>[PDAIMG(status)]Set Status Display</a></li>"
 					dat += "</ul>"
@@ -325,6 +326,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Toggle Door'>[PDAIMG(rdoor)]Toggle Remote Door</a></li>"
 					if (cartridge.access & CART_DRONEPHONE)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Drone Phone'>[PDAIMG(dronephone)]Drone Phone</a></li>"
+					if (cartridge.access & CART_DRONEACCESS)
+						var/blacklist_state = GLOB.drone_machine_blacklist_enabled
+						dat += "<li><a href='byond://?src=[REF(src)];drone_blacklist=[!blacklist_state];choice=Drone Access'>[PDAIMG(droneblacklist)][blacklist_state ? "Disable" : "Enable"] Drone Blacklist</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=3'>[PDAIMG(atmos)]Atmospheric Scan</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=Light'>[PDAIMG(flashlight)][light_on ? "Disable" : "Enable"] Flashlight</a></li>"
 				if (pai)
@@ -436,6 +440,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 					dat += "Temperature: [round(environment.temperature-T0C)]&deg;C<br>"
 				dat += "<br>"
+
+			if(41) //crew manifest - SKYRAT EDIT ADD - PUBLIC MANIFEST
+				dat += "<h4>[PDAIMG(notes)] Crew Manifest</h4>"
+				dat += "<center>[GLOB.data_core.get_manifest_html(monochrome=TRUE)]</center>" // SKYRAT EDIT ADD END
 			else//Else it links to the cart menu proc. Although, it really uses menu hub 4--menu 4 doesn't really exist as it simply redirects to hub.
 				dat += cartridge.generate_menu()
 
@@ -589,6 +597,15 @@ GLOBAL_LIST_EMPTY(PDAs)
 					to_chat(U, msg)
 					if(!silent)
 						playsound(src, 'sound/machines/terminal_success.ogg', 15, TRUE)
+			if("Drone Access")
+				var/mob/living/simple_animal/drone/drone_user = U
+				if(isdrone(U) && drone_user.shy)
+					to_chat(U, "<span class='warning'>Your laws prevent this action.</span>")
+					return
+				var/new_state = text2num(href_list["drone_blacklist"])
+				GLOB.drone_machine_blacklist_enabled = new_state
+				if(!silent)
+					playsound(src, 'sound/machines/terminal_select.ogg', 15, TRUE)
 
 
 //NOTEKEEPER FUNCTIONS===================================
