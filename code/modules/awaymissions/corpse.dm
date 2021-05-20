@@ -226,17 +226,17 @@
 	is_pref_char = null
 	if(can_use_pref_char)
 		var/initial_string = "Would you like to spawn as a randomly created character, or use the one currently selected in your preferences?"
-		var/action = alert(user, initial_string, "", "Use Random Character", "Use Character From Preferences")
+		var/action = tgui_alert(user, initial_string, "", list("Use Random Character", "Use Character From Preferences"))
 		if(action && action == "Use Character From Preferences")
 			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
-			var/action2 = alert(user, warning_string, "", "Yes", "No")
+			var/action2 = tgui_alert(user, warning_string, "", list("Yes", "No"))
 			if(action2 && action2 == "Yes")
 				is_pref_char = TRUE
 			else
 				return FALSE
 
 	if(can_use_alias)
-		var/action = alert(user, "Would you like to use an alias?\nIf you do, your name will be changed to that", "", "Dont Use Alias", "Use Alias")
+		var/action = tgui_alert(user, "Would you like to use an alias?\nIf you do, your name will be changed to that", "", list("Dont Use Alias", "Use Alias"))
 		if(action && action == "Use Alias")
 			var/msg = reject_bad_name(input(user, "Set your character's alias for this role", "Alias") as text|null)
 			if(!msg)
