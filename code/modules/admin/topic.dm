@@ -47,6 +47,48 @@
 			to_chat(usr, "<span class='danger'>ERROR: Mob not found.</span>", confidential = TRUE)
 			return
 		cmd_show_exp_panel(M.client)
+
+// SKYRAT EDIT BEGIN -- ONE CLICK ANTAG
+	else if(href_list["makeAntag"])
+
+		message_admins("[key_name_admin(usr)] is attempting to make [href_list["makeAntag"]]")
+
+		if(!check_rights(R_ADMIN))
+			return
+
+		if (!SSticker.mode)
+			to_chat(usr, "<span class='danger'>Not until the round starts!</span>", confidential = TRUE)
+			return
+
+		var/opt = null
+		switch(href_list["makeAntag"])
+			if(ROLE_BLOB)
+				opt = input("Set Blob Resource Gain Rate","Set Resource Rate",1) as num|null
+			if(ROLE_TRAITOR)
+				opt = input("How Many", ROLE_TRAITOR, 1) as num|null
+			if(ROLE_CHANGELING)
+				opt = input("How Many", ROLE_CHANGELING, 1) as num|null
+			if(ROLE_CULTIST)
+				opt = input("How Many", ROLE_CULTIST, 2) as num|null
+			if(ROLE_HERETIC)
+				opt = input("How Many", ROLE_HERETIC, 2) as num|null
+			if(ROLE_MONKEY)
+				opt = input("How Many", ROLE_MONKEY, 1) as num|null
+			if(ROLE_REV)
+				opt = input("How Many", ROLE_REV, 1) as num|null
+			if(ROLE_OPERATIVE)
+				opt = input("How Many", ROLE_OPERATIVE, 3) as num|null
+			if(ROLE_FAMILIES)
+				opt = input("How Many", ROLE_FAMILIES, 2) as num|null
+			if(ROLE_INTERNAL_AFFAIRS)
+				opt = input("How Many", ROLE_INTERNAL_AFFAIRS, 1) as num|null
+			if(ROLE_BROTHER)
+				opt = input("How Many", ROLE_BROTHER, 2) as num|null
+		if(src.make_antag(href_list["makeAntag"], opt))
+			message_admins("[key_name_admin(usr)] created '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
+		else message_admins("[key_name_admin(usr)] FAILED to create '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
+// SKYRAT EDIT END -- ONE CLICK ANTAG
+
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))
 			return
