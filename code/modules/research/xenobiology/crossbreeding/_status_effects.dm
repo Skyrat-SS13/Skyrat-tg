@@ -715,6 +715,7 @@
 		if(clone && clone.stat != DEAD)
 			owner.visible_message("<span class='warning'>[owner] blazes with brilliant light, [linked_extract] whisking [owner.p_their()] soul away.</span>",
 				"<span class='notice'>You feel a warm glow from [linked_extract], and you open your eyes... elsewhere, Though you can't seem to remember anything leading up to how you got here.</span>") // SKYRAY - EDIT Clarifies 'respawn' text to prevent ";Goerg melons killed me!"
+			if(owner.mind)
 				owner.mind.transfer_to(clone)
 			clone = null
 			qdel(linked_extract)
