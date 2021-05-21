@@ -23,7 +23,6 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "dress_cap_s"
 	worn_icon_state = "dress_cap_s"
-	inhand_icon_state = "dress_cap_s"
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = FEMALE_UNIFORM_TOP
 
