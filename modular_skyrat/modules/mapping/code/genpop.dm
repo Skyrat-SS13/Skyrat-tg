@@ -72,7 +72,7 @@
 
 	if(!broken && locked && registered_id != null)
 		var/name = registered_id.registered_name
-		var/result = alert(user, "This locker currently contains [name]'s personal belongings ","Locker In Use","Reset","Amend ID", "Open")
+		var/result = tgui_alert(user, "This locker currently contains [name]'s personal belongings ", "Locker In Use", list("Reset", "Amend ID", "Open"))
 		if(!user.Adjacent(src))
 			return
 		if(result == "Reset")
