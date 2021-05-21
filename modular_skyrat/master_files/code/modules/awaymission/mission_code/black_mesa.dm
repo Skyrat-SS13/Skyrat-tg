@@ -613,6 +613,11 @@
 /datum/outfit/hecu/post_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	H.faction |= FACTION_XEN
+	H.hairstyle = "Crewcut"
+	H.hair_color = COLOR_ALMOST_BLACK
+	H.facial_hairstyle = "Shaved"
+	H.facial_hair_color = COLOR_ALMOST_BLACK
+	H.update_hair()
 
 /datum/id_trim/hecu
 	assignment = "HECU Soldier"
