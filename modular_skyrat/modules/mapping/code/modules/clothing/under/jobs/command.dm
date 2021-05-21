@@ -14,3 +14,16 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/captain/dress
+	name = "captain's dress"
+	desc = "It's a blue dress with some gold markings denoting the rank of \"Captain\"."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "dress_cap_s"
+	worn_icon_state = "dress_cap_s"
+	inhand_icon_state = "dress_cap_s"
+	body_parts_covered = CHEST|GROIN|ARMS
+	fitted = FEMALE_UNIFORM_TOP
+
