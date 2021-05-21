@@ -492,7 +492,10 @@ BLIND     // can't see anything
 		//so the shred survives potential turf change from the explosion.
 		addtimer(CALLBACK_NEW(/obj/effect/decal/cleanable/shreds, list(T, name)), 1)
 		deconstruct(FALSE)
-	else if(!(damage_flag in list(ACID, FIRE)))
+	//SKYRAT EDIT CHANGE BEGIN
+	//else if(!(damage_flag in list(ACID, FIRE))) - SKYRAT EDIT - ORIGINAL
+	else if(!(damage_flag in list(ACID)))
+	//SKYRAT EDIT CHANGE END
 		body_parts_covered = NONE
 		slot_flags = NONE
 		update_clothes_damaged_state(CLOTHING_SHREDDED)
