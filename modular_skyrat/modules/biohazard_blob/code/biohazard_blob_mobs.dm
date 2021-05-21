@@ -182,4 +182,3 @@
 		if(prob(20))
 			radiation_pulse(L, 300, 1, FALSE, TRUE)
 			playsound(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 60, TRUE)
-

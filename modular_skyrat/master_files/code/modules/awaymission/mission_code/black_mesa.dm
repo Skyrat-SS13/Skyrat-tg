@@ -64,29 +64,12 @@
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect2.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect3.ogg'
 	)
-
-/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid/attack_ghost(mob/dead/observer/user)
-	. = ..()
-	if(.)
-		return
-	take_control(user)
-
-/mob/living/simple_animal/hostile/blackmesa/xen/bullsquid/proc/take_control(mob/user)
-	if(key || stat)
-		return
-	var/pod_ask = alert("Become a [src]?", "Are you bulbous enough?", "Yes", "No")
-	if(pod_ask == "No" || !src || QDELETED(src))
-		return
-	if(key)
-		to_chat(user, "<span class='warning'>Someone else already took this mob!</span>")
-		return
-	key = user.key
-	log_game("[key_name(src)] took control of [name].")
+	ghost_controllable = TRUE
 
 /obj/projectile/bullsquid
 	name = "nasty ball of ooze"
 	icon_state = "neurotoxin"
-	damage = 15
+	damage = 5
 	damage_type = BURN
 	nodamage = FALSE
 	knockdown = 20
