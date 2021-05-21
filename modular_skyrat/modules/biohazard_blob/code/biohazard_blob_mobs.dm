@@ -183,21 +183,3 @@
 			radiation_pulse(L, 300, 1, FALSE, TRUE)
 			playsound(src, 'modular_skyrat/modules/horrorform/sound/effects/horror_scream.ogg', 60, TRUE)
 
-
-/mob/living/simple_animal/hostile/biohazard_blob/centaur/attack_ghost(mob/dead/observer/user)
-	. = ..()
-	if(.)
-		return
-	take_control(user)
-
-/mob/living/simple_animal/hostile/biohazard_blob/centaur/proc/take_control(mob/user)
-	if(key || stat)
-		return
-	var/pod_ask = alert("Become a [src]?", "Are you bulbous enough?", "Yes", "No")
-	if(pod_ask == "No" || !src || QDELETED(src))
-		return
-	if(key)
-		to_chat(user, "<span class='warning'>Someone else already took this mob!</span>")
-		return
-	key = user.key
-	log_game("[key_name(src)] took control of [name].")
