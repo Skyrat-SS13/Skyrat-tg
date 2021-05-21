@@ -1,3 +1,4 @@
+/*
 /datum/round_event_control/mold
 	name = "Moldies"
 	typepath = /datum/round_event/mold
@@ -53,3 +54,4 @@
 		else
 			message_admins("Mold failed to spawn.")
 			break
+*/
