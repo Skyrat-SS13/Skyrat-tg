@@ -51,7 +51,29 @@
 
 /datum/loadout_item/shoes/donator/rax_armadyne_boots
 	name = "Tactical Boots"
-	path = /obj/item/clothing/shoes/combat/peacekeeper/armadyne/rax
+	path = /obj/item/clothing/shoes/combat/rax
+	ckeywhitelist = list("raxraus")
+
+/datum/loadout_item/suit/donator/rax_peacekeeper_jacket
+	name = "Peacekeeper jacket"
+	path = /obj/item/clothing/suit/armor/vest/warden/rax
+	ckeywhitelist = list("raxraus")
+	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+
+/datum/loadout_item/suit/donator/rax_peacekeeper_turtleneck
+	name = "Peacekeeper turtleneck"
+	path = /obj/item/clothing/under/rank/security/blueshieldturtleneck/rax
+	ckeywhitelist = list("raxraus")
+	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+
+/datum/loadout_item/suit/donator/rax_aerostatic_jacket
+	name = "Navy Aerostatic Jacket"
+	path = /obj/item/clothing/suit/jacket/rax
+	ckeywhitelist = list("raxraus")
+
+/datum/loadout_item/uniform/donator/rax_gray_turtleneck
+	name = "Gray Turtleneck"
+	path = /obj/item/clothing/under/rax_turtleneck_gray
 	ckeywhitelist = list("raxraus")
 
 /datum/loadout_item/suit/donator/heparmor
