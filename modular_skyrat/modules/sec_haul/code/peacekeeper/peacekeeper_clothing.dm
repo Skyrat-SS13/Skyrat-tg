@@ -181,8 +181,7 @@
 	component_type = /datum/component/storage/concrete/peacekeeper
 
 /datum/component/storage/concrete/peacekeeper/on_alt_click(datum/source, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
-
+	SIGNAL_HANDLER
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
 		return
 	if(locked)
