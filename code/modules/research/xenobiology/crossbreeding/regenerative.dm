@@ -22,7 +22,7 @@ Regenerative extracts:
 	if(H.stat == DEAD)
 		to_chat(user, "<span class='warning'>[src] will not work on the dead!</span>")
 		return
-	if(H != user, 15 SECONDS)
+	if(H != user)
 		user.visible_message("<span class='notice'>[user] crushes [src] over [H], the milky goo quickly regenerating all of [H.p_their()] injuries!</span>",
 			"<span class='notice'>You squeeze [src], and it bursts over [H], the milky goo regenerating [H.p_their()] injuries.</span>")
 	else
