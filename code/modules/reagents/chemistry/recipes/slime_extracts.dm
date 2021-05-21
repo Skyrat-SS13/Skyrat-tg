@@ -111,7 +111,7 @@
 
 /datum/chemical_reaction/slime/slimemobspawn/lesser/summon_mobs(datum/reagents/holder, turf/T)
 	T.visible_message("<span class='danger'>The slime extract begins to vibrate violently!</span>")
-	addtimer(CALLBACK(src, .proc/chemical_mob_spawn, holder, 2, "Lesser Gold Slime", HOSTILE_SPAWN, "neutral"), 50) SKYRAT EDIT - ORIGINAL: 3
+	addtimer(CALLBACK(src, .proc/chemical_mob_spawn, holder, 2, "Lesser Gold Slime", HOSTILE_SPAWN, "neutral"), 50) // SKYRAT EDIT - ORIGINAL: 3
 
 /datum/chemical_reaction/slime/slimemobspawn/friendly
 	required_reagents = list(/datum/reagent/water = 1)
