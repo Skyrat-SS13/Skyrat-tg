@@ -148,7 +148,7 @@
 /obj/item/clothing/gloves/combat/peacekeeper
 	name = "peacekeeper gloves"
 	desc = "These tactical gloves are fireproof."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gloves"
 	worn_icon_state = "peacekeeper"
