@@ -102,7 +102,7 @@
 		new_stock.average_shares = round(rand(500, 10000) / 10)
 		new_stock.outside_shareholders = rand(1000, 30000)
 		new_stock.available_shares = rand(200000, 800000)
-		new_stock.fluctuation_rate = rand(6, 20)
+		new_stock.fluctuation_rate = rand(1, 6)
 		new_stock.generateIndustry()
 		new_stock.generateEvents()
 		stocks += new_stock
