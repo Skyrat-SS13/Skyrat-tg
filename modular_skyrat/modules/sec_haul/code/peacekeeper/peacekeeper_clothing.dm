@@ -192,7 +192,7 @@
 
 	var/obj/item/gun/ballistic/automatic/pistol/P = locate() in real_location()
 	if(!P)
-		return
+		return ..()
 	A.add_fingerprint(user)
 	remove_from_storage(P, get_turf(user))
 	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
