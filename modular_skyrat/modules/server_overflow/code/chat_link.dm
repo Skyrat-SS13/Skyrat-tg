@@ -4,7 +4,7 @@
 	if(!CONFIG_GET(flag/secondary_server_enabled))
 		return
 	var/list/ooc_information = list()
-	ooc_information["server_name"] = CONFIG_GET(string/server_two_name)
+	ooc_information["server_name"] = CONFIG_GET(string/our_server_name)
 	ooc_information["expected_ckey"] = ckey(ckey)
 	ooc_information["message"] = message
 	var/second_server = CONFIG_GET(string/server_two_ip)
@@ -25,6 +25,8 @@
 	send_ooc_message("[server_name] - [exp_ckey]", message)
 
 /proc/send_ooc_message(sender_name, message)
+	if(!GLOB.ooc_allowed)
+		return
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
 			if(GLOB.OOC_COLOR)
