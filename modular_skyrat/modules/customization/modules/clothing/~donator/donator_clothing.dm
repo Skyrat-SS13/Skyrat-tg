@@ -827,7 +827,7 @@
 	alt_covers_chest = TRUE
 
 // Donation reward for Raxraus
-/obj/item/clothing/shoes/combat/peacekeeper/armadyne/rax
+/obj/item/clothing/shoes/combat/rax
 	name = "tactical boots"
 	desc = "Tactical and sleek. This model seems to resemble Armadyne's."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
@@ -836,3 +836,31 @@
 	icon_state = "armadyne_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "armadyne_boots"
+
+// Donation reward for Raxraus
+/obj/item/clothing/suit/armor/vest/warden/rax
+	name = "peacekeeper jacket"
+	desc = "A navy-blue armored jacket with blue shoulder designations."
+
+// Donation reward for Raxraus
+/obj/item/clothing/under/rank/security/blueshieldturtleneck/rax
+	name = "peacekeeper turtleneck"
+	desc = "A cozier alternative to the normal Peacekeeper's uniform, the wool is still expensive."
+
+// Donation reward for Raxraus
+/obj/item/clothing/under/rax_turtleneck_gray
+	name = "gray turtleneck"
+	desc = "A stylish gray turtleneck."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "bs_turtleneck"
+	can_adjust = FALSE
+
+// Donation reward for Raxraus
+/obj/item/clothing/suit/jacket/rax
+	name = "Navy Aerostatic Jacket"
+	desc = "An expensive jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "blueshield"
