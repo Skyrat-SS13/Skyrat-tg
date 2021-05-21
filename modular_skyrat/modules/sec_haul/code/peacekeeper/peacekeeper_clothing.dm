@@ -190,16 +190,14 @@
 
 	var/atom/A = parent
 
-	var/obj/item/gun/ballistic/automatic/pistol/P = locate() in real_location()
-	if(!P)
+	var/obj/item/gun/ballistic/automatic/pistol/gun_to_draw = locate() in real_location()
+	if(!gun_to_draw)
 		return ..()
 	A.add_fingerprint(user)
-	remove_from_storage(P, get_turf(user))
+	remove_from_storage(gun_to_draw, get_turf(user))
 	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	if(!user.put_in_hands(P))
-		to_chat(user, "<span class='notice'>You fumble for [P] and it falls on the floor.</span>")
-		return
-	user.visible_message("<span class='warning'>[user] draws [P] from [parent]!</span>", "<span class='notice'>You draw [P] from [parent].</span>")
+	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
+	user.visible_message("<span class='warning'>[user] draws [gun_to_draw] from [parent]!</span>", "<span class='notice'>You draw [gun_to_draw] from [parent].</span>")
 
 
 /datum/component/storage/concrete/peacekeeper/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
