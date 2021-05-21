@@ -47,6 +47,8 @@
 /obj/item/multitool/ai_detect
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A special sensor embedded stealthily into this device can detect and warn of nearby silicon activity and camera vision range." // Skyrat edit
+	var/detect_state = PROXIMITY_NONE
+	var/rangealert = 8 //Glows red when inside
 	var/rangewarning = 20 //Glows yellow when inside
 	var/hud_type = DATA_HUD_AI_DETECT
 	var/hud_on = FALSE
