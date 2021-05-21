@@ -17,10 +17,16 @@
 	keyword = "incoming_ooc_message"
 	require_comms_key = TRUE
 
+/datum/world_topic/incoming_ooc_message/TryRun(list/input)
+	message_admins("CROSS COMMS MESSAGE RECIEVED TRY RUN")
+	return ..()
+
 /datum/world_topic/incoming_ooc_message/Run(list/input)
 	var/server_name = input["server_name"]
 	var/exp_ckey = ckey(input["expected_ckey"])
 	var/message = input["message"]
+
+	message_admins("CROSS COMMS MESSAGE RECIEVED")
 
 	send_ooc_message("[server_name] - [exp_ckey]", message)
 
