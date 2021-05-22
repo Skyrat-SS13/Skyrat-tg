@@ -1,5 +1,4 @@
 ///// AREAS, None of these should need power or lighting. I'd sooner die than hand-light this entire map
-
 /area/awaymission/mothership_astrum/halls
 	name = "Mothership Astrum Hallways"
 	icon_state = "away1"
@@ -33,7 +32,6 @@
 	dynamic_lighting = FALSE
 
 //Fluff Notes
-
 /obj/item/paper/fluff/awaymissions/astrum1
 	name = "Report: Combat Holodeck"
 	icon_state = "alienpaper_words"
@@ -119,9 +117,9 @@
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
 
-/mob/living/simple_animal/hostile/abductor/melee //dude with a melee weapon
+/mob/living/simple_animal/hostile/abductor/melee
 	melee_damage_lower = 10
-	melee_damage_upper = 20
+	melee_damage_upper = 25
 	icon_state = "abductor_scientist_melee"
 	icon_living = "abductor_scientist_melee"
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
@@ -143,7 +141,6 @@
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
 
 //RANGED
-
 /mob/living/simple_animal/hostile/abductor/ranged
 	name = "Abductor Scientist"
 	ranged = 1
@@ -165,8 +162,7 @@
 	health = 170
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
 
-//GHOSTROLE TIME
-
+//GHOSTROLES
 /obj/effect/mob_spawn/human/lobotomite
 	name = "lobotomite containment tube"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
@@ -196,7 +192,6 @@
 	back = /obj/item/tank/internals/anesthetic
 
 //LOOT
-
 /obj/item/crowbar/freeman
 	name = "blood soaked crowbar"
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
@@ -303,7 +298,7 @@
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, RAD = 20, FIRE = 100, ACID = 100, WOUND = 15)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-// FUCK NANITES
+// Machine that removes nanites
 /obj/machinery/scanner_gate/anti_nanite
 	name = "Advanced Scanner Gate"
 	desc = "This gate seems to be highly modified with odd markings."
@@ -327,7 +322,6 @@
 	return list("This gate seems to be highly modified with odd markings.")
 
 //Elite Fauna (I AM STEALING SO MUCH CODE FOR THIS I AM SORRY)
-
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum
 	name = "Abductor Captain"
 	desc = "The one you've come here for, finish this."
