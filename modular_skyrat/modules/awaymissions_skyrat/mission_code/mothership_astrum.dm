@@ -208,10 +208,11 @@
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
 	loot = list(/obj/item/storage/firstaid/regular = 45,
-				/obj/item/storage/firstaid/toxin = 27,
-				/obj/item/dnainjector/thermal = 5,
-				/obj/item/storage/firstaid/brute = 12,
-				/obj/item/storage/firstaid/fire = 27,
+				/obj/item/reagent_containers/syringe/penacid = 10,
+				/obj/item/reagent_containers/syringe/salacid = 20,
+				/obj/item/reagent_containers/syringe/oxandrolone = 20,
+				/obj/item/stack/medical/suture/medicated = 21,
+				/obj/item/stack/medical/mesh/advanced = 21,
 				/obj/item/storage/toolbox/syndicate = 12,
 				/obj/item/clothing/under/chameleon = 20,
 				/obj/item/shield/riot/tele = 27,
@@ -225,6 +226,7 @@
 				/obj/item/melee/transforming/energy/sword = 7,
 				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
+				/obj/item/dnainjector/thermal = 5,
 				/obj/item/melee/classic_baton/telescopic = 12,)
 
 /obj/effect/spawner/lootdrop/astrum/sciloot
@@ -241,7 +243,7 @@
 				/obj/item/wirecutters/abductor = 10,
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
-				/obj/effect/gibspawner/generic = 10)
+				/obj/effect/gibspawner/generic = 15)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
@@ -249,7 +251,7 @@
 				/obj/item/clothing/suit/armor/abductor/astrum = 10,
 				/obj/item/clothing/head/helmet/astrum = 10,
 				/obj/item/organ/cyberimp/arm/armblade = 2,
-				/obj/effect/gibspawner/generic = 10)
+				/obj/effect/gibspawner/generic = 20)
 
 /obj/item/gun/energy/alien/astrum
 	name = "alien energy pistol"
@@ -285,7 +287,7 @@
 	icon_state = "vest_combat"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 50, RAD = 50, FIRE = 90, ACID = 90)
+	armor = list(MELEE = 40, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 20, BIO = 50, RAD = 30, FIRE = 90, ACID = 90)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/head/helmet/astrum
@@ -329,6 +331,8 @@
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
 	icon_gib = "syndicate_gib"
+	health = 2000
+	maxHealth = 2000
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
