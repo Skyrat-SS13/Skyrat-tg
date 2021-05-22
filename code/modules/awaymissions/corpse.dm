@@ -41,7 +41,7 @@
 /obj/effect/mob_spawn/attack_ghost(mob/user)
 	if(!SSticker.HasRoundStarted() || !loc || !ghost_usable)
 		return
-	var/ghost_role = alert("Become [mob_name]? (Warning, You can no longer be revived!)",,"Yes","No")
+	var/ghost_role = tgui_alert(usr,"Become [mob_name]? (Warning, You can no longer be revived!)",,list("Yes","No"))
 	if(ghost_role == "No" || !loc || QDELETED(user))
 		return
 	//SKYRAT EDIT ADDITION BEGIN
@@ -50,6 +50,10 @@
 
 	if(SSticker.mode.type in excluded_gamemodes)
 		to_chat(user, "<span class='warning'>Error, unable to spawn.</span>")
+		return
+
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER))
+		to_chat(user, "Error, you are banned from playing ghost roles!")
 		return
 	//SKYRAT EDIT ADDITION END
 
@@ -226,17 +230,17 @@
 	is_pref_char = null
 	if(can_use_pref_char)
 		var/initial_string = "Would you like to spawn as a randomly created character, or use the one currently selected in your preferences?"
-		var/action = alert(user, initial_string, "", "Use Random Character", "Use Character From Preferences")
+		var/action = tgui_alert(user, initial_string, "", list("Use Random Character", "Use Character From Preferences"))
 		if(action && action == "Use Character From Preferences")
 			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
-			var/action2 = alert(user, warning_string, "", "Yes", "No")
+			var/action2 = tgui_alert(user, warning_string, "", list("Yes", "No"))
 			if(action2 && action2 == "Yes")
 				is_pref_char = TRUE
 			else
 				return FALSE
 
 	if(can_use_alias)
-		var/action = alert(user, "Would you like to use an alias?\nIf you do, your name will be changed to that", "", "Dont Use Alias", "Use Alias")
+		var/action = tgui_alert(user, "Would you like to use an alias?\nIf you do, your name will be changed to that", "", list("Dont Use Alias", "Use Alias"))
 		if(action && action == "Use Alias")
 			var/msg = reject_bad_name(input(user, "Set your character's alias for this role", "Alias") as text|null)
 			if(!msg)

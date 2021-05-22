@@ -551,6 +551,11 @@
 	path = /obj/item/clothing/under/rank/captain/humble
 	restricted_roles = list("Captain")
 
+/datum/loadout_item/uniform/job/captaindress
+	name = "Captain's Dress"
+	path = /obj/item/clothing/under/rank/captain/dress
+	restricted_roles = list("Captain")
+
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
  	path = /obj/item/clothing/under/rank/prisoner/lowsec

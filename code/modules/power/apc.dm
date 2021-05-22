@@ -58,6 +58,15 @@
 /// The wire value used to reset the APCs wires after one's EMPed.
 #define APC_RESET_EMP "emp"
 
+// Arcing: - SKYRAT EDIT ADD
+/// Lower excess value for APC arcing, 5% chance to arc
+#define APC_ARC_LOWERLIMIT 2500000
+/// Moderate excess value for APC arcing, 10% chance to arc
+#define APC_ARC_MEDIUMLIMIT 5000000
+/// Upper excess value for for APC arcing, 15% chance to arc
+#define APC_ARC_UPPERLIMIT 7500000
+// SKYRAT EDIT ADD END
+
 // update_state
 // Bitshifts: (If you change the status values to be something other than an int or able to exceed 3 you will need to change these too)
 /// The bit shift for the APCs cover status.
@@ -160,6 +169,8 @@
 	var/update_overlay = -1
 	var/icon_update_needed = FALSE
 	var/obj/machinery/computer/apc_control/remote_control = null
+
+	var/shock_proof = FALSE // SKYRAT EDIT ADD - APC Arcing. If TRUE, APCs will not arc.
 
 /obj/machinery/power/apc/unlocked
 	locked = FALSE
@@ -728,6 +739,20 @@
 		return
 	else if(panel_open && !opened && is_wire_tool(W))
 		wires.interact(user)
+	// SKYRAT EDIT ADD - SHOCK-PROOFING APCS
+	else if(istype(W, /obj/item/stack/sheet/bronze) && panel_open)
+		if(shock_proof)
+			to_chat(user, "<span class='warning'>This APC has already been shock proofed!</span>")
+		else
+			var/obj/item/stack/sheet/bronze/bronze = W
+			bronze.use(1)
+			to_chat(user, "<span class='notice'>You form the bronze sheet into a grounding component, preventing the APC from arcing!</span>")
+			shock_proof = TRUE
+	else if(W.tool_behaviour == TOOL_WRENCH && panel_open && shock_proof)
+		to_chat(user, "<span class='notice'>You unwrench the grounding component and discard it!</span>")
+		shock_proof = FALSE
+		W.play_tool_sound(src, 50)
+	//SKYRAT EDIT END
 	else
 		return ..()
 
@@ -1192,7 +1217,7 @@
 	user.visible_message("<span class='notice'>[user] slots [card] into [src]...</span>", "<span class='notice'>Transfer process initiated. Sending request for AI approval...</span>")
 	playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 	SEND_SOUND(occupier, sound('sound/misc/notice2.ogg')) //To alert the AI that someone's trying to card them if they're tabbed out
-	if(alert(occupier, "[user] is attempting to transfer you to \a [card.name]. Do you consent to this?", "APC Transfer", "Yes - Transfer Me", "No - Keep Me Here") == "No - Keep Me Here")
+	if(tgui_alert(occupier, "[user] is attempting to transfer you to \a [card.name]. Do you consent to this?", "APC Transfer", list("Yes - Transfer Me", "No - Keep Me Here")) == "No - Keep Me Here")
 		to_chat(user, "<span class='danger'>AI denied transfer request. Process terminated.</span>")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
 		transfer_in_progress = FALSE
@@ -1362,6 +1387,23 @@
 		else // chargemode off
 			charging = APC_NOT_CHARGING
 			chargecount = 0
+
+		if(excess >= APC_ARC_LOWERLIMIT && !shock_proof) // SKYRAT EDIT ADD - APC Arcing
+			var/shock_chance = 5 // 5%
+			if(excess >= APC_ARC_UPPERLIMIT)
+				shock_chance = 15
+			else if(excess >= APC_ARC_MEDIUMLIMIT)
+				shock_chance = 10
+			if(prob(shock_chance))
+				var/list/shock_mobs = list()
+				for(var/creature in view(get_turf(src), 5)) //We only want to shock a single random mob in range, not every one.
+					if(isliving(creature))
+						shock_mobs += creature
+				if(shock_mobs.len)
+					var/mob/living/living_target = pick(shock_mobs)
+					living_target.electrocute_act(rand(5, 25), "electrical arc")
+					playsound(get_turf(living_target), 'sound/magic/lightningshock.ogg', 75, TRUE)
+					Beam(living_target, icon_state = "lightning[rand(1, 12)]", icon = 'icons/effects/beam.dmi', time = 5) // SKYRAT EDIT ADD END
 
 	else // no cell, switch everything off
 
