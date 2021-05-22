@@ -59,10 +59,11 @@ const CrewList = (props, context) => {
 const ItemList = (props, context) => {
   const { act, data } = useBackend(context);
   const { ref_list, ref_name, ref_allw } = data;
-  if(!ref_allw)
+  if (!ref_allw) {
     return (
       <NoticeBox>You are not authorized for item management.</NoticeBox>
     );
+  }
   return (
     ref_list.length && (
       <Section fill scrollable>
