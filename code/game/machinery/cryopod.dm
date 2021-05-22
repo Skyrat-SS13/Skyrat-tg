@@ -24,6 +24,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	// Used for logging people entering cryosleep and important items they are carrying.
 	var/list/frozen_crew = list()
+// Skyrat Edit Addition - Cryostorage stores items.
+	var/list/frozen_item = list()
+// Skyrat Edit End
 
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
@@ -58,6 +61,19 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/list/data = list()
 	data["frozen_crew"] = frozen_crew
 
+// Skyrat Edit Addition - Cryostorage stores items.
+	var/list/ref_list = list()
+	var/list/ref_name = list()
+
+	for(var/obj/item/item in frozen_item)
+		var/ref = REF(item)
+		ref_list += ref
+		ref_name[ref] = item.name
+
+	data["ref_list"] = ref_list
+	data["ref_name"] = ref_name
+// Skyrat Edit End
+
 	var/obj/item/card/id/id_card
 	var/datum/bank_account/current_user
 	if(isliving(user))
@@ -69,6 +85,28 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		data["account_name"] = current_user.account_holder
 
 	return data
+
+// Skyrat Edit Addition - Cryostorage stores items.
+/obj/machinery/computer/cryopod/ui_act(action, list/params)
+	. = ..()
+	if(.)
+		return
+	switch(action)
+		if("item_get")
+			var/item_get = params["item_get"]
+			var/obj/item/item = locate(item_get)
+			if(item in frozen_item)
+				item.forceMove(drop_location())
+				frozen_item.Remove(item_get, item)
+				visible_message("[src] dispenses \the [item].")
+				message_admins("[item] was retrieved from cryostorage at [ADMIN_COORDJMP(src)]")
+			else
+				CRASH("Invalid REF# for ui_act. Not inside internal list!")
+			return TRUE
+
+		else
+			CRASH("Illegal action for ui_act: '[action]'")
+// Skyrat Edit End
 
 // Cryopods themselves.
 /obj/machinery/cryopod
@@ -257,7 +295,14 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(!istype(item_content))
 			continue
 
-		mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+// Skyrat Edit Addition - Cryostorage stores items.
+// Original is just the else statement.
+		if(control_computer)
+			item_content.dropped()
+			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
+			control_computer.frozen_item += item_content
+		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
+// Skyrat Edit End
 
 	// Ghost and delete the mob.
 	if(!mob_occupant.get_ghost(TRUE))
