@@ -30,7 +30,6 @@
 
 	var/list/vines = list()
 
-	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
 
 /obj/structure/alien/resin/flower_bud/Initialize()
 	. = ..()
@@ -139,6 +138,8 @@
 	var/vine_grab_distance = 4 //SKYRAT EDIT - Original 5
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
+
+	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
 
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
