@@ -7,8 +7,8 @@ export const CryopodConsole = (props, context) => {
   const { account_name } = data;
 
   const welcomeTitle = `Hello, ${account_name || '[REDACTED]'}!`;
-// Skyrat Edit Addition - Cryostorage stores items.
-// Original does not contain <ItemList /> or its containing Stack.Item
+  // Skyrat Edit Addition - Cryostorage stores items.
+  // Original does not contain <ItemList /> or its containing Stack.Item
   return (
     <Window title="Cryopod Console" width={400} height={480}>
       <Window.Content>
@@ -70,7 +70,7 @@ const ItemList = (props, context) => {
                 icon="exclamation-circle"
                 content="Retrieve"
                 color="bad"
-                onClick={() => act('item_get', {item_get: item})} />
+                onClick={() => act('item_get', { item_get: item })} />
             </LabeledList.Item>
           ))}
         </LabeledList>
@@ -78,6 +78,6 @@ const ItemList = (props, context) => {
     ) || (
       <NoticeBox>No stored items!</NoticeBox>
     )
-  )
+  );
 };
 // Skyrat Edit End
