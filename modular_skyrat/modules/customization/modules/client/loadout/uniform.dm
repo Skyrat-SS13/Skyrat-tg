@@ -311,6 +311,10 @@
 	name = "Red skirt"
 	path = /obj/item/clothing/under/dress/skirt/red
 
+/datum/loadout_item/uniform/skirt/curatorthing
+	name = "Sensible Suitskirt"
+	path = /obj/item/clothing/under/rank/civilian/curator/skirt
+
 /datum/loadout_item/uniform/skirt/skirtpurple
 	name = "Purple skirt"
 	path = /obj/item/clothing/under/dress/skirt/purple
@@ -545,6 +549,11 @@
 /datum/loadout_item/uniform/job/humblecaptain
 	name = "Humble Captain Jumpsuit"
 	path = /obj/item/clothing/under/rank/captain/humble
+	restricted_roles = list("Captain")
+
+/datum/loadout_item/uniform/job/captaindress
+	name = "Captain's Dress"
+	path = /obj/item/clothing/under/rank/captain/dress
 	restricted_roles = list("Captain")
 
 /datum/loadout_item/uniform/job/lowprison
