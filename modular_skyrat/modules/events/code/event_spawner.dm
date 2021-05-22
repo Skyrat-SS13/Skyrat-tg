@@ -27,6 +27,9 @@
 	if(ckey_whitelist && !(lowertext(user.ckey) in ckey_whitelist))
 		alert(user, "Sorry, This spawner is not for you!", "", "Ok")
 		return
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER))
+		to_chat(user, "Error, you are banned from playing ghost roles!")
+		return
 	var/species_string
 	if(species_whitelist)
 		species_string = ""
