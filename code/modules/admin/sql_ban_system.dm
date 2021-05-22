@@ -350,7 +350,10 @@
 			"Skyrat Ban Options" = list(
 				BAN_PACIFICATION,
 				BAN_DONOTREVIVE,
-				BAN_RESPAWN
+				BAN_RESPAWN,
+				BAN_MOB_CONTROL,
+				BAN_GHOST_ROLE_SPAWNER,
+				BAN_GHOST_TAKEOVER
 			),//SKYRAT EDIT ADDITION - EXTRA_BANS
 		)
 		for(var/department in long_job_lists)
