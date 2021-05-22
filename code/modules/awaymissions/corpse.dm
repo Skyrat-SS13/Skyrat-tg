@@ -51,6 +51,10 @@
 	if(SSticker.mode.type in excluded_gamemodes)
 		to_chat(user, "<span class='warning'>Error, unable to spawn.</span>")
 		return
+
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER))
+		to_chat(user, "Error, you are banned from playing ghost roles!")
+		return
 	//SKYRAT EDIT ADDITION END
 
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
