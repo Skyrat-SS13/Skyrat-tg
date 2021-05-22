@@ -30,6 +30,8 @@
 
 	var/list/vines = list()
 
+	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
+
 /obj/structure/alien/resin/flower_bud/Initialize()
 	. = ..()
 	countdown = new(src)
@@ -185,7 +187,7 @@
 	. = ..()
 	if(. || !(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
 		return
-	humanize_plant(user)
+	//humanize_plant(user) SKYRAT EDIT REMOVAL
 
 /**
  * Sets a ghost to control the plant if the plant is eligible
