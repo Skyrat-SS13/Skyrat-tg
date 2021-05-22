@@ -23,6 +23,7 @@
 /area/awaymission/mothership_astrum/deck4
 	name = "Mothership Astrum Xeno Studies Holodeck"
 	icon_state = "away4"
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = FALSE
 
 /area/awaymission/mothership_astrum/deck5
@@ -178,9 +179,14 @@
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/lobotomite
 	short_desc = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
-	flavour_text = "Your head hurts, something feels different, you want to go home. \
-	Thinking about home, you can't remember where that is, or if it even existed. \
-	Your goal is to find out who you are, and escape from this place, work with anyone friendly you can find."
+	flavour_text = "You are the Lobotomite. \
+	Do not explore the gateway. \
+	Do not touch anything in the gateway. \
+	Do not use anything in the gateway.\
+	This is not meant to be a protagonist or an antagonist.\
+	You are meant to work with the exploration team.\
+	Do not attack anything in the gateway except in self-defense.\
+	DO NOT TOUCH ANYTHING IN THE GATEWAY."
 	assignedrole = "Lobotomite"
 
 /datum/outfit/lobotomite
@@ -196,10 +202,10 @@
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
 	icon_state = "crowbar"
-	force = 40
+	force = 35
 	throwforce = 45
 	toolspeed = 0
-	wound_bonus = 30
+	wound_bonus = 10
 	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	force_opens = TRUE
@@ -245,10 +251,10 @@
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
 	loot = list(/obj/item/gun/energy/alien/astrum = 10,
-				/obj/item/clothing/suit/armor/abductor/astrum = 5,
-				/obj/item/clothing/head/helmet/abductor = 5,
-				/obj/item/organ/cyberimp/arm/armblade = 1,
-				/obj/effect/gibspawner/generic = 20)
+				/obj/item/clothing/suit/armor/abductor/astrum = 10,
+				/obj/item/clothing/head/helmet/astrum = 10,
+				/obj/item/organ/cyberimp/arm/armblade = 2,
+				/obj/effect/gibspawner/generic = 10)
 
 /obj/item/gun/energy/alien/astrum
 	name = "alien energy pistol"
@@ -266,7 +272,6 @@
 	icon_state = "alienblaster"
 	inhand_icon_state = "alienblaster"
 	pin = /obj/item/firing_pin
-	cell_type = /obj/item/stock_parts/cell/emproof
 	selfcharge = 1
 
 /obj/item/gun/energy/alien/astrum
@@ -323,35 +328,27 @@
 
 //Elite Fauna (I AM STEALING SO MUCH CODE FOR THIS I AM SORRY)
 
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor
+/mob/living/simple_animal/hostile/megafauna/hierophant/astrum
 	name = "Abductor Captain"
 	desc = "The one you've come here for, finish this."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/abductors.dmi'
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
-	icon_aggro = "abductor_agent_combat"
-	icon_dead = "pandora_dead"
 	icon_gib = "syndicate_gib"
 	health_doll_icon = "pandora"
-	maxHealth = 1500
-	health = 1500
-	melee_damage_lower = 25
-	melee_damage_upper = 25
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
-	throw_message = "doesn't do anything to"
-	speed = 4
-	move_to_delay = 8
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
+	gps_name = "Captain's Signal"
 
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/P)
+/mob/living/simple_animal/hostile/megafauna/hierophant/astrum/bullet_act(obj/projectile/P)
 	apply_damage(P.damage, P.damage_type)
 	return // no more reduction
 
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/death(gibbed)
+/mob/living/simple_animal/hostile/megafauna/hierophant/astrum/death(gibbed)
 	spawn_gibs()
 	spawn_gibs()
 	new /obj/item/key/gateway/home(src.loc)
