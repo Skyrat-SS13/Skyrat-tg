@@ -1,23 +1,31 @@
 /datum/surgery/advanced/necrotic_revival
 	name = "Necrotic Revival"
 	desc = "An experimental surgical procedure that stimulates the growth of a Romerol tumor inside the patient's brain. Requires zombie powder or rezadone."
-	steps = list(/datum/surgery_step/incise,
-				/datum/surgery_step/retract_skin,
-				/datum/surgery_step/saw,
-				/datum/surgery_step/clamp_bleeders,
-				/datum/surgery_step/bionecrosis,
-				/datum/surgery_step/close)
+	steps = list(
+		/datum/surgery_step/incise,
+		/datum/surgery_step/retract_skin,
+		/datum/surgery_step/saw,
+		/datum/surgery_step/clamp_bleeders,
+		/datum/surgery_step/bionecrosis,
+		/datum/surgery_step/close)
 
 	possible_locs = list(BODY_ZONE_HEAD)
 
 /datum/surgery/advanced/necrotic_revival/can_start(mob/user, mob/living/carbon/target)
 	. = ..()
+<<<<<<< HEAD
 	if(target.GetComponent(/datum/component/mutant_infection)) //SKYRAT EDIT CHANGE
+=======
+	var/obj/item/organ/zombie_infection/z_infection = target.getorganslot(ORGAN_SLOT_ZOMBIE)
+	if(z_infection)
+>>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 		return FALSE
 
 /datum/surgery_step/bionecrosis
 	name = "start bionecrosis"
-	implements = list(/obj/item/reagent_containers/syringe = 100, /obj/item/pen = 30)
+	implements = list(
+		/obj/item/reagent_containers/syringe = 100,
+		/obj/item/pen = 30)
 	time = 50
 	chems_needed = list(/datum/reagent/toxin/zombiepowder, /datum/reagent/medicine/rezadone)
 	require_all_chems = FALSE
@@ -31,5 +39,11 @@
 	display_results(user, target, "<span class='notice'>You succeed in growing a romerol tumor on [target]'s brain.</span>",
 		"<span class='notice'>[user] successfully grows a romerol tumor on [target]'s brain!</span>",
 		"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
+<<<<<<< HEAD
 	try_to_zombie_infect(target) //SKYRAT EDIT CHANGE
+=======
+	if(!target.getorganslot(ORGAN_SLOT_ZOMBIE))
+		var/obj/item/organ/zombie_infection/z_infection = new()
+		z_infection.Insert(target)
+>>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 	return ..()
