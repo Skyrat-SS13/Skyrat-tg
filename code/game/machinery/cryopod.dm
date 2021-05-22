@@ -72,6 +72,16 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	data["ref_list"] = ref_list
 	data["ref_name"] = ref_name
+
+	// Check Access for item dropping.
+	var/ref_allw = FALSE
+	if(isliving(user))
+		var/mob/living/living_user = user
+		var/obj/item/card/id/id = living_user.get_idcard()
+		if(id)
+			if((ACCESS_HEADS in id.access) || (ACCESS_ARMORY in id.access))
+				ref_allw = TRUE
+	data["ref_allw"] = ref_allw
 // Skyrat Edit End
 
 	var/obj/item/card/id/id_card
