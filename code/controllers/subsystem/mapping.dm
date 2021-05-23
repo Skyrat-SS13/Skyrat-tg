@@ -196,6 +196,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	lava_ruins_templates = SSmapping.lava_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
+	asteroid_ruins_templates = SSmapping.asteroid_ruins_templates //SKYRAT EDIT ADDITION
 	shuttle_templates = SSmapping.shuttle_templates
 	shelter_templates = SSmapping.shelter_templates
 	unused_turfs = SSmapping.unused_turfs
@@ -447,6 +448,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ice_ruins_underground_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/icemoon))
 			ice_ruins_templates[R.name] = R
+//SKYRAT EDIT START//
+		else if(istype(R, /datum/map_template/ruin/asteroid))
+			asteroid_ruins_templates[R.name] = R
+//SKYRAT EDIT END//
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
 

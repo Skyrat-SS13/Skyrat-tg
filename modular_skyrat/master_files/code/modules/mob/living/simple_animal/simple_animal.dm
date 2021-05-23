@@ -12,6 +12,9 @@
 /mob/living/simple_animal/proc/take_control(mob/user)
 	if(key || stat)
 		return
+	if(is_banned_from(user.ckey, BAN_MOB_CONTROL))
+		to_chat(user, "Error, you are banned from taking control of player controlled mobs!")
+		return
 	var/query = tgui_alert("Become a [src]?", "Take mob control", list("Yes", "No"))
 	if(query == "No" || !src || QDELETED(src))
 		return
