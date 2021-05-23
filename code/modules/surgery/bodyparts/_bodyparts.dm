@@ -209,7 +209,7 @@
 		playsound(bodypart_turf, 'sound/misc/splort.ogg', 50, TRUE, -1)
 	//seep_gauze(9999) // destroy any existing gauze if any exists
 	if(current_gauze)
-	qdel(current_gauze)
+		qdel(current_gauze)
 	if(current_splint)
 		qdel(current_splint)
 	for(var/obj/item/organ/bodypart_organ in get_organs())
