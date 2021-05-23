@@ -272,16 +272,14 @@
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
+		if(JOB_NOT_TRUSTED)
+			return "You need to be trusted to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
-		if(JOB_UNAVAILABLE_QUIRK)
-			return "[jobtitle] is restricted from your quirks."
-		if(JOB_UNAVAILABLE_SPECIES)
-			return "[jobtitle] is restricted from your species."
 		if(JOB_UNAVAILABLE_QUIRK)
 			return "[jobtitle] is restricted from your quirks."
 		if(JOB_UNAVAILABLE_SPECIES)
@@ -323,6 +321,8 @@
 		return JOB_UNAVAILABLE_SPECIES
 	if(!job.has_required_languages(client.prefs))
 		return JOB_UNAVAILABLE_LANGUAGE
+	if(job.trusted_only && !is_trusted_player(client))
+		return JOB_NOT_TRUSTED
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)

@@ -164,7 +164,12 @@
 /obj/item/hand_tele/attack_self(mob/user)
 	if (!can_teleport_notifies(user))
 		return
-
+	//SKYRAT EDIT BEGIN
+	var/turf/my_turf = get_turf(src)
+	if(is_away_level(my_turf.z))
+		to_chat(user, "<span class='warning'>[src] cannot be used here!</span>")
+		return
+	//SKYRAT EDIT END
 	var/list/locations = list()
 	for(var/obj/machinery/computer/teleporter/computer in GLOB.machines)
 		if(!computer.target)
