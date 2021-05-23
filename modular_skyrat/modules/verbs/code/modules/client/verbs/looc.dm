@@ -24,6 +24,9 @@
 			to_chat(src, "<span class='boldannounce'><B>Advertising other servers is not allowed.</B></span>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
+		if(prefs.muted & MUTE_LOOC)
+			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
+			return
 		if(mob.stat)
 			to_chat(src, "<span class='danger'>You cannot use LOOC while unconscious or dead.</span>")  //Skyrat change
 			return

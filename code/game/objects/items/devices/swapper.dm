@@ -45,6 +45,12 @@
 	if(world.time < next_use)
 		to_chat(user, "<span class='warning'>[src] is still recharging.</span>")
 		return
+	//SKYRAT EDIT BEGIN
+	var/turf/my_turf = get_turf(src)
+	if(is_away_level(my_turf.z))
+		to_chat(user, "<span class='warning'>[src] cannot be used here!</span>")
+		return
+	//SKYRAT EDIT END
 	if(QDELETED(linked_swapper))
 		to_chat(user, "<span class='warning'>[src] is not linked with another swapper.</span>")
 		return
