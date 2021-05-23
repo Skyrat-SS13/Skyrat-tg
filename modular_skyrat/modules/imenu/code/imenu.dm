@@ -35,9 +35,14 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	return TRUE
 
 /datum/interaction/proc/act(mob/living/user, mob/living/target)
+	var/msg
+	if(islist(message))
+		msg = pick(message)
+	else msg = message
 	// We replace %USER% with nothing because manual_emote already prepends it.
-	var/msg = truncate(message, INTERACTION_MAX_CHAR)
-	user.manual_emote(trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", "")))
+	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""))
+	msg = truncate(msg, INTERACTION_MAX_CHAR)
+	user.manual_emote(msg)
 	if(sound_use)
 		if(isnull(sound))
 			message_admins("Interaction has sound_use set to TRUE but does not set sound! '[name]'")
