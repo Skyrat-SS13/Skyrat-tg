@@ -4,13 +4,15 @@
 /area/template_noop)
 "c" = (
 /obj/machinery/door/airlock,
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "d" = (
-/obj/structure/table,
-/turf/open/floor/iron,
+/obj/machinery/computer/arcade/orion_trail{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
@@ -20,7 +22,7 @@
 	dir = 4;
 	name = "Communications Console"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
@@ -29,7 +31,7 @@
 	desc = "Obviously, by the images, this console controls the outside solar panels, but the language it uses is unknown to you.";
 	name = "Solar Panel Control"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
@@ -74,43 +76,52 @@
 	pixel_x = -5;
 	pixel_y = 4
 	},
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "m" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "o" = (
 /obj/machinery/light,
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "p" = (
 /obj/item/gps/spaceruin,
-/turf/open/floor/iron,
+/obj/structure/rack,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "r" = (
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/powered{
+	name = "Unexplored Location"
+	})
+"t" = (
+/obj/structure/table,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "u" = (
 /obj/structure/table,
-/obj/item/tank/jetpack/oxygen,
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "x" = (
 /obj/machinery/light/small,
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
@@ -122,14 +133,22 @@
 	name = "Unexplored Location"
 	})
 "B" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/open/floor/iron,
+/obj/machinery/suit_storage_unit/open,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "J" = (
-/obj/machinery/power/solar/fake,
 /turf/open/floor/iron/solarpanel/airless,
+/area/ruin/space/has_grav/powered{
+	name = "Unexplored Location"
+	})
+"N" = (
+/obj/structure/table,
+/obj/item/tank/jetpack/oxygen{
+	pixel_y = 4
+	},
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
@@ -139,30 +158,35 @@
 /area/template_noop)
 "Q" = (
 /obj/structure/table,
-/obj/item/clothing/shoes/magboots,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/iron,
+/obj/item/clothing/shoes/magboots/syndie,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "R" = (
 /obj/structure/bed,
 /obj/item/bedsheet/syndie,
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/powered{
+	name = "Unexplored Location"
+	})
+"T" = (
+/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "V" = (
-/turf/closed/wall,
+/turf/closed/wall/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
 "W" = (
 /obj/structure/closet,
 /obj/item/paper/pamphlet/violent_video_games,
-/turf/open/floor/iron,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered{
 	name = "Unexplored Location"
 	})
@@ -216,7 +240,7 @@ a
 V
 V
 r
-r
+T
 r
 V
 V
@@ -233,7 +257,7 @@ a
 V
 Q
 r
-r
+T
 r
 i
 V
@@ -250,7 +274,7 @@ Z
 V
 u
 r
-r
+T
 r
 i
 V
@@ -267,7 +291,7 @@ V
 V
 B
 r
-r
+T
 r
 i
 V
@@ -284,7 +308,7 @@ V
 g
 r
 r
-r
+T
 r
 i
 V
@@ -301,7 +325,7 @@ c
 r
 r
 r
-r
+T
 r
 o
 V
@@ -318,7 +342,7 @@ V
 p
 r
 r
-r
+T
 r
 i
 V
@@ -335,7 +359,7 @@ V
 V
 B
 r
-r
+T
 r
 i
 V
@@ -350,9 +374,9 @@ Z
 Z
 Z
 V
-u
+N
 r
-r
+T
 r
 i
 V
@@ -367,9 +391,9 @@ Z
 a
 a
 V
-Q
+t
 r
-r
+T
 r
 i
 V
@@ -386,7 +410,7 @@ a
 V
 V
 r
-r
+T
 r
 V
 V
