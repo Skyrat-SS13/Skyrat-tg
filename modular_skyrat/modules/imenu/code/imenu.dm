@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	set category = "IC"
 	set name = "Interact"
 
-	if(isobserver(usr))
+	if(isobserver(usr) || isdead(usr) || !usr.stat)
 		to_chat(usr, "You are dead.")
 		return
 
