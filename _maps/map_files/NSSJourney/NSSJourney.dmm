@@ -4412,7 +4412,7 @@
 	},
 /area/commons/dorms)
 "avS" = (
-/obj/item/circuitboard/machine/stasis,
+/obj/item/circuitboard/machine/stasissleeper,
 /obj/item/wrench,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/white,
@@ -22056,6 +22056,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "bxU" = (
@@ -22064,6 +22067,9 @@
 "bxV" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
+	},
+/obj/machinery/stasissleeper{
+	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
@@ -22610,12 +22616,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white,
-/area/medical/medbay/central)
-"bAt" = (
-/obj/effect/turf_decal/trimline/blue/filled/corner{
-	dir = 1
-	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "bAu" = (
@@ -23286,7 +23286,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/structure/bed/pod,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount/directional/south,
 /turf/open/floor/iron,
 /area/medical/medbay/central)
@@ -24970,6 +24973,7 @@
 /obj/effect/turf_decal/tile/blue/darkblue{
 	dir = 4
 	},
+/obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "bHT" = (
@@ -43736,7 +43740,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/structure/cable,
 /obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron,
@@ -44207,7 +44214,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron,
 /area/medical/medbay/central)
@@ -48437,7 +48447,7 @@
 	id = "isolationshutter";
 	name = "Isolation Shutter";
 	pixel_y = 23;
-	req_access_txt = "63" 
+	req_access_txt = "63"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -94542,7 +94552,7 @@ boc
 bqX
 bfG
 eWr
-bAt
+bCS
 bhh
 bzX
 eIN
@@ -95316,7 +95326,7 @@ odp
 eIN
 bxV
 kvh
-bAt
+bCS
 bCS
 bfG
 wtb
