@@ -45,6 +45,6 @@
 	return user.has_active_hand()
 
 /datum/interaction/handshake/fistbumb
-	name = "Fistbumb"
+	name = "Fistbump"
 	category = INTERACTION_CAT_NONE
 	message = "%USER% bumbs %TARGET%'s fist with theirs!"
