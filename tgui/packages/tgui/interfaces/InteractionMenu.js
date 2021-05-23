@@ -6,7 +6,7 @@ export const InteractionMenu = (props, context) => {
   const { act, data } = useBackend(context);
   const { nones } = data; // Interaction categories
   const { self, ref_self, ref_user } = data;
-  const { block_interact } = data
+  const { block_interact } = data;
 
   return (
     <Window width={400} height={600} title={"Interact - " + self}>
