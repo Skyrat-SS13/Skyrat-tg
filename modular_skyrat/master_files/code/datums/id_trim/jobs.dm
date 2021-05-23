@@ -6,7 +6,7 @@
 /datum/id_trim/job/warden
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 
-/datum/id_trim/job/security_officer 
+/datum/id_trim/job/security_officer
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 
 /datum/id_trim/job/head_of_security/New()
