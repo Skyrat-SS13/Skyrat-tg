@@ -144,6 +144,9 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	if(!cell_can_be_removed)
 		return
 
+	if(!isliving(user))
+		return
+
 	if(inserted_cell)
 		to_chat(user, "<span class='notice'>You remove [inserted_cell] from [equipment]!</span>")
 		playsound(equipment, 'sound/weapons/magout.ogg', 40, TRUE)
