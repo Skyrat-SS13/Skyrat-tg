@@ -139,7 +139,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	for(var/interaction in GLOB.interaction_instances)
 		if(GLOB.interaction_instances[interaction].name == params["interaction"])
 			GLOB.interaction_instances[interaction].act(locate(params["userref"]), locate(params["selfref"]))
-			var/datum/component/interactable/int = locate(params["userref"]).GetComponent(/datum/component/interactable)
+			var/mob/living/user = locate(params["userref"])
+			var/datum/component/interactable/int = user.GetComponent(/datum/component/interactable)
 			int.interact_last = world.time
 			int.interact_next = int.interact_last + INTERACTION_COOLDOWN
 			return TRUE
