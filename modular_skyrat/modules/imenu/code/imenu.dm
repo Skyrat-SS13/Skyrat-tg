@@ -6,6 +6,8 @@
 #define INTERACTION_CAT_HIDE "hide"
 #define INTERACTION_CAT_NONE "none"
 
+#define INTERACTION_JSON_FOLDER "modular_skyrat/modules/imenu/interactions/"
+
 GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 #define INTERACTION_MAX_CHAR 255
@@ -18,18 +20,68 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		var/datum/interaction/interaction = new spath()
 		if(interaction.category == INTERACTION_CAT_HIDE)
 			continue
-		GLOB.interaction_instances[spath] = interaction
+		GLOB.interaction_instances[interaction.name] = interaction
+	populate_interaction_jsons(INTERACTION_JSON_FOLDER)
+
+/proc/populate_interaction_jsons(directory)
+	for(var/file in flist(directory))
+		message_admins(directory + file)
+		if(flist(directory + file) && !findlasttext(directory + file, ".json"))
+			populate_interaction_instances(directory + file)
+			continue
+		var/datum/interaction/int = new()
+		if(int.load_from_json(directory + file))
+			message_admins(int.name)
+			GLOB.interaction_instances[int.name] = int
+		else message_admins("Error loading interaction from file: '[directory + file]'. Inform coders.")
+
+/datum/interaction/proc/load_from_json(path)
+	message_admins("Attempting to load '[path]'")
+	var/fpath = path
+	if(!fexists(fpath))
+		message_admins("Attempted to load an interaction from json and the file does not exist")
+		qdel(src)
+		return FALSE
+	var/file = file(fpath)
+	var/list/json = json_load(file)
+	name = sanitize_text(json["name"])
+	distance_allowed = sanitize_integer(json["distance_allowed"], 0, 1, 0)
+	message = sanitize_islist(json["message"], list("json error"))
+	category = sanitize_text(json["category"])
+	usage = sanitize_text(json["usage"])
+	sound_use = sanitize_integer(json["sound_use"], 0, 1, 0)
+	sound_range = sanitize_integer(json["sound_range"], 1, 7, 1)
+	sound_possible = sanitize_islist(json["sound_possible"], list("json error"))
+	return TRUE
+
+/datum/interaction/proc/json_save(path)
+	var/fpath = path
+	if(fexists(fpath))
+		fdel(fpath)
+	var/list/json = list(
+		"name" = name,
+		"distance_allowed" = distance_allowed,
+		"message" = message,
+		"category" = category,
+		"usage" = usage,
+		"sound_use" = sound_use,
+		"sound_range" = sound_range,
+		"sound_possible" = sound_possible
+	)
+	var/file = file(fpath)
+	WRITE_FILE(file, json_encode(json))
+	return TRUE
 
 /datum/interaction
-	var/name = "default interaction"
+	var/name = "broken interaction"
 	var/distance_allowed = FALSE
-	var/message = "not implemented"
+	var/message = list()
 	var/category = INTERACTION_CAT_HIDE
 	var/usage = INTERACTION_OTHER
 	var/sound_use = FALSE
 	var/sound_range = 1
 	var/sound_cache = null
-	var/sound = null
+	var/sound_possible = list()
 
 /datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
 	return TRUE
@@ -44,12 +96,12 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	msg = truncate(msg, INTERACTION_MAX_CHAR)
 	user.manual_emote(msg)
 	if(sound_use)
-		if(isnull(sound))
+		if(isnull(sound_possible))
 			message_admins("Interaction has sound_use set to TRUE but does not set sound! '[name]'")
 			return
-		else if(islist(sound))
-			sound_cache = sound(pick(sound))
-		else sound_cache = sound(sound)
+		else if(islist(sound_possible))
+			sound_cache = sound(pick(sound_possible))
+		else sound_cache = sound(sound_possible)
 		for(var/mob/mob in view(sound_range, user))
 			SEND_SOUND(sound_cache, mob)
 
@@ -137,7 +189,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		return
 	populate_interaction_instances()
 	for(var/interaction in GLOB.interaction_instances)
-		if(GLOB.interaction_instances[interaction].name == params["interaction"])
+		if(interaction == params["interaction"])
 			GLOB.interaction_instances[interaction].act(locate(params["userref"]), locate(params["selfref"]))
 			var/mob/living/user = locate(params["userref"])
 			var/datum/component/interactable/int = user.GetComponent(/datum/component/interactable)
