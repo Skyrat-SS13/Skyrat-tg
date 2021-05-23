@@ -8,6 +8,9 @@
 
 GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
+#define INTERACTION_MAX_CHAR 255
+#define INTERACTION_COOLDOWN 0.5 SECONDS
+
 /proc/populate_interaction_instances()
 	if(GLOB.interaction_instances.len)
 		return
@@ -33,7 +36,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 /datum/interaction/proc/act(mob/living/user, mob/living/target)
 	// We replace %USER% with nothing because manual_emote already prepends it.
-	user.manual_emote(trim(replacetext(replacetext(message, "%TARGET%", "[target]"), "%USER%", "")))
+	var/msg = truncate(message, INTERACTION_MAX_CHAR)
+	user.manual_emote(trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", "")))
 	if(sound_use)
 		if(isnull(sound))
 			message_admins("Interaction has sound_use set to TRUE but does not set sound! '[name]'")
@@ -46,6 +50,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 /datum/component/interactable
 	var/mob/self = null
+	var/interact_last = 0
+	var/interact_next = 0
 
 /datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/user)
 	if(!interaction.allow_act(user, self))
@@ -117,7 +123,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
 	data["nones"] = nones
-
+	data["block_interact"] = interact_next >= world.time
 	return data
 
 /datum/component/interactable/ui_act(action, list/params)
@@ -128,5 +134,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	for(var/interaction in GLOB.interaction_instances)
 		if(GLOB.interaction_instances[interaction].name == params["interaction"])
 			GLOB.interaction_instances[interaction].act(locate(params["userref"]), locate(params["selfref"]))
+			var/datum/component/interactable/int = locate(params["userref"]).GetComponent(/datum/component/interactable)
+			int.interact_last = world.time
+			int.interact_next = int.interact_last + INTERACTION_COOLDOWN
 			return TRUE
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
