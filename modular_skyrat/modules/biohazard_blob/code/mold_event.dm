@@ -18,7 +18,7 @@
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
-	var/molds2spawn = rand(2, 3)
+	var/molds2spawn = rand(1, 2)
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
