@@ -449,19 +449,14 @@
 			limb.brutestate = 0
 			limb.burnstate = 0
 
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(dna?.species && (ROBOTIC_LIMBS in dna.species.species_traits))
-			L.change_bodypart_status(BODYPART_ROBOTIC)
+			limb.change_bodypart_status(BODYPART_ROBOTIC)
 		if(dna?.mutant_bodyparts["legs"] && dna.mutant_bodyparts["legs"][MUTANT_INDEX_NAME] == "Digitigrade Legs")
-			L.use_digitigrade = FULL_DIGITIGRADE
+			limb.use_digitigrade = FULL_DIGITIGRADE
 		//SKYRAT EDIT ADDITION END
-		if(!L.attach_limb(src, 1))
-			qdel(L)
-=======
 		if(!limb.attach_limb(src, 1))
 			qdel(limb)
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 			return FALSE
 		var/datum/scar/scaries = new
 		var/datum/wound/loss/phantom_loss = new // stolen valor, really
