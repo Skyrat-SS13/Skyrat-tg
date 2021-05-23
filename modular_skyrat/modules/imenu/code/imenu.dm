@@ -78,7 +78,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	set name = "Interact"
 
 	if(isobserver(usr))
-		message_admins("You are dead.")
+		to_chat(usr, "You are dead.")
 		return
 
 	var/datum/component/interactable/int = GetComponent(/datum/component/interactable)
@@ -111,7 +111,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		return
 	populate_interaction_instances()
 	for(var/p in params)
-		message_admins("[p] = [params[p]]")
 	for(var/interaction in GLOB.interaction_instances)
 		if(GLOB.interaction_instances[interaction].name == params["interaction"])
 			GLOB.interaction_instances[interaction].act(locate(params["userref"]), locate(params["selfref"]))
