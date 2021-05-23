@@ -66,13 +66,9 @@
 	icon_state = "kitty"
 	damage_multiplier = 2
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
-/obj/item/organ/ears/cat/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
-=======
 /obj/item/organ/ears/cat/Insert(mob/living/carbon/human/ear_owner, special = 0, drop_if_replaced = TRUE)
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 	..()
 	if(istype(ear_owner))
 		color = ear_owner.hair_color
@@ -81,21 +77,13 @@
 
 /obj/item/organ/ears/cat/Remove(mob/living/carbon/human/ear_owner,  special = 0)
 	..()
-<<<<<<< HEAD
-	if(istype(H))
-		color = H.hair_color
-		H.dna.features["ears"] = "None"
-		H.dna.species.mutant_bodyparts -= "ears"
-		H.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	if(istype(ear_owner))
 		color = ear_owner.hair_color
 		ear_owner.dna.features["ears"] = "None"
 		ear_owner.dna.species.mutant_bodyparts -= "ears"
 		ear_owner.update_body()
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/organ/ears/penguin
 	name = "penguin ears"

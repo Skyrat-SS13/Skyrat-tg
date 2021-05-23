@@ -245,16 +245,8 @@
 				if(swap_back)
 					uniform.adjusted = NORMAL_STYLE
 				else
-<<<<<<< HEAD
-					U.adjusted = DIGITIGRADE_STYLE
-				H.update_inv_w_uniform()
-		/* SKYRAT EDIT REMOVAL
-		if(H.shoes && !swap_back)
-			H.dropItemToGround(H.shoes)
-		*/
-=======
 					uniform.adjusted = DIGITIGRADE_STYLE
 				leg_owner.update_inv_w_uniform()
-		if(leg_owner.shoes && !swap_back)
-			leg_owner.dropItemToGround(leg_owner.shoes)
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
+		/*if(leg_owner.shoes && !swap_back)
+			leg_owner.dropItemToGround(leg_owner.shoes)*/
+		//SKYRAT EDIT REMOVAL

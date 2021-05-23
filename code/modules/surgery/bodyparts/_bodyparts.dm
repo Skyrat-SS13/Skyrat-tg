@@ -206,25 +206,16 @@
 /obj/item/bodypart/proc/drop_organs(mob/user, violent_removal)
 	var/turf/bodypart_turf = get_turf(src)
 	if(status != BODYPART_ROBOTIC)
-<<<<<<< HEAD
-		playsound(T, 'sound/misc/splort.ogg', 50, TRUE, -1)
+		playsound(bodypart_turf, 'sound/misc/splort.ogg', 50, TRUE, -1)
 	//seep_gauze(9999) // destroy any existing gauze if any exists
 	if(current_gauze)
-		qdel(current_gauze)
+	qdel(current_gauze)
 	if(current_splint)
 		qdel(current_splint)
-	for(var/obj/item/organ/drop_organ in get_organs())
-		drop_organ.transfer_to_limb(src, owner)
-	for(var/obj/item/I in src)
-		I.forceMove(T)
-=======
-		playsound(bodypart_turf, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	seep_gauze(9999) // destroy any existing gauze if any exists
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/item_in_bodypart in src)
 		item_in_bodypart.forceMove(bodypart_turf)
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 
 ///since organs aren't actually stored in the bodypart themselves while attached to a person, we have to query the owner for what we should have
 /obj/item/bodypart/proc/get_organs()
@@ -817,18 +808,13 @@
 		var/mob/living/carbon/human/human_owner = limb_owner
 		should_draw_greyscale = FALSE
 
-<<<<<<< HEAD
-		var/datum/species/S = H.dna.species
-		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
-			species_id = S.limbs_id
-			alpha = S.specific_alpha
-			rendered_bp_icon = S.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
-		species_flags_list = H.dna.species.species_traits
-=======
 		var/datum/species/owner_species = human_owner.dna.species
+		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
+			species_id = owner_species.limbs_id
+			alpha = owner_species.specific_alpha
+			rendered_bp_icon = owner_species.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		species_id = owner_species.limbs_id
 		species_flags_list = human_owner.dna.species.species_traits
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 
 		if(owner_species.use_skintones)
 			skin_tone = human_owner.skin_tone

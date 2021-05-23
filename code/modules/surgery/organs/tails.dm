@@ -21,13 +21,9 @@
 	desc = "A severed cat tail. Who's wagging now?"
 	tail_type = "Cat"
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
-/obj/item/organ/tail/cat/Insert(mob/living/carbon/human/H, special = FALSE, drop_if_replaced = TRUE)
-=======
 /obj/item/organ/tail/cat/Insert(mob/living/carbon/human/tail_owner, special = FALSE, drop_if_replaced = TRUE)
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 	..()
 	if(istype(tail_owner))
 		var/default_part = tail_owner.dna.species.mutant_bodyparts["tail_human"]
@@ -37,21 +33,13 @@
 
 /obj/item/organ/tail/cat/Remove(mob/living/carbon/human/tail_owner, special = FALSE)
 	..()
-<<<<<<< HEAD
-	if(istype(H))
-		H.dna.features["tail_human"] = "None"
-		H.dna.species.mutant_bodyparts -= "tail_human"
-		color = H.hair_color
-		H.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	if(istype(tail_owner))
 		tail_owner.dna.features["tail_human"] = "None"
 		tail_owner.dna.species.mutant_bodyparts -= "tail_human"
 		color = tail_owner.hair_color
 		tail_owner.update_body()
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/organ/tail/lizard
 	name = "lizard tail"
@@ -111,13 +99,9 @@
 	tail_type = "Monkey"
 	icon_state = "severedmonkeytail"
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
-/obj/item/organ/tail/monkey/Insert(mob/living/carbon/human/H, special = FALSE, drop_if_replaced = TRUE)
-=======
 /obj/item/organ/tail/monkey/Insert(mob/living/carbon/human/tail_owner, special = FALSE, drop_if_replaced = TRUE)
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
 	..()
 	if(istype(tail_owner))
 		if(!("tail_monkey" in tail_owner.dna.species.mutant_bodyparts))
@@ -127,16 +111,9 @@
 
 /obj/item/organ/tail/monkey/Remove(mob/living/carbon/human/tail_owner, special = FALSE)
 	..()
-<<<<<<< HEAD
-	if(istype(H))
-		H.dna.features["tail_monkey"] = "None"
-		H.dna.species.mutant_bodyparts -= "tail_monkey"
-		H.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	if(istype(tail_owner))
 		tail_owner.dna.features["tail_monkey"] = "None"
 		tail_owner.dna.species.mutant_bodyparts -= "tail_monkey"
 		tail_owner.update_body()
->>>>>>> 3958db8d27d (Cleans up surgery and organ code. (#59068))
+*/
+//SKYRAT EDIT REMOVAL END
