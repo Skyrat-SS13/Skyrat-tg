@@ -12504,6 +12504,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "bwM" = (
@@ -22878,9 +22881,12 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
 /obj/structure/cable,
 /obj/machinery/defibrillator_mount/directional/north,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /turf/open/floor/iron,
 /area/medical/medbay/central)
 "ejY" = (
@@ -30741,7 +30747,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron,
 /area/medical/medbay/central)
@@ -37891,7 +37900,7 @@
 	id = "isolationshutter";
 	name = "Isolation Shutter";
 	pixel_y = 23;
-	req_access_txt = "63" 
+	req_access_txt = "63"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -38550,6 +38559,9 @@
 "mMH" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
+	},
+/obj/machinery/stasissleeper{
+	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
@@ -52728,7 +52740,7 @@
 /turf/open/floor/plating,
 /area/engineering/main)
 "uro" = (
-/obj/item/circuitboard/machine/stasis,
+/obj/item/circuitboard/machine/stasissleeper,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
@@ -59119,6 +59131,7 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "xMm" = (
