@@ -4,3 +4,4 @@
 	icon = 'modular_skyrat/modules/brigoff/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/brigoff/icons/mob/head.dmi'
 	icon_state = "brigguard"
+	mutant_variants = NONE
