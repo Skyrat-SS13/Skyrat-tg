@@ -87,6 +87,11 @@
 	/// List of family heirlooms this job can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms
 
+	//SKYRAT EDIT ADDITION
+	///Is this job trusted only? If so, then this job requires the player to be in the trusted_players.txt
+	var/trusted_only = FALSE
+	//SKYRAT EDIT END
+
 /datum/job/New()
 	. = ..()
 	var/list/jobs_changes = get_map_changes()

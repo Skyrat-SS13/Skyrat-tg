@@ -367,3 +367,9 @@
 /datum/sprite_accessory/facial_hair/skyrat/neckfluff
 	name = "Neckfluff"
 	icon_state = "facial_neckfluff"
+
+/datum/sprite_accessory/facial_hair/skyrat/squid
+	name = "Tentacle Beard"
+	icon_state = "facial_squid"
+
+
