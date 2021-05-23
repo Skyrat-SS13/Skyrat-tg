@@ -23,6 +23,10 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/message = "not implemented"
 	var/category = INTERACTION_CAT_HIDE
 	var/usage = INTERACTION_OTHER
+	var/sound_use = FALSE
+	var/sound_range = 1
+	var/sound_cache = null
+	var/sound = null
 
 /datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
 	return TRUE
@@ -30,7 +34,15 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 /datum/interaction/proc/act(mob/living/user, mob/living/target)
 	// We replace %USER% with nothing because manual_emote already prepends it.
 	user.manual_emote(trim(replacetext(replacetext(message, "%TARGET%", "[target]"), "%USER%", "")))
-	return
+	if(sound_use)
+		if(isnull(sound))
+			message_admins("Interaction has sound_use set to TRUE but does not set sound! '[name]'")
+			return
+		else if(islist(sound))
+			sound_cache = sound(pick(sound))
+		else sound_cache = sound(sound)
+		for(var/mob/mob in view(sound_range, user))
+			SEND_SOUND(sound_cache, mob)
 
 /datum/component/interactable
 	var/mob/self = null
@@ -113,7 +125,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	if(.)
 		return
 	populate_interaction_instances()
-	for(var/p in params)
 	for(var/interaction in GLOB.interaction_instances)
 		if(GLOB.interaction_instances[interaction].name == params["interaction"])
 			GLOB.interaction_instances[interaction].act(locate(params["userref"]), locate(params["selfref"]))
