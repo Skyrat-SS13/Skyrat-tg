@@ -2,7 +2,8 @@
 	name = "leather quiver"
 	desc = "A quiver made from the hide of some animal. Used to hold arrows."
 	icon = 'modular_skyrat/modules/tribal_extended/icons/belt.dmi'
-	icon_state = "quiverlazy"
+	worn_icon = 'modular_skyrat/modules/tribal_extended/icons/belt.dmi'
+	icon_state = "quiverlazy" //codersprite
 	worn_icon_state = "quiver"
 
 /obj/item/storage/belt/quiver/ComponentInitialize()

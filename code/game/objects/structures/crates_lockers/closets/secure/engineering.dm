@@ -27,6 +27,7 @@
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/engineering/ce(src)
+	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"
