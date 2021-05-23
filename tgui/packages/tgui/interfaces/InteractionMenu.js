@@ -13,6 +13,7 @@ export const InteractionMenu = (props, context) => {
         <Section title="Miscellaneous">
           {nones.map((item) => (
             <Button
+              key={item}
               icon="exclamation-circle"
               content={item}
               color="grey"
