@@ -1,5 +1,5 @@
-#define INTERACTION_SELF // X does thing
-#define INTERACTION_OTHER // X does thing [with/to] Y
+#define INTERACTION_SELF "self" // X does thing
+#define INTERACTION_OTHER "other" // X does thing [with/to] Y
 
 // CATEGORIES ARE HARD CODED. IF YOU ADD A NEW CATEGORY YOU NEED TO ALSO CODE IN ITS RENDERING!
 
@@ -22,6 +22,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/distance_allowed = FALSE
 	var/message = "not implemented"
 	var/category = INTERACTION_CAT_HIDE
+	var/usage = INTERACTION_OTHER
 
 /datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
 	return TRUE
@@ -40,6 +41,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	if(!interaction.distance_allowed && !user.Adjacent(self))
 		return FALSE
 	if(interaction.category == INTERACTION_CAT_HIDE)
+		return FALSE
+	if(self == user && interaction.usage == INTERACTION_OTHER)
 		return FALSE
 	return TRUE
 
