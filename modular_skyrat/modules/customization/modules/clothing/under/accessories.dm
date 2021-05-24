@@ -93,14 +93,14 @@
 		return TRUE
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/card/id) || istype(O, /obj/item/pda))
+	if(istype(Object, /obj/item/card/id) || istype(Object, /obj/item/pda))
 
 		var/obj/item/card/id/id_card = null
 
-		if(istype(O, /obj/item/card/id))
-			id_card = O
+		if(istype(Object, /obj/item/card/id))
+			id_card = Oobject
 		else
-			var/obj/item/pda/pda = O
+			var/obj/item/pda/pda = Object
 			id_card = pda.id
 
 		if(ACCESS_SECURITY in id_card.access || emagged)
