@@ -741,7 +741,7 @@ SUBSYSTEM_DEF(liquids)
 /obj/effect/abstract/liquid_turf/immutable/Destroy(force)
 	if(force)
 		stack_trace("Something tried to hard destroy an immutable liquid.")
-	return QDEL_HINT_LETMELIVE
+	return ..()
 
 //Exposes my turf with simulated reagents
 /obj/effect/abstract/liquid_turf/proc/ExposeMyTurf()
