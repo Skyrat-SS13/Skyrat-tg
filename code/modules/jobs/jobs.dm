@@ -27,7 +27,8 @@ GLOBAL_LIST_INIT(science_positions, list(
 	"Research Director",
 	"Scientist",
 	"Geneticist",
-	"Roboticist"))
+	"Roboticist",
+	"Vanguard Operative")) //SKYRAT EDIT ADDITION
 
 
 GLOBAL_LIST_INIT(supply_positions, list(
@@ -66,7 +67,8 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Security Medic",
 	"Security Sergeant",
 	"Civil Disputes Officer",
-	"Blueshield")) //SKYRAT EDIT - LIST AMENDED
+	"Blueshield",
+	"Corrections Officer")) //SKYRAT EDIT - LIST AMENDED
 
 /// These aren't defacto jobs, but are the special departmental variants for sec officers.
 GLOBAL_LIST_INIT(security_sub_positions, list(

@@ -151,7 +151,7 @@
 		if(GLOB.swappable_ips.len == 1)
 			var/server_name = GLOB.swappable_ips[1]
 			var/server_ip = GLOB.swappable_ips[server_name]
-			var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+			var/confirm = tgui_alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
 			if(confirm == "Connect me!")
 				to_chat_immediate(src, "So long, spaceman.")
 				client << link(server_ip)
@@ -160,7 +160,7 @@
 		if(!server_name)
 			return
 		var/server_ip = GLOB.swappable_ips[server_name]
-		var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+		var/confirm = tgui_alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
 		if(confirm == "Connect me!")
 			to_chat_immediate(src, "So long, spaceman.")
 			client << link(server_ip)
@@ -231,7 +231,7 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = alert(src,"Are you sure you wish to observe? You will not be able to play this round!","Player Setup","Yes","No")
+	var/this_is_like_playing_right = tgui_alert(src, "Are you sure you wish to observe?", "Player Setup", list("Yes", "No"))
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
@@ -272,16 +272,14 @@
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
+		if(JOB_NOT_TRUSTED)
+			return "You need to be trusted to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
-		if(JOB_UNAVAILABLE_QUIRK)
-			return "[jobtitle] is restricted from your quirks."
-		if(JOB_UNAVAILABLE_SPECIES)
-			return "[jobtitle] is restricted from your species."
 		if(JOB_UNAVAILABLE_QUIRK)
 			return "[jobtitle] is restricted from your quirks."
 		if(JOB_UNAVAILABLE_SPECIES)
@@ -323,6 +321,8 @@
 		return JOB_UNAVAILABLE_SPECIES
 	if(!job.has_required_languages(client.prefs))
 		return JOB_UNAVAILABLE_LANGUAGE
+	if(job.trusted_only && !is_trusted_player(client))
+		return JOB_NOT_TRUSTED
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
@@ -452,10 +452,15 @@
 				var/command_bold = ""
 				if(job in GLOB.command_positions)
 					command_bold = " command"
+				var/jobline = "[job_datum.title] ([job_datum.current_positions])"
 				if(job_datum in SSjob.prioritized_jobs)
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
-				else
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+					jobline = "<span class='priority'>[jobline]</span>"
+				if(client && client.prefs && client.prefs.alt_titles_preferences[job_datum.title])
+					jobline = "[jobline]<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job_datum.title]])</span>"
+
+				jobline = "<a class='job[command_bold]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[jobline]</a>"
+				dept_dat += jobline
+
 		if(!dept_dat.len)
 			dept_dat += "<span class='nopositions'>No positions open.</span>"
 		dat += jointext(dept_dat, "")

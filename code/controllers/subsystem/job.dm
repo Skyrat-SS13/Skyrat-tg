@@ -16,6 +16,9 @@ SUBSYSTEM_DEF(job)
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 
+	/// Lazylist of mob:occupation_string pairs.
+	var/list/dynamic_forced_occupations
+
 	/// A list of all jobs associated with the station. These jobs also have various icons associated with them including sechud and card trims.
 	var/list/station_jobs
 	/// A list of all Head of Staff jobs.
@@ -131,6 +134,8 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(!job.has_required_languages(player.client.prefs))
 			return FALSE
+		if(job.trusted_only && !is_trusted_player(player.client))
+			return FALSE
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			return FALSE
@@ -174,6 +179,8 @@ SUBSYSTEM_DEF(job)
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("FOC job not compatible with languages, Player: [player]")
 			continue
+		if(job.trusted_only && !is_trusted_player(player.client))
+			JobDebug("FOC player is not trusted, Player: [player]")
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			JobDebug("FOC player not enough xp, Player: [player]")
@@ -184,6 +191,7 @@ SUBSYSTEM_DEF(job)
 		if(player.mind && (job.title in player.mind.restricted_roles))
 			JobDebug("FOC incompatible with antagonist role, Player: [player]")
 			continue
+
 		if(player.client.prefs.job_preferences[job.title] == level)
 			JobDebug("FOC pass, Player: [player], Level:[level]")
 			candidates += player
@@ -223,6 +231,8 @@ SUBSYSTEM_DEF(job)
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("GRJ player has incompatible languages, Player: [player]")
 			continue
+		if(job.trusted_only && !is_trusted_player(player.client))
+			JobDebug("GRJ player is not trusted, Player: [player]")
 		//SKYRAT EDIT END
 
 		if(job.required_playtime_remaining(player.client))
@@ -286,23 +296,20 @@ SUBSYSTEM_DEF(job)
 		var/mob/dead/new_player/candidate = pick(candidates)
 		AssignRole(candidate, command_position)
 
-/datum/controller/subsystem/job/proc/FillAIPosition()
-	var/ai_selected = FALSE
-	var/datum/job/job = GetJob("AI")
-	if(!job)
-		return FALSE
-	for(var/i = job.total_positions, i > 0, i--)
+/// Attempts to fill out all available AI positions.
+/datum/controller/subsystem/job/proc/fill_ai_positions()
+	var/datum/job/ai_job = GetJob("AI")
+	if(!ai_job)
+		return
+	// In byond for(in to) loops, the iteration is inclusive so we need to stop at ai_job.total_positions - 1
+	for(var/i in ai_job.current_positions to ai_job.total_positions - 1)
 		for(var/level in level_order)
 			var/list/candidates = list()
-			candidates = FindOccupationCandidates(job, level)
+			candidates = FindOccupationCandidates(ai_job, level)
 			if(candidates.len)
 				var/mob/dead/new_player/candidate = pick(candidates)
 				if(AssignRole(candidate, "AI"))
-					ai_selected++
 					break
-	if(ai_selected)
-		return TRUE
-	return FALSE
 
 
 /** Proc DivideOccupations
@@ -348,6 +355,10 @@ SUBSYSTEM_DEF(job)
 
 	HandleFeedbackGathering()
 
+	// Dynamic has picked a ruleset that requires enforcing some jobs before others.
+	JobDebug("DO, Assigning Priority Positions: [length(dynamic_forced_occupations)]")
+	assign_priority_positions()
+
 	//People who wants to be the overflow role, sure, go on.
 	JobDebug("DO, Running Overflow Check 1")
 	var/datum/job/overflow = GetJob(SSjob.overflow_role)
@@ -364,9 +375,9 @@ SUBSYSTEM_DEF(job)
 	FillHeadPosition()
 	JobDebug("DO, Head Check end")
 
-	//Check for an AI
+	// Fill out any remaining AI positions.
 	JobDebug("DO, Running AI Check")
-	FillAIPosition()
+	fill_ai_positions()
 	JobDebug("DO, AI Check end")
 
 	//Other jobs are now checked
@@ -414,6 +425,9 @@ SUBSYSTEM_DEF(job)
 					continue
 				if(!job.has_required_languages(player.client.prefs))
 					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					continue
+				if(job.trusted_only && !is_trusted_player(player.client))
+					JobDebug("DO player is not trusted, Player: [player], Job:[job.title]")
 					continue
 				//SKYRAT EDIT END
 
@@ -547,7 +561,12 @@ SUBSYSTEM_DEF(job)
 	if(living_mob.mind)
 		living_mob.mind.assigned_role = rank
 
-	to_chat(M, "<b>You are the [rank].</b>")
+	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
+	var/display_rank = rank
+	if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
+		display_rank = M.client.prefs.alt_titles_preferences[rank]
+	// to_chat(M, "<span class='infoplain'><b>You are the [rank].</b></span>") - ORIGINAL
+	to_chat(M, "<span class='infoplain'><b>You are the [display_rank].</b></span>") // SKYRAT EDIT ADD END
 	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
 	if(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
@@ -570,10 +589,10 @@ SUBSYSTEM_DEF(job)
 			else
 				handle_auto_deadmin_roles(M.client, rank)
 
-		to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+		to_chat(M, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [rank]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT - ALTERNATE JOB TITLES
 		job.radio_help_message(M)
 		if(job.req_admin_notify)
-			to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+			to_chat(M, "<span class='infoplain'><b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b></span>")
 		if(CONFIG_GET(number/minimal_access_threshold))
 			to_chat(M, "<span class='notice'><B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></span>")
 
@@ -701,7 +720,7 @@ SUBSYSTEM_DEF(job)
 	if(PopcapReached())
 		JobDebug("Popcap overflow Check observer located, Player: [player]")
 	JobDebug("Player rejected :[player]")
-	to_chat(player, "<b>You have failed to qualify for any job you desired.</b>")
+	to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
 	player.client << output(player.ready, "lobbybrowser:imgsrc") //SKYRAT EDIT ADDITION
@@ -738,7 +757,13 @@ SUBSYSTEM_DEF(job)
 		destination = pick(GLOB.jobspawn_overrides[M.mind.assigned_role])
 		destination.JoinPlayerHere(M, FALSE)
 		return TRUE
-
+	//SKYRAT EDIT ADDITION
+	if(M.job)
+		if(M.job == "Prisoner")
+			destination = locate(/obj/effect/landmark/start/prisoner) in GLOB.landmarks_list
+			destination.JoinPlayerHere(M, buckle)
+			return TRUE
+	//SKYRAT EDIT END
 	if(latejoin_trackers.len)
 		destination = pick(latejoin_trackers)
 		destination.JoinPlayerHere(M, buckle)
@@ -836,7 +861,7 @@ SUBSYSTEM_DEF(job)
 	station_jobs = list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician", \
 		"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer", \
 		"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Geneticist", "Virologist", "Psychologist", \
-		"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Prisoner")
+		"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Corrections Officer", "Prisoner")
 
 	head_of_staff_jobs = list("Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Head of Security", "Captain")
 
@@ -903,3 +928,8 @@ SUBSYSTEM_DEF(job)
 	new /obj/effect/pod_landingzone(loc, /obj/structure/closet/supplypod/centcompod, new /obj/item/paper/fluff/emergency_spare_id_safe_code())
 	safe_code_timer_id = null
 	safe_code_request_loc = null
+
+/// Blindly assigns the required roles to every player in the dynamic_forced_occupations list.
+/datum/controller/subsystem/job/proc/assign_priority_positions()
+	for(var/mob/new_player in dynamic_forced_occupations)
+		AssignRole(new_player, dynamic_forced_occupations[new_player])

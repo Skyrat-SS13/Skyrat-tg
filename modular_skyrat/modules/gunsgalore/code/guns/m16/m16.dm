@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/assault_rifle/m16
-	name = "\improper M16 Rifle"
-	desc = "The M16 rifle, officially designated Rifle, Caliber 5.56 mm, M16, is a family of military rifles adapted from the ArmaLite AR-15 rifle for the United States military. The original M16 rifle was a 5.56mm automatic rifle with a 20-round magazine."
+	name = "\improper M16A4 Rifle"
+	desc = "The fourth iteration of the M16 series of infantry rifles, firing the extremely old (yet strangely stil in use) 5.56x45mm cartridge. This seems to be a reproduction, as the model was phased out in the early 2030's to accomodate for more modern designs."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16.dmi'
 	icon_state = "m16"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16_lefthand.dmi'
@@ -28,8 +28,8 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern
-	name = "\improper Mil Spec M16 Rifle"
-	desc = "The M16 rifle, officially designated Rifle, Caliber 5.56 mm, M16, is a family of military rifles adapted from the ArmaLite AR-15 rifle for the United States military. The original M16 rifle was a 5.56mm automatic rifle with a 20-round magazine. This is the 25th century version."
+	name = "\improper AR-25T"
+	desc = "An M16 pattern infantry rifle, this one is a modern sporting/self defense model filled to the brim with aftermarket parts. Come and take it."
 	icon_state = "m16_modern"
 	inhand_icon_state = "m16"
 	worn_icon_state = "m16"
@@ -38,8 +38,8 @@
 	fire_delay = 2
 
 /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern/v2
-	name = "\improper Mil Spec M16 Rifle R-APID"
-	desc = "The M16 rifle, officially designated Rifle, Caliber 5.56 mm, M16, is a family of military rifles adapted from the ArmaLite AR-15 rifle for the United States military. The original M16 rifle was a 5.56mm automatic rifle with a 20-round magazine. This is the 25th century rapid fire version."
+	name = "\improper AR-24 'Patriot'"
+	desc = "An M16 pattern infantry rifle with a short barrel and modified cycling mechanism that allows it to fire it significantly faster, with no care for accuracy or effectiveness. There's only room for one snake and one boss."
 	icon_state = "m16_modern2"
 	inhand_icon_state = "m16"
 	worn_icon_state = "m16"

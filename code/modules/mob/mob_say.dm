@@ -56,6 +56,12 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
+	//SKYRAT EDIT ADDITION
+	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE))
+		to_chat(src, "<span class='danger'>Dead chat is currently muted.</span>")
+		return
+	//SKYRAT EDIT END
+
 	var/jb = is_banned_from(ckey, "Deadchat")
 	if(QDELETED(src))
 		return

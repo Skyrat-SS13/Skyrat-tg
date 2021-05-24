@@ -25,7 +25,7 @@
 	if(!dogborg)
 		to_chat(src, "<span class='warning'>You can't do that!</span>")
 		return
-	var/choice = alert(src, "Select resting pose", "", "Resting", "Sitting", "Belly up")
+	var/choice = tgui_alert(src, "Select resting pose", "", list("Resting", "Sitting", "Belly up"))
 	switch(choice)
 		if("Resting")
 			robot_rest_style = ROBOT_REST_NORMAL

@@ -25,8 +25,10 @@
 	. = ..()
 	if(. && obj_integrity > 0)
 		if(tank_volume && (damage_flag == BULLET || damage_flag == LASER))
+			//SKYRAT EDIT CHANGE
 			var/guaranteed_violent = (damage_flag == BULLET || damage_flag == LASER)
 			boom(damage_type, guaranteed_violent)
+			//SKYRAT EDIT END
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user, params)
 	if(W.is_refillable())
@@ -51,7 +53,7 @@
 		reagents.add_reagent(reagent_id, tank_volume)
 	. = ..()
 
-/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE)
+/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	visible_message("<span class='danger'>\The [src] ruptures!</span>")
 	chem_splash(loc, 5, list(reagents))
 	qdel(src)
@@ -87,33 +89,34 @@
 	icon_state = "fuel"
 	reagent_id = /datum/reagent/fuel
 
-/obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE)
+/obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)
-		explosion(get_turf(src), 0, 1, 5, flame_range = 5)
+		explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
 		qdel(src)
 	else
 		. = ..()
+	//SKYRAT EDIT END
 
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
-	boom(guaranteed_violent = TRUE)
+	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom(guaranteed_violent = TRUE)
+	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom(guaranteed_violent = TRUE)
+	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/zap_act(power, zap_flags)
 	. = ..() //extend the zap
 	if(ZAP_OBJ_DAMAGE & zap_flags)
-		boom(guaranteed_violent = TRUE)
+		boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/P)
 	. = ..()
 	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
 		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
 			log_bomber(P.firer, "detonated a", src, "via projectile")
-			boom(guaranteed_violent = TRUE)
+			boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
@@ -132,7 +135,7 @@
 		else
 			user.visible_message("<span class='danger'>[user] catastrophically fails at refilling [user.p_their()] [I.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
 			log_bomber(user, "detonated a", src, "via welding tool")
-			boom(guaranteed_violent = TRUE)
+			boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 		return
 	return ..()
 
@@ -142,12 +145,13 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE)
+/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)
-		explosion(get_turf(src), 1, 2, 7, flame_range = 12)
+		explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12)
 		qdel(src)
 	else
 		. = ..()
+	//SKYRAT EDIT END
 
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"
@@ -157,11 +161,26 @@
 	density = FALSE
 	reagent_id = /datum/reagent/consumable/condensedcapsaicin
 
+/obj/structure/reagent_dispensers/peppertank/directional/north
+	dir = SOUTH
+	pixel_y = 30
+
+/obj/structure/reagent_dispensers/peppertank/directional/south
+	dir = NORTH
+	pixel_y = -30
+
+/obj/structure/reagent_dispensers/peppertank/directional/east
+	dir = WEST
+	pixel_x = 30
+
+/obj/structure/reagent_dispensers/peppertank/directional/west
+	dir = EAST
+	pixel_x = -30
+
 /obj/structure/reagent_dispensers/peppertank/Initialize()
 	. = ..()
 	if(prob(1))
 		desc = "IT'S PEPPER TIME, BITCH!"
-
 
 /obj/structure/reagent_dispensers/water_cooler//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "liquid cooler"
@@ -200,7 +219,7 @@
 	reagent_id = /datum/reagent/consumable/ethanol/beer
 
 /obj/structure/reagent_dispensers/beerkeg/blob_act(obj/structure/blob/B)
-	explosion(src.loc,0,3,5,7,10)
+	explosion(src, heavy_impact_range = 3, light_impact_range = 5, flame_range = 10, flash_range = 7)
 	if(!QDELETED(src))
 		qdel(src)
 
@@ -213,6 +232,21 @@
 	density = FALSE
 	reagent_id = /datum/reagent/consumable/virus_food
 
+/obj/structure/reagent_dispensers/virusfood/directional/north
+	dir = SOUTH
+	pixel_y = 30
+
+/obj/structure/reagent_dispensers/virusfood/directional/south
+	dir = NORTH
+	pixel_y = -30
+
+/obj/structure/reagent_dispensers/virusfood/directional/east
+	dir = WEST
+	pixel_x = 30
+
+/obj/structure/reagent_dispensers/virusfood/directional/west
+	dir = EAST
+	pixel_x = -30
 
 /obj/structure/reagent_dispensers/cooking_oil
 	name = "vat of cooking oil"

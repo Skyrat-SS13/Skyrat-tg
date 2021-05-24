@@ -16,20 +16,20 @@
 	build_path = /obj/item/ammo_casing/c32
 	category = list("hacked", "Security")
 
-/datum/design/c32_rubber
+/datum/design/c32/rubber
 	name = ".32 Rubber Bullet"
-	id = "c32_rubber"
+	id = "c32/rubber"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/ammo_casing/c32_rubber
+	build_path = /obj/item/ammo_casing/c32/rubber
 	category = list("initial", "Security")
 
-/datum/design/c32_ap
+/datum/design/c32/ap
 	name = ".32 Armor-Piercing Bullet"
-	id = "c32_ap"
+	id = "c32/ap"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/c32_ap
+	build_path = /obj/item/ammo_casing/c32/ap
 	category = list("hacked", "Security")
 
 /datum/design/c32_incendiary
@@ -45,7 +45,7 @@
 	id = "smg32acp"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 3000)
-	build_path = /obj/item/ammo_box/magazine/smg32/empty
+	build_path = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/empty
 	category = list("hacked", "Security")
 
 /datum/design/a762
@@ -132,3 +132,19 @@
 	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/c10mm/rubber
 	category = list("initial", "Security")
+
+/datum/design/shotgun_slug
+	name = "Shotgun Slug"
+	id = "shotgun_slug"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 6000)
+	build_path = /obj/item/ammo_casing/shotgun
+	category = list("hacked", "Security")
+
+/datum/design/buckshot_shell
+	name = "Buckshot Shell"
+	id = "buckshot_shell"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 4000)
+	build_path = /obj/item/ammo_casing/shotgun/buckshot
+	category = list("hacked", "Security") 

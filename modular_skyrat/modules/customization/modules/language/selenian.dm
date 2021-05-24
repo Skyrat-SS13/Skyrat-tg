@@ -12,5 +12,5 @@
 		"ek", "aur", "ki", "ki", "ke", "de", "ki", "ne", "ek", "aar", "ain", "ki", "me", "dei", "dekh"
 	)
 	icon_state = "selenian"
-	icon = 'modular_skyrat/modules/customization/icons/misc/language.dmi'
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 90

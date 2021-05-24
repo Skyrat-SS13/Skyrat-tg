@@ -206,7 +206,7 @@
 	if(in_range(src, user) && isliving(user)) //No running off and setting bombs from across the station
 		timer_set = clamp(new_timer, minimum_timer, maximum_timer)
 		loc.visible_message("<span class='notice'>[icon2html(src, viewers(src))] timer set for [timer_set] seconds.</span>")
-	if(alert(user,"Would you like to start the countdown now?",,"Yes","No") == "Yes" && in_range(src, user) && isliving(user))
+	if(tgui_alert(user,"Would you like to start the countdown now?",,list("Yes","No")) == "Yes" && in_range(src, user) && isliving(user))
 		if(!active)
 			visible_message("<span class='danger'>[icon2html(src, viewers(loc))] [timer_set] seconds until detonation, please clear the area.</span>")
 			activate()
@@ -226,8 +226,8 @@
 	payload = /obj/item/bombcore/training
 
 /obj/machinery/syndicatebomb/emp
-	name = "EMP Bomb"
-	desc = "A modified bomb designed to release a crippling electromagnetic pulse instead of explode"
+	//name = "EMP bomb" //SKYRAT EDIT: Makes the bomb look identical to its deadlier cousin
+	//desc = "A modified bomb designed to release a crippling electromagnetic pulse instead of explode" //SKYRAT EDIT: see above
 	payload = /obj/item/bombcore/emp
 
 /obj/machinery/syndicatebomb/badmin
@@ -298,7 +298,7 @@
 	if(adminlog)
 		message_admins(adminlog)
 		log_game(adminlog)
-	explosion(src, range_heavy, range_medium, range_light, flame_range = range_flame)
+	explosion(src, range_heavy, range_medium, range_light, range_flame)
 	if(loc && istype(loc, /obj/machinery/syndicatebomb/))
 		qdel(loc)
 	qdel(src)

@@ -343,6 +343,10 @@
 	O.screen_loc = screen_loc
 	return O
 
+/// Removes an image from a client's `.images`. Useful as a callback.
+/proc/remove_image_from_client(image/image, client/remove_from)
+	remove_from?.images -= image
+
 /proc/remove_images_from_clients(image/I, list/show_to)
 	for(var/client/C in show_to)
 		C.images -= I
@@ -410,7 +414,7 @@
 		else
 			candidates -= M
 
-/proc/pollGhostCandidates(Question, jobbanType, datum/game_mode/gametypeCheck, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE)
+/proc/pollGhostCandidates(Question, jobbanType, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE)
 	var/list/candidates = list()
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
 		return candidates
@@ -418,9 +422,9 @@
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		candidates += G
 
-	return pollCandidates(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category, flashwindow, candidates)
+	return pollCandidates(Question, jobbanType, be_special_flag, poll_time, ignore_category, flashwindow, candidates)
 
-/proc/pollCandidates(Question, jobbanType, datum/game_mode/gametypeCheck, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE, list/group = null)
+/proc/pollCandidates(Question, jobbanType, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE, list/group = null)
 	var/time_passed = world.time
 	if (!Question)
 		Question = "Would you like to be a special role?"
@@ -429,11 +433,17 @@
 		var/mob/M = m
 		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (M.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
+		//SKYRAT EDIT ADDITION BEGIN
+		if(is_banned_from(M.ckey, BAN_GHOST_TAKEOVER))
+			to_chat(M, "There was a ghost prompt for: [Question], unfortunately you are banned from ghost takeovers.")
+			continue
+		//SKYRAT EDIT END
 		if(be_special_flag)
 			if(!(M.client.prefs) || !(be_special_flag in M.client.prefs.be_special))
 				continue
-		if(gametypeCheck)
-			if(!gametypeCheck.age_check(M.client))
+
+			var/required_time = GLOB.special_roles[be_special_flag] || 0
+			if (M.client && M.client.get_remaining_days(required_time) > 0)
 				continue
 		if(jobbanType)
 			if(is_banned_from(M.ckey, list(jobbanType, ROLE_SYNDICATE)) || QDELETED(M))
@@ -451,14 +461,14 @@
 
 	return result
 
-/proc/pollCandidatesForMob(Question, jobbanType, datum/game_mode/gametypeCheck, be_special_flag = 0, poll_time = 300, mob/M, ignore_category = null)
-	var/list/L = pollGhostCandidates(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category)
+/proc/pollCandidatesForMob(Question, jobbanType, be_special_flag = 0, poll_time = 300, mob/M, ignore_category = null)
+	var/list/L = pollGhostCandidates(Question, jobbanType, be_special_flag, poll_time, ignore_category)
 	if(!M || QDELETED(M) || !M.loc)
 		return list()
 	return L
 
-/proc/pollCandidatesForMobs(Question, jobbanType, datum/game_mode/gametypeCheck, be_special_flag = 0, poll_time = 300, list/mobs, ignore_category = null)
-	var/list/L = pollGhostCandidates(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category)
+/proc/pollCandidatesForMobs(Question, jobbanType, be_special_flag = 0, poll_time = 300, list/mobs, ignore_category = null)
+	var/list/L = pollGhostCandidates(Question, jobbanType, be_special_flag, poll_time, ignore_category)
 	var/i=1
 	for(var/v in mobs)
 		var/atom/A = v
@@ -508,7 +518,7 @@
 		A = A.loc
 
 	return A.loc
-
+/* - SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
 /proc/AnnounceArrival(mob/living/carbon/human/character, rank)
 	if(!SSticker.IsRoundInProgress() || QDELETED(character))
 		return
@@ -523,7 +533,7 @@
 
 	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
-
+*/
 /proc/lavaland_equipment_pressure_check(turf/T)
 	. = FALSE
 	if(!istype(T))

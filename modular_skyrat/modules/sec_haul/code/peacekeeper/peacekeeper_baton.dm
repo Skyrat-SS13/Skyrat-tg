@@ -63,3 +63,32 @@
 	build_path = /obj/item/conversion_kit/nightstick
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/melee/classic_baton/peacekeeper/boomerang
+	name = "peacekeeper boomerang"
+	desc = "A device invented thousands of years ago for hunting. These also work exceptionally well for knocking down crew members. Just be careful to catch it when thrown!"
+	throw_speed = 1
+	icon = 'icons/obj/items_and_weapons.dmi'
+	icon_state = "boomerang"
+	inhand_icon_state = "boomerang"
+	force = 5
+	throwforce = 0
+	throw_range = 5
+	var/throw_stun_chance = 99  //Have you prayed today?
+	custom_materials = list(/datum/material/iron = 5000, /datum/material/glass = 2000, /datum/material/silver = 1000, /datum/material/gold = 500)
+
+/obj/item/melee/classic_baton/peacekeeper/boomerang/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
+	if(ishuman(thrower))
+		var/mob/living/carbon/human/I = thrower
+		I.throw_mode_off(THROW_MODE_TOGGLE) //so they can catch it on the return.
+	return ..()
+
+/obj/item/melee/classic_baton/peacekeeper/boomerang/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	var/caught = hit_atom.hitby(src, FALSE, FALSE, throwingdatum=throwingdatum)
+	if(isliving(hit_atom) && !iscyborg(hit_atom) && !caught && prob(throw_stun_chance))//if they are a living creature and they didn't catch it
+		if(ishuman(hit_atom))
+			var/mob/living/carbon/human/target = hit_atom
+			target.StaminaKnockdown(1.5)
+	if(thrownby && !caught)
+		addtimer(CALLBACK(src, /atom/movable.proc/throw_at, thrownby, throw_range+2, throw_speed, null, TRUE), 1)
+	return ..()

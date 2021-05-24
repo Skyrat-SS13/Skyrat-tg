@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ocean_station_ruins_templates = list()
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
+	var/list/asteroid_ruins_templates = list() //SKYRAT EDIT - Adds ruins to LZ2
 
 	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
 
@@ -132,6 +133,13 @@ SUBSYSTEM_DEF(mapping)
 		for (var/ice_z in ice_ruins_underground)
 			spawn_rivers(ice_z, 4, level_trait(ice_z, ZTRAIT_BASETURF), /area/icemoon/underground/unexplored/rivers)
 
+//SKYRAT EDIT START//
+	var/list/asteroid_ruins = levels_by_trait(ZTRAIT_ASTEROID_RUINS)
+	if (asteroid_ruins.len)
+		seedRuins(asteroid_ruins, CONFIG_GET(number/asteroid_budget), list(/area/rockplanet/surface/outdoors/unexplored), asteroid_ruins_templates)
+		for (var/asteroid_z in asteroid_ruins)
+			spawn_rivers(asteroid_z)
+//SKYRAT EDIT END//
 	// Generate deep space ruins
 	var/list/space_ruins = levels_by_trait(ZTRAIT_SPACE_RUINS)
 	if (space_ruins.len)
@@ -211,6 +219,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	ocean_station_ruins_templates = SSmapping.ocean_station_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
+	asteroid_ruins_templates = SSmapping.asteroid_ruins_templates //SKYRAT EDIT ADDITION
 	shuttle_templates = SSmapping.shuttle_templates
 	shelter_templates = SSmapping.shelter_templates
 	unused_turfs = SSmapping.unused_turfs
@@ -462,6 +471,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ice_ruins_underground_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/icemoon))
 			ice_ruins_templates[R.name] = R
+//SKYRAT EDIT START//
+		else if(istype(R, /datum/map_template/ruin/asteroid))
+			asteroid_ruins_templates[R.name] = R
+//SKYRAT EDIT END//
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/ocean))
@@ -515,7 +528,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 
 	if(!GLOB.the_gateway)
-		if(alert("There's no home gateway on the station. You sure you want to continue ?", "Uh oh", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "There's no home gateway on the station. You sure you want to continue ?", "Uh oh", list("Yes", "No")) != "Yes")
 			return
 
 	var/list/possible_options = GLOB.potentialRandomZlevels + "Custom"

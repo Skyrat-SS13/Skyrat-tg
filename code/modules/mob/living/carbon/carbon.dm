@@ -527,7 +527,7 @@
 	var/stam = getStaminaLoss()
 	//TODO: Make this much more cleaner
 	//SKYRAT EDIT - ORIGINAL: if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
-	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN 
+	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN
 		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
 			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
 				//When you get floored by stamina, you also get a brief stun and disarm
@@ -1051,7 +1051,7 @@
 	if(href_list[VV_HK_MAKE_AI])
 		if(!check_rights(R_SPAWN))
 			return
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
+		if(tgui_alert(usr,"Confirm mob type change?",,list("Transform","Cancel")) != "Transform")
 			return
 		usr.client.holder.Topic("vv_override", list("makeai"=href_list[VV_HK_TARGET]))
 	if(href_list[VV_HK_MODIFY_ORGANS])

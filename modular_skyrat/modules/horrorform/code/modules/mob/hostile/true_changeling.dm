@@ -38,9 +38,9 @@
 	var/datum/action/innate/turn_to_human
 	var/datum/action/innate/devour
 	var/transformed_time = 0
-	var/playstyle_string = "<b><font size=3 color='red'>We have entered our true form!</font> We are unbelievably powerful, and regenerate life at a steady rate. However, most of \
+	var/playstyle_string = "<span class=infoplain><b><font size=3 color='red'>We have entered our true form!</font> We are unbelievably powerful, and regenerate life at a steady rate. However, most of \
 	our abilities are useless in this form, and we must utilise the abilities that we have gained as a result of our transformation. Currently, we are incapable of returning to a human. \
-	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b>"
+	After several minutes, we will once again be able to revert into a human. Taking too much damage will cause us to reach equilibrium and our cells will combust into a shower of gore, watch out!</b></span>"
 	var/mob/living/carbon/human/stored_changeling = null //The changeling that transformed
 	var/devouring = FALSE //If the true changeling is currently devouring a human
 
@@ -71,7 +71,7 @@
 	if(stat)
 		return
 	if(act == "scream")
-		message = "<B>[src]</B> makes a loud, bone-chilling roar!"
+		message = "<span class='emote'><B>[src]</B> makes a loud, bone-chilling roar!</span>"
 		act = "me"
 		scream(message)
 		return
@@ -79,7 +79,7 @@
 
 /mob/living/simple_animal/hostile/true_changeling/proc/scream(message)
 	if(!message)
-		message = "<B>[src]</B> makes a loud, bone-chilling roar!"
+		message = "<span class='emote'><B>[src]</B> makes a loud, bone-chilling roar!</span>"
 	var/frequency = get_rand_frequency() //so sound frequency is consistent
 	for(var/mob/M in range(35, src)) //You can hear the scream 7 screens away
 		// Double check for client
@@ -178,14 +178,14 @@
 	var/mob/living/simple_animal/hostile/true_changeling/C = owner
 	if(!C.stored_changeling)
 		to_chat(C,"<span class='warning'>We do not have a form other than this!</span>")
-		return 0
+		return FALSE
 	if(C.stored_changeling.stat == DEAD)
 		to_chat(C,"<span class='warning'>Our human form is dead!</span>")
-		return 0
+		return FALSE
 	if(world.time - C.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
 		var/timeleft = (C.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
 		to_chat(C,"<span class='warning'>We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes.</span>")
-		return 0
+		return FALSE
 	C.visible_message("<span class='warning'>[C] suddenly crunches and twists into a smaller form!</span>", \
 						"<span class='danger'>We return to our lesser form.</span>")
 	C.stored_changeling.loc = get_turf(C)
@@ -193,7 +193,7 @@
 	C.stored_changeling.Stun(2 SECONDS)
 	C.stored_changeling.status_flags &= ~GODMODE
 	qdel(C)
-	return 1
+	return TRUE
 
 /datum/action/innate/devour
 	name = "Devour"

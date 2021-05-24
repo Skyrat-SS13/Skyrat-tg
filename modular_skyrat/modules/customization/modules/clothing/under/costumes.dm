@@ -1,7 +1,7 @@
 // Lunar Clothes
 /obj/item/clothing/under/costume/qipao
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "black qipao"
 	desc = "A qipao, traditionally worn in ancient Earth China by women during social events and lunar new years. This one is black."
 	icon_state = "qipao"
@@ -24,8 +24,8 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/cheongsam
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "black cheongsam"
 	desc = "A cheongsam, traditionally worn in ancient Earth China by men during social events and lunar new years. This one is black."
 	icon_state = "cheong"
@@ -49,8 +49,8 @@
 /obj/item/clothing/under/costume/cybersleek
 	name = "sleek modern coat"
 	desc = "A modern-styled coat typically worn on more urban planets, made with a neo-laminated fiber lining."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cyberpunksleek"
 	body_parts_covered = CHEST|ARMS|GROIN|LEGS
 	mutant_variants = NONE
@@ -62,8 +62,8 @@
 //End Cyberpunk PI port
 
 /obj/item/clothing/under/costume/loincloth
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "loincloth"
 	desc = "A simple leather covering. It's better than wearing nothing at least."
 	icon_state = "loincloth"
@@ -90,8 +90,8 @@
 
 
 /obj/item/clothing/under/costume/arthur
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "dutch assistant uniform"
 	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
 	icon_state = "arthur_morgan"

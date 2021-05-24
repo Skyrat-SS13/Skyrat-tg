@@ -2,7 +2,7 @@
 
 /datum/nanite_program/sleepy
 	name = "Sleep Induction"
-	desc = "The nanites cause rapid narcolepsy when triggered."
+	desc = "The nanites induce rapid narcolepsy when triggered."
 	can_trigger = TRUE
 	trigger_cost = 15
 	trigger_cooldown = 1200
@@ -138,6 +138,7 @@
 		"*surrender",
 		"*collapse",
 		"*faint",
+		"*cum", //Skyrat Edit - Imagine getting jerked off by nanites, what are you, gey?
 	)
 
 /datum/nanite_program/comm/speech/register_extra_settings()

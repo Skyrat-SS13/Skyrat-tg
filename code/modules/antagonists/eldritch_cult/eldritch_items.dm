@@ -32,35 +32,6 @@
 	if(target.stat == DEAD)
 		to_chat(user,"<span class='warning'>[target.real_name] is dead. Bring them to a transmutation rune!</span>")
 
-/datum/action/innate/heretic_shatter
-	name = "Shattering Offer"
-	desc = "By breaking your blade, you will be granted salvation from a dire situation. (Teleports you to a random safe turf on your current z level, but destroys your blade.)"
-	background_icon_state = "bg_ecult"
-	button_icon_state = "shatter"
-	icon_icon = 'icons/mob/actions/actions_ecult.dmi'
-	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE
-	var/mob/living/carbon/human/holder
-	var/obj/item/melee/sickly_blade/sword
-
-/datum/action/innate/heretic_shatter/Grant(mob/user, obj/object)
-	sword = object
-	holder = user
-	//i know what im doing
-	return ..()
-
-/datum/action/innate/heretic_shatter/IsAvailable()
-	if(IS_HERETIC(holder) || IS_HERETIC_MONSTER(holder))
-		return TRUE
-	else
-		return FALSE
-
-/datum/action/innate/heretic_shatter/Activate()
-	var/turf/safe_turf = find_safe_turf(zlevels = sword.z, extended_safety_checks = TRUE)
-	do_teleport(holder,safe_turf,forceMove = TRUE)
-	to_chat(holder,"<span class='warning'>You feel a gust of energy flow through your body... the Rusted Hills heard your call...</span>")
-	qdel(sword)
-
-
 /obj/item/melee/sickly_blade
 	name = "\improper Sickly Blade"
 	desc = "A sickly green crescent blade, decorated with an ornamental eye. You feel like you're being watched..."
@@ -74,16 +45,12 @@
 	flags_1 = CONDUCT_1
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_NORMAL
-	force = 17
+	force = 24 //SKYRAT EDIT - ORIGINAL: 17
+	armour_penetration = 15 // SKYRAT EDIT - ADDITION
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "rend")
-	var/datum/action/innate/heretic_shatter/linked_action
-
-/obj/item/melee/sickly_blade/Initialize()
-	. = ..()
-	linked_action = new(src)
 
 /obj/item/melee/sickly_blade/attack(mob/living/M, mob/living/user)
 	if(!(IS_HERETIC(user) || IS_HERETIC_MONSTER(user)))
@@ -93,13 +60,17 @@
 		return FALSE
 	return ..()
 
-/obj/item/melee/sickly_blade/pickup(mob/user)
-	. = ..()
-	linked_action.Grant(user, src)
-
-/obj/item/melee/sickly_blade/dropped(mob/user, silent)
-	. = ..()
-	linked_action.Remove(user, src)
+/obj/item/melee/sickly_blade/attack_self(mob/user)
+	var/turf/safe_turf = find_safe_turf(zlevels = z, extended_safety_checks = TRUE)
+	if(IS_HERETIC(user) || IS_HERETIC_MONSTER(user))
+		if(do_teleport(user, safe_turf, forceMove = TRUE, channel = TELEPORT_CHANNEL_MAGIC))
+			to_chat(user,"<span class='warning'>As you shatter [src], you feel a gust of energy flow through your body. The Rusted Hills heard your call...</span>")
+		else
+			to_chat(user,"<span class='warning'>You shatter [src], but your plea goes unanswered.</span>")
+	else
+		to_chat(user,"<span class='warning'>You shatter [src].</span>")
+	playsound(src, "shatter", 70, TRUE) //copied from the code for smashing a glass sheet onto the ground to turn it into a shard
+	qdel(src)
 
 /obj/item/melee/sickly_blade/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -115,6 +86,11 @@
 			eldritch_knowledge_datum.on_eldritch_blade(target,user,proximity_flag,click_parameters)
 		else
 			eldritch_knowledge_datum.on_ranged_attack_eldritch_blade(target,user,click_parameters)
+
+/obj/item/melee/sickly_blade/examine(mob/user)
+	. = ..()
+	if(IS_HERETIC(user) || IS_HERETIC_MONSTER(user))
+		. += "<span class='notice'><B>A heretic (or a servant of one) can shatter this blade to teleport to a random, mostly safe location by activating it in-hand.</B></span>"
 
 /obj/item/melee/sickly_blade/rust
 	name = "\improper Rusted Blade"
@@ -183,7 +159,7 @@
 	allowed = list(/obj/item/melee/sickly_blade, /obj/item/forbidden_book, /obj/item/living_heart)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	// slightly better than normal cult robes
-	armor = list(MELEE = 50, BULLET = 50, LASER = 50,ENERGY = 50, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20)
+	armor = list(MELEE = 50, BULLET = 65, LASER = 35,ENERGY = 45, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20) //SKYRAT EDIT - ORIGINAL: armor = list(MELEE = 50, BULLET = 50, LASER = 50,ENERGY = 50, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20)
 
 /obj/item/reagent_containers/glass/beaker/eldritch
 	name = "flask of eldritch essence"
@@ -284,7 +260,7 @@
 
 		if(DT_PROB(30,delta_time))
 			human_in_range.emote(pick("giggle","laugh"))
-			human_in_range.adjustStaminaLoss(10)
+			human_in_range.adjustStaminaLoss(15) //SKYRAT EDIT - Original: 10
 
 		if(DT_PROB(25,delta_time))
 			human_in_range.Dizzy(5)
