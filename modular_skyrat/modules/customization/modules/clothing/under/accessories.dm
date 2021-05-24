@@ -88,7 +88,7 @@
 		to_chat(user, "<span class='danger'>\The [src] is already cracked.</span>")
 		return
 	else
-		emagged = 1
+		emagged = TRUE
 		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
 		return TRUE
 
@@ -163,4 +163,3 @@
 	new /obj/item/clothing/accessory/badge/holo/hos(src)
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
 	return
-
