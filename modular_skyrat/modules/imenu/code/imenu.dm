@@ -18,6 +18,11 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 #define INTERACTION_REQUIRE_TARGET_HAND "target_hand"
 #define INTERACTION_REQUIRE_TARGET_SPEAK "target_speak"
 
+/mob/living/CtrlShiftClick(mob/user)
+	. = ..()
+	if(isliving(user) && isliving(src))
+		user.cmd_interact()
+
 /proc/populate_interaction_instances()
 	if(GLOB.interaction_instances.len)
 		return
@@ -179,7 +184,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	set category = "IC"
 	set name = "Interact"
 
-	if(isobserver(usr) || isdead(usr) || !usr.stat)
+	if(isobserver(usr) || isdead(usr) || usr.stat == DEAD)
 		to_chat(usr, "You are dead.")
 		return
 
