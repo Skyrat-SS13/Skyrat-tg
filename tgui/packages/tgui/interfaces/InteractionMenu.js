@@ -11,7 +11,9 @@ export const InteractionMenu = (props, context) => {
   return (
     <Window width={400} height={600} title={"Interact - " + self}>
       {block_interact && (
-        <NoticeBox>Unable to Interact yet!</NoticeBox>
+        <NoticeBox>Unable to Interact</NoticeBox>
+      ) || (
+        <NoticeBox>Able to Interact</NoticeBox>
       )}
       {nones.length && (
         <Section title="Miscellaneous">
