@@ -2367,6 +2367,17 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"aeU" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "aeV" = (
 /obj/machinery/door/airlock/external{
 	name = "Abandoned External Airlock"
@@ -33868,17 +33879,18 @@
 /turf/open/floor/plating/ocean,
 /area/hallway/secondary/entry)
 "bPY" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/light{
-	dir = 8
+/obj/machinery/computer/shuttle/arrivals/recall{
+	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/ocean,
+/turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
 "bPZ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/grass/jungle/b,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/plating/ocean,
 /area/hallway/secondary/entry)
 "bQa" = (
@@ -35842,11 +35854,7 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "bUb" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/stripes/corner,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
@@ -37245,7 +37253,12 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "bWY" = (
-/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "bWZ" = (
@@ -37282,10 +37295,6 @@
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
-	},
-/obj/item/radio/intercom{
-	pixel_x = 28;
-	pixel_y = -28
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 9
@@ -37423,11 +37432,11 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/corner,
+/obj/item/kirbyplants{
+	icon_state = "plant-21"
+	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "bXp" = (
@@ -38530,10 +38539,11 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/yellow,
-/obj/item/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/radio/intercom{
+	pixel_x = 28;
+	pixel_y = -28
+	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "bZx" = (
@@ -41048,11 +41058,13 @@
 	},
 /area/maintenance/starboard)
 "ceU" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/light/small{
-	dir = 4
+/obj/machinery/door/airlock/external{
+	name = "Arrival Shuttle Airlock";
+	safety_mode = 1
 	},
-/turf/open/floor/iron,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/navbeacon/wayfinding,
+/turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
 "ceY" = (
 /obj/effect/turf_decal/tile/red{
@@ -43556,16 +43568,11 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/solars/starboard/aft)
 "cll" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 3;
-	height = 14;
-	id = "arrivals_stationary";
-	name = "kilo arrivals";
-	roundstart_template = /datum/map_template/shuttle/arrival/kilo;
-	width = 7
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/small{
+	dir = 4
 	},
-/turf/open/floor/plating/ocean_plating,
+/turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "clm" = (
 /obj/effect/turf_decal/tile/red{
@@ -49302,13 +49309,9 @@
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
 "cCj" = (
-/obj/machinery/door/airlock/external{
-	name = "Arrival Shuttle Airlock";
-	safety_mode = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/navbeacon/wayfinding,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/flora/grass/jungle,
+/turf/open/floor/plating/ocean,
 /area/hallway/secondary/entry)
 "cCk" = (
 /obj/machinery/door/airlock/external{
@@ -52977,6 +52980,18 @@
 /obj/machinery/pipedispenser/disposal,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
+"cUj" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 1;
+	height = 13;
+	id = "arrivals_stationary";
+	name = "kilo arrivals";
+	roundstart_template = null;
+	width = 5
+	},
+/turf/open/floor/plating/ocean_plating,
+/area/hallway/secondary/entry)
 "cUt" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
@@ -131686,7 +131701,7 @@ bPP
 bUN
 bUN
 bUN
-cll
+bUN
 bUN
 bUN
 bUN
@@ -131941,7 +131956,7 @@ bSr
 bPJ
 bPQ
 bUN
-bUN
+cUj
 bUN
 bUN
 bUN
@@ -133736,9 +133751,9 @@ bYx
 bTD
 bWZ
 bUb
+bPY
 bUf
-bUf
-bUf
+cCj
 bUN
 bUN
 bUN
@@ -133993,9 +134008,9 @@ bTq
 bTO
 bXb
 bXo
-cCj
-ceU
-cCm
+bUf
+bUf
+bUf
 bUN
 bUN
 bUN
@@ -134249,10 +134264,10 @@ bYg
 bYy
 bYP
 bZv
-bWT
-bSr
-bWT
-bQa
+aeU
+ceU
+cll
+cCm
 bUN
 bUN
 bUN
@@ -134507,9 +134522,9 @@ bPe
 bZC
 bPe
 bOc
-bPJ
-bPJ
-bPY
+bSr
+bWT
+bQa
 bUN
 bUN
 bUN
