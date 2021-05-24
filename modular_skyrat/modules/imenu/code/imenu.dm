@@ -13,6 +13,11 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 #define INTERACTION_MAX_CHAR 255
 #define INTERACTION_COOLDOWN 0.5 SECONDS
 
+#define INTERACTION_REQUIRE_SELF_HAND "self_hand"
+#define INTERACTION_REQUIRE_SELF_SPEAK "self_speak"
+#define INTERACTION_REQUIRE_TARGET_HAND "target_hand"
+#define INTERACTION_REQUIRE_TARGET_SPEAK "target_speak"
+
 /proc/populate_interaction_instances()
 	if(GLOB.interaction_instances.len)
 		return
@@ -52,6 +57,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	sound_use = sanitize_integer(json["sound_use"], 0, 1, 0)
 	sound_range = sanitize_integer(json["sound_range"], 1, 7, 1)
 	sound_possible = sanitize_islist(json["sound_possible"], list("json error"))
+	interaction_requires = sanitize_islist(json["interaction_requires"], list())
 	return TRUE
 
 /datum/interaction/proc/json_save(path)
@@ -66,7 +72,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		"usage" = usage,
 		"sound_use" = sound_use,
 		"sound_range" = sound_range,
-		"sound_possible" = sound_possible
+		"sound_possible" = sound_possible,
+		"interaction_requires" = interaction_requires
 	)
 	var/file = file(fpath)
 	WRITE_FILE(file, json_encode(json))
@@ -82,8 +89,25 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/sound_range = 1
 	var/sound_cache = null
 	var/sound_possible = list()
+	var/list/interaction_requires = list()
 
 /datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
+	for(var/requirement in interaction_requires)
+		switch(requirement)
+			if(INTERACTION_REQUIRE_SELF_HAND)
+				if(!user.get_active_hand())
+					return FALSE
+			if(INTERACTION_REQUIRE_SELF_SPEAK)
+				if(!user.can_speak())
+					return FALSE
+			if(INTERACTION_REQUIRE_TARGET_HAND)
+				if(!target.get_active_hand())
+					return FALSE
+			if(INTERACTION_REQUIRE_TARGET_SPEAK)
+				if(!target.can_speak())
+					return FALSE
+			else
+				message_admins("Unimplemented interaction requirement '[requirement]'. Blame coders.")
 	return TRUE
 
 /datum/interaction/proc/act(mob/living/user, mob/living/target)
