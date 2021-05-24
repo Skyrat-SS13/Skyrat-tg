@@ -6,7 +6,7 @@
 #define INTERACTION_CAT_HIDE "hide"
 #define INTERACTION_CAT_NONE "none"
 
-#define INTERACTION_JSON_FOLDER "modular_skyrat/modules/imenu/interactions/"
+#define INTERACTION_JSON_FOLDER "config/skyrat/interactions/"
 
 GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
