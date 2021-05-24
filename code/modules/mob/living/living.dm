@@ -1664,6 +1664,7 @@
 	start_look_up()
 
 /mob/living/proc/start_look_up()
+	SIGNAL_HANDLER
 	var/turf/ceiling = get_step_multiz(src, UP)
 	if(!ceiling) //We are at the highest z-level.
 		to_chat(src, "<span class='warning'>You can't see through the ceiling above you.</span>")
@@ -1685,6 +1686,7 @@
 	reset_perspective(ceiling)
 
 /mob/living/proc/stop_look_up()
+	SIGNAL_HANDLER
 	reset_perspective()
 
 /mob/living/proc/end_look_up()
@@ -1709,6 +1711,7 @@
 	start_look_down()
 
 /mob/living/proc/start_look_down()
+	SIGNAL_HANDLER
 	var/turf/floor = get_turf(src)
 	var/turf/lower_level = get_step_multiz(floor, DOWN)
 	if(!lower_level) //We are at the lowest z-level.
@@ -1733,6 +1736,7 @@
 	reset_perspective(lower_level)
 
 /mob/living/proc/stop_look_down()
+	SIGNAL_HANDLER
 	reset_perspective()
 
 /mob/living/proc/end_look_down()
