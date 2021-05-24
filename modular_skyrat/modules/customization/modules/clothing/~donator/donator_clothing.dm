@@ -455,8 +455,6 @@
 	mutant_variants = NONE
 	fitted = FEMALE_UNIFORM_TOP
 
-
-
 /obj/item/clothing/gloves/ring/hypno
 	var/list/spans = list()
 	actions_types = list(/datum/action/item_action/hypno_whisper)
