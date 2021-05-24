@@ -26,7 +26,6 @@
 	display_results(user, target, "<span class='notice'>You begin filtering [target]'s blood...</span>",
 		"<span class='notice'>[user] uses [tool] to filter [target]'s blood.</span>",
 		"<span class='notice'>[user] uses [tool] on [target]'s chest.</span>")
-	display_pain(target, "<span class='userdanger'>You feel a throbbing pain in your chest!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/filter_blood/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(target.reagents?.total_volume)

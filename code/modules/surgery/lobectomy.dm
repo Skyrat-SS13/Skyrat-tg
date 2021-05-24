@@ -25,7 +25,6 @@
 	display_results(user, target, "<span class='notice'>You begin to make an incision in [target]'s lungs...</span>",
 		"<span class='notice'>[user] begins to make an incision in [target].</span>",
 		"<span class='notice'>[user] begins to make an incision in [target].</span>")
-	display_pain(target, "<span class='userdanger'>You feel a stabbing pain in your chest!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/lobectomy/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(ishuman(target))
@@ -36,7 +35,6 @@
 		display_results(user, target, "<span class='notice'>You successfully excise [H]'s most damaged lobe.</span>",
 			"<span class='notice'>Successfully removes a piece of [H]'s lungs.</span>",
 			"")
-		display_pain(target, "<span class='userdanger'>Your chest hurts like hell, but breathng becomes slightly easier.</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	return ..()
 
 /datum/surgery_step/lobectomy/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -45,7 +43,6 @@
 		display_results(user, target, "<span class='warning'>You screw up, failing to excise [H]'s damaged lobe!</span>",
 			"<span class='warning'>[user] screws up!</span>",
 			"<span class='warning'>[user] screws up!</span>")
-		display_pain(target, "<span class='userdanger'>You feel a sharp stab in your chest as the wind is knocked out of you, and it hurts to catch your breath!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		H.losebreath += 4
 		H.adjustOrganLoss(ORGAN_SLOT_LUNGS, 10)
 	return FALSE

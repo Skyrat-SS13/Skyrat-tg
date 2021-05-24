@@ -20,7 +20,6 @@
 		display_results(user, target, "<span class='notice'>You begin to extract [I] from [target]'s [target_zone]...</span>",
 			"<span class='notice'>[user] begins to extract [I] from [target]'s [target_zone].</span>",
 			"<span class='notice'>[user] begins to extract something from [target]'s [target_zone].</span>")
-		display_pain(target, "<span class='userdanger'>You feel a horrible pain in your [target_zone]!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	else
 		display_results(user, target, "<span class='notice'>You look for an implant in [target]'s [target_zone]...</span>",
 			"<span class='notice'>[user] looks for an implant in [target]'s [target_zone].</span>",
@@ -31,7 +30,6 @@
 		display_results(user, target, "<span class='notice'>You successfully remove [I] from [target]'s [target_zone].</span>",
 			"<span class='notice'>[user] successfully removes [I] from [target]'s [target_zone]!</span>",
 			"<span class='notice'>[user] successfully removes something from [target]'s [target_zone]!</span>")
-		display_pain(target, "<span class='userdanger'>You can feel your [I] pulled out of you!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		I.removed(target)
 
 		var/obj/item/implantcase/case

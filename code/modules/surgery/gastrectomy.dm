@@ -30,7 +30,6 @@
 	display_results(user, target, "<span class='notice'>You begin to cut out a damaged piece of [target]'s stomach...</span>",
 		"<span class='notice'>[user] begins to make an incision in [target].</span>",
 		"<span class='notice'>[user] begins to make an incision in [target].</span>")
-	display_pain(target, "<span class='userdanger'>You feel a horrible stab in your gut!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/gastrectomy/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	var/mob/living/carbon/human/H = target
@@ -38,7 +37,6 @@
 	display_results(user, target, "<span class='notice'>You successfully remove the damaged part of [target]'s stomach.</span>",
 		"<span class='notice'>[user] successfully removes the damaged part of [target]'s stomach.</span>",
 		"<span class='notice'>[user] successfully removes the damaged part of [target]'s stomach.</span>")
-	display_pain(target, "<span class='userdanger'>The pain in your gut ebbs and fades somewhat.</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	return ..()
 
 /datum/surgery_step/hepatectomy/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery)
@@ -47,4 +45,3 @@
 	display_results(user, target, "<span class='warning'>You cut the wrong part of [target]'s stomach!</span>",
 		"<span class='warning'>[user] cuts the wrong part of [target]'s stomach!</span>",
 		"<span class='warning'>[user] cuts the wrong part of [target]'s stomach!</span>")
-	display_pain(target, "<span class='userdanger'>Your stomach throbs with pain, and you think you can feel fluid pouring in!</span>") //SKYRAT EDIT ADD - SURGERY PAIN

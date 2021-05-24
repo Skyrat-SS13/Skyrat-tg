@@ -36,13 +36,11 @@
 	display_results(user, target, "<span class='notice'>You begin to perform a lobotomy on [target]'s brain...</span>",
 		"<span class='notice'>[user] begins to perform a lobotomy on [target]'s brain.</span>",
 		"<span class='notice'>[user] begins to perform surgery on [target]'s brain.</span>")
-	display_pain(target, "<span class='userdanger'>Your head pounds with unimaginable pain!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/lobotomize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(user, target, "<span class='notice'>You succeed in lobotomizing [target].</span>",
 			"<span class='notice'>[user] successfully lobotomizes [target]!</span>",
 			"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
-	display_pain(target, "<span class='userdanger'>The pain in your head only seems to get worse!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	target.cure_all_traumas(TRAUMA_RESILIENCE_LOBOTOMY)
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/brainwashed))
 		target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
@@ -64,7 +62,6 @@
 		display_results(user, target, "<span class='warning'>You remove the wrong part, causing more damage!</span>",
 			"<span class='notice'>[user] successfully lobotomizes [target]!</span>",
 			"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
-		display_pain(target, "<span class='userdanger'>Your head goes totally numb for a moment, the pain is overwhelming!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		B.applyOrganDamage(80)
 		switch(rand(1,3))
 			if(1)

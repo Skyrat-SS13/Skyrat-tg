@@ -45,7 +45,6 @@
 	display_results(user, target, "<span class='notice'>You begin to realign the torn blood vessels in [target]'s [parse_zone(user.zone_selected)]...</span>",
 		"<span class='notice'>[user] begins to realign the torn blood vessels in [target]'s [parse_zone(user.zone_selected)] with [tool].</span>",
 		"<span class='notice'>[user] begins to realign the torn blood vessels in [target]'s [parse_zone(user.zone_selected)].</span>")
-	display_pain(target, "<span class='userdanger'>You feel a horrible stabbing pain in your [parse_zone(user.zone_selected)]!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/repair_innards/success(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	var/datum/wound/pierce/pierce_wound = surgery.operated_wound
@@ -88,7 +87,6 @@
 	display_results(user, target, "<span class='notice'>You begin to meld some of the split blood vessels in [target]'s [parse_zone(user.zone_selected)]...</span>",
 		"<span class='notice'>[user] begins to meld some of the split blood vessels in [target]'s [parse_zone(user.zone_selected)] with [tool].</span>",
 		"<span class='notice'>[user] begins to meld some of the split blood vessels in [target]'s [parse_zone(user.zone_selected)].</span>")
-	display_pain(target, "<span class='userdanger'>You're being burned inside your [parse_zone(user.zone_selected)]!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/seal_veins/success(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	var/datum/wound/pierce/pierce_wound = surgery.operated_wound

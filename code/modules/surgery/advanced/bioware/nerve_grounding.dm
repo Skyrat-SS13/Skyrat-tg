@@ -20,13 +20,11 @@
 	display_results(user, target, "<span class='notice'>You start rerouting [target]'s nerves.</span>",
 		"<span class='notice'>[user] starts rerouting [target]'s nerves.</span>",
 		"<span class='notice'>[user] starts manipulating [target]'s nervous system.</span>")
-	display_pain(target, "<span class='userdanger'>Your entire body goes numb!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/ground_nerves/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	display_results(user, target, "<span class='notice'>You successfully reroute [target]'s nervous system!</span>",
 		"<span class='notice'>[user] successfully reroutes [target]'s nervous system!</span>",
 		"<span class='notice'>[user] finishes manipulating [target]'s nervous system.</span>")
-	display_pain(target, "<span class='userdanger'>You regain feeling in your body! You feel energzed!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	new /datum/bioware/grounded_nerves(target)
 	return ..()
 

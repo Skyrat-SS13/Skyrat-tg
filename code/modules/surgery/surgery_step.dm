@@ -175,7 +175,3 @@
 	if(!target_detailed)
 		var/you_feel = pick("a brief pain", "your body tense up", "an unnerving sensation")
 		target.show_message(vague_message, MSG_VISUAL, "<span class='notice'>You feel [you_feel] as you are operated on.</span>")
-
-/datum/surgery_step/proc/display_pain(mob/living/target, pain_message) // SKYRAT EDIT ADD - REAL SURGERY PAIN NOT THAT CRAP ABOVE
-	if(target.stat < UNCONSCIOUS)
-		to_chat(target, pain_message)

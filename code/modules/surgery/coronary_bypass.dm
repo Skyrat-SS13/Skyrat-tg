@@ -25,7 +25,6 @@
 	display_results(user, target, "<span class='notice'>You begin to make an incision in [target]'s heart...</span>",
 		"<span class='notice'>[user] begins to make an incision in [target]'s heart.</span>",
 		"<span class='notice'>[user] begins to make an incision in [target]'s heart.</span>")
-	display_pain(target, "<span class='userdanger'>You feel a horrendous pain in your heart, it's almost enough to make you pass out!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/incise_heart/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(ishuman(target))
@@ -60,7 +59,6 @@
 	display_results(user, target, "<span class='notice'>You begin to graft a bypass onto [target]'s heart...</span>",
 			"<span class='notice'>[user] begins to graft something onto [target]'s heart!</span>",
 			"<span class='notice'>[user] begins to graft something onto [target]'s heart!</span>")
-	display_pain(target, "<span class='userdanger'>The pain in your chest is unbearable! You can barely take it anymore!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 
 /datum/surgery_step/coronary_bypass/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	target.setOrganLoss(ORGAN_SLOT_HEART, 60)
@@ -70,7 +68,6 @@
 	display_results(user, target, "<span class='notice'>You successfully graft a bypass onto [target]'s heart.</span>",
 			"<span class='notice'>[user] finishes grafting something onto [target]'s heart.</span>",
 			"<span class='notice'>[user] finishes grafting something onto [target]'s heart.</span>")
-	display_pain(target, "<span class='userdanger'>The pain in your chest throbs, but your heart feels better than ever!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	return ..()
 
 /datum/surgery_step/coronary_bypass/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -79,7 +76,6 @@
 		display_results(user, target, "<span class='warning'>You screw up in attaching the graft, and it tears off, tearing part of the heart!</span>",
 			"<span class='warning'>[user] screws up, causing blood to spurt out of [H]'s chest profusely!</span>",
 			"<span class='warning'>[user] screws up, causing blood to spurt out of [H]'s chest profusely!</span>")
-		display_pain(target, "<span class='userdanger'>Your heart burns! It hurts so much, you feel like you're going insane!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		H.adjustOrganLoss(ORGAN_SLOT_HEART, 20)
 		var/obj/item/bodypart/BP = H.get_bodypart(target_zone)
 		BP.generic_bleedstacks += 30

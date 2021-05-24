@@ -29,7 +29,6 @@
 		display_results(user, target, "<span class='notice'>You begin to augment [target]'s [parse_zone(user.zone_selected)]...</span>",
 			"<span class='notice'>[user] begins to augment [target]'s [parse_zone(user.zone_selected)] with [aug].</span>",
 			"<span class='notice'>[user] begins to augment [target]'s [parse_zone(user.zone_selected)].</span>")
-		display_pain(target, "<span class='userdanger'>You feel a horrible pain in your [parse_zone(user.zone_selected)]!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 	else
 		user.visible_message("<span class='notice'>[user] looks for [target]'s [parse_zone(user.zone_selected)].</span>", "<span class='notice'>You look for [target]'s [parse_zone(user.zone_selected)]...</span>")
 
@@ -57,7 +56,6 @@
 		display_results(user, target, "<span class='notice'>You successfully augment [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>[user] successfully augments [target]'s [parse_zone(target_zone)] with [tool]!</span>",
 			"<span class='notice'>[user] successfully augments [target]'s [parse_zone(target_zone)]!</span>")
-		display_pain(target, "<span class='userdanger'>Your [parse_zone(target_zone)] comes awash with synthetic sensation!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
 		log_combat(user, target, "augmented", addition="by giving him new [parse_zone(target_zone)] COMBAT MODE: [uppertext(user.combat_mode)]")
 	else
 		to_chat(user, "<span class='warning'>[target] has no organic [parse_zone(target_zone)] there!</span>")

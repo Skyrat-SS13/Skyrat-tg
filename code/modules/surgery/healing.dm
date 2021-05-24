@@ -58,7 +58,7 @@
 			display_results(user, target, "<span class='notice'>You attempt to patch some of [target]'s [woundtype].</span>",
 		"<span class='notice'>[user] attempts to patch some of [target]'s [woundtype].</span>",
 		"<span class='notice'>[user] attempts to patch some of [target]'s [woundtype].</span>")
-			display_pain(target, "<span class='userdanger'>Your [woundtype] sting like hell!</span>") //SKYRAT EDIT ADD - SURGERY PAIN
+			display_pain(target, "<span class='userdanger'>Your [woundtype] sting like hell!</span>") // SKYRAT EDIT ADD - Done non-modularly to properly get woundtype without modularising the whole proc because that's liable to cause problems in future.
 
 /datum/surgery_step/heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(!..())
