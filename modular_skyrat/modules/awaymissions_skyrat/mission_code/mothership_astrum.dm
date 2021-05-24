@@ -199,7 +199,7 @@
 	icon_state = "crowbar"
 	force = 35
 	throwforce = 45
-	toolspeed = 0
+	toolspeed = 0.1
 	wound_bonus = 10
 	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
@@ -213,7 +213,6 @@
 				/obj/item/reagent_containers/syringe/oxandrolone = 20,
 				/obj/item/stack/medical/suture/medicated = 21,
 				/obj/item/stack/medical/mesh/advanced = 21,
-				/obj/item/storage/toolbox/syndicate = 12,
 				/obj/item/clothing/under/chameleon = 20,
 				/obj/item/shield/riot/tele = 27,
 				/obj/item/clothing/shoes/chameleon/noslip = 20)
@@ -223,11 +222,10 @@
 	loot = list(/obj/item/storage/firstaid/tactical = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
-				/obj/item/melee/transforming/energy/sword = 7,
 				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
-				/obj/item/melee/classic_baton/telescopic = 12,)
+				/obj/item/melee/classic_baton/telescopic = 12)
 
 /obj/effect/spawner/lootdrop/astrum/sciloot
 	name = "abductor scientist loot"
@@ -331,8 +329,8 @@
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
 	icon_gib = "syndicate_gib"
-	health = 2000
-	maxHealth = 2000
+	health = 1800
+	maxHealth = 1800
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
