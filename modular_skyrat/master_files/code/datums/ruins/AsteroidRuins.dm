@@ -21,3 +21,9 @@
 	id = "asteroidcozycabin"
 	description = "A comfy cabin out in the wastes, a testament to human survival. Seems whoever the owner is is out somewhere."
 	suffix = "cozycabin.dmm"
+
+/datum/map_template/ruin/asteroid/biodome
+	name = "Jungle Biodome"
+	id = "asteroidbiodome"
+	description = "An experimental location, meant to demonstrate terraforming LZ-2 as a possibility."
+	suffix = "biodome.dmm"

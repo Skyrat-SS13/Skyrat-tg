@@ -12,3 +12,7 @@
 	name = "Cozy Cabin"
 	icon_state = "dk_yellow"
 	ambientsounds = list('sound/ambience/ambicha1.ogg', 'sound/ambience/ambicha2.ogg', 'sound/ambience/ambicha3.ogg')
+
+/area/ruin/powered/biodome
+	name = "Jungle Biodome"
+	icon_state = "dk_yellow"
