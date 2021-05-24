@@ -229,7 +229,7 @@
 
 /obj/item/reagent_containers/glass/bucket//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "bucket"
-	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click."
+	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"
@@ -238,8 +238,8 @@
 	custom_materials = list(/datum/material/iron=200)
 	w_class = WEIGHT_CLASS_NORMAL
 	amount_per_transfer_from_this = 20
-	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
-	volume = 100
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,100) //SKYRAT EDIT CHANGE
+	volume = 100 //SKYRAT EDIT CHANGE
 	flags_inv = HIDEHAIR
 	slot_flags = ITEM_SLOT_HEAD
 	resistance_flags = NONE
@@ -263,10 +263,10 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	resistance_flags = FLAMMABLE
 
-#define SQUEEZING_DISPERSAL_PERCENT 0.75
+#define SQUEEZING_DISPERSAL_PERCENT 0.75 //SKYRAT EDIT ADDITION
 
-/obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/living/user, params)
-	if(istype(O, /obj/item/mop))
+/obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
+	if(istype(O, /obj/item/mop)) //SKYRAT EDIT CHANGE
 		var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
 		if(is_right_clicking)
 			if(O.reagents.total_volume == 0)
@@ -284,7 +284,7 @@
 			else
 				reagents.trans_to(O, 5, transfered_by = user)
 				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
-				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE) //SKYRAT EDIT CHANGE END
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, "<span class='notice'>You add [O] to [src].</span>")
 		qdel(O)
@@ -293,7 +293,7 @@
 	else
 		..()
 
-#undef SQUEEZING_DISPERSAL_PERCENT
+#undef SQUEEZING_DISPERSAL_PERCENT  //SKYRAT EDIT ADDITION
 
 /obj/item/reagent_containers/glass/bucket/equipped(mob/user, slot)
 	..()

@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(liquids)
 /turf/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE)
 	var/list/compiled_list = list()
 	for(var/r in giver.reagent_list)
-		var/datum/reagent/R = r 
+		var/datum/reagent/R = r
 		compiled_list[R.type] = R.volume
 	add_liquid_list(compiled_list, no_react, giver.chem_temp)
 
@@ -304,7 +304,7 @@ SUBSYSTEM_DEF(liquids)
 	var/temp = T20C
 
 	var/fire_state = LIQUID_FIRE_STATE_NONE
-	
+
 	var/no_effects = FALSE
 
 /obj/effect/abstract/liquid_turf/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
@@ -376,7 +376,7 @@ SUBSYSTEM_DEF(liquids)
 /obj/effect/abstract/liquid_turf/extinguish()
 	if(fire_state)
 		set_fire_state(LIQUID_FIRE_STATE_NONE)
-	
+
 /obj/effect/abstract/liquid_turf/proc/process_fire()
 	if(!fire_state)
 		SSliquids.processing_fire -= my_turf

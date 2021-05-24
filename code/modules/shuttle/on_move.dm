@@ -55,7 +55,8 @@ All ShuttleMove procs go here
 	if(!shuttle_boundary)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
 	var/depth = baseturfs.len - shuttle_boundary + 1
-	
+
+	//SKYRAT EDIT ADDITION
 	if(newT.lgroup)
 		newT.lgroup.remove_from_group(newT)
 	if(newT.liquids)
@@ -69,6 +70,7 @@ All ShuttleMove procs go here
 	if(liquids)
 		liquids.ChangeToNewTurf(newT)
 		newT.reasses_liquids()
+	//SKYRAT EDIT END
 	newT.CopyOnTop(src, 1, depth, TRUE)
 	newT.blocks_air = TRUE
 	newT.air_update_turf(TRUE, FALSE)

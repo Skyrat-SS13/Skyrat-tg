@@ -103,6 +103,7 @@ SUBSYSTEM_DEF(mapping)
 		for (var/lava_z in lava_ruins)
 			spawn_rivers(lava_z)
 
+	//SKYRAT EDIT ADDITION
 	//Ocean ruins
 	var/list/ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS)
 	if (ocean_ruins.len)
@@ -119,6 +120,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/trench_ruins = levels_by_trait(ZTRAIT_TRENCH_RUINS)
 	if (trench_ruins.len)
 		seedRuins(trench_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/trench/generated), trench_ruins_templates)
+	//SKYRAT EDIT END
 
 	var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 	if (ice_ruins.len)
@@ -214,9 +216,11 @@ Used by the AI doomsday and the self-destruct nuke.
 	ruins_templates = SSmapping.ruins_templates
 	space_ruins_templates = SSmapping.space_ruins_templates
 	lava_ruins_templates = SSmapping.lava_ruins_templates
+	//SKYRAT EDIT ADDITION
 	trench_ruins_templates = SSmapping.trench_ruins_templates
 	ocean_ruins_templates = SSmapping.ocean_ruins_templates
 	ocean_station_ruins_templates = SSmapping.ocean_station_ruins_templates
+	//SKYRAT EDIT END
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
 	asteroid_ruins_templates = SSmapping.asteroid_ruins_templates //SKYRAT EDIT ADDITION
@@ -474,7 +478,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 //SKYRAT EDIT START//
 		else if(istype(R, /datum/map_template/ruin/asteroid))
 			asteroid_ruins_templates[R.name] = R
-//SKYRAT EDIT END//
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/ocean))
@@ -483,6 +486,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ocean_station_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/trench))
 			trench_ruins_templates[R.name] = R
+//SKYRAT EDIT END//
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")

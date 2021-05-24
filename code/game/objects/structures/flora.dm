@@ -426,7 +426,7 @@
 /obj/structure/flora/rock/pile
 	icon_state = "lavarocks"
 	desc = "A pile of rocks."
-	density = FALSE
+	density = FALSE //SKYRAT EDIT ADDITION
 
 //Jungle grass
 

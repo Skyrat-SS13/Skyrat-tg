@@ -26,6 +26,7 @@
 		reagents.add_reagent(/datum/reagent/blood, disease_amount, data)
 
 	add_initial_reagents()
+	//SKYRAT EDIT ADDITION
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
 
 /obj/item/reagent_containers/proc/attack_on_liquids_turf(obj/item/reagent_containers/my_beaker, turf/T, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
@@ -54,6 +55,7 @@
 	qdel(tempr)
 	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE
+	//SKYRAT EDIT END
 
 /obj/item/reagent_containers/create_reagents(max_vol, flags)
 	. = ..()
@@ -214,7 +216,7 @@
 		return
 
 	else
-		if(isturf(target))
+		if(isturf(target)) //SKYRAT EDIT CHANGE
 			var/turf/T = target
 			T.add_liquid_from_reagents(reagents)
 			if(reagents.reagent_list.len && thrownby)
@@ -223,7 +225,9 @@
 				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
 		else
 			reagents.expose(target, TOUCH)
+		//SKYRAT EDIT END
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
+		//reagents.expose(target, TOUCH) //SKYRAT EDIT REMOVAL
 		if(QDELETED(src))
 			return
 

@@ -7,6 +7,7 @@
 	var/clawfootstep = null
 	var/heavyfootstep = null
 
+//SKYRAT EDIT ADDITION
 //Consider making all of these behaviours a smart component/element? Something that's only applied wherever it needs to be
 //Could probably have the variables on the turf level, and the behaviours being activated/deactived on the component level as the vars are updated
 /turf/open/CanPass(atom/movable/A, turf/T)
@@ -56,6 +57,7 @@
 		if(do_mob(user, M, 2 SECONDS))
 			M.forceMove(src)
 		return
+//SKYRAT EDIT END
 
 //direction is direction of travel of A
 /turf/open/zPassIn(atom/movable/A, direction, turf/source)
