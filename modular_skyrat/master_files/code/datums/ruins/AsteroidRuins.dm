@@ -15,3 +15,9 @@
 	id = "asteroidcrashedshuttle"
 	description = "As a protip - creating a shuttle with no manual exit is never a good idea."
 	suffix = "crashedshuttle.dmm"
+
+/datum/map_template/ruin/asteroid/cozycabin
+	name = "Cozy Cabin"
+	id = "asteroidcozycabin"
+	description = "A comfy cabin out in the wastes, a testament to human survival. Seems whoever the owner is is out somewhere."
+	suffix = "cozycabin.dmm"
