@@ -148,7 +148,6 @@
 		display_results(user, target, "<span class='notice'>You insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
 			"<span class='notice'>[user] inserts something into [target]'s [parse_zone(target_zone)]!</span>")
-
 	else if(current_type == "extract")
 		if(target_organ && target_organ.owner == target)
 			display_results(user, target, "<span class='notice'>You successfully extract [target_organ] from [target]'s [parse_zone(target_zone)].</span>",
