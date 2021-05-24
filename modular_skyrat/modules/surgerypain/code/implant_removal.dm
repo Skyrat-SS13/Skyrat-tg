@@ -7,6 +7,6 @@
 	..()
 
 /datum/surgery_step/extract_implant/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
-	if(implantI)
+	if(implant)
 		display_pain(target, "<span class='userdanger'>You can feel your [implant] pulled out of you!</span>")
 	..()
