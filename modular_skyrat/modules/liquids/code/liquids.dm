@@ -272,7 +272,7 @@ SUBSYSTEM_DEF(liquids)
 
 /obj/effect/abstract/liquid_turf
 	name = "liquid"
-	icon = 'icons/horizon/obj/effects/liquid.dmi'
+	icon = 'modular_skyrat/modules/liquids/icons/obj/effects/liquid.dmi'
 	icon_state = "water-0"
 	base_icon_state = "water"
 	anchored = TRUE
@@ -463,8 +463,8 @@ SUBSYSTEM_DEF(liquids)
 	cut_overlays()
 	switch(liquid_state)
 		if(LIQUID_STATE_ANKLES)
-			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage1_bottom")
-			var/mutable_appearance/underlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage1_top")
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage1_bottom")
+			var/mutable_appearance/underlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage1_top")
 			overlay.plane = GAME_PLANE
 			overlay.layer = ABOVE_MOB_LAYER
 			underlay.plane = GAME_PLANE
@@ -472,8 +472,8 @@ SUBSYSTEM_DEF(liquids)
 			add_overlay(overlay)
 			add_overlay(underlay)
 		if(LIQUID_STATE_WAIST)
-			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage2_bottom")
-			var/mutable_appearance/underlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage2_top")
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage2_bottom")
+			var/mutable_appearance/underlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage2_top")
 			overlay.plane = GAME_PLANE
 			overlay.layer = ABOVE_MOB_LAYER
 			underlay.plane = GAME_PLANE
@@ -481,8 +481,8 @@ SUBSYSTEM_DEF(liquids)
 			add_overlay(overlay)
 			add_overlay(underlay)
 		if(LIQUID_STATE_SHOULDERS)
-			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage3_bottom")
-			var/mutable_appearance/underlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage3_top")
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage3_bottom")
+			var/mutable_appearance/underlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage3_top")
 			overlay.plane = GAME_PLANE
 			overlay.layer = ABOVE_MOB_LAYER
 			underlay.plane = GAME_PLANE
@@ -490,7 +490,7 @@ SUBSYSTEM_DEF(liquids)
 			add_overlay(overlay)
 			add_overlay(underlay)
 		if(LIQUID_STATE_FULLTILE)
-			var/mutable_appearance/overlay = mutable_appearance('icons/horizon/obj/effects/liquid_overlays.dmi', "stage4_bottom")
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage4_bottom")
 			overlay.plane = GAME_PLANE
 			overlay.layer = ABOVE_MOB_LAYER
 			add_overlay(overlay)
@@ -616,7 +616,13 @@ SUBSYSTEM_DEF(liquids)
 	if(abs(height - prev_height) > WATER_HEIGH_DIFFERENCE_DELTA_SPLASH)
 		//Splash
 		if(prob(WATER_HEIGH_DIFFERENCE_SOUND_CHANCE))
-			playsound(my_turf, PICK_WATER_WADE_NOISES, 60, 0)
+			var/sound_to_play = pick(list(
+				'modular_skyrat/modules/liquids/sound/effects/water_wade1.ogg',
+				'modular_skyrat/modules/liquids/sound/effects/water_wade2.ogg',
+				'modular_skyrat/modules/liquids/sound/effects/water_wade3.ogg',
+				'modular_skyrat/modules/liquids/sound/effects/water_wade4.ogg'
+				))
+			playsound(my_turf, sound_to_play, 60, 0)
 		var/obj/splashy = new /obj/effect/temp_visual/liquid_splash(my_turf)
 		splashy.color = color
 		if(height >= LIQUID_WAIST_LEVEL_HEIGHT)
@@ -657,7 +663,13 @@ SUBSYSTEM_DEF(liquids)
 	var/turf/T = source
 	if(liquid_state >= LIQUID_STATE_ANKLES)
 		if(prob(30))
-			playsound(T, PICK_WATER_WADE_NOISES, 50, 0)
+			var/sound_to_play = pick(list(
+				'modular_skyrat/modules/liquids/sound/effects/water_wade1.ogg',
+				'modular_skyrat/modules/liquids/sound/effects/water_wade2.ogg',
+				'modular_skyrat/modules/liquids/sound/effects/water_wade3.ogg',
+				'modular_skyrat/modules/liquids/sound/effects/water_wade4.ogg'
+				))
+			playsound(T, sound_to_play, 50, 0)
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
 			C.apply_status_effect(/datum/status_effect/water_affected)
@@ -671,7 +683,7 @@ SUBSYSTEM_DEF(liquids)
 /obj/effect/abstract/liquid_turf/proc/mob_fall(datum/source, mob/M)
 	var/turf/T = source
 	if(liquid_state >= LIQUID_STATE_ANKLES && T.has_gravity(T))
-		playsound(T, 'hrzn/sound/effects/splash.ogg', 50, 0)
+		playsound(T, 'modular_skyrat/modules/liquids/sound/effects/splash.ogg', 50, 0)
 		if(iscarbon(M))
 			var/mob/living/carbon/C = M
 			if(C.wear_mask && C.wear_mask.flags_cover & MASKCOVERSMOUTH)
@@ -722,9 +734,9 @@ SUBSYSTEM_DEF(liquids)
 		my_turf.liquids = null
 		my_turf = null
 		QUEUE_SMOOTH_NEIGHBORS(src)
-		return ..()
 	else
 		return QDEL_HINT_LETMELIVE
+	return ..()
 
 /obj/effect/abstract/liquid_turf/immutable/Destroy(force)
 	if(force)
@@ -759,7 +771,7 @@ SUBSYSTEM_DEF(liquids)
 	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
 
 /obj/effect/temp_visual/liquid_splash
-	icon = 'icons/horizon/obj/effects/splash.dmi'
+	icon = 'modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi'
 	icon_state = "splash"
 	layer = FLY_LAYER
 	randomdir = FALSE

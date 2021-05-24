@@ -50,6 +50,7 @@
 	AddComponent(/datum/component/plumbing/simple_supply, bolt)
 
 /obj/machinery/plumbing/liquid_input_pump/update_icon_state()
+	. = ..()
 	if(panel_open)
 		icon_state = initial(icon_state) + "-open"
 	else if(is_working)
@@ -171,6 +172,7 @@
 	AddComponent(/datum/component/plumbing/simple_demand, bolt)
 
 /obj/machinery/plumbing/liquid_output_pump/update_icon_state()
+	. = ..()
 	if(panel_open)
 		icon_state = initial(icon_state) + "-open"
 	else if(is_working)
@@ -181,7 +183,7 @@
 /obj/item/construction/plumbing/engineering
 	name = "engineering plumbing constructor"
 	desc = "A type of plumbing constructor designed to rapidly deploy the machines needed for logistics regarding fluids."
-	icon = 'icons/horizon/obj/tools.dmi'
+	icon = 'modular_skyrat/modules/liquids/icons/obj/tools.dmi'
 	icon_state = "plumberer_engi"
 	has_ammobar = TRUE
 

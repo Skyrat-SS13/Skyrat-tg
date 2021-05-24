@@ -55,9 +55,6 @@
 //Threshold at which we "choke" on the water, instead of holding our breath
 #define OXYGEN_DAMAGE_CHOKING_THRESHOLD 15
 
-//Less overhead than using the helper
-
-
 #define IMMUTABLE_LIQUID_SHARE 1
 
 #define LIQUID_RECURSIVE_LOOP_SAFETY 100 //Hundred loops at maximum for adjacency checking

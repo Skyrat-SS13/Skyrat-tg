@@ -1,7 +1,7 @@
 //Structure as this doesn't need any power to work
 /obj/structure/drain
 	name = "drain"
-	icon = 'icons/horizon/obj/structures/drains.dmi'
+	icon = 'modular_skyrat/modules/liquids/icons/obj/structures/drains.dmi'
 	icon_state = "drain"
 	desc = "Drainage inlet embedded in the floor to prevent flooding."
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
@@ -16,6 +16,7 @@
 	var/turf/my_turf //need to keep track of it for the signal, if in any bizarre cases something would be moving the drain
 
 /obj/structure/drain/update_icon()
+	. = ..()
 	if(welded)
 		icon_state = "[initial(icon_state)]_welded"
 	else

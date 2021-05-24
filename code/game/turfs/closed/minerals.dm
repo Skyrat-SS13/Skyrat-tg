@@ -17,7 +17,7 @@
 	base_icon_state = "smoothrocks"
 	temperature = TCMB
 	color = "#677" //SKYRAT EDIT ADDITION
-	var/smooth_icon = 'icons/horizon/turf/smoothrocks.dmi' //SKYRAT EDIT CHANGE
+	var/smooth_icon = 'modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi' //SKYRAT EDIT CHANGE
 	var/environment_type = "asteroid"
 	var/turf/open/floor/plating/turf_type = /turf/open/floor/plating/asteroid/airless
 	var/obj/item/stack/ore/mineralType = null
