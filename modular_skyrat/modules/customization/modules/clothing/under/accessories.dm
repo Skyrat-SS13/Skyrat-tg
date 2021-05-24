@@ -90,7 +90,7 @@
 	else
 		emagged = 1
 		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
-		return 1
+		return TRUE
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/card/id) || istype(O, /obj/item/pda))
@@ -163,5 +163,4 @@
 	new /obj/item/clothing/accessory/badge/holo/hos(src)
 	new /obj/item/clothing/accessory/badge/holo/cord(src)
 	return
-
 
