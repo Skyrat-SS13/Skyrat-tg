@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 /mob/living/CtrlShiftClick(mob/user)
 	. = ..()
 	if(isliving(user) && isliving(src))
-		user.cmd_interact()
+		cmd_interact()
 
 /proc/populate_interaction_instances()
 	if(GLOB.interaction_instances.len)
@@ -35,18 +35,15 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 /proc/populate_interaction_jsons(directory)
 	for(var/file in flist(directory))
-		message_admins(directory + file)
 		if(flist(directory + file) && !findlasttext(directory + file, ".json"))
 			populate_interaction_instances(directory + file)
 			continue
 		var/datum/interaction/int = new()
 		if(int.load_from_json(directory + file))
-			message_admins(int.name)
 			GLOB.interaction_instances[int.name] = int
 		else message_admins("Error loading interaction from file: '[directory + file]'. Inform coders.")
 
 /datum/interaction/proc/load_from_json(path)
-	message_admins("Attempting to load '[path]'")
 	var/fpath = path
 	if(!fexists(fpath))
 		message_admins("Attempted to load an interaction from json and the file does not exist")
@@ -121,8 +118,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		msg = pick(message)
 	else msg = message
 	// We replace %USER% with nothing because manual_emote already prepends it.
-	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""))
-	msg = truncate(msg, INTERACTION_MAX_CHAR)
+	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
 	user.manual_emote(msg)
 	if(sound_use)
 		if(isnull(sound_possible))
