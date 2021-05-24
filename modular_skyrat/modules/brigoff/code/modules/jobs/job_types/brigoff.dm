@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Warden and Head of Security"
-	selection_color = "#ddddff"
+	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 150
 	exp_type = EXP_TYPE_CREW

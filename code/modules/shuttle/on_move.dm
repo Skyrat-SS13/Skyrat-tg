@@ -55,6 +55,22 @@ All ShuttleMove procs go here
 	if(!shuttle_boundary)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
 	var/depth = baseturfs.len - shuttle_boundary + 1
+
+	//SKYRAT EDIT ADDITION
+	if(newT.lgroup)
+		newT.lgroup.remove_from_group(newT)
+	if(newT.liquids)
+		if(newT.liquids.immutable)
+			newT.liquids.remove_turf(src)
+		else
+			qdel(newT.liquids, TRUE)
+
+	if(lgroup)
+		lgroup.remove_from_group(src)
+	if(liquids)
+		liquids.ChangeToNewTurf(newT)
+		newT.reasses_liquids()
+	//SKYRAT EDIT END
 	newT.CopyOnTop(src, 1, depth, TRUE)
 	newT.blocks_air = TRUE
 	newT.air_update_turf(TRUE, FALSE)
@@ -105,7 +121,7 @@ All ShuttleMove procs go here
 	if(loc != oldT) // This is for multi tile objects
 		return
 
-	update_loc(newT)
+	abstract_move(newT)
 
 	return TRUE
 
@@ -385,7 +401,7 @@ All ShuttleMove procs go here
 	if(loc != oldT) // This is for multi tile objects
 		return
 
-	update_loc(newT)
+	abstract_move(newT)
 
 	return TRUE
 

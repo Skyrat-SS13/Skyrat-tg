@@ -343,6 +343,10 @@
 	O.screen_loc = screen_loc
 	return O
 
+/// Removes an image from a client's `.images`. Useful as a callback.
+/proc/remove_image_from_client(image/image, client/remove_from)
+	remove_from?.images -= image
+
 /proc/remove_images_from_clients(image/I, list/show_to)
 	for(var/client/C in show_to)
 		C.images -= I
@@ -429,6 +433,11 @@
 		var/mob/M = m
 		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (M.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
+		//SKYRAT EDIT ADDITION BEGIN
+		if(is_banned_from(M.ckey, BAN_GHOST_TAKEOVER))
+			to_chat(M, "There was a ghost prompt for: [Question], unfortunately you are banned from ghost takeovers.")
+			continue
+		//SKYRAT EDIT END
 		if(be_special_flag)
 			if(!(M.client.prefs) || !(be_special_flag in M.client.prefs.be_special))
 				continue
