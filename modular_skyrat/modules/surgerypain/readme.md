@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pulls
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/5899
 
 ## Title: Surgery Pain.
 
