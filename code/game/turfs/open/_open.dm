@@ -11,7 +11,7 @@
 //Consider making all of these behaviours a smart component/element? Something that's only applied wherever it needs to be
 //Could probably have the variables on the turf level, and the behaviours being activated/deactived on the component level as the vars are updated
 /turf/open/CanPass(atom/movable/A, turf/T)
-	if(isliving(A) && A.has_gravity())
+	if(isliving(A))
 		var/turf/AT = get_turf(A)
 		if(AT && AT.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
 			return FALSE
