@@ -15,7 +15,7 @@
 
 /turf/open/floor/iron/pool
 	name = "pool floor"
-	floor_tile = /obj/item/stack/tile/plasteel/pool
+	floor_tile = /obj/item/stack/tile/iron/pool
 	icon = 'modular_skyrat/modules/liquids/icons/turf/pool_tile.dmi'
 	base_icon_state = "pool_tile"
 	icon_state = "pool_tile"
@@ -33,7 +33,7 @@
 
 /turf/open/floor/iron/elevated
 	name = "elevated floor"
-	floor_tile = /obj/item/stack/tile/plasteel/elevated
+	floor_tile = /obj/item/stack/tile/iron/elevated
 	icon = 'modular_skyrat/modules/liquids/icons/turf/elevated_plasteel.dmi'
 	icon_state = "elevated_plasteel-0"
 	base_icon_state = "elevated_plasteel"
@@ -54,7 +54,7 @@
 
 /turf/open/floor/iron/lowered
 	name = "lowered floor"
-	floor_tile = /obj/item/stack/tile/plasteel/lowered
+	floor_tile = /obj/item/stack/tile/iron/lowered
 	icon = 'modular_skyrat/modules/liquids/icons/turf/lowered_plasteel.dmi'
 	icon_state = "lowered_plasteel-0"
 	base_icon_state = "lowered_plasteel"
