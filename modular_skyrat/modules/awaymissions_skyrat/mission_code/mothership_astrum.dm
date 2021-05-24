@@ -197,9 +197,9 @@
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
 	icon_state = "crowbar"
-	force = 25
-	throwforce = 30
-	toolspeed = 0.8
+	force = 35
+	throwforce = 45
+	toolspeed = 0.1
 	wound_bonus = 10
 	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
