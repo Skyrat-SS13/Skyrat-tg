@@ -146,6 +146,7 @@ h1.alert, h2.alert		{color: #000000;}
 		100%	{color: #3bb5d3;}
 }
 
+// SKYRAT ADDITION BEGIN
 .velvet					{color: #660015; 	font-weight: bold; animation: velvet 5000ms infinite;}
 	@keyframes velvet {
 		0% 		{color: #400020; }
@@ -163,6 +164,7 @@ h1.alert, h2.alert		{color: #000000;}
 		60% 	{color: #ffb31a;}
 		100% 	{color: #ff33cc;}
 }
+// SKYRAT ADDITION END
 
 .phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}
 	@keyframes phobia {
