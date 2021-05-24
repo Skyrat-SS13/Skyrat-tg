@@ -52,7 +52,6 @@
 	display_results(user, target, "<span class='notice'>You begin to prepare electronics in [target]'s [parse_zone(target_zone)]...</span>",
 			"<span class='notice'>[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)].</span>")
-
 //unwrench
 /datum/surgery_step/mechanic_unwrench
 	name = "unwrench bolts"

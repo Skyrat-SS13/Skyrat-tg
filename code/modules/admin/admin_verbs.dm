@@ -150,6 +150,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 /world/proc/AVerbsDebug()
 	return list(
 	/client/proc/restart_controller,
+	/client/proc/debug_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
 	/client/proc/cmd_debug_make_powernets,
@@ -175,6 +176,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/generate_wikichem_list,
 	/client/proc/modify_goals,
 	/client/proc/debug_huds,
+	/client/proc/toggle_liquid_debug, //SKYRAT EDIT ADDITION
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,

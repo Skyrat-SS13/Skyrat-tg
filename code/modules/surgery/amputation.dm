@@ -1,4 +1,3 @@
-
 /datum/surgery/amputation
 	name = "Amputation"
 	steps = list(
