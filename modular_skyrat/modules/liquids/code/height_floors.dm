@@ -1,14 +1,14 @@
-/obj/item/stack/tile/plasteel/elevated
+/obj/item/stack/tile/iron/elevated
 	name = "elevated floor tile"
 	singular_name = "elevated floor tile"
 	turf_type = /turf/open/floor/iron/elevated
 
-/obj/item/stack/tile/plasteel/lowered
+/obj/item/stack/tile/iron/lowered
 	name = "lowered floor tile"
 	singular_name = "lowered floor tile"
 	turf_type = /turf/open/floor/iron/lowered
 
-/obj/item/stack/tile/plasteel/pool
+/obj/item/stack/tile/iron/pool
 	name = "pool floor tile"
 	singular_name = "pool floor tile"
 	turf_type = /turf/open/floor/iron/pool
