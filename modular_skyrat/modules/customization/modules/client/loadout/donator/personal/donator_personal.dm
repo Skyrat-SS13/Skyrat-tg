@@ -34,10 +34,15 @@
 	path = /obj/item/clothing/neck/cloak/grunnyyy
 	ckeywhitelist = list("grunnyyy")
 
-/datum/loadout_item/gloves/donator/hypnoring
+/datum/loadout_item/gloves/donator/hypnoring_coffee
 	name = "Hypnodemon's Ring"
-	path = /obj/item/clothing/gloves/ring/coffeepot
+	path = /obj/item/clothing/gloves/ring/hypno/coffeepot
 	ckeywhitelist = list("coffeepot")
+
+/datum/loadout_item/gloves/donator/hypnoring_bippy
+	name = "Hypnodemon's Ring"
+	path = /obj/item/clothing/gloves/ring/hypno/bippys
+	ckeywhitelist = list("bippys")
 
 /datum/loadout_item/suit/donator/kimjacket
 	name = "Aerostatic Bomber Jacket"
