@@ -1259,9 +1259,6 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "acW" = (
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -2005,10 +2002,10 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "agl" = (
+/obj/effect/turf_decal/delivery,
 /obj/item/kirbyplants{
 	icon_state = "plant-22"
 	},
-/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "agm" = (
@@ -2366,20 +2363,8 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "ahS" = (
-/obj/machinery/status_display/evac{
-	pixel_x = 32
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/camera{
-	c_tag = "Arrivals Shuttle - Aft Port";
-	dir = 8;
-	name = "arrivals camera"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/floor,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "ahW" = (
@@ -2828,6 +2813,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/white/corner{
 	dir = 1
 	},
@@ -2891,6 +2877,9 @@
 	dir = 8
 	},
 /obj/machinery/power/apc/auto_name/north,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/iron/white/corner{
 	dir = 1
 	},
@@ -2921,19 +2910,11 @@
 	},
 /area/hallway/secondary/entry)
 "ajE" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 1
-	},
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/iron/white/corner{
-	dir = 1
-	},
+/obj/machinery/light/floor,
+/turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "ajF" = (
 /obj/machinery/light{
@@ -95579,22 +95560,11 @@
 /turf/open/floor/iron/white,
 /area/hallway/primary/central/aft)
 "fwa" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
+/obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/newscaster/directional/north,
-/turf/open/floor/iron/white/corner{
-	dir = 1
-	},
+/obj/machinery/light/floor,
+/turf/open/floor/iron,
 /area/hallway/secondary/entry)
 "fwO" = (
 /obj/structure/disposalpipe/segment,
@@ -102337,6 +102307,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/security/prison)
+"moo" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/turf/open/floor/iron/white/corner,
+/area/hallway/secondary/entry)
 "moH" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -105198,6 +105177,23 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark,
 /area/security/office)
+"pBC" = (
+/obj/machinery/status_display/evac{
+	pixel_x = 32
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Arrivals Shuttle - Aft Port";
+	dir = 8;
+	name = "arrivals camera"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "pBM" = (
 /turf/closed/wall,
 /area/medical/storage)
@@ -106676,6 +106672,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/surgery)
+"rad" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/computer/shuttle/arrivals/recall{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "rby" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 8
@@ -108378,6 +108381,21 @@
 	dir = 1
 	},
 /area/commons/locker)
+"sJp" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/iron/white/corner{
+	dir = 1
+	},
+/area/hallway/secondary/entry)
 "sJu" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Emergency Access";
@@ -112829,6 +112847,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/surgery/room_b)
+"wZO" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/iron/white/corner,
+/area/hallway/secondary/entry)
 "xah" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -146643,7 +146668,7 @@ abe
 abp
 abC
 dlS
-abZ
+abC
 abC
 abC
 acV
@@ -146900,7 +146925,7 @@ xAW
 abq
 abD
 abD
-abZ
+abD
 abD
 abD
 acW
@@ -147161,15 +147186,15 @@ abC
 abC
 afx
 abC
-abC
-abC
-afx
-abC
-abC
+ajE
 abC
 afx
 abC
 abC
+abC
+afx
+abC
+ajE
 abC
 afx
 abC
@@ -147178,7 +147203,7 @@ abC
 afx
 tBs
 abf
-ajD
+sJp
 ajV
 abf
 ali
@@ -147435,7 +147460,7 @@ aiA
 aiA
 aiA
 tge
-ajE
+xdv
 ajW
 aky
 aky
@@ -147949,8 +147974,8 @@ aiA
 aiA
 aiA
 aiT
-fwa
-ajV
+ajD
+wZO
 aky
 alk
 ama
@@ -148184,7 +148209,7 @@ aaa
 qYo
 acF
 acb
-aiT
+ahS
 aiA
 aiA
 aiA
@@ -149212,7 +149237,7 @@ aaa
 qYo
 acF
 acb
-aiT
+ahS
 aiA
 aiA
 aiA
@@ -150245,15 +150270,15 @@ abD
 abD
 afT
 abD
-abD
-abD
-afT
-abD
-abD
+fwa
 abD
 afT
 abD
 abD
+abD
+afT
+abD
+fwa
 abD
 afT
 abD
@@ -150263,7 +150288,7 @@ afT
 gIE
 abf
 ajB
-ajV
+moo
 aky
 aky
 aky
@@ -151010,8 +151035,8 @@ xZM
 abG
 aaO
 acc
-ant
-ant
+abD
+abD
 acc
 abD
 abD
@@ -151027,9 +151052,9 @@ abD
 abD
 abD
 abD
-ahz
-ahS
 abD
+ahz
+pBC
 abD
 aiU
 abZ
@@ -151281,12 +151306,12 @@ aeX
 rUz
 rUz
 agl
+rad
 aaO
 aee
 aaO
 ads
 abf
-aaO
 aaO
 abf
 ajh
@@ -151539,11 +151564,11 @@ aaO
 aaO
 aaO
 aaO
+aaO
 ehy
 aaO
 aaa
 aad
-aaa
 aaa
 aaa
 abf
@@ -151794,11 +151819,11 @@ aaO
 aad
 aaa
 aaa
+aaa
 aad
 aaO
 eAM
 aaO
-aad
 aad
 aad
 aad
