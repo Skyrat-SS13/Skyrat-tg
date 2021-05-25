@@ -21,6 +21,7 @@
 	. = ..()
 	. += "<span class='notice'>Alt-click to [state_open ? "close" : "open"] the machine.</span>"
 	. += "<span class='notice'>A light blinking on the side indicates that it is [occupant ? "occupied" : "vacant"].</span>"
+	. += "<span class='notice'>It has a port on the side to plug in a health analyzer and scan the occupant.</span>"
 
 /obj/machinery/stasissleeper/open_machine()
 	if(!state_open && !panel_open)
@@ -145,5 +146,10 @@
 		visible_message("<span class='notice'>[usr] pries open [src].</span>", "<span class='notice'>You pry open [src].</span>")
 		open_machine()
 
-/obj/machinery/stasis/nap_violation(mob/violator)
-	open_machine()
+/obj/machinery/stasissleeper/attackby(obj/item/weapon, mob/user)
+	if(istype(weapon, /obj/item/healthanalyzer))
+		if(occupant)
+			to_chat(user, "<span class='notice'>You plug the health analyzer into the stasis bed.</span>")
+			weapon.attack(occupant, user)
+		else
+			to_chat(user, "<span class='notice'>You plug the health analyzer into the stasis bed... but there's no one inside!</span>")
