@@ -31,6 +31,7 @@
 		to_chat(user, "<span class='warning'>Someone else already took this mob!</span>")
 		return
 	key = user.key
-	var/string_to_send = CONFIG_GET(st)
-	to_chat(src, CONFIG_GET(string/pc_mob_text))
+	var/string_to_send = CONFIG_GET(string/pc_mob_text)
+	if(string_to_send)
+		to_chat(src, string_to_send)
 	log_game("[key_name(src)] took control of [name].")
