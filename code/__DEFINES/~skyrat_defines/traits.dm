@@ -17,6 +17,3 @@
 
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
-
-/// One can breath under water, you get me?
-#define TRAIT_WATER_BREATHING "water_breathing"
