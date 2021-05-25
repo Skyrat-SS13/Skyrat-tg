@@ -19,9 +19,9 @@
 	mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	burnmod = 1.3
-	brutemod = 1.2
-	coldmod = 0.5
+	burnmod = 1.5 // Every 0.1% is 10% above the base.
+	brutemod = 1.6 
+	coldmod = 1.2
 	heatmod = 2
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 	payday_modifier = 0.5 //Robots are cheep labor
