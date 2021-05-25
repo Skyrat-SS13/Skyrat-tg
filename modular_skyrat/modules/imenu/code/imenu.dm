@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 /proc/populate_interaction_jsons_master(path)
 	if(!fexists(path))
-		message_admins("We are attempting to load an interaction master without the file existing! '[file]'")
+		message_admins("We are attempting to load an interaction master without the file existing! '[path]'")
 		return
 	var/file = file(path)
 	var/list/json = json_load(file)
