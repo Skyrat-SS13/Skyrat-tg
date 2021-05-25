@@ -1,14 +1,14 @@
 /datum/round_event_control/mold
 	name = "Moldies"
 	typepath = /datum/round_event/mold
-	weight = 15
-	max_occurrences = 3
+	weight = 5
+	max_occurrences = 1
 	min_players = 10
 
 /datum/round_event/mold
 	fakeable = FALSE
+//		/obj/structure/biohazard_blob/structure/core/fungus, was removed from list below upon balance concerns.
 	var/list/available_molds = list(
-		/obj/structure/biohazard_blob/structure/core/fungus,
 		/obj/structure/biohazard_blob/structure/core/fire,
 		/obj/structure/biohazard_blob/structure/core/emp,
 		/obj/structure/biohazard_blob/structure/core/toxic,
