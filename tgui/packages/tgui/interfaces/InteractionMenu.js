@@ -23,7 +23,7 @@ export const InteractionMenu = (props, context) => {
               disabled={block_interact}
               icon="exclamation-circle"
               content={item}
-              color="grey"
+              color={block_interact ? "grey" : "blue"}
               onClick={() => act('interact', { interaction: item, selfref: ref_self, userref: ref_user })}
             />
           ))}

@@ -38,10 +38,43 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		if(flist(directory + file) && !findlasttext(directory + file, ".json"))
 			populate_interaction_instances(directory + file)
 			continue
+		if(findlasttext(directory + file, ".master.json")) // This is a master json which has special handling
+			populate_interaction_jsons_master(directory + file)
+			continue
 		var/datum/interaction/int = new()
 		if(int.load_from_json(directory + file))
 			GLOB.interaction_instances[int.name] = int
 		else message_admins("Error loading interaction from file: '[directory + file]'. Inform coders.")
+
+/proc/populate_interaction_jsons_master(path)
+	if(!fexists(path))
+		message_admins("We are attempting to load an interaction master without the file existing! '[file]'")
+		return
+	var/file = file(path)
+	var/list/json = json_load(file)
+
+	for(var/iname in json)
+		if(GLOB.interaction_instances[iname])
+			message_admins("Interaction Master '[path]' contained a duplicate interaction! '[iname]'")
+			continue
+
+		var/list/ijson = json[iname]
+		if(ijson["name"] != iname)
+			message_admins("Interaction Master '[path]' contained an invalid interaction! '[iname]'")
+			continue
+
+		var/datum/interaction/int = new()
+
+		int.distance_allowed = sanitize_integer(ijson["distance_allowed"], 0, 1, 0)
+		int.message = sanitize_islist(ijson["message"], list("json error"))
+		int.category = sanitize_text(ijson["category"])
+		int.usage = sanitize_text(ijson["usage"])
+		int.sound_use = sanitize_integer(ijson["sound_use"], 0, 1, 0)
+		int.sound_range = sanitize_integer(ijson["sound_range"], 1, 7, 1)
+		int.sound_possible = sanitize_islist(ijson["sound_possible"], list("json error"))
+		int.interaction_requires = sanitize_islist(ijson["interaction_requires"], list())
+
+		GLOB.interaction_instances[iname] = int
 
 /datum/interaction/proc/load_from_json(path)
 	var/fpath = path
