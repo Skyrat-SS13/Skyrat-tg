@@ -24,7 +24,7 @@
 
 /datum/surgery_step/saw/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results)
 	display_pain(target, "<span class='userdanger'>It feels like something just broke in your [parse_zone(target_zone)]!</span>")
-	..()
+	return ..()
 
 /datum/surgery_step/drill/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_pain(target, "<span class='userdanger'>You feel a horrible piercing pain in your [parse_zone(target_zone)]!</span>")
