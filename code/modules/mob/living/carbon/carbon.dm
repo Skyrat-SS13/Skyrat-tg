@@ -1323,4 +1323,5 @@
 
 
 /mob/living/carbon/proc/attach_rot(mapload)
+	SIGNAL_HANDLER
 	AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)

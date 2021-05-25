@@ -73,8 +73,14 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define SMOOTH_GROUP_BOSS_WALLS S_TURF(29) ///turf/closed/indestructible/riveted/boss
 #define SMOOTH_GROUP_SURVIVAL_TITANIUM_WALLS S_TURF(30) ///turf/closed/wall/mineral/titanium/survival
 
-#define MAX_S_TURF SMOOTH_GROUP_SURVIVAL_TITANIUM_WALLS //Always match this value with the one above it.
+//SKYRAT EDIT ADDITION
+#define SMOOTH_GROUP_ELEVATED_PLASTEEL S_TURF(31)
+#define SMOOTH_GROUP_LOWERED_PLASTEEL S_TURF(32)
 
+#define SMOOTH_GROUP_FISSURE S_TURF(33)
+
+#define MAX_S_TURF SMOOTH_GROUP_FISSURE //Always match this value with the one above it.
+//SKYRAT EDIT END
 
 #define S_OBJ(num) (MAX_S_TURF + 1 + num)
 /* /obj included */
@@ -130,7 +136,10 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define SMOOTH_GROUP_CLEANABLE_DIRT S_OBJ(67) ///obj/effect/decal/cleanable/dirt
 
 #define SMOOTH_GROUP_INDUSTRIAL_LIFT S_OBJ(70) ///obj/structure/industrial_lift
+//SKYRAT EDIT ADDITION
+#define SMOOTH_GROUP_SHUTTERS S_OBJ(71)
 
-#define SMOOTH_GROUP_SHUTTERS S_OBJ(71) //SKYRAT EDIT ADDITION - ASSAULTOPS
+#define SMOOTH_GROUP_WATER S_OBJ(72)			///obj/effect/abstract/liquid_turf
 
-#define MAX_S_OBJ SMOOTH_GROUP_SHUTTERS //Always match this value with the one above it. //SKYRAT EDIT CHANGE - ASSAULTOPS - ORIGINAL: #define MAX_S_OBJ SMOOTH_GROUP_SHUTTERS
+#define MAX_S_OBJ SMOOTH_GROUP_WATER //Always match this value with the one above it.
+//SKYRAT EDIT END
