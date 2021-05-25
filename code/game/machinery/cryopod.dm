@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 #endif
 	for(var/mob_content in mob_occupant)
 		var/obj/item/item_content = mob_content
-		if(!istype(item_content))
+		if(!istype(item_content) || HAS_TRAIT(item_content, TRAIT_NODROP))
 			continue
 
 // Skyrat Edit Addition - Cryostorage stores items.
