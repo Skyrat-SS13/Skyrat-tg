@@ -11,6 +11,7 @@
 	active_power_usage = 340
 	var/enter_message = "<span class='notice'><b>You feel cool air surround you. You go numb as your senses turn inward.<b></span>"
 	var/last_stasis_sound = FALSE
+	var/internal_scanner_mode = SCANNER_VERBOSE
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
 
@@ -152,7 +153,7 @@
 			to_chat(user, "<span class='notice'>You read the vitals readout on the inside of the stasis unit.</span>")
 		else
 			to_chat(user, "<span class='notice'>You read the vitals readout on the side of the stasis unit.</span>")
-		healthscan(user, occupant, mode, TRUE)
+		healthscan(user, occupant, internal_scanner_mode, TRUE)
 	else
 		to_chat(user, "span class='warning'>The vitals readout is empty, the stasis unit is unoccupied!</span>")
 
