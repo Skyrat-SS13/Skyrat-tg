@@ -27,6 +27,7 @@
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/engineering/ce(src)
+	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/engineering_electrical
@@ -73,6 +74,7 @@
 	new /obj/item/clothing/glasses/meson/engine(src)
 	new /obj/item/storage/box/emptysandbags(src)
 	new /obj/item/storage/bag/construction(src)
+	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 
 
 /obj/structure/closet/secure_closet/atmospherics
