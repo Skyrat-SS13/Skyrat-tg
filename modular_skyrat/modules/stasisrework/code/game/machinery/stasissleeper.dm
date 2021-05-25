@@ -152,7 +152,7 @@
 			to_chat(user, "<span class='notice'>You read the vitals readout on the inside of the stasis unit.</span>")
 		else
 			to_chat(user, "<span class='notice'>You read the vitals readout on the side of the stasis unit.</span>")
-		healthscan(user, occupant, SCANNER_VERBOSE, TRUE)
+		healthscan(user, occupant, mode, TRUE)
 	else
 		to_chat(user, "span class='warning'>The vitals readout is empty, the stasis unit is unoccupied!</span>")
 
