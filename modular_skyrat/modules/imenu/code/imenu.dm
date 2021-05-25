@@ -167,6 +167,9 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		ui.set_autoupdate(TRUE)
 		ui.open()
 
+/datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
+	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
+
 /mob/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/interactable)
