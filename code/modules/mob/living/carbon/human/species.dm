@@ -1804,14 +1804,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	// Get the temperature of the environment for area
 	var/area_temp = humi.get_temperature(environment)
 
-	//SKYRAT EDIT ADDITION
-	//Special handling for getting liquids temperature
-	if(isturf(humi.loc))
-		var/turf/T = humi.loc
-		if(T.liquids && T.liquids.liquid_state > LIQUID_STATE_PUDDLE)
-			var/submergment_percent = SUBMERGEMENT_PERCENT(humi, T.liquids)
-			area_temp = (area_temp*(1-submergment_percent)) + (T.liquids.temp * submergment_percent)
-	//SKYRAT EDIT END
 	// Get the insulation value based on the area's temp
 	var/thermal_protection = humi.get_insulation_protection(area_temp)
 
