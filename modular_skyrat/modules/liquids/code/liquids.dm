@@ -661,7 +661,7 @@ SUBSYSTEM_DEF(liquids)
 /obj/effect/abstract/liquid_turf/proc/movable_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
 	var/turf/T = source
-	if(ismob(AM) && !isliving(AM))
+	if(isobserver(AM))
 		return //ghosts, camera eyes, etc. don't make water splashy splashy
 	if(liquid_state >= LIQUID_STATE_ANKLES)
 		if(prob(30))
