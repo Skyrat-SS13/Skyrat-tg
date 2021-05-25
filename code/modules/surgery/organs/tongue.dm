@@ -46,6 +46,7 @@
 	languages_possible = languages_possible_base
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
 
 /obj/item/organ/tongue/Insert(mob/living/carbon/tongue_owner, special = 0)
 	..()

@@ -77,7 +77,7 @@
 	while(possible_expansions.len)
 		for(var/obj/machinery/atmospherics/borderline in possible_expansions)
 			var/list/result = borderline.pipeline_expansion(src)
-			if(!result?.len)
+			if(!(result && result.len))
 				possible_expansions -= borderline
 				continue
 			for(var/obj/machinery/atmospherics/considered_device in result)
