@@ -1,3 +1,4 @@
+#define SCANNER_VERBOSE 1
 /obj/machinery/stasissleeper
 	name = "lifeform stasis unit"
 	desc = "A somewhat comfortable looking bed with a cover over it. It will keep someone in stasis."
@@ -166,3 +167,4 @@
 		chemscan(user, occupant)
 	else
 		to_chat(user, "span class='warning'>The vitals readout is empty, the stasis unit is unoccupied!</span>")
+#undef SCANNER_VERBOSE
