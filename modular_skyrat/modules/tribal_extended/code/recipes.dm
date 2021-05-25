@@ -35,14 +35,13 @@
 	name = "Bone Arrow"
 	result = /obj/item/ammo_casing/caseless/arrow/bone
 	reqs = list(/obj/item/stack/sheet/bone = 1,
-				/obj/item/stack/sheet/sinew = 1,
 				/obj/item/ammo_casing/caseless/arrow/ash = 1)
 	time = 15
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/ashen_arrow
 	name = "Ashen Arrow"
-	result = /obj/item/ammo_casing/caseless/arrow/bone
+	result = /obj/item/ammo_casing/caseless/arrow/ash
 	reqs = list(/obj/item/stack/rods = 2,
 				/obj/item/stack/sheet/sinew = 1,
 				/obj/item/stack/ore/glass/basalt = 10)
