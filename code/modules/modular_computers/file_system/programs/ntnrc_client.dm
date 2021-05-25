@@ -172,7 +172,7 @@
 		else
 			last_message = null
 		return TRUE
-	if(channel?.messages?.len)
+	if(channel?.messages && channel?.messages.len)
 		ui_header = last_message == channel.messages[length(channel.messages)] ? "ntnrc_idle.gif" : "ntnrc_new.gif"
 	else
 		ui_header = "ntnrc_idle.gif"
