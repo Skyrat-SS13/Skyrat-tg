@@ -507,12 +507,6 @@
 	integrity_failure = 0.25
 	armor = list(MELEE = 10, BULLET = 30, LASER = 30, ENERGY = 100, BOMB = 20, BIO = 0, RAD = 0, FIRE = 80, ACID = 70)
 
-//SKYRAT EDIT ADDITION
-/obj/structure/table/reinforced/Initialize()
-	. = ..()
-	AddElement(/datum/element/liquids_height, 20)
-//SKYRAT EDIT END
-
 /obj/structure/table/reinforced/deconstruction_hints(mob/user)
 	if(deconstruction_ready)
 		return "<span class='notice'>The top cover has been <i>welded</i> loose and the main frame's <b>bolts</b> are exposed.</span>"
