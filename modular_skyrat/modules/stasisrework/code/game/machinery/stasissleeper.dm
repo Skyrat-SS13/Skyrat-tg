@@ -55,9 +55,9 @@
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	if(!panel_open)
-		user.visible_message("<span class='notice'>\The [src] [state_open ? "hisses as it swings open." : "hisses as it seals shut."].</span>", \
+		user.visible_message("<span class='notice'>\The [src] [state_open ? "hisses as it seals shut." : "hisses as it swings open."].</span>", \
 						"<span class='notice'>You [state_open ? "close" : "open"] \the [src].</span>", \
-						"<span class='hear'>You hear a nearby machine [state_open ? "hiss open." : "seal shut."].</span>")
+						"<span class='hear'>You hear a nearby machine [state_open ? "seal shut." : "swing open."].</span>")
 	if(state_open)
 		close_machine()
 	else
