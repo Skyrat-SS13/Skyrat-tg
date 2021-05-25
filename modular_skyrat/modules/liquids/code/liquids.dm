@@ -644,7 +644,7 @@ SUBSYSTEM_DEF(liquids)
 				var/atom/movable/AM
 				for(var/thing in my_turf)
 					AM = thing
-					if(!AM.anchored && !AM.pulledby)
+					if(!AM.anchored && !AM.pulledby && !isobserver(AM) && !iscameramob(AM))
 						if(iscarbon(AM))
 							var/mob/living/carbon/C = AM
 							if(!(C.shoes && C.shoes.clothing_flags & NOSLIP))
