@@ -7,18 +7,25 @@
 
 /datum/round_event/mold
 	fakeable = FALSE
-//		/obj/structure/biohazard_blob/structure/core/fungus, was removed from list below upon balance concerns.
-	var/list/available_molds = list(
+	var/list/available_molds_t1 = list(
 		/obj/structure/biohazard_blob/structure/core/fire,
-		/obj/structure/biohazard_blob/structure/core/emp,
+		/obj/structure/biohazard_blob/structure/core/toxic
+	)
+	var/list/available_molds_t2 = list(
+		/obj/structure/biohazard_blob/structure/core/fire,
 		/obj/structure/biohazard_blob/structure/core/toxic,
-		/obj/structure/biohazard_blob/structure/core/radioactive
+		/obj/structure/biohazard_blob/structure/core/radioactive,
+		/obj/structure/biohazard_blob/structure/core/emp,
+		/obj/structure/biohazard_blob/structure/core/fungus
 	)
 
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
-
-	var/molds2spawn = rand(1, 2)
+	var/molds2spawn 
+	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 60)
+		molds2spawn	= 2 //Guaranteedly worse
+	else
+		molds2spawn = rand(1,2)
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
@@ -39,7 +46,11 @@
 	qdel(resintest)
 
 	for(var/i = 1, i <= molds2spawn)
-		var/picked_mold = pick(available_molds)
+		var/picked_mold
+		if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 60)
+			picked_mold = pick(available_molds_t2)
+		else
+			picked_mold = pick(available_molds_t1)
 		shuffle(turfs)
 		var/turf/picked_turf = pick(turfs)
 		if(turfs.len) //Pick a turf to spawn at if we can
