@@ -57,7 +57,7 @@
 	return FALSE
 
 #define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
-#define SURGERY_SPEEDUP_AREA 2 // Skyrat Edit Addition - reward for doing surgery in surgery
+#define SURGERY_SPEEDUP_AREA 0.5 // Skyrat Edit Addition - reward for doing surgery in surgery
 
 /datum/surgery_step/proc/initiate(mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	// Only followers of Asclepius have the ability to use Healing Touch and perform miracle feats of surgery.
@@ -88,7 +88,7 @@
 
 	// Skyrat Edit Addition - reward for doing surgery in surgery
 	if(istype(get_area(target), /area/medical/surgery) && (TRAIT_FASTMED in user.status_traits))
-		modded_time /= SURGERY_SPEEDUP_AREA
+		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, "<span class='notice'>You breathe in relief as all the tools and equipment you need are in easy reach!</span>")
 	// Skyrat Edit End
 
