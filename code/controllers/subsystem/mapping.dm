@@ -320,8 +320,8 @@ Used by the AI doomsday and the self-destruct nuke.
 			add_startupmessage("MINING MAP: Loading mining level...")
 			if(!mining_traits_to_load)
 				add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
-				LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
-				add_startupmessage("MINING MAP: Loaded successfully.")
+			LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
+			add_startupmessage("MINING MAP: Loaded successfully.")
 			else
 				add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
 				if(config.minetype == "lavaland")
