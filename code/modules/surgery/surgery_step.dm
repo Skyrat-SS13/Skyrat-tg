@@ -87,7 +87,7 @@
 	modded_time = min(modded_time, time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)//also if that, then cap modded_time at time*modifier
 
 	// Skyrat Edit Addition - reward for doing surgery in surgery
-	if(istype(get_area(target), /area/medical/surgery) && (TRAIT_FASTMED in user.status_traits))
+	if(is_type_in_list(get_area(target), list(/area/medical/surgery, /area/science/robotics)) && (TRAIT_FASTMED in user.status_traits) || (TRAIT_QUICK_CARRY in user.status_traits))
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, "<span class='notice'>You breathe in relief as all the tools and equipment you need are in easy reach!</span>")
 	// Skyrat Edit End
