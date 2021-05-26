@@ -28,8 +28,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		return
 	for(var/spath in subtypesof(/datum/interaction))
 		var/datum/interaction/interaction = new spath()
-		if(interaction.category == INTERACTION_CAT_HIDE)
-			continue
 		GLOB.interaction_instances[interaction.name] = interaction
 	populate_interaction_jsons(INTERACTION_JSON_FOLDER)
 
@@ -227,20 +225,19 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/list/data = list()
 	var/list/datum/interaction/ints = mil_mob(user)
 
-	var/list/nones = list()
+	var/list/cats = list()
 	for(var/datum/interaction/int in ints)
-		switch(int.category)
-			if(INTERACTION_CAT_NONE)
-				nones += int.name
-			if(INTERACTION_CAT_HIDE)
-				continue
-			else
-				message_admins("Illegal Category for interaction. This needs to be reported to coders. '[int.category]'")
+		if(!cats[int.category])
+			cats[int.category] = list(int.name)
+		else cats[int.category] += int.name
+	data["categories"] = list()
+	for(var/cat in cats)
+		data["categories"] += cat
 
 	data["ref_user"] = REF(user)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
-	data["nones"] = nones
+	data["ints"] = cats
 	data["block_interact"] = interact_next >= world.time
 	return data
 
@@ -255,6 +252,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			var/mob/living/user = locate(params["userref"])
 			var/datum/component/interactable/int = user.GetComponent(/datum/component/interactable)
 			int.interact_last = world.time
-			int.interact_next = int.interact_last + INTERACTION_COOLDOWN
+			interact_next = int.interact_last + INTERACTION_COOLDOWN
+			int.interact_next = interact_next
 			return TRUE
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")

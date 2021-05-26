@@ -4,7 +4,7 @@ import { Window } from '../layouts';
 
 export const InteractionMenu = (props, context) => {
   const { act, data } = useBackend(context);
-  const { nones } = data; // Interaction categories
+  const { categories, ints } = data; // Interaction categories
   const { self, ref_self, ref_user } = data;
   const { block_interact } = data;
 
@@ -15,21 +15,20 @@ export const InteractionMenu = (props, context) => {
       ) || (
         <NoticeBox>Able to Interact</NoticeBox>
       )}
-      {nones.length && (
-        <Section title="Miscellaneous">
-          {nones.map((item) => (
+      {categories.map((category) =>(
+        <Section key={category} title={category}>
+          {ints[category].map((int) => (
             <Button
-              key={item}
+              key={int}
               disabled={block_interact}
               icon="exclamation-circle"
-              content={item}
+              content={int}
               color={block_interact ? "grey" : "blue"}
-              onClick={() => act('interact', { interaction: item, selfref: ref_self, userref: ref_user })}
-            />
+              onClick={() => act('interact', { interaction: int, selfref: ref_self, userref: ref_user })}
+              />
           ))}
-        </Section>) || (
-        <NoticeBox>No Miscellaneous Interactions</NoticeBox>
-      )}
+        </Section>
+      ))}
     </Window>
   );
 };
