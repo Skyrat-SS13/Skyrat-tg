@@ -160,10 +160,11 @@
 /obj/machinery/stasissleeper/attack_hand_secondary(mob/user)
 	if(occupant)
 		if(occupant == user)
-			to_chat(user, "<span class='notice'>You read the vitals readout on the inside of the stasis unit.</span>")
+			to_chat(user, "<span class='notice'>You read the bloodstream readout on the inside of the stasis unit.</span>")
 		else
-			to_chat(user, "<span class='notice'>You read the vitals readout on the side of the stasis unit.</span>")
+			to_chat(user, "<span class='notice'>You read the bloodstream readout on the side of the stasis unit.</span>")
 		chemscan(user, occupant)
 	else
-		to_chat(user, "span class='warning'>The vitals readout is empty, the stasis unit is unoccupied!</span>")
+		to_chat(user, "<span class='warning'>The bloodstream readout is empty, the stasis unit is unoccupied!</span>")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 #undef SCANNER_VERBOSE
