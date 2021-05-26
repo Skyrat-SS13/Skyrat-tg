@@ -165,5 +165,5 @@
 			to_chat(user, "<span class='notice'>You read the vitals readout on the side of the stasis unit.</span>")
 		chemscan(user, occupant)
 	else
-		to_chat(user, "span class='warning'>The vitals readout is empty, the stasis unit is unoccupied!</span>")
+		to_chat(user, "<span class='warning'>The vitals readout is empty, the stasis unit is unoccupied!</span>")
 #undef SCANNER_VERBOSE
