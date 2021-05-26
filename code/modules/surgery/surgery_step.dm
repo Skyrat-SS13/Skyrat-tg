@@ -91,7 +91,6 @@
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, "<span class='notice'>You breathe in relief as all the tools and equipment you need are in easy reach!</span>")
 	// Skyrat Edit End
-
 	if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
 		modded_time = time
 
