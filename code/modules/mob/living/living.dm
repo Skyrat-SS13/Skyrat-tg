@@ -1424,8 +1424,8 @@
 	if(isliving(dropping))
 		var/mob/living/M = dropping
 		if(M.can_be_held && U.pulling == M)
-			M.mob_try_pickup(U)//blame kevinz
-			return//dont open the mobs inventory if you are picking them up
+			return M.mob_try_pickup(U)//blame kevinz
+		return FALSE//dont open the mobs inventory if you are picking them up
 	. = ..()
 
 /mob/living/proc/mob_pickup(mob/living/L)
@@ -1440,7 +1440,7 @@
 
 /mob/living/proc/mob_try_pickup(mob/living/user, instant=FALSE)
 	if(!ishuman(user))
-		return
+		return FALSE
 	if(!user.get_empty_held_indexes())
 		to_chat(user, "<span class='warning'>Your hands are full!</span>")
 		return FALSE
