@@ -1,3 +1,4 @@
+#define SCANNER_VERBOSE 1
 /obj/machinery/stasissleeper
 	name = "lifeform stasis unit"
 	desc = "A somewhat comfortable looking bed with a cover over it. It will keep someone in stasis."
@@ -21,6 +22,7 @@
 	. = ..()
 	. += "<span class='notice'>Alt-click to [state_open ? "close" : "open"] the machine.</span>"
 	. += "<span class='notice'>A light blinking on the side indicates that it is [occupant ? "occupied" : "vacant"].</span>"
+	. += "<span class='notice'>It has a screen on the side displaying the vitals of the occupant. Interact to read it.</span>"
 
 /obj/machinery/stasissleeper/open_machine()
 	if(!state_open && !panel_open)
@@ -145,5 +147,24 @@
 		visible_message("<span class='notice'>[usr] pries open [src].</span>", "<span class='notice'>You pry open [src].</span>")
 		open_machine()
 
-/obj/machinery/stasis/nap_violation(mob/violator)
-	open_machine()
+/obj/machinery/stasissleeper/attack_hand(mob/user)
+	if(occupant)
+		if(occupant == user)
+			to_chat(user, "<span class='notice'>You read the vitals readout on the inside of the stasis unit.</span>")
+		else
+			to_chat(user, "<span class='notice'>You read the vitals readout on the side of the stasis unit.</span>")
+		healthscan(user, occupant, SCANNER_VERBOSE, TRUE)
+	else
+		to_chat(user, "span class='warning'>The vitals readout is blank, the stasis unit is unoccupied!</span>")
+
+/obj/machinery/stasissleeper/attack_hand_secondary(mob/user)
+	if(occupant)
+		if(occupant == user)
+			to_chat(user, "<span class='notice'>You read the bloodstream readout on the inside of the stasis unit.</span>")
+		else
+			to_chat(user, "<span class='notice'>You read the bloodstream readout on the side of the stasis unit.</span>")
+		chemscan(user, occupant)
+	else
+		to_chat(user, "<span class='warning'>The bloodstream readout is blank, the stasis unit is unoccupied!</span>")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+#undef SCANNER_VERBOSE
