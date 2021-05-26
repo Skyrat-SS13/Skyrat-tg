@@ -18,10 +18,16 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 #define INTERACTION_REQUIRE_TARGET_HAND "target_hand"
 #define INTERACTION_REQUIRE_TARGET_SPEAK "target_speak"
 
-/mob/living/CtrlShiftClick(mob/user)
+/mob/living/CtrlShiftClickOn(atom/atom_on)
 	. = ..()
-	if(isliving(user) && isliving(src))
-		cmd_interact()
+	if(.) // already handled, ignore
+		return .
+	if(isliving(atom_on))
+		var/mob/living/clicked_living = atom_on
+		var/datum/component/interactable/clicked_int = clicked_living.GetComponent(/datum/component/interactable)
+		if(!clicked_int)
+			message_admins("Interactable CtrlShiftClickOn failure. Inform Coders.")
+		clicked_int.ui_interact(src)
 
 /proc/populate_interaction_instances()
 	if(GLOB.interaction_instances.len)
