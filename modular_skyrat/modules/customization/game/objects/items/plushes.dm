@@ -137,7 +137,7 @@
 	gender = MALE
 
 /obj/item/toy/plush/sharknet
-	name = "Gluttonous shark plushie"
+	name = "Gluttonous Shark plushie"
 	desc = "A heavy plushie of a rather large and hungry shark"
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_sharknet"
@@ -159,7 +159,7 @@
 //End of storage component//
 
 /obj/item/toy/plush/pintaplush
-	name = "Smaller deer plushie"
+	name = "Smaller Deer plushie"
 	desc = "A pint-sized cervine with a vacant look."
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
 	icon_state = "plushie_pinta"
