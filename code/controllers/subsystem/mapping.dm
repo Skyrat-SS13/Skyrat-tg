@@ -323,11 +323,11 @@ Used by the AI doomsday and the self-destruct nuke.
 			LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
 			add_startupmessage("MINING MAP: Loaded successfully.")
 		if(!mining_map_to_load)
-				add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
-				if(config.minetype == "lavaland")
-					LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-				else if (!isnull(config.minetype) && config.minetype != "none")
-					INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+			add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+			if(config.minetype == "lavaland")
+				LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+			else if (!isnull(config.minetype) && config.minetype != "none")
+				INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 	//SKYRAT EDIT END
 
 #endif
