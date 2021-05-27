@@ -136,7 +136,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 	gender = MALE
 
-/obj/item/toy/plush/sharknetplush
+/obj/item/toy/plush/sharknet
 	name = "Gluttonous shark plushie"
 	desc = "A heavy plushie of a rather large and hungry shark"
 	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
@@ -144,8 +144,19 @@
 	inhand_icon_state = "plushie_sharknet"
 	attack_verb_continuous = list("cuddles", "squishes", "wehs")
 	attack_verb_simple = list("cuddle", "squish", "weh")
+	w_class = WEIGHT_CLASS_NORMAL
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = 1 //No.
+//Storage component for Sharknet Plushie//
+/obj/item/toy/plush/sharknet/ComponentInitialize()
+	var/datum/component/storage/concrete/storage = AddComponent(/datum/component/storage/concrete)
+	storage.max_items = 2
+	storage.max_w_class = WEIGHT_CLASS_SMALL
+	storage.set_holdable(list(
+		/obj/item/toy/plush/pintaplush,
+		/obj/item/toy/plush/arcplush
+		))
+//End of storage component//
 
 /obj/item/toy/plush/pintaplush
 	name = "Smaller deer plushie"
