@@ -25,7 +25,7 @@ export const InteractionMenu = (props, context) => {
               content={int}
               color={block_interact ? "grey" : "blue"}
               onClick={() => act('interact', { interaction: int, selfref: ref_self, userref: ref_user })}
-                />
+            />
           ))}
         </Section>
       ))}
