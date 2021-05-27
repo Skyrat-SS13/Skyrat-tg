@@ -278,12 +278,14 @@ GLOBAL_LIST_INIT(food, list(
 			to_chat(parent, "<span class='userdanger'>You must have a flavor text!</span>")
 		if(check_rights(R_ADMIN))
 			message_admins("[usr] is bypassing the flavor text requirements.")
+			return TRUE
 		return FALSE
 	if(length(replacetext(features["flavor_text"], " ", "")) < FLAVORTEXT_JOIN_MINIMUM) // No you can't use whitespace to meet the requirement
 		if(inform_client)
 			to_chat(parent, "<span class='userdanger'>Your flavor text must be longer than [FLAVORTEXT_JOIN_MINIMUM] characters!</span>")
 		if(check_rights(R_ADMIN))
 			message_admins("[usr] is bypassing the flavor text requirements.")
+			return TRUE
 		return FALSE
 	return TRUE
 
