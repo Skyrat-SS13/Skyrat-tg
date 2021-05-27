@@ -24,7 +24,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	startWhen = 6
 	endWhen	= 66
 	announceWhen = 10
-	var/cme_intensity
+	var/cme_intensity = CME_MINIMAL
 	var/cme_frequency_lower
 	var/cme_frequency_upper
 	var/list/cme_start_locs = list()
