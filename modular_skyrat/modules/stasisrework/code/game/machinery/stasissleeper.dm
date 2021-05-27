@@ -155,7 +155,7 @@
 			to_chat(user, "<span class='notice'>You read the vitals readout on the side of the stasis unit.</span>")
 		healthscan(user, occupant, SCANNER_VERBOSE, TRUE)
 	else
-		to_chat(user, "span class='warning'>The vitals readout is blank, the stasis unit is unoccupied!</span>")
+		to_chat(user, "<span class='warning'>The vitals readout is blank, the stasis unit is unoccupied!</span>")
 
 /obj/machinery/stasissleeper/attack_hand_secondary(mob/user)
 	if(occupant)
@@ -167,4 +167,14 @@
 	else
 		to_chat(user, "<span class='warning'>The bloodstream readout is blank, the stasis unit is unoccupied!</span>")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/stasissleeper/attack_ai(mob/user)
+	attack_hand(user)
+
+/obj/machinery/stasissleeper/attack_robot(mob/user)
+	attack_hand(user)
+
+/obj/machinery/stasissleeper/attack_ai_secondary(mob/user) // this works for borgs and ais shrug
+	attack_hand_secondary(user)
+
 #undef SCANNER_VERBOSE
