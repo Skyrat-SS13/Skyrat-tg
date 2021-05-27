@@ -139,7 +139,7 @@
 /obj/item/toy/plush/sharknet
 	name = "Gluttonous Shark plushie"
 	desc = "A heavy plushie of a rather large and hungry shark"
-	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_sharknet"
 	inhand_icon_state = "plushie_sharknet"
 	attack_verb_continuous = list("cuddles", "squishes", "wehs")
@@ -161,7 +161,7 @@
 /obj/item/toy/plush/pintaplush
 	name = "Smaller Deer plushie"
 	desc = "A pint-sized cervine with a vacant look."
-	icon = 'modular_skyrat/modules/customization/icons/obj/plushes.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pinta"
 	inhand_icon_state = "plushie_pinta"
 	attack_verb_continuous = list("bonks", "snugs")
