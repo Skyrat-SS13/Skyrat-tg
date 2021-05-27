@@ -19,16 +19,16 @@
 	desc = "Worn by Securistan, ruling the station with an iron fist."
 	icon_state = "hoscloak"
 	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/qm
 	name = "quartermaster's cloak"
 	desc = "Worn by Cargonia, supplying the station with the necessary tools for survival."
 	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/cmo
@@ -36,8 +36,8 @@
 	desc = "Worn by Meditopia, the valiant men and women keeping pestilence at bay."
 	icon_state = "cmocloak"
 	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/ce
@@ -46,8 +46,8 @@
 	icon_state = "cecloak"
 	resistance_flags = FIRE_PROOF
 	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/rd
@@ -55,8 +55,8 @@
 	desc = "Worn by Sciencia, thaumaturges and researchers of the universe."
 	icon_state = "rdcloak"
 	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/cap
@@ -64,8 +64,8 @@
 	desc = "Worn by the commander of Space Station 13."
 	icon_state = "capcloak"
 	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/hop
@@ -73,8 +73,8 @@
 	desc = "Worn by the Head of Personnel. It smells faintly of bureaucracy."
 	icon_state = "hopcloak"
 	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/goliath
@@ -85,6 +85,9 @@
 	armor = list(MELEE = 35, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 60, ACID = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/goliath
 	body_parts_covered = CHEST|GROIN|ARMS
+	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/head/hooded/cloakhood/goliath
 	name = "goliath cloak hood"
@@ -94,6 +97,9 @@
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	transparent_protection = HIDEMASK
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	//SKYRAT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/drake
 	name = "drake armour"
@@ -176,6 +182,7 @@
 	UnregisterSignal(user, COMSIG_MOB_STATCHANGE, .proc/resurrect)
 
 /obj/item/clothing/suit/hooded/cloak/godslayer/proc/resurrect(mob/living/carbon/user, new_stat)
+	SIGNAL_HANDLER
 	if(new_stat > CONSCIOUS && new_stat < DEAD && COOLDOWN_FINISHED(src, effect_cooldown))
 		user.heal_ordered_damage(heal_amount, damage_heal_order)
 		user.visible_message("<span class='notice'>[user] suddenly revives, as their armor swirls with demonic energy!</span>", "<span class='notice'>You suddenly feel invigorated!</span>")

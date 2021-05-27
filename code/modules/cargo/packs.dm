@@ -1169,6 +1169,8 @@
 
 		pack.contains = list(GLOB.gas_id_to_canister[initial(gas.id)])
 
+		pack.crate_type = crate_type
+
 		canister_packs += pack
 
 	return canister_packs
@@ -1582,7 +1584,7 @@
 
 /datum/supply_pack/service/carpet
 	name = "Premium Carpet Crate"
-	desc = "Plasteel floor tiles getting on your nerves? These stacks of extra soft carpet will tie any room together."
+	desc = "Iron floor tiles getting on your nerves? These stacks of extra soft carpet will tie any room together."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/stack/tile/carpet/fifty,
 					/obj/item/stack/tile/carpet/fifty,
@@ -2765,12 +2767,12 @@
 	crate_name = "soft drinks supply crate"
 
 /datum/supply_pack/vending/vendomat
-	name = "Vendomat & YouTool Supply Crate"
+	name = "Part-Mart & YouTool Supply Crate"
 	desc = "More tools for your IED testing facility."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/vending_refill/assist,
 					/obj/item/vending_refill/youtool)
-	crate_name = "Vendomat & YouTool supply crate"
+	crate_name = "Part-Mart & YouTool supply crate"
 
 /datum/supply_pack/vending/clothesmate
 	name = "ClothesMate Supply Crate"

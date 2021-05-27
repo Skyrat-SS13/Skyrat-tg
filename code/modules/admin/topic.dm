@@ -47,6 +47,48 @@
 			to_chat(usr, "<span class='danger'>ERROR: Mob not found.</span>", confidential = TRUE)
 			return
 		cmd_show_exp_panel(M.client)
+
+// SKYRAT EDIT BEGIN -- ONE CLICK ANTAG
+	else if(href_list["makeAntag"])
+
+		message_admins("[key_name_admin(usr)] is attempting to make [href_list["makeAntag"]]")
+
+		if(!check_rights(R_ADMIN))
+			return
+
+		if (!SSticker.mode)
+			to_chat(usr, "<span class='danger'>Not until the round starts!</span>", confidential = TRUE)
+			return
+
+		var/opt = null
+		switch(href_list["makeAntag"])
+			if(ROLE_BLOB)
+				opt = input("Set Blob Resource Gain Rate","Set Resource Rate",1) as num|null
+			if(ROLE_TRAITOR)
+				opt = input("How Many", ROLE_TRAITOR, 1) as num|null
+			if(ROLE_CHANGELING)
+				opt = input("How Many", ROLE_CHANGELING, 1) as num|null
+			if(ROLE_CULTIST)
+				opt = input("How Many", ROLE_CULTIST, 2) as num|null
+			if(ROLE_HERETIC)
+				opt = input("How Many", ROLE_HERETIC, 2) as num|null
+			if(ROLE_MONKEY)
+				opt = input("How Many", ROLE_MONKEY, 1) as num|null
+			if(ROLE_REV)
+				opt = input("How Many", ROLE_REV, 1) as num|null
+			if(ROLE_OPERATIVE)
+				opt = input("How Many", ROLE_OPERATIVE, 3) as num|null
+			if(ROLE_FAMILIES)
+				opt = input("How Many", ROLE_FAMILIES, 2) as num|null
+			if(ROLE_INTERNAL_AFFAIRS)
+				opt = input("How Many", ROLE_INTERNAL_AFFAIRS, 1) as num|null
+			if(ROLE_BROTHER)
+				opt = input("How Many", ROLE_BROTHER, 2) as num|null
+		if(src.make_antag(href_list["makeAntag"], opt))
+			message_admins("[key_name_admin(usr)] created '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
+		else message_admins("[key_name_admin(usr)] FAILED to create '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
+// SKYRAT EDIT END -- ONE CLICK ANTAG
+
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))
 			return
@@ -56,7 +98,7 @@
 			var/datum/round_event/event = E.runEvent()
 			if(event.announceWhen>0)
 				event.processing = FALSE
-				var/prompt = alert(usr, "Would you like to alert the crew?", "Alert", "Yes", "No", "Cancel")
+				var/prompt = tgui_alert(usr, "Would you like to alert the crew?", "Alert", list("Yes", "No", "Cancel"))
 				switch(prompt)
 					if("Yes")
 						event.announceChance = 100
@@ -231,7 +273,7 @@
 			if(isnull(SSticker.admin_delay_notice))
 				return
 		else
-			if(alert(usr, "Really cancel current round end delay? The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Undelay round end", "Yes", "No") != "Yes")
+			if(tgui_alert(usr, "Really cancel current round end delay? The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Undelay round end", list("Yes", "No")) != "Yes")
 				return
 			SSticker.admin_delay_notice = null
 		SSticker.delay_end = !SSticker.delay_end
@@ -247,8 +289,8 @@
 			return
 
 		message_admins("<span class='adminnotice'>[key_name_admin(usr)] is considering ending the round.</span>")
-		if(alert(usr, "This will end the round, are you SURE you want to do this?", "Confirmation", "Yes", "No") == "Yes")
-			if(alert(usr, "Final Confirmation: End the round NOW?", "Confirmation", "Yes", "No") == "Yes")
+		if(tgui_alert(usr, "This will end the round, are you SURE you want to do this?", "Confirmation", list("Yes", "No")) == "Yes")
+			if(tgui_alert(usr, "Final Confirmation: End the round NOW?", "Confirmation", list("Yes", "No")) == "Yes")
 				message_admins("<span class='adminnotice'>[key_name_admin(usr)] has ended the round.</span>")
 				SSticker.force_ending = 1 //Yeah there we go APC destroyed mission accomplished
 				return
@@ -268,7 +310,7 @@
 
 		var/delmob = TRUE
 		if(!isobserver(M))
-			switch(alert("Delete old mob?","Message","Yes","No","Cancel"))
+			switch(tgui_alert(usr,"Delete old mob?","Message",list("Yes","No","Cancel")))
 				if("Cancel")
 					return
 				if("No")
@@ -343,7 +385,7 @@
 			if(!check_if_greater_rights_than(M.client))
 				to_chat(usr, "<span class='danger'>Error: They have more rights than you do.</span>", confidential = TRUE)
 				return
-			if(alert(usr, "Kick [key_name(M)]?", "Confirm", "Yes", "No") != "Yes")
+			if(tgui_alert(usr, "Kick [key_name(M)]?", "Confirm", list("Yes", "No")) != "Yes")
 				return
 			if(!M)
 				to_chat(usr, "<span class='danger'>Error: [M] no longer exists!</span>", confidential = TRUE)
@@ -397,7 +439,7 @@
 	else if(href_list["deletemessage"])
 		if(!check_rights(R_ADMIN))
 			return
-		var/safety = alert("Delete message/note?",,"Yes","No");
+		var/safety = tgui_alert(usr,"Delete message/note?",,list("Yes","No"));
 		if (safety == "Yes")
 			var/message_id = href_list["deletemessage"]
 			delete_message(message_id)
@@ -405,7 +447,7 @@
 	else if(href_list["deletemessageempty"])
 		if(!check_rights(R_ADMIN))
 			return
-		var/safety = alert("Delete message/note?",,"Yes","No");
+		var/safety = tgui_alert(usr,"Delete message/note?",,list("Yes","No"));
 		if (safety == "Yes")
 			var/message_id = href_list["deletemessageempty"]
 			delete_message(message_id, browse = TRUE)
@@ -520,9 +562,9 @@
 		if(!check_rights(R_ADMIN))
 			return
 		if(SSticker?.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
+			return tgui_alert(usr, "The game has already started.")
 		if(!SSticker.is_mode("dynamic"))
-			return alert(usr, "The game mode has to be dynamic mode.", null, null, null, null)
+			return tgui_alert(usr, "The game mode has to be dynamic mode.")
 		var/roundstart_rules = list()
 		for (var/rule in subtypesof(/datum/dynamic_ruleset/roundstart))
 			var/datum/dynamic_ruleset/roundstart/newrule = new rule()
@@ -556,9 +598,9 @@
 			return
 
 		if(SSticker?.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
+			return tgui_alert(usr, "The game has already started.")
 		if(!SSticker.is_mode("dynamic"))
-			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
+			return tgui_alert(usr, "The game mode has to be dynamic mode!")
 
 		dynamic_mode_options(usr)
 	else if(href_list["f_dynamic_force_extended"])
@@ -566,7 +608,7 @@
 			return
 
 		if(!SSticker.is_mode("dynamic"))
-			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
+			return tgui_alert(usr, "The game mode has to be dynamic mode!")
 
 		GLOB.dynamic_forced_extended = !GLOB.dynamic_forced_extended
 		log_admin("[key_name(usr)] set 'forced_extended' to [GLOB.dynamic_forced_extended].")
@@ -578,7 +620,7 @@
 			return
 
 		if(!SSticker.is_mode("dynamic"))
-			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
+			return tgui_alert(usr, "The game mode has to be dynamic mode!")
 
 		GLOB.dynamic_no_stacking = !GLOB.dynamic_no_stacking
 		log_admin("[key_name(usr)] set 'no_stacking' to [GLOB.dynamic_no_stacking].")
@@ -589,7 +631,7 @@
 			return
 
 		if(!SSticker.is_mode("dynamic"))
-			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
+			return tgui_alert(usr, "The game mode has to be dynamic mode!")
 
 		GLOB.dynamic_stacking_limit = input(usr,"Change the threat limit at which round-endings rulesets will start to stack.", "Change stacking limit", null) as num
 		log_admin("[key_name(usr)] set 'stacking_limit' to [GLOB.dynamic_stacking_limit].")
@@ -601,14 +643,14 @@
 			return
 
 		if(SSticker?.mode)
-			return alert(usr, "The game has already started.", null, null, null, null)
+			return tgui_alert(usr, "The game has already started.")
 
 		if(!SSticker.is_mode("dynamic"))
-			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
+			return tgui_alert(usr, "The game mode has to be dynamic mode!")
 
 		var/new_value = input(usr, "Enter the forced threat level for dynamic mode.", "Forced threat level") as num
 		if (new_value > 100)
-			return alert(usr, "The value must be be under 100.", null, null, null, null)
+			return tgui_alert(usr, "The value must be be under 100.")
 		GLOB.dynamic_forced_threat_level = new_value
 
 		log_admin("[key_name(usr)] set 'forced_threat_level' to [GLOB.dynamic_forced_threat_level].")
@@ -683,7 +725,7 @@
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.", confidential = TRUE)
 			return
 
-		if(alert(usr, "Send [key_name(M)] to Prison?", "Message", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "Send [key_name(M)] to Prison?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		M.forceMove(pick(GLOB.prisonwarp))
@@ -706,7 +748,7 @@
 			to_chat(usr, "<span class='warning'>[M] doesn't seem to have an active client.</span>", confidential = TRUE)
 			return
 
-		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "Send [key_name(M)] back to Lobby?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
@@ -720,7 +762,7 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdome1"])
@@ -746,7 +788,7 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdome2"])
@@ -772,7 +814,7 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdomeadmin"])
@@ -795,7 +837,7 @@
 		if(!check_rights(R_FUN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdomeobserve"])
@@ -844,7 +886,7 @@
 			return
 
 		var/move = TRUE
-		switch(alert(usr,"Move new AI to AI spawn location?","Move AI?", "Yes", "No","Cancel"))
+		switch(tgui_alert(usr,"Move new AI to AI spawn location?","Move AI?", list("Yes", "No","Cancel")))
 			if("Cancel")
 				return
 			if("No")
@@ -1180,7 +1222,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "Confirm?", "Message", list("Yes", "No")) != "Yes")
 			return
 		var/mob/M = locate(href_list["getmob"])
 		usr.client.Getmob(M)
@@ -1241,7 +1283,7 @@
 			return
 
 		if(!SSticker.HasRoundStarted())
-			alert("The game hasn't started yet!")
+			tgui_alert(usr,"The game hasn't started yet!")
 			return
 
 		var/mob/M = locate(href_list["traitor"])
@@ -1260,7 +1302,7 @@
 			return
 
 		if(!SSticker.HasRoundStarted())
-			alert("The game hasn't started yet!")
+			tgui_alert(usr,"The game hasn't started yet!")
 			return
 
 		var/target = locate(href_list["skill"])
@@ -1342,10 +1384,10 @@
 			paths += path
 
 		if(!paths)
-			alert("The path list you sent is empty.")
+			tgui_alert(usr,"The path list you sent is empty.")
 			return
 		if(length(paths) > 5)
-			alert("Select fewer object types, (max 5).")
+			tgui_alert(usr,"Select fewer object types, (max 5).")
 			return
 
 		var/list/offset = splittext(href_list["offset"],",")
@@ -1473,7 +1515,7 @@
 		if(src.admincaster_feed_channel.channel_name == "" || src.admincaster_feed_channel.channel_name == "\[REDACTED\]" || check )
 			src.admincaster_screen=7
 		else
-			var/choice = alert("Please confirm Feed channel creation.","Network Channel Handler","Confirm","Cancel")
+			var/choice = tgui_alert(usr,"Please confirm Feed channel creation.","Network Channel Handler",list("Confirm","Cancel"))
 			if(choice=="Confirm")
 				GLOB.news_network.CreateFeedChannel(src.admincaster_feed_channel.channel_name, src.admin_signature, src.admincaster_feed_channel.locked, 1)
 				SSblackbox.record_feedback("tally", "newscaster_channels", 1, src.admincaster_feed_channel.channel_name)
@@ -1568,7 +1610,7 @@
 		if(src.admincaster_wanted_message.criminal == "" || src.admincaster_wanted_message.body == "")
 			src.admincaster_screen = 16
 		else
-			var/choice = alert("Please confirm Wanted Issue [(input_param==1) ? ("creation.") : ("edit.")]","Network Security Handler","Confirm","Cancel")
+			var/choice = tgui_alert(usr,"Please confirm Wanted Issue [(input_param==1) ? ("creation.") : ("edit.")]","Network Security Handler",list("Confirm","Cancel"))
 			if(choice=="Confirm")
 				if(input_param==1)          //If input_param == 1 we're submitting a new wanted issue. At 2 we're just editing an existing one. See the else below
 					GLOB.news_network.submitWanted(admincaster_wanted_message.criminal, admincaster_wanted_message.body, admin_signature, null, 1, 1)
@@ -1582,7 +1624,7 @@
 	else if(href_list["ac_cancel_wanted"])
 		if(!check_rights(R_ADMIN))
 			return
-		var/choice = alert("Please confirm Wanted Issue removal.","Network Security Handler","Confirm","Cancel")
+		var/choice = tgui_alert(usr,"Please confirm Wanted Issue removal.","Network Security Handler",list("Confirm","Cancel"))
 		if(choice=="Confirm")
 			GLOB.news_network.deleteWanted()
 			src.admincaster_screen=17
@@ -1696,7 +1738,7 @@
 			return
 		if(SSticker.IsRoundInProgress())
 			var/afkonly = text2num(href_list["afkonly"])
-			if(alert("Are you sure you want to kick all [afkonly ? "AFK" : ""] clients from the lobby??","Message","Yes","Cancel") != "Yes")
+			if(tgui_alert(usr,"Are you sure you want to kick all [afkonly ? "AFK" : ""] clients from the lobby??","Message",list("Yes","Cancel")) != "Yes")
 				to_chat(usr, "Kick clients from lobby aborted", confidential = TRUE)
 				return
 			var/list/listkicked = kick_clients_in_lobby("<span class='danger'>You were kicked from the lobby by [usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"].</span>", afkonly)
@@ -1722,7 +1764,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		var/list/type_choices = typesof(/datum/station_goal)
-		var/picked = input("Choose goal type") in type_choices|null
+		var/picked = tgui_input_list(usr, "Choose goal type",, type_choices)
 		if(!picked)
 			return
 		var/datum/station_goal/G = new picked()
@@ -1847,7 +1889,7 @@
 		var/answer = href_list["slowquery"]
 		if(answer == "yes")
 			log_query_debug("[usr.key] | Reported a server hang")
-			if(alert(usr, "Had you just press any admin buttons?", "Query server hang report", "Yes", "No") == "Yes")
+			if(tgui_alert(usr, "Had you just press any admin buttons?", "Query server hang report", list("Yes", "No")) == "Yes")
 				var/response = input(usr,"What were you just doing?","Query server hang report") as null|text
 				if(response)
 					log_query_debug("[usr.key] | [response]")
@@ -1862,7 +1904,7 @@
 	else if(href_list["rebootworld"])
 		if(!check_rights(R_ADMIN))
 			return
-		var/confirm = alert("Are you sure you want to reboot the server?", "Confirm Reboot", "Yes", "No")
+		var/confirm = tgui_alert(usr,"Are you sure you want to reboot the server?", "Confirm Reboot", list("Yes", "No"))
 		if(confirm == "No")
 			return
 		if(confirm == "Yes")

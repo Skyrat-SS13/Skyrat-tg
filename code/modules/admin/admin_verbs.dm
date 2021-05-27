@@ -36,6 +36,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/game_panel, /*game panel, allows to change game-mode etc*/
 	/client/proc/check_ai_laws, /*shows AI and borg laws*/
 	/client/proc/ghost_pool_protection, /*opens a menu for toggling ghost roles*/
+	/datum/admins/proc/toggledchat, // SKYRAT EDIT ADDITION
 	/datum/admins/proc/toggleooc, /*toggles ooc on/off for everyone*/
 	/datum/admins/proc/toggleoocdead, /*toggles ooc on/off for everyone who is dead*/
 	/datum/admins/proc/toggleenter, /*toggles whether people can join the current game*/
@@ -95,6 +96,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/change_title_screen, //SKYRAT EDIT ADDITION
 	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
 	/client/proc/change_title_screen_html, //SKYRAT EDIT ADDITION
+	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
@@ -148,6 +150,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 /world/proc/AVerbsDebug()
 	return list(
 	/client/proc/restart_controller,
+	/client/proc/debug_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
 	/client/proc/cmd_debug_make_powernets,
@@ -173,6 +176,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/generate_wikichem_list,
 	/client/proc/modify_goals,
 	/client/proc/debug_huds,
+	/client/proc/toggle_liquid_debug, //SKYRAT EDIT ADDITION
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
@@ -521,7 +525,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			if(range_flash == null)
 				return
 			if(range_devastation > GLOB.MAX_EX_DEVESTATION_RANGE || range_heavy > GLOB.MAX_EX_HEAVY_RANGE || range_light > GLOB.MAX_EX_LIGHT_RANGE || range_flash > GLOB.MAX_EX_FLASH_RANGE)
-				if(alert("Bomb is bigger than the maxcap. Continue?",,"Yes","No") != "Yes")
+				if(tgui_alert(usr, "Bomb is bigger than the maxcap. Continue?",,list("Yes","No")) != "Yes")
 					return
 			epicenter = mob.loc //We need to reupdate as they may have moved again
 			explosion(epicenter, devastation_range = range_devastation, heavy_impact_range = range_heavy, light_impact_range = range_light, flash_range = range_flash, adminlog = TRUE, ignorecap = TRUE)
@@ -638,7 +642,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!spell_desc)
 		return
 
-	var/robeless = (alert(usr, "Would you like to force this spell to be robeless?", "Robeless Casting?", "Force Robeless", "Use Spell Setting") == "Force Robeless")
+	var/robeless = (tgui_alert(usr, "Would you like to force this spell to be robeless?", "Robeless Casting?", list("Force Robeless", "Use Spell Setting")) == "Force Robeless")
 
 	if(QDELETED(spell_recipient))
 		to_chat(usr, "<span class='warning'>The intended spell recipient no longer exists.</span>")

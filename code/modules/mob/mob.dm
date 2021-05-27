@@ -32,7 +32,7 @@
 		progressbars = null
 	for (var/alert in alerts)
 		clear_alert(alert, TRUE)
-	if(observers?.len)
+	if(observers && observers.len)
 		for(var/M in observers)
 			var/mob/dead/observe = M
 			observe.reset_perspective(null)
@@ -699,7 +699,7 @@
 	set name = "Respawn"
 	set category = "OOC"
 
-	if (CONFIG_GET(flag/norespawn) && (!check_rights_for(usr.client, R_ADMIN) || alert(usr, "Respawn configs disabled. Do you want to use your permissions to circumvent it?", "Respawn", "Yes", "No") != "Yes"))
+	if (CONFIG_GET(flag/norespawn) && (!check_rights_for(usr.client, R_ADMIN) || tgui_alert(usr, "Respawn configs disabled. Do you want to use your permissions to circumvent it?", "Respawn", list("Yes", "No")) != "Yes"))
 		return
 
 	if ((stat != DEAD || !( SSticker )))

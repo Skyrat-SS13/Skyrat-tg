@@ -282,7 +282,7 @@
 
 	for(var/obj/item/card/id/ID in src)
 		qdel(ID)
-	if(authorized?.len)
+	if(authorized && authorized.len)
 		authorized.Cut()
 	authorized = null
 

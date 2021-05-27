@@ -1,5 +1,5 @@
 //////////////////Imp
-
+//FILE WAS SKYRAT EDITED TO PREVENT ROUND REMOVAL 
 /mob/living/simple_animal/hostile/imp
 	name = "imp"
 	real_name = "imp"
@@ -81,7 +81,7 @@
 							Pulling a dead or unconscious mob while you enter a pool will pull them in with you, allowing you to feast and regain your health. \
 							You move quickly upon leaving a pool of blood, but the material world will soon sap your strength and leave you sluggish. \
 							You gain strength the more attacks you land on live humanoids, though this resets when you return to the blood zone. You can also \
-							launch a devastating slam attack with ctrl+shift+click, capable of smashing bones in one strike.</B>"
+							launch a devastating slam attack with right-click, capable of smashing bones in one strike.</B>"
 
 	loot = list(/obj/effect/decal/cleanable/blood, \
 				/obj/effect/decal/cleanable/blood/innards, \
@@ -99,6 +99,19 @@
 	var/wound_bonus_per_hit = 5
 	/// How much our wound_bonus hitstreak bonus caps at (peak demonry)
 	var/wound_bonus_hitstreak_max = 12
+	var/list/consumed_mobs = list() //Skyrat edit, prevent round removal
+
+/mob/living/simple_animal/hostile/imp/slaughter/proc/on_victim_statchange(mob/living/victim, new_stat)
+	SIGNAL_HANDLER
+
+	if(new_stat == DEAD)
+		return
+	// Someone we've eaten has spontaneously revived; maybe nanites, maybe a changeling
+	victim.forceMove(get_turf(src))
+	victim.exit_blood_effect()
+	victim.visible_message("<span class='warning'>[victim] falls out of the air, covered in blood, with a confused look on their face.</span>")
+	consumed_mobs -= victim
+	UnregisterSignal(victim, COMSIG_MOB_STATCHANGE)
 
 /mob/living/simple_animal/hostile/imp/slaughter/Initialize(mapload, obj/effect/dummy/phased_mob/bloodpool)//Bloodpool is the blood pool we spawn in
 	..()
@@ -110,7 +123,7 @@
 	if(bloodpool)
 		bloodpool.RegisterSignal(src, list(COMSIG_LIVING_AFTERPHASEIN,COMSIG_PARENT_QDELETING), /obj/effect/dummy/phased_mob/.proc/deleteself)
 
-/mob/living/simple_animal/hostile/imp/slaughter/CtrlShiftClickOn(atom/A)
+/mob/living/simple_animal/hostile/imp/slaughter/RightClickOn(atom/A)
 	if(!isliving(A))
 		return ..()
 
@@ -131,6 +144,12 @@
 	victim.throw_at(yeet_target, 10, 5, src)
 	slam_cooldown = world.time
 	log_combat(src, victim, "slaughter slammed")
+
+/mob/living/simple_animal/hostile/imp/slaughter/bloodcrawl_swallow(mob/living/victim)
+	// Keep their corpse so rescue is possible
+	consumed_mobs += victim
+	RegisterSignal(victim, COMSIG_MOB_STATCHANGE, .proc/on_victim_statchange)
+
 
 /mob/living/simple_animal/hostile/imp/slaughter/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
@@ -198,6 +217,26 @@
 /obj/item/organ/heart/demon/Stop()
 	return 0 // Always beating.
 
+
+/mob/living/simple_animal/hostile/imp/slaughter/proc/release_victims()
+	if(!consumed_mobs)
+		return
+
+	var/turf/T = get_turf(src)
+
+	for(var/mob/living/M in consumed_mobs)
+		if(!M)
+			continue
+
+		// Unregister the signal first, otherwise it'll trigger the "ling revived inside us" code
+		UnregisterSignal(M, COMSIG_MOB_STATCHANGE)
+
+		M.forceMove(T)
+		
+/mob/living/simple_animal/hostile/imp/slaughter/Destroy()
+	release_victims()
+	. = ..()
+
 /mob/living/simple_animal/hostile/imp/slaughter/laughter
 	// The laughter demon! It's everyone's best friend! It just wants to hug
 	// them so much, it wants to hug everyone at once!
@@ -222,7 +261,6 @@
 	loot = list(/mob/living/simple_animal/pet/cat/kitten{name = "Laughter"})
 
 	// Keep the people we hug!
-	var/list/consumed_mobs = list()
 
 	playstyle_string = "<span class='big bold'>You are a laughter \
 	demon,</span><B> a wonderful creature from another realm. You have a single \
@@ -286,17 +324,6 @@
  * changed stat. If they're no longer dead (because they were dead when
  * swallowed), eject them so they can't rip their way out from the inside.
  */
-/mob/living/simple_animal/hostile/imp/slaughter/laughter/proc/on_victim_statchange(mob/living/victim, new_stat)
-	SIGNAL_HANDLER
-
-	if(new_stat == DEAD)
-		return
-	// Someone we've eaten has spontaneously revived; maybe nanites, maybe a changeling
-	victim.forceMove(get_turf(src))
-	victim.exit_blood_effect()
-	victim.visible_message("<span class='warning'>[victim] falls out of the air, covered in blood, with a confused look on their face.</span>")
-	consumed_mobs -= victim
-	UnregisterSignal(victim, COMSIG_MOB_STATCHANGE)
 
 /mob/living/simple_animal/hostile/imp/slaughter/engine_demon
 	name = "engine demon"

@@ -7,5 +7,5 @@
 		"yayo", "aiya", "chiksa", "tikat", "bazar","oi", "yo", "meit", "grok", "ken", "berk", "cohon", "pendeo"
 	)
 	icon_state = "gutter"
-	icon = 'modular_skyrat/modules/customization/icons/misc/language.dmi'
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 40

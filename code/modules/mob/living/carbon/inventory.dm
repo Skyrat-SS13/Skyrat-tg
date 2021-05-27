@@ -39,7 +39,7 @@
 	I.screen_loc = null
 	if(client)
 		client.screen -= I
-	if(observers?.len)
+	if(observers && observers.len)
 		for(var/M in observers)
 			var/mob/dead/observe = M
 			if(observe.client)
@@ -166,6 +166,10 @@
 	var/obj/item/receiving = get_active_held_item()
 	if(!receiving)
 		to_chat(src, "<span class='warning'>You're not holding anything to give!</span>")
+		return
+
+	if(IS_DEAD_OR_INCAP(src))
+		to_chat(src, "<span class='warning'>You're unable to offer anything in your current state!</span>")
 		return
 
 	if(istype(receiving, /obj/item/slapper))

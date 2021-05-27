@@ -17,7 +17,7 @@
 	var/desc = "A company that does not exist."
 	var/list/values = list()
 	var/current_value = 10
-	var/value_cap = 450000
+	var/value_cap = 5000
 	var/last_value = 10
 	var/list/products = list()
 
@@ -43,7 +43,7 @@
 	var/list/borrows = list()
 	var/list/events = list()
 	var/list/articles = list()
-	var/fluctuation_rate = 15
+	var/fluctuation_rate = 3
 	var/fluctuation_counter = 0
 	var/datum/industry/industry = null
 
@@ -142,11 +142,11 @@
 				speculation += rand(-4000, 0) / 1000 * speculation
 	var/fucking_stock_spikes = current_value + 500
 	var/piece_of_shit_fuck = current_value - 500
-	var/i_hate_this_code = (speculation / rand(25000, 50000) + performance / rand(100, 800)) * current_value
+	var/i_hate_this_code = (speculation / rand(1250, 2500) + performance / rand(100, 800)) * current_value
 	if(i_hate_this_code < fucking_stock_spikes || i_hate_this_code > piece_of_shit_fuck)
 		current_value += i_hate_this_code
 	if(current_value > value_cap)
-		current_value = 450000
+		current_value = value_cap
 	if (current_value < 5)
 		current_value = 5
 

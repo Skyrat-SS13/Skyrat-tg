@@ -1046,10 +1046,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_death(gibbed, mob/living/carbon/human/H)
 	return
 
-/datum/species/proc/auto_equip(mob/living/carbon/human/H)
-	// handles the equipping of species-specific gear
-	return
-
 /datum/species/proc/can_equip(obj/item/I, slot, disable_warning, mob/living/carbon/human/H, bypass_equip_delay_self = FALSE)
 	if(slot in no_equip)
 		if(!I.species_exception || !is_type_in_list(src, I.species_exception))
@@ -1808,6 +1804,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	// Get the temperature of the environment for area
 	var/area_temp = humi.get_temperature(environment)
 
+	//SKYRAT EDIT ADDITION
+	//Special handling for getting liquids temperature
+	if(isturf(humi.loc))
+		var/turf/T = humi.loc
+		if(T.liquids && T.liquids.liquid_state > LIQUID_STATE_PUDDLE)
+			var/submergment_percent = SUBMERGEMENT_PERCENT(humi, T.liquids)
+			area_temp = (area_temp*(1-submergment_percent)) + (T.liquids.temp * submergment_percent)
+	//SKYRAT EDIT END
 	// Get the insulation value based on the area's temp
 	var/thermal_protection = humi.get_insulation_protection(area_temp)
 

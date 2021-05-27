@@ -1,6 +1,6 @@
 /obj/item/clothing/under/utility
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "general utility uniform"
 	desc = "A utility uniform worn by civilian-ranked crew."
 	icon_state = "util_gen"

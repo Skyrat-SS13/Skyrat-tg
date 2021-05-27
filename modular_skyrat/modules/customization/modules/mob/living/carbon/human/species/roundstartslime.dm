@@ -11,7 +11,7 @@
 	name = "Xenobiological Slime Hybrid"
 	id = "slimeperson"
 	limbs_id = "slime"
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/slime_parts_greyscale.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
 	default_color = "00FFFF"
 	say_mod = "says"
 	coldmod = 3
@@ -24,7 +24,7 @@
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "alter_form"
-	icon_icon = 'modular_skyrat/modules/customization/icons/mob/actions/actions_slime.dmi'
+	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi'
 	background_icon_state = "bg_alien"
 	var/slime_restricted = TRUE
 
@@ -65,8 +65,8 @@
 			var/new_mutantcolor = input(H, "Choose your character's new [lowertext(color_choice)] color:", "Form Alteration","#"+DNA.features[color_target]) as color|null
 			if(!new_mutantcolor)
 				return
-			var/marking_reset = alert(H, "Would you like to reset your markings to match your new colors?", "", "Yes", "No")
-			var/mutantpart_reset = alert(H, "Would you like to reset your mutant body parts(not limbs) to match your new colors?", "", "Yes", "No")
+			var/marking_reset = tgui_alert(H, "Would you like to reset your markings to match your new colors?", "", list("Yes", "No"))
+			var/mutantpart_reset = tgui_alert(H, "Would you like to reset your mutant body parts(not limbs) to match your new colors?", "", list("Yes", "No"))
 			if(color_choice == "All")
 				DNA.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 				DNA.features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)

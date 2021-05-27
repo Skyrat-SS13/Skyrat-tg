@@ -24,6 +24,13 @@
 	//This is used to optimize the map loader
 	return
 
+//SKYRAT EDIT ADDITION
+/turf/open/space/mirage
+	blocks_air = TRUE
+	light_power = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+//SKYRAT EDIT END
+
 /**
  * Space Initialize
  *

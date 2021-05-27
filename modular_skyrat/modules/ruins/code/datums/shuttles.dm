@@ -24,7 +24,7 @@
 
 /obj/item/circuitboard/computer/blackmarket_chevvy
 	name = "Chevvy Control Console (Computer Board)"
-	build_path = /obj/item/circuitboard/computer/blackmarket_chevvy
+	build_path = /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 
 //AREA//
 /area/shuttle/blackmarket_chevvy
