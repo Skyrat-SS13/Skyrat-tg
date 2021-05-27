@@ -1,22 +1,18 @@
 Any time you make a change to the schema files, remember to increment the database schema version. Generally increment the minor number, major should be reserved for significant changes to the schema. Both values go up to 255.
 
-The latest database version is 5.14; The query to update the schema revision table is:
+The latest database version is 5.15; The query to update the schema revision table is:
 
-INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 14);
+INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 15);
 or
-INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 14);
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 15);
 
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
 
-<<<<<<< HEAD
-Version 5.14, 30 April 2021, by Atlanta Ned
-=======
-Version 5.14, xx May 2021, by Anturke
+Version 5.15, 24 May 2021, by Anturke
 Added exploration drone adventure table
 
-```
 DROP TABLE IF EXISTS `text_adventures`;
 CREATE TABLE `text_adventures` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
@@ -26,12 +22,10 @@ CREATE TABLE `text_adventures` (
 	`approved` TINYINT(1) NOT NULL DEFAULT FALSE,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
-```
 
 -----------------------------------------------------
 
-Version 5.13, 30 April 2021, by Atlanta Ned
->>>>>>> f989da1fc18 (Moves explorer adventures to the database. (#59089))
+Version 5.14, 30 April 2021, by Atlanta Ned
 Added the `citation` table for tracking security citations in the database.
 
 CREATE TABLE `citation` (
