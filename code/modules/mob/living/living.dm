@@ -46,6 +46,12 @@
 	return ..()
 
 /mob/living/proc/ZImpactDamage(turf/T, levels)
+	//SKYRAT EDIT ADDITION
+	SEND_SIGNAL(T, COMSIG_TURF_MOB_FALL, src)
+	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
+		Knockdown(20)
+		return
+	//SKYRAT EDIT END
 	visible_message("<span class='danger'>[src] crashes into [T] with a sickening noise!</span>", \
 					"<span class='userdanger'>You crash into [T] with a sickening noise!</span>")
 	adjustBruteLoss((levels * 5) ** 1.5)
@@ -473,7 +479,7 @@
 		to_chat(src, "<span class='warning'>You are already sleeping!</span>")
 		return
 	else
-		if(alert(src, "You sure you want to sleep for a while?", "Sleep", "Yes", "No") == "Yes")
+		if(tgui_alert(usr, "You sure you want to sleep for a while?", "Sleep", list("Yes", "No")) == "Yes")
 			SetSleeping(400) //Short nap
 
 
@@ -1658,6 +1664,7 @@
 	start_look_up()
 
 /mob/living/proc/start_look_up()
+	SIGNAL_HANDLER
 	var/turf/ceiling = get_step_multiz(src, UP)
 	if(!ceiling) //We are at the highest z-level.
 		to_chat(src, "<span class='warning'>You can't see through the ceiling above you.</span>")
@@ -1679,6 +1686,7 @@
 	reset_perspective(ceiling)
 
 /mob/living/proc/stop_look_up()
+	SIGNAL_HANDLER
 	reset_perspective()
 
 /mob/living/proc/end_look_up()
@@ -1703,6 +1711,7 @@
 	start_look_down()
 
 /mob/living/proc/start_look_down()
+	SIGNAL_HANDLER
 	var/turf/floor = get_turf(src)
 	var/turf/lower_level = get_step_multiz(floor, DOWN)
 	if(!lower_level) //We are at the lowest z-level.
@@ -1727,6 +1736,7 @@
 	reset_perspective(lower_level)
 
 /mob/living/proc/stop_look_down()
+	SIGNAL_HANDLER
 	reset_perspective()
 
 /mob/living/proc/end_look_down()
@@ -1800,7 +1810,8 @@
 	. = buckled
 	buckled = new_buckled
 	if(buckled)
-		ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
+		if(!HAS_TRAIT(buckled, TRAIT_NO_IMMOBILIZE))
+			ADD_TRAIT(src, TRAIT_IMMOBILIZED, BUCKLED_TRAIT)
 		switch(buckled.buckle_lying)
 			if(NO_BUCKLE_LYING) // The buckle doesn't force a lying angle.
 				REMOVE_TRAIT(src, TRAIT_FLOORED, BUCKLED_TRAIT)

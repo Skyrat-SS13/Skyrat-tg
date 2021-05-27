@@ -1051,7 +1051,7 @@
 	if(href_list[VV_HK_MAKE_AI])
 		if(!check_rights(R_SPAWN))
 			return
-		if(alert("Confirm mob type change?",,"Transform","Cancel") != "Transform")
+		if(tgui_alert(usr,"Confirm mob type change?",,list("Transform","Cancel")) != "Transform")
 			return
 		usr.client.holder.Topic("vv_override", list("makeai"=href_list[VV_HK_TARGET]))
 	if(href_list[VV_HK_MODIFY_ORGANS])
@@ -1279,7 +1279,6 @@
 	if(!buckled || buckled.buckle_lying != 0)
 		lying_angle_on_lying_down(new_lying_angle)
 
-	drop_all_held_items() //SKYRAT EDIT ADDITION
 
 /// Special carbon interaction on lying down, to transform its sprite by a rotation.
 /mob/living/carbon/proc/lying_angle_on_lying_down(new_lying_angle)
@@ -1324,4 +1323,5 @@
 
 
 /mob/living/carbon/proc/attach_rot(mapload)
+	SIGNAL_HANDLER
 	AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)

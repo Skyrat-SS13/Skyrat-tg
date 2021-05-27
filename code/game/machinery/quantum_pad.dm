@@ -99,6 +99,12 @@
 		if(!map_pad_link_id || !initMappedLink())
 			to_chat(user, "<span class='warning'>Target pad not found!</span>")
 			return
+	//SKYRAT EDIT ADDITION
+	var/turf/my_turf = get_turf(src)
+	if(is_away_level(my_turf.z))
+		to_chat(user, "<span class='warning'>[src] cannot be used here!</span>")
+		return
+	//SKYRAT EDIT END
 
 	if(world.time < last_teleport + teleport_cooldown)
 		to_chat(user, "<span class='warning'>[src] is recharging power. Please wait [DisplayTimeText(last_teleport + teleport_cooldown - world.time)].</span>")

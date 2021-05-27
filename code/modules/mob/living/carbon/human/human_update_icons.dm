@@ -549,7 +549,7 @@ generate/load female uniform sprites matching all previously decided variables
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
 	var/list/worn_overlays = worn_overlays(isinhands, file2use)
-	if(worn_overlays?.len)
+	if(worn_overlays && worn_overlays.len)
 		standing.overlays.Add(worn_overlays)
 
 	standing = center_image(standing, isinhands ? inhand_x_dimension : worn_x_dimension, isinhands ? inhand_y_dimension : worn_y_dimension)
@@ -643,7 +643,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 /mob/living/carbon/human/proc/update_observer_view(obj/item/I, inventory)
-	if(observers?.len)
+	if(observers && observers.len)
 		for(var/M in observers)
 			var/mob/dead/observe = M
 			if(observe.client && observe.client.eye == src)

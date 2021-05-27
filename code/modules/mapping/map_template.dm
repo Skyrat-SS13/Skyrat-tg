@@ -108,7 +108,7 @@
 	var/x = round((world.maxx - width) * 0.5) + 1
 	var/y = round((world.maxy - height) * 0.5) + 1
 
-	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE))
+	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE, ZTRAIT_CENTCOM = TRUE)) //SKYRAT EDIT CHANGE
 	var/datum/parsed_map/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=should_place_on_top)
 	var/list/bounds = parsed.bounds
 	if(!bounds)
@@ -138,7 +138,8 @@
 	for(var/L in border)
 		var/turf/turf_to_disable = L
 		SSair.remove_from_active(turf_to_disable) //stop processing turfs along the border to prevent runtimes, we return it in initTemplateBounds()
-		turf_to_disable.atmos_adjacent_turfs?.Cut()
+		if(turf_to_disable.atmos_adjacent_turfs)
+			turf_to_disable.atmos_adjacent_turfs.Cut()
 
 	// Accept cached maps, but don't save them automatically - we don't want
 	// ruins clogging up memory for the whole round.

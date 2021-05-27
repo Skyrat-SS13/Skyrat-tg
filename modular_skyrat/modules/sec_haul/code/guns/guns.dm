@@ -910,6 +910,7 @@
 	armadyne = TRUE
 	can_bayonet = TRUE
 	can_flashlight = TRUE
+	dirt_modifier = 0.1
 
 /obj/item/ammo_box/magazine/multi_sprite/g11
 	name = "g11 toploader magazine (4.73×33mm)"

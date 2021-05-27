@@ -156,6 +156,7 @@
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	evaporates = TRUE //SKYRAT EDIT ADDITION
 
 /*
  * Water reaction to turf
@@ -1132,6 +1133,8 @@
 	burning_volume = 0.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/alcohol = 4)
+	liquid_fire_power = 10 //SKYRAT EDIT ADDITION
+	liquid_fire_burnrate = 0.1 //SKYRAT EDIT ADDITION
 
 /datum/reagent/fuel/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	. = ..()
@@ -1582,7 +1585,6 @@
 	name = "Invisible Powder"
 	colorname = "invisible"
 	color = "#FFFFFF00" // white + no alpha
-	random_color_list = list(null) //because using the powder color turns things invisible
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/colorful_reagent/powder/black

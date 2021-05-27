@@ -452,7 +452,7 @@
 /datum/spacevine_controller/vv_do_topic(href_list)
 	. = ..()
 	if(href_list[VV_HK_SPACEVINE_PURGE])
-		if(alert(usr, "Are you sure you want to delete this spacevine cluster?", "Delete Vines", "Yes", "No") == "Yes")
+		if(tgui_alert(usr, "Are you sure you want to delete this spacevine cluster?", "Delete Vines", list("Yes", "No")) == "Yes")
 			DeleteVines()
 
 /datum/spacevine_controller/proc/DeleteVines() //this is kill
@@ -467,7 +467,7 @@
 	growth_queue += SV
 	vines += SV
 	SV.master = src
-	if(muts?.len)
+	if(muts && muts.len)
 		for(var/datum/spacevine_mutation/M in muts)
 			M.add_mutation_to_vinepiece(SV)
 	if(parent)

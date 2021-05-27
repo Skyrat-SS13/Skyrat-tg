@@ -33,6 +33,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/lastchangelog = "" //Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#c43b23"
 	var/asaycolor = "#ff4500" //This won't change the color for current admins, only incoming ones.
+	var/auto_dementor = TRUE //To be turned off by admins that don't want to be dementored at round start.
 	/// If we spawn an ERT as an admin and choose to spawn as the briefing officer, we'll be given this outfit
 	var/brief_outfit = /datum/outfit/centcom/commander
 	var/enable_tips = TRUE
@@ -105,6 +106,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/skin_tone = "caucasian1" //Skin color
 	var/eye_color = "000" //Eye color
 	var/datum/scream_type/pref_scream = new /datum/scream_type/human() //Scream type
+	var/datum/laugh_type/pref_laugh = new /datum/laugh_type/human() //Laugh type
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	//Has to include all information that extra organs from mutant bodyparts would need. (so far only genitals now)
 	var/list/features = MANDATORY_FEATURE_LIST
@@ -442,6 +444,7 @@ GLOBAL_LIST_INIT(food, list(
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 					dat += "<b>Scream:</b><BR><a href='?_src_=prefs;preference=scream;task=input'>[pref_scream.name]</a><BR>"
+					dat += "<b>Laugh:</b><BR><a href='?_src_=prefs;preference=laugh;task=input'>[pref_laugh.name]</a><BR>"
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
 					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
@@ -1358,6 +1361,9 @@ GLOBAL_LIST_INIT(food, list(
 			if(is_banned_from(user.ckey, rank))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
 				continue
+			if(job.trusted_only && !is_trusted_player(user.client))
+				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT TRUSTED\]</font></td></tr>"
+				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
 				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \] </font></td></tr>"
@@ -1595,7 +1601,7 @@ GLOBAL_LIST_INIT(food, list(
 				continue
 			ban_details = i
 			break //we only want to get the most recent ban's details
-		if(ban_details?.len)
+		if(ban_details && ban_details.len)
 			var/expires = "This is a permanent ban."
 			if(ban_details["expiration_time"])
 				expires = " The ban is for [DisplayTimeText(text2num(ban_details["duration"]) MINUTES)] and expires on [ban_details["expiration_time"]] (server time)."
@@ -1795,7 +1801,7 @@ GLOBAL_LIST_INIT(food, list(
 			needs_update = TRUE
 			switch(href_list["preference"])
 				if("use_preset")
-					var/action = alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", "Yes", "No")
+					var/action = tgui_alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", list("Yes", "No"))
 					if(action && action == "Yes")
 						var/list/candidates = GLOB.body_marking_sets.Copy()
 						if(!mismatched_customization)
@@ -1983,7 +1989,7 @@ GLOBAL_LIST_INIT(food, list(
 					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 				if("reset_all_colors")
-					var/action = alert(user, "Are you sure you want to reset all colors?", "", "Yes", "No")
+					var/action = tgui_alert(user, "Are you sure you want to reset all colors?", "", list("Yes", "No"))
 					if(action == "Yes")
 						reset_colors()
 
@@ -2053,7 +2059,7 @@ GLOBAL_LIST_INIT(food, list(
 							ghost_orbit = new_orbit
 
 				if("ghostaccs")
-					var/new_ghost_accs = alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME)
+					var/new_ghost_accs = tgui_alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?", "", list(GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME))
 					switch(new_ghost_accs)
 						if(GHOST_ACCS_FULL_NAME)
 							ghost_accs = GHOST_ACCS_FULL
@@ -2063,7 +2069,7 @@ GLOBAL_LIST_INIT(food, list(
 							ghost_accs = GHOST_ACCS_NONE
 
 				if("ghostothers")
-					var/new_ghost_others = alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME)
+					var/new_ghost_others = tgui_alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?", "", list(GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME))
 					switch(new_ghost_others)
 						if(GHOST_OTHERS_THEIR_SETTING_NAME)
 							ghost_others = GHOST_OTHERS_THEIR_SETTING
@@ -2283,6 +2289,22 @@ GLOBAL_LIST_INIT(food, list(
 					if(scream)
 						pref_scream = new scream
 						SEND_SOUND(user, pick(pref_scream.male_screamsounds))
+
+				if("laugh")
+					var/list/available_laughs = list()
+					for(var/spath in subtypesof(/datum/laugh_type)) //We need to build a custom list of available laughs!
+						var/datum/laugh_type/laugh = spath
+						if(initial(laugh.restricted_species_type))
+							if(!istype(pref_species, initial(laugh.restricted_species_type)))
+								continue
+						if(initial(laugh.donator_only) && !GLOB.donator_list[parent.ckey] && !check_rights(R_ADMIN, FALSE))
+							continue
+						available_laughs[initial(laugh.name)] = spath
+					var/new_laugh_id = input(user, "Choose your character's laugh:", "Character Scream")  as null|anything in available_laughs
+					var/datum/laugh_type/laugh = available_laughs[new_laugh_id]
+					if(laugh)
+						pref_laugh = new laugh
+						SEND_SOUND(user, pick(pref_laugh.male_laughsounds))
 
 				if("species")
 					ShowSpeciesMenu(user)
@@ -2571,7 +2593,7 @@ GLOBAL_LIST_INIT(food, list(
 		else
 			switch(href_list["preference"])
 				if("reset_loadout")
-					var/action = alert(user, "Are you sure you want to reset your loadout?", "", "Yes", "No")
+					var/action = tgui_alert(user, "Are you sure you want to reset your loadout?", "", list("Yes", "No"))
 					if(action && action != "Yes")
 						return
 					loadout = list()
@@ -2582,7 +2604,7 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("adv_colors")
 					if(allow_advanced_colors)
-						var/action = alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", "Yes", "No")
+						var/action = tgui_alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", list("Yes", "No"))
 						if(action && action != "Yes")
 							return
 					allow_advanced_colors = !allow_advanced_colors
@@ -3001,6 +3023,7 @@ GLOBAL_LIST_INIT(food, list(
 	character.jumpsuit_style = jumpsuit_style
 
 	character.selected_scream = pref_scream
+	character.selected_laugh = pref_laugh
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type

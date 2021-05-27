@@ -16,6 +16,9 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ruins_templates = list()
 	var/list/space_ruins_templates = list()
 	var/list/lava_ruins_templates = list()
+	var/list/trench_ruins_templates = list()
+	var/list/ocean_ruins_templates = list()
+	var/list/ocean_station_ruins_templates = list()
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
 	var/list/asteroid_ruins_templates = list() //SKYRAT EDIT - Adds ruins to LZ2
@@ -99,6 +102,25 @@ SUBSYSTEM_DEF(mapping)
 		seedRuins(lava_ruins, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), lava_ruins_templates)
 		for (var/lava_z in lava_ruins)
 			spawn_rivers(lava_z)
+
+	//SKYRAT EDIT ADDITION
+	//Ocean ruins
+	var/list/ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS)
+	if (ocean_ruins.len)
+		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_ruins_templates)
+		for (var/ocean_z in ocean_ruins)
+			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
+
+	var/list/station_ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS_NEARSTATION)
+	if (station_ocean_ruins.len)
+		seedRuins(station_ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_station_ruins_templates)
+		for (var/ocean_z in station_ocean_ruins)
+			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
+
+	var/list/trench_ruins = levels_by_trait(ZTRAIT_TRENCH_RUINS)
+	if (trench_ruins.len)
+		seedRuins(trench_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/trench/generated), trench_ruins_templates)
+	//SKYRAT EDIT END
 
 	var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 	if (ice_ruins.len)
@@ -194,8 +216,14 @@ Used by the AI doomsday and the self-destruct nuke.
 	ruins_templates = SSmapping.ruins_templates
 	space_ruins_templates = SSmapping.space_ruins_templates
 	lava_ruins_templates = SSmapping.lava_ruins_templates
+	//SKYRAT EDIT ADDITION
+	trench_ruins_templates = SSmapping.trench_ruins_templates
+	ocean_ruins_templates = SSmapping.ocean_ruins_templates
+	ocean_station_ruins_templates = SSmapping.ocean_station_ruins_templates
+	//SKYRAT EDIT END
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
+	asteroid_ruins_templates = SSmapping.asteroid_ruins_templates //SKYRAT EDIT ADDITION
 	shuttle_templates = SSmapping.shuttle_templates
 	shelter_templates = SSmapping.shelter_templates
 	unused_turfs = SSmapping.unused_turfs
@@ -287,20 +315,21 @@ Used by the AI doomsday and the self-destruct nuke.
 	//SKYRAT EDIT CHANGE BEGIN
 	var/mining_map_to_load = SSrandommining.chosen_map
 	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
-
-	if(mining_map_to_load)
-		add_startupmessage("MINING MAP: Loading mining level...")
-		if(!mining_traits_to_load)
-			add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
-		LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
-		add_startupmessage("MINING MAP: Loaded successfully.")
-	else
-		add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
-		if(config.minetype == "lavaland")
-			LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-		else if (!isnull(config.minetype) && config.minetype != "none")
-			INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+	if(config.minetype != "none")
+		if(mining_map_to_load)
+			add_startupmessage("MINING MAP: Loading mining level...")
+			if(!mining_traits_to_load)
+				add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
+				LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
+				add_startupmessage("MINING MAP: Loaded successfully.")
+			else
+				add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+				if(config.minetype == "lavaland")
+					LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+				else if (!isnull(config.minetype) && config.minetype != "none")
+					INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 	//SKYRAT EDIT END
+
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
@@ -447,8 +476,18 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ice_ruins_underground_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/icemoon))
 			ice_ruins_templates[R.name] = R
+//SKYRAT EDIT START//
+		else if(istype(R, /datum/map_template/ruin/asteroid))
+			asteroid_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/ocean))
+			ocean_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/ocean_station))
+			ocean_station_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/trench))
+			trench_ruins_templates[R.name] = R
+//SKYRAT EDIT END//
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")
@@ -494,7 +533,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 
 	if(!GLOB.the_gateway)
-		if(alert("There's no home gateway on the station. You sure you want to continue ?", "Uh oh", "Yes", "No") != "Yes")
+		if(tgui_alert(usr, "There's no home gateway on the station. You sure you want to continue ?", "Uh oh", list("Yes", "No")) != "Yes")
 			return
 
 	var/list/possible_options = GLOB.potentialRandomZlevels + "Custom"

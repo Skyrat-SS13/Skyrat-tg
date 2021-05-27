@@ -207,11 +207,13 @@
 
 /obj/attacked_by(obj/item/I, mob/living/user)
 	if(I.force)
-		user.visible_message("<span class='danger'>[user] hits [src] with [I]!</span>", \
-					"<span class='danger'>You hit [src] with [I]!</span>", null, COMBAT_MESSAGE_RANGE)
+		var/no_damage = TRUE
+		if(take_damage(I.force, I.damtype, MELEE, 1))
+			no_damage = FALSE
 		//only witnesses close by and the victim see a hit message.
 		log_combat(user, src, "attacked", I)
-	take_damage(I.force, I.damtype, MELEE, 1)
+		user.visible_message("<span class='danger'>[user] hits [src] with [I][no_damage ? ", which doesn't leave a mark" : ""]!</span>", \
+			"<span class='danger'>You hit [src] with [I][no_damage ? ", which doesn't leave a mark" : ""]!</span>", null, COMBAT_MESSAGE_RANGE)
 
 /mob/living/attacked_by(obj/item/I, mob/living/user)
 	send_item_attack_message(I, user)
@@ -242,7 +244,10 @@
  * * click_parameters - is the params string from byond [/atom/proc/Click] code, see that documentation.
  */
 /obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
+	//SKYRAT EDIT ADDITION
+	if(SEND_SIGNAL(src, COMSIG_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		return TRUE
+	//SKYRAT EDIT END
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_AFTERATTACK, target, user, proximity_flag, click_parameters)
 
 /**
