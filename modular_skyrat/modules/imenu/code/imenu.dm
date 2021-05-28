@@ -123,13 +123,13 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 /datum/interaction
 	var/name = "broken interaction"
 	var/distance_allowed = FALSE
-	var/message = list()
+	var/list/message = list()
 	var/category = INTERACTION_CAT_HIDE
 	var/usage = INTERACTION_OTHER
 	var/sound_use = FALSE
 	var/sound_range = 1
 	var/sound_cache = null
-	var/sound_possible = list()
+	var/list/sound_possible = list()
 	var/list/interaction_requires = list()
 
 /datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
