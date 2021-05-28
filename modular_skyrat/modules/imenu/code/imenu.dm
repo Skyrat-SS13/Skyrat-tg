@@ -1,22 +1,21 @@
-#define INTERACTION_SELF "self" // X does thing
-#define INTERACTION_OTHER "other" // X does thing [with/to] Y
-
-// CATEGORIES ARE HARD CODED. IF YOU ADD A NEW CATEGORY YOU NEED TO ALSO CODE IN ITS RENDERING!
-
-#define INTERACTION_CAT_HIDE "hide"
-#define INTERACTION_CAT_NONE "none"
-
 #define INTERACTION_JSON_FOLDER "config/skyrat/interactions/"
 
 GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
+// Special values
 #define INTERACTION_MAX_CHAR 255
 #define INTERACTION_COOLDOWN 0.5 SECONDS
 
+// I want these to be bitflags; but that would make json loading painful beyond compare
+// If you add a new requirement you also need to implement its checking. See /datum/interaction/proc/allow_act
 #define INTERACTION_REQUIRE_SELF_HAND "self_hand"
 #define INTERACTION_REQUIRE_SELF_SPEAK "self_speak"
 #define INTERACTION_REQUIRE_TARGET_HAND "target_hand"
 #define INTERACTION_REQUIRE_TARGET_SPEAK "target_speak"
+
+// Interaction Types: Do we do it to ourself or someone else
+#define INTERACTION_SELF "self"
+#define INTERACTION_OTHER "other"
 
 /mob/living/CtrlShiftClickOn(atom/atom_on)
 	. = ..()
