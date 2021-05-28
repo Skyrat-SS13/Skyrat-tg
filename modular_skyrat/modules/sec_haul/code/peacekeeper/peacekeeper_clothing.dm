@@ -296,6 +296,7 @@
 	icon_state = "peacekeeper_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"
+	armor = list(MELEE = 15, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 10, RAD = 0, FIRE = 60, ACID = 35)
 
 /obj/item/clothing/shoes/combat/peacekeeper/ComponentInitialize()
 	. = ..()
