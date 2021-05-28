@@ -201,7 +201,7 @@
 			living_players -= player
 		else if(is_centcom_level(player.z))
 			living_players -= player // We don't autotator people in CentCom
-		else if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+		else if(player.mind && (player.mind.special_role || ( player.mind.antag_datums && player.mind.antag_datums.len ) > 0))
 			living_players -= player // We don't autotator people with roles already
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
@@ -250,7 +250,7 @@
 			candidates -= player
 		else if(is_centcom_level(player.z))
 			candidates -= player
-		else if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+		else if(player.mind && (player.mind.special_role || ( player.mind.antag_datums && player.mind.antag_datums.len ) > 0))
 			candidates -= player
 		else if(HAS_TRAIT(player, TRAIT_MINDSHIELD))
 			candidates -= player
@@ -319,7 +319,7 @@
 			candidates -= player
 			continue
 
-		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+		if(player.mind && (player.mind.special_role || ( player.mind.antag_datums && player.mind.antag_datums.len ) > 0))
 			candidates -= player
 
 /datum/dynamic_ruleset/midround/malf/execute()
