@@ -150,10 +150,12 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	return TRUE
 
 /datum/interaction/proc/act(mob/living/user, mob/living/target)
-	var/msg
-	if(islist(message))
-		msg = pick(message)
-	else msg = message
+	if(!message)
+		message_admins("Interaction had a null message list. '[name]'")
+	if(!islist(message) && istext(message))
+		message_admins("Deprecated message handling for '[name]'. Correct format is a list with one entry. This message will only show once.")
+		message = list(message)
+	var/msg = pick(message)
 	// We replace %USER% with nothing because manual_emote already prepends it.
 	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
 	user.manual_emote(msg)
