@@ -6,6 +6,9 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 #define INTERACTION_MAX_CHAR 255
 #define INTERACTION_COOLDOWN 0.5 SECONDS
 
+// If an interaction has this category it will not be shown to players
+#define INTERACTION_CAT_HIDE "hide"
+
 // I want these to be bitflags; but that would make json loading painful beyond compare
 // If you add a new requirement you also need to implement its checking. See /datum/interaction/proc/allow_act
 #define INTERACTION_REQUIRE_SELF_HAND "self_hand"
