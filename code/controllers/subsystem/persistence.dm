@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(persistence)
 	LoadPanicBunker() //SKYRAT EDIT ADDITION - PANICBUNKER
 	load_custom_outfits()
 
-	GLOB.explorer_drone_adventures = load_adventures()
+	load_adventures()
 	return ..()
 
 /datum/controller/subsystem/persistence/proc/LoadPoly()
