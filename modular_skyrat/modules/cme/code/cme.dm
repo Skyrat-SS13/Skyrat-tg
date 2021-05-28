@@ -45,7 +45,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	max_occurrences = 0
 
 /datum/round_event/cme/minimal
-	cme_intensity = "CME_MINIMAL
+	cme_intensity = CME_MINIMAL
 
 /datum/round_event_control/cme/moderate
 	name = "Coronal Mass Ejection: Moderate"
