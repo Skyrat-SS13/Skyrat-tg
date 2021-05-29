@@ -60,7 +60,7 @@
 	design_ids = list("cybernetic_liver", "cybernetic_heart", "cybernetic_lungs","cybernetic_stomach", "cybernetic_eyes", "scalpel",
 					"blood_filter", "circular_saw", "bonesetter", "surgicaldrill", "retractor", "cautery", "hemostat",
 					"stethoscope", "surgical_drapes", "hospital_gown", "syringe", "plumbing_rcd", "beaker", "large_beaker", "xlarge_beaker",
-					"dropper", "defibmountdefault", "surgical_tape", "portable_chem_mixer")	//SKYRAT EDIT ADDITION: added "surgical_drapes"
+					"dropper", "defibmountdefault", "surgical_tape", "portable_chem_mixer", "engi_plumbing")	//SKYRAT EDIT ADDITION: added "surgical_drapes", "engi_plumbing"
 
 /datum/techweb_node/basic_circuitry
 	id = "basic_circuitry"
