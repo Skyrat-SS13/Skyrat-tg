@@ -148,12 +148,14 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 				if(!target.can_speak())
 					return FALSE
 			else
-				message_admins("Unimplemented interaction requirement '[requirement]'. Blame coders.")
+				message_admins("Unimplemented interaction requirement '[requirement]'.")
+				CRASH("Unimplemented interaction requirement '[requirement]'")
 	return TRUE
 
 /datum/interaction/proc/act(mob/living/user, mob/living/target)
 	if(!message)
 		message_admins("Interaction had a null message list. '[name]'")
+		return
 	if(!islist(message) && istext(message))
 		message_admins("Deprecated message handling for '[name]'. Correct format is a list with one entry. This message will only show once.")
 		message = list(message)
@@ -162,12 +164,13 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
 	user.manual_emote(msg)
 	if(sound_use)
-		if(isnull(sound_possible))
+		if(!sound_possible)
 			message_admins("Interaction has sound_use set to TRUE but does not set sound! '[name]'")
 			return
-		else if(islist(sound_possible))
-			sound_cache = sound(pick(sound_possible))
-		else sound_cache = sound(sound_possible)
+		if(!islist(sound_possible) && istext(sound_possible))
+			message_admins("Deprecated sound handling for '[name]'. Correct format is a list with one entry. This message will only show once.")
+			sound_possible = list(sound_possible)
+		sound_cache = pick(sound_possible)
 		for(var/mob/mob in view(sound_range, user))
 			SEND_SOUND(sound_cache, mob)
 
@@ -211,7 +214,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 /datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
 
-/mob/ComponentInitialize()
+/mob/living/Initialize()
 	. = ..()
 	AddComponent(/datum/component/interactable)
 
@@ -219,7 +222,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	. = ..()
 	self = parent
 
-/mob/verb/cmd_interact()
+/mob/living/verb/cmd_interact()
 	set src in view()
 	set category = "IC"
 	set name = "Interact"
