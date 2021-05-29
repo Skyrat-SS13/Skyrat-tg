@@ -22,6 +22,7 @@
 		"was found with its engines stolen", "\[REDACTED\]", "flew into the sunset, and melted", "went through a bluespace portal, onto adventure",
 		"had cloning devices on it", "had its shuttle inspector put the shuttle in reverse instead of park, causing the shuttle to crash into the hangar")
 	var/message = "Your emergency shuttle [cause]. "
+//SKYRAT EDIT: Changed wise cow that talked to the shuttle instead to be went through a bluespace portal!
 
 	if(SSshuttle.shuttle_insurance)
 		message += "Luckily, your shuttle insurance has covered the costs of repair!"
