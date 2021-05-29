@@ -21,7 +21,7 @@
 	sign_change_name = "Painting - Waves"
 
 
-/obj/structure/sign/painting
+/obj/structure/sign/paint
 	name = "painting"
 	desc = "you shouldn't be seeing this."
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
