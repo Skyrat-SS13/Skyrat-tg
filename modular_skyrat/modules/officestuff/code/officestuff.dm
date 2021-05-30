@@ -27,3 +27,4 @@
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
 	icon_state = "gravestone"
 
+
