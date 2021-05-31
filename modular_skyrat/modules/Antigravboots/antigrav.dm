@@ -3,29 +3,27 @@
 	name = "anti-gravity boots"
 	icon_state = "clown"
 	inhand_icon_state = "clown_shoes"
-	var/enabled_antigravity = FALSE
-	strip_delay = 70
-	equip_delay_other = 70
-	resistance_flags = FIRE_PROOF
-	permeability_coefficient = 0.05
-	actions_types = list(/datum/action/item_action/toggle)
+	var/enabled_antigravity = TRUE
 
-/obj/item/clothing/shoes/antigrav_boots/verb/toggle()
-	set name = "Toggle Anti-gravity Boots"
-	set category = "Object"
-	set src in usr
-	if(!can_use(usr))
+/obj/item/clothing/shoes/antigrav_boots/equipped(mob/user, slot)
+	. = ..()
+	if(slot == ITEM_SLOT_FEET)
+		if(enabled_antigravity)
+			user.AddElement(/datum/element/forced_gravity, 0)
+
+/obj/item/clothing/shoes/antigrav_boots/dropped(mob/user)
+	. = ..()
+	user.RemoveElement(/datum/element/forced_gravity, 0)
+
+/obj/item/clothing/shoes/antigrav_boots/CtrlClick(mob/living/user)
+	if(!isliving(user))
 		return
-	attack_self(usr)
-
-/obj/item/clothing/shoes/antigrav_boots/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>You toggle the traction system.</span>")
-	enabled_antigravity = !enabled_antigravity
-	if (enabled_antigravity == TRUE)
-		user.AddElement(/datum/element/forced_gravity, 0)
+	if(user.get_active_held_item() != src)
+		to_chat(user, "<span class='warning'>You must hold the [src] in your hand to do this!</span>")
+		return
+	if (!enabled_antigravity)
+		to_chat(user, "<span class='notice'>You switch off the antigravity!</span>")
+		enabled_antigravity = TRUE
 	else
-		user.RemoveElement(/datum/element/forced_gravity, 0)
-	user.update_inv_shoes() //so our mob-overlays update
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
+		to_chat(user, "<span class='notice'>You switch on the antigravity!</span>")
+		enabled_antigravity = FALSE
