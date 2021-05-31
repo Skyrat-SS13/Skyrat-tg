@@ -1,8 +1,7 @@
 /obj/item/clothing/shoes/antigrav_boots
 	desc = "Anti-gravity boots, for those who want to live weightlessly. Comes in cargo colors!"
 	name = "anti-gravity boots"
-	icon_state = "clown"
-	inhand_icon_state = "clown_shoes"
+	icon_state = "walkboots" //Haha funny reused sprite
 	var/enabled_antigravity = TRUE
 
 /obj/item/clothing/shoes/antigrav_boots/equipped(mob/user, slot)
