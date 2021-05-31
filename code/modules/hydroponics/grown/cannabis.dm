@@ -41,7 +41,7 @@
 	plantname = "Deathweed"
 	product = /obj/item/food/grown/cannabis/death
 	mutatelist = list()
-	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
+	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
 /obj/item/seeds/cannabis/white
@@ -53,7 +53,7 @@
 	instability = 30
 	product = /obj/item/food/grown/cannabis/white
 	mutatelist = list()
-	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
+	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
 
@@ -75,7 +75,7 @@
 						/datum/reagent/drug/bath_salts = 0.15,
 						/datum/reagent/drug/crank = 0.15,
 						/datum/reagent/drug/krokodil = 0.15,
-						/datum/reagent/toxin/lipolicide = 0.15,
+						//SKYRAT REMOVAL // /datum/reagent/toxin/lipolicide = 0.15,
 						/datum/reagent/drug/nicotine = 0.1)
 	rarity = 69
 	graft_gene = /datum/plant_gene/trait/glow/green

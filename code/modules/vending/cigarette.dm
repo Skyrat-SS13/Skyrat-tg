@@ -18,8 +18,10 @@
 					/obj/item/reagent_containers/vapecart = 20)
 	//REMOVAL //contraband = list(/obj/item/clothing/mask/vape = 5)
 	contraband = list(/obj/item/reagent_containers/vapecart/empty = 10,
-					  /obj/item/reagent_containers/vapecart/bluekush = 7,
-					  /obj/item/reagent_containers/vapecart/reddiesel = 7)
+					  /obj/item/reagent_containers/vapecart/bluekush = 4,
+					  /obj/item/reagent_containers/vapecart/reddiesel = 4,
+					  /obj/item/reagent_containers/vapecart/pwrgame = 4,
+					  /obj/item/reagent_containers/vapecart/cheese = 4)
 					  //SKYRAT EDIT END- VAPECARTS
 	premium = list(/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 3,
 				   /obj/item/storage/box/gum/nicotine = 2,
