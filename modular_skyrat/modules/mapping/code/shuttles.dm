@@ -80,7 +80,6 @@
 	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
-		/obj/item/storage/box/handcuffs,
 		/obj/item/melee/classic_baton/telescopic,
 		/obj/item/gun/ballistic/automatic/pistol/cfa_snub/empty,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub,
@@ -89,7 +88,6 @@
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub/rubber,
 		/obj/item/grenade/c4,
-		/obj/item/grenade/smokebomb,
 		/obj/item/grenade/smokebomb
 	)
 
@@ -112,7 +110,6 @@
 	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
-		/obj/item/storage/box/handcuffs,
 		/obj/item/melee/classic_baton/telescopic,
 		/obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
@@ -121,7 +118,6 @@
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/hp,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
-		/obj/item/grenade/c4/x4,
 		/obj/item/grenade/c4/x4,
 		/obj/item/megaphone/command
 	)
