@@ -152,6 +152,18 @@
 /area/shuttle/syndicate/slaver{
 	 = 
 	})
+"fs" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/brown/side{
+	dir = 1
+	},
+/area/shuttle/syndicate/slaver{
+	 = 
+	})
 "fA" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -367,48 +379,19 @@
 	 = 
 	})
 "mx" = (
-/obj/effect/turf_decal/trimline/yellow/warning,
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/atmospherics/components/unary/portables_connector{
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/brown/side{
-	dir = 1
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
 	},
-/area/shuttle/syndicate/slaver{
-	 = 
-	})
-"mG" = (
-/obj/effect/turf_decal/trimline/yellow/warning,
-/obj/structure/closet/secure_closet{
-	icon_state = "eng";
-	name = "Equipment Locker";
-	req_access_txt = "150"
+/obj/machinery/button/door/directional/south{
+	id = "privateerslavercellarealockdown";
+	name = "Brig Lockdown"
 	},
-/obj/item/storage/belt,
-/obj/item/screwdriver/power{
-	name = "power drill";
-	powered_toolspeed = 0.2;
-	toolspeed = 0.5
-	},
-/obj/item/crowbar/power{
-	name = "power jaws";
-	powered_toolspeed = 0.2;
-	toolspeed = 0.5
-	},
-/obj/item/holosign_creator/atmos,
-/obj/item/stack/cable_coil,
-/obj/item/analyzer,
-/obj/item/storage/bag/material,
-/obj/item/construction/rcd/loaded/upgraded,
-/obj/item/pipe_dispenser,
-/obj/item/stack/sheet/plasteel/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/storage/backpack/satchel/flat/empty,
-/obj/item/storage/box,
-/turf/open/floor/iron/dark/brown/side{
-	dir = 1
+/turf/open/floor/pod/dark{
+	icon = 'icons/turf/floors.dmi'
 	},
 /area/shuttle/syndicate/slaver{
 	 = 
@@ -582,6 +565,9 @@
 /obj/structure/grille,
 /obj/structure/window/plasma/reinforced/plastitanium,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "privateerslaverbridgeshutters"
+	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver{
 	 = 
@@ -857,19 +843,6 @@
 /area/shuttle/syndicate/slaver{
 	 = 
 	})
-"GM" = (
-/obj/effect/turf_decal/trimline/yellow/warning,
-/obj/machinery/light/directional/south,
-/obj/machinery/portable_atmospherics/pump,
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/brown/side{
-	dir = 1
-	},
-/area/shuttle/syndicate/slaver{
-	 = 
-	})
 "Hi" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
 /obj/structure/cable,
@@ -877,6 +850,10 @@
 /obj/machinery/door/airlock/mining{
 	name = "Engineering";
 	req_access_txt = "150"
+	},
+/obj/machinery/door/poddoor/shutters/window/preopen{
+	id = "privateerslavercellarealockdown";
+	name = "Lockdown"
 	},
 /turf/open/floor/pod/dark{
 	icon = 'icons/turf/floors.dmi'
@@ -1024,6 +1001,11 @@
 	pixel_y = 7
 	},
 /obj/item/tank/internals/emergency_oxygen/double,
+/obj/machinery/button/door/directional/west{
+	id = "privateerslaverbridgeshutters";
+	name = "Bridge Blast Doors";
+	req_access_txt = "150"
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/syndicate/slaver{
 	 = 
@@ -1159,6 +1141,19 @@
 /area/shuttle/syndicate/slaver{
 	 = 
 	})
+"Qw" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/machinery/light/directional/south,
+/obj/machinery/portable_atmospherics/pump,
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/brown/side{
+	dir = 1
+	},
+/area/shuttle/syndicate/slaver{
+	 = 
+	})
 "Qx" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/button/door{
@@ -1249,6 +1244,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door/directional/north{
+	id = "privateerslavercellarealockdown";
+	name = "Brig Lockdown"
+	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver{
 	 = 
@@ -1366,6 +1365,41 @@
 /area/shuttle/syndicate/slaver{
 	 = 
 	})
+"Wv" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/structure/closet/secure_closet{
+	icon_state = "eng";
+	name = "Equipment Locker";
+	req_access_txt = "150"
+	},
+/obj/item/storage/belt,
+/obj/item/screwdriver/power{
+	name = "power drill";
+	powered_toolspeed = 0.2;
+	toolspeed = 0.5
+	},
+/obj/item/crowbar/power{
+	name = "power jaws";
+	powered_toolspeed = 0.2;
+	toolspeed = 0.5
+	},
+/obj/item/holosign_creator/atmos,
+/obj/item/stack/cable_coil,
+/obj/item/analyzer,
+/obj/item/storage/bag/material,
+/obj/item/construction/rcd/loaded/upgraded,
+/obj/item/pipe_dispenser,
+/obj/item/stack/sheet/plasteel/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/storage/backpack/satchel/flat/empty,
+/obj/item/storage/box,
+/turf/open/floor/iron/dark/brown/side{
+	dir = 1
+	},
+/area/shuttle/syndicate/slaver{
+	 = 
+	})
 "WI" = (
 /obj/structure/bed,
 /obj/item/bedsheet/black,
@@ -1463,6 +1497,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/door/poddoor/shutters/window/preopen{
+	id = "privateerslavercellarealockdown";
+	name = "Lockdown"
+	},
 /turf/open/floor/pod/dark{
 	icon = 'icons/turf/floors.dmi'
 	},
@@ -1526,7 +1564,7 @@ TW
 XN
 Wh
 RZ
-mx
+fs
 TW
 TW
 VL
@@ -1547,7 +1585,7 @@ Kw
 Ve
 Wp
 VF
-GM
+Qw
 rI
 Sh
 JM
@@ -1568,7 +1606,7 @@ Kw
 Ve
 jL
 Jz
-mG
+Wv
 Po
 Sh
 Yp
@@ -1693,7 +1731,7 @@ wj
 Fo
 VH
 qz
-im
+mx
 XN
 Rx
 wo
