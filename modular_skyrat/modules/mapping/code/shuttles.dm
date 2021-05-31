@@ -114,10 +114,7 @@
 		/obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/hp,
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/hp,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/rubber,
-		/obj/item/grenade/c4/x4,
 		/obj/item/megaphone/command
 	)
