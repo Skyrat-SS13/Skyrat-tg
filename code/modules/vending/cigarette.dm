@@ -12,8 +12,15 @@
 					/obj/item/storage/fancy/cigarettes/cigpack_midori = 3,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/lighter/greyscale = 4,
-					/obj/item/storage/fancy/rollingpapers = 5)
-	contraband = list(/obj/item/clothing/mask/vape = 5)
+					/obj/item/storage/fancy/rollingpapers = 5,
+					//SKYRAT EDIT START- VAPECARTS
+					/obj/item/clothing/mask/vape = 5,
+					/obj/item/reagent_containers/vapecart = 20)
+	//REMOVAL //contraband = list(/obj/item/clothing/mask/vape = 5)
+	contraband = list(/obj/item/reagent_containers/vapecart/empty = 10,
+					  /obj/item/reagent_containers/vapecart/bluekush = 7,
+					  /obj/item/reagent_containers/vapecart/reddiesel = 7)
+					  //SKYRAT EDIT END- VAPECARTS
 	premium = list(/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 3,
 				   /obj/item/storage/box/gum/nicotine = 2,
 				   /obj/item/lighter = 3,

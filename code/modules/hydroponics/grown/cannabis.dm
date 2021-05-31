@@ -18,7 +18,8 @@
 						/obj/item/seeds/cannabis/death,
 						/obj/item/seeds/cannabis/white,
 						/obj/item/seeds/cannabis/ultimate)
-	reagents_add = list(/datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.35) //SKYRAT EDIT - MORENARCOTICS
+	reagents_add = list(/datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
+	//axed lipolicide, replaced space drugs with thc
 
 
 /obj/item/seeds/cannabis/rainbow

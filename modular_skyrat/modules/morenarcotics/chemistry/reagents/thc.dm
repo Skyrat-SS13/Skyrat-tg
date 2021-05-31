@@ -30,6 +30,7 @@
 	M.throw_alert("stoned", /atom/movable/screen/alert/stoned)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 	M.Dizzy(5 * REM * delta_time)
+	M.adjust_nutrition(-1 * REM * delta_time) //munchies
 	if(DT_PROB(3.5, delta_time))
 		M.emote(pick("laugh","giggle"))
 	..()
