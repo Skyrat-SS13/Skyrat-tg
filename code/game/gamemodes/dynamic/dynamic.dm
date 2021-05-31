@@ -658,7 +658,11 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 			chance += min(50, 25+10*(current_pop_per_antag-max_pop_per_antag))
 		else
 			chance += 25-10*(max_pop_per_antag-current_pop_per_antag)
+<<<<<<< HEAD
 	if (current_players[CURRENT_DEAD_PLAYERS].len > current_players[CURRENT_LIVING_PLAYERS].len)
+=======
+	if (GLOB.dead_player_list.len > GLOB.alive_player_list.len)
+>>>>>>> 1083a91d6d8 (FIx broken latejoins (#59406))
 		chance -= 30 // More than half the crew died? ew, let's calm down on antags
 	if (mid_round_budget > higher_injection_chance_minimum_threat)
 		chance += higher_injection_chance
