@@ -6491,6 +6491,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "aJB" = (
@@ -6841,6 +6842,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "aMl" = (
@@ -23948,9 +23950,15 @@
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "eRx" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
-/turf/closed/wall/r_wall,
-/area/science/mixing)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "eRH" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
@@ -23976,11 +23984,9 @@
 /turf/open/floor/iron,
 /area/service/hydroponics)
 "eSt" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 9
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/closed/wall/r_wall,
-/area/engineering/main)
+/area/science/mixing)
 "eSC" = (
 /obj/structure/railing/corner{
 	dir = 4
@@ -28093,7 +28099,9 @@
 /turf/open/floor/iron/dark,
 /area/commons/storage/mining)
 "hhX" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 9
+	},
 /turf/closed/wall/r_wall,
 /area/engineering/main)
 "hin" = (
@@ -28435,7 +28443,7 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "hsA" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
 /turf/closed/wall/r_wall,
 /area/engineering/main)
 "hsE" = (
@@ -31541,7 +31549,7 @@
 /area/commons/toilet/locker)
 "jen" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
-/turf/open/floor/iron,
+/turf/closed/wall/r_wall,
 /area/engineering/main)
 "jeq" = (
 /obj/machinery/camera{
@@ -34080,10 +34088,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "kwx" = (
-/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron,
 /area/engineering/main)
 "kwD" = (
@@ -39498,10 +39503,12 @@
 /turf/open/floor/carpet,
 /area/service/library)
 "nhU" = (
-/obj/machinery/cryopod,
 /obj/machinery/light/directional/north,
 /obj/machinery/computer/cryopod{
 	pixel_y = 24
+	},
+/obj/machinery/cryopod{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/commons/cryopods)
@@ -41171,6 +41178,13 @@
 /obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/commons/storage/mining)
+"oeD" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/hidden,
+/turf/open/floor/iron,
+/area/engineering/main)
 "oeE" = (
 /obj/machinery/status_display/evac/directional/south,
 /turf/open/floor/circuit,
@@ -41478,6 +41492,7 @@
 	dir = 8
 	},
 /obj/machinery/navbeacon/wayfinding,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/dorms)
 "opx" = (
@@ -50952,6 +50967,7 @@
 	c_tag = "Dormitory South";
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/dorms)
 "tny" = (
@@ -56423,13 +56439,11 @@
 /turf/open/floor/iron,
 /area/command/bridge)
 "whN" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
 /obj/machinery/light_switch/directional/south,
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/cryopods)
 "whY" = (
@@ -91700,7 +91714,7 @@ pcX
 tHq
 pSI
 lfM
-pSI
+eRx
 tmO
 opq
 aJy
@@ -92285,9 +92299,9 @@ wiL
 wiL
 wiL
 wiL
-eSt
 hhX
 hsA
+jen
 pFQ
 pFQ
 ezY
@@ -92544,12 +92558,12 @@ ccm
 ccm
 ccm
 ccm
-hsA
+jen
 ePV
-jen
-jen
 kwx
-jen
+kwx
+oeD
+kwx
 pFQ
 jkP
 xiQ
@@ -107928,7 +107942,7 @@ hZk
 hZk
 icS
 nee
-eRx
+eSt
 nCs
 gLx
 uLQ
@@ -108185,7 +108199,7 @@ hZk
 hZk
 icS
 dFk
-eRx
+eSt
 ont
 eeA
 qOW
@@ -108442,7 +108456,7 @@ gnX
 epI
 uzl
 cbe
-eRx
+eSt
 kdp
 dFZ
 hMK
@@ -108699,7 +108713,7 @@ rIN
 xEM
 tTk
 pDu
-eRx
+eSt
 tZf
 mqf
 iKs
@@ -108956,7 +108970,7 @@ bpE
 bpE
 dYq
 dYq
-eRx
+eSt
 qSi
 sql
 mKf
@@ -109213,7 +109227,7 @@ bzO
 taM
 mUD
 gMv
-eRx
+eSt
 kdq
 rpC
 rgE
