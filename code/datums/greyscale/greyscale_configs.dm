@@ -202,8 +202,6 @@
 /datum/greyscale_config/sombrero/base_worn
 	name = "Base Worn Sombrero Style"
 	json_config = 'code/datums/greyscale/json_configs/sombrero_base_worn.json'
-<<<<<<< HEAD
-=======
 
 /datum/greyscale_config/plush_lizard
 	name = "Plushie Lizard"
@@ -219,4 +217,3 @@
 	name = "Flower Worn"
 	icon_file = 'icons/mob/clothing/head/hydroponics.dmi'
 	json_config = 'code/datums/greyscale/json_configs/simple_flower_worn.json'
->>>>>>> 1df53114157 (Converts Poppies, Lilies, Geraniums, and Rainbow Bunch flowers to GAGS (#59332))
