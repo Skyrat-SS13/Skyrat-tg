@@ -17,8 +17,6 @@
 		var/worn_icon_state = initial(item_path.worn_icon_state) || initial(item_path.icon_state)
 		if(worn && !worn.icon_states[worn_icon_state])
 			Fail("[worn.DebugName()] is missing a sprite for the worn overlay for [item_path]. Expected icon state: '[worn_icon_state]'")
-<<<<<<< HEAD
-=======
 
 		var/datum/greyscale_config/belt = SSgreyscale.configurations["[initial(item_path.greyscale_config_belt)]"]
 		var/belt_icon_state = initial(item_path.belt_icon_state) || initial(item_path.icon_state)
@@ -39,4 +37,3 @@
 		var/number_of_colors = length(colors) - 1
 		if(config.expected_colors != number_of_colors)
 			Fail("[thing] has the wrong amount of colors configured for [config.DebugName()]. Expected [config.expected_colors] but only found [number_of_colors].")
->>>>>>> 58743c18d62 (Adds a unit test to make sure the right amount of colors are supplied to GAGS configurations (#59388))
