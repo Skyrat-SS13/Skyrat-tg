@@ -202,8 +202,6 @@
 /datum/greyscale_config/sombrero/base_worn
 	name = "Base Worn Sombrero Style"
 	json_config = 'code/datums/greyscale/json_configs/sombrero_base_worn.json'
-<<<<<<< HEAD:code/datums/greyscale/greyscale_configs.dm
-=======
 
 /datum/greyscale_config/plush_lizard
 	name = "Plushie Lizard"
@@ -259,4 +257,3 @@
 	name = "Gold Worn Cleric Mace"
 	icon_file = 'icons/obj/items/cleric_mace.dmi'
 	json_config = 'code/datums/greyscale/json_configs/items/cleric_mace_worn_gold.json'
->>>>>>> 71ed48d9448 (Datum mat GAGS support and mace migration (#59114)):code/datums/greyscale/config_types/greyscale_configs.dm
