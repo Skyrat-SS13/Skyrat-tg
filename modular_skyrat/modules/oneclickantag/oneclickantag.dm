@@ -20,8 +20,10 @@
 			src.oneclickantag += ROLE_FAMILIES
 		if(/datum/antagonist/heretic)
 			src.oneclickantag += ROLE_HERETIC
+		if(/datum/antagonist/obsessed)
+			src.oneclickantag += ROLE_OBSESSED
 		else
-			message_admins("Unable to update [src]'s previous antag list for One Click Antag. Blame coders.")
+			message_admins("Unable to update [src]'s previous antag list for One Click Antag. Unhandled datum '[datum]'. Ping ZephyrTFA.")
 	return ..()
 
 /datum/mind/proc/make_antag(antagtype, opt = null)
