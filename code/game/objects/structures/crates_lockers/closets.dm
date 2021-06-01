@@ -43,10 +43,6 @@
 	var/divable = TRUE
 	/// true whenever someone with the strong pull component is dragging this, preventing opening
 	var/strong_grab = FALSE
-//SKYRAT EDIT ADDITION//
-	var/obj/item/electronics/airlock/lockerelectronics //Installed electronics
-	var/lock_in_use = FALSE //Someone is doing some stuff with the lock here, better not proceed further
-//SKYRAT EDIT END//
 
 /obj/structure/closet/Initialize(mapload)
 	if(mapload && !opened) // if closed, any item at the crate's loc is put in the contents
@@ -288,12 +284,6 @@
 				return
 		if(user.transferItemToLoc(W, drop_location())) // so we put in unlit welder too
 			return
-//SKYRAT EDIT ADDITION//
-	else if(istype(W, /obj/item/electronics/airlock))
-		handle_lock_addition(user, W)
-	else if(istype(W, /obj/item/screwdriver))
-		handle_lock_removal(user, W)
-//SKYRAT EDIT END//
 	else if(W.tool_behaviour == TOOL_WELDER && can_weld_shut)
 		if(!W.tool_start_check(user, amount=0))
 			return
@@ -536,67 +526,5 @@
 
 /obj/structure/closet/return_temperature()
 	return
-
-//SKYRAT EDIT ADDITION//
-/obj/structure/closet/proc/handle_lock_addition(mob/user, obj/item/electronics/airlock/E)
-	add_fingerprint(user)
-	if(lock_in_use)
-		to_chat(user, "<span class='notice'>Wait for work on [src] to be done first!</span>")
-		return
-	if(secure)
-		to_chat(user, "<span class='notice'>This locker already has a lock!</span>")
-		return
-	if(broken)
-		to_chat(user, "<span class='notice'><b>Unscrew</b> the broken lock first!</span>")
-		return
-	if(!istype(E))
-		return
-	user.visible_message("<span class='notice'>[user] begins installing a lock on [src]...</span>","<span class='notice'>You begin installing a lock on [src]...</span>")
-	lock_in_use = TRUE
-	playsound(loc, 'sound/items/screwdriver.ogg', 50, 1)
-	if(!do_after(user, 60, target = src))
-		lock_in_use = FALSE
-		return
-	lock_in_use = FALSE
-	to_chat(user, "<span class='notice'>You finish the lock on [src]!</span>")
-	E.forceMove(src)
-	lockerelectronics = E
-	req_access = E.accesses
-	secure = TRUE
-	update_icon()
-	return TRUE
-
-/obj/structure/closet/proc/handle_lock_removal(mob/user, obj/item/screwdriver/S)
-	if(lock_in_use)
-		to_chat(user, "<span class='notice'>Wait for work on [src] to be done first!</span>")
-		return
-	if(locked)
-		to_chat(user, "<span class='notice'>Unlock it first!</span>")
-		return
-	if(!secure)
-		to_chat(user, "<span class='notice'>[src] doesn't have a lock that you can remove!</span>")
-		return
-	if(!istype(S))
-		return
-	var/brokenword = broken ? "broken " : null
-	user.visible_message("<span class='notice'>[user] begins removing the [brokenword]lock on [src]...</span>","<span class='notice'>You begin removing the [brokenword]lock on [src]...</span>")
-	playsound(loc, S.usesound, 50, 1)
-	lock_in_use = TRUE
-	if(!do_after(user, 100 * S.toolspeed, target = src))
-		lock_in_use = FALSE
-		return
-	to_chat(user, "<span class='notice'>You remove the [brokenword]lock from [src]!</span>")
-	if(!QDELETED(lockerelectronics))
-		lockerelectronics.add_fingerprint(user)
-		lockerelectronics.forceMove(user.loc)
-	lockerelectronics = null
-	req_access = null
-	secure = FALSE
-	broken = FALSE
-	locked = FALSE
-	lock_in_use = FALSE
-	update_icon()
-	return TRUE
-//SKYRAT EDIT END//
 
 #undef LOCKER_FULL
