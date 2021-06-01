@@ -328,6 +328,21 @@
 /obj/machinery/door/airlock/virology
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/virology.dmi'
 
+/obj/machinery/door/airlock/service
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/service.dmi'
+	assemblytype = /obj/structure/door_assembly/door_assembly_service
+
+/obj/machinery/door/airlock/service/glass
+	opacity = FALSE
+	glass = TRUE
+
+/obj/structure/door_assembly/door_assembly_service
+	name = "service airlock assembly"
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/service.dmi'
+	base_name = "service airlock"
+	glass_type = /obj/machinery/door/airlock/service/glass
+	airlock_type = /obj/machinery/door/airlock/service
+
 //STATION MINERAL AIRLOCKS
 /obj/machinery/door/airlock/gold
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/gold.dmi'
