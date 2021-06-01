@@ -62,33 +62,33 @@
 		return
 	name = "customizable vape cart"
 
-//chinese carts
+//thc carts
 /obj/item/reagent_containers/vapecart/bluekush
 	name = "Dr. Breen's Blue Kush Reserve cart"
 	desc = "Don't smoke the carts... They put something in it... t-to make you forget! I don't even remember how I got here..."
-	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/berryjuice = 10, /datum/reagent/toxin = 5) //i mean... it isn't realistic if it doesnt slowly kill you
+	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/berryjuice = 10)
 	custom_price = PAYCHECK_MEDIUM
 
 /obj/item/reagent_containers/vapecart/reddiesel
 	name = "Resistance Red Diesel cart"
 	desc = "Seems to be endorsed by a real scientist!"
-	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/dr_gibb = 10, /datum/reagent/toxin = 5)
+	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/dr_gibb = 10)
 	custom_price = PAYCHECK_MEDIUM
 
 /obj/item/reagent_containers/vapecart/pwrgame
 	name = "Pwr Haze cart"
 	desc = "When did Pwr Game get into the cart business?"
-	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/pwr_game = 10, /datum/reagent/cum = 5 , /datum/reagent/toxin = 5) //pwr game literally is cum lets get real
+	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/pwr_game = 10)
 	custom_price = PAYCHECK_MEDIUM
 
 /obj/item/reagent_containers/vapecart/cheese
 	name = "Cheesie Honker OG Kush cart"
 	desc = "*Contains no real cheese."
-	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sugar = 3, /datum/reagent/toxin = 5)
+	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sugar = 3)
 	custom_price = PAYCHECK_MEDIUM
 
 /obj/item/reagent_containers/vapecart/syndicate
 	name = "Syndikush Green Crack cart"
 	desc = "Green Crack is a strain of sativa, not actual crack."
-	list_reagents = list(/datum/reagent/drug/thc = 25, /datum/reagent/medicine/stimulants = 20, /datum/reagent/toxin = 5)
+	list_reagents = list(/datum/reagent/drug/thc = 25, /datum/reagent/medicine/stimulants = 20)
 	custom_price = PAYCHECK_MEDIUM
