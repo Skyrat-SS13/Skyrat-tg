@@ -90,6 +90,13 @@
 	cost = 30
 	surplus = 20
 */
+/datum/uplink_item/stealthy_weapons/psdprototype
+	name = "Nanotrasen PSD Prototype Disabler"
+	desc = "An old Nanotrasen prototype disabler from a wrecked station. - Donk Co. Has 'generously' decided to supply \
+	a few of these to the field agents on duty for cheap. Can disable one target with two shots leeway."
+	item = /obj/item/gun/energy/disabler/personal
+	cost = 4 // Maybe higher price if this becomes a problem?
+
 
 /datum/uplink_item/stealthy_weapons/telescopicbaton
 	name = "Telescopic Baton"
