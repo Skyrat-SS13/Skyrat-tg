@@ -60,11 +60,7 @@ SUBSYSTEM_DEF(events)
 	set waitfor = FALSE //for the admin prompt
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
-<<<<<<< HEAD
-	var/gamemode = SSticker.mode.config_tag
-=======
 
->>>>>>> e2b929974eb (Remove a bunch of old gamemode code (#59067))
 	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	// Only alive, non-AFK human players count towards this.
 
