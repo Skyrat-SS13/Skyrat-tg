@@ -54,17 +54,7 @@
 	. = ..()
 	AddElement(/datum/element/eyestab)
 
-<<<<<<< HEAD
-/obj/item/screwdriver/get_belt_overlay()
-	if(random_color)
-		return colored_belt_appearance
-	else
-		return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', icon_state)
-
 /obj/item/screwdriver/abductor //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
-/obj/item/screwdriver/abductor
->>>>>>> 9e0ddfb21b5 (Standardizes greyscale belt overlays (#59362))
 	name = "alien screwdriver"
 	desc = "An ultrasonic screwdriver."
 	icon = 'icons/obj/abductor.dmi'
