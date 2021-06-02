@@ -10488,8 +10488,8 @@
 /turf/open/floor/wood,
 /area/service/library)
 "aQr" = (
-/obj/machinery/vending/wardrobe/curator_wardrobe,
 /obj/machinery/light/small/directional/south,
+/obj/machinery/vending/wardrobe/curator_wardrobe,
 /turf/open/floor/engine/cult,
 /area/service/library)
 "aQs" = (
@@ -11348,9 +11348,7 @@
 "aTd" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/bookmanagement,
-/obj/machinery/light_switch{
-	pixel_y = 28
-	},
+/obj/machinery/light_switch/directional/north,
 /turf/open/floor/wood,
 /area/service/library)
 "aTe" = (
@@ -11756,7 +11754,9 @@
 /turf/open/floor/wood,
 /area/service/library)
 "aUE" = (
-/obj/machinery/libraryscanner,
+/obj/machinery/modular_computer/console/preset/curator{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/service/library)
 "aUF" = (
@@ -12138,9 +12138,15 @@
 /area/service/library)
 "aVR" = (
 /obj/structure/table/wood,
-/obj/item/pen/red,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/pen/red{
+	pixel_x = -6
+	},
 /obj/item/pen/blue{
-	pixel_x = 5;
+	pixel_x = -1;
 	pixel_y = 5
 	},
 /turf/open/floor/wood,
@@ -12153,10 +12159,7 @@
 /area/service/library)
 "aVT" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
+/obj/machinery/libraryscanner,
 /turf/open/floor/wood,
 /area/service/library)
 "aVU" = (
