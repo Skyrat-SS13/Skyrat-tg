@@ -7,7 +7,6 @@
 
 /obj/item/clothing/head/helmet/gladiator
     mutant_variants = NONE
-
 /obj/item/clothing/head/chefhat
     mutant_variants = NONE
 
