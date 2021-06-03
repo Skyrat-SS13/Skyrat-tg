@@ -516,8 +516,11 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "abN" = (
-/obj/structure/cable,
-/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/airlock/external{
+	name = "Security External Airlock";
+	req_access_txt = "1"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/security/prison)
 "abO" = (
@@ -598,28 +601,6 @@
 	dir = 5
 	},
 /turf/open/floor/iron/white,
-/area/security/prison)
-"aci" = (
-/obj/machinery/door/airlock/external{
-	name = "Security External Airlock";
-	req_access_txt = "1"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/security/prison)
-"acj" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/structure/sign/warning/vacuum/external{
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating,
 /area/security/prison)
 "ack" = (
 /obj/structure/lattice/catwalk,
@@ -814,7 +795,6 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/structure/curtain/bounty,
 /turf/open/floor/iron/dark/blue,
 /area/security/prison)
 "adk" = (
@@ -11245,6 +11225,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/genpop,
 /turf/open/floor/iron/dark/blue/side{
 	dir = 5
 	},
@@ -27251,13 +27232,13 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 4
 	},
-/obj/structure/reagent_dispensers/plumbed,
 /obj/structure/water_source{
 	dir = 8;
 	name = "sink";
 	pixel_x = 12;
 	pixel_y = -6
 	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "dha" = (
@@ -29942,6 +29923,7 @@
 	dir = 8;
 	network = list("ss13","prison")
 	},
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/cafeteria,
 /area/security/prison)
 "dZe" = (
@@ -30031,6 +30013,10 @@
 /obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"ebb" = (
+/obj/structure/curtain/bounty,
+/turf/open/floor/iron/dark/blue,
+/area/security/prison)
 "ebh" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
@@ -30102,6 +30088,13 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/service/janitor)
+"ecC" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/security/prison)
 "ecJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -37066,9 +37059,6 @@
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/restrooms)
 "gNS" = (
-/obj/structure/sign/poster/official/random{
-	pixel_x = 30
-	},
 /obj/item/radio/intercom{
 	desc = "A station intercom. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
@@ -40209,6 +40199,13 @@
 "idB" = (
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
+"idU" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/security/prison)
 "idW" = (
 /obj/machinery/rnd/production/protolathe/department/engineering,
 /obj/effect/turf_decal/bot,
@@ -41335,18 +41332,8 @@
 /turf/open/floor/iron/white,
 /area/security/prison)
 "iGJ" = (
-/obj/structure/rack,
 /obj/machinery/power/apc/auto_name/east,
 /obj/structure/cable,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/clothing/mask/breath,
-/obj/item/storage/inflatable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/purple/side{
 	dir = 6
@@ -42640,6 +42627,7 @@
 	id = "PermaLockdown";
 	name = "Lockdown Shutters"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/security/brig)
 "jhH" = (
@@ -47511,6 +47499,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "leV" = (
@@ -51297,6 +51286,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "mGA" = (
@@ -58662,6 +58652,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"pvh" = (
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/wood,
+/area/security/prison)
 "pvn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/vehicle/sealed/mecha/working/ripley/cargo,
@@ -59025,6 +59019,9 @@
 	dir = 1
 	},
 /obj/machinery/chem_master/condimaster,
+/obj/structure/sign/poster/official/random{
+	pixel_x = 30
+	},
 /turf/open/floor/iron/dark/yellow/side{
 	dir = 4
 	},
@@ -61926,6 +61923,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/security/office)
+"qHb" = (
+/turf/open/floor/carpet,
+/area/security/prison)
 "qHq" = (
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod Three"
@@ -63900,6 +63900,17 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"rxe" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = -32
+	},
+/turf/open/floor/iron/dark,
+/area/security/prison)
 "rxh" = (
 /obj/item/toy/beach_ball{
 	desc = "The simple beach ball is one of Nanotrasen's most popular products. 'Why do we make beach balls? Because we can! (TM)' - Nanotrasen";
@@ -64417,6 +64428,16 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
+"rGa" = (
+/obj/machinery/door/airlock/external{
+	name = "Security External Airlock";
+	req_access_txt = "1"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/security/prison)
 "rGb" = (
 /obj/machinery/requests_console/directional/north{
 	department = "Chapel";
@@ -65036,6 +65057,7 @@
 	name = "Prison Wing";
 	req_access_txt = "1"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "rSe" = (
@@ -66308,6 +66330,10 @@
 	},
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
+"soT" = (
+/obj/machinery/firealarm,
+/turf/closed/wall,
+/area/security/prison)
 "soZ" = (
 /turf/open/floor/wood,
 /area/command/corporate_showroom)
@@ -66931,6 +66957,19 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/science/lab)
+"szX" = (
+/obj/structure/rack,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/storage/inflatable,
+/turf/open/floor/iron,
+/area/security/prison)
 "sAk" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 5
@@ -67455,6 +67494,16 @@
 /obj/effect/turf_decal/trimline/darkblue/filled/line{
 	dir = 9
 	},
+/obj/structure/rack,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/storage/inflatable,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "sOe" = (
@@ -68646,6 +68695,7 @@
 /obj/structure/cable,
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "tmN" = (
@@ -71155,6 +71205,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/genetics)
+"umR" = (
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/light,
+/turf/open/floor/iron/dark/green,
+/area/security/prison)
 "unb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -73528,6 +73583,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
+"vhO" = (
+/obj/structure/bed/roller,
+/turf/open/floor/iron,
+/area/security/prison)
 "vic" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -76185,16 +76244,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/security/prison)
-"wiZ" = (
-/obj/machinery/door/airlock/external{
-	name = "Security External Airlock";
-	req_access_txt = "1"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/security/prison)
 "wjf" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 1
@@ -77424,7 +77473,6 @@
 /obj/item/reagent_containers/glass/beaker/large,
 /obj/item/crowbar,
 /obj/item/plant_analyzer,
-/obj/machinery/light,
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 5
 	},
@@ -78181,6 +78229,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "wWE" = (
@@ -78992,16 +79041,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"xmc" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/structure/bed/roller,
-/turf/open/floor/iron/dark,
-/area/security/prison)
 "xmd" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
@@ -101005,7 +101044,7 @@ tOw
 dgX
 vSn
 ilw
-trJ
+umR
 aax
 vrW
 vrW
@@ -101248,7 +101287,7 @@ nCu
 ltI
 snh
 bNP
-xSW
+pvh
 rxQ
 eZQ
 haK
@@ -102540,7 +102579,7 @@ rUo
 bBU
 oUe
 abe
-abe
+soT
 sVR
 oIa
 abe
@@ -104100,9 +104139,9 @@ fQi
 niF
 cvX
 aeJ
-abN
-abN
-abN
+xMF
+xMF
+xMF
 dne
 awS
 aRG
@@ -104347,7 +104386,7 @@ acv
 acv
 acv
 acv
-acI
+idU
 gjy
 vVP
 alL
@@ -106657,7 +106696,7 @@ eYJ
 eXu
 rMk
 cbk
-abN
+xMF
 nvU
 fyo
 fyo
@@ -107168,10 +107207,10 @@ lHB
 oxZ
 twK
 kFW
-xmc
+eXu
 qWF
 ezO
-abN
+xMF
 bgX
 mNE
 jEE
@@ -107429,10 +107468,10 @@ aNJ
 aNJ
 xdf
 jVe
-aci
+abe
 abe
 acO
-abe
+fvz
 naq
 adW
 aep
@@ -107685,10 +107724,10 @@ kFW
 eXu
 poo
 adg
-aax
-acj
+vhO
 abe
-fvz
+qHb
+ebb
 adi
 iCO
 aep
@@ -107942,8 +107981,8 @@ aax
 eXu
 poo
 adg
-aax
-wiZ
+szX
+abe
 aax
 aax
 aax
@@ -108198,10 +108237,10 @@ aax
 aax
 eXu
 poo
-adg
-abN
-ack
-lAu
+rxe
+aax
+aax
+aax
 aaa
 aaf
 aaa
@@ -108457,8 +108496,8 @@ poo
 poo
 mGl
 abN
-aox
-aox
+ecC
+rGa
 aaf
 aaf
 srq
@@ -108713,9 +108752,9 @@ aax
 jkP
 kqi
 wWt
-abN
-aaa
-aaa
+aax
+aax
+aax
 aaa
 aaf
 rmG
