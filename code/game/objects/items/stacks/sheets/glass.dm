@@ -9,8 +9,6 @@
 #define BUILD_WINDOW 4 SECONDS // This is the exact same as building a girder
 #define BUILD_WINDOW_DIRECTIONAL_MOD 0.5
 
-
-
 GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	new/datum/stack_recipe("plastitanium window", /obj/structure/window/plasma/reinforced/plastitanium/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
@@ -405,3 +403,8 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	custom_materials = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT)
 	icon_prefix = "plasma"
 	weld_material = /obj/item/stack/sheet/plasmaglass
+
+// SKYRAT EDIT ADDITION - MAKING WINDOWS ISNT INSTANT
+#undef BUILD_WINDOW_DIRECTIONAL_MOD
+#undef BUILD_WINDOW
+// SKYRAT EDIT END
