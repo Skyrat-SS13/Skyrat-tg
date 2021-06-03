@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(food, list(
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
 #define FLAVORTEXT_JOIN_MINIMUM 150
-
+/*
 /datum/preferences/proc/check_flavor_text(inform_client = TRUE)
 	if(!features["flavor_text"])
 		if(check_rights(R_ADMIN))
@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(food, list(
 			to_chat(parent, "<span class='userdanger'>Your flavor text must be longer than [FLAVORTEXT_JOIN_MINIMUM] characters!</span>")
 		return FALSE
 	return TRUE
-
+*/
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
 		return
