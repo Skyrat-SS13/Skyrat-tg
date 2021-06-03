@@ -15695,14 +15695,14 @@
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "aDA" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "aDC" = (
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "aDD" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "aDE" = (
@@ -16416,15 +16416,15 @@
 /turf/closed/wall,
 /area/medical/exam_room)
 "aFm" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "aFn" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "aFo" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "aFp" = (
@@ -75785,8 +75785,10 @@
 /turf/open/floor/plating,
 /area/security/prison/safe)
 "dSr" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/engine/air,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "dTm" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -78387,6 +78389,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/maintenance/port/aft)
+"hYq" = (
+/obj/effect/turf_decal/vg_decals/atmos/oxygen{
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
+/area/engineering/atmos)
 "hYG" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -79766,6 +79774,12 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/security/warden)
+"kaQ" = (
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide{
+	dir = 1
+	},
+/turf/open/floor/engine/co2,
+/area/engineering/atmos)
 "kbB" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -82524,6 +82538,12 @@
 /obj/item/clothing/under/rank/prisoner/skirt,
 /turf/open/floor/iron/cafeteria,
 /area/security/prison)
+"oov" = (
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide{
+	dir = 1
+	},
+/turf/open/floor/engine/n2o,
+/area/engineering/atmos)
 "ooY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall,
@@ -83256,6 +83276,12 @@
 /obj/item/bedsheet/brown,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
+"puD" = (
+/obj/effect/turf_decal/vg_decals/atmos/plasma{
+	dir = 1
+	},
+/turf/open/floor/engine/plasma,
+/area/engineering/atmos)
 "puO" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -84133,6 +84159,12 @@
 /obj/structure/cable,
 /turf/open/floor/grass,
 /area/security/prison)
+"qAu" = (
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 4
+	},
+/turf/open/floor/engine/air,
+/area/engineering/atmos)
 "qAA" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/lattice/catwalk,
@@ -84823,6 +84855,12 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"rug" = (
+/obj/effect/turf_decal/vg_decals/atmos/mix{
+	dir = 1
+	},
+/turf/open/floor/engine/vacuum,
+/area/engineering/atmos)
 "ruq" = (
 /obj/item/target,
 /obj/item/target/syndicate,
@@ -115715,15 +115753,15 @@ bRT
 bET
 aFM
 aGk
-aDz
+dSr
 aDz
 aFM
 bIU
-aDC
+hYq
 aDC
 aFM
 aDE
-aMY
+qAu
 aMY
 aFM
 bUW
@@ -115980,7 +116018,7 @@ aDD
 aMO
 aFM
 aMY
-dSr
+aMY
 bUQ
 bFP
 cCX
@@ -118816,7 +118854,7 @@ acm
 cBA
 aHe
 aFm
-aFc
+kaQ
 aFM
 acK
 acm
@@ -119844,7 +119882,7 @@ acm
 cBA
 aHh
 aFn
-aFd
+puD
 aFM
 acK
 aaa
@@ -120872,7 +120910,7 @@ acm
 cBA
 aHk
 aFo
-aFe
+oov
 aFM
 acK
 acm
@@ -121900,7 +121938,7 @@ acm
 cBA
 aHn
 bIw
-aFf
+rug
 aIG
 aeu
 aeu
