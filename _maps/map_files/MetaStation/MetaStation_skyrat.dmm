@@ -2197,6 +2197,10 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "PermaLockdown";
+	name = "Lockdown Shutters"
+	},
 /turf/open/floor/iron,
 /area/security/brig)
 "akz" = (
@@ -3915,14 +3919,17 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "asq" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 6
+	},
+/obj/machinery/airalarm{
+	pixel_y = 23
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
@@ -3948,6 +3955,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
@@ -37317,6 +37327,11 @@
 	dir = 4;
 	req_one_access_txt = "2;63;81"
 	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "PermaLockdown";
+	name = "Lockdown Shutters"
+	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "gTG" = (
@@ -42618,6 +42633,15 @@
 /obj/item/paper,
 /turf/open/floor/wood,
 /area/commons/dorms)
+"jhv" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "PermaLockdown";
+	name = "Lockdown Shutters"
+	},
+/turf/open/floor/plating,
+/area/security/brig)
 "jhH" = (
 /obj/item/reagent_containers/spray/plantbgone,
 /obj/item/reagent_containers/spray/pestspray{
@@ -51863,11 +51887,11 @@
 /turf/closed/wall,
 /area/medical/treatment_center)
 "mRK" = (
-/obj/effect/turf_decal/trimline/red/filled/corner{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "mRQ" = (
@@ -75450,6 +75474,10 @@
 	dir = 8;
 	req_one_access_txt = "2;63;81"
 	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "PermaLockdown";
+	name = "Lockdown Shutters"
+	},
 /turf/open/floor/iron/dark/blue,
 /area/security/prison)
 "vTZ" = (
@@ -81507,6 +81535,7 @@
 	name = "Lockdown Shutters"
 	},
 /obj/effect/turf_decal/delivery,
+/obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/security/prison)
 "ykk" = (
@@ -106126,8 +106155,8 @@ ahx
 ahx
 agJ
 ahx
-aiq
-aiq
+jhv
+jhv
 akw
 ahx
 ang
