@@ -2,12 +2,13 @@ https://github.com/Sea-of-Lost-Souls/Tannhauser-Gate/pull/125 <!--PR Number-->
 
 ## Title: <!--Title of your addition-->
 
-MODULE ID: FERMICHEM
+MODULE ID: CITOWOCHEMS
 
 ### Description:
 
 Brings Over select Fermi reactions from Citadel code base.
 -Plushmium
+-Furranium
 
 
 <!-- Here, try to describe what your PR does, what features it provides and any other directly useful information -->
