@@ -1588,6 +1588,7 @@
 /obj/machinery/turnstile{
 	dir = 1
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "ahz" = (
@@ -1598,6 +1599,7 @@
 /area/security/prison)
 "ahA" = (
 /obj/machinery/turnstile,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "ahD" = (
@@ -3647,27 +3649,6 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/hallway/secondary/command)
-"arf" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security{
-	name = "Armory";
-	req_access_txt = "3"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron/dark,
-/area/ai_monitored/security/armory)
 "arh" = (
 /obj/item/reagent_containers/glass/bottle/toxin{
 	pixel_x = 4;
@@ -5517,9 +5498,6 @@
 	req_access_txt = "3"
 	},
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -29728,6 +29706,26 @@
 /obj/item/paicard,
 /turf/open/floor/iron,
 /area/commons/locker)
+"dUa" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Armory";
+	req_access_txt = "3"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark,
+/area/ai_monitored/security/armory)
 "dUA" = (
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
@@ -32476,6 +32474,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/yellow/side{
 	dir = 9
 	},
@@ -33413,6 +33412,7 @@
 	pixel_y = 16
 	},
 /obj/machinery/dish_drive,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/yellow/side{
 	dir = 5
 	},
@@ -56468,6 +56468,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
+"oIa" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/security/prison)
 "oIk" = (
 /obj/machinery/light/small/directional/east,
 /obj/effect/turf_decal/tile/neutral{
@@ -59328,6 +59334,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/yellow/side{
 	dir = 1
 	},
@@ -62669,7 +62676,7 @@
 /area/security/prison)
 "qZz" = (
 /obj/machinery/smartfridge,
-/turf/open/space/basic,
+/turf/open/floor/iron/dark,
 /area/security/prison)
 "qZK" = (
 /obj/structure/sign/warning/securearea,
@@ -67898,6 +67905,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "sWz" = (
@@ -73322,15 +73330,6 @@
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
 /area/engineering/supermatter/room)
-"ved" = (
-/obj/structure/cable,
-/obj/machinery/button/door/directional/south{
-	id = "armory";
-	name = "Armory Shutters";
-	req_access_txt = "3"
-	},
-/turf/open/floor/iron/dark,
-/area/ai_monitored/security/armory)
 "veq" = (
 /obj/machinery/camera{
 	c_tag = "Security - Secure Gear Storage";
@@ -80240,6 +80239,12 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"xMF" = (
+/obj/structure/cable,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/security/prison)
 "xMK" = (
 /obj/structure/table/wood,
 /obj/item/hand_tele,
@@ -99164,11 +99169,11 @@ aaa
 fwb
 aaa
 aax
-abN
-abN
-abN
-aep
-aep
+xMF
+xMF
+xMF
+oIa
+oIa
 aax
 lMJ
 aaa
@@ -99420,13 +99425,13 @@ lMJ
 lMJ
 fwb
 lMJ
-abN
+xMF
 qyz
 bKX
 pxk
 nTD
 dGS
-abN
+xMF
 lMJ
 aaa
 aaa
@@ -99677,13 +99682,13 @@ aaa
 aaa
 fwb
 aaa
-abN
+xMF
 sTd
 pNg
 jTv
 bVx
 xXB
-abN
+xMF
 lMJ
 lMJ
 lMJ
@@ -99934,7 +99939,7 @@ aaa
 aaa
 fwb
 aaa
-abN
+xMF
 hJB
 pcp
 qyz
@@ -100697,9 +100702,9 @@ aaa
 lMJ
 aaa
 aax
-aep
-aep
-aep
+oIa
+oIa
+oIa
 aax
 aax
 hXC
@@ -101229,7 +101234,7 @@ oab
 iyN
 aVG
 pWH
-aep
+oIa
 aaa
 aaj
 aav
@@ -101486,7 +101491,7 @@ vvx
 xpJ
 aVG
 luF
-aep
+oIa
 aaa
 vrW
 aav
@@ -101997,7 +102002,7 @@ hNd
 xeX
 guu
 abe
-aep
+oIa
 shg
 agH
 iDL
@@ -102233,8 +102238,8 @@ fwb
 lMJ
 gJK
 lMJ
-aep
-aep
+oIa
+oIa
 mov
 clD
 etf
@@ -102244,16 +102249,16 @@ pna
 afd
 iBI
 lXo
-aep
-aep
-aep
+oIa
+oIa
+oIa
 abe
 abe
 gNS
 aPN
 wLN
 vVt
-aep
+oIa
 sOd
 uNn
 agH
@@ -102490,7 +102495,7 @@ fwb
 aaa
 gJK
 aaa
-aep
+oIa
 tzT
 ptc
 qXD
@@ -102508,7 +102513,7 @@ oUe
 abe
 abe
 sVR
-aep
+oIa
 abe
 abe
 abz
@@ -102747,7 +102752,7 @@ fwb
 aaa
 gJK
 aaa
-aep
+oIa
 aAs
 xSW
 xSW
@@ -103004,7 +103009,7 @@ lMJ
 aaa
 gJK
 aaa
-aep
+oIa
 gRw
 bxa
 nId
@@ -103261,7 +103266,7 @@ fwb
 aaa
 gJK
 aaa
-aep
+oIa
 lYp
 xSW
 iCI
@@ -103518,8 +103523,8 @@ fwb
 lMJ
 gJK
 lMJ
-aep
-aep
+oIa
+oIa
 dfb
 smj
 nta
@@ -103776,7 +103781,7 @@ aaa
 gJK
 aQj
 aaa
-aep
+oIa
 aax
 aax
 fWv
@@ -104295,9 +104300,9 @@ lMJ
 aax
 aax
 aax
-aep
-aep
-aep
+oIa
+oIa
+oIa
 aax
 aax
 aax
@@ -107670,7 +107675,7 @@ akK
 anl
 aou
 apJ
-arb
+aeq
 asq
 ava
 anB
@@ -107927,7 +107932,7 @@ aff
 aeq
 aga
 apJ
-arb
+dUa
 jFW
 ahF
 auY
@@ -108183,7 +108188,7 @@ aeq
 aeq
 aeq
 agb
-ved
+wlr
 aeq
 ass
 luX
@@ -108440,8 +108445,8 @@ akC
 alU
 ann
 agc
-wlr
-aeq
+apJ
+xtK
 ast
 avY
 awZ
@@ -108698,7 +108703,7 @@ qmq
 ano
 agK
 apN
-xtK
+arb
 mRK
 luX
 ajx
@@ -108955,7 +108960,7 @@ alW
 iUC
 vav
 xeQ
-arf
+arb
 asv
 qEQ
 azb
@@ -109711,7 +109716,7 @@ aaa
 aaa
 aaa
 aaa
-brO
+aaf
 kel
 qbS
 teZ
@@ -109968,7 +109973,7 @@ aaa
 aaa
 aaa
 aaa
-brO
+aaf
 fNA
 jNm
 nge
@@ -110225,7 +110230,7 @@ aaa
 aaa
 aaa
 aaa
-brO
+aaf
 kel
 xNR
 exP
