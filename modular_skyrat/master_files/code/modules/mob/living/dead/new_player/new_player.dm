@@ -128,6 +128,10 @@
 		return TRUE
 
 	if(href_list["lobby_ready"])
+		if(!client.prefs.check_flavor_text())
+			ready = PLAYER_NOT_READY
+			return
+
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			client << output(null, "lobbybrowser:imgsrc")
 			ready = !ready
@@ -167,6 +171,9 @@
 		return
 
 	if(href_list["lobby_join"])
+		if(!client.prefs.check_flavor_text())
+			return
+
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, "<span class='boldwarning'>The round is either not ready, or has already finished...</span>")
 			return
@@ -195,6 +202,9 @@
 
 
 	if(href_list["SelectedJob"])
+		if(!client.prefs.check_flavor_text())
+			return
+
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
 			return
@@ -476,6 +486,10 @@
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
 
 /mob/dead/new_player/proc/create_character(transfer_after)
+	if(!client.prefs.check_flavor_text())
+		GLOB.joined_player_list -= client.ckey
+		return
+
 	spawning = 1
 	close_spawn_windows()
 
@@ -570,9 +584,8 @@
 		ineligible_for_roles = TRUE
 		ready = PLAYER_NOT_READY
 		if(has_antags)
-			log_admin("[src.ckey] just got booted back to lobby with no jobs, but antags enabled.")
-			message_admins("[src.ckey] just got booted back to lobby with no jobs enabled, but antag rolling enabled. Likely antag rolling abuse.")
-
+			log_admin("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [client.prefs.be_special.len] antag preferences enabled. The player has been forcefully returned to the lobby.")
+			message_admins("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [client.prefs.be_special.len] antag preferences enabled. This is an old antag rolling technique. The player has been asked to update their job preferences and has been forcefully returned to the lobby.")
 		return FALSE //This is the only case someone should actually be completely blocked from antag rolling as well
 	return TRUE
 
