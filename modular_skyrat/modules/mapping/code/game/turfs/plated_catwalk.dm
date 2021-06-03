@@ -21,7 +21,7 @@
 /obj/structure/lattice/catwalk/plated
 	name = "plated catwalk"
 	desc = "A durable catwalk for easier maintenance of pipes and wires. Cats hate this thing."
-	icon = 'modular_skyrat/modules/mapping/icons/catwalk_plated.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/turf/open/catwalk_plated.dmi'
 	icon_state = "catwalk_plated-0"
 	base_icon_state = "catwalk_plated"
 	smoothing_flags = SMOOTH_BITMASK
@@ -30,4 +30,4 @@
 
 /obj/structure/lattice/catwalk/plated/dark
 	name = "plated catwalk"
-	icon = 'modular_skyrat/modules/mapping/icons/dark_catwalk_plated.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/turf/open/dark_catwalk_plated.dmi'

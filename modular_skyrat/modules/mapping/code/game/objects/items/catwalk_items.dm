@@ -2,7 +2,7 @@
 	name = "broken catwalk"
 	singular_name = "broken catwalk"
 	desc = "A broken catwalk. This should not exist."
-	icon = 'modular_skyrat/modules/mapping/icons/catwalk_item.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/obj/items/catwalk_item.dmi'
 	icon_state = "catwalk"
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 1
