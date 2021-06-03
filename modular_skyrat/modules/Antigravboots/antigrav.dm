@@ -1,4 +1,6 @@
 /obj/item/clothing/shoes/antigrav_boots
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	desc = "Anti-gravity boots, for those who want to live weightlessly. Comes in cargo colors!"
 	name = "anti-gravity boots"
 	icon_state = "walkboots" //Haha funny reused sprite
