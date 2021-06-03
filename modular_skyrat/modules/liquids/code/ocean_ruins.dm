@@ -1,3 +1,6 @@
+//Ocean Ruins//
+//These first set will spawn on multi-z ocean maps.//
+
 /datum/map_template/ruin/ocean
 	prefix = "_maps/RandomRuins/OceanRuins/"
 
@@ -38,7 +41,9 @@
 	suffix = "ocean_mining_below.dmm"
 	unpickable = TRUE
 
-//Some copypastas ahead, but it's how our ruins spawning system works
+//Station-Level Ocean Ruins//
+//These will spawn on the station z-level - see waterkilo for an example.//
+
 /datum/map_template/ruin/ocean_station
 	prefix = "_maps/RandomRuins/OceanRuins/"
 
@@ -55,13 +60,16 @@
 	description = "A horizontal tear in the ocean."
 	suffix = "ocean_fissure_diag.dmm"
 
+//Trench Ruins//
+//These will spawn in 'the trench'. IMPORTANT: Multi-Z ruins must use PLACE_BELOW to ensure compatibility with the trench random mining map - See mining_site for an example.
+
 /datum/map_template/ruin/trench
 	prefix = "_maps/RandomRuins/OceanRuins/"
 
 /datum/map_template/ruin/trench/biolab_research
 	name = "Ocean Biolab Research Station"
 	id = "ocean-biolab"
-	description = "Biolab in the ocean."
+	description = "Interdyne pharmaceuticals has denied any and all involvement in the recently discovered 'terrorist labrotory' in NT space."
 	suffix = "ocean_bioweapon_lab.dmm"
 	cost = 10
 	allow_duplicates = FALSE
