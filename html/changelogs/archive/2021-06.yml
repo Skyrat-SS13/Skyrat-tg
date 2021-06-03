@@ -1,0 +1,80 @@
+2021-06-01:
+  Arkatos:
+  - refactor: Notice board now uses tgui.
+  - bugfix: Notice boards will now properly drop their contents upon destruction.
+  KathrinBailey:
+  - bugfix: Wildcat magazines now show up.
+  - rscadd: Prototype version of Privateers, including a new shuttle for their exclusive
+      use!
+  SkyratBot:
+  - bugfix: Fix oversight where Dynamic can assign antag datums to the minds of players
+      who will be forcefully returned to the lobby.
+  - bugfix: Screwdrivers no longer cause an error icon while in the belt
+  - code_imp: removed the piece of code that causes carpotoxin to qdel temporal scars
+      (hopefully I identified it correctly)
+  - bugfix: Fixed dynamic latejoins.
+  ZephyrTFA:
+  - bugfix: OneClickAntag no longer dies when you remove someone's obsessed role
+2021-06-02:
+  Inept:
+  - rscadd: Some new holidays have been added.
+  Melbert:
+  - rscadd: GAGS flowers (Rainbow bunch flowers now look prettier!)
+  - refactor: Rainbow bunch flowers now use GAGS instead of their old method of greyscaling
+  - rscadd: GAGS Lizard Plushes. Now, lizard plushes get a randomly generated lizard
+      color when they're made.
+  SkyratBot:
+  - bugfix: railings drop rods on deconstruction
+  - bugfix: 'Some duplicate pipes in kilo atmospherics have been fixed. qol: Various
+      piping improvements in kilo atmospherics.'
+  - imageadd: The desk, green and banana lamps have been resprited.
+  - imageadd: Better greyscale support has been added to datum materials allowing
+      objects to have more complex compositions of sprites. The golden cleric mace
+      is extra shiny now.
+  - bugfix: Chairs no longer runtime when being deconstructed
+  - bugfix: Mime shoes no longer runtime when generating their icon. This may fix
+      some graphical oddity or do nothing at all since they get colored pure white
+      anyway.
+  - bugfix: Thermomachines across all maps have now been properly linked to waste
+      and will work properly now. Trit huffers rejoice
+  - bugfix: The SM pipe on metastation will no longer connect to waste and burn up
+      the entire mix if your newly-chosen engineer friend accidently uses a grey pipe.
+  - bugfix: Box whiteship now has a proper thermomachine setup for its cryo.
+  - bugfix: Metastations xenobiology freezer is now properly connected.
+  - bugfix: Icebox Supermatter setup's thermomachines are no longer connected to the
+      injector and should no longer empty all of waste.
+  - bugfix: Fixes up some randomly visible adaptors on metastation toxins and connects
+      its freezer to waste.
+  - bugfix: Kilostation's toxin freezers are now connected properly.
+  - bugfix: Deltastation's supply freezer is now connected properly.
+  - bugfix: Metastation's supply freezer is now connected properly.
+  - bugfix: Tramstation's toxin freezers are now linked up to waste correctly
+  - bugfix: Icebox N2 to pure pipe is now named correctly
+  - bugfix: Fixed the duplicate piping infront of the n2 pipe on icebox
+  - bugfix: Offering an item multiple times no longer causes runtimes
+  - bugfix: The Cryopod bays on Icebox, Metastation and Deltastation have been wired
+      into the station's power grid
+  - bugfix: the extra vent on deltastations incinerator has been removed
+  unit0016:
+  - bugfix: NSS Journey now has the curator's console like Icebox.
+2021-06-03:
+  KasparoVy:
+  - bugfix: Skunk Ears are now connected to the head when facing north or south.
+  - bugfix: The west-facing sprite for the Belly torso marking is lined up properly
+      to the left.
+  - tweak: Eevee Ears now let you colour a secondary theme.
+  Melbert:
+  - code_imp: removes some pointless initialize definitions
+  Mordent:
+  - refactor: Split DnaConsole interface into separate files.
+  SkyratBot:
+  - bugfix: Switchblades' blades now actually pop out like intended
+  - bugfix: RD's liver now has the TRAIT_ROYAL_METABOLISM trait.
+  - bugfix: Dynamic will no longer create malf humans.
+  - code_imp: Atmos machinery now properly returns alt click
+  - bugfix: Large energy crossbow now sounds like an energy crossbow
+  - bugfix: AIs should no longer occasionally have their lawset randomly and silently
+      returned to Asimov.
+  - bugfix: Heretic's reality phase ability is no longer affected by the bag of holding
+  tf-4:
+  - bugfix: The crusader belt is now visible once more.
