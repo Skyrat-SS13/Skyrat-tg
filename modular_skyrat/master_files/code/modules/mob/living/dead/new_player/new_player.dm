@@ -331,7 +331,7 @@
 		return JOB_UNAVAILABLE_SPECIES
 	if(!job.has_required_languages(client.prefs))
 		return JOB_UNAVAILABLE_LANGUAGE
-	if(job.trusted_only && !is_trusted_player(client))
+	if(job.veteran_only && !is_veteran_player(client))
 		return JOB_NOT_TRUSTED
 	return JOB_AVAILABLE
 
