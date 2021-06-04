@@ -281,48 +281,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pathologist_skirt"
 
-/obj/item/clothing/under/rank/medical/doctor/formal
-	desc = "A white shirt with blue pants, lined with a protection against some light biohazards."
-	name = "medical doctor's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical"
-
-/obj/item/clothing/under/rank/medical/doctor/formal/skirt
-	desc = "A white shirt with a blue skirt, lined with a protection against some light biohazards."
-	name = "medical doctor's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_medical_skirt"
-
-/obj/item/clothing/under/rank/medical/chemist/formal
-	desc = "A orange shirt with white pants, lined with protection against chemical spills."
-	name = "chemist's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist"
-
-/obj/item/clothing/under/rank/medical/chemist/formal/skirt
-	desc = "A orange shirt with a white skirt, lined with protection against chemical spills."
-	name = "chemist's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pharmacist_skirt"
-
-/obj/item/clothing/under/rank/engineering/engineer/formal
-	desc = "A white shirt with garrish mustard pants, lined with protection against light radiation and fire."
-	name = "engineer's formal wear"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer"
-
-/obj/item/clothing/under/rank/engineering/engineer/formal/skirt
-	desc = "A white shirt with a garrish mustard skirt, lined with protection against light radiation and fire."
-	name = "engineer's formal skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "senior_engineer_skirt"
-
 /obj/item/clothing/under/rank/cargo/qm/formal
 	name = "quartermaster's formal jumpsuit"
 	desc = "A white shirt with some Cargoium Brown trousers. Expect to see a shotgun wrapped around it."
