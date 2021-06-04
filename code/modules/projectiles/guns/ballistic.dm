@@ -654,6 +654,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 			. = TRUE
 
 /obj/item/gun/ballistic/proc/instant_reload()
+	SIGNAL_HANDLER
 	if(magazine)
 		magazine.top_off()
 	else

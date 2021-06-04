@@ -156,6 +156,7 @@
 */
 
 /obj/structure/extinguisher_cabinet/obj_break(damage_flag)
+	. = ..()
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))
 		broken = 1
 		opened = 1

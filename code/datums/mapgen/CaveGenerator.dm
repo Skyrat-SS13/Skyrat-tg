@@ -52,6 +52,10 @@
 
 	for(var/i in turfs) //Go through all the turfs and generate them
 		var/turf/gen_turf = i
+		//SKYRAT EDIT ADDITION
+		if(istype(gen_turf, /turf/open/space/mirage))
+			continue
+		//SKYRAT EDIT END
 
 		var/area/A = gen_turf.loc
 		if(!(A.area_flags & CAVES_ALLOWED))
@@ -114,7 +118,7 @@
 				var/atom/picked_mob = pickweight(mob_spawn_list)
 
 				if(picked_mob == SPAWN_MEGAFAUNA) //
-					if((A.area_flags & MEGAFAUNA_SPAWN_ALLOWED) && megafauna_spawn_list?.len) //this is danger. it's boss time.
+					if((A.area_flags & MEGAFAUNA_SPAWN_ALLOWED) && megafauna_spawn_list && megafauna_spawn_list.len) //this is danger. it's boss time.
 						picked_mob = pickweight(megafauna_spawn_list)
 					else //this is not danger, don't spawn a boss, spawn something else
 						picked_mob = pickweight(mob_spawn_list - SPAWN_MEGAFAUNA) //What if we used 100% of the brain...and did something (slightly) less shit than a while loop?
