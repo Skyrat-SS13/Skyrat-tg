@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(food, list(
 
 /datum/preferences/proc/check_flavor_text(inform_client = TRUE)
 	if(!features["flavor_text"])
-		if(check_rights(R_ADMIN))
+		if(check_rights(R_ADMIN, FALSE))
 			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
 			if(resp=="Yes")
 				message_admins("[usr] is bypassing the flavor text requirements.")
@@ -283,7 +283,7 @@ GLOBAL_LIST_INIT(food, list(
 			to_chat(parent, "<span class='userdanger'>You must have a flavor text!</span>")
 		return FALSE
 	if(length(replacetext(features["flavor_text"], " ", "")) < FLAVORTEXT_JOIN_MINIMUM) // No you can't use whitespace to meet the requirement
-		if(check_rights(R_ADMIN))
+		if(check_rights(R_ADMIN, FALSE))
 			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
 			if(resp=="Yes")
 				message_admins("[usr] is bypassing the flavor text requirements.")
