@@ -454,3 +454,19 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'
+
+/datum/emote/living/moo //credits to goonstation!
+	key = "moo"
+	key_third_person = "moos!"
+	message = "moos!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/moo.ogg'
+
+/datum/emote/living/honk //credits to goonstation!
+	key = "honks"
+	key_third_person = "honks loudly like a goose!"
+	message = "honks loudly like a goose!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/goose_honk.ogg'
