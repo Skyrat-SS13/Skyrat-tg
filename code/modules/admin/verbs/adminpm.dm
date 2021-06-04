@@ -250,7 +250,7 @@
 				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 				*/
 				var/datum/admin_help/ahelp = /datum/admin_help
-				SEND_SOUND(recipient, sound(admin_help.sound_bullied))
+				SEND_SOUND(recipient, sound(ahelp.sound_bullied))
 				/// SKYRAT EDIT END
 
 		else
@@ -301,7 +301,7 @@
 				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
 				*/
 				var/datum/admin_help/ahelp = /datum/admin_help
-				SEND_SOUND(recipient, sound(admin_help.sound_bullied))
+				SEND_SOUND(recipient, sound(ahelp.sound_bullied))
 				/// SKYRAT EDIT END
 
 				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
@@ -448,7 +448,7 @@
 	SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
 	*/
 	var/datum/admin_help/ahelp = /datum/admin_help
-	SEND_SOUND(C, sound(admin_help.sound_bullied))
+	SEND_SOUND(C, sound(ahelp.sound_bullied))
 	/// SKYRAT EDIT END
 
 	C.externalreplyamount = EXTERNALREPLYCOUNT
