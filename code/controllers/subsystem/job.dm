@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("FOC job not compatible with languages, Player: [player]")
 			continue
 		if(job.veteran_only && !is_veteran_player(player.client))
-			JobDebug("FOC player is not trusted, Player: [player]")
+			JobDebug("FOC player is not veteran, Player: [player]")
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			JobDebug("FOC player not enough xp, Player: [player]")
@@ -232,7 +232,7 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ player has incompatible languages, Player: [player]")
 			continue
 		if(job.veteran_only && !is_veteran_player(player.client))
-			JobDebug("GRJ player is not trusted, Player: [player]")
+			JobDebug("GRJ player is not veteran, Player: [player]")
 		//SKYRAT EDIT END
 
 		if(job.required_playtime_remaining(player.client))
@@ -424,7 +424,7 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
 					continue
 				if(job.veteran_only && !is_veteran_player(player.client))
-					JobDebug("DO player is not trusted, Player: [player], Job:[job.title]")
+					JobDebug("DO player is not veteran, Player: [player], Job:[job.title]")
 					continue
 				//SKYRAT EDIT END
 
