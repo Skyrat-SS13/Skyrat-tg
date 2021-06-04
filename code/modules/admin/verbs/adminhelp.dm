@@ -181,6 +181,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	var/static/ticket_counter = 0
 
+	/// SKYRAT EDIT ADDITION BEGIN - ADMEME
+	var/sound_bullied = 'sound/effects/adminhelp.ogg' // Why would you want to change these? >:^)
+	var/sound_bully = 'sound/effects/adminhelp.ogg' // Why would you want to change these? >:^)
+	/// SKYRAT EDIT END
+
 //call this on its own to create a ticket, don't manually assign current_ticket
 //msg is the title of the ticket: usually the ahelp text
 //is_bwoink is TRUE if this ticket was started by an admin PM
@@ -294,7 +299,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	//send this msg to all admins
 	for(var/client/X in GLOB.admins)
 		if(X.prefs.toggles & SOUND_ADMINHELP)
-			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
+			SEND_SOUND(X, sound(sound_bully)) /// SKYRAT EDIT - ADMEME - ORIGINAL : SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X, ignorepref = TRUE)
 		to_chat(X,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -416,7 +421,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(initiator)
 		initiator.giveadminhelpverb()
 
-		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
+		SEND_SOUND(initiator, sound(sound_bullied)) /// SKYRAT EDIT - ADMEME - ORIGINAL : SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>", confidential = TRUE)
 		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>", confidential = TRUE)

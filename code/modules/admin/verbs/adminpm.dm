@@ -246,7 +246,12 @@
 
 			//play the receiving admin the adminhelp sound (if they have them enabled)
 			if(recipient.prefs.toggles & SOUND_ADMINHELP)
+				/* SKYRAT EDIT BEGINS - ADMEME
 				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+				*/
+				var/datum/admin_help/ahelp = /datum/admin_help
+				SEND_SOUND(recipient, sound(admin_help.sound_bullied))
+				/// SKYRAT EDIT END
 
 		else
 			if(holder) //sender is an admin but recipient is not. Do BIG RED TEXT
@@ -292,7 +297,12 @@
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 
 				//always play non-admin recipients the adminhelp sound
+				/* SKYRAT EDIT BEGINS - ADMEME
 				SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+				*/
+				var/datum/admin_help/ahelp = /datum/admin_help
+				SEND_SOUND(recipient, sound(admin_help.sound_bullied))
+				/// SKYRAT EDIT END
 
 				//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
 				if(CONFIG_GET(flag/popup_admin_pm))
@@ -434,7 +444,12 @@
 
 	window_flash(C, ignorepref = TRUE)
 	//always play non-admin recipients the adminhelp sound
-	SEND_SOUND(C, 'sound/effects/adminhelp.ogg')
+	/* SKYRAT EDIT BEGINS - ADMEME
+	SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
+	*/
+	var/datum/admin_help/ahelp = /datum/admin_help
+	SEND_SOUND(C, sound(admin_help.sound_bullied))
+	/// SKYRAT EDIT END
 
 	C.externalreplyamount = EXTERNALREPLYCOUNT
 
