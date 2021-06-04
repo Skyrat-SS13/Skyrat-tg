@@ -464,7 +464,7 @@
 	sound = 'modular_skyrat/modules/emotes/sound/voice/moo.ogg'
 
 /datum/emote/living/honk //credits to goonstation!
-	key = "honks"
+	key = "honk1"
 	key_third_person = "honks loudly like a goose!"
 	message = "honks loudly like a goose!"
 	emote_type = EMOTE_AUDIBLE
