@@ -44,7 +44,7 @@
 	if(!human_cumvictim.client)
 		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
 		return
-	if(!(human_cumvictim.client.prefs.skyrat_toggles && CUMFACE_PREF)) //im just paranoid about runtime errors
+	if(!(human_cumvictim.client.prefs.skyrat_toggles & CUMFACE_PREF)) //im just paranoid about runtime errors
 		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
 		return
 	var/mob/living/carbon/human/H = user
