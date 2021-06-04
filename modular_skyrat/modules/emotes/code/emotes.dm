@@ -455,7 +455,7 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'
 
-/datum/emote/living/moo //credits to goonstation!
+/datum/emote/living/moo
 	key = "moo"
 	key_third_person = "moos!"
 	message = "moos!"
@@ -463,7 +463,7 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/moo.ogg'
 
-/datum/emote/living/honk //credits to goonstation!
+/datum/emote/living/honk 
 	key = "honk1"
 	key_third_person = "honks loudly like a goose!"
 	message = "honks loudly like a goose!"
