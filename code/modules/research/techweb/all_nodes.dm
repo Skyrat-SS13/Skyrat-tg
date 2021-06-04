@@ -60,7 +60,7 @@
 	design_ids = list("cybernetic_liver", "cybernetic_heart", "cybernetic_lungs","cybernetic_stomach", "cybernetic_eyes", "scalpel",
 					"blood_filter", "circular_saw", "bonesetter", "surgicaldrill", "retractor", "cautery", "hemostat",
 					"stethoscope", "surgical_drapes", "hospital_gown", "syringe", "plumbing_rcd", "beaker", "large_beaker", "xlarge_beaker",
-					"dropper", "defibmountdefault", "surgical_tape", "portable_chem_mixer")	//SKYRAT EDIT ADDITION: added "surgical_drapes"
+					"dropper", "defibmountdefault", "surgical_tape", "portable_chem_mixer", "engi_plumbing")	//SKYRAT EDIT ADDITION: added "surgical_drapes", "engi_plumbing"
 
 /datum/techweb_node/basic_circuitry
 	id = "basic_circuitry"
@@ -368,9 +368,14 @@
 	display_name = "Cyborg Upgrades: Utility"
 	description = "Utility upgrades for cyborgs."
 	prereq_ids = list("adv_robotics")
-	//design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_disablercooler", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //ORIGINAL
-	design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_shrink", "borg_upgrade_disablercooler", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //SKYRAT EDIT CHANGE - CYBORG
+	//design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //ORIGINAL
+	design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_shrink", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //SKYRAT EDIT CHANGE - CYBORG
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
+
+/datum/techweb_node/cyborg_upg_util/New()
+	. = ..()
+	if(!CONFIG_GET(flag/disable_secborg))
+		design_ids += "borg_upgrade_disablercooler"
 
 /datum/techweb_node/cyborg_upg_engiminer
 	id = "cyborg_upg_engiminer"
