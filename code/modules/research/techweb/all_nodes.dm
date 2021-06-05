@@ -67,12 +67,6 @@
 	starting_node = TRUE
 	display_name = "Basic Integrated Circuits"
 	description = "Research on how to fully exploit the power of integrated circuits"
-<<<<<<< HEAD
-	design_ids = list("integrated_circuit", "circuit_multitool", "comp_arithmetic", "comp_clock", "comp_comparison", "comp_delay", "comp_hear",
-			"comp_index", "comp_length", "comp_light", "comp_logic", "comp_not", "comp_ram", "comp_random", "comp_species", "comp_textcase",
-			"comp_speech", "comp_concat", "comp_speech", "comp_self", "comp_radio", "comp_tostring", "comp_typecheck", "compact_remote_shell", "component_printer",
-			"comp_string_contains")
-=======
 	design_ids = list(
 		"circuit_multitool",
 		"comp_arithmetic",
@@ -105,7 +99,6 @@
 		"component_printer",
 		"integrated_circuit",
 	)
->>>>>>> f2b39b6803b (More circuit components. Restructures the circuit components folder to be more organised. (#59459))
 
 /////////////////////////Biotech/////////////////////////
 
@@ -338,15 +331,11 @@
 	display_name = "Advanced Shell Research"
 	description = "Grants access to more complicated shell designs."
 	prereq_ids = list("basic_circuitry", "engineering")
-<<<<<<< HEAD
-	design_ids = list("controller_shell", "bot_shell")
-=======
 	design_ids = list(
 		"bot_shell",
 		"controller_shell",
 		"money_bot_shell",
 	)
->>>>>>> f2b39b6803b (More circuit components. Restructures the circuit components folder to be more organised. (#59459))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/movable_shells_tech
@@ -354,14 +343,10 @@
 	display_name = "Movable Shell Research"
 	description = "Grants access to movable shells."
 	prereq_ids = list("adv_shells", "robotics")
-<<<<<<< HEAD
-	design_ids = list("drone_shell")
-=======
 	design_ids = list(
 		"comp_pull",
 		"drone_shell",
 	)
->>>>>>> f2b39b6803b (More circuit components. Restructures the circuit components folder to be more organised. (#59459))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
 /datum/techweb_node/server_shell_tech
