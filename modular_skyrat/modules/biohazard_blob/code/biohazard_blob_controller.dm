@@ -72,7 +72,7 @@
 	var/struct = new spawn_type(location, blob_type)
 	other_structures[struct] = TRUE
 	our_core.max_integrity += 10
-	our_core.obj_integrity += 10
+	our_core.repair_damage(10)
 	return struct
 
 /datum/biohazard_blob_controller/Destroy()
@@ -170,7 +170,7 @@
 	active_resin[new_resin] = TRUE
 	new_resin.CalcDir()
 	our_core.max_integrity += 2
-	our_core.obj_integrity += 2
+	our_core.repair_damage(2)
 	return new_resin
 
 /datum/biohazard_blob_controller/proc/ActivateAdjacentResinRecursive(turf/centrum_turf, iterations = 1)
