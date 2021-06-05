@@ -5,7 +5,7 @@
 	var/default_name = "prisoner closet"
 	req_access = list(ACCESS_BRIG)
 	var/obj/item/card/id/advanced/prisoner/registered_id = null
-	icon = 'modular_skyrat/modules/mapping/icons/turnstile.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/unique/turnstile.dmi'
 	icon_state = "prisoner"
 	locked = FALSE
 	anchored = TRUE
