@@ -219,9 +219,13 @@
 		"circuit_multitool",
 		"comp_arithmetic",
 		"comp_clock",
+		"comp_combiner",
 		"comp_comparison",
 		"comp_concat",
 		"comp_delay",
+		"comp_direction",
+		"comp_gps",
+		"comp_health",
 		"comp_hear",
 		"comp_index",
 		"comp_length",
@@ -676,6 +680,7 @@
 	design_ids = list(
 		"bot_shell",
 		"controller_shell",
+		"money_bot_shell",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -685,6 +690,7 @@
 	description = "Grants access to movable shells."
 	prereq_ids = list("adv_shells", "robotics")
 	design_ids = list(
+		"comp_pull",
 		"drone_shell",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
