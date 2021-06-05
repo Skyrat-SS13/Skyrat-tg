@@ -8,13 +8,6 @@
 	display_name = "Basic Research Technology"
 	description = "NT default research technologies."
 	// Default research tech, prevents bricking
-<<<<<<< HEAD
-	design_ids = list("basic_matter_bin", "basic_cell", "basic_scanning", "basic_capacitor", "basic_micro_laser", "micro_mani", "c-reader", "desttagger", "salestagger", "handlabel", "packagewrap",
-					"destructive_analyzer", "circuit_imprinter", "circuit_imprinter_offstation", "experimentor", "rdconsole", "bepis", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab", "restaurant_portal",
-					"paystand", "space_heater", "bucket", "sec_rshot", "sec_beanbag_slug", "sec_Islug", "sec_dart", "sec_38", "rglass", "plasteel", "experi_scanner", "destructive_scanner", "doppler_array",
-					"plastitanium", "plasmaglass", "plasmareinforcedglass", "titaniumglass", "plastitaniumglass", "plastic_knife", "plastic_fork", "plastic_spoon", "conveyor_belt", "conveyor_switch",
-					"b6mm","b6mm_rubber","b9mm","b9mm_rubber","b10mm","b10mm_rubber","b12mm","b12mm_rubber", "pepperballs") //SKYRAT EDIT ADDITION - SEC_HAUL
-=======
 	design_ids = list(
 		"basic_capacitor",
 		"basic_cell",
@@ -62,8 +55,19 @@
 		"space_heater",
 		"tech_disk",
 		"titaniumglass",
+
+		//SKYRAT EDIT - RESEARCH DESIGNS
+		"b6mm",
+		"b6mm_rubber",
+		"b9mm",
+		"b9mm_rubber",
+		"b10mm",
+		"b10mm_rubber",
+		"b12mm",
+		"b12mm_rubber",
+		"pepperballs",
+		//SKYRAT EDIT ADDITION - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 
 /datum/techweb_node/mmi
 	id = "mmi"
@@ -133,10 +137,6 @@
 	starting_node = TRUE
 	display_name = "Basic Tools"
 	description = "Basic mechanical, electronic, surgical and botanical tools."
-<<<<<<< HEAD
-	design_ids = list("screwdriver", "wrench", "wirecutters", "crowbar", "multitool", "welding_tool", "tscanner", "analyzer", "cable_coil", "welding_helmet", "pipe_painter", "airlock_painter", "decal_painter",
-					"cultivator", "plant_analyzer", "shovel", "spade", "hatchet", "secateurs", "mop", "pushbroom", "plunger", "spraycan", "swab", "petri_dish", "normtrash", "drinking_glass", "bowl", "shot_glass") //SKYRAT EDIT: Added drinking glass, bowl, shot glass.
-=======
 	design_ids = list(
 		"airlock_painter",
 		"analyzer",
@@ -165,20 +165,19 @@
 		"welding_tool",
 		"wirecutters",
 		"wrench",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"bowl",
+		"drinking_glass",
+		"shot_glass",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 
 /datum/techweb_node/basic_medical
 	id = "basic_medical"
 	starting_node = TRUE
 	display_name = "Basic Medical Equipment"
 	description = "Basic medical tools and equipment."
-<<<<<<< HEAD
-	design_ids = list("cybernetic_liver", "cybernetic_heart", "cybernetic_lungs","cybernetic_stomach", "cybernetic_eyes", "scalpel",
-					"blood_filter", "circular_saw", "bonesetter", "surgicaldrill", "retractor", "cautery", "hemostat",
-					"stethoscope", "surgical_drapes", "hospital_gown", "syringe", "plumbing_rcd", "beaker", "large_beaker", "xlarge_beaker",
-					"dropper", "defibmountdefault", "surgical_tape", "portable_chem_mixer", "engi_plumbing")	//SKYRAT EDIT ADDITION: added "surgical_drapes", "engi_plumbing"
-=======
 	design_ids = list(
 		"beaker",
 		"blood_filter",
@@ -204,8 +203,12 @@
 		"surgicaldrill",
 		"syringe",
 		"xlarge_beaker",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"engi_plumbing",
+		"hospital_gown",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 
 /datum/techweb_node/basic_circuitry
 	id = "basic_circuitry"
@@ -280,9 +283,6 @@
 	display_name = "Advanced Biotechnology"
 	description = "Advanced Biotechnology"
 	prereq_ids = list("biotech")
-<<<<<<< HEAD
-	design_ids = list("piercesyringe", "crewpinpointer", "smoke_machine", "plasmarefiller", "limbgrower", "meta_beaker", "healthanalyzer_advanced", "harvester", "holobarrier_med", "detective_scanner", "defibrillator_compact", "ph_meter", "monkey_helmet") //SKYRAT EDIT ADDITION: ADDED MONKEY_HELMET
-=======
 	design_ids = list(
 		"crewpinpointer",
 		"defibrillator_compact",
@@ -296,13 +296,16 @@
 		"piercesyringe",
 		"plasmarefiller",
 		"smoke_machine",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"monkey_helmet",
+		//SKYRAT EDIT END  -
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	required_experiments = list(/datum/experiment/scanning/points/slime/easy)
-// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000) //Big discount to reinforce doing it.
+	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000) //Big discount to reinforce doing it.
 	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) //Big discount to reinforce doing it.
-// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
+	// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
@@ -472,12 +475,6 @@
 	display_name = "Advanced Engineering"
 	description = "Pushing the boundaries of physics, one chainsaw-fist at a time."
 	prereq_ids = list("engineering", "emp_basic")
-<<<<<<< HEAD
-	//design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "sheetifier", "HFR_core", "HFR_fuel_input",
-	//"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface") //ORIGINAL
-	design_ids = list("engine_goggles", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "sheetifier", "HFR_core", "HFR_fuel_input",
-	"HFR_waste_output", "HFR_moderator_input", "HFR_corner", "HFR_interface", "multi_cell_charger") //SKYRAT EDIT CHANGE - HUDS
-=======
 	design_ids = list(
 		"HFR_core",
 		"HFR_corner",
@@ -492,8 +489,14 @@
 		"rpd_loaded",
 		"sheetifier",
 		"weldingmask",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"engine_goggles_prescription",
+		"mesons_prescription",
+		"multi_cell_charger",
+		"tray_goggles_prescription",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/random/material/medium/one = 4000)
 
@@ -755,10 +758,6 @@
 	display_name = "Cyborg Upgrades: Utility"
 	description = "Utility upgrades for cyborgs."
 	prereq_ids = list("adv_robotics")
-<<<<<<< HEAD
-	//design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //ORIGINAL
-	design_ids = list("borg_upgrade_thrusters", "borg_upgrade_selfrepair", "borg_upgrade_expand", "borg_upgrade_shrink", "borg_upgrade_trashofholding", "borg_upgrade_advancedmop", "borg_upgrade_broomer", "borg_upgrade_prt") //SKYRAT EDIT CHANGE - CYBORG
-=======
 	design_ids = list(
 		"borg_upgrade_advancedmop",
 		"borg_upgrade_broomer",
@@ -767,8 +766,11 @@
 		"borg_upgrade_selfrepair",
 		"borg_upgrade_thrusters",
 		"borg_upgrade_trashofholding",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"borg_upgrade_shrink",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
 /datum/techweb_node/cyborg_upg_util/New()
@@ -795,10 +797,6 @@
 	display_name = "Cyborg Upgrades: Medical"
 	description = "Medical upgrades for cyborgs."
 	prereq_ids = list("adv_biotech")
-<<<<<<< HEAD
-	//design_ids = list("borg_upgrade_defibrillator", "borg_upgrade_piercinghypospray", "borg_upgrade_expandedsynthesiser", "borg_upgrade_pinpointer", "borg_upgrade_surgicalprocessor", "borg_upgrade_beakerapp") //ORIGINAL
-	design_ids = list("borg_upgrade_defibrillator", "borg_upgrade_piercinghypospray", "borg_upgrade_expandedsynthesiser", "borg_upgrade_pinpointer", "borg_upgrade_surgicalprocessor", "borg_upgrade_beakerapp", "borg_upgrade_surgicaltools") //SKYRAT EDIT CHANGE - Medical tools woo
-=======
 	design_ids = list(
 		"borg_upgrade_beakerapp",
 		"borg_upgrade_defibrillator",
@@ -806,8 +804,11 @@
 		"borg_upgrade_piercinghypospray",
 		"borg_upgrade_pinpointer",
 		"borg_upgrade_surgicalprocessor",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"borg_upgrade_surgicaltools",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
 /datum/techweb_node/ai
@@ -1023,17 +1024,18 @@
 	display_name = "Integrated HUDs"
 	description = "The usefulness of computerized records, projected straight onto your eyepiece!"
 	prereq_ids = list("comp_recordkeeping", "emp_basic")
-<<<<<<< HEAD
-	//design_ids = list("health_hud", "security_hud", "diagnostic_hud", "scigoggles") //ORIGINAL
-	design_ids = list("health_hud", "security_hud", "diagnostic_hud", "scigoggles", "health_hud_prescription", "security_hud_prescription", "diagnostic_hud_prescription") //SKYRAT EDIT CHANGE - HUDS
-=======
 	design_ids = list(
 		"diagnostic_hud",
 		"health_hud",
 		"scigoggles",
 		"security_hud",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"health_hud_prescription",
+		"security_hud_prescription",
+		"diagnostic_hud_prescription",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 
 /datum/techweb_node/nvg_tech
@@ -1189,17 +1191,16 @@
 	display_name = "Advanced Mining Technology"
 	description = "Efficiency Level 127" //dumb mc references
 	prereq_ids = list("basic_mining", "adv_engi", "adv_power", "adv_plasma")
-<<<<<<< HEAD
-	//design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv") - ORIGINAL
-	design_ids = list("drill_diamond", "jackhammer", "hypermod", "plasmacutter_adv", "ripleyupgradef") //SKYRAT EDIT CHANGE - MKF
-=======
 	design_ids = list(
 		"drill_diamond",
 		"hypermod",
 		"jackhammer",
 		"plasmacutter_adv",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"ripleyupgradef"
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)
 
@@ -1321,14 +1322,14 @@
 	display_name = "Electric Weapons"
 	description = "Weapons using electric technology"
 	prereq_ids = list("weaponry", "adv_power"  , "emp_basic")
-<<<<<<< HEAD
-	design_ids = list("stunrevolver", "ioncarbine", "nightstick_conversion") //SKYRAT EDIT CHANGE
-=======
 	design_ids = list(
 		"ioncarbine",
 		"stunrevolver",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"nightstick_conversion"
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
->>>>>>> 9af622d1497 (Splits node design IDs into multiple lines in alphabetical order with trailing commas (#59470))
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/radioactive_weapons
