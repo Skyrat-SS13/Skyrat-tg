@@ -282,8 +282,8 @@
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
-		if(JOB_NOT_TRUSTED)
-			return "You need to be trusted to join as [jobtitle]."
+		if(JOB_NOT_VETERAN)
+			return "You need to be veteran to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
@@ -331,8 +331,8 @@
 		return JOB_UNAVAILABLE_SPECIES
 	if(!job.has_required_languages(client.prefs))
 		return JOB_UNAVAILABLE_LANGUAGE
-	if(job.trusted_only && !is_trusted_player(client))
-		return JOB_NOT_TRUSTED
+	if(job.veteran_only && !is_veteran_player(client))
+		return JOB_NOT_VETERAN
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)

@@ -20,7 +20,7 @@
 
 	family_heirlooms = list(/obj/item/binoculars)
 
-	trusted_only = TRUE
+	veteran_only = TRUE
 
 /datum/job/expeditionary_trooper/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()

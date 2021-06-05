@@ -1383,8 +1383,8 @@ GLOBAL_LIST_INIT(food, list(
 			if(is_banned_from(user.ckey, rank))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
 				continue
-			if(job.trusted_only && !is_trusted_player(user.client))
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT TRUSTED\]</font></td></tr>"
+			if(job.veteran_only && !is_veteran_player(user.client))
+				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT VETERAN\]</font></td></tr>"
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)

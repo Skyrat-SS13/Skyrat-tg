@@ -56,7 +56,6 @@ SUBSYSTEM_DEF(job)
 	var/always_promote_captain_job = TRUE
 
 /datum/controller/subsystem/job/Initialize(timeofday)
-	SSmapping.HACK_LoadMapConfig()
 	setup_job_lists()
 	if(!occupations.len)
 		SetupOccupations()
@@ -134,7 +133,7 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(!job.has_required_languages(player.client.prefs))
 			return FALSE
-		if(job.trusted_only && !is_trusted_player(player.client))
+		if(job.veteran_only && !is_veteran_player(player.client))
 			return FALSE
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
@@ -179,8 +178,8 @@ SUBSYSTEM_DEF(job)
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("FOC job not compatible with languages, Player: [player]")
 			continue
-		if(job.trusted_only && !is_trusted_player(player.client))
-			JobDebug("FOC player is not trusted, Player: [player]")
+		if(job.veteran_only && !is_veteran_player(player.client))
+			JobDebug("FOC player is not veteran, Player: [player]")
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			JobDebug("FOC player not enough xp, Player: [player]")
@@ -231,8 +230,8 @@ SUBSYSTEM_DEF(job)
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("GRJ player has incompatible languages, Player: [player]")
 			continue
-		if(job.trusted_only && !is_trusted_player(player.client))
-			JobDebug("GRJ player is not trusted, Player: [player]")
+		if(job.veteran_only && !is_veteran_player(player.client))
+			JobDebug("GRJ player is not veteran, Player: [player]")
 		//SKYRAT EDIT END
 
 		if(job.required_playtime_remaining(player.client))
@@ -423,8 +422,8 @@ SUBSYSTEM_DEF(job)
 				if(!job.has_required_languages(player.client.prefs))
 					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
 					continue
-				if(job.trusted_only && !is_trusted_player(player.client))
-					JobDebug("DO player is not trusted, Player: [player], Job:[job.title]")
+				if(job.veteran_only && !is_veteran_player(player.client))
+					JobDebug("DO player is not veteran, Player: [player], Job:[job.title]")
 					continue
 				//SKYRAT EDIT END
 
