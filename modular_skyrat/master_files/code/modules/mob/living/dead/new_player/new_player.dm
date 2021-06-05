@@ -128,6 +128,10 @@
 		return TRUE
 
 	if(href_list["lobby_ready"])
+		if(!client.prefs.check_flavor_text())
+			ready = PLAYER_NOT_READY
+			return
+
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			client << output(null, "lobbybrowser:imgsrc")
 			ready = !ready
@@ -151,7 +155,7 @@
 		if(GLOB.swappable_ips.len == 1)
 			var/server_name = GLOB.swappable_ips[1]
 			var/server_ip = GLOB.swappable_ips[server_name]
-			var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+			var/confirm = tgui_alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
 			if(confirm == "Connect me!")
 				to_chat_immediate(src, "So long, spaceman.")
 				client << link(server_ip)
@@ -160,13 +164,16 @@
 		if(!server_name)
 			return
 		var/server_ip = GLOB.swappable_ips[server_name]
-		var/confirm = alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", "Connect me!", "Stay here!")
+		var/confirm = tgui_alert(usr, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Connect me!", "Stay here!"))
 		if(confirm == "Connect me!")
 			to_chat_immediate(src, "So long, spaceman.")
 			client << link(server_ip)
 		return
 
 	if(href_list["lobby_join"])
+		if(!client.prefs.check_flavor_text())
+			return
+
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, "<span class='boldwarning'>The round is either not ready, or has already finished...</span>")
 			return
@@ -195,6 +202,9 @@
 
 
 	if(href_list["SelectedJob"])
+		if(!client.prefs.check_flavor_text())
+			return
+
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
 			return
@@ -231,7 +241,7 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = alert(src,"Are you sure you wish to observe? You will not be able to play this round!","Player Setup","Yes","No")
+	var/this_is_like_playing_right = tgui_alert(src, "Are you sure you wish to observe?", "Player Setup", list("Yes", "No"))
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
@@ -272,16 +282,14 @@
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
+		if(JOB_NOT_VETERAN)
+			return "You need to be veteran to join as [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
-		if(JOB_UNAVAILABLE_QUIRK)
-			return "[jobtitle] is restricted from your quirks."
-		if(JOB_UNAVAILABLE_SPECIES)
-			return "[jobtitle] is restricted from your species."
 		if(JOB_UNAVAILABLE_QUIRK)
 			return "[jobtitle] is restricted from your quirks."
 		if(JOB_UNAVAILABLE_SPECIES)
@@ -323,6 +331,8 @@
 		return JOB_UNAVAILABLE_SPECIES
 	if(!job.has_required_languages(client.prefs))
 		return JOB_UNAVAILABLE_LANGUAGE
+	if(job.veteran_only && !is_veteran_player(client))
+		return JOB_NOT_VETERAN
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
@@ -476,6 +486,10 @@
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
 
 /mob/dead/new_player/proc/create_character(transfer_after)
+	if(!client.prefs.check_flavor_text())
+		GLOB.joined_player_list -= client.ckey
+		return
+
 	spawning = 1
 	close_spawn_windows()
 
@@ -570,9 +584,8 @@
 		ineligible_for_roles = TRUE
 		ready = PLAYER_NOT_READY
 		if(has_antags)
-			log_admin("[src.ckey] just got booted back to lobby with no jobs, but antags enabled.")
-			message_admins("[src.ckey] just got booted back to lobby with no jobs enabled, but antag rolling enabled. Likely antag rolling abuse.")
-
+			log_admin("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [client.prefs.be_special.len] antag preferences enabled. The player has been forcefully returned to the lobby.")
+			message_admins("[src.ckey] has no jobs enabled, return to lobby if job is unavailable enabled and [client.prefs.be_special.len] antag preferences enabled. This is an old antag rolling technique. The player has been asked to update their job preferences and has been forcefully returned to the lobby.")
 		return FALSE //This is the only case someone should actually be completely blocked from antag rolling as well
 	return TRUE
 

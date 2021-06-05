@@ -11,15 +11,15 @@
 
 #define HEV_ARMOR_POWERON list(60, 60, 60, 60, 90, 100, 100, 100, 100, 30)
 
-#define HEV_POWERUSE_AIRTANK 1
-#define HEV_POWERUSE_HIT 50
+#define HEV_POWERUSE_AIRTANK 2
+#define HEV_POWERUSE_HIT 100
 #define HEV_POWERUSE_HEAL 150
 
-#define HEV_COOLDOWN_HEAL 5 SECONDS
+#define HEV_COOLDOWN_HEAL 10 SECONDS
 #define HEV_COOLDOWN_RADS 20 SECONDS
 #define HEV_COOLDOWN_ACID 20 SECONDS
 
-#define HEV_HEAL_AMOUNT 20
+#define HEV_HEAL_AMOUNT 10
 #define HEV_BLOOD_REPLENISHMENT 20
 
 #define HEV_NOTIFICATION_TEXT_AND_VOICE "VOICE_AND_TEXT"
@@ -476,6 +476,8 @@
 	timer_id = addtimer(CALLBACK(src, .proc/weaponselect), 3 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/process(delta_time)
+	if(!activated)
+		return
 	if(current_user.blood_volume < BLOOD_VOLUME_OKAY)
 		if(use_hev_power(HEV_POWERUSE_HEAL))
 			current_user.blood_volume += HEV_BLOOD_REPLENISHMENT

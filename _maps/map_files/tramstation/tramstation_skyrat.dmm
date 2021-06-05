@@ -2699,6 +2699,9 @@
 	pixel_x = 32
 	},
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aju" = (
@@ -4680,7 +4683,7 @@
 	},
 /area/service/chapel)
 "apy" = (
-/obj/structure/bed,
+/obj/structure/bed/pod,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
 	},
@@ -6812,6 +6815,7 @@
 /obj/structure/table/wood,
 /obj/item/folder/red,
 /obj/item/stamp/hos,
+/obj/item/clothing/accessory/badge/holo/hos,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "avj" = (
@@ -8422,6 +8426,7 @@
 /obj/item/reagent_containers/glass/bottle/epinephrine,
 /obj/item/reagent_containers/syringe,
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "aAn" = (
@@ -12942,6 +12947,7 @@
 	pixel_x = 3
 	},
 /obj/item/lighter,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aUb" = (
@@ -18016,6 +18022,10 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+"cDM" = (
+/obj/effect/landmark/start/medical_doctor,
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "cEd" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
@@ -20416,7 +20426,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "dzX" = (
-/obj/structure/bed,
+/obj/structure/bed/pod,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
@@ -25385,6 +25395,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
+/obj/item/storage/box/holobadge/hos,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "fAU" = (
@@ -27713,12 +27724,15 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "gvN" = (
-/obj/machinery/stasis,
 /obj/machinery/defibrillator_mount{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
+	},
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
 	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
@@ -32404,6 +32418,7 @@
 /area/science/lab)
 "inb" = (
 /obj/structure/chair/comfy/black,
+/obj/effect/landmark/start/head_of_security,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "inn" = (
@@ -37116,6 +37131,7 @@
 	pixel_x = -5;
 	pixel_y = 12
 	},
+/obj/item/storage/box/holobadge,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "ker" = (
@@ -42094,7 +42110,10 @@
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "lWG" = (
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount{
 	pixel_y = 32
 	},
@@ -47935,6 +47954,7 @@
 /area/maintenance/tram/left)
 "ouE" = (
 /obj/structure/table,
+/obj/item/clothing/accessory/badge/holo/warden,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "ouP" = (
@@ -55860,6 +55880,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
+/obj/item/clothing/accessory/badge/sheriff,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "rzt" = (
@@ -61976,8 +61997,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/landmark/start/medical_doctor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/stasissleeper{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/medical/treatment_center)
 "tOs" = (
@@ -70843,8 +70866,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/medical_doctor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/medical/treatment_center)
 "xdF" = (
@@ -170841,7 +170866,7 @@ gvN
 xDu
 gKY
 gKY
-gKY
+cDM
 gKY
 gKY
 skf
@@ -172383,7 +172408,7 @@ lWG
 jtI
 sLq
 gKY
-gKY
+cDM
 gKY
 hek
 oIr

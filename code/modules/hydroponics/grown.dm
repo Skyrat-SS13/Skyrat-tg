@@ -12,6 +12,7 @@
 // Base type. Subtypes are found in /grown dir. Lavaland-based subtypes can be found in mining/ash_flora.dm
 /obj/item/food/grown
 	icon = 'icons/obj/hydroponics/harvest.dmi'
+	worn_icon = 'icons/mob/clothing/head/hydroponics.dmi'
 	name = "fresh produce" // so recipe text doesn't say 'snack'
 	max_volume = 100
 	w_class = WEIGHT_CLASS_SMALL
@@ -103,7 +104,7 @@
 /obj/item/food/grown/on_grind()
 	. = ..()
 	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(grind_results?.len)
+	if(grind_results && grind_results.len)
 		for(var/i in 1 to grind_results.len)
 			grind_results[grind_results[i]] = nutriment
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)
@@ -111,7 +112,7 @@
 
 /obj/item/food/grown/on_juice()
 	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(juice_results?.len)
+	if(juice_results && juice_results.len)
 		for(var/i in 1 to juice_results.len)
 			juice_results[juice_results[i]] = nutriment
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)

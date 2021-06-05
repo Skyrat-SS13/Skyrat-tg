@@ -7,6 +7,7 @@
 	make_culture_references()
 	//We're loading donators here because it's the least intrusive way modularly
 	load_donators()
+	load_veteran_players()
 
 /proc/make_culture_references()
 	for(var/path in subtypesof(/datum/cultural_info/culture))

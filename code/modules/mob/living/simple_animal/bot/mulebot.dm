@@ -113,7 +113,7 @@
 
 
 /mob/living/simple_animal/bot/mulebot/Destroy()
-	UnregisterSignal(src, COMSIG_MOB_BOT_PRE_STEP, COMSIG_MOB_CLIENT_PRE_MOVE, COMSIG_MOB_BOT_STEP, COMSIG_MOB_CLIENT_MOVED)
+	UnregisterSignal(src, list(COMSIG_MOB_BOT_PRE_STEP, COMSIG_MOB_CLIENT_PRE_MOVE, COMSIG_MOB_BOT_STEP, COMSIG_MOB_CLIENT_MOVED))
 	unload(0)
 	QDEL_NULL(wires)
 	QDEL_NULL(cell)
@@ -524,7 +524,7 @@
 
 /mob/living/simple_animal/bot/mulebot/call_bot()
 	..()
-	if(path?.len)
+	if(path && path.len)
 		target = ai_waypoint //Target is the end point of the path, the waypoint set by the AI.
 		destination = get_area_name(target, TRUE)
 		pathset = 1 //Indicates the AI's custom path is initialized.
@@ -914,6 +914,7 @@
 		return "Unknown"
 
 /mob/living/simple_animal/bot/mulebot/paranormal/proc/ghostmoved()
+	SIGNAL_HANDLER
 	visible_message("<span class='notice'>The ghostly figure vanishes...</span>")
 	UnregisterSignal(load, COMSIG_MOVABLE_MOVED)
 	unload(0)

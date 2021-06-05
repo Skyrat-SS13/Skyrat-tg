@@ -27,34 +27,33 @@
 	result = /obj/item/ammo_casing/caseless/arrow/wood
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 1,
 				/obj/item/stack/sheet/cloth= 1,
-				/obj/item/stack/rods = 1) //1 metal sheet = 2 rods= 2 arrows
-	time = 30
+				/obj/item/stack/rods = 1) 
+	time = 15
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bone_arrow
 	name = "Bone Arrow"
 	result = /obj/item/ammo_casing/caseless/arrow/bone
 	reqs = list(/obj/item/stack/sheet/bone = 1,
-				/obj/item/stack/sheet/sinew = 1,
 				/obj/item/ammo_casing/caseless/arrow/ash = 1)
-	time = 30
+	time = 15
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/ashen_arrow
-	name = "Fire hardened arrow"
+	name = "Ashen Arrow"
 	result = /obj/item/ammo_casing/caseless/arrow/ash
-	reqs = list(/obj/item/ammo_casing/caseless/arrow/wood = 1)
-	tool_behaviors = list(TOOL_WELDER)
-	time = 30
+	reqs = list(/obj/item/stack/rods = 2,
+				/obj/item/stack/sheet/sinew = 1,
+				/obj/item/stack/ore/glass/basalt = 10)
+	time = 15
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bronze_arrow
 	name = "Bronze arrow"
 	result = /obj/item/ammo_casing/caseless/arrow/bronze
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 1,
-				/obj/item/stack/tile/bronze = 1,
-				/obj/item/stack/sheet/cloth = 1)
-	time = 30
+	reqs = list(/obj/item/ammo_casing/caseless/arrow/ash = 1,
+				/obj/item/stack/tile/bronze = 1)
+	time = 15
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/goliathshield
@@ -68,7 +67,7 @@
 /datum/crafting_recipe/bonesword
 	name = "Bone Sword"
 	result = /obj/item/claymore/bone
-	reqs = list(/obj/item/stack/sheet/bone = 3,
+	reqs = list(/obj/item/stack/sheet/bone = 2,
 				/obj/item/stack/sheet/sinew = 2)
 	time = 40
 	category = CAT_PRIMAL
@@ -76,7 +75,7 @@
 /datum/crafting_recipe/quiver
 	name = "Quiver"
 	result = /obj/item/storage/belt/quiver
-	reqs = list(/obj/item/stack/sheet/leather = 3,
+	reqs = list(/obj/item/stack/sheet/leather = 2,
 				/obj/item/stack/sheet/sinew = 4)
 	time = 80
 	category = CAT_PRIMAL
@@ -84,7 +83,7 @@
 /datum/crafting_recipe/bone_bow
 	name = "Bone Bow"
 	result = /obj/item/gun/ballistic/tribalbow/ashen
-	reqs = list(/obj/item/stack/sheet/bone = 8,
+	reqs = list(/obj/item/stack/sheet/bone = 4,
 				/obj/item/stack/sheet/sinew = 4)
 	time = 200
 	category = CAT_PRIMAL
