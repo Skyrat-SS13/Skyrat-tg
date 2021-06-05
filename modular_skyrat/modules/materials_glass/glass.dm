@@ -1,19 +1,36 @@
-/** SKYRAT EDIT - MODULARIZATION - SEE SKYRAT_MODULAR/MODULES/MATERIALS_GLASS
-/* Glass stack types
- * Contains:
- * Glass sheets
- * Reinforced glass sheets
- * Glass shards - TODO: Move this into code/game/object/item/weapons
- */
+#define BUILD_WINDOW 4 SECONDS // This is the exact same as building a girder
+#define BUILD_WINDOW_DIRECTIONAL_MOD 0.5
 
-/*
- * Glass sheets
- */
-GLOBAL_LIST_INIT(glass_recipes, list ( \
-	new/datum/stack_recipe("directional window", /obj/structure/window/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("fulltile window", /obj/structure/window/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
+GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
+	new/datum/stack_recipe("plastitanium window", /obj/structure/window/plasma/reinforced/plastitanium/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
+	))
+GLOBAL_LIST_INIT(titaniumglass_recipes, list(
+	new/datum/stack_recipe("shuttle window", /obj/structure/window/shuttle/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
-))
+	))
+GLOBAL_LIST_INIT(prglass_recipes, list ( \
+	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/plasma/reinforced/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/plasma/reinforced/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
+	))
+GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
+	new/datum/stack_recipe("windoor frame", /obj/structure/windoor_assembly, 5, time = 0, on_floor = TRUE, window_checks = TRUE), \
+	null, \
+	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
+	))
+GLOBAL_LIST_INIT(pglass_recipes, list ( \
+	new/datum/stack_recipe("directional window", /obj/structure/window/plasma/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("fulltile window", /obj/structure/window/plasma/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
+	))
+GLOBAL_LIST_INIT(glass_recipes, list ( \
+	new/datum/stack_recipe("directional window", /obj/structure/window/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("fulltile window", /obj/structure/window/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
+	))
 
 /obj/item/stack/sheet/glass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "glass"
@@ -72,12 +89,6 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 		return
 	return ..()
 
-GLOBAL_LIST_INIT(pglass_recipes, list ( \
-	new/datum/stack_recipe("directional window", /obj/structure/window/plasma/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("fulltile window", /obj/structure/window/plasma/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
-))
-
 /obj/item/stack/sheet/plasmaglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "plasma glass"
 	desc = "A glass sheet made out of a plasma-silicate alloy. It looks extremely tough and heavily fire resistant."
@@ -117,18 +128,6 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 			return
 	else
 		return ..()
-
-/*
- * Reinforced glass sheets
- */
-GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
-	new/datum/stack_recipe("windoor frame", /obj/structure/windoor_assembly, 5, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	null, \
-	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
-))
-
 
 /obj/item/stack/sheet/rglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "reinforced glass"
@@ -175,12 +174,6 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 	. = ..()
 	. += GLOB.reinforced_glass_recipes
 
-GLOBAL_LIST_INIT(prglass_recipes, list ( \
-	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/plasma/reinforced/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/plasma/reinforced/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
-))
-
 /obj/item/stack/sheet/plasmarglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "reinforced plasma glass"
 	desc = "A glass sheet made out of a plasma-silicate alloy and a rod matrix. It looks hopelessly tough and nearly fire-proof!"
@@ -200,11 +193,6 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	. = ..()
 	. += GLOB.prglass_recipes
 
-GLOBAL_LIST_INIT(titaniumglass_recipes, list(
-	new/datum/stack_recipe("shuttle window", /obj/structure/window/shuttle/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
-	))
-
 /obj/item/stack/sheet/titaniumglass
 	name = "titanium glass"
 	desc = "A glass sheet made out of a titanium-silicate alloy."
@@ -220,11 +208,6 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 /obj/item/stack/sheet/titaniumglass/get_main_recipes()
 	. = ..()
 	. += GLOB.titaniumglass_recipes
-
-GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
-	new/datum/stack_recipe("plastitanium window", /obj/structure/window/plasma/reinforced/plastitanium/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
-	))
 
 /obj/item/stack/sheet/plastitaniumglass
 	name = "plastitanium glass"
@@ -368,4 +351,6 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	custom_materials = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT)
 	icon_prefix = "plasma"
 	weld_material = /obj/item/stack/sheet/plasmaglass
-**/
+
+#undef BUILD_WINDOW_DIRECTIONAL_MOD
+#undef BUILD_WINDOW
