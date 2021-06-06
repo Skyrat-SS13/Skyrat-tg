@@ -97,7 +97,7 @@
 	if(!(user.Adjacent(target)))
 		remove_track(user)
 		return FALSE
-	if(target.obj_integrity < 1)
+	if(target.get_integrity() < 1)
 		do_smoke(3, target.loc)
 		remove_track(user)
 		qdel(target, TRUE)
@@ -111,7 +111,7 @@
 	if(do_after(user, breaching_delay))
 		if(QDELETED(target))
 			return FALSE
-		target.obj_integrity -= force*breaching_multipler
+		target.take_damage(force*breaching_multipler)
 		playsound(target, 'sound/weapons/sonic_jackhammer.ogg', 70)
 		visible_message("[user] smashes the [target] forcefully with the [src]")
 		user.do_attack_animation(target, used_item = src)
