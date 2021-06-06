@@ -28,7 +28,7 @@
 	power_environ = FALSE
 	power_equip = FALSE
 	power_light = FALSE
-	ambience_index = AMBIENCE_CREEPY
+	ambience_index = AMBIENCE_CREEPY 
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED | NO_ALERTS
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
@@ -54,8 +54,8 @@
 ////////////////////////MAP GENERATOR////////////////////////////////
 
 /datum/map_generator/cave_generator/rockplanet
-	open_turf_types = list(/turf/open/floor/plating/asteroid = 1)
-	closed_turf_types =  list(/turf/closed/mineral/random/stationside/asteroid/rockplanet = 1)
+	open_turf_types = list(/turf/open/floor/plating/asteroid/lowpressure = 1)
+	closed_turf_types =  list(/turf/closed/mineral/random/asteroid/rockplanet = 1)
 
 	mob_spawn_chance = 3
 

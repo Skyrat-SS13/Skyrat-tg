@@ -1,7 +1,7 @@
 // Hey! Listen! Update \config\asteroidruinblacklist.txt with your new ruins!
 
 /datum/map_template/ruin/asteroid
-	prefix = "_maps/skyrat/RandomRuins/AsteroidRuins/"
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/AsteroidRuins"	//Originally _maps\skyrat\RandomRuins\AsteroidRuins, but now they're stored with all our Ruins
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/asteroid/throwback
@@ -27,3 +27,27 @@
 	id = "asteroidbiodome"
 	description = "An experimental location, meant to demonstrate terraforming LZ-2 as a possibility."
 	suffix = "biodome.dmm"
+
+/datum/map_template/ruin/asteroid/abandoned_a	//Restaraunt
+	name = "Abandoned Structure A"
+	id = "asteroidabandoned_a"
+	description = "The remains of some ancient structure."
+	suffix = "abandoned_a.dmm"
+
+/datum/map_template/ruin/asteroid/abandoned_b	//Hotel
+	name = "Abandoned Structure B"
+	id = "asteroidabandoned_b"
+	description = "The remains of some ancient structure."
+	suffix = "abandoned_b.dmm"
+
+/datum/map_template/ruin/asteroid/abandoned_c	//Gas station
+	name = "Abandoned Structure C"
+	id = "asteroidabandoned_c"
+	description = "The remains of some ancient structure."
+	suffix = "abandoned_c.dmm"
+
+/datum/map_template/ruin/asteroid/abandoned_d	//Road intersection
+	name = "Abandoned Structure D"
+	id = "asteroidabandoned_d"
+	description = "The remains of some ancient structure."
+	suffix = "abandoned_d.dmm"
