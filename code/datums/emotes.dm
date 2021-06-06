@@ -25,10 +25,14 @@
 	var/vary = FALSE //used for the honk borg emote
 	var/only_forced_audio = FALSE //can only code call this event instead of the player.
 	var/cooldown = 0.8 SECONDS
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	var/sound_volume = 25 //Emote volume
 	var/list/allowed_species
 	//SKYRAT EDIT ADDITION END
+=======
+	var/audio_cooldown = 2 SECONDS
+>>>>>>> 97a3b10d0a6 (Added audio cooldown for emotes TAKE 2 (#59479))
 
 /datum/emote/New()
 	if (ispath(mob_type_allowed_typecache))
@@ -66,11 +70,17 @@
 	var/dchatmsg = "<b>[user]</b> [msg]"
 
 	var/tmp_sound = get_sound(user)
+<<<<<<< HEAD
 	if(tmp_sound && (!only_forced_audio || !intentional))
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
 		playsound(user, tmp_sound, sound_volume, vary)
 		//SKYRAT EDIT CHANGE END
+=======
+	if(tmp_sound && (!only_forced_audio || !intentional) && !TIMER_COOLDOWN_CHECK(user, type))
+		TIMER_COOLDOWN_START(user, type, audio_cooldown)
+		playsound(user, tmp_sound, 50, vary)
+>>>>>>> 97a3b10d0a6 (Added audio cooldown for emotes TAKE 2 (#59479))
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
