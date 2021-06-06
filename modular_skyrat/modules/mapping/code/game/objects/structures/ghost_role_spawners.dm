@@ -47,6 +47,9 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
+/obj/effect/mob_spawn/human/syndicatespace
+	flavour_text = "Your ship docks after a long time somewhere in hostile space, reporting a malfunction. You are stuck here, with Nanotrasen station nearby. Fix the ship, Follow your captain's orders, and await automatic repairs."
+
 //OUTFITS//
 /datum/outfit/syndicatespace/syndicrew
 	ears = /obj/item/radio/headset/cybersun
