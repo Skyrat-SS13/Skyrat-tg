@@ -103,7 +103,7 @@
 			var/obj/item/pda/pda = object
 			id_card = pda.id
 
-		if(ACCESS_SECURITY in id_card.access || emagged)
+		if(ACCESS_BRIG in id_card.access || emagged)
 			to_chat(user, "You imprint your ID details onto the badge.")
 			set_name(user.real_name)
 		else

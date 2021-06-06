@@ -24,6 +24,7 @@
 /datum/loadout_item/neck/cbellcollar
 	name = "Cowbell collar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/cowcollar
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/neck/bellcollar
 	name = "Bell collar"
