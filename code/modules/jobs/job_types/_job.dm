@@ -84,8 +84,8 @@
 	var/list/family_heirlooms
 
 	//SKYRAT EDIT ADDITION
-	///Is this job trusted only? If so, then this job requires the player to be in the trusted_players.txt
-	var/trusted_only = FALSE
+	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
+	var/veteran_only = FALSE
 	//SKYRAT EDIT END
 
 /datum/job/New()
@@ -103,8 +103,6 @@
 	var/string_type = "[type]"
 	var/list/splits = splittext(string_type, "/")
 	var/endpart = splits[splits.len]
-
-	SSmapping.HACK_LoadMapConfig()
 
 	var/list/job_changes = SSmapping.config.job_changes
 	if(!(endpart in job_changes))

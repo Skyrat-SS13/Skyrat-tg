@@ -58,12 +58,12 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
-    icon: "tg-air-tank",
+    icon: "lungs", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
     text: "Enable internals",
   },
 
   disable_internals: {
-    icon: "tg-air-tank-slash",
+    icon: "lungs-virus", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
     text: "Disable internals",
   },
 
