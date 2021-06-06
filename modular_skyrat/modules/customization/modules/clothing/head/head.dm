@@ -150,7 +150,7 @@
 	inhand_icon_state = "ushankadown"
 	mutant_variants = NONE
 	flags_inv = HIDEEARS|HIDEHAIR
-	var/earflaps = TRUE
+	earflaps = TRUE
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 
