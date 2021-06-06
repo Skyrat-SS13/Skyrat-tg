@@ -22,6 +22,13 @@
 	name = "Derelict Ferry"
 	description = "Clearly once a ferry fielded by Central Command to send their staff to nearby stations, this ship's seen better days."
 
+/datum/map_template/ruin/space/skyrat/listeningstation
+	id = "listeningstation"
+	suffix = "listeningstation_skyrat.dmm"
+	name = "Syndicate Listening Station"
+	description = "Listening stations form the backbone of the syndicate's information-gathering operations. \
+	Assignment to these stations is dreaded by most agents, as it entails long and lonely shifts listening to nearby stations chatter incessantly about the most meaningless things."
+
 /datum/map_template/ruin/space/skyrat/posterpandamonium
 	id = "posterpandamonium"
 	suffix = "posterpandamonium.dmm"

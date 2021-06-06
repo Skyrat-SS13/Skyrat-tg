@@ -201,14 +201,14 @@
 	name = "Crashed Ship"
 	description = "Among civilian vessels the most common cause of tragedy is lack of food. \
 	This ship was outfitted with a multitude of food-generating features, then summarily ran into an asteroid shortly after takeoff."
-
+/* //SKYRAT EDIT REMOVAL//
 /datum/map_template/ruin/space/listeningstation
 	id = "listeningstation"
 	suffix = "listeningstation.dmm"
 	name = "Syndicate Listening Station"
 	description = "Listening stations form the backbone of the syndicate's information-gathering operations. \
 	Assignment to these stations is dreaded by most agents, as it entails long and lonely shifts listening to nearby stations chatter incessantly about the most meaningless things."
-
+*/ //SKYRAT EDIT REMOVAL END
 /datum/map_template/ruin/space/old_ai_sat
 	id = "oldAIsat"
 	suffix = "oldAIsat.dmm"
