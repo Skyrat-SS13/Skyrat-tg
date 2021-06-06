@@ -679,7 +679,6 @@
 	restricted_roles = list("Detective")
 	restricted_desc = "Superstar Detectives"
 
-
 /datum/loadout_item/uniform/job/seckilt
 	name = "Security Kilt"
 	path = /obj/item/clothing/under/rank/security/blackwatch

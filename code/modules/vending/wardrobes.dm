@@ -224,6 +224,7 @@
 					/obj/item/clothing/under/utility/sci = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/jacket/sci = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/science = 3,
+					/obj/item/clothing/under/misc/hlscience = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/shoes/sneakers/white = 3,
 					/obj/item/radio/headset/headset_sci = 3,
 					/obj/item/clothing/mask/gas = 3)
