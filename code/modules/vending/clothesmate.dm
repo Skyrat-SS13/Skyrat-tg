@@ -80,7 +80,7 @@
 					/obj/item/clothing/suit/toggle/jacket/flannel/red = 2,
 					/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 2,
 					/obj/item/clothing/suit/toggle/jacket/flannel/brown = 2,	//SKYRAT EDIT ADDITION END
-					/obj/item/clothing/suit/hooded/wintercoat = 2,
+					/obj/item/clothing/suit/hooded/wintercoat/custom = 2,
 		            /obj/item/clothing/suit/jacket/puffer/vest = 2,
 		            /obj/item/clothing/suit/jacket/puffer = 2,
 		            /obj/item/clothing/suit/jacket/letterman = 2,

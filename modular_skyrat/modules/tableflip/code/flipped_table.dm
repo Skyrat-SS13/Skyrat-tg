@@ -55,7 +55,7 @@
 	user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
 	if(do_after(user, max_integrity/4))
 		var/obj/structure/table/T = new table_type(src.loc)
-		T.obj_integrity = src.obj_integrity
+		T.update_integrity(src.get_integrity())
 		user.visible_message("<span class='danger'>[user] flips over the [src]!</span>", "<span class='notice'>You flip over the [src]!</span>")
 		playsound(src, 'sound/items/trayhit2.ogg', 100)
 		qdel(src)
@@ -78,7 +78,7 @@
 			if(new_dir == NORTH)
 				T.layer = BELOW_MOB_LAYER
 			T.max_integrity = src.max_integrity
-			T.obj_integrity = src.obj_integrity
+			T.update_integrity(src.get_integrity())
 			T.table_type = src.type
 			user.visible_message("<span class='danger'>[user] flips over the [src]!</span>", "<span class='notice'>You flip over the [src]!</span>")
 			playsound(src, 'sound/items/trayhit2.ogg', 100)
