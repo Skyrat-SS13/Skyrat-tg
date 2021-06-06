@@ -178,6 +178,7 @@
 	pixel_y = 4
 	},
 /obj/effect/turf_decal/box,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/medical/medbay/lobby)
 "aaF" = (
@@ -3022,7 +3023,10 @@
 	dir = 8
 	},
 /obj/machinery/iv_drip,
-/obj/structure/bed,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/structure/curtain,
 /turf/open/floor/iron/dark,
 /area/medical/exam_room)
@@ -4036,6 +4040,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/syndicatebomb/training,
 /obj/item/wirecutters,
+/obj/item/storage/box/holobadge,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "aiJ" = (
@@ -8401,7 +8406,10 @@
 	},
 /area/maintenance/fore)
 "aqW" = (
-/obj/structure/bed,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/bot_white/right,
 /obj/effect/turf_decal/stripes/corner,
@@ -10561,7 +10569,10 @@
 	dir = 4
 	},
 /obj/machinery/iv_drip,
-/obj/structure/bed,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/structure/curtain,
 /turf/open/floor/iron/dark,
 /area/medical/exam_room)
@@ -15685,14 +15696,14 @@
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "aDA" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "aDC" = (
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "aDD" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "aDE" = (
@@ -16406,15 +16417,15 @@
 /turf/closed/wall,
 /area/medical/exam_room)
 "aFm" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "aFn" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "aFo" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "aFp" = (
@@ -22000,6 +22011,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/paramedic)
 "aPo" = (
@@ -22206,7 +22218,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/stasis{
+/obj/machinery/stasissleeper{
 	dir = 4
 	},
 /obj/effect/turf_decal/box,
@@ -22364,6 +22376,7 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/landmark/start/paramedic,
 /obj/structure/chair/office/light,
+/obj/structure/cable,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/paramedic)
 "aPP" = (
@@ -22525,6 +22538,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/medical/paramedic)
 "aPY" = (
@@ -23420,7 +23434,10 @@
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
 "aRs" = (
-/obj/structure/bed,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/bot_white/right,
 /obj/effect/turf_decal/stripes/corner{
@@ -24109,6 +24126,7 @@
 /obj/item/clipboard,
 /obj/item/storage/firstaid/regular,
 /obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/medical/medbay/lobby)
 "aSy" = (
@@ -48570,11 +48588,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/spawner/randomcolavend,
 /obj/effect/turf_decal/delivery,
 /obj/structure/sign/poster/official/no_erp{
 	pixel_y = -32
 	},
+/obj/machinery/vending/dorms,
 /turf/open/floor/iron/dark,
 /area/commons/locker)
 "bJM" = (
@@ -75772,8 +75790,10 @@
 /turf/open/floor/plating,
 /area/security/prison/safe)
 "dSr" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/engine/air,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "dTm" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -78374,6 +78394,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/maintenance/port/aft)
+"hYq" = (
+/obj/effect/turf_decal/vg_decals/atmos/oxygen{
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
+/area/engineering/atmos)
 "hYG" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -79753,6 +79779,12 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/security/warden)
+"kaQ" = (
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide{
+	dir = 1
+	},
+/turf/open/floor/engine/co2,
+/area/engineering/atmos)
 "kbB" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -82511,6 +82543,12 @@
 /obj/item/clothing/under/rank/prisoner/skirt,
 /turf/open/floor/iron/cafeteria,
 /area/security/prison)
+"oov" = (
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide{
+	dir = 1
+	},
+/turf/open/floor/engine/n2o,
+/area/engineering/atmos)
 "ooY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall,
@@ -83243,6 +83281,12 @@
 /obj/item/bedsheet/brown,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
+"puD" = (
+/obj/effect/turf_decal/vg_decals/atmos/plasma{
+	dir = 1
+	},
+/turf/open/floor/engine/plasma,
+/area/engineering/atmos)
 "puO" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -83971,6 +84015,21 @@
 	icon_state = "platingdmg1"
 	},
 /area/maintenance/disposal/incinerator)
+"qrU" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/cable,
+/turf/open/floor/iron/showroomfloor,
+/area/medical/medbay/lobby)
 "qss" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
@@ -84120,6 +84179,12 @@
 /obj/structure/cable,
 /turf/open/floor/grass,
 /area/security/prison)
+"qAu" = (
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 4
+	},
+/turf/open/floor/engine/air,
+/area/engineering/atmos)
 "qAA" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/lattice/catwalk,
@@ -84810,6 +84875,12 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"rug" = (
+/obj/effect/turf_decal/vg_decals/atmos/mix{
+	dir = 1
+	},
+/turf/open/floor/engine/vacuum,
+/area/engineering/atmos)
 "ruq" = (
 /obj/item/target,
 /obj/item/target/syndicate,
@@ -86939,6 +87010,7 @@
 	},
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/red,
+/obj/item/bodybag/stasis,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "usI" = (
@@ -112048,7 +112120,7 @@ aAK
 aPn
 aPO
 aPX
-aQw
+qrU
 aQr
 aQD
 cgN
@@ -115701,15 +115773,15 @@ bRT
 bET
 aFM
 aGk
-aDz
+dSr
 aDz
 aFM
 bIU
-aDC
+hYq
 aDC
 aFM
 aDE
-aMY
+qAu
 aMY
 aFM
 bUW
@@ -115966,7 +116038,7 @@ aDD
 aMO
 aFM
 aMY
-dSr
+aMY
 bUQ
 bFP
 cCX
@@ -118802,7 +118874,7 @@ acm
 cBA
 aHe
 aFm
-aFc
+kaQ
 aFM
 acK
 acm
@@ -119830,7 +119902,7 @@ acm
 cBA
 aHh
 aFn
-aFd
+puD
 aFM
 acK
 aaa
@@ -120858,7 +120930,7 @@ acm
 cBA
 aHk
 aFo
-aFe
+oov
 aFM
 acK
 acm
@@ -121886,7 +121958,7 @@ acm
 cBA
 aHn
 bIw
-aFf
+rug
 aIG
 aeu
 aeu
