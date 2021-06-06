@@ -1,8 +1,8 @@
-// Hey! Listen! Update \config\asteroidruinblacklist.txt with your new ruins!
-
+/*----- Template for ruins, prevents needing to re-type the filepath prefix -----*/
 /datum/map_template/ruin/asteroid
-	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/AsteroidRuins"	//Originally _maps\skyrat\RandomRuins\AsteroidRuins, but now they're stored with all our Ruins
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/AsteroidRuins/"	//Originally _maps\skyrat\RandomRuins\AsteroidRuins, but now they're stored with all our servers Ruins
 	allow_duplicates = FALSE
+/*------*/
 
 /datum/map_template/ruin/asteroid/throwback
 	name = "Throwback"
@@ -51,3 +51,4 @@
 	id = "asteroidabandoned_d"
 	description = "The remains of some ancient structure."
 	suffix = "abandoned_d.dmm"
+

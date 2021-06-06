@@ -136,9 +136,11 @@
 /turf/open/floor/iron/cafeteria,
 /area/mine/laborcamp)
 "bI" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/plating,
-/area/rockplanet/surface/outdoors/explored)
+/area/mine/maintenance)
 "bN" = (
 /obj/structure/table,
 /obj/structure/bedsheetbin,
@@ -152,19 +154,23 @@
 /area/mine/laborcamp)
 "bT" = (
 /turf/open/floor/plating,
-/area/rockplanet/surface/outdoors/explored)
+/area/mine/laborcamp/security)
 "cf" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/mine/living_quarters)
 "cj" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 3;
+	height = 10;
+	id = "mining_common_away";
+	name = "public dock";
+	width = 7
 	},
-/turf/open/floor/plating,
-/area/rockplanet/surface/outdoors/explored)
+/turf/open/floor/plating/lowpressure,
+/area/rockplanet/surface/outdoors)
 "cl" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Communications";
@@ -905,6 +911,12 @@
 "jM" = (
 /obj/machinery/light/small/directional/west,
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/closet/crate,
+/obj/item/wrench,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 30
+	},
+/obj/effect/turf_decal/box,
 /turf/open/floor/plating,
 /area/mine/maintenance)
 "jN" = (
@@ -2054,17 +2066,6 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
-"uY" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 3;
-	height = 10;
-	id = "mining_common_away";
-	name = "public dock";
-	width = 7
-	},
-/turf/open/floor/plating/lowpressure,
-/area/rockplanet/surface/outdoors)
 "ve" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -4132,7 +4133,7 @@
 /area/mine/living_quarters)
 "Nr" = (
 /obj/machinery/camera{
-	c_tag = "Labor Camp External South";
+	c_tag = "Labor Camp External SouthEast";
 	dir = 4;
 	network = list("labor")
 	},
@@ -8812,7 +8813,7 @@ oN
 II
 II
 II
-uY
+cj
 II
 II
 II
@@ -11572,8 +11573,8 @@ ZC
 QS
 RJ
 TP
-bI
-bI
+RE
+RE
 ZU
 ZU
 Bf
@@ -11830,7 +11831,7 @@ Uf
 RJ
 ap
 bT
-cj
+ap
 ZU
 ZU
 ZU
@@ -12086,8 +12087,8 @@ OM
 To
 RM
 TP
-bI
-bI
+RE
+RE
 ZU
 ZU
 ZU
@@ -12138,7 +12139,7 @@ Mn
 Ao
 cR
 jM
-nO
+bI
 nO
 DI
 wV
