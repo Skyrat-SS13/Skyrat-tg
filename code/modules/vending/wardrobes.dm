@@ -101,9 +101,9 @@
 					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/jacket/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT ADDITION
-					/obj/item/clothing/under/rank/engineering/engineer/formal = 3,
-					/obj/item/clothing/under/rank/engineering/engineer/formal/skirt = 3,
-					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
+					/obj/item/clothing/under/rank/engineering/engineer/formal = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/rank/engineering/engineer/formal/skirt = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/utility/haz_green = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/shoes/workboots = 3,
