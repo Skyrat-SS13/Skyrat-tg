@@ -245,8 +245,8 @@
 	ckeywhitelist = list("grandvegeta")
 
 /datum/loadout_item/shoes/donator/mikulegging
-	name = "starlight singer bikini"
-	path = /obj/item/clothing/shoes/sneakers/mikuleggings
+	name = "starlight singer leggings"
+	path = /obj/item/clothing/shoes/mikuleggings
 	ckeywhitelist = list("grandvegeta")
 
 //FOR DEV INTERNS!

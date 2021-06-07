@@ -735,6 +735,7 @@
 	worn_icon_state = "mikubikini"
 	body_parts_covered = CHEST|GROIN
 	fitted = FEMALE_UNIFORM_TOP
+	mutant_variants = NONE
 
 //Donation Reward for Grand Vegeta
 /obj/item/clothing/suit/mikujacket
@@ -744,6 +745,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	worn_icon_state = "mikujacket"
+	mutant_variants = NONE
 
 //Donation Reward for Grand Vegeta
 /obj/item/clothing/head/mikuhair
@@ -765,13 +767,14 @@
 	worn_icon_state = "mikugloves"
 
 //Donation Reward for Grand Vegeta
-/obj/item/clothing/shoes/sneakers/mikuleggings
+/obj/item/clothing/shoes/mikuleggings
 	name = "starlight singer leggings"
 	desc = " "
 	icon_state = "mikuleggings"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	worn_icon_state = "mikuleggings"
+	mutant_variants = NONE
 
 
 // Donation reward for CandleJax
@@ -877,3 +880,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "blueshield"
+
+// Donation reward for Snakebittenn
+/obj/item/clothing/neck/snakebittenn_poncho //a version wearable on neck slot
+	name = "cowboy ponch"
+	desc = "Aim for the Heart, Ramon."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "ranger_cloak"
+	mutant_variants = NONE
