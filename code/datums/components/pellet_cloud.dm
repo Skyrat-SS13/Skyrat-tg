@@ -88,7 +88,7 @@
 	else if(issupplypod(parent))
 		RegisterSignal(parent, COMSIG_SUPPLYPOD_LANDED, .proc/create_blast_pellets)
 	//SKYRAT EDIT ADDITION BEGIN
-	else if(istype(parent, /mob/living/simple_animal/hostile/true_changeling))
+	else if(ishorrorling(parent))
 		RegisterSignal(parent, COMSIG_HORRORFORM_EXPLODE, .proc/create_blast_pellets)
 	//SKYRAT EDIT END
 
