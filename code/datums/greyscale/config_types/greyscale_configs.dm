@@ -73,6 +73,7 @@
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
 /datum/greyscale_config/jumpsuit_worn_digi
+	name = "Worn Jumpsuit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
@@ -97,6 +98,7 @@
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
 
 /datum/greyscale_config/jumpsuit_prison_worn_digi
+	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
 
@@ -154,6 +156,7 @@
 	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
 /datum/greyscale_config/sneakers_worn_digi
+	name = "Worn Sneakers - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
@@ -168,6 +171,7 @@
 	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
 
 /datum/greyscale_config/sneakers_orange_worn_digi
+	name = "Worn Orange Sneakers - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
 
