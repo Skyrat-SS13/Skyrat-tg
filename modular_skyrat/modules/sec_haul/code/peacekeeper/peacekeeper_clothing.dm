@@ -312,7 +312,7 @@
 /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
 	name = "Armadyne SS-01 Voidsuit Helmet"
 	desc = "An Armadyne brand voidsuit helmet, with a decent layer of armor, this one comes in the peacekeeper colors."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-peacekeeper"
 	inhand_icon_state = "sec_helm"
