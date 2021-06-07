@@ -293,6 +293,8 @@
 
 /obj/structure/table/rolling/Moved(atom/OldLoc, Dir)
 	. = ..()
+	if(!loc)
+		return
 	for(var/mob/living/living_mob in OldLoc.contents)//Kidnap everyone on top
 		living_mob.forceMove(loc)
 	for(var/x in attached_items)
@@ -506,6 +508,12 @@
 	max_integrity = 200
 	integrity_failure = 0.25
 	armor = list(MELEE = 10, BULLET = 30, LASER = 30, ENERGY = 100, BOMB = 20, BIO = 0, RAD = 0, FIRE = 80, ACID = 70)
+
+//SKYRAT EDIT ADDITION
+/obj/structure/table/reinforced/Initialize()
+	. = ..()
+	AddElement(/datum/element/liquids_height, 20)
+//SKYRAT EDIT END
 
 /obj/structure/table/reinforced/deconstruction_hints(mob/user)
 	if(deconstruction_ready)

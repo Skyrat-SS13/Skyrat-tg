@@ -455,22 +455,35 @@
 	mutant_variants = NONE
 	fitted = FEMALE_UNIFORM_TOP
 
+/obj/item/clothing/gloves/ring/hypno
+	var/list/spans = list()
+	actions_types = list(/datum/action/item_action/hypno_whisper)
+
 //Donation reward for CoffeePot
-/obj/item/clothing/gloves/ring/coffeepot
+/obj/item/clothing/gloves/ring/hypno/coffeepot
 	name = "hypnodemon's ring"
 	desc = "A pallid, softly desaturated-looking gold ring that doesn't look like it belongs. It's hard to put one's finger on why it feels at odds with the world around it - the shine coming off it looks like it could be a mismatch with the lighting in the room, or it could be that it seems to glint and twinkle occasionally when there's no obvious reason for it to - though only when you're not really looking."
-	actions_types = list(/datum/action/item_action/hypno_whisper)
+	spans = list("velvet")
+
+//Donation reward for Bippys
+/obj/item/clothing/gloves/ring/hypno/bippys
+	name = "hypnobot hexnut"
+	desc = "A silver bolt component that once belonged to a very peculiar IPC. It's large enough to be worn as a ring on nearly any finger, and is said to amplify the voice of one's mind to another's in the softness of a Whisper..."
+	icon_state = "ringsilver"
+	inhand_icon_state = "sring"
+	worn_icon_state = "sring"
+	spans = list("hexnut")
 
 /datum/action/item_action/hypno_whisper
 	name = "Hypnotic Whisper"
 
-/obj/item/clothing/gloves/ring/coffeepot/ui_action_click(mob/living/user, action)
+/obj/item/clothing/gloves/ring/hypno/ui_action_click(mob/living/user, action)
 	if(!isliving(user) || !can_use(user))
 		return
 	var/message = input(user, "Speak with a hypnotic whisper", "Whisper")
 	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
 		return
-	user.whisper(message, spans = list("hypnophrase"))
+	user.whisper(message, spans = spans)
 
 //Donation reward for SlippyJoe
 /obj/item/clothing/head/avipilot
@@ -754,6 +767,9 @@
 //Donation Reward for Grand Vegeta
 /obj/item/clothing/shoes/sneakers/mikuleggings
 	name = "starlight singer leggings"
+	greyscale_config = null
+	greyscale_config_worn = null
+	greyscale_colors = null
 	desc = " "
 	icon_state = "mikuleggings"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'

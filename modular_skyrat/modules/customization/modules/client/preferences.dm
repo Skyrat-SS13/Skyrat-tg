@@ -270,6 +270,28 @@ GLOBAL_LIST_INIT(food, list(
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
+#define FLAVORTEXT_JOIN_MINIMUM 150
+
+/datum/preferences/proc/check_flavor_text(inform_client = TRUE)
+	if(!features["flavor_text"])
+		if(check_rights(R_ADMIN))
+			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
+			if(resp=="Yes")
+				message_admins("[usr] is bypassing the flavor text requirements.")
+				return TRUE
+		if(inform_client)
+			to_chat(parent, "<span class='userdanger'>You must have a flavor text!</span>")
+		return FALSE
+	if(length(replacetext(features["flavor_text"], " ", "")) < FLAVORTEXT_JOIN_MINIMUM) // No you can't use whitespace to meet the requirement
+		if(check_rights(R_ADMIN))
+			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
+			if(resp=="Yes")
+				message_admins("[usr] is bypassing the flavor text requirements.")
+				return TRUE
+		if(inform_client)
+			to_chat(parent, "<span class='userdanger'>Your flavor text must be longer than [FLAVORTEXT_JOIN_MINIMUM] characters!</span>")
+		return FALSE
+	return TRUE
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
@@ -1601,7 +1623,7 @@ GLOBAL_LIST_INIT(food, list(
 				continue
 			ban_details = i
 			break //we only want to get the most recent ban's details
-		if(ban_details?.len)
+		if(ban_details && ban_details.len)
 			var/expires = "This is a permanent ban."
 			if(ban_details["expiration_time"])
 				expires = " The ban is for [DisplayTimeText(text2num(ban_details["duration"]) MINUTES)] and expires on [ban_details["expiration_time"]] (server time)."

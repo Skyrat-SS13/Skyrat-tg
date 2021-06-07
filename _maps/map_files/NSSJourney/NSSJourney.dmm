@@ -424,6 +424,7 @@
 	pixel_y = 34
 	},
 /obj/item/radio/intercom/directional/west,
+/obj/item/storage/box/holobadge/hos,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "abU" = (
@@ -498,10 +499,12 @@
 	pixel_x = 35
 	},
 /obj/structure/closet/secure_closet/hos,
+/obj/item/clothing/accessory/badge/sheriff,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "acr" = (
 /obj/structure/chair/comfy/black,
+/obj/effect/landmark/start/head_of_security,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "acs" = (
@@ -570,6 +573,7 @@
 /obj/structure/table/wood,
 /obj/item/folder/red,
 /obj/item/stamp/hos,
+/obj/item/clothing/accessory/badge/holo/hos,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "acR" = (
@@ -3337,6 +3341,7 @@
 	pixel_y = 13
 	},
 /obj/item/camera/detective,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aso" = (
@@ -10483,8 +10488,8 @@
 /turf/open/floor/wood,
 /area/service/library)
 "aQr" = (
-/obj/machinery/vending/wardrobe/curator_wardrobe,
 /obj/machinery/light/small/directional/south,
+/obj/machinery/vending/wardrobe/curator_wardrobe,
 /turf/open/floor/engine/cult,
 /area/service/library)
 "aQs" = (
@@ -11343,9 +11348,7 @@
 "aTd" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/bookmanagement,
-/obj/machinery/light_switch{
-	pixel_y = 28
-	},
+/obj/machinery/light_switch/directional/north,
 /turf/open/floor/wood,
 /area/service/library)
 "aTe" = (
@@ -11751,7 +11754,9 @@
 /turf/open/floor/wood,
 /area/service/library)
 "aUE" = (
-/obj/machinery/libraryscanner,
+/obj/machinery/modular_computer/console/preset/curator{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/service/library)
 "aUF" = (
@@ -12133,9 +12138,15 @@
 /area/service/library)
 "aVR" = (
 /obj/structure/table/wood,
-/obj/item/pen/red,
+/obj/item/paper_bin{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/pen/red{
+	pixel_x = -6
+	},
 /obj/item/pen/blue{
-	pixel_x = 5;
+	pixel_x = -1;
 	pixel_y = 5
 	},
 /turf/open/floor/wood,
@@ -12148,10 +12159,7 @@
 /area/service/library)
 "aVT" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
+/obj/machinery/libraryscanner,
 /turf/open/floor/wood,
 /area/service/library)
 "aVU" = (
@@ -19824,6 +19832,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 5
 	},
+/obj/machinery/component_printer,
 /turf/open/floor/iron/white,
 /area/science/explab)
 "brA" = (
@@ -20993,9 +21002,7 @@
 /area/maintenance/aft)
 "buu" = (
 /obj/structure/table/glass,
-/obj/item/integrated_circuit_printer{
-	pixel_y = 9
-	},
+/obj/item/multitool/circuit,
 /turf/open/floor/iron/dark,
 /area/science/explab)
 "buv" = (
@@ -23040,6 +23047,8 @@
 	name = "prison intercom";
 	prison_radio = 1
 	},
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/glass/beaker/large,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "bCd" = (
@@ -29281,11 +29290,10 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "bYt" = (
+/obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/door/airlock/maintenance{
-	name = "Incinerator Access";
 	req_access_txt = "12"
 	},
-/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "bYu" = (
@@ -30471,12 +30479,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "ccZ" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Incinerator Access";
-	req_access_txt = "12"
-	},
 /obj/effect/mapping_helpers/airlock/abandoned,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/airlock/maintenance{
+	req_access_txt = "12"
+	},
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "cda" = (
@@ -37214,12 +37221,12 @@
 /area/security/office)
 "ddf" = (
 /obj/structure/table,
-/obj/machinery/computer/libraryconsole{
-	pixel_y = 8
-	},
 /obj/machinery/button/curtain{
 	id = "prisonlibrarycurtain";
 	pixel_x = -24
+	},
+/obj/machinery/computer/bookmanagement{
+	pixel_y = 8
 	},
 /turf/open/floor/wood,
 /area/security/prison)
@@ -38027,6 +38034,7 @@
 /obj/structure/cable,
 /obj/structure/table,
 /obj/item/pen/blue,
+/obj/item/storage/box/holobadge,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "dZa" = (
@@ -38575,6 +38583,7 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/dish_drive,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "eIS" = (
@@ -41320,16 +41329,30 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "hEL" = (
-/obj/item/grown/log,
-/obj/structure/closet/crate/hydroponics,
-/obj/item/food/grown/peas,
-/obj/item/food/grown/onion,
-/obj/item/food/grown/garlic,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/poppy/lily,
-/obj/item/food/grown/poppy/geranium,
-/obj/item/food/grown/poppy,
-/obj/item/grown/cotton,
+/obj/structure/closet/secure_closet/freezer/fridge{
+	req_access = null
+	},
+/obj/item/storage/box/ingredients/vegetarian,
+/obj/item/storage/box/ingredients/italian,
+/obj/item/storage/box/ingredients/fruity,
+/obj/item/storage/box/ingredients/fiesta,
+/obj/item/storage/box/ingredients/american,
+/obj/item/reagent_containers/food/condiment/flour{
+	list_reagents = list(/datum/reagent/consumable/flour = 600);
+	name = "Premium All-Purpose Flour (16KG)";
+	volume = 600
+	},
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
+	name = "universe-sized universal enyzyme";
+	volume = 500
+	},
+/obj/item/reagent_containers/food/condiment/rice{
+	list_reagents = list(/datum/reagent/consumable/rice = 150);
+	name = "Basmati Rice Sack (4KG)";
+	volume = 150
+	},
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/security/prison)
@@ -43571,7 +43594,36 @@
 /area/security/brig)
 "jUT" = (
 /obj/structure/closet/crate/hydroponics,
-/obj/item/stack/sheet/mineral/sandstone/thirty,
+/obj/item/seeds/aloe,
+/obj/item/seeds/apple,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/whitebeet,
+/obj/item/seeds/redbeet,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sunflower,
+/obj/item/seeds/tea,
+/obj/item/seeds/tea/astra,
+/obj/item/seeds/tobacco,
+/obj/item/seeds/tomato/blood,
+/obj/item/seeds/cocoapod/vanillapod,
+/obj/item/seeds/cocoapod,
+/obj/item/seeds/coffee/robusta,
+/obj/item/seeds/coffee,
+/obj/item/seeds/corn,
+/obj/item/seeds/cotton,
+/obj/item/seeds/cotton/durathread,
+/obj/item/seeds/potato/sweet,
+/obj/item/grown/cotton,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy/geranium,
+/obj/item/food/grown/poppy/lily,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/garlic,
+/obj/item/food/grown/onion,
+/obj/item/food/grown/peas,
+/obj/item/grown/log,
+/obj/item/food/grown/mushroom/chanterelle,
+/obj/item/food/grown/wheat,
 /turf/open/floor/grass,
 /area/security/prison)
 "jUW" = (
@@ -46016,9 +46068,10 @@
 /turf/open/floor/plating,
 /area/engineering/main)
 "msR" = (
-/obj/machinery/firealarm/directional/west,
-/turf/closed/wall,
-/area/medical/pharmacy)
+/obj/effect/landmark/start/hangover,
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron,
+/area/hallway/primary/central)
 "mtn" = (
 /obj/machinery/computer/prisoner/gulag_teleporter_computer,
 /turf/open/floor/iron/dark,
@@ -46315,6 +46368,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 10
 	},
+/obj/machinery/component_printer,
 /turf/open/floor/iron/white,
 /area/science/explab)
 "mLb" = (
@@ -48250,6 +48304,7 @@
 /area/maintenance/port/fore)
 "oLN" = (
 /obj/structure/table,
+/obj/item/clothing/accessory/badge/holo/warden,
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "oMN" = (
@@ -49743,6 +49798,9 @@
 /area/service/janitor)
 "qgw" = (
 /obj/structure/table,
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "qgF" = (
@@ -49806,6 +49864,9 @@
 /obj/item/storage/bag/plants,
 /obj/item/secateurs,
 /obj/item/secateurs,
+/obj/item/plant_analyzer,
+/obj/item/plant_analyzer,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "qjL" = (
@@ -50844,30 +50905,11 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "rut" = (
-/obj/structure/closet/secure_closet/freezer/fridge{
-	req_access = null
-	},
-/obj/item/storage/box/ingredients/vegetarian,
-/obj/item/storage/box/ingredients/italian,
-/obj/item/storage/box/ingredients/fruity,
-/obj/item/storage/box/ingredients/fiesta,
-/obj/item/storage/box/ingredients/american,
-/obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 600);
-	name = "Premium All-Purpose Flour (16KG)";
-	volume = 600
-	},
-/obj/item/reagent_containers/food/condiment/milk,
-/obj/item/reagent_containers/food/condiment/enzyme{
-	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
-	name = "universe-sized universal enyzyme";
-	volume = 500
-	},
-/obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 150);
-	name = "Basmati Rice Sack (4KG)";
-	volume = 150
-	},
+/obj/structure/table,
+/obj/item/clothing/suit/apron/chef,
+/obj/item/storage/bag/tray,
+/obj/item/kitchen/knife/plastic,
+/obj/item/kitchen/rollingpin,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "ruy" = (
@@ -51063,6 +51105,10 @@
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"rFv" = (
+/obj/item/reagent_containers/glass/bottle/nutrient/ez,
+/turf/open/floor/grass,
+/area/security/prison)
 "rFJ" = (
 /obj/structure/trash_pile,
 /turf/open/floor/plating,
@@ -51074,24 +51120,10 @@
 /turf/open/floor/wood,
 /area/service/bar)
 "rGy" = (
-/obj/structure/closet/secure_closet/freezer/meat{
-	req_access = null
-	},
-/obj/item/food/meat/slab/chicken,
-/obj/item/food/meat/slab/chicken,
-/obj/item/food/meat/slab/chicken,
-/obj/item/food/meat/slab/chicken,
-/obj/item/food/meat/slab/monkey,
-/obj/item/food/meat/slab/monkey,
-/obj/item/food/meat/slab/monkey,
-/obj/item/food/meat/slab/monkey,
-/obj/item/food/meat/rawbacon,
-/obj/item/food/meat/rawbacon,
-/obj/item/food/meat/rawbacon,
-/obj/item/food/meat/rawbacon,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 24
 	},
+/obj/structure/table,
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "rGG" = (
@@ -52357,9 +52389,7 @@
 "taM" = (
 /obj/structure/table/glass,
 /obj/structure/window/spawner/east,
-/obj/item/integrated_circuit_printer{
-	pixel_y = 9
-	},
+/obj/item/multitool/circuit,
 /turf/open/floor/iron/dark,
 /area/science/explab)
 "taR" = (
@@ -52606,11 +52636,25 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "tld" = (
+/obj/structure/closet/secure_closet/freezer/meat{
+	req_access = null
+	},
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
 /obj/structure/extinguisher_cabinet{
-	pixel_x = 27
+	pixel_x = 24
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/effect/spawner/lootdrop/prison_contraband,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/security/prison)
 "tll" = (
@@ -53466,30 +53510,10 @@
 /turf/open/floor/iron/white,
 /area/medical/cryo)
 "ubO" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/seeds/aloe,
-/obj/item/seeds/apple,
-/obj/item/seeds/cabbage,
-/obj/item/seeds/whitebeet,
-/obj/item/seeds/redbeet,
-/obj/item/seeds/sugarcane,
-/obj/item/seeds/sunflower,
-/obj/item/seeds/tea,
-/obj/item/seeds/tea/astra,
-/obj/item/seeds/tobacco,
-/obj/item/seeds/tomato/blood,
-/obj/item/seeds/cocoapod/vanillapod,
-/obj/item/seeds/cocoapod,
-/obj/item/seeds/coffee/robusta,
-/obj/item/seeds/coffee,
-/obj/item/seeds/corn,
-/obj/item/seeds/cotton,
-/obj/item/seeds/cotton/durathread,
-/obj/item/seeds/potato/sweet,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/security/prison)
 "uco" = (
@@ -54855,6 +54879,10 @@
 	dir = 1
 	},
 /area/security/prison)
+"vvM" = (
+/obj/item/stack/sheet/mineral/sandstone/thirty,
+/turf/open/floor/grass,
+/area/security/prison)
 "vvP" = (
 /obj/machinery/light/small/broken/directional/south,
 /turf/open/floor/plating,
@@ -55361,10 +55389,9 @@
 /area/hallway/primary/fore)
 "vUa" = (
 /obj/structure/table,
-/obj/item/clothing/suit/apron/chef,
-/obj/item/storage/bag/tray,
-/obj/item/kitchen/knife/plastic,
-/obj/item/kitchen/rollingpin,
+/obj/machinery/chem_dispenser/drinks{
+	dir = 8
+	},
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/security/prison)
@@ -56915,6 +56942,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/medical/medbay)
 "xmh" = (
@@ -82400,7 +82428,7 @@ bCa
 kcZ
 fEF
 fEF
-fEF
+vvM
 oJE
 dlN
 nHO
@@ -82912,7 +82940,7 @@ vJj
 acd
 qjg
 dYg
-fEF
+rFv
 fEF
 fEF
 oJE
@@ -91202,7 +91230,7 @@ bcp
 ova
 beq
 aJq
-lfF
+msR
 aJq
 aJq
 aJq
@@ -91459,7 +91487,7 @@ gSC
 cRi
 gSC
 bfF
-msR
+bfF
 bfF
 bfF
 bfF

@@ -64,7 +64,6 @@
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect2.ogg',
 		'modular_skyrat/master_files/sound/blackmesa/bullsquid/detect3.ogg'
 	)
-	ghost_controllable = TRUE
 
 /obj/projectile/bullsquid
 	name = "nasty ball of ooze"
@@ -261,7 +260,6 @@
 	status_flags = NONE
 	del_on_death = TRUE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway/home)
-	var/alert_everyone = TRUE
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
 	amount = 50
@@ -280,42 +278,32 @@
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/Aggro()
 	. = ..()
-	if(alert_everyone)
-		if(!(world.time <= alert_cooldown_time))
-			alert_cooldown_time = world.time + alert_cooldown
-			switch(health)
-				if(0 to 999)
-					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_freeeemmaan01.ogg')))
-				if(1000 to 2999)
-					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_youalldie01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_foryouhewaits01.ogg')))
-				if(3000 to 6000)
-					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_whathavedone01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_deceiveyou01.ogg')))
-				else
-					alert_sound_to_playing(pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_thetruth01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_iamthelast01.ogg')))
+	if(!(world.time <= alert_cooldown_time))
+		alert_cooldown_time = world.time + alert_cooldown
+		switch(health)
+			if(0 to 999)
+				playsound(src, pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_pain01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_freeeemmaan01.ogg')), 100)
+			if(1000 to 2999)
+				playsound(src, pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_youalldie01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_foryouhewaits01.ogg')), 100)
+			if(3000 to 6000)
+				playsound(src, pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_whathavedone01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_deceiveyou01.ogg')), 100)
+			else
+				playsound(src, pick(list('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_thetruth01.ogg', 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_iamthelast01.ogg')), 100)
 	set_combat_mode(TRUE)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/death(gibbed)
 	. = ..()
-	alert_sound_to_playing('modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_death01.ogg')
+	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/nihilanth/nihilanth_death01.ogg', 100)
 	new /obj/effect/singularity_creation(loc)
-	message_admins("[src] has been defeated, a spacetime cascade will occur in 10 seconds.")
-	addtimer(CALLBACK(src, .proc/endgame_shit),  10 SECONDS)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/LoseAggro()
 	. = ..()
 	set_combat_mode(FALSE)
-
-/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
-	to_chat(world, "<span class='warning'>You feel as though a powerful force has been defeated...</span>")
-	var/datum/round_event_control/resonance_cascade/event_to_start = new()
-	event_to_start.runEvent()
-
 /datum/round_event_control/resonance_cascade
 	name = "Portal Storm: Spacetime Cascade"
 	typepath = /datum/round_event/portal_storm/resonance_cascade
 	weight = 0
 	max_occurrences = 0
-
 
 /datum/round_event/portal_storm/resonance_cascade/announce(fake)
 	set waitfor = 0
