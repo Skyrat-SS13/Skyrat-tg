@@ -769,6 +769,9 @@
 //Donation Reward for Grand Vegeta
 /obj/item/clothing/shoes/mikuleggings
 	name = "starlight singer leggings"
+	greyscale_config = null
+	greyscale_config_worn = null
+	greyscale_colors = null
 	desc = " "
 	icon_state = "mikuleggings"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/shoes.dmi'

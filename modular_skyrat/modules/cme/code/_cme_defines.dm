@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(cme_loot_list, list(
 
 /obj/item/strange
 
-#define CME_RANDOM "random"
+#define CME_UNKNOWN "unknown"
 #define CME_MINIMAL "minimal"
 #define CME_MODERATE "moderate"
 #define CME_EXTREME "extreme"

@@ -8,7 +8,7 @@
 	name = "CFA Wildcat Magazine (.32)"
 	desc = "Magazines taking .32 ammunition; it fits in the CFA Wildcat. Alt+click to reskin it."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
-	icon_state = "smg32-full"
+	icon_state = "smg32"
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_INCENDIARY)
 	ammo_type = /obj/item/ammo_casing/c32
 	caliber = "c32acp"

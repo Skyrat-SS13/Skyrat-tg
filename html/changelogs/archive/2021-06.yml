@@ -1,0 +1,175 @@
+2021-06-01:
+  Arkatos:
+  - refactor: Notice board now uses tgui.
+  - bugfix: Notice boards will now properly drop their contents upon destruction.
+  KathrinBailey:
+  - bugfix: Wildcat magazines now show up.
+  - rscadd: Prototype version of Privateers, including a new shuttle for their exclusive
+      use!
+  SkyratBot:
+  - bugfix: Fix oversight where Dynamic can assign antag datums to the minds of players
+      who will be forcefully returned to the lobby.
+  - bugfix: Screwdrivers no longer cause an error icon while in the belt
+  - code_imp: removed the piece of code that causes carpotoxin to qdel temporal scars
+      (hopefully I identified it correctly)
+  - bugfix: Fixed dynamic latejoins.
+  ZephyrTFA:
+  - bugfix: OneClickAntag no longer dies when you remove someone's obsessed role
+2021-06-02:
+  Inept:
+  - rscadd: Some new holidays have been added.
+  Melbert:
+  - rscadd: GAGS flowers (Rainbow bunch flowers now look prettier!)
+  - refactor: Rainbow bunch flowers now use GAGS instead of their old method of greyscaling
+  - rscadd: GAGS Lizard Plushes. Now, lizard plushes get a randomly generated lizard
+      color when they're made.
+  SkyratBot:
+  - bugfix: railings drop rods on deconstruction
+  - bugfix: 'Some duplicate pipes in kilo atmospherics have been fixed. qol: Various
+      piping improvements in kilo atmospherics.'
+  - imageadd: The desk, green and banana lamps have been resprited.
+  - imageadd: Better greyscale support has been added to datum materials allowing
+      objects to have more complex compositions of sprites. The golden cleric mace
+      is extra shiny now.
+  - bugfix: Chairs no longer runtime when being deconstructed
+  - bugfix: Mime shoes no longer runtime when generating their icon. This may fix
+      some graphical oddity or do nothing at all since they get colored pure white
+      anyway.
+  - bugfix: Thermomachines across all maps have now been properly linked to waste
+      and will work properly now. Trit huffers rejoice
+  - bugfix: The SM pipe on metastation will no longer connect to waste and burn up
+      the entire mix if your newly-chosen engineer friend accidently uses a grey pipe.
+  - bugfix: Box whiteship now has a proper thermomachine setup for its cryo.
+  - bugfix: Metastations xenobiology freezer is now properly connected.
+  - bugfix: Icebox Supermatter setup's thermomachines are no longer connected to the
+      injector and should no longer empty all of waste.
+  - bugfix: Fixes up some randomly visible adaptors on metastation toxins and connects
+      its freezer to waste.
+  - bugfix: Kilostation's toxin freezers are now connected properly.
+  - bugfix: Deltastation's supply freezer is now connected properly.
+  - bugfix: Metastation's supply freezer is now connected properly.
+  - bugfix: Tramstation's toxin freezers are now linked up to waste correctly
+  - bugfix: Icebox N2 to pure pipe is now named correctly
+  - bugfix: Fixed the duplicate piping infront of the n2 pipe on icebox
+  - bugfix: Offering an item multiple times no longer causes runtimes
+  - bugfix: The Cryopod bays on Icebox, Metastation and Deltastation have been wired
+      into the station's power grid
+  - bugfix: the extra vent on deltastations incinerator has been removed
+  unit0016:
+  - bugfix: NSS Journey now has the curator's console like Icebox.
+2021-06-03:
+  KasparoVy:
+  - bugfix: Skunk Ears are now connected to the head when facing north or south.
+  - bugfix: The west-facing sprite for the Belly torso marking is lined up properly
+      to the left.
+  - tweak: Eevee Ears now let you colour a secondary theme.
+  Melbert:
+  - code_imp: removes some pointless initialize definitions
+  Mordent:
+  - refactor: Split DnaConsole interface into separate files.
+  SkyratBot:
+  - bugfix: Switchblades' blades now actually pop out like intended
+  - bugfix: RD's liver now has the TRAIT_ROYAL_METABOLISM trait.
+  - bugfix: Dynamic will no longer create malf humans.
+  - code_imp: Atmos machinery now properly returns alt click
+  - bugfix: Large energy crossbow now sounds like an energy crossbow
+  - bugfix: AIs should no longer occasionally have their lawset randomly and silently
+      returned to Asimov.
+  - bugfix: Heretic's reality phase ability is no longer affected by the bag of holding
+  tf-4:
+  - bugfix: The crusader belt is now visible once more.
+2021-06-04:
+  FlamingLily:
+  - code_imp: Species helpers for robotic species are up to date
+  - bugfix: General, Medical, and Security records work again.
+  - bugfix: Minimal CMEs are now minimal.
+  JJRcop:
+  - bugfix: Drone tools can no longer be inserted into an autolathe.
+  Merek2:
+  - rscadd: Added line about a nice little bluespace portal.
+  - rscdel: Removed the wise cow message in the shuttle catastrophe thing.
+  SkyratBot:
+  - bugfix: Local insurance providers have realized that they should advertise their
+      services BEFORE the occurrence of the very accidents they are supposed to insure
+      against.
+  - bugfix: Fixed banana juice having x2 chance of appearing in mystery soup
+  - bugfix: Attacking something as morph no longer floods your chat with "You're already
+      in your normal form!"
+  - bugfix: Fixes AI screen blur not disappearing after getting creampied
+  - bugfix: Custom outfits will now save their ID trim.
+  ZephyrTFA:
+  - balance: Doing surgery in surgery or robotics with the correct equipment now gives
+      you a multiplier to your operation speed.
+2021-06-06:
+  FlamingLily:
+  - bugfix: Synths screaming in non-existent pain when being operated on
+  SkyratBot:
+  - rscdel: Removed the EER from the examine text
+  - bugfix: The full version of the greyscale configuration menu now properly displays
+      all layer steps again.
+  - rscadd: anonymous names feature content
+  - spellcheck: any reference to ai triumvirate as "tripAI" has been obliterated.
+      use the right case next time, jagoff
+  - code_imp: Moved ai triumvirate off SSTicker
+  - refactor: ai triumvirate is now a singleton datum controller
+  - admin: anonymous names has two new themes and some optional enabled theme features
+  - bugfix: Coniine no longer makes you suffocate even after it leaves your system
+  - rscadd: Added the Internal GPS, Direction, Health, Pull and Signal Combiner circuit
+      components.
+  - rscadd: Added the Money Bot shell which can dispense and receive money and also
+      added the ability to lock shells by scanning your ID over the circuit and then
+      over the shell once inside the shell.
+  - rscadd: You can now rename integrated circuits so that they appear on the attached
+      shell.
+  - code_imp: Restructured the circuit components folder to be more organised.
+  - spellcheck: The text for the surrender emote is now grammatically consistent.
+  - bugfix: DeusVend's name is now consistent across both the vendor and restocking
+      unit
+  - bugfix: The message for new duplicate keybinds should only appear once now
+  - bugfix: Resetting your keybinds to classic mode works correctly now
+  - bugfix: Hotkey mode is now actually used when new hotkeys with a default setting
+      are added
+  - bugfix: You will no longer get a duplicate keybinding conflict message for new
+      hotkeys with no default key, they will just be silently set to unbound
+  - rscadd: Ghosts can now find out how much power is in the network by examining
+      cables
+  - bugfix: dynamic will no longer spawn abductors if there aren't enough applicants
+      for a proper 2-person abductor team
+  - bugfix: Reaction chambers no longer drop beakers when deconstructed
+  - bugfix: fix temperature pump exploit that allows the users to go over 1e8 limiter.
+      This is done by a power usage equation that become exponential upon reaching
+      3e7 and will eat through the room APC charge (so no makeshift power drain).
+  - admin: Sorted the traitor panel a bit.
+  - bugfix: Fixed wrong icons in Orion Trail general market event
+  - balance: Increased the minimum pop for heretics to 18 players.
+  - bugfix: Gun scopes no longer work if you don't have the gun in your hands
+  - bugfix: Fixes split personality sometimes switching to other person upon death
+  - bugfix: connected the kilo medbay lobby apc to the grid
+  ZephyrTFA:
+  - bugfix: Making windows is now inline with making walls in that its not magically
+      instant
+  mozi_h:
+  - bugfix: Fixed a small icon inconsistency with the notice board.
+2021-06-07:
+  'ArcaneMusic, Celotajs: ft PowerfulBacon':
+  - rscadd: Modular, GAGS winter coats and sprites.
+  - imageadd: New, high impact winter coat sprites from beestation.
+  Cimika, with thanks to NamelessFairy for additional patterns and AdipemDragon for the spray icon.:
+  - rscadd: Added the ability to dye your hair with gradients by using a hair dye
+      spray.
+  - rscadd: The new Colorist quirk, allowing you to spawn with a hair dye spray.
+  FlamingLily:
+  - bugfix: Internals activating in stripping menu
+  - bugfix: Stasis units exist again
+  - bugfix: "\U0001F633 machines exist again"
+  - bugfix: Holobadge boxes exist again
+  - bugfix: Gas Miners exist again (and atmos now uses sexy decals like Journey instead
+      of canisters to indicate their contents)
+  SkyratBot:
+  - imageadd: The circuit multitool has a new sprite.
+  thestubborn:
+  - rscadd: poly clothing to the keff and cowbell collar
+  - rscdel: unused sprites
+  - bugfix: detective can now use his badge
+  unit0016:
+  - bugfix: Metastation perma should FINALLY. FINALLY. No longer be spaced roundstart.

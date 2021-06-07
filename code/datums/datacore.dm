@@ -278,6 +278,10 @@
 			G.fields["gender"]  = "Other"
 		G.fields["photo_front"] = photo_front
 		G.fields["photo_side"] = photo_side
+		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD - RP RECORDS
+			G.fields["past_records"] = C.prefs.general_record
+		else
+			G.fields["past_records"] = "" // SKYRAT EDIT END
 		general += G
 
 		//Medical Record
@@ -294,6 +298,10 @@
 		M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
 		M.fields["notes"] = H.get_quirk_string(!medical, CAT_QUIRK_NOTES)
 		M.fields["notes_d"] = H.get_quirk_string(medical, CAT_QUIRK_NOTES)
+		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD - RP RECORDS
+			M.fields["past_records"] = C.prefs.medical_record
+		else
+			M.fields["past_records"] = "" // SKYRAT EDIT END
 		medical += M
 
 		//Security Record
@@ -304,6 +312,10 @@
 		S.fields["citation"] = list()
 		S.fields["crim"] = list()
 		S.fields["notes"] = "No notes."
+		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD - RP RECORDS
+			S.fields["past_records"] = C.prefs.security_record
+		else
+			S.fields["past_records"] = "" // SKYRAT EDIT END
 		security += S
 
 		//Locked Record

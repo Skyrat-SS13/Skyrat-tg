@@ -50,17 +50,15 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
 
-//dlete dis once #39770 is resolved
-/datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
-	if(!config)
+/datum/controller/subsystem/mapping/New()
+	..()
 #ifdef FORCE_MAP
-		config = load_map_config(FORCE_MAP)
+	config = load_map_config(FORCE_MAP)
 #else
-		config = load_map_config(error_if_missing = FALSE)
+	config = load_map_config(error_if_missing = FALSE)
 #endif
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
-	HACK_LoadMapConfig()
 	if(initialized)
 		return
 	if(config.defaulted)
@@ -320,14 +318,14 @@ Used by the AI doomsday and the self-destruct nuke.
 			add_startupmessage("MINING MAP: Loading mining level...")
 			if(!mining_traits_to_load)
 				add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
-				LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
-				add_startupmessage("MINING MAP: Loaded successfully.")
-			else
-				add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
-				if(config.minetype == "lavaland")
-					LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-				else if (!isnull(config.minetype) && config.minetype != "none")
-					INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+			LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
+			add_startupmessage("MINING MAP: Loaded successfully.")
+		if(!mining_map_to_load)
+			add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+			if(config.minetype == "lavaland")
+				LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+			else if (!isnull(config.minetype) && config.minetype != "none")
+				INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 	//SKYRAT EDIT END
 
 #endif
