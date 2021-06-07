@@ -104,6 +104,11 @@
 	path = /obj/item/clothing/head/avipilot
 	ckeywhitelist = list("slippyjoe")
 
+/datum/loadout_item/neck/donator/snakeponcho
+	name = "Cowboy Ponch"
+	path = /obj/item/clothing/neck/snakebittenn_poncho
+	ckeywhitelist = list("snakebittenn")
+
 /datum/loadout_item/shoes/donator/britches_shoes
 	name = "Britches' shoes"
 	path = /obj/item/clothing/shoes/clown_shoes/britches
