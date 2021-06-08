@@ -81,7 +81,7 @@
 	return !(state_open) && is_operational
 
 /obj/machinery/stasissleeper/update_icon_state()
-	icon_state = "[base_icon_state][state_open ? "-open" : null]"
+	icon_state = "[occupant ? "o-" : null][base_icon_state][state_open ? "-open" : null]"
 	return ..()
 
 /obj/machinery/stasissleeper/power_change()
