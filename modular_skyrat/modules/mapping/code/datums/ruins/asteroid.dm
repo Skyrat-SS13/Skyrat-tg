@@ -28,6 +28,20 @@
 	description = "An experimental location, meant to demonstrate terraforming LZ-2 as a possibility."
 	suffix = "biodome.dmm"
 
+/datum/map_template/ruin/asteroid/xenohive
+	name = "Xenomorph Hive"
+	id = "asteroid_xenohive"
+	description = "Xenomorphs have built a nest in a pre-existing cave system, and have since been picking off unfortunate explorers or crew from the nearby mining post."
+	suffix = "xenohive.dmm"
+	cost = 5
+
+/datum/map_template/ruin/asteroid/factory
+	name = "Abandoned Factory"
+	id = "asteroid_factory"
+	description = "A long-dormant factory, overtaken by rust and dust. Whatever it was making is lost to time."
+	suffix = "factory.dmm"
+	cost = 5
+
 /datum/map_template/ruin/asteroid/abandoned_a	//Restaraunt
 	name = "Abandoned Structure A"
 	id = "asteroidabandoned_a"
