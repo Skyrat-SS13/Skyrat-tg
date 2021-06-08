@@ -526,7 +526,7 @@
 	list_reagents = list()
 	var/list/accelerants = list( /datum/reagent/consumable/ethanol, /datum/reagent/fuel, /datum/reagent/clf3, /datum/reagent/phlogiston,
 							/datum/reagent/napalm, /datum/reagent/hellwater, /datum/reagent/toxin/plasma, /datum/reagent/toxin/spore_burning)
-	var/active = FALSE
+	var/active = 0
 
 /obj/item/reagent_containers/food/drinks/bottle/molotov/CheckParts(list/parts_list)
 	..()
@@ -580,9 +580,7 @@
 			return
 		to_chat(user, "<span class='info'>You snuff out the flame on [src].</span>")
 		cut_overlay(custom_fire_overlay ? custom_fire_overlay : GLOB.fire_overlay)
-		active = FALSE
-		return
-	return ..()
+		active = 0
 
 /obj/item/reagent_containers/food/drinks/bottle/pruno
 	name = "pruno mix"
