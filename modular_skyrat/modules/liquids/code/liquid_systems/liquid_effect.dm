@@ -411,6 +411,7 @@
 		AM.fire_act((T20C+50) + (50*fire_state), 125)
 
 /obj/effect/abstract/liquid_turf/proc/mob_fall(datum/source, mob/M)
+	SIGNAL_HANDLER
 	var/turf/T = source
 	if(liquid_state >= LIQUID_STATE_ANKLES && T.has_gravity(T))
 		playsound(T, 'modular_skyrat/modules/liquids/sound/effects/splash.ogg', 50, 0)

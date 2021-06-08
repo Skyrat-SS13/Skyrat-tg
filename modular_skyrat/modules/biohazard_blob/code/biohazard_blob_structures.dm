@@ -267,6 +267,7 @@
 		RegisterSignal(t, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
 /obj/structure/biohazard_blob/structure/bulb/proc/proximity_trigger(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(!isliving(AM))
 		return
 	var/mob/living/L = AM
