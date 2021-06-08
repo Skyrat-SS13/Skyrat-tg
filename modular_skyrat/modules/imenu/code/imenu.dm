@@ -136,6 +136,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/list/interaction_requires = list()
 
 /datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
+	if(target == user && usage == INTERACTION_OTHER)
+		return FALSE
 	for(var/requirement in interaction_requires)
 		switch(requirement)
 			if(INTERACTION_REQUIRE_SELF_HAND)
@@ -178,11 +180,11 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			SEND_SOUND(sound_cache, mob)
 
 /datum/component/interactable
-	var/mob/self = null
+	var/mob/living/self = null
 	var/interact_last = 0
 	var/interact_next = 0
 
-/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/user)
+/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/user)
 	if(!interaction.allow_act(user, self))
 		return FALSE
 	if(!interaction.distance_allowed && !user.Adjacent(self))
@@ -217,7 +219,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 /datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
 
-/mob/living/Initialize()
+/mob/living/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/interactable)
 
