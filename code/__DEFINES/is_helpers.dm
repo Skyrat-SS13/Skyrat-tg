@@ -158,10 +158,6 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 
 #define isaicamera(A) (istype(A, /mob/camera/ai_eye))
 
-//SKYRAT EDIT ADD START
-#define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
-//SKYRAT EDIT ADD END
-
 //Objects
 #define isobj(A) istype(A, /obj) //override the byond proc because it returns true on children of /atom/movable that aren't objs
 

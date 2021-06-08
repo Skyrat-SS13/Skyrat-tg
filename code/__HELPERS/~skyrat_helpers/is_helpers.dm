@@ -11,3 +11,5 @@
 #define isxenohybrid(A) (is_species(A,/datum/species/xeno))
 #define isdwarf(A) (is_species(A,/datum/species/dwarf))
 #define isroundstartslime(A) (is_species(A,/datum/species/jelly/roundstartslime))
+
+#define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
