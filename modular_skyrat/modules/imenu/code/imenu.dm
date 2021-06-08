@@ -91,6 +91,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/file = file(fpath)
 	var/list/json = json_load(file)
 	name = sanitize_text(json["name"])
+	description = sanitize_text(json["description"])
 	distance_allowed = sanitize_integer(json["distance_allowed"], 0, 1, 0)
 	message = sanitize_islist(json["message"], list("json error"))
 	category = sanitize_text(json["category"])
@@ -107,6 +108,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		fdel(fpath)
 	var/list/json = list(
 		"name" = name,
+		"description" = description,
 		"distance_allowed" = distance_allowed,
 		"message" = message,
 		"category" = category,
@@ -122,6 +124,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 /datum/interaction
 	var/name = "broken interaction"
+	var/description = "broken"
 	var/distance_allowed = FALSE
 	var/list/message = list()
 	var/category = INTERACTION_CAT_HIDE
@@ -238,12 +241,15 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/list/data = list()
 	var/list/datum/interaction/ints = mil_mob(user)
 
+	var/list/descs = list()
 	var/list/cats = list()
 	for(var/datum/interaction/int in ints)
 		if(!cats[int.category])
 			cats[int.category] = list(int.name)
 		else cats[int.category] += int.name
+		descs[int.name] = int.description
 	data["categories"] = list()
+	data["descs"] = descs
 	for(var/cat in cats)
 		data["categories"] += cat
 
