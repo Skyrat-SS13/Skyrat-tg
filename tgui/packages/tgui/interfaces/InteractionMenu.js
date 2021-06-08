@@ -21,16 +21,18 @@ export const InteractionMenu = (props, context) => {
           {categories.map((category) => (
             <Section key={category} title={category}>
               {ints[category].map((interaction) => (
-                <Section key={interaction}><left>
-                  <Button margin={0} padding={0}
-                    disabled={block_interact}
-                    color={block_interact ? "grey" : "blue"}
-                    content={interaction}
-                    icon="exclamation-circle"
-                    onClick={() => act('interact', { interaction: interaction, selfref: ref_self, userref: ref_user })}
-                  /><br/>
-                  {descs[interaction]}
-                </left></Section>
+                <Section key={interaction}>
+                  <left>
+                    <Button margin={0} padding={0}
+                      disabled={block_interact}
+                      color={block_interact ? "grey" : "blue"}
+                      content={interaction}
+                      icon="exclamation-circle"
+                      onClick={() => act('interact', { interaction: interaction, selfref: ref_self, userref: ref_user })}
+                    /><br />
+                    {descs[interaction]}
+                  </left>
+                </Section>
               ))}
             </Section>
           ))}
