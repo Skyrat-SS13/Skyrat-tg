@@ -76,7 +76,6 @@
 	addtimer(CALLBACK(src, .proc/LockOn), 7)
 
 /datum/gunpoint/proc/MeleeAttackReact(datum/source_datum, atom/target)
-	SIGNAL_HANDLER
 	if(!CheckContinuity())
 		qdel(src)
 		return
@@ -118,7 +117,6 @@
 	return FALSE
 
 /datum/gunpoint/Destroy()
-	SIGNAL_HANDLER
 	UnregisterSignal(aimed_gun, list(COMSIG_ITEM_DROPPED, COMSIG_ITEM_EQUIPPED))
 	UnregisterSignal(target, list(COMSIG_PARENT_QDELETING, COMSIG_MOB_ITEM_AFTERATTACK, COMSIG_ITEM_ATTACK_SELF, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, COMSIG_ITEM_ATTACK_SELF, COMSIG_MOVABLE_RADIO_TALK_INTO, COMSIG_MOB_FIRED_GUN, COMSIG_MOVABLE_MOVED))
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_STATUS_STUN, COMSIG_LIVING_STATUS_KNOCKDOWN, COMSIG_LIVING_STATUS_PARALYZE, COMSIG_LIVING_UPDATED_RESTING))
@@ -156,7 +154,6 @@
 	aimed_gun.afterattack(target, source)
 
 /datum/gunpoint/proc/RadioReact(datum/datum_source, obj/item/radio/radio, message, channel, list/spans, datum/language/language, direct)
-	SIGNAL_HANDLER
 	if(!allow_radio && CanReact())
 		if(direct)
 			source.log_message("[source] shot [target] because they spoke on radio", LOG_ATTACK)
@@ -164,7 +161,6 @@
 			ShootTarget()
 
 /datum/gunpoint/proc/MovedReact(datum/datum_source, atom/moved, direction, forced)
-	SIGNAL_HANDLER
 	if(!CheckContinuity())
 		qdel(src)
 		return
@@ -180,7 +176,6 @@
 		ShootTarget()
 
 /datum/gunpoint/proc/UseReact(datum/datum_source)
-	SIGNAL_HANDLER
 	if(!CheckContinuity())
 		qdel(src)
 		return
