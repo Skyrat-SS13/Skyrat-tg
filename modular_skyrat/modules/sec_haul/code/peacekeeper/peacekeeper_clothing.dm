@@ -63,7 +63,6 @@
 /obj/item/clothing/under/rank/security/peacekeeper/blue
 	name = "blue peacekeeper uniform"
 	icon_state = "bsecurity"
-	worn_icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
