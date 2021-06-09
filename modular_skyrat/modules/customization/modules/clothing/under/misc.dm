@@ -363,7 +363,7 @@
 	desc = "A Cargonium brown with matching trousers. It's adjusted for pushing crates."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cargocas"
+	icon_state = "cargotechjean"
 	inhand_icon_state = "lb_suit"
 
 /obj/item/clothing/under/rank/cargo/qm/syndie
