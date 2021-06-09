@@ -97,6 +97,10 @@
 		"cyborgrecharger",
 		"robocontrol",
 		"sflash",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"affection_module",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/mech
