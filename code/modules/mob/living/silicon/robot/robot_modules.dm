@@ -136,7 +136,7 @@
 	RM.rebuild_modules()
 	R.radio.recalculateChannels()
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS
-	if(RM.dogborg)
+	if(R_TRAIT_WIDE in RM.model_features)
 		R.dogborg = TRUE
 		RM.dogborg_equip()
 	//SKYRAT EDIT ADDITION END

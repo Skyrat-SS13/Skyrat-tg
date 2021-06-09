@@ -13,6 +13,9 @@
 		if(R.hasShrunk)
 			to_chat(usr, "<span class='warning'>This unit already has a shrink module installed!</span>")
 			return FALSE
+		if(R_TRAIT_SMALL in R.model.model_features)
+			to_chat(usr, "<span class='warning'>This unit's chassis cannot be shrunk any further.</span>")
+			return FALSE
 
 		R.notransform = TRUE
 		var/prev_lockcharge = R.lockcharge
