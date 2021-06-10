@@ -37,6 +37,8 @@
 		/obj/effect/spawner/lootdrop/space/fancytool/engineonly = 3
 	)
 
+	veteran_only = TRUE //SKYRAT EDIT ADDITION
+
 /datum/job/chief_engineer/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
 	..()
 	if(announce_captaincy)

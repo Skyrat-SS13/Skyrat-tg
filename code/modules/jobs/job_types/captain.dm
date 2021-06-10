@@ -32,6 +32,8 @@
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
 	)
 
+	veteran_only = TRUE //SKYRAT EDIT ADDITION
+
 /datum/job/captain/announce(mob/living/carbon/human/H, announce_captaincy = TRUE)
 	..()
 	if(announce_captaincy)

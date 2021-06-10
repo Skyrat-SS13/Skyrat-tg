@@ -31,6 +31,8 @@
 		/obj/projectile/bullet/advanced/b10mm/b460 = 1
 	)
 
+	veteran_only = TRUE
+
 /datum/outfit/job/blueshield
 	name = "Blueshield"
 	jobtype = /datum/job/blueshield
