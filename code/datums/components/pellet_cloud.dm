@@ -54,7 +54,7 @@
 	var/mob/living/shooter
 
 /datum/component/pellet_cloud/Initialize(projectile_type=/obj/item/shrapnel, magnitude=5)
-	if(!isammocasing(parent) && !isgrenade(parent) && !islandmine(parent) && !issupplypod(parent) && !istype(parent, /mob/living/simple_animal/hostile/true_changeling)) //SKYRAT EDIT CHANGE: if(!isammocasing(parent) && !isgrenade(parent) && !islandmine(parent) && !issupplypod(parent))
+	if(!isammocasing(parent) && !isgrenade(parent) && !islandmine(parent) && !issupplypod(parent) && !ishorrorling(parent)) //SKYRAT EDIT CHANGE: if(!isammocasing(parent) && !isgrenade(parent) && !islandmine(parent) && !issupplypod(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	if(magnitude < 1)
@@ -65,7 +65,7 @@
 
 	if(isammocasing(parent))
 		num_pellets = magnitude
-	else if(isgrenade(parent) || islandmine(parent) || issupplypod(parent) || istype(parent, /mob/living/simple_animal/hostile/true_changeling)) //SKYRAT EDIT CHANGE: else if(isgrenade(parent) || islandmine(parent) || issupplypod(parent))
+	else if(isgrenade(parent) || islandmine(parent) || issupplypod(parent) || ishorrorling(parent)) //SKYRAT EDIT CHANGE: else if(isgrenade(parent) || islandmine(parent) || issupplypod(parent))
 		radius = magnitude
 
 /datum/component/pellet_cloud/Destroy(force, silent)
@@ -88,7 +88,7 @@
 	else if(issupplypod(parent))
 		RegisterSignal(parent, COMSIG_SUPPLYPOD_LANDED, .proc/create_blast_pellets)
 	//SKYRAT EDIT ADDITION BEGIN
-	else if(istype(parent, /mob/living/simple_animal/hostile/true_changeling))
+	else if(ishorrorling(parent))
 		RegisterSignal(parent, COMSIG_HORRORFORM_EXPLODE, .proc/create_blast_pellets)
 	//SKYRAT EDIT END
 
