@@ -444,6 +444,8 @@
 	return FALSE
 
 /datum/emote/living/custom/run_emote(mob/user, params, type_override = null, intentional = FALSE)
+	var/custom_emote
+	var/custom_emote_type
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 	if(is_banned_from(user.ckey, "Emote"))
@@ -456,25 +458,25 @@
 		return FALSE
 	else if(!params)
 		//SKYRAT EDIT CHANGE BEGIN
-		//var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN) - SKYRAT EDIT - ORIGINAL
-		var/custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
+		//custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN) - SKYRAT EDIT - ORIGINAL
+		custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
 		//SKYRAT EDIT CHANGE END
 		if(custom_emote && !check_invalid(user, custom_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
 				if("Visible")
-					emote_type = EMOTE_VISIBLE
+					custom_emote_type = EMOTE_VISIBLE
 				if("Hearable")
-					emote_type = EMOTE_AUDIBLE
+					custom_emote_type = EMOTE_AUDIBLE
 				else
 					tgui_alert(usr,"Unable to use this emote, must be either hearable or visible.")
 					return
-			message = custom_emote
 	else
-		message = params
+		custom_emote = params
 		if(type_override)
-			emote_type = type_override
-	message = user.say_emphasis(message) //SKYRAT EDIT ADDITION - EMOTES
+			custom_emote_type = type_override
+	message = user.say_emphasis(custom_emote) //SKYRAT EDIT ADDITION - EMOTES
+	emote_type = custom_emote_type
 	. = ..()
 	message = null
 	emote_type = EMOTE_VISIBLE
