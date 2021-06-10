@@ -18,6 +18,7 @@
 
 /area/ruin/space/has_grav/powered/skyrat/luna
 	name = "Unexplored Location"
+	ambientsounds = list('modular_skyrat/master_files/sound/ambience/luna.ogg') //Should be slightly haunting, to fit the psuedo-ancient vibes of the ruin itself.
 
 /area/ruin/space/has_grav/powered/skyrat/blackmarket
 	name = "Shady Market"
