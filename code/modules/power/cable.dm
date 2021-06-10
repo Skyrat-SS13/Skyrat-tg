@@ -557,7 +557,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 		if(user == H)
 			to_chat(user, "<span class='warning'>You can't fix [affecting.name] on your own!</span>")
 			return
-		if(!(user.mind?.assigned_role == "Roboticist"))
+		if(!HAS_TRAIT(user, TRAIT_KNOW_CYBORG_WIRES))
 			to_chat(user, "<span class='warning'>You.. don't know how to do that.</span>")
 			return
 		user.visible_message("<span class='notice'>[user] starts to fix some of the wires in [H]'s [affecting.name].</span>", "<span class='notice'>You start fixing some of the wires in [H]'s [affecting.name].</span>")

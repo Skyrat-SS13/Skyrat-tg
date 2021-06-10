@@ -134,7 +134,7 @@
 		if(user == H)
 			to_chat(user, "<span class='warning'>You can't fix \the [affecting.name] on your own!</span>")
 			return
-		if(!(user.mind?.assigned_role == "Roboticist"))
+		if(!HAS_TRAIT(user, TRAIT_KNOW_CYBORG_WIRES))
 			to_chat(user, "<span class='warning'>You.. don't know how to do that.</span>")
 			return
 		if(!src.use_tool(H, user, 0, volume=50, amount=1))
