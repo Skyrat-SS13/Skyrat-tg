@@ -547,10 +547,23 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(affecting && affecting.status == BODYPART_ROBOTIC)
+//SKYRAT EDIT BEGIN
+		/*
 		if(user == H)
 			user.visible_message("<span class='notice'>[user] starts to fix some of the wires in [H]'s [affecting.name].</span>", "<span class='notice'>You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name].</span>")
 			if(!do_mob(user, H, 50))
 				return
+		*/
+		if(user == H)
+			to_chat(user, "<span class='warning'>You can't fix [affecting.name] on your own!</span>")
+			return
+		if(!(user.mind?.assigned_role == "Roboticist"))
+			to_chat(user, "<span class='warning'>You.. don't know how to do that.</span>")
+			return
+		user.visible_message("<span class='notice'>[user] starts to fix some of the wires in [H]'s [affecting.name].</span>", "<span class='notice'>You start fixing some of the wires in [H]'s [affecting.name].</span>")
+		if(!do_mob(user, H, 50))
+			return
+//SKYRAT EDIT END
 		if(item_heal_robotic(H, user, 0, 15))
 			use(1)
 		return

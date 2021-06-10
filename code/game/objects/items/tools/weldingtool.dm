@@ -123,11 +123,25 @@
 
 	if(affecting && affecting.status == BODYPART_ROBOTIC && !user.combat_mode)
 		if(src.use_tool(H, user, 0, volume=50, amount=1))
+//SKYRAT EDIT BEGIN
+			/*
 			if(user == H)
 				user.visible_message("<span class='notice'>[user] starts to fix some of the dents on [H]'s [affecting.name].</span>",
 					"<span class='notice'>You start fixing some of the dents on [H == user ? "your" : "[H]'s"] [affecting.name].</span>")
 				if(!do_mob(user, H, 50))
 					return
+			*/
+			if(user == H)
+				to_chat(user, "<span class='warning'>You can't fix \the [affecting.name] on your own!</span>")
+				return
+			if(!(user.mind?.assigned_role == "Roboticist"))
+				to_chat(user, "<span class='warning'>You.. don't know how to do that.</span>")
+				return
+			user.visible_message("<span class='notice'>[user] starts to fix some of the dents on [H]'s [affecting.name].</span>",
+					"<span class='notice'>You start fixing some of the dents on [H]'s [affecting.name].</span>")
+			if(!do_mob(user, H, 50))
+				return
+//SKYRAT EDIT END
 			item_heal_robotic(H, user, 15, 0)
 	else
 		return ..()
