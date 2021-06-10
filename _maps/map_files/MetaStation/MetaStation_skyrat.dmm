@@ -8009,11 +8009,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"aQj" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "aQl" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/purple,
@@ -33915,6 +33910,9 @@
 /area/solars/port/aft)
 "fEv" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide{
+	dir = 8
+	},
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "fEA" = (
@@ -36907,6 +36905,9 @@
 /area/space/nearstation)
 "gJL" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/plasma{
+	dir = 8
+	},
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "gJT" = (
@@ -37796,7 +37797,7 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "hdc" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "hdh" = (
@@ -49461,6 +49462,9 @@
 /area/tcommsat/server)
 "lXe" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/mix{
+	dir = 8
+	},
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
 "lXo" = (
@@ -49734,6 +49738,9 @@
 /area/medical/morgue)
 "mdQ" = (
 /obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 1
+	},
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "mdR" = (
@@ -51440,6 +51447,9 @@
 /area/command/gateway)
 "mKB" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide{
+	dir = 8
+	},
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "mKH" = (
@@ -53044,7 +53054,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark/airless,
+/turf/open/floor/iron/dark,
 /area/security/prison)
 "nnb" = (
 /obj/machinery/autolathe,
@@ -53311,7 +53321,7 @@
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter/room)
 "ntx" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "ntZ" = (
@@ -55236,7 +55246,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount/directional/north,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/white,
@@ -58984,6 +58997,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue,
+/obj/machinery/stasissleeper{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "pzT" = (
@@ -59432,6 +59448,7 @@
 /area/commons/toilet/restrooms)
 "pHU" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/vending/dorms,
 /turf/open/floor/iron,
 /area/commons/dorms)
 "pIt" = (
@@ -60111,6 +60128,9 @@
 /area/service/hydroponics/garden)
 "pXU" = (
 /obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/vg_decals/atmos/oxygen{
+	dir = 1
+	},
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "pYe" = (
@@ -63912,9 +63932,7 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "rxh" = (
-/obj/item/toy/beach_ball{
-	desc = "The simple beach ball is one of Nanotrasen's most popular products. 'Why do we make beach balls? Because we can! (TM)' - Nanotrasen";
-	name = "\improper Nanotrasen-brand beach ball";
+/obj/item/toy/beach_ball/branded{
 	pixel_y = 7
 	},
 /obj/structure/table/wood,
@@ -69269,9 +69287,7 @@
 /turf/open/floor/wood,
 /area/security/prison)
 "tzV" = (
-/obj/item/toy/beach_ball{
-	name = "Nanotrasen-branded beach ball"
-	},
+/obj/item/toy/beach_ball/branded,
 /turf/open/space/basic,
 /area/space)
 "tAg" = (
@@ -69589,7 +69605,7 @@
 /turf/closed/wall,
 /area/command/heads_quarters/hop)
 "tGx" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "tGF" = (
@@ -73070,11 +73086,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/security/prison)
-"uYK" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark/airless,
-/area/security/prison)
 "uYL" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/chair{
@@ -73192,7 +73203,7 @@
 /turf/open/floor/iron/white,
 /area/security/prison)
 "vaC" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "vaK" = (
@@ -76324,10 +76335,6 @@
 /obj/item/clothing/mask/fakemoustache,
 /turf/open/floor/wood,
 /area/service/theater)
-"wkJ" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/engine/air,
-/area/engineering/atmos)
 "wkO" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -79487,7 +79494,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "xuL" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "xvg" = (
@@ -80238,6 +80245,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "xKy" = (
@@ -80592,6 +80602,9 @@
 /area/ai_monitored/aisat/exterior)
 "xRR" = (
 /obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 1
+	},
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "xSe" = (
@@ -102048,7 +102061,7 @@ lMJ
 fwb
 aaa
 gJK
-aQj
+lMJ
 aaa
 aax
 aax
@@ -103847,7 +103860,7 @@ lMJ
 fwb
 aaa
 gJK
-aQj
+lMJ
 aaa
 oIa
 aax
@@ -106433,8 +106446,8 @@ aaa
 aaa
 aax
 pAR
-uYK
-uYK
+jYc
+jYc
 urv
 ibS
 ezO
@@ -107461,8 +107474,8 @@ aaa
 aaa
 aax
 sBs
-uYK
-uYK
+jYc
+jYc
 nmW
 aNJ
 aNJ
@@ -125284,7 +125297,7 @@ cor
 aaf
 scK
 hki
-wkJ
+iXC
 mdQ
 deP
 aaf
