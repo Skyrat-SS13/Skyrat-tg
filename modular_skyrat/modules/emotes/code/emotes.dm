@@ -240,9 +240,10 @@
 	key = "clap"
 	key_third_person = "claps"
 	message = "claps."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	hands_use_check = TRUE
+	emote_type = EMOTE_AUDIBLE
+	audio_cooldown = 5 SECONDS
 	vary = TRUE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 
@@ -454,3 +455,19 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/feline_purr.ogg'
+
+/datum/emote/living/moo
+	key = "moo"
+	key_third_person = "moos!"
+	message = "moos!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/moo.ogg'
+
+/datum/emote/living/honk
+	key = "honk1"
+	key_third_person = "honks loudly like a goose!"
+	message = "honks loudly like a goose!"
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/goose_honk.ogg'

@@ -143,6 +143,28 @@
 		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
 	earflaps = !earflaps
 
+/obj/item/clothing/head/ushankasec/blue
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "ushankablue"
+	inhand_icon_state = "ushankadown"
+	mutant_variants = NONE
+	flags_inv = HIDEEARS|HIDEHAIR
+	earflaps = TRUE
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+
+/obj/item/clothing/head/ushankasec/attack_self(mob/user)
+	if(earflaps)
+		icon_state = "ushankablueup"
+		inhand_icon_state = "ushankaup"
+		to_chat(user, "<span class='notice'>You raise the ear flaps on the ushanka.</span>")
+	else
+		icon_state = "ushankablue"
+		inhand_icon_state = "ushankadown"
+		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
+	earflaps = !earflaps
+
 /obj/item/clothing/head/soft/enclave
 	name = "neo american cap"
 	desc = "If worn in the battlefield or at a baseball game, it's still a rather scary hat."

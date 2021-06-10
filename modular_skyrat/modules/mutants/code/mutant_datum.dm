@@ -93,6 +93,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	timer_id = addtimer(CALLBACK(src, .proc/transform_host), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/cure_host()
+	SIGNAL_HANDLER
 	if(!host.stat == DEAD)
 		to_chat(host, "<span class='notice'>You start to feel refreshed and invigorated!</span>")
 	STOP_PROCESSING(SSobj, src)
@@ -124,6 +125,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/mutant_death)
 
 /datum/component/mutant_infection/proc/mutant_death()
+	SIGNAL_HANDLER
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
 	to_chat(host, "<span class='cultlarge'>You can feel your heart stopping, but something isn't right... \
 		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \

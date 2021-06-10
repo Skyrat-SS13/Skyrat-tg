@@ -59,20 +59,32 @@
 		/obj/item/clothing/under/rank/security/peacekeeper = 3,
 		/obj/item/clothing/under/rank/security/peacekeeper/blue = 3,
 		/obj/item/clothing/under/rank/security/peacekeeper/tactical = 3,
+		/obj/item/clothing/under/rank/security/peacekeeper/junior/sol = 2,
+		/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic = 2,
+		/obj/item/clothing/under/rank/security/peacekeeper/sol = 7,
 		/obj/item/clothing/shoes/combat/peacekeeper = 3,
 		/obj/item/clothing/head/beret/sec/peacekeeper = 3,
 		/obj/item/clothing/head/soft/sec = 3,
+		/obj/item/clothing/head/beret/sec/peacekeeper/sol = 3,
+		/obj/item/clothing/head/soltraffic = 3,
 		/obj/item/clothing/mask/bandana/black = 3,
 		/obj/item/clothing/gloves/combat/peacekeeper = 3,
+		/obj/item/clothing/suit/toggle/brit/sec = 7,
 		/obj/item/clothing/under/pants/khaki = 3,
 		/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
-		/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat = 4
+		/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat = 4,
+		/obj/item/clothing/head/ushankasec = 5,
+		/obj/item/clothing/head/ushankasec/blue = 5
 	)
 	contraband = list(
 		/obj/item/clothing/suit/armor/stormtrooper = 1,
 		/obj/item/clothing/head/helmet/stormtrooper = 1,
 		/obj/item/clothing/shoes/combat/stormtrooper = 1,
-		/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 1
+		/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 1,
+		/obj/item/clothing/head/cowboyhat/widesec = 1,
+		/obj/item/clothing/under/rank/security/blackwatch = 1,
+		/obj/item/clothing/suit/cossack/sec = 2,
+		/obj/item/clothing/mask/gas/german = 3
 	)
 	premium = list(
 		/obj/item/clothing/under/rank/security/officer/formal = 3,

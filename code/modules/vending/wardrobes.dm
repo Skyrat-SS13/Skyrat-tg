@@ -63,8 +63,11 @@
 					/obj/item/clothing/under/rank/medical/doctor/blue = 4,
 					/obj/item/clothing/under/rank/medical/doctor/green = 4,
 					/obj/item/clothing/under/rank/medical/doctor/purple = 4,
+					/obj/item/clothing/under/rank/medical/doctor/red/unarm = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/rank/medical/doctor = 4,
 					/obj/item/clothing/under/utility/med = 4,	//SKYRAT EDIT ADDITION START
+					/obj/item/clothing/under/rank/medical/doctor/formal = 4,
+					/obj/item/clothing/under/rank/medical/doctor/formal/skirt = 4,
 					/obj/item/clothing/suit/toggle/jacket/med = 4,
 					/obj/item/clothing/under/utility/haz_white = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/clothing/suit/toggle/labcoat = 4,
@@ -98,7 +101,9 @@
 					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/jacket/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT ADDITION
-					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,
+					/obj/item/clothing/under/rank/engineering/engineer/formal = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/rank/engineering/engineer/formal/skirt = 3,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/rank/engineering/engineer/hazard = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/utility/haz_green = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/shoes/workboots = 3,
@@ -157,6 +162,7 @@
 		/obj/item/clothing/under/utility/cargo/gorka = 3,
 		/obj/item/clothing/under/utility/cargo/turtleneck = 3,
 		/obj/item/clothing/under/utility/cargo = 3,
+		/obj/item/clothing/under/rank/cargo/casualman = 3,
 		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,	//SKYRAT EDIT ADDITION END
 		/obj/item/clothing/shoes/sneakers/black = 3,
@@ -218,6 +224,7 @@
 					/obj/item/clothing/under/utility/sci = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/jacket/sci = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/science = 3,
+					/obj/item/clothing/under/misc/hlscience = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/shoes/sneakers/white = 3,
 					/obj/item/radio/headset/headset_sci = 3,
 					/obj/item/clothing/mask/gas = 3)
@@ -402,11 +409,11 @@
 	machine_name = "LawDrobe"
 
 /obj/machinery/vending/wardrobe/chap_wardrobe
-	name = "ChapDrobe"
-	desc = "This most blessed and holy machine vends clothing only suitable for chaplains to gaze upon."
+	name = "DeusVend"
+	desc = "God wills your purchase."
 	icon_state = "chapdrobe"
 	product_ads = "Are you being bothered by cultists or pesky revenants? Then come and dress like the holy man!;Clothes for men of the cloth!"
-	vend_reply = "Thank you for using the ChapDrobe!"
+	vend_reply = "Thank you for using the DeusVend!"
 	products = list(/obj/item/choice_beacon/holy = 1,
 					/obj/item/storage/backpack/cultpack = 1,
 					/obj/item/clothing/accessory/pocketprotector/cosmetology = 1,
@@ -427,7 +434,8 @@
 					//SKYRAT EDIT ADDITION BEGIN
 					/obj/item/clothing/suit/nemes = 1,
 					/obj/item/clothing/head/nemes = 1,
-					/obj/item/clothing/head/pharaoh = 1)
+					/obj/item/clothing/head/pharaoh = 1,
+					/obj/item/clothing/under/rank/pmarsrobe = 1)
 					//SKYRAT EDIT ADDITION END
 	contraband = list(/obj/item/toy/plush/ratplush = 1,
 					/obj/item/toy/plush/narplush = 1,
@@ -444,7 +452,7 @@
 	refill_canister = /obj/item/vending_refill/wardrobe/chap_wardrobe
 	payment_department = ACCOUNT_SRV
 /obj/item/vending_refill/wardrobe/chap_wardrobe
-	machine_name = "ChapDrobe"
+	machine_name = "DeusVend"
 
 /obj/machinery/vending/wardrobe/chem_wardrobe
 	name = "ChemDrobe"
@@ -458,6 +466,8 @@
 					/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
 					/obj/item/clothing/head/beret/job/med/chem = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hooded/wintercoat/medical/chemistry = 2,
+					/obj/item/clothing/under/rank/medical/chemist/formal = 2,	//SKYRAT EDIT ADDITION BEGIN
+					/obj/item/clothing/under/rank/medical/chemist/formal/skirt = 2,	//SKYRAT EDIT ADDITION END
 					/obj/item/storage/backpack/chemistry = 2,
 					/obj/item/storage/backpack/satchel/chem = 2,
 					/obj/item/storage/backpack/duffelbag/chemistry = 2,
@@ -533,6 +543,7 @@
 					/obj/item/clothing/suit/det_suit/noir = 1,
 					/obj/item/clothing/suit/toggle/labcoat/highvis = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/head/fedora = 2,
+					/obj/item/clothing/suit/toggle/deckard = 2,//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/discoblazer = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/misc/discounder = 2,
 					/obj/item/clothing/shoes/discoshoes = 2,
