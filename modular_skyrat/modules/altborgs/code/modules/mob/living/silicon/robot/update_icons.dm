@@ -31,7 +31,7 @@
 		pixel_x = initial(pixel_x)
 
 	if(robot_resting)
-		if(stat != DEAD && (R_TRAIT_WIDE in model.model_features))
+		if(stat != DEAD && is_dogborg())
 			switch(robot_resting)
 				if(ROBOT_REST_NORMAL)
 					icon_state = "[model.cyborg_base_icon]-rest"

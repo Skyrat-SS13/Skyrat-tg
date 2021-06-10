@@ -21,7 +21,8 @@
 	var/disguise = null
 	var/disguise_icon_override = null
 	var/disguise_pixel_offset = 0
-	var/disguise_model_features
+	/// Traits unique to this model (deadsprite, wide/dogborginess, etc.). Mirrors the definition in modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_model.dm
+	var/list/disguise_model_features = list()
 	var/disguise_special_light_key = null
 	var/mob/listeningTo
 	var/list/signalCache = list( // list here all signals that should break the camouflage
