@@ -756,7 +756,7 @@
 		if("Zoomba")
 			cyborg_base_icon = "zoomba_green"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
-			list(model_features = R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
+			model_features = list(model_features = R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 		if("Mech")
 			cyborg_base_icon = "lloyd"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_serv.dmi'
