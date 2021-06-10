@@ -514,21 +514,5 @@
 
 /datum/config_entry/string/centcom_source_whitelist
 
-<<<<<<< HEAD
-//SKYRAT EDIT ADDITION BEGIN
-/datum/config_entry/string/servertagline
-	config_entry_value = "We forgot to set the server's tagline in config.txt"
-
-/datum/config_entry/string/discord_link
-	config_entry_value = "We forgot to set the server's discord link in config.txt"
-
-/datum/config_entry/flag/sql_game_log
-	protection = CONFIG_ENTRY_LOCKED
-
-/datum/config_entry/flag/file_game_log
-	protection = CONFIG_ENTRY_LOCKED
-//SKYRAT EDIT END
-=======
 /// URL for admins to be redirected to for 2FA
 /datum/config_entry/string/admin_2fa_url
->>>>>>> 3e1e7f7f92 (2FA for Admins (#59467))
