@@ -23,6 +23,7 @@
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
+/*	SKYRAT EDIT - MOVED TO modular_skyrat/modules/electric_welder/code/electric_welder.dm
 /datum/design/exwelder
 	name = "Experimental Welding Tool"
 	desc = "An experimental welder capable of self-fuel generation."
@@ -32,6 +33,7 @@
 	build_path = /obj/item/weldingtool/experimental
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+*/
 
 /datum/design/rpd
 	name = "Rapid Pipe Dispenser (RPD)"
