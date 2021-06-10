@@ -821,8 +821,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Debug"
 
 	src << output("", "statbrowser:create_debug")
-<<<<<<< HEAD
-=======
 
 /client/proc/admin_2fa_verify()
 	set name = "Verify Admin"
@@ -838,4 +836,3 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 	src << link("?debug=profile&type=sendmaps&window=test")
 #endif
->>>>>>> 825143825c (Deep sendmaps profiling (#59581))
