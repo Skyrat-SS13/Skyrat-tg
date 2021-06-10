@@ -181,8 +181,8 @@
 					/obj/item/clothing/under/tachawaiian/purple = 3,
 					/obj/item/clothing/under/tachawaiian/green = 3,
 					/obj/item/clothing/under/tachawaiian/blue = 3,
-					/obj/item/clothing/glasses/betterunshit = 5)
-					/obj/item/clothing/glasses/thin = 3,	//SKYRAT EDIT ADDITION END
+					/obj/item/clothing/glasses/betterunshit = 5,
+					/obj/item/clothing/glasses/thin = 3)	//SKYRAT EDIT ADDITION END
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 1,
 		              /obj/item/clothing/mask/balaclava = 1,
