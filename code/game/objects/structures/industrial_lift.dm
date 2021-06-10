@@ -521,4 +521,8 @@ GLOBAL_LIST_EMPTY(lifts)
 /obj/effect/landmark/tram/right_part
 	name = "East Wing"
 	destination_id = "right_part"
+<<<<<<< HEAD
 	tgui_icons = list("Departures" = "plane-departure", "Cargo" = "box")
+=======
+	tgui_icons = list("Departures" = "plane-departure", "Cargo" = "box", "Science" = "flask")
+>>>>>>> 3ab5ebbe8a (Makes tram science icon actually display (#59576))
