@@ -25,6 +25,7 @@
 	var/vary = FALSE //used for the honk borg emote
 	var/only_forced_audio = FALSE //can only code call this event instead of the player.
 	var/cooldown = 0.8 SECONDS
+	var/audio_cooldown = 2 SECONDS
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	var/sound_volume = 25 //Emote volume
 	var/list/allowed_species
@@ -66,7 +67,8 @@
 	var/dchatmsg = "<b>[user]</b> [msg]"
 
 	var/tmp_sound = get_sound(user)
-	if(tmp_sound && (!only_forced_audio || !intentional))
+	if(tmp_sound && (!only_forced_audio || !intentional) && !TIMER_COOLDOWN_CHECK(user, type))
+		TIMER_COOLDOWN_START(user, type, audio_cooldown)
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
 		playsound(user, tmp_sound, sound_volume, vary)
@@ -114,6 +116,8 @@
 		message = replacetext(message, "their", user.p_their())
 	if(findtext(message, "them"))
 		message = replacetext(message, "them", user.p_them())
+	if(findtext(message, "they"))
+		message = replacetext(message, "they", user.p_they())
 	if(findtext(message, "%s"))
 		message = replacetext(message, "%s", user.p_s())
 	return message

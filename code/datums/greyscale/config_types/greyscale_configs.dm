@@ -72,6 +72,11 @@
 	icon_file = 'icons/mob/clothing/under/color.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
+/datum/greyscale_config/jumpsuit_worn_digi
+	name = "Worn Jumpsuit - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
+	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
+
 /datum/greyscale_config/jumpsuit_inhand_left
 	name = "Held Jumpsuit, Left"
 	icon_file = 'icons/mob/inhands/clothing_lefthand.dmi'
@@ -90,6 +95,11 @@
 /datum/greyscale_config/jumpsuit_prison_worn
 	name = "Worn Prison Jumpsuit"
 	icon_file = 'icons/mob/clothing/under/color.dmi'
+	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
+
+/datum/greyscale_config/jumpsuit_prison_worn_digi
+	name = "Worn Prison Jumpsuit - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
 
 /datum/greyscale_config/jumpsuit_prison_inhand_left
@@ -145,6 +155,11 @@
 	icon_file = 'icons/mob/clothing/feet.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
+/datum/greyscale_config/sneakers_worn_digi
+	name = "Worn Sneakers - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
+	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
+
 /datum/greyscale_config/sneakers_orange
 	name = "Orange Sneakers"
 	icon_file = 'icons/obj/clothing/shoes.dmi'
@@ -153,6 +168,11 @@
 /datum/greyscale_config/sneakers_orange_worn
 	name = "Worn Orange Sneakers"
 	icon_file = 'icons/mob/clothing/feet.dmi'
+	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
+
+/datum/greyscale_config/sneakers_orange_worn_digi
+	name = "Worn Orange Sneakers - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
 
 /datum/greyscale_config/sneakers_wheelys
@@ -202,6 +222,26 @@
 /datum/greyscale_config/sombrero/base_worn
 	name = "Base Worn Sombrero Style"
 	json_config = 'code/datums/greyscale/json_configs/sombrero_base_worn.json'
+
+/datum/greyscale_config/winter_coats
+	name = "Winter Coat"
+	icon_file = 'icons/obj/clothing/suits/wintercoat.dmi'
+	json_config = 'code/datums/greyscale/json_configs/wintercoats.json'
+
+/datum/greyscale_config/winter_coats/worn
+	name = "Winter Coat Worn"
+	icon_file = 'icons/mob/clothing/suits/wintercoat.dmi'
+	json_config = 'code/datums/greyscale/json_configs/wintercoats_worn.json'
+
+/datum/greyscale_config/winter_hoods
+	name = "Winter Coat Hood"
+	icon_file = 'icons/obj/clothing/head/winterhood.dmi'
+	json_config = 'code/datums/greyscale/json_configs/wintercoats_hood.json'
+
+/datum/greyscale_config/winter_hoods/worn
+	name = "Winter Coat Hood Worn"
+	icon_file = 'icons/mob/clothing/head/winterhood.dmi'
+	json_config = 'code/datums/greyscale/json_configs/wintercoats_hood_worn.json'
 
 /datum/greyscale_config/plush_lizard
 	name = "Plushie Lizard"
