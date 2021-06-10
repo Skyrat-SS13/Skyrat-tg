@@ -3,7 +3,7 @@
 	icon_state = "bullet"
 
 ///////////////////////////6mm
-//RUBBER | LETHAL | IHDF
+//LETHAL | IHDF
 ///////////////////////////////
 /obj/item/ammo_casing/b6mm
 	name = "6mm bullet casing"
@@ -17,27 +17,6 @@
 	name = "6mm bullet"
 	damage = 15
 	speed = 0.5
-
-/obj/item/ammo_casing/b6mm/rubber
-	name = "6mm rubber bullet casing"
-	desc = "A 6mm rubber bullet casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sr-casing"
-	caliber = CALIBER_6MM
-	projectile_type = /obj/projectile/bullet/advanced/b6mm/rubber
-
-/obj/projectile/bullet/advanced/b6mm/rubber
-	name = "6mm rubber bullet"
-	icon_state = "bullet_r"
-	damage = 5
-	stamina = 10
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
 
 /obj/item/ammo_casing/b6mm/ihdf
 	name = "6mm IHDF bullet casing"
@@ -54,9 +33,9 @@
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	damage_type = STAMINA
 
-///////////////////////////9mm
-//RUBBER | LETHAL | HP | IHDF
-///////////////////////////////
+///////////9mm////////
+//LETHAL | HP | IHDF//
+//////////////////////
 /obj/item/ammo_casing/b9mm
 	name = "9mm bullet casing"
 	desc = "A 9mm bullet casing."
@@ -86,27 +65,6 @@
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
-/obj/item/ammo_casing/b9mm/rubber
-	name = "9mm rubber bullet casing"
-	desc = "A 9mm rubber bullet casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sr-casing"
-	caliber = CALIBER_9MM
-	projectile_type = /obj/projectile/bullet/advanced/b9mm/rubber
-
-/obj/projectile/bullet/advanced/b9mm/rubber
-	name = "9mm rubber bullet"
-	icon_state = "bullet_r"
-	damage = 5
-	stamina = 20
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
 /obj/item/ammo_casing/b9mm/ihdf
 	name = "9mm IHDF bullet casing"
 	desc = "A 9mm intelligent high-impact dispersal foam bullet casing."
@@ -123,9 +81,9 @@
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
 
-///////////////////////////10mm
-//RUBBER | LETHAL | HP | IHDF
-///////////////////////////////
+//////////10mm////////
+//LETHAL | HP | IHDF//
+//////////////////////
 /obj/item/ammo_casing/b10mm
 	name = "10mm bullet casing"
 	desc = "A 10mm bullet casing."
@@ -155,27 +113,6 @@
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
-/obj/item/ammo_casing/b10mm/rubber
-	name = "10mm rubber bullet casing"
-	desc = "A 10mm rubber bullet casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sr-casing"
-	caliber = CALIBER_10MM
-	projectile_type = /obj/projectile/bullet/advanced/b10mm/rubber
-
-/obj/projectile/bullet/advanced/b10mm/rubber
-	name = "10mm rubber bullet"
-	icon_state = "bullet_r"
-	damage = 7
-	stamina = 25
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
-
 /obj/item/ammo_casing/b10mm/ihdf
 	name = "10mm IHDF bullet casing"
 	desc = "A 10mm intelligent high-impact dispersal foam bullet casing."
@@ -191,9 +128,9 @@
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
-//////////////////12mm
-//RUBBER | LETHAL | HP
-//////////////////////
+//////12mm/////
+//LETHAL | HP//
+///////////////
 /obj/item/ammo_casing/b12mm
 	name = "12mm bullet casing"
 	desc = "A 12mm bullet casing."
@@ -222,27 +159,6 @@
 	wound_bonus = 35
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
-
-/obj/item/ammo_casing/b12mm/rubber
-	name = "12mm rubber bullet casing"
-	desc = "A 12mm rubber bullet casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sr-casing"
-	caliber = CALIBER_12MM
-	projectile_type = /obj/projectile/bullet/advanced/b12mm/rubber
-
-/obj/projectile/bullet/advanced/b12mm/rubber
-	name = "12mm rubber bullet"
-	icon_state = "bullet_r"
-	damage = 13
-	stamina = 50
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
 
 
 /obj/item/ammo_casing/b577
@@ -296,9 +212,9 @@
 	icon_state = "smartgun_embed"
 	embedding = null
 
-/////////////4.73x33mm CASELESS
-//RUBBER | LETHAL | HP | IHDF
-///////////////////////////////
+//4.73x33mm CASELESS//
+//LETHAL | HP | IHDF//
+//////////////////////
 /obj/item/ammo_casing/caseless/b473
 	name = "4.73x33mm bullet"
 	desc = "A 4.73x33mm bullet."
@@ -328,27 +244,6 @@
 	wound_bonus = 30
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
-
-/obj/item/ammo_casing/caseless/b473/rubber
-	name = "4.73x33mm rubber bullet"
-	desc = "A 4.73x33mm rubber bullet."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sr-casing"
-	caliber = CALIBER_473MM
-	projectile_type = /obj/projectile/bullet/advanced/b473/rubber
-
-/obj/projectile/bullet/advanced/b473/rubber
-	name = "4.73x33mm rubber bullet"
-	icon_state = "bullet_r"
-	damage = 5
-	stamina = 20
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
 
 /obj/item/ammo_casing/caseless/b473/ihdf
 	name = "4.73x33mm IHDF bullet"

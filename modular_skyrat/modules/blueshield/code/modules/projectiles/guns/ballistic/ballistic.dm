@@ -52,10 +52,6 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF

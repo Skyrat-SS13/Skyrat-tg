@@ -50,9 +50,6 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/g17/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/g17/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
@@ -90,10 +87,6 @@
 /obj/item/ammo_box/magazine/multi_sprite/g18/hp
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/g18/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
@@ -145,15 +138,11 @@
 	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
+	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT)
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/pdh/rubber
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
-	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
 	name = "\improper Armadyne PDH-6M 'Corporate'"
@@ -204,10 +193,6 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
@@ -247,12 +232,8 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/ladon/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/ladon/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /////////////////////MAKAROV
@@ -285,12 +266,8 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/makarov/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/makarov/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 ////////////////////////////MK58
@@ -324,12 +301,8 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/mk58/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 //////////////////////FIREFLY
@@ -362,9 +335,6 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
@@ -411,10 +381,6 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/pcr/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
@@ -459,10 +425,6 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
@@ -501,11 +463,7 @@
 	caliber = CALIBER_6MM
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
-
-/obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber
-	ammo_type = /obj/item/ammo_casing/b6mm/rubber
-	round_type = AMMO_TYPE_RUBBER
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/ihdf
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
@@ -547,11 +505,7 @@
 	caliber = CALIBER_6MM
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
-
-/obj/item/ammo_box/magazine/multi_sprite/croon/rubber
-	ammo_type = /obj/item/ammo_casing/b6mm/rubber
-	round_type = AMMO_TYPE_RUBBER
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/croon/ihdf
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
@@ -594,10 +548,6 @@
 /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
@@ -648,16 +598,11 @@
 	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/norwind/rubber
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 
 /obj/item/gun/ballistic/automatic/vintorez
 	name = "\improper Armadyne VKC 'Vintorez'"
@@ -698,10 +643,6 @@
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
@@ -757,7 +698,7 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm
 	caliber = CALIBER_10MM
 	max_ammo = 6
 
@@ -786,7 +727,7 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MM
 	max_ammo = 8
 
@@ -924,10 +865,6 @@
 /obj/item/ammo_box/magazine/multi_sprite/g11/hp
 	ammo_type = /obj/item/ammo_casing/caseless/b473/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/g11/rubber
-	ammo_type = /obj/item/ammo_casing/caseless/b473/rubber
-	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/g11/ihdf
 	ammo_type = /obj/item/ammo_casing/caseless/b473/ihdf

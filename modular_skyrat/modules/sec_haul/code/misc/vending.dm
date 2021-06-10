@@ -108,9 +108,9 @@
 	icon_deny = "ammo-deny"
 	light_mask = "ammo-light-mask"
 	req_access = list(ACCESS_SECURITY)
-	products = list(/obj/item/ammo_box/advanced/b6mm/rubber = 10,
-					/obj/item/ammo_box/advanced/b9mm/rubber = 10,
-					/obj/item/ammo_box/advanced/b10mm/rubber = 10,
+	products = list(/obj/item/ammo_box/advanced/b6mm = 10,
+					/obj/item/ammo_box/advanced/b9mm = 10,
+					/obj/item/ammo_box/advanced/b10mm = 10,
 					/obj/item/ammo_box/advanced/pepperballs = 10,
 					/obj/item/storage/bag/ammo = 3,
 					/obj/item/gun_maintenance_supplies = 10

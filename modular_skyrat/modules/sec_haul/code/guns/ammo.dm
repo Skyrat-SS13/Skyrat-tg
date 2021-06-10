@@ -36,20 +36,6 @@
 	ammo_type = /obj/item/ammo_casing/b6mm
 	max_ammo = 30
 
-/datum/design/b6mm/rubber
-	name = "Peacekeeper Ammo Box (6mm rubber)"
-	id = "b6mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b6mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-/obj/item/ammo_box/advanced/b6mm/rubber
-	name = "ammo box (6mm rubber)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box10mm-rubber"
-	ammo_type = /obj/item/ammo_casing/b6mm/rubber
 
 /datum/design/b6mm/ihdf
 	name = "Peacekeeper Ammo Box (6mm ihdf)"
@@ -84,21 +70,6 @@
 	icon_state = "pistol_l"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	max_ammo = 30
-
-/datum/design/b9mm/rubber
-	name = "Peacekeeper Ammo Box (9mm rubber)"
-	id = "b9mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b9mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-/obj/item/ammo_box/advanced/b9mm/rubber
-	name = "ammo box (9mm rubber)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_r"
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 
 /datum/design/b9mm/hp
 	name = "Peacekeeper Ammo Box (9mm hollowpoint)"
@@ -149,21 +120,6 @@
 	ammo_type = /obj/item/ammo_casing/b10mm
 	max_ammo = 30
 
-/datum/design/b10mm/rubber
-	name = "Peacekeeper Ammo Box (10mm rubber)"
-	id = "b10mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b10mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-/obj/item/ammo_box/advanced/b10mm/rubber
-	name = "peacekeeper ammo box (10mm rubber)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-rubber"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-
 /datum/design/b10mm/hp
 	name = "Peacekeeper Ammo Box (10mm hollowpoint)"
 	id = "b10mm_hollowpoint"
@@ -213,20 +169,6 @@
 	ammo_type = /obj/item/ammo_casing/b12mm
 	max_ammo = 15
 
-/datum/design/b12mm/rubber
-	name = "Peacekeeper Ammo Box (12mm rubber)"
-	id = "b12mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b12mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-/obj/item/ammo_box/advanced/b12mm/rubber
-	name = "peacekeeper ammo box (12mm rubber)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "magnum_r"
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 
 /datum/design/b12mm/hp
 	name = "Peacekeeper Ammo Box (12mm hollowpoint)"
@@ -273,7 +215,7 @@
 	item_flags = NO_MAT_REDEMPTION
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
-	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
+	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize()
 	. = ..()
@@ -317,7 +259,7 @@
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	var/round_type = AMMO_TYPE_LETHAL
-	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
+	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_IHDF)
 	start_empty = TRUE //SOmething strange going on with refills.
 
 /obj/item/ammo_box/revolver/AltClick(mob/user)
