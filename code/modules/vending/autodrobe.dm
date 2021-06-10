@@ -162,9 +162,9 @@
 					  /obj/item/gun/magic/wand/nothing = 2,
 					  /obj/item/clothing/glasses/sunglasses/garb = 2,
 					  /obj/item/clothing/glasses/blindfold = 1,
-					  /obj/item/clothing/mask/balaclavaadjust = 1,
+					  /obj/item/clothing/mask/balaclavaadjust = 1, 	//SKYRAT EDIT ADDITION START
 					  /obj/item/clothing/mask/balaclava/threehole = 1,
-					  /obj/item/clothing/mask/balaclava/threehole/green = 1,
+					  /obj/item/clothing/mask/balaclava/threehole/green = 1,	//SKYRAT EDIT ADDITION END
 					  /obj/item/clothing/mask/muzzle = 2)
 	premium = list(/obj/item/clothing/suit/pirate/captain = 2,
 				   /obj/item/clothing/head/pirate/captain = 2,

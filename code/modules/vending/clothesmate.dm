@@ -154,8 +154,8 @@
 					/obj/item/clothing/neck/cloak/polychromic = 3,
 					/obj/item/clothing/neck/cloak/polychromic/veil = 3,
 					/obj/item/clothing/neck/cloak/polychromic/shroud = 3,
-					/obj/item/clothing/neck/cloak/polychromic/boat = 3)	// SKYRAT EDIT END - Adds polychromic gear to ClothesMates
-					/obj/item/clothing/head/polyflatc = 3,	//SKYRAT EDIT ADDITION BEGIN
+					/obj/item/clothing/neck/cloak/polychromic/boat = 3,	// SKYRAT EDIT END - Adds polychromic gear to ClothesMates
+					/obj/item/clothing/head/polyflatc = 3, 	//SKYRAT EDIT ADDITION BEGIN
 					/obj/item/clothing/head/hijab = 3,
 					/obj/item/clothing/head/turb = 3,
 					/obj/item/clothing/head/keffiyeh = 3,
@@ -181,7 +181,7 @@
 					/obj/item/clothing/under/tachawaiian/purple = 3,
 					/obj/item/clothing/under/tachawaiian/green = 3,
 					/obj/item/clothing/under/tachawaiian/blue = 3,
-					/obj/item/clothing/glasses/betterunshit = 5,
+					/obj/item/clothing/glasses/betterunshit = 5)
 					/obj/item/clothing/glasses/thin = 3,	//SKYRAT EDIT ADDITION END
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 1,
@@ -207,9 +207,9 @@
 				   /obj/item/clothing/under/costume/swagoutfit = 1,
 				   /obj/item/clothing/shoes/swagshoes = 1,
 		           /obj/item/instrument/piano_synth/headphones/spacepods = 1,
-		           /obj/item/clothing/suit/brownbattlecoat = 1,
+		           /obj/item/clothing/suit/brownbattlecoat = 1, 	//SKYRAT EDIT ADDITION BEGIN
 		           /obj/item/clothing/suit/blackfurrich = 1,
-		           /obj/item/clothing/suit/frenchtrench = 1)
+		           /obj/item/clothing/suit/frenchtrench = 1) 	 //SKYRAT EDIT ADDITION END
 	refill_canister = /obj/item/vending_refill/clothing
 	default_price = PAYCHECK_ASSISTANT * 0.7 //Default of
 	extra_price = PAYCHECK_HARD
