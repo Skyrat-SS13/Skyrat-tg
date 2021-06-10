@@ -457,14 +457,10 @@
 		to_chat(user, "<span class='boldwarning'>You cannot send IC messages (muted).</span>")
 		return FALSE
 	else if(!params)
-<<<<<<< HEAD
 		//SKYRAT EDIT CHANGE BEGIN
-		//var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN) - SKYRAT EDIT - ORIGINAL
-		var/custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
+		//custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN) - SKYRAT EDIT - ORIGINAL
+		custom_emote = stripped_multiline_input(user, "Choose an emote to display.", "Me" , null, MAX_MESSAGE_LEN)
 		//SKYRAT EDIT CHANGE END
-=======
-		custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
->>>>>>> 73a3b55b0d (Makes it so *me and *custom no longer rely on a datum variable to store messages (#59245))
 		if(custom_emote && !check_invalid(user, custom_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
@@ -478,14 +474,9 @@
 	else
 		custom_emote = params
 		if(type_override)
-<<<<<<< HEAD
-			emote_type = type_override
-	message = user.say_emphasis(message) //SKYRAT EDIT ADDITION - EMOTES
-=======
 			custom_emote_type = type_override
-	message = custom_emote
+	message = user.say_emphasis(custom_emote) //SKYRAT EDIT ADDITION - EMOTES
 	emote_type = custom_emote_type
->>>>>>> 73a3b55b0d (Makes it so *me and *custom no longer rely on a datum variable to store messages (#59245))
 	. = ..()
 	message = null
 	emote_type = EMOTE_VISIBLE

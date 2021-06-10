@@ -128,19 +128,9 @@
 			ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
 
 	if(emote_type == EMOTE_AUDIBLE)
-<<<<<<< HEAD
-		//SKYRAT EDIT CHANGE BEGIN
-		//user.audible_message(msg, audible_message_flags = EMOTE_MESSAGE) - SKYRAT EDIT - ORIGINAL
-		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
-	else
-		//user.visible_message(msg, visible_message_flags = EMOTE_MESSAGE) - SKYRAT EDIT - ORIGINAL
-		user.visible_message(msg, blind_message = "<span class='emote'>You hear how <b>[user]</b> [msg]</span>", visible_message_flags = EMOTE_MESSAGE)
-		//SKYRAT EDIT CHANGE END
-=======
 		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
 	else
 		user.visible_message(msg, blind_message = "<span class='emote'>You hear how <b>[user]</b> [msg]</span>", visible_message_flags = EMOTE_MESSAGE)
->>>>>>> 73a3b55b0d (Makes it so *me and *custom no longer rely on a datum variable to store messages (#59245))
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
@@ -279,18 +269,15 @@
 		var/mob/living/sender = user
 		if(HAS_TRAIT(sender, TRAIT_EMOTEMUTE))
 			return FALSE
-<<<<<<< HEAD
 	//SKYRAT EDIT BEGIN
 	if(allowed_species)
 		var/check = FALSE
 		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(H.dna.species.type in allowed_species)
+			var/mob/living/carbon/human/sender = user
+			if(sender.dna.species.type in allowed_species)
 				check = TRUE
 		return check
 	//SKYRAT EDIT END
-=======
->>>>>>> 73a3b55b0d (Makes it so *me and *custom no longer rely on a datum variable to store messages (#59245))
 
 /**
 * Allows the intrepid coder to send a basic emote
