@@ -947,7 +947,7 @@
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/sight/thermal,
 		/obj/item/extinguisher,
-		/obj/item/weldingtool/experimental,
+		/obj/item/weldingtool/electric,
 		/obj/item/screwdriver/nuke,
 		/obj/item/wrench/cyborg,
 		/obj/item/crowbar/cyborg,
