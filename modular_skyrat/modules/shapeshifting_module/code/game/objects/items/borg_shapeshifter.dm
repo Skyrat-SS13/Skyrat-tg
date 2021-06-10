@@ -1099,6 +1099,7 @@
 	src.user = user
 
 /obj/item/borg_shapeshifter/proc/disrupt(mob/living/silicon/robot/user)
+	SIGNAL_HANDLER
 	if(active)
 		to_chat(user, "<span class='danger'>Your chameleon field deactivates.</span>")
 		deactivate(user)
