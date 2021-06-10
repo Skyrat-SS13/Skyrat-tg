@@ -94,7 +94,7 @@
 
 /datum/design/exwelder
 	name = "Electrical Welding Tool"
-	desc = "An experimental welding tool capable of creating a flame using electricity."
+	desc = "An experimental welding tool capable of welding using electricity."
 	id = "exwelder"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
