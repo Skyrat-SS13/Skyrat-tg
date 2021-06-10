@@ -203,29 +203,10 @@
 		/*
 		if(!check_rights(R_SERVER))
 			return
-<<<<<<< HEAD
 		*/
 		if(!check_rights(R_ADMIN))
 			return
-		//SKYRAT EDIT CHANGE END
-		if(!SSticker.delay_end)
-			SSticker.admin_delay_notice = input(usr, "Enter a reason for delaying the round end", "Round Delay Reason") as null|text
-			if(isnull(SSticker.admin_delay_notice))
-				return
-		else
-			if(tgui_alert(usr, "Really cancel current round end delay? The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Undelay round end", list("Yes", "No")) != "Yes")
-				return
-			SSticker.admin_delay_notice = null
-		SSticker.delay_end = !SSticker.delay_end
-		var/reason = SSticker.delay_end ? "for reason: [SSticker.admin_delay_notice]" : "."//laziness
-		var/msg = "[SSticker.delay_end ? "delayed" : "undelayed"] the round end [reason]"
-		log_admin("[key_name(usr)] [msg]")
-		message_admins("[key_name_admin(usr)] [msg]")
-		if(SSticker.ready_for_reboot && !SSticker.delay_end) //we undelayed after standard reboot would occur
-			SSticker.standard_reboot()
-=======
->>>>>>> 01eba3bbdd (Admins will no longer accidentally undelay round end or reboot the server when multiple admins attempt to delay it at the same time. (#59551))
-
+		//SKYRAT EDIT END
 		if(SSticker.delay_end)
 			tgui_alert(usr, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
 			return
