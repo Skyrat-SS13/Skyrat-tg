@@ -7,8 +7,13 @@
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = TRUE
+<<<<<<< HEAD
 		mind.current = src
 	my_client = client //SKYRAT EDIT ADDITION
+=======
+		mind.set_current(src)
+
+>>>>>>> f90e8cf7a3 (Fixes a bunch of harddels that are sourced from player action (#59371))
 	. = ..()
 	if(!. || !client)
 		return FALSE
