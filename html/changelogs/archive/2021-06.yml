@@ -243,3 +243,47 @@
   unit0016:
   - bugfix: Circuit Multitool is no longer invisible
   - imagedel: "Duplicate SM sprite and worse codersprites are gone \U0001F980"
+2021-06-11:
+  KasparoVy:
+  - rscdel: The borg shinker module will no longer work on certain compact chassis
+      models, providing a feedback message. This includes the peacekeeper-ball, vroomba,
+      eyeborg, mining drone and some others.
+  - tweak: SkyRat Altborg code's been refactored - indicating that a model is small,
+      is a dogborg or has unique wreck sprites is now done in a features list.
+  SkyratBot:
+  - bugfix: '*me should no longer force someone else''s message on your emote.'
+  - bugfix: fixed the 2person mech crushing it's own parts
+  - bugfix: The chemistry diamond is now NFPA compliant
+  - bugfix: Durathread strangling caused by golems can now be cut off with jaws of
+      life as well.
+  - rscadd: 'New emote: *tilt "tilts their head to the side."'
+  - admin: Added the ability to enforce two-factor authentication onto admins.
+  - admin: Admins will no longer accidentally toggle delaying the end of the shift
+      off when multiple admins attempt to delay at the same time.
+  - admin: When a round end delay goes past the ordinary server restart time, admins
+      are now required to manually end the shift through Reboot World in the Server
+      verb tab or Reboot-World in the command bar. The shift will no longer automatically
+      restart past this point just because an admin undelayed end.
+  - bugfix: 'Fixed defibrillator paddles and wall mounts not detecting charge changes.
+      qol: Examining defibrillators now tell you if there is a power cell inside and
+      how to remove it'
+  - bugfix: Removes random camera and railing in space near xenobio on metastation
+  - bugfix: Shaft Miners can now access Cargo on Tramstation
+  - bugfix: Replaces unusable TEG board on derelict with boards for a turbine setup
+      instead.
+  Wallem:
+  - bugfix: Matchbox sprite properly empties.
+  ZephyrTFA:
+  - rscadd: Interaction Menu
+  - rscadd: Basic Interactions for the IM
+  tf-4:
+  - bugfix: You can no longer snort cocaine through a helmet or mask
+  - bugfix: The electric welder is once again functional
+  - refactor: The electric welder is now a welding tool subtype
+  - bugfix: Shotguns now shoot buckshot properly once more
+  - code_imp: adds ishorrorling() helper for all your horror ling checking needs
+  thestubborn:
+  - rscadd: added loadout stuff to the everyone vendors
+  unit0016:
+  - bugfix: Xenobiology on NSS Journey no longer generates roundstart atmos diffs.
+  - rscadd: Interdyne has been remapped from the ground up.
