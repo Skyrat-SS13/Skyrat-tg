@@ -71,7 +71,6 @@
 	id = "ocean-biolab"
 	description = "Interdyne pharmaceuticals has denied any and all involvement in the recently discovered 'terrorist labrotory' in NT space."
 	suffix = "ocean_bioweapon_lab.dmm"
-	cost = 10
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/trench/fissure
@@ -79,10 +78,24 @@
 	id = "ocean-fissure"
 	description = "A tear in the ocean."
 	suffix = "ocean_fissure.dmm"
-	cost = 5
 
 /datum/map_template/ruin/trench/fissure/diag
 	name = "Horizontal Thermal Fissure"
 	id = "ocean-fissure-diag"
 	description = "A horizontal tear in the ocean."
 	suffix = "ocean_fissure_diag.dmm"
+
+/datum/map_template/ruin/trench/fountain
+	name = "Fountain Hall"
+	id = "fountain"
+	description = "The fountain has a warning on the side. DANGER: May have undeclared side effects that only become obvious when implemented."
+	prefix = "_maps/RandomRuins/AnywhereRuins/"
+	suffix = "fountain_hall.dmm"
+
+/datum/map_template/ruin/trench/free_golem //Hilariously cursed. Genuinely. Vile.
+	name = "Free Golem Ship"
+	id = "golem-ship"
+	description = "Lumbering humanoids, made out of precious metals, move inside this ship. They frequently leave to mine more minerals, which they somehow turn into more of them. \
+	Seem very intent on research and individual liberty, and also geology-based naming?"
+	prefix = "_maps/RandomRuins/AnywhereRuins/"
+	suffix = "golem_ship.dmm"
