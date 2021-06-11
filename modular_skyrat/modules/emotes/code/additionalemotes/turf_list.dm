@@ -14,11 +14,14 @@
 			name = "hand-sewn web"
 			desc = "It's a sticky web."
 			icon_state = pick("stickyweb1", "stickyweb2")
+			playsound(get_turf(src), 'modular_skyrat/master_files/sound/effects/weave.ogg', 50, TRUE)
 
 		if("vines")
 			name = "sprouted vines"
 			desc = "It's an entanglement of vines."
 			icon_state = pick("kudzu1", "kudzu1", "kudzu3")
+			playsound(get_turf(src), 'sound/creatures/venus_trap_hurt.ogg', 50, TRUE)
+
 
 		if("water")
 			name = "puddle of water"
@@ -26,28 +29,33 @@
 			icon_state = "water"
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "water_top", ABOVE_MOB_LAYER))
 			flick_overlay_static(image('modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi', "splash", ABOVE_MOB_LAYER), src, 20)
+			playsound(get_turf(src), 'modular_skyrat/sound/effects/watersplash.ogg', 50, TRUE)
 
 		if("smoke")
 			name = "lizard's smoke"
 			desc = "It's a mist of smoke."
 			icon_state = "smoke"
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "smoke_top", ABOVE_MOB_LAYER))
+			playsound(get_turf(src), 'sound/effects/wounds/sizzle2.ogg', 50, TRUE)
 
 		if("xenoresin")
 			name = "resin"
 			desc = "Looks like some kind of thick resin."
 			icon_state = "xenoresin"
+			playsound(get_turf(src), 'sound/effects/splat.ogg', 50, TRUE)
 
 		if("holobed")
 			name = "physical hologram"
 			desc = "It's a hologram of a pet bed."
 			icon_state = "holobed"
+			playsound(get_turf(src), 'sound/misc/compiler_stage2.ogg', 50, TRUE)
 
 		if("holoseat")
 			name = "physical hologram"
 			desc = "It's a hologram of a barstool."
 			icon_state = "holoseat"
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "holoseat_top", ABOVE_MOB_LAYER))
+			playsound(get_turf(src), 'sound/misc/compiler_stage2.ogg', 50, TRUE)
 
 		if("slime")
 			name = "pile of oozing slime"
@@ -78,6 +86,7 @@
 			icon_state = "dust"
 			pixel_x = -16
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "dust_top", ABOVE_MOB_LAYER))
+			playsound(get_turf(src), 'modular_skyrat/master_files/sound/effects/wing_flap.ogg', 50, TRUE)
 
 		if("borgmat")
 			name = "soft-foam mat"
@@ -98,6 +107,7 @@
 			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", ABOVE_MOB_LAYER)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 			src.add_overlay(overlay)
+			playsound(get_turf(src), 'sound/weapons/thudswoosh.ogg', 50, TRUE)
 
 		if("constrict")
 			name = "tail"
@@ -108,6 +118,7 @@
 			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", ABOVE_MOB_LAYER)
 			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
 			src.add_overlay(overlay)
+			playsound(get_turf(src), 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg', 50, TRUE)
 
 		//prints
 		if("pawprint")
