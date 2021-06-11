@@ -8,8 +8,8 @@
 /datum/emote/living/sweatdrop/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
-	I.pixel_x = 10
-	I.pixel_y = 10
+	overlay.pixel_x = 10
+	overlay.pixel_y = 10
 	flick_overlay_static(overlay, user, 50)
 	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 35, TRUE)
 
@@ -20,8 +20,8 @@
 /datum/emote/living/exclamate/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
-	I.pixel_x = 10
-	I.pixel_y = 28
+	overlay.pixel_x = 10
+	overlay.pixel_y = 28
 	flick_overlay_static(overlay, user, 50)
 	playsound(get_turf(user), 'sound/machines/chime.ogg', 25, TRUE)
 
@@ -33,7 +33,7 @@
 /datum/emote/living/realize/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "realize", ABOVE_MOB_LAYER)
-	I.pixel_y = 15
+	overlay.pixel_y = 15
 	flick_overlay_static(overlay, user, 50)
 	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/realize.ogg', 25, TRUE)
 
@@ -44,8 +44,8 @@
 /datum/emote/living/annoyed/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
-	I.pixel_x = 10
-	I.pixel_y = 10
+	overlay.pixel_x = 10
+	overlay.pixel_y = 10
 	flick_overlay_static(overlay, user, 50)
 	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
 
