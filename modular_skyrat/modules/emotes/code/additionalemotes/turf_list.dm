@@ -48,14 +48,14 @@
 			name = "physical hologram"
 			desc = "It's a hologram of a pet bed."
 			icon_state = "holobed"
-			playsound(get_turf(src), 'sound/misc/compiler_stage2.ogg', 50, TRUE)
+			playsound(get_turf(src), 'sound/misc/compiler-stage2.ogg', 50, TRUE)
 
 		if("holoseat")
 			name = "physical hologram"
 			desc = "It's a hologram of a barstool."
 			icon_state = "holoseat"
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "holoseat_top", ABOVE_MOB_LAYER))
-			playsound(get_turf(src), 'sound/misc/compiler_stage2.ogg', 50, TRUE)
+			playsound(get_turf(src), 'sound/misc/compiler-stage2.ogg', 50, TRUE)
 
 		if("slime")
 			name = "pile of oozing slime"
