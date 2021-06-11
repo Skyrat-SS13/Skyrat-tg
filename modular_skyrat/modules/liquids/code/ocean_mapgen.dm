@@ -86,10 +86,14 @@
 	open_turf_types =  list(/turf/open/floor/plating/ocean/rock/heavy = 1)
 	closed_turf_types =  list(/turf/closed/mineral/random/ocean = 1)
 
-	feature_spawn_list = null
+	mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/goliath/beast/random = 50, /obj/structure/spawner/lavaland/goliath = 3, \
+		SPAWN_MEGAFAUNA = 4, /mob/living/simple_animal/hostile/asteroid/goldgrub = 10, /mob/living/simple_animal/hostile/asteroid/basilisk/watcher/random = 40, \
+		/mob/living/simple_animal/hostile/asteroid/hivelord/legion/ocean = 50, /obj/structure/spawner/ice_moon/demonic_portal/ocean = 3, \
+		/obj/structure/spawner/ice_moon/demonic_portal/ocean/bubbalegion = 3, /obj/structure/spawner/ice_moon/demonic_portal/ocean/watcher = 3)
 
-	mob_spawn_list = list(/mob/living/simple_animal/hostile/carp = 1)
-	mob_spawn_chance = 1
+	megafauna_spawn_list = list(/mob/living/simple_animal/hostile/megafauna/colossus = 1)
 
 	flora_spawn_chance = 4
 	flora_spawn_list = list(/obj/structure/flora/rock = 1, /obj/structure/flora/rock/pile = 1)
+
+	feature_spawn_list = list(/obj/structure/geyser/wittel = 6, /obj/structure/geyser/random = 2, /obj/structure/geyser/plasma_oxide = 10, /obj/structure/geyser/protozine = 10, /obj/structure/geyser/hollowwater = 10)
