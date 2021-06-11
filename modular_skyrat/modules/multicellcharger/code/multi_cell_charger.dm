@@ -39,6 +39,10 @@
 		. += new /mutable_appearance(charge_overlay)
 		. += new /mutable_appearance(cell_overlay)
 
+/obj/machinery/cell_charger_multi/CtrlShiftClick(mob/user) // Remove this after like a month - starting 11-Jun-21
+	. = ..()
+	to_chat(user, "<span class='warning'>This action has been moved to Right Click.</span>")
+
 /obj/machinery/cell_charger_multi/RightClick(mob/user)
 	. = ..()
 	if(!can_interact(user) || !charging_batteries.len)
