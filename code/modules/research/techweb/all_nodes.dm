@@ -55,17 +55,12 @@
 		"space_heater",
 		"tech_disk",
 		"titaniumglass",
-
 		//SKYRAT EDIT - RESEARCH DESIGNS
 		"b6mm",
-		"b6mm_rubber",
 		"b9mm",
-		"b9mm_rubber",
 		"b10mm",
-		"b10mm_rubber",
 		"b12mm",
-		"b12mm_rubber",
-		"pepperballs",
+		"pepperballs"
 		//SKYRAT EDIT ADDITION - RESEARCH DESIGNS
 	)
 
