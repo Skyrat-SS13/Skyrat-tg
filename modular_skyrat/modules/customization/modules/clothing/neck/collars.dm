@@ -97,7 +97,6 @@
 	name = "cowbell collar"
 	desc = "Don't fear the reaper, now your pet doesn't have to."
 	icon_state = "collar_cowbell"
-	is_polychromic = FALSE
 
 /obj/item/clothing/neck/human_petcollar/locked/bellcollar
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'

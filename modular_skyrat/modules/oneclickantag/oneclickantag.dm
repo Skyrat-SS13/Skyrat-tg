@@ -1,29 +1,11 @@
 /datum/mind/var/list/oneclickantag = list()
 
 /datum/mind/remove_antag_datum(datum)
-	switch(datum)
-		if(/datum/antagonist/traitor)
-			src.oneclickantag += ROLE_TRAITOR
-		if(/datum/antagonist/changeling)
-			src.oneclickantag += ROLE_CHANGELING
-		if(/datum/antagonist/rev)
-			src.oneclickantag += ROLE_REV
-		if(/datum/antagonist/cult)
-			src.oneclickantag += ROLE_CULTIST
-		if(/datum/antagonist/brother)
-			src.oneclickantag += ROLE_BROTHER
-		if(/datum/antagonist/monkey)
-			src.oneclickantag += ROLE_MONKEY
-		if(/datum/antagonist/traitor/internal_affairs)
-			src.oneclickantag += ROLE_INTERNAL_AFFAIRS
-		if(/datum/antagonist/gang)
-			src.oneclickantag += ROLE_FAMILIES
-		if(/datum/antagonist/heretic)
-			src.oneclickantag += ROLE_HERETIC
-		if(/datum/antagonist/obsessed)
-			src.oneclickantag += ROLE_OBSESSED
-		else
-			message_admins("Unable to update [src]'s previous antag list for One Click Antag. Unhandled datum '[datum]'. Ping ZephyrTFA.")
+	var/datum/antagonist/antag = datum
+	var/role = initial(antag.job_rank)
+	if(role)
+		oneclickantag += role
+	else message_admins("Unable to update [src]'s previous antag list for One Click Antag. Unhandled datum '[datum]'. Ping ZephyrTFA.")
 	return ..()
 
 /datum/mind/proc/make_antag(antagtype, opt = null)

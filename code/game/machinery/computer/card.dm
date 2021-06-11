@@ -112,7 +112,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 //Logic check for Topic() if you can open the job
 /obj/machinery/computer/card/proc/can_open_job(datum/job/job)
 	if(job)
-		if(!job_blacklisted(job.title) && !job.trusted_only) //SKYRAT EDIT CHANGE
+		if(!job_blacklisted(job.title) && !job.veteran_only) //SKYRAT EDIT CHANGE
 			if((job.total_positions <= GLOB.player_list.len * (max_relative_positions / 100)))
 				var/delta = (world.time / 10) - GLOB.time_last_changed_position
 				if((change_position_cooldown < delta) || (opened_positions[job.title] < 0))
@@ -124,7 +124,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 //Logic check for Topic() if you can close the job
 /obj/machinery/computer/card/proc/can_close_job(datum/job/job)
 	if(job)
-		if(!job_blacklisted(job.title) && !job.trusted_only) //SKYRAT EDIT CHANGE
+		if(!job_blacklisted(job.title) && !job.veteran_only) //SKYRAT EDIT CHANGE
 			if(job.total_positions > job.current_positions)
 				var/delta = (world.time / 10) - GLOB.time_last_changed_position
 				if((change_position_cooldown < delta) || (opened_positions[job.title] > 0))
