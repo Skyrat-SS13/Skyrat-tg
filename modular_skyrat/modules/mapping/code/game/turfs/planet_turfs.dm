@@ -93,17 +93,31 @@
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 	defer_change = TRUE
 
-	mineralSpawnChanceList = list(/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10,
-		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /obj/item/stack/ore/titanium = 11,
-		/turf/closed/mineral/gibtonite = 3, /obj/item/stack/ore/bluespace_crystal = 1)	//A bit less gibtonite because of higher spawns making it nuts
+	mineralSpawnChanceList = list(
+		/obj/item/stack/ore/iron = 40,
+		/obj/item/stack/ore/plasma = 20,
+		/obj/item/stack/ore/silver = 12,
+		/obj/item/stack/ore/titanium = 11,
+		/obj/item/stack/ore/gold = 10,
+		/obj/item/stack/ore/uranium = 5,
+		/turf/closed/mineral/gibtonite = 3,	//A bit less gibtonite because of higher spawns making it nuts
+		/obj/item/stack/ore/diamond = 1,
+		/obj/item/stack/ore/bluespace_crystal = 1
+		)
 	mineralChance = 25	//Higher mineral chance than normal
 
 /turf/closed/mineral/random/asteroid/rockplanet/labor	//No bluespace for the inmates!
 	icon_state = "rock_labor"
 	mineralSpawnChanceList = list(
-		/obj/item/stack/ore/uranium = 3, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 8, /obj/item/stack/ore/titanium = 8,
-		/obj/item/stack/ore/silver = 20, /obj/item/stack/ore/plasma = 30, /obj/item/stack/ore/iron = 95,
-		/turf/closed/mineral/gibtonite = 1)
+		/obj/item/stack/ore/iron = 95,
+		/obj/item/stack/ore/plasma = 30,
+		/obj/item/stack/ore/silver = 20,
+		/obj/item/stack/ore/gold = 8,
+		/obj/item/stack/ore/titanium = 8,
+		/obj/item/stack/ore/uranium = 3,
+		/obj/item/stack/ore/diamond = 1,
+		/turf/closed/mineral/gibtonite = 1
+		)
 
 /turf/closed/mineral/asteroid/has_air
 	initial_gas_mix = OPENTURF_LOW_PRESSURE	//one that WONT screw with atmos if its mapped somewhere
