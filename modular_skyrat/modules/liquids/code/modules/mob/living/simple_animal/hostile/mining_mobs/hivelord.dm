@@ -10,7 +10,6 @@
 	crusher_loot = /obj/item/crusher_trophy/legion_skull
 	loot = list(/obj/item/organ/regenerative_core/legion)
 	brood_type = /mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion/ocean
-	invisibility = 50 //Bubbalegions are half invisible, being.. you know, bubbles.
 
 /mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion/ocean/make_legion(mob/living/carbon/human/H)
 	return new /mob/living/simple_animal/hostile/asteroid/hivelord/legion/ocean(H.loc)
@@ -24,4 +23,3 @@
 	icon_living = "bubbalegion_head"
 	icon_aggro = "bubbalegion_head"
 	icon_dead = "bubbalegion_head"
-	invisibility = 50 //Ditto
