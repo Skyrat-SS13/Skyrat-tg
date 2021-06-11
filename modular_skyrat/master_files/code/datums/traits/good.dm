@@ -42,6 +42,6 @@
 	desc = "(Lizard innate) The ability to forge ash and flame, a mighty power - yet mostly used for theatrics."
 	value = 2
 	mob_trait = TRAIT_ASH_ASPECT
-	gain_text = "<span class='notice'>There is a forge smouldering inside of you.</span>"
+	gain_text = "<span class='notice'>There is a forge smouldering inside of you. (Say *turf to cast)</span>"
 	lose_text = "<span class='danger'>Somehow, you've lost your ability to breathe fire.</span>"
 	medical_record_text = "Patients possess a fire breathing gland commonly found in lizard folk."
