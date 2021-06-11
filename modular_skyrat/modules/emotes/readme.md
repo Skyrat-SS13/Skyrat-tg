@@ -49,4 +49,12 @@ modular_skyrat/modules/emotes/code/emotes.dm 	| `#define EMOTE_DELAY`
   - refactoring code
   - adjusting existing sound files
   - adding more emotes
+
+- TheOOZ Additional emotes
+  - species accurate audio
+  - failure messages
+  - effect emotes
+  - overlay emotes
+  - turf emotes
+
 - VOREstation - a couple of the soundfiles and emote texts
