@@ -11,7 +11,7 @@
 	overlay.pixel_x = 10
 	overlay.pixel_y = 10
 	flick_overlay_static(overlay, user, 50)
-	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 35, TRUE)
+	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 25, TRUE)
 
 /datum/emote/living/exclaim
 	key = "exclaim"
