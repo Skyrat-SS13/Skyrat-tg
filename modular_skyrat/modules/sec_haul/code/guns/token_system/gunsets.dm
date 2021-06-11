@@ -387,3 +387,26 @@
 	new /obj/item/armament_token/primary(src)
 	new /obj/item/megaphone/sec(src)
 	// . = ..()
+
+/////////////////
+//SHOTGUN GUNSETS
+////////////////
+/obj/item/storage/box/gunset/m23
+	name = "m23 supply box"
+
+/obj/item/storage/box/gunset/m23/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/shotgun/m23(src)
+	new /obj/item/storage/box/beanbag(src)
+	new /obj/item/storage/box/beanbag(src)
+	new /obj/item/storage/box/beanbag(src)
+
+/obj/item/storage/box/gunset/as2
+	name = "as2 supply box"
+
+/obj/item/storage/box/gunset/as2/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/shotgun/automatic/as2(src)
+	new /obj/item/storage/box/beanbag(src)
+	new /obj/item/storage/box/beanbag(src)
+	new /obj/item/storage/box/beanbag(src)

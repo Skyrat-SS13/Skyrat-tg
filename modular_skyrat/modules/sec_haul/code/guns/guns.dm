@@ -869,3 +869,47 @@
 /obj/item/ammo_box/magazine/multi_sprite/g11/ihdf
 	ammo_type = /obj/item/ammo_casing/caseless/b473/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/////////////////////////////////////////////////
+//////////////////SHOTGUNS///////////////////////
+/////////////////////////////////////////////////
+
+/obj/item/gun/ballistic/shotgun/m23
+	name = "\improper Armadyne Model 23-37"
+	desc = "A classic take on something that was also a classic. Classic. 8-shot."
+	icon_state = "riotshotgun"
+	inhand_icon_state = "shotgun"
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT|ITEM_SLOT_SUITSTORE
+
+/obj/item/ammo_box/magazine/internal/shot/m23
+	name = "shotgun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	max_ammo = 8
+
+/obj/item/gun/ballistic/shotgun/automatic/as2
+	name = "\improper Armadyne Model AS-2"
+	desc = "An automatic shotgun capable of automatic cycling. Automatic. 6-shot."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	icon_state = "as2"
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	inhand_icon_state = "riot_shotgun"
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
+	can_suppress = TRUE
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
+	suppressed_volume = 100
+	vary_fire_sound = TRUE
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
+	fire_delay = 5
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT|ITEM_SLOT_SUITSTORE
+
+/obj/item/ammo_box/magazine/internal/shot/as2
+	name = "shotgun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	max_ammo = 6

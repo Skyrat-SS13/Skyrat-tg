@@ -134,9 +134,28 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "vintorez"
 		),
-		/obj/item/storage/box/gunset/pitbull = image(
+	/obj/item/storage/box/gunset/pitbull = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pitbull"
+		)
+	)
+
+
+//Primary
+/obj/item/armament_token/shotgun
+	name = "shotgun armament holochip"
+	desc = "A holochip used in any armament vendor, this is for shotguns. Do not bend."
+	icon_state = "token_shotgun"
+
+/obj/item/armament_token/primary/get_available_gunsets()
+	return list(
+	/obj/item/storage/box/gunset/m23 = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "m23"
+		),
+	/obj/item/storage/box/gunset/as2 = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "as2"
 		)
 	)
 
