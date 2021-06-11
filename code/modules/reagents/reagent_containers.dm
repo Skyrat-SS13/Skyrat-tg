@@ -239,23 +239,16 @@
 		return
 
 	else
-<<<<<<< HEAD
 		if(isturf(target)) //SKYRAT EDIT CHANGE
 			var/turf/T = target
 			T.add_liquid_from_reagents(reagents)
-			if(reagents.reagent_list.len && thrownby)
-				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
-				log_game("[key_name(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
-				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
+			if(reagents.reagent_list.len && thrown_by)
+				log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
+				log_game("[key_name(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
+				message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
 		else
 			reagents.expose(target, TOUCH)
 		//SKYRAT EDIT END
-=======
-		if(isturf(target) && reagents.reagent_list.len && thrown_by)
-			log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
-			log_game("[key_name(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
-			message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
->>>>>>> f90e8cf7a3 (Fixes a bunch of harddels that are sourced from player action (#59371))
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
 		//reagents.expose(target, TOUCH) //SKYRAT EDIT REMOVAL
 		if(QDELETED(src))
