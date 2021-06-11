@@ -270,6 +270,28 @@ GLOBAL_LIST_INIT(food, list(
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
+#define FLAVORTEXT_JOIN_MINIMUM 150
+
+/datum/preferences/proc/check_flavor_text(inform_client = TRUE)
+	if(!features["flavor_text"])
+		if(check_rights(R_ADMIN, FALSE))
+			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
+			if(resp=="Yes")
+				message_admins("[usr] is bypassing the flavor text requirements.")
+				return TRUE
+		if(inform_client)
+			to_chat(parent, "<span class='userdanger'>You must have a flavor text!</span>")
+		return FALSE
+	if(length(replacetext(features["flavor_text"], " ", "")) < FLAVORTEXT_JOIN_MINIMUM) // No you can't use whitespace to meet the requirement
+		if(check_rights(R_ADMIN, FALSE))
+			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
+			if(resp=="Yes")
+				message_admins("[usr] is bypassing the flavor text requirements.")
+				return TRUE
+		if(inform_client)
+			to_chat(parent, "<span class='userdanger'>Your flavor text must be longer than [FLAVORTEXT_JOIN_MINIMUM] characters!</span>")
+		return FALSE
+	return TRUE
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
@@ -1361,8 +1383,8 @@ GLOBAL_LIST_INIT(food, list(
 			if(is_banned_from(user.ckey, rank))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
 				continue
-			if(job.trusted_only && !is_trusted_player(user.client))
-				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT TRUSTED\]</font></td></tr>"
+			if(job.veteran_only && !is_veteran_player(user.client))
+				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT VETERAN\]</font></td></tr>"
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
@@ -3007,7 +3029,6 @@ GLOBAL_LIST_INIT(food, list(
 		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color
-
 	character.skin_tone = skin_tone
 	character.hairstyle = hairstyle
 	character.facial_hairstyle = facial_hairstyle

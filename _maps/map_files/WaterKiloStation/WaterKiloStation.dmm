@@ -6626,6 +6626,7 @@
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/item/bodybag/stasis,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "anN" = (
@@ -7959,7 +7960,10 @@
 	},
 /area/maintenance/fore)
 "aqW" = (
-/obj/structure/bed,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/bot_white/right,
 /obj/effect/turf_decal/stripes/corner,
@@ -10715,7 +10719,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/stasis,
+/obj/machinery/stasissleeper{
+	dir = 4
+	},
 /obj/effect/turf_decal/box,
 /turf/open/floor/iron/dark,
 /area/medical/medbay/central)
@@ -17353,7 +17359,10 @@
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
 "aRs" = (
-/obj/structure/bed,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/bot_white/right,
 /obj/effect/turf_decal/stripes/corner{
@@ -49770,6 +49779,12 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/fore)
+"cEi" = (
+/obj/effect/turf_decal/vg_decals/atmos/oxygen{
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
+/area/engineering/atmos)
 "cEj" = (
 /obj/structure/bookcase/random/nonfiction,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -58380,6 +58395,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/bar)
+"fNk" = (
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide{
+	dir = 1
+	},
+/turf/open/floor/engine/co2,
+/area/engineering/atmos)
 "fNS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
@@ -58460,8 +58481,10 @@
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
 "fQc" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/engine/air,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 4
+	},
+/turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "fQv" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -71266,7 +71289,6 @@
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
 "mGu" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
@@ -71490,7 +71512,6 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "mMV" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
@@ -73302,7 +73323,6 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "nQl" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
@@ -74752,7 +74772,6 @@
 /turf/open/floor/plating/rust,
 /area/security/prison)
 "oCa" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
 /obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
@@ -76896,6 +76915,12 @@
 /obj/item/storage/fancy/donut_box,
 /turf/open/floor/iron/dark,
 /area/security/office)
+"pFK" = (
+/obj/effect/turf_decal/vg_decals/atmos/mix{
+	dir = 1
+	},
+/turf/open/floor/engine/vacuum,
+/area/engineering/atmos)
 "pGs" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/tile/neutral,
@@ -77597,7 +77622,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/spawner/randomcolavend,
+/obj/machinery/vending/dorms,
 /obj/effect/turf_decal/delivery,
 /obj/structure/sign/poster/official/no_erp{
 	pixel_y = -32
@@ -79809,6 +79834,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/disposal/incinerator)
+"rlI" = (
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide{
+	dir = 1
+	},
+/turf/open/floor/engine/n2o,
+/area/engineering/atmos)
 "rmu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
@@ -80799,7 +80830,6 @@
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
 "rPb" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
@@ -86542,6 +86572,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/syndicatebomb/training,
 /obj/item/wirecutters,
+/obj/item/storage/box/holobadge,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "uQs" = (
@@ -87006,6 +87037,12 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
+"vdJ" = (
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 4
+	},
+/turf/open/floor/engine/air,
+/area/engineering/atmos)
 "vdK" = (
 /obj/structure/flora/ausbushes/palebush{
 	icon_state = "fullgrass_2"
@@ -92424,6 +92461,12 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/dark,
 /area/service/bar)
+"xZK" = (
+/obj/effect/turf_decal/vg_decals/atmos/plasma{
+	dir = 1
+	},
+/turf/open/floor/engine/plasma,
+/area/engineering/atmos)
 "yah" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -118543,15 +118586,15 @@ bRT
 bET
 idD
 jnU
-nVD
+fQc
 nVD
 idD
 knR
-thE
+cEi
 thE
 idD
 mrF
-xcO
+vdJ
 xcO
 idD
 bUW
@@ -118808,7 +118851,7 @@ rPb
 iTp
 idD
 xcO
-fQc
+xcO
 tkL
 jCe
 gTd
@@ -121644,7 +121687,7 @@ ckk
 tmq
 ieC
 mGu
-nGB
+fNk
 idD
 bUW
 ckk
@@ -122672,7 +122715,7 @@ ckk
 tmq
 lwP
 oCa
-oOf
+xZK
 idD
 bUW
 aaa
@@ -123700,7 +123743,7 @@ ckk
 tmq
 dxn
 nQl
-oNT
+rlI
 idD
 bUW
 ckk
@@ -124728,7 +124771,7 @@ ckk
 tmq
 ocW
 uhO
-wrb
+pFK
 rko
 aeu
 aeu

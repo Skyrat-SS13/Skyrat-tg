@@ -70,9 +70,11 @@
 	vis_contents += snow_overlay
 */
 
+
 ///////////////////////////////////////////
 /////////////   OTHER TURFS   /////////////
 ///////////////////////////////////////////
+
 /turf/closed/mineral/earth_like
 	icon_state = "rock"
 	turf_type = /turf/open/floor/plating/asteroid

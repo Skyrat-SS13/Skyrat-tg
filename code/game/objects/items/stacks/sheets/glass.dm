@@ -1,3 +1,4 @@
+/** SKYRAT EDIT - MODULARIZATION - SEE SKYRAT_MODULAR/MODULES/MATERIALS_GLASS
 /* Glass stack types
  * Contains:
  * Glass sheets
@@ -367,3 +368,4 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	custom_materials = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT)
 	icon_prefix = "plasma"
 	weld_material = /obj/item/stack/sheet/plasmaglass
+**/

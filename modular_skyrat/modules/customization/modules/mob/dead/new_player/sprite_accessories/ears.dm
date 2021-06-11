@@ -101,7 +101,6 @@
 /datum/sprite_accessory/ears/mutant/eevee
 	name = "Eevee"
 	icon_state = "eevee"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/eevee_alt
 	name = "Eevee ALT"

@@ -479,9 +479,27 @@
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 
-	//SKYRAT EDIT ADDITION END
-	. += "*---------*</span>"
 
+
+		//RP RECORDS FOR OBSERVERS
+	if(client && user.client.holder && isobserver(user))
+		var/line = ""
+		if(!(client.prefs.general_record == ""))
+			line += "<a href='?src=[REF(src)];general_records=1'>\[GEN\]</a>"
+		if(!(client.prefs.security_record == ""))
+			line += "<a href='?src=[REF(src)];security_records=1'>\[SEC\]</a>"
+		if(!(client.prefs.medical_record == ""))
+			line += "<a href='?src=[REF(src)];medical_records=1'>\[MED\]</a>"
+		if(!(client.prefs.background_info == ""))
+			line += "<a href='?src=[REF(src)];flavor_background=1'>\[BG\]</a>"
+		if(!(client.prefs.exploitable_info == ""))
+			line += "<a href='?src=[REF(src)];exploitable_info=1'>\[EXP\]</a>"
+
+		if(!(line == ""))
+			. += "*---------*"
+			. += line
+	//END OF SKYRAT EDIT
+	. += "*---------*</span>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
