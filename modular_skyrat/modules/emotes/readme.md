@@ -1,6 +1,7 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/892
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/1925
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/2320
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/6259
 
 ## Title: All the emotes.
 

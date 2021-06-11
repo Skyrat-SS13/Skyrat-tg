@@ -95,9 +95,9 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "tails"
 			pixel_x = -16 //correcting the offset for 64
-			var/mutable_appearance/I = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", ABOVE_MOB_LAYER)
-			I.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
-			src.add_overlay(I)
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "tails_top", ABOVE_MOB_LAYER)
+			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+			src.add_overlay(overlay)
 
 		if("constrict")
 			name = "tail"
@@ -105,9 +105,9 @@
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "naga"
 			pixel_x = -16
-			var/mutable_appearance/I = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", ABOVE_MOB_LAYER)
-			I.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
-			src.add_overlay(I)
+			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/master_files/icons/effects/turf_effects_64.dmi', "naga_top", ABOVE_MOB_LAYER)
+			overlay.appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+			src.add_overlay(overlay)
 
 		//prints
 		if("pawprint")
@@ -176,5 +176,5 @@
 		user.owned_turf = null
 
 	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		H.update_mutant_bodyparts()
+		var/mob/living/carbon/human/human_user = user
+		human_user.update_mutant_bodyparts()

@@ -11,32 +11,32 @@ var/current_turf
 
 /datum/emote/living/mark_turf/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/human_user = user
 
 	if(ishuman(user))
-		if(!(DIGITIGRADE in H.dna.species.species_traits) && !(H.dna.species.mutant_bodyparts["taur"]))
+		if(!(DIGITIGRADE in human_user.dna.species.species_traits) && !(human_user.dna.species.mutant_bodyparts["taur"]))
 			user.allowed_turfs += "footprint"
 
 		//species & taurs
 		if(ismammal(user) || issynthanthro(user))
-			if((DIGITIGRADE in H.dna.species.species_traits) || H.dna.species.mutant_bodyparts["taur"])
+			if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
 				user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
 
 		if(islizard(user) || issynthliz(user) || HAS_TRAIT(user, TRAIT_ASH_ASPECT))
 			user.allowed_turfs += "smoke"
 
-			if((DIGITIGRADE in H.dna.species.species_traits) || H.dna.species.mutant_bodyparts["taur"])
+			if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
 				user.allowed_turfs += "clawprint"
 
 			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
-			if(H.dna.species.mutant_bodyparts["taur"])
-				if(H.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
+			if(human_user.dna.species.mutant_bodyparts["taur"])
+				if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
 					user.allowed_turfs -= "clawprint" //e
-					if(!(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
+					if(!(human_user.wear_suit && istype(human_user.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
 						user.allowed_turfs += "constrict"
 
 		if(isplasmaman(user))
-			if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/plasmaman))
+			if(human_user.w_uniform && istype(human_user.w_uniform, /obj/item/clothing/under/plasmaman))
 				user.allowed_turfs += "holoseat"
 
 		if(isroundstartslime(user) || isslimeperson(user) || isjellyperson(user))
@@ -55,7 +55,7 @@ var/current_turf
 			user.allowed_turfs += "vines"
 
 		if(isipc(user) || issynthanthro(user) || issynthhuman(user) || issynthliz(user))
-			if(H.dna.species.mutant_bodyparts["taur"])
+			if(human_user.dna.species.mutant_bodyparts["taur"])
 				user.allowed_turfs += "holobed" //taurs get the holobed instead
 			else
 				user.allowed_turfs += "holoseat"
@@ -67,13 +67,13 @@ var/current_turf
 		//tail time
 		if(istype(user.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail))
 			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard")
-			if(H.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] in fluffy_tails)
+			if(human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] in fluffy_tails)
 				user.allowed_turfs += "tails"
 
 		//clothing
-		var/obj/item/O = user.get_item_by_slot(ITEM_SLOT_FEET)
-		if(istype(O, /obj/item/clothing/shoes))
-			if(!H.dna.species.mutant_bodyparts["taur"])
+		var/obj/item/shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
+		if(istype(shoes, /obj/item/clothing/shoes))
+			if(!human_user.dna.species.mutant_bodyparts["taur"])
 				user.allowed_turfs += "shoeprint"
 
 	if(issilicon(user))
@@ -102,7 +102,7 @@ var/current_turf
 		user.owned_turf.dir = user.dir
 
 		if(ishuman(user))
-			H.update_mutant_bodyparts()
+			human_user.update_mutant_bodyparts()
 
 		var/list/DNA_trail = list("shoeprint", "footprint", "pawprint", "hoofprint", "clawprint")
 		if(current_turf in DNA_trail) //These turfs leave clues of their owner
@@ -112,9 +112,9 @@ var/current_turf
 		var/list/colorable = list("dust", "slime", "vines", "footprint", "pawprint", "hoofprint", "clawprint")
 		if(current_turf in colorable) //These turfs are simply colored after their owner's primary
 			if(ishumanbasic(user) || ishumanoid(user))
-				user.owned_turf.color = "#" + H.dna.features["skin_color"]
+				user.owned_turf.color = "#" + human_user.dna.features["skin_color"]
 			else
-				user.owned_turf.color = "#" + H.dna.features["mcolor"]
+				user.owned_turf.color = "#" + human_user.dna.features["mcolor"]
 
 
 		var/list/body_part = list("tails", "constrict")
@@ -130,10 +130,10 @@ var/current_turf
 
 			//coloring
 			var/list/finished_list = list()
-			var/list/color_list = H.dna.species.mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] //identify color
-			var/datum/sprite_accessory/S = GLOB.sprite_accessories[key][H.dna.species.mutant_bodyparts[key][MUTANT_INDEX_NAME]] //identify type
+			var/list/color_list = human_user.dna.species.mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] //identify color
+			var/datum/sprite_accessory/sprite_type = GLOB.sprite_accessories[key][human_user.dna.species.mutant_bodyparts[key][MUTANT_INDEX_NAME]] //identify type
 
-			switch(S.color_src)
+			switch(sprite_type.color_src)
 				if(USE_MATRIXED_COLORS)
 					finished_list += ReadRGB("[color_list[1]]0")
 					finished_list += ReadRGB("[color_list[2]]0")
@@ -150,12 +150,12 @@ var/current_turf
 			user.owned_turf.color = finished_list
 
 			//scaling
-			var/atom/movable/A = user.owned_turf
-			var/change_multiplier = H.dna.features["body_size"] / BODY_SIZE_NORMAL
+			var/atom/movable/owned_turf = user.owned_turf
+			var/change_multiplier = human_user.dna.features["body_size"] / BODY_SIZE_NORMAL
 			var/translate = ((change_multiplier-1) * 32)/2
-			A.transform = A.transform.Scale(change_multiplier)
-			A.transform = A.transform.Translate(0, translate)
-			A.appearance_flags = PIXEL_SCALE
+			owned_turf.transform = owned_turf.transform.Scale(change_multiplier)
+			owned_turf.transform = owned_turf.transform.Translate(0, translate)
+			owned_turf.appearance_flags = PIXEL_SCALE
 
 		RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/turf_owner, override = TRUE)
 
@@ -167,30 +167,37 @@ var/current_turf
 	switch(current_turf)
 		if("web")
 			user.spin(8, 1) //Ssspin a web
-			. = "neatly spins a web beneath themself."
+
+		/* Commented out to preserve text.
+		Voter decision to exclude pre-determined messages, can still use this area to apply animation onto the user!
+
+			. = "neatly spins a web beneath them."
 		if("water")
 			. = "submerges their surroundings in a pool of water."
 		if("vines")
-			. = "sprouts vines reaching down beneath themself."
+			. = "sprouts vines reaching down beneath them."
 		if("dust")
 			. = "flutters their wings, scattering their dust around."
 		if("smoke")
-			. = "expirates a mist of ashes around themself."
+			. = "expirates a mist of ashes around them."
 		if("slime")
 			. = "splits their gel, forming an oozing shape."
 		if("xenoresin")
-			. = "secretes thick resin, covering the ground beneath themself."
+			. = "secretes thick resin, covering the ground beneath them."
 		if("holoseat")
-			. = "artificially summons a seat beneath themself."
+			. = "artificially summons a seat beneath them."
 		if("holobed")
-			. = "artificially summons a bed beneath themself."
+			. = "artificially summons a bed beneath them."
 		if("borgmat")
-			. = "dispenses a soft mat, rolling it out beneath themself."
+			. = "dispenses a soft mat, rolling it out beneath them."
+		*/
+
 		else
 			return
 
 	current_turf = null
 	LAZYCLEARLIST(user.allowed_turfs)
+
 
 /datum/emote/living/mark_turf/proc/check_menu(mob/living/user)
 	if(user.owned_turf != null)
