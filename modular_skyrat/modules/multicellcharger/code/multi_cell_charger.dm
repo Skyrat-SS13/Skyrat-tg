@@ -17,7 +17,11 @@
 
 /obj/machinery/cell_charger_multi/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/RightClick)
+	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, /atom.proc/RightClick)
+
+/obj/machinery/cell_charger_multi/Destroy()
+	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
+	. = ..()
 
 /obj/machinery/cell_charger_multi/update_overlays()
 	. = ..()
@@ -37,7 +41,7 @@
 
 /obj/machinery/cell_charger_multi/RightClick(mob/user)
 	. = ..()
-	if(!can_interact(user))
+	if(!can_interact(user) || !charging_batteries.len)
 		return
 	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")
 	for(var/i in charging_batteries)
