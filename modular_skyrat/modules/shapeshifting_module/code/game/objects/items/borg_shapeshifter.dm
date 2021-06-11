@@ -13,7 +13,7 @@
 	var/savedOverride
 	var/savedPixelOffset
 	var/savedModelName
-	var/savedDogborg
+	var/savedModelFeatures
 	var/savedSpecialLightKey
 	var/active = FALSE
 	var/activationCost = 100
@@ -21,7 +21,8 @@
 	var/disguise = null
 	var/disguise_icon_override = null
 	var/disguise_pixel_offset = 0
-	var/disguise_dogborg = FALSE
+	/// Traits unique to this model (deadsprite, wide/dogborginess, etc.). Mirrors the definition in modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_model.dm
+	var/list/disguise_model_features = list()
 	var/disguise_special_light_key = null
 	var/mob/listeningTo
 	var/list/signalCache = list( // list here all signals that should break the camouflage
@@ -183,18 +184,23 @@
 					if("Default")
 						disguise = "robot"
 						disguise_icon_override = 'icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_SMALL)
 					if("Marina")
 						disguise = "marinasd"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					if("Heavy")
 						disguise = "heavysd"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					if("Eyebot")
 						disguise = "eyebotsd"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("Robot")
 						disguise = "robot_old"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					if("Bootyborg")
 						disguise = "bootysd"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
@@ -212,7 +218,7 @@
 						disguise = "k69"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					else
 						return FALSE
 
@@ -247,6 +253,7 @@
 					if("Default")
 						disguise = "medical"
 						disguise_icon_override = 'icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_SMALL)
 					if("Droid")
 						disguise = "medical"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
@@ -259,6 +266,7 @@
 					if("Eyebot")
 						disguise = "eyebotmed"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("Heavy")
 						disguise = "heavymed"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
@@ -280,6 +288,7 @@
 					if("Zoomba")
 						disguise = "zoomba_med"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("Arachne")
 						disguise = "arachne"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
@@ -294,27 +303,27 @@
 						disguise = "medihound"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Medihound Dark")
 						disguise = "medihounddark"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Vale")
 						disguise = "valemed"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Drake")
 						disguise = "drakemed"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Borgi")
 						disguise = "borgi-medi"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
 					else
 						return FALSE
 
@@ -351,9 +360,11 @@
 					if("Default")
 						disguise = "engineer"
 						disguise_icon_override = 'icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_SMALL)
 					if("Zoomba")
 						disguise = "zoomba_engi"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("Default - Treads")
 						disguise = "engi-tread"
 						disguise_special_light_key = "engineer"
@@ -361,6 +372,7 @@
 					if("Loader")
 						disguise = "loaderborg"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					if("Handy")
 						disguise = "handyeng"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
@@ -394,6 +406,7 @@
 					if("Eyebot")
 						disguise = "eyeboteng"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("Mech")
 						disguise = "conagher"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_eng.dmi'
@@ -405,38 +418,38 @@
 						disguise = "pupdozer"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Vale")
 						disguise = "valeeng"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Alina")
 						disguise = "alina-eng"
 						disguise_special_light_key = "alina"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Drake")
 						disguise = "drakeeng"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Hound")
 						disguise = "engihound"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Darkhound")
 						disguise = "engihounddark"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Borgi")
 						disguise = "borgi-eng"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
 					else
 						return FALSE
 			if("Security")
@@ -473,6 +486,7 @@
 					if("Zoomba")
 						disguise = "zoomba_sec"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_sec.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("Default - Treads")
 						disguise = "sec-tread"
 						disguise_special_light_key = "sec"
@@ -509,38 +523,38 @@
 						disguise = "k9"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Alina")
 						disguise = "alina-sec"
 						disguise_special_light_key = "alina"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Darkhound")
 						disguise = "k9dark"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Vale")
 						disguise = "valesec"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Drake")
 						disguise = "drakesec"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Otie")
 						disguise = "oties"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Borgi")
 						disguise = "borgi-sec"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
 					else
 						return FALSE
 			if("Service")
@@ -647,6 +661,7 @@
 					if("(Janitor) Zoomba")
 						disguise = "zoomba_jani"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("(Janitor) Bootyborg")
 						disguise = "bootyjanitor"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots.dmi'
@@ -665,53 +680,53 @@
 						disguise = "k50"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Service) Vale")
 						disguise = "valeserv"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Service) Partyhound")
 						disguise = "k69"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Service) ValeDark")
 						disguise = "valeservdark"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Service) Borgi")
 						disguise = "borgi-serv"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
 
 					if("(Janitor) Drake")
 						disguise = "drakejanit"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Janitor) Otie")
 						disguise = "otiej"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Janitor) Scrubpuppy")
 						disguise = "scrubpup"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Janitor) Vale")
 						disguise = "J9"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("(Janitor) Borgi")
 						disguise = "borgi-jani"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
 					else
 						return FALSE
 			if("Miner")
@@ -781,38 +796,40 @@
 					if("Zoomba")
 						disguise = "zoomba_miner"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
 					if("Mech")
 						disguise = "ishimura"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
 					if("Drone")
 						disguise = "miningdrone"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_mine.dmi'
+						disguise_model_features = list(R_TRAIT_SMALL)
 					//Dogborgs
 					if("Drake")
 						disguise = "drakemine"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Blade")
 						disguise = "blade"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Vale")
 						disguise = "valemine"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Hound")
 						disguise = "cargohound"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Darkhound")
 						disguise = "cargohounddark"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					else
 						return FALSE
 			if("Peacekeeper")
@@ -843,12 +860,15 @@
 					if("Sleek")
 						disguise = "sleekpeace"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					if("Spider")
 						disguise = "whitespider"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
+						disguise_model_features = list(R_TRAIT_SMALL)
 					if("Marina")
 						disguise = "marinapeace"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					if("Bootyborg")
 						disguise = "bootypeace"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
@@ -864,17 +884,18 @@
 					if("Omni")
 						disguise = "omoikane"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_pk.dmi'
+						disguise_model_features = list(R_TRAIT_SMALL) //No tennis-ball shaped disguised cyborgs.
 					//Dogborgs
 					if("Drake")
 						disguise = "drakepeace"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
 					if("Borgi")
 						disguise = "borgi"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi'
 						disguise_pixel_offset = -16
-						disguise_dogborg = TRUE
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
 					else
 						return FALSE
 			if("Clown")
@@ -903,6 +924,7 @@
 					if("Marina")
 						disguise = "marina_mommy"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					if("Garish")
 						disguise = "garish"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
@@ -912,6 +934,7 @@
 					if("Sleek")
 						disguise = "clownman"
 						disguise_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi'
+						disguise_model_features = list(R_TRAIT_UNIQUEWRECK)
 					else
 						return FALSE
 			if("Syndicate")
@@ -1057,13 +1080,13 @@
 	savedOverride = user.model.cyborg_icon_override
 	savedPixelOffset = user.model.cyborg_pixel_offset
 	savedModelName = user.model.name
-	savedDogborg = user.model.dogborg
+	savedModelFeatures = user.model.model_features
 	savedSpecialLightKey = user.model.special_light_key
 	user.model.name = disguiseModelName
 	user.model.cyborg_base_icon = disguise
 	user.model.cyborg_icon_override = disguise_icon_override
 	user.model.cyborg_pixel_offset = disguise_pixel_offset
-	user.model.dogborg = disguise_dogborg
+	user.model.model_features = disguise_model_features
 	user.model.special_light_key = disguise_special_light_key
 	user.bubble_icon = "robot"
 	active = TRUE
@@ -1089,13 +1112,12 @@
 	user.model.cyborg_base_icon = savedIcon
 	user.model.cyborg_icon_override = savedOverride
 	user.model.cyborg_pixel_offset = savedPixelOffset
-	user.model.dogborg = savedDogborg
+	user.model.model_features = savedModelFeatures
 	user.model.special_light_key = savedSpecialLightKey
 	user.bubble_icon = savedBubbleIcon
 	active = FALSE
 	user.update_icons()
 	disguise_pixel_offset = 0
-	disguise_dogborg = FALSE
 	src.user = user
 
 /obj/item/borg_shapeshifter/proc/disrupt(mob/living/silicon/robot/user)
