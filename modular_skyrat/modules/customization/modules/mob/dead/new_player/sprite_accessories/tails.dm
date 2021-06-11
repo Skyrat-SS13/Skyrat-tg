@@ -74,7 +74,7 @@
 					return FALSE
 			return TRUE
 	if(H.owned_turf)  //we do a lil' emoting
-		var/list/used_in_turf = list("tail", "xenotail")
+		var/list/used_in_turf = list("tail")
 		if(H.owned_turf.name in used_in_turf)
 			return TRUE
 	return FALSE

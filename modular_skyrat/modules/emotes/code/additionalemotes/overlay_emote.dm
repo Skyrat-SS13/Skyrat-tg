@@ -13,11 +13,11 @@
 	flick_overlay_static(overlay, user, 50)
 	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 35, TRUE)
 
-/datum/emote/living/exclamate
-	key = "exclamate"
-	key_third_person = "exclamates"
+/datum/emote/living/exclaim
+	key = "exclaim"
+	key_third_person = "exclaims"
 
-/datum/emote/living/exclamate/run_emote(mob/living/user, params, type_override, intentional)
+/datum/emote/living/exclaim/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
 	overlay.pixel_x = 10
