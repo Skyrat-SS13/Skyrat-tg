@@ -135,9 +135,8 @@
 	R.update_module_innate()
 	RM.rebuild_modules()
 	R.radio.recalculateChannels()
-	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS
-	if(RM.dogborg)
-		R.dogborg = TRUE
+	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
+	if(R.is_dogborg()) //Should pass because model was set previously.
 		RM.dogborg_equip()
 	//SKYRAT EDIT ADDITION END
 	INVOKE_ASYNC(RM, .proc/do_transform_animation)

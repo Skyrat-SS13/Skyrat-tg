@@ -34,6 +34,7 @@
 		turf_loc.reasses_liquids()
 
 /datum/element/liquids_height/proc/on_target_move(atom/movable/source, atom/OldLoc, Dir, Forced = FALSE)
+	SIGNAL_HANDLER
 	if(isturf(OldLoc))
 		var/turf/old_turf = OldLoc
 		old_turf.liquid_height += height_applied
