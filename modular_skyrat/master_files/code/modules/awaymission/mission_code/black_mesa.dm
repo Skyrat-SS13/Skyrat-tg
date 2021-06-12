@@ -242,6 +242,8 @@
 	base_pixel_y = -154
 	speed = 3
 	pixel_y = -154
+	bound_height = 64
+	bound_width = 64
 	icon_dead = "bullsquid_dead"
 	maxHealth = 3000
 	health = 3000
