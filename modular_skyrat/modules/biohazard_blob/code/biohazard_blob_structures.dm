@@ -267,11 +267,12 @@
 		RegisterSignal(t, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
 /obj/structure/biohazard_blob/structure/bulb/proc/proximity_trigger(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(!isliving(AM))
 		return
 	var/mob/living/L = AM
 	if(!(MOLD_FACTION in L.faction))
-		discharge()
+		INVOKE_ASYNC(src, .proc/discharge)
 
 /obj/structure/biohazard_blob/structure/bulb/proc/make_full()
 	//Called by a timer, check if we exist

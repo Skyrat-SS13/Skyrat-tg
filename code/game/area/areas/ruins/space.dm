@@ -115,8 +115,10 @@
 	name = "Hotel Staff Room"
 	icon_state = "crew_quarters"
 
-
-
+// SKYRAT EDIT ADDITION START
+/area/ruin/space/has_grav/hotel/workroom/quarters
+	name = "Hotel Staff Quarters"
+// SKYRAT EDIT ADDITION END
 
 //Ruin of Derelict Oupost
 
