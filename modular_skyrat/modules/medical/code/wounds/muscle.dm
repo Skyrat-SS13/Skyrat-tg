@@ -111,6 +111,7 @@
 */
 
 /datum/wound/muscle/proc/update_inefficiencies()
+	SIGNAL_HANDLER
 	if(limb.body_zone in list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
 		if(limb.current_splint)
 			limp_slowdown = initial(limp_slowdown) * limb.current_splint.splint_factor
