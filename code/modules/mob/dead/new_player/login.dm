@@ -7,8 +7,9 @@
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = TRUE
-		mind.current = src
+		mind.set_current(src)
 	my_client = client //SKYRAT EDIT ADDITION
+
 	. = ..()
 	if(!. || !client)
 		return FALSE
