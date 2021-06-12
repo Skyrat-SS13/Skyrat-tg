@@ -147,7 +147,7 @@
 	desc = "A holochip used in any armament vendor, this is for shotguns. Do not bend."
 	icon_state = "token_shotgun"
 
-/obj/item/armament_token/primary/get_available_gunsets()
+/obj/item/armament_token/shotgun/get_available_gunsets()
 	return list(
 	/obj/item/storage/box/gunset/m23 = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
