@@ -8,9 +8,9 @@
 	righthand_file = 'modular_skyrat/modules/exp_corps/icons/tomahawk_r.dmi'
 	worn_icon = 'modular_skyrat/modules/exp_corps/icons/tomahawk_worn.dmi'
 	flags_1 = CONDUCT_1
-	force = 25
+	force = 18
 	w_class = WEIGHT_CLASS_SMALL
-	throwforce = 25
+	throwforce = 18
 	throw_speed = 4
 	throw_range = 8
 	embedding = list("pain_mult" = 6, "embed_chance" = 60, "fall_chance" = 10)

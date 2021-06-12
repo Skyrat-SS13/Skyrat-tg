@@ -135,7 +135,7 @@
 		access |= list(ACCESS_MAINT_TUNNELS)
 
 /datum/id_trim/job/expeditionary_trooper
-	assignment = "Vanguard Operative"
+	assignment = "Expeditionist"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_expeditionarytrooper"
 	full_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE,

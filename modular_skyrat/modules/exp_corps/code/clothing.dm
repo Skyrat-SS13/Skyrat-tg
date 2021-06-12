@@ -3,8 +3,7 @@
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 10, RAD = 10, FIRE = 30, ACID = 30, WOUND = 10)
-	strip_delay = 70
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, RAD = 10, FIRE = 50, ACID = 20)
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -33,13 +32,14 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "exp_corps"
 	inhand_icon_state = "exp_corps"
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 10, BIO = 10, RAD = 10, FIRE = 50, ACID = 50)
 
 /obj/item/clothing/gloves/combat/expeditionary_corps
 	name = "expeditionary corps gloves"
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 
 /obj/item/storage/backpack/duffelbag/expeditionary_corps
 	name = "expeditionary corps bag"
@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MELEE = 30, BULLET = 10, LASER = 10, ENERGY = 20, BOMB = 40, BIO = 0, RAD = 40, FIRE = 50, ACID = 75, WOUND = 15)
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 	dog_fashion = null
@@ -70,21 +70,20 @@
 		/obj/item/gun,
 		/obj/item/kitchen/knife,
 		/obj/item/reagent_containers,
-		/obj/item/restraints/handcuffs,
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman
 		)
 
 /obj/item/clothing/suit/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit"
-	desc = "An advanced hardsuit designed for exploratory missions."
+	desc = "A lightweight hardsuit designed for exploration missions."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hardsuit-hexp_corps"
 	inhand_icon_state = "eng_hardsuit"
 	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
-	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
+	armor = list(MELEE = 25, BULLET = 5, LASER = 10, ENERGY = 20, BOMB = 50, BIO = 100, RAD = 50, FIRE = 50, ACID = 75, WOUND = 15)
+	allowed = list(/obj/item/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/flashlight, /obj/item/tank/internals, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	jetpack = /obj/item/tank/jetpack/suit
 	cell = /obj/item/stock_parts/cell/hyper
@@ -93,13 +92,13 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit helmet"
-	desc = "An advanced hardsuit helmet designed for exploratory missions."
+	desc = "A lightweight hardsuit helmet designed for exploration missions."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-hexp_corps"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "hexp_corps"
-	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MMELEE = 25, BULLET = 5, LASER = 10, ENERGY = 20, BOMB = 50, BIO = 100, RAD = 50, FIRE = 50, ACID = 75, WOUND = 15)
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0.5
@@ -110,7 +109,7 @@
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
+	armor = list(MELEE = 30, BULLET = 10, LASER = 10, ENERGY = 20, BOMB = 40, BIO = 0, RAD = 40, FIRE = 50, ACID = 75, WOUND = 15)
 	mutant_variants = NONE
 	var/nightvision = FALSE
 	var/mob/living/carbon/current_user
