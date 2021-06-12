@@ -66,7 +66,7 @@ var/current_turf
 
 		//tail time
 		if(istype(user.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail))
-			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard")
+			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard", "Bat (Long)")
 			if(human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] in fluffy_tails)
 				user.allowed_turfs += "tails"
 
@@ -164,9 +164,8 @@ var/current_turf
 /datum/emote/living/mark_turf/select_message_type(mob/living/user, intentional)
 	. = ..()
 
-	switch(current_turf)
-		if("web")
-			user.spin(8, 1) //Ssspin a web
+	if(current_turf == "web")
+		user.spin(8, 1) //Ssspin a web
 
 		/* Commented out to preserve text.
 		Voter decision to exclude pre-determined messages, can still use this area to apply animation onto the user!
@@ -192,8 +191,8 @@ var/current_turf
 			. = "dispenses a soft mat, rolling it out beneath them."
 		*/
 
-		else
-			return
+
+
 
 	current_turf = null
 	LAZYCLEARLIST(user.allowed_turfs)
