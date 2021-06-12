@@ -36,6 +36,7 @@
 	name = "Lavaland Syndicate Deck Officer"
 	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
+	id = /obj/item/card/id/advanced/chameleon/black
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer
 	name = "Syndicate Deck Officer"
