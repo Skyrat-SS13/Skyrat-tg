@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(science_positions, list(
 	"Scientist",
 	"Geneticist",
 	"Roboticist",
-	"Expeditionist")) //SKYRAT EDIT ADDITION
+	"Vanguard Explorer")) //SKYRAT EDIT ADDITION
 
 
 GLOBAL_LIST_INIT(supply_positions, list(
