@@ -11,6 +11,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	var/nextcombatpopup = 0
 
 /mob/living/proc/combat_indicator_unconscious_signal()
+	SIGNAL_HANDLER
 	set_combat_indicator(FALSE)
 
 /mob/living/proc/set_combat_indicator(state)
@@ -28,7 +29,6 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if(combat_indicator)
 		if(world.time > nextcombatpopup)
 			nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE)
 			flick_emote_popup_on_mob("combat", 20)
 			visible_message("<span class='warning'><b>[src] gets ready for combat!</b></span>")
 		add_overlay(GLOB.combat_indicator_overlay)
