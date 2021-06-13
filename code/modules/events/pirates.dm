@@ -1,5 +1,5 @@
 /datum/round_event_control/pirates
-	name = "Space Pirates"
+	name = "Space Pirates - Random" //SKYRAT EDIT CHANGE
 	typepath = /datum/round_event/pirates
 	weight = 8
 	max_occurrences = 1
@@ -30,8 +30,43 @@
 	var/ship_name = "Space Privateers Association"
 	var/shuttle_spawned = FALSE
 
+//SKRAT EDIT ADDITiON
+/datum/round_event_control/pirates/rogues
+	name = "Space Pirates - Rogues"
+	typepath = /datum/round_event/pirates/rogues
+	weight = 0
+
+/datum/round_event_control/pirates/silverscales
+	name = "Space Pirates - Silverscales"
+	typepath = /datum/round_event/pirates/silverscales
+	weight = 0
+
+/datum/round_event_control/pirates/dutchman
+	name = "Space Pirates - Dutchman"
+	typepath = /datum/round_event/pirates/dutchman
+	weight = 0
+
+/datum/round_event_control/pirates/enclave
+	name = "Space Pirates - Imperial Enclave"
+	typepath = /datum/round_event/pirates/enclave
+	weight = 0
+
+/datum/round_event/pirates/rogues
+	pirate_type = PIRATES_ROGUES
+
+/datum/round_event/pirates/silverscales
+	pirate_type = PIRATES_SILVERSCALES
+
+/datum/round_event/pirates/dutchman
+	pirate_type = PIRATES_DUTCHMAN
+
+/datum/round_event/pirates/enclave
+	pirate_type = PIRATES_IMPERIAL_ENCLAVE
+//SKYRAT EDIT ADDITION END
+
 /datum/round_event/pirates/setup()
-	pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_IMPERIAL_ENCLAVE) //SKYRAT EDIT CHANGE
+	if(!pirate_type) //SKYRAT EDIT ADDITION
+		pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_IMPERIAL_ENCLAVE) //SKYRAT EDIT CHANGE
 	switch(pirate_type)
 		if(PIRATES_ROGUES)
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "rogue_names"))
