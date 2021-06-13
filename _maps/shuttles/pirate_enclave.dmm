@@ -1066,17 +1066,25 @@
 	req_one_access_txt = "1,2,3,150"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/structure/fans/tiny,
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 13;
+	height = 3;
+	id = "pirateship_home";
+	name = "Deep Space";
+	width = 26
+	},
 /obj/docking_port/mobile/pirate{
-	dir = 8;
-	dwidth = 5;
-	height = 17;
+	dir = 4;
+	dwidth = 13;
+	height = 3;
 	launch_status = 0;
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
-	name = "Slaver Ship";
-	port_direction = 8;
-	width = 19
+	name = "Imperial Enclave Enforcer-Class Starship";
+	preferred_direction = 4;
+	width = 26
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/pod/dark{
 	icon = 'icons/turf/floors.dmi'
 	},
