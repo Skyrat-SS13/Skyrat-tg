@@ -222,4 +222,18 @@ switch (BUILD_MODE) {
     break;
 }
 
+<<<<<<< HEAD
 runTasks(tasksToRun);
+=======
+Juke
+  .setup({
+    default: (
+      process.env.CBT_BUILD_MODE === 'TGS'
+        ? TgsTarget
+        : DefaultTarget
+    ),
+  })
+  .then((code) => {
+    process.exit(code);
+  });
+>>>>>>> d200efc2931 (Juke Build Hotfix 2 - PreCompile script compatibility (#59649))
