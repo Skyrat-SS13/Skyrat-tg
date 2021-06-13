@@ -11,6 +11,8 @@
 #define PIRATES_SILVERSCALES "Silverscales"
 #define PIRATES_DUTCHMAN "Flying Dutchman"
 
+#define PIRATES_IMPERIAL_ENCLAVE "Imperial Enclave" //SKYRAT EDIT ADDITION
+
 /datum/round_event_control/pirates/preRunEvent()
 	if (!SSmapping.empty_space)
 		return EVENT_CANT_RUN
@@ -29,7 +31,7 @@
 	var/shuttle_spawned = FALSE
 
 /datum/round_event/pirates/setup()
-	pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN)
+	pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_IMPERIAL_ENCLAVE) //SKYRAT EDIT CHANGE
 	switch(pirate_type)
 		if(PIRATES_ROGUES)
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "rogue_names"))
@@ -37,6 +39,10 @@
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "silverscale_names"))
 		if(PIRATES_DUTCHMAN)
 			ship_name = "Flying Dutchman"
+		//SKYRAT EDIT ADDITION
+		if(PIRATES_IMPERIAL_ENCLAVE)
+			ship_name = "Imperial Enclave Enforcer-Class Starship"
+		//SKYRAT EDIT ADDITION END
 
 /datum/round_event/pirates/announce(fake)
 	priority_announce("Incoming subspace communication. Secure channel opened at all communication consoles.", "Incoming Message", SSstation.announcer.get_rand_report_sound())
@@ -62,6 +68,13 @@
 			threat.title = "Business proposition"
 			threat.content = "Ahoy! This be the [ship_name]. Cough up [payoff] credits or you'll walk the plank."
 			threat.possible_answers = list("We'll pay.","We will not be extorted.")
+		//SKYRAT EDIT ADDITION
+		if(PIRATES_IMPERIAL_ENCLAVE)
+			ship_template = /datum/map_template/shuttle/pirate/imperial_enclave
+			threat.title = "Imperial Enclave Audit"
+			threat.content = "Greetings, this is the [ship_name]. Due to recent Imperial regulatory violations, your station has been fined [payoff] credits. Failure to comply will result in lethal debt recovery. Imperal Enclave out."
+			threat.possible_answers = list("Submit to audit and pay the fine.", "Imperial regulations? What a load of bollocks.")
+		//SKYRAT EDIT ADDITION END
 	threat.answer_callback = CALLBACK(src,.proc/answered)
 	SScommunications.send_message(threat,unique = TRUE)
 
@@ -351,6 +364,10 @@
 	for(var/atom/movable/AM in get_turf(pad))
 		if(AM == pad)
 			continue
+		//SKYRAT EDIT ADDITION - NO MOBS!
+		if(ismob(AM))
+			continue
+		//SKYRAT EDIT END
 		export_item_and_contents(AM, apply_elastic = FALSE, dry_run = TRUE, external_report = ex)
 
 	for(var/datum/export/E in ex.total_amount)
@@ -370,6 +387,10 @@
 	for(var/atom/movable/AM in get_turf(pad))
 		if(AM == pad)
 			continue
+		//SKYRAT EDIT ADDITION - NO MOBS!
+		if(ismob(AM))
+			continue
+		//SKYRAT EDIT END
 		export_item_and_contents(AM, EXPORT_PIRATE | EXPORT_CARGO | EXPORT_CONTRABAND | EXPORT_EMAG, apply_elastic = FALSE, delete_unsold = FALSE, external_report = ex)
 
 	status_report = "Sold: "
