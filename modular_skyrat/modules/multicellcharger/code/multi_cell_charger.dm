@@ -15,6 +15,14 @@
 	var/charge_rate_base = 250 // Amount of charge we gain from a level one capacitor
 	var/charge_rate_max = 4000 // The highest we allow the charge rate to go
 
+/obj/machinery/cell_charger_multi/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, /atom.proc/RightClick)
+
+/obj/machinery/cell_charger_multi/Destroy()
+	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
+	. = ..()
+
 /obj/machinery/cell_charger_multi/update_overlays()
 	. = ..()
 
@@ -31,13 +39,18 @@
 		. += new /mutable_appearance(charge_overlay)
 		. += new /mutable_appearance(cell_overlay)
 
-/obj/machinery/cell_charger_multi/CtrlShiftClick(mob/user)
+/obj/machinery/cell_charger_multi/CtrlShiftClick(mob/user) // Remove this after like a month - starting 11-Jun-21
 	. = ..()
-	if(!can_interact(user))
+	to_chat(user, "<span class='warning'>This action has been moved to Right Click.</span>")
+
+/obj/machinery/cell_charger_multi/RightClick(mob/user)
+	. = ..()
+	if(!can_interact(user) || !charging_batteries.len)
 		return
 	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")
 	for(var/i in charging_batteries)
 		removecell()
+	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/cell_charger_multi/examine(mob/user)
 	. = ..()
@@ -49,10 +62,10 @@
 			. += "There's [charging] cell in the charger, current charge: [round(charging.percent(), 1)]%."
 	if(in_range(user, src) || isobserver(user))
 		. += "<span class='notice'>The status display reads: Charging power: <b>[charge_rate]W</b>.</span>"
-	. += "<span class='notice'>Ctrl+shift click it to remove all the cells at once!</span>"
+	. += "<span class='notice'>Right click it to remove all the cells at once!</span>"
 
-/obj/machinery/cell_charger_multi/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/stock_parts/cell) && !panel_open)
+/obj/machinery/cell_charger_multi/attackby(obj/item/tool, mob/user, params)
+	if(istype(tool, /obj/item/stock_parts/cell) && !panel_open)
 		if(machine_stat & BROKEN)
 			to_chat(user, "<span class='warning'>[src] is broken!</span>")
 			return
@@ -63,24 +76,24 @@
 			to_chat(user, "<span class='warning'>[src] is full, and cannot hold anymore cells!</span>")
 			return
 		else
-			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
-			if(!isarea(a))
+			var/area/current_area = loc.loc // Gets our locations location, like a dream within a dream
+			if(!isarea(current_area))
 				return
-			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
+			if(current_area.power_equip == 0) // There's no APC in this area, don't try to cheat power!
 				to_chat(user, "<span class='warning'>[src] blinks red as you try to insert the cell!</span>")
 				return
-			if(!user.transferItemToLoc(W,src))
+			if(!user.transferItemToLoc(tool,src))
 				return
 
-			charging_batteries += W
+			charging_batteries += tool
 			user.visible_message("<span class='notice'>[user] inserts a cell into [src].</span>", "<span class='notice'>You insert a cell into [src].</span>")
 			update_appearance()
 	else
-		if(!charging_batteries.len && default_deconstruction_screwdriver(user, icon_state, icon_state, W))
+		if(!charging_batteries.len && default_deconstruction_screwdriver(user, icon_state, icon_state, tool))
 			return
-		if(default_deconstruction_crowbar(W))
+		if(default_deconstruction_crowbar(tool))
 			return
-		if(!charging_batteries.len && default_unfasten_wrench(user, W))
+		if(!charging_batteries.len && default_unfasten_wrench(user, tool))
 			return
 		return ..()
 
