@@ -222,4 +222,12 @@ switch (BUILD_MODE) {
     break;
 }
 
+<<<<<<< HEAD
 runTasks(tasksToRun);
+=======
+Juke.setup({
+  default: DefaultTarget,
+}).then((code) => {
+  process.exit(code);
+});
+>>>>>>> 280882b549d (Juke Build Hotfix 1 (#59643))
