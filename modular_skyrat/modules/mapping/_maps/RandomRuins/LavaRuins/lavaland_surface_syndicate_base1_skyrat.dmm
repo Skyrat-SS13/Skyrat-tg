@@ -242,12 +242,9 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "cp" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/iron/dark,
-/area/ruin/unpowered/syndicate_lava_base/bar)
+/obj/machinery/smartfridge/chemistry/preloaded,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "cr" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
@@ -881,10 +878,10 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "kq" = (
-/obj/machinery/chem_master,
 /obj/structure/sign/departments/chemistry{
 	pixel_x = 32
 	},
+/obj/structure/table/glass,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "ku" = (
@@ -2412,8 +2409,7 @@
 	},
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "Ct" = (
-/obj/structure/table/glass,
-/obj/machinery/reagentgrinder,
+/obj/machinery/chem_master,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "CB" = (
@@ -2521,6 +2517,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 8
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "DZ" = (
@@ -3022,7 +3019,6 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "Kp" = (
@@ -3554,10 +3550,10 @@
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "Qk" = (
 /obj/structure/table/glass,
+/obj/item/clothing/glasses/science,
 /obj/item/book/manual/wiki/chemistry{
 	pixel_y = 8
 	},
-/obj/item/clothing/glasses/science,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "Qm" = (
@@ -3623,6 +3619,10 @@
 	dir = 4
 	},
 /area/ruin/unpowered/syndicate_lava_base/medbay)
+"QN" = (
+/obj/machinery/smartfridge/drinks,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "QQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3949,6 +3949,10 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
+"Vi" = (
+/obj/machinery/smartfridge/food,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "Vj" = (
 /obj/structure/lattice/catwalk,
 /turf/open/lava/smooth/lava_land_surface,
@@ -4204,6 +4208,7 @@
 /obj/item/storage/box/beakers/bluespace,
 /obj/item/storage/box/beakers/bluespace,
 /obj/machinery/firealarm/directional/west,
+/obj/machinery/reagentgrinder,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "XN" = (
@@ -5828,13 +5833,13 @@ df
 df
 df
 Tx
-WW
+To
 QQ
 wo
 Cd
 Pd
 YN
-Tx
+Vi
 Ko
 Ji
 DQ
@@ -6069,8 +6074,8 @@ QQ
 wo
 Oy
 xH
-cp
-Tx
+YN
+QN
 ej
 WW
 ae
@@ -7175,7 +7180,7 @@ Qt
 Vv
 rE
 qL
-VY
+cp
 kq
 Ct
 Ha

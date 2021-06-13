@@ -98,10 +98,10 @@
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "aG" = (
 /obj/structure/table/glass,
+/obj/item/clothing/glasses/science,
 /obj/item/book/manual/wiki/chemistry{
 	pixel_y = 8
 	},
-/obj/item/clothing/glasses/science,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "aI" = (
@@ -316,12 +316,9 @@
 /turf/open/floor/iron/dark/textured_half,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "ce" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/iron/dark,
-/area/ruin/unpowered/syndicate_lava_base/bar)
+/obj/machinery/smartfridge/chemistry/preloaded,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "cf" = (
 /obj/structure/closet/crate,
 /obj/item/flashlight{
@@ -432,6 +429,10 @@
 	dir = 1
 	},
 /area/ruin/unpowered/syndicate_lava_base/main)
+"cZ" = (
+/obj/machinery/smartfridge/drinks,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "db" = (
 /obj/structure/safe,
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe{
@@ -908,6 +909,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 8
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "iQ" = (
@@ -947,8 +949,7 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "jb" = (
-/obj/structure/table/glass,
-/obj/machinery/reagentgrinder,
+/obj/machinery/chem_master,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "jc" = (
@@ -1223,6 +1224,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
+"lD" = (
+/obj/machinery/smartfridge/food,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "lT" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
@@ -1364,6 +1369,7 @@
 /obj/item/storage/box/beakers/bluespace,
 /obj/item/storage/box/beakers/bluespace,
 /obj/machinery/firealarm/directional/west,
+/obj/machinery/reagentgrinder,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "nC" = (
@@ -1956,10 +1962,10 @@
 /turf/open/lava/plasma/ice_moon,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "vl" = (
-/obj/machinery/chem_master,
 /obj/structure/sign/departments/chemistry{
 	pixel_x = 32
 	},
+/obj/structure/table/glass,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "vo" = (
@@ -2627,10 +2633,10 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/main)
 "DI" = (
+/obj/effect/turf_decal/tile/bar,
 /obj/machinery/vending/boozeomat/syndicate_access{
 	onstation = 0
 	},
-/obj/effect/turf_decal/tile/bar,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "DL" = (
@@ -4258,7 +4264,6 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "Xw" = (
@@ -5828,13 +5833,13 @@ us
 us
 us
 td
-sF
+Ol
 dR
 NY
 Yv
 CC
 FF
-td
+lD
 Xq
 LK
 iL
@@ -6069,8 +6074,8 @@ dR
 NY
 OV
 jc
-ce
-td
+FF
+cZ
 xf
 sF
 DI
@@ -7175,7 +7180,7 @@ EV
 ZL
 wu
 xJ
-QN
+ce
 vl
 jb
 Vr
