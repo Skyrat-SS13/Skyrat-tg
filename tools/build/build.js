@@ -140,4 +140,6 @@ const TgsTarget = Juke.createTarget({
 
 Juke.setup({
   default: DefaultTarget,
+}).then((code) => {
+  process.exit(code);
 });
