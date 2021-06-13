@@ -101,3 +101,9 @@
 	suffix = "blackmarket.dmm"
 	name = "Shady Market"
 	description = "Whaddya buyin'?"
+
+/datum/map_template/ruin/space/skyrat/brokexenosat
+	id = "brokexenosat"
+	suffix = "brokenxenosat.dmm"
+	name = "Broken Xenobiology Wing"
+	description = "Perfect for.. refurbishment."

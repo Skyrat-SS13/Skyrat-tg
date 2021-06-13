@@ -22,3 +22,7 @@
 
 /area/ruin/space/has_grav/powered/skyrat/blackmarket
 	name = "Shady Market"
+
+/area/ruin/space/has_grav/powered/skyrat/brokexenosat
+	name = "Abandoned Xenobiology Wing"
+	area_flags = XENOBIOLOGY_COMPATIBLE
