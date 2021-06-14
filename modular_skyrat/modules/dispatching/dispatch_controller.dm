@@ -118,13 +118,13 @@ SUBSYSTEM_DEF(dispatch)
 				if(ttype in job_cache_roles[job])
 					job_type_holders[ttype] += mob
 
-/// TODO AUTODOC
+///Sends a message to every type holder of a specific type, given they are active, unless ignore_active is TRUE
 /datum/controller/subsystem/dispatch/proc/message_type_holders(ticket_type, message, ignore_active=FALSE)
 	for(var/mob/mob in job_type_holders[ticket_type])
 		if((ui_data_by_mob[mob] && ui_data_by_mob[mob]["mdata"]["holderActive"]) || ignore_active)
 			message_holder(mob, message)
 
-/// TODO AUTODOC
+///Takes a user, and a list of the ticket data, and constructs a ticket to then alert type holders and slots it into the master list
 /datum/controller/subsystem/dispatch/proc/ticket_create(mob/user, list/tdata)
 	holder_update()
 	var/datum/dispatch_ticket/ticket = new(user, tdata)
@@ -217,23 +217,6 @@ SUBSYSTEM_DEF(dispatch)
 		ui_data_by_mob[user]["ui-tmanage"] = ui
 		return
 
-#ifdef DEBUG // HEY IDIOT DONT FORGET TO REMOVE THIS SHIT BEFORE MAKING THE PR. YES YOU. TODO TODO TODO
-/proc/p_list(list/list, recurse_level = 0)
-	if(!recurse_level)
-		p_str("Printing List '[list]'")
-	for(var/item in list)
-		var/pre = repeat_string(recurse_level, "-")
-		if(list[item])
-			p_str("[pre][list[item]]")
-		else
-			p_str("[pre][item]")
-		if(islist(item))
-			p_list(item, recurse_level + 1)
-
-/proc/p_str(str)
-	world.log << "DEBUG: [str]"
-#endif
-
 /datum/controller/subsystem/dispatch/ui_data(mob/user)
 	var/list/data = list(
 		"priorities" = SSDISPATCH_TICKET_PRIORITIES,
@@ -249,6 +232,7 @@ SUBSYSTEM_DEF(dispatch)
 		data["emagged"] = user_h.ears.obj_flags & EMAGGED
 	return data
 
+///Grabs ALL roles that a Holder has authorization for
 /datum/controller/subsystem/dispatch/proc/get_holder_roles(mob/user)
 	holder_update()
 	var/list/ret = list()
@@ -257,6 +241,7 @@ SUBSYSTEM_DEF(dispatch)
 			ret += ttype
 	return ret
 
+///Constructs a priority sorted list of all tickets filtered on type and, if only_open is TRUE, status
 /datum/controller/subsystem/dispatch/proc/get_ticket_list_for_type(type, only_open=TRUE)
 	var/list/ret = list()
 	for(var/ticket in tickets)
@@ -270,27 +255,7 @@ SUBSYSTEM_DEF(dispatch)
 		ret += item.key
 	return ret
 
-/datum/controller/subsystem/dispatch/proc/make_testing_instances()
-	var/list/tdata = list(
-		"type" = SSDISPATCH_TICKET_TYPE_SECURITY,
-		"extra" = ""
-	)
-	tdata["priority"] = SSDISPATCH_TICKET_PRIORITY_MINIMAL
-	tdata["title"] = "Minimal"
-	ticket_create(pick(GLOB.mob_living_list), tdata)
-	tdata["priority"] = SSDISPATCH_TICKET_PRIORITY_LOW
-	tdata["title"] = "Low"
-	ticket_create(pick(GLOB.mob_living_list), tdata)
-	tdata["priority"] = SSDISPATCH_TICKET_PRIORITY_NORMAL
-	tdata["title"] = "Normal"
-	ticket_create(pick(GLOB.mob_living_list), tdata)
-	tdata["priority"] = SSDISPATCH_TICKET_PRIORITY_HIGH
-	tdata["title"] = "High"
-	ticket_create(pick(GLOB.mob_living_list), tdata)
-	tdata["priority"] = SSDISPATCH_TICKET_PRIORITY_CRITICAL
-	tdata["title"] = "Critical"
-	ticket_create(pick(GLOB.mob_living_list), tdata)
-
+///Returns the absolute priority value of a given dispatch priority
 /proc/get_dispatch_priority_value(priority)
 	switch(priority)
 		if(SSDISPATCH_TICKET_PRIORITY_MINIMAL)
@@ -316,6 +281,7 @@ SUBSYSTEM_DEF(dispatch)
 	if(v2 > v1) return 1
 	return 0
 
+///Takes a user, and a ticket, and loads the ticket information into their ticketData store
 /datum/controller/subsystem/dispatch/proc/load_ticket_data_into_mdata(mob/user, datum/dispatch_ticket/ticket)
 	ui_data_by_mob[user]["mdata"]["ticketData"]["creator"] = ticket.creator
 	ui_data_by_mob[user]["mdata"]["ticketData"]["location"] = ticket.location
