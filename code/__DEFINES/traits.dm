@@ -545,6 +545,11 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STASIS_MUTE "stasis"
 #define GENETICS_SPELL "genetics_spell"
 #define EYES_COVERED "eyes_covered"
+#define HYPNOCHAIR_TRAIT "hypnochair"
+#define NANITES_TRAIT "nanites"
+#define FLASHLIGHT_EYES "flashlight_eyes"
+#define IMPURE_OCULINE "impure_oculine"
+#define BLINDFOLD_TRAIT "blindfolded"
 #define TRAIT_SANTA "santa"
 #define SCRYING_ORB "scrying-orb"
 #define ABDUCTOR_ANTAGONIST "abductor-antagonist"
@@ -632,6 +637,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Traits applied to a silicon mob by their model.
 #define MODEL_TRAIT "model_trait"
 
+/// Trait granted by [mob/living/silicon/ai]
+/// Applied when the ai anchors itself
+#define AI_ANCHOR_TRAIT "ai_anchor"
 /// Trait from [/datum/antagonist/nukeop/clownop]
 #define CLOWNOP_TRAIT "clownop"
 

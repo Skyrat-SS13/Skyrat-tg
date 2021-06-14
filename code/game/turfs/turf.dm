@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	icon = 'icons/turf/floors.dmi'
-	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE // Important for interaction with and visualization of openspace.
+	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE// Important for interaction with and visualization of openspace.
 	luminosity = 1
 	/// Turf bitflags, see code/__DEFINES/flags.dm
 	var/turf_flags = NONE
@@ -45,11 +45,14 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 	var/tmp/lighting_corners_initialised = FALSE
 
-	///List of light sources affecting this turf.
-	var/tmp/list/datum/light_source/affecting_lights
 	///Our lighting object.
-	var/tmp/atom/movable/lighting_object/lighting_object
-	var/tmp/list/datum/lighting_corner/corners
+	var/tmp/datum/lighting_object/lighting_object
+	///Lighting Corner datums.
+	var/tmp/datum/lighting_corner/lighting_corner_NE
+	var/tmp/datum/lighting_corner/lighting_corner_SE
+	var/tmp/datum/lighting_corner/lighting_corner_SW
+	var/tmp/datum/lighting_corner/lighting_corner_NW
+
 
 	///Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.
 	var/directional_opacity = NONE

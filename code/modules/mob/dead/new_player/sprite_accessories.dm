@@ -830,6 +830,18 @@
 	name = "Long Fade Down"
 	icon_state = "long_fade_down"
 
+/datum/sprite_accessory/hair_gradient/short_fade_up
+	name = "Short Fade Up"
+	icon_state = "short_fade_up"
+
+/datum/sprite_accessory/hair_gradient/short_fade_down
+	name = "Short Fade Down"
+	icon_state = "short_fade_down"
+
+/datum/sprite_accessory/hair_gradient/wavy_spike
+	name = "Spiked Wavy"
+	icon_state = "wavy_spiked"
+
 /////////////////////////////
 // Facial Hair Definitions //
 /////////////////////////////
@@ -1805,6 +1817,36 @@
 	name = "Mothra"
 	icon_state = "mothra"
 	color_src = 0
+	dimension_x = 96
+	center = TRUE
+	dimension_y = 32
+
+/datum/sprite_accessory/wings/skeleton
+	name = "Skeleton"
+	icon_state = "skele"
+	dimension_x = 96
+	center = TRUE
+	dimension_y = 32
+	locked = TRUE
+
+/datum/sprite_accessory/wings_open/skeleton
+	name = "Skeleton"
+	icon_state = "skele"
+	dimension_x = 96
+	center = TRUE
+	dimension_y = 32
+
+/datum/sprite_accessory/wings/robotic
+	name = "Robotic"
+	icon_state = "robotic"
+	dimension_x = 96
+	center = TRUE
+	dimension_y = 32
+	locked = TRUE
+
+/datum/sprite_accessory/wings_open/robotic
+	name = "Robotic"
+	icon_state = "robotic"
 	dimension_x = 96
 	center = TRUE
 	dimension_y = 32

@@ -1523,6 +1523,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
+/* SKYRAT EDIT REMOVAL
 /datum/techweb_node/savannah_ivanov
 	id = "mecha_savannah_ivanov"
 	display_name = "EXOSUIT: Savannah-Ivanov"
@@ -1542,7 +1543,7 @@
 		"savannah_ivanov_torso",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-
+*/
 /datum/techweb_node/adv_mecha_tools
 	id = "adv_mecha_tools"
 	display_name = "Advanced Exosuit Equipment"
