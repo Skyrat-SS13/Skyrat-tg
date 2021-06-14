@@ -9,7 +9,6 @@
 	id = "ocean-fissure"
 	description = "A tear in the ocean."
 	suffix = "ocean_fissure.dmm"
-	cost = 5
 
 /datum/map_template/ruin/ocean/fissure/diag
 	name = "Horizontal Thermal Fissure"
@@ -22,7 +21,6 @@
 	id = "ocean-listening"
 	description = "A listening outpost in the ocean."
 	suffix = "ocean_listening_outpost.dmm"
-	cost = 10
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/ocean/mining_site
@@ -30,7 +28,6 @@
 	id = "ocean-miningsite"
 	description = "Ocean mining site."
 	suffix = "ocean_mining_above.dmm"
-	cost = 10
 	allow_duplicates = FALSE
 	always_spawn_with = list(/datum/map_template/ruin/ocean/mining_site_below = PLACE_BELOW)
 
@@ -52,7 +49,6 @@
 	id = "ocean-fissure"
 	description = "A tear in the ocean."
 	suffix = "ocean_fissure.dmm"
-	cost = 5
 
 /datum/map_template/ruin/ocean_station/fissure/diag
 	name = "Horizontal Thermal Fissure"
@@ -91,6 +87,7 @@
 	description = "The fountain has a warning on the side. DANGER: May have undeclared side effects that only become obvious when implemented."
 	prefix = "_maps/RandomRuins/AnywhereRuins/"
 	suffix = "fountain_hall.dmm"
+	allow_duplicates = FALSE
 
 /datum/map_template/ruin/trench/free_golem //Hilariously cursed. Genuinely. Vile.
 	name = "Free Golem Ship"
@@ -99,3 +96,4 @@
 	Seem very intent on research and individual liberty, and also geology-based naming?"
 	prefix = "_maps/RandomRuins/AnywhereRuins/"
 	suffix = "golem_ship.dmm"
+	allow_duplicates = FALSE
