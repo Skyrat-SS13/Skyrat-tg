@@ -137,9 +137,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		else if(lighting_object && !lighting_object.needs_update)
 			lighting_object.update()
 
-<<<<<<< HEAD
-		for(var/turf/open/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			S.update_starlight()
+		for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
+			space_tile.update_starlight()
 	//SKYRAT EDIT ADDITION
 	if(old_liquids)
 		if(W.liquids)
@@ -164,11 +163,6 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 				else
 					qdel(old_liquids, TRUE)
 	//SKYRAT EDIT END
-=======
-		for(var/turf/open/space/space_tile in RANGE_TURFS(1, src))
-			space_tile.update_starlight()
-
->>>>>>> d3a1bea8598 (Turns lighting objects into a datum, makes all lighting be performed with an underlay. big maptick fix very good! (#58991))
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	QUEUE_SMOOTH(src)
 

@@ -3,10 +3,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /atom/movable/openspace_backdrop
 	name = "openspace_backdrop"
 	anchored = TRUE
-<<<<<<< HEAD
-=======
 
->>>>>>> d3a1bea8598 (Turns lighting objects into a datum, makes all lighting be performed with an underlay. big maptick fix very good! (#58991))
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "grey"
 	plane = OPENSPACE_BACKDROP_PLANE
