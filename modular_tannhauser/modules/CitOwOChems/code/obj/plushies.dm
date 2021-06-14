@@ -1,5 +1,6 @@
 /obj/item/toy/plush
 	var/can_random_spawn = TRUE			//if this is FALSE, don't spawn this for random plushies.
+//	var/snowflake_idvar/snowflake_id
 
 
 GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
@@ -90,10 +91,10 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	plushie_absorb(target)
 
 /obj/item/toy/plush/plushling/proc/plushie_absorb(obj/item/toy/plush/victim)
-	if(!victim)
-		return
+//	if(!victim)
+//		return
 	visible_message("<span class='warning'>[src] gruesomely mutilliates [victim], leaving nothing more than dust!</span>")
-	if(victim.snowflake_id) //Snowflake code for snowflake plushies.
+/*	if(victim.snowflake_id) //Snowflake code for snowflake plushies.
 		set_snowflake_from_config(victim.snowflake_id)
 		desc += " Wait, did it just move..?"
 	else
@@ -102,6 +103,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 		icon_state = victim.icon_state
 		squeak_override = victim.squeak_override
 		attack_verb_simple = victim.attack_verb_simple
+*/
 	new /obj/effect/decal/cleanable/ash(get_turf(victim))
 	qdel(victim)
 
