@@ -45,6 +45,7 @@
 			eye_color = human_owner.eye_color
 		if(HAS_TRAIT(human_owner, TRAIT_NIGHT_VISION) && !lighting_alpha)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+			see_in_dark = 4
 	eye_owner.update_tint()
 	owner.update_sight()
 	if(eye_owner.has_dna() && ishuman(eye_owner))
@@ -61,6 +62,7 @@
 			eye_color = affected_human.eye_color
 		if(HAS_TRAIT(affected_human, TRAIT_NIGHT_VISION) && !lighting_alpha)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
+			see_in_dark = 4
 	owner.update_tint()
 	owner.update_sight()
 	if(owner.has_dna() && ishuman(owner))
