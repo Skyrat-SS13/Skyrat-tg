@@ -2,10 +2,10 @@
 /mob/living/simple_animal/pet/plushie
 	name = "Plushie"
 	desc = "A living plushie!"
-	icon = 'icons/obj/plushes.dmi'
-	icon_state = "debug"
-	icon_living = "debug"
-	icon_dead = "debug"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_fox"
+	icon_living = "plushie_fox"
+	icon_dead = "plushie_fox"
 	speak_emote = list("squeaks")
 	maxHealth = 50
 	health = 50
@@ -38,8 +38,8 @@
 /obj/item/toy/plushie_shell
 	name = "Plushie Shell"
 	desc = "A plushie. Its eyes seem to be staring right back at you. Something isn't quite right."
-	icon = 'icons/obj/plushes.dmi'
-	icon_state = "debug"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "robotcorgi"
 	var/obj/item/toy/plush/stored_plush = null
 
 //attacking yourself transfers your mind into the plush!

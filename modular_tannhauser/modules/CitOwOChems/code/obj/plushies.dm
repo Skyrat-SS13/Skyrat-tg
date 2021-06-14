@@ -31,6 +31,8 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	return INITIALIZE_HINT_QDEL
 
 /obj/item/toy/plush/plushling
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "blue_fox"
 	name = "peculiar plushie"
 	desc = "An adorable stuffed toy- wait, did it just move?"
 	var/absorb_cooldown = 100 //ticks cooldown between absorbs
@@ -56,7 +58,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	addtimer(CALLBACK(H, /mob/living/carbon/human.proc/dropItemToGround, src, TRUE), 1)
 
 /obj/item/toy/plush/plushling/New()
-	var/initial_state = pick("plushie_lizard", "plushie_snake", "plushie_slime", "fox")
+	var/initial_state = pick("plushie_lizard", "plushie_snake", "plushie_slime", "plushie_fox")
 	icon_state = initial_state
 	START_PROCESSING(SSobj, src)
 	. = ..()
