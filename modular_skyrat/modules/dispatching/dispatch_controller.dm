@@ -463,6 +463,8 @@ SUBSYSTEM_DEF(dispatch)
 
 			ticket_i.handle(user)
 
+			ticket_i.message_creator("Your ticket is being handled by [user]!")
+
 			ui_data_by_mob[user]["mdata"]["ticketData"]["handler"] = "[ticket_i.handler]"
 			ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket_i.status
 			ui_data_by_mob[user]["ticket"] = ticket
@@ -483,6 +485,8 @@ SUBSYSTEM_DEF(dispatch)
 
 			ticket_i.status = SSDISPATCH_TICKET_STATUS_REJECTED
 
+			ticket_i.message_creator("Your ticket has been rejected!")
+
 			ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket_i.status
 
 			return TRUE
@@ -501,6 +505,8 @@ SUBSYSTEM_DEF(dispatch)
 
 			ticket_i.status = SSDISPATCH_TICKET_STATUS_RESOLVED
 
+			ticket_i.message_creator("Your ticket has been resolved!")
+
 			ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket_i.status
 
 			return TRUE
@@ -513,6 +519,8 @@ SUBSYSTEM_DEF(dispatch)
 
 			var/ticket = ui_data_by_mob[user]["mdata"]["ticketActive"]
 			var/datum/dispatch_ticket/ticket_i = tickets[ticket]
+
+			ticket_i.message_creator("Your ticket has been cleared. Please wait for a new handler.")
 
 			ticket_i.handle(null)
 			ticket_i.status = SSDISPATCH_TICKET_STATUS_OPEN
