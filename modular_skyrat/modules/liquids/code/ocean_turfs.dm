@@ -127,6 +127,11 @@
 	var/obj/effect/abstract/liquid_turf/immutable/new_immmutable = SSliquids.get_immutable(/obj/effect/abstract/liquid_turf/immutable/ocean)
 	new_immmutable.add_turf(src)
 
+/turf/open/floor/iron/ocean/dark
+	icon_state = "darkfull"
+	base_icon_state = "darkfull"
+	floor_tile = /obj/item/stack/tile/iron/dark
+
 /turf/closed/mineral/random/ocean
 	baseturfs = /turf/open/floor/plating/ocean/rock/heavy
 	turf_type = /turf/open/floor/plating/ocean/rock/heavy
