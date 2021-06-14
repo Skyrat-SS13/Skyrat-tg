@@ -97,3 +97,10 @@
 	prefix = "_maps/RandomRuins/AnywhereRuins/"
 	suffix = "golem_ship.dmm"
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/trench/ocean_submarine_Crash
+	name = "Ocean Hermit"
+	id = "ocean_submarine_Crash"
+	description = "Rectangular hermit shelter. Honk."
+	suffix = "ocean_submarine_Crash.dmm"
+	allow_duplicates = FALSE
