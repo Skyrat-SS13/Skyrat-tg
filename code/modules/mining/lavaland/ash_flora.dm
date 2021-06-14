@@ -200,13 +200,10 @@
 	pixel_y = base_pixel_y + rand(-4, 4)
 
 /obj/item/food/grown/ash_flora/shavings //So we can't craft bowls from everything.
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "You feel this flora would be unwise to consume while already full." //SKYRAT EDIT
-=======
 	grind_results = list(/datum/reagent/toxin/mushroom_powder = 5)
->>>>>>> b05af8b31dc (Add Lizard Food: a Taste of the Homeworld (#59412))
 
 /obj/item/food/grown/ash_flora/mushroom_leaf
 	name = "mushroom leaf"
