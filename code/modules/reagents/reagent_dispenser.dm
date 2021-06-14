@@ -19,7 +19,7 @@
 /obj/structure/reagent_dispensers/examine(mob/user)
 	. = ..()
 	if(can_be_tanked)
-		. += "<span class='notice'>Use a sheet of iron to convert this into a plumbing-compatible tank.</span>"
+		. += span_notice("Use a sheet of iron to convert this into a plumbing-compatible tank.")
 
 /obj/structure/reagent_dispensers/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
 	. = ..()
@@ -53,8 +53,13 @@
 		reagents.add_reagent(reagent_id, tank_volume)
 	. = ..()
 
+<<<<<<< HEAD
 /obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	visible_message("<span class='danger'>\The [src] ruptures!</span>")
+=======
+/obj/structure/reagent_dispensers/proc/boom()
+	visible_message(span_danger("\The [src] ruptures!"))
+>>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	chem_splash(loc, 5, list(reagents))
 	qdel(src)
 
@@ -121,19 +126,19 @@
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
 		if(!reagents.has_reagent(/datum/reagent/fuel))
-			to_chat(user, "<span class='warning'>[src] is out of fuel!</span>")
+			to_chat(user, span_warning("[src] is out of fuel!"))
 			return
 		var/obj/item/weldingtool/W = I
 		if(istype(W) && !W.welding)
 			if(W.reagents.has_reagent(/datum/reagent/fuel, W.max_fuel))
-				to_chat(user, "<span class='warning'>Your [W.name] is already full!</span>")
+				to_chat(user, span_warning("Your [W.name] is already full!"))
 				return
 			reagents.trans_to(W, W.max_fuel, transfered_by = user)
-			user.visible_message("<span class='notice'>[user] refills [user.p_their()] [W.name].</span>", "<span class='notice'>You refill [W].</span>")
+			user.visible_message(span_notice("[user] refills [user.p_their()] [W.name]."), span_notice("You refill [W]."))
 			playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 			W.update_appearance()
 		else
-			user.visible_message("<span class='danger'>[user] catastrophically fails at refilling [user.p_their()] [I.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
+			user.visible_message(span_danger("[user] catastrophically fails at refilling [user.p_their()] [I.name]!"), span_userdanger("That was stupid of you."))
 			log_bomber(user, "detonated a", src, "via welding tool")
 			boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 		return
@@ -205,9 +210,9 @@
 	if(.)
 		return
 	if(!paper_cups)
-		to_chat(user, "<span class='warning'>There aren't any cups left!</span>")
+		to_chat(user, span_warning("There aren't any cups left!"))
 		return
-	user.visible_message("<span class='notice'>[user] takes a cup from [src].</span>", "<span class='notice'>You take a paper cup from [src].</span>")
+	user.visible_message(span_notice("[user] takes a cup from [src]."), span_notice("You take a paper cup from [src]."))
 	var/obj/item/reagent_containers/food/drinks/sillycup/S = new(get_turf(src))
 	user.put_in_hands(S)
 	paper_cups--
@@ -301,7 +306,7 @@
 
 /obj/structure/reagent_dispensers/plumbed/storage/proc/can_be_rotated(mob/user, rotation_type)
 	if(anchored)
-		to_chat(user, "<span class='warning'>It is fastened to the floor!</span>")
+		to_chat(user, span_warning("It is fastened to the floor!"))
 	return !anchored
 
 /obj/structure/reagent_dispensers/plumbed/fuel

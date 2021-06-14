@@ -44,7 +44,7 @@
 	)
 
 /obj/item/screwdriver/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is stabbing [src] into [user.p_their()] [pick("temple", "heart")]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] is stabbing [src] into [user.p_their()] [pick("temple", "heart")]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return(BRUTELOSS)
 
 /obj/item/screwdriver/Initialize()
@@ -151,9 +151,9 @@
 
 /obj/item/screwdriver/power/suicide_act(mob/user)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
-		user.visible_message("<span class='suicide'>[user] is putting [src] to [user.p_their()] temple. It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message(span_suicide("[user] is putting [src] to [user.p_their()] temple. It looks like [user.p_theyre()] trying to commit suicide!"))
 	else
-		user.visible_message("<span class='suicide'>[user] is pressing [src] against [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message(span_suicide("[user] is pressing [src] against [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
 	playsound(loc, 'sound/items/drill_use.ogg', 50, TRUE, -1)
 	return(BRUTELOSS)
 
@@ -161,6 +161,7 @@
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
 		tool_behaviour = TOOL_WRENCH
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You attach the bolt bit to [src].</span>")
 		//___callbacknewicon_state = "drill_bolt"
 	else
@@ -168,6 +169,14 @@
 		to_chat(user, "<span class='notice'>You attach the screw bit to [src].</span>")
 		//icon_state = "drill_screw"
 	update_appearance() //SKYRAT EDIT ADDITION
+=======
+		to_chat(user, span_notice("You attach the bolt bit to [src]."))
+		icon_state = "drill_bolt"
+	else
+		tool_behaviour = TOOL_SCREWDRIVER
+		to_chat(user, span_notice("You attach the screw bit to [src]."))
+		icon_state = "drill_screw"
+>>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 /obj/item/screwdriver/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "automated screwdriver"

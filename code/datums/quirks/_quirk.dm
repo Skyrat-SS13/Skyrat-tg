@@ -48,6 +48,7 @@
 		UnregisterSignal(source, COMSIG_MOB_LOGIN)
 		post_add()
 
+<<<<<<< HEAD
 /datum/quirk/Destroy()
 	STOP_PROCESSING(SSquirks, src)
 	remove()
@@ -58,6 +59,59 @@
 			REMOVE_TRAIT(quirk_holder, mob_trait, ROUNDSTART_TRAIT)
 	SSquirks.quirk_objects -= src
 	return ..()
+=======
+/// Any effect that should be applied every single time the quirk is added to any mob, even when transferred.
+/datum/quirk/proc/add()
+/// Any effects from the proc that should not be done multiple times if the quirk is transferred between mobs. Put stuff like spawning items in here.
+/datum/quirk/proc/add_unique()
+/// Removal of any reversible effects added by the quirk.
+/datum/quirk/proc/remove()
+/// Any special effects or chat messages which should be applied. This proc is guaranteed to run if the mob has a client when the quirk is added. Otherwise, it runs once on the next COMSIG_MOB_LOGIN.
+/datum/quirk/proc/post_add()
+
+/// Subtype quirk that has some bonus logic to spawn items for the player.
+/datum/quirk/item_quirk
+	/// Lazylist of strings describing where all the quirk items have been spawned.
+	var/list/where_items_spawned
+	/// If true, the backpack automatically opens on post_add(). Usually set to TRUE when an item is equipped inside the player's backpack.
+	var/open_backpack = FALSE
+	abstract_parent_type = /datum/quirk/item_quirk
+
+/**
+ * Handles inserting an item in any of the valid slots provided, then allows for post_add notification.
+ *
+ * If no valid slot is available for an item, the item is left at the mob's feet.
+ * Arguments:
+ * * quirk_item - The item to give to the quirk holder. If the item is a path, the item will be spawned in first on the player's turf.
+ * * valid_slots - Assoc list of descriptive location strings to item slots that is fed into [/mob/living/carbon/proc/equip_in_one_of_slots]. list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK)
+ * * flavour_text - Optional flavour text to append to the where_items_spawned string after the item's location.
+ * * default_location - If the item isn't possible to equip in a valid slot, this is a description of where the item was spawned.
+ * * notify_player - If TRUE, adds strings to where_items_spawned list to be output to the player in [/datum/quirk/item_quirk/post_add()]
+ */
+/datum/quirk/item_quirk/proc/give_item_to_holder(quirk_item, list/valid_slots, flavour_text = null, default_location = "at your feet", notify_player = TRUE)
+	if(ispath(quirk_item))
+		quirk_item = new quirk_item(get_turf(quirk_holder))
+
+	var/mob/living/carbon/human/human_holder = quirk_holder
+
+	var/where = human_holder.equip_in_one_of_slots(quirk_item, valid_slots, qdel_on_fail = FALSE) || default_location
+
+	if(where == LOCATION_BACKPACK)
+		open_backpack = TRUE
+
+	if(notify_player)
+		LAZYADD(where_items_spawned, span_boldnotice("You have \a [quirk_item] [where]. [flavour_text]"))
+
+/datum/quirk/item_quirk/post_add()
+	if(open_backpack)
+		var/mob/living/carbon/human/human_holder = quirk_holder
+		// post_add() can be called via delayed callback. Check they still have a backpack equipped before trying to open it.
+		if(human_holder.back)
+			SEND_SIGNAL(human_holder.back, COMSIG_TRY_STORAGE_SHOW, human_holder)
+
+	for(var/chat_string in where_items_spawned)
+		to_chat(quirk_holder, chat_string)
+>>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 /datum/quirk/proc/transfer_mob(mob/living/to_mob)
 	quirk_holder.roundstart_quirks -= src

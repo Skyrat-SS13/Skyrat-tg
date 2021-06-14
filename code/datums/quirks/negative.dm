@@ -272,6 +272,15 @@
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "nyctophobia", /datum/mood_event/nyctophobia)
 	else
 		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "nyctophobia")
+<<<<<<< HEAD
+=======
+		return
+
+	if(quirk_holder.m_intent == MOVE_INTENT_RUN)
+		to_chat(quirk_holder, span_warning("Easy, easy, take it slow... you're in the dark..."))
+		quirk_holder.toggle_move_intent()
+	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "nyctophobia", /datum/mood_event/nyctophobia)
+>>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 /datum/quirk/nonviolent
 	name = "Pacifist"
@@ -457,7 +466,7 @@
 				new_message += pick("uh,","erm,","um,")
 				if(prob(min(5,(0.05*(nearby_people*12.5)*moodmod)))) //Max 1 in 20 chance of cutoff after a succesful filler roll, for 50% odds in a 15 word sentence
 					quirker.silent = max(3, quirker.silent)
-					to_chat(quirker, "<span class='danger'>You feel self-conscious and stop talking. You need a moment to recover!</span>")
+					to_chat(quirker, span_danger("You feel self-conscious and stop talking. You need a moment to recover!"))
 					break
 			if(prob(max(5,(nearby_people*12.5*moodmod)))) //Minimum 1/20 chance of stutter
 				word = html_decode(word)
@@ -484,14 +493,14 @@
 	var/mob/living/carbon/human/quirker = quirk_holder
 	if(prob(min(50,(0.50*(nearby_people*12.5)*moodmod)))) //Max 50% chance of not talking
 		if(dumb_thing)
-			to_chat(quirker, "<span class='userdanger'>You think of a dumb thing you said a long time ago and scream internally.</span>")
+			to_chat(quirker, span_userdanger("You think of a dumb thing you said a long time ago and scream internally."))
 			dumb_thing = FALSE //only once per life
 			if(prob(1))
 				new/obj/item/food/spaghetti/pastatomato(get_turf(quirker)) //now that's what I call spaghetti code
 		else
-			to_chat(quirk_holder, "<span class='warning'>You think that wouldn't add much to the conversation and decide not to say it.</span>")
+			to_chat(quirk_holder, span_warning("You think that wouldn't add much to the conversation and decide not to say it."))
 			if(prob(min(25,(0.25*(nearby_people*12.75)*moodmod)))) //Max 25% chance of silence stacks after succesful not talking roll
-				to_chat(quirker, "<span class='danger'>You retreat into yourself. You <i>really</i> don't feel up to talking.</span>")
+				to_chat(quirker, span_danger("You retreat into yourself. You <i>really</i> don't feel up to talking."))
 				quirker.silent = max(5, quirker.silent)
 		speech_args[SPEECH_MESSAGE] = pick("Uh.","Erm.","Um.")
 	else
@@ -505,7 +514,7 @@
 	if(prob(85) || (istype(mind_check) && mind_check.mind))
 		return
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, quirk_holder, "<span class='smallnotice'>You make eye contact with [A].</span>"), 3)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, quirk_holder, span_smallnotice("You make eye contact with [A].")), 3)
 
 /datum/quirk/social_anxiety/proc/eye_contact(datum/source, mob/living/other_mob, triggering_examiner)
 	SIGNAL_HANDLER
@@ -530,7 +539,7 @@
 			msg += "causing you to freeze up!"
 
 	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "anxiety_eyecontact", /datum/mood_event/anxiety_eyecontact)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, quirk_holder, "<span class='userdanger'>[msg]</span>"), 3) // so the examine signal has time to fire and this will print after
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, quirk_holder, span_userdanger("[msg]")), 3) // so the examine signal has time to fire and this will print after
 	return COMSIG_BLOCK_EYECONTACT
 
 /datum/mood_event/anxiety_eyecontact
@@ -613,7 +622,7 @@
 		if(deleted || missing_addiction)
 			if(deleted)
 				reagent_instance = new reagent_type()
-			to_chat(quirk_holder, "<span class='danger'>You thought you kicked it, but you feel like you're falling back onto bad habits..</span>")
+			to_chat(quirk_holder, span_danger("You thought you kicked it, but you feel like you're falling back onto bad habits.."))
 			for(var/addiction in reagent_instance.addiction_types)
 				H.mind.add_addiction_points(addiction, 1000) ///Max that shit out
 
@@ -694,12 +703,22 @@
 		return
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/clothing/accessory/allergy_dogtag/dogtag = new(get_turf(human_holder))
+<<<<<<< HEAD
 	var/list/slots = list (
 		"backpack" = ITEM_SLOT_BACKPACK,
 		"hands" = ITEM_SLOT_HANDS
 	)
 	dogtag.display = display
 	human_holder.equip_in_one_of_slots(dogtag, slots , qdel_on_fail = TRUE)
+=======
+	dogtag.display = allergy_string
+
+	give_item_to_holder(dogtag, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS), flavour_text = "Make sure medical staff can see this...")
+
+/datum/quirk/item_quirk/allergic/post_add()
+	quirk_holder.mind.store_memory("You are allergic to [allergy_string]")
+	to_chat(quirk_holder, span_boldnotice("You are allergic to [allergy_string], make sure not to consume any of these!"))
+>>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 /datum/quirk/allergic/on_process(delta_time)
 	. = ..()
