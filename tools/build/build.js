@@ -98,6 +98,7 @@ const DmTarget = Juke.createTarget({
     "html/**",
     "icons/**",
     "interface/**",
+    "modular_skyrat/**", //SKYRAT EDIT ADDITION -- check modular_skyrat too pls, build.js
     `${DME_NAME}.dme`,
   ],
   outputs: [`${DME_NAME}.dmb`, `${DME_NAME}.rsc`],
@@ -138,14 +139,8 @@ const TgsTarget = Juke.createTarget({
   },
 });
 
-Juke
-  .setup({
-    default: (
-      process.env.CBT_BUILD_MODE === 'TGS'
-        ? TgsTarget
-        : DefaultTarget
-    ),
-  })
-  .then((code) => {
-    process.exit(code);
-  });
+Juke.setup({
+  default: process.env.CBT_BUILD_MODE === "TGS" ? TgsTarget : DefaultTarget,
+}).then((code) => {
+  process.exit(code);
+});
