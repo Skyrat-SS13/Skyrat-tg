@@ -83,7 +83,7 @@
 	name = "Furranium"
 	id = /datum/reagent/OwO/furranium
 	results = list(/datum/reagent/OwO/furranium = 5)
-	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1) // /datum/reagent/moonsugar = 1,
+	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/pax/catnip = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1) // /datum/reagent/moonsugar = 1,
 	mix_message = "You think you can hear a howl come from the beaker."
 	//OwOChem vars:
 	required_temp 	= 350
@@ -96,14 +96,6 @@
 	H_ion_release 	= -0.1
 	rate_up_lim 		= 2
 	purity_min		= 0.3
-
-//FOR INSTANT REACTIONS - DO NOT MULTIPLY LIMIT BY 10.
-//There's a weird rounding error or something ugh.
-
-/datum/chemical_reaction/OwO/furranium/organic
-	id = "furranium_organic"
-	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/pax/catnip = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1)
-
 
 //PLUSHY
 
