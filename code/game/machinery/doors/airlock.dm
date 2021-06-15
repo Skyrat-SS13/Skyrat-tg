@@ -488,11 +488,12 @@
 	airlock_state = state
 
 	. = ..()
-
+	/* SKYRAT EDIT REMOVAL
 	if(hasPower() && unres_sides)
 		set_light(2, 1)
 	else
 		set_light(0)
+	*/
 
 /obj/machinery/door/airlock/update_icon_state()
 	. = ..()
