@@ -13,22 +13,7 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "aV" = (
-/obj/structure/toilet{
-	pixel_y = 13
-	},
-/obj/machinery/shower{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/door/window/survival_pod{
-	desc = "Kinda sleek. Doesn't offer much privacy.";
-	dir = 4;
-	name = "Prison Cell Door";
-	req_access_txt = "150"
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
 /turf/open/floor/iron/shuttle/evac{
@@ -68,20 +53,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "cJ" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = 6
-	},
 /obj/structure/bed/maint,
-/obj/structure/mirror{
-	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
-	pixel_x = -23;
-	pixel_y = 12
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 4
-	},
+/obj/item/bedsheet/brown,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -114,6 +87,11 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/computer/camera_advanced/syndie,
 /turf/open/floor/mineral/plastitanium,
+/area/shuttle/syndicate/slaver)
+"dU" = (
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
 /area/shuttle/syndicate/slaver)
 "eA" = (
 /obj/effect/turf_decal/stripes/full,
@@ -290,7 +268,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
-/obj/item/clothing/suit/space/hardsuit/swat,
 /obj/machinery/light/directional/west,
 /obj/structure/closet/secure_closet{
 	icon_state = "hos";
@@ -301,6 +278,8 @@
 /obj/item/storage/backpack/satchel/flat/empty,
 /obj/item/clothing/glasses/hud/security/chameleon,
 /obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/clothing/suit/space/hardsuit/syndi/elite,
+/obj/item/gun/energy/e_gun/cfa_phalanx,
 /turf/open/floor/carpet/red,
 /area/shuttle/syndicate/slaver)
 "kR" = (
@@ -442,6 +421,20 @@
 /obj/structure/shuttle/engine/heater,
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/syndicate/slaver)
+"su" = (
+/obj/structure/toilet{
+	pixel_y = 13
+	},
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
+/area/shuttle/syndicate/slaver)
 "tk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/south,
@@ -455,6 +448,12 @@
 	dir = 4
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/syndicate/slaver)
+"vu" = (
+/obj/structure/bed/maint,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
 /area/shuttle/syndicate/slaver)
 "vx" = (
 /obj/effect/turf_decal/stripes/full,
@@ -542,12 +541,6 @@
 /area/shuttle/syndicate/slaver)
 "Aq" = (
 /obj/effect/turf_decal/bot,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/ap,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/ap,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/incendiary,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
 /obj/item/storage/box,
 /obj/item/storage/box/handcuffs,
 /obj/structure/closet/secure_closet{
@@ -562,8 +555,9 @@
 /obj/item/grenade/c4,
 /obj/item/gun/ballistic/automatic/cfa_lynx,
 /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx,
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/rubber,
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap,
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/syndicate/slaver)
 "Av" = (
@@ -610,16 +604,11 @@
 	pixel_x = -12;
 	pixel_y = 6
 	},
-/obj/structure/bed/maint,
 /obj/structure/mirror{
 	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
 	pixel_x = -23;
 	pixel_y = 12
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/item/bedsheet/brown,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -693,6 +682,14 @@
 	icon = 'icons/turf/floors.dmi'
 	},
 /area/shuttle/syndicate/slaver)
+"Dz" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/brown/side{
+	dir = 4
+	},
+/area/shuttle/syndicate/slaver)
 "DO" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin/carbon{
@@ -747,11 +744,25 @@
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdoorright";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access_txt = "150"
 	},
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/plating,
+/area/shuttle/syndicate/slaver)
+"Ha" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
 /area/shuttle/syndicate/slaver)
 "Hi" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
@@ -899,6 +910,14 @@
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/syndicate/slaver)
+"NW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+/turf/open/floor/pod/dark{
+	icon = 'icons/turf/floors.dmi'
+	},
 /area/shuttle/syndicate/slaver)
 "OX" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -1063,7 +1082,7 @@
 "SA" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdock";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access_txt = "150"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/fans/tiny,
@@ -1100,6 +1119,25 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
+/area/shuttle/syndicate/slaver)
+"SJ" = (
+/obj/machinery/door/window/survival_pod{
+	desc = "Kinda sleek. Doesn't offer much privacy.";
+	dir = 4;
+	name = "Prison Cell Door";
+	req_access_txt = "150"
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
+/area/shuttle/syndicate/slaver)
+"TV" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
 /area/shuttle/syndicate/slaver)
 "TW" = (
 /turf/closed/wall/mineral/plastitanium,
@@ -1195,7 +1233,7 @@
 "XM" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdoorleft";
-	req_one_access_txt = "1,2,3,150"
+	req_one_access_txt = "150"
 	},
 /obj/effect/turf_decal/stripes/full,
 /obj/structure/fans/tiny,
@@ -1383,11 +1421,11 @@ gQ
 dl
 XN
 AK
-XN
+dU
+TV
+dU
 cJ
-XN
-AK
-XN
+vu
 cJ
 XN
 PJ
@@ -1403,12 +1441,12 @@ Xw
 gZ
 KH
 XN
+su
 aV
-XN
+Ha
+SJ
 aV
-XN
 aV
-XN
 aV
 XN
 du
@@ -1424,13 +1462,13 @@ VH
 qz
 QX
 XN
-qx
+Dz
 yf
 qx
 Mj
-qx
+Dz
 yf
-qx
+Dz
 XN
 ad
 mJ
@@ -1445,13 +1483,13 @@ xz
 zt
 gj
 YI
-yP
+NW
 Qs
 yP
 JJ
-yP
+NW
 Qs
-yP
+NW
 Hi
 AX
 yH
@@ -1512,7 +1550,7 @@ ZD
 bI
 nE
 Zo
-HQ
+Zo
 Ax
 HQ
 XN
