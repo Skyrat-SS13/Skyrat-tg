@@ -72,6 +72,8 @@ export const AmmunitionsTab = (props, context) => {
           maxValue={1}
           format={() => null}
         />
+      </Box>
+      <Box>
         Time Per Round: {time} seconds
       </Box>
       <Section

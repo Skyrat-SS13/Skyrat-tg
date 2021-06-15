@@ -68,7 +68,6 @@
 
 	if(busy)
 		data["error"] = "SYSTEM IS BUSY"
-		return data
 
 	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
 		data["error"] = "MAGAZINE IS FULL"
