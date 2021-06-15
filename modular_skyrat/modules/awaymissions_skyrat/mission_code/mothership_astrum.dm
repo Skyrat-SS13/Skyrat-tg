@@ -256,7 +256,7 @@
 	desc = "A seemingly complicated gun, that isn't so complicated after all."
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
 	pin = /obj/item/firing_pin
-	
+
 
 /obj/item/gun/energy/alien/zeta
 	name = "Zeta Blaster"
@@ -347,6 +347,6 @@
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum/death(gibbed)
 	spawn_gibs()
 	spawn_gibs()
-	new /obj/item/key/gateway/home(src.loc)
+	new /obj/item/key/gateway(src.loc)
 	new/obj/item/gun/energy/alien/zeta(src.loc)
 	qdel(src)

@@ -360,11 +360,11 @@
 /obj/item/clothing/glasses/blindfold/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot == ITEM_SLOT_EYES)
-		user.become_blind("blindfold_[REF(src)]")
+		user.become_blind(BLINDFOLD_TRAIT)
 
 /obj/item/clothing/glasses/blindfold/dropped(mob/living/carbon/human/user)
 	..()
-	user.cure_blind("blindfold_[REF(src)]")
+	user.cure_blind(BLINDFOLD_TRAIT)
 
 /obj/item/clothing/glasses/trickblindfold
 	name = "blindfold"
@@ -391,14 +391,16 @@
 		add_atom_colour("#[user.eye_color]", FIXED_COLOUR_PRIORITY)
 		colored_before = TRUE
 
-/obj/item/clothing/glasses/blindfold/white/worn_overlays(isinhands = FALSE, file2use)
-	. = list()
-	if(!isinhands && ishuman(loc) && !colored_before)
-		var/mob/living/carbon/human/H = loc
-		var/mutable_appearance/M = mutable_appearance('icons/mob/clothing/eyes.dmi', "blindfoldwhite")
-		M.appearance_flags |= RESET_COLOR
-		M.color = "#[H.eye_color]"
-		. += M
+/obj/item/clothing/glasses/blindfold/white/worn_overlays(mutable_appearance/standing, isinhands = FALSE, file2use)
+	. = ..()
+	if(isinhands || !ishuman(loc) || colored_before)
+		return
+
+	var/mob/living/carbon/human/H = loc
+	var/mutable_appearance/M = mutable_appearance('icons/mob/clothing/eyes.dmi', "blindfoldwhite")
+	M.appearance_flags |= RESET_COLOR
+	M.color = "#[H.eye_color]"
+	. += M
 
 /obj/item/clothing/glasses/sunglasses/big
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks flashes."

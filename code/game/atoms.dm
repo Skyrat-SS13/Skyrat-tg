@@ -706,7 +706,7 @@
 		if(LAZYLEN(managed_vis_overlays))
 			SSvis_overlays.remove_vis_overlay(src, managed_vis_overlays)
 
-		var/list/new_overlays = update_overlays()
+		var/list/new_overlays = update_overlays(updates)
 		if(managed_overlays)
 			cut_overlay(managed_overlays)
 			managed_overlays = null
@@ -1148,7 +1148,7 @@
 				set_light_color(var_value)
 			. =  TRUE
 		if(NAMEOF(src, light_on))
-			set_smoothed_icon_state(var_value)
+			set_light_on(var_value)
 			. =  TRUE
 		if(NAMEOF(src, light_flags))
 			set_light_flags(var_value)
@@ -1272,8 +1272,8 @@
 				if(!isnull(x) && !isnull(y))
 					transform = M.Scale(x,y)
 			if("Translate")
-				var/x = input(usr, "Choose x mod","Transform Mod") as null|num
-				var/y = input(usr, "Choose y mod","Transform Mod") as null|num
+				var/x = input(usr, "Choose x mod (negative = left, positive = right)","Transform Mod") as null|num
+				var/y = input(usr, "Choose y mod (negative = down, positive = up)","Transform Mod") as null|num
 				if(!isnull(x) && !isnull(y))
 					transform = M.Translate(x,y)
 			if("Rotate")
@@ -1976,14 +1976,25 @@
 		return
 	var/client/usr_client = usr.client
 	var/list/paramslist = list()
-	if(href_list["statpanel_item_shiftclick"])
-		paramslist[SHIFT_CLICK] = "1"
-	if(href_list["statpanel_item_ctrlclick"])
-		paramslist[CTRL_CLICK] = "1"
-	if(href_list["statpanel_item_altclick"])
-		paramslist[ALT_CLICK] = "1"
+
 	if(href_list["statpanel_item_click"])
-		// first of all make sure we valid
+		switch(href_list["statpanel_item_click"])
+			if("left")
+				paramslist[LEFT_CLICK] = "1"
+			if("right")
+				paramslist[RIGHT_CLICK] = "1"
+			if("middle")
+				paramslist[MIDDLE_CLICK] = "1"
+			else
+				return
+
+		if(href_list["statpanel_item_shiftclick"])
+			paramslist[SHIFT_CLICK] = "1"
+		if(href_list["statpanel_item_ctrlclick"])
+			paramslist[CTRL_CLICK] = "1"
+		if(href_list["statpanel_item_altclick"])
+			paramslist[ALT_CLICK] = "1"
+
 		var/mouseparams = list2params(paramslist)
 		usr_client.Click(src, loc, null, mouseparams)
 		return TRUE
