@@ -185,12 +185,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-<<<<<<< HEAD
-	//to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
+	//to_chat(world, span_boldannounce("Initializing subsystems..."))
 	add_startupmessage("Initializing subsystems...") //SKYRAT EDIT CHANGE
-=======
-	to_chat(world, span_boldannounce("Initializing subsystems..."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
