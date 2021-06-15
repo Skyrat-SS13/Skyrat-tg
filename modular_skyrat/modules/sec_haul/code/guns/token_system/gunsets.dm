@@ -157,7 +157,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov/empty(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov/empty(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov/empty(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/makarov(/emptysrc)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/empty(src)
 
 //DOZER
 /obj/item/storage/box/gunset/dozer
