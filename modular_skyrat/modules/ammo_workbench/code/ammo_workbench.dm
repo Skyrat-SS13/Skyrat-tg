@@ -1,5 +1,5 @@
 /obj/machinery/ammo_workbench
-	name = "Ammunition Workbench"
+	name = "Ammunitions Workbench"
 	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
 	icon = 'modular_skyrat/modules/ammo_workbench/icons/ammo_workbench.dmi'
 	icon_state = "ammobench"
