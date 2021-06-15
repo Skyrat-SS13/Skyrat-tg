@@ -145,6 +145,11 @@ const TicketAdvanced = (props, context) => {
 };
 
 const TicketSuspect = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { self_ref, mdata } = data;
+  const { ticketData } = mdata;
+  const { suspectName, suspectDesc, suspect } = ticketData;
+
   return (
     <Section title="Suspect Information" buttons={
       <ButtonCheckbox
