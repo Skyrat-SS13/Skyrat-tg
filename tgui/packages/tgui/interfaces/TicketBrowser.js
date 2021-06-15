@@ -1,6 +1,6 @@
 
 import { useBackend } from '../backend';
-import { Button, Section } from '../components';
+import { Button, NoticeBox, Section } from '../components';
 import { ButtonCheckbox } from '../components/Button';
 import { Window } from '../layouts';
 
@@ -19,6 +19,7 @@ export const TicketBrowser = (props, context) => {
           {!!imageAttached && (
             <TicketImage />
           )}
+          <TicketSuspect />
         </>
       )}
     </Window>
@@ -137,5 +138,31 @@ const TicketImage = (props, context) => {
         onClick={() => act("image-view-holder", { self_ref: self_ref })}
         color="blue" />
     } />
+  );
+};
+
+
+const TicketSuspect = (props, context) => {
+  const { data } = useBackend(context);
+  const { mdata } = data;
+  const { ticketData } = mdata;
+  const { suspectName, suspectDesc, suspect } = ticketData;
+
+  return (
+    <Section title="Suspect Information" buttons={
+      <ButtonCheckbox
+        content="Has Suspect"
+        checked={suspect}
+        color={suspect ? "green" : "red"} />
+    }>
+      {!!suspect && (
+        <>
+          <p>Name: {suspectName}</p>
+          <p>Desc: {suspectDesc}</p>
+        </>
+      ) || (
+        <NoticeBox>No Suspect Information</NoticeBox>
+      )}
+    </Section>
   );
 };
