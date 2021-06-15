@@ -38,7 +38,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AmmoWorkbench")
-	ui.open()
+		ui.open()
 
 	if(shocked)
 		shock(user, 80)
