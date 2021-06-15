@@ -56,7 +56,7 @@
 	AddElement(/datum/element/plant_backfire, /obj/item/food/grown/nettle.proc/burn_holder, list(TRAIT_PIERCEIMMUNE))
 
 /obj/item/food/grown/nettle/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is eating some of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] is eating some of [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return (BRUTELOSS|TOXLOSS)
 
 /*
