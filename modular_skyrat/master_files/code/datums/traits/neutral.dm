@@ -47,7 +47,7 @@
 	var/pcooldown_time = 60 SECONDS
 
 /datum/quirk/item_quirk/joker/add_unique()
-	give_item_to_holder(/obj/item/paper/joker/laughing, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
+	give_item_to_holder(/obj/item/paper/joker, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /obj/item/paper/joker
 	name = "disability card"
