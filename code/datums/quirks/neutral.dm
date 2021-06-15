@@ -45,19 +45,12 @@
 		human_holder.grant_language(/datum/language/uncommon)
 
 /datum/quirk/foreigner/remove()
-<<<<<<< HEAD
-	var/mob/living/carbon/human/H = quirk_holder
-	H.remove_blocked_language(/datum/language/common)
-	if(ishumanbasic(H))
-		H.remove_language(/datum/language/uncommon)
-*/
-//SKYRAT EDIT REMOVAL END - CUSTOMIZATION
-=======
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.remove_blocked_language(/datum/language/common)
 	if(ishumanbasic(human_holder))
 		human_holder.remove_language(/datum/language/uncommon)
->>>>>>> ec2938c72c7 (Refactors quirk code. (#59618))
+*/
+//SKYRAT EDIT REMOVAL END - CUSTOMIZATION
 
 /datum/quirk/vegetarian
 	name = "Vegetarian"
