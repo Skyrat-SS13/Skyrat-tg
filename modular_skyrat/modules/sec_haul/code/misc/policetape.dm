@@ -1,4 +1,5 @@
 //Adapted from our TGMC-base server
+/*----- Base items -----*/
 /obj/item/taperoll
 	name = "tape roll"
 	desc = "An unlabeled tape roll, how pointless."
@@ -8,27 +9,29 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/turf/start
 	var/turf/end
-	var/tape_type = /obj/item/jobtape
+	var/tape_type = /obj/structure/jobtape
 	var/icon_base = "police"	//Just in case shits fucked
 
-/obj/item/jobtape
+/obj/structure/jobtape	//TGMC had this as an item. I have it as a structure, so that we can make it work with tile blocking* (*Don't worry, it's instantly broken upon being in combat mode. It only blocks polite people.)
 	name = "tape"
+	desc = "An unlabeled line of tape, how pointless."
 	icon = 'modular_skyrat/modules/sec_haul/icons/misc/jobtape.dmi'
 	anchored = TRUE
-	var/lifted = 0
-	var/crumpled = 0
+	var/lifted = FALSE
+	var/crumpled = FALSE
 	var/icon_base = "police"	//Just in case shits fucked
 
-/obj/item/taperoll/attack_self(mob/user as mob) //This one is pretty much a copy-paste, so dont ask me how the math works I failed that class
+/*----- Taping code, in this order: placement, actions, removal -----*/
+/obj/item/taperoll/attack_self(mob/user as mob) //This one is pretty much a copy-paste, so dont ask me how the math works I failed that class. I /do/ know this is what handles placing the tape.
 	if(icon_state == "[icon_base]_start")
 		start = get_turf(src)
-		to_chat(usr, "<span class='notice'>You place the first end of the [src].</span>")
+		to_chat(usr, "<span class='notice'>You place the first end of \the [src].</span>")
 		icon_state = "[icon_base]_stop"
 	else
 		icon_state = "[icon_base]_start"
 		end = get_turf(src)
 		if(start.y != end.y && start.x != end.x || start.z != end.z)
-			to_chat(usr, "<span class='notice'>[src] can only be laid horizontally or vertically.</span>")
+			to_chat(usr, "<span class='notice'>\The [src] can only be laid horizontally or vertically.</span>")
 			return
 
 		var/turf/cur = start
@@ -52,7 +55,7 @@
 				can_place = 0
 			else
 				for(var/obj/O in cur)
-					if(!istype(O, /obj/item/jobtape) && O.density)
+					if(!istype(O, /obj/structure/jobtape) && O.density)
 						can_place = 0
 						break
 			cur = get_step_towards(cur,end)
@@ -63,125 +66,173 @@
 		cur = start
 		var/tapetest = 0
 		while (cur!=end)
-			for(var/obj/item/jobtape/Ptest in cur)
+			for(var/obj/structure/jobtape/Ptest in cur)
 				if(Ptest.icon_state == "[Ptest.icon_base]_[dir]")
 					tapetest = 1
 			if(tapetest != 1)
-				var/obj/item/jobtape/P = new tape_type(cur)
+				var/obj/structure/jobtape/P = new tape_type(cur)
 				P.icon_state = "[P.icon_base]_[dir]"
 			cur = get_step_towards(cur,end)
-	//is_blocked_turf(var/turf/T) 			/*(what does this even do?)*/
-		to_chat(usr, "<span class='notice'> You finish placing the [src].</span>"	)
+	//is_blocked_turf(var/turf/T) 			/*(what does this even do? it was commented out when I found it...)*/
+		to_chat(usr, "<span class='notice'> You finish placing \the [src].</span>"	)
 
 /obj/item/taperoll/afterattack(atom/A, mob/user as mob, proximity)
 	if (proximity && istype(A, /obj/machinery/door/airlock))
 		var/turf/T = get_turf(A)
-		var/obj/item/jobtape/ourtape = new tape_type(T.x,T.y,T.z)
+		if(locate(/obj/structure/jobtape) in T)	//Check if the door already has tape
+			to_chat(user, "<span class='notice'>This door is already taped!</span>")
+			return
+		var/obj/structure/jobtape/ourtape = new tape_type(T.x,T.y,T.z)
 		ourtape.loc = locate(T.x,T.y,T.z)
 		ourtape.icon_state = "[src.icon_base]_door"
 		ourtape.layer = ABOVE_WINDOW_LAYER
-		to_chat(user, "<span class='notice'>You finish placing the [src].</span>")
+		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 
-/obj/item/jobtape/proc/crumple()
+/obj/structure/jobtape/CanAllowThrough(atom/movable/mover, turf/target)	//This is low-key based off the holosigns, but modified to be better fitting for tape - people can't walk thru, but they can smash
+	. = ..()
+	if(iscarbon(mover))
+		var/mob/living/carbon/target_carbon = mover
+		if(allowed(target_carbon) || target_carbon.stat || allowed(target_carbon) || lifted) //Unconcious/dead people won't be blocked by the tape, nor will people who have the right access; lifted tape lets anyone through
+			return TRUE
+		//if(allowed(target_carbon) && target_carbon.m_intent != MOVE_INTENT_WALK)	//Allowed people still have to walk (?)
+		if(!crumpled)
+			if(target_carbon.combat_mode /*&& target_carbon.m_intent != MOVE_INTENT_WALK*/)	/*- Commented out in case it's decided that walking shouldn't be blocked. The hope is that behaving people will be held back, and behaving people would be walking, so they're blocked by default. Angry combat-mode people can tear thru it tho -*/
+				crumple()
+				visible_message("<span class='notice'>[target_carbon] pushes through \the [src] aggressively, ruining the tape!</span>")
+				return TRUE
+			else	//Good boi player obeys the tape
+			/*to_chat(target_carbon, "<span class='notice'>You don't want to cross \the [src], it's there for a reason...</span>")*/ //-- I WANT to have it post a message, but need a way to avoid chatspamming people walking into it... --//
+				return FALSE
+		else
+			return TRUE
+
+/obj/structure/jobtape/proc/crumple()
+	if(lifted)	//Just in case this somehow gets called while tape is already lifted (it shouldnt, but JUST in case), we quickly ditch the [VISUAL]
+		lifted = FALSE
+		//REMOVE VISUAL HERE
+		name = initial(name)
 	if(!crumpled)
-		crumpled = 1
+		crumpled = TRUE
 		icon_state = "[icon_state]_c"	//C is for Crumpled (and thats okay with me)
 		name = "crumpled [name]"
 
-/* FIX FIX FIX FIX FIX
-/obj/item/jobtape/Crossed(atom/movable/AM)	//Fuck this isnt allowed to be overridden wtf wtf
-	. = ..()
-	if(!lifted && ismob(AM))
-		var/mob/M = AM
-		if(!allowed(M))	//Related job access won't crumple tape.
-			if(ishuman(M))
-				to_chat(M, "<span class='warning'>You are not supposed to go past [src]...</span>")
-			crumple()
-FIX FIX FIX FIX FIX*/
+/obj/structure/jobtape/proc/uncrumple()	//This doesn't work help -- overridden by attack code?
+	if(!do_after(usr, 2 SECONDS, target = usr))	//Fast to repair, but can't be spammed if you're moving about
+		return
+	crumpled = FALSE
+	if(findtext(icon_state, "_door"))	//Check the icon to see if it's on a door
+		icon_state = "[icon_base]_door"
+	else if(findtext(icon_state, "_h"))	//Check the icon to see if it's horizontal
+		icon_state = "[icon_base]_h"
+	else	//Icon is implied to be vertical if it reaches this point
+		icon_state = "[icon_base]_v"
+	name = initial(name)
+	visible_message("<span class='notice'>[usr] repairs \the [src], restoring its quality.</span>")
 
-/obj/item/jobtape/attackby(obj/item/I, mob/user, params)
-	. = ..()
-	breaktape(I, user)
+/obj/structure/jobtape/proc/lifttape()
+	if(crumpled)
+		to_chat(usr, "<span class='notice'>There's no point lifting damaged [src] - try repairing it first.</span>")	//Find out how to make sure this doesnt post "damaged the tape", instead just "damaged tape"
+		return
+	else
+		lifted = !lifted
+		//(invert the visual here)
+		visible_message("<span class='notice'>[usr] [lifted ? "lifts" : "lowers"] \the [src], [lifted ? "allowing" : "restricting"] passage.</span>")
+		if(!lifted)
+			name = initial(name)
+		else
+			name = "lifted [name]"
+		return
 
-/obj/item/jobtape/attack_hand(mob/living/user)
+/obj/structure/jobtape/attackby(obj/item/I, mob/user, params)
+	. = ..()
+	if(crumpled)
+		if(istype(I, /obj/item/taperoll))	//THIS CONFLICTS WITH UNROLLING, SOLVE IT --- Also, would work with any type of taperoll. Make it only work with the same type as the line.
+			uncrumple()
+			return
+//	breaktape(I, user)
+
+/obj/structure/jobtape/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
 	if (!user.combat_mode && allowed(user))	//Checks if they're on combat mode, and if they're allowed
-		if(!lifted)
-			user.visible_message("<span class='notice'>[user] lifts [src], allowing passage.</span>")
-			crumple()	//Make a less ugly version for the lifted
-			lifted = TRUE
-			addtimer(VARSET_CALLBACK(src, lifted, FALSE), 20 SECONDS)
+		lifttape()
+	/*else if(user.combat_mode)		fucking shitfuck why wont it repair
+		breaktape(null, user)*/
 	else
-		breaktape(null, user)
+		return
 
-/obj/item/jobtape/attack_paw(mob/living/carbon/human/user)
+/obj/structure/jobtape/attack_paw(mob/living/carbon/human/user)
 	breaktape(/obj/item/wirecutters, user)	//Make this work with anything that functions as wirecutters, and with knives
 
-/obj/item/jobtape/proc/breaktape(obj/item/useditem, mob/living/user, params)
-	if(!(useditem.sharpness == SHARP_EDGED || useditem.tool_behaviour == TOOL_WIRECUTTER) && src.allowed(user))
-		to_chat(user, "You can't break the [src] with that!")
+/*
+	//if(/*!(useditem.sharpness == SHARP_EDGED || useditem.tool_behaviour == TOOL_WIRECUTTER) && {FIX RUNTIMES}*/src.allowed(user)) --- NEEDS TO BE FIXED, ALLOWS ALL WIRECUTTERS/BLADES TO CUT --- goes on below proc?
+*/
+/obj/structure/jobtape/proc/breaktape(obj/item/useditem, mob/living/user, params)	//Handles actually removing the tape
+	if(istype(useditem, /obj/item/wirecutters))
+		visible_message("<span class='notice'> [user] breaks \the [src]!</span>")
+		qdel(src)
+	if(istype(useditem, /obj/item/stack/rods) && src.allowed(user))	//Lets you un-roll the whole line of tape (?) - might conflict with repairing crumples, find a solution to both /*-- CHANGE THIS FROM RODS DEAR GOD --*/
+		//Again, IDK what the math and code hear entirely means, it's mostly unchanged from the TGMC code - I /assume/ this is meant to cut entire connected lines of tape
+		var/dir[2]
+		var/icon_dir = src.icon_state
+		if(icon_dir == "[src.icon_base]_h")
+			dir[1] = EAST
+			dir[2] = WEST
+		if(icon_dir == "[src.icon_base]_v")
+			dir[1] = NORTH
+			dir[2] = SOUTH
+		for(var/i=1;i<3;i++)
+			var/N = 0
+			var/turf/cur = get_step(src,dir[i])
+			while(N != 1)
+				N = 1
+				for (var/obj/structure/jobtape/P in cur)
+					if(P.icon_state == icon_dir)
+						N = 0
+						qdel(P)
+				cur = get_step(cur,dir[i])
+		qdel(src)
+		visible_message("<span class='notice'> [user] re-rolls \the [src], cleanly removing the full line!</span>")
+	else
+		to_chat(user, "<span class='notice'> You can't break \the [src] with that!</span>")
 		return
-	user.visible_message("<span class='notice'> [user] breaks the [src]!</span>")
 
-	var/dir[2]
-	var/icon_dir = src.icon_state
-	if(icon_dir == "[src.icon_base]_h")
-		dir[1] = EAST
-		dir[2] = WEST
-	if(icon_dir == "[src.icon_base]_v")
-		dir[1] = NORTH
-		dir[2] = SOUTH
-
-	for(var/i=1;i<3;i++)
-		var/N = 0
-		var/turf/cur = get_step(src,dir[i])
-		while(N != 1)
-			N = 1
-			for (var/obj/item/tape/P in cur)
-				if(P.icon_state == icon_dir)
-					N = 0
-					qdel(P)
-			cur = get_step(cur,dir[i])
-
-	qdel(src)
-
-/*-----Actually used tape types below this line -----*/
+/*----- Actually usable tape types below this line -----*/
 /obj/item/taperoll/police
 	name = "police tape"
 	desc = "A roll of police tape used to block off crime scenes from the public."
 	icon_state = "police_start"
-	tape_type = /obj/item/jobtape/police
+	tape_type = /obj/structure/jobtape/police
 	icon_base = "police"
 
-/obj/item/jobtape/police
+/obj/structure/jobtape/police
 	name = "police tape"
 	desc = "A length of police tape. Do not cross."
 	req_one_access = list(ACCESS_SECURITY)
 	icon_base = "police"
 
-/obj/item/taperoll/engineering
+/obj/item/taperoll/engi
 	name = "engineering tape"
 	desc = "A roll of engineering tape used to block off construction zones from the public."
-	icon_state = "engineering_start"
-	tape_type = /obj/item/jobtape/engineering
-	icon_base = "engineering"
+	icon_state = "engi_start"
+	tape_type = /obj/structure/jobtape/engi
+	icon_base = "engi"
 
-/obj/item/jobtape/engineering
+/obj/structure/jobtape/engi
 	name = "engineering tape"
 	desc = "A length of engineering tape. Better not cross it."
 	req_one_access = list(ACCESS_ENGINE_EQUIP)
-	icon_base = "engineering"
+	icon_base = "engi"
 
 /obj/item/taperoll/atmos
 	name = "atmospherics tape"
 	desc = "A roll of atmospherics tape used to block off working areas and hazards from the public."
 	icon_state = "atmos_start"
-	tape_type = /obj/item/jobtape/atmos
+	tape_type = /obj/structure/jobtape/atmos
 	icon_base = "atmos"
 
-/obj/item/jobtape/atmos
+/obj/structure/jobtape/atmos
 	name = "atmospherics tape"
 	desc = "A length of atmospherics tape. Better not cross it."
 	req_one_access = list(ACCESS_ATMOSPHERICS)
@@ -191,10 +242,10 @@ FIX FIX FIX FIX FIX*/
 	name = "medical tape"
 	desc = "A roll of medical tape used to courdon off medical sites from the public."
 	icon_state = "med_start"
-	tape_type = /obj/item/jobtape/med
+	tape_type = /obj/structure/jobtape/med
 	icon_base = "med"
 
-/obj/item/jobtape/med
+/obj/structure/jobtape/med
 	name = "medical tape"
 	desc = "A length of medical tape. Better not cross it."
 	req_one_access = list(ACCESS_MEDICAL)
@@ -204,10 +255,10 @@ FIX FIX FIX FIX FIX*/
 	name = "biohazard tape"
 	desc = "A roll of biohazard tape used to block off potentially infectious areas from the public."
 	icon_state = "bio_start"
-	tape_type = /obj/item/jobtape/bio
+	tape_type = /obj/structure/jobtape/bio
 	icon_base = "bio"
 
-/obj/item/jobtape/bio
+/obj/structure/jobtape/bio
 	name = "biohazard tape"
 	desc = "A length of biohazard tape. Do not cross."
 	req_one_access = list(ACCESS_VIROLOGY, ACCESS_XENOBIOLOGY)
