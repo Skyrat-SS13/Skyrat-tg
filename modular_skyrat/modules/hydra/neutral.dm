@@ -7,7 +7,7 @@
 	lose_text = "<span class='danger'>All of your minds become singular.</span>"
 	medical_record_text = "There are multiple heads and personalities affixed to one body."
 
-/datum/quirk/hydra/on_spawn()
+/datum/quirk/hydra/add()
 	var/mob/living/carbon/human/hydra = quirk_holder
 	var/datum/action/innate/hydra/spell = new
 	var/datum/action/innate/hydrareset/resetspell = new
