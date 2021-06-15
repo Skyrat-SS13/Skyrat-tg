@@ -71,7 +71,6 @@
 
 	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
 		data["error"] = "MAGAZINE IS FULL"
-		return data
 
 	data["available_rounds"] = list()
 	var/obj/item/ammo_casing/ammo_type = loaded_magazine.ammo_type
@@ -194,7 +193,7 @@
 
 	var/list/required_materials = new_casing.get_material_composition()
 
-	if(materials.has_materials(required_materials) && loaded_magazine.stored_ammo.len < loaded_magazine.max_ammo && istype(new_casing, loaded_magazine.ammo_type))
+	if(materials.has_materials(required_materials) && istype(new_casing, loaded_magazine.ammo_type))
 		materials.use_materials(required_materials)
 		loaded_magazine.give_round(new_casing)
 		loaded_magazine.update_appearance()
@@ -205,6 +204,9 @@
 		qdel(new_casing)
 		ammo_fill_finish(FALSE)
 		return
+
+	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
+		ammo_fill_finish()
 
 	updateDialog()
 
