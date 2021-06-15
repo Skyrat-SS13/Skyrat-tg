@@ -146,6 +146,8 @@
 		loaded_magazine.forceMove(drop_location())
 		loaded_magazine = null
 	busy = FALSE
+	error_message = ""
+	error_type = ""
 	if(timer_id)
 		deltimer(timer_id)
 		timer_id = null
