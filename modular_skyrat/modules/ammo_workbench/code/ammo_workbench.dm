@@ -224,6 +224,15 @@
 		deltimer(timer_id)
 		timer_id = null
 
+/datum/design/board/ammo_workbench
+	name = "Machine Design (Ammunitions Workbench)"
+	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
+	id = "ammo_workbench"
+	build_path = /obj/item/circuitboard/machine/ammo_workbench
+	category = list("Weapons Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+
 //MISC MACHINE PROCS
 
 /obj/machinery/ammo_workbench/RefreshParts()
