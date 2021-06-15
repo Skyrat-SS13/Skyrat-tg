@@ -12,6 +12,8 @@
 	var/shocked = FALSE
 	var/hack_wire
 	var/disable_wire
+	var/error_message = ""
+	var/error_type = ""
 	var/shock_wire
 	var/timer_id
 	var/obj/item/ammo_box/magazine/loaded_magazine = null
@@ -60,33 +62,32 @@
 			var/ref = REF(M)
 			data["materials"] += list(list("name" = M.name, "id" = ref, "amount" = sheet_amount))
 
+	if(busy)
+		error_message = "SYSTEM IS BUSY"
+		error_type = ""
+
+	if(error_message)
+		data["error"] = error_message
+		data["error_type"] = error_type
+
 	if(!loaded_magazine)
 		data["error"] = "NO MAGAZINE IS INSERTED"
+		data["error_type"] = ""
 		return data
 	else
 		data["mag_loaded"] = TRUE
 
-	if(busy)
-		data["error"] = "SYSTEM IS BUSY"
-
-	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
-		data["error"] = "MAGAZINE IS FULL"
-
 	data["available_rounds"] = list()
 	var/obj/item/ammo_casing/ammo_type = loaded_magazine.ammo_type
 
-	if(hacked) //Hacking me gets you all the bullet types!
-		var/list/round_types = typesof(ammo_type)
-		for(var/casing as anything in round_types)
-			var/obj/item/ammo_casing/our_casing = casing
-			data["available_rounds"] += list(list(
-				"name" = initial(our_casing.name),
-				"typepath" = our_casing
-			))
-	else
+	var/list/round_types = typesof(ammo_type)
+	for(var/casing as anything in round_types)
+		var/obj/item/ammo_casing/our_casing = casing
+		if(initial(our_casing.harmful) && !hacked) //Hacking allows you to print dangerous bullets
+			continue
 		data["available_rounds"] += list(list(
-			"name" = initial(ammo_type.name),
-			"typepath" = initial(loaded_magazine.ammo_type)
+			"name" = initial(our_casing.name),
+			"typepath" = our_casing
 		))
 
 	data["mag_name"] = loaded_magazine.name
@@ -158,15 +159,25 @@
 			timer_id = null
 		return
 
+	if(error_message)
+		error_message = ""
+		error_type = ""
+
 	var/list/allowed_types = typecacheof(loaded_magazine.ammo_type)
 
 	if(!(casing_type in allowed_types))
+		error_message = "AMMUNITION MISSMATCH"
+		error_type = "bad"
 		return
 
 	if(!loaded_magazine)
+		error_message = "NO MAGAZINE INSERTED"
+		error_type = ""
 		return
 
 	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
+		error_message = "MAGAZINE IS FULL"
+		error_type = "good"
 		return
 
 	if(busy)
@@ -193,9 +204,21 @@
 
 	var/list/required_materials = new_casing.get_material_composition()
 
-	if(materials.has_materials(required_materials) && istype(new_casing, loaded_magazine.ammo_type))
+	if(!materials.has_materials(required_materials))
+		error_message = "INSUFFICIENT MATERIALS"
+		error_type = "bad"
+		ammo_fill_finish(FALSE)
+		qdel(new_casing)
+		return
+
+	if(istype(new_casing, loaded_magazine.ammo_type))
+		if(!loaded_magazine.give_round(new_casing))
+			error_message = "AMMUNITION MISSMATCH"
+			error_type = "bad"
+			ammo_fill_finish(FALSE)
+			qdel(new_casing)
+			return
 		materials.use_materials(required_materials)
-		loaded_magazine.give_round(new_casing)
 		loaded_magazine.update_appearance()
 		flick("ammobench_process", src)
 		use_power(3000)
@@ -207,6 +230,9 @@
 
 	if(loaded_magazine.stored_ammo.len >= loaded_magazine.max_ammo)
 		ammo_fill_finish()
+		error_message = "MAGAZINE IS FULL"
+		error_type = "good"
+		return
 
 	updateDialog()
 
@@ -238,7 +264,7 @@
 /obj/machinery/ammo_workbench/RefreshParts()
 	var/time_efficiency = 20
 	for(var/obj/item/stock_parts/micro_laser/new_laser in component_parts)
-		time_efficiency -= new_laser.rating / 10
+		time_efficiency -= new_laser.rating
 	time_per_round = time_efficiency
 
 	var/efficiency = 1.8

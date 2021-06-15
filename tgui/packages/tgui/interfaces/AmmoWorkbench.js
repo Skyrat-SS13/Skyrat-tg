@@ -8,7 +8,7 @@ export const AmmoWorkbench = (props, context) => {
   return (
     <Window
       width={600}
-      height={480}
+      height={600}
       theme="hackerman"
       title="Ammunitions Workbench">
       <Window.Content scrollable>
@@ -42,6 +42,7 @@ export const AmmunitionsTab = (props, context) => {
     system_busy,
     hacked,
     error,
+    error_type,
     mag_name,
     caliber,
     current_rounds,
@@ -53,16 +54,8 @@ export const AmmunitionsTab = (props, context) => {
   return (
     <>
       {!!error && (
-        <NoticeBox textAlign="center">
+        <NoticeBox textAlign="center" color={error_type}>
           {error}
-        </NoticeBox>
-      )}
-      {!!hacked &&(
-        <NoticeBox textAlign="center" color="bad">
-          !WARNING! - ARMADYNE SAFETY PROTOCOLS ARE NOT ENGAGED!
-          MISUSE IS NOT COVERED UNDER WARRANTY.
-          SOME MUNITION TYPES MAY CONSTITUTE A WAR CRIME IN YOUR AREA.
-          PLEASE CONTACT AN ARMADYNE ADMINISTRATOR IMMEDIATELY.
         </NoticeBox>
       )}
       <Box inline mr={4}>
@@ -97,7 +90,7 @@ export const AmmunitionsTab = (props, context) => {
           </>
         )}>
         {!!mag_loaded && (
-          <Box mt="3px" mb="5px">
+          <Box>
             {toTitleCase(mag_name)}
           </Box>
         )}
@@ -121,7 +114,7 @@ export const AmmunitionsTab = (props, context) => {
                 <Stack.Item>
                   <Button
                     content={available_round.name}
-                    disabled={current_rounds === max_rounds}
+                    disabled={system_busy}
                     onClick={() => act('FillMagazine', {
                       selected_type: available_round.typepath,
                     })} />
@@ -131,6 +124,14 @@ export const AmmunitionsTab = (props, context) => {
           </Flex.Item>
         )}
       </Section>
+      {!!hacked &&(
+        <NoticeBox textAlign="center" color="bad">
+          !WARNING! - ARMADYNE SAFETY PROTOCOLS ARE NOT ENGAGED!
+          MISUSE IS NOT COVERED UNDER WARRANTY.
+          SOME MUNITION TYPES MAY CONSTITUTE A WAR CRIME IN YOUR AREA.
+          PLEASE CONTACT AN ARMADYNE ADMINISTRATOR IMMEDIATELY.
+        </NoticeBox>
+      )}
     </>
   );
 };
