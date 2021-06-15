@@ -880,8 +880,8 @@
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
-	w_class = WEIGHT_CLASS_HUGE
-	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT|ITEM_SLOT_SUITSTORE
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "shotgun internal magazine"
@@ -906,10 +906,21 @@
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
 	fire_delay = 5
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2
-	w_class = WEIGHT_CLASS_HUGE
-	slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT|ITEM_SLOT_SUITSTORE
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	max_ammo = 6
+
+/obj/item/gun/energy/taser/armadyne
+	name = "\improper Armadyne ATS 'taser' Gun"
+	desc = "A low-capacity, energy-based stun gun used by security teams to subdue targets at range."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/eneregy.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	icon_state = "armataser"
+	inhand_icon_state = null //so the human update icon uses the icon_state instead.
+	ammo_type = list(/obj/item/ammo_casing/energy/electrode)
+	ammo_x_offset = 2
