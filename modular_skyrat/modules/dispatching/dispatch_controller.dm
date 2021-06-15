@@ -316,6 +316,7 @@ SUBSYSTEM_DEF(dispatch)
 		if("image-attach")
 			if(ui_data_by_mob[user]["tdata"]["imageAttached"])
 				ui_data_by_mob[user]["tdata"]["imageAttached"] = FALSE
+				user.balloon_alert(user, "Image Discarded!")
 				return TRUE
 
 			var/obj/item/photo/photo = user.is_holding_item_of_type(/obj/item/photo)
@@ -327,11 +328,6 @@ SUBSYSTEM_DEF(dispatch)
 			ui_data_by_mob[user]["tdata"]["image"] = photo.picture.picture_image
 			ui_data_by_mob[user]["tdata"]["imageAttached"] = TRUE
 			user.balloon_alert(user, "Image Attached!")
-			return TRUE
-
-		if("image-discard")
-			ui_data_by_mob[user]["tdata"]["imageAttached"] = FALSE
-			user.balloon_alert(user, "Image Discarded!")
 			return TRUE
 
 		if("image-view")
