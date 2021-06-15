@@ -12,6 +12,9 @@
 	var/created
 	var/image
 	var/has_image
+	var/suspect
+	var/suspect_name
+	var/suspect_desc
 	var/mob/handler
 	var/mob/origin
 	var/list/mob/handler_past = list()
@@ -30,6 +33,9 @@
 	extra = tdata["extra"]
 	has_image = tdata["imageAttached"]
 	image = tdata["image"]
+	suspect = tdata["suspect"]
+	suspect_name = tdata["suspectName"]
+	suspect_desc = tdata["suspectDesc"]
 	status = SSDISPATCH_TICKET_STATUS_OPEN
 
 /datum/dispatch_ticket/proc/handle(mob/user)

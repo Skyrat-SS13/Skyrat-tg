@@ -183,6 +183,9 @@ SUBSYSTEM_DEF(dispatch)
 				"extra" = "",
 				"imageAttached" = FALSE,
 				"image" = null,
+				"suspect" = FALSE,
+				"suspectName" = "",
+				"suspectDesc" = "",
 				"should_clear" = FALSE)
 
 	if(ui_data_by_mob[user]["mdata"]["should_clear"])
@@ -294,6 +297,9 @@ SUBSYSTEM_DEF(dispatch)
 	ui_data_by_mob[user]["mdata"]["ticketData"]["extra"] = ticket.extra
 	ui_data_by_mob[user]["mdata"]["ticketData"]["imageAttached"] = ticket.has_image
 	ui_data_by_mob[user]["mdata"]["ticketData"]["image"] = ticket.image
+	ui_data_by_mob[user]["mdata"]["ticketData"]["suspect"] = ticket.suspect
+	ui_data_by_mob[user]["mdata"]["ticketData"]["suspectName"] = ticket.suspect_name
+	ui_data_by_mob[user]["mdata"]["ticketData"]["suspectDesc"] = ticket.suspect_desc
 	ui_data_by_mob[user]["mdata"]["ticketData"]["handler"] = ticket.handler ? "[ticket.handler]" : "None"
 
 /obj/item/radio/headset/emag_act(mob/user, obj/item/card/emag/E)
@@ -315,6 +321,21 @@ SUBSYSTEM_DEF(dispatch)
 
 	switch(action)
 		///*** TICKET CREATION ACTIONS ***///
+		if("ticket-suspect-toggle")
+			ui_data_by_mob[user]["tdata"]["suspect"] = !ui_data_by_mob[user]["tdata"]["suspect"]
+			if(!ui_data_by_mob[user]["tdata"]["suspect"])
+				ui_data_by_mob[user]["tdata"]["suspectName"] = ""
+				ui_data_by_mob[user]["tdata"]["suspectDesc"] = ""
+			return TRUE
+
+		if("ticket-suspect-name")
+			ui_data_by_mob[user]["tdata"]["suspectName"] = params["suspectName"]
+			return TRUE
+
+		if("ticket-suspect-desc")
+			ui_data_by_mob[user]["tdata"]["suspectDesc"] = params["suspectDesc"]
+			return TRUE
+
 		if("image-attach")
 			if(ui_data_by_mob[user]["tdata"]["imageAttached"])
 				ui_data_by_mob[user]["tdata"]["imageAttached"] = FALSE

@@ -58,6 +58,7 @@ export const DispatchTicket = (props, context) => {
           <TicketPriorities />
         </>
       </Section>
+      <TicketSuspect />
       <TicketImage />
     </Window>
   );
@@ -141,6 +142,26 @@ const TicketAdvanced = (props, context) => {
         />
       </Section>
     </>);
+};
+
+const TicketSuspect = (props, context) => {
+  return (
+    <Section title="Suspect Information" buttons={
+      <ButtonCheckbox
+        content="Has Suspect"
+        checked={suspect}
+        color={suspect ? "green" : "red"}
+        onClick={() => act("ticket-suspect-toggle", { self_ref: self_ref })} />
+    }>
+      {!!suspect && (
+        <>
+          <p>Name: <Input fluid value={suspectName} onChange={(e, value) => act("ticket-suspect-name", { self_ref: self_ref, suspectName: value })} /></p>
+          <p>Desc: <Input fluid value={suspectDesc} onChange={(e, value) => act("ticket-suspect-desc", { self_ref: self_ref, suspectDesc: value })} /></p>
+          <p>Don&apos;t forget you can <b>attach an image!</b></p>
+        </>
+      )}
+    </Section>
+  );
 };
 
 const TicketImage = (props, context) => {
