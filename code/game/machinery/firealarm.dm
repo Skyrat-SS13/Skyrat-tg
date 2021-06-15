@@ -161,16 +161,10 @@
 	if(!is_operational || !COOLDOWN_FINISHED(src, last_alarm))
 		return
 	COOLDOWN_START(src, last_alarm, FIREALARM_COOLDOWN)
-<<<<<<< HEAD
-	var/area/A = get_area(src)
-	A.firealert(src)
-	//playsound(loc, 'goon/sound/machinery/FireAlarm.ogg', 75) ORIGINAL
-	playsound(loc, alarm_sound, 75) //SKYRAT EDIT CHANGE - AESTHETICS
-=======
 	var/area/area = get_area(src)
 	area.firealert(src)
-	playsound(loc, 'goon/sound/machinery/FireAlarm.ogg', 75)
->>>>>>> bce02092ced (Fixed up single letter vars in Fire Alarm code and introduces a small feature (#59521))
+	//playsound(loc, 'goon/sound/machinery/FireAlarm.ogg', 75) ORIGINAL
+	playsound(loc, alarm_sound, 75) //SKYRAT EDIT CHANGE - AESTHETICS
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
 
@@ -215,13 +209,8 @@
 				if(!tool.tool_start_check(user, amount=0))
 					return
 
-<<<<<<< HEAD
-				to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-				if(W.use_tool(src, user, 40, volume=50))
-=======
 				to_chat(user, span_notice("You begin repairing [src]..."))
 				if(tool.use_tool(src, user, 40, volume=50))
->>>>>>> bce02092ced (Fixed up single letter vars in Fire Alarm code and introduces a small feature (#59521))
 					obj_integrity = max_integrity
 					to_chat(user, "<span class='notice'>You repair [src].</span>")
 			else
@@ -265,17 +254,10 @@
 						update_appearance()
 					return
 
-<<<<<<< HEAD
-				else if(W.tool_behaviour == TOOL_CROWBAR)
-					user.visible_message("<span class='notice'>[user.name] removes the electronics from [src.name].</span>", \
-										"<span class='notice'>You start prying out the circuit...</span>")
-					if(W.use_tool(src, user, 20, volume=50))
-=======
 				else if(tool.tool_behaviour == TOOL_CROWBAR)
 					user.visible_message(span_notice("[user.name] removes the electronics from [src.name]."), \
 										span_notice("You start prying out the circuit..."))
 					if(tool.use_tool(src, user, 20, volume=50))
->>>>>>> bce02092ced (Fixed up single letter vars in Fire Alarm code and introduces a small feature (#59521))
 						if(buildstage == 1)
 							if(machine_stat & BROKEN)
 								to_chat(user, "<span class='notice'>You remove the destroyed circuit.</span>")
@@ -287,15 +269,9 @@
 							update_appearance()
 					return
 			if(0)
-<<<<<<< HEAD
-				if(istype(W, /obj/item/electronics/firealarm))
-					to_chat(user, "<span class='notice'>You insert the circuit.</span>")
-					qdel(W)
-=======
 				if(istype(tool, /obj/item/electronics/firealarm))
 					to_chat(user, span_notice("You insert the circuit."))
 					qdel(tool)
->>>>>>> bce02092ced (Fixed up single letter vars in Fire Alarm code and introduces a small feature (#59521))
 					buildstage = 1
 					update_appearance()
 					return
@@ -310,15 +286,9 @@
 					update_appearance()
 					return
 
-<<<<<<< HEAD
-				else if(W.tool_behaviour == TOOL_WRENCH)
-					user.visible_message("<span class='notice'>[user] removes the fire alarm assembly from the wall.</span>", \
-						"<span class='notice'>You remove the fire alarm assembly from the wall.</span>")
-=======
 				else if(tool.tool_behaviour == TOOL_WRENCH)
 					user.visible_message(span_notice("[user] removes the fire alarm assembly from the wall."), \
 						span_notice("You remove the fire alarm assembly from the wall."))
->>>>>>> bce02092ced (Fixed up single letter vars in Fire Alarm code and introduces a small feature (#59521))
 					var/obj/item/wallframe/firealarm/frame = new /obj/item/wallframe/firealarm()
 					frame.forceMove(user.drop_location())
 					tool.play_tool_sound(src)
