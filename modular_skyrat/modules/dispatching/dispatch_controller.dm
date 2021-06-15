@@ -47,6 +47,8 @@ SUBSYSTEM_DEF(dispatch)
 
 	var/list/ui_data_by_mob
 
+	var/obj/machinery/dispatch_control/dispatch_online
+
 /datum/controller/subsystem/dispatch/Initialize()
 	. = ..()
 	load_job_cache()
