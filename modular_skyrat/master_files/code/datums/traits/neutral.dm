@@ -38,7 +38,7 @@
 	mob_trait = TRAIT_DNR
 
 //uncontrollable laughter
-/datum/quirk/joker
+/datum/quirk/item_quirk/joker
 	name = "Pseudobulbar Affect"
 	desc = "At random intervals, you suffer uncontrollable bursts of laughter."
 	value = 0
@@ -46,12 +46,8 @@
 	var/pcooldown = 0
 	var/pcooldown_time = 60 SECONDS
 
-/datum/quirk/joker/on_spawn()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	if(H && istype(H))
-		var/obj/item/paper/joker/laughing = new(get_turf(H))
-		H.put_in_active_hand(laughing)
+/datum/quirk/item_quirk/joker/add_unique()
+	give_item_to_holder(/obj/item/paper/joker, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /obj/item/paper/joker
 	name = "disability card"
@@ -107,7 +103,7 @@
 		flipped = TRUE
 		to_chat(user, "<span class='notice'>You flip the card.</span>")
 
-/datum/quirk/joker/process()
+/datum/quirk/item_quirk/joker/process()
 	if(pcooldown > world.time)
 		return
 	pcooldown = world.time + pcooldown_time
