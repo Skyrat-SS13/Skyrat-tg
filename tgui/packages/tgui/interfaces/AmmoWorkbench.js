@@ -9,7 +9,8 @@ export const AmmoWorkbench = (props, context) => {
     <Window
       width={600}
       height={480}
-      theme="hackerman">
+      theme="hackerman"
+      title="Ammunitions Workbench">
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab
@@ -39,6 +40,7 @@ export const AmmunitionsTab = (props, context) => {
   const {
     mag_loaded,
     system_busy,
+    hacked,
     error,
     mag_name,
     caliber,
@@ -53,6 +55,14 @@ export const AmmunitionsTab = (props, context) => {
       {!!error && (
         <NoticeBox textAlign="center">
           {error}
+        </NoticeBox>
+      )}
+      {!!hacked &&(
+        <NoticeBox textAlign="center" color="bad">
+          !WARNING! - ARMADYNE SAFETY PROTOCOLS ARE NOT ENGAGED!
+          MISUSE IS NOT COVERED UNDER WARRANTY.
+          SOME MUNITION TYPES MAY CONSTITUTE A WAR CRIME IN YOUR AREA.
+          PLEASE CONTACT AN ARMADYNE ADMINISTRATOR IMMEDIATELY.
         </NoticeBox>
       )}
       <Box inline mr={4}>

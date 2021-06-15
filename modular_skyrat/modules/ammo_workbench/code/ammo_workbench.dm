@@ -98,6 +98,7 @@
 	data["efficiency"] = creation_efficiency
 	data["time"] = time_per_round / 10
 	data["mag_loaded"] = TRUE
+	data["hacked"] = hacked
 
 	return data
 
