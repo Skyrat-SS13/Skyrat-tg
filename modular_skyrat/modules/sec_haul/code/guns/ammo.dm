@@ -93,7 +93,6 @@
 //////////////////////
 //12mm
 //////////////////////
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /obj/item/ammo_box/advanced/b12mm
 	name = "peacekeeper ammo box (12mm)"
