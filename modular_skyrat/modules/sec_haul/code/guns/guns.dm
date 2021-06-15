@@ -917,7 +917,7 @@
 /obj/item/gun/energy/taser/armadyne
 	name = "\improper Armadyne ATS 'taser' Gun"
 	desc = "A low-capacity, energy-based stun gun used by security teams to subdue targets at range."
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/eneregy.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	icon_state = "armataser"
