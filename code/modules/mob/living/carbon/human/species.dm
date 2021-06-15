@@ -1669,6 +1669,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						H.StaminaKnockdown(10) //SKYRAT EDIT CHANGE ABOVE
 
 				if(bloody)
+					if(H.wear_suit)
+						H.wear_suit.add_mob_blood(H)
+						H.update_inv_wear_suit()
+					if(H.w_uniform)
+						H.w_uniform.add_mob_blood(H)
+						H.update_inv_w_uniform()
 
 	return TRUE
 
