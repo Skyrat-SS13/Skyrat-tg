@@ -477,14 +477,14 @@
 	//Don't go further if the shock was blocked/too weak.
 	if(!.)
 		return
-	//SKYRAT EDIT BEGIN: MAKES POWERFUL SHOCKS HAVE A CHANCE TO STOP YOUR HEART. DANGER 
+	//SKYRAT EDIT BEGIN: MAKES POWERFUL SHOCKS HAVE A CHANCE TO STOP YOUR HEART. DANGER
 	if(can_heartattack() && !(flags & SHOCK_ILLUSION) && shock_damage >= 70)
 		if(shock_damage * siemens_coeff >= 1 && prob(30))//Higher chance to disrupt the pacemaker cells
 			var/obj/item/organ/heart/heart = getorganslot(ORGAN_SLOT_HEART)
 			heart.Stop()
 			visible_message("<span class='danger'>[src.name] briefly twitches; before falling limp - their breathing irratic and chest spasming violently!</span>", \
 								"<span class='danger'>You feel your heart thump eratically; before ceasing to beat, a violent twitch overcoming your form!</span>", ignored_mobs=src)
-	//SKYRAT EDIT END		
+	//SKYRAT EDIT END
 	//Note we both check that the user is in cardiac arrest and can actually heartattack
 	//If they can't, they're missing their heart and this would runtime
 	if(undergoing_cardiac_arrest() && can_heartattack() && !(flags & SHOCK_ILLUSION))
@@ -761,7 +761,6 @@
 			var/msg
 			switch(W.severity)
 				if(WOUND_SEVERITY_TRIVIAL)
-<<<<<<< HEAD
 					//msg = "\t <span class='danger'>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)].</span>" //ORIGINAL
 					msg = "\t <span class='danger'>Your [body_part.name] is suffering [W.a_or_from] [W.get_topic_name(src)].</span>" //SKYRAT EDIT CHANGE - MEDICAL
 				if(WOUND_SEVERITY_MODERATE)
@@ -773,15 +772,6 @@
 				if(WOUND_SEVERITY_CRITICAL)
 					//msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>" //ORIGINAL
 					msg = "\t <span class='warning'><b>Your [body_part.name] is suffering [W.a_or_from] [W.get_topic_name(src)]!!</b></span>" //SKYRAT EDIT CHANGE - MEDICAL
-=======
-					msg = "\t [span_danger("Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)].")]"
-				if(WOUND_SEVERITY_MODERATE)
-					msg = "\t [span_warning("Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)]!")]"
-				if(WOUND_SEVERITY_SEVERE)
-					msg = "\t [span_warning("<b>Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b>")]"
-				if(WOUND_SEVERITY_CRITICAL)
-					msg = "\t [span_warning("<b>Your [body_part.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b>")]"
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 			combined_msg += msg
 
 		for(var/obj/item/I in body_part.embedded_objects)
@@ -901,13 +891,8 @@
 			damaged_message += D
 		combined_msg += span_info("Your [damaged_message] [damaged_plural ? "are" : "is"] hurt.")
 
-<<<<<<< HEAD
-	if(roundstart_quirks.len)
-		combined_msg += "<span class='notice'>You have these quirks: [get_quirk_string(FALSE, CAT_QUIRK_ALL)].</span>"
-=======
 	if(quirks.len)
 		combined_msg += span_notice("You have these quirks: [get_quirk_string(FALSE, CAT_QUIRK_ALL)].")
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 	to_chat(src, combined_msg.Join("\n"))
 
