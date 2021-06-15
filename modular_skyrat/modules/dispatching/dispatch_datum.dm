@@ -10,6 +10,8 @@
 	var/status
 	var/key
 	var/created
+	var/image
+	var/has_image
 	var/mob/handler
 	var/mob/origin
 	var/list/mob/handler_past = list()
@@ -26,6 +28,8 @@
 	ticket_type = tdata["type"]
 	title = tdata["title"]
 	extra = tdata["extra"]
+	has_image = tdata["imageAttached"]
+	image = tdata["image"]
 	status = SSDISPATCH_TICKET_STATUS_OPEN
 
 /datum/dispatch_ticket/proc/handle(mob/user)
