@@ -90,15 +90,9 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 
-<<<<<<< HEAD
 	user.visible_message("<span class='notice'>[user] bangs on \the [src].</span>", \
 		"<span class='notice'>You bang on \the [src].</span>")
 	playsound(loc, 'sound/effects/glassknock.ogg', 10, FALSE, frequency = 32000) */ // SKYRAT EDIT CHANGE - MOVED TO modular_skyrat\master_files\game\machinery\doors\firedoor.dm
-=======
-	user.visible_message(span_notice("[user] bangs on \the [src]."), \
-		span_notice("You bang on \the [src]."))
-	playsound(loc, 'sound/effects/glassknock.ogg', 10, FALSE, frequency = 32000)
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 /obj/machinery/door/firedoor/attackby(obj/item/C, mob/user, params)
 	add_fingerprint(user)

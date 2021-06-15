@@ -43,16 +43,10 @@
 		var/oldname = target.real_name
 		target.real_name = chosen_name
 		var/newname = target.real_name //something about how the code handles names required that I use this instead of target.real_name
-<<<<<<< HEAD
 		display_results(user, target, "<span class='notice'>You alter [oldname]'s appearance completely, [target.p_they()] is now [newname].</span>",
 			"<span class='notice'>[user] alters [oldname]'s appearance completely, [target.p_they()] is now [newname]!</span>",
 			"<span class='notice'>[user] finishes the operation on [target]'s face.</span>")
 		display_pain(target, "<span class='userdanger'>Your face feels completely different!</span>") //SKYRAT EDIT ADD - SURGERY PAIN - This is the only surgery that has an input mid-step, there wasn't really a modular way to do this
-=======
-		display_results(user, target, span_notice("You alter [oldname]'s appearance completely, [target.p_they()] is now [newname]."),
-			span_notice("[user] alters [oldname]'s appearance completely, [target.p_they()] is now [newname]!"),
-			span_notice("[user] finishes the operation on [target]'s face."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		human_target.sec_hud_set_ID()

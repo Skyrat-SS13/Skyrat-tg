@@ -42,7 +42,6 @@
 		if(SOFT_CRIT, UNCONSCIOUS, HARD_CRIT)
 			. += span_warning("It doesn't seem to be responding.")
 		if(DEAD)
-<<<<<<< HEAD
 			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(temporary_flavor_text)
@@ -51,9 +50,6 @@
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 	//SKYRAT EDIT ADDITION END
-=======
-			. += span_deadsay("It looks like its system is corrupted and requires a reset.")
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	. += "*---------*</span>"
 
 	. += ..()

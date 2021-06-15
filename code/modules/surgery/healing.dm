@@ -60,16 +60,10 @@
 	if(istype(surgery,/datum/surgery/healing))
 		var/datum/surgery/healing/the_surgery = surgery
 		if(!the_surgery.antispam)
-<<<<<<< HEAD
 			display_results(user, target, "<span class='notice'>You attempt to patch some of [target]'s [woundtype].</span>",
 		"<span class='notice'>[user] attempts to patch some of [target]'s [woundtype].</span>",
 		"<span class='notice'>[user] attempts to patch some of [target]'s [woundtype].</span>")
 			display_pain(target, "<span class='userdanger'>Your [woundtype] sting like hell!</span>") // SKYRAT EDIT ADD - Done non-modularly to properly get woundtype without modularising the whole proc because that's liable to cause problems in future.
-=======
-			display_results(user, target, span_notice("You attempt to patch some of [target]'s [woundtype]."),
-		span_notice("[user] attempts to patch some of [target]'s [woundtype]."),
-		span_notice("[user] attempts to patch some of [target]'s [woundtype]."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 /datum/surgery_step/heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(!..())

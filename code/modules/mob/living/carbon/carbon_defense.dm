@@ -322,16 +322,10 @@
 
 	if(target.body_position == LYING_DOWN && !target.IsParalyzed()) //SKYRAT EDIT CHANGE ORIGINAL: if(target.IsKnockdown() && !target.IsParalyzed())
 		target.Paralyze(SHOVE_CHAIN_PARALYZE)
-<<<<<<< HEAD
-		target.visible_message("<span class='danger'>[name] kicks [target.name] onto [target.p_their()] side!</span>",
-						"<span class='userdanger'>You're kicked onto your side by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
-		to_chat(src, "<span class='danger'>You kick [target.name] onto [target.p_their()] side!</span>")
-		target.adjustStaminaLoss(20) //Ouch! SKYRAT EDIT ADDDITON
-=======
 		target.visible_message(span_danger("[name] kicks [target.name] onto [target.p_their()] side!"),
 						span_userdanger("You're kicked onto your side by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
 		to_chat(src, span_danger("You kick [target.name] onto [target.p_their()] side!"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
+		target.adjustStaminaLoss(20) //Ouch! SKYRAT EDIT ADDDITON
 		addtimer(CALLBACK(target, /mob/living/proc/SetKnockdown, 0), SHOVE_CHAIN_PARALYZE)
 		log_combat(src, target, "kicks", "onto their side (paralyzing)")
 		return //SKYRAT EDIT ADDITION
@@ -350,7 +344,6 @@
 						directional_blocked = TRUE
 						break
 		if((!target_table && !target_collateral_carbon && !target_disposal_bin) || directional_blocked)
-<<<<<<< HEAD
 			//target.Knockdown(SHOVE_KNOCKDOWN_SOLID) - ORIGINAL
 			target.StaminaKnockdown(10) //SKYRAT EDIT
 			target.visible_message("<span class='danger'>[name] shoves [target.name], knocking [target.p_them()] down!</span>",
@@ -363,34 +356,15 @@
 			target.visible_message("<span class='danger'>[name] shoves [target.name] onto \the [target_table]!</span>",
 							"<span class='userdanger'>You're shoved onto \the [target_table] by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, "<span class='danger'>You shove [target.name] onto \the [target_table]!</span>")
-=======
-			target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
-			target.visible_message(span_danger("[name] shoves [target.name], knocking [target.p_them()] down!"),
-							span_userdanger("You're knocked down from a shove by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("You shove [target.name], knocking [target.p_them()] down!"))
-			log_combat(src, target, "shoved", "knocking them down")
-		else if(target_table)
-			target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
-			target.visible_message(span_danger("[name] shoves [target.name] onto \the [target_table]!"),
-							span_userdanger("You're shoved onto \the [target_table] by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("You shove [target.name] onto \the [target_table]!"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 			target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 			log_combat(src, target, "shoved", "onto [target_table] (table)")
 		else if(target_collateral_carbon)
 			target.StaminaKnockdown(10) //SKYRAT EDIT
 			if(!target_collateral_carbon.is_shove_knockdown_blocked())
-<<<<<<< HEAD
 				target_collateral_carbon.StaminaKnockdown(1) //SKYRAT EDIT
 			target.visible_message("<span class='danger'>[name] shoves [target.name] into [target_collateral_carbon.name]!</span>",
 				"<span class='userdanger'>You're shoved into [target_collateral_carbon.name] by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
 			to_chat(src, "<span class='danger'>You shove [target.name] into [target_collateral_carbon.name]!</span>")
-=======
-				target_collateral_carbon.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
-			target.visible_message(span_danger("[name] shoves [target.name] into [target_collateral_carbon.name]!"),
-				span_userdanger("You're shoved into [target_collateral_carbon.name] by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("You shove [target.name] into [target_collateral_carbon.name]!"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 			log_combat(src, target, "shoved", "into [target_collateral_carbon.name]")
 		else if(target_disposal_bin)
 			target.Knockdown(SHOVE_KNOCKDOWN_SOLID)

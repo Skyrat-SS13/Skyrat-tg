@@ -858,17 +858,12 @@ GENE SCANNER
 	//SKYRAT EDIT END
 
 /obj/item/nanite_scanner/attack(mob/living/M, mob/living/carbon/human/user)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
 		return
 		//SKYRAT EDIT END
-	user.visible_message("<span class='notice'>[user] analyzes [M]'s nanites.</span>", \
-						"<span class='notice'>You analyze [M]'s nanites.</span>")
-=======
 	user.visible_message(span_notice("[user] analyzes [M]'s nanites."), \
 						span_notice("You analyze [M]'s nanites."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 	add_fingerprint(user)
 
@@ -909,17 +904,12 @@ GENE SCANNER
 /obj/item/sequence_scanner/attack(mob/living/M, mob/living/carbon/human/user)
 	add_fingerprint(user)
 	if (!HAS_TRAIT(M, TRAIT_GENELESS) && !HAS_TRAIT(M, TRAIT_BADDNA)) //no scanning if its a husk or DNA-less Species
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
 			return
 		//SKYRAT EDIT END
-		user.visible_message("<span class='notice'>[user] analyzes [M]'s genetic sequence.</span>", \
-							"<span class='notice'>You analyze [M]'s genetic sequence.</span>")
-=======
 		user.visible_message(span_notice("[user] analyzes [M]'s genetic sequence."), \
 							span_notice("You analyze [M]'s genetic sequence."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 		gene_scan(M, user)
 
 	else

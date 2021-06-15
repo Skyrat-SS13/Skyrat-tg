@@ -333,12 +333,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		initiator.current_ticket = src
 
 	AddInteraction("<font color='purple'>Reopened by [key_name_admin(usr)]</font>")
-<<<<<<< HEAD
 	AddInteractionPlayer("<font color='purple'>Reopened by [key_name_admin(usr, FALSE)]</font>") // SKYRAT EDIT ADDITION -- Player ticket viewing
-	var/msg = "<span class='adminhelp'>Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].</span>"
-=======
 	var/msg = span_adminhelp("Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].")
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	message_admins(msg)
 	log_admin_private(msg)
 	SSblackbox.LogAhelp(id, "Reopened", "Reopened by [usr.key]", usr.ckey)
@@ -396,12 +392,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 50)
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>")
-<<<<<<< HEAD
 	AddInteractionPlayer("<font color='green'>Resolved by [key_name_admin(usr, FALSE)].</font>") // SKYRAT EDIT ADDITION -- Player ticket viewing
-	to_chat(initiator, "<span class='adminhelp'>Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly.</span>", confidential = TRUE)
-=======
 	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"

@@ -412,13 +412,8 @@
 	if(Adjacent(user))
 		var/minor
 		if(registered_name && registered_age && registered_age < AGE_MINOR)
-<<<<<<< HEAD
-			minor = " <b>[registered_age]</b>"
-		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name][minor].</span>", "<span class='notice'>You show \the [src.name][minor].</span>")
-=======
 			minor = " <b>(MINOR)</b>"
 		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name][minor]."), span_notice("You show \the [src.name][minor]."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	add_fingerprint(user)
 
 /obj/item/card/id/vv_edit_var(var_name, var_value)

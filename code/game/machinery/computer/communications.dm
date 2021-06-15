@@ -562,9 +562,7 @@
 		return
 
 	return length(CONFIG_GET(keyed_list/cross_server)) > 0
-
-<<<<<<< HEAD
-=======
+/*
 /**
  * Call an emergency meeting
  *
@@ -581,8 +579,8 @@
 		return
 	SScommunications.emergency_meeting(user)
 	deadchat_broadcast(" called an emergency meeting from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
+*/
 
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
 	if(!SScommunications.can_announce(user, is_ai))

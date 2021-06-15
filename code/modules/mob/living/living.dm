@@ -46,19 +46,14 @@
 	return ..()
 
 /mob/living/proc/ZImpactDamage(turf/T, levels)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	SEND_SIGNAL(T, COMSIG_TURF_MOB_FALL, src)
 	if(T.liquids && T.liquids.liquid_state >= LIQUID_STATE_WAIST)
 		Knockdown(20)
 		return
 	//SKYRAT EDIT END
-	visible_message("<span class='danger'>[src] crashes into [T] with a sickening noise!</span>", \
-					"<span class='userdanger'>You crash into [T] with a sickening noise!</span>")
-=======
 	visible_message(span_danger("[src] crashes into [T] with a sickening noise!"), \
 					span_userdanger("You crash into [T] with a sickening noise!"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	adjustBruteLoss((levels * 5) ** 1.5)
 	Knockdown(levels * 50)
 
@@ -333,7 +328,6 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-<<<<<<< HEAD
 			//if(isfelinid(AM) && isfelinid(src)) //ORIGINAL
 			if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.getorganslot(ORGAN_SLOT_TAIL) && src.getorganslot(ORGAN_SLOT_TAIL)) //SKYRAT EDIT CHANGE
 				M.visible_message("<span class='warning'>[src] coils their tail with [AM], wow is that okay in public?!</span>", "[src] has entwined their tail with yours!")
@@ -342,11 +336,6 @@
 				M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
 							"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>", null, null, src)
 				to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
-=======
-			M.visible_message(span_warning("[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!"), \
-							span_warning("[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!"), null, null, src)
-			to_chat(src, span_notice("You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
@@ -560,13 +549,8 @@
 			if(!silent)
 				to_chat(src, span_notice("You will now stand up as soon as you are able to."))
 		else
-<<<<<<< HEAD
 			/*if(!silent) SKYRAT EDIT REMOVAL
 				to_chat(src, "<span class='notice'>You stand up.</span>")*/
-=======
-			if(!silent)
-				to_chat(src, span_notice("You stand up."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 			get_up(instant)
 
 	update_resting()
@@ -1017,17 +1001,10 @@
 			pulledby.stop_pulling()
 			return FALSE
 		else
-<<<<<<< HEAD
 			adjustStaminaLoss(rand(10,15))//failure to escape still imparts a pretty serious penalty //SKYRAT EDIT CHANGE: //adjustStaminaLoss(rand(15,20))//failure to escape still imparts a pretty serious penalty
 			visible_message("<span class='danger'>[src] struggles as they fail to break free of [pulledby]'s grip!</span>", \
 							"<span class='warning'>You struggle as you fail to break free of [pulledby]'s grip!</span>", null, null, pulledby)
 			to_chat(pulledby, "<span class='danger'>[src] struggles as they fail to break free of your grip!</span>")
-=======
-			adjustStaminaLoss(rand(15,20))//failure to escape still imparts a pretty serious penalty
-			visible_message(span_danger("[src] struggles as they fail to break free of [pulledby]'s grip!"), \
-							span_warning("You struggle as you fail to break free of [pulledby]'s grip!"), null, null, pulledby)
-			to_chat(pulledby, span_danger("[src] struggles as they fail to break free of your grip!"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 		if(moving_resist && client) //we resisted by trying to move
 			client.move_delay = world.time + 40
 	else

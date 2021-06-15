@@ -239,7 +239,6 @@
 		return
 
 	else
-<<<<<<< HEAD
 		if(isturf(target)) //SKYRAT EDIT CHANGE
 			var/turf/T = target
 			T.add_liquid_from_reagents(reagents)
@@ -252,14 +251,6 @@
 		//SKYRAT EDIT END
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
 		//reagents.expose(target, TOUCH) //SKYRAT EDIT REMOVAL
-=======
-		if(isturf(target) && reagents.reagent_list.len && thrown_by)
-			log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
-			log_game("[key_name(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
-			message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
-		visible_message(span_notice("[src] spills its contents all over [target]."))
-		reagents.expose(target, TOUCH)
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 		if(QDELETED(src))
 			return
 

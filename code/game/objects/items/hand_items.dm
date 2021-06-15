@@ -123,20 +123,9 @@
 			L.dna.species.stop_wagging_tail(M)
 	user.do_attack_animation(M)
 	playsound(M, 'sound/weapons/slap.ogg', 50, TRUE, -1)
-<<<<<<< HEAD
 	user.visible_message("<span class='danger'>[user] slaps [M]!</span>",
 	"<span class='notice'>You slap [M]!</span>",\
 	"<span class='hear'>You hear a slap.</span>")
-=======
-	if(user.zone_selected == BODY_ZONE_HEAD || user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-		user.visible_message(span_danger("[user] slaps [M] in the face!"),
-		span_notice("You slap [M] in the face!"),\
-		span_hear("You hear a slap."))
-	else
-		user.visible_message(span_danger("[user] slaps [M]!"),
-		span_notice("You slap [M]!"),\
-		span_hear("You hear a slap."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	return
 
 /obj/item/slapper/attack_obj(obj/O, mob/living/user, params)

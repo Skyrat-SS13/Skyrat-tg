@@ -144,10 +144,6 @@
 		CHECK_TICK
 
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
-<<<<<<< HEAD
-	//to_chat(world, "<span class='boldannounce'>[message]</span>")
+	//to_chat(world, span_boldannounce("[message]"))
 	add_startupmessage(message) //SKYRAT EDIT CHANGE
-=======
-	to_chat(world, span_boldannounce("[message]"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	log_world(message)

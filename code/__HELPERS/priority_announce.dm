@@ -45,8 +45,6 @@
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
 				SEND_SOUND(M, s)
 
-<<<<<<< HEAD
-=======
 /**
  * Summon the crew for an emergency meeting
  *
@@ -79,7 +77,6 @@
 					continue
 				mob_to_teleport.forceMove(target)
 
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
 		title = "Classified [command_name()] Update"

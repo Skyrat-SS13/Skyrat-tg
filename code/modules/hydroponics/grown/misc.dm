@@ -287,13 +287,8 @@
 	var/turf/player_turf = get_turf(user)
 	if(player_turf?.is_blocked_turf(TRUE))
 		return FALSE
-<<<<<<< HEAD
 	user.visible_message("<span class='danger'>[user] begins to plant \the [src]...</span>")
 	if(do_after(user, 4 SECONDS, target = user.drop_location(), progress = TRUE)) //SKYRAT EDIT - ORIGINAL 8 SECONDS
-=======
-	user.visible_message(span_danger("[user] begins to plant \the [src]..."))
-	if(do_after(user, 8 SECONDS, target = user.drop_location(), progress = TRUE))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 		new /obj/structure/fluff/hedge/opaque(user.drop_location())
 		to_chat(user, span_notice("You plant \the [src]."))
 		qdel(src)

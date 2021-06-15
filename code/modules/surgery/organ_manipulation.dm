@@ -145,16 +145,9 @@
 			target_organ = tool
 		user.temporarilyRemoveItemFromInventory(target_organ, TRUE)
 		target_organ.Insert(target)
-<<<<<<< HEAD
 		display_results(user, target, "<span class='notice'>You insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
 			"<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
 			"<span class='notice'>[user] inserts something into [target]'s [parse_zone(target_zone)]!</span>")
-=======
-		display_results(user, target, span_notice("You insert [tool] into [target]'s [parse_zone(target_zone)]."),
-			span_notice("[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!"),
-			span_notice("[user] inserts something into [target]'s [parse_zone(target_zone)]!"))
-
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	else if(current_type == "extract")
 		if(target_organ && target_organ.owner == target)
 			display_results(user, target, span_notice("You successfully extract [target_organ] from [target]'s [parse_zone(target_zone)]."),

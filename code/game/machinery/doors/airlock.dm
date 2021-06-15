@@ -723,16 +723,10 @@
 		if((HAS_TRAIT(H, TRAIT_DUMB)) && Adjacent(user))
 			playsound(src, 'sound/effects/bang.ogg', 25, TRUE)
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
-<<<<<<< HEAD
-				H.visible_message("<span class='danger'>[user] headbutts the airlock.</span>", \
-									"<span class='userdanger'>You headbutt the airlock!</span>")
-				//H.Paralyze(100) - SKYRAT EDIT REMOVAL - COMBAT
-				H.StaminaKnockdown(10, TRUE, TRUE)
-=======
 				H.visible_message(span_danger("[user] headbutts the airlock."), \
 									span_userdanger("You headbutt the airlock!"))
-				H.Paralyze(100)
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
+				//H.Paralyze(100) - SKYRAT EDIT REMOVAL - COMBAT
+				H.StaminaKnockdown(10, TRUE, TRUE)
 				H.apply_damage(10, BRUTE, BODY_ZONE_HEAD)
 			else
 				visible_message(span_danger("[user] headbutts the airlock. Good thing [user.p_theyre()] wearing a helmet."))

@@ -53,13 +53,8 @@
 		reagents.add_reagent(reagent_id, tank_volume)
 	. = ..()
 
-<<<<<<< HEAD
 /obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	visible_message("<span class='danger'>\The [src] ruptures!</span>")
-=======
-/obj/structure/reagent_dispensers/proc/boom()
-	visible_message(span_danger("\The [src] ruptures!"))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	chem_splash(loc, 5, list(reagents))
 	qdel(src)
 

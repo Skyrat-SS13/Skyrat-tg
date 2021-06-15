@@ -31,17 +31,8 @@
 		span_notice("[user] begins to perform surgery on [target]'s brain."))
 
 /datum/surgery_step/bionecrosis/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
-<<<<<<< HEAD
 	display_results(user, target, "<span class='notice'>You succeed in growing a romerol tumor on [target]'s brain.</span>",
 		"<span class='notice'>[user] successfully grows a romerol tumor on [target]'s brain!</span>",
 		"<span class='notice'>[user] completes the surgery on [target]'s brain.</span>")
 	try_to_zombie_infect(target) //SKYRAT EDIT CHANGE
-=======
-	display_results(user, target, span_notice("You succeed in growing a romerol tumor on [target]'s brain."),
-		span_notice("[user] successfully grows a romerol tumor on [target]'s brain!"),
-		span_notice("[user] completes the surgery on [target]'s brain."))
-	if(!target.getorganslot(ORGAN_SLOT_ZOMBIE))
-		var/obj/item/organ/zombie_infection/z_infection = new()
-		z_infection.Insert(target)
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	return ..()

@@ -263,7 +263,6 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	resistance_flags = FLAMMABLE
 
-<<<<<<< HEAD
 #define SQUEEZING_DISPERSAL_PERCENT 0.75 //SKYRAT EDIT ADDITION
 
 /obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/living/user, params) //SKYRAT EDIT CHANGE
@@ -286,16 +285,6 @@
 				reagents.trans_to(O, 5, transfered_by = user)
 				to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
 				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE) //SKYRAT EDIT CHANGE END
-=======
-/obj/item/reagent_containers/glass/bucket/attackby(obj/O, mob/user, params)
-	if(istype(O, /obj/item/mop))
-		if(reagents.total_volume < 1)
-			to_chat(user, span_warning("[src] is out of water!"))
-		else
-			reagents.trans_to(O, 5, transfered_by = user)
-			to_chat(user, span_notice("You wet [O] in [src]."))
-			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	else if(isprox(O)) //This works with wooden buckets for now. Somewhat unintended, but maybe someone will add sprites for it soon(TM)
 		to_chat(user, span_notice("You add [O] to [src]."))
 		qdel(O)

@@ -288,15 +288,11 @@ effective or pretty fucking useless.
 	//SKYRAT EDIT END
 
 /obj/item/jammer/attack_self(mob/user)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITON
 	if(!active && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
 		return
 	//SKYRAT EDIT END
 	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
-=======
-	to_chat(user,span_notice("You [active ? "deactivate" : "activate"] [src]."))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 	active = !active
 	if(active)
 		turn_on() //SKYRAT EDIT CHANGE

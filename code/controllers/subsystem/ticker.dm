@@ -152,16 +152,11 @@ SUBSYSTEM_DEF(ticker)
 				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
-<<<<<<< HEAD
 			to_chat(world, "<span class='notice'><b>Welcome to [station_name()]!</b></span>")
 			//SKYRAT EDIT START - DISCORD SPAM PREVENTION
 			if(!discord_alerted)
 				discord_alerted = TRUE
 				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role pingcurrent_state = GAME_STATE_PREGAME
-=======
-			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 			current_state = GAME_STATE_PREGAME
 			change_lobbyscreen() //SKYRAT EDIT ADDITION
 			//Everyone who wants to be an observer is now spawned
@@ -272,13 +267,8 @@ SUBSYSTEM_DEF(ticker)
 	round_start_time = world.time
 	SSdbcore.SetRoundStart()
 
-<<<<<<< HEAD
-	to_chat(world, "<span class='notice'><B>Welcome to [station_name()], enjoy your stay!</B></span>")
-	alert_sound_to_playing(sound(SSstation.announcer.get_rand_welcome_sound())) //SKYRAT EDIT CHANGE
-=======
 	to_chat(world, span_notice("<B>Welcome to [station_name()], enjoy your stay!</B>"))
-	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
+	alert_sound_to_playing(sound(SSstation.announcer.get_rand_welcome_sound())) //SKYRAT EDIT CHANGE
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)

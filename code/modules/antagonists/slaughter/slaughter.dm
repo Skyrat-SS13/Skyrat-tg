@@ -309,8 +309,6 @@
  * changed stat. If they're no longer dead (because they were dead when
  * swallowed), eject them so they can't rip their way out from the inside.
  */
-<<<<<<< HEAD
-=======
 /mob/living/simple_animal/hostile/imp/slaughter/laughter/proc/on_victim_statchange(mob/living/victim, new_stat)
 	SIGNAL_HANDLER
 
@@ -322,7 +320,6 @@
 	victim.visible_message(span_warning("[victim] falls out of the air, covered in blood, with a confused look on their face."))
 	consumed_mobs -= victim
 	UnregisterSignal(victim, COMSIG_MOB_STATCHANGE)
->>>>>>> 375a20e49b5 (Refactors most spans into span procs (#59645))
 
 /mob/living/simple_animal/hostile/imp/slaughter/engine_demon
 	name = "engine demon"
