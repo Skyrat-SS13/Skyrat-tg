@@ -123,7 +123,10 @@
 		pre_light_range = door_light_range
 		pre_light_power = door_light_power
 		if(has_environment_lights)
-			set_light(pre_light_range, pre_light_power, pre_light_color)
+			light_range = pre_light_range
+			light_power = pre_light_power
+			light_color = pre_light_color
+			set_light(pre_light_range, pre_light_power, pre_light_color, TRUE)
 			if(multi_tile)
 				filler.set_light(pre_light_range, pre_light_power, pre_light_color)
 	else

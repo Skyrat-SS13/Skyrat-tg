@@ -222,6 +222,7 @@
 /obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, mutant_styles = NONE)
 	SHOULD_CALL_PARENT(TRUE)
 	RETURN_TYPE(/list)
+
 	. = list()
 	if(!blocks_emissive)
 		return
