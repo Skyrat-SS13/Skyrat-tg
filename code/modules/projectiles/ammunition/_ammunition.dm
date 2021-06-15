@@ -34,6 +34,9 @@
 	///pacifism check for boolet, set to FALSE if bullet is non-lethal
 	var/harmful = TRUE
 
+	///Can this bullet casing be printed at an ammuniton workbench?
+	var/can_be_printed = TRUE //SKYRAT EDIT ADDITION
+
 /obj/item/ammo_casing/spent
 	name = "spent bullet casing"
 	loaded_projectile = null

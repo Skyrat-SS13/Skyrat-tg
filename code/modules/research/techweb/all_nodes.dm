@@ -55,13 +55,6 @@
 		"space_heater",
 		"tech_disk",
 		"titaniumglass",
-		//SKYRAT EDIT - RESEARCH DESIGNS
-		"b6mm",
-		"b9mm",
-		"b10mm",
-		"b12mm",
-		"pepperballs"
-		//SKYRAT EDIT ADDITION - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/mmi

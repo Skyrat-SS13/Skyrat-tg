@@ -60,6 +60,7 @@
 	name = "sidearm armament holochip"
 	desc = "A holochip used in any armament vendor, this is for sidearms. Do not bend."
 	icon_state = "token_sidearm"
+	minimum_sec_level = SEC_LEVEL_BLUE
 
 /obj/item/armament_token/sidearm/get_available_gunsets()
 	return list(
@@ -86,7 +87,7 @@
 	/obj/item/storage/box/gunset/revolution = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "revolution"
-	)
+		)
 	)
 
 //BAD BOY!

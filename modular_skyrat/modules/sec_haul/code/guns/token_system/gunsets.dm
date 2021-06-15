@@ -58,13 +58,16 @@
 /obj/item/gun/ballistic/automatic/pistol/g17/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/ammo_box/magazine/multi_sprite/g17/empty
+	start_empty = TRUE
+
 /obj/item/storage/box/gunset/glock17/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/g17/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17/empty(src)
 
 //LADON
 /obj/item/storage/box/gunset/ladon
@@ -73,13 +76,16 @@
 /obj/item/gun/ballistic/automatic/pistol/ladon/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/ammo_box/magazine/multi_sprite/ladon/empty
+	start_empty = TRUE
+
 /obj/item/storage/box/gunset/ladon/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/ladon/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon/empty(src)
 
 //PDH
 /obj/item/storage/box/gunset/pdh_peacekeeper
@@ -88,13 +94,16 @@
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/empty
+	start_empty = TRUE
+
 /obj/item/storage/box/gunset/pdh_peacekeeper/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/empty(src)
 
 // MK-58
 /obj/item/storage/box/gunset/ladon
@@ -103,13 +112,16 @@
 /obj/item/gun/ballistic/automatic/pistol/mk58/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/ammo_box/magazine/multi_sprite/mk58/empty
+	start_empty = TRUE
+
 /obj/item/storage/box/gunset/mk58/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/mk58/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/mk58(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/mk58(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/mk58(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/mk58(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/mk58/empty(src)
 
 //CROON
 /obj/item/storage/box/gunset/croon
@@ -118,13 +130,16 @@
 /obj/item/gun/ballistic/automatic/croon/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/ammo_box/magazine/multi_sprite/croon/empty
+	start_empty = TRUE
+
 /obj/item/storage/box/gunset/croon/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/croon/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/croon(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/croon(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/croon(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/croon(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/croon/empty(src)
 
 //MAKAROV
 /obj/item/storage/box/gunset/makarov
@@ -133,13 +148,16 @@
 /obj/item/gun/ballistic/automatic/pistol/makarov/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/ammo_box/magazine/multi_sprite/makarov/empty
+	start_empty = TRUE
+
 /obj/item/storage/box/gunset/makarov/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/makarov/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/makarov(/emptysrc)
 
 //DOZER
 /obj/item/storage/box/gunset/dozer
@@ -148,13 +166,16 @@
 /obj/item/gun/ballistic/automatic/dozer/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/ammo_box/magazine/multi_sprite/dozer/empty
+	start_empty = TRUE
+
 /obj/item/storage/box/gunset/dozer/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/dozer/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/empty(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer/empty(src)
 
 //ZETA
 /obj/item/storage/box/gunset/zeta

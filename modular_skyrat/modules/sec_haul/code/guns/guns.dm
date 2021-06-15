@@ -50,10 +50,13 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-
 /obj/item/ammo_box/magazine/multi_sprite/g17/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/obj/item/ammo_box/magazine/multi_sprite/g17/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Armadyne Glock-18"
@@ -92,6 +95,9 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/g18/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 ////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
@@ -138,11 +144,15 @@
 	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT)
+	possible_types = list("lethal" = AMMO_TYPE_LETHAL, "hollowpoint" = AMMO_TYPE_HOLLOWPOINT, "rubber" = AMMO_TYPE_RUBBER)
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh/rubber
+	ammo_type = /obj/item/ammo_casing/b12mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/corpo
 	name = "\improper Armadyne PDH-6M 'Corporate'"
@@ -197,6 +207,10 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
 ///////////////////////LADON 40x32
 /obj/item/gun/ballistic/automatic/pistol/ladon
 	name = "\improper Armadyne P-3 'Ladon'"
@@ -236,6 +250,10 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/ladon/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
 /////////////////////MAKAROV
 /obj/item/gun/ballistic/automatic/pistol/makarov
 	name = "\improper RusCo 'Makarov' Pistol"
@@ -251,7 +269,6 @@
 	realistic = TRUE
 	dirt_modifier = 0.7
 	emp_damageable = TRUE
-
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
 	name = "makarov handgun magazine (10mm)"
@@ -269,6 +286,10 @@
 /obj/item/ammo_box/magazine/multi_sprite/makarov/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/obj/item/ammo_box/magazine/multi_sprite/makarov/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 ////////////////////////////MK58
 
@@ -305,6 +326,10 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
 //////////////////////FIREFLY
 /obj/item/gun/ballistic/automatic/pistol/firefly
 	name = "\improper Armadyne P-92 'Firefly'"
@@ -335,6 +360,9 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
+/obj/item/ammo_box/magazine/multi_sprite/firefly/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
@@ -385,6 +413,10 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
 /obj/item/gun/ballistic/automatic/pitbull
 	name = "\improper Armadyne 'Pitbull' Battle Rifle"
 	desc = "A sturdy battle rifle normally issued to Armadyne's military division. Rechambered for peacekeeping work, it fires three-round bursts of 10mm."
@@ -429,6 +461,10 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
 /////////////////DTR
 /obj/item/gun/ballistic/automatic/ostwind
 	name = "\improper Armadyne DTR-6 'Ostwind' Rifle"
@@ -463,7 +499,11 @@
 	caliber = CALIBER_6MM
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_IHDF)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
+
+/obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber
+	ammo_type = /obj/item/ammo_casing/b6mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind/ihdf
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
@@ -505,7 +545,11 @@
 	caliber = CALIBER_6MM
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_IHDF)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
+
+/obj/item/ammo_box/magazine/multi_sprite/croon/rubber
+	ammo_type = /obj/item/ammo_casing/b6mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/ammo_box/magazine/multi_sprite/croon/ihdf
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
@@ -553,9 +597,11 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /////////////////////NORWIND
-
 /obj/item/gun/ballistic/automatic/norwind
 	name = "\improper Armadyne M112 'Norwind' Designated Marksman Rifle"
 	desc = "A rare M112 DMR rechambered to 12mm for peacekeeping work, it comes with a scope for medium-long range engagements. Comes with a bayonet lug if you want to make it personal."
@@ -598,11 +644,15 @@
 	caliber = CALIBER_12MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT)
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind/hp
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
+
+/obj/item/ammo_box/magazine/multi_sprite/norwind/rubber
+	ammo_type = /obj/item/ammo_casing/b12mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/vintorez
 	name = "\improper Armadyne VKC 'Vintorez'"
@@ -648,6 +698,9 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /////////////////DMR 40x32
 
