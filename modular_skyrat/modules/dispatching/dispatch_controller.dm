@@ -1,37 +1,3 @@
-#define SSDISPATCH_TICKET_TYPE_SECURITY "Security"
-#define SSDISPATCH_TICKET_TYPE_ENGINEERING "Engineering"
-#define SSDISPATCH_TICKET_TYPE_MEDICAL "Medical"
-#define SSDISPATCH_TICKET_TYPES list( \
-	SSDISPATCH_TICKET_TYPE_SECURITY,\
-	SSDISPATCH_TICKET_TYPE_ENGINEERING,\
-	SSDISPATCH_TICKET_TYPE_MEDICAL)
-#define SSDISPATCH_TICKET_TYPES_DEPT list( \
-	SSDISPATCH_TICKET_TYPE_SECURITY = DEPARTMENT_SECURITY,\
-	SSDISPATCH_TICKET_TYPE_MEDICAL = DEPARTMENT_MEDICAL,\
-	SSDISPATCH_TICKET_TYPE_ENGINEERING = DEPARTMENT_ENGINEERING)
-
-#define SSDISPATCH_TICKET_PRIORITY_MINIMAL "Minimal"
-#define SSDISPATCH_TICKET_PRIORITY_LOW "Low"
-#define SSDISPATCH_TICKET_PRIORITY_NORMAL "Normal"
-#define SSDISPATCH_TICKET_PRIORITY_HIGH "High"
-#define SSDISPATCH_TICKET_PRIORITY_CRITICAL "Critical"
-#define SSDISPATCH_TICKET_PRIORITIES list( \
-	SSDISPATCH_TICKET_PRIORITY_MINIMAL,\
-	SSDISPATCH_TICKET_PRIORITY_LOW,\
-	SSDISPATCH_TICKET_PRIORITY_NORMAL,\
-	SSDISPATCH_TICKET_PRIORITY_HIGH,\
-	SSDISPATCH_TICKET_PRIORITY_CRITICAL)
-
-#define SSDISPATCH_TICKET_STATUS_OPEN "Open"
-#define SSDISPATCH_TICKET_STATUS_RESOLVED "Resolved"
-#define SSDISPATCH_TICKET_STATUS_REJECTED "Rejected"
-#define SSDISPATCH_TICKET_STATUS_ACTIVE "Active"
-#define SSDISPATCH_TICKET_STATUSES list( \
-	SSDISPATCH_TICKET_STATUS_OPEN,\
-	SSDISPATCH_TICKET_STATUS_RESOLVED,\
-	SSDISPATCH_TICKET_STATUS_REJECTED,\
-	SSDISPATCH_TICKET_STATUS_ACTIVE)
-
 SUBSYSTEM_DEF(dispatch)
 	name = "Dispatch"
 	flags = SS_NO_FIRE
@@ -361,7 +327,12 @@ SUBSYSTEM_DEF(dispatch)
 			if(!ui_data_by_mob[user]["tdata"]["imageAttached"])
 				CRASH("image-view called while imageAttached is FALSE")
 			var/icon/image = ui_data_by_mob[user]["tdata"]["image"]
-			SEND_IMAGE(user, image)
+			user << browse_rsc(image, "tmp_photo.png")
+			user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Attached Image</title></head>" \
+							+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
+							+ "<img src='tmp_photo.png' width='480' style='-ms-interpolation-mode:nearest-neighbor' />" \
+							+ "</body></html>", "window=photo_showing;size=480x608")
+			return TRUE
 
 		if("set-ticket-type")
 			ui_data_by_mob[user]["tdata"]["type"] = params["type"]
@@ -434,7 +405,12 @@ SUBSYSTEM_DEF(dispatch)
 			if(!ui_data_by_mob[user]["mdata"]["ticketData"]["imageAttached"])
 				CRASH("image-view called while imageAttached is FALSE")
 			var/icon/image = ui_data_by_mob[user]["mdata"]["ticketData"]["image"]
-			SEND_IMAGE(user, image)
+			user << browse_rsc(image, "tmp_photo.png")
+			user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Attached Image</title></head>" \
+							+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
+							+ "<img src='tmp_photo.png' width='480' style='-ms-interpolation-mode:nearest-neighbor' />" \
+							+ "</body></html>", "window=photo_showing;size=480x608")
+			return TRUE
 
 		if("toggle-active")
 			ui_data_by_mob[user]["mdata"]["holderActive"] = !ui_data_by_mob[user]["mdata"]["holderActive"]

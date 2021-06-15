@@ -1,6 +1,6 @@
 /obj/machinery/dispatch_control
 	name = "Dispatch and Control Console"
-	icon = 'modular_skyrat/modules/dispatching/icons/dcc.dmi'
+	// icon = 'modular_skyrat/modules/dispatching/icons/dcc.dmi'
 	icon_state = "dcc"
 	use_power = NO_POWER_USE
 	idle_power_usage = 200
@@ -27,7 +27,7 @@
 /obj/machinery/dispatch_control/proc/message_viewers(message)
 	if(use_power == NO_POWER_USE)
 		return
-	for(var/mob/mob in viewers(Center=src))
+	for(var/mob/mob in viewers(world.view, src))
 		balloon_alert(mob, message)
 
 /obj/machinery/dispatch_control/proc/console_poweron()
