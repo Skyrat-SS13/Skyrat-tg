@@ -330,3 +330,7 @@
 	path = /obj/item/toy/plush/ratplush
 	cost = 5
 	restricted_roles = list("Chaplain")
+
+/datum/loadout_item/backpack/plushies/narplush
+	name = "Runner Plushie"
+	path = /obj/item/toy/plush/rouny
