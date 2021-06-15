@@ -181,6 +181,8 @@ SUBSYSTEM_DEF(dispatch)
 				"templateUse" = FALSE,
 				"title" = "",
 				"extra" = "",
+				"imageAttached" = FALSE,
+				"image" = null,
 				"should_clear" = FALSE)
 
 	if(ui_data_by_mob[user]["mdata"]["should_clear"])
@@ -302,12 +304,42 @@ SUBSYSTEM_DEF(dispatch)
 	if(.) // ABORT ABORT ABORT
 		return
 
+	if(!params["failCount"])
+		params["failCount"] = 0
+
 	var/mob/user = locate(params["self_ref"])
 	if(!user)
 		CRASH("ui_act called without valid self_ref")
 
 	switch(action)
 		///*** TICKET CREATION ACTIONS ***///
+		if("image-attach")
+			if(ui_data_by_mob[user]["tdata"]["imageAttached"])
+				ui_data_by_mob[user]["tdata"]["imageAttached"] = FALSE
+				return TRUE
+
+			var/obj/item/photo/photo = user.is_holding_item_of_type(/obj/item/photo)
+			if(!photo && params["failCount"] <= 3) // Fail count prevents a runtime from proc overloading
+				if(tgui_alert(user, "Image not found; please **hold** your image to the scanner.", "Image Detection", list("Try Again", "Cancel")) != "Try Again")
+					return TRUE
+				params["failCount"] += 1
+				return ui_act(action, params)
+			ui_data_by_mob[user]["tdata"]["image"] = photo.picture.picture_image
+			ui_data_by_mob[user]["tdata"]["imageAttached"] = TRUE
+			user.balloon_alert(user, "Image Attached!")
+			return TRUE
+
+		if("image-discard")
+			ui_data_by_mob[user]["tdata"]["imageAttached"] = FALSE
+			user.balloon_alert(user, "Image Discarded!")
+			return TRUE
+
+		if("image-view")
+			if(!ui_data_by_mob[user]["tdata"]["imageAttached"])
+				CRASH("image-view called while imageAttached is FALSE")
+			var/icon/image = ui_data_by_mob[user]["tdata"]["image"]
+			SEND_IMAGE(user, image)
+
 		if("set-ticket-type")
 			ui_data_by_mob[user]["tdata"]["type"] = params["type"]
 			return TRUE

@@ -58,6 +58,7 @@ export const DispatchTicket = (props, context) => {
           <TicketPriorities />
         </>
       </Section>
+      <TicketImage />
     </Window>
   );
 };
@@ -140,4 +141,37 @@ const TicketAdvanced = (props, context) => {
         />
       </Section>
     </>);
+};
+
+const TicketImage = (props, context) => {
+  const { data, act } = useBackend(context);
+  const { tdata, self_ref } = data;
+  const { imageAttached } = tdata;
+
+  return (
+    <Section
+      title="Image Settings"
+      buttons={
+        <>
+          <ButtonCheckbox
+            content="Attach Image"
+            color={imageAttached ? "good" : "bad"}
+            checked={imageAttached}
+            onClick={() => act("image-attach", { self_ref: self_ref })} />
+          {!!imageAttached && (
+            <>
+              <Button
+                content="Change Image"
+                color={"blue"}
+                onClick={() => act("image-attach", { self_ref: self_ref })} />
+              <Button
+                content="View Image"
+                color={"blue"}
+                onClick={() => act("image-view", { self_ref: self_ref })} />
+            </>
+          )}
+        </>
+      }
+    />
+  );
 };
