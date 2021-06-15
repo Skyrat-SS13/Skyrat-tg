@@ -320,7 +320,9 @@ SUBSYSTEM_DEF(dispatch)
 				return TRUE
 
 			var/obj/item/photo/photo = user.is_holding_item_of_type(/obj/item/photo)
-			if(!photo && params["failCount"] <= 3) // Fail count prevents a runtime from proc overloading
+			if(!photo)
+				if(params["failCount"] > 3) // Fail count prevents a runtime from proc overloading
+					return TRUE
 				if(tgui_alert(user, "Image not found; please **hold** your image to the scanner.", "Image Detection", list("Try Again", "Cancel")) != "Try Again")
 					return TRUE
 				params["failCount"] += 1
