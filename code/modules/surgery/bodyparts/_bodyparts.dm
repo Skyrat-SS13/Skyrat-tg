@@ -953,9 +953,6 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
-*/
-//SKYRAT EDIT REMOVAL END
-
 	if(blocks_emissive)
 		var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
 		limb_em_block.dir = image_dir
@@ -967,6 +964,10 @@
 			aux_em_block.dir = image_dir
 			aux_em_block.color = GLOB.em_block_color
 			aux.overlays += aux_em_block
+*/
+//SKYRAT EDIT REMOVAL END
+
+
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()

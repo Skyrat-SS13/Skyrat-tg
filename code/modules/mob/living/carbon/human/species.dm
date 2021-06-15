@@ -1021,17 +1021,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		source.overlays_standing[layer] = standing.Copy()
 		standing = list()
 
-<<<<<<< HEAD
-	H.apply_overlay(BODY_BEHIND_LAYER)
-	H.apply_overlay(BODY_ADJ_LAYER)
-	H.apply_overlay(BODY_FRONT_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	source.apply_overlay(BODY_BEHIND_LAYER)
 	source.apply_overlay(BODY_ADJ_LAYER)
 	source.apply_overlay(BODY_FRONT_LAYER)
->>>>>>> daec5002fc1 (Adds Neon Carpet (#59140))
+*/
+//SKYRAT EDIT REMOVAL END
 
 
 //This exists so sprite accessories can still be per-layer without having to include that layer's
