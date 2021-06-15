@@ -294,8 +294,8 @@
 	path = /obj/item/clothing/under/whiterussian
 	cost = 4
 
-/datum/loadout_item/uniform/suit/biege
-	name = "Biege Suit"
+/datum/loadout_item/uniform/suit/beige
+	name = "Beige Suit"
 	path = /obj/item/clothing/under/suit/beige
 
 
