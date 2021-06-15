@@ -294,6 +294,10 @@
 	path = /obj/item/clothing/under/whiterussian
 	cost = 4
 
+/datum/loadout_item/uniform/suit/beige
+	name = "Beige Suit"
+	path = /obj/item/clothing/under/suit/beige
+
 
 //SKIRTS
 /datum/loadout_item/uniform/skirt
@@ -302,6 +306,10 @@
 /datum/loadout_item/uniform/skirt/skirtblack
 	name = "Black skirt"
 	path = /obj/item/clothing/under/dress/skirt
+
+/datum/loadout_item/uniform/skirt/suitskirtblack
+	name = "Black Suitskirt"
+	path = /obj/item/clothing/under/suit/black/skirt
 
 /datum/loadout_item/uniform/skirt/skirtblue
 	name = "Blue skirt"

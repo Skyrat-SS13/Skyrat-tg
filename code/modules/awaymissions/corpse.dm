@@ -272,6 +272,8 @@
 		H.dna.species.before_equip_job(null, H)
 		H.regenerate_icons()
 		SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
+		user.client.prefs.equip_preference_loadout(H, FALSE, null)
+		user.client.prefs.add_packed_items(H, null, FALSE)
 	else
 		if(!random || newname)
 			if(newname)
