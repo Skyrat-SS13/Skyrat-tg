@@ -292,6 +292,8 @@ SUBSYSTEM_DEF(dispatch)
 	ui_data_by_mob[user]["mdata"]["ticketData"]["type"] = ticket.ticket_type
 	ui_data_by_mob[user]["mdata"]["ticketData"]["title"] = ticket.title
 	ui_data_by_mob[user]["mdata"]["ticketData"]["extra"] = ticket.extra
+	ui_data_by_mob[user]["mdata"]["ticketData"]["imageAttached"] = ticket.has_image
+	ui_data_by_mob[user]["mdata"]["ticketData"]["image"] = ticket.image
 	ui_data_by_mob[user]["mdata"]["ticketData"]["handler"] = ticket.handler ? "[ticket.handler]" : "None"
 
 /obj/item/radio/headset/emag_act(mob/user, obj/item/card/emag/E)
@@ -405,6 +407,12 @@ SUBSYSTEM_DEF(dispatch)
 			return TRUE
 
 		 /*** TICKET MANAGER ACTIONS ***/
+		if("image-view-holder")
+			if(!ui_data_by_mob[user]["mdata"]["ticketData"]["imageAttached"])
+				CRASH("image-view called while imageAttached is FALSE")
+			var/icon/image = ui_data_by_mob[user]["mdata"]["ticketData"]["image"]
+			SEND_IMAGE(user, image)
+
 		if("toggle-active")
 			ui_data_by_mob[user]["mdata"]["holderActive"] = !ui_data_by_mob[user]["mdata"]["holderActive"]
 			var/list/holder_types = get_holder_roles(user)

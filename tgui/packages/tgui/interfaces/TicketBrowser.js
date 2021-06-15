@@ -7,8 +7,8 @@ import { Window } from '../layouts';
 export const TicketBrowser = (props, context) => {
   const { data } = useBackend(context);
   const { mdata, tdata } = data;
-  const { ticketActive } = mdata;
-  const { imageAttached } = tdata;
+  const { ticketActive, ticketData } = mdata;
+  const { imageAttached } = ticketData;
   return (
     <Window title="Ticket Browser" height={400} width={800}>
       <HolderToggles />
@@ -129,12 +129,12 @@ const TicketInformation = (props, context) => {
 
 const TicketImage = (props, context) => {
   const { data, act } = useBackend(context);
-  const { tdata, self_ref } = data;
+  const { self_ref } = data;
   return (
     <Section title="Attached Image" buttons={
       <Button
         content="View Image"
-        onClick={() => act("image-view", { self_ref: self_ref })}
+        onClick={() => act("image-view-holder", { self_ref: self_ref })}
         color="blue" />
     } />
   );
