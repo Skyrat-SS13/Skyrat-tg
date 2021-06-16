@@ -161,7 +161,7 @@
 		return
 	if(prob(10 * severity))
 		return
-	to_chat(owner, "<span class='warning'>Static obfuscates your vision!</span>")
+	to_chat(owner, span_warning("Static obfuscates your vision!"))
 	owner.flash_act(visual = 1)
 
 /obj/item/organ/eyes/robotic/basic
@@ -176,7 +176,7 @@
 		return
 	if(prob(10 * severity))
 		damage += 20 * severity
-		to_chat(owner, "<span class='warning'>Your eyes start to fizzle in their sockets!</span>")
+		to_chat(owner, span_warning("Your eyes start to fizzle in their sockets!"))
 		do_sparks(2, TRUE, owner)
 		owner.emote("scream")
 
@@ -336,13 +336,13 @@
 /obj/item/organ/eyes/robotic/glow/proc/activate(silent = FALSE)
 	start_visuals()
 	if(!silent)
-		to_chat(owner, "<span class='warning'>Your [src] clicks and makes a whining noise, before shooting out a beam of light!</span>")
+		to_chat(owner, span_warning("Your [src] clicks and makes a whining noise, before shooting out a beam of light!"))
 	cycle_mob_overlay()
 
 /obj/item/organ/eyes/robotic/glow/proc/deactivate(silent = FALSE)
 	clear_visuals()
 	if(!silent)
-		to_chat(owner, "<span class='warning'>Your [src] shuts off!</span>")
+		to_chat(owner, span_warning("Your [src] shuts off!"))
 	remove_mob_overlay()
 
 /obj/item/organ/eyes/robotic/glow/proc/update_visuals(datum/source, olddir, newdir)
@@ -484,7 +484,7 @@
 	var/turf/owner_turf = get_turf(owner)
 	var/lums = owner_turf.get_lumcount()
 	if(lums > 0.5) //we allow a little more than usual so we can produce light from the adapted eyes
-		to_chat(owner, "<span class='danger'>Your eyes! They burn in the light!</span>")
+		to_chat(owner, span_danger("Your eyes! They burn in the light!"))
 		applyOrganDamage(10) //blind quickly
 		playsound(owner, 'sound/machines/grill/grillsizzle.ogg', 50)
 	else

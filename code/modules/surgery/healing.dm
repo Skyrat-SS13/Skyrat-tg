@@ -92,7 +92,7 @@
 
 	user_msg += get_progress(user, target, brute_healed, burn_healed)
 
-	display_results(user, target, "<span class='notice'>[user_msg].</span>",
+	display_results(user, target, span_notice("[user_msg]."),
 		"[target_msg].",
 		"[target_msg].")
 	if(istype(surgery, /datum/surgery/healing))
@@ -101,9 +101,9 @@
 	return ..()
 
 /datum/surgery_step/heal/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screwed up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
-		"<span class='notice'>[user] fixes some of [target]'s wounds.</span>", TRUE)
+	display_results(user, target, span_warning("You screwed up!"),
+		span_warning("[user] screws up!"),
+		span_notice("[user] fixes some of [target]'s wounds."), TRUE)
 	var/brute_dealt = brutehealing * 0.8
 	var/burn_dealt = burnhealing * 0.8
 	brute_dealt += round((target.getBruteLoss() * (brute_multiplier * 0.5)),0.1)
@@ -321,7 +321,7 @@
 	burn_multiplier = 0.4
 
 /datum/surgery_step/heal/combo/upgraded/femto/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screwed up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
-		"<span class='notice'>[user] fixes some of [target]'s wounds.</span>", TRUE)
+	display_results(user, target, span_warning("You screwed up!"),
+		span_warning("[user] screws up!"),
+		span_notice("[user] fixes some of [target]'s wounds."), TRUE)
 	target.take_bodypart_damage(5,5)

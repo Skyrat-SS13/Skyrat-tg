@@ -290,5 +290,5 @@
 	user.visible_message("<span class='danger'>[user] begins to plant \the [src]...</span>")
 	if(do_after(user, 4 SECONDS, target = user.drop_location(), progress = TRUE)) //SKYRAT EDIT - ORIGINAL 8 SECONDS
 		new /obj/structure/fluff/hedge/opaque(user.drop_location())
-		to_chat(user, "<span class='notice'>You plant \the [src].</span>")
+		to_chat(user, span_notice("You plant \the [src]."))
 		qdel(src)
