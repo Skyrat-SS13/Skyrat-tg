@@ -344,7 +344,7 @@
 	icon_state = "sr-casing"
 	caliber = CALIBER_473MM
 	projectile_type = /obj/projectile/bullet/advanced/b473/rubber
-	harmful = TRUE
+	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b473/rubber
 	name = "4.73x33mm rubber bullet"
@@ -366,7 +366,7 @@
 	icon_state = "si-casing"
 	caliber = CALIBER_473MM
 	projectile_type = /obj/projectile/bullet/advanced/b473/ihdf
-	harmful = TRUE
+	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b473/ihdf
 	name = "4.73x33mm ihdf bullet"

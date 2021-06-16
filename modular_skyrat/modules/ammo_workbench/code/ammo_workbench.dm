@@ -18,7 +18,7 @@
 	var/disk_error_type = ""
 	var/shock_wire
 	var/timer_id
-	var/obj/item/ammo_box/magazine/loaded_magazine = null
+	var/obj/item/ammo_box/loaded_magazine = null
 	var/obj/item/disk/ammo_workbench/loaded_datadisk = null
 	/// A list of all currently allowed ammo types.
 	var/list/allowed_ammo_types = list()
@@ -403,7 +403,7 @@
 		return FALSE
 	if(!is_insertion_ready(user))
 		return FALSE
-	if(istype(O, /obj/item/ammo_box/magazine))
+	if(istype(O, /obj/item/ammo_box))
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
 		loaded_magazine = O
