@@ -40,10 +40,19 @@
 /area/template_noop)
 "cP" = (
 /obj/machinery/suit_storage_unit/open,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 5
+	},
+/obj/structure/spider/stickyweb,
 /turf/open/floor/iron,
 /area/template_noop)
 "dE" = (
 /turf/open/floor/iron/smooth_large,
+/area/template_noop)
+"eu" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
 /area/template_noop)
 "fb" = (
 /turf/open/floor/iron/dark/smooth_edge,
@@ -113,6 +122,7 @@
 "gT" = (
 /obj/structure/trash_pile,
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/template_noop)
 "hd" = (
@@ -143,6 +153,10 @@
 "ib" = (
 /obj/structure/rack,
 /obj/item/clothing/shoes/magboots/syndie,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/template_noop)
 "iq" = (
@@ -179,6 +193,12 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/oil/streak,
+/turf/open/floor/iron,
+/area/template_noop)
+"kp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet,
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/iron,
 /area/template_noop)
 "lC" = (
@@ -258,6 +278,16 @@
 /area/template_noop)
 "or" = (
 /obj/structure/rack,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 4
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/iron,
+/area/template_noop)
+"py" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/template_noop)
 "pH" = (
@@ -314,6 +344,14 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
+"sP" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/template_noop)
 "ty" = (
 /obj/effect/turf_decal/siding/wideplating{
 	dir = 8
@@ -361,6 +399,11 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/template_noop)
+"tV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop/gross_decal_spawner,
+/turf/open/floor/iron,
+/area/template_noop)
 "uO" = (
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron,
@@ -375,6 +418,14 @@
 /obj/structure/marker_beacon/burgundy,
 /turf/open/floor/plating/airless,
 /area/template_noop)
+"vS" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/template_noop)
 "vU" = (
 /obj/effect/turf_decal/siding/red{
 	color = "#fc0303";
@@ -386,8 +437,10 @@
 /turf/open/floor/plating,
 /area/template_noop)
 "ww" = (
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/siding/thinplating/end{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
 /area/template_noop)
 "wx" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -405,7 +458,13 @@
 /area/template_noop)
 "wV" = (
 /obj/item/rack_parts,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
 /area/template_noop)
 "xa" = (
 /turf/open/floor/iron,
@@ -431,6 +490,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/loot_site_spawner,
 /turf/open/floor/plating,
+/area/template_noop)
+"ya" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "sec";
+	name = "brig officer's locker";
+	req_access_txt = "150"
+	},
+/obj/item/storage/belt/security/full,
+/turf/open/floor/mineral/plastitanium,
 /area/template_noop)
 "yb" = (
 /turf/open/floor/iron/stairs/left,
@@ -482,7 +550,13 @@
 /area/template_noop)
 "Ay" = (
 /obj/structure/tank_dispenser,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium,
 /area/template_noop)
 "Bh" = (
 /obj/effect/turf_decal/tile/brown,
@@ -524,6 +598,13 @@
 "Dw" = (
 /turf/open/floor/mineral/plastitanium,
 /area/template_noop)
+"DE" = (
+/obj/machinery/button/door/directional/north{
+	id = "interdyneoldeva";
+	req_access_txt = "150"
+	},
+/turf/open/floor/iron,
+/area/template_noop)
 "Es" = (
 /obj/structure/closet/crate/large,
 /obj/item/disk{
@@ -537,6 +618,10 @@
 /area/template_noop)
 "ED" = (
 /turf/open/floor/mineral/plastitanium/red,
+/area/template_noop)
+"EL" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/iron,
 /area/template_noop)
 "FD" = (
 /obj/machinery/door/airlock/grunge{
@@ -560,6 +645,10 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
+/area/template_noop)
+"HH" = (
+/obj/effect/turf_decal/siding/thinplating/end,
+/turf/open/floor/mineral/plastitanium,
 /area/template_noop)
 "HX" = (
 /turf/open/floor/iron/dark/smooth_large,
@@ -652,6 +741,15 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
+"MK" = (
+/obj/machinery/suit_storage_unit/open,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 9
+	},
+/obj/machinery/light/broken/directional/east,
+/turf/open/floor/iron,
+/area/template_noop)
 "MN" = (
 /turf/open/floor/iron/stairs/right,
 /area/template_noop)
@@ -702,7 +800,20 @@
 /area/template_noop)
 "Pt" = (
 /obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 10
+	},
+/obj/structure/spider/stickyweb,
 /turf/open/floor/iron,
+/area/template_noop)
+"PA" = (
+/obj/machinery/status_display/syndie{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/smooth_half{
+	dir = 1
+	},
 /area/template_noop)
 "PM" = (
 /obj/structure/table/reinforced,
@@ -738,6 +849,11 @@
 	dir = 1
 	},
 /area/template_noop)
+"Sg" = (
+/obj/item/storage/toolbox/mechanical,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/iron,
+/area/template_noop)
 "St" = (
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 4
@@ -757,6 +873,15 @@
 /turf/open/floor/iron/smooth_half{
 	dir = 1
 	},
+/area/template_noop)
+"TP" = (
+/obj/machinery/suit_storage_unit/open,
+/obj/effect/turf_decal/trimline/red/line{
+	color = "#fc0303";
+	dir = 6
+	},
+/obj/machinery/light/cold/directional/west,
+/turf/open/floor/iron,
 /area/template_noop)
 "UI" = (
 /obj/item/wirecutters/makeshift,
@@ -789,7 +914,14 @@
 /area/template_noop)
 "Ws" = (
 /obj/structure/barricade/wooden,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/siding/thinplating,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "interdyneoldeva"
+	},
+/turf/open/floor/plating,
 /area/template_noop)
 "Wy" = (
 /obj/structure/railing,
@@ -803,6 +935,7 @@
 /area/template_noop)
 "Xf" = (
 /obj/item/kirbyplants/random,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron,
 /area/template_noop)
 "Xj" = (
@@ -822,7 +955,14 @@
 /area/template_noop)
 "YJ" = (
 /obj/structure/barricade/wooden/crude,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/siding/thinplating,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "interdyneoldeva"
+	},
+/turf/open/floor/plating,
 /area/template_noop)
 "YQ" = (
 /obj/machinery/door/airlock/grunge{
@@ -954,15 +1094,15 @@ mc
 mc
 qw
 gT
-xa
-xa
+Bp
+Bp
 xa
 Ws
-xa
+EL
 cP
 or
-or
-cP
+vS
+TP
 xa
 qw
 mc
@@ -1005,18 +1145,18 @@ mc
 mc
 mc
 qw
-pY
-xa
-xa
-xa
+Bp
+iC
+iC
+Bp
 YJ
-xa
-wa
+Sg
+eu
 wa
 wa
 bk
 xa
-qw
+tU
 mc
 mc
 mc
@@ -1057,18 +1197,18 @@ mc
 mc
 mc
 qw
-pY
-xa
-xa
-xa
+Bp
+Bp
+tV
+Bp
 qw
-xa
+DE
 ww
 Ay
 wV
-xa
+HH
 UI
-qw
+tU
 mc
 mc
 mc
@@ -1109,18 +1249,18 @@ mc
 mc
 mc
 qw
-pY
-xa
-xa
-xa
+Bp
+iC
+iC
+Bp
 NE
 xa
 pY
 wa
 pY
 wa
-xa
-qw
+EL
+tU
 mc
 mc
 mc
@@ -1161,17 +1301,17 @@ mc
 mc
 mc
 qw
-xa
-xa
-xa
-xa
+Bp
+Bp
+kp
+yO
 qw
 Xf
-cP
+MK
 ib
-or
+sP
 Pt
-xa
+EL
 qw
 mc
 mc
@@ -1213,8 +1353,8 @@ qw
 qw
 qw
 qw
-xa
-xa
+Bp
+Bp
 qw
 qw
 qw
@@ -1265,8 +1405,8 @@ my
 jF
 tP
 qw
-xa
 Bp
+py
 qw
 gR
 ak
@@ -1581,7 +1721,7 @@ PT
 sx
 PT
 PT
-PT
+PA
 PT
 PT
 PT
@@ -1776,7 +1916,7 @@ mc
 mc
 mc
 qw
-Dw
+ya
 Dw
 LG
 tU
