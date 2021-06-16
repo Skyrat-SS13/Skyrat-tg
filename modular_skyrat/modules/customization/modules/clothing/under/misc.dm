@@ -411,5 +411,37 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "scrubsred"
 
+/obj/item/clothing/under/suit/white/scarface
+	name = "cuban suit"
+	desc = "A yayo coloured silk suit with a crimson shirt. You just know how to hide, how to lie. Me, I don't have that problem. Me, I always tell the truth. Even when I lie."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "scarface"
+
+/obj/item/clothing/under/misc/gear_harness/eve
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "collection of leaves"
+	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
+	icon_state = "eve"
+
+/obj/item/clothing/under/costume/loincloth/sensor/adam
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "leaf"
+	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
+	icon_state = "adam"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/misc/evilcargo
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "black cargo uniform"
+	desc = "Yep, here’s your problem. Someone set this thing to evil."
+	icon_state = "qmsynd"
+	can_adjust = FALSE
+
+
+
 
 
