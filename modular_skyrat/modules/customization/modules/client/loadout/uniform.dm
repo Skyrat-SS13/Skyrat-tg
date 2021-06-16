@@ -655,10 +655,20 @@
 	path = /obj/item/clothing/under/rank/security/brigguard
 	restricted_roles = list("Corrections Officer","Warden")
 
-/datum/loadout_item/uniform/job/coroffshir
+/datum/loadout_item/uniform/job/coroffshirw
 	name = "Corrections Officer Skirt"
 	path = /obj/item/clothing/under/rank/security/brigguard/women
 	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/peacetrouse
+	name = "Peacekeeper Trousers"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
+
+/datum/loadout_item/uniform/job/peacetrouse
+	name = "Security Trousers"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
 
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
@@ -723,6 +733,13 @@
 /datum/loadout_item/uniform/job/purplescrubs
 	name = "Purple Scrubs"
 	path = /obj/item/clothing/under/rank/medical/doctor/purple
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/whitescrubs
+	name = "White Scrubs"
+	path = /obj/item/clothing/under/rank/medical/doctor/white
+	extra_info = LOADOUT_INFO_ONE_COLOR
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
@@ -810,6 +827,12 @@
 	name = "Quartermaster's Casual Suit"
 	path = /obj/item/clothing/under/rank/cargo/qm/casual
 	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/engtrous
+	name = "Engineering Trousers"
+	path = /obj/item/clothing/under/rank/engineering/engineer/trouser
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
 
 /datum/loadout_item/uniform/job/engformal
 	name = "Engineering Formal Suit"
