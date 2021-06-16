@@ -27,6 +27,9 @@
 	var/time_per_round = 20
 	var/creation_efficiency = 1.6
 
+/obj/machinery/ammo_workbench/unlocked
+	allowed_harmful = TRUE
+
 /obj/item/circuitboard/machine/ammo_workbench
 	name = "Ammunition Workbench (Machine Board)"
 	icon_state = "circuit_map"
