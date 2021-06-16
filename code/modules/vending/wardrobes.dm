@@ -168,7 +168,7 @@
 		/obj/item/clothing/shoes/sneakers/black = 3,
 		/obj/item/clothing/gloves/fingerless = 3,
 		/obj/item/clothing/head/soft = 3,
-		/obj/item/radio/headset/headset_cargo = 3
+		/obj/item/radio/headset/headset_cargo = 3)
 	contraband = list(/obj/item/clothing/under/suit/white/scarface = 2, //SKYRAT EDIT
 					/obj/item/clothing/under/misc/evilcargo = 2
 	)
