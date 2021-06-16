@@ -14,10 +14,16 @@
 	var/disable_wire
 	var/error_message = ""
 	var/error_type = ""
+	var/disk_error = ""
+	var/disk_error_type = ""
 	var/shock_wire
 	var/timer_id
 	var/obj/item/ammo_box/magazine/loaded_magazine = null
-	var/obj/item/ammo_casing/selected_ammo_type
+	var/obj/item/disk/ammo_workbench/loaded_datadisk = null
+	/// A list of all currently allowed ammo types.
+	var/list/allowed_ammo_types = list()
+	var/list/allowed_harmful = FALSE
+	var/list/loaded_datadisks = list()
 	var/time_per_round = 20
 	var/creation_efficiency = 1.6
 
@@ -48,6 +54,21 @@
 /obj/machinery/ammo_workbench/ui_data(mob/user)
 	var/list/data = list()
 
+	data["datadisk"] = list()
+	data["loaded_datadisks"] = list()
+	data["datadisk_loaded"] = FALSE
+
+	data["disk_error"] = disk_error
+	data["disk_error_type"] = disk_error_type
+
+	if(loaded_datadisk)
+		data["datadisk_loaded"] = TRUE
+		data["datadisk"] += list(list("disk_name" = initial(loaded_datadisk.name), "disk_desc" = initial(loaded_datadisk.desc)))
+
+	for(var/type in loaded_datadisks)
+		var/obj/item/disk/ammo_workbench/disk = type
+		data["loaded_datadisks"] += list(list("loaded_disk_name" = initial(disk.name), "loaded_disk_desc" = initial(disk.desc)))
+
 	data["mag_loaded"] = FALSE
 	data["error"] = null
 	data["system_busy"] = busy
@@ -61,10 +82,6 @@
 			var/sheet_amount = amount / MINERAL_MATERIAL_AMOUNT
 			var/ref = REF(M)
 			data["materials"] += list(list("name" = M.name, "id" = ref, "amount" = sheet_amount))
-
-	if(busy)
-		error_message = "SYSTEM IS BUSY"
-		error_type = ""
 
 	if(error_message)
 		data["error"] = error_message
@@ -83,7 +100,7 @@
 	var/list/round_types = typesof(ammo_type)
 	for(var/casing as anything in round_types)
 		var/obj/item/ammo_casing/our_casing = casing
-		if(initial(our_casing.harmful) && !hacked) //Hacking allows you to print dangerous bullets
+		if(initial(our_casing.harmful) && !allowed_harmful)
 			continue
 		data["available_rounds"] += list(list(
 			"name" = initial(our_casing.name),
@@ -97,7 +114,7 @@
 	data["efficiency"] = creation_efficiency
 	data["time"] = time_per_round / 10
 	data["mag_loaded"] = TRUE
-	data["hacked"] = hacked
+	data["hacked"] = allowed_harmful
 
 	return data
 
@@ -140,6 +157,12 @@
 
 			mat_container.retrieve_sheets(sheets_to_remove, mat, loc)
 			. = TRUE
+
+		if("ReadDisk")
+			loadDisk()
+
+		if("EjectDisk")
+			ejectDisk()
 
 /obj/machinery/ammo_workbench/proc/ejectItem()
 	if(loaded_magazine)
@@ -252,6 +275,31 @@
 		deltimer(timer_id)
 		timer_id = null
 
+/obj/machinery/ammo_workbench/proc/loadDisk()
+	disk_error = ""
+	disk_error_type = ""
+	if(!loaded_datadisk)
+		return FALSE
+	if(loaded_datadisk.type in loaded_datadisks)
+		disk_error = "ERROR: DISK BLUEPRINT ALREADY IN SYSTEM MEMEORY"
+		return FALSE
+
+	if(istype(loaded_datadisk, /obj/item/disk/ammo_workbench/lethal))
+		allowed_harmful = TRUE
+		loaded_datadisks += loaded_datadisk.type
+		disk_error = "DISK LOADED SUCCESSFULLY"
+		disk_error_type = "good"
+		return TRUE
+
+	loaded_datadisks += loaded_datadisk.type
+
+/obj/machinery/ammo_workbench/proc/ejectDisk()
+	if(loaded_datadisk)
+		loaded_datadisk.forceMove(drop_location())
+		loaded_datadisk = null
+		disk_error = ""
+		disk_error_type = ""
+
 /datum/design/board/ammo_workbench
 	name = "Machine Design (Ammunitions Workbench)"
 	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
@@ -298,6 +346,13 @@
 
 /obj/machinery/ammo_workbench/Destroy()
 	QDEL_NULL(wires)
+	if(timer_id)
+		deltimer(timer_id)
+		timer_id = null
+	if(loaded_magazine)
+		loaded_magazine.forceMove(loc)
+		loaded_magazine = null
+	. = ..()
 	return ..()
 
 /obj/machinery/ammo_workbench/proc/shock(mob/user, prb)
@@ -323,19 +378,15 @@
 		return FALSE //inserting reagents into the machine
 	if(Insert_Item(O, user))
 		return TRUE
+	if(istype(O, /obj/item/disk/ammo_workbench))
+		if(Insert_Disk(O, user))
+			user.visible_message("<span class='notice'>[user] begins to load \the [O] in \the [src]...</span>",
+				"<span class='notice'>You begin to load \the [O]...</span>",
+				"<span class='hear'>You hear the chatter of a floppy drive.</span>")
+			return TRUE
 	else
 		return ..()
 
-/obj/machinery/ammo_workbench/on_deconstruction()
-	if(loaded_magazine)
-		loaded_magazine.forceMove(loc)
-	..()
-
-/obj/machinery/ammo_workbench/Destroy()
-	if(timer_id)
-		deltimer(timer_id)
-		timer_id = null
-	. = ..()
 
 /obj/machinery/ammo_workbench/proc/Insert_Item(obj/item/O, mob/living/user)
 	if(user.combat_mode)
@@ -351,8 +402,25 @@
 	flick("h_lathe_load", src)
 	update_appearance()
 	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+	return TRUE
 
-/obj/machinery/ammo_workbench/proc/is_insertion_ready(mob/user)
+/obj/machinery/ammo_workbench/proc/Insert_Disk(obj/item/O, mob/living/user)
+	if(user.combat_mode)
+		return FALSE
+	if(!is_insertion_ready(user))
+		return FALSE
+	if(!istype(O, /obj/item/disk/ammo_workbench))
+		return FALSE
+	if(!user.transferItemToLoc(O, src))
+		return FALSE
+	loaded_datadisk = O
+	to_chat(user, "<span class='notice'>You insert [O] to into [src]'s floppydisk port.</span>")
+	flick("h_lathe_load", src)
+	update_appearance()
+	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+	return TRUE
+
+/obj/machinery/ammo_workbench/proc/is_insertion_ready(mob/user, obj/item/O)
 	if(panel_open)
 		to_chat(user, "<span class='warning'>You can't load [src] while it's opened!</span>")
 		return FALSE
@@ -368,8 +436,11 @@
 	if(machine_stat & NOPOWER)
 		to_chat(user, "<span class='warning'>[src] has no power.</span>")
 		return FALSE
-	if(loaded_magazine)
+	if(istype(O, /obj/item/ammo_box/magazine) && loaded_magazine)
 		to_chat(user, "<span class='warning'>[src] is already loaded.</span>")
+		return FALSE
+	if(istype(O, /obj/item/disk/ammo_workbench) && loaded_datadisk)
+		to_chat(user, "<span class='warning'>[src] already has a disk inserted.</span>")
 		return FALSE
 	return TRUE
 

@@ -1404,6 +1404,7 @@
 		"c38_hotshot",
 		"c38_iceblox",
 		"techshotshell",
+		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

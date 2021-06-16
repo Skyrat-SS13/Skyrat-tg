@@ -23,12 +23,20 @@ export const AmmoWorkbench = (props, context) => {
             onClick={() => setTab(2)}>
             Materials
           </Tabs.Tab>
+          <Tabs.Tab
+            selected={tab === 3}
+            onClick={() => setTab(3)}>
+            Datadisks
+          </Tabs.Tab>
         </Tabs>
         {tab === 1 && (
           <AmmunitionsTab />
         )}
         {tab === 2 && (
           <MaterialsTab />
+        )}
+        {tab === 3 && (
+          <DatadiskTab />
         )}
       </Window.Content>
     </Window>
@@ -58,17 +66,20 @@ export const AmmunitionsTab = (props, context) => {
           {error}
         </NoticeBox>
       )}
-      <Box inline mr={4}>
-        Current Efficiency: <RoundGauge
-          value={efficiency}
-          minValue={1.6}
-          maxValue={1}
-          format={() => null}
-        />
-      </Box>
-      <Box>
-        Time Per Round: {time} seconds
-      </Box>
+      <Section
+        title="Machine Settings">
+        <Box inline mr={4}>
+          Current Efficiency: <RoundGauge
+            value={efficiency}
+            minValue={1.6}
+            maxValue={1}
+            format={() => null}
+          />
+        </Box>
+        <Box>
+          Time Per Round: {time} seconds
+        </Box>
+      </Section>
       <Section
         title="Loaded Magazine"
         buttons={(
@@ -155,6 +166,63 @@ export const MaterialsTab = (props, context) => {
         ))}
       </Table>
     </Section>
+  );
+};
+
+export const DatadiskTab = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    loaded_datadisks = [],
+    datadisk = [],
+    datadisk_loaded,
+    disk_error,
+    disk_error_type,
+  } = data;
+  return (
+    <>
+      {!!disk_error && (
+        <NoticeBox textAlign="center" color={disk_error_type}>
+          {disk_error}
+        </NoticeBox>
+      )}
+      <Section
+        title="Datadisk"
+        buttons={(
+          <>
+            <Button
+              icon="save"
+              content="Load Disk"
+              disabled={!datadisk_loaded}
+              onClick={() => act('ReadDisk')} />
+            <Button
+              icon="eject"
+              content="Eject"
+              disabled={!datadisk_loaded}
+              onClick={() => act('EjectDisk')} />
+          </>
+        )}>
+        {!!datadisk_loaded && (
+          <Box>
+            Inserted Datadisk: {datadisk.disk_name}
+            <Box>
+              Description: {datadisk.disk_desc}
+            </Box>
+          </Box>
+        )}
+      </Section>
+      <Section title="Loaded Datadisks">
+        <Table>
+          {loaded_datadisks.map(loaded_datadisk => (
+            <Box key={loaded_datadisk.loaded_disk_name}>
+              {loaded_datadisk.loaded_disk_name}
+              <Box>
+                Description: {loaded_datadisk.loaded_disk_desc}
+              </Box>
+            </Box>
+          ))}
+        </Table>
+      </Section>
+    </>
   );
 };
 
