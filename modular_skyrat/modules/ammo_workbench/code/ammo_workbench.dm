@@ -330,8 +330,8 @@
 /obj/machinery/ammo_workbench/RefreshParts()
 	var/time_efficiency = 20
 	for(var/obj/item/stock_parts/micro_laser/new_laser in component_parts)
-		time_efficiency -= new_laser.rating
-	time_per_round = time_efficiency
+		time_efficiency -= new_laser.rating * 2
+	time_per_round = clamp(time_efficiency, 0.1, 2)
 
 	var/efficiency = 1.8
 	for(var/obj/item/stock_parts/manipulator/new_manipulator in component_parts)
@@ -409,6 +409,14 @@
 		if(loaded_magazine)
 			to_chat(user, "<span class='notice'>You swap quickly swap [O] for [loaded_magazine].</span>")
 			loaded_magazine.forceMove(drop_location())
+			user.put_in_hands(loaded_magazine)
+			loaded_magazine = null
+			busy = FALSE
+			error_message = ""
+			error_type = ""
+			if(timer_id)
+				deltimer(timer_id)
+				timer_id = null
 		loaded_magazine = O
 		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s reciprocal.</span>")
 		flick("h_lathe_load", src)
@@ -433,9 +441,6 @@
 	if(disabled)
 		to_chat(user, "<span class='warning'>The insertion belts of [src] won't engage!</span>")
 		return FALSE
-	if(busy)
-		to_chat(user, "<span class='warning'>[src] is busy right now.</span>")
-		return FALSE
 	if(machine_stat & BROKEN)
 		to_chat(user, "<span class='warning'>[src] is broken.</span>")
 		return FALSE
@@ -446,16 +451,6 @@
 		to_chat(user, "<span class='warning'>[src] already has a disk inserted.</span>")
 		return FALSE
 	return TRUE
-
-/obj/machinery/ammo_workbench/proc/materials_printout()
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	var/dat = "<b>Total amount:</b> [materials.total_amount] / [materials.max_amount] cm<sup>3</sup><br>"
-	for(var/mat_id in materials.materials)
-		var/datum/material/M = mat_id
-		var/mineral_amount = materials.materials[mat_id]
-		if(mineral_amount > 0)
-			dat += "<b>[M.name] amount:</b> [mineral_amount] cm<sup>3</sup><br>"
-	return dat
 
 /obj/machinery/ammo_workbench/proc/reset(wire)
 	switch(wire)
