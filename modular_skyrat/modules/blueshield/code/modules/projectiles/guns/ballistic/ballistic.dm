@@ -61,7 +61,7 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/storage/box/gunset/blueshield
-	name = "ACA E-M45A5 Gunset"
+	name = "CFA 'Lynx' Gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/blueshield/nomag
@@ -69,9 +69,9 @@
 
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/pistol/blueshield/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/ladon/blueshield/b460(src)
+	new /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
 
