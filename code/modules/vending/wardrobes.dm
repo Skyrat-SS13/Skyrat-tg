@@ -64,6 +64,7 @@
 					/obj/item/clothing/under/rank/medical/doctor/green = 4,
 					/obj/item/clothing/under/rank/medical/doctor/purple = 4,
 					/obj/item/clothing/under/rank/medical/doctor/red/unarm = 4,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/under/rank/medical/doctor/white = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/rank/medical/doctor = 4,
 					/obj/item/clothing/under/utility/med = 4,	//SKYRAT EDIT ADDITION START
 					/obj/item/clothing/under/rank/medical/doctor/formal = 4,
@@ -98,6 +99,7 @@
 					/obj/item/clothing/suit/hooded/wintercoat/engineering = 3,
 					/obj/item/clothing/under/rank/engineering/engineer = 3,
 					/obj/item/clothing/under/rank/engineering/engineer/skirt = 3,
+					/obj/item/clothing/under/rank/engineering/engineer/trouser = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/jacket/engi = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/under/misc/overalls = 3,		// SKYRAT EDIT ADDITION
