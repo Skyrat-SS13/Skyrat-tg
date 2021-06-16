@@ -173,8 +173,9 @@ export const DatadiskTab = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     loaded_datadisks = [],
-    datadisk = [],
     datadisk_loaded,
+    datadisk_name,
+    datadisk_desc,
     disk_error,
     disk_error_type,
   } = data;
@@ -203,9 +204,9 @@ export const DatadiskTab = (props, context) => {
         )}>
         {!!datadisk_loaded && (
           <Box>
-            Inserted Datadisk: {datadisk.disk_name}
+            Inserted Datadisk: {datadisk_name}
             <Box>
-              Description: {datadisk.disk_desc}
+              Description: {datadisk_desc}
             </Box>
           </Box>
         )}
@@ -214,7 +215,7 @@ export const DatadiskTab = (props, context) => {
         <Table>
           {loaded_datadisks.map(loaded_datadisk => (
             <Box key={loaded_datadisk.loaded_disk_name}>
-              {loaded_datadisk.loaded_disk_name}
+              <bold>{loaded_datadisk.loaded_disk_name}</bold>
               <Box>
                 Description: {loaded_datadisk.loaded_disk_desc}
               </Box>

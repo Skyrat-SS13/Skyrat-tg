@@ -54,7 +54,6 @@
 /obj/machinery/ammo_workbench/ui_data(mob/user)
 	var/list/data = list()
 
-	data["datadisk"] = list()
 	data["loaded_datadisks"] = list()
 	data["datadisk_loaded"] = FALSE
 
@@ -63,7 +62,8 @@
 
 	if(loaded_datadisk)
 		data["datadisk_loaded"] = TRUE
-		data["datadisk"] += list(list("disk_name" = initial(loaded_datadisk.name), "disk_desc" = initial(loaded_datadisk.desc)))
+		data["datadisk_name"] = initial(loaded_datadisk.name)
+		data["datadisk_desc"] = initial(loaded_datadisk.desc)
 
 	for(var/type in loaded_datadisks)
 		var/obj/item/disk/ammo_workbench/disk = type
@@ -72,6 +72,10 @@
 	data["mag_loaded"] = FALSE
 	data["error"] = null
 	data["system_busy"] = busy
+
+	data["efficiency"] = creation_efficiency
+	data["time"] = time_per_round / 10
+	data["hacked"] = allowed_harmful
 
 	data["materials"] = list()
 	var/datum/component/material_container/mat_container = GetComponent(/datum/component/material_container)
@@ -111,10 +115,6 @@
 	data["caliber"] = initial(ammo_type.caliber)
 	data["current_rounds"] = loaded_magazine.stored_ammo.len
 	data["max_rounds"] = loaded_magazine.max_ammo
-	data["efficiency"] = creation_efficiency
-	data["time"] = time_per_round / 10
-	data["mag_loaded"] = TRUE
-	data["hacked"] = allowed_harmful
 
 	return data
 
@@ -378,12 +378,6 @@
 		return FALSE //inserting reagents into the machine
 	if(Insert_Item(O, user))
 		return TRUE
-	if(istype(O, /obj/item/disk/ammo_workbench))
-		if(Insert_Disk(O, user))
-			user.visible_message("<span class='notice'>[user] begins to load \the [O] in \the [src]...</span>",
-				"<span class='notice'>You begin to load \the [O]...</span>",
-				"<span class='hear'>You hear the chatter of a floppy drive.</span>")
-			return TRUE
 	else
 		return ..()
 
@@ -393,32 +387,23 @@
 		return FALSE
 	if(!is_insertion_ready(user))
 		return FALSE
-	if(!istype(O, /obj/item/ammo_box/magazine))
-		return FALSE
 	if(!user.transferItemToLoc(O, src))
 		return FALSE
-	loaded_magazine = O
-	to_chat(user, "<span class='notice'>You insert [O] to into [src]'s reciprocal.</span>")
-	flick("h_lathe_load", src)
-	update_appearance()
-	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
-	return TRUE
-
-/obj/machinery/ammo_workbench/proc/Insert_Disk(obj/item/O, mob/living/user)
-	if(user.combat_mode)
-		return FALSE
-	if(!is_insertion_ready(user))
-		return FALSE
-	if(!istype(O, /obj/item/disk/ammo_workbench))
-		return FALSE
-	if(!user.transferItemToLoc(O, src))
-		return FALSE
-	loaded_datadisk = O
-	to_chat(user, "<span class='notice'>You insert [O] to into [src]'s floppydisk port.</span>")
-	flick("h_lathe_load", src)
-	update_appearance()
-	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
-	return TRUE
+	if(istype(O, /obj/item/ammo_box/magazine))
+		loaded_magazine = O
+		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s reciprocal.</span>")
+		flick("h_lathe_load", src)
+		update_appearance()
+		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+		return TRUE
+	if(istype(O, /obj/item/disk/ammo_workbench))
+		loaded_datadisk = O
+		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s floppydisk port.</span>")
+		flick("h_lathe_load", src)
+		update_appearance()
+		playsound(loc, 'sound/machines/terminal_insert_disc.ogg', 35, 1)
+		return TRUE
+	return FALSE
 
 /obj/machinery/ammo_workbench/proc/is_insertion_ready(mob/user, obj/item/O)
 	if(panel_open)
