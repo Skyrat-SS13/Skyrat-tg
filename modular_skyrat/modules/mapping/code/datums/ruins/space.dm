@@ -102,8 +102,8 @@
 	name = "Shady Market"
 	description = "Whaddya buyin'?"
 
-/datum/map_template/ruin/space/skyrat/blackmarket
-	id = "blackmarket"
-	suffix = "blackmarket.dmm"
-	name = "Shady Market"
+/datum/map_template/ruin/space/skyrat/shuttle8532
+	id = "shuttle8532"
+	suffix = "shuttle8532.dmm"
+	name = "Shuttle 8532"
 	description = "A small transport shuttle designed for long-distance travels, capable of sustaining itself indefinitely with the right crew. Of course, nobody planned for an exceptionally quick asteroid to tear through the main power source. The Syndicate quickly jumped at the opportunity."
