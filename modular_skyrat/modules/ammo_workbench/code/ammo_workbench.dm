@@ -56,6 +56,8 @@
 
 	data["loaded_datadisks"] = list()
 	data["datadisk_loaded"] = FALSE
+	data["datadisk_name"] = null
+	data["datadisk_desc"] = null
 
 	data["disk_error"] = disk_error
 	data["disk_error_type"] = disk_error_type
@@ -71,6 +73,7 @@
 
 	data["mag_loaded"] = FALSE
 	data["error"] = null
+	data["error_type"] = null
 	data["system_busy"] = busy
 
 	data["efficiency"] = creation_efficiency
@@ -90,6 +93,9 @@
 	if(error_message)
 		data["error"] = error_message
 		data["error_type"] = error_type
+	else if(busy)
+		data["error"] = "SYSTEM IS BUSY"
+		data["error_type"] = ""
 
 	if(!loaded_magazine)
 		data["error"] = "NO MAGAZINE IS INSERTED"

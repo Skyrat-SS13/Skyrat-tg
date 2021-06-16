@@ -215,8 +215,8 @@ export const DatadiskTab = (props, context) => {
         <Table>
           {loaded_datadisks.map(loaded_datadisk => (
             <Box key={loaded_datadisk.loaded_disk_name}>
-              <bold>{loaded_datadisk.loaded_disk_name}</bold>
-              <Box>
+              {loaded_datadisk.loaded_disk_name}
+              <Box textAlign="right">
                 Description: {loaded_datadisk.loaded_disk_desc}
               </Box>
             </Box>
