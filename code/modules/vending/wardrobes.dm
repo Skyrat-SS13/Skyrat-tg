@@ -170,7 +170,8 @@
 		/obj/item/clothing/head/soft = 3,
 		/obj/item/radio/headset/headset_cargo = 3
 	contraband = list(/obj/item/clothing/under/suit/white/scarface = 2, //SKYRAT EDIT
-					/obj/item/clothing/under/misc/evilcargo = 2)
+					/obj/item/clothing/under/misc/evilcargo = 2
+	)
 	premium = list(
 		/obj/item/clothing/under/rank/cargo/miner = 3,
 		/obj/item/clothing/head/mailman = 1,
