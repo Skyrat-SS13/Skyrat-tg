@@ -28,8 +28,17 @@
 /area/awaymission/mothership_astrum/halls)
 "as" = (
 /obj/structure/table/abductor,
-/obj/item/organ/cyberimp/arm/medibeam,
-/turf/open/floor/mineral/abductor,
+/obj/structure/window{
+	dir = 1
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/obj/item/organ/cyberimp/chest/scanner,
+/turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "at" = (
 /obj/effect/decal/cleanable/blood/tracks,
@@ -104,7 +113,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/kitchen/knife/rainbowknife,
+/obj/item/organ/cyberimp/chest/scanner,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "bw" = (
@@ -165,6 +174,14 @@
 /obj/item/gun_maintenance_supplies,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/deck4)
+"cU" = (
+/obj/structure/alien/weeds,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/alien/egg/burst,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "db" = (
 /obj/structure/alien/weeds,
 /turf/open/floor/plating/abductor2,
@@ -265,6 +282,11 @@
 /mob/living/simple_animal/hostile/abductor/ranged/agent,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
+"eF" = (
+/obj/structure/table/abductor,
+/obj/item/organ/cyberimp/brain/anti_drop,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
 "eM" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/plating/ironsand,
@@ -324,7 +346,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/crowbar/freeman,
+/obj/item/book/granter/spell/summonitem,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "fF" = (
@@ -405,9 +427,18 @@
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "hh" = (
-/obj/item/paper/fluff/awaymissions/astrum4,
 /obj/structure/table/abductor,
-/turf/open/floor/mineral/abductor,
+/obj/structure/window{
+	dir = 1
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/obj/item/organ/cyberimp/brain/anti_drop,
+/turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "hj" = (
 /obj/structure/alien/weeds,
@@ -466,17 +497,7 @@
 /area/awaymission/mothership_astrum/halls)
 "iA" = (
 /obj/structure/table/abductor,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/spawner/lootdrop/astrum/mid,
-/obj/structure/window/reinforced,
+/obj/item/storage/firstaid/tactical,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "iF" = (
@@ -527,6 +548,10 @@
 /obj/machinery/microwave,
 /turf/open/floor/iron,
 /area/awaymission/mothership_astrum/deck2)
+"iY" = (
+/obj/structure/alien/weeds/node,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
 "jc" = (
 /obj/structure/alien/weeds,
 /obj/structure/alien/resin/membrane,
@@ -576,6 +601,16 @@
 	dir = 6
 	},
 /area/awaymission/mothership_astrum/deck5)
+"jH" = (
+/mob/living/simple_animal/hostile/alien/sentinel{
+	faction = list("Abductor")
+	},
+/obj/structure/alien/weeds,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "jL" = (
 /obj/structure/table/abductor,
 /obj/machinery/button/door{
@@ -592,6 +627,11 @@
 	id_tag = "highsec";
 	name = "High Security Airlock"
 	},
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
+"jS" = (
+/obj/machinery/door/airlock/abductor,
+/obj/structure/alien/weeds,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "ka" = (
@@ -646,12 +686,9 @@
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "kZ" = (
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/abductor{
-	id_tag = "lowsec";
-	name = "Low Security Airlock"
-	},
-/turf/open/floor/plating/abductor2,
+/obj/structure/bed/abductor,
+/obj/effect/mob_spawn/human/engineer,
+/turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
 "le" = (
 /obj/effect/turf_decal/sand,
@@ -768,8 +805,9 @@
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
 "nE" = (
-/obj/item/gun/energy/beam_rifle/debug,
-/turf/open/floor/mineral/abductor,
+/obj/structure/table/abductor,
+/obj/item/ammo_box/advanced/b9mm/hp,
+/turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "nH" = (
 /obj/structure/table/abductor,
@@ -787,6 +825,12 @@
 "nI" = (
 /turf/closed/wall/mineral/snow,
 /area/awaymission/mothership_astrum/deck3)
+"nJ" = (
+/obj/structure/table/wood,
+/obj/item/clothing/suit/pirate/captain/armored,
+/obj/item/clothing/head/pirate/armored,
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck5)
 "nK" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/lootdrop/astrum,
@@ -815,6 +859,10 @@
 "oc" = (
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck3)
+"od" = (
+/obj/structure/alien/weeds/node,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "og" = (
 /turf/closed/wall/mineral/wood,
 /area/awaymission/mothership_astrum/deck3)
@@ -871,8 +919,8 @@
 /obj/structure/bed{
 	name = "Reproduction Bench"
 	},
-/obj/item/ammo_casing/shotgun/pulseslug,
 /obj/item/bedsheet/ian,
+/obj/effect/mob_spawn/human/clown/corpse,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck3)
 "oY" = (
@@ -892,6 +940,10 @@
 /obj/item/storage/firstaid/brute,
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
+"pl" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "pp" = (
 /obj/structure/closet/abductor,
 /obj/effect/spawner/lootdrop/space/languagebook,
@@ -907,6 +959,13 @@
 /obj/machinery/chem_dispenser,
 /obj/structure/window,
 /turf/open/floor/plating/abductor,
+/area/awaymission/mothership_astrum/halls)
+"pz" = (
+/mob/living/simple_animal/hostile/alien/drone{
+	faction = list("Abductor");
+	plants_off = 1
+	},
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "pC" = (
 /obj/structure/table/wood,
@@ -930,6 +989,7 @@
 /area/awaymission/mothership_astrum/halls)
 "pR" = (
 /obj/structure/closet/abductor,
+/obj/item/organ/cyberimp/eyes/hud/security,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "pT" = (
@@ -958,8 +1018,8 @@
 /area/awaymission/mothership_astrum/halls)
 "qd" = (
 /obj/structure/table/abductor,
-/obj/item/organ/eyes/night_vision/cyber,
-/turf/open/floor/mineral/abductor,
+/obj/item/melee/tomahawk,
+/turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
 "ql" = (
 /obj/structure/table/wood,
@@ -1014,6 +1074,10 @@
 	},
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
+"rD" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/awaymission/mothership_astrum/halls)
 "rG" = (
 /obj/structure/table/abductor,
 /obj/item/gun/energy/alien/astrum,
@@ -1026,6 +1090,11 @@
 "rK" = (
 /obj/structure/table/abductor,
 /obj/item/paper/fluff/awaymissions/astrum1,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"rW" = (
+/obj/effect/spawner/lootdrop/astrum,
+/obj/structure/table/abductor,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "sf" = (
@@ -1110,6 +1179,11 @@
 	dir = 4
 	},
 /area/awaymission/mothership_astrum/deck5)
+"sZ" = (
+/obj/structure/alien/weeds,
+/obj/item/shard,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "tc" = (
 /turf/open/floor/plating/beach/coastline_b{
 	dir = 4
@@ -1124,10 +1198,9 @@
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
 "tm" = (
-/obj/machinery/porta_turret/syndicate/energy{
-	faction = list("Abductor")
-	},
-/turf/open/floor/plating/abductor,
+/obj/structure/table/abductor,
+/obj/item/ammo_box/magazine/multi_sprite/mk58/hp,
+/turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "to" = (
 /turf/closed/indestructible/fakeglass,
@@ -1171,6 +1244,10 @@
 	name = "Sub-Zero Studies"
 	},
 /turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
+"ud" = (
+/obj/structure/alien/weeds,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "ue" = (
 /obj/structure/table/abductor,
@@ -1221,7 +1298,7 @@
 /area/awaymission/mothership_astrum/halls)
 "uN" = (
 /obj/structure/closet/abductor,
-/obj/item/autosurgeon/organ/cmo,
+/obj/item/organ/cyberimp/eyes/hud/medical,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "uV" = (
@@ -1274,6 +1351,11 @@
 /area/awaymission/mothership_astrum/halls)
 "vD" = (
 /obj/machinery/iv_drip,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"vR" = (
+/obj/structure/table/optable/abductor,
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "vT" = (
@@ -1345,6 +1427,7 @@
 "wt" = (
 /obj/structure/table/abductor,
 /obj/item/ammo_box/magazine/multi_sprite/mk58,
+/obj/item/ammo_box/magazine/multi_sprite/mk58,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "wz" = (
@@ -1357,10 +1440,15 @@
 /obj/item/reagent_containers/spray/cleaner,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
+"wM" = (
+/obj/structure/table/wood,
+/obj/item/organ/cyberimp/arm/medibeam,
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck5)
 "wN" = (
 /obj/structure/table/abductor,
-/obj/item/organ/cyberimp/brain/anti_sleep,
-/turf/closed/indestructible/alien,
+/obj/effect/spawner/lootdrop/costume,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "wO" = (
 /mob/living/simple_animal/hostile/russian{
@@ -1489,6 +1577,11 @@
 /area/awaymission/mothership_astrum/halls)
 "zt" = (
 /obj/structure/table/abductor,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"zw" = (
+/obj/structure/alien/weeds,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "zD" = (
@@ -1650,6 +1743,13 @@
 	},
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
+"BQ" = (
+/obj/structure/alien/weeds,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "BT" = (
 /obj/structure/table/abductor,
 /obj/structure/window,
@@ -1662,6 +1762,12 @@
 "BU" = (
 /mob/living/simple_animal/hostile/abductor/melee,
 /turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
+"BW" = (
+/obj/structure/alien/weeds,
+/obj/effect/mob_spawn/human/abductor,
+/obj/effect/spawner/lootdrop/astrum/sciloot,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "BX" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1689,14 +1795,21 @@
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Cn" = (
-/obj/structure/table/abductor,
-/obj/item/organ/cyberimp/chest/reviver,
+/obj/structure/window{
+	dir = 8
+	},
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Cs" = (
 /obj/structure/table/abductor,
 /obj/item/ammo_box/c38,
 /turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"Cv" = (
+/obj/machinery/door/poddoor{
+	id = "xenolock"
+	},
+/turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "Cz" = (
 /obj/structure/table/abductor,
@@ -1831,6 +1944,7 @@
 /obj/effect/turf_decal/sand,
 /obj/structure/table/wood,
 /obj/item/storage/firstaid/brute,
+/obj/item/organ/cyberimp/brain/anti_stun,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
 "El" = (
@@ -1863,6 +1977,11 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
+"Ez" = (
+/obj/structure/table/abductor,
+/obj/structure/table/abductor,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "ED" = (
 /turf/closed/wall,
 /area/awaymission/mothership_astrum/deck2)
@@ -1973,6 +2092,11 @@
 	},
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
+"Fx" = (
+/obj/structure/table/abductor,
+/obj/item/kitchen/knife/rainbowknife,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "Fy" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/item/ammo_casing/a357,
@@ -2019,6 +2143,14 @@
 /obj/effect/spawner/lootdrop/space/cashmoney,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
+"FV" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg/grown,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "Ge" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/lootdrop/space/syndiecosmetic,
@@ -2082,15 +2214,15 @@
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
 "GB" = (
-/obj/structure/table/abductor,
-/obj/item/organ/cyberimp/brain/anti_drop,
-/turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
+/obj/structure/alien/weeds/creature,
+/obj/effect/spawner/lootdrop/astrum/mid,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/deck4)
 "GC" = (
-/obj/structure/table/abductor,
-/obj/item/organ/cyberimp/chest/scanner,
-/turf/closed/indestructible/alien,
-/area/awaymission/mothership_astrum/halls)
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg/grown,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/deck4)
 "GJ" = (
 /obj/item/flashlight/flare/torch{
 	pixel_x = 7;
@@ -2119,6 +2251,11 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck1)
+"GX" = (
+/obj/machinery/quantumpad,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plating/beach/sand,
+/area/awaymission/mothership_astrum/deck5)
 "GY" = (
 /mob/living/simple_animal/hostile/abductor/melee,
 /turf/open/floor/plating/abductor,
@@ -2268,6 +2405,16 @@
 	icon_state = "ironsand2"
 	},
 /area/awaymission/mothership_astrum/deck1)
+"IO" = (
+/mob/living/simple_animal/hostile/pirate/ranged{
+	faction = list("Abductor")
+	},
+/mob/living/simple_animal/hostile/pirate/ranged{
+	faction = list("Abductor");
+	health = 200
+	},
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck5)
 "IT" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood,
@@ -2318,14 +2465,19 @@
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "JB" = (
-/obj/structure/table,
-/obj/item/ammo_casing/shotgun/pulseslug,
-/turf/open/floor/wood,
-/area/awaymission/mothership_astrum/deck2)
+/obj/structure/alien/weeds,
+/obj/item/organ/eyes/night_vision/cyber,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/deck4)
 "JO" = (
 /obj/structure/table/abductor,
 /obj/item/circular_saw/alien,
 /turf/open/floor/plating/abductor,
+/area/awaymission/mothership_astrum/halls)
+"JQ" = (
+/obj/structure/alien/weeds,
+/obj/item/crowbar/freeman,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "JR" = (
 /obj/structure/table,
@@ -2343,9 +2495,14 @@
 /turf/closed/wall/mineral/sandstone,
 /area/awaymission/mothership_astrum/deck5)
 "Kl" = (
-/obj/structure/table/abductor,
-/obj/item/autosurgeon/organ/syndicate/thermal_eyes,
+/obj/structure/table/optable/abductor,
+/obj/effect/mob_spawn/human/corpse/damaged/legioninfested,
 /turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"Km" = (
+/obj/structure/bed/abductor,
+/obj/effect/spawner/lootdrop/costume,
+/turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Ku" = (
 /obj/effect/decal/cleanable/blood,
@@ -2461,6 +2618,15 @@
 /obj/structure/window/spawner,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
+"Lo" = (
+/obj/structure/alien/weeds,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"Lt" = (
+/obj/item/organ/heart/cybernetic/tier3,
+/turf/closed/indestructible/alien,
+/area/awaymission/mothership_astrum/halls)
 "LE" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
@@ -2474,17 +2640,31 @@
 /obj/structure/window/spawner,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
-"LV" = (
-/obj/structure/table/abductor,
-/obj/machinery/button/door{
-	id = "finallock";
-	name = "Bridge Lockdown Control"
+"LT" = (
+/obj/structure/alien/weeds,
+/mob/living/simple_animal/hostile/alien/drone{
+	faction = list("Abductor");
+	plants_off = 1
 	},
-/turf/open/floor/plating/abductor2,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"LV" = (
+/obj/structure/table/optable/abductor,
+/obj/effect/mob_spawn/human/corpse/syndicatecommando,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Ma" = (
 /mob/living/simple_animal/hostile/abductor,
 /turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
+"Md" = (
+/obj/machinery/button/door{
+	id = "xenolock";
+	name = "Xeno Studies Lockdown Control"
+	},
+/obj/structure/alien/weeds,
+/obj/structure/table/abductor,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Mi" = (
 /obj/effect/decal/cleanable/xenoblood/xgibs/larva,
@@ -2498,6 +2678,11 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
+"Mu" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "Mw" = (
 /obj/machinery/porta_turret/syndicate/pod{
 	faction = list("Abductor");
@@ -2608,6 +2793,18 @@
 	},
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
+"No" = (
+/obj/structure/window,
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/obj/structure/table/abductor,
+/obj/item/organ/cyberimp/mouth/breathing_tube,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "Nq" = (
 /obj/structure/table/abductor,
 /obj/structure/window{
@@ -2643,10 +2840,10 @@
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
 "NE" = (
-/obj/effect/spawner/lootdrop/astrum,
-/obj/structure/table/abductor,
-/turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/deck4)
 "NG" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -2673,6 +2870,14 @@
 /obj/machinery/holopad,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck2)
+"NN" = (
+/obj/structure/alien/weeds,
+/turf/closed/indestructible/alien,
+/area/awaymission/mothership_astrum/halls)
+"NQ" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "NT" = (
 /obj/structure/table/abductor,
 /obj/structure/window{
@@ -2684,7 +2889,7 @@
 /obj/structure/window{
 	dir = 8
 	},
-/obj/item/ammo_box/c9mm,
+/obj/item/ammo_box/advanced/b9mm/hp,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Om" = (
@@ -2763,6 +2968,11 @@
 /obj/item/ammo_box/magazine/multi_sprite/mk58,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck3)
+"OG" = (
+/obj/structure/table/abductor,
+/obj/item/organ/cyberimp/arm/surgery,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "OS" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/machinery/scanner_gate/anti_nanite,
@@ -2824,6 +3034,13 @@
 	},
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
+"Py" = (
+/obj/structure/alien/weeds,
+/obj/effect/mob_spawn/human/abductor,
+/obj/effect/spawner/lootdrop/astrum/sciloot,
+/obj/effect/spawner/lootdrop/astrum/sciloot,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
 "PH" = (
 /obj/machinery/porta_turret/syndicate/pod{
 	faction = list("Abductor");
@@ -2832,6 +3049,14 @@
 	stun_projectile = /obj/projectile/bullet/a357
 	},
 /turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
+"PI" = (
+/mob/living/simple_animal/hostile/alien/drone{
+	faction = list("Abductor");
+	plants_off = 1
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "PP" = (
 /obj/machinery/light{
@@ -2891,6 +3116,13 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/mothership_astrum/deck2)
+"Qg" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/alien/egg/burst,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "Qj" = (
 /obj/structure/chair,
 /turf/open/floor/plating/beach/sand,
@@ -2929,13 +3161,8 @@
 /turf/open/floor/iron,
 /area/awaymission/mothership_astrum/deck2)
 "Qy" = (
-/obj/structure/table,
-/obj/item/ammo_casing/shotgun/improvised,
-/obj/item/ammo_casing/shotgun/improvised,
-/obj/item/ammo_casing/shotgun/improvised,
-/obj/item/ammo_casing/shotgun/improvised,
-/turf/open/floor/wood,
-/area/awaymission/mothership_astrum/deck2)
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/deck4)
 "Qz" = (
 /obj/structure/table/abductor,
 /obj/structure/window{
@@ -2956,7 +3183,7 @@
 /area/awaymission/mothership_astrum/halls)
 "QI" = (
 /obj/structure/table/wood,
-/obj/item/melee/tomahawk,
+/obj/item/melee/transforming/energy/sword/pirate,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
 "QM" = (
@@ -2992,6 +3219,18 @@
 	},
 /obj/effect/decal/cleanable/blood/bubblegum,
 /turf/open/floor/plating/abductor,
+/area/awaymission/mothership_astrum/halls)
+"Rl" = (
+/obj/structure/window,
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/obj/structure/table/abductor,
+/obj/item/organ/cyberimp/arm/hacker,
+/turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Rm" = (
 /obj/structure/chair/sofa/right{
@@ -3055,10 +3294,12 @@
 /turf/open/floor/iron,
 /area/awaymission/mothership_astrum/deck2)
 "Se" = (
-/obj/structure/alien/weeds,
-/obj/effect/spawner/lootdrop/astrum,
+/mob/living/simple_animal/hostile/alien/drone{
+	faction = list("Abductor");
+	plants_off = 1
+	},
 /turf/open/floor/plating/abductor2,
-/area/awaymission/mothership_astrum/deck4)
+/area/awaymission/mothership_astrum/halls)
 "Sf" = (
 /obj/effect/overlay/palmtree_l{
 	pixel_y = 25
@@ -3232,6 +3473,11 @@
 	},
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
+"TY" = (
+/obj/structure/alien/egg/burst,
+/obj/structure/alien/weeds,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "TZ" = (
 /obj/structure/table/abductor,
 /obj/structure/window{
@@ -3271,6 +3517,10 @@
 /obj/structure/table/abductor,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
+"Un" = (
+/obj/structure/alien/weeds,
+/turf/open/floor/plating/abductor2,
+/area/awaymission/mothership_astrum/halls)
 "Ur" = (
 /obj/item/storage/box/alienhandcuffs,
 /obj/structure/closet/abductor,
@@ -3300,6 +3550,11 @@
 /obj/item/ammo_casing/shotgun,
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
+"UE" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "UF" = (
 /obj/structure/table/optable/abductor,
 /turf/open/floor/plating/abductor2,
@@ -3313,6 +3568,12 @@
 /obj/effect/mob_spawn/human/corpse/charredskeleton,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
+"UI" = (
+/obj/structure/table/wood,
+/obj/item/candle/infinite,
+/obj/item/organ/cyberimp/chest/reviver,
+/turf/open/floor/plastic,
+/area/awaymission/mothership_astrum/deck2)
 "UL" = (
 /obj/structure/window,
 /obj/structure/window{
@@ -3381,6 +3642,11 @@
 	dir = 8
 	},
 /obj/effect/spawner/lootdrop/astrum/mid,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
+"Vk" = (
+/obj/item/paper/fluff/awaymissions/astrum4,
+/obj/structure/table/abductor,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Vx" = (
@@ -3505,6 +3771,7 @@
 "WT" = (
 /obj/structure/table/abductor,
 /obj/structure/table/abductor,
+/obj/item/autosurgeon/organ/syndicate/thermal_eyes,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "WW" = (
@@ -3570,6 +3837,9 @@
 /obj/machinery/vending/coffee,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck1)
+"XO" = (
+/turf/open/space/basic,
+/area/awaymission/mothership_astrum/halls)
 "XR" = (
 /obj/structure/swarmer/trap,
 /turf/open/floor/mineral/abductor,
@@ -18267,7 +18537,7 @@ Vh
 Vh
 Vh
 Vh
-aV
+eF
 mv
 Le
 TJ
@@ -19060,8 +19330,8 @@ bV
 ee
 ee
 Yh
-Ql
-VJ
+Km
+qd
 Zp
 Zp
 fZ
@@ -19302,7 +19572,7 @@ Nw
 ES
 Oy
 PP
-Qy
+FD
 QX
 ED
 AZ
@@ -19816,7 +20086,7 @@ NA
 ES
 Pl
 Jm
-JB
+FD
 Rm
 ED
 RT
@@ -22113,7 +22383,7 @@ bV
 bV
 ee
 xU
-zQ
+UI
 Be
 xU
 xU
@@ -22341,11 +22611,11 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ee
 Tu
 Tu
 Tu
@@ -22597,13 +22867,13 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ee
+ee
+ee
 Tu
 Tu
 Tu
@@ -22853,15 +23123,15 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+SV
+ee
+ee
+bR
+bV
+bV
+ee
+ee
+SV
 Tu
 Tu
 Tu
@@ -23110,15 +23380,15 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+SV
+ee
+WW
+bV
+bE
+bV
+bV
+ee
+SV
 Tu
 Tu
 Tu
@@ -23367,15 +23637,15 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+SV
+ee
+vR
+bV
+Vh
+bV
+bV
+ee
+SV
 Tu
 Tu
 Tu
@@ -23624,15 +23894,15 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+SV
+ee
+OG
+bV
+bV
+bV
+bV
+ee
+SV
 Tu
 Tu
 Tu
@@ -23658,7 +23928,7 @@ Vh
 Vh
 Vh
 ee
-aV
+Vh
 aV
 On
 Vh
@@ -23689,7 +23959,7 @@ Zp
 yd
 Zp
 Zp
-Zp
+rD
 Zp
 Zp
 Vh
@@ -23884,9 +24154,9 @@ ee
 ee
 ee
 ee
-ee
-ee
-ee
+bV
+bV
+bV
 ee
 ee
 ee
@@ -23917,7 +24187,7 @@ bV
 ee
 bV
 bV
-zt
+Fx
 bV
 bV
 bV
@@ -24142,7 +24412,7 @@ ee
 ee
 ee
 ee
-ee
+je
 ee
 ee
 ee
@@ -26010,7 +26280,7 @@ bV
 Vh
 bV
 bV
-bV
+NQ
 bV
 bV
 Uy
@@ -26968,8 +27238,8 @@ Vc
 Vc
 Vc
 Vc
-nL
-nL
+Vc
+Vc
 nI
 nI
 oc
@@ -27225,7 +27495,7 @@ Vc
 Vc
 Vc
 Vc
-nL
+Vc
 Vc
 Vc
 nI
@@ -27482,7 +27752,7 @@ Vc
 Vc
 Vc
 Vc
-nL
+Vc
 Vc
 Vc
 Vc
@@ -27699,7 +27969,7 @@ ee
 ee
 ee
 Zp
-tm
+Zp
 Zp
 ee
 ee
@@ -27739,7 +28009,7 @@ Vc
 Vc
 Vc
 Vc
-nL
+Vc
 Vc
 lY
 Vc
@@ -27996,7 +28266,7 @@ Vc
 Vc
 Vc
 Vc
-nL
+Vc
 nL
 Vc
 Vc
@@ -28511,7 +28781,7 @@ Vc
 Vc
 mq
 Vc
-nL
+Vc
 nL
 mW
 Vc
@@ -28768,8 +29038,8 @@ Vc
 Vc
 Vc
 Vc
-nL
-nL
+Vc
+Vc
 mm
 Vc
 Vc
@@ -29026,7 +29296,7 @@ Vc
 Vc
 Vc
 Vc
-nL
+Vc
 Vc
 Vc
 Vc
@@ -29223,7 +29493,7 @@ Zp
 Zp
 Zp
 Zp
-SY
+as
 Ud
 Zp
 Yc
@@ -29283,7 +29553,7 @@ Vc
 Vc
 Vc
 mW
-nL
+Vc
 Vc
 Vc
 Vc
@@ -30379,7 +30649,7 @@ bV
 bV
 bV
 bV
-zt
+Cs
 ee
 bV
 bV
@@ -31025,7 +31295,7 @@ Zp
 SY
 Wf
 Zp
-SY
+hh
 RJ
 Zp
 ee
@@ -31297,9 +31567,9 @@ ee
 ee
 Zp
 Vh
+nE
 aV
-aV
-Ci
+tm
 Vh
 Zp
 ee
@@ -31589,21 +31859,21 @@ bV
 bV
 bV
 AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
-AZ
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
 ee
 ee
 ee
@@ -31847,21 +32117,21 @@ bV
 bV
 bV
 bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
 ee
 bV
 bV
@@ -32097,29 +32367,29 @@ ee
 ee
 bV
 bV
-GZ
+bV
 bV
 Vh
 Vh
 Vh
 Vh
 Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-AZ
+ee
+ee
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+ee
+ee
 Vh
 Vh
 Vh
@@ -32327,7 +32597,7 @@ Zp
 Vh
 bw
 mv
-Ci
+tm
 Vh
 Zp
 Zp
@@ -32361,22 +32631,22 @@ Vh
 Vh
 Vh
 Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-Vh
-AZ
+ee
+ee
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+ee
+ee
 Vh
 Vh
 Vh
@@ -32618,21 +32888,21 @@ bV
 bV
 bV
 bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
-bV
+ee
+ee
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+ee
 ee
 bV
 bV
@@ -32877,18 +33147,18 @@ ee
 ee
 ee
 ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 ee
 ee
 ee
@@ -33134,18 +33404,18 @@ ee
 ee
 ee
 ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
-ee
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
+Tu
 ee
 ee
 ee
@@ -34398,7 +34668,7 @@ ee
 ee
 bV
 bV
-kB
+bV
 ee
 ee
 ee
@@ -35413,7 +35683,7 @@ ee
 ee
 ee
 bV
-ZW
+Cn
 bV
 bV
 Vh
@@ -35451,14 +35721,14 @@ ee
 ee
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
 Tu
 Tu
 ee
@@ -35707,16 +35977,16 @@ ee
 ee
 ee
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
 Tu
 ee
 ee
@@ -35963,17 +36233,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ud
+Mu
+ud
+bV
+ee
+ee
+ee
 Tu
 ee
 ee
@@ -36193,7 +36463,7 @@ ee
 ee
 db
 db
-db
+GC
 hk
 gB
 eN
@@ -36220,17 +36490,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ud
+LT
+ud
+od
+bV
+bV
+ee
+ee
 Tu
 ee
 ee
@@ -36439,7 +36709,7 @@ Tu
 Tu
 ee
 ee
-zt
+PX
 bV
 Vh
 Vh
@@ -36449,7 +36719,7 @@ ee
 ee
 db
 dC
-Se
+db
 db
 hk
 gw
@@ -36477,17 +36747,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ud
+ud
+bV
+ud
+Mu
+zt
+kO
+ee
+ee
 Tu
 ee
 ee
@@ -36696,7 +36966,7 @@ Tu
 Tu
 ee
 ee
-zt
+wN
 bV
 Vh
 Vh
@@ -36705,7 +36975,7 @@ bV
 ee
 db
 db
-dj
+GB
 db
 dj
 fz
@@ -36732,19 +37002,19 @@ Vh
 Vh
 bV
 bV
+bV
+jS
+ud
+od
+Mu
+ud
+ud
+ud
+ud
+Ez
+jH
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 ee
 ee
@@ -36947,10 +37217,10 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
 ee
 ee
 bV
@@ -36983,25 +37253,25 @@ hz
 dj
 dj
 ee
-bV
+Cs
 bV
 Vh
 Vh
 bV
 bV
+bV
+jS
+ud
+bV
+bV
+Mu
+od
+ud
+ud
+pl
+sZ
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 ee
 ee
@@ -37203,11 +37473,11 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ee
 ee
 ee
 bV
@@ -37240,7 +37510,7 @@ db
 db
 hk
 ee
-bV
+rW
 bV
 Vh
 Vh
@@ -37248,17 +37518,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+bV
+bV
+ud
+od
+ud
+bV
+od
+ee
+ee
 Tu
 ee
 ee
@@ -37460,13 +37730,13 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 ee
 ee
+ee
+VJ
+kZ
+qd
+Zp
 bV
 bV
 Vh
@@ -37497,7 +37767,7 @@ ep
 fz
 fz
 ee
-bV
+Vk
 bV
 Vh
 Vh
@@ -37505,17 +37775,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+bV
+bV
+bV
+bV
+bV
+bV
+ee
+ee
 Tu
 ee
 ee
@@ -37589,7 +37859,7 @@ Vh
 bV
 bV
 Nn
-UL
+Rl
 Vh
 NT
 UL
@@ -37717,13 +37987,13 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 ee
 ee
+Zp
+Zp
+Vh
+Zp
+Zp
 bV
 bV
 Vh
@@ -37739,7 +38009,7 @@ ep
 fz
 db
 dj
-db
+JB
 dj
 gU
 db
@@ -37760,19 +38030,19 @@ Vh
 Vh
 bV
 bV
+Lt
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+bV
+bV
+ud
+bV
+ee
+ee
+ee
 Tu
 ee
 ee
@@ -37974,13 +38244,13 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 ee
 ee
+Zp
+Vh
+Vh
+Vh
+Zp
 bV
 bV
 Vh
@@ -38020,16 +38290,16 @@ bV
 ee
 ee
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+BW
+bV
+ee
+ee
+ee
+ee
 Tu
 ee
 ee
@@ -38106,7 +38376,7 @@ NJ
 Sj
 Vh
 SU
-UL
+No
 bV
 bV
 Vh
@@ -38231,13 +38501,13 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 ee
 ee
+Zp
+Zp
+Vh
+Zp
+Zp
 bV
 ad
 Vh
@@ -38268,24 +38538,24 @@ dj
 dj
 dj
 ee
-Cs
-bV
-Vh
-Vh
-bV
-bV
+ee
+ee
+Cv
+Cv
+ee
+ee
 ee
 ee
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ud
+ud
+ee
+ee
+ee
 Tu
 Tu
 ee
@@ -38488,13 +38758,13 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 ee
 ee
+ee
+VJ
+As
+DD
+Zp
 bV
 bV
 Vh
@@ -38525,24 +38795,24 @@ db
 dj
 db
 ee
-NE
+ee
 bV
 Vh
 Vh
 bV
-bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ee
+ee
+od
+ud
+ee
+ee
+ee
 Tu
 Tu
 ee
@@ -38745,11 +39015,11 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+ee
 ee
 ee
 bV
@@ -38782,24 +39052,24 @@ db
 dj
 dj
 ee
-hh
+zt
 bV
 Vh
 Vh
 bV
 ad
+AZ
+TY
+JQ
+bV
+bV
+bV
+bV
+bV
+bV
+Qg
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 Tu
 ee
@@ -39003,10 +39273,10 @@ Tu
 Tu
 Tu
 Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
 ee
 ee
 Vh
@@ -39045,18 +39315,18 @@ Vh
 Vh
 bV
 bV
+AZ
+Md
+od
+ud
+ud
+pz
+bV
+bV
+bV
+FV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 Tu
 ee
@@ -39296,24 +39566,24 @@ dj
 dC
 db
 ee
-bV
+zt
 bV
 Vh
 Vh
 bV
 bV
+AZ
+ud
+ud
+ud
+ud
+bV
+bV
+ud
+od
+cU
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 Tu
 ee
@@ -39553,24 +39823,24 @@ dj
 db
 db
 ee
-bV
+ee
 bV
 Vh
 Vh
 bV
+ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
 bV
+ud
+NN
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 Tu
 ee
@@ -39784,7 +40054,7 @@ bV
 bV
 Vh
 Vh
-kB
+bV
 bV
 ee
 dW
@@ -39808,26 +40078,26 @@ gU
 dj
 db
 db
-db
+Qy
+ee
+ee
+ee
+Cv
+Cv
+ee
+ee
+ee
+ee
+Tu
+Tu
+ee
+ee
 ee
 bV
 bV
-Vh
-Vh
-bV
-bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
 Tu
 Tu
 ee
@@ -39887,7 +40157,7 @@ Vh
 Vh
 Vh
 Vb
-LV
+VJ
 Vh
 Vh
 Vh
@@ -40064,7 +40334,7 @@ dj
 fz
 db
 db
-db
+NE
 db
 ee
 bV
@@ -40076,16 +40346,16 @@ bV
 ee
 ee
 Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+bV
+bV
+ee
+ee
+ee
+ee
 Tu
 ee
 ee
@@ -40332,17 +40602,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+ee
+pz
+bV
+bV
+bV
+ee
+ee
+ee
 Tu
 ee
 ee
@@ -40589,17 +40859,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+bV
+bV
+bV
+bV
+bV
+ud
+ee
+ee
 Tu
 ee
 ee
@@ -40846,17 +41116,17 @@ bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+bV
+bV
+bV
+zt
+zt
+bV
+zw
+ee
+ee
 Tu
 ee
 ee
@@ -41101,19 +41371,19 @@ Vh
 Vh
 bV
 bV
+UE
+Vh
+ud
+ud
+bV
+bV
+bV
+ud
+bV
+pz
+bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 ee
 ee
@@ -41139,7 +41409,7 @@ OB
 En
 En
 EG
-En
+Mr
 En
 En
 sC
@@ -41336,7 +41606,7 @@ hk
 ep
 db
 db
-db
+GC
 db
 db
 iF
@@ -41353,24 +41623,24 @@ db
 db
 ee
 bV
+ud
+Un
+Un
 bV
+ud
+ud
 Vh
-Vh
+bV
+bV
+bV
+bV
+BW
+od
+bV
 bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
 Tu
 ee
 ee
@@ -41395,9 +41665,9 @@ Kd
 nf
 En
 En
-En
-En
-En
+Mr
+GX
+Mr
 tz
 sC
 tw
@@ -41609,25 +41879,25 @@ db
 db
 ee
 ee
-bV
-bV
-eE
-Vh
-bV
+pz
+ud
+Un
+Un
+ud
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+Lo
+bV
+pz
+bV
+bV
+od
+BQ
+ee
+ee
 Tu
 ee
 ee
@@ -41653,7 +41923,7 @@ En
 En
 En
 En
-En
+Mr
 En
 En
 sC
@@ -41866,25 +42136,25 @@ db
 ee
 ee
 bV
-bV
-bV
-Vh
-Vh
-bV
+ud
+ud
+Py
+Un
+PI
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
+ee
+ee
+bV
+bV
+bV
+bV
+pl
+ud
+ee
+ee
 Tu
 ee
 ee
@@ -42123,25 +42393,25 @@ ee
 ee
 bV
 bV
+ud
+ud
+iY
+Un
+ud
+bV
+ee
+ee
+ee
+ee
+ee
+ee
 bV
 bV
-Vh
-Vh
 bV
 bV
 ee
 ee
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
-Tu
+ee
 Tu
 ee
 ee
@@ -42163,7 +42433,7 @@ WG
 GA
 GA
 GA
-uH
+nJ
 En
 En
 En
@@ -42374,7 +42644,6 @@ Cs
 ee
 zt
 ST
-CL
 bV
 bV
 bV
@@ -42382,23 +42651,24 @@ bV
 bV
 bV
 bV
-bV
-bV
+ud
+ud
+ud
 bV
 ee
 ee
 ee
 Tu
-Tu
-Tu
-Tu
-Tu
 ee
 ee
 ee
 ee
 ee
-Tu
+ee
+ee
+ee
+ee
+ee
 Tu
 ee
 ee
@@ -42418,7 +42688,7 @@ En
 Kd
 Xs
 GA
-DE
+IO
 GA
 QI
 En
@@ -42639,16 +42909,14 @@ Vh
 Vh
 Vh
 bV
+ud
 bV
 bV
-bV
 ee
 ee
 ee
 Tu
 Tu
-Tu
-Tu
 ee
 ee
 ee
@@ -42656,6 +42924,8 @@ ee
 ee
 ee
 ee
+ee
+XO
 Tu
 ee
 ee
@@ -42893,7 +43163,7 @@ Vh
 Vh
 Vh
 Vh
-Vh
+Se
 Vh
 bV
 bV
@@ -43191,7 +43461,7 @@ Kd
 GA
 KM
 uH
-uH
+wM
 En
 En
 En
@@ -43947,7 +44217,7 @@ Vh
 Vh
 Vh
 Vh
-eE
+Vh
 bV
 bV
 AZ
@@ -44163,7 +44433,7 @@ ee
 bV
 Vh
 bV
-nE
+bV
 bV
 bV
 bV
@@ -44428,9 +44698,9 @@ je
 ee
 ee
 ee
-ee
-ee
-kZ
+AZ
+AZ
+AZ
 ee
 ee
 ee
@@ -44683,9 +44953,9 @@ ee
 bV
 bV
 bV
-ee
-ee
-ee
+bV
+bV
+bV
 bV
 bV
 bV
@@ -44720,7 +44990,7 @@ bV
 Vh
 Vh
 bV
-kB
+bV
 AZ
 VG
 VG
@@ -44941,8 +45211,8 @@ bV
 bE
 bV
 bV
-ee
-WW
+bV
+bV
 bV
 bE
 bV
@@ -45198,10 +45468,10 @@ bV
 Vh
 bV
 bV
-ee
-ko
 bV
-Vh
+bV
+bV
+bV
 bV
 iQ
 ee
@@ -45455,9 +45725,9 @@ bV
 bV
 bV
 bV
-ee
-zt
+Kl
 bV
+LV
 bV
 bV
 zt
@@ -45708,12 +45978,12 @@ ee
 ee
 ee
 ee
-bV
+zt
 bR
-bV
-ee
-ee
-ee
+zt
+zt
+zt
+zt
 zt
 iA
 zt
@@ -54066,7 +54336,7 @@ bV
 bV
 bV
 bV
-Kl
+zt
 ee
 ee
 Tu
@@ -54323,7 +54593,7 @@ bV
 bV
 bV
 bV
-Cn
+zt
 ee
 ee
 Tu
@@ -54580,7 +54850,7 @@ bV
 bV
 bV
 bV
-qd
+zt
 ee
 ee
 Tu
@@ -54837,7 +55107,7 @@ bV
 bV
 bV
 bV
-as
+zt
 ee
 ee
 Tu
@@ -55094,7 +55364,7 @@ bV
 bV
 bV
 bV
-GB
+zt
 ee
 ee
 Tu
@@ -55351,7 +55621,7 @@ bV
 bV
 bV
 bV
-iQ
+zt
 ee
 ee
 Tu
@@ -55608,7 +55878,7 @@ bV
 bV
 bV
 bV
-wN
+Ux
 ee
 ee
 Tu
@@ -55865,7 +56135,7 @@ bV
 bV
 bV
 bV
-GC
+Ux
 ee
 ee
 Tu
