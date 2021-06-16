@@ -1111,10 +1111,10 @@
 	//SKYRAT EDIT END
 	update_freelook_sight()
 	sleep(4)
-	density = FALSE
+	set_density(FALSE)
 	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
 	if(multi_tile)
-		filler.density = FALSE
+		filler.set_density(FALSE)
 	//SKYRAT EDIT END
 	flags_1 &= ~PREVENT_CLICK_UNDER_1
 	air_update_turf(TRUE, FALSE)
@@ -1161,7 +1161,7 @@
 	update_icon(ALL, AIRLOCK_CLOSING, 1)
 	layer = CLOSED_DOOR_LAYER
 	if(air_tight)
-		density = TRUE
+		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
 		if(multi_tile)
@@ -1169,7 +1169,7 @@
 		air_update_turf(TRUE, TRUE)
 	sleep(1)
 	if(!air_tight)
-		density = TRUE
+		set_density(TRUE)
 		flags_1 |= PREVENT_CLICK_UNDER_1
 		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
 		if(multi_tile)
