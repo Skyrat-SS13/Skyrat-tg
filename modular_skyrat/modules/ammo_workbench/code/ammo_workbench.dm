@@ -403,9 +403,9 @@
 		return FALSE
 	if(!is_insertion_ready(user))
 		return FALSE
-	if(!user.transferItemToLoc(O, src))
-		return FALSE
 	if(istype(O, /obj/item/ammo_box/magazine))
+		if(!user.transferItemToLoc(O, src))
+			return FALSE
 		loaded_magazine = O
 		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s reciprocal.</span>")
 		flick("h_lathe_load", src)
@@ -413,6 +413,8 @@
 		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
 		return TRUE
 	if(istype(O, /obj/item/disk/ammo_workbench))
+		if(!user.transferItemToLoc(O, src))
+			return FALSE
 		loaded_datadisk = O
 		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s floppydisk port.</span>")
 		flick("h_lathe_load", src)
