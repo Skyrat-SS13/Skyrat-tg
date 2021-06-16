@@ -283,6 +283,8 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/AltClick(mob/user)
 	. = ..()
+	if(possible_types.len <= 1)
+		return
 	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
 	if(!new_type)
 		new_type = AMMO_TYPE_LETHAL

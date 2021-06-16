@@ -12,6 +12,10 @@
 	max_integrity = 2000
 	density = TRUE
 
+/obj/structure/gun_vendor/wrench_act(mob/living/user, obj/item/item)
+	default_unfasten_wrench(user, item, 120)
+	return TRUE
+
 /obj/machinery/gun_vendor/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/armament_token))
 		RedeemToken(I, user)
