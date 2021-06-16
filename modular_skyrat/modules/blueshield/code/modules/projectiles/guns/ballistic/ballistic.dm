@@ -70,8 +70,8 @@
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
 
