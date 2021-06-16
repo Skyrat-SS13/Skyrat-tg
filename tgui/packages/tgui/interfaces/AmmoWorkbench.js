@@ -80,8 +80,9 @@ export const AmmunitionsTab = (props, context) => {
           Time Per Round: {time} seconds
         </Box>
         <Button.Checkbox
-          onClick={() => act('turboBoost')}
-          checked={turboBoost}>
+          textAlign="right"
+          checked={turboBoost}
+          onClick={() => act('turboBoost')}>
           Turbo Boost
         </Button.Checkbox>
       </Section>

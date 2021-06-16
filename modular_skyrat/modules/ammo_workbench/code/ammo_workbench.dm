@@ -175,7 +175,7 @@
 		if("EjectDisk")
 			ejectDisk()
 
-		if("TurboBoost")
+		if("turboBoost")
 			toggleTurboBoost()
 
 /obj/machinery/ammo_workbench/proc/toggleTurboBoost()
@@ -345,7 +345,7 @@
 	var/time_efficiency = 20
 	for(var/obj/item/stock_parts/micro_laser/new_laser in component_parts)
 		time_efficiency -= new_laser.rating * 2
-	time_per_round = clamp(time_efficiency, 0.1, 2)
+	time_per_round = clamp(time_efficiency, 1, 20)
 
 	var/efficiency = 1.8
 	for(var/obj/item/stock_parts/manipulator/new_manipulator in component_parts)
