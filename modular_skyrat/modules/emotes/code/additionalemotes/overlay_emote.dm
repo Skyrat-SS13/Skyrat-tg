@@ -7,11 +7,12 @@
 
 /datum/emote/living/sweatdrop/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
-	overlay.pixel_x = 10
-	overlay.pixel_y = 10
-	flick_overlay_static(overlay, user, 50)
-	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 25, TRUE)
+	if(iscarbon(user) || issilicon(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "sweatdrop", ABOVE_MOB_LAYER)
+		overlay.pixel_x = 10
+		overlay.pixel_y = 10
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/sweatdrop.ogg', 25, TRUE)
 
 /datum/emote/living/exclaim
 	key = "exclaim"
@@ -19,11 +20,12 @@
 
 /datum/emote/living/exclaim/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
-	overlay.pixel_x = 10
-	overlay.pixel_y = 28
-	flick_overlay_static(overlay, user, 50)
-	playsound(get_turf(user), 'sound/machines/chime.ogg', 25, TRUE)
+	if(iscarbon(user) || issilicon(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "exclamation", ABOVE_MOB_LAYER)
+		overlay.pixel_x = 10
+		overlay.pixel_y = 28
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'sound/machines/chime.ogg', 25, TRUE)
 
 
 /datum/emote/living/realize
@@ -32,10 +34,11 @@
 
 /datum/emote/living/realize/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "realize", ABOVE_MOB_LAYER)
-	overlay.pixel_y = 15
-	flick_overlay_static(overlay, user, 50)
-	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/realize.ogg', 25, TRUE)
+	if(iscarbon(user) || issilicon(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "realize", ABOVE_MOB_LAYER)
+		overlay.pixel_y = 15
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/realize.ogg', 25, TRUE)
 
 /datum/emote/living/annoyed
 	key = "annoyed"
@@ -43,11 +46,12 @@
 
 /datum/emote/living/annoyed/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
-	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
-	overlay.pixel_x = 10
-	overlay.pixel_y = 10
-	flick_overlay_static(overlay, user, 50)
-	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
+	if(iscarbon(user) || issilicon(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "annoyed", ABOVE_MOB_LAYER)
+		overlay.pixel_x = 10
+		overlay.pixel_y = 10
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/annoyed.ogg', 25, TRUE)
 
 /datum/emote/living/blush
 	key = "blush"
@@ -55,9 +59,10 @@
 
 /datum/emote/living/blush/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
 	. = ..()
-	var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "blush", ABOVE_MOB_LAYER)
-	flick_overlay_static(overlay, user, 50)
-	playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg', 25, TRUE)
+	if(iscarbon(user))
+		var/mutable_appearance/overlay = mutable_appearance(overlay_emote, "blush", ABOVE_MOB_LAYER)
+		flick_overlay_static(overlay, user, 50)
+		playsound(get_turf(user), 'modular_skyrat/modules/emotes/sound/emotes/blush.ogg', 25, TRUE)
 
 /datum/emote/living/glasses
 	key = "glasses"

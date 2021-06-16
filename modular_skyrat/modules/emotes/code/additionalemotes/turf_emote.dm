@@ -28,13 +28,6 @@ var/current_turf
 			if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
 				user.allowed_turfs += "clawprint"
 
-			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
-			if(human_user.dna.species.mutant_bodyparts["taur"])
-				if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
-					user.allowed_turfs -= "clawprint" //e
-					if(!(human_user.wear_suit && istype(human_user.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
-						user.allowed_turfs += "constrict"
-
 		if(isplasmaman(user))
 			if(human_user.w_uniform && istype(human_user.w_uniform, /obj/item/clothing/under/plasmaman))
 				user.allowed_turfs += "holoseat"
@@ -64,11 +57,18 @@ var/current_turf
 		if(istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth))
 			user.allowed_turfs += "dust" //moth's dust ✨
 
-		//tail time
+		//body parts
 		if(istype(user.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail))
 			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard", "Bat (Long)")
 			if(human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] in fluffy_tails)
 				user.allowed_turfs += "tails"
+
+		if(human_user.dna.species.mutant_bodyparts["taur"])
+			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
+			if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
+				user.allowed_turfs -= "clawprint" //e
+				if(!(human_user.wear_suit && istype(human_user.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
+					user.allowed_turfs += "constrict"
 
 		//clothing
 		var/obj/item/shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
@@ -148,6 +148,8 @@ var/current_turf
 				finished_list[index] /= 255
 
 			user.owned_turf.color = finished_list
+			if(isroundstartslime(user) || isslimeperson(user) || isjellyperson(user))
+				user.owned_turf.alpha = 130
 
 			//scaling
 			var/atom/movable/owned_turf = user.owned_turf
