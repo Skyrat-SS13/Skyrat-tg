@@ -36,6 +36,7 @@
 	name = "Lavaland Syndicate Deck Officer"
 	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
+	ears = /obj/item/radio/headset/interdyne/command
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer
 	name = "Syndicate Deck Officer"
@@ -49,6 +50,15 @@
 //ITEMS
 
 /obj/item/radio/headset/interdyne
+	keyslot = new /obj/item/encryptionkey/headset_interdyne
+
+/obj/item/radio/headset/interdyne/command
+	name = "command radio headset"
+	desc = "A headset with a commanding channel."
+	icon_state = "com_headset"
+	command = TRUE
+
+/obj/item/radio/headset/headset_sec/alt/interdyne
 	keyslot = new /obj/item/encryptionkey/headset_interdyne
 
 /obj/item/radio/headset/interdyne/comms
