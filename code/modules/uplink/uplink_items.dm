@@ -1656,12 +1656,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	purchasable_from = UPLINK_NUKE_OPS
 
+/* SKYRAT EDIT REMOVAL
 /datum/uplink_item/implants/stealthimplant
 	name = "Stealth Implant"
 	desc = "This one-of-a-kind implant will make you almost invisible if you play your cards right. \
 			On activation, it will conceal you inside a chameleon cardboard box that is only revealed once someone bumps into it."
 	item = /obj/item/storage/box/syndie_kit/imp_stealth
 	cost = 8
+*/ // SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/implants/storage
 	name = "Storage Implant"
