@@ -406,6 +406,9 @@
 	if(istype(O, /obj/item/ammo_box))
 		if(!user.transferItemToLoc(O, src))
 			return FALSE
+		if(loaded_magazine)
+			to_chat(user, "<span class='notice'>You swap quickly swap [O] for [loaded_magazine].</span>")
+			loaded_magazine.forceMove(drop_location())
 		loaded_magazine = O
 		to_chat(user, "<span class='notice'>You insert [O] to into [src]'s reciprocal.</span>")
 		flick("h_lathe_load", src)
@@ -438,9 +441,6 @@
 		return FALSE
 	if(machine_stat & NOPOWER)
 		to_chat(user, "<span class='warning'>[src] has no power.</span>")
-		return FALSE
-	if(istype(O, /obj/item/ammo_box/magazine) && loaded_magazine)
-		to_chat(user, "<span class='warning'>[src] is already loaded.</span>")
 		return FALSE
 	if(istype(O, /obj/item/disk/ammo_workbench) && loaded_datadisk)
 		to_chat(user, "<span class='warning'>[src] already has a disk inserted.</span>")

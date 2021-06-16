@@ -21,6 +21,7 @@
 	desc = "A .32 rubber bullet casing."
 	caliber = "c32acp"
 	projectile_type = /obj/projectile/bullet/c32/rubber
+	harmful = FALSE
 
 /obj/projectile/bullet/c32/rubber
 	name = ".32 rubber bullet"
@@ -61,6 +62,7 @@
 	desc = "A 10mm Magnum bullet casing. This fires a non-lethal projectile to cause compliance by pain and bruising. Don't aim for the head."
 	caliber = CALIBER_10MM
 	projectile_type = /obj/projectile/bullet/c10mm/rubber
+	harmful = FALSE
 
 /obj/projectile/bullet/c10mm/rubber
 	name = "10mm Magnum rubber ball"
@@ -127,6 +129,7 @@
 	desc = "A 5.56mm rubber bullet casing."
 	caliber = CALIBER_A556
 	projectile_type = /obj/projectile/bullet/a556/rubber
+	harmful = FALSE
 
 /obj/projectile/bullet/a556/rubber
 	name = "5.56mm rubber bullet"
@@ -162,6 +165,7 @@
 	icon_state = "762-casing"
 	caliber = CALIBER_A762
 	projectile_type = /obj/projectile/bullet/a762/rubber
+	harmful = FALSE
 
 /obj/projectile/bullet/a762/rubber
 	name = "7.62mm rubber bullet"
@@ -173,7 +177,7 @@
 	ricochet_decay_damage = 0.7
 	shrapnel_type = null
 	sharpness = NONE
-	embedding = null	
+	embedding = null
 
 //////    7.62    //////
 ////////////////////////
