@@ -182,7 +182,7 @@
 	turbo_boost = !turbo_boost
 
 	if(turbo_boost)
-		time_per_round = 0.1
+		time_per_round = 1
 		creation_efficiency = 3
 	else
 		RefreshParts()
