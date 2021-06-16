@@ -113,8 +113,6 @@
 	var/list/round_types = typesof(ammo_type)
 	for(var/casing as anything in round_types)
 		var/obj/item/ammo_casing/our_casing = casing
-		if(allowed_ammo_types && !(our_casing in allowed_ammo_types))
-			continue
 		if(initial(our_casing.harmful) && !allowed_harmful)
 			continue
 		data["available_rounds"] += list(list(
@@ -201,22 +199,10 @@
 
 	var/list/allowed_types = typecacheof(loaded_magazine.ammo_type)
 
-	var/obj/item/ammo_casing/our_casing = casing_type
-
-	////HREF EXPLOIT CHECKS
-	if(!(our_casing in allowed_types))
+	if(!(casing_type in allowed_types))
 		error_message = "AMMUNITION MISSMATCH"
 		error_type = "bad"
 		return
-	if(allowed_ammo_types && !(our_casing in allowed_ammo_types))
-		error_message = "SYSTEM CORRUPTION DETECTED"
-		error_type = "bad"
-		return
-	if(initial(our_casing.harmful) && !allowed_harmful)
-		error_message = "SYSTEM CORRUPTION DETECTED"
-		error_type = "bad"
-		return
-	//////
 
 	if(!loaded_magazine)
 		error_message = "NO MAGAZINE INSERTED"
@@ -314,14 +300,7 @@
 		disk_error_type = "good"
 		return TRUE
 
-	allowed_ammo_types += loaded_datadisk.loaded_ammo_types
-
 	loaded_datadisks += loaded_datadisk.type
-
-	disk_error = "DISK LOADED SUCCESSFULLY"
-	disk_error_type = "good"
-
-	return TRUE
 
 /obj/machinery/ammo_workbench/proc/ejectDisk()
 	if(loaded_datadisk)
