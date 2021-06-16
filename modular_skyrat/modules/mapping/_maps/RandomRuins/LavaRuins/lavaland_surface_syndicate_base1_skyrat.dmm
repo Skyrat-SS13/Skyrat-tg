@@ -623,6 +623,7 @@
 	dir = 4;
 	id = "interdynecargoout"
 	},
+/obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "gR" = (
@@ -915,6 +916,12 @@
 	dir = 1
 	},
 /area/ruin/unpowered/syndicate_lava_base/cargo)
+"kD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "kL" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /obj/machinery/door/poddoor{
@@ -1298,6 +1305,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/virology)
+"pC" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 5;
+	height = 7;
+	id = "interdyne_cargo_home";
+	name = "Interdyne Cargo Bay";
+	width = 12
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "pE" = (
 /obj/machinery/vending/drugs{
 	name = "\improper SyndiDrug Plus";
@@ -1580,17 +1598,6 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "tI" = (
-/obj/machinery/computer/shuttle{
-	desc = "Occasionally used to call in a resupply shuttle if one is in range.";
-	dir = 8;
-	icon_keyboard = "syndie_key";
-	icon_screen = "syndishuttle";
-	light_color = "#FA8282";
-	name = "syndicate cargo shuttle terminal";
-	possible_destinations = "syndielavaland_cargo";
-	req_access_txt = "150";
-	shuttleId = "syndie_cargo"
-	},
 /obj/machinery/button/door{
 	id = "interdynecargowest";
 	pixel_x = 32;
@@ -1600,6 +1607,9 @@
 	id = "interdynecargoeast";
 	pixel_x = 32;
 	pixel_y = -8
+	},
+/obj/machinery/computer/shuttle/caravan/interdyne_cargo{
+	dir = 8
 	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
@@ -1923,6 +1933,12 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/bar)
+"xL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/virology)
 "xM" = (
 /obj/structure/chair/office/light{
 	dir = 1
@@ -1988,6 +2004,7 @@
 	dir = 8;
 	id = "interdynecargoin"
 	},
+/obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "yA" = (
@@ -2056,7 +2073,9 @@
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "zt" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/unpowered/syndicate_lava_base/virology)
 "zu" = (
@@ -3863,6 +3882,12 @@
 "Tx" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/unpowered/syndicate_lava_base/bar)
+"TJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "TV" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 4
@@ -6457,7 +6482,7 @@ ab
 ab
 ab
 ab
-ab
+pC
 ab
 ab
 ab
@@ -6700,7 +6725,7 @@ ab
 ab
 ab
 ab
-Sy
+ab
 rq
 Xl
 is
@@ -6759,7 +6784,7 @@ ab
 ab
 ab
 ab
-wn
+ab
 zt
 bu
 PC
@@ -6818,8 +6843,8 @@ ab
 ab
 ab
 ab
-Sy
-rq
+ab
+xL
 rq
 rq
 rq
@@ -6878,7 +6903,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 Wr
 Na
 ZX
@@ -6937,7 +6962,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 oe
 pI
 FO
@@ -6996,7 +7021,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 ZX
 ZX
 ZX
@@ -7055,7 +7080,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 cy
 pM
 Pk
@@ -7113,8 +7138,8 @@ ab
 ab
 ab
 ab
-ab
-ZX
+Sy
+kD
 RP
 Vt
 Vt
@@ -7172,8 +7197,8 @@ ab
 ab
 ab
 ab
-ab
-ZX
+wn
+TJ
 Sk
 pW
 Wd
@@ -7231,7 +7256,7 @@ ab
 ab
 ab
 ab
-ab
+Sy
 ZX
 ZX
 ZX
