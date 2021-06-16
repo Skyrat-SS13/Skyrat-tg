@@ -204,6 +204,13 @@
 		error_type = "bad"
 		return
 
+	var/obj/item/ammo_casing/our_casing = casing_type
+
+	if(initial(our_casing.harmful) && !allowed_harmful)
+		error_message = "SYSTEM CORRUPTION DETECTED"
+		error_type = "bad"
+		return
+
 	if(!loaded_magazine)
 		error_message = "NO MAGAZINE INSERTED"
 		error_type = ""
