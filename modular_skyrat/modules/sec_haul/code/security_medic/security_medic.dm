@@ -25,6 +25,10 @@
 
 	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
 
+/datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	to_chat(M, "<span class='redtext'>As the Security Medic, you are comparable in medical knowledge to a Paramedic, not a one man surgical bay. \
+	your main duty is healing on the field or in combat situations. Leave revivals and chemistry work to trained professionals.")
 
 /datum/outfit/job/security_medic
 	name = "Security Medic"
