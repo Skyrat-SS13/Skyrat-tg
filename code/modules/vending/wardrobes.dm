@@ -169,7 +169,8 @@
 		/obj/item/clothing/gloves/fingerless = 3,
 		/obj/item/clothing/head/soft = 3,
 		/obj/item/radio/headset/headset_cargo = 3
-	)
+	contraband = list(/obj/item/clothing/under/suit/white/scarface = 2, //SKYRAT EDIT
+					/obj/item/clothing/under/misc/evilcargo = 2)
 	premium = list(
 		/obj/item/clothing/under/rank/cargo/miner = 3,
 		/obj/item/clothing/head/mailman = 1,
@@ -250,6 +251,9 @@
 					/obj/item/clothing/under/rank/civilian/hydroponics/skirt = 3,
 					/obj/item/clothing/mask/bandana = 3,
 					/obj/item/clothing/accessory/armband/hydro = 3)
+	contraband = list(/obj/item/clothing/under/suit/white/scarface = 2, //SKYRAT EDIT
+					/obj/item/clothing/under/costume/loincloth/sensor/adam = 2,
+					/obj/item/clothing/under/misc/gear_harness/eve = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/hydro_wardrobe
 	payment_department = ACCOUNT_SRV
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN

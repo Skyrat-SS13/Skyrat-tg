@@ -210,6 +210,10 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/uniform/suit/scarface
+	name = "Cuban suit"
+	path = /obj/item/clothing/under/suit/white/scarface
+
 /datum/loadout_item/uniform/suit/vice
 	name = "Grey and Black suit"
 	path = /obj/item/clothing/under/misc/vice_officer
