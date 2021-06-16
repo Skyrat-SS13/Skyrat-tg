@@ -18,6 +18,7 @@
 	var/disk_error_type = ""
 	var/shock_wire
 	var/timer_id
+	var/turbo_boost = FALSE
 	var/obj/item/ammo_box/loaded_magazine = null
 	var/obj/item/disk/ammo_workbench/loaded_datadisk = null
 	/// A list of all currently allowed ammo types.
@@ -82,6 +83,7 @@
 	data["efficiency"] = creation_efficiency
 	data["time"] = time_per_round / 10
 	data["hacked"] = allowed_harmful
+	data["turboBoost"] = turbo_boost
 
 	data["materials"] = list()
 	var/datum/component/material_container/mat_container = GetComponent(/datum/component/material_container)
@@ -172,6 +174,18 @@
 
 		if("EjectDisk")
 			ejectDisk()
+
+		if("TurboBoost")
+			toggleTurboBoost()
+
+/obj/machinery/ammo_workbench/proc/toggleTurboBoost()
+	turbo_boost = !turbo_boost
+
+	if(turbo_boost)
+		time_per_round = 0.1
+		creation_efficiency = 3
+	else
+		RefreshParts()
 
 /obj/machinery/ammo_workbench/proc/ejectItem()
 	if(loaded_magazine)

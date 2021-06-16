@@ -52,7 +52,7 @@ export const AmmunitionsTab = (props, context) => {
     error,
     error_type,
     mag_name,
-    caliber,
+    turboBoost,
     current_rounds,
     max_rounds,
     efficiency,
@@ -79,6 +79,11 @@ export const AmmunitionsTab = (props, context) => {
         <Box>
           Time Per Round: {time} seconds
         </Box>
+        <Button.Checkbox
+          onClick={() => act('turboBoost')}
+          checked={turboBoost}>
+          Turbo Boost
+        </Button.Checkbox>
       </Section>
       <Section
         title="Loaded Magazine"
