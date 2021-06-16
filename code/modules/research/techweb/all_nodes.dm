@@ -1308,6 +1308,7 @@
 	prereq_ids = list("adv_engi", "weaponry")
 	design_ids = list(
 		"pin_loyalty",
+		"ammo_workbench", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/explosion/medium)
@@ -1392,6 +1393,7 @@
 		"c38_hotshot",
 		"c38_iceblox",
 		"techshotshell",
+		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
