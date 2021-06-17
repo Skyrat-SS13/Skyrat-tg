@@ -77,7 +77,6 @@ GLOBAL_LIST_INIT(global_all_wound_types_synth, list(/datum/wound/synthetic/slash
 	/datum/wound/synthetic/pierce/critical, /datum/wound/synthetic/pierce/severe, /datum/wound/synthetic/pierce/moderate,
 	/datum/wound/synthetic/burn/critical, /datum/wound/synthetic/burn/severe, /datum/wound/synthetic/burn/moderate, /datum/wound/synthetic/muscle/severe, /datum/wound/synthetic/muscle/moderate))
 
-
 // ~burn wound infection defines
 // Thresholds for infection for burn wounds, once infestation hits each threshold, things get steadily worse
 /// below this has no ill effects from infection
