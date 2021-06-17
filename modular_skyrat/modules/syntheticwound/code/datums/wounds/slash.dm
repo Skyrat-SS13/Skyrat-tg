@@ -161,7 +161,7 @@
 	else if(I.tool_behaviour == TOOL_CAUTERY || I.get_temperature())
 		tool_cauterize(I, user)
 	else if(istype(I, /obj/item/stack/sticky_tape/surgical))
-		tape(I, user)
+		slashtape(I, user)
 
 /datum/wound/synthetic/slash/on_xadone(power)
 	. = ..()
@@ -208,7 +208,7 @@
 		to_chat(user, "<span class='green'>You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] leaking.</span>")
 
 /// If someone is using a suture to close this cut
-/datum/wound/synthetic/slash/proc/tape(/obj/item/stack/sticky_tape/surgical/I, mob/user)
+/datum/wound/synthetic/slash/proc/slashtape(/obj/item/stack/sticky_tape/surgical/I, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [I]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
 
