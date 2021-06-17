@@ -191,7 +191,7 @@
 	var/improv_penalty_mult = (I.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
 	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
-	user.visible_message("<span class='danger'>[user] begins welding over [victim]'s [limb.name] with [I]...</span>", "<span class='warning'>You begin welding over [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
+	user.visible_message("<span class='danger'>[user] begins welding over [victim]'s [limb.name] with [I]...</span>", "<span class='warning'>You begin welding over [user == victim ? "your" : "[victim]'s"] [limb.name] with [B]...</span>")
 	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
@@ -208,9 +208,9 @@
 		to_chat(user, "<span class='green'>You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] leaking.</span>")
 
 /// If someone is using a suture to close this cut
-/datum/wound/synthetic/slash/proc/slashtape(/obj/item/stack/sticky_tape/surgical/I, mob/user)
+/datum/wound/synthetic/slash/proc/slashtape(/obj/item/stack/sticky_tape/surgical/B, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
-	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [I]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
+	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [B]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [B]...</span>")
 
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
