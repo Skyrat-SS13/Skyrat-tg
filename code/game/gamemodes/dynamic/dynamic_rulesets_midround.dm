@@ -723,6 +723,7 @@
 	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
 	var/spawncount = 2
+	minimum_players = 999 //SKYRAT EDIT ADDITION - SALT PR
 
 /datum/dynamic_ruleset/midround/spiders/execute()
 	create_midwife_eggs(spawncount)
