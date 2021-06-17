@@ -5,6 +5,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
 	icon_state = "badge"
 	slot_flags = ITEM_SLOT_NECK
+	attachment_slot = CHEST
 
 	var/stored_name
 	var/badge_string = "Corporate Security"
@@ -75,7 +76,6 @@
 	icon_state = "holobadge-cord"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
-	slot_flags = ITEM_SLOT_MASK | ITEM_SLOT_NECK
 
 /obj/item/clothing/accessory/badge/holo/attack_self(mob/user as mob)
 	if(!stored_name)
