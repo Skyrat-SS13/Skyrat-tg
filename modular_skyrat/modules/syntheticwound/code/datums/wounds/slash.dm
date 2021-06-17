@@ -8,7 +8,7 @@
 	sound_effect = 'sound/weapons/slice.ogg'
 	processes = TRUE
 	wound_type = WOUND_SLASH
-	treatable_by = list(/obj/item/stack/medical/suture)
+	treatable_by = list(/obj/item/stack/sticky_tape/surgical)
 	treatable_by_grabbed = list(/obj/item/gun/energy/laser)
 	treatable_tool = TOOL_CAUTERY
 	base_treat_time = 3 SECONDS

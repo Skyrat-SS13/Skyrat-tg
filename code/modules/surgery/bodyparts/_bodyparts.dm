@@ -1014,9 +1014,10 @@
 /obj/item/bodypart/proc/get_bleed_rate()
 	if(HAS_TRAIT(owner, TRAIT_NOBLEED))
 		return
+	/*Skyrat edit
 	if(status != BODYPART_ORGANIC) // maybe in the future we can bleed oil from aug parts, but not now
 		return
-
+	*/
 	var/bleed_rate = 0
 	if(generic_bleedstacks > 0)
 		bleed_rate += 0.5
