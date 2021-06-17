@@ -28,7 +28,7 @@
 		/obj/item/stack/spacecash/c500 = 3,
 		/obj/item/disk/nuclear/fake/obvious = 2,
 		/obj/item/clothing/head/collectable/captain = 4,
-		/obj/projectile/bullet/advanced/b10mm/b460 = 1
+		/obj/projectile/bullet/b460 = 1
 	)
 
 /datum/outfit/job/blueshield
