@@ -579,7 +579,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	. = ..()
 	if(ROBOTIC_LIMBS in species_traits)
 		for(var/obj/item/bodypart/B in C.bodyparts)
-			B.change_bodypart_status(BODYPART_ORGANIC, FALSE, TRUE)
+			B.change_bodypart_status(BODYPART_ORGANIC, TRUE, TRUE)
 
 /datum/species/proc/spec_revival(mob/living/carbon/human/H)
 	return
