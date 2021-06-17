@@ -93,6 +93,7 @@
 		return TRUE
 
 /datum/wound/synthetic/pierce/treat(obj/item/I, mob/user)
+		tape(I, user)
 	if(istype(I, /obj/item/stack/sticky_tape/surgical))
 		tapepierce(I, user)
 	else if(I.tool_behaviour == TOOL_CAUTERY || I.get_temperature())
@@ -115,8 +116,8 @@
 	user.visible_message("<span class='green'>[user] tapes up over some of the leaking on [victim].</span>", "<span class='green'>You tape up some of the leaking on [user == victim ? "yourself" : "[victim]"].</span>")
 	var/blood_sutured = A.stop_bleeding / self_penalty_mult
 	blood_flow -= blood_sutured
-	A.use(1)
-
+	var/obj/item/stack/used_stack = A
+	used_stack.use(1)
 	if(blood_flow > 0)
 		try_treating(A, user)
 	else
