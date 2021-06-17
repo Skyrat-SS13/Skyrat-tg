@@ -93,7 +93,6 @@
 		return TRUE
 
 /datum/wound/synthetic/pierce/treat(obj/item/I, mob/user)
-		tape(I, user)
 	if(istype(I, /obj/item/stack/sticky_tape/surgical))
 		tapepierce(I, user)
 	else if(I.tool_behaviour == TOOL_CAUTERY || I.get_temperature())
