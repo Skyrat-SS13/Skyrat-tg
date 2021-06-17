@@ -230,7 +230,7 @@
 	desc = "Patients metallic coating has been sheared, causing internal leaking."
 	treat_text = "Application of srugical tape and welding"
 	examine_desc = "has a torn panel; slowly leaking"
-	occur_text = "is sheared in twain, leaking blood"
+	occur_text = "is sheared in twain, leaking oil"
 	sound_effect = 'sound/effects/wounds/blood1.ogg'
 	severity = WOUND_SEVERITY_MODERATE
 	initial_flow = 2
