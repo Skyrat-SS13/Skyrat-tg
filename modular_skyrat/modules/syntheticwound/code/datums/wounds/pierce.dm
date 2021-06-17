@@ -107,13 +107,13 @@
 	blood_flow -= 0.05 * power // 20u * 0.05 = -1 blood flow, less than with slashes but still good considering smaller bleed rates
 
 /// If someone is using a suture to close this puncture
-/datum/wound/synthetic/pierce/proc/tapepierce(/obj/item/stack/sticky_tape/surgical/A, mob/user)
+/datum/wound/synthetic/pierce/proc/tapepierce(obj/item/stack/sticky_tape/surgical/A, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [A]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [A]...</span>")
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 	user.visible_message("<span class='green'>[user] tapes up over some of the leaking on [victim].</span>", "<span class='green'>You tape up some of the leaking on [user == victim ? "yourself" : "[victim]"].</span>")
-	var/blood_sutured = A.stop_bleeding / self_penalty_mult
+	var/blood_sutured = 0.5 / self_penalty_mult
 	blood_flow -= blood_sutured
 	var/obj/item/stack/used_stack = A
 	used_stack.use(1)

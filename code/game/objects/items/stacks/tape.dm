@@ -17,8 +17,6 @@
 	splint_factor = 0.8
 	merge_type = /obj/item/stack/sticky_tape
 	var/list/conferred_embed = EMBED_HARMLESS
-	var/stop_bleeding = 0.5 //Less efficient than sutures, for good reason.
-
 
 /obj/item/stack/sticky_tape/afterattack(obj/item/I, mob/living/user, proximity)
 	if(!proximity)

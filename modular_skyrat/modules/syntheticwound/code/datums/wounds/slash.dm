@@ -208,14 +208,14 @@
 		to_chat(user, "<span class='green'>You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] leaking.</span>")
 
 /// If someone is using a suture to close this cut
-/datum/wound/synthetic/slash/proc/slashtape(/obj/item/stack/sticky_tape/surgical/B, mob/user)
+/datum/wound/synthetic/slash/proc/slashtape(obj/item/stack/sticky_tape/surgical/B, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [B]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [B]...</span>")
 
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 	user.visible_message("<span class='green'>[user] tapes up some of the leaking on [victim].</span>", "<span class='green'>You tape up some of the leaking on [user == victim ? "yourself" : "[victim]"].</span>")
-	var/blood_sutured = B.stop_bleeding / self_penalty_mult
+	var/blood_sutured = 0.5/ self_penalty_mult
 	blood_flow -= blood_sutured
 	B.use(1)
 
