@@ -135,7 +135,7 @@
 		if(demotes_to)
 			replace_wound(demotes_to)
 		else
-			to_chat(victim, "<span class='green'>The cut on your [limb.name] has stopped bleeding!</span>")
+			to_chat(victim, "<span class='green'>The destroyed hydraulics on your [limb.name] have stopped leaking!</span>")
 			qdel(src)
 
 
@@ -184,18 +184,18 @@
 		return
 	victim.emote("scream")
 	blood_flow -= damage / (5 * self_penalty_mult) // 20 / 5 = 4 bloodflow removed, p good
-	victim.visible_message("<span class='warning'>The cuts on [victim]'s [limb.name] scar over!</span>")
+	victim.visible_message("<span class='warning'>The leaking on [victim]'s [limb.name] slows, and then stops!</span>")
 
 /// If someone is using either a cautery tool or something with heat to cauterize this cut
 /datum/wound/synthetic/slash/proc/tool_cauterize(obj/item/I, mob/user)
 	var/improv_penalty_mult = (I.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
 	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
-	user.visible_message("<span class='danger'>[user] begins cauterizing [victim]'s [limb.name] with [I]...</span>", "<span class='warning'>You begin cauterizing [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
+	user.visible_message("<span class='danger'>[user] begins welding over [victim]'s [limb.name] with [I]...</span>", "<span class='warning'>You begin welding over [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
 	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
-	user.visible_message("<span class='green'>[user] cauterizes some of the bleeding on [victim].</span>", "<span class='green'>You cauterize some of the bleeding on [victim].</span>")
+	user.visible_message("<span class='green'>[user] welds over some of the leaking on [victim].</span>", "<span class='green'>You weld over some of the leaking on [victim].</span>")
 	limb.receive_damage(burn = 2 + severity, wound_bonus = CANT_WOUND)
 	if(prob(30))
 		victim.emote("scream")
@@ -205,7 +205,7 @@
 	if(blood_flow > minimum_flow)
 		try_treating(I, user)
 	else if(demotes_to)
-		to_chat(user, "<span class='green'>You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] cuts.</span>")
+		to_chat(user, "<span class='green'>You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] leaking.</span>")
 
 /// If someone is using a suture to close this cut
 /datum/wound/synthetic/slash/proc/tape(/obj/item/stack/sticky_tape/surgical/I, mob/user)
@@ -217,7 +217,6 @@
 	user.visible_message("<span class='green'>[user] tapes up some of the leaking on [victim].</span>", "<span class='green'>You tape up some of the leaking on [user == victim ? "yourself" : "[victim]"].</span>")
 	var/blood_sutured = I.stop_bleeding / self_penalty_mult
 	blood_flow -= blood_sutured
-	limb.heal_damage(I.heal_brute, I.heal_burn)
 	I.use(1)
 
 	if(blood_flow > minimum_flow)
