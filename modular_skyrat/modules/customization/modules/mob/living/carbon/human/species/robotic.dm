@@ -20,12 +20,12 @@
 	mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	burnmod = 1.5 // Every 0.1% is 10% above the base.
-	brutemod = 1.6
-	coldmod = 1.2
-	heatmod = 2
+	burnmod = 1 // Every 0.1% is 10% above the base.
+	brutemod = 1
+	coldmod = 0.6 //Synths take less burn from cold.
+	heatmod = 1.4 //But slightly more from burn
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
-	payday_modifier = 0.5 //Robots are cheep labor
+	payday_modifier = 1 //We removed this. Stop touching payday modifiers.
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/brain/ipc_positron
@@ -41,7 +41,7 @@
 
 /datum/species/robotic/spec_life(mob/living/carbon/human/H)
 	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
-		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
+		H.adjustFireLoss(0.5) //halved because this runs on tick and ended up being very lethal
 		H.adjust_bodytemperature(13) //We're overheating!!
 		if(prob(10))
 			to_chat(H, "<span class='warning'>Alert: Critical damage taken! Cooling systems failing!</span>")
