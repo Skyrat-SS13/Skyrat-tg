@@ -262,7 +262,7 @@
 	name = "Destroyed Hydraulics"
 	desc = "Patient has experienced an extremely damaging incident, resulting in their internal hydraulics being entirely shredded. Deactivation will commence once their oil and reguating fluids have ran out."
 	treat_text = "Immediate patching with tape, followed by heavy welding"
-	examine_desc = "has been absolutely destroyed, sparking electronics popped from the sides of their limb"
+	examine_desc = "has been absolutely destroyed, sparking electronics protruding from their limb"
 	occur_text = "is torn open, multiple hydraulics falling out of place"
 	sound_effect = 'sound/effects/wounds/blood3.ogg'
 	severity = WOUND_SEVERITY_CRITICAL
