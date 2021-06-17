@@ -179,7 +179,7 @@
 	if(istype(I, /obj/item/stack/cable_coil))
 		cablecoil(I, user)
 	else if(istype(I, /obj/item/stack/sticky_tape/surgical))
-		var/obj/item/stack/medical/mesh/mesh_check = I
+		var/obj/item/stack/sticky_tape/surgical = I
 		cablecoil(mesh_check, user)
 
 // people complained about burns not healing on stasis beds, so in addition to checking if it's cured, they also get the special ability to very slowly heal on stasis beds if they have the healing effects stored
