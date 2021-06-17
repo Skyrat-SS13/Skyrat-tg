@@ -341,9 +341,12 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
 	},
-/obj/item/ammo_casing/c38{
-	dir = 5;
-	pixel_x = 3
+/obj/item/ammo_casing/spent{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9
 	},
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
@@ -483,12 +486,6 @@
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating/airless,
 /area/template_noop)
-"hl" = (
-/mob/living/simple_animal/hostile/syndicate/melee/space,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/engine{
-	name = "Shuttle 8532 Engine"
-	})
 "hv" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
@@ -690,16 +687,14 @@
 	name = "Shuttle 8532 Bridge"
 	})
 "kx" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
+/obj/machinery/light/small/directional{
+	light_color = "#FF0000";
+	nightshift_light_color = "#FF0000";
+	pixel_y = 32
 	},
-/obj/effect/turf_decal/raven{
-	dir = 8
-	},
-/obj/item/ammo_casing/spent,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
+/turf/closed/wall/r_wall,
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
 	})
 "ky" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
@@ -805,6 +800,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/vg_decals/numbers/three,
+/obj/structure/flippedtable,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
@@ -1177,6 +1173,7 @@
 	dir = 8;
 	icon_state = "tube"
 	},
+/obj/item/ammo_box/c38,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
@@ -1493,7 +1490,6 @@
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
-/obj/item/ammo_box/c38,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
@@ -1716,6 +1712,7 @@
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/vg_decals/numbers/five,
+/obj/structure/flippedtable,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
@@ -1960,6 +1957,15 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
+"Ei" = (
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/airless{
+	icon_state = "damaged2"
+	},
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
 "Eo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /turf/open/floor/iron/airless,
@@ -2013,8 +2019,8 @@
 	})
 "EM" = (
 /obj/machinery/light/small/directional{
-	light_color = "#FF0000";
-	nightshift_light_color = "#FF0000";
+	light_color = "#00FF00";
+	nightshift_light_color = "#00FF00";
 	pixel_y = 32
 	},
 /turf/closed/wall/r_wall,
@@ -2165,6 +2171,12 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"Hv" = (
+/mob/living/simple_animal/hostile/syndicate/melee/space,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/engine{
+	name = "Shuttle 8532 Engine"
+	})
 "HK" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/airless,
@@ -2308,15 +2320,6 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
-"KK" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/blood/tracks,
-/obj/machinery/light/floor,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
-	})
 "La" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/cable,
@@ -2450,14 +2453,10 @@
 /turf/template_noop,
 /area/template_noop)
 "Nr" = (
-/obj/machinery/light/small/directional{
-	light_color = "#00FF00";
-	nightshift_light_color = "#00FF00";
-	pixel_y = 32
-	},
-/turf/closed/wall/r_wall,
-/area/shuttle/abandoned/bridge{
-	name = "Shuttle 8532 Bridge"
+/obj/structure/flippedtable,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/crew{
+	name = "Shuttle 8532 Crew Quarters"
 	})
 "Nu" = (
 /turf/closed/wall/r_wall,
@@ -2626,11 +2625,6 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/vg_decals/numbers/eight,
-/obj/item/ammo_casing/c38{
-	dir = 9;
-	pixel_x = -10;
-	pixel_y = 10
-	},
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
@@ -2638,6 +2632,11 @@
 "Qi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /obj/effect/decal/cleanable/blood/tracks,
+/obj/item/switchblade{
+	icon_state = "switchblade_ext";
+	pixel_x = -7;
+	pixel_y = -8
+	},
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
@@ -2989,15 +2988,6 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
-"VI" = (
-/obj/machinery/light/floor,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron/airless{
-	icon_state = "damaged2"
-	},
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
-	})
 "VK" = (
 /obj/structure/railing{
 	dir = 9
@@ -3021,16 +3011,12 @@
 	name = "Shuttle 8532 Engine"
 	})
 "VS" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
+/obj/structure/flippedtable{
+	dir = 4
 	},
-/obj/effect/turf_decal/raven{
-	dir = 8
-	},
-/obj/item/switchblade,
 /turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
+/area/shuttle/abandoned/crew{
+	name = "Shuttle 8532 Crew Quarters"
 	})
 "VV" = (
 /obj/item/flashlight/glowstick/red{
@@ -3113,6 +3099,15 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
+"Xt" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
 "XA" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/cobweb,
@@ -3174,6 +3169,9 @@
 "XV" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9
 	},
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
@@ -3319,7 +3317,7 @@
 (1,1,1) = {"
 qb
 qb
-EM
+kx
 oB
 qb
 qb
@@ -4043,7 +4041,7 @@ Lm
 xp
 Lm
 Lz
-Lm
+VS
 bo
 hU
 XA
@@ -4118,9 +4116,9 @@ hU
 hU
 PT
 rI
-VS
+ol
 dH
-kx
+ol
 ol
 ol
 Fz
@@ -4194,7 +4192,7 @@ AF
 au
 xj
 EU
-VI
+Ei
 Du
 ts
 ts
@@ -4324,7 +4322,7 @@ LQ
 gI
 ad
 VM
-KK
+Xt
 PP
 lD
 Rr
@@ -4348,7 +4346,7 @@ br
 rP
 jk
 Lb
-hl
+Hv
 Lb
 Kh
 EE
@@ -4367,7 +4365,7 @@ RE
 Lm
 Rf
 Lm
-Lm
+Nr
 Lm
 vZ
 hU
@@ -5139,7 +5137,7 @@ qb
 (29,1,1) = {"
 qb
 qb
-Nr
+EM
 oB
 qb
 qb
