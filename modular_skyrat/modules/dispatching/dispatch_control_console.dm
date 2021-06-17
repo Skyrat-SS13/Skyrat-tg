@@ -1,27 +1,57 @@
 /obj/machinery/dispatch_control
 	name = "Dispatch and Control Console"
-	// icon = 'modular_skyrat/modules/dispatching/icons/dcc.dmi'
-	icon_state = "dcc"
+	icon = 'icons/obj/computer.dmi'
+	icon_state = "bulb"
 	use_power = NO_POWER_USE
 	idle_power_usage = 200
 	active_power_usage = 2000
 
+/obj/machinery/dispatch_control/proc/HandleClick(mob/user, atom/clicked, params)
+	var/list/modifiers = params2list(params)
+
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		HandleRClick(user)
+		return
+
+	HandleLClick(user)
+
+/obj/machinery/dispatch_control/proc/HandleRClick(mob/user)
+	if(isobserver(user) || !user.Adjacent(src))
+		return
+
+	if(use_power == ACTIVE_POWER_USE)
+		console_shutdown()
+
+/obj/machinery/dispatch_control/proc/HandleLClick(mob/user)
+	if(use_power == ACTIVE_POWER_USE)
+		ui_interact(user)
+		return
+
+	if(use_power == NO_POWER_USE && directly_use_power(active_power_usage))
+		console_bootup()
+		return
+
+/obj/machinery/dispatch_control/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DispatchConsole")
+		ui.autoupdate = TRUE
+		ui.open()
+
 /obj/machinery/dispatch_control/Initialize()
 	. = ..()
 	RegisterSignal(src, COMSIG_MACHINERY_POWER_LOST, .proc/console_shutdown)
-	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/console_bootup)
-	RegisterSignal(src, COMSIG_CLICK_RIGHT, .proc/try_shutdown)
+	RegisterSignal(src, COMSIG_MOB_CLICKON, .proc/HandleClick)
 
 /obj/machinery/dispatch_control/Destroy()
 	. = ..()
 	UnregisterSignal(src, COMSIG_MACHINERY_POWER_LOST)
-	UnregisterSignal(src, COMSIG_ATOM_ATTACK_HAND)
-	UnregisterSignal(src, COMSIG_CLICK_RIGHT)
+	UnregisterSignal(src, COMSIG_MOB_CLICKON)
 	if(SSdispatch.dispatch_online == src)
 		SSdispatch.dispatch_online = null
 
 /obj/machinery/dispatch_control/proc/state_change(state)
-	icon_state = initial(icon_state) + "_[state]"
+	// icon_state = initial(icon_state) + "_[state]"
 	update_icon()
 
 /obj/machinery/dispatch_control/proc/message_viewers(message)
@@ -38,8 +68,6 @@
 		SSdispatch.message_type_holders(ttype, "Dispatch Online")
 
 /obj/machinery/dispatch_control/proc/console_bootup(stage = STAGE_ONE)
-	SIGNAL_HANDLER
-
 	use_power = IDLE_POWER_USE
 	state_change("boot[stage]")
 
@@ -65,12 +93,6 @@
 		if(STAGE_FOUR)
 			message_viewers("Preparing...")
 			addtimer(CALLBACK(src, .proc/console_poweron), 0.5 SECONDS)
-
-/obj/machinery/dispatch_control/proc/try_shutdown(mob/user)
-	SIGNAL_HANDLER
-
-	if(user.Adjacent(src) && !isobserver(user))
-		console_shutdown()
 
 /obj/machinery/dispatch_control/proc/console_shutdown()
 	SIGNAL_HANDLER
