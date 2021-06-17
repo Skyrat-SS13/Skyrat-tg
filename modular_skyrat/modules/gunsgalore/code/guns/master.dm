@@ -4,7 +4,7 @@
 	var/realistic = FALSE //realistic guns that use reliability and dirt
 	var/jammed = FALSE //Is it jammed?
 	var/dirt_level = 0 //how dirty a gun is.
-	var/dirt_modifier = 0.5 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
+	var/dirt_modifier = 0.1 //Tied in with how good a gun is, if firing it causes a lot of dirt to form, then change this accordingly.
 	var/jam_chance = 0 //Used when calculating if a gun will jam or not.
 	var/unjam_time = 0 //Used when calculating how long a gun takes to unjam.
 	var/base_spread = 0

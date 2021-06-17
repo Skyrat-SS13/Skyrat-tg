@@ -55,18 +55,6 @@
 		"space_heater",
 		"tech_disk",
 		"titaniumglass",
-
-		//SKYRAT EDIT - RESEARCH DESIGNS
-		"b6mm",
-		"b6mm_rubber",
-		"b9mm",
-		"b9mm_rubber",
-		"b10mm",
-		"b10mm_rubber",
-		"b12mm",
-		"b12mm_rubber",
-		"pepperballs",
-		//SKYRAT EDIT ADDITION - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/mmi
@@ -1320,6 +1308,7 @@
 	prereq_ids = list("adv_engi", "weaponry")
 	design_ids = list(
 		"pin_loyalty",
+		"ammo_workbench", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/explosion/medium)
@@ -1404,6 +1393,7 @@
 		"c38_hotshot",
 		"c38_iceblox",
 		"techshotshell",
+		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
