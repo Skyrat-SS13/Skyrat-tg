@@ -3,9 +3,6 @@
 	Piercing wounds
 */
 
-/obj/item/stack/sticky_tape/surgical
-	var/stop_bleeding = 0.5 //Less efficient than sutures, for good reason.
-
 /datum/wound/synthetic/pierce
 	name = "Piercing Wound"
 	sound_effect = 'sound/weapons/slice.ogg'
@@ -97,7 +94,7 @@
 
 /datum/wound/synthetic/pierce/treat(obj/item/I, mob/user)
 	if(istype(I, /obj/item/stack/sticky_tape/surgical))
-		tape(I, user)
+		tapepierce(I, user)
 	else if(I.tool_behaviour == TOOL_CAUTERY || I.get_temperature())
 		tool_cauterize(I, user)
 
@@ -110,7 +107,7 @@
 	blood_flow -= 0.05 * power // 20u * 0.05 = -1 blood flow, less than with slashes but still good considering smaller bleed rates
 
 /// If someone is using a suture to close this puncture
-/datum/wound/synthetic/pierce/proc/tape(/obj/item/stack/sticky_tape/surgical/I, mob/user)
+/datum/wound/synthetic/pierce/proc/tapepierce(/obj/item/stack/sticky_tape/surgical/I, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [I]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))

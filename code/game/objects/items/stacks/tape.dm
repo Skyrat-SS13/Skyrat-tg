@@ -108,3 +108,4 @@
 	splint_factor = 0.4
 	custom_price = PAYCHECK_MEDIUM
 	merge_type = /obj/item/stack/sticky_tape/surgical
+	var/stop_bleeding = 0.5 //Less efficient than sutures, for good reason.
