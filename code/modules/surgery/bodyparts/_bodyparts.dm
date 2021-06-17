@@ -448,8 +448,12 @@
 	var/base_roll = rand(1, round(damage ** WOUND_DAMAGE_EXPONENT))
 	var/injury_roll = base_roll
 	injury_roll += check_woundings_mods(woundtype, damage, wound_bonus, bare_wound_bonus)
-	var/list/wounds_checking = GLOB.global_wound_types[woundtype]
-
+	//SKYRAT EDIT BEGIN. SYNTH WOUNDS
+	switch(src.status)
+		if(BODYPART_ROBOTIC)
+			var/list/wounds_checking = GLOB.global_wound_types_synth[woundtype]
+		if(BODYPART_ORGANIC)
+			var/list/wounds_checking = GLOB.global_wound_types[woundtype]
 	if(injury_roll > WOUND_DISMEMBER_OUTRIGHT_THRESH && prob(get_damage() / max_damage * 100))
 		var/datum/wound/loss/dismembering = new
 		dismembering.apply_dismember(src, woundtype, outright=TRUE)
