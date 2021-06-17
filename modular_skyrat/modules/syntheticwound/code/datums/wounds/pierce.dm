@@ -113,12 +113,12 @@
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 	user.visible_message("<span class='green'>[user] tapes up over some of the leaking on [victim].</span>", "<span class='green'>You tape up some of the leaking on [user == victim ? "yourself" : "[victim]"].</span>")
-	var/blood_sutured = I.stop_bleeding / self_penalty_mult
+	var/blood_sutured = A.stop_bleeding / self_penalty_mult
 	blood_flow -= blood_sutured
-	I.use(1)
+	A.use(1)
 
 	if(blood_flow > 0)
-		try_treating(I, user)
+		try_treating(A, user)
 	else
 		to_chat(user, "<span class='green'>You successfully close the hole in [user == victim ? "your" : "[victim]'s"] [limb.name].</span>")
 
@@ -127,7 +127,7 @@
 	var/improv_penalty_mult = (I.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
 	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
-	user.visible_message("<span class='danger'>[user] begins welding shut [victim]'s [limb.name] with [I]...</span>", "<span class='warning'>You begin welding shut [user == victim ? "your" : "[victim]'s"] [limb.name] with [A]...</span>")
+	user.visible_message("<span class='danger'>[user] begins welding shut [victim]'s [limb.name] with [I]...</span>", "<span class='warning'>You begin welding shut [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
 	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
