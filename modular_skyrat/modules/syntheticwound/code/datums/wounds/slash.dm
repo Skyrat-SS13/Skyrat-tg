@@ -209,7 +209,7 @@
 
 /// If someone is using a suture to close this cut
 /datum/wound/synthetic/slash/proc/slashtape(obj/item/stack/sticky_tape/surgical/B, mob/user)
-	var/self_penalty_mult = (user == victim ? 20 : 10)
+	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [B]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [B]...</span>")
 
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))

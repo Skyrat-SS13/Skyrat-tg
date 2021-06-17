@@ -108,7 +108,7 @@
 
 /// If someone is using a suture to close this puncture
 /datum/wound/synthetic/pierce/proc/tapepierce(obj/item/stack/sticky_tape/surgical/A, mob/user)
-	var/self_penalty_mult = (user == victim ? 20 : 15)
+	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [A]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [A]...</span>")
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
@@ -125,7 +125,7 @@
 /// If someone is using either a cautery tool or something with heat to cauterize this pierce
 /datum/wound/synthetic/pierce/proc/tool_cauterize(obj/item/I, mob/user)
 	var/improv_penalty_mult = (I.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
-	var/self_penalty_mult = (user == victim ? 20 : 10) // 100% longer and less effective if you do it to yourself
+	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
 	user.visible_message("<span class='danger'>[user] begins welding shut [victim]'s [limb.name] with [I]...</span>", "<span class='warning'>You begin welding shut [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
 	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
