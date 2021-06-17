@@ -641,7 +641,6 @@ SUBSYSTEM_DEF(job)
 			log_runtime("RUNTIME: UNABLE TO FIND '[J.title]' INSIDE OF '[global.config.directory]/jobs.txt'")
 			continue
 		// Skyrat Edit End
-		jobs.Find(jobstext)
 		J.total_positions = text2num(jobs.group[1])
 		J.spawn_positions = text2num(jobs.group[2])
 
