@@ -162,7 +162,7 @@
 	if(!. || !client)
 		return FALSE
 	to_chat(src, "<b>As a simple animal you are nothing but a feral creature with some small modicum of intelligence.</b>")
-	to_chat(src, "<span class='warning'>This also means if you're engaging in combat you should refrain from mercing people fully. Play not to win but to create a challenge. You're there to replace AI, make others enjoy the situation as well. If your simple mob is not above simple or "mute" intelligence, using structures such as welding tanks/canisters/boxes to hinder your opponent is entirely forbidden. Do not do this.</span>")
+	to_chat(src, "<span class='warning'>This also means if you're engaging in combat you should refrain from mercing people fully. Play not to win but to create a challenge. You're there to replace AI, make others enjoy the situation as well. If your simple mob is not above simple or 'mute' intelligence, using structures such as welding tanks/canisters/boxes to hinder your opponent is entirely forbidden. Do not do this.</span>")
 //SKYRAT EDIT END
 
 
