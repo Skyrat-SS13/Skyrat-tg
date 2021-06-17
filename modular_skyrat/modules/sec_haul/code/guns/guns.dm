@@ -980,21 +980,7 @@
 
 /obj/item/ammo_casing/energy/electrode/crap
 	projectile_type = /obj/projectile/energy/electrode/crap
-	select_name = "stun"
-	fire_sound = 'sound/weapons/taser.ogg'
-	e_cost = 200
-	harmful = FALSE
 
 /obj/projectile/energy/electrode/crap
-	name = "electrode"
-	icon_state = "spark"
-	color = "#FFFF00"
-	nodamage = FALSE
 	stamina = 50
 	stutter = 10
-	jitter = 20
-	hitsound = 'sound/weapons/taserhit.ogg'
-	range = 5
-	tracer_type = /obj/effect/projectile/tracer/stun
-	muzzle_type = /obj/effect/projectile/muzzle/stun
-	impact_type = /obj/effect/projectile/impact/stun
