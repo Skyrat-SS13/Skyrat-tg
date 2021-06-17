@@ -74,17 +74,7 @@
 /datum/species/robotic/ipc
 	name = "I.P.C."
 	id = "ipc"
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		MUTCOLORS_PARTSONLY,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		NOEYESPRITES,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
-		REVIVES_BY_HEALING
-	)
+	species_traits = list(HAS_FLESH,ROBOTIC_DNA_ORGANS,MUTCOLORS_PARTSONLY,EYECOLOR,LIPS,HAIR,NOEYESPRITES,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"ipc_antenna" = ACC_RANDOM,
@@ -151,15 +141,7 @@
 /datum/species/robotic/synthliz
 	name = "Synthetic Lizardperson"
 	id = "synthliz"
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		MUTCOLORS,EYECOLOR,
-		LIPS,
-		HAIR,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
-		REVIVES_BY_HEALING
-	)
+	species_traits = list(HAS_FLESH,ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"ipc_antenna" = ACC_RANDOM,
@@ -186,15 +168,7 @@
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	default_color = "4B4B4B"
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		MUTCOLORS,EYECOLOR,
-		LIPS,HAIR,
-		ROBOTIC_LIMBS,
-		NOTRANSSTING,
-		REVIVES_BY_HEALING,
-		FACEHAIR
-	)
+	species_traits = list(HAS_FLESH,ROBOTIC_DNA_ORGANS,MUTCOLORS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,NOTRANSSTING,REVIVES_BY_HEALING,FACEHAIR)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
@@ -270,16 +244,7 @@
 	id = "synthhuman"
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	species_traits = list(
-		ROBOTIC_DNA_ORGANS,
-		EYECOLOR,
-		LIPS,
-		HAIR,
-		ROBOTIC_LIMBS,
-		REVIVES_BY_HEALING,
-		FACEHAIR,
-		NOTRANSSTING
-	)
+	species_traits = list(HAS_FLESH,ROBOTIC_DNA_ORGANS,EYECOLOR,LIPS,HAIR,ROBOTIC_LIMBS,REVIVES_BY_HEALING,FACEHAIR,NOTRANSSTING)
 	default_mutant_bodyparts = list(
 		"tail" = "None",
 		"snout" = "None",
