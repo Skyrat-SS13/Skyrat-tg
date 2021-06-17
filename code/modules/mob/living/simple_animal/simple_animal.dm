@@ -161,7 +161,6 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, "<b>As a simple animal you are nothing but a feral creature with some small modicum of intelligence.</b>")
 	var/warning_string = CONFIG_GET(string/pc_mob_text)
 	if(warning_string)
 		to_chat(src, span_warning(warning_string))
