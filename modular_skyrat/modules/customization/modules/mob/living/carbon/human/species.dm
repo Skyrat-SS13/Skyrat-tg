@@ -422,7 +422,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	for(var/obj/item/bodypart/B in C.bodyparts)
 		B.alpha = specific_alpha
 		if(robotic_limbs)
-			B.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
+			B.change_bodypart_status(BODYPART_ROBOTIC, TRUE, TRUE)
 			B.organic_render = TRUE
 		else if (B.status == BODYPART_ORGANIC)
 			B.organic_render = TRUE
