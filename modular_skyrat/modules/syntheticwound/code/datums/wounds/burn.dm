@@ -12,7 +12,7 @@
 	sound_effect = 'sound/effects/wounds/sizzle1.ogg'
 	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE)
 
-	treatable_by = list(/obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh) // sterilizer and alcohol will require reagent treatments, coming soon
+	treatable_by = list(/obj/item/stack/cable_coil, /obj/item/stack/sticky_tape/surgical) // sterilizer and alcohol will require reagent treatments, coming soon
 
 		// Flesh damage vars
 	/// How much damage to our flesh we currently have. Once both this and infestation reach 0, the wound is considered healed
@@ -159,7 +159,7 @@
 */
 
 /// if someone is using ointment or mesh on our burns
-/datum/wound/synthetic/burn/proc/cablecoil(obj/item/stack/medical/I, mob/user)
+/datum/wound/synthetic/burn/proc/cablecoil(obj/item/I, mob/user)
 	user.visible_message("<span class='notice'>[user] begins applying [I] to [victim]'s [limb.name]...</span>", "<span class='notice'>You begin applying [I] to [user == victim ? "your" : "[victim]'s"] [limb.name]...</span>")
 	if(!do_after(user, (user == victim ? I.self_delay : I.other_delay), extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
