@@ -2,6 +2,7 @@
 	say_mod = "beeps"
 	default_color = "00FF00"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
+	species_traits = list(HAS_FLESH)
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
 		TRAIT_ADVANCEDTOOLUSER,
@@ -14,7 +15,6 @@
 		TRAIT_STABLEHEART,
 		TRAIT_LIMBATTACHMENT,
 		TRAIT_NO_HUSK,
-		HAS_FLESH,
 		TRAIT_OXYIMMUNE
 	)
 	mutant_bodyparts = list()
@@ -42,6 +42,14 @@
 /datum/species/robotic/spec_life(mob/living/carbon/human/H)
 	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
 		H.adjustFireLoss(0.5) //halved because this runs on tick and ended up being very lethal
+		H.adjust_bodytemperature(13) //We're overheating!!
+		if(prob(10))
+			to_chat(H, "<span class='warning'>Alert: Critical damage taken! Cooling systems failing!</span>")
+			do_sparks(3, TRUE, H)
+
+/datum/species/robotic/spec_life(mob/living/carbon/human/H)
+	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
+		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		H.adjust_bodytemperature(13) //We're overheating!!
 		if(prob(10))
 			to_chat(H, "<span class='warning'>Alert: Critical damage taken! Cooling systems failing!</span>")
@@ -75,7 +83,6 @@
 		NOEYESPRITES,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
-		HAS_FLESH,
 		REVIVES_BY_HEALING
 	)
 	mutant_bodyparts = list()
@@ -151,7 +158,6 @@
 		HAIR,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
-		HAS_FLESH,
 		REVIVES_BY_HEALING
 	)
 	mutant_bodyparts = list()
@@ -187,7 +193,6 @@
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
 		REVIVES_BY_HEALING,
-		HAS_FLESH,
 		FACEHAIR
 	)
 	default_mutant_bodyparts = list(
@@ -273,7 +278,6 @@
 		ROBOTIC_LIMBS,
 		REVIVES_BY_HEALING,
 		FACEHAIR,
-		HAS_FLESH,
 		NOTRANSSTING
 	)
 	default_mutant_bodyparts = list(
