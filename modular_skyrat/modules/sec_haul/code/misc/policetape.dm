@@ -88,11 +88,18 @@
 		ourtape.layer = ABOVE_WINDOW_LAYER
 		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 
+/obj/structure/jobtape/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>The tape is weak enough to easily push through on harm intent, though that'd be impolite...</span>"
+	if(allowed(user))
+		. += "<span class='notice'>You can unroll the whole line by right-clicking with the tape roll!</span>"
+		. += "<span class='notice'>Clicking it with an empty hand will <b>lift</b> the tape, allowing anyone/anything to pass through.</span>"
+
 /obj/structure/jobtape/CanAllowThrough(atom/movable/mover, turf/target)	//This is low-key based off the holosigns, but modified to be better fitting for tape - people can't walk thru, but they can smash
 	. = ..()
 	if(iscarbon(mover))
 		var/mob/living/carbon/target_carbon = mover
-		if(allowed(target_carbon) || target_carbon.stat || allowed(target_carbon) || lifted) //Unconcious/dead people won't be blocked by the tape, nor will people who have the right access; lifted tape lets anyone through
+		if(allowed(target_carbon) || target_carbon.stat || lifted) //Unconcious/dead people won't be blocked by the tape, nor will people who have the right access; lifted tape lets anyone through
 			return TRUE
 		//if(allowed(target_carbon) && target_carbon.m_intent != MOVE_INTENT_WALK)	//Allowed people still have to walk (?)
 		if(!crumpled)
@@ -116,8 +123,8 @@
 		icon_state = "[icon_state]_c"	//C is for Crumpled (and thats okay with me)
 		name = "crumpled [name]"
 
-/obj/structure/jobtape/proc/uncrumple()	//This doesn't work help -- overridden by attack code?
-	if(!do_after(usr, 2 SECONDS, target = usr))	//Fast to repair, but can't be spammed if you're moving about
+/obj/structure/jobtape/proc/uncrumple()
+	if(!do_after(usr, 1 SECONDS, target = usr))	//Fast to repair, but can't be spammed if you're moving about
 		return
 	crumpled = FALSE
 	if(findtext(icon_state, "_door"))	//Check the icon to see if it's on a door
@@ -145,11 +152,13 @@
 
 /obj/structure/jobtape/attackby(obj/item/I, mob/user, params)
 	. = ..()
-	if(crumpled)
-		if(istype(I, /obj/item/taperoll))	//THIS CONFLICTS WITH UNROLLING, SOLVE IT --- Also, would work with any type of taperoll. Make it only work with the same type as the line.
+	if(istype(I, /obj/item/taperoll))	//Technically it works with any tape roll but dont tell the users that
+		if(LAZYACCESS(params2list(params), RIGHT_CLICK) || allowed(user))
+			breaktape(I, user)	//This only runs for tape if it's right-clicked and the user has access
+		else if(crumpled)
 			uncrumple()
-			return
-//	breaktape(I, user)
+		return	//Keeps non-rightclicked tape from triggering breaktape()
+	breaktape(I, user) //Non-tape always runs this
 
 /obj/structure/jobtape/attack_hand(mob/living/user)
 	. = ..()
@@ -157,22 +166,22 @@
 		return
 	if (!user.combat_mode && allowed(user))	//Checks if they're on combat mode, and if they're allowed
 		lifttape()
-	/*else if(user.combat_mode)		fucking shitfuck why wont it repair
-		breaktape(null, user)*/
 	else
 		return
+		//This was originally going to call crumple() when attacked with an empty hand, but for some reason it already calls CanAllowThrough's checks for it so I won't complain
 
 /obj/structure/jobtape/attack_paw(mob/living/carbon/human/user)
-	breaktape(/obj/item/wirecutters, user)	//Make this work with anything that functions as wirecutters, and with knives
+	crumple()	//Monkeys get to ruin your tape hahaha
 
-/*
-	//if(/*!(useditem.sharpness == SHARP_EDGED || useditem.tool_behaviour == TOOL_WIRECUTTER) && {FIX RUNTIMES}*/src.allowed(user)) --- NEEDS TO BE FIXED, ALLOWS ALL WIRECUTTERS/BLADES TO CUT --- goes on below proc?
-*/
 /obj/structure/jobtape/proc/breaktape(obj/item/useditem, mob/living/user, params)	//Handles actually removing the tape
-	if(istype(useditem, /obj/item/wirecutters))
-		visible_message("<span class='notice'> [user] breaks \the [src]!</span>")
+	if(useditem.tool_behaviour == TOOL_WIRECUTTER || useditem.sharpness == SHARP_EDGED)
+		visible_message("<span class='notice'>[user] breaks \the [src]!</span>")
 		qdel(src)
-	if(istype(useditem, /obj/item/stack/rods) && src.allowed(user))	//Lets you un-roll the whole line of tape (?) - might conflict with repairing crumples, find a solution to both /*-- CHANGE THIS FROM RODS DEAR GOD --*/
+		return
+	if(istype(useditem, /obj/item/taperoll))	//Should only trigger on right-click
+		if(!do_after(usr, 3.5 SECONDS, target = usr))
+			to_chat(usr, "<span class='notice'>You have to stand still to re-roll \the [src]!</span>")
+			return
 		//Again, IDK what the math and code hear entirely means, it's mostly unchanged from the TGMC code - I /assume/ this is meant to cut entire connected lines of tape
 		var/dir[2]
 		var/icon_dir = src.icon_state
@@ -192,10 +201,10 @@
 						N = 0
 						qdel(P)
 				cur = get_step(cur,dir[i])
+		visible_message("<span class='notice'>[user] re-rolls \the [src], cleanly removing the full line!</span>")
 		qdel(src)
-		visible_message("<span class='notice'> [user] re-rolls \the [src], cleanly removing the full line!</span>")
 	else
-		to_chat(user, "<span class='notice'> You can't break \the [src] with that!</span>")
+		to_chat(user, "<span class='notice'>You can't break \the [src] with that!</span>")
 		return
 
 /*----- Actually usable tape types below this line -----*/
