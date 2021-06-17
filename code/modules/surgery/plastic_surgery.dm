@@ -17,17 +17,17 @@
 	time = 64
 
 /datum/surgery_step/reshape_face/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	user.visible_message("<span class='notice'>[user] begins to alter [target]'s appearance.</span>", "<span class='notice'>You begin to alter [target]'s appearance...</span>")
-	display_results(user, target, "<span class='notice'>You begin to alter [target]'s appearance...</span>",
-		"<span class='notice'>[user] begins to alter [target]'s appearance.</span>",
-		"<span class='notice'>[user] begins to make an incision in [target]'s face.</span>")
+	user.visible_message(span_notice("[user] begins to alter [target]'s appearance."), span_notice("You begin to alter [target]'s appearance..."))
+	display_results(user, target, span_notice("You begin to alter [target]'s appearance..."),
+		span_notice("[user] begins to alter [target]'s appearance."),
+		span_notice("[user] begins to make an incision in [target]'s face."))
 
 /datum/surgery_step/reshape_face/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(HAS_TRAIT_FROM(target, TRAIT_DISFIGURED, TRAIT_GENERIC))
 		REMOVE_TRAIT(target, TRAIT_DISFIGURED, TRAIT_GENERIC)
-		display_results(user, target, "<span class='notice'>You successfully restore [target]'s appearance.</span>",
-			"<span class='notice'>[user] successfully restores [target]'s appearance!</span>",
-			"<span class='notice'>[user] finishes the operation on [target]'s face.</span>")
+		display_results(user, target, span_notice("You successfully restore [target]'s appearance."),
+			span_notice("[user] successfully restores [target]'s appearance!"),
+			span_notice("[user] finishes the operation on [target]'s face."))
 	else
 		var/list/names = list()
 		if(!isabductor(user))
@@ -53,8 +53,8 @@
 	return ..()
 
 /datum/surgery_step/reshape_face/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screw up, leaving [target]'s appearance disfigured!</span>",
-		"<span class='notice'>[user] screws up, disfiguring [target]'s appearance!</span>",
-		"<span class='notice'>[user] finishes the operation on [target]'s face.</span>")
+	display_results(user, target, span_warning("You screw up, leaving [target]'s appearance disfigured!"),
+		span_notice("[user] screws up, disfiguring [target]'s appearance!"),
+		span_notice("[user] finishes the operation on [target]'s face."))
 	ADD_TRAIT(target, TRAIT_DISFIGURED, TRAIT_GENERIC)
 	return FALSE
