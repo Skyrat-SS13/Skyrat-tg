@@ -49,7 +49,6 @@
 	infestation += infestation_rate //Infestation rate is indicative of burns getting worse due to short circuits
 
 	switch(infestation)
-		if(0 to WOUND_INFECTION_MODERATE)
 		if(WOUND_INFECTION_MODERATE to WOUND_INFECTION_SEVERE)
 			if(prob(30))
 				victim.adjustStaminaLoss(2)
