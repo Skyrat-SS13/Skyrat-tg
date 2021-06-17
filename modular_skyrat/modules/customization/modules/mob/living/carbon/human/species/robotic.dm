@@ -14,6 +14,7 @@
 		TRAIT_STABLEHEART,
 		TRAIT_LIMBATTACHMENT,
 		TRAIT_NO_HUSK,
+		HAS_FLESH,
 		TRAIT_OXYIMMUNE
 	)
 	mutant_bodyparts = list()
@@ -74,6 +75,7 @@
 		NOEYESPRITES,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
+		HAS_FLESH,
 		REVIVES_BY_HEALING
 	)
 	mutant_bodyparts = list()
@@ -149,6 +151,7 @@
 		HAIR,
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
+		HAS_FLESH,
 		REVIVES_BY_HEALING
 	)
 	mutant_bodyparts = list()
@@ -184,6 +187,7 @@
 		ROBOTIC_LIMBS,
 		NOTRANSSTING,
 		REVIVES_BY_HEALING,
+		HAS_FLESH,
 		FACEHAIR
 	)
 	default_mutant_bodyparts = list(
@@ -269,6 +273,7 @@
 		ROBOTIC_LIMBS,
 		REVIVES_BY_HEALING,
 		FACEHAIR,
+		HAS_FLESH,
 		NOTRANSSTING
 	)
 	default_mutant_bodyparts = list(
