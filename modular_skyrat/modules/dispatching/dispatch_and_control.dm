@@ -1,6 +1,6 @@
 /datum/action/item_action/dispatch_management
 	name = "Dispatch and Control"
-	button_icon_state = "roundend"
+	button_icon_state = "round_end"
 	var/dispatch_type
 	var/current_filter = "Nothing"
 
@@ -20,7 +20,7 @@
 		return ..()
 
 /datum/action/item_action/dispatch_management/Trigger()
-	var/mob/user = usr
+	var/mob/user = get_mob_by_ckey(usr.ckey)
 	if(!istype(user))
 		return
 	if(!SSdispatch.ui_data_by_mob[user] || !SSdispatch.ui_data_by_mob[user]["mdata"]["holderActive"])
