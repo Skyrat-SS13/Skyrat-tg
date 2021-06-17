@@ -100,6 +100,12 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"bs" = (
+/obj/machinery/porta_turret_cover,
+/turf/open/floor/engine/airless,
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
+	})
 "by" = (
 /obj/item/shard,
 /obj/structure/lattice,
@@ -186,6 +192,14 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"dc" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	icon_state = "damaged2"
+	},
+/area/shuttle/abandoned/crew{
+	name = "Shuttle 8532 Crew Quarters"
+	})
 "ds" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/machinery/light/dim{
@@ -206,13 +220,19 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/airless,
 /area/template_noop)
-"dV" = (
-/obj/effect/mine/explosive,
-/turf/open/floor/iron/airless{
-	icon_state = "floorscorched1"
+"dH" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
 	},
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
+/obj/effect/turf_decal/raven{
+	dir = 8
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9
+	},
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
 	})
 "dX" = (
 /obj/structure/table/reinforced,
@@ -248,12 +268,6 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
-	})
-"eh" = (
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/engine/airless,
-/area/shuttle/abandoned/bridge{
-	name = "Shuttle 8532 Bridge"
 	})
 "el" = (
 /obj/machinery/door/airlock/hatch,
@@ -363,13 +377,6 @@
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
 	})
-"fo" = (
-/turf/open/floor/iron/airless{
-	icon_state = "damaged2"
-	},
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
-	})
 "fp" = (
 /obj/machinery/light/dim{
 	dir = 8;
@@ -412,13 +419,11 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
-"gs" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+"gd" = (
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/airless{
-	icon_state = "damaged5"
+	icon_state = "damaged2"
 	},
 /area/shuttle/abandoned/cargo{
 	name = "Shuttle 8532 Cargo Bay"
@@ -447,14 +452,6 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
-	})
-"gT" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/closet/crate/science,
-/obj/effect/spawner/lootdrop/space/fancytech,
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
 	})
 "ha" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
@@ -495,6 +492,16 @@
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating/airless,
 /area/template_noop)
+"hv" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/iron/airless{
+	icon_state = "damaged5"
+	},
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
 "hD" = (
 /obj/structure/grille,
 /turf/template_noop,
@@ -674,16 +681,6 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
-"kj" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/turf/open/floor/iron/airless{
-	icon_state = "damaged5"
-	},
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
-	})
 "kp" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -694,6 +691,18 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
+	})
+"kx" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/raven{
+	dir = 8
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
 	})
 "ky" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
@@ -717,15 +726,6 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
-	})
-"kT" = (
-/obj/effect/decal/cleanable/glass,
-/obj/item/shard{
-	icon_state = "small"
-	},
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
 	})
 "lc" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -757,17 +757,13 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
-"lz" = (
-/turf/open/floor/iron/airless{
-	icon_state = "damaged2"
-	},
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
-	})
 "lD" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/decal/cleanable/blood/tracks,
+/obj/item/flashlight/glowstick/red{
+	light_on = 1
+	},
 /turf/open/floor/iron/airless{
 	icon_state = "damaged2"
 	},
@@ -844,17 +840,11 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
-"nM" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/raven{
-	dir = 8
-	},
-/obj/item/ammo_casing/spent,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
+"nx" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/engine/airless,
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
 	})
 "nP" = (
 /obj/structure/cable,
@@ -987,6 +977,16 @@
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
 	})
+"py" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/airless{
+	icon_state = "floorscorched1"
+	},
+/area/shuttle/abandoned/crew{
+	name = "Shuttle 8532 Crew Quarters"
+	})
 "pG" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 6
@@ -1017,30 +1017,11 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
-"qB" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
-	},
-/turf/open/floor/iron/airless{
-	icon_state = "floorscorched1"
-	},
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
-	})
 "qE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /turf/open/floor/plating/airless,
-/area/shuttle/abandoned/engine{
-	name = "Shuttle 8532 Engine"
-	})
-"qJ" = (
-/obj/effect/decal/cleanable/glass,
-/turf/open/floor/iron/airless{
-	icon_state = "floorscorched1"
-	},
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
@@ -1122,14 +1103,6 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
-"se" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/airless{
-	icon_state = "floorscorched1"
-	},
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
-	})
 "sg" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -1149,12 +1122,17 @@
 /area/shuttle/abandoned/cargo{
 	name = "Shuttle 8532 Cargo Bay"
 	})
-"sn" = (
-/obj/item/ammo_casing/spent{
-	dir = 5
+"sk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/iron/airless{
+	icon_state = "damaged4"
 	},
-/turf/open/floor/plating/airless,
-/area/template_noop)
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
 "sH" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -1163,6 +1141,21 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
+	})
+"sR" = (
+/obj/effect/mine/explosive,
+/turf/open/floor/iron/airless{
+	icon_state = "floorscorched1"
+	},
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
+	})
+"tc" = (
+/turf/open/floor/iron/airless{
+	icon_state = "damaged2"
+	},
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
 	})
 "tl" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1210,6 +1203,26 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
+"tG" = (
+/obj/structure/mecha_wreckage/gygax{
+	anchored = 1
+	},
+/turf/open/floor/iron/airless{
+	icon_state = "damaged1"
+	},
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
+	})
+"tK" = (
+/obj/machinery/light/small/directional{
+	light_color = "#00FF00";
+	nightshift_light_color = "#00FF00";
+	pixel_y = 32
+	},
+/turf/closed/wall/r_wall,
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
+	})
 "tP" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -1225,13 +1238,6 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
-"tW" = (
-/obj/effect/decal/cleanable/glass,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/engine/airless,
-/area/shuttle/abandoned/bridge{
-	name = "Shuttle 8532 Bridge"
-	})
 "uc" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/iron/airless{
@@ -1246,17 +1252,19 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"ug" = (
+/turf/open/floor/iron/airless{
+	icon_state = "floorscorched2"
+	},
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
+	})
 "uh" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood/tracks,
-/obj/item/ammo_casing/c38{
-	dir = 9;
-	pixel_x = -10;
-	pixel_y = 10
-	},
 /turf/open/floor/iron/airless{
 	icon_state = "damaged2"
 	},
@@ -1312,6 +1320,17 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
+"uS" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 2.9
+	},
+/turf/open/floor/iron/airless{
+	icon_state = "floorscorched1"
+	},
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
+	})
 "uY" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
@@ -1331,37 +1350,12 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
-"vw" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/raven{
-	dir = 8
-	},
-/obj/item/ammo_casing/spent{
-	dir = 9
-	},
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
-	})
 "vy" = (
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/template_noop,
 /area/template_noop)
-"vA" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/turf/open/floor/iron/airless{
-	icon_state = "damaged4"
-	},
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
-	})
 "vC" = (
 /obj/item/shard{
 	icon_state = "tiny"
@@ -1498,11 +1492,21 @@
 /obj/item/stack/rods/ten,
 /turf/template_noop,
 /area/template_noop)
+"xG" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
 "xK" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
+/obj/item/ammo_box/c38,
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
@@ -1528,15 +1532,12 @@
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
 	})
-"yd" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
-	},
+"yo" = (
 /turf/open/floor/iron/airless{
-	icon_state = "floorscorched1"
+	icon_state = "floorscorched2"
 	},
-/area/shuttle/abandoned/crew{
-	name = "Shuttle 8532 Crew Quarters"
+/area/shuttle/abandoned/engine{
+	name = "Shuttle 8532 Engine"
 	})
 "yp" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -1582,16 +1583,6 @@
 /obj/structure/table/reinforced,
 /obj/effect/spawner/lootdrop/space/fancytech,
 /turf/open/floor/iron/airless,
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
-	})
-"yR" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/iron/airless{
-	icon_state = "floorscorched2"
-	},
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
@@ -1710,6 +1701,16 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
+"Az" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/iron/airless{
+	icon_state = "damaged2"
+	},
+/area/shuttle/abandoned/engine{
+	name = "Shuttle 8532 Engine"
+	})
 "AF" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/mecha_wreckage/ripley/deathripley{
@@ -1732,16 +1733,6 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
-"AM" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/turf/open/floor/iron/airless{
-	icon_state = "damaged2"
-	},
-/area/shuttle/abandoned/engine{
-	name = "Shuttle 8532 Engine"
-	})
 "AT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/layer2{
 	dir = 4
@@ -1750,14 +1741,6 @@
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
 	})
-"AZ" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/airless{
-	icon_state = "damaged2"
-	},
-/area/shuttle/abandoned/crew{
-	name = "Shuttle 8532 Crew Quarters"
-	})
 "Bc" = (
 /obj/item/shard{
 	icon_state = "medium"
@@ -1765,12 +1748,6 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
-	})
-"Be" = (
-/obj/effect/decal/cleanable/glass,
-/turf/open/floor/engine/airless,
-/area/shuttle/abandoned/bridge{
-	name = "Shuttle 8532 Bridge"
 	})
 "Bh" = (
 /obj/structure/cable,
@@ -1784,7 +1761,6 @@
 	dir = 8
 	},
 /obj/structure/closet,
-/obj/item/storage/box/beakers/bluespace,
 /obj/item/storage/box/beakers/bluespace,
 /obj/item/storage/box/syringes/variety,
 /turf/open/floor/iron/airless,
@@ -1879,9 +1855,6 @@
 	icon_state = "tube"
 	},
 /obj/structure/cable,
-/obj/item/flashlight/glowstick/red{
-	light_on = 1
-	},
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/cargo{
 	name = "Shuttle 8532 Cargo Bay"
@@ -2052,16 +2025,14 @@
 	name = "Shuttle 8532 Engine"
 	})
 "EM" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
+/obj/machinery/light/small/directional{
+	light_color = "#FF0000";
+	nightshift_light_color = "#FF0000";
+	pixel_y = 32
 	},
-/obj/effect/turf_decal/raven{
-	dir = 8
-	},
-/obj/machinery/light/floor,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
+/turf/closed/wall/r_wall,
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
 	})
 "EQ" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -2077,20 +2048,21 @@
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
 	})
-"ES" = (
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/ammo_casing/spent{
-	dir = 5
-	},
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
-	})
 "EU" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/cargo{
 	name = "Shuttle 8532 Cargo Bay"
+	})
+"EX" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/iron/airless{
+	icon_state = "floorscorched2"
+	},
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
 	})
 "Fd" = (
 /obj/structure/table/reinforced,
@@ -2192,13 +2164,6 @@
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
 	})
-"Hq" = (
-/turf/open/floor/iron/airless{
-	icon_state = "damaged2"
-	},
-/area/shuttle/abandoned/engine{
-	name = "Shuttle 8532 Engine"
-	})
 "Hs" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/cable,
@@ -2250,6 +2215,14 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"Ig" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/airless{
+	icon_state = "floorscorched1"
+	},
+/area/shuttle/abandoned/engine{
+	name = "Shuttle 8532 Engine"
+	})
 "Il" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -2268,13 +2241,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /turf/open/floor/plating,
 /area/template_noop)
-"IH" = (
-/turf/open/floor/iron/airless{
-	icon_state = "floorscorched2"
-	},
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
-	})
 "IM" = (
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 8
@@ -2327,6 +2293,18 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"JP" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate/science,
+/obj/item/stack/sheet/mineral/plasma/thirty,
+/obj/item/stack/sheet/mineral/plasma/five,
+/obj/item/stack/sheet/mineral/plasma/five,
+/obj/item/stack/sheet/mineral/plasma/five,
+/obj/item/stack/sheet/mineral/plasma/five,
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
+	})
 "JQ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/layer2{
 	dir = 8
@@ -2335,18 +2313,20 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"Kc" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
 "Kh" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	state_open = 1
 	},
 /turf/open/floor/iron,
-/area/shuttle/abandoned/engine{
-	name = "Shuttle 8532 Engine"
-	})
-"KT" = (
-/turf/open/floor/iron/airless{
-	icon_state = "floorscorched2"
-	},
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
@@ -2382,14 +2362,12 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
-"Ln" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/obj/item/ammo_casing/spent,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
+"Lr" = (
+/turf/open/floor/iron/airless{
+	icon_state = "damaged2"
+	},
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
 	})
 "Ls" = (
 /obj/structure/railing{
@@ -2431,6 +2409,22 @@
 /area/shuttle/abandoned/bridge{
 	name = "Shuttle 8532 Bridge"
 	})
+"LQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/ammo_casing/spent{
+	dir = 5
+	},
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
+"Mp" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/engine/airless,
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
+	})
 "MB" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/iron/airless,
@@ -2469,16 +2463,10 @@
 /turf/template_noop,
 /area/template_noop)
 "Nr" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/raven{
-	dir = 4
-	},
-/obj/machinery/light/floor,
+/mob/living/simple_animal/hostile/syndicate/melee,
 /turf/open/floor/iron/airless,
-/area/shuttle/abandoned/cargo{
-	name = "Shuttle 8532 Cargo Bay"
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
 	})
 "Nu" = (
 /turf/closed/wall/r_wall,
@@ -2513,15 +2501,6 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
-	})
-"NS" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/obj/item/gun/ballistic/revolver/rifle/improvised,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/crew{
-	name = "Shuttle 8532 Crew Quarters"
 	})
 "NT" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -2612,6 +2591,12 @@
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
 	})
+"Pq" = (
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/engine{
+	name = "Shuttle 8532 Engine"
+	})
 "Ps" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/airless{
@@ -2639,6 +2624,11 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/abandoned/cargo{
 	name = "Shuttle 8532 Cargo Bay"
+	})
+"PV" = (
+/turf/open/floor/plating/airless,
+/area/shuttle/abandoned/bridge{
+	name = "Shuttle 8532 Bridge"
 	})
 "PW" = (
 /obj/item/shard{
@@ -2717,10 +2707,15 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"Rf" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/item/stack/medical/splint/improvised,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/crew{
+	name = "Shuttle 8532 Crew Quarters"
+	})
 "Rr" = (
-/obj/item/flashlight/glowstick/red{
-	light_on = 1
-	},
 /turf/open/floor/iron/airless{
 	icon_state = "damaged5"
 	},
@@ -2733,14 +2728,6 @@
 	},
 /turf/template_noop,
 /area/template_noop)
-"RC" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
-/obj/item/stack/medical/splint/improvised,
-/turf/open/floor/iron/airless,
-/area/shuttle/abandoned/crew{
-	name = "Shuttle 8532 Crew Quarters"
-	})
 "RE" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -2837,6 +2824,17 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
+"SK" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/turf/open/floor/iron/airless{
+	icon_state = "damaged5"
+	},
+/area/shuttle/abandoned/cargo{
+	name = "Shuttle 8532 Cargo Bay"
+	})
 "ST" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/airless,
@@ -2847,6 +2845,15 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/medbay{
 	name = "Shuttle 8532 Medbay"
+	})
+"Tl" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/item/gun/ballistic/revolver/rifle/improvised,
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/crew{
+	name = "Shuttle 8532 Crew Quarters"
 	})
 "Tt" = (
 /obj/structure/window/reinforced{
@@ -2878,6 +2885,13 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
+	})
+"TQ" = (
+/turf/open/floor/iron/airless{
+	icon_state = "damaged2"
+	},
+/area/shuttle/abandoned/engine{
+	name = "Shuttle 8532 Engine"
 	})
 "Ub" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
@@ -2933,16 +2947,6 @@
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
 	})
-"UR" = (
-/obj/structure/mecha_wreckage/gygax{
-	anchored = 1
-	},
-/turf/open/floor/iron/airless{
-	icon_state = "damaged1"
-	},
-/area/shuttle/abandoned/medbay{
-	name = "Shuttle 8532 Medbay"
-	})
 "Vf" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/cable,
@@ -2976,6 +2980,14 @@
 /turf/open/floor/iron/airless,
 /area/shuttle/abandoned/crew{
 	name = "Shuttle 8532 Crew Quarters"
+	})
+"VD" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/airless{
+	icon_state = "floorscorched1"
+	},
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
 	})
 "VF" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3147,6 +3159,12 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating/airless,
 /area/template_noop)
+"XI" = (
+/obj/item/ammo_casing/spent{
+	dir = 5
+	},
+/turf/open/floor/plating/airless,
+/area/template_noop)
 "XQ" = (
 /obj/machinery/turretid{
 	lethal = 1;
@@ -3189,6 +3207,15 @@
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
 	})
+"Yr" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/iron/airless,
+/area/shuttle/abandoned/medbay{
+	name = "Shuttle 8532 Medbay"
+	})
 "Yy" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/turf_decal/stripes/line,
@@ -3203,11 +3230,6 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/abandoned/engine{
 	name = "Shuttle 8532 Engine"
-	})
-"YH" = (
-/turf/open/floor/plating/airless,
-/area/shuttle/abandoned/bridge{
-	name = "Shuttle 8532 Bridge"
 	})
 "YO" = (
 /obj/structure/lattice,
@@ -3303,7 +3325,7 @@
 (1,1,1) = {"
 qb
 qb
-oB
+EM
 oB
 qb
 qb
@@ -3498,7 +3520,7 @@ qb
 (4,1,1) = {"
 qb
 ST
-YH
+PV
 hf
 MH
 hU
@@ -3563,7 +3585,7 @@ qb
 (5,1,1) = {"
 qb
 ZN
-eh
+bs
 oB
 Fu
 hU
@@ -3907,13 +3929,13 @@ ou
 qb
 Nu
 NT
-dV
+sR
 tU
 Th
 aM
 Th
 tU
-IH
+ug
 mc
 mc
 ts
@@ -3978,7 +4000,7 @@ Th
 tU
 lS
 me
-fo
+Lr
 mc
 mc
 VV
@@ -4040,7 +4062,7 @@ zW
 DZ
 fU
 DZ
-qB
+uS
 DZ
 eU
 mc
@@ -4103,16 +4125,16 @@ hU
 PT
 rI
 VS
-vw
-nM
+dH
+kx
 ol
-EM
+ol
 Fz
 Su
 tl
 Vk
 OV
-sn
+XI
 vG
 OQ
 OQ
@@ -4158,16 +4180,16 @@ re
 EQ
 Zj
 Lm
-AZ
+dc
 GX
 YT
 Qd
 XV
 mS
-yd
+py
 oA
 wS
-lz
+tc
 Jo
 yp
 ee
@@ -4178,7 +4200,7 @@ AF
 au
 xj
 EU
-lz
+gd
 Du
 ts
 ts
@@ -4226,13 +4248,13 @@ nP
 Zq
 jg
 jm
-NS
+Tl
 bR
 yI
 nP
 xz
 Bu
-Ln
+xG
 CC
 WZ
 CC
@@ -4240,12 +4262,12 @@ CC
 WZ
 CC
 WZ
-kj
+hv
 rD
 nV
 nV
-gs
-vA
+SK
+sk
 pe
 NG
 zZ
@@ -4278,7 +4300,7 @@ qb
 (16,1,1) = {"
 HP
 eV
-Uy
+Qs
 Vj
 xR
 oB
@@ -4304,11 +4326,11 @@ RF
 Nw
 ee
 MB
-ES
+LQ
 gI
 ad
 VM
-PP
+Kc
 PP
 lD
 Rr
@@ -4332,7 +4354,7 @@ br
 rP
 jk
 Lb
-Lb
+Pq
 Lb
 Kh
 EE
@@ -4349,7 +4371,7 @@ ff
 oB
 RE
 Lm
-RC
+Rf
 Lm
 Lm
 Lm
@@ -4366,7 +4388,7 @@ BV
 sh
 Il
 sh
-Nr
+sh
 DP
 XD
 ro
@@ -4429,10 +4451,10 @@ Nu
 lv
 tC
 qw
-kT
+Yr
 zC
 tC
-yR
+EX
 vC
 BA
 OO
@@ -4473,7 +4495,7 @@ qb
 (19,1,1) = {"
 HP
 eV
-Qs
+Nr
 Qs
 Ux
 oB
@@ -4493,7 +4515,7 @@ hU
 Nu
 Ex
 Th
-se
+VD
 Ps
 tU
 tU
@@ -4559,7 +4581,7 @@ Nu
 PI
 OO
 Th
-UR
+tG
 aM
 Di
 mc
@@ -4652,8 +4674,8 @@ oe
 wP
 Lf
 cT
-KT
-Hq
+yo
+TQ
 GM
 Rb
 WT
@@ -4690,7 +4712,7 @@ Nu
 mc
 mc
 mc
-gT
+JP
 mc
 eL
 VV
@@ -4717,7 +4739,7 @@ NG
 aQ
 XC
 uY
-AM
+Az
 jb
 jb
 hh
@@ -4781,7 +4803,7 @@ OQ
 dE
 fV
 ts
-qJ
+Ig
 Sg
 pm
 Qi
@@ -4798,7 +4820,7 @@ qb
 (24,1,1) = {"
 ts
 OQ
-Be
+nx
 oB
 CG
 Fu
@@ -4863,7 +4885,7 @@ yx
 (25,1,1) = {"
 qb
 OQ
-ts
+PV
 oB
 MH
 hU
@@ -4927,8 +4949,8 @@ qb
 "}
 (26,1,1) = {"
 qb
-tW
-ts
+Mp
+PV
 hf
 Fu
 hU
@@ -4993,7 +5015,7 @@ qb
 (27,1,1) = {"
 qb
 tP
-eh
+bs
 oB
 Qn
 hU
@@ -5123,7 +5145,7 @@ qb
 (29,1,1) = {"
 qb
 qb
-oB
+tK
 oB
 qb
 qb
