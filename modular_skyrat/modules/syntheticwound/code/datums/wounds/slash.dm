@@ -243,7 +243,7 @@
 
 /datum/wound/synthetic/slash/severe
 	name = "Destroyed Panel"
-	desc = "Patients metallic outer coating has been entirely ripped open; exposing sensitive hydraulics."
+	desc = "Patient's metallic outer coating has been entirely ripped open, exposing sensitive hydraulics."
 	treat_text = "Speedy application of surgical tape to stem the initial bleeding, then welding"
 	examine_desc = "has severe damage to their limb, leaking oil heavily"
 	occur_text = "is ripped open, its panel sparking and its hydraulics leaking oil"
