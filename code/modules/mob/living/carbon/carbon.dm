@@ -1211,8 +1211,11 @@
 			else
 				wound_type = forced_type
 		else
-			wound_type = pick(GLOB.global_all_wound_types)
-
+			switch(scar_part.status)
+				if(BODYPART_ROBOTIC)
+					wound_type = pick(GLOB.global_all_wound_types_synth)
+				if(BODYPART_ORGANIC)
+					wound_type = pick(GLOB.global_all_wound_types)
 		var/datum/wound/phantom_wound = new wound_type
 		scaries.generate(scar_part, phantom_wound)
 		scaries.fake = TRUE
