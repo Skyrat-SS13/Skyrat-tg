@@ -179,7 +179,7 @@
 /datum/wound/synthetic/burn/treat(obj/item/I, mob/user)
 	if(istype(I, /obj/item/stack/cable_coil))
 		cablecoil(I, user)
-	else if(istype(I, /obj/item/stack/sticky_tape))
+	else if(istype(I, /obj/item/stack/sticky_tape/surgical))
 		var/obj/item/stack/medical/mesh/mesh_check = I
 		cablecoil(mesh_check, user)
 
@@ -224,7 +224,7 @@
 	threshold_minimum = 80
 	threshold_penalty = 40
 	status_effect_type = /datum/status_effect/wound/burn/severe
-	treatable_by = list(/obj/item/stack/cable_coil, /obj/item/stack/sticky_tape)
+	treatable_by = list(/obj/item/stack/cable_coil, /obj/item/stack/sticky_tape/surgical)
 	infestation_rate = 0.05 // appx 13 minutes to reach sepsis without any treatment
 	flesh_damage = 12.5
 	scar_keyword = "burnsevere"
@@ -241,7 +241,7 @@
 	threshold_minimum = 140
 	threshold_penalty = 80
 	status_effect_type = /datum/status_effect/wound/burn/critical
-	treatable_by = list(/obj/item/stack/cable_coil, /obj/item/stack/sticky_tape)
+	treatable_by = list(/obj/item/stack/cable_coil, /obj/item/stack/sticky_tape/surgical)
 	infestation_rate = 0.15 // appx 4.33 minutes to reach sepsis without any treatment
 	flesh_damage = 20
 	scar_keyword = "burncritical"
