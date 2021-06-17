@@ -1565,10 +1565,11 @@
 /turf/closed/wall,
 /area/security/brig)
 "ahy" = (
-/obj/machinery/turnstile{
-	dir = 1
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/turnstile{
+	dir = 1;
+	req_one_access_txt = "2;63;81"
+	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "ahz" = (
@@ -1578,8 +1579,10 @@
 /turf/open/floor/iron/dark/blue/side,
 /area/security/prison)
 "ahA" = (
-/obj/machinery/turnstile,
 /obj/machinery/door/firedoor,
+/obj/machinery/turnstile{
+	req_one_access_txt = "2;63;81"
+	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "ahD" = (
@@ -28812,7 +28815,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/vending/security_ammo,
+/obj/machinery/ammo_workbench,
 /turf/open/floor/iron/dark,
 /area/security/range)
 "dBN" = (
