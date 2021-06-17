@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/modules/typing_indicator/icons/typing_indicator.dmi', "default0", FLY_LAYER))
+GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "default0", FLY_LAYER))
 
 /mob
 	var/typing_indicator = FALSE

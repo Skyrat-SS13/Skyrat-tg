@@ -2,7 +2,7 @@
 GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 
 /proc/GenerateCombatOverlay()
-	var/mutable_appearance/combat_indicator = mutable_appearance('modular_skyrat/modules/combat_indicator/icons/combat_indicator.dmi', "combat", FLY_LAYER)
+	var/mutable_appearance/combat_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/combat_indicator.dmi', "combat", FLY_LAYER)
 	combat_indicator.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	return combat_indicator
 
