@@ -450,9 +450,9 @@
 	injury_roll += check_woundings_mods(woundtype, damage, wound_bonus, bare_wound_bonus)
 	//SKYRAT EDIT BEGIN. SYNTH WOUNDS
 	var/list/wounds_checking
-	if(src.status == BODYPART_ROBOTIC || (owner.mob_biotypes & MOB_ROBOTIC))
+	if((owner.mob_biotypes & (MOB_SYNTHETIC) || src.status == BODYPART_ROBOTIC)
 		wounds_checking = GLOB.global_wound_types_synth[woundtype]
-	if(src.status == BODYPART_ORGANIC && (owner.mob_biotypes & MOB_ORGANIC) && !src.status == BODYPART_ROBOTIC)
+	if((owner.mob_biotypes & MOB_ORGANIC) || !src.status == BODYPART_ROBOTIC)
 		wounds_checking = GLOB.global_wound_types[woundtype]
 	if(injury_roll > WOUND_DISMEMBER_OUTRIGHT_THRESH && prob(get_damage() / max_damage * 100))
 		var/datum/wound/loss/dismembering = new
