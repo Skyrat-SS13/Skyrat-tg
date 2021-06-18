@@ -56,6 +56,7 @@
 "aY" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/drinks/fullupgrade,
+/obj/structure/noticeboard/directional/north,
 /turf/open/floor/iron/large,
 /area/template_noop)
 "aZ" = (
@@ -220,9 +221,22 @@
 /obj/structure/table,
 /turf/open/floor/iron/large,
 /area/template_noop)
+"eC" = (
+/obj/structure/sign/poster/contraband/power{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark,
+/area/template_noop)
 "eI" = (
 /obj/structure/table,
-/obj/item/toy/cards/deck/kotahi,
+/obj/item/toy/cards/deck/kotahi{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/toy/cards/deck/syndicate{
+	pixel_x = 4;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/cafeteria,
 /area/template_noop)
 "eK" = (
@@ -447,6 +461,10 @@
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/iron,
 /area/template_noop)
+"jy" = (
+/obj/machinery/food_cart,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/template_noop)
 "jB" = (
 /obj/machinery/door/window/survival_pod{
 	dir = 4;
@@ -505,6 +523,9 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/tools{
+	pixel_y = 32
+	},
 /turf/open/floor/iron,
 /area/template_noop)
 "kA" = (
@@ -621,6 +642,13 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
+/area/template_noop)
+"ot" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/rip_badger{
+	pixel_x = 32
+	},
+/turf/open/floor/iron,
 /area/template_noop)
 "ou" = (
 /obj/effect/loot_site_spawner,
@@ -743,6 +771,14 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
+/area/template_noop)
+"qE" = (
+/obj/structure/sink/kitchen{
+	dir = 1
+	},
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
 /area/template_noop)
 "qJ" = (
 /obj/effect/turf_decal/tile/brown{
@@ -1001,6 +1037,16 @@
 /obj/structure/lattice/catwalk,
 /turf/template_noop,
 /area/template_noop)
+"vR" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_y = 9
+	},
+/obj/effect/spawner/lootdrop/donkpockets,
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
+/area/template_noop)
 "vS" = (
 /turf/open/floor/engine/o2,
 /area/template_noop)
@@ -1015,7 +1061,8 @@
 /turf/open/floor/mineral/plastitanium,
 /area/template_noop)
 "wa" = (
-/obj/structure/noticeboard/directional/east,
+/obj/structure/table,
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate,
 /turf/open/floor/iron/large,
 /area/template_noop)
 "wl" = (
@@ -1135,6 +1182,10 @@
 	dir = 4
 	},
 /area/template_noop)
+"yB" = (
+/obj/machinery/smartfridge/food,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/template_noop)
 "yO" = (
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/iron/dark/textured_edge{
@@ -1172,7 +1223,13 @@
 	},
 /area/template_noop)
 "zK" = (
-/turf/closed/wall/r_wall/syndicate,
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_y = 6
+	},
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
 /area/template_noop)
 "zV" = (
 /turf/open/floor/iron/stairs/right,
@@ -1212,7 +1269,14 @@
 	},
 /area/template_noop)
 "Au" = (
-/turf/open/floor/iron/textured_large,
+/obj/machinery/deepfryer,
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_x = 37;
+	pixel_y = 2
+	},
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
 /area/template_noop)
 "Ay" = (
 /obj/structure/railing,
@@ -1307,6 +1371,15 @@
 	dir = 4
 	},
 /area/template_noop)
+"DA" = (
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/syndicate_pistol{
+	pixel_y = -32
+	},
+/turf/open/floor/iron/cafeteria,
+/area/template_noop)
 "DC" = (
 /obj/effect/turf_decal/stripes/end{
 	dir = 1
@@ -1373,6 +1446,12 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
+/area/template_noop)
+"Fm" = (
+/obj/structure/closet/secure_closet/freezer/meat{
+	req_access = list(150)
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/template_noop)
 "Fn" = (
 /obj/effect/decal/cleanable/glass,
@@ -1481,6 +1560,9 @@
 /obj/machinery/door/window/survival_pod{
 	req_access_txt = "150"
 	},
+/obj/machinery/status_display/syndie{
+	pixel_x = 32
+	},
 /turf/open/floor/iron/large,
 /area/template_noop)
 "II" = (
@@ -1565,6 +1647,14 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
+"KO" = (
+/obj/structure/table,
+/obj/item/kitchen/knife,
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
+/area/template_noop)
 "KQ" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/burgundy,
@@ -1578,6 +1668,10 @@
 /turf/open/floor/iron/dark/textured_corner{
 	dir = 8
 	},
+/area/template_noop)
+"Ln" = (
+/obj/structure/kitchenspike,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/template_noop)
 "LN" = (
 /obj/structure/lattice/catwalk,
@@ -1801,6 +1895,10 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/template_noop)
+"QB" = (
+/obj/machinery/icecream_vat,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/template_noop)
 "QI" = (
 /obj/machinery/door/airlock/external{
 	req_access_txt = "150"
@@ -1856,6 +1954,17 @@
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
+/area/template_noop)
+"RW" = (
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	req_access = list(150)
+	},
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/structure/sign/poster/contraband/kss13{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/template_noop)
 "RZ" = (
 /obj/machinery/power/smes/magical{
@@ -1987,6 +2096,16 @@
 /obj/structure/spider/stickyweb,
 /turf/open/floor/iron,
 /area/template_noop)
+"UD" = (
+/obj/structure/table,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 8
+	},
+/obj/item/book/manual/wiki/cooking_to_serve_man,
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
+/area/template_noop)
 "UI" = (
 /obj/effect/turf_decal/trimline/yellow/line,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -2067,6 +2186,19 @@
 /obj/structure/mopbucket,
 /obj/item/mop,
 /turf/open/floor/iron,
+/area/template_noop)
+"Wj" = (
+/obj/structure/table,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 6
+	},
+/turf/open/floor/iron/kitchen{
+	dir = 4
+	},
 /area/template_noop)
 "Wl" = (
 /obj/structure/table/wood,
@@ -2213,6 +2345,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/structure/sign/poster/contraband/rebels_unite{
+	pixel_y = 32
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 5
 	},
@@ -2291,6 +2426,14 @@
 	dir = 4
 	},
 /area/template_noop)
+"YV" = (
+/obj/structure/closet/secure_closet/freezer/kitchen{
+	req_access = list(150)
+	},
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/soymilk,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/template_noop)
 "Ze" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -2311,6 +2454,10 @@
 	id = "interdyneoldeva"
 	},
 /turf/open/floor/plating,
+/area/template_noop)
+"Zk" = (
+/obj/machinery/gibber,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/template_noop)
 "Zl" = (
 /obj/effect/turf_decal/stripes/line{
@@ -4100,7 +4247,7 @@ Oe
 WB
 WB
 WB
-WB
+ot
 WB
 WB
 WB
@@ -5089,7 +5236,7 @@ to
 aC
 nM
 qw
-fb
+eC
 XY
 Um
 qw
@@ -5620,14 +5767,14 @@ mc
 mc
 mc
 mc
-mc
-mc
-mc
-mc
-mc
-mc
-mc
-mc
+tT
+uw
+QQ
+fb
+tT
+uw
+QQ
+fb
 tT
 YR
 QQ
@@ -5697,14 +5844,14 @@ mc
 mc
 mc
 mc
-mc
-mc
-mc
-mc
-mc
-mc
-mc
-mc
+tO
+uO
+uS
+fb
+tO
+uO
+uS
+fb
 tO
 uO
 uS
@@ -5774,14 +5921,14 @@ mc
 mc
 mc
 mc
-mc
-mc
-mc
-mc
-mc
-mc
-mc
-mc
+tP
+tU
+Qq
+fb
+tP
+tU
+Qq
+fb
 tP
 tU
 Qq
@@ -6092,7 +6239,7 @@ jF
 jF
 jF
 jF
-jF
+DA
 qw
 tP
 tU
@@ -6315,7 +6462,7 @@ mc
 mc
 mc
 qw
-eu
+wa
 gR
 eu
 yb
@@ -6471,7 +6618,7 @@ mc
 qw
 aZ
 iQ
-wa
+iQ
 iQ
 Ie
 NX
@@ -6548,7 +6695,7 @@ mc
 qw
 bZ
 iW
-qw
+yB
 yd
 qw
 aC
@@ -6780,12 +6927,12 @@ qw
 ef
 jN
 jN
+UD
 qw
+YV
+RW
 od
-od
-od
-od
-od
+Zk
 qw
 fb
 fb
@@ -6857,12 +7004,12 @@ qw
 eK
 jN
 jN
+qE
 qw
 od
 od
 od
-od
-od
+Ln
 qw
 tT
 uw
@@ -6934,12 +7081,12 @@ qw
 fJ
 jN
 jN
-Au
+jN
+yd
 od
 od
 od
-od
-od
+jy
 qw
 tO
 uO
@@ -7008,15 +7155,15 @@ mc
 mc
 mc
 qw
-fJ
-jN
-jN
+Au
+KO
+Wj
+vR
 qw
+Fm
+Fm
 od
-od
-od
-od
-od
+QB
 qw
 tP
 tU
@@ -7095,9 +7242,9 @@ qw
 qw
 qw
 qw
-mc
-mc
-mc
+fb
+fb
+fb
 mc
 mc
 mc
