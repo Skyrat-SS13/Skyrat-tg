@@ -14,8 +14,8 @@
 		/obj/item/assembly/flash/handheld = 5,
 		/obj/item/food/donut = 12,
 		/obj/item/storage/box/evidence = 6,
-		/obj/item/flashlight/seclite = 4
-		/obj/item/taperoll/police = 4
+		/obj/item/flashlight/seclite = 4,
+		/obj/item/taperoll/police = 4	//Hell yea baby, police tape
 	)
 	contraband = list(
 		/obj/item/clothing/glasses/sunglasses = 2,
