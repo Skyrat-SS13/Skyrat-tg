@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command and the Nanotrasen Representative"
-	selection_color = "#ddddff"
+	selection_color = "#c6ffe0"
 	minimal_player_age = 7
 	exp_requirements = 2400
 	exp_type = EXP_TYPE_SECURITY

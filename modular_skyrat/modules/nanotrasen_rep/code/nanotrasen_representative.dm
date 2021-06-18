@@ -5,7 +5,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "Central Command"
-	selection_color = "#2395ff"
+	selection_color = "#c6ffe0"
 	minimal_player_age = 7
 	exp_requirements = 120
 	minimal_player_age = 14
