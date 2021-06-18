@@ -1,0 +1,143 @@
+/datum/job/nanotrasen_representative
+	title = "Nanotrasen Representative"
+	department_head = list("Central Command")
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "Central Command"
+	selection_color = "#2395ff"
+	minimal_player_age = 7
+	exp_requirements = 120
+	minimal_player_age = 14
+	exp_requirements = 180
+	exp_type = EXP_TYPE_CREW
+	exp_type_department = EXP_TYPE_COMMAND
+
+	departments = DEPARTMENT_COMMAND | DEPARTMENT_CENTRAL_COMMAND
+
+	outfit = /datum/outfit/job/nanotrasen_representative
+	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_representative
+
+	paycheck = PAYCHECK_HARD
+	paycheck_department = ACCOUNT_SEC
+
+	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE
+	bounty_types = CIV_JOB_SEC
+
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
+
+	mail_goodies = list(
+		/obj/item/clothing/mask/cigarette/cigar/havana = 20,
+		/obj/item/storage/fancy/cigarettes/cigars/havana = 15,
+		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
+	)
+
+	veteran_only = TRUE
+
+/datum/outfit/job/nanotrasen_representative
+	name = "Nanotrasen Representative"
+	jobtype = /datum/job/nanotrasen_representative
+
+	belt = /obj/item/pda/nanotrasen_representative
+	glasses = /obj/item/clothing/glasses/sunglasses
+	ears = /obj/item/radio/headset/heads/nanotrasen_representative
+	gloves = /obj/item/clothing/gloves/combat
+	uniform =  /obj/item/clothing/under/rank/nanotrasen_representative
+	suit = /obj/item/clothing/suit/armor/vest/nanotrasen_representative
+	shoes = /obj/item/clothing/shoes/jackboots
+	head = /obj/item/clothing/head/beret/nanotrasen_representative
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1)
+
+	skillchips = list(/obj/item/skillchip/disk_verifier)
+
+	backpack = /obj/item/storage/backpack
+	satchel = /obj/item/storage/backpack/satchel
+	duffelbag = /obj/item/storage/backpack/duffelbag
+
+	implants = list(/obj/item/implant/mindshield)
+	accessory = /obj/item/clothing/accessory/medal/gold/nanotrasen_representative
+
+	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/centcom)
+
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/job/nanotrasen_representative
+
+/obj/item/radio/headset/heads/nanotrasen_representative
+	name = "\proper the nanotrasen representative's headset"
+	desc = "An official Central Command headset."
+	icon_state = "cent_headset"
+	keyslot = new /obj/item/encryptionkey/headset_com
+	keyslot2 = new /obj/item/encryptionkey/headset_cent
+
+/obj/item/radio/headset/heads/nanotrasen_representative/alt
+	name = "\proper the nanotrasen representative's bowman headset"
+	desc = "An official Central Command headset. Protects ears from flashbangs."
+	icon_state = "cent_headset_alt"
+	inhand_icon_state = "cent_headset_alt"
+
+/obj/item/radio/headset/heads/nanotrasen_representative/alt/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
+/obj/effect/landmark/start/nanotrasen_representative
+	name = "Nanotrasen Representative"
+	icon_state = "Captain"
+
+/obj/item/clothing/accessory/medal/gold/nanotrasen_representative
+	name = "medal of diplomacy"
+	desc = "A golden medal awarded exclusively to those promoted to the rank of Nanotrasen Representative. It signifies the diplomatic abilities of said individual and their sheer dedication to Nanotrasen."
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+
+/datum/outfit/plasmaman/nanotrasen_representative
+	name = "Nanotrasen Representative Plasmaman"
+
+	uniform = /obj/item/clothing/under/plasmaman/centcom_official
+	gloves = /obj/item/clothing/gloves/color/captain //Too iconic to be replaced with a plasma version
+	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_official
+
+/obj/structure/closet/secure_closet/nanotrasen_representative
+	name = "\proper captain's locker"
+	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+	icon_state = "cap"
+
+/obj/structure/closet/secure_closet/nanotrasen_representative/PopulateContents()
+	..()
+	new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
+	new /obj/item/storage/backpack/satchel/leather(src)
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/pet_carrier(src)
+	new /obj/item/clothing/shoes/sneakers/brown(src)
+	new /obj/item/clothing/under/rank/nanotrasen_representative(src)
+	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
+	new /obj/item/clothing/suit/armor/vest(src)
+	new /obj/item/clothing/head/nanotrasen_representative(src)
+	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
+	new /obj/item/cartridge/captain(src)
+	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
+	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
+	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
+	new /obj/item/storage/photo_album/personal(src)
+	new /obj/item/stamp/centcom(src)
+
+/obj/item/pda/nanotrasen_representative
+	name = "nanotrasen representatives PDA"
+	default_cartridge = /obj/item/cartridge/captain
+	inserted_item = /obj/item/pen/fountain/captain
+	greyscale_colors = "#017941#0060b8"
+
+/obj/item/storage/box/gunset/nanotrasen_representative
+	name = "M45A5 Gunset"
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/gun/ballistic/automatic/pistol/m45a5/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/nanotrasen_representative/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/m45a5/nomag(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)
+	new /obj/item/ammo_box/magazine/m45a5(src)

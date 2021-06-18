@@ -71,6 +71,23 @@
 	config_job = "blueshield"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
+/datum/id_trim/job/nanotrasen_representative
+	assignment = "Nanotrasen Representative"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_nanotrasenrepresentative"
+	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
+				ACCESS_AI_UPLOAD, ACCESS_EVA, ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_LAWYER, ACCESS_VAULT,
+				ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_TELEPORTER,
+				ACCESS_CENT_GENERAL)
+	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_WEAPONS,
+				ACCESS_AI_UPLOAD, ACCESS_EVA, ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_LAWYER, ACCESS_VAULT,
+				ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_TELEPORTER,
+				ACCESS_CENT_GENERAL)
+	full_wildcard_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+	minimal_wildcard_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+	config_job = "nanotrasen_representative"
+	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
+
 /datum/id_trim/job/captain/shuttle_pilot
 	assignment = "Shuttle Pilot"
 	trim_state = "trim_shuttlepilot"

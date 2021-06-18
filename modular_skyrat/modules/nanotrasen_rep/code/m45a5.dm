@@ -1,18 +1,4 @@
-/obj/item/ammo_casing/b460
-	name = ".460 Rowland Magnum bullet casing"
-	desc = "A .460 Rowland Magnum casing."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
-	icon_state = "sl-casing"
-	caliber = "460"
-	projectile_type = /obj/projectile/bullet/b460
 
-/obj/projectile/bullet/b460
-	name = ".460 RM JHP bullet"
-	damage = 36
-	stamina = 12
-	wound_bonus = 35
-	weak_against_armour = TRUE
-	speed = 2.25
 
 /obj/item/gun/ballistic/automatic/pistol/m45a5
 	name = "\improper M45A5 Elite"
@@ -43,18 +29,18 @@
 	max_ammo = 10 //Increased length single stacks.
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
-/obj/item/storage/box/gunset/blueshield
-	name = "CFA 'Lynx' Gunset"
-	w_class = WEIGHT_CLASS_NORMAL
+/obj/item/ammo_casing/b460
+	name = ".460 Rowland Magnum bullet casing"
+	desc = "A .460 Rowland Magnum casing."
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
+	icon_state = "sl-casing"
+	caliber = "460"
+	projectile_type = /obj/projectile/bullet/b460
 
-/obj/item/gun/ballistic/automatic/pistol/m45a5/nomag
-	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/blueshield/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+/obj/projectile/bullet/b460
+	name = ".460 RM JHP bullet"
+	damage = 30
+	stamina = 12
+	weak_against_armour = TRUE
+	speed = 2.25
 

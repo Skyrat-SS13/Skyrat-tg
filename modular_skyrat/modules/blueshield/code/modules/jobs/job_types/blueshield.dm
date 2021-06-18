@@ -1,11 +1,11 @@
 /datum/job/blueshield
 	title = "Blueshield"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Central Command")
+	department_head = list("Nanotrasen Representative")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Central Command"
+	supervisors = "Central Command and the Nanotrasen Representative"
 	selection_color = "#ddddff"
 	minimal_player_age = 7
 	exp_requirements = 2400
@@ -18,7 +18,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	bounty_types = CIV_JOB_SEC
-	departments = DEPARTMENT_COMMAND
+	departments = DEPARTMENT_COMMAND | DEPARTMENT_CENTRAL_COMMAND
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
 
 	family_heirlooms = list(/obj/item/bedsheet/captain, /obj/item/clothing/head/beret/blueshield)
@@ -59,3 +59,13 @@
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
 
+/obj/item/storage/box/gunset/blueshield
+	name = "CFA 'Lynx' Gunset"
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/box/gunset/blueshield/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
