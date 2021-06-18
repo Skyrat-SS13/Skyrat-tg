@@ -2,14 +2,12 @@
 	title = "Nanotrasen Representative"
 	department_head = list("Central Command")
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "Central Command"
 	selection_color = "#c6ffe0"
-	minimal_player_age = 7
-	exp_requirements = 120
 	minimal_player_age = 14
-	exp_requirements = 180
+	exp_requirements = 600
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_COMMAND
 
