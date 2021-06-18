@@ -31,6 +31,7 @@
 	if(!stored_name)
 		to_chat(user, "You polish your old badge fondly, shining up the surface.")
 		set_name(user.real_name)
+		badge_string = id_card.assignment
 		return
 
 	if(isliving(user))
@@ -106,6 +107,7 @@
 		if(ACCESS_BRIG in id_card.access || emagged)
 			to_chat(user, "You imprint your ID details onto the badge.")
 			set_name(user.real_name)
+			badge_string = id_card.assignment
 		else
 			to_chat(user, "[src] rejects your insufficient access rights.")
 		return
