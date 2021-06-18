@@ -66,10 +66,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 /obj/machinery/photocopier/faxmachine/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_warning("You swipe the card through [src], but nothing happens.")
+		to_chat(user, span_warning("You swipe the card through [src], but nothing happens."))
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, span_notice("The transmitters realign to an unknown source!")
+	to_chat(user, span_notice("The transmitters realign to an unknown source!"))
 
 /obj/machinery/photocopier/faxmachine/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -231,16 +231,16 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		rcvdFax.message = paper_copy
 		rcvdFax.sent_by = sender
 		rcvdFax.sent_at = world.time
-		visible_message(span_notice("[src] beeps, \"Message transmitted successfully.\"")
+		visible_message(span_notice("[src] beeps, \"Message transmitted successfully.\""))
 
 	else if(destination == department)
-		visible_message(span_notice("[src] beeps, \"Error transmitting message. [src] cannot send faxes to itself.\"")
+		visible_message(span_notice("[src] beeps, \"Error transmitting message. [src] cannot send faxes to itself.\""))
 	else if(destination == "Not Selected")
-		visible_message(span_notice("[src] beeps, \"Error transmitting message. Select a destination.\"")
+		visible_message(span_notice("[src] beeps, \"Error transmitting message. Select a destination.\""))
 	else if(destination == "Unknown")
-		visible_message(span_notice("[src] beeps, \"Error transmitting message. Cannot transmit to Unknown.\"")
+		visible_message(span_notice("[src] beeps, \"Error transmitting message. Cannot transmit to Unknown.\""))
 	else
-		visible_message(span_notice("[src] beeps, \"Error transmitting message.\"")
+		visible_message(span_notice("[src] beeps, \"Error transmitting message.\""))
 
 /obj/machinery/photocopier/faxmachine/proc/receivefax(var/obj/item/paper/incoming)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -295,7 +295,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		//rcvdcopy = make_paper_copy(paper_copy)
 		rcvdcopy = paper_copy
 	else
-		visible_message(span_notice("[src] beeps, \"Error transmitting message.\"")
+		visible_message(span_notice("[src] beeps, \"Error transmitting message.\""))
 		return
 
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
@@ -316,9 +316,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		if("Syndicate")
 			message_admins(sender, "SYNDICATE FAX", destination, paper_copy, "#DC143C")
 	sendcooldown = cooldown_time
-	visible_message(span_notice("[src] beeps, \"Message transmitted successfully.\"")
+	visible_message(span_notice("[src] beeps, \"Message transmitted successfully.\""))
 
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/faxtype, var/obj/item/paper/sent, font_colour="#9A04D1")
-	var/msg = {span_boldnotice("<font color='[font_colour]'>[faxname]: </font> [ADMIN_LOOKUP(sender)] | REPLY: [ADMIN_CENTCOM_REPLY(sender)] [ADMIN_FAX(sender, src, faxtype, sent)] [ADMIN_SM(sender)] | REJECT: (<A HREF='?_src_=holder;[HrefToken(TRUE)];FaxReplyTemplate=[REF(sender)];originfax=[REF(src)]'>TEMPLATE</A>)[ADMIN_SMITE(sender)] (<A HREF='?_src_=holder;[HrefToken(TRUE)];</A>) : Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(sent)]'>view message</a>)"}
+	//var/msg = span_boldnotice("<font color='[font_colour]'>[faxname]: </font> [ADMIN_LOOKUP(sender)] | REPLY: [ADMIN_CENTCOM_REPLY(sender)] [ADMIN_FAX(sender, src, faxtype, sent)] [ADMIN_SM(sender)] | REJECT: (<A HREF='?_src_=holder;[HrefToken(TRUE)];FaxReplyTemplate=[REF(sender)];originfax=[REF(src)]'>TEMPLATE</A>)[ADMIN_SMITE(sender)] (<A HREF='?_src_=holder;[HrefToken(TRUE)];</A>) : Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(sent)]'>view message</a>")
+	var/msg = {"<span class='boldnotice'><font color='[font_colour]'>[faxname]: </font> [ADMIN_LOOKUP(sender)] | REPLY: [ADMIN_CENTCOM_REPLY(sender)] [ADMIN_FAX(sender, src, faxtype, sent)] [ADMIN_SM(sender)] | REJECT: (<A HREF='?_src_=holder;[HrefToken(TRUE)];FaxReplyTemplate=[REF(sender)];originfax=[REF(src)]'>TEMPLATE</A>)[ADMIN_SMITE(sender)] (<A HREF='?_src_=holder;[HrefToken(TRUE)];</A>) : Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(sent)]'>view message</a>"}
 	to_chat(GLOB.admins, msg)

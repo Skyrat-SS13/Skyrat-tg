@@ -65,7 +65,7 @@
 
 		if(destination != "All Departments")
 			if(fax.receivefax(paper) == FALSE)
-				to_chat(owner, span_warning("Message transmission failed.")
+				to_chat(owner, span_warning("Message transmission failed."))
 				return
 		else
 			for(var/thing in GLOB.allfaxes)
@@ -86,11 +86,11 @@
 		adminfax.sent_by = usr
 		adminfax.sent_at = world.time
 
-		to_chat(src.owner, span_notice("Message transmitted successfully.")
+		to_chat(src.owner, span_notice("Message transmitted successfully."))
 		if(notify == "Yes")
 			var/mob/living/carbon/human/recipient = sender
 			if(istype(recipient) && recipient.stat == CONSCIOUS && (istype(recipient.ears, /obj/item/radio/headset)))
-				to_chat(sender, span_notice("Your headset pings, notifying you that a reply to your fax has arrived.")
+				to_chat(sender, span_notice("Your headset pings, notifying you that a reply to your fax has arrived."))
 		if(sender)
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(sender)]: [input_text]")
 			message_admins("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(sender)] (<a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(paper)]'>VIEW</a>).", 1)
@@ -149,7 +149,7 @@
 			return
 		var/mob/living/carbon/human/recipient = locate(href_list["FaxReplyTemplate"])
 		if(!istype(recipient))
-			to_chat(usr, span_notice("This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, span_notice("This can only be used on instances of type /mob/living/carbon/human."))
 			return
 		var/obj/item/paper/paper = new /obj/item/paper(null)
 		var/obj/machinery/photocopier/faxmachine/fax = locate(href_list["originfax"])
@@ -201,8 +201,8 @@
 		paper.update_icon()
 		fax.receivefax(paper)
 		if(istype(recipient) && recipient.stat == CONSCIOUS && (istype(recipient.ears, /obj/item/radio/headset)))
-			to_chat(recipient, span_notice("Your headset pings, notifying you that a reply to your fax has arrived.")
-		to_chat(src.owner, span_notice("You sent a standard '[stype]' fax to [recipient].")
+			to_chat(recipient, span_notice("Your headset pings, notifying you that a reply to your fax has arrived."))
+		to_chat(src.owner, span_notice("You sent a standard '[stype]' fax to [recipient]."))
 		log_admin("[key_name(src.owner)] sent [key_name(recipient)] a standard '[stype]' fax")
 		message_admins("[key_name_admin(src.owner)] replied to [key_name_admin(recipient)] with a standard '[stype]' fax")
 		return
@@ -216,9 +216,9 @@
 			var/obj/item/paper/paper = fax
 			usr.examinate(paper)
 		else
-			to_chat(usr, span_warning("The faxed item is not viewable. This is probably a bug, and should be reported on the tracker: [fax.type]")
+			to_chat(usr, span_warning("The faxed item is not viewable. This is probably a bug, and should be reported on the tracker: [fax.type]"))
 		return
 
 /datum/admins/proc/handle_sendall(var/obj/machinery/photocopier/faxmachine/targetmachine, var/obj/item/paper/paper)
 	if(targetmachine.receivefax(paper) == FALSE)
-		to_chat(owner, span_warning("Message transmission to [targetmachine.department] failed.")
+		to_chat(owner, span_warning("Message transmission to [targetmachine.department] failed."))

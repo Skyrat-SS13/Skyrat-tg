@@ -1,4 +1,4 @@
-
+/* SKYRAT EDIT - FAX MACHINES - MOVED TO MODULAR
 /// For use with the `color_mode` var. Photos will be printed in greyscale while the var has this value.
 #define PHOTO_GREYSCALE "Greyscale"
 /// For use with the `color_mode` var. Photos will be printed in full color while the var has this value.
@@ -502,3 +502,4 @@
 #undef DOCUMENT_TONER_USE
 #undef ASS_TONER_USE
 #undef MAX_COPIES_AT_ONCE
+*/
