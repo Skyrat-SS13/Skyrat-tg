@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)
 	is_funmin = check_rights(R_FUN)
 
 	for(var/thing in GLOB.adminfaxes)
-		fax_list<font color='[font_colour]'>[faxname]: </font> [ADMIN_LOOKUP(sender)] | REPLY: [ADMIN_CENTCOM_REPLY(sender)] [ADMIN_FAX(sender, src, faxtype, sent)] [ADMIN_SM(sender)] | REJECT: (<A HREF='?_src_=holder;[HrefToken(TRUE)];FaxReplyTemplate=[REF(sender)];originfax=[REF(src)]'>TEMPLATE</A>)[ADMIN_SMITE(sender)] (<A HREF='?_src_=holder;[HrefToken(TRUE)];</A>) : Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;[HrefToken(TRUE)];AdminFaxView=[REF(sent)]'>view message</a>" += thing
+		fax_list += thing
 
 /datum/fax_panel/ui_state(mob/user)
 	return GLOB.admin_state
