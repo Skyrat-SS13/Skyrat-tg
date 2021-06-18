@@ -122,12 +122,12 @@ SUBSYSTEM_DEF(persistence)
 				run++
 		if(run >= 2) //If run twice in the last KEEP_ROUNDS_MAP + 1 (including current) rounds, disable map for voting and rotation.
 			blocked_maps += VM.map_name
-		//SKYRAT EDIT START - this way to do this sucks, but i don't expect icebox or journey to get renamed anytime soon
-		if(VM.map_name == "Ice Box Station")
-			blocked_maps += "NSS Journey"
-		if(VM.map_name == "NSS Journey")
-			blocked_maps += "Ice Box Station"
-		//SKYRAT EDIT END
+			//SKYRAT EDIT START - this way to do this sucks, but i don't expect icebox or journey to get renamed anytime soon
+			if(VM.map_name == "Ice Box Station")
+				blocked_maps += "NSS Journey"
+			if(VM.map_name == "NSS Journey")
+				blocked_maps += "Ice Box Station"
+			//SKYRAT EDIT END
 
 /datum/controller/subsystem/persistence/proc/SetUpTrophies(list/trophy_items)
 	for(var/A in GLOB.trophy_cases)
