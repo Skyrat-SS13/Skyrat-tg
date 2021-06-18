@@ -31,7 +31,6 @@
 	if(!stored_name)
 		to_chat(user, "You polish your old badge fondly, shining up the surface.")
 		set_name(user.real_name)
-		badge_string = id_card.assignment
 		return
 
 	if(isliving(user))
