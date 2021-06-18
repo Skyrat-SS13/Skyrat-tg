@@ -148,7 +148,7 @@
 			alpha = 255
 		else
 			name = "lifted [name]"
-			alpha = 200
+			alpha = 175
 		return
 
 /obj/structure/jobtape/attackby(obj/item/I, mob/user, params)
