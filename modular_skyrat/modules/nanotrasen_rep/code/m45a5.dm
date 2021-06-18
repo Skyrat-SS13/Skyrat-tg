@@ -25,7 +25,7 @@
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/guns/M45A5.dmi'
 	icon_state = "rowlandmodular"
 	ammo_type = /obj/item/ammo_casing/b460
-	caliber = ".460"
+	caliber = CALIBER_460
 	max_ammo = 10 //Increased length single stacks.
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
@@ -34,13 +34,13 @@
 	desc = "A .460 Rowland Magnum casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = "460"
+	caliber = CALIBER_460
 	projectile_type = /obj/projectile/bullet/b460
 
 /obj/projectile/bullet/b460
 	name = ".460 RM JHP bullet"
 	damage = 30
-	stamina = 12
+	wound_bonus = 30
 	weak_against_armour = TRUE
 	speed = 2.25
 

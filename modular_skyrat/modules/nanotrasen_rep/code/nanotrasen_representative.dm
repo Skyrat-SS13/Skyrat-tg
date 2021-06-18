@@ -36,6 +36,12 @@
 
 	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
 
+/datum/job/nanotrasen_representative/after_spawn(mob/living/H, mob/M, latejoin)
+	. = ..()
+	to_chat(H, span_boldannounce("As the Nanotrasen Representative, you are required to follow the following placeholder policy and SOP: https://paradisestation.org/wiki/index.php/Nanotrasen_Representative"))
+	//REMOVE THIS AFTER FAX MACHINES ARE ADDED!!!!
+	to_chat(H, span_boldannounce("If you require IC admin intervention, send an admin help until the fax machine is added."))
+
 /datum/outfit/job/nanotrasen_representative
 	name = "Nanotrasen Representative"
 	jobtype = /datum/job/nanotrasen_representative
@@ -47,8 +53,8 @@
 	uniform =  /obj/item/clothing/under/rank/nanotrasen_representative
 	suit = /obj/item/clothing/suit/armor/vest/nanotrasen_representative
 	shoes = /obj/item/clothing/shoes/jackboots
-	head = /obj/item/clothing/head/beret/nanotrasen_representative
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1)
+	head = /obj/item/clothing/head/nanotrasen_representative
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 
