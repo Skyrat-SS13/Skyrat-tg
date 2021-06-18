@@ -16,7 +16,9 @@
 					/obj/item/electronics/airalarm = 10,
 					/obj/item/electronics/firealarm = 10,
 					/obj/item/electronics/firelock = 10,
-					/obj/item/storage/bag/material = 3) 			// Skyrat edit - ported ammo pouches
+					/obj/item/storage/bag/material = 3,			// Skyrat edit - ported ammo pouches
+					/obj/item/taperoll/engi = 2,	//SKYRAT EDIT - Job tape!
+					/obj/item/taperoll/atmos = 2)	//SKYRAT EDIT - Job tape!
 	contraband = list(/obj/item/stock_parts/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3,
 					// /obj/item/construction/rcd/loaded = 2, -- Skyrat edit - moved back to regular product price

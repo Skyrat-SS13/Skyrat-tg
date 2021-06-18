@@ -114,9 +114,9 @@
 			return TRUE
 
 /obj/structure/jobtape/proc/crumple()
-	if(lifted)	//Just in case this somehow gets called while tape is already lifted (it shouldnt, but JUST in case), we quickly ditch the [VISUAL]
+	if(lifted)	//Just in case this somehow gets called while tape is already lifted (it shouldnt, but JUST in case), we quickly ditch anything about it
 		lifted = FALSE
-		//REMOVE VISUAL HERE
+		alpha = 255
 		name = initial(name)
 	if(!crumpled)
 		crumpled = TRUE
@@ -142,12 +142,13 @@
 		return
 	else
 		lifted = !lifted
-		//(invert the visual here)
 		visible_message("<span class='notice'>[usr] [lifted ? "lifts" : "lowers"] \the [src], [lifted ? "allowing" : "restricting"] passage.</span>")
 		if(!lifted)
 			name = initial(name)
+			alpha = 255
 		else
 			name = "lifted [name]"
+			alpha = 200
 		return
 
 /obj/structure/jobtape/attackby(obj/item/I, mob/user, params)
