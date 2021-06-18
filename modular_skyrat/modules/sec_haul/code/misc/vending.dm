@@ -15,7 +15,7 @@
 		/obj/item/food/donut = 12,
 		/obj/item/storage/box/evidence = 6,
 		/obj/item/flashlight/seclite = 4,
-    /obj/item/gun_maintenance_supplies = 40,
+    	/obj/item/gun_maintenance_supplies = 40,
 		/obj/item/taperoll/police = 4
 	)
 	contraband = list(
