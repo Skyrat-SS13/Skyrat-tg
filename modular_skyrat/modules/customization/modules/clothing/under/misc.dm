@@ -233,6 +233,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	flags_inv = HIDESHOES
 
 ///COWBOY
 /obj/item/clothing/under/rancher
