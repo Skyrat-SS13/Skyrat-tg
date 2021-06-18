@@ -101,9 +101,9 @@
 		var/mob/living/carbon/target_carbon = mover
 		if(allowed(target_carbon) || target_carbon.stat || lifted) //Unconcious/dead people won't be blocked by the tape, nor will people who have the right access; lifted tape lets anyone through
 			return TRUE
-		//if(allowed(target_carbon) && target_carbon.m_intent != MOVE_INTENT_WALK)	//Allowed people still have to walk (?)
+		//if(allowed(target_carbon) && target_carbon.m_intent != MOVE_INTENT_WALK)	//Allowed people NEED to walk (?) ((If so, remove allowed(target_carbon) from above))
 		if(!crumpled)
-			if(target_carbon.combat_mode /*&& target_carbon.m_intent != MOVE_INTENT_WALK*/)	/*- Commented out in case it's decided that walking shouldn't be blocked. The hope is that behaving people will be held back, and behaving people would be walking, so they're blocked by default. Angry combat-mode people can tear thru it tho -*/
+			if(target_carbon.combat_mode || target_carbon.m_intent != MOVE_INTENT_WALK)
 				crumple()
 				visible_message("<span class='notice'>[target_carbon] pushes through \the [src] aggressively, ruining the tape!</span>")
 				return TRUE
