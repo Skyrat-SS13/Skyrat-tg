@@ -411,5 +411,85 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "scrubsred"
 
+/obj/item/clothing/under/suit/white/scarface
+	name = "cuban suit"
+	desc = "A yayo coloured silk suit with a crimson shirt. You just know how to hide, how to lie. Me, I don't have that problem. Me, I always tell the truth. Even when I lie."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "scarface"
+
+/obj/item/clothing/under/misc/gear_harness/eve
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "collection of leaves"
+	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
+	icon_state = "eve"
+
+/obj/item/clothing/under/costume/loincloth/sensor/adam
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "leaf"
+	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
+	icon_state = "adam"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/misc/evilcargo
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "black cargo uniform"
+	desc = "Yep, here’s your problem. Someone set this thing to evil."
+	icon_state = "qmsynd"
+	can_adjust = FALSE
+
+
+/obj/item/clothing/under/rank/medical/doctor/white
+	name = "white scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "scrubswhite"
+
+/obj/item/clothing/under/rank/engineering/engineer/trouser
+	desc = "A yellow set of trousers that somehow protect against radiation."
+	name = "engineer's trousers"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_orange"
+	body_parts_covered = GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/civilian/hydroponics/trouser
+	desc = "A green set of trousers, perfect for making pigs smoke."
+	name = "farmer's trousers"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_green"
+	body_parts_covered = GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/security/peacekeeper/trousers
+	name = "peacekeeper's trousers"
+	desc = "Some light blue combat trousers, however you get protected by these, I have no idea."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_blue"
+	body_parts_covered = GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/security/peacekeeper/trousers/red
+	name = "security officer's trousers"
+	desc = "Some red combat trousers, however you get protected by these, I have no idea."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_red"
+
+
+
 
 
