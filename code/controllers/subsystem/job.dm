@@ -209,6 +209,11 @@ SUBSYSTEM_DEF(job)
 		if(job.title in GLOB.command_positions) //If you want a command position, select it!
 			continue
 
+		//SKYRAT EDIT ADDITION
+		if(job.title in GLOB.central_command_positions) //If you want a CC position, select it!
+			continue
+		//SKYRAT EDIT END
+
 		if(is_banned_from(player.ckey, job.title) || QDELETED(player))
 			if(QDELETED(player))
 				JobDebug("GRJ isbanned failed, Player deleted")

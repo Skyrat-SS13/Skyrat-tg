@@ -37,6 +37,8 @@
 /obj/item/clothing/head/beret/nanotrasen_representative
 	name = "nanotrasen representative's beret"
 	desc =  "A beret made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ntrep_berret"
 	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 30, ACID = 5, WOUND = 4)
 

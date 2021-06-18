@@ -19,6 +19,7 @@
 
 /datum/crew_manifest/ui_data(mob/user)
 	var/list/positions = list(
+		"Central Command" = list("exceptions" = list(), "open" = 0),
 		"Command" = list("exceptions" = list(), "open" = 0),
 		"Security" = list("exceptions" = list(), "open" = 0),
 		"Engineering" = list("exceptions" = list(), "open" = 0),
