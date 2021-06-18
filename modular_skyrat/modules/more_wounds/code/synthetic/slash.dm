@@ -29,7 +29,7 @@
 	/// A bad system I'm using to track the worst scar we earned (since we can demote, we want the biggest our wound has been, not what it was when it was cured (probably moderate))
 	var/datum/scar/highest_scar
 
-/datum/wound/synthetic/slash/show_wound_topic(mob/user)
+/datum/wound/synthetic/slash/show_wound_topic(mob/living/user)
 	return (user == victim && blood_flow)
 
 /datum/wound/synthetic/slash/Topic(href, href_list)
@@ -57,7 +57,7 @@
 		highest_scar.lazy_attach(limb)
 	return ..()
 
-/datum/wound/synthetic/slash/get_examine_description(mob/user)
+/datum/wound/synthetic/slash/get_examine_description(mob/living/user)
 	if(!limb.current_gauze)
 		return ..()
 
@@ -85,10 +85,10 @@
 	// compare with being at 100 brute damage before, where you bled (brute/100 * 2), = 2 blood per tile
 	var/bleed_amount = min(blood_flow * 0.1, 1) // 3 * 3 * 0.1 = 0.9 blood total, less than before! the share here is .3 blood of course.
 
-	if(limb.current_gauze && limb.current_gauze.seep_gauze(bleed_amt * 0.33, GAUZE_STAIN_BLOOD)) // gauze stops all bleeding from dragging on this limb, but wears the gauze out quicker
+	if(limb.current_gauze && limb.current_gauze.seep_gauze(bleed_amount * 0.33, GAUZE_STAIN_BLOOD)) // gauze stops all bleeding from dragging on this limb, but wears the gauze out quicker
 		return 0
 
-	return bleed_amt
+	return bleed_amount
 
 /datum/wound/synthetic/slash/get_bleed_rate_of_change()
 	if(HAS_TRAIT(victim, TRAIT_BLOODY_MESS))
@@ -142,13 +142,13 @@
 
 /* BEWARE, THE BELOW NONSENSE IS MADNESS. bones.dm looks more like what I have in mind and is sufficiently clean, don't pay attention to this messiness */
 
-/datum/wound/synthetic/slash/check_grab_treatments(obj/item/I, mob/user)
+/datum/wound/synthetic/slash/check_grab_treatments(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/gun/energy/laser))
 		return TRUE
 	if(I.get_temperature()) // if we're using something hot but not a cautery, we need to be aggro grabbing them first, so we don't try treating someone we're eswording
 		return TRUE
 
-/datum/wound/synthetic/slash/treat(obj/item/I, mob/user)
+/datum/wound/synthetic/slash/treat(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/gun/energy/laser))
 		las_cauterize(I, user)
 	else if(I.tool_behaviour == TOOL_CAUTERY || I.get_temperature())
@@ -165,7 +165,7 @@
 	blood_flow -= 0.075 * power // 20u * 0.075 = -1.5 blood flow, pretty good for how little effort it is
 
 /// If someone's putting a laser gun up to our cut to cauterize it
-/datum/wound/synthetic/slash/proc/las_cauterize(obj/item/gun/energy/laser/lasgun, mob/user)
+/datum/wound/synthetic/slash/proc/las_cauterize(obj/item/gun/energy/laser/lasgun, mob/living/user)
 	var/self_penalty_mult = (user == victim ? 1.25 : 1)
 	user.visible_message("<span class='warning'>[user] begins aiming [lasgun] directly at [victim]'s [limb.name]...</span>", "<span class='userdanger'>You begin aiming [lasgun] directly at [user == victim ? "your" : "[victim]'s"] [limb.name]...</span>")
 	if(!do_after(user, base_treat_time  * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
@@ -180,16 +180,17 @@
 	victim.visible_message("<span class='warning'>The leaking on [victim]'s [limb.name] slows, and then stops!</span>")
 
 /// If someone is using either a cautery tool or something with heat to cauterize this cut
-/datum/wound/synthetic/slash/proc/tool_cauterize(obj/item/I, mob/user)
+/datum/wound/synthetic/slash/proc/tool_cauterize(obj/item/I, mob/living/user)
 	var/improv_penalty_mult = (I.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
 	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
-	user.visible_message("<span class='danger'>[user] begins welding over [user == victim ? "[user.p_their]" : "[victim]'s"] [limb.name] with [I]...</span>", "<span class='warning'>You begin welding over [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
+	user.visible_message("<span class='danger'>[user] begins welding over [user == victim ? "[user.p_their()]" : "[victim]'s"] [limb.name] with [I]...</span>", "<span class='warning'>You begin welding over [user == victim ? "your" : "[victim]'s"] [limb.name] with [I]...</span>")
 
 	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
-	user.visible_message("<span class='green'>[user] welds over some of the leaking on [user == victim ? "[user.p_their]" : "[victim]'s"] [limb.name].</span>", "<span class='green'>You weld over some of the leaking on [user == victim ? "[user.p_their]" : "[victim]'s"] [limb.name].</span>")
+
+	user.visible_message("<span class='green'>[user] welds over some of the leaking on [user == victim ? "[user.p_their()]" : "[victim]'s"] [limb.name].</span>", "<span class='green'>You weld over some of the leaking on [user == victim ? "[user.p_their()]" : "[victim]'s"] [limb.name].</span>")
 
 	limb.receive_damage(burn = 2 + severity, wound_bonus = CANT_WOUND)
 	if(prob(30))
@@ -203,7 +204,7 @@
 		to_chat(user, "<span class='green'>You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] leaking.</span>")
 
 /// If someone is using a suture to close this cut
-/datum/wound/synthetic/slash/proc/slashtape(obj/item/stack/sticky_tape/surgical/B, mob/user)
+/datum/wound/synthetic/slash/proc/slashtape(obj/item/stack/sticky_tape/surgical/B, mob/living/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
 	user.visible_message("<span class='notice'>[user] begins taping over [victim]'s [limb.name] with [B]...</span>", "<span class='notice'>You begin taping over [user == victim ? "your" : "[victim]'s"] [limb.name] with [B]...</span>")
 
