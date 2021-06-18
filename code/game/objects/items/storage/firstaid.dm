@@ -261,7 +261,7 @@
 	icon_state = "radfirstaid"
 	inhand_icon_state = "firstaid-rad"
 	custom_premium_price = PAYCHECK_HARD * 6
-	damagetype_healed = "all"
+	// damagetype_healed = "all" // SKYRAT EDIT REMOVAL - ADVANCED MEDIBOT REBALANCE
 
 /obj/item/storage/firstaid/advanced/PopulateContents()
 	if(empty)
