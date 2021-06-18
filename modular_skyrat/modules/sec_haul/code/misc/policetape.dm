@@ -90,7 +90,7 @@
 
 /obj/structure/jobtape/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The tape is weak enough to easily push through on harm intent, though that'd be impolite...</span>"
+	. += "<span class='notice'>The tape is weak enough to easily push through on harm intent or by walking, though that'd be impolite...</span>"
 	if(allowed(user))
 		. += "<span class='notice'>You can unroll the whole line by right-clicking with the tape roll!</span>"
 		. += "<span class='notice'>Clicking it with an empty hand will <b>lift</b> the tape, allowing anyone/anything to pass through.</span>"
