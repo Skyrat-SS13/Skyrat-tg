@@ -474,7 +474,7 @@
 			continue
 		damaged_purr_targets.Add(purr_target)
 		for(var/obj/item/bodypart/bodypart in damaged_bodyparts)
-			if (bodypart.heal_damage(2/damaged_bodyparts.len, 2/damaged_bodyparts.len, 0, BODYPART_ORGANIC))
+			if (bodypart.heal_damage(1/damaged_bodyparts.len, 1/damaged_bodyparts.len, 0, BODYPART_ORGANIC))
 				purr_target.update_damage_overlays()
 	//print messages
 	if (!damaged_purr_targets.len)
