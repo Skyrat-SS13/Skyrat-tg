@@ -34,6 +34,8 @@
 
 	veteran_only = TRUE
 
+	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
+
 /datum/outfit/job/nanotrasen_representative
 	name = "Nanotrasen Representative"
 	jobtype = /datum/job/nanotrasen_representative
