@@ -347,7 +347,7 @@
 
 /obj/item/kirbyplants/random/Initialize()
 	. = ..()
-	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
 	if(!random_plant_states)
 		generate_states()
 	icon_state = pick(random_plant_states)
@@ -363,6 +363,12 @@
 	name = "RD's potted plant"
 	desc = "A gift from the botanical staff, presented after the RD's reassignment. There's a tag on it that says \"Y'all come back now, y'hear?\"\nIt doesn't look very healthy..."
 	icon_state = "plant-25"
+	trimmable = FALSE
+
+/obj/item/kirbyplants/monkey
+	name = "monkey plant"
+	desc = "Something that seems to have been made by the Nanotrasen science division, one might call it an abomination. It's heads seem... alive."
+	icon_state = "monkeyplant"
 	trimmable = FALSE
 
 /obj/item/kirbyplants/photosynthetic
