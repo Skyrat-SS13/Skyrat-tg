@@ -141,6 +141,11 @@
 
 /obj/item/paper/examine(mob/user)
 	. = ..()
+	// SKYRAT EDIT ADD BEGIN - FAX PORT
+	if(check_rights_for(user.client, R_FUN)) // Allows admins to view faxes
+		ui_interact(user)
+		return
+	// SKYRAT EDIT ADD END - FAX PORT
 	if(!in_range(user, src) && !isobserver(user))
 		. += span_warning("You're too far away to read it!")
 		return
