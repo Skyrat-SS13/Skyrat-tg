@@ -50,13 +50,13 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/g17/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/g17/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/obj/item/ammo_box/magazine/multi_sprite/g17/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Armadyne Glock-18"
@@ -91,14 +91,13 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/g18/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/g18/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 ////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
@@ -204,13 +203,13 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 ///////////////////////LADON 40x32
 /obj/item/gun/ballistic/automatic/pistol/ladon
@@ -247,13 +246,13 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
+/obj/item/ammo_box/magazine/multi_sprite/ladon/ihdf
+	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
+	round_type = AMMO_TYPE_IHDF
+
 /obj/item/ammo_box/magazine/multi_sprite/ladon/rubber
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/magazine/multi_sprite/ladon/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_IHDF
 
 /////////////////////MAKAROV
 /obj/item/gun/ballistic/automatic/pistol/makarov
@@ -271,7 +270,6 @@
 	dirt_modifier = 0.7
 	emp_damageable = TRUE
 
-
 /obj/item/ammo_box/magazine/multi_sprite/makarov
 	name = "makarov handgun magazine (10mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
@@ -285,13 +283,13 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
+/obj/item/ammo_box/magazine/multi_sprite/makarov/ihdf
+	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
+	round_type = AMMO_TYPE_IHDF
+
 /obj/item/ammo_box/magazine/multi_sprite/makarov/rubber
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/magazine/multi_sprite/makarov/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_IHDF
 
 ////////////////////////////MK58
 
@@ -324,13 +322,13 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
+/obj/item/ammo_box/magazine/multi_sprite/mk58/ihdf
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	round_type = AMMO_TYPE_IHDF
+
 /obj/item/ammo_box/magazine/multi_sprite/mk58/rubber
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/magazine/multi_sprite/mk58/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_IHDF
 
 //////////////////////FIREFLY
 /obj/item/gun/ballistic/automatic/pistol/firefly
@@ -411,13 +409,13 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/pcr/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pitbull
 	name = "\improper Armadyne 'Pitbull' Battle Rifle"
@@ -459,13 +457,13 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /////////////////DTR
 /obj/item/gun/ballistic/automatic/ostwind
@@ -595,17 +593,15 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/dozer/ihdf
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /////////////////////NORWIND
-
 /obj/item/gun/ballistic/automatic/norwind
 	name = "\improper Armadyne M112 'Norwind' Designated Marksman Rifle"
 	desc = "A rare M112 DMR rechambered to 12mm for peacekeeping work, it comes with a scope for medium-long range engagements. Comes with a bayonet lug if you want to make it personal."
@@ -658,7 +654,6 @@
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-
 /obj/item/gun/ballistic/automatic/vintorez
 	name = "\improper Armadyne VKC 'Vintorez'"
 	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9mm for peacekeeping work."
@@ -699,14 +694,13 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
+/obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	round_type = AMMO_TYPE_RUBBER
 
 /////////////////DMR 40x32
 
@@ -757,7 +751,7 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b10mm
 	caliber = CALIBER_10MM
 	max_ammo = 6
 
@@ -786,7 +780,7 @@
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MM
 	max_ammo = 8
 
@@ -925,10 +919,68 @@
 	ammo_type = /obj/item/ammo_casing/caseless/b473/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/g11/rubber
-	ammo_type = /obj/item/ammo_casing/caseless/b473/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /obj/item/ammo_box/magazine/multi_sprite/g11/ihdf
 	ammo_type = /obj/item/ammo_casing/caseless/b473/ihdf
 	round_type = AMMO_TYPE_IHDF
+
+/////////////////////////////////////////////////
+//////////////////SHOTGUNS///////////////////////
+/////////////////////////////////////////////////
+
+/obj/item/gun/ballistic/shotgun/m23
+	name = "\improper Armadyne Model 23-37"
+	desc = "A classic take on something that was also a classic. Classic. 8-shot."
+	icon_state = "riotshotgun"
+	inhand_icon_state = "shotgun"
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+
+/obj/item/ammo_box/magazine/internal/shot/m23
+	name = "shotgun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	max_ammo = 8
+
+/obj/item/gun/ballistic/shotgun/automatic/as2
+	name = "\improper Armadyne Model AS-2"
+	desc = "An automatic shotgun capable of automatic cycling. Automatic. 6-shot."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	icon_state = "as2"
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	inhand_icon_state = "riot_shotgun"
+	inhand_x_dimension = 32
+	inhand_y_dimension = 32
+	can_suppress = TRUE
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
+	suppressed_volume = 100
+	vary_fire_sound = TRUE
+	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
+	fire_delay = 5
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+
+/obj/item/ammo_box/magazine/internal/shot/as2
+	name = "shotgun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	max_ammo = 6
+
+/obj/item/gun/energy/taser/armadyne
+	name = "\improper Armadyne ATS 'taser' Gun"
+	desc = "A low-capacity, energy-based stun gun used by security teams to subdue targets at range."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
+	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	icon_state = "armataser"
+	inhand_icon_state = null //so the human update icon uses the icon_state instead.
+	ammo_type = list(/obj/item/ammo_casing/energy/electrode/crap)
+	ammo_x_offset = 2
+
+/obj/item/ammo_casing/energy/electrode/crap
+	projectile_type = /obj/projectile/energy/electrode/crap
+
+/obj/projectile/energy/electrode/crap
+	stamina = 50
+	stutter = 10
