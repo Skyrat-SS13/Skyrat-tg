@@ -30,3 +30,7 @@
 
 /obj/effect/turf_decal/skyrat_decals/syndicate/top/right
 	icon_state = "3,3"
+
+///Departments///
+/obj/effect/turf_decal/skyrat_decals/departments/bridge
+	icon_state = "bridge"
