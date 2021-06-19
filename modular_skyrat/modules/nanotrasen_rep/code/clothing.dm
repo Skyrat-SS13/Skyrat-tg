@@ -1,7 +1,7 @@
 
 
 /obj/item/clothing/suit/armor/vest/nanotrasen_representative
-	name = "nanotrasen coat"
+	name = "nanotrasen officers coat"
 	desc = "A premium black coat with real fur round the neck, it seems to have some armor padding inside as well."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -14,6 +14,7 @@
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
 	heat_protection = CHEST|ARMS|GROIN
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/nanotrasen_representative
 	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"Nanotrasen Representative\"."
@@ -41,6 +42,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ntrep_beret"
 	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 30, ACID = 5, WOUND = 4)
+	mutant_variants = NONE
 
 /obj/item/clothing/head/nanotrasen_representative
 	name = "nanotrasen representative's hat"
@@ -53,3 +55,4 @@
 	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 30, ACID = 5, WOUND = 4)
 	strip_delay = 60
 	dog_fashion = null
+	mutant_variants = NONE
