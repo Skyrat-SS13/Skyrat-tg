@@ -113,6 +113,7 @@
 	body_parts_covered = CHEST|GROIN
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
+	species_exception = list(/datum/species/golem) // skyrat edit
 
 /obj/item/clothing/under/costume/maid/Initialize()
 	. = ..()
