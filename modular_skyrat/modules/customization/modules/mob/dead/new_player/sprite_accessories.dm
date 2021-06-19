@@ -582,3 +582,9 @@
 	icon_state = "shibari_sleeves"
 	gender = FEMALE
 	use_static = null
+
+/datum/sprite_accessory/undershirt/bulletclub //4 life
+	name = "Shirt - Black Skull"
+	icon_state = "shirt_bc"
+	gender = NEUTER
+
