@@ -635,7 +635,12 @@ SUBSYSTEM_DEF(job)
 	var/jobstext = file2text("[global.config.directory]/jobs.txt")
 	for(var/datum/job/J in occupations)
 		var/regex/jobs = new("[J.title]=(-1|\\d+),(-1|\\d+)")
-		jobs.Find(jobstext)
+		// Skyrat Edit - SSjobs no longer runtimes if it cant find a job
+		// original: jobs.Find(jobstext)
+		if(!jobs.Find(jobstext))
+			log_runtime("RUNTIME: UNABLE TO FIND '[J.title]' INSIDE OF '[global.config.directory]/jobs.txt'")
+			continue
+		// Skyrat Edit End
 		J.total_positions = text2num(jobs.group[1])
 		J.spawn_positions = text2num(jobs.group[2])
 
