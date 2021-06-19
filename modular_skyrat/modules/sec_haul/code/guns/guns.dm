@@ -975,5 +975,12 @@
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	icon_state = "armataser"
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
-	ammo_type = list(/obj/item/ammo_casing/energy/electrode)
+	ammo_type = list(/obj/item/ammo_casing/energy/electrode/crap)
 	ammo_x_offset = 2
+
+/obj/item/ammo_casing/energy/electrode/crap
+	projectile_type = /obj/projectile/energy/electrode/crap
+
+/obj/projectile/energy/electrode/crap
+	stamina = 50
+	stutter = 10
