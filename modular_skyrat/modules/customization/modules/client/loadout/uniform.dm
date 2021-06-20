@@ -636,7 +636,7 @@
  	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/uniform/job/imphos
- 	name = "Head of Security's naval uniform"
+ 	name = "Head of Security's Naval Uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/imperial
  	restricted_roles = list("Head of Security")
 
@@ -1175,4 +1175,3 @@
 	name = "Green Feminine Christmas Suit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/costume/christmas/croptop/green*/
-
