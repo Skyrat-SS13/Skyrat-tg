@@ -35,6 +35,7 @@ export const HolderReport = (props, context) => {
                   checked={ticket[_h] !== "None"}
                   // If they aren't active you can't assign them a ticket
                   disabled={!activity[_h]}
+                  color={ticket[_h] === "None" ? "" : "blue"}
                   onClick={() => act("assign-ticket", { self_ref: self_ref, holder_ref: _h })}
                 />
                 <Button
