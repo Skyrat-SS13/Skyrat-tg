@@ -317,6 +317,8 @@
 	var/trimmable = TRUE
 	var/list/static/random_plant_states
 
+	var/random_state_cap = 43 //SKYRAT EDIT ADDITION - KEEP THIS TO THE HIGHEST POTTED PLANT ICON STATE
+
 /obj/item/kirbyplants/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/tactical)
@@ -345,21 +347,16 @@
 
 /obj/item/kirbyplants/random/Initialize()
 	. = ..()
-	icon = 'icons/obj/flora/plants.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
 	if(!random_plant_states)
 		generate_states()
 	icon_state = pick(random_plant_states)
 
 /obj/item/kirbyplants/proc/generate_states()
 	random_plant_states = list()
-	for(var/i in 1 to 25)
-		var/number
-		if(i < 10)
-			number = "0[i]"
-		else
-			number = "[i]"
-		random_plant_states += "plant-[number]"
-	random_plant_states += "applebush"
+	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE
+		random_plant_states += "plant-[i]" //SKYRAT EDIT CHANGE
+	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE
 
 
 /obj/item/kirbyplants/dead
@@ -368,10 +365,18 @@
 	icon_state = "plant-25"
 	trimmable = FALSE
 
+//SKYRAT EDIT START
+/obj/item/kirbyplants/monkey
+	name = "monkey plant"
+	desc = "Something that seems to have been made by the Nanotrasen science division, one might call it an abomination. It's heads seem... alive."
+	icon_state = "monkeyplant"
+	trimmable = FALSE
+//SKYRAT EDIT END
+
 /obj/item/kirbyplants/photosynthetic
 	name = "photosynthetic potted plant"
 	desc = "A bioluminescent plant."
-	icon_state = "plant-09"
+	icon_state = "plant-9" //SKYRAT EDIT CHANGE
 	light_color = COLOR_BRIGHT_BLUE
 	light_range = 3
 
