@@ -635,7 +635,7 @@
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
  	restricted_roles = list("Head of Security")
 
- /datum/loadout_item/uniform/job/imphos
+/datum/loadout_item/uniform/job/imphos
  	name = "Head of Security's navel uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/imperial
  	restricted_roles = list("Head of Security")
