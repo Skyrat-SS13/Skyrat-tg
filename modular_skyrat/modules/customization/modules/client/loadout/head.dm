@@ -203,7 +203,7 @@
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
 /datum/loadout_item/head/job/captain/imperial
-	name = "Captain's Naval Cap."
+	name = "Captain's Naval Cap"
 	path = /obj/item/clothing/head/imperial/cap
 	restricted_roles = list("Captain")
 
