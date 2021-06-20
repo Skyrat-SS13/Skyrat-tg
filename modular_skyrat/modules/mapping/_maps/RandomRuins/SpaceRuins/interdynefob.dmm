@@ -615,9 +615,6 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
-/obj/structure/sign/poster/official/random{
-	pixel_x = -32
-	},
 /turf/open/floor/iron/dark/purple/side{
 	dir = 8
 	},
@@ -3153,8 +3150,8 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge/cl)
 "yT" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Perma Office";
+/obj/machinery/door/airlock/security/old{
+	name = "Long-Term Brig Office";
 	req_access_txt = "151"
 	},
 /turf/open/floor/iron/dark/purple,
@@ -3863,10 +3860,9 @@
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/hangar)
 "Ec" = (
-/obj/machinery/door/window/brigdoor/security/cell/northleft{
-	id = "isolation";
-	name = "Isolation Cell";
-	opacity = 1
+/obj/machinery/door/window/survival_pod{
+	dir = 1;
+	req_access_txt = "151"
 	},
 /turf/open/floor/iron/dark,
 /area/template_noop)
@@ -5250,9 +5246,11 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge/admiral)
 "Qf" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/template_noop)
+/obj/machinery/door/firedoor,
+/turf/open/floor/iron/dark/smooth_edge{
+	dir = 8
+	},
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/halls)
 "Qg" = (
 /obj/effect/turf_decal/stripes/white/line{
 	color = "#52B4E9";
@@ -6377,11 +6375,11 @@
 /turf/open/floor/vault/rock,
 /area/template_noop)
 "YA" = (
-/obj/machinery/door/airlock/security{
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security/old{
 	name = "Prison Library"
 	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/delivery/blue,
+/obj/effect/turf_decal/delivery/red,
 /turf/open/floor/iron/dark,
 /area/template_noop)
 "YI" = (
@@ -6521,16 +6519,6 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security)
-"ZD" = (
-/obj/machinery/door_timer{
-	id = "isolation";
-	name = "Solitary Timer";
-	pixel_y = 28
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 1
-	},
-/area/template_noop)
 "ZF" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron{
@@ -16526,7 +16514,7 @@ ay
 ay
 ay
 ay
-ZD
+MD
 AG
 ay
 gU
@@ -17039,7 +17027,7 @@ nc
 ay
 nW
 yZ
-Qf
+tB
 MD
 bY
 ay
@@ -20916,7 +20904,7 @@ uO
 uS
 fb
 tO
-uO
+wp
 uS
 fb
 tO
@@ -21173,7 +21161,7 @@ tU
 Qq
 fb
 tP
-tU
+Qf
 Qq
 fb
 tP
@@ -21430,7 +21418,7 @@ fb
 fb
 fb
 fb
-fb
+pH
 fb
 fb
 fb
