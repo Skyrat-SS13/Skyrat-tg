@@ -217,7 +217,7 @@
 
 /obj/item/banner/command/Initialize()
 	. = ..()
-	job_loyalties = GLOB.command_positions
+	job_loyalties = GLOB.command_positions + GLOB.central_command_positions //SKYRAT EDIT ADDITION
 
 /obj/item/banner/command/mundane
 	inspiration_available = FALSE
