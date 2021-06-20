@@ -203,19 +203,19 @@
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
 /datum/loadout_item/head/job/captain/imperial
-	name = "Captain's Navel Cap."
+	name = "Captain's Naval Cap."
 	path = /obj/item/clothing/head/imperial/cap
 	restricted_roles = list("Captain")
 
 /datum/loadout_item/head/job/hop/imperial
-	name = "Head of Personnel's Navel Cap."
+	name = "Head of Personnel's Naval Cap."
 	path = /obj/item/clothing/head/imperial/hop
 	restricted_roles = list("Head of Personnel")
 
-/datum/loadout_item/head/job/ce/imperial
+/*/datum/loadout_item/head/job/ce/imperial
 	name = "Chief Engineer's blast helmet."
 	path = /obj/item/clothing/head/imperial/ce
-	restricted_roles = list("Chief Engineer")
+	restricted_roles = list("Chief Engineer")*/
 
 
 /datum/loadout_item/head/job/cowboyhat/sec
@@ -248,7 +248,7 @@
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/job/navybluehosberet
-	name = "Head of security's Navel Cap"
+	name = "Head of security's Naval Cap"
 	path = /obj/item/clothing/head/imperial/hos
 	restricted_roles = list("Head of Security")
 
@@ -290,19 +290,19 @@
 	restricted_desc = "Medical"
 
 /datum/loadout_item/head/job/imperial
-	name = "Navel Officer Cap"
+	name = "Naval Officer Cap"
 	path = /obj/item/clothing/head/imperial
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/head/job/impgrey
-	name = "Grey Navel Officer Cap"
+	name = "Grey Naval Officer Cap"
 	path = /obj/item/clothing/head/imperial/grey
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/head/job/impred
-	name = "Red Navel Officer Cap"
+	name = "Red Naval Officer Cap"
 	path = /obj/item/clothing/head/imperial/red
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 	restricted_desc = "Command Staff"

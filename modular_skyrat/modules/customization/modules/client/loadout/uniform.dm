@@ -569,12 +569,12 @@
 	restricted_roles = list("Captain")
 
 /datum/loadout_item/uniform/job/impcap
-	name = "Captain's Navel Jumpsuit"
+	name = "Captain's Naval Jumpsuit"
 	path = /obj/item/clothing/under/rank/captain/imperial
 	restricted_roles = list("Captain")
 
 /datum/loadout_item/uniform/job/imphop
-	name = "Head of Personnel's Navel Jumpsuit"
+	name = "Head of Personnel's Naval Jumpsuit"
 	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
 	restricted_roles = list("Head of Personnel")
 
@@ -636,7 +636,7 @@
  	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/uniform/job/imphos
- 	name = "Head of Security's navel uniform"
+ 	name = "Head of Security's naval uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/imperial
  	restricted_roles = list("Head of Security")
 
@@ -801,7 +801,7 @@
 	restricted_desc = "Chemistry"
 
 /datum/loadout_item/uniform/job/impcmo
-	name = "Chief Medical Officer's Navel Uniform"
+	name = "Chief Medical Officer's Naval Uniform"
 	path = /obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
 	restricted_roles = list("Chief Medical Officer")
 
@@ -867,12 +867,12 @@
 	restricted_desc = "Engineering"
 
 /datum/loadout_item/uniform/job/impce
-	name = "Chief Engineer's Navel Uniform"
+	name = "Chief Engineer's Naval Uniform"
 	path = /obj/item/clothing/under/rank/engineering/chief_engineer/imperial
 	restricted_roles = list("Chief Engineer")
 
 /datum/loadout_item/uniform/job/imprd
-	name = "Research Director's Navel Uniform"
+	name = "Research Director's Naval Uniform"
 	path = /obj/item/clothing/under/rank/rnd/research_director/imperial
 	restricted_roles = list("Research Director")
 
@@ -927,25 +927,25 @@
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/impcommand
-	name = "Light Grey Officer's Navel Jumpsuit"
+	name = "Light Grey Officer's Naval Jumpsuit"
 	path = /obj/item/clothing/under/imperial
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/impcom
-	name = "Grey Officer's Navel Jumpsuit"
+	name = "Grey Officer's Naval Jumpsuit"
 	path = /obj/item/clothing/under/imperial/grey
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/impred
-	name = "Red Officer's Navel Jumpsuit"
+	name = "Red Officer's Naval Jumpsuit"
 	path = /obj/item/clothing/under/imperial/red
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/impcomtrous
-	name = "Grey Officer's Navel Jumpsuit (Trousers)"
+	name = "Grey Officer's Naval Jumpsuit (Trousers)"
 	path = /obj/item/clothing/under/imperial/grey/trouser
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 	restricted_desc = "Command Staff"
