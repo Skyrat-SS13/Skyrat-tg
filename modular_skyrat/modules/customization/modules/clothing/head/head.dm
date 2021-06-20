@@ -360,7 +360,7 @@
 	desc = "A red cap with a silver disk in the center."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "impred_cap"
+	icon_state = "impcap_red"
 /obj/item/clothing/head/imperialhelmet
 	name = "blast helmet"
 	desc = "A sharp helmet with some goggles on the top"
