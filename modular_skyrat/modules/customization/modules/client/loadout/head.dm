@@ -248,7 +248,7 @@
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/job/navybluehosberet
-	name = "Head of security's Naval Cap"
+	name = "Head of Security's Naval Cap"
 	path = /obj/item/clothing/head/imperial/hos
 	restricted_roles = list("Head of Security")
 
