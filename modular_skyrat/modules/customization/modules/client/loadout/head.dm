@@ -237,7 +237,7 @@
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer")
 
 /datum/loadout_item/head/job/blasthelmet
-	name = "General Helmet"
+	name = "General's Helmet"
 	path = /obj/item/clothing/head/imperialhelmet
 	restricted_desc = "Security and Command"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Civil Disputes Officer","Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
