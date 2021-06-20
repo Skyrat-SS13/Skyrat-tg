@@ -1067,13 +1067,11 @@
 	if(!ishuman(exposed_mob) || (reac_volume < 0.5))
 		return
 
-	var/mob/living/carbon/human/exposed_human = exposed_mob
+	/* var/mob/living/carbon/human/exposed_human = exposed_mob
 	exposed_human.hair_color = "C2F"
 	exposed_human.facial_hair_color = "C2F"
-	exposed_human.update_hair()
-	// SKYRAT EDIT ADDITION BEGIN
-	exposed_human.update_mutant_bodyparts(force_update=TRUE)
-	// SKYRAT EDIT END
+	exposed_human.update_hair() */ skyrat edit 
+	
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.adjustBruteLoss(-1.5 * REM * delta_time, 0)
