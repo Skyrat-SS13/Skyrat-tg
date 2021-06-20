@@ -62,7 +62,7 @@ const HolderReport = (props, context) => {
 
 const TicketReport = (props, context) => {
   const { data, act } = useBackend(context);
-  const { ticket, self_ref } = data;
+  const { ticket, self_ref, filterby } = data;
   const { list, status, priority, location, title } = ticket;
 
   return (

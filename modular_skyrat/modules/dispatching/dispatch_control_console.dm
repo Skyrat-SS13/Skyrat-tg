@@ -7,6 +7,7 @@
 	active_power_usage = 2000
 	var/mob/current_user
 	var/dispatch_type
+	var/current_filter = "Nothing"
 
 /obj/machinery/dispatch_control/attack_hand(mob/living/user, list/modifiers)
 	if(RIGHT_CLICK in modifiers)
@@ -163,8 +164,24 @@
 /obj/machinery/dispatch_control/proc/ui_data_ticket_list()
 	. = list()
 	for(var/datum/dispatch_ticket/ticket as anything in SSdispatch.tickets)
-		if(ticket.ticket_type == dispatch_type)
+		if(ticket.ticket_type != dispatch_type)
+			continue
+
+		if(current_filter == "Nothing")
 			. |= ticket
+			continue
+
+		if(findtext(current_filter, "Status=") == 1) // Looking for it being the very first text
+			var/wanted = splittext(current_filter, "=")[2]
+			if(ticket.status == wanted)
+				. |= ticket
+			continue
+
+		if(findtext(current_filter, "Priority=") == 1)
+			var/wanted = splittext(current_filter, "=")[2]
+			if(ticket.priority == wanted)
+				. |= ticket
+			continue
 
 /obj/machinery/dispatch_control/proc/ui_data_ticket_status()
 	. = list()
@@ -196,6 +213,7 @@
 /obj/machinery/dispatch_control/ui_data(mob/user)
 	var/list/data = list()
 	data["self_ref"] = REF(user)
+	data["filterby"] = current_filter
 	data["holder"] = list(
 		"list" = ui_data_holder_list(),
 		"lookup" = ui_data_holder_ref_table(),
@@ -257,3 +275,39 @@
 			SSdispatch.ui_data_by_mob[holder]["mdata"]["ticketActive"] = "None"
 			return TRUE
 
+		if("ticket-filter")
+			if(current_filter != "Nothing")
+				current_filter = "Nothing"
+				return TRUE
+			var/bywhat = tgui_alert(user, "What do you want to filter by", "Filter Menu", list("Status", "Priority", "CANCEL"))
+			var/list/possible_values
+			switch(bywhat)
+				if("CANCEL")
+					return FALSE
+				if("Status")
+					possible_values = SSDISPATCH_TICKET_STATUSES
+				if("Priority")
+					possible_values = SSDISPATCH_TICKET_PRIORITIES
+			possible_values += "CANCEL"
+			var/towhat = tgui_alert(user, "What [bywhat] do you want to look for", "Filter Menu", possible_values)
+			if(towhat == "CANCEL")
+				return TRUE
+			current_filter = "[bywhat]=[towhat]"
+			return TRUE
+
+		if("ticket-status")
+			var/newstatus = tgui_input_list(user, "What is the new Status", "Status Menu", SSDISPATCH_TICKET_STATUSES)
+			if(!newstatus)
+				return TRUE
+			SSdispatch.tickets[params["ticket"]].status = newstatus
+			return TRUE
+
+		if("ticket-priority")
+			var/newprio = tgui_input_list(user, "What is the new Priority", "Priority Menu", SSDISPATCH_TICKET_PRIORITIES)
+			if(!newprio)
+				return TRUE
+			SSdispatch.tickets[params["ticket"]].priority = newprio
+			return TRUE
+
+		if("ticket-details")
+			CRASH("NOT IMPLEMENTED") // TODO TODO TODO
