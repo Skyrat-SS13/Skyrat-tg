@@ -3,8 +3,8 @@
 	icon = 'icons/obj/computer.dmi' //TODO: TEMP ICON
 	icon_state = "computer" //TODO: TEMP ICON
 	use_power = NO_POWER_USE
-	idle_power_usage = 200
-	active_power_usage = 2000
+	idle_power_usage = 100
+	active_power_usage = 300
 	var/mob/current_user
 	var/dispatch_type
 	var/current_filter = "Nothing"
@@ -67,7 +67,7 @@
 
 /obj/machinery/dispatch_control/proc/console_bootup(stage = STAGE_ONE)
 	if(stage != STAGE_ONE && use_power == NO_POWER_USE) // We were shutdown in the middle of bootup
-		audible_message("makes a loud screeching sound as it's internal transmitter array jerks to a stop")
+		audible_message("[src] makes a loud screeching sound as it's internal transmitter array suddenly halts!")
 		return
 
 	use_power = IDLE_POWER_USE
@@ -163,7 +163,8 @@
 
 /obj/machinery/dispatch_control/proc/ui_data_ticket_list()
 	. = list()
-	for(var/datum/dispatch_ticket/ticket as anything in SSdispatch.tickets)
+	for(var/ticket_key as anything in SSdispatch.tickets)
+		var/datum/dispatch_ticket/ticket = SSdispatch.tickets[ticket_key]
 		if(ticket.ticket_type != dispatch_type)
 			continue
 

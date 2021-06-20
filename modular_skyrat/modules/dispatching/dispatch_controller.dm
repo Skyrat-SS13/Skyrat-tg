@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(dispatch)
 	var/list/job_cache_holder
 
 	var/list/job_type_holders
-	var/list/datum/dispatch_ticket/tickets
+	var/list/tickets
 	var/list/datum/dispatch_ticket_template/templates
 
 	var/list/ui_data_by_mob
