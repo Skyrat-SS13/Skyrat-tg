@@ -121,3 +121,7 @@
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest
 	name = "DS-2 Port Quarter Maintenance"
 	icon_state = "apmaint"
+
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/northwest
+	name = "DS-2 Port Fore Maintenance"
+	icon_state = "fpmaint"
