@@ -1,13 +1,20 @@
 /obj/machinery/dispatch_control
 	name = "Dispatch and Control Console"
-	icon = 'icons/obj/computer.dmi' //TODO: TEMP ICON
-	icon_state = "computer" //TODO: TEMP ICON
+	icon = 'modular_skyrat/modules/dispatching/icons/dcc.dmi'
+	icon_state = "computer"
 	use_power = NO_POWER_USE
 	idle_power_usage = 100
 	active_power_usage = 300
 	var/mob/current_user
+	var/overlay_state = "dcc"
 	var/dispatch_type
 	var/current_filter = "Nothing"
+
+/obj/machinery/dispatch_control/update_overlays()
+	. = ..()
+	if(overlay_state != "off")
+		. += mutable_appearance(icon, overlay_state + "_mon")
+		. += mutable_appearance(icon, overlay_state + "_key")
 
 /obj/machinery/dispatch_control/attack_hand(mob/living/user, list/modifiers)
 	if(RIGHT_CLICK in modifiers)
@@ -50,7 +57,7 @@
 		SSdispatch.dispatch_online = null
 
 /obj/machinery/dispatch_control/proc/state_change(state)
-	// icon_state = initial(icon_state) + "_[state]"
+	overlay_state = initial(overlay_state) + "[state]"
 	update_icon()
 
 /obj/machinery/dispatch_control/proc/message_viewers(message)
@@ -161,47 +168,52 @@
 		if(data[holder] == SENSOR_COORDS)
 			.[REF(holder)] = "[get_area(holder)]"
 
-/obj/machinery/dispatch_control/proc/ui_data_ticket_list()
+/obj/machinery/dispatch_control/proc/ui_data_tickets()
 	. = list()
-	for(var/ticket_key as anything in SSdispatch.tickets)
+	for(var/ticket_key in SSdispatch.tickets)
 		var/datum/dispatch_ticket/ticket = SSdispatch.tickets[ticket_key]
 		if(ticket.ticket_type != dispatch_type)
 			continue
 
 		if(current_filter == "Nothing")
-			. |= ticket
+			. += ticket
 			continue
 
 		if(findtext(current_filter, "Status=") == 1) // Looking for it being the very first text
 			var/wanted = splittext(current_filter, "=")[2]
 			if(ticket.status == wanted)
-				. |= ticket
+				. += ticket
 			continue
 
 		if(findtext(current_filter, "Priority=") == 1)
 			var/wanted = splittext(current_filter, "=")[2]
 			if(ticket.priority == wanted)
-				. |= ticket
+				. += ticket
 			continue
+
+/obj/machinery/dispatch_control/proc/ui_data_ticket_list()
+	. = list()
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
+		. += ticket.key
 
 /obj/machinery/dispatch_control/proc/ui_data_ticket_status()
 	. = list()
-	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.status]"
 
 /obj/machinery/dispatch_control/proc/ui_data_ticket_priority()
 	. = list()
-	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.priority]"
 
 /obj/machinery/dispatch_control/proc/ui_data_ticket_location()
 	. = list()
-	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.location]"
 
 /obj/machinery/dispatch_control/proc/ui_data_ticket_title()
 	. = list()
-	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.title]"
 
 /obj/machinery/dispatch_control/ui_interact(mob/user, datum/tgui/ui)
