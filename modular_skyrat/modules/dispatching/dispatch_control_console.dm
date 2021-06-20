@@ -48,7 +48,7 @@
 
 /obj/machinery/dispatch_control/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_MACHINERY_POWER_LOST, .proc/console_shutdown)
+	RegisterSignal(src, COMSIG_MACHINERY_POWER_LOST, .proc/console_powerfail)
 
 /obj/machinery/dispatch_control/Destroy()
 	. = ..()
@@ -102,9 +102,12 @@
 			message_viewers("Preparing...")
 			addtimer(CALLBACK(src, .proc/console_poweron), 0.5 SECONDS)
 
-/obj/machinery/dispatch_control/proc/console_shutdown()
+/obj/machinery/dispatch_control/proc/console_powerfail()
 	SIGNAL_HANDLER
 
+	addtimer(CALLBACK(.proc/console_shutdown, TRUE), 0.1 SECONDS)
+
+/obj/machinery/dispatch_control/proc/console_shutdown(powerfail = FALSE)
 	if(use_power == NO_POWER_USE) // Already shutdown
 		return
 
@@ -114,7 +117,7 @@
 
 	current_user = null
 
-	message_viewers("Shuting Down...")
+	message_viewers(powerfail ? "Warning: Power Failure" : "Shuting Down...")
 	use_power = NO_POWER_USE
 	state_change("off")
 
