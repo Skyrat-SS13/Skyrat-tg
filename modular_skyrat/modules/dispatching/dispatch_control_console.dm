@@ -238,7 +238,7 @@
 	data["ticket"] = list(
 		"list" = ui_data_ticket_list(),
 		"status" = ui_data_ticket_status(),
-		"priority" = ui_data_ticket_status(),
+		"priority" = ui_data_ticket_priority(),
 		"title" = ui_data_ticket_title(),
 		"location" = ui_data_ticket_location(),
 	)

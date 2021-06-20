@@ -6,13 +6,13 @@ SUBSYSTEM_DEF(dispatch)
 	var/list/job_cache_roles
 	var/list/job_cache_holder
 
-	var/list/job_type_holders
-	var/list/tickets
+	var/list/mob/job_type_holders
+	var/list/datum/dispatch_ticket/tickets
 	var/list/datum/dispatch_ticket_template/templates
 
 	var/list/ui_data_by_mob
 
-	var/list/dispatch_online
+	var/list/obj/machinery/dispatch_control/dispatch_online
 
 /datum/controller/subsystem/dispatch/Initialize()
 	. = ..()
