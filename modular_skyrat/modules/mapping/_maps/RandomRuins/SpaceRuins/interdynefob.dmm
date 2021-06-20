@@ -146,8 +146,16 @@
 /obj/effect/turf_decal/caution{
 	dir = 4
 	},
-/obj/machinery/computer/shuttle/caravan/interdyne_cargo{
-	dir = 4
+/obj/machinery/computer/shuttle{
+	desc = "Occasionally used to call in a resupply shuttle if one is in range.";
+	dir = 4;
+	icon_keyboard = "syndie_key";
+	icon_screen = "syndishuttle";
+	light_color = "#FA8282";
+	name = "syndicate cargo shuttle terminal";
+	possible_destinations = "syndielavaland_cargo";
+	req_access_txt = "150";
+	shuttleId = "syndie_cargo"
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/hangar)
@@ -1512,18 +1520,6 @@
 	dir = 8
 	},
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security)
-"tq" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 5;
-	height = 7;
-	id = "interdyne_cargo_away";
-	name = "DS-2";
-	roundstart_template = /datum/map_template/shuttle/ruin/interdyne_cargo;
-	width = 12
-	},
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/hangar)
 "tr" = (
 /obj/machinery/door/airlock/security/old/glass{
 	name = "Security";
@@ -4141,8 +4137,8 @@
 	},
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest)
 "XT" = (
-/obj/machinery/computer/shuttle/caravan/interdyne_cargo,
 /obj/effect/turf_decal/trimline/brown/line,
+/obj/structure/frame/computer,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge)
 "XU" = (
@@ -7872,7 +7868,7 @@ rE
 rE
 rE
 rE
-tq
+rE
 rE
 rE
 rE

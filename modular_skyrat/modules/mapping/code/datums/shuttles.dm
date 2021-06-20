@@ -38,39 +38,3 @@
 	name = "Chevvy Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 /*----- End of Black Market Shuttle Code -----*/
-
-/*----- Interdyne Cargo Shuttle Datum + related code -----*/
-/datum/map_template/shuttle/ruin/interdyne_cargo
-	prefix = "_maps/skyrat/shuttles/"
-	suffix = "interdyne_cargo"
-	name = "Interdyne Cargo Shuttle"
-
-/obj/machinery/computer/shuttle/caravan/interdyne_cargo
-	name = "Cargo Shuttle Console"
-	desc = "Used to control the cargo shuttle."
-	req_access = list(ACCESS_SYNDICATE)
-	circuit = /obj/item/circuitboard/computer/interdyne_cargo
-	shuttleId = "interdyne_cargo"
-	possible_destinations = "interdyne_cargo_home;interdyne_cargo_away"
-	icon_screen = "syndishuttle"
-	icon_keyboard = "syndie_key"
-	light_color = COLOR_SOFT_RED
-
-/obj/item/circuitboard/computer/interdyne_cargo
-	name = "Cargo Shuttle Console (Computer Board)"
-	build_path = /obj/machinery/computer/shuttle/caravan/interdyne_cargo
-
-//Docking Ports
-/obj/docking_port/mobile/interdyne_cargo
-	name = "Interdyne Cargo Shuttle"
-	id = "interdyne_cargo"
-	callTime = 600
-
-	dir = WEST
-	port_direction = EAST
-	width = 12
-	dwidth = 5
-	height = 7
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
-
-/*----- End of Interdyne Cargo Shuttle Code -----*/
