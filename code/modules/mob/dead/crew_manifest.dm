@@ -19,6 +19,7 @@
 
 /datum/crew_manifest/ui_data(mob/user)
 	var/list/positions = list(
+		"Central Command" = list("exceptions" = list(), "open" = 0),
 		"Command" = list("exceptions" = list(), "open" = 0),
 		"Security" = list("exceptions" = list(), "open" = 0),
 		"Engineering" = list("exceptions" = list(), "open" = 0),
@@ -30,6 +31,7 @@
 		"Silicon" = list("exceptions" = list(), "open" = 0)
 	)
 	var/list/departments = list(
+		list("flag" = DEPARTMENT_CENTRAL_COMMAND, "name" = "Central Command"), //SKYRAT EDIT CHANGE
 		list("flag" = DEPARTMENT_COMMAND, "name" = "Command"),
 		list("flag" = DEPARTMENT_SECURITY, "name" = "Security"),
 		list("flag" = DEPARTMENT_ENGINEERING, "name" = "Engineering"),
