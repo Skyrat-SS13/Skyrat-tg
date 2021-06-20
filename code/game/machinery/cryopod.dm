@@ -308,6 +308,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 // Skyrat Edit Addition - Cryostorage stores items.
 // Original is just the else statement.
 		if(control_computer)
+			if(istype(item_content, /obj/item/pda))
+				var/obj/item/pda/pda = item_content
+				pda.toff = TRUE
 			item_content.dropped()
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
