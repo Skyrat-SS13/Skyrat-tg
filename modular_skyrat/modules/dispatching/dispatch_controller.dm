@@ -256,6 +256,7 @@ SUBSYSTEM_DEF(dispatch)
 
 ///Takes a user, and a ticket, and loads the ticket information into their ticketData store
 /datum/controller/subsystem/dispatch/proc/load_ticket_data_into_mdata(mob/user, datum/dispatch_ticket/ticket)
+	ui_data_by_mob[user]["mdata"]["ticketData"]["ticket"] = ticket
 	ui_data_by_mob[user]["mdata"]["ticketData"]["creator"] = ticket.creator
 	ui_data_by_mob[user]["mdata"]["ticketData"]["location"] = ticket.location
 	ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket.status

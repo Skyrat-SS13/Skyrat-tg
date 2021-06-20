@@ -326,4 +326,8 @@
 			return TRUE
 
 		if("ticket-details")
-			CRASH("NOT IMPLEMENTED") // TODO TODO TODO
+			SSdispatch.ui_data_by_mob[user]["mdata"]["ticketActive"] = params["ticket"]
+			var/datum/dispatch_ticket/ticket_i = SSdispatch.tickets[params["ticket"]]
+			SSdispatch.load_ticket_data_into_mdata(user, ticket_i)
+			SSdispatch.ui_interact(user, null, "ticket-manage")
+			return TRUE
