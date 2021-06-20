@@ -38,11 +38,13 @@
 	suspect_desc = tdata["suspectDesc"]
 	status = SSDISPATCH_TICKET_STATUS_OPEN
 
-/datum/dispatch_ticket/proc/handle(mob/user)
+/datum/dispatch_ticket/proc/handle(mob/user, alert = TRUE)
 	status = SSDISPATCH_TICKET_STATUS_ACTIVE
 	if(handler)
 		handler_past += handler
 	handler = user
+	if(handler && alert)
+		message_creator("Your ticket is being handled by [handler]")
 
 /datum/dispatch_ticket/proc/message_creator(message)
 	to_chat(origin, "<span class='boldnotice'>Ticket Message: [message]</span>")

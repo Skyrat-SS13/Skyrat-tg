@@ -7,13 +7,12 @@ SUBSYSTEM_DEF(dispatch)
 	var/list/job_cache_holder
 
 	var/list/job_type_holders
-	var/list/type_holders_active
 	var/list/datum/dispatch_ticket/tickets
 	var/list/datum/dispatch_ticket_template/templates
 
 	var/list/ui_data_by_mob
 
-	var/obj/machinery/dispatch_control/dispatch_online
+	var/list/dispatch_online
 
 /datum/controller/subsystem/dispatch/Initialize()
 	. = ..()
@@ -21,6 +20,7 @@ SUBSYSTEM_DEF(dispatch)
 	holder_update()
 	tickets = list()
 	ui_data_by_mob = list()
+	dispatch_online = list()
 	templates = load_template_instances()
 
 ///Creates and stores an instance of every template type; given its not abstract
@@ -465,8 +465,6 @@ SUBSYSTEM_DEF(dispatch)
 				CRASH("invalid ticket identifier '[ticket]'")
 
 			ticket_i.handle(user)
-
-			ticket_i.message_creator("Your ticket is being handled by [user]!")
 
 			ui_data_by_mob[user]["mdata"]["ticketData"]["handler"] = "[ticket_i.handler]"
 			ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket_i.status

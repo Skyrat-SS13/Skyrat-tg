@@ -16,6 +16,10 @@
 
 /obj/item/blackmarket_uplink/Initialize()
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/item/blackmarket_uplink/LateInitialize()
+	. = ..()
 	if(accessible_markets.len)
 		viewing_market = accessible_markets[1]
 		var/list/categories = SSblackmarket.markets[viewing_market].categories
