@@ -205,12 +205,12 @@
 /datum/loadout_item/head/job/captain/imperial
 	name = "Captain's Naval Cap"
 	path = /obj/item/clothing/head/imperial/cap
-	restricted_roles = list("Captain")
+	restricted_roles = list("Captain", "Nanotrasen Representative")
 
 /datum/loadout_item/head/job/hop/imperial
 	name = "Head of Personnel's Naval Cap"
 	path = /obj/item/clothing/head/imperial/hop
-	restricted_roles = list("Head of Personnel")
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
 
 /*/datum/loadout_item/head/job/ce/imperial
 	name = "Chief Engineer's blast helmet."
@@ -292,13 +292,13 @@
 /datum/loadout_item/head/job/imperial
 	name = "Naval Officer Cap"
 	path = /obj/item/clothing/head/imperial
-	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/head/job/impgrey
 	name = "Grey Naval Officer Cap"
 	path = /obj/item/clothing/head/imperial/grey
-	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/head/job/impred

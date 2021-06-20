@@ -576,7 +576,7 @@
 /datum/loadout_item/uniform/job/imphop
 	name = "Head of Personnel's Naval Jumpsuit"
 	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
-	restricted_roles = list("Head of Personnel")
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
 
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
