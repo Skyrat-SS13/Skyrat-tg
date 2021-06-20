@@ -160,6 +160,32 @@
 		if(data[holder] == SENSOR_COORDS)
 			.[REF(holder)] = "[get_area(holder)]"
 
+/obj/machinery/dispatch_control/proc/ui_data_ticket_list()
+	. = list()
+	for(var/datum/dispatch_ticket/ticket as anything in SSdispatch.tickets)
+		if(ticket.ticket_type == dispatch_type)
+			. |= ticket
+
+/obj/machinery/dispatch_control/proc/ui_data_ticket_status()
+	. = list()
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+		.[ticket.key] = "[ticket.status]"
+
+/obj/machinery/dispatch_control/proc/ui_data_ticket_priority()
+	. = list()
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+		.[ticket.key] = "[ticket.priority]"
+
+/obj/machinery/dispatch_control/proc/ui_data_ticket_location()
+	. = list()
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+		.[ticket.key] = "[ticket.location]"
+
+/obj/machinery/dispatch_control/proc/ui_data_ticket_title()
+	. = list()
+	for(var/datum/dispatch_ticket/ticket as anything in ui_data_ticket_list())
+		.[ticket.key] = "[ticket.title]"
+
 /obj/machinery/dispatch_control/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -177,6 +203,13 @@
 		"activity" = ui_data_holder_activity(),
 		"ticket" = ui_data_holder_current_ticket(),
 		"location" = ui_data_holder_locs(),
+	)
+	data["ticket"] = list(
+		"list" = ui_data_ticket_list(),
+		"status" = ui_data_ticket_status(),
+		"priority" = ui_data_ticket_status(),
+		"title" = ui_data_ticket_title(),
+		"location" = ui_data_ticket_location(),
 	)
 	return data
 
