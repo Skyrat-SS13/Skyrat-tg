@@ -34,3 +34,13 @@
 ///Departments///
 /obj/effect/turf_decal/skyrat_decals/departments/bridge
 	icon_state = "bridge"
+
+///DS-2 Sign///
+/obj/effect/turf_decal/skyrat_decals/ds2/left
+	icon_state = "ds1"
+
+/obj/effect/turf_decal/skyrat_decals/ds2/middle
+	icon_state = "ds2"
+
+/obj/effect/turf_decal/skyrat_decals/ds2/right
+	icon_state = "ds3"
