@@ -59,4 +59,18 @@
 /obj/item/circuitboard/computer/interdyne_cargo
 	name = "Cargo Shuttle Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/caravan/interdyne_cargo
-/*----- End of Black Market Shuttle Code -----*/
+
+//Docking Ports
+/obj/docking_port/mobile/interdyne_cargo
+	name = "Interdyne Cargo Shuttle"
+	id = "interdyne_cargo"
+	callTime = 600
+
+	dir = WEST
+	port_direction = EAST
+	width = 12
+	dwidth = 5
+	height = 7
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
+
+/*----- End of Interdyne Cargo Shuttle Code -----*/
