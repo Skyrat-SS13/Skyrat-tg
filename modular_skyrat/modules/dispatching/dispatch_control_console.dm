@@ -51,10 +51,10 @@
 	RegisterSignal(src, COMSIG_MACHINERY_POWER_LOST, .proc/console_powerfail)
 
 /obj/machinery/dispatch_control/Destroy()
-	. = ..()
 	UnregisterSignal(src, COMSIG_MACHINERY_POWER_LOST)
 	if(SSdispatch.dispatch_online == src)
 		SSdispatch.dispatch_online = null
+	return ..()
 
 /obj/machinery/dispatch_control/proc/state_change(state)
 	overlay_state = initial(overlay_state) + "[state]"
