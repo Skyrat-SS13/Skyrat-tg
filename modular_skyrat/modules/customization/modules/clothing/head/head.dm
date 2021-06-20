@@ -299,3 +299,93 @@
 /obj/item/clothing/head/flowerpin/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
+
+
+/obj/item/clothing/head/imperial
+	name = "naval officer cap"
+	desc = "A grey cap with a silver disk in the center."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "impcom"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/imperial/hop
+	name = "head of personnel's naval officer cap"
+	desc = "A olive cap with a silver disk in the center."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "imphop"
+	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
+
+/obj/item/clothing/head/imperial/hos
+	name = "head of security's naval officer cap"
+	desc = "A tar black cap with a silver disk in the center."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "imphos"
+	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, RAD = 0, FIRE = 50, ACID = 60, WOUND = 10)
+	strip_delay = 80
+
+/obj/item/clothing/head/imperial/grey
+	name = "grey naval officer cap"
+	desc = "A light grey with a silver disk in the center."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "impcommand"
+
+/obj/item/clothing/head/imperial/cap
+	name = "captain's naval officer cap"
+	desc = "A white cap with a silver disk in the center."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "impcap"
+	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 5)
+	strip_delay = 60
+
+/obj/item/clothing/head/imperial/ce
+	name = "chief engineer's blast helmet"
+	desc = "Despite seeming like it's made of metal, it's actually a very cheap plastic.."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	armor = list(MELEE = 15, BULLET = 5, LASER = 20, ENERGY = 10, BOMB = 20, BIO = 10, RAD = 20, FIRE = 100, ACID = 50, WOUND = 10)
+	clothing_flags = STOPSPRESSUREDAMAGE
+	heat_protection = HEAD
+	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+	icon_state = "impce"
+
+/obj/item/clothing/head/imperial/red
+	name = "red naval officer cap"
+	desc = "A red cap with a silver disk in the center."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "impred_cap"
+/obj/item/clothing/head/imperialhelmet
+	name = "blast helmet"
+	desc = "A sharp helmet with some goggles on the top"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "gblast_helmet"
+	mutant_variants = NONE
+	var/goggles = FALSE
+
+/obj/item/clothing/head/imperialhelmet/proc/adjust_goggles(mob/living/carbon/user) //using my own donator item as a base omegalul
+	if(user?.incapacitated())
+		return
+	if(goggles)
+		icon_state = "gblast_helmet"
+		to_chat(user, "<span class='notice'>You put all your effort into pulling the goggles up.</span>")
+	else
+		icon_state = "gblast_helmetv"
+		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
+	goggles = !goggles
+	if(user)
+		user.head_update(src, forced = 1)
+		user.update_action_buttons_icon()
+
+/obj/item/clothing/head/imperialhelmet/ui_action_click(mob/living/carbon/user, action)
+	adjust_goggles(user)
+
+/obj/item/clothing/head/imperialhelmet/attack_self(mob/living/carbon/user)
+	adjust_goggles(user)
