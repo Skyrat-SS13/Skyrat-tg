@@ -41,10 +41,6 @@
 	dir = 8
 	},
 /area/template_noop)
-"at" = (
-/obj/machinery/computer/crew/syndie,
-/turf/open/floor/iron/dark,
-/area/template_noop)
 "aC" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
@@ -90,13 +86,6 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/template_noop)
-"bA" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 9
-	},
-/obj/item/kirbyplants/random,
-/turf/open/floor/wood,
-/area/template_noop)
 "bG" = (
 /obj/structure/closet/secure_closet/miner{
 	req_access = list(150)
@@ -114,18 +103,6 @@
 	dir = 4
 	},
 /area/template_noop)
-"bR" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/structure/chair{
-	dir = 8
-	},
-/turf/open/floor/iron/smooth_large,
-/area/template_noop)
 "bT" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/trimline/brown/line,
@@ -139,10 +116,6 @@
 /area/template_noop)
 "bZ" = (
 /turf/open/floor/iron/cafeteria,
-/area/template_noop)
-"ce" = (
-/obj/structure/filingcabinet,
-/turf/open/floor/wood,
 /area/template_noop)
 "cf" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -190,11 +163,6 @@
 	dir = 1
 	},
 /area/template_noop)
-"cK" = (
-/obj/machinery/recharger,
-/obj/structure/table/reinforced,
-/turf/open/floor/carpet,
-/area/template_noop)
 "cQ" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
@@ -212,14 +180,6 @@
 "cX" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
-/area/template_noop)
-"cZ" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/black/red;
-	suit_type = /obj/item/clothing/suit/space/syndicate/black/red
-	},
-/obj/effect/turf_decal/siding/thinplating/dark,
-/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "da" = (
 /obj/structure/table/wood,
@@ -267,13 +227,6 @@
 	},
 /turf/open/floor/iron,
 /area/template_noop)
-"dA" = (
-/obj/structure/tank_dispenser/oxygen,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 6
-	},
-/turf/open/floor/iron/smooth_large,
-/area/template_noop)
 "dI" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 4
@@ -304,13 +257,6 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/engine,
 /area/template_noop)
-"dV" = (
-/obj/machinery/computer/crew/syndie{
-	dir = 1
-	},
-/obj/machinery/light/directional/south,
-/turf/open/floor/carpet,
-/area/template_noop)
 "ed" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet/red,
@@ -320,21 +266,27 @@
 /obj/item/storage/fancy/cigarettes/cigpack_syndicate,
 /turf/open/floor/iron/large,
 /area/template_noop)
+"eg" = (
+/obj/machinery/door/firedoor,
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/survival_pod{
+	req_access_txt = "151"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
+"em" = (
+/obj/machinery/door/airlock/security/old{
+	name = "Armory";
+	req_access_txt = "151"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/template_noop)
 "eo" = (
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron,
-/area/template_noop)
-"es" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/structure/chair{
-	dir = 4
-	},
-/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "et" = (
 /obj/machinery/power/rtg/advanced,
@@ -377,6 +329,12 @@
 "fb" = (
 /turf/open/floor/iron/dark,
 /area/template_noop)
+"fd" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/template_noop)
 "ff" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
@@ -389,6 +347,33 @@
 /obj/structure/table/wood,
 /obj/item/gun/ballistic/automatic/c20r/toy/unrestricted,
 /turf/open/floor/plating,
+/area/template_noop)
+"fr" = (
+/obj/structure/rack,
+/obj/item/clothing/head/helmet{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet{
+	layer = 3.00001
+	},
+/obj/item/clothing/head/helmet{
+	layer = 3.00001;
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "ft" = (
 /obj/structure/table/wood,
@@ -421,6 +406,18 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
+/area/template_noop)
+"fV" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "fW" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -479,6 +476,20 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/template_noop)
+"gM" = (
+/obj/structure/rack,
+/obj/item/gun/ballistic/automatic/pistol{
+	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
+	},
+/obj/item/gun/ballistic/automatic/pistol{
+	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
+	},
+/obj/item/gun/ballistic/automatic/pistol{
+	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/template_noop)
 "gP" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/trimline/brown/corner,
@@ -495,17 +506,6 @@
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
-/area/template_noop)
-"gV" = (
-/obj/structure/rack,
-/obj/item/crowbar/power/syndicate{
-	pixel_y = 9
-	},
-/obj/item/crowbar/power/syndicate{
-	pixel_y = 6
-	},
-/obj/item/crowbar/power/syndicate,
-/turf/open/floor/iron/dark,
 /area/template_noop)
 "hd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -530,6 +530,10 @@
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 8
 	},
+/area/template_noop)
+"ht" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/carpet,
 /area/template_noop)
 "hv" = (
 /obj/structure/rack,
@@ -589,20 +593,10 @@
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
-"hX" = (
-/obj/structure/chair/office,
-/turf/open/floor/iron/dark,
-/area/template_noop)
 "ib" = (
 /obj/machinery/deepfryer,
 /turf/open/floor/iron/kitchen{
 	dir = 4
-	},
-/area/template_noop)
-"ig" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark/smooth_corner{
-	dir = 8
 	},
 /area/template_noop)
 "ih" = (
@@ -701,21 +695,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/iron,
-/area/template_noop)
-"jo" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "warden";
-	name = "master at arms' locker";
-	req_access_txt = "150"
-	},
-/obj/item/storage/belt/security/full,
-/obj/item/radio/headset/headset_sec/alt/interdyne,
-/obj/item/clothing/head/warden/syndicate,
-/obj/item/clothing/suit/armor/vest/warden/syndicate,
-/obj/item/clothing/under/utility/sec/old/syndicate,
-/turf/open/floor/iron/dark/smooth_corner{
-	dir = 8
-	},
 /area/template_noop)
 "jy" = (
 /turf/open/floor/iron/large,
@@ -827,6 +806,12 @@
 	},
 /turf/open/floor/plating,
 /area/template_noop)
+"kC" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/smooth_corner{
+	dir = 8
+	},
+/area/template_noop)
 "kF" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
@@ -860,6 +845,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/template_noop)
+"lR" = (
+/obj/structure/rack,
+/obj/item/crowbar/power/syndicate{
+	pixel_y = 9
+	},
+/obj/item/crowbar/power/syndicate{
+	pixel_y = 6
+	},
+/obj/item/crowbar/power/syndicate,
+/turf/open/floor/iron/dark,
+/area/template_noop)
+"lS" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth_large,
+/area/template_noop)
 "mc" = (
 /turf/template_noop,
 /area/template_noop)
@@ -892,12 +894,9 @@
 	},
 /area/template_noop)
 "mn" = (
-/obj/machinery/door/firedoor,
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/survival_pod{
-	req_access_txt = "151"
-	},
-/turf/open/floor/plating,
+/obj/structure/table/wood,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/wood,
 /area/template_noop)
 "mx" = (
 /obj/effect/turf_decal/siding/blue{
@@ -913,6 +912,15 @@
 "mE" = (
 /obj/effect/turf_decal/skyrat_decals/syndicate/middle/right,
 /turf/open/floor/mineral/plastitanium/red,
+/area/template_noop)
+"mF" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/firingpins/syndicate{
+	pixel_y = 7
+	},
+/obj/item/storage/box/firingpins/syndicate,
+/obj/item/storage/secure/safe/directional/east,
+/turf/open/floor/iron/dark,
 /area/template_noop)
 "mL" = (
 /obj/effect/turf_decal/tile/brown{
@@ -978,12 +986,6 @@
 	},
 /turf/open/floor/plating,
 /area/template_noop)
-"nP" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark/smooth_corner{
-	dir = 8
-	},
-/area/template_noop)
 "od" = (
 /obj/structure/table,
 /obj/item/kitchen/knife,
@@ -1045,6 +1047,13 @@
 	pixel_y = -32
 	},
 /turf/open/floor/plating,
+/area/template_noop)
+"oT" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood,
 /area/template_noop)
 "oX" = (
 /obj/structure/chair/comfy/black{
@@ -1167,29 +1176,12 @@
 "qw" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/template_noop)
-"qx" = (
-/obj/machinery/door/firedoor,
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/template_noop)
 "qy" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
-/area/template_noop)
-"qA" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/firingpins/syndicate{
-	pixel_y = 7
-	},
-/obj/item/storage/box/firingpins/syndicate,
-/obj/item/storage/secure/safe/directional/east,
-/turf/open/floor/iron/dark,
 /area/template_noop)
 "qE" = (
 /obj/machinery/smartfridge/food,
@@ -1212,24 +1204,14 @@
 	},
 /turf/open/floor/iron,
 /area/template_noop)
-"qO" = (
-/obj/structure/rack,
-/obj/item/gun/ballistic/shotgun/riot{
-	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
-	},
-/obj/item/gun/ballistic/shotgun/riot{
-	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
-	},
-/obj/item/gun/ballistic/shotgun/riot{
-	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
-	},
-/obj/structure/reagent_dispensers/peppertank/directional/north,
-/turf/open/floor/iron/dark,
-/area/template_noop)
 "qQ" = (
 /obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/smooth_large,
+/area/template_noop)
+"qV" = (
+/obj/machinery/porta_turret/syndicate/energy,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/template_noop)
 "rn" = (
 /obj/machinery/door/airlock/external{
@@ -1240,10 +1222,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/template_noop)
-"ro" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/dark,
 /area/template_noop)
 "rs" = (
 /obj/item/restraints/handcuffs/cable/zipties/used,
@@ -1280,6 +1258,10 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
+"rJ" = (
+/obj/machinery/computer/crew/syndie,
+/turf/open/floor/iron/dark,
+/area/template_noop)
 "rV" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
@@ -1290,6 +1272,13 @@
 	pixel_x = -7
 	},
 /turf/open/floor/wood/large,
+/area/template_noop)
+"sb" = (
+/obj/machinery/door/airlock/security/old/glass{
+	name = "Security";
+	req_access_txt = "151"
+	},
+/turf/open/floor/iron/dark,
 /area/template_noop)
 "sc" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/visible{
@@ -1371,18 +1360,24 @@
 	},
 /turf/open/floor/wood,
 /area/template_noop)
+"sQ" = (
+/obj/machinery/door/airlock/external{
+	req_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/template_noop)
 "sS" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/bridge_pipe/cyan/visible{
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/template_noop)
-"sU" = (
-/obj/machinery/computer/security{
-	network = list("fsci","fsc")
-	},
-/turf/open/floor/iron/dark,
 /area/template_noop)
 "sV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1391,14 +1386,6 @@
 /area/template_noop)
 "sW" = (
 /turf/open/floor/carpet/red,
-/area/template_noop)
-"ta" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/machinery/door/airlock/grunge{
-	name = "Corporate Lawyer";
-	req_access_txt = "151"
-	},
-/turf/open/floor/wood,
 /area/template_noop)
 "te" = (
 /obj/structure/spider/stickyweb,
@@ -1416,6 +1403,12 @@
 	},
 /turf/open/floor/plating,
 /area/template_noop)
+"tp" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/smooth_corner{
+	dir = 8
+	},
+/area/template_noop)
 "tq" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -1427,6 +1420,16 @@
 	width = 20
 	},
 /turf/open/floor/plating,
+/area/template_noop)
+"tr" = (
+/obj/machinery/door/airlock/security/old/glass{
+	name = "Security";
+	req_access_txt = "151"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
 "tw" = (
 /obj/machinery/door/firedoor,
@@ -1446,13 +1449,6 @@
 	req_access_txt = "150"
 	},
 /turf/open/floor/iron/textured_large,
-/area/template_noop)
-"tH" = (
-/obj/machinery/computer/security{
-	dir = 1;
-	network = list("fsci","fsc")
-	},
-/turf/open/floor/carpet,
 /area/template_noop)
 "tL" = (
 /obj/effect/turf_decal/siding/thinplating/end{
@@ -1483,6 +1479,10 @@
 	dir = 8
 	},
 /turf/open/floor/engine/o2,
+/area/template_noop)
+"tY" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/wood,
 /area/template_noop)
 "ub" = (
 /obj/machinery/light/directional/west,
@@ -1524,16 +1524,6 @@
 	},
 /turf/open/floor/iron,
 /area/template_noop)
-"uG" = (
-/obj/machinery/door/window/survival_pod{
-	dir = 1;
-	req_access_txt = "151"
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/turf/open/floor/iron/smooth_large,
-/area/template_noop)
 "uJ" = (
 /obj/structure/rack,
 /obj/item/clothing/shoes/magboots/syndie,
@@ -1555,18 +1545,6 @@
 	},
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
-/area/template_noop)
-"uN" = (
-/obj/machinery/door/airlock/external{
-	req_access_txt = "150"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
 /area/template_noop)
 "uO" = (
 /turf/open/floor/iron/dark/smooth_large,
@@ -1604,17 +1582,11 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
-"va" = (
-/obj/machinery/door/airlock/external{
-	req_access_txt = "150"
+"ve" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/smooth_edge{
+	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating,
 /area/template_noop)
 "vh" = (
 /obj/machinery/computer/camera_advanced/syndie,
@@ -1735,12 +1707,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/smooth_large,
 /area/template_noop)
-"ws" = (
-/obj/structure/chair{
-	dir = 8
-	},
-/turf/open/floor/iron/smooth_large,
-/area/template_noop)
 "wu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/wood,
@@ -1750,6 +1716,19 @@
 	pixel_y = 32
 	},
 /turf/open/floor/plating,
+/area/template_noop)
+"wv" = (
+/obj/structure/rack,
+/obj/item/storage/box/rubbershot{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/iron/dark,
 /area/template_noop)
 "ww" = (
 /obj/structure/sink/kitchen{
@@ -1764,22 +1743,13 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/engine/n2,
 /area/template_noop)
-"wB" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/teargas{
-	pixel_x = 3;
-	pixel_y = 3
+"wI" = (
+/obj/machinery/door/window/survival_pod{
+	dir = 1;
+	req_access_txt = "151"
 	},
-/obj/item/storage/box/handcuffs,
-/obj/item/storage/box/flashbangs{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/turf/open/floor/iron/dark,
-/area/template_noop)
-"wG" = (
-/obj/structure/chair{
-	dir = 4
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
 	},
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
@@ -1831,6 +1801,14 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/burgundy,
 /turf/open/floor/plating/airless,
+/area/template_noop)
+"xT" = (
+/obj/machinery/door/firedoor,
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/template_noop)
 "xW" = (
 /obj/structure/lattice/catwalk/plated,
@@ -1885,16 +1863,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
-"yl" = (
-/obj/machinery/door/airlock/security/old/glass{
-	name = "Security";
-	req_access_txt = "151"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/template_noop)
 "yu" = (
 /obj/structure/fans/tiny/forcefield,
 /obj/effect/turf_decal/stripes/line,
@@ -1906,6 +1874,16 @@
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
+/area/template_noop)
+"yA" = (
+/obj/structure/bed/dogbed/mcgriff{
+	name = "Halmant's bed"
+	},
+/mob/living/simple_animal/pet/dog/pug{
+	name = "Halmant";
+	real_name = null
+	},
+/turf/open/floor/iron/dark/smooth_corner,
 /area/template_noop)
 "yB" = (
 /obj/structure/table,
@@ -2023,12 +2001,6 @@
 /obj/item/melee/baton/cattleprod,
 /turf/open/floor/iron,
 /area/template_noop)
-"Af" = (
-/obj/structure/chair/office{
-	dir = 8
-	},
-/turf/open/floor/carpet,
-/area/template_noop)
 "Ak" = (
 /obj/machinery/suit_storage_unit/open,
 /obj/effect/turf_decal/trimline/red/line{
@@ -2058,9 +2030,30 @@
 /obj/structure/railing,
 /turf/open/floor/iron/dark,
 /area/template_noop)
-"AA" = (
-/obj/machinery/porta_turret/syndicate/energy,
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
+"AE" = (
+/obj/structure/rack,
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 9
+	},
+/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "AI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
@@ -2137,6 +2130,18 @@
 	},
 /turf/open/floor/iron,
 /area/template_noop)
+"BL" = (
+/obj/machinery/door/airlock/external{
+	req_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/template_noop)
 "BQ" = (
 /obj/item/circuitboard/machine/ore_silo,
 /obj/structure/frame/machine,
@@ -2150,6 +2155,16 @@
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 4
 	},
+/area/template_noop)
+"BT" = (
+/obj/structure/rack,
+/obj/item/gun/energy/ionrifle{
+	pixel_y = -3
+	},
+/obj/item/gun/energy/temperature/security{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
 /area/template_noop)
 "BX" = (
 /obj/effect/turf_decal/siding/blue{
@@ -2182,15 +2197,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/template_noop)
-"Ct" = (
-/obj/machinery/light/directional/north,
-/obj/structure/sign/departments/security{
-	pixel_y = 32
-	},
-/turf/open/floor/iron/dark/smooth_corner{
-	dir = 8
-	},
-/area/template_noop)
 "Cv" = (
 /obj/structure/dresser,
 /turf/open/floor/wood/large,
@@ -2209,6 +2215,20 @@
 	},
 /turf/open/floor/plating,
 /area/template_noop)
+"CR" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/machinery/door/airlock/grunge{
+	name = "Corporate Lawyer";
+	req_access_txt = "151"
+	},
+/turf/open/floor/wood,
+/area/template_noop)
+"CS" = (
+/obj/structure/chair/office,
+/turf/open/floor/iron/dark,
+/area/template_noop)
 "Do" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -2219,15 +2239,11 @@
 /obj/structure/rack/shelf,
 /turf/open/floor/iron,
 /area/template_noop)
-"Ds" = (
-/obj/machinery/door/airlock/security/old{
-	name = "Master At Arms' Office";
-	req_access_txt = "151"
+"Dp" = (
+/obj/machinery/computer/security{
+	network = list("fsci","fsc")
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured_large,
+/turf/open/floor/iron/dark,
 /area/template_noop)
 "Dw" = (
 /obj/item/stack/tile/iron,
@@ -2265,6 +2281,15 @@
 	dir = 8
 	},
 /area/template_noop)
+"DF" = (
+/obj/machinery/light/directional/north,
+/obj/structure/sign/departments/security{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/dark/smooth_corner{
+	dir = 8
+	},
+/area/template_noop)
 "DR" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -2272,31 +2297,6 @@
 	id = "interdynecommisary"
 	},
 /turf/open/floor/plating,
-/area/template_noop)
-"DU" = (
-/obj/structure/rack,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/bulletproof,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 5
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 9
-	},
-/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "DY" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2314,6 +2314,15 @@
 /obj/effect/turf_decal/skyrat_decals/syndicate/top/middle,
 /turf/open/floor/mineral/plastitanium/red,
 /area/template_noop)
+"Ei" = (
+/obj/machinery/door/firedoor,
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/survival_pod{
+	dir = 4;
+	req_access_txt = "151"
+	},
+/turf/open/floor/plating,
+/area/template_noop)
 "El" = (
 /obj/effect/turf_decal/vg_decals/numbers/three,
 /turf/open/floor/plating,
@@ -2321,33 +2330,6 @@
 "En" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/mineral/plastitanium/red,
-/area/template_noop)
-"Es" = (
-/obj/structure/rack,
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 4
-	},
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 6
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 10
-	},
-/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "EA" = (
 /obj/structure/tank_dispenser,
@@ -2369,12 +2351,6 @@
 /obj/item/toy/plush/lizard_plushie,
 /turf/open/floor/iron,
 /area/template_noop)
-"EP" = (
-/obj/item/paper_bin,
-/obj/item/pen,
-/obj/structure/table/reinforced,
-/turf/open/floor/carpet,
-/area/template_noop)
 "ES" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/brown{
@@ -2384,16 +2360,6 @@
 	dir = 1
 	},
 /turf/open/floor/iron,
-/area/template_noop)
-"ET" = (
-/obj/structure/bed/dogbed/mcgriff{
-	name = "Halmant's bed"
-	},
-/mob/living/simple_animal/pet/dog/pug{
-	name = "Halmant";
-	real_name = null
-	},
-/turf/open/floor/iron/dark/smooth_corner,
 /area/template_noop)
 "Fj" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -2430,13 +2396,6 @@
 	dir = 4
 	},
 /area/template_noop)
-"Fs" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/machinery/vending/coffee,
-/turf/open/floor/wood,
-/area/template_noop)
 "Fy" = (
 /obj/structure/girder,
 /obj/effect/decal/cleanable/dirt,
@@ -2469,19 +2428,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/template_noop)
-"FR" = (
-/obj/structure/rack,
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/turf/open/floor/iron/dark,
-/area/template_noop)
 "FW" = (
 /obj/structure/training_machine,
 /obj/item/target/clown,
@@ -2511,6 +2457,13 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
+"Gj" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/smooth_large,
+/area/template_noop)
 "Gl" = (
 /obj/effect/spawner/liquids_spawner{
 	reagent_list = list(/datum/reagent/water = 300)
@@ -2522,17 +2475,24 @@
 /obj/effect/turf_decal/skyrat_decals/syndicate/middle/left,
 /turf/open/floor/mineral/plastitanium/red,
 /area/template_noop)
+"GI" = (
+/obj/machinery/door/firedoor,
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/survival_pod,
+/turf/open/floor/plating,
+/area/template_noop)
 "GJ" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 8
 	},
 /turf/open/floor/engine/o2,
 /area/template_noop)
-"GO" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark/smooth_edge{
-	dir = 1
+"GQ" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
 	},
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/wood,
 /area/template_noop)
 "GT" = (
 /obj/effect/spawner/liquids_spawner{
@@ -2540,33 +2500,6 @@
 	},
 /obj/structure/flora/rock/pile,
 /turf/open/floor/plating/asteroid,
-/area/template_noop)
-"GU" = (
-/obj/structure/rack,
-/obj/item/clothing/head/helmet{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/window/reinforced/survival_pod{
-	dir = 10
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 6
-	},
-/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "GX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2614,20 +2547,18 @@
 /obj/item/reagent_containers/food/condiment/soymilk,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/template_noop)
+"Ih" = (
+/obj/vehicle/ridden/secway{
+	desc = "Finally - a good use for a security cyborg."
+	},
+/obj/item/key/security,
+/turf/open/floor/iron/dark,
+/area/template_noop)
 "In" = (
 /obj/structure/chair/office/light{
 	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium/red,
-/area/template_noop)
-"Io" = (
-/obj/machinery/door/firedoor,
-/obj/structure/table/reinforced,
-/obj/structure/window/reinforced/survival_pod,
-/turf/open/floor/plating,
-/area/template_noop)
-"Ip" = (
-/turf/open/floor/carpet,
 /area/template_noop)
 "Iz" = (
 /obj/structure/table/reinforced,
@@ -2641,24 +2572,12 @@
 	},
 /turf/open/floor/iron,
 /area/template_noop)
-"IX" = (
-/obj/structure/rack,
-/obj/item/restraints/handcuffs,
-/turf/open/floor/iron/smooth_large,
-/area/template_noop)
 "IY" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/template_noop)
-"IZ" = (
-/obj/vehicle/ridden/secway{
-	desc = "Finally - a good use for a security cyborg."
-	},
-/obj/item/key/security,
-/turf/open/floor/iron/dark,
 /area/template_noop)
 "Jf" = (
 /obj/effect/turf_decal/stripes/end,
@@ -2720,12 +2639,10 @@
 /obj/machinery/atmospherics/pipe/bridge_pipe/supply/visible,
 /turf/open/floor/plating,
 /area/template_noop)
-"JX" = (
-/obj/machinery/door/airlock/security/old/glass{
-	name = "Security";
-	req_access_txt = "151"
-	},
-/turf/open/floor/iron/dark,
+"JO" = (
+/obj/structure/rack,
+/obj/item/restraints/handcuffs,
+/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "Kd" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -2828,6 +2745,28 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/template_noop)
+"Lg" = (
+/obj/structure/rack,
+/obj/item/gun/ballistic/shotgun/riot{
+	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
+	},
+/obj/item/gun/ballistic/shotgun/riot{
+	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
+	},
+/obj/item/gun/ballistic/shotgun/riot{
+	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
+	},
+/obj/structure/reagent_dispensers/peppertank/directional/north,
+/turf/open/floor/iron/dark,
+/area/template_noop)
+"Lk" = (
+/obj/machinery/door/airlock/security/old/glass{
+	name = "Security";
+	req_access_txt = "151"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron/dark/textured_large,
+/area/template_noop)
 "Lm" = (
 /turf/open/floor/iron/dark/textured_corner{
 	dir = 8
@@ -2852,6 +2791,11 @@
 /obj/effect/turf_decal/skyrat_decals/syndicate/bottom/left,
 /turf/open/floor/mineral/plastitanium/red,
 /area/template_noop)
+"LJ" = (
+/obj/machinery/recharger,
+/obj/structure/table/reinforced,
+/turf/open/floor/carpet,
+/area/template_noop)
 "LN" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
@@ -2875,6 +2819,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/template_noop)
+"LU" = (
+/obj/machinery/computer/security{
+	dir = 1;
+	network = list("fsci","fsc")
+	},
+/turf/open/floor/carpet,
+/area/template_noop)
 "LZ" = (
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/textured_edge{
@@ -2895,12 +2846,26 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/template_noop)
+"Mz" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/wood,
+/area/template_noop)
 "MA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/open/floor/plating,
+/area/template_noop)
+"MG" = (
+/obj/machinery/door/airlock/security/old{
+	name = "Master At Arms' Office";
+	req_access_txt = "151"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
 "MI" = (
 /obj/structure/chair/office/light{
@@ -3002,6 +2967,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet/donk,
 /area/template_noop)
+"NI" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/template_noop)
 "NJ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/syndie{
@@ -3095,6 +3066,12 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/template_noop)
+"Ov" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
+/area/template_noop)
 "Oy" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/smooth_large,
@@ -3152,6 +3129,19 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/mineral/plastitanium,
 /area/template_noop)
+"Po" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/teargas{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/handcuffs,
+/obj/item/storage/box/flashbangs{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/open/floor/iron/dark,
+/area/template_noop)
 "Pp" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -3171,7 +3161,113 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
-"PF" = (
+"PT" = (
+/obj/structure/rack,
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
+	},
+/turf/open/floor/iron/smooth_large,
+/area/template_noop)
+"PU" = (
+/obj/structure/bed/dogbed,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/template_noop)
+"PW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/iron/dark/side,
+/area/template_noop)
+"PY" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/template_noop)
+"Qe" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/structure/drain,
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/structure/curtain,
+/turf/open/floor/iron/showroomfloor,
+/area/template_noop)
+"Qo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood/large,
+/area/template_noop)
+"Qq" = (
+/turf/open/floor/iron/dark/smooth_corner,
+/area/template_noop)
+"Qs" = (
+/obj/structure/sign/poster/contraband/pwr_game{
+	pixel_y = 32
+	},
+/turf/open/floor/iron,
+/area/template_noop)
+"Qw" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
+/area/template_noop)
+"Qz" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/chemimp{
+	pixel_y = 6
+	},
+/obj/item/grenade/barrier{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/item/grenade/barrier,
+/obj/item/grenade/barrier{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/obj/item/grenade/barrier{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/floor/iron/dark,
+/area/template_noop)
+"QB" = (
+/obj/structure/table,
+/obj/item/toy/cards/deck/kotahi{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/toy/cards/deck/syndicate{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/turf/open/floor/iron/cafeteria,
+/area/template_noop)
+"QC" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/armor/vest{
 	pixel_x = -3;
@@ -3196,108 +3292,12 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
-"PU" = (
-/obj/structure/bed/dogbed,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
-/area/template_noop)
-"PW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/iron/dark/side,
-/area/template_noop)
-"PY" = (
-/obj/structure/chair/office{
-	dir = 8
+"QE" = (
+/obj/structure/table/wood,
+/obj/item/laser_pointer/upgraded{
+	desc = "It's labelled 'Felinid Obliteration Device'. Fancy?"
 	},
 /turf/open/floor/wood,
-/area/template_noop)
-"Qb" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/chemimp{
-	pixel_y = 6
-	},
-/obj/item/grenade/barrier{
-	pixel_x = -3;
-	pixel_y = 1
-	},
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier{
-	pixel_x = 3;
-	pixel_y = -1
-	},
-/obj/item/grenade/barrier{
-	pixel_x = 6;
-	pixel_y = -2
-	},
-/turf/open/floor/iron/dark,
-/area/template_noop)
-"Qe" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/drain,
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/structure/curtain,
-/turf/open/floor/iron/showroomfloor,
-/area/template_noop)
-"Qm" = (
-/obj/structure/rack,
-/obj/item/gun/ballistic/automatic/pistol{
-	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
-	},
-/obj/item/gun/ballistic/automatic/pistol{
-	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
-	},
-/obj/item/gun/ballistic/automatic/pistol{
-	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
-	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark,
-/area/template_noop)
-"Qo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/west,
-/turf/open/floor/wood/large,
-/area/template_noop)
-"Qq" = (
-/turf/open/floor/iron/dark/smooth_corner,
-/area/template_noop)
-"Qs" = (
-/obj/structure/sign/poster/contraband/pwr_game{
-	pixel_y = 32
-	},
-/turf/open/floor/iron,
-/area/template_noop)
-"Qt" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/machinery/door/airlock/grunge{
-	name = "Corporate Lawyer";
-	req_access_txt = "151"
-	},
-/turf/open/floor/wood,
-/area/template_noop)
-"Qw" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/smooth_large,
-/area/template_noop)
-"QB" = (
-/obj/structure/table,
-/obj/item/toy/cards/deck/kotahi{
-	pixel_x = -5;
-	pixel_y = 8
-	},
-/obj/item/toy/cards/deck/syndicate{
-	pixel_x = 4;
-	pixel_y = 3
-	},
-/turf/open/floor/iron/cafeteria,
 /area/template_noop)
 "QI" = (
 /obj/machinery/door/airlock/external{
@@ -3328,6 +3328,21 @@
 	dir = 8
 	},
 /area/template_noop)
+"QU" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "warden";
+	name = "master at arms' locker";
+	req_access_txt = "150"
+	},
+/obj/item/storage/belt/security/full,
+/obj/item/radio/headset/headset_sec/alt/interdyne,
+/obj/item/clothing/head/warden/syndicate,
+/obj/item/clothing/suit/armor/vest/warden/syndicate,
+/obj/item/clothing/under/utility/sec/old/syndicate,
+/turf/open/floor/iron/dark/smooth_corner{
+	dir = 8
+	},
+/area/template_noop)
 "QV" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/trimline/brown/line,
@@ -3342,20 +3357,14 @@
 "QW" = (
 /turf/open/floor/iron/dark/textured_edge,
 /area/template_noop)
-"Re" = (
-/obj/machinery/door/airlock/security/old{
-	name = "Armory";
-	req_access_txt = "151"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/template_noop)
 "Rf" = (
 /obj/structure/lattice/catwalk/plated,
 /obj/structure/cable,
 /turf/open/floor/plating,
+/area/template_noop)
+"Ri" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
 /area/template_noop)
 "Rs" = (
 /obj/effect/turf_decal/siding/wideplating/dark{
@@ -3401,10 +3410,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/template_noop)
-"Sf" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/carpet,
-/area/template_noop)
 "Sg" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden,
 /turf/open/floor/iron/dark,
@@ -3449,9 +3454,23 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
+"St" = (
+/obj/structure/sign/poster/contraband/grey_tide{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/template_noop)
 "SL" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
+/area/template_noop)
+"SU" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/door/airlock/grunge{
+	name = "Corporate Lawyer";
+	req_access_txt = "151"
+	},
+/turf/open/floor/wood,
 /area/template_noop)
 "Tc" = (
 /obj/structure/cable,
@@ -3538,11 +3557,12 @@
 /obj/effect/decal/cleanable/oil/streak,
 /turf/open/floor/iron,
 /area/template_noop)
-"TT" = (
-/obj/structure/chair/office{
-	dir = 4
+"TM" = (
+/obj/machinery/computer/crew/syndie{
+	dir = 1
 	},
-/turf/open/floor/wood,
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet,
 /area/template_noop)
 "TU" = (
 /obj/effect/turf_decal/siding/wideplating{
@@ -3596,24 +3616,15 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/large,
 /area/template_noop)
-"UT" = (
-/turf/open/floor/iron/smooth_large,
-/area/template_noop)
-"Vl" = (
-/obj/machinery/door/firedoor,
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/survival_pod{
-	dir = 4;
-	req_access_txt = "151"
-	},
-/turf/open/floor/plating,
-/area/template_noop)
-"Vr" = (
+"UK" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/obj/structure/reagent_dispensers/water_cooler,
+/obj/machinery/vending/coffee,
 /turf/open/floor/wood,
+/area/template_noop)
+"UT" = (
+/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "Vs" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -3622,6 +3633,10 @@
 "Vt" = (
 /obj/structure/lattice,
 /turf/template_noop,
+/area/template_noop)
+"Vu" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
 /area/template_noop)
 "Vx" = (
 /obj/item/laser_pointer,
@@ -3639,6 +3654,14 @@
 	req_access_txt = "150"
 	},
 /turf/open/floor/iron,
+/area/template_noop)
+"VD" = (
+/obj/machinery/suit_storage_unit/syndicate{
+	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/black/red;
+	suit_type = /obj/item/clothing/suit/space/syndicate/black/red
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "VE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden{
@@ -3814,6 +3837,9 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
+"XD" = (
+/turf/open/floor/carpet,
+/area/template_noop)
 "XF" = (
 /obj/structure/railing{
 	dir = 8
@@ -3837,6 +3863,18 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark/textured_half,
+/area/template_noop)
+"XO" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
 /area/template_noop)
 "XR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3892,16 +3930,6 @@
 /obj/item/radio/headset/headset_sec/alt/interdyne,
 /obj/item/clothing/under/utility/sec/old/syndicate,
 /turf/open/floor/mineral/plastitanium,
-/area/template_noop)
-"Yo" = (
-/obj/structure/rack,
-/obj/item/gun/energy/ionrifle{
-	pixel_y = -3
-	},
-/obj/item/gun/energy/temperature/security{
-	pixel_y = 3
-	},
-/turf/open/floor/iron/dark,
 /area/template_noop)
 "Yr" = (
 /obj/structure/closet/crate/goldcrate,
@@ -3971,6 +3999,12 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
+"YX" = (
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/structure/table/reinforced,
+/turf/open/floor/carpet,
+/area/template_noop)
 "Ze" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -4010,6 +4044,12 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/template_noop)
+"Zm" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/template_noop)
 "Zu" = (
 /obj/machinery/power/rtg/advanced,
 /obj/structure/cable,
@@ -4035,14 +4075,6 @@
 /turf/open/floor/iron/dark/blue/side{
 	dir = 5
 	},
-/area/template_noop)
-"ZK" = (
-/obj/machinery/door/airlock/security/old/glass{
-	name = "Security";
-	req_access_txt = "151"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/iron/dark/textured_large,
 /area/template_noop)
 "ZX" = (
 /turf/open/floor/iron/smooth_half{
@@ -6092,7 +6124,7 @@ qw
 qw
 aC
 qw
-uN
+sQ
 qw
 qw
 qw
@@ -6161,11 +6193,11 @@ mc
 mc
 mc
 qw
-cZ
+VD
 fb
-FR
-gV
-Yo
+wv
+lR
+BT
 qw
 mc
 qw
@@ -6238,7 +6270,7 @@ mc
 mc
 mc
 qw
-cZ
+VD
 fb
 fb
 fb
@@ -6246,7 +6278,7 @@ cX
 qw
 mc
 qw
-va
+BL
 qw
 mO
 wS
@@ -6315,10 +6347,10 @@ mc
 mc
 mc
 qw
-dA
+Gj
 fb
-DU
-Es
+AE
+PT
 fb
 qw
 mc
@@ -6392,10 +6424,10 @@ mc
 mc
 mc
 qw
-qO
+Lg
 fb
-PF
-GU
+QC
+fr
 fb
 qw
 mc
@@ -6469,7 +6501,7 @@ mc
 mc
 mc
 qw
-Qm
+gM
 fb
 fb
 fb
@@ -6546,11 +6578,11 @@ mc
 mc
 mc
 qw
-IZ
+Ih
 fb
-wB
-qA
-Qb
+Po
+mF
+Qz
 qw
 mc
 mc
@@ -6624,7 +6656,7 @@ mc
 mc
 qw
 qw
-Re
+em
 qw
 qw
 qw
@@ -6700,11 +6732,11 @@ mc
 mc
 mc
 qw
-ET
+yA
 tP
-EP
-Sf
-cK
+YX
+ht
+LJ
 qw
 mc
 mc
@@ -6777,11 +6809,11 @@ mc
 mc
 mc
 qw
-GO
+ve
 tO
-Ip
-Af
-dV
+XD
+fd
+TM
 qw
 qw
 aC
@@ -6854,11 +6886,11 @@ mc
 mc
 mc
 qw
-jo
+QU
 tT
-Ip
-Ip
-tH
+XD
+XD
+LU
 qw
 lk
 FW
@@ -6923,16 +6955,16 @@ mc
 mc
 mc
 mc
-mc
-mc
-mc
-mc
-mc
-mc
-mc
+qw
+qw
+qw
+qw
+qw
+qw
+qw
 qw
 aC
-Ds
+MG
 aC
 tw
 aC
@@ -6970,7 +7002,7 @@ UT
 UT
 Gg
 qw
-AA
+qV
 vQ
 xw
 mc
@@ -7000,7 +7032,7 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
@@ -7077,7 +7109,7 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
@@ -7154,7 +7186,7 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
@@ -7231,13 +7263,13 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
-bA
-Vr
-Fs
+oT
+GQ
+UK
 qw
 qw
 qw
@@ -7308,7 +7340,7 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
@@ -7385,13 +7417,13 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
-es
-wG
-IX
+XO
+Ov
+JO
 qw
 uS
 fb
@@ -7462,11 +7494,11 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
-uG
+wI
 UT
 Gg
 qw
@@ -7539,13 +7571,13 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
-bR
-ws
-ws
+fV
+lS
+lS
 qw
 fb
 fb
@@ -7616,7 +7648,7 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
@@ -7693,14 +7725,14 @@ mc
 mc
 mc
 mc
-mc
+qw
 fb
 fb
 fb
-JX
+sb
 FE
 fb
-Io
+GI
 uS
 fb
 tO
@@ -7775,9 +7807,9 @@ fb
 fb
 fb
 aC
-sU
+Dp
 fb
-mn
+eg
 Qq
 fb
 tP
@@ -7844,17 +7876,17 @@ mc
 mc
 mc
 qw
-ce
-TT
+tY
+NI
 NU
 qw
 fb
 fb
 fb
 aC
-at
-hX
-Io
+rJ
+CS
+GI
 fb
 fb
 fb
@@ -7921,16 +7953,16 @@ mc
 mc
 mc
 qw
-zY
-zY
+mn
+QE
 NU
-ta
+SU
 fb
 fb
 fb
 qw
-Vl
-qx
+Ei
+xT
 qw
 OA
 pH
@@ -7998,17 +8030,17 @@ mc
 mc
 mc
 qw
-NU
-NU
+Ri
+Zm
 NU
 qw
 fb
 fb
 fb
-ZK
+Lk
 Qq
 tP
-yl
+tr
 uS
 fb
 tO
@@ -8152,17 +8184,17 @@ mc
 mc
 mc
 qw
+Mz
 NU
-NU
-NU
+St
 qw
 fb
+Vu
 fb
-fb
-ZK
-nP
+Lk
+tp
 tT
-yl
+tr
 fb
 fb
 fb
@@ -8230,7 +8262,7 @@ mc
 mc
 qw
 qw
-Qt
+CR
 qw
 qw
 qw
@@ -8240,7 +8272,7 @@ qw
 qw
 qw
 qw
-Ct
+DF
 fb
 tT
 aC
@@ -8510,7 +8542,7 @@ ZX
 ZX
 ja
 qw
-AA
+qV
 vQ
 xw
 mc
@@ -8548,7 +8580,7 @@ qw
 aC
 qw
 qw
-ig
+kC
 fb
 tT
 aC
@@ -9473,7 +9505,7 @@ KO
 Uf
 qw
 QQ
-ro
+Vu
 tT
 uw
 QQ
