@@ -1,0 +1,30 @@
+/obj/item/kinetic_crusher/premiumcrusher
+	icon = 'modular_skyrat/modules/Kinetic_destroyer/code/modules/mining/icons/obj/mining.dmi'
+	icon_state = "destroyer"
+	inhand_icon_state = "destroyer0"
+	lefthand_file = 'modular_skyrat/modules/Kinetic_destroyer/code/modules/mining/icons/mobs/inhands/weapons/hammerspc_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/Kinetic_destroyer/code/modules/mining/icons/mobs/inhands/weapons/hammerspc_righthand.dmi'
+	name = "Kinetic Destroyer"
+	desc = "Revised and refined by veteran miners, this crusher design has been improved in nearly everyway. Featuring a lightweight composite body and a hardened plastitanium head, this weapon is exceptional at removing life from most things."
+	force = 0
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	throwforce = 10
+	throw_speed = 4
+	armour_penetration = 15
+	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
+	attack_verb_continuous = list("smashes", "crushes", "cleaves", "chops", "pulps")
+	attack_verb_simple = list("smash", "crush", "cleave", "chop", "pulp")
+	sharpness = SHARP_EDGED
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	actions_types = list(/datum/action/item_action/toggle_light)
+	obj_flags = UNIQUE_RENAME
+	light_system = MOVABLE_LIGHT
+	light_range = 5
+	light_on = FALSE
+	trophies = list()
+	charged = TRUE
+	charge_time = 13
+	detonation_damage = 65
+	backstab_bonus = 40
+	wielded = FALSE // track wielded status on item
