@@ -82,6 +82,10 @@
 	name = "DS-2 Corporate Lawyer's Office"
 	icon_state = "law"
 
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/security/prison
+	name = "DS-2 Long-Term Brig"
+	icon_state = "sec_prison"
+
 //Service
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/service
 	name = "DS-2 Service Wing"
