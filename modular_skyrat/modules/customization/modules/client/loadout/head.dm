@@ -212,11 +212,10 @@
 	path = /obj/item/clothing/head/imperial/hop
 	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
 
-/*/datum/loadout_item/head/job/ce/imperial
+/datum/loadout_item/head/job/ce/imperial
 	name = "Chief Engineer's blast helmet."
 	path = /obj/item/clothing/head/imperial/ce
-	restricted_roles = list("Chief Engineer")*/
-
+	restricted_roles = list("Chief Engineer")
 
 /datum/loadout_item/head/job/cowboyhat/sec
 	name = "Cowboy Hat, Security"
