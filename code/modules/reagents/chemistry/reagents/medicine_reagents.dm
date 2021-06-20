@@ -1067,7 +1067,8 @@
 	if(!ishuman(exposed_mob) || (reac_volume < 0.5))
 		return
 
-	/* var/mob/living/carbon/human/exposed_human = exposed_mob
+/** SKYRAT EDIT BEGIN - Regen Jelly no longer overrides hair color
+	var/mob/living/carbon/human/exposed_human = exposed_mob
 	exposed_human.hair_color = "C2F"
 	exposed_human.facial_hair_color = "C2F"
 	exposed_human.update_hair() */ skyrat edit 
