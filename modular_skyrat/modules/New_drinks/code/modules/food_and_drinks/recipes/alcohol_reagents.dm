@@ -1,5 +1,5 @@
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
-	name = "Cum in the Hot Tub"
+	name = "Cream in the Hot Tub"
 	boozepwr = 80
 	color = "#D2D7D9"
 	quality = DRINK_VERYGOOD
