@@ -1071,7 +1071,8 @@
 	var/mob/living/carbon/human/exposed_human = exposed_mob
 	exposed_human.hair_color = "C2F"
 	exposed_human.facial_hair_color = "C2F"
-	exposed_human.update_hair() */ skyrat edit 
+	exposed_human.update_hair()
+**/ // SKYRAT EDIT END 
 	
 
 /datum/reagent/medicine/regen_jelly/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
