@@ -190,12 +190,19 @@ SUBSYSTEM_DEF(dispatch)
 		ui_data_by_mob[user]["ui-tmanage"] = ui
 		return
 
+/datum/controller/subsystem/dispatch/proc/verify_ticket_data(mob/user)
+	var/hastype = ui_data_by_mob[user]["tdata"]["type"] != ""
+	var/hasprio = ui_data_by_mob[user]["tdata"]["priority"] != ""
+	var/hasname = ui_data_by_mob[user]["tdata"]["title"] != ""
+	var/hasdesc = ui_data_by_mob[user]["tdata"]["extra"] != ""
+	return hastype && hasprio && hasname && hasdesc
+
 /datum/controller/subsystem/dispatch/ui_data(mob/user)
 	var/list/data = list(
 		"priorities" = SSDISPATCH_TICKET_PRIORITIES,
 		"types" = SSDISPATCH_TICKET_TYPES,
 		"self_ref" = REF(user),
-		"submit_allow" = ui_data_by_mob[user]["tdata"]["type"] != "" && ui_data_by_mob[user]["tdata"]["priority"] != "",
+		"submit_allow" = verify_ticket_data(user),
 		"tdata" = ui_data_by_mob[user]["tdata"],
 		"mdata" = ui_data_by_mob[user]["mdata"],
 		"emagged" = FALSE,
@@ -256,6 +263,8 @@ SUBSYSTEM_DEF(dispatch)
 
 ///Takes a user, and a ticket, and loads the ticket information into their ticketData store
 /datum/controller/subsystem/dispatch/proc/load_ticket_data_into_mdata(mob/user, datum/dispatch_ticket/ticket)
+	if(!ticket && ui_data_by_mob[user]["mdata"]["ticketData"]["ticket"])
+		ticket = ui_data_by_mob[user]["mdata"]["ticketData"]["ticket"]
 	ui_data_by_mob[user]["mdata"]["ticketData"]["ticket"] = ticket
 	ui_data_by_mob[user]["mdata"]["ticketData"]["creator"] = ticket.creator
 	ui_data_by_mob[user]["mdata"]["ticketData"]["location"] = ticket.location
@@ -528,6 +537,10 @@ SUBSYSTEM_DEF(dispatch)
 			ticket_i.status = SSDISPATCH_TICKET_STATUS_OPEN
 			ui_data_by_mob[user]["mdata"]["ticketActive"] = "None"
 
+			return TRUE
+
+		if("ticket-refresh")
+			load_ticket_data_into_mdata(user)
 			return TRUE
 
 		else

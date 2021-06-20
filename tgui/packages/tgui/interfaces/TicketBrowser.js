@@ -10,7 +10,7 @@ export const TicketBrowser = (props, context) => {
   const { ticketActive, ticketData } = mdata;
   const { imageAttached } = ticketData;
   return (
-    <Window title="Ticket Browser" height={400} width={800}>
+    <Window title="Ticket Browser" height={600} width={800}>
       <HolderToggles />
       <TicketSelector />
       {ticketActive !== "None" && (
@@ -98,22 +98,23 @@ const TicketInformation = (props, context) => {
           color="blue"
           checked={handler !== "None"}
           disabled={status !== "Open" || handler !== "None"}
-          onClick={() => act("ticket-handle", { self_ref: self_ref })}
-        />
+          onClick={() => act("ticket-handle", { self_ref: self_ref })} />
         <ButtonCheckbox
           content="Resolve"
           color="good"
           checked={status === "Resolved"}
           disabled={handler !== holderName || status !== "Active"}
-          onClick={() => act("ticket-resolve", { self_ref: self_ref })}
-        />
+          onClick={() => act("ticket-resolve", { self_ref: self_ref })} />
         <ButtonCheckbox
           content="Reject"
           color="bad"
           checked={status === "Rejected"}
           disabled={handler !== holderName || status !== "Active"}
-          onClick={() => act("ticket-reject", { self_ref: self_ref })}
-        />
+          onClick={() => act("ticket-reject", { self_ref: self_ref })} />
+        <Button
+          content="Refresh"
+          color="blue"
+          onClick={() => act("ticket-refresh", { self_ref: self_ref })} />
       </>
     }>
       <h1>{title}</h1>
