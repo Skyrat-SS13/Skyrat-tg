@@ -76,7 +76,11 @@ SUBSYSTEM_DEF(time_track)
 			"all_queries",
 			"queries_active",
 			"queries_standby"
-		) + sendmaps_headers
+#ifdef SENDMAPS_PROFILE
+		) + sendmaps_shorthands
+#else
+		)
+#endif
 	)
 
 
@@ -142,10 +146,23 @@ SUBSYSTEM_DEF(time_track)
 			length(SSair.networks),
 			length(SSair.high_pressure_delta),
 			length(SSair.active_super_conductivity),
-			//SSdbcore.all_queries_num,
-			//SSdbcore.queries_active_num,
-			//SSdbcore.queries_standby_num
+			SSdbcore.all_queries_num,
+			SSdbcore.queries_active_num,
+			SSdbcore.queries_standby_num
+#ifdef SENDMAPS_PROFILE
 		) + send_maps_values
 	)
 
-	//SSdbcore.reset_tracking()
+	SSdbcore.reset_tracking()
+
+#ifdef SENDMAPS_PROFILE
+/datum/controller/subsystem/time_track/proc/scream_maptick_data()
+	var/current_profile_data = world.Profile(PROFILE_REFRESH, type = "sendmaps", format="json")
+	log_world(current_profile_data)
+	current_profile_data = json_decode(current_profile_data)
+	var/output = ""
+	for(var/list/entry in current_profile_data)
+		output += "[entry["name"]],[entry["value"]],[entry["calls"]]\n"
+	log_world(output)
+	return output
+#endif
