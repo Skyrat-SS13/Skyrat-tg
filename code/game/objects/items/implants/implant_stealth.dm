@@ -19,7 +19,7 @@
 	move_speed_multiplier = 0.5
 
 /obj/structure/closet/cardboard/agent/proc/go_invisible()
-	animate(src, , alpha = 0, time = 20)
+	animate(src, , alpha = 0, time = 5 SECONDS) // SKYRAT EDIT - ORIGINAL time = 20
 
 /obj/structure/closet/cardboard/agent/Initialize()
 	. = ..()
