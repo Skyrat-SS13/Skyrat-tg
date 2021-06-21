@@ -1297,6 +1297,7 @@
 	design_ids = list(
 		"pin_testing",
 		"tele_shield",
+		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/explosion/calibration)
@@ -1393,7 +1394,6 @@
 		"c38_hotshot",
 		"c38_iceblox",
 		"techshotshell",
-		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
