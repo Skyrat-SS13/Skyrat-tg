@@ -102,6 +102,14 @@
 	name = "Brown Jackboots"
 	path = /obj/item/clothing/shoes/jungleboots
 
+/datum/loadout_item/shoes/thighboot
+	name = "Thigh Boots"
+	path = /obj/item/clothing/shoes/jackboots/thigh
+
+/datum/loadout_item/shoes/kneeboot
+	name = "Knee Boots"
+	path = /obj/item/clothing/shoes/jackboots/knee
+
 /datum/loadout_item/shoes/disco
 	name = "Green Snakeskin Shoes"
 	path = /obj/item/clothing/shoes/discoshoes
