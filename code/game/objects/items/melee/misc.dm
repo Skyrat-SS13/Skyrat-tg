@@ -186,17 +186,6 @@
 
 	var/cooldown_check = 0 // Used interally, you don't want to modify
 
-<<<<<<< HEAD
-	var/cooldown = 1 SECONDS // Default wait time until can stun again. - SKYRAT EDIT CHANGE - ORIGINAL: 40
-	var/knockdown_time_carbon = (1.5 SECONDS) // Knockdown length for carbons.
-	var/stun_time_silicon = (5 SECONDS) // If enabled, how long do we stun silicons.
-	var/stamina_damage = 30 // Do we deal stamina damage. - SKYRAT EDIT CHANGE - ORIGINAL: 55
-	var/affect_silicon = FALSE // Does it stun silicons.
-	var/on_sound // "On" sound, played when switching between able to stun or not.
-	var/on_stun_sound = 'sound/effects/woodhit.ogg' // Default path to sound for when we stun.
-	var/stun_animation = TRUE // Do we animate the "hit" when stunning.
-	var/on = TRUE // Are we on or off.
-=======
 	/// Default wait time until can stun again.
 	var/cooldown = (4 SECONDS)
 	/// The length of the knockdown applied to a struck living, non-cyborg mob.
@@ -208,14 +197,13 @@
 	/// Can we stun cyborgs?
 	var/affect_cyborg = FALSE
 	/// "On" sound, played when switching between able to stun or not.
-	var/on_sound 
+	var/on_sound
 	/// The path of the default sound to play when we stun something.
 	var/on_stun_sound = 'sound/effects/woodhit.ogg'
 	/// Do we animate the "hit" when stunning something?
 	var/stun_animation = TRUE
 	/// Are we on or off?
 	var/on = TRUE
->>>>>>> d2cfa2ae289 (contractor baton cyborg stunning now uses left/right clicks, not combat mode (#59110))
 
 	var/on_icon_state // What is our sprite when turned on
 	var/off_icon_state // What is our sprite when turned off
@@ -286,35 +274,7 @@
 
 	add_fingerprint(user)
 	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-<<<<<<< HEAD
-		to_chat(user, "<span class ='userdanger'>You hit yourself over the head!</span>")
-
-		/* - SKYRAT EDIT REMOVAL BEGIN
-		user.Paralyze(knockdown_time_carbon * force)
-		user.apply_damage(stamina_damage, STAMINA, BODY_ZONE_HEAD)
-		*/ //SKYRAT EDIT REMOVAL END
-		user.apply_damage(force*0.5, BRUTE, BODY_ZONE_HEAD) //SKYRAT EDIT ADDITION
-		user.StaminaKnockdown(stamina_damage) //SKYRAT EDIT ADDITION
-
-		additional_effects_carbon(user) // user is the target here
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.apply_damage(2*force, BRUTE, BODY_ZONE_HEAD)
-		else
-			user.take_bodypart_damage(2*force)
-		return
-	if(iscyborg(target))
-		// We don't stun if we're on harm.
-		if (!user.combat_mode)
-			if (affect_silicon)
-				var/list/desc = get_silicon_stun_description(target, user)
-
-				target.flash_act(affect_silicon = TRUE)
-				target.Paralyze(stun_time_silicon)
-				additional_effects_silicon(target, user)
-=======
 		user.visible_message("<span class ='userdanger'>You accidentally hit yourself over the head with [src]!</span>", "<span class='danger'>[user] accidentally hits [user.p_them()]self over the head with [src]! What a doofus!</span>")
->>>>>>> d2cfa2ae289 (contractor baton cyborg stunning now uses left/right clicks, not combat mode (#59110))
 
 		if(iscyborg(user))
 			if(affect_cyborg)
@@ -361,21 +321,9 @@
 		if(affect_cyborg)
 			desc = get_cyborg_stun_description(target, user)
 
-<<<<<<< HEAD
-	playsound(get_turf(src), on_stun_sound, 75, TRUE, -1)
-	/* - SKYRAT EDIT REMOVAL BEGIN
-	target.Knockdown(knockdown_time_carbon)
-	target.apply_damage(stamina_damage, STAMINA, BODY_ZONE_CHEST)
-	*/ //SKYRAT EDIT END
-	//SKYRAT EDIT ADDITION - BEGIN
-	target.StaminaKnockdown(stamina_damage)
-	//SKYRAT EDIT END
-	additional_effects_carbon(target, user)
-=======
 			target.flash_act(affect_silicon = TRUE)
 			target.Paralyze(stun_time_cyborg)
 			additional_effects_cyborg(target, user)
->>>>>>> d2cfa2ae289 (contractor baton cyborg stunning now uses left/right clicks, not combat mode (#59110))
 
 			playsound(get_turf(src), on_stun_sound, 75, TRUE, -1)
 		else
@@ -490,13 +438,8 @@
 	force = 5
 
 	cooldown = 25
-<<<<<<< HEAD
-	stamina_damage = 65 //SKYRAT EDIT CHANGE - ORIGINAL: 85 // SKYRAT EDIT CHANGE - SKYRAT ORIGINAL POST-NERF: 30
-	affect_silicon = TRUE
-=======
 	stamina_damage = 85
 	affect_cyborg = TRUE
->>>>>>> d2cfa2ae289 (contractor baton cyborg stunning now uses left/right clicks, not combat mode (#59110))
 	on_sound = 'sound/weapons/contractorbatonextend.ogg'
 	on_stun_sound = 'sound/effects/contractorbatonhit.ogg'
 
