@@ -571,12 +571,12 @@
 /datum/loadout_item/uniform/job/impcap
 	name = "Captain's Naval Jumpsuit"
 	path = /obj/item/clothing/under/rank/captain/imperial
-	restricted_roles = list("Captain")
+	restricted_roles = list("Captain", "Nanotrasen Representative")
 
 /datum/loadout_item/uniform/job/imphop
 	name = "Head of Personnel's Naval Jumpsuit"
 	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
-	restricted_roles = list("Head of Personnel")
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
 
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
@@ -929,25 +929,25 @@
 /datum/loadout_item/uniform/job/impcommand
 	name = "Light Grey Officer's Naval Jumpsuit"
 	path = /obj/item/clothing/under/imperial
-	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/impcom
 	name = "Grey Officer's Naval Jumpsuit"
 	path = /obj/item/clothing/under/imperial/grey
-	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/impred
 	name = "Red Officer's Naval Jumpsuit"
 	path = /obj/item/clothing/under/imperial/red
-	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")	//NT Reps would never wear red, it's unbefitting
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/impcomtrous
 	name = "Grey Officer's Naval Jumpsuit (Trousers)"
 	path = /obj/item/clothing/under/imperial/grey/trouser
-	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/robosleek
