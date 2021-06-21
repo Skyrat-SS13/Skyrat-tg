@@ -276,6 +276,20 @@
 			"}
 			break_counter++
 		output += "</div></div>"
+		//SKYRAT EDIT ADDITION
+		output += "<div class='row'><div class='column'><label class='rolegroup command'><input type='checkbox' name='Central Command' class='hidden' [usr.client.prefs.tgui_fancy ? " onClick='toggle_checkboxes(this, \"_dep\")'" : ""]>Central Command</label><div class='content'>"
+		//all heads are listed twice so have a javascript call to toggle both their checkboxes when one is pressed
+		//for simplicity this also includes the captain even though it doesn't do anything
+		for(var/job in GLOB.central_command_positions)
+			if(break_counter > 0 && (break_counter % 3 == 0))
+				output += "<br>"
+			output += {"<label class='inputlabel checkbox'>[job]
+						<input type='checkbox' id='[job]_com' name='[job]' class='Command' value='1'[usr.client.prefs.tgui_fancy ? " onClick='toggle_head(this, \"_dep\")'" : ""]>
+						<div class='inputbox[(job in banned_from) ? " banned" : ""]'></div></label>
+			"}
+			break_counter++
+		output += "</div></div>"
+		//SKYRAT EDIT END
 		//standard departments all have identical handling
 		var/list/job_lists = list("Security" = GLOB.security_positions,
 							"Engineering" = GLOB.engineering_positions,
