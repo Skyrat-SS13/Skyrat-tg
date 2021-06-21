@@ -144,3 +144,6 @@
 
 /obj/item/forbidden_book/debug
 	charge = 100
+
+/obj/item/forbidden_book/ritual  //SKYRAT EDIT
+	charge = 0
