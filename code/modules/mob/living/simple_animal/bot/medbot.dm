@@ -165,7 +165,7 @@
 		dat += "Critical Patient Alerts: <a href='?src=[REF(src)];critalerts=1'>[declare_crit ? "Yes" : "No"]</a><br>"
 		dat += "Patrol Station: <a href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</a><br>"
 		dat += "Stationary Mode: <a href='?src=[REF(src)];stationary=1'>[stationary_mode ? "Yes" : "No"]</a><br>"
-		dat += "<a href='?src=[REF(src)];hptech=1'>Search for Technological Advancements</a><br>"
+		//Skyrat Edit Removal - Medibot Nerf - dat += "<a href='?src=[REF(src)];hptech=1'>Search for Technological Advancements</a><br>"
 
 	return dat
 
@@ -191,7 +191,7 @@
 		stationary_mode = !stationary_mode
 		path = list()
 		update_appearance()
-
+	/* Skyrat Edit Removal - Medibot Nerf
 	else if(href_list["hptech"])
 		var/oldheal_amount = heal_amount
 		var/tech_boosters
@@ -204,6 +204,7 @@
 			heal_amount = (round(tech_boosters/2,0.1)*initial(heal_amount))+initial(heal_amount) //every 2 tend wounds tech gives you an extra 100% healing, adjusting for unique branches (combo is bonus)
 			if(oldheal_amount < heal_amount)
 				speak("New knowledge found! Surgical efficacy improved to [round(heal_amount/initial(heal_amount)*100)]%!")
+	Skyrat Edit End */
 	update_controls()
 	return
 
