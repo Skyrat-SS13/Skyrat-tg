@@ -115,12 +115,8 @@
 					var/res = tgui_alert(usr, "Show the title of and link to this song to the players?\n[title]",, list("No", "Yes", "Cancel"))
 					switch(res)
 						if("Yes")
-<<<<<<< HEAD
 							to_chat(world, "<span class='boldannounce'>[src] played: [webpage_url]</span>", confidential = TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, "<span class='boldannounce'>An admin played: [webpage_url]</span>", confidential = TRUE)
-=======
 							music_extra_data["title"] = data["title"]
-							to_chat(world, span_boldannounce("An admin played: [webpage_url]"), confidential = TRUE)
->>>>>>> 5d44d536e2e (Change admins music title hiding to hide on media player (#59667))
 						if("Cancel")
 							return
 
