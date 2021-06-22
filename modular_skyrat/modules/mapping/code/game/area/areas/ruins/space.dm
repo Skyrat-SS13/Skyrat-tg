@@ -95,6 +95,18 @@
 	name = "DS-2 Diner"
 	icon_state = "cafeteria"
 
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/service/chapel
+	name = "DS-2 Chapel"
+	icon_state = "chapel"
+
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/service/dorms
+	name = "DS-2 Dormitories"
+
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/service/dorms/fitness
+	name = "DS-2 Fitness Halls"
+	icon_state = "fitness"
+
+
 //Hallways
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/halls
 	name = "DS-2 Central Halls"
