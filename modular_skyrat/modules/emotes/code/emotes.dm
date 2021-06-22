@@ -98,19 +98,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/snap3.ogg'
 
-/datum/emote/living/awoo
-	key = "awoo"
-	key_third_person = "awoos"
-	message = "lets out an awoo!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-
-/datum/emote/living/nya
-	key = "nya"
-	key_third_person = "nyas"
-	message = "lets out a nya!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
 
 /datum/emote/living/weh
 	key = "weh"
@@ -325,13 +312,6 @@
 	message_AI = "shows an image of a random blepping animal. Blep."
 	message_robot = "bleps their robo-tongue out. Blep."
 
-/datum/emote/living/bork
-	key = "bork"
-	key_third_person = "borks"
-	message = "lets out a bork."
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-
 /datum/emote/living/hoot
 	key = "hoot"
 	key_third_person = "hoots"
@@ -349,13 +329,6 @@
 	muzzle_ignore = TRUE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/growl.ogg'
-
-/datum/emote/living/woof
-	key = "woof"
-	key_third_person = "woofs"
-	message = "lets out a woof."
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
 
 /datum/emote/living/baa
 	key = "baa"
@@ -380,14 +353,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/wurble.ogg'
-
-/datum/emote/living/awoo2
-	key = "awoo2"
-	key_third_person = "awoos"
-	message = "lets out an awoo!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	//cooldown = 3 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/rattle
 	key = "rattle"
