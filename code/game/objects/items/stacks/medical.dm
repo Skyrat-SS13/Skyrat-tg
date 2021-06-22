@@ -59,7 +59,7 @@
 
 /// Apply the actual effects of the healing if it's a simple animal, goes to [/obj/item/stack/medical/proc/heal_carbon] if it's a carbon, returns TRUE if it works, FALSE if it doesn't
 /obj/item/stack/medical/proc/heal(mob/living/patient, mob/user)
-	if(patient.stat == DEAD)
+	if(isanimal(patient) && patient.stat == DEAD) // SKYRAT EDIT CHANGE, ORIGINAL DID NOT CHECK isanimal -- CARBON CHECKS ARE DONE IN heal_carbon()
 		to_chat(user, span_warning("[patient] is dead! You can not help [patient.p_them()]."))
 		return
 	if(isanimal(patient) && heal_brute) // only brute can heal
@@ -86,7 +86,17 @@
 	if(affecting.status != BODYPART_ORGANIC) //Limb must be organic to be healed - RR
 		to_chat(user, span_warning("[src] won't work on a robotic limb!"))
 		return FALSE
+	if((affecting.brute_dam && (C.getBruteLoss() >= 180) && heal_brute) || (affecting.burn_dam && (C.getFireLoss() >= 180) && heal_burn)) // SKYRAT EDIT ADD - MEDICAL STACKS USEABLE WHEN A PATIENT IS TOO DAMAGED TO DEFIB
+		user.visible_message("<span class='infoplain'><span class='green'>[user] uses [src] to fix some of [C]'s worst injuries.</span></span>", "<span class='infoplain'><span class='green'>You try to put [C] back together as best you can using [src].</span></span>")
+		var/previous_damage = affecting.get_damage()
+		if(affecting.heal_damage(brute, burn))
+			C.update_damage_overlays()
+		post_heal_effects(max(previous_damage - affecting.get_damage(), 0), C, user)
+		return TRUE // SKYRAT EDIT ADD END
 	if(affecting.brute_dam && brute || affecting.burn_dam && burn)
+		if(C.stat == DEAD) // SKYRAT EDIT ADD - checks after to make sure you can't get them fully healed while dead.
+			to_chat(user, span_warning("[src] alone can't help [C] anymore, [C.p_their()] body's natural healing needs pitch in, but it can't when [C.p_theyre()] dead!"))
+			return FALSE // SKYRAT EDIT END
 		user.visible_message("<span class='infoplain'><span class='green'>[user] applies [src] on [C]'s [affecting.name].</span></span>", "<span class='infoplain'><span class='green'>You apply [src] on [C]'s [affecting.name].</span></span>")
 		var/previous_damage = affecting.get_damage()
 		if(affecting.heal_damage(brute, burn))
