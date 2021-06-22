@@ -82,7 +82,7 @@
 /obj/item/weldingtool/electric/update_overlays()
 	. = ..()
 	if(powered)
-		. += mutable_appearance(icon/overlay_icon, "elwelder_on")
+		. += mutable_appearance(overlay_icon, "elwelder_on")
 
 /obj/item/weldingtool/electric/examine()
 	. = ..()
