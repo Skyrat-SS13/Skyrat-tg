@@ -27,6 +27,8 @@
 	icon_state = null
 	desc = ""
 	cutting_tool = null
+	has_opened_overlay = FALSE
+	has_closed_overlay = FALSE
 	can_weld_shut = FALSE
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
