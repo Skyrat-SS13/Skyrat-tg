@@ -359,7 +359,8 @@
 	message = "lets out a woof."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
+	//sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg' - REMOVED (SOUND EFFECT SUCKS)
+	sound = 'modular_skyrat/modules/emotes/sound/voice/woof2.ogg'
 
 /datum/emote/living/baa
 	key = "baa"
