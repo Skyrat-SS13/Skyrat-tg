@@ -70,8 +70,9 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .50 AE ammo."
 	icon_state = "deaglecamo"
 	inhand_icon_state = "deagleg"
-	// We don't have the icons for this setup to use the overlay system
+	// SKYRAT EDIT - We don't actually have the right icons for this. When you add the icons you can remove this line!
 	show_bolt_icon = FALSE
+	// SKYRAT EDIT END
 
 /obj/item/gun/ballistic/automatic/pistol/aps
 	name = "stechkin APS machine pistol"
