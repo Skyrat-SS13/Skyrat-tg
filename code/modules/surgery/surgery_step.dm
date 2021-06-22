@@ -57,7 +57,7 @@
 	return FALSE
 
 #define SURGERY_SLOWDOWN_CAP_MULTIPLIER 2 //increase to make surgery slower but fail less, and decrease to make surgery faster but fail more
-#define NONSURGERY_AREA_SLOWDOWN 1.5 // Skyrat Edit Addition - penalty for not doing surgery in surgery
+#define SURGERY_SPEEDUP_AREA 0.5 // Skyrat Edit Addition - reward for doing surgery in surgery
 
 /datum/surgery_step/proc/initiate(mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	// Only followers of Asclepius have the ability to use Healing Touch and perform miracle feats of surgery.
@@ -86,10 +86,10 @@
 	fail_prob = min(max(0, modded_time - (time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)),99)//if modded_time > time * modifier, then fail_prob = modded_time - time*modifier. starts at 0, caps at 99
 	modded_time = min(modded_time, time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)//also if that, then cap modded_time at time*modifier
 
-	// Skyrat Edit Addition - penalty for not doing surgery in surgery
-	if(!is_type_in_list(get_area(target), list(/area/medical/surgery, /area/science/robotics)) && (TRAIT_FASTMED in user.status_traits) || (TRAIT_QUICK_CARRY in user.status_traits))
-		modded_time *= NONSURGERY_AREA_SLOWDOWN
-		to_chat(user, span_notice("You wince to yourself as you look around the unsterilised, unprepared worspace!"))
+	// Skyrat Edit Addition - reward for doing surgery in surgery
+	if(is_type_in_list(get_area(target), list(/area/medical/surgery, /area/science/robotics)) && (TRAIT_FASTMED in user.status_traits) || (TRAIT_QUICK_CARRY in user.status_traits))
+		modded_time *= SURGERY_SPEEDUP_AREA
+		to_chat(user, "<span class='notice'>You breathe in relief as all the tools and equipment you need are in easy reach!</span>")
 	// Skyrat Edit End
 	if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
 		modded_time = time
