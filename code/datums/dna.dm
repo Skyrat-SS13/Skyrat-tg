@@ -45,13 +45,9 @@
 	destination.dna.unique_enzymes = unique_enzymes
 	destination.dna.unique_identity = unique_identity
 	destination.dna.blood_type = blood_type
-<<<<<<< HEAD
 	//destination.set_species(species.type, icon_update=0) //ORIGINAL
 	destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
-=======
-	destination.set_species(species.type, icon_update=0)
 	destination.dna.unique_features = unique_features
->>>>>>> 63e33bd709e (Makes mutant bodyparts and mutcolors into editable genetic traits (plus a whole shitload of otherwise out of scope code improvements because I just HAD to touch old code) (#59636))
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.temporary_mutations = temporary_mutations.Copy()
@@ -366,13 +362,9 @@
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
 	features = random_features()
-<<<<<<< HEAD
+	unique_features = generate_unique_features()
 */
 //SKYRAT EDIT REMOVAL END
-=======
-	unique_features = generate_unique_features()
-
->>>>>>> 63e33bd709e (Makes mutant bodyparts and mutcolors into editable genetic traits (plus a whole shitload of otherwise out of scope code improvements because I just HAD to touch old code) (#59636))
 
 /datum/dna/stored //subtype used by brain mob's stored_dna
 

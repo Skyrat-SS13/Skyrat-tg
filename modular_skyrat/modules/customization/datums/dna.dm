@@ -10,10 +10,11 @@
 	if(newblood_type)
 		blood_type = newblood_type
 	unique_enzymes = generate_unique_enzymes()
-	uni_identity = generate_uni_identity()
+	unique_identity = generate_unique_identity()
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
 	features = species.get_random_features()
+	unique_features = generate_unique_features()
 	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
 
 /datum/dna/proc/update_body_size()
