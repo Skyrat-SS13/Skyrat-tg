@@ -125,6 +125,10 @@
 	name = "DS-2 Port Quarter Solars"
 	icon_state = "SolarcontrolAP"
 
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/solars/northeast
+	name = "DS-2 Starboard Bow Solars"
+	icon_state = "panelsS"
+
 //Maintenance
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance
 	name = "DS-2 Maintenance"
@@ -137,3 +141,11 @@
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/northwest
 	name = "DS-2 Port Fore Maintenance"
 	icon_state = "fpmaint"
+
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/northeast
+	name = "DS-2 Starboard Bow Maintenance"
+	icon_state = "smaint"
+
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southeast
+	name = "DS-2 Starboard Quarter Maintenance"
+	icon_state = "smaint_2"
