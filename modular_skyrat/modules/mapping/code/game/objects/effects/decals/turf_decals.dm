@@ -44,3 +44,7 @@
 
 /obj/effect/turf_decal/skyrat_decals/ds2/right
 	icon_state = "ds3"
+
+///Misc///
+/obj/effect/turf_decal/skyrat_decals/misc/handicapped
+	icon_state = "handicapped"
