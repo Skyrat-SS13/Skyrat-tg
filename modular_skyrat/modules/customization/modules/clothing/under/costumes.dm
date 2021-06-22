@@ -96,3 +96,20 @@
 	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
 	icon_state = "arthur_morgan"
 
+/obj/item/clothing/under/syndicate/tacticool/sensors
+	name = "tacticool turtleneck"
+	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
+	icon_state = "tactifool"
+	inhand_icon_state = "bl_suit"
+	has_sensor = HAS_SENSORS
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/under/syndicate/tacticool/skirt/sensors
+	name = "tacticool skirtleneck"
+	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
+	icon_state = "tactifool_skirt"
+	inhand_icon_state = "bl_suit"
+	has_sensor = HAS_SENSORS
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	fitted = FEMALE_UNIFORM_TOP
+	dying_key = DYE_REGISTRY_JUMPSKIRT

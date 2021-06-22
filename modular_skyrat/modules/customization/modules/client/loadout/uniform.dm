@@ -506,7 +506,7 @@
 
 /datum/loadout_item/uniform/sweater/turtleneck
 	name = "Tactitool Turtleneck"
-	path = /obj/item/clothing/under/syndicate/tacticool
+	path = /obj/item/clothing/under/syndicate/tacticool/sensors
 
 /datum/loadout_item/uniform/sweater/tactical1
 	name = "Irish Tactical Sweater"
@@ -518,7 +518,7 @@
 
 /datum/loadout_item/uniform/sweater/turtleneck/skirt
 	name = "Tactitool Skirtleneck"
-	path = /obj/item/clothing/under/syndicate/tacticool/skirt
+	path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
 
 /datum/loadout_item/uniform/sweater/creamsweater
 	name = "Cream Commando Sweater"
