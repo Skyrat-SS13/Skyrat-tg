@@ -523,3 +523,28 @@
   - bugfix: Makes roleblocks in mafia actually end properly
   ZephyrTFA:
   - bugfix: Cryo Storage now silences PDAs that it hoovers.
+2021-06-22:
+  ATHATH:
+  - bugfix: Stunning a cyborg with a contractor baton now puts your contractor baton
+      on cooldown, just like knocking a human down does. Don't worry, you can still
+      easily chainstun/baton 'n' bash borgs with contractor batons.
+  - soundadd: Attempting to stun a cyborg with a classic baton or a telebaton will
+      play a CLONGing noise, produce a special message, and put your baton on cooldown.
+      Harmbatonning cyborgs with classic batons and telebatons still works, of course.
+  - refactor: The code for classic batons, telebatons, and contractor batons has been
+      doc'd slightly better and refactored a bit.
+  - bugfix: Some edge cases involving cyborgs who somehow both are clumsy and can
+      wield a classic baton have been accounted for. This shouldn't affect normal
+      gameplay unless an admin tries some REALLY weird stuff. Like, clumsy contractor
+      cyborg level weird.
+  SkyratBot:
+  - bugfix: Fix some runtimes with quirks and equipping silicons.
+  - bugfix: Eggs now give 5u yolk no matter what it is cracked in
+  - balance: The traitor's Agent ID card has a new option available during forging
+      called Wallet ID Spoofing. Selecting this option will automatically snap the
+      Agent ID card to the front of any wallet, allowing the traitor to hide more
+      valuable ID cards behind it. This is disabled when the card is unforged.
+  - refactor: Refactors dbcore.dm to possibly resolve the crashes that happen on Terry.
+  coiax:
+  - tweak: You can now open your own mail, even after being mindswapped into a different
+      body. Or being podcloned. Or some other horrific body replacement experiment.
